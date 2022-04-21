@@ -89,9 +89,9 @@ export class AppComponent implements OnInit {
                     ),
                     takeUntil(this.destroy$),
                 )
-                .subscribe(event =>
-                    metrika?.hit(event.urlAfterRedirects, {referer: event.url}),
-                );
+                .subscribe(event => {
+                    metrika?.hit(event.urlAfterRedirects, {referer: event.url});
+                });
         } catch {
             console.error('You forgot to import MetrikaModule!');
         }

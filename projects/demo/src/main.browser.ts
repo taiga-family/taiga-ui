@@ -9,7 +9,7 @@ if (environment.production) {
     enableProdMode();
 }
 
-const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppBrowserModule);
+const bootstrap = async () => platformBrowserDynamic().bootstrapModule(AppBrowserModule);
 
 if (environment.hmr) {
     if ((module as any)['hot']) {

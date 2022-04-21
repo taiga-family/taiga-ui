@@ -40,12 +40,12 @@ export const DEFAULT_TABS = [
 const TITLE_PREFIX = 'Taiga UI: ';
 
 export const HIGHLIGHT_OPTIONS_VALUE = {
-    coreLibraryLoader: () => import('highlight.js/lib/core'),
-    lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+    coreLibraryLoader: async () => import('highlight.js/lib/core'),
+    lineNumbersLoader: async () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
     languages: {
-        typescript: () => import('highlight.js/lib/languages/typescript'),
-        less: () => import('highlight.js/lib/languages/less'),
-        xml: () => import('highlight.js/lib/languages/xml'),
+        typescript: async () => import('highlight.js/lib/languages/typescript'),
+        less: async () => import('highlight.js/lib/languages/less'),
+        xml: async () => import('highlight.js/lib/languages/xml'),
     },
 };
 

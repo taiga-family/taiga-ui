@@ -22,7 +22,7 @@ export const ROUTES = [
     },
     {
         path: 'browser-support',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../info/browsers/browsers.module').then(m => m.BrowsersModule),
         data: {
             title: 'Browser support',
@@ -30,7 +30,7 @@ export const ROUTES = [
     },
     {
         path: 'changelog',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../info/changelog/changelog.module').then(m => m.ChangelogModule),
         data: {
             title: 'Changelog',
@@ -38,14 +38,14 @@ export const ROUTES = [
     },
     {
         path: 'tui-doc',
-        loadChildren: () => import('../info/doc/doc.module').then(m => m.DocModule),
+        loadChildren: async () => import('../info/doc/doc.module').then(m => m.DocModule),
         data: {
             title: 'Documentation engine',
         },
     },
     {
         path: 'related',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../info/related/related.module').then(m => m.RelatedModule),
         data: {
             title: 'Friendly libraries',
@@ -53,7 +53,7 @@ export const ROUTES = [
     },
     {
         path: 'testing/disable-animation',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../info/testing/disable-animation/disable-animation.module').then(
                 m => m.DisableAnimationModule,
             ),
@@ -63,7 +63,7 @@ export const ROUTES = [
     },
     {
         path: 'testing/screenshot-bot',
-        loadChildren: () =>
+        loadChildren: async () =>
             import(
                 '../info/testing/screenshot-github-bot/screenshot-github-bot.module'
             ).then(m => m.ScreenshotGithubBotModule),
@@ -74,7 +74,7 @@ export const ROUTES = [
     // Customization
     {
         path: 'i18n',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/i18n/i18n.module').then(m => m.I18nModule),
         data: {
             title: 'I18n',
@@ -82,7 +82,7 @@ export const ROUTES = [
     },
     {
         path: 'variables',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/variables/variables.module').then(
                 m => m.VariablesModule,
             ),
@@ -92,7 +92,7 @@ export const ROUTES = [
     },
     {
         path: 'wrapper',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/wrapper/wrapper.module').then(m => m.WrapperModule),
         data: {
             title: 'Wrapper',
@@ -100,7 +100,7 @@ export const ROUTES = [
     },
     {
         path: 'dialogs',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/dialogs/dialogs.module').then(m => m.DialogsModule),
         data: {
             title: 'Dialogs',
@@ -108,7 +108,7 @@ export const ROUTES = [
     },
     {
         path: 'portals',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/portals/portals.module').then(m => m.PortalsModule),
         data: {
             title: 'Portals',
@@ -116,7 +116,7 @@ export const ROUTES = [
     },
     {
         path: 'icon-set',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../customization/icon-set/icon-set.module').then(
                 m => m.IconSetModule,
             ),
@@ -127,7 +127,7 @@ export const ROUTES = [
     // COMPONENTS
     {
         path: 'components/accordion',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/accordion/accordion.module').then(
                 m => m.ExampleTuiAccordionModule,
             ),
@@ -137,7 +137,7 @@ export const ROUTES = [
     },
     {
         path: 'components/action',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/action/action.module').then(
                 m => m.ExampleTuiActionModule,
             ),
@@ -147,7 +147,7 @@ export const ROUTES = [
     },
     {
         path: 'components/avatar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/avatar/avatar.module').then(
                 m => m.ExampleTuiAvatarModule,
             ),
@@ -157,7 +157,7 @@ export const ROUTES = [
     },
     {
         path: 'components/badge',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/badge/badge.module').then(m => m.ExampleTuiBadgeModule),
         data: {
             title: 'Badge',
@@ -165,7 +165,7 @@ export const ROUTES = [
     },
     {
         path: 'components/badged-content',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/badged-content/badged-content.module').then(
                 m => m.ExampleTuiBadgedContentModule,
             ),
@@ -175,7 +175,7 @@ export const ROUTES = [
     },
     {
         path: 'navigation/breadcrumbs',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/breadcrumbs/breadcrumbs.module').then(
                 m => m.ExampleTuiBreadcrumbsModule,
             ),
@@ -185,7 +185,7 @@ export const ROUTES = [
     },
     {
         path: 'components/button',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/button/button.module').then(
                 m => m.ExampleTuiButtonModule,
             ),
@@ -195,7 +195,7 @@ export const ROUTES = [
     },
     {
         path: 'components/calendar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/calendar/calendar.module').then(
                 m => m.ExampleTuiCalendarModule,
             ),
@@ -205,7 +205,7 @@ export const ROUTES = [
     },
     {
         path: 'components/carousel',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/carousel/carousel.module').then(
                 m => m.ExampleTuiCarouselModule,
             ),
@@ -215,7 +215,7 @@ export const ROUTES = [
     },
     {
         path: 'components/card',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/card/card.module').then(m => m.ExampleTuiCardModule),
         data: {
             title: 'Card',
@@ -223,7 +223,7 @@ export const ROUTES = [
     },
     {
         path: 'components/checkbox',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/checkbox/checkbox.module').then(
                 m => m.ExampleTuiCheckboxModule,
             ),
@@ -233,7 +233,7 @@ export const ROUTES = [
     },
     {
         path: 'components/checkbox-block',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/checkbox-block/checkbox-block.module').then(
                 m => m.ExampleTuiCheckboxBlockModule,
             ),
@@ -243,7 +243,7 @@ export const ROUTES = [
     },
     {
         path: 'components/checkbox-labeled',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/checkbox-labeled/checkbox-labeled.module').then(
                 m => m.ExampleTuiCheckboxLabeledModule,
             ),
@@ -253,7 +253,7 @@ export const ROUTES = [
     },
     {
         path: 'components/color-picker',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/color-picker/color-picker.module').then(
                 m => m.ExampleTuiColorPickerModule,
             ),
@@ -263,7 +263,7 @@ export const ROUTES = [
     },
     {
         path: 'components/primitive-checkbox',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/primitive-checkbox/primitive-checkbox.module').then(
                 m => m.ExampleTuiPrimitiveCheckboxModule,
             ),
@@ -273,7 +273,7 @@ export const ROUTES = [
     },
     {
         path: 'components/combo-box',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/combo-box/combo-box.module').then(
                 m => m.ExampleTuiComboBoxModule,
             ),
@@ -283,7 +283,7 @@ export const ROUTES = [
     },
     {
         path: 'components/data-list',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/data-list/data-list.module').then(
                 m => m.ExampleTuiDataListModule,
             ),
@@ -293,7 +293,7 @@ export const ROUTES = [
     },
     {
         path: 'components/dialog',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/dialog/dialog.module').then(
                 m => m.ExampleTuiDialogModule,
             ),
@@ -303,7 +303,7 @@ export const ROUTES = [
     },
     {
         path: 'components/error',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/error/error.module').then(m => m.ExampleTuiErrorModule),
         data: {
             title: 'Error',
@@ -311,7 +311,7 @@ export const ROUTES = [
     },
     {
         path: 'components/expand',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/expand/expand.module').then(
                 m => m.ExampleTuiExpandModule,
             ),
@@ -321,7 +321,7 @@ export const ROUTES = [
     },
     {
         path: 'components/field-error',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/field-error/field-error.module').then(
                 m => m.ExampleTuiFieldErrorModule,
             ),
@@ -331,7 +331,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/field-error',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/field-error/field-error.module').then(
                 m => m.ExampleTuiFieldErrorModule,
             ),
@@ -341,7 +341,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-files',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-files/input-files.module').then(
                 m => m.ExampleTuiFilesModule,
             ),
@@ -351,7 +351,7 @@ export const ROUTES = [
     },
     {
         path: 'components/group',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/group/group.module').then(m => m.ExampleTuiGroupModule),
         data: {
             path: 'tui-group',
@@ -360,7 +360,7 @@ export const ROUTES = [
     },
     {
         path: 'components/hosted-dropdown',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/hosted-dropdown/hosted-dropdown.module').then(
                 m => m.ExampleTuiHostedDropdownModule,
             ),
@@ -370,7 +370,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-inline',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-inline/input-inline.module').then(
                 m => m.ExampleTuiInputInlineModule,
             ),
@@ -380,7 +380,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input/input.module').then(m => m.ExampleTuiInputModule),
         data: {
             title: 'Input',
@@ -388,7 +388,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-date',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-date/input-date.module').then(
                 m => m.ExampleTuiInputDateModule,
             ),
@@ -398,7 +398,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-card',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-card/input-card.module').then(
                 m => m.ExampleTuiInputCardModule,
             ),
@@ -408,7 +408,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-card-grouped',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-card-grouped/input-card-grouped.module').then(
                 m => m.ExampleTuiInputCardGroupedModule,
             ),
@@ -418,7 +418,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-copy',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-copy/input-copy.module').then(
                 m => m.ExampleTuiInputCopyModule,
             ),
@@ -428,7 +428,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-count',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-count/input-count.module').then(
                 m => m.ExampleTuiInputCountModule,
             ),
@@ -438,7 +438,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-date-time',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-date-time/input-date-time.module').then(
                 m => m.ExampleTuiInputDateTimeModule,
             ),
@@ -448,7 +448,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-file',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-file/input-file.module').then(
                 m => m.ExampleTuiInputFileModule,
             ),
@@ -458,7 +458,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-month',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-month/input-month.module').then(
                 m => m.ExampleInputMonthModule,
             ),
@@ -468,7 +468,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-month-range',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-month-range/input-month-range.module').then(
                 m => m.ExampleTuiInputMonthRangeModule,
             ),
@@ -478,7 +478,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-number',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-number/input-number.module').then(
                 m => m.ExampleTuiInputNumberModule,
             ),
@@ -488,7 +488,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-password',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-password/input-password.module').then(
                 m => m.ExampleTuiInputPasswordModule,
             ),
@@ -498,7 +498,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-phone',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-phone/input-phone.module').then(
                 m => m.ExampleTuiInputPhoneModule,
             ),
@@ -508,7 +508,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-range',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-range/input-range.module').then(
                 m => m.ExampleTuiInputRangeModule,
             ),
@@ -518,7 +518,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-date-range',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-date-range/input-date-range.module').then(
                 m => m.ExampleTuiInputDateRangeModule,
             ),
@@ -528,7 +528,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-slider',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-slider/input-slider.module').then(
                 m => m.ExampleTuiInputSliderModule,
             ),
@@ -538,7 +538,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-tag',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-tag/input-tag.module').then(
                 m => m.ExampleTuiInputTagModule,
             ),
@@ -548,7 +548,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-time',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/input-time/input-time.module').then(
                 m => m.ExampleTuiInputTimeModule,
             ),
@@ -558,7 +558,7 @@ export const ROUTES = [
     },
     {
         path: 'components/input-phone-international',
-        loadChildren: () =>
+        loadChildren: async () =>
             import(
                 '../components/input-phone-international/input-phone-international.module'
             ).then(m => m.ExampleTuiInputPhoneInternationalModule),
@@ -568,7 +568,7 @@ export const ROUTES = [
     },
     {
         path: 'components/island',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/island/island.module').then(
                 m => m.ExampleTuiIslandModule,
             ),
@@ -578,7 +578,7 @@ export const ROUTES = [
     },
     {
         path: 'components/label',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/label/label.module').then(m => m.ExampleTuiLabelModule),
         data: {
             title: 'Label',
@@ -586,7 +586,7 @@ export const ROUTES = [
     },
     {
         path: 'components/line-clamp',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/line-clamp/line-clamp.module').then(
                 m => m.ExampleTuiLineClampModule,
             ),
@@ -596,7 +596,7 @@ export const ROUTES = [
     },
     {
         path: 'components/link',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/link/link.module').then(m => m.ExampleTuiLinkModule),
         data: {
             title: 'Link',
@@ -604,7 +604,7 @@ export const ROUTES = [
     },
     {
         path: 'components/loader',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/loader/loader.module').then(
                 m => m.ExampleTuiLoaderModule,
             ),
@@ -614,7 +614,7 @@ export const ROUTES = [
     },
     {
         path: 'components/marker-icon',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/marker-icon/marker-icon.module').then(
                 m => m.ExampleTuiMarkerIconModule,
             ),
@@ -625,7 +625,7 @@ export const ROUTES = [
     },
     {
         path: 'mobile-themes',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/mobile-themes/mobile-themes.module').then(
                 m => m.ExampleTuiMobileThemesModule,
             ),
@@ -635,7 +635,7 @@ export const ROUTES = [
     },
     {
         path: 'components/notification',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/notification/notification.module').then(
                 m => m.ExampleTuiNotificationModule,
             ),
@@ -645,7 +645,7 @@ export const ROUTES = [
     },
     {
         path: 'components/mobile-dialog',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/mobile-dialog/mobile-dialog.module').then(
                 m => m.ExampleTuiMobileDialogModule,
             ),
@@ -655,7 +655,7 @@ export const ROUTES = [
     },
     {
         path: 'components/mobile-calendar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/mobile-calendar/mobile-calendar.module').then(
                 m => m.ExampleTuiMobileCalendarModule,
             ),
@@ -665,7 +665,7 @@ export const ROUTES = [
     },
     {
         path: 'components/pull-to-refresh',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/pull-to-refresh/pull-to-refresh.module').then(
                 m => m.ExampleTuiPullToRefreshModule,
             ),
@@ -675,7 +675,7 @@ export const ROUTES = [
     },
     {
         path: 'components/money',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/money/money.module').then(m => m.ExampleTuiMoneyModule),
         data: {
             title: 'Money',
@@ -683,7 +683,7 @@ export const ROUTES = [
     },
     {
         path: 'components/calendar-month',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/calendar-month/calendar-month.module').then(
                 m => m.ExampleTuiCalendarMonthModule,
             ),
@@ -693,7 +693,7 @@ export const ROUTES = [
     },
     {
         path: 'components/multi-select',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/multi-select/multi-select.module').then(
                 m => m.ExampleTuiMultiSelectModule,
             ),
@@ -703,7 +703,7 @@ export const ROUTES = [
     },
     {
         path: 'navigation/pagination',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/pagination/pagination.module').then(
                 m => m.ExampleTuiPaginationModule,
             ),
@@ -713,7 +713,7 @@ export const ROUTES = [
     },
     {
         path: 'components/radio',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/radio/radio.module').then(m => m.ExampleTuiRadioModule),
         data: {
             title: 'Radio',
@@ -721,7 +721,7 @@ export const ROUTES = [
     },
     {
         path: 'components/radio-block',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/radio-block/radio-block.module').then(
                 m => m.ExampleTuiRadioBlockModule,
             ),
@@ -731,7 +731,7 @@ export const ROUTES = [
     },
     {
         path: 'components/radio-labeled',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/radio-labeled/radio-labeled.module').then(
                 m => m.ExampleTuiRadioLabeledModule,
             ),
@@ -741,7 +741,7 @@ export const ROUTES = [
     },
     {
         path: 'components/radio-list',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/radio-list/radio-list.module').then(
                 m => m.ExampleTuiRadioListModule,
             ),
@@ -751,7 +751,7 @@ export const ROUTES = [
     },
     {
         path: 'components/rating',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/rating/rating.module').then(
                 m => m.ExampleTuiRatingModule,
             ),
@@ -761,7 +761,7 @@ export const ROUTES = [
     },
     {
         path: 'components/range',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/range/range.module').then(m => m.ExampleTuiRangeModule),
         data: {
             title: 'range',
@@ -769,7 +769,7 @@ export const ROUTES = [
     },
     {
         path: 'components/calendar-range',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/calendar-range/calendar-range.module').then(
                 m => m.ExampleTuiCalendarRangeModule,
             ),
@@ -779,7 +779,7 @@ export const ROUTES = [
     },
     {
         path: 'components/select',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/select/select.module').then(
                 m => m.ExampleTuiSelectModule,
             ),
@@ -789,7 +789,7 @@ export const ROUTES = [
     },
     {
         path: 'components/scrollbar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/scrollbar/scrollbar.module').then(
                 m => m.ExampleTuiScrollbarModule,
             ),
@@ -799,7 +799,7 @@ export const ROUTES = [
     },
     {
         path: 'components/sheet',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/sheet/sheet.module').then(m => m.ExampleTuiSheetModule),
         data: {
             title: 'Sheet',
@@ -807,7 +807,7 @@ export const ROUTES = [
     },
     {
         path: 'components/slider',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/slider/slider.module').then(
                 m => m.ExampleTuiSliderModule,
             ),
@@ -817,7 +817,7 @@ export const ROUTES = [
     },
     {
         path: 'components/slider-deprecated',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/slider-old/slider-old.module').then(
                 m => m.ExampleTuiSliderOldModule,
             ),
@@ -827,7 +827,7 @@ export const ROUTES = [
     },
     {
         path: 'navigation/stepper',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/stepper/stepper.module').then(
                 m => m.ExampleTuiStepperModule,
             ),
@@ -837,7 +837,7 @@ export const ROUTES = [
     },
     {
         path: 'components/preview',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/preview/preview.module').then(
                 m => m.ExampleTuiPreviewModule,
             ),
@@ -847,7 +847,7 @@ export const ROUTES = [
     },
     {
         path: 'components/svg',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/svg/svg.module').then(m => m.ExampleTuiSvgModule),
         data: {
             title: 'Svg',
@@ -855,7 +855,7 @@ export const ROUTES = [
     },
     {
         path: 'navigation/tabs',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/tabs/tabs.module').then(m => m.ExampleTuiTabsModule),
         data: {
             title: 'Tabs',
@@ -863,7 +863,7 @@ export const ROUTES = [
     },
     {
         path: 'components/tag',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/tag/tag.module').then(m => m.ExampleTuiTagModule),
         data: {
             title: 'Tag',
@@ -871,7 +871,7 @@ export const ROUTES = [
     },
     {
         path: 'components/theme-night',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/theme-night/theme-night.module').then(
                 m => m.ExampleTuiThemeNightModule,
             ),
@@ -881,7 +881,7 @@ export const ROUTES = [
     },
     {
         path: 'components/text-area',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/text-area/text-area.module').then(
                 m => m.ExampleTuiTextAreaModule,
             ),
@@ -891,7 +891,7 @@ export const ROUTES = [
     },
     {
         path: 'components/primitive-textfield',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/primitive-textfield/primitive-textfield.module').then(
                 m => m.ExampleTuiPrimitiveTextfieldModule,
             ),
@@ -901,7 +901,7 @@ export const ROUTES = [
     },
     {
         path: 'components/pdf-viewer',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/pdf-viewer/pdf-viewer.module').then(
                 m => m.ExampleTuiPdfViewerModule,
             ),
@@ -911,7 +911,7 @@ export const ROUTES = [
     },
     {
         path: 'components/progress-bar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/progress-bar/progress-bar.module').then(
                 m => m.ExampleTuiProgressBarModule,
             ),
@@ -921,7 +921,7 @@ export const ROUTES = [
     },
     {
         path: 'components/progress-circle',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/progress-circle/progress-circle.module').then(
                 m => m.ExampleTuiProgressCircleModule,
             ),
@@ -931,7 +931,7 @@ export const ROUTES = [
     },
     {
         path: 'components/progress-segmented',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/progress-segmented/progress-segmented.module').then(
                 m => m.ExampleTuiProgressSegmentedModule,
             ),
@@ -941,7 +941,7 @@ export const ROUTES = [
     },
     {
         path: 'components/theme-switcher',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/theme-switcher/theme-switcher.module').then(
                 m => m.ExampleTuiThemeSwitcherModule,
             ),
@@ -951,7 +951,7 @@ export const ROUTES = [
     },
     {
         path: 'components/toggle',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/toggle/toggle.module').then(
                 m => m.ExampleTuiToggleModule,
             ),
@@ -961,7 +961,7 @@ export const ROUTES = [
     },
     {
         path: 'components/tooltip',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/tooltip/tooltip.module').then(
                 m => m.ExampleTuiTooltipModule,
             ),
@@ -971,7 +971,7 @@ export const ROUTES = [
     },
     {
         path: 'components/tree',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/tree/tree.module').then(m => m.ExampleTuiTreeModule),
         data: {
             title: 'Tree',
@@ -979,7 +979,7 @@ export const ROUTES = [
     },
     {
         path: 'components/toolbar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/toolbar/toolbar.module').then(
                 m => m.ExampleTuiToolbarModule,
             ),
@@ -989,7 +989,7 @@ export const ROUTES = [
     },
     {
         path: 'components/editor',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/editor/editor.module').then(
                 m => m.ExampleTuiEditorModule,
             ),
@@ -999,7 +999,7 @@ export const ROUTES = [
     },
     {
         path: 'components/editor-new',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/editor-new/editor-new.module').then(
                 m => m.ExampleTuiEditorNewModule,
             ),
@@ -1009,7 +1009,7 @@ export const ROUTES = [
     },
     {
         path: 'components/filter',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../components/filter/filter.module').then(
                 m => m.ExampleTuiFilterModule,
             ),
@@ -1020,7 +1020,7 @@ export const ROUTES = [
     // CHARTS
     {
         path: 'components/arc-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/arc-chart/arc-chart.module').then(
                 m => m.ExampleTuiArcChartModule,
             ),
@@ -1030,7 +1030,7 @@ export const ROUTES = [
     },
     {
         path: 'components/axes',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/axes/axes.module').then(m => m.ExampleTuiAxesModule),
         data: {
             title: 'Axes',
@@ -1038,7 +1038,7 @@ export const ROUTES = [
     },
     {
         path: 'components/bar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/bar/bar.module').then(m => m.ExampleTuiBarModule),
         data: {
             title: 'Bar',
@@ -1046,7 +1046,7 @@ export const ROUTES = [
     },
     {
         path: 'components/bar-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/bar-chart/bar-chart.module').then(
                 m => m.ExampleTuiBarChartModule,
             ),
@@ -1056,7 +1056,7 @@ export const ROUTES = [
     },
     {
         path: 'components/bar-set',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/bar-set/bar-set.module').then(
                 m => m.ExampleTuiBarSetModule,
             ),
@@ -1066,7 +1066,7 @@ export const ROUTES = [
     },
     {
         path: 'components/legend-item',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/legend-item/legend-item.module').then(
                 m => m.ExampleTuiLegendItemModule,
             ),
@@ -1076,7 +1076,7 @@ export const ROUTES = [
     },
     {
         path: 'components/line-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/line-chart/line-chart.module').then(
                 m => m.ExampleTuiLineChartModule,
             ),
@@ -1086,7 +1086,7 @@ export const ROUTES = [
     },
     {
         path: 'components/line-days-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/line-days-chart/line-days-chart.module').then(
                 m => m.ExampleTuiLineDaysChartModule,
             ),
@@ -1096,7 +1096,7 @@ export const ROUTES = [
     },
     {
         path: 'components/pie-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/pie-chart/pie-chart.module').then(
                 m => m.ExampleTuiPieChartModule,
             ),
@@ -1106,7 +1106,7 @@ export const ROUTES = [
     },
     {
         path: 'components/ring-chart',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../charts/ring-chart/ring-chart.module').then(
                 m => m.ExampleTuiRingChartModule,
             ),
@@ -1117,7 +1117,7 @@ export const ROUTES = [
     // STYLES
     {
         path: 'colors',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/colors/colors.module').then(m => m.ColorsModule),
         data: {
             title: 'Colors',
@@ -1125,21 +1125,23 @@ export const ROUTES = [
     },
     {
         path: 'form',
-        loadChildren: () => import('../markup/form/form.module').then(m => m.FormModule),
+        loadChildren: async () =>
+            import('../markup/form/form.module').then(m => m.FormModule),
         data: {
             title: 'Form',
         },
     },
     {
         path: 'grid',
-        loadChildren: () => import('../markup/grid/grid.module').then(m => m.GridModule),
+        loadChildren: async () =>
+            import('../markup/grid/grid.module').then(m => m.GridModule),
         data: {
             title: 'Grid',
         },
     },
     {
         path: 'icons',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/icons/icons.module').then(m => m.IconsModule),
         data: {
             title: 'Icons',
@@ -1147,7 +1149,7 @@ export const ROUTES = [
     },
     {
         path: 'lists',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/lists/lists.module').then(m => m.ListsModule),
         data: {
             title: 'Lists',
@@ -1155,7 +1157,7 @@ export const ROUTES = [
     },
     {
         path: 'shadows',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/shadows/shadows.module').then(m => m.ShadowsModule),
         data: {
             title: 'Shadows',
@@ -1163,7 +1165,7 @@ export const ROUTES = [
     },
     {
         path: 'skeleton',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/skeleton/skeleton.module').then(m => m.SkeletonModule),
         data: {
             title: 'Skeleton',
@@ -1171,7 +1173,7 @@ export const ROUTES = [
     },
     {
         path: 'spaces',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/spaces/spaces.module').then(m => m.SpacesModule),
         data: {
             title: 'Spaces',
@@ -1179,7 +1181,7 @@ export const ROUTES = [
     },
     {
         path: 'tables',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/tables/tables.module').then(m => m.TablesModule),
         data: {
             title: 'Tables',
@@ -1187,7 +1189,7 @@ export const ROUTES = [
     },
     {
         path: 'typography',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../markup/typography/typography.module').then(
                 m => m.TypographyModule,
             ),
@@ -1198,7 +1200,7 @@ export const ROUTES = [
     // DIRECTIVES
     {
         path: 'directives/active-zone',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/active-zone/active-zone.module').then(
                 m => m.ExampleTuiActiveZoneModule,
             ),
@@ -1208,7 +1210,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/copy-processor',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/copy-processor/copy-processor.module').then(
                 m => m.ExampleTuiCopyProcessorModule,
             ),
@@ -1218,7 +1220,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/dropdown',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/dropdown/dropdown.module').then(
                 m => m.ExampleTuiDropdownModule,
             ),
@@ -1228,7 +1230,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/dropdown-context',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/dropdown-context/dropdown-context.module').then(
                 m => m.ExampleTuiDropdownContextModule,
             ),
@@ -1238,7 +1240,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/dropdown-selection',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/dropdown-selection/dropdown-selection.module').then(
                 m => m.ExampleTuiDropdownSelectionModule,
             ),
@@ -1248,7 +1250,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/described-by',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/described-by/described-by.module').then(
                 m => m.ExampleTuiDescribedByModule,
             ),
@@ -1258,7 +1260,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/elastic-sticky',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/elastic-sticky/elastic-sticky.module').then(
                 m => m.ExampleTuiElasticStickyModule,
             ),
@@ -1268,7 +1270,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/element',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/element/element.module').then(
                 m => m.ExampleTuiElementModule,
             ),
@@ -1278,7 +1280,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/for',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/for/for.module').then(m => m.ExampleTuiForModule),
         data: {
             title: 'For',
@@ -1286,7 +1288,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/highlight',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/highlight/highlight.module').then(
                 m => m.ExampleTuiHighlightModule,
             ),
@@ -1296,7 +1298,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/hint',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/hint/hint.module').then(m => m.ExampleTuiHintModule),
         data: {
             title: 'Hint',
@@ -1304,7 +1306,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/lazy-loading',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/lazy-loading/lazy-loading.module').then(
                 m => m.ExampleTuiLazyLoadingModule,
             ),
@@ -1314,7 +1316,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/manual-hint',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/manual-hint/manual-hint.module').then(
                 m => m.ExampleTuiManualHintModule,
             ),
@@ -1324,7 +1326,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/pointer-hint',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/pointer-hint/pointer-hint.module').then(
                 m => m.ExampleTuiPointerHintModule,
             ),
@@ -1334,7 +1336,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/pan',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/pan/pan.module').then(m => m.ExampleTuiPanModule),
         data: {
             title: 'Pan',
@@ -1342,7 +1344,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/swipe',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/swipe/swipe.module').then(m => m.ExampleTuiSwipeModule),
         data: {
             title: 'Swipe',
@@ -1350,7 +1352,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/let',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/let/let.module').then(m => m.ExampleTuiLetModule),
         data: {
             title: 'Let',
@@ -1358,7 +1360,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/zoom',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/zoom/zoom.module').then(m => m.ExampleTuiZoomModule),
         data: {
             title: 'Zoom',
@@ -1366,7 +1368,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/overscroll',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/overscroll/overscroll.module').then(
                 m => m.ExampleTuiOverscrollModule,
             ),
@@ -1376,7 +1378,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/present',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/present/present.module').then(
                 m => m.ExampleTuiPresentModule,
             ),
@@ -1386,7 +1388,7 @@ export const ROUTES = [
     },
     {
         path: 'components/resizable-column',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../tables/resizable-column/resizable-column.module').then(
                 m => m.ExampleTuiResizableColumnModule,
             ),
@@ -1396,7 +1398,7 @@ export const ROUTES = [
     },
     {
         path: 'components/reorder',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../tables/reorder/reorder.module').then(
                 m => m.ExampleTuiReorderModule,
             ),
@@ -1406,7 +1408,7 @@ export const ROUTES = [
     },
     {
         path: 'components/table',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../tables/table/table.module').then(m => m.ExampleTuiTableModule),
         data: {
             title: 'Table',
@@ -1414,7 +1416,7 @@ export const ROUTES = [
     },
     {
         path: 'components/table-pagination',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../tables/table-pagination/table-pagination.module').then(
                 m => m.ExampleTuiTablePaginationModule,
             ),
@@ -1424,7 +1426,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/ripple',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/ripple/ripple.module').then(
                 m => m.ExampleTuiRippleModule,
             ),
@@ -1434,7 +1436,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/sidebar',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/sidebar/sidebar.module').then(
                 m => m.ExampleTuiSidebarModule,
             ),
@@ -1444,7 +1446,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/touchable',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/touchable/touchable.module').then(
                 m => m.ExampleTuiTouchableModule,
             ),
@@ -1454,7 +1456,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/validator',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/validator/validator.module').then(
                 m => m.ExampleTuiValidatorModule,
             ),
@@ -1464,7 +1466,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/media',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/media/media.module').then(m => m.ExampleTuiMediaModule),
         data: {
             title: 'Media',
@@ -1472,7 +1474,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/mode',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/mode/mode.module').then(m => m.ExampleTuiModeModule),
         data: {
             title: 'Mode',
@@ -1480,7 +1482,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/auto-focus',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/auto-focus/auto-focus.module').then(
                 m => m.ExampleTuiAutoFocusModule,
             ),
@@ -1491,7 +1493,7 @@ export const ROUTES = [
     // PIPES
     {
         path: 'pipes/currency',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/currency/currency.module').then(
                 m => m.ExampleTuiCurrencyModule,
             ),
@@ -1501,7 +1503,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/filter',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/filter/filter.module').then(m => m.ExampleTuiFilterModule),
         data: {
             title: 'Filter',
@@ -1509,7 +1511,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/filter-by-input',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/filter-by-input/filter-by-input.module').then(
                 m => m.ExampleTuiFilterByInputModule,
             ),
@@ -1519,7 +1521,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/format-number',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/format-number/format-number.module').then(
                 m => m.ExampleTuiFormatNumberModule,
             ),
@@ -1529,7 +1531,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/format-phone',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/format-phone/format-phone.module').then(
                 m => m.ExampleTuiFormatPhoneModule,
             ),
@@ -1539,7 +1541,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/mapper',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/mapper/mapper.module').then(m => m.ExampleTuiMapperModule),
         data: {
             title: 'Mapper',
@@ -1547,7 +1549,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/stringify',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/stringify/stringify.module').then(
                 m => m.ExampleTuiStringifyModule,
             ),
@@ -1557,7 +1559,7 @@ export const ROUTES = [
     },
     {
         path: 'pipes/stringify-content',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../pipes/stringify-content/stringify-content.module').then(
                 m => m.ExampleTuiStringifyContentModule,
             ),
@@ -1568,7 +1570,7 @@ export const ROUTES = [
     // SERVICES
     {
         path: 'services/notifications-service',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../services/notifications/notifications.module').then(
                 m => m.ExampleTuiNotificationsModule,
             ),
@@ -1578,7 +1580,7 @@ export const ROUTES = [
     },
     {
         path: 'services/destroy-service',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../services/destroy/destroy.module').then(
                 m => m.ExampleTuiDestroyModule,
             ),
@@ -1588,7 +1590,7 @@ export const ROUTES = [
     },
     {
         path: 'services/scroll-service',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../services/scroll/scroll.module').then(
                 m => m.ExampleTuiScrollModule,
             ),
@@ -1598,7 +1600,7 @@ export const ROUTES = [
     },
     {
         path: 'services/svg-service',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../services/svg/svg.module').then(m => m.ExampleTuiSvgModule),
         data: {
             title: 'SvgService',
@@ -1606,7 +1608,7 @@ export const ROUTES = [
     },
     {
         path: 'services/table-bars-service',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../services/table-bar/table-bar.module').then(
                 m => m.ExampleTuiTableBarModule,
             ),
@@ -1616,7 +1618,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/dropdown-controller',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/dropdown-controller/dropdown-controller.module').then(
                 m => m.ExampleTuiDropdownControllerModule,
             ),
@@ -1626,7 +1628,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/hint-controller',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/hint-controller/hint-controller.module').then(
                 m => m.ExampleTuiHintControllerModule,
             ),
@@ -1636,7 +1638,7 @@ export const ROUTES = [
     },
     {
         path: 'directives/textfield-controller',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../directives/textfield-controller/textfield-controller.module').then(
                 m => m.ExampleTuiTextfieldControllerModule,
             ),
@@ -1647,7 +1649,7 @@ export const ROUTES = [
     // DECORATORS
     {
         path: 'decorators/default-prop',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../decorators/default-prop/default-prop.module').then(
                 m => m.ExampleTuiDefaultPropModule,
             ),
@@ -1657,7 +1659,7 @@ export const ROUTES = [
     },
     {
         path: 'decorators/pure',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../decorators/pure/pure.module').then(m => m.ExampleTuiPureModule),
         data: {
             title: 'Pure',
@@ -1665,7 +1667,7 @@ export const ROUTES = [
     },
     {
         path: 'decorators/required-setter',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../decorators/required-setter/required-setter.module').then(
                 m => m.ExampleTuiRequiredSetterModule,
             ),
@@ -1677,7 +1679,7 @@ export const ROUTES = [
     // UTILS
     {
         path: 'utils/math',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/math/math.module').then(m => m.ExampleMathModule),
         data: {
             title: 'Math',
@@ -1685,7 +1687,7 @@ export const ROUTES = [
     },
     {
         path: 'utils/format',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/format/format.module').then(m => m.ExampleFormatModule),
         data: {
             title: 'Format',
@@ -1693,7 +1695,7 @@ export const ROUTES = [
     },
     {
         path: 'utils/dom',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/dom/dom.module').then(m => m.ExampleDomModule),
         data: {
             title: 'DOM',
@@ -1701,7 +1703,7 @@ export const ROUTES = [
     },
     {
         path: 'utils/browser',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/browser/browser.module').then(m => m.ExampleBrowserModule),
         data: {
             title: 'Browser',
@@ -1709,7 +1711,7 @@ export const ROUTES = [
     },
     {
         path: 'utils/miscellaneous',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/miscellaneous/miscellaneous.module').then(
                 m => m.ExampleMiscellaneousModule,
             ),
@@ -1719,7 +1721,7 @@ export const ROUTES = [
     },
     {
         path: 'utils/tokens',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../utils/tokens/tokens.module').then(m => m.ExampleTokensModule),
         data: {
             title: 'Tokens',
@@ -1729,7 +1731,7 @@ export const ROUTES = [
     // ANIMATIONS
     {
         path: 'animations',
-        loadChildren: () =>
+        loadChildren: async () =>
             import('../animations/animations.module').then(
                 m => m.ExampleAnimationsModule,
             ),
