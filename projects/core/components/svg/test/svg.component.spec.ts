@@ -21,7 +21,7 @@ const BAD_URL = 'http://bad-url.ru/qwe.svg#test';
 const STATIC_REQUEST_MOCK = {
     request: (url: string) => {
         if (url === BAD_URL) {
-            return throwError('error');
+            return throwError(() => new Error('error'));
         }
 
         return of(STATIC_REQUEST_MOCK_RESULT);

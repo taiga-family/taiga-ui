@@ -33,6 +33,6 @@ export const HarnessWith = <T>(hostSelector: string) =>
 
         // @ts-ignore
         static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
-            throw 'Hummus';
+            throw new Error('Hummus');
         }
     };

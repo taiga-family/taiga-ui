@@ -1,13 +1,12 @@
+import {dragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk';
 import {skip, take} from 'rxjs/operators';
-
-import {dragAndDropFrom, TuiDragStage} from '../drag-and-drop-from';
 
 describe('dragAndDropFrom', () => {
     it('throws an error if there is no document', done => {
         const element: any = {ownerDocument: undefined};
 
         try {
-            dragAndDropFrom(element);
+            dragAndDropFrom(element).subscribe();
         } catch (e) {
             expect(e).toBeTruthy();
             done();
