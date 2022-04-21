@@ -6,6 +6,7 @@
     <table
         tuiTable
         size="l"
+        class="table"
         [columns]="columns"
     >
         <thead tuiThead>
@@ -86,11 +87,13 @@
                     tuiTd
                     [colSpan]="item.price > 1000 ? 2 : 0"
                 >
-                    <tui-input
+                    <tui-text-area
+                        class="textarea"
+                        [expandable]="true"
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, pythons)"
-                    ></tui-input>
+                    ></tui-text-area>
                 </th>
                 <ng-container *tuiCell="'price'">
                     <th
@@ -146,7 +149,7 @@
                 <td
                     *tuiCell="'total'"
                     tuiTd
-                    class="number"
+                    class="number text"
                 >
                     {{getTotal(item) | tuiFormatNumber}}
                 </td>
@@ -166,11 +169,13 @@
                     *tuiCell="'name'"
                     tuiTd
                 >
-                    <tui-input
+                    <tui-text-area
+                        class="textarea"
+                        [expandable]="true"
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, starwars)"
-                    ></tui-input>
+                    ></tui-text-area>
                 </th>
                 <th
                     *tuiCell="'price'"
@@ -223,7 +228,7 @@
                 <td
                     *tuiCell="'total'"
                     tuiTd
-                    class="number"
+                    class="number text"
                 >
                     {{getTotal(item) | tuiFormatNumber}}
                 </td>
