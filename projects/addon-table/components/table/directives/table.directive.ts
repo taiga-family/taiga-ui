@@ -59,12 +59,12 @@ export class TuiTableDirective<T> extends TuiController {
     @tuiDefaultProp()
     sorter: TuiComparator<T> = () => 0;
 
-    updateSorter(sorter: TuiComparator<T>) {
+    updateSorter(sorter: TuiComparator<T> | null) {
         if (this.sorter === sorter) {
             this.direction = this.direction === 1 ? -1 : 1;
             this.directionChange.emit(this.direction);
         } else {
-            this.sorter = sorter;
+            this.sorter = sorter || (() => 0);
             this.sorterChange.emit(this.sorter);
             this.direction = 1;
             this.directionChange.emit(1);

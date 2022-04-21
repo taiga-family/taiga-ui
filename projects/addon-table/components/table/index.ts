@@ -2,6 +2,8 @@ export * from './directives/cell.directive';
 export * from './directives/head.directive';
 export * from './directives/resized.directive';
 export * from './directives/row.directive';
+export * from './directives/sort-by.directive';
+export * from './directives/sortable.directive';
 export * from './directives/table.directive';
 export * from './directives/thead.directive';
 export * from './pipes/table-sort.pipe';

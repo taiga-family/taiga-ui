@@ -28,7 +28,6 @@ import {
     AbstractTuiNullableControl,
     isNativeFocused,
     isNativeFocusedIn,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     TuiCreditCardAutofillName,
@@ -338,9 +337,7 @@ export class TuiInputCardGroupedComponent
         this.open = false;
         this.expireInert = !!expire;
 
-        if (element) {
-            setNativeFocused(element);
-        }
+        element?.focus();
     }
 
     onCardChange(card: string) {
@@ -355,7 +352,7 @@ export class TuiInputCardGroupedComponent
         this.updateBin(bin);
 
         if (this.cardValidator(this.card) && !this.expire && this.inputExpire) {
-            setNativeFocused(this.inputExpire.nativeElement, true, true);
+            this.focusExpire();
         }
     }
 
@@ -377,8 +374,8 @@ export class TuiInputCardGroupedComponent
         this.inputExpire.nativeElement.value = expire;
         this.updateProperty(expire, 'expire');
 
-        if (expire.length === 5 && this.inputCVC) {
-            setNativeFocused(this.inputCVC.nativeElement);
+        if (expire.length === 5) {
+            this.focusCVC();
         }
     }
 
@@ -410,10 +407,7 @@ export class TuiInputCardGroupedComponent
 
     clear() {
         this.updateValue(null);
-
-        if (this.inputCard) {
-            setNativeFocused(this.inputCard.nativeElement);
-        }
+        this.focusCard();
     }
 
     toggle() {
@@ -426,6 +420,19 @@ export class TuiInputCardGroupedComponent
         super.writeValue(value);
         this.updateBin(bin);
         this.expireInert = !!this.expire && this.cardPrefilled;
+    }
+
+    /** Public API for manual focus management */
+    focusCard() {
+        this.inputCard?.nativeElement.focus();
+    }
+
+    focusExpire() {
+        this.inputExpire?.nativeElement.focus({preventScroll: true});
+    }
+
+    focusCVC() {
+        this.inputCVC?.nativeElement.focus();
     }
 
     private get cardFocused(): boolean {
@@ -472,8 +479,6 @@ export class TuiInputCardGroupedComponent
             (this.expireFocusable && this.inputExpire?.nativeElement) ||
             this.inputCVC?.nativeElement;
 
-        if (element) {
-            setNativeFocused(element);
-        }
+        element?.focus();
     }
 }
