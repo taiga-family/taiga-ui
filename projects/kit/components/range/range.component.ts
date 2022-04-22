@@ -17,19 +17,30 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    clamp,
     EMPTY_QUERY,
     isNativeFocusedIn,
     nonNegativeFiniteAssertion,
+    quantize,
+    round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAssert,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {AbstractTuiSlider} from '@taiga-ui/kit/abstract';
+import {TuiSizeS} from '@taiga-ui/core';
+import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {
+    tuiCheckKeyStepsHaveMinMaxPercents,
+    tuiKeyStepValueToPercentage,
+    tuiPercentageToKeyStepValue,
+} from '@taiga-ui/kit/utils';
 import {Observable} from 'rxjs';
 
 /**
@@ -59,6 +70,10 @@ export class TuiNewRangeDirective {}
         },
     ],
 })
+/**
+ * `AbstractTuiSlider` includes all legacy code (it can be deleted in v3.0)
+ * TODO replace `extends AbstractTuiSlider<[number, number]>` by `extends AbstractTuiControl<[number, number]> implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor`
+ */
 export class TuiRangeComponent
     extends AbstractTuiSlider<[number, number]>
     implements TuiFocusableElementAccessor
@@ -76,7 +91,7 @@ export class TuiRangeComponent
 
     /**
      * TODO: think about replacing this props by `step` (to be like native slider).
-     * It can be easy after refactor of keySteps.
+     * It can be done after removing backward compatibility code inside {@link computePureKeySteps} in v3.0
      */
     @Input()
     @tuiDefaultProp()
@@ -84,11 +99,24 @@ export class TuiRangeComponent
 
     /**
      * TODO: think about replacing this props by `step` (to be like native slider).
-     * It can be easy after refactor of keySteps.
+     * It can be done after removing backward compatibility code inside {@link computePureKeySteps} in v3.0
      * */
     @Input()
     @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
     quantum = 0;
+
+    @Input()
+    @HostBinding('attr.data-size')
+    @tuiDefaultProp()
+    size: TuiSizeS = 'm';
+
+    @Input()
+    @tuiDefaultProp()
+    segments = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    keySteps: TuiKeySteps | null = null;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
@@ -127,18 +155,26 @@ export class TuiRangeComponent
         return isNativeFocusedIn(this.elementRef.nativeElement);
     }
 
+    get fractionStep(): number {
+        if (this.steps) {
+            return 1 / this.steps;
+        }
+
+        return this.quantum ? this.quantum / (this.max - this.min) : SLIDER_KEYBOARD_STEP;
+    }
+
     get computedKeySteps(): TuiKeySteps {
         return this.computePureKeySteps(this.keySteps, this.min, this.max);
     }
 
     @HostBinding('style.--left.%')
     get left(): number {
-        return 100 * this.getFractionFromValue(this.value[0]);
+        return this.getPercentageFromValue(this.value[0]);
     }
 
     @HostBinding('style.--right.%')
     get right(): number {
-        return 100 - 100 * this.getFractionFromValue(this.value[1]);
+        return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
     @HostListener('focusin', ['true'])
@@ -163,8 +199,8 @@ export class TuiRangeComponent
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
         const previousValue = isRightThumb ? this.value[1] : this.value[0];
         /** @bad TODO think about a solution without twice conversion */
-        const previousFraction = this.getFractionFromValue(previousValue);
-        const newFractionValue = previousFraction + coefficient * this.computedStep;
+        const previousFraction = this.getPercentageFromValue(previousValue) / 100;
+        const newFractionValue = previousFraction + coefficient * this.fractionStep;
 
         this.processValue(this.getValueFromFraction(newFractionValue), isRightThumb);
 
@@ -185,6 +221,33 @@ export class TuiRangeComponent
         this.lastActiveThumb = right ? 'right' : 'left';
     }
 
+    fractionGuard(fraction: number): number {
+        return clamp(quantize(fraction, this.fractionStep), 0, 1);
+    }
+
+    getValueFromFraction(fraction: number): number {
+        const percentage = this.fractionGuard(fraction) * 100;
+
+        return tuiPercentageToKeyStepValue(percentage, this.computedKeySteps);
+    }
+
+    getPercentageFromValue(value: number): number {
+        return tuiKeyStepValueToPercentage(value, this.computedKeySteps);
+    }
+
+    protected valueGuard(value: number): number {
+        return clamp(
+            this.quantum
+                ? round(
+                      Math.round(value / this.quantum) * this.quantum,
+                      TUI_FLOATING_PRECISION,
+                  )
+                : value,
+            this.min,
+            this.max,
+        );
+    }
+
     protected getFallbackValue(): [number, number] {
         return [0, 0];
     }
@@ -195,6 +258,19 @@ export class TuiRangeComponent
         min: number,
         max: number,
     ): TuiKeySteps {
+        if (keySteps && tuiCheckKeyStepsHaveMinMaxPercents(keySteps)) {
+            return keySteps;
+        }
+
+        // TODO replace all function by `return keySteps || [[0, min], [100, max]]` in v3.0
+        tuiAssert.assert(
+            !keySteps,
+            '\n' +
+                'Input property [keySteps] should contain min and max percents.\n' +
+                'We have taken [min] and [max] properties of your component for now (but it will not work in v3.0).\n' +
+                'See example how properly use [keySteps]: https://taiga-ui.dev/components/range#key-steps',
+        );
+
         return [[0, min], ...(keySteps || []), [100, max]];
     }
 

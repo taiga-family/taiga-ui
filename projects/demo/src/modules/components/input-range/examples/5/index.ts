@@ -21,8 +21,10 @@ export class TuiInputRangeExample5 {
 
     readonly keySteps: TuiKeySteps = [
         // [percent, value]
+        [0, this.min],
         [25, 10_000],
         [50, 100_000],
         [75, 500_000],
+        [100, this.max],
     ];
 }

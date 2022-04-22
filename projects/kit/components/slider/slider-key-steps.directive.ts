@@ -15,13 +15,16 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     isNativeFocused,
-    round,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {
+    tuiCheckKeyStepsHaveMinMaxPercents,
+    tuiKeyStepValueToPercentage,
+    tuiPercentageToKeyStepValue,
+} from '@taiga-ui/kit/utils';
 import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from './slider.component';
@@ -40,7 +43,10 @@ export class TuiSliderKeyStepsDirective
     implements TuiFocusableElementAccessor
 {
     @Input()
-    @tuiDefaultProp(checkHasMinMaxPercents, 'Should contain min and max values')
+    @tuiDefaultProp(
+        tuiCheckKeyStepsHaveMinMaxPercents,
+        'Should contain min and max values',
+    )
     keySteps: TuiKeySteps = [];
 
     @Output()
@@ -65,13 +71,7 @@ export class TuiSliderKeyStepsDirective
     }
 
     get controlValue(): number {
-        const {valuePercentage} = this.slider;
-        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
-            this.keySteps,
-            ([keyStepPercentage, _]) => valuePercentage <= keyStepPercentage,
-        );
-
-        return transformToControlValue(valuePercentage, lowerStep, upperStep);
+        return tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps);
     }
 
     constructor(
@@ -96,31 +96,19 @@ export class TuiSliderKeyStepsDirective
             return;
         }
 
-        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
-            this.keySteps,
-            ([_, keyStepValue]) => controlValue <= keyStepValue,
-        );
-
-        this.slider.value = this.transformToNativeValue(
-            controlValue,
-            lowerStep,
-            upperStep,
-        );
+        this.slider.value = this.transformToNativeValue(controlValue);
     }
 
     protected getFallbackValue(): number {
         return 0;
     }
 
-    private transformToNativeValue(
-        controlValue: number,
-        [upperStepPercent, upperStepValue]: [number, number],
-        [lowerStepPercent, lowerStepValue]: [number, number],
-    ): number {
+    private transformToNativeValue(controlValue: number): number {
         const {min, max} = this.slider;
-        const ratio = (controlValue - lowerStepValue) / (upperStepValue - lowerStepValue);
-        const newValuePercentage =
-            (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;
+        const newValuePercentage = tuiKeyStepValueToPercentage(
+            controlValue,
+            this.keySteps,
+        );
 
         return (newValuePercentage * (max - min)) / 100 + min;
     }
@@ -135,38 +123,7 @@ export class TuiSliderKeyStepsDirective
 export class TuiSliderTickLabelPipe implements PipeTransform {
     transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
         const percentage = (100 / totalSegments) * tickIndex;
-        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
-            keySteps,
-            ([keyStepPercentage, _]) => percentage <= keyStepPercentage,
-        );
 
-        return transformToControlValue(percentage, upperStep, lowerStep);
+        return tuiPercentageToKeyStepValue(percentage, keySteps);
     }
-}
-
-function checkHasMinMaxPercents(steps: TuiKeySteps): boolean {
-    return !steps.length || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100);
-}
-
-function findKeyStepsBoundariesByFn(
-    keySteps: TuiKeySteps,
-    fn: ([keyStepPercent, keyStepValue]: [number, number]) => boolean,
-): [[number, number], [number, number]] {
-    const keyStepUpperIndex = keySteps.findIndex((ketStep, i) => i && fn(ketStep));
-    const lowerStep = keySteps[keyStepUpperIndex - 1];
-    const upperStep = keySteps[keyStepUpperIndex];
-
-    return [lowerStep, upperStep];
-}
-
-function transformToControlValue(
-    valuePercentage: number,
-    [upperStepPercent, upperStepValue]: [number, number],
-    [lowerStepPercent, lowerStepValue]: [number, number],
-): number {
-    const ratio =
-        (valuePercentage - lowerStepPercent) / (upperStepPercent - lowerStepPercent);
-    const controlValue = (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
-
-    return round(controlValue, TUI_FLOATING_PRECISION);
 }
