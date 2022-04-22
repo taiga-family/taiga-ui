@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.42.0",
+    "version": "2.42.1",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
@@ -48,9 +48,9 @@
         "postbuild:demo:next": "DEMO_PATH='./dist/demo/browser/next' node scripts/postbuild-demo.js",
         "*** Release ***": "",
         "release": "standard-version -a --no-verify",
-        "release:patch": "npm run exec ./scripts/release.ts patch",
-        "release:minor": "npm run exec ./scripts/release.ts minor",
-        "release:major": "npm run exec ./scripts/release.ts major",
+        "release:patch": "npm run exec -- ./scripts/release.ts --release-as patch",
+        "release:minor": "npm run exec -- ./scripts/release.ts --release-as minor",
+        "release:major": "npm run exec -- ./scripts/release.ts --release-as major",
         "*** Cypress ***": "",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
         "cypress:open:demo:next": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",

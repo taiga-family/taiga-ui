@@ -1,7 +1,22 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.42.1](https://github.com/tinkoff/taiga-ui/compare/v2.42.0...v2.42.1) (2022-04-22)
+
+
+### Features
+
+* **addon-editor:** improved ux for links ([a0b30be](https://github.com/tinkoff/taiga-ui/commit/a0b30be9b3143b1568d53089ad941f3639a39588))
+* **addon-editor:** select link before edit for improve ux ([8d93597](https://github.com/tinkoff/taiga-ui/commit/8d935973c4e2c3a48bac50b0cf525a050bdad151))
+* **addon-table:** `SortBy` add directive for server-side sorting by column name ([#1659](https://github.com/tinkoff/taiga-ui/issues/1659)) ([7e32b44](https://github.com/tinkoff/taiga-ui/commit/7e32b440a3ee5493dd5bc9fd561d8334fe5c58e4))
+* **cdk:** new util `tuiCoerceBooleanProperty` ([383269e](https://github.com/tinkoff/taiga-ui/commit/383269eb791f33b68e1a868dc5d6d80138893227))
+
+
+### Bug Fixes
+
+* **kit:** dropdown content jumping and rerendering multiselect after adding new tags ([#1657](https://github.com/tinkoff/taiga-ui/issues/1657)) ([d4aabe6](https://github.com/tinkoff/taiga-ui/commit/d4aabe6bb166bee022344a45eed7a7406f8b9919)), closes [#1534](https://github.com/tinkoff/taiga-ui/issues/1534)
+* **kit:** incorrect alignment of icons in multiselect ([470f187](https://github.com/tinkoff/taiga-ui/commit/470f187d48536ca5473054aef49356f20cb94c95)), closes [#1636](https://github.com/tinkoff/taiga-ui/issues/1636)
 
 ## [2.42.0](https://github.com/tinkoff/taiga-ui/compare/v2.41.1...v2.42.0) (2022-04-19)
 
