@@ -43,7 +43,7 @@ function bump(versionArray, mode) {
     return versionArray.join('.');
 }
 
-function checkChangelog() {
+async function checkChangelog() {
     let response;
 
     const readline = createInterface({
