@@ -2,7 +2,7 @@ import {ElementRef, Optional, Provider} from '@angular/core';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
-import {EMPTY, Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 export function modeFactory(
@@ -14,7 +14,7 @@ export function modeFactory(
               startWith(null),
               map(() => mode.mode),
           )
-        : EMPTY;
+        : of(null);
 
     nativeElement['$.data-mode.attr'] = mode$;
 
