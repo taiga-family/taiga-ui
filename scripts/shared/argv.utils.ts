@@ -1,8 +1,8 @@
 import process from 'process';
 
-export function getValueByFlag(flag: string, fallback: string): string {
+export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     return process.argv.includes(flag)
-        ? process.argv[process.argv.indexOf(flag) + 1] ?? fallback
+        ? (process.argv[process.argv.indexOf(flag) + 1] as T) ?? fallback
         : fallback;
 }
 
