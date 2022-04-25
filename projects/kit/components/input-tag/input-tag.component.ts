@@ -185,9 +185,7 @@ export class TuiInputTagComponent
         this.initScrollerSubscription(scroller);
     }
 
-    status$: Observable<TuiStatusT> = this.mode$.pipe(
-        map(mode => (mode ? 'default' : this.tagStatus)),
-    );
+    status$: Observable<TuiStatusT> = this.mode$.pipe(map(() => this.status));
 
     open = false;
 
@@ -295,12 +293,8 @@ export class TuiInputTagComponent
         return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
     }
 
-    /**
-     * @deprecated: use `status$ | async` instead
-     * TODO: remove in v3.0
-     */
     get status(): TuiStatusT {
-        return this.modeDirective && this.modeDirective.mode ? 'default' : this.tagStatus;
+        return this.modeDirective?.mode ? 'default' : this.tagStatus;
     }
 
     get canOpen(): boolean {
