@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootModule} from '@taiga-ui/core';
+import {TuiKeySteps} from '@taiga-ui/kit';
 import {createKeyboardEvent, PageObject} from '@taiga-ui/testing';
 
 import {TuiRangeComponent} from '../range.component';
@@ -18,6 +19,7 @@ describe('Range', () => {
                     [steps]="steps"
                     [segments]="segments"
                     [quantum]="quantum"
+                    [keySteps]="keySteps"
                 ></tui-range>
             </tui-root>
         `,
@@ -35,6 +37,7 @@ describe('Range', () => {
         segments = 10;
         steps = 10;
         quantum = 0;
+        keySteps: TuiKeySteps | null = null;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -224,6 +227,73 @@ describe('Range', () => {
 
                 expect(testComponent.testValue.value[0]).toBe(3);
             });
+        });
+
+        describe('keySteps', () => {
+            beforeEach(() => {
+                testComponent.keySteps = [
+                    [0, 0],
+                    [25, 10_000],
+                    [50, 100_000],
+                    [75, 500_000],
+                    [100, 1_000_000],
+                ];
+                testComponent.testValue.setValue([0, 0]);
+                fixture.detectChanges();
+            });
+
+            const testsContexts = [
+                {
+                    value: [0, 10_000],
+                    leftOffset: '0%',
+                    rightOffset: '75%',
+                },
+                {
+                    value: [10_000, 10_000],
+                    leftOffset: '25%',
+                    rightOffset: '75%',
+                },
+                {
+                    value: [10_000, 100_000],
+                    leftOffset: '25%',
+                    rightOffset: '50%',
+                },
+                {
+                    value: [100_000, 100_000],
+                    leftOffset: '50%',
+                    rightOffset: '50%',
+                },
+                {
+                    value: [100_000, 500_000],
+                    leftOffset: '50%',
+                    rightOffset: '25%',
+                },
+                {
+                    value: [500_000, 500_000],
+                    leftOffset: '75%',
+                    rightOffset: '25%',
+                },
+                {
+                    value: [500_000, 750_000],
+                    leftOffset: '75%',
+                    rightOffset: '12.5%',
+                },
+                {
+                    value: [750_000, 1_000_000],
+                    leftOffset: '87.5%',
+                    rightOffset: '0%',
+                },
+            ] as const;
+
+            for (const {value, leftOffset, rightOffset} of testsContexts) {
+                it(`${JSON.stringify(value)}`, () => {
+                    testComponent.testValue.setValue(value);
+                    fixture.detectChanges();
+
+                    expect(getFilledRangeOffeset().left).toBe(leftOffset);
+                    expect(getFilledRangeOffeset().right).toBe(rightOffset);
+                });
+            }
         });
     });
 });
