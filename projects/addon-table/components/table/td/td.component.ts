@@ -8,7 +8,7 @@ import {NgControl} from '@angular/forms';
 
 @Component({
     selector: 'th[tuiTd], td[tuiTd]',
-    templateUrl: './td.template.html',
+    template: '<ng-content></ng-content>',
     styleUrls: ['./td.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
