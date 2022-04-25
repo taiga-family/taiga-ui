@@ -259,6 +259,10 @@ export class TuiInputRangeComponent
         }
     }
 
+    blurRange(): void {
+        this.rangeRef?.nativeFocusableElement?.blur();
+    }
+
     onActiveThumbChange(activeThumb: 'right' | 'left'): void {
         this.lastActiveSide = activeThumb;
     }

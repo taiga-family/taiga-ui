@@ -2,12 +2,13 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChild,
+    ContentChildren,
     forwardRef,
     HostListener,
     Inject,
     Input,
     Optional,
+    QueryList,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -15,6 +16,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     AbstractTuiNullableControl,
+    EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_IOS,
     tuiDefaultProp,
@@ -90,8 +92,8 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     postfix = '';
 
-    @ContentChild(PolymorpheusOutletComponent)
-    readonly polymorpheusValueContent?: unknown;
+    @ContentChildren(PolymorpheusOutletComponent)
+    readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     constructor(
         @Optional()
