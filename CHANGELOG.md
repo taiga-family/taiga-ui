@@ -1,7 +1,26 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.43.0](https://github.com/tinkoff/taiga-ui/compare/v2.42.0...v2.43.0) (2022-04-25)
+
+
+### Features
+
+* **addon-editor:** improved ux for links ([a0b30be](https://github.com/tinkoff/taiga-ui/commit/a0b30be9b3143b1568d53089ad941f3639a39588))
+* **addon-editor:** select link before edit for improve ux ([8d93597](https://github.com/tinkoff/taiga-ui/commit/8d935973c4e2c3a48bac50b0cf525a050bdad151))
+* **addon-table:** `SortBy` add directive for server-side sorting by column name ([#1659](https://github.com/tinkoff/taiga-ui/issues/1659)) ([7e32b44](https://github.com/tinkoff/taiga-ui/commit/7e32b440a3ee5493dd5bc9fd561d8334fe5c58e4))
+* **addon-table:** `TextArea` add support for interactive tables ([#1666](https://github.com/tinkoff/taiga-ui/issues/1666)) ([3180600](https://github.com/tinkoff/taiga-ui/commit/3180600865916c3fa01651289a69536c025c7ca4))
+* **cdk:** new util `tuiCoerceBooleanProperty` ([383269e](https://github.com/tinkoff/taiga-ui/commit/383269eb791f33b68e1a868dc5d6d80138893227))
+* enable strict mode for compile templates ([4029f2f](https://github.com/tinkoff/taiga-ui/commit/4029f2fa711564e43db0db51db55291efdbfebc6))
+
+
+### Bug Fixes
+
+* **kit:** `InputTag` fix tag status when `Mode` is missing ([#1669](https://github.com/tinkoff/taiga-ui/issues/1669)) ([dfcf799](https://github.com/tinkoff/taiga-ui/commit/dfcf799cc0f2a533865b452b20ce316468ed29f6))
+* **kit:** `Slider` readonly state (mobile chrome bug) ([#1638](https://github.com/tinkoff/taiga-ui/issues/1638)) ([0669a71](https://github.com/tinkoff/taiga-ui/commit/0669a716e902fda12cb14f5a42da23c836f01c1f))
+* **kit:** dropdown content jumping and rerendering multiselect after adding new tags ([#1657](https://github.com/tinkoff/taiga-ui/issues/1657)) ([d4aabe6](https://github.com/tinkoff/taiga-ui/commit/d4aabe6bb166bee022344a45eed7a7406f8b9919)), closes [#1534](https://github.com/tinkoff/taiga-ui/issues/1534)
+* **kit:** incorrect alignment of icons in multiselect ([470f187](https://github.com/tinkoff/taiga-ui/commit/470f187d48536ca5473054aef49356f20cb94c95)), closes [#1636](https://github.com/tinkoff/taiga-ui/issues/1636)
 
 ## [2.42.0](https://github.com/tinkoff/taiga-ui/compare/v2.41.1...v2.42.0) (2022-04-19)
 
