@@ -5,11 +5,10 @@ import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLineClampComponent} from './line-clamp.component';
-import {TuiLineClampDirective} from './line-clamp.directive';
 
 @NgModule({
     imports: [CommonModule, PolymorpheusModule, TuiHintModule, TuiResizeModule],
-    declarations: [TuiLineClampComponent, TuiLineClampDirective],
+    declarations: [TuiLineClampComponent],
     exports: [TuiLineClampComponent],
 })
 export class TuiLineClampModule {}

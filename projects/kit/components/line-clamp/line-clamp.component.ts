@@ -84,10 +84,6 @@ export class TuiLineClampComponent implements AfterViewInit {
         return this.overflown ? this.content : '';
     }
 
-    get oneLine(): boolean {
-        return this.linesLimit$.value === 1;
-    }
-
     @HostBinding('style.maxHeight.px')
     get maxHeight(): number | null {
         return this.initialized ? this.lineHeight * this.linesLimit$.value : null;
