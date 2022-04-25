@@ -6,7 +6,7 @@ function tuiFindKeyStepsBoundariesByFn(
     keySteps: TuiKeySteps,
     fn: ([keyStepPercent, keyStepValue]: [number, number]) => boolean,
 ): [[number, number], [number, number]] {
-    const keyStepUpperIndex = keySteps.findIndex((ketStep, i) => i && fn(ketStep));
+    const keyStepUpperIndex = keySteps.findIndex((keyStep, i) => i && fn(keyStep));
     const lowerStep = keySteps[keyStepUpperIndex - 1];
     const upperStep = keySteps[keyStepUpperIndex];
 
