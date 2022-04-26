@@ -11,10 +11,19 @@ export const tuiAssert = {
 
 type PossibleNode = Node | Element | EventTarget | null;
 
+interface DefaultView {
+    Element: typeof Node;
+    HTMLElement: typeof Node;
+    HTMLDocument: typeof Node;
+}
+
 export function tuiAssertIsHTMLElement(node?: PossibleNode): asserts node is HTMLElement {
     const document = (node as Node)?.ownerDocument;
-    const defaultView = document?.defaultView as unknown as {HTMLElement: typeof Node};
-    const isHTMLElement = node instanceof defaultView?.HTMLElement;
+    const defaultView = document?.defaultView as unknown as DefaultView;
+    const isHTMLElement =
+        node instanceof defaultView?.HTMLElement ||
+        node instanceof defaultView?.Element ||
+        node instanceof defaultView?.HTMLDocument;
 
-    tuiAssert.assert(isHTMLElement, 'Node is not an HTMLElement');
+    tuiAssert.assert(isHTMLElement, 'Node is not an Element');
 }
