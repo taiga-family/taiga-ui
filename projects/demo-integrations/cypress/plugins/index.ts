@@ -1,9 +1,13 @@
-const {addMatchImageSnapshotPlugin} = require('cypress-image-snapshot/plugin');
-const {viewportWidth, viewportHeight} = require('./../../cypress.json');
+import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/src/cypress/snapshot/plugin';
 
-module.exports = (on, config) => {
-    addMatchImageSnapshotPlugin(on, config);
-    on('before:browser:launch', (browser, launchOptions) => {
+import {viewportHeight, viewportWidth} from './../../cypress.json';
+
+export default (on: any, config: any): void => {
+    tuiAddSnapshotPlugin(on, config, {
+        newSnapshotMark: '==[new]==',
+        newSnapshotMarkEnabled: config.baseUrl === 'https://taiga-ui.dev/next/',
+    });
+    on('before:browser:launch', (browser: any, launchOptions: any) => {
         if (browser.name === 'chrome') {
             launchOptions.args.push(`--window-size=${viewportWidth},${viewportHeight}`);
             launchOptions.args.push('--force-device-scale-factor=2');

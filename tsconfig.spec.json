@@ -1,4 +1,4 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["**/schematics/**/*", "projects/demo-integrations"]
+    "exclude": ["**/schematics/**/*", "projects/demo-integrations", "projects/testing/src/cypress"]
 }

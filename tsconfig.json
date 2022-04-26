@@ -30,7 +30,7 @@
         "target": "es2015",
         "module": "esnext",
         "lib": ["es2018", "dom"],
-        "typeRoots": ["node_modules/@types"],
+        "typeRoots": ["node_modules/@types", "node_modules/cypress/types"],
         "skipLibCheck": true,
         "downlevelIteration": true,
         "skipDefaultLibCheck": true,
