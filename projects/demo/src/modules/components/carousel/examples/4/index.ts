@@ -25,12 +25,12 @@ export class TuiCarouselExample4 {
         }
     }
 
-    onClick() {
+    onClick(): void {
         this.index = 0;
         this.open = true;
     }
 
-    navigate(delta: number) {
+    navigate(delta: number): void {
         this.index = (this.index + delta) % 3;
     }
 }

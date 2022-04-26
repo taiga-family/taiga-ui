@@ -58,7 +58,7 @@ export class TuiTableExample2 {
         },
     ];
 
-    remove(item: User) {
+    remove(item: User): void {
         this.users = this.users.filter(user => user !== item);
     }
 }

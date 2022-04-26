@@ -20,7 +20,7 @@ export class TuiTableCreateComponent {
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
     ) {}
 
-    addTable({rows, cols}: {rows: number; cols: number}) {
+    addTable({rows, cols}: {rows: number; cols: number}): void {
         this.editor.enter(); // @note: clear previous styles
 
         const prevLine = this.editor.state.selection.anchor;

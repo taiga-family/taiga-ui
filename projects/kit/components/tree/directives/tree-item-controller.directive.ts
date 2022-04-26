@@ -26,7 +26,7 @@ export class TuiTreeItemControllerDirective implements TuiTreeController {
         return this.map.get(item) ?? this.fallback;
     }
 
-    toggle(item: TuiTreeItemComponent) {
+    toggle(item: TuiTreeItemComponent): void {
         this.map.set(item, !this.isExpanded(item));
     }
 }

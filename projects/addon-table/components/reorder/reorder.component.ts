@@ -37,7 +37,7 @@ export class TuiReorderComponent<T> {
     ) {}
 
     @HostListener('focusout.stop')
-    noop() {}
+    noop(): void {}
 
     isEnabled(item: T): boolean {
         return this.enabled.includes(item);
@@ -47,7 +47,7 @@ export class TuiReorderComponent<T> {
         return this.isEnabled(item) ? 'tuiIconEyeOpen' : 'tuiIconEyeClosed';
     }
 
-    toggle(toggled: T) {
+    toggle(toggled: T): void {
         const enabled = this.isEnabled(toggled)
             ? this.enabled.filter(item => item !== toggled)
             : this.enabled.concat(toggled);
@@ -55,7 +55,7 @@ export class TuiReorderComponent<T> {
         this.updateEnabled(enabled);
     }
 
-    drop(event: CdkDragDrop<T>) {
+    drop(event: CdkDragDrop<T>): void {
         const items = [...this.items];
 
         moveItemInArray(items, event.previousIndex, event.currentIndex);
@@ -64,7 +64,7 @@ export class TuiReorderComponent<T> {
         this.updateEnabled(items.filter(item => this.enabled.includes(item)));
     }
 
-    private updateEnabled(enabled: readonly T[]) {
+    private updateEnabled(enabled: readonly T[]): void {
         this.enabled = enabled;
         this.enabledChange.emit(enabled);
     }

@@ -98,7 +98,7 @@ export class TuiInputMonthRangeComponent
         return `${from} — ${formattedTo}`;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (value) {
             return;
         }
@@ -107,7 +107,7 @@ export class TuiInputMonthRangeComponent
         this.onOpenChange(true);
     }
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.writeValue(new TuiMonthRange(month, month));
 
@@ -118,15 +118,15 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onActiveZone(focused: boolean) {
+    onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 
         if (focused) {
@@ -138,12 +138,12 @@ export class TuiInputMonthRangeComponent
         }
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }
 
-    private close() {
+    private close(): void {
         this.open = false;
     }
 }

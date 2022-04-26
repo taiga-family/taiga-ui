@@ -67,7 +67,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.initAutoClose();
     }
 
@@ -75,7 +75,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         return this.calculateContext(this.item);
     }
 
-    closeNotification() {
+    closeNotification(): void {
         this.item.$implicit.complete();
     }
 
@@ -103,7 +103,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         };
     }
 
-    private initAutoClose() {
+    private initAutoClose(): void {
         if (!this.autoClose) {
             return;
         }

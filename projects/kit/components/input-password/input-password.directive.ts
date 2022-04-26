@@ -1,4 +1,4 @@
-import {Directive, forwardRef} from '@angular/core';
+import {Directive, DoCheck, forwardRef} from '@angular/core';
 import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPasswordComponent} from './input-password.component';
@@ -12,18 +12,21 @@ import {TuiInputPasswordComponent} from './input-password.component';
         },
     ],
 })
-export class TuiInputPasswordDirective extends TuiAbstractTextfieldHost<TuiInputPasswordComponent> {
+export class TuiInputPasswordDirective
+    extends TuiAbstractTextfieldHost<TuiInputPasswordComponent>
+    implements DoCheck
+{
     input?: HTMLInputElement;
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement) {
+    process(input: HTMLInputElement): void {
         this.input = input;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.input) {
             this.input.type = this.host.isPasswordHidden ? 'password' : 'text';
         }

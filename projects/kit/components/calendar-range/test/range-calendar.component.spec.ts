@@ -60,7 +60,7 @@ describe('rangeCalendarComponent', () => {
 
         max = TUI_LAST_DAY;
 
-        onRangeChange(range: TuiDayRange) {
+        onRangeChange(range: TuiDayRange): void {
             this.control.setValue(range);
         }
     }

@@ -82,7 +82,7 @@ export class TuiDocExampleComponent {
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {}
 
-    copyExampleLink() {
+    copyExampleLink(): void {
         const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
             hashPosition > -1
@@ -99,7 +99,7 @@ export class TuiDocExampleComponent {
             .subscribe();
     }
 
-    edit(files: Record<string, string>) {
+    edit(files: Record<string, string>): void {
         this.loading$.next(true);
         this.codeEditor
             ?.edit(this.componentName, this.id ?? '', files)

@@ -143,7 +143,7 @@ describe('InputCard', () => {
         });
     });
 
-    function testFormat(done: DoneFn, value: string, formatted: string) {
+    function testFormat(done: DoneFn, value: string, formatted: string): void {
         testComponent.control.setValue(value);
         fixture.detectChanges();
 

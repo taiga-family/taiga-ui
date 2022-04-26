@@ -7,7 +7,7 @@ describe('Dialogs + browser back navigation', () => {
     /**
      * Alternative to cy.go('back', {timeout: 0}), which doesn't wait page load event
      */
-    const goBack = () => {
+    const goBack = (): void => {
         cy.window().then(win => win.history.back());
     };
 

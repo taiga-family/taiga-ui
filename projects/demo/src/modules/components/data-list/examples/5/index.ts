@@ -38,7 +38,7 @@ export class TuiDataListExample5 {
         return Number(this.moneyForm.get('moneyValue')?.value) || 0;
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.dateValue = day;
     }
 }

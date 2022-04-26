@@ -45,11 +45,11 @@ export class TuiPreviewPaginationComponent {
 
     @HostListener('document:keydown.arrowRight.prevent', ['1'])
     @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
-    onArrowClick(step: number) {
+    onArrowClick(step: number): void {
         this.updateIndex(clamp(this.index + step, 0, this.length - 1));
     }
 
-    private updateIndex(index: number) {
+    private updateIndex(index: number): void {
         if (this.index === index) {
             return;
         }

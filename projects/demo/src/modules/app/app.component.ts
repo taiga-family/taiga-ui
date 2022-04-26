@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
         private readonly injector: Injector,
     ) {}
 
-    async ngOnInit() {
+    async ngOnInit(): Promise<void> {
         await this.replaceEnvInURI();
         this.enableYandexMetrika();
     }
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
         );
     }
 
-    private async replaceEnvInURI() {
+    private async replaceEnvInURI(): Promise<void> {
         const env = this.localStorage.getItem('env');
 
         if (env) {
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
         }
     }
 
-    private enableYandexMetrika() {
+    private enableYandexMetrika(): void {
         if (!environment.production || this.isCypress) {
             console.info('Yandex.Metrika disabled for non-production mode.');
 

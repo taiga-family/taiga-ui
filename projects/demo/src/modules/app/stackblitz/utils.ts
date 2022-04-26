@@ -12,7 +12,7 @@ export const prepareLess = (content: string): string => {
         .replace(/@import.+taiga-ui-local';/g, '');
 };
 
-export const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') =>
+export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ''): string =>
     `src/app/${stringsPart.join('')}${path}`;
 
 type FileName = string;

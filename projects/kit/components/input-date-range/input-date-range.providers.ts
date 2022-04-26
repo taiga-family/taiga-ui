@@ -12,14 +12,16 @@ import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
+import {Observable} from 'rxjs';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
 
 // TODO: remove in ivy compilation
-export const RANGE_STREAM_FACTORY = (
+export const RANGE_STREAM_FACTORY = <T extends TuiDayRange>(
     control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<TuiDayRange>,
-) => TuiReplayControlValueChangesFactory(control, valueTransformer);
+    valueTransformer: TuiControlValueTransformer<T>,
+): Observable<T | null> | null =>
+    TuiReplayControlValueChangesFactory<T>(control, valueTransformer);
 
 export const TUI_INPUT_DATE_RANGE_PROVIDERS = [
     {

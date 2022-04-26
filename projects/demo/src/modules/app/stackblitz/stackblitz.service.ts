@@ -25,7 +25,11 @@ const APP_COMP_META = {
 export class TuiStackblitzService implements TuiCodeEditor {
     readonly name = 'Stackblitz';
 
-    async edit(component: string, sampleId: string, content: Record<string, string>) {
+    async edit(
+        component: string,
+        sampleId: string,
+        content: Record<string, string>,
+    ): Promise<void> {
         if (!content.HTML || !content.TypeScript) {
             return;
         }
@@ -93,7 +97,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     /**
      * @deprecated use `edit` method instead of `open`
      */
-    open(component: string, sampleId: string, files: Record<string, string>) {
+    open(component: string, sampleId: string, files: Record<string, string>): void {
         this.edit(component, sampleId, files).then(() =>
             console.info('project is opened'),
         );

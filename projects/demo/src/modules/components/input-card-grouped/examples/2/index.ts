@@ -24,12 +24,12 @@ export class TuiInputCardGroupedExample2 {
 
     readonly control = new FormControl(this.items[0]);
 
-    onClick(component: TuiInputCardGroupedComponent) {
+    onClick(component: TuiInputCardGroupedComponent): void {
         this.control.setValue(null);
         this.onEsc(component);
     }
 
-    onEsc(component: TuiInputCardGroupedComponent) {
+    onEsc(component: TuiInputCardGroupedComponent): void {
         component.nativeFocusableElement?.focus();
         component.open = false;
     }

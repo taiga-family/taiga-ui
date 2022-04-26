@@ -150,11 +150,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         );
     }
 
-    onRangeChange(dayRange: TuiDayRange) {
+    onRangeChange(dayRange: TuiDayRange): void {
         this.updateValue(dayRange);
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         const {value} = this;
 
         if (value === null || !value.isSingleDay) {
@@ -166,7 +166,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
-    onItemSelect(item: string | TuiDayRangePeriod) {
+    onItemSelect(item: string | TuiDayRangePeriod): void {
         if (typeof item !== 'string') {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 
@@ -178,7 +178,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
     }
 
-    updateValue(value: TuiDayRange | null) {
+    updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
         this.rangeChange.emit(value);

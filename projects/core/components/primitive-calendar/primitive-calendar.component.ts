@@ -180,19 +180,19 @@ export class TuiPrimitiveCalendarComponent {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    onItemHovered(item: TuiDay | false) {
+    onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
     }
 
-    onItemPressed(item: TuiDay | false) {
+    onItemPressed(item: TuiDay | false): void {
         this.pressedItem = item || null;
     }
 
-    onItemClick(item: TuiDay) {
+    onItemClick(item: TuiDay): void {
         this.dayClick.emit(item);
     }
 
-    private updateHoveredItem(day: TuiDay | null) {
+    private updateHoveredItem(day: TuiDay | null): void {
         if (nullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
         }

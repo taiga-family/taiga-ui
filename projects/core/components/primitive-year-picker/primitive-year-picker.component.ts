@@ -183,23 +183,23 @@ export class TuiPrimitiveYearPickerComponent {
         );
     }
 
-    onItemHovered(hovered: boolean, item: number) {
+    onItemHovered(hovered: boolean, item: number): void {
         this.updateHoveredItem(hovered, item);
     }
 
-    onItemPressed(pressed: boolean, item: number) {
+    onItemPressed(pressed: boolean, item: number): void {
         this.updatePressedItem(pressed, item);
     }
 
-    onItemClick(item: number) {
+    onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
     }
 
-    private updateHoveredItem(hovered: boolean, item: number) {
+    private updateHoveredItem(hovered: boolean, item: number): void {
         this.hoveredItem = hovered ? item : null;
     }
 
-    private updatePressedItem(pressed: boolean, item: number) {
+    private updatePressedItem(pressed: boolean, item: number): void {
         this.pressedItem = pressed ? item : null;
     }
 }

@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
-import {tuiHeightCollapse} from '@taiga-ui/core';
+import {TuiDurationOptions, tuiHeightCollapse} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-height-collapse-example',
@@ -19,10 +19,7 @@ export class TuiHeightCollapseExample {
     isOpen = false;
 
     @tuiPure
-    getAnimation(duration: number) {
-        return {
-            value: '',
-            params: {duration},
-        } as const;
+    getAnimation(duration: number): TuiDurationOptions {
+        return {value: '', params: {duration}};
     }
 }

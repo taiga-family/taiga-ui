@@ -170,7 +170,7 @@ export class TuiInputCountComponent
         return !this.interactive || (isPresent(this.value) && this.value >= this.max);
     }
 
-    onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {
+    onButtonMouseDown(event: MouseEvent, disabled: boolean = false): void {
         if (disabled || !this.nativeFocusableElement || this.isMobile) {
             return;
         }
@@ -179,7 +179,7 @@ export class TuiInputCountComponent
         setNativeFocused(this.nativeFocusableElement);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         if (!focused) {
             this.onBlur();
         }
@@ -187,15 +187,15 @@ export class TuiInputCountComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onValueChange() {
+    onValueChange(): void {
         const capped = this.capValue(this.nativeNumberValue);
 
         if (capped === null || isNaN(capped)) {
@@ -211,7 +211,7 @@ export class TuiInputCountComponent
         this.updateValue(capped);
     }
 
-    decreaseValue() {
+    decreaseValue(): void {
         if (this.readOnly) {
             return;
         }
@@ -221,7 +221,7 @@ export class TuiInputCountComponent
         this.safeUpdateValue(newValue);
     }
 
-    increaseValue() {
+    increaseValue(): void {
         if (this.readOnly) {
             return;
         }
@@ -231,7 +231,7 @@ export class TuiInputCountComponent
         this.safeUpdateValue(newValue);
     }
 
-    onKeydown(event: KeyboardEvent) {
+    onKeydown(event: KeyboardEvent): void {
         switch (event.key) {
             case 'ArrowUp':
             case 'Up':
@@ -271,7 +271,7 @@ export class TuiInputCountComponent
         this.nativeFocusableElement.value = value;
     }
 
-    private safeUpdateValue(newValue: number) {
+    private safeUpdateValue(newValue: number): void {
         const value = clamp(newValue, this.min, this.max);
 
         this.updateValue(value);
@@ -284,7 +284,7 @@ export class TuiInputCountComponent
         return isNaN(capped) || capped < this.min ? null : capped;
     }
 
-    private onBlur() {
+    private onBlur(): void {
         const value = Math.max(this.nativeNumberValue || 0, this.min);
         const formattedValue = this.formatNumber(value);
 

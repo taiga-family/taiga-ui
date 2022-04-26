@@ -105,19 +105,19 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     }
 
     @HostListener('window:resize')
-    onResize() {
+    onResize(): void {
         this.setResizerTextContent();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.createForm();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.setResizerTextContent();
     }
 
-    setResizerTextContent() {
+    setResizerTextContent(): void {
         if (!this.content || !this.resizerText) {
             return;
         }
@@ -132,33 +132,33 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         );
     }
 
-    onDragStart(event: MouseEvent) {
+    onDragStart(event: MouseEvent): void {
         event.preventDefault();
         this.initialX = event.clientX;
         this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
     }
 
-    onDragContinues(event: MouseEvent) {
+    onDragContinues(event: MouseEvent): void {
         const deltaX = this.initialX - event.clientX;
 
         this.resizeContent(deltaX);
         this.setResizerTextContent();
     }
 
-    onDragEnd() {
+    onDragEnd(): void {
         this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
     }
 
-    toggleDetails() {
+    toggleDetails(): void {
         this.expanded = !this.expanded;
     }
 
-    updateOnChange(updateOn: 'change' | 'blur' | 'submit') {
+    updateOnChange(updateOn: 'change' | 'blur' | 'submit'): void {
         this.updateOn = updateOn;
         this.createForm();
     }
 
-    private createForm() {
+    private createForm(): void {
         const {control, updateOn} = this;
 
         if (!control) {
@@ -168,7 +168,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.testForm = new FormGroup({testValue: control}, {updateOn});
     }
 
-    private resizeContent(delta: number) {
+    private resizeContent(delta: number): void {
         if (!this.wrapper) {
             return;
         }

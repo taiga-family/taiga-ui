@@ -73,7 +73,7 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
 
     control = new FormControl(this.items[1]);
 
-    onClick() {
+    onClick(): void {
         this.control.setValue({id: 0, value: 'One'});
     }
 }

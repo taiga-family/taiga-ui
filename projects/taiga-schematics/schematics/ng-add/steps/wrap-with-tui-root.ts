@@ -41,7 +41,11 @@ export function wrapWithTuiRootComponent(options: Schema): Rule {
     };
 }
 
-function addTuiRootComponent(filePath: string, context: SchematicContext, tree: Tree) {
+function addTuiRootComponent(
+    filePath: string,
+    context: SchematicContext,
+    tree: Tree,
+): void {
     const buffer = tree.read(filePath);
 
     if (!buffer) {

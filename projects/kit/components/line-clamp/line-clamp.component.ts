@@ -94,15 +94,15 @@ export class TuiLineClampComponent implements AfterViewInit {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
-    updateView() {
+    updateView(): void {
         this.cd.detectChanges();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.initialized = true;
     }
 
-    private skipInitialTransition() {
+    private skipInitialTransition(): void {
         this.ngZone.runOutsideAngular(() => {
             setTimeout(() => {
                 this.renderer.addClass(this.elementRef.nativeElement, '_initialized');

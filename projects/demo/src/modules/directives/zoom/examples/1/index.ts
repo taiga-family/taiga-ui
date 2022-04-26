@@ -22,7 +22,7 @@ export class TuiZoomExample1 {
 
     readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
 
-    onZoom({delta}: TuiZoom) {
+    onZoom({delta}: TuiZoom): void {
         this.delta$.next(delta);
     }
 }

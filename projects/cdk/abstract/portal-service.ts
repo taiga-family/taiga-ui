@@ -25,7 +25,7 @@ export abstract class AbstractTuiPortalService {
         return this.host;
     }
 
-    attach(host: AbstractTuiPortalHostComponent) {
+    attach(host: AbstractTuiPortalHostComponent): void {
         this.host = host;
     }
 
@@ -33,7 +33,7 @@ export abstract class AbstractTuiPortalService {
         return this.safeHost.addComponentChild(componentFactory, injector);
     }
 
-    remove<C>({hostView}: ComponentRef<C>) {
+    remove<C>({hostView}: ComponentRef<C>): void {
         hostView.destroy();
     }
 
@@ -41,7 +41,7 @@ export abstract class AbstractTuiPortalService {
         return this.safeHost.addTemplateChild(templateRef, context);
     }
 
-    removeTemplate<C>(viewRef: EmbeddedViewRef<C>) {
+    removeTemplate<C>(viewRef: EmbeddedViewRef<C>): void {
         viewRef.destroy();
     }
 }

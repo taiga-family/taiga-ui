@@ -27,5 +27,5 @@ export class TuiStringifyContentExample1 {
         },
     ];
 
-    readonly stringify = ({name, surname}: User) => `${name} ${surname}`;
+    readonly stringify = ({name, surname}: User): string => `${name} ${surname}`;
 }

@@ -105,7 +105,7 @@ export abstract class AbstractTuiInteractive {
     }
 
     /** @deprecated */
-    protected updateHovered(hovered: boolean) {
+    protected updateHovered(hovered: boolean): void {
         if (this.hovered === hovered) {
             return;
         }
@@ -115,7 +115,7 @@ export abstract class AbstractTuiInteractive {
     }
 
     /** @deprecated */
-    protected updatePressed(pressed: boolean) {
+    protected updatePressed(pressed: boolean): void {
         if (this.pressed === pressed) {
             return;
         }
@@ -124,11 +124,11 @@ export abstract class AbstractTuiInteractive {
         this.pressedChange.emit(pressed);
     }
 
-    protected updateFocused(focused: boolean) {
+    protected updateFocused(focused: boolean): void {
         this.focusedChange.emit(focused);
     }
 
-    protected updateFocusVisible(focusVisible: boolean) {
+    protected updateFocusVisible(focusVisible: boolean): void {
         if (this.focusVisible === focusVisible) {
             return;
         }

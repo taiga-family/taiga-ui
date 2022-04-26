@@ -43,7 +43,7 @@ export class TuiAccordionComponent implements AfterContentInit {
         private readonly destroy$: TuiDestroyService,
     ) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         const {accordionItems} = this;
         const rows$ = itemsQueryListObservable(accordionItems);
         const newOpenRow$ = rows$.pipe(

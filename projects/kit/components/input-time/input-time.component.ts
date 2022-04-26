@@ -160,11 +160,11 @@ export class TuiInputTimeComponent
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.open = !!this.items.length;
 
         if (this.control) {
@@ -190,7 +190,7 @@ export class TuiInputTimeComponent
         this.updateValue(this.strict ? this.findNearestTimeFromItems(time) : time);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
         if (
@@ -213,11 +213,11 @@ export class TuiInputTimeComponent
         });
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onArrowUp(event: Event) {
+    onArrowUp(event: Event): void {
         if (this.items.length) {
             return;
         }
@@ -225,7 +225,7 @@ export class TuiInputTimeComponent
         this.processArrow(event, 1);
     }
 
-    onArrowDown(event: Event) {
+    onArrowDown(event: Event): void {
         if (this.items.length) {
             return;
         }
@@ -233,16 +233,16 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
-    onMenuClick(item: TuiTime) {
+    onMenuClick(item: TuiTime): void {
         this.focusInput();
         this.updateValue(item);
     }
 
-    onOpen(open: boolean) {
+    onOpen(open: boolean): void {
         this.open = open;
     }
 
-    writeValue(value: TuiTime | null) {
+    writeValue(value: TuiTime | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
     }
@@ -278,11 +278,11 @@ export class TuiInputTimeComponent
         return this.items.find(item => TUI_STRICT_MATCHER(item, value));
     }
 
-    private close() {
+    private close(): void {
         this.open = false;
     }
 
-    private processArrow(event: Event, shift: -1 | 1) {
+    private processArrow(event: Event, shift: -1 | 1): void {
         const {target} = event;
 
         // TODO: iframe warning
@@ -314,19 +314,19 @@ export class TuiInputTimeComponent
         return {ms: shift};
     }
 
-    private shiftTime(shift: TuiTimeLike) {
+    private shiftTime(shift: TuiTimeLike): void {
         if (this.value === null) {
             return;
         }
 
-        const increasedTime = this.value.shift(shift);
+        const increasedTime: TuiTime = this.value.shift(shift);
 
         // Manual update so we can set caret position properly
         this.nativeValue = increasedTime.toString(this.mode);
         this.updateValue(increasedTime);
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
             this.close();

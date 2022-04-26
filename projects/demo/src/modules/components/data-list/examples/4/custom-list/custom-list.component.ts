@@ -23,11 +23,11 @@ export class CustomListComponent<T> {
 
     readonly filter = TUI_DEFAULT_MATCHER;
 
-    onArrowDown<T>(list: TuiDataListComponent<T>, event: Event) {
+    onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
         list.onFocus(event, true);
     }
 
-    onKeyDown(key: string, element: HTMLElement | null) {
+    onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && isEditingKey(key)) {
             setNativeFocused(element, true, true);
         }

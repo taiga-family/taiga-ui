@@ -99,7 +99,7 @@ export class TuiHintBoxComponent {
      * Calculates wrapper position.
      * Styles are set directly to avoid visual shake of element
      */
-    private calculatePosition() {
+    private calculatePosition(): void {
         if (this.mode !== 'overflow') {
             this.calculateCoordinates();
         } else {
@@ -107,7 +107,7 @@ export class TuiHintBoxComponent {
         }
     }
 
-    private calculateCoordinates() {
+    private calculateCoordinates(): void {
         if (this.isMobile) {
             this.calculateMobileCoordinates();
 
@@ -219,7 +219,7 @@ export class TuiHintBoxComponent {
         tooltip.setAttribute('data-tui-host-direction', direction);
     }
 
-    private calculateMobileCoordinates() {
+    private calculateMobileCoordinates(): void {
         const hostRect = this.hint.getElementClientRect();
         const portalRect = this.hintsHost.clientRect;
         const tooltip = this.elementRef.nativeElement;
@@ -260,7 +260,7 @@ export class TuiHintBoxComponent {
         tooltip.setAttribute('data-tui-host-direction', direction);
     }
 
-    private setOverflowStyles() {
+    private setOverflowStyles(): void {
         const hostRect = this.hint.getElementClientRect();
         const {style} = this.elementRef.nativeElement;
 

@@ -96,7 +96,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         }
     }
 
-    onBinChange(bin: string | null) {
+    onBinChange(bin: string | null): void {
         this.notifications.show(`bin: ${bin}`).subscribe();
     }
 

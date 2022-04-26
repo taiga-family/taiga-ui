@@ -47,7 +47,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
-    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean) {
+    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean): void {
         if (!isDialogClosesOnBack) {
             return;
         }
@@ -69,7 +69,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         {propertyName}: TransitionEvent,
         popupOpened: boolean,
         isDialogClosesOnBack: boolean,
-    ) {
+    ): void {
         if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
             return;
         }

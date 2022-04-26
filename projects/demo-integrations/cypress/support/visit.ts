@@ -33,7 +33,7 @@ const setBeforeLoadOptions = (
     }
 };
 
-export function tuiVisit(path: string, options: TuiVisitOptions = {}) {
+export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     const {
         inIframe = true,
         waitAllIcons = true,

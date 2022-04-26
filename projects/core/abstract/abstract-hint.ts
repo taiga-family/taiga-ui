@@ -26,15 +26,15 @@ export abstract class AbstractTuiHint implements OnDestroy {
 
     abstract getElementClientRect(): ClientRect;
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.hideTooltip();
     }
 
-    protected showTooltip() {
+    protected showTooltip(): void {
         this.hintService.add(this);
     }
 
-    protected hideTooltip() {
+    protected hideTooltip(): void {
         this.hintService.remove(this);
     }
 }

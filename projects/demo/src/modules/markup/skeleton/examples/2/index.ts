@@ -26,11 +26,11 @@ export class TuiSkeletonExample2 {
     skeletonVisible = false;
     lightMode = false;
 
-    showSkelet() {
+    showSkelet(): void {
         this.skeletonVisible = !this.skeletonVisible;
     }
 
-    toggleLight() {
+    toggleLight(): void {
         this.lightMode = !this.lightMode;
     }
 }

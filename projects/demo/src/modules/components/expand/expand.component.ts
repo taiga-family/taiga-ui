@@ -41,7 +41,7 @@ export class ExampleTuiExpandComponent {
         @Inject(DOCUMENT) private readonly documentRef: Document,
     ) {}
 
-    onExpandedChange(expanded: boolean) {
+    onExpandedChange(expanded: boolean): void {
         this.expanded = expanded;
         this.delayed = this.async && expanded;
 

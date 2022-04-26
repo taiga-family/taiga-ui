@@ -44,12 +44,12 @@ export class TuiLazyLoadingDirective {
         }
     }
 
-    private get supported() {
+    private get supported(): boolean {
         return 'loading' in this.elementRef.nativeElement;
     }
 
     @HostListener('load')
-    onLoad() {
+    onLoad(): void {
         this.background = '';
         this.animation = '';
     }

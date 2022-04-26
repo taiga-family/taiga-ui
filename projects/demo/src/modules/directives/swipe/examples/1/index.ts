@@ -14,7 +14,7 @@ export class TuiSwipeExample1 {
     @HostBinding('class')
     swiped = 'default';
 
-    onSwipe(swipe: TuiSwipe) {
+    onSwipe(swipe: TuiSwipe): void {
         this.swiped = swipe.direction;
     }
 }

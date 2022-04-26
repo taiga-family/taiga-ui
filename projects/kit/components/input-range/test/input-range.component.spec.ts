@@ -437,7 +437,7 @@ describe('InputRange', () => {
             .replace('\n ', '');
     }
 
-    function initializeInputsPO() {
+    function initializeInputsPO(): void {
         leftInputWrapper = pageObject.getByAutomationId('tui-input-range__left-input')!;
         rightInputWrapper = pageObject.getByAutomationId('tui-input-range__right-input')!;
 

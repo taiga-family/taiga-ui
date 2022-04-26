@@ -9,7 +9,7 @@ export class TuiScrollableDirective implements OnInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.elementRef.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SCROLLABLE, {
                 bubbles: true,

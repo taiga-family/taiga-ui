@@ -17,7 +17,7 @@ export class TuiResizableColumnComponent {
     @HostBinding('style.width.px')
     width: number | null = null;
 
-    onResize(width: number) {
+    onResize(width: number): void {
         this.width = width;
     }
 }

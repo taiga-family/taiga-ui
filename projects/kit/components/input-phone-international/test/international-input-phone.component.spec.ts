@@ -54,7 +54,7 @@ describe('InputPhoneInternational', () => {
     let testComponent: TestComponent;
     let component: TuiInputPhoneInternationalComponent;
 
-    const initializeTestModule = (language: Language = TUI_ENGLISH_LANGUAGE) => {
+    const initializeTestModule = (language: Language = TUI_ENGLISH_LANGUAGE): void => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [

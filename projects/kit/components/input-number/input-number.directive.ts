@@ -22,15 +22,15 @@ export class TuiInputNumberDirective
         return this.host.computedValue;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement) {
+    process(input: HTMLInputElement): void {
         this.input = input;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (!this.input) {
             return;
         }

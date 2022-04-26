@@ -40,7 +40,7 @@ export function tuiPure<T>(
             let originalFnWasCalledLeastAtOnce = false;
             let pureValue: unknown;
 
-            const patched = (...args: unknown[]) => {
+            const patched = (...args: unknown[]): unknown => {
                 const isPure =
                     originalFnWasCalledLeastAtOnce &&
                     previousArgs.length === args.length &&

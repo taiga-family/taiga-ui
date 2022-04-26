@@ -89,7 +89,7 @@ export class TuiOverscrollDirective {
         event: TuiEventWith<Event, HTMLElement>,
         vertical: boolean,
         negative: boolean,
-    ) {
+    ): void {
         const {target, currentTarget, cancelable} = event;
 
         // TODO: iframe warning

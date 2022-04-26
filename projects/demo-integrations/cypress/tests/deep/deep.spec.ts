@@ -33,7 +33,7 @@ const makeDemoSnapshot = (
     stepIndex: number,
     $input: JQuery<HTMLElement>,
     optionIndex: number,
-) => {
+): void => {
     cy.wrap($input)
         .parents('table.t-table tr')
         .find('[automation-id="tui-documentation__property-name"]')

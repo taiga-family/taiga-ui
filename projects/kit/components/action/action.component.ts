@@ -73,17 +73,17 @@ export class TuiActionComponent extends AbstractTuiInteractive {
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     @HostListener('mouseenter', ['true'])
     @HostListener('mouseleave', ['false'])
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

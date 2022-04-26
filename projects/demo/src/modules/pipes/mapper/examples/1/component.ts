@@ -9,6 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiMapperExample1 {
-    readonly mapper = (amount: number, currencySymbol: string) =>
+    readonly mapper = (amount: number, currencySymbol: string): string =>
         `Total: ${amount} ${currencySymbol}`;
 }

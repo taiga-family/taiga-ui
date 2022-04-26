@@ -31,11 +31,11 @@ export class TuiLegendItemExample2 {
         return this.enabled[index];
     }
 
-    toggle(index: number) {
+    toggle(index: number): void {
         this.enabled = this.enabled.map((value, i) => (i === index ? !value : value));
     }
 
-    onClick(index: number) {
+    onClick(index: number): void {
         if (this.isEnabled(index)) {
             this.notifications
                 .show(`Category spendings: ${formatNumber(this.data[index])} ₽`, {

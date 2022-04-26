@@ -188,7 +188,7 @@ describe('Toggle', () => {
         });
     });
 
-    function clickOnToggle() {
+    function clickOnToggle(): void {
         const checkbox = pageObject.getByAutomationId(`${testContext.prefix}checkbox`);
 
         checkbox!.nativeElement.click();
@@ -197,7 +197,7 @@ describe('Toggle', () => {
     function checkIconVisibility(
         tuiIconAutomationId: string,
         expectedVisibility: boolean,
-    ) {
+    ): void {
         const icon = pageObject.getByAutomationId(tuiIconAutomationId);
 
         if (expectedVisibility) {
@@ -295,7 +295,7 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
         });
     });
 
-    function isIconVisible(tuiIconAutomationId: string) {
+    function isIconVisible(tuiIconAutomationId: string): void {
         const icon = pageObject.getByAutomationId(tuiIconAutomationId);
 
         expect(icon).not.toBeNull();

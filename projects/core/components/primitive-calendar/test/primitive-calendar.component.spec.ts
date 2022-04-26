@@ -43,7 +43,7 @@ class TestComponent {
 
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
-    onDayClick(_: TuiDay) {}
+    onDayClick(_: TuiDay): void {}
 }
 
 describe('PrimitiveCalendar', () => {

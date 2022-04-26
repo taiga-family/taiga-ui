@@ -315,19 +315,19 @@ export class TuiInputCardGroupedComponent
     }
 
     @HostListener('keydown.esc')
-    onEsc() {
+    onEsc(): void {
         this.open = false;
     }
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    onArrow(element: HTMLElement, step: number) {
+    onArrow(element: HTMLElement, step: number): void {
         this.open = this.hasDropdown;
         this.changeDetectorRef.detectChanges();
         this.datalist?.onKeyDownArrow(element, step);
     }
 
-    handleOption(option: Partial<TuiCard>) {
+    handleOption(option: Partial<TuiCard>): void {
         const {card = '', expire = '', cvc = ''} = option;
         const {bin} = this;
         const element =
@@ -341,7 +341,7 @@ export class TuiInputCardGroupedComponent
         element?.focus();
     }
 
-    onCardChange(card: string) {
+    onCardChange(card: string): void {
         const {value, bin} = this;
         const parsed = card.split(' ').join('');
 
@@ -357,7 +357,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    onExpireChange(expire: string) {
+    onExpireChange(expire: string): void {
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
         if (!this.inputExpire) {
@@ -380,20 +380,20 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    onCVCChange(cvc: string) {
+    onCVCChange(cvc: string): void {
         this.updateProperty(cvc, 'cvc');
     }
 
-    onActiveZoneChange(active: boolean) {
+    onActiveZoneChange(active: boolean): void {
         this.updateFocused(active);
         this.open = active && this.open;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         tuiAssertIsHTMLElement(event.target);
 
         if (event.target.matches('input')) {
@@ -404,22 +404,22 @@ export class TuiInputCardGroupedComponent
         this.focusInput();
     }
 
-    onScroll({currentTarget}: Event) {
+    onScroll({currentTarget}: Event): void {
         tuiAssertIsHTMLElement(currentTarget);
 
         currentTarget.scrollLeft = 0;
     }
 
-    clear() {
+    clear(): void {
         this.updateValue(null);
         this.focusCard();
     }
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 
-    writeValue(value: TuiCard | null) {
+    writeValue(value: TuiCard | null): void {
         const {bin} = this;
 
         super.writeValue(value);
@@ -428,15 +428,15 @@ export class TuiInputCardGroupedComponent
     }
 
     /** Public API for manual focus management */
-    focusCard() {
+    focusCard(): void {
         this.inputCard?.nativeElement.focus();
     }
 
-    focusExpire() {
+    focusExpire(): void {
         this.inputExpire?.nativeElement.focus({preventScroll: true});
     }
 
-    focusCVC() {
+    focusCVC(): void {
         this.inputCVC?.nativeElement.focus();
     }
 
@@ -453,7 +453,7 @@ export class TuiInputCardGroupedComponent
         return this.focusable && (this.cardValidator(card) || this.cardPrefilled);
     }
 
-    private updateBin(oldBin: string | null) {
+    private updateBin(oldBin: string | null): void {
         const {bin} = this;
 
         if (bin !== oldBin && !this.cardPrefilled) {
@@ -461,7 +461,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    private updateProperty(propValue: string, propName: 'card' | 'expire' | 'cvc') {
+    private updateProperty(propValue: string, propName: 'card' | 'expire' | 'cvc'): void {
         const {card, expire, cvc} = this.value || STUB;
         const newValue: TuiCard = {
             card,
@@ -478,7 +478,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    private focusInput() {
+    private focusInput(): void {
         const element =
             (this.cardFocusable && this.inputCard?.nativeElement) ||
             (this.expireFocusable && this.inputExpire?.nativeElement) ||

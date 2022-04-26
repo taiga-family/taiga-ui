@@ -203,7 +203,7 @@ export class TuiInputSliderComponent
             : this.valueContent;
     }
 
-    focusTextInput() {
+    focusTextInput(): void {
         const focusableElement = this.inputNumberRef?.nativeFocusableElement;
 
         if (focusableElement) {
@@ -211,11 +211,11 @@ export class TuiInputSliderComponent
         }
     }
 
-    safelyUpdateValue(value: number | null) {
+    safelyUpdateValue(value: number | null): void {
         this.updateValue(this.valueGuard(value ?? this.safeCurrentValue));
     }
 
-    onVerticalArrowKeyDown(coefficient: number) {
+    onVerticalArrowKeyDown(coefficient: number): void {
         if (this.readOnly) {
             return;
         }
@@ -229,7 +229,7 @@ export class TuiInputSliderComponent
         this.updateTextInputValue(this.valueGuard(value));
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         if (!focused && !this.textInputValue) {
             this.updateTextInputValue(this.safeCurrentValue);
         }
@@ -237,11 +237,11 @@ export class TuiInputSliderComponent
         this.updateFocused(focused);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
@@ -262,7 +262,7 @@ export class TuiInputSliderComponent
         return clamp(roundedValue, this.min, this.max);
     }
 
-    private updateTextInputValue(value: number) {
+    private updateTextInputValue(value: number): void {
         if (this.inputNumberRef) {
             this.inputNumberRef.nativeValue =
                 this.inputNumberRef.getFormattedValue(value);
@@ -278,7 +278,14 @@ function quantumAssertion(quantum: number): boolean {
  * @deprecated helper for backward compatibility.
  * TODO remove in v3.0
  */
-function legacyMinMaxLabel({min, max, minLabel, maxLabel}: TuiInputSliderComponent) {
+function legacyMinMaxLabel({
+    min,
+    max,
+    minLabel,
+    maxLabel,
+}: TuiInputSliderComponent): (
+    context: TuiContextWithImplicit<number>,
+) => string | number {
     return ({$implicit: value}: TuiContextWithImplicit<number>) => {
         switch (value) {
             case min:

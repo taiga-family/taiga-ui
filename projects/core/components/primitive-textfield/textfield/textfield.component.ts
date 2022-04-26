@@ -63,7 +63,7 @@ export class TuiTextfieldComponent implements DoCheck {
         return this.elementRef.nativeElement.id || this.idService.generate();
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.describedBy.tuiDescribedBy = this.id;
     }
 }

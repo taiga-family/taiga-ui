@@ -27,7 +27,7 @@ export class TuiDialogExampleComponent2 {
         @Inject(Injector) private readonly injector: Injector,
     ) {}
 
-    showDialog() {
+    showDialog(): void {
         this.dialog.subscribe({
             next: data => {
                 console.info(`Dialog emitted data = ${data}`);

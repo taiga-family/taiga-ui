@@ -28,13 +28,13 @@ export class DialogExampleComponent {
         return this.context.data;
     }
 
-    submit() {
+    submit(): void {
         if (this.value !== null) {
             this.context.completeWith(this.value);
         }
     }
 
-    showDialog(content: TemplateRef<TuiDialogContext<void>>) {
+    showDialog(content: TemplateRef<TuiDialogContext<void>>): void {
         this.dialogService.open(content, {dismissible: true}).subscribe();
     }
 }

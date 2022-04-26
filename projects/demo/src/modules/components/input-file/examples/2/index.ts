@@ -123,11 +123,11 @@ export class TuiInputFileExample2 {
         files: this.files,
     });
 
-    onRejectedFilesChange(rejectedFiles: readonly TuiFileLike[]) {
+    onRejectedFilesChange(rejectedFiles: readonly TuiFileLike[]): void {
         this.rejectedFiles$.next(rejectedFiles);
     }
 
-    private removeRejected(rejectedFiles: readonly RejectedFile[]) {
+    private removeRejected(rejectedFiles: readonly RejectedFile[]): void {
         const filtered = this.files.value.filter((file: File) =>
             rejectedFiles.every(rejectedFile => rejectedFile.file !== file),
         );

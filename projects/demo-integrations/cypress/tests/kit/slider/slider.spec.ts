@@ -13,7 +13,7 @@ describe('Slider', () => {
 
         cy.get('input[type="range"]').as('slider');
 
-        const makeSnapOnValue = (value: number) => {
+        const makeSnapOnValue = (value: number): void => {
             cy.get('@slider').invoke('val', value).trigger('input');
 
             cy.get('tui-doc-demo')

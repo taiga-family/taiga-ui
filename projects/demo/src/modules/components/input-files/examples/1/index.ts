@@ -15,15 +15,15 @@ export class TuiInputFilesExample1 {
     readonly control = new FormControl();
     readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
 
-    onReject(file: TuiFileLike | readonly TuiFileLike[]) {
+    onReject(file: TuiFileLike | readonly TuiFileLike[]): void {
         this.rejectedFiles$.next(file as TuiFileLike);
     }
 
-    removeFile() {
+    removeFile(): void {
         this.control.setValue(null);
     }
 
-    clearRejected() {
+    clearRejected(): void {
         this.rejectedFiles$.next(null);
     }
 }

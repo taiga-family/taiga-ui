@@ -28,7 +28,7 @@ export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
         options: Partial<T> = {},
     ): Observable<G> {
         return new Observable(observer => {
-            const completeWith = (result: G) => {
+            const completeWith = (result: G): void => {
                 observer.next(result);
                 observer.complete();
             };

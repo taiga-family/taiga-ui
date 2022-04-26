@@ -85,7 +85,7 @@ export class TuiTouchableDirective {
         return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
     }
 
-    private onTouchStart(renderer: Renderer2, element: HTMLElement) {
+    private onTouchStart(renderer: Renderer2, element: HTMLElement): void {
         if (this.style !== 'transform') {
             renderer.removeStyle(element, 'transition');
         } else {

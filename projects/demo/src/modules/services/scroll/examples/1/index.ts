@@ -19,7 +19,7 @@ export class TuiScrollExample1 {
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
     ) {}
 
-    onClick({nativeElement}: ElementRef<HTMLElement>) {
+    onClick({nativeElement}: ElementRef<HTMLElement>): void {
         this.scrollService
             .scroll$(nativeElement, this.scrollTop, this.scrollLeft, this.duration)
             .subscribe();

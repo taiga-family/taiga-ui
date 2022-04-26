@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiLineClampExample2 {
     linesLimit = 2;
 
-    toggle() {
+    toggle(): void {
         this.linesLimit = this.collpased ? 10 : 2;
     }
 

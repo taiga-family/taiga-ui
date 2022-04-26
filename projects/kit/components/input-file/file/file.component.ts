@@ -119,11 +119,11 @@ export class TuiFileOldComponent {
         return this.calculateFileSize$(this.file, this.units$);
     }
 
-    onRemoveClick() {
+    onRemoveClick(): void {
         this.fileRemoved.emit();
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.focused = focusVisible;
     }
 

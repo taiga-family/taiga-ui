@@ -12,7 +12,7 @@ import {BehaviorSubject} from 'rxjs';
 export class TuiForExample1 {
     readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
 
-    refresh() {
+    refresh(): void {
         this.items$.next(null);
 
         const delay = Math.round(Math.random() * 2000);

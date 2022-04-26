@@ -197,7 +197,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         return this.isBootstrap ? 's' : 'l';
     }
 
-    onClick() {
+    onClick(): void {
         console.info('Interactive icon clicked');
     }
 }

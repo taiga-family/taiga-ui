@@ -14,7 +14,7 @@ export class TuiInputPhoneExample1 {
         testValue: new FormControl('+77777777777', Validators.required),
     });
 
-    setValue() {
+    setValue(): void {
         this.testForm.get('testValue')!.setValue('+79926775676');
     }
 }

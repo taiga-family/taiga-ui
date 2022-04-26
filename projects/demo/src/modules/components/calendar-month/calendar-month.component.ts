@@ -82,7 +82,7 @@ export class ExampleTuiCalendarMonthComponent {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         this.notifications.show(String(month)).subscribe();
     }
 }

@@ -114,7 +114,7 @@ export class TuiExpandComponent {
     }
 
     @HostListener('transitionend', ['$event'])
-    onTransitionEnd(event: TransitionEvent) {
+    onTransitionEnd(event: TransitionEvent): void {
         if (
             isCurrentTarget(event) &&
             event.propertyName === 'opacity' &&
@@ -125,7 +125,7 @@ export class TuiExpandComponent {
     }
 
     @HostListener(TUI_EXPAND_LOADED, ['$event'])
-    onExpandLoaded(event: Event) {
+    onExpandLoaded(event: Event): void {
         event.stopPropagation();
 
         if (this.state === State.Loading) {
@@ -133,10 +133,10 @@ export class TuiExpandComponent {
         }
     }
 
-    private retrigger(state: State) {
+    private retrigger(state: State): void {
         this.state = State.Prepared;
 
-        // We need delay to retrigger CSS height transition from the correct number
+        // We need delay to re-trigger CSS height transition from the correct number
         setTimeout(() => {
             if (this.state !== State.Prepared) {
                 return;

@@ -29,7 +29,7 @@ export class TuiCalendarExample3 {
         // Attention: do not create new arrays in handler, use constants intead
         day.day % 2 === 0 ? TWO_DOTS : ONE_DOT;
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         if (this.value === null || !this.value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
         }
@@ -37,19 +37,19 @@ export class TuiCalendarExample3 {
         this.value = TuiDayRange.sort(this.value.from, day);
     }
 
-    onMonthChangeFirst(month: TuiMonth) {
+    onMonthChangeFirst(month: TuiMonth): void {
         this.firstMonth = month;
         this.middleMonth = month.append({month: 1});
         this.lastMonth = month.append({month: 2});
     }
 
-    onMonthChangeMiddle(month: TuiMonth) {
+    onMonthChangeMiddle(month: TuiMonth): void {
         this.firstMonth = month.append({month: -1});
         this.middleMonth = month;
         this.lastMonth = month.append({month: 1});
     }
 
-    onMonthChangeLast(month: TuiMonth) {
+    onMonthChangeLast(month: TuiMonth): void {
         this.firstMonth = month.append({month: -2});
         this.middleMonth = month.append({month: -1});
         this.lastMonth = month;

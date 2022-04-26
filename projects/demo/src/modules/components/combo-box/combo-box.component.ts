@@ -135,7 +135,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query || ''));
     }
 
-    setValue() {
+    setValue(): void {
         this.control.setValue(new Account('Dollars', 237));
     }
 }

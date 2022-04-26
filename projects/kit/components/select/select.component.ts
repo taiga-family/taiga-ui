@@ -117,33 +117,33 @@ export class TuiSelectComponent<T>
         return this.valueContent || this.computedValue;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (!value) {
             this.updateValue(null);
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onKeyDownDelete() {
+    onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
             this.updateValue(null);
         }
     }
 
-    handleOption(option: T) {
+    handleOption(option: T): void {
         this.focusInput();
         this.updateValue(option);
         this.hostedDropdown?.updateOpen(false);
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }

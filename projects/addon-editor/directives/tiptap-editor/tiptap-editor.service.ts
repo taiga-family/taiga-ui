@@ -87,11 +87,11 @@ export class TuiTiptapEditorService extends TuiEditor {
         );
     }
 
-    onAlign(align: string) {
+    onAlign(align: string): void {
         this.editor.chain().focus().setTextAlign(align).run();
     }
 
-    setImage(src: string) {
+    setImage(src: string): void {
         this.editor
             .chain()
             .focus()
@@ -102,48 +102,48 @@ export class TuiTiptapEditorService extends TuiEditor {
             .run();
     }
 
-    undo() {
+    undo(): void {
         this.editor.chain().undo().run();
     }
 
-    redo() {
+    redo(): void {
         this.editor.chain().redo().run();
     }
 
-    setHorizontalRule() {
+    setHorizontalRule(): void {
         this.editor.chain().focus().setHorizontalRule().run();
     }
 
-    removeFormat() {
+    removeFormat(): void {
         this.editor.commands.unsetAllMarks();
         this.editor.commands.clearNodes();
     }
 
-    setFontColor(color: string) {
+    setFontColor(color: string): void {
         this.editor.chain().focus().setFontColor(color).run();
     }
 
-    setBackgroundColor(color: string) {
+    setBackgroundColor(color: string): void {
         this.editor.chain().focus().setBackgroundColor(color).run();
     }
 
-    toggleUnderline() {
+    toggleUnderline(): void {
         this.editor.chain().focus().toggleUnderline().run();
     }
 
-    toggleStrike() {
+    toggleStrike(): void {
         this.editor.chain().focus().toggleStrike().run();
     }
 
-    toggleOrderedList() {
+    toggleOrderedList(): void {
         this.editor.chain().focus().toggleOrderedList().run();
     }
 
-    toggleUnorderedList() {
+    toggleUnorderedList(): void {
         this.editor.chain().focus().toggleBulletList().run();
     }
 
-    togglePre() {
+    togglePre(): void {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
@@ -159,67 +159,67 @@ export class TuiTiptapEditorService extends TuiEditor {
         );
     }
 
-    toggleBold() {
+    toggleBold(): void {
         this.editor.chain().focus().toggleBold().run();
     }
 
-    toggleCode() {
+    toggleCode(): void {
         this.editor.chain().focus().toggleCode().run();
     }
 
-    toggleItalic() {
+    toggleItalic(): void {
         this.editor.chain().focus().toggleItalic().run();
     }
 
-    toggleBlockquote() {
+    toggleBlockquote(): void {
         this.editor.chain().focus().toggleBlockquote().run();
     }
 
-    toggleSubscript() {
+    toggleSubscript(): void {
         this.editor.chain().focus().toggleSubscript().run();
     }
 
-    toggleSuperscript() {
+    toggleSuperscript(): void {
         this.editor.chain().focus().toggleSuperscript().run();
     }
 
-    toggleCodeBlock() {
+    toggleCodeBlock(): void {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
-    insertTable(cols: number, rows: number) {
+    insertTable(cols: number, rows: number): void {
         this.editor.chain().focus().insertTable({cols, rows}).run();
     }
 
-    addColumnAfter() {
+    addColumnAfter(): void {
         this.editor.chain().focus().addColumnAfter().run();
     }
 
-    addColumnBefore() {
+    addColumnBefore(): void {
         this.editor.chain().focus().addColumnBefore().run();
     }
 
-    addRowAfter() {
+    addRowAfter(): void {
         this.editor.chain().focus().addRowAfter().run();
     }
 
-    addRowBefore() {
+    addRowBefore(): void {
         this.editor.chain().focus().addRowBefore().run();
     }
 
-    deleteColumn() {
+    deleteColumn(): void {
         this.editor.chain().focus().deleteColumn().run();
     }
 
-    deleteRow() {
+    deleteRow(): void {
         this.editor.chain().focus().deleteRow().run();
     }
 
-    mergeCells() {
+    mergeCells(): void {
         this.editor.chain().focus().mergeCells().run();
     }
 
-    splitCell() {
+    splitCell(): void {
         this.editor.chain().focus().splitCell().run();
     }
 
@@ -231,43 +231,43 @@ export class TuiTiptapEditorService extends TuiEditor {
         return this.editor.can().splitCell();
     }
 
-    setHeading(level: Level) {
+    setHeading(level: Level): void {
         this.editor.chain().focus().setHeading({level}).run();
     }
 
-    setParagraph() {
+    setParagraph(): void {
         this.editor.chain().focus().setParagraph().run();
     }
 
-    setHardBreak() {
+    setHardBreak(): void {
         this.editor.chain().setHardBreak().run();
     }
 
-    setTextSelection(value: number | Range) {
+    setTextSelection(value: number | Range): void {
         this.editor.commands.setTextSelection(value);
     }
 
-    toggleLink(href: string) {
+    toggleLink(href: string): void {
         this.editor.chain().focus().toggleLink({href}).run();
     }
 
-    setLink(href: string) {
+    setLink(href: string): void {
         this.editor.chain().focus().setLink({href}).run();
     }
 
-    unsetLink() {
+    unsetLink(): void {
         this.editor.chain().focus().unsetLink().run();
     }
 
-    indent() {
+    indent(): void {
         this.editor.commands.indent();
     }
 
-    outdent() {
+    outdent(): void {
         this.editor.commands.outdent();
     }
 
-    focus() {
+    focus(): void {
         this.editor.chain().focus().run();
     }
 
@@ -275,15 +275,15 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.commands.setContent(value);
     }
 
-    destroy() {
+    destroy(): void {
         this.editor.destroy();
     }
 
-    setCellColor(color: string) {
+    setCellColor(color: string): void {
         this.editor.chain().focus().setCellBackground(color).run();
     }
 
-    selectClosest() {
+    selectClosest(): void {
         const pos = this.editor.state.selection.anchor;
         const {schema, doc} = this.editor.state;
         const range = getMarkRange(doc.resolve(pos), schema.marks.link);
@@ -293,7 +293,7 @@ export class TuiTiptapEditorService extends TuiEditor {
         }
     }
 
-    enter() {
+    enter(): void {
         this.editor.commands.enter();
     }
 }

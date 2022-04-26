@@ -111,23 +111,23 @@ export class TuiInputCopyComponent
         return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.updateValue(value);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    copy() {
+    copy(): void {
         if (!this.textfield || !this.textfield.nativeFocusableElement) {
             return;
         }

@@ -13,7 +13,7 @@ interface TestComponent {
     control: FormControl;
 }
 
-export function testFormControlState(context: TestParams) {
+export function testFormControlState(context: TestParams): void {
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;

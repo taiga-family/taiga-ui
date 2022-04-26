@@ -84,7 +84,7 @@ export class TuiInputExpireComponent
             : TuiCreditCardAutofillName.Off;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
         if (!this.input || !this.input.nativeFocusableElement) {
@@ -106,11 +106,11 @@ export class TuiInputExpireComponent
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 

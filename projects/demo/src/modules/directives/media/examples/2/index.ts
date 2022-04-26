@@ -32,7 +32,7 @@ export class TuiMediaExample2 {
         return `${paddedMinutes}:${paddedSeconds}`;
     }
 
-    toggleState() {
+    toggleState(): void {
         this.paused = !this.paused;
     }
 }

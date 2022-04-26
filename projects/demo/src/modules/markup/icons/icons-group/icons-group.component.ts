@@ -30,7 +30,7 @@ export class IconsGroupComponent {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    copyPath(name: string) {
+    copyPath(name: string): void {
         this.clipboard.copy(name);
         this.notifications
             .show(`The name ${name} copied`, {

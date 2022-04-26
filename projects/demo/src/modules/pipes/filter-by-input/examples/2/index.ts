@@ -23,6 +23,6 @@ export class TuiFilterByInputExample2 {
         user: new FormControl(),
     });
 
-    readonly matcher = (name: string, search: string) =>
+    readonly matcher = (name: string, search: string): boolean =>
         name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());
 }

@@ -36,7 +36,7 @@ export class TuiTreeItemContentComponent {
         );
     }
 
-    onClick() {
+    onClick(): void {
         this.controller.toggle(this.context.$implicit);
     }
 }

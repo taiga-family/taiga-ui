@@ -16,7 +16,7 @@ export class TuiProjectClassDirective implements AfterViewChecked {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         if (!this.classNames.length) {
             return;
         }

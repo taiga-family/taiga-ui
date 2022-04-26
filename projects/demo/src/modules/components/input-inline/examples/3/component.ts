@@ -23,7 +23,7 @@ export class TuiInputInlineExample3 implements OnInit {
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.isCypress) {
             return;
         }

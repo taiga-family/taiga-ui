@@ -146,7 +146,7 @@ export class TuiLineChartComponent {
     }
 
     @HostListener('mouseleave')
-    onMouseLeave() {
+    onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(NaN);
         }
@@ -199,7 +199,7 @@ export class TuiLineChartComponent {
         return (100 * (this.value[x][0] - this.getX(x))) / this.computeWidth(x);
     }
 
-    onMouseEnter(index: number) {
+    onMouseEnter(index: number): void {
         if (this.hintDirective) {
             this.hintDirective.raise(index, this);
         } else {
@@ -207,7 +207,7 @@ export class TuiLineChartComponent {
         }
     }
 
-    onHovered(index: number) {
+    onHovered(index: number): void {
         this._hovered$.next(index);
     }
 

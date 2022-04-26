@@ -108,7 +108,7 @@ export class ExampleTuiSheetComponent {
         };
     }
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 }

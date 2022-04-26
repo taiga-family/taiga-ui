@@ -245,7 +245,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
@@ -254,7 +254,7 @@ export class TuiPrimitiveTextfieldComponent
         return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
     }
 
-    clear() {
+    clear(): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = '';
         }
@@ -262,7 +262,7 @@ export class TuiPrimitiveTextfieldComponent
         this.updateValue('');
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         const {nativeFocusableElement} = this;
 
         if (!nativeFocusableElement || event.target === nativeFocusableElement) {
@@ -273,15 +273,15 @@ export class TuiPrimitiveTextfieldComponent
         setNativeFocused(nativeFocusableElement);
     }
 
-    onModelChange(value: string) {
+    onModelChange(value: string): void {
         this.updateValue(value);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onAutofilled(autofilled: boolean) {
+    onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
     }
 
@@ -297,7 +297,7 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.iconContent;
     }
 
-    private updateAutofilled(autofilled: boolean) {
+    private updateAutofilled(autofilled: boolean): void {
         if (this.autofilled === autofilled) {
             return;
         }
@@ -306,7 +306,7 @@ export class TuiPrimitiveTextfieldComponent
         this.autofilledChange.emit(autofilled);
     }
 
-    private updateValue(value: string) {
+    private updateValue(value: string): void {
         this.value = value;
         this.valueChange.emit(value);
     }

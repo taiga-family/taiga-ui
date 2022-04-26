@@ -43,7 +43,7 @@ export class TuiFieldErrorExample2 implements OnInit {
         testValue2: this.testValue2,
     });
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.testValue2.setValidators([Validators.required, this.companyValidator]);
     }
 

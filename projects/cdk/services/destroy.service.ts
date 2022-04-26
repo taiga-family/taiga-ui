@@ -10,7 +10,7 @@ export class TuiDestroyService extends ReplaySubject<void> implements OnDestroy 
         super(1);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.next();
         this.complete();
     }

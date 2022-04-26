@@ -100,7 +100,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
         return this.currentMouseRect;
     }
 
-    private initMouseMoveSubscription() {
+    private initMouseMoveSubscription(): void {
         const mouseMove$: Observable<MouseEvent> = typedFromEvent(
             this.elementRef.nativeElement,
             'mousemove',

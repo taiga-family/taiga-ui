@@ -68,7 +68,7 @@ export function processDragged(
     );
 }
 
-export function fakeSmoothScroll({style}: HTMLElement, offset: number) {
+export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
     style.transition = 'none';
     style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 

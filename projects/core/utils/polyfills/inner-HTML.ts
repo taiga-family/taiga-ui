@@ -14,7 +14,7 @@ export function innerHTML(documentRef: Document): void {
     const parser = new DOMParser();
 
     Object.defineProperty(SVGElement.prototype, 'innerHTML', {
-        get: function (this: SVGElement) {
+        get: function (this: SVGElement): string {
             const result: string[] = [];
             let childNode: any = this.firstChild;
 

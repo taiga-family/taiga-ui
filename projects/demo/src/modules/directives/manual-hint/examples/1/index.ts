@@ -10,7 +10,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 export class TuiManualHintExample1 {
     hintShown = false;
 
-    toggleHint() {
+    toggleHint(): void {
         this.hintShown = !this.hintShown;
     }
 }

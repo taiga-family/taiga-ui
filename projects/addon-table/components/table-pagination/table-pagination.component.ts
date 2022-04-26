@@ -61,7 +61,7 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
-    onItem(size: number) {
+    onItem(size: number): void {
         const {start} = this;
 
         this.size = size;
@@ -71,12 +71,12 @@ export class TuiTablePaginationComponent {
         this.pageChange.emit(this.page);
     }
 
-    back() {
+    back(): void {
         this.page--;
         this.pageChange.emit(this.page);
     }
 
-    forth() {
+    forth(): void {
         this.page++;
         this.pageChange.emit(this.page);
     }

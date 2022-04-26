@@ -53,11 +53,11 @@ export class TuiPreviewExample3 {
         private readonly previewDialogService: PreviewDialogService,
     ) {}
 
-    show() {
+    show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();
     }
 
-    download() {
+    download(): void {
         console.info('downloading...');
     }
 

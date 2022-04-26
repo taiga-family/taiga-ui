@@ -115,7 +115,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         return Math.min(this.itemsLimit - offset, this.maxIndex);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.refresh$
             .pipe(
                 map(() => this.getMaxIndex()),
@@ -127,17 +127,17 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             });
     }
 
-    onActiveItemIndexChange(activeItemIndex: number) {
+    onActiveItemIndexChange(activeItemIndex: number): void {
         this.updateActiveItemIndex(activeItemIndex);
     }
 
-    onClick(index: number) {
+    onClick(index: number): void {
         this.open = false;
         this.focusMore();
         this.updateActiveItemIndex(index);
     }
 
-    onArrowRight(event: Event) {
+    onArrowRight(event: Event): void {
         tuiAssertIsHTMLElement(event.target);
 
         if (isNativeFocused(event.target)) {
@@ -145,7 +145,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    onArrowLeft() {
+    onArrowLeft(): void {
         const {tabs} = this;
         let index = tabs.length - 2;
 
@@ -160,7 +160,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean) {
+    onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
         const target = getClosestFocusable(button, prev, wrapper);
 
@@ -169,7 +169,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    private focusMore() {
+    private focusMore(): void {
         if (this.moreButton) {
             setNativeFocused(this.moreButton.nativeElement);
         }
@@ -213,7 +213,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         return 0;
     }
 
-    private updateActiveItemIndex(activeItemIndex: number) {
+    private updateActiveItemIndex(activeItemIndex: number): void {
         if (this.activeItemIndex === activeItemIndex) {
             return;
         }

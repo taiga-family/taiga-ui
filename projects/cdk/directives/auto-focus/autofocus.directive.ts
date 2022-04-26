@@ -47,7 +47,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         private readonly renderer: Renderer2,
     ) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (!this.autoFocus) {
             return;
         }
@@ -84,15 +84,15 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         return this.element.matches('input, textarea');
     }
 
-    private iosWebkitAutofocus() {
+    private iosWebkitAutofocus(): void {
         const fakeInput: HTMLElement = this.renderer.createElement('input');
 
         fakeInput.style.position = 'absolute';
         fakeInput.style.opacity = '0';
         fakeInput.style.height = '0';
 
-        const blurHandler = () => setNativeFocused(fakeInput);
-        const focusHandler = () => {
+        const blurHandler = (): void => setNativeFocused(fakeInput);
+        const focusHandler = (): void => {
             setTimeout(() => {
                 setNativeFocused(this.element);
 

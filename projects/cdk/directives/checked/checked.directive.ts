@@ -31,12 +31,12 @@ export class TuiCheckedDirective {
     }
 
     @HostListener('change', ['$event.target'])
-    onChange({checked}: HTMLInputElement) {
+    onChange({checked}: HTMLInputElement): void {
         this.updateProperty('indeterminate', false);
         this.tuiCheckedChange.emit(checked);
     }
 
-    private updateProperty(property: 'checked' | 'indeterminate', value: boolean) {
+    private updateProperty(property: 'checked' | 'indeterminate', value: boolean): void {
         this.renderer.setProperty(this.element.nativeElement, property, value);
     }
 }

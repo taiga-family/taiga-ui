@@ -13,11 +13,11 @@ export class TuiTabsExample7 {
 
     items = Array.from({length: 5}, (_, i) => `Item #${i}`);
 
-    add() {
+    add(): void {
         this.items = this.items.concat(`Item #${Date.now()}`);
     }
 
-    remove(removed: string) {
+    remove(removed: string): void {
         const index = this.items.indexOf(removed);
 
         this.items = this.items.filter(item => item !== removed);

@@ -58,7 +58,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
@@ -83,24 +83,24 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         return this.documentationPropertyMode !== 'output';
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.changed$.next();
     }
 
-    onValueChange(value: T) {
+    onValueChange(value: T): void {
         this.documentationPropertyValue = value;
         this.documentationPropertyValueChange.emit(value);
         this.setQueryParam(value);
     }
 
-    emitEvent(event: unknown) {
+    emitEvent(event: unknown): void {
         // For more convenient debugging
         console.info(this.attrName, event);
 
         this.emits$.next(this.emits$.value + 1);
     }
 
-    private parseParams(params: Params) {
+    private parseParams(params: Params): void {
         const propertyValue: string | undefined = params[this.documentationPropertyName];
         const propertyValueWithSuffix: string | number | undefined =
             params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];
@@ -117,7 +117,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         this.onValueChange(value as T);
     }
 
-    private setQueryParam(value: T | string | number | boolean | null) {
+    private setQueryParam(value: T | string | number | boolean | null): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
 
         const isValueAvailableByKey = value instanceof Object;

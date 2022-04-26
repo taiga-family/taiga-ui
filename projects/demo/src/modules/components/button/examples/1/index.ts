@@ -13,7 +13,7 @@ import {default as avatar} from '!!file-loader!../../../../../assets/images/avat
 export class TuiButtonExample1 {
     readonly avatarUrl = avatar;
 
-    onClick(event: MouseEvent) {
+    onClick(event: MouseEvent): void {
         console.info('click', event);
     }
 }

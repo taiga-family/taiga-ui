@@ -90,23 +90,23 @@ export class TuiInputColorComponent
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onValueChange(textValue: string) {
+    onValueChange(textValue: string): void {
         this.updateValue(textValue);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 

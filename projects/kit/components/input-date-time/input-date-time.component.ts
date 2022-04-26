@@ -204,11 +204,11 @@ export class TuiInputDateTimeComponent
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (!value) {
             this.onOpenChange(true);
         }
@@ -231,7 +231,7 @@ export class TuiInputDateTimeComponent
         this.updateValue([parsedDate, parsedTime]);
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
 
         this.updateValue([day, modifiedTime]);
@@ -239,19 +239,19 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onMonthChange(month: TuiMonth) {
+    onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
         if (
@@ -281,12 +281,12 @@ export class TuiInputDateTimeComponent
         });
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: [TuiDay | null, TuiTime | null] | null) {
+    writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
         this.nativeValue = value && (value[0] || value[1]) ? this.computedValue : '';
@@ -349,7 +349,7 @@ export class TuiInputDateTimeComponent
         return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 
-    private updateNativeValue(day: TuiDay) {
+    private updateNativeValue(day: TuiDay): void {
         const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
 
         this.nativeValue = this.getDateTimeString(day, time);

@@ -173,7 +173,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    setValue() {
+    setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);
     }
 }

@@ -48,7 +48,7 @@ export class PageObject<T> {
         automationId: string,
         value: string,
         debugElement: DebugElement = this.fixture.debugElement,
-    ) {
+    ): void {
         const inputDebugElement: DebugElement | null = this.getByAutomationId(
             automationId,
             debugElement,

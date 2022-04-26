@@ -28,11 +28,11 @@ export class TuiTableMergeCellsComponent {
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
     ) {}
 
-    mergeCells() {
+    mergeCells(): void {
         this.editor.mergeCells();
     }
 
-    splitCell() {
+    splitCell(): void {
         this.editor.splitCell();
     }
 }

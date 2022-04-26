@@ -112,7 +112,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     }
 
     @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
-    onActivate(element: HTMLElement) {
+    onActivate(element: HTMLElement): void {
         const index = this.tabs.findIndex(tab => tab === element);
 
         if (index === this.activeItemIndex) {
@@ -125,13 +125,13 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number) {
+    onKeyDownArrow(current: HTMLElement, step: number): void {
         const {tabs} = this;
 
         moveFocus(tabs.indexOf(current), tabs, step);
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         const {tabs, activeElement} = this;
 
         tabs.forEach(nativeElement => {
@@ -145,7 +145,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         }
     }
 
-    private scrollTo(element?: HTMLElement) {
+    private scrollTo(element?: HTMLElement): void {
         if (!element) {
             return;
         }

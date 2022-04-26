@@ -22,7 +22,7 @@ describe('TuiFocused directive', () => {
     class TestComponent {
         focused = false;
 
-        onFocusedChange(focused: boolean) {
+        onFocusedChange(focused: boolean): void {
             this.focused = focused;
         }
     }

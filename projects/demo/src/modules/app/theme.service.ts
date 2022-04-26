@@ -12,7 +12,7 @@ export class TuiThemeService extends BehaviorSubject<string> {
         super(storage.getItem('theme') ?? DEFAULT_THEME);
     }
 
-    next(value: string) {
+    next(value: string): void {
         this.storage.setItem('theme', value);
         super.next(value);
     }

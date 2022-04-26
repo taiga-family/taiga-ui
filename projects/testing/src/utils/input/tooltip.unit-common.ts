@@ -19,7 +19,7 @@ interface TestComponent {
     disabled?: boolean;
 }
 
-export function testTooltip(context: TestParams) {
+export function testTooltip(context: TestParams): void {
     let pageObject: PageObject<any>;
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;

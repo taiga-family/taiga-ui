@@ -8,7 +8,7 @@ export function setRangeOffset(
     node: HTMLElement,
     offset: number,
     method: 'setStart' | 'setEnd',
-) {
+): void {
     const {ownerDocument} = node;
 
     if (!ownerDocument) {

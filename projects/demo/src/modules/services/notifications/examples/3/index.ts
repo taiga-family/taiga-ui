@@ -42,7 +42,7 @@ export class TuiNotificationsExampleComponent3 {
             );
     }
 
-    showNotification() {
+    showNotification(): void {
         this.notification.subscribe();
     }
 }

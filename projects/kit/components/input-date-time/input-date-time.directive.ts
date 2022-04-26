@@ -17,11 +17,11 @@ export class TuiInputDateTimeDirective extends TuiAbstractTextfieldHost<TuiInput
         return this.host.computedValue;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement) {
+    process(input: HTMLInputElement): void {
         input.inputMode = 'numeric';
     }
 }

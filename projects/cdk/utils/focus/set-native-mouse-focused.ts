@@ -11,7 +11,7 @@ export function setNativeMouseFocused(
     element: HTMLOrSVGElement & Element,
     focused: boolean = true,
     preventScroll: boolean = false,
-) {
+): void {
     if (!element.ownerDocument) {
         return;
     }

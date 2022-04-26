@@ -48,11 +48,11 @@ export class TuiInputMonthDirective
         return this.localizedValue;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.value$.next(this.host.value);
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

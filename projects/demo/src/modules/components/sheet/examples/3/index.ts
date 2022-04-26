@@ -18,7 +18,7 @@ export class TuiSheetExample3 {
         image: 'https://www.vintagemovieposters.co.uk/wp-content/uploads/2020/10/IMG_0323-1024x756.jpeg',
     };
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 }

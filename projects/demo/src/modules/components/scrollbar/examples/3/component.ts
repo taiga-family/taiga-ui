@@ -26,7 +26,7 @@ export class TuiScrollbarExample3Component {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollLeft : 0;
     }
 
-    onClick() {
+    onClick(): void {
         if (!this.scrollBar) {
             return;
         }

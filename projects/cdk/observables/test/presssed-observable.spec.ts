@@ -26,7 +26,7 @@ describe('pressedObservable operator function', () => {
         expect(result).toBeTruthy();
     }));
 
-    function fireMousedownEvent() {
+    function fireMousedownEvent(): void {
         element.dispatchEvent(new MouseEvent('mousedown'));
     }
 });

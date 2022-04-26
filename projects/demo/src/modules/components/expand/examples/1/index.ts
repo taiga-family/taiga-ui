@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiExpandExample1 {
     expanded = false;
 
-    toggle() {
+    toggle(): void {
         this.expanded = !this.expanded;
     }
 }

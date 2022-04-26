@@ -25,7 +25,7 @@ export class TuiForDirective<T, K = {}> implements OnChanges {
 
     constructor(@Inject(ViewContainerRef) private readonly vcr: ViewContainerRef) {}
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.ref?.destroy();
 
         if (this.ngForOf?.length === 0 && this.ngForEmpty) {

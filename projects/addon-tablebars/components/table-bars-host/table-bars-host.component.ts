@@ -50,7 +50,7 @@ export class TuiTableBarsHostComponent {
         return mode === 'onLight' ? 'onDark' : null;
     }
 
-    onCloseClick(itemToRemove: TableBar) {
+    onCloseClick(itemToRemove: TableBar): void {
         itemToRemove.close();
     }
 

@@ -9,7 +9,7 @@ import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
  * @param documentRef document to execute on
  * @param html html to be inserted
  */
-export function tuiInsertHtml(documentRef: Document, html: string) {
+export function tuiInsertHtml(documentRef: Document, html: string): void {
     if (documentRef.queryCommandSupported('insertHTML')) {
         documentRef.execCommand('insertHTML', false, html);
 

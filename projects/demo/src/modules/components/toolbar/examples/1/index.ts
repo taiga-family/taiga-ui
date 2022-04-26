@@ -14,7 +14,7 @@ export class TuiToolbarExample1 {
 
     model = '<p>Lorem ipsum</p><p><b>Lorem ipsum</b></p>';
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.open = active;
     }
 }

@@ -23,7 +23,7 @@ export class TuiSelectDirective extends TuiAbstractTextfieldHost<
         return this.host.computedValue;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

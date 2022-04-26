@@ -70,7 +70,7 @@ export class TuiPreviewZoomComponent {
         return this.value > this.min;
     }
 
-    onModelChange(value: number) {
+    onModelChange(value: number): void {
         const clamped = clamp(value, this.min, this.max);
 
         if (clamped === this.value) {
@@ -81,15 +81,15 @@ export class TuiPreviewZoomComponent {
         this.valueChange.emit(clamped);
     }
 
-    onReset() {
+    onReset(): void {
         this.reset.emit();
     }
 
-    onMinus() {
+    onMinus(): void {
         this.onModelChange(this.value - STEP);
     }
 
-    onPlus() {
+    onPlus(): void {
         this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
     }
 }

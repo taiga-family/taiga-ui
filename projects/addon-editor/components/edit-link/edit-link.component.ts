@@ -63,7 +63,7 @@ export class TuiEditLinkComponent {
     }
 
     @HostListener('mousedown', ['$event'])
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         const tagName =
             event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : '';
 
@@ -74,7 +74,7 @@ export class TuiEditLinkComponent {
         event.preventDefault();
     }
 
-    onSave() {
+    onSave(): void {
         if (this.url) {
             this.addLink.emit(this.href);
         } else {
@@ -82,25 +82,25 @@ export class TuiEditLinkComponent {
         }
     }
 
-    onBackspace() {
+    onBackspace(): void {
         if (!this.url) {
             this.prefix = 'http://';
         }
     }
 
-    onEdit() {
+    onEdit(): void {
         this.edit = true;
     }
 
-    onRemove() {
+    onRemove(): void {
         this.removeLink.emit();
     }
 
-    onChange(url: string) {
+    onChange(url: string): void {
         this.url = this.removePrefix(url);
     }
 
-    onClear() {
+    onClear(): void {
         this.url = '';
     }
 

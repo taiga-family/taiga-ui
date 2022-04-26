@@ -16,7 +16,7 @@ export class TuiMediaExample3 {
         return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
     }
 
-    toggleState() {
+    toggleState(): void {
         this.paused = !this.paused;
     }
 }

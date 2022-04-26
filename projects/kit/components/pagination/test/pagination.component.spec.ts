@@ -50,7 +50,12 @@ describe('TuiPaginationComponent', () => {
         },
     };
 
-    function setParams({index, length, activePadding, sidePadding}: TuiPaginationParams) {
+    function setParams({
+        index,
+        length,
+        activePadding,
+        sidePadding,
+    }: TuiPaginationParams): void {
         if (isPresent<number>(index)) {
             testComponent.index = index;
         }

@@ -18,15 +18,15 @@ export class TuiActiveZoneExample1 {
 
     items = [1, 2, 3];
 
-    onParentActiveZone(active: boolean) {
+    onParentActiveZone(active: boolean): void {
         this.parentActive = active;
     }
 
-    onChildActiveZone(active: boolean) {
+    onChildActiveZone(active: boolean): void {
         this.childActive = active;
     }
 
-    onClick({nativeFocusableElement}: TuiInputComponent) {
+    onClick({nativeFocusableElement}: TuiInputComponent): void {
         if (nativeFocusableElement) {
             setNativeFocused(nativeFocusableElement);
         }

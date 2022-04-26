@@ -13,7 +13,7 @@ export class TuiHostedDropdownExample4 {
 
     index = 0;
 
-    onClick() {
+    onClick(): void {
         this.open = false;
         this.index = 1;
     }

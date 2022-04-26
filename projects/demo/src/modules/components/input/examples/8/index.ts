@@ -58,7 +58,7 @@ export class TuiInputExample8 {
         startWith(DATA),
     );
 
-    onClick({lastName, firstName}: User) {
+    onClick({lastName, firstName}: User): void {
         this.lastName = lastName;
         this.firstName = firstName;
     }

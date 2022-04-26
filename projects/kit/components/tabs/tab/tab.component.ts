@@ -69,7 +69,7 @@ export class TuiTabComponent implements OnDestroy {
         return !!this.routerLinkActive && this.routerLinkActive.isActive;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (isNativeFocused(this.elementRef.nativeElement)) {
             setNativeFocused(this.elementRef.nativeElement, false);
         }

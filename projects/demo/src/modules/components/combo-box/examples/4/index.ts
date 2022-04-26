@@ -18,6 +18,6 @@ export class TuiComboBoxExample4 {
         {name: 'Terry', surname: 'Jones'},
     ];
 
-    readonly stringify = (item: {name: string; surname: string}) =>
+    readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;
 }

@@ -16,7 +16,7 @@ export class TuiActionExample1 {
         private readonly notificationsService: TuiNotificationsService,
     ) {}
 
-    onClick(result: string) {
+    onClick(result: string): void {
         this.notificationsService.show(result).subscribe();
     }
 }

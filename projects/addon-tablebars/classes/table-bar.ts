@@ -23,7 +23,7 @@ export class TableBar {
         this.adaptive = adaptive;
     }
 
-    close() {
+    close(): void {
         this.observer.complete();
     }
 }

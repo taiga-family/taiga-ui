@@ -25,7 +25,7 @@ export function testCleaner(
     context: TestParams,
     setValue: any = 'value',
     clearValue: any = null,
-) {
+): void {
     let pageObject: PageObject<any>;
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;
@@ -116,7 +116,7 @@ export function testCleaner(
         });
     });
 
-    function updateValue(value: any) {
+    function updateValue(value: any): void {
         if (testComponent.control) {
             testComponent.control.setValue(value);
         } else {

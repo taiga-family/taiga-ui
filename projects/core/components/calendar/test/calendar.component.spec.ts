@@ -30,7 +30,7 @@ describe('Calendar', () => {
         maxViewedMonth: TuiMonth | null = TuiMonth.currentLocal().append({month: 1});
         value = TuiDay.currentLocal();
         month = TuiMonth.currentLocal();
-        disabledItemHandler = (item: TuiDay) => item.day === 10;
+        disabledItemHandler = (item: TuiDay): boolean => item.day === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -38,7 +38,7 @@ describe('Calendar', () => {
     let component: TuiCalendarComponent;
     let pageObject: PageObject<TestComponent>;
     const testContext = {
-        get prefix() {
+        get prefix(): string {
             return 'tui-calendar__';
         },
     };

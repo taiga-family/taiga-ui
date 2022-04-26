@@ -143,7 +143,7 @@ export class TuiTagComponent {
     }
 
     @HostListener('keydown.enter', ['$event'])
-    edit(event: Event) {
+    edit(event: Event): void {
         if (!this.canEdit) {
             return;
         }
@@ -155,7 +155,7 @@ export class TuiTagComponent {
 
     @HostListener('keydown.delete', ['$event'])
     @HostListener('keydown.backspace', ['$event'])
-    remove(event: Event) {
+    remove(event: Event): void {
         if (!this.canRemove) {
             return;
         }
@@ -165,7 +165,7 @@ export class TuiTagComponent {
         this.edited.emit('');
     }
 
-    onInput(value: string) {
+    onInput(value: string): void {
         const newTags = this.allowSpaces
             ? value.split(this.separator)
             : value.split(ALLOWED_SPACE_REGEXP);
@@ -179,7 +179,7 @@ export class TuiTagComponent {
         this.editedText = value;
     }
 
-    onKeyDown(event: KeyboardEvent) {
+    onKeyDown(event: KeyboardEvent): void {
         event.stopPropagation();
 
         switch (event.key.toLowerCase()) {
@@ -198,7 +198,7 @@ export class TuiTagComponent {
         }
     }
 
-    onBlur() {
+    onBlur(): void {
         if (this.editedText !== null) {
             this.save(this.editedText);
         }
@@ -208,12 +208,12 @@ export class TuiTagComponent {
         return this.editable && !this.disabled && !this.showLoader;
     }
 
-    private stopEditing() {
+    private stopEditing(): void {
         this.editing = false;
         this.editedText = null;
     }
 
-    private save(value: string) {
+    private save(value: string): void {
         this.stopEditing();
         this.edited.emit(value.trim());
     }

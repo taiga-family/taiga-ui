@@ -31,5 +31,5 @@ export abstract class TuiAbstractTextfieldHost<T extends AbstractTuiControl<any>
 
     abstract onValueChange(value: string): void;
 
-    process(_input: HTMLInputElement) {}
+    process(_input: HTMLInputElement): void {}
 }

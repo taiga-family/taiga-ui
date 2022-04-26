@@ -15,7 +15,7 @@ export class TuiButtonExample3 {
 
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 }

@@ -40,7 +40,7 @@ export class TuiTabsExample2 {
 
     constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
 
-    onClick(item: string) {
+    onClick(item: string): void {
         this.alerts.open(item).subscribe();
     }
 }

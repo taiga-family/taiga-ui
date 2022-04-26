@@ -20,7 +20,7 @@ export class TuiSelectExample3 {
 
     signatureVisible = false;
 
-    toggle() {
+    toggle(): void {
         this.signatureVisible = !this.signatureVisible;
     }
 }

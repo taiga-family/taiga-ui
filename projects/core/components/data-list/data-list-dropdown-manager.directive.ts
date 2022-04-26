@@ -38,7 +38,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.right$.subscribe(index => {
             this.tryToFocus(index);
         });
@@ -152,7 +152,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
         );
     }
 
-    private tryToFocus(index: number) {
+    private tryToFocus(index: number): void {
         const dropdown = this.dropdowns.toArray()[index];
         const content =
             dropdown &&

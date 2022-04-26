@@ -24,7 +24,7 @@ export class TuiPreviewDialogComponent {
     ) {}
 
     @HostListener('document:keydown.esc')
-    onKeyDownEsc() {
+    onKeyDownEsc(): void {
         this.context.$implicit.complete();
     }
 }

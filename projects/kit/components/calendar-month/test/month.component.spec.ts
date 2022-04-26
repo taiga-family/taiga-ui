@@ -31,7 +31,7 @@ describe('Month', () => {
         max = TODAY.append({year: 2});
         value = TODAY;
         month = TuiMonth.currentLocal();
-        disabledItemHandler = (item: TuiMonth) => item.month === 10;
+        disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;

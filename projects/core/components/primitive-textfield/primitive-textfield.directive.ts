@@ -31,7 +31,7 @@ export class TuiPrimitiveTextfieldDirective extends TuiAbstractTextfieldHost<any
         return this.textfield.readOnly || !this.textfield.editable;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.textfield.onModelChange(value);
     }
 }

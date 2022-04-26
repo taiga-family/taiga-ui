@@ -31,15 +31,15 @@ export class TuiFieldErrorPipeExample4 {
         ),
     });
 
-    get formData() {
+    get formData(): FormArray {
         return <FormArray>this.testForm.get('phones');
     }
 
-    addPhone() {
+    addPhone(): void {
         this.formData.push(new FormControl('', this.addValidators()));
     }
 
-    removePhone(index: number) {
+    removePhone(index: number): void {
         this.formData.removeAt(index);
 
         let n = 0;
@@ -65,7 +65,7 @@ export class TuiFieldErrorPipeExample4 {
         return (field: AbstractControl): ValidationErrors | null =>
             field.value.length !== 12
                 ? {
-                      lenght: new TuiValidationError(this.phoneErrorContent),
+                      length: new TuiValidationError(this.phoneErrorContent),
                   }
                 : null;
     }

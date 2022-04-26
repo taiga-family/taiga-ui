@@ -95,7 +95,9 @@ const DEFAULT_TESTING_MODULE_META = {
     declarations: [TestComponent],
 };
 
-const initializeEnvironment = async (component: Type<TestComponent> = TestComponent) => {
+const initializeEnvironment = async (
+    component: Type<TestComponent> = TestComponent,
+): Promise<void> => {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
 
@@ -442,7 +444,7 @@ describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
     });
 });
 
-function mouseDownOnTextfield() {
+function mouseDownOnTextfield(): void {
     getTextfield()!.nativeElement.dispatchEvent(
         new MouseEvent('mousedown', {bubbles: true}),
     );

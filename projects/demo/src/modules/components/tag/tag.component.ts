@@ -98,7 +98,7 @@ export class ExampleTuiTagComponent {
             : '';
     }
 
-    editTag(value: string) {
+    editTag(value: string): void {
         this.value = value;
     }
 }

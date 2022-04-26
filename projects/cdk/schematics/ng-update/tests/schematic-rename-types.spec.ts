@@ -48,7 +48,7 @@ export class AppComponent {
     });
 });
 
-function createMainFiles() {
+function createMainFiles(): void {
     createSourceFile(
         'test/app/app.component.ts',
         `import { Component } from '@angular/core';

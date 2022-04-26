@@ -71,15 +71,15 @@ export class TuiSliderOldComponent
         return 100 - 100 * this.getFractionFromValue(this.value);
     }
 
-    processValue(value: number) {
+    processValue(value: number): void {
         this.updateValue(this.valueGuard(value));
     }
 
-    decrement() {
+    decrement(): void {
         this.processStep(false);
     }
 
-    increment() {
+    increment(): void {
         this.processStep(true);
     }
 
@@ -87,7 +87,7 @@ export class TuiSliderOldComponent
         return 0;
     }
 
-    protected processStep(increment: boolean) {
+    protected processStep(increment: boolean): void {
         const fraction = this.getFractionFromValue(this.value);
         const step = this.computedStep;
         const value = this.getValueFromFraction(

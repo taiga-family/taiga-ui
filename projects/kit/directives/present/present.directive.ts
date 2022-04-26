@@ -80,13 +80,13 @@ export class TuiPresentDirective implements OnDestroy {
      */
     @HostListener('animationcancel', ['$event', 'false'])
     @HostListener('animationstart', ['$event', 'true'])
-    onAnimation(event: Event, visibility: boolean) {
+    onAnimation(event: Event, visibility: boolean): void {
         if (isCurrentTarget(event)) {
             this.visibility$.next(visibility);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.visibility$.next(false);
     }
 }

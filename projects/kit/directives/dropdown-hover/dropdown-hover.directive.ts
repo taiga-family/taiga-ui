@@ -79,7 +79,7 @@ export class TuiDropdownHoverDirective {
     }
 
     @HostListener('mouseenter')
-    onMouseEnter() {
+    onMouseEnter(): void {
         const {host} = this.dropdown;
 
         if (isNativeFocusedIn(host)) {

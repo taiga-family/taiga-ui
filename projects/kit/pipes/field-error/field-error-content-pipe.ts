@@ -24,7 +24,7 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
         return this.getErrorContent(order);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.asyncPipe.ngOnDestroy();
     }
 

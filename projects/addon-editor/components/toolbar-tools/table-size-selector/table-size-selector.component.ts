@@ -41,13 +41,13 @@ export class TuiTableSizeSelectorComponent {
         return x < this.tableSize.rows && y < this.tableSize.cols;
     }
 
-    updateCurrentSize(rows: number, cols: number, event: MouseEvent) {
+    updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
         if (this.windowRef.innerWidth - event.clientX > MIN_DISTANCE_PX) {
             this.tableSize = {rows, cols};
         }
     }
 
-    onClick() {
+    onClick(): void {
         this.onSelectSize.emit(this.tableSize);
     }
 }

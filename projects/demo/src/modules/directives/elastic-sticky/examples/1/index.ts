@@ -19,7 +19,7 @@ export class TuiElasticStickyExample1 implements AfterViewInit {
 
     scale$?: Observable<number>;
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (!this.elasticSticky) {
             return;
         }

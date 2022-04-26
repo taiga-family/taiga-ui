@@ -14,7 +14,7 @@ export class TuiDialogExampleComponent1 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    showDialog() {
+    showDialog(): void {
         this.dialogService
             .open('This is a plain string dialog', {label: 'Heading', size: 's'})
             .subscribe();

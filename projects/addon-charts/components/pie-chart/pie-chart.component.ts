@@ -119,7 +119,7 @@ export class TuiPieChartComponent {
         return this.hintContent ? hint : '';
     }
 
-    onHovered(hovered: boolean, index: number) {
+    onHovered(hovered: boolean, index: number): void {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
@@ -153,7 +153,7 @@ export class TuiPieChartComponent {
         return 360 * (value / this.getSum(this.value));
     }
 
-    private updateActiveItemIndex(index: number) {
+    private updateActiveItemIndex(index: number): void {
         if (index === this.activeItemIndex) {
             return;
         }

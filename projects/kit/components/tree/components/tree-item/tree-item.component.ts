@@ -70,7 +70,7 @@ export class TuiTreeItemComponent implements DoCheck {
         return this.controller.isExpanded(this);
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.change$.next();
     }
 }

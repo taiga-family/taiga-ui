@@ -34,7 +34,7 @@ export class TuiTreeService<T> {
         return this.map.get(item) ?? [this.loading];
     }
 
-    loadChildren(item: T) {
+    loadChildren(item: T): void {
         if (this.map.get(item)) {
             return;
         }

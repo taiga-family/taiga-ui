@@ -21,7 +21,7 @@ export class TuiLegendItemExample1 {
         return this.activeItemIndex === index;
     }
 
-    onHover(index: number, hovered: boolean) {
+    onHover(index: number, hovered: boolean): void {
         this.activeItemIndex = hovered ? index : 0;
     }
 

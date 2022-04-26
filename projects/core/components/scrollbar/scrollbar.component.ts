@@ -65,13 +65,13 @@ export class TuiScrollbarComponent {
     }
 
     @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
-    onScrollable(element: HTMLElement) {
+    onScrollable(element: HTMLElement): void {
         this.delegated = true;
         this.browserScrollRef.nativeElement = element;
     }
 
     @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
-    scrollIntoView(detail: HTMLElement) {
+    scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;
         }

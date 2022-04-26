@@ -96,7 +96,7 @@ describe('TuiFieldErrorContentPipe', () => {
         }));
     });
 
-    function showHint() {
+    function showHint(): void {
         component.control.markAsTouched();
         fixture.detectChanges();
         getHost().dispatchEvent(new Event('mouseenter'));

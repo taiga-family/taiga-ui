@@ -99,28 +99,28 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
             : this.max;
     }
 
-    onPaginationYearClick(year: TuiYear) {
+    onPaginationYearClick(year: TuiYear): void {
         this.year = year;
     }
 
-    onPickerYearClick({year}: TuiYear) {
+    onPickerYearClick({year}: TuiYear): void {
         this.year = null;
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
-    onPaginationValueChange(month: TuiMonth) {
+    onPaginationValueChange(month: TuiMonth): void {
         this.updateViewedMonth(month);
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    onHoveredItemChange(day: TuiDay | null) {
+    onHoveredItemChange(day: TuiDay | null): void {
         this.updateHoveredDay(day);
     }
 
-    private updateViewedMonth(month: TuiMonth) {
+    private updateViewedMonth(month: TuiMonth): void {
         if (this.month.monthSame(month)) {
             return;
         }
@@ -129,7 +129,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         this.monthChange.emit(month);
     }
 
-    private updateHoveredDay(day: TuiDay | null) {
+    private updateHoveredDay(day: TuiDay | null): void {
         if (nullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
         }

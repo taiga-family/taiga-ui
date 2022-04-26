@@ -108,16 +108,16 @@ export class TuiColorSelectorComponent {
         return this.direction === direction;
     }
 
-    onPalettePick(color: string) {
+    onPalettePick(color: string): void {
         this.updateColor(color);
     }
 
-    onDirectionChange(direction: TuiGradientDirection) {
+    onDirectionChange(direction: TuiGradientDirection): void {
         this.direction = direction;
         this.updateColor(this.getGradient(direction));
     }
 
-    onModeSelect(mode: string, dropdown: TuiHostedDropdownComponent) {
+    onModeSelect(mode: string, dropdown: TuiHostedDropdownComponent): void {
         this.currentMode = mode;
         dropdown.open = false;
         this.updateColor(
@@ -127,11 +127,11 @@ export class TuiColorSelectorComponent {
         );
     }
 
-    onIndexChange(index: number) {
+    onIndexChange(index: number): void {
         this.currentStop = this.stopsKeys[index];
     }
 
-    onColorChange(color: [number, number, number, number]) {
+    onColorChange(color: [number, number, number, number]): void {
         if (!this.isGradient) {
             this.updateColor(`rgba(${color.join(', ')})`);
 
@@ -142,7 +142,7 @@ export class TuiColorSelectorComponent {
         this.updateColor(this.getGradient(this.direction));
     }
 
-    onStopsChange(stopsKeys: readonly number[]) {
+    onStopsChange(stopsKeys: readonly number[]): void {
         const removed = this.stopsKeys.find(item => !stopsKeys.includes(item));
         const added = stopsKeys.find(item => !this.stopsKeys.includes(item));
 
@@ -185,7 +185,7 @@ export class TuiColorSelectorComponent {
         return map;
     }
 
-    private updateColor(color: string) {
+    private updateColor(color: string): void {
         this.colorChange.emit(color);
     }
 
@@ -200,7 +200,7 @@ export class TuiColorSelectorComponent {
         return this.stops.get(stop) || EMPTY_STOP;
     }
 
-    private addStop(stop: number) {
+    private addStop(stop: number): void {
         const closest = this.stopsKeys.reduce(
             (prev, curr) => (Math.abs(curr - stop) < Math.abs(prev - stop) ? curr : prev),
             this.stopsKeys[0],
@@ -211,13 +211,13 @@ export class TuiColorSelectorComponent {
         this.currentStop = stop;
     }
 
-    private removeStop(stop: number) {
+    private removeStop(stop: number): void {
         this.stops.delete(stop);
         this.stops = new Map(this.stops);
         this.currentStop = this.stopsKeys[0];
     }
 
-    private replaceStop(removed: number, added: number) {
+    private replaceStop(removed: number, added: number): void {
         const value = this.getStop(removed);
 
         this.currentStop = added;
@@ -228,7 +228,7 @@ export class TuiColorSelectorComponent {
         );
     }
 
-    private parse(color: string) {
+    private parse(color: string): void {
         if (color.startsWith('linear-gradient')) {
             this.parseGradient(color);
         } else {
@@ -236,7 +236,7 @@ export class TuiColorSelectorComponent {
         }
     }
 
-    private parseGradient(color: string) {
+    private parseGradient(color: string): void {
         if (color === this.getGradient(this.direction)) {
             return;
         }
@@ -258,7 +258,7 @@ export class TuiColorSelectorComponent {
         );
     }
 
-    private parseColor(color: string) {
+    private parseColor(color: string): void {
         this.currentMode = this.modes[0];
         this.currentStop = 0;
         this.color = parseColor(color);

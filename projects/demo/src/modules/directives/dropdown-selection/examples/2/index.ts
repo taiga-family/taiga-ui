@@ -46,7 +46,7 @@ export class TuiDropdownSelectionExample2 {
     predicate: TuiBooleanHandler<Range> = range =>
         getWordRange(range).toString().startsWith('@');
 
-    onArrow(event: Event, which: 'first' | 'last') {
+    onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
 
         if (!item) {
@@ -63,7 +63,7 @@ export class TuiDropdownSelectionExample2 {
         return this.getFilteredItems(this.items, search);
     }
 
-    onClick(login: string, textarea: HTMLTextAreaElement) {
+    onClick(login: string, textarea: HTMLTextAreaElement): void {
         const search = this.getCurrentSearch(textarea);
         const value = this.value.replace(search, login);
         const caret = value.indexOf(login) + login.length;

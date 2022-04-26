@@ -171,7 +171,7 @@ export class TuiToolbarNewComponent {
     }
 
     @HostListener('mousedown', ['$event', '$event.target'])
-    onMouseDown(event: MouseEvent, target: HTMLElement) {
+    onMouseDown(event: MouseEvent, target: HTMLElement): void {
         if (getClosestElement(target, 'button')) {
             return;
         }
@@ -180,15 +180,15 @@ export class TuiToolbarNewComponent {
         this.editor.focus();
     }
 
-    onBottomFocus() {
+    onBottomFocus(): void {
         this.focusLast();
     }
 
-    onTopFocus() {
+    onTopFocus(): void {
         this.focusFirst();
     }
 
-    onImage(input: HTMLInputElement) {
+    onImage(input: HTMLInputElement): void {
         const file = input.files && input.files[0];
 
         input.value = '';
@@ -204,15 +204,15 @@ export class TuiToolbarNewComponent {
             });
     }
 
-    onAttach() {
+    onAttach(): void {
         this.attachClicked.emit();
     }
 
-    onTeX() {
+    onTeX(): void {
         this.texClicked.emit();
     }
 
-    onLink(hosted: TuiHostedDropdownComponent, url?: string) {
+    onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
         hosted.open = false;
 
         if (url) {
@@ -225,43 +225,43 @@ export class TuiToolbarNewComponent {
         return this.toolsSet.has(tool);
     }
 
-    undo() {
+    undo(): void {
         this.editor.undo();
     }
 
-    redo() {
+    redo(): void {
         this.editor.redo();
     }
 
-    insertHorizontalRule() {
+    insertHorizontalRule(): void {
         this.editor.setHorizontalRule();
     }
 
-    removeFormat() {
+    removeFormat(): void {
         this.editor.removeFormat();
     }
 
-    toggleOrderedList() {
+    toggleOrderedList(): void {
         this.editor.toggleOrderedList();
     }
 
-    toggleQuote() {
+    toggleQuote(): void {
         this.editor.toggleBlockquote();
     }
 
-    toggleSubscript() {
+    toggleSubscript(): void {
         this.editor.toggleSubscript();
     }
 
-    toggleSuperscript() {
+    toggleSuperscript(): void {
         this.editor.toggleSuperscript();
     }
 
-    private addImage(image: string) {
+    private addImage(image: string): void {
         this.editor.setImage(image);
     }
 
-    private focusFirst() {
+    private focusFirst(): void {
         const firstButton = this.navigationManager?.findFirstFocusableTool();
 
         if (firstButton) {
@@ -269,7 +269,7 @@ export class TuiToolbarNewComponent {
         }
     }
 
-    private focusLast() {
+    private focusLast(): void {
         const lastButton = this.navigationManager?.findFirstFocusableTool(true);
 
         if (lastButton) {

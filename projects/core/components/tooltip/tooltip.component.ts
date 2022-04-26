@@ -68,7 +68,7 @@ export class TuiTooltipComponent {
 
     @HostListener('mousedown', ['$event'])
     @HostListener('click', ['$event'])
-    stopOnMobile(event: MouseEvent) {
+    stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();

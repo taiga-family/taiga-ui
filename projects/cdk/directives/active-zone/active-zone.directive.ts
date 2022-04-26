@@ -55,7 +55,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this.directParentActiveZone) {
             this.directParentActiveZone.removeSubActiveZone(this);
         }
@@ -76,7 +76,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     @tuiPure
-    private setZone(zone: TuiActiveZoneDirective | null) {
+    private setZone(zone: TuiActiveZoneDirective | null): void {
         if (this.tuiActiveZoneParent) {
             this.tuiActiveZoneParent.removeSubActiveZone(this);
         }
@@ -88,11 +88,11 @@ export class TuiActiveZoneDirective implements OnDestroy {
         this.tuiActiveZoneParent = zone;
     }
 
-    private addSubActiveZone(activeZone: TuiActiveZoneDirective) {
+    private addSubActiveZone(activeZone: TuiActiveZoneDirective): void {
         this.subActiveZones = [...this.subActiveZones, activeZone];
     }
 
-    private removeSubActiveZone(activeZone: TuiActiveZoneDirective) {
+    private removeSubActiveZone(activeZone: TuiActiveZoneDirective): void {
         const index = this.subActiveZones.findIndex(item => item === activeZone);
 
         this.subActiveZones = [

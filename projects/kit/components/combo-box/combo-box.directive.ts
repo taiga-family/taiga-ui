@@ -19,7 +19,7 @@ export class TuiComboBoxDirective extends TuiAbstractTextfieldHost<
         return this.host.nativeValue;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

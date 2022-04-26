@@ -32,7 +32,7 @@ export class TuiEditorNewExample1 {
         Validators.required,
     );
 
-    onClick() {
+    onClick(): void {
         this.control.setValue(
             '<p>Control</p><h2>is</h2><h1><span style="color: #e01f19">updated</span></h1>',
         );

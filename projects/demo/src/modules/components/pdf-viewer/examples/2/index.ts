@@ -30,7 +30,7 @@ export class TuiPdfViewerExample2 {
         @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
     ) {}
 
-    show() {
+    show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
             label: 'Taiga UI',
             actions: new PolymorpheusComponent(ActionsContent),

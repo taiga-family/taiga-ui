@@ -58,9 +58,12 @@ export class TuiTbodyComponent<T> {
         return this.pipe.transform(this.data);
     }
 
-    readonly toContext = ($implicit: T, index: number) => ({$implicit, index});
+    readonly toContext = (
+        $implicit: T,
+        index: number,
+    ): {$implicit: T; index: number} => ({$implicit, index});
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
         this.openChange.emit(this.open);
     }

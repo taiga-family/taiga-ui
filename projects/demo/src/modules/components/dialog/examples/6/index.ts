@@ -13,7 +13,7 @@ export class TuiDialogExampleComponent6 {
 
     open = false;
 
-    showDialog() {
+    showDialog(): void {
         this.open = true;
     }
 }

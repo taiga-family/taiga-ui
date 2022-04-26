@@ -50,11 +50,11 @@ export class TuiHighlightDirective implements OnChanges {
         return this.indexOf(this.elementRef.nativeElement.textContent) !== -1;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.updateStyles();
     }
 
-    private updateStyles() {
+    private updateStyles(): void {
         this.highlight.style.display = 'none';
 
         if (!this.match) {

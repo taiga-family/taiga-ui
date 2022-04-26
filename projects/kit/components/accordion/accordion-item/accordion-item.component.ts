@@ -112,27 +112,27 @@ export class TuiAccordionItemComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         if (!this.disableHover) {
             this.updateHovered(hovered);
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onRowToggle() {
+    onRowToggle(): void {
         if (!this.disabled) {
             this.updateOpen(!this.open);
         }
     }
 
-    onItemKeyDownEsc(event: Event) {
+    onItemKeyDownEsc(event: Event): void {
         if (!this.focused || !this.open) {
             return;
         }
@@ -141,7 +141,7 @@ export class TuiAccordionItemComponent
         this.updateOpen(false);
     }
 
-    onItemKeyDownSpace(event: Event) {
+    onItemKeyDownSpace(event: Event): void {
         if (!this.focused) {
             return;
         }
@@ -150,12 +150,12 @@ export class TuiAccordionItemComponent
         this.onRowToggle();
     }
 
-    close() {
+    close(): void {
         this.updateOpen(false);
         this.changeDetectorRef.markForCheck();
     }
 
-    private updateOpen(open: boolean) {
+    private updateOpen(open: boolean): void {
         if (this.open === open) {
             return;
         }

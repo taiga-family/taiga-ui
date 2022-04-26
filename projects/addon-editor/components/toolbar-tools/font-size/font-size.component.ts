@@ -50,7 +50,7 @@ export class TuiFontSizeComponent {
         >,
     ) {}
 
-    onClick({headingLevel}: Partial<TuiEditorFontOption>) {
+    onClick({headingLevel}: Partial<TuiEditorFontOption>): void {
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
         } else {

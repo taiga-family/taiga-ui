@@ -21,7 +21,7 @@ export class TuiHostedDropdownExample3 {
 
     ascending = false;
 
-    onClick(item: string) {
+    onClick(item: string): void {
         if (this.items[0].includes(item)) {
             this.primary = item;
 

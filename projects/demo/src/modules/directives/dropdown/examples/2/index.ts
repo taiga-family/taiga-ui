@@ -16,11 +16,11 @@ export class TuiDropdownExample2 {
 
     avatarUrl = avatarUrl;
 
-    onMouseEnter() {
+    onMouseEnter(): void {
         this.open = true;
     }
 
-    onMouseLeave() {
+    onMouseLeave(): void {
         this.open = false;
     }
 }

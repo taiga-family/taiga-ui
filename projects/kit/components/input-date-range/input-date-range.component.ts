@@ -238,7 +238,7 @@ export class TuiInputDateRangeComponent
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         if (!this.isMobile) {
             this.toggle();
         }
@@ -248,7 +248,7 @@ export class TuiInputDateRangeComponent
         return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
     }
 
-    onMobileClick() {
+    onMobileClick(): void {
         if (!this.mobileCalendar) {
             this.toggle();
 
@@ -285,11 +285,11 @@ export class TuiInputDateRangeComponent
             });
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -313,7 +313,7 @@ export class TuiInputDateRangeComponent
         );
     }
 
-    onRangeChange(range: TuiDayRange | null) {
+    onRangeChange(range: TuiDayRange | null): void {
         this.toggle();
         this.focusInput();
 
@@ -326,7 +326,7 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    onItemSelect(item: string | TuiDayRangePeriod) {
+    onItemSelect(item: string | TuiDayRangePeriod): void {
         this.toggle();
         this.focusInput();
 
@@ -342,15 +342,15 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onActiveZone(focused: boolean) {
+    onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 
         if (
@@ -366,7 +366,7 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    writeValue(value: TuiDayRange | null) {
+    writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
     }
@@ -375,11 +375,11 @@ export class TuiInputDateRangeComponent
         return this.items.findIndex(item => String(item) === this.nativeValue) !== -1;
     }
 
-    private toggle() {
+    private toggle(): void {
         this.open = !this.open;
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }

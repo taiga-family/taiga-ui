@@ -23,7 +23,7 @@ describe('TuiHovered directive', () => {
     class TestComponent {
         index = 0;
 
-        hoveredChange(index: number) {
+        hoveredChange(index: number): void {
             this.index = index;
         }
     }
@@ -63,7 +63,7 @@ describe('TuiHovered directive', () => {
         y: number,
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend' | 'touchmove',
-    ) {
+    ): void {
         const touchObj = new Touch({
             identifier: Date.now(),
             target: element,

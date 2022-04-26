@@ -17,7 +17,7 @@ export class TuiSheetExample2 {
         image: 'assets/images/avatar.jpg',
     };
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 }

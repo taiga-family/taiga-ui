@@ -84,7 +84,7 @@ export class TuiInputFileExample3 {
             });
     }
 
-    onModelChange(files: readonly TuiFileLike[]) {
+    onModelChange(files: readonly TuiFileLike[]): void {
         this.processNotification(files);
 
         if (isNarrowed(this.files, files)) {
@@ -99,7 +99,7 @@ export class TuiInputFileExample3 {
         this.files$.next(this.files);
     }
 
-    private processNotification(files: readonly TuiFileLike[]) {
+    private processNotification(files: readonly TuiFileLike[]): void {
         const removed = getRemoved(this.files, files);
 
         if (removed) {
@@ -107,7 +107,9 @@ export class TuiInputFileExample3 {
         }
     }
 
-    private processResponse(files: ReadonlyArray<RejectedFile | TuiFileLike | null>) {
+    private processResponse(
+        files: ReadonlyArray<RejectedFile | TuiFileLike | null>,
+    ): void {
         this.loadingFiles = this.loadingFiles.filter(file => files.includes(file));
 
         const newRejectedFiles = files

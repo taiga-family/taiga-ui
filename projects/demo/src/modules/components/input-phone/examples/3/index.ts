@@ -78,11 +78,11 @@ export class TuiInputPhoneExample3 {
         startWith('Phone number or name'),
     );
 
-    onSearch(search: string) {
+    onSearch(search: string): void {
         this.search$.next(search);
     }
 
-    onClick(user: User) {
+    onClick(user: User): void {
         this.selected$.next(user);
     }
 

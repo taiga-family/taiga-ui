@@ -17,11 +17,11 @@ export function mockCurrentDate(dateOrNumber: Date | number): void {
     global.Date = MockDate as typeof Date;
 }
 
-export function restoreRealDate() {
+export function restoreRealDate(): void {
     global.Date = OriginalDate;
 }
 
-export function mockDateInside(dateMock: Date | number, callback: () => void) {
+export function mockDateInside(dateMock: Date | number, callback: () => void): void {
     mockCurrentDate(dateMock);
     callback();
     restoreRealDate();
@@ -31,7 +31,7 @@ export function mockDateInside(dateMock: Date | number, callback: () => void) {
 /**
  * Skips the test on time zones other than `'Europe/Moscow'`.
  */
-export function pendingIfNotMoscowTimeZone() {
+export function pendingIfNotMoscowTimeZone(): void {
     if (Intl.DateTimeFormat().resolvedOptions().timeZone !== 'Europe/Moscow') {
         pending();
     }

@@ -47,7 +47,7 @@ export class TuiTableRowColumnManagerComponent {
         readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
     ) {}
 
-    onTableOption(command: TableComands) {
+    onTableOption(command: TableComands): void {
         this.commandsRegistry[command]();
     }
 }

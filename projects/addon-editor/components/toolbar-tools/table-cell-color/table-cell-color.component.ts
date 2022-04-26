@@ -43,7 +43,7 @@ export class TuiTableCellColorComponent {
         return color === this.defaultOptions.blankColor;
     }
 
-    setCellColor(color: string) {
+    setCellColor(color: string): void {
         this.editor.setCellColor(color);
     }
 }
