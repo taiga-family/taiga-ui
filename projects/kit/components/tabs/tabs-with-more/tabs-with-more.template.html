@@ -13,7 +13,7 @@
                 [ngTemplateOutlet]="item"
             ></ng-container>
             <ng-template #hidden>
-                <div [class.t-overflown]="index !== activeItemIndex">
+                <div [class.t-overflown]="isOverflown(index)">
                     <ng-container *ngTemplateOutlet="item"></ng-container>
                 </div>
             </ng-template>
@@ -28,7 +28,7 @@
         <button
             tuiTab
             class="t-more"
-            [class._active]="open"
+            [class._active]="isMoreActive"
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
         >
@@ -58,7 +58,7 @@
                 (tui-tab-activate)="onClick(index)"
             >
                 <ng-container
-                    *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
+                    *ngIf="shouldShow(index)"
                     [ngTemplateOutlet]="item"
                 ></ng-container>
             </div>
