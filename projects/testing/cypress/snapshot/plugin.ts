@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 
-import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
 import {
     addMatchImageSnapshotPlugin,
     matchImageSnapshotPlugin,
@@ -44,8 +43,4 @@ export function tuiAddSnapshotPlugin(
 
         return matchImageSnapshotPlugin(details);
     });
-}
-
-export function tuiAddMatchImageSnapshotCommand(options: any): void {
-    addMatchImageSnapshotCommand(options);
 }

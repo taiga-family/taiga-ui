@@ -1,13 +1,13 @@
-import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress';
+import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress/snapshot/plugin';
 
 import {viewportHeight, viewportWidth} from './../../cypress.json';
 
-export default (on: any, config: any): void => {
+export default (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): void => {
     tuiAddSnapshotPlugin(on, config, {
         newSnapshotMark: '==[new]==',
         newSnapshotMarkEnabled: config.baseUrl === 'https://taiga-ui.dev/next/',
     });
-    on('before:browser:launch', (browser: any, launchOptions: any) => {
+    on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
             launchOptions.args.push(`--window-size=${viewportWidth},${viewportHeight}`);
             launchOptions.args.push('--force-device-scale-factor=2');
