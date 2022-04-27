@@ -3,11 +3,13 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPortalModule} from '@taiga-ui/cdk';
+import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 describe('Portal directive', () => {
     @Component({
         template: `
+            <tui-root></tui-root>
             <ng-container *ngIf="present">
                 <div
                     *tuiPortal="show"
@@ -28,7 +30,7 @@ describe('Portal directive', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, TuiPortalModule],
+            imports: [CommonModule, TuiPortalModule, TuiRootModule],
             declarations: [TestComponent],
         });
     });
