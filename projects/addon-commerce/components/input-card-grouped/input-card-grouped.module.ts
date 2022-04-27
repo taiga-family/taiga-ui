@@ -1,11 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
     TuiActiveZoneModule,
     TuiFocusableModule,
     TuiHoveredModule,
     TuiInputModeModule,
+    TuiLetModule,
     TuiMapperPipeModule,
     TuiPreventDefaultModule,
 } from '@taiga-ui/cdk';
@@ -30,6 +32,8 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         TuiDropdownModule,
         TuiPreventDefaultModule,
         PolymorpheusModule,
+        TuiLetModule,
+        TuiFormatCardModule,
     ],
     declarations: [TuiInputCardGroupedComponent],
     exports: [TuiInputCardGroupedComponent],

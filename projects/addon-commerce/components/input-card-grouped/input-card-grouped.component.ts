@@ -242,15 +242,6 @@ export class TuiInputCardGroupedComponent
         return !!this.value?.card?.trim();
     }
 
-    get formattedCard(): string {
-        return this.value && !this.cardPrefilled
-            ? this.value.card
-                  .split('')
-                  .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
-                  .join('')
-            : '';
-    }
-
     get idCard(): string {
         return `${this.id}_card`;
     }
