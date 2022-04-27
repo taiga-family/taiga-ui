@@ -1,10 +1,17 @@
-import {Directive, EmbeddedViewRef, Inject, Input, TemplateRef} from '@angular/core';
+import {
+    Directive,
+    EmbeddedViewRef,
+    Inject,
+    Input,
+    OnDestroy,
+    TemplateRef,
+} from '@angular/core';
 import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
 
 @Directive({
     selector: '[tuiPortal]',
 })
-export class TuiPortalDirective {
+export class TuiPortalDirective implements OnDestroy {
     private viewRef?: EmbeddedViewRef<{}>;
 
     @Input()
@@ -20,4 +27,8 @@ export class TuiPortalDirective {
         @Inject(TemplateRef) private readonly templateRef: TemplateRef<{}>,
         @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
     ) {}
+
+    ngOnDestroy(): void {
+        this.viewRef?.destroy();
+    }
 }

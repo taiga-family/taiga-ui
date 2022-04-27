@@ -5,7 +5,6 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-tui-portal',
     templateUrl: './portal.template.html',
-    styleUrls: ['./portal.style.less'],
     changeDetection,
 })
 export class ExampleTuiPortalComponent {
