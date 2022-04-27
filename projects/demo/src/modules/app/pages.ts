@@ -1060,6 +1060,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Portal',
+                keywords: 'template, шаблон, портал',
+                route: '/directives/portal',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Swipe',
                 keywords: 'swipe, свайп',
                 route: '/directives/swipe',
