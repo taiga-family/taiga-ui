@@ -19,6 +19,7 @@ export * from '@taiga-ui/cdk/directives/media';
 export * from '@taiga-ui/cdk/directives/obscured';
 export * from '@taiga-ui/cdk/directives/overscroll';
 export * from '@taiga-ui/cdk/directives/pan';
+export * from '@taiga-ui/cdk/directives/portal';
 export * from '@taiga-ui/cdk/directives/pressed';
 export * from '@taiga-ui/cdk/directives/prevent-default';
 export * from '@taiga-ui/cdk/directives/repeat-times';

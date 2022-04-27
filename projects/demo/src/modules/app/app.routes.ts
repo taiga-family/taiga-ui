@@ -1343,6 +1343,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/portal',
+        loadChildren: async () =>
+            import('../directives/portal/portal.module').then(
+                m => m.ExampleTuiPortalModule,
+            ),
+        data: {
+            title: 'Portal',
+        },
+    },
+    {
         path: 'directives/swipe',
         loadChildren: async () =>
             import('../directives/swipe/swipe.module').then(m => m.ExampleTuiSwipeModule),
