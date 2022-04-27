@@ -34,6 +34,7 @@ import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
+import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
 const TAB_ACTIVE_CLASS = '_active';
 
@@ -65,7 +66,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     @Input()
     @HostBinding('class._underline')
     @tuiDefaultProp()
-    underline = true;
+    underline = this.options.underline;
 
     @Input('activeItemIndex')
     set activeItemIndexSetter(index: number) {
@@ -85,6 +86,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     activeItemIndex = 0;
 
     constructor(
+        @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,

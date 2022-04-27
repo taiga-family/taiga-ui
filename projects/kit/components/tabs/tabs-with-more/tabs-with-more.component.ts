@@ -32,6 +32,7 @@ import {filter, map} from 'rxjs/operators';
 
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
+import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
 // @dynamic
@@ -60,7 +61,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @Input()
     @HostBinding('class._underline')
     @tuiDefaultProp()
-    underline = true;
+    underline = this.options.underline;
 
     @Input()
     @tuiDefaultProp()
@@ -68,7 +69,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     @Input()
     @tuiDefaultProp()
-    itemsLimit = Infinity;
+    itemsLimit = this.options.itemsLimit;
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
@@ -79,6 +80,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     open = false;
 
     constructor(
+        @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(TUI_TAB_MARGIN) private readonly margin: number,
         @Inject(TABS_REFRESH) private readonly refresh$: Observable<unknown>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -94,7 +96,9 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get activeElement(): HTMLElement | null {
-        return this.tabs[this.activeItemIndex] || null;
+        return this.options.exposeActive || this.lastVisibleIndex >= this.activeItemIndex
+            ? this.tabs[this.activeItemIndex] || null
+            : this.moreButton?.nativeElement || null;
     }
 
     get isMoreVisible(): boolean {
@@ -105,12 +109,22 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         return !!this.moreButton && isNativeFocused(this.moreButton.nativeElement);
     }
 
+    get isMoreActive(): boolean {
+        return (
+            this.open ||
+            (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex)
+        );
+    }
+
     get lastVisibleIndex(): number {
         if (this.itemsLimit + 1 >= this.items.length) {
             return this.maxIndex;
         }
 
-        const offset = this.itemsLimit - 1 > this.activeItemIndex ? 1 : 2;
+        const offset =
+            this.itemsLimit - 1 > this.activeItemIndex || !this.options.exposeActive
+                ? 1
+                : 2;
 
         return Math.min(this.itemsLimit - offset, this.maxIndex);
     }
@@ -169,6 +183,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
+    isOverflown(index: number): boolean {
+        return index !== this.activeItemIndex || !this.options.exposeActive;
+    }
+
+    shouldShow(index: number): boolean {
+        return index > this.lastVisibleIndex && this.isOverflown(index);
+    }
+
     private focusMore(): void {
         if (this.moreButton) {
             setNativeFocused(this.moreButton.nativeElement);
@@ -199,7 +221,8 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;
 
-            const activeDisplaced = activeItemIndex > maxIndex;
+            const activeDisplaced =
+                this.options.exposeActive && activeItemIndex > maxIndex;
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
