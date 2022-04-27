@@ -2,14 +2,13 @@ import {CommonModule} from '@angular/common';
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiPortalModule} from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiDropdownHostModule, TuiPortalModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 describe('Portal directive', () => {
     @Component({
         template: `
-            <tui-root></tui-root>
+            <tui-dropdown-host></tui-dropdown-host>
             <ng-container *ngIf="present">
                 <div
                     *tuiPortal="show"
@@ -30,7 +29,7 @@ describe('Portal directive', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, TuiPortalModule, TuiRootModule],
+            imports: [CommonModule, TuiPortalModule, TuiDropdownHostModule],
             declarations: [TestComponent],
         });
     });
