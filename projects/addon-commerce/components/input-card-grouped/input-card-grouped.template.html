@@ -15,7 +15,10 @@
     (mousedown)="onMouseDown($event)"
 >
     <div class="t-wrapper">
-        <label tuiPreventDefault="click">
+        <label
+            *tuiLet="value?.card | tuiFormatCard: cardPrefilled as formattedCard"
+            tuiPreventDefault="click"
+        >
             <input
                 #inputCard
                 type="text"
