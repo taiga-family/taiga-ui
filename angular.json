@@ -377,19 +377,6 @@
                     }
                 },
                 "test": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "parallel": false,
-                        "commands": ["nx test-cdk cdk", "nx test-schematics cdk"]
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "self"
-                        }
-                    ]
-                },
-                "test-cdk": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/cdk"],
                     "options": {
@@ -397,7 +384,13 @@
                         "main": "projects/cdk/test.ts",
                         "tsConfig": "projects/cdk/tsconfig.spec.json",
                         "karmaConfig": "projects/cdk/karma.conf.js"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "test-schematics",
+                            "projects": "self"
+                        }
+                    ]
                 },
                 "test-schematics": {
                     "builder": "@nrwl/workspace:run-commands",
