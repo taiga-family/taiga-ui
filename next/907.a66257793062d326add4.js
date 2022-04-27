@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[907],{"+2ui":function(o,i,n){"use strict";n.r(i),i.default="import {TuiNotificationsModule, TuiRootModule} from '@taiga-ui/core';\n...\n\n@NgModule({\n    imports: [\n        TuiRootModule,\n        TuiNotificationsModule,\n        ...\n    ]\n...\n"}}]);
