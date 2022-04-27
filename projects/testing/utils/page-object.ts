@@ -1,8 +1,11 @@
 import {DebugElement, Predicate} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
+import {
+    TuiElementIsNotInputException,
+    TuiFieldNotFoundException,
+} from '@taiga-ui/testing/exceptions';
 
-import {TuiElementIsNotInputException, TuiFieldNotFoundException} from '../exceptions';
-
+// @dynamic
 export class PageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 

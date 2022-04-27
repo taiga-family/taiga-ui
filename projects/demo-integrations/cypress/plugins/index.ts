@@ -1,4 +1,4 @@
-import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/src/cypress/snapshot/plugin';
+import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress';
 
 import {viewportHeight, viewportWidth} from './../../cypress.json';
 

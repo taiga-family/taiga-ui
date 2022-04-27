@@ -30,7 +30,7 @@
         "target": "es2015",
         "module": "esnext",
         "lib": ["es2018", "dom"],
-        "typeRoots": ["node_modules/@types", "node_modules/cypress/types"],
+        "typeRoots": ["node_modules/@types"],
         "skipLibCheck": true,
         "downlevelIteration": true,
         "skipDefaultLibCheck": true,
@@ -60,7 +60,8 @@
         "paths": {
             "@taiga-ui/cdk": ["projects/cdk/index"],
             "@taiga-ui/cdk/*": ["projects/cdk/*"],
-            "@taiga-ui/testing": ["projects/testing/src/public-api"],
+            "@taiga-ui/testing": ["projects/testing/index"],
+            "@taiga-ui/testing/*": ["projects/testing/*"],
             "@taiga-ui/icons": ["projects/icons/public-api"],
             "@taiga-ui/core": ["projects/core/index"],
             "@taiga-ui/core/*": ["projects/core/*"],

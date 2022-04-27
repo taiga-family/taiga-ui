@@ -1,4 +1,4 @@
-import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/src/cypress/snapshot/command';
+import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 
 import {tuiHideHeader} from './hide-header';
 import {tuiHideNavigation} from './hide-navigation';

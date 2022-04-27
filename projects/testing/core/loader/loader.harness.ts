@@ -1,4 +1,4 @@
-import {HarnessWith, withPredicate} from '../../utils/helpers';
+import {HarnessWith, withPredicate} from '@taiga-ui/testing/utils';
 
 @withPredicate
 export class TuiLoaderHarness extends HarnessWith<TuiLoaderHarness>('tui-loader') {
