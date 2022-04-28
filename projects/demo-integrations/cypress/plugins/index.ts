@@ -1,3 +1,5 @@
+// dont change import to `@taiga-ui/testing/cypress` until merging of this PR
+// https://github.com/jaredpalmer/cypress-image-snapshot/pull/250
 import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress/snapshot/plugin';
 
 import {viewportHeight, viewportWidth} from './../../cypress.json';

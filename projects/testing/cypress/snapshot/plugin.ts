@@ -1,18 +1,11 @@
 /// <reference types="cypress" />
 
-import {
-    addMatchImageSnapshotPlugin,
-    matchImageSnapshotPlugin,
-} from 'cypress-image-snapshot/plugin';
 import fs from 'fs';
 
 declare module 'cypress-image-snapshot/plugin' {
     function matchImageSnapshotPlugin(
         details: Cypress.ScreenshotDetails,
-    ):
-        | void
-        | Cypress.AfterScreenshotReturnObject
-        | Promise<Cypress.AfterScreenshotReturnObject>;
+    ): void | Cypress.AfterScreenshotReturnObject;
 }
 
 export interface TuiSnapshotPluginOptions {
@@ -20,12 +13,17 @@ export interface TuiSnapshotPluginOptions {
     newSnapshotMarkEnabled: boolean;
 }
 
-export function tuiAddSnapshotPlugin(
+export async function tuiAddSnapshotPlugin(
     on: Cypress.PluginEvents,
     config: Cypress.PluginConfigOptions,
     {newSnapshotMarkEnabled, newSnapshotMark}: TuiSnapshotPluginOptions,
-): void {
+): Promise<void> {
+    const {addMatchImageSnapshotPlugin, matchImageSnapshotPlugin} = await import(
+        'cypress-image-snapshot/plugin'
+    );
+
     addMatchImageSnapshotPlugin(on, config);
+
     on('after:screenshot', (details: Cypress.ScreenshotDetails) => {
         const {name, path} = details;
         const possibleSnapshotPath = path
