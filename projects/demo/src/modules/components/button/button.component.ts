@@ -90,7 +90,9 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
     iconButton = false;
 
     @tuiPure
-    getContentVariants(template: TemplateRef<{}>): readonly PolymorpheusContent[] {
+    getContentVariants(
+        template: TemplateRef<Record<string, unknown>>,
+    ): readonly PolymorpheusContent[] {
         return ['', 'tuiIconEyeClosed', 'tuiIconHeartLarge', template];
     }
 }

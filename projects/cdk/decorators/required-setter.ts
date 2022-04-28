@@ -12,7 +12,7 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
     ...args: any[]
 ): MethodDecorator {
     return (
-        target: Object,
+        target: object,
         key,
         {configurable, enumerable, get, set}: PropertyDescriptor,
     ): PropertyDescriptor => {

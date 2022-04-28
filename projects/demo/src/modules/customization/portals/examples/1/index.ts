@@ -10,7 +10,7 @@ import {CustomPortalService} from './portal/custom-portal.service';
     changeDetection,
 })
 export class TuiPortalsExample1 {
-    templates: EmbeddedViewRef<{}>[] = [];
+    templates: EmbeddedViewRef<unknown>[] = [];
 
     constructor(
         @Inject(CustomPortalService)

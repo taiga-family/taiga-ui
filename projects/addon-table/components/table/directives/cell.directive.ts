@@ -9,5 +9,7 @@ export class TuiCellDirective {
     @tuiDefaultProp()
     tuiCell = '';
 
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
+    constructor(
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
+    ) {}
 }

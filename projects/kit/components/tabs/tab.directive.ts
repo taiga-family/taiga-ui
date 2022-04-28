@@ -4,5 +4,7 @@ import {Directive, Inject, TemplateRef} from '@angular/core';
     selector: `ng-template[tuiTab]`,
 })
 export class TuiTabDirective {
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
+    constructor(
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
+    ) {}
 }

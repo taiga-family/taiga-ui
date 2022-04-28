@@ -12,7 +12,7 @@ import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
     selector: '[tuiPortal]',
 })
 export class TuiPortalDirective implements OnDestroy {
-    private viewRef?: EmbeddedViewRef<{}>;
+    private viewRef?: EmbeddedViewRef<unknown>;
 
     @Input()
     set tuiPortal(show: boolean) {
@@ -24,7 +24,8 @@ export class TuiPortalDirective implements OnDestroy {
     }
 
     constructor(
-        @Inject(TemplateRef) private readonly templateRef: TemplateRef<{}>,
+        @Inject(TemplateRef)
+        private readonly templateRef: TemplateRef<Record<string, unknown>>,
         @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
     ) {}
 

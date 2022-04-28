@@ -7,7 +7,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiManualHintModule} from '../manual-hint.module';
 
-type Hint = string | TemplateRef<{}> | undefined | null;
+type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
 
 describe('ManualHint', () => {
     @Component({

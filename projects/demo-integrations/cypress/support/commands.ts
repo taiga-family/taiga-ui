@@ -18,7 +18,7 @@ declare global {
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
 
-            tab(options?: Partial<{shift: Boolean}>): Chainable;
+            tab(options?: Partial<{shift: boolean}>): Chainable;
         }
     }
 }

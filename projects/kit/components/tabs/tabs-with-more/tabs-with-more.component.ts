@@ -75,7 +75,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     readonly activeItemIndexChange = new EventEmitter<number>();
 
     @ContentChildren(TuiTabDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<{}>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     open = false;
 

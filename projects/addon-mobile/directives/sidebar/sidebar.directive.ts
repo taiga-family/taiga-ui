@@ -18,7 +18,7 @@ import {TuiSidebarComponent} from './sidebar.component';
 @Directive({
     selector: '[tuiSidebar]',
 })
-export class TuiSidebarDirective<T = {}>
+export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>
     implements OnDestroy
 {

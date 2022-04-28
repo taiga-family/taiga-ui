@@ -131,11 +131,11 @@ export class TuiInputCountComponent
         return this.hideButtons || this.appearance === 'table';
     }
 
-    get iconUp(): PolymorpheusContent<{}> {
+    get iconUp(): PolymorpheusContent<Record<string, unknown>> {
         return this.options.icons.up;
     }
 
-    get iconDown(): PolymorpheusContent<{}> {
+    get iconDown(): PolymorpheusContent<Record<string, unknown>> {
         return this.options.icons.down;
     }
 

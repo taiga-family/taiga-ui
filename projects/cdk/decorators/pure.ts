@@ -10,7 +10,7 @@ import {TuiPureException} from '@taiga-ui/cdk/exceptions';
  * CAUTION: `this` is not available inside such functions/getters, they must be pure.
  */
 export function tuiPure<T>(
-    _target: Object,
+    _target: object,
     propertyKey: string,
     {get, enumerable, value}: TypedPropertyDescriptor<T>,
 ): TypedPropertyDescriptor<T> {

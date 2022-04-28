@@ -7,5 +7,7 @@ export class TuiHeadDirective<T extends Record<any, any>> {
     @Input()
     tuiHead!: keyof T;
 
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
+    constructor(
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
+    ) {}
 }

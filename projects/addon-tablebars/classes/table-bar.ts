@@ -13,7 +13,7 @@ export class TableBar {
 
     constructor(
         private readonly observer: Observer<never>,
-        readonly content: PolymorpheusContent<{}>,
+        readonly content: PolymorpheusContent<Record<string, any>>,
         options: TuiTableBarOptions = {},
     ) {
         const {mode = 'onLight', hasCloseButton = false, adaptive = false} = options;

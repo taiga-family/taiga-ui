@@ -9,5 +9,7 @@ export class TuiDocPageTabConnectorDirective {
     @tuiDefaultProp()
     pageTab?: string | '';
 
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
+    constructor(
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
+    ) {}
 }
