@@ -58,7 +58,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     control: AbstractControl | null = null;
 
     @ContentChild(TemplateRef)
-    readonly template: TemplateRef<{}> | null = null;
+    readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
     updateOnVariants = ['change', 'blur', 'submit'];
@@ -74,7 +74,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(PLATFORM_ID) platformId: Object,
+        @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
         @Inject(Location) locationRef: Location,
         @Inject(UrlSerializer) urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],

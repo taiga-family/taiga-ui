@@ -29,7 +29,7 @@ class TestComponent {
     component!: TuiInputSliderComponent;
 
     @ViewChild('progressPercent')
-    progressPercentCustomContent!: TemplateRef<unknown>;
+    progressPercentCustomContent!: TemplateRef<Record<string, unknown>>;
 
     control = new FormControl(0);
 

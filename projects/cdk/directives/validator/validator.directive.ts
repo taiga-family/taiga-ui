@@ -31,7 +31,7 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
         return this.tuiValidator(control);
     }
 
-    registerOnValidatorChange(onChange: Function): void {
+    registerOnValidatorChange(onChange: (...args: any[]) => void): void {
         this.onChange = onChange;
     }
 

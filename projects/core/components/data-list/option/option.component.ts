@@ -69,7 +69,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         @Optional()
         @Inject(TUI_OPTION_CONTENT)
         readonly content: PolymorpheusContent<
-            TuiContextWithImplicit<TemplateRef<{}>>
+            TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
         > | null,
         @Inject(forwardRef(() => TuiDataListComponent))
         private readonly dataList: any,

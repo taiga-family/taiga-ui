@@ -2,7 +2,7 @@ import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 ...
 
 @ViewChild('tableBarTemplate')
-tableBarTemplate: TemplateRef<{}>;
+tableBarTemplate: TemplateRef<Record<string, unknown>>;
 
 constructor(@Inject(TuiTableBarsService) private readonly tableBarsService: TuiTableBarsService) {
 

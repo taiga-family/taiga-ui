@@ -8,7 +8,7 @@ import {TuiPreviewDialogComponent} from './preview-dialog.component';
 @Injectable({
     providedIn: 'root',
 })
-export class PreviewDialogService extends AbstractTuiDialogService<{}> {
+export class PreviewDialogService extends AbstractTuiDialogService<unknown> {
     readonly defaultOptions = {};
     readonly component = new PolymorpheusComponent(TuiPreviewDialogComponent);
 }

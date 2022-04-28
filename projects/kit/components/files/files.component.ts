@@ -21,7 +21,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<{}>> | null = null;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> | null = null;
 
     @Input()
     @tuiDefaultProp()

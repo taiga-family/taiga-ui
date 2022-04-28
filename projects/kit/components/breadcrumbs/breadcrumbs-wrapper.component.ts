@@ -33,7 +33,7 @@ export class TuiBreadcrumbsWrapperComponent implements TuiModeDirective {
     size: TuiSizeL = 'm';
 
     @ContentChildren(TuiBreadcrumbDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<{}>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     readonly change$ = new Subject<void>();
     readonly mode = 'onLight';

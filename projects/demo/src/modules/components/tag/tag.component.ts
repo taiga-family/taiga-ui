@@ -13,7 +13,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
-    errorTemplate?: TemplateRef<{}>;
+    errorTemplate?: TemplateRef<Record<string, unknown>>;
 
     readonly exampleOptions: RawLoaderContent = import(
         '!!raw-loader!./examples/import/define-options.md'

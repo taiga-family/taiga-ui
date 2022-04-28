@@ -3,8 +3,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCountOptions {
     readonly icons: Readonly<{
-        up: PolymorpheusContent<{}>;
-        down: PolymorpheusContent<{}>;
+        up: PolymorpheusContent<Record<string, unknown>>;
+        down: PolymorpheusContent<Record<string, unknown>>;
     }>;
     readonly appearance: string;
     readonly hideButtons: boolean;

@@ -18,7 +18,7 @@ export class TuiPreviewExample1 {
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     @ViewChild('contentSample')
-    readonly contentSample?: TemplateRef<{}>;
+    readonly contentSample?: TemplateRef<Record<string, unknown>>;
 
     index = 0;
     length = 2;

@@ -220,7 +220,7 @@ describe('FieldError', () => {
         })
         class TestComponent {
             @ViewChild('errorContent', {static: true})
-            errorContent!: PolymorpheusTemplate<{}>;
+            errorContent!: PolymorpheusTemplate<Record<string, unknown>>;
 
             readonly testMes = ZIP_CODE_MESSAGE;
 

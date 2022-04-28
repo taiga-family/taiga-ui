@@ -16,7 +16,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 })
 export class ExampleTuiErrorComponent {
     @ViewChild('errorContent')
-    errorContent?: TemplateRef<{}>;
+    errorContent?: TemplateRef<Record<string, unknown>>;
 
     readonly exampleModule = exampleModule;
     readonly exampleHtml = exampleHtml;

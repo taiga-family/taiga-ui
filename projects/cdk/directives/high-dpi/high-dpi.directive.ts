@@ -12,7 +12,7 @@ export class TuiHighDpiDirective {
     constructor(
         @Inject(WINDOW) {devicePixelRatio}: Window,
         @Inject(ViewContainerRef) viewContainer: ViewContainerRef,
-        @Inject(TemplateRef) templateRef: TemplateRef<unknown>,
+        @Inject(TemplateRef) templateRef: TemplateRef<Record<string, unknown>>,
     ) {
         if (devicePixelRatio > 1) {
             viewContainer.createEmbeddedView(templateRef);

@@ -43,7 +43,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @ViewChildren(TuiRadioLabeledComponent)
-    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<{}>> = EMPTY_QUERY;
+    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<unknown>> =
+        EMPTY_QUERY;
 
     @Input()
     @tuiDefaultProp()

@@ -178,7 +178,7 @@ export class TuiInputTagComponent
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     @ViewChild('errorIcon')
-    readonly errorIconTemplate?: TemplateRef<{}>;
+    readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
 
     @ViewChild(TuiScrollbarComponent)
     set scrollerSetter(scroller: TuiScrollbarComponent | null) {

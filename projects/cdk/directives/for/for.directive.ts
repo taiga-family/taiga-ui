@@ -11,8 +11,8 @@ import {
 @Directive({
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
 })
-export class TuiForDirective<T, K = {}> implements OnChanges {
-    private ref?: EmbeddedViewRef<{}>;
+export class TuiForDirective<T, K = unknown> implements OnChanges {
+    private ref?: EmbeddedViewRef<unknown>;
 
     @Input()
     ngForOf: T[] | readonly T[] | null = [];

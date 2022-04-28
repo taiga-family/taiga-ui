@@ -6,7 +6,7 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
-export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
+export abstract class AbstractTuiDialogService<T> extends Observable<
     ReadonlyArray<TuiDialog<T, any>>
 > {
     protected abstract readonly component: PolymorpheusComponent<any, TuiDialog<T, any>>;

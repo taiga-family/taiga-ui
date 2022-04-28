@@ -31,7 +31,7 @@ export class TuiSvgDefsHostComponent implements OnInit {
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(PLATFORM_ID) platformId: Object,
+        @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
     ) {
         this.isBrowser = !isPlatformServer(platformId);
         innerHTML(documentRef);

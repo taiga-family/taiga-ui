@@ -37,7 +37,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
 
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiContextWithImplicit<TemplateRef<{}>>,
+        readonly context: TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>,
         @Inject(TUI_DATA_LIST_HOST)
         private readonly host: TuiDataListHost<T>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 
 export interface TuiTreeItemContext extends TuiContextWithImplicit<TuiTreeItemComponent> {
-    readonly template: TemplateRef<unknown>;
+    readonly template: TemplateRef<Record<string, unknown>>;
 }
 
 export interface TuiTreeContext<T> extends TuiContextWithImplicit<T> {

@@ -52,7 +52,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     readonly emits$ = new BehaviorSubject(1);
 
     constructor(
-        @Inject(TemplateRef) readonly template: TemplateRef<{}>,
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
         @Inject(Location) private readonly locationRef: Location,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
