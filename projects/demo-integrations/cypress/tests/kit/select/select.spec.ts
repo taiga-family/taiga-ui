@@ -10,10 +10,12 @@ describe('Select', () => {
     });
 
     it('opens dropdown by click on icon', () => {
-        cy.get('tui-doc-example')
-            .first()
+        cy.get('#base tui-select')
+            .last()
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .trigger('click', {x: 330, y: 220})
+            .trigger('click', {x: 300, y: 30});
+
+        cy.get('#base')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot('01-click-arrow');
     });
