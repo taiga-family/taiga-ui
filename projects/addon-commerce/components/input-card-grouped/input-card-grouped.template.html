@@ -26,7 +26,7 @@
                 tuiInputMode="numeric"
                 class="t-input t-input_card"
                 [class.t-input_inert]="cardPrefilled"
-                [class.t-input_hidden]="isCardCollapsed"
+                [class.t-input_hidden]="!card.length && focused"
                 [attr.id]="idCard"
                 [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
                 [placeholder]="cardPrefilled ? '' : exampleText"
@@ -42,8 +42,8 @@
             <span
                 aria-hidden="true"
                 class="t-collapsed"
-                [class.t-collapsed_inactive]="!isCardCollapsed"
                 [attr.data-before]="masked"
+                [class.t-collapsed_enable-mask]="isCardCollapsed"
             >
                 <span class="t-collapsed-wrapper">
                     <span
