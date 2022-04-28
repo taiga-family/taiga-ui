@@ -6,7 +6,7 @@ import {viewportHeight, viewportWidth} from './../../cypress.json';
 
 export default (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): void => {
     tuiAddSnapshotPlugin(on, config, {
-        newSnapshotMark: '==[new]==',
+        newSnapshotMarkFn: oldFileName => `==[new]==${oldFileName}`,
         newSnapshotMarkEnabled: config.baseUrl === 'https://taiga-ui.dev/next/',
     });
     on('before:browser:launch', (browser, launchOptions) => {
