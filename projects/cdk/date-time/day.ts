@@ -103,6 +103,18 @@ export class TuiDay extends TuiMonth {
     }
 
     /**
+     * Returns current day based on UTC
+     */
+    static currentUtc(): TuiDay {
+        const nativeDate = new Date();
+        const year = nativeDate.getUTCFullYear();
+        const month = nativeDate.getUTCMonth();
+        const day = nativeDate.getUTCDate();
+
+        return new TuiDay(year, month, day);
+    }
+
+    /**
      * Calculates {@link TuiDay} normalizing year, month and day. {@link NaN} is turned into minimal value.
      *
      * @param year any year value, including invalid

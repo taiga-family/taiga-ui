@@ -80,6 +80,32 @@ describe('TuiDay', () => {
             });
         });
 
+        describe('currentUtc returns date', () => {
+            beforeEach(() => {
+                pendingIfNotMoscowTimeZone();
+            });
+
+            it('UTC is the same as local', () => {
+                mockDateInside(new Date(2000, 0, 31, 10), () => {
+                    const currentDate = TuiDay.currentUtc();
+
+                    expect(currentDate.year).toBe(2000);
+                    expect(currentDate.month).toBe(0);
+                    expect(currentDate.day).toBe(31);
+                });
+            });
+
+            it('UTC is smaller than local', () => {
+                mockDateInside(new Date(2000, 0, 1, 2), () => {
+                    const currentDate = TuiDay.currentUtc();
+
+                    expect(currentDate.year).toBe(1999);
+                    expect(currentDate.month).toBe(11);
+                    expect(currentDate.day).toBe(31);
+                });
+            });
+        });
+
         describe('getDayFromMonthRowCol returns', () => {
             describe('day from adjacent month if these coordinates are outside current month', () => {
                 describe('2016.03', () => {

@@ -143,8 +143,12 @@ describe('TuiMonth', () => {
         });
 
         describe('currentUtc', () => {
-            it('UTC month is the same as local', () => {
-                mockDateInside(Date.UTC(2000, 0, 31, 10), () => {
+            beforeEach(() => {
+                pendingIfNotMoscowTimeZone();
+            });
+
+            it('UTC is the same as local', () => {
+                mockDateInside(new Date(2000, 0, 31, 10), () => {
                     const currentDate = TuiMonth.currentUtc();
 
                     expect(currentDate.year).toBe(2000);
@@ -153,11 +157,11 @@ describe('TuiMonth', () => {
             });
 
             it('UTC is smaller than local', () => {
-                mockDateInside(Date.UTC(2000, 0, 31, 23), () => {
+                mockDateInside(new Date(2000, 0, 1, 2), () => {
                     const currentDate = TuiMonth.currentUtc();
 
-                    expect(currentDate.year).toBe(2000);
-                    expect(currentDate.month).toBe(0);
+                    expect(currentDate.year).toBe(1999);
+                    expect(currentDate.month).toBe(11);
                 });
             });
         });
