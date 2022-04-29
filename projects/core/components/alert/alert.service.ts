@@ -11,9 +11,7 @@ import {Observable} from 'rxjs';
 
 import {TuiAlertComponent, TuiNotificationContentContext} from './alert.component';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiAlertService extends AbstractTuiDialogService<TuiAlertOptions<any>> {
     protected readonly component = new PolymorpheusComponent(TuiAlertComponent);
 

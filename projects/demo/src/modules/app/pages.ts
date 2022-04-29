@@ -1220,9 +1220,9 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Tools`,
-                title: 'NotificationsService',
+                title: 'AlertService',
                 keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-                route: '/services/notifications-service',
+                route: '/services/alert-service',
             },
             {
                 section: $localize`Tools`,

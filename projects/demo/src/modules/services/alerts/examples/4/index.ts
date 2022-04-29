@@ -2,39 +2,40 @@ import {Component, Inject, Injector} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
-import {AlertExampleComponent} from './alert-example/alert-example.component';
+import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-example-with-data.component';
 
 @Component({
-    selector: 'tui-notifications-example-3',
+    selector: 'tui-alerts-example-4',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
-export class TuiNotificationsExampleComponent3 {
+export class TuiAlertsExampleComponent4 {
     readonly notification: Observable<void>;
 
     constructor(
-        @Inject(TuiNotificationsService) notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService) alertService: TuiAlertService,
         @Inject(Router) router: Router,
         @Inject(Injector) private readonly injector: Injector,
     ) {
-        this.notification = notificationsService
-            .show<boolean>(
-                new PolymorpheusComponent(AlertExampleComponent, this.injector),
+        this.notification = alertService
+            .open<number>(
+                new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
-                    label: 'Question',
-                    status: TuiNotification.Error,
+                    label: 'Heading is so long that it should be shown in two lines of text',
+                    data: 237,
+                    status: TuiNotification.Warning,
                     autoClose: false,
                 },
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.show(`Got a value — ${response}`, {
+                    alertService.open(`Got a value — ${response}`, {
                         label: 'Information',
                     }),
                 ),

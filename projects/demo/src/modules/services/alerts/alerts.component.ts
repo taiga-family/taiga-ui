@@ -1,44 +1,41 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TuiNotification,
-    TuiNotificationContentContext,
-    TuiNotificationsService,
-} from '@taiga-ui/core';
+import {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {TuiAlertOptions, TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
 
 @Component({
-    selector: 'example-tui-notifications',
-    templateUrl: './notifications.template.html',
-    styleUrls: ['./notifications.style.less'],
+    selector: 'example-tui-alerts',
+    templateUrl: './alerts.template.html',
+    styleUrls: ['./alerts.style.less'],
     changeDetection,
 })
-export class ExampleTuiNotificationsComponent {
+export class ExampleTuiAlertsComponent {
     readonly method = import('!!raw-loader!./method.md');
 
     readonly exampleImportModuleComponent = import(
-        '!!raw-loader!./examples/import/import-module-component.txt'
+        '!!raw-loader!./examples/import/import-module-component.md'
     );
 
     readonly exampleServiceUsage = import(
-        '!!raw-loader!./examples/import/service-usage.txt'
+        '!!raw-loader!./examples/import/service-usage.md'
     );
 
     readonly exampleServiceUsageComponent = import(
-        '!!raw-loader!./examples/import/service-usage-component.txt'
+        '!!raw-loader!./examples/import/service-usage-component.md'
     );
 
     readonly exampleCustomAlert = import(
-        '!!raw-loader!./examples/import/custom-alert.txt'
+        '!!raw-loader!./examples/import/custom-alert.md'
     );
 
-    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.txt');
-    readonly exampleModule = import('!!raw-loader!./examples/import/module.txt');
-    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.txt');
+    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.md');
+    readonly exampleModule = import('!!raw-loader!./examples/import/module.md');
+    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
@@ -137,12 +134,12 @@ export class ExampleTuiNotificationsComponent {
 
     readonly component: PolymorpheusComponent<
         AlertExampleWithDataComponent,
-        TuiNotificationContentContext<number, number>
+        TuiBaseDialogContext<number> & TuiAlertOptions<number>
     >;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
         @Inject(Injector) injector: Injector,
     ) {
         this.component = new PolymorpheusComponent(
@@ -152,14 +149,14 @@ export class ExampleTuiNotificationsComponent {
     }
 
     get selectedContent(): PolymorpheusContent<
-        TuiNotificationContentContext<number, number>
+        TuiBaseDialogContext<number> & TuiAlertOptions<number>
     > {
         return this.content === 'String' ? this.content : this.component;
     }
 
     showNotification(): void {
-        this.notificationsService
-            .show(this.selectedContent, {
+        this.alertService
+            .open(this.selectedContent, {
                 label: this.label,
                 data: this.data,
                 status: this.status,
@@ -169,7 +166,7 @@ export class ExampleTuiNotificationsComponent {
             })
             .pipe(
                 switchMap(response =>
-                    this.notificationsService.show(response, {
+                    this.alertService.open(response, {
                         label: 'Notification responded with:',
                     }),
                 ),
