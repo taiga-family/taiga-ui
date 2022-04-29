@@ -1,4 +1,4 @@
-import {Directive, DoCheck, Inject} from '@angular/core';
+import {Directive, DoCheck, forwardRef, Inject} from '@angular/core';
 
 import {TuiThComponent} from '../th/th.component';
 import {TuiSortByDirective} from './sort-by.directive';
@@ -9,7 +9,8 @@ import {TuiTableDirective} from './table.directive';
 })
 export class TuiSortableDirective<T> implements DoCheck {
     constructor(
-        @Inject(TuiSortByDirective) private readonly sortBy: TuiSortByDirective<T>,
+        @Inject(forwardRef(() => TuiSortByDirective))
+        private readonly sortBy: TuiSortByDirective<T>,
         @Inject(TuiTableDirective) private readonly table: TuiTableDirective<T>,
         @Inject(TuiThComponent) private readonly th: TuiThComponent<T>,
     ) {
