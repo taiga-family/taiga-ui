@@ -242,4 +242,31 @@ describe('TuiSliderKeyStepsDirective', () => {
             });
         }
     });
+
+    it('forbids to programmatically set the control value LESS THAN the LOWEST keyStep value', () => {
+        testComponent.control = new FormControl(0);
+        fixture.detectChanges();
+
+        expect(testComponent.control.value).toBe(5_000);
+        expect(testComponent.inputElRef.nativeElement.value).toBe(`${testComponent.min}`);
+    });
+
+    it('forbids to programmatically set the control value MORE THAN the UPPERMOST keyStep value', () => {
+        testComponent.control = new FormControl(3_000_000);
+        fixture.detectChanges();
+
+        expect(testComponent.control.value).toBe(1_000_000);
+        expect(testComponent.inputElRef.nativeElement.value).toBe(`${testComponent.max}`);
+    });
+
+    it('sets the thumb to the `min`-value when the lowest keyStep value equals to the uppermost one', () => {
+        testComponent.keySteps = [
+            [0, 25_000],
+            [100, 25_000],
+        ];
+        testComponent.control = new FormControl(25_000);
+        fixture.detectChanges();
+
+        expect(testComponent.inputElRef.nativeElement.value).toBe(`${testComponent.min}`);
+    });
 });

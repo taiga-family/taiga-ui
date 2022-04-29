@@ -76,7 +76,7 @@ export class TuiSliderComponent {
 
     @HostBinding('style.--tui-slider-fill-percentage.%')
     get valuePercentage(): number {
-        return (100 * (this.value - this.min)) / (this.max - this.min);
+        return (100 * (this.value - this.min)) / (this.max - this.min) || 0;
     }
 
     @HostBinding('style.--tui-slider-segment-width.%')

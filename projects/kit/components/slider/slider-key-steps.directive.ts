@@ -14,7 +14,9 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    clamp,
     isNativeFocused,
+    tuiAssert,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     typedFromEvent,
@@ -96,7 +98,18 @@ export class TuiSliderKeyStepsDirective
             return;
         }
 
-        this.slider.value = this.transformToNativeValue(controlValue);
+        const clampedControlValue = clamp(controlValue, this.min, this.max);
+
+        if (controlValue !== clampedControlValue) {
+            this.control?.setValue(clampedControlValue);
+
+            tuiAssert.assert(
+                false,
+                '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
+            );
+        }
+
+        this.slider.value = this.transformToNativeValue(clampedControlValue);
     }
 
     protected getFallbackValue(): number {
