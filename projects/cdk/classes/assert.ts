@@ -2,7 +2,7 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 
 export const tuiAssert = {
     enabled: false,
-    get assert(): (assertion: boolean, ...args: any[]) => void {
+    get assert(): (assertion: boolean, ...args: unknown[]) => void {
         return this.enabled
             ? Function.prototype.bind.call(console.assert, console)
             : EMPTY_FUNCTION;
