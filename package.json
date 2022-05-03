@@ -103,6 +103,7 @@
         "@tinkoff/prettier-config": "^1.32.1",
         "@tinkoff/stylelint-config": "^1.30.0",
         "@types/node": "^12.20.46",
+        "@types/webpack-env": "^1.16.4",
         "angular-http-server": "^1.10.0",
         "concurrently": "^7.0.0",
         "find-in-files": "0.5.0",
