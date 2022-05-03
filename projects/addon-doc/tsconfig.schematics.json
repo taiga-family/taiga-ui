@@ -1,12 +1,9 @@
 {
-    "extends": "../../tsconfig.json",
+    "extends": "../../tsconfig.schematics.json",
     "compilerOptions": {
-        "outDir": "../../dist",
-        "rootDir": "schematics",
         "baseUrl": ".",
-        "declaration": true,
-        "module": "commonjs",
-        "types": ["jasmine", "node"]
+        "rootDir": "schematics",
+        "outDir": "../../dist/addon-doc/schematics"
     },
     "include": ["schematics/**/*"],
     "exclude": ["schematics/*/files/**/*"]

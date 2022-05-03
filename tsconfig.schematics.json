@@ -1,12 +1,14 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "dist/cdk/schematics",
-        "rootDir": "projects/cdk/schematics",
         "baseUrl": ".",
         "declaration": true,
-        "module": "commonjs",
         "target": "es6",
-        "types": ["jasmine", "node"]
+        "module": "commonjs",
+        "outDir": "dist/cdk/schematics",
+        "rootDir": "projects/cdk/schematics",
+        "types": ["jasmine", "jasmine-ajax", "node", "webpack-env"],
+        "tsBuildInfoFile": "node_modules/.cache/schematics.tsbuildinfo"
     },
     "include": ["projects/cdk/schematics/**/*"],
     "exclude": ["projects/cdk/schematics/**/*.spec.ts"]
