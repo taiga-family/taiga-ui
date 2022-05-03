@@ -68,5 +68,6 @@ module.exports = {
                 allowConciseArrowFunctionExpressionsStartingWithVoid: true,
             },
         ],
+        '@typescript-eslint/no-base-to-string': 'error',
     },
 };
