@@ -242,4 +242,15 @@ describe('TuiSliderKeyStepsDirective', () => {
             });
         }
     });
+
+    it('sets the thumb to the `min`-value when the lowest keyStep value equals to the uppermost one', () => {
+        testComponent.keySteps = [
+            [0, 25_000],
+            [100, 25_000],
+        ];
+        testComponent.control = new FormControl(25_000);
+        fixture.detectChanges();
+
+        expect(testComponent.inputElRef.nativeElement.value).toBe(`${testComponent.min}`);
+    });
 });

@@ -216,7 +216,7 @@ export class TuiInputSliderComponent
     }
 
     onVerticalArrowKeyDown(coefficient: number): void {
-        if (this.readOnly) {
+        if (this.readOnly || !this.step) {
             return;
         }
 

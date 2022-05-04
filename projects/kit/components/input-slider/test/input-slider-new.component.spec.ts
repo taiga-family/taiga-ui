@@ -331,6 +331,41 @@ describe('InputSlider[new]', () => {
                 expect(testComponent.control.value).toBe(-10);
             });
         });
+
+        describe('if `min`-property equals to `max`-property', () => {
+            beforeEach(async () => {
+                testComponent.control = new FormControl(25);
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                testComponent.min = 25;
+                testComponent.max = 25;
+                testComponent.quantum = 1;
+                fixture.detectChanges();
+            });
+
+            it('pressing ArrowUp does not change value', async () => {
+                inputPO.focus();
+                inputPO.sendKeydown('arrowUp');
+                inputPO.blur();
+
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                expect(testComponent.control.value).toBe(25);
+            });
+
+            it('pressing ArrowDown does not change value', async () => {
+                inputPO.focus();
+                inputPO.sendKeydown('arrowDown');
+                inputPO.blur();
+
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                expect(testComponent.control.value).toBe(25);
+            });
+        });
     });
 
     describe('`max` prop', () => {

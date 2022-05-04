@@ -38,7 +38,7 @@ export function tuiKeyStepValueToPercentage(
             keySteps,
             ([_, keyStepValue]) => value <= keyStepValue,
         );
-    const ratio = (value - lowerStepValue) / (upperStepValue - lowerStepValue);
+    const ratio = (value - lowerStepValue) / (upperStepValue - lowerStepValue) || 0;
 
     return (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;
 }

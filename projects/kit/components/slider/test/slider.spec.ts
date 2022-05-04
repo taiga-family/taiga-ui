@@ -36,6 +36,9 @@ describe('Slider', () => {
         @ViewChild('controller', {static: true, read: ElementRef})
         formControllerElementRef!: ElementRef<HTMLInputElement>;
 
+        @ViewChild('controller', {static: true})
+        formControllerComponentRef!: TuiSliderComponent;
+
         @ViewChild('model', {static: true, read: ElementRef})
         ngModelElementRef!: ElementRef<HTMLInputElement>;
 
@@ -165,6 +168,19 @@ describe('Slider', () => {
             it('value = 230 => 90%', async () => {
                 await changeValueAndCheck(230, '90%');
             });
+        });
+
+        it('is set to zero when `min`-property equals to `max`-property', () => {
+            testComponent.min = 25;
+            testComponent.max = 25;
+            testComponent.formController = new FormControl(25);
+
+            fixture.detectChanges();
+
+            expect(testComponent.formControllerComponentRef.valuePercentage).toBe(0);
+            expect(
+                getFillPercentage(testComponent.formControllerElementRef.nativeElement),
+            ).toBe('0%');
         });
     });
 
