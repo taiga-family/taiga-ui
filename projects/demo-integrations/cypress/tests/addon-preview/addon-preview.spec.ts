@@ -4,7 +4,7 @@ describe('Addon preview', () => {
     });
 
     it('Full preview scrolled', () => {
-        cy.get(`tui-preview-example-1 button`).first().click();
+        cy.get(`tui-preview-example-1 button`).first().tuiScrollIntoView().click();
         cy.tuiWaitKitDialog('tui-preview');
         cy.get('tui-preview')
             .wait(350)
@@ -18,7 +18,7 @@ describe('Addon preview', () => {
     });
 
     it('No preview available', () => {
-        cy.get(`tui-preview-example-3 button`).first().click();
+        cy.get(`tui-preview-example-3 button`).first().tuiScrollIntoView().click();
         cy.tuiWaitKitDialog('tui-preview');
         cy.get('tui-preview')
             .wait(350)

@@ -11,7 +11,10 @@ describe('MultiSelect', () => {
         });
 
         it('does not overflow arrow icon by many tags', () => {
-            cy.get('#object-array').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('#object-array')
+                .findByAutomationId('tui-doc-example')
+                .should('be.visible')
+                .as('wrapper');
 
             cy.get('@wrapper').find('tui-multi-select').click();
 

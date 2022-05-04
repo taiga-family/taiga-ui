@@ -5,6 +5,7 @@ const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
         .get<Array<{state: string}>>(`${alias}.all`)
         .then(reqs => reqs.filter(req => req.state !== 'Complete'));
 
+/** TODO delete me after we make sure that {@link tuiWaitAllIconsInside} actually works as expected */
 export const waitAllRequests = (alias: string): void => {
     getNotLoadedRequests(alias)
         .then(reqs => {

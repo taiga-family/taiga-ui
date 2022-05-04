@@ -47,7 +47,7 @@ const MOBILE_USER_AGENT =
 export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     const {
         inIframe = true,
-        waitAllIcons = true,
+        waitAllIcons = false,
         enableNightMode = false,
         hideCursor = true,
         hideScrollbar = true,

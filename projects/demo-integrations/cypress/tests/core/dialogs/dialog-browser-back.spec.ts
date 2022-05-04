@@ -31,6 +31,7 @@ describe('Dialogs + browser back navigation', () => {
                 .findByAutomationId('tui-doc-example')
                 .find('button')
                 .first()
+                .tuiScrollIntoView()
                 .click();
             cy.tuiWaitKitDialog();
 
