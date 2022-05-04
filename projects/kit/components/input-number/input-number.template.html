@@ -26,12 +26,14 @@
         ngProjectAs="input"
     ></ng-content>
     <div
-        *ngIf="polymorpheusValueContent"
+        *ngIf="polymorpheusValueContent.length"
         polymorpheus-outlet
         class="t-value-content"
         [content]="valueContent"
     ></div>
 </tui-primitive-textfield>
+
+<ng-container *ngIf="polymorpheusValueContent.changes | async"></ng-container>
 
 <ng-template #valueContent>
     <ng-content select="[polymorpheus-outlet]"></ng-content>
