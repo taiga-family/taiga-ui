@@ -630,6 +630,47 @@
                         }
                     }
                 },
+                "serve:ssl": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx mkcert demo && nx serve --ssl"}
+                },
+                "serve:ip": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx serve --open --host 0.0.0.0 --disable-host-check"}
+                },
+                "serve:ru": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx serve --configuration ru"}
+                },
+                "serve:default": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx serve --configuration def"}
+                },
+                "serve:shadow": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx serve --configuration shadow"}
+                },
+                "serve:hmr": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "nx serve --configuration hmr"}
+                },
+                "serve:ssr": {
+                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "options": {
+                        "browserTarget": "demo:build",
+                        "serverTarget": "demo:server"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "demo:build:production",
+                            "serverTarget": "demo:server:production"
+                        }
+                    }
+                },
+                "serve:compiled": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {"command": "cd dist/demo/browser && angular-http-server -p 3333 --silent"}
+                },
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
                     "options": {
@@ -645,19 +686,6 @@
                             "outputHashing": "media",
                             "sourceMap": false,
                             "optimization": true
-                        }
-                    }
-                },
-                "serve-ssr": {
-                    "builder": "@nguniversal/builders:ssr-dev-server",
-                    "options": {
-                        "browserTarget": "demo:build",
-                        "serverTarget": "demo:server"
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "demo:build:production",
-                            "serverTarget": "demo:server:production"
                         }
                     }
                 },

@@ -48,7 +48,7 @@ jobs:
 
       - name: Serve demo/local application in background
         run: |
-          npm run serve:compiled & sleep 5
+          npx nx serve:compiled demo & sleep 5
           curl -X GET -I -f "http://localhost:3333"
 
       - name: Run screenshot tests on demo/localhost
