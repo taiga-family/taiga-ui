@@ -1,4 +1,4 @@
-import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
+import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 
 import {tuiHideHeader} from './hide-header';
 import {tuiHideNavigation} from './hide-navigation';
@@ -31,7 +31,7 @@ Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
 Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
 Cypress.Commands.add('tuiHideNavigation', tuiHideNavigation);
 
-addMatchImageSnapshotCommand({
+tuiAddMatchImageSnapshotCommand({
     allowSizeMismatch: true, // Windows CI fix
     runInProcess: true, // macOS CI fix
     failureThreshold: 0.0004,

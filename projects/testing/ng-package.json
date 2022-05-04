@@ -2,7 +2,7 @@
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/testing",
     "lib": {
-        "entryFile": "src/public-api.ts"
+        "entryFile": "index.ts"
     },
     "whitelistedNonPeerDependencies": [
         "."

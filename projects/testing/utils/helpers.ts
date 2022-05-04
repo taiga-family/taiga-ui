@@ -5,16 +5,14 @@ import {
     HarnessPredicate,
 } from '@angular/cdk/testing';
 
-interface With {
-    with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
-}
-
 /**
  * Decorator to add default static 'with' method.
  * Use in conjunction with {@link HarnessWith} mixin.
  */
 export function withPredicate<
-    T extends ComponentHarnessConstructor<ComponentHarness> & With,
+    T extends ComponentHarnessConstructor<ComponentHarness> & {
+        with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
+    },
 >(original: T): T {
     original.with = (options: BaseHarnessFilters = {}) =>
         new HarnessPredicate(original, options);
@@ -27,13 +25,19 @@ export function withPredicate<
  * static 'with' method. Use {@link withPredicate} decorator
  * to monkey-patch default static 'with' method.
  */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const HarnessWith = <T>(hostSelector: string) =>
-    class extends ComponentHarness {
+export function HarnessWith<T>(
+    hostSelector: string,
+): ComponentHarnessConstructor<ComponentHarness> & {
+    with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
+} {
+    return class extends ComponentHarness {
         static hostSelector = hostSelector;
 
         // @ts-ignore
         static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
             throw new Error('Hummus');
         }
+    } as unknown as ComponentHarnessConstructor<ComponentHarness> & {
+        with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     };
+}
