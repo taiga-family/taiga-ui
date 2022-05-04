@@ -31,24 +31,24 @@ export function rollupSvgo({
             }
 
             let data: unknown;
-            let error: unknown;
+            let errorMessage: string;
 
             try {
                 const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
-                error = result.error;
+                errorMessage = result.error as string;
             } catch (err) {
-                error = err.message;
+                errorMessage = err.message;
             }
 
-            if (error) {
+            if (errorMessage) {
                 console.error(
                     '\x1b[31m%s\x1b[0m',
                     '[error]',
                     path,
                     `\n${svgString}`,
-                    `\n${error}`,
+                    `\n${errorMessage}`,
                 );
                 process.exit(1);
             }
