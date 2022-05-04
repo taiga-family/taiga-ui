@@ -1,9 +1,62 @@
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../support/shared.entities';
+
 describe('InputCardGrouped', () => {
-    beforeEach(() => cy.viewport('macbook-13'));
+    describe('API mode', () => {
+        beforeEach(() => {
+            cy.viewport('macbook-13');
+            cy.tuiVisit('components/input-card-grouped/API?tuiMode=null');
+        });
+
+        it('set value and clear after', () => {
+            cy.get('#demoContent').should('be.visible').as('wrapper');
+
+            cy.get('@wrapper')
+                .findByAutomationId('tui-input-card-grouped__card')
+                .type('1234 4567 8910 1112');
+
+            closeTuiAlerts();
+
+            cy.get('@wrapper').matchImageSnapshot('01-input-card-grouped-filled');
+
+            cy.get('@wrapper').find('[src="tuiIconCloseLarge"]').click({force: true});
+            cy.get('@wrapper').matchImageSnapshot('02-input-card-grouped-cleared');
+
+            cy.get('@wrapper').click({force: true});
+            cy.get('@wrapper').matchImageSnapshot('03-input-card-grouped-unfocused');
+        });
+
+        it('set value and disable', () => {
+            cy.get('#demoContent').should('be.visible').as('wrapper');
+
+            cy.get('@wrapper')
+                .findByAutomationId('tui-input-card-grouped__card')
+                .type('1234 4567 1000 1112');
+
+            closeTuiAlerts();
+
+            cy.get('.t-table tr')
+                .eq(1) // formControl.disable()
+                .findByAutomationId('tui-toggle__checkbox')
+                .click({force: true});
+
+            cy.get('@wrapper').matchImageSnapshot('04-input-card-grouped-disabled');
+        });
+
+        // prevent flaky screenshot tests
+        function closeTuiAlerts(): void {
+            cy.get('tui-alert-host')
+                .findByAutomationId('tui-notification__close')
+                .click({force: true});
+        }
+    });
 
     describe('Examples', () => {
-        it('input card grouped with validation', () => {
+        beforeEach(() => {
+            cy.viewport('macbook-13');
             cy.tuiVisit('components/input-card-grouped');
+        });
+
+        it('input card grouped with validation', () => {
             cy.get('tui-doc-example[heading="With validation"]')
                 .findByAutomationId('tui-doc-example')
                 .should('be.visible')
@@ -17,15 +70,24 @@ describe('InputCardGrouped', () => {
 
             cy.get('@example').matchImageSnapshot('05-default-state-input-card');
 
-            cy.get('@cardNumber').type('5213 0000 4039 5834');
+            cy.get('@cardNumber')
+                .type('5213 0000 4039 5834')
+                .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+
             cy.get('@example').matchImageSnapshot('06-input-card-with-value');
 
             cy.get('@cardNumber').should('be.visible').focus();
+
             cy.get('@example').matchImageSnapshot(
                 '07-input-card-with-value-focus-edit-card',
             );
 
-            cy.get('@cardNumber').should('be.visible').tab();
+            cy.get('@cardNumber')
+                .should('be.visible')
+                .focused()
+                .tuiTab('forward')
+                .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+
             cy.get('@example').matchImageSnapshot(
                 '08-input-card-with-value-tab-to-expired',
             );
@@ -60,7 +122,6 @@ describe('InputCardGrouped', () => {
         });
 
         it('input card grouped with saved cards', () => {
-            cy.tuiVisit('components/input-card-grouped');
             cy.get('tui-doc-example[heading="With saved cards"]')
                 .findByAutomationId('tui-doc-example')
                 .should('be.visible')
@@ -98,51 +159,5 @@ describe('InputCardGrouped', () => {
                 '17-default-prefilled-state-input-card',
             );
         });
-    });
-
-    describe('API mode', () => {
-        it('set value and clear after', () => {
-            cy.tuiVisit('components/input-card-grouped/API?tuiMode=null');
-            cy.get('#demoContent').should('be.visible').as('wrapper');
-
-            cy.get('@wrapper')
-                .findByAutomationId('tui-input-card-grouped__card')
-                .type('1234 4567 8910 1112');
-
-            closeTuiAlerts();
-
-            cy.get('@wrapper').matchImageSnapshot('01-input-card-grouped-filled');
-
-            cy.get('@wrapper').find('[src="tuiIconCloseLarge"]').click({force: true});
-            cy.get('@wrapper').matchImageSnapshot('02-input-card-grouped-cleared');
-
-            cy.get('@wrapper').click({force: true});
-            cy.get('@wrapper').matchImageSnapshot('03-input-card-grouped-unfocused');
-        });
-
-        it('set value and disable', () => {
-            cy.tuiVisit('components/input-card-grouped/API?tuiMode=null');
-            cy.get('#demoContent').should('be.visible').as('wrapper');
-
-            cy.get('@wrapper')
-                .findByAutomationId('tui-input-card-grouped__card')
-                .type('1234 4567 1000 1112');
-
-            closeTuiAlerts();
-
-            cy.get('.t-table tr')
-                .eq(1) // formControl.disable()
-                .findByAutomationId('tui-toggle__checkbox')
-                .click({force: true});
-
-            cy.get('@wrapper').matchImageSnapshot('04-input-card-grouped-disabled');
-        });
-
-        // prevent flaky screenshot tests
-        function closeTuiAlerts(): void {
-            cy.get('tui-alert-host')
-                .findByAutomationId('tui-notification__close')
-                .click({force: true});
-        }
     });
 });
