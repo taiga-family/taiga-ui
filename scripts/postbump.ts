@@ -7,7 +7,7 @@ import {overwriteVersion} from './shared/overwrite-version';
 import {syncVersions} from './shared/sync-versions';
 
 (function main(): void {
-    syncVersions('./projects', version);
+    syncVersions(['./projects'], version);
     overwriteVersion(resolve('./projects/core/constants/version.ts'), version);
     checkPrettierChanges();
     execSync(`git add **/package.json`, {stdio: 'inherit'});

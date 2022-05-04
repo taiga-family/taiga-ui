@@ -29,7 +29,7 @@
         "outDir": "./dist",
         "target": "es2015",
         "module": "esnext",
-        "lib": ["es2018", "dom"],
+        "lib": ["esnext", "dom"],
         "typeRoots": ["node_modules/@types"],
         "skipLibCheck": true,
         "downlevelIteration": true,
