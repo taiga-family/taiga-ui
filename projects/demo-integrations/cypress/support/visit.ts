@@ -60,7 +60,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
             window.localStorage.setItem(NIGHT_THEME_KEY, enableNightMode.toString());
         },
-    });
+    }).then(() => cy.url().should('include', path));
 
     if (waitAllIcons) {
         cy.intercept('*.svg').as('icons');
@@ -68,7 +68,6 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.window().should('have.property', 'Cypress');
 
-    cy.url().should('include', path);
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
 
     cy.document().its('fonts.status').should('equal', 'loaded');

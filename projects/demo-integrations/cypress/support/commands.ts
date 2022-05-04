@@ -3,6 +3,7 @@ import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 import {tuiHideHeader} from './hide-header';
 import {tuiHideNavigation} from './hide-navigation';
 import {tuiSetNightMode} from './set-night-mode';
+import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
 import {tuiWaitKitDialog} from './wait-kit-dialog';
 
@@ -18,7 +19,7 @@ declare global {
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
 
-            tab(options?: Partial<{shift: boolean}>): Chainable;
+            tuiTab(direction: 'forward' | 'backward'): Chainable;
         }
     }
 }
@@ -32,6 +33,12 @@ Cypress.Commands.add('tuiHideHeader', tuiHideHeader);
 Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
 Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
 Cypress.Commands.add('tuiHideNavigation', tuiHideNavigation);
+
+Cypress.Commands.add(
+    'tuiTab',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
+    tuiTab,
+);
 
 tuiAddMatchImageSnapshotCommand({
     allowSizeMismatch: true, // Windows CI fix
