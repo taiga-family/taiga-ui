@@ -17,6 +17,8 @@ declare global {
             tuiWaitKitDialog: typeof tuiWaitKitDialog;
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
+
+            tab(options?: Partial<{shift: Boolean}>): Chainable;
         }
     }
 }

@@ -144,6 +144,8 @@
     user-select: none;
     color: var(--tui-text-02);
     pointer-events: none;
+    will-change: transform;
+    transform: translateY(0);
 
     &_raised {
         transform: translateY(-0.625rem);
@@ -204,6 +206,7 @@
 
     @supports (-webkit-hyphens: none) {
         & {
+            will-change: unset;
             transition-property: transform, color, letter-spacing;
         }
     }
