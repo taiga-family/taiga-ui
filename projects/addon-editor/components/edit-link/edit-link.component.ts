@@ -29,24 +29,19 @@ export class TuiEditLinkComponent {
     @Output()
     readonly removeLink = new EventEmitter<void>();
 
-    edit: boolean;
+    url: string = this.makeUrl();
 
-    url: string;
+    edit = !this.url;
 
     prefix = 'http://';
 
     constructor(
-        @Inject(DOCUMENT) documentRef: Document,
+        @Inject(DOCUMENT)
+        private readonly documentRef: Document,
         @Optional()
         @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
-        shadowRootRef: DocumentOrShadowRoot | null,
-    ) {
-        const doc = shadowRootRef || documentRef;
-        const selection = doc.getSelection();
-
-        this.url = selection ? this.getHref(selection) : '';
-        this.edit = !this.url;
-    }
+        private readonly shadowRootRef: DocumentOrShadowRoot | null,
+    ) {}
 
     get hasUrl(): boolean {
         return !!this.url;
@@ -60,6 +55,17 @@ export class TuiEditLinkComponent {
         return this.url.length < MAX_LENGTH
             ? this.url
             : `${this.url.substr(0, START)}...${this.url.substr(this.url.length - END)}`;
+    }
+
+    private get isViewMode(): boolean {
+        return !this.edit;
+    }
+
+    @HostListener('document:selectionchange')
+    onSelectionChange(): void {
+        if (this.isViewMode) {
+            this.url = this.makeUrl();
+        }
     }
 
     @HostListener('mousedown', ['$event'])
@@ -102,6 +108,13 @@ export class TuiEditLinkComponent {
 
     onClear(): void {
         this.url = '';
+    }
+
+    // TODO: remove shadow root ref in v3.0
+    private makeUrl(): string {
+        const selection = (this.shadowRootRef || this.documentRef).getSelection();
+
+        return selection ? this.getHref(selection) : '';
     }
 
     private getHref({focusNode}: Selection): string {
