@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[816],{Jfrt:function(n,o,i){"use strict";i.r(o),o.default="import {TuiTooltipModule, TuiHintModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiTooltipModule // (1)\n        TuiHintModule // (2)\n    ],\n...\n"}}]);
