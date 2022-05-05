@@ -1579,13 +1579,13 @@ export const ROUTES = [
     },
     // SERVICES
     {
-        path: 'services/notifications-service',
+        path: 'services/alert-service',
         loadChildren: async () =>
-            import('../services/notifications/notifications.module').then(
-                m => m.ExampleTuiNotificationsModule,
+            import('../services/alerts/alerts.module').then(
+                m => m.ExampleTuiAlertsModule,
             ),
         data: {
-            title: 'NotificationsService',
+            title: 'AlertService',
         },
     },
     {

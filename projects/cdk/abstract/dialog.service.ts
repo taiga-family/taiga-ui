@@ -23,7 +23,7 @@ export abstract class AbstractTuiDialogService<T> extends Observable<
         super(observer => this.dialogs$.subscribe(observer));
     }
 
-    open<G>(
+    open<G = void>(
         content: PolymorpheusContent<TuiBaseDialogContext<G> & T>,
         options: Partial<T> = {},
     ): Observable<G> {

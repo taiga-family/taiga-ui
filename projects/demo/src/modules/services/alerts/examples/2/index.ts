@@ -1,35 +1,32 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiNotification,
-    TuiNotificationContentContext,
-    TuiNotificationsService,
-} from '@taiga-ui/core';
+import {TuiAlertContext} from '@taiga-ui/cdk';
+import {TuiAlertOptions, TuiAlertService, TuiNotification} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-notifications-example-2',
+    selector: 'tui-alerts-example-2',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
-export class TuiNotificationsExampleComponent2 {
+export class TuiAlertsExampleComponent2 {
     @ViewChild('withdrawTemplate')
-    withdrawTemplate?: TemplateRef<TuiNotificationContentContext>;
+    withdrawTemplate?: TemplateRef<TuiAlertContext<TuiAlertOptions<unknown>>>;
 
     @ViewChild('depositTemplate')
-    depositTemplate?: TemplateRef<TuiNotificationContentContext>;
+    depositTemplate?: TemplateRef<TuiAlertContext<TuiAlertOptions<unknown>>>;
 
     money = 1000;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     showWithdrawAlert(): void {
-        this.notificationsService
-            .show(this.withdrawTemplate || '', {
+        this.alertService
+            .open(this.withdrawTemplate || '', {
                 label: 'A template sample',
                 status: TuiNotification.Warning,
                 autoClose: false,
@@ -38,8 +35,8 @@ export class TuiNotificationsExampleComponent2 {
     }
 
     showDepositAlert(): void {
-        this.notificationsService
-            .show(this.depositTemplate || '', {
+        this.alertService
+            .open(this.depositTemplate || '', {
                 label: 'A template sample',
                 status: TuiNotification.Success,
                 autoClose: false,

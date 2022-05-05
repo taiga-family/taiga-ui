@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
@@ -14,8 +14,8 @@ import {PromptService} from './prompt/prompt.service';
 })
 export class TuiDialogsExample1 {
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
         @Inject(PromptService) private readonly promptService: PromptService,
     ) {}
 
@@ -25,17 +25,17 @@ export class TuiDialogsExample1 {
         wisely: PolymorpheusContent<any>,
     ): void {
         this.promptService
-            .open(choose, {
+            .open<unknown>(choose, {
                 heading: 'Taiga UI is the best',
                 buttons: ['Absolutely!', 'No way!'],
             })
             .pipe(
                 switchMap(response =>
                     response
-                        ? this.notifications.show(wisely, {
+                        ? this.alertService.open(wisely, {
                               status: TuiNotification.Success,
                           })
-                        : this.notifications.show(poorly, {
+                        : this.alertService.open(poorly, {
                               status: TuiNotification.Error,
                           }),
                 ),

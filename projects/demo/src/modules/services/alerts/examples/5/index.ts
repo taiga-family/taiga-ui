@@ -11,12 +11,12 @@ import {AlertExampleWithCustomLabelComponent} from './alert-example-with-custom-
 import {CustomLabelComponent} from './custom-label/custom-label.component';
 
 @Component({
-    selector: 'tui-notifications-example-5',
+    selector: 'tui-alerts-example-5',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
-export class TuiNotificationsExampleComponent5 {
+export class TuiAlertsExampleComponent5 {
     readonly notification: Observable<void>;
     readonly notificationWithCustomLabel: Observable<void>;
 
