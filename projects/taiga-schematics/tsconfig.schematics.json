@@ -3,8 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "rootDir": "schematics",
-        "outDir": "../../dist/taiga-schematics",
-        "tsBuildInfoFile": "node_modules/.cache/taiga-schematics.tsbuildinfo"
+        "outDir": "../../dist/taiga-schematics"
     },
     "include": ["schematics/**/*"],
     "exclude": ["schematics/**/*.spec.ts"]
