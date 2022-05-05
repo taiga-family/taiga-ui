@@ -28,7 +28,7 @@ export async function tuiAddSnapshotPlugin(
         const {name, path, testFailure} = details;
         const possibleSnapshotPath = path
             .replace('screenshots', 'snapshots')
-            .replace(name, `${name}.snap`);
+            .replace(/\.(\w+)$/g, '.snap.$1');
         const snapshotAlreadyExists = fs.existsSync(possibleSnapshotPath);
 
         if (newSnapshotMarkEnabled && !testFailure && !snapshotAlreadyExists) {
@@ -38,8 +38,9 @@ export async function tuiAddSnapshotPlugin(
             fs.renameSync(path, newPath);
 
             console.info(
-                '\x1b[45m%s\x1b[0m',
-                `\t\t[tuiAddSnapshotPlugin]: "${name}" => "${newName}"\t\t`,
+                '\x1b[32m%s\x1b[0m',
+                '\t[tuiAddSnapshotPlugin]:',
+                `${name} => ${newName}`,
             );
 
             return matchImageSnapshotPlugin({...details, path: newPath});
