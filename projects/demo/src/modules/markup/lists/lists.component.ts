@@ -7,6 +7,7 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
+import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -38,5 +39,9 @@ export class ListsComponent {
 
     readonly example6: FrontEndExample = {
         HTML: example6Html,
+    };
+
+    readonly example7: FrontEndExample = {
+        HTML: example7Html,
     };
 }
