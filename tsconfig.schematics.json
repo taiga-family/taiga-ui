@@ -7,8 +7,7 @@
         "module": "commonjs",
         "outDir": "dist/cdk/schematics",
         "rootDir": "projects/cdk/schematics",
-        "types": ["jasmine", "jasmine-ajax", "node", "webpack-env"],
-        "tsBuildInfoFile": "node_modules/.cache/schematics.tsbuildinfo"
+        "types": ["jasmine", "jasmine-ajax", "node", "webpack-env"]
     },
     "include": ["projects/cdk/schematics/**/*"],
     "exclude": ["projects/cdk/schematics/**/*.spec.ts"]

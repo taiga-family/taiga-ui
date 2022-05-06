@@ -369,7 +369,7 @@
                     "options": {
                         "parallel": false,
                         "commands": [
-                            "tsc -p ./tsconfig.schematics.json",
+                            "tsc -p ./tsconfig.schematics.json --tsBuildInfoFile null",
                             "cp ./projects/cdk/schematics/collection.json ./dist/cdk/schematics/collection.json",
                             "cp ./projects/cdk/schematics/migration.json ./dist/cdk/schematics/migration.json",
                             "cp ./projects/cdk/schematics/ng-add/schema.json ./dist/cdk/schematics/ng-add/schema.json"
@@ -397,7 +397,7 @@
                     "options": {
                         "parallel": false,
                         "commands": [
-                            "tsc -p ./projects/cdk/schematics/tsconfig.spec.json",
+                            "tsc -p ./projects/cdk/schematics/tsconfig.spec.json --tsBuildInfoFile null",
                             "jasmine ./dist/cdk/schematics/**/*.spec.js"
                         ]
                     }
@@ -860,7 +860,7 @@
                     "options": {
                         "parallel": false,
                         "commands": [
-                            "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
+                            "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json --tsBuildInfoFile null",
                             "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json",
                             "cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
                         ]

@@ -17,6 +17,7 @@ env:
 
 jobs:
   demo-integrations:
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Cypress
     runs-on: ubuntu-latest
     env:
