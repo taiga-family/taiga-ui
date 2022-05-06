@@ -1,5 +1,5 @@
 ```ts
-import {TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
 // ...
 
