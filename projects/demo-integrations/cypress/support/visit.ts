@@ -70,6 +70,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
 
+    cy.document().its('fonts.size').should('be.greaterThan', 0);
     cy.document().its('fonts.status').should('equal', 'loaded');
 
     if (waitAllIcons) {
