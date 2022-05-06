@@ -5,7 +5,7 @@ describe('DataList', () => {
         cy.tuiVisit('/components/data-list');
     });
 
-    it('Complex', () => {
+    it('Complex', {responseTimeout: 30_000}, () => {
         const demo = `tui-doc-example[id=complex] .t-demo`;
 
         cy.get(demo).scrollIntoView().should('be.visible');

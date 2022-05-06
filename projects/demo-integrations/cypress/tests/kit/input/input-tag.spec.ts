@@ -5,7 +5,7 @@ describe('Input tag', () => {
         cy.tuiVisit(`components/input-tag`);
     });
 
-    it('switch theme mode', () => {
+    it('switch theme mode', {responseTimeout: 30_000}, () => {
         cy.get('tui-doc-example').should('be.visible');
 
         cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION).matchImageSnapshot(
