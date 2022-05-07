@@ -56,6 +56,10 @@ export class TuiTreeComponent<T> implements DoCheck {
         readonly directive: TuiTreeChildrenDirective<T> | null,
     ) {}
 
+    get isExpandable(): boolean {
+        return !!this.handler(this.value).length;
+    }
+
     @Input()
     content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
 

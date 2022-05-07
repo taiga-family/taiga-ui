@@ -7,6 +7,7 @@ import {
     forwardRef,
     HostBinding,
     Inject,
+    Optional,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
@@ -21,6 +22,7 @@ import {
     TUI_TREE_LEVEL,
     TUI_TREE_NODE,
 } from '../../misc/tree.tokens';
+import {TuiTreeComponent} from '../tree/tree.component';
 import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
 
 @Component({
@@ -51,6 +53,9 @@ export class TuiTreeItemComponent implements DoCheck {
     );
 
     constructor(
+        @Optional()
+        @Inject(TuiTreeComponent)
+        private readonly parent: TuiTreeComponent<unknown> | null,
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(forwardRef(() => TUI_TREE_CONTROLLER))
@@ -63,7 +68,7 @@ export class TuiTreeItemComponent implements DoCheck {
 
     @HostBinding('class._expandable')
     get isExpandable(): boolean {
-        return !!this.nested.length;
+        return this.parent?.isExpandable ?? !!this.nested.length;
     }
 
     get isExpanded(): boolean {

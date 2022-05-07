@@ -9,9 +9,14 @@
         [content]="content"
         [context]="{$implicit: value, node: view}"
     ></div>
-    <tui-tree
-        *ngFor="let child of children"
-        [value]="child"
-        [content]="content"
-    ></tui-tree>
+    <ng-container
+        *ngIf="view.isExpanded"
+        ngProjectAs="tui-tree"
+    >
+        <tui-tree
+            *ngFor="let child of children"
+            [value]="child"
+            [content]="content"
+        ></tui-tree>
+    </ng-container>
 </tui-tree-item>
