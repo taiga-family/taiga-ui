@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-tabs-example-4',
@@ -13,11 +13,11 @@ export class TuiTabsExample4 {
     activeItemIndex = 0;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     onClick(item: string): void {
-        this.notifications.show(item).subscribe();
+        this.alertService.open(item).subscribe();
     }
 }

@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -72,8 +72,8 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     control = new FormControl();
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {
         super();
     }
@@ -97,7 +97,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     }
 
     onBinChange(bin: string | null): void {
-        this.notifications.show(`bin: ${bin}`).subscribe();
+        this.alertService.open(`bin: ${bin}`).subscribe();
     }
 
     getContentVariants(

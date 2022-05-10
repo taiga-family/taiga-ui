@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {TuiSelectComponent} from '@taiga-ui/kit';
 
 @Component({
@@ -25,12 +25,12 @@ export class TuiSelectExample4 {
     value = this.pythons[0];
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);
-        this.notifications.show('Add more is clicked').subscribe();
+        this.alertService.open('Add more is clicked').subscribe();
     }
 }

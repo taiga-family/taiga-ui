@@ -32,7 +32,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Radio', 'RadioBlock', 'RadioLabeled', 'RadioList'],
     ['ComboBox', 'MultiSelect', 'Select'],
     ['Badge', 'Tag'],
-    ['Notification', 'NotificationsService'],
+    ['Notification', 'AlertService'],
     ['Scrollbar', 'ScrollService'],
     ['Dropdown', 'DropdownSelection', 'HostedDropdown'],
 ];

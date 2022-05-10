@@ -10,7 +10,7 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
@@ -78,11 +78,11 @@ export class ExampleTuiCalendarMonthComponent {
     year = this.yearVariants[0];
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     onMonthClick(month: TuiMonth): void {
-        this.notifications.show(String(month)).subscribe();
+        this.alertService.open(String(month)).subscribe();
     }
 }

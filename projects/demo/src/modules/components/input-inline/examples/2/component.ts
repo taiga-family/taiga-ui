@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-inline-example-2',
@@ -15,8 +15,8 @@ export class TuiInputInlineExample2 {
     editing = false;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     toggle(): void {
@@ -31,6 +31,6 @@ export class TuiInputInlineExample2 {
     }
 
     private saveHeading(newHeading: string): void {
-        this.notifications.show(newHeading, {label: 'New heading'}).subscribe();
+        this.alertService.open(newHeading, {label: 'New heading'}).subscribe();
     }
 }

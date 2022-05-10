@@ -1,8 +1,9 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {Injector} from '@angular/core';
-import {CustomNotificationComponent} from 'customNotification.component';
+
+import {CustomNotificationComponent} from './custom-notification.component';
 
 //...
 export class MyComponent {

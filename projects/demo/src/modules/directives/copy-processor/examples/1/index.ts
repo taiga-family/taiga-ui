@@ -2,11 +2,7 @@ import {Component, HostListener, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    NumberFormatSettings,
-    TUI_NUMBER_FORMAT,
-    TuiNotificationsService,
-} from '@taiga-ui/core';
+import {NumberFormatSettings, TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-copy-processor-example-1',
@@ -20,14 +16,14 @@ export class TuiCopyProcessorExample1 {
 
     constructor(
         @Inject(TUI_NUMBER_FORMAT) private readonly format: NumberFormatSettings,
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     @HostListener('copy', ['$event'])
     onCopy(event: ClipboardEvent): void {
-        this.notificationsService
-            .show(event.clipboardData?.getData('text/plain') ?? '')
+        this.alertService
+            .open(event.clipboardData?.getData('text/plain') ?? '')
             .subscribe();
     }
 

@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, watch} from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit';
 import {combineLatest, Observable, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap, takeUntil} from 'rxjs/operators';
@@ -66,8 +66,8 @@ export class TuiInputFileExample3 {
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {
         this.files$
             .pipe(
@@ -103,7 +103,7 @@ export class TuiInputFileExample3 {
         const removed = getRemoved(this.files, files);
 
         if (removed) {
-            this.notificationsService.show(`"${removed.name}" was removed`).subscribe();
+            this.alertService.open(`"${removed.name}" was removed`).subscribe();
         }
     }
 

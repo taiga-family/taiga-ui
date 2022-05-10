@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {clamp, TuiSwipe} from '@taiga-ui/cdk';
-import {TuiDialogContext, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiDialogContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -26,8 +26,8 @@ export class TuiPreviewExample1 {
     constructor(
         @Inject(PreviewDialogService)
         private readonly previewService: PreviewDialogService,
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     get title(): string {
@@ -47,11 +47,11 @@ export class TuiPreviewExample1 {
     }
 
     download(): void {
-        this.notificationsService.show('Downloading...').subscribe();
+        this.alertService.open('Downloading...').subscribe();
     }
 
     delete(): void {
-        this.notificationsService.show('Deleting...').subscribe();
+        this.alertService.open('Deleting...').subscribe();
     }
 
     onSwipe(swipe: TuiSwipe): void {

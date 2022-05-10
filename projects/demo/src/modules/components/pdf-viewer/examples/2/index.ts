@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialog} from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
@@ -25,8 +25,8 @@ export type Buttons = ReadonlyArray<
 })
 export class TuiPdfViewerExample2 {
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
         @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
     ) {}
 
@@ -48,7 +48,7 @@ export class TuiPdfViewerExample2 {
 
         this.pdfService
             .open<string>(new PolymorpheusComponent(PdfContent), options)
-            .pipe(switchMap(response => this.notifications.show(response)))
+            .pipe(switchMap(response => this.alertService.open(response)))
             .subscribe();
     }
 }

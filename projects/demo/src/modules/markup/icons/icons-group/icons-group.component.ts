@@ -2,7 +2,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, Inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiRequiredSetter} from '@taiga-ui/cdk';
-import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 
 import {DemoTuiIconsList} from '../icons.tokens';
 
@@ -26,16 +26,14 @@ export class IconsGroupComponent {
 
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     copyPath(name: string): void {
         this.clipboard.copy(name);
-        this.notifications
-            .show(`The name ${name} copied`, {
-                status: TuiNotification.Success,
-            })
+        this.alertService
+            .open(`The name ${name} copied`, {status: TuiNotification.Success})
             .subscribe();
     }
 }

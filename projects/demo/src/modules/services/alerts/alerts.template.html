@@ -1,13 +1,13 @@
 <tui-doc-page
-    header="NotificationsService"
+    header="AlertService"
     package="CORE"
-    path="core/modules/notifications/notifications.service.ts"
+    path="core/components/alert/alert.service.ts"
 >
     <ng-template pageTab>
         <p i18n>Service to show notifications</p>
         <p i18n>
             Do not forget to add
-            <code>TuiNotificationsModule</code>
+            <code>TuiAlertModule</code>
             into your app.module to use it
         </p>
 
@@ -78,7 +78,7 @@
                 [code]="method"
             ></tui-doc-code>
             of
-            <code>TuiNotificationsService</code>
+            <code>TuiAlertService</code>
             , where
             <code>O</code>
             is output data type and
@@ -170,7 +170,7 @@
             <li>
                 <p i18n>
                     Add
-                    <code>TuiNotificationsModule</code>
+                    <code>TuiAlertModule</code>
                     into your app.module
                 </p>
 
@@ -213,41 +213,16 @@
                     <code>POLYMORPHEUS_CONTEXT</code>
                     into the component to get context input data and to output
                     results. It has the following interface:
-                </p>
-
-                <p>
-                    <code>
-                        <div>
-                            TuiNotificationContentContext&lt;O, I&gt; {{ '{' }}
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;$implicit: TuiNotification;
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;label:
-                            PolymorpheusContent&lt;TuiContextWithImplicit&lt;TuiNotification&gt;&gt;;
-                        </div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;data: I;</div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;closeHook: () => void;
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;emitHook: (data: O) => void;
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;emitAndCloseHook: (data: O)
-                            => void;
-                        </div>
-                        {{ '}' }}
-                    </code>
-                </p>
-
-                <div i18n>
-                    where O is output data type and I is input data type. Do not
-                    forget to add notification component into
+                    <code>TuiDialog&lt;TuiAlertOptions&lt;I&gt;, O&gt;</code>
+                    , where
+                    <code>O</code>
+                    is output data type and
+                    <code>I</code>
+                    is input data type. Do not forget to add notification
+                    component into
                     <code>entryComponents</code>
                     of your module:
-                </div>
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

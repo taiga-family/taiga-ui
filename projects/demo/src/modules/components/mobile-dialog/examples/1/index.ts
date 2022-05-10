@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {switchMap} from 'rxjs/operators';
 
 @Component({
@@ -22,8 +22,8 @@ export class TuiMobileDialogExample1 {
     constructor(
         @Inject(TuiMobileDialogService)
         private readonly dialogService: TuiMobileDialogService,
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     show(): void {
@@ -38,9 +38,7 @@ export class TuiMobileDialogExample1 {
                 },
             )
             .pipe(
-                switchMap(index =>
-                    this.notifications.show(`Selected: ${actions[index]}`),
-                ),
+                switchMap(index => this.alertService.open(`Selected: ${actions[index]}`)),
             )
             .subscribe();
     }
