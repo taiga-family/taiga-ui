@@ -190,16 +190,30 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.controller.customContent;
     }
 
-    get hasPlaceholder(): boolean {
+    get showOnlyPlaceholder(): boolean {
+        return (
+            this.focused &&
+            this.placeholderVisible &&
+            (this.size === 's' || (this.size === 'm' && !this.placeholderRaisable))
+        );
+    }
+
+    get placeholderVisible(): boolean {
         const hasDecor =
             this.controller.exampleText ||
             this.prefix ||
             this.postfix ||
             this.nativeFocusableElement?.placeholder;
         const showDecor = hasDecor && !this.readOnly && this.computedFocused;
-        const placeholderVisible = !this.hasValue && !showDecor;
 
-        return this.placeholderRaisable || placeholderVisible;
+        return !this.hasValue && !showDecor;
+    }
+
+    get hasPlaceholder(): boolean {
+        return (
+            !this.showOnlyPlaceholder &&
+            (this.placeholderRaisable || this.placeholderVisible)
+        );
     }
 
     get placeholderRaised(): boolean {

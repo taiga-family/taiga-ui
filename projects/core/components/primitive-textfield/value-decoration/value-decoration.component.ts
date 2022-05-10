@@ -56,7 +56,7 @@ export class TuiValueDecorationComponent {
     get filler(): string {
         const {focused, placeholder, exampleText, value, textfield} = this;
 
-        if (focused && placeholder && exampleText) {
+        if (placeholder && exampleText) {
             return '';
         }
 
