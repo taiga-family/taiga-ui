@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -15,6 +15,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     isActive,
@@ -24,9 +25,6 @@ import {
     testPlaceholder,
     testTooltip,
 } from '@taiga-ui/testing';
-
-import {TuiInputTagComponent} from '../input-tag.component';
-import {TuiInputTagModule} from '../input-tag.module';
 
 const TAG = 'Tag';
 
@@ -126,11 +124,11 @@ describe('InputTag', () => {
     });
 
     describe('Adding tags', () => {
-        beforeEach(done => {
+        beforeEach(async () => {
             inputPO.focus();
             fixture.detectChanges();
             inputPO.sendText('1234,567,89');
-            fixture.whenStable().then(done);
+            await fixture.whenStable();
         });
 
         it('Adds tags separated by commas', () => {
@@ -211,8 +209,8 @@ describe('InputTag', () => {
         });
     });
 
-    describe('Adding tags with custom serarator', () => {
-        it('Adds tags separated by custom separator', fakeAsync(() => {
+    describe('Adding tags with custom separator', () => {
+        it('Adds tags separated by custom separator', () => {
             testComponent.separator = ';';
             inputPO.focus();
             fixture.detectChanges();
@@ -222,20 +220,19 @@ describe('InputTag', () => {
 
             expect(component.value[1]).toEqual('10,5');
             expect(component.value[2]).toEqual('12,2');
-        }));
+        });
     });
 
     describe('Adding tags with spaces when the allowSpaces option is enabled', () => {
-        it('Spaces are preserved and not tagged', fakeAsync(() => {
+        it('Spaces are preserved and not tagged', () => {
             inputPO.focus();
             fixture.detectChanges();
-            tick();
             inputPO.sendText('1234 567 89');
             focusStealer.focus();
             fixture.detectChanges();
 
             expect(component.value[1]).toEqual('1234 567 89');
-        }));
+        });
     });
 
     describe('Adding tags when the allowSpaces option is disabled', () => {
