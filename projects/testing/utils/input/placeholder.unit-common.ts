@@ -13,15 +13,15 @@ interface TestParams {
 
 interface TestComponent {
     control?: FormControl;
-    value?: any;
+    value?: unknown;
     labelOutside: boolean;
-    size: any;
+    size: 's' | 'm' | 'l';
 }
 
 export function testPlaceholder(
     context: TestParams,
-    setValue: any = 'value',
-    clearValue: any = null,
+    setValue: unknown = 'value',
+    clearValue: unknown = '',
 ): void {
     let pageObject: PageObject<any>;
     let fixture: ComponentFixture<any>;
@@ -118,7 +118,7 @@ export function testPlaceholder(
         });
     });
 
-    function updateValue(value: any): void {
+    function updateValue(value: unknown): void {
         if (testComponent.control) {
             testComponent.control.setValue(value);
         } else {
