@@ -18,8 +18,8 @@ export class TuiComboBoxStrictDirective<T> {
 
     @HostListener('input')
     onInput(): void {
-        this.comboBox.updateValue(
-            this.strict || this.comboBox.search === '' ? null : this.comboBox.search,
-        );
+        if (!this.strict && this.comboBox.search) {
+            this.comboBox.updateValue(this.comboBox.search);
+        }
     }
 }
