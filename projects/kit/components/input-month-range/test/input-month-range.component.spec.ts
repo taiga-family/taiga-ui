@@ -60,6 +60,19 @@ describe('InputMonthRange', () => {
             expect(component.computeValue('May 2020', 'May 2020')).toBe(`May 2020 — `);
         });
 
+        it('returns a full of stringified range if single month and readonly state', () => {
+            const testMonth = new TuiMonth(2020, 4);
+            const testRange = new TuiMonthRange(testMonth, testMonth);
+
+            component.readOnly = true;
+            component.nativeFocusableElement?.focus();
+            component.writeValue(testRange);
+
+            expect(component.computeValue('May 2020', 'May 2020')).toBe(
+                `May 2020 — May 2020`,
+            );
+        });
+
         it('returns the whole stringified range if there is', () => {
             const testMonth = new TuiMonth(2020, 4);
             const testRange = new TuiMonthRange(testMonth, testMonth.append({month: 2}));

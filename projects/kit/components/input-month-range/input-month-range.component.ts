@@ -93,7 +93,7 @@ export class TuiInputMonthRangeComponent
     }
 
     computeValue(from: string | null, to: string | null): string {
-        const formattedTo = from === to && this.focused ? '' : to;
+        const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
 
         return `${from} — ${formattedTo}`;
     }
