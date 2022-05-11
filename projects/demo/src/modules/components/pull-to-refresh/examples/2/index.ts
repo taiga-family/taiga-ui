@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 const loaded$ = new Subject<void>();
@@ -29,10 +29,13 @@ const loaded$ = new Subject<void>();
     ],
 })
 export class TuiPullToRefreshExample2 {
-    constructor(private readonly notifications: TuiNotificationsService) {}
+    constructor(
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
+    ) {}
 
     onPull(): void {
-        this.notifications.show('Loading...').subscribe();
+        this.alertService.open('Loading...').subscribe();
     }
 
     finishLoading(): void {

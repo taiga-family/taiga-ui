@@ -11,10 +11,10 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
+    TuiAlertService,
     TuiBaseColor,
     TuiColor,
     TuiMarkerHandler,
-    TuiNotificationsService,
 } from '@taiga-ui/core';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
@@ -118,11 +118,11 @@ export class ExampleTuiCalendarComponent {
     hoveredItem: TuiDay | null = null;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     onDayClick(day: TuiDay): void {
-        this.notifications.show(String(day)).subscribe();
+        this.alertService.open(String(day)).subscribe();
     }
 }

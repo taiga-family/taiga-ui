@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TuiNotificationsService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiAlertService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
@@ -96,11 +96,11 @@ export class ExampleTuiFilterComponent {
     size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     onToggledItemChange(item: any): void {
-        this.notifications.show(String(item)).subscribe();
+        this.alertService.open(String(item)).subscribe();
     }
 }

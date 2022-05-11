@@ -1,10 +1,10 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
+    TuiAlertService,
     TuiDialogContext,
     TuiDialogService,
     TuiDialogSize,
-    TuiNotificationsService,
 } from '@taiga-ui/core';
 import {switchMap} from 'rxjs/operators';
 
@@ -116,9 +116,10 @@ export class ExampleTuiDialogComponent {
     label = '';
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
+        @Inject(TuiDialogService)
+        private readonly dialogService: TuiDialogService,
     ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
@@ -126,7 +127,7 @@ export class ExampleTuiDialogComponent {
 
         this.dialogService
             .open(content, {data, label, required, closeable, dismissible, size})
-            .pipe(switchMap(response => this.notifications.show(String(response))))
+            .pipe(switchMap(response => this.alertService.open(String(response))))
             .subscribe();
     }
 }

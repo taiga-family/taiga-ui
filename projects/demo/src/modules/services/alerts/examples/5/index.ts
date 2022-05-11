@@ -2,7 +2,7 @@ import {Component, Inject, Injector} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -21,12 +21,12 @@ export class TuiAlertsExampleComponent5 {
     readonly notificationWithCustomLabel: Observable<void>;
 
     constructor(
-        @Inject(TuiNotificationsService) notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService) alertService: TuiAlertService,
         @Inject(Router) router: Router,
         @Inject(Injector) private readonly injector: Injector,
     ) {
-        this.notification = notificationsService
-            .show<undefined>(
+        this.notification = alertService
+            .open(
                 new PolymorpheusComponent(
                     AlertExampleWithCustomLabelComponent,
                     this.injector,
@@ -42,8 +42,8 @@ export class TuiAlertsExampleComponent5 {
             )
             .pipe(takeUntil(router.events));
 
-        this.notificationWithCustomLabel = notificationsService
-            .show<undefined>(
+        this.notificationWithCustomLabel = alertService
+            .open(
                 new PolymorpheusComponent(
                     AlertExampleWithCustomLabelComponent,
                     this.injector,

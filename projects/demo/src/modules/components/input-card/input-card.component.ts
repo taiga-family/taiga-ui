@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiHintOptions, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiHintOptions} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -74,8 +74,8 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     });
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {
         super();
     }
@@ -125,6 +125,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     }
 
     onBinChange(bin: string | null): void {
-        this.notifications.show(`bin: ${bin}`).subscribe();
+        this.alertService.open(`bin: ${bin}`).subscribe();
     }
 }

@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-action-example-1',
@@ -12,11 +12,11 @@ import {TuiNotificationsService} from '@taiga-ui/core';
 })
 export class TuiActionExample1 {
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     onClick(result: string): void {
-        this.notificationsService.show(result).subscribe();
+        this.alertService.open(result).subscribe();
     }
 }
