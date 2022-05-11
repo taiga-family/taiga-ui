@@ -27,6 +27,7 @@ import {TuiSvgService} from '@taiga-ui/core/services';
 import {
     TUI_ICONS_PATH,
     TUI_SANITIZER,
+    TUI_SVG_CONTENT_PROCESSOR,
     TUI_SVG_SRC_PROCESSOR,
 } from '@taiga-ui/core/tokens';
 import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
@@ -53,7 +54,7 @@ export class TuiSvgComponent {
     @Input()
     @tuiRequiredSetter()
     set src(src: string) {
-        this.icon = this.processor(src);
+        this.icon = this.srcProcessor(src);
         this.src$.next();
     }
 
@@ -73,7 +74,9 @@ export class TuiSvgComponent {
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_SVG_SRC_PROCESSOR)
-        private readonly processor: TuiStringHandler<string>,
+        private readonly srcProcessor: TuiStringHandler<string>,
+        @Inject(TUI_SVG_CONTENT_PROCESSOR)
+        private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() =>
@@ -175,6 +178,8 @@ export class TuiSvgComponent {
     }
 
     private sanitize(src: string): SafeHtml | string {
+        src = this.contentProcessor(src);
+
         return this.tuiSanitizer
             ? this.sanitizer.bypassSecurityTrustHtml(
                   this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',

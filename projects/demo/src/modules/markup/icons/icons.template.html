@@ -20,4 +20,16 @@
 
         <icons-group [icons]="icons[key]"></icons-group>
     </ng-template>
+
+    <ng-template pageTab="SVG Processing">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Customization"
+            description="You can customize the path to your icons and inherit color"
+            [content]="example1"
+        >
+            <customization-icons-example></customization-icons-example>
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>
