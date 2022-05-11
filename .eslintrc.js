@@ -70,5 +70,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-base-to-string': 'error',
         '@typescript-eslint/ban-types': 'error',
+        eqeqeq: ['error', 'always'],
     },
 };

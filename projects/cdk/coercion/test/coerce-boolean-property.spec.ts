@@ -1,4 +1,4 @@
-import {tuiCoerceBooleanProperty} from '../coerce-boolean-property';
+import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk';
 
 describe('tuiCoerceBooleanProperty', () => {
     it('should coerce undefined to false', () => {
