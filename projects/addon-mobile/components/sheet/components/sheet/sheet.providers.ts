@@ -15,6 +15,7 @@ export const TUI_SHEET_DRAGGED = new InjectionToken<boolean>(
     'The sheet is being dragged',
 );
 
+/** @deprecated use option argument for each Sheet */
 export const TUI_SHEET_OFFSET = new InjectionToken<number>(
     'Offset from the top at which the sheet stops',
     {

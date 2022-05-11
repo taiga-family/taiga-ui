@@ -1,4 +1,4 @@
-import {ContentChild, Directive, Inject} from '@angular/core';
+import {ContentChild, Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {clamp, tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
@@ -7,7 +7,6 @@ import {map} from 'rxjs/operators';
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {
     TUI_SHEET_DRAGGED,
-    TUI_SHEET_OFFSET,
     TUI_SHEET_SCROLL,
 } from '../../components/sheet/sheet.providers';
 import {processDragged} from '../../ios.hacks';
@@ -37,18 +36,18 @@ export class TuiSheetWrapperDirective {
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL})
     private readonly scroll$!: Observable<number>;
 
+    @Input()
+    tuiSheetWrapper = 16;
+
     // Trying to get overflow: visible as early as possible for Safari
     touched = false;
 
-    constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_SHEET_OFFSET) private readonly offset: number,
-    ) {}
+    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
-            map(y => y + 16 > this.windowRef.innerHeight - this.offset),
+            map(y => y + 16 > this.windowRef.innerHeight - this.tuiSheetWrapper),
         );
     }
 
