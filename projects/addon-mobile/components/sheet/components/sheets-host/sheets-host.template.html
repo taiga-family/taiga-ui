@@ -1,17 +1,17 @@
 <ng-container *ngIf="service.sheets$ | async as items">
     <div
         *ngFor="let item of items"
-        tuiSheetWrapper
         class="t-wrapper"
         [@tuiSlideInTop]="options"
         [@tuiFadeIn]="options"
+        [tuiSheetWrapper]="item.offset"
         [class.t-wrapper_overlay]="item.overlay"
         [class.t-wrapper_closeable]="item.closeable"
     >
         <tui-sheet
             tuiScrollRef
             tuiOverscroll="all"
-            [style.height.px]="getHeight(height$ | async)"
+            [style.height.px]="(height$ | async) - item.offset"
             [item]="item"
             (close)="close(item)"
         ></tui-sheet>

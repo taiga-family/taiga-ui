@@ -1,10 +1,11 @@
-import {Directive, Inject, Input} from '@angular/core';
+import {Directive, forwardRef, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_SHEET_OFFSET, TUI_SHEET_SCROLL} from '../../components/sheet/sheet.providers';
+import {TuiSheetComponent} from '../../components/sheet/sheet.component';
+import {TUI_SHEET_SCROLL} from '../../components/sheet/sheet.providers';
 
 // So that borders get rounded when image is visible for at least 10px
 const OFFSET = 10;
@@ -36,13 +37,14 @@ export class TuiSheetTopDirective {
 
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(TUI_SHEET_OFFSET) private readonly offset: number,
+        @Inject(forwardRef(() => TuiSheetComponent))
+        private readonly component: TuiSheetComponent<unknown>,
         @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 
     private getY(scrollTop: number): number {
         const value = scrollTop - this.stop;
-        const total = this.windowRef.innerHeight - this.offset - this.stop;
+        const total = this.windowRef.innerHeight - this.component.item.offset - this.stop;
 
         return this.stop && clamp(100 - (value / total) * 100, 0, 100);
     }
