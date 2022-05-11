@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 
+import {IconsCustomizationComponent} from './customization/customization-icons.component';
 import {IconsComponent} from './icons.component';
 import {IconsGroupComponent} from './icons-group/icons-group.component';
 import {IconHighlightPipe} from './pipes/icon-highlight.pipe';
@@ -31,7 +32,12 @@ import {IconHighlightPipe} from './pipes/icon-highlight.pipe';
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(IconsComponent)),
     ],
-    declarations: [IconsComponent, IconsGroupComponent, IconHighlightPipe],
+    declarations: [
+        IconsComponent,
+        IconsGroupComponent,
+        IconHighlightPipe,
+        IconsCustomizationComponent,
+    ],
     exports: [IconsComponent, IconsGroupComponent],
 })
 export class IconsModule {}
