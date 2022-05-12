@@ -127,7 +127,7 @@ export class TuiInputCardComponent
     }
 
     get bin(): string | null {
-        return this.value.length < 6 ? null : this.value.substr(0, 6);
+        return this.value.length < 6 ? null : this.value.slice(0, 6);
     }
 
     get formattedCard(): string {

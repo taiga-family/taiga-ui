@@ -106,7 +106,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
         const lastComma = color.lastIndexOf(',');
         const parsed = color
-            .substr(lastComma)
+            .slice(lastComma)
             .replace(')', '')
             .replace(' ', '')
             .replace(',', '');

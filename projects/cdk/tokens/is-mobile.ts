@@ -10,5 +10,5 @@ const secondRegex =
 export const TUI_IS_MOBILE = new InjectionToken<boolean>('Mobile browser detection', {
     factory: () =>
         firstRegex.test(inject(USER_AGENT).toLowerCase()) ||
-        secondRegex.test(inject(USER_AGENT).substr(0, 4).toLowerCase()),
+        secondRegex.test(inject(USER_AGENT).slice(0, 4).toLowerCase()),
 });

@@ -86,7 +86,7 @@ export class TuiDocExampleComponent {
         const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
             hashPosition > -1
-                ? this.location.href.substr(0, hashPosition)
+                ? this.location.href.slice(0, Math.max(0, hashPosition))
                 : this.location.href;
         const url = `${currentUrl}#${this.id}`;
 

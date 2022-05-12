@@ -54,7 +54,9 @@ export class TuiEditLinkComponent {
     get shortUrl(): string {
         return this.url.length < MAX_LENGTH
             ? this.url
-            : `${this.url.substr(0, START)}...${this.url.substr(this.url.length - END)}`;
+            : `${this.url.slice(0, Math.max(0, START))}...${this.url.slice(
+                  this.url.length - END,
+              )}`;
     }
 
     private get isViewMode(): boolean {

@@ -21,10 +21,11 @@ module.exports = {
         '*.md',
     ],
     parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: 'latest',
         sourceType: 'module',
         project: [require.resolve('./tsconfig.eslint.json')],
     },
+    plugins: ['unicorn'],
     parser: '@typescript-eslint/parser',
     rules: {
         '@typescript-eslint/no-useless-constructor': 'off',
@@ -71,5 +72,6 @@ module.exports = {
         '@typescript-eslint/no-base-to-string': 'error',
         '@typescript-eslint/ban-types': 'error',
         eqeqeq: ['error', 'always'],
+        'unicorn/prefer-string-slice': 'error',
     },
 };

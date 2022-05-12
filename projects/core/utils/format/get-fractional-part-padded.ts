@@ -11,6 +11,6 @@ export function getFractionPartPadded(value: number, precision?: number | null):
     const [, fractionPartPadded = ''] = numberToStringWithoutExp(value).split('.');
 
     return typeof precision === 'number'
-        ? fractionPartPadded.substr(0, precision)
+        ? fractionPartPadded.slice(0, Math.max(0, precision))
         : fractionPartPadded;
 }

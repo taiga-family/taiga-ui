@@ -42,8 +42,8 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
 }
 
 function wrapIcon(source: string, name: string): string | WrappedContent {
-    const src = source.substring(source.indexOf(START));
-    const attributes = src.substring(0, src.indexOf('>'));
+    const src = source.slice(Math.max(0, source.indexOf(START)));
+    const attributes = src.slice(0, Math.max(0, src.indexOf('>')));
 
     if (
         !attributes ||
@@ -57,11 +57,11 @@ function wrapIcon(source: string, name: string): string | WrappedContent {
     const indexOfHeight = attributes.indexOf(HEIGHT_SEARCH);
     const widthOffset = indexOfWidth + WIDTH_SEARCH.length;
     const heightOffset = indexOfHeight + HEIGHT_SEARCH.length;
-    const widthString = attributes.substring(
+    const widthString = attributes.slice(
         widthOffset,
         attributes.indexOf('"', widthOffset),
     );
-    const heightString = attributes.substring(
+    const heightString = attributes.slice(
         heightOffset,
         attributes.indexOf('"', heightOffset),
     );

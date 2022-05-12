@@ -6,9 +6,9 @@ export function getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
     }
 
     const one = Number.parseInt(cardNumber[0], 10);
-    const two = Number.parseInt(cardNumber.substr(0, 2), 10);
-    const three = Number.parseInt(cardNumber.substr(0, 3), 10);
-    const four = Number.parseInt(cardNumber.substr(0, 4), 10);
+    const two = Number.parseInt(cardNumber.slice(0, 2), 10);
+    const three = Number.parseInt(cardNumber.slice(0, 3), 10);
+    const four = Number.parseInt(cardNumber.slice(0, 4), 10);
 
     if (isMaestro(three, two, one)) {
         return TuiPaymentSystem.Maestro;

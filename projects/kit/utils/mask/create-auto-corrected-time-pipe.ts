@@ -23,7 +23,7 @@ export function tuiCreateAutoCorrectedTimePipe(
 
         timeFormatArray.forEach(format => {
             const position = timeMode.indexOf(format);
-            const maxFirstDigit = parseInt(String(safeValues[format]).substr(0, 1), 10);
+            const maxFirstDigit = parseInt(String(safeValues[format]).slice(0, 1), 10);
 
             if (parseInt(conformedValueArr[position], 10) > maxFirstDigit) {
                 conformedValueArr[position + 1] = conformedValueArr[position];
@@ -34,7 +34,7 @@ export function tuiCreateAutoCorrectedTimePipe(
 
         const isInvalid = timeFormatArray.some(
             format =>
-                parseInt(conformedValue.substr(timeMode.indexOf(format), 2), 10) >
+                parseInt(conformedValue.slice(timeMode.indexOf(format), 2), 10) >
                 safeValues[format],
         );
 

@@ -231,7 +231,7 @@ export class TuiInputCardGroupedComponent
     get bin(): string | null {
         return !this.value || this.value.card.length < 6
             ? null
-            : this.value.card.substr(0, 6);
+            : this.value.card.slice(0, 6);
     }
 
     get placeholderRaised(): boolean {
@@ -355,12 +355,12 @@ export class TuiInputCardGroupedComponent
             return;
         }
 
-        if (parseInt(expire.substr(0, 2), 10) > 12) {
-            expire = `12${expire.substr(2)}`;
+        if (parseInt(expire.slice(0, 2), 10) > 12) {
+            expire = `12${expire.slice(2)}`;
         }
 
-        if (expire.substr(0, 2) === '00') {
-            expire = `01${expire.substr(2)}`;
+        if (expire.slice(0, 2) === '00') {
+            expire = `01${expire.slice(2)}`;
         }
 
         this.inputExpire.nativeElement.value = expire;
