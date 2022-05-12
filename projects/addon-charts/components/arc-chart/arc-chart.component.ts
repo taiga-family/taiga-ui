@@ -2,13 +2,19 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     HostBinding,
     Inject,
     Input,
+    Output,
+    QueryList,
+    ViewChildren,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, typedFromEvent} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
+import {merge, Observable, ReplaySubject} from 'rxjs';
+import {mapTo, startWith, switchMap, tap} from 'rxjs/operators';
 
 // 3/4 with 1% safety offset
 const ARC = 0.76;
@@ -38,6 +44,13 @@ const GAP: Record<TuiSizeXL, number> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArcChartComponent {
+    private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
+
+    @ViewChildren('arc')
+    set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
+        this.arcs$.next(arcs);
+    }
+
     @Input()
     @tuiDefaultProp()
     value: readonly number[] = [];
@@ -58,6 +71,23 @@ export class TuiArcChartComponent {
     @Input()
     @tuiDefaultProp()
     maxLabel = '100%';
+
+    @Input()
+    @tuiDefaultProp()
+    activeItemIndex = NaN;
+
+    @Output()
+    readonly activeItemIndexChange = this.arcs$.pipe(
+        switchMap(arcs =>
+            arcs.changes.pipe(
+                startWith(null),
+                switchMap(() => merge(...arcsToIndex(arcs))),
+            ),
+        ),
+        tap(index => {
+            this.activeItemIndex = index;
+        }),
+    );
 
     initialized = false;
 
@@ -83,6 +113,10 @@ export class TuiArcChartComponent {
         return WIDTH[this.size];
     }
 
+    isInactive(index: number): boolean {
+        return !isNaN(this.activeItemIndex) && index !== this.activeItemIndex;
+    }
+
     getInset(index: number): number {
         return this.strokeWidth / 2 + index * (this.strokeWidth + GAP[this.size]);
     }
@@ -104,4 +138,15 @@ export class TuiArcChartComponent {
             `var(--tui-chart-${index}, var(--tui-support-0${index + 1}))`,
         );
     }
+}
+
+function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Observable<number>[] {
+    return arcs
+        .toArray()
+        .map(({nativeElement}, index) =>
+            merge(
+                typedFromEvent(nativeElement, 'mouseenter').pipe(mapTo(index)),
+                typedFromEvent(nativeElement, 'mouseleave').pipe(mapTo(NaN)),
+            ),
+        );
 }
