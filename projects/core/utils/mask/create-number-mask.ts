@@ -59,7 +59,7 @@ export function tuiCreateNumberMask({
         }
 
         if (isNegative) {
-            rawValue = rawValue.substr(1);
+            rawValue = rawValue.slice(1);
         }
 
         const decimalIndex = getDecimalSymbolIndex(

@@ -13,7 +13,7 @@ export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
     return (conformedValue, {rawValue}) => {
         // Autofilled with MM/YYYY format
         if (TUI_EXP_YEAR_MONTH.test(rawValue)) {
-            conformedValue = `${rawValue.substr(0, 2)}/${rawValue.substr(5)}`;
+            conformedValue = `${rawValue.slice(0, 2)}/${rawValue.slice(5)}`;
         }
 
         // Autofilled with Safari crazy format
@@ -27,7 +27,7 @@ export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
             const year = array.find(({length}) => length === 4);
 
             conformedValue = `${'0'.repeat(2 - month.length)}${month}/${
-                year ? year.substr(2) : ''
+                year ? year.slice(2) : ''
             }`;
         }
 

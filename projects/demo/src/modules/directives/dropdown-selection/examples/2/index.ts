@@ -82,9 +82,6 @@ export class TuiDropdownSelectionExample2 {
     }
 
     private getCurrentSearch(textarea: HTMLTextAreaElement): string {
-        return textarea.value.substring(
-            textarea.value.indexOf('@'),
-            textarea.selectionStart,
-        );
+        return textarea.value.slice(textarea.value.indexOf('@'), textarea.selectionStart);
     }
 }

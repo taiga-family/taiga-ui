@@ -67,8 +67,8 @@ export class TuiAvatarComponent {
         const words = this.text.split(' ');
 
         return words.length > 1 && sizeBigger(this.size)
-            ? words[0].substr(0, 1) + words[1].substr(0, 1)
-            : words[0].substr(0, 1);
+            ? words[0].slice(0, 1) + words[1].slice(0, 1)
+            : words[0].slice(0, 1);
     }
 
     onError(): void {

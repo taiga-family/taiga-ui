@@ -42,7 +42,7 @@ export function parseGradient(input: string): TuiParsedGradient {
     const stopsRegexp = new RegExp(REGEXP_ARRAY.join(''), 'gi');
     const stopsString =
         input.startsWith('to') || input.match(/^\d/)
-            ? input.substring(input.indexOf(',') + 1).trim()
+            ? input.slice(Math.max(0, input.indexOf(',') + 1)).trim()
             : input;
 
     const side = input.startsWith('to')

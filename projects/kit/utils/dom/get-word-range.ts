@@ -29,7 +29,7 @@ export function getWordRange(currentRange: Range): Range {
         const textContent = container.textContent || '';
         const content =
             container === startContainer
-                ? textContent.substr(0, startOffset + 1)
+                ? textContent.slice(0, Math.max(0, startOffset + 1))
                 : textContent;
         const offset =
             Math.max(
@@ -52,7 +52,7 @@ export function getWordRange(currentRange: Range): Range {
         const container = treeWalker.currentNode;
         const textContent = container.textContent || '';
         const content =
-            container === endContainer ? textContent.substr(endOffset + 1) : textContent;
+            container === endContainer ? textContent.slice(endOffset + 1) : textContent;
         const offset = [
             content.indexOf(' '),
             content.indexOf(CHAR_NO_BREAK_SPACE),

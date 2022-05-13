@@ -33,6 +33,6 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
     const matchedIdsWithPrefix = svg.match(/url\(#(\w\w+)/g) || [];
 
     return [...new Set(matchedIdsWithPrefix)].map(
-        matched => matched.substring(5), // remove prefix `url(#`
+        matched => matched.slice(5), // remove prefix `url(#`
     );
 }

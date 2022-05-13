@@ -295,9 +295,7 @@ export class TuiInputPhoneComponent
 
     private cleanValue(value: string): string {
         const reg: RegExp =
-            this.countryCode === '+7'
-                ? /^7|^8/
-                : new RegExp(this.countryCode.substring(1));
+            this.countryCode === '+7' ? /^7|^8/ : new RegExp(this.countryCode.slice(1));
         const oldValueExist =
             this.value.length > this.countryCode.length &&
             this.value.length < this.maxPhoneLength;
