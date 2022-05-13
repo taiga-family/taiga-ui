@@ -11,11 +11,11 @@ welcoming and friendly in all of our spaces.
 ## Getting started
 
 In order to make your contribution please make a fork of the repository. After you've pulled the code, follow these
-steps to kick start the development:
+steps to kick-start the development:
 
 1. Run `npm ci` to install dependencies
 2. Run `npm start` to launch demo project where you could test your changes (see [angular.json](angular.json) to find
-   alternative configurations with AoT, hmr or Russian Language)
+   alternative configurations with AoT or Russian Language)
 
 ## Pull Request Process
 
