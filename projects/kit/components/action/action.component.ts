@@ -18,6 +18,7 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
+// TODO: Refactor to button[tuiAction] in 3.0
 @Component({
     selector: 'tui-action, a[tuiAction]',
     templateUrl: './action.template.html',
@@ -40,7 +41,7 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     @tuiDefaultProp()
     icon = '';
 
-    readonly isLink = this.elementRef.nativeElement.tagName.toLowerCase() === 'a';
+    readonly isLink = this.elementRef.nativeElement.matches('a');
 
     readonly disabled = false;
 

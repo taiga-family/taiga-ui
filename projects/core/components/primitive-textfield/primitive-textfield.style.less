@@ -49,10 +49,11 @@
 
     :host[data-size] &_template {
         display: flex;
-        width: 100%;
-        max-width: 100%;
+        width: calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
         align-items: center;
         pointer-events: none;
+        padding-inline-end: 0;
     }
 
     /* stylelint-disable */

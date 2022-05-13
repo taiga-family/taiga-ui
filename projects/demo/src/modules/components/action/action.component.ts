@@ -39,4 +39,7 @@ export class ExampleTuiActionComponent {
     ];
 
     icon = this.iconVariants[0];
+
+    color = 'var(--tui-link)';
+    background = 'var(--tui-base-02)';
 }
