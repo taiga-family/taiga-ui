@@ -2,7 +2,6 @@
     "name": "@taiga-ui/demo",
     "private": true,
     "dependencies": {
-        "@angularclass/hmr": "^2.1.3",
         "@ng-web-apis/universal": "1.9.5",
         "@nguniversal/express-engine": "^9.1.1",
         "@stackblitz/sdk": "^1.6.0",

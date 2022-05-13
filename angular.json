@@ -556,15 +556,6 @@
                                 }
                             ]
                         },
-                        "hmr": {
-                            "budgets": [],
-                            "fileReplacements": [
-                                {
-                                    "replace": "projects/demo/src/environments/environment.ts",
-                                    "with": "projects/demo/src/environments/environment.hmr.ts"
-                                }
-                            ]
-                        },
                         "def": {
                             "budgets": [],
                             "fileReplacements": [
@@ -615,10 +606,6 @@
                             "browserTarget": "demo:build:production",
                             "aot": true
                         },
-                        "hmr": {
-                            "browserTarget": "demo:build:hmr",
-                            "hmr": true
-                        },
                         "def": {
                             "browserTarget": "demo:build:def"
                         },
@@ -649,10 +636,6 @@
                 "serve:shadow": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {"command": "nx serve --configuration shadow"}
-                },
-                "serve:hmr": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx serve --configuration hmr"}
                 },
                 "serve:ssr": {
                     "builder": "@nguniversal/builders:ssr-dev-server",
