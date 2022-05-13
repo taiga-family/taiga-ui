@@ -351,4 +351,15 @@ describe('TuiTime', () => {
 
         expect(time.toString('HH:MM:SS.MSS')).toBe('06:36:00.000');
     });
+
+    describe('valueOf returns', () => {
+        it('the primitive value of TuiTime', () => {
+            const time = new TuiTime(6, 36, 0, 0);
+
+            expect(Number(time)).toBeInstanceOf(Number);
+            expect(time.valueOf()).toBeInstanceOf(Number);
+            expect(time > new TuiTime(5, 30, 0, 0)).toBeTrue();
+            expect(time < new TuiTime(7, 36, 0, 0)).toBeTrue();
+        });
+    });
 });

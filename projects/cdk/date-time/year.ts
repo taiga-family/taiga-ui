@@ -160,6 +160,10 @@ export class TuiYear implements TuiYearLike {
         return this.formattedYear;
     }
 
+    valueOf(): number {
+        return this.year;
+    }
+
     toJSON(): string {
         return this.formattedYear;
     }

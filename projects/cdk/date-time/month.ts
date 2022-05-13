@@ -203,6 +203,10 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         return this.formattedMonth;
     }
 
+    valueOf(): number {
+        return this.toLocalNativeDate().valueOf();
+    }
+
     toJSON(): string {
         return `${super.toJSON()}-${this.formattedMonthPart}`;
     }

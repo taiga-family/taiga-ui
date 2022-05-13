@@ -1046,6 +1046,17 @@ describe('TuiDay', () => {
                     });
                 });
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of TuiDay', () => {
+                    const day = new TuiDay(2000, 5, 13);
+
+                    expect(Number(day)).toBeInstanceOf(Number);
+                    expect(day.valueOf()).toBeInstanceOf(Number);
+                    expect(day > new TuiDay(2000, 5, 10)).toBeTrue();
+                    expect(day < new TuiDay(2001, 5, 10)).toBeTrue();
+                });
+            });
         });
     });
 });

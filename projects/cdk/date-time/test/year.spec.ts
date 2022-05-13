@@ -662,6 +662,17 @@ describe('TuiYear', () => {
                     expect(y2000.append({year: 100}, true).year).toBe(1900);
                 });
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of TuiYear', () => {
+                    const year = new TuiYear(2000);
+
+                    expect(Number(year)).toBeInstanceOf(Number);
+                    expect(year.valueOf()).toBeInstanceOf(Number);
+                    expect(year > new TuiYear(1999)).toBeTrue();
+                    expect(year < new TuiYear(2001)).toBeTrue();
+                });
+            });
         });
     });
 

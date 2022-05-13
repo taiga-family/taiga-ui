@@ -166,6 +166,10 @@ export class TuiTime implements TuiTimeLike {
         );
     }
 
+    valueOf(): number {
+        return this.toAbsoluteMilliseconds();
+    }
+
     /**
      * Converts TuiTime to milliseconds
      */

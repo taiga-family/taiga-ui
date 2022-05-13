@@ -617,6 +617,17 @@ describe('TuiMonth', () => {
                     new Date(Date.UTC(2000, 0)).toString(),
                 );
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of TuiMonth', () => {
+                    const month = new TuiMonth(2000, 5);
+
+                    expect(Number(month)).toBeInstanceOf(Number);
+                    expect(month.valueOf()).toBeInstanceOf(Number);
+                    expect(month > new TuiMonth(2000, 4)).toBeTrue();
+                    expect(month < new TuiMonth(2001, 6)).toBeTrue();
+                });
+            });
         });
     });
 
