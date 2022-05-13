@@ -41,4 +41,6 @@ export class ExampleTuiArcChartComponent {
     minLabel = '0%';
 
     maxLabel = '100%';
+
+    activeItemIndex = NaN;
 }

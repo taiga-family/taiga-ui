@@ -1,8 +1,15 @@
+<tui-input-count
+    class="b-form"
+    [(ngModel)]="activeItemIndex"
+>
+    activeItemIndex
+</tui-input-count>
 <div class="wrapper">
     <tui-arc-chart
         size="m"
         class="tui-space_right-4"
         [value]="value"
+        [(activeItemIndex)]="activeItemIndex"
     >
         Total value
     </tui-arc-chart>
@@ -10,6 +17,7 @@
         size="l"
         class="tui-space_right-4"
         [value]="value"
+        [(activeItemIndex)]="activeItemIndex"
     >
         Total value
         <div>Label</div>
@@ -18,6 +26,7 @@
         size="xl"
         class="tui-space_right-4"
         [value]="value"
+        [(activeItemIndex)]="activeItemIndex"
     >
         <tui-money [value]="123456"></tui-money>
         <div>Not bad!</div>

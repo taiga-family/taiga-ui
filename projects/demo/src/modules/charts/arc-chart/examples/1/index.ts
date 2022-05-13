@@ -11,4 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiArcChartExample1 {
     readonly value = [40, 30, 20, 10];
+
+    activeItemIndex = NaN;
 }
