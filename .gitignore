@@ -31,3 +31,4 @@ dist
 **/cypress/screenshots
 **/cypress/snapshots
 .ssl
+RELEASE_BODY.md
