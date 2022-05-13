@@ -1,4 +1,4 @@
-import {Component, forwardRef, Inject} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -12,7 +12,6 @@ import {default as exampleOptions} from '!!raw-loader!./examples/import/define-o
 import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -53,10 +52,4 @@ export class ExampleTuiCheckboxComponent extends AbstractExampleTuiControl {
         testValue2: new FormControl(),
         testValue3: new FormControl(true),
     });
-
-    constructor(
-        @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
-    ) {
-        super();
-    }
 }
