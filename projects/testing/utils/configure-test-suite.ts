@@ -1,6 +1,5 @@
 import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 
-// Forked from: https://github.com/topnotch48/ng-bullet-workspace/blob/6440299/projects/ng-bullet/src/testing.ts
 export const configureTestSuite = (configureModule?: () => void): void => {
     const testBedApi = getTestBed();
     const originReset = TestBed.resetTestingModule;
@@ -9,30 +8,6 @@ export const configureTestSuite = (configureModule?: () => void): void => {
         TestBed.resetTestingModule();
         TestBed.resetTestingModule = () => TestBed;
     });
-
-    // Original hook from ng-bullet
-    // if (configureModule) {
-    //     beforeAll((done: DoneFn) =>
-    //         (async () => {
-    //             configureModule();
-    //             await TestBed.compileComponents();
-    //         })()
-    //             .then(done)
-    //             .catch(done.fail),
-    //     );
-    // }
-
-    // Modified hook from ng-bullet pr
-    // if (configureModule) {
-    //     beforeAll((done: DoneFn) => {
-    //         (async function () {
-    //             configureModule();
-    //             await TestBed.compileComponents();
-    //         })()
-    //             .then(done)
-    //             .catch(done.fail);
-    //     });
-    // }
 
     // Custom hook
     if (configureModule) {

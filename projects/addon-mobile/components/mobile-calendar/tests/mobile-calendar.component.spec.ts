@@ -61,14 +61,12 @@ describe('MobileCalendar', () => {
         });
     });
 
-    beforeEach(done => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.autoDetectChanges();
-        fixture.whenStable().then(() => {
-            done();
-        });
+        await fixture.whenStable();
     });
 
     function getToday(): HTMLElement {

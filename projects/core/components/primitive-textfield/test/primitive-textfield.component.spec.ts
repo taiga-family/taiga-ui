@@ -157,32 +157,26 @@ describe('PrimitiveTextfield', () => {
     });
 
     describe('Example of filling in the field (example-text)', () => {
-        it('if the input is not focused, then example-text is not shown', done => {
-            fixture.whenStable().then(() => {
-                expect(getValueDecoration()).toBe('');
-                done();
-            });
+        it('if the input is not focused, then example-text is not shown', async () => {
+            await fixture.whenStable();
+            expect(getValueDecoration()).toBe('');
         });
 
-        it('if the input has value, then example-text is not shown', done => {
+        it('if the input has value, then example-text is not shown', async () => {
             testComponent.value = 'value';
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getValueDecoration()).toBe(testComponent.value);
-                done();
-            });
+            await fixture.whenStable();
+            fixture.detectChanges();
+            expect(getValueDecoration()).toBe(testComponent.value);
         });
 
-        it('if the input is focused, then example-text is shown', done => {
+        it('if the input is focused, then example-text is shown', async () => {
             testComponent.value = '';
             testComponent.focused = true;
 
             fixture.detectChanges();
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getValueDecoration()).toBe(testComponent.exampleText);
-                done();
-            });
+            await fixture.whenStable();
+            fixture.detectChanges();
+            expect(getValueDecoration()).toBe(testComponent.exampleText);
         });
     });
 

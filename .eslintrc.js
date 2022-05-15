@@ -11,6 +11,7 @@ module.exports = {
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',
+        '@tinkoff/eslint-config-angular/promise',
     ],
     ignorePatterns: [
         'projects/**/test.ts',
@@ -30,35 +31,9 @@ module.exports = {
     rules: {
         '@typescript-eslint/no-useless-constructor': 'off',
         'no-prototype-builtins': 'off',
-        '@typescript-eslint/await-thenable': 'error',
-        'require-await': 'off',
-        '@typescript-eslint/require-await': 'error',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
         '@typescript-eslint/prefer-includes': 'error',
         'prefer-template': 'error',
-        '@typescript-eslint/array-type': [
-            'error',
-            {default: 'array', readonly: 'array-simple'},
-        ],
-        'rxjs/no-compat': 'error',
-        'rxjs/no-connectable': 'error',
-        'rxjs/no-cyclic-action': 'error',
-        'rxjs/no-ignored-observable': 'error',
-        'rxjs/no-topromise': 'error',
-        'rxjs/no-unsafe-catch': 'error',
-        'rxjs/no-unsafe-first': 'error',
-        'rxjs/no-unsafe-switchmap': 'error',
-        'rxjs/throw-error': 'error',
-        '@typescript-eslint/promise-function-async': [
-            'error',
-            {
-                allowedPromiseNames: ['Thenable'],
-                checkArrowFunctions: true,
-                checkFunctionDeclarations: true,
-                checkFunctionExpressions: true,
-                checkMethodDeclarations: true,
-            },
-        ],
         '@typescript-eslint/explicit-function-return-type': [
             'error',
             {

@@ -87,110 +87,88 @@ describe('InputDateTime', () => {
         await initializeEnvironment();
     });
 
-    it('displays initial value', done => {
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('12.07.2021');
-            done();
-        });
+    it('displays initial value', async () => {
+        await fixture.whenStable();
+        expect(inputPO.value).toBe('12.07.2021');
     });
 
-    it('does not clear not finished time string on the first blur', done => {
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText('12.07.2021 1');
-                inputPO.blur();
+    it('does not clear not finished time string on the first blur', async () => {
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe('12.07.2021, 1');
-                done();
-            });
+        inputPO.sendText('12.07.2021 1');
+        inputPO.blur();
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('12.07.2021, 1');
     });
 
-    it('does not clear not finished time string on the second blur', done => {
+    it('does not clear not finished time string on the second blur', async () => {
         inputPO.focus();
         inputPO.blur();
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText('12.07.20211');
-                inputPO.blur();
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe('12.07.2021, 1');
-                done();
-            });
+        inputPO.sendText('12.07.20211');
+        inputPO.blur();
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('12.07.2021, 1');
     });
 
-    it('does not clear all date string if 1 char of date was erased', done => {
+    it('does not clear all date string if 1 char of date was erased', async () => {
         inputPO.sendText('14.07.2021');
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText('14.07.202');
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe('14.07.202');
-                done();
-            });
+        inputPO.sendText('14.07.202');
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('14.07.202');
     });
 
-    it('keeps not finished time string if date was changed using calendar', done => {
+    it('keeps not finished time string if date was changed using calendar', async () => {
         const TIME_STRING = '1';
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText(`05.07.2021${TIME_STRING}`);
-                mouseDownOnTextfield();
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(async () => {
-                expect(inputPO.value).toBe(`05.07.2021, ${TIME_STRING}`);
-                expect(getCalendar()).not.toBeFalsy();
-                clickOnCellInsideCalendar(27);
+        inputPO.sendText(`05.07.2021${TIME_STRING}`);
+        mouseDownOnTextfield();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe(`27.07.2021, ${TIME_STRING}`);
+        await fixture.whenStable();
 
-                done();
-            });
+        expect(inputPO.value).toBe(`05.07.2021, ${TIME_STRING}`);
+        expect(getCalendar()).not.toBeFalsy();
+        clickOnCellInsideCalendar(27);
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe(`27.07.2021, ${TIME_STRING}`);
     });
 
-    it('min day works', done => {
+    it('min day works', async () => {
         component.min = TuiDay.normalizeParse('13.08.2021');
         fixture.detectChanges();
         inputPO.sendText('12.08.2021');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('13.08.2021');
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('13.08.2021');
     });
 
-    it('max day works', done => {
+    it('max day works', async () => {
         component.max = TuiDay.normalizeParse('13.08.2021');
         fixture.detectChanges();
         inputPO.sendText('14.08.2021');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('13.08.2021');
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('13.08.2021');
     });
 
-    it('min day + time work', done => {
+    it('min day + time work', async () => {
         component.min = [
             TuiDay.normalizeParse('13.08.2021'),
             TuiTime.fromString('12:00'),
@@ -198,33 +176,28 @@ describe('InputDateTime', () => {
         fixture.detectChanges();
         inputPO.sendText('13.08.2021, 10:00');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('13.08.2021, 12:00');
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('13.08.2021, 12:00');
     });
 
-    it('min day + time work within min day only', done => {
+    it('min day + time work within min day only', async () => {
         component.min = [
             TuiDay.normalizeParse('13.08.2021'),
             TuiTime.fromString('12:00'),
         ];
         fixture.detectChanges();
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText('14.08.2021 10:00');
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe('14.08.2021, 10:00');
-                done();
-            });
+        inputPO.sendText('14.08.2021 10:00');
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('14.08.2021, 10:00');
     });
 
-    it('max day + time work', done => {
+    it('max day + time work', async () => {
         component.max = [
             TuiDay.normalizeParse('13.08.2021'),
             TuiTime.fromString('12:00'),
@@ -232,59 +205,48 @@ describe('InputDateTime', () => {
         fixture.detectChanges();
         inputPO.sendText('13.08.2021, 14:00');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('13.08.2021, 12:00');
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('13.08.2021, 12:00');
     });
 
-    it('max day + time work within max day only', done => {
+    it('max day + time work within max day only', async () => {
         component.max = [
             TuiDay.normalizeParse('13.08.2021'),
             TuiTime.fromString('12:00'),
         ];
         fixture.detectChanges();
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText('12.08.2021, 14:00');
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe('12.08.2021, 14:00');
-                done();
-            });
+        inputPO.sendText('12.08.2021, 14:00');
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('12.08.2021, 14:00');
     });
 
-    it('keeps finished time string if date was changed using calendar', done => {
+    it('keeps finished time string if date was changed using calendar', async () => {
         const TIME = '18:00';
         const TIME_RAW = TIME.replace(':', '');
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText(`14.07.2021${TIME_RAW}`);
-                mouseDownOnTextfield();
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(async () => {
-                expect(inputPO.value).toBe(`14.07.2021, ${TIME}`);
-                expect(getCalendar()).not.toBeFalsy();
-                clickOnCellInsideCalendar(10);
+        inputPO.sendText(`14.07.2021${TIME_RAW}`);
+        mouseDownOnTextfield();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe(`10.07.2021, ${TIME}`);
+        await fixture.whenStable();
 
-                done();
-            });
+        expect(inputPO.value).toBe(`14.07.2021, ${TIME}`);
+        expect(getCalendar()).not.toBeFalsy();
+        clickOnCellInsideCalendar(10);
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe(`10.07.2021, ${TIME}`);
     });
 
-    it('changes time if max day was selected (via calendar) and time is more than max time now', done => {
+    it('changes time if max day was selected (via calendar) and time is more than max time now', async () => {
         const MAX_DAY = TuiDay.normalizeParse('15.08.2021');
         const MAX_TIME = TuiTime.fromString('16:20');
 
@@ -297,26 +259,18 @@ describe('InputDateTime', () => {
         component.max = [MAX_DAY, MAX_TIME];
         fixture.detectChanges();
 
-        fixture
-            .whenStable()
-            .then(async () => {
-                inputPO.sendText(
-                    `${dayBeforeMaxString}${timeAfterMaxString.replace(':', '')}`,
-                );
-                mouseDownOnTextfield();
+        await fixture.whenStable();
 
-                return fixture.whenStable();
-            })
-            .then(async () => {
-                clickOnCellInsideCalendar(MAX_DAY.day);
+        inputPO.sendText(`${dayBeforeMaxString}${timeAfterMaxString.replace(':', '')}`);
+        mouseDownOnTextfield();
 
-                return fixture.whenStable();
-            })
-            .then(() => {
-                expect(inputPO.value).toBe(`${maxDateString}, ${maxTimeString}`);
+        await fixture.whenStable();
 
-                done();
-            });
+        clickOnCellInsideCalendar(MAX_DAY.day);
+
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe(`${maxDateString}, ${maxTimeString}`);
     });
 
     it('empty value opens dropdown', () => {

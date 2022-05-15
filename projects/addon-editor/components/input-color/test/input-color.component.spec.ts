@@ -37,13 +37,12 @@ describe('InputColor', () => {
         expect(testComponent.component.background).toBe(testComponent.color);
     });
 
-    it('Sanitized value for gradient', done => {
+    it('Sanitized value for gradient', async () => {
         testComponent.color = 'linear-gradient(#ff0000, #00ff00)';
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            expect(typeof testComponent.component.background).toBe('object');
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(typeof testComponent.component.background).toBe('object');
     });
 });

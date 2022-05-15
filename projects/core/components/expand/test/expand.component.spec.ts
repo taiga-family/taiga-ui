@@ -110,28 +110,24 @@ describe('expand', () => {
     });
 
     describe('async', () => {
-        beforeEach(done => {
+        beforeEach(async () => {
             testComponent.async = true;
             testComponent.expanded = false;
             fixture.detectChanges();
             testComponent.expanded = true;
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                done();
-            });
+            await fixture.whenStable();
         });
 
         it('content is being processed', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        it('visible loader', done => {
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
-                done();
-            });
+        it('visible loader', async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
+            expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
         });
 
         it('after the TUI_EXPAND_LOADED event, the loader is hidden', fakeAsync(() => {

@@ -205,16 +205,15 @@ describe('Input', () => {
             expect(updateSpy).toHaveBeenCalled();
         });
 
-        it('Updating the control updates the input', done => {
+        it('Updating the control updates the input', async () => {
             testComponent.control.setValue('321');
             fixture.detectChanges();
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('321');
-                    done();
-                });
-            });
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('321');
         });
 
         it('updateOn: change is updated when the value is changed', () => {

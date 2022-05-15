@@ -79,13 +79,11 @@ describe('InputFile', () => {
             expect(pageObject.getByAutomationId('tui-file__remove')).toBeFalsy();
         });
 
-        it('delete button is not present when control is disabled', done => {
+        it('delete button is not present when control is disabled', async () => {
             testComponent.disabled = true;
             fixture.autoDetectChanges(true);
-            fixture.whenStable().then(() => {
-                expect(pageObject.getByAutomationId('tui-file__remove')).toBeFalsy();
-                done();
-            });
+            await fixture.whenStable();
+            expect(pageObject.getByAutomationId('tui-file__remove')).toBeFalsy();
         });
 
         it('has no message', () => {
@@ -104,13 +102,11 @@ describe('InputFile', () => {
             expect(pageObject.getByAutomationId('tui-file__loading')).toBeFalsy();
         });
 
-        it('has spinner', done => {
+        it('has spinner', async () => {
             testComponent.loadingFiles = testComponent.files;
             fixture.autoDetectChanges(true);
-            fixture.whenStable().then(() => {
-                expect(pageObject.getByAutomationId('tui-file__loader')).toBeTruthy();
-                done();
-            });
+            await fixture.whenStable();
+            expect(pageObject.getByAutomationId('tui-file__loader')).toBeTruthy();
         });
 
         it('has size', () => {

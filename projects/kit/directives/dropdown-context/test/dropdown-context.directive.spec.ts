@@ -41,17 +41,15 @@ describe('TuiDropdownContext directive', () => {
         fixture.detectChanges();
     });
 
-    it('does not show dropdown if NO right-click was made', async () =>
-        fixture.whenStable().then(() => {
-            expect(getTextInsideDropdown()).toBeNull();
-        }));
+    it('does not show dropdown if NO right-click was made', async () => {
+        await fixture.whenStable();
+        expect(getTextInsideDropdown()).toBeNull();
+    });
 
     it('does not show dropdown if left-click was made', async () => {
         getRootBlock()?.click();
-
-        return fixture.whenStable().then(() => {
-            expect(getTextInsideDropdown()).toBeNull();
-        });
+        await fixture.whenStable();
+        expect(getTextInsideDropdown()).toBeNull();
     });
 
     it('shows dropdown if right-click was made', () => {
@@ -68,9 +66,9 @@ describe('TuiDropdownContext directive', () => {
         document.dispatchEvent(escButtonEvent);
         fixture.detectChanges();
 
-        return fixture.whenStable().then(() => {
-            expect(getTextInsideDropdown()).toBeNull();
-        });
+        await fixture.whenStable();
+
+        expect(getTextInsideDropdown()).toBeNull();
     });
 
     it('does not close dropdown on left click inside', async () => {
@@ -81,9 +79,9 @@ describe('TuiDropdownContext directive', () => {
         get$Dropdown()?.click();
         fixture.detectChanges();
 
-        return fixture.whenStable().then(() => {
-            expect(getTextInsideDropdown()).not.toBeFalsy();
-        });
+        await fixture.whenStable();
+
+        expect(getTextInsideDropdown()).not.toBeFalsy();
     });
 
     it('closes dropdown on left click outside', async () => {
@@ -94,9 +92,8 @@ describe('TuiDropdownContext directive', () => {
         getRootBlock()?.click();
         fixture.detectChanges();
 
-        return fixture.whenStable().then(() => {
-            expect(getTextInsideDropdown()).toBeFalsy();
-        });
+        await fixture.whenStable();
+        expect(getTextInsideDropdown()).toBeFalsy();
     });
 
     function get$Dropdown(): HTMLElement | null {

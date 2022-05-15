@@ -81,32 +81,28 @@ describe('Hint', () => {
             discardPeriodicTasks();
         }));
 
-        it('is shown after 500ms', done => {
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getTooltip()!.textContent!.trim()).toBe('Tooltip text');
-                done();
-            });
+        it('is shown after 500ms', async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
+            expect(getTooltip()!.textContent!.trim()).toBe('Tooltip text');
         });
 
-        it('is hidden immediately if null is passed as content', done => {
+        it('is hidden immediately if null is passed as content', async () => {
             setHint(null);
 
-            fixture.whenStable().then(() => {
-                expect(getTooltip()).toBeNull();
-                done();
-            });
+            await fixture.whenStable();
+            expect(getTooltip()).toBeNull();
         });
 
-        it('is hidden after pointer left host with 200ms delay', fakeAsync(() => {
+        it('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
             getHost().dispatchEvent(new Event('mouseleave'));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                expect(getTooltip()).toBeNull();
-            });
+            await fixture.whenStable();
+
+            expect(getTooltip()).toBeNull();
         }));
     });
 

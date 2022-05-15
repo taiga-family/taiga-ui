@@ -108,9 +108,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     inputHidden = false;
 
-    readonly disabledItemHandlerVariants: TuiBooleanHandler<
-        string | TuiStringifiableItem<string>
-    >[] = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === 'T'];
+    readonly disabledItemHandlerVariants: Array<
+        TuiBooleanHandler<string | TuiStringifiableItem<string>>
+    > = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === 'T'];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

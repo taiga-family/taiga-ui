@@ -47,13 +47,11 @@ export function testFiller(
                 expect(getFiller()).toBeNull();
             });
 
-            it('when focusing appears', done => {
+            it('when focusing appears', async () => {
                 inputPO.focus();
                 fixture.detectChanges();
-                fixture.whenStable().then(() => {
-                    expect(getFiller()).not.toBeNull();
-                    done();
-                });
+                await fixture.whenStable();
+                expect(getFiller()).not.toBeNull();
             });
         });
 

@@ -73,7 +73,7 @@ describe('ManualHint', () => {
         expect(getTooltip()).not.toBeNull();
     }));
 
-    it('Tooltip disappears if host disappears with flag', done => {
+    it('Tooltip disappears if host disappears with flag', async () => {
         component.show = true;
 
         fixture.detectChanges();
@@ -82,22 +82,20 @@ describe('ManualHint', () => {
 
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            expect(getTooltip()).toBeNull();
-            done();
-        });
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+        expect(getTooltip()).toBeNull();
     });
 
-    it('Tooltip is not showed with no flag', done => {
+    it('Tooltip is not showed with no flag', async () => {
         component.show = false;
 
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            expect(getTooltip()).toBeNull();
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(getTooltip()).toBeNull();
     });
 
     function getTooltip(): Element | null {

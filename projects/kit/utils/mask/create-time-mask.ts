@@ -6,7 +6,7 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 function tuiCreateTimePartMask(
     maxPartValue: number,
     prefix?: string,
-): (string | RegExp)[] {
+): Array<string | RegExp> {
     const {length} = String(maxPartValue);
     const regExp = Array(length).fill(TUI_DIGIT_REGEXP);
 

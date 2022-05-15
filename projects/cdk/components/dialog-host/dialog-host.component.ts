@@ -42,7 +42,8 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     constructor(
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
         readonly isDialogClosesOnBack$: Observable<boolean>,
-        @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
+        @Inject(TUI_DIALOGS)
+        private readonly dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}

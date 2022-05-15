@@ -36,10 +36,11 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
 ];
 
 export function extensionsFactory(
-    extensions: Promise<Extension>[],
+    extensions: Array<Promise<Extension>>,
 ): Observable<ReadonlyArray<Extension | Mark | Node>> {
     const extensions$ = new ReplaySubject<ReadonlyArray<Extension | Mark | Node>>(1);
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Promise.all(extensions).then(extensions => extensions$.next(extensions));
 
     return extensions$;
@@ -51,7 +52,7 @@ export function initializationTipTapContainer(renderer: Renderer2): HTMLElement 
 
 export function editorFactory(
     element: HTMLElement,
-    extensions: Observable<(Extension | Mark | Node)[]>,
+    extensions: Observable<Array<Extension | Mark | Node>>,
     editor: Observable<typeof Editor>,
 ): Observable<Editor> {
     return combineLatest([editor, extensions]).pipe(

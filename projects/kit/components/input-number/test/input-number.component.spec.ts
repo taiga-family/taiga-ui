@@ -91,68 +91,61 @@ describe('InputNumber', () => {
             fixture.detectChanges();
         });
 
-        it('Zero pennies are not shown', done => {
+        it('Zero pennies are not shown', async () => {
             testComponent.control.setValue(1234.0);
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getNativeInput()!.nativeElement.value).toBe(
-                    `1${CHAR_NO_BREAK_SPACE}234`,
-                );
-                done();
-            });
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+            expect(getNativeInput()!.nativeElement.value).toBe(
+                `1${CHAR_NO_BREAK_SPACE}234`,
+            );
         });
 
-        it('Non-zero pennies are shown', done => {
+        it('Non-zero pennies are shown', async () => {
             testComponent.control.setValue(12.345);
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getNativeInput()!.nativeElement.value).toBe('12,34');
-                done();
-            });
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+            expect(getNativeInput()!.nativeElement.value).toBe('12,34');
         });
     });
 
-    it(`Non-zero pennies are not shown when decimal = 'never'`, done => {
+    it(`Non-zero pennies are not shown when decimal = 'never'`, async () => {
         testComponent.control.setValue(12.3);
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            expect(getNativeInput()!.nativeElement.value).toBe('12');
-            done();
-        });
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+        expect(getNativeInput()!.nativeElement.value).toBe('12');
     });
 
-    it('There is no minus sign for negative values with min> = 0', done => {
+    it('There is no minus sign for negative values with min> = 0', async () => {
         testComponent.component.min = 0;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            expect(getNativeInput()!.nativeElement.value).toBe(
-                `12${CHAR_NO_BREAK_SPACE}345`,
-            );
-            done();
-        });
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+        expect(getNativeInput()!.nativeElement.value).toBe(`12${CHAR_NO_BREAK_SPACE}345`);
     });
 
-    it('No minus sign for non-negative min', done => {
+    it('No minus sign for non-negative min', async () => {
         testComponent.component.min = 10;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            expect(getNativeInput()!.nativeElement!.value).toBe(
-                `12${CHAR_NO_BREAK_SPACE}345`,
-            );
-            done();
-        });
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+        expect(getNativeInput()!.nativeElement!.value).toBe(
+            `12${CHAR_NO_BREAK_SPACE}345`,
+        );
     });
 
     describe('onValueChange | updating form values', () => {

@@ -142,11 +142,9 @@ describe('InputDateRangeComponent', () => {
     });
 
     describe('Keyboard input', () => {
-        beforeEach(done => {
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                done();
-            });
+        beforeEach(async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
         });
 
         it('If you enter an invalid date, the value is adjusted', () => {

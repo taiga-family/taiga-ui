@@ -125,7 +125,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
-    stringifyVariants: TuiStringHandler<Account | string>[] = [
+    stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
         item => String(String(item).match(/\d+/)),
     ];

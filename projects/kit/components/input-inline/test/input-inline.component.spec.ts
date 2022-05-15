@@ -59,14 +59,13 @@ describe('InputInline', () => {
             expect(getNative()!.nativeElement.disabled).toBe(false);
         });
 
-        it('not editable if locked', done => {
+        it('not editable if locked', async () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                expect(getNative()!.nativeElement.disabled).toBe(true);
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(getNative()?.nativeElement.disabled).toBe(true);
         });
     });
 

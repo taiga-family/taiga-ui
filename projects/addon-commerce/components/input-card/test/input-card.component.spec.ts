@@ -114,47 +114,47 @@ describe('InputCard', () => {
     });
 
     describe('Formatting', () => {
-        it('13', done => {
-            testFormat(done, '4000000000000', '4000 0000 0000 0');
+        it('13', async () => {
+            await testFormat('4000000000000', '4000 0000 0000 0');
         });
 
-        it('14', done => {
-            testFormat(done, '40000000000000', '4000 0000 0000 00');
+        it('14', async () => {
+            await testFormat('40000000000000', '4000 0000 0000 00');
         });
 
-        it('15', done => {
-            testFormat(done, '400000000000000', '4000 0000 0000 000');
+        it('15', async () => {
+            await testFormat('400000000000000', '4000 0000 0000 000');
         });
 
-        it('16', done => {
-            testFormat(done, '4000000000000000', '4000 0000 0000 0000');
+        it('16', async () => {
+            await testFormat('4000000000000000', '4000 0000 0000 0000');
         });
 
-        it('17', done => {
-            testFormat(done, '40000000000000000', '4000 0000 0000 0000 0');
+        it('17', async () => {
+            await testFormat('40000000000000000', '4000 0000 0000 0000 0');
         });
 
-        it('18', done => {
-            testFormat(done, '400000000000000000', '4000 0000 0000 0000 00');
+        it('18', async () => {
+            await testFormat('400000000000000000', '4000 0000 0000 0000 00');
         });
 
-        it('19', done => {
-            testFormat(done, '4000000000000000000', '4000 0000 0000 0000 000');
+        it('19', async () => {
+            await testFormat('4000000000000000000', '4000 0000 0000 0000 000');
         });
     });
 
-    function testFormat(done: DoneFn, value: string, formatted: string): void {
+    async function testFormat(value: string, formatted: string): Promise<void> {
         testComponent.control.setValue(value);
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getValue()).toBe(formatted);
-                done();
-            });
-        });
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+
+        await fixture.whenStable();
+
+        fixture.detectChanges();
+        expect(getValue()).toBe(formatted);
     }
 
     function getValue(): string {

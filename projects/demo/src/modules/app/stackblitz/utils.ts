@@ -21,14 +21,14 @@ type FileContent = string;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
-): [FileName, FileContent][] => {
+): Array<[FileName, FileContent]> => {
     return Object.entries(files).filter(
         ([fileName, content]) => content && !isPrimaryComponentFile(fileName),
     );
 };
 
 export const prepareSupportFiles = (
-    files: [FileName, FileContent][],
+    files: Array<[FileName, FileContent]>,
 ): Project['files'] => {
     const processedContent: Project['files'] = {};
 
@@ -44,8 +44,8 @@ export const prepareSupportFiles = (
 };
 
 export const getComponentsClassNames = (
-    files: [FileName, FileContent][],
-): [FileName, FileContent][] => {
+    files: Array<[FileName, FileContent]>,
+): Array<[FileName, FileContent]> => {
     return files
         .filter(
             ([fileName, fileContent]) =>
@@ -58,8 +58,8 @@ export const getComponentsClassNames = (
 };
 
 export const getSupportModules = (
-    files: [FileName, FileContent][],
-): [FileName, TsFileModuleParser][] => {
+    files: Array<[FileName, FileContent]>,
+): Array<[FileName, TsFileModuleParser]> => {
     return files
         .filter(([name, content]) => isTS(name) && new TsFileParser(content).hasNgModule)
         .map(([fileName, fileContent]) => [

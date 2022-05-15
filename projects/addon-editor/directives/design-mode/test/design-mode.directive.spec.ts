@@ -53,16 +53,15 @@ describe('TuiDesignMode directive', () => {
         expect(testComponent.model).toBe(html);
     });
 
-    it('works here', done => {
+    it('works here', async () => {
         testComponent.model = html;
         fixture.detectChanges();
 
         const documentRef = contentDocument();
 
-        fixture.whenStable().then(() => {
-            expect(documentRef ? documentRef.body.innerHTML : '').toBe(html);
-            done();
-        });
+        await fixture.whenStable();
+
+        expect(documentRef ? documentRef.body.innerHTML : '').toBe(html);
     });
 
     function contentDocument(): Document | null {

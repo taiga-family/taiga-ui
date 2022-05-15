@@ -20,7 +20,7 @@ export class TuiParentsScrollService extends Observable<Event> {
 
         this.callback$ = defer(() => {
             let {nativeElement} = elementRef;
-            const eventTargets: (Element | Window)[] = [windowRef, nativeElement];
+            const eventTargets: Array<Element | Window> = [windowRef, nativeElement];
 
             while (nativeElement.parentElement) {
                 nativeElement = nativeElement.parentElement;

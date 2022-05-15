@@ -32,10 +32,11 @@ export class TuiFocusTrapDirective implements OnDestroy {
         @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {
         /**
-         * This would cause currently focused element to lose focus
+         * This would cause currently focused element to lose focus,
          * but it might cause ExpressionChanged error due to potential HostBinding.
          * Microtask keeps it in the same frame but allows change detection to run
          */
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         Promise.resolve().then(() => {
             setNativeFocused(this.elementRef.nativeElement);
         });
@@ -72,6 +73,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          * so we need to delay it but stay in the same sync cycle,
          * therefore using Promise instead of setTimeout
          */
+        // eslint-disable-next-line
         Promise.resolve().then(() => {
             // TODO: iframe warning
             if (this.activeElement instanceof HTMLElement) {

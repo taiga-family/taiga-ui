@@ -312,7 +312,7 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('If you enter a correct value in an invalid field, the error is hidden', done => {
+            it('If you enter a correct value in an invalid field, the error is hidden', async () => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012');
                 input.markAsTouched();
@@ -321,11 +321,9 @@ describe('FieldError', () => {
                 inputPO.sendText('012345');
                 fixture.detectChanges();
 
-                fixture.whenStable().then(() => {
-                    fixture.detectChanges();
-                    expect(isErrorVisible(pageObject)).toBe(false);
-                    done();
-                });
+                await fixture.whenStable();
+                fixture.detectChanges();
+                expect(isErrorVisible(pageObject)).toBe(false);
             });
 
             it('If you enter an incorrect value in a valid field, an error appears', () => {

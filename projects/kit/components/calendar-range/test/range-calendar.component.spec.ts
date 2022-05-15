@@ -82,16 +82,14 @@ describe('rangeCalendarComponent', () => {
         });
     });
 
-    beforeEach(done => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            done();
-        });
+        await fixture.whenStable();
+        fixture.detectChanges();
     });
 
     it('showing two calendars if items is an empty array', () => {

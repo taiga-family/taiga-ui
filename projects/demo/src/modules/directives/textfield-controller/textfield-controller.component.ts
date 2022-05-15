@@ -45,7 +45,7 @@ export class ExampleTuiTextfieldControllerComponent {
 
     customContentSelected: string | null = null;
 
-    autocompleteVariants: (TuiAutofillFieldName | '')[] = [
+    autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
         '',
         'off',
         'cc-name',

@@ -149,7 +149,7 @@ describe('ComboBox', () => {
         });
     });
 
-    it('When changing items, substitutes an exact match in the control', done => {
+    it('When changing items, substitutes an exact match in the control', async () => {
         testComponent.defaultInputs = true;
         testComponent.items = [];
         testComponent.control.setValue(ITEMS[0]);
@@ -161,10 +161,8 @@ describe('ComboBox', () => {
         testComponent.items = ITEMS;
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
-            expect(testComponent.control.value).toBe(ITEMS[1]);
-            done();
-        });
+        await fixture.whenStable();
+        expect(testComponent.control.value).toBe(ITEMS[1]);
     });
 
     describe('identityMatcher', () => {
