@@ -3,8 +3,17 @@
 .textfield();
 
 :host {
-    &._autofilled .t-value-decoration {
-        display: none;
+    &._autofilled {
+        .t-value-decoration {
+            display: none;
+        }
+
+        &[data-size='s'],
+        &[data-size='m'] {
+            .t-placeholder {
+                visibility: hidden;
+            }
+        }
     }
 }
 

@@ -55,7 +55,6 @@ export abstract class TuiStackblitzResourcesLoader {
             keyframesLess,
             normalizeLess,
             mainLess,
-            tuiAutofillLess,
             tuiContainerLess,
             tuiFormLess,
             tuiGroupLess,
@@ -113,11 +112,6 @@ export abstract class TuiStackblitzResourcesLoader {
                 import('!!raw-loader!../../../../../core/styles/basic/normalize.less'),
             ),
             rawLoad(import('!!raw-loader!../../../../../core/styles/basic/main.less')),
-            rawLoad(
-                import(
-                    '!!raw-loader!../../../../../core/styles/markup/tui-autofill.less'
-                ),
-            ),
             rawLoad(
                 import(
                     '!!raw-loader!../../../../../core/styles/markup/tui-container.less'
@@ -228,7 +222,6 @@ export abstract class TuiStackblitzResourcesLoader {
         styles['styles/basic/keyframes.less'] = keyframesLess;
         styles['styles/basic/normalize.less'] = normalizeLess;
         styles['styles/basic/main.less'] = mainLess;
-        styles['styles/markup/tui-autofill.less'] = tuiAutofillLess;
         styles['styles/markup/tui-container.less'] = tuiContainerLess;
         styles['styles/markup/tui-form.less'] = tuiFormLess;
         styles['styles/markup/tui-group.less'] = tuiGroupLess;
