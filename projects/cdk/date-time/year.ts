@@ -164,6 +164,15 @@ export class TuiYear implements TuiYearLike {
         return this.year;
     }
 
+    /**
+     * Returns the primitive value of the given Date object.
+     * Depending on the argument, the method can return either a string or a number.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
+     */
+    [Symbol.toPrimitive](hint: string): string | number {
+        return Date.prototype[Symbol.toPrimitive].call(this, hint);
+    }
+
     toJSON(): string {
         return this.formattedYear;
     }

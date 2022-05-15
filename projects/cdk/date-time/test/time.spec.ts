@@ -362,4 +362,29 @@ describe('TuiTime', () => {
             expect(time < new TuiTime(7, 36, 0, 0)).toBeTrue();
         });
     });
+
+    describe('Symbol.toPrimitive returns', () => {
+        it('a number if the hint is number', () => {
+            const time = new TuiTime(10, 36, 5, 0);
+
+            expect(Number(time)).toBeInstanceOf(Number);
+            expect(time.valueOf()).toBeInstanceOf(Number);
+            expect(time[Symbol.toPrimitive]('number')).toBeInstanceOf(Number);
+        });
+
+        it('a string if the hint is string', () => {
+            const time = new TuiTime(1, 12, 5, 10);
+
+            expect(String(time)).toBeInstanceOf(String);
+            expect(time.toString()).toBeInstanceOf(String);
+            expect(time[Symbol.toPrimitive]('string')).toBeInstanceOf(String);
+        });
+
+        it('a string if the hint is default', () => {
+            const time = new TuiTime(15, 54, 0, 0);
+
+            expect(`${time}`).toBeInstanceOf(String);
+            expect(time[Symbol.toPrimitive]('default')).toBeInstanceOf(String);
+        });
+    });
 });
