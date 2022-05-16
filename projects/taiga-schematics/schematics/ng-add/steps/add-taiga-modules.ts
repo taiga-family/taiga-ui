@@ -48,7 +48,7 @@ function addTuiModules(
     const modules = [
         ...MAIN_MODULES,
         ...(options.addDialogsModule ? DIALOG_MODULES : []),
-        ...(options.addNotificationsModule ? ALERT_MODULES : []),
+        ...(options.addAlertModule ? ALERT_MODULES : []),
     ];
 
     const mainModulePath = mainModule.getSourceFile().getFilePath();

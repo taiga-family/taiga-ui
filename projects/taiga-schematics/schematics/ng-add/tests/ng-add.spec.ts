@@ -42,7 +42,7 @@ describe('ng-add', () => {
         const options: Schema = {
             addSanitizer: false,
             addDialogsModule: false,
-            addNotificationsModule: false,
+            addAlertModule: false,
             addons: [],
             project: '',
         };
@@ -66,7 +66,7 @@ describe('ng-add', () => {
         const options: Schema = {
             addSanitizer: true,
             addDialogsModule: false,
-            addNotificationsModule: false,
+            addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
         };
@@ -170,7 +170,7 @@ describe('ng-add', () => {
         const options: Schema = {
             addSanitizer: true,
             addDialogsModule: true,
-            addNotificationsModule: true,
+            addAlertModule: true,
             addons: [],
             project: '',
         };

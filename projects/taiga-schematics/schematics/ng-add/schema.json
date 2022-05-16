@@ -29,7 +29,7 @@
                 "type": "confirmation"
             }
         },
-        "addNotificationsModule": {
+        "addAlertModule": {
             "description": "Setting up alerts module",
             "type": "boolean",
             "default": true,
