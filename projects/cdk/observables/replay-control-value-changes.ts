@@ -5,7 +5,7 @@ import {startWith} from 'rxjs/operators';
 
 /**
  * Turns AbstractControl/Abstract-control-directive valueChanges into ReplaySubject(1)
- * TODO: rename function in 3.0. The name should be shorter.
+ * TODO: 3.0 name should be shorter.
  */
 export function tuiReplayedValueChangesFrom<T>(
     control: AbstractControl | AbstractControlDirective,

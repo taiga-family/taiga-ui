@@ -64,7 +64,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
     value?: T;
 
-    // TODO: Fix dataList type when updated to Ivy and compilation drops metadata
+    // TODO: 3.0 Fix dataList type when updated to Ivy and compilation drops metadata
     constructor(
         @Optional()
         @Inject(TUI_OPTION_CONTENT)

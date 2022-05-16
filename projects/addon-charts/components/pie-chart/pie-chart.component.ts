@@ -36,7 +36,7 @@ const TRANSFORM = {
     xl: 1.08,
 };
 
-// TODO: Remove sanitizer when Angular version is bumped
+// TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
     selector: 'tui-pie-chart',
     templateUrl: './pie-chart.template.html',

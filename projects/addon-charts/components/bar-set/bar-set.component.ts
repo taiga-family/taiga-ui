@@ -9,7 +9,7 @@ const PERCENT = 100;
 const EMPTY_ARRAY: readonly number[] = [];
 const FILLER_ARRAY: readonly number[] = [1];
 
-// TODO: Remove sanitizer when Angular version is bumped
+// TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
     selector: 'tui-bar-set',
     templateUrl: './bar-set.template.html',

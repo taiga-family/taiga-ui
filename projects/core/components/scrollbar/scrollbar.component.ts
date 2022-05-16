@@ -47,7 +47,7 @@ export class TuiScrollbarComponent {
 
     constructor(
         /**
-         * TODO: remove "any" in new TS version; https://github.com/ng-web-apis/common/pull/6
+         * TODO: 3.0 remove "any" in new TS version; https://github.com/ng-web-apis/common/pull/6
          */
         @Inject(CSS) private readonly cssRef: any,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,

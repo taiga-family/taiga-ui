@@ -8,7 +8,7 @@ import {TuiMonthRange} from './month-range';
 
 /**
  * Temporary type guard to satisfy ts-overloading of normalizeParse method
- * @deprecated TODO rm in v3.0
+ * @deprecated
  */
 export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
     ['DMY', 'YMD', 'MDY'].includes(dateMode);
@@ -38,7 +38,6 @@ export class TuiDayRange extends TuiMonthRange {
 
     /**
      * @deprecated
-     * TODO rm deprecated version in v3.0
      */
     static normalizeParse(
         rangeString: string,

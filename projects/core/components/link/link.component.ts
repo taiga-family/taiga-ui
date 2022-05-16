@@ -49,7 +49,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @tuiDefaultProp()
     pseudo = false;
 
-    // TODO: Remove `null` in 3.0
+    // TODO: 3.0 Remove `null`
     @Input()
     @tuiDefaultProp()
     icon: string | null = null;

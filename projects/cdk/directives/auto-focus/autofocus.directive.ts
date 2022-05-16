@@ -23,7 +23,7 @@ import {map, skipWhile, take, throttleTime} from 'rxjs/operators';
 const TIMEOUT = 1000;
 const NG_ANIMATION_SELECTOR = '.ng-animating';
 
-// TODO: in 3.0 change input name to tuiAutoFocus and handle empty string
+// TODO: 3.0 change input name to tuiAutoFocus and handle empty string
 // TODO: refactor on this whole thing in 3.0
 @Directive({
     selector: '[tuiAutoFocus]',

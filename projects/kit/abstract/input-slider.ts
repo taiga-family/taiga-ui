@@ -14,7 +14,7 @@ export function quantumAssertion(quantum: number): boolean {
 
 /**
  * @internal
- * @deprecated TODO delete me after `InputSlider` and `InputRange` stop using it
+ * @deprecated TODO: 3.0 delete me after `InputSlider` and `InputRange` stop using it
  */
 @Directive()
 export abstract class AbstractTuiInputSlider<T>

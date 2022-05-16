@@ -13,7 +13,7 @@ import {Observable} from 'rxjs';
 
 import {TuiInputDateComponent} from './input-date.component';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const DATE_STREAM_FACTORY = <T extends TuiDay>(
     control: NgControl | null,
     valueTransformer: TuiControlValueTransformer<T>,

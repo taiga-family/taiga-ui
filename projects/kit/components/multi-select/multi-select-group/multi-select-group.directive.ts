@@ -35,7 +35,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
     TuiMultiSelectOptionComponent,
 );
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const MULTI_SELECT_ACCESSOR = {
     writeValue: EMPTY_FUNCTION,
     registerOnChange: EMPTY_FUNCTION,

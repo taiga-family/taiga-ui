@@ -16,7 +16,7 @@ export interface TuiInputPasswordOptions {
  */
 export type InputPasswordOptions = TuiInputPasswordOptions;
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const PASSWORD_ICON_HIDE = ({
     $implicit,
 }: TuiContextWithImplicit<TuiSizeS | TuiSizeL>):

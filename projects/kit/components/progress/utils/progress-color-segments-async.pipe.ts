@@ -4,7 +4,7 @@ import {map} from 'rxjs/operators';
 
 import {AbstractTuiColorSegments} from './abstract-color-segments';
 
-// TODO delete in v3.0
+// TODO: 3.0 delete
 @Pipe({name: 'tuiProgressColorSegmentsAsync'})
 export class TuiProgressColorSegmentsAsyncPipe extends AbstractTuiColorSegments<
     Observable<string>

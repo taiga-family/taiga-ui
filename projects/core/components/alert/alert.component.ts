@@ -26,7 +26,7 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheu
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 
-// TODO: Remove and start using TuiDialog<TuiAlertOptions<I>, O>
+// TODO: 3.0 Remove and start using TuiDialog<TuiAlertOptions<I>, O>
 export interface TuiNotificationContentContext<O = void, I = undefined>
     extends TuiContextWithImplicit<TuiNotification> {
     label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
@@ -36,7 +36,7 @@ export interface TuiNotificationContentContext<O = void, I = undefined>
     emitAndCloseHook: (data: O) => void;
 }
 
-// TODO: Refactor according to new context by 3.0 and get rid of $any in template
+// TODO: 3.0 Refactor according to new context by 3.0 and get rid of $any in template
 @Component({
     selector: 'tui-alert',
     templateUrl: './alert.template.html',

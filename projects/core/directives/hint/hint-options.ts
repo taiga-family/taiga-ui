@@ -11,7 +11,7 @@ export interface TuiHintOptions extends TuiAbstractHintOptions {
     readonly tooltipIcon: PolymorpheusContent;
 }
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const TUI_TOOLTIP_ICON = 'tuiIconTooltipLarge';
 
 /** Default values for hint options */

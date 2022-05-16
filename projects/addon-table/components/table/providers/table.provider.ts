@@ -5,7 +5,7 @@ import {watchedControllerFactory} from '@taiga-ui/core';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const TABLE_FACTORY = watchedControllerFactory;
 
 export const TUI_TABLE_PROVIDER: Provider[] = [

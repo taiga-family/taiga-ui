@@ -49,7 +49,7 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     editable = false;
 
-    // TODO: Remove in 3.0
+    // TODO: 3.0: Remove
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;
@@ -95,7 +95,7 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
     leftContent: PolymorpheusContent | null = null;

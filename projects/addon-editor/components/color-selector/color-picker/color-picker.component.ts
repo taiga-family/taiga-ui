@@ -18,7 +18,7 @@ import {TuiPoint} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerComponent {
-    // TODO: Named tuples
+    // TODO: 3.0 Named tuples
     @Input()
     @tuiDefaultProp()
     set color(color: [number, number, number, number]) {
@@ -84,7 +84,7 @@ export class TuiColorPickerComponent {
     }
 
     private updateColor(): void {
-        // TODO: Revisit with updated TS, spread might work
+        // TODO: 3.0 Revisit with updated TS, spread might work
         this.colorChange.emit([
             this.currentColor[0],
             this.currentColor[1],

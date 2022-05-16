@@ -115,7 +115,7 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    cardSrc: PolymorpheusContent | null = null; // TODO(splincode): will be deleted `null` in v3.0
+    cardSrc: PolymorpheusContent | null = null; // TODO: 3.0 will be deleted `null` in v3.0
 
     @Input()
     @tuiDefaultProp()

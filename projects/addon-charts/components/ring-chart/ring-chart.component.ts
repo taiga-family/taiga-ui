@@ -13,7 +13,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: Refactor to use ng-content
+// TODO: 3.0 Refactor to use ng-content
 @Component({
     selector: 'tui-ring-chart',
     templateUrl: './ring-chart.template.html',

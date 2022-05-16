@@ -112,7 +112,7 @@ export class TuiEditLinkComponent {
         this.url = '';
     }
 
-    // TODO: remove shadow root ref in v3.0
+    // TODO: 3.0 remove shadow root ref in v3.0
     private makeUrl(): string {
         const selection = (this.shadowRootRef || this.documentRef).getSelection();
 

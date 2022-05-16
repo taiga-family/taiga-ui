@@ -99,7 +99,7 @@ export abstract class AbstractTuiInteractive {
         return !this.computedDisabled && (this.pseudoFocused ?? this.focusVisible);
     }
 
-    // TODO: Consider removing since native input is exposed
+    // TODO: 3.0 Consider removing since native input is exposed
     get id(): string {
         return this.nativeId ? this.nativeId : this.autoIdString;
     }

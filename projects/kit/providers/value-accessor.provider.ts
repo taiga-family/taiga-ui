@@ -3,7 +3,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
 import {identity} from 'rxjs';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const IDENTITY = identity;
 
 export const TUI_VALUE_ACCESSOR_PROVIDER: FactoryProvider = {

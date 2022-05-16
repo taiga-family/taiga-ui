@@ -16,7 +16,7 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
     ],
 })
 export class TuiHintControllerDirective extends TuiController {
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input('tuiHintContent')
     @tuiDefaultProp()
     content: PolymorpheusContent | null = null;

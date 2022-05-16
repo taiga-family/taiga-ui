@@ -43,7 +43,7 @@ export class TuiLoaderComponent {
     @tuiDefaultProp()
     overlay = this.options.overlay;
 
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
     textContent: PolymorpheusContent | null = null;

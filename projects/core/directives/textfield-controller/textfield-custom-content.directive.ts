@@ -17,9 +17,9 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT =
     ],
 })
 export class TuiTextfieldCustomContentDirective extends TuiController {
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input('tuiTextfieldCustomContent')
-    customContent: PolymorpheusContent | null = null;
+    customContent: PolymorpheusContent | null = '';
 }
 
 export function customContentDirectiveFactory(): TuiTextfieldCustomContentDirective {

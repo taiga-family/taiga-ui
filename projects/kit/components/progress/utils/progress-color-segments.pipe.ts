@@ -2,7 +2,7 @@ import {Pipe} from '@angular/core';
 
 import {AbstractTuiColorSegments} from './abstract-color-segments';
 
-// TODO delete in v3.0
+// TODO: 3.0 delete
 @Pipe({name: 'tuiProgressColorSegments'})
 export class TuiProgressColorSegmentsPipe extends AbstractTuiColorSegments<string> {
     /**

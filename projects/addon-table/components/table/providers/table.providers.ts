@@ -15,7 +15,7 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const TABLE_THRESHOLD = [0, 1];
 export const TABLE_LABEL = {
     labelOutside: true,
@@ -38,7 +38,7 @@ export const TUI_TABLE_PROVIDERS = [
     },
     {
         provide: TUI_TEXTFIELD_APPEARANCE,
-        // TODO: remove in ivy compilation
+        // TODO: 3.0 remove in ivy compilation
         useValue: 'table', // TuiAppearance.Table
     },
     {

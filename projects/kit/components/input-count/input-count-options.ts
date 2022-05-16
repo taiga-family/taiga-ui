@@ -20,7 +20,7 @@ export interface TuiInputCountOptions {
  */
 export type InputCountOptions = TuiInputCountOptions;
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const PASSWORD_ICON_UP = 'tuiIconPlus';
 export const PASSWORD_ICON_DOWN = 'tuiIconMinus';
 
