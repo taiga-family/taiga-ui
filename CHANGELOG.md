@@ -3,15 +3,49 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.45.0](https://github.com/tinkoff/taiga-ui/compare/v2.44.0...v2.45.0) (2022-05-16)
+
+### Features
+
+- **addon-mobile:** `Sheet` make top offset dynamic ([#1747](https://github.com/tinkoff/taiga-ui/issues/1747))
+  ([d0c2d75](https://github.com/tinkoff/taiga-ui/commit/d0c2d75468e1ae9d88106889ad7cc506f01b249e))
+  ([7e32b44](https://github.com/tinkoff/taiga-ui/commit/7e32b440a3ee5493dd5bc9fd561d8334fe5c58e4))
+- **cdk:** add `valueOf` and `Symbol.toPrimitive` to `TuiDay`, `TuiMonth`, `TuiYear` and `TuiTime`
+  ([#1756](https://github.com/tinkoff/taiga-ui/issues/1756))
+  ([183b99b](https://github.com/tinkoff/taiga-ui/commit/183b99bb7fd3e2a3f45958ce33cf0e13cba573ae))
+- **core:** `Lists` add triangle bullet list type ([#1727](https://github.com/tinkoff/taiga-ui/issues/1727))
+  ([b189a67](https://github.com/tinkoff/taiga-ui/commit/b189a67829a9eeda60248275df665fe8e24716f0))
+- **core:** `Lists` triangle bullet list type - made fixed size according design
+  ([#1736](https://github.com/tinkoff/taiga-ui/issues/1736))
+  ([503d855](https://github.com/tinkoff/taiga-ui/commit/503d855d8871a27b39bac4f038bcc7790828f2c3))
+- **core:** support for custom processing of svg icons
+  ([e881153](https://github.com/tinkoff/taiga-ui/commit/e881153e448ed889bf5e7cfa9d05012d1c8d104a))
+- **kit:** `Action` make icon color customizable ([#1755](https://github.com/tinkoff/taiga-ui/issues/1755))
+  ([599e5aa](https://github.com/tinkoff/taiga-ui/commit/599e5aa04f98bfad568ef5335c1edd0b25255519))
+- **kit:** `TabsWithMore` optionally keep active tab inside More section
+  ([#1682](https://github.com/tinkoff/taiga-ui/issues/1682))
+  ([3646072](https://github.com/tinkoff/taiga-ui/commit/3646072bc6ce2793134dbea9db1955d46a58c617))
+
+### Bug Fixes
+
+- **addon-charts:** `LineChart` fix dot style ([#1745](https://github.com/tinkoff/taiga-ui/issues/1745))
+  ([9e2f0f2](https://github.com/tinkoff/taiga-ui/commit/9e2f0f2e3027ee3fbe6725e98ae30c2b357af11e))
+- **core:** `tui-slider-ticks-labels` error `Operation on an invalid type`
+  ([#1759](https://github.com/tinkoff/taiga-ui/issues/1759))
+  ([9c3521e](https://github.com/tinkoff/taiga-ui/commit/9c3521ef8ad42903358a3b7c72304ec75f9cecc5))
+- **core:** correct filler display for size `S` and `M`
+  ([41c4497](https://github.com/tinkoff/taiga-ui/commit/41c4497d1ce18e12d3c20df57339554a9c2f527a))
+- **kit:** `ComboBox` don't clear when same value is entered ([#1739](https://github.com/tinkoff/taiga-ui/issues/1739))
+  ([1f43e87](https://github.com/tinkoff/taiga-ui/commit/1f43e87e5fab6f1d31ad3c882ac06dd4da4c3909))
+- **kit:** returns a full of stringified range when state is readonly
+  ([56f5ba7](https://github.com/tinkoff/taiga-ui/commit/56f5ba7cc17c30486d0dd7ab7cab48089d21f3e1))
+
 ## [2.44.0](https://github.com/tinkoff/taiga-ui/compare/v2.43.0...v2.44.0) (2022-05-05)
 
 ### Features
 
 - **addon-commerce:** use pipe instead getter for improve performance
   ([b037924](https://github.com/tinkoff/taiga-ui/commit/b03792423ec73bdb0f06e0d0a79951b4f5d85121))
-- **addon-table:** `TextArea` add support for interactive tables
-  ([#1666](https://github.com/tinkoff/taiga-ui/issues/1666))
-  ([3180600](https://github.com/tinkoff/taiga-ui/commit/3180600865916c3fa01651289a69536c025c7ca4))
 - **cdk:** `Portal` add new directive ([#1688](https://github.com/tinkoff/taiga-ui/issues/1688))
   ([c70242a](https://github.com/tinkoff/taiga-ui/commit/c70242a1c451d7a878fa7687917cb5e46e411bb5))
 - **cdk:** `TuiDay` add `currentUtc` static method
