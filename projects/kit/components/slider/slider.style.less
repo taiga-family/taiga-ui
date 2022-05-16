@@ -20,7 +20,7 @@
     The most left point of the track is the most left point of the thumb (at the zero-position).
     The first tick should start at the center of thumb to set correct position for all other ticks.
     */
-    @first-tick-offset: (@thumb-width - @ticks-thickness) / 2;
+    @first-tick-offset: ((@thumb-width - @ticks-thickness) / 2);
     @ticks-background-size: calc(100% - @thumb-width);
 
     @hide-first-tick: linear-gradient(

@@ -34,7 +34,7 @@
 
 .track(@thumb-width) {
     position: relative;
-    margin: 0 @thumb-width / 2;
+    margin: 0 (@thumb-width / 2);
     height: 100%;
 
     /* Filled selected range */
@@ -46,7 +46,7 @@
         right: var(--right);
         height: 100%;
         background: var(--tui-primary);
-        margin: 0 -@thumb-width / 2;
+        margin: 0 (-@thumb-width / 2);
     }
 }
 
@@ -102,7 +102,7 @@
     .ignore-track-pointer-events();
     .remove-track-background();
     position: absolute;
-    top: @track-height / 2;
+    top: (@track-height / 2);
     left: 0;
     right: 0;
     z-index: 1;
@@ -135,12 +135,12 @@
 
     :host[data-size='s'] & {
         .tui-slider-ticks-labels(s);
-        padding: 0 @thumb-diameters[ @s] / 2;
+        padding: 0 (@thumb-diameters[ @s] / 2);
     }
 
     :host[data-size='m'] & {
         .tui-slider-ticks-labels(m);
-        padding: 0 @thumb-diameters[ @m] / 2;
+        padding: 0 (@thumb-diameters[ @m] / 2);
     }
 }
 
@@ -159,11 +159,11 @@
 // TODO delete in v3.0
 .segment {
     &:last-of-type .number {
-        margin-right: -@thumb-diameters[ @m] / 2;
+        margin-right: (-@thumb-diameters[ @m] / 2);
     }
 
     &:first-of-type .number {
-        margin-left: -@thumb-diameters[ @m] / 2;
+        margin-left: (-@thumb-diameters[ @m] / 2);
     }
 }
 
