@@ -1,9 +1,7 @@
 import {readFileSync, writeFileSync} from 'fs';
 import {glob} from 'glob';
 
-import {bumpTuiDeps} from './bump-tui-deps';
-import {bumpTuiVersionInPackageJson} from './bump-tui-version-in-package-json';
-import {isTuiPackageName} from './is-tui-package-name';
+import {updatePackageJsonStructure} from './update-package-json-structure';
 
 const INDENTATION = 4;
 
@@ -24,31 +22,10 @@ export function syncVersions(
 
     for (const file of files) {
         const packageJson = JSON.parse(readFileSync(file).toString());
-        const {name, dependencies, peerDependencies, devDependencies} = packageJson;
+        const isPackageLockJson = file.endsWith('-lock.json');
 
-        if (isTuiPackageName(name, ignores)) {
-            bumpTuiVersionInPackageJson(packageJson, version);
-        }
-
-        if (dependencies) {
-            bumpTuiDeps({deps: dependencies, version, ignores});
-        }
-
-        if (peerDependencies) {
-            bumpTuiDeps({
-                deps: peerDependencies,
-                version,
-                isPeerDependency: true,
-                ignores,
-            });
-        }
-
-        if (devDependencies) {
-            bumpTuiDeps({deps: devDependencies, version, ignores});
-        }
-
+        updatePackageJsonStructure(packageJson, version, isPackageLockJson, ignores);
         writeFileSync(file, `${JSON.stringify(packageJson, null, INDENTATION)}\n`);
-
         console.info('\x1b[32m%s\x1b[0m', `[synchronized]:`, file);
     }
 }
