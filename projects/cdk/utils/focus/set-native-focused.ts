@@ -1,4 +1,6 @@
 /**
+ * @deprecated: use native element.focus()
+ * TODO: remove in v3.0
  * Focuses or blurs and element
  *
  * @param element native element

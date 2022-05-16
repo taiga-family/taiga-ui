@@ -1,5 +1,6 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiAlertService,
     TuiDialogContext,
@@ -8,39 +9,6 @@ import {
 } from '@taiga-ui/core';
 import {switchMap} from 'rxjs/operators';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as dialogExampleComponent} from '!!raw-loader!./examples/2/dialog-example/dialog-example.component.ts';
-import {default as dialogExampleModule} from '!!raw-loader!./examples/2/dialog-example/dialog-example.module.ts';
-import {default as dialogExampleStyle} from '!!raw-loader!./examples/2/dialog-example/dialog-example.style.less';
-import {default as dialogExampleTemplate} from '!!raw-loader!./examples/2/dialog-example/dialog-example.template.html';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
-import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
-import {default as exampleCustomDialog} from '!!raw-loader!./examples/import/custom-dialog.txt';
-import {default as exampleDialogClosesOnBackToken} from '!!raw-loader!./examples/import/dialogClosesOnBackToken.txt';
-import {default as exampleDialogsCloseToken} from '!!raw-loader!./examples/import/dialogs-close-token.txt';
-import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
-import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
-import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
-
-const METHOD = `open<O>(
-  content: PolymorpheusContent<TuiDialogContext<O, I>,
-  options: Partial<TuiDialogOptions<I>>,
-): Observable<O>`;
-
 @Component({
     selector: 'example-tui-dialog',
     templateUrl: './dialog.template.html',
@@ -48,52 +16,92 @@ const METHOD = `open<O>(
     changeDetection,
 })
 export class ExampleTuiDialogComponent {
-    readonly dialogsCloseToken = exampleDialogsCloseToken;
-    readonly exampleDialogClosesOnBackToken = exampleDialogClosesOnBackToken;
+    readonly method = import('!!raw-loader!./method.md');
 
-    readonly method = METHOD;
+    readonly dialogsCloseToken = import(
+        '!!raw-loader!./examples/import/dialogs-close-token.txt'
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly exampleDialogClosesOnBackToken = import(
+        '!!raw-loader!./examples/import/dialogClosesOnBackToken.txt'
+    );
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2 = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        'dialog-example/dialog-example.module.ts': dialogExampleModule,
-        'dialog-example/dialog-example.component.ts': dialogExampleComponent,
-        'dialog-example/dialog-example.style.less': dialogExampleStyle,
-        'dialog-example/dialog-example.template.html': dialogExampleTemplate,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        'dialog-example/dialog-example.module.ts': import(
+            '!!raw-loader!./examples/2/dialog-example/dialog-example.module.ts'
+        ),
+        'dialog-example/dialog-example.component.ts': import(
+            '!!raw-loader!./examples/2/dialog-example/dialog-example.component.ts'
+        ),
+        'dialog-example/dialog-example.style.less': import(
+            '!!raw-loader!./examples/2/dialog-example/dialog-example.style.less'
+        ),
+        'dialog-example/dialog-example.template.html': import(
+            '!!raw-loader!./examples/2/dialog-example/dialog-example.template.html'
+        ),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
-    readonly example4: FrontEndExample = {
-        TypeScript: example4Ts,
-        HTML: example4Html,
-        LESS: example4Less,
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
-    readonly example5: FrontEndExample = {
-        TypeScript: example5Ts,
-        HTML: example5Html,
-        LESS: example5Less,
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
-    readonly example6: FrontEndExample = {
-        TypeScript: example6Ts,
-        HTML: example6Html,
+    readonly example6: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
     };
 
-    readonly exampleImportModuleComponent = exampleImportModuleComponent;
-    readonly exampleServiceUsage = exampleServiceUsage;
-    readonly exampleCustomDialog = exampleCustomDialog;
-    readonly exampleLazyModule = exampleLazyModule;
-    readonly exampleModule = exampleModule;
+    readonly example7: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/7/index.ts'),
+        HTML: import('!!raw-loader!./examples/7/index.html'),
+        'search-example/search-dialog-example.component.ts': import(
+            '!!raw-loader!./examples/7/search-example/search-dialog-example.component.ts'
+        ),
+        'search-example/search-dialog-example.component.html': import(
+            '!!raw-loader!./examples/7/search-example/search-dialog-example.template.html'
+        ),
+        'search-example/search-dialog-example.component.less': import(
+            '!!raw-loader!./examples/7/search-example/search-dialog-example.component.less'
+        ),
+        'search-dialog.module.ts': import(
+            '!!raw-loader!./examples/7/search-example/search-dialog.module.ts'
+        ),
+    };
+
+    readonly exampleImportModuleComponent = import(
+        '!!raw-loader!./examples/import/import-module-component.txt'
+    );
+
+    readonly exampleServiceUsage = import(
+        '!!raw-loader!./examples/import/service-usage.txt'
+    );
+
+    readonly exampleCustomDialog = import(
+        '!!raw-loader!./examples/import/custom-dialog.txt'
+    );
+
+    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.txt');
+
+    readonly exampleModule = import('!!raw-loader!./examples/import/module.txt');
 
     data = 100;
 
