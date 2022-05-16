@@ -1,12 +1,10 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeL} from '@taiga-ui/core';
 
 import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 
 @Component({
     selector: 'example-tui-checkbox',
@@ -35,8 +33,4 @@ export class ExampleTuiPrimitiveCheckboxComponent {
     readonly valueVariants: readonly boolean[] = [false, true];
 
     value = this.valueVariants[0];
-
-    constructor(
-        @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
-    ) {}
 }
