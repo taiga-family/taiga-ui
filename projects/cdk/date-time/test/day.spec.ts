@@ -1046,6 +1046,42 @@ describe('TuiDay', () => {
                     });
                 });
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of a TuiDay object', () => {
+                    const day = new TuiDay(2000, 5, 13);
+
+                    expect(Number(day)).toBeInstanceOf(Number);
+                    expect(day.valueOf()).toBeInstanceOf(Number);
+                    expect(day > new TuiDay(2000, 5, 10)).toBeTrue();
+                    expect(day < new TuiDay(2001, 5, 10)).toBeTrue();
+                });
+            });
+
+            describe('Symbol.toPrimitive returns', () => {
+                it('a number if the hint is number', () => {
+                    const day = new TuiDay(2009, 2, 28);
+
+                    expect(Number(day)).toBeInstanceOf(Number);
+                    expect(day.valueOf()).toBeInstanceOf(Number);
+                    expect(day[Symbol.toPrimitive]('number')).toBeInstanceOf(Number);
+                });
+
+                it('a string if the hint is string', () => {
+                    const day = new TuiDay(2004, 3, 22);
+
+                    expect(String(day)).toBeInstanceOf(String);
+                    expect(day.toString()).toBeInstanceOf(String);
+                    expect(day[Symbol.toPrimitive]('string')).toBeInstanceOf(String);
+                });
+
+                it('a string if the hint is default', () => {
+                    const day = new TuiDay(2012, 7, 18);
+
+                    expect(`${day}`).toBeInstanceOf(String);
+                    expect(day[Symbol.toPrimitive]('default')).toBeInstanceOf(String);
+                });
+            });
         });
     });
 });

@@ -662,6 +662,42 @@ describe('TuiYear', () => {
                     expect(y2000.append({year: 100}, true).year).toBe(1900);
                 });
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of a TuiYear object', () => {
+                    const year = new TuiYear(2000);
+
+                    expect(Number(year)).toBeInstanceOf(Number);
+                    expect(year.valueOf()).toBeInstanceOf(Number);
+                    expect(year > new TuiYear(1999)).toBeTrue();
+                    expect(year < new TuiYear(2001)).toBeTrue();
+                });
+            });
+
+            describe('Symbol.toPrimitive returns', () => {
+                it('a number if the hint is number', () => {
+                    const year = new TuiYear(1701);
+
+                    expect(Number(year)).toBeInstanceOf(Number);
+                    expect(year.valueOf()).toBeInstanceOf(Number);
+                    expect(year[Symbol.toPrimitive]('number')).toBeInstanceOf(Number);
+                });
+
+                it('a string if the hint is string', () => {
+                    const year = new TuiYear(2201);
+
+                    expect(String(year)).toBeInstanceOf(String);
+                    expect(year.toString()).toBeInstanceOf(String);
+                    expect(year[Symbol.toPrimitive]('string')).toBeInstanceOf(String);
+                });
+
+                it('a string if the hint is default', () => {
+                    const year = new TuiYear(2002);
+
+                    expect(`${year}`).toBeInstanceOf(String);
+                    expect(year[Symbol.toPrimitive]('default')).toBeInstanceOf(String);
+                });
+            });
         });
     });
 

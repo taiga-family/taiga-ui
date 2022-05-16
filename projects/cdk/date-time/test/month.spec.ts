@@ -617,6 +617,42 @@ describe('TuiMonth', () => {
                     new Date(Date.UTC(2000, 0)).toString(),
                 );
             });
+
+            describe('valueOf returns', () => {
+                it('the primitive value of a TuiMonth object', () => {
+                    const month = new TuiMonth(2000, 5);
+
+                    expect(Number(month)).toBeInstanceOf(Number);
+                    expect(month.valueOf()).toBeInstanceOf(Number);
+                    expect(month > new TuiMonth(2000, 4)).toBeTrue();
+                    expect(month < new TuiMonth(2001, 6)).toBeTrue();
+                });
+            });
+
+            describe('Symbol.toPrimitive returns', () => {
+                it('a number if the hint is number', () => {
+                    const month = new TuiMonth(1998, 7);
+
+                    expect(Number(month)).toBeInstanceOf(Number);
+                    expect(month.valueOf()).toBeInstanceOf(Number);
+                    expect(month[Symbol.toPrimitive]('number')).toBeInstanceOf(Number);
+                });
+
+                it('a string if the hint is string', () => {
+                    const month = new TuiMonth(2030, 1);
+
+                    expect(String(month)).toBeInstanceOf(String);
+                    expect(month.toString()).toBeInstanceOf(String);
+                    expect(month[Symbol.toPrimitive]('string')).toBeInstanceOf(String);
+                });
+
+                it('a string if the hint is default', () => {
+                    const month = new TuiMonth(1905, 2);
+
+                    expect(`${month}`).toBeInstanceOf(String);
+                    expect(month[Symbol.toPrimitive]('default')).toBeInstanceOf(String);
+                });
+            });
         });
     });
 
