@@ -7,7 +7,6 @@
         "@stackblitz/sdk": "^1.6.0",
         "@tinkoff/angular-contenteditable-accessor": "1.1.0",
         "@tinkoff/ng-dompurify": "3.0.0",
-        "classlist.js": "^1.1.20150312",
         "dompurify": "2.2.3",
         "ng-yandex-metrika": "^4.0.0",
         "ngx-markdown": "^11.1.3"
