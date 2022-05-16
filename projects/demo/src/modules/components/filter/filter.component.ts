@@ -62,7 +62,7 @@ export class ExampleTuiFilterComponent {
 
     initialItems = ['Alex Inkin', 'Roman Sedov'];
 
-    itemsVariants: ReadonlyArray<string | ItemWithBadge>[] = [
+    itemsVariants: Array<ReadonlyArray<string | ItemWithBadge>> = [
         ['Alex Inkin', 'Roman Sedov'],
         [
             new ItemWithBadge('Focused Zone', 10),

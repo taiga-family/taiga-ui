@@ -26,7 +26,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
             return this.currentSheet;
         }
 
-        const sheet: (readonly TuiDay[])[] = [];
+        const sheet: Array<readonly TuiDay[]> = [];
 
         for (let rowIndex = 0; rowIndex < CALENDAR_ROWS_COUNT; rowIndex++) {
             const row: TuiDay[] = [];

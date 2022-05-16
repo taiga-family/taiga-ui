@@ -76,12 +76,11 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('During initialization, fallback value 0 is displayed, control does not change values', done => {
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('0');
-                    expect(testComponent.control.value).toBe(null);
-                    done();
-                });
+            it('During initialization, fallback value 0 is displayed, control does not change values', async () => {
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('0');
+                expect(testComponent.control.value).toBe(null);
             });
         });
 
@@ -92,25 +91,21 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('Value does not change during initialization', done => {
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('12');
-                    expect(testComponent.control.value).toBe(12);
-                    done();
-                });
+            it('Value does not change during initialization', async () => {
+                await fixture.whenStable();
+                expect(inputPO.value).toBe('12');
+                expect(testComponent.control.value).toBe(12);
             });
         });
     });
 
     describe('Change value using buttons', () => {
         describe('step not set', () => {
-            beforeEach(done => {
+            beforeEach(async () => {
                 testComponent.defaultStep = true;
                 testComponent.control.setValue(1);
                 fixture.detectChanges();
-                fixture.whenStable().then(() => {
-                    done();
-                });
+                await fixture.whenStable();
             });
 
             it('Pressing the plus increases the value by 1', () => {
@@ -152,25 +147,21 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('Pressing the plus increases the value by 1', done => {
+            it('Pressing the plus increases the value by 1', async () => {
                 clickPlusButton();
 
                 // Should wait for the mask updating
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('-16');
-                    expect(testComponent.control.value).toBe(-16);
-                    done();
-                });
+                await fixture.whenStable();
+                expect(inputPO.value).toBe('-16');
+                expect(testComponent.control.value).toBe(-16);
             });
 
-            it('Pressing the minus decreases the value by 1', done => {
+            it('Pressing the minus decreases the value by 1', async () => {
                 clickMinusButton();
 
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('-18');
-                    expect(testComponent.control.value).toBe(-18);
-                    done();
-                });
+                await fixture.whenStable();
+                expect(inputPO.value).toBe('-18');
+                expect(testComponent.control.value).toBe(-18);
             });
         });
 
@@ -214,26 +205,22 @@ describe('InputCount', () => {
                 expect(testComponent.control.value).toBe(testComponent.min);
             });
 
-            it('If the value is equal to the maximum, the "plus" button is disabled', done => {
+            it('If the value is equal to the maximum, the "plus" button is disabled', async () => {
                 testComponent.control.setValue(12);
                 fixture.detectChanges();
 
-                fixture.whenStable().then(() => {
-                    fixture.detectChanges();
-                    expect(testComponent.component.plusButtonDisabled).toBe(true);
-                    done();
-                });
+                await fixture.whenStable();
+                fixture.detectChanges();
+                expect(testComponent.component.plusButtonDisabled).toBe(true);
             });
 
-            it('If the value is equal to the minimum, the "minus" button is disabled', done => {
+            it('If the value is equal to the minimum, the "minus" button is disabled', async () => {
                 testComponent.control.setValue(testComponent.min);
                 fixture.detectChanges();
 
-                fixture.whenStable().then(() => {
-                    fixture.detectChanges();
-                    expect(testComponent.component.minusButtonDisabled).toBe(true);
-                    done();
-                });
+                await fixture.whenStable();
+                fixture.detectChanges();
+                expect(testComponent.component.minusButtonDisabled).toBe(true);
             });
         });
     });
@@ -259,17 +246,16 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(testComponent.max);
         });
 
-        it('If you enter a number less than min, the new value is min', done => {
+        it('If you enter a number less than min, the new value is min', async () => {
             testComponent.min = 10;
             fixture.detectChanges();
 
             inputPO.sendTextAndBlur('7');
 
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('10');
-                expect(testComponent.control.value).toBe(10);
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('10');
+            expect(testComponent.control.value).toBe(10);
         });
 
         it('If you enter a number greater than max, the new value is max', () => {
@@ -282,7 +268,7 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(10);
         });
 
-        it('If you erase the field contents, the minimum value is restored', done => {
+        it('If you erase the field contents, the minimum value is restored', async () => {
             testComponent.control.setValue(123);
             fixture.detectChanges();
 
@@ -291,11 +277,10 @@ describe('InputCount', () => {
 
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(testComponent.control.value).toBe(0);
-                done();
-            });
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+            expect(testComponent.control.value).toBe(0);
         });
 
         it('Entering in the field negative value changes the valuecontrol correctly', () => {
@@ -348,7 +333,7 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(2);
         });
 
-        it('Pressing the up arrow increases the negative value by the specified step', done => {
+        it('Pressing the up arrow increases the negative value by the specified step', async () => {
             testComponent.control.setValue(-10);
             testComponent.step = 5;
             testComponent.min = -20;
@@ -356,14 +341,13 @@ describe('InputCount', () => {
             fixture.detectChanges();
             clickPlusButton();
 
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('-5');
-                expect(testComponent.control.value).toBe(-5);
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('-5');
+            expect(testComponent.control.value).toBe(-5);
         });
 
-        it('Pressing the down arrow decreases the negative value by the specified step', done => {
+        it('Pressing the down arrow decreases the negative value by the specified step', async () => {
             testComponent.control.setValue(-10);
             testComponent.step = 5;
             testComponent.min = -20;
@@ -371,11 +355,10 @@ describe('InputCount', () => {
             fixture.detectChanges();
             clickMinusButton();
 
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('-15');
-                expect(testComponent.control.value).toBe(-15);
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('-15');
+            expect(testComponent.control.value).toBe(-15);
         });
     });
 

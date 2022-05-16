@@ -30,15 +30,13 @@ describe('InputExpire', () => {
         });
     });
 
-    beforeEach(done => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
 
-        fixture.whenStable().then(() => {
-            done();
-        });
+        await fixture.whenStable();
     });
 
     it('does not change the correct input', () => {

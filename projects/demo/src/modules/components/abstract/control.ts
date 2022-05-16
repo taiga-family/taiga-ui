@@ -62,7 +62,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly maxLengthVariants: readonly possibleGenericType[] = [10];
 
-    readonly autocompleteVariants: (TuiAutofillFieldName | '')[] = [
+    readonly autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
         '',
         'off',
         'cc-name',

@@ -98,6 +98,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
      * @deprecated use `edit` method instead of `open`
      */
     open(component: string, sampleId: string, files: Record<string, string>): void {
+        // eslint-disable-next-line
         this.edit(component, sampleId, files).then(() =>
             console.info('project is opened'),
         );

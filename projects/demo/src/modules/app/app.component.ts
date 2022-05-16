@@ -90,6 +90,7 @@ export class AppComponent implements OnInit {
                     takeUntil(this.destroy$),
                 )
                 .subscribe(event => {
+                    // eslint-disable-next-line
                     metrika?.hit(event.urlAfterRedirects, {referer: event.url});
                 });
         } catch {

@@ -9,7 +9,7 @@ import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
     providedIn: 'root',
 })
 export class TuiSheetService {
-    readonly sheets$ = new BehaviorSubject<TuiSheet<any, any>[]>([]);
+    readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);
 
     constructor(@Inject(TUI_SHEET_OPTIONS) private readonly options: TuiSheetOptions) {}
 

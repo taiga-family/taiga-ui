@@ -2,7 +2,7 @@ import {DEFAULT_TIMEOUT_BEFORE_ACTION} from './shared.entities';
 
 const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
     cy
-        .get<{state: string}[]>(`${alias}.all`)
+        .get<Array<{state: string}>>(`${alias}.all`)
         .then(reqs => reqs.filter(req => req.state !== 'Complete'));
 
 export const waitAllRequests = (alias: string): void => {

@@ -147,15 +147,14 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('When exiting the field adds input as a tag', done => {
+        it('When exiting the field adds input as a tag', async () => {
             focusStealer.focus();
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                expect(component.value.length).toBe(4);
-                expect(component.value[3]).toBe('89');
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(component.value.length).toBe(4);
+            expect(component.value[3]).toBe('89');
         });
 
         it('Does not add empty tags when leaving the field', () => {
@@ -166,14 +165,13 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('When adding a tag on leaving the field, the field is cleared', done => {
+        it('When adding a tag on leaving the field, the field is cleared', async () => {
             focusStealer.focus();
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('');
-                done();
-            });
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('');
         });
 
         it('Pressing Enter on the field adds the input as a tag', () => {
@@ -190,14 +188,12 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('Pressing Enter on a field clears the field', done => {
+        it('Pressing Enter on a field clears the field', async () => {
             inputPO.sendKeydown('enter');
             fixture.detectChanges();
 
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('');
-                done();
-            });
+            await fixture.whenStable();
+            expect(inputPO.value).toBe('');
         });
 
         it(`Doesn't add tag on hitting Enter if disabledItemHandler returned false`, () => {

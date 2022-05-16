@@ -140,7 +140,7 @@ export class TuiArcChartComponent {
     }
 }
 
-function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Observable<number>[] {
+function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
     return arcs
         .toArray()
         .map(({nativeElement}, index) =>

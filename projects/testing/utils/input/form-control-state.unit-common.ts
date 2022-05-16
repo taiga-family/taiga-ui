@@ -48,15 +48,14 @@ export function testFormControlState(context: TestParams): void {
             expect(testComponent.control.dirty).toBe(true);
         });
 
-        it('After setting and de-focusing touched === true', done => {
+        it('After setting and de-focusing touched === true', async () => {
             inputPO.focus();
             inputPO.blur();
 
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(testComponent.control.touched).toBe(true);
-                done();
-            });
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+            expect(testComponent.control.touched).toBe(true);
         });
     });
 }

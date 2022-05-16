@@ -80,25 +80,21 @@ describe('InputTime', () => {
         });
     });
 
-    beforeEach(done => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
         inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            done();
-        });
+        await fixture.whenStable();
+        fixture.detectChanges();
     });
 
     describe('Initial value', () => {
-        it('The value in the field is formatted by mask', done => {
-            fixture.whenStable().then(() => {
-                expect(inputPO.value).toBe('12:30');
-                done();
-            });
+        it('The value in the field is formatted by mask', async () => {
+            await fixture.whenStable();
+            expect(inputPO.value).toBe('12:30');
         });
 
         it('The initial value in the formControl is issued as an object with the hours and minutes properties', () => {
@@ -113,14 +109,11 @@ describe('InputTime', () => {
             fixture.detectChanges();
         });
 
-        it('A new formatted value appears in the field', done => {
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                fixture.whenStable().then(() => {
-                    expect(inputPO.value).toBe('22:30');
-                    done();
-                });
-            });
+        it('A new formatted value appears in the field', async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
+            await fixture.whenStable();
+            expect(inputPO.value).toBe('22:30');
         });
 
         it('In the formControl is issued as an object with hours and minutes properties', () => {
@@ -146,11 +139,7 @@ describe('InputTime', () => {
     });
 
     describe('Keyboard control', () => {
-        beforeEach(done => {
-            fixture.whenStable().then(() => {
-                done();
-            });
-        });
+        beforeEach(async () => await fixture.whenStable());
 
         it('If the cursor is at position 0, then pressing UP increases the hour by 1', () => {
             inputPO.focus();
@@ -184,20 +173,19 @@ describe('InputTime', () => {
             expect(inputPO.value).toBe('12:29');
         });
 
-        it('When readOnly is ignored', done => {
+        it('When readOnly is ignored', async () => {
             testComponent.readOnly = true;
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
-            fixture.whenStable().then(() => {
-                inputPO.sendKeydown('ArrowUp');
+            await fixture.whenStable();
 
-                expect(inputPO.value).toBe('12:30');
+            inputPO.sendKeydown('ArrowUp');
 
-                inputPO.sendKeydown('ArrowDown');
+            expect(inputPO.value).toBe('12:30');
 
-                expect(inputPO.value).toBe('12:30');
-                done();
-            });
+            inputPO.sendKeydown('ArrowDown');
+
+            expect(inputPO.value).toBe('12:30');
         });
     });
 

@@ -99,7 +99,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     selectedValueTemplate = '';
 
-    readonly stringifyVariants: TuiStringHandler<Account | string>[] = [
+    readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
         item => String(String(item).match(/\d+/)),
     ];

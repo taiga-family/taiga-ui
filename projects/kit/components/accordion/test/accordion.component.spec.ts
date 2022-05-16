@@ -305,7 +305,7 @@ describe('Accordion', () => {
         it(
             'in the select inside the content, the dropdown on ESC is correctly closed, ' +
                 'the accordion content is not closed',
-            done => {
+            async () => {
                 accordionHeaderClick(2);
                 fixture.detectChanges();
 
@@ -313,10 +313,8 @@ describe('Accordion', () => {
                 getAccordionSelectNative().dispatchEvent(esc);
                 fixture.detectChanges();
 
-                fixture.whenStable().then(() => {
-                    expect(getAccordionContent1()).not.toBeNull();
-                    done();
-                });
+                await fixture.whenStable();
+                expect(getAccordionContent1()).not.toBeNull();
             },
         );
     });

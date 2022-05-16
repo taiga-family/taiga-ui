@@ -22,7 +22,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>> {
     constructor(
-        @Inject(TUI_ALERTS) readonly alerts: Observable<readonly T[]>[],
+        @Inject(TUI_ALERTS) readonly alerts: Array<Observable<readonly T[]>>,
         @Inject(INJECTOR) private readonly injector: Injector,
     ) {}
 
