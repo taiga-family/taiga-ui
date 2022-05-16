@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -26,3 +29,7 @@ jobs:
           echo "Version from package.json: ${{ steps.info.outputs.package_version }}"
           echo "Last git tag: ${{ steps.info.outputs.tag }}"
           exit 1
+
+concurrency:
+  group: validate-tag-${{ github.head_ref }}
+  cancel-in-progress: true
