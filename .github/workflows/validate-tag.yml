@@ -1,0 +1,24 @@
+name: Validate release tag
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+
+jobs:
+  validate-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get last version from package.json
+        id: info
+        run: |
+          echo "::set-output name=package_version::v$(node -p "require('./package.json').version")"
+          echo "::set-output name=tag::$(git describe HEAD --abbrev=0)"
+
+      - name: Show an error if the tag does not match
+        if: ${{ steps.info.outputs.package_version != steps.info.outputs.tag }}
+        run: |
+          echo "Version from package.json: ${{ steps.info.outputs.package_version }}"
+          echo "Last git tag: ${{ steps.info.outputs.tag }}"
+          exit 1
