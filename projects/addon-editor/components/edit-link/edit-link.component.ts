@@ -7,9 +7,10 @@ import {
     Inject,
     Optional,
     Output,
+    ViewChild,
 } from '@angular/core';
-import {getClosestElement} from '@taiga-ui/cdk';
 import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
+import {TuiInputInlineComponent} from '@taiga-ui/kit';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
@@ -23,6 +24,9 @@ const END = MAX_LENGTH - START - 10;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
+    @ViewChild(TuiInputInlineComponent)
+    private readonly input?: TuiInputInlineComponent;
+
     @Output()
     readonly addLink = new EventEmitter<string>();
 
@@ -61,6 +65,11 @@ export class TuiEditLinkComponent {
 
     private get isViewMode(): boolean {
         return !this.edit;
+    }
+
+    // TODO: 3.0 remove shadow root ref in v3.0
+    private get selection(): Selection | null {
+        return (this.shadowRootRef || this.documentRef).getSelection();
     }
 
     @HostListener('document:selectionchange')
@@ -112,19 +121,16 @@ export class TuiEditLinkComponent {
         this.url = '';
     }
 
-    // TODO: 3.0 remove shadow root ref in v3.0
-    private makeUrl(): string {
-        const selection = (this.shadowRootRef || this.documentRef).getSelection();
+    focused(): boolean {
+        return !!this.input?.focused;
+    }
 
-        return selection ? this.getHref(selection) : '';
+    private makeUrl(): string {
+        return this.selection ? this.getHref(this.selection) : '';
     }
 
     private getHref({focusNode}: Selection): string {
-        if (!focusNode || !focusNode.parentElement) {
-            return '';
-        }
-
-        const a = getClosestElement(focusNode.parentElement, 'a');
+        const a = focusNode?.parentElement?.closest('a');
 
         return a ? this.removePrefix(a.getAttribute('href') || '') : '';
     }

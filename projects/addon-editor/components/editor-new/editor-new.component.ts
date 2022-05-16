@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -21,18 +22,17 @@ import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
-    ALWAYS_FALSE_HANDLER,
     isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
-import {Mark} from 'prosemirror-model';
 import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
+// @dynamic
 @Component({
     selector: 'tui-editor[new]',
     templateUrl: './editor-new.component.html',
@@ -53,6 +53,9 @@ export class TuiEditorNewComponent
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
 
+    @ViewChild(TuiEditLinkComponent)
+    private readonly editLinkRef?: TuiEditLinkComponent;
+
     @Input()
     @tuiDefaultProp()
     exampleText = '';
@@ -72,12 +75,16 @@ export class TuiEditorNewComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
         @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
+        @Inject(DOCUMENT)
+        private readonly documentRef: Document,
     ) {
         super(control, changeDetectorRef);
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+        return this.currentFocusedNodeIsAnchor()
+            ? () => this.isValidSelectionAnchorRange()
+            : () => this.previousFocusedNodeIsAnchor() || this.focusedNodeIsEditorLink();
     }
 
     get editor(): TuiEditor | null {
@@ -102,14 +109,12 @@ export class TuiEditorNewComponent
         );
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
+    private get selection(): Selection | null {
+        return this.documentRef.getSelection();
     }
 
-    selectLinkIfClosest(): void {
-        if (this.getMarkedLinkBeforeSelectClosest()) {
-            this.editor?.selectClosest();
-        }
+    onHovered(hovered: boolean): void {
+        this.updateHovered(hovered);
     }
 
     onActiveZone(active: boolean): void {
@@ -121,7 +126,6 @@ export class TuiEditorNewComponent
     }
 
     addLink(link: string): void {
-        this.editor?.selectClosest();
         this.editor?.setLink(link);
     }
 
@@ -137,16 +141,37 @@ export class TuiEditorNewComponent
         return '';
     }
 
-    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive('link');
+    private currentFocusedNodeIsAnchor(): boolean {
+        return !!this.selection?.anchorNode?.parentElement?.closest('a');
+    }
+
+    private previousFocusedNodeIsAnchor(): boolean {
+        return !!this.selection?.focusNode?.parentElement?.closest('a');
+    }
+
+    private focusedNodeIsEditorLink(): boolean {
+        return !!this.editLinkRef?.focused();
+    }
+
+    private isValidSelectionAnchorRange(): boolean {
+        let isValid = false;
+        const isAnchor = this.currentFocusedNodeIsAnchor();
+
+        if (isAnchor && this.selection) {
+            const range = this.selection.getRangeAt(0);
+            const delta = Math.abs(range.endOffset - range.startOffset);
+            const length = (range.commonAncestorContainer as Text).length || 0;
+
+            isValid =
+                delta > 0 ||
+                (length === 1 && range.startOffset === 0) ||
+                (length > 1 && range.endOffset < length);
+        }
+
+        return isValid;
+    }
 
     private get hasValue(): boolean {
         return !!this.value;
-    }
-
-    private getMarkedLinkBeforeSelectClosest(): Mark | null {
-        const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
-        const isLink = link?.type.name === 'link';
-
-        return isLink ? link : null;
     }
 }

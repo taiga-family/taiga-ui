@@ -40,6 +40,18 @@ export function tuiGetScreenshotArea(): Cypress.Chainable<JQuery> {
     return cy.get('@wrapper').wait(WAIT_BEFORE_SCREENSHOT);
 }
 
+export function tuiClearValueInEditLink(): void {
+    cy.get('.t-cleaner').click({force: true});
+}
+
+export function tuiStartEditValueInEditLink(): void {
+    cy.get('button[icon=tuiIconEditLarge]').click().wait(200);
+}
+
+export function tuiSaveValueInEditLink(): void {
+    cy.get('button[icon=tuiIconCheckCircleLarge]').click({force: true});
+}
+
 export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
     cy.get('@wrapper').find('button[icon="tuiIconFontLarge"]').as('iconFontLargeTool');
 

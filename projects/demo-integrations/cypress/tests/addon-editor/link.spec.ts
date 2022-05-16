@@ -1,4 +1,5 @@
 import {
+    tuiClearValueInEditLink,
     tuiFocusToStartInEditor,
     tuiGetContentEditable,
     tuiGetEditLinkInput,
@@ -6,7 +7,9 @@ import {
     tuiInitBaseWrapper,
     tuiInsertLink,
     tuiOpenAnchorDropdown,
+    tuiSaveValueInEditLink,
     tuiSelectTag,
+    tuiStartEditValueInEditLink,
     tuiTrashValueByEditLink,
 } from '../../support/editor/helpers';
 import {EDITOR_PAGE_URL} from '../../support/shared.entities';
@@ -67,5 +70,34 @@ describe('Editing links in Editor', () => {
 
         tuiTrashValueByEditLink();
         tuiGetScreenshotArea().matchImageSnapshot('3-2-after-remove-link');
+    });
+
+    it('dropdown should open correctly', () => {
+        tuiOpenAnchorDropdown({containHref: 'http://taiga-ui.dev'});
+        tuiGetScreenshotArea().matchImageSnapshot('2-opened-dropdown');
+
+        tuiFocusToStartInEditor();
+        tuiGetScreenshotArea().matchImageSnapshot('3-loose-focus');
+    });
+
+    it('edit a link', () => {
+        tuiOpenAnchorDropdown({containHref: 'http://taiga-ui.dev'});
+        tuiGetScreenshotArea().matchImageSnapshot('5-0-edit-link');
+
+        tuiStartEditValueInEditLink();
+        tuiGetScreenshotArea().matchImageSnapshot('5-1-edit-link');
+
+        tuiClearValueInEditLink();
+        tuiGetScreenshotArea().matchImageSnapshot('5-2-edit-link');
+
+        tuiGetEditLinkInput().type('example.com');
+        tuiGetScreenshotArea().matchImageSnapshot('5-3-edit-link');
+
+        tuiSaveValueInEditLink();
+        tuiFocusToStartInEditor();
+        tuiGetScreenshotArea().matchImageSnapshot('5-4-edit-link');
+
+        tuiOpenAnchorDropdown({containHref: 'http://example.com'});
+        tuiGetScreenshotArea().matchImageSnapshot('5-5-edit-link');
     });
 });
