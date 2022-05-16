@@ -16,9 +16,9 @@ import {
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {
+    ALERT_MODULES,
     DIALOG_MODULES,
     MAIN_MODULES,
-    NOTIFICATION_MODULES,
     SANITIZER_MODULES,
 } from '../constants/modules';
 import {Schema} from '../schema';
@@ -48,7 +48,7 @@ function addTuiModules(
     const modules = [
         ...MAIN_MODULES,
         ...(options.addDialogsModule ? DIALOG_MODULES : []),
-        ...(options.addNotificationsModule ? NOTIFICATION_MODULES : []),
+        ...(options.addNotificationsModule ? ALERT_MODULES : []),
     ];
 
     const mainModulePath = mainModule.getSourceFile().getFilePath();

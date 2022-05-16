@@ -30,11 +30,11 @@
             }
         },
         "addNotificationsModule": {
-            "description": "Setting up notifications module",
+            "description": "Setting up alerts module",
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you want to use Taiga UI notifications?",
+                "message": "Do you want to use Taiga UI alerts?",
                 "type": "confirmation"
             }
         },

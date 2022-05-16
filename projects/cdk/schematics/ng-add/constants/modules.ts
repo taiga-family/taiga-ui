@@ -21,9 +21,9 @@ export const DIALOG_MODULES: ReadonlyArray<ImportingModule> = [
     },
 ];
 
-export const NOTIFICATION_MODULES: ReadonlyArray<ImportingModule> = [
+export const ALERT_MODULES: ReadonlyArray<ImportingModule> = [
     {
-        name: 'TuiNotificationsModule',
+        name: 'TuiAlertModule',
         packageName: '@taiga-ui/core',
     },
 ];
