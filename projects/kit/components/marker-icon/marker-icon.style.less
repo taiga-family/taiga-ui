@@ -44,42 +44,42 @@
         height: @size-xl;
     }
 
-    &[data-mode='primary'] {
-        color: var(--tui-primary-text);
-        background-color: var(--tui-primary);
-    }
-
-    &[data-mode='white'] {
-        color: var(--tui-text-03);
-        background-color: var(--tui-base-01);
-    }
-
-    &[data-mode='warning'] {
-        color: var(--tui-warning-fill);
-        background-color: var(--tui-warning-bg);
-    }
-
-    &[data-mode='secondary'] {
-        color: var(--tui-base-01);
-        background-color: var(--tui-info-fill);
-    }
-
-    &[data-mode='error'] {
-        color: var(--tui-error-fill);
-        background-color: var(--tui-error-bg);
-    }
-
-    &[data-mode='success'] {
-        color: var(--tui-success-fill);
-        background-color: var(--tui-success-bg);
-    }
-
-    &[data-mode='onDark'] {
+    &[data-mode='onDark']:not([data-marker-mode]) {
         color: var(--tui-base-01);
         background-color: var(--tui-clear-inverse);
     }
 
-    &[data-mode='link'] {
+    &[data-marker-mode='primary'] {
+        color: var(--tui-primary-text);
+        background-color: var(--tui-primary);
+    }
+
+    &[data-marker-mode='white'] {
+        color: var(--tui-text-03);
+        background-color: var(--tui-base-01);
+    }
+
+    &[data-marker-mode='warning'] {
+        color: var(--tui-warning-fill);
+        background-color: var(--tui-warning-bg);
+    }
+
+    &[data-marker-mode='secondary'] {
+        color: var(--tui-base-01);
+        background-color: var(--tui-info-fill);
+    }
+
+    &[data-marker-mode='error'] {
+        color: var(--tui-error-fill);
+        background-color: var(--tui-error-bg);
+    }
+
+    &[data-marker-mode='success'] {
+        color: var(--tui-success-fill);
+        background-color: var(--tui-success-bg);
+    }
+
+    &[data-marker-mode='link'] {
         .transition(color);
         cursor: pointer;
         color: var(--tui-link);

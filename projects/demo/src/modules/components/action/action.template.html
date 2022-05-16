@@ -30,7 +30,11 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-action [icon]="icon">
+            <tui-action
+                [icon]="icon"
+                [style.--tui-action-color]="color"
+                [style.--tui-action-background]="background"
+            >
                 It's not pining, it's passed on! This parrot is no more! It has
                 ceased to be! It's expired and gone to meet its maker! This is a
                 late parrot! It's a stiff! Bereft of life, it rests in peace! If
@@ -48,6 +52,22 @@
                 [(documentationPropertyValue)]="icon"
             >
                 Icon
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS variables">
+            <ng-template
+                documentationPropertyName="--tui-action-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="color"
+            >
+                Color of the icon
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-action-background"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="background"
+            >
+                Background of the icon
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
