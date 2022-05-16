@@ -3,11 +3,10 @@ import {NgModule} from '@angular/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLoaderComponent} from './loader.component';
-import {TuiLoaderDirective} from './loader.directive';
 
 @NgModule({
     imports: [CommonModule, PolymorpheusModule],
-    declarations: [TuiLoaderComponent, TuiLoaderDirective],
+    declarations: [TuiLoaderComponent],
     exports: [TuiLoaderComponent],
 })
 export class TuiLoaderModule {}
