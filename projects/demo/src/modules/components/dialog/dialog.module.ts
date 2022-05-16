@@ -29,6 +29,8 @@ import {TuiDialogExampleComponent3} from './examples/3';
 import {TuiDialogExampleComponent4} from './examples/4';
 import {TuiDialogExampleComponent5} from './examples/5';
 import {TuiDialogExampleComponent6} from './examples/6';
+import {TuiDialogExampleComponent7} from './examples/7';
+import {SearchDialogExampleModule} from './examples/7/search-example/search-dialog.module';
 
 @NgModule({
     imports: [
@@ -50,6 +52,7 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiAutoFocusModule,
         TuiAddonDocModule,
         DialogExampleModule,
+        SearchDialogExampleModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDialogComponent)),
     ],
     declarations: [
@@ -60,6 +63,7 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiDialogExampleComponent4,
         TuiDialogExampleComponent5,
         TuiDialogExampleComponent6,
+        TuiDialogExampleComponent7,
     ],
     exports: [ExampleTuiDialogComponent],
 })
