@@ -10,6 +10,10 @@ jobs:
   validate-tag:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
       - name: Get last version from package.json
         id: info
         run: |
