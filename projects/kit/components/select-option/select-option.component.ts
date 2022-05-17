@@ -50,9 +50,18 @@ export class TuiSelectOptionComponent<T> implements OnInit {
     }
 
     ngOnInit(): void {
-        if (isPresent(this.option.value) && this.host.checkOption) {
-            this.host.checkOption(this.option.value);
-        }
+        /**
+         * This would cause changes inside already checked parent component (during the same change detection cycle),
+         * and it might cause ExpressionChanged error due to potential HostBinding
+         * (for example, inside {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/ng_control_status.ts#L99 NgControlStatus}).
+         * Microtask keeps it in the same frame but allows change detection to run.
+         */
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        Promise.resolve().then(() => {
+            if (isPresent(this.option.value) && this.host.checkOption) {
+                this.host.checkOption(this.option.value);
+            }
+        });
     }
 
     protected get selected(): boolean {
