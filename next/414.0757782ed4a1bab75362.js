@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[414],{CqmT:function(o,n,t){"use strict";t.r(n),n.default='<form [formGroup]="testForm">\n    <tui-input-copy formControlName="testValue">\n        Type a value\n    </tui-input-copy>\n</form>\n'}}]);
