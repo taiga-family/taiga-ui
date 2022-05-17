@@ -2,8 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiMonth} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
+import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {TuiRootModule} from '@taiga-ui/core';
+import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 import {TuiInputMonthComponent} from '../input-month.component';
 import {TuiInputMonthModule} from '../input-month.module';
@@ -11,7 +12,9 @@ import {TuiInputMonthModule} from '../input-month.module';
 describe('InputMonth', () => {
     @Component({
         template: `
-            <tui-input-month [formControl]="control"></tui-input-month>
+            <tui-root>
+                <tui-input-month [formControl]="control"></tui-input-month>
+            </tui-root>
         `,
     })
     class TestComponent {
@@ -22,21 +25,31 @@ describe('InputMonth', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
+    let pageObject: PageObject<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputMonthComponent;
+    let inputPO: NativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, NoopAnimationsModule, TuiInputMonthModule],
+            imports: [
+                TuiRootModule,
+                ReactiveFormsModule,
+                NoopAnimationsModule,
+                TuiInputMonthModule,
+            ],
             declarations: [TestComponent],
         });
     });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
+        pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();
+
+        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('computedValue', () => {
@@ -75,4 +88,34 @@ describe('InputMonth', () => {
             expect(component.open).toBe(false);
         });
     });
+
+    describe('open calendar', () => {
+        it('shows current year (if NO value is selected)', async () => {
+            testComponent.control.setValue(null);
+            fixture.detectChanges();
+            inputPO.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(getActiveYear()).toBe(`${TuiDay.currentLocal().year}`);
+        });
+
+        it('shows year of the selected value (control has selected value)', async () => {
+            testComponent.control.setValue(new TuiMonth(2020, 4));
+            fixture.detectChanges();
+            inputPO.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(getActiveYear()).toBe('2020');
+        });
+    });
+
+    function getActiveYear(): string {
+        return (
+            pageObject
+                .getByAutomationId('tui-calendar-month__active-year')
+                ?.nativeElement?.textContent.trim() || ''
+        );
+    }
 });

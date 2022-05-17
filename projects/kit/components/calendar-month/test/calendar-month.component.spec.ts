@@ -9,7 +9,7 @@ import {TuiCalendarMonthModule} from '../calendar-month.module';
 
 const TODAY = TuiDay.currentLocal();
 
-describe('Month', () => {
+describe('CalendarMonth', () => {
     @Component({
         template: `
             <tui-calendar-month
@@ -210,6 +210,7 @@ describe('Month', () => {
             component.onNextYear();
 
             expect(component.year.year).toBe(year.year + 1);
+            expect(testComponent.year.year).toBe(year.year + 1);
         });
 
         it('append year on next', () => {
@@ -220,6 +221,7 @@ describe('Month', () => {
             component.onPreviousYear();
 
             expect(component.year.year).toBe(year.year - 1);
+            expect(testComponent.year.year).toBe(year.year - 1);
         });
     });
 });
