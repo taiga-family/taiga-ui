@@ -6,7 +6,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const COMBOBOX_OPTION: any = TUI_SELECT_OPTION;
 
 export const TUI_COMBO_BOX_PROVIDERS = [

@@ -38,7 +38,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     tuiHintHideDelay: TuiPointerHintOptions['tuiHintHideDelay'] =
         this.options.tuiHintHideDelay;
 
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input()
     @tuiRequiredSetter()
     set tuiPointerHint(value: PolymorpheusContent | null) {

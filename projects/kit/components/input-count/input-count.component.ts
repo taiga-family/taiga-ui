@@ -125,7 +125,7 @@ export class TuiInputCountComponent
         } as TuiTextMaskOptions as unknown as TextMaskConfig;
     }
 
-    // TODO: Remove in v.3
+    // TODO: 3.0 Remove in v.3
     @HostBinding('class._hide-buttons')
     get buttonsHidden(): boolean {
         return this.hideButtons || this.appearance === 'table';

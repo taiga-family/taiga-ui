@@ -5,6 +5,7 @@ import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
+// TODO: 3.0 remove `tui-wrapper` mode
 @Directive({
     selector: 'tui-wrapper, [tuiWrapper]',
     providers: [MODE_PROVIDER],
@@ -19,11 +20,11 @@ export class TuiWrapperDirective {
     @Input()
     readOnly = false;
 
-    // TODO: Rename to `hover` in 3.0
+    // TODO: 3.0 Rename to `hover`
     @Input()
     hovered: boolean | null = null;
 
-    // TODO: Rename to `active` in 3.0
+    // TODO: 3.0 Rename to `active`
     @Input()
     pressed: boolean | null = null;
 

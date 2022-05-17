@@ -153,7 +153,7 @@ export class TuiInputFileComponent
         );
     }
 
-    // @bad TODO: refactor after IE is dropped
+    // @bad TODO: 3.0 refactor after IE is dropped
     get fileDragged(): boolean {
         return (
             !!this.dataTransfer &&

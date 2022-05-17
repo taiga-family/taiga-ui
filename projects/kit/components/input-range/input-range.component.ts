@@ -59,7 +59,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     ],
     host: {
         /**
-         * TODO delete it in v3.0
+         * TODO: 3.0 delete it
          * Dont forget to clear html-tags
          */
         '[class._show-ticks-labels]': '!isNew',

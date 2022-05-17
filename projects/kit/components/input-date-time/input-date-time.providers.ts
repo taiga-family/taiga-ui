@@ -17,7 +17,7 @@ import {Observable} from 'rxjs';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const TIME_STREAM_FACTORY = <T extends [TuiDay | null, TuiTime | null]>(
     control: NgControl | null,
     valueTransformer: TuiControlValueTransformer<T>,

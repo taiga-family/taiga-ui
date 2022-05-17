@@ -8,8 +8,8 @@ export interface TuiButtonOptions {
         | keyof Record<TuiAppearance, string>
         | TuiAppearance
         | string
-        | null; // TODO: need remove `null` in v3.0
-    readonly shape: 'square' | 'rounded' | null; // TODO: need remove `null` in v3.0
+        | null; // TODO: 3.0 need remove `null`
+    readonly shape: 'square' | 'rounded' | null; // TODO: 3.0 need remove `null`
 }
 
 /**

@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
 
 /**
  * @internal
- * TODO: rename function in 3.0. The name should be shorter and start with lowercase letter.
+ * TODO: 3.0 name should be shorter and start with lowercase letter.
  */
 export function TuiReplayControlValueChangesFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],

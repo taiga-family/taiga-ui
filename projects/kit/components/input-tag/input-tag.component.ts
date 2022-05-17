@@ -115,7 +115,7 @@ export class TuiInputTagComponent
     private readonly scrollToStart$ = new Subject<void>();
     private readonly scrollToEnd$ = new Subject<void>();
 
-    // TODO: Remove in 3.0
+    // TODO: 3.0 Remove
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;

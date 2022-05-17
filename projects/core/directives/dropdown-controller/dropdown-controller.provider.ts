@@ -7,7 +7,7 @@ import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
 export const TUI_DROPDOWN_WATCHED_CONTROLLER = new InjectionToken(
     'watched dropdown controller',
 );
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const DROPDOWN_CONTROLLER_FACTORY = watchedControllerFactory;
 export const DROPDOWN_CONTROLLER_PROVIDER: Provider = [
     TuiDestroyService,

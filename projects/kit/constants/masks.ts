@@ -29,7 +29,6 @@ export const TUI_TIME_MASK: TuiTextMaskList = [
 
 /**
  * @deprecated use {@link tuiCreateDateMask} (from '@taiga-ui/kit') instead
- * TODO remove in 3.0
  */
 export const TUI_DATE_MASK: TuiTextMaskList = [
     TUI_DIGIT_REGEXP,
@@ -45,7 +44,6 @@ export const TUI_DATE_MASK: TuiTextMaskList = [
 ];
 /**
  * @deprecated use {@link tuiCreateDateRangeMask} (from '@taiga-ui/kit') instead
- * TODO remove in 3.0
  */
 export const TUI_DATE_RANGE_MASK: TuiTextMaskList = [
     ...TUI_DATE_MASK,

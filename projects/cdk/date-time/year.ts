@@ -138,7 +138,7 @@ export class TuiYear implements TuiYearLike {
         return this.year > year;
     }
 
-    // TODO: Consider removing `backwards` option
+    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably offsets year
      */

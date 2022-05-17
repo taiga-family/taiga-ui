@@ -38,7 +38,7 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
 const TAB_ACTIVE_CLASS = '_active';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const OBSERVER_INIT = {
     childList: true,
 };

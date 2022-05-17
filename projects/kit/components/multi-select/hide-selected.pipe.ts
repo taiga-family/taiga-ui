@@ -16,7 +16,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
 
     transform<T>(
         items: readonly T[] | ReadonlyArray<readonly T[]> | null,
-        component?: TuiMultiSelectComponent<T>, // TODO: @deprecated remove in v3.0
+        component?: TuiMultiSelectComponent<T>, // TODO: 3.0 @deprecated remove
     ): readonly T[] | ReadonlyArray<readonly T[]> | null {
         const {value, identityMatcher} = component ?? this.component;
 

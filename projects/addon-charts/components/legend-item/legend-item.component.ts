@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {colorFallback, TuiSizeS} from '@taiga-ui/core';
 
-// TODO: Remove fallback in 3.0
+// TODO: 3.0 Remove fallback
 @Component({
     selector: 'tui-legend-item',
     templateUrl: './legend-item.template.html',

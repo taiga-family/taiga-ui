@@ -19,7 +19,7 @@ export interface TuiInputTimeOptions {
  */
 export type InputTimeOptions = TuiInputTimeOptions;
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const INPUT_TIME_ICON = ({$implicit}: any): string =>
     $implicit === 's' ? 'tuiIconTime' : 'tuiIconTimeLarge';
 

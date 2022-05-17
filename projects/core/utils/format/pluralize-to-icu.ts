@@ -1,6 +1,6 @@
 import {TuiPluralize} from '@taiga-ui/core/types';
 
-// TODO: remove in 3.0
+// TODO: 3.0 remove in 3.0
 
 /**
  * Temporary util for mapping TuiPluralize array to ICU format

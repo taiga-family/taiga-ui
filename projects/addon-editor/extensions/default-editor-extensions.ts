@@ -24,14 +24,14 @@ export const defaultEditorExtensions = [
     import('./table-cell-background').then(m => m.TableCellBackground),
 ];
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export function defaultExtractor<T>(importedExtension: {
     default: Extension<T>;
 }): Extension<T> {
     return importedExtension.default;
 }
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export function starterKitConfigurator(
     extension: Extension<StarterKitOptions>,
 ): Extension<StarterKitOptions> {

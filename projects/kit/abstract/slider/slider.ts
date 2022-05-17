@@ -40,7 +40,7 @@ export const DOT_WIDTH: {[key: string]: number} = {
 };
 
 /**
- * @awful TODO: refactor
+ * @awful TODO: 3.0 remove
  * @internal
  * @dynamic
  */

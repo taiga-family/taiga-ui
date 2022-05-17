@@ -1,5 +1,5 @@
 /**
- * TODO in v3.0 move inside {@link TuiProgressColorSegmentsDirective} (as a private method)
+ * TODO: 3.0 move inside {@link TuiProgressColorSegmentsDirective} (as a private method)
  * (after deletion of {@link TuiProgressColorSegmentsPipe} and {@link TuiProgressColorSegmentsAsyncPipe})
  */
 import {px} from '@taiga-ui/cdk';

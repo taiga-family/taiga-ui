@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 
-// TODO: remove after v2.0 separating. It prevents seps cycling.
+// TODO: 3.0 can it be removed? It prevented seps cycling before 2.0
 type TuiHintDirective = any;
 
 type AbstractTuiHint = any;
@@ -14,7 +14,7 @@ type AbstractTuiHint = any;
 })
 export class TuiHintService extends BehaviorSubject<readonly AbstractTuiHint[]> {
     /**
-     * TODO: v2.0
+     * TODO:
      * We need the following logic for desribedBy
      * move it into another service that can register hints and
      * manage it using TuiHintService inside

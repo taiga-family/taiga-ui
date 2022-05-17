@@ -92,7 +92,6 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
 
     /**
      * @deprecated
-     * TODO remove in 3.0
      * Formatter month and year
      */
     get formattedMonth(): string {
@@ -177,7 +176,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    // TODO: Consider removing `backwards` option
+    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably alters current month and year by passed offset
      *

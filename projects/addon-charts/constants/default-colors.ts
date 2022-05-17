@@ -1,6 +1,6 @@
 import {TuiBaseColor, TuiColor, TuiSupportColor} from '@taiga-ui/core';
 
-// TODO: Replace with actual variables
+/** @deprecated */
 export const DEFAULT_COLORS: ReadonlyArray<TuiColor | string> = [
     TuiBaseColor.Primary,
     TuiSupportColor.Havelock,

@@ -28,7 +28,7 @@ export function tabsRefreshFactory(
     );
 }
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const MUTATION_CONFIG = {
     childList: true,
     subtree: true,

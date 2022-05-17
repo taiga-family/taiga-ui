@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 
-// @bad TODO Replace with PolymorpheusContent
+// @bad TODO: 3.0 Replace with PolymorpheusContent
 @Directive({
     selector: '[tuiExpandContent]',
 })

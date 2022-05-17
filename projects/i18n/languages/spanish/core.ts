@@ -22,6 +22,5 @@ export const TUI_SPANISH_LANGUAGE_CORE: LanguageCore = {
     defaultErrorMessage: 'El valor es inválido',
     spinTexts: ['Previo', 'Siguiente'],
     shortWeekDays: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-    // TODO: i18n replace with current language countries list
     countries: TUI_SPANISH_LANGUAGE_COUNTRIES,
 };

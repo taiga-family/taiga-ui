@@ -27,7 +27,7 @@ import {
     tap,
 } from 'rxjs/operators';
 
-// TODO: Move into separate module in 3.0
+// TODO: 3.0 Move into separate module
 @Directive({
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })

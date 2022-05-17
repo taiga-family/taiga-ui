@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const RANGE_STREAM_FACTORY = <T extends TuiDayRange>(
     control: NgControl | null,
     valueTransformer: TuiControlValueTransformer<T>,

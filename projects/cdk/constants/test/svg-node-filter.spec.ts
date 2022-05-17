@@ -1,6 +1,6 @@
 import {svgNodeFilter} from '../svg-node-filter';
 
-// TODO: rewrite tests after IE removing
+// TODO: 3.0 rewrite tests after IE removing
 describe('SvgNodeFilter', () => {
     it('child SVG', () => {
         const node: any = {ownerSVGElement: null};

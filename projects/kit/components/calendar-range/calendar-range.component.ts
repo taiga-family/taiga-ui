@@ -82,7 +82,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
-    /** @deprecated TODO: remove in 3.0 */
+    /** @deprecated TODO: 3.0 remove */
     @Output()
     readonly rangeChange = new EventEmitter<TuiDayRange | null>();
 

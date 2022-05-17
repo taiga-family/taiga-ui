@@ -10,7 +10,7 @@ export interface TuiArrowOptions {
     readonly iconLarge: PolymorpheusContent;
 }
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const TUI_ARROW_ICON_SMALL = 'tuiIconChevronDown';
 export const TUI_ARROW_ICON_LARGE = 'tuiIconChevronDownLarge';
 

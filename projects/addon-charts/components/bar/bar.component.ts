@@ -11,7 +11,7 @@ import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {sum, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {colorFallback, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
-// TODO: Remove sanitizer when Angular version is bumped
+// TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
     selector: 'tui-bar',
     templateUrl: './bar.template.html',

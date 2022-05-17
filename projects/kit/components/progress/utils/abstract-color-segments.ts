@@ -4,7 +4,7 @@ import {CHROMIUM_EDGE_START_VERSION, isEdgeOlderThan, isIE} from '@taiga-ui/cdk'
 
 import {calculateColorSegments} from './calculate-color-segments';
 
-// TODO delete in v3.0
+// TODO: 3.0 delete
 @Injectable()
 export abstract class AbstractTuiColorSegments<T> implements PipeTransform {
     private readonly isOldBrowsers =

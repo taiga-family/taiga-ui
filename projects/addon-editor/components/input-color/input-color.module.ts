@@ -8,7 +8,6 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputColorComponent} from './input-color.component';
 
@@ -18,7 +17,6 @@ import {TuiInputColorComponent} from './input-color.component';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        PolymorpheusModule,
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,

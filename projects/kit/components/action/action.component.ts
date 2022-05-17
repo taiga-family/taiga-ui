@@ -18,7 +18,7 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
-// TODO: Refactor to button[tuiAction] in 3.0
+// TODO: 3.0 Refactor to button[tuiAction]
 @Component({
     selector: 'tui-action, a[tuiAction]',
     templateUrl: './action.template.html',

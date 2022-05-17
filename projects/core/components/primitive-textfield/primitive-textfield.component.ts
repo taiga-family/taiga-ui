@@ -77,7 +77,7 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
 
-    // TODO: Remove null in 3.0
+    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
@@ -116,7 +116,7 @@ export class TuiPrimitiveTextfieldComponent
     readonly valueChange = new EventEmitter<string>();
 
     /**
-     * @deprecated TODO: remove in 3.0
+     * @deprecated TODO: 3.0 remove
      */
     @Output()
     readonly autofilledChange = new EventEmitter<boolean>();
@@ -145,7 +145,7 @@ export class TuiPrimitiveTextfieldComponent
             return null;
         }
 
-        // TODO: Refactor this after we drop built-in input element
+        // TODO: 3.0 Refactor this after we drop built-in input element
         return (
             (this.focusableElement.nativeElement
                 .previousElementSibling as HTMLInputElement | null) ||

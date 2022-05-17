@@ -10,7 +10,7 @@ import {
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '../tokens/i18n';
 
-// TODO: remove in ivy compilation
+// TODO: 3.0 remove in ivy compilation
 export const DEMO_TEXTS = ['Сделано с помощью директивы: ', 'Фон', 'Детали формы'];
 export const DOC_TEXTS = [
     'Аргумент',

@@ -237,7 +237,6 @@ export class TuiDay extends TuiMonth {
 
     /**
      * @deprecated use {@link getFormattedDay} instead
-     * TODO remove in 3.0
      * Formatted whole date
      */
     get formattedDay(): string {
@@ -330,7 +329,7 @@ export class TuiDay extends TuiMonth {
         return this;
     }
 
-    // TODO: Consider removing `backwards` option
+    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably alters current day by passed offset
      *
