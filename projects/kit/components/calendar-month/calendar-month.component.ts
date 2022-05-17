@@ -192,8 +192,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             return;
         }
 
-        this.year = year;
-        this.yearChange.emit(year);
+        this.updateActiveYear(year);
     }
 
     onItemClick(month: TuiMonth): void {
@@ -209,11 +208,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     onNextYear(): void {
-        this.year = this.year.append({year: 1});
+        this.updateActiveYear(this.year.append({year: 1}));
     }
 
     onPreviousYear(): void {
-        this.year = this.year.append({year: -1});
+        this.updateActiveYear(this.year.append({year: -1}));
     }
 
     onItemHovered(hovered: boolean, item: TuiMonth): void {
@@ -257,5 +256,10 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     private updatePressedItem(item: TuiMonth | null): void {
         this.pressedItem = item;
+    }
+
+    private updateActiveYear(year: TuiYear): void {
+        this.year = year;
+        this.yearChange.emit(year);
     }
 }

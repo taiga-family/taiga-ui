@@ -15,10 +15,12 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiHandler,
     TuiMonth,
+    TuiYear,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -60,6 +62,7 @@ export class TuiInputMonthComponent
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
     open = false;
+    activeYear: TuiYear = this.value || TuiDay.currentLocal();
 
     constructor(
         @Optional()
@@ -112,6 +115,10 @@ export class TuiInputMonthComponent
     }
 
     onOpenChange(open: boolean): void {
+        if (open && this.value) {
+            this.activeYear = this.value;
+        }
+
         this.open = open;
     }
 
