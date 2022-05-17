@@ -8,11 +8,12 @@ import {
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {
     isNativeFocused,
+    TUI_AUTOFOCUS_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_IS_IOS,
     TuiAutoFocusDirective,
     TuiAutoFocusModule,
     TuiFocusableElementAccessor,
+    TuiIosAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {EMPTY} from 'rxjs';
@@ -48,14 +49,11 @@ describe('TuiAutoFocus directive', () => {
             testComponent = fixture.componentInstance;
         });
 
-        it('focuses', done => {
+        it('focuses', fakeAsync(() => {
             fixture.detectChanges();
-
-            setTimeout(() => {
-                expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
-                done();
-            }, 100);
-        });
+            tick(100);
+            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
+        }));
     });
 
     describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
@@ -118,17 +116,14 @@ describe('TuiAutoFocus directive', () => {
             testComponent = fixture.componentInstance;
         });
 
-        it('Focuses native element of a TUI_FOCUSABLE_ITEM_ACCESSOR', done => {
+        it('Focuses native element of a TUI_FOCUSABLE_ITEM_ACCESSOR', fakeAsync(() => {
             fixture.detectChanges();
-
-            setTimeout(() => {
-                expect(testComponent.focusable.focused).toBe(true);
-                expect(document.activeElement).toBe(
-                    testComponent.focusable.nativeFocusableElement,
-                );
-                done();
-            }, 100);
-        });
+            tick(100);
+            expect(testComponent.focusable.focused).toBe(true);
+            expect(document.activeElement).toBe(
+                testComponent.focusable.nativeFocusableElement,
+            );
+        }));
     });
 
     describe('works for iOS decoy method', () => {
@@ -152,8 +147,8 @@ describe('TuiAutoFocus directive', () => {
                 declarations: [TestComponentIos],
                 providers: [
                     {
-                        provide: TUI_IS_IOS,
-                        useValue: true,
+                        provide: TUI_AUTOFOCUS_HANDLER,
+                        useClass: TuiIosAutofocusHandler,
                     },
                 ],
             });
@@ -166,9 +161,7 @@ describe('TuiAutoFocus directive', () => {
 
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
-
             tick(100);
-
             expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
@@ -204,13 +197,10 @@ describe('TuiAutoFocus directive', () => {
             testComponent = fixture.componentInstance;
         });
 
-        it('does not focus element', done => {
+        it('does not focus element', fakeAsync(() => {
             fixture.detectChanges();
-
-            setTimeout(() => {
-                expect(isNativeFocused(testComponent.element.nativeElement)).toBe(false);
-                done();
-            }, 100);
-        });
+            tick(100);
+            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(false);
+        }));
     });
 });
