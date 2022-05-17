@@ -7,11 +7,8 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {USER_AGENT} from '@ng-web-apis/common';
 import {
     blurNativeFocused,
-    isEdgeOlderThan,
-    isIE,
     isNativeFocusedIn,
     isSafari,
     TUI_IS_IOS,
@@ -62,15 +59,11 @@ export class TuiLoaderComponent {
     @HostBinding('class._loading')
     loading = true;
 
-    @HostBinding('class._animated-with-js')
-    animatedWithJs = isEdgeOlderThan(17, this.userAgent) || isIE(this.userAgent);
-
     readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
         @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
     ) {}
