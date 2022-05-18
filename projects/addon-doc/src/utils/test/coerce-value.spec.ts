@@ -26,4 +26,17 @@ describe('coercing values', () => {
         expect(coerceValue('NaN')).toBe(null);
         expect(coerceValue('Infinity')).toBe(null);
     });
+
+    it('string -> array', () => {
+        expect(coerceValue('[1,2,3]')).toEqual([1, 2, 3]);
+        expect(coerceValue('[ 1,2, 3]')).toEqual([1, 2, 3]);
+    });
+
+    it('string -> object', () => {
+        expect(coerceValue('{"id": 1, "name": "Taiga"}')).toEqual({id: 1, name: 'Taiga'});
+        expect(coerceValue('{"id": 1, "options": [1,2,3]}')).toEqual({
+            id: 1,
+            options: [1, 2, 3],
+        });
+    });
 });

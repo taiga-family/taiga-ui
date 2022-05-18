@@ -1,4 +1,4 @@
-export function coerceValue<T>(value?: T): T | number | string | boolean | null {
+export function coerceValue<T>(value?: T): T | number | string | boolean | null | object {
     const prepared = String(value).trim();
 
     if (isEmptyParamValue(prepared)) {
@@ -9,7 +9,15 @@ export function coerceValue<T>(value?: T): T | number | string | boolean | null 
         return Number(prepared);
     }
 
-    return decodeURIComponent(prepared);
+    const decodedValue = decodeURIComponent(prepared);
+
+    try {
+        return isPossibleArray(decodedValue) || isPossibleObject(decodedValue)
+            ? JSON.parse(decodedValue)
+            : decodedValue;
+    } catch {
+        return decodedValue;
+    }
 }
 
 function isEmptyParamValue(value: string): boolean {
@@ -22,4 +30,12 @@ function isBooleanParamValue(value: string): boolean {
 
 function isNumberParamValue(value: string): boolean {
     return /^-?[\d.]+(?:e-?\d+)?$/.test(value);
+}
+
+function isPossibleArray(value: string): boolean {
+    return value.startsWith('[') && value.endsWith(']');
+}
+
+function isPossibleObject(value: string): boolean {
+    return value.startsWith('{') && value.endsWith('}');
 }
