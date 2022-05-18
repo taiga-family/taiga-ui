@@ -3,7 +3,7 @@
         {{ texts.pages }}
         <strong class="t-strong">{{ pages }}</strong>
     </span>
-    <span>
+    <span automation-id="tui-table-pagination__lines-per-page-wrapper">
         {{ texts.linesPerPage }}
         <tui-hosted-dropdown
             [content]="content"
@@ -16,13 +16,21 @@
                 <tui-data-list>
                     <ng-container *ngFor="let item of items">
                         <button
-                            *ngIf="item !== size"
                             tuiOption
                             size="s"
                             class="t-item"
                             (click)="onItem(item)"
                         >
                             {{ item }}
+                            <tui-svg
+                                *ngIf="item === size; else fakeIcon"
+                                src="tuiIconCheckLarge"
+                                class="t-checkmark"
+                            ></tui-svg>
+
+                            <ng-template #fakeIcon>
+                                <span class="t-checkmark"></span>
+                            </ng-template>
                         </button>
                     </ng-container>
                 </tui-data-list>
