@@ -248,6 +248,28 @@
     </ng-template>
 
     <ng-template pageTab>
+        <p i18n>
+            Mobile calendar does not use the same dropdown with calendar as
+            desktop uses. It uses digital keyboard. If you want to open
+            <a
+                tuiLink
+                routerLink="/components/mobile-calendar"
+            >
+                mobile calendar
+            </a>
+            , add imports of
+            <code>TuiMobileCalendarDialogModule</code>
+            and
+            <code>TuiDialogModule</code>
+            into your root module. Also, check that you did not forget about
+            <a
+                tuiLink
+                routerLink="/getting-started"
+            >
+                tui-root
+            </a>
+        </p>
+
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
