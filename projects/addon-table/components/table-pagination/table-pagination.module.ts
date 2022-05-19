@@ -5,6 +5,7 @@ import {
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
+    TuiSvgModule,
 } from '@taiga-ui/core';
 
 import {TuiTablePaginationComponent} from './table-pagination.component';
@@ -16,6 +17,7 @@ import {TuiTablePaginationComponent} from './table-pagination.component';
         TuiLinkModule,
         TuiHostedDropdownModule,
         TuiDataListModule,
+        TuiSvgModule,
     ],
     declarations: [TuiTablePaginationComponent],
     exports: [TuiTablePaginationComponent],
