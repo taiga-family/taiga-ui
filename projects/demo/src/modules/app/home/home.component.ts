@@ -1,32 +1,22 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as addons} from '!!raw-loader!./examples/addons.txt';
-import {default as angularJsonStyles} from '!!raw-loader!./examples/angular-json-styles.txt';
-import {default as appModule} from '!!raw-loader!./examples/app-module.txt';
-import {default as appModuleOptional} from '!!raw-loader!./examples/app-module-optional.txt';
-import {default as appTemplate} from '!!raw-loader!./examples/app-template.txt';
-import {default as assets} from '!!raw-loader!./examples/assets.txt';
-import {default as componentsStyles} from '!!raw-loader!./examples/components-styles.txt';
-import {default as importLocalLess} from '!!raw-loader!./examples/import-local-less.txt';
-import {default as main} from '!!raw-loader!./examples/main.txt';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     selector: 'home',
-    templateUrl: 'home.template.html',
+    templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
     changeDetection,
+    encapsulation,
 })
 export class HomeComponent {
-    readonly examples = {
-        angularJsonStyles,
-        appModule,
-        appTemplate,
-        appModuleOptional,
-        assets,
-        componentsStyles,
-        importLocalLess,
-        main,
-        addons,
-    };
+    readonly angularJsonStyles = import('!!raw-loader!./examples/angular-json-styles.md');
+    readonly appModule = import('!!raw-loader!./examples/app-module.md');
+    readonly appTemplate = import('!!raw-loader!./examples/app-template.md');
+    readonly appModuleOptional = import('!!raw-loader!./examples/app-module-optional.md');
+    readonly assets = import('!!raw-loader!./examples/assets.md');
+    readonly componentsStyles = import('!!raw-loader!./examples/components-styles.md');
+    readonly importLocalLess = import('!!raw-loader!./examples/import-local-less.md');
+    readonly main = import('!!raw-loader!./examples/main.md');
+    readonly addons = import('!!raw-loader!./examples/addons.md');
 }

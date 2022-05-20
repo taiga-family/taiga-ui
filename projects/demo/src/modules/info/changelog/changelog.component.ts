@@ -1,7 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as changelog} from '!!raw-loader!../../../../../../CHANGELOG.md';
+import {rawLoad} from '@taiga-ui/addon-doc';
+import {of} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'changelog',
@@ -11,5 +12,7 @@ import {default as changelog} from '!!raw-loader!../../../../../../CHANGELOG.md'
     changeDetection,
 })
 export class ChangelogComponent {
-    readonly changelog = changelog;
+    readonly changelog = of(import('!!raw-loader!../../../../../../CHANGELOG.md')).pipe(
+        switchMap(rawLoad),
+    );
 }

@@ -2,5 +2,5 @@
     i18n-header
     header="Changelog"
 >
-    <markdown [data]="changelog"></markdown>
+    <markdown [data]="(changelog | async) || ''"></markdown>
 </tui-doc-page>
