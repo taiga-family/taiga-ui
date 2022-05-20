@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1016],{C6Xq:function(n,o,i){"use strict";i.r(o),o.default="<p i18n>\n    Provide an array of 12 strings for localized names for months to be used in\n    TuiMonthPipe\n</p>\n"}}]);

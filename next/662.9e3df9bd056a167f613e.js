@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[662],{gHaT:function(n,o,e){"use strict";e.r(o),o.default="import {TuiMoneyModule} from '@taiga-ui/addon-commerce';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiMoneyModule\n    ],\n...\n"}}]);

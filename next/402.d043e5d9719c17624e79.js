@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[402],{cYia:function(n,o,i){"use strict";i.r(o),o.default="import {of} from 'rxjs';\nimport {TUI_DIALOG_CLOSES_ON_BACK} from '@taiga-ui/cdk';\n\n...\nproviders: [\n    {\n        provide: TUI_DIALOG_CLOSES_ON_BACK,\n        useValue: of(true),\n    }\n]\n"}}]);

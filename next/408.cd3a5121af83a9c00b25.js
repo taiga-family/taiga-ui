@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[408],{jFXJ:function(n,u,o){"use strict";o.r(u),u.default="import {TuiInputCardModule, TuiInputCVCModule, TuiInputExpireModule} from '@taiga-ui/addon-commerce';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiInputCardModule,\n        TuiInputCVCModule,\n        TuiInputExpireModule,\n    ],\n...\n"}}]);
