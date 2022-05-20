@@ -14,6 +14,27 @@
         >
             <tui-table-pagination-example-1></tui-table-pagination-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-size-option-content"
+            i18n-heading
+            heading="Custom size-option content"
+            [description]="tokenDescription"
+            [content]="example2"
+        >
+            <ng-template #tokenDescription>
+                You can customize the component via DI-token
+                <code>TUI_TABLE_PAGINATION_OPTIONS</code>
+                .
+
+                <p class="tui-space_bottom-0">
+                    Use function
+                    <code>tuiTablePaginationOptionsProvider</code>
+                    to provide new value of this token.
+                </p>
+            </ng-template>
+            <tui-table-pagination-example-2></tui-table-pagination-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

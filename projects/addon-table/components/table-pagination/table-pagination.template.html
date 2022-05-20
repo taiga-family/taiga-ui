@@ -21,7 +21,11 @@
                             class="t-item"
                             (click)="onItem(item)"
                         >
-                            {{ item }}
+                            <span
+                                polymorpheus-outlet
+                                [content]="options.sizeOptionContent"
+                                [context]="{$implicit: item, total: total}"
+                            ></span>
                             <tui-svg
                                 *ngIf="item === size; else fakeIcon"
                                 src="tuiIconCheckLarge"

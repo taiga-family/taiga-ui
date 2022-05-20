@@ -5,6 +5,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiTablePaginationModule} from '@taiga-ui/addon-table';
 
 import {TuiTablePaginationExample1} from './examples/1';
+import {TuiTablePaginationExample2} from './examples/2';
 import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
 
 @NgModule({
@@ -14,7 +15,11 @@ import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTablePaginationComponent)),
     ],
-    declarations: [ExampleTuiTablePaginationComponent, TuiTablePaginationExample1],
+    declarations: [
+        ExampleTuiTablePaginationComponent,
+        TuiTablePaginationExample1,
+        TuiTablePaginationExample2,
+    ],
     exports: [ExampleTuiTablePaginationComponent],
 })
 export class ExampleTuiTablePaginationModule {}

@@ -4,6 +4,11 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
+import {
+    TUI_TABLE_PAGINATION_OPTIONS,
+    TuiTablePaginationOptions,
+} from './table-pagination-options';
+
 // @dynamic
 @Component({
     selector: 'tui-table-pagination',
@@ -39,6 +44,7 @@ export class TuiTablePaginationComponent {
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
         readonly texts$: Observable<Record<'pages' | 'linesPerPage' | 'of', string>>,
+        @Inject(TUI_TABLE_PAGINATION_OPTIONS) readonly options: TuiTablePaginationOptions,
     ) {}
 
     get pages(): number {

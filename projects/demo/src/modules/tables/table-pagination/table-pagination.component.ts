@@ -25,6 +25,11 @@ export class ExampleTuiTablePaginationComponent {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
     };
 
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+    };
+
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 }
