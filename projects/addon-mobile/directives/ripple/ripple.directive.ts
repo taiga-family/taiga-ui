@@ -17,54 +17,13 @@ import {
 
 import {
     RIPPLE_OFF,
-    RIPPLE_ON,
     TUI_RIPPLE_END,
     TUI_RIPPLE_PROVIDERS,
     TUI_RIPPLE_START,
 } from './ripple.providers';
+import {TuiRippleStylesComponent} from './ripple-styles.component';
 
 const TOUCH_MOVE_DELAY = 100;
-const STYLE = `
-@keyframes ${RIPPLE_ON} {
-    from {
-        transform: scale(0);
-        opacity: 0.12;
-    }
-
-    to {
-        transform: none;
-        opacity: 0.12;
-    }
-}
-
-@keyframes ${RIPPLE_OFF} {
-    from {
-        transform: none;
-        opacity: 0.12;
-    }
-
-    to {
-        transform: none;
-        opacity: 0;
-    }
-}
-
-*[tuiRipple] {
-    position: relative;
-    overflow: hidden;
-}
-
-.tui-ripple {
-    position: absolute;
-    border-radius: 100%;
-    background: currentColor;
-    z-index: 100;
-    transform: scale(0);
-    animation-duration: 450ms;
-    animation-fill-mode: forwards;
-    pointer-events: none;
-}
-`;
 
 @Directive({
     selector: '[tuiRipple]',
@@ -82,7 +41,7 @@ export class TuiRippleDirective {
         @Inject(TUI_RIPPLE_START) start$: Observable<HTMLElement>,
         @Inject(TUI_RIPPLE_END) end$: Observable<EventTarget>,
     ) {
-        directiveStyles.addStyle(STYLE, 'TuiRippleDirective');
+        directiveStyles.addComponent(TuiRippleStylesComponent);
 
         const touchEnd$ = typedFromEvent(nativeElement, 'touchend');
         const touchMove$ = typedFromEvent(nativeElement, 'touchmove');
