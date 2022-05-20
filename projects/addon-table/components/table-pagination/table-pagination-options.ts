@@ -8,8 +8,8 @@ export interface TuiTablePaginationOptions {
     >;
 }
 
-function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): number {
-    return $implicit;
+function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): string {
+    return `${$implicit}`;
 }
 
 export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
