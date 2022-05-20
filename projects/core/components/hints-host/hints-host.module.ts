@@ -16,6 +16,5 @@ import {TuiHintsHostComponent} from './hints-host.component';
     ],
     declarations: [TuiHintsHostComponent],
     exports: [TuiHintsHostComponent],
-    entryComponents: [TuiHintsHostComponent],
 })
 export class TuiHintsHostModule {}

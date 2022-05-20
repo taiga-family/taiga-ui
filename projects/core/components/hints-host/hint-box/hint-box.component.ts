@@ -1,20 +1,29 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    forwardRef,
     HostBinding,
     Inject,
-    Input,
     NgZone,
     ViewChild,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {px, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
+import {
+    px,
+    TuiContextWithImplicit,
+    TuiDestroyService,
+    tuiPure,
+    tuiZonefree,
+} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
+import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
-import {TUI_MEDIA} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATION_OPTIONS, TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -57,27 +66,35 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     styleUrls: ['./hint-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
+    animations: [tuiFadeIn],
 })
 export class TuiHintBoxComponent {
     @ViewChild('arrow')
     private readonly arrow?: ElementRef<HTMLElement>;
 
-    @Input()
-    hint!: AbstractTuiHint;
+    @HostBinding('@tuiFadeIn')
+    readonly animation = {value: '', ...this.options} as const;
 
     constructor(
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(NgZone) ngZone: NgZone,
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
-        @Inject(TuiHintsHostComponent)
+        @Inject(forwardRef(() => TuiHintsHostComponent))
         private readonly hintsHost: TuiHintsHostComponent,
+        @Inject(POLYMORPHEUS_CONTEXT)
+        private readonly context: TuiContextWithImplicit<AbstractTuiHint>,
     ) {
         animationFrame$
             .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
             .subscribe(() => this.calculatePosition());
+    }
+
+    get hint(): AbstractTuiHint {
+        return this.context.$implicit;
     }
 
     @tuiPure

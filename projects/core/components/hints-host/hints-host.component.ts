@@ -1,29 +1,26 @@
-import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
+import {TuiHintBoxComponent} from './hint-box/hint-box.component';
 
 @Component({
     selector: 'tui-hints-host',
     templateUrl: './hints-host.template.html',
     styleUrls: ['./hints-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeIn],
+    animations: [TUI_PARENT_ANIMATION],
     host: {
         'aria-live': 'polite',
     },
 })
 export class TuiHintsHostComponent {
-    readonly animation = {
-        value: '',
-        ...this.options,
-    } as const;
+    readonly component = new PolymorpheusComponent(TuiHintBoxComponent);
 
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiHintService) readonly hints$: TuiHintService,
     ) {}
