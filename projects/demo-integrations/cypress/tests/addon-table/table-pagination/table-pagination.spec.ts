@@ -35,6 +35,16 @@ describe('TablePagination', () => {
             );
         });
     });
+
+    it('Custom size-option content', () => {
+        cy.tuiVisit('/components/table-pagination');
+
+        initializeAliases('#custom-size-option-content');
+
+        cy.get('@linesPerPageSelect').click();
+        waitForCheckmarkIcon();
+        cy.get('tui-dropdown-box').matchImageSnapshot('2-[sizeOptionContent]-dropdown');
+    });
 });
 
 function initializeAliases(selectorToTablePagination: string): void {
