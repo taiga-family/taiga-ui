@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject} from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
@@ -10,17 +10,20 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_CYPRESS, TuiValidationError} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, finalize} from 'rxjs/operators';
 
 const latinChars = /^[a-zA-Z]+$/;
 
-function asyncValidatorFn(isCypress: boolean): AsyncValidatorFn {
+function asyncValidatorFn(isCypress: boolean, cd: ChangeDetectorRef): AsyncValidatorFn {
     return (field: AbstractControl) => {
         return field.value && latinChars.test(field.value)
             ? of(null)
             : of({
                   error: new TuiValidationError('Only latin letters allowed'),
-              }).pipe(isCypress ? delay(0) : delay(5000));
+              }).pipe(
+                  isCypress ? delay(0) : delay(5000),
+                  finalize(() => cd.markForCheck()),
+              );
     };
 }
 
@@ -37,12 +40,13 @@ export class TuiFieldErrorExample4 {
     constructor(
         @Inject(FormBuilder) private readonly fb: FormBuilder,
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
+        @Inject(ChangeDetectorRef) cd: ChangeDetectorRef,
     ) {
         this.form = this.fb.group({
             text: ['русский текст', Validators.required],
         });
 
-        this.form.controls['text'].setAsyncValidators(asyncValidatorFn(isCypress));
+        this.form.controls['text'].setAsyncValidators(asyncValidatorFn(isCypress, cd));
         this.form.controls['text'].markAsTouched();
     }
 }
