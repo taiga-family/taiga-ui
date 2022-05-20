@@ -17,6 +17,8 @@ import {TuiEditorNewExample1} from './examples/1';
 import {TuiEditorNewExample2} from './examples/2';
 import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.module';
 import {TuiEditorNewExample3} from './examples/3';
+import {TuiEditorNewExample4} from './examples/4';
+import {ImagePreviewExampleModule} from './examples/4/image-preview/image-preview.module';
 
 @NgModule({
     imports: [
@@ -32,6 +34,7 @@ import {TuiEditorNewExample3} from './examples/3';
         TuiLinkModule,
         TuiSvgModule,
         ExampleSmilesToolModule,
+        ImagePreviewExampleModule,
         RouterModule.forChild(generateRoutes(ExampleEditorNewComponent)),
     ],
     declarations: [
@@ -39,6 +42,7 @@ import {TuiEditorNewExample3} from './examples/3';
         TuiEditorNewExample1,
         TuiEditorNewExample2,
         TuiEditorNewExample3,
+        TuiEditorNewExample4,
     ],
     exports: [ExampleEditorNewComponent],
 })

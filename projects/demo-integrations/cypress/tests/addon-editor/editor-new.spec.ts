@@ -31,4 +31,47 @@ describe('Editor', () => {
                 .matchImageSnapshot('2-1-dark-mode-output');
         });
     });
+
+    describe('Examples', () => {
+        beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
+
+        it('preview display of images', () => {
+            cy.get('#preview-image')
+                .findByAutomationId('tui-doc-example')
+                .scrollIntoView()
+                .should('be.visible')
+                .as('wrapper');
+
+            cy.get('@wrapper')
+                .click()
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('3-1-two-visible-image');
+
+            cy.get('@wrapper')
+                .find('tui-editor-socket')
+                .find('img')
+                .filter('[src="assets/images/big-wallpaper.jpg"]')
+                .filter(':visible')
+                .click()
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('3-1-preview-big-wallpaper');
+
+            closePreview();
+
+            cy.get('@wrapper')
+                .find('tui-editor-socket')
+                .find('img')
+                .filter('[src="assets/images/lumberjack.png"]')
+                .filter(':visible')
+                .click()
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('3-1-preview-lumberjack');
+
+            closePreview();
+        });
+
+        function closePreview(): void {
+            cy.get('tui-preview').find('button[icon=tuiIconCloseLarge]').click();
+        }
+    });
 });

@@ -18,6 +18,7 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 @Component({
     selector: 'tui-editor-socket',
     template: '',
+    styleUrls: ['./editor-socket.component.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
