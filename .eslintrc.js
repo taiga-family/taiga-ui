@@ -48,5 +48,11 @@ module.exports = {
         '@typescript-eslint/ban-types': 'error',
         eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
+        'unicorn/filename-case': [
+            'error',
+            {
+                case: 'kebabCase',
+            },
+        ],
     },
 };

@@ -1,4 +1,4 @@
-import {isPresumedHTMLString} from '../is-presumed-hTMLString';
+import {isPresumedHTMLString} from '../is-presumed-html-string';
 
 describe('isPresumedHTMLString', () => {
     describe('returns false if', () => {

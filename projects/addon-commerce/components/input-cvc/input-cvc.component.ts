@@ -30,8 +30,8 @@ import {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
     selector: 'tui-input-cvc',
-    templateUrl: './input-CVC.template.html',
-    styleUrls: ['./input-CVC.style.less'],
+    templateUrl: './input-cvc.template.html',
+    styleUrls: ['./input-cvc.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

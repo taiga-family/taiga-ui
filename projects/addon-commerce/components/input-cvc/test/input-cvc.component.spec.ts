@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiInputCVCComponent} from '../input-CVC.component';
-import {TuiInputCVCModule} from '../input-CVC.module';
+import {TuiInputCVCComponent} from '../input-cvc.component';
+import {TuiInputCVCModule} from '../input-cvc.module';
 
 describe('InputCVC', () => {
     @Component({

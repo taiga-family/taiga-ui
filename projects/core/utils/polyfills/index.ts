@@ -1,1 +1,1 @@
-export * from './inner-HTML';
+export * from './inner-html';
