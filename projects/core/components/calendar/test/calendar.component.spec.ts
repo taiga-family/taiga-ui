@@ -1,10 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
-
-import {TuiCalendarComponent} from '../calendar.component';
-import {TuiCalendarModule} from '../calendar.module';
 
 describe('Calendar', () => {
     @Component({
@@ -100,15 +98,17 @@ describe('Calendar', () => {
         expect(component.month).toBe(savedMonth);
     });
 
-    it('click on day calls emitter', done => {
+    it('click on day calls emitter', () => {
+        let result: unknown;
         const savedDay = new TuiDay(2019, 2, 1);
 
         component.dayClick.subscribe((day: TuiDay) => {
-            expect(day).toBe(savedDay);
-            done();
+            result = day;
         });
 
         component.onDayClick(savedDay);
+
+        expect(result).toBe(savedDay);
     });
 
     it('monitors hover on a certain day', () => {

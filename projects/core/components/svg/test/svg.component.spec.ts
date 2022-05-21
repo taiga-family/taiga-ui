@@ -2,13 +2,10 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
+import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {of, throwError} from 'rxjs';
 import {filter, skip} from 'rxjs/operators';
-
-import {TuiSvgService} from '../../../services/svg.service';
-import {TuiSvgComponent} from '../svg.component';
-import {TuiSvgModule} from '../svg.module';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
      width="32"
@@ -74,15 +71,18 @@ describe('Svg', () => {
             testComponent.icon = '<svg>Text</svg>';
         });
 
-        it('innerHTML$ emits correctly', done => {
+        it('innerHTML$ emits correctly', () => {
+            let result: unknown;
+
             fixture.detectChanges();
 
             testComponent.svgComponent.innerHTML$
                 .pipe(filter(result => !!result))
                 .subscribe(html => {
-                    expect(html).toBe('<svg>Text</svg>');
-                    done();
+                    result = html;
                 });
+
+            expect(result).toBe('<svg>Text</svg>');
         });
         it('inserts content SVG into DOM', () => {
             fixture.detectChanges();
@@ -130,25 +130,31 @@ describe('Svg', () => {
             expect(testComponent.svgComponent.isInnerHTML).toBe(true);
         });
 
-        it('innerHTML$ emits correctly downloaded svg', done => {
+        it('innerHTML$ emits correctly downloaded svg', () => {
+            let result: unknown;
+
             fixture.detectChanges();
 
             testComponent.svgComponent.innerHTML$
                 .pipe(filter(result => !!result))
                 .subscribe(html => {
-                    expect(html).toBe(STATIC_REQUEST_MOCK_RESULT);
-                    done();
+                    result = html;
                 });
+
+            expect(result).toBe(STATIC_REQUEST_MOCK_RESULT);
         });
 
-        it('innerHTML$ handles error correctly', done => {
-            testComponent.svgComponent.innerHTML$.pipe(skip(2)).subscribe(result => {
-                expect(result).toBe('');
-                done();
+        it('innerHTML$ handles error correctly', () => {
+            let result: unknown;
+
+            testComponent.svgComponent.innerHTML$.pipe(skip(2)).subscribe(value => {
+                result = value;
             });
 
             testComponent.icon = BAD_URL;
             fixture.detectChanges();
+
+            expect(result).toBe('');
         });
     });
 });

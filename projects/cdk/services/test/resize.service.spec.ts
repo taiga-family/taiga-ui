@@ -1,8 +1,6 @@
 import {ElementRef} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-
-import {TuiDestroyService} from '../destroy.service';
-import {TuiResizeService} from '../resize.service';
+import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 
 describe('TuiResizeService', () => {
     let element: HTMLElement;

@@ -11,11 +11,12 @@ import {
     TUI_RUSSIAN_LANGUAGE,
     TuiCountryIsoCode,
 } from '@taiga-ui/i18n';
+import {
+    TuiInputPhoneInternationalComponent,
+    TuiInputPhoneInternationalModule,
+} from '@taiga-ui/kit';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {of} from 'rxjs';
-
-import {TuiInputPhoneInternationalComponent} from '../input-phone-international.component';
-import {TuiInputPhoneInternationalModule} from '../input-phone-international.module';
 
 describe('InputPhoneInternational', () => {
     @Component({
@@ -246,15 +247,17 @@ describe('InputPhoneInternational', () => {
     describe('programmatically patch', () => {
         initializeTestModule();
 
-        it('should correct update control', done => {
+        it('should correct update control', () => {
+            let result: unknown;
             const phoneNumber = '+380123456789';
 
             testComponent.control.valueChanges.subscribe(value => {
-                expect(value).toEqual(phoneNumber);
-                done();
+                result = value;
             });
+
             testComponent.countryIsoCode = TuiCountryIsoCode.UA;
             testComponent.control.patchValue(phoneNumber);
+            expect(result).toEqual(phoneNumber);
         });
     });
 

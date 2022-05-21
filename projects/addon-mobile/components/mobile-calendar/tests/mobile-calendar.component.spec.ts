@@ -2,6 +2,10 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
+    TuiMobileCalendarComponent,
+    TuiMobileCalendarModule,
+} from '@taiga-ui/addon-mobile';
+import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
@@ -11,9 +15,6 @@ import {
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
-
-import {TuiMobileCalendarComponent} from '../mobile-calendar.component';
-import {TuiMobileCalendarModule} from '../mobile-calendar.module';
 
 const today = TuiDay.currentLocal();
 const tomorrow = today.append({day: 1});
@@ -61,18 +62,19 @@ describe('MobileCalendar', () => {
         });
     });
 
-    beforeEach(async () => {
+    beforeEach(fakeAsync(() => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.autoDetectChanges();
-        await fixture.whenStable();
-    });
+
+        tick(100);
+    }));
 
     function getToday(): HTMLElement {
         return pageObject
             .getAllByAutomationId('tui-primitive-calendar-mobile__cell')
-            .find(item => item.classes['t-cell_today'])!.nativeElement;
+            .find(item => item.classes['t-cell_today'])?.nativeElement;
     }
 
     it('the back button emits a cancel event', () => {
@@ -103,38 +105,32 @@ describe('MobileCalendar', () => {
     });
 
     describe('when the done button emits', () => {
-        it('confirm event with selected day', done => {
-            setTimeout(() => {
-                fixture.detectChanges();
-                getToday().click();
-                pageObject
-                    .getByAutomationId('tui-mobile-calendar__confirm')!
-                    .nativeElement.click();
+        it('confirm event with selected day', () => {
+            fixture.detectChanges();
+            getToday().click();
+            pageObject
+                .getByAutomationId('tui-mobile-calendar__confirm')!
+                .nativeElement.click();
 
-                const value = testComponent.onConfirm.calls.mostRecent().args[0];
+            const value = testComponent.onConfirm.calls.mostRecent().args[0];
 
-                expect(value.daySame(today)).toBe(true);
-                done();
-            }, 100);
+            expect(value.daySame(today)).toBe(true);
         });
 
-        it('confirm event at selected interval', done => {
-            setTimeout(() => {
-                fixture.detectChanges();
-                testComponent.single = false;
-                fixture.autoDetectChanges();
-                getToday().click();
-                pageObject
-                    .getByAutomationId('tui-mobile-calendar__confirm')!
-                    .nativeElement.click();
+        it('confirm event at selected interval', () => {
+            fixture.detectChanges();
+            testComponent.single = false;
+            fixture.autoDetectChanges();
+            getToday().click();
+            pageObject
+                .getByAutomationId('tui-mobile-calendar__confirm')!
+                .nativeElement.click();
 
-                const value = testComponent.onConfirm.calls.mostRecent().args[0];
+            const value = testComponent.onConfirm.calls.mostRecent().args[0];
 
-                expect(value instanceof TuiDayRange).toBe(true);
-                expect(value.from.daySame(today)).toBe(true);
-                expect(value.to.daySame(today)).toBe(true);
-                done();
-            }, 100);
+            expect(value instanceof TuiDayRange).toBe(true);
+            expect(value.from.daySame(today)).toBe(true);
+            expect(value.to.daySame(today)).toBe(true);
         });
 
         it('confirm event with selected interval with different dates', fakeAsync(() => {
@@ -168,31 +164,25 @@ describe('MobileCalendar', () => {
         }));
     });
 
-    // :hidethepain:
     it('Year selection scrolls through months', done => {
+        testComponent.component.setYear(1950);
+        fixture.detectChanges();
+
+        const waitCdkScrollToIndex = 100;
+
         setTimeout(() => {
-            testComponent.component.setYear(1950);
-            fixture.detectChanges();
+            pageObject
+                .getAllByAutomationId('tui-primitive-calendar-mobile__cell')[0]
+                .nativeElement.click();
 
-            setTimeout(() => {
-                fixture.detectChanges();
+            pageObject
+                .getByAutomationId('tui-mobile-calendar__confirm')
+                ?.nativeElement.click();
 
-                setTimeout(() => {
-                    fixture.detectChanges();
+            const value = testComponent.onConfirm.calls.mostRecent().args[0];
 
-                    pageObject
-                        .getAllByAutomationId('tui-primitive-calendar-mobile__cell')[0]
-                        .nativeElement.click();
-                    pageObject
-                        .getByAutomationId('tui-mobile-calendar__confirm')!
-                        .nativeElement.click();
-
-                    const value = testComponent.onConfirm.calls.mostRecent().args[0];
-
-                    expect(value.year <= 1950).toBe(true);
-                    done();
-                }, 100);
-            }, 100);
-        }, 100);
+            expect(value.year <= 1950).toBe(true);
+            done();
+        }, waitCdkScrollToIndex);
     });
 });

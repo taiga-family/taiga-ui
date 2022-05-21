@@ -1,13 +1,14 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    TuiTableBarsHostComponent,
+    TuiTableBarsHostModule,
+    TuiTableBarsService,
+} from '@taiga-ui/addon-tablebars';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 import {Subscription, timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
-
-import {TuiTableBarsService} from '../../../services/table-bars.service';
-import {TuiTableBarsHostComponent} from '../table-bars-host.component';
-import {TuiTableBarsHostModule} from '../table-bars-host.module';
 
 describe('TableBarsHost', () => {
     @Component({
@@ -66,26 +67,34 @@ describe('TableBarsHost', () => {
         }
     });
 
-    it('Listens to service for adding tableBar', done => {
+    it('Listens to service for adding tableBar', () => {
+        let result: unknown;
+
         component.service.bar$.pipe(take(1)).subscribe(bar => {
-            expect(bar && bar.content).toBe(title);
-            done();
+            result = bar?.content;
         });
 
         service.open(title).pipe(take(1)).subscribe();
+
+        expect(result).toBe(title);
     });
 
-    it('tableBar removed by unsubscribe', done => {
+    it('tableBar removed by unsubscribe', fakeAsync(() => {
+        let result: unknown;
+
         component.service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
-            expect(bar).toBe(null);
-            done();
+            result = bar;
         });
 
         service
             .open(title)
             .pipe(takeUntil(timer(1)))
             .subscribe();
-    });
+
+        tick(100);
+
+        expect(result).toBe(null);
+    }));
 
     it('the default tableBar is dark', () => {
         service.open(title).pipe(take(1)).subscribe();
@@ -117,15 +126,18 @@ describe('TableBarsHost', () => {
         expect(getCloseButton()).not.toBeNull();
     });
 
-    it('pressing closeButton removes the current tableBar', done => {
+    it('pressing closeButton removes the current tableBar', () => {
+        let result: unknown;
+
         service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
-            expect(bar).toBe(null);
-            done();
+            result = bar;
         });
 
         subscription = service.open(title, {hasCloseButton: true}).subscribe();
         fixture.detectChanges();
 
         getCloseButton().nativeElement.click();
+
+        expect(result).toBe(null);
     });
 });
