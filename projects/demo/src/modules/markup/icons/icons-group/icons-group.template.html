@@ -14,7 +14,7 @@
     Input icon name to highlight
 </tui-input>
 
-<ng-container *ngFor="let key of keys">
+<ng-container *tuiForAsync="let key of keys">
     <h2
         i18n
         class="title"
@@ -23,7 +23,7 @@
     </h2>
     <div class="icons">
         <button
-            *ngFor="let icon of iconsValues[key]"
+            *tuiForAsync="let icon of iconsValues[key]"
             tuiIconButton
             type="button"
             size="m"
