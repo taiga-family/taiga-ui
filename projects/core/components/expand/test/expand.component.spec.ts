@@ -1,10 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
+import {TUI_EXPAND_LOADED, TuiExpandModule} from '@taiga-ui/core';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
-
-import {TUI_EXPAND_LOADED} from '../../../constants/events';
-import {TuiExpandModule} from '../expand.module';
 
 const ANIMATION_DELAY = 900;
 
@@ -67,12 +65,10 @@ describe('expand', () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it('and after the end of the animation, the content remains', done => {
-                setTimeout(() => {
-                    expect(testComponent.content).toBeDefined();
-                    done();
-                }, ANIMATION_DELAY);
-            });
+            it('and after the end of the animation, the content remains', fakeAsync(() => {
+                tick(ANIMATION_DELAY);
+                expect(testComponent.content).toBeDefined();
+            }));
         });
     });
 

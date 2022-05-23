@@ -1,12 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
+import {
+    TuiInteractiveState,
+    TuiPrimitiveYearPickerComponent,
+    TuiPrimitiveYearPickerModule,
+    TuiRangeState,
+} from '@taiga-ui/core';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
-
-import {TuiInteractiveState} from '../../../enums/interactive-state';
-import {TuiRangeState} from '../../../enums/range-state';
-import {TuiPrimitiveYearPickerComponent} from '../primitive-year-picker.component';
-import {TuiPrimitiveYearPickerModule} from '../primitive-year-picker.module';
 
 describe('TuiPrimitiveYearPickerComponent', () => {
     @Component({
@@ -161,14 +162,16 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         });
     });
 
-    it('emits year by click on item', done => {
+    it('emits year by click on item', () => {
+        let result: TuiYear | undefined;
         const item = 2019;
 
         component.yearClick.subscribe((year: TuiYear) => {
-            expect(year.yearSame(new TuiYear(item))).toBe(true);
-            done();
+            result = year;
         });
 
         component.onItemClick(item);
+
+        expect(result?.yearSame(new TuiYear(item))).toBe(true);
     });
 });

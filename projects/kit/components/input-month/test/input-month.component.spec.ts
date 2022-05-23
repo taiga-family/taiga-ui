@@ -1,13 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
+import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/kit';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
-
-import {TuiInputMonthComponent} from '../input-month.component';
-import {TuiInputMonthModule} from '../input-month.module';
 
 describe('InputMonth', () => {
     @Component({
@@ -59,16 +57,15 @@ describe('InputMonth', () => {
             expect(component.nativeFocusableElement!.value).toBe('');
         });
 
-        it('returns the whole stringified value if there is', done => {
+        it('returns the whole stringified value if there is', fakeAsync(() => {
             testComponent.control.setValue(new TuiMonth(2020, 4));
 
             fixture.detectChanges();
 
-            setTimeout(() => {
-                expect(component.nativeFocusableElement!.value).toBe(`May 2020`);
-                done();
-            }, 50);
-        });
+            tick(50);
+
+            expect(component.nativeFocusableElement?.value).toBe(`May 2020`);
+        }));
     });
 
     describe('onMonthClick', () => {

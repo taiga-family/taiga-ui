@@ -9,7 +9,13 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes';
+import {
+    TuiCalendarSheetPipe,
+    TuiInteractiveState,
+    TuiPrimitiveCalendarComponent,
+    TuiPrimitiveCalendarModule,
+    TuiRangeState,
+} from '@taiga-ui/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
     configureTestSuite,
@@ -17,11 +23,6 @@ import {
     pendingIfNotMoscowTimeZone,
     restoreRealDate,
 } from '@taiga-ui/testing';
-
-import {TuiInteractiveState} from '../../../enums/interactive-state';
-import {TuiRangeState} from '../../../enums/range-state';
-import {TuiPrimitiveCalendarComponent} from '../primitive-calendar.component';
-import {TuiPrimitiveCalendarModule} from '../primitive-calendar.module';
 
 @Component({
     template: `
@@ -220,15 +221,17 @@ describe('PrimitiveCalendar', () => {
         });
     });
 
-    it('emits hovered item', done => {
+    it('emits hovered item', () => {
+        let result: unknown;
         const day = new TuiDay(2019, 4, 16);
 
         component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
-            expect(hoveredDay).toBe(day);
-            done();
+            result = hoveredDay;
         });
 
         component.onItemHovered(day);
+
+        expect(result).toBe(day);
     });
 
     it('does not recalculate month and sheet if it has already been set with the same month', () => {
