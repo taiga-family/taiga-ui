@@ -27,16 +27,7 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 export class TuiEditorSocketComponent {
     @Input()
     set content(content: string) {
-        this.renderer.setProperty(
-            this.elementRef.nativeElement,
-            'innerHTML',
-            this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(
-                      SecurityContext.HTML,
-                      content.replace(/colwidth/g, 'width'),
-                  )
-                : this.sanitizer.sanitize(SecurityContext.HTML, content),
-        );
+        this.setInnerHTML(content);
     }
 
     constructor(
@@ -59,5 +50,18 @@ export class TuiEditorSocketComponent {
         renderer.setAttribute(style, 'data-tui-editor-socket', '');
 
         head.appendChild(style);
+    }
+
+    private setInnerHTML(content: string): void {
+        this.renderer.setProperty(
+            this.elementRef.nativeElement,
+            'innerHTML',
+            this.tuiSanitizer
+                ? this.tuiSanitizer.sanitize(
+                      SecurityContext.HTML,
+                      content.replace(/colwidth/g, 'width'),
+                  )
+                : this.sanitizer.sanitize(SecurityContext.HTML, content),
+        );
     }
 }
