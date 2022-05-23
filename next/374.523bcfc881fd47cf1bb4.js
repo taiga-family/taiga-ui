@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[374],{YcGW:function(n,i,o){"use strict";o.r(i),i.default="import {TuiDataListModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiDataListModule,\n    ],\n...\n"}}]);
