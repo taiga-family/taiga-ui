@@ -58,4 +58,8 @@ export class ExampleTuiAvatarComponent {
     ];
 
     size = this.sizeVariants[2];
+
+    color = 'var(--tui-text-01)';
+
+    background = 'var(--tui-secondary-active)';
 }

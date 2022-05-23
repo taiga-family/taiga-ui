@@ -17,7 +17,7 @@
     text-transform: uppercase;
     justify-content: center;
     align-items: center;
-    background-color: currentColor;
+    background: var(--tui-avatar-background, currentColor);
     user-select: none;
     overflow: hidden;
 
@@ -76,5 +76,5 @@
 }
 
 .text {
-    color: var(--tui-text-01);
+    color: var(--tui-avatar-color, var(--tui-text-01));
 }

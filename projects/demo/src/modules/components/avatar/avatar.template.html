@@ -45,6 +45,8 @@
                 [rounded]="rounded"
                 [size]="size"
                 [autoColor]="autoColor"
+                [style.--tui-avatar-color]="color"
+                [style.--tui-avatar-background]="background"
             ></tui-avatar>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -96,10 +98,22 @@
                 Name (Avatar shows first letters of name if there is no image)
             </ng-template>
         </tui-doc-documentation>
-        <i i18n>
-            Better do not use big images with Avatar. Some browsers like IE or
-            Firefox work with resized image not so good.
-        </i>
+        <tui-doc-documentation heading="CSS variables">
+            <ng-template
+                documentationPropertyName="--tui-avatar-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="color"
+            >
+                Color of the text
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-avatar-background"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="background"
+            >
+                Background
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
