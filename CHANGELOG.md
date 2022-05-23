@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.46.0](https://github.com/tinkoff/taiga-ui/compare/v2.45.0...v2.46.0) (2022-05-23)
+
+### Features
+
+- **addon-doc:** `coerceValue` supports arrays and key-value objects
+  ([#1779](https://github.com/tinkoff/taiga-ui/issues/1779))
+  ([7ae991e](https://github.com/tinkoff/taiga-ui/commit/7ae991ee17bb630ce16436a679402123cf66d573))
+- **addon-table:** add token `TUI_TABLE_PAGINATION_OPTIONS` with property `sizeOptionContent`
+  ([#1787](https://github.com/tinkoff/taiga-ui/issues/1787))
+  ([af7a82b](https://github.com/tinkoff/taiga-ui/commit/af7a82b4436c81957c193cad6460a3614a81a266))
+- **core:** `TUI_IS_MOBILE_RES` add new token ([#1799](https://github.com/tinkoff/taiga-ui/issues/1799))
+  ([6ea6ff3](https://github.com/tinkoff/taiga-ui/commit/6ea6ff3f44dbe0a10c872047768a31912f83e87d))
+- **kit:** `Avatar` add color customization with CSS vars ([#1797](https://github.com/tinkoff/taiga-ui/issues/1797))
+  ([eb7c659](https://github.com/tinkoff/taiga-ui/commit/eb7c6597d5ec17fb3da56f4b9ca43ee02c4b1f73))
+
+### Bug Fixes
+
+- **addon-mobile:** `Ripple` broken styles in Shadow DOM ([#1790](https://github.com/tinkoff/taiga-ui/issues/1790))
+  ([d604f3e](https://github.com/tinkoff/taiga-ui/commit/d604f3e617fcfe64f408c225beb95ab68dabc9aa))
+- **addon-table:** `TablePagination` show checkmark for selected `[size]`
+  ([#1780](https://github.com/tinkoff/taiga-ui/issues/1780))
+  ([4a26fac](https://github.com/tinkoff/taiga-ui/commit/4a26facf57c1a55a82d6bf0fb24bace9611905e6))
+- **cdk:** refactor autofill directive ([#1775](https://github.com/tinkoff/taiga-ui/issues/1775))
+  ([8656053](https://github.com/tinkoff/taiga-ui/commit/8656053ac10e37e9fe447a79f50593f559460eda))
+- **kit:** `ComboBox` throws `ExpressionChangedAfterItHasBeenCheckedError`
+  ([#1772](https://github.com/tinkoff/taiga-ui/issues/1772))
+  ([2e22f4f](https://github.com/tinkoff/taiga-ui/commit/2e22f4f50c8d8693346f27adb4080382c4dbf617))
+- **kit:** `InputMonth` reopen calendar with year of the selected value
+  ([#1773](https://github.com/tinkoff/taiga-ui/issues/1773))
+  ([e67fd15](https://github.com/tinkoff/taiga-ui/commit/e67fd15f384775d980d6278a03942d382eb3a16a))
+- **kit:** `Tag` has incorrect behavior of `text-overflow` in Safari
+  ([#1792](https://github.com/tinkoff/taiga-ui/issues/1792))
+  ([01f84d6](https://github.com/tinkoff/taiga-ui/commit/01f84d627e9fd6e9306971b610c47b1b3fa2a389))
+
 ## [2.45.0](https://github.com/tinkoff/taiga-ui/compare/v2.44.0...v2.45.0) (2022-05-16)
 
 ### Features
