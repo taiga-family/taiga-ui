@@ -170,17 +170,16 @@
     }
 }
 
-.text {
-    .text-overflow();
+.t-text {
     padding-right: 0.02em;
 }
 
-.tag {
+.t-tag {
+    .text-overflow();
     position: relative;
     display: flex;
     align-items: center;
     border-radius: inherit;
-    white-space: pre;
 
     :host[data-size='s'] & {
         font: var(--tui-font-text-xs);
@@ -232,7 +231,7 @@
     }
 }
 
-.edit {
+.t-edit {
     .clearinput();
     position: absolute;
     top: 0;
@@ -264,7 +263,7 @@
     }
 }
 
-.icon {
+.t-icon {
     margin: 0 0 0 @space;
     margin-inline-start: @space;
     margin-inline-end: 0;
@@ -301,7 +300,7 @@
     }
 }
 
-.left-content {
+.t-left-content {
     margin: 0 @space 0 0;
     margin-inline-start: 0;
     margin-inline-end: @space;
