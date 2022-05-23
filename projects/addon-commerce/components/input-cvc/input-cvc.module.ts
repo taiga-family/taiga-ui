@@ -7,7 +7,7 @@ import {
 import {TuiValueAccessorModule} from '@taiga-ui/kit';
 import {TextMaskModule} from 'angular2-text-mask';
 
-import {TuiInputCVCComponent} from './input-CVC.component';
+import {TuiInputCVCComponent} from './input-cvc.component';
 
 @NgModule({
     imports: [
