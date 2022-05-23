@@ -1,24 +1,11 @@
-import {ElementRef, NgZone, Provider} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {tuiZoneOptimized} from '@taiga-ui/cdk';
-import {TuiMedia} from '@taiga-ui/core/interfaces';
-import {TUI_IS_MOBILE_RES, TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {fromEvent, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {ElementRef, Provider, SkipSelf} from '@angular/core';
+import {TUI_IS_MOBILE_RES} from '@taiga-ui/core/tokens';
+import {Observable} from 'rxjs';
 
 export function isMobileResFactory(
-    windowRef: Window,
-    {mobile}: TuiMedia,
+    mobile$: Observable<boolean>,
     {nativeElement}: ElementRef,
-    ngZone: NgZone,
 ): Observable<boolean> {
-    const mobile$ = fromEvent(windowRef, 'resize').pipe(
-        startWith(null),
-        map(() => windowRef.innerWidth < mobile),
-        distinctUntilChanged(),
-        tuiZoneOptimized(ngZone),
-    );
-
     nativeElement['$.class._mobile'] = mobile$;
 
     return mobile$;
@@ -26,6 +13,6 @@ export function isMobileResFactory(
 
 export const TUI_IS_MOBILE_RES_PROVIDER: Provider = {
     provide: TUI_IS_MOBILE_RES,
-    deps: [WINDOW, TUI_MEDIA, ElementRef, NgZone],
+    deps: [[new SkipSelf(), TUI_IS_MOBILE_RES], ElementRef],
     useFactory: isMobileResFactory,
 };
