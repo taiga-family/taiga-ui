@@ -45,7 +45,7 @@
         [keySteps]="computedKeySteps"
         [attr.disabled]="readOnly || disabled || null"
         [ngModel]="value"
-        (keyStepsInput)="safelyUpdateValue($event)"
+        (keyStepsInput)="onSliderChange($event)"
         (click)="focusTextInput()"
     />
 

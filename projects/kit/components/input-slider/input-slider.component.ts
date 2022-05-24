@@ -229,6 +229,11 @@ export class TuiInputSliderComponent
         this.updateTextInputValue(this.valueGuard(value));
     }
 
+    onSliderChange(newValue: number): void {
+        this.safelyUpdateValue(newValue);
+        this.updateTextInputValue(this.value);
+    }
+
     onFocused(focused: boolean): void {
         if (!focused && !this.textInputValue) {
             this.updateTextInputValue(this.safeCurrentValue);
