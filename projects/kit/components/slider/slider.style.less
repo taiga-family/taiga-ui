@@ -90,6 +90,10 @@
     color: var(--tui-primary); /* See currentColor inside this file */
     cursor: pointer;
 
+    &:active {
+        cursor: ew-resize;
+    }
+
     &:disabled {
         opacity: var(--tui-disabled-opacity);
         cursor: auto;
