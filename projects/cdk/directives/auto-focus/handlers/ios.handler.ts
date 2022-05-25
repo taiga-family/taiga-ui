@@ -7,25 +7,34 @@ import {
     Renderer2,
     Self,
 } from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
+import {getIosVersion, px} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
+const MIN_OLD_IOS_VERSION = 15.1;
+const MIN_IOS_TIME_OPENING_VIRTUAL_KEYBOARD = 700;
+
+// @dynamic
 @Directive()
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
+    private elementFocusTimeoutId = 0;
+    private fakeFocusTimeoutId = 0;
+
     constructor(
         @Optional()
         @Self()
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         tuiFocusableComponent: TuiFocusableElementAccessor | null,
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
-        @Inject(Renderer2)
-        private readonly renderer: Renderer2,
-        @Inject(NgZone)
-        private readonly ngZone: NgZone,
+        @Inject(Renderer2) private readonly renderer: Renderer2,
+        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(WINDOW) private readonly windowRef: Window,
     ) {
         super(tuiFocusableComponent, elementRef);
+        this.setStyleForIosBody();
     }
 
     setFocus(): void {
@@ -37,42 +46,88 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     }
 
     private iosWebkitAutofocus(): void {
-        const fakeInput: HTMLElement = this.renderer.createElement('input');
+        const fakeInput: HTMLInputElement = this.makeFakeInput();
+        const duration = this.getDurationTimeBeforeFocus();
 
-        fakeInput.style.position = 'absolute';
-        fakeInput.style.opacity = '0';
-        fakeInput.style.height = '0';
-
-        const blurHandler = (): void => fakeInput.focus();
+        const blurHandler = (): void => fakeInput.focus({preventScroll: true});
         const focusHandler = (): void => {
-            setTimeout(() => {
-                this.element.focus();
+            clearTimeout(this.fakeFocusTimeoutId);
 
-                /**
-                 * @note:
-                 * We can't remove the element immediately, because it breaks flow
-                 */
-                setTimeout(() => {
-                    fakeInput.removeEventListener('blur', blurHandler);
-                    fakeInput.removeEventListener('focus', focusHandler);
+            this.fakeFocusTimeoutId = this.windowRef.setTimeout(() => {
+                clearTimeout(this.elementFocusTimeoutId);
+
+                fakeInput.removeEventListener('blur', blurHandler);
+                fakeInput.removeEventListener('focus', focusHandler);
+
+                this.elementFocusTimeoutId = this.windowRef.setTimeout(() => {
+                    this.element.focus({preventScroll: false});
                     fakeInput.remove();
-                });
+                }, duration);
             });
         };
 
-        /**
-         * @note: ping-pong eager strategy hack
-         * After creating an element and bringing it into DOM,
-         * the browser automatically focuses on the invisible element.
-         * And then, after focus is triggered, we try to focus on target element, and if we managed to refocus,
-         * then we try to focus again on an invisible element, so that the keyboard slowly appears.
-         * This ping pong allows the keyboard to not overlap the modal window.
-         */
         fakeInput.addEventListener('blur', blurHandler, {once: true});
         fakeInput.addEventListener('focus', focusHandler);
 
-        this.element.parentElement?.appendChild(fakeInput);
+        if (this.insideDialog()) {
+            this.windowRef.document.body.appendChild(fakeInput);
+        } else {
+            this.element.parentElement?.appendChild(fakeInput);
+        }
 
-        fakeInput.focus();
+        fakeInput.focus({preventScroll: true});
+    }
+
+    /**
+     * @note:
+     * emulate textfield position in layout with cursor
+     * before focus to real textfield element
+     */
+    private makeFakeInput(): HTMLInputElement {
+        const fakeInput: HTMLInputElement = this.renderer.createElement('input');
+
+        fakeInput.style.height = px(this.element.clientHeight);
+        fakeInput.style.width = px(this.element.clientWidth / 2);
+        fakeInput.style.position = 'fixed';
+        fakeInput.style.opacity = '0';
+
+        // @note: emulate position cursor before focus to real textfield element
+        fakeInput.style.top = px(this.element.getBoundingClientRect().top);
+        fakeInput.style.left = px(this.element.getBoundingClientRect().left);
+
+        return fakeInput;
+    }
+
+    private getDurationTimeBeforeFocus(): number {
+        const defaultAnimationTime =
+            parseFloat(
+                this.windowRef
+                    .getComputedStyle(this.element)
+                    .getPropertyValue('--tui-duration'),
+            ) || 0;
+
+        return Math.max(MIN_IOS_TIME_OPENING_VIRTUAL_KEYBOARD, defaultAnimationTime);
+    }
+
+    /**
+     * @note:
+     * unfortunately, in older versions of iOS
+     * there is a bug that the fake input cursor
+     * will move along with the dialog animation
+     * and then that dialog will be shaking
+     */
+    private insideDialog(): boolean {
+        return !!this.element.closest('tui-dialog');
+    }
+
+    private setStyleForIosBody(): void {
+        const {major = 0, minor = 0} = getIosVersion(this.windowRef.navigator) ?? {};
+
+        this.windowRef.document.body.style.setProperty(
+            'height',
+            parseFloat(`${major}.${minor}`) < MIN_OLD_IOS_VERSION
+                ? '100vh'
+                : '-webkit-fill-available',
+        );
     }
 }
