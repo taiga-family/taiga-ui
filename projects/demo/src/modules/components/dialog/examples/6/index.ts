@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -9,7 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiDialogExampleComponent6 {
-    value = '';
+    exampleForm = new FormGroup({
+        exampleControl: new FormControl(''),
+    });
 
     open = false;
 
