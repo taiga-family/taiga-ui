@@ -319,6 +319,44 @@
         ></button>
     </div>
     <div
+        *ngIf="enabled(TuiEditorTool.Details)"
+        class="t-block"
+    >
+        <button
+            #detailBtn
+            tuiIconButton
+            tuiToolbarTool
+            type="button"
+            size="s"
+            icon="tuiIconChevronDown"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            class="t-tool t-tool_margin"
+            [tuiHint]="texts.setDetails"
+            [tuiHintId]="detailBtn.id"
+            [tuiDescribedBy]="detailBtn.id"
+            [focusable]="false"
+            (click)="addDetails()"
+        ></button>
+        <button
+            #removeDetailBtn
+            tuiIconButton
+            tuiToolbarTool
+            type="button"
+            size="s"
+            icon="tuiIconClose"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            class="t-tool t-tool_margin"
+            [tuiHint]="texts.removeDetails"
+            [tuiHintId]="removeDetailBtn.id"
+            [tuiDescribedBy]="removeDetailBtn.id"
+            [focusable]="false"
+            [disabled]="!editor.isActive('details')"
+            (click)="removeDetails()"
+        ></button>
+    </div>
+    <div
         *ngIf="enabled(TuiEditorTool.Table)"
         class="t-block"
     >

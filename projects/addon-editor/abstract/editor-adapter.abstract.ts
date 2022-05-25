@@ -69,4 +69,6 @@ export abstract class TuiEditor {
     abstract setCellColor(color: string): void;
     abstract getOriginTiptapEditor(): Editor;
     abstract enter(): void;
+    abstract setDetails(): void;
+    abstract removeDetails(): void;
 }

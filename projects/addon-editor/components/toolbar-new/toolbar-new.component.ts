@@ -225,6 +225,14 @@ export class TuiToolbarNewComponent {
         return this.toolsSet.has(tool);
     }
 
+    addDetails(): void {
+        this.editor.setDetails();
+    }
+
+    removeDetails(): void {
+        this.editor.removeDetails();
+    }
+
     undo(): void {
         this.editor.undo();
     }

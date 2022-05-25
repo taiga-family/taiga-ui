@@ -22,6 +22,9 @@ export const defaultEditorExtensions = [
     import('@tiptap/extension-table-header').then(m => m.TableHeader),
     import('./indent-outdent').then(m => m.Indent),
     import('./table-cell-background').then(m => m.TableCellBackground),
+    import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiDetailsContent),
+    import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiDetails),
+    import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiSummary),
 ];
 
 // TODO: 3.0 remove in ivy compilation

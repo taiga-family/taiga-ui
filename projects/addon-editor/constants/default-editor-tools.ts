@@ -20,4 +20,5 @@ export const defaultEditorTools = [
     TuiEditorTool.Sup,
     TuiEditorTool.Sub,
     TuiEditorTool.Table,
+    TuiEditorTool.Details,
 ];

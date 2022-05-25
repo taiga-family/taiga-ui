@@ -40,6 +40,8 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         splitCells: 'Dividi celle',
         rowsColumnsManaging: 'Gestione righe e colonne',
         cellColor: 'Colore cella',
+        setDetails: 'Details',
+        removeDetails: 'Remove details',
     },
     editorTableCommands: [
         ['Inserisci colonna prima', 'Inserisci colonna dopo'],

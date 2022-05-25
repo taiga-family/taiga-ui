@@ -40,6 +40,8 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         splitCells: 'Podziel komórki',
         rowsColumnsManaging: 'Zarządzaj wierszami i kolumnami',
         cellColor: 'Kolor komórki',
+        setDetails: 'Details',
+        removeDetails: 'Remove details',
     },
     editorTableCommands: [
         ['Wstaw kolumnę przed', 'Wstaw kolumnę po'],
