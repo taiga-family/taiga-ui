@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -29,7 +30,8 @@ import {
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
 import {Mark} from 'prosemirror-model';
-import {Observable} from 'rxjs';
+import {Observable, timer} from 'rxjs';
+import {first, takeUntil} from 'rxjs/operators';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
@@ -48,7 +50,7 @@ import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 })
 export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
-    implements OnDestroy
+    implements AfterViewInit, OnDestroy
 {
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
@@ -129,6 +131,10 @@ export class TuiEditorNewComponent
         this.editor?.unsetLink();
     }
 
+    ngAfterViewInit(): void {
+        this.synchronizeLastChangesInsideEditorAfterCreate();
+    }
+
     ngOnDestroy(): void {
         this.editor?.destroy();
     }
@@ -148,5 +154,16 @@ export class TuiEditorNewComponent
         const isLink = link?.type.name === 'link';
 
         return isLink ? link : null;
+    }
+
+    /**
+     * @note:
+     * TipTap editor can invalidate html attributes inside provided content,
+     * in order for the ViewModel and Model to be synchronized
+     */
+    private synchronizeLastChangesInsideEditorAfterCreate(): void {
+        timer(1000)
+            .pipe(first(), takeUntil(this.destroy$))
+            .subscribe(() => this.updateValue(this.editor?.html || ''));
     }
 }

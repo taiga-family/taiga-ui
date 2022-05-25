@@ -92,7 +92,7 @@ describe('Editing links in Editor', () => {
     }
 
     function getContentEditable(): Cypress.Chainable<JQuery> {
-        return cy.get('@wrapper').find('[contenteditable]');
+        return cy.get('@wrapper').find('[contenteditable]').should('not.be.empty');
     }
 
     function selectTag(selector: Cypress.Chainable<JQuery>): void {
