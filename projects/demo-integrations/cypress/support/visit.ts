@@ -21,6 +21,12 @@ interface TuiVisitOptions {
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
+    /**
+     * WARNING: this flag does not provide fully emulation of touch mobile device.
+     * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
+     * But you can control token `TUI_IS_MOBILE` by this flag.
+     */
+    pseudoMobile?: boolean;
 }
 
 const setBeforeLoadOptions = (
@@ -33,6 +39,9 @@ const setBeforeLoadOptions = (
     }
 };
 
+const MOBILE_USER_AGENT =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1';
+
 export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     const {
         inIframe = true,
@@ -43,6 +52,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         noSmoothScroll = true,
         hideHeader = true,
         hideNavigation = true,
+        pseudoMobile = false,
     } = options;
 
     stubExternalIcons();
@@ -59,6 +69,12 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
             window.localStorage.setItem(NIGHT_THEME_KEY, enableNightMode.toString());
+
+            if (pseudoMobile) {
+                Object.defineProperty(window.navigator, 'userAgent', {
+                    value: MOBILE_USER_AGENT,
+                });
+            }
         },
     }).then(() => cy.url().should('include', path));
 

@@ -243,9 +243,15 @@ export class TuiInputRangeComponent
         this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
-    onRangeValue([left, right]: [number, number]): void {
-        this.rangeRef?.nativeFocusableElement?.focus();
-        this.safelyUpdateValue([left, right]);
+    onRangeValue(value: [number, number]): void {
+        this.safelyUpdateValue(value);
+
+        const rightValueChanged = this.lastActiveSide === 'right';
+
+        this.updateTextInputValue(
+            this.value[rightValueChanged ? 1 : 0],
+            rightValueChanged,
+        );
     }
 
     focusToTextInput(): void {
@@ -257,10 +263,6 @@ export class TuiInputRangeComponent
         if (!this.isMobile && element) {
             element.focus();
         }
-    }
-
-    blurRange(): void {
-        this.rangeRef?.nativeFocusableElement?.blur();
     }
 
     onActiveThumbChange(activeThumb: 'right' | 'left'): void {
