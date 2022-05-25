@@ -3,3 +3,13 @@
         display: none !important;
     }
 }
+
+@media @mobile-m {
+    html,
+    body {
+        // only for iOS devices
+        @supports (-webkit-touch-callout: none) {
+            overflow: auto;
+        }
+    }
+}
