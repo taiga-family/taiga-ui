@@ -45,7 +45,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     hintModeCVC = null;
 
-    readonly cards = {
+    readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         intersection:
@@ -81,9 +81,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     }
 
     get cardSrc(): string | null {
-        return this.cardSrcSelected === null
-            ? null
-            : (this.cards as any)[this.cardSrcSelected];
+        return this.cardSrcSelected === null ? null : this.cards[this.cardSrcSelected];
     }
 
     get disabledCard(): boolean {

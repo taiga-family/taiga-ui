@@ -159,7 +159,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         return type.includes('PolymorpheusContent');
     }
 
-    inspectAny(data: any): string {
+    inspectAny(data: unknown): string {
         return inspectAny(data, 2);
     }
 }

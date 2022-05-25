@@ -14,7 +14,7 @@ export class TuiRowDirective<T> {
 
     static ngTemplateContextGuard<T>(
         _dir: TuiRowDirective<T>,
-        _ctx: any,
+        _ctx: unknown,
     ): _ctx is TuiRowContext<T> {
         return true;
     }

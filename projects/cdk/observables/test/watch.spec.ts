@@ -1,18 +1,19 @@
+import {ChangeDetectorRef} from '@angular/core';
 import {fakeAsync, tick} from '@angular/core/testing';
 import {Subject} from 'rxjs';
 
 import {watch} from '../watch';
 
 describe('Watch operator function', () => {
-    let $: Subject<any>;
+    let $: Subject<unknown>;
     let called = 0;
 
-    const chrStub: any = {
+    const chrStub: ChangeDetectorRef = {
         markForCheck: () => called++,
-    };
+    } as unknown as ChangeDetectorRef;
 
     beforeEach(() => {
-        $ = new Subject<any>();
+        $ = new Subject<unknown>();
         called = 0;
     });
 

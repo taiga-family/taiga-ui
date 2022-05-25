@@ -1,4 +1,4 @@
-function inspectArray(array: readonly any[], depth: number): string {
+function inspectArray(array: readonly unknown[], depth: number): string {
     if (depth === 0) {
         return '[…]';
     }
@@ -19,7 +19,7 @@ function inspectArray(array: readonly any[], depth: number): string {
     return `[${result}]`;
 }
 
-function inspectObject(object: {[key: string]: any}, depth: number): string {
+function inspectObject(object: {[key: string]: unknown}, depth: number): string {
     if (depth === 0) {
         return `{…}`;
     }
@@ -45,14 +45,13 @@ function inspectObject(object: {[key: string]: any}, depth: number): string {
     return `{${result}}`;
 }
 
-// @bad TODO add more types
 /**
  * Returns readable JS entity
  * @param data
  * @param depth
  * @return readable JS entity
  */
-export function inspectAny(data: any, depth: number): string {
+export function inspectAny<T>(data: T, depth: number): string {
     if (data === null) {
         return 'null';
     }
@@ -75,5 +74,5 @@ export function inspectAny(data: any, depth: number): string {
         return inspectArray(data, depth);
     }
 
-    return inspectObject(data, depth);
+    return inspectObject(data as unknown as {[key: string]: unknown}, depth);
 }

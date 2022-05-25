@@ -9,7 +9,7 @@ import {
     TuiTreeLoader,
 } from './tree.interfaces';
 
-export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<any>>(
+export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
     'Controller for tracking value - TuiTreeItemComponent pairs',
 );
 
@@ -29,7 +29,7 @@ export const TUI_TREE_LOADING = new InjectionToken(
 
 export const TUI_TREE_START = new InjectionToken('A tree node starting point');
 
-export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<any>>(
+export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
     'A service to load tree progressively',
 );
 

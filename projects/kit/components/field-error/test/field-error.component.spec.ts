@@ -365,17 +365,17 @@ describe('FieldError', () => {
         });
     });
 
-    function isErrorVisible(pageObject: any): boolean {
+    function isErrorVisible<T>(pageObject: PageObject<T>): boolean {
         const errorTextElement = getErrorElement(pageObject);
 
         return !!errorTextElement;
     }
 
-    function getErrorText(pageObject: any): string {
-        return getErrorElement(pageObject)!.nativeElement.textContent.trim();
+    function getErrorText<T>(pageObject: PageObject<T>): string {
+        return getErrorElement(pageObject)?.nativeElement.textContent.trim() || '';
     }
 
-    function getErrorElement(pageObject: any): DebugElement | null {
+    function getErrorElement<T>(pageObject: PageObject<T>): DebugElement | null {
         return pageObject.getByAutomationId(`${testContext.prefix}text`);
     }
 });

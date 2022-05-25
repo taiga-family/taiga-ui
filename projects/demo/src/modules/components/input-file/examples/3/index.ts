@@ -11,7 +11,7 @@ class RejectedFile {
     constructor(readonly file: TuiFileLike, readonly reason: string) {}
 }
 
-function isRejectedFile(file: any): file is RejectedFile {
+function isRejectedFile(file: unknown): file is RejectedFile {
     return file instanceof RejectedFile;
 }
 

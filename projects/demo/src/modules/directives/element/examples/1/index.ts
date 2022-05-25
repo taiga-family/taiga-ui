@@ -10,11 +10,11 @@ import {TuiButtonComponent} from '@taiga-ui/core';
     encapsulation,
 })
 export class TuiElementExample1 {
-    isButton(component: any): boolean {
+    isButton(component: unknown): boolean {
         return component instanceof TuiButtonComponent;
     }
 
-    isElement(element: any): boolean {
+    isElement(element: unknown): boolean {
         return element instanceof ElementRef;
     }
 }

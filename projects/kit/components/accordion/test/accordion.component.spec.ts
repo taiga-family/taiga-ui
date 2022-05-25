@@ -104,7 +104,7 @@ describe('Accordion', () => {
         items!: QueryList<TuiAccordionItemComponent>;
 
         @ViewChild(TuiSelectComponent, {static: true})
-        selectComponent!: TuiSelectComponent<any>;
+        selectComponent!: TuiSelectComponent<unknown>;
 
         closeOthers = true;
         single = true;

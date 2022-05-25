@@ -49,16 +49,16 @@ describe('Filter', () => {
 
         control = new FormControl([]);
 
-        items: readonly any[] = ARR_STRING;
+        items: readonly string[] | readonly ItemWithBadge[] = ARR_STRING;
 
         size: TuiSizeS = 'm';
 
-        badgeHandler: TuiHandler<any, number> = item => Number(item);
+        badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiFilterComponent<any>;
+    let component: TuiFilterComponent<string | ItemWithBadge>;
     let pageObject: PageObject<TestComponent>;
     const testContext = {
         get prefix() {

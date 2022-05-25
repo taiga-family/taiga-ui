@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="node" />
 
 import fs from 'fs';
 

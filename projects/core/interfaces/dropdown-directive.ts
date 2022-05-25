@@ -8,7 +8,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 export interface TuiDropdown<C = object> {
-    refresh$: Observable<any>;
+    refresh$: Observable<unknown>;
     clientRect: ClientRect;
     content: PolymorpheusContent;
     host: TuiNativeFocusableElement | HTMLElement;

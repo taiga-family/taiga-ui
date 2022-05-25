@@ -24,7 +24,7 @@ describe('TuiDestroy service', () => {
     it('completes Observable on destroy', () => {
         let result = false;
 
-        const observable$: Observable<any> = timer(2000).pipe(
+        const observable$: Observable<unknown> = timer(2000).pipe(
             takeUntil(service),
             finalize(() => {
                 result = true;

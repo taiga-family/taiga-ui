@@ -6,8 +6,8 @@ import {NativeInputPO} from '../native-input.page-object';
 import {PageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<any>;
-    fixture: ComponentFixture<any>;
+    pageObject: PageObject<unknown>;
+    fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     inputPO: NativeInputPO;
     prefix: string;
@@ -19,11 +19,11 @@ interface TestComponent {
 
 export function testFiller(
     context: TestParams,
-    setValue: any = 'value',
-    clearValue: any = null,
+    setValue: unknown = 'value',
+    clearValue: unknown = null,
 ): void {
-    let pageObject: PageObject<any>;
-    let fixture: ComponentFixture<any>;
+    let pageObject: PageObject<unknown>;
+    let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 

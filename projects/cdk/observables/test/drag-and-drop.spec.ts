@@ -4,7 +4,7 @@ import {skip, take} from 'rxjs/operators';
 describe('dragAndDropFrom', () => {
     it('throws an error if there is no document', () => {
         let result: unknown;
-        const element: any = {ownerDocument: undefined};
+        const element: Element = {ownerDocument: undefined} as unknown as Element;
 
         try {
             dragAndDropFrom(element).subscribe();

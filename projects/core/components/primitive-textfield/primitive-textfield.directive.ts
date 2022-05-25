@@ -24,7 +24,7 @@ export class TuiPrimitiveTextfieldDirective extends TuiAbstractTextfieldHost<any
          * AbstractTuiControl interface. A new interface is not introduced
          * so AbstractTuiControl is automatically injected for all other controls.
          */
-        super(textfield as any as AbstractTuiControl<unknown>);
+        super(textfield as unknown as AbstractTuiControl<unknown>);
     }
 
     get readOnly(): boolean {

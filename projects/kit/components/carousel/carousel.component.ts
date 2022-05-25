@@ -57,7 +57,7 @@ export class TuiCarouselComponent {
     readonly indexChange = new EventEmitter<number>();
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<any>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     @HostBinding('class._transitioned')
     transitioned = true;

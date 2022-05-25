@@ -72,7 +72,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
             TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
         > | null,
         @Inject(forwardRef(() => TuiDataListComponent))
-        private readonly dataList: any,
+        private readonly dataList: TuiDataListComponent<T>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_DATA_LIST_HOST)

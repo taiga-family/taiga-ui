@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 
 import {HomeComponent} from '../home/home.component';
 
-export const TUI_HOME_COMPONENT = new InjectionToken<Type<any>>('Home page', {
+export const TUI_HOME_COMPONENT = new InjectionToken<Type<unknown>>('Home page', {
     factory: () => HomeComponent,
 });
 
@@ -13,5 +13,5 @@ export const TUI_HOME_COMPONENT = new InjectionToken<Type<any>>('Home page', {
     changeDetection,
 })
 export class GettingStartedComponent {
-    constructor(@Inject(TUI_HOME_COMPONENT) readonly component: Type<any>) {}
+    constructor(@Inject(TUI_HOME_COMPONENT) readonly component: Type<unknown>) {}
 }
