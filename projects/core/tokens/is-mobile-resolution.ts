@@ -14,11 +14,11 @@ export const TUI_IS_MOBILE_RES = new InjectionToken<Observable<boolean>>(
             const {mobile} = inject(TUI_MEDIA);
 
             return typedFromEvent(windowRef, 'resize').pipe(
+                share(),
                 startWith(null),
                 map(() => windowRef.innerWidth < mobile),
                 distinctUntilChanged(),
                 tuiZoneOptimized(inject(NgZone)),
-                share(),
             );
         },
     },
