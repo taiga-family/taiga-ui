@@ -1,7 +1,7 @@
 interface TypeToRename {
-    from: string;
-    to: string;
-    moduleSpecifier?: string | string[];
+    readonly from: string;
+    readonly to: string;
+    readonly moduleSpecifier?: string | string[];
 }
 export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {
