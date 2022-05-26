@@ -1,7 +1,7 @@
 import {mergeAttributes, Node} from '@tiptap/core';
 
 export interface TuiSummaryOptions {
-    HTMLAttributes: Record<string, any>;
+    readonly HTMLAttributes: Record<string, unknown>;
 }
 
 export const TuiSummary = Node.create<TuiSummaryOptions>({

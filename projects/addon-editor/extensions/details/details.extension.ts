@@ -2,7 +2,7 @@ import {CommandProps, mergeAttributes, Node, RawCommands} from '@tiptap/core';
 import {EditorState} from 'prosemirror-state';
 
 export interface TuiDetailsOptions {
-    HTMLAttributes: Record<string, any>;
+    readonly HTMLAttributes: Record<string, unknown>;
 }
 
 declare module '@tiptap/core' {
