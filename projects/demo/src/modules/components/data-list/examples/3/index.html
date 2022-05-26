@@ -1,5 +1,6 @@
 <tui-hosted-dropdown
     #dropdown
+    [tuiDropdownMaxHeight]="500"
     [content]="content"
 >
     <button
@@ -20,6 +21,7 @@
                 <button
                     *ngFor="let burger of burgers"
                     tuiOption
+                    size="l"
                     [value]="burger"
                 >
                     {{burger}}
@@ -29,6 +31,7 @@
                 <button
                     *ngFor="let drink of drinks"
                     tuiOption
+                    size="l"
                     [value]="drink"
                 >
                     {{drink}}

@@ -128,4 +128,15 @@ describe('DataList', () => {
             blackout: ['tui-doc-navigation'],
         });
     });
+
+    it('Options with long text', () => {
+        cy.get(`#long-text-options [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`)
+            .scrollIntoView()
+            .should('be.visible')
+            .click();
+
+        cy.get('tui-dropdown-box')
+            .should('be.visible')
+            .matchImageSnapshot('6-#long-text-options');
+    });
 });

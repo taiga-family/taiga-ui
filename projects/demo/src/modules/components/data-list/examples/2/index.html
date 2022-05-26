@@ -22,6 +22,7 @@
         <button
             *tuiLet="'French Fries' as item"
             tuiOption
+            [size]="size"
             (click)="selectOption(item)"
         >
             {{item}}
@@ -29,6 +30,7 @@
         <button
             tuiOption
             tuiDropdownAlign="right"
+            [size]="size"
             [tuiDropdown]="false"
             [tuiDropdownContent]="burgersTmp"
             [tuiDropdownSided]="true"
@@ -38,6 +40,7 @@
         <button
             tuiOption
             tuiDropdownAlign="right"
+            [size]="size"
             [tuiDropdown]="false"
             [tuiDropdownContent]="drinksTmp"
             [tuiDropdownSided]="true"
@@ -47,6 +50,7 @@
         <button
             *tuiLet="'Ice Cream' as item"
             tuiOption
+            [size]="size"
             (click)="selectOption(item)"
         >
             {{item}}
@@ -60,6 +64,7 @@
             <button
                 *ngFor="let burger of burgers"
                 tuiOption
+                [size]="size"
                 (click)="selectOption(burger)"
             >
                 {{burger}}
@@ -67,6 +72,7 @@
             <button
                 tuiOption
                 tuiDropdownAlign="right"
+                [size]="size"
                 [tuiDropdown]="false"
                 [tuiDropdownContent]="drinksTmp"
                 [tuiDropdownSided]="true"
@@ -80,6 +86,7 @@
             <button
                 *ngFor="let drink of drinks"
                 tuiOption
+                [size]="size"
                 (click)="selectOption(drink)"
             >
                 {{drink}}
