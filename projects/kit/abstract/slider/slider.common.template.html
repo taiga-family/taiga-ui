@@ -2,7 +2,7 @@
     class="event-catcher"
     (tuiActiveZoneChange)="onActiveZone($event)"
     (mousedown)="onMouseDown($event)"
-    (touchstart)="onTouchStart($event)"
+    (touchstart.passive)="onTouchStart($event)"
 >
     <div class="wrapper">
         <div

@@ -235,7 +235,7 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event as TuiEventWith<MouseEvent, HTMLElement>);
     }
 
-    onTouchStart(event: TouchEvent): void {
+    onTouchStart(event: Event): void {
         if (this.disabled) {
             return;
         }
