@@ -94,15 +94,38 @@ export class TuiStepperComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
+        this.scrollIntoView(index);
+    }
+
+    @tuiPure
+    private getNativeElements(
+        queryList: QueryList<ElementRef<HTMLElement>>,
+    ): HTMLElement[] {
+        return queryList.map(({nativeElement}) => nativeElement);
     }
 
     private moveFocus(current: EventTarget, step: number): void {
         tuiAssertIsHTMLElement(current);
 
-        const steps = getOriginalArrayFromQueryList(this.steps).map(
-            ({nativeElement}) => nativeElement,
-        );
+        const stepElements = this.getNativeElements(this.steps);
 
-        moveFocus(steps.indexOf(current), steps, step);
+        moveFocus(stepElements.indexOf(current), stepElements, step);
+    }
+
+    private scrollIntoView(targetStepIndex: number): void {
+        const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
+            block: 'nearest',
+            inline: 'center',
+        };
+        const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
+            block: 'center',
+            inline: 'nearest',
+        };
+
+        this.getNativeElements(this.steps)[targetStepIndex].scrollIntoView(
+            this.orientation === 'vertical'
+                ? ONLY_VERTICAL_SCROLL
+                : ONLY_HORIZONTAL_SCROLL,
+        );
     }
 }
