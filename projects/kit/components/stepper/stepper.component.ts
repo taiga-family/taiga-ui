@@ -55,12 +55,6 @@ export class TuiStepperComponent {
         return itemsQueryListObservable(this.steps).pipe(delay(0));
     }
 
-    get stepElements(): HTMLElement[] {
-        return getOriginalArrayFromQueryList(this.steps).map(
-            ({nativeElement}) => nativeElement,
-        );
-    }
-
     @HostListener('keydown.arrowRight', ['$event', '1'])
     @HostListener('keydown.arrowLeft', ['$event', '-1'])
     onHorizontal(event: Event, step: number): void {
@@ -103,10 +97,19 @@ export class TuiStepperComponent {
         this.scrollIntoView(index);
     }
 
+    @tuiPure
+    private getNativeElements(
+        queryList: QueryList<ElementRef<HTMLElement>>,
+    ): HTMLElement[] {
+        return queryList.map(({nativeElement}) => nativeElement);
+    }
+
     private moveFocus(current: EventTarget, step: number): void {
         tuiAssertIsHTMLElement(current);
 
-        moveFocus(this.stepElements.indexOf(current), this.stepElements, step);
+        const stepElements = this.getNativeElements(this.steps);
+
+        moveFocus(stepElements.indexOf(current), stepElements, step);
     }
 
     private scrollIntoView(targetStepIndex: number): void {
@@ -119,7 +122,7 @@ export class TuiStepperComponent {
             inline: 'nearest',
         };
 
-        this.stepElements[targetStepIndex].scrollIntoView(
+        this.getNativeElements(this.steps)[targetStepIndex].scrollIntoView(
             this.orientation === 'vertical'
                 ? ONLY_VERTICAL_SCROLL
                 : ONLY_HORIZONTAL_SCROLL,
