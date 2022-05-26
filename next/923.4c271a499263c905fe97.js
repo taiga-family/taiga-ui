@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[923],{lsht:function(o,n,s){"use strict";s.r(n),n.default="import {TuiCopyProcessorModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiCopyProcessorModule,\n    ],\n...\n"}}]);
