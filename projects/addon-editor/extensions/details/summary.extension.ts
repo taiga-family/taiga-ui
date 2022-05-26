@@ -4,14 +4,6 @@ export interface TuiSummaryOptions {
     HTMLAttributes: Record<string, any>;
 }
 
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        tuiSummary: {
-            setSummary: (options: TuiSummaryOptions) => ReturnType;
-        };
-    }
-}
-
 export const TuiSummary = Node.create<TuiSummaryOptions>({
     name: 'summary',
 

@@ -4,14 +4,6 @@ export interface TuiDetailContentOptions {
     HTMLAttributes: Record<string, any>;
 }
 
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        detailsContent: {
-            setDetailsContent: (options: TuiDetailContentOptions) => ReturnType;
-        };
-    }
-}
-
 export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
     name: 'detailsContent',
 

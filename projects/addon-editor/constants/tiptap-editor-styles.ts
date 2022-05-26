@@ -212,6 +212,10 @@ export const tiptapEditorStyles = `
    border-radius: var(--tui-radius-l);
 }
 
+.tui-editor-socket summary::-webkit-details-marker {
+  display: none;
+}
+
 .tui-editor-socket details[open] summary {
    border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
 }
