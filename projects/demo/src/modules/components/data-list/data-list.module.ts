@@ -34,6 +34,7 @@ import {TuiDataListExample3} from './examples/3';
 import {TuiDataListExample4} from './examples/4';
 import {CustomListComponent} from './examples/4/custom-list/custom-list.component';
 import {TuiDataListExample5} from './examples/5';
+import {TuiDataListExample6} from './examples/6';
 
 @NgModule({
     imports: [
@@ -72,6 +73,7 @@ import {TuiDataListExample5} from './examples/5';
         TuiDataListExample3,
         TuiDataListExample4,
         TuiDataListExample5,
+        TuiDataListExample6,
     ],
     exports: [ExampleTuiDataListComponent],
 })

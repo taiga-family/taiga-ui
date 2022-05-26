@@ -42,4 +42,9 @@ export class ExampleTuiDataListComponent {
         HTML: import('!!raw-loader!./examples/5/index.html'),
         LESS: import('!!raw-loader!./examples/5/index.less'),
     };
+
+    readonly example6 = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+    };
 }

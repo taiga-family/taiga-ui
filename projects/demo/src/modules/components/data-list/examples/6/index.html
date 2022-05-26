@@ -1,0 +1,34 @@
+<tui-hosted-dropdown
+    tuiDropdownAlign="left"
+    [tuiDropdownLimitWidth]="isMobile ? 'fixed' : 'min'"
+    [tuiDropdownMaxHeight]="700"
+    [content]="content"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        appearance="flat"
+        type="button"
+        [iconRight]="arrow"
+    >
+        Select why you use Taiga UI
+    </button>
+</tui-hosted-dropdown>
+
+<ng-template #content>
+    <tui-data-list>
+        <tui-opt-group
+            *ngFor="let group of groups"
+            [label]="group.label"
+        >
+            <button
+                *ngFor="let item of group.items"
+                tuiOption
+                class="option"
+                (click)="open = false"
+            >
+                {{item}}
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>
