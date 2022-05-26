@@ -54,7 +54,10 @@ export class TuiRangeChangeDirective {
                 tap(({clientX, target}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
                     this.activeThumbChange.emit(activeThumb);
-                    elementRef.nativeElement.focus();
+
+                    if (this.range.focusable) {
+                        elementRef.nativeElement.focus();
+                    }
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),
                 map(({clientX}) => clamp(this.getFractionFromEvents(clientX), 0, 1)),

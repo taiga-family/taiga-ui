@@ -234,6 +234,65 @@ describe('InputRange', () => {
                 .matchImageSnapshot('03-long-placeholder_pluralize');
         });
     });
+
+    describe('Mobile version', () => {
+        beforeEach(() => {
+            cy.viewport('iphone-x');
+            cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=-20&max=20&quantum=5`, {
+                pseudoMobile: true,
+            });
+            initializeAliases('#demoContent tui-input-range', [0, 10]);
+        });
+
+        describe('After Range interactions', () => {
+            it('keeps focus if the RIGHT text input was focused before', () => {
+                cy.get('@rightTextInput').focus();
+
+                cy.get('@rightSlider')
+                    .click('right', {force: true})
+                    .should('have.value', 20);
+
+                cy.get('@rightTextInput').should('have.value', 20).should('be.focused');
+            });
+
+            it('keeps focus if the LEFT text input was focused before', () => {
+                cy.get('@leftTextInput').focus();
+
+                cy.get('@leftSlider')
+                    .click('left', {force: true})
+                    .should('have.value', -20);
+
+                cy.get('@leftTextInput').should('have.value', -20).should('be.focused');
+            });
+
+            it('does not focus anything if no text input was focused before', () => {
+                cy.get('@leftTextInput').should('not.be.focused');
+                cy.get('@rightTextInput').should('not.be.focused');
+
+                cy.get('@leftSlider')
+                    .click('left', {force: true})
+                    .should('have.value', -20);
+
+                cy.get('@leftTextInput')
+                    .should('have.value', -20)
+                    .should('not.be.focused');
+                cy.get('@rightTextInput')
+                    .should('have.value', 10)
+                    .should('not.be.focused');
+
+                cy.get('@rightSlider')
+                    .click('right', {force: true})
+                    .should('have.value', 20);
+
+                cy.get('@leftTextInput')
+                    .should('have.value', -20)
+                    .should('not.be.focused');
+                cy.get('@rightTextInput')
+                    .should('have.value', 20)
+                    .should('not.be.focused');
+            });
+        });
+    });
 });
 
 function initializeAliases(

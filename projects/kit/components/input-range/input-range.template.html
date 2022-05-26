@@ -86,7 +86,6 @@
         [ngModel]="value"
         (ngModelChange)="onRangeValue($event)"
         (tuiPressedChange)="focusToTextInput()"
-        (touchend)="blurRange()"
         (activeThumbChange)="onActiveThumbChange($event)"
     ></tui-range>
 </tui-wrapper>
