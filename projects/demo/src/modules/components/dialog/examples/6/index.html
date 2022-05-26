@@ -12,12 +12,14 @@
     [tuiDialogOptions]="$any({ label: 'Declarative directive', size: 's' })"
     [(tuiDialog)]="open"
 >
-    <form>
+    <form
+        [formGroup]="exampleForm"
+        (ngSubmit)="observer.complete()"
+    >
         <p>This abstracts away service and subscription</p>
         <tui-input
             tuiAutoFocus
-            [ngModelOptions]="{ standalone: true }"
-            [(ngModel)]="value"
+            formControlName="exampleControl"
         >
             Some value
         </tui-input>
@@ -25,7 +27,6 @@
             <button
                 tuiButton
                 type="submit"
-                (click)="observer.complete()"
             >
                 Ok
             </button>

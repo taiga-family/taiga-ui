@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
@@ -36,6 +36,7 @@ import {SearchDialogExampleModule} from './examples/7/search-example/search-dial
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         PolymorpheusModule,
         TuiDialogModule,
         TuiAccordionModule,
