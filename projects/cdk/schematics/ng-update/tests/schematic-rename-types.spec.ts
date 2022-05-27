@@ -12,80 +12,6 @@ import {join} from 'path';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
-const BEFORE = `
-import { Component } from '@angular/core';
-import { InputCountOptions } from '@taiga-ui/kit/components';
-import { ButtonOptions, some, InputCountOptions } from '@taiga-ui/core/types';
-import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
-import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, RadioOptions } from '@taiga-ui/kit';
-import { ToggleOptions } from '@taiga-ui/cdk';
-
-const options: ButtonOptions = {};
-const inputCountOptions: InputCountOptions = {};
-const passwordOptions = {} as InputPasswordOptions;
-
-@Component({
-   templateUrl: './app.template.html',
-   providers: [
-      {provide: TUI_TOGGLE_OPTIONS, useValue: {showIcons: true} as ToggleOptions},
-   ],
-})
-export class AppComponent {
-   some: ButtonOptions = {};
-
-   doSomething(options: InputCountOptions) {
-      console.log(options.step);
-   }
-
-   get passwordOptions(): InputPasswordOptions {
-      return {};
-   }
-
-   get radioOptions() {
-      return {size: 'l'} as RadioOptions;
-   }
-
-   constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: InputTimeOptions) {}
-}
-`;
-
-const AFTER = `
-import { Component } from '@angular/core';
-import { TuiInputCountOptions } from '@taiga-ui/kit';
-import { TuiButtonOptions, some, InputCountOptions } from '@taiga-ui/core';
-import { TuiInputPasswordOptions } from '@taiga-ui/kit';
-import { TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions, TuiRadioOptions } from '@taiga-ui/kit';
-import { TuiToggleOptions } from '@taiga-ui/cdk';
-
-const options: TuiButtonOptions = {};
-const inputCountOptions: TuiInputCountOptions = {};
-const passwordOptions = {} as TuiInputPasswordOptions;
-
-@Component({
-   templateUrl: './app.template.html',
-   providers: [
-      {provide: TUI_TOGGLE_OPTIONS, useValue: {showIcons: true} as TuiToggleOptions},
-   ],
-})
-export class AppComponent {
-   some: TuiButtonOptions = {};
-
-   doSomething(options: TuiInputCountOptions) {
-      console.log(options.step);
-   }
-
-   get passwordOptions(): TuiInputPasswordOptions {
-      return {};
-   }
-
-   get radioOptions() {
-      return {size: 'l'} as TuiRadioOptions;
-   }
-
-   constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: TuiInputTimeOptions) {}
-}
-`;
-
 describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
@@ -104,7 +30,18 @@ describe('ng-update', () => {
     it('should rename types', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
+        expect(tree.readContent('test/app/app.component.ts')).toEqual(
+            `import { Component } from '@angular/core';
+import { TuiButtonOptions, some } from '@taiga-ui/core';
+
+const options: TuiButtonOptions = {};
+const config  = {};
+
+@Component({templateUrl: './app.template.html'})
+export class AppComponent {
+   some: TuiButtonOptions = {};
+}`,
+        );
     });
 
     afterEach(() => {
@@ -113,7 +50,19 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
+    createSourceFile(
+        'test/app/app.component.ts',
+        `import { Component } from '@angular/core';
+import { ButtonOptions, some, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
+
+const options: ButtonOptions = {};
+const config: WithDateMaskPipeConfig = {}
+
+@Component({templateUrl: './app.template.html'})
+export class AppComponent {
+   some: ButtonOptions = {};
+}`,
+    );
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
 }

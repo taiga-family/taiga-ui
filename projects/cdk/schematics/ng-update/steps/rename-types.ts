@@ -30,7 +30,7 @@ function renameType(
         }
 
         if (Node.isTypeReferenceNode(parent)) {
-            parent.replaceWithText(to || '');
+            parent.replaceWithText(to || 'any');
         }
     });
 }
