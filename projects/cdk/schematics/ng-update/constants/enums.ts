@@ -1,7 +1,7 @@
 interface ReplacementEnum {
-    name: string;
-    replaceValues: Record<string, string>;
-    keepAsType?: boolean;
+    readonly name: string;
+    readonly replaceValues: Record<string, string>;
+    readonly keepAsType?: boolean;
 }
 
 export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
