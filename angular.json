@@ -400,7 +400,13 @@
                             "tsc -p ./projects/cdk/schematics/tsconfig.spec.json --tsBuildInfoFile null",
                             "jasmine ./dist/cdk/schematics/**/*.spec.js"
                         ]
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "self"
+                        }
+                    ]
                 },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
