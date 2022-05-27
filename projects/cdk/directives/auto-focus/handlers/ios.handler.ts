@@ -10,12 +10,9 @@ import {
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
-import {getIosVersion, px} from '@taiga-ui/cdk/utils';
+import {px} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
-
-const MIN_OLD_IOS_VERSION = 15.1;
-const MIN_IOS_TIME_OPENING_VIRTUAL_KEYBOARD = 700;
 
 // @dynamic
 @Directive()
@@ -34,7 +31,6 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         @Inject(WINDOW) private readonly windowRef: Window,
     ) {
         super(tuiFocusableComponent, elementRef);
-        this.setStyleForIosBody();
     }
 
     setFocus(): void {
@@ -90,6 +86,8 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         fakeInput.style.width = px(this.element.clientWidth / 2);
         fakeInput.style.position = 'fixed';
         fakeInput.style.opacity = '0';
+        fakeInput.style.fontSize = px(16); // disable possible auto zoom
+        fakeInput.readOnly = true; // prevent keyboard for fake input
 
         // @note: emulate position cursor before focus to real textfield element
         fakeInput.style.top = px(this.element.getBoundingClientRect().top);
@@ -99,14 +97,13 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     }
 
     private getDurationTimeBeforeFocus(): number {
-        const defaultAnimationTime =
+        return (
             parseFloat(
                 this.windowRef
                     .getComputedStyle(this.element)
                     .getPropertyValue('--tui-duration'),
-            ) || 0;
-
-        return Math.max(MIN_IOS_TIME_OPENING_VIRTUAL_KEYBOARD, defaultAnimationTime);
+            ) || 0
+        );
     }
 
     /**
@@ -118,16 +115,5 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      */
     private insideDialog(): boolean {
         return !!this.element.closest('tui-dialog');
-    }
-
-    private setStyleForIosBody(): void {
-        const {major = 0, minor = 0} = getIosVersion(this.windowRef.navigator) ?? {};
-
-        this.windowRef.document.body.style.setProperty(
-            'height',
-            parseFloat(`${major}.${minor}`) < MIN_OLD_IOS_VERSION
-                ? '100vh'
-                : '-webkit-fill-available',
-        );
     }
 }
