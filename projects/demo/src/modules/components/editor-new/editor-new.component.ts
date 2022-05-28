@@ -68,6 +68,24 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/3/index.less'),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
+        'image-preview/image-preview.component.ts': import(
+            '!!raw-loader!./examples/4/image-preview/image-preview.component.ts'
+        ),
+        'image-preview/image-preview.module.ts': import(
+            '!!raw-loader!./examples/4/image-preview/image-preview.module.ts'
+        ),
+        'image-preview/image-preview.style.less': import(
+            '!!raw-loader!./examples/4/image-preview/image-preview.style.less'
+        ),
+        'image-preview.template.html': import(
+            '!!raw-loader!./examples/4/image-preview/image-preview.template.html'
+        ),
+    };
+
     readonly control = new FormControl();
 
     readonly toolsVariants: readonly TuiEditorTool[][] = [
