@@ -7,5 +7,5 @@ export function tryParseMarkdownCodeBlock(text: string = ''): string[] {
         .filter(({tag, type}) => tag === 'code' && type === 'fence')
         .map(({content}) => content);
 
-    return result.length ? result : [text];
+    return result.length > 0 ? result : [text];
 }

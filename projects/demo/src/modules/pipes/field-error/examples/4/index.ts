@@ -73,7 +73,8 @@ export class TuiFieldErrorPipeExample4 {
     private getPhoneArrayValidator(): ValidatorFn {
         return ((array: FormArray): ValidationErrors | null =>
             array.controls.length < 2 ||
-            (!!array.controls.filter(item => item.errors).length && array.controls.length)
+            (array.controls.filter(item => item.errors).length > 0 &&
+                array.controls.length > 0)
                 ? {
                       length: new TuiValidationError(
                           'You should add at least 2 phone number',

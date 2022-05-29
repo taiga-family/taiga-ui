@@ -27,7 +27,7 @@ import {map} from 'rxjs/operators';
 })
 export class TuiRootComponent {
     readonly scrollbars$: Observable<boolean> =
-        this.dialogs.length && !this.isMobile
+        this.dialogs.length > 0 && !this.isMobile
             ? merge(...this.dialogs).pipe(map(({length}) => !length))
             : of(!this.isMobile);
 

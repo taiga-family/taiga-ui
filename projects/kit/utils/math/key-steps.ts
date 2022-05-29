@@ -44,5 +44,7 @@ export function tuiKeyStepValueToPercentage(
 }
 
 export function tuiCheckKeyStepsHaveMinMaxPercents(steps: TuiKeySteps): boolean {
-    return !steps.length || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100);
+    return (
+        steps.length === 0 || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100)
+    );
 }

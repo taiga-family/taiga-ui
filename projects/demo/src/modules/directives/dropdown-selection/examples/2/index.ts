@@ -40,7 +40,7 @@ export class TuiDropdownSelectionExample2 {
     ];
 
     get focused(): true | null {
-        return !!this.options.length || null;
+        return this.options.length > 0 || null;
     }
 
     predicate: TuiBooleanHandler<Range> = range =>

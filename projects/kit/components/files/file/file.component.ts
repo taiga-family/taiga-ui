@@ -84,7 +84,7 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return !!this.removed.observers.length;
+        return this.removed.observers.length > 0;
     }
 
     get icon(): string {

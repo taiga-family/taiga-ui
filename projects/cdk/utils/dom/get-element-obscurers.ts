@@ -32,7 +32,7 @@ export function getElementObscurers(element: Element): readonly Element[] | null
     ];
     const nonNull = elements.filter(isPresent);
 
-    if (!nonNull.length) {
+    if (nonNull.length === 0) {
         return nonNull;
     }
 

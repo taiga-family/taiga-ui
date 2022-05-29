@@ -178,7 +178,7 @@ export class TuiInputDateRangeComponent
     }
 
     get computedExampleText(): string {
-        return this.items.length ? this.textfieldExampleText.exampleText : '';
+        return this.items.length > 0 ? this.textfieldExampleText.exampleText : '';
     }
 
     get computedMask(): TextMaskConfig {

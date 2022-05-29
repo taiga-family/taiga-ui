@@ -26,7 +26,7 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
                     pairwise(),
                     filter(
                         ([first, second]) =>
-                            !!first.touches.length &&
+                            first.touches.length > 0 &&
                             first.touches[0].identifier ===
                                 second.changedTouches[0].identifier,
                     ),

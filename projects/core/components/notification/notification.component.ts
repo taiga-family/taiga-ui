@@ -55,6 +55,6 @@ export class TuiNotificationComponent {
 
     @HostBinding('class._has-close-button')
     get hasClose(): boolean {
-        return !!this.close.observers.length;
+        return this.close.observers.length > 0;
     }
 }

@@ -26,7 +26,7 @@ export class TuiSortByDirective<T> {
 
     @Output()
     readonly tuiSortByChange = this.table.sorterChange.pipe(
-        filter(() => !!this.sortables.length),
+        filter(() => this.sortables.length > 0),
         map(sorter => this.getKey(sorter)),
     );
 

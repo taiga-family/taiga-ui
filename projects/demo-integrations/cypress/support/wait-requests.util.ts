@@ -8,17 +8,19 @@ const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
 export const waitAllRequests = (alias: string): void => {
     getNotLoadedRequests(alias)
         .then(reqs => {
-            return reqs.length ? cy.wait(alias) : cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+            return reqs.length > 0
+                ? cy.wait(alias)
+                : cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
         })
         .then(() => getNotLoadedRequests(alias))
         .then(reqs => {
-            return reqs.length
+            return reqs.length > 0
                 ? waitAllRequests(alias)
                 : cy
                       .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
                       .then(() => getNotLoadedRequests(alias))
                       .then(reqs =>
-                          reqs.length ? waitAllRequests(alias) : Promise.resolve(),
+                          reqs.length > 0 ? waitAllRequests(alias) : Promise.resolve(),
                       );
         });
 };

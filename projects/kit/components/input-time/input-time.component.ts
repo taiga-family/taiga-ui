@@ -165,7 +165,7 @@ export class TuiInputTimeComponent
     }
 
     onValueChange(value: string): void {
-        this.open = !!this.items.length;
+        this.open = this.items.length > 0;
 
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
@@ -218,7 +218,7 @@ export class TuiInputTimeComponent
     }
 
     onArrowUp(event: Event): void {
-        if (this.items.length) {
+        if (this.items.length > 0) {
             return;
         }
 
@@ -226,7 +226,7 @@ export class TuiInputTimeComponent
     }
 
     onArrowDown(event: Event): void {
-        if (this.items.length) {
+        if (this.items.length > 0) {
             return;
         }
 

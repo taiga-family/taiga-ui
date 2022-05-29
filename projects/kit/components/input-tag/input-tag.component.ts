@@ -251,7 +251,7 @@ export class TuiInputTagComponent
     }
 
     get hasValue(): boolean {
-        return !!this.value.length || this.hasNativeValue;
+        return this.value.length > 0 || this.hasNativeValue;
     }
 
     get hasPlaceholder(): boolean {
@@ -345,7 +345,7 @@ export class TuiInputTagComponent
     }
 
     onFieldKeyDownBackspace(event: Event): void {
-        if (!this.labelOutside && !this.hasNativeValue && this.value.length) {
+        if (!this.labelOutside && !this.hasNativeValue && this.value.length > 0) {
             this.deleteLastEnabledItem();
         } else {
             this.onFieldKeyDownArrowLeft(event);
@@ -353,7 +353,7 @@ export class TuiInputTagComponent
     }
 
     onFieldKeyDownArrowLeft(event: Event): void {
-        if (!this.labelOutside || this.hasNativeValue || !this.value.length) {
+        if (!this.labelOutside || this.hasNativeValue || this.value.length === 0) {
             return;
         }
 

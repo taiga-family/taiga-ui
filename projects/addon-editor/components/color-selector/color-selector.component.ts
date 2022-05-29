@@ -247,7 +247,7 @@ export class TuiColorSelectorComponent {
         this.direction = gradient.side;
         this.currentStop = 0;
         this.stops = new Map(
-            gradient.stops.length
+            gradient.stops.length > 0
                 ? gradient.stops.map<[number, [number, number, number, number]]>(
                       ({color, position}) => [
                           parseFloat(position) / 100,

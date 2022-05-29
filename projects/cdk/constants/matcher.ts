@@ -37,5 +37,10 @@ export const TUI_DEFAULT_IDENTITY_MATCHER: TuiIdentityMatcher<unknown> = (item1,
     item1 === item2 || bothEmpty(item1, item2);
 
 function bothEmpty(item1: unknown, item2: unknown): boolean {
-    return Array.isArray(item1) && Array.isArray(item2) && !item1.length && !item2.length;
+    return (
+        Array.isArray(item1) &&
+        Array.isArray(item2) &&
+        item1.length === 0 &&
+        item2.length === 0
+    );
 }

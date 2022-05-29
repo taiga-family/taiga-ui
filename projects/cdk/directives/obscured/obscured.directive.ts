@@ -41,7 +41,7 @@ export class TuiObscuredDirective {
                 obscuredBy =>
                     !!obscuredBy &&
                     (!activeZone ||
-                        !obscuredBy.length ||
+                        obscuredBy.length === 0 ||
                         obscuredBy.every(element => !activeZone.contains(element))),
             ),
         );

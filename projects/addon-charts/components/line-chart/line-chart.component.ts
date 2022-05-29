@@ -127,7 +127,7 @@ export class TuiLineChartComponent {
     }
 
     get fillD(): string {
-        return this.value.length
+        return this.value.length > 0
             ? `${this.d}V ${this.y} H ${this.value[0][0]} V ${this.value[0][1]}`
             : this.d;
     }

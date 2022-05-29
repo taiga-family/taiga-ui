@@ -63,7 +63,7 @@ export class TuiTreeItemComponent implements DoCheck {
 
     @HostBinding('class._expandable')
     get isExpandable(): boolean {
-        return !!this.nested.length;
+        return this.nested.length > 0;
     }
 
     get isExpanded(): boolean {

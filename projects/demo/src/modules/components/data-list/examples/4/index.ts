@@ -49,7 +49,7 @@ export class TuiDataListExample4 {
 
     readonly valueContent: TuiStringHandler<TuiContextWithImplicit<readonly string[]>> =
         ({$implicit}) => {
-            if (!$implicit.length) {
+            if ($implicit.length === 0) {
                 return 'All';
             }
 

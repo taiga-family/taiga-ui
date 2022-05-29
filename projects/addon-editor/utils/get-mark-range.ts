@@ -8,8 +8,8 @@ function hasAttributes(
     const keys = Object.keys(attributes);
 
     return (
-        !keys.length ||
-        !!keys.filter(key => attributes[key] === markAttributes[key]).length
+        keys.length === 0 ||
+        keys.filter(key => attributes[key] === markAttributes[key]).length > 0
     );
 }
 

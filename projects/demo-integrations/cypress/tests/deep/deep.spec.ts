@@ -87,7 +87,7 @@ describe('Deep', () => {
 
             cy.get('table.t-table')
                 .then($table =>
-                    $table.find('tui-toggle').length
+                    $table.find('tui-toggle').length > 0
                         ? cy.get('table.t-table tui-toggle')
                         : [],
                 )

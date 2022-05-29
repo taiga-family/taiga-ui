@@ -50,7 +50,7 @@ export class TuiLineDaysChartComponent {
     @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
-        if (!value.length) {
+        if (value.length === 0) {
             this.value = [];
 
             return;
@@ -109,7 +109,7 @@ export class TuiLineDaysChartComponent {
     ) {}
 
     get months(): ReadonlyArray<readonly TuiPoint[]> {
-        return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
+        return this.value.length > 0 ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
 
     get firstWidth(): number {

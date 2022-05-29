@@ -47,7 +47,7 @@ export class TuiDocPageComponent {
     ) {}
 
     get showSeeAlso(): boolean {
-        return !!this.seeAlso.length && this.activeItemIndex === 0;
+        return this.seeAlso.length > 0 && this.activeItemIndex === 0;
     }
 
     getRouterLink(tab: string = ''): string {

@@ -178,7 +178,7 @@ export class TuiInputFileComponent
     }
 
     get hasFiles(): boolean {
-        return !!this.rejectedFiles.length || !!this.arrayValue.length;
+        return this.rejectedFiles.length > 0 || this.arrayValue.length > 0;
     }
 
     onHovered(hovered: boolean): void {

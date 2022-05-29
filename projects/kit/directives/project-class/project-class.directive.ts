@@ -17,7 +17,7 @@ export class TuiProjectClassDirective implements AfterViewChecked {
     ) {}
 
     ngAfterViewChecked(): void {
-        if (!this.classNames.length) {
+        if (this.classNames.length === 0) {
             return;
         }
 

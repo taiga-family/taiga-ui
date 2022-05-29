@@ -84,16 +84,16 @@ export class TuiAxesComponent {
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
     get hasXLabels(): boolean {
-        return !!this.axisXLabels.length;
+        return this.axisXLabels.length > 0;
     }
 
     get hasYLabels(): boolean {
-        return (!!this.axisYLabels.length && !this.axisYInset) || !!this.axisYName;
+        return (this.axisYLabels.length > 0 && !this.axisYInset) || !!this.axisYName;
     }
 
     get hasYSecondaryLabels(): boolean {
         return (
-            (!!this.axisYSecondaryLabels.length && !this.axisYSecondaryInset) ||
+            (this.axisYSecondaryLabels.length > 0 && !this.axisYSecondaryInset) ||
             !!this.axisYSecondaryName
         );
     }

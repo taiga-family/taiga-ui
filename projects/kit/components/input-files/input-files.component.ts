@@ -260,7 +260,7 @@ export class TuiInputFilesComponent
             file => !tooBigFiles.includes(file) && !wrongFormatFiles.includes(file),
         );
 
-        if (tooBigFiles.length || wrongFormatFiles.length) {
+        if (tooBigFiles.length > 0 || wrongFormatFiles.length > 0) {
             this.rejectFiles([
                 ...tooBigFiles.map(file => ({
                     name: file.name,
