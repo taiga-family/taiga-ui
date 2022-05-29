@@ -1,6 +1,6 @@
 <tui-scroll-controls
-    *ngIf="scrollbars$ | async"
     class="scrollbar"
+    [hidden]="!(scrollbars$ | async)"
 ></tui-scroll-controls>
 <tui-svg-defs-host></tui-svg-defs-host>
 <tui-dropdown-host>

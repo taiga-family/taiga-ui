@@ -20,6 +20,7 @@ export * from './option-content';
 export * from './ordered-short-week-days';
 export * from './sanitizer';
 export * from './scroll-ref';
+export * from './scrollbars-options';
 export * from './svg-content-processor';
 export * from './svg-src-processor';
 export * from './textfield-appearance';

@@ -1,4 +1,4 @@
-<tui-scroll-controls *ngIf="showScrollbars"></tui-scroll-controls>
+<tui-scroll-controls [hidden]="!showScrollbars"></tui-scroll-controls>
 <div class="content">
     <ng-content></ng-content>
 </div>
