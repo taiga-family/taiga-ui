@@ -3,7 +3,6 @@ export * from './animations-duration';
 export * from './assert-enabled';
 export * from './data-list-accessor';
 export * from './data-list-host';
-export * from './disable-custom-scrollbar';
 export * from './document-or-shadow-root';
 export * from './dropdown-directive';
 export * from './element-ref';
