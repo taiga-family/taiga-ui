@@ -296,4 +296,12 @@ export class TuiTiptapEditorService extends TuiEditor {
     enter(): void {
         this.editor.commands.enter();
     }
+
+    setDetails(): void {
+        this.editor.commands.setDetails();
+    }
+
+    removeDetails(): void {
+        this.editor.commands.removeDetails();
+    }
 }

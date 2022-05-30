@@ -9,6 +9,8 @@
 // @ts-ignore
 import type {BackgroundColor, FontColor} from '@taiga-ui/addon-editor/extensions';
 // @ts-ignore
+import type {TuiDetails} from '@taiga-ui/addon-editor/extensions/details';
+// @ts-ignore
 import type {Image} from '@tiptap/extension-image';
 // @ts-ignore
 import type Link from '@tiptap/extension-link';

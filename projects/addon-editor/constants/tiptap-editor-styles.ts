@@ -195,4 +195,75 @@ export const tiptapEditorStyles = `
     display: inline-block;
     word-break: break-word;
 }
+
+.tui-editor-socket details {
+  width: 100%;
+  border: 1px solid var(--tui-base-04);
+  border-radius: var(--tui-radius-l);
+}
+
+.tui-editor-socket summary {
+   display: flex;
+   align-items: center;
+   min-height: 3.5rem;
+   width: 100%;
+   padding: 0 1.25rem;
+   box-sizing: border-box;
+   border-radius: var(--tui-radius-l);
+}
+
+.tui-editor-socket summary::-webkit-details-marker {
+  display: none;
+}
+
+.tui-editor-socket details[open] summary {
+   border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+}
+
+.tui-editor-socket div[data-type='details-content'] {
+  padding: 1.25rem;
+  min-height: 3rem;
+  border: 1px solid var(--tui-base-04);
+  border-width: 1px 0 0 0;
+}
+
+.tui-editor-socket .details-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.tui-editor-socket .details-arrow {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.25rem;
+  height: 0.575rem;
+  width: 0.575rem;
+  border: 1px solid var(--tui-base-06);
+  border-width: 0px 2px 2px 0;
+  transform: rotate(45deg);
+  transition: var(--tui-duration, 0.3s);
+  appearance: none;
+  box-sizing: border-box;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.tui-editor-socket .details-wrapper_rendered .details-arrow {
+  pointer-events: none;
+}
+
+.tui-editor-socket .details-wrapper_rendered summary {
+  transition: transform var(--tui-duration, 0.3s);
+  cursor: pointer;
+}
+
+.tui-editor-socket .details-wrapper_rendered summary:hover {
+  background: var(--tui-base-02);
+}
+
+.tui-editor-socket details[open] + .details-arrow {
+   transform: rotate(225deg);
+   top: 1.75rem;
+}
 `;

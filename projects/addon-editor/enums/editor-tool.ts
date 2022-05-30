@@ -23,4 +23,5 @@ export enum TuiEditorTool {
     MergeCells = 'mergeCells',
     SplitCells = 'splitCells',
     RowsColumnsManaging = 'rowsColumnsManaging',
+    Details = 'details',
 }

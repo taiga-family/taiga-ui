@@ -40,6 +40,8 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         splitCells: 'Split cells',
         rowsColumnsManaging: 'Managing rows and columns',
         cellColor: 'Cell color',
+        setDetails: 'Details',
+        removeDetails: 'Remove details',
     },
     editorTableCommands: [
         ['Insert column before', 'Insert column after'],

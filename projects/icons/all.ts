@@ -537,6 +537,12 @@ const tuiIconSoundOff =
 const tuiIconSoundOffLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconSoundOffLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path d="M11 5 6 9H2v6h4l5 4V5zm12 4-6 6m0-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
+const tuiIconSpoilerDeleteLarge =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"><g id="tuiIconSpoilerDeleteLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 4c-.5 0-1 .5-1 1v1.313a1 1 0 0 1-2 0V5c0-1.624 1.376-3 3-3h1.313a1 1 0 0 1 0 2H5Zm4.688-1a1 1 0 0 1 1-1h2.624a1 1 0 1 1 0 2h-2.624a1 1 0 0 1-1-1ZM3 9.688a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1Zm18 0a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1ZM9.687 21a1 1 0 0 1 1-1h2.626a1 1 0 1 1 0 2h-2.626a1 1 0 0 1-1-1ZM20 5v1.313a1 1 0 1 0 2 0V5c0-1.624-1.376-3-3-3h-1.313a1 1 0 1 0 0 2H19c.5 0 1 .5 1 1Zm0 12.688V19c0 .5-.5 1-1 1h-1.313a1 1 0 1 0 0 2H19c1.624 0 3-1.376 3-3v-1.313a1 1 0 1 0-2 0ZM4 19v-1.313a1 1 0 1 0-2 0V19c0 1.624 1.376 3 3 3h1.313a1 1 0 1 0 0-2H5c-.5 0-1-.5-1-1ZM8.293 8.293a1 1 0 0 1 1.414 0L12 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 0-1.414Z" fill="currentColor"/></svg></svg></svg></g></svg>';
+
+const tuiIconSpoilerLarge =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"><g id="tuiIconSpoilerLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H5ZM4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5Zm5.707 5.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L12 12.586l-2.293-2.293Z" fill="currentColor"/></svg></svg></svg></g></svg>';
+
 const tuiIconStar =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconStar" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path d="m8 1.333 2.06 4.174 4.607.673-3.334 3.247.787 4.587L8 11.847l-4.12 2.167.787-4.587L1.333 6.18l4.607-.673L8 1.334z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
@@ -842,6 +848,8 @@ export {
     tuiIconSoundLarge,
     tuiIconSoundOff,
     tuiIconSoundOffLarge,
+    tuiIconSpoilerDeleteLarge,
+    tuiIconSpoilerLarge,
     tuiIconStar,
     tuiIconStarFilled,
     tuiIconStarFilledLarge,

@@ -149,6 +149,8 @@ export type LanguageEditor = {
         splitCells: string;
         rowsColumnsManaging: string;
         cellColor: string;
+        setDetails: string;
+        removeDetails: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];

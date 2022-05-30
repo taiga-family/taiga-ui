@@ -319,6 +319,20 @@
         ></button>
     </div>
     <div
+        *ngIf="enabled(TuiEditorTool.Details)"
+        class="t-block"
+    >
+        <tui-details
+            tuiToolbarTool
+            class="t-tool t-tool_margin"
+        ></tui-details>
+
+        <tui-details-remove
+            tuiToolbarTool
+            class="t-tool t-tool_margin"
+        ></tui-details-remove>
+    </div>
+    <div
         *ngIf="enabled(TuiEditorTool.Table)"
         class="t-block"
     >
