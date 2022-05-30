@@ -7,6 +7,7 @@ import {renameTypes} from './steps/rename-types';
 import {replaceConsts} from './steps/replace-const';
 import {replaceDeepImports} from './steps/replace-deep-import';
 import {showWarnings} from './steps/show-warnings';
+import {replaceServices} from './steps/replace-services';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -18,6 +19,7 @@ export function updateToV3(_: Schema): Rule {
         replaceEnums();
         renameTypes();
         replaceConsts();
+        replaceServices();
         showWarnings(context);
 
         saveActiveProject();
