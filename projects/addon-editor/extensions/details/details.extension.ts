@@ -93,7 +93,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                     const currentNodeContent = state.selection.$head.parent.textContent;
 
                     return commands.insertContent(
-                        `<details data-opened="true"><summary></summary><div data-type="details-content"><p>${currentNodeContent}</p></div></details><p></p>`,
+                        `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${currentNodeContent}</p></div></details><p></p>`,
                     );
                 },
             removeDetails:
