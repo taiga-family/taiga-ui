@@ -35,14 +35,28 @@ jobs:
           git config user.name "tinkoff-bot"
           git config --global push.followTags true
           npm run exec -- ./scripts/release.ts --release-as ${{ github.event.inputs.mode }} --ci-mode
-          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
 
       - name: Generate Release Body
         id: generare_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
-          echo ::set-output name=release_body::$(cat RELEASE_BODY.md)
+
+      - id: get-pr-body # The content must be escaped to preserve newlines.
+        run: |
+          body=$(cat RELEASE_BODY.md)
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo ::set-output name=body::$body
+
+      - name: Render template
+        id: template
+        uses: chuhlomin/render-template@v1.4
+        with:
+          template: .github/PULL_REQUEST_RELEASE_TEMPLATE.md
+          vars: |
+            RELEASE_BODY: ${{ steps.get-pr-body.outputs.body }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -51,13 +65,7 @@ jobs:
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           branch: release/${{ steps.run-release.outputs.new_version }}
           title: 'Release/${{ steps.run-release.outputs.new_version }}'
-          body: |
-            ${{ steps.generare_body.outputs.release_body }}
-
-            > **DO NOT SQUASH OR REBASE ME**
-            > if user merges this PR via rebasing or using squash, it will cause lost of the tag.
-            > It happens because tag is already attached to the initial release commit SHA.
-            > If we use rebase or squash, the commit sha changes and already created tag points to not-existing commit.
+          body: ${{ steps.template.outputs.result }}
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
