@@ -2,13 +2,11 @@ import {
     Directive,
     Inject,
     Input,
-    NgZone,
     OnChanges,
     OnDestroy,
     TemplateRef,
     ViewContainerRef,
 } from '@angular/core';
-import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {from, of, Subject} from 'rxjs';
 import {concatMap, delay, takeUntil} from 'rxjs/operators';
 
@@ -25,7 +23,6 @@ export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     constructor(
         @Inject(ViewContainerRef) private readonly view: ViewContainerRef,
         @Inject(TemplateRef) private readonly template: TemplateRef<unknown>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {}
 
     ngOnChanges(): void {
@@ -41,7 +38,6 @@ export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     private createAsyncViewForNewNodes(): void {
         from(this.tuiForAsyncOf || [])
             .pipe(
-                tuiZonefree(this.ngZone),
                 concatMap(item => of(item).pipe(delay(this.tuiForAsyncTimeout))),
                 takeUntil(this.destroy$),
             )
