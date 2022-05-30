@@ -10,6 +10,26 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         moduleSpecifier: ['@taiga-ui/core'],
     },
     {
+        from: 'InputCountOptions',
+        to: 'TuiInputCountOptions',
+        moduleSpecifier: ['@taiga-ui/kit'],
+    },
+    {
+        from: 'InputPasswordOptions',
+        to: 'TuiInputPasswordOptions',
+        moduleSpecifier: ['@taiga-ui/kit'],
+    },
+    {
+        from: 'InputTimeOptions',
+        to: 'TuiInputTimeOptions',
+        moduleSpecifier: ['@taiga-ui/kit'],
+    },
+    {
+        from: 'ToggleOptions',
+        to: 'TuiToggleOptions',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
         from: 'RadioOptions',
         to: 'TuiRadioOptions',
         moduleSpecifier: ['@taiga-ui/kit'],
