@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.47.0](https://github.com/tinkoff/taiga-ui/compare/v2.46.0...v2.47.0) (2022-05-30)
+
+### Features
+
+- **addon-editor:** add details extension ([#1814](https://github.com/tinkoff/taiga-ui/issues/1814))
+  ([8de315c](https://github.com/tinkoff/taiga-ui/commit/8de315cf2810d0716109e00519ec5bca275b4178))
+- **addon-editor:** add preview action for images ([#1788](https://github.com/tinkoff/taiga-ui/issues/1788))
+  ([2022df8](https://github.com/tinkoff/taiga-ui/commit/2022df839ef0312b1a27e79f81b5b19deb8959a2))
+- **cdk:** add directive to render list with a delay ([#1795](https://github.com/tinkoff/taiga-ui/issues/1795))
+  ([8d3be82](https://github.com/tinkoff/taiga-ui/commit/8d3be829f27bb3f8af2e44fddea958d9f1a48aba))
+- **kit:** `Stepper` scroll internal scrollable area to active/focused step
+  ([#1812](https://github.com/tinkoff/taiga-ui/issues/1812))
+  ([f6717db](https://github.com/tinkoff/taiga-ui/commit/f6717dbee82b554e0418dda77ad7721c45de5f27))
+
+### Bug Fixes
+
+- **cdk:** handle navigator platform for detect iOS ([#1825](https://github.com/tinkoff/taiga-ui/issues/1825))
+  ([2dbe60c](https://github.com/tinkoff/taiga-ui/commit/2dbe60c93411e75e327be501e7d834bf1dbc44d5))
+- **core:** `DataList` fix padding around separator
+  ([a107b8e](https://github.com/tinkoff/taiga-ui/commit/a107b8e7c8b3fd2fdf84bcd90989e98c6127b578))
+- **core:** `DataList` missing paddings inside `Option` (multiline text problem)
+  ([#1820](https://github.com/tinkoff/taiga-ui/issues/1820))
+  ([e206921](https://github.com/tinkoff/taiga-ui/commit/e20692102f325ab7e33e0fa22b5a8c9549f28cff))
+- **kit:** `InputRange` problem with range interactions on mobile devices
+  ([#1811](https://github.com/tinkoff/taiga-ui/issues/1811))
+  ([e49c1ae](https://github.com/tinkoff/taiga-ui/commit/e49c1aeef17c64b496b4b614cf535ec52608ba1a))
+- **kit:** `InputSlider` changes focused `InputNumber`'s value on slider's interactions
+  ([#1807](https://github.com/tinkoff/taiga-ui/issues/1807))
+  ([3f94990](https://github.com/tinkoff/taiga-ui/commit/3f9499016ffb3a51ab3b2912cab9972ef8ba9e0d))
+- **kit:** `Slider` blinking cursor in Firefox ([#1805](https://github.com/tinkoff/taiga-ui/issues/1805))
+  ([c52cf47](https://github.com/tinkoff/taiga-ui/commit/c52cf4720c2b167006e2eb4e41a20efe71fc7912))
+
 ## [2.46.0](https://github.com/tinkoff/taiga-ui/compare/v2.45.0...v2.46.0) (2022-05-23)
 
 ### Features
