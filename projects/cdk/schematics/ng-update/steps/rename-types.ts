@@ -21,15 +21,9 @@ function renameType(
 
         if (Node.isImportSpecifier(parent) && to) {
             renameImport(parent, to, from);
-            return;
-        }
-
-        if (Node.isImportSpecifier(parent) && !to) {
+        } else if (Node.isImportSpecifier(parent) && !to) {
             removeImport(parent);
-            return;
-        }
-
-        if (Node.isTypeReferenceNode(parent)) {
+        } else if (Node.isTypeReferenceNode(parent)) {
             parent.replaceWithText(to || 'any');
         }
     });
