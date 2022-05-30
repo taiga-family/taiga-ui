@@ -1,6 +1,6 @@
 interface TypeToRename {
     readonly from: string;
-    readonly to: string;
+    readonly to?: string;
     readonly moduleSpecifier?: string | string[];
 }
 export const TYPES_TO_RENAME: readonly TypeToRename[] = [
@@ -38,5 +38,11 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         from: 'CodeEditor',
         to: 'TuiCodeEditor',
         moduleSpecifier: ['@taiga-ui/addon-doc'],
+    },
+    {
+        from: 'WithDateMaskPipeConfig',
+    },
+    {
+        from: 'TuiBreadCrumbsItem',
     },
 ];

@@ -15,14 +15,14 @@ const collectionPath = join(__dirname, '../../migration.json');
 const BEFORE = `
 import { Component } from '@angular/core';
 import { InputCountOptions } from '@taiga-ui/kit/components';
-import { ButtonOptions, some, InputCountOptions } from '@taiga-ui/core/types';
+import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, RadioOptions } from '@taiga-ui/kit';
 import { ToggleOptions } from '@taiga-ui/cdk';
-
 const options: ButtonOptions = {};
 const inputCountOptions: InputCountOptions = {};
 const passwordOptions = {} as InputPasswordOptions;
+const config: WithDateMaskPipeConfig = {}
 
 @Component({
    templateUrl: './app.template.html',
@@ -32,19 +32,15 @@ const passwordOptions = {} as InputPasswordOptions;
 })
 export class AppComponent {
    some: ButtonOptions = {};
-
    doSomething(options: InputCountOptions) {
       console.log(options.step);
    }
-
    get passwordOptions(): InputPasswordOptions {
       return {};
    }
-
    get radioOptions() {
       return {size: 'l'} as RadioOptions;
    }
-
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: InputTimeOptions) {}
 }
 `;
@@ -56,10 +52,10 @@ import { TuiButtonOptions, some, InputCountOptions } from '@taiga-ui/core';
 import { TuiInputPasswordOptions } from '@taiga-ui/kit';
 import { TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions, TuiRadioOptions } from '@taiga-ui/kit';
 import { TuiToggleOptions } from '@taiga-ui/cdk';
-
 const options: TuiButtonOptions = {};
 const inputCountOptions: TuiInputCountOptions = {};
 const passwordOptions = {} as TuiInputPasswordOptions;
+const config: any = {}
 
 @Component({
    templateUrl: './app.template.html',
@@ -69,19 +65,15 @@ const passwordOptions = {} as TuiInputPasswordOptions;
 })
 export class AppComponent {
    some: TuiButtonOptions = {};
-
    doSomething(options: TuiInputCountOptions) {
       console.log(options.step);
    }
-
    get passwordOptions(): TuiInputPasswordOptions {
       return {};
    }
-
    get radioOptions() {
       return {size: 'l'} as TuiRadioOptions;
    }
-
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: TuiInputTimeOptions) {}
 }
 `;
