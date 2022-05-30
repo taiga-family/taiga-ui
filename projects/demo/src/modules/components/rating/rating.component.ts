@@ -1,13 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-rating',
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.template.less'],
     changeDetection,
+    encapsulation,
 })
 export class ExampleTuiRatingComponent {
     readonly exampleModule: RawLoaderContent = import(
@@ -37,13 +40,31 @@ export class ExampleTuiRatingComponent {
     control = new FormControl(5);
     colorVariants = ['var(--tui-accent)', '#faaf00', 'pink'];
     color = this.colorVariants[0];
-    iconNormalVariants = ['tuiIconStarLarge', 'tuiIconStar'];
+
+    iconNormalVariants = [
+        this.options.iconNormal,
+
+        // other icons work only in public demo
+        'tuiIconStarLarge',
+        'tuiIconStar',
+    ];
+
     iconNormal = this.iconNormalVariants[0];
-    iconFilledVariants = ['tuiIconStarFilledLarge', 'tuiIconStarFilled'];
+
+    iconFilledVariants = [
+        this.options.iconFilled,
+
+        // other icons work only in public demo
+        'tuiIconStarFilledLarge',
+        'tuiIconStarFilled',
+    ];
+
     iconFilled = this.iconFilledVariants[0];
     readOnly = false;
     min = 0;
     max = 10;
+
+    constructor(@Inject(TUI_RATING_OPTIONS) private readonly options: TuiRatingOptions) {}
 
     get disabled(): boolean {
         return this.control.disabled;
