@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1013],{tp0p:function(n,t,i){"use strict";i.r(t),t.default='<p i18n>\n    A token with a factory. It takes\n    <a\n        tuiLink\n        routerLink="/tokens/is-mobile"\n    >\n        TUI_IS_MOBILE\n    </a>\n    and if it is true detects iOS devices with a regex\n</p>\n'}}]);
