@@ -12,12 +12,10 @@ import {
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     AbstractTuiPortalHostComponent,
-    getClosestElement,
     getClosestFocusable,
     inRange,
     POLLING_TIME,
     px,
-    setNativeFocused,
     TuiActiveZoneDirective,
     tuiAssertIsHTMLElement,
     TuiDestroyService,
@@ -124,7 +122,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     @tuiPure
     private get inModal(): boolean {
         // @awful TODO: get rid of component tag name dependency
-        return !!getClosestElement(this.directive.host, 'tui-dialog-host');
+        return !!this.directive.host.closest('tui-dialog-host');
+    }
+
+    @tuiPure
+    private get inOption(): boolean {
+        // @awful TODO: get rid of component tag name dependency
+        return !!this.directive.host.closest('[tuiOption]');
     }
 
     private calculatePositionAndSize(): void {
@@ -256,6 +260,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const topAvailableHeight = directiveRect.top - offset;
         const bottomAvailableHeight = windowHeight - directiveRect.bottom - offset;
         const finalDirection = this.getFinalDirection(directiveRect);
+        const optionOffset = this.inOption ? DEFAULT_MARGIN * 2 : 0;
 
         this.prevDirectionIsTop = finalDirection === 'top';
 
@@ -265,13 +270,23 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             style.maxHeight = px(Math.min(boxHeightLimit, topAvailableHeight));
             style.top = 'auto';
             style.bottom = px(
-                hostRect.bottom - directiveRect.top - DEFAULT_MARGIN + offset,
+                hostRect.bottom -
+                    directiveRect.top -
+                    DEFAULT_MARGIN +
+                    offset -
+                    optionOffset,
             );
         } else {
             this.dropdownAnimation = this.animationTop;
 
             style.maxHeight = px(Math.min(boxHeightLimit, bottomAvailableHeight));
-            style.top = px(directiveRect.bottom - hostRect.top - DEFAULT_MARGIN + offset);
+            style.top = px(
+                directiveRect.bottom -
+                    hostRect.top -
+                    DEFAULT_MARGIN +
+                    offset -
+                    optionOffset,
+            );
             style.bottom = 'auto';
         }
     }
@@ -372,10 +387,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             focusable = getClosestFocusable(focusable, previous, root);
         }
 
-        if (focusable === null) {
-            return;
-        }
-
-        setNativeFocused(focusable);
+        focusable?.focus();
     }
 }
