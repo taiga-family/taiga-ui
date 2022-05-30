@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[569],{jWmq:function(n,o,e){"use strict";e.r(o),o.default='<form [formGroup]="testForm">\n    <tui-input-phone formControlName="testValue">Type phone number</tui-input-phone>\n</form>\n'}}]);

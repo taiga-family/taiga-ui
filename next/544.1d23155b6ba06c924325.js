@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[544],{ZqBR:function(n,o,e){"use strict";e.r(o),o.default='<form\n    class="b-form"\n    [formGroup]="testForm"\n>\n    <tui-input-number\n        decimal="not-zero"\n        formControlName="testValue"\n        [precision]="4"\n    >\n        Type a sum\n    </tui-input-number>\n</form>\n'}}]);

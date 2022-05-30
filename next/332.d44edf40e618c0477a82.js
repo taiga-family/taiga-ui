@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[332],{ZOIl:function(i,d,e){"use strict";e.r(d),d.default="<tui-carousel>\n    <div *tuiItem>Slide 1</div>\n    <div *tuiItem>Slide 2</div>\n    <div *tuiItem>Slide 3</div>\n</tui-carousel>\n"}}]);
