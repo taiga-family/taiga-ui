@@ -38,8 +38,8 @@ describe('Editor', () => {
         it('preview display of images', () => {
             cy.get('#preview-image')
                 .findByAutomationId('tui-doc-example')
-                .scrollIntoView()
                 .should('be.visible')
+                .scrollIntoView()
                 .as('wrapper');
 
             cy.get('@wrapper')
