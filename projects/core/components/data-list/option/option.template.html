@@ -1,7 +1,7 @@
 <span
     *ngIf="content; else base"
     polymorpheus-outlet
-    class="content"
+    class="t-content"
     [content]="content"
     [context]="{$implicit: base}"
 ></span>
@@ -10,6 +10,6 @@
     <tui-svg
         *ngIf="dropdown"
         src="tuiIconChevronRight"
-        class="arrow"
+        class="t-arrow"
     ></tui-svg>
 </ng-template>

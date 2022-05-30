@@ -1,17 +1,17 @@
 <div
     tabindex="0"
-    class="trap"
+    class="t-trap"
     (focusin)="onFocus($event, true)"
 ></div>
 <ng-content></ng-content>
 <div
     *ngIf="empty$ | async"
     polymorpheus-outlet
-    class="empty"
+    class="t-empty"
     [content]="emptyContent || (defaultEmptyContent$ | async)"
 ></div>
 <div
     tabindex="0"
-    class="trap"
+    class="t-trap"
     (focusin)="onFocus($event, false)"
 ></div>
