@@ -20,14 +20,10 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: |
-          npm run build:demo
-          npm run build:demo:next
+      - run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
 
-      - name: Debug output
-        run: ls -la dist/demo/browser
-
-      - name: Deploy
+      - name: Deploy # only from release branch
+        if: ${{ contains(github.head_ref, 'release/') }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages

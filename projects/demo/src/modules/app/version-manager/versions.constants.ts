@@ -14,4 +14,8 @@ export const TAIGA_VERSIONS_META: readonly TaigaVersionMeta[] = [
         label: `latest (v${VERSION})`,
         baseHref: '',
     },
+    {
+        label: 'v1',
+        baseHref: 'v1',
+    },
 ];
