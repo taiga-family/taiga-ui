@@ -26,6 +26,16 @@ import {delay} from 'rxjs/operators';
 
 import {TuiStepComponent} from './step/step.component';
 
+const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
+    block: 'nearest',
+    inline: 'center',
+};
+
+const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
+    block: 'center',
+    inline: 'nearest',
+};
+
 @Component({
     selector: 'tui-stepper, nav[tuiStepper]',
     templateUrl: './stepper.template.html',
@@ -113,15 +123,6 @@ export class TuiStepperComponent {
     }
 
     private scrollIntoView(targetStepIndex: number): void {
-        const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
-            block: 'nearest',
-            inline: 'center',
-        };
-        const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
-            block: 'center',
-            inline: 'nearest',
-        };
-
         this.getNativeElements(this.steps)[targetStepIndex].scrollIntoView(
             this.orientation === 'vertical'
                 ? ONLY_VERTICAL_SCROLL

@@ -4,28 +4,28 @@ import {resolve} from 'path';
 import {getValueByFlag} from './shared/argv.utils';
 
 (function main(): void {
-    const DEMO_PATH = resolve(getValueByFlag('--path', './dist/demo/browser'));
+    const demoPath = resolve(getValueByFlag('--path', './dist/demo/browser'));
 
-    const LOCATION = getValueByFlag('--location', 'next')
+    const location = getValueByFlag('--location', 'next')
         .split(',')
         .map(val => val.trim());
 
-    const PATHS = LOCATION.reduce(
-        (result: string[], location: string) => result.concat(`${DEMO_PATH}/${location}`),
-        [DEMO_PATH],
+    const pathToDirectories = location.reduce(
+        (result: string[], location: string) => result.concat(`${demoPath}/${location}`),
+        [demoPath],
     );
 
-    console.info('\x1b[32m%s\x1b[0m', '[DEMO_PATH]:', DEMO_PATH);
-    console.info('\x1b[32m%s\x1b[0m', '[LOCATION]:', LOCATION);
-    console.info('\x1b[32m%s\x1b[0m', '[PATHS]:', PATHS);
+    console.info('\x1b[32m%s\x1b[0m', '[DEMO_PATH]:', demoPath);
+    console.info('\x1b[32m%s\x1b[0m', '[LOCATION]:', location);
+    console.info('\x1b[32m%s\x1b[0m', '[PATHS]:', pathToDirectories);
 
     /**
      * @example:
      * const baseUrls = [ "next", "v2", "v1" ];
      */
-    const SMOKER_BALANCER = `
+    const smokerBalancer = `
 <script>
-    const baseUrls = ${JSON.stringify(LOCATION)};
+    const baseUrls = ${JSON.stringify(location)};
 
     if (!localStorage.getItem('env')) {
         for (const url of baseUrls) {
@@ -40,10 +40,10 @@ import {getValueByFlag} from './shared/argv.utils';
     }
 </script>`;
 
-    console.info('\x1b[35m%s\x1b[0m', `[SMOKER_BALANCER]: \n ${SMOKER_BALANCER}`);
+    console.info('\x1b[35m%s\x1b[0m', `[SMOKER_BALANCER]: \n ${smokerBalancer}`);
 
-    for (const path of PATHS) {
-        const INDEX_PATH = `${path}/index.html`;
+    for (const path of pathToDirectories) {
+        const indexPath = `${path}/index.html`;
 
         /**
          * @note:
@@ -51,13 +51,13 @@ import {getValueByFlag} from './shared/argv.utils';
          * server configuration files, so, no url rewriting.
          * But you can copy index.html and renaming it to 404.html will work.
          */
-        const NOT_FOUND_PATH = `${path}/404.html`;
+        const notFoundPath = `${path}/404.html`;
 
         try {
-            const body = readFileSync(INDEX_PATH).toString();
-            const processedBody = body.replace(`<head>`, `<head>${SMOKER_BALANCER}`);
+            const body = readFileSync(indexPath).toString();
+            const processedBody = body.replace(`<head>`, `<head>${smokerBalancer}`);
 
-            writeFileSync(NOT_FOUND_PATH, processedBody);
+            writeFileSync(notFoundPath, processedBody);
         } catch (err) {
             console.info('\x1b[35m%s\x1b[0m', err.message);
         }

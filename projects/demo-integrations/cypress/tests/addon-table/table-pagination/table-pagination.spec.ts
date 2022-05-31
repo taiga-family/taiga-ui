@@ -16,11 +16,11 @@ describe('TablePagination', () => {
         });
 
         it('With very long option name', () => {
-            const LONG_NUMBER = 10000000000000000000;
+            const longNumber = 10000000000000000000;
 
             cy.tuiVisit(
                 encodeURI(
-                    `/components/table-pagination/API?items=[0, ${LONG_NUMBER}]&size=${LONG_NUMBER}&total=${LONG_NUMBER}&page=0`,
+                    `/components/table-pagination/API?items=[0, ${longNumber}]&size=${longNumber}&total=${longNumber}&page=0`,
                 ),
             );
             initializeAliases('#demoContent');

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
     BaseHarnessFilters,
     ComponentHarness,
@@ -6,8 +7,7 @@ import {
 } from '@angular/cdk/testing';
 
 /**
- * Decorator to add default static 'with' method.
- * Use in conjunction with {@link HarnessWith} mixin.
+ * @deprecated use {@link tuiWithPredicate}
  */
 export function withPredicate<
     T extends ComponentHarnessConstructor<ComponentHarness> & {
@@ -21,9 +21,13 @@ export function withPredicate<
 }
 
 /**
- * Mixin to extend {@link ComponentHarness} and add typed
- * static 'with' method. Use {@link withPredicate} decorator
- * to monkey-patch default static 'with' method.
+ * Decorator to add default static 'with' method.
+ * Use in conjunction with {@link HarnessWith} mixin.
+ */
+export const tuiWithPredicate = withPredicate;
+
+/**
+ * @deprecated use {@link tuiHarnessWith}
  */
 export function HarnessWith<T>(
     hostSelector: string,
@@ -41,3 +45,10 @@ export function HarnessWith<T>(
         with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     };
 }
+
+/**
+ * Mixin to extend {@link ComponentHarness} and add typed
+ * static 'with' method. Use {@link withPredicate} decorator
+ * to monkey-patch default static 'with' method.
+ */
+export const tuiHarnessWith = HarnessWith;

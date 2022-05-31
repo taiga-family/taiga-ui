@@ -6,7 +6,7 @@ import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
 import {AbstractExampleTuiInteractive} from '../interactive';
 import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
-import {supportingDocumentationComponent} from './supporting-documentation-component';
+import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 @Component({
     selector: 'inherited-documentation',
@@ -34,23 +34,23 @@ export class InheritedDocumentationComponent {
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: supportingDocumentationComponent,
+        readonly documentedComponent: TuiSupportingDocumentationComponent,
     ) {}
 
     isTuiReactiveControl(
-        documentedComponent: supportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiControl {
         return documentedComponent instanceof AbstractExampleTuiControl;
     }
 
     isTuiInteractive(
-        documentedComponent: supportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiInteractive {
         return documentedComponent instanceof AbstractExampleTuiInteractive;
     }
 
     isTuiHint(
-        documentedComponent: supportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;
     }

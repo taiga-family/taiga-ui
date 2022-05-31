@@ -26,27 +26,28 @@ declare module '@tiptap/core' {
     }
 }
 
-export const createImageEditorExtension = (injector: Injector): Node => {
-    const IMAGE_EDITOR_PARSE_META = [{tag: 'img[data-type="image-editor"]'}];
-    const DEFAULT_IMAGE_ATTRS = {
-        src: {
-            default: '',
-            keepOnSplit: false,
-        },
-        width: {
-            default: 300,
-            keepOnSplit: false,
-        },
-        alt: {
-            default: '',
-            keepOnSplit: false,
-        },
-        title: {
-            default: '',
-            keepOnSplit: false,
-        },
-    };
+const IMAGE_EDITOR_PARSE_META = [{tag: 'img[data-type="image-editor"]'}];
 
+const DEFAULT_IMAGE_ATTRS = {
+    src: {
+        default: '',
+        keepOnSplit: false,
+    },
+    width: {
+        default: 300,
+        keepOnSplit: false,
+    },
+    alt: {
+        default: '',
+        keepOnSplit: false,
+    },
+    title: {
+        default: '',
+        keepOnSplit: false,
+    },
+};
+
+export const createImageEditorExtension = (injector: Injector): Node => {
     return Node.create({
         name: 'imageEditor',
         group: 'block',

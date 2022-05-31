@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
     isPresent,
     TuiFocusableElementAccessor,
@@ -13,6 +14,10 @@ export type ArrayElement<A> = A extends ReadonlyArray<infer T>
         : T
     : never;
 
+/**
+ * @deprecated
+ * TODO: 3.0 replace with {@link AbstractTuiFilterByInputBase}
+ */
 export abstract class TuiFilterByInputBase {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
 
@@ -76,3 +81,5 @@ export abstract class TuiFilterByInputBase {
         );
     }
 }
+
+export abstract class AbstractTuiFilterByInputBase extends TuiFilterByInputBase {}

@@ -130,22 +130,22 @@ describe('InputDateTime', () => {
     });
 
     it('keeps not finished time string if date was changed using calendar', async () => {
-        const TIME_STRING = '1';
+        const timeString = '1';
 
         await fixture.whenStable();
 
-        inputPO.sendText(`05.07.2021${TIME_STRING}`);
+        inputPO.sendText(`05.07.2021${timeString}`);
         mouseDownOnTextfield();
 
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`05.07.2021, ${TIME_STRING}`);
+        expect(inputPO.value).toBe(`05.07.2021, ${timeString}`);
         expect(getCalendar()).not.toBeFalsy();
         clickOnCellInsideCalendar(27);
 
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`27.07.2021, ${TIME_STRING}`);
+        expect(inputPO.value).toBe(`27.07.2021, ${timeString}`);
     });
 
     it('min day works', async () => {
@@ -227,36 +227,36 @@ describe('InputDateTime', () => {
     });
 
     it('keeps finished time string if date was changed using calendar', async () => {
-        const TIME = '18:00';
-        const TIME_RAW = TIME.replace(':', '');
+        const time = '18:00';
+        const timeRaw = time.replace(':', '');
 
         await fixture.whenStable();
 
-        inputPO.sendText(`14.07.2021${TIME_RAW}`);
+        inputPO.sendText(`14.07.2021${timeRaw}`);
         mouseDownOnTextfield();
 
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`14.07.2021, ${TIME}`);
+        expect(inputPO.value).toBe(`14.07.2021, ${time}`);
         expect(getCalendar()).not.toBeFalsy();
         clickOnCellInsideCalendar(10);
 
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`10.07.2021, ${TIME}`);
+        expect(inputPO.value).toBe(`10.07.2021, ${time}`);
     });
 
     it('changes time if max day was selected (via calendar) and time is more than max time now', async () => {
-        const MAX_DAY = TuiDay.normalizeParse('15.08.2021');
-        const MAX_TIME = TuiTime.fromString('16:20');
+        const maxDay = TuiDay.normalizeParse('15.08.2021');
+        const maxTime = TuiTime.fromString('16:20');
 
-        const maxDateString = MAX_DAY.toString();
-        const dayBeforeMaxString = MAX_DAY.append({day: -1}).toString();
+        const maxDateString = maxDay.toString();
+        const dayBeforeMaxString = maxDay.append({day: -1}).toString();
 
-        const maxTimeString = MAX_TIME.toString();
-        const timeAfterMaxString = MAX_TIME.shift({hours: 3}).toString();
+        const maxTimeString = maxTime.toString();
+        const timeAfterMaxString = maxTime.shift({hours: 3}).toString();
 
-        component.max = [MAX_DAY, MAX_TIME];
+        component.max = [maxDay, maxTime];
         fixture.detectChanges();
 
         await fixture.whenStable();
@@ -266,7 +266,7 @@ describe('InputDateTime', () => {
 
         await fixture.whenStable();
 
-        clickOnCellInsideCalendar(MAX_DAY.day);
+        clickOnCellInsideCalendar(maxDay.day);
 
         await fixture.whenStable();
 

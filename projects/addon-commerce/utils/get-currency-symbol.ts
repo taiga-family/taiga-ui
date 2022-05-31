@@ -17,8 +17,8 @@ export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null 
         case TuiCurrency.AustralianDollar:
         case TuiCurrencyCode.AustralianDollar:
             return 'A$';
-        case TuiCurrency.HongKong_dollar:
-        case TuiCurrencyCode.HongKong_dollar:
+        case TuiCurrency.HongKongDollar:
+        case TuiCurrencyCode.HongKongDollar:
             return 'HK$';
         case TuiCurrency.CanadianDollar:
         case TuiCurrencyCode.CanadianDollar:

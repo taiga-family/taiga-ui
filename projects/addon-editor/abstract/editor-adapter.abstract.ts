@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Directive} from '@angular/core';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
 
+/**
+ * @deprecated
+ * TODO: 3.0 replace with {@link AbstractTuiEditor}
+ */
 @Directive()
 export abstract class TuiEditor {
     abstract readonly isFocused: boolean;
@@ -72,3 +77,6 @@ export abstract class TuiEditor {
     abstract setDetails(): void;
     abstract removeDetails(): void;
 }
+
+@Directive()
+export abstract class AbstractTuiEditor extends TuiEditor {}

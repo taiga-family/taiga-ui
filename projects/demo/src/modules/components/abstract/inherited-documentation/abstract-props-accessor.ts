@@ -1,8 +1,8 @@
 import {InjectionToken} from '@angular/core';
 
-import {supportingDocumentationComponent} from './supporting-documentation-component';
+import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 export const ABSTRACT_PROPS_ACCESSOR =
-    new InjectionToken<supportingDocumentationComponent>(
+    new InjectionToken<TuiSupportingDocumentationComponent>(
         'Component extends AbstractExample class',
     );

@@ -1,9 +1,9 @@
-import {HarnessWith, withPredicate} from '@taiga-ui/testing/utils';
+import {tuiHarnessWith, tuiWithPredicate} from '@taiga-ui/testing/utils';
 
 import {TuiLoaderHarness} from '../loader/loader.harness';
 
-@withPredicate
-export class TuiButtonHarness extends HarnessWith<TuiButtonHarness>('[tuiButton]') {
+@tuiWithPredicate
+export class TuiButtonHarness extends tuiHarnessWith<TuiButtonHarness>('[tuiButton]') {
     private readonly loader = this.locatorForOptional(TuiLoaderHarness);
 
     async isLoading(): Promise<boolean> {

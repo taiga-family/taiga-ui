@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {clamp} from '@taiga-ui/cdk';
 import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 import {Node} from 'prosemirror-model';
@@ -25,10 +26,32 @@ declare module '@tiptap/core' {
 }
 
 export enum IndentProps {
+    Min = 0,
+    /**
+     * @deprecated:
+     * TODO: 3.0 replace with {@link Min}
+     */
     min = 0,
+
+    Max = 210,
+    /**
+     * @deprecated:
+     * TODO: 3.0 replace with {@link Max}
+     */
     max = 210,
 
+    More = 30,
+    /**
+     * @deprecated:
+     * TODO: 3.0 replace with {@link More}
+     */
     more = 30,
+
+    Less = -30,
+    /**
+     * @deprecated:
+     * TODO: 3.0 replace with {@link Less}
+     */
     less = -30,
 }
 
