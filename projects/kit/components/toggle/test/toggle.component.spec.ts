@@ -191,7 +191,7 @@ describe('Toggle', () => {
     function clickOnToggle(): void {
         const checkbox = pageObject.getByAutomationId(`${testContext.prefix}checkbox`);
 
-        checkbox!.nativeElement.click();
+        checkbox.nativeElement.click();
     }
 
     function checkIconVisibility(

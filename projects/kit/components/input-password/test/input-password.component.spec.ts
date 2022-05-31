@@ -79,7 +79,7 @@ describe('InputPassword', () => {
         it('When you click on it, the icon represents "Open eye"', () => {
             const icon = getIcon();
 
-            icon!.nativeElement.click();
+            icon.nativeElement.click();
 
             const iconSrc = getIconScr();
 
@@ -96,7 +96,7 @@ describe('InputPassword', () => {
 
             expect(iconSrc).toBe('tuiIconEyeClosed');
 
-            icon!.nativeElement.click();
+            icon.nativeElement.click();
 
             iconSrc = getIconScr();
 

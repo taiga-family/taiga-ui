@@ -336,7 +336,7 @@ export abstract class AbstractTuiSlider<T>
      * @param isFraction translation is carried out from fullness to value
      */
     private fractionValueKeyStepConverter(value: number, isFraction: boolean): number {
-        const steps = [[0, this.min]].concat(this.keySteps as TuiKeySteps, [
+        const steps = [[0, this.min]].concat(this.keySteps , [
             [100, this.max],
         ]);
 

@@ -71,7 +71,7 @@ describe('TuiDropdown directive', () => {
         testComponent.open = true;
         fixture.detectChanges();
 
-        expect(getDropdown()!.nativeElement.textContent!.trim()).toBe('Droppy down');
+        expect(getDropdown()!.nativeElement.textContent.trim()).toBe('Droppy down');
     });
 
     function getDropdown(): ElementRef<HTMLDivElement> | null {

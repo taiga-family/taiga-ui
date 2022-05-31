@@ -85,14 +85,14 @@ describe('TuiFieldErrorContentPipe', () => {
         it('shows validation error', fakeAsync(() => {
             showHint();
             fixture.detectChanges();
-            expect(getTooltip()!.textContent!.trim()).toBe(testError);
+            expect(getTooltip()!.textContent.trim()).toBe(testError);
         }));
 
         it('shows validation error (function error)', fakeAsync(() => {
             component.control.setValue(22);
             showHint();
             fixture.detectChanges();
-            expect(getTooltip()!.textContent!.trim()).toBe(`error ${max}`);
+            expect(getTooltip()!.textContent.trim()).toBe(`error ${max}`);
         }));
     });
 

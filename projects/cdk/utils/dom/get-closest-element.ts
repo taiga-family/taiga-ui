@@ -17,7 +17,7 @@ export function getClosestElement(element: Element, selector: string): Element |
             return element;
         }
 
-        (element as Element | null) = element.parentElement;
+        (element ) = element.parentElement;
     } while (element !== null);
 
     return null;

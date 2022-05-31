@@ -115,7 +115,7 @@ export class TuiInputTimeComponent
     get textMaskOptions(): TextMaskConfig {
         return this.calculateMask(
             this.mode,
-        ) as TuiTextMaskOptions as unknown as TextMaskConfig;
+        )  as unknown as TextMaskConfig;
     }
 
     get computedValue(): string {

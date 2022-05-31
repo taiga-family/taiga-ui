@@ -18,7 +18,7 @@ export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T
         return (
             isPresent(this.option.value) &&
             isPresent(this.control.value) &&
-            !!this.control.value.find((item: T) => this.matcher(item, this.option.value!))
+            !!this.control.value.find((item: T) => this.matcher(item, this.option.value))
         );
     }
 }

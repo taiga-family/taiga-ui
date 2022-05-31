@@ -67,7 +67,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent.trim()).toEqual('');
+            expect(currency.nativeElement.textContent.trim()).toEqual('');
         });
 
         it('if empty string is passed, currency symbol is not shown', () => {
@@ -78,7 +78,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent.trim()).toEqual('');
+            expect(currency.nativeElement.textContent.trim()).toEqual('');
         });
 
         it('words with currency code', () => {
@@ -89,7 +89,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent.trim()).toEqual('$');
+            expect(currency.nativeElement.textContent.trim()).toEqual('$');
         });
 
         it('works with currency name', () => {
@@ -100,7 +100,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent.trim()).toEqual('$');
+            expect(currency.nativeElement.textContent.trim()).toEqual('$');
         });
 
         it('works with custom currency', () => {
@@ -113,7 +113,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent.trim()).toEqual(customCurrency);
+            expect(currency.nativeElement.textContent.trim()).toEqual(customCurrency);
         });
     });
 
@@ -123,7 +123,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual('');
+            expect(fraction.nativeElement.textContent).toEqual('');
         });
 
         it('non zero decimals a padded with zeroes by default', () => {
@@ -134,7 +134,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual(',10');
+            expect(fraction.nativeElement.textContent).toEqual(',10');
         });
 
         it('decimals only show 2 digits', () => {
@@ -145,7 +145,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual(',12');
+            expect(fraction.nativeElement.textContent).toEqual(',12');
         });
 
         it('if ALWAYS is set, zero decimals are shown', () => {
@@ -156,7 +156,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual(',00');
+            expect(fraction.nativeElement.textContent).toEqual(',00');
         });
 
         it('if Never is set, non zero decimals are not shown', () => {
@@ -168,7 +168,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual('');
+            expect(fraction.nativeElement.textContent).toEqual('');
         });
 
         it('if precision = 4, shows 4 digits of decimal part', () => {
@@ -180,7 +180,7 @@ describe('Money', () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction!.nativeElement.textContent).toEqual(',1230');
+            expect(fraction.nativeElement.textContent).toEqual(',1230');
         });
     });
 
@@ -188,7 +188,7 @@ describe('Money', () => {
         it('by default plus is not shown', () => {
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('');
+            expect(sign.nativeElement.textContent).toEqual('');
         });
 
         it('by default minus is not shown', () => {
@@ -197,7 +197,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign.nativeElement.textContent).toEqual(CHAR_EN_DASH);
         });
 
         it('if set to ALWAYS, plus is shown', () => {
@@ -206,7 +206,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('+');
+            expect(sign.nativeElement.textContent).toEqual('+');
         });
 
         it('if set to ALWAYS, minus is shown', () => {
@@ -216,7 +216,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign.nativeElement.textContent).toEqual(CHAR_EN_DASH);
         });
 
         it('if set to Never, plus is not shown', () => {
@@ -225,7 +225,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('');
+            expect(sign.nativeElement.textContent).toEqual('');
         });
 
         it('if set to Never, minus is not shown', () => {
@@ -235,7 +235,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('');
+            expect(sign.nativeElement.textContent).toEqual('');
         });
 
         it('if set to FORCE_NEGATIVE, minus is shown for positive numbers', () => {
@@ -244,7 +244,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign.nativeElement.textContent).toEqual(CHAR_EN_DASH);
         });
 
         it('if set to FORCE_NEGATIVE, minus is shown for negative numbers', () => {
@@ -254,7 +254,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign.nativeElement.textContent).toEqual(CHAR_EN_DASH);
         });
 
         it('if set to FORCE_POSITIVE, plus is shown for positive numbers', () => {
@@ -263,7 +263,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('+');
+            expect(sign.nativeElement.textContent).toEqual('+');
         });
 
         it('if set to FORCE_POSITIVE, plus is shown for negative numbers', () => {
@@ -273,7 +273,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual('+');
+            expect(sign.nativeElement.textContent).toEqual('+');
         });
     });
 

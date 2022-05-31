@@ -46,6 +46,7 @@ module.exports = {
         ],
         '@typescript-eslint/no-base-to-string': 'error',
         '@typescript-eslint/ban-types': 'error',
+        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
         eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
         'unicorn/filename-case': [

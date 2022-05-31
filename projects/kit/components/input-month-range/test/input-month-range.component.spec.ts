@@ -47,14 +47,14 @@ describe('InputMonthRange', () => {
         it('returns empty string if no value', () => {
             testComponent.control.setValue(null);
 
-            expect(component.nativeFocusableElement!.value).toBe('');
+            expect(component.nativeFocusableElement.value).toBe('');
         });
 
         it('returns a half of stringified range if single month', () => {
             const testMonth = new TuiMonth(2020, 4);
             const testRange = new TuiMonthRange(testMonth, testMonth);
 
-            component.nativeFocusableElement!.focus();
+            component.nativeFocusableElement.focus();
             component.writeValue(testRange);
 
             expect(component.computeValue('May 2020', 'May 2020')).toBe(`May 2020 — `);
@@ -77,7 +77,7 @@ describe('InputMonthRange', () => {
             const testMonth = new TuiMonth(2020, 4);
             const testRange = new TuiMonthRange(testMonth, testMonth.append({month: 2}));
 
-            component.nativeFocusableElement!.focus();
+            component.nativeFocusableElement.focus();
             component.writeValue(testRange);
 
             expect(component.computeValue('May 2020', 'July 2020')).toBe(
@@ -103,8 +103,8 @@ describe('InputMonthRange', () => {
 
             component.onMonthClick(newMonth);
 
-            expect(component.value!.from.month).toBe(newMonth.month);
-            expect(component.value!.to.month).toBe(newMonth.month);
+            expect(component.value.from.month).toBe(newMonth.month);
+            expect(component.value.to.month).toBe(newMonth.month);
         });
 
         it('creates a new single month range if there is a range value', () => {
@@ -118,8 +118,8 @@ describe('InputMonthRange', () => {
 
             component.onMonthClick(newMonth);
 
-            expect(component.value!.from.month).toBe(newMonth.month);
-            expect(component.value!.to.month).toBe(newMonth.month);
+            expect(component.value.from.month).toBe(newMonth.month);
+            expect(component.value.to.month).toBe(newMonth.month);
         });
 
         it('update value and sort it if it can be a new range', () => {
@@ -129,8 +129,8 @@ describe('InputMonthRange', () => {
             component.onMonthClick(newMonthStart);
             component.onMonthClick(newMonthEnd);
 
-            expect(component.value!.from.month).toBe(newMonthStart.month);
-            expect(component.value!.to.month).toBe(newMonthEnd.month);
+            expect(component.value.from.month).toBe(newMonthStart.month);
+            expect(component.value.to.month).toBe(newMonthEnd.month);
         });
 
         it('empty value opens dropdown', () => {

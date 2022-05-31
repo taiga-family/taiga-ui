@@ -156,7 +156,7 @@ export class TuiInputExample4 {
     }
 
     get accounts(): Account[] {
-        return this.isUserSelected ? this.lastUser!.accounts : [];
+        return this.isUserSelected ? this.lastUser.accounts : [];
     }
 
     onSelected(user: User): void {

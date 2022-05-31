@@ -37,7 +37,7 @@ export function rollupSvgo({
                 const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
-                errorMessage = result.error as string;
+                errorMessage = result.error ;
             } catch (err) {
                 errorMessage = err.message;
             }

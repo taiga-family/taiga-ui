@@ -37,12 +37,12 @@ describe('DropdownHost', () => {
     });
 
     it('calculates clientRect', () => {
-        expect(testComponent.dropdownHost!.clientRect.top).toBeGreaterThanOrEqual(0);
+        expect(testComponent.dropdownHost.clientRect.top).toBeGreaterThanOrEqual(0);
     });
 
     it('calculates fixedPositionOffset', () => {
         expect(
-            testComponent.dropdownHost!.fixedPositionOffset().top,
+            testComponent.dropdownHost.fixedPositionOffset().top,
         ).toBeGreaterThanOrEqual(0);
     });
 });

@@ -143,7 +143,7 @@ describe('InputNumber', () => {
         await fixture.whenStable();
 
         fixture.detectChanges();
-        expect(getNativeInput()!.nativeElement!.value).toBe(
+        expect(getNativeInput()!.nativeElement.value).toBe(
             `12${CHAR_NO_BREAK_SPACE}345`,
         );
     });

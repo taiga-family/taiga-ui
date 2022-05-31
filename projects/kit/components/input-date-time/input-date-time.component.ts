@@ -146,7 +146,7 @@ export class TuiInputDateTimeComponent
             this.timeMode,
             this.dateFormat,
             this.dateSeparator,
-        ) as TuiTextMaskOptions as unknown as TextMaskConfig;
+        )  as unknown as TextMaskConfig;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

@@ -168,7 +168,7 @@ describe('TuiHostedDropdown', () => {
         });
 
         it('Down arrow on another button does not open the dropdown', () => {
-            testComponent.tuiButton.nativeFocusableElement!.focus();
+            testComponent.tuiButton.nativeFocusableElement.focus();
             dispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(0);
@@ -204,7 +204,7 @@ describe('TuiHostedDropdown', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
             dispatchOnActive('arrowDown', fixture);
-            testComponent.tuiButton.nativeFocusableElement!.focus();
+            testComponent.tuiButton.nativeFocusableElement.focus();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
@@ -247,14 +247,14 @@ describe('TuiHostedDropdown', () => {
         });
 
         it('Down arrow opens a dropdown', () => {
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement.focus();
             dispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(2);
         });
 
         it('Updating items brings focus to input', () => {
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement.focus();
             dispatchOnActive('arrowDown', fixture);
 
             testComponent.items = ['Item 3', 'Item 4'];
@@ -276,7 +276,7 @@ describe('TuiHostedDropdown', () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
 
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement.focus();
             dispatchOnActive('escape', fixture);
 
             expect(testComponent.escCatched).toBe(true);

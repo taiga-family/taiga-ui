@@ -56,6 +56,6 @@ describe('TuiFor directive', () => {
     });
 
     function text(): string {
-        return testComponent.elementRef.nativeElement.textContent!.trim();
+        return testComponent.elementRef.nativeElement.textContent.trim();
     }
 });

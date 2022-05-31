@@ -199,7 +199,7 @@ export class TuiInputDateComponent
     get computedMask(): TextMaskConfig {
         return (this.activeItem
             ? EMPTY_MASK
-            : this.textMaskOptions) as TuiTextMaskOptions as unknown as TextMaskConfig;
+            : this.textMaskOptions) as unknown as TextMaskConfig;
     }
 
     get activeItem(): TuiNamedDay | null {

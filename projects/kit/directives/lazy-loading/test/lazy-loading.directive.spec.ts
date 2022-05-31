@@ -55,5 +55,5 @@ describe('TuiLazyLoading directive', () => {
 });
 
 function getHtmlImage(): HTMLImageElement {
-    return document.querySelector('#image') as HTMLImageElement;
+    return document.querySelector('#image') ;
 }

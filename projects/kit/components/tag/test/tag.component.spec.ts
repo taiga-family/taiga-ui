@@ -53,7 +53,7 @@ describe('Tag', () => {
     }
 
     function getTagDiv(): Element {
-        return getTag().firstElementChild!;
+        return getTag().firstElementChild;
     }
 
     function getInput(): HTMLInputElement {

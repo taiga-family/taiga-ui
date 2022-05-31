@@ -184,7 +184,7 @@ export class TuiInputDateRangeComponent
     get computedMask(): TextMaskConfig {
         return (this.activePeriod
             ? EMPTY_MASK
-            : this.textMaskOptions) as TuiTextMaskOptions as unknown as TextMaskConfig;
+            : this.textMaskOptions) as unknown as TextMaskConfig;
     }
 
     get activePeriod(): TuiDayRangePeriod | null {

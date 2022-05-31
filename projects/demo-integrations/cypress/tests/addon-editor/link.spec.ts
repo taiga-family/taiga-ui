@@ -107,7 +107,7 @@ describe('Editing links in Editor', () => {
 
                 range?.selectNodeContents(el);
                 document?.getSelection()?.removeAllRanges();
-                document?.getSelection()?.addRange(range!);
+                document?.getSelection()?.addRange(range);
             })
             .trigger('mouseup', {force: true});
 

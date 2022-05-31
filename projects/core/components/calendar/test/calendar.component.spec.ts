@@ -75,7 +75,7 @@ describe('Calendar', () => {
     it('onPaginationYearClick changes year correctly', () => {
         component.onPaginationYearClick(new TuiYear(2002));
 
-        expect(component.year!.formattedYear).toBe('2002');
+        expect(component.year.formattedYear).toBe('2002');
     });
 
     it('onPickerYearClick sets year as null', () => {

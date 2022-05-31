@@ -143,7 +143,7 @@ describe('InputTime', () => {
 
         it('If the cursor is at position 0, then pressing UP increases the hour by 1', () => {
             inputPO.focus();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement.setSelectionRange(0, 0);
             inputPO.sendKeydown('ArrowUp');
 
             expect(inputPO.value).toBe('13:30');
@@ -151,7 +151,7 @@ describe('InputTime', () => {
 
         it('If the cursor is at position 4, then pressing UP increases the minute by 1', () => {
             inputPO.focus();
-            component.nativeFocusableElement!.setSelectionRange(4, 4);
+            component.nativeFocusableElement.setSelectionRange(4, 4);
             inputPO.sendKeydown('ArrowUp');
 
             expect(inputPO.value).toBe('12:31');
@@ -159,7 +159,7 @@ describe('InputTime', () => {
 
         it('If the cursor is at position 0, then pressing DOWN decreases the hour by 1', () => {
             inputPO.focus();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement.setSelectionRange(0, 0);
             inputPO.sendKeydown('ArrowDown');
 
             expect(inputPO.value).toBe('11:30');
@@ -167,7 +167,7 @@ describe('InputTime', () => {
 
         it('If the cursor is at position 4, then pressing DOWN decreases the minute by 1', () => {
             inputPO.focus();
-            component.nativeFocusableElement!.setSelectionRange(4, 4);
+            component.nativeFocusableElement.setSelectionRange(4, 4);
             inputPO.sendKeydown('ArrowDown');
 
             expect(inputPO.value).toBe('12:29');
@@ -176,7 +176,7 @@ describe('InputTime', () => {
         it('When readOnly is ignored', async () => {
             testComponent.readOnly = true;
             inputPO.focus();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement.setSelectionRange(0, 0);
             await fixture.whenStable();
 
             inputPO.sendKeydown('ArrowUp');

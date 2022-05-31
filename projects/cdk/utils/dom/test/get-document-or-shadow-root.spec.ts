@@ -5,7 +5,7 @@ describe('getDocumentOrShadowRoot', () => {
         const element = document.createElement('div');
 
         expect(getDocumentOrShadowRoot(element)).toEqual(
-            element.ownerDocument as Document,
+            element.ownerDocument ,
         );
     });
 

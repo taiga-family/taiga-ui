@@ -258,7 +258,7 @@ describe('InputCardGrouped', () => {
     }
 
     function getCard(): string {
-        return testComponent.component.nativeFocusableElement!.value;
+        return testComponent.component.nativeFocusableElement.value;
     }
 
     function expectCardOutlet(): boolean {
