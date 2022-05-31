@@ -12,26 +12,8 @@ import {join} from 'path';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
-describe('ng-update', () => {
-    let host: UnitTestTree;
-    let runner: SchematicTestRunner;
-
-    beforeEach(() => {
-        host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
-
-        setActiveProject(createProject(host));
-
-        createMainFiles();
-
-        saveActiveProject();
-    });
-
-    it('should rename types', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
-
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(
-            `import { getClosestFocusable } from "@taiga-ui/cdk";
+const AFTER = `import { TuiAlertModule } from "@taiga-ui/core";
+import { getClosestFocusable } from "@taiga-ui/cdk";
 import { Validators } from "@angular/forms";
 import {Component} from '@angular/core';
 import { tuiCreateAutoCorrectedDatePipe, tuiCreateDateMask, tuiCreateDateRangeMask } from '@taiga-ui/kit';
@@ -53,23 +35,21 @@ export class AppComponent {
             return;
         }
     }
-}`,
-        );
-    });
+}
 
-    afterEach(() => {
-        resetActiveProject();
-    });
-});
+@NgModule({
+    imports: [
+      TuiAlertModule
+    ],
+    declarations: [AppComponent],
+})
+export class TuiTestModule {}`;
 
-function createMainFiles(): void {
-    createSourceFile(
-        'test/app/app.component.ts',
-        `import {Component} from '@angular/core';
+const BEFORE = `import {Component} from '@angular/core';
 import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
 import { getClosestKeyboardFocusable } from '@taiga-ui/cdk';
-
+import { TuiNotificationsModule } from '@taiga-ui/core';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
@@ -88,8 +68,44 @@ export class AppComponent {
             return;
         }
     }
-}`,
-    );
+}
+
+@NgModule({
+    imports: [
+      TuiNotificationsModule
+    ],
+    declarations: [AppComponent],
+})
+export class TuiTestModule {}`;
+
+describe('ng-update', () => {
+    let host: UnitTestTree;
+    let runner: SchematicTestRunner;
+
+    beforeEach(() => {
+        host = new UnitTestTree(new HostTree());
+        runner = new SchematicTestRunner('schematics', collectionPath);
+
+        setActiveProject(createProject(host));
+
+        createMainFiles();
+
+        saveActiveProject();
+    });
+
+    it('should rename types', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
+    });
+
+    afterEach(() => {
+        resetActiveProject();
+    });
+});
+
+function createMainFiles(): void {
+    createSourceFile('test/app/app.component.ts', BEFORE);
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
 }

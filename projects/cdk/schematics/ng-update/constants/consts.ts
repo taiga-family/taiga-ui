@@ -52,4 +52,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {
+            name: 'TuiNotificationsModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiAlertModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
