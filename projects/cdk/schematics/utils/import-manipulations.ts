@@ -7,3 +7,11 @@ export function removeImport(specifier: ImportSpecifier): void {
         specifier.remove();
     }
 }
+
+export function renameImport(specifier: ImportSpecifier, to: string, from: string): void {
+    const namedImport = specifier
+        .getImportDeclaration()
+        .getNamedImports()
+        .find(specifier => specifier.getName() === from);
+    namedImport?.replaceWithText(to);
+}

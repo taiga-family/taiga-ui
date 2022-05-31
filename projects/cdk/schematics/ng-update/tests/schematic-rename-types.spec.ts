@@ -14,6 +14,11 @@ const collectionPath = join(__dirname, '../../migration.json');
 
 const BEFORE = `
 import { Component } from '@angular/core';
+import {
+    TuiNotificationOptions,
+    TuiNotificationOptionsWithData,
+    AnotherType,
+} from '@taiga-ui/core';
 import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
@@ -23,6 +28,8 @@ const options: ButtonOptions = {};
 const inputCountOptions: InputCountOptions = {};
 const passwordOptions = {} as InputPasswordOptions;
 const config: WithDateMaskPipeConfig = {}
+const notificationOptions: TuiNotificationOptions = {};
+const notificationOptionsWithData: TuiNotificationOptionsWithData<string> = {};
 
 @Component({
    templateUrl: './app.template.html',
@@ -47,6 +54,10 @@ export class AppComponent {
 
 const AFTER = `
 import { Component } from '@angular/core';
+import {
+    TuiAlertOptions,
+    AnotherType,
+} from '@taiga-ui/core';
 import { TuiInputCountOptions } from '@taiga-ui/kit';
 import { TuiButtonOptions, some, InputCountOptions } from '@taiga-ui/core';
 import { TuiInputPasswordOptions } from '@taiga-ui/kit';
@@ -56,6 +67,8 @@ const options: TuiButtonOptions = {};
 const inputCountOptions: TuiInputCountOptions = {};
 const passwordOptions = {} as TuiInputPasswordOptions;
 const config: any = {}
+const notificationOptions: TuiAlertOptions<any> = {};
+const notificationOptionsWithData: TuiAlertOptions<string> = {};
 
 @Component({
    templateUrl: './app.template.html',
