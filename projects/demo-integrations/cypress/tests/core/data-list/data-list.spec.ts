@@ -20,7 +20,7 @@ describe('DataList', () => {
 
     it('Submenu', () => {
         // 300ms - debounce time of DataListDropdownManager + 100ms for flaky-free test
-        const DATA_LIST_DEBOUNCE_WAIT = 400;
+        const dataListDebounce = 400;
 
         cy.get(`#submenu [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`)
             .scrollIntoView()
@@ -28,10 +28,10 @@ describe('DataList', () => {
             .click();
         cy.get('body')
             .type('{downarrow}'.repeat(2))
-            .wait(DATA_LIST_DEBOUNCE_WAIT)
+            .wait(dataListDebounce)
             .type('{rightarrow}')
             .type('{downarrow}'.repeat(3))
-            .wait(DATA_LIST_DEBOUNCE_WAIT)
+            .wait(dataListDebounce)
             .type('{rightarrow}')
             .type('{downarrow}'.repeat(2));
 

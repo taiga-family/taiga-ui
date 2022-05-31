@@ -10,7 +10,7 @@ interface TuiProjectFiles {
     styles: string;
 }
 
-export abstract class TuiStackblitzResourcesLoader {
+export abstract class AbstractTuiStackblitzResourcesLoader {
     static async getProjectFiles(): Promise<TuiProjectFiles> {
         const [
             configsContent,

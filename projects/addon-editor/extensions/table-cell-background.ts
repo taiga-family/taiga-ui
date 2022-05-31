@@ -3,7 +3,7 @@ import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         cellBackground: {
-            setCellBackground: (backgrund: string) => ReturnType;
+            setCellBackground: (background: string) => ReturnType;
             unsetCellBackground: () => ReturnType;
         };
     }

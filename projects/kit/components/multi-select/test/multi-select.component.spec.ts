@@ -36,7 +36,7 @@ describe('MultiSelect', () => {
             }
         }
 
-        const ITEMS = [
+        const items = [
             new User('Marsi', 'Barsi', '0'),
             new User('Water', 'Plea', '2'),
             new User('Alexander', 'Inkin', '3'),
@@ -62,9 +62,9 @@ describe('MultiSelect', () => {
             @ViewChild(TuiMultiSelectComponent, {static: true})
             component!: TuiMultiSelectComponent<User>;
 
-            items = ITEMS;
+            items = items;
 
-            control = new FormControl([ITEMS[0]]);
+            control = new FormControl([items[0]]);
 
             readOnly = false;
         }
@@ -215,7 +215,7 @@ describe('MultiSelect', () => {
                 document.activeElement.click();
                 document.activeElement.click();
 
-                expect(testComponent.control.value).toEqual([ITEMS[0]]);
+                expect(testComponent.control.value).toEqual([items[0]]);
             });
         });
     });
@@ -237,7 +237,7 @@ describe('MultiSelect', () => {
             }
         }
 
-        const ITEMS = [new User('Alexander', 'Inkin', '1')];
+        const items = [new User('Alexander', 'Inkin', '1')];
 
         @Component({
             template: `
@@ -259,9 +259,9 @@ describe('MultiSelect', () => {
             @ViewChild(TuiMultiSelectComponent, {static: true})
             component!: TuiMultiSelectComponent<User>;
 
-            items = ITEMS;
+            items = items;
 
-            control = new FormControl([ITEMS[0]]);
+            control = new FormControl([items[0]]);
 
             readOnly = false;
         }

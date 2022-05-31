@@ -21,12 +21,12 @@ describe('Range', () => {
         });
 
         describe('change selected range on click', () => {
-            const EXAMPLE_ID = '#base';
+            const exampleId = '#base';
 
             beforeEach(() => {
-                initializeBaseAliases(EXAMPLE_ID);
+                initializeBaseAliases(exampleId);
 
-                cy.get(EXAMPLE_ID).scrollIntoView();
+                cy.get(exampleId).scrollIntoView();
             });
 
             it('click on the beginning of the track changes only nearest (left) slider', () => {
@@ -34,7 +34,7 @@ describe('Range', () => {
                 cy.get('@leftSlider').should('have.value', 0);
                 cy.get('@rightSlider').should('have.value', 6);
 
-                cy.get(EXAMPLE_ID).matchImageSnapshot('01-range-click-checks-0-6');
+                cy.get(exampleId).matchImageSnapshot('01-range-click-checks-0-6');
             });
 
             it('click on the end of the track changes only nearest (right) slider', () => {
@@ -42,7 +42,7 @@ describe('Range', () => {
                 cy.get('@leftSlider').should('have.value', 4);
                 cy.get('@rightSlider').should('have.value', 10);
 
-                cy.get(EXAMPLE_ID).matchImageSnapshot('02-range-click-checks-4-10');
+                cy.get(exampleId).matchImageSnapshot('02-range-click-checks-4-10');
             });
 
             it('click between two thumbs triggers only nearest thumb', () => {
@@ -51,23 +51,23 @@ describe('Range', () => {
 
                 cy.get('@leftSlider').should('have.value', 1);
                 cy.get('@rightSlider').should('have.value', 10);
-                cy.get(EXAMPLE_ID).matchImageSnapshot('03-range-click-checks-1-10');
+                cy.get(exampleId).matchImageSnapshot('03-range-click-checks-1-10');
 
                 cy.get('@range').click('center');
                 cy.get('@leftSlider').should('have.value', 5);
                 cy.get('@rightSlider').should('have.value', 10);
-                cy.get(EXAMPLE_ID).matchImageSnapshot('03-range-click-checks-5-10');
+                cy.get(exampleId).matchImageSnapshot('03-range-click-checks-5-10');
             });
         });
 
         describe('keyboard interactions', () => {
             describe('basic range (from 0 to 1000 with 250 steps). Initial value [0, 250]', () => {
-                const EXAMPLE_ID = '#segments';
+                const exampleId = '#segments';
 
                 beforeEach(() => {
-                    initializeBaseAliases(EXAMPLE_ID);
+                    initializeBaseAliases(exampleId);
 
-                    cy.get(EXAMPLE_ID).scrollIntoView();
+                    cy.get(exampleId).scrollIntoView();
                 });
 
                 const checkValuesAfterPressing = (
@@ -77,7 +77,7 @@ describe('Range', () => {
                     cy.get('body').type(`{${key}}`);
                     cy.get('@leftSlider').should('have.value', leftSliderValue);
                     cy.get('@rightSlider').should('have.value', rightSliderValue);
-                    cy.get(`${EXAMPLE_ID} output`)
+                    cy.get(`${exampleId} output`)
                         .invoke('text')
                         .should(
                             'match',
@@ -163,12 +163,12 @@ describe('Range', () => {
             });
 
             describe('range with keySteps (from 0 to 1M) with 8 steps. Initial value [0, 100_000]', () => {
-                const EXAMPLE_ID = '#key-steps';
+                const exampleId = '#key-steps';
 
                 beforeEach(() => {
-                    initializeBaseAliases(EXAMPLE_ID);
+                    initializeBaseAliases(exampleId);
 
-                    cy.get(EXAMPLE_ID).scrollIntoView();
+                    cy.get(exampleId).scrollIntoView();
                 });
 
                 const checkValuesAfterPressing = (
@@ -176,7 +176,7 @@ describe('Range', () => {
                     [leftSliderValue, rightSliderValue]: [number, number],
                 ): void => {
                     cy.get('body').type(`{${key}}`);
-                    cy.get(`${EXAMPLE_ID} output`)
+                    cy.get(`${exampleId} output`)
                         .invoke('text')
                         .should(
                             'match',

@@ -1,9 +1,20 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export const enum TuiCreditCardAutofillName {
     Off = 'off',
     CcName = 'cc-name',
     CcNumber = 'cc-number',
     CcCsc = 'cc-csc',
+    CcExpMonth = 'cc-exp-month',
+    /**
+     * @deprecated
+     * TODO: 3.0 replace with {@link CcExpMonth}
+     */
     CcExp_mounth = 'cc-exp-month',
+    CcExpYear = 'cc-exp-year',
+    /**
+     * @deprecated
+     * TODO: 3.0 replace with {@link CcExpYear}
+     */
     CcExp_year = 'cc-exp-year',
     CcExp = 'cc-exp',
     CcType = 'cc-type',

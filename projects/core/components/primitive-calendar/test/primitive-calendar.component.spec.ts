@@ -47,8 +47,9 @@ class TestComponent {
     onDayClick(_: TuiDay): void {}
 }
 
+const TODAY = 23;
+
 describe('PrimitiveCalendar', () => {
-    const TODAY = 23;
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarComponent;
@@ -258,11 +259,11 @@ describe('PrimitiveCalendar', () => {
     });
 });
 
+const MOCKED_MONTH = new TuiMonth(2021, 5);
+
 describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-
-    const MOCKED_MONTH = new TuiMonth(2021, 5);
 
     beforeEach(() => {
         restoreRealDate();

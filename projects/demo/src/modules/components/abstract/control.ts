@@ -27,7 +27,7 @@ viewBox="0 0 24 24">
 
 const CUSTOM_SVG_NAME = 'Bell';
 
-type possibleGenericType = any;
+type TuiPossibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
@@ -60,7 +60,7 @@ export abstract class AbstractExampleTuiControl
         'url',
     ];
 
-    readonly maxLengthVariants: readonly possibleGenericType[] = [10];
+    readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
     readonly autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
         '',
@@ -96,7 +96,7 @@ export abstract class AbstractExampleTuiControl
 
     autocomplete: TuiAutofillFieldName | '' = '';
 
-    maxLength: possibleGenericType | null = null;
+    maxLength: TuiPossibleGenericType | null = null;
 
     type: TuiInputTypeT = this.typeVariants[0];
 

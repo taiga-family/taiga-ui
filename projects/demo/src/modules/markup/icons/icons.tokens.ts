@@ -35,8 +35,8 @@ export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
  * Algorithm: O(n), where `n` - count of icons
  */
 function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
-    const LARGE: DemoTuiIcon[] = [];
-    const NORMAL: DemoTuiIcon[] = [];
+    const large: DemoTuiIcon[] = [];
+    const normal: DemoTuiIcon[] = [];
     const commerceSet = new Set(COMMERCE);
 
     for (const icon in allIcons) {
@@ -50,11 +50,11 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
         }
 
         if (icon.includes('Large')) {
-            LARGE.push(icon as DemoTuiIcon);
+            large.push(icon as DemoTuiIcon);
         } else {
-            NORMAL.push(icon as DemoTuiIcon);
+            normal.push(icon as DemoTuiIcon);
         }
     }
 
-    return {LARGE, NORMAL};
+    return {LARGE: large, NORMAL: normal};
 }

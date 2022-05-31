@@ -4,7 +4,7 @@ import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
-import {TuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
+import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
     getComponentsClassNames,
@@ -34,12 +34,12 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const taigaStyles = await TuiStackblitzResourcesLoader.getTaigaStyles();
+        const taigaStyles = await AbstractTuiStackblitzResourcesLoader.getTaigaStyles();
 
         content = {...content, ...taigaStyles};
 
         const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
-            await TuiStackblitzResourcesLoader.getProjectFiles();
+            await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
