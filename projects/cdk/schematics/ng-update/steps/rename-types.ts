@@ -23,7 +23,7 @@ function renameType(
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
-            renameTypeImport(parent, from, to);
+            processImport(parent, from, to);
         } else if (Node.isTypeReferenceNode(parent)) {
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
@@ -33,7 +33,7 @@ function renameType(
     });
 }
 
-function renameTypeImport(node: ImportSpecifier, from: string, to?: string): void {
+function processImport(node: ImportSpecifier, from: string, to?: string): void {
     const filePath = node.getSourceFile().getFilePath();
     const targetImportAlreadyExists = Boolean(
         getImports(filePath, {namedImports: to}).length,
