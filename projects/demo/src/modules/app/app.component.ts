@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_IS_ANDROID,
     TUI_IS_CYPRESS,
@@ -42,14 +41,12 @@ export class AppComponent implements OnInit {
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) private readonly router: Router,
-        @Inject(LOCAL_STORAGE) private readonly localStorage: Storage,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         private readonly injector: Injector,
     ) {}
 
-    async ngOnInit(): Promise<void> {
-        await this.replaceEnvInURI();
+    ngOnInit(): void {
         this.enableYandexMetrika();
     }
 
@@ -61,15 +58,6 @@ export class AppComponent implements OnInit {
             (!today.getMonth() && today.getDate() < 14) ||
             (today.getMonth() === 11 && today.getDate() > 24)
         );
-    }
-
-    private async replaceEnvInURI(): Promise<void> {
-        const env = this.localStorage.getItem('env');
-
-        if (env) {
-            localStorage.removeItem('env');
-            await this.router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
-        }
     }
 
     private enableYandexMetrika(): void {

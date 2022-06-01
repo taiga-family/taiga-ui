@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
+import {tuiPure} from '@taiga-ui/cdk';
 
 import {
     SELECTED_VERSION_META,
@@ -20,11 +21,12 @@ export class VersionManagerComponent {
 
     constructor(
         @Inject(SELECTED_VERSION_META) readonly initialVersion: TaigaVersionMeta | null,
-        @Inject(LOCATION) private readonly locationRef: Location,
+        @Inject(LOCATION) private readonly location: Location,
         @Inject(Router) private readonly router: Router,
     ) {}
 
-    getVersionHref(version: TaigaVersionMeta): string {
-        return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`;
+    @tuiPure
+    getVersionHref(baseHref: string): string {
+        return `${this.location.origin}/${baseHref}${this.router.url}${this.location.search}`;
     }
 }
