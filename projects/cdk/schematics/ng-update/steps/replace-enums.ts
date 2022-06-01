@@ -1,7 +1,7 @@
 import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {ENUMS_TO_REPLACE} from '../constants/enums';
-import {removeImport} from '../../utils/remove-import';
+import {removeImport} from '../../utils/import-manipulations';
 
 export function replaceEnums(): void {
     ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) => {

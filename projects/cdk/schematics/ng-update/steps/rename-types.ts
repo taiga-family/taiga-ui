@@ -1,11 +1,13 @@
+import {TypeNode} from 'ts-morph';
+import {getImports, ImportSpecifier, Node} from 'ng-morph';
+
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {ImportSpecifier, Node} from 'ng-morph';
 import {TYPES_TO_RENAME} from '../constants/types';
-import {removeImport} from '../../utils/remove-import';
+import {removeImport, renameImport} from '../../utils/import-manipulations';
 
 export function renameTypes(): void {
-    TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier}) => {
-        renameType(from, to, moduleSpecifier);
+    TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier, preserveGenerics}) => {
+        renameType(from, to, moduleSpecifier, preserveGenerics);
     });
 }
 
@@ -13,26 +15,44 @@ function renameType(
     from: string,
     to?: string,
     moduleSpecifier?: string | string[],
+    preserveGenerics: boolean = false,
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
     references.forEach(ref => {
         const parent = ref.getParent();
 
-        if (Node.isImportSpecifier(parent) && to) {
-            renameImport(parent, to, from);
-        } else if (Node.isImportSpecifier(parent) && !to) {
-            removeImport(parent);
+        if (Node.isImportSpecifier(parent)) {
+            processImport(parent, from, to);
         } else if (Node.isTypeReferenceNode(parent)) {
-            parent.replaceWithText(to || 'any');
+            const targetType =
+                preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
+
+            parent.replaceWithText(targetType || 'any');
         }
     });
 }
 
-function renameImport(specifier: ImportSpecifier, to: string, from: string) {
-    const namedImport = specifier
-        .getImportDeclaration()
-        .getNamedImports()
-        .find(specifier => specifier.getName() === from);
-    namedImport?.replaceWithText(to);
+function processImport(node: ImportSpecifier, from: string, to?: string): void {
+    const filePath = node.getSourceFile().getFilePath();
+    const targetImportAlreadyExists = Boolean(
+        getImports(filePath, {namedImports: to}).length,
+    );
+
+    if (to && !targetImportAlreadyExists) {
+        renameImport(node, removeGeneric(to), removeGeneric(from));
+    } else {
+        removeImport(node);
+    }
+}
+
+function removeGeneric(type: string): string {
+    return type.replace(/<.*>$/gi, '');
+}
+
+function addGeneric(typeName: string, generics: TypeNode[]): string {
+    const typeArgs = generics.map(t => t.getType().getText());
+    const genericType = typeArgs.length ? `<${typeArgs.join(', ')}>` : '';
+
+    return typeName + genericType;
 }

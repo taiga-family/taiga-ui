@@ -2,6 +2,7 @@ interface TypeToRename {
     readonly from: string;
     readonly to?: string;
     readonly moduleSpecifier?: string | string[];
+    readonly preserveGenerics?: boolean;
 }
 export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {
@@ -44,5 +45,31 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     },
     {
         from: 'TuiBreadCrumbsItem',
+    },
+    {
+        from: 'CheckboxOptions',
+        to: 'TuiCheckboxOptions',
+        moduleSpecifier: ['@taiga-ui/core'],
+    },
+    {
+        from: 'NotificationTokenOptions',
+        to: 'TuiNotificationDefaultOptions',
+        moduleSpecifier: ['@taiga-ui/core'],
+    },
+    {
+        from: 'TuiNotificationAutoClose',
+        to: 'TuiAlertAutoClose',
+        moduleSpecifier: ['@taiga-ui/core'],
+    },
+    {
+        from: 'TuiNotificationOptions',
+        to: 'TuiAlertOptions<any>',
+        moduleSpecifier: ['@taiga-ui/core'],
+    },
+    {
+        from: 'TuiNotificationOptionsWithData',
+        to: 'TuiAlertOptions',
+        moduleSpecifier: ['@taiga-ui/core'],
+        preserveGenerics: true,
     },
 ];

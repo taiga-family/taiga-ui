@@ -1,6 +1,6 @@
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node} from 'ng-morph';
-import {removeImport} from '../../utils/remove-import';
+import {removeImport} from '../../utils/import-manipulations';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 
