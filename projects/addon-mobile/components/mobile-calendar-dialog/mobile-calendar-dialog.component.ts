@@ -33,20 +33,14 @@ export class TuiMobileCalendarDialogComponent {
     }
 
     get min(): TuiDay {
-        return this.context.data && this.context.data.min
-            ? this.context.data.min
-            : TUI_FIRST_DAY;
+        return this.context.data?.min || TUI_FIRST_DAY;
     }
 
     get max(): TuiDay {
-        return this.context.data && this.context.data.max
-            ? this.context.data.max
-            : TUI_LAST_DAY;
+        return this.context.data?.max || TUI_LAST_DAY;
     }
 
     get disabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.context.data && this.context.data.disabledItemHandler
-            ? this.context.data.disabledItemHandler
-            : ALWAYS_FALSE_HANDLER;
+        return this.context.data?.disabledItemHandler || ALWAYS_FALSE_HANDLER;
     }
 }

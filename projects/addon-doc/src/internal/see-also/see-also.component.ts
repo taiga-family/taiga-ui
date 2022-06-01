@@ -28,7 +28,7 @@ export class TuiDocSeeAlsoComponent {
                 .reduce((pages, subPages) => [...pages, ...subPages], [])
                 .find((page: TuiDocPage) => page.title === pageTitle);
 
-            if (page && page.route) {
+            if (page?.route) {
                 return page.route;
             }
         }

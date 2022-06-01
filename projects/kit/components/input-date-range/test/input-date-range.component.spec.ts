@@ -289,7 +289,7 @@ describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
         }
 
         toControlValue(componentValue: TuiDay | null): Date | null {
-            return componentValue && componentValue.toLocalNativeDate();
+            return componentValue?.toLocalNativeDate() || null;
         }
     }
 

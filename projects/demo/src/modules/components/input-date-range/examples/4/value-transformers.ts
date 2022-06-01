@@ -8,7 +8,7 @@ export class ExampleDateTransformer
     }
 
     toControlValue(componentValue: TuiDay | null): Date | null {
-        return componentValue && componentValue.toLocalNativeDate();
+        return componentValue?.toLocalNativeDate() || null;
     }
 }
 

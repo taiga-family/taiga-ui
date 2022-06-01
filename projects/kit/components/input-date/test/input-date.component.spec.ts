@@ -376,7 +376,7 @@ describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
         }
 
         toControlValue(componentValue: TuiDay | null): Date | null {
-            return componentValue && componentValue.toLocalNativeDate();
+            return componentValue?.toLocalNativeDate() || null;
         }
     }
 

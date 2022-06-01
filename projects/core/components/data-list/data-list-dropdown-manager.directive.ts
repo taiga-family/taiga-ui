@@ -154,10 +154,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
 
     private tryToFocus(index: number): void {
         const dropdown = this.dropdowns.toArray()[index];
-        const content =
-            dropdown &&
-            dropdown.dropdownBoxRef &&
-            dropdown.dropdownBoxRef.instance.contentElementRef;
+        const content = dropdown?.dropdownBoxRef?.instance.contentElementRef;
 
         if (!content) {
             return;

@@ -237,7 +237,7 @@ export class TuiPaginationComponent
             (_, index, array) => array[index + 1] === element,
         );
 
-        if (previous && previous.nativeFocusableElement) {
+        if (previous?.nativeFocusableElement) {
             setNativeFocused(previous.nativeFocusableElement);
         }
     }
@@ -251,7 +251,7 @@ export class TuiPaginationComponent
             (_, index, array) => array[index - 1] === element,
         );
 
-        if (next && next.nativeFocusableElement) {
+        if (next?.nativeFocusableElement) {
             setNativeFocused(next.nativeFocusableElement);
         }
     }

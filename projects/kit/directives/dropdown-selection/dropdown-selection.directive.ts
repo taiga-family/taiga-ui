@@ -153,9 +153,7 @@ export class TuiDropdownSelectionDirective
                         return this.veryVerySadInputFix(active);
                     }
 
-                    return selection && selection.rangeCount
-                        ? selection.getRangeAt(0)
-                        : this.range;
+                    return selection?.rangeCount ? selection.getRangeAt(0) : this.range;
                 }),
                 takeUntil(destroy$),
             )

@@ -332,7 +332,7 @@ export class TuiInputTagComponent
             actualTarget === this.focusableElement.nativeElement ||
             // TODO: iframe warning
             !(event.target instanceof Element) ||
-            (this.cleanerSvg && this.cleanerSvg.nativeElement.contains(event.target)) ||
+            this.cleanerSvg?.nativeElement.contains(event.target) ||
             (this.tagsContainer &&
                 actualTarget !== this.tagsContainer.nativeElement &&
                 this.tagsContainer.nativeElement.contains(actualTarget))

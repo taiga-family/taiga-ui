@@ -47,6 +47,8 @@ module.exports = {
         '@typescript-eslint/no-base-to-string': 'error',
         '@typescript-eslint/ban-types': 'error',
         '@typescript-eslint/no-for-in-array': 'error',
+        '@typescript-eslint/prefer-nullish-coalescing': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
         eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
         'unicorn/filename-case': [

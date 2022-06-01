@@ -186,9 +186,7 @@ export class TuiToolbarComponent {
             ({nativeFocusableElement}) => !!nativeFocusableElement,
         );
 
-        return first && first.nativeFocusableElement
-            ? first.nativeFocusableElement
-            : null;
+        return first?.nativeFocusableElement || null;
     }
 
     get lastButton(): TuiNativeFocusableElement | null {
@@ -307,7 +305,7 @@ export class TuiToolbarComponent {
                 : null;
 
         while (element) {
-            if (element.style && element.style.backgroundColor) {
+            if (element.style?.backgroundColor) {
                 return element.style.backgroundColor;
             }
 
@@ -384,7 +382,7 @@ export class TuiToolbarComponent {
                 index > focusedIndex && !!nativeFocusableElement,
         );
 
-        if (nextButton && nextButton.nativeFocusableElement) {
+        if (nextButton?.nativeFocusableElement) {
             setNativeFocused(nextButton.nativeFocusableElement);
         } else {
             this.focusFirst();
@@ -402,7 +400,7 @@ export class TuiToolbarComponent {
     }
 
     onImage(input: HTMLInputElement): void {
-        const file = input.files && input.files[0];
+        const file = input.files?.[0];
 
         if (file) {
             this.imageLoader(file)

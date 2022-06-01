@@ -56,7 +56,7 @@ export class TuiMultiSelectGroupComponent<T> {
     ) {}
 
     get size(): TuiSizeXS | TuiSizeL {
-        return (this.options.first && this.options.first.size) || 'm';
+        return this.options.first?.size || 'm';
     }
 
     get checkboxSize(): TuiSizeL {

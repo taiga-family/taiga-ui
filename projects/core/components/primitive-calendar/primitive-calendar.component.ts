@@ -97,11 +97,11 @@ export class TuiPrimitiveCalendarComponent {
             return TuiInteractiveState.Disabled;
         }
 
-        if (pressedItem && pressedItem.daySame(item)) {
+        if (pressedItem?.daySame(item)) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (hoveredItem && hoveredItem.daySame(item)) {
+        if (hoveredItem?.daySame(item)) {
             return TuiInteractiveState.Hovered;
         }
 
@@ -121,12 +121,10 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.from.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem &&
-                hoveredItem.dayAfter(value.from) &&
+            (hoveredItem?.dayAfter(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem &&
-                hoveredItem.daySame(item) &&
+            (hoveredItem?.daySame(item) &&
                 hoveredItem.dayBefore(value.from) &&
                 value.isSingleDay)
         ) {
@@ -135,12 +133,10 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.to.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem &&
-                hoveredItem.dayBefore(value.from) &&
+            (hoveredItem?.dayBefore(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem &&
-                hoveredItem.daySame(item) &&
+            (hoveredItem?.daySame(item) &&
                 hoveredItem.dayAfter(value.from) &&
                 value.isSingleDay)
         ) {

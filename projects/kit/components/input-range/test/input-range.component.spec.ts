@@ -411,7 +411,7 @@ describe('InputRange', () => {
             leftInputWrapper,
         );
 
-        return valueContent && valueContent.nativeElement.textContent.trim();
+        return valueContent?.nativeElement.textContent.trim() || null;
     }
 
     function getRightValueContent(): string | null {
@@ -420,7 +420,7 @@ describe('InputRange', () => {
             rightInputWrapper,
         );
 
-        return valueContent && valueContent.nativeElement.textContent.trim();
+        return valueContent?.nativeElement.textContent.trim() || null;
     }
 
     function getLeftValueDecoration(): string {
