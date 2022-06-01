@@ -15,6 +15,7 @@ const collectionPath = join(__dirname, '../../migration.json');
 const BEFORE = `import { Component } from '@angular/core';
 import { TuiPortalService } from '@taiga-ui/cdk';
 import { TuiNotificationService } from '@taiga-ui/core';
+import { TuiCodeEditor } from '@taiga-ui/addon-doc'
 
 function(service: TuiNotificationService) {
     service
@@ -32,16 +33,19 @@ export class AppComponent {
     constructor(
       @Inject(TuiPortalService) portalService: TuiPortalService;
       @Inject(TuiNotificationService) private notificationService: TuiNotificationService;
+      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor;
     ) {
       notificationService.show(arg, arg2);
     }
 
     method(): void {
         this.notificationService.show(arg, arg2).subscribe();
+        this.editor.open(arg1, arg2);
     }
 }`;
 
-const AFTER = `import { TuiDropdownPortalService, TuiAlertService } from "@taiga-ui/cdk";
+const AFTER = `import { TuiCodeEditor } from "@taiga-ui/addon-doc";
+import { TuiDropdownPortalService, TuiAlertService } from "@taiga-ui/cdk";
 import { Component } from '@angular/core';
 
 function(service: TuiAlertService) {
@@ -60,12 +64,14 @@ export class AppComponent {
     constructor(
       @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService;
       @Inject(TuiAlertService) private notificationService: TuiAlertService;
+      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor;
     ) {
       notificationService.open(arg, arg2);
     }
 
     method(): void {
         this.notificationService.open(arg, arg2).subscribe();
+        this.editor.edit(arg1, arg2);
     }
 }`;
 

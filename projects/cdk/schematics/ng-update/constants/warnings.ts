@@ -20,4 +20,9 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'TUI_DATE_RANGE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date-range',
     },
+    {
+        name: 'TUI_SHEET_OFFSET',
+        message:
+            'TUI_SHEET_OFFSET has been deleted in 3.0, please use option argument for each Sheet. Read more: https://taiga-ui.dev/components/sheet',
+    },
 ];
