@@ -29,7 +29,9 @@ import {
 } from '@taiga-ui/cdk';
 import {DumbEntity, TUI_DATE_RANGE_FILLER, MEGA_CONSTANT, MagicClass} from '@taiga-ui/cdk';
 
+const lol = TUI_DATE_FILLER;
 const kek = TUI_MOBILE_AWARE;
+const variable1 = TUI_DATE_RANGE_FILLER;
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
     aware = TUI_MOBILE_AWARE;
@@ -53,7 +55,9 @@ import {
 // TODO: TUI_DATE_RANGE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date-range
 import {DumbEntity, TUI_DATE_RANGE_FILLER, MEGA_CONSTANT, MagicClass} from '@taiga-ui/cdk';
 
+const lol = TUI_DATE_FILLER;
 const kek = TUI_MOBILE_AWARE;
+const variable1 = TUI_DATE_RANGE_FILLER;
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
     aware = TUI_MOBILE_AWARE;
