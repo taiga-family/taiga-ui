@@ -15,9 +15,13 @@ function showWarning(
         moduleSpecifier,
         namedImports: [name],
     })
-        .map(i => i.getNamedImports().find(namedImport => namedImport.getName() === name))
-        .filter(<T>(namedImport?: T): namedImport is T => Boolean(namedImport))
-        .map(i => i.getNameNode());
+        .map(i =>
+            i
+                .getNamedImports()
+                .find(namedImport => namedImport.getName() === name)
+                ?.getNameNode(),
+        )
+        .filter(<T>(namedImport?: T): namedImport is T => Boolean(namedImport));
 
     const referencesMeta = references.map(ref => {
         const sourceFile = ref.getSourceFile();

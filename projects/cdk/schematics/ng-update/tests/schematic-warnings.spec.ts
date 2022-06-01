@@ -91,15 +91,11 @@ describe('ng-update', () => {
             .filter(log => log.level === 'warn')
             .map(log => log.message);
 
-        expect(expectedLogs).toContain(
+        expect(expectedLogs).toEqual([
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[0].message}`,
-        );
-        expect(expectedLogs).toContain(
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[1].message}`,
-        );
-        expect(expectedLogs).toContain(
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[2].message}`,
-        );
+        ]);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);
     });
