@@ -62,4 +62,8 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {name: 'identity', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'identity', moduleSpecifier: 'rxjs'},
+    },
 ];

@@ -12,11 +12,12 @@ import {join} from 'path';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
-const AFTER = `import { TuiAlertModule } from "@taiga-ui/core";
-import { getClosestFocusable } from "@taiga-ui/cdk";
+const AFTER = `import { identity } from "rxjs";
+import { TuiAlertModule } from "@taiga-ui/core";
 import { Validators } from "@angular/forms";
 import {Component} from '@angular/core';
 import { tuiCreateAutoCorrectedDatePipe, tuiCreateDateMask, tuiCreateDateRangeMask } from '@taiga-ui/kit';
+import { getClosestFocusable } from '@taiga-ui/cdk';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
@@ -48,7 +49,7 @@ export class TuiTestModule {}`;
 const BEFORE = `import {Component} from '@angular/core';
 import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
-import { getClosestKeyboardFocusable } from '@taiga-ui/cdk';
+import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
 
 @Component({templateUrl: './app.template.html'})
