@@ -1,7 +1,7 @@
 import {ReplacementService, SERVICES_TO_REPLACE} from '../constants/services';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node, PropertyAccessExpression, SyntaxKind, TypeReferenceNode} from 'ng-morph';
-import {removeImport} from '../../utils/remove-import';
+import {removeImport} from '../../utils/import-manipulations';
 import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function replaceServices(): void {
