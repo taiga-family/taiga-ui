@@ -188,4 +188,13 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
         },
         keepAsType: false,
     },
+    {
+        name: 'TuiTouchMode',
+        replaceValues: {
+            Transform: 'transform',
+            Opacity: 'opacity',
+            Background: 'background',
+        },
+        keepAsType: true,
+    },
 ];

@@ -32,4 +32,19 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiCodeEditor',
+        },
+        to: {
+            name: 'TuiCodeEditor',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        replaceMethods: [
+            {
+                from: 'open',
+                to: 'edit',
+            },
+        ],
+    },
 ];
