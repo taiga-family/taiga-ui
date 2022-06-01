@@ -70,4 +70,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         from: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {
+            name: 'TuiCountryIsoCode',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCountryIsoCode',
+            moduleSpecifier: '@taiga-ui/i18n',
+        },
+    },
 ];

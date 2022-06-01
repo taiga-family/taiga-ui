@@ -72,4 +72,7 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         moduleSpecifier: ['@taiga-ui/core'],
         preserveGenerics: true,
     },
+    {
+        from: 'Country',
+    },
 ];
