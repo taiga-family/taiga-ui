@@ -61,6 +61,19 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
         },
     },
     {
+        name: 'TuiInputMode',
+        replaceValues: {
+            None: 'none',
+            Text: 'text',
+            Decimal: 'decimal',
+            Numeric: 'numeric',
+            Tel: 'tel',
+            Email: 'email',
+            Url: 'url',
+            Search: 'search',
+        },
+    },
+    {
         name: 'TuiStepState',
         replaceValues: {
             Normal: 'normal',
