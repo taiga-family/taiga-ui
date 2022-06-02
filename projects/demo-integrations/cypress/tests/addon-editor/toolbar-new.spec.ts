@@ -1,19 +1,15 @@
-import {EDITOR_PAGE_URL} from '../../support/shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    EDITOR_PAGE_URL,
+} from '../../support/shared.entities';
 import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's toolbar", () => {
-    beforeEach(() => {
-        cy.tuiVisit(EDITOR_PAGE_URL);
-    });
+    beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
 
     it("closes tool's dropdown if opened new tool's dropdown", () => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
-        cy.get('@wrapper')
-            .scrollIntoView()
-            .should('be.visible')
-            .find('tui-editor')
-            .should('be.visible')
-            .click();
+        cy.get('@wrapper').tuiScrollIntoView().find('tui-editor').click();
 
         cy.get('@wrapper')
             .findByAutomationId('toolbar__color-button')
@@ -32,7 +28,7 @@ describe("Editor's toolbar", () => {
 
     it("closes tool's dropdown if clicked outside", () => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
-        cy.get('@wrapper').scrollIntoView().should('be.visible');
+        cy.get('@wrapper').tuiScrollIntoView();
 
         cy.get('@wrapper')
             .findByAutomationId('toolbar__color-button')
@@ -45,10 +41,12 @@ describe("Editor's toolbar", () => {
     });
 
     it('has the possibility to add custom tool', () => {
-        cy.get('#custom-tool').findByAutomationId('tui-doc-example').as('wrapper');
-        cy.get('@wrapper').find('[contenteditable]').as('input');
+        cy.get('#custom-tool')
+            .findByAutomationId('tui-doc-example')
+            .tuiScrollIntoView()
+            .as('wrapper');
 
-        cy.get('@wrapper').scrollIntoView().should('be.visible');
+        cy.get('@wrapper').find('[contenteditable]').as('input');
 
         cy.get('.smiles').should('not.exist');
         cy.get('@input').should('not.be.focused');
@@ -70,7 +68,9 @@ describe("Editor's toolbar", () => {
 
         cy.get('@wrapper').matchImageSnapshot('2-2-inserted-smile');
 
-        cy.focused().type('awesome library for awesome people');
+        cy.focused()
+            .type('awesome library for awesome people')
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
         cy.get('@wrapper')
             .findByAutomationId('smiles-tool__button')
@@ -87,10 +87,18 @@ describe("Editor's toolbar", () => {
     });
 
     it('make a html table by 2x2', () => {
-        cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+        cy.get('#basic')
+            .findByAutomationId('tui-doc-example')
+            .tuiScrollIntoView()
+            .as('wrapper');
+
         cy.get('@wrapper').find('[contenteditable]').as('input');
 
-        cy.get('@input').scrollIntoView().type('\n').should('be.visible');
+        cy.get('@input')
+            .type('\n')
+            .should('be.visible')
+            .blur()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
         cy.get('#basic')
             .wait(WAIT_BEFORE_SCREENSHOT)
@@ -98,7 +106,7 @@ describe("Editor's toolbar", () => {
 
         cy.get('@wrapper').find('button[icon="tuiIconTableLarge"]').as('tableTool');
 
-        cy.get('@tableTool').focus().should('be.focused').should('be.visible').click();
+        cy.get('@tableTool').tuiFocus().click();
 
         cy.get('#basic')
             .wait(WAIT_BEFORE_SCREENSHOT)
@@ -118,13 +126,14 @@ describe("Editor's toolbar", () => {
     });
 
     it('set table without style inheritance', () => {
-        cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+        cy.get('#basic')
+            .findByAutomationId('tui-doc-example')
+            .tuiScrollIntoView()
+            .as('wrapper');
+
         cy.get('@wrapper').find('[contenteditable]').as('input');
 
-        cy.get('@input')
-            .scrollIntoView()
-            .type('{selectall}{backspace}')
-            .should('be.visible');
+        cy.get('@input').type('{selectall}{backspace}').should('be.visible').blur();
 
         cy.get('@wrapper')
             .findByAutomationId('toolbar__ordering-list-button')
@@ -140,7 +149,7 @@ describe("Editor's toolbar", () => {
             .should('be.visible')
             .click();
 
-        cy.get('@input').type('12345');
+        cy.get('@input').type('12345').blur();
 
         cy.get('@wrapper')
             .wait(WAIT_BEFORE_SCREENSHOT)
@@ -148,10 +157,9 @@ describe("Editor's toolbar", () => {
 
         cy.get('@wrapper').find('button[icon="tuiIconTableLarge"]').as('tableTool');
 
-        cy.get('@tableTool').focus().should('be.focused').should('be.visible').click();
+        cy.get('@tableTool').tuiFocus().click();
 
         cy.get('@tableTool')
-            .wait(WAIT_BEFORE_SCREENSHOT)
             .get('tui-table-size-selector .t-column')
             .eq(1)
             .find('.t-cell')
@@ -166,7 +174,11 @@ describe("Editor's toolbar", () => {
 
     describe('has keyboard horizontal navigation between tool-buttons', () => {
         it('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
-            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('#basic')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
+
             cy.get('@wrapper')
                 .find('button[icon="tuiIconAlignLeftLarge"]')
                 .as('initialTool');
@@ -175,7 +187,7 @@ describe("Editor's toolbar", () => {
                 .find('button[icon="tuiIconViewListLarge"]')
                 .as('rightTool');
 
-            cy.get('@initialTool').focus().should('be.focused');
+            cy.get('@initialTool').tuiFocus();
 
             // <==
             cy.get('body').type('{leftarrow}');
@@ -189,7 +201,11 @@ describe("Editor's toolbar", () => {
         });
 
         it('skips disabled tools and selects next tool after disabled', () => {
-            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('#basic')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
+
             cy.get('@wrapper')
                 .find('button[icon="tuiIconUndoLarge"]')
                 .as('leftActiveTool');
@@ -203,7 +219,7 @@ describe("Editor's toolbar", () => {
             // | (active) | disabled | active |
             // ==>
             // | active | disabled | (active) |
-            cy.get('@leftActiveTool').focus().should('be.focused');
+            cy.get('@leftActiveTool').tuiFocus();
             cy.get('body').type('{rightarrow}');
             cy.get('@betweenDisabledTool').should('not.be.focused');
             cy.get('@rightActiveTool').should('be.focused');
@@ -217,7 +233,11 @@ describe("Editor's toolbar", () => {
         });
 
         it('works with custom tools', () => {
-            cy.get('#custom-tool').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('#custom-tool')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
+
             cy.get('@wrapper')
                 .find('button[icon="tuiIconUndoLarge"]')
                 .as('leftBuiltInTool');
@@ -226,7 +246,7 @@ describe("Editor's toolbar", () => {
                 .as('rightCustomTool');
 
             // ==>
-            cy.get('@leftBuiltInTool').focus().should('be.focused');
+            cy.get('@leftBuiltInTool').tuiFocus();
             cy.get('body').type('{rightarrow}');
             cy.get('@rightCustomTool').should('be.focused');
 
