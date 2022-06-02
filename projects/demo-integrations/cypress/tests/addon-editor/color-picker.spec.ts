@@ -1,9 +1,7 @@
 import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's color picker", () => {
-    beforeEach(() => {
-        cy.tuiVisit('components/color-picker');
-    });
+    beforeEach(() => cy.tuiVisit('components/color-picker'));
 
     it('opened color picker', () => {
         openColorPicker('wrapper');
@@ -27,10 +25,14 @@ describe("Editor's color picker", () => {
     });
 
     function openColorPicker(alias: string): void {
-        cy.get('#dropdown').findByAutomationId('tui-doc-example').as(alias);
+        cy.get('#dropdown')
+            .findByAutomationId('tui-doc-example')
+
+            .tuiScrollIntoView()
+            .as(alias);
+
         cy.get('@wrapper')
-            .scrollIntoView()
-            .should('be.visible')
+            .tuiScrollIntoView()
             .findByAutomationId('color-picker__button')
             .click();
     }

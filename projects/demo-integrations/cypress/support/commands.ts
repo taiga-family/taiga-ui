@@ -1,7 +1,9 @@
 import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 
+import {tuiFocus} from './focus';
 import {tuiHideHeader} from './hide-header';
 import {tuiHideNavigation} from './hide-navigation';
+import {tuiScrollIntoView} from './scroll-into-view';
 import {tuiSetNightMode} from './set-night-mode';
 import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
@@ -20,13 +22,25 @@ declare global {
             tuiHideNavigation: typeof tuiHideNavigation;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
+            tuiScrollIntoView(): Chainable;
+            tuiFocus(): Chainable;
         }
     }
 }
 
 Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
-Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject: any, id) =>
-    subject.find(`[automation-id=${id}]`),
+Cypress.Commands.add(
+    'findByAutomationId',
+    {prevSubject: true},
+    <S>(subject: S, id: string) =>
+        /**
+         * `subject` is just `jQuery`-element which has method `.find()`.
+         * This method doesn't have {@link https://docs.cypress.io/guides/core-concepts/retry-ability retry-ability}!
+         * ___
+         * `cy.wrap(subject)` is a `$Chainer`-element (cypress built-in implementation) which also has method `.find()`.
+         * This method has retry-ability!
+         */
+        cy.wrap(subject).find(`[automation-id=${id}]`),
 );
 Cypress.Commands.add('tuiVisit', tuiVisit);
 Cypress.Commands.add('tuiHideHeader', tuiHideHeader);
@@ -38,6 +52,18 @@ Cypress.Commands.add(
     'tuiTab',
     {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiTab,
+);
+
+Cypress.Commands.add(
+    'tuiScrollIntoView',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
+    tuiScrollIntoView,
+);
+
+Cypress.Commands.add(
+    'tuiFocus',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
+    tuiFocus,
 );
 
 tuiAddMatchImageSnapshotCommand({

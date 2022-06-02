@@ -3,15 +3,15 @@ import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe('Editor', () => {
     describe('Dark mode', () => {
-        beforeEach(() => {
-            cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true});
-        });
+        beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true}));
 
         it('supports dark mode (input)', () => {
-            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
-            cy.get('@wrapper').find('tui-editor').as('editor');
+            cy.get('#basic')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
 
-            cy.get('@wrapper').scrollIntoView().should('be.visible');
+            cy.get('@wrapper').find('tui-editor').as('editor');
 
             cy.get('@editor')
                 .wait(WAIT_BEFORE_SCREENSHOT)
@@ -23,7 +23,10 @@ describe('Editor', () => {
         });
 
         it('supports dark mode (output)', () => {
-            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('#basic')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
 
             cy.get('@wrapper')
                 .find('tui-editor-socket')
@@ -38,8 +41,7 @@ describe('Editor', () => {
         it('preview display of images', () => {
             cy.get('#preview-image')
                 .findByAutomationId('tui-doc-example')
-                .should('be.visible')
-                .scrollIntoView()
+                .tuiScrollIntoView()
                 .as('wrapper');
 
             cy.get('@wrapper')
