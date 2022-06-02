@@ -99,8 +99,8 @@ describe('ng-update', () => {
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[0].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[1].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[2].message}`,
-            `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[3].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[4].message}`,
+            `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[5].message}`,
         ]);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);
