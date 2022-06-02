@@ -12,7 +12,8 @@ import {join} from 'path';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
-const AFTER = `import { identity } from "rxjs";
+const AFTER = `import { TuiCountryIsoCode } from "@taiga-ui/i18n";
+import { identity } from "rxjs";
 import { TuiAlertModule } from "@taiga-ui/core";
 import { Validators } from "@angular/forms";
 import {Component} from '@angular/core';
@@ -33,7 +34,7 @@ export class AppComponent {
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
         if (getClosestFocusable(target, 'button')) {
-            return;
+            return null;
         }
     }
 }
@@ -44,10 +45,22 @@ export class AppComponent {
     ],
     declarations: [AppComponent],
 })
-export class TuiTestModule {}`;
+export class TuiTestModule {}
+
+
+const countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
+    [
+        TuiCountryIsoCode.RU,
+        TuiCountryIsoCode.KZ,
+        TuiCountryIsoCode.UA,
+        TuiCountryIsoCode.BY,
+    ],
+    Object.values(TuiCountryIsoCode),
+];
+`;
 
 const BEFORE = `import {Component} from '@angular/core';
-import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
+import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, TuiCountryIsoCode, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
 import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
@@ -66,7 +79,7 @@ export class AppComponent {
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
         if (getClosestKeyboardFocusable(target, 'button')) {
-            return;
+            return null;
         }
     }
 }
@@ -77,7 +90,19 @@ export class AppComponent {
     ],
     declarations: [AppComponent],
 })
-export class TuiTestModule {}`;
+export class TuiTestModule {}
+
+
+const countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
+    [
+        TuiCountryIsoCode.RU,
+        TuiCountryIsoCode.KZ,
+        TuiCountryIsoCode.UA,
+        TuiCountryIsoCode.BY,
+    ],
+    Object.values(TuiCountryIsoCode),
+];
+`;
 
 describe('ng-update', () => {
     let host: UnitTestTree;
@@ -94,7 +119,7 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should rename types', async () => {
+    it('should replace consts', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
         expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);

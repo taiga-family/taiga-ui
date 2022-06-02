@@ -16,7 +16,7 @@ import {MIGRATION_WARNINGS} from '../constants/warnings';
 const collectionPath = join(__dirname, '../../migration.json');
 
 const BEFORE = `
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit';
+import {TUI_MOBILE_AWARE, COUNTRIES_MASKS} from '@taiga-ui/kit';
 import {
     DumbEntity,
     DUMB_CONSTANT,
@@ -28,6 +28,7 @@ import {
     MagicClass,
 } from '@taiga-ui/cdk';
 import {DumbEntity, TUI_DATE_RANGE_FILLER, MEGA_CONSTANT, MagicClass} from '@taiga-ui/cdk';
+import {COUNTRIES} from '@taiga-ui/kit/components/input-phone-international';
 
 const lol = TUI_DATE_FILLER;
 const kek = TUI_MOBILE_AWARE;
@@ -40,7 +41,8 @@ export class AppComponent {
 
 const AFTER = `
 // TODO: TUI_MOBILE_AWARE has been deleted in 3.0, please use TuiMobileTabsDirective from @taiga-ui/addon-mobile
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit';
+// TODO: Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code
+import {TUI_MOBILE_AWARE, COUNTRIES_MASKS} from '@taiga-ui/kit';
 import {
     DumbEntity,
     DUMB_CONSTANT,
@@ -54,6 +56,8 @@ import {
 } from '@taiga-ui/cdk';
 // TODO: TUI_DATE_RANGE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date-range
 import {DumbEntity, TUI_DATE_RANGE_FILLER, MEGA_CONSTANT, MagicClass} from '@taiga-ui/cdk';
+// TODO: Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code. Use DI-token TUI_COUNTRIES to get localized country name by its iso code
+import { COUNTRIES } from '@taiga-ui/kit';
 
 const lol = TUI_DATE_FILLER;
 const kek = TUI_MOBILE_AWARE;
@@ -95,6 +99,8 @@ describe('ng-update', () => {
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[0].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[1].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[2].message}`,
+            `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[4].message}`,
+            `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[5].message}`,
         ]);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);

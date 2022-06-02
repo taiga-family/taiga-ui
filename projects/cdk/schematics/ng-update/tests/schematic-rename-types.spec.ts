@@ -22,7 +22,7 @@ import {
 import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
-import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, RadioOptions } from '@taiga-ui/kit';
+import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
 import { ToggleOptions } from '@taiga-ui/cdk';
 const options: ButtonOptions = {};
 const inputCountOptions: InputCountOptions = {};
@@ -30,6 +30,7 @@ const passwordOptions = {} as InputPasswordOptions;
 const config: WithDateMaskPipeConfig = {}
 const notificationOptions: TuiNotificationOptions = {};
 const notificationOptionsWithData: TuiNotificationOptionsWithData<string> = {};
+const COUNTRIES: Country[] = [];
 
 @Component({
    templateUrl: './app.template.html',
@@ -69,6 +70,7 @@ const passwordOptions = {} as TuiInputPasswordOptions;
 const config: any = {}
 const notificationOptions: TuiAlertOptions<any> = {};
 const notificationOptionsWithData: TuiAlertOptions<string> = {};
+const COUNTRIES: any[] = [];
 
 @Component({
    templateUrl: './app.template.html',
