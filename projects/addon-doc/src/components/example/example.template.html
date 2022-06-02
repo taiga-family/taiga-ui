@@ -35,7 +35,7 @@
                 class="t-tabs"
                 [(activeItemIndex)]="activeItemIndex"
             >
-                <ng-container *ngFor="let tab of tabs">
+                <ng-container *tuiForAsync="let tab of tabs">
                     <button
                         *tuiTab
                         tuiTab
@@ -58,7 +58,7 @@
         </div>
 
         <div
-            *ngFor="let tab of tabs; let index = index"
+            *tuiForAsync="let tab of tabs; let index = index"
             class="t-content"
             [class.t-content_animated]="!isCypress"
             [class.t-content_visible]="activeItemIndex === index"
