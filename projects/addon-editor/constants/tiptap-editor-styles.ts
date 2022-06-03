@@ -210,6 +210,12 @@ export const tiptapEditorStyles = `
    padding: 0 1.25rem;
    box-sizing: border-box;
    border-radius: var(--tui-radius-l);
+   pointer-events: none;
+}
+
+.tui-editor-socket summary p {
+  min-width: 1px;
+  margin: 0;
 }
 
 .tui-editor-socket summary::-webkit-details-marker {
@@ -256,6 +262,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket .details-wrapper_rendered summary {
   transition: transform var(--tui-duration, 0.3s);
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .tui-editor-socket .details-wrapper_rendered summary:hover {
