@@ -79,7 +79,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
 
             button.addEventListener('click', () => {
                 details.open = !details.open;
-                node.attrs.opened = details.open;
+                (node.attrs as unknown as Record<string, unknown>).opened = details.open;
             });
 
             wrapper.append(details, button);

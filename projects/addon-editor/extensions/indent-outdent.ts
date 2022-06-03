@@ -112,7 +112,7 @@ function updateIndentLevel(tr: Transaction, delta: number): Transaction {
 
     const {from, to} = selection;
 
-    doc.nodesBetween(from, to, (node, pos) => {
+    doc.nodesBetween(from, to, (node: Node, pos: number) => {
         const {name} = node.type;
 
         if (name === 'paragraph' || name === 'heading') {
