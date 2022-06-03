@@ -14,7 +14,7 @@ function hasAttributes(
 }
 
 function findMarkInSet(
-    marks: ProseMirrorMark[],
+    marks: readonly ProseMirrorMark[],
     markType: MarkType,
     attributes: Record<string, unknown> = {},
 ): ProseMirrorMark | null {
