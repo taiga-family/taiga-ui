@@ -1,4 +1,10 @@
-import {CommandProps, mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import {
+    CommandProps,
+    getHTMLFromFragment,
+    mergeAttributes,
+    Node,
+    RawCommands,
+} from '@tiptap/core';
 import {EditorState} from 'prosemirror-state';
 
 export interface TuiDetailsOptions {
@@ -91,9 +97,17 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                 () =>
                 ({commands, state}) => {
                     const currentNodeContent = state.selection.$head.parent.textContent;
+                    const selected = state.doc.cut(
+                        state.selection.from,
+                        state.selection.to,
+                    );
+
+                    const content = selected.content.size
+                        ? getHTMLFromFragment(selected.content, state.schema)
+                        : currentNodeContent;
 
                     return commands.insertContent(
-                        `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${currentNodeContent}</p></div></details><p></p>`,
+                        `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
                     );
                 },
             removeDetails:
