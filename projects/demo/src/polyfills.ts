@@ -27,8 +27,6 @@ import 'core-js/es7/reflect';
  * Zone JS is required by Angular itself.
  */
 import 'zone.js/dist/zone';
-import 'prismjs';
-import 'prismjs/components/prism-typescript.min.js';
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
@@ -48,5 +46,3 @@ import 'prismjs/components/prism-typescript.min.js';
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
-(window as any).Prism = {};
