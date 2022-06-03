@@ -4,10 +4,9 @@ import {
     TuiCurrency,
     TuiCurrencyCode,
     TuiCurrencyVariants,
-    TuiMoneySignT,
 } from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDecimalT, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-money',
@@ -66,7 +65,7 @@ export class ExampleTuiMoneyComponent {
 
     colored = false;
 
-    readonly signVariants: readonly TuiMoneySignT[] = [
+    readonly signVariants: ReadonlyArray<TuiNumberFormatSettings['signMode']> = [
         'negative-only',
         'always',
         'never',

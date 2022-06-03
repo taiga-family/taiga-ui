@@ -1,10 +1,13 @@
 import {
+    CHAR_HYPHEN,
     CHAR_NO_BREAK_SPACE,
+    CHAR_PLUS,
     getDocumentOrShadowRoot,
     isNativeFocused,
     isSafari,
     tuiAssert,
 } from '@taiga-ui/cdk';
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
@@ -18,9 +21,12 @@ export function tuiCreateAutoCorrectedNumberPipe(
     nativeInput?: HTMLInputElement | null,
     allowNegative?: boolean,
     isIOS = false,
+    signMode: TuiNumberFormatSettings['signMode'] = 'negative-only',
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
+
+    const showPlus = signMode === 'always' || signMode === 'force-positive';
 
     // Guess for which browser I need this :)
     let previousCaret = -1;
@@ -32,16 +38,21 @@ export function tuiCreateAutoCorrectedNumberPipe(
         });
     }
 
-    return (conformedValue, config) => {
+    return (conformedValue, {rawValue, currentCaretPosition, previousConformedValue}) => {
         // Removing everything by selecting and pressing '-'
-        if (!conformedValue && config.rawValue === '-' && allowNegative) {
-            return '-';
+        if (!conformedValue && rawValue === CHAR_HYPHEN && allowNegative) {
+            return CHAR_HYPHEN;
+        }
+
+        // Removing everything by selecting and pressing '+'
+        if (!conformedValue && rawValue === CHAR_PLUS && showPlus) {
+            return CHAR_PLUS;
         }
 
         // remove these hacks after text mask library has changed
         if (nativeInput && unlucky && isNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(
-                config.previousConformedValue,
+                previousConformedValue,
                 conformedValue,
                 previousCaret,
             );
@@ -55,15 +66,11 @@ export function tuiCreateAutoCorrectedNumberPipe(
             nativeInput &&
             nativeInput.ownerDocument !== getDocumentOrShadowRoot(nativeInput) &&
             isNativeFocused(nativeInput) &&
-            config.currentCaretPosition
+            currentCaretPosition
         ) {
             const realCaretPosition =
-                config.currentCaretPosition +
-                calculateCaretGap(
-                    config.previousConformedValue,
-                    conformedValue,
-                    thousandSymbol,
-                );
+                currentCaretPosition +
+                calculateCaretGap(previousConformedValue, conformedValue, thousandSymbol);
 
             setTimeout(() => {
                 nativeInput.setSelectionRange(realCaretPosition, realCaretPosition);

@@ -5,13 +5,13 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
-import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import {CHAR_EN_DASH, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     formatNumber,
-    NumberFormatSettings,
     TUI_NUMBER_FORMAT,
     TuiDecimalT,
+    TuiNumberFormatSettings,
 } from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
@@ -35,9 +35,13 @@ export class TuiMoneyComponent {
     @tuiDefaultProp()
     currency: TuiCurrencyVariants = this.options.currency;
 
+    /**
+     * @deprecated Use property `signMode` from DI-token {@link TUI_NUMBER_FORMAT}
+     * TODO replace by token in v3.0
+     */
     @Input()
     @tuiDefaultProp()
-    sign: TuiMoneySignT = this.options.sign;
+    sign: TuiNumberFormatSettings['signMode'] = this.options.sign;
 
     @Input()
     @tuiDefaultProp()
@@ -70,7 +74,7 @@ export class TuiMoneyComponent {
             : this.numberFormat.decimalSeparator + fraction;
     }
 
-    get signSymbol(): '' | typeof CHAR_EN_DASH | '+' {
+    get signSymbol(): '' | typeof CHAR_EN_DASH | typeof CHAR_PLUS {
         const {sign, value} = this;
 
         if (sign === 'never' || !value || (sign === 'negative-only' && value > 0)) {
@@ -78,10 +82,11 @@ export class TuiMoneyComponent {
         }
 
         if (sign === 'force-negative' || (value < 0 && sign !== 'force-positive')) {
+            /** TODO(nsbarsukov): investigate if it should be replaced by {@link CHAR_HYPHEN} */
             return CHAR_EN_DASH;
         }
 
-        return '+';
+        return CHAR_PLUS;
     }
 
     @HostBinding('class._red')
@@ -97,7 +102,7 @@ export class TuiMoneyComponent {
     get green(): boolean {
         return (
             this.colored &&
-            (this.signSymbol === '+' ||
+            (this.signSymbol === CHAR_PLUS ||
                 (this.value > 0 && this.sign !== 'force-negative'))
         );
     }
@@ -109,7 +114,7 @@ export class TuiMoneyComponent {
 
     constructor(
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_MONEY_OPTIONS)
         private readonly options: TuiMoneyOptions,
     ) {}

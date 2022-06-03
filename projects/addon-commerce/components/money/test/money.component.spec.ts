@@ -1,12 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CHAR_EN_DASH} from '@taiga-ui/cdk';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDecimalT, TuiNumberFormatSettings} from '@taiga-ui/core';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TuiCurrency} from '../../../enums/currency';
 import {TuiCurrencyCode} from '../../../enums/currency-code';
-import {TuiMoneySignT} from '../../../types';
 import {TuiCurrencyVariants} from '../../../types/currency-variants';
 import {TuiMoneyComponent} from '../money.component';
 import {TuiMoneyModule} from '../money.module';
@@ -31,7 +30,7 @@ describe('Money', () => {
         value = 237;
         decimal: TuiDecimalT = 'not-zero';
         currency: TuiCurrencyVariants = null;
-        sign: TuiMoneySignT = 'negative-only';
+        sign: TuiNumberFormatSettings['signMode'] = 'negative-only';
         colored = false;
         precision = 2;
     }

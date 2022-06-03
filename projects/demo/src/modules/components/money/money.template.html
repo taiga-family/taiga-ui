@@ -149,38 +149,6 @@
 
             <ng-template
                 i18n
-                documentationPropertyName="sign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiMoneySignT"
-                [documentationPropertyValues]="signVariants"
-                [(documentationPropertyValue)]="sign"
-            >
-                <ol>
-                    <li>
-                        <code>negative-only</code>
-                        — shows sign for negative only (by default)
-                    </li>
-                    <li>
-                        <code>always</code>
-                        — always shows sign (except 0)
-                    </li>
-                    <li>
-                        <code>never</code>
-                        — never shows sign
-                    </li>
-                    <li>
-                        <code>force-negative</code>
-                        — always shows minus (except 0)
-                    </li>
-                    <li>
-                        <code>force-positive</code>
-                        — always shows plus (except 0)
-                    </li>
-                </ol>
-            </ng-template>
-
-            <ng-template
-                i18n
                 documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -198,6 +166,28 @@
                 [(documentationPropertyValue)]="value"
             >
                 Amount of money to be formatted
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="sign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMoneySignT"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="signVariants"
+                [(documentationPropertyValue)]="sign"
+            >
+                <p>
+                    Use the property
+                    <code>signMode</code>
+                    from
+                    <a
+                        tuiLink
+                        routerLink="/utils/tokens"
+                        fragment="number-format"
+                    >
+                        TUI_NUMBER_FORMAT
+                    </a>
+                </p>
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

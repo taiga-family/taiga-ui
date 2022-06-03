@@ -1,5 +1,5 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces';
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {formatNumber} from '@taiga-ui/core/utils/format';
 
@@ -7,7 +7,7 @@ import {formatNumber} from '@taiga-ui/core/utils/format';
 export class TuiFormatNumberPipe implements PipeTransform {
     constructor(
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
     ) {}
 
     /**

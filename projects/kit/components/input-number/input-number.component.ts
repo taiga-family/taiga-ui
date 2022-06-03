@@ -29,13 +29,13 @@ import {
     getFractionPartPadded,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
-    NumberFormatSettings,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimalT,
     tuiEnableAutoCorrectDecimalSymbol,
+    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
@@ -103,7 +103,7 @@ export class TuiInputNumberComponent
         @Inject(ChangeDetectorRef)
         changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
     ) {
         super(control, changeDetectorRef);
@@ -185,6 +185,7 @@ export class TuiInputNumberComponent
                 autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
                     this.numberFormat,
                 ),
+                signMode: this.numberFormat.signMode,
             }),
             pipe: tuiCreateAutoCorrectedNumberPipe(
                 decimal === 'always' ? decimalLimit : 0,
@@ -193,6 +194,7 @@ export class TuiInputNumberComponent
                 nativeFocusableElement,
                 allowNegative,
                 this.isIOS,
+                this.numberFormat.signMode,
             ),
             guide: false,
         } as TuiTextMaskOptions as unknown as TextMaskConfig);
@@ -291,6 +293,7 @@ export class TuiInputNumberComponent
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
             this.numberFormat.zeroPadding,
+            this.numberFormat.signMode,
         );
     }
 

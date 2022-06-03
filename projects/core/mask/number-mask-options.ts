@@ -1,3 +1,4 @@
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 export interface TuiNumberMaskOptions {
@@ -9,4 +10,5 @@ export interface TuiNumberMaskOptions {
     readonly requireDecimal?: boolean;
     readonly allowNegative?: boolean;
     readonly integerLimit?: number;
+    readonly signMode?: TuiNumberFormatSettings['signMode'];
 }

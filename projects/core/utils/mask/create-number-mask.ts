@@ -1,10 +1,17 @@
-import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
+import {
+    CHAR_EN_DASH,
+    CHAR_HYPHEN,
+    CHAR_NO_BREAK_SPACE,
+    CHAR_PLUS,
+    tuiAssert,
+} from '@taiga-ui/cdk';
 import {
     MASK_CARET_TRAP,
     TUI_DIGIT_REGEXP,
     TUI_LEADING_ZEROES_REGEXP,
     TUI_NON_DIGITS_REGEXP,
 } from '@taiga-ui/core/constants';
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TuiNumberMaskOptions, TuiTextMaskListHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 import {otherDecimalSymbol} from '@taiga-ui/core/utils/format';
@@ -23,6 +30,7 @@ export function tuiCreateNumberMask({
     requireDecimal = false,
     allowNegative = false,
     integerLimit = 0,
+    signMode = 'negative-only',
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
@@ -48,9 +56,6 @@ export function tuiCreateNumberMask({
             }
         }
 
-        const isNegative =
-            (rawValue[0] === '-' || rawValue[0] === CHAR_EN_DASH) && allowNegative;
-
         if (
             isDecimalSymbol(rawValue, decimalSymbol, autoCorrectDecimalSymbol) &&
             allowDecimal
@@ -58,17 +63,15 @@ export function tuiCreateNumberMask({
             return ['0', decimalSymbol, TUI_DIGIT_REGEXP];
         }
 
-        if (isNegative) {
-            rawValue = rawValue.slice(1);
-        }
+        const {sign, noSignValue} = extractSign(rawValue);
 
         const decimalIndex = getDecimalSymbolIndex(
-            rawValue,
+            noSignValue,
             decimalSymbol,
             autoCorrectDecimalSymbol,
         );
         const hasDecimal = decimalIndex !== -1;
-        const integer = hasDecimal ? rawValue.slice(0, decimalIndex) : rawValue;
+        const integer = hasDecimal ? noSignValue.slice(0, decimalIndex) : noSignValue;
         const thousandSeparators = integer.match(new RegExp(thousandSymbol, 'g')) || [];
         const integerCapped = integerLimit
             ? integer.slice(0, integerLimit + thousandSeparators.length)
@@ -90,14 +93,16 @@ export function tuiCreateNumberMask({
         if ((hasDecimal && allowDecimal) || requireDecimal) {
             const fraction = hasDecimal
                 ? convertToMask(
-                      rawValue.slice(decimalIndex + 1).replace(TUI_NON_DIGITS_REGEXP, ''),
+                      noSignValue
+                          .slice(decimalIndex + 1)
+                          .replace(TUI_NON_DIGITS_REGEXP, ''),
                   )
                 : [];
             const fractionCapped = decimalLimit
                 ? fraction.slice(0, decimalLimit)
                 : fraction;
 
-            if (rawValue[decimalIndex] !== otherDecimalSymbol(decimalSymbol)) {
+            if (noSignValue[decimalIndex] !== otherDecimalSymbol(decimalSymbol)) {
                 mask.push(MASK_CARET_TRAP);
             }
 
@@ -109,16 +114,15 @@ export function tuiCreateNumberMask({
         }
 
         const isOnlyZeroDigit = mask.length === 1 && integerCappedZerosClean === '0';
+        const maskWithSign = addSign({
+            mask,
+            signMode,
+            rawValue,
+            allowNegative,
+            sign: sign || CHAR_PLUS,
+        });
 
-        if (isNegative) {
-            if (mask.length === 0) {
-                mask.push(TUI_DIGIT_REGEXP);
-            }
-
-            mask.unshift('-');
-        }
-
-        return preventLeadingZeroes(mask, isOnlyZeroDigit, leadingZerosAmount);
+        return preventLeadingZeroes(maskWithSign, isOnlyZeroDigit, leadingZerosAmount);
     };
 }
 
@@ -190,4 +194,59 @@ function addThousandsSeparator(strNumber: string, thousandSymbol: string): strin
     return strNumber.length > 3
         ? strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
         : strNumber;
+}
+
+function extractSign(rawValue: string): {
+    noSignValue: string;
+    sign: '' | typeof CHAR_HYPHEN | typeof CHAR_PLUS;
+} {
+    const firstChar = rawValue[0];
+
+    if (TUI_DIGIT_REGEXP.test(firstChar)) {
+        return {noSignValue: rawValue, sign: ''};
+    }
+
+    const noSignValue = rawValue.slice(1);
+    const isNegative = firstChar === CHAR_HYPHEN || firstChar === CHAR_EN_DASH;
+
+    return {noSignValue, sign: isNegative ? CHAR_HYPHEN : CHAR_PLUS};
+}
+
+function addSign({
+    mask,
+    signMode,
+    sign,
+    rawValue,
+    allowNegative,
+}: {
+    mask: Array<string | RegExp>;
+    sign: typeof CHAR_HYPHEN | typeof CHAR_PLUS;
+    signMode: TuiNumberFormatSettings['signMode'];
+    rawValue: string;
+    allowNegative: boolean;
+}): Array<string | RegExp> {
+    const notEmptyMask = mask.length ? mask : [TUI_DIGIT_REGEXP];
+    const onlyZeros = !NON_ZERO_DIGIT.test(rawValue);
+
+    if (onlyZeros || signMode === 'never') {
+        return mask;
+    }
+
+    if (signMode === 'force-positive') {
+        return [CHAR_PLUS, ...notEmptyMask];
+    }
+
+    if (signMode === 'force-negative') {
+        return [CHAR_HYPHEN, ...notEmptyMask];
+    }
+
+    if (allowNegative && sign === CHAR_HYPHEN) {
+        return [CHAR_HYPHEN, ...notEmptyMask];
+    }
+
+    if (signMode === 'always' && sign === CHAR_PLUS) {
+        return [CHAR_PLUS, ...notEmptyMask];
+    }
+
+    return mask;
 }

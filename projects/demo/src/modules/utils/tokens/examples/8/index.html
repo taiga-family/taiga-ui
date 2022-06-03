@@ -22,6 +22,46 @@
                 zeroPadding =
                 <code>true</code>
             </li>
+            <li class="tui-list__item">
+                <button
+                    tuiLink
+                    tuiHintMode="onDark"
+                    [pseudo]="true"
+                    [tuiHint]="signModeOptions"
+                >
+                    signMode
+                </button>
+                =
+                <code>negative-only</code>
+
+                <ng-template #signModeOptions>
+                    <section>
+                        <h3>Available options:</h3>
+                        <ul class="tui-list">
+                            <li class="tui-list__item">
+                                <code>negative-only</code>
+                                — shows sign for negative only (by default)
+                            </li>
+                            <li class="tui-list__item">
+                                <code>always</code>
+                                — always shows sign (except 0)
+                            </li>
+                            <li class="tui-list__item">
+                                <code>never</code>
+                                — never shows sign
+                            </li>
+                            <li class="tui-list__item">
+                                <code>force-negative</code>
+                                — always shows minus (except 0)
+                            </li>
+                            <li class="tui-list__item">
+                                <code>force-positive</code>
+                                — always shows plus (except 0)
+                            </li>
+                        </ul>
+                    </section>
+                </ng-template>
+            </li>
         </ul>
     </section>
 
