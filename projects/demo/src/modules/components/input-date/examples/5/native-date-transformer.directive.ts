@@ -12,7 +12,7 @@ class ExampleTransformer implements TuiControlValueTransformer<From, To> {
     }
 
     toControlValue(componentValue: From): To {
-        return componentValue && componentValue.toLocalNativeDate();
+        return componentValue?.toLocalNativeDate() || null;
     }
 }
 

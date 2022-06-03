@@ -22,7 +22,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
         month: TuiMonth,
         showAdjacentDays: boolean = false,
     ): ReadonlyArray<readonly TuiDay[]> {
-        if (this.currentMonth && this.currentMonth.monthSame(month)) {
+        if (this.currentMonth?.monthSame(month)) {
             return this.currentSheet;
         }
 

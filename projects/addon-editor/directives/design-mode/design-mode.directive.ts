@@ -321,7 +321,7 @@ export class TuiDesignModeDirective
         for (let i = 0; i < dataTransfer.files.length; i++) {
             const file = dataTransfer.files.item(i);
 
-            if (file && file.type.startsWith('image/')) {
+            if (file?.type.startsWith('image/')) {
                 this.imageLoader(file)
                     .pipe(take(1), takeUntil(this.destroy$))
                     .subscribe(image => {

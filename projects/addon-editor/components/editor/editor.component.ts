@@ -46,7 +46,7 @@ export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoo
 }
 
 export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
-    return editor.focusableElement && editor.focusableElement.documentRef
+    return editor.focusableElement?.documentRef
         ? new ElementRef(editor.focusableElement.documentRef.body)
         : null;
 }
@@ -129,7 +129,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
                         this.linkDropdownEnabled &&
                         target instanceof Node &&
                         !elementRef.nativeElement.contains(target) &&
-                        !(this.editLink && this.editLink.nativeElement.contains(target)),
+                        !this.editLink?.nativeElement.contains(target),
                 ),
                 watch(changeDetectorRef),
                 takeUntil(destroy$),

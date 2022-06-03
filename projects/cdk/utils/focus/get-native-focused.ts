@@ -10,7 +10,7 @@ export function getNativeFocused(documentRef: Document): Element | null {
 
     let element = documentRef.activeElement.shadowRoot.activeElement;
 
-    while (element && element.shadowRoot) {
+    while (element?.shadowRoot) {
         element = element.shadowRoot.activeElement;
     }
 

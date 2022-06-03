@@ -98,11 +98,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             return TuiInteractiveState.Disabled;
         }
 
-        if (pressedItem !== null && pressedItem.monthSame(item)) {
+        if (pressedItem?.monthSame(item)) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (hoveredItem !== null && hoveredItem.monthSame(item)) {
+        if (hoveredItem?.monthSame(item)) {
             return TuiInteractiveState.Hovered;
         }
 
@@ -122,33 +122,29 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
         const theFirstOfRange = value.from.monthSame(item) && !value.isSingleMonth;
         const hoveredItemAfterFrom =
-            hoveredItem !== null &&
-            hoveredItem.monthAfter(value.from) &&
+            hoveredItem?.monthAfter(value.from) &&
             value.from.monthSame(item) &&
             value.isSingleMonth;
-        const hoveredItemIsCandidatToBeFrom =
-            hoveredItem !== null &&
-            hoveredItem.monthSame(item) &&
-            hoveredItem.monthBefore(value.from) &&
+        const hoveredItemIsCandidateToBeFrom =
+            hoveredItem?.monthSame(item) &&
+            hoveredItem?.monthBefore(value.from) &&
             value.isSingleMonth;
 
-        if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidatToBeFrom) {
+        if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidateToBeFrom) {
             return TuiRangeState.Start;
         }
 
         const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
         const hoveredItemBeforeTo =
-            hoveredItem !== null &&
             value.to.monthSame(item) &&
-            hoveredItem.monthBefore(value.to) &&
+            hoveredItem?.monthBefore(value.to) &&
             value.isSingleMonth;
-        const hoveredItemIsCandidatToBeTo =
-            hoveredItem !== null &&
-            hoveredItem.monthSame(item) &&
-            hoveredItem.monthAfter(value.from) &&
+        const hoveredItemIsCandidateToBeTo =
+            hoveredItem?.monthSame(item) &&
+            hoveredItem?.monthAfter(value.from) &&
             value.isSingleMonth;
 
-        if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidatToBeTo) {
+        if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidateToBeTo) {
             return TuiRangeState.End;
         }
 

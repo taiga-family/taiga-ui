@@ -128,7 +128,7 @@ export class TuiFieldErrorComponent {
     }
 
     private get controlErrors(): Record<string, any> {
-        return (this.control && this.control.errors) || EMPTY_RECORD;
+        return this.control?.errors || EMPTY_RECORD;
     }
 
     @tuiPure
@@ -136,7 +136,7 @@ export class TuiFieldErrorComponent {
         order: readonly string[],
         controlErrors: Record<string, any>,
     ): string {
-        const id = order && order.find(errorId => controlErrors[errorId]);
+        const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
         return id || fallback || '';

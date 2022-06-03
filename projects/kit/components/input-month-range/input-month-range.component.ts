@@ -133,7 +133,7 @@ export class TuiInputMonthRangeComponent
             return;
         }
 
-        if (this.value && this.value.isSingleMonth) {
+        if (this.value?.isSingleMonth) {
             this.updateValue(new TuiMonthRange(this.value.from, this.value.from));
         }
     }

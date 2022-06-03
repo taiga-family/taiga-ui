@@ -72,5 +72,5 @@ export function parseGradient(input: string): TuiParsedGradient {
 function getPosition(match: string, stops: number): string {
     const fallback = stops === 1 ? '100%' : `${stops}%`;
 
-    return match && match.includes('%') ? match : fallback;
+    return match?.includes('%') ? match : fallback;
 }

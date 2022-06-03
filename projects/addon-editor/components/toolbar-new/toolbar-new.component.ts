@@ -189,7 +189,7 @@ export class TuiToolbarNewComponent {
     }
 
     onImage(input: HTMLInputElement): void {
-        const file = input.files && input.files[0];
+        const file = input.files?.[0];
 
         input.value = '';
 

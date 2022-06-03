@@ -13,9 +13,7 @@ export function dispatchOnActive<T>(key: string, fixture?: ComponentFixture<T>):
 }
 
 export function activeText(): string {
-    return document.activeElement && document.activeElement.textContent
-        ? document.activeElement.textContent.trim()
-        : '';
+    return document.activeElement?.textContent?.trim() || '';
 }
 
 export function isActive(element: Element): boolean {
