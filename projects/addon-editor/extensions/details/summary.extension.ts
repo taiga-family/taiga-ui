@@ -13,7 +13,7 @@ export const TuiSummary = Node.create<TuiSummaryOptions>({
         };
     },
 
-    content: 'text*',
+    content: 'paragraph',
 
     group: 'block',
 
