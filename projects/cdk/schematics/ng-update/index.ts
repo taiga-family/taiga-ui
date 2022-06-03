@@ -8,6 +8,7 @@ import {replaceConsts} from './steps/replace-const';
 import {replaceDeepImports} from './steps/replace-deep-import';
 import {showWarnings} from './steps/show-warnings';
 import {replaceServices} from './steps/replace-services';
+import {migrateTemplates} from './steps/migrate-templates';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -21,6 +22,7 @@ export function updateToV3(_: Schema): Rule {
         replaceConsts();
         replaceServices();
         showWarnings(context);
+        migrateTemplates(tree);
 
         saveActiveProject();
     };
