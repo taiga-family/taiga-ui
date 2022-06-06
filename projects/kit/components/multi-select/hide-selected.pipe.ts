@@ -15,6 +15,14 @@ export class TuiHideSelectedPipe implements PipeTransform {
     ) {}
 
     transform<T>(
+        items: readonly T[] | null,
+        component?: TuiMultiSelectComponent<T>, // TODO: 3.0 @deprecated remove
+    ): readonly T[] | null;
+    transform<T>(
+        items: ReadonlyArray<readonly T[]> | null,
+        component?: TuiMultiSelectComponent<T>, // TODO: 3.0 @deprecated remove
+    ): ReadonlyArray<readonly T[]> | null;
+    transform<T>(
         items: readonly T[] | ReadonlyArray<readonly T[]> | null,
         component?: TuiMultiSelectComponent<T>, // TODO: 3.0 @deprecated remove
     ): readonly T[] | ReadonlyArray<readonly T[]> | null {
