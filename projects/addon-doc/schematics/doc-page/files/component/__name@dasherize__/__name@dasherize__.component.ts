@@ -11,5 +11,5 @@ export class Example<%= classify(name) %>Component {
             HTML: import('!!raw-loader!./examples/<%=i%>/index.html'),
         };
     <% } %>
-    readonly exampleImportModule = import('!!raw-loader!./import/import-module.txt');
+    readonly exampleImportModule = import('!!raw-loader!./import/import-module.md');
 }

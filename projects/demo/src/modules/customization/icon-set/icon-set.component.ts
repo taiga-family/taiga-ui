@@ -9,7 +9,7 @@ import {tuiKitIcons} from '@taiga-ui/icons';
     changeDetection,
 })
 export class IconSetComponent {
-    readonly exampleSanitizer = import('!!raw-loader!./examples/sanitizer/sanitizer.txt');
+    readonly exampleSanitizer = import('!!raw-loader!./examples/sanitizer/sanitizer.md');
 
     readonly example1 = {
         'process-icons.js': import('!!raw-loader!./examples/1/process-icons.md'),

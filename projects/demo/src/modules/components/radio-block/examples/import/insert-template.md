@@ -1,5 +1,5 @@
 ```html
-<div [formGroup]="testForm">
+<form [formGroup]="testForm">
   <tui-radio-block
     formControlName="testValue"
     item="orange"
@@ -18,5 +18,5 @@
   >
     Pineapples
   </tui-radio-block>
-</div>
+</form>
 ```

@@ -19,11 +19,11 @@ export class ExampleTuiDialogComponent {
     readonly method = import('!!raw-loader!./method.md');
 
     readonly dialogsCloseToken = import(
-        '!!raw-loader!./examples/import/dialogs-close-token.txt'
+        '!!raw-loader!./examples/import/dialogs-close-token.md'
     );
 
     readonly exampleDialogClosesOnBackToken = import(
-        '!!raw-loader!./examples/import/dialogClosesOnBackToken.txt'
+        '!!raw-loader!./examples/import/dialog-closes-on-back-token.md'
     );
 
     readonly example1: TuiDocExample = {
@@ -88,20 +88,20 @@ export class ExampleTuiDialogComponent {
     };
 
     readonly exampleImportModuleComponent = import(
-        '!!raw-loader!./examples/import/import-module-component.txt'
+        '!!raw-loader!./examples/import/import-module-component.md'
     );
 
     readonly exampleServiceUsage = import(
-        '!!raw-loader!./examples/import/service-usage.txt'
+        '!!raw-loader!./examples/import/service-usage.md'
     );
 
     readonly exampleCustomDialog = import(
-        '!!raw-loader!./examples/import/custom-dialog.txt'
+        '!!raw-loader!./examples/import/custom-dialog.md'
     );
 
-    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.txt');
+    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.md');
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/module.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/module.md');
 
     data = 100;
 

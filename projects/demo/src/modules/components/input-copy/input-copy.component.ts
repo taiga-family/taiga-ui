@@ -28,9 +28,9 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
         HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
     readonly control = new FormControl('', Validators.required);
 

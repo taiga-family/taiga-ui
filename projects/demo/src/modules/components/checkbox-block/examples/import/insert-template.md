@@ -1,5 +1,5 @@
 ```html
-<div [formGroup]="testForm">
+<form [formGroup]="testForm">
   <tui-checkbox-block formControlName="testValue">Content</tui-checkbox-block>
-</div>
+</form>
 ```

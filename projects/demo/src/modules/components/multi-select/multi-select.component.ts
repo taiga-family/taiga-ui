@@ -45,9 +45,9 @@ class Account {
     ],
 })
 export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
