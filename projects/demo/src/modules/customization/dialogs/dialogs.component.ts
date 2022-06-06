@@ -1,15 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as examplePromptComp} from '!!raw-loader!./examples/1/prompt/prompt.component.ts';
-import {default as examplePromptModule} from '!!raw-loader!./examples/1/prompt/prompt.module';
-import {default as examplePromptService} from '!!raw-loader!./examples/1/prompt/prompt.service.ts';
-import {default as examplePromptLess} from '!!raw-loader!./examples/1/prompt/prompt.style.less';
-import {default as examplePromptHtml} from '!!raw-loader!./examples/1/prompt/prompt.template.html';
-import {default as examplePromptOptions} from '!!raw-loader!./examples/1/prompt/prompt-options.ts';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'dialogs',
@@ -17,15 +8,27 @@ import {default as examplePromptOptions} from '!!raw-loader!./examples/1/prompt/
     changeDetection,
 })
 export class DialogsComponent {
-    readonly example1 = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
-        'prompt/prompt.service.ts': examplePromptService,
-        'prompt/prompt-options.ts': examplePromptOptions,
-        'prompt/prompt.component.ts': examplePromptComp,
-        'prompt/prompt.template.html': examplePromptHtml,
-        'prompt/prompt.style.less': examplePromptLess,
-        'prompt/prompt.module.ts': examplePromptModule,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
+        'prompt/prompt.service.ts': import(
+            '!!raw-loader!./examples/1/prompt/prompt.service.ts'
+        ),
+        'prompt/prompt-options.ts': import(
+            '!!raw-loader!./examples/1/prompt/prompt-options.ts'
+        ),
+        'prompt/prompt.component.ts': import(
+            '!!raw-loader!./examples/1/prompt/prompt.component.ts'
+        ),
+        'prompt/prompt.template.html': import(
+            '!!raw-loader!./examples/1/prompt/prompt.template.html'
+        ),
+        'prompt/prompt.style.less': import(
+            '!!raw-loader!./examples/1/prompt/prompt.style.less'
+        ),
+        'prompt/prompt.module.ts': import(
+            '!!raw-loader!./examples/1/prompt/prompt.module'
+        ),
     };
 }

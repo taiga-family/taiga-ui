@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
@@ -8,6 +9,7 @@ import {I18nComponent} from './i18n.component';
 
 @NgModule({
     imports: [
+        CommonModule,
         TuiCalendarModule,
         MarkdownModule,
         TuiLinkModule,

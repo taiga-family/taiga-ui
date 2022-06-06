@@ -1,1 +1,0 @@
-Fomatted number: {{index | tuiFormatNumber}}

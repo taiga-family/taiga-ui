@@ -1,3 +1,0 @@
-<div class="wrapper" tuiHintContent="Hello">
-    <tui-primitive-textfield>...</tui-primitive-textfield>
-</div>

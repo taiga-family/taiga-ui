@@ -1,0 +1,3 @@
+```html
+<div (tuiSwipe)="..."></div>
+```

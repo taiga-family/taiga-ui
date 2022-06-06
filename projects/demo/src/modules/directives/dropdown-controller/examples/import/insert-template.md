@@ -1,0 +1,13 @@
+```html
+<div
+  tuiDropdownAlign="left"
+  class="wrapper"
+>
+  <tui-hosted-dropdown
+    [open]="open"
+    [content]="content"
+  >
+    ...
+  </tui-hosted-dropdown>
+</div>
+```

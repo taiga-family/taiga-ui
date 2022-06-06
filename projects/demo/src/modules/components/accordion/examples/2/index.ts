@@ -3,8 +3,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
-import {default as rubl} from '!!raw-loader!./rubl.svg';
-
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
 
@@ -27,7 +25,9 @@ export class TuiAccordionExample2 {
         new Account('Euro', 100),
     ];
 
-    svgIcons = {rubl};
+    svgIcons = {
+        rubles: import('!!raw-loader!./rubles.svg') as Promise<{default: string}>,
+    };
 
     testForm = new FormGroup({
         name: new FormControl(''),
