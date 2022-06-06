@@ -37,7 +37,7 @@ jobs:
           npm run exec -- ./scripts/release.ts --release-as ${{ github.event.inputs.mode }} --ci-mode
 
       - name: Generate Release Body
-        id: generare_body
+        id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
@@ -50,14 +50,6 @@ jobs:
           body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
-      - name: Render template
-        id: template
-        uses: chuhlomin/render-template@v1.4
-        with:
-          template: .github/PULL_REQUEST_RELEASE_TEMPLATE.md
-          vars: |
-            RELEASE_BODY: ${{ steps.get-pr-body.outputs.body }}
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
@@ -65,13 +57,22 @@ jobs:
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           branch: release/${{ steps.run-release.outputs.new_version }}
           title: 'Release/${{ steps.run-release.outputs.new_version }}'
-          body: ${{ steps.template.outputs.result }}
+          body: |
+            ${{ steps.get-pr-body.outputs.body }}
+
+            ---
+
+            > **DO NOT SQUASH OR REBASE ME**
+
+            > if user merges this PR via rebasing or using squash, it will cause lost of the tag. It happens because tag is already
+            > attached to the initial release commit SHA. If we use rebase or squash, the commit sha changes and already created tag
+            > points to not-existing commit.
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          name: Release ${{ steps.generare_body.outputs.tag_name }}
-          tag: ${{ steps.generare_body.outputs.tag_name }}
+          name: Release ${{ steps.generate_body.outputs.tag_name }}
+          tag: ${{ steps.generate_body.outputs.tag_name }}
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
