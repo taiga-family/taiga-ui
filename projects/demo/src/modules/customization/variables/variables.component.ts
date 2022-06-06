@@ -1,10 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'variables',
@@ -12,9 +8,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class VariablesComponent {
-    readonly example1: FrontEndExample = {
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
     readonly vars: Record<string, string> = {

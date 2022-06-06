@@ -3,5 +3,5 @@
     i18n-header
     header="Internationalization"
 >
-    <markdown [data]="readme"></markdown>
+    <markdown [data]="(readme | async) || ''"></markdown>
 </tui-doc-page>

@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
+import {from} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'i18n',
@@ -11,5 +11,9 @@ import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
     changeDetection,
 })
 export class I18nComponent {
-    readonly readme = readme.split('Supported languages:')[1];
+    readonly readme = from(
+        import('!!raw-loader!../../../../../i18n/README.md') as Promise<{
+            default: string;
+        }>,
+    ).pipe(map(readme => readme.default.split('Supported languages:')[1]));
 }

@@ -1,14 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-mapper',
@@ -17,16 +9,16 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiMapperComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
+        HTML: import('!!raw-loader!./examples/1/template.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/component.ts'),
+        HTML: import('!!raw-loader!./examples/2/template.html'),
     };
 }

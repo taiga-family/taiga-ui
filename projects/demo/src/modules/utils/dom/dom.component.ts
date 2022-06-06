@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
-import {default as importComponentExample} from '!!raw-loader!./examples/import/import-component.txt';
-
 @Component({
     selector: 'example-dom',
     templateUrl: './dom.template.html',
@@ -10,5 +8,5 @@ import {default as importComponentExample} from '!!raw-loader!./examples/import/
     changeDetection,
 })
 export class ExampleDomComponent {
-    importComponentExample = importComponentExample;
+    importComponentExample = import('!!raw-loader!./examples/import/import-component.md');
 }

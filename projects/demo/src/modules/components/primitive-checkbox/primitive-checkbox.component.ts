@@ -2,19 +2,15 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeL} from '@taiga-ui/core';
 
-import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
 @Component({
     selector: 'example-tui-checkbox',
     templateUrl: './primitive-checkbox.template.html',
     changeDetection,
 })
 export class ExampleTuiPrimitiveCheckboxComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleOptions = exampleOptions;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 

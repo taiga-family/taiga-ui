@@ -1,0 +1,22 @@
+```html
+<div [formGroup]="testForm">
+  <tui-radio-block
+    formControlName="testValue"
+    item="orange"
+  >
+    Oranges
+  </tui-radio-block>
+  <tui-radio-block
+    formControlName="testValue"
+    item="apple"
+  >
+    Apples
+  </tui-radio-block>
+  <tui-radio-block
+    formControlName="testValue"
+    item="pineapple"
+  >
+    Pineapples
+  </tui-radio-block>
+</div>
+```

@@ -1,18 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {default as imageUrl} from '!!file-loader!../../../assets/images/ts.svg';
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {TuiThemeService} from '../../app/theme.service';
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
     selector: 'example-tui-svg',
@@ -20,19 +12,19 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiSvgComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
     readonly iconVariants: readonly string[] = [

@@ -1,15 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
     selector: 'example-tui-textfield-controller',
@@ -17,12 +11,12 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiTextfieldControllerComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];

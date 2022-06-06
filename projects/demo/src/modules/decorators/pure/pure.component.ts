@@ -1,11 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as exampleDecorator} from '!!raw-loader!./import/example-decorator.txt';
-import {default as example2Ts} from '!!raw-loader!./pure-function.component.ts';
-import {default as example1Ts} from '!!raw-loader!./pure-getter.component.ts';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-pure',
@@ -13,13 +8,13 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiPureComponent {
-    readonly exampleDecorator = exampleDecorator;
+    readonly exampleDecorator = import('!!raw-loader!./import/example-decorator.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./pure-getter.component.ts'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./pure-function.component.ts'),
     };
 }

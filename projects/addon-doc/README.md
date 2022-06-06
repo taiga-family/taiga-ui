@@ -116,9 +116,6 @@ npm i @taiga-ui/addon-doc
    ```typescript
    import {Component} from '@angular/core';
 
-   import {default as exampleHtml} from '!!raw-loader!./examples/1/index.html';
-   import {default as exampleTs} from '!!raw-loader!./examples/1/index.ts';
-
    @Component({
      selector: 'super-component',
      templateUrl: './account.template.html',
@@ -126,8 +123,8 @@ npm i @taiga-ui/addon-doc
    export class SuperComponent {
      // Keys would be used as tabs for code example
      readonly example = {
-       TypeScript: exampleTs,
-       HTML: exampleHtml,
+       TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+       HTML: import('!!raw-loader!./examples/1/index.html'),
      };
 
      readonly inputVariants = ['input 1', 'input 2'];

@@ -1,18 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
     selector: 'example-slider',
@@ -20,18 +11,18 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiSliderComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
-    readonly exampleForm = exampleForm;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
     readonly control = new FormControl(8);

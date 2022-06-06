@@ -2,9 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPluralize} from '@taiga-ui/core';
 
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
 @Component({
     selector: 'example-tui-pluralize',
     templateUrl: './pluralize.template.html',
@@ -12,8 +9,8 @@ import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-temp
     changeDetection,
 })
 export class ExampleTuiPluralizeComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     index = 10;
 

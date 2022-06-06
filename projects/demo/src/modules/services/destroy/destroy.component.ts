@@ -1,11 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as exampleTs} from '!!raw-loader!./examples/1/component.ts';
-import {default as exampleHtml} from '!!raw-loader!./examples/1/template.html';
-import {default as injectService} from '!!raw-loader!./examples/inject-service.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-destroy',
@@ -13,10 +8,10 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiDestroyComponent {
-    injectService = injectService;
+    injectService = import('!!raw-loader!./examples/inject-service.md');
 
-    readonly example: FrontEndExample = {
-        TypeScript: exampleTs,
-        HTML: exampleHtml,
+    readonly example: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
+        HTML: import('!!raw-loader!./examples/1/template.html'),
     };
 }
