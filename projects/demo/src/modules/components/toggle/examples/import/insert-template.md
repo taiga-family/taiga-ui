@@ -1,5 +1,5 @@
 ```html
-<div [formGroup]="testForm">
+<form [formGroup]="testForm">
   <tui-toggle formControlName="testValue"></tui-toggle>
-</div>
+</form>
 ```

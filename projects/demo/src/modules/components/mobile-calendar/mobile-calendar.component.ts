@@ -33,10 +33,10 @@ export function dataStreamFactory(
     ],
 })
 export class ExampleTuiMobileCalendarComponent {
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
     readonly exampleImportDialogModule = import(
-        '!!raw-loader!./examples/import/import-dialog-module.txt'
+        '!!raw-loader!./examples/import/import-dialog-module.md'
     );
 
     readonly example1: TuiDocExample = {

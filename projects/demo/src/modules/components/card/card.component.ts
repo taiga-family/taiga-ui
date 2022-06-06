@@ -20,10 +20,10 @@ const BRAND_LOGOS = [
     changeDetection,
 })
 export class ExampleTuiCardComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
     readonly exampleCustomizeStyles = import(
-        '!!raw-loader!./examples/import/customize-styles.txt'
+        '!!raw-loader!./examples/import/customize-styles.md'
     );
 
     readonly example1: TuiDocExample = {

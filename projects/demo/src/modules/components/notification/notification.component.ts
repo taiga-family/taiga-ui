@@ -9,9 +9,9 @@ import {TuiNotification} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiNotificationComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
-    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

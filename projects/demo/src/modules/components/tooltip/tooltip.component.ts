@@ -32,9 +32,9 @@ export class ExampleTuiTooltipComponent {
         HTML: import('!!raw-loader!./examples/4/index.html'),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly modeVariants: readonly TuiHintModeT[] = ['error'];
 

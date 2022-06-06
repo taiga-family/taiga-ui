@@ -1,0 +1,16 @@
+```html
+<video
+  tuiMedia
+  controls
+>
+  <source
+    *tuiHdpi
+    src="4k.mp4"
+    type="video/mp4"
+  />
+  <source
+    src="1080p.mp4"
+    type="video/mp4"
+  />
+</video>
+```

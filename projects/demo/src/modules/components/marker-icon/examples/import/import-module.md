@@ -1,5 +1,11 @@
+```ts
 import {TuiMarkerIconModule} from '@taiga-ui/kit';
 
-...
+// ...
 
-@NgModule({ imports: [ ... TuiMarkerIconModule ], ...
+@NgModule({
+  imports: [...TuiMarkerIconModule],
+  // ...
+})
+export class MyModule {}
+```

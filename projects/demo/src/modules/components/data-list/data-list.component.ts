@@ -7,9 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleTuiDataListComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1 = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
