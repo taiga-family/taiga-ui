@@ -11,37 +11,50 @@
             A component to input numbers. Control value is also of number type.
         </div>
 
-        <p i18n>
-            Component can be used to input money if you choose a currency symbol
-            as a postfix or prefix (see
-            <code>Currency</code>
-            pipe samples).
-        </p>
-
-        <p i18n>
-            There are also other components to input numbers:
-            <a
-                tuiLink
-                routerLink="/components/input-count"
-            >
-                <code>InputCount</code>
-            </a>
-            for integers,
-            <a
-                tuiLink
-                routerLink="/components/slider"
-            >
-                <code>Slider</code>
-            </a>
-            and
-            <a
-                tuiLink
-                routerLink="/components/input-slider"
-            >
-                <code>InputSlider</code>
-            </a>
-            for inputting with a slider
-        </p>
+        <section i18n>
+            <h3>There are also other components to input numbers:</h3>
+            <ul class="tui-list tui-list_small">
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-count"
+                    >
+                        <strong>InputCount</strong>
+                    </a>
+                    (integers only)
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/slider"
+                    >
+                        <strong>Slider</strong>
+                    </a>
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-slider"
+                    >
+                        <strong>InputSlider</strong>
+                    </a>
+                    (it uses
+                    <code>InputNumber</code>
+                    inside)
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-range"
+                    >
+                        <strong>InputRange</strong>
+                    </a>
+                    (it uses
+                    <code>InputNumber</code>
+                    inside)
+                </li>
+            </ul>
+        </section>
 
         <p i18n>
             Number formatting can be customized with
@@ -60,7 +73,24 @@
             i18n-heading
             heading="Currency"
             [content]="example1"
+            [description]="currencyPipeDescription"
         >
+            <ng-template #currencyPipeDescription>
+                <p i18n>
+                    To input money use properties
+                    <code>[postfix]</code>
+                    or
+                    <code>[prefix]</code>
+                    . To get currency symbol use pipe
+                    <a
+                        tuiLink
+                        routerLink="/pipes/currency"
+                    >
+                        tuiCurrency
+                    </a>
+                    .
+                </p>
+            </ng-template>
             <tui-input-number-example-1></tui-input-number-example-1>
         </tui-doc-example>
 

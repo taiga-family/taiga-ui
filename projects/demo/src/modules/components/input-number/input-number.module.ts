@@ -7,6 +7,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -37,6 +38,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiNotificationModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
+        TuiHintModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputNumberComponent)),
     ],
     declarations: [

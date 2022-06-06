@@ -7,12 +7,13 @@ import {
     ViewChild,
 } from '@angular/core';
 import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
+import {TuiResizeService} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {defer, EMPTY} from 'rxjs';
+import {defer, EMPTY, merge, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
@@ -21,6 +22,7 @@ import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
     selector: 'tui-value-decoration',
     templateUrl: 'value-decoration.template.html',
     styleUrls: ['value-decoration.style.less'],
+    providers: [TuiResizeService],
     // It follows Change Detection of PrimitiveTextfield
     changeDetection: ChangeDetectionStrategy.Default,
 })
@@ -31,7 +33,9 @@ export class TuiValueDecorationComponent {
     @ViewChild(MutationObserverDirective, {static: true})
     private readonly directive?: MutationObserverDirective;
 
-    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
+    readonly pre$ = defer(() =>
+        merge(this.directive?.waMutationObserver ?? EMPTY, this.resize$),
+    ).pipe(
         map(() => this.pre?.nativeElement.offsetWidth ?? 0),
         startWith(0),
         distinctUntilChanged(),
@@ -42,6 +46,8 @@ export class TuiValueDecorationComponent {
         private readonly textfield: TuiPrimitiveTextfieldComponent,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         private readonly controller: TuiTextfieldController,
+        @Inject(TuiResizeService)
+        readonly resize$: Observable<unknown>,
     ) {}
 
     @HostBinding('class._table')
