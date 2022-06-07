@@ -35,6 +35,7 @@ jobs:
           git config user.name "tinkoff-bot"
           git config --global push.followTags true
           npm run exec -- ./scripts/release.ts --release-as ${{ github.event.inputs.mode }} --ci-mode
+          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
 
       - name: Generate Release Body
         id: generate_body
