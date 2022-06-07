@@ -20,9 +20,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1: TuiDocExample = {
         HTML: import('!!raw-loader!./examples/1/index.html'),
@@ -31,13 +31,13 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
         HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
         HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
     };
 
     readonly example4: TuiDocExample = {
