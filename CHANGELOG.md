@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.48.0](https://github.com/tinkoff/taiga-ui/compare/v2.47.0...v2.48.0) (2022-06-07)
+
+### Features
+
+- **addon-editor:** add selected content into details ([#1865](https://github.com/tinkoff/taiga-ui/issues/1865))
+  ([3c7c53b](https://github.com/tinkoff/taiga-ui/commit/3c7c53b6a707718c9d4441f447991dd79b4f4bba))
+
+### Bug Fixes
+
+- **addon-editor:** fix cursor visibility in summary extension
+  ([#1864](https://github.com/tinkoff/taiga-ui/issues/1864))
+  ([b4ed2af](https://github.com/tinkoff/taiga-ui/commit/b4ed2af42bd4ec0b6e9634237e98abf519e17852))
+- **cdk:** fix autofocus behavior in ios
+  ([77cbe36](https://github.com/tinkoff/taiga-ui/commit/77cbe360d957a9e0ae3e25ae3c8d92d4bc1d4883))
+- **kit:** `InputNumber` prefix is overlapped by value ([#1867](https://github.com/tinkoff/taiga-ui/issues/1867))
+  ([b4d66d5](https://github.com/tinkoff/taiga-ui/commit/b4d66d5a0d51d0ff0b5e2f15758f30223fd02435))
+- **kit:** use correct return type when passing an argument
+  ([409aead](https://github.com/tinkoff/taiga-ui/commit/409aeadb6a47826616bb32778ff0a45209e7278d))
+
 ## [2.47.0](https://github.com/tinkoff/taiga-ui/compare/v2.46.0...v2.47.0) (2022-05-30)
 
 ### Features
