@@ -29,6 +29,23 @@ const TEMPLATE_BEFORE = `
         </tr>
 </thead>
 <tui-editor new [formControl]="control"></tui-editor>
+<tui-editor new [formControl]="control"></tui-editor>
+<tui-group class="some_class">
+    <div class="content"></div>
+</tui-group>
+
+<tui-wrapper
+    [appearance]="appearance"
+    [disabled]="computedDisabled"
+    [focused]="computedFocusVisible"
+    [hovered]="computedHovered"
+    [pressed]="computedPressed"
+    [invalid]="computedInvalid"
+>any</tui-wrapper>
+
+<div tuiWrapper
+    [hovered]="computedHovered"
+>any</div>
 `;
 
 const TEMPLATE_AFTER = `
@@ -42,7 +59,38 @@ const TEMPLATE_AFTER = `
             <th tuiTh>Balance</th>
         </tr>
 </thead>
-<tui-editor  [formControl]="control"></tui-editor>
+<tui-editor [formControl]="control"></tui-editor>
+<tui-editor [formControl]="control"></tui-editor>
+<div tuiGroup class="some_class">
+    <div class="content"></div>
+</div>
+
+<div tuiWrapper
+    [appearance]="appearance"
+    [disabled]="computedDisabled"
+    [focused]="computedFocusVisible"
+    [hover]="computedHovered"
+    [active]="computedPressed"
+    [invalid]="computedInvalid"
+>any</div>
+
+<div tuiWrapper
+    [hover]="computedHovered"
+>any</div>
+`;
+
+const COMPONENT_BEFORE = `
+@Component({template: '<tui-group><div></div></tui-group>'})
+export class AppComponent {
+    aware = TUI_MOBILE_AWARE;
+}
+`;
+
+const COMPONENT_AFTER = `
+@Component({template: '<div tuiGroup><div></div></div>'})
+export class AppComponent {
+    aware = TUI_MOBILE_AWARE;
+}
 `;
 
 describe('ng-update', () => {
@@ -66,6 +114,12 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/app.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
+    it('should edit inline templates', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -75,4 +129,6 @@ function createMainFiles(): void {
     createSourceFile('test/app/app.component.ts', COMPONENT_WITH_TEMPLATE_URL);
 
     createSourceFile('test/app/app.template.html', TEMPLATE_BEFORE);
+
+    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 }
