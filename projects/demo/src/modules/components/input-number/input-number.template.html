@@ -99,7 +99,19 @@
             i18n-heading
             heading="sizes"
             [content]="example2"
+            [description]="textFieldControllerDescription"
         >
+            <ng-template #textFieldControllerDescription>
+                Customize input via
+                <a
+                    tuiLink
+                    routerLink="/directives/textfield-controller"
+                >
+                    TextfieldControllers
+                </a>
+                .
+            </ng-template>
+
             <tui-notification class="tui-space_bottom-4 b-form">
                 If you need to set some attributes or listen to events on native
                 <code>input</code>
@@ -113,9 +125,15 @@
         <tui-doc-example
             id="precision"
             i18n-heading
-            heading="4 digits after comma"
+            heading="8 digits after comma"
             [content]="example3"
+            [description]="precisionDescription"
         >
+            <ng-template #precisionDescription>
+                Use property
+                <code>[precision]</code>
+                to configure a number of digits after comma.
+            </ng-template>
             <tui-input-number-example-3></tui-input-number-example-3>
         </tui-doc-example>
 
@@ -138,14 +156,17 @@
                     [focusable]="focusable"
                     [tuiTextfieldAutocomplete]="autocomplete"
                     [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [tuiTextfieldType]="type"
                     [min]="min"
                     [max]="max"
                     [pseudoInvalid]="pseudoInvalid"
                     [pseudoFocused]="pseudoFocused"
                     [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
