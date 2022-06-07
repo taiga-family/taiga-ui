@@ -1,9 +1,0 @@
-{
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "typeRoots": ["../../node_modules/@types", "../../node_modules/cypress/types"],
-        "types": ["cypress", "node"]
-    },
-    "include": ["./cypress/**/*.ts"],
-    "exclude": []
-}

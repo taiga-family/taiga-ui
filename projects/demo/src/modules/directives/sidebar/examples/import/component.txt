@@ -1,5 +1,0 @@
-open = false;
-
-toggle(open: boolean) {
-    this.open = open;
-}

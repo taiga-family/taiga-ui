@@ -1,3 +1,0 @@
-<tui-island tuiRipple>
-    ...
-</tui-island>
