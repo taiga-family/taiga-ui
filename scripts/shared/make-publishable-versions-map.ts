@@ -18,9 +18,11 @@ function cleanupVersion(version: string): string {
 
 /**
  * @example:
- * result -> Map(3) { 3 => '3.10.0', 2 => '2.47.0', 1 => '1.6.5' } / if last version is v4+
- * result -> Map(2) { 2 => '2.47.0', 1 => '1.6.5' } / if last version is v3+
- * result -> Map(1) { 1 => '1.6.5' } / if last version is v2+
+ * result -> Map(2) { 3 => '3.10.0', 2 => '2.47.0' } / if current version is v4+
+ * result -> Map(1) { 2 => '2.47.0' } / if current version is v3+
+ * result -> Map(0) {} / if current version is v2+
+ *
+ * We are ignoring v1.x snapshot
  */
 export function makePublishableVersionsMap(): Map<number, string> {
     const sortedTags = getAllSortedTags();
@@ -31,7 +33,7 @@ export function makePublishableVersionsMap(): Map<number, string> {
     for (const fullVersion of sortedTags) {
         const majorVersion = parseInt(fullVersion);
 
-        if (majorVersion !== lastMajorVersion) {
+        if (majorVersion !== lastMajorVersion && majorVersion > 1) {
             publishableVersions.set(majorVersion, fullVersion);
         }
     }

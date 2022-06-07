@@ -17,19 +17,32 @@ jobs:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # indicates all history for all branches and tags
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
       - run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
 
-      - name: Deploy # only from release branch
-        if: ${{ contains(github.head_ref, 'release/') }}
+      - name: Get current major version
+        id: get-current-major-version
+        run: echo "::set-output name=value::$(node -p "parseInt(require('./package.json').version)")"
+
+      - name: Update the latest snapshot ${{ steps.get-current-major-version.outputs.value }}.x
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          BRANCH: snapshots/v/${{ steps.get-current-major-version.outputs.value }}.x
+          FOLDER: dist/demo/browser
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
           folder: dist/demo/browser
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          silent: false
           clean: true
           clean-exclude: |
             CNAME

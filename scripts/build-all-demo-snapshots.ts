@@ -1,6 +1,6 @@
 import {buildCurrentVersion, buildNextVersion} from './shared/build-demo';
 import {cleanupDistDemoDirectory} from './shared/cleanup-dist-demo-directory';
-import {cloneAndBuildOldVersions} from './shared/clone-and-build-old-versions';
+import {clonePreBuiltSnapshots} from './shared/clone-pre-built-snapshots';
 import {logDistDirectory} from './shared/log-dist-directory';
 import {makePublishableVersionsMap} from './shared/make-publishable-versions-map';
 import {postBuildAllVersion} from './shared/post-build-all-version';
@@ -11,7 +11,7 @@ import {postBuildAllVersion} from './shared/post-build-all-version';
     cleanupDistDemoDirectory();
     buildCurrentVersion();
     buildNextVersion();
-    cloneAndBuildOldVersions(versionsMap);
+    clonePreBuiltSnapshots(versionsMap);
     postBuildAllVersion(versionsMap);
     logDistDirectory();
 })();
