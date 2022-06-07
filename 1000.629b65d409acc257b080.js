@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1e3],{c4CL:function(n,w,e){"use strict";e.r(w),w.default=".table {\n    width: 100%;\n}\n"}}]);
