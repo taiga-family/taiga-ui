@@ -110,7 +110,7 @@ module.exports = {
                 selector: 'enum',
                 modifiers: ['exported'],
                 format: ['StrictPascalCase'],
-                // prefix: ['Tui', 'Example'], // TODO: enable later
+                prefix: ['Tui', 'Example', 'Test'],
             },
             {
                 selector: 'enumMember',

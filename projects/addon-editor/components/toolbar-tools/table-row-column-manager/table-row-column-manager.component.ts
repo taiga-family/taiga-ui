@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
@@ -9,6 +10,19 @@ import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+export enum TuiTableCommands {
+    InsertColumnBefore,
+    InsertColumnAfter,
+    InsertRowBefore,
+    InsertRowAfter,
+    DeleteColumn,
+    DeleteRow,
+}
+
+// `export const TableComands = TuiTableCommands;` doesn't work as expected type reference
+/**
+ * @deprecated in v3.0 {@link TuiTableCommands}
+ */
 export enum TableComands {
     InsertColumnBefore,
     InsertColumnAfter,
@@ -24,13 +38,13 @@ export enum TableComands {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
-    private readonly commandsRegistry: Record<TableComands, () => void> = {
-        [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
-        [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
-        [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
-        [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
-        [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
-        [TableComands.DeleteRow]: () => this.editor.deleteRow(),
+    private readonly commandsRegistry: Record<TuiTableCommands, () => void> = {
+        [TuiTableCommands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
+        [TuiTableCommands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
+        [TuiTableCommands.InsertRowAfter]: () => this.editor.addRowAfter(),
+        [TuiTableCommands.InsertRowBefore]: () => this.editor.addRowBefore(),
+        [TuiTableCommands.DeleteColumn]: () => this.editor.deleteColumn(),
+        [TuiTableCommands.DeleteRow]: () => this.editor.deleteRow(),
     };
 
     readonly isActive$ = this.editor.isActive$('table');
@@ -47,7 +61,7 @@ export class TuiTableRowColumnManagerComponent {
         readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
     ) {}
 
-    onTableOption(command: TableComands): void {
+    onTableOption(command: TuiTableCommands): void {
         this.commandsRegistry[command]();
     }
 }
