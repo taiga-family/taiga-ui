@@ -33,4 +33,3 @@ dist
 .ssl
 RELEASE_BODY.md
 *tsbuildinfo
-taiga-ui-olds/
