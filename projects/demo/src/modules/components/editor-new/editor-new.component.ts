@@ -48,6 +48,9 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
         HTML: import('!!raw-loader!./examples/2/index.html'),
         TypeScript: import('!!raw-loader!./examples/2/index.ts'),
         LESS: import('!!raw-loader!./examples/2/index.less'),
+        'smiles-tool/emoji.extension.ts': import(
+            '!!raw-loader!./examples/2/smiles-tool/emoji.extension.ts'
+        ),
         'smiles-tool/smiles-tool.component.ts': import(
             '!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts'
         ),
