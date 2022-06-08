@@ -354,7 +354,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'FieldError',
+                title: 'FieldError [deprecated]',
                 keywords: 'field, поле, форма, error, ошибка, field-error',
                 route: '/components/field-error',
             },
