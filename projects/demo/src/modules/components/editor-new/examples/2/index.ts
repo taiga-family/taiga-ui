@@ -5,7 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 
 export async function importStarterKit(): Promise<unknown> {
-    return import('@tiptap/starter-kit').then(m => m.default);
+    return (await import('@tiptap/starter-kit')).default;
+}
+
+export async function importEmojiExtension(): Promise<unknown> {
+    return (await import('./smiles-tool/emoji.extension')).EmojiExtension;
 }
 
 @Component({
@@ -15,7 +19,7 @@ export async function importStarterKit(): Promise<unknown> {
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [importStarterKit()],
+            useValue: [importStarterKit(), importEmojiExtension()],
         },
     ],
     changeDetection,

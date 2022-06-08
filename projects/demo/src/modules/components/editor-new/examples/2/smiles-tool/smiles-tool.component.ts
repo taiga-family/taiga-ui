@@ -33,7 +33,7 @@ export class ExampleSmilesToolComponent {
             .getOriginTiptapEditor()
             .chain()
             .focus()
-            .insertContent(`<p>${smile}</p>`)
+            .insertContent(`<p data-type="emoji">${smile}</p>`)
             .insertContent(` `)
             .run();
     }
