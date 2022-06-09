@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1128],{"8i2y":function(n,t,i){"use strict";i.r(t),t.default=".description {\n    display: flex;\n    justify-content: space-between;\n\n    & > *:first-child {\n        text-align: left;\n    }\n\n    & > *:last-child {\n        text-align: right;\n    }\n}\n"}}]);

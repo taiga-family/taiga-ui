@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[503],{"4EeP":function(o,n,t){"use strict";t.r(n),n.default='```html\n<div [formGroup]="testForm">\n  <tui-checkbox-block formControlName="testValue">Content</tui-checkbox-block>\n</div>\n```\n'}}]);

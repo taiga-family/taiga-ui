@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[334],{"F/LP":function(n,e,o){"use strict";o.r(e),e.default="import {TuiLegendItemModule} from '@taiga-ui/addon-charts';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiLegendItemModule\n    ],\n...\n"}}]);

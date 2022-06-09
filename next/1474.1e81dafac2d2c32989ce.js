@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1474],{"53lg":function(n,t,e){"use strict";e.r(t),t.default='<div [tuiDropdownContext]="content">\n    Host element\n</div>\n\n<ng-template #content let-close="close">\n    Dropdown content\n    <button (click)="close()"></button>\n</ng-template>\n'}}]);

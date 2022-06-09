@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1522],{"8N1z":function(n,i,o){"use strict";o.r(i),i.default="import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives/lazyLoading';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiLazyLoadingModule,\n    ],\n...\n"}}]);

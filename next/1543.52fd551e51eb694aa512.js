@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1543],{ZgVJ:function(e,o,p){"use strict";p.r(o),o.default='<video tuiMedia controls>\n  <source *tuiHdpi src="4k.mp4" type="video/mp4">\n  <source src="1080p.mp4" type="video/mp4">\n</video>\n'}}]);

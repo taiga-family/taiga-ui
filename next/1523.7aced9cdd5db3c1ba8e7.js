@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1523],{AtHY:function(i,n,t){"use strict";t.r(n),n.default='<img src="myImage.jpg" height="200" width="300" loading="lazy" />\n'}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1497],{RCgM:function(n,a,c){"use strict";c.r(a),a.default="import {clamp} from '@taiga-ui/cdk';\n\n...\n\nscale = 1;\n\n...\n\nonElastic(scale: number) {\n    this.scale = clamp(scale, 0.5, 1); // We do not want to scale below 50%\n}\n"}}]);

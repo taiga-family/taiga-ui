@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1542],{b0Ee:function(n,i,o){"use strict";o.r(i),i.default="import {TuiMediaModule} from '@taiga-ui/cdk';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiMediaModule,\n    ],\n...\n"}}]);

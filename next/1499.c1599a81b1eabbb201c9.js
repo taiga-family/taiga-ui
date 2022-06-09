@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1499],{"2ARc":function(n,t,c){"use strict";c.r(t),t.default='<tui-scrollbar>\n    <header (tuiElasticSticky)="onElastic($event)"">\n        I\'m sticky\n    </header>\n    ...\n</tui-scrollbar>\n'}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1612],{bEcq:function(n,o,i){"use strict";i.r(o),o.default="import {TuiZoomModule} from '@taiga-ui/cdk';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiZoomModule\n    ],\n...\n"}}]);

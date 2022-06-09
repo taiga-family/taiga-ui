@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[481],{"+XC3":function(n,o,d){"use strict";d.r(o),o.default="import {TuiCardModule} from '@taiga-ui/addon-commerce';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiCardModule\n    ],\n...\n"}}]);

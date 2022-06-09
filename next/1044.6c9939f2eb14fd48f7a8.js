@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1044],{kPkv:function(n,o,t){"use strict";t.r(o),o.default='<tui-notification\n    status="error"\n    [hasIcon]="false"\n    (close)="onClose()"\n>\n    Some content\n</tui-notification>\n'}}]);
