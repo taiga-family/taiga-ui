@@ -30,3 +30,18 @@
         ></iframe>
     </ng-template>
 </section>
+
+<div
+    *ngIf="emptyPreview"
+    class="t-error-message"
+    @tuiFadeIn
+>
+    <ng-container *ngIf="context.errorMessage; else defaultMessage">
+        {{context.errorMessage}}
+    </ng-container>
+    <ng-template #defaultMessage>
+        The PDF could not be loaded, there may be a network problem, or your
+        browser settings are set to download PDF files instead of displaying
+        them in a window.
+    </ng-template>
+</div>
