@@ -16,14 +16,14 @@ export function seeAlsoProviderFactory(
     {nativeElement}: ElementRef,
     seeAlsoGroups: ReadonlyArray<readonly string[]>,
 ): readonly string[] {
-    const groups =
-        seeAlsoGroups.filter(group => group.includes(nativeElement.header)) || [];
+    const currentHeader = nativeElement.getAttribute('header');
+    const groups = seeAlsoGroups.filter(group => group.includes(currentHeader)) || [];
 
     const seeAlsoSet = new Set(
         groups
             .join()
             .split(',')
-            .filter(component => component && component !== nativeElement.header),
+            .filter(component => component && component !== currentHeader),
     );
 
     return Array.from(seeAlsoSet);
