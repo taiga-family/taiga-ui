@@ -1,4 +1,4 @@
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {CHAR_HYPHEN, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 import {getFractionPartPadded} from './get-fractional-part-padded';
 
@@ -39,7 +39,7 @@ export function formatNumber(
     }
 
     const remainder = integerPartString.length % 3;
-    const sign = value < 0 ? '-' : '';
+    const sign = value < 0 ? CHAR_HYPHEN : '';
     let result = sign + integerPartString.charAt(0);
 
     for (let i = 1; i < integerPartString.length; i++) {

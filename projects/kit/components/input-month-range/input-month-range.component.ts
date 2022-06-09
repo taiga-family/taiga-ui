@@ -12,6 +12,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    CHAR_EM_DASH,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     tuiDefaultProp,
@@ -95,7 +96,8 @@ export class TuiInputMonthRangeComponent
     computeValue(from: string | null, to: string | null): string {
         const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
 
-        return `${from} — ${formattedTo}`;
+        /** TODO(nsbarsukov): investigate if it should be replaced by {@link CHAR_EN_DASH} */
+        return `${from} ${CHAR_EM_DASH} ${formattedTo}`;
     }
 
     onValueChange(value: string): void {

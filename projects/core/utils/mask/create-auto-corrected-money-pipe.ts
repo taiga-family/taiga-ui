@@ -1,4 +1,5 @@
 import {
+    CHAR_HYPHEN,
     CHAR_NO_BREAK_SPACE,
     getDocumentOrShadowRoot,
     isNativeFocused,
@@ -34,8 +35,8 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
     return (conformedValue, config) => {
         // Removing everything by selecting and pressing '-'
-        if (!conformedValue && config.rawValue === '-' && allowNegative) {
-            return '-';
+        if (!conformedValue && config.rawValue === CHAR_HYPHEN && allowNegative) {
+            return CHAR_HYPHEN;
         }
 
         // remove these hacks after text mask library has changed

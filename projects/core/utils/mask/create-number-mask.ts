@@ -1,4 +1,4 @@
-import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
+import {CHAR_EN_DASH, CHAR_HYPHEN, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
 import {
     MASK_CARET_TRAP,
     TUI_DIGIT_REGEXP,
@@ -49,7 +49,8 @@ export function tuiCreateNumberMask({
         }
 
         const isNegative =
-            (rawValue[0] === '-' || rawValue[0] === CHAR_EN_DASH) && allowNegative;
+            (rawValue[0] === CHAR_HYPHEN || rawValue[0] === CHAR_EN_DASH) &&
+            allowNegative;
 
         if (
             isDecimalSymbol(rawValue, decimalSymbol, autoCorrectDecimalSymbol) &&
@@ -115,7 +116,7 @@ export function tuiCreateNumberMask({
                 mask.push(TUI_DIGIT_REGEXP);
             }
 
-            mask.unshift('-');
+            mask.unshift(CHAR_HYPHEN);
         }
 
         return preventLeadingZeroes(mask, isOnlyZeroDigit, leadingZerosAmount);
