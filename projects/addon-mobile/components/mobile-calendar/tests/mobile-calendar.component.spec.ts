@@ -168,7 +168,7 @@ describe('MobileCalendar', () => {
         testComponent.component.setYear(1950);
         fixture.detectChanges();
 
-        const waitCdkScrollToIndex = 100;
+        const waitCdkScrollToIndex = 300;
 
         setTimeout(() => {
             pageObject
