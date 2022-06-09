@@ -5,8 +5,14 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
  * decimalSeparator - example: 100,45 (',' by default)
  * thousandSeparator - example: 360 000 (' ' by default)
  */
-export interface NumberFormatSettings {
+export interface TuiNumberFormatSettings {
     readonly decimalSeparator: TuiDecimalSymbol;
     readonly thousandSeparator: string;
     readonly zeroPadding: boolean;
 }
+
+/**
+ * @deprecated use {@link TuiNumberFormatSettings}
+ * TODO delete in v3.0
+ */
+export interface NumberFormatSettings extends TuiNumberFormatSettings {}

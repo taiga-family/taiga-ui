@@ -75,4 +75,9 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {
         from: 'Country',
     },
+    {
+        from: 'NumberFormatSettings',
+        to: 'TuiNumberFormatSettings',
+        moduleSpecifier: ['@taiga-ui/core'],
+    },
 ];

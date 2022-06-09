@@ -25,11 +25,11 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
-    NumberFormatSettings,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
+    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -108,7 +108,7 @@ export class TuiInputCountComponent
         @Inject(TUI_INPUT_COUNT_OPTIONS)
         readonly options: TuiInputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
