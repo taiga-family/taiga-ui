@@ -36,4 +36,22 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/kit',
         message: 'Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code',
     },
+    {
+        name: 'TuiTableModeModule',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiTableModeModule has been deleted in 3.0, please use @taiga-ui/addon-table',
+    },
+    {
+        name: 'TuiColorModule',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiColorModule has been deleted in 3.0, please use CSS custom properties',
+    },
+    {
+        name: 'TuiPluralizePipeModule',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiPluralizePipeModule has been deleted in 3.0, please use use Angular built-in pipe https://angular.io/api/common/I18nPluralPipe ',
+    },
 ];

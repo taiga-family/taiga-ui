@@ -19,7 +19,7 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
     },
     {
         from: {
-            name: 'TuiNotificationService',
+            name: 'TuiNotificationsService',
         },
         to: {
             name: 'TuiAlertService',
