@@ -9,6 +9,7 @@ import {replaceDeepImports} from './steps/replace-deep-import';
 import {showWarnings} from './steps/show-warnings';
 import {replaceServices} from './steps/replace-services';
 import {migrateTemplates} from './steps/migrate-templates';
+import {migrateSliders} from './steps/migrate-sliders';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -23,6 +24,7 @@ export function updateToV3(_: Schema): Rule {
         replaceServices();
         showWarnings(context);
         migrateTemplates(tree);
+        migrateSliders(tree);
 
         saveActiveProject();
     };
