@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[360],{"/AcR":function(n,o,a){"use strict";a.r(o),o.default="```ts\nimport {TuiLineDaysChartModule} from '@taiga-ui/addon-charts';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiLineDaysChartModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

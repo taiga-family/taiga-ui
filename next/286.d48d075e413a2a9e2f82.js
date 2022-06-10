@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[286],{"6rDR":function(n,t,a){"use strict";a.r(t),t.default="@import 'taiga-ui-local';\n\n.wrapper {\n    position: relative;\n\n    --tui-chart-0: var(--tui-support-03);\n}\n\n.stacked {\n    .fullsize();\n\n    --tui-secondary: transparent;\n    --tui-chart-0: var(--tui-support-04);\n}\n"}}]);
