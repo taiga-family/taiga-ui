@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1611],{h33D:function(n,e,s){"use strict";s.r(e),e.default="scale = 1;\n\nonZoom(scale: TuiScale) {\n    this.scale += scale.delta;\n}\n"}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[827],{"v/nV":function(o,n,e){"use strict";e.r(n),n.default="import {FormsModule, ReactiveFormsModule} from '@angular/forms'; import {TuiInputPhoneInternationalModule} from\n'@taiga-ui/kit';\n\n...\n\n@NgModule({ imports: [ ... FormsModule, ReactiveFormsModule, TuiInputPhoneInternationalModule ], ...\n"}}]);

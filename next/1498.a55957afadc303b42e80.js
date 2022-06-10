@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1498],{n8cr:function(i,n,o){"use strict";o.r(n),n.default="import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';\nimport {TuiScrollbarModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiScrollbarModule,\n        TuiElasticStickyModule,\n    ],\n...\n"}}]);

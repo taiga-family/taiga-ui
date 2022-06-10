@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1519],{rDi8:function(t,n,e){"use strict";e.r(n),n.default='<button tuiButton type="button" tuiHint="Custom host with text tooltip">Press me</button>\n<button tuiButton type="button" [tuiHint]="template">Press him \u2191</button>\n\n<ng-template #template>\n    Reusable template \n</ng-template>\n'}}]);

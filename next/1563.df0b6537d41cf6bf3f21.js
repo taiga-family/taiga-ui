@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1563],{eDSU:function(n,o,i){"use strict";i.r(o),o.default="import {TuiPanModule} from '@taiga-ui/cdk';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiPanModule,\n    ],\n...\n"}}]);

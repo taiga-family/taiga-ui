@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1503],{BHIH:function(e,n,l){"use strict";l.r(n),n.default='<tui-scrollbar #element="elementRef" tuiElement>\n    <some-infinite-scroll-library [scrollingElement]="element.nativeElement">\n        ...\n    </some-infinite-scroll-library>\n</tui-scrollbar>\n'}}]);

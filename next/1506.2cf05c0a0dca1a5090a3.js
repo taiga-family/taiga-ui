@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1506],{jxvL:function(o,n,u){"use strict";u.r(n),n.default="import {CommonModule} from '@angular/common';\nimport {TuiForModule} from '@taiga-ui/cdk';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        CommonModule,\n        TuiForModule,\n    ],\n...\n"}}]);

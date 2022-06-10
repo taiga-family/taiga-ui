@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1493],{ZjJV:function(n,o,t){"use strict";t.r(o),o.default='<div [tuiDropdownContent]="dropdownContent"\n     [tuiDropdown]="open">\n    Host element\n</div>\n\n<ng-template #dropdownContent>\n    Dropdown content\n</ng-template>\n'}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1604],{"1dXE":function(n,i,a){"use strict";a.r(i),i.default='<tui-island tuiTouchable="transform">\n    ...\n</tui-island>\n<a tuiLink tuiTouchable="opacity">...</a>\n'}}]);

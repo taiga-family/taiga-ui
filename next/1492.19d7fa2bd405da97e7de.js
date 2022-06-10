@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1492],{"KX/U":function(n,o,i){"use strict";i.r(o),o.default="import {TuiDropdownModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiDropdownModule\n    ],\n...\n"}}]);

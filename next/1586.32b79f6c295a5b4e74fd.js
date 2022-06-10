@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1586],{D2iz:function(n,o,e){"use strict";e.r(o),o.default="open = false;\n\ntoggle(open: boolean) {\n    this.open = open;\n}\n"}}]);

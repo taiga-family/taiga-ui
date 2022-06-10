@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1547],{YR5s:function(n,o,e){"use strict";e.r(o),o.default="import {TuiModeModule} from '@taiga-ui/core';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiModeModule\n    ],\n...\n"}}]);

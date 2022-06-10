@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1587],{"1LO1":function(n,i,o){"use strict";o.r(i),i.default="import {TuiSidebarModule} from '@taiga-ui/addon-mobile';\nimport {TuiActiveZoneModule} from '@taiga-ui/cdk';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiSidebarModule,\n        TuiActiveZoneModule,\n    ],\n...\n"}}]);

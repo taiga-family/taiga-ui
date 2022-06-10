@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[453],{FZA8:function(n,o,i){"use strict";i.r(o),o.default="import {TuiCalendarMonthModule} from '@taiga-ui/kit';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiCalendarMonthModule\n    ],\n...\n"}}]);

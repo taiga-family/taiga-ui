@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[304],{kOIv:function(a,t,u){"use strict";u.r(t),t.default='<tui-bar-chart [value]="value"></tui-bar-chart>\n'}}]);
