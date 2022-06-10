@@ -1,19 +1,17 @@
 import {Tree} from '@angular-devkit/schematics';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import {
-    addImportToNgModule,
-    arrayFlat,
-    ClassDeclaration,
-    getClasses,
-    getImports,
-    Pattern,
-    Query,
-} from 'ng-morph';
-import {StructureType} from 'ng-morph/utils/types/structure-type';
+import {addImportToNgModule, arrayFlat} from 'ng-morph';
 import {TemplateResource} from '../interfaces/template-resourse';
 import {findAttributeOnElementWithTag} from '@angular/cdk/schematics';
 import {addUniqueImport} from '../../utils/add-unique-import';
+import {findNgModule} from '../../utils/angular/ng-module';
+import {getNgComponents} from '../../utils/angular/ng-component';
+import {
+    getPathFromTemplateResource,
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from '../../utils/templates/template-resource';
 
 export function migrateSliders(tree: Tree): void {
     const fileSystem = new DevkitFileSystem(tree);
@@ -31,7 +29,7 @@ export function migrateSliders(tree: Tree): void {
         filteredTemplates.map(templateRes => getNgComponents(templateRes.componentPath)),
     );
     const modulesWithComponentDeclaration = components
-        .map(c => findNgModule(c))
+        .map(findNgModule)
         .filter(<T>(m: T | null): m is T => Boolean(m));
 
     for (const module of modulesWithComponentDeclaration) {
@@ -53,65 +51,6 @@ export function migrateSliders(tree: Tree): void {
         );
         fileSystem.commitEdits();
     }
-}
-
-export function getNgModules(
-    pattern: Pattern,
-    query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
-): ClassDeclaration[] {
-    return getClasses(pattern, query).filter(
-        declaration => !!declaration.getDecorator('NgModule'),
-    );
-}
-
-export function getNgComponents(
-    pattern: Pattern,
-    query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
-): ClassDeclaration[] {
-    return getClasses(pattern, query).filter(
-        declaration => !!declaration.getDecorator('Component'),
-    );
-}
-
-export function findNgModule(component: ClassDeclaration): ClassDeclaration | null {
-    const allNgModules = getNgModules('**/**');
-    return (
-        allNgModules.find(module => {
-            const moduleFile = module.getSourceFile();
-            const imports = getImports(moduleFile.getFilePath(), {
-                namedImports: component.getName(),
-            });
-
-            return imports.some(
-                i => i.getModuleSpecifierSourceFile() === component.getSourceFile(),
-            );
-        }) || null
-    );
-}
-
-export function getTemplateFromTemplateResource(
-    templateRes: TemplateResource,
-    fileSystem: DevkitFileSystem,
-): string {
-    if ('template' in templateRes) {
-        return templateRes.template;
-    }
-
-    const path = fileSystem.resolve(templateRes.templatePath);
-
-    return fileSystem.read(path);
-}
-
-export function getPathFromTemplateResource(templateRes: TemplateResource): string {
-    if ('templatePath' in templateRes) {
-        return templateRes.templatePath;
-    }
-
-    return templateRes.componentPath;
-}
-
-export function getTemplateOffset(templateRes: TemplateResource): number {
-    return 'offset' in templateRes ? templateRes.offset : 0;
 }
 
 function hasPropsToBeReplacedByTextfieldController(
