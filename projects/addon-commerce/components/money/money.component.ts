@@ -9,9 +9,9 @@ import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types
 import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     formatNumber,
-    NumberFormatSettings,
     TUI_NUMBER_FORMAT,
     TuiDecimalT,
+    TuiNumberFormatSettings,
 } from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
@@ -109,7 +109,7 @@ export class TuiMoneyComponent {
 
     constructor(
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_MONEY_OPTIONS)
         private readonly options: TuiMoneyOptions,
     ) {}

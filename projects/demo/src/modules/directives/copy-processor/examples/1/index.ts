@@ -2,7 +2,11 @@ import {Component, HostListener, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiStringHandler} from '@taiga-ui/cdk';
-import {NumberFormatSettings, TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
+import {
+    TUI_NUMBER_FORMAT,
+    TuiAlertService,
+    TuiNumberFormatSettings,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-copy-processor-example-1',
@@ -15,7 +19,7 @@ export class TuiCopyProcessorExample1 {
     value = 12345.67;
 
     constructor(
-        @Inject(TUI_NUMBER_FORMAT) private readonly format: NumberFormatSettings,
+        @Inject(TUI_NUMBER_FORMAT) private readonly format: TuiNumberFormatSettings,
         @Inject(TuiAlertService)
         private readonly alertService: TuiAlertService,
     ) {}

@@ -29,13 +29,13 @@ import {
     getFractionPartPadded,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
-    NumberFormatSettings,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimalT,
     tuiEnableAutoCorrectDecimalSymbol,
+    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
@@ -103,7 +103,7 @@ export class TuiInputNumberComponent
         @Inject(ChangeDetectorRef)
         changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
     ) {
         super(control, changeDetectorRef);
