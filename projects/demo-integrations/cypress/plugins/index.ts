@@ -2,7 +2,7 @@
 // https://github.com/jaredpalmer/cypress-image-snapshot/pull/250
 import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress/snapshot/plugin';
 
-import {viewportHeight, viewportWidth} from './../../cypress.json';
+import {viewportHeight, viewportWidth} from '../../cypress.config';
 
 export default async (
     on: Cypress.PluginEvents,
