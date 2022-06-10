@@ -16,28 +16,50 @@ const APP_MODULE = `
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 import {AppComponent} from './app.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        TuiFormatNumberPipeModule,
-        TuiSliderModule,
         FormsModule,
+        TuiSliderModule
     ],
-    declarations: [AppComponent]
+    declarations: [AppComponent],
 })
 export class AppModule {}
 `;
 
-const APP_COMPONENT_WITH_TEMPLATE_URL = `
+const APP_COMPONENT = `
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {}
+export class AppComponent {
+    value = 4;
+}
 `;
 
-const APP_HTML_FILE_BEFORE = `
+const APP_TEMPLATE = `
+<h1>Title</h1>
+<inline-html-child></inline-html-child>
+
+<tui-input-slider [max]="100" [(ngModel)]="value" [min]="0">
+    Usage of the component without deprecated props
+</tui-input-slider>
+
+<file-html-child></file-html-child>
+<footer>123</footer>
+`;
+
+/** ___test/file-html-child/*___ */
+
+const FILE_HTML_CHILD_COMPONENT = `
+@Component({
+    selector: 'file-html-child',
+    templateUrl: './file-html-child.template.html'
+})
+export class FileHtmlChildComponent {}
+`;
+
+const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 <tui-input-slider
     tuiHintContent="Select the answer to see how the right custom content changes"
     class="control"
@@ -50,7 +72,7 @@ const APP_HTML_FILE_BEFORE = `
 </tui-input-slider>
 `;
 
-const APP_HTML_FILE_AFTER = `
+const FILE_HTML_CHILD_TEMPLATE_AFTER = `
 <tui-input-slider
     tuiHintContent="Select the answer to see how the right custom content changes"
     class="control"
@@ -63,36 +85,123 @@ const APP_HTML_FILE_AFTER = `
 </tui-input-slider>
 `;
 
-const CHILD_MODULE_BEFORE = `
+const FILE_HTML_CHILD_MODULE_BEFORE = `
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {TuiSliderModule} from '@taiga-ui/kit';
+
+import {TuiMediaExample1} from './examples/1';
+import {FileHtmlChildComponent} from './file-html-child.component';
+import {ExampleTuiMediaComponent} from './media.component';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        TuiButtonModule,
+        TuiSliderModule,
+        TuiLinkModule,
+    ],
+    declarations: [
+        ExampleTuiMediaComponent,
+        FileHtmlChildComponent,
+        TuiMediaExample1,
+    ],
+    exports: [ExampleTuiMediaComponent],
+})
+export class ExampleTuiMediaModule {}
+`;
+
+const FILE_HTML_CHILD_MODULE_AFTER = `
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import { TuiButtonModule, TuiLinkModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {TuiSliderModule} from '@taiga-ui/kit';
+
+import {TuiMediaExample1} from './examples/1';
+import {FileHtmlChildComponent} from './file-html-child.component';
+import {ExampleTuiMediaComponent} from './media.component';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        TuiButtonModule,
+        TuiSliderModule,
+        TuiLinkModule,
+        TuiTextfieldControllerModule
+    ],
+    declarations: [
+        ExampleTuiMediaComponent,
+        FileHtmlChildComponent,
+        TuiMediaExample1,
+    ],
+    exports: [ExampleTuiMediaComponent],
+})
+export class ExampleTuiMediaModule {}
+`;
+
+const DUMMY_MODULE = `
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {TuiDocCodeModule} from '@taiga-ui/addon-doc';
+import {TuiSliderModule} from '@taiga-ui/kit';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+
+import {HomeComponent} from './home.component';
+
+@NgModule({
+    imports: [RouterModule, TuiDocCodeModule, TuiSliderModule, TuiNotificationModule, TuiLinkModule],
+    entryComponents: [HomeComponent],
+    declarations: [HomeComponent],
+    exports: [HomeComponent],
+})
+export class HomeModule {}
+`;
+
+/** ___test/inline-html-child/*___ */
+
+const INLINE_HTML_CHILD_MODULE_BEFORE = `
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiHintModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
-import {ChildComponent} from './child.component';
+import {InlineHtmlChildComponent} from './inline-html-child.component';
 
-@NgModule({imports: [FormsModule, TuiSliderModule, TuiHintModule], declarations: [ChildComponent]})
+@NgModule({
+    imports: [FormsModule, TuiSliderModule, TuiHintModule],
+    declarations: [InlineHtmlChildComponent]
+})
 export class ChildModule {}
 `;
 
-const CHILD_MODULE_AFTER = `
+const INLINE_HTML_CHILD_MODULE_AFTER = `
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { TuiHintModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
-import {ChildComponent} from './child.component';
+import {InlineHtmlChildComponent} from './inline-html-child.component';
 
-@NgModule({imports: [FormsModule, TuiSliderModule, TuiHintModule, TuiTextfieldControllerModule], declarations: [ChildComponent]})
+@NgModule({
+    imports: [FormsModule, TuiSliderModule, TuiHintModule, TuiTextfieldControllerModule],
+    declarations: [InlineHtmlChildComponent]
+})
 export class ChildModule {}
 `;
 
-const CHILD_COMPONENT_INLINE_HTML_BEFORE = `
-@Component({template: '<tui-input-slider secondary="123"></tui-input-slider>'})
-export class ChildComponent {}
+const INLINE_HTML_CHILD_COMPONENT_BEFORE = `
+@Component({
+    selector: 'inline-html-child',
+    template: '<tui-input-slider secondary="123"></tui-input-slider>'
+})
+export class InlineHtmlChildComponent {}
 `;
 
-const CHILD_COMPONENT_INLINE_HTML_AFTER = `
-@Component({template: '<tui-input-slider tuiTextfieldCustomContent="123"></tui-input-slider>'})
-export class ChildComponent {}
+const INLINE_HTML_CHILD_COMPONENT_AFTER = `
+@Component({
+    selector: 'inline-html-child',
+    template: '<tui-input-slider tuiTextfieldCustomContent="123"></tui-input-slider>'
+})
+export class InlineHtmlChildComponent {}
 `;
 
 describe('ng-update', () => {
@@ -110,28 +219,76 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    // TODO add test "DOES NOT add TuiTextfieldControllerModule to NO required module" (make app.module in such way)
-    it('adds TuiTextfieldControllerModule to required modules', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    describe('no deprecations inside AppComponent', () => {
+        it('no imports of the new module inside app.module.ts', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
 
-        // TODO adds another child with not inlined module
-        expect(tree.readContent('test/child/child.module.ts')).toBe(CHILD_MODULE_AFTER);
+            expect(tree.readContent('test/app/app.module.ts')).toBe(APP_MODULE);
+        });
+
+        it('no changes in app.template.ts', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(tree.readContent('test/app/app.template.html')).toBe(APP_TEMPLATE);
+        });
     });
 
-    it('should edit sliders inside html-files', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    describe('component with a inline html template', () => {
+        it('adds TuiTextfieldControllerModule to the required module', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
 
-        expect(tree.readContent('test/app/app.template.html')).toEqual(
-            APP_HTML_FILE_AFTER,
-        );
+            expect(
+                tree.readContent('test/inline-html-child/inline-html-child.module.ts'),
+            ).toBe(INLINE_HTML_CHILD_MODULE_AFTER);
+        });
+
+        it('replace deprecated attributes inside inline template', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(
+                tree.readContent('test/inline-html-child/inline-html-child.component.ts'),
+            ).toEqual(INLINE_HTML_CHILD_COMPONENT_AFTER);
+        });
     });
 
-    it('should edit sliders inline-templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    describe('component with a separate html-file template', () => {
+        it('replace deprecated attributes inside templates', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
 
-        expect(tree.readContent('test/child/child.component.ts')).toEqual(
-            CHILD_COMPONENT_INLINE_HTML_AFTER,
-        );
+            expect(
+                tree.readContent('test/file-html-child/file-html-child.template.html'),
+            ).toEqual(FILE_HTML_CHILD_TEMPLATE_AFTER);
+        });
+
+        it('adds TuiTextfieldControllerModule to the required module', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(
+                tree.readContent('test/file-html-child/file-html-child.module.ts'),
+            ).toBe(FILE_HTML_CHILD_MODULE_AFTER);
+        });
+
+        it('does not add any imports in dummy.module.ts', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(tree.readContent('test/file-html-child/dummy.module.ts')).toBe(
+                DUMMY_MODULE,
+            );
+        });
     });
 
     afterEach(() => {
@@ -142,10 +299,30 @@ describe('ng-update', () => {
 function createMainFiles(): void {
     createSourceFile('test/app/app.module.ts', APP_MODULE);
 
-    createSourceFile('test/app/app.component.ts', APP_COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile('test/app/app.component.ts', APP_COMPONENT);
 
-    createSourceFile('test/app/app.template.html', APP_HTML_FILE_BEFORE);
+    createSourceFile('test/app/app.template.html', APP_TEMPLATE);
 
-    createSourceFile('test/child/child.module.ts', CHILD_MODULE_BEFORE);
-    createSourceFile('test/child/child.component.ts', CHILD_COMPONENT_INLINE_HTML_BEFORE);
+    createSourceFile('test/file-html-child/dummy.module.ts', DUMMY_MODULE);
+    createSourceFile(
+        'test/file-html-child/file-html-child.module.ts',
+        FILE_HTML_CHILD_MODULE_BEFORE,
+    );
+    createSourceFile(
+        'test/file-html-child/file-html-child.component.ts',
+        FILE_HTML_CHILD_COMPONENT,
+    );
+    createSourceFile(
+        'test/file-html-child/file-html-child.template.html',
+        FILE_HTML_CHILD_TEMPLATE_BEFORE,
+    );
+
+    createSourceFile(
+        'test/inline-html-child/inline-html-child.module.ts',
+        INLINE_HTML_CHILD_MODULE_BEFORE,
+    );
+    createSourceFile(
+        'test/inline-html-child/inline-html-child.component.ts',
+        INLINE_HTML_CHILD_COMPONENT_BEFORE,
+    );
 }
