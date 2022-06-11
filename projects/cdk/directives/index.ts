@@ -2,6 +2,7 @@ export * from '@taiga-ui/cdk/directives/active-zone';
 export * from '@taiga-ui/cdk/directives/auto-focus';
 export * from '@taiga-ui/cdk/directives/autofilled';
 export * from '@taiga-ui/cdk/directives/checked';
+export * from '@taiga-ui/cdk/directives/dom-change';
 export * from '@taiga-ui/cdk/directives/drag';
 export * from '@taiga-ui/cdk/directives/droppable';
 export * from '@taiga-ui/cdk/directives/element';
