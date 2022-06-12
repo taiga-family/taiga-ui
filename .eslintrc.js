@@ -53,6 +53,7 @@ module.exports = {
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',
+        'unicorn/no-empty-file': 'error',
         'unicorn/filename-case': [
             'error',
             {
