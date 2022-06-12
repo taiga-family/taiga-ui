@@ -117,14 +117,14 @@ export abstract class AbstractTuiControl<T>
     }
 
     private get rawValue(): T | undefined {
-        const {ngControl} = this;
+        const {ngControl, previousInternalValue} = this;
 
         if (ngControl === null) {
             return undefined;
         }
 
         const controlValue =
-            ngControl instanceof NgModel && this.previousInternalValue === undefined
+            ngControl instanceof NgModel && previousInternalValue === undefined
                 ? ngControl.viewModel
                 : ngControl.value;
 

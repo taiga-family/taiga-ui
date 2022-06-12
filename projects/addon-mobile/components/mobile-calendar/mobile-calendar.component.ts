@@ -280,7 +280,7 @@ export class TuiMobileCalendarComponent {
     }
 
     private initYearScroll(): void {
-        const {yearsScrollRef} = this;
+        const {yearsScrollRef, yearWidth, destroy$} = this;
 
         if (!yearsScrollRef) {
             return;
@@ -307,14 +307,12 @@ export class TuiMobileCalendarComponent {
                 delay(0),
                 map(
                     () =>
-                        Math.round(
-                            yearsScrollRef.measureScrollOffset() / this.yearWidth,
-                        ) +
+                        Math.round(yearsScrollRef.measureScrollOffset() / yearWidth) +
                         Math.floor(YEARS_IN_ROW / 2) +
                         STARTING_YEAR,
                 ),
                 filter(activeYear => activeYear !== this.activeYear),
-                takeUntil(this.destroy$),
+                takeUntil(destroy$),
             )
             .subscribe(activeYear => {
                 this.activeMonth += this.getMonthOffset(activeYear);
@@ -336,7 +334,7 @@ export class TuiMobileCalendarComponent {
                         takeUntil(touchstart$),
                     ),
                 ),
-                takeUntil(this.destroy$),
+                takeUntil(destroy$),
             )
             .subscribe(() => {
                 this.scrollToActiveYear('smooth');
@@ -344,7 +342,7 @@ export class TuiMobileCalendarComponent {
     }
 
     private initMonthScroll(): void {
-        const {monthsScrollRef} = this;
+        const {monthsScrollRef, destroy$} = this;
 
         if (!monthsScrollRef) {
             return;
@@ -374,7 +372,7 @@ export class TuiMobileCalendarComponent {
                         takeUntil(touchstart$),
                     ),
                 ),
-                takeUntil(this.destroy$),
+                takeUntil(destroy$),
             )
             .subscribe(() => {
                 this.scrollToActiveMonth('smooth');

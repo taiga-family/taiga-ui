@@ -134,16 +134,16 @@ export class TuiTabsComponent implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        const {tabs, activeElement} = this;
+        const {tabs, activeElement, renderer} = this;
 
         tabs.forEach(nativeElement => {
-            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
+            renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
+            renderer.setAttribute(nativeElement, 'tabIndex', '-1');
         });
 
         if (activeElement) {
-            this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(activeElement, 'tabIndex', '0');
+            renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
+            renderer.setAttribute(activeElement, 'tabIndex', '0');
         }
     }
 

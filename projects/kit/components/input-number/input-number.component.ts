@@ -153,12 +153,13 @@ export class TuiInputNumberComponent
     onZero(event: KeyboardEvent): void {
         const decimal =
             this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
-        const {nativeFocusableElement} = this;
+        const {nativeFocusableElement, precision} = this;
 
         if (
-            decimal.length < this.precision ||
+            decimal.length < precision ||
             !nativeFocusableElement ||
             !nativeFocusableElement.selectionStart ||
+            // eslint-disable-next-line unicorn/consistent-destructuring
             this.nativeValue[nativeFocusableElement.selectionStart] !== '0'
         ) {
             return;

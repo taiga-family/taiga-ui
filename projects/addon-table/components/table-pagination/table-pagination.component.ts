@@ -68,7 +68,7 @@ export class TuiTablePaginationComponent {
     }
 
     onItem(size: number): void {
-        const {start} = this;
+        const start = this.start;
 
         this.size = size;
         this.sizeChange.emit(size);

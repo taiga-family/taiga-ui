@@ -83,14 +83,14 @@ export class TuiFieldErrorComponent {
     writeValue(): void {}
 
     private get error(): Observable<TuiValidationError | null> {
-        const {errorId} = this;
+        const {errorId, controlErrors, validationErrors} = this;
 
         if (!errorId) {
             return of(null);
         }
 
-        const firstError = this.controlErrors[errorId];
-        const errorContent = this.validationErrors[errorId];
+        const firstError = controlErrors[errorId];
+        const errorContent = validationErrors[errorId];
 
         return this.getError(firstError, errorContent);
     }

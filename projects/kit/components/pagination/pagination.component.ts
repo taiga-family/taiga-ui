@@ -122,7 +122,7 @@ export class TuiPaginationComponent
         }
 
         let activeElementIndex = 0;
-        const {elementsLength} = this;
+        const {elementsLength, index, elements} = this;
 
         for (let i = 0; i < elementsLength; i++) {
             const itemIndex = this.getItemIndexByElementIndex(i);
@@ -131,14 +131,12 @@ export class TuiPaginationComponent
                 activeElementIndex++;
             }
 
-            if (itemIndex === this.index) {
+            if (itemIndex === index) {
                 break;
             }
         }
 
-        const activeElement = this.elements.find(
-            (_, index) => index === activeElementIndex,
-        );
+        const activeElement = elements.find((_, index) => index === activeElementIndex);
 
         return activeElement ? activeElement.nativeFocusableElement : null;
     }

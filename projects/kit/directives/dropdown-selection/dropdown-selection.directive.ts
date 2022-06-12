@@ -259,8 +259,8 @@ export class TuiDropdownSelectionDirective
      * Check if given range is at least partially inside dropdown
      */
     private inDropdown(range: Range): boolean {
-        const {startContainer, endContainer} = range;
-        const inDropdown = this.boxContains(range.commonAncestorContainer);
+        const {startContainer, endContainer, commonAncestorContainer} = range;
+        const inDropdown = this.boxContains(commonAncestorContainer);
         const hostToDropdown =
             this.boxContains(endContainer) &&
             this.elementRef.nativeElement.contains(startContainer);
@@ -275,17 +275,17 @@ export class TuiDropdownSelectionDirective
      * Position invisible DIV and create Range similar to selected range inside input/textarea
      */
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
-        const {ghost = this.initGhost(element)} = this;
+        const {ghost = this.initGhost(element), documentRef, elementRef} = this;
         const {top, left, width, height} = element.getBoundingClientRect();
-        const {selectionStart, selectionEnd} = element;
-        const range = this.documentRef.createRange();
-        const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
+        const {selectionStart, selectionEnd, value} = element;
+        const range = documentRef.createRange();
+        const hostRect = elementRef.nativeElement.getBoundingClientRect();
 
         ghost.style.top = px(top - hostRect.top);
         ghost.style.left = px(left - hostRect.left);
         ghost.style.width = px(width);
         ghost.style.height = px(height);
-        ghost.textContent = CHAR_ZERO_WIDTH_SPACE + element.value + CHAR_NO_BREAK_SPACE;
+        ghost.textContent = CHAR_ZERO_WIDTH_SPACE + value + CHAR_NO_BREAK_SPACE;
 
         range.setStart(ghost.firstChild!, selectionStart || 0);
         range.setEnd(ghost.firstChild!, selectionEnd || 0);

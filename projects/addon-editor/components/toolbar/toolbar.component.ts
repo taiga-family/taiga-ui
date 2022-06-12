@@ -237,14 +237,14 @@ export class TuiToolbarComponent {
     }
 
     get hiliteColorBlank(): boolean {
-        const {hiliteColor} = this;
+        const {hiliteColor, focused} = this;
 
         return (
             !hiliteColor ||
             String(hiliteColor) === String(IE_TRANSPARENT) ||
             hiliteColor === 'transparent' ||
             hiliteColor === 'rgba(0, 0, 0, 0)' ||
-            (hiliteColor === 'rgb(0, 0, 0)' && !this.focused)
+            (hiliteColor === 'rgb(0, 0, 0)' && !focused)
         );
     }
 

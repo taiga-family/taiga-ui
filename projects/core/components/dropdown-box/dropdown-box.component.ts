@@ -132,13 +132,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     }
 
     private calculatePositionAndSize(): void {
-        const {clientRect} = this.directive;
+        const {clientRect, fixed} = this.directive;
         const {style} = this.elementRef.nativeElement;
-        const hostRect = this.directive.fixed
+        const hostRect = fixed
             ? this.portalHost.fixedPositionOffset()
             : this.portalHost.clientRect;
 
-        style.position = this.directive.fixed ? 'fixed' : 'absolute';
+        style.position = fixed ? 'fixed' : 'absolute';
 
         this.calculateVerticalPosition(style, clientRect, hostRect);
         this.calculateHorizontalPosition(style, clientRect, hostRect);

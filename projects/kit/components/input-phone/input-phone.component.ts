@@ -239,7 +239,7 @@ export class TuiInputPhoneComponent
     }
 
     private get caretIsInForbiddenArea(): boolean {
-        const {nativeFocusableElement} = this;
+        const {nativeFocusableElement, nonRemovableLength} = this;
 
         if (!nativeFocusableElement) {
             return false;
@@ -250,7 +250,7 @@ export class TuiInputPhoneComponent
         return (
             isNativeFocused(nativeFocusableElement) &&
             selectionStart !== null &&
-            selectionStart < this.nonRemovableLength &&
+            selectionStart < nonRemovableLength &&
             selectionStart === selectionEnd
         );
     }

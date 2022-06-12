@@ -131,11 +131,20 @@ export class ExampleTuiDialogComponent {
     ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
-        const {data, label, required, closeable, dismissible, size} = this;
+        const {
+            data,
+            label,
+            required,
+            closeable,
+            dismissible,
+            size,
+            dialogService,
+            alertService,
+        } = this;
 
-        this.dialogService
+        dialogService
             .open(content, {data, label, required, closeable, dismissible, size})
-            .pipe(switchMap(response => this.alertService.open(String(response))))
+            .pipe(switchMap(response => alertService.open(String(response))))
             .subscribe();
     }
 }

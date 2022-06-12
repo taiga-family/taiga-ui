@@ -56,6 +56,7 @@ module.exports = {
         'unicorn/no-empty-file': 'error',
         'unicorn/new-for-builtins': 'error',
         'unicorn/no-useless-spread': 'error',
+        'unicorn/consistent-destructuring': 'error',
         'unicorn/filename-case': [
             'error',
             {

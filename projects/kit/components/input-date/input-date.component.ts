@@ -163,13 +163,13 @@ export class TuiInputDateComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, activeItem} = this;
+        const {value, nativeValue, activeItem, dateFormat, dateSeparator} = this;
 
         if (activeItem) {
             return String(activeItem);
         }
 
-        return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
+        return value ? value.toString(dateFormat, dateSeparator) : nativeValue;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -203,9 +203,9 @@ export class TuiInputDateComponent
     }
 
     get activeItem(): TuiNamedDay | null {
-        const {value} = this;
+        const {value, items} = this;
 
-        return (value && this.items.find(item => item.day.daySame(value))) || null;
+        return (value && items.find(item => item.day.daySame(value))) || null;
     }
 
     @HostListener('click')

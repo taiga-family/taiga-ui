@@ -202,15 +202,14 @@ export class TuiInputDateRangeComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, activePeriod} = this;
-
-        if (activePeriod) {
-            return String(activePeriod);
+        if (this.activePeriod) {
+            return String(this.activePeriod);
         }
 
-        return value
-            ? value.getFormattedDayRange(this.dateFormat, this.dateSeparator)
-            : nativeValue;
+        return (
+            this.value?.getFormattedDayRange(this.dateFormat, this.dateSeparator) ??
+            this.nativeValue
+        );
     }
 
     get innerPseudoFocused(): boolean | null {

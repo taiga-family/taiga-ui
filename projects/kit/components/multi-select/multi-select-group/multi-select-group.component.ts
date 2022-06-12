@@ -104,12 +104,12 @@ export class TuiMultiSelectGroupComponent<T> {
         }
 
         const controlValue: readonly T[] = this.control.value || [];
-        const {values} = this;
+        const {values, control} = this;
         const filtered = controlValue.filter(current =>
             values.every(item => !this.matcher(current, item)),
         );
 
-        this.control.control.setValue(checked ? filtered : [...filtered, ...values]);
+        control.control?.setValue(checked ? filtered : [...filtered, ...values]);
     }
 
     private get values(): readonly T[] {

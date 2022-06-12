@@ -178,9 +178,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
         const target = getClosestFocusable(button, prev, wrapper);
 
-        if (target) {
-            setNativeFocused(target);
-        }
+        target?.focus();
     }
 
     isOverflown(index: number): boolean {
@@ -198,13 +196,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private getMaxIndex(): number {
-        const {tabs, activeItemIndex, margin} = this;
+        const {tabs, activeItemIndex, margin, elementRef, options} = this;
 
         if (tabs.length < 2) {
             return 0;
         }
 
-        const {clientWidth} = this.elementRef.nativeElement;
+        const {clientWidth} = elementRef.nativeElement;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = tabs[tabs.length - 1].scrollWidth;
         let maxIndex = tabs.length - 2;
@@ -221,8 +219,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;
 
-            const activeDisplaced =
-                this.options.exposeActive && activeItemIndex > maxIndex;
+            const activeDisplaced = options.exposeActive && activeItemIndex > maxIndex;
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth

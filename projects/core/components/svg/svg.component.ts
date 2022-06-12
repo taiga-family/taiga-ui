@@ -140,7 +140,7 @@ export class TuiSvgComponent {
     }
 
     onError(message: string = MISSING_EXTERNAL_ICON): void {
-        const {icon} = this;
+        const {icon, documentRef, elementRef} = this;
         const event = tuiCustomEvent<TuiIconError>(
             TUI_ICON_ERROR,
             {
@@ -150,11 +150,11 @@ export class TuiSvgComponent {
                     icon,
                 },
             },
-            this.documentRef,
+            documentRef,
         );
 
         tuiAssert.assert(false, message, icon);
-        this.elementRef.nativeElement.dispatchEvent(event);
+        elementRef.nativeElement.dispatchEvent(event);
     }
 
     @tuiPure

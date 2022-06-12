@@ -320,9 +320,9 @@ export class TuiInputCardGroupedComponent
 
     handleOption(option: Partial<TuiCard>): void {
         const {card = '', expire = '', cvc = ''} = option;
-        const {bin} = this;
+        const {bin, inputExpire, inputCVC} = this;
         const element =
-            (!expire && this.inputExpire?.nativeElement) || this.inputCVC?.nativeElement;
+            (!expire && inputExpire?.nativeElement) || inputCVC?.nativeElement;
 
         this.updateValue({card, expire, cvc});
         this.updateBin(bin);
@@ -333,7 +333,7 @@ export class TuiInputCardGroupedComponent
     }
 
     onCardChange(card: string): void {
-        const {value, bin} = this;
+        const {value, bin, expire, inputExpire} = this;
         const parsed = card.split(' ').join('');
 
         if (value && value.card === parsed) {
@@ -343,7 +343,7 @@ export class TuiInputCardGroupedComponent
         this.updateProperty(parsed, 'card');
         this.updateBin(bin);
 
-        if (this.cardValidator(this.card) && !this.expire && this.inputExpire) {
+        if (this.cardValidator(this.card) && !expire && inputExpire) {
             this.focusExpire();
         }
     }
@@ -411,11 +411,11 @@ export class TuiInputCardGroupedComponent
     }
 
     writeValue(value: TuiCard | null): void {
-        const {bin} = this;
+        const {bin, expire, cardPrefilled} = this;
 
         super.writeValue(value);
         this.updateBin(bin);
-        this.expireInert = !!this.expire && this.cardPrefilled;
+        this.expireInert = !!expire && cardPrefilled;
     }
 
     /** Public API for manual focus management */
@@ -445,10 +445,8 @@ export class TuiInputCardGroupedComponent
     }
 
     private updateBin(oldBin: string | null): void {
-        const {bin} = this;
-
-        if (bin !== oldBin && !this.cardPrefilled) {
-            this.binChange.emit(bin);
+        if (this.bin !== oldBin && !this.cardPrefilled) {
+            this.binChange.emit(this.bin);
         }
     }
 

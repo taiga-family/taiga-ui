@@ -61,13 +61,13 @@ export class TuiMoneyComponent {
     }
 
     get fractionPart(): string {
-        const {decimal, value} = this;
-        const fraction = value.toFixed(this.precision).split('.')[1];
+        const {decimal, value, precision, numberFormat} = this;
+        const fraction = value.toFixed(precision).split('.')[1];
 
         return decimal === 'never' ||
             (parseInt(fraction, 10) === 0 && decimal !== 'always')
             ? ''
-            : this.numberFormat.decimalSeparator + fraction;
+            : numberFormat.decimalSeparator + fraction;
     }
 
     get signSymbol(): '' | typeof CHAR_EN_DASH | typeof CHAR_PLUS {
