@@ -15,13 +15,15 @@ export default async (
 
     on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
-            launchOptions.args.push(`--window-size=${viewportWidth},${viewportHeight}`);
-            launchOptions.args.push('--force-device-scale-factor=2');
-            launchOptions.args.push('--high-dpi-support=1');
-            launchOptions.args.push('--force-color-profile=srgb');
-            launchOptions.args.push('--disable-dev-shm-usage');
-            launchOptions.args.push('--disable-gpu');
-            launchOptions.args.push('--incognito');
+            launchOptions.args.push(
+                `--window-size=${viewportWidth},${viewportHeight}`,
+                '--force-device-scale-factor=2',
+                '--high-dpi-support=1',
+                '--force-color-profile=srgb',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--incognito',
+            );
         }
 
         return launchOptions;
