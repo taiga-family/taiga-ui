@@ -42,11 +42,11 @@ export class TuiInputTagExample4 {
     readonly control = new FormControl([], createControlValidator(tagValidator));
 
     get filtered(): readonly string[] {
-        return this.filter(this.search, this.control.value);
+        return this.filterBy(this.search, this.control.value);
     }
 
     @tuiPure
-    private filter(search: string, value: readonly string[]): readonly string[] {
+    private filterBy(search: string, value: readonly string[]): readonly string[] {
         return ITEMS.filter(
             item => TUI_DEFAULT_MATCHER(item, search) && !value.includes(item),
         );
