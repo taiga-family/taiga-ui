@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-unsafe-regex */
 export function coerceValue<T>(value?: T): T | number | string | boolean | null | object {
     const prepared = String(value).trim();
 
@@ -29,6 +30,7 @@ function isBooleanParamValue(value: string): boolean {
 }
 
 function isNumberParamValue(value: string): boolean {
+    // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
     return /^-?[\d.]+(?:e-?\d+)?$/.test(value);
 }
 
