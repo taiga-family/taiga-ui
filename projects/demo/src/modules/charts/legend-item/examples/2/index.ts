@@ -12,7 +12,7 @@ import {formatNumber, TuiAlertService} from '@taiga-ui/core';
     encapsulation,
 })
 export class TuiLegendItemExample2 {
-    private enabled = Array(5).fill(true);
+    private enabled = new Array(5).fill(true);
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.data);
