@@ -45,7 +45,7 @@ export class TuiLineChartComponent {
     @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: readonly TuiPoint[]) {
-        this.value = value.filter(item => !item.some(isNaN));
+        this.value = value.filter(item => !item.some(element => isNaN(element)));
     }
 
     @Input()

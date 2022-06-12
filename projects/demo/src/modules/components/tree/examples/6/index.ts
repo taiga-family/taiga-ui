@@ -66,6 +66,8 @@ export class TuiTreeExample6 {
 
 function flatten(item: TreeNode): readonly TreeNode[] {
     return item.children
-        ? item.children.map(flatten).reduce((arr, item) => [...arr, ...item], [])
+        ? item.children
+              .map(node => flatten(node))
+              .reduce((arr, item) => [...arr, ...item], [])
         : [item];
 }

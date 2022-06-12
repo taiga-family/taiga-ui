@@ -204,7 +204,9 @@ export class TuiLineDaysChartComponent {
                     .map<TuiPoint | null>(([{month, year}, y], index) =>
                         month + year * 12 === absoluteMonth ? [index + offset, y] : null,
                     )
-                    .filter(isPresent),
+                    .filter((element: TuiPoint | null): element is TuiPoint =>
+                        isPresent(element),
+                    ),
             )
             .map((month, index, array) =>
                 index === array.length - 1

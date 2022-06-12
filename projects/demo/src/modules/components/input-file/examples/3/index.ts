@@ -113,7 +113,10 @@ export class TuiInputFileExample3 {
         this.loadingFiles = this.loadingFiles.filter(file => files.includes(file));
 
         const newRejectedFiles = files
-            .filter(isRejectedFile)
+            .filter(
+                (element: RejectedFile | TuiFileLike | null): element is RejectedFile =>
+                    isRejectedFile(element),
+            )
             .filter(({file}) => this.files.includes(file));
 
         if (newRejectedFiles.length === 0) {
@@ -122,7 +125,7 @@ export class TuiInputFileExample3 {
 
         this.rejectedFiles = [
             ...this.rejectedFiles,
-            ...newRejectedFiles.map(convertRejected),
+            ...newRejectedFiles.map(element => convertRejected(element)),
         ];
         this.files = this.files.filter(file =>
             newRejectedFiles.every(rejectedFile => rejectedFile.file !== file),

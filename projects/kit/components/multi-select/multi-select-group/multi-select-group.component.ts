@@ -123,7 +123,11 @@ export class TuiMultiSelectGroupComponent<T> {
     @tuiPure
     private get items$(): Observable<readonly T[]> {
         return itemsQueryListObservable(this.options).pipe(
-            map(options => options.map(({value}) => value).filter(isPresent)),
+            map(options =>
+                options
+                    .map(({value}) => value)
+                    .filter((element: T | undefined): element is T => isPresent(element)),
+            ),
         );
     }
 
@@ -136,6 +140,8 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private filter(items: ReadonlyArray<TuiOptionComponent<T>>): readonly T[] {
-        return items.map(({value}) => value).filter(isPresent);
+        return items
+            .map(({value}) => value)
+            .filter((element: T | undefined): element is T => isPresent(element));
     }
 }

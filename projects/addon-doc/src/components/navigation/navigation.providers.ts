@@ -53,7 +53,7 @@ export function titleProviderFactory(
 export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
         .map(({section}) => section)
-        .filter(isPresent)
+        .filter((element: string | undefined): element is string => isPresent(element))
         .filter((item, index, array) => array.indexOf(item) === index);
 }
 

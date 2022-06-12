@@ -51,6 +51,7 @@ module.exports = {
         '@typescript-eslint/prefer-optional-chain': 'error',
         eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
+        'unicorn/no-array-callback-reference': 'error',
         'unicorn/filename-case': [
             'error',
             {

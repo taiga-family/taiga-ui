@@ -260,6 +260,7 @@ export function countriesMasksReducer(
  * TODO: remove in 3.0
  */
 export const COUNTRIES_MASKS = Object.entries<Country>(COUNTRIES).reduce(
+    // eslint-disable-next-line unicorn/no-array-callback-reference
     countriesMasksReducer,
     {} as Record<TuiCountryIsoCode, string>,
 );

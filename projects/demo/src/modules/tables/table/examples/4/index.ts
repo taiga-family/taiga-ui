@@ -117,7 +117,9 @@ export class TuiTableExample4 {
 
     readonly data$: Observable<readonly User[]> = this.request$.pipe(
         filter(isPresent),
-        map(users => users.filter(isPresent)),
+        map(users =>
+            users.filter((element: User | null): element is User => isPresent(element)),
+        ),
         startWith([]),
     );
 

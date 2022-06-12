@@ -30,7 +30,7 @@ export function getElementObscurers(element: Element): readonly Element[] | null
         documentRef.elementFromPoint(left, verticalMiddle),
         documentRef.elementFromPoint(right, verticalMiddle),
     ];
-    const nonNull = elements.filter(isPresent);
+    const nonNull = elements.filter((element): element is Element => isPresent(element));
 
     if (!nonNull.length) {
         return nonNull;

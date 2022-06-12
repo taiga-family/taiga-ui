@@ -49,11 +49,11 @@ export class TuiCustomizationComponent implements AfterViewInit {
     }
 
     get hasLight(): boolean {
-        return this.keys.some(this.isLight);
+        return this.keys.some(key => this.isLight(key));
     }
 
     get hasDark(): boolean {
-        return this.keys.some(this.isDark);
+        return this.keys.some(key => this.isDark(key));
     }
 
     get mode(): TuiBrightness | null {

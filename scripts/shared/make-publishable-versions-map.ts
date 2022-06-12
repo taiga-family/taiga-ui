@@ -8,8 +8,8 @@ function getAllSortedTags(): string[] {
     )
         .toString()
         .split('\n')
-        .map(cleanupVersion)
-        .filter(Boolean);
+        .map(version => cleanupVersion(version))
+        .filter(version => Boolean(version));
 }
 
 function cleanupVersion(version: string): string {

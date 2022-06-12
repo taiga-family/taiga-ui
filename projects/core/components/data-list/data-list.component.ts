@@ -104,7 +104,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
             .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
-            .filter(isPresent);
+            .filter((element: T | undefined): element is T => isPresent(element));
     }
 
     onFocus({target}: Event, top: boolean): void {

@@ -74,7 +74,16 @@ export class TuiInputFileExample2 {
                         ),
                     ),
                     // Filtering out `null` as successfully uploaded files
-                ).pipe(map(files => [...acc, ...files.filter(isPresent)])),
+                ).pipe(
+                    map(files => [
+                        ...acc,
+                        ...files.filter(
+                            (
+                                element: File | RejectedFile | null,
+                            ): element is File | RejectedFile => isPresent(element),
+                        ),
+                    ]),
+                ),
             [],
         ),
         // Now we have a shared Observable of currently loading Files and server-rejects
@@ -83,7 +92,11 @@ export class TuiInputFileExample2 {
 
     readonly loading$: Observable<readonly TuiFileLike[]> = this.files$.pipe(
         // We filter out RejectedFiles to remove errors from loading array
-        map(files => files.filter(isFile)),
+        map(files =>
+            files.filter((element: File | RejectedFile): element is File =>
+                isFile(element),
+            ),
+        ),
         switchMap(loading =>
             this.files.valueChanges.pipe(
                 startWith(this.files.value),
@@ -99,7 +112,12 @@ export class TuiInputFileExample2 {
         switchMap(rejectedFiles =>
             this.files$.pipe(
                 // We filter out Files to ignore loading files
-                map(files => files.filter(isRejectedFile)),
+                map(
+                    files =>
+                        files.filter(element =>
+                            isRejectedFile(element),
+                        ) as RejectedFile[],
+                ),
                 // We collect all newly rejected files and previously rejected since we switch mapped
                 scan<RejectedFile[]>(
                     (previous, current) => [
@@ -111,7 +129,7 @@ export class TuiInputFileExample2 {
                 // We remove server errored files from control **SIDE EFFECT**
                 tap(files => this.removeRejected(files)),
                 // Map new RejectedFiles to TuiFileLike with rejection reason
-                map(files => files.map(convertRejected)),
+                map(files => files.map(element => convertRejected(element))),
                 // Combine with currently present rejected files
                 map(filtered => [...rejectedFiles, ...filtered]),
             ),
