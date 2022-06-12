@@ -23,7 +23,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         @ViewChild(TuiInputNumberComponent)
         component!: TuiInputNumberComponent;
 
-        control = new FormControl(12345.0);
+        control = new FormControl(12345);
         form = new FormGroup({control: this.control});
 
         decimal: TuiDecimalT = 'always';

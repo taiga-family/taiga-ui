@@ -42,7 +42,7 @@ describe('InputNumber', () => {
         @ViewChild(TuiInputNumberComponent)
         component!: TuiInputNumberComponent;
 
-        control = new FormControl(12345.0);
+        control = new FormControl(12345);
         form = new FormGroup({
             control: this.control,
         });
@@ -92,7 +92,7 @@ describe('InputNumber', () => {
         });
 
         it('Zero pennies are not shown', async () => {
-            testComponent.control.setValue(1234.0);
+            testComponent.control.setValue(1234);
             fixture.detectChanges();
 
             await fixture.whenStable();
