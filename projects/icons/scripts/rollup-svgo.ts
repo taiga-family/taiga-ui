@@ -25,7 +25,7 @@ export function rollupSvgo({
             const skip = !filter(path);
 
             if (skip) {
-                console.info('\x1b[33m%s\x1b[0m', '[skip]', path);
+                console.info('\x1B[33m%s\x1B[0m', '[skip]', path);
 
                 return;
             }
@@ -44,7 +44,7 @@ export function rollupSvgo({
 
             if (errorMessage) {
                 console.error(
-                    '\x1b[31m%s\x1b[0m',
+                    '\x1B[31m%s\x1B[0m',
                     '[error]',
                     path,
                     `\n${svgString}`,
@@ -53,7 +53,7 @@ export function rollupSvgo({
                 process.exit(1);
             }
 
-            console.info('\x1b[32m%s\x1b[0m', '[success]', path);
+            console.info('\x1B[32m%s\x1B[0m', '[success]', path);
 
             return {
                 code: `export default ${JSON.stringify(data)}`,

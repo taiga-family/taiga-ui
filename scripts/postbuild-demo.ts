@@ -15,9 +15,9 @@ import {getValueByFlag} from './shared/argv.utils';
         [demoPath],
     );
 
-    console.info('\x1b[32m%s\x1b[0m', '[DEMO_PATH]:', demoPath);
-    console.info('\x1b[32m%s\x1b[0m', '[LOCATION]:', location);
-    console.info('\x1b[32m%s\x1b[0m', '[PATHS]:', pathToDirectories);
+    console.info('\x1B[32m%s\x1B[0m', '[DEMO_PATH]:', demoPath);
+    console.info('\x1B[32m%s\x1B[0m', '[LOCATION]:', location);
+    console.info('\x1B[32m%s\x1B[0m', '[PATHS]:', pathToDirectories);
 
     /**
      * @example:
@@ -40,7 +40,7 @@ import {getValueByFlag} from './shared/argv.utils';
     }
 </script>`;
 
-    console.info('\x1b[35m%s\x1b[0m', `[SMOKER_BALANCER]: \n ${smokerBalancer}`);
+    console.info('\x1B[35m%s\x1B[0m', `[SMOKER_BALANCER]: \n ${smokerBalancer}`);
 
     for (const path of pathToDirectories) {
         const indexPath = `${path}/index.html`;
@@ -59,7 +59,7 @@ import {getValueByFlag} from './shared/argv.utils';
 
             writeFileSync(notFoundPath, processedBody);
         } catch (err) {
-            console.info('\x1b[35m%s\x1b[0m', err.message);
+            console.info('\x1B[35m%s\x1B[0m', err.message);
         }
     }
 })();

@@ -40,7 +40,7 @@ export function makePublishableVersionsMap(): Map<number, string> {
 
     publishableVersions = new Map([...publishableVersions].sort(([a], [b]) => b - a));
 
-    console.info('\x1b[32m%s\x1b[0m', '[old last versions]:', publishableVersions);
+    console.info('\x1B[32m%s\x1B[0m', '[old last versions]:', publishableVersions);
 
     return publishableVersions;
 }

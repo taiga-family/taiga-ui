@@ -53,4 +53,4 @@ export const CHAR_CURRENCY_SIGN = '\u00A4';
 /**
  * {@link https://unicode-table.com/en/200b/ Suspension points}.
  */
-export const CHAR_ZERO_WIDTH_SPACE = '\u200b';
+export const CHAR_ZERO_WIDTH_SPACE = '\u200B';
