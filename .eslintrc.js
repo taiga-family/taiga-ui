@@ -54,6 +54,7 @@ module.exports = {
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',
         'unicorn/no-empty-file': 'error',
+        'unicorn/new-for-builtins': 'error',
         'unicorn/filename-case': [
             'error',
             {
