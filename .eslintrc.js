@@ -52,6 +52,7 @@ module.exports = {
         eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
+        'unicorn/require-number-to-fixed-digits-argument': 'error',
         'unicorn/filename-case': [
             'error',
             {
