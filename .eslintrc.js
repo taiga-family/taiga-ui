@@ -55,6 +55,7 @@ module.exports = {
         'unicorn/require-number-to-fixed-digits-argument': 'error',
         'unicorn/no-empty-file': 'error',
         'unicorn/new-for-builtins': 'error',
+        'unicorn/no-useless-spread': 'error',
         'unicorn/filename-case': [
             'error',
             {
