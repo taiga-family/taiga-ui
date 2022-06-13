@@ -36,14 +36,14 @@ export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     }
 
     private createAsyncViewForNewNodes(): void {
-        from(this.tuiForAsyncOf || [])
+        from((this.tuiForAsyncOf || []).entries())
             .pipe(
-                concatMap(item => of(item).pipe(delay(this.tuiForAsyncTimeout))),
+                concatMap(entry => of(entry).pipe(delay(this.tuiForAsyncTimeout))),
                 takeUntil(this.destroy$),
             )
-            .subscribe(item =>
+            .subscribe(([index, item]) =>
                 this.view
-                    .createEmbeddedView(this.template, {$implicit: item})
+                    .createEmbeddedView(this.template, {$implicit: item, index}, index)
                     .detectChanges(),
             );
     }
