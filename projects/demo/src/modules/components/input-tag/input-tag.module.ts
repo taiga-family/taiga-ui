@@ -6,13 +6,14 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiDropdownControllerModule,
+    TuiErrorModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputTagModule,
 } from '@taiga-ui/kit';
 
@@ -35,7 +36,8 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiDataListWrapperModule,
         TuiLinkModule,
         TuiInputTagModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiDropdownControllerModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,

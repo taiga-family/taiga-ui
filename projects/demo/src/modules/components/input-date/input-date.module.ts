@@ -6,13 +6,14 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
+    TuiErrorModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputDateModule,
     TuiRadioListModule,
     TuiUnfinishedValidatorModule,
@@ -42,7 +43,8 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiUnfinishedValidatorModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateComponent)),
     ],

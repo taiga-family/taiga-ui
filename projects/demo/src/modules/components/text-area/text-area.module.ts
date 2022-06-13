@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
+    TuiErrorModule,
     TuiHintControllerModule,
     TuiLabelModule,
     TuiLinkModule,
@@ -12,7 +13,11 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiFieldErrorModule, TuiRadioListModule, TuiTextAreaModule} from '@taiga-ui/kit';
+import {
+    TuiFieldErrorPipeModule,
+    TuiRadioListModule,
+    TuiTextAreaModule,
+} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiTextAreaExample1} from './examples/1';
@@ -39,7 +44,8 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiNotificationModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTextAreaComponent)),
     ],
     declarations: [

@@ -5,11 +5,12 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
+    TuiErrorModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputPhoneModule,
     TuiIslandModule,
     TuiToggleModule,
@@ -26,7 +27,8 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiLinkModule,
         TuiToggleModule,
         TuiButtonModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiInputPhoneModule,
         CommonModule,
         FormsModule,

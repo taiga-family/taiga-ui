@@ -20,4 +20,8 @@
         </tui-data-list>
     </ng-container>
 </tui-input-tag>
-<tui-field-error [formControl]="control"></tui-field-error>
+
+<tui-error
+    [formControl]="control"
+    [error]="[] | tuiFieldError | async"
+></tui-error>

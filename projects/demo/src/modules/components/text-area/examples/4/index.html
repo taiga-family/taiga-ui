@@ -35,6 +35,9 @@
         >
             Type it
         </tui-text-area>
-        <tui-field-error formControlName="testValue1"></tui-field-error>
+        <tui-error
+            formControlName="testValue1"
+            [error]="[] | tuiFieldError | async"
+        ></tui-error>
     </label>
 </form>

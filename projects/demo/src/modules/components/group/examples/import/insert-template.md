@@ -12,7 +12,10 @@
     >
       House
     </tui-input>
-    <tui-field-error formControlName="testValue"></tui-field-error>
+    <tui-error
+      formControlName="testValue"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
   </div>
   <div>
     <tui-input
@@ -23,7 +26,10 @@
     >
       House building
     </tui-input>
-    <tui-field-error formControlName="testValue2"></tui-field-error>
+    <tui-error
+      formControlName="testValue2"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
   </div>
   <div>
     <tui-input
@@ -34,7 +40,10 @@
     >
       Apartament
     </tui-input>
-    <tui-field-error formControlName="testValue3"></tui-field-error>
+    <tui-error
+      formControlName="testValue3"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
   </div>
 </div>
 ```

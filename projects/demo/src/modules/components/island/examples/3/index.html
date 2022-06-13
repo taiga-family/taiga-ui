@@ -37,9 +37,10 @@
                     >
                         Input phone
                     </tui-input-phone>
-                    <tui-field-error
+                    <tui-error
                         formControlName="testValue"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </form>
             </tui-island>
         </div>
