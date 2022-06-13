@@ -110,7 +110,7 @@ export class TuiPieChartComponent {
     getTransform(index: number): string | null {
         const transform = this.masked
             ? `scale(${TRANSFORM[this.size]})`
-            : `scale(${TRANSFORM['xs']})`;
+            : `scale(${TRANSFORM.xs})`;
 
         return index === this.activeItemIndex ? transform : null;
     }

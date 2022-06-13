@@ -19,15 +19,15 @@ export const configureTestSuite = (configureModule?: () => void): void => {
 
     afterEach(() => {
         // @ts-ignore
-        testBedApi['_activeFixtures'].forEach((fixture: ComponentFixture<unknown>) =>
+        testBedApi._activeFixtures.forEach((fixture: ComponentFixture<unknown>) =>
             fixture.destroy(),
         );
         // reset ViewEngine TestBed
         // @ts-ignore
-        testBedApi['_instantiated'] = false;
+        testBedApi._instantiated = false;
         // reset Ivy TestBed
         // @ts-ignore
-        testBedApi['_testModuleRef'] = null;
+        testBedApi._testModuleRef = null;
     });
 
     afterAll(() => {

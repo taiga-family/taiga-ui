@@ -35,6 +35,7 @@ const setBeforeLoadOptions = (
 ): void => {
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
+        // eslint-disable-next-line @typescript-eslint/dot-notation
         windowRef['parent'] = windowRef;
     }
 };
