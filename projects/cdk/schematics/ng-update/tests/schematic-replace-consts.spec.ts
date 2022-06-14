@@ -12,7 +12,8 @@ import {join} from 'path';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
-const AFTER = `import { TuiCountryIsoCode } from "@taiga-ui/i18n";
+const AFTER = `import { TuiTableCommands } from "@taiga-ui/addon-editor";
+import { TuiCountryIsoCode } from "@taiga-ui/i18n";
 import { identity } from "rxjs";
 import { TuiAlertModule } from "@taiga-ui/core";
 import { Validators } from "@angular/forms";
@@ -29,6 +30,8 @@ export class AppComponent {
     };
 
     mask = tuiCreateDateRangeMask('DMY', '.');
+
+    command = TuiTableCommands.InsertColumnBefore;
 
     control = new FormControl('', [Validators.nullValidator]);
 
@@ -64,6 +67,7 @@ import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, TuiCountryIsoCode, tuiCreateAutoCorr
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
 import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
+import { TableComands } from '@taiga-ui/addon-editor';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
@@ -74,6 +78,8 @@ export class AppComponent {
     };
 
     mask = TUI_DATE_RANGE_MASK;
+
+    command = TableComands.InsertColumnBefore;
 
     control = new FormControl('', [EMPTY_VALIDATOR]);
 

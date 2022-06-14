@@ -80,4 +80,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/i18n',
         },
     },
+    {
+        from: {
+            name: 'TableComands',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'TuiTableCommands',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+    },
 ];

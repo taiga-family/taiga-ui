@@ -14,25 +14,25 @@ const collectionPath = join(__dirname, '../../migration.json');
 
 const BEFORE = `import { Component } from '@angular/core';
 import { TuiPortalService } from '@taiga-ui/cdk';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { TuiNotificationsService } from '@taiga-ui/core';
 import { TuiCodeEditor } from '@taiga-ui/addon-doc'
 
-function(service: TuiNotificationService) {
+function(service: TuiNotificationsService) {
     service
     .show().subscribe();
 
     let open = getService().show();
 }
 
-function getService(): TuiNotificationService {
-    return new TuiNotificationService();
+function getService(): TuiNotificationsService {
+    return new TuiNotificationsService();
 }
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
     constructor(
       @Inject(TuiPortalService) portalService: TuiPortalService;
-      @Inject(TuiNotificationService) private notificationService: TuiNotificationService;
+      @Inject(TuiNotificationsService) private notificationService: TuiNotificationsService;
       @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor;
     ) {
       notificationService.show(arg, arg2);
