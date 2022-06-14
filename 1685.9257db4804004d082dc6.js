@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1685],{csYE:function(t,n,u){"use strict";u.r(n),n.default="<p>Formatted number by default: {{10500.33 | tuiFormatNumber}}</p>\n\n<p>\n    Formatted number with custom params: {{10500.33 | tuiFormatNumber: 4: '.'}}\n</p>\n"}}]);
