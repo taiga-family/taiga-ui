@@ -6,6 +6,10 @@ import {
     getTemplateOffset,
 } from './template-resource';
 import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import {getNgComponents} from '../angular/ng-component';
+import {findNgModule} from '../angular/ng-module';
+import {addImportToNgModule} from 'ng-morph';
+import {addUniqueImport} from '../add-unique-import';
 
 /**
  * Replace component input property by new value
@@ -72,4 +76,44 @@ export function replaceInputProperty({
     });
 
     return true;
+}
+
+export function replaceInputPropertyByDirective({
+    templateResource,
+    fileSystem,
+    componentSelector,
+    inputProperty,
+    directive,
+    directiveModule,
+}: {
+    templateResource: TemplateResource;
+    fileSystem: DevkitFileSystem;
+    componentSelector: string;
+    inputProperty: string;
+    directive: string;
+    directiveModule?: {name: string; moduleSpecifier: string};
+}): void {
+    const wasModified = replaceInputProperty({
+        templateResource,
+        fileSystem,
+        componentSelector,
+        from: inputProperty,
+        to: directive,
+    });
+
+    if (wasModified && directiveModule) {
+        const [ngComponent] = getNgComponents(templateResource.componentPath);
+        const ngModule = ngComponent ? findNgModule(ngComponent) : null;
+
+        if (ngModule) {
+            addImportToNgModule(ngModule, directiveModule.name, {
+                unique: true,
+            });
+            addUniqueImport(
+                ngModule.getSourceFile().getFilePath(),
+                directiveModule.name,
+                directiveModule.moduleSpecifier,
+            );
+        }
+    }
 }
