@@ -53,4 +53,5 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: LanguageKit = {
         drop: 'Thả tệp tại đây',
         dropMultiple: 'Thả nhiều tệp tại đây',
     },
+    unavailablePdf: `Không thể hiển thị tệp PDF này. Trình duyệt của bạn có thể được đặt để tải xuống tệp thay vì xem trước chúng hoặc có thể có sự cố kết nối.`,
 };

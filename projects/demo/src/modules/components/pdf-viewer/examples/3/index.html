@@ -8,5 +8,19 @@
     <iframe
         src="assets/media/taiga.pdf"
         class="iframe"
+        [tuiPdfFallback]="fallback"
     ></iframe>
+</ng-template>
+<ng-template #fallback>
+    <div class="fallback">
+        The PDF couldn't be loaded
+        <br />
+        <a
+            tuiLink
+            download
+            href="assets/media/taiga.pdf"
+        >
+            Download
+        </a>
+    </div>
 </ng-template>

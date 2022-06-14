@@ -5,13 +5,29 @@ import {mapTo} from 'rxjs/operators';
 
 @Component({
     template: `
-        <iframe
-            *ngIf="src$ | async as src; else loading"
-            [src]="src"
-        ></iframe>
+        <ng-container *ngIf="src$ | async as src; else loading">
+            <iframe
+                [src]="src"
+                [tuiPdfFallback]="fallback"
+            ></iframe>
+            <ng-template #fallback>
+                <div class="fallback">
+                    The PDF couldn't be loaded
+                    <br />
+                    <a
+                        tuiLink
+                        download
+                        [attr.href]="src"
+                    >
+                        Download
+                    </a>
+                </div>
+            </ng-template>
+        </ng-container>
+
         <ng-template #loading><tui-loader size="xl"></tui-loader></ng-template>
     `,
-    styles: [':host { display: flex; height: 100% } :host > * { flex: 1 }'],
+    styleUrls: ['./pdf-content.component.less'],
 })
 export class PdfContent {
     readonly src$ = timer(3000).pipe(

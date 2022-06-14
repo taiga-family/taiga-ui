@@ -53,4 +53,5 @@ export const TUI_ENGLISH_LANGUAGE_KIT: LanguageKit = {
         drop: 'Drop file here',
         dropMultiple: 'Drop files here',
     },
+    unavailablePdf: `This PDF can't be displayed. Your browser may be set to download files instead of previewing them, or there may be a connection issue`,
 };

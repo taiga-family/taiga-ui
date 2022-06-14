@@ -82,6 +82,7 @@ export interface LanguageKit {
         drop: string;
         dropMultiple: string;
     };
+    unavailablePdf: string;
 }
 
 export interface LanguageCommerce {

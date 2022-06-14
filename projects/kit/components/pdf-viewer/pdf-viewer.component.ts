@@ -7,6 +7,7 @@ import {
     tuiFadeIn,
     tuiSlideInTop,
 } from '@taiga-ui/core';
+import {TUI_UNAVAILABLE_PDF_WORD} from '@taiga-ui/kit/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -29,5 +30,7 @@ export class TuiPdfViewerComponent<I, O> {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
+        @Inject(TUI_UNAVAILABLE_PDF_WORD)
+        readonly unavailablePdfWord$: Observable<string>,
     ) {}
 }

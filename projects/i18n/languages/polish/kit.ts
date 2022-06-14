@@ -53,4 +53,5 @@ export const TUI_POLISH_LANGUAGE_KIT: LanguageKit = {
         drop: 'Przeciągnij plik tutaj',
         dropMultiple: 'Przeciągnij pliki tutaj',
     },
+    unavailablePdf: `Nie można wyświetlić tego pliku PDF. Twoja przeglądarka może być ustawiona na pobieranie plików zamiast ich podglądu lub może występować problem z połączeniem.`,
 };

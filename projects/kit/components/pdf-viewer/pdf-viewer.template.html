@@ -27,6 +27,11 @@
         <iframe
             class="t-iframe"
             [src]="content"
+            [tuiPdfFallback]="fallback"
         ></iframe>
     </ng-template>
 </section>
+
+<ng-template #fallback>
+    <div class="t-fallback-message">{{ unavailablePdfWord$ | async }}</div>
+</ng-template>

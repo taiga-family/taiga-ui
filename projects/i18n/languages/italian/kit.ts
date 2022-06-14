@@ -53,4 +53,5 @@ export const TUI_ITALIAN_LANGUAGE_KIT: LanguageKit = {
         drop: 'Trascina il file qui',
         dropMultiple: 'Trascina i file qui',
     },
+    unavailablePdf: `Questo PDF non può essere mostrato. Il tuo browser potrebbe essere impostato per scaricare i file invece di visualizzarli in anteprima o potrebbe esserci un problema di connessione.`,
 };

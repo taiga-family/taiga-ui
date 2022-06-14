@@ -53,4 +53,5 @@ export const TUI_DUTCH_LANGUAGE_KIT: LanguageKit = {
         drop: 'Zet hier bestand neer',
         dropMultiple: 'Zet hier bestanden neer',
     },
+    unavailablePdf: `Deze PDF kan niet worden weergegeven. Uw browser kan zijn ingesteld om bestanden te downloaden in plaats van ze vooraf te bekijken, of er is mogelijk een verbindingsprobleem.`,
 };

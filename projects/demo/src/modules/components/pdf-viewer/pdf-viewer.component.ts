@@ -25,6 +25,9 @@ export class ExampleTuiPdfViewerComponent {
         'pdf-content.component.ts': import(
             '!!raw-loader!./examples/2/pdf-content.component.ts'
         ),
+        'pdf-content.component.less': import(
+            '!!raw-loader!./examples/2/pdf-content.component.less'
+        ),
     };
 
     readonly example3: TuiDocExample = {

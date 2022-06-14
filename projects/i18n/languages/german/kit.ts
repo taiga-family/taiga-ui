@@ -54,4 +54,5 @@ export const TUI_GERMAN_LANGUAGE_KIT: LanguageKit = {
         drop: 'Datei hier ablegen',
         dropMultiple: 'Dateien hier ablegen',
     },
+    unavailablePdf: `Dieses PDF kann nicht angezeigt werden. Ihr Browser ist möglicherweise so eingestellt, dass er Dateien herunterlädt, anstatt sie in der Vorschau anzuzeigen, oder es liegt möglicherweise ein Verbindungsproblem vor.`,
 };

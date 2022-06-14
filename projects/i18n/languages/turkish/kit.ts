@@ -53,4 +53,5 @@ export const TUI_TURKISH_LANGUAGE_KIT: LanguageKit = {
         drop: 'Dosyayı buraya bırakın',
         dropMultiple: 'Dosyaları buraya bırakın',
     },
+    unavailablePdf: `Bu PDF gösterilemiyor. Tarayıcınız, dosyaları önizlemek yerine indirecek şekilde ayarlanmış olabilir veya bir bağlantı sorunu olabilir.`,
 };

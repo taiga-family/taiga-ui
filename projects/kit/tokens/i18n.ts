@@ -89,3 +89,7 @@ export const TUI_COUNTRIES: InjectionToken<
 > = new InjectionToken('Localized countries names', {
     factory: extractI18n('countries'),
 });
+
+export const TUI_UNAVAILABLE_PDF_WORD = new InjectionToken(`i18n 'unavailablePdf' word`, {
+    factory: extractI18n('unavailablePdf'),
+});
