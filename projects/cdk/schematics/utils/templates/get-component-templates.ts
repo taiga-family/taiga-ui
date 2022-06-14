@@ -26,19 +26,22 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource {
 
     const templateUrl = metadata.getProperty('templateUrl') as PropertyAssignment;
     const template = metadata.getProperty('template') as PropertyAssignment;
+    const componentPath = decorator.getSourceFile().getFilePath();
 
     if (templateUrl) {
         const templatePath = path.parse(
             templateUrl?.getInitializer()?.getText().replace(/['"]/g, '') || '',
         );
-        const componentPath = path.parse(decorator.getSourceFile().getFilePath());
 
-        return {templatePath: getFullTemplatePath(templatePath, componentPath)};
+        return {
+            componentPath,
+            templatePath: getFullTemplatePath(templatePath, path.parse(componentPath)),
+        };
     } else {
         return {
+            componentPath,
             template: template.getInitializer()?.getText() || '',
             offset: template.getInitializer()?.getStart() || 0,
-            componentPath: decorator.getSourceFile().getFilePath(),
         };
     }
 }
