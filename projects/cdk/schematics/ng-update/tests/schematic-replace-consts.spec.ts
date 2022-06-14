@@ -68,6 +68,7 @@ import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
 import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
 import { TableComands } from '@taiga-ui/addon-editor';
+import {TuiResizableColumnModule} from '@taiga-ui/addon-table';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
@@ -92,7 +93,8 @@ export class AppComponent {
 
 @NgModule({
     imports: [
-      TuiNotificationsModule
+      TuiNotificationsModule,
+      TuiResizableColumnModule
     ],
     declarations: [AppComponent],
 })

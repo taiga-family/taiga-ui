@@ -10,6 +10,7 @@ import {showWarnings} from './steps/show-warnings';
 import {replaceServices} from './steps/replace-services';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateSliders} from './steps/migrate-sliders';
+import {removeModules} from './steps/remove-module';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -25,6 +26,7 @@ export function updateToV3(_: Schema): Rule {
         showWarnings(context);
         migrateTemplates(tree);
         migrateSliders(tree);
+        removeModules();
 
         saveActiveProject();
     };
