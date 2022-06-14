@@ -10,9 +10,8 @@ describe('Demo', () => {
             cy.get('tui-doc-example').each((example, index) => {
                 cy.wrap(example)
                     .find('.t-example')
-                    .scrollIntoView()
                     .findByAutomationId(EXAMPLE_ID)
-                    .should('be.visible')
+                    .tuiScrollIntoView()
                     .as('example');
 
                 return excluded(path, index + 1)
