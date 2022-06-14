@@ -15,6 +15,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    CHAR_PLUS,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
@@ -161,7 +162,7 @@ export class TuiInputPhoneInternationalComponent
         }
 
         this.updateCountryIsoCode(countryIsoCode);
-        this.updateValue(`+${value}`);
+        this.updateValue(`${CHAR_PLUS}${value}`);
     }
 
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
@@ -238,7 +239,7 @@ export class TuiInputPhoneInternationalComponent
             return (
                 ruCodeTest ||
                 (value.startsWith(
-                    this.isoToCountryCode(countryIsoCode).replace('+', ''),
+                    this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ''),
                 ) &&
                     value.length + 1 === this.getMaxAllowedLength(countryIsoCode))
             );

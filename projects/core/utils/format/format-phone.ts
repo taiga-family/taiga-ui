@@ -1,3 +1,5 @@
+import {CHAR_PLUS} from '@taiga-ui/cdk';
+
 /**
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
@@ -21,7 +23,7 @@ export function formatPhone(
     countryCode = countryCode.replace(/[()]/g, '');
 
     if (!value.startsWith(countryCode)) {
-        value = countryCode + value.replace('+', '');
+        value = countryCode + value.replace(CHAR_PLUS, '');
     }
 
     const splitPhoneMask = phoneMask.split('');

@@ -6,7 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
-import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
+import {CHAR_EN_DASH, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     formatNumber,
     TUI_NUMBER_FORMAT,
@@ -70,7 +70,7 @@ export class TuiMoneyComponent {
             : this.numberFormat.decimalSeparator + fraction;
     }
 
-    get signSymbol(): '' | typeof CHAR_EN_DASH | '+' {
+    get signSymbol(): '' | typeof CHAR_EN_DASH | typeof CHAR_PLUS {
         const {sign, value} = this;
 
         if (sign === 'never' || !value || (sign === 'negative-only' && value > 0)) {
@@ -78,10 +78,11 @@ export class TuiMoneyComponent {
         }
 
         if (sign === 'force-negative' || (value < 0 && sign !== 'force-positive')) {
+            /** TODO(nsbarsukov): investigate if it should be replaced by {@link CHAR_HYPHEN} */
             return CHAR_EN_DASH;
         }
 
-        return '+';
+        return CHAR_PLUS;
     }
 
     @HostBinding('class._red')
@@ -97,7 +98,7 @@ export class TuiMoneyComponent {
     get green(): boolean {
         return (
             this.colored &&
-            (this.signSymbol === '+' ||
+            (this.signSymbol === CHAR_PLUS ||
                 (this.value > 0 && this.sign !== 'force-negative'))
         );
     }
