@@ -1,5 +1,5 @@
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {NgModule, SecurityContext} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule} from '@taiga-ui/addon-doc';
@@ -57,7 +57,10 @@ const PRODUCTION_MODULES = environment.production
         VersionManagerModule,
         CustomHostModule,
         HttpClientModule,
-        MarkdownModule.forRoot({loader: HttpClient}),
+        MarkdownModule.forRoot({
+            loader: HttpClient,
+            sanitize: SecurityContext.NONE,
+        }),
         ...PRODUCTION_MODULES,
     ],
     declarations: [AppComponent],
