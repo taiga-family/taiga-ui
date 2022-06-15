@@ -4,8 +4,8 @@ import {ATTRS_TO_REPLACE, TAGS_TO_REPLACE} from '../constants/templates';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
-} from '@angular/cdk/schematics';
-import {findElementsByTagName} from '../../utils/templates/elements';
+    findElementsByTagName,
+} from '../../utils/templates/elements';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {TemplateResource} from '../interfaces/template-resourse';
 

@@ -54,4 +54,21 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'TuiPluralizePipeModule has been deleted in 3.0, please use use Angular built-in pipe https://angular.io/api/common/I18nPluralPipe ',
     },
+    {
+        name: 'TUI_DEFAULT_COLOR_HANDLER',
+        moduleSpecifier: '@taiga-ui/addon-charts',
+        message:
+            'TUI_DEFAULT_COLOR_HANDLER has been deleted in 3.0, please use CSS variables',
+    },
+    {
+        name: 'TuiColorHandler',
+        moduleSpecifier: '@taiga-ui/addon-charts',
+        message:
+            'TuiColorHandler has been deleted in 3.0, please use CSS custom properties',
+    },
+    {
+        name: 'DEFAULT_COLORS',
+        moduleSpecifier: '@taiga-ui/addon-charts',
+        message: 'DEFAULT_COLORS has been deleted in 3.0, please use CSS variables',
+    },
 ];
