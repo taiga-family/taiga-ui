@@ -26,6 +26,6 @@ export function syncVersions(
 
         updatePackageJsonStructure(packageJson, version, isPackageLockJson, ignores);
         writeFileSync(file, `${JSON.stringify(packageJson, null, INDENTATION)}\n`);
-        console.info('\x1b[32m%s\x1b[0m', `[synchronized]:`, file);
+        console.info('\x1B[32m%s\x1B[0m', `[synchronized]:`, file);
     }
 }

@@ -6,8 +6,8 @@ import {processIcons} from '../projects/icons/scripts';
     const baseDir = process.argv[2] || './projects/icons';
     const pattern = `${baseDir}/**/*.svg`;
 
-    console.info('\x1b[35m%s\x1b[0m', '[cwd]:', process.cwd());
-    console.info('\x1b[35m%s\x1b[0m', '[match]:', pattern);
+    console.info('\x1B[35m%s\x1B[0m', '[cwd]:', process.cwd());
+    console.info('\x1B[35m%s\x1B[0m', '[match]:', pattern);
 
     glob(pattern, {}, (_err: Error | null, files: string[]) => processIcons(files));
 })();

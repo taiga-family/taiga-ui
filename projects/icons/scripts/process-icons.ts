@@ -21,7 +21,7 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
         const name = parse(file).base.replace('.svg', '');
 
         if (src.includes(`id="${name}"`)) {
-            console.info('\x1b[33m%s\x1b[0m', `[skip]:`, file);
+            console.info('\x1B[33m%s\x1B[0m', `[skip]:`, file);
             continue;
         }
 
@@ -37,7 +37,7 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
 
         fs.writeFileSync(file, final);
 
-        console.info('\x1b[32m%s\x1b[0m', `[preprocessed]:`, file);
+        console.info('\x1B[32m%s\x1B[0m', `[preprocessed]:`, file);
     }
 }
 

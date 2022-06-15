@@ -9,7 +9,7 @@ export function clonePreBuiltSnapshots(publishableVersions: Map<number, string>)
         const targetDir = `${TARGET_CLONED_REPOS_DIR_PREFIX}/v${major}`;
 
         console.info(
-            '\x1b[32m%s\x1b[0m',
+            '\x1B[32m%s\x1B[0m',
             '[cloning...]: ',
             `${GIT_REPO}@v${full} to ${targetDir}`,
         );

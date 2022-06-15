@@ -38,7 +38,7 @@ export async function tuiAddSnapshotPlugin(
             fs.renameSync(path, newPath);
 
             console.info(
-                '\x1b[32m%s\x1b[0m',
+                '\x1B[32m%s\x1B[0m',
                 '\t[tuiAddSnapshotPlugin]:',
                 `${name} => ${newName}`,
             );
