@@ -1,6 +1,10 @@
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {Tree, UpdateRecorder} from '@angular-devkit/schematics';
-import {ATTRS_TO_REPLACE, TAGS_TO_REPLACE} from '../constants/templates';
+import {
+    ATTR_TO_DIRECTIVE,
+    ATTRS_TO_REPLACE,
+    TAGS_TO_REPLACE,
+} from '../constants/templates';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
@@ -8,6 +12,12 @@ import {
 } from '../../utils/templates/elements';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {TemplateResource} from '../interfaces/template-resourse';
+import {replaceInputPropertyByDirective} from '../../utils/templates/ng-component-input-manipulations';
+import {
+    getPathFromTemplateResource,
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from '../../utils/templates/template-resource';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -17,25 +27,38 @@ export function migrateTemplates(tree: Tree) {
     const fileSystem = new DevkitFileSystem(tree);
 
     templateResources.forEach((resource: TemplateResource) => {
-        if ('template' in resource) {
-            const template = resource.template;
-            const path = fileSystem.resolve(resource.componentPath);
-            const recorder = fileSystem.edit(path);
+        const path = fileSystem.resolve(getPathFromTemplateResource(resource));
+        const template = getTemplateFromTemplateResource(resource, fileSystem);
+        const recorder = fileSystem.edit(path);
+        const offset = getTemplateOffset(resource);
 
-            processTemplateUrl(template, recorder, resource.offset);
-        } else {
-            const path = fileSystem.resolve(resource.templatePath);
-            const template = fileSystem.read(path);
-            const recorder = fileSystem.edit(path);
-
-            processTemplateUrl(template, recorder);
-        }
+        replaceTags(template, recorder, offset);
+        replaceAttrs(template, recorder, offset);
+        replaceAttrsByDirective(fileSystem, resource);
 
         fileSystem.commitEdits();
     });
 }
 
-function processTemplateUrl(
+function replaceAttrsByDirective(
+    fileSystem: DevkitFileSystem,
+    templateResource: TemplateResource,
+) {
+    ATTR_TO_DIRECTIVE.forEach(
+        ({componentSelector, directiveModule, directive, inputProperty}) => {
+            replaceInputPropertyByDirective({
+                componentSelector,
+                directiveModule,
+                directive,
+                inputProperty,
+                fileSystem,
+                templateResource,
+            });
+        },
+    );
+}
+
+function replaceAttrs(
     template: string,
     recorder: UpdateRecorder,
     templateOffset = 0,
@@ -62,7 +85,9 @@ function processTemplateUrl(
             recorder.insertRight(offset + templateOffset, to.attrName);
         });
     });
+}
 
+function replaceTags(template: string, recorder: UpdateRecorder, templateOffset = 0) {
     TAGS_TO_REPLACE.forEach(({from, to, addAttributes}) => {
         const elements = findElementsByTagName(template, from);
 

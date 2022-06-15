@@ -13,8 +13,8 @@ import {join} from 'path';
 const collectionPath = join(__dirname, '../../migration.json');
 
 const COMPONENT_WITH_TEMPLATE_URL = `
-@Component({templateUrl: './app.template.html'})
-export class AppComponent {}
+@Component({templateUrl: './test.template.html'})
+export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
@@ -43,9 +43,16 @@ const TEMPLATE_BEFORE = `
     [invalid]="computedInvalid"
 >any</tui-wrapper>
 
+<tui-primitive-textfield
+    (autofilledChange)="onAutofilledChange($event)">
+</tui-primitive-textfield>
+
 <div tuiWrapper
     [hovered]="computedHovered"
 >any</div>
+
+<tui-select (hoveredChange)="onHoverChange(event$)"></tui-select>
+<button tuiButton (pressedChange)="onPressChange($event)"></button>
 `;
 
 const TEMPLATE_AFTER = `
@@ -74,23 +81,74 @@ const TEMPLATE_AFTER = `
     [invalid]="computedInvalid"
 >any</div>
 
+<tui-primitive-textfield
+    (tuiAutofilledChange)="onAutofilledChange($event)">
+</tui-primitive-textfield>
+
 <div tuiWrapper
     [hover]="computedHovered"
 >any</div>
+
+<tui-select (tuiHoveredChange)="onHoverChange(event$)"></tui-select>
+<button tuiButton (tuiPressedChange)="onPressChange($event)"></button>
 `;
 
 const COMPONENT_BEFORE = `
 @Component({template: '<tui-group><div></div></tui-group>'})
-export class AppComponent {
+export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
 `;
 
 const COMPONENT_AFTER = `
 @Component({template: '<div tuiGroup><div></div></div>'})
-export class AppComponent {
+export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
+`;
+
+const MODULE_BEFORE = `
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+
+import {TestComponentInline} from './test-inline.component';
+import {TestComponent} from './test.component';
+
+@NgModule({
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        TestComponent,
+        TestComponentInline
+    ],
+    exports: [TestComponent],
+})
+export class ExampleModule {}
+`;
+
+const MODULE_AFTER = `import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
+
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+
+import {TestComponentInline} from './test-inline.component';
+import {TestComponent} from './test.component';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        TuiAutofilledModule,
+        TuiPressedModule,
+        TuiHoveredModule
+    ],
+    declarations: [
+        TestComponent,
+        TestComponentInline
+    ],
+    exports: [TestComponent],
+})
+export class ExampleModule {}
 `;
 
 describe('ng-update', () => {
@@ -111,13 +169,21 @@ describe('ng-update', () => {
     it('should edit templates', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
-        expect(tree.readContent('test/app/app.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+    });
+
+    it('should add directive to module', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
     });
 
     it('should edit inline templates', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
+        expect(tree.readContent('test/app/test-inline.component.ts')).toEqual(
+            COMPONENT_AFTER,
+        );
     });
 
     afterEach(() => {
@@ -126,9 +192,11 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile('test/app/test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
 
-    createSourceFile('test/app/app.template.html', TEMPLATE_BEFORE);
+    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
-    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
+    createSourceFile('test/app/test-inline.component.ts', COMPONENT_BEFORE);
+
+    createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
 }
