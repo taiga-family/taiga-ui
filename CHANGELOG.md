@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.49.0](https://github.com/tinkoff/taiga-ui/compare/v2.48.0...v2.49.0) (2022-06-14)
+
+### Features
+
+- **addon-editor:** support emoji data type for new prosemirror-model
+  ([b590498](https://github.com/tinkoff/taiga-ui/commit/b5904984e3a65e4e1cb85b5e904df318b3f036a7))
+- **cdk:** add `chromium, firefox, webkit` engine detection
+  ([9fa5e1b](https://github.com/tinkoff/taiga-ui/commit/9fa5e1b1b9fc58f13c6b152d88b76b6f32dd5eff))
+- **cdk:** constants `CHAR_HYPHEN` | `CHAR_EN_DASH` | `CHAR_EM_DASH` | `CHAR_PLUS`
+  ([#1885](https://github.com/tinkoff/taiga-ui/issues/1885))
+  ([97acb51](https://github.com/tinkoff/taiga-ui/commit/97acb5180c87a8feb54734531df10f72bb354219))
+- **core:** use `TuiNumberFormatSettings` instead of deprecated `NumberFormatSettings`
+  ([#1886](https://github.com/tinkoff/taiga-ui/issues/1886))
+  ([bda8f5a](https://github.com/tinkoff/taiga-ui/commit/bda8f5a7bc664e7bd6ba4065dfabd69859a6e608))
+
+### Bug Fixes
+
+- **addon-doc:** broken `PAGE_SEE_ALSO` ([#1884](https://github.com/tinkoff/taiga-ui/issues/1884))
+  ([802e9c1](https://github.com/tinkoff/taiga-ui/commit/802e9c16ab2b6ebe2b55035166c3cb448172bac8))
+- **addon-editor:** upgrade prosemirror-model dependency for compat
+  ([bf573c1](https://github.com/tinkoff/taiga-ui/commit/bf573c1a435ac5b9b0a769c8f6b1549fb8daaa43))
+
 ## [2.48.0](https://github.com/tinkoff/taiga-ui/compare/v2.47.0...v2.48.0) (2022-06-07)
 
 ### Features
