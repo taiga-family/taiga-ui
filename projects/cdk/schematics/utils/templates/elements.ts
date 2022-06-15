@@ -1,6 +1,6 @@
 import {ChildNode, Element, parseFragment} from 'parse5';
 
-export function findElementsByTagName(html: string, tagName: string) {
+export function findElementsByTagName(html: string, tagName: string): Element[] {
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
 
@@ -27,7 +27,10 @@ export function findElementsByTagName(html: string, tagName: string) {
  * Parses a HTML fragment and traverses all AST nodes in order find elements that
  * include the specified attribute.
  */
-export function findElementsWithAttribute(html: string, attributeName: string) {
+export function findElementsWithAttribute(
+    html: string,
+    attributeName: string,
+): Element[] {
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
 
@@ -58,7 +61,7 @@ export function findAttributeOnElementWithTag(
     html: string,
     name: string,
     tagNames: string[],
-) {
+): number[] {
     return findElementsWithAttribute(html, name)
         .filter(element => tagNames.includes(element.tagName))
         .map(element => getStartOffsetOfAttribute(element, name));
@@ -72,7 +75,7 @@ export function findAttributeOnElementWithAttrs(
     html: string,
     name: string,
     attrs: string[],
-) {
+): number[] {
     return findElementsWithAttribute(html, name)
         .filter(element => attrs.some(attr => hasElementAttribute(element, attr)))
         .map(element => getStartOffsetOfAttribute(element, name));
@@ -87,6 +90,13 @@ function hasElementAttribute(element: Element, attributeName: string): boolean {
 }
 
 /** Gets the start offset of the given attribute from a Parse5 element. */
-export function getStartOffsetOfAttribute(element: any, attributeName: string): number {
-    return element.sourceCodeLocation.attrs[attributeName.toLowerCase()].startOffset;
+export function getStartOffsetOfAttribute(
+    element: Element,
+    attributeName: string,
+): number {
+    return (
+        (element.sourceCodeLocation?.attrs &&
+            element.sourceCodeLocation.attrs[attributeName.toLowerCase()]?.startOffset) ||
+        0
+    );
 }
