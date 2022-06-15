@@ -6,11 +6,12 @@ import {TuiCardModule, TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
+    TuiErrorModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiFieldErrorModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -24,7 +25,8 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
     imports: [
         TuiInputCardGroupedModule,
         TuiLinkModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiDataListModule,
         TuiCardModule,
         TuiLabelModule,

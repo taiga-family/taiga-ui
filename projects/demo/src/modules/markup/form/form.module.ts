@@ -7,6 +7,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiErrorModule,
     TuiGroupModule,
     TuiHintControllerModule,
     TuiLabelModule,
@@ -15,7 +16,7 @@ import {
 import {
     TuiCheckboxLabeledModule,
     TuiDataListWrapperModule,
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputCountModule,
     TuiInputDateModule,
     TuiInputModule,
@@ -51,7 +52,8 @@ import {FormComponent} from './form.component';
         TuiCheckboxLabeledModule,
         TuiRadioListModule,
         TuiButtonModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiInputPasswordModule,
         TuiInputPhoneModule,
         TuiInputModule,

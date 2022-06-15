@@ -84,10 +84,11 @@
                     >
                         CVC/CVV
                     </tui-input-cvc>
-                    <tui-field-error
+                    <tui-error
                         formControlName="card"
                         class="error"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </form>
             </ng-template>
         </tui-doc-demo>

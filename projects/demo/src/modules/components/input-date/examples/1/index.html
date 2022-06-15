@@ -15,5 +15,8 @@
     >
         Choose a date
     </tui-input-date>
-    <tui-field-error formControlName="testValue"></tui-field-error>
+    <tui-error
+        formControlName="testValue"
+        [error]="[] | tuiFieldError | async"
+    ></tui-error>
 </form>

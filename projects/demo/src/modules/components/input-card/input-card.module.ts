@@ -9,12 +9,13 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
+    TuiErrorModule,
     TuiGroupModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAccordionModule, TuiFieldErrorModule} from '@taiga-ui/kit';
+import {TuiAccordionModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCardExample1} from './examples/1';
@@ -27,7 +28,8 @@ import {ExampleTuiInputCardComponent} from './input-card.component';
         TuiInputExpireModule,
         TuiGroupModule,
         TuiLinkModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiAccordionModule,
         CommonModule,
         TuiHintControllerModule,

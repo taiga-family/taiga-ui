@@ -2,4 +2,7 @@
     [cardSrc]="card"
     [formControl]="control"
 ></tui-input-card-grouped>
-<tui-field-error [formControl]="control"></tui-field-error>
+<tui-error
+    [formControl]="control"
+    [error]="[] | tuiFieldError | async"
+></tui-error>
