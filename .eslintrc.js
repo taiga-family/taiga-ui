@@ -29,6 +29,15 @@ module.exports = {
     plugins: ['unicorn'],
     parser: '@typescript-eslint/parser',
     rules: {
+        'dot-notation': 'off',
+        '@typescript-eslint/dot-notation': [
+            'error',
+            {
+                allowPrivateClassPropertyAccess: true,
+                allowProtectedClassPropertyAccess: true,
+                allowIndexSignaturePropertyAccess: true,
+            },
+        ],
         '@typescript-eslint/no-useless-constructor': 'off',
         'no-prototype-builtins': 'off',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
