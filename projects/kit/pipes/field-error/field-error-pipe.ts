@@ -1,6 +1,7 @@
 import {Inject, Optional, Pipe, PipeTransform, Self} from '@angular/core';
 import {
     AbstractControl,
+    ControlValueAccessor,
     FormArrayName,
     FormGroupDirective,
     FormGroupName,
@@ -9,7 +10,7 @@ import {
 import {tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, isObservable, merge, Observable, of} from 'rxjs';
+import {isObservable, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
@@ -19,7 +20,7 @@ const EMPTY_RECORD = {};
     name: 'tuiFieldError',
     pure: false,
 })
-export class TuiFieldErrorPipe implements PipeTransform {
+export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     private order: readonly string[] = [];
 
     constructor(
@@ -54,14 +55,6 @@ export class TuiFieldErrorPipe implements PipeTransform {
         this.order = order;
 
         return this.computedError;
-    }
-
-    @tuiPure
-    get change$(): Observable<unknown> {
-        return merge(
-            this.control?.valueChanges || EMPTY,
-            this.control?.statusChanges || EMPTY,
-        );
     }
 
     get computedError(): Observable<TuiValidationError | null> {
