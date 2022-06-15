@@ -11,7 +11,7 @@ export function replaceConsts(): void {
 export function replaceConst({from, to}: ReplacementConst): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
-    for (let ref of references) {
+    references.forEach(ref => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -24,5 +24,5 @@ export function replaceConst({from, to}: ReplacementConst): void {
         } else {
             ref?.replaceWithText(to.name);
         }
-    }
+    });
 }

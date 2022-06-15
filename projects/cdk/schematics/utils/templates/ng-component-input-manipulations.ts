@@ -9,7 +9,7 @@ import {getNgComponents} from '../angular/ng-component';
 import {findNgModule} from '../angular/ng-module';
 import {addImportToNgModule} from 'ng-morph';
 import {addUniqueImport} from '../add-unique-import';
-import {findAttributeOnElementWithTag, findAttributeOnElementWithTag} from './elements';
+import {findAttributeOnElementWithAttrs, findAttributeOnElementWithTag} from './elements';
 
 /**
  * Replace component input property by new value
@@ -93,7 +93,7 @@ export function replaceInputPropertyByDirective({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string;
+    componentSelector: string | string[];
     inputProperty: string;
     directive: string;
     directiveModule?: {name: string; moduleSpecifier: string};

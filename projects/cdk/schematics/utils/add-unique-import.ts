@@ -23,7 +23,7 @@ export function addUniqueImport(
             .getNamedImports()
             .map(namedImport => namedImport.getText());
 
-        editImports(existingDeclaration, () => ({
+        editImports(existingDeclaration[0], () => ({
             namedImports: [...modules, namedImport],
         }));
 

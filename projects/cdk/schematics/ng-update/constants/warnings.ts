@@ -71,4 +71,28 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/addon-charts',
         message: 'DEFAULT_COLORS has been deleted in 3.0, please use CSS variables',
     },
+    {
+        name: 'AbstractTuiInteractive',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'pressedChange and hoveredChange outputs have been removed from AbstractTuiInteractive, please use tuiPressedChange and tuiHoveredChange directives instead',
+    },
+    {
+        name: 'AbstractTuiControl',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'pressedChange and hoveredChange outputs have been removed from AbstractTuiInteractive, please use tuiPressedChange and tuiHoveredChange directives instead',
+    },
+    {
+        name: 'AbstractTuiMultipleControl',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'pressedChange and hoveredChange outputs have been removed from AbstractTuiInteractive, please use tuiPressedChange and tuiHoveredChange directives instead',
+    },
+    {
+        name: 'AbstractTuiNullableControl',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'pressedChange and hoveredChange outputs have been removed from AbstractTuiInteractive, please use tuiPressedChange and tuiHoveredChange directives instead',
+    },
 ];

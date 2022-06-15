@@ -90,4 +90,15 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/addon-editor',
         },
     },
+    {
+        from: {
+            name: 'TuiController',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'AbstractTuiController',
+            moduleSpecifier: '@taiga-ui/cdk',
+            namedImport: 'AbstractTuiController',
+        },
+    },
 ];
