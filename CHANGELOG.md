@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.49.1](https://github.com/tinkoff/taiga-ui/compare/v2.49.0...v2.49.1) (2022-06-16)
+
+### Bug Fixes
+
+- problem with invalid rxjs-types ([#1925](https://github.com/tinkoff/taiga-ui/issues/1925))
+  ([51e1521](https://github.com/tinkoff/taiga-ui/commit/51e1521707a7b34b72a61522e58b03f0b09492f9))
+
 ## [2.49.0](https://github.com/tinkoff/taiga-ui/compare/v2.48.0...v2.49.0) (2022-06-14)
 
 ### Features
