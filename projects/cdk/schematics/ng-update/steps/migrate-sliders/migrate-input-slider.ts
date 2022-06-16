@@ -5,7 +5,6 @@ import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {
     removeInputProperty,
     replaceInputProperty,
-    replaceInputPropertyByDirective,
 } from '../../../utils/templates/ng-component-input-manipulations';
 import {TemplateResource} from '../../interfaces/template-resourse';
 import {getNgComponents} from '../../../utils/angular/ng-component';
@@ -18,29 +17,6 @@ export function migrateInputSlider(tree: Tree): void {
     const templateResources = getComponentTemplates('**/**');
 
     for (const templateResource of templateResources) {
-        replaceInputPropertyByDirective({
-            templateResource,
-            fileSystem,
-            componentSelector: 'tui-input-slider',
-            inputProperty: 'secondary',
-            directive: 'tuiTextfieldCustomContent',
-            directiveModule: {
-                name: 'TuiTextfieldControllerModule',
-                moduleSpecifier: '@taiga-ui/core',
-            },
-        });
-        replaceInputPropertyByDirective({
-            templateResource,
-            fileSystem,
-            componentSelector: 'tui-input-slider',
-            inputProperty: 'size',
-            directive: 'tuiTextfieldSize',
-            directiveModule: {
-                name: 'TuiTextfieldControllerModule',
-                moduleSpecifier: '@taiga-ui/core',
-            },
-        });
-
         replaceMinMaxLabels(templateResource, fileSystem);
     }
 }

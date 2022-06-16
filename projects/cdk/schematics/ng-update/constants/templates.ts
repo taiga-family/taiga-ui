@@ -99,4 +99,22 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        componentSelector: 'tui-input-slider',
+        inputProperty: 'size',
+        directive: 'tuiTextfieldSize',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        componentSelector: 'tui-input-slider',
+        inputProperty: 'secondary',
+        directive: 'tuiTextfieldCustomContent',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];

@@ -18,6 +18,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
+import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -36,7 +37,13 @@ export function migrateTemplates(tree: Tree) {
         replaceAttrs(template, recorder, offset);
         replaceAttrsByDirective(fileSystem, resource);
 
+        /**
+         * We should update virtual file tree
+         * otherwise all following ng-morph commands will overwrite all previous template manipulations
+         * */
         fileSystem.commitEdits();
+        saveActiveProject();
+        setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
     });
 }
 
