@@ -39,6 +39,7 @@ import {
 import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 
+import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
 // @dynamic
@@ -68,11 +69,11 @@ export class TuiInputPhoneComponent
 
     @Input()
     @tuiDefaultProp()
-    phoneMaskAfterCountryCode = '(###) ###-##-##';
+    phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
 
     @Input()
     @tuiDefaultProp()
-    allowText = false;
+    allowText = this.options.allowText;
 
     @Input()
     @tuiDefaultProp()
@@ -108,7 +109,7 @@ export class TuiInputPhoneComponent
         guide: false,
     } as TuiTextMaskOptions as unknown as TextMaskConfig;
 
-    countryCode = '+7';
+    countryCode = this.options.countryCode;
 
     open = false;
 
@@ -122,6 +123,8 @@ export class TuiInputPhoneComponent
         selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
+        @Inject(TUI_INPUT_PHONE_OPTIONS)
+        private readonly options: TuiInputPhoneOptions,
     ) {
         super(control, changeDetectorRef);
 

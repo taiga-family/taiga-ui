@@ -285,6 +285,10 @@ describe('InputPhoneInternational', () => {
         it('is calculated correctly', () => {
             component.countryIsoCode = TuiCountryIsoCode.RU;
 
+            expect(component.phoneMaskAfterCountryCode).toBe('### ###-##-##');
+
+            component.countryIsoCode = TuiCountryIsoCode.KZ;
+
             expect(component.phoneMaskAfterCountryCode).toBe('(###) ###-##-##');
         });
     });
