@@ -11,9 +11,10 @@ import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
 
 import {TuiEditorNewComponent} from './editor-new.component';
+import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
 
 @NgModule({
-    declarations: [TuiEditorNewComponent],
+    declarations: [TuiEditorNewComponent, TuiEditorPortalHostComponent],
     imports: [
         CommonModule,
         TuiToolbarNewModule,
