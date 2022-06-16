@@ -37,7 +37,10 @@
             </div>
         </div>
 
-        <tui-scrollbar class="t-scrollbar">
+        <tui-scrollbar
+            tuiEditorPortal
+            class="t-scrollbar"
+        >
             <div
                 *ngIf="editorLoaded"
                 tuiDropdownLimitWidth="auto"
@@ -55,13 +58,16 @@
                     (stateChange)="(0)"
                     (click)="selectLinkIfClosest()"
                 ></div>
-                <ng-template #dropdown>
-                    <tui-edit-link
-                        (addLink)="addLink($event)"
-                        (removeLink)="removeLink()"
-                    ></tui-edit-link>
-                </ng-template>
             </div>
+
+            <ng-template #dropdown>
+                <tui-edit-link
+                    (addLink)="addLink($event)"
+                    (removeLink)="removeLink()"
+                ></tui-edit-link>
+            </ng-template>
+
+            <tui-editor-portal-host></tui-editor-portal-host>
         </tui-scrollbar>
     </div>
 </tui-wrapper>
