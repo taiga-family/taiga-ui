@@ -104,14 +104,14 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         return this.getErrorId(this.order, this.controlErrors);
     }
 
-    private get controlErrors(): Record<string, any> {
+    private get controlErrors(): Record<string, unknown> {
         return this.control?.errors || EMPTY_RECORD;
     }
 
     @tuiPure
     private getErrorId(
         order: readonly string[],
-        controlErrors: Record<string, any>,
+        controlErrors: Record<string, unknown>,
     ): string {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];

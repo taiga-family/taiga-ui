@@ -1,5 +1,9 @@
 import {DATE_FILLER_LENGTH, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {
+    TuiTextMaskConfig,
+    TuiTextMaskOptions,
+    TuiTextMaskPipeHandler,
+} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 
 import {
@@ -30,7 +34,10 @@ export function tuiCreateAutoCorrectedDateTimePipe(
             return {value: formattedDate};
         }
 
-        const pipedTime = timePipe(time, {} as any);
+        const pipedTime = timePipe(
+            time,
+            {} as unknown as TuiTextMaskOptions & TuiTextMaskConfig,
+        );
 
         if (!pipedTime || typeof pipedTime === 'string') {
             return false;

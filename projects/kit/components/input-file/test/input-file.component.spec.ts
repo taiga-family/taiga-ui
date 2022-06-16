@@ -161,10 +161,10 @@ describe('InputFile', () => {
         const image: TuiFileLike = {name: 'test.png', type: 'image/png'};
         const error: TuiFileLike = {name: 'test.hap', type: 'wtf'};
 
-        const files: FileList = [text, image, error] as any;
+        const files: FileList = [text, image, error] as unknown as FileList;
 
         testComponent.component.onDropped(
-            {files: files} as any,
+            {files: files} as unknown as DataTransfer,
             {
                 maxSizeRejectionReason: 'File exceeds size ',
                 formatRejectionReason: 'Wrong file format',
@@ -188,10 +188,10 @@ describe('InputFile', () => {
             type: 'application/pdf',
         };
 
-        const files: FileList = [text] as any;
+        const files: FileList = [text] as unknown as FileList;
 
         testComponent.component.onDropped(
-            {files: files} as any,
+            {files: files} as unknown as DataTransfer,
             {
                 maxSizeRejectionReason: 'File exceeds size ',
                 formatRejectionReason: 'Wrong file format',

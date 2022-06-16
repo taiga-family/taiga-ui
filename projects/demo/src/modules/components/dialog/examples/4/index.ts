@@ -2,7 +2,7 @@ import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {clamp, TuiPortalService} from '@taiga-ui/cdk';
-import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
+import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -45,7 +45,7 @@ export class TuiDialogExampleComponent4 {
     }
 
     showDialog(
-        content: PolymorpheusContent<TuiDialogContext>,
+        content: PolymorpheusContent<any>,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
         const templateRef = this.portalService.addTemplate(button);

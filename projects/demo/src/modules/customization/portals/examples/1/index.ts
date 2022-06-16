@@ -17,7 +17,7 @@ export class TuiPortalsExample1 {
         private readonly customPortalService: CustomPortalService,
     ) {}
 
-    addTemplate(template: TemplateRef<any>): void {
+    addTemplate(template: TemplateRef<unknown>): void {
         this.templates.push(this.customPortalService.addTemplate(template));
     }
 

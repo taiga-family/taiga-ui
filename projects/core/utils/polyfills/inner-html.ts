@@ -1,7 +1,8 @@
 import {TuiXmlParsingException} from '@taiga-ui/cdk';
 
 /**
- * @internal
+ * @deprecated
+ * TODO: remove in v3.0
  */
 export function innerHTML(documentRef: Document): void {
     const svg = documentRef.createElementNS('http://www.w3.org/2000/svg', 'svg');

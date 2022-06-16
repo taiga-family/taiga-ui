@@ -116,7 +116,9 @@ export class TuiLineDaysChartComponent {
         return this.months.length * this.value[0][0].daysCount;
     }
 
-    get hint(): PolymorpheusContent<TuiContextWithImplicit<any>> {
+    get hint():
+        | PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>
+        | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
         return this.hintDirective ? this.hintDirective.hint : this.hintContent;
     }
 
@@ -181,7 +183,7 @@ export class TuiLineDaysChartComponent {
     getContext(
         index: number,
         {value}: TuiLineChartComponent,
-    ): TuiContextWithImplicit<any> {
+    ): TuiContextWithImplicit<unknown> {
         const x = value[index][0];
 
         return this.hintDirective

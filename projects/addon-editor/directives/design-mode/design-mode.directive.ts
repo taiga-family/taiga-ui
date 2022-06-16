@@ -368,7 +368,7 @@ export class TuiDesignModeDirective
         // IE
         if (
             !this.computedDocument.caretRangeFromPoint &&
-            !(this.computedDocument as any).caretPositionFromPoint
+            !this.computedDocument.caretPositionFromPoint
         ) {
             const range = (
                 this.computedDocument.body as HTMLBodyElement & {

@@ -23,7 +23,7 @@ export abstract class TuiFilterByInputBase {
 
     protected get query(): string {
         return this.accessor.nativeFocusableElement
-            ? (this.accessor.nativeFocusableElement as any).value || ''
+            ? (this.accessor.nativeFocusableElement as HTMLInputElement).value || ''
             : '';
     }
 

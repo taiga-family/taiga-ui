@@ -199,7 +199,7 @@ export abstract class AbstractTuiSlider<T>
                 }),
                 switchMap(rect =>
                     race([touchMoves$, mouseMoves$]).pipe(
-                        map((event: any) =>
+                        map(event =>
                             this.getCalibratedFractionFromEvents(
                                 rect,
                                 event instanceof MouseEvent

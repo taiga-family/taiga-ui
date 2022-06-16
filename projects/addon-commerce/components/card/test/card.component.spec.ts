@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiSizeS} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiCardComponent} from '../card.component';
@@ -19,9 +20,9 @@ describe('Card', () => {
         @ViewChild(TuiCardComponent, {static: true})
         component!: TuiCardComponent;
 
-        paymentSystem: any | null = null;
+        paymentSystem: unknown | null = null;
         brandLogo = '';
-        size = 'm';
+        size: TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -139,7 +139,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '+380123456789');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -151,7 +153,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '88005553535');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -163,7 +167,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '88005553535');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -175,7 +181,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '+89112223344');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -187,7 +195,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '+380 (12) 345-67-89');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -199,7 +209,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '380 (12) 345-67-89');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -211,7 +223,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '88635553535');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -223,7 +237,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '886355535353');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.onPaste(pasteEvent);
 
@@ -235,7 +251,9 @@ describe('InputPhoneInternational', () => {
 
             data.setData('text/plain', '43578');
 
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: data as unknown as DataTransfer,
+            });
 
             component.countryIsoCode = TuiCountryIsoCode.DM;
             component.onPaste(pasteEvent);

@@ -18,7 +18,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiSheetComponent {
     @ViewChild('template')
-    readonly templateRef: PolymorpheusContent<TuiSheet<any>> = '';
+    readonly templateRef: PolymorpheusContent<TuiSheet<unknown>> = '';
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
@@ -72,7 +72,7 @@ export class ExampleTuiSheetComponent {
 
     constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
 
-    get computedImage(): PolymorpheusContent<TuiSheet<any>> {
+    get computedImage(): PolymorpheusContent<TuiSheet<unknown>> {
         return this.image === 'Template' ? this.templateRef : this.image;
     }
 

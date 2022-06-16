@@ -12,6 +12,11 @@ import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
+interface ItemRadio {
+    name: string;
+    description: string;
+}
+
 @Component({
     selector: 'example-tui-radio-list',
     templateUrl: './radio-list.template.html',
@@ -44,7 +49,7 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
     readonly orientationVariants: readonly TuiOrientationT[] = ['vertical', 'horizontal'];
     orientation: TuiOrientationT = this.orientationVariants[0];
 
-    readonly items = [
+    readonly items: readonly ItemRadio[] = [
         {
             name: 'Simple',
             description: 'It is simple',
@@ -63,7 +68,7 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
 
     size: TuiSizeL = this.sizeVariants[0];
 
-    readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<any>> = [
+    readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<ItemRadio>> = [
         ALWAYS_FALSE_HANDLER,
         ALWAYS_TRUE_HANDLER,
         item => item.name === 'Advanced',

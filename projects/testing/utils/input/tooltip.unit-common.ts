@@ -5,8 +5,8 @@ import {FormControl} from '@angular/forms';
 import {PageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<any>;
-    fixture: ComponentFixture<any>;
+    pageObject: PageObject<unknown>;
+    fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     prefix: string;
 }
@@ -14,14 +14,14 @@ interface TestParams {
 interface TestComponent {
     readOnly: boolean;
     hintContent: string | null;
-    size: any;
+    size: unknown;
     control?: FormControl;
     disabled?: boolean;
 }
 
 export function testTooltip(context: TestParams): void {
-    let pageObject: PageObject<any>;
-    let fixture: ComponentFixture<any>;
+    let pageObject: PageObject<unknown>;
+    let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
 
     describe('Tooltip in a field', () => {

@@ -12,7 +12,7 @@ describe('isCurrentTarget', () => {
 
     it('Actual target is event.target', () => {
         const target = document.createElement('button');
-        const event = {target: target} as any;
+        const event = {target: target} as unknown;
 
         Object.defineProperty(event, 'target', {value: target});
 

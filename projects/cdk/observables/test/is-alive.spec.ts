@@ -4,11 +4,11 @@ import {Subject} from 'rxjs';
 import {tuiIsAlive} from '../is-alive';
 
 describe('Observable.prototype.tuiIsAlive', () => {
-    let $: Subject<any>;
+    let $: Subject<unknown>;
     let result: boolean[];
 
     beforeEach(() => {
-        $ = new Subject<any>();
+        $ = new Subject<unknown>();
         result = [];
     });
 

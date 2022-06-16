@@ -10,16 +10,19 @@ import {TuiPdfViewerOptions} from './pdf-viewer-options';
 const DIALOG = new PolymorpheusComponent(TuiPdfViewerComponent);
 const DEFAULT_OPTIONS = {label: '', actions: ''} as const;
 
-type Content<G> = PolymorpheusContent<TuiBaseDialogContext<G> & TuiPdfViewerOptions<any>>;
+type Content<G> = PolymorpheusContent<
+    TuiBaseDialogContext<G> & TuiPdfViewerOptions<unknown>
+>;
 
 @Injectable({
     providedIn: 'root',
 })
 export class TuiPdfViewerService extends AbstractTuiDialogService<
-    TuiPdfViewerOptions<any>
+    TuiPdfViewerOptions<unknown>
 > {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions: TuiPdfViewerOptions<any> = DEFAULT_OPTIONS as any;
+    protected readonly defaultOptions: TuiPdfViewerOptions<unknown> =
+        DEFAULT_OPTIONS as TuiPdfViewerOptions<unknown>;
 
     open<G>(
         content: SafeResourceUrl | Content<G>,

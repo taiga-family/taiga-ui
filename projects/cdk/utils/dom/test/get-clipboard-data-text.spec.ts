@@ -7,13 +7,13 @@ describe('getClipboardDataText', () => {
 
         clipboardData.setData('text/plain', data);
 
-        const event = new ClipboardEvent('copy', {clipboardData: clipboardData} as any);
+        const event = new ClipboardEvent('copy', {clipboardData: clipboardData});
 
         expect(getClipboardDataText(event)).toEqual(data);
     });
 
     it('ClipboardData not in event', () => {
-        const event = new Event('copy') as any;
+        const event = new Event('copy') as unknown as ClipboardEvent;
 
         Object.defineProperty(event, 'target', {
             value: {

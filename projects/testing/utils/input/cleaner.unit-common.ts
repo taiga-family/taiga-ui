@@ -8,8 +8,8 @@ import {NativeInputPO} from '../native-input.page-object';
 import {PageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<any>;
-    fixture: ComponentFixture<any>;
+    pageObject: PageObject<unknown>;
+    fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     inputPO: NativeInputPO;
     prefix: string;
@@ -17,7 +17,7 @@ interface TestParams {
 
 interface TestComponent {
     control?: FormControl;
-    value?: any;
+    value?: unknown;
     disabled?: boolean;
     cleaner: boolean;
     readOnly: boolean;
@@ -25,11 +25,11 @@ interface TestComponent {
 
 export function testCleaner(
     context: TestParams,
-    setValue: any = 'value',
-    clearValue: any = null,
+    setValue: unknown = 'value',
+    clearValue: unknown = null,
 ): void {
-    let pageObject: PageObject<any>;
-    let fixture: ComponentFixture<any>;
+    let pageObject: PageObject<unknown>;
+    let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 
@@ -118,7 +118,7 @@ export function testCleaner(
         });
     });
 
-    function updateValue(value: any): void {
+    function updateValue(value: unknown): void {
         if (testComponent.control) {
             testComponent.control.setValue(value);
         } else {

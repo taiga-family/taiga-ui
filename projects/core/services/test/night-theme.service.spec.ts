@@ -6,7 +6,7 @@ import {take} from 'rxjs/operators';
 import {TuiNightThemeService} from '../night-theme.service';
 
 describe('TuiNightThemeService', () => {
-    const mock: any = document.createElement('div');
+    const mock: HTMLDivElement = document.createElement('div');
     let service!: TuiNightThemeService;
 
     configureTestSuite(() => {
@@ -15,7 +15,7 @@ describe('TuiNightThemeService', () => {
                 {
                     provide: WINDOW,
                     useValue: {
-                        matchMedia(): any {
+                        matchMedia(): unknown {
                             return mock;
                         },
                     },
@@ -26,7 +26,7 @@ describe('TuiNightThemeService', () => {
 
     beforeEach(() => {
         service = TestBed.inject(TuiNightThemeService);
-        mock.matches = true;
+        mock.matches = true as any;
     });
 
     it('returns actual value', () => {
@@ -46,7 +46,7 @@ describe('TuiNightThemeService', () => {
             value = v;
         });
 
-        mock.matches = false;
+        mock.matches = false as any;
         mock.dispatchEvent(new Event('change'));
 
         expect(value).toBe(false);

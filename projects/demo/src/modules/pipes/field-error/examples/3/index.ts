@@ -14,7 +14,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;
 
-export function innValidator(field: AbstractControl): any {
+export function innValidator(field: AbstractControl): unknown {
     return field.value &&
         (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
         ? null

@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import {NativeInputPO} from '../native-input.page-object';
 
 interface TestParams {
-    fixture: ComponentFixture<any>;
+    fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     inputPO: NativeInputPO;
 }
@@ -14,7 +14,7 @@ interface TestComponent {
 }
 
 export function testFormControlState(context: TestParams): void {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 

@@ -139,7 +139,7 @@ export class TuiInputDateRangeComponent
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
-        private readonly mobileCalendar: Type<any> | null,
+        private readonly mobileCalendar: Type<object> | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)

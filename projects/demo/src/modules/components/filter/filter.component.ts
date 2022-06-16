@@ -59,17 +59,19 @@ export class ExampleTuiFilterComponent {
         ],
     ];
 
-    badgeHandlerVariants: ReadonlyArray<TuiHandler<any, number>> = [
+    badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
         item => Number(item),
         item => String(item).length,
     ];
 
     badgeHandler = this.badgeHandlerVariants[0];
 
-    disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<any>> = [
+    disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<string | ItemWithBadge>
+    > = [
         ALWAYS_FALSE_HANDLER,
         item => item === 'Roman Sedov',
-        item => item.valueOf() >= 30,
+        item => (item.valueOf() || 0) >= 30,
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
@@ -87,7 +89,7 @@ export class ExampleTuiFilterComponent {
         private readonly alertService: TuiAlertService,
     ) {}
 
-    onToggledItemChange(item: any): void {
+    onToggledItemChange(item: unknown): void {
         this.alertService.open(String(item)).subscribe();
     }
 }

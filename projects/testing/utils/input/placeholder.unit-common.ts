@@ -5,8 +5,8 @@ import {FormControl} from '@angular/forms';
 import {PageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<any>;
-    fixture: ComponentFixture<any>;
+    pageObject: PageObject<unknown>;
+    fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     prefix: string;
 }
@@ -23,8 +23,8 @@ export function testPlaceholder(
     setValue: unknown = 'value',
     clearValue: unknown = '',
 ): void {
-    let pageObject: PageObject<any>;
-    let fixture: ComponentFixture<any>;
+    let pageObject: PageObject<unknown>;
+    let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
 
     describe('Placeholder', () => {

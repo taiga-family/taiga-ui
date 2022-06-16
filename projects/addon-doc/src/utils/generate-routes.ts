@@ -4,7 +4,7 @@ import {Routes} from '@angular/router';
 /**
  * Generates typical page routing structure
  */
-export function generateRoutes(type: Type<any>): Routes {
+export function generateRoutes(type: Type<unknown>): Routes {
     return [
         {
             path: '',

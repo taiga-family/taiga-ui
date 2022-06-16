@@ -2,7 +2,7 @@ import {getClosestKeyboardFocusable} from '../get-closest-keyboard-focusable';
 
 describe('getClosestKeyboardFocusable', () => {
     it('returns null if root has no document', () => {
-        const root: any = {};
+        const root: Node = {} as unknown as Node;
         const divElement = document.createElement('div');
 
         expect(getClosestKeyboardFocusable(divElement, true, root)).toBe(null);

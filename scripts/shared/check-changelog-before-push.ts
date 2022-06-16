@@ -1,6 +1,6 @@
 import {createInterface} from 'readline';
 
-export async function checkChangelogBeforePush(): Promise<void> {
+export async function checkChangelogBeforePush(): Promise<string> {
     const readline = createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -10,7 +10,7 @@ export async function checkChangelogBeforePush(): Promise<void> {
     readline.prompt();
     console.info('\n');
 
-    return new Promise((resolve: (value?: string | PromiseLike<any>) => void) => {
+    return new Promise((resolve: (value?: string | PromiseLike<string>) => void) => {
         let response: string;
 
         readline.on('line', userInput => {

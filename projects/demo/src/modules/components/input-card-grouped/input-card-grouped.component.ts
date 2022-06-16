@@ -46,7 +46,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         HTML: import('!!raw-loader!../input-card-grouped/examples/4/index.html'),
     };
 
-    readonly cards = {
+    readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         mutation:
@@ -80,7 +80,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     get cardSrc(): PolymorpheusContent | null {
         return typeof this.cardSrcSelected === 'string'
-            ? (this.cards as any)[this.cardSrcSelected]
+            ? this.cards[this.cardSrcSelected]
             : this.cardSrcSelected;
     }
 

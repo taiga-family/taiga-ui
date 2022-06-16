@@ -5,10 +5,10 @@ import {createKeyboardEvent} from './keyboard-event';
 import {PageObject} from './page-object';
 
 export class NativeInputPO {
-    private readonly pageObject: PageObject<any>;
+    private readonly pageObject: PageObject<unknown>;
 
     constructor(
-        private readonly fixture: ComponentFixture<any>,
+        private readonly fixture: ComponentFixture<unknown>,
         private readonly automationId: string,
         private readonly hostDebugElement?: DebugElement,
     ) {
