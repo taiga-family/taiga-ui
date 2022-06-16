@@ -7,13 +7,16 @@ import {
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 
-import {ArrayElement, TuiFilterByInputBase} from './filter-by-input.base';
+import {AbstractTuiFilterByInputBase, ArrayElement} from './filter-by-input.base';
 
 @Pipe({
     name: 'tuiFilterByInput',
     pure: false,
 })
-export class TuiFilterByInputPipe extends TuiFilterByInputBase implements PipeTransform {
+export class TuiFilterByInputPipe
+    extends AbstractTuiFilterByInputBase
+    implements PipeTransform
+{
     constructor(
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         protected readonly accessor: TuiFocusableElementAccessor,
