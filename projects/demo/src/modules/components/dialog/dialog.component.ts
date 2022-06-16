@@ -117,6 +117,7 @@ export class ExampleTuiDialogComponent {
         'l',
         'fullscreen',
         'page',
+        'auto',
     ];
 
     size: TuiDialogSize = this.sizeVariants[1];
