@@ -19,10 +19,10 @@ import { TuiAlertModule } from "@taiga-ui/core";
 import { Validators } from "@angular/forms";
 import {Component} from '@angular/core';
 import { tuiCreateAutoCorrectedDatePipe, tuiCreateDateMask, tuiCreateDateRangeMask } from '@taiga-ui/kit';
-import { getClosestFocusable } from '@taiga-ui/cdk';
+import { getClosestFocusable, AbstractTuiController } from '@taiga-ui/cdk';
 
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {
+export class AppComponent extends AbstractTuiController {
    private readonly textMaskOptions = {
         mask: tuiCreateDateMask('DMY', '.'),
         pipe: tuiCreateAutoCorrectedDatePipe(this),
@@ -65,13 +65,14 @@ const countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
 const BEFORE = `import {Component} from '@angular/core';
 import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, TuiCountryIsoCode, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
+import { TuiController } from '@taiga-ui/cdk';
 import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
 import { TableComands } from '@taiga-ui/addon-editor';
 import {TuiResizableColumnModule} from '@taiga-ui/addon-table';
 
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {
+export class AppComponent extends TuiController {
    private readonly textMaskOptions = {
         mask: TUI_DATE_MASK,
         pipe: tuiCreateAutoCorrectedDatePipe(this),

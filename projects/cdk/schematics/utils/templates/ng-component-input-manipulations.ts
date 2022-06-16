@@ -9,7 +9,7 @@ import {getNgComponents} from '../angular/ng-component';
 import {findNgModule} from '../angular/ng-module';
 import {addImportToNgModule} from 'ng-morph';
 import {addUniqueImport} from '../add-unique-import';
-import {findAttributeOnElementWithTag} from './elements';
+import {findAttributeOnElementWithAttrs, findAttributeOnElementWithTag} from './elements';
 
 /**
  * Replace component input property by new value
@@ -45,7 +45,7 @@ export function replaceInputProperty({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string;
+    componentSelector: string | string[];
     from: string;
     to: string;
 }): boolean {
@@ -53,13 +53,18 @@ export function replaceInputProperty({
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
     const recorder = fileSystem.edit(path);
     const templateOffset = getTemplateOffset(templateResource);
+    const selector = Array.isArray(componentSelector)
+        ? componentSelector
+        : [componentSelector];
 
-    const stringProperties = findAttributeOnElementWithTag(template, from, [
-        componentSelector,
-    ]);
-    const propertyBindings = findAttributeOnElementWithTag(template, `[${from}]`, [
-        componentSelector,
-    ]);
+    const stringProperties = [
+        ...findAttributeOnElementWithTag(template, from, selector),
+        ...findAttributeOnElementWithAttrs(template, from, selector),
+    ];
+    const propertyBindings = [
+        ...findAttributeOnElementWithTag(template, `[${from}]`, selector),
+        ...findAttributeOnElementWithAttrs(template, `[${from}]`, selector),
+    ];
 
     if (!stringProperties.length && !propertyBindings.length) {
         return false;
@@ -88,7 +93,7 @@ export function replaceInputPropertyByDirective({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string;
+    componentSelector: string | string[];
     inputProperty: string;
     directive: string;
     directiveModule?: {name: string; moduleSpecifier: string};
