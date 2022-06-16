@@ -3,7 +3,7 @@ import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -52,7 +52,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeS | TuiSizeL | 'fullscreen' | 'page' {
+    get size(): TuiDialogSize {
         return this.context.size;
     }
 
