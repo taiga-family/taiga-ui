@@ -2,6 +2,7 @@ import {CHAR_HYPHEN, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 import {getFractionPartPadded} from './get-fractional-part-padded';
 
+// TODO: refactor later to `formatNumber(value: number, options: Partial<AllTheStuff>)`
 /**
  * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length

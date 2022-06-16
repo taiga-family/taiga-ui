@@ -1,11 +1,11 @@
-You can use it inline
+You can use it inline =
 <tui-money
     [value]="-12345.1"
     [singleColor]="true"
 ></tui-money>
 into your text that is cool!
 
-<div class="example-comma-after-money">
+<div class="tui-space_bottom-2">
     Deposit
     <tui-money
         [value]="7"
@@ -13,4 +13,9 @@ into your text that is cool!
     ></tui-money>
     <span>,</span>
     and continue shopping.
+</div>
+
+<div class="tui-space_bottom-2">
+    (8918 + 10333.6 + 3527.78 + 805.62 + 140) =
+    <tui-money [value]="8918 + 10333.6 + 3527.78 + 805.62 + 140"></tui-money>
 </div>
