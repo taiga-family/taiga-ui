@@ -21,8 +21,11 @@ tui-wrapper[data-appearance='icon'],
     }
 
     .wrapper-hover({
-        color: var(--tui-base-07);
         opacity: 1;
+
+        &:not([data-mode='onDark']) {
+            color: var(--tui-base-07);
+        }
     });
 
     .wrapper-active({
