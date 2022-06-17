@@ -63,13 +63,15 @@
             [class.t-content_animated]="!isCypress"
             [class.t-content_visible]="activeItemIndex === index"
         >
-            <ng-container *ngIf="index === defaultTabIndex; else anotherTab">
-                <ng-container *ngTemplateOutlet="preview"></ng-container>
-            </ng-container>
+            <ng-container
+                *ngIf="index === defaultTabIndex; else anotherTab"
+                [ngTemplateOutlet]="preview"
+            ></ng-container>
             <ng-template #anotherTab>
-                <ng-container
-                    *ngTemplateOutlet="codeSection; context: {$implicit: files[tabs[activeItemIndex]] || ''}"
-                ></ng-container>
+                <ng-template
+                    [ngTemplateOutlet]="codeSection"
+                    [ngTemplateOutletContext]="{$implicit: files[tabs[activeItemIndex]] || ''}"
+                ></ng-template>
             </ng-template>
         </div>
     </ng-container>

@@ -62,27 +62,21 @@
                 </span>
                 <ng-template tuiAccordionItemContent>
                     <div class="t-section">
-                        <ng-container *ngFor="let item of items[index]; index as subIndex">
-                            <ng-container
-                                *ngTemplateOutlet="
-                                    pages;
-                                    context: {
-                                        item: item,
-                                        index: index * 100 + subIndex
-                                    }
-                                "
-                            ></ng-container>
-                        </ng-container>
+                        <ng-container
+                            *ngFor="let item of items[index]; index as subIndex"
+                            [ngTemplateOutlet]="pages"
+                            [ngTemplateOutletContext]="{item: item, index: index * 100 + subIndex}"
+                        ></ng-container>
                     </div>
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>
         <div class="t-items-container">
-            <ng-container *ngFor="let item of itemsWithoutSections; let index = index">
-                <ng-container
-                    *ngTemplateOutlet="pages; context: {item: item, index: items.length - 1 + index}"
-                ></ng-container>
-            </ng-container>
+            <ng-container
+                *ngFor="let item of itemsWithoutSections; let index = index"
+                [ngTemplateOutlet]="pages"
+                [ngTemplateOutletContext]="{item: item, index: items.length - 1 + index}"
+            ></ng-container>
         </div>
 
         <ng-template
