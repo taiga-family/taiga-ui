@@ -79,7 +79,7 @@ export class TuiTableExample4 {
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 
-    readonly direction$ = new BehaviorSubject<-1 | 1>(1);
+    readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
     readonly sorter$ = new BehaviorSubject<Key>('name');
 
     readonly minAge = new FormControl(21);
