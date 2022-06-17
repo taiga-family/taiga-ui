@@ -12,6 +12,9 @@ module.exports = {
         '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',
         '@tinkoff/eslint-config-angular/promise',
+        '@tinkoff/eslint-config-angular/imports',
+        '@tinkoff/eslint-config-angular/line-statements',
+        '@tinkoff/eslint-config-angular/member-ordering',
     ],
     ignorePatterns: [
         'projects/**/test.ts',
@@ -58,7 +61,6 @@ module.exports = {
         '@typescript-eslint/no-for-in-array': 'error',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
-        eqeqeq: ['error', 'always'],
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',
