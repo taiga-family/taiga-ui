@@ -7,7 +7,7 @@
         class="tui-list__item"
         (click)="task.completed = !task.completed"
     >
-        {{task.title}}
+        {{ task.title }}
         <tui-svg
             *ngIf="task.completed"
             src="tuiIconCheckLarge"

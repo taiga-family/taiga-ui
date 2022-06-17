@@ -20,9 +20,7 @@
         class="t-tabs"
         [(activeItemIndex)]="activeItemIndex"
     >
-        <ng-container
-            *ngFor="let tab of tabConnectors; first as first; index as index"
-        >
+        <ng-container *ngFor="let tab of tabConnectors; first as first; index as index">
             <ng-container *ngIf="first; else dynamicTab">
                 <a
                     *tuiTab

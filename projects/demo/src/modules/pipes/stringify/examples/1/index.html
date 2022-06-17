@@ -6,7 +6,7 @@
     Pick your guy
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiFilterByInputWith : ('name' | tuiStringify)"
+        [items]="items | tuiFilterByInputWith: ('name' | tuiStringify)"
         [itemContent]="'name' | tuiStringify | tuiStringifyContent"
     ></tui-data-list-wrapper>
 </tui-combo-box>

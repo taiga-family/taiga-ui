@@ -1,7 +1,9 @@
 <div class="example">
     <h2>Template Driven</h2>
 
-    <p><b>value = {{rateValue}}</b></p>
+    <p>
+        <b>value = {{ rateValue }}</b>
+    </p>
     <tui-rating
         class="rating"
         [(ngModel)]="rateValue"
@@ -25,7 +27,9 @@
 <div class="example">
     <h2>Reactive Forms / Disabled</h2>
 
-    <p><b>value = {{ rateControl?.value }}</b></p>
+    <p>
+        <b>value = {{ rateControl?.value }}</b>
+    </p>
     <tui-rating
         class="rating"
         [formControl]="rateControl"

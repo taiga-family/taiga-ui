@@ -6,6 +6,6 @@
     <ng-container
         *ngFor="let item of alert$ | async"
         [ngComponentOutlet]="item.component.component"
-        [ngComponentOutletInjector]="item | tuiMapper : mapper"
+        [ngComponentOutletInjector]="item | tuiMapper: mapper"
     ></ng-container>
 </div>

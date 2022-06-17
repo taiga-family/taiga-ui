@@ -40,7 +40,7 @@
                         *tuiTab
                         tuiTab
                     >
-                        {{tab}}
+                        {{ tab }}
                     </button>
                 </ng-container>
             </tui-tabs-with-more>
@@ -53,7 +53,7 @@
                 [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
             >
-                Edit on {{codeEditor.name}}
+                Edit on {{ codeEditor.name }}
             </button>
         </div>
 
@@ -68,7 +68,7 @@
             </ng-container>
             <ng-template #anotherTab>
                 <ng-container
-                    *ngTemplateOutlet="codeSection; context: { $implicit: files[tabs[activeItemIndex]] || '' }"
+                    *ngTemplateOutlet="codeSection; context: {$implicit: files[tabs[activeItemIndex]] || ''}"
                 ></ng-container>
             </ng-template>
         </div>

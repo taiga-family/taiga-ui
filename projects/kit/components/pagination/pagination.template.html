@@ -2,7 +2,7 @@
     class="content"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <ng-container *ngIf="sizeM;  else smallButtons">
+    <ng-container *ngIf="sizeM; else smallButtons">
         <ng-container *ngIf="texts$ | async as texts">
             <button
                 tuiIconButton
@@ -18,9 +18,7 @@
                 (click)="onArrowClick('left')"
             ></button>
             <ng-container *tuiRepeatTimes="let elementIndex of elementsLength">
-                <ng-container
-                    *tuiLet="getItemIndexByElementIndex(elementIndex) as index"
-                >
+                <ng-container *tuiLet="getItemIndexByElementIndex(elementIndex) as index">
                     <button
                         *ngIf="index !== null; else dotsTemplate"
                         #element

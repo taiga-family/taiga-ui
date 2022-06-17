@@ -12,8 +12,8 @@
     let-item
 >
     <tui-loader
-        *ngIf="item === loading else text"
+        *ngIf="item === loading; else text"
         class="loader"
     ></tui-loader>
-    <ng-template #text>{{item.text}}</ng-template>
+    <ng-template #text>{{ item.text }}</ng-template>
 </ng-template>

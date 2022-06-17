@@ -83,13 +83,12 @@
             <code>O</code>
             is output data type and
             <code>I</code>
-            is input data type. If content does not need input data, the second
-            argument is optional. In the sample above the both of them are
+            is input data type. If content does not need input data, the second argument is optional. In the sample
+            above the both of them are
             <code>number</code>
             .
             <p>
-                You can also just unsubscribe from a stream to hide a
-                notification (this observable is returned from
+                You can also just unsubscribe from a stream to hide a notification (this observable is returned from
                 <code>open</code>
                 method). You can save a subscription for that or use
                 <code>takeUntil</code>
@@ -208,18 +207,15 @@
 
             <li>
                 <p i18n>
-                    You can also customize notification logic with a component.
-                    Use
+                    You can also customize notification logic with a component. Use
                     <code>POLYMORPHEUS_CONTEXT</code>
-                    into the component to get context input data and to output
-                    results. It has the following interface:
+                    into the component to get context input data and to output results. It has the following interface:
                     <code>TuiDialog&lt;TuiAlertOptions&lt;I&gt;, O&gt;</code>
                     , where
                     <code>O</code>
                     is output data type and
                     <code>I</code>
-                    is input data type. Do not forget to add notification
-                    component into
+                    is input data type. Do not forget to add notification component into
                     <code>entryComponents</code>
                     of your module:
                 </p>
@@ -233,9 +229,7 @@
             <li>
                 <p i18n>
                     Use
-                    <code>
-                        new PolymorpheusComponent(CustomNotificationComponent)
-                    </code>
+                    <code>new PolymorpheusComponent(CustomNotificationComponent)</code>
                     to show notification component with a service:
                 </p>
 
@@ -264,8 +258,7 @@
 
             <li>
                 <p i18n>
-                    If you use it from lazy loading modules, do not forget to
-                    use
+                    If you use it from lazy loading modules, do not forget to use
                     <code>new TuiComponentContent Injector</code>
                     of component where you call it
                 </p>
@@ -280,8 +273,7 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_NOTIFICATION_OPTIONS</code>
-                    injection token to override the default options (works only
-                    in app.module.ts).
+                    injection token to override the default options (works only in app.module.ts).
                 </p>
 
                 <tui-doc-code

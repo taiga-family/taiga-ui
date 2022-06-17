@@ -5,8 +5,8 @@
 >
     <ng-template pageTab>
         <p i18n>
-            Components shows separated items that can be used to filter content
-            on the page. There are also an option with badges.
+            Components shows separated items that can be used to filter content on the page. There are also an option
+            with badges.
         </p>
 
         <tui-doc-example
@@ -88,10 +88,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -101,8 +98,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
@@ -116,8 +112,7 @@
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Filter items. Can be an array of strings or an array of objects.
-                If no custom template provided, it uses
+                Filter items. Can be an array of strings or an array of objects. If no custom template provided, it uses
                 <code>toString</code>
                 for view
             </ng-template>

@@ -5,7 +5,7 @@
     @tuiParentAnimation
     [attr.id]="hint.id"
     [content]="component"
-    [context]="{ $implicit: hint }"
+    [context]="{$implicit: hint}"
     [tuiActiveZoneParent]="hint.activeZone"
     (tuiHoveredChange)="onHovered($event, hint)"
 ></div>

@@ -10,8 +10,8 @@ module.exports = {
             options: {printWidth: 90, parser: 'typescript'},
         },
         {
-            files: '*.html',
-            options: {printWidth: 80, parser: 'html'},
+            files: ['*.html'],
+            options: {printWidth: 120, parser: 'angular'},
         },
     ],
 };

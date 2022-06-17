@@ -48,7 +48,7 @@
                 *tuiCell="'name'"
                 tuiTd
             >
-                {{index + 1}}. {{item.name}}
+                {{ index + 1 }}. {{ item.name }}
             </td>
             <td
                 *tuiCell="'email'"
@@ -59,14 +59,14 @@
                     tuiLink
                     [href]="'mailto:' + item.email"
                 >
-                    {{item.email}}
+                    {{ item.email }}
                 </a>
             </td>
             <td
                 *tuiCell="'status'"
                 tuiTd
             >
-                <div [class]="item.status">{{item.status}}</div>
+                <div [class]="item.status">{{ item.status }}</div>
             </td>
             <td
                 *tuiCell="'tags'"

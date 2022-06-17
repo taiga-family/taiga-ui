@@ -1,6 +1,4 @@
-<dropdown-controller-documentation
-    *ngIf="dropdown"
-></dropdown-controller-documentation>
+<dropdown-controller-documentation *ngIf="dropdown"></dropdown-controller-documentation>
 <ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
     <hint-controller-documentation></hint-controller-documentation>
     <textfield-controller-documentation></textfield-controller-documentation>
@@ -58,8 +56,7 @@
             documentationPropertyMode="input"
             documentationPropertyType="string"
         >
-            Native ID attribute for element. It helps users with Screen Readers
-            to use a page
+            Native ID attribute for element. It helps users with Screen Readers to use a page
         </ng-template>
         <ng-template
             i18n

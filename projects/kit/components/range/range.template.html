@@ -46,12 +46,10 @@
                 *ngIf="!isNew"
                 class="number"
             >
-                {{ getSegmentPrefix(tickIndex, fromToText) }} {{ tickIndex |
-                tuiSliderTickLabel:segments:computedKeySteps | tuiFormatNumber
-                }}
+                {{ getSegmentPrefix(tickIndex, fromToText) }}
+                {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | tuiFormatNumber }}
                 <span *ngIf="pluralizeMap">
-                    {{ tickIndex | tuiSliderTickLabel:segments:computedKeySteps
-                    | i18nPlural: pluralizeMap }}
+                    {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | i18nPlural: pluralizeMap }}
                 </span>
             </span>
         </ng-container>

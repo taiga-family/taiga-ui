@@ -26,8 +26,7 @@
             <code>undefined</code>
             values if they were passed into input. If it gets
             <code>undefined</code>
-            , it will use default value and show an error message about the
-            problem in console in dev mode.
+            , it will use default value and show an error message about the problem in console in dev mode.
         </p>
 
         <div i18n>
@@ -43,9 +42,7 @@
 
         <div>
             <p i18n>See console. Min value is 5</p>
-            <example-tui-default-prop-demo
-                [quantity]="quantity"
-            ></example-tui-default-prop-demo>
+            <example-tui-default-prop-demo [quantity]="quantity"></example-tui-default-prop-demo>
             <tui-input-count
                 class="tui-space_top-4"
                 [(ngModel)]="quantity"
@@ -69,8 +66,7 @@
             <code>TuiBooleanHandler&lt;T&gt;</code>
             with the component instance as
             <code>this</code>
-            . If check is unsuccessful, it shows an error message about the
-            problem in console in dev mode.
+            . If check is unsuccessful, it shows an error message about the problem in console in dev mode.
         </p>
         <tui-doc-documentation>
             <ng-template
@@ -81,8 +77,7 @@
                 Optional argument, contract function
                 <p>
                     <strong>Warning:</strong>
-                    Angular Compiler does not allow arrow functions in
-                    decorators with
+                    Angular Compiler does not allow arrow functions in decorators with
                     <code>strictMetadataEmit</code>
                     (by default). Add
                     <code>// @dynamic</code>

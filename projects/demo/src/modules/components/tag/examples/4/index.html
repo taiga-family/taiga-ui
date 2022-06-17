@@ -1,6 +1,6 @@
 <div class="tags">
     <tui-tag
-        *ngFor="let tag of tags; let index = index; empty emptyTags;"
+        *ngFor="let tag of tags; let index = index; empty: emptyTags"
         size="l"
         status="custom"
         class="tag"
@@ -12,9 +12,7 @@
     ></tui-tag>
 </div>
 
-<ng-template #emptyTags>
-    All tags were removed. But Taiga UI is still an awesome UI-kit library ;)
-</ng-template>
+<ng-template #emptyTags>All tags were removed. But Taiga UI is still an awesome UI-kit library ;)</ng-template>
 
 <tui-notification
     status="info"

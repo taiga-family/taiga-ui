@@ -23,7 +23,7 @@
             #wrapper
             polymorpheus-outlet
             [content]="content"
-            [context]="{ $implicit: activeZone }"
+            [context]="{$implicit: activeZone}"
             (keydown.esc)="onKeyDownEsc($event)"
             (keydown)="onKeydown($event)"
         ></div>

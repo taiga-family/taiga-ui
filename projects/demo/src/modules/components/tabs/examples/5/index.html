@@ -15,7 +15,7 @@
                     tuiTab
                     (click)="onClick(tab)"
                 >
-                    {{tab}}
+                    {{ tab }}
                 </button>
             </ng-container>
             <ng-template #submenu>
@@ -40,7 +40,7 @@
         </ng-container>
     </tui-tabs-with-more>
 </div>
-<section class="content">Currently active: {{activeElement}}</section>
+<section class="content">Currently active: {{ activeElement }}</section>
 <ng-template #dropdown>
     <tui-data-list>
         <button
@@ -48,7 +48,7 @@
             tuiOption
             (click)="onClick(collaborator)"
         >
-            {{collaborator}}
+            {{ collaborator }}
         </button>
     </tui-data-list>
 </ng-template>

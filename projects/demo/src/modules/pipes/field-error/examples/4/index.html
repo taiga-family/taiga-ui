@@ -2,13 +2,13 @@
     <label
         *ngFor="let phone of formData.controls; let i = index"
         tuiLabel
-        label="Phone number {{i + 1}}"
+        label="Phone number {{ i + 1 }}"
         formArrayName="phones"
         class="tui-space_bottom-4"
     >
         <span class="row">
             <tui-input-phone
-                formControlName="{{i}}"
+                formControlName="{{ i }}"
                 tuiTextfieldAutocomplete="off"
                 tuiTextfieldSize="m"
                 class="input"
@@ -25,11 +25,9 @@
                 (click)="removePhone(i)"
             ></button>
         </span>
-        <ng-template #phoneErrorContent>
-            Invalid phone number length
-        </ng-template>
+        <ng-template #phoneErrorContent>Invalid phone number length</ng-template>
         <tui-error
-            formControlName="{{i}}"
+            formControlName="{{ i }}"
             [error]="[] | tuiFieldError | async"
         ></tui-error>
     </label>

@@ -11,7 +11,7 @@
     Rock Star Frontend Developers
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiHideSelected : component"
+        [items]="items | tuiHideSelected: component"
         [itemContent]="itemContent"
     ></tui-data-list-wrapper>
 </tui-multi-select>
@@ -27,6 +27,6 @@
             [avatarUrl]="data.avatarUrl"
             [text]="data.toString()"
         ></tui-avatar>
-        {{data}}
+        {{ data }}
     </div>
 </ng-template>
