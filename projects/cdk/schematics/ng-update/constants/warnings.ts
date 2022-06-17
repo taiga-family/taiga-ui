@@ -95,4 +95,15 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'pressedChange and hoveredChange outputs have been removed from AbstractTuiInteractive, please use tuiPressedChange and tuiHoveredChange directives instead',
     },
+    {
+        name: 'MEDIA',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'MEDIA constant has been deleted in 3.0. Please use TUI_MEDIA token from @taiga-ui/core',
+    },
+    {
+        name: 'colorFallback',
+        moduleSpecifier: '@taiga-ui/core',
+        message: 'colorFallback has been deleted in 3.0, please use CSS variables',
+    },
 ];

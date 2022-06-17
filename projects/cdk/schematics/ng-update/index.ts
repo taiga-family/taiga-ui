@@ -11,6 +11,7 @@ import {replaceServices} from './steps/replace-services';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateSliders} from './steps/migrate-sliders';
 import {removeModules} from './steps/remove-module';
+import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 
 export function updateToV3(_: Schema): Rule {
@@ -29,6 +30,7 @@ export function updateToV3(_: Schema): Rule {
         migrateSliders(tree);
         removeModules();
         replaceFunctions();
+        miscellaneousMigrations();
 
         saveActiveProject();
     };
