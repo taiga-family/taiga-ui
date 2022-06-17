@@ -16,7 +16,7 @@ export type ArrayElement<A> = A extends ReadonlyArray<infer T>
 
 /**
  * @deprecated
- * TODO: 3.0 replace with {@link AbstractTuiFilterByInputBase}
+ * TODO: 3.0 replace with {@link AbstractTuiFilterByInput}
  */
 export abstract class TuiFilterByInputBase {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
@@ -82,4 +82,4 @@ export abstract class TuiFilterByInputBase {
     }
 }
 
-export abstract class AbstractTuiFilterByInputBase extends TuiFilterByInputBase {}
+export abstract class AbstractTuiFilterByInput extends TuiFilterByInputBase {}

@@ -19,7 +19,7 @@ function replacePadStart(references: Node[]) {
             const [targetString, length, pad] = parent.getArguments();
             parent.replaceWithText(
                 `${targetString.getText()}.padStart(${length.getText()}, ${
-                    pad ? pad.getText() : '" "'
+                    pad?.getText() ?? '" "'
                 })`,
             );
         }

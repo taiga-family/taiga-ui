@@ -107,9 +107,9 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'AbstractTuiFilterByInputBase',
+            name: 'AbstractTuiFilterByInput',
             moduleSpecifier: '@taiga-ui/kit',
-            namedImport: 'AbstractTuiFilterByInputBase',
+            namedImport: 'AbstractTuiFilterByInput',
         },
     },
 ];
