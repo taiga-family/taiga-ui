@@ -41,7 +41,7 @@ const APP_TEMPLATE = `
 <h1>Title</h1>
 <inline-html-child></inline-html-child>
 
-<tui-input-slider [max]="100" [(ngModel)]="value" [min]="0">
+<tui-input-slider [max]="100" [(ngModel)]="value" [min]="0" valueContent="TOP SECRET">
     Usage of the component without deprecated props
 </tui-input-slider>
 
@@ -51,7 +51,7 @@ const APP_TEMPLATE = `
 
 /** ___test/file-html-child/*___ */
 
-const FILE_HTML_CHILD_COMPONENT = `
+const FILE_HTML_CHILD_COMPONENT_BEFORE = `
 @Component({
     selector: 'file-html-child',
     templateUrl: './file-html-child.template.html'
@@ -59,9 +59,31 @@ const FILE_HTML_CHILD_COMPONENT = `
 export class FileHtmlChildComponent {}
 `;
 
+const FILE_HTML_CHILD_COMPONENT_AFTER = `import { TuiContextWithImplicit } from "@taiga-ui/cdk";
+
+@Component({
+    selector: 'file-html-child',
+    templateUrl: './file-html-child.template.html'
+})
+export class FileHtmlChildComponent {
+    tuiMigrationMinMaxLabel(context: TuiContextWithImplicit<number>): string {
+        const currentValue = context.$implicit;
+        const maxValue = 100; // TODO replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO replace with the required label
+        const minValue = 0; // TODO replace with the MIN value of the input
+        const minLabelText = "Min"; // TODO replace with the required label
+        if (currentValue === maxValue) return maxLabelText;
+        if (currentValue === minValue) return minLabelText;
+        return String(currentValue);
+    }
+}
+`;
+
 const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 <tui-input-slider
     tuiHintContent="Select the answer to see how the right custom content changes"
+    maxLabel="MAX(string property)"
+    minLabel="MIN(string property)"
     class="control"
     [min]="0"
     [max]="10"
@@ -72,18 +94,20 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 </tui-input-slider>
 `;
 
-const FILE_HTML_CHILD_TEMPLATE_AFTER = `
-<tui-input-slider
-    tuiHintContent="Select the answer to see how the right custom content changes"
-    class="control"
-    [min]="0"
-    [max]="10"
-    [tuiTextfieldCustomContent]="userAnswer === 4 ? 'right' : 'wrong'"
-    [(ngModel)]="userAnswer"
->
-    2+2=?
-</tui-input-slider>
-`;
+const FILE_HTML_CHILD_TEMPLATE_AFTER =
+    '\n' +
+    '<tui-input-slider\n' +
+    '    tuiHintContent="Select the answer to see how the right custom content changes"\n' +
+    '    [valueContent]="tuiMigrationMinMaxLabel"\n' +
+    '    \n' +
+    '    class="control"\n' +
+    '    [min]="0"\n' +
+    '    [max]="10"\n' +
+    "    [tuiTextfieldCustomContent]=\"userAnswer === 4 ? 'right' : 'wrong'\"\n" +
+    '    [(ngModel)]="userAnswer"\n' +
+    '>\n' +
+    '    2+2=?\n' +
+    '</tui-input-slider>\n';
 
 const FILE_HTML_CHILD_MODULE_BEFORE = `
 import {CommonModule} from '@angular/common';
@@ -191,17 +215,33 @@ export class ChildModule {}
 const INLINE_HTML_CHILD_COMPONENT_BEFORE = `
 @Component({
     selector: 'inline-html-child',
-    template: '<tui-input-slider secondary="123"></tui-input-slider>'
+    template: '<tui-input-slider secondary="123" size="m" [maxLabel]="maxLabel"></tui-input-slider>'
 })
-export class InlineHtmlChildComponent {}
+export class InlineHtmlChildComponent {
+    readonly maxLabel = 'MAX (property binding)';
+}
 `;
 
-const INLINE_HTML_CHILD_COMPONENT_AFTER = `
+const INLINE_HTML_CHILD_COMPONENT_AFTER = `import { TuiContextWithImplicit } from "@taiga-ui/cdk";
+
 @Component({
     selector: 'inline-html-child',
-    template: '<tui-input-slider tuiTextfieldCustomContent="123"></tui-input-slider>'
+    template: '<tui-input-slider tuiTextfieldCustomContent="123" tuiTextfieldSize="m" [valueContent]="tuiMigrationMinMaxLabel"></tui-input-slider>'
 })
-export class InlineHtmlChildComponent {}
+export class InlineHtmlChildComponent {
+    readonly maxLabel = 'MAX (property binding)';
+
+    tuiMigrationMinMaxLabel(context: TuiContextWithImplicit<number>): string {
+        const currentValue = context.$implicit;
+        const maxValue = 100; // TODO replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO replace with the required label
+        const minValue = 0; // TODO replace with the MIN value of the input
+        const minLabelText = "Min"; // TODO replace with the required label
+        if (currentValue === maxValue) return maxLabelText;
+        if (currentValue === minValue) return minLabelText;
+        return String(currentValue);
+    }
+}
 `;
 
 describe('ng-update', () => {
@@ -235,6 +275,14 @@ describe('ng-update', () => {
 
             expect(tree.readContent('test/app/app.template.html')).toBe(APP_TEMPLATE);
         });
+
+        it('no changes in app.component.ts', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(tree.readContent('test/app/app.component.ts')).toBe(APP_COMPONENT);
+        });
     });
 
     describe('component with a inline html template', () => {
@@ -248,7 +296,7 @@ describe('ng-update', () => {
             ).toBe(INLINE_HTML_CHILD_MODULE_AFTER);
         });
 
-        it('replace deprecated attributes inside inline template', async () => {
+        it('replace deprecated attributes inside inline template (+ adds required class-methods)', async () => {
             const tree = await runner
                 .runSchematicAsync('updateToV3', {}, host)
                 .toPromise();
@@ -268,6 +316,16 @@ describe('ng-update', () => {
             expect(
                 tree.readContent('test/file-html-child/file-html-child.template.html'),
             ).toEqual(FILE_HTML_CHILD_TEMPLATE_AFTER);
+        });
+
+        it('adds required properties inside file-html-child.component.ts', async () => {
+            const tree = await runner
+                .runSchematicAsync('updateToV3', {}, host)
+                .toPromise();
+
+            expect(
+                tree.readContent('test/file-html-child/file-html-child.component.ts'),
+            ).toBe(FILE_HTML_CHILD_COMPONENT_AFTER);
         });
 
         it('adds TuiTextfieldControllerModule to the required module', async () => {
@@ -310,7 +368,7 @@ function createMainFiles(): void {
     );
     createSourceFile(
         'test/file-html-child/file-html-child.component.ts',
-        FILE_HTML_CHILD_COMPONENT,
+        FILE_HTML_CHILD_COMPONENT_BEFORE,
     );
     createSourceFile(
         'test/file-html-child/file-html-child.template.html',

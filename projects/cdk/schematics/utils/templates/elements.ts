@@ -1,5 +1,7 @@
 import {ChildNode, Element, parseFragment} from 'parse5';
 
+const ALWAYS_TRUE_HANDLER = (): true => true;
+
 export function findElementsByTagName(html: string, tagName: string): Element[] {
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
@@ -61,9 +63,10 @@ export function findAttributeOnElementWithTag(
     html: string,
     name: string,
     tagNames: string[],
+    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
 ): number[] {
     return findElementsWithAttribute(html, name)
-        .filter(element => tagNames.includes(element.tagName))
+        .filter(element => tagNames.includes(element.tagName) && filterFn(element))
         .map(element => getStartOffsetOfAttribute(element, name));
 }
 
@@ -75,14 +78,19 @@ export function findAttributeOnElementWithAttrs(
     html: string,
     name: string,
     attrs: string[],
+    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
 ): number[] {
     return findElementsWithAttribute(html, name)
-        .filter(element => attrs.some(attr => hasElementAttribute(element, attr)))
+        .filter(
+            element =>
+                attrs.some(attr => hasElementAttribute(element, attr)) &&
+                filterFn(element),
+        )
         .map(element => getStartOffsetOfAttribute(element, name));
 }
 
 /** Shorthand function that checks if the specified element contains the given attribute. */
-function hasElementAttribute(element: Element, attributeName: string): boolean {
+export function hasElementAttribute(element: Element, attributeName: string): boolean {
     return (
         element.attrs &&
         element.attrs.some(attr => attr.name === attributeName.toLowerCase())

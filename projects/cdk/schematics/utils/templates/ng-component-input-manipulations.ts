@@ -1,4 +1,5 @@
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {Element} from 'parse5';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
@@ -9,7 +10,11 @@ import {getNgComponents} from '../angular/ng-component';
 import {findNgModule} from '../angular/ng-module';
 import {addImportToNgModule} from 'ng-morph';
 import {addUniqueImport} from '../add-unique-import';
-import {findAttributeOnElementWithAttrs, findAttributeOnElementWithTag} from './elements';
+import {
+    findAttributeOnElementWithAttrs,
+    findAttributeOnElementWithTag,
+    findElementsWithAttribute,
+} from './elements';
 
 /**
  * Replace component input property by new value
@@ -42,12 +47,16 @@ export function replaceInputProperty({
     componentSelector,
     from,
     to,
+    newValue = '',
+    filterFn,
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
     componentSelector: string | string[];
     from: string;
     to: string;
+    newValue?: string;
+    filterFn?: (element: Element) => boolean;
 }): boolean {
     const template = getTemplateFromTemplateResource(templateResource, fileSystem);
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
@@ -58,29 +67,89 @@ export function replaceInputProperty({
         : [componentSelector];
 
     const stringProperties = [
-        ...findAttributeOnElementWithTag(template, from, selector),
-        ...findAttributeOnElementWithAttrs(template, from, selector),
-    ];
+        ...findAttributeOnElementWithTag(template, from, selector, filterFn),
+        ...findAttributeOnElementWithAttrs(template, from, selector, filterFn),
+    ].map(offset => templateOffset + offset);
     const propertyBindings = [
-        ...findAttributeOnElementWithTag(template, `[${from}]`, selector),
-        ...findAttributeOnElementWithAttrs(template, `[${from}]`, selector),
-    ];
+        ...findAttributeOnElementWithTag(template, `[${from}]`, selector, filterFn),
+        ...findAttributeOnElementWithAttrs(template, `[${from}]`, selector, filterFn),
+    ].map(offset => templateOffset + offset);
+    const propertyValues = newValue
+        ? getInputPropertyValueOffsets(template, from, selector).map(([start, end]) => [
+              templateOffset + start,
+              templateOffset + end,
+          ])
+        : [];
 
     if (!stringProperties.length && !propertyBindings.length) {
         return false;
     }
 
     stringProperties.forEach(offset => {
-        recorder.remove(offset + templateOffset, from.length);
-        recorder.insertRight(offset + templateOffset, to);
+        recorder.remove(offset, from.length);
+        recorder.insertRight(offset, to);
     });
 
     propertyBindings.forEach(offset => {
-        recorder.remove(offset + templateOffset, `[${from}]`.length);
-        recorder.insertRight(offset + templateOffset, `[${to}]`);
+        recorder.remove(offset, `[${from}]`.length);
+        recorder.insertRight(offset, to.startsWith('[') ? to : `[${to}]`);
+    });
+
+    propertyValues.forEach(([startOffset, endOffset]) => {
+        recorder.remove(startOffset, endOffset - startOffset);
+        recorder.insertRight(startOffset, newValue);
     });
 
     return true;
+}
+
+/**
+ * @example
+ * // 10 symbols before property `size` and string `size="s"` has 8-symbols length
+ * const template = '<tui-card size="s"></tui-card>';
+ *
+ * getInputPropertyOffsets(template, 'size', ['tui-card']) // [[10, 18]]
+ */
+export function getInputPropertyOffsets(
+    html: string,
+    attrName: string,
+    tags: string[],
+    filterFn: (element: Element) => boolean = () => true,
+): [number, number][] {
+    return findElementsWithAttribute(html, attrName)
+        .filter(element => tags.includes(element.tagName) && filterFn(element))
+        .map((element: Element) => {
+            const {startOffset = 0, endOffset = 0} =
+                element.sourceCodeLocation?.attrs?.[attrName.toLowerCase()] || {};
+
+            return [startOffset, endOffset];
+        });
+}
+
+/**
+ * @example
+ * // `<tui-card size="` has 16-symbols length
+ * const template = '<tui-card size="xl"></tui-card>';
+ *
+ * getInputPropertyValueOffsets(template, 'size', ['tui-card']) // [ [16, 18] ]
+ */
+export function getInputPropertyValueOffsets(
+    template: string,
+    attrName: string,
+    tags: string[],
+): [number, number][] {
+    const stringProperties: [number, number][] = getInputPropertyOffsets(
+        template,
+        attrName,
+        tags,
+    ).map(([start, end]) => [start + attrName.length + '="'.length, end - 1]);
+    const propertyBindings: [number, number][] = getInputPropertyOffsets(
+        template,
+        `[${attrName}]`,
+        tags,
+    ).map(([start, end]) => [start + `[${attrName}]`.length + '="'.length, end - 1]);
+
+    return [...stringProperties, ...propertyBindings];
 }
 
 export function replaceInputPropertyByDirective({
@@ -121,4 +190,48 @@ export function replaceInputPropertyByDirective({
             );
         }
     }
+}
+
+/**
+ * After removing property from the tag (which uses multi lines inside template) it can leave redundant space.
+ * It is not critical because html is valid even with this extra space.
+ * TODO: Find a way to fix it
+ */
+export function removeInputProperty({
+    templateResource,
+    fileSystem,
+    componentSelector,
+    inputProperty,
+    filterFn,
+}: {
+    templateResource: TemplateResource;
+    fileSystem: DevkitFileSystem;
+    componentSelector: string;
+    inputProperty: string;
+    filterFn?: (element: Element) => boolean;
+}) {
+    const template = getTemplateFromTemplateResource(templateResource, fileSystem);
+    const templateOffset = getTemplateOffset(templateResource);
+
+    const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
+    const recorder = fileSystem.edit(path);
+
+    const propertyOffsets = [
+        ...getInputPropertyOffsets(
+            template,
+            inputProperty,
+            [componentSelector],
+            filterFn,
+        ),
+        ...getInputPropertyOffsets(
+            template,
+            `[${inputProperty}]`,
+            [componentSelector],
+            filterFn,
+        ),
+    ].map(([start, end]) => [templateOffset + start, templateOffset + end]);
+
+    propertyOffsets.forEach(([start, end]) => {
+        recorder.remove(start, end - start);
+    });
 }
