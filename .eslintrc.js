@@ -67,6 +67,7 @@ module.exports = {
         'unicorn/no-useless-spread': 'error',
         'unicorn/escape-case': 'error',
         'unicorn/no-array-method-this-argument': 'error',
+        'unicorn/no-unsafe-regex': 'error',
         'unicorn/filename-case': [
             'error',
             {

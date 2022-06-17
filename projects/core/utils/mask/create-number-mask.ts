@@ -189,6 +189,8 @@ function convertToMask(strNumber: string): Array<string | RegExp> {
 
 function addThousandsSeparator(strNumber: string, thousandSymbol: string): string {
     return strNumber.length > 3
-        ? strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
+        ? // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
+          // eslint-disable-next-line unicorn/no-unsafe-regex
+          strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
         : strNumber;
 }
