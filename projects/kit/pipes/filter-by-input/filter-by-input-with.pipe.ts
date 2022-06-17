@@ -6,14 +6,14 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 
-import {ArrayElement, TuiFilterByInputBase} from './filter-by-input.base';
+import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 
 @Pipe({
     name: 'tuiFilterByInputWith',
     pure: false,
 })
 export class TuiFilterByInputWithPipe
-    extends TuiFilterByInputBase
+    extends AbstractTuiFilterByInput
     implements PipeTransform
 {
     constructor(

@@ -101,4 +101,15 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             namedImport: 'AbstractTuiController',
         },
     },
+    {
+        from: {
+            name: 'TuiFilterByInputBase',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'AbstractTuiFilterByInput',
+            moduleSpecifier: '@taiga-ui/kit',
+            namedImport: 'AbstractTuiFilterByInput',
+        },
+    },
 ];
