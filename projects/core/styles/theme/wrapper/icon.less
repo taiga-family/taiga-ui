@@ -13,11 +13,31 @@ tui-wrapper[data-appearance='icon'],
         .wrapper-focus({
             --tui-focus: var(--tui-base-01);
         });
+
+        .wrapper-hover({
+            color: var(--tui-text-01-night);
+            opacity: 1;
+        });
+
+        .wrapper-active({
+            color: var(--tui-text-01-night);
+            opacity: 1;
+        });
     }
 
     &[data-mode='onLight'] {
         color: var(--tui-text-01);
         opacity: var(--tui-disabled-opacity);
+
+        .wrapper-hover({
+            color: var(--tui-text-01);
+            opacity: 1;
+        });
+
+        .wrapper-active({
+            color: var(--tui-text-01);
+            opacity: 1;
+        });
     }
 
     .wrapper-hover({
