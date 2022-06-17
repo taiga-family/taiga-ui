@@ -92,6 +92,18 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 >
     2+2=?
 </tui-input-slider>
+
+<tui-input-range
+    new
+    [min]="0"
+    [max]="100"
+    [segments]="5"
+    [steps]="5"
+    [size]="size"
+    [formControl]="control"
+>
+    Select volume range
+</tui-input-range>
 `;
 
 const FILE_HTML_CHILD_TEMPLATE_AFTER =
@@ -107,7 +119,19 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER =
     '    [(ngModel)]="userAnswer"\n' +
     '>\n' +
     '    2+2=?\n' +
-    '</tui-input-slider>\n';
+    '</tui-input-slider>\n' +
+    `
+<tui-input-range
+        [min]="0"
+    [max]="100"
+    [segments]="5"
+    [steps]="5"
+    [tuiTextfieldSize]="size"
+    [formControl]="control"
+>
+    Select volume range
+</tui-input-range>
+`;
 
 const FILE_HTML_CHILD_MODULE_BEFORE = `
 import {CommonModule} from '@angular/common';
@@ -215,7 +239,7 @@ export class ChildModule {}
 const INLINE_HTML_CHILD_COMPONENT_BEFORE = `
 @Component({
     selector: 'inline-html-child',
-    template: '<tui-input-slider secondary="123" size="m" [maxLabel]="maxLabel"></tui-input-slider>'
+    template: '<tui-input-slider new secondary="123" size="m" [maxLabel]="maxLabel"></tui-input-slider>'
 })
 export class InlineHtmlChildComponent {
     readonly maxLabel = 'MAX (property binding)';
