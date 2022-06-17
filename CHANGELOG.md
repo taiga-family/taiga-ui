@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.49.2](https://github.com/tinkoff/taiga-ui/compare/v2.49.1...v2.49.2) (2022-06-17)
+
+### Features
+
+- **core:** `Dialog` add `auto` size ([#1931](https://github.com/tinkoff/taiga-ui/issues/1931))
+  ([8510949](https://github.com/tinkoff/taiga-ui/commit/8510949d74df45c28f219cdc1de0202bfc1524fa))
+
+### Bug Fixes
+
+- **addon-table:** `Table` fix changing initial direction with server-side sorting
+  ([#1935](https://github.com/tinkoff/taiga-ui/issues/1935))
+  ([f9950c5](https://github.com/tinkoff/taiga-ui/commit/f9950c5be4047f2acf5d5fe06df37acb3fe47533))
+- **core:** `tuiWrapper` fix icon appearance ([#1941](https://github.com/tinkoff/taiga-ui/issues/1941))
+  ([2840da9](https://github.com/tinkoff/taiga-ui/commit/2840da98ea0f94a36355f342c3d538f495054e8a))
+- **core:** removed CSS interface which unsupported in TS 3.9+
+  ([#1940](https://github.com/tinkoff/taiga-ui/issues/1940))
+  ([1bf0f0d](https://github.com/tinkoff/taiga-ui/commit/1bf0f0d52abcb6f8048094213d04f398d0456c4d))
+
 ### [2.49.1](https://github.com/tinkoff/taiga-ui/compare/v2.49.0...v2.49.1) (2022-06-16)
 
 ### Bug Fixes
