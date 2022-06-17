@@ -6,13 +6,13 @@
     [(ngModel)]="value"
 >
     <ng-template tuiDataList>
-        <tui-data-list *ngIf="items else loading">
+        <tui-data-list *ngIf="items; else loading">
             <button
                 *ngFor="let item of items"
                 tuiOption
                 [value]="item.id"
             >
-                {{item.name}}
+                {{ item.name }}
             </button>
         </tui-data-list>
     </ng-template>

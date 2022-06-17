@@ -14,13 +14,13 @@
 </ng-template>
 <!-- TODO: 3.0 need remove $any later -->
 <ng-template
-    [tuiDialogOptions]="$any({ size: 's', header: header })"
+    [tuiDialogOptions]="$any({size: 's', header: header})"
     [(tuiDialog)]="open"
 >
     <div
         tuiCarouselButtons
         class="wrapper"
-        (touchstart.passive.stop)="0"
+        (touchstart.passive.stop)="(0)"
     >
         <button
             tuiIconButton
@@ -32,9 +32,7 @@
         <tui-carousel [(index)]="index">
             <div *tuiItem>
                 <h2>Carousel is awesome</h2>
-                <p>
-                    It can show arbitrary content and it's very easy to control
-                </p>
+                <p>It can show arbitrary content and it's very easy to control</p>
             </div>
             <div *tuiItem>
                 <h2>Pagination</h2>

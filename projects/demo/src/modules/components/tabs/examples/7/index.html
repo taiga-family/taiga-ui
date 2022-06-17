@@ -8,7 +8,7 @@
             tuiTab
             (keydown.delete)="remove(item)"
         >
-            {{item}}
+            {{ item }}
             <tui-svg
                 src="tuiIconCloseLarge"
                 class="tui-space_left-2"
@@ -17,7 +17,7 @@
         </button>
     </ng-container>
 </tui-tabs-with-more>
-<p>{{items[activeItemIndex]}}</p>
+<p>{{ items[activeItemIndex] }}</p>
 <button
     tuiButton
     (click)="add()"

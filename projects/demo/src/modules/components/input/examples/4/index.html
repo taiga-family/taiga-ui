@@ -20,7 +20,7 @@
                     [value]="user.toString()"
                     (click)="onSelected(user)"
                 >
-                    {{user}}
+                    {{ user }}
                     <tui-avatar
                         size="xs"
                         [avatarUrl]="user.avatarUrl || null"
@@ -54,7 +54,7 @@
             let-account
         >
             <div>
-                {{account.name}}
+                {{ account.name }}
                 <tui-money [value]="account.amount"></tui-money>
             </div>
         </ng-template>

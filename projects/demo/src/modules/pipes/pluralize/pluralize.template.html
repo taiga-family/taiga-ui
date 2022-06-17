@@ -21,9 +21,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p class="text b-full-width">
-            Today we made {{ index }} {{ index | tuiPluralize: pluralize }}
-        </p>
+        <p class="text b-full-width">Today we made {{ index }} {{ index | tuiPluralize: pluralize }}</p>
         <tui-input-slider
             size="m"
             class="slider"
@@ -61,9 +59,7 @@
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

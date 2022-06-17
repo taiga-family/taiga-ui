@@ -17,8 +17,6 @@
         <span *ngSwitchCase="0">Today</span>
         <span *ngSwitchCase="1">Tomorrow</span>
         <span *ngSwitchCase="7">In a week</span>
-        <span *ngSwitchDefault>
-            {{value}}&nbsp;{{value | i18nPlural: pluralize}}
-        </span>
+        <span *ngSwitchDefault>{{ value }}&nbsp;{{ value | i18nPlural: pluralize }}</span>
     </ng-container>
 </ng-template>

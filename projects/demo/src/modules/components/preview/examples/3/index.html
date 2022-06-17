@@ -16,7 +16,7 @@
         [rotatable]="!(contentUnavailable$ | async)"
         [zoomable]="!(contentUnavailable$ | async) && !(loading$ | async)"
     >
-        <tui-preview-title>{{title$ | async}}</tui-preview-title>
+        <tui-preview-title>{{ title$ | async }}</tui-preview-title>
         <tui-preview-pagination
             [length]="items.length"
             [index]="index$$.value"

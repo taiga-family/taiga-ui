@@ -85,21 +85,21 @@
                     tuiTd
                     [class.match]="isMatch(item.name)"
                 >
-                    {{item.name}}
+                    {{ item.name }}
                 </td>
                 <td
                     *tuiCell="'dob'"
                     tuiTd
                     [class.match]="isMatch(item.dob)"
                 >
-                    {{item.dob}}
+                    {{ item.dob }}
                 </td>
                 <td
                     *tuiCell="'age'"
                     tuiTd
                     [class.match]="isMatch(getAge(item))"
                 >
-                    {{getAge(item)}}
+                    {{ getAge(item) }}
                 </td>
             </tr>
         </tbody>

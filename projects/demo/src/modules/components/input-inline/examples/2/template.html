@@ -3,7 +3,7 @@
     [class.header_empty]="!heading"
 >
     <tui-input-inline
-        *ngIf="editing else text"
+        *ngIf="editing; else text"
         tuiAutoFocus
         [(ngModel)]="heading"
         (focusedChange)="onFocusedChange($event)"
@@ -13,7 +13,7 @@
         Type a heading
     </tui-input-inline>
     <ng-template #text>
-        <span>{{heading}}</span>
+        <span>{{ heading }}</span>
         <button
             tuiIconButton
             type="button"
@@ -28,13 +28,11 @@
 </h2>
 
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-    exercitationem, sed? Deserunt dignissimos dolorem doloribus officiis quae
-    repellat rerum? Accusantium fuga hic nam necessitatibus non officiis
-    perferendis repellendus tempore voluptates!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos dolorem
+    doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis repellendus
+    tempore voluptates!
 </p>
 <p>
-    Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste
-    itaque iusto laborum nostrum officia quam quasi quos repellat temporibus
-    tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem!
+    Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia quam
+    quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem!
 </p>

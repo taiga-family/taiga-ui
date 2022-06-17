@@ -7,7 +7,7 @@
                 *ngFor="let column of tableColumns"
                 class="tui-table__th"
             >
-                {{column}}
+                {{ column }}
             </th>
         </tr>
         <tr
@@ -19,7 +19,7 @@
                 *ngFor="let value of getObjectValues(rowInfo)"
                 class="tui-table__td"
             >
-                {{value}}
+                {{ value }}
             </td>
 
             <ng-template
@@ -38,7 +38,7 @@
                         tuiOption
                         (click)="printToConsole(item.title, rowInfo); close()"
                     >
-                        {{item.title}}
+                        {{ item.title }}
                         <tui-svg
                             class="icon"
                             [src]="item.iconName"
@@ -65,7 +65,7 @@
                             *ngFor="let option of moreOptions"
                             tuiOption
                         >
-                            {{option}}
+                            {{ option }}
                         </button>
                     </tui-data-list>
                 </ng-template>

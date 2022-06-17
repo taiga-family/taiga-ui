@@ -10,10 +10,8 @@
         >
             <code>tui-svg</code>
         </a>
-        component to display SVG icons. It can show icons by name, link or
-        source code. Several icon names are hardcoded into kit components so if
-        you want to switch to a different icon set you would need to provide a
-        mapping.
+        component to display SVG icons. It can show icons by name, link or source code. Several icon names are hardcoded
+        into kit components so if you want to switch to a different icon set you would need to provide a mapping.
     </p>
     <p>
         <button
@@ -38,17 +36,15 @@
         <code>tuiCoreIcons</code>
         and
         <code>tuiKitIcons</code>
-        . It is not required to provide all those icons, you can gradually add
-        the ones you need depending on components you use.
+        . It is not required to provide all those icons, you can gradually add the ones you need depending on components
+        you use.
     </p>
 
     <p i18n>
-        There are two ways to add icons: bundled and as assets. Bundled icons
-        have the benefit of immediate display but increase your app size. Assets
-        work like regular
+        There are two ways to add icons: bundled and as assets. Bundled icons have the benefit of immediate display but
+        increase your app size. Assets work like regular
         <code>img src="xxx"</code>
-        with all the benefits of caching. In both cases you can control color
-        with CSS
+        with all the benefits of caching. In both cases you can control color with CSS
         <code>color</code>
         style.
     </p>
@@ -64,8 +60,7 @@
     <p i18n>
         If you want to bundle your icons, you need to provide
         <code>TUI_ICONS</code>
-        token with a dictionary of name to source code. Also you need to process
-        your icons by
+        token with a dictionary of name to source code. Also you need to process your icons by
         <code>processIcons</code>
         from
         <code>@taiga-ui/icons/scripts</code>
@@ -98,8 +93,7 @@
             </a>
             you need to provide
             <code>TUI_SANITIZER</code>
-            token, which is responsible for removing malicious code from the
-            svg. We recommend to use
+            token, which is responsible for removing malicious code from the svg. We recommend to use
             <a
                 tuiLink
                 href="https://github.com/tinkoff/ng-dompurify"
@@ -115,8 +109,7 @@
             >
                 DOMPurify
             </a>
-            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
-            and supports the same configuration.
+            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify and supports the same configuration.
         </p>
 
         <tui-doc-code

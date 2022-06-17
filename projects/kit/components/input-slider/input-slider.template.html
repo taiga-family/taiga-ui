@@ -32,7 +32,7 @@
 </tui-input-number>
 
 <!--TODO: remove in v3.0-->
-<ng-template #deprecatedSecondary>{{secondary}}</ng-template>
+<ng-template #deprecatedSecondary>{{ secondary }}</ng-template>
 
 <!--TODO: remove wrapper + ticks labels (leave only slider) in v3.0-->
 <div class="t-slider-wrapper">
@@ -59,12 +59,10 @@
             automation-id="tui-slider__segment"
         >
             <span *ngIf="fromToTexts$ | async as fromToText">
-                {{ getTickPrefix(tickIndex, segments, fromToText) }} {{
-                tickIndex | tuiSliderTickLabel:segments:computedKeySteps |
-                tuiFormatNumber}}
+                {{ getTickPrefix(tickIndex, segments, fromToText) }}
+                {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | tuiFormatNumber }}
                 <span *ngIf="segmentsPluralizeMap">
-                    {{ tickIndex | tuiSliderTickLabel:segments:computedKeySteps
-                    | i18nPlural: segmentsPluralizeMap }}
+                    {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | i18nPlural: segmentsPluralizeMap }}
                 </span>
             </span>
         </span>

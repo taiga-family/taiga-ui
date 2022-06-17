@@ -21,8 +21,8 @@
             i18n
             class="text b-full-width"
         >
-            Formatted phone number: {{ index | tuiFormatPhone:
-            countryCode:phoneMask }}
+            Formatted phone number:
+            {{ index | tuiFormatPhone: countryCode:phoneMask }}
         </p>
         <tui-input
             tuiTextfieldSize="m"
@@ -69,9 +69,7 @@
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

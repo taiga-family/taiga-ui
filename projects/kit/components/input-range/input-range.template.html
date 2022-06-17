@@ -69,7 +69,7 @@
             automation-id="tui-input-range__pluralize-right"
             class="t-pluralize-right"
         >
-            &nbsp;{{value[1] | i18nPlural: pluralizeMap}}
+            &nbsp;{{ value[1] | i18nPlural: pluralizeMap }}
         </span>
     </div>
 
@@ -95,10 +95,9 @@
     #legacyMinLabel
     let-value
 >
-    <ng-container *ngIf="value === min">{{minLabel}}</ng-container>
+    <ng-container *ngIf="value === min">{{ minLabel }}</ng-container>
     <ng-container *ngIf="value !== min">
-        {{value}}&nbsp;{{value | i18nPlural: pluralizeMap ||
-        pluralizeMapFallback}}
+        {{ value }}&nbsp;{{ value | i18nPlural: pluralizeMap || pluralizeMapFallback }}
     </ng-container>
 </ng-template>
 
@@ -107,9 +106,8 @@
     #legacyMaxLabel
     let-value
 >
-    <ng-container *ngIf="value === max">{{maxLabel}}</ng-container>
+    <ng-container *ngIf="value === max">{{ maxLabel }}</ng-container>
     <ng-container *ngIf="value !== max">
-        {{value}}&nbsp;{{value | i18nPlural: pluralizeMap ||
-        pluralizeMapFallback}}
+        {{ value }}&nbsp;{{ value | i18nPlural: pluralizeMap || pluralizeMapFallback }}
     </ng-container>
 </ng-template>

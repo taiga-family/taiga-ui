@@ -16,7 +16,11 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [value]="value ? computeValue(value.from | tuiMapper : formatter | async, value.to | tuiMapper : formatter | async) : ''"
+        [value]="
+            value
+                ? computeValue(value.from | tuiMapper: formatter | async, value.to | tuiMapper: formatter | async)
+                : ''
+        "
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
     >

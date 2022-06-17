@@ -32,8 +32,8 @@
             i18n
             class="text b-full-width"
         >
-            Formatted number: {{ value | tuiFormatNumber:
-            decimalLimit:decimalSeparator }}
+            Formatted number:
+            {{ value | tuiFormatNumber: decimalLimit:decimalSeparator }}
         </p>
         <tui-input-slider
             size="m"
@@ -82,9 +82,7 @@
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

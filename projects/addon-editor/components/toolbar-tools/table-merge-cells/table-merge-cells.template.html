@@ -1,5 +1,8 @@
 <ng-container
-    *tuiLet="{mergeCells: canMergeCells$ | async, splitCells: canSplitCells$ | async} as can"
+    *tuiLet="{
+        mergeCells: canMergeCells$ | async,
+        splitCells: canSplitCells$ | async
+    } as can"
 >
     <button
         *tuiLet="texts$ | async as texts"

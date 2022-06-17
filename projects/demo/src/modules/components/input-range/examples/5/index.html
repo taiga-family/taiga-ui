@@ -13,13 +13,13 @@
     </tui-input-range>
 
     <div class="ticks-labels">
-        <span *ngFor="let label of ticksLabels">{{label}}</span>
+        <span *ngFor="let label of ticksLabels">{{ label }}</span>
     </div>
 </div>
 
 <p class="tui-space_top-12 tui-space_bottom-0">
     Control value:
     <output for="input-range-with-key-steps">
-        <code>{{control.value | json}}</code>
+        <code>{{ control.value | json }}</code>
     </output>
 </p>

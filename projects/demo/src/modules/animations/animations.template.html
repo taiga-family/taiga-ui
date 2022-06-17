@@ -24,7 +24,7 @@
                     *ngFor="let label of speedTicksLabels"
                     class="label"
                 >
-                    {{label}}ms
+                    {{ label }}ms
                 </span>
             </div>
         </label>
@@ -35,9 +35,7 @@
             heading="tuiHeightCollapse"
             [content]="heightCollapseExample"
         >
-            <tui-height-collapse-example
-                [speed]="speed"
-            ></tui-height-collapse-example>
+            <tui-height-collapse-example [speed]="speed"></tui-height-collapse-example>
         </tui-doc-example>
 
         <tui-doc-example
@@ -46,9 +44,7 @@
             heading="tuiWidthCollapse"
             [content]="widthCollapseExample"
         >
-            <tui-width-collapse-example
-                [speed]="speed"
-            ></tui-width-collapse-example>
+            <tui-width-collapse-example [speed]="speed"></tui-width-collapse-example>
         </tui-doc-example>
 
         <tui-doc-example

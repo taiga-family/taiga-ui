@@ -6,7 +6,9 @@
         Refresh
     </button>
 </p>
-<div *ngFor="let item of items$ | async else loading empty blank">{{item}}</div>
+<div *ngFor="let item of items$ | async; else: loading; empty: blank">
+    {{ item }}
+</div>
 <ng-template #loading>
     <tui-loader></tui-loader>
 </ng-template>

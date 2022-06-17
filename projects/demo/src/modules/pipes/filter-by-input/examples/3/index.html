@@ -9,11 +9,11 @@
         User
         <tui-data-list *tuiDataList>
             <button
-                *ngFor="let item of items | tuiFilterByInputWith : stringify"
+                *ngFor="let item of items | tuiFilterByInputWith: stringify"
                 tuiOption
                 [value]="item"
             >
-                {{item.name}}
+                {{ item.name }}
             </button>
         </tui-data-list>
     </tui-combo-box>

@@ -83,7 +83,7 @@
             ></div>
             <ng-template #hint>
                 <div
-                    *ngIf="hintDirective else single"
+                    *ngIf="hintDirective; else single"
                     polymorpheus-outlet
                     class="t-text"
                     [content]="hintDirective.hint"
@@ -94,7 +94,7 @@
                         polymorpheus-outlet
                         class="t-text"
                         [content]="hintContent"
-                        [context]="{ $implicit: point, index: index }"
+                        [context]="{$implicit: point, index: index}"
                     ></div>
                 </ng-template>
             </ng-template>

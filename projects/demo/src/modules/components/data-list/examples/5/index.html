@@ -63,7 +63,7 @@
             [tuiDropdownContent]="range"
             [tuiDropdownSided]="true"
         >
-            ⌛ Range: {{rangeValue}}
+            ⌛ Range: {{ rangeValue }}
         </button>
     </tui-data-list>
 
@@ -100,7 +100,7 @@
     <ng-template #calendar>
         <tui-calendar
             [value]="dateValue"
-            (mousedown.silent.prevent)="0"
+            (mousedown.silent.prevent)="(0)"
             (dayClick)="onDayClick($event)"
         ></tui-calendar>
     </ng-template>
@@ -158,8 +158,8 @@
 </ng-template>
 
 <div class="example">
-    <p>Email: {{testValue}}</p>
-    <p>Chosen date: {{dateValue}}</p>
-    <p>Range date: {{rangeValue}}</p>
-    <p>Dol - {{dollar}}, Eur - {{euro}}</p>
+    <p>Email: {{ testValue }}</p>
+    <p>Chosen date: {{ dateValue }}</p>
+    <p>Range date: {{ rangeValue }}</p>
+    <p>Dol - {{ dollar }}, Eur - {{ euro }}</p>
 </div>

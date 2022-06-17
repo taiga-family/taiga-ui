@@ -44,9 +44,7 @@
             (tuiHoveredChange)="onHovered($event, index)"
         >
             <ng-template #hint>
-                <ng-container
-                    *ngTemplateOutlet="template; context: {$implicit: index}"
-                ></ng-container>
+                <ng-container *ngTemplateOutlet="template; context: {$implicit: index}"></ng-container>
             </ng-template>
         </path>
     </g>
