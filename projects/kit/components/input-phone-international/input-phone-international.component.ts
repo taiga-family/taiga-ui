@@ -43,6 +43,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 import {MASK_AFTER_CODE_REGEXP} from './const/countries';
+import {
+    TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
+    TuiInputPhoneInternationalOptions,
+} from './input-phone-international.options';
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
 import {extractValueFromEvent} from './utils/extract-value-from-event';
 
@@ -80,12 +84,12 @@ export class TuiInputPhoneInternationalComponent
     }
 
     @Input()
-    countries: readonly TuiCountryIsoCode[] = [];
+    countries = this.options.countries;
 
     @Output()
     readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
 
-    countryIsoCode: TuiCountryIsoCode = TuiCountryIsoCode.RU;
+    countryIsoCode = this.options.countryIsoCode;
 
     open = false;
 
@@ -105,6 +109,8 @@ export class TuiInputPhoneInternationalComponent
         readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
         @Inject(TUI_COUNTRIES_MASKS)
         readonly countriesMasks: Record<TuiCountryIsoCode, string>,
+        @Inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS)
+        private readonly options: TuiInputPhoneInternationalOptions,
     ) {
         super(control, changeDetectorRef);
 

@@ -184,7 +184,7 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.QA]: {mask: '+974####-####', name: 'Катар'},
     [TuiCountryIsoCode.RO]: {mask: '+40##-###-####', name: 'Румыния'},
     [TuiCountryIsoCode.RS]: {mask: '+381##-###-####', name: 'Сербия'},
-    [TuiCountryIsoCode.RU]: {mask: '+7(###) ###-##-##', name: 'Россия'},
+    [TuiCountryIsoCode.RU]: {mask: '+7### ###-##-##', name: 'Россия'},
     [TuiCountryIsoCode.RW]: {mask: '+250(###) ###-###', name: 'Руанда'},
     [TuiCountryIsoCode.SA]: {mask: '+966#-####-####', name: 'Саудовская Аравия '},
     [TuiCountryIsoCode.SB]: {mask: '+677###-####', name: 'Соломоновы Острова '},
