@@ -1,0 +1,12 @@
+name: Taiga-UI rebase
+description: Taiga-UI rebase
+
+runs:
+  using: composite
+  steps:
+    - name: Try rebase locally for check affected
+      uses: imba-tjd/rebase-upstream-action@0.5
+      with:
+        upstream: Tinkoff/taiga-ui
+        branch: main
+        push: false

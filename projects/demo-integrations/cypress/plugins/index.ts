@@ -10,7 +10,7 @@ export default async (
 ): Promise<void> => {
     await tuiAddSnapshotPlugin(on, config, {
         newSnapshotMarkFn: oldFileName => `==new==${oldFileName}`,
-        newSnapshotMarkEnabled: config.baseUrl === 'https://taiga-ui.dev/next/',
+        newSnapshotMarkEnabled: config.baseUrl === 'http://localhost:5555/',
     });
 
     on('before:browser:launch', (browser, launchOptions) => {

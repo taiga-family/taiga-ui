@@ -45,9 +45,9 @@
         "release:major": "npm run exec -- ./scripts/release.ts --release-as major",
         "*** Cypress ***": "",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
-        "cypress:open:demo:next": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
+        "cypress:open:demo:next": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"http://localhost:5555\"",
         "cy2:run:localhost": "cy2 run --parallel --record --key localhost --ci-build-id localhost --env ci=true --browser chrome --headless --project ./projects/demo-integrations",
-        "cy2:run:demo:next": "cy2 run --parallel --record --key next --ci-build-id next --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
+        "cy2:run:demo:next": "cy2 run --parallel --record --key next --ci-build-id next --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"http://localhost:5555\"",
         "*** CI ***": "",
         "concurrently": "concurrently --success all --group --timings",
         "affected:test:libs": "nx affected --target test --parallel --exclude=demo",
@@ -115,6 +115,7 @@
         "firebase-tools": "^9.23.3",
         "http-server": "^0.13.0",
         "husky": "^8.0.1",
+        "kill-port": "^2.0.0",
         "lint-staged": "^8.2.1",
         "ng-packagr": "^9.1.5",
         "postcss": "^8.4.14",
@@ -124,7 +125,8 @@
         "standard-version": "^8.0.2",
         "ts-loader": "^6.2.2",
         "ts-node": "~10.8.1",
-        "typescript": "~3.8.3"
+        "typescript": "~3.8.3",
+        "wait-on": "^6.0.1"
     },
     "engines": {
         "node": ">= 14",

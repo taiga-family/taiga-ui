@@ -1,0 +1,160 @@
+name: E2E tests
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'projects/*testing/**'
+      - 'projects/icons/**'
+    branches-ignore:
+      - 'release**'
+  push:
+    branches:
+      - '!main'
+      - '!release**'
+      - '!gh-pages**'
+      - '!screenshot-bot-storage**'
+
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
+
+jobs:
+  build-demo:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    name: Build demo # for reuse in e2e jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: Try rebase locally for check affected e2e
+        uses: ./.github/actions/rebase
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Mark demo-app directory for persist in cache
+        uses: actions/cache@v3
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+
+      - name: Build branch demo-app
+        run: npm run build:demo
+
+  cypress:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    needs: [build-demo]
+    runs-on: ubuntu-latest
+    services:
+      sorry-cypress-director:
+        image: agoldis/sorry-cypress-director:2.1
+        ports:
+          - 1234:1234
+    strategy:
+      fail-fast: false
+      matrix:
+        specFolder:
+          [
+            addon-charts,
+            addon-commerce,
+            addon-editor,
+            addon-icons,
+            addon-mobile,
+            addon-preview,
+            addon-table,
+            addon-tablebars,
+            core,
+            deep,
+            demo,
+            kit,
+          ]
+    name: ${{ matrix.specFolder }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Setup Cypress and Sorry Cypress
+        uses: ./.github/actions/cypress
+        with:
+          cypress-api-url: http://localhost:1234/
+          snapshot-path: ./projects/demo-integrations/cypress/snapshots
+
+      - name: Download demo-app from cache
+        uses: actions/cache@v3
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+
+      - name: Serve demo/local application in background
+        run: |
+          npx nx serve:browser & npx wait-on http://localhost:3333
+          curl -X GET -I -f "http://localhost:3333"
+
+      - name: Run screenshot tests on demo/localhost
+        run: |
+          npm run concurrently \
+              "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "sleep 20 && npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
+
+      - name: Clean up resources
+        run: npx kill-port --port 3333
+
+      - name: Copy gh-pages resources to serve `taiga-ui.dev/next` locally
+        run: |
+          git clone --depth 1 --branch gh-pages https://github.com/Tinkoff/taiga-ui.git dist/gh-pages
+
+      - name: Find and replace baseHref for next snapshot
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '<base href="/next/">'
+          replace: '<base href="/">'
+          include: 'dist/gh-pages/next/index.html'
+          regex: false
+
+      - run: cat dist/gh-pages/next/index.html
+
+      - name: Serve demo/next application in background
+        run: |
+          npx nx serve:browser:next & npx wait-on http://localhost:5555
+          curl -X GET -I -f "http://localhost:5555"
+
+      - name: Run screenshot tests on demo/next
+        continue-on-error: true
+        env:
+          # note: need to collect all
+          # diff files for lumberjack bot
+          CYPRESS_failOnSnapshotDiff: 0
+        run: |
+          npm run concurrently \
+              "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "sleep 20 && npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
+
+      - name: Clean up resources
+        run: npx kill-port --port 5555
+
+      - name: Check if diff-output exists
+        id: diff-checker
+        run: |
+          echo "::set-output name=diff_exist::$(find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')"
+
+      - name: Fall with an error if diff-output exists
+        if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
+        run: |
+          find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
+          exit 1
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: screenshots-${{ matrix.specFolder }}
+          path: ${{ env.SNAPSHOTS_PATH }}
+          if-no-files-found: ignore
+          retention-days: 5
+
+concurrency:
+  group: demo-integrations-${{ github.head_ref }}
+  cancel-in-progress: true
