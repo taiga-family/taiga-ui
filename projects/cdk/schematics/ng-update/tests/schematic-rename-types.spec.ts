@@ -23,6 +23,15 @@ import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
+import {
+    Language,
+    LanguageCore,
+    LanguageCommerce,
+    LanguageEditor,
+    LanguagePreview,
+    LanguageTable,
+    LanguageKit
+} from '@taiga-ui/i18n';
 import { ToggleOptions } from '@taiga-ui/cdk';
 const options: ButtonOptions = {};
 const inputCountOptions: InputCountOptions = {};
@@ -31,6 +40,14 @@ const config: WithDateMaskPipeConfig = {}
 const notificationOptions: TuiNotificationOptions = {};
 const notificationOptionsWithData: TuiNotificationOptionsWithData<string> = {};
 const COUNTRIES: Country[] = [];
+const language: Language
+        | LanguageCore
+        | LanguageCommerce
+        | LanguageEditor
+        | LanguagePreview
+        | LanguageTable
+        | LanguageKit
+        | null = null;
 
 @Component({
    templateUrl: './app.template.html',
@@ -63,6 +80,15 @@ import { TuiInputCountOptions } from '@taiga-ui/kit';
 import { TuiButtonOptions, some, InputCountOptions } from '@taiga-ui/core';
 import { TuiInputPasswordOptions } from '@taiga-ui/kit';
 import { TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions, TuiRadioOptions } from '@taiga-ui/kit';
+import {
+    TuiLanguage,
+    TuiLanguageCore,
+    TuiLanguageCommerce,
+    TuiLanguageEditor,
+    TuiLanguagePreview,
+    TuiLanguageTable,
+    TuiLanguageKit
+} from '@taiga-ui/i18n';
 import { TuiToggleOptions } from '@taiga-ui/cdk';
 const options: TuiButtonOptions = {};
 const inputCountOptions: TuiInputCountOptions = {};
@@ -71,6 +97,14 @@ const config: any = {}
 const notificationOptions: TuiAlertOptions<any> = {};
 const notificationOptionsWithData: TuiAlertOptions<string> = {};
 const COUNTRIES: any[] = [];
+const language: TuiLanguage
+        | TuiLanguageCore
+        | TuiLanguageCommerce
+        | TuiLanguageEditor
+        | TuiLanguagePreview
+        | TuiLanguageTable
+        | TuiLanguageKit
+        | null = null;
 
 @Component({
    templateUrl: './app.template.html',

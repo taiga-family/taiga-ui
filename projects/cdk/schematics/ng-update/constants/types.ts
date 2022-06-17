@@ -80,4 +80,49 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         to: 'TuiNumberFormatSettings',
         moduleSpecifier: ['@taiga-ui/core'],
     },
+    {
+        from: 'LanguageCore',
+        to: 'TuiLanguageCore',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageKit',
+        to: 'TuiLanguageKit',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageKit',
+        to: 'TuiLanguageKit',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageCommerce',
+        to: 'TuiLanguageCommerce',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageTable',
+        to: 'TuiLanguageTable',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageTable',
+        to: 'TuiLanguageTable',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguageEditor',
+        to: 'TuiLanguageEditor',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'LanguagePreview',
+        to: 'TuiLanguagePreview',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
+    {
+        from: 'Language',
+        to: 'TuiLanguage',
+        moduleSpecifier: ['@taiga-ui/i18n'],
+    },
 ];

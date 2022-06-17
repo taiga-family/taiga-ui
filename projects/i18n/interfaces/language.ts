@@ -3,6 +3,10 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
+/**
+ * @deprecated use {@link TuiLanguageCore}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface LanguageCore {
     months: MONTHS_ARRAY;
     close: string;
@@ -20,6 +24,12 @@ export interface LanguageCore {
     countries: Record<TuiCountryIsoCode, string>;
 }
 
+export interface TuiLanguageCore extends LanguageCore {}
+
+/**
+ * @deprecated use {@link TuiLanguageKit}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface LanguageKit {
     cancel: string;
     done: string;
@@ -84,6 +94,12 @@ export interface LanguageKit {
     };
 }
 
+export interface TuiLanguageKit extends LanguageKit {}
+
+/**
+ * @deprecated use {@link TuiLanguageCommerce}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface LanguageCommerce {
     /**
      * Short and full card number text
@@ -97,6 +113,12 @@ export interface LanguageCommerce {
     cardExpiry: [string, string];
 }
 
+export interface TuiLanguageCommerce extends LanguageCommerce {}
+
+/**
+ * @deprecated use {@link TuiLanguageTable}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface LanguageTable {
     /**
      * 'Show/hide' button title
@@ -109,7 +131,13 @@ export interface LanguageTable {
     };
 }
 
-export type LanguageEditor = {
+export interface TuiLanguageTable extends LanguageTable {}
+
+/**
+ * @deprecated use {@link TuiLanguageEditor}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export interface LanguageEditor {
     colorSelectorModeNames: [string, string];
     toolbarTools: {
         undo: string;
@@ -159,8 +187,14 @@ export type LanguageEditor = {
         title: string;
         subtitle: string;
     };
-};
+}
 
+export interface TuiLanguageEditor extends LanguageEditor {}
+
+/**
+ * @deprecated use {@link TuiLanguagePreview}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export type LanguagePreview = {
     previewTexts: {
         rotate: string;
@@ -172,6 +206,12 @@ export type LanguagePreview = {
     };
 };
 
+export interface TuiLanguagePreview extends LanguagePreview {}
+
+/**
+ * @deprecated use {@link TuiLanguage}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Language
     extends LanguageCore,
         LanguageKit,
@@ -179,3 +219,5 @@ export interface Language
         LanguageTable,
         LanguageEditor,
         LanguagePreview {}
+
+export interface TuiLanguage extends Language {}

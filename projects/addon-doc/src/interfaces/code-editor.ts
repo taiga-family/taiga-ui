@@ -6,6 +6,7 @@ export interface TuiCodeEditor {
 /**
  * @deprecated use {@link TuiCodeEditor}
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface CodeEditor extends TuiCodeEditor {
     /**
      * @deprecated
