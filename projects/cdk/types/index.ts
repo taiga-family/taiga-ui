@@ -9,3 +9,4 @@ export * from './mapper';
 export * from './matcher';
 export * from './overscroll-mode';
 export * from './time-mode';
+export * from './extract-generic-from-token';
