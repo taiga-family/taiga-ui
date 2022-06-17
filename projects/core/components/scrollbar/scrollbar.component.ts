@@ -7,14 +7,8 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {CSS as CSS_TOKEN, USER_AGENT} from '@ng-web-apis/common';
-import {
-    getElementOffset,
-    isFirefox,
-    TUI_IS_IOS,
-    tuiDefaultProp,
-    TuiExtractGenericFromToken,
-} from '@taiga-ui/cdk';
+import {CSS, USER_AGENT} from '@ng-web-apis/common';
+import {getElementOffset, isFirefox, TUI_IS_IOS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
@@ -52,8 +46,7 @@ export class TuiScrollbarComponent {
     readonly browserScrollRef = new ElementRef(this.elementRef.nativeElement);
 
     constructor(
-        @Inject(CSS_TOKEN)
-        private readonly cssRef: TuiExtractGenericFromToken<typeof CSS_TOKEN>,
+        @Inject(CSS) private readonly cssRef: any,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,

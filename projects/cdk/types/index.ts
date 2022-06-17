@@ -1,7 +1,6 @@
 export * from './date-mode';
 export * from './dialog';
 export * from './event-with';
-export * from './extract-generic-from-token';
 export * from './handler';
 export * from './input-mode';
 export * from './input-type';
@@ -9,4 +8,3 @@ export * from './mapper';
 export * from './matcher';
 export * from './overscroll-mode';
 export * from './time-mode';
-export * from './extract-generic-from-token';
