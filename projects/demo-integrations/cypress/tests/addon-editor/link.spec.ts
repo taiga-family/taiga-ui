@@ -5,7 +5,10 @@ import {
 import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe('Editing links in Editor', () => {
-    beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
+    beforeEach(() => {
+        cy.viewport(1600, 900);
+        cy.tuiVisit(EDITOR_PAGE_URL);
+    });
 
     beforeEach(() => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');

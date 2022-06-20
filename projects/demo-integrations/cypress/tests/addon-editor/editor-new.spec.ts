@@ -3,7 +3,10 @@ import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe('Editor', () => {
     describe('Dark mode', () => {
-        beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true}));
+        beforeEach(() => {
+            cy.viewport(1600, 900);
+            cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true});
+        });
 
         it('supports dark mode (input)', () => {
             cy.get('#basic')

@@ -5,7 +5,10 @@ import {
 import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's toolbar", () => {
-    beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
+    beforeEach(() => {
+        cy.viewport(1600, 900);
+        cy.tuiVisit(EDITOR_PAGE_URL);
+    });
 
     it("closes tool's dropdown if opened new tool's dropdown", () => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');

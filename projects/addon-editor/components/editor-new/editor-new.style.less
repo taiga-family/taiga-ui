@@ -25,31 +25,23 @@
 }
 
 .t-wrapper {
-    position: relative;
-    height: 100%;
+    display: flex;
     max-height: inherit;
     min-height: 10rem;
     cursor: text;
     overflow: hidden;
+    flex-direction: column;
 
     &_disabled {
         cursor: initial;
     }
 }
 
-.t-toolbar-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-}
-
 .t-placeholder {
     .textfield-placeholder();
     position: absolute;
     left: 1rem;
-    bottom: -2.25rem;
+    margin-top: 1rem;
     width: 95%;
     font-size: 0.9375rem;
 
@@ -61,7 +53,7 @@
 .t-example-text {
     position: absolute;
     left: 1rem;
-    bottom: -3.125rem;
+    margin-top: 1.6rem;
     color: var(--tui-base-06);
     letter-spacing: normal;
     text-transform: none;
@@ -78,7 +70,7 @@
 .t-scrollbar {
     display: flex;
     max-height: inherit;
-    border-top: 4.625rem solid transparent;
+    border-top: 1.625rem solid transparent;
     border-bottom: 1px solid transparent;
     box-sizing: border-box;
 }
