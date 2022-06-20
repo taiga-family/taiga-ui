@@ -7,7 +7,7 @@ export function getProject(
     workspace: workspaces.WorkspaceDefinition,
 ): workspaces.ProjectDefinition {
     const projectName =
-        options.project || workspace.extensions.defaultProject!.toString();
+        options.project || workspace.extensions.defaultProject?.toString() || '';
     const project = workspace.projects.get(projectName);
 
     if (!project) {
