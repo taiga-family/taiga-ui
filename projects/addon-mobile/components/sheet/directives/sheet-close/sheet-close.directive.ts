@@ -44,10 +44,11 @@ export class TuiSheetCloseDirective {
     ) {}
 
     private shouldClose(scrollTop: number): boolean {
-        const min = Math.min(
+        const height = Math.min(
+            this.windowRef.innerHeight,
             this.elementRef.nativeElement.scrollHeight - this.windowRef.innerHeight,
-            this.sheet.stops[0] || Infinity,
         );
+        const min = Math.min(height, this.sheet.stops[0] || Infinity);
 
         return scrollTop < min / 2;
     }
