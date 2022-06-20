@@ -21,10 +21,8 @@ export function addTaigaStylesToAngularJson(options: Schema): Rule {
         const styles = targetOptions.styles as JsonArray | undefined;
         const taigaStyles = [TAIGA_GLOBAL_STYLE, TAIGA_THEME_STYLE];
 
-        if (!styles) {
-            targetOptions.styles = taigaStyles;
-        } else {
-            targetOptions.styles = Array.from(new Set([...taigaStyles, ...styles]));
-        }
+        targetOptions.styles = styles
+            ? Array.from(new Set([...taigaStyles, ...styles]))
+            : taigaStyles;
     });
 }

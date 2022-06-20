@@ -24,10 +24,6 @@ export function addTaigaStylesToAngularJson(options: Schema): Rule {
         const targetOptions = getProjectTargetOptions(project, 'build');
         const assets = targetOptions.assets as JsonArray | undefined;
 
-        if (!assets) {
-            targetOptions.assets = [ICON_ASSETS];
-        } else {
-            targetOptions.assets = [...assets, ICON_ASSETS];
-        }
+        targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
     });
 }
