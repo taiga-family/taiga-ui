@@ -30,16 +30,16 @@ export function migrateTemplates(tree: Tree) {
     );
     const actions = [replaceTags, replaceAttrs, replaceAttrsByDirective];
 
-    componentWithTemplatesPaths.forEach(componentPath => {
-        actions.forEach(action => {
+    actions.forEach(action => {
+        componentWithTemplatesPaths.forEach(componentPath => {
             // get updated version of template after the previous action
             const [resource] = getComponentTemplates(componentPath);
             const path = fileSystem.resolve(getPathFromTemplateResource(resource));
             const recorder = fileSystem.edit(path);
             action({resource, fileSystem, recorder});
-
-            save(fileSystem);
         });
+
+        save(fileSystem);
     });
 }
 
