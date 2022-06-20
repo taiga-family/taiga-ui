@@ -1,15 +1,16 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {
+    TuiCurrency,
+    TuiCurrencyCode,
+    TuiCurrencyVariants,
+    TuiMoneyComponent,
+    TuiMoneyModule,
+    TuiMoneySignT,
+} from '@taiga-ui/addon-commerce';
 import {CHAR_EN_DASH} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
 import {configureTestSuite, PageObject} from '@taiga-ui/testing';
-
-import {TuiCurrency} from '../../../enums/currency';
-import {TuiCurrencyCode} from '../../../enums/currency-code';
-import {TuiMoneySignT} from '../../../types';
-import {TuiCurrencyVariants} from '../../../types/currency-variants';
-import {TuiMoneyComponent} from '../money.component';
-import {TuiMoneyModule} from '../money.module';
 
 describe('Money', () => {
     @Component({
@@ -135,6 +136,25 @@ describe('Money', () => {
             );
 
             expect(fraction!.nativeElement.textContent).toEqual(',10');
+        });
+
+        it('correct rounding for float values', () => {
+            testComponent.value = 8918 + 10333.6 + 3527.78 + 805.62 + 140;
+            fixture.detectChanges();
+
+            const integer = pageObject.getByAutomationId(
+                `${testContext.prefix}integer-part`,
+            );
+
+            const fraction = pageObject.getByAutomationId(
+                `${testContext.prefix}fraction-part`,
+            );
+
+            expect(
+                `${integer!.nativeElement.textContent}${
+                    fraction!.nativeElement.textContent
+                }`,
+            ).toEqual('23 725');
         });
 
         it('decimals only show 2 digits', () => {

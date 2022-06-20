@@ -5,22 +5,22 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
-import {CHAR_EN_DASH, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
-    formatNumber,
-    TUI_NUMBER_FORMAT,
-    TuiDecimalT,
-    TuiNumberFormatSettings,
-} from '@taiga-ui/core';
+    TuiCurrencyVariants,
+    TuiMoneySignSymbol,
+    TuiMoneySignT,
+} from '@taiga-ui/addon-commerce/types';
+import {CHAR_EN_DASH, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiDecimalT} from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
+import {tuiFormatSignSymbol} from './utils/format-sign-symbol';
 
 @Component({
     selector: 'tui-money',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './money.template.html',
     styleUrls: ['./money.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMoneyComponent {
     @Input()
@@ -51,38 +51,8 @@ export class TuiMoneyComponent {
     @tuiDefaultProp()
     singleColor = this.options.singleColor;
 
-    get integerPart(): string {
-        return formatNumber(
-            Math.floor(Math.abs(this.value)),
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-    }
-
-    get fractionPart(): string {
-        const {decimal, value} = this;
-        const fraction = value.toFixed(this.precision).split('.')[1];
-
-        return decimal === 'never' ||
-            (parseInt(fraction, 10) === 0 && decimal !== 'always')
-            ? ''
-            : this.numberFormat.decimalSeparator + fraction;
-    }
-
-    get signSymbol(): '' | typeof CHAR_EN_DASH | typeof CHAR_PLUS {
-        const {sign, value} = this;
-
-        if (sign === 'never' || !value || (sign === 'negative-only' && value > 0)) {
-            return '';
-        }
-
-        if (sign === 'force-negative' || (value < 0 && sign !== 'force-positive')) {
-            /** TODO(nsbarsukov): investigate if it should be replaced by {@link CHAR_HYPHEN} */
-            return CHAR_EN_DASH;
-        }
-
-        return CHAR_PLUS;
+    get signSymbol(): TuiMoneySignSymbol {
+        return tuiFormatSignSymbol(this.value, this.sign);
     }
 
     @HostBinding('class._red')
@@ -108,10 +78,5 @@ export class TuiMoneyComponent {
         return this.singleColor || (this.value === 0 && this.colored);
     }
 
-    constructor(
-        @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: TuiNumberFormatSettings,
-        @Inject(TUI_MONEY_OPTIONS)
-        private readonly options: TuiMoneyOptions,
-    ) {}
+    constructor(@Inject(TUI_MONEY_OPTIONS) private readonly options: TuiMoneyOptions) {}
 }
