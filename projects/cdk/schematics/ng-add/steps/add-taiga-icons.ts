@@ -1,7 +1,6 @@
-import {JsonArray, workspaces} from '@angular-devkit/core';
+import {JsonArray} from '@angular-devkit/core';
 import {Rule, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
-import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
@@ -13,26 +12,18 @@ const ICON_ASSETS = {
 };
 
 export function addTaigaIcons(options: Schema): Rule {
-    return async (tree: Tree) => {
-        const workspace = await getWorkspace(tree);
-        const project = getProject(options, workspace);
-
-        return addTaigaStylesToAngularJson(workspace, project);
+    return async (_: Tree) => {
+        return addTaigaStylesToAngularJson(options);
     };
 }
 
-export function addTaigaStylesToAngularJson(
-    workspace: workspaces.WorkspaceDefinition,
-    project: workspaces.ProjectDefinition,
-): Rule {
-    const targetOptions = getProjectTargetOptions(project, 'build');
-    const assets = targetOptions.assets as JsonArray | undefined;
+export function addTaigaStylesToAngularJson(options: Schema): Rule {
+    return updateWorkspace(workspace => {
+        const project = getProject(options, workspace);
 
-    if (!assets) {
-        targetOptions.assets = [ICON_ASSETS];
-    } else {
-        targetOptions.assets = [...assets, ICON_ASSETS];
-    }
+        const targetOptions = getProjectTargetOptions(project, 'build');
+        const assets = targetOptions.assets as JsonArray | undefined;
 
-    return updateWorkspace(workspace);
+        targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
+    });
 }
