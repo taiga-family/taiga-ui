@@ -24,33 +24,42 @@ const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
 
 export function migrateTemplates(tree: Tree) {
-    const templateResources = getComponentTemplates('**/**');
     const fileSystem = new DevkitFileSystem(tree);
+    const componentWithTemplatesPaths = getComponentTemplates('**/**').map(
+        ({componentPath}) => componentPath,
+    );
+    const actions = [replaceTags, replaceAttrs, replaceAttrsByDirective];
 
-    templateResources.forEach((resource: TemplateResource) => {
-        const path = fileSystem.resolve(getPathFromTemplateResource(resource));
-        const template = getTemplateFromTemplateResource(resource, fileSystem);
-        const recorder = fileSystem.edit(path);
-        const offset = getTemplateOffset(resource);
+    actions.forEach(action => {
+        componentWithTemplatesPaths.forEach(componentPath => {
+            // get updated version of template after the previous action
+            const [resource] = getComponentTemplates(componentPath);
+            const path = fileSystem.resolve(getPathFromTemplateResource(resource));
+            const recorder = fileSystem.edit(path);
+            action({resource, fileSystem, recorder});
+        });
 
-        replaceTags(template, recorder, offset);
-        replaceAttrs(template, recorder, offset);
-        replaceAttrsByDirective(fileSystem, resource);
-
-        /**
-         * We should update virtual file tree
-         * otherwise all following ng-morph commands will overwrite all previous template manipulations
-         * */
-        fileSystem.commitEdits();
-        saveActiveProject();
-        setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+        save(fileSystem);
     });
 }
 
-function replaceAttrsByDirective(
-    fileSystem: DevkitFileSystem,
-    templateResource: TemplateResource,
-) {
+/**
+ * We should update virtual file tree
+ * otherwise all following ng-morph commands will overwrite all previous template manipulations
+ * */
+function save(fileSystem: DevkitFileSystem): void {
+    fileSystem.commitEdits();
+    saveActiveProject();
+    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+}
+
+function replaceAttrsByDirective({
+    resource,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    fileSystem: DevkitFileSystem;
+}) {
     ATTR_TO_DIRECTIVE.forEach(
         ({componentSelector, directiveModule, directive, inputProperty}) => {
             replaceInputPropertyByDirective({
@@ -59,17 +68,24 @@ function replaceAttrsByDirective(
                 directive,
                 inputProperty,
                 fileSystem,
-                templateResource,
+                templateResource: resource,
             });
         },
     );
 }
 
-function replaceAttrs(
-    template: string,
-    recorder: UpdateRecorder,
-    templateOffset = 0,
-): void {
+function replaceAttrs({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
     ATTRS_TO_REPLACE.forEach(({from, to}) => {
         const offsets = [
             ...findAttributeOnElementWithTag(
@@ -94,7 +110,18 @@ function replaceAttrs(
     });
 }
 
-function replaceTags(template: string, recorder: UpdateRecorder, templateOffset = 0) {
+function replaceTags({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}) {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
     TAGS_TO_REPLACE.forEach(({from, to, addAttributes}) => {
         const elements = findElementsByTagName(template, from);
 

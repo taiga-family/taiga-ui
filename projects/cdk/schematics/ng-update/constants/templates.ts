@@ -33,7 +33,15 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
         to: {attrName: 'tuiTh [resizable]="true"'},
     },
     {
-        from: {attrName: 'new', withTagNames: ['tui-editor']},
+        from: {
+            attrName: 'new',
+            withTagNames: [
+                'tui-editor',
+                'tui-range',
+                'tui-input-range',
+                'tui-input-slider',
+            ],
+        },
         to: {attrName: ''},
     },
     {
@@ -112,6 +120,15 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
         componentSelector: 'tui-input-slider',
         inputProperty: 'secondary',
         directive: 'tuiTextfieldCustomContent',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        componentSelector: 'tui-input-range',
+        inputProperty: 'size',
+        directive: 'tuiTextfieldSize',
         directiveModule: {
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
