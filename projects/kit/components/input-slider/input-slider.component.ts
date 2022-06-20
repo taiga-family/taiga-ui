@@ -235,8 +235,10 @@ export class TuiInputSliderComponent
     }
 
     onFocused(focused: boolean): void {
-        if (!focused && !this.textInputValue) {
-            this.updateTextInputValue(this.safeCurrentValue);
+        const {value, textInputValue, safeCurrentValue, inputNumberRef} = this;
+
+        if (!focused && textInputValue !== inputNumberRef?.getFormattedValue(value)) {
+            this.updateTextInputValue(value ?? safeCurrentValue);
         }
 
         this.updateFocused(focused);

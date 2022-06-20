@@ -1,7 +1,7 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {CHAR_NO_BREAK_SPACE, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
@@ -86,10 +86,13 @@ describe('InputSlider[new]', () => {
     });
 
     describe('`quantum` prop', () => {
-        beforeEach(() => {
+        beforeEach(async () => {
             testComponent.control = new FormControl(0);
             testComponent.quantum = 10;
             testComponent.steps = 0;
+
+            fixture.detectChanges();
+            await fixture.whenStable();
         });
 
         it('Pressing `Arrow Up` increases value by `quantum`-value if property `step` was not provided', () => {
@@ -144,58 +147,124 @@ describe('InputSlider[new]', () => {
 
         describe('rounds to the nearest `quantum` on blur', () => {
             describe('`quantum` = 20 | `max` = 100 | `min` = 0', () => {
-                beforeEach(() => {
+                beforeEach(async () => {
                     testComponent.quantum = 20;
                     testComponent.min = 0;
                     testComponent.max = 100;
+
+                    fixture.detectChanges();
+                    await fixture.whenStable();
                 });
 
-                it('16 => 20', () => {
+                it('16 => 20', async () => {
                     inputPO.sendTextAndBlur('16');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(20);
+                    expect(inputPO.value).toBe('20');
                 });
 
-                it('27 => 20', () => {
+                it('27 => 20', async () => {
                     inputPO.sendTextAndBlur('27');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(20);
+                    expect(inputPO.value).toBe('20');
                 });
 
-                it('42 => 40', () => {
+                it('42 => 40', async () => {
                     inputPO.sendTextAndBlur('42');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(40);
+                    expect(inputPO.value).toBe('40');
                 });
 
-                it('78 => 80', () => {
+                it('78 => 80', async () => {
                     inputPO.sendTextAndBlur('78');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(80);
+                    expect(inputPO.value).toBe('80');
                 });
             });
 
             describe('`quantum` = 0.25 | `max` = 10 | `min` = -10', () => {
-                beforeEach(() => {
+                beforeEach(async () => {
                     testComponent.quantum = 0.25;
                     testComponent.min = -10;
                     testComponent.max = 10;
+
+                    fixture.detectChanges();
+                    await fixture.whenStable();
                 });
 
-                it('7.59 => 7.5', () => {
+                it('7.59 => 7.50', async () => {
                     inputPO.sendTextAndBlur('7.59');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(7.5);
+                    expect(inputPO.value).toBe('7,50');
                 });
 
-                it('-2.44 => -2.5', () => {
+                it('-2.44 => -2.50', async () => {
                     inputPO.sendTextAndBlur('-2.44');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(-2.5);
+                    expect(inputPO.value).toBe('-2,50');
                 });
 
-                it('-9.99 => -10', () => {
+                it('-9.99 => -10', async () => {
                     inputPO.sendTextAndBlur('-9.99');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(-10);
+                    expect(inputPO.value).toBe('-10');
                 });
 
-                it('4.13 => 4.25', () => {
+                it('4.13 => 4.25', async () => {
                     inputPO.sendTextAndBlur('4.13');
+                    await fixture.whenStable();
+
                     expect(testComponent.control.value).toBe(4.25);
+                    expect(inputPO.value).toBe('4,25');
+                });
+            });
+
+            describe('`quantum` = 1000 | `max` = 10000 | `min` = 1000', () => {
+                beforeEach(async () => {
+                    testComponent.quantum = 1000;
+                    testComponent.min = 1000;
+                    testComponent.max = 10_000;
+                    testComponent.control = new FormControl(5_000);
+
+                    fixture.detectChanges();
+                    await fixture.whenStable();
+                });
+
+                it('5_001 => 5_000', async () => {
+                    inputPO.sendTextAndBlur('5001');
+                    await fixture.whenStable();
+
+                    expect(testComponent.control.value).toBe(5_000);
+                    expect(inputPO.value).toBe(`5${CHAR_NO_BREAK_SPACE}000`);
+                });
+
+                it('1_499 => 1_000', async () => {
+                    inputPO.sendTextAndBlur('1499');
+                    await fixture.whenStable();
+
+                    expect(testComponent.control.value).toBe(1_000);
+                    expect(inputPO.value).toBe(`1${CHAR_NO_BREAK_SPACE}000`);
+                });
+
+                it('2_800 => 3_000', async () => {
+                    inputPO.sendTextAndBlur('2800');
+                    await fixture.whenStable();
+
+                    expect(testComponent.control.value).toBe(3_000);
+                    expect(inputPO.value).toBe(`3${CHAR_NO_BREAK_SPACE}000`);
                 });
             });
         });
@@ -219,13 +288,14 @@ describe('InputSlider[new]', () => {
             }
         };
 
-        beforeEach(() => {
+        beforeEach(async () => {
             testComponent.min = 0;
             testComponent.max = 100;
             testComponent.quantum = 1;
             testComponent.valueContent = customLabel;
 
             fixture.detectChanges();
+            await fixture.whenStable();
         });
 
         const checkValueContent = async (
@@ -233,6 +303,7 @@ describe('InputSlider[new]', () => {
             expectedContent: string,
         ): Promise<void> => {
             inputPO.sendTextAndBlur(`${value}`);
+            await fixture.whenStable();
 
             fixture.detectChanges();
             await fixture.whenStable();
@@ -280,6 +351,7 @@ describe('InputSlider[new]', () => {
                 testComponent.min = 10;
                 testComponent.max = 100;
                 testComponent.quantum = 0.001;
+                testComponent.control = new FormControl(10);
 
                 fixture.detectChanges();
             });
@@ -420,33 +492,39 @@ describe('InputSlider[new]', () => {
                 fixture.detectChanges();
             });
 
-            it('0 => 0%', () => {
+            it('0 => 0%', async () => {
                 inputPO.sendTextAndBlur('0');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('0%');
             });
 
-            it('1.5 => 15%', () => {
+            it('1.5 => 15%', async () => {
                 inputPO.sendTextAndBlur('1.5');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('15%');
             });
 
-            it('4.8 => 48%', () => {
+            it('4.8 => 48%', async () => {
                 inputPO.sendTextAndBlur('4.8');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('48%');
             });
 
-            it('6.3 => 63%', () => {
+            it('6.3 => 63%', async () => {
                 inputPO.sendTextAndBlur('6.3');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('63%');
             });
 
-            it('8 => 80%', () => {
+            it('8 => 80%', async () => {
                 inputPO.sendTextAndBlur('8');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('80%');
             });
 
-            it('10 => 100%', () => {
+            it('10 => 100%', async () => {
                 inputPO.sendTextAndBlur('10');
+                await fixture.whenStable();
                 expect(getTextfieldCustomContent()).toBe('100%');
             });
         });
