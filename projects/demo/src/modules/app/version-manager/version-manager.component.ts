@@ -6,7 +6,7 @@ import {
     SELECTED_VERSION_META,
     VERSION_MANAGER_PROVIDERS,
 } from './version-manager.providers';
-import {TAIGA_VERSIONS_META, TaigaVersionMeta} from './versions.constants';
+import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
 
 @Component({
     selector: 'version-manager',
@@ -19,12 +19,12 @@ export class VersionManagerComponent {
     readonly versions = TAIGA_VERSIONS_META;
 
     constructor(
-        @Inject(SELECTED_VERSION_META) readonly initialVersion: TaigaVersionMeta | null,
+        @Inject(SELECTED_VERSION_META) readonly initialVersion: TuiVersionMeta | null,
         @Inject(LOCATION) private readonly locationRef: Location,
         @Inject(Router) private readonly router: Router,
     ) {}
 
-    getVersionHref(version: TaigaVersionMeta): string {
+    getVersionHref(version: TuiVersionMeta): string {
         return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`;
     }
 }

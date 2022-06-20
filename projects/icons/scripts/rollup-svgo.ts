@@ -4,7 +4,7 @@ import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 
 type SvgoResult = OptimizedSvg | OptimizedError;
 
-export interface RollupSvgoConfig {
+export interface TuiRollupSvgoConfig {
     readonly include?: string;
 
     readonly exclude?: string;
@@ -16,7 +16,7 @@ export function rollupSvgo({
     include = '**/*.svg',
     exclude,
     options,
-}: RollupSvgoConfig = {}): Plugin {
+}: TuiRollupSvgoConfig = {}): Plugin {
     const filter = createFilter(include, exclude);
 
     return {

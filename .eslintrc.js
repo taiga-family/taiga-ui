@@ -15,6 +15,9 @@ module.exports = {
         '@tinkoff/eslint-config-angular/imports',
         '@tinkoff/eslint-config-angular/line-statements',
         '@tinkoff/eslint-config-angular/member-ordering',
+
+        // @custom
+        './scripts/eslint/naming-convention.js',
     ],
     ignorePatterns: [
         'projects/**/test.ts',
@@ -74,66 +77,6 @@ module.exports = {
             'error',
             {
                 case: 'kebabCase',
-            },
-        ],
-        '@typescript-eslint/naming-convention': [
-            'error',
-            {
-                selector: 'typeLike', // class, interface, typeAlias, enum, typeParameter
-                format: ['PascalCase', 'UPPER_CASE'],
-            },
-            {
-                selector: 'class',
-                modifiers: ['exported'],
-                format: ['PascalCase'],
-                // prefix: ['Tui', 'Example', 'Test', 'Mock'], // TODO: enable later
-            },
-            {
-                selector: 'function',
-                modifiers: ['exported'],
-                format: ['camelCase'],
-                // prefix: ['tui', 'example', 'Tui', 'mock', 'test'], // TODO: enable later
-            },
-            {
-                selector: 'interface',
-                modifiers: ['exported'],
-                format: ['PascalCase'],
-                // prefix: ['Tui', 'Example', 'Test'], // TODO: enable later
-            },
-            {
-                selector: 'variable',
-                modifiers: ['destructured'],
-                format: null,
-            },
-            {
-                selector: 'variable',
-                format: ['camelCase'],
-            },
-            {
-                selector: 'variable',
-                modifiers: ['global'],
-                format: ['UPPER_CASE', 'camelCase', 'PascalCase'],
-            },
-            {
-                selector: 'variable',
-                modifiers: ['exported'],
-                format: ['UPPER_CASE', 'camelCase', 'PascalCase'],
-            },
-            {
-                selector: 'class',
-                modifiers: ['abstract'],
-                format: ['PascalCase'],
-                prefix: ['Abstract', 'TuiAbstract', 'Example'],
-            },
-            {
-                selector: 'enum',
-                modifiers: ['exported'],
-                format: ['StrictPascalCase'],
-                prefix: ['Tui', 'Example', 'Test'],
-            },
-            {
-                selector: 'enumMember',
-                format: ['PascalCase'],
             },
         ],
     },

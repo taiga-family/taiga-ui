@@ -14,7 +14,8 @@ import {PromptOptions} from './prompt-options';
 export class PromptComponent {
     // Here you get options + content + id + observer
     constructor(
-        @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<PromptOptions, boolean>,
+        @Inject(POLYMORPHEUS_CONTEXT)
+        readonly context: TuiDialog<PromptOptions, boolean>,
     ) {}
 
     onClick(response: boolean): void {

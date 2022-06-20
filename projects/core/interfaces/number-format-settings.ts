@@ -15,4 +15,5 @@ export interface TuiNumberFormatSettings {
  * @deprecated use {@link TuiNumberFormatSettings}
  * TODO delete in v3.0
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface NumberFormatSettings extends TuiNumberFormatSettings {}
