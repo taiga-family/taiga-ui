@@ -25,19 +25,21 @@ const END_TAG_OFFSET = 2;
 
 export function migrateTemplates(tree: Tree) {
     const fileSystem = new DevkitFileSystem(tree);
+    const componentWithTemplatesPaths = getComponentTemplates('**/**').map(
+        ({componentPath}) => componentPath,
+    );
     const actions = [replaceTags, replaceAttrs, replaceAttrsByDirective];
 
-    actions.forEach(action => {
-        const templateResources = getComponentTemplates('**/**');
-
-        templateResources.forEach(resource => {
+    componentWithTemplatesPaths.forEach(componentPath => {
+        actions.forEach(action => {
+            // get updated version of template after the previous action
+            const [resource] = getComponentTemplates(componentPath);
             const path = fileSystem.resolve(getPathFromTemplateResource(resource));
             const recorder = fileSystem.edit(path);
-
             action({resource, fileSystem, recorder});
-        });
 
-        save(fileSystem);
+            save(fileSystem);
+        });
     });
 }
 
