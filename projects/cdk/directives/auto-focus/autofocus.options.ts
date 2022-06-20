@@ -1,6 +1,5 @@
 import {
     ElementRef,
-    inject,
     InjectionToken,
     NgZone,
     Optional,
@@ -31,8 +30,9 @@ export function tuiAutofocusHandlerFactory(
     renderer: Renderer2,
     ngZone: NgZone,
     windowRef: Window,
+    isIos: boolean,
 ): TuiAutofocusHandler {
-    return inject(TUI_IS_IOS)
+    return isIos
         ? new TuiIosAutofocusHandler(
               tuiFocusableComponent,
               elementRef,
@@ -59,6 +59,7 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             Renderer2,
             NgZone,
             WINDOW,
+            TUI_IS_IOS,
         ],
     },
 ];
