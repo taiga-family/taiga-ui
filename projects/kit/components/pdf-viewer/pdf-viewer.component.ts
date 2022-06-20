@@ -1,5 +1,11 @@
 import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    HostListener,
+    Inject,
+} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
@@ -30,4 +36,9 @@ export class TuiPdfViewerComponent<I, O> {
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
     ) {}
+
+    @HostListener('document:keydown.esc')
+    onKeyDownEsc(): void {
+        this.context.$implicit.complete();
+    }
 }
