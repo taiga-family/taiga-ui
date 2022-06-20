@@ -32,6 +32,7 @@ export function tabsRefreshFactory(
 export const MUTATION_CONFIG = {
     childList: true,
     subtree: true,
+    characterData: true,
 };
 export const TABS_REFRESH = new InjectionToken<Observable<unknown>>('Refresh stream');
 export const TABS_PROVIDERS: Provider[] = [

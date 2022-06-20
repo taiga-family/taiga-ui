@@ -10,8 +10,9 @@
             class="scroll"
             [style.height.px]="items.length * 44"
             [itemSize]="44"
+            (indexChange)="list.handleFocusLossIfNecessary()"
         >
-            <tui-data-list>
+            <tui-data-list #list>
                 <button
                     *cdkVirtualFor="let item of items"
                     tuiOption

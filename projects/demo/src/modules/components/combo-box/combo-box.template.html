@@ -60,6 +60,13 @@
             heading="Virtual scroll"
             [content]="example5"
         >
+            <tui-notification class="tui-space_bottom-3">
+                Note that virtual scroll can imperatively remove focused option
+                from DOM. This causes ExpressionChange errors and to solve those
+                take a look at a tiny
+                <code>IndexChange</code>
+                directive included in this example.
+            </tui-notification>
             <tui-combo-box-example-5></tui-combo-box-example-5>
         </tui-doc-example>
 

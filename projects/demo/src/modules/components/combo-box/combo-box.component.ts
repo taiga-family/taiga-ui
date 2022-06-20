@@ -78,6 +78,9 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         TypeScript: import('!!raw-loader!./examples/5/index.ts'),
         HTML: import('!!raw-loader!./examples/5/index.html'),
         LESS: import('!!raw-loader!./examples/5/index.less'),
+        'index-change.directive.ts': import(
+            '!!raw-loader!./examples/5/index-change.directive.ts'
+        ),
     };
 
     readonly example6: TuiDocExample = {
