@@ -1,15 +1,7 @@
 <tui-ring-chart
     [value]="value"
-    [content]="content"
-></tui-ring-chart>
-
-<ng-template
-    #content
-    let-index
+    [(activeItemIndex)]="index"
 >
-    <tui-money
-        [singleColor]="true"
-        [value]="getValue(index)"
-    ></tui-money>
-    <div>{{getLabel(index)}}</div>
-</ng-template>
+    <tui-money [value]="sum"></tui-money>
+    <div>{{label}}</div>
+</tui-ring-chart>

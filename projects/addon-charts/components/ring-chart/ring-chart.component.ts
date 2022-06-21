@@ -30,10 +30,12 @@ export class TuiRingChartComponent {
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeXL = 'm';
 
+    /** @deprecated */
     @Input()
     @tuiDefaultProp()
     colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
 
+    /** @deprecated */
     @Input()
     @tuiDefaultProp()
     content: PolymorpheusContent<TuiRingChartContext> = '';
@@ -47,11 +49,7 @@ export class TuiRingChartComponent {
     activeItemIndex = NaN;
 
     @Output()
-    activeItemIndexChange = new EventEmitter<number>();
-
-    get hasContent(): boolean {
-        return this.size !== 's' && !!this.content;
-    }
+    readonly activeItemIndexChange = new EventEmitter<number>();
 
     onActiveItemIndexChange(index: number): void {
         this.updateActiveItemIndex(index);
