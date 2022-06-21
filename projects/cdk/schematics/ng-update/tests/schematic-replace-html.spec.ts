@@ -53,6 +53,8 @@ const TEMPLATE_BEFORE = `
 
 <tui-select (hoveredChange)="onHoverChange(event$)"></tui-select>
 <button tuiButton (pressedChange)="onPressChange($event)"></button>
+<tui-breadcrumbs [items]="items$ | async">
+</tui-breadcrumbs>
 `;
 
 const TEMPLATE_AFTER = `
@@ -91,6 +93,17 @@ const TEMPLATE_AFTER = `
 
 <tui-select (tuiHoveredChange)="onHoverChange(event$)"></tui-select>
 <button tuiButton (tuiPressedChange)="onPressChange($event)"></button>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items$ | async">
+        <a
+            *tuiBreadcrumb
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
 `;
 
 const COMPONENT_BEFORE = `

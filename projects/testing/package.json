@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "2.49.2",
+    "version": "2.50.0",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
         "cypress-image-snapshot": "^4.0.1"
@@ -9,7 +9,6 @@
         "@types/cypress-image-snapshot": "^3.1.6",
         "@types/jasmine": "~3.10.6",
         "@types/jasmine-ajax": "^3.3.3",
-        "cypress": "^10.0.3",
         "jasmine": "^4.2.0",
         "jasmine-spec-reporter": "^4.2.1",
         "karma": "^6.4.0",

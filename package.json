@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.49.2",
+    "version": "2.50.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
@@ -108,6 +108,8 @@
         "@types/webpack-env": "^1.17.0",
         "angular-http-server": "^1.10.0",
         "concurrently": "^7.2.1",
+        "cy2": "~2.0.0",
+        "cypress": "~10.0.3",
         "eslint-plugin-unicorn": "^40.1.0",
         "find-in-files": "~0.5.0",
         "firebase-tools": "^9.23.3",

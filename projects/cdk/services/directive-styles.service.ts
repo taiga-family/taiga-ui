@@ -37,7 +37,9 @@ export class TuiDirectiveStylesService {
         }
     }
 
-    /** @deprecated use components approach */
+    /** @deprecated use components approach
+     * TODO: delete in v3.0
+     */
     addStyle(styles: string, attribute: string): void {
         if (this.documentRef.head.querySelector(`style[${attribute}]`)) {
             return;

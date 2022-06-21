@@ -1,8 +1,4 @@
 {
     "name": "@taiga-ui/demo-integration",
-    "private": true,
-    "devDependencies": {
-        "cy2": "^1.3.0",
-        "cypress": "^10.0.3"
-    }
+    "private": true
 }

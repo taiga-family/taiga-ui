@@ -104,6 +104,8 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 >
     Select volume range
 </tui-input-range>
+
+<tui-slider [min]="100" [max]="1000" size="m" [segments]="5" [quantum]="0.01"></tui-slider>
 `;
 
 const FILE_HTML_CHILD_TEMPLATE_AFTER =
@@ -131,6 +133,8 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER =
 >
     Select volume range
 </tui-input-range>
+
+<input tuiSlider type="range" [min]="100" [max]="1000" size="m" [segments]="5" [step]="0.01"></input>
 `;
 
 const FILE_HTML_CHILD_MODULE_BEFORE = `
