@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
 import {
     TuiAutofilledModule,
     TuiFocusableModule,
@@ -24,17 +23,16 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
     imports: [
         CommonModule,
         FormsModule,
+        PolymorpheusModule,
         TuiMaskAccessorModule,
         TuiFocusableModule,
         TuiHoveredModule,
         TuiInputModeModule,
-        PolymorpheusModule,
         TuiWrapperModule,
         TuiSvgModule,
         TuiTooltipModule,
         TuiAutofilledModule,
         TuiDescribedByModule,
-        MutationObserverModule,
     ],
     declarations: [
         TuiPrimitiveTextfieldComponent,

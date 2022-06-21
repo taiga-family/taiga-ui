@@ -1,20 +1,20 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     ViewChild,
 } from '@angular/core';
-import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
-import {TuiResizeService} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {defer, EMPTY, merge, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
+import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 
@@ -22,23 +22,20 @@ import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
     selector: 'tui-value-decoration',
     templateUrl: 'value-decoration.template.html',
     styleUrls: ['value-decoration.style.less'],
-    providers: [TuiResizeService],
     // It follows Change Detection of PrimitiveTextfield
     changeDetection: ChangeDetectionStrategy.Default,
 })
-export class TuiValueDecorationComponent {
+export class TuiValueDecorationComponent implements DoCheck {
     @ViewChild('pre', {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
-    @ViewChild(MutationObserverDirective, {static: true})
-    private readonly directive?: MutationObserverDirective;
+    private readonly prefix$ = new BehaviorSubject('');
 
-    readonly pre$ = defer(() =>
-        merge(this.directive?.waMutationObserver ?? EMPTY, this.resize$),
-    ).pipe(
-        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
-        startWith(0),
+    readonly pre$ = this.prefix$.pipe(
+        delay(0),
+        filter(() => !!this.pre?.nativeElement.isConnected),
         distinctUntilChanged(),
+        map(() => this.pre?.nativeElement.offsetWidth || 0),
     );
 
     constructor(
@@ -46,8 +43,6 @@ export class TuiValueDecorationComponent {
         private readonly textfield: TuiPrimitiveTextfieldComponent,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         private readonly controller: TuiTextfieldController,
-        @Inject(TuiResizeService)
-        readonly resize$: Observable<unknown>,
     ) {}
 
     @HostBinding('class._table')
@@ -75,6 +70,11 @@ export class TuiValueDecorationComponent {
 
     get postfix(): string {
         return this.decorationsVisible ? this.computedPostfix : '';
+    }
+
+    @HostListener('animationstart')
+    ngDoCheck(): void {
+        this.prefix$.next(this.prefix);
     }
 
     private get placeholder(): string {
