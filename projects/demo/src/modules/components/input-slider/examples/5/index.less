@@ -1,9 +1,18 @@
 @import 'taiga-ui-local';
 
-.control {
-    width: 50%;
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 1rem;
+}
 
-    @media @mobile {
-        width: 100%;
-    }
+.control {
+    flex: 1;
+    min-width: 17rem;
+}
+
+.slider-ticks-labels {
+    .tui-slider-ticks-labels();
+    margin-top: 0.25rem;
 }
