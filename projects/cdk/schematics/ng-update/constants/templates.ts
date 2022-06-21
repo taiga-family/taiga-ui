@@ -64,6 +64,15 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[active]',
         },
     },
+    {
+        from: {
+            attrName: '(rangeChange)',
+            withTagNames: ['tui-calendar-range'],
+        },
+        to: {
+            attrName: '(valueChange)',
+        },
+    },
 ];
 
 export const TAGS_TO_REPLACE: ReplacementTags[] = [
