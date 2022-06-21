@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1324],{uMEG:function(n,o,u){"use strict";u.r(o),o.default="```ts\nimport {TuiTabsModule} from '@taiga-ui/kit';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiTabsModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
