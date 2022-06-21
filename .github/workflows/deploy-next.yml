@@ -29,6 +29,16 @@ jobs:
       - name: Debug output
         run: ls -la dist/demo/browser/next
 
+      - name: Update the latest next-snapshot
+        # This is necessary to e2e test locally
+        # instead of target taiga-ui.dev/next
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          BRANCH: snapshots/v/next
+          FOLDER: dist/demo/browser/next
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
       - name: Deploy next
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
