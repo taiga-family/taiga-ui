@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.50.0](https://github.com/tinkoff/taiga-ui/compare/v2.49.2...v2.50.0) (2022-06-20)
+
+### Features
+
+- **addon-editor:** support new versions of prosemirror ([#1962](https://github.com/tinkoff/taiga-ui/issues/1962))
+  ([66f2535](https://github.com/tinkoff/taiga-ui/commit/66f2535c6607a62127903e30e0b0ba81f582d04e))
+- **addon-editor:** wrap tools to the new line when overflow ([#1958](https://github.com/tinkoff/taiga-ui/issues/1958))
+  ([35cfe65](https://github.com/tinkoff/taiga-ui/commit/35cfe65e85d79f1e23e30487c3110e713ca65de2))
+- **kit:** close `PdfViewer` with `Esc` key ([#1954](https://github.com/tinkoff/taiga-ui/issues/1954))
+  ([d8a6bd5](https://github.com/tinkoff/taiga-ui/commit/d8a6bd53f197a0379f9016abc3d3253e0f54e02a))
+
+### Bug Fixes
+
+- **addon-commerce:** correct rounding for float values ([#1938](https://github.com/tinkoff/taiga-ui/issues/1938))
+  ([8063372](https://github.com/tinkoff/taiga-ui/commit/80633725b6bb9dcb337bab80758b531ed3f789a5))
+- **addon-mobile:** `Sheet` fix closing for tall content ([#1956](https://github.com/tinkoff/taiga-ui/issues/1956))
+  ([f68d592](https://github.com/tinkoff/taiga-ui/commit/f68d592071722ab8d943bda1d1723c9cbcdcee7f))
+- **cdk:** support ng-add for ng14 ([#1959](https://github.com/tinkoff/taiga-ui/issues/1959))
+  ([515bc79](https://github.com/tinkoff/taiga-ui/commit/515bc79cfe0cb6f4be9e85b364070ed689d8b87a))
+- **kit:** `InputSlider` property `[quantum]` does not properly work on blur
+  ([#1957](https://github.com/tinkoff/taiga-ui/issues/1957))
+  ([2270721](https://github.com/tinkoff/taiga-ui/commit/2270721eb92e3e76fcfdf1989ad4c7147ef341cf))
+- **kit:** use correct mask for `RU`-phone number ([#1937](https://github.com/tinkoff/taiga-ui/issues/1937))
+  ([8ec5090](https://github.com/tinkoff/taiga-ui/commit/8ec5090e70017de3e88ac7bc0e0e521879a12e5d))
+
 ### [2.49.2](https://github.com/tinkoff/taiga-ui/compare/v2.49.1...v2.49.2) (2022-06-17)
 
 ### Features
