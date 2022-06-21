@@ -114,7 +114,22 @@
             i18n-heading
             heading="With min and max labels"
             [content]="example5"
+            [description]="valueContentDescription"
         >
+            <ng-template #valueContentDescription>
+                <p>
+                    Pass
+                    <a
+                        tuiLink
+                        href="https://github.com/tinkoff/ng-polymorpheus"
+                    >
+                        PolymorpheusContent
+                    </a>
+                    into property
+                    <code>[valueContent]</code>
+                    to create custom label for selected value.
+                </p>
+            </ng-template>
             <tui-input-slider-example-5></tui-input-slider-example-5>
         </tui-doc-example>
     </ng-template>
