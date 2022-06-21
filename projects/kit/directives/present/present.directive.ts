@@ -11,20 +11,7 @@ import {isCurrentTarget, isFirefox, TuiDirectiveStylesService} from '@taiga-ui/c
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged, skip, startWith} from 'rxjs/operators';
 
-const STYLE = `
-@keyframes tuiPresent {
-    from {
-        content: '1';
-    }
-
-    to {
-        content: '2';
-    }
-}
-
-.tui-present {
-    animation: tuiPresent 1000s infinite;
-}`;
+import {TuiPresentStylesComponent} from './present-styles.component';
 
 @Directive({
     selector: '[tuiPresentChange]',
@@ -44,7 +31,7 @@ export class TuiPresentDirective implements OnDestroy {
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
         @Inject(USER_AGENT) userAgent: string,
     ) {
-        directiveStyles.addStyle(STYLE, 'TuiPresentDirective');
+        directiveStyles.addComponent(TuiPresentStylesComponent);
 
         this.tuiPresentChange = this.visibility$.pipe(
             startWith(false),
@@ -77,6 +64,11 @@ export class TuiPresentDirective implements OnDestroy {
      * https://drafts.csswg.org/css-animations/#eventdef-animationevent-animationcancel
      * It would also trigger on CSS like display: none on parent nodes which is awesome
      * but currently only works in Firefox
+     * ___
+     * TODO: remove MutationObserver when we bump versions of supported browsers:
+     *** Safari 12+
+     *** Chrome 83+
+     * See: {@link https://caniuse.com/mdn-api_window_animationcancel_event}
      */
     @HostListener('animationcancel', ['$event', 'false'])
     @HostListener('animationstart', ['$event', 'true'])
