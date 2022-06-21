@@ -6,6 +6,7 @@ import {
     isCurrentTarget,
     TuiDestroyService,
     TuiDialog,
+    tuiGetViewportWidth,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
@@ -48,7 +49,8 @@ export function dialogCloseStreamFactory(
                   filter(
                       ({target, clientX}) =>
                           target instanceof Element &&
-                          windowRef.innerWidth - clientX > SCROLLBAR_PLACEHOLDER &&
+                          tuiGetViewportWidth(windowRef) - clientX >
+                              SCROLLBAR_PLACEHOLDER &&
                           !containsOrAfter(nativeElement, target),
                   ),
                   switchMapTo(

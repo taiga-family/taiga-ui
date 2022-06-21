@@ -6,6 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiGetViewportWidth} from '@taiga-ui/cdk';
 
 const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
@@ -42,7 +43,7 @@ export class TuiTableSizeSelectorComponent {
     }
 
     updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
-        if (this.windowRef.innerWidth - event.clientX > MIN_DISTANCE_PX) {
+        if (tuiGetViewportWidth(this.windowRef) - event.clientX > MIN_DISTANCE_PX) {
             this.tableSize = {rows, cols};
         }
     }

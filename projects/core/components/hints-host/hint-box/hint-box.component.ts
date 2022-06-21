@@ -23,6 +23,7 @@ import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
+import {tuiIsMobile} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -109,7 +110,7 @@ export class TuiHintBoxComponent {
     }
 
     get isMobile(): boolean {
-        return this.windowRef.innerWidth <= this.media.mobile;
+        return tuiIsMobile(this.windowRef, this.media);
     }
 
     /**

@@ -20,6 +20,7 @@ import {
     tuiAssertIsHTMLElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
+    tuiGetViewportWidth,
     TuiOverscrollModeT,
     tuiPure,
     tuiZonefree,
@@ -205,12 +206,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             : 0;
         const left = Math.ceil(directiveRect.left - hostRect.left - offset);
         const right = Math.floor(hostRect.right - directiveRect.right - offset);
+        const viewportWidth = tuiGetViewportWidth(this.windowRef);
 
         switch (this.getFinalAlign(style, directiveRect)) {
             case 'left':
                 if (
-                    right + DEFAULT_MARGIN > this.windowRef.innerWidth ||
-                    inRange(left + DEFAULT_MARGIN, 0, this.windowRef.innerWidth)
+                    right + DEFAULT_MARGIN > viewportWidth ||
+                    inRange(left + DEFAULT_MARGIN, 0, viewportWidth)
                 ) {
                     style.left = px(left);
                     style.right = 'auto';
@@ -222,8 +224,8 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                 break;
             case 'right':
                 if (
-                    inRange(right + DEFAULT_MARGIN, 0, this.windowRef.innerWidth) ||
-                    left + DEFAULT_MARGIN > this.windowRef.innerWidth
+                    inRange(right + DEFAULT_MARGIN, 0, viewportWidth) ||
+                    left + DEFAULT_MARGIN > viewportWidth
                 ) {
                     style.left = 'auto';
                     style.right = px(right);
