@@ -37,6 +37,13 @@ export const ROUTES = [
         },
     },
     {
+        path: 'ssr',
+        loadChildren: async () => (await import('../info/ssr/ssr.module')).SsrModule,
+        data: {
+            title: 'Server Side Rendering (SSR)',
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: async () => (await import('../info/doc/doc.module')).DocModule,
         data: {

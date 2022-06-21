@@ -22,6 +22,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Documentation`,
+        title: $localize`Server Side Rendering`,
+        keywords: 'ssr, server, prerender, back, node, universal',
+        route: 'ssr',
+    },
+    {
+        section: $localize`Documentation`,
         title: $localize`Documentation engine`,
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
