@@ -28,7 +28,12 @@ export function migrateTemplates(tree: Tree) {
     const componentWithTemplatesPaths = getComponentTemplates('**/**').map(
         ({componentPath}) => componentPath,
     );
-    const actions = [replaceTags, replaceAttrs, replaceAttrsByDirective];
+    const actions = [
+        replaceTags,
+        replaceAttrs,
+        replaceAttrsByDirective,
+        replaceBreadcrumbs,
+    ];
 
     actions.forEach(action => {
         componentWithTemplatesPaths.forEach(componentPath => {
@@ -151,5 +156,48 @@ function replaceTags({
                 );
             }
         });
+    });
+}
+
+function replaceBreadcrumbs({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}) {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const elements = findElementsByTagName(template, 'tui-breadcrumbs');
+
+    elements.forEach(element => {
+        const itemsAttr = element.attrs.find(attr => attr.name === '[items]');
+        const itemsValue = itemsAttr?.value;
+        const insertTo = element?.sourceCodeLocation?.startTag.endOffset;
+
+        if (!itemsValue || !insertTo) {
+            return;
+        }
+
+        recorder.insertRight(
+            insertTo + templateOffset,
+            `
+    <ng-container *ngFor="let item of ${itemsValue}">
+        <a
+            *tuiBreadcrumb
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>`,
+        );
+
+        const {startOffset = 0, endOffset = 0} =
+            element.sourceCodeLocation?.attrs?.['[items]'] || {};
+        recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
     });
 }
