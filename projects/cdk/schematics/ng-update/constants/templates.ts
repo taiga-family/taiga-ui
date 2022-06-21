@@ -73,6 +73,15 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '(valueChange)',
         },
     },
+    {
+        from: {
+            attrName: '[quantum]',
+            withAttrsNames: ['tuiSlider'],
+        },
+        to: {
+            attrName: '[step]',
+        },
+    },
 ];
 
 export const TAGS_TO_REPLACE: ReplacementTags[] = [
@@ -85,6 +94,11 @@ export const TAGS_TO_REPLACE: ReplacementTags[] = [
         from: 'tui-wrapper',
         to: 'div',
         addAttributes: ['tuiWrapper'],
+    },
+    {
+        from: 'tui-slider',
+        to: 'input',
+        addAttributes: ['tuiSlider', 'type="range"'],
     },
 ];
 
