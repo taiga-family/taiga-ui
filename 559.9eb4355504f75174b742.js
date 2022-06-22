@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[559],{"6C+V":function(t,n,e){"use strict";e.r(n),n.default='<tui-select\n    class="control"\n    [identityMatcher]="identityMatcher"\n    [valueContent]="valueContent"\n    [(ngModel)]="value"\n>\n    Open-source budget\n    <custom-list\n        *tuiDataList\n        [items]="items"\n    ></custom-list>\n</tui-select>\n'}}]);
