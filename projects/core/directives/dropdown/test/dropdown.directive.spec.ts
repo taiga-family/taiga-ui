@@ -1,7 +1,7 @@
 import {Component, ElementRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRootModule} from '../../../components/root/root.module';
@@ -36,7 +36,7 @@ describe('TuiDropdown directive', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let testComponent: TestComponent;
     const testContext = {
         get prefix() {
@@ -58,7 +58,7 @@ describe('TuiDropdown directive', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

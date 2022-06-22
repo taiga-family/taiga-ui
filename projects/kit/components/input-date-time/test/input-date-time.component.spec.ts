@@ -17,7 +17,7 @@ import {
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 @Component({
     template: `
@@ -42,8 +42,8 @@ class TestComponent {
 
 let fixture: ComponentFixture<TestComponent>;
 let component: TestComponent;
-let inputPO: NativeInputPO;
-let pageObject: PageObject<TestComponent>;
+let inputPO: TuiNativeInputPO;
+let pageObject: TuiPageObject<TestComponent>;
 const testContext = {
     get prefix() {
         return 'tui-input-date-time__';
@@ -71,8 +71,8 @@ const initializeEnvironment = async (
 ): Promise<void> => {
     fixture = TestBed.createComponent(componentClass);
     component = fixture.componentInstance;
-    pageObject = new PageObject(fixture);
-    inputPO = new NativeInputPO(fixture, testContext.nativeInputAutomationId);
+    pageObject = new TuiPageObject(fixture);
+    inputPO = new TuiNativeInputPO(fixture, testContext.nativeInputAutomationId);
 
     fixture.detectChanges();
     await fixture.whenStable();

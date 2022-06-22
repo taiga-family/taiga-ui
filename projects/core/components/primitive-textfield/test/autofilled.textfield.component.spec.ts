@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiAutofilledDirective} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core/components';
-import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe('TuiAutofillModule and TuiPrimitiveTextfield', () => {
     @Component({
@@ -22,7 +22,7 @@ describe('TuiAutofillModule and TuiPrimitiveTextfield', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
     let directiveInstance: TuiAutofilledDirective;
 
     configureTestSuite(() => {
@@ -36,7 +36,7 @@ describe('TuiAutofillModule and TuiPrimitiveTextfield', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
         directiveInstance = fixture.debugElement
             .query(By.directive(TuiAutofilledDirective))
             .injector.get(TuiAutofilledDirective);

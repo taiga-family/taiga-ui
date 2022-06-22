@@ -4,11 +4,11 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
     configureTestSuite,
-    NativeInputPO,
-    PageObject,
     testCleaner,
     testPlaceholder,
     testTooltip,
+    TuiNativeInputPO,
+    TuiPageObject,
 } from '@taiga-ui/testing';
 
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
@@ -67,8 +67,8 @@ describe('PrimitiveTextfield', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     const testContext = {
         get pageObject() {
@@ -103,10 +103,10 @@ describe('PrimitiveTextfield', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 
-        inputPO = new NativeInputPO(fixture, `${testContext.prefix}native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native-input`);
     });
 
     describe('value decoration', () => {

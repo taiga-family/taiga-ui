@@ -2,17 +2,17 @@ import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 
 import {createKeyboardEvent} from './keyboard-event';
-import {PageObject} from './page-object';
+import {TuiPageObject} from './page-object';
 
-export class NativeInputPO {
-    private readonly pageObject: PageObject<unknown>;
+export class TuiNativeInputPO {
+    private readonly pageObject: TuiPageObject<unknown>;
 
     constructor(
         private readonly fixture: ComponentFixture<unknown>,
         private readonly automationId: string,
         private readonly hostDebugElement?: DebugElement,
     ) {
-        this.pageObject = new PageObject(fixture);
+        this.pageObject = new TuiPageObject(fixture);
     }
 
     get nativeElement(): any {

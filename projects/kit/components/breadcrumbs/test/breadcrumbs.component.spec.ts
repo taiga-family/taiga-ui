@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiSizeL} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiBreadcrumbsComponent} from '../breadcrumbs.component';
 import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
@@ -44,7 +44,7 @@ describe('Breadcrumbs', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
             return 'tui-breadcrumbs__';
@@ -64,7 +64,7 @@ describe('Breadcrumbs', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

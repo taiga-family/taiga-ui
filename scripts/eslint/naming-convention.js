@@ -15,19 +15,19 @@ module.exports = {
                         selector: 'class',
                         modifiers: ['exported'],
                         format: ['PascalCase'],
-                        // prefix: ['Tui', 'Example', 'Test', 'Mock'], // TODO: enable later
+                        prefix: ['AbstractTui', 'Tui'],
                     },
                     {
                         selector: 'function',
                         modifiers: ['exported'],
                         format: ['camelCase'],
-                        // prefix: ['tui', 'example', 'Tui', 'mock', 'test'], // TODO: enable later
+                        // prefix: ['tui', 'Tui'], // TODO: enable later
                     },
                     {
                         selector: 'interface',
                         modifiers: ['exported'],
                         format: ['PascalCase'],
-                        prefix: ['Tui', 'Example', 'Test'],
+                        prefix: ['Tui'],
                     },
                     {
                         selector: 'variable',
@@ -52,13 +52,13 @@ module.exports = {
                         selector: 'class',
                         modifiers: ['abstract'],
                         format: ['PascalCase'],
-                        prefix: ['Abstract', 'TuiAbstract', 'Example'],
+                        prefix: ['AbstractTui'],
                     },
                     {
                         selector: 'enum',
                         modifiers: ['exported'],
                         format: ['StrictPascalCase'],
-                        prefix: ['Tui', 'Example', 'Test'],
+                        prefix: ['Tui'],
                     },
                     {
                         selector: 'enumMember',

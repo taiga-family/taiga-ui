@@ -117,7 +117,11 @@ export function getInputPropertyOffsets(
     filterFn: (element: Element) => boolean = () => true,
 ): [number, number][] {
     return findElementsWithAttribute(html, attrName)
-        .filter(element => tags.includes(element.tagName) && filterFn(element))
+        .filter(
+            element =>
+                (tags.includes(element.tagName) || tags.includes('*')) &&
+                filterFn(element),
+        )
         .map((element: Element) => {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attrName.toLowerCase()] || {};

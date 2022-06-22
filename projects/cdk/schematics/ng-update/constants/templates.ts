@@ -157,4 +157,13 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        componentSelector: '*',
+        inputProperty: 'scrollIntoView',
+        directive: 'tuiScrollIntoViewLink',
+        directiveModule: {
+            name: 'TuiScrollIntoViewLinkModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];

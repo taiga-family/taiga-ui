@@ -8,7 +8,7 @@ import {
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 
-import {CodeComponent} from './code.component';
+import {TuiCodeComponent} from './code.component';
 
 @NgModule({
     imports: [
@@ -19,7 +19,7 @@ import {CodeComponent} from './code.component';
         TuiDescribedByModule,
         TuiDataListModule,
     ],
-    declarations: [CodeComponent],
-    exports: [CodeComponent],
+    declarations: [TuiCodeComponent],
+    exports: [TuiCodeComponent],
 })
 export class TuiCodeModule {}

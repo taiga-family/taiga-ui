@@ -2,7 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiSvgModule} from '@taiga-ui/core';
-import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
 import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
 import {TuiInputCardGroupedModule} from '../input-card-grouped.module';
@@ -34,9 +34,9 @@ describe('InputCardGrouped', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let inputCardPO: NativeInputPO;
-    let inputExpirePO: NativeInputPO;
-    let inputCVCPO: NativeInputPO;
+    let inputCardPO: TuiNativeInputPO;
+    let inputExpirePO: TuiNativeInputPO;
+    let inputCVCPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -49,9 +49,9 @@ describe('InputCardGrouped', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputCardPO = new NativeInputPO(fixture, 'tui-input-card-grouped__card');
-        inputExpirePO = new NativeInputPO(fixture, 'tui-input-card-grouped__expire');
-        inputCVCPO = new NativeInputPO(fixture, 'tui-input-card-grouped__cvc');
+        inputCardPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__card');
+        inputExpirePO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__expire');
+        inputCVCPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__cvc');
 
         await fixture.whenStable();
     });

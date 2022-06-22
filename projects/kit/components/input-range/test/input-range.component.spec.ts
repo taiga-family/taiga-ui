@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputRangeComponent} from '../input-range.component';
 import {TuiInputRangeModule} from '../input-range.module';
@@ -47,13 +47,13 @@ describe('InputRange', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     let leftInputWrapper: DebugElement;
     let rightInputWrapper: DebugElement;
 
-    let inputPOLeft: NativeInputPO;
-    let inputPORight: NativeInputPO;
+    let inputPOLeft: TuiNativeInputPO;
+    let inputPORight: TuiNativeInputPO;
 
     const testContext = {
         get prefix() {
@@ -79,7 +79,7 @@ describe('InputRange', () => {
 
     beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 
         fixture.detectChanges();
@@ -441,12 +441,12 @@ describe('InputRange', () => {
         leftInputWrapper = pageObject.getByAutomationId('tui-input-range__left-input')!;
         rightInputWrapper = pageObject.getByAutomationId('tui-input-range__right-input')!;
 
-        inputPOLeft = new NativeInputPO(
+        inputPOLeft = new TuiNativeInputPO(
             fixture,
             testContext.nativeInputAutoId,
             leftInputWrapper,
         );
-        inputPORight = new NativeInputPO(
+        inputPORight = new TuiNativeInputPO(
             fixture,
             testContext.nativeInputAutoId,
             rightInputWrapper,

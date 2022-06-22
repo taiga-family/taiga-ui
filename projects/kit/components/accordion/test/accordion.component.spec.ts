@@ -6,7 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {getOriginalArrayFromQueryList} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputModule} from '../../input/input.module';
 import {TuiSelectComponent} from '../../select/select.component';
@@ -26,7 +26,7 @@ class Account {
 describe('Accordion', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     const enter = new KeyboardEvent('keydown', {key: 'enter'});
     const space = new KeyboardEvent('keydown', {key: 'space'});
@@ -143,7 +143,7 @@ describe('Accordion', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

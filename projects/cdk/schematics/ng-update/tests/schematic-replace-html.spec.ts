@@ -60,6 +60,30 @@ const TEMPLATE_BEFORE = `
 <button tuiButton (pressedChange)="onPressChange($event)"></button>
 <tui-breadcrumbs [items]="items$ | async">
 </tui-breadcrumbs>
+
+<a
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [scrollIntoView]="isActive(item)">
+    {{ item.name }}
+</a>
+
+<div
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [scrollIntoView]="isActive(item)">
+    {{ item.name }}
+</div>
+
+<etc
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [scrollIntoView]="isActive(item)">
+    {{ item.name }}
+</etc>
 `;
 
 const TEMPLATE_AFTER = `
@@ -114,6 +138,30 @@ const TEMPLATE_AFTER = `
         </a>
     </ng-container>
 </tui-breadcrumbs>
+
+<a
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [tuiScrollIntoViewLink]="isActive(item)">
+    {{ item.name }}
+</a>
+
+<div
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [tuiScrollIntoViewLink]="isActive(item)">
+    {{ item.name }}
+</div>
+
+<etc
+    *ngFor="let item of pages"
+    tuiLink
+    [routerLink]="item.route"
+    [tuiScrollIntoViewLink]="isActive(item)">
+    {{ item.name }}
+</etc>
 `;
 
 const COMPONENT_BEFORE = `
@@ -134,6 +182,7 @@ const MODULE_BEFORE = `
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiFieldErrorModule} from "@taiga-ui/kit";
+import {ScrollIntoViewModule} from "@taiga-ui/addon-doc";
 
 import {TestComponentInline} from './test-inline.component';
 import {TestComponent} from './test.component';
@@ -141,7 +190,8 @@ import {TestComponent} from './test.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiFieldErrorModule
+        TuiFieldErrorModule,
+        ScrollIntoViewModule
     ],
     declarations: [
         TestComponent,
@@ -157,6 +207,8 @@ import { TuiFieldErrorPipeModule } from "@taiga-ui/kit";
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import { TuiScrollIntoViewLinkModule } from "@taiga-ui/addon-doc";
+
 import {TestComponentInline} from './test-inline.component';
 import {TestComponent} from './test.component';
 
@@ -166,7 +218,8 @@ import {TestComponent} from './test.component';
         TuiFieldErrorPipeModule,
         TuiAutofilledModule,
         TuiPressedModule,
-        TuiHoveredModule
+        TuiHoveredModule,
+        TuiScrollIntoViewLinkModule
     ],
     declarations: [
         TestComponent,

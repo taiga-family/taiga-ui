@@ -1,7 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiIslandComponent} from '../island.component';
 import {TuiIslandModule} from '../island.module';
@@ -31,7 +31,7 @@ describe('Island', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiIslandComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
             return 'tui-island__';
@@ -51,7 +51,7 @@ describe('Island', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;

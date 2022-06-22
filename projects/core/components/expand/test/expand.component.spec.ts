@@ -2,7 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandModule} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;
 
@@ -30,7 +30,7 @@ describe('expand', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -41,7 +41,7 @@ describe('expand', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
     });
 

@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiTagComponent} from '../tag.component';
 import {TuiTagModule} from '../tag.module';
@@ -38,7 +38,7 @@ describe('Tag', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const keydownEnter = new KeyboardEvent('keydown', {
         key: 'enter',
     });
@@ -69,7 +69,7 @@ describe('Tag', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         testComponent.editedSpy.calls.reset();
         fixture.detectChanges();

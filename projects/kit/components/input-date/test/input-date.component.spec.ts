@@ -16,7 +16,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputDateComponent} from '../input-date.component';
 import {TuiInputDateModule} from '../input-date.module';
@@ -62,8 +62,8 @@ class TestComponent {
 
 let fixture: ComponentFixture<TestComponent>;
 let testComponent: TestComponent;
-let pageObject: PageObject<TestComponent>;
-let inputPO: NativeInputPO;
+let pageObject: TuiPageObject<TestComponent>;
+let inputPO: TuiNativeInputPO;
 
 const testContext = {
     get pageObject() {
@@ -101,9 +101,9 @@ const initializeEnvironment = async (
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
 
-    pageObject = new PageObject(fixture);
+    pageObject = new TuiPageObject(fixture);
     testComponent = fixture.componentInstance;
-    inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+    inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
 
     await fixture.whenStable();
 };

@@ -4,7 +4,7 @@ import {Component, DebugElement, LOCALE_ID, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiPluralize} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiKeySteps} from '../../../types/key-steps';
@@ -49,7 +49,7 @@ describe('Slider-old', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const keydownArrowLeft = new KeyboardEvent('keydown', {
         key: 'arrowLeft',
     });
@@ -84,7 +84,7 @@ describe('Slider-old', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -22,7 +22,7 @@ import {
     TUI_ARROW_MODE,
     TuiDataListWrapperModule,
 } from '@taiga-ui/kit/components';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiComboBoxComponent} from '../combo-box.component';
 import {TuiComboBoxModule} from '../combo-box.module';
@@ -96,8 +96,8 @@ describe('ComboBox', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -123,11 +123,11 @@ describe('ComboBox', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('stringify', () => {

@@ -16,8 +16,8 @@ import {
     activeText,
     configureTestSuite,
     dispatchOnActive,
-    NativeInputPO,
-    PageObject,
+    TuiNativeInputPO,
+    TuiPageObject,
 } from '@taiga-ui/testing';
 
 import {TuiInputComponent} from '../input.component';
@@ -103,8 +103,8 @@ describe('Input', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
     let updateSpy: jasmine.Spy;
 
     function getDropdown(): DebugElement | null {
@@ -129,10 +129,10 @@ describe('Input', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('Autocomplete', () => {

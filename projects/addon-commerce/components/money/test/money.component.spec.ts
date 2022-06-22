@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {CHAR_EN_DASH} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 describe('Money', () => {
     @Component({
@@ -40,7 +40,7 @@ describe('Money', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiMoneyComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
             return 'tui-money__';
@@ -56,7 +56,7 @@ describe('Money', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;

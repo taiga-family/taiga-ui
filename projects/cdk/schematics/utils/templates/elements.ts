@@ -66,7 +66,11 @@ export function findAttributeOnElementWithTag(
     filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
 ): number[] {
     return findElementsWithAttribute(html, name)
-        .filter(element => tagNames.includes(element.tagName) && filterFn(element))
+        .filter(
+            element =>
+                (tagNames.includes(element.tagName) || tagNames.includes('*')) &&
+                filterFn(element),
+        )
         .map(element => getStartOffsetOfAttribute(element, name));
 }
 

@@ -1,12 +1,12 @@
 import {ComponentFixture} from '@angular/core/testing';
 import {FormControl} from '@angular/forms';
 
-import {NativeInputPO} from '../native-input.page-object';
+import {TuiNativeInputPO} from '../native-input.page-object';
 
 interface TestParams {
     fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
-    inputPO: NativeInputPO;
+    inputPO: TuiNativeInputPO;
 }
 
 interface TestComponent {
@@ -16,7 +16,7 @@ interface TestComponent {
 export function testFormControlState(context: TestParams): void {
     let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     describe('FormControl state', () => {
         beforeEach(() => {

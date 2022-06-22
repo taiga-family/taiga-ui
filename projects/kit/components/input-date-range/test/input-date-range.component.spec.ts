@@ -16,7 +16,7 @@ import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
 import {TuiInputDateRangeComponent} from '../input-date-range.component';
@@ -60,9 +60,9 @@ class TestComponent {
 
 let fixture: ComponentFixture<TestComponent>;
 let testComponent: TestComponent;
-let pageObject: PageObject<TestComponent>;
+let pageObject: TuiPageObject<TestComponent>;
 let component: TuiInputDateRangeComponent;
-let inputPO: NativeInputPO;
+let inputPO: TuiNativeInputPO;
 
 const DEFAULT_TESTING_MODULE_META = {
     imports: [
@@ -79,11 +79,11 @@ const initializeEnvironment = async (
     testComponentClass: Type<TestComponent> = TestComponent,
 ): Promise<void> => {
     fixture = TestBed.createComponent(testComponentClass);
-    pageObject = new PageObject(fixture);
+    pageObject = new TuiPageObject(fixture);
     testComponent = fixture.componentInstance;
     fixture.detectChanges();
     component = testComponent.component;
-    inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+    inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
 
     fixture.detectChanges();
     await fixture.whenStable();

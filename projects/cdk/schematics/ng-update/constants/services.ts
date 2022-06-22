@@ -47,4 +47,13 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'PreviewDialogService',
+        },
+        to: {
+            name: 'TuiPreviewDialogService',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+    },
 ];

@@ -10,7 +10,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputNumberComponent} from '../input-number.component';
 import {TuiInputNumberModule} from '../input-number.module';
@@ -59,8 +59,8 @@ describe('InputNumber', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputNumberComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -77,12 +77,12 @@ describe('InputNumber', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('Default values:', () => {

@@ -1,7 +1,7 @@
 import {Location} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPieChartModule} from '../pie-chart.module';
 
@@ -16,7 +16,7 @@ describe('PieChart', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -35,7 +35,7 @@ describe('PieChart', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });
 

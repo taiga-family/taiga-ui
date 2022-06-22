@@ -7,7 +7,7 @@ import {
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiInputPhoneComponent} from '../input-phone.component';
@@ -39,8 +39,8 @@ describe('InputPhone', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputPhoneComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -59,12 +59,12 @@ describe('InputPhone', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('Initial value', () => {

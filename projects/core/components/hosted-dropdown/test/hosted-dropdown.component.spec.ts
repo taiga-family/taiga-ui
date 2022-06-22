@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
-import {configureTestSuite, dispatchOnActive, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, dispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiTextfieldControllerModule} from '../../../directives';
 import {TuiButtonComponent} from '../../button/button.component';
@@ -110,7 +110,7 @@ describe('TuiHostedDropdown', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let nativeButton: HTMLElement;
 
     configureTestSuite(() => {
@@ -131,7 +131,7 @@ describe('TuiHostedDropdown', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
 
         const element = document.querySelector('#native-button');

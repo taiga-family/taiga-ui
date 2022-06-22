@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/kit';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputMonth', () => {
     @Component({
@@ -23,10 +23,10 @@ describe('InputMonth', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputMonthComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -42,12 +42,12 @@ describe('InputMonth', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('computedValue', () => {

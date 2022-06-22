@@ -14,10 +14,11 @@ const collectionPath = join(__dirname, '../../migration.json');
 
 const BEFORE = `import { Component } from '@angular/core';
 import { TuiPortalService } from '@taiga-ui/cdk';
+import { PreviewDialogService } from '@taiga-ui/addon-preview';
 import { TuiNotificationsService } from '@taiga-ui/core';
-import { TuiCodeEditor } from '@taiga-ui/addon-doc'
+import { TuiCodeEditor } from '@taiga-ui/addon-doc';
 
-function(service: TuiNotificationsService) {
+function etc(service: TuiNotificationsService) {
     service
     .show().subscribe();
 
@@ -31,9 +32,10 @@ function getService(): TuiNotificationsService {
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
     constructor(
-      @Inject(TuiPortalService) portalService: TuiPortalService;
-      @Inject(TuiNotificationsService) private notificationService: TuiNotificationsService;
-      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor;
+      @Inject(TuiPortalService) portalService: TuiPortalService,
+      @Inject(TuiNotificationsService) private notificationService: TuiNotificationsService,
+      @Inject(PreviewDialogService) private preview: PreviewDialogService,
+      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor
     ) {
       notificationService.show(arg, arg2);
     }
@@ -44,11 +46,12 @@ export class AppComponent {
     }
 }`;
 
-const AFTER = `import { TuiCodeEditor } from "@taiga-ui/addon-doc";
+const AFTER = `import { TuiPreviewDialogService } from "@taiga-ui/addon-preview";
+import { TuiCodeEditor } from "@taiga-ui/addon-doc";
 import { TuiDropdownPortalService, TuiAlertService } from "@taiga-ui/cdk";
 import { Component } from '@angular/core';
 
-function(service: TuiAlertService) {
+function etc(service: TuiAlertService) {
     service
     .open().subscribe();
 
@@ -62,9 +65,10 @@ function getService(): TuiAlertService {
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
     constructor(
-      @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService;
-      @Inject(TuiAlertService) private notificationService: TuiAlertService;
-      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor;
+      @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService,
+      @Inject(TuiAlertService) private notificationService: TuiAlertService,
+      @Inject(TuiPreviewDialogService) private preview: TuiPreviewDialogService,
+      @Inject(TUI_DOC_CODE_EDITOR) private editor: TuiCodeEditor
     ) {
       notificationService.open(arg, arg2);
     }

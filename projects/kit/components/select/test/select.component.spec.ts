@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiSelectComponent} from '../select.component';
 import {TuiSelectModule} from '../select.module';
@@ -62,8 +62,8 @@ describe('Select', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -83,11 +83,11 @@ describe('Select', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
 
-        inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
     describe('Cleaning the field', () => {

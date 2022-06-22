@@ -2,10 +2,10 @@ import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 import {FormControl} from '@angular/forms';
 
-import {PageObject} from '../page-object';
+import {TuiPageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<unknown>;
+    pageObject: TuiPageObject<unknown>;
     fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
     prefix: string;
@@ -23,7 +23,7 @@ export function testPlaceholder(
     setValue: unknown = 'value',
     clearValue: unknown = '',
 ): void {
-    let pageObject: PageObject<unknown>;
+    let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
 
