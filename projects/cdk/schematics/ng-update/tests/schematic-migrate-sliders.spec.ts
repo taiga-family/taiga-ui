@@ -45,6 +45,16 @@ const APP_TEMPLATE = `
     Usage of the component without deprecated props
 </tui-input-slider>
 
+<tui-input-range
+    [min]="0"
+    [max]="100"
+    [leftValueContent]="valueContent"
+    [rightValueContent]="valueContent"
+    [formControl]="control"
+>
+    Desired departure day
+</tui-input-range>
+
 <file-html-child></file-html-child>
 <footer>123</footer>
 `;
@@ -76,6 +86,22 @@ export class FileHtmlChildComponent {
         if (currentValue === minValue) return minLabelText;
         return String(currentValue);
     }
+
+    tuiMigrationInputRangeMinLabel(context: TuiContextWithImplicit<number>): string {
+        const currentValue = context.$implicit;
+        const minValue = 0; // TODO replace with the MIN value of the input-range
+        const minLabelText = "Min"; // TODO replace with the required label
+        if (currentValue === minValue) return minLabelText;
+        return String(currentValue);
+    }
+
+    tuiMigrationInputRangeMaxLabel(context: TuiContextWithImplicit<number>): string {
+        const currentValue = context.$implicit;
+        const maxValue = 100; // TODO replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO replace with the required label
+        if (currentValue === maxValue) return maxLabelText;
+        return String(currentValue);
+    }
 }
 `;
 
@@ -100,6 +126,8 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
     [segments]="5"
     [steps]="5"
     [size]="size"
+    [maxLabel]="Maxxxxx"
+    minLabel="min!!!"
     [formControl]="control"
 >
     Select volume range
@@ -129,6 +157,8 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER =
     [segments]="5"
     [steps]="5"
     [tuiTextfieldSize]="size"
+    [rightValueContent]="tuiMigrationInputRangeMaxLabel"
+    [leftValueContent]="tuiMigrationInputRangeMinLabel"
     [formControl]="control"
 >
     Select volume range
