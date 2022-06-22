@@ -20,7 +20,6 @@ import {
     tuiAssertIsHTMLElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
-    tuiGetViewportWidth,
     TuiOverscrollModeT,
     tuiPure,
     tuiZonefree,
@@ -31,7 +30,7 @@ import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
-import {getScreenWidth} from '@taiga-ui/core/utils/dom';
+import {getScreenWidth, tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {takeUntil, throttleTime} from 'rxjs/operators';
 
