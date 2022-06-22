@@ -8,8 +8,6 @@ export * from './get-document-or-shadow-root';
 export * from './get-element-obscurers';
 export * from './get-element-offset';
 export * from './get-scroll-parent';
-export * from './get-viewport-height';
-export * from './get-viewport-width';
 export * from './is-current-target';
 export * from './is-inside-iframe';
 export * from './is-node-in';

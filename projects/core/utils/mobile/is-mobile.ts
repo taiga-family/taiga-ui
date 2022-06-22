@@ -1,5 +1,6 @@
 import {TuiMedia} from '@taiga-ui/core/interfaces';
+import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
 
-export function tuiIsMobile({innerWidth}: Window, {mobile}: TuiMedia): boolean {
-    return innerWidth <= mobile;
+export function tuiIsMobile(windowRef: Window, {mobile}: TuiMedia): boolean {
+    return tuiGetViewportWidth(windowRef) <= mobile;
 }

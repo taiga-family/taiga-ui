@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiGetViewportWidth} from '@taiga-ui/cdk';
+import {tuiGetViewportWidth} from '@taiga-ui/core';
 
 const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
