@@ -15,8 +15,11 @@ on:
       - '!screenshot-bot-storage**'
 
 env:
-  NX_BRANCH: ${{ github.event.number }}
   CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
+  NX_BRANCH: ${{ github.event.number }}
+  PATH_NEXT_DIST: dist/gh-pages
+  PATH_LOCAL_DIST: dist/demo
+  NG_SERVER_PORT: 3333
 
 jobs:
   build-demo:
@@ -88,40 +91,40 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - name: Serve demo/local application in background
+      - name: Serve ${{ env.PATH_LOCAL_DIST }}/browser in background
         run: |
-          npx nx serve:browser & npx wait-on http://localhost:3333
-          curl -X GET -I -f "http://localhost:3333"
+          npx nx serve:compiled -- --path ${{ env.PATH_LOCAL_DIST }}/browser \
+            & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
-      - name: Run screenshot tests on demo/localhost
+      - name: Run screenshot tests on ${{ env.PATH_LOCAL_DIST }}/browser
         run: |
           npm run concurrently \
               "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
               "sleep 20 && npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
-        run: npx kill-port --port 3333
+        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
       - name: Copy gh-pages resources to serve `taiga-ui.dev/next` locally
         run: |
-          git clone --depth 1 --branch gh-pages https://github.com/Tinkoff/taiga-ui.git dist/gh-pages
+          git clone --depth 1 --branch gh-pages https://github.com/Tinkoff/taiga-ui.git ${{ env.PATH_NEXT_DIST }}
 
       - name: Find and replace baseHref for next snapshot
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: '<base href="/next/">'
           replace: '<base href="/">'
-          include: 'dist/gh-pages/next/index.html'
+          include: '${{ env.PATH_NEXT_DIST }}/next/index.html'
           regex: false
 
-      - run: cat dist/gh-pages/next/index.html
+      - run: cat ${{ env.PATH_NEXT_DIST }}/next/index.html
 
-      - name: Serve demo/next application in background
+      - name: Serve ${{ env.PATH_NEXT_DIST }}/next in background
         run: |
-          npx nx serve:browser:next & npx wait-on http://localhost:5555
-          curl -X GET -I -f "http://localhost:5555"
+          npx nx serve:compiled -- --path ${{ env.PATH_NEXT_DIST }}/next \
+            & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
-      - name: Run screenshot tests on demo/next
+      - name: Run screenshot tests on ${{ env.PATH_NEXT_DIST }}/next
         continue-on-error: true
         env:
           # note: need to collect all
@@ -133,7 +136,7 @@ jobs:
               "sleep 20 && npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
-        run: npx kill-port --port 5555
+        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
       - name: Check if diff-output exists
         id: diff-checker

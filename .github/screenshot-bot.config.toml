@@ -1,7 +1,7 @@
 # array of RegExp strings to match workflow names
 # which should be watched by bot
 workflowWithTests = [
-    '.*e2e.*', # all workflows with sub-string "screenshot" in their names will be watched by bot
+    '.*e2e.*', # all workflows with sub-string "e2e" in their names will be watched by bot
 ]
 
 # array of RegExp strings to match images inside artifacts (by their path or file name)
