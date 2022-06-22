@@ -9,7 +9,7 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
-import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
+import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';

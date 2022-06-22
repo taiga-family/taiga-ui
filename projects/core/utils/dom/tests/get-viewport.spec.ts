@@ -1,4 +1,3 @@
-/// <reference types="karma-viewport" />
 import {
     tuiGetViewportHeight,
     tuiGetViewportWidth,
@@ -6,29 +5,18 @@ import {
     TuiMedia,
 } from '@taiga-ui/core';
 
-describe('getViewport', () => {
-    it('width', () => {
-        expect(window.document.documentElement.clientWidth).toEqual(770);
-        expect(window.innerWidth).toEqual(785);
-        expect(tuiGetViewportWidth(window)).toEqual(785);
+describe('viewport', () => {
+    it('width/height', () => {
+        setViewport(770, 600);
 
-        viewport.set(500, 200);
+        expect(window.document.documentElement.clientWidth).toEqual(755);
+        expect(window.innerWidth).toEqual(770);
 
-        expect(window.document.documentElement.clientWidth).toEqual(485);
-        expect(window.innerWidth).toEqual(500);
-        expect(tuiGetViewportWidth(window)).toEqual(500);
-    });
-
-    it('height', () => {
         expect(window.document.documentElement.clientHeight).toEqual(600);
         expect(window.innerHeight).toEqual(600);
+
+        expect(tuiGetViewportWidth(window)).toEqual(770);
         expect(tuiGetViewportHeight(window)).toEqual(600);
-
-        viewport.set(500, 200);
-
-        expect(window.document.documentElement.clientHeight).toEqual(200);
-        expect(window.innerHeight).toEqual(200);
-        expect(tuiGetViewportHeight(window)).toEqual(200);
     });
 
     describe('iPhone X', () => {
@@ -60,6 +48,15 @@ describe('getViewport', () => {
             ).toEqual(true);
         });
     });
-
-    afterEach(() => viewport.reset());
 });
+
+function setViewport(width: number, height: number): void {
+    spyOnProperty(window, 'innerWidth').and.returnValue(width);
+    spyOnProperty(window, 'innerHeight').and.returnValue(height);
+    spyOnProperty(window.document.documentElement, 'clientWidth').and.returnValue(
+        width - 15 /* scroll width */,
+    );
+    spyOnProperty(window.document.documentElement, 'clientHeight').and.returnValue(
+        height,
+    );
+}
