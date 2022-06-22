@@ -39,11 +39,12 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-line-clamp
-                [content]="content"
+                [style.width.px]="100"
+                [content]="content || defaultExampleContent"
                 [linesLimit]="linesLimit"
                 [lineHeight]="lineHeight"
             ></tui-line-clamp>
-            <ng-template #content>
+            <ng-template #defaultExampleContent>
                 Lorem ipsum
                 <br />
                 Gaudeamus igitur
@@ -59,6 +60,7 @@
                 documentationPropertyName="content"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="content"
             >
                 Content
             </ng-template>

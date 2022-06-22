@@ -151,6 +151,20 @@
                             [ngModel]="propertyConnector.documentationPropertyValue"
                             (ngModelChange)="propertyConnector.onValueChange($event)"
                         ></tui-input-count>
+
+                        <ng-container *ngSwitchCase="'PolymorpheusContent'">
+                            <tui-primitive-textfield
+                                *ngIf="isPrimitivePolymorpheusContent(propertyConnector.documentationPropertyValue)"
+                                tuiTextfieldSize="m"
+                                [nativeId]="propertyConnector.attrName"
+                                [tuiTextfieldLabelOutside]="true"
+                                [tuiTextfieldCleaner]="true"
+                                [value]="propertyConnector.documentationPropertyValue.toString()"
+                                (valueChange)="propertyConnector.onValueChange($event)"
+                            >
+                                Default content
+                            </tui-primitive-textfield>
+                        </ng-container>
                     </ng-container>
                 </ng-template>
             </ng-container>

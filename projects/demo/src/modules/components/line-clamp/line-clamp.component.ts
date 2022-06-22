@@ -11,6 +11,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 export class ExampleTuiLineClampComponent {
     linesLimit = 1;
     lineHeight = 24;
+    content = '';
 
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
