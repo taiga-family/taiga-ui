@@ -1,6 +1,7 @@
 import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiZoneOptimized, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiIsMobile} from '@taiga-ui/core/utils';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
 
@@ -11,12 +12,12 @@ export const TUI_IS_MOBILE_RES = new InjectionToken<Observable<boolean>>(
     {
         factory: () => {
             const windowRef = inject(WINDOW);
-            const {mobile} = inject(TUI_MEDIA);
+            const media = inject(TUI_MEDIA);
 
             return typedFromEvent(windowRef, 'resize').pipe(
                 share(),
                 startWith(null),
-                map(() => windowRef.innerWidth < mobile),
+                map(() => tuiIsMobile(windowRef, media)),
                 distinctUntilChanged(),
                 tuiZoneOptimized(inject(NgZone)),
             );

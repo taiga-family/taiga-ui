@@ -7,6 +7,7 @@ import {
     TUI_CLOSE_WORD,
     TUI_MEDIA,
     TuiBrightness,
+    tuiIsMobile,
     TuiMedia,
     tuiSlideInTop,
 } from '@taiga-ui/core';
@@ -39,7 +40,7 @@ export class TuiTableBarsHostComponent {
     ) {}
 
     get isMobile(): boolean {
-        return this.windowRef.innerWidth <= this.media.mobile;
+        return tuiIsMobile(this.windowRef, this.media);
     }
 
     get closeIcon(): string {
