@@ -19,6 +19,7 @@ import {
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import {ElementLocation} from 'parse5';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -33,6 +34,7 @@ export function migrateTemplates(tree: Tree) {
         replaceAttrs,
         replaceAttrsByDirective,
         replaceBreadcrumbs,
+        replaceFieldError,
     ];
 
     actions.forEach(action => {
@@ -132,27 +134,13 @@ function replaceTags({
 
         elements.forEach(({sourceCodeLocation}) => {
             if (sourceCodeLocation) {
-                const startTagOffset = sourceCodeLocation.startTag.startOffset;
-                const endTagOffset = sourceCodeLocation.endTag?.startOffset;
-
-                if (endTagOffset) {
-                    recorder.remove(
-                        endTagOffset + templateOffset + END_TAG_OFFSET,
-                        from.length,
-                    );
-                    recorder.insertRight(
-                        endTagOffset + templateOffset + END_TAG_OFFSET,
-                        to,
-                    );
-                }
-
-                recorder.remove(
-                    startTagOffset + templateOffset + START_TAG_OFFSET,
-                    from.length,
-                );
-                recorder.insertRight(
-                    startTagOffset + templateOffset + START_TAG_OFFSET,
-                    `${to} ${addAttributes.join(' ')}`,
+                replaceTag(
+                    recorder,
+                    sourceCodeLocation,
+                    from,
+                    to,
+                    templateOffset,
+                    addAttributes,
                 );
             }
         });
@@ -200,4 +188,67 @@ function replaceBreadcrumbs({
             element.sourceCodeLocation?.attrs?.['[items]'] || {};
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
     });
+}
+
+function replaceFieldError({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}) {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const elements = findElementsByTagName(template, 'tui-field-error');
+
+    elements.forEach(element => {
+        const orderAttr = element.attrs.find(attr => attr.name === '[order]');
+        const orderVal = orderAttr?.value;
+
+        if (orderAttr) {
+            const {startOffset = 0, endOffset = 0} =
+                element.sourceCodeLocation?.attrs?.['[order]'] || {};
+            recorder.remove(
+                templateOffset + startOffset - 1,
+                endOffset - startOffset + 1,
+            );
+        }
+
+        const input = `[error]="${orderVal ?? '[]'} | tuiFieldError | async"`;
+
+        replaceTag(
+            recorder,
+            element.sourceCodeLocation!,
+            'tui-field-error',
+            'tui-error',
+            templateOffset,
+            [input],
+        );
+    });
+}
+
+function replaceTag(
+    recorder: UpdateRecorder,
+    sourceCodeLocation: ElementLocation,
+    from: string,
+    to: string,
+    templateOffset = 0,
+    addAttributes: string[] = [],
+) {
+    const startTagOffset = sourceCodeLocation.startTag.startOffset;
+    const endTagOffset = sourceCodeLocation.endTag?.startOffset;
+
+    if (endTagOffset) {
+        recorder.remove(endTagOffset + templateOffset + END_TAG_OFFSET, from.length);
+        recorder.insertRight(endTagOffset + templateOffset + END_TAG_OFFSET, to);
+    }
+
+    recorder.remove(startTagOffset + templateOffset + START_TAG_OFFSET, from.length);
+    recorder.insertRight(
+        startTagOffset + templateOffset + START_TAG_OFFSET,
+        `${to} ${addAttributes.join(' ')}`,
+    );
 }

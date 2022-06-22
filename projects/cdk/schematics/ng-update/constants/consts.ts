@@ -112,4 +112,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             namedImport: 'AbstractTuiFilterByInput',
         },
     },
+    {
+        from: {
+            name: 'TuiFieldErrorModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiFieldErrorPipeModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

@@ -18,7 +18,11 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
-<thead>
+<tui-field-error formControlName="control"></tui-field-error>
+<tui-field-error formControlName="control" [order]="order"></tui-field-error>
+
+<table>
+  <thead>
         <tr tuiThGroup>
             <th
                 tuiResizableColumn
@@ -27,7 +31,8 @@ const TEMPLATE_BEFORE = `
             </th>
             <th tuiTh>Balance</th>
         </tr>
-</thead>
+  </thead>
+</table>
 <tui-editor new [formControl]="control"></tui-editor>
 <tui-editor new [formControl]="control"></tui-editor>
 <tui-group class="some_class">
@@ -58,7 +63,11 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<thead>
+<tui-error [error]="[] | tuiFieldError | async" formControlName="control"></tui-error>
+<tui-error [error]="order | tuiFieldError | async" formControlName="control"></tui-error>
+
+<table>
+  <thead>
         <tr tuiThGroup>
             <th
                 tuiTh [resizable]="true"
@@ -67,7 +76,8 @@ const TEMPLATE_AFTER = `
             </th>
             <th tuiTh>Balance</th>
         </tr>
-</thead>
+  </thead>
+</table>
 <tui-editor [formControl]="control"></tui-editor>
 <tui-editor [formControl]="control"></tui-editor>
 <div tuiGroup class="some_class">
@@ -123,13 +133,15 @@ export class TestComponentInline {
 const MODULE_BEFORE = `
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {TuiFieldErrorModule} from "@taiga-ui/kit";
 
 import {TestComponentInline} from './test-inline.component';
 import {TestComponent} from './test.component';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        TuiFieldErrorModule
     ],
     declarations: [
         TestComponent,
@@ -141,16 +153,17 @@ export class ExampleModule {}
 `;
 
 const MODULE_AFTER = `import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
+import { TuiFieldErrorPipeModule } from "@taiga-ui/kit";
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-
 import {TestComponentInline} from './test-inline.component';
 import {TestComponent} from './test.component';
 
 @NgModule({
     imports: [
         CommonModule,
+        TuiFieldErrorPipeModule,
         TuiAutofilledModule,
         TuiPressedModule,
         TuiHoveredModule
