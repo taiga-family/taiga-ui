@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.50.1](https://github.com/tinkoff/taiga-ui/compare/v2.50.0...v2.50.1) (2022-06-22)
+
+### Features
+
+- **addon-chart:** `RingChart` use `ng-content` instead of input
+  ([#1978](https://github.com/tinkoff/taiga-ui/issues/1978))
+  ([da46ddc](https://github.com/tinkoff/taiga-ui/commit/da46ddcfd4431573a38a5368083332149ed09af5))
+
+### Bug Fixes
+
+- **addon-mobile:** fix overscroll for android ([#1977](https://github.com/tinkoff/taiga-ui/issues/1977))
+  ([e354ded](https://github.com/tinkoff/taiga-ui/commit/e354ded6f833c16e02084b2530f35556d8dcbdca))
+- **core:** `PrimitiveTextfield` fix prefix when aligned to the right
+  ([#1969](https://github.com/tinkoff/taiga-ui/issues/1969))
+  ([0520392](https://github.com/tinkoff/taiga-ui/commit/05203924f8aad9e72a11a3ddacf693d6be9c9e71))
+- **core:** cross-browser viewport width for mobile ([#1979](https://github.com/tinkoff/taiga-ui/issues/1979))
+  ([3226ad8](https://github.com/tinkoff/taiga-ui/commit/3226ad83a1beb59fa103f2016d9a6bb579439ce3))
+- **kit:** `InputSlider` incorrect vertical alignment of slider
+  ([#1967](https://github.com/tinkoff/taiga-ui/issues/1967))
+  ([d37aae0](https://github.com/tinkoff/taiga-ui/commit/d37aae050e0c94ffeb9a3063d9960cf594b5cea0))
+
 ## [2.50.0](https://github.com/tinkoff/taiga-ui/compare/v2.49.2...v2.50.0) (2022-06-20)
 
 ### Features
