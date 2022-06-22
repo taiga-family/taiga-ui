@@ -12,13 +12,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Try rebase locally for check affected e2e
-      uses: imba-tjd/rebase-upstream-action@0.5
-      with:
-        upstream: Tinkoff/taiga-ui
-        branch: main
-        push: false
-
     # disable shared memory X11 affecting Cypress v4 and Chrome
     # https://github.com/cypress-io/cypress-docker-images/issues/270
     - shell: bash
