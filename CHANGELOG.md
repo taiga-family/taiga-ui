@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.50.2](https://github.com/tinkoff/taiga-ui/compare/v2.50.1...v2.50.2) (2022-06-22)
+
+### Bug Fixes
+
+- **core:** wrong handler which detect emulated desktop viewport
+  ([#1987](https://github.com/tinkoff/taiga-ui/issues/1987))
+  ([5d18148](https://github.com/tinkoff/taiga-ui/commit/5d18148fb2c5a0a786eb21b1030b4977540886e2))
+
 ### [2.50.1](https://github.com/tinkoff/taiga-ui/compare/v2.50.0...v2.50.1) (2022-06-22)
 
 ### Features
