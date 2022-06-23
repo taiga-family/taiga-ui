@@ -65,9 +65,10 @@ jobs:
             addon-preview,
             addon-table,
             addon-tablebars,
+            demo-components,
+            demo-wrappers,
             core,
             deep,
-            demo,
             kit,
           ]
     name: ${{ matrix.specFolder }}
