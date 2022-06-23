@@ -7,13 +7,10 @@ import {
     TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
 } from '@taiga-ui/addon-editor/tokens';
-import {TuiPortalService} from '@taiga-ui/cdk';
 import type {Extension, Mark, Node} from '@tiptap/core';
 import {Editor} from '@tiptap/core';
 import {combineLatest, Observable, ReplaySubject} from 'rxjs';
 import {map, shareReplay, take} from 'rxjs/operators';
-
-import {TuiEditorPortalService} from './portal/editor-portal.service';
 
 export const TUI_EDITOR_NEW_PROVIDERS = [
     {
@@ -36,11 +33,6 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
         useFactory: editorFactory,
     },
     TuiTiptapEditorService,
-    TuiEditorPortalService,
-    {
-        provide: TuiPortalService,
-        useExisting: TuiEditorPortalService,
-    },
 ];
 
 export function extensionsFactory(
