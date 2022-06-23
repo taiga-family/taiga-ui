@@ -1,8 +1,15 @@
 import {
-    DEFAULT_TIMEOUT_BEFORE_ACTION,
-    EDITOR_PAGE_URL,
-} from '../../support/shared.entities';
-import {WAIT_BEFORE_SCREENSHOT} from './utils';
+    focusToStartInEditor,
+    getContentEditable,
+    getEditLinkInput,
+    getScreenshotArea,
+    initBaseWrapper,
+    insertLink,
+    openAnchorDropdown,
+    selectTag,
+    trashValueByEditLink,
+} from '../../support/editor/helpers';
+import {EDITOR_PAGE_URL} from '../../support/shared.entities';
 
 describe('Editing links in Editor', () => {
     beforeEach(() => {
@@ -11,9 +18,7 @@ describe('Editing links in Editor', () => {
     });
 
     beforeEach(() => {
-        cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
-        cy.get('@wrapper').scrollIntoView().should('be.visible');
-
+        initBaseWrapper();
         focusToStartInEditor();
     });
 
@@ -61,59 +66,4 @@ describe('Editing links in Editor', () => {
         trashValueByEditLink();
         getScreenshotArea().matchImageSnapshot('3-2-after-remove-link');
     });
-
-    function openAnchorDropdown({containHref}: {containHref: string}): void {
-        /**
-         * Clicking anywhere on a contenteditable box
-         * always places the caret at the end of the word.
-         * bug: https://github.com/cypress-io/cypress/issues/5721
-         */
-        getContentEditable()
-            .find(`a[href="${containHref}"]`)
-            .click()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
-    }
-
-    function trashValueByEditLink(): void {
-        cy.get('button[icon=tuiIconTrashLarge]').click({force: true});
-    }
-
-    function focusToStartInEditor(): void {
-        getContentEditable().type('{moveToStart}').click({force: true});
-    }
-
-    function insertLink(): void {
-        cy.get('@wrapper').find('button[icon=tuiIconLinkLarge]').click({force: true});
-    }
-
-    function getEditLinkInput(): Cypress.Chainable<JQuery> {
-        return cy.get('tui-edit-link').find('input');
-    }
-
-    function getScreenshotArea(): Cypress.Chainable<JQuery> {
-        return cy.get('@wrapper').wait(WAIT_BEFORE_SCREENSHOT);
-    }
-
-    function getContentEditable(): Cypress.Chainable<JQuery> {
-        return cy.get('@wrapper').find('[contenteditable]');
-    }
-
-    function selectTag(selector: Cypress.Chainable<JQuery>): void {
-        selector
-            .should('be.visible')
-            .click({force: true})
-            .trigger('mousedown', {force: true})
-            .then($el => {
-                const el = $el[0];
-                const document = el.ownerDocument;
-                const range = document?.createRange();
-
-                range?.selectNodeContents(el);
-                document?.getSelection()?.removeAllRanges();
-                document?.getSelection()?.addRange(range!);
-            })
-            .trigger('mouseup', {force: true});
-
-        cy.document().trigger('selectionchange', {force: true});
-    }
 });
