@@ -12,6 +12,8 @@ import {Editor} from '@tiptap/core';
 import {combineLatest, Observable, ReplaySubject} from 'rxjs';
 import {map, shareReplay, take} from 'rxjs/operators';
 
+import {TuiEditorPortalService} from './portal/editor-portal.service';
+
 export const TUI_EDITOR_NEW_PROVIDERS = [
     {
         provide: LAZY_EDITOR_EXTENSIONS,
@@ -33,6 +35,7 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
         useFactory: editorFactory,
     },
     TuiTiptapEditorService,
+    TuiEditorPortalService,
 ];
 
 export function extensionsFactory(
