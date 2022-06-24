@@ -16,14 +16,14 @@ export default defineConfig({
      * Time, in milliseconds, to wait until most
      * DOM based commands are considered timed out.
      */
-    defaultCommandTimeout: 6000,
+    defaultCommandTimeout: 8000,
 
     /**
      * @description:
      * Time, in milliseconds, to wait until a response
      * in a cy.request(), cy.wait(),
      */
-    responseTimeout: 6000,
+    responseTimeout: 5000,
 
     /**
      * @description:
