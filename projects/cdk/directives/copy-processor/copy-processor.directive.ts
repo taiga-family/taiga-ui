@@ -2,6 +2,7 @@ import {Directive, HostListener, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
 
 // @dynamic
@@ -17,13 +18,10 @@ export class TuiCopyProcessorDirective {
 
     @HostListener('copy.prevent', ['$event'])
     onCopy(event: ClipboardEvent): void {
-        const selection = this.windowRef.getSelection();
+        const text = tuiGetSelectedText(this.windowRef);
 
-        if (selection) {
-            event.clipboardData?.setData(
-                'text/plain',
-                this.tuiCopyProcessor(String(selection)),
-            );
+        if (text) {
+            event.clipboardData?.setData('text/plain', this.tuiCopyProcessor(text));
         }
     }
 }
