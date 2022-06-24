@@ -4,11 +4,13 @@ import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
     TAGS_TO_REPLACE,
+    TEMPLATE_COMMENTS,
 } from '../constants/templates';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
     findElementsByTagName,
+    findElementsWithAttribute,
 } from '../../utils/templates/elements';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {TemplateResource} from '../interfaces/template-resourse';
@@ -35,6 +37,7 @@ export function migrateTemplates(tree: Tree) {
         replaceAttrsByDirective,
         replaceBreadcrumbs,
         replaceFieldError,
+        addHTMLCommentTags,
     ];
 
     actions.forEach(action => {
@@ -143,6 +146,32 @@ function replaceTags({
                     addAttributes,
                 );
             }
+        });
+    });
+}
+
+function addHTMLCommentTags({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    TEMPLATE_COMMENTS.forEach(({comment, tag, withAttr}) => {
+        const elementStartOffsets = [
+            ...findElementsWithAttribute(template, withAttr),
+            ...findElementsWithAttribute(template, `[${withAttr}]`),
+        ]
+            .filter(el => el.tagName === tag)
+            .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
+
+        elementStartOffsets.forEach(offset => {
+            recorder.insertRight(offset, `<!-- TODO: ${comment} -->\n`);
         });
     });
 }

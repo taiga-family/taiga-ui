@@ -114,6 +114,8 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
     [min]="0"
     [max]="10"
     [secondary]="userAnswer === 4 ? 'right' : 'wrong'"
+    [pluralize]="pluralForms"
+    [segmentsPluralize]="pluralForms"
     [(ngModel)]="userAnswer"
 >
     2+2=?
@@ -129,6 +131,7 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
     [maxLabel]="Maxxxxx"
     minLabel="min!!!"
     [formControl]="control"
+    [segmentsPluralize]="someVariable"
 >
     Select volume range
 </tui-input-range>
@@ -136,21 +139,25 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 <tui-slider [min]="100" [max]="1000" size="m" [segments]="5" [quantum]="0.01"></tui-slider>
 `;
 
-const FILE_HTML_CHILD_TEMPLATE_AFTER =
-    '\n' +
-    '<tui-input-slider\n' +
-    '    tuiHintContent="Select the answer to see how the right custom content changes"\n' +
-    '    [valueContent]="tuiMigrationMinMaxLabel"\n' +
-    '    \n' +
-    '    class="control"\n' +
-    '    [min]="0"\n' +
-    '    [max]="10"\n' +
-    "    [tuiTextfieldCustomContent]=\"userAnswer === 4 ? 'right' : 'wrong'\"\n" +
-    '    [(ngModel)]="userAnswer"\n' +
-    '>\n' +
-    '    2+2=?\n' +
-    '</tui-input-slider>\n' +
-    `
+const FILE_HTML_CHILD_TEMPLATE_AFTER = `
+<!-- TODO: [pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples -->
+<!-- TODO: See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments -->
+<tui-input-slider
+    tuiHintContent="Select the answer to see how the right custom content changes"
+    [valueContent]="tuiMigrationMinMaxLabel"
+    ${''}
+    class="control"
+    [min]="0"
+    [max]="10"
+    [tuiTextfieldCustomContent]="userAnswer === 4 ? 'right' : 'wrong'"
+    [pluralize]="pluralForms"
+    [segmentsPluralize]="pluralForms"
+    [(ngModel)]="userAnswer"
+>
+    2+2=?
+</tui-input-slider>
+
+<!-- TODO: See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments -->
 <tui-input-range
         [min]="0"
     [max]="100"
@@ -160,6 +167,7 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER =
     [rightValueContent]="tuiMigrationInputRangeMaxLabel"
     [leftValueContent]="tuiMigrationInputRangeMinLabel"
     [formControl]="control"
+    [segmentsPluralize]="someVariable"
 >
     Select volume range
 </tui-input-range>
