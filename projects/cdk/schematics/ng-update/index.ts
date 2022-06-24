@@ -14,26 +14,64 @@ import {removeModules} from './steps/remove-module';
 import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
+import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {infoLog, successLog} from '../utils/colored-log';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        context.logger.info(`taiga packages will be updated to ${TAIGA_VERSION}`);
+        console.info('\x1b[35m', `taiga packages will be updated to ${TAIGA_VERSION}`);
 
-        setActiveProject(createProject(tree, '/', '**/**'));
+        const fileSystem = getFileSystem(tree);
 
+        infoLog('replacing deep imports...');
         replaceDeepImports();
+        successLog('deep imports replaced');
+
+        infoLog('replacing enums imports...');
         replaceEnums();
+        successLog('enums replaced');
+
+        infoLog('renaming types...');
         renameTypes();
+        successLog('types renamed');
+
+        infoLog('replacing consts...');
         replaceConsts();
+        successLog('constants replaced');
+
+        infoLog('replacing services...');
         replaceServices();
+        successLog('services replaced');
+
         showWarnings(context);
-        migrateTemplates(tree);
-        migrateSliders(tree);
-        migrateProgress(tree);
+
+        infoLog('migrating templates...');
+        migrateTemplates(fileSystem);
+        successLog('templates migrated');
+
+        fileSystem.commitEdits();
+        saveActiveProject();
+        const updatedFileSystem = getFileSystem(tree);
+
+        infoLog('migrating sliders...');
+        migrateSliders(updatedFileSystem);
+        successLog('sliders migrated');
+
+        infoLog('removing modules...');
         removeModules();
+        successLog('modules removed');
+
+        infoLog('miscellaneous migrating...');
         replaceFunctions();
         miscellaneousMigrations();
+        successLog('miscellaneous migrated');
 
         saveActiveProject();
     };
+}
+
+function getFileSystem(tree: Tree): DevkitFileSystem {
+    const project = createProject(tree, '/', '**/**.{html,ts}');
+    setActiveProject(project);
+    return project.getFileSystem().fs;
 }

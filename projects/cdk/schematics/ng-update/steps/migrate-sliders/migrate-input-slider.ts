@@ -1,4 +1,3 @@
-import {Tree} from '@angular-devkit/schematics';
 import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 
@@ -12,8 +11,7 @@ import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {hasElementAttribute} from '../../../utils/templates/elements';
 
-export function migrateInputSlider(tree: Tree): void {
-    const fileSystem = new DevkitFileSystem(tree);
+export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     const templateResources = getComponentTemplates('**/**');
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 

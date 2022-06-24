@@ -292,7 +292,7 @@ const INLINE_HTML_CHILD_COMPONENT_AFTER = `import { TuiContextWithImplicit } fro
 
 @Component({
     selector: 'inline-html-child',
-    template: '<tui-input-slider tuiTextfieldCustomContent="123" tuiTextfieldSize="m" [valueContent]="tuiMigrationMinMaxLabel"></tui-input-slider>'
+    template: '<tui-input-slider  tuiTextfieldCustomContent="123" tuiTextfieldSize="m" [valueContent]="tuiMigrationMinMaxLabel"></tui-input-slider>'
 })
 export class InlineHtmlChildComponent {
     readonly maxLabel = 'MAX (property binding)';

@@ -77,6 +77,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
         from: {
             attrName: '[quantum]',
             withAttrsNames: ['tuiSlider'],
+            withTagNames: ['tui-slider'],
         },
         to: {
             attrName: '[step]',
