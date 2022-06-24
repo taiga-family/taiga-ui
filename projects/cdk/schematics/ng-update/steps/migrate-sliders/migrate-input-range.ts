@@ -7,34 +7,24 @@ import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 
+const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
+const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
+
 export function migrateInputRange(tree: Tree): void {
     const fileSystem = new DevkitFileSystem(tree);
     const templateResources = getComponentTemplates('**/**');
+    const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
+    const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
     for (const templateResource of templateResources) {
-        replaceMinLabel(templateResource, fileSystem);
-        replaceMaxLabel(templateResource, fileSystem);
+        replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
+        replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
     }
-}
-
-function replaceMinLabel(
-    templateResource: TemplateResource,
-    fileSystem: DevkitFileSystem,
-): void {
-    const MIGRATION_VARIABLE_NAME = 'tuiMigrationInputRangeMinLabel';
-    const wasModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
-        componentSelector: 'tui-input-range',
-        from: 'minLabel',
-        to: '[leftValueContent]',
-        newValue: MIGRATION_VARIABLE_NAME,
-    });
 
     save(fileSystem);
 
-    if (wasModified) {
-        addMinMaxLabelMethod(templateResource.componentPath, MIGRATION_VARIABLE_NAME, [
+    for (const componentPath of COMPONENTS_WITH_MIN_LABELS) {
+        addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const minValue = 0; // TODO replace with the MIN value of the input-range',
             'const minLabelText = "Min"; // TODO replace with the required label',
@@ -42,32 +32,53 @@ function replaceMinLabel(
             'return String(currentValue);',
         ]);
     }
-}
 
-function replaceMaxLabel(
-    templateResource: TemplateResource,
-    fileSystem: DevkitFileSystem,
-): void {
-    const MIGRATION_VARIABLE_NAME = 'tuiMigrationInputRangeMaxLabel';
-    const wasModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
-        componentSelector: 'tui-input-range',
-        from: 'maxLabel',
-        to: '[rightValueContent]',
-        newValue: MIGRATION_VARIABLE_NAME,
-    });
-
-    save(fileSystem);
-
-    if (wasModified) {
-        addMinMaxLabelMethod(templateResource.componentPath, MIGRATION_VARIABLE_NAME, [
+    for (const componentPath of COMPONENTS_WITH_MAX_LABELS) {
+        addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const maxValue = 100; // TODO replace with the MAX value of the input',
             'const maxLabelText = "Max"; // TODO replace with the required label',
             'if (currentValue === maxValue) return maxLabelText;',
             'return String(currentValue);',
         ]);
+    }
+}
+
+function replaceMinLabel(
+    templateResource: TemplateResource,
+    fileSystem: DevkitFileSystem,
+    modifiedComponentStorage: Set<string>,
+): void {
+    const wasModified = replaceInputProperty({
+        templateResource,
+        fileSystem,
+        componentSelector: 'tui-input-range',
+        from: 'minLabel',
+        to: '[leftValueContent]',
+        newValue: MIN_LABELS_MIGRATION_METHOD_NAME,
+    });
+
+    if (wasModified) {
+        modifiedComponentStorage.add(templateResource.componentPath);
+    }
+}
+
+function replaceMaxLabel(
+    templateResource: TemplateResource,
+    fileSystem: DevkitFileSystem,
+    modifiedComponentStorage: Set<string>,
+): void {
+    const wasModified = replaceInputProperty({
+        templateResource,
+        fileSystem,
+        componentSelector: 'tui-input-range',
+        from: 'maxLabel',
+        to: '[rightValueContent]',
+        newValue: MAX_LABELS_MIGRATION_METHOD_NAME,
+    });
+
+    if (wasModified) {
+        modifiedComponentStorage.add(templateResource.componentPath);
     }
 }
 

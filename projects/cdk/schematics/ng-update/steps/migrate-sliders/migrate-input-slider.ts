@@ -15,15 +15,31 @@ import {hasElementAttribute} from '../../../utils/templates/elements';
 export function migrateInputSlider(tree: Tree): void {
     const fileSystem = new DevkitFileSystem(tree);
     const templateResources = getComponentTemplates('**/**');
+    const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
     for (const templateResource of templateResources) {
-        replaceMinMaxLabels(templateResource, fileSystem);
+        replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
+    }
+
+    /**
+     * We should update virtual file tree
+     * otherwise all following ng-morph commands will overwrite all previous template manipulations
+     * */
+    fileSystem.commitEdits();
+    saveActiveProject();
+    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+
+    for (const componentPath of COMPONENTS_WITH_MIN_MAX_LABELS) {
+        addMinMaxLabelMethod(componentPath);
     }
 }
+
+const MIN_MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationMinMaxLabel';
 
 function replaceMinMaxLabels(
     templateResource: TemplateResource,
     fileSystem: DevkitFileSystem,
+    modifiedComponentStorage: Set<string>,
 ): void {
     const wasMaxLabelModified = replaceInputProperty({
         templateResource,
@@ -31,7 +47,7 @@ function replaceMinMaxLabels(
         componentSelector: 'tui-input-slider',
         from: 'maxLabel',
         to: '[valueContent]',
-        newValue: 'tuiMigrationMinMaxLabel',
+        newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
     });
     const wasMinLabelModified = replaceInputProperty({
         templateResource,
@@ -39,7 +55,7 @@ function replaceMinMaxLabels(
         componentSelector: 'tui-input-slider',
         from: 'minLabel',
         to: '[valueContent]',
-        newValue: 'tuiMigrationMinMaxLabel',
+        newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
         filterFn: element => !hasElementAttribute(element, 'maxLabel'),
     });
 
@@ -51,24 +67,18 @@ function replaceMinMaxLabels(
         filterFn: element => hasElementAttribute(element, 'maxLabel'),
     });
 
-    /**
-     * We should update virtual file tree
-     * otherwise all following ng-morph commands will overwrite all previous template manipulations
-     * */
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+    if (wasMaxLabelModified || wasMinLabelModified) {
+        modifiedComponentStorage.add(templateResource.componentPath);
+    }
+}
 
-    const [ngComponent] = getNgComponents(templateResource.componentPath);
+function addMinMaxLabelMethod(componentPath: string): void {
+    const [ngComponent] = getNgComponents(componentPath);
 
-    if ((wasMaxLabelModified || wasMinLabelModified) && ngComponent) {
-        addUniqueImport(
-            templateResource.componentPath,
-            'TuiContextWithImplicit',
-            '@taiga-ui/cdk',
-        );
+    if (ngComponent) {
+        addUniqueImport(componentPath, 'TuiContextWithImplicit', '@taiga-ui/cdk');
         addMethods(ngComponent, {
-            name: 'tuiMigrationMinMaxLabel',
+            name: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
             returnType: 'string',
             parameters: [{name: 'context', type: 'TuiContextWithImplicit<number>'}],
             statements: [
