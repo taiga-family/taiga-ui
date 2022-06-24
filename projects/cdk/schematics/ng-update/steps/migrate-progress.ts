@@ -1,4 +1,3 @@
-import {Tree} from '@angular-devkit/schematics';
 import {Element} from 'parse5';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
@@ -16,8 +15,7 @@ export const DEPRECATED_PROGRESS_PIPES_REG =
 
 const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 
-export function migrateProgress(tree: Tree): void {
-    const fileSystem = new DevkitFileSystem(tree);
+export function migrateProgress(fileSystem: DevkitFileSystem): void {
     const templateResources = getComponentTemplates('**/**');
 
     for (const templateResource of templateResources) {

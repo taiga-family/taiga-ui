@@ -57,6 +57,10 @@ export function updateToV3(_: Schema): Rule {
         migrateSliders(updatedFileSystem);
         successLog('sliders migrated');
 
+        infoLog('migrating progress bars');
+        migrateProgress(updatedFileSystem);
+        successLog('progress bars migrated');
+
         infoLog('removing modules...');
         removeModules();
         successLog('modules removed');
