@@ -1,4 +1,4 @@
-# array of regular expression strings to match workflow names
+# array of RegExp strings to match workflow names
 # which should be watched by bot
 workflowWithTests = [
     '.*e2e.*', # all workflows with sub-string "screenshot" in their names will be watched by bot
