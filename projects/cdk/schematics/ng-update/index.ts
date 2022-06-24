@@ -13,6 +13,7 @@ import {migrateSliders} from './steps/migrate-sliders';
 import {removeModules} from './steps/remove-module';
 import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
+import {migrateProgress} from './steps/migrate-progress';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -28,6 +29,7 @@ export function updateToV3(_: Schema): Rule {
         showWarnings(context);
         migrateTemplates(tree);
         migrateSliders(tree);
+        migrateProgress(tree);
         removeModules();
         replaceFunctions();
         miscellaneousMigrations();
