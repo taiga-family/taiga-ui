@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
 import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 describe('Calendar', () => {
     @Component({
@@ -34,7 +34,7 @@ describe('Calendar', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiCalendarComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix(): string {
             return 'tui-calendar__';
@@ -52,7 +52,7 @@ describe('Calendar', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });
 

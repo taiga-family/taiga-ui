@@ -17,7 +17,7 @@ import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Directive()
-export abstract class AbstractDataListWrapper<T> {
+export abstract class AbstractTuiDataListWrapper<T> {
     @ViewChildren(forwardRef(() => TuiOptionComponent))
     protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 

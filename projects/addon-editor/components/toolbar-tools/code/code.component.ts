@@ -14,7 +14,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
     templateUrl: './code.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CodeComponent {
+export class TuiCodeComponent {
     readonly hintText$ = this.texts$.pipe(map(texts => texts.code));
 
     readonly insideCode$ = this.editor.stateChange$.pipe(

@@ -2,14 +2,14 @@ import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 import {FormControl} from '@angular/forms';
 
-import {NativeInputPO} from '../native-input.page-object';
-import {PageObject} from '../page-object';
+import {TuiNativeInputPO} from '../native-input.page-object';
+import {TuiPageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: PageObject<unknown>;
+    pageObject: TuiPageObject<unknown>;
     fixture: ComponentFixture<unknown>;
     testComponent: TestComponent;
-    inputPO: NativeInputPO;
+    inputPO: TuiNativeInputPO;
     prefix: string;
 }
 
@@ -22,10 +22,10 @@ export function testFiller(
     setValue: unknown = 'value',
     clearValue: unknown = null,
 ): void {
-    let pageObject: PageObject<unknown>;
+    let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     describe('Filler (mask)', () => {
         beforeEach(() => {

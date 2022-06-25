@@ -9,7 +9,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
-import {AbstractDataListWrapper} from './data-list-wrapper';
+import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 
 @Component({
     selector: 'tui-data-list-wrapper:not([labels])',
@@ -23,7 +23,7 @@ import {AbstractDataListWrapper} from './data-list-wrapper';
         },
     ],
 })
-export class TuiDataListWrapperComponent<T> extends AbstractDataListWrapper<T> {
+export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()
     @tuiDefaultProp()
     items: readonly T[] | null = [];

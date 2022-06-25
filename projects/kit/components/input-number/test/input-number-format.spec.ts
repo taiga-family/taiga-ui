@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiDecimalT} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputNumber - backward compatibility for separators', () => {
     @Component({
@@ -33,7 +33,7 @@ describe('InputNumber - backward compatibility for separators', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputNumberComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let nativeInput: HTMLInputElement;
 
     describe('Format - {d d d,d}', () => {
@@ -50,7 +50,7 @@ describe('InputNumber - backward compatibility for separators', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
@@ -89,7 +89,7 @@ describe('InputNumber - backward compatibility for separators', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
@@ -134,7 +134,7 @@ describe('InputNumber - backward compatibility for separators', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;

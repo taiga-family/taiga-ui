@@ -13,7 +13,7 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
 const today = TuiDay.currentLocal();
@@ -53,7 +53,7 @@ describe('MobileCalendar', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -64,7 +64,7 @@ describe('MobileCalendar', () => {
 
     beforeEach(fakeAsync(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.autoDetectChanges();
 

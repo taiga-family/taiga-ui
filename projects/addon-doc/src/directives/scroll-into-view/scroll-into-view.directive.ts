@@ -3,10 +3,15 @@ import {getElementObscurers, TuiDestroyService} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 import {debounceTime, filter, takeUntil} from 'rxjs/operators';
 
+/**
+ * @deprecated: use {@link TuiScrollIntoViewLinkDirective}
+ * TODO: remove in v3.0
+ */
 @Directive({
     selector: '[scrollIntoView]',
     providers: [TuiDestroyService],
 })
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export class ScrollIntoViewDirective {
     @Input()
     set scrollIntoView(shallWe: boolean) {
@@ -30,3 +35,9 @@ export class ScrollIntoViewDirective {
             });
     }
 }
+
+@Directive({
+    selector: '[tuiScrollIntoViewLink]',
+    providers: [TuiDestroyService],
+})
+export class TuiScrollIntoViewLinkDirective extends ScrollIntoViewDirective {}

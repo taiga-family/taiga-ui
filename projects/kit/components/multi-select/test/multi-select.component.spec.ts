@@ -15,14 +15,14 @@ import {
     TuiDataListWrapperModule,
     TuiMultiSelectComponent,
 } from '@taiga-ui/kit/components';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('MultiSelect', () => {
     describe('Basic', () => {
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
-        let pageObject: PageObject<TestComponent>;
-        let inputPO: NativeInputPO;
+        let pageObject: TuiPageObject<TestComponent>;
+        let inputPO: TuiNativeInputPO;
 
         class User {
             constructor(
@@ -87,10 +87,10 @@ describe('MultiSelect', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 
-            inputPO = new NativeInputPO(fixture, 'tui-input-tag__native');
+            inputPO = new TuiNativeInputPO(fixture, 'tui-input-tag__native');
             fixture.detectChanges();
         });
 
@@ -223,7 +223,7 @@ describe('MultiSelect', () => {
     describe('Change arrow mode', () => {
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
-        let pageObject: PageObject<TestComponent>;
+        let pageObject: TuiPageObject<TestComponent>;
 
         class User {
             constructor(
@@ -291,7 +291,7 @@ describe('MultiSelect', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 
             fixture.detectChanges();
@@ -311,14 +311,14 @@ describe('MultiSelect', () => {
     });
 });
 
-function getArrow<T>(pageObject: PageObject<T>): DebugElement | null {
+function getArrow<T>(pageObject: TuiPageObject<T>): DebugElement | null {
     return pageObject.getByAutomationId('tui-multi-select__arrow');
 }
 
-function getInputTag<T>(pageObject: PageObject<T>): DebugElement {
+function getInputTag<T>(pageObject: TuiPageObject<T>): DebugElement {
     return pageObject.getByAutomationId('tui-multi-select__input')!;
 }
 
-function getDropdown<T>(pageObject: PageObject<T>): DebugElement | null {
+function getDropdown<T>(pageObject: TuiPageObject<T>): DebugElement | null {
     return pageObject.getByAutomationId('tui-multi-select__menu');
 }

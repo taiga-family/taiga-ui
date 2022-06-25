@@ -5,7 +5,7 @@ import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
 } from '@taiga-ui/core/tokens';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';
@@ -46,7 +46,7 @@ describe('Notification', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement {
         return pageObject.getByAutomationId('tui-notification__icon')!;
@@ -66,7 +66,7 @@ describe('Notification', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -130,7 +130,7 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement {
         return pageObject.getByAutomationId('tui-notification__icon')!;
@@ -156,7 +156,7 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

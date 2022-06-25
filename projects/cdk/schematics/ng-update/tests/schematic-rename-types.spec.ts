@@ -20,6 +20,9 @@ import {
     AnotherType,
 } from '@taiga-ui/core';
 import { InputCountOptions } from '@taiga-ui/kit/components';
+import { ScrollIntoViewDirective, CodeComponent } from '@taiga-ui/addon-doc';
+import { TableBar } from '@taiga-ui/addon-tablebars';
+import { InvalidDayException, InvalidMonthException, InvalidYearException } from '@taiga-ui/cdk/exceptions';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
@@ -77,6 +80,9 @@ import {
     AnotherType,
 } from '@taiga-ui/core';
 import { TuiInputCountOptions } from '@taiga-ui/kit';
+import { TuiScrollIntoViewLinkDirective, TuiCodeComponent } from '@taiga-ui/addon-doc';
+import { TuiTableBar } from '@taiga-ui/addon-tablebars';
+import { TuiInvalidDayException, TuiInvalidMonthException, TuiInvalidYearException } from '@taiga-ui/cdk';
 import { TuiButtonOptions, some, InputCountOptions } from '@taiga-ui/core';
 import { TuiInputPasswordOptions } from '@taiga-ui/kit';
 import { TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions, TuiRadioOptions } from '@taiga-ui/kit';

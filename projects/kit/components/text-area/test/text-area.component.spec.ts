@@ -6,9 +6,9 @@ import {px} from '@taiga-ui/cdk';
 import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     configureTestSuite,
-    NativeInputPO,
-    PageObject,
     testFormControlState,
+    TuiNativeInputPO,
+    TuiPageObject,
 } from '@taiga-ui/testing';
 
 import {DEFAULT_ROWS, LINE_HEIGHT_L, TuiTextAreaComponent} from '../text-area.component';
@@ -51,8 +51,8 @@ describe('TextArea', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
     let component: TuiTextAreaComponent;
 
     const testContext = {
@@ -109,10 +109,10 @@ describe('TextArea', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
-        inputPO = new NativeInputPO(fixture, `${testContext.prefix}native`);
+        inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native`);
     });
 
     describe('expandable:', () => {

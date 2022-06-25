@@ -1,7 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiMonth, TuiYear} from '@taiga-ui/cdk';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPrimitiveYearMonthPaginationComponent} from '../primitive-year-month-pagination.component';
 import {TuiPrimitiveYearMonthPaginationModule} from '../primitive-year-month-pagination.module';
@@ -29,7 +29,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let component: TuiPrimitiveYearMonthPaginationComponent;
     const testContext = {
         get prefix() {
@@ -46,7 +46,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;

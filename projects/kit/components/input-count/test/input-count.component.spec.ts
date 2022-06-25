@@ -1,7 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputCountComponent} from '../input-count.component';
 import {TuiInputCountModule} from '../input-count.module';
@@ -46,8 +46,8 @@ describe('InputCount', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
     const testContext = {
         get prefix() {
             return 'tui-input-count__';
@@ -63,10 +63,10 @@ describe('InputCount', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('Initialization', () => {
@@ -411,7 +411,7 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     const min = 0;
     const max = 12;
@@ -443,7 +443,7 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
 
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     describe('A step other than 1 is set', () => {

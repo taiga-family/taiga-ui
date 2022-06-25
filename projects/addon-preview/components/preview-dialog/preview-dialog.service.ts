@@ -4,10 +4,12 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPreviewDialogComponent} from './preview-dialog.component';
 
-// TODO: 3.0 add Tui prefix
-@Injectable({
-    providedIn: 'root',
-})
+/**
+ * @deprecated: use {@link TuiPreviewDialogService}
+ * TODO: remove in v3.0
+ */
+@Injectable({providedIn: 'root'})
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export class PreviewDialogService extends AbstractTuiDialogService<unknown> {
     readonly defaultOptions = {};
     readonly component = new PolymorpheusComponent(TuiPreviewDialogComponent);
@@ -18,3 +20,6 @@ export const PREVIEW_DIALOG_PROVIDER: Provider = {
     useExisting: PreviewDialogService,
     multi: true,
 };
+
+@Injectable({providedIn: 'root'})
+export class TuiPreviewDialogService extends PreviewDialogService {}

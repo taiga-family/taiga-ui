@@ -19,11 +19,11 @@ import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     isActive,
-    NativeInputPO,
-    PageObject,
     testCleaner,
     testPlaceholder,
     testTooltip,
+    TuiNativeInputPO,
+    TuiPageObject,
 } from '@taiga-ui/testing';
 
 const TAG = 'Tag';
@@ -75,9 +75,9 @@ describe('InputTag', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputTagComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let focusStealer: HTMLElement;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     const testContext = {
         get pageObject() {
@@ -114,13 +114,13 @@ describe('InputTag', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
         focusStealer = document.querySelector<'button'>('button')!;
 
-        inputPO = new NativeInputPO(fixture, `${testContext.prefix}native`);
+        inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native`);
     });
 
     describe('Adding tags', () => {
@@ -453,10 +453,10 @@ describe('InputTag', () => {
 
 function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {
     return (
-        new PageObject(fixture)
+        new TuiPageObject(fixture)
             .getByAutomationId('tui-input-tag__placeholder')
             ?.nativeElement.innerText?.trim() ||
-        new PageObject(fixture)?.getByAutomationId('tui-input-tag__native')?.nativeElement
-            .placeholder
+        new TuiPageObject(fixture)?.getByAutomationId('tui-input-tag__native')
+            ?.nativeElement.placeholder
     );
 }

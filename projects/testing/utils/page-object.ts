@@ -6,7 +6,7 @@ import {
 } from '@taiga-ui/testing/exceptions';
 
 // @dynamic
-export class PageObject<T> {
+export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 
     static getIds({nativeElement}: DebugElement): string[] {
@@ -16,18 +16,18 @@ export class PageObject<T> {
     }
 
     static containsId(debugElement: DebugElement, automationId: string): boolean {
-        return PageObject.getIds(debugElement).includes(automationId);
+        return TuiPageObject.getIds(debugElement).includes(automationId);
     }
 
     private static byAutomationId(automationId: string): Predicate<DebugElement> {
-        return debugElement => PageObject.containsId(debugElement, automationId);
+        return debugElement => TuiPageObject.containsId(debugElement, automationId);
     }
 
     getByAutomationId(
         automationId: string,
         debugElement: DebugElement = this.fixture.debugElement,
     ): DebugElement | null {
-        return debugElement.query(PageObject.byAutomationId(automationId));
+        return debugElement.query(TuiPageObject.byAutomationId(automationId));
     }
 
     // Syncing result order with DOM order: https://github.com/angular/angular/issues/13066
@@ -35,7 +35,9 @@ export class PageObject<T> {
         automationId: string,
         debugElement: DebugElement = this.fixture.debugElement,
     ): DebugElement[] {
-        const debugEls = debugElement.queryAll(PageObject.byAutomationId(automationId));
+        const debugEls = debugElement.queryAll(
+            TuiPageObject.byAutomationId(automationId),
+        );
         const domEls = Array.from(
             debugElement.nativeElement.querySelectorAll(
                 `[automation-id='${automationId}']`,

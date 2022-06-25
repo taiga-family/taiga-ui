@@ -6,7 +6,7 @@ import {
     TuiTableBarsHostModule,
     TuiTableBarsService,
 } from '@taiga-ui/addon-tablebars';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Subscription, timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ describe('TableBarsHost', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiTableBarsHostComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let service: TuiTableBarsService;
     let subscription: Subscription;
 
@@ -45,7 +45,7 @@ describe('TableBarsHost', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;

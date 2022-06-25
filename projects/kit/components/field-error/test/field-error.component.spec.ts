@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {
     PolymorpheusContent,
     PolymorpheusModule,
@@ -97,7 +97,7 @@ describe('FieldError', () => {
 
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
-        let pageObject: PageObject<TestComponent>;
+        let pageObject: TuiPageObject<TestComponent>;
 
         configureTestSuite(() => {
             TestBed.configureTestingModule({
@@ -113,7 +113,7 @@ describe('FieldError', () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 
             fixture.detectChanges();
@@ -161,7 +161,7 @@ describe('FieldError', () => {
 
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
-        let pageObject: PageObject<TestComponent>;
+        let pageObject: TuiPageObject<TestComponent>;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -175,7 +175,7 @@ describe('FieldError', () => {
             });
 
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
         });
@@ -233,9 +233,9 @@ describe('FieldError', () => {
 
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
-        let pageObject: PageObject<TestComponent>;
+        let pageObject: TuiPageObject<TestComponent>;
         let input: AbstractControl;
-        let inputPO: NativeInputPO;
+        let inputPO: TuiNativeInputPO;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -250,11 +250,14 @@ describe('FieldError', () => {
             });
 
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
+            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             input = testComponent.testForm.controls['control'];
 
-            inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+            inputPO = new TuiNativeInputPO(
+                fixture,
+                'tui-primitive-textfield__native-input',
+            );
         });
 
         describe('untouched', () => {
@@ -365,17 +368,17 @@ describe('FieldError', () => {
         });
     });
 
-    function isErrorVisible<T>(pageObject: PageObject<T>): boolean {
+    function isErrorVisible<T>(pageObject: TuiPageObject<T>): boolean {
         const errorTextElement = getErrorElement(pageObject);
 
         return !!errorTextElement;
     }
 
-    function getErrorText<T>(pageObject: PageObject<T>): string {
+    function getErrorText<T>(pageObject: TuiPageObject<T>): string {
         return getErrorElement(pageObject)?.nativeElement.textContent.trim() || '';
     }
 
-    function getErrorElement<T>(pageObject: PageObject<T>): DebugElement | null {
+    function getErrorElement<T>(pageObject: TuiPageObject<T>): DebugElement | null {
         return pageObject.getByAutomationId(`${testContext.prefix}text`);
     }
 });

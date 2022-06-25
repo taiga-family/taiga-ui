@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
-import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
 import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
 import {TuiProjectClassModule} from '../project-class.module';
@@ -36,7 +36,7 @@ describe('Directive TuiProjectClassDirective', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -54,7 +54,7 @@ describe('Directive TuiProjectClassDirective', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
     it('if the child does not have the required class, it is not on the host either', () => {

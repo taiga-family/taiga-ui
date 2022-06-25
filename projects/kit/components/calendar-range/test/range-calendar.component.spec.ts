@@ -11,7 +11,7 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
@@ -67,7 +67,7 @@ describe('rangeCalendarComponent', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let component: TuiCalendarRangeComponent;
 
     configureTestSuite(() => {
@@ -84,7 +84,7 @@ describe('rangeCalendarComponent', () => {
 
     beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;

@@ -5,11 +5,11 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
 
 describe('TuiForAsync directive', () => {
-    let fixture: ComponentFixture<AbstractTestComponent>;
-    let testComponent: AbstractTestComponent;
+    let fixture: ComponentFixture<AbstractTuiTestComponent>;
+    let testComponent: AbstractTuiTestComponent;
 
     @Directive()
-    abstract class AbstractTestComponent {
+    abstract class AbstractTuiTestComponent {
         readonly items$: Subject<string[] | null | undefined> = new Subject();
 
         constructor(readonly elementRef: ElementRef<HTMLElement>) {}
@@ -23,7 +23,7 @@ describe('TuiForAsync directive', () => {
                 </div>
             `,
         })
-        class TestComponent extends AbstractTestComponent {}
+        class TestComponent extends AbstractTuiTestComponent {}
 
         configureTestSuite(() => {
             TestBed.configureTestingModule({
@@ -141,7 +141,7 @@ describe('TuiForAsync directive', () => {
                 </div>
             `,
         })
-        class TestComponent extends AbstractTestComponent {}
+        class TestComponent extends AbstractTuiTestComponent {}
 
         configureTestSuite(() => {
             TestBed.configureTestingModule({

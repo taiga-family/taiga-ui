@@ -125,4 +125,34 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         to: 'TuiLanguage',
         moduleSpecifier: ['@taiga-ui/i18n'],
     },
+    {
+        from: 'ScrollIntoViewDirective',
+        to: 'TuiScrollIntoViewLinkDirective',
+        moduleSpecifier: ['@taiga-ui/addon-doc'],
+    },
+    {
+        from: 'CodeComponent',
+        to: 'TuiCodeComponent',
+        moduleSpecifier: ['@taiga-ui/addon-doc'],
+    },
+    {
+        from: 'TableBar',
+        to: 'TuiTableBar',
+        moduleSpecifier: ['@taiga-ui/addon-tablebars'],
+    },
+    {
+        from: 'InvalidDayException',
+        to: 'TuiInvalidDayException',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
+        from: 'InvalidMonthException',
+        to: 'TuiInvalidMonthException',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
+        from: 'InvalidYearException',
+        to: 'TuiInvalidYearException',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
 ];

@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputSliderComponent} from '../input-slider.component';
 import {TuiInputSliderModule} from '../input-slider.module';
@@ -52,8 +52,8 @@ describe('InputSlider[legacy props]', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
     const testContext = {
         get prefix() {
             return 'tui-input-slider__';
@@ -85,10 +85,10 @@ describe('InputSlider[legacy props]', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
     describe('Default values', () => {

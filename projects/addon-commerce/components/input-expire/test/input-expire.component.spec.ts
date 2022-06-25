@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
-import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
 import {TuiInputExpireComponent} from '../input-expire.component';
 import {TuiInputExpireModule} from '../input-expire.module';
@@ -21,7 +21,7 @@ describe('InputExpire', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let inputPO: NativeInputPO;
+    let inputPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -34,7 +34,7 @@ describe('InputExpire', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
 
         await fixture.whenStable();
     });

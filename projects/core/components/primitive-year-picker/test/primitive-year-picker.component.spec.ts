@@ -7,7 +7,7 @@ import {
     TuiPrimitiveYearPickerModule,
     TuiRangeState,
 } from '@taiga-ui/core';
-import {configureTestSuite, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiPrimitiveYearPickerComponent', () => {
     @Component({
@@ -35,7 +35,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiPrimitiveYearPickerComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
             return 'tui-primitive-year-picker__';
@@ -53,7 +53,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });
 

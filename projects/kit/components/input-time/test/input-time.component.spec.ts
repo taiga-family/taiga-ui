@@ -10,7 +10,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputTimeComponent} from '../input-time.component';
 import {TuiInputTimeModule} from '../input-time.module';
@@ -59,8 +59,8 @@ describe('InputTime', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputTimeComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
     function getDropdown(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-input-time__dropdown`);
@@ -82,11 +82,11 @@ describe('InputTime', () => {
 
     beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
-        inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
         await fixture.whenStable();
         fixture.detectChanges();
     });

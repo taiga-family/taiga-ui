@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
-import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 @Component({
     template: `
@@ -61,8 +61,8 @@ const testContext = {
 
 let fixture: ComponentFixture<TestComponent>;
 let testComponent: TestComponent;
-let pageObject: PageObject<TestComponent>;
-let inputPO: NativeInputPO;
+let pageObject: TuiPageObject<TestComponent>;
+let inputPO: TuiNativeInputPO;
 
 describe('InputSlider[new]', () => {
     configureTestSuite(() => {
@@ -79,10 +79,10 @@ describe('InputSlider[new]', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, testContext.textInputInsideAutoId);
+        inputPO = new TuiNativeInputPO(fixture, testContext.textInputInsideAutoId);
     });
 
     describe('`quantum` prop', () => {
