@@ -45,7 +45,7 @@ const TEMPLATE_BEFORE = `
   </thead>
 </table>
 <tui-editor new [formControl]="control"></tui-editor>
-<tui-editor new [formControl]="control"></tui-editor>
+<tui-editor [formControl]="control"></tui-editor>
 <tui-group class="some_class">
     <div class="content"></div>
 </tui-group>
@@ -114,7 +114,7 @@ const TEMPLATE_AFTER = `
   </thead>
 </table>
 <tui-editor  [formControl]="control"></tui-editor>
-<tui-editor  [formControl]="control"></tui-editor>
+<tui-editor [formControl]="control"></tui-editor>
 <div tuiGroup class="some_class">
     <div class="content"></div>
 </div>

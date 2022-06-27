@@ -278,8 +278,8 @@ function addEditorProviders({
     fileSystem: DevkitFileSystem;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const elements = findElementsByTagName(template, 'tui-editor').filter(element =>
-        hasElementAttribute(element, 'new'),
+    const elements = findElementsByTagName(template, 'tui-editor').filter(
+        element => !hasElementAttribute(element, 'new'),
     );
     if (elements.length) {
         const componentPath = resource.componentPath;
@@ -291,6 +291,7 @@ function addEditorProviders({
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultEditorExtensions
         }`,
+            {unique: true},
         );
 
         addUniqueImport(componentPath, 'TUI_EDITOR_EXTENSIONS', '@taiga-ui/addon-editor');
