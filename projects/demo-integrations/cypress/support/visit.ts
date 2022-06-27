@@ -18,6 +18,7 @@ interface TuiVisitOptions {
     enableNightMode?: boolean;
     hideCursor?: boolean;
     hideScrollbar?: boolean;
+    hideVersionManager?: boolean;
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
@@ -53,6 +54,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         noSmoothScroll = true,
         hideHeader = true,
         hideNavigation = true,
+        hideVersionManager = true,
         pseudoMobile = false,
     } = options;
 
@@ -116,5 +118,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     if (hideNavigation) {
         cy.tuiHideNavigation();
+    }
+
+    if (hideVersionManager) {
+        cy.tuiHideVersionManager();
     }
 }
