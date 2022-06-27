@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.51.0](https://github.com/tinkoff/taiga-ui/compare/v2.50.2...v2.51.0) (2022-06-27)
+
+### Bug Fixes
+
+- **addon-editor:** dropdown shouldn't visible outside editor area
+  ([#1934](https://github.com/tinkoff/taiga-ui/issues/1934))
+  ([e773977](https://github.com/tinkoff/taiga-ui/commit/e7739776b7f38e3e83e70ab5269102e482b91416))
+- **addon-editor:** dropdown shouldn't visible outside editor area
+  ([#1991](https://github.com/tinkoff/taiga-ui/issues/1991))
+  ([56887bc](https://github.com/tinkoff/taiga-ui/commit/56887bc7599199425def8348d33582c30aa67a10))
+- **cdk:** `tuiOverscroll` fix preventing touch event on input range
+  ([#1990](https://github.com/tinkoff/taiga-ui/issues/1990))
+  ([ff2485f](https://github.com/tinkoff/taiga-ui/commit/ff2485fbc6529bba1fd2bbaae03a36562cbf0592))
+- **cdk:** correct selection from textfield in firefox ([#1998](https://github.com/tinkoff/taiga-ui/issues/1998))
+  ([dd72b82](https://github.com/tinkoff/taiga-ui/commit/dd72b82dc32f3ed2e9f205d8c649be65c7ccc330))
+- **kit:** `LineClamp` very long word + `[linesLimit]=1` ([#1980](https://github.com/tinkoff/taiga-ui/issues/1980))
+  ([70f500c](https://github.com/tinkoff/taiga-ui/commit/70f500c5d609c75a6b27d1d8071a7a2245652321))
+
 ### [2.50.2](https://github.com/tinkoff/taiga-ui/compare/v2.50.1...v2.50.2) (2022-06-22)
 
 ### Bug Fixes
