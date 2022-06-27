@@ -17,6 +17,7 @@ module.exports = {
         '@tinkoff/eslint-config-angular/member-ordering',
 
         // @custom
+        './scripts/eslint/cypress.js',
         './scripts/eslint/naming-convention.js',
     ],
     ignorePatterns: [
