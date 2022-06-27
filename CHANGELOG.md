@@ -10,9 +10,6 @@ All notable changes to this project will be documented in this file. See
 - **addon-editor:** dropdown shouldn't visible outside editor area
   ([#1934](https://github.com/tinkoff/taiga-ui/issues/1934))
   ([e773977](https://github.com/tinkoff/taiga-ui/commit/e7739776b7f38e3e83e70ab5269102e482b91416))
-- **addon-editor:** dropdown shouldn't visible outside editor area
-  ([#1991](https://github.com/tinkoff/taiga-ui/issues/1991))
-  ([56887bc](https://github.com/tinkoff/taiga-ui/commit/56887bc7599199425def8348d33582c30aa67a10))
 - **cdk:** `tuiOverscroll` fix preventing touch event on input range
   ([#1990](https://github.com/tinkoff/taiga-ui/issues/1990))
   ([ff2485f](https://github.com/tinkoff/taiga-ui/commit/ff2485fbc6529bba1fd2bbaae03a36562cbf0592))
