@@ -9,6 +9,7 @@ import {tuiSetNightMode} from './set-night-mode';
 import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
 import {tuiWaitKitDialog} from './wait-kit-dialog';
+import {tuiHideVersionManager} from './hide-version-manager';
 
 declare global {
     namespace Cypress {
