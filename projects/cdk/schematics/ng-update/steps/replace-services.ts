@@ -5,7 +5,10 @@ import {removeImport} from '../../utils/import-manipulations';
 import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function replaceServices(): void {
-    SERVICES_TO_REPLACE.forEach(service => replaceService(service));
+    SERVICES_TO_REPLACE.forEach(service => {
+        console.info('\x1b[34m', `replacing ${service.from.name}`);
+        replaceService(service);
+    });
 }
 
 function replaceService({from, to, replaceMethods}: ReplacementService): void {

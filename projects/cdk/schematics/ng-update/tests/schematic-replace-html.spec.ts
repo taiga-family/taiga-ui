@@ -102,8 +102,8 @@ const TEMPLATE_AFTER = `
         </tr>
   </thead>
 </table>
-<tui-editor [formControl]="control"></tui-editor>
-<tui-editor [formControl]="control"></tui-editor>
+<tui-editor  [formControl]="control"></tui-editor>
+<tui-editor  [formControl]="control"></tui-editor>
 <div tuiGroup class="some_class">
     <div class="content"></div>
 </div>

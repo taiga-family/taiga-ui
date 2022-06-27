@@ -1,4 +1,3 @@
-import {Tree} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {TemplateResource} from '../../interfaces/template-resourse';
@@ -10,8 +9,7 @@ import {addUniqueImport} from '../../../utils/add-unique-import';
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
 
-export function migrateInputRange(tree: Tree): void {
-    const fileSystem = new DevkitFileSystem(tree);
+export function migrateInputRange(fileSystem: DevkitFileSystem): void {
     const templateResources = getComponentTemplates('**/**');
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
