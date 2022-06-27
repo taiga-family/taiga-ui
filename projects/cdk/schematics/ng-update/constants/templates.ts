@@ -167,3 +167,30 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
         },
     },
 ];
+
+export const TEMPLATE_COMMENTS = [
+    {
+        tag: 'tui-input-slider',
+        withAttr: 'pluralize',
+        comment:
+            '[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples',
+    },
+    {
+        tag: 'tui-input-slider',
+        withAttr: 'segmentsPluralize',
+        comment:
+            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments',
+    },
+    {
+        tag: 'tui-input-range',
+        withAttr: 'segmentsPluralize',
+        comment:
+            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments',
+    },
+    {
+        tag: 'tui-range',
+        withAttr: 'pluralize',
+        comment:
+            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
+    },
+] as const;

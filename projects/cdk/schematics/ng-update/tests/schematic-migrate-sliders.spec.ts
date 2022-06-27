@@ -78,10 +78,10 @@ const FILE_HTML_CHILD_COMPONENT_AFTER = `import { TuiContextWithImplicit } from 
 export class FileHtmlChildComponent {
     tuiMigrationMinMaxLabel(context: TuiContextWithImplicit<number>): string {
         const currentValue = context.$implicit;
-        const maxValue = 100; // TODO replace with the MAX value of the input
-        const maxLabelText = "Max"; // TODO replace with the required label
-        const minValue = 0; // TODO replace with the MIN value of the input
-        const minLabelText = "Min"; // TODO replace with the required label
+        const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label
+        const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input
+        const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label
         if (currentValue === maxValue) return maxLabelText;
         if (currentValue === minValue) return minLabelText;
         return String(currentValue);
@@ -89,16 +89,16 @@ export class FileHtmlChildComponent {
 
     tuiMigrationInputRangeMinLabel(context: TuiContextWithImplicit<number>): string {
         const currentValue = context.$implicit;
-        const minValue = 0; // TODO replace with the MIN value of the input-range
-        const minLabelText = "Min"; // TODO replace with the required label
+        const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range
+        const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label
         if (currentValue === minValue) return minLabelText;
         return String(currentValue);
     }
 
     tuiMigrationInputRangeMaxLabel(context: TuiContextWithImplicit<number>): string {
         const currentValue = context.$implicit;
-        const maxValue = 100; // TODO replace with the MAX value of the input
-        const maxLabelText = "Max"; // TODO replace with the required label
+        const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label
         if (currentValue === maxValue) return maxLabelText;
         return String(currentValue);
     }
@@ -114,6 +114,8 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
     [min]="0"
     [max]="10"
     [secondary]="userAnswer === 4 ? 'right' : 'wrong'"
+    [pluralize]="pluralForms"
+    [segmentsPluralize]="pluralForms"
     [(ngModel)]="userAnswer"
 >
     2+2=?
@@ -129,6 +131,7 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
     [maxLabel]="Maxxxxx"
     minLabel="min!!!"
     [formControl]="control"
+    [segmentsPluralize]="someVariable"
 >
     Select volume range
 </tui-input-range>
@@ -136,21 +139,25 @@ const FILE_HTML_CHILD_TEMPLATE_BEFORE = `
 <tui-slider [min]="100" [max]="1000" size="m" [segments]="5" [quantum]="0.01"></tui-slider>
 `;
 
-const FILE_HTML_CHILD_TEMPLATE_AFTER =
-    '\n' +
-    '<tui-input-slider\n' +
-    '    tuiHintContent="Select the answer to see how the right custom content changes"\n' +
-    '    [valueContent]="tuiMigrationMinMaxLabel"\n' +
-    '    \n' +
-    '    class="control"\n' +
-    '    [min]="0"\n' +
-    '    [max]="10"\n' +
-    "    [tuiTextfieldCustomContent]=\"userAnswer === 4 ? 'right' : 'wrong'\"\n" +
-    '    [(ngModel)]="userAnswer"\n' +
-    '>\n' +
-    '    2+2=?\n' +
-    '</tui-input-slider>\n' +
-    `
+const FILE_HTML_CHILD_TEMPLATE_AFTER = `
+<!-- TODO: (Taiga UI migration) [pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples -->
+<!-- TODO: (Taiga UI migration) See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments -->
+<tui-input-slider
+    tuiHintContent="Select the answer to see how the right custom content changes"
+    [valueContent]="tuiMigrationMinMaxLabel"
+    ${''}
+    class="control"
+    [min]="0"
+    [max]="10"
+    [tuiTextfieldCustomContent]="userAnswer === 4 ? 'right' : 'wrong'"
+    [pluralize]="pluralForms"
+    [segmentsPluralize]="pluralForms"
+    [(ngModel)]="userAnswer"
+>
+    2+2=?
+</tui-input-slider>
+
+<!-- TODO: (Taiga UI migration) See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments -->
 <tui-input-range
         [min]="0"
     [max]="100"
@@ -160,6 +167,7 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER =
     [rightValueContent]="tuiMigrationInputRangeMaxLabel"
     [leftValueContent]="tuiMigrationInputRangeMinLabel"
     [formControl]="control"
+    [segmentsPluralize]="someVariable"
 >
     Select volume range
 </tui-input-range>
@@ -291,10 +299,10 @@ export class InlineHtmlChildComponent {
 
     tuiMigrationMinMaxLabel(context: TuiContextWithImplicit<number>): string {
         const currentValue = context.$implicit;
-        const maxValue = 100; // TODO replace with the MAX value of the input
-        const maxLabelText = "Max"; // TODO replace with the required label
-        const minValue = 0; // TODO replace with the MIN value of the input
-        const minLabelText = "Min"; // TODO replace with the required label
+        const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input
+        const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label
+        const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input
+        const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label
         if (currentValue === maxValue) return maxLabelText;
         if (currentValue === minValue) return minLabelText;
         return String(currentValue);
