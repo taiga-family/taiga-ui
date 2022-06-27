@@ -11,6 +11,7 @@ import {
     findAttributeOnElementWithTag,
     findElementsByTagName,
     findElementsWithAttribute,
+    hasElementAttribute,
 } from '../../utils/templates/elements';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {TemplateResource} from '../interfaces/template-resourse';
@@ -21,6 +22,9 @@ import {
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
 import {ElementLocation} from 'parse5';
+import {addProviderToComponent} from 'ng-morph';
+import {getNgComponents} from '../../utils/angular/ng-component';
+import {addUniqueImport} from '../../utils/add-unique-import';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -34,6 +38,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         replaceBreadcrumbs,
         replaceFieldError,
         addHTMLCommentTags,
+        addEditorProviders,
     ];
 
     componentWithTemplatesPaths.forEach(resource => {
@@ -262,4 +267,37 @@ function replaceTag(
         startTagOffset + templateOffset + START_TAG_OFFSET,
         `${to} ${addAttributes.join(' ')}`,
     );
+}
+
+function addEditorProviders({
+    resource,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const elements = findElementsByTagName(template, 'tui-editor').filter(element =>
+        hasElementAttribute(element, 'new'),
+    );
+    if (elements.length) {
+        const componentPath = resource.componentPath;
+        const componentClass = getNgComponents(componentPath);
+
+        addProviderToComponent(
+            componentClass[0],
+            `{
+            provide: TUI_EDITOR_EXTENSIONS,
+            useValue: defaultEditorExtensions
+        }`,
+        );
+
+        addUniqueImport(componentPath, 'TUI_EDITOR_EXTENSIONS', '@taiga-ui/addon-editor');
+        addUniqueImport(
+            componentPath,
+            'defaultEditorExtensions',
+            '@taiga-ui/addon-editor',
+        );
+    }
 }

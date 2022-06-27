@@ -17,6 +17,17 @@ const COMPONENT_WITH_TEMPLATE_URL = `
 export class TestComponent {}
 `;
 
+const COMPONENT_WITH_TEMPLATE_URL_AFTER = `import { TUI_EDITOR_EXTENSIONS, defaultEditorExtensions } from "@taiga-ui/addon-editor";
+
+@Component({templateUrl: './test.template.html',
+        providers: [{
+                        provide: TUI_EDITOR_EXTENSIONS,
+                        useValue: defaultEditorExtensions
+                    }]
+    })
+export class TestComponent {}
+`;
+
 const TEMPLATE_BEFORE = `
 <tui-field-error formControlName="control"></tui-field-error>
 <tui-field-error formControlName="control" [order]="order"></tui-field-error>
@@ -249,6 +260,14 @@ describe('ng-update', () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+    });
+
+    it('should edit components', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(
+            COMPONENT_WITH_TEMPLATE_URL_AFTER,
+        );
     });
 
     it('should add directive to module', async () => {
