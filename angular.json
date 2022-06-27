@@ -657,13 +657,9 @@
                         }
                     }
                 },
-                "serve:browser": {
+                "serve:compiled": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "cd dist/demo/browser && angular-http-server -p 3333 --silent"}
-                },
-                "serve:browser:next": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "cd dist/gh-pages/next && angular-http-server -p 5555 --silent"}
+                    "options": {"command": "angular-http-server -p 3333 --silent"}
                 },
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
