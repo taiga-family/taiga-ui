@@ -171,7 +171,10 @@ function addHTMLCommentTags({
             .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
 
         elementStartOffsets.forEach(offset => {
-            recorder.insertRight(offset, `<!-- TODO: ${comment} -->\n`);
+            recorder.insertRight(
+                offset,
+                `<!-- TODO: (Taiga UI migration) ${comment} -->\n`,
+            );
         });
     });
 }
