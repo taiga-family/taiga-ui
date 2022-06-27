@@ -159,7 +159,8 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER = `
 
 <!-- TODO: (Taiga UI migration) See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments -->
 <tui-input-range
-        [min]="0"
+    ${''}
+    [min]="0"
     [max]="100"
     [segments]="5"
     [steps]="5"
