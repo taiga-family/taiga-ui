@@ -1,6 +1,9 @@
 <tui-input-number
-    [tuiCopyProcessor]="processor"
+    class="tui-space_bottom-2"
+    [tuiCopyProcessor]="numberProcessor"
     [(ngModel)]="value"
 >
     Copy this
 </tui-input-number>
+
+<div [tuiCopyProcessor]="textProcessor">Try copy this text</div>

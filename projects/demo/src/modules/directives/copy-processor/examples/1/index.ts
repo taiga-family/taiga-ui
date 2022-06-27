@@ -31,8 +31,10 @@ export class TuiCopyProcessorExample1 {
             .subscribe();
     }
 
-    readonly processor: TuiStringHandler<string> = text =>
+    readonly numberProcessor: TuiStringHandler<string> = text =>
         text
             .replace(this.format.decimalSeparator, '.')
             .replace(new RegExp(this.format.thousandSeparator, 'g'), '');
+
+    readonly textProcessor: TuiStringHandler<string> = text => text.toUpperCase();
 }
