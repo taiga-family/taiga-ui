@@ -3,6 +3,7 @@ import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 import {tuiFocus} from './focus';
 import {tuiHideHeader} from './hide-header';
 import {tuiHideNavigation} from './hide-navigation';
+import {tuiHideVersionManager} from './hide-version-manager';
 import {tuiScrollIntoView} from './scroll-into-view';
 import {tuiSetNightMode} from './set-night-mode';
 import {tuiTab} from './type-tab';
@@ -20,6 +21,7 @@ declare global {
             tuiWaitKitDialog: typeof tuiWaitKitDialog;
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
+            tuiHideVersionManager: typeof tuiHideVersionManager;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
             tuiScrollIntoView(): Chainable;
@@ -47,6 +49,7 @@ Cypress.Commands.add('tuiHideHeader', tuiHideHeader);
 Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
 Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
 Cypress.Commands.add('tuiHideNavigation', tuiHideNavigation);
+Cypress.Commands.add('tuiHideVersionManager', tuiHideVersionManager);
 
 Cypress.Commands.add(
     'tuiTab',

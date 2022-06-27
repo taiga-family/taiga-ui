@@ -91,7 +91,7 @@
             <a
                 *ngIf="!item.subPages; else subPages"
                 tuiLink
-                routerLinkActive="sublink_active"
+                routerLinkActive="t-sublink_active"
                 class="t-sublink"
                 [routerLink]="item.route"
                 [scrollIntoView]="isActive(item.route)"
@@ -127,7 +127,7 @@
                             <a
                                 *ngFor="let subPage of item.subPages"
                                 tuiLink
-                                routerLinkActive="sublink_active"
+                                routerLinkActive="t-sublink_active"
                                 class="t-sublink t-sublink_small"
                                 [routerLink]="subPage.route"
                                 [scrollIntoView]="isActive(subPage.route)"
