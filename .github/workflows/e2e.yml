@@ -68,6 +68,7 @@ jobs:
             addon-preview,
             addon-table,
             addon-tablebars,
+            pages,
             core,
             deep,
             demo,
