@@ -4,6 +4,7 @@ import {TuiXmlParsingException} from '@taiga-ui/cdk';
  * @deprecated
  * TODO: remove in v3.0
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function innerHTML(documentRef: Document): void {
     const svg = documentRef.createElementNS('http://www.w3.org/2000/svg', 'svg');
 

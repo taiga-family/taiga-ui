@@ -7,6 +7,10 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiMultiSelectComponent} from '../multi-select.component';
 
+/**
+ * @deprecated: use {@link tuiHostFallbackFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function hostFallbackFactory<T>(
     control: NgControl,
     host: TuiDataListHost<T> | null,
@@ -30,6 +34,8 @@ export function hostFallbackFactory<T>(
         }
     );
 }
+
+export const tuiHostFallbackFactory = hostFallbackFactory;
 
 export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
     TuiMultiSelectOptionComponent,

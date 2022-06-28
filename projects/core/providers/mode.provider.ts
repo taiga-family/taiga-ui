@@ -5,6 +5,10 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
+/**
+ * @deprecated: use {@link tuiModeFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function modeFactory(
     mode: TuiModeDirective | null,
     {nativeElement}: ElementRef,
@@ -26,3 +30,5 @@ export const MODE_PROVIDER: Provider = {
     deps: [[new Optional(), TuiModeDirective], ElementRef],
     useFactory: modeFactory,
 };
+
+export const tuiModeFactory = modeFactory;

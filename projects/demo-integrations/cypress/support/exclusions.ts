@@ -6,7 +6,7 @@ const map = new Map([
     ['components/preview', [1, 2, 3]],
 ]);
 
-export function excluded(path: string, sample: number): boolean {
+export function tuiExcluded(path: string, sample: number): boolean {
     const exclusions = map.get(path);
 
     return !!exclusions && exclusions.includes(sample);

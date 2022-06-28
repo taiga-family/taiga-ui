@@ -242,9 +242,10 @@ export const COUNTRIES: Record<string, Country> = {
 };
 
 /**
- * @deprecated will be deleted soon
+ * @deprecated  use {@link tuiCountriesMasksReducer} instead
  * TODO: remove in 3.0 (in ivy compilation)
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function countriesMasksReducer(
     acc: Record<TuiCountryIsoCode, string>,
     [countryIsoCode, {mask}]: [string, {mask: string}],
@@ -253,6 +254,8 @@ export function countriesMasksReducer(
 
     return acc;
 }
+
+export const tuiCountriesMasksReducer = countriesMasksReducer;
 
 /**
  * @deprecated will be deleted soon

@@ -1,8 +1,10 @@
 /**
+ * @deprecated: use {@link tuiGetSafeAreaSize} instead
  * Calculates size of safe area on mobile devices (status bars)
  *
  * ATTENTION: Only use in browser environment
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function getSafeAreaSize(): number {
     if (!CSS.supports('padding-top: env(safe-area-inset-top)')) {
         return 0;
@@ -19,3 +21,5 @@ export function getSafeAreaSize(): number {
 
     return safeAreaSize;
 }
+
+export const tuiGetSafeAreaSize = getSafeAreaSize;

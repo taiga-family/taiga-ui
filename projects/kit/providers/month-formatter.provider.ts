@@ -11,6 +11,11 @@ export const TUI_MONTH_FORMATTER_PROVIDER: FactoryProvider = {
     useFactory: monthFormatterFactory,
 };
 
+/**
+ * @deprecated: use {@link tuiMonthFormatterFactory} instead
+ * Range.setStart/set-end, except it uses offset in characters only
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function monthFormatterFactory(
     pipe: TuiMonthPipe,
 ): TuiHandler<TuiMonth | null, Observable<string>> {
@@ -21,3 +26,5 @@ export function monthFormatterFactory(
                   .pipe(map(formatted => `${formatted} ${month.formattedYear}`))
             : of('');
 }
+
+export const tuiMonthFormatterFactory = monthFormatterFactory;

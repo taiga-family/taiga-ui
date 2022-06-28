@@ -1,3 +1,7 @@
+/**
+ * @deprecated: use {@link tuiIsElementEditable} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function isElementEditable(element: HTMLElement): boolean {
     // TODO: iframe warning
     return (
@@ -6,3 +10,5 @@ export function isElementEditable(element: HTMLElement): boolean {
         element.isContentEditable
     );
 }
+
+export const tuiIsElementEditable = isElementEditable;

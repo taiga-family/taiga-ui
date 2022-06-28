@@ -3,6 +3,10 @@ import {TuiPoint} from '@taiga-ui/core';
 import {lineAngle} from './line-angle';
 import {lineLength} from './line-length';
 
+/**
+ * @deprecated: use {@link tuiControlPoint} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function controlPoint(
     current: TuiPoint,
     previous?: TuiPoint,
@@ -19,3 +23,5 @@ export function controlPoint(
 
     return [x, y];
 }
+
+export const tuiControlPoint = controlPoint;

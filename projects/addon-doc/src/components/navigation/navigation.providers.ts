@@ -34,6 +34,10 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
     },
 ];
 
+/**
+ * @deprecated: use {@link tuiTitleProviderFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function titleProviderFactory(
     router: Router,
     activatedRoute: ActivatedRoute,
@@ -50,6 +54,12 @@ export function titleProviderFactory(
     );
 }
 
+export const tuiTitleProviderFactory = titleProviderFactory;
+
+/**
+ * @deprecated: use {@link tuiLabelsProviderFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
         .map(({section}) => section)
@@ -57,6 +67,12 @@ export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
         .filter((item, index, array) => array.indexOf(item) === index);
 }
 
+export const tuiLabelsProviderFactory = labelsProviderFactory;
+
+/**
+ * @deprecated: use {@link tuiItemsProviderFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function itemsProviderFactory(pages: TuiDocPages): readonly TuiDocPages[] {
     const labels = labelsProviderFactory(pages);
 
@@ -65,3 +81,5 @@ export function itemsProviderFactory(pages: TuiDocPages): readonly TuiDocPages[]
         pages.filter(page => !page.section),
     ];
 }
+
+export const tuiItemsProviderFactory = itemsProviderFactory;

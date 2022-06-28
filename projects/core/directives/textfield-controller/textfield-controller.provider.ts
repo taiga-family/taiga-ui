@@ -38,6 +38,10 @@ import {TUI_TEXTFIELD_TYPE, TuiTextfieldTypeDirective} from './textfield-type.di
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>('watched textfield controller');
 
+/**
+ * @deprecated: use {@link tuiTextfieldWatchedControllerFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function textfieldWatchedControllerFactory(
     changeDetectorRef: ChangeDetectorRef,
     destroy$: Observable<void>,
@@ -84,3 +88,5 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         useFactory: textfieldWatchedControllerFactory,
     },
 ];
+
+export const tuiTextfieldWatchedControllerFactory = textfieldWatchedControllerFactory;

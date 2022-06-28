@@ -13,7 +13,7 @@ interface TestComponent {
     control: FormControl;
 }
 
-export function testFormControlState(context: TestParams): void {
+export function tuiTestFormControlState(context: TestParams): void {
     let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
     let inputPO: TuiNativeInputPO;

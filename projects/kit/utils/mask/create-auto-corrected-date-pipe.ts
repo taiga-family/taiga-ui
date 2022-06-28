@@ -7,6 +7,10 @@ export interface TuiAutoCorrectedDatePipeConfigs
     dateSeparator: string;
 }
 
+/**
+ * @deprecated: use {@link tuiNormalizeDateValue} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function normalizeDateValue(
     dateValue: string,
     {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
@@ -31,3 +35,5 @@ export function tuiCreateAutoCorrectedDatePipe(
         };
     };
 }
+
+export const tuiNormalizeDateValue = normalizeDateValue;

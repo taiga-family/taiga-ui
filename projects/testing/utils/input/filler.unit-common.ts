@@ -17,7 +17,7 @@ interface TestComponent {
     control: FormControl;
 }
 
-export function testFiller(
+export function tuiTestFiller(
     context: TestParams,
     setValue: unknown = 'value',
     clearValue: unknown = null,

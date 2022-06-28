@@ -3,9 +3,15 @@ import {TuiPaymentSystem, TuiPaymentSystemT} from '@taiga-ui/addon-commerce/enum
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
+/**
+ * @deprecated: use {@link tuiCardNumberAssertion} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function cardNumberAssertion({length}: string): boolean {
     return !length || length === 4;
 }
+
+export const tuiCardNumberAssertion = cardNumberAssertion;
 
 export const cardNumberAssertionMessage = 'cardNumber should contain 4 symbols';
 

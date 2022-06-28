@@ -1,5 +1,6 @@
 /**
- * @note(splincode):
+ * @deprecated: use {@link tuiSvgLinearGradientProcessor} instead
+ * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
  * element which are not defined on this element are inherited by this element.
  * If this element has no defined gradient stops, and the referenced element does
@@ -12,6 +13,7 @@
  * Documentation: https://www.w3.org/TR/SVG11/pservers.html
  *
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function svgLinearGradientProcessor(svg: string, salt?: number | string): string {
     const uniqueIds = extractLinearGradientIdsFromSvg(svg);
 
@@ -36,3 +38,5 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
         matched => matched.slice(5), // remove prefix `url(#`
     );
 }
+
+export const tuiSvgLinearGradientProcessor = svgLinearGradientProcessor;

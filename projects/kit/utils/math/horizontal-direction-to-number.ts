@@ -3,7 +3,9 @@ import {TuiHorizontalDirection} from '@taiga-ui/core';
 /**
  * @internal
  */
-export function horizontalDirectionToNumber(direction: TuiHorizontalDirection): -1 | 1 {
+export function tuiHorizontalDirectionToNumber(
+    direction: TuiHorizontalDirection,
+): -1 | 1 {
     switch (direction) {
         case 'left':
             return -1;

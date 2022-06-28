@@ -21,6 +21,10 @@ export const TABLE_LABEL = {
     labelOutside: true,
 };
 
+/**
+ * @deprecated: use {@link tuiInputCountOptionsFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function inputCountOptionsFactory(
     options: TuiInputCountOptions,
 ): TuiInputCountOptions {
@@ -58,3 +62,5 @@ export const TUI_TABLE_PROVIDERS = [
     MODE_PROVIDER,
     TUI_STUCK_PROVIDER,
 ];
+
+export const tuiInputCountOptionsFactory = inputCountOptionsFactory;

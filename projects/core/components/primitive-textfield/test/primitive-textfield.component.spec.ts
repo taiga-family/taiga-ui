@@ -4,11 +4,11 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
     configureTestSuite,
-    testCleaner,
-    testPlaceholder,
-    testTooltip,
     TuiNativeInputPO,
     TuiPageObject,
+    tuiTestCleaner,
+    tuiTestPlaceholder,
+    tuiTestTooltip,
 } from '@taiga-ui/testing';
 
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
@@ -180,11 +180,11 @@ describe('PrimitiveTextfield', () => {
         });
     });
 
-    testCleaner(testContext, 'test', '');
+    tuiTestCleaner(testContext, 'test', '');
 
-    testTooltip(testContext);
+    tuiTestTooltip(testContext);
 
-    testPlaceholder(testContext);
+    tuiTestPlaceholder(testContext);
 
     function getValueDecoration(): string {
         return pageObject

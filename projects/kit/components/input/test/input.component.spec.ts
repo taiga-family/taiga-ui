@@ -13,9 +13,9 @@ import {
 } from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
-    activeText,
     configureTestSuite,
-    dispatchOnActive,
+    tuiActiveText,
+    tuiDispatchOnActive,
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
@@ -297,53 +297,53 @@ describe('Input', () => {
         });
 
         it('Focus in the dropdown', () => {
-            expect(activeText()).toBe(ITEMS[0].toString());
+            expect(tuiActiveText()).toBe(ITEMS[0].toString());
         });
 
         it('Entering characters brings focus to the input field', () => {
-            dispatchOnActive('e');
+            tuiDispatchOnActive('e');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[0]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[0]);
+            tuiDispatchOnActive(tuiEditingKeys[0]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[1]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[1]);
+            tuiDispatchOnActive(tuiEditingKeys[1]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[2]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[2]);
+            tuiDispatchOnActive(tuiEditingKeys[2]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[3]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[3]);
+            tuiDispatchOnActive(tuiEditingKeys[3]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[4]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[4]);
+            tuiDispatchOnActive(tuiEditingKeys[4]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[5]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[5]);
+            tuiDispatchOnActive(tuiEditingKeys[5]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
         it(`Pressing ${tuiEditingKeys[6]} moves focus to the input field`, () => {
-            dispatchOnActive(tuiEditingKeys[6]);
+            tuiDispatchOnActive(tuiEditingKeys[6]);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });

@@ -1,6 +1,7 @@
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 
 /**
+ * @deprecated: use {@link tuiFormatPhone} instead
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
  *
@@ -9,6 +10,7 @@ import {CHAR_PLUS} from '@taiga-ui/cdk';
  * @param phoneMask a phone number mask
  * @return the formatted phone string of the form +7 XXX XXX-XX-XX
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function formatPhone(
     value: string,
     countryCode: string,
@@ -50,3 +52,5 @@ export function formatPhone(
 
     return result;
 }
+
+export const tuiFormatPhone = formatPhone;

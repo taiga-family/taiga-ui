@@ -1,3 +1,9 @@
+/**
+ * TODO: duplicate, need fix it before v3
+ * TODO: move another package for reuse between addon-editor and addon-doc
+ * @deprecated: use {@link tuiHexToRgb} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function hexToRgb(hex: string): [number, number, number] {
     const matches = hex
         .replace('#', '')
@@ -10,3 +16,5 @@ export function hexToRgb(hex: string): [number, number, number] {
         ? (matches.map(x => Number.parseInt(x, 16)) as [number, number, number])
         : [0, 0, 0];
 }
+
+export const tuiHexToRgb = hexToRgb;

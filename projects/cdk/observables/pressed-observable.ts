@@ -9,6 +9,10 @@ export interface TuiPressedObservableOptions {
     onlyTrusted: boolean;
 }
 
+/**
+ * @deprecated: use {@link tuiPressedObservable} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function pressedObservable(
     element: Element,
     {onlyTrusted}: TuiPressedObservableOptions = {onlyTrusted: true},
@@ -30,3 +34,5 @@ export function pressedObservable(
         ),
     );
 }
+
+export const tuiPressedObservable = pressedObservable;

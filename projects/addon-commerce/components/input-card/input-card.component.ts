@@ -37,6 +37,10 @@ const icons = {
     [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
 };
 
+/**
+ * @deprecated: use {@link tuiCardTextfieldControllerFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function cardTextfieldControllerFactory(
     directive: TuiTextfieldExampleTextDirective | null,
 ): TuiTextfieldExampleTextDirective {
@@ -45,6 +49,8 @@ export function cardTextfieldControllerFactory(
 
     return directive;
 }
+
+export const tuiCardTextfieldControllerFactory = cardTextfieldControllerFactory;
 
 // @dynamic
 @Component({

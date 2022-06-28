@@ -1,3 +1,7 @@
+/**
+ * @deprecated: use {@link tuiScrollToElement} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function scrollToElement(element: HTMLElement, container: HTMLElement): void {
     const scrolledWidth = container.offsetWidth + container.scrollLeft;
     const elementWidth = element.offsetWidth;
@@ -18,3 +22,5 @@ export function scrollToElement(element: HTMLElement, container: HTMLElement): v
         container.scrollLeft += deltaXLeft;
     }
 }
+
+export const tuiScrollToElement = scrollToElement;

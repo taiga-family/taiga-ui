@@ -3,6 +3,10 @@ import {round} from '@taiga-ui/cdk';
 const BYTES_PER_KB = 1000;
 const BYTES_PER_MB = 1000 * BYTES_PER_KB;
 
+/**
+ * @deprecated: use {@link tuiFormatSize} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function formatSize(
     units: [string, string, string],
     size?: number,
@@ -21,3 +25,5 @@ export function formatSize(
 
     return `${round(size / BYTES_PER_MB, 2).toLocaleString('ru-RU')} ${units[2]}`;
 }
+
+export const tuiFormatSize = formatSize;

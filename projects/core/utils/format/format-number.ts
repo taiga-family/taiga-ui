@@ -4,6 +4,7 @@ import {getFractionPartPadded} from './get-fractional-part-padded';
 
 // TODO: refactor later to `formatNumber(value: number, options: Partial<AllTheStuff>)`
 /**
+ * @deprecated: use {@link tuiFormatNumber} instead
  * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
@@ -14,6 +15,7 @@ import {getFractionPartPadded} from './get-fractional-part-padded';
  * @param zeroPadding enable zeros at the end of decimal part
  * @return the formatted string
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function formatNumber(
     value: number,
     decimalLimit: number | null = null,
@@ -53,3 +55,5 @@ export function formatNumber(
 
     return fractionPartPadded ? result + decimalSeparator + fractionPartPadded : result;
 }
+
+export const tuiFormatNumber = formatNumber;

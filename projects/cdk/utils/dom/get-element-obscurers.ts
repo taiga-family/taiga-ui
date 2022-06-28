@@ -4,10 +4,12 @@ import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {getDocumentOrShadowRoot} from './get-document-or-shadow-root';
 
 /**
+ * @deprecated: use {@link tuiGetElementObscures} instead
  * Returns array of Elements covering edges of given element or null if at least one edge middle point is visible
  *
  * CAUTION: Empty array means element if offscreen i.e. covered by no elements, rather than not covered
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function getElementObscurers(element: Element): readonly Element[] | null {
     const {ownerDocument} = element;
 
@@ -40,3 +42,5 @@ export function getElementObscurers(element: Element): readonly Element[] | null
 
     return filtered.length === 4 ? filtered : null;
 }
+
+export const tuiGetElementObscures = getElementObscurers;

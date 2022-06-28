@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {isNativeFocused} from '@taiga-ui/cdk';
-import {configureTestSuite, dispatchOnActive} from '@taiga-ui/testing';
+import {configureTestSuite, tuiDispatchOnActive} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiTabsModule} from '../tabs.module';
@@ -68,7 +68,7 @@ describe('Tabs', () => {
 
     it('Navigation by arrows works when going right', () => {
         buttons[0].focus();
-        dispatchOnActive('arrowRight');
+        tuiDispatchOnActive('arrowRight');
         fixture.detectChanges();
 
         expect(isNativeFocused(buttons[1])).toBe(true);
@@ -76,21 +76,21 @@ describe('Tabs', () => {
 
     it('Navigation by arrows works when going left', () => {
         buttons[1].focus();
-        dispatchOnActive('arrowLeft');
+        tuiDispatchOnActive('arrowLeft');
 
         expect(isNativeFocused(buttons[0])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going right', () => {
         buttons[1].focus();
-        dispatchOnActive('arrowRight');
+        tuiDispatchOnActive('arrowRight');
 
         expect(isNativeFocused(buttons[3])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going left', () => {
         buttons[3].focus();
-        dispatchOnActive('arrowLeft');
+        tuiDispatchOnActive('arrowLeft');
 
         expect(isNativeFocused(buttons[1])).toBe(true);
     });

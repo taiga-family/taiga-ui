@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
-import {configureTestSuite, dispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
+import {configureTestSuite, tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiTextfieldControllerModule} from '../../../directives';
 import {TuiButtonComponent} from '../../button/button.component';
@@ -162,39 +162,39 @@ describe('TuiHostedDropdown', () => {
 
         it('Down arrow opens a dropdown', () => {
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(2);
         });
 
         it('Down arrow on another button does not open the dropdown', () => {
             testComponent.tuiButton.nativeFocusableElement!.focus();
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(0);
         });
 
         it('Down arrow moves focus to dropdown', () => {
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             expect(document.activeElement).toBe(getItems()[0].nativeElement);
         });
 
         it('Escape closes the dropdown', () => {
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
-            dispatchOnActive('escape', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('escape', fixture);
 
             expect(getItems().length).toBe(0);
         });
 
         it('Escape in the dropdown closes it and brings focus to the host', () => {
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
-            dispatchOnActive('arrowDown', fixture);
-            dispatchOnActive('escape', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('escape', fixture);
 
             expect(getItems().length).toBe(0);
             expect(document.activeElement).toBe(nativeButton);
@@ -202,8 +202,8 @@ describe('TuiHostedDropdown', () => {
 
         it('Loss of focus closes the dropdown', () => {
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
             testComponent.tuiButton.nativeFocusableElement!.focus();
             fixture.detectChanges();
 
@@ -214,7 +214,7 @@ describe('TuiHostedDropdown', () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
             nativeButton.focus();
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(0);
         });
@@ -248,14 +248,14 @@ describe('TuiHostedDropdown', () => {
 
         it('Down arrow opens a dropdown', () => {
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(2);
         });
 
         it('Updating items brings focus to input', () => {
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
-            dispatchOnActive('arrowDown', fixture);
+            tuiDispatchOnActive('arrowDown', fixture);
 
             testComponent.items = ['Item 3', 'Item 4'];
 
@@ -277,7 +277,7 @@ describe('TuiHostedDropdown', () => {
             fixture.detectChanges();
 
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
-            dispatchOnActive('escape', fixture);
+            tuiDispatchOnActive('escape', fixture);
 
             expect(testComponent.escCatched).toBe(true);
         });

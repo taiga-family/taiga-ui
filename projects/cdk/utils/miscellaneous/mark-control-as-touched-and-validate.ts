@@ -1,5 +1,9 @@
 import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 
+/**
+ * @deprecated: use {@link tuiMarkControlAsTouchedAndValidate} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function markControlAsTouchedAndValidate(control: AbstractControl): void {
     if (control instanceof FormArray) {
         control.controls.forEach(nestedControl => {
@@ -16,3 +20,5 @@ export function markControlAsTouchedAndValidate(control: AbstractControl): void 
     control.markAsTouched();
     control.updateValueAndValidity();
 }
+
+export const tuiMarkControlAsTouchedAndValidate = markControlAsTouchedAndValidate;

@@ -6,9 +6,9 @@ import {px} from '@taiga-ui/cdk';
 import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     configureTestSuite,
-    testFormControlState,
     TuiNativeInputPO,
     TuiPageObject,
+    tuiTestFormControlState,
 } from '@taiga-ui/testing';
 
 import {DEFAULT_ROWS, LINE_HEIGHT_L, TuiTextAreaComponent} from '../text-area.component';
@@ -250,5 +250,5 @@ describe('TextArea', () => {
         });
     });
 
-    testFormControlState(testContext);
+    tuiTestFormControlState(testContext);
 });

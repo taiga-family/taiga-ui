@@ -37,6 +37,10 @@ export const INPUT_PHONE_PROVIDERS = [
     },
 ];
 
+/**
+ * @deprecated: use {@link tuiSelectionStreamFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function selectionStreamFactory(
     destroy$: Observable<unknown>,
     documentRef: Document,
@@ -50,3 +54,5 @@ export function selectionStreamFactory(
         takeUntil(destroy$),
     );
 }
+
+export const tuiSelectionStreamFactory = selectionStreamFactory;

@@ -18,7 +18,7 @@ interface TestComponent {
     size: 's' | 'm' | 'l';
 }
 
-export function testPlaceholder(
+export function tuiTestPlaceholder(
     context: TestParams,
     setValue: unknown = 'value',
     clearValue: unknown = '',
