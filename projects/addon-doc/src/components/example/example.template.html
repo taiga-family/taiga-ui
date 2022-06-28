@@ -88,9 +88,15 @@
     #codeSection
     let-code
 >
-    <tui-doc-copy
-        class="t-copy-code"
-        [cdkCopyToClipboard]="code"
-    ></tui-doc-copy>
+    <section class="t-code-actions">
+        <ng-container *ngFor="let action of codeActions">
+            <div
+                polymorpheus-outlet
+                [content]="action"
+                [context]="{$implicit: code}"
+            ></div>
+        </ng-container>
+        <tui-doc-copy [cdkCopyToClipboard]="code"></tui-doc-copy>
+    </section>
     <tui-doc-code [code]="code"></tui-doc-code>
 </ng-template>

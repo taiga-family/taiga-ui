@@ -1,0 +1,47 @@
+<tui-hosted-dropdown
+    *ngIf="shouldShowIcon(code)"
+    tuiDropdownHover
+    tuiDropdownDirection="top"
+    [content]="content"
+>
+    <tui-svg
+        src="tuiIconAlertCircleLarge"
+        class="icon"
+    ></tui-svg>
+</tui-hosted-dropdown>
+
+<ng-template #content>
+    <ul class="tui-list tui-list_small hints">
+        <li
+            *ngIf="includesTextfieldController(code)"
+            class="tui-list__item"
+        >
+            Don't forget to import
+            <a
+                tuiLink
+                routerLink="/directives/textfield-controller"
+            >
+                TuiTextfieldControllerModule
+            </a>
+            to use
+            <code>tuiTextfield*</code>
+            -controllers.
+        </li>
+
+        <li
+            *ngIf="includesDropdownController(code)"
+            class="tui-list__item"
+        >
+            Don't forget to import
+            <a
+                tuiLink
+                routerLink="/directives/dropdown-controller"
+            >
+                TuiDropdownControllerModule
+            </a>
+            to use
+            <code>tuiDropdown*</code>
+            -controllers.
+        </li>
+    </ul>
+</ng-template>

@@ -17,6 +17,7 @@ import {map, switchMap} from 'rxjs/operators';
 
 import {TuiCodeEditor} from '../../interfaces/code-editor';
 import {TuiDocExample} from '../../interfaces/page';
+import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
@@ -80,6 +81,7 @@ export class TuiDocExampleComponent {
             Record<string, string>
         >,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
+        @Inject(TUI_DOC_CODE_ACTIONS) readonly codeActions: PolymorpheusContent[],
     ) {}
 
     copyExampleLink(): void {

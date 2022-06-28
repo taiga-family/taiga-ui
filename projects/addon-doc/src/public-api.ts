@@ -36,6 +36,7 @@ export * from './interfaces/source-code-path-options';
 export * from './languages/russian';
 
 /* Tokens */
+export * from './tokens/code-actions';
 export * from './tokens/code-editor';
 export * from './tokens/default-tabs';
 export * from './tokens/example-content-processor';
