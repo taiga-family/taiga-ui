@@ -22,7 +22,7 @@ describe('viewport', () => {
     describe('iPhone X', () => {
         const emulatedDesktopWidth = 1280;
         const logicalIphoneWidth = 375;
-        const smallDevicesTablets = 768;
+        const mobileBreakPoint = 768;
 
         it(`isMobile when 'content="width=${emulatedDesktopWidth}, initial-scale=1"'`, () => {
             expect(
@@ -31,7 +31,7 @@ describe('viewport', () => {
                         innerWidth: logicalIphoneWidth,
                         document: {documentElement: {clientWidth: emulatedDesktopWidth}},
                     } as unknown as Window,
-                    {mobile: smallDevicesTablets} as unknown as TuiMedia,
+                    {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
             ).toEqual(false);
         });
@@ -43,7 +43,31 @@ describe('viewport', () => {
                         innerWidth: logicalIphoneWidth,
                         document: {documentElement: {clientWidth: logicalIphoneWidth}},
                     } as unknown as Window,
-                    {mobile: smallDevicesTablets} as unknown as TuiMedia,
+                    {mobile: mobileBreakPoint} as unknown as TuiMedia,
+                ),
+            ).toEqual(true);
+        });
+
+        it('device-width is not mobile', () => {
+            expect(
+                tuiIsMobile(
+                    {
+                        innerWidth: 768 /* px */,
+                        document: {documentElement: {clientWidth: 768 /* px */}},
+                    } as unknown as Window,
+                    {mobile: mobileBreakPoint} as unknown as TuiMedia,
+                ),
+            ).toEqual(false);
+        });
+
+        it('device-width is mobile', () => {
+            expect(
+                tuiIsMobile(
+                    {
+                        innerWidth: 767 /* px */,
+                        document: {documentElement: {clientWidth: 767 /* px */}},
+                    } as unknown as Window,
+                    {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
             ).toEqual(true);
         });
