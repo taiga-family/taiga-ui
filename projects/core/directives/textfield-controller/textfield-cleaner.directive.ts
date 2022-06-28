@@ -22,6 +22,12 @@ export class TuiTextfieldCleanerDirective extends TuiController {
     cleaner = false;
 }
 
+/**
+ * @deprecated: use {@link tuiCleanerDirectiveFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function cleanerDirectiveFactory(): TuiTextfieldCleanerDirective {
     return new TuiTextfieldCleanerDirective();
 }
+
+export const tuiCleanerDirectiveFactory = cleanerDirectiveFactory;

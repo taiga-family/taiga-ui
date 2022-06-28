@@ -4,8 +4,10 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 /**
+ * @deprecated: use {@link tuiItemsQueryListObservable} instead
  * Converts changes observable of a QueryList to an Observable of arrays
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function itemsQueryListObservable<T>(
     queryList: QueryList<T>,
 ): Observable<readonly T[]> {
@@ -14,3 +16,5 @@ export function itemsQueryListObservable<T>(
         startWith(getOriginalArrayFromQueryList(queryList)),
     );
 }
+
+export const tuiItemsQueryListObservable = itemsQueryListObservable;

@@ -1,13 +1,13 @@
 import {
-    focusToStartInEditor,
-    getContentEditable,
-    getEditLinkInput,
-    getEditorScrollbarArea,
-    getScreenshotArea,
-    initBaseWrapper,
-    insertLink,
-    openAnchorDropdown,
-    selectTag,
+    tuiFocusToStartInEditor,
+    tuiGetContentEditable,
+    tuiGetEditLinkInput,
+    tuiGetEditorScrollbarArea,
+    tuiGetScreenshotArea,
+    tuiInitBaseWrapper,
+    tuiInsertLink,
+    tuiOpenAnchorDropdown,
+    tuiSelectTag,
 } from '../../support/editor/helpers';
 import {EDITOR_PAGE_URL} from '../../support/shared.entities';
 
@@ -18,17 +18,17 @@ describe('Editor and Dropdown', () => {
     });
 
     beforeEach(() => {
-        initBaseWrapper();
-        focusToStartInEditor();
+        tuiInitBaseWrapper();
+        tuiFocusToStartInEditor();
     });
 
     it('should not overlap tools', () => {
-        selectTag(getContentEditable().find('strong'));
-        insertLink();
-        getEditLinkInput().type('wysiwyg.com');
-        getEditLinkInput().type('{enter}');
-        openAnchorDropdown({containHref: 'http://wysiwyg.com'});
-        getEditorScrollbarArea().scrollTo(0, 100);
-        getScreenshotArea().matchImageSnapshot('1-1-added-new-link');
+        tuiSelectTag(tuiGetContentEditable().find('strong'));
+        tuiInsertLink();
+        tuiGetEditLinkInput().type('wysiwyg.com');
+        tuiGetEditLinkInput().type('{enter}');
+        tuiOpenAnchorDropdown({containHref: 'http://wysiwyg.com'});
+        tuiGetEditorScrollbarArea().scrollTo(0, 100);
+        tuiGetScreenshotArea().matchImageSnapshot('1-1-added-new-link');
     });
 });

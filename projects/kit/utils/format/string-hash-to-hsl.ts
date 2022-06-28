@@ -1,9 +1,11 @@
 /**
+ * @deprecated: use {@link tuiStringHashToHsl} instead
  * Converts a string to an HSL color
  * @param value string to convert
  * @return HSL color string
  */
 // @bad TODO: convert stringHashToHsl to stringHashToRgb
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function stringHashToHsl(value: string): string {
     if (value === '') {
         return '';
@@ -22,3 +24,5 @@ export function stringHashToHsl(value: string): string {
 
     return `hsl(${hue},${saturation}%,${lightness}%)`;
 }
+
+export const tuiStringHashToHsl = stringHashToHsl;

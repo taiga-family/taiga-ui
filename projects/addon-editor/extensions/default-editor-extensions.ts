@@ -28,6 +28,7 @@ export const defaultEditorExtensions = [
 ];
 
 // TODO: 3.0 remove in ivy compilation
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function defaultExtractor<T>(importedExtension: {
     default: Extension<T>;
 }): Extension<T> {
@@ -35,6 +36,7 @@ export function defaultExtractor<T>(importedExtension: {
 }
 
 // TODO: 3.0 remove in ivy compilation
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function starterKitConfigurator(
     extension: Extension<StarterKitOptions>,
 ): Extension<StarterKitOptions> {

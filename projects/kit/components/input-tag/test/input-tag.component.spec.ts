@@ -18,12 +18,12 @@ import {
 import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
-    isActive,
-    testCleaner,
-    testPlaceholder,
-    testTooltip,
+    tuiIsActive,
     TuiNativeInputPO,
     TuiPageObject,
+    tuiTestCleaner,
+    tuiTestPlaceholder,
+    tuiTestTooltip,
 } from '@taiga-ui/testing';
 
 const TAG = 'Tag';
@@ -365,7 +365,7 @@ describe('InputTag', () => {
             inputPO.sendKeydown('ArrowLeft');
 
             expect(
-                isActive(
+                tuiIsActive(
                     pageObject.getByAutomationId(`${testContext.prefix}tag`)!
                         .nativeElement,
                 ),
@@ -385,7 +385,7 @@ describe('InputTag', () => {
             inputPO.sendKeydown('backspace');
 
             expect(
-                isActive(
+                tuiIsActive(
                     pageObject.getByAutomationId(`${testContext.prefix}tag`)!
                         .nativeElement,
                 ),
@@ -444,11 +444,11 @@ describe('InputTag', () => {
         expect(getPlaceholderText(fixture)).toEqual('');
     });
 
-    testPlaceholder(testContext, ['test'], []);
+    tuiTestPlaceholder(testContext, ['test'], []);
 
-    testCleaner(testContext, ['test'], []);
+    tuiTestCleaner(testContext, ['test'], []);
 
-    testTooltip(testContext);
+    tuiTestTooltip(testContext);
 });
 
 function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {

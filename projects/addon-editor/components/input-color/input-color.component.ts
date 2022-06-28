@@ -26,6 +26,10 @@ import {
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 
+/**
+ * @deprecated: use {@link tuiLongDropdownControllerFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function longDropdownControllerFactory(
     directive: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
@@ -34,6 +38,8 @@ export function longDropdownControllerFactory(
 
     return directive;
 }
+
+export const tuiLongDropdownControllerFactory = longDropdownControllerFactory;
 
 @Component({
     selector: 'tui-input-color',

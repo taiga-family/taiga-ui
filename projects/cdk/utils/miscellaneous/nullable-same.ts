@@ -1,6 +1,7 @@
 import {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 /**
+ * @deprecated: use {@link tuiNullableSame} instead
  * Checks identity for nullable elements.
  *
  * @param a element a
@@ -8,6 +9,7 @@ import {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
  * @param handler called if both elements are not null
  * @return true if either both are null or they pass identity handler
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function nullableSame<T>(
     a: T | null,
     b: T | null,
@@ -23,3 +25,5 @@ export function nullableSame<T>(
 
     return handler(a, b);
 }
+
+export const tuiNullableSame = nullableSame;

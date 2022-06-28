@@ -34,10 +34,12 @@ const MAP: Record<string, string> = {
 };
 
 /**
+ * @deprecated: use {@link tuiTransliterateKeyboardLayout} instead
  * Translates text mistakenly typed in the Russian layout into English
  * @param string string with Russian layout characters
  * @return string with English layout characters
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function transliterateKeyboardLayout(string: string): string {
     let newStr = '';
 
@@ -47,3 +49,5 @@ export function transliterateKeyboardLayout(string: string): string {
 
     return newStr;
 }
+
+export const tuiTransliterateKeyboardLayout = transliterateKeyboardLayout;

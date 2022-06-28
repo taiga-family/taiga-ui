@@ -5,6 +5,10 @@ import {drawLine} from './draw-line';
 
 const COEFFICIENT = 500;
 
+/**
+ * @deprecated: use {@link tuiDraw} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function draw(
     array: readonly TuiPoint[],
     index: number,
@@ -14,3 +18,5 @@ export function draw(
         ? drawCurve(array, index, smoothing / COEFFICIENT)
         : drawLine([array[index][0], array[index][1]]);
 }
+
+export const tuiDraw = draw;

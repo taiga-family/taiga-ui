@@ -16,6 +16,10 @@ export class TuiDragState {
     constructor(readonly stage: TuiDragStage, readonly event: MouseEvent) {}
 }
 
+/**
+ * @deprecated: use {@link tuiDragAndDropFrom} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
@@ -40,3 +44,5 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
         ).pipe(takeWhile(isPresent)),
     ).pipe(repeat());
 }
+
+export const tuiDragAndDropFrom = dragAndDropFrom;

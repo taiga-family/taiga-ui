@@ -12,6 +12,10 @@ export const PAGE_PROVIDERS: Provider[] = [
     },
 ];
 
+/**
+ * @deprecated: use {@link tuiSeeAlsoProviderFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function seeAlsoProviderFactory(
     {nativeElement}: ElementRef,
     seeAlsoGroups: ReadonlyArray<readonly string[]>,
@@ -28,3 +32,5 @@ export function seeAlsoProviderFactory(
 
     return Array.from(seeAlsoSet);
 }
+
+export const tuiSeeAlsoProviderFactory = seeAlsoProviderFactory;

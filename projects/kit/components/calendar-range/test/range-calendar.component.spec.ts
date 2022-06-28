@@ -20,7 +20,7 @@ import {tuiCreateDefaultDayRangePeriods} from '../../../utils/miscellaneous/crea
 import {TuiCalendarRangeComponent} from '../calendar-range.component';
 import {TuiCalendarRangeModule} from '../calendar-range.module';
 
-export function rangeCalendarTestFactory(
+export function tuiRangeCalendarTestFactory(
     control: NgControl | null,
 ): Observable<TuiDayRange | null> | null {
     return control ? tuiReplayedValueChangesFrom(control) : of(null);
@@ -42,7 +42,7 @@ describe('rangeCalendarComponent', () => {
             {
                 provide: TUI_CALENDAR_DATA_STREAM,
                 deps: [[new Optional(), new Self(), NgControl]],
-                useFactory: rangeCalendarTestFactory,
+                useFactory: tuiRangeCalendarTestFactory,
             },
         ],
     })

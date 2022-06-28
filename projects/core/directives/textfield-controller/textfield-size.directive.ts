@@ -23,6 +23,12 @@ export class TuiTextfieldSizeDirective extends TuiController {
     size: TuiSizeS | TuiSizeL = 'l';
 }
 
+/**
+ * @deprecated: use {@link tuiSizeDirectiveFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function sizeDirectiveFactory(): TuiTextfieldSizeDirective {
     return new TuiTextfieldSizeDirective();
 }
+
+export const tuiSizeDirectiveFactory = sizeDirectiveFactory;

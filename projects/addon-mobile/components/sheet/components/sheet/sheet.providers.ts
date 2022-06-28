@@ -40,6 +40,10 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     },
 ];
 
+/**
+ * @deprecated: use {@link tuiSheetDraggedFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function sheetDraggedFactory({
     nativeElement,
 }: ElementRef<HTMLElement>): Observable<boolean> {
@@ -49,6 +53,12 @@ export function sheetDraggedFactory({
     );
 }
 
+export const tuiSheetDraggedFactory = sheetDraggedFactory;
+
+/**
+ * @deprecated: use {@link tuiSheetScrollFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function sheetScrollFactory(
     {nativeElement}: ElementRef<HTMLElement>,
     ngZone: NgZone,
@@ -66,3 +76,5 @@ export function sheetScrollFactory(
               share(),
           );
 }
+
+export const tuiSheetScrollFactory = sheetScrollFactory;

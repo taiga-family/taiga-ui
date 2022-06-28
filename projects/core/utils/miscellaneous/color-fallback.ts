@@ -1,4 +1,7 @@
-/** @deprecated */
+/**
+ * @deprecated: use {@link tuiColorFallback} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function colorFallback(color: string | null): string {
     switch (color) {
         case 'secondary':
@@ -11,3 +14,5 @@ export function colorFallback(color: string | null): string {
             return `var(--tui-${color || 'base-05'})`;
     }
 }
+
+export const tuiColorFallback = colorFallback;

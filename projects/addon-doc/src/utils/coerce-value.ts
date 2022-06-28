@@ -1,4 +1,7 @@
-/* eslint-disable unicorn/no-unsafe-regex */
+/**
+ * @deprecated: use {@link tuiCoerceValue} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function coerceValue<T>(value?: T): T | number | string | boolean | null | object {
     const prepared = String(value).trim();
 
@@ -21,6 +24,8 @@ export function coerceValue<T>(value?: T): T | number | string | boolean | null 
     }
 }
 
+export const tuiCoerceValue = coerceValue;
+
 function isEmptyParamValue(value: string): boolean {
     return ['undefined', 'null', 'NaN', 'Infinity'].includes(value);
 }
@@ -31,6 +36,7 @@ function isBooleanParamValue(value: string): boolean {
 
 function isNumberParamValue(value: string): boolean {
     // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
+    // eslint-disable-next-line unicorn/no-unsafe-regex
     return /^-?[\d.]+(?:e-?\d+)?$/.test(value);
 }
 

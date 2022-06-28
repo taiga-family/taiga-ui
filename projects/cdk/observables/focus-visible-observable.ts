@@ -20,6 +20,10 @@ import {typedFromEvent} from './typed-from-event';
 let documentMouseUpIsAlive$: Observable<boolean>;
 let documentMouseDownIsAlive$: Observable<boolean>;
 
+/**
+ * @deprecated: use {@link tuiFocusVisibleObservable} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function focusVisibleObservable(element: Element): Observable<boolean> {
     const elementBlur$ = typedFromEvent(element, 'blur');
     const {ownerDocument} = element;
@@ -70,3 +74,5 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
         distinctUntilChanged(),
     );
 }
+
+export const tuiFocusVisibleObservable = focusVisibleObservable;

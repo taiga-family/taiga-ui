@@ -1,5 +1,5 @@
 import {DEMO_PATHS} from '../../support/demo-paths';
-import {excluded} from '../../support/exclusions';
+import {tuiExcluded} from '../../support/exclusions';
 import {EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
@@ -14,7 +14,7 @@ describe('Demo', () => {
                     .tuiScrollIntoView()
                     .as('example');
 
-                return excluded(path, index + 1)
+                return tuiExcluded(path, index + 1)
                     ? cy.get('@example')
                     : cy.get('@example').matchImageSnapshot(`${path}/${index + 1}`);
             });

@@ -2,6 +2,10 @@ import {TuiPoint} from '@taiga-ui/core';
 
 import {controlPoint} from './control-point';
 
+/**
+ * @deprecated: use {@link tuiDrawCurve} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function drawCurve(
     array: readonly TuiPoint[],
     index: number,
@@ -24,3 +28,5 @@ export function drawCurve(
 
     return `C ${cpsX},${cpsY} ${cpeX},${cpeY} ${array[index][0]},${array[index][1]}`;
 }
+
+export const tuiDrawCurve = drawCurve;

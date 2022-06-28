@@ -1,3 +1,7 @@
+/**
+ * @deprecated: use {@link tuiUniqBy} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function uniqBy<T extends object>(
     array: readonly T[],
     key: keyof T,
@@ -11,3 +15,5 @@ export function uniqBy<T extends object>(
             .values(),
     );
 }
+
+export const tuiUniqBy = uniqBy;

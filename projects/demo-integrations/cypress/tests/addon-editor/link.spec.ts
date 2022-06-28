@@ -1,13 +1,13 @@
 import {
-    focusToStartInEditor,
-    getContentEditable,
-    getEditLinkInput,
-    getScreenshotArea,
-    initBaseWrapper,
-    insertLink,
-    openAnchorDropdown,
-    selectTag,
-    trashValueByEditLink,
+    tuiFocusToStartInEditor,
+    tuiGetContentEditable,
+    tuiGetEditLinkInput,
+    tuiGetScreenshotArea,
+    tuiInitBaseWrapper,
+    tuiInsertLink,
+    tuiOpenAnchorDropdown,
+    tuiSelectTag,
+    tuiTrashValueByEditLink,
 } from '../../support/editor/helpers';
 import {EDITOR_PAGE_URL} from '../../support/shared.entities';
 
@@ -18,52 +18,54 @@ describe('Editing links in Editor', () => {
     });
 
     beforeEach(() => {
-        initBaseWrapper();
-        focusToStartInEditor();
+        tuiInitBaseWrapper();
+        tuiFocusToStartInEditor();
     });
 
     it('check if at least one link exists', () => {
-        getContentEditable()
+        tuiGetContentEditable()
             .find('a')
             .first()
             .contains('adipiscing elit')
             .should('have.attr', 'href')
             .and('include', 'http://taiga-ui.dev');
 
-        getScreenshotArea().matchImageSnapshot('1-exist-link');
+        tuiGetScreenshotArea().matchImageSnapshot('1-exist-link');
     });
 
     it('switch links between', () => {
-        selectTag(getContentEditable().find('strong'));
-        insertLink();
-        getEditLinkInput().type('wysiwyg.com');
-        getEditLinkInput().type('{enter}');
-        getScreenshotArea().matchImageSnapshot('2-1-added-new-link');
-        openAnchorDropdown({containHref: 'http://wysiwyg.com'});
-        getScreenshotArea().matchImageSnapshot('2-2-focused-new-link');
+        tuiSelectTag(tuiGetContentEditable().find('strong'));
+        tuiInsertLink();
+        tuiGetEditLinkInput().type('wysiwyg.com');
+        tuiGetEditLinkInput().type('{enter}');
+        tuiGetScreenshotArea().matchImageSnapshot('2-1-added-new-link');
+        tuiOpenAnchorDropdown({containHref: 'http://wysiwyg.com'});
+        tuiGetScreenshotArea().matchImageSnapshot('2-2-focused-new-link');
 
-        selectTag(getContentEditable().find('sup'));
-        insertLink();
-        getEditLinkInput().type('example.com');
-        getEditLinkInput().type('{enter}');
-        getScreenshotArea().matchImageSnapshot('2-3-added-new-link-2');
-        openAnchorDropdown({containHref: 'http://example.com'});
-        getScreenshotArea().matchImageSnapshot('2-4-focused-new-link-2');
+        tuiSelectTag(tuiGetContentEditable().find('sup'));
+        tuiInsertLink();
+        tuiGetEditLinkInput().type('example.com');
+        tuiGetEditLinkInput().type('{enter}');
+        tuiGetScreenshotArea().matchImageSnapshot('2-3-added-new-link-2');
+        tuiOpenAnchorDropdown({containHref: 'http://example.com'});
+        tuiGetScreenshotArea().matchImageSnapshot('2-4-focused-new-link-2');
 
-        openAnchorDropdown({containHref: 'http://wysiwyg.com'});
-        getScreenshotArea().matchImageSnapshot('2-5-correct-refresh-content-in-dropdown');
+        tuiOpenAnchorDropdown({containHref: 'http://wysiwyg.com'});
+        tuiGetScreenshotArea().matchImageSnapshot(
+            '2-5-correct-refresh-content-in-dropdown',
+        );
     });
 
     it('deleting links', () => {
-        selectTag(getContentEditable().find('strong'));
-        insertLink();
-        getEditLinkInput().type('wysiwyg.com');
-        getEditLinkInput().type('{enter}');
+        tuiSelectTag(tuiGetContentEditable().find('strong'));
+        tuiInsertLink();
+        tuiGetEditLinkInput().type('wysiwyg.com');
+        tuiGetEditLinkInput().type('{enter}');
 
-        openAnchorDropdown({containHref: 'http://wysiwyg.com'});
-        getScreenshotArea().matchImageSnapshot('3-1-before-remove-link');
+        tuiOpenAnchorDropdown({containHref: 'http://wysiwyg.com'});
+        tuiGetScreenshotArea().matchImageSnapshot('3-1-before-remove-link');
 
-        trashValueByEditLink();
-        getScreenshotArea().matchImageSnapshot('3-2-after-remove-link');
+        tuiTrashValueByEditLink();
+        tuiGetScreenshotArea().matchImageSnapshot('3-2-after-remove-link');
     });
 });

@@ -1,6 +1,7 @@
 import {TuiPluralize} from '@taiga-ui/core/types';
 
 /**
+ * @deprecated: use {@link tuiPluralize} instead
  * Selects the correct plural form to display.
  *
  * @param value the input number
@@ -8,6 +9,7 @@ import {TuiPluralize} from '@taiga-ui/core/types';
  * @deprecated This implementation targets Russian.
  * Use https://angular.io/api/common/NgPlural for your implementations.
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function pluralize(value: number, [one, few, many]: TuiPluralize): string {
     const ten = value % 10;
     const hundred = value % 100;
@@ -24,3 +26,5 @@ export function pluralize(value: number, [one, few, many]: TuiPluralize): string
 
     return many;
 }
+
+export const tuiPluralize = pluralize;

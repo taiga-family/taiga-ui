@@ -20,8 +20,8 @@ module.exports = {
                     {
                         selector: 'function',
                         modifiers: ['exported'],
-                        format: ['camelCase'],
-                        // prefix: ['tui', 'Tui'], // TODO: enable later
+                        format: ['PascalCase'], // @note: tui{PascalCase}FnName
+                        prefix: ['tui'],
                     },
                     {
                         selector: 'interface',

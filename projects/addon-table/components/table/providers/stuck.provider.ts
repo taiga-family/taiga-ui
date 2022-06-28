@@ -3,6 +3,10 @@ import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+/**
+ * @deprecated: use {@link tuiStuckFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function stuckFactory(
     {nativeElement}: ElementRef,
     entries$: Observable<IntersectionObserverEntry[]>,
@@ -13,6 +17,8 @@ export function stuckFactory(
 
     return stream$;
 }
+
+export const tuiStuckFactory = stuckFactory;
 
 export const TUI_STUCK = new InjectionToken<boolean>('Stream of sticky stuck events');
 

@@ -1,5 +1,9 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
+/**
+ * @deprecated: use {@link tuiEaseInOutQuad} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function easeInOutQuad(t: number): number {
     tuiAssert.assert(
         0 <= t && t <= 1,
@@ -9,3 +13,5 @@ export function easeInOutQuad(t: number): number {
 
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
+
+export const tuiEaseInOutQuad = easeInOutQuad;

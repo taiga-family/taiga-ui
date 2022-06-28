@@ -23,7 +23,7 @@ interface TestComponent {
     readOnly: boolean;
 }
 
-export function testCleaner(
+export function tuiTestCleaner(
     context: TestParams,
     setValue: unknown = 'value',
     clearValue: unknown = null,

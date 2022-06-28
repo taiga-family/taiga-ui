@@ -46,11 +46,13 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
 }
 
 /**
+ * @deprecated: use {@link tuiInspectAny} instead
  * Returns readable JS entity
  * @param data
  * @param depth
  * @return readable JS entity
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function inspectAny<T>(data: T, depth: number): string {
     if (data === null) {
         return 'null';
@@ -76,3 +78,5 @@ export function inspectAny<T>(data: T, depth: number): string {
 
     return inspectObject(data as unknown as {[key: string]: unknown}, depth);
 }
+
+export const tuiInspectAny = inspectAny;

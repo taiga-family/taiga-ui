@@ -1,3 +1,7 @@
+/**
+ * @deprecated: use {@link tuiIsExpireValid} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function isExpireValid(expire: string): boolean {
     const today = new Date();
     const currentMonth = today.getMonth();
@@ -7,3 +11,5 @@ export function isExpireValid(expire: string): boolean {
 
     return year > currentYear || (year === currentYear && month >= currentMonth);
 }
+
+export const tuiIsExpireValid = isExpireValid;

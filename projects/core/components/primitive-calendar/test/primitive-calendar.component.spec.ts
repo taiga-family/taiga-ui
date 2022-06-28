@@ -19,9 +19,9 @@ import {
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
     configureTestSuite,
-    mockCurrentDate,
-    pendingIfNotMoscowTimeZone,
-    restoreRealDate,
+    tuiMockCurrentDate,
+    tuiPendingIfNotMoscowTimeZone,
+    tuiRestoreRealDate,
 } from '@taiga-ui/testing';
 
 @Component({
@@ -62,7 +62,7 @@ describe('PrimitiveCalendar', () => {
     });
 
     beforeEach(() => {
-        mockCurrentDate(new Date(2018, 1, TODAY));
+        tuiMockCurrentDate(new Date(2018, 1, TODAY));
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
@@ -73,7 +73,7 @@ describe('PrimitiveCalendar', () => {
 
     describe('today', () => {
         beforeEach(() => {
-            pendingIfNotMoscowTimeZone();
+            tuiPendingIfNotMoscowTimeZone();
         });
 
         it('is highlighted if current month and year were selected', () => {
@@ -255,7 +255,7 @@ describe('PrimitiveCalendar', () => {
     }
 
     afterEach(() => {
-        restoreRealDate();
+        tuiRestoreRealDate();
     });
 });
 
@@ -266,7 +266,7 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
     let testComponent: TestComponent;
 
     beforeEach(() => {
-        restoreRealDate();
+        tuiRestoreRealDate();
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

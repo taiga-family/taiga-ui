@@ -32,16 +32,22 @@ import {
     TuiSizeS,
 } from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
-import {horizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
+import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
+/**
+ * @deprecated: use {@link tuiNonNegativeInteger} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function nonNegativeInteger(length: number): boolean {
     return Number.isInteger(length) && length >= 0;
 }
+
+export const tuiNonNegativeInteger = nonNegativeInteger;
 
 // @dynamic
 @Component({
@@ -312,7 +318,11 @@ export class TuiPaginationComponent
 
     private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
-            clamp(this.index + horizontalDirectionToNumber(direction), 0, this.lastIndex),
+            clamp(
+                this.index + tuiHorizontalDirectionToNumber(direction),
+                0,
+                this.lastIndex,
+            ),
         );
     }
 

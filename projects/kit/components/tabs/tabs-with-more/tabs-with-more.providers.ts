@@ -8,6 +8,10 @@ import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
+/**
+ * @deprecated: use {@link tuiTabsRefreshFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function tabsRefreshFactory(
     resize$: Observable<unknown>,
     mutations$: Observable<unknown>,
@@ -56,3 +60,5 @@ export const TABS_PROVIDERS: Provider[] = [
         useFactory: tabsRefreshFactory,
     },
 ];
+
+export const tuiTabsRefreshFactory = tabsRefreshFactory;

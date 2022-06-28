@@ -4,6 +4,7 @@ import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 import {isNativeMouseFocusable} from './is-native-mouse-focusable';
 
 /**
+ * @deprecated: use {@link tuiGetClosestFocusable} instead
  * Finds the closest element that can be focused with a keyboard or mouse in theory
  *
  * @param initial current HTML element
@@ -12,6 +13,7 @@ import {isNativeMouseFocusable} from './is-native-mouse-focusable';
  * @param keyboard determine if only keyboard focus is of interest
  *
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function getClosestFocusable(
     initial: HTMLElement,
     prev: boolean = false,
@@ -49,5 +51,9 @@ export function getClosestFocusable(
     return null;
 }
 
-/** @deprecated use getClosestFocusable */
+/**
+ * @deprecated: use {@link tuiGetClosestFocusable} instead
+ */
 export const getClosestKeyboardFocusable = getClosestFocusable;
+
+export const tuiGetClosestFocusable = getClosestFocusable;

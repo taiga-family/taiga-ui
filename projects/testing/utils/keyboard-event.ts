@@ -1,3 +1,7 @@
+/**
+ * @deprecated: use {@link tuiCreateKeyboardEvent} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function createKeyboardEvent(
     key: string,
     eventType: string = 'keydown',
@@ -12,3 +16,5 @@ export function createKeyboardEvent(
 
     return event;
 }
+
+export const tuiCreateKeyboardEvent = createKeyboardEvent;

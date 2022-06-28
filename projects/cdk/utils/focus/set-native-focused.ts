@@ -7,6 +7,7 @@
  * @param focused boolean focused state
  * @param preventScroll optional flag to prevent native scroll to the element
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function setNativeFocused(
     element: HTMLOrSVGElement,
     focused: boolean = true,

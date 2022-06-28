@@ -3,8 +3,10 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {getPaymentSystem} from './get-payment-system';
 
 /**
+ * @deprecated: use {@link tuiIsCardLengthValid} instead
  * Validates card number length using payment system dictionary
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function isCardLengthValid(cardNumber: string): boolean {
     const {length} = cardNumber;
     const paymentSystem = getPaymentSystem(cardNumber);
@@ -23,3 +25,5 @@ export function isCardLengthValid(cardNumber: string): boolean {
             return length > 8 && length < 20;
     }
 }
+
+export const tuiIsCardLengthValid = isCardLengthValid;

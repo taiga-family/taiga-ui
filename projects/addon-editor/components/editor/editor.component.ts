@@ -41,15 +41,27 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 const TEMP_URL = 'TEMP_URL';
 
+/**
+ * @deprecated: use {@link tuiDocumentFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoot | null {
     return editor.focusableElement ? editor.focusableElement.documentRef : null;
 }
 
+export const tuiDocumentFactory = documentFactory;
+
+/**
+ * @deprecated: use {@link tuiElementFactory} instead
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
     return editor.focusableElement?.documentRef
         ? new ElementRef(editor.focusableElement.documentRef.body)
         : null;
 }
+
+export const tuiElementFactory = elementFactory;
 
 // @dynamic
 @Component({
