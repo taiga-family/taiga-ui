@@ -139,7 +139,7 @@ describe('PrimitiveTextfield', () => {
             fixture.detectChanges();
 
             expect(getValueDecoration()).toBe(
-                value + filler.slice(value.length) + postfix,
+                `${value}${filler.slice(value.length)} ${postfix}`,
             );
         });
 
@@ -152,7 +152,7 @@ describe('PrimitiveTextfield', () => {
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()).toBe(value + postfix);
+            expect(getValueDecoration()).toBe(`${value} ${postfix}`);
         });
     });
 
