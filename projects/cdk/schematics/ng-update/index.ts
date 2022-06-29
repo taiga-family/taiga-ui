@@ -16,6 +16,7 @@ import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {infoLog, successLog} from '../utils/colored-log';
+import {dateTimeMigrations} from './steps/migrate-date-time';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -64,6 +65,10 @@ export function updateToV3(_: Schema): Rule {
         infoLog('removing modules...');
         removeModules();
         successLog('modules removed');
+
+        infoLog('migrating taiga date/time ...');
+        dateTimeMigrations();
+        successLog('date/time migrated');
 
         infoLog('miscellaneous migrating...');
         replaceFunctions();

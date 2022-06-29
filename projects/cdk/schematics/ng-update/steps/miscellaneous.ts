@@ -1,5 +1,6 @@
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {Identifier, Node, SyntaxKind, TypeReferenceNode} from 'ng-morph';
+import {Node, SyntaxKind, TypeReferenceNode} from 'ng-morph';
+import {insertTodo} from '../../utils/insert-todo';
 
 export function miscellaneousMigrations() {
     replaceEnumProperty({
@@ -80,10 +81,4 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string) {
             });
         }
     });
-}
-
-function insertTodo(identifier: Identifier, message: string) {
-    const startLinePos = identifier.getStartLinePos();
-    const sourceFile = identifier.getSourceFile();
-    sourceFile.insertText(startLinePos, `// TODO: ${message}\n`);
 }
