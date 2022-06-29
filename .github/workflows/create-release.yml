@@ -11,7 +11,12 @@ on:
         options:
           - patch
           - minor
+          - prerelease
           - major
+      dryRun:
+        type: boolean
+        required: false
+        description: --dry-run
 
 jobs:
   run-release:
@@ -34,8 +39,12 @@ jobs:
         run: |
           git config user.name "tinkoff-bot"
           git config --global push.followTags true
-          npm run exec -- ./scripts/release.ts --release-as ${{ github.event.inputs.mode }} --ci-mode
+          npm run exec -- ./scripts/release.ts \
+                --ci-mode \
+                --release-as ${{ github.event.inputs.mode }} \
+                --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
+          echo "::set-output name=branch_name::$(node -p "require('./package.json').version.split('-')[0]")"
 
       - name: Generate Release Body
         id: generate_body
@@ -56,8 +65,8 @@ jobs:
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          branch: release/${{ steps.run-release.outputs.new_version }}
-          title: 'Release/${{ steps.run-release.outputs.new_version }}'
+          branch: release/${{ steps.run-release.outputs.branch_name }}
+          title: '🚀 Release/v${{ steps.run-release.outputs.new_version }}'
           body: |
             ${{ steps.get-pr-body.outputs.body }}
 
@@ -70,6 +79,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
+        if: ${{ !contains('${{ github.event.inputs.mode }}', 'prerelease') }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
