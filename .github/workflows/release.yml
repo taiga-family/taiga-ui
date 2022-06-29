@@ -21,8 +21,8 @@ jobs:
       - name: Build publishable libraries
         run: npm run run-many:build:libs
 
-      - name: Publish libraries
-        run: npm run run-many:publish:libs
+#      - name: Publish libraries
+#        run: npm run run-many:publish:libs
 
 concurrency:
   group: release-${{ github.head_ref }}
