@@ -68,7 +68,7 @@ module.exports = {
             },
         },
         {
-            files: ['**/projects/demo/**/**.ts'],
+            files: ['**/projects/*demo/**/*.ts', '**/scripts/**/*.ts'],
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
