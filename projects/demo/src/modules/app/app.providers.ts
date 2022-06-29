@@ -112,7 +112,19 @@ export const APP_PROVIDERS = [
     },
     {
         provide: TUI_ANIMATIONS_DURATION,
-        useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
+        useFactory: () => {
+            if (inject(TUI_IS_CYPRESS)) {
+                const windowRef = inject(WINDOW);
+
+                return parseInt(
+                    windowRef
+                        .getComputedStyle(windowRef.document.body)
+                        .getPropertyValue('--tui-cypress-animations-duration') || '0',
+                );
+            }
+
+            return 300;
+        },
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,

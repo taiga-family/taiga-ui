@@ -28,6 +28,8 @@ interface TuiVisitOptions {
      * But you can control token `TUI_IS_MOBILE` by this flag.
      */
     pseudoMobile?: boolean;
+    ignoreWait?: boolean;
+    animationsDuration?: number;
 }
 
 const setBeforeLoadOptions = (
@@ -56,6 +58,8 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideNavigation = true,
         hideVersionManager = true,
         pseudoMobile = false,
+        ignoreWait = false,
+        animationsDuration = 0,
     } = options;
 
     stubExternalIcons();
@@ -63,6 +67,11 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.visit('/', {
         onBeforeLoad: window => {
+            window.document.documentElement.style.setProperty(
+                '--tui-cypress-animations-duration',
+                animationsDuration.toString(),
+            );
+
             const baseHref =
                 window.document.baseURI.replace(`${window.location.origin}/`, '') ||
                 DEFAULT_BASE_HREF;
@@ -81,20 +90,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         },
     }).then(() => cy.url().should('include', path));
 
-    if (waitAllIcons) {
-        cy.intercept('*.svg').as('icons');
-    }
-
-    cy.window().should('have.property', 'Cypress');
-
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
-
-    cy.document().its('fonts.size').should('be.greaterThan', 0);
-    cy.document().its('fonts.status').should('equal', 'loaded');
-
-    if (waitAllIcons) {
-        waitAllRequests('@icons');
-    }
 
     cy.get('._is-cypress-mode').as('app');
 
@@ -110,8 +106,6 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         cy.get('@app').invoke('addClass', '_no-smooth-scroll');
     }
 
-    cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
-
     if (hideHeader) {
         cy.tuiHideHeader();
     }
@@ -123,4 +117,22 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     if (hideVersionManager) {
         cy.tuiHideVersionManager();
     }
+
+    if (ignoreWait) {
+        return;
+    }
+
+    if (waitAllIcons) {
+        cy.intercept('*.svg').as('icons');
+    }
+
+    cy.window().should('have.property', 'Cypress');
+    cy.document().its('fonts.size').should('be.greaterThan', 0);
+    cy.document().its('fonts.status').should('equal', 'loaded');
+
+    if (waitAllIcons) {
+        waitAllRequests('@icons');
+    }
+
+    cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
 }
