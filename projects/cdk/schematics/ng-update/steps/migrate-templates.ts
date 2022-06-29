@@ -323,14 +323,14 @@ function migrateTuiHideSelectedPipe({
         el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 
-    for (const el of elementsWithPipe) {
+    elementsWithPipe.forEach(el => {
         const {name, value: oldValue} =
             el.attrs.find(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ||
             {};
         const attrLocations = el.sourceCodeLocation?.attrs;
 
         if (!name || !oldValue || !attrLocations) {
-            continue;
+            return;
         }
 
         const newValue = oldValue.replace(
@@ -343,5 +343,5 @@ function migrateTuiHideSelectedPipe({
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
-    }
+    });
 }
