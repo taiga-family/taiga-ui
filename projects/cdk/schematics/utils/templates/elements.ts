@@ -2,36 +2,9 @@ import {ChildNode, Element, parseFragment} from 'parse5';
 
 const ALWAYS_TRUE_HANDLER = (): true => true;
 
-export function findElementsByTagName(html: string, tagName: string): Element[] {
-    const document = parseFragment(html, {sourceCodeLocationInfo: true});
-    const elements: Element[] = [];
-
-    const visitNodes = (nodes: ChildNode[]) => {
-        nodes.forEach(n => {
-            const node = n as Element;
-
-            if (node.childNodes) {
-                visitNodes(node.childNodes);
-            }
-
-            if (node.tagName === tagName) {
-                elements.push(node);
-            }
-        });
-    };
-
-    visitNodes(document.childNodes);
-
-    return elements;
-}
-
-/**
- * Parses a HTML fragment and traverses all AST nodes in order find elements that
- * include the specified attribute.
- */
-export function findElementsWithAttribute(
+export function findElementByFn(
     html: string,
-    attributeName: string,
+    predicateFn: (el: Element) => boolean,
 ): Element[] {
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
@@ -44,7 +17,7 @@ export function findElementsWithAttribute(
                 visitNodes(node.childNodes);
             }
 
-            if (node.attrs?.some(attr => attr.name === attributeName.toLowerCase())) {
+            if (predicateFn(node)) {
                 elements.push(node);
             }
         });
@@ -53,6 +26,23 @@ export function findElementsWithAttribute(
     visitNodes(document.childNodes);
 
     return elements;
+}
+
+export function findElementsByTagName(html: string, tagName: string): Element[] {
+    return findElementByFn(html, el => el.tagName === tagName);
+}
+
+/**
+ * Parses a HTML fragment and traverses all AST nodes in order find elements that
+ * include the specified attribute.
+ */
+export function findElementsWithAttribute(
+    html: string,
+    attributeName: string,
+): Element[] {
+    return findElementByFn(html, el =>
+        el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
+    );
 }
 
 /**

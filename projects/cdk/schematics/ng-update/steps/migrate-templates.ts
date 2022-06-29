@@ -9,6 +9,7 @@ import {
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
+    findElementByFn,
     findElementsByTagName,
     findElementsWithAttribute,
     hasElementAttribute,
@@ -39,6 +40,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         replaceFieldError,
         addHTMLCommentTags,
         addEditorProviders,
+        migrateTuiHideSelectedPipe,
     ];
 
     componentWithTemplatesPaths.forEach(resource => {
@@ -300,5 +302,46 @@ function addEditorProviders({
             'defaultEditorExtensions',
             '@taiga-ui/addon-editor',
         );
+    }
+}
+
+const HIDE_SELECTED_PIPE_WITH_ARGS_REG = /\|\s*tuiHideSelected(\s*:\s*[^|'"]*)?/gi;
+
+function migrateTuiHideSelectedPipe({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const elementsWithPipe = findElementByFn(template, el =>
+        el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
+    );
+
+    for (const el of elementsWithPipe) {
+        const {name, value: oldValue} =
+            el.attrs.find(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ||
+            {};
+        const attrLocations = el.sourceCodeLocation?.attrs;
+
+        if (!name || !oldValue || !attrLocations) {
+            continue;
+        }
+
+        const newValue = oldValue.replace(
+            HIDE_SELECTED_PIPE_WITH_ARGS_REG,
+            '| tuiHideSelected',
+        );
+
+        const {startOffset} = attrLocations[name];
+        const valueOffset = templateOffset + startOffset + name.length + '="'.length;
+
+        recorder.remove(valueOffset, oldValue.length);
+        recorder.insertRight(valueOffset, newValue);
     }
 }
