@@ -57,6 +57,7 @@
                     [noPadding]="noPadding"
                     [size]="size"
                     [showArrow]="showArrow"
+                    [disableHover]="disableHover"
                 >
                     Taiga UI cdk
                     <ng-template tuiAccordionItemContent>
@@ -70,6 +71,7 @@
                     [noPadding]="noPadding"
                     [size]="size"
                     [showArrow]="showArrow"
+                    [disableHover]="disableHover"
                     [async]="async"
                     [open]="open"
                     (openChange)="onOpenChange($event)"
@@ -157,6 +159,15 @@
                             [(documentationPropertyValue)]="noPadding"
                         >
                             Removes default paddings
+                        </ng-template>
+                        <ng-template
+                            i18n
+                            documentationPropertyName="disableHover"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disableHover"
+                        >
+                            Disabled header hover state
                         </ng-template>
                         <ng-template
                             i18n

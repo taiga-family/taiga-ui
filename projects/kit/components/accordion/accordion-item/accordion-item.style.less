@@ -102,16 +102,10 @@
         padding-right: 0.75rem;
     }
 
-    :host:hover:not([data-mode]) & {
-        background: var(--tui-base-02);
-    }
-
-    :host:hover[data-mode='onDark'] &,
     :host[data-mode='onDark'] &_open {
         background: var(--tui-clear-inverse);
     }
 
-    :host:hover[data-mode='onLight'] &,
     :host[data-mode='onLight'] &_open {
         background: var(--tui-clear);
     }
@@ -129,6 +123,20 @@
 
     :host._disabled & {
         cursor: default;
+    }
+
+    &_hoverable {
+        :host:hover:not([data-mode]) & {
+            background: var(--tui-base-02);
+        }
+
+        :host:hover[data-mode='onDark'] & {
+            background: var(--tui-clear-inverse);
+        }
+
+        :host:hover[data-mode='onLight'] & {
+            background: var(--tui-clear);
+        }
     }
 }
 

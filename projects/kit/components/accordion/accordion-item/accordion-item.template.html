@@ -13,6 +13,7 @@
         automation-id="tui-accordion__item-header"
         class="header"
         [class.header_open]="open"
+        [class.header_hoverable]="!disableHover"
         (tuiHoveredChange)="onHovered($event)"
         (click)="onRowToggle()"
     >
