@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.51.1](https://github.com/tinkoff/taiga-ui/compare/v2.51.0...v2.51.1) (2022-06-28)
+
+### Bug Fixes
+
+- **core:** wrong detection of viewport for mobile device width
+  ([6cd1203](https://github.com/tinkoff/taiga-ui/commit/6cd1203ec651237315dc8fa43e547d6541722004))
+
 ## [2.51.0](https://github.com/tinkoff/taiga-ui/compare/v2.50.2...v2.51.0) (2022-06-27)
 
 ### Bug Fixes
