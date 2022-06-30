@@ -45,6 +45,7 @@ jobs:
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
           echo "::set-output name=branch_name::$(node -p "require('./package.json').version.split('-')[0]")"
+
       - name: Generate Release Body
         id: generate_body
         run: |
@@ -61,6 +62,7 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
+        if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
@@ -78,7 +80,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ !contains('${{ github.event.inputs.mode }}', 'prerelease') }}
+        if: ${{ github.event.inputs.dryRun != 'true' }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
