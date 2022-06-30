@@ -55,7 +55,7 @@ jobs:
 
       - id: get-pr-body
         name: Get PR body for classic releases
-        if: ${{ !contains('${{ steps.nodejs-workspace.outputs.root-package-version }}', 'rc') }}
+        if: ${{ !contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}
         run: |
           body=$(cat RELEASE_BODY.md)
           body="${body//'%'/'%25'}"
