@@ -44,14 +44,15 @@ jobs:
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
-          echo "::set-output name=branch_name::$(node -p "require('./package.json').version.split('-')[0]")"
+
       - name: Generate Release Body
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
 
-      - id: get-pr-body # The content must be escaped to preserve newlines.
+      - id: get-pr-body
+        if: ${{ !contains(steps.run-release.outputs.new_version, 'rc') }}
         run: |
           body=$(cat RELEASE_BODY.md)
           body="${body//'%'/'%25'}"
@@ -59,12 +60,16 @@ jobs:
           body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
+      - run: echo "${{ steps.get-pr-body.outputs.body }}"
+        if: ${{ github.event.inputs.dryRun == 'true' }}
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
+        if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          branch: release/${{ steps.run-release.outputs.branch_name }}
+          branch: release/${{ steps.run-release.outputs.new_version }}
           title: '🚀 Release/v${{ steps.run-release.outputs.new_version }}'
           body: |
             ${{ steps.get-pr-body.outputs.body }}
@@ -78,7 +83,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ !contains('${{ github.event.inputs.mode }}', 'prerelease') }}
+        if: ${{ github.event.inputs.dryRun != 'true' || !contains(steps.run-release.outputs.new_version, 'rc') }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
