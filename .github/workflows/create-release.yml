@@ -45,7 +45,6 @@ jobs:
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
-          echo "::set-output name=branch_name::$(node -p "require('./package.json').version.split('-')[0]")"
 
       - name: Generate Release Body
         id: generate_body
@@ -53,16 +52,31 @@ jobs:
           npx extract-changelog-release > RELEASE_BODY.md
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
 
+      - run: |
+          echo "Debug"
+          echo "${{ steps.run-release.outputs.new_version }}"
+          echo "${{ contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}"
+          echo "${{ !contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}"
+
+      - id: get-pr-body
+        if: ${{ !contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}
+        run: |
+          body=$(cat RELEASE_BODY.md)
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo ::set-output name=body::$body
+
       - run: echo "${{ steps.get-pr-body.outputs.body }}"
         if: ${{ github.event.inputs.dryRun == 'true' }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
-        #if: ${{ github.event.inputs.dryRun != 'true' }}
+        if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          branch: release/${{ steps.run-release.outputs.branch_name }}
+          branch: release/${{ steps.run-release.outputs.new_version }}
           title: '🚀 Release/v${{ steps.run-release.outputs.new_version }}'
           body: |
             ${{ steps.get-pr-body.outputs.body }}
