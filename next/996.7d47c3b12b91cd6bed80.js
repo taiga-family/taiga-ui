@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[996],{QAMG:function(n,e,a){"use strict";a.r(e),e.default='```html\n<tui-mobile-calendar\n  [min]="min"\n  [max]="max"\n  [single]="false"\n  [disabledItemHandler]="disabledItemHandler"\n></tui-mobile-calendar>\n```\n'}}]);
