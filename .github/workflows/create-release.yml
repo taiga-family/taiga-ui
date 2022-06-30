@@ -22,7 +22,7 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ contains(github.head_ref, 'main') || contains(github.head_ref, 'release/') }}
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
@@ -45,7 +45,6 @@ jobs:
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
           echo "::set-output name=branch_name::$(node -p "require('./package.json').version.split('-')[0]")"
-
       - name: Generate Release Body
         id: generate_body
         run: |

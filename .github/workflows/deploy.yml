@@ -22,22 +22,23 @@ jobs:
 
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+        id: nodejs-workspace
 
-      - run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
+      - name: Build all snapshots
+        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+        run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
 
-      - name: Get current major version
-        id: get-current-major-version
-        run: echo "::set-output name=value::$(node -p "parseInt(require('./package.json').version)")"
-
-      - name: Update the latest snapshot ${{ steps.get-current-major-version.outputs.value }}.x
+      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
-          BRANCH: snapshots/v/${{ steps.get-current-major-version.outputs.value }}.x
+          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
           FOLDER: dist/demo/browser
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
       - name: Deploy
+        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages

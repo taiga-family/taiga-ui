@@ -7,6 +7,17 @@ inputs:
     required: false
     default: 16.x
 
+outputs:
+  root-package-version:
+    description: Full version of root package.json (x.y.z)
+    value: ${{ steps.output.outputs.root-package-version }}
+  root-package-major-version:
+    description: Only major version of root package.json (x)
+    value: ${{ steps.output.outputs.root-package-major-version }}
+  is-release-candidate:
+    description: root package.json includes -rc
+    value: ${{ steps.output.outputs.is-release-candidate }}
+
 runs:
   using: composite
   steps:
@@ -60,3 +71,10 @@ runs:
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
+
+    - id: output
+      shell: bash
+      run: |
+        echo "::set-output name=root-package-version::v$(node -p "require('./package.json').version")"
+        echo "::set-output name=root-package-major-version::$(node -p "parseInt(require('./package.json').version)")"
+        echo "::set-output name=is-release-candidate::$(node -p "require('./package.json').version.includes('rc')")"
