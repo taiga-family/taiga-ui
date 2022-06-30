@@ -1,7 +1,7 @@
 <div
     #focusableElement
     automation-id="tui-accordion__item-wrapper"
-    class="wrapper"
+    class="t-wrapper"
     [tuiFocusable]="computedFocusable"
     (tuiFocusVisibleChange)="onFocusVisible($event)"
     (tuiFocusedChange)="onFocused($event)"
@@ -11,15 +11,15 @@
 >
     <div
         automation-id="tui-accordion__item-header"
-        class="header"
-        [class.header_open]="open"
-        [class.header_hoverable]="!disableHover"
+        class="t-header"
+        [class.t-header_open]="open"
+        [class.t-header_hoverable]="!disableHover"
         (tuiHoveredChange)="onHovered($event)"
         (click)="onRowToggle()"
     >
         <div
             automation-id="tui-accordion__item-title"
-            class="title"
+            class="t-title"
         >
             <ng-content></ng-content>
         </div>
@@ -27,8 +27,8 @@
             *ngIf="showArrow"
             automation-id="tui-accordion__item-arrow"
             src="tuiIconChevronDownLarge"
-            class="icon"
-            [class.icon_open]="open"
+            class="t-icon"
+            [class.t-icon_open]="open"
         ></tui-svg>
     </div>
     <tui-expand
@@ -37,7 +37,7 @@
     >
         <div
             *ngIf="eagerContent"
-            class="content"
+            class="t-content"
         >
             <ng-content select="[tuiAccordionItemContent]"></ng-content>
         </div>
@@ -46,7 +46,7 @@
                 *ngIf="lazyContent"
                 polymorpheus-outlet
                 automation-id="tui-accordion__item-content"
-                class="content"
+                class="t-content"
                 [content]="lazyContent"
             ></div>
         </ng-template>
