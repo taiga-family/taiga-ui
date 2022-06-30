@@ -60,6 +60,7 @@ jobs:
       matrix:
         specFolder:
           [
+            addon-doc,
             addon-charts,
             addon-commerce,
             addon-editor,

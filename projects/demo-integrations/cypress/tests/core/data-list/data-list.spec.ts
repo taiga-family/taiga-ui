@@ -23,9 +23,9 @@ describe('DataList', () => {
         const dataListDebounce = 400;
 
         cy.get(`#submenu [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`)
-            .scrollIntoView()
-            .should('be.visible')
+            .tuiScrollIntoView()
             .click();
+
         cy.get('body')
             .type('{downarrow}'.repeat(2))
             .wait(dataListDebounce)
@@ -43,23 +43,24 @@ describe('DataList', () => {
 
     it('Form control', () => {
         cy.get(`#control [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`)
-            .scrollIntoView()
-            .should('be.visible')
+            .tuiScrollIntoView()
             .click();
 
         cy.get('tui-dropdown-box').should('be.visible').matchImageSnapshot('4-#control');
     });
 
     it('Complex', {responseTimeout: 30_000}, () => {
-        const demo = `tui-doc-example[id=complex] .t-demo`;
+        cy.get(`tui-doc-example[id=complex] .t-demo`)
+            .tuiScrollIntoView()
+            .as('complexDemo');
 
-        cy.get(demo).scrollIntoView().should('be.visible');
         cy.matchImageSnapshot('5-1-data-list-initial', {
             capture: 'viewport',
             blackout: ['tui-doc-navigation'],
         });
 
-        cy.get(demo).find('button').first().click();
+        cy.get('@complexDemo').find('button').first().click();
+
         cy.matchImageSnapshot('5-2-data-list-opened', {
             capture: 'viewport',
             blackout: ['tui-doc-navigation'],
@@ -121,7 +122,7 @@ describe('DataList', () => {
             blackout: ['tui-doc-navigation'],
         });
 
-        cy.get(demo).wait(DEFAULT_TIMEOUT_BEFORE_ACTION).click();
+        cy.get('@complexDemo').wait(DEFAULT_TIMEOUT_BEFORE_ACTION).click();
 
         cy.matchImageSnapshot('5-7-data-list-finish', {
             capture: 'viewport',
@@ -131,8 +132,7 @@ describe('DataList', () => {
 
     it('Options with long text', () => {
         cy.get(`#long-text-options [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`)
-            .scrollIntoView()
-            .should('be.visible')
+            .tuiScrollIntoView()
             .click();
 
         cy.get('tui-dropdown-box')
