@@ -10,7 +10,7 @@ import {runStandardVersion} from './shared/run-standard-verion';
 
 const ci = hasFlag('--ci-mode');
 const mode = getValueByFlag<TuiReleaseMode>('--release-as', 'minor');
-const dryRun = getValueByFlag<'True' | 'False'>('--dry-run', 'False') === 'True';
+const dryRun = getValueByFlag<'true' | 'false'>('--dry-run', 'false') === 'true';
 const newVersion = bumpVersion(version, mode);
 
 infoLog(JSON.stringify({ci, mode, newVersion, dryRun}, null, 4));
