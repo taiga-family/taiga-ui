@@ -131,7 +131,7 @@ describe('InputRange', () => {
             inputPOLeft.focus();
 
             expect(getLeftValueContent()).toBeNull();
-            expect(getLeftValueDecoration()).toBe('0лет');
+            expect(getLeftValueDecoration()).toBe('0 лет');
         });
 
         it('maxLabel is shown', () => {

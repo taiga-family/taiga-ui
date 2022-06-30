@@ -20,6 +20,7 @@ import {TuiInputNumberExample1} from './examples/1';
 import {TuiInputNumberExample2} from './examples/2';
 import {TuiInputNumberExample3} from './examples/3';
 import {TuiInputNumberExample4} from './examples/4';
+import {TuiInputNumberExample5} from './examples/5';
 import {ExampleTuiInputNumberComponent} from './input-number.component';
 
 @NgModule({
@@ -47,6 +48,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiInputNumberExample2,
         TuiInputNumberExample3,
         TuiInputNumberExample4,
+        TuiInputNumberExample5,
     ],
     exports: [ExampleTuiInputNumberComponent],
 })

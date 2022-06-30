@@ -46,6 +46,11 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+    };
+
     readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
 
     min = this.minVariants[0];
