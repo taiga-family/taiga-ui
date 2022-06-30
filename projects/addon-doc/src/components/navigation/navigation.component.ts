@@ -167,9 +167,7 @@ export class TuiDocNavigationComponent {
     private handleAnchorLink(hash: string): void {
         this.readyToScroll$
             .pipe(filter(Boolean), take(1), takeUntil(this.destroy$))
-            .subscribe(() => {
-                this.navigateToAnchorLink(hash);
-            });
+            .subscribe(() => this.navigateToAnchorLink(hash));
     }
 
     private openActivePageGroup(): void {
