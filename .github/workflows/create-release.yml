@@ -54,8 +54,9 @@ jobs:
 
       - run: |
           echo "Debug"
-          echo "${{ !steps.nodejs-workspace.outputs.is-release-candidate }}"
-          echo "${{ steps.nodejs-workspace.outputs.is-release-candidate }}"
+          echo "${{ github.event.inputs.dryRun != 'true' && steps.nodejs-workspace.outputs.is-release-candidate != 'true' }}"
+          echo "${{ github.event.inputs.dryRun != 'true' }}"
+          echo "${{ steps.nodejs-workspace.outputs.is-release-candidate != 'true' }}"
 
       - id: get-pr-body
         if: ${{ !contains(steps.run-release.outputs.new_version, 'rc') }}
@@ -89,7 +90,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ github.event.inputs.dryRun != 'true' }} && ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+        if: ${{ github.event.inputs.dryRun != 'true' && steps.nodejs-workspace.outputs.is-release-candidate != 'true' }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
