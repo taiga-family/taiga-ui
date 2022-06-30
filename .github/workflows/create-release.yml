@@ -55,8 +55,8 @@ jobs:
       - run: |
           echo "Debug"
           echo "${{ steps.run-release.outputs.new_version }}"
-          echo "${{ contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}"
-          echo "${{ !contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}"
+          echo "${{ contains(steps.run-release.outputs.new_version, 'rc') }}"
+          echo "${{ !contains(steps.run-release.outputs.new_version, 'rc') }}"
 
       - id: get-pr-body
         if: ${{ !contains('${{ steps.run-release.outputs.new_version }}', 'rc') }}
