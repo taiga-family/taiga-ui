@@ -22,7 +22,7 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    if: contains(${{ github.head_ref }}, 'main') || contains(${{ github.head_ref }}, 'release/')
+    if: ${{ contains('${{ github.head_ref }}', 'main') }} || ${{ contains('${{ github.head_ref }}', 'release/') }}
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
@@ -54,7 +54,7 @@ jobs:
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
 
       - id: get-pr-body for classic releases
-        if: !contains(${{ steps.nodejs-workspace.outputs.root-package-version }}, 'rc')
+        if: ${{ !contains('${{ steps.nodejs-workspace.outputs.root-package-version }}', 'rc') }}
         run: |
           body=$(cat RELEASE_BODY.md)
           body="${body//'%'/'%25'}"
@@ -63,7 +63,7 @@ jobs:
           echo ::set-output name=body::$body
 
       - id: get-pr-body for release candidate
-        if: contains(${{ steps.nodejs-workspace.outputs.root-package-version }}, 'rc')
+        if: ${{ contains('${{ steps.nodejs-workspace.outputs.root-package-version }}', 'rc') }}
         run: echo ::set-output name=body::$(echo "")
 
       - run: echo "${{ steps.get-pr-body.outputs.body }}"
