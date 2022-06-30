@@ -16,17 +16,18 @@ jobs:
 
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+        id: nodejs-workspace
 
-      - name: Get last version from package.json
+      - name: Get last tag
         id: info
-        run: |
-          echo "::set-output name=package_version::v$(node -p "require('./package.json').version")"
-          echo "::set-output name=tag::$(git describe HEAD --abbrev=0)"
+        run: echo "::set-output name=tag::$(git describe HEAD --abbrev=0)"
 
       - name: Show an error if the tag does not match
-        if: ${{ steps.info.outputs.package_version != steps.info.outputs.tag }}
+        if:
+          ${{ steps.nodejs-workspace.outputs.root-package-version != steps.info.outputs.tag &&
+          !contains(steps.nodejs-workspace.outputs.root-package-version, '-rc') }}
         run: |
-          echo "Version from package.json: ${{ steps.info.outputs.package_version }}"
+          echo "Version from package.json: ${{ steps.nodejs-workspace.outputs.root-package-version }}"
           echo "Last git tag: ${{ steps.info.outputs.tag }}"
           exit 1
 
