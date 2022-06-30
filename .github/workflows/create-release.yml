@@ -60,6 +60,10 @@ jobs:
           body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
+      - name: Debug RELEASE_BODY.md
+        if: ${{ github.event.inputs.dryRun == 'true' }}
+        run: echo ${{ steps.get-pr-body.outputs.body }}
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         if: ${{ github.event.inputs.dryRun != 'true' }}
