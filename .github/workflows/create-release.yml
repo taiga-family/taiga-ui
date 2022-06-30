@@ -63,17 +63,12 @@ jobs:
           body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
-      - id: get-pr-body
-        name: Get PR body for release candidate
-        if: ${{ contains('${{ steps.nodejs-workspace.outputs.root-package-version }}', 'rc') }}
-        run: echo ::set-output name=body::$(echo "")
-
       - run: echo "${{ steps.get-pr-body.outputs.body }}"
         if: ${{ github.event.inputs.dryRun == 'true' }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
-        if: ${{ github.event.inputs.dryRun != 'true' }}
+        #if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
