@@ -21,6 +21,7 @@ export class ExampleTuiAccordionComponent {
     open = false;
     rounded = true;
     showArrow = true;
+    disableHover = false;
 
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
