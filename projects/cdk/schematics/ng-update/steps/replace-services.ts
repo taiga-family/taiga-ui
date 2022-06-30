@@ -3,10 +3,11 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {Node, PropertyAccessExpression, SyntaxKind, TypeReferenceNode} from 'ng-morph';
 import {removeImport} from '../../utils/import-manipulations';
 import {addUniqueImport} from '../../utils/add-unique-import';
+import {infoLog} from '../../utils/colored-log';
 
 export function replaceServices(): void {
     SERVICES_TO_REPLACE.forEach(service => {
-        console.info('\x1b[34m', `replacing ${service.from.name}`);
+        infoLog(`replacing ${service.from.name}`);
         replaceService(service);
     });
 }

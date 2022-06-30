@@ -95,6 +95,45 @@ const TEMPLATE_BEFORE = `
     [scrollIntoView]="isActive(item)">
     {{ item.name }}
 </etc>
+
+<tui-multi-select
+    #component
+    [formControl]="testValue"
+    (searchChange)="onSearchChange($event)"
+>
+    Rock Star Frontend Developers
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items$ | async | tuiHideSelected : component"
+        [itemContent]="itemContent"
+    ></tui-data-list-wrapper>
+</tui-multi-select>
+
+<tui-multi-select #component [(ngModel)]="value">
+    <tui-data-list *tuiDataList>
+        <tui-opt-group
+            tuiMultiSelectGroup
+            label="Jedi"
+        >
+            <button
+                *ngFor="let item of jedi"
+                tuiOption
+                [value]="item"
+            >
+                {{item}}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group label="Sith">
+            <button
+                *ngFor="let item of sith | tuiHideSelected:component"
+                tuiOption
+                [value]="item"
+            >
+                {{item}}
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</tui-multi-select>
 `;
 
 const TEMPLATE_AFTER = `
@@ -173,6 +212,45 @@ const TEMPLATE_AFTER = `
     [tuiScrollIntoViewLink]="isActive(item)">
     {{ item.name }}
 </etc>
+
+<tui-multi-select
+    #component
+    [formControl]="testValue"
+    (searchChange)="onSearchChange($event)"
+>
+    Rock Star Frontend Developers
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items$ | async | tuiHideSelected"
+        [itemContent]="itemContent"
+    ></tui-data-list-wrapper>
+</tui-multi-select>
+
+<tui-multi-select #component [(ngModel)]="value">
+    <tui-data-list *tuiDataList>
+        <tui-opt-group
+            tuiMultiSelectGroup
+            label="Jedi"
+        >
+            <button
+                *ngFor="let item of jedi"
+                tuiOption
+                [value]="item"
+            >
+                {{item}}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group label="Sith">
+            <button
+                *ngFor="let item of sith | tuiHideSelected"
+                tuiOption
+                [value]="item"
+            >
+                {{item}}
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</tui-multi-select>
 `;
 
 const COMPONENT_BEFORE = `
