@@ -22,7 +22,7 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    if: ${{ contains('${{ github.head_ref }}', 'main') }} || ${{ contains('${{ github.head_ref }}', 'release/') }}
+    if: ${{ contains(github.head_ref, 'main') || contains(github.head_ref, 'release/') }}
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
@@ -51,13 +51,6 @@ jobs:
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
-
-      - run: |
-          echo "Debug"
-          echo "${{ github.event.inputs.dryRun != 'true' || !contains(steps.run-release.outputs.new_version, 'rc') }}"
-          echo "${{ github.event.inputs.dryRun != 'true' }}"
-          echo "${{ contains(steps.run-release.outputs.new_version, 'rc') }}"
-          echo "${{ !contains(steps.run-release.outputs.new_version, 'rc') }}"
 
       - id: get-pr-body
         if: ${{ !contains(steps.run-release.outputs.new_version, 'rc') }}
