@@ -20,6 +20,7 @@ env:
   PATH_NEXT_DIST: dist/gh-pages
   PATH_LOCAL_DIST: dist/demo
   NG_SERVER_PORT: 3333
+  ACTIONS_STEP_DEBUG: true
 
 jobs:
   build-demo:
@@ -58,22 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        specFolder:
-          [
-            addon-doc,
-            addon-charts,
-            addon-commerce,
-            addon-editor,
-            addon-icons,
-            addon-mobile,
-            addon-preview,
-            addon-table,
-            addon-tablebars,
-            core,
-            deep,
-            demo,
-            kit,
-          ]
+        specFolder: [addon-doc]
     name: ${{ matrix.specFolder }}
     steps:
       - uses: actions/checkout@v2
@@ -150,15 +136,28 @@ jobs:
           find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
           exit 1
 
-      - name: Upload artifact
+      - name: Make snapshot artifacts key
+        id: artifacts
+        if: failure()
+        run: |
+          key="e2e-screenshots-${{ github.head_ref }}-${{ matrix.specFolder }}"
+          key="${key//\//-}" # escaped
+          echo "::set-output name=snapshots-key::$key"
+
+      - uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          onlyPrefix: ${{ steps.artifacts.outputs.snapshots-key }}
+
+      - name: Upload new artifacts
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: screenshots-${{ matrix.specFolder }}
-          path: ${{ env.SNAPSHOTS_PATH }}
+          name: ${{ steps.artifacts.outputs.snapshots-key }}
+          path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
           if-no-files-found: ignore
-          retention-days: 5
+          retention-days: 1
 
 concurrency:
-  group: demo-integrations-${{ github.head_ref }}
+  group: e2e-${{ github.ref }}
   cancel-in-progress: true

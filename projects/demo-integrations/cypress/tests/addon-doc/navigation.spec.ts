@@ -2,7 +2,11 @@ import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../support/shared.entities';
 
 describe('Navigation', () => {
     it('getting started / [light mode]', () => {
-        cy.tuiVisit('/getting-started', {hideNavigation: false, hideHeader: false});
+        cy.tuiVisit('/getting-started', {
+            hideNavigation: Math.random() < 0.5, // # for debug
+            hideHeader: Math.random() < 0.5, // # for debug
+            enableNightMode: Math.random() < 0.5, // # for debug
+        });
 
         cy.get('tui-doc-navigation')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -11,9 +15,9 @@ describe('Navigation', () => {
 
     it('getting started / [night mode]', () => {
         cy.tuiVisit('/getting-started', {
-            hideNavigation: false,
-            hideHeader: false,
-            enableNightMode: true,
+            hideNavigation: Math.random() < 0.5, // # for debug
+            hideHeader: Math.random() < 0.5, // # for debug
+            enableNightMode: Math.random() < 0.5, // # for debug
         });
 
         cy.get('tui-doc-navigation')
