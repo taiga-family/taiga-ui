@@ -22,7 +22,7 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    if: ${{ contains(github.head_ref, 'main') || contains(github.head_ref, 'release/') }}
+    if: ${{ contains(github.ref, 'main') || contains(github.ref, 'release/') }}
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
