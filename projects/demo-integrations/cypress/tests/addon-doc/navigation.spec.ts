@@ -27,6 +27,8 @@ describe('Navigation', () => {
         it('scroll to `tui-doc-example`', () => {
             cy.tuiVisit('/components/input#table');
 
+            cy.get('#table').should('be.visible');
+
             cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
                 '03-anchor-link-doc-example',
                 {capture: 'viewport'},
@@ -35,6 +37,8 @@ describe('Navigation', () => {
 
         it('scroll to `tui-doc-code`', () => {
             cy.tuiVisit('/getting-started#options');
+
+            cy.get('#options').should('be.visible');
 
             cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
                 '04-anchor-link-doc-code',
