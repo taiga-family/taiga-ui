@@ -21,14 +21,29 @@ describe('Navigation', () => {
             .matchImageSnapshot('02-tui-doc-navigation-night-mode');
     });
 
-    it(
-        'anchor links navigation works (scroll to example)',
-        {scrollBehavior: false},
-        () => {
+    describe('anchor links navigation works', {scrollBehavior: false}, () => {
+        const waitShakeAnimationAndScroll = 2000;
+
+        it('scroll to `tui-doc-example`', () => {
             cy.tuiVisit('/components/input#table');
 
-            cy.wait(2000) // wait shake animation + scroll
-                .matchImageSnapshot('anchor-link-navigation', {capture: 'viewport'});
-        },
-    );
+            cy.get('#table').should('be.visible');
+
+            cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
+                '03-anchor-link-doc-example',
+                {capture: 'viewport'},
+            );
+        });
+
+        it('scroll to `tui-doc-code`', () => {
+            cy.tuiVisit('/getting-started#options');
+
+            cy.get('#options').should('be.visible');
+
+            cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
+                '04-anchor-link-doc-code',
+                {capture: 'viewport'},
+            );
+        });
+    });
 });
