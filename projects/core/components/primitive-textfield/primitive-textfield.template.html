@@ -44,10 +44,10 @@
     </div>
     <div class="t-content">
         <div
-            *ngIf="iconAlignLeft"
+            *ngIf="iconAlignLeft || iconLeftContent"
             polymorpheus-outlet
             class="t-icon t-icon_left"
-            [content]="iconContent"
+            [content]="iconAlignLeft ? iconContent : iconLeftContent"
             [context]="{$implicit: size}"
         >
             <ng-template let-iconSrc>

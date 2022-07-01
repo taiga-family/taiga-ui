@@ -72,6 +72,7 @@
                 [filler]="filler"
                 [iconAlign]="iconAlign"
                 [iconContent]="iconContent"
+                [iconLeftContent]="selectedLeftIcon"
                 [readOnly]="readOnly"
                 [prefix]="prefix"
                 [postfix]="postfix"
@@ -148,13 +149,36 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="iconLeftContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconLeftVariants"
+                [(documentationPropertyValue)]="selectedLeftIcon"
+            >
+                Left icon content. If content is a string, it is used as
+                stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
+                    <code>SvgService</code>
+                </a>
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="iconAlign"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="iconAlignVariants"
                 [(documentationPropertyValue)]="iconAlign"
             >
                 Icon align
+                <p>
+                    Use
+                    <code>iconLeftContent</code>
+                    instead.
+                </p>
             </ng-template>
             <ng-template
                 i18n

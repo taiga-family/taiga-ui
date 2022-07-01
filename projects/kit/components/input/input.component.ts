@@ -54,6 +54,11 @@ export class TuiInputComponent
 
     @Input()
     @tuiDefaultProp()
+    iconLeft: string | null = null;
+
+    /** @deprecated use `iconLeft` to position the icon on the left */
+    @Input()
+    @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'left';
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})

@@ -69,6 +69,12 @@ export class TuiSelectComponent<T>
     @tuiDefaultProp()
     valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
+    @Input()
+    @tuiDefaultProp()
+    iconLeft: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > = '';
+
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>

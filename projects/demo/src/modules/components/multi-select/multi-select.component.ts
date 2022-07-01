@@ -123,6 +123,10 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
+    readonly iconVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+
+    iconLeft = '';
+
     size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     stringifyVariants: Array<TuiStringHandler<Account | string>> = [

@@ -92,6 +92,7 @@
                     [uniqueTags]="uniqueTags"
                     [separator]="separator"
                     [icon]="icon"
+                    [iconLeft]="iconLeft"
                     [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
                     [allowSpaces]="allowSpaces"
@@ -201,13 +202,36 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="iconLeft"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | null"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="iconLeft"
+            >
+                An icon. It can be stringified svg or a name of icon registered
+                in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
+                    <code>SvgService</code>
+                </a>
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="iconAlign"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="iconAlignVariants"
                 [(documentationPropertyValue)]="iconAlign"
             >
                 Icon align
+                <p>
+                    Use
+                    <code>iconLeft</code>
+                    instead.
+                </p>
             </ng-template>
             <ng-template
                 i18n

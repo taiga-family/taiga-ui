@@ -85,9 +85,10 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/9/index.less'),
     };
 
-    readonly iconVariants = [null, 'tuiIconSearch', 'tuiIconCalendar'];
+    readonly iconVariants = [null, 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
 
     icon = this.iconVariants[0];
+    iconLeft = this.iconVariants[0];
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 

@@ -92,6 +92,10 @@ export class TuiMultiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
+    iconLeft = '';
+
+    @Input()
+    @tuiDefaultProp()
     identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 

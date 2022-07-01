@@ -17,12 +17,12 @@
     >
         <div class="t-content">
             <div
-                *ngIf="iconAlignLeft"
+                *ngIf="iconAlignLeft || iconLeft"
                 class="t-icons t-icons_left"
             >
                 <tui-svg
                     class="t-icon"
-                    [src]="icon"
+                    [src]="iconAlignLeft ? icon : iconLeft"
                 ></tui-svg>
             </div>
             <div class="t-wrapper">

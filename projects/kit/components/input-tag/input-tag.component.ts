@@ -130,6 +130,11 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
+    iconLeft = '';
+
+    /** @deprecated use `iconLeft` to position the icon on the left */
+    @Input()
+    @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'right';
 
     @Input()

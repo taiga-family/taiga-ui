@@ -66,8 +66,10 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     theme = this.themes[0];
 
     readonly iconVariants = ['', 'tuiIconSearch', 'Interactive content'];
+    readonly iconLeftVariants = ['', 'tuiIconMail', 'tuiIconStar'];
 
     selectedIcon = this.iconVariants[0];
+    selectedLeftIcon = this.iconLeftVariants[0];
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 

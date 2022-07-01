@@ -73,6 +73,7 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     filler = '';
 
+    /** @deprecated use `iconLeftContent` to position the icon content on the left */
     @Input()
     @tuiDefaultProp()
     iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
@@ -82,6 +83,12 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
         null;
+
+    @Input()
+    @tuiDefaultProp()
+    iconLeftContent: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+    > | null = null;
 
     @Input()
     @tuiDefaultProp()
@@ -225,7 +232,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconAlignLeft ? this.iconPaddingLeft : 0;
+        return this.iconAlignLeft || this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
     @HostBinding('style.--border-end.rem')
