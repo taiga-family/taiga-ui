@@ -15,6 +15,7 @@ on:
           - major
       dryRun:
         type: boolean
+        default: false
         required: false
         description: --dry-run
 
