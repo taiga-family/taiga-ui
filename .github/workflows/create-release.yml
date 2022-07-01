@@ -45,12 +45,6 @@ jobs:
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
 
-      - name: Debug
-        run: |
-          echo ${{ github.event.inputs.dryRun != 'true' || !contains(github.event.inputs.mode, 'prerelease') }}
-          echo ${{ github.event.inputs.dryRun != 'true' }}
-          echo ${{ !contains(github.event.inputs.mode, 'prerelease') }}
-
       - name: Generate Release Body
         id: generate_body
         run: |
@@ -66,7 +60,8 @@ jobs:
           body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
-      - run: echo "${{ steps.get-pr-body.outputs.body }}"
+      - name: Debug body of pull request in dry mode
+        run: echo "${{ steps.get-pr-body.outputs.body }}"
         if: ${{ github.event.inputs.dryRun == 'true' }}
 
       - name: Create Pull Request
