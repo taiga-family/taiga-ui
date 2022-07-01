@@ -8,11 +8,14 @@ export function readyToScrollFactory(
 ): Observable<boolean> {
     return resize$.pipe(
         map(() => {
-            const exampleElements = Array.from(
-                hostElement.nativeElement.querySelectorAll('tui-doc-example'),
-            );
+            const host = hostElement.nativeElement;
+            const exampleElements = Array.from(host.querySelectorAll('tui-doc-example'));
+            const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
 
-            return exampleElements.every(el => el.querySelector('.t-example'));
+            return (
+                exampleElements.every(el => el.querySelector('.t-example')) &&
+                codeElements.every(el => el.querySelector('.t-code'))
+            );
         }),
     );
 }
