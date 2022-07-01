@@ -1,5 +1,6 @@
 import {
     Component,
+    ElementRef,
     Inject,
     InjectFlags,
     Injector,
@@ -9,18 +10,21 @@ import {
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {
     TUI_IS_ANDROID,
     TUI_IS_CYPRESS,
     TUI_IS_IOS,
     TuiDestroyService,
     tuiPure,
+    TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Metrika} from 'ng-yandex-metrika';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
+import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 
 // @dynamic
 @Component({
@@ -29,7 +33,15 @@ import {environment} from '../../environments/environment';
     styleUrls: ['./app.style.less'],
     host: {'[class._is-cypress-mode]': 'isCypress'},
     encapsulation: ViewEncapsulation.None,
-    providers: [TuiDestroyService],
+    providers: [
+        TuiDestroyService,
+        TuiResizeService,
+        {
+            provide: TUI_DOC_PAGE_LOADED,
+            deps: [ElementRef, TuiResizeService],
+            useFactory: readyToScrollFactory,
+        },
+    ],
     changeDetection,
 })
 export class AppComponent implements OnInit {

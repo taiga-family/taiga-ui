@@ -10,13 +10,14 @@ import {
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiPure, uniqBy} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
+import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
@@ -25,8 +26,6 @@ import {
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
 } from './navigation.providers';
-
-const SCROLL_INTO_VIEW_DELAY = 200;
 
 // @dynamic
 @Component({
@@ -67,6 +66,9 @@ export class TuiDocNavigationComponent {
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+        @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(TUI_DOC_PAGE_LOADED)
+        private readonly readyToScroll$: Observable<boolean>,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
@@ -163,9 +165,9 @@ export class TuiDocNavigationComponent {
     }
 
     private handleAnchorLink(hash: string): void {
-        setTimeout(() => {
-            this.navigateToAnchorLink(hash);
-        }, SCROLL_INTO_VIEW_DELAY);
+        this.readyToScroll$
+            .pipe(filter(Boolean), take(1), takeUntil(this.destroy$))
+            .subscribe(() => this.navigateToAnchorLink(hash));
     }
 
     private openActivePageGroup(): void {

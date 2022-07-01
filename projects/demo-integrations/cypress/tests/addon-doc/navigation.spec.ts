@@ -20,4 +20,15 @@ describe('Navigation', () => {
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot('02-tui-doc-navigation-night-mode');
     });
+
+    it(
+        'anchor links navigation works (scroll to example)',
+        {scrollBehavior: false},
+        () => {
+            cy.tuiVisit('/components/input#table');
+
+            cy.wait(2000) // wait shake animation + scroll
+                .matchImageSnapshot('anchor-link-navigation', {capture: 'viewport'});
+        },
+    );
 });
