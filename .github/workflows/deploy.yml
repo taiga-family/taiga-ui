@@ -24,29 +24,29 @@ jobs:
         uses: ./.github/actions/nodejs
         id: nodejs-workspace
 
-      - name: Build all snapshots
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
-        run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
-
-      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
-        uses: s0/git-publish-subdir-action@v2.5.1
-        env:
-          REPO: self
-          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          FOLDER: dist/demo/browser
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
-
-      - name: Deploy
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        with:
-          branch: gh-pages
-          folder: dist/demo/browser
-          token: ${{ secrets.TINKOFF_BOT_PAT }}
-          clean: true
-          clean-exclude: |
-            CNAME
+#      - name: Build all snapshots
+#        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+#        run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
+#
+#      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+#        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+#        uses: s0/git-publish-subdir-action@v2.5.1
+#        env:
+#          REPO: self
+#          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+#          FOLDER: dist/demo/browser
+#          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+#
+#      - name: Deploy
+#        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+#        uses: JamesIves/github-pages-deploy-action@v4.2.5
+#        with:
+#          branch: gh-pages
+#          folder: dist/demo/browser
+#          token: ${{ secrets.TINKOFF_BOT_PAT }}
+#          clean: true
+#          clean-exclude: |
+#            CNAME
 
 concurrency:
   group: deploy-${{ github.head_ref }}

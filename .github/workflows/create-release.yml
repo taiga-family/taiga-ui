@@ -15,7 +15,6 @@ on:
           - major
       dryRun:
         type: boolean
-        default: false
         required: false
         description: --dry-run
 
@@ -46,6 +45,12 @@ jobs:
                 --dry-run ${{ github.event.inputs.dryRun }}
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
 
+      - name: Debug
+        run: |
+          echo ${{ github.event.inputs.dryRun != 'true' || !contains(github.event.inputs.mode, 'prerelease') }}
+          echo ${{ github.event.inputs.dryRun != 'true' }}
+          echo ${{ !contains(github.event.inputs.mode, 'prerelease') }}
+
       - name: Generate Release Body
         id: generate_body
         run: |
@@ -53,7 +58,7 @@ jobs:
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
 
       - id: get-pr-body
-        if: ${{ !contains(steps.run-release.outputs.new_version, 'rc') }}
+        if: ${{ !contains(github.event.inputs.mode, 'prerelease') }}
         run: |
           body=$(cat RELEASE_BODY.md)
           body="${body//'%'/'%25'}"
@@ -84,7 +89,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ github.event.inputs.dryRun != 'true' || !contains(steps.run-release.outputs.new_version, 'rc') }}
+        if: ${{ github.event.inputs.dryRun != 'true' || !contains(github.event.inputs.mode, 'prerelease') }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
