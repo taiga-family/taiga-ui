@@ -4,6 +4,13 @@
     box-shadow: inset 0 -2px var(--tui-base-03);
 }
 
+:host-context(tui-tabs >):first-child,
+:host-context([tuiTabs] >):first-child,
+:host-context(tui-tabs > :first-child),
+:host-context([tuiTabs] > :first-child) {
+    margin-left: 0;
+}
+
 :host {
     .transition(all);
     .clearbtn();
@@ -20,7 +27,7 @@
     text-decoration: none;
     color: inherit;
     transition-property: color, box-shadow, opacity;
-    margin-right: var(--tui-tab-margin, 1.5rem);
+    margin-left: var(--tui-tab-margin, 1.5rem);
 
     &:hover {
         color: var(--tui-text-01);
