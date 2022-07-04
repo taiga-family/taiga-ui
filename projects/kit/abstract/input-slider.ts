@@ -8,15 +8,10 @@ import {
 } from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
-/**
- * @deprecated: use {@link tuiQuantumAssertion} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function quantumAssertion(quantum: number): boolean {
     return quantum > 0;
 }
-
-export const tuiQuantumAssertion = quantumAssertion;
 
 /**
  * @internal

@@ -10,24 +10,15 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 
-/**
- * @deprecated: use {@link tuiNonNegativeFiniteAssertion} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function nonNegativeFiniteAssertion(value: number): boolean {
     return isFinite(value) && value >= 0;
 }
 
-/**
- * @deprecated: use {@link tuiVolumeAssertion} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function volumeAssertion(volume: number): boolean {
     return isFinite(volume) && volume >= 0 && volume <= 1;
 }
-
-export const tuiNonNegativeFiniteAssertion = nonNegativeFiniteAssertion;
-export const tuiVolumeAssertion = volumeAssertion;
 
 @Directive({
     selector: 'video[tuiMedia], audio[tuiMedia]',

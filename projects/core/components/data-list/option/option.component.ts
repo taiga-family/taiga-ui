@@ -28,17 +28,12 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 
-/**
- * @deprecated: use {@link tuiShouldFocus} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function shouldFocus({
     currentTarget,
 }: TuiEventWith<MouseEvent, HTMLElement>): boolean {
     return !isNativeFocused(currentTarget);
 }
-
-export const tuiShouldFocus = shouldFocus;
 
 // TODO: Consider all use cases for aria roles
 @Component({

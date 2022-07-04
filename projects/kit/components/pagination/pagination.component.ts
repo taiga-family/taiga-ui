@@ -39,15 +39,10 @@ import {Observable} from 'rxjs';
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
-/**
- * @deprecated: use {@link tuiNonNegativeInteger} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function nonNegativeInteger(length: number): boolean {
     return Number.isInteger(length) && length >= 0;
 }
-
-export const tuiNonNegativeInteger = nonNegativeInteger;
 
 // @dynamic
 @Component({

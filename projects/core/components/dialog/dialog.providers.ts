@@ -23,9 +23,6 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 
 const SCROLLBAR_PLACEHOLDER = 17;
 
-/**
- * @deprecated: use {@link tuiDialogCloseStreamFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function dialogCloseStreamFactory(
     documentRef: Document,
@@ -73,8 +70,6 @@ export function dialogCloseStreamFactory(
           ).pipe(takeUntil(destroy$))
         : close$;
 }
-
-export const tuiDialogCloseStreamFactory = dialogCloseStreamFactory;
 
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(
     'Dialogs closing stream',

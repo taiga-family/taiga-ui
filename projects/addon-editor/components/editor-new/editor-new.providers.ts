@@ -38,9 +38,6 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
     TuiEditorPortalService,
 ];
 
-/**
- * @deprecated: use {@link tuiExtensionsFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function extensionsFactory(
     extensions: Array<Promise<Extension>>,
@@ -53,21 +50,11 @@ export function extensionsFactory(
     return extensions$;
 }
 
-export const tuiExtensionsFactory = extensionsFactory;
-
-/**
- * @deprecated: use {@link tuiInitializationTipTapContainer} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function initializationTipTapContainer(renderer: Renderer2): HTMLElement {
     return renderer.createElement('div');
 }
 
-export const tuiInitializationTipTapContainer = initializationTipTapContainer;
-
-/**
- * @deprecated: use {@link tuiEditorFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function editorFactory(
     element: HTMLElement,
@@ -86,5 +73,3 @@ export function editorFactory(
         shareReplay({bufferSize: 1, refCount: true}),
     );
 }
-
-export const tuiEditorFactory = editorFactory;

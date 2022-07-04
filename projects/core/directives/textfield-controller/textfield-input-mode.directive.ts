@@ -20,12 +20,7 @@ export class TuiTextfieldInputModeDirective extends TuiController {
     inputMode: TuiInputModeT = 'text';
 }
 
-/**
- * @deprecated: use {@link tuiInputModeDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function inputModeDirectiveFactory(): TuiTextfieldInputModeDirective {
     return new TuiTextfieldInputModeDirective();
 }
-
-export const tuiInputModeDirectiveFactory = inputModeDirectiveFactory;

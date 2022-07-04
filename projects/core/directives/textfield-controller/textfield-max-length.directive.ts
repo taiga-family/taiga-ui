@@ -20,12 +20,7 @@ export class TuiTextfieldMaxLengthDirective extends TuiController {
     maxLength: number | null = null;
 }
 
-/**
- * @deprecated: use {@link tuiMaxLengthDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function maxLengthDirectiveFactory(): TuiTextfieldMaxLengthDirective {
     return new TuiTextfieldMaxLengthDirective();
 }
-
-export const tuiMaxLengthDirectiveFactory = maxLengthDirectiveFactory;

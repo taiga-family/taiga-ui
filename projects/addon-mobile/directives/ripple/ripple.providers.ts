@@ -31,9 +31,6 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiRippleStartFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function rippleStartFactory(
     touchSupported: boolean,
@@ -72,11 +69,6 @@ export function rippleStartFactory(
           );
 }
 
-export const tuiRippleStartFactory = rippleEndFactory;
-
-/**
- * @deprecated: use {@link tuiRippleEndFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function rippleEndFactory(
     touchSupported: boolean,
@@ -93,5 +85,3 @@ export function rippleEndFactory(
               takeUntil(destroy$),
           );
 }
-
-export const tuiRippleEndFactory = rippleEndFactory;

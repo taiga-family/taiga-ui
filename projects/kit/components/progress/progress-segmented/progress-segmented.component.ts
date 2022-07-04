@@ -2,25 +2,15 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
-/**
- * @deprecated: use {@link tuiNonNegativeInt} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function nonNegativeInt(value: number): boolean {
     return Number.isInteger(value) && value >= 0;
 }
 
-export const tuiNonNegativeInt = nonNegativeInt;
-
-/**
- * @deprecated: use {@link tuiPositiveInt} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function positiveInt(value: number): boolean {
     return Number.isInteger(value) && value > 0;
 }
-
-export const tuiPositiveInt = positiveInt;
 
 @Component({
     selector: 'tui-progress-segmented',
