@@ -40,9 +40,6 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiSheetDraggedFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function sheetDraggedFactory({
     nativeElement,
@@ -53,11 +50,6 @@ export function sheetDraggedFactory({
     );
 }
 
-export const tuiSheetDraggedFactory = sheetDraggedFactory;
-
-/**
- * @deprecated: use {@link tuiSheetScrollFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function sheetScrollFactory(
     {nativeElement}: ElementRef<HTMLElement>,
@@ -76,5 +68,3 @@ export function sheetScrollFactory(
               share(),
           );
 }
-
-export const tuiSheetScrollFactory = sheetScrollFactory;

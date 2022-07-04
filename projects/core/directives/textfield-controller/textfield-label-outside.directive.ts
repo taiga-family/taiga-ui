@@ -20,12 +20,7 @@ export class TuiTextfieldLabelOutsideDirective extends TuiController {
     labelOutside = false;
 }
 
-/**
- * @deprecated: use {@link tuiLabelOutsideDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function labelOutsideDirectiveFactory(): TuiTextfieldLabelOutsideDirective {
     return new TuiTextfieldLabelOutsideDirective();
 }
-
-export const tuiLabelOutsideDirectiveFactory = labelOutsideDirectiveFactory;

@@ -22,12 +22,7 @@ export class TuiTextfieldCustomContentDirective extends TuiController {
     customContent: PolymorpheusContent | null = '';
 }
 
-/**
- * @deprecated: use {@link tuiCustomContentDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function customContentDirectiveFactory(): TuiTextfieldCustomContentDirective {
     return new TuiTextfieldCustomContentDirective();
 }
-
-export const tuiCustomContentDirectiveFactory = customContentDirectiveFactory;

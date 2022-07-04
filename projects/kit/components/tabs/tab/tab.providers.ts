@@ -34,9 +34,6 @@ export const TUI_TAB_PROVIDERS: Provider[] = [
     MODE_PROVIDER,
 ];
 
-/**
- * @deprecated: use {@link tuiTabActiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function tabActiveFactory(
     {nativeElement}: ElementRef<HTMLElement>,
@@ -62,5 +59,3 @@ export function tabActiveFactory(
         ),
     );
 }
-
-export const tuiTabActiveFactory = tabActiveFactory;

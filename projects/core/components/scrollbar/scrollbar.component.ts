@@ -12,17 +12,12 @@ import {getElementOffset, isFirefox, TUI_IS_IOS, tuiDefaultProp} from '@taiga-ui
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
-/**
- * @deprecated: use {@link tuiScrollRefFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function scrollRefFactory({
     browserScrollRef,
 }: TuiScrollbarComponent): ElementRef<HTMLElement> {
     return browserScrollRef;
 }
-
-export const tuiScrollRefFactory = scrollRefFactory;
 
 // @dynamic
 @Component({

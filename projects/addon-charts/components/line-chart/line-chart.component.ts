@@ -25,15 +25,10 @@ import {distinctUntilChanged} from 'rxjs/operators';
 
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
-/**
- * @deprecated: use {@link tuiSmoothingAssertion} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function smoothingAssertion(smoothingFactor: number): boolean {
     return inRange(smoothingFactor, 0, 100);
 }
-
-export const tuiSmoothingAssertion = smoothingAssertion;
 
 const SMOOTHING_MESSAGE = 'smoothingFactor must be between 0 and 100';
 

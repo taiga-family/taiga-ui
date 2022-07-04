@@ -15,9 +15,6 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-/**
- * @deprecated: use {@link tuiIosScrollFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function iosScrollFactory(
     element: HTMLElement,
@@ -54,11 +51,6 @@ export function iosScrollFactory(
     return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(ngZone), share());
 }
 
-export const tuiIosScrollFactory = iosScrollFactory;
-
-/**
- * @deprecated: use {@link tuiProcessDragged} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function processDragged(
     dragged$: Observable<boolean>,
@@ -78,11 +70,6 @@ export function processDragged(
     );
 }
 
-export const tuiProcessDragged = processDragged;
-
-/**
- * @deprecated: use {@link tuiFakeSmoothScroll} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
     style.transition = 'none';
@@ -93,5 +80,3 @@ export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
         style.transform = '';
     });
 }
-
-export const tuiFakeSmoothScroll = fakeSmoothScroll;

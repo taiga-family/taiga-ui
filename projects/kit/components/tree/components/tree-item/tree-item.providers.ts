@@ -15,12 +15,7 @@ export const TUI_TREE_ITEM_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiTreeLevelFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function treeLevelFactory(level: number): number {
     return ++level;
 }
-
-export const tuiTreeLevelFactory = treeLevelFactory;

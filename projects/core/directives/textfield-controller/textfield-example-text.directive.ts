@@ -20,12 +20,7 @@ export class TuiTextfieldExampleTextDirective extends TuiController {
     exampleText = '';
 }
 
-/**
- * @deprecated: use {@link tuiExampleTextDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function exampleTextDirectiveFactory(): TuiTextfieldExampleTextDirective {
     return new TuiTextfieldExampleTextDirective();
 }
-
-export const tuiExampleTextDirectiveFactory = exampleTextDirectiveFactory;

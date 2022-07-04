@@ -50,15 +50,10 @@ const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
 const MONOSPACE_FONT = 'Courier';
 const IE_TRANSPARENT = 16777215;
 
-/**
- * @deprecated: use {@link tuiToolsAssertion} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function toolsAssertion(tools: readonly TuiEditorTool[]): boolean {
     return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }
-
-export const tuiToolsAssertion = toolsAssertion;
 
 // @dynamic
 @Component({

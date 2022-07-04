@@ -1,7 +1,6 @@
 import {TuiPluralize} from '@taiga-ui/core/types';
 
 /**
- * @deprecated: use {@link tuiPluralize} instead
  * Selects the correct plural form to display.
  *
  * @param value the input number
@@ -26,5 +25,3 @@ export function pluralize(value: number, [one, few, many]: TuiPluralize): string
 
     return many;
 }
-
-export const tuiPluralize = pluralize;

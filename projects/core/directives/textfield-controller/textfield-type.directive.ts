@@ -22,12 +22,7 @@ export class TuiTextfieldTypeDirective extends TuiController {
     type: TuiInputTypeT = 'text';
 }
 
-/**
- * @deprecated: use {@link tuiTypeDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function typeDirectiveFactory(): TuiTextfieldTypeDirective {
     return new TuiTextfieldTypeDirective();
 }
-
-export const tuiTypeDirectiveFactory = typeDirectiveFactory;

@@ -19,9 +19,6 @@ export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiPullingFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function pullingFactory(
     isIOS: boolean,
@@ -56,5 +53,3 @@ export function pullingFactory(
         }, 0),
     );
 }
-
-export const tuiPullingFactory = pullingFactory;

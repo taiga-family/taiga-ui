@@ -30,9 +30,6 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
         ),
 });
 
-/**
- * @deprecated: use {@link tuiInputGroupedTextsFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function inputGroupedTextsFactory(
     windowRef: Window,
@@ -62,5 +59,3 @@ export function inputGroupedTextsFactory(
         })),
     );
 }
-
-export const tuiInputGroupedTextsFactory = inputGroupedTextsFactory;

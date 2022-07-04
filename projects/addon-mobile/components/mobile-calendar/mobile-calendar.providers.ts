@@ -35,9 +35,6 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiValueStreamFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function valueStreamFactory(
     value$: Observable<TuiDayRange | null> | null,
@@ -46,5 +43,3 @@ export function valueStreamFactory(
 ): Observable<TuiDayRange | null> {
     return (value$ || EMPTY).pipe(watch(changeDetectorRef), takeUntil(destroy$));
 }
-
-export const tuiValueStreamFactory = valueStreamFactory;

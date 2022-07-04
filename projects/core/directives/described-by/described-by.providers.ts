@@ -31,9 +31,6 @@ export const TUI_DESCRIBED_BY_PROVIDERS: Provider[] = [
     },
 ];
 
-/**
- * @deprecated: use {@link tuiDescribedByFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function describedByFactory(
     focusVisible$: Observable<boolean>,
@@ -68,5 +65,3 @@ export function describedByFactory(
         )
         .pipe(distinctUntilChanged());
 }
-
-export const tuiDescribedByFactory = describedByFactory;

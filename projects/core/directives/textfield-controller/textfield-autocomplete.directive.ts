@@ -20,12 +20,7 @@ export class TuiTextfieldAutocompleteDirective extends TuiController {
     autocomplete: TuiAutofillFieldName | '' = '';
 }
 
-/**
- * @deprecated: use {@link tuiAutocompleteDirectiveFactory} instead
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function autocompleteDirectiveFactory(): TuiTextfieldAutocompleteDirective {
     return new TuiTextfieldAutocompleteDirective();
 }
-
-export const tuiAutocompleteDirectiveFactory = autocompleteDirectiveFactory;
