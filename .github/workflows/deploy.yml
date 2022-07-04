@@ -25,11 +25,11 @@ jobs:
         id: nodejs-workspace
 
       - name: Build all snapshots
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
         run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
 
       - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
@@ -38,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
       - name: Deploy
-        if: ${{ !steps.nodejs-workspace.outputs.is-release-candidate }}
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
@@ -49,5 +49,5 @@ jobs:
             CNAME
 
 concurrency:
-  group: deploy-${{ github.head_ref }}
+  group: deploy-${{ github.ref }}
   cancel-in-progress: true
