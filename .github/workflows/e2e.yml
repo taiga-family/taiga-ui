@@ -47,9 +47,19 @@ jobs:
       - name: Build branch demo-app
         run: npm run build:demo
 
+  cleanup-artifact:
+    name: Cleanup artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "SNAPSHOTS_KEY=e2e-screenshots-${GITHUB_REF//\//-}" >> $GITHUB_ENV
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+          name: ${{ env.SNAPSHOTS_KEY }}
+          failOnError: false
+
   cypress:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    needs: [build-demo]
+    needs: [cleanup-artifact, build-demo]
     runs-on: ubuntu-latest
     services:
       sorry-cypress-director:
@@ -136,25 +146,12 @@ jobs:
           find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
           exit 1
 
-      - name: Make snapshot artifacts key
-        id: artifacts
-        if: failure()
-        run: |
-          key="e2e-screenshots-${{ github.head_ref }}-${{ matrix.specFolder }}"
-          key="${key//\//-}" # escaped
-          echo "::set-output name=snapshots-key::$key"
-
-      - uses: kolpav/purge-artifacts-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          onlyPrefix: ${{ steps.artifacts.outputs.snapshots-key }}
-
-      - name: Upload new artifacts
+      - name: Upload new artifacts / ${{ env.SNAPSHOTS_KEY }}
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: ${{ steps.artifacts.outputs.snapshots-key }}
           path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
+          name: ${{ env.SNAPSHOTS_KEY }}
           if-no-files-found: ignore
           retention-days: 1
 
