@@ -11,9 +11,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiGroupExample1 {
+    readonly items = ['Option 1', 'Option 2', 'Option 3'];
+
     testForm = new FormGroup({
         testValue: new FormControl('', Validators.required),
-        testValue2: new FormControl('', Validators.required),
+        multiSelectControl: new FormControl([], Validators.required),
         testValue3: new FormControl('', Validators.required),
     });
 }

@@ -21,16 +21,23 @@
             ></tui-error>
         </div>
         <div>
-            <tui-input
-                formControlName="testValue2"
-                tuiTextfieldExampleText="House building"
+            <tui-multi-select
+                formControlName="multiSelectControl"
                 tuiHintContent="Write house building"
                 class="tui-group__inherit-item"
+                [tuiTextfieldLabelOutside]="true"
+                [editable]="false"
+                [expandable]="false"
             >
                 Building
-            </tui-input>
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    tuiMultiSelectGroup
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-multi-select>
             <tui-error
-                formControlName="testValue2"
+                formControlName="multiSelectControl"
                 [error]="[] | tuiFieldError | async"
             ></tui-error>
         </div>

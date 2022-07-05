@@ -21,6 +21,7 @@ import {
     TuiFieldErrorPipeModule,
     TuiInputModule,
     TuiInputNumberModule,
+    TuiMultiSelectModule,
     TuiProjectClassModule,
     TuiRadioBlockModule,
     TuiSelectModule,
@@ -56,6 +57,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAddonDocModule,
+        TuiMultiSelectModule,
         RouterModule.forChild(generateRoutes(ExampleTuiGroupComponent)),
     ],
     declarations: [
