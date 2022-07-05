@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.52.0](https://github.com/tinkoff/taiga-ui/compare/v2.51.1...v2.52.0) (2022-07-05)
+
+### Features
+
+- **addon-doc:** new token `TUI_DOC_PAGE_LOADED` to fix anchor links (scroll to examples)
+  ([#2031](https://github.com/tinkoff/taiga-ui/issues/2031))
+  ([c43d7f5](https://github.com/tinkoff/taiga-ui/commit/c43d7f53d0109c519d8dbddcf3db5e488db58762))
+- **addon-doc:** token `TUI_DOC_CODE_ACTIONS` + show required modules for controllers in examples
+  ([#2013](https://github.com/tinkoff/taiga-ui/issues/2013))
+  ([9606035](https://github.com/tinkoff/taiga-ui/commit/96060358bf1d1008dbfa9c4566b1e5f1a02a9e7d))
+
+### Bug Fixes
+
+- **core:** preserve whitespaces in postfix for value-decoration
+  ([#2006](https://github.com/tinkoff/taiga-ui/issues/2006))
+  ([c767c5d](https://github.com/tinkoff/taiga-ui/commit/c767c5dabd18c101279fb3c01778ed49fedd65f7))
+- **kit:** `MultiSelect` inside `Group` border-radius problem ([#2050](https://github.com/tinkoff/taiga-ui/issues/2050))
+  ([9858271](https://github.com/tinkoff/taiga-ui/commit/9858271ad5f865cd8c4a6d5f02257c56882596a7))
+- **kit:** fix disableHover input in `AccordionItem` ([#2028](https://github.com/tinkoff/taiga-ui/issues/2028))
+  ([4b8a7f8](https://github.com/tinkoff/taiga-ui/commit/4b8a7f85aac13a00095c0bcb7eca3c4de7db7b64))
+- **kit:** sequences of white space are preserved for `inputTag`
+  ([#2046](https://github.com/tinkoff/taiga-ui/issues/2046))
+  ([253cabe](https://github.com/tinkoff/taiga-ui/commit/253cabedfc7688dbb99ba7e1a8459879768e980d))
+
 ### [2.51.1](https://github.com/tinkoff/taiga-ui/compare/v2.51.0...v2.51.1) (2022-06-28)
 
 ### Bug Fixes

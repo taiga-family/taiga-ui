@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-tablebars",
-    "version": "2.51.1",
+    "version": "2.52.0",
     "description": "Table bars is interactive UI control for group table actions and similar cases",
     "keywords": [
         "angular",
@@ -15,8 +15,8 @@
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@taiga-ui/cdk": ">=2.51.1",
-        "@taiga-ui/core": ">=2.51.1",
+        "@taiga-ui/cdk": ">=2.52.0",
+        "@taiga-ui/core": ">=2.52.0",
         "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "rxjs": ">=6.0.0"
     }
