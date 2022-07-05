@@ -11,4 +11,5 @@ export const tuiScrollIntoView = (
             easing: 'linear',
             duration: 0,
         })
-        .should('be.visible');
+        .should('be.visible')
+        .should('be.inViewport');

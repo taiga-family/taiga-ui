@@ -1,4 +1,7 @@
-import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
+import {
+    tuiAddMatchImageSnapshotCommand,
+    tuiBeInViewportAssertion,
+} from '@taiga-ui/testing/cypress';
 
 import {tuiFocus} from './focus';
 import {tuiHideHeader} from './hide-header';
@@ -26,6 +29,10 @@ declare global {
             tuiTab(direction: 'forward' | 'backward'): Chainable;
             tuiScrollIntoView(): Chainable;
             tuiFocus(): Chainable;
+        }
+
+        interface Chainer<Subject> {
+            (chainer: 'be.inViewport'): Chainable<Subject>;
         }
     }
 }
@@ -81,3 +88,5 @@ tuiAddMatchImageSnapshotCommand({
         windowSize: 24,
     } as any,
 });
+
+chai.use(tuiBeInViewportAssertion);
