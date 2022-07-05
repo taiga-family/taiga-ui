@@ -49,7 +49,6 @@ import {
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
@@ -131,11 +130,6 @@ export class TuiInputTagComponent
     @Input()
     @tuiDefaultProp()
     iconLeft = '';
-
-    /** @deprecated use `iconLeft` to position the icon on the left */
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @tuiDefaultProp()
@@ -286,16 +280,8 @@ export class TuiInputTagComponent
         return !!this.hintController.content && !this.disabled;
     }
 
-    get iconAlignLeft(): boolean {
-        return !!this.icon && this.iconAlign === 'left';
-    }
-
-    get iconAlignRight(): boolean {
-        return !!this.icon && this.iconAlign === 'right';
-    }
-
     get hasRightIcons(): boolean {
-        return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
+        return this.hasCleaner || this.hasTooltip || !!this.icon;
     }
 
     get status(): TuiStatusT {

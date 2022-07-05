@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     Inject,
-    Input,
     Optional,
     Self,
     TemplateRef,
@@ -17,13 +16,11 @@ import {
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
     TuiDataListDirective,
     TuiDataListHost,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
@@ -47,19 +44,6 @@ export class TuiInputComponent
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    @Input()
-    @tuiDefaultProp()
-    icon: string | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    iconLeft: string | null = null;
-
-    /** @deprecated use `iconLeft` to position the icon on the left */
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'left';
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<

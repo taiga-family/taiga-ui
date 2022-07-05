@@ -17,12 +17,12 @@
     >
         <div class="t-content">
             <div
-                *ngIf="iconAlignLeft || iconLeft"
+                *ngIf="iconLeft"
                 class="t-icons t-icons_left"
             >
                 <tui-svg
                     class="t-icon"
-                    [src]="iconAlignLeft ? icon : iconLeft"
+                    [src]="iconLeft"
                 ></tui-svg>
             </div>
             <div class="t-wrapper">
@@ -131,7 +131,7 @@
                     [hideDelay]="hintController.hideDelay"
                 ></tui-tooltip>
                 <tui-svg
-                    *ngIf="iconAlignRight"
+                    *ngIf="icon"
                     class="t-icon"
                     [src]="icon"
                 ></tui-svg>

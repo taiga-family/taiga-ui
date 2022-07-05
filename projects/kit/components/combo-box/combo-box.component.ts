@@ -88,12 +88,6 @@ export class TuiComboBoxComponent<T>
     @tuiDefaultProp()
     search: string | null = null;
 
-    @Input()
-    @tuiDefaultProp()
-    iconLeft: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
-    > = '';
-
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 

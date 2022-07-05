@@ -93,7 +93,6 @@
                     [separator]="separator"
                     [icon]="icon"
                     [iconLeft]="iconLeft"
-                    [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
                     [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
@@ -204,7 +203,7 @@
                 i18n
                 documentationPropertyName="iconLeft"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="iconLeft"
             >
@@ -216,22 +215,6 @@
                 >
                     <code>SvgService</code>
                 </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyDeprecated]="true"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
-                <p>
-                    Use
-                    <code>iconLeft</code>
-                    instead.
-                </p>
             </ng-template>
             <ng-template
                 i18n

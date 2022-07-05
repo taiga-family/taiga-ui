@@ -7,6 +7,7 @@
     <tui-primitive-textfield
         automation-id="tui-select__textfield"
         class="t-textfield"
+        [tuiTextfieldIcon]="arrow"
         [editable]="false"
         [pseudoFocused]="computedFocused"
         [pseudoHovered]="pseudoHovered"
@@ -14,8 +15,6 @@
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="arrow"
-        [iconLeftContent]="iconLeft"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="computedValue"

@@ -1,5 +1,6 @@
 <tui-primitive-textfield
     class="textfield"
+    [tuiTextfieldIcon]="!disabled ? iconContent : ''"
     [pseudoFocused]="pseudoFocused"
     [pseudoHovered]="pseudoHovered"
     [pseudoPressed]="pseudoPressed"
@@ -8,7 +9,6 @@
     [nativeId]="nativeId"
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
-    [iconContent]="!disabled ? iconContent : null"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"

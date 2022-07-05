@@ -86,7 +86,6 @@
                     [focusable]="focusable"
                     [valueContent]="valueContent"
                     [identityMatcher]="identityMatcher"
-                    [iconLeft]="iconLeft"
                     [readOnly]="readOnly"
                     [strict]="strict"
                     [stringify]="stringify"
@@ -103,6 +102,7 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldMaxLength]="maxLength"
                     [tuiTextfieldExampleText]="exampleText"
@@ -237,23 +237,6 @@
                 [(documentationPropertyValue)]="selectedValueTemplate"
             >
                 A template for custom view of selected value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconLeft"
-                documentationPropertyMode="input"
-                documentationPropertyType="string | null"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconLeft"
-            >
-                An icon. It can be stringified svg or a name of icon registered
-                in
-                <a
-                    tuiLink
-                    routerLink="/services/svg-service"
-                >
-                    <code>SvgService</code>
-                </a>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

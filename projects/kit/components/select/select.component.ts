@@ -32,7 +32,7 @@ import {
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -68,12 +68,6 @@ export class TuiSelectComponent<T>
     @Input()
     @tuiDefaultProp()
     valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
-
-    @Input()
-    @tuiDefaultProp()
-    iconLeft: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
-    > = '';
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<

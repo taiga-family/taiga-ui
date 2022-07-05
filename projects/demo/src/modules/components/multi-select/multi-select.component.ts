@@ -123,7 +123,12 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    readonly iconVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+    readonly iconVariants = [
+        '',
+        'tuiIconSearchLarge',
+        'tuiIconPiechartLarge',
+        'tuiIconCardsLarge',
+    ];
 
     iconLeft = '';
 
