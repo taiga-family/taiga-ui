@@ -3,6 +3,7 @@
 :host {
     position: relative;
     display: block;
+    border-radius: var(--tui-radius-m);
 
     &._disabled {
         pointer-events: none;
@@ -11,9 +12,12 @@
 
 .t-hosted {
     display: block;
+    border-radius: inherit;
 }
 
 .input {
+    border-radius: inherit;
+
     :host:not(._editable):not(._readonly) & {
         cursor: pointer;
     }
