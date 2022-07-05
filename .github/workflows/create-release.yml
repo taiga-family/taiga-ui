@@ -23,6 +23,9 @@ jobs:
     name: Run release
     runs-on: ubuntu-latest
     if: ${{ contains(github.ref, 'main') || contains(github.ref, 'release/') }}
+    env:
+      IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
+      IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
@@ -52,7 +55,7 @@ jobs:
           echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
 
       - id: get-pr-body
-        if: ${{ !contains(github.event.inputs.mode, 'prerelease') }}
+        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
         run: |
           body=$(cat RELEASE_BODY.md)
           body="${body//'%'/'%25'}"
@@ -62,11 +65,12 @@ jobs:
 
       - name: Debug body of pull request in dry mode
         run: echo "${{ steps.get-pr-body.outputs.body }}"
-        if: ${{ github.event.inputs.dryRun == 'true' }}
+        if: ${{ env.IS_DRY_MODE == 'true' }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
-        if: ${{ github.event.inputs.dryRun != 'true' }}
+        if: ${{ env.IS_DRY_MODE == 'false' }}
+
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
@@ -84,7 +88,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ github.event.inputs.dryRun != 'true' || !contains(github.event.inputs.mode, 'prerelease') }}
+        if: ${{ env.IS_DRY_MODE == 'false' && env.IS_RRE_RELEASE_MODE == 'false' }}
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
@@ -93,5 +97,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
 concurrency:
-  group: create-release-${{ github.head_ref }}
+  group: create-release-${{ github.ref }}
   cancel-in-progress: true
