@@ -269,8 +269,8 @@
 }
 
 // typical properties for text overflow with ellipsis
-.text-overflow() {
-    white-space: nowrap;
+.text-overflow(@type: nowrap) {
+    white-space: @type;
     overflow: hidden;
     text-overflow: ellipsis;
 }
