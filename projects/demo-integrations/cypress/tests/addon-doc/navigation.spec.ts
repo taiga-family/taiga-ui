@@ -21,30 +21,24 @@ describe('Navigation', () => {
             .matchImageSnapshot('02-tui-doc-navigation-night-mode');
     });
 
-    // TODO: flaky tests. Investigate and fix/delete them.
-    describe.skip('anchor links navigation works', {scrollBehavior: false}, () => {
-        const waitShakeAnimationAndScroll = 2000;
-
+    describe('anchor links navigation works', {scrollBehavior: false}, () => {
         it('scroll to `tui-doc-example`', () => {
             cy.tuiVisit('/components/input#table');
 
-            cy.get('#table').should('be.visible');
-
-            cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
-                '03-anchor-link-doc-example',
-                {capture: 'viewport'},
-            );
+            cy.get('#table').should('be.inViewport');
         });
 
         it('scroll to `tui-doc-code`', () => {
             cy.tuiVisit('/getting-started#options');
 
-            cy.get('#options').should('be.visible');
+            cy.get('#options').should('be.visible').should('be.inViewport');
+        });
 
-            cy.wait(waitShakeAnimationAndScroll).matchImageSnapshot(
-                '04-anchor-link-doc-code',
-                {capture: 'viewport'},
-            );
+        it('scroll after click on link with anchor', () => {
+            cy.tuiVisit('/getting-started');
+
+            cy.get('a[fragment="root"]').should('be.visible').click();
+            cy.get('#root').should('be.inViewport');
         });
     });
 });
