@@ -32,7 +32,7 @@ import {
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 

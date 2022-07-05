@@ -6,7 +6,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export const TUI_TEXTFIELD_ICON_LEFT = new InjectionToken<TuiTextfieldIconLeftDirective>(
     'tuiTextfieldIconLeft',
     {
-        factory: iconLeftDirectiveFactory,
+        factory: tuiIconLeftDirectiveFactory,
     },
 );
 
@@ -24,6 +24,6 @@ export class TuiTextfieldIconLeftDirective extends AbstractTuiController {
     iconLeft: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> = '';
 }
 
-export function iconLeftDirectiveFactory(): TuiTextfieldIconLeftDirective {
+export function tuiIconLeftDirectiveFactory(): TuiTextfieldIconLeftDirective {
     return new TuiTextfieldIconLeftDirective();
 }

@@ -46,7 +46,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
