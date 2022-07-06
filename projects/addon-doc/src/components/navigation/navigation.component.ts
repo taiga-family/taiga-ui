@@ -18,6 +18,7 @@ import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
+import {TUI_DOC_SCROLL_BEHAVIOR} from '../../tokens/scroll-behavior';
 import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
@@ -69,6 +70,7 @@ export class TuiDocNavigationComponent {
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(TUI_DOC_PAGE_LOADED)
         private readonly readyToScroll$: Observable<boolean>,
+        @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
@@ -202,7 +204,7 @@ export class TuiDocNavigationComponent {
         element.scrollIntoView({
             block: 'start',
             inline: 'nearest',
-            behavior: 'smooth',
+            behavior: this.scrollBehavior,
         });
     }
 }

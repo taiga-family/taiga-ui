@@ -8,6 +8,7 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
+    TUI_DOC_SCROLL_BEHAVIOR,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
@@ -113,6 +114,10 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_ANIMATIONS_DURATION,
         useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
+    },
+    {
+        provide: TUI_DOC_SCROLL_BEHAVIOR,
+        useFactory: () => (inject(TUI_IS_CYPRESS) ? 'auto' : 'smooth'), // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
