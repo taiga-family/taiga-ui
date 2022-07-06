@@ -124,6 +124,11 @@ export class TuiInputNumberComponent
     }
 
     get inputMode(): TuiInputModeT {
+        if (this.isIOS && this.isNegativeAllowed) {
+            // iphones do not have minus sign if inputMode is equal to 'numeric' / 'decimal'
+            return 'text';
+        }
+
         return this.decimal === 'never' ? 'numeric' : 'decimal';
     }
 
