@@ -1,9 +1,10 @@
-interface TypeToRename {
+export interface TypeToRename {
     readonly from: string;
     readonly to?: string;
     readonly moduleSpecifier?: string | string[];
     readonly preserveGenerics?: boolean;
 }
+
 export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {
         from: 'ButtonOptions',

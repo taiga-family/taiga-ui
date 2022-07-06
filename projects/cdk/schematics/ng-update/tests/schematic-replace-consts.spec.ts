@@ -19,7 +19,7 @@ import { TuiAlertModule } from "@taiga-ui/core";
 import { Validators } from "@angular/forms";
 import {Component} from '@angular/core';
 import { tuiCreateAutoCorrectedDatePipe, tuiCreateDateMask, tuiCreateDateRangeMask } from '@taiga-ui/kit';
-import { getClosestFocusable, AbstractTuiController } from '@taiga-ui/cdk';
+import { tuiGetClosestFocusable, AbstractTuiController } from '@taiga-ui/cdk';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent extends AbstractTuiController {
@@ -36,7 +36,7 @@ export class AppComponent extends AbstractTuiController {
     control = new FormControl('', [Validators.nullValidator]);
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
-        if (getClosestFocusable(target, 'button')) {
+        if (tuiGetClosestFocusable(target, 'button')) {
             return null;
         }
     }
@@ -66,7 +66,7 @@ const BEFORE = `import {Component} from '@angular/core';
 import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, TuiCountryIsoCode, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
 import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
 import { TuiController } from '@taiga-ui/cdk';
-import { getClosestKeyboardFocusable, identity } from '@taiga-ui/cdk';
+import { tuiGetClosestFocusable, identity } from '@taiga-ui/cdk';
 import { TuiNotificationsModule } from '@taiga-ui/core';
 import { TableComands } from '@taiga-ui/addon-editor';
 import {TuiResizableColumnModule} from '@taiga-ui/addon-table';
@@ -86,7 +86,7 @@ export class AppComponent extends TuiController {
     control = new FormControl('', [EMPTY_VALIDATOR]);
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
-        if (getClosestKeyboardFocusable(target, 'button')) {
+        if (tuiGetClosestFocusable(target, 'button')) {
             return null;
         }
     }

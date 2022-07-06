@@ -1,12 +1,10 @@
 /**
- * @deprecated: use {@link tuiPadStart} instead
+ * @deprecated use String.prototype.padStart in 3.0 (after Chrome 49 support is dropped)
  * Pads a string with symbols in the beginning
  *
  * @param sourceString
  * @param minResultLength
  * @param padString string to pad with
- *
- * @deprecated use String.prototype.padStart in 3.0 (after Chrome 49 support is dropped)
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function padStart(
@@ -22,5 +20,3 @@ export function padStart(
 
     return padString.repeat(padSize / padString.length).slice(0, padSize) + sourceString;
 }
-
-export const tuiPadStart = padStart;

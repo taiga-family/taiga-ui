@@ -1,5 +1,5 @@
 /**
- * @deprecated: use {@link tuiColorFallback} instead
+ * @deprecated has been deleted in 3.0, please use CSS variables
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function colorFallback(color: string | null): string {
@@ -14,5 +14,3 @@ export function colorFallback(color: string | null): string {
             return `var(--tui-${color || 'base-05'})`;
     }
 }
-
-export const tuiColorFallback = colorFallback;
