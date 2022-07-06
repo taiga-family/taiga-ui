@@ -2,7 +2,7 @@
 
 :host {
     .scrollbar-hidden();
-    position: relative;
+    .createStackingContext();
     display: flex;
     font: var(--tui-font-text-m);
     height: var(--tui-height-l);
@@ -21,4 +21,8 @@
         background: var(--tui-link);
         box-shadow: none;
     }
+}
+
+.t-underline {
+    z-index: -1;
 }
