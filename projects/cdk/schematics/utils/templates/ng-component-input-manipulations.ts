@@ -163,6 +163,7 @@ export function replaceInputPropertyByDirective({
     inputProperty,
     directive,
     directiveModule,
+    filterFn,
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
@@ -170,6 +171,7 @@ export function replaceInputPropertyByDirective({
     inputProperty: string;
     directive: string;
     directiveModule?: {name: string; moduleSpecifier: string};
+    filterFn?: (element: Element) => boolean;
 }): void {
     const wasModified = replaceInputProperty({
         templateResource,
@@ -177,6 +179,7 @@ export function replaceInputPropertyByDirective({
         componentSelector,
         from: inputProperty,
         to: directive,
+        filterFn,
     });
 
     if (wasModified && directiveModule) {
