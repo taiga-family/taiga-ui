@@ -1,10 +1,13 @@
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
+import {Element} from 'parse5';
+import {hasElementAttribute} from '../../utils/templates/elements';
 
 export interface ReplacementAttributes {
     readonly from: {
         readonly attrName: string;
         readonly withTagNames?: string[];
         readonly withAttrsNames?: string[];
+        readonly filterFn?: (element: Element) => boolean;
     };
     readonly to: {
         readonly attrName: string;
@@ -19,6 +22,7 @@ export interface ReplacementTags {
 
 export interface AttributeToDirective {
     readonly componentSelector: string | string[];
+    readonly filterFn?: (element: Element) => boolean;
     readonly inputProperty: string;
     readonly directive: string;
     readonly directiveModule: {
@@ -27,7 +31,34 @@ export interface AttributeToDirective {
     };
 }
 
+export interface InputToRemove {
+    readonly inputName: string;
+    readonly tags: string[];
+}
+
 export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
+    {
+        from: {
+            attrName: 'icon',
+            withTagNames: ['tui-input-tag'],
+            filterFn: element =>
+                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+        },
+        to: {
+            attrName: 'iconLeft',
+        },
+    },
+    {
+        from: {
+            attrName: '[icon]',
+            withTagNames: ['tui-input-tag'],
+            filterFn: element =>
+                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+        },
+        to: {
+            attrName: '[iconLeft]',
+        },
+    },
     {
         from: {attrName: 'tuiResizableColumn', withAttrsNames: ['tuiResizableColumn']},
         to: {attrName: 'tuiTh [resizable]="true"'},
@@ -82,6 +113,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
         to: {
             attrName: '[step]',
         },
+    },
+];
+
+export const INPUTS_TO_REMOVE: InputToRemove[] = [
+    {
+        inputName: 'iconAlign',
+        tags: ['tui-input', 'tui-primitive-textfield', 'tui-input-tag'],
     },
 ];
 
@@ -157,6 +195,52 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
+    },
+    {
+        componentSelector: 'tui-input',
+        inputProperty: 'icon',
+        directive: 'tuiTextfieldIcon',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+    },
+    {
+        componentSelector: 'tui-input',
+        inputProperty: 'icon',
+        directive: 'tuiTextfieldIconLeft',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            !hasElementAttribute(element, 'iconAlign') ||
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+    },
+    {
+        componentSelector: 'tui-primitive-textfield',
+        inputProperty: 'iconContent',
+        directive: 'tuiTextfieldIcon',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            !hasElementAttribute(element, 'iconAlign') ||
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+    },
+    {
+        componentSelector: 'tui-primitive-textfield',
+        inputProperty: 'iconContent',
+        directive: 'tuiTextfieldIconLeft',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
     },
     {
         componentSelector: '*',

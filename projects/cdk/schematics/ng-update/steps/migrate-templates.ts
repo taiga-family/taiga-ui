@@ -3,6 +3,7 @@ import {UpdateRecorder} from '@angular-devkit/schematics';
 import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
+    INPUTS_TO_REMOVE,
     TAGS_TO_REPLACE,
     TEMPLATE_COMMENTS,
 } from '../constants/templates';
@@ -16,7 +17,10 @@ import {
 } from '../../utils/templates/elements';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {TemplateResource} from '../interfaces/template-resourse';
-import {replaceInputPropertyByDirective} from '../../utils/templates/ng-component-input-manipulations';
+import {
+    getInputPropertyOffsets,
+    replaceInputPropertyByDirective,
+} from '../../utils/templates/ng-component-input-manipulations';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
@@ -41,6 +45,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         addHTMLCommentTags,
         addEditorProviders,
         migrateTuiHideSelectedPipe,
+        removeInputs,
     ];
 
     componentWithTemplatesPaths.forEach(resource => {
@@ -60,7 +65,7 @@ function replaceAttrsByDirective({
     fileSystem: DevkitFileSystem;
 }) {
     ATTR_TO_DIRECTIVE.forEach(
-        ({componentSelector, directiveModule, directive, inputProperty}) => {
+        ({componentSelector, directiveModule, directive, inputProperty, filterFn}) => {
             replaceInputPropertyByDirective({
                 componentSelector,
                 directiveModule,
@@ -68,6 +73,7 @@ function replaceAttrsByDirective({
                 inputProperty,
                 fileSystem,
                 templateResource: resource,
+                filterFn,
             });
         },
     );
@@ -91,11 +97,13 @@ function replaceAttrs({
                 template,
                 from.attrName,
                 from.withTagNames || [],
+                from.filterFn,
             ),
             ...findAttributeOnElementWithAttrs(
                 template,
                 from.attrName,
                 from.withAttrsNames || [],
+                from.filterFn,
             ),
         ];
 
@@ -343,5 +351,29 @@ function migrateTuiHideSelectedPipe({
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
+    });
+}
+
+function removeInputs({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    INPUTS_TO_REMOVE.forEach(({inputName, tags}) => {
+        const offsets = [
+            ...getInputPropertyOffsets(template, inputName, tags),
+            ...getInputPropertyOffsets(template, `[${inputName}]`, tags),
+        ];
+
+        offsets.forEach(([start, end]) => {
+            recorder.remove(start + templateOffset, end - start);
+        });
     });
 }
