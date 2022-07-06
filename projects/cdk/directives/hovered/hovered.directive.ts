@@ -1,18 +1,31 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {TuiHoveredService} from '@taiga-ui/cdk/services';
-import {Observable} from 'rxjs';
+import {Directive, EventEmitter, HostListener, Output} from '@angular/core';
+import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk/classes';
+import {shouldCall} from '@tinkoff/ng-event-plugins';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
+    tuiAssertIsHTMLElement(currentTarget);
+    tuiAssertIsHTMLElement(relatedTarget);
+
+    return !currentTarget.contains(relatedTarget);
+}
 
 @Directive({
     selector: '[tuiHoveredChange]',
 })
 export class TuiHoveredDirective {
     @Output()
-    readonly tuiHoveredChange: Observable<boolean>;
+    readonly tuiHoveredChange = new EventEmitter<boolean>();
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
-    ) {
-        this.tuiHoveredChange = hoveredService.createHovered$(nativeElement);
+    @HostListener('mouseenter')
+    onHover(): void {
+        this.tuiHoveredChange.emit(true);
+    }
+
+    @shouldCall(movedOut)
+    @HostListener('mouseout.init', ['$event'])
+    @HostListener('mouseout.silent', ['$event'])
+    onOut(_: MouseEvent): void {
+        this.tuiHoveredChange.emit(false);
     }
 }

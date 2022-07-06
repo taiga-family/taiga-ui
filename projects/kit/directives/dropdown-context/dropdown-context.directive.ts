@@ -10,12 +10,14 @@ import {
     Input,
 } from '@angular/core';
 import {
+    EMPTY_CLIENT_RECT,
     getClosestFocusable,
     getNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiPointToClientRect,
     TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
@@ -39,7 +41,7 @@ export class TuiDropdownContextDirective
     extends AbstractTuiDropdown
     implements TuiDropdown
 {
-    private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
+    private lastClickedClientRect = EMPTY_CLIENT_RECT;
 
     @Input('tuiDropdownContext')
     @tuiDefaultProp()
@@ -136,19 +138,8 @@ export class TuiDropdownContextDirective
     }
 
     private openDropdown(x: number, y: number): void {
-        this.lastClickedClientRect = this.getClientRectFromDot(x, y);
+        this.lastClickedClientRect = tuiPointToClientRect(x, y);
         this.openDropdownBox();
-    }
-
-    private getClientRectFromDot(x: number, y: number): ClientRect {
-        return {
-            top: y,
-            bottom: y,
-            left: x,
-            right: x,
-            height: 0,
-            width: 0,
-        };
     }
 
     private checkIsFocusableElement(element: Element | null): element is HTMLElement {

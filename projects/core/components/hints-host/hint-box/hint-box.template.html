@@ -9,6 +9,7 @@
     polymorpheus-outlet
     class="t-tooltip"
     [content]="hint.content"
+    (tuiHoveredChange)="onHovered($event)"
 >
     <ng-template let-text>
         <span class="t-text">{{ text }}</span>
