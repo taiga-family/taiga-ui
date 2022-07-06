@@ -44,6 +44,7 @@ export * from './tokens/i18n';
 export * from './tokens/logo';
 export * from './tokens/page-loaded';
 export * from './tokens/pages';
+export * from './tokens/scroll-behavior';
 export * from './tokens/see-also';
 export * from './tokens/source-code';
 export * from './tokens/title';
