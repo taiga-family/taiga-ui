@@ -6,7 +6,7 @@ describe('Stepper', () => {
             it('horizontal', () => {
                 cy.viewport('iphone-x');
                 cy.tuiVisit('/navigation/stepper/API?orientation=horizontal');
-                cy.get('#demoContent').scrollIntoView();
+                cy.get('#demoContent').tuiScrollIntoView();
 
                 cy.get('#demoContent [tuiStep]').should('exist').as('steps');
 
@@ -19,7 +19,7 @@ describe('Stepper', () => {
             it('vertical', () => {
                 cy.viewport(350, 170);
                 cy.tuiVisit('/navigation/stepper/API?orientation=vertical');
-                cy.get('#demoContent').scrollIntoView();
+                cy.get('#demoContent').tuiScrollIntoView();
 
                 cy.get('#demoContent [tuiStep]').should('exist').as('steps');
 

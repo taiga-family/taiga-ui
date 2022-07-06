@@ -38,7 +38,7 @@ describe('Slider', () => {
             .findByAutomationId('key-steps-example-control-value')
             .as('controlValue');
 
-        cy.get('@slider').scrollIntoView();
+        cy.get('@slider').tuiScrollIntoView();
 
         const testsMeta = [
             {inputStep: 1, prettifiedControlValue: '14,500'},
