@@ -7,7 +7,6 @@ import {
 } from '@taiga-ui/cdk/exceptions';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
-import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
@@ -232,7 +231,7 @@ export class TuiDay extends TuiMonth {
     }
 
     get formattedDayPart(): string {
-        return padStart(String(this.day), 2, '0');
+        return String(this.day).padStart(2, '0');
     }
 
     /**

@@ -25,7 +25,6 @@ import {
 } from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
-    getClosestElement,
     isNativeFocusedIn,
     setNativeFocused,
     tuiDefaultProp,
@@ -172,7 +171,7 @@ export class TuiToolbarNewComponent {
 
     @HostListener('mousedown', ['$event', '$event.target'])
     onMouseDown(event: MouseEvent, target: HTMLElement): void {
-        if (getClosestElement(target, 'button')) {
+        if (target.closest('button')) {
             return;
         }
 
