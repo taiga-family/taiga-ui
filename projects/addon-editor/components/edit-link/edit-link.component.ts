@@ -8,7 +8,6 @@ import {
     Optional,
     Output,
 } from '@angular/core';
-import {getClosestElement} from '@taiga-ui/cdk';
 import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
 
 const MAX_LENGTH = 60;
@@ -124,7 +123,7 @@ export class TuiEditLinkComponent {
             return '';
         }
 
-        const a = getClosestElement(focusNode.parentElement, 'a');
+        const a = focusNode.parentElement.closest('a');
 
         return a ? this.removePrefix(a.getAttribute('href') || '') : '';
     }
