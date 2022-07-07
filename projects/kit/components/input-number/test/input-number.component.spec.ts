@@ -233,7 +233,7 @@ describe('InputNumber', () => {
         it(`The given value from the form is correctly converted to a string`, () => {
             testComponent.control.setValue(-12345.67);
 
-            expect(component.computedValue).toBe(`-12${CHAR_NO_BREAK_SPACE}345,67`);
+            expect(component.computedValue).toBe(`-12${CHAR_NO_BREAK_SPACE}345`);
         });
 
         it(`The given value from the form is correctly converted to a string with 0's at start`, () => {
