@@ -11,7 +11,7 @@
         [href]="src"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     >
-        <ng-container *ngTemplateOutlet="fileInfoTemplate"></ng-container>
+        <ng-container [ngTemplateOutlet]="fileInfoTemplate"></ng-container>
     </a>
 </ng-template>
 

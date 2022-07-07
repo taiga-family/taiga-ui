@@ -1,4 +1,4 @@
-<ng-container *ngTemplateOutlet="context.$implicit"></ng-container>
+<ng-container [ngTemplateOutlet]="context.$implicit"></ng-container>
 <tui-svg
     *ngIf="selected$ | async; else dummy"
     automation-id="tui-select-option__checkmark"

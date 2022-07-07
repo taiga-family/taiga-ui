@@ -41,7 +41,7 @@
                     class="t-scrollbar"
                     [hidden]="true"
                 >
-                    <ng-container *ngTemplateOutlet="items"></ng-container>
+                    <ng-container [ngTemplateOutlet]="items"></ng-container>
                 </tui-scrollbar>
                 <ng-template #items>
                     <div

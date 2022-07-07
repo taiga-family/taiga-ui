@@ -12,7 +12,7 @@
             <code>DropdownContext</code>
             allows to show custom right click context dropdown.
         </p>
-        <ng-container *ngTemplateOutlet="tips"></ng-container>
+        <ng-container [ngTemplateOutlet]="tips"></ng-container>
 
         <tui-doc-example
             id="basic"
@@ -61,7 +61,7 @@
                 let-close="close"
             >
                 <div class="dropdown">
-                    <ng-container *ngTemplateOutlet="tips"></ng-container>
+                    <ng-container [ngTemplateOutlet]="tips"></ng-container>
 
                     <button
                         tuiButton
