@@ -1,6 +1,5 @@
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';
-export * from './fallback-value';
 export * from './flat-length';
 export * from './get-original-array-from-query-list';
 export * from './get-swipe-direction';

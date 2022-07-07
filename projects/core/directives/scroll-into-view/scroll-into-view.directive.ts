@@ -1,6 +1,5 @@
-import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {tuiCustomEvent, TuiDestroyService, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
 import {Observable, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -27,21 +26,16 @@ export class TuiScrollIntoViewDirective {
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this.elementRef.nativeElement.dispatchEvent(
-                    tuiCustomEvent<Element>(
-                        TUI_SCROLL_INTO_VIEW,
-                        {
-                            bubbles: true,
-                            detail: this.elementRef.nativeElement,
-                        },
-                        this.documentRef,
-                    ),
+                    new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {
+                        bubbles: true,
+                        detail: this.elementRef.nativeElement,
+                    }),
                 );
             });
     }
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {}
 }
