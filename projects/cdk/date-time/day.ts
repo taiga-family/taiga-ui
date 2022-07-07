@@ -7,7 +7,6 @@ import {
 } from '@taiga-ui/cdk/exceptions';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
-import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
@@ -143,22 +142,22 @@ export class TuiDay extends TuiMonth {
 
     static parseRawDateString(
         date: string,
-        dateMode: TuiDateMode = `DMY`,
+        dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
         tuiAssert.assert(
             date.length === DATE_FILLER_LENGTH,
-            `[parseRawDateString]: wrong date string length`,
+            '[parseRawDateString]: wrong date string length',
         );
 
         switch (dateMode) {
-            case `YMD`:
+            case 'YMD':
                 return {
                     day: parseInt(date.slice(8, 10), 10),
                     month: parseInt(date.slice(5, 7), 10) - 1,
                     year: parseInt(date.slice(0, 4), 10),
                 };
 
-            case `MDY`:
+            case 'MDY':
                 return {
                     day: parseInt(date.slice(3, 5), 10),
                     month: parseInt(date.slice(0, 2), 10) - 1,
@@ -166,7 +165,7 @@ export class TuiDay extends TuiMonth {
                 };
 
             default:
-            case `DMY`:
+            case 'DMY':
                 return {
                     day: parseInt(date.slice(0, 2), 10),
                     month: parseInt(date.slice(3, 5), 10) - 1,
@@ -183,7 +182,7 @@ export class TuiDay extends TuiMonth {
      * @param dateMode date format of the date string (DMY | MDY | YMD)
      * @return normalized date
      */
-    static normalizeParse(rawDate: string, dateMode: TuiDateMode = `DMY`): TuiDay {
+    static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
         const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
 
         return TuiDay.normalizeOf(year, month, day);
@@ -196,7 +195,7 @@ export class TuiDay extends TuiMonth {
      * @throws exceptions if any part of the date is invalid
      */
     static jsonParse(yearMonthDayString: string): TuiDay {
-        const {day, month, year} = this.parseRawDateString(yearMonthDayString, `YMD`);
+        const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
         if (!TuiYear.isValidYear(year)) {
             throw new InvalidYearException(year);
@@ -232,7 +231,7 @@ export class TuiDay extends TuiMonth {
     }
 
     get formattedDayPart(): string {
-        return padStart(String(this.day), 2, `0`);
+        return String(this.day).padStart(2, '0');
     }
 
     /**
@@ -392,7 +391,7 @@ export class TuiDay extends TuiMonth {
     getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
         tuiAssert.assert(
             separator.length === 1,
-            `Separator should consist of only 1 symbol`,
+            'Separator should consist of only 1 symbol',
         );
 
         const dd = this.formattedDayPart;
@@ -400,17 +399,17 @@ export class TuiDay extends TuiMonth {
         const yyyy = this.formattedYear;
 
         switch (dateFormat) {
-            case `YMD`:
+            case 'YMD':
                 return `${yyyy}${separator}${mm}${separator}${dd}`;
-            case `MDY`:
+            case 'MDY':
                 return `${mm}${separator}${dd}${separator}${yyyy}`;
-            case `DMY`:
+            case 'DMY':
             default:
                 return `${dd}${separator}${mm}${separator}${yyyy}`;
         }
     }
 
-    toString(dateFormat: TuiDateMode = `DMY`, separator: string = `.`): string {
+    toString(dateFormat: TuiDateMode = 'DMY', separator: string = '.'): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 
