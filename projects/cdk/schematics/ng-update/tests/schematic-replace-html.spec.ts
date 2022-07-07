@@ -180,7 +180,7 @@ const TEMPLATE_AFTER = `
 <tui-breadcrumbs>
     <ng-container *ngFor="let item of items$ | async">
         <a
-            *tuiBreadcrumb
+            *tuiItem
             tuiLink
             [routerLink]="item.routerLink"
         >
