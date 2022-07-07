@@ -1247,7 +1247,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: $localize`Format`,
-                keywords: `Инструменты, утилиты, форматирующие, format, px, padStart, getCurrencySymbol, capitalize,
+                keywords: `Инструменты, утилиты, форматирующие, format, px, getCurrencySymbol, capitalize,
                            formatPhone`,
                 route: `/utils/format`,
             },
