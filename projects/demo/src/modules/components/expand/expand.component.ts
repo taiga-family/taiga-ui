@@ -1,8 +1,6 @@
-import {DOCUMENT} from '@angular/common';
 import {ChangeDetectorRef, Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 
 @Component({
@@ -31,7 +29,6 @@ export class ExampleTuiExpandComponent {
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
     ) {}
 
     onExpandedChange(expanded: boolean): void {
@@ -43,11 +40,7 @@ export class ExampleTuiExpandComponent {
         }
 
         setTimeout(() => {
-            const event = tuiCustomEvent(
-                TUI_EXPAND_LOADED,
-                {bubbles: true},
-                this.documentRef,
-            );
+            const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
             this.delayed = false;
             this.changeDetectorRef.detectChanges();

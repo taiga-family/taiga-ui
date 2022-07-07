@@ -23,12 +23,12 @@ import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@taiga-ui/addon-editor/token
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    getClosestElement,
     isNativeFocusedIn,
     isNodeIn,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAssert,
+    tuiAssertIsHTMLElement,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiDestroyService,
@@ -195,7 +195,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             !this.focusableElement.nativeFocusableElement ||
             !(event.target instanceof Element) ||
             this.focusableElement.nativeFocusableElement.contains(event.target) ||
-            !!getClosestElement(event.target, 'button')
+            !!event.target.closest('button')
         ) {
             return;
         }
@@ -290,7 +290,9 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             return;
         }
 
-        const element = getClosestElement(suitableNode as Element, selector);
+        tuiAssertIsHTMLElement(suitableNode);
+
+        const element = suitableNode.closest(selector);
 
         if (element) {
             range.selectNode(element);
