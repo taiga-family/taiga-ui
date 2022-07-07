@@ -9,7 +9,7 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function isNodeIn(node: Node, selector: string): boolean {
     return node.nodeType === Node.TEXT_NODE
-        ? !!node.parentElement && !!node.parentElement.closest(selector)
+        ? !!node.parentElement?.closest(selector)
         : node.nodeType === Node.ELEMENT_NODE && !!(node as Element).closest(selector);
 }
 

@@ -28,6 +28,7 @@ import {
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAssert,
+    tuiAssertIsHTMLElement,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiDestroyService,
@@ -289,7 +290,9 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             return;
         }
 
-        const element = (suitableNode as Element).closest(selector);
+        tuiAssertIsHTMLElement(suitableNode);
+
+        const element = suitableNode.closest(selector);
 
         if (element) {
             range.selectNode(element);
