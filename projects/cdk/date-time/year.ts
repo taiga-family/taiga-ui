@@ -1,6 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiYearLike} from '@taiga-ui/cdk/interfaces';
-import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {
@@ -80,7 +79,7 @@ export class TuiYear implements TuiYearLike {
     }
 
     get formattedYear(): string {
-        return padStart(String(this.year), 4, '0');
+        return String(this.year).padStart(4, '0');
     }
 
     get isLeapYear(): boolean {

@@ -1,7 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
-import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange} from '@taiga-ui/cdk/utils/math';
 
 import {
@@ -192,6 +191,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     private formatTime(time: number, digits: number = 2): string {
-        return padStart(String(time), digits, '0');
+        return String(time).padStart(digits, '0');
     }
 }
