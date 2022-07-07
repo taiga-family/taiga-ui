@@ -1,12 +1,31 @@
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node} from 'ng-morph';
 import {removeImport} from '../../utils/import-manipulations';
+import {DEPRECATED_FUNCTIONS} from '../constants/deprecated-functions';
 
 export function replaceFunctions() {
     replacePadStart(getNamedImportReferences('padStart', '@taiga-ui/cdk'));
     replaceFallbackValue(getNamedImportReferences('fallbackValue', '@taiga-ui/cdk'));
     replaceCustomEvent(getNamedImportReferences('tuiCustomEvent', '@taiga-ui/cdk'));
     replaceClosestElement(getNamedImportReferences('getClosestElement', '@taiga-ui/cdk'));
+    replaceDeprecatedFunction();
+}
+
+function replaceDeprecatedFunction() {
+    DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
+        getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
+            const parent = ref.getParent();
+
+            if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
+                parent?.replaceWithText(
+                    parent
+                        ?.getFullText()
+                        .trim()
+                        .replace(from, to ?? from),
+                );
+            }
+        });
+    });
 }
 
 function replacePadStart(references: Node[]) {
