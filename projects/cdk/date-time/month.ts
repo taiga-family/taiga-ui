@@ -1,7 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
-import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DAYS_IN_WEEK, MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
@@ -87,7 +86,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     get formattedMonthPart(): string {
-        return padStart(String(this.month + 1), 2, `0`);
+        return String(this.month + 1).padStart(2, '0');
     }
 
     /**
