@@ -23,7 +23,7 @@ just one entity from our library and be sure that there is no redundant code in 
 to let you focus on your project features
 
 🦋 **Customizable**. We use CSS custom properties for all our styling and provide easy methods to customize all UI
-components
+components.
 
 🛠 **Well engineered**. We are not afraid to use DI to the max. All our components use `OnPush`, and the whole project is
 developed with `strict` TypeScript mode
