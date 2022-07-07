@@ -95,6 +95,7 @@
                 <tui-multi-select
                     [formControl]="control"
                     [tuiDropdownAlign]="dropdownAlign"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
                     [tuiDropdownMinHeight]="dropdownMinHeight"
@@ -112,7 +113,6 @@
                     [editable]="editable"
                     [expandable]="expandable"
                     [identityMatcher]="identityMatcher"
-                    [iconLeft]="iconLeft"
                     [readOnly]="readOnly"
                     [stringify]="stringify"
                     [pseudoInvalid]="pseudoInvalid"
@@ -232,22 +232,6 @@
                 [(documentationPropertyValue)]="valueContent"
             >
                 A template for custom view of selected value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconLeft"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconLeft"
-            >
-                An icon. It can be stringified svg or a name of icon registered in
-                <a
-                    tuiLink
-                    routerLink="/services/svg-service"
-                >
-                    <code>SvgService</code>
-                </a>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

@@ -18,12 +18,17 @@
         <div class="t-content">
             <div
                 *ngIf="iconLeft"
+                polymorpheus-outlet
                 class="t-icons t-icons_left"
+                [content]="iconLeft"
+                [context]="{$implicit: size}"
             >
-                <tui-svg
-                    class="t-icon"
-                    [src]="iconLeft"
-                ></tui-svg>
+                <ng-template let-icon>
+                    <tui-svg
+                        class="t-icon"
+                        [src]="icon"
+                    ></tui-svg>
+                </ng-template>
             </div>
             <div class="t-wrapper">
                 <div class="t-absolute-wrapper">
@@ -130,11 +135,19 @@
                     [showDelay]="hintController.showDelay"
                     [hideDelay]="hintController.hideDelay"
                 ></tui-tooltip>
-                <tui-svg
+                <div
                     *ngIf="icon"
-                    class="t-icon"
-                    [src]="icon"
-                ></tui-svg>
+                    polymorpheus-outlet
+                    [content]="icon"
+                    [context]="{$implicit: size}"
+                >
+                    <ng-template let-iconSrc>
+                        <tui-svg
+                            class="t-icon"
+                            [src]="iconSrc"
+                        ></tui-svg>
+                    </ng-template>
+                </div>
             </div>
         </div>
         <ng-template #errorIcon>

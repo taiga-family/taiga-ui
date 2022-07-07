@@ -125,14 +125,6 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    icon = '';
-
-    @Input()
-    @tuiDefaultProp()
-    iconLeft = '';
-
-    @Input()
-    @tuiDefaultProp()
     search = '';
 
     @Input()
@@ -239,6 +231,14 @@ export class TuiInputTagComponent
         const {size, labelOutside} = this.controller;
 
         return size === 's' || labelOutside;
+    }
+
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.icon;
+    }
+
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.iconLeft;
     }
 
     get hasCleaner(): boolean {
