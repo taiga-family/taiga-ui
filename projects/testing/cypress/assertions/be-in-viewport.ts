@@ -16,15 +16,18 @@
 export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
     chai.Assertion.addMethod('inViewport', function () {
         const subject = this._obj;
+        const {top, bottom} = subject[0].getBoundingClientRect();
 
-        const bottomOfCurrentViewport: number =
+        const viewportHeight: number =
             // @ts-ignore TS2339: Property 'state' does not exist on type 'cy & CyEventEmitter'.
             Cypress.$(cy.state('window')).height() || 0;
-        const rect = subject[0].getBoundingClientRect();
+
+        const subjectOverlapsAllViewport = top < 0 && bottom > viewportHeight;
+        const topBorderIsVisible = top >= 0 && top < viewportHeight;
+        const bottomBorderIsVisible = bottom >= 0 && bottom < viewportHeight;
 
         this.assert(
-            (rect.top > 0 && rect.top < bottomOfCurrentViewport) ||
-                (rect.bottom > 0 && rect.bottom < bottomOfCurrentViewport),
+            subjectOverlapsAllViewport || topBorderIsVisible || bottomBorderIsVisible,
             'expected #{this} to be in viewport',
             'expected #{this} to not be in viewport',
             subject,

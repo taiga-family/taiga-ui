@@ -26,7 +26,7 @@ describe('Range', () => {
             beforeEach(() => {
                 initializeBaseAliases(exampleId);
 
-                cy.get(exampleId).scrollIntoView();
+                cy.get(exampleId).tuiScrollIntoView();
             });
 
             it('click on the beginning of the track changes only nearest (left) slider', () => {
@@ -67,7 +67,7 @@ describe('Range', () => {
                 beforeEach(() => {
                     initializeBaseAliases(exampleId);
 
-                    cy.get(exampleId).scrollIntoView();
+                    cy.get(exampleId).tuiScrollIntoView();
                 });
 
                 const checkValuesAfterPressing = (
@@ -168,7 +168,7 @@ describe('Range', () => {
                 beforeEach(() => {
                     initializeBaseAliases(exampleId);
 
-                    cy.get(exampleId).scrollIntoView();
+                    cy.get(exampleId).tuiScrollIntoView();
                 });
 
                 const checkValuesAfterPressing = (

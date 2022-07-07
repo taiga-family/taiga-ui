@@ -22,8 +22,7 @@ describe('InputDate', () => {
             return cy
                 .get('tui-doc-example[heading="sizes"]')
                 .findByAutomationId('tui-doc-example')
-                .scrollIntoView()
-                .should('be.visible')
+                .tuiScrollIntoView()
                 .get(`tui-input-date[tuiTextFieldSize="${size}"]`)
                 .findByAutomationId('tui-primitive-textfield__native-input');
         }

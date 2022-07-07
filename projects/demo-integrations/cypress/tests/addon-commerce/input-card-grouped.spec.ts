@@ -62,7 +62,7 @@ describe('InputCardGrouped', () => {
                 .should('be.visible')
                 .as('example');
 
-            cy.get('@example').scrollIntoView().should('be.visible');
+            cy.get('@example').tuiScrollIntoView();
 
             cy.get('@example')
                 .findByAutomationId('tui-input-card-grouped__card')
@@ -127,7 +127,7 @@ describe('InputCardGrouped', () => {
                 .should('be.visible')
                 .as('example');
 
-            cy.get('@example').scrollIntoView().should('be.visible');
+            cy.get('@example').tuiScrollIntoView();
 
             cy.get('@example')
                 .findByAutomationId('tui-input-card-grouped__card')
