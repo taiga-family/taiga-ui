@@ -14,7 +14,7 @@ jobs:
         with:
           base: main
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          head: 'tinkoff:*' # skip rebase for fork branches
+          head: 'Tinkoff:*' # skip rebase for fork branches
           exclude-labels: |
             no-rebase
             dependencies
