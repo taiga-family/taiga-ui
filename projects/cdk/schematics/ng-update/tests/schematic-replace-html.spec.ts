@@ -44,7 +44,11 @@ const TEMPLATE_BEFORE = `
         </tr>
   </thead>
 </table>
-<tui-editor new [formControl]="control"></tui-editor>
+<tui-editor new [formControl]="control">
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiToolbarTool></smiles-tool>
+    </ng-container>
+</tui-editor>
 <tui-editor [formControl]="control"></tui-editor>
 <tui-group class="some_class">
     <div class="content"></div>
@@ -134,6 +138,31 @@ const TEMPLATE_BEFORE = `
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
+
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button *tuiTab tuiTab>Maps</button>
+    <button
+        *tuiTab
+        tuiTab
+    >
+        Calls
+    </button>
+</tui-tabs-with-more>
+
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a
+            *tuiBreadcrumb
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
 `;
 
 const TEMPLATE_AFTER = `
@@ -152,7 +181,11 @@ const TEMPLATE_AFTER = `
         </tr>
   </thead>
 </table>
-<tui-editor  [formControl]="control"></tui-editor>
+<tui-editor  [formControl]="control">
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiItem></smiles-tool>
+    </ng-container>
+</tui-editor>
 <tui-editor [formControl]="control"></tui-editor>
 <div tuiGroup class="some_class">
     <div class="content"></div>
@@ -251,6 +284,31 @@ const TEMPLATE_AFTER = `
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
+
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button *tuiItem tuiTab>Maps</button>
+    <button
+        *tuiItem
+        tuiTab
+    >
+        Calls
+    </button>
+</tui-tabs-with-more>
+
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a
+            *tuiItem
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
 `;
 
 const COMPONENT_BEFORE = `
