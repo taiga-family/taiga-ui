@@ -18,12 +18,6 @@ export class ExampleFormatComponent {
         LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
-    readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
-    };
-
     readonly example3: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/3/index.ts'),
         HTML: import('!!raw-loader!./examples/3/index.html'),
