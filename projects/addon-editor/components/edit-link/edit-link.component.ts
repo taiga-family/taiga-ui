@@ -16,9 +16,9 @@ const END = MAX_LENGTH - START - 10;
 
 // @dynamic
 @Component({
-    selector: `tui-edit-link`,
-    templateUrl: `./edit-link.template.html`,
-    styleUrls: [`./edit-link.style.less`],
+    selector: 'tui-edit-link',
+    templateUrl: './edit-link.template.html',
+    styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
@@ -32,7 +32,7 @@ export class TuiEditLinkComponent {
 
     edit = !this.url;
 
-    prefix = `http://`;
+    prefix = 'http://';
 
     constructor(
         @Inject(DOCUMENT)
@@ -62,19 +62,19 @@ export class TuiEditLinkComponent {
         return !this.edit;
     }
 
-    @HostListener(`document:selectionchange`)
+    @HostListener('document:selectionchange')
     onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.makeUrl();
         }
     }
 
-    @HostListener(`mousedown`, [`$event`])
+    @HostListener('mousedown', ['$event'])
     onMouseDown(event: MouseEvent): void {
         const tagName =
-            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : ``;
+            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : '';
 
-        if (tagName === `a` || tagName === `button` || tagName === `input`) {
+        if (tagName === 'a' || tagName === 'button' || tagName === 'input') {
             return;
         }
 
@@ -91,7 +91,7 @@ export class TuiEditLinkComponent {
 
     onBackspace(): void {
         if (!this.url) {
-            this.prefix = `http://`;
+            this.prefix = 'http://';
         }
     }
 
@@ -108,37 +108,37 @@ export class TuiEditLinkComponent {
     }
 
     onClear(): void {
-        this.url = ``;
+        this.url = '';
     }
 
     // TODO: 3.0 remove shadow root ref in v3.0
     private makeUrl(): string {
         const selection = (this.shadowRootRef || this.documentRef).getSelection();
 
-        return selection ? this.getHref(selection) : ``;
+        return selection ? this.getHref(selection) : '';
     }
 
     private getHref({focusNode}: Selection): string {
         if (!focusNode || !focusNode.parentElement) {
-            return ``;
+            return '';
         }
 
-        const a = focusNode.parentElement.closest(`a`);
+        const a = focusNode.parentElement.closest('a');
 
-        return a ? this.removePrefix(a.getAttribute(`href`) || ``) : this.url;
+        return a ? this.removePrefix(a.getAttribute('href') || '') : '';
     }
 
     private removePrefix(url: string): string {
-        if (url.startsWith(`http://`)) {
-            this.prefix = `http://`;
+        if (url.startsWith('http://')) {
+            this.prefix = 'http://';
 
-            return url.replace(`http://`, ``);
+            return url.replace('http://', '');
         }
 
-        if (url.startsWith(`https://`)) {
-            this.prefix = `https://`;
+        if (url.startsWith('https://')) {
+            this.prefix = 'https://';
 
-            return url.replace(`https://`, ``);
+            return url.replace('https://', '');
         }
 
         return url;

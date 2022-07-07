@@ -1,16 +1,16 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {
-    TuiInvalidDayException,
-    TuiInvalidMonthException,
-    TuiInvalidYearException,
+    InvalidDayException,
+    InvalidMonthException,
+    InvalidYearException,
 } from '@taiga-ui/cdk/exceptions';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
-import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
+import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
-import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
+import {DAYS_IN_WEEK, MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonth} from './month';
 import {TuiYear} from './year';
 
@@ -50,12 +50,43 @@ export class TuiDay extends TuiMonth {
         return (
             TuiMonth.isValidMonth(year, month) &&
             Number.isInteger(day) &&
-            tuiInRange(
+            inRange(
                 day,
                 MIN_DAY,
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         );
+    }
+
+    /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
+     * Calculated day on a calendar grid
+     *
+     * @param month
+     * @param row row in a calendar
+     * @param col column in a calendar
+     * @return resulting day on these coordinates (could exceed passed month)
+     */
+    static getDayFromMonthRowCol(month: TuiMonth, row: number, col: number): TuiDay {
+        tuiAssert.assert(Number.isInteger(row));
+        tuiAssert.assert(inRange(row, 0, 6));
+        tuiAssert.assert(Number.isInteger(col));
+        tuiAssert.assert(inRange(col, 0, DAYS_IN_WEEK));
+
+        let day = row * DAYS_IN_WEEK + col - month.monthStartDaysOffset + 1;
+
+        if (day > month.daysCount) {
+            day = day - month.daysCount;
+            month = month.append({month: 1});
+        }
+
+        if (day <= 0) {
+            month = month.append({month: -1});
+            day = month.daysCount + day;
+        }
+
+        return new TuiDay(month.year, month.month, day);
     }
 
     /**
@@ -111,22 +142,22 @@ export class TuiDay extends TuiMonth {
 
     static parseRawDateString(
         date: string,
-        dateMode: TuiDateMode = `DMY`,
+        dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
         tuiAssert.assert(
             date.length === DATE_FILLER_LENGTH,
-            `[parseRawDateString]: wrong date string length`,
+            '[parseRawDateString]: wrong date string length',
         );
 
         switch (dateMode) {
-            case `YMD`:
+            case 'YMD':
                 return {
                     day: parseInt(date.slice(8, 10), 10),
                     month: parseInt(date.slice(5, 7), 10) - 1,
                     year: parseInt(date.slice(0, 4), 10),
                 };
 
-            case `MDY`:
+            case 'MDY':
                 return {
                     day: parseInt(date.slice(3, 5), 10),
                     month: parseInt(date.slice(0, 2), 10) - 1,
@@ -134,7 +165,7 @@ export class TuiDay extends TuiMonth {
                 };
 
             default:
-            case `DMY`:
+            case 'DMY':
                 return {
                     day: parseInt(date.slice(0, 2), 10),
                     month: parseInt(date.slice(3, 5), 10) - 1,
@@ -151,7 +182,7 @@ export class TuiDay extends TuiMonth {
      * @param dateMode date format of the date string (DMY | MDY | YMD)
      * @return normalized date
      */
-    static normalizeParse(rawDate: string, dateMode: TuiDateMode = `DMY`): TuiDay {
+    static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
         const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
 
         return TuiDay.normalizeOf(year, month, day);
@@ -164,25 +195,25 @@ export class TuiDay extends TuiMonth {
      * @throws exceptions if any part of the date is invalid
      */
     static jsonParse(yearMonthDayString: string): TuiDay {
-        const {day, month, year} = this.parseRawDateString(yearMonthDayString, `YMD`);
+        const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
         if (!TuiYear.isValidYear(year)) {
-            throw new TuiInvalidYearException(year);
+            throw new InvalidYearException(year);
         }
 
         if (!TuiMonth.isValidMonth(year, month)) {
-            throw new TuiInvalidMonthException(month);
+            throw new InvalidMonthException(month);
         }
 
         if (
             !Number.isInteger(day) ||
-            !tuiInRange(
+            !inRange(
                 day,
                 MIN_DAY,
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         ) {
-            throw new TuiInvalidDayException(day);
+            throw new InvalidDayException(day);
         }
 
         return new TuiDay(year, month, day);
@@ -196,11 +227,19 @@ export class TuiDay extends TuiMonth {
             TuiYear.isLeapYear(year),
         );
 
-        return tuiNormalizeToIntNumber(day, 1, monthDaysCount);
+        return normalizeToIntNumber(day, 1, monthDaysCount);
     }
 
     get formattedDayPart(): string {
-        return String(this.day).padStart(2, `0`);
+        return String(this.day).padStart(2, '0');
+    }
+
+    /**
+     * @deprecated use {@link getFormattedDay} instead
+     * Formatted whole date
+     */
+    get formattedDay(): string {
+        return `${this.formattedDayPart}.${this.formattedMonth}`;
     }
 
     get isWeekend(): boolean {
@@ -352,7 +391,7 @@ export class TuiDay extends TuiMonth {
     getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
         tuiAssert.assert(
             separator.length === 1,
-            `Separator should consist of only 1 symbol`,
+            'Separator should consist of only 1 symbol',
         );
 
         const dd = this.formattedDayPart;
@@ -360,17 +399,17 @@ export class TuiDay extends TuiMonth {
         const yyyy = this.formattedYear;
 
         switch (dateFormat) {
-            case `YMD`:
+            case 'YMD':
                 return `${yyyy}${separator}${mm}${separator}${dd}`;
-            case `MDY`:
+            case 'MDY':
                 return `${mm}${separator}${dd}${separator}${yyyy}`;
-            case `DMY`:
+            case 'DMY':
             default:
                 return `${dd}${separator}${mm}${separator}${yyyy}`;
         }
     }
 
-    toString(dateFormat: TuiDateMode = `DMY`, separator: string = `.`): string {
+    toString(dateFormat: TuiDateMode = 'DMY', separator: string = '.'): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 

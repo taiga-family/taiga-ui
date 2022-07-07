@@ -13,8 +13,8 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
     getDocumentOrShadowRoot,
+    isIE,
     tuiAssert,
-    tuiIsIE,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -47,7 +47,7 @@ const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = tuiIsIE(this.userAgent);
+    private readonly isIE = isIE(this.userAgent);
     private icon = ``;
 
     @Input()

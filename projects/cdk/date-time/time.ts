@@ -1,7 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
-import {tuiInRange} from '@taiga-ui/cdk/utils/math';
+import {inRange} from '@taiga-ui/cdk/utils/math';
 
 import {
     HOURS_IN_DAY,
@@ -24,7 +24,7 @@ export class TuiTime implements TuiTimeLike {
     ) {
         tuiAssert.assert(
             TuiTime.isValidTime(hours, minutes, seconds, ms),
-            `Time must be real, but got:`,
+            'Time must be real, but got:',
             hours,
             minutes,
             seconds,
@@ -43,13 +43,13 @@ export class TuiTime implements TuiTimeLike {
     ): boolean {
         return (
             Number.isInteger(hours) &&
-            tuiInRange(hours, 0, HOURS_IN_DAY) &&
+            inRange(hours, 0, HOURS_IN_DAY) &&
             Number.isInteger(minutes) &&
-            tuiInRange(minutes, 0, MINUTES_IN_HOUR) &&
+            inRange(minutes, 0, MINUTES_IN_HOUR) &&
             Number.isInteger(seconds) &&
-            tuiInRange(seconds, 0, SECONDS_IN_MINUTE) &&
+            inRange(seconds, 0, SECONDS_IN_MINUTE) &&
             Number.isInteger(ms) &&
-            tuiInRange(ms, 0, 1000)
+            inRange(ms, 0, 1000)
         );
     }
 
@@ -78,7 +78,7 @@ export class TuiTime implements TuiTimeLike {
     static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
         tuiAssert.assert(Number.isInteger(milliseconds));
         tuiAssert.assert(
-            tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
+            inRange(milliseconds, 0, MILLISECONDS_IN_DAY),
             `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
         );
 
@@ -154,14 +154,14 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === `HH:MM:SS.MSS` || (!mode && this.ms > 0);
+        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
         const needAddSeconds =
-            needAddMs || mode === `HH:MM:SS` || (!mode && this.seconds > 0);
+            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
 
         return (
             `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ``}` +
-            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ``}`
+            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ''}` +
+            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ''}`
         );
     }
 
@@ -191,6 +191,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     private formatTime(time: number, digits: number = 2): string {
-        return String(time).padStart(digits, `0`);
+        return String(time).padStart(digits, '0');
     }
 }
