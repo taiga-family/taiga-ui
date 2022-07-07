@@ -15,7 +15,6 @@ import {
     getDocumentOrShadowRoot,
     isIE,
     tuiAssert,
-    tuiCustomEvent,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -141,17 +140,13 @@ export class TuiSvgComponent {
 
     onError(message: string = MISSING_EXTERNAL_ICON): void {
         const {icon} = this;
-        const event = tuiCustomEvent<TuiIconError>(
-            TUI_ICON_ERROR,
-            {
-                bubbles: true,
-                detail: {
-                    message,
-                    icon,
-                },
+        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
+            bubbles: true,
+            detail: {
+                message,
+                icon,
             },
-            this.documentRef,
-        );
+        });
 
         tuiAssert.assert(false, message, icon);
         this.elementRef.nativeElement.dispatchEvent(event);
