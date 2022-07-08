@@ -11,3 +11,8 @@ export interface TuiSheet<O, I = undefined>
     readonly scroll$: Observable<number>;
     completeWith(value: O): void;
 }
+
+export interface TuiSheetHost<T = unknown> {
+    stops: readonly number[];
+    item: TuiSheet<T>;
+}

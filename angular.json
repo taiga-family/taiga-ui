@@ -11,7 +11,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-charts"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -52,7 +52,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-commerce"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -93,7 +93,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-doc"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -141,7 +141,7 @@
             },
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-editor"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -182,7 +182,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-mobile"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -223,7 +223,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-preview"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -263,7 +263,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-table"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -304,7 +304,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/addon-tablebars"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -345,7 +345,7 @@
             "prefix": "tui",
             "architect": {
                 "prebuild": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "tsconfig.build.json",
                         "project": "projects/cdk/ng-package.json"
@@ -424,7 +424,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/core"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -520,7 +520,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": false,
@@ -548,7 +547,6 @@
                             "outputPath": "dist/demo/browser/next",
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": false,
@@ -718,7 +716,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/i18n"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -764,7 +762,7 @@
                     ]
                 },
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/icons"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -792,7 +790,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/kit"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",
@@ -832,7 +830,7 @@
             "projectType": "library",
             "architect": {
                 "prebuild": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "tsconfig.build.json",
                         "project": "projects/taiga-schematics/ng-package.json"
@@ -894,7 +892,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "outputs": ["dist/testing"],
                     "options": {
                         "tsConfig": "tsconfig.build.json",

@@ -15,12 +15,12 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@angular-devkit/schematics": "~10.2.4",
+        "@angular-devkit/schematics": "~11.2.19",
         "ng-morph": "^2.0.0",
         "tslib": "^2.0.0"
     },
     "devDependencies": {
-        "@angular-devkit/schematics-cli": "~0.1002.4"
+        "@angular-devkit/schematics-cli": "~0.1102.19"
     },
     "schematics": "./collection.json"
 }
