@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {OnChanges} from '@angular/core';
+import {Directive, OnChanges} from '@angular/core';
 import {Subject} from 'rxjs';
 
 /**
  * @deprecated
  * TODO: 3.0 replace with {@link AbstractTuiController}
  */
+@Directive()
 export abstract class TuiController implements OnChanges {
     readonly change$ = new Subject<void>();
 
@@ -14,4 +15,5 @@ export abstract class TuiController implements OnChanges {
     }
 }
 
+@Directive()
 export abstract class AbstractTuiController extends TuiController {}
