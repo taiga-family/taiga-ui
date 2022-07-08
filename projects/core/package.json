@@ -15,7 +15,8 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@taiga-ui/i18n": "^2.57.0"
+        "@taiga-ui/i18n": "^2.57.0",
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",
