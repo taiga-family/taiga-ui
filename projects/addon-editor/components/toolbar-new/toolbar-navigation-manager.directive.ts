@@ -18,9 +18,7 @@ export class TuiToolbarNavigationManagerDirective {
 
     private get toolsContainers(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(
-                '[tuiToolbarTool]',
-            ),
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiItem]'),
         );
     }
 
