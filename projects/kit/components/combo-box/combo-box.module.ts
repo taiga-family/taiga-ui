@@ -5,6 +5,7 @@ import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
@@ -23,6 +24,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiHostedDropdownModule,
         TuiSelectOptionModule,
         TuiArrowModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [
         TuiComboBoxComponent,

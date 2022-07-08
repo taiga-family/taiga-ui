@@ -11,6 +11,7 @@
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
         class="textfield"
+        [tuiTextfieldIcon]="computedMobile ? mobileIconContent : iconContent"
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
@@ -18,7 +19,6 @@
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [focusable]="computedFocusable"
-        [iconContent]="computedMobile ? mobileIconContent : iconContent"
         [disabled]="computedDisabled"
         [textMask]="computedMask"
         [value]="computedValue"
