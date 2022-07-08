@@ -1,9 +1,9 @@
 <tui-primitive-textfield
+    [tuiTextfieldIcon]="iconContent"
     [invalid]="computedInvalid"
     [focusable]="focusable"
     [disabled]="disabled"
     [readOnly]="readOnly"
-    [iconContent]="iconContent"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
