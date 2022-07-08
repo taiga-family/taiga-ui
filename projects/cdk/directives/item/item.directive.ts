@@ -1,10 +1,9 @@
 import {Directive} from '@angular/core';
 
 /**
- * Blank directive to query for {@link TemplateRef}
- * TODO: 3.0 Migrate everything to this directive
+ * Blank directive for queries via `@ContentChildren` / `@ViewChildren` / `querySelector`
  */
 @Directive({
-    selector: `ng-template[tuiItem]`,
+    selector: '[tuiItem]',
 })
 export class TuiItemDirective {}
