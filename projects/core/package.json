@@ -16,6 +16,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@taiga-ui/i18n": "^2.54.1"
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",

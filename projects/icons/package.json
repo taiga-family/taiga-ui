@@ -9,6 +9,9 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "devDependencies": {
         "@rollup/pluginutils": "~4.2.1",
         "@types/svgo": "~2.6.3",
