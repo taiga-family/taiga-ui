@@ -1,4 +1,9 @@
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {
+    TuiAutofillFieldName,
+    TuiContextWithImplicit,
+    TuiInputModeT,
+    TuiInputTypeT,
+} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -7,6 +12,8 @@ import {TuiTextfieldAutocompleteDirective} from './textfield-autocomplete.direct
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
 import {TuiTextfieldExampleTextDirective} from './textfield-example-text.directive';
+import {TuiTextfieldIconDirective} from './textfield-icon.directive';
+import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldInputModeDirective} from './textfield-input-mode.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
 import {TuiTextfieldMaxLengthDirective} from './textfield-max-length.directive';
@@ -20,6 +27,8 @@ export class TuiTextfieldController {
         private readonly cleanerDirective: TuiTextfieldCleanerDirective,
         private readonly customContentDirective: TuiTextfieldCustomContentDirective,
         private readonly exampleTextDirective: TuiTextfieldExampleTextDirective,
+        private readonly iconDirective: TuiTextfieldIconDirective,
+        private readonly iconLeftDirective: TuiTextfieldIconLeftDirective,
         private readonly inputModeDirective: TuiTextfieldInputModeDirective,
         private readonly labelOutsideDirective: TuiTextfieldLabelOutsideDirective,
         private readonly maxLengthDirective: TuiTextfieldMaxLengthDirective,
@@ -41,6 +50,14 @@ export class TuiTextfieldController {
 
     get exampleText(): string {
         return this.exampleTextDirective.exampleText;
+    }
+
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.iconDirective.icon;
+    }
+
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.iconLeftDirective.iconLeft;
     }
 
     get inputMode(): TuiInputModeT {
