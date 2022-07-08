@@ -3,8 +3,8 @@
     "include": ["projects/**/*"],
     "exclude": ["projects/**/*.spec.ts", "projects/demo-integrations", "**/schematics/**/*"],
     "angularCompilerOptions": {
-        "enableIvy": false,
-        "compilationMode": "full",
+        "enableIvy": true,
+        "compilationMode": "partial",
         "preserveWhitespaces": false,
         "annotateForClosureCompiler": false,
         "skipTemplateCodegen": true,
