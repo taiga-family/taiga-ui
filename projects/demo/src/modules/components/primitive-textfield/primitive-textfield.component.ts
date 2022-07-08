@@ -65,9 +65,11 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     theme = this.themes[0];
 
-    readonly iconVariants = ['', 'tuiIconSearch', 'Interactive content'];
-
+    readonly iconVariants = ['', 'tuiIconSearchLarge', 'Interactive content'];
     selectedIcon = this.iconVariants[0];
+
+    readonly iconLeftVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+    iconLeft = '';
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
@@ -176,9 +178,9 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
             return '';
         }
 
-        return this.interactiveIcon && this.selectedIcon !== 'tuiIconSearch'
+        return this.interactiveIcon && this.selectedIcon !== 'tuiIconSearchLarge'
             ? this.interactiveIcon
-            : 'tuiIconSearch';
+            : 'tuiIconSearchLarge';
     }
 
     get isBootstrap(): boolean {
