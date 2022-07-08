@@ -44,10 +44,10 @@
     </div>
     <div class="t-content">
         <div
-            *ngIf="iconAlignLeft"
+            *ngIf="iconLeftContent"
             polymorpheus-outlet
             class="t-icon t-icon_left"
-            [content]="iconContent"
+            [content]="iconLeftContent"
             [context]="{$implicit: size}"
         >
             <ng-template let-iconSrc>
@@ -112,7 +112,7 @@
             [hideDelay]="hintController.hideDelay"
         ></tui-tooltip>
         <div
-            *ngIf="iconAlignRight"
+            *ngIf="iconContent"
             polymorpheus-outlet
             class="t-icon"
             [content]="iconContent"

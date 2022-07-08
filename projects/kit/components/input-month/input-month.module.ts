@@ -6,6 +6,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldComponent,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiCalendarMonthModule} from '@taiga-ui/kit/components/calendar-month';
 
@@ -21,6 +22,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
         TuiSvgModule,
         TuiPreventDefaultModule,
         TuiMapperPipeModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputMonthComponent, TuiInputMonthDirective],
     exports: [TuiInputMonthComponent, TuiInputMonthDirective, TuiTextfieldComponent],
