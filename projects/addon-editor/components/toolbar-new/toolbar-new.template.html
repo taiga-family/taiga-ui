@@ -22,7 +22,7 @@
     >
         <button
             #undoBtn
-            tuiToolbarTool
+            tuiItem
             tuiIconButton
             type="button"
             size="s"
@@ -40,7 +40,7 @@
         <button
             #redoBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconRedoLarge"
@@ -60,7 +60,7 @@
         class="t-block"
     >
         <tui-font-size
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
         ></tui-font-size>
     </div>
@@ -70,20 +70,20 @@
     >
         <tui-font-style
             *ngIf="formatEnabled"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
             [enabledTools]="toolsSet"
         ></tui-font-style>
 
         <tui-align-content
             *ngIf="enabled(TuiEditorTool.Align)"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
         ></tui-align-content>
 
         <tui-list-configs
             *ngIf="enabled(TuiEditorTool.List)"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
         ></tui-list-configs>
 
@@ -92,7 +92,7 @@
             #button
             #quoteBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconQuoteLarge"
@@ -110,7 +110,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Link)"
             #link
-            tuiToolbarTool
+            tuiItem
             class="t-wrapper"
             [canOpen]="!a"
             [content]="linkDropdown"
@@ -144,7 +144,7 @@
             #button
             #attachBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconAttachLarge"
@@ -167,7 +167,7 @@
             #button
             #subBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconSubscriptLarge"
@@ -186,7 +186,7 @@
             #button
             #supBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconSuperscriptLarge"
@@ -207,14 +207,14 @@
     >
         <tui-text-color
             *ngIf="enabled(TuiEditorTool.Color)"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
         ></tui-text-color>
 
         <tui-highlight-color
             *ngIf="enabled(TuiEditorTool.Hilite)"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
         ></tui-highlight-color>
@@ -225,7 +225,7 @@
     >
         <tui-code
             *ngIf="enabled(TuiEditorTool.Code)"
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
         ></tui-code>
 
@@ -234,7 +234,7 @@
             #button
             #texBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconTeXLarge"
@@ -249,7 +249,7 @@
         ></button>
         <div
             *ngIf="enabled(TuiEditorTool.Img)"
-            tuiToolbarTool
+            tuiItem
             class="t-wrapper"
         >
             <button
@@ -282,7 +282,7 @@
             #button
             #hrBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconHrLarge"
@@ -304,7 +304,7 @@
             #button
             #clearBtn
             tuiIconButton
-            tuiToolbarTool
+            tuiItem
             type="button"
             size="s"
             icon="tuiIconClearFormatLarge"
@@ -323,12 +323,12 @@
         class="t-block"
     >
         <tui-details
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-tool_margin"
         ></tui-details>
 
         <tui-details-remove
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-tool_margin"
         ></tui-details-remove>
     </div>
@@ -337,22 +337,22 @@
         class="t-block"
     >
         <tui-table-create
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-tool_margin"
         ></tui-table-create>
 
         <tui-table-row-column-manager
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-tool_margin"
         ></tui-table-row-column-manager>
 
         <tui-table-merge-cells
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-tool_margin"
         ></tui-table-merge-cells>
 
         <tui-table-cell-color
-            tuiToolbarTool
+            tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
         ></tui-table-cell-color>
