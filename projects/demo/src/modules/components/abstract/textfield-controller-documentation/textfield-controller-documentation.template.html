@@ -137,4 +137,20 @@
         <code>type</code>
         attribute for a native input
     </ng-template>
+    <ng-template
+        i18n
+        documentationPropertyName="tuiTextfieldIconLeft"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.iconLeftVariants"
+        [(documentationPropertyValue)]="documentedComponent.iconLeft"
+    >
+        A left icon. It can be stringified svg or a name of icon registered in
+        <a
+            tuiLink
+            routerLink="/services/svg-service"
+        >
+            <code>SvgService</code>
+        </a>
+    </ng-template>
 </tui-doc-documentation>
