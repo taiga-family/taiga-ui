@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiEditorNewModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -26,7 +26,7 @@ import {TuiEditorNewExample5} from './examples/5';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiEditorNewModule,
+        TuiEditorModule,
         TuiEditorSocketModule,
         TuiNotificationModule,
         TuiButtonModule,

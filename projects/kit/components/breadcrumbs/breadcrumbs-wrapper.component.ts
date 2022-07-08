@@ -8,11 +8,9 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
-
-import {TuiBreadcrumbDirective} from './breadcrumb.directive';
 
 @Component({
     selector: `tui-breadcrumbs:not([items])`,
@@ -32,7 +30,7 @@ export class TuiBreadcrumbsWrapperComponent implements TuiModeDirective {
     @tuiDefaultProp()
     size: TuiSizeL = `m`;
 
-    @ContentChildren(TuiBreadcrumbDirective, {read: TemplateRef})
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     readonly change$ = new Subject<void>();

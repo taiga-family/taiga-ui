@@ -92,6 +92,33 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[step]',
         },
     },
+    {
+        from: {
+            attrName: '*tuiTab',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '*tuiItem',
+        },
+    },
+    {
+        from: {
+            attrName: '*tuiBreadcrumb',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '*tuiItem',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiToolbarTool',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiItem',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
