@@ -11,7 +11,7 @@
             [overlay]="true"
             [showLoader]="loading"
         >
-            <ng-container *ngTemplateOutlet="content"></ng-container>
+            <ng-container [ngTemplateOutlet]="content"></ng-container>
         </tui-loader>
     </ng-container>
 </div>

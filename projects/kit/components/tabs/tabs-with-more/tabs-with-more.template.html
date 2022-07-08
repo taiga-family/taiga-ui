@@ -14,7 +14,7 @@
             ></ng-container>
             <ng-template #hidden>
                 <div [class.t-overflown]="isOverflown(index)">
-                    <ng-container *ngTemplateOutlet="item"></ng-container>
+                    <ng-container [ngTemplateOutlet]="item"></ng-container>
                 </div>
             </ng-template>
         </ng-container>

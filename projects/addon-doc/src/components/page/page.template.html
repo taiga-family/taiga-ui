@@ -60,8 +60,9 @@
         [seeAlso]="seeAlso"
     ></tui-doc-see-also>
     <ng-container *ngFor="let tab of tabConnectors; index as index">
-        <ng-container *ngIf="index === activeItemIndex">
-            <ng-container *ngTemplateOutlet="tab.template"></ng-container>
-        </ng-container>
+        <ng-container
+            *ngIf="index === activeItemIndex"
+            [ngTemplateOutlet]="tab.template"
+        ></ng-container>
     </ng-container>
 </div>

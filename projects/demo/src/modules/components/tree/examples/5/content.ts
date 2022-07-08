@@ -8,7 +8,7 @@ import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
             class="tui-space_right-2"
             [src]="icon"
         ></tui-svg>
-        <ng-container *ngTemplateOutlet="context.template"></ng-container>
+        <ng-container [ngTemplateOutlet]="context.template"></ng-container>
     `,
     styleUrls: ['content.less'],
     host: {

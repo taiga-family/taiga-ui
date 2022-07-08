@@ -68,10 +68,10 @@
                 [ngTemplateOutlet]="preview"
             ></ng-container>
             <ng-template #anotherTab>
-                <ng-template
+                <ng-container
                     [ngTemplateOutlet]="codeSection"
                     [ngTemplateOutletContext]="{$implicit: files[tabs[activeItemIndex]] || ''}"
-                ></ng-template>
+                ></ng-container>
             </ng-template>
         </div>
     </ng-container>

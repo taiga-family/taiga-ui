@@ -10,10 +10,10 @@
         *ngFor="let item of computedValue; let index = index"
         class="t-wrapper"
     >
-        <ng-template
+        <ng-container
             [ngTemplateOutlet]="bar"
             [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: true}"
-        ></ng-template>
+        ></ng-container>
     </div>
 </ng-template>
 <ng-template
