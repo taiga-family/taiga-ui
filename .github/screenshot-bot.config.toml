@@ -15,4 +15,4 @@ screenshotsDiffsPaths = [
 newScreenshotMark = '.*==new==.*'
 
 # array of RegExp strings to match branch names which should be skipped by bot
-branchesIgnore = ["^release/.*"]
+branchesIgnore = ["^release/.*", "^v[0-9].x$"]
