@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     Inject,
-    Input,
     Optional,
     Self,
     TemplateRef,
@@ -17,13 +16,11 @@ import {
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
     TuiDataListDirective,
     TuiDataListHost,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
@@ -32,9 +29,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_INPUT_PROVIDERS} from './input.providers';
 
 @Component({
-    selector: `tui-input`,
-    templateUrl: `./input.template.html`,
-    styleUrls: [`./input.style.less`],
+    selector: 'tui-input',
+    templateUrl: './input.template.html',
+    styleUrls: ['./input.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_INPUT_PROVIDERS,
 })
@@ -48,18 +45,10 @@ export class TuiInputComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    @Input()
-    @tuiDefaultProp()
-    icon: string | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = `left`;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    > = '';
 
     open = false;
 
@@ -111,7 +100,7 @@ export class TuiInputComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     private focusInput(preventScroll: boolean = false): void {

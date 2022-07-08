@@ -102,6 +102,10 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     selectedValueTemplate = ``;
 
+    readonly iconVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+
+    iconLeft = this.iconVariants[0];
+
     readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
         item => String(String(item).match(/\d+/)),
