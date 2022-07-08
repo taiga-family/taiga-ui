@@ -4,6 +4,8 @@ import {TuiTextfieldAutocompleteDirective} from './textfield-autocomplete.direct
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
 import {TuiTextfieldExampleTextDirective} from './textfield-example-text.directive';
+import {TuiTextfieldIconDirective} from './textfield-icon.directive';
+import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldInputModeDirective} from './textfield-input-mode.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
 import {TuiTextfieldMaxLengthDirective} from './textfield-max-length.directive';
@@ -21,6 +23,8 @@ import {TuiTextfieldTypeDirective} from './textfield-type.directive';
         TuiTextfieldMaxLengthDirective,
         TuiTextfieldSizeDirective,
         TuiTextfieldTypeDirective,
+        TuiTextfieldIconDirective,
+        TuiTextfieldIconLeftDirective,
     ],
     exports: [
         TuiTextfieldAutocompleteDirective,
@@ -32,6 +36,8 @@ import {TuiTextfieldTypeDirective} from './textfield-type.directive';
         TuiTextfieldMaxLengthDirective,
         TuiTextfieldSizeDirective,
         TuiTextfieldTypeDirective,
+        TuiTextfieldIconDirective,
+        TuiTextfieldIconLeftDirective,
     ],
 })
 export class TuiTextfieldControllerModule {}
