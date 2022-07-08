@@ -60,7 +60,7 @@ const TEMPLATE_AFTER = `
     House
 </tui-input>
 
-<tui-input-tag [iconLeft]="icon" ></tui-input-tag>
+<tui-input-tag [tuiTextfieldIconLeft]="icon" ></tui-input-tag>
 
 <tui-input
     formControlName="testValue"
