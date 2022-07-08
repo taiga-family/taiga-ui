@@ -21,6 +21,22 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Additional logs for improving debug of environments
+      shell: bash
+      run: |
+        echo "github.sha: ${{ github.sha }}"
+        echo "github.ref: ${{ github.ref }}"
+        echo "github.ref_name: ${{ github.ref_name }}"
+        echo "github.ref_type: ${{ github.ref_type }}"
+        echo "github.base_ref: ${{ github.base_ref }}"
+        echo "github.head_ref: ${{ github.head_ref }}"
+        echo "github.run_id: ${{ github.run_id }}"
+        echo "github.run_number: ${{ github.run_number }}"
+        echo "github.run_attempt: ${{ github.run_attempt }}"
+        echo "github.event.number: ${{ github.event.number }}"
+        echo "github.event.pull_request.head.ref: ${{ github.event.pull_request.head.ref }}"
+        echo "github.event.pull_request.head.repo.full_name: ${{ github.event.pull_request.head.repo.full_name }}"
+
     - name: Use Node.js ${{ inputs.node-version }}
       uses: actions/setup-node@v3
       with:
