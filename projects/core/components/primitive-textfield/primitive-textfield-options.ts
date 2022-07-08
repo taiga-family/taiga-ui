@@ -1,9 +1,7 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPrimitiveTextfieldOptions {
-    readonly iconAlign: TuiHorizontalDirection;
     readonly iconCleaner: PolymorpheusContent;
 }
 
@@ -12,7 +10,6 @@ export const TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
 
 /** Default values for primitive textfield options */
 export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptions = {
-    iconAlign: 'right',
     iconCleaner: TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER,
 };
 
