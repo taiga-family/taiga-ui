@@ -1,5 +1,8 @@
 {
     "extends": "../../tsconfig.json",
     "files": ["src/main.browser.ts", "src/polyfills.ts"],
-    "include": ["**/*.d.ts"]
+    "include": ["**/*.d.ts"],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": false
+    }
 }
