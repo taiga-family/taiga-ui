@@ -95,6 +95,8 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
@@ -106,8 +108,6 @@
                     [expandable]="expandable"
                     [uniqueTags]="uniqueTags"
                     [separator]="separator"
-                    [icon]="icon"
-                    [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
                     [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
@@ -222,32 +222,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="icon"
-                documentationPropertyMode="input"
-                documentationPropertyType="string | null"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
-            >
-                An icon. It can be stringified svg or a name of icon registered in
-                <a
-                    tuiLink
-                    routerLink="/services/svg-service"
-                >
-                    <code>SvgService</code>
-                </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="inputHidden"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -264,6 +238,22 @@
                 [(documentationPropertyValue)]="tagValidator"
             >
                 A function that cheks that tag is valid
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
+                    <code>SvgService</code>
+                </a>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
