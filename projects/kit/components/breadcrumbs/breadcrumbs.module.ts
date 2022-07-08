@@ -1,10 +1,14 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {
+    TuiItemDirective,
+    TuiItemModule,
+    TuiLetModule,
+    TuiMapperPipeModule,
+} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
 
-import {TuiBreadcrumbDirective} from './breadcrumb.directive';
 import {TuiBreadcrumbsComponent} from './breadcrumbs.component';
 import {TuiBreadcrumbsWrapperComponent} from './breadcrumbs-wrapper.component';
 
@@ -17,16 +21,9 @@ import {TuiBreadcrumbsWrapperComponent} from './breadcrumbs-wrapper.component';
         TuiLinkModule,
         TuiSvgModule,
         TuiModeModule,
+        TuiItemModule,
     ],
-    declarations: [
-        TuiBreadcrumbsComponent,
-        TuiBreadcrumbsWrapperComponent,
-        TuiBreadcrumbDirective,
-    ],
-    exports: [
-        TuiBreadcrumbsComponent,
-        TuiBreadcrumbsWrapperComponent,
-        TuiBreadcrumbDirective,
-    ],
+    declarations: [TuiBreadcrumbsComponent, TuiBreadcrumbsWrapperComponent],
+    exports: [TuiBreadcrumbsComponent, TuiBreadcrumbsWrapperComponent, TuiItemDirective],
 })
 export class TuiBreadcrumbsModule {}
