@@ -15,7 +15,7 @@ import {
     TuiTableRowColumnManagerModule,
     TuiTextColorModule,
 } from '@taiga-ui/addon-editor/components/toolbar-tools';
-import {TuiFocusableModule} from '@taiga-ui/cdk';
+import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDescribedByModule,
@@ -25,7 +25,6 @@ import {
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
-import {TuiToolbarToolDirective} from './toolbar-tool.directive';
 
 @NgModule({
     imports: [
@@ -48,12 +47,9 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiHighlightColorModule,
         TuiCodeModule,
         TuiDetailsModule,
+        TuiItemModule,
     ],
-    declarations: [
-        TuiToolbarNewComponent,
-        TuiToolbarToolDirective,
-        TuiToolbarNavigationManagerDirective,
-    ],
-    exports: [TuiToolbarNewComponent, TuiToolbarToolDirective],
+    declarations: [TuiToolbarNewComponent, TuiToolbarNavigationManagerDirective],
+    exports: [TuiToolbarNewComponent, TuiItemDirective],
 })
 export class TuiToolbarNewModule {}
