@@ -2,21 +2,38 @@ name: Rebase
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'v3.x'
 
 jobs:
   rebase:
     runs-on: ubuntu-latest
     steps:
-      - name: Autorebase
+      - name: Autorebase from main branch
+        if: ${{ github.ref_name == 'main' }}
         continue-on-error: true
         uses: peter-evans/rebase@v2
         with:
           base: main
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          head: 'Tinkoff:*' # skip rebase for fork branches
+          head: 'Tinkoff:*'
           exclude-labels: |
             no-rebase
             dependencies
           include-labels: |
             autorebase
+
+      - name: Autorebase from v3.x branch
+        if: ${{ contains(github.head_ref, 'v3.x') }}
+        continue-on-error: true
+        uses: peter-evans/rebase@v2
+        with:
+          base: v3.x
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          head: 'Tinkoff:*'
+          exclude-labels: |
+            v3.x
+            no-rebase
+            dependencies
+          include-labels: 'v3.0 candidates'
