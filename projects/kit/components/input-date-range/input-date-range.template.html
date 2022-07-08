@@ -12,6 +12,7 @@
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
         class="t-textfield"
+        [tuiTextfieldIcon]="computedMobile ? mobileIconContent : iconContent"
         [pseudoFocused]="innerPseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [pseudoPressed]="pseudoPressed"
@@ -20,7 +21,6 @@
         [nativeId]="nativeId"
         [filler]="getComputedRangeFiller(dateFiller)"
         [readOnly]="readOnly"
-        [iconContent]="computedMobile ? mobileIconContent : iconContent"
         [disabled]="computedDisabled"
         [textMask]="computedMask"
         [value]="computedValue"
