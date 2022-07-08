@@ -20,6 +20,11 @@ import {
     TUI_TEXTFIELD_EXAMPLE_TEXT,
     TuiTextfieldExampleTextDirective,
 } from './textfield-example-text.directive';
+import {TUI_TEXTFIELD_ICON, TuiTextfieldIconDirective} from './textfield-icon.directive';
+import {
+    TUI_TEXTFIELD_ICON_LEFT,
+    TuiTextfieldIconLeftDirective,
+} from './textfield-icon-left.directive';
 import {
     TUI_TEXTFIELD_INPUT_MODE,
     TuiTextfieldInputModeDirective,
@@ -50,6 +55,8 @@ export function textfieldWatchedControllerFactory(
         TuiTextfieldCleanerDirective,
         TuiTextfieldCustomContentDirective,
         TuiTextfieldExampleTextDirective,
+        TuiTextfieldIconDirective,
+        TuiTextfieldIconLeftDirective,
         TuiTextfieldInputModeDirective,
         TuiTextfieldLabelOutsideDirective,
         TuiTextfieldMaxLengthDirective,
@@ -79,6 +86,8 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_CLEANER,
             TUI_TEXTFIELD_CUSTOM_CONTENT,
             TUI_TEXTFIELD_EXAMPLE_TEXT,
+            TUI_TEXTFIELD_ICON,
+            TUI_TEXTFIELD_ICON_LEFT,
             TUI_TEXTFIELD_INPUT_MODE,
             TUI_TEXTFIELD_LABEL_OUTSIDE,
             TUI_TEXTFIELD_MAX_LENGTH,

@@ -38,28 +38,6 @@ export interface InputToRemove {
 
 export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     {
-        from: {
-            attrName: 'icon',
-            withTagNames: ['tui-input-tag'],
-            filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
-        },
-        to: {
-            attrName: 'iconLeft',
-        },
-    },
-    {
-        from: {
-            attrName: '[icon]',
-            withTagNames: ['tui-input-tag'],
-            filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
-        },
-        to: {
-            attrName: '[iconLeft]',
-        },
-    },
-    {
         from: {attrName: 'tuiResizableColumn', withAttrsNames: ['tuiResizableColumn']},
         to: {attrName: 'tuiTh [resizable]="true"'},
     },
@@ -234,6 +212,29 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
     {
         componentSelector: 'tui-primitive-textfield',
         inputProperty: 'iconContent',
+        directive: 'tuiTextfieldIconLeft',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+    },
+    {
+        componentSelector: 'tui-input-tag',
+        inputProperty: 'icon',
+        directive: 'tuiTextfieldIcon',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            !hasElementAttribute(element, 'iconAlign') ||
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+    },
+    {
+        componentSelector: 'tui-input-tag',
+        inputProperty: 'icon',
         directive: 'tuiTextfieldIconLeft',
         directiveModule: {
             name: 'TuiTextfieldControllerModule',
