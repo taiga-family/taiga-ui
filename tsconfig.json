@@ -28,7 +28,7 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "target": "es2015",
-        "module": "esnext",
+        "module": "es2020",
         "lib": ["esnext", "dom"],
         "typeRoots": ["node_modules/@types"],
         "skipLibCheck": true,
