@@ -32,7 +32,7 @@ describe(`Breadcrumbs Wrapper`, () => {
             >
                 <ng-container *ngFor="let item of items">
                     <a
-                        *tuiBreadcrumb
+                        *tuiItem
                         tuiLink
                         [routerLink]="item.routerLink"
                     >
