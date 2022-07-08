@@ -25,13 +25,13 @@ import {
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    TuiItemDirective,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
-import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
@@ -76,7 +76,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @ContentChildren(TuiTabDirective, {read: TemplateRef})
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     open = false;
