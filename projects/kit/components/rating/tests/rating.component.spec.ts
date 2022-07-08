@@ -1,17 +1,18 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, Directive, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRatingComponent, TuiRatingModule} from '@taiga-ui/kit/components';
 
 describe(`Rating`, () => {
     let component: TuiRatingComponent;
-    let testComponent: AbstractTestComponent;
+    let testComponent: AbstractTuiTestComponent;
 
-    class AbstractTestComponent {
+    @Directive()
+    abstract class AbstractTuiTestComponent {
+        abstract rate: number;
+
         @ViewChild(TuiRatingComponent, {static: true})
         component!: TuiRatingComponent;
-
-        rate!: number;
     }
 
     describe(`Template Driven`, () => {
@@ -22,7 +23,7 @@ describe(`Rating`, () => {
                 <tui-rating [(ngModel)]="rate"></tui-rating>
             `,
         })
-        class TestComponent extends AbstractTestComponent {
+        class TestComponent extends AbstractTuiTestComponent {
             rate = 2;
         }
 
@@ -98,7 +99,7 @@ describe(`Rating`, () => {
                 </ng-container>
             `,
         })
-        class TestComponent extends AbstractTestComponent {
+        class TestComponent extends AbstractTuiTestComponent {
             form = this.fb.group({rating: this.fb.control(0)});
 
             constructor(private readonly fb: FormBuilder) {
