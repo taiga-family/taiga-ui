@@ -5,6 +5,8 @@ export * from './textfield-controller.module';
 export * from './textfield-controller.provider';
 export * from './textfield-custom-content.directive';
 export * from './textfield-example-text.directive';
+export * from './textfield-icon.directive';
+export * from './textfield-icon-left.directive';
 export * from './textfield-input-mode.directive';
 export * from './textfield-label-outside.directive';
 export * from './textfield-max-length.directive';
