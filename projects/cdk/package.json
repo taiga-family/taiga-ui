@@ -22,7 +22,8 @@
         "@tinkoff/ng-polymorpheus": "^3.1.12",
         "@types/resize-observer-browser": "^0.1.7",
         "ng-morph": "^2.1.0",
-        "parse5": "^6.0.1"
+        "parse5": "^6.0.1",
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",
