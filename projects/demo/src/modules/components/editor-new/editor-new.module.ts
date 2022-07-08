@@ -2,8 +2,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiEditorNewModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -14,20 +14,19 @@ import {
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleEditorNewComponent} from './editor-new.component';
 import {TuiEditorNewExample1} from './examples/1';
-import {ExampleSmilesToolModule} from './examples/1/smiles-tool/smiles-tool.module';
 import {TuiEditorNewExample2} from './examples/2';
+import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.module';
 import {TuiEditorNewExample3} from './examples/3';
-import {ImagePreviewExampleModule} from './examples/3/image-preview/image-preview.module';
 import {TuiEditorNewExample4} from './examples/4';
+import {ImagePreviewExampleModule} from './examples/4/image-preview/image-preview.module';
 import {TuiEditorNewExample5} from './examples/5';
-import {TuiEditorNewExample6} from './examples/6';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiEditorNewModule,
+        TuiEditorModule,
         TuiEditorSocketModule,
         TuiNotificationModule,
         TuiButtonModule,
@@ -37,7 +36,7 @@ import {TuiEditorNewExample6} from './examples/6';
         TuiSvgModule,
         ExampleSmilesToolModule,
         ImagePreviewExampleModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleEditorNewComponent)),
+        RouterModule.forChild(generateRoutes(ExampleEditorNewComponent)),
     ],
     declarations: [
         ExampleEditorNewComponent,
@@ -45,7 +44,6 @@ import {TuiEditorNewExample6} from './examples/6';
         TuiEditorNewExample2,
         TuiEditorNewExample3,
         TuiEditorNewExample4,
-        TuiEditorNewExample6,
         TuiEditorNewExample5,
     ],
     exports: [ExampleEditorNewComponent],

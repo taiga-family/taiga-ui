@@ -212,7 +212,7 @@ function replaceBreadcrumbs({
             `
     <ng-container *ngFor="let item of ${itemsValue}">
         <a
-            *tuiBreadcrumb
+            *tuiItem
             tuiLink
             [routerLink]="item.routerLink"
         >
