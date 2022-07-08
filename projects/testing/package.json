@@ -3,7 +3,8 @@
     "version": "2.61.0",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
-        "cypress-image-snapshot": "^4.0.1"
+        "cypress-image-snapshot": "^4.0.1",
+        "tslib": "^2.0.0"
     },
     "devDependencies": {
         "@types/cypress-image-snapshot": "^3.1.6",
