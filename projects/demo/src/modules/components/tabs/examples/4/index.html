@@ -3,7 +3,7 @@
     [(activeItemIndex)]="activeItemIndex"
 >
     <button
-        *tuiTab
+        *tuiItem
         tuiTab
         (click)="onClick('Maps')"
     >
@@ -14,7 +14,7 @@
         Maps
     </button>
     <button
-        *tuiTab
+        *tuiItem
         tuiTab
         disabled
         (click)="onClick('Calls')"
@@ -26,7 +26,7 @@
         Calls
     </button>
     <button
-        *tuiTab
+        *tuiItem
         tuiTab
         (click)="onClick('Settings')"
     >
@@ -37,7 +37,7 @@
         Settings
     </button>
     <button
-        *tuiTab
+        *tuiItem
         tuiTab
         (click)="onClick('Favorite')"
     >
@@ -48,7 +48,7 @@
         Favorite
     </button>
     <button
-        *tuiTab
+        *tuiItem
         tuiTab
         (click)="onClick('Trash')"
     >
