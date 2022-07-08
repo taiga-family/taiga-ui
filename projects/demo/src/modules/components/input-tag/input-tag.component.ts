@@ -77,9 +77,11 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     separator = this.separatorVariants[0];
 
-    readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
+    readonly iconVariants: string[] = ['', 'tuiIconSearchLarge', 'tuiIconMailLarge'];
 
     icon = '';
+
+    iconLeft = '';
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
