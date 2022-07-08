@@ -19,6 +19,7 @@ import {
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
+import {TuiHintDirective} from '@taiga-ui/core/directives';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_MEDIA} from '@taiga-ui/core/tokens';
@@ -111,6 +112,12 @@ export class TuiHintBoxComponent {
 
     get isMobile(): boolean {
         return tuiIsMobile(this.windowRef, this.media);
+    }
+
+    onHovered(hovered: boolean): void {
+        if (this.hint instanceof TuiHintDirective) {
+            this.hint.componentHovered$.next(hovered);
+        }
     }
 
     /**

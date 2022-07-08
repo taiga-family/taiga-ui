@@ -19,6 +19,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
+    EMPTY_CLIENT_RECT,
     getNativeFocused,
     px,
     TuiActiveZoneDirective,
@@ -38,15 +39,6 @@ import {
 import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
 import {map, switchMapTo, takeUntil} from 'rxjs/operators';
-
-const EMPTY_RECT: ClientRect = {
-    bottom: 0,
-    height: 0,
-    left: 0,
-    right: 0,
-    top: 0,
-    width: 0,
-};
 
 // @dynamic
 @Directive({
@@ -210,7 +202,7 @@ export class TuiDropdownSelectionDirective
      */
     private get rangeRect(): ClientRect {
         if (!this.range) {
-            return EMPTY_RECT;
+            return EMPTY_CLIENT_RECT;
         }
 
         switch (this.position) {

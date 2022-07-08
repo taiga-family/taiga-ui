@@ -4,15 +4,7 @@ import {
     AbstractTuiPortalService,
 } from '@taiga-ui/cdk/abstract';
 import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
-
-const BLANK_CLIENT_RECT: ClientRect = {
-    bottom: 0,
-    height: 0,
-    left: 0,
-    right: 0,
-    top: 0,
-    width: 0,
-};
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 
 /**
  * Host element for dynamically created portals, for example using {@link TuiDropdownDirective}.
@@ -31,7 +23,7 @@ export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {
     fixedPositionOffset(): ClientRect {
         return (
             this.positionFixedOffsetRef?.nativeElement.getBoundingClientRect() ||
-            BLANK_CLIENT_RECT
+            EMPTY_CLIENT_RECT
         );
     }
 }

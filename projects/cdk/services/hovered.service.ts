@@ -12,6 +12,7 @@ import {
     take,
 } from 'rxjs/operators';
 
+/** @deprecated TODO remove in v3.0 */
 // @dynamic
 @Injectable({
     providedIn: 'root',

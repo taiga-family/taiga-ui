@@ -13,3 +13,4 @@ export * from './is-current-target';
 export * from './is-form-field';
 export * from './is-inside-iframe';
 export * from './is-node-in';
+export * from './point-to-client-rect';

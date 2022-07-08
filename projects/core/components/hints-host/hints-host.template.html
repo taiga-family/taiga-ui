@@ -4,8 +4,7 @@
     polymorpheus-outlet
     @tuiParentAnimation
     [attr.id]="hint.id"
-    [content]="component"
+    [content]="hint.component || component"
     [context]="{$implicit: hint}"
     [tuiActiveZoneParent]="hint.activeZone"
-    (tuiHoveredChange)="onHovered($event, hint)"
 ></div>
