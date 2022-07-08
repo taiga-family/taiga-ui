@@ -70,8 +70,8 @@
                 [disabled]="disabled"
                 [editable]="editable"
                 [filler]="filler"
-                [iconAlign]="iconAlign"
-                [iconContent]="iconContent"
+                [tuiTextfieldIcon]="iconContent"
+                [tuiTextfieldIconLeft]="iconLeft"
                 [readOnly]="readOnly"
                 [prefix]="prefix"
                 [postfix]="postfix"
@@ -132,7 +132,7 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="iconContent"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
@@ -145,16 +145,10 @@
                 >
                     <code>SvgService</code>
                 </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
+                <p>
+                    Requires you to import
+                    <code>TuiTextfieldControllerModule</code>
+                </p>
             </ng-template>
             <ng-template
                 i18n

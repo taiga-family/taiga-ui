@@ -75,16 +75,6 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
-
-    // TODO: 3.0 Remove null
-    @Input()
-    @tuiDefaultProp()
-    iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
-        null;
-
-    @Input()
-    @tuiDefaultProp()
     iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
@@ -225,25 +215,27 @@ export class TuiPrimitiveTextfieldComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconAlignLeft ? this.iconPaddingLeft : 0;
+        return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
     @HostBinding('style.--border-end.rem')
     get borderEnd(): number {
         return getBorder(
-            this.iconAlignRight,
+            !!this.iconContent,
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,
         );
     }
 
-    get iconAlignLeft(): boolean {
-        return this.hasIcon && this.iconAlign === 'left';
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.icon;
     }
 
-    get iconAlignRight(): boolean {
-        return this.hasIcon && this.iconAlign === 'right';
+    get iconLeftContent(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+    > {
+        return this.controller.iconLeft;
     }
 
     // Safari expiration date autofill workaround
@@ -305,10 +297,6 @@ export class TuiPrimitiveTextfieldComponent
 
     private get placeholderRaisable(): boolean {
         return this.size !== 's' && !this.controller.labelOutside;
-    }
-
-    private get hasIcon(): boolean {
-        return !!this.iconContent;
     }
 
     private updateAutofilled(autofilled: boolean): void {
