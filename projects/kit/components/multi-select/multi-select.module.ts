@@ -13,6 +13,7 @@ import {
     TuiHostedDropdownModule,
     TuiPrimitiveCheckboxModule,
     TuiSvgModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
@@ -41,6 +42,7 @@ import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-gr
         TuiMultiSelectOptionModule,
         TuiPrimitiveCheckboxModule,
         TuiDataListModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [
         TuiMultiSelectComponent,
