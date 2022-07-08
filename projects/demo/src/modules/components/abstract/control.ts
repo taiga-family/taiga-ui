@@ -133,6 +133,10 @@ export abstract class AbstractExampleTuiControl
         `bottom`,
     ];
 
+    readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPiechartLarge'];
+
+    iconLeft = this.iconLeftVariants[0];
+
     dropdownDirection: TuiVerticalDirection | null = null;
 
     dropdownSided = false;
