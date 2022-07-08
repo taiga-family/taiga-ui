@@ -9,7 +9,12 @@ import {
 import {TuiToolbarModule} from '@taiga-ui/addon-editor/components/toolbar';
 import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {TuiDesignModeModule} from '@taiga-ui/addon-editor/directives/design-mode';
-import {TuiActiveZoneModule, TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
+import {
+    TuiActiveZoneModule,
+    TuiHoveredModule,
+    TuiItemDirective,
+    TuiLetModule,
+} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -39,6 +44,6 @@ import {TuiEditorComponent} from './editor.component';
         TuiToolbarNewModule,
     ],
     declarations: [TuiEditorComponent],
-    exports: [TuiEditorComponent, TuiEditorNewComponent],
+    exports: [TuiEditorComponent, TuiEditorNewComponent, TuiItemDirective],
 })
 export class TuiEditorModule {}
