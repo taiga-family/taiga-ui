@@ -1,12 +1,62 @@
+import {
+    tuiGetContentEditable,
+    tuiGetScreenshotArea,
+    tuiInitBaseWrapper,
+    tuiOpenFontTool,
+} from '../../support/editor/helpers';
 import {EDITOR_PAGE_URL} from '../../support/shared.entities';
 import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe('Editor', () => {
+    beforeEach(() => cy.viewport(1600, 900));
+
+    describe('Check fonts in light and dark mode', () => {
+        for (const [index, options] of [
+            {enableNightMode: true},
+            {enableNightMode: false},
+        ].entries()) {
+            it(`check font in editor, enableNightMode is ${options.enableNightMode}`, () => {
+                cy.tuiVisit(EDITOR_PAGE_URL, options);
+
+                tuiInitBaseWrapper();
+                tuiGetContentEditable().type('{selectall}{backspace}');
+
+                tuiOpenFontTool();
+                tuiGetScreenshotArea().matchImageSnapshot(
+                    `${index + 1}-1-night-mode-enabled-${
+                        options.enableNightMode
+                    }-font-tools`,
+                );
+
+                tuiOpenFontTool().find('button').eq(0).click();
+                tuiGetContentEditable().type('HelloWorld__Normal{enter}');
+                tuiGetScreenshotArea().matchImageSnapshot(
+                    `${index + 1}-1-night-mode-enabled-${
+                        options.enableNightMode
+                    }-font-tools-past-normal`,
+                );
+
+                tuiOpenFontTool().find('button').eq(1).click();
+                tuiGetContentEditable().type('HelloWorld__Subtitle{enter}');
+                tuiGetScreenshotArea().matchImageSnapshot(
+                    `${index + 1}-1-night-mode-enabled-${
+                        options.enableNightMode
+                    }-font-tools-past-subtitle`,
+                );
+
+                tuiOpenFontTool().find('button').eq(2).click();
+                tuiGetContentEditable().type('HelloWorld__Title{enter}');
+                tuiGetScreenshotArea().matchImageSnapshot(
+                    `${index + 1}-1-night-mode-enabled-${
+                        options.enableNightMode
+                    }-font-tools-past-title`,
+                );
+            });
+        }
+    });
+
     describe('Dark mode', () => {
-        beforeEach(() => {
-            cy.viewport(1600, 900);
-            cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true});
-        });
+        beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode: true}));
 
         it('supports dark mode (input)', () => {
             cy.get('#basic')

@@ -10,7 +10,7 @@ body.tui-editor-socket {
 
 .tui-editor-socket {
     display: block;
-    color: #333;
+    color: var(--tui-text-01);
     font-size: 15px;
     font-family: tuiText, 'Manrope', sans-serif;
     line-height: 24px;
