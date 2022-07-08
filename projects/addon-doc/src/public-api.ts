@@ -15,6 +15,8 @@ export * from './components/documentation/documentation.module';
 export * from './components/documentation/documentation-property-connector.directive';
 export * from './components/example/example.component';
 export * from './components/example/example.module';
+export * from './components/example/example-capitalize.pipe';
+export * from './components/example/example-get-tabs.pipe';
 export * from './components/main/main.component';
 export * from './components/main/main.module';
 export * from './components/navigation/navigation.component';
