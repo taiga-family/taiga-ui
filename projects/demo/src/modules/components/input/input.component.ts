@@ -26,8 +26,6 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
-    private _customContentSelected: PolymorpheusContent | null = null;
-
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
@@ -104,13 +102,13 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LONG_TEXT_TEMPLATE,
     ];
 
-    get customContentSelected(): PolymorpheusContent | null {
-        return this._customContentSelected === LONG_TEXT_TEMPLATE
+    get customContent(): PolymorpheusContent | null {
+        return this.customContentSelected === LONG_TEXT_TEMPLATE
             ? this.longTextRef
-            : this._customContentSelected;
+            : this.customContentSelected;
     }
 
-    set customContentSelected(newValue) {
-        this._customContentSelected = newValue;
+    set customContent(newValue) {
+        this.customContentSelected = newValue;
     }
 }
