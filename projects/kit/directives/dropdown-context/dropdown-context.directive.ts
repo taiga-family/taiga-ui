@@ -17,8 +17,8 @@ import {
     TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
+    TuiDropdownPortalService,
     tuiPointToClientRect,
-    TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -58,7 +58,7 @@ export class TuiDropdownContextDirective
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
-        @Inject(TuiPortalService) portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService,
         readonly activeZone: TuiActiveZoneDirective,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
