@@ -11,7 +11,7 @@
         <ng-container *ngFor="let tab of tabs">
             <ng-container *ngIf="isString(tab); else submenu">
                 <button
-                    *tuiTab
+                    *tuiItem
                     tuiTab
                     (click)="onClick(tab)"
                 >
@@ -20,7 +20,7 @@
             </ng-container>
             <ng-template #submenu>
                 <tui-hosted-dropdown
-                    *tuiTab
+                    *tuiItem
                     [content]="dropdown"
                     [(open)]="open"
                 >
