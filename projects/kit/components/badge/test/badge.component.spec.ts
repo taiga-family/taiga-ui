@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiBadgeComponent} from '../badge.component';
@@ -26,7 +26,7 @@ describe('Badge', () => {
 
         size: TuiSizeL = 'm';
         value!: number | string;
-        status: TuiStatusT = 'default';
+        status: TuiStatus = 'default';
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -2,7 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit';
+import {TuiStatus} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -73,7 +73,7 @@ export class ExampleTuiTagComponent {
 
     maxLength: number | null = null;
 
-    readonly statusVariants: readonly TuiStatusT[] = [
+    readonly statusVariants: readonly TuiStatus[] = [
         'default',
         'primary',
         'custom',

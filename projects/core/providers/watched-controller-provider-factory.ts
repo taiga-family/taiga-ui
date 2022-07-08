@@ -1,5 +1,5 @@
 import {ChangeDetectorRef} from '@angular/core';
-import {TuiController, watch} from '@taiga-ui/cdk';
+import {AbstractTuiController, watch} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -8,10 +8,10 @@ import {takeUntil} from 'rxjs/operators';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function watchedControllerFactory(
-    controller: TuiController,
+    controller: AbstractTuiController,
     changeDetectorRef: ChangeDetectorRef,
     destroy$: Observable<void>,
-): TuiController {
+): AbstractTuiController {
     controller.change$.pipe(watch(changeDetectorRef), takeUntil(destroy$)).subscribe();
 
     return controller;

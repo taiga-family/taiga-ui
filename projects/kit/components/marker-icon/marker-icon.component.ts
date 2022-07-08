@@ -13,7 +13,7 @@ import {
     TuiSizeXL,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiMarkerIconModeT} from '@taiga-ui/kit/types';
+import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -30,7 +30,7 @@ export class TuiMarkerIconComponent {
     @Input()
     @HostBinding('attr.data-marker-mode')
     @tuiDefaultProp()
-    mode: TuiMarkerIconModeT | null = null;
+    mode: TuiMarkerIconMode | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
