@@ -4,9 +4,9 @@
     [(open)]="open"
 >
     <tui-primitive-textfield
-        iconAlign="left"
         tuiTextfieldAutocomplete="off"
         class="t-textfield"
+        [tuiTextfieldIconLeft]="color"
         [pseudoFocused]="computedFocused"
         [pseudoHovered]="pseudoHovered"
         [pseudoPressed]="pseudoPressed"
@@ -16,7 +16,6 @@
         [disabled]="disabled"
         [readOnly]="readOnly"
         [value]="value"
-        [iconContent]="color"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
         (hoveredChange)="onHovered($event)"
