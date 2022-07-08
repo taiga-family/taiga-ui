@@ -16,9 +16,9 @@ on:
 
 env:
   CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
+  BASE_REF_DEMO: dist/demo/browser/${{ github.base_ref }}
+  LOCAL_REF_DEMO: dist/demo/browser
   NX_BRANCH: ${{ github.event.number }}
-  PATH_NEXT_DIST: dist/gh-pages
-  PATH_LOCAL_DIST: dist/demo
   NG_SERVER_PORT: 3333
 
 jobs:
@@ -86,18 +86,18 @@ jobs:
           cypress-api-url: http://localhost:1234/
           snapshot-path: ./projects/demo-integrations/cypress/snapshots
 
-      - name: Download demo-app from cache
+      - name: Download ${{ env.LOCAL_REF_DEMO }} for serve locally
         uses: actions/cache@v3
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - name: Serve ${{ env.PATH_LOCAL_DIST }}/browser in background
+      - name: Serve ${{ env.LOCAL_REF_DEMO }} in background
         run: |
-          npx nx serve:compiled -- --path ${{ env.PATH_LOCAL_DIST }}/browser \
+          npx nx serve:compiled -- --path ${{ env.LOCAL_REF_DEMO }} \
             & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
-      - name: Run screenshot tests on ${{ env.PATH_LOCAL_DIST }}/browser
+      - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
         run: |
           npm run concurrently \
               "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
@@ -106,29 +106,31 @@ jobs:
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
-      - name: Copy gh-pages resources to serve `taiga-ui.dev/next` locally
+      - name: Download ${{ env.BASE_REF_DEMO }} for serve locally
         run: |
-          git clone --depth 1 --branch gh-pages https://github.com/Tinkoff/taiga-ui.git ${{ env.PATH_NEXT_DIST }}
+          git clone \
+                --depth 1 \
+                --branch snapshots/demo/next/${{ github.base_ref }} \
+                https://github.com/Tinkoff/taiga-ui.git ${{ env.BASE_REF_DEMO }}
 
       - name: Find and replace baseHref for next snapshot
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: '<base href="/next/">'
           replace: '<base href="/">'
-          include: '${{ env.PATH_NEXT_DIST }}/next/index.html'
+          include: '${{ env.BASE_REF_DEMO }}/index.html'
           regex: false
 
-      - run: cat ${{ env.PATH_NEXT_DIST }}/next/index.html
+      - run: cat ${{ env.BASE_REF_DEMO }}/index.html
 
-      - name: Serve ${{ env.PATH_NEXT_DIST }}/next in background
+      - name: Serve ${{ env.BASE_REF_DEMO }} in background
         run: |
-          npx nx serve:compiled -- --path ${{ env.PATH_NEXT_DIST }}/next \
+          npx nx serve:compiled -- --path ${{ env.BASE_REF_DEMO }} \
             & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
-      - name: Run screenshot tests on ${{ env.PATH_NEXT_DIST }}/next
+      - name: Run screenshot tests on ${{ env.BASE_REF_DEMO }}
         continue-on-error: true
-        env:
-          # note: need to collect all
+        env: # note: need to collect all
           # diff files for lumberjack bot
           CYPRESS_failOnSnapshotDiff: 0
         run: |
