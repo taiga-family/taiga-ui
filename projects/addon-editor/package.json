@@ -41,7 +41,8 @@
         "prosemirror-tables": "~1.1.1",
         "prosemirror-transform": "~1.6.0",
         "prosemirror-utils": "~0.9.6",
-        "prosemirror-view": "~1.26.1"
+        "prosemirror-view": "~1.26.1",
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
