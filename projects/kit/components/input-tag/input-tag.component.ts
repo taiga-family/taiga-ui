@@ -49,7 +49,6 @@ import {
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
@@ -123,14 +122,6 @@ export class TuiInputTagComponent
     @Input()
     @tuiDefaultProp()
     separator: string | RegExp = this.options.separator;
-
-    @Input()
-    @tuiDefaultProp()
-    icon = '';
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @tuiDefaultProp()
@@ -242,6 +233,14 @@ export class TuiInputTagComponent
         return size === 's' || labelOutside;
     }
 
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.icon;
+    }
+
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.iconLeft;
+    }
+
     get hasCleaner(): boolean {
         return this.controller.cleaner && this.hasValue && this.interactive;
     }
@@ -281,16 +280,8 @@ export class TuiInputTagComponent
         return !!this.hintController.content && !this.disabled;
     }
 
-    get iconAlignLeft(): boolean {
-        return !!this.icon && this.iconAlign === 'left';
-    }
-
-    get iconAlignRight(): boolean {
-        return !!this.icon && this.iconAlign === 'right';
-    }
-
     get hasRightIcons(): boolean {
-        return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
+        return this.hasCleaner || this.hasTooltip || !!this.icon;
     }
 
     get status(): TuiStatusT {
