@@ -47,22 +47,22 @@ const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
 
 @Component({
-    selector: `tui-primitive-textfield`,
-    templateUrl: `./primitive-textfield.template.html`,
-    styleUrls: [`./primitive-textfield.style.less`],
+    selector: 'tui-primitive-textfield',
+    templateUrl: './primitive-textfield.template.html',
+    styleUrls: ['./primitive-textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
     host: {
-        '($.data-mode.attr)': `mode$`,
-        '[class._autofilled]': `autofilled`,
-        '[class._label-outside]': `controller.labelOutside`,
+        '($.data-mode.attr)': 'mode$',
+        '[class._autofilled]': 'autofilled',
+        '[class._label-outside]': 'controller.labelOutside',
     },
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(`focusableElement`)
+    @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -71,24 +71,14 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    filler = ``;
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
-
-    // TODO: 3.0 Remove null
-    @Input()
-    @tuiDefaultProp()
-    iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
-        null;
+    filler = '';
 
     @Input()
     @tuiDefaultProp()
     iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
-    @HostBinding(`class._readonly`)
+    @HostBinding('class._readonly')
     @tuiDefaultProp()
     readOnly = false;
 
@@ -102,15 +92,15 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    prefix = ``;
+    prefix = '';
 
     @Input()
     @tuiDefaultProp()
-    postfix = ``;
+    postfix = '';
 
     @Input()
     @tuiDefaultProp()
-    value = ``;
+    value = '';
 
     @Output()
     readonly valueChange = new EventEmitter<string>();
@@ -157,17 +147,17 @@ export class TuiPrimitiveTextfieldComponent
         return isNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     get size(): TuiSizeS | TuiSizeL {
         return this.controller.size;
     }
 
-    @HostBinding(`class._invalid`)
+    @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
-    @HostBinding(`class._hidden`)
+    @HostBinding('class._hidden')
     get inputHidden(): boolean {
         return !!this.content?.length;
     }
@@ -194,7 +184,7 @@ export class TuiPrimitiveTextfieldComponent
         return (
             this.focused &&
             this.placeholderVisible &&
-            (this.size === `s` || (this.size === `m` && !this.placeholderRaisable))
+            (this.size === 's' || (this.size === 'm' && !this.placeholderRaisable))
         );
     }
 
@@ -223,57 +213,59 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    @HostBinding(`style.--border-start.rem`)
+    @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconAlignLeft ? this.iconPaddingLeft : 0;
+        return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
-    @HostBinding(`style.--border-end.rem`)
+    @HostBinding('style.--border-end.rem')
     get borderEnd(): number {
         return getBorder(
-            this.iconAlignRight,
+            !!this.iconContent,
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,
         );
     }
 
-    get iconAlignLeft(): boolean {
-        return this.hasIcon && this.iconAlign === `left`;
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.icon;
     }
 
-    get iconAlignRight(): boolean {
-        return this.hasIcon && this.iconAlign === `right`;
+    get iconLeftContent(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+    > {
+        return this.controller.iconLeft;
     }
 
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
         return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
-            ? `ccexpiryyear`
+            ? 'ccexpiryyear'
             : null;
     }
 
     get computedId(): string {
-        return this.nativeFocusableElement?.id || ``;
+        return this.nativeFocusableElement?.id || '';
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     @tuiPure
     getIndent$(element: HTMLElement): Observable<number> {
-        return fromEvent(element, `scroll`).pipe(map(() => -1 * element.scrollLeft));
+        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
     }
 
     clear(): void {
         if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.value = ``;
+            this.nativeFocusableElement.value = '';
         }
 
-        this.updateValue(``);
+        this.updateValue('');
     }
 
     onMouseDown(event: MouseEvent): void {
@@ -300,15 +292,11 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get iconPaddingLeft(): number {
-        return this.size === `s` ? ICON_PADDING_S : ICON_PADDING;
+        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== `s` && !this.controller.labelOutside;
-    }
-
-    private get hasIcon(): boolean {
-        return !!this.iconContent;
+        return this.size !== 's' && !this.controller.labelOutside;
     }
 
     private updateAutofilled(autofilled: boolean): void {
