@@ -27,6 +27,12 @@ export class ExampleTuiLinkComponent {
         HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
+    };
+
     pseudo = false;
     iconRotated = false;
 
