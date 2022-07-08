@@ -282,7 +282,10 @@ export class TuiInputNumberComponent
     getFormattedValue(value: number): string {
         const absValue = Math.abs(value);
         const hasFraction = absValue % 1 > 0;
-        let limit = this.decimal === 'always' || hasFraction ? this.precision : 0;
+        let limit =
+            this.decimal === 'always' || (hasFraction && this.decimal !== 'never')
+                ? this.precision
+                : 0;
 
         const fraction = hasFraction ? getFractionPartPadded(value, this.precision) : '';
 

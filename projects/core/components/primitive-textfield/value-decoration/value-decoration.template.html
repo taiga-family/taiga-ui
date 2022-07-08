@@ -1,4 +1,17 @@
-<span #pre>{{ prefix }}</span>
-<span class="t-ghost">{{ value }}</span>
-<span class="t-filler">{{ filler }}</span>
-<span class="t-postfix">{{ postfix }}</span>
+<span
+    #pre
+    class="t-prefix t-inline"
+    [innerText]="prefix"
+></span>
+<span
+    class="t-ghost t-inline"
+    [innerText]="value"
+></span>
+<span
+    class="t-filler t-inline"
+    [innerText]="filler"
+></span>
+<span
+    class="t-postfix t-inline"
+    [innerText]="postfix"
+></span>
