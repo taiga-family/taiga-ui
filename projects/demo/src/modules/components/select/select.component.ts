@@ -110,6 +110,10 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     readonly valueTemplateVariants = [``, `Template`];
 
+    readonly iconVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+
+    iconLeft = this.iconVariants[0];
+
     selectedValueTemplate = this.valueTemplateVariants[0];
 
     readonly identityMatcherVariants: ReadonlyArray<TuiIdentityMatcher<Account>> = [
