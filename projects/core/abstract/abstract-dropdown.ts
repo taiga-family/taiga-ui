@@ -11,8 +11,8 @@ import {
 import {
     TuiActiveZoneDirective,
     tuiDefaultProp,
+    TuiDropdownPortalService,
     TuiNativeFocusableElement,
-    TuiPortalService,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDropdownBoxComponent} from '@taiga-ui/core/components/dropdown-box';
@@ -71,7 +71,7 @@ export abstract class AbstractTuiDropdown
     protected constructor(
         private readonly componentFactoryResolver: ComponentFactoryResolver,
         private readonly injector: Injector,
-        private readonly portalService: TuiPortalService,
+        private readonly portalService: TuiDropdownPortalService,
         protected readonly elementRef: ElementRef<HTMLElement>,
         readonly activeZone: TuiActiveZoneDirective | null,
     ) {}

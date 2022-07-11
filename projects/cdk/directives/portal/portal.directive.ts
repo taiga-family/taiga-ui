@@ -6,7 +6,7 @@ import {
     OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
+import {TuiDropdownPortalService} from '@taiga-ui/cdk/components/dropdown-host';
 
 @Directive({
     selector: `[tuiPortal]`,
@@ -26,7 +26,8 @@ export class TuiPortalDirective implements OnDestroy {
     constructor(
         @Inject(TemplateRef)
         private readonly templateRef: TemplateRef<Record<string, unknown>>,
-        @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
     ) {}
 
     ngOnDestroy(): void {
