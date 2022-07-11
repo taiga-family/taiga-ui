@@ -9,7 +9,7 @@ import {
     OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk';
+import {TuiDropdownPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
@@ -44,8 +44,8 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
         @Inject(Injector) private readonly injector: Injector,
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(TuiPortalService)
-        private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(content, changeDetectorRef);
