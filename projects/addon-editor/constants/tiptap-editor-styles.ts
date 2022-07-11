@@ -37,26 +37,28 @@ export const tiptapEditorStyles = `
     margin: 0 auto;
 }
 
-.tui-editor-socket ul li p:first-child:before {
+.tui-editor-socket ul li:before {
     content: '';
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    margin: 0 14px 1px -22px;
+    margin: 8px 14px 1px -22px;
     background-color: var(--tui-primary);
+    vertical-align: top;
 }
 
 .tui-editor-socket ol {
     counter-reset: counter;
 }
 
-.tui-editor-socket ol li p:first-child:before {
+.tui-editor-socket ol li:before {
     content: counter(counter) '.';
     width: 24px;
     margin: 0 12px 0 -24px;
     counter-increment: counter;
     color: var(--tui-base-05);
+    vertical-align: top;
 }
 
 .tui-editor-socket pre {
