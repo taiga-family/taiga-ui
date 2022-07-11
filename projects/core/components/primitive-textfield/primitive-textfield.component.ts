@@ -14,11 +14,10 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocusedIn,
-    setNativeFocused,
     TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
+    tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -144,7 +143,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     @HostBinding('attr.data-size')

@@ -1,4 +1,4 @@
-import {tuiGetNativeFocused} from '../get-native-focused';
+import {tuiGetNativeFocused} from '../tui-get-native-focused';
 
 describe('getNativeFocused', () => {
     it('returns active focused element in document', () => {

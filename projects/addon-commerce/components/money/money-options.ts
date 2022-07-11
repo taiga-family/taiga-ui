@@ -1,12 +1,11 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
-import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
+import {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
 import {TuiDecimalT} from '@taiga-ui/core';
 
 export interface TuiMoneyOptions {
     readonly decimal: TuiDecimalT;
     readonly currency: TuiCurrencyVariants;
-    readonly sign: TuiMoneySignT;
+    readonly sign: TuiMoneySign;
     readonly colored: boolean;
     readonly precision: number;
     readonly singleColor: boolean;
@@ -14,7 +13,7 @@ export interface TuiMoneyOptions {
 
 export const TUI_MONEY_DEFAULT_DEFAULT_OPTIONS: TuiMoneyOptions = {
     decimal: 'not-zero',
-    currency: TuiCurrency.Ruble,
+    currency: 'RUB',
     sign: 'negative-only',
     colored: false,
     precision: 2,

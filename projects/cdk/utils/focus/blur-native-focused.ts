@@ -1,5 +1,5 @@
-import {tuiGetNativeFocused} from './get-native-focused';
 import {setNativeFocused} from './set-native-focused';
+import {tuiGetNativeFocused} from './tui-get-native-focused';
 
 /**
  * @deprecated: use {@link tuiBlurNativeFocused} instead

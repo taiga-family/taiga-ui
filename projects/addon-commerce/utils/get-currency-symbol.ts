@@ -1,11 +1,7 @@
 import {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 
-/**
- * @deprecated: use {@link tuiGetCurrencySymbol} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null {
+export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | null {
     switch (currency) {
         case TuiCurrency.Ruble:
         case TuiCurrencyCode.Ruble:
@@ -70,5 +66,3 @@ export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null 
             return null;
     }
 }
-
-export const tuiGetCurrencySymbol = getCurrencySymbol;

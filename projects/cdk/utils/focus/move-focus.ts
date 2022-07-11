@@ -1,5 +1,5 @@
-import {tuiIsNativeFocused} from './is-native-focused';
 import {setNativeFocused} from './set-native-focused';
+import {tuiIsNativeFocused} from './tui-is-native-focused';
 
 /**
  * Utility method for moving focus in a list of elements

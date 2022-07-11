@@ -22,10 +22,10 @@ import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
+    tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
 import {Mark} from 'prosemirror-model';
@@ -88,7 +88,7 @@ export class TuiEditorNewComponent
         return (
             !!this.editor?.isFocused ||
             (!!this.toolbar && this.toolbar.focused) ||
-            (!!this.editLink && isNativeFocusedIn(this.editLink.nativeElement))
+            (!!this.editLink && tuiIsNativeFocusedIn(this.editLink.nativeElement))
         );
     }
 

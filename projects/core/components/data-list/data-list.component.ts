@@ -13,13 +13,13 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    isNativeFocusedIn,
     isPresent,
     itemsQueryListObservable,
     setNativeMouseFocused,
     tuiAssertIsElement,
     tuiDefaultProp,
     tuiMoveFocus,
+    tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
@@ -94,7 +94,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
     handleFocusLossIfNecessary(element: Element = this.elementRef.nativeElement): void {
-        if (this.origin && isNativeFocusedIn(element)) {
+        if (this.origin && tuiIsNativeFocusedIn(element)) {
             setNativeMouseFocused(this.origin, true, true);
         }
     }

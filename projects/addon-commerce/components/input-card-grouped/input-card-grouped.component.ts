@@ -21,12 +21,11 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
-    getPaymentSystem,
     tuiCreateAutoCorrectedExpirePipe,
+    tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
-    isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAssertIsElement,
     TuiBooleanHandler,
@@ -34,6 +33,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsNativeFocusedIn,
     tuiPure,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -195,7 +195,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get focused(): boolean {
-        return this.open || isNativeFocusedIn(this.elementRef.nativeElement);
+        return this.open || tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     get card(): string {
@@ -436,7 +436,7 @@ export class TuiInputCardGroupedComponent
     }
 
     private get paymentSystem(): TuiPaymentSystem | null {
-        return this.value && getPaymentSystem(this.value.card);
+        return this.value && tuiGetPaymentSystem(this.value.card);
     }
 
     @tuiPure
