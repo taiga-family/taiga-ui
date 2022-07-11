@@ -3,8 +3,9 @@ import {
     AbstractTuiPortalHostComponent,
     AbstractTuiPortalService,
 } from '@taiga-ui/cdk/abstract';
-import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+
+import {TuiDropdownPortalService} from './dropdown-portal.service';
 
 /**
  * Host element for dynamically created portals, for example using {@link TuiDropdownDirective}.
@@ -14,7 +15,9 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
     templateUrl: `./dropdown-host.template.html`,
     styleUrls: [`./dropdown-host.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: AbstractTuiPortalService, useExisting: TuiPortalService}],
+    providers: [
+        {provide: AbstractTuiPortalService, useExisting: TuiDropdownPortalService},
+    ],
 })
 export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {
     @ViewChild(`positionFixedOffset`)
