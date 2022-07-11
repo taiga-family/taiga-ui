@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
+    TuiDropdownPortalService,
     TuiParentsScrollService,
-    TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown} from '@taiga-ui/core/abstract';
 import {TuiDropdown} from '@taiga-ui/core/interfaces';
@@ -42,8 +42,8 @@ export class TuiDropdownDirective
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
-        @Inject(TuiPortalService)
-        portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        portalService: TuiDropdownPortalService,
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(TuiActiveZoneDirective)
         @Optional()
