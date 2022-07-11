@@ -1,13 +1,13 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiAutofillFieldName, TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, TuiAutofillFieldName} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_AUTOCOMPLETE =
-    new InjectionToken<TuiTextfieldAutocompleteDirective>(`tuiTextfieldAutocomplete`, {
+    new InjectionToken<TuiTextfieldAutocompleteDirective>('tuiTextfieldAutocomplete', {
         factory: autocompleteDirectiveFactory,
     });
 
 @Directive({
-    selector: `[tuiTextfieldAutocomplete]`,
+    selector: '[tuiTextfieldAutocomplete]',
     providers: [
         {
             provide: TUI_TEXTFIELD_AUTOCOMPLETE,
@@ -15,9 +15,9 @@ export const TUI_TEXTFIELD_AUTOCOMPLETE =
         },
     ],
 })
-export class TuiTextfieldAutocompleteDirective extends TuiController {
-    @Input(`tuiTextfieldAutocomplete`)
-    autocomplete: TuiAutofillFieldName | '' = ``;
+export class TuiTextfieldAutocompleteDirective extends AbstractTuiController {
+    @Input('tuiTextfieldAutocomplete')
+    autocomplete: TuiAutofillFieldName | '' = '';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
