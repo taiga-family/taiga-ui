@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -21,11 +21,11 @@ export class ExampleTuiTextfieldControllerComponent {
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
+    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
     readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
+    readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -33,7 +33,7 @@ export class ExampleTuiTextfieldControllerComponent {
         'url',
     ];
 
-    type: TuiInputTypeT = this.typeVariants[0];
+    type: TuiInputType = this.typeVariants[0];
 
     readonly customContentVariants = ['Bell'];
 

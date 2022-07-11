@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiAutofillFieldName, TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, TuiAutofillFieldName} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_AUTOCOMPLETE =
     new InjectionToken<TuiTextfieldAutocompleteDirective>('tuiTextfieldAutocomplete', {
@@ -15,7 +15,7 @@ export const TUI_TEXTFIELD_AUTOCOMPLETE =
         },
     ],
 })
-export class TuiTextfieldAutocompleteDirective extends TuiController {
+export class TuiTextfieldAutocompleteDirective extends AbstractTuiController {
     @Input('tuiTextfieldAutocomplete')
     autocomplete: TuiAutofillFieldName | '' = '';
 }
