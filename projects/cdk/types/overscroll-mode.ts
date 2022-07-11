@@ -1,1 +1,1 @@
-export type TuiOverscrollModeT = 'all' | 'scroll' | 'none';
+export type TuiOverscrollMode = 'all' | 'scroll' | 'none';

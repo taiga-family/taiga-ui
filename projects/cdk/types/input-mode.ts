@@ -1,4 +1,4 @@
-export type TuiInputModeT =
+export type TuiInputMode =
     | 'none'
     | 'text'
     | 'decimal'
