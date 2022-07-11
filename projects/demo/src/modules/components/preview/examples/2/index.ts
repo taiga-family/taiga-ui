@@ -1,7 +1,7 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {PreviewDialogService} from '@taiga-ui/addon-preview';
+import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {TuiDialogContext} from '@taiga-ui/core';
 
 @Component({
@@ -16,8 +16,8 @@ export class TuiPreviewExample2 {
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     constructor(
-        @Inject(PreviewDialogService)
-        private readonly previewDialogService: PreviewDialogService,
+        @Inject(TuiPreviewDialogService)
+        private readonly previewDialogService: TuiPreviewDialogService,
     ) {}
 
     show(): void {
