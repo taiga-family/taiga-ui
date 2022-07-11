@@ -21,7 +21,7 @@ import {
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiInputModeT,
+    TuiInputMode,
     TuiMapper,
 } from '@taiga-ui/cdk';
 import {
@@ -123,7 +123,7 @@ export class TuiInputNumberComponent
         return this.min < 0;
     }
 
-    get inputMode(): TuiInputModeT {
+    get inputMode(): TuiInputMode {
         if (this.isIOS && this.isNegativeAllowed) {
             // iphones do not have minus sign if inputMode is equal to 'numeric' / 'decimal'
             return 'text';
