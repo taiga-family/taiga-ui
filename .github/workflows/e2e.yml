@@ -162,5 +162,5 @@ jobs:
           retention-days: 5
 
 concurrency:
-  group: demo-integrations-${{ github.head_ref }}
+  group: demo-integrations-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

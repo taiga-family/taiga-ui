@@ -49,5 +49,5 @@ jobs:
             CNAME
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -28,5 +28,5 @@ jobs:
         uses: github/codeql-action/analyze@v1
 
 concurrency:
-  group: codeql-${{ github.head_ref }}
+  group: codeql-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

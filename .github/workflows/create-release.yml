@@ -97,5 +97,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
 concurrency:
-  group: create-release-${{ github.ref }}
+  group: create-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

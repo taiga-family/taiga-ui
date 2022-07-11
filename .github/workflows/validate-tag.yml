@@ -32,5 +32,5 @@ jobs:
           exit 1
 
 concurrency:
-  group: validate-tag-${{ github.head_ref }}
+  group: validate-tag-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

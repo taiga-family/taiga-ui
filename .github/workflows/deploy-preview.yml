@@ -28,5 +28,5 @@ jobs:
           expires: 1d
 
 concurrency:
-  group: firebase-${{ github.head_ref }}
+  group: firebase-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

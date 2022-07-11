@@ -24,6 +24,7 @@ runs:
     - name: Additional logs for improving debug of environments
       shell: bash
       run: |
+        echo "github.workflow: ${{ github.workflow }}"
         echo "github.sha: ${{ github.sha }}"
         echo "github.ref: ${{ github.ref }}"
         echo "github.ref_name: ${{ github.ref_name }}"
