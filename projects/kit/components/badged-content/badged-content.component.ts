@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {isNumber, px, tuiDefaultProp} from '@taiga-ui/cdk';
 import {sizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const BADGE_SIZE: {[key: string]: TuiSizeS | TuiSizeL} = {
@@ -85,7 +85,7 @@ export class TuiBadgedContentComponent {
         return typeof content.valueOf() === 'string';
     }
 
-    getStatus(color: string): TuiStatusT {
+    getStatus(color: string): TuiStatus {
         return color ? 'custom' : 'primary';
     }
 }
