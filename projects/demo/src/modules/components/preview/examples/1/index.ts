@@ -1,8 +1,8 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {PreviewDialogService} from '@taiga-ui/addon-preview';
-import {clamp, TuiSwipe} from '@taiga-ui/cdk';
+import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
+import {tuiClamp, TuiSwipe} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiDialogContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -24,8 +24,8 @@ export class TuiPreviewExample1 {
     length = 2;
 
     constructor(
-        @Inject(PreviewDialogService)
-        private readonly previewService: PreviewDialogService,
+        @Inject(TuiPreviewDialogService)
+        private readonly previewService: TuiPreviewDialogService,
         @Inject(TuiAlertService)
         private readonly alertService: TuiAlertService,
     ) {}
@@ -56,11 +56,11 @@ export class TuiPreviewExample1 {
 
     onSwipe(swipe: TuiSwipe): void {
         if (swipe.direction === 'left') {
-            this.index = clamp(this.index + 1, 0, this.length - 1);
+            this.index = tuiClamp(this.index + 1, 0, this.length - 1);
         }
 
         if (swipe.direction === 'right') {
-            this.index = clamp(this.index - 1, 0, this.length - 1);
+            this.index = tuiClamp(this.index - 1, 0, this.length - 1);
         }
     }
 }
