@@ -13,10 +13,10 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -89,7 +89,7 @@ export class TuiCheckboxBlockComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
