@@ -1,4 +1,4 @@
-export type TuiMarkerIconModeT =
+export type TuiMarkerIconMode =
     | 'link'
     | 'primary'
     | 'warning'
