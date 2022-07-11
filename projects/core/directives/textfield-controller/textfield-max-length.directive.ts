@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_MAX_LENGTH =
     new InjectionToken<TuiTextfieldMaxLengthDirective>('tuiTextfieldMaxLength', {
@@ -15,7 +15,7 @@ export const TUI_TEXTFIELD_MAX_LENGTH =
         },
     ],
 })
-export class TuiTextfieldMaxLengthDirective extends TuiController {
+export class TuiTextfieldMaxLengthDirective extends AbstractTuiController {
     @Input('tuiTextfieldMaxLength')
     maxLength: number | null = null;
 }

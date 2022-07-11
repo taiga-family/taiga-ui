@@ -13,6 +13,16 @@ export function miscellaneousMigrations() {
         from: 'HongKong_dollar',
         to: 'HongKongDollar',
     });
+    replaceEnumProperty({
+        enumName: 'TuiCreditCardAutofillName',
+        from: 'CcExp_mounth',
+        to: 'CcExpMonth',
+    });
+    replaceEnumProperty({
+        enumName: 'TuiCreditCardAutofillName',
+        from: 'CcExp_year',
+        to: 'CcExpYear',
+    });
 
     addWarningToMethod(
         'TuiDirectiveStylesService',

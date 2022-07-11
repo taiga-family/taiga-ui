@@ -8,7 +8,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {TuiDropdownPositionT} from '@taiga-ui/kit';
+import {TuiDropdownPosition} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-tui-dropdown-selection',
@@ -31,7 +31,7 @@ export class ExampleTuiDropdownSelectionComponent {
         LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
-    positionVariants: TuiDropdownPositionT[] = ['selection', 'word', 'tag'];
+    positionVariants: TuiDropdownPosition[] = ['selection', 'word', 'tag'];
 
     open = false;
 

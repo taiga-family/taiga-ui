@@ -60,7 +60,7 @@ import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, Subject} from 'rxjs';
 import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
@@ -176,7 +176,7 @@ export class TuiInputTagComponent
         this.initScrollerSubscription(scroller);
     }
 
-    status$: Observable<TuiStatusT> = this.mode$.pipe(map(() => this.status));
+    status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
 
     open = false;
 
@@ -194,7 +194,7 @@ export class TuiInputTagComponent
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_MODE)
         private readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatusT,
+        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
@@ -284,7 +284,7 @@ export class TuiInputTagComponent
         return this.hasCleaner || this.hasTooltip || !!this.icon;
     }
 
-    get status(): TuiStatusT {
+    get status(): TuiStatus {
         return this.modeDirective?.mode ? 'default' : this.tagStatus;
     }
 

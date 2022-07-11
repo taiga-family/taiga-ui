@@ -4,8 +4,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiAutofillFieldName,
     TuiContextWithImplicit,
-    TuiInputModeT,
-    TuiInputTypeT,
+    TuiInputMode,
+    TuiInputType,
 } from '@taiga-ui/cdk';
 import {
     TuiDirection,
@@ -75,7 +75,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
+    readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -83,7 +83,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'url',
     ];
 
-    type: TuiInputTypeT = 'text';
+    type: TuiInputType = 'text';
 
     cleaner = false;
 
@@ -118,7 +118,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     autocomplete: TuiAutofillFieldName | '' = '';
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
+    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
     inputMode = this.inputModeVariants[0];
 

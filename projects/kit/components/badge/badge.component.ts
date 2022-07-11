@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -34,7 +34,7 @@ export class TuiBadgeComponent {
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status: TuiStatusT = 'default';
+    status: TuiStatus = 'default';
 
     @Input()
     @HostBinding('class._hoverable')

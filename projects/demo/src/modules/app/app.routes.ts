@@ -418,15 +418,6 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/input-file',
-        loadChildren: async () =>
-            (await import('../components/input-file/input-file.module'))
-                .ExampleTuiInputFileModule,
-        data: {
-            title: 'InputFile',
-        },
-    },
-    {
         path: 'components/input-month',
         loadChildren: async () =>
             (await import('../components/input-month/input-month.module'))
