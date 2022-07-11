@@ -1,4 +1,4 @@
-export type TuiStatusT =
+export type TuiStatus =
     | 'default'
     | 'primary'
     | 'custom'
