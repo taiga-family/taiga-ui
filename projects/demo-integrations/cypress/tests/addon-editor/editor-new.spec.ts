@@ -123,10 +123,65 @@ describe('Editor', () => {
                 .matchImageSnapshot('3-1-preview-lumberjack');
 
             closePreview();
+
+            function closePreview(): void {
+                cy.get('tui-preview').find('button[icon=tuiIconCloseLarge]').click();
+            }
         });
 
-        function closePreview(): void {
-            cy.get('tui-preview').find('button[icon=tuiIconCloseLarge]').click();
-        }
+        it('support regular bullet/ordered lists without paragraph in content', () => {
+            cy.get('#basic')
+                .findByAutomationId('tui-doc-example')
+                .tuiScrollIntoView()
+                .as('wrapper');
+
+            cy.get('@wrapper').find('button').eq(1).click();
+            cy.get('@wrapper').find('[contenteditable]').as('editor');
+
+            cy.get('@wrapper')
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('4-1-bullet-and-ordered-list');
+
+            clearEditor();
+            toggleBullet('tuiIconViewListLarge');
+
+            cy.get('@editor').type('1{enter}').type('{enter}');
+
+            toggleBullet('tuiIconOLLarge');
+
+            cy.get('@editor').type('A');
+            cy.get('@wrapper')
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('4-2-bullet-and-ordered-list');
+
+            clearEditor();
+            toggleBullet('tuiIconViewListLarge');
+
+            cy.get('@editor').type(
+                'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
+            );
+            cy.get('@wrapper')
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('4-3-bullet-and-ordered-list');
+
+            clearEditor();
+            toggleBullet('tuiIconOLLarge');
+
+            cy.get('@editor').type(
+                'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
+            );
+            cy.get('@wrapper')
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot('4-4-bullet-and-ordered-list');
+
+            function toggleBullet(iconType: string): void {
+                cy.get('@wrapper').find(`button[icon="tuiIconViewListLarge"]`).click();
+                cy.get('tui-dropdown-box').find(`button[icon="${iconType}"]`).click();
+            }
+
+            function clearEditor(): void {
+                cy.get('@editor').type('{selectall}{backspace}');
+            }
+        });
     });
 });

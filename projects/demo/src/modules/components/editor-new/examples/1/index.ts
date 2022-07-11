@@ -32,9 +32,25 @@ export class TuiEditorNewExample1 {
         Validators.required,
     );
 
-    onClick(): void {
+    example1(): void {
         this.control.setValue(
             '<p>Control</p><h2>is</h2><h1><span style="color: #e01f19">updated</span></h1>',
+        );
+    }
+
+    example2(): void {
+        this.control.setValue(
+            `
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                </ul>
+
+                <ol>
+                    <li>A</li>
+                    <li>B</li>
+                </ol>
+            `,
         );
     }
 }
