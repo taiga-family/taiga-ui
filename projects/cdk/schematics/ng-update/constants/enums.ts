@@ -6,17 +6,6 @@ interface ReplacementEnum {
 
 export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
     {
-        name: 'TuiPaymentSystem',
-        replaceValues: {
-            Visa: 'visa',
-            Electron: 'electron',
-            Mastercard: 'mastercard',
-            Maestro: 'maestro',
-            Mir: 'mir',
-        },
-        keepAsType: true,
-    },
-    {
         name: 'TuiTextAlign',
         replaceValues: {
             Left: 'left',

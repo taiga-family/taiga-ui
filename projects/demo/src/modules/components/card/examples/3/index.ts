@@ -11,6 +11,6 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
     encapsulation,
 })
 export class TuiCardExample3 {
-    readonly paymentSystem: TuiPaymentSystem = 'mir';
+    readonly paymentSystem = TuiPaymentSystem.Mir;
     readonly brandLogo = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
 }

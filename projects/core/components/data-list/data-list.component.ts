@@ -18,8 +18,8 @@ import {
     setNativeMouseFocused,
     tuiAssertIsElement,
     tuiDefaultProp,
-    tuiMoveFocus,
     tuiIsNativeFocusedIn,
+    tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';

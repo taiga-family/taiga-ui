@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {
+    TuiCurrency,
     TuiMoneyComponent,
     TuiMoneyModule,
     tuiMoneyOptionsProvider,
@@ -26,7 +27,7 @@ describe('Money component options', () => {
             declarations: [TestComponent],
             providers: [
                 tuiMoneyOptionsProvider({
-                    currency: 'EUR',
+                    currency: TuiCurrency.Euro,
                     sign: 'never',
                     precision: 1,
                 }),
