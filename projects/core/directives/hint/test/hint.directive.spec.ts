@@ -7,7 +7,7 @@ import {
     tick,
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
+import {tuiAssertIsElement} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
@@ -133,10 +133,10 @@ describe('Hint', () => {
         }
     });
 
-    function getHost(): HTMLElement {
+    function getHost(): Element {
         const element = document.querySelector('#hint-host');
 
-        tuiAssertIsHTMLElement(element);
+        tuiAssertIsElement(element);
 
         return element;
     }

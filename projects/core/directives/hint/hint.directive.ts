@@ -18,7 +18,7 @@ import {
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
-import {DESCRIBED_BY} from '@taiga-ui/core/directives/described-by';
+import {DESCRIBED_BY} from '@taiga-ui/core/constants';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, of, Subject} from 'rxjs';
@@ -38,7 +38,12 @@ export const HINT_HOVERED_CLASS = '_hint_hovered';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',
-    providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
+    providers: [
+        TuiObscuredService,
+        TuiParentsScrollService,
+        TuiDestroyService,
+        TuiHoveredService,
+    ],
 })
 export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     @Input()
@@ -90,10 +95,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         super(elementRef, hintService, activeZone, options);
 
         // @bad TODO: Use private provider
-        combineLatest(
-            hoveredService.createHovered$(elementRef.nativeElement),
-            this.componentHovered$.pipe(startWith(false)),
-        )
+        combineLatest(hoveredService, this.componentHovered$.pipe(startWith(false)))
             .pipe(
                 map(
                     ([directiveHovered, componentHovered]) =>
