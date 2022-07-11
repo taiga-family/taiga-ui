@@ -45,7 +45,6 @@ module.exports = {
                 allowIndexSignaturePropertyAccess: true,
             },
         ],
-        '@typescript-eslint/no-useless-constructor': 'off',
         'no-prototype-builtins': 'off',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
         '@typescript-eslint/prefer-includes': 'error',

@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectorRef,
     Directive,
@@ -5,6 +6,8 @@ import {
     HostBinding,
     Inject,
     Input,
+    Optional,
+    Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -104,12 +107,14 @@ export abstract class AbstractTuiSlider<T>
 
     pluralizeMap: Record<string, string> | null = null;
 
-    protected constructor(
+    constructor(
+        @Optional()
+        @Self()
+        @Inject(NgControl)
         ngControl: NgControl | null,
-        changeDetectorRef: ChangeDetectorRef,
-        private readonly documentRef: Document,
-        @Inject(TUI_FROM_TO_TEXTS)
-        readonly fromToTexts$: Observable<[string, string]>,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(TUI_FROM_TO_TEXTS) readonly fromToTexts$: Observable<[string, string]>,
     ) {
         super(ngControl, changeDetectorRef);
     }
@@ -144,7 +149,9 @@ export abstract class AbstractTuiSlider<T>
     }
 
     abstract get left(): number;
+
     abstract get right(): number;
+
     abstract processValue(value: number, right?: boolean): void;
 
     ngOnInit(): void {

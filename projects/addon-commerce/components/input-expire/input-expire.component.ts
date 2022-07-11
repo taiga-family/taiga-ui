@@ -1,15 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     forwardRef,
-    Inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
@@ -59,16 +54,6 @@ export class TuiInputExpireComponent
         pipe: tuiCreateAutoCorrectedExpirePipe(),
         guide: false,
     } as TuiTextMaskOptions as unknown as TextMaskConfig;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-    ) {
-        super(control, changeDetectorRef);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.input ? this.input.nativeFocusableElement : null;

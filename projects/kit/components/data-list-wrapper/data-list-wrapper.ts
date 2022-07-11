@@ -2,6 +2,7 @@ import {
     Directive,
     ElementRef,
     forwardRef,
+    Inject,
     Input,
     QueryList,
     ViewChildren,
@@ -13,7 +14,7 @@ import {
     TuiSizeXS,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Directive()
@@ -34,7 +35,10 @@ export abstract class AbstractTuiDataListWrapper<T> {
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeL = 'm';
 
-    protected constructor(protected readonly itemsHandlers: TuiItemsHandlers<T>) {}
+    constructor(
+        @Inject(TUI_ITEMS_HANDLERS)
+        protected readonly itemsHandlers: TuiItemsHandlers<T>,
+    ) {}
 
     @Input()
     @tuiDefaultProp()

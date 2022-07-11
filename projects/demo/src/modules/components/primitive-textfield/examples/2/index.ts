@@ -1,12 +1,4 @@
-import {
-    ChangeDetectorRef,
-    Component,
-    Inject,
-    Optional,
-    Self,
-    ViewChild,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
@@ -29,16 +21,6 @@ import {
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-    ) {
-        super(control, changeDetectorRef);
-    }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield

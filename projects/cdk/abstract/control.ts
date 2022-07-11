@@ -2,9 +2,12 @@ import {
     ChangeDetectorRef,
     Directive,
     HostBinding,
+    Inject,
     Input,
     OnDestroy,
     OnInit,
+    Optional,
+    Self,
 } from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
@@ -43,8 +46,12 @@ export abstract class AbstractTuiControl<T>
     @tuiDefaultProp()
     pseudoInvalid: boolean | null = null;
 
-    protected constructor(
+    constructor(
+        @Optional()
+        @Self()
+        @Inject(NgControl)
         private readonly ngControl: NgControl | null,
+        @Inject(ChangeDetectorRef)
         protected readonly changeDetectorRef: ChangeDetectorRef,
         protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
     ) {

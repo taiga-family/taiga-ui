@@ -1,14 +1,4 @@
-import {DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    forwardRef,
-    Inject,
-    Optional,
-    Self,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
@@ -16,8 +6,6 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {AbstractTuiSlider} from '@taiga-ui/kit/abstract';
-import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 /**
  * @deprecated use {@link TuiSliderComponent} instead
@@ -43,18 +31,6 @@ export class TuiSliderOldComponent
     extends AbstractTuiSlider<number>
     implements TuiFocusableElementAccessor
 {
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(DOCUMENT) documentRef: Document,
-        @Inject(TUI_FROM_TO_TEXTS) fromToTexts$: Observable<[string, string]>,
-    ) {
-        super(control, changeDetectorRef, documentRef, fromToTexts$);
-    }
-
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.dotRight ? this.dotRight.nativeElement : null;
     }

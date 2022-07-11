@@ -1,15 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
-    Inject,
-    Optional,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     setNativeFocused,
@@ -51,16 +46,6 @@ export class TuiInputComponent
     > = '';
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-    ) {
-        super(control, changeDetectorRef);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.textfield

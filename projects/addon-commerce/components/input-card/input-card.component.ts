@@ -1,17 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     EventEmitter,
     forwardRef,
-    Inject,
     Input,
     Optional,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
@@ -88,16 +84,6 @@ export class TuiInputCardComponent
         guide: false,
         pipe: conformedValue => conformedValue.trim(),
     };
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-    ) {
-        super(control, changeDetectorRef);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.input ? this.input.nativeFocusableElement : null;
