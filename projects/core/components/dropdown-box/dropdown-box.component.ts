@@ -20,7 +20,7 @@ import {
     tuiAssertIsHTMLElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
-    TuiOverscrollModeT,
+    TuiOverscrollMode,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -93,7 +93,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             });
     }
 
-    get overscroll(): TuiOverscrollModeT {
+    get overscroll(): TuiOverscrollMode {
         return this.inModal ? 'all' : 'scroll';
     }
 

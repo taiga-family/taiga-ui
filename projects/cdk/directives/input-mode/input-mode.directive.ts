@@ -1,6 +1,6 @@
 import {Attribute, Directive, HostBinding, Inject, Input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {TuiInputModeT} from '@taiga-ui/cdk/types';
+import {TuiInputMode} from '@taiga-ui/cdk/types';
 
 /**
  * Abstraction over `inputMode` attribute
@@ -12,7 +12,7 @@ export class TuiInputModeDirective {
     @Input('tuiInputMode')
     @HostBinding('attr.inputmode')
     @HostBinding('attr.x-inputmode')
-    mode: TuiInputModeT = 'text';
+    mode: TuiInputMode = 'text';
 
     constructor(
         @Attribute('pattern') private readonly pattern: string | null,
