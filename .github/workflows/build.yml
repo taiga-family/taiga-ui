@@ -49,5 +49,5 @@ jobs:
         run: npm run run-many:build:libs
 
 concurrency:
-  group: build-${{ github.head_ref }}
+  group: build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

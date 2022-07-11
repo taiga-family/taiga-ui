@@ -74,5 +74,5 @@ jobs:
           skip_fetch: true
 
 concurrency:
-  group: lint-${{ github.head_ref }}
+  group: lint-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -91,5 +91,5 @@ jobs:
           name: addon-charts
 
 concurrency:
-  group: test-${{ github.head_ref }}
+  group: test-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

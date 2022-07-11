@@ -18,7 +18,7 @@ env:
 
 jobs:
   build-and-deploy:
-    name: Next
+    name: Next for branch ${{ github.head_ref || github.ref }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -49,5 +49,5 @@ jobs:
           silent: false
 
 concurrency:
-  group: deploy-next-${{ github.head_ref }}
+  group: deploy-next-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
