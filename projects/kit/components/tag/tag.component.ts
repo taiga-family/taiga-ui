@@ -20,7 +20,7 @@ import {
     TuiSizeS,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -74,7 +74,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
-    status: TuiStatusT = this.options.status;
+    status: TuiStatus = this.options.status;
 
     @Input()
     @HostBinding(`class._hoverable`)

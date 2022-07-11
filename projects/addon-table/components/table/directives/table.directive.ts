@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -25,7 +25,7 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
         style: `border-collapse: separate`,
     },
 })
-export class TuiTableDirective<T> extends TuiController {
+export class TuiTableDirective<T> extends AbstractTuiController {
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<keyof T | string> = [];
