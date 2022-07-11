@@ -14,7 +14,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
-    TuiInputTypeT,
+    TuiInputType,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -44,9 +44,9 @@ import {
 
 // @dynamic
 @Component({
-    selector: `tui-input-password`,
-    templateUrl: `./input-password.template.html`,
-    styleUrls: [`./input-password.style.less`],
+    selector: 'tui-input-password',
+    templateUrl: './input-password.template.html',
+    styleUrls: ['./input-password.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -71,7 +71,7 @@ export class TuiInputPasswordComponent
     isPasswordHidden = true;
 
     readonly computedMode$: Observable<TuiHintModeT | null> = combineLatest([
-        this.mode$.pipe(map(val => (val === `onDark` ? `onDark` : null))),
+        this.mode$.pipe(map(val => (val === 'onDark' ? 'onDark' : null))),
         this.hintController.change$.pipe(
             startWith(null),
             map(() => this.hintController.mode),
@@ -121,8 +121,8 @@ export class TuiInputPasswordComponent
         return this.getContext(this.textfieldSize.size);
     }
 
-    get inputType(): TuiInputTypeT {
-        return this.isPasswordHidden || !this.interactive ? `password` : `text`;
+    get inputType(): TuiInputType {
+        return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
     onValueChange(textValue: string): void {
@@ -146,7 +146,7 @@ export class TuiInputPasswordComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     @tuiPure
