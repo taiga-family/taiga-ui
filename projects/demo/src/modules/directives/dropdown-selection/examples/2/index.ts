@@ -5,8 +5,6 @@ import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-
 import {TuiOptionComponent} from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit';
 
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
 export interface User {
     readonly name: string;
     readonly avatar: string;
@@ -29,7 +27,10 @@ export class TuiDropdownSelectionExample2 {
     readonly items = [
         {
             name: 'Alexander Inkin',
-            avatar,
+            avatar: new URL(
+                '../../../../../assets/images/avatar.jpg',
+                import.meta.url,
+            ).toString(),
             login: 'a.inkin',
         },
         {

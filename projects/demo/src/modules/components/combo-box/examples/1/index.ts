@@ -6,8 +6,6 @@ import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
 
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
 class User {
     constructor(
         readonly firstName: string,
@@ -22,7 +20,11 @@ class User {
 
 const databaseMockData: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
+    new User(
+        'Alex',
+        'Inkin',
+        new URL('../../../../../assets/images/avatar.jpg', import.meta.url).toString(),
+    ),
 ];
 
 @Component({

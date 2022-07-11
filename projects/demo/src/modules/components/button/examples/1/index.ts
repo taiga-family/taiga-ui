@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
 @Component({
     selector: 'tui-button-example-1',
     templateUrl: './index.html',
@@ -11,9 +9,12 @@ import {default as avatar} from '!!file-loader!../../../../../assets/images/avat
     encapsulation,
 })
 export class TuiButtonExample1 {
-    readonly avatarUrl = avatar;
+    readonly avatarUrl = new URL(
+        '../../../../../assets/images/avatar.jpg',
+        import.meta.url,
+    ).toString();
 
     onClick(event: MouseEvent): void {
-        console.info('click', event);
+        console.info('click', this.avatarUrl, event);
     }
 }

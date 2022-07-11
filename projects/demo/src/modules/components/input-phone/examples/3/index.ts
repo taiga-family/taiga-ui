@@ -5,8 +5,6 @@ import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import {combineLatest, merge, Observable, of, Subject} from 'rxjs';
 import {map, share, startWith, switchMap, tap} from 'rxjs/operators';
 
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
 class User {
     constructor(
         readonly firstName: string,
@@ -28,7 +26,12 @@ const DATA: readonly User[] = [
         '+75678901234',
         'http://marsibarsi.me/images/1x1small.jpg',
     ),
-    new User('Alex', 'Inkin', '+75678901234', avatar),
+    new User(
+        'Alex',
+        'Inkin',
+        '+75678901234',
+        new URL('../../../../../assets/images/avatar.jpg', import.meta.url).toString(),
+    ),
 ];
 
 @Component({

@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
-import {default as avatarUrl} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
 @Component({
     selector: 'tui-dropdown-example-2',
     templateUrl: './index.html',
@@ -14,7 +12,10 @@ import {default as avatarUrl} from '!!file-loader!../../../../../assets/images/a
 export class TuiDropdownExample2 {
     open = false;
 
-    avatarUrl = avatarUrl;
+    avatarUrl = new URL(
+        '../../../../../assets/images/avatar.jpg',
+        import.meta.url,
+    ).toString();
 
     onMouseEnter(): void {
         this.open = true;

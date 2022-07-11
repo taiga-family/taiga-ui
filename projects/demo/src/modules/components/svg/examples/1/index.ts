@@ -6,8 +6,6 @@ import {tuiIconMaestro, tuiIconMastercard, tuiIconTimeLarge} from '@taiga-ui/ico
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
-import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
-
 @Component({
     selector: 'tui-svg-example-1',
     templateUrl: './index.html',
@@ -18,7 +16,10 @@ import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts
 export class TuiSvgExample1 {
     readonly timeout$ = timer(0).pipe(mapTo(true));
 
-    readonly imageUrl = `${imageUrl}#ts`;
+    readonly imageUrl = `${new URL(
+        '../../../../../assets/images/ts.svg',
+        import.meta.url,
+    )}#ts`;
 
     readonly tuiIconTimeLarge = tuiIconTimeLarge;
 

@@ -2,8 +2,6 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-import {default as imageUrl} from '!!file-loader!../../../assets/images/ts.svg';
-
 import {TuiThemeService} from '../../app/theme.service';
 
 @Component({
@@ -38,7 +36,7 @@ export class ExampleTuiSvgComponent {
                 c0-0.6-0.4-1-1-1s-1,0.4-1,1v2h-1c-1.3,0-3,1.9-3,4v4.2L6.4,17H10z M3.6,19L5,14.8V11c0-2.7,1.9-5.2,4-5.8V5c0-1.7,1.3-3,3-3
                 s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
         </svg>`,
-        `${imageUrl}#ts`,
+        `${new URL('../../../assets/images/ts.svg', import.meta.url)}#ts`,
     ];
 
     icon = this.iconVariants[0];

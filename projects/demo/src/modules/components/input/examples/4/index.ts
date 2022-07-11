@@ -7,7 +7,10 @@ import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
 
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
+const avatar = new URL(
+    '../../../../../assets/images/avatar.jpg',
+    import.meta.url,
+).toString();
 
 class User {
     constructor(
