@@ -1,5 +1,5 @@
 import {AbstractControl} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
@@ -52,7 +52,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
+    readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -80,7 +80,7 @@ export abstract class AbstractExampleTuiControl
         'country-name',
     ];
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
+    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
     readonly customContentVariants: PolymorpheusContent[] = [
         CUSTOM_SVG_NAME,
@@ -98,7 +98,7 @@ export abstract class AbstractExampleTuiControl
 
     maxLength: TuiPossibleGenericType | null = null;
 
-    type: TuiInputTypeT = this.typeVariants[0];
+    type: TuiInputType = this.typeVariants[0];
 
     cleaner = false;
 

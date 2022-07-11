@@ -2,7 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiInputModeT} from '../../../types/input-mode';
+import {TuiInputMode} from '../../../types/input-mode';
 import {TuiInputModeModule} from '../input-mode.module';
 
 describe('TuiInputMode directive', () => {
@@ -34,7 +34,7 @@ describe('TuiInputMode directive', () => {
         @ViewChild('inputWithPattern')
         inputWithPattern!: ElementRef<HTMLInputElement>;
 
-        inputMode: TuiInputModeT = 'decimal';
+        inputMode: TuiInputMode = 'decimal';
 
         default = true;
     }
