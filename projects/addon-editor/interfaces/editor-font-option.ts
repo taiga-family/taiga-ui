@@ -4,5 +4,6 @@ export interface TuiEditorFontOption {
     px: number;
     name: string;
     family?: string;
+    weight?: string;
     headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
