@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit';
+import {TuiStatus} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-badge',
@@ -35,7 +35,7 @@ export class ExampleTuiBadgeComponent {
         HTML: import('!!raw-loader!./examples/4/index.html'),
     };
 
-    readonly statusVariants: readonly TuiStatusT[] = [
+    readonly statusVariants: readonly TuiStatus[] = [
         'default',
         'primary',
         'custom',

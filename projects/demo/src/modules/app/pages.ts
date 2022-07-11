@@ -450,13 +450,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'InputFile',
-                keywords:
-                    'селект, форма, файл, загрузка, ввод, input, file, attach, load',
-                route: '/components/input-file',
-            },
-            {
-                section: $localize`Components`,
                 title: 'InputInline',
                 keywords: 'input',
                 route: '/components/input-inline',
