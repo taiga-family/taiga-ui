@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.53.0](https://github.com/tinkoff/taiga-ui/compare/v2.52.0...v2.53.0) (2022-07-11)
+
+### Features
+
+- **addon-doc:** new DI-token `TUI_DOC_SCROLL_BEHAVIOR` ([#2059](https://github.com/tinkoff/taiga-ui/issues/2059))
+  ([a49b60f](https://github.com/tinkoff/taiga-ui/commit/a49b60f4e39960b829b407d7ed4f1da91f962241))
+
+### Bug Fixes
+
+- **addon-charts:** use `ng-container[ngTemplateOutlet]` instead of structural directive
+  ([#2071](https://github.com/tinkoff/taiga-ui/issues/2071))
+  ([c1d8b18](https://github.com/tinkoff/taiga-ui/commit/c1d8b187bb6ab101e98d67a5314d5e81d4bb504a))
+- **addon-editor:** customize text color in dark/light mode ([#2088](https://github.com/tinkoff/taiga-ui/issues/2088))
+  ([7c1d891](https://github.com/tinkoff/taiga-ui/commit/7c1d891ddfc807725f7bd0b4c712ad7760edfe52))
+- **addon-editor:** improve ui/ux for font-size component ([#2094](https://github.com/tinkoff/taiga-ui/issues/2094))
+  ([98797d8](https://github.com/tinkoff/taiga-ui/commit/98797d809d5e7f5b6c822d577afa3ec6498d12fe))
+- **addon-editor:** support styles without paragraph for lists
+  ([#2092](https://github.com/tinkoff/taiga-ui/issues/2092))
+  ([a4d841a](https://github.com/tinkoff/taiga-ui/commit/a4d841a96b88d7ff7def73770e383bb00982a53a))
+- **cdk:** remove deprecated API ([#2055](https://github.com/tinkoff/taiga-ui/issues/2055))
+  ([e7e5a92](https://github.com/tinkoff/taiga-ui/commit/e7e5a9229d369d0899fb906696d564a55788e850))
+- **core:** `tuiLink` mustn't break inline model for anchors ([#2083](https://github.com/tinkoff/taiga-ui/issues/2083))
+  ([eff9b8f](https://github.com/tinkoff/taiga-ui/commit/eff9b8f71bbd744378c256a8df8ff9eaa2775353))
+- **core:** align to baseline value decoration postfix ([#2070](https://github.com/tinkoff/taiga-ui/issues/2070))
+  ([4f1d4b7](https://github.com/tinkoff/taiga-ui/commit/4f1d4b7236943d1803cbe71a2f36ca4127af2aae))
+- **kit:** `InputNumber` can't type minus using ios keyboard ([#2061](https://github.com/tinkoff/taiga-ui/issues/2061))
+  ([4608b35](https://github.com/tinkoff/taiga-ui/commit/4608b35c22a7362439d7859f18541220ff923d5c))
+- **kit:** `Tabs` redundant space after the last tab ([#2000](https://github.com/tinkoff/taiga-ui/issues/2000))
+  ([bd8b847](https://github.com/tinkoff/taiga-ui/commit/bd8b8474261f3d6209fb896404e61d676db669a4))
+
 ## [2.52.0](https://github.com/tinkoff/taiga-ui/compare/v2.51.1...v2.52.0) (2022-07-05)
 
 ### Features
