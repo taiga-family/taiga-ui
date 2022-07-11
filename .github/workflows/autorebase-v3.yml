@@ -1,19 +1,19 @@
-name: Rebase from main branch
+name: Rebase from v3.x branch
 
 on:
   push:
     branches:
-      - main
+      - 'v3.x'
 
 jobs:
   rebase:
     runs-on: ubuntu-latest
     steps:
-      - name: Autorebase from main branch
+      - name: Autorebase from v3.x branch
         continue-on-error: true
         uses: peter-evans/rebase@v2
         with:
-          base: main
+          base: v3.x
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           head: 'Tinkoff:*'
-          include-labels: 'autorebase'
+          include-labels: 'v3.0 candidates'

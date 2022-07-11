@@ -8,5 +8,5 @@ runs:
       uses: imba-tjd/rebase-upstream-action@0.5
       with:
         upstream: Tinkoff/taiga-ui
-        branch: main
+        branch: ${{ github.base_ref }}
         push: false
