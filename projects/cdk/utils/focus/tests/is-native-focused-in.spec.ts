@@ -1,4 +1,4 @@
-import {tuiIsNativeFocusedIn} from '../tui-is-native-focused-in';
+import {tuiIsNativeFocusedIn} from '../is-native-focused-in';
 
 describe('isNativeFocusedIn', () => {
     it('element is not focused in', () => {
