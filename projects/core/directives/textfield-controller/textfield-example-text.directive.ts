@@ -1,13 +1,13 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_EXAMPLE_TEXT =
-    new InjectionToken<TuiTextfieldExampleTextDirective>(`tuiTextfieldExampleText`, {
+    new InjectionToken<TuiTextfieldExampleTextDirective>('tuiTextfieldExampleText', {
         factory: exampleTextDirectiveFactory,
     });
 
 @Directive({
-    selector: `[tuiTextfieldExampleText]`,
+    selector: '[tuiTextfieldExampleText]',
     providers: [
         {
             provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
@@ -15,9 +15,9 @@ export const TUI_TEXTFIELD_EXAMPLE_TEXT =
         },
     ],
 })
-export class TuiTextfieldExampleTextDirective extends TuiController {
-    @Input(`tuiTextfieldExampleText`)
-    exampleText = ``;
+export class TuiTextfieldExampleTextDirective extends AbstractTuiController {
+    @Input('tuiTextfieldExampleText')
+    exampleText = '';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

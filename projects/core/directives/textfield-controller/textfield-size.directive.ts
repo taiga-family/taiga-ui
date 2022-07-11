@@ -1,16 +1,16 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
-    `tuiTextfieldSize`,
+    'tuiTextfieldSize',
     {
         factory: sizeDirectiveFactory,
     },
 );
 
 @Directive({
-    selector: `[tuiTextfieldSize]`,
+    selector: '[tuiTextfieldSize]',
     providers: [
         {
             provide: TUI_TEXTFIELD_SIZE,
@@ -18,9 +18,9 @@ export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
         },
     ],
 })
-export class TuiTextfieldSizeDirective extends TuiController {
-    @Input(`tuiTextfieldSize`)
-    size: TuiSizeS | TuiSizeL = `l`;
+export class TuiTextfieldSizeDirective extends AbstractTuiController {
+    @Input('tuiTextfieldSize')
+    size: TuiSizeS | TuiSizeL = 'l';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
