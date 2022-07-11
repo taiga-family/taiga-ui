@@ -1,10 +1,10 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiTagOptions {
     readonly size: TuiSizeS | TuiSizeL;
-    readonly status: TuiStatusT;
+    readonly status: TuiStatus;
     readonly autoColor: boolean;
 }
 
