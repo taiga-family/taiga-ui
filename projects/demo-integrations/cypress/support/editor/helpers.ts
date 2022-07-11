@@ -2,8 +2,10 @@ import {WAIT_BEFORE_SCREENSHOT} from '../../tests/addon-editor/utils';
 import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../shared.entities';
 
 export function tuiInitBaseWrapper(): void {
-    cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
-    cy.get('@wrapper').tuiScrollIntoView();
+    cy.get('#basic')
+        .findByAutomationId('tui-doc-example')
+        .tuiScrollIntoView()
+        .as('wrapper');
 }
 
 export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): void {
@@ -36,6 +38,18 @@ export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {
 
 export function tuiGetScreenshotArea(): Cypress.Chainable<JQuery> {
     return cy.get('@wrapper').wait(WAIT_BEFORE_SCREENSHOT);
+}
+
+export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
+    cy.get('@wrapper').find('button[icon="tuiIconFontLarge"]').as('iconFontLargeTool');
+
+    cy.get('body').then($body => {
+        if ($body.find('tui-data-list[role="listbox"]').length === 0) {
+            cy.get('@iconFontLargeTool').click();
+        }
+    });
+
+    return cy.get('tui-data-list[role="listbox"]');
 }
 
 export function tuiGetContentEditable(): Cypress.Chainable<JQuery> {
