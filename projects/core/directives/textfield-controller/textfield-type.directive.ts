@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController, TuiInputTypeT} from '@taiga-ui/cdk';
+import {AbstractTuiController, TuiInputType} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_TYPE = new InjectionToken<TuiTextfieldTypeDirective>(
     'tuiTextfieldType',
@@ -17,9 +17,9 @@ export const TUI_TEXTFIELD_TYPE = new InjectionToken<TuiTextfieldTypeDirective>(
         },
     ],
 })
-export class TuiTextfieldTypeDirective extends TuiController {
+export class TuiTextfieldTypeDirective extends AbstractTuiController {
     @Input('tuiTextfieldType')
-    type: TuiInputTypeT = 'text';
+    type: TuiInputType = 'text';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
