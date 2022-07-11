@@ -1,7 +1,7 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
 import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TuiEventWith, TuiOverscrollModeT} from '@taiga-ui/cdk/types';
+import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {canScroll, getScrollParent} from '@taiga-ui/cdk/utils/dom';
 import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
@@ -16,7 +16,7 @@ import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 })
 export class TuiOverscrollDirective {
     @Input('tuiOverscroll')
-    mode: TuiOverscrollModeT | '' = 'scroll';
+    mode: TuiOverscrollMode | '' = 'scroll';
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiOrientationT} from '@taiga-ui/core';
-import {TuiStepStateT} from '@taiga-ui/kit';
+import {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-tui-stepper',
@@ -33,7 +33,7 @@ export class ExampleTuiStepperComponent {
 
     icon = this.iconVariants[0];
 
-    readonly stateVariants: TuiStepStateT[] = ['normal', 'pass', 'error'];
+    readonly stateVariants: TuiStepState[] = ['normal', 'pass', 'error'];
 
-    state: TuiStepStateT = this.stateVariants[0];
+    state: TuiStepState = this.stateVariants[0];
 }
