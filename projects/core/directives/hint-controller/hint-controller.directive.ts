@@ -1,5 +1,5 @@
 import {Directive, forwardRef, Inject, Input} from '@angular/core';
-import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -15,7 +15,7 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
         },
     ],
 })
-export class TuiHintControllerDirective extends TuiController {
+export class TuiHintControllerDirective extends AbstractTuiController {
     // TODO: 3.0 Remove null
     @Input(`tuiHintContent`)
     @tuiDefaultProp()
