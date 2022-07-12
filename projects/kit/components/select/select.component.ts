@@ -13,12 +13,12 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_CLEANER,
@@ -104,7 +104,7 @@ export class TuiSelectComponent<T>
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }

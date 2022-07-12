@@ -17,13 +17,13 @@ import {
 import {
     EMPTY_QUERY,
     getClosestFocusable,
-    isNativeFocused,
     setNativeFocused,
     toInt,
     TuiActiveZoneDirective,
     tuiAssertIsHTMLElement,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiIsNativeFocused,
     TuiItemDirective,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
@@ -106,7 +106,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get isMoreFocusable(): boolean {
-        return !!this.moreButton && isNativeFocused(this.moreButton.nativeElement);
+        return !!this.moreButton && tuiIsNativeFocused(this.moreButton.nativeElement);
     }
 
     get isMoreActive(): boolean {
@@ -154,7 +154,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     onArrowRight(event: Event): void {
         tuiAssertIsHTMLElement(event.target);
 
-        if (isNativeFocused(event.target)) {
+        if (tuiIsNativeFocused(event.target)) {
             this.focusMore();
         }
     }
@@ -166,7 +166,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         while (index >= 0) {
             setNativeFocused(tabs[index]);
 
-            if (isNativeFocused(tabs[index])) {
+            if (tuiIsNativeFocused(tabs[index])) {
                 return;
             }
 

@@ -21,14 +21,11 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {
     EMPTY_QUERY,
-    moveFocus,
-    TUI_IS_ANDROID,
-    TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiMoveFocus,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -77,12 +74,6 @@ export class TuiTabsComponent implements AfterViewChecked {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @HostBinding('class._ios')
-    readonly isIos: boolean;
-
-    @HostBinding('class._android')
-    readonly isAndroid: boolean;
-
     activeItemIndex = 0;
 
     constructor(
@@ -91,13 +82,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiResizeService) resize$: Observable<void>,
-        @Inject(TUI_IS_IOS) isIos: boolean,
-        @Inject(TUI_IS_ANDROID) isAndroid: boolean,
-        @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
     ) {
-        this.isIos = mobileAware && isIos;
-        this.isAndroid = mobileAware && isAndroid;
-
         resize$.pipe(filter(() => this.underline)).subscribe(() => {
             changeDetectorRef.detectChanges();
         });
@@ -130,7 +115,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     onKeyDownArrow(current: HTMLElement, step: number): void {
         const {tabs} = this;
 
-        moveFocus(tabs.indexOf(current), tabs, step);
+        tuiMoveFocus(tabs.indexOf(current), tabs, step);
     }
 
     ngAfterViewChecked(): void {
