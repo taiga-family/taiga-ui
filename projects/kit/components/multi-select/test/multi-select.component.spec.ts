@@ -2,7 +2,6 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiHintControllerModule,
@@ -17,8 +16,8 @@ import {
 } from '@taiga-ui/kit/components';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
-describe(`MultiSelect`, () => {
-    describe(`Basic`, () => {
+describe('MultiSelect', () => {
+    describe('Basic', () => {
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
         let pageObject: TuiPageObject<TestComponent>;
@@ -37,9 +36,9 @@ describe(`MultiSelect`, () => {
         }
 
         const items = [
-            new User(`Marsi`, `Barsi`, `0`),
-            new User(`Water`, `Plea`, `2`),
-            new User(`Alexander`, `Inkin`, `3`),
+            new User('Marsi', 'Barsi', '0'),
+            new User('Water', 'Plea', '2'),
+            new User('Alexander', 'Inkin', '3'),
         ];
 
         @Component({
@@ -90,26 +89,26 @@ describe(`MultiSelect`, () => {
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 
-            inputPO = new TuiNativeInputPO(fixture, `tui-input-tag__native`);
+            inputPO = new TuiNativeInputPO(fixture, 'tui-input-tag__native');
             fixture.detectChanges();
         });
 
-        describe(`Field`, () => {
-            describe(`when you click on it`, () => {
+        describe('Field', () => {
+            describe('when you click on it', () => {
                 beforeEach(() => {
                     // Focus happens before click, after mousedown
                     inputPO.focus();
                 });
 
-                it(`opens a dropdown`, () => {
+                it('opens a dropdown', () => {
                     getInputTag(pageObject).nativeElement.click();
                     fixture.detectChanges();
 
                     expect(getDropdown(pageObject)).not.toBeNull();
                 });
 
-                describe(`does not open the dropdown`, () => {
-                    it(`in readOnly mode`, () => {
+                describe('does not open the dropdown', () => {
+                    it('in readOnly mode', () => {
                         testComponent.readOnly = true;
                         fixture.detectChanges();
                         getInputTag(pageObject).nativeElement.click();
@@ -118,7 +117,7 @@ describe(`MultiSelect`, () => {
                         expect(getDropdown(pageObject)).toBeNull();
                     });
 
-                    it(`if control is disabled`, () => {
+                    it('if control is disabled', () => {
                         testComponent.control.disable();
                         fixture.detectChanges();
                         getInputTag(pageObject).nativeElement.click();
@@ -130,15 +129,15 @@ describe(`MultiSelect`, () => {
             });
         });
 
-        describe(`Arrow`, () => {
-            it(`Click on the arrow to open the dropdown`, () => {
+        describe('Arrow', () => {
+            it('Click on the arrow to open the dropdown', () => {
                 getArrow(pageObject)?.nativeElement.click();
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            it(`Clicking the arrow again closes the dropdown`, () => {
+            it('Clicking the arrow again closes the dropdown', () => {
                 getArrow(pageObject)?.nativeElement.click();
                 fixture.detectChanges();
                 getArrow(pageObject)?.nativeElement.click();
@@ -147,14 +146,14 @@ describe(`MultiSelect`, () => {
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it(`There is exists interactive arrow in readOnly mode`, () => {
+            it('There is exists interactive arrow in readOnly mode', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
                 expect(getArrow(pageObject)?.nativeElement).toBeTruthy();
             });
 
-            it(`In disabled mode there is interactive arrow exists`, () => {
+            it('In disabled mode there is interactive arrow exists', () => {
                 testComponent.control.disable();
                 fixture.detectChanges();
 
@@ -162,65 +161,65 @@ describe(`MultiSelect`, () => {
             });
         });
 
-        describe(`Keyboard`, () => {
+        describe('Keyboard', () => {
             beforeEach(() => {
                 inputPO.focus();
             });
 
-            it(`Down arrow opens a dropdown`, () => {
-                inputPO.sendKeydown(`ArrowDown`);
+            it('Down arrow opens a dropdown', () => {
+                inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            it(`Esc closes the dropdown`, () => {
-                inputPO.sendKeydown(`ArrowDown`);
+            it('Esc closes the dropdown', () => {
+                inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
-                inputPO.sendKeydown(`Escape`);
+                inputPO.sendKeydown('Escape');
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it(`Down arrow does not open dropdown in readOnly mode`, () => {
+            it('Down arrow does not open dropdown in readOnly mode', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
-                inputPO.sendKeydown(`ArrowDown`);
+                inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it(`The repeated down arrow moves focus to the item`, () => {
-                inputPO.sendKeydown(`ArrowDown`);
-                inputPO.sendKeydown(`ArrowDown`);
+            it('The repeated down arrow moves focus to the item', () => {
+                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown('ArrowDown');
 
-                expect(document.activeElement?.tagName.toLowerCase()).toBe(`button`);
+                expect(document.activeElement?.tagName.toLowerCase()).toBe('button');
             });
 
-            it(`Click to remove the selected item`, () => {
-                inputPO.sendKeydown(`ArrowDown`);
-                inputPO.sendKeydown(`ArrowDown`);
-                tuiAssertIsHTMLElement(document.activeElement);
-                document.activeElement.click();
+            it('Click to remove the selected item', () => {
+                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown('ArrowDown');
+
+                (document.activeElement as HTMLElement).click();
 
                 expect(testComponent.control.value).toEqual([]);
             });
 
-            it(`Click to select an unselected item`, () => {
-                inputPO.sendKeydown(`ArrowDown`);
-                inputPO.sendKeydown(`ArrowDown`);
-                tuiAssertIsHTMLElement(document.activeElement);
-                document.activeElement.click();
-                document.activeElement.click();
+            it('Click to select an unselected item', () => {
+                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown('ArrowDown');
+
+                (document.activeElement as HTMLElement).click();
+                (document.activeElement as HTMLElement).click();
 
                 expect(testComponent.control.value).toEqual([items[0]]);
             });
         });
     });
 
-    describe(`Change arrow mode`, () => {
+    describe('Change arrow mode', () => {
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
         let pageObject: TuiPageObject<TestComponent>;
@@ -237,7 +236,7 @@ describe(`MultiSelect`, () => {
             }
         }
 
-        const items = [new User(`Alexander`, `Inkin`, `1`)];
+        const items = [new User('Alexander', 'Inkin', '1')];
 
         @Component({
             template: `
@@ -283,7 +282,7 @@ describe(`MultiSelect`, () => {
                 providers: [
                     {
                         provide: TUI_ARROW_MODE,
-                        useValue: {interactive: `☆`, disabled: `★`},
+                        useValue: {interactive: '☆', disabled: '★'},
                     },
                 ],
             });
@@ -297,7 +296,7 @@ describe(`MultiSelect`, () => {
             fixture.detectChanges();
         });
 
-        it(`switch arrow mode by disable or enable method`, () => {
+        it('switch arrow mode by disable or enable method', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
@@ -312,13 +311,13 @@ describe(`MultiSelect`, () => {
 });
 
 function getArrow<T>(pageObject: TuiPageObject<T>): DebugElement | null {
-    return pageObject.getByAutomationId(`tui-multi-select__arrow`);
+    return pageObject.getByAutomationId('tui-multi-select__arrow');
 }
 
 function getInputTag<T>(pageObject: TuiPageObject<T>): DebugElement {
-    return pageObject.getByAutomationId(`tui-multi-select__input`)!;
+    return pageObject.getByAutomationId('tui-multi-select__input')!;
 }
 
 function getDropdown<T>(pageObject: TuiPageObject<T>): DebugElement | null {
-    return pageObject.getByAutomationId(`tui-multi-select__menu`);
+    return pageObject.getByAutomationId('tui-multi-select__menu');
 }
