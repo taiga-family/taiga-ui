@@ -20,7 +20,7 @@ import {
     setNativeFocused,
     toInt,
     TuiActiveZoneDirective,
-    tuiAssertIsHTMLElement,
+    tuiAssertIsElement,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -157,7 +157,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     onArrowRight(event: Event): void {
-        tuiAssertIsHTMLElement(event.target);
+        tuiAssertIsElement(event.target);
 
         if (tuiIsNativeFocused(event.target)) {
             this.focusMore();
