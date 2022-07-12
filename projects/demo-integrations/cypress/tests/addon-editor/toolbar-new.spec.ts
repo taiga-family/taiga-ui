@@ -22,7 +22,7 @@ describe("Editor's toolbar", () => {
             .findByAutomationId('toolbar__hilite-button')
             .should('be.visible')
             .click()
-            .trigger('mouseout');
+            .trigger('mouseleave');
 
         cy.get('@wrapper')
             .wait(WAIT_BEFORE_SCREENSHOT)
