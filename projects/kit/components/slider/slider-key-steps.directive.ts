@@ -15,10 +15,10 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     clamp,
-    isNativeFocused,
     tuiAssert,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
@@ -61,7 +61,7 @@ export class TuiSliderKeyStepsDirective
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get min(): number {

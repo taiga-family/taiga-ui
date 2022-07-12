@@ -18,7 +18,6 @@ import {NgControl} from '@angular/forms';
 import {
     clamp,
     EMPTY_QUERY,
-    isNativeFocused,
     isNativeFocusedIn,
     round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -26,6 +25,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -155,7 +155,7 @@ export class TuiInputRangeComponent
     get showLeftValueContent(): boolean {
         return Boolean(
             (this.minLabel || this.leftValueContent) &&
-                !isNativeFocused(this.leftFocusableElement) &&
+                !tuiIsNativeFocused(this.leftFocusableElement) &&
                 !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
         );
     }
@@ -163,7 +163,7 @@ export class TuiInputRangeComponent
     get showRightValueContent(): boolean {
         return Boolean(
             (this.maxLabel || this.rightValueContent) &&
-                !isNativeFocused(this.rightFocusableElement) &&
+                !tuiIsNativeFocused(this.rightFocusableElement) &&
                 !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
         );
     }
