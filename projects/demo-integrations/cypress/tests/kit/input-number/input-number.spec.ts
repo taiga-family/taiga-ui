@@ -14,6 +14,22 @@ describe('InputNumber', () => {
 
             cy.get('#demoContent').matchImageSnapshot('02-input-number-prefix-postfix');
         });
+
+        for (const align of ['left', 'right']) {
+            it(`align=${align}`, () => {
+                const readableFormatText = 'Very long text';
+
+                cy.tuiVisit(
+                    encodeURI(
+                        `/components/input-number/API?tuiMode=null&style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
+                    ),
+                );
+
+                cy.get('#demoContent').matchImageSnapshot(
+                    `03-input-number-align-${align}`,
+                );
+            });
+        }
     });
 
     describe('Examples', () => {
