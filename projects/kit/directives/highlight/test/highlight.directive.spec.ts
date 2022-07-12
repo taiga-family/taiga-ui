@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHighlightModule} from '../highlight.module';
@@ -45,25 +44,19 @@ describe('TuiHighlight directive', () => {
     });
 
     it('Highlight is shown', () => {
-        const element = document.querySelector('#ica')?.firstElementChild;
-
-        tuiAssertIsHTMLElement(element);
+        const element = document.querySelector('#ica')?.firstElementChild as HTMLElement;
 
         expect(element.style.display).toBe('block');
     });
 
     it('Highlight is not shown', () => {
-        const element = document.querySelector('#dong')?.firstElementChild;
-
-        tuiAssertIsHTMLElement(element);
+        const element = document.querySelector('#dong')?.firstElementChild as HTMLElement;
 
         expect(element.style.display).toBe('none');
     });
 
     it('Highlight color is yellow', () => {
-        const element = document.querySelector('#aaa')?.firstElementChild;
-
-        tuiAssertIsHTMLElement(element);
+        const element = document.querySelector('#aaa')?.firstElementChild as HTMLElement;
 
         expect(element.style.background).toBe('yellow');
     });

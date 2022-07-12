@@ -1,5 +1,6 @@
 import {Directive, HostBinding, Inject, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {DESCRIBED_BY} from '@taiga-ui/core/constants';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {Observable} from 'rxjs';
 
@@ -7,8 +8,6 @@ import {
     TUI_DESCRIBED_BY_PROVIDERS,
     TUI_DESCRIBED_BY_SHOW,
 } from './described-by.providers';
-
-export const DESCRIBED_BY = '_described-by';
 
 /**
  * A directive linking focusable elements and hints for accessibility
