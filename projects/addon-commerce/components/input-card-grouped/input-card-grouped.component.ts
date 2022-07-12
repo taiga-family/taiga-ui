@@ -28,7 +28,7 @@ import {
     AbstractTuiNullableControl,
     isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiAssertIsHTMLElement,
+    tuiAssertIsElement,
     TuiBooleanHandler,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -385,7 +385,7 @@ export class TuiInputCardGroupedComponent
     }
 
     onMouseDown(event: MouseEvent): void {
-        tuiAssertIsHTMLElement(event.target);
+        tuiAssertIsElement(event.target);
 
         if (event.target.matches(`input`)) {
             return;
@@ -396,7 +396,7 @@ export class TuiInputCardGroupedComponent
     }
 
     onScroll({currentTarget}: Event): void {
-        tuiAssertIsHTMLElement(currentTarget);
+        tuiAssertIsElement(currentTarget);
 
         currentTarget.scrollLeft = 0;
     }
