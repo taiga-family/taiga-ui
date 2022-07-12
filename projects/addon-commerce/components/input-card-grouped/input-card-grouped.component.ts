@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
     isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAssertIsHTMLElement,
@@ -34,6 +33,7 @@ import {
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     tuiPure,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -432,7 +432,7 @@ export class TuiInputCardGroupedComponent
     }
 
     private get cardFocused(): boolean {
-        return !!this.inputCard && isNativeFocused(this.inputCard.nativeElement);
+        return !!this.inputCard && tuiIsNativeFocused(this.inputCard.nativeElement);
     }
 
     private get paymentSystem(): TuiPaymentSystem | null {

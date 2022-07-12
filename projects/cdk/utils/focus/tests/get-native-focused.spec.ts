@@ -1,4 +1,4 @@
-import {getNativeFocused} from '../get-native-focused';
+import {tuiGetNativeFocused} from '../get-native-focused';
 
 describe('getNativeFocused', () => {
     it('returns active focused element in document', () => {
@@ -7,7 +7,7 @@ describe('getNativeFocused', () => {
         document.body.appendChild(buttonElement);
         buttonElement.focus();
 
-        expect(getNativeFocused(document)).toBe(buttonElement);
+        expect(tuiGetNativeFocused(document)).toBe(buttonElement);
 
         document.body.removeChild(buttonElement);
     });
@@ -23,7 +23,7 @@ describe('getNativeFocused', () => {
         root.appendChild(buttonElement);
         buttonElement.focus();
 
-        expect(getNativeFocused(document)).toBe(buttonElement);
+        expect(tuiGetNativeFocused(document)).toBe(buttonElement);
 
         document.body.removeChild(div);
     });

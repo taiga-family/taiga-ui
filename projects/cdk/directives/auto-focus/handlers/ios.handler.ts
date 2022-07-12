@@ -10,7 +10,7 @@ import {
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
-import {px} from '@taiga-ui/cdk/utils';
+import {tuiPx} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
@@ -83,16 +83,16 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         const fakeInput: HTMLInputElement = this.renderer.createElement('input');
         const rect: DOMRect = this.element.getBoundingClientRect();
 
-        fakeInput.style.height = px(rect.height);
-        fakeInput.style.width = px(rect.width / 2);
+        fakeInput.style.height = tuiPx(rect.height);
+        fakeInput.style.width = tuiPx(rect.width / 2);
         fakeInput.style.position = 'fixed';
         fakeInput.style.opacity = '0';
-        fakeInput.style.fontSize = px(16); // disable possible auto zoom
+        fakeInput.style.fontSize = tuiPx(16); // disable possible auto zoom
         fakeInput.readOnly = true; // prevent keyboard for fake input
 
         // @note: emulate position cursor before focus to real textfield element
-        fakeInput.style.top = px(rect.top);
-        fakeInput.style.left = px(rect.left);
+        fakeInput.style.top = tuiPx(rect.top);
+        fakeInput.style.left = tuiPx(rect.left);
 
         return fakeInput;
     }

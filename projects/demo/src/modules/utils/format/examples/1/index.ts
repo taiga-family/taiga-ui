@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {px} from '@taiga-ui/cdk';
+import {tuiPx} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-format-example-1',
@@ -19,6 +19,6 @@ export class TuiFormatExample1 {
     get px(): string {
         const {value} = this.parametersForm.value;
 
-        return px(value);
+        return tuiPx(value);
     }
 }

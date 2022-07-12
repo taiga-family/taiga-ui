@@ -14,11 +14,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -96,7 +96,7 @@ export class TuiToggleComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
