@@ -82,31 +82,31 @@ describe(`InputCard`, () => {
         it(`visa`, () => {
             testComponent.control.setValue(`4111 1111 1111 1111`);
 
-            expect(testComponent.component.paymentSystem).toBe(`visa`);
+            expect(testComponent.component.paymentSystem).toBe('visa');
         });
 
         it(`electron`, () => {
             testComponent.control.setValue(`4917300800000000`);
 
-            expect(testComponent.component.paymentSystem).toBe(`electron`);
+            expect(testComponent.component.paymentSystem).toBe('electron');
         });
 
         it(`mir`, () => {
             testComponent.control.setValue(`2200654321000000`);
 
-            expect(testComponent.component.paymentSystem).toBe(`mir`);
+            expect(testComponent.component.paymentSystem).toBe('mir');
         });
 
         it(`mastercard`, () => {
             testComponent.control.setValue(`5500 0000 0000 0004`);
 
-            expect(testComponent.component.paymentSystem).toBe(`mastercard`);
+            expect(testComponent.component.paymentSystem).toBe('mastercard');
         });
 
         it(`maestro`, () => {
             testComponent.control.setValue(`6759649826438453`);
 
-            expect(testComponent.component.paymentSystem).toBe(`maestro`);
+            expect(testComponent.component.paymentSystem).toBe('maestro');
         });
     });
 

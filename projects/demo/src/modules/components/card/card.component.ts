@@ -20,33 +20,35 @@ const BRAND_LOGOS = [
     changeDetection,
 })
 export class ExampleTuiCardComponent {
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
-    readonly exampleCustomizeStyles = import(`./examples/import/customize-styles.md?raw`);
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleCustomizeStyles = import(
+        `!!raw-loader!./examples/import/customize-styles.md`
+    );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
-        LESS: import(`./examples/1/index.less?raw`),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`./examples/2/index.ts?raw`),
-        HTML: import(`./examples/2/index.html?raw`),
-        LESS: import(`./examples/2/index.less?raw`),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`./examples/3/index.ts?raw`),
-        HTML: import(`./examples/3/index.html?raw`),
-        LESS: import(`./examples/3/index.less?raw`),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     paymentSystemVariants: readonly TuiPaymentSystem[] = [
-        `visa`,
-        `maestro`,
-        `mastercard`,
-        `mir`,
+        'visa',
+        'maestro',
+        'mastercard',
+        'mir',
     ];
 
     brandLogoVariants = [``, ...BRAND_LOGOS];
