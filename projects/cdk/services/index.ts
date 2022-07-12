@@ -1,7 +1,6 @@
 export * from './destroy.service';
 export * from './directive-styles.service';
 export * from './focus-visible.service';
-export * from './hovered.service';
 export * from './id.service';
 export * from './obscured.service';
 export * from './pan.service';
