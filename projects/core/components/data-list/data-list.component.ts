@@ -17,7 +17,7 @@ import {
     isPresent,
     itemsQueryListObservable,
     setNativeMouseFocused,
-    tuiAssertIsHTMLElement,
+    tuiAssertIsElement,
     tuiDefaultProp,
     tuiMoveFocus,
     tuiPure,
@@ -93,9 +93,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
-    handleFocusLossIfNecessary(
-        element: HTMLElement = this.elementRef.nativeElement,
-    ): void {
+    handleFocusLossIfNecessary(element: Element = this.elementRef.nativeElement): void {
         if (this.origin && isNativeFocusedIn(element)) {
             setNativeMouseFocused(this.origin, true, true);
         }
@@ -110,7 +108,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     }
 
     onFocus({target}: Event, top: boolean): void {
-        tuiAssertIsHTMLElement(target);
+        tuiAssertIsElement(target);
 
         const {elements} = this;
 
