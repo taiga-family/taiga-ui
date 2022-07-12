@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {getPaymentSystem} from '@taiga-ui/addon-commerce';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
 
 @Component({
     selector: 'tui-miscellaneous-example-4',
@@ -27,6 +27,6 @@ export class TuiMiscellaneousExample4 {
     get paymentSystem(): string | null {
         const {cardNumber} = this.parametersForm.value;
 
-        return getPaymentSystem(cardNumber);
+        return tuiGetPaymentSystem(cardNumber);
     }
 }

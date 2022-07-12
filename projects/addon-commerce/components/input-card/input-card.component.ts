@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-import {getPaymentSystem} from '@taiga-ui/addon-commerce/utils';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -29,12 +29,12 @@ import {
 } from '@taiga-ui/core';
 import {TextMaskConfig} from 'angular2-text-mask';
 
-const icons = {
-    [TuiPaymentSystem.Mir]: 'tuiIconMir',
-    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
-    [TuiPaymentSystem.Electron]: 'tuiIconElectron',
-    [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
-    [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
+const icons: Record<TuiPaymentSystem, string> = {
+    mir: 'tuiIconMir',
+    visa: 'tuiIconVisa',
+    electron: 'tuiIconElectron',
+    mastercard: 'tuiIconMastercard',
+    maestro: 'tuiIconMaestro',
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -124,7 +124,7 @@ export class TuiInputCardComponent
     }
 
     get paymentSystem(): TuiPaymentSystem | null {
-        return getPaymentSystem(this.value);
+        return tuiGetPaymentSystem(this.value);
     }
 
     get bin(): string | null {

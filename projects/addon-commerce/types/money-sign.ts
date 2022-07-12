@@ -1,6 +1,6 @@
 import {CHAR_EN_DASH, CHAR_PLUS} from '@taiga-ui/cdk';
 
-export type TuiMoneySignT =
+export type TuiMoneySign =
     | 'negative-only'
     | 'always'
     | 'never'
