@@ -14,7 +14,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     clamp,
-    isNativeFocused,
     round,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -22,6 +21,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -160,8 +160,8 @@ export class TuiInputSliderComponent
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
-            isNativeFocused(this.sliderRef?.nativeElement || null)
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
         );
     }
 
