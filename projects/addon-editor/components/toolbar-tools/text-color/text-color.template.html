@@ -15,7 +15,7 @@
         appearance="icon"
         tuiHintDirection="top-left"
         automation-id="toolbar__color-button"
-        [tuiHint]="(foreColorText$ | async) || ''"
+        [tuiHint]="foreColorText$ | async"
         [tuiHintId]="colorBtn.id"
         [tuiDescribedBy]="colorBtn.id"
         [pseudoPressed]="color.open"

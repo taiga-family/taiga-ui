@@ -95,7 +95,7 @@ describe('Hint', () => {
         });
 
         it('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
-            getHost().dispatchEvent(new Event('mouseleave'));
+            getHost().dispatchEvent(new Event('mouseout'));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
