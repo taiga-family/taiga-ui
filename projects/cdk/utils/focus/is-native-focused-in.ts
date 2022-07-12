@@ -1,4 +1,4 @@
-import {getNativeFocused} from './get-native-focused';
+import {tuiGetNativeFocused} from './get-native-focused';
 
 /**
  * @deprecated: use {@link tuiIsNativeFocusedIn} instead
@@ -14,7 +14,7 @@ export function isNativeFocusedIn(node: Node): boolean {
         return false;
     }
 
-    const nativeFocused = getNativeFocused(node.ownerDocument);
+    const nativeFocused = tuiGetNativeFocused(node.ownerDocument);
 
     return nativeFocused !== null && node.contains(nativeFocused);
 }

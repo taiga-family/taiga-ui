@@ -11,8 +11,8 @@ import {containsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
     blurNativeFocused,
     getClosestFocusable,
-    getNativeFocused,
     setNativeFocused,
+    tuiGetNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
 
 // @dynamic
@@ -23,7 +23,7 @@ import {
     },
 })
 export class TuiFocusTrapDirective implements OnDestroy {
-    private readonly activeElement = getNativeFocused(this.documentRef);
+    private readonly activeElement = tuiGetNativeFocused(this.documentRef);
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
