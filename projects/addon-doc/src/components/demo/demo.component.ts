@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
-import {px, TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
@@ -28,9 +28,9 @@ const MIN_COMPONENT_WIDTH = 104;
 
 // @dynamic
 @Component({
-    selector: `tui-doc-demo`,
-    templateUrl: `./demo.template.html`,
-    styleUrls: [`./demo.style.less`],
+    selector: 'tui-doc-demo',
+    templateUrl: './demo.template.html',
+    styleUrls: ['./demo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -41,13 +41,13 @@ const MIN_COMPONENT_WIDTH = 104;
     ],
 })
 export class TuiDocDemoComponent implements OnInit, AfterViewInit {
-    @ViewChild(`content`)
+    @ViewChild('content')
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChild(`wrapper`)
+    @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 
-    @ViewChild(`resizerText`)
+    @ViewChild('resizerText')
     private readonly resizerText?: ElementRef<HTMLElement>;
 
     private readonly isBrowser: boolean;
@@ -61,14 +61,14 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
-    updateOnVariants = [`change`, `blur`, `submit`];
-    updateOn: 'change' | 'blur' | 'submit' = `change`;
+    updateOnVariants = ['change', 'blur', 'submit'];
+    updateOn: 'change' | 'blur' | 'submit' = 'change';
     expanded = false;
     opaque = true;
     modeControl = new FormControl();
     mode: TuiBrightness | null = null;
     readonly change$ = new Subject<void>();
-    readonly items: readonly TuiBrightness[] = [`onLight`, `onDark`];
+    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
@@ -104,7 +104,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
             });
     }
 
-    @HostListener(`window:resize`)
+    @HostListener('window:resize')
     onResize(): void {
         this.setResizerTextContent();
     }
@@ -124,11 +124,11 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
 
         const paddingLeft = this.isBrowser
             ? getComputedStyle(this.content.nativeElement).paddingLeft
-            : `0`;
+            : '0';
         const {offsetWidth} = this.content.nativeElement;
 
         this.resizerText.nativeElement.textContent = String(
-            offsetWidth - parseInt(paddingLeft || `0`, 10) * 2,
+            offsetWidth - parseInt(paddingLeft || '0', 10) * 2,
         );
     }
 
@@ -175,8 +175,8 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
 
         this.renderer.setStyle(
             this.wrapper.nativeElement,
-            `width`,
-            px(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
+            'width',
+            tuiPx(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
         );
     }
 }

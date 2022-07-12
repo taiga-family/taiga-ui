@@ -16,10 +16,10 @@ import {
     isNativeFocusedIn,
     isPresent,
     itemsQueryListObservable,
-    moveFocus,
     setNativeMouseFocused,
     tuiAssertIsHTMLElement,
     tuiDefaultProp,
+    tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
@@ -87,7 +87,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;
 
-        moveFocus(elements.indexOf(current), elements, step);
+        tuiMoveFocus(elements.indexOf(current), elements, step);
     }
 
     // TODO: Consider aria-activedescendant for proper accessibility implementation
@@ -114,7 +114,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
         const {elements} = this;
 
-        moveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
+        tuiMoveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
         this.handleFocusLossIfNecessary(target);
     }
 
