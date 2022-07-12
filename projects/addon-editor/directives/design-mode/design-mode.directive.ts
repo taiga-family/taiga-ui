@@ -22,7 +22,6 @@ import {
     EMPTY_FUNCTION,
     getClipboardDataText,
     getClosestFocusable,
-    isNativeFocused,
     preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -31,6 +30,7 @@ import {
     TuiEventWith,
     TuiFocusableElementAccessor,
     TuiHandler,
+    tuiIsNativeFocused,
     tuiRequiredSetter,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -103,7 +103,7 @@ export class TuiDesignModeDirective
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.elementRef.nativeElement);
+        return tuiIsNativeFocused(this.elementRef.nativeElement);
     }
 
     // Typesafe version until iframe is initialized

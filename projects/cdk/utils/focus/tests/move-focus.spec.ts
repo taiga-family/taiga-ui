@@ -1,4 +1,4 @@
-import {moveFocus} from '../move-focus';
+import {tuiMoveFocus} from '../move-focus';
 
 describe(`move focus`, () => {
     it(`   `, () => {
@@ -10,7 +10,7 @@ describe(`move focus`, () => {
 
         const arr = [first, second];
 
-        moveFocus(0, arr, 1);
+        tuiMoveFocus(0, arr, 1);
 
         expect(document.activeElement).toEqual(second);
 

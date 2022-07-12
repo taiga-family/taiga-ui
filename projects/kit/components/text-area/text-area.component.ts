@@ -15,11 +15,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
     setNativeFocused,
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
     getBorder,
@@ -105,7 +105,7 @@ export class TuiTextAreaComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     @HostBinding(`attr.data-size`)
