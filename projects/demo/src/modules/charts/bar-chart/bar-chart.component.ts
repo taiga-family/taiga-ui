@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {getCurrencySymbol, TuiCurrency} from '@taiga-ui/addon-commerce';
+import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {formatNumber, TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -83,7 +83,7 @@ export class ExampleTuiBarChartComponent {
         return this.value
             .reduce(
                 (result, set) =>
-                    `${result}${formatNumber(set[index])} ${getCurrencySymbol(
+                    `${result}${formatNumber(set[index])} ${tuiGetCurrencySymbol(
                         TuiCurrency.Ruble,
                     )}\n`,
                 ``,
