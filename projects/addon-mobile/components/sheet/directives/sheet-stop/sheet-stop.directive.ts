@@ -11,10 +11,7 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
-import {
-    TUI_SHEET_DRAGGED,
-    TUI_SHEET_SCROLL,
-} from '../../components/sheet/sheet.providers';
+import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Directive({
     selector: `[tuiSheetStop]`,

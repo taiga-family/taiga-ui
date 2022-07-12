@@ -1,13 +1,13 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "allowedNonPeerDependencies": [
+        "."
+    ],
     "dest": "../../dist/addon-mobile",
     "lib": {
         "entryFile": "index.ts",
         "styleIncludePaths": [
             "../core/styles"
         ]
-    },
-    "whitelistedNonPeerDependencies": [
-        "."
-    ]
+    }
 }
