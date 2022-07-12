@@ -5,11 +5,8 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
-import {
-    TUI_SHEET_DRAGGED,
-    TUI_SHEET_SCROLL,
-} from '../../components/sheet/sheet.providers';
 import {processDragged} from '../../ios.hacks';
+import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 // Safety offset for shadow
 const OFFSET = 16;
