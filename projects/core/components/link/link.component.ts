@@ -8,12 +8,12 @@ import {
     Input,
 } from '@angular/core';
 import {
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -93,7 +93,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get hasIcon(): boolean {
