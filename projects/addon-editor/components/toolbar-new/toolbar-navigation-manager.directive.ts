@@ -2,9 +2,9 @@ import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
     clamp,
     getClosestFocusable,
-    isNativeFocusedIn,
     isNativeMouseFocusable,
     setNativeFocused,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
@@ -26,7 +26,7 @@ export class TuiToolbarNavigationManagerDirective {
     @HostListener('keydown.arrowLeft.prevent', ['true'])
     onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
-        const focusedToolIndex = toolsContainers.findIndex(isNativeFocusedIn);
+        const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
 
         const targetToolIndex = clamp(
             focusedToolIndex + (toPrevious ? -1 : 1),
