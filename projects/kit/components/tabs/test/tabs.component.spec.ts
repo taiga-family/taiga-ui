@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {isNativeFocused} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {configureTestSuite, tuiDispatchOnActive} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -71,28 +71,28 @@ describe('Tabs', () => {
         tuiDispatchOnActive('arrowRight');
         fixture.detectChanges();
 
-        expect(isNativeFocused(buttons[1])).toBe(true);
+        expect(tuiIsNativeFocused(buttons[1])).toBe(true);
     });
 
     it('Navigation by arrows works when going left', () => {
         buttons[1].focus();
         tuiDispatchOnActive('arrowLeft');
 
-        expect(isNativeFocused(buttons[0])).toBe(true);
+        expect(tuiIsNativeFocused(buttons[0])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going right', () => {
         buttons[1].focus();
         tuiDispatchOnActive('arrowRight');
 
-        expect(isNativeFocused(buttons[3])).toBe(true);
+        expect(tuiIsNativeFocused(buttons[3])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going left', () => {
         buttons[3].focus();
         tuiDispatchOnActive('arrowLeft');
 
-        expect(isNativeFocused(buttons[1])).toBe(true);
+        expect(tuiIsNativeFocused(buttons[1])).toBe(true);
     });
 
     it('Updates activeItemIndex', () => {

@@ -12,11 +12,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
     TuiDataListDirective,
@@ -70,7 +70,7 @@ export class TuiInputComponent
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }

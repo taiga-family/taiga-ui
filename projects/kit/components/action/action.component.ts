@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusVisibleService,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
@@ -69,7 +69,7 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     @HostListener('focusin', ['true'])
