@@ -45,10 +45,10 @@ export class ExampleTuiCardComponent {
     };
 
     paymentSystemVariants: readonly TuiPaymentSystem[] = [
-        TuiPaymentSystem.Visa,
-        TuiPaymentSystem.Maestro,
-        TuiPaymentSystem.Mastercard,
-        TuiPaymentSystem.Mir,
+        'visa',
+        'maestro',
+        'mastercard',
+        'mir',
     ];
 
     brandLogoVariants = ['', ...BRAND_LOGOS];
