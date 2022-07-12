@@ -15,7 +15,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
@@ -23,6 +22,7 @@ import {
     tuiDefaultProp,
     TuiHandler,
     TuiIdentityMatcher,
+    tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -77,7 +77,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     @tuiPure

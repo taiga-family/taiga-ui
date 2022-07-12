@@ -28,12 +28,12 @@ import {isSelectionIn, tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
     isFirefox,
-    isNativeFocusedIn,
     isNumber,
     setNativeFocused,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -173,8 +173,10 @@ export class TuiToolbarComponent {
 
     get focused(): boolean {
         return (
-            isNativeFocusedIn(this.elementRef.nativeElement) ||
-            !!this.dropdowns.find(({nativeElement}) => isNativeFocusedIn(nativeElement))
+            tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
+            !!this.dropdowns.find(({nativeElement}) =>
+                tuiIsNativeFocusedIn(nativeElement),
+            )
         );
     }
 
