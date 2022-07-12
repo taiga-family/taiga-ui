@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
-    px,
     TuiContextWithImplicit,
     TuiDestroyService,
     tuiPure,
+    tuiPx,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
@@ -238,8 +238,8 @@ export class TuiHintBoxComponent {
                 directions.splice(directions.indexOf(direction), 1)[0] || direction;
         }
 
-        style.top = px(top);
-        style.left = px(left);
+        style.top = tuiPx(top);
+        style.left = tuiPx(left);
 
         tooltip.setAttribute('data-tui-host-direction', direction);
     }
@@ -271,11 +271,11 @@ export class TuiHintBoxComponent {
             SPACE * 2,
         );
 
-        style.left = px(left);
-        style.top = direction === 'top' ? px(verticalTop) : px(verticalBottom);
+        style.left = tuiPx(left);
+        style.top = direction === 'top' ? tuiPx(verticalTop) : tuiPx(verticalBottom);
 
         if (this.arrow) {
-            this.arrow.nativeElement.style.left = px(
+            this.arrow.nativeElement.style.left = tuiPx(
                 hostRect.left <= SPACE * 2 && hostRect.width > ARROW_OFFSET * 2
                     ? ARROW_OFFSET
                     : hostRect.left + hostRect.width / 2 - left - ARROW_SIZE / 2,
@@ -289,8 +289,8 @@ export class TuiHintBoxComponent {
         const hostRect = this.hint.getElementClientRect();
         const {style} = this.elementRef.nativeElement;
 
-        style.top = px(hostRect.top - window.innerHeight - TOP_PADDING - BORDER_WIDTH);
-        style.left = px(hostRect.left - LEFT_PADDING - BORDER_WIDTH);
-        style.width = px(hostRect.width + LEFT_PADDING * 2 + BORDER_WIDTH * 2);
+        style.top = tuiPx(hostRect.top - window.innerHeight - TOP_PADDING - BORDER_WIDTH);
+        style.left = tuiPx(hostRect.left - LEFT_PADDING - BORDER_WIDTH);
+        style.width = tuiPx(hostRect.width + LEFT_PADDING * 2 + BORDER_WIDTH * 2);
     }
 }
