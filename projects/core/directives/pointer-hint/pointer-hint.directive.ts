@@ -23,7 +23,7 @@ import {TUI_POINTER_HINT_OPTIONS, TuiPointerHintOptions} from './pointer-hint-op
 
 @Directive({
     selector: '[tuiPointerHint]:not(ng-container)',
-    providers: [TuiDestroyService],
+    providers: [TuiDestroyService, TuiHoveredService],
 })
 export class TuiPointerHintDirective extends AbstractTuiHint {
     private currentMouseRect = this.mousePositionToClientRect();
@@ -65,7 +65,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     ) {
         super(elementRef, hintService, null, options);
 
-        const hint$ = hoveredService.createHovered$(this.elementRef.nativeElement).pipe(
+        const hint$ = hoveredService.pipe(
             filter(() => !!this.content),
             startWith(false),
             distinctUntilChanged(),
