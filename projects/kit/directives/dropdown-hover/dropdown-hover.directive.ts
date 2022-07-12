@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
     getClosestFocusable,
-    isNativeFocusedIn,
     isPresent,
     setNativeMouseFocused,
     TuiDestroyService,
+    tuiIsNativeFocusedIn,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
@@ -61,7 +61,7 @@ export class TuiDropdownHoverDirective {
             dropdown$.pipe(
                 switchMap(element =>
                     typedFromEvent(element, 'mouseleave').pipe(
-                        filter(() => !isNativeFocusedIn(element)),
+                        filter(() => !tuiIsNativeFocusedIn(element)),
                     ),
                 ),
             ),
@@ -82,7 +82,7 @@ export class TuiDropdownHoverDirective {
     onMouseEnter(): void {
         const {host} = this.dropdown;
 
-        if (isNativeFocusedIn(host)) {
+        if (tuiIsNativeFocusedIn(host)) {
             return;
         }
 

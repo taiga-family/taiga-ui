@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import {
     TuiCurrencyVariants,
+    TuiMoneySign,
     TuiMoneySignSymbol,
-    TuiMoneySignT,
 } from '@taiga-ui/addon-commerce/types';
 import {CHAR_MINUS, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
@@ -37,7 +37,7 @@ export class TuiMoneyComponent {
 
     @Input()
     @tuiDefaultProp()
-    sign: TuiMoneySignT = this.options.sign;
+    sign: TuiMoneySign = this.options.sign;
 
     @Input()
     @tuiDefaultProp()
