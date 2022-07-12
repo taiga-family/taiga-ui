@@ -15,7 +15,6 @@ import {
 import {
     getClosestFocusable,
     isElementEditable,
-    isNativeFocusedIn,
     isNativeKeyboardFocusable,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -23,6 +22,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -104,8 +104,10 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostBinding(`class._hosted_dropdown_focused`)
     get focused(): boolean {
         return (
-            isNativeFocusedIn(this.host) ||
-            (this.open && !!this.wrapper && isNativeFocusedIn(this.wrapper.nativeElement))
+            tuiIsNativeFocusedIn(this.host) ||
+            (this.open &&
+                !!this.wrapper &&
+                tuiIsNativeFocusedIn(this.wrapper.nativeElement))
         );
     }
 
