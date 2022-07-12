@@ -15,12 +15,12 @@ import {
     AbstractTuiInteractive,
     clamp,
     EMPTY_QUERY,
-    isNativeFocusedIn,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -145,7 +145,7 @@ export class TuiPaginationComponent
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     /**

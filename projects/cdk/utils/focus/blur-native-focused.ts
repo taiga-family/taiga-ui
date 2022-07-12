@@ -1,5 +1,4 @@
 import {tuiGetNativeFocused} from './get-native-focused';
-import {setNativeFocused} from './set-native-focused';
 
 /**
  * @deprecated: use {@link tuiBlurNativeFocused} instead
@@ -11,7 +10,7 @@ export function blurNativeFocused(documentRef: Document): void {
 
     // TODO: iframe warning
     if (activeElement instanceof HTMLElement) {
-        setNativeFocused(activeElement, false);
+        activeElement.blur();
     }
 }
 

@@ -25,10 +25,10 @@ import {
 } from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
-    isNativeFocusedIn,
     setNativeFocused,
     tuiDefaultProp,
     TuiHandler,
+    tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
@@ -99,8 +99,10 @@ export class TuiToolbarNewComponent {
 
     get focused(): boolean {
         return (
-            isNativeFocusedIn(this.elementRef.nativeElement) ||
-            !!this.dropdowns.find(({nativeElement}) => isNativeFocusedIn(nativeElement))
+            tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
+            !!this.dropdowns.find(({nativeElement}) =>
+                tuiIsNativeFocusedIn(nativeElement),
+            )
         );
     }
 
