@@ -13,11 +13,11 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {
-    isNativeFocused,
     setNativeFocused,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiEventWith,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
@@ -32,7 +32,7 @@ import {TuiDataListComponent} from '../data-list.component';
 export function shouldFocus({
     currentTarget,
 }: TuiEventWith<MouseEvent, HTMLElement>): boolean {
-    return !isNativeFocused(currentTarget);
+    return !tuiIsNativeFocused(currentTarget);
 }
 
 // TODO: Consider all use cases for aria roles
