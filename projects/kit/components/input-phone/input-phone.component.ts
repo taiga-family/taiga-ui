@@ -16,13 +16,13 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     getClipboardDataText,
-    isNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
+    tuiIsNativeFocused,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
@@ -141,7 +141,7 @@ export class TuiInputPhoneComponent
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.dropdown && this.dropdown.focused)
         );
     }
@@ -251,7 +251,7 @@ export class TuiInputPhoneComponent
         const {selectionStart, selectionEnd} = nativeFocusableElement;
 
         return (
-            isNativeFocused(nativeFocusableElement) &&
+            tuiIsNativeFocused(nativeFocusableElement) &&
             selectionStart !== null &&
             selectionStart < this.nonRemovableLength &&
             selectionStart === selectionEnd

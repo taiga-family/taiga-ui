@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {px} from '@taiga-ui/cdk';
+import {tuiPx} from '@taiga-ui/cdk';
 import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     configureTestSuite,
@@ -135,7 +135,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when rows change, MaxHeight is calculated correctly`, () => {
@@ -145,7 +145,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when rows change, MaxHeight is calculated correctly`, () => {
@@ -155,7 +155,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when expandable is true and the content size increases, the tui-outline height increases`, () => {
