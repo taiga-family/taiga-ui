@@ -1,4 +1,4 @@
-import {getNativeFocused} from './get-native-focused';
+import {tuiGetNativeFocused} from './get-native-focused';
 import {setNativeFocused} from './set-native-focused';
 
 /**
@@ -7,7 +7,7 @@ import {setNativeFocused} from './set-native-focused';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function blurNativeFocused(documentRef: Document): void {
-    const activeElement = getNativeFocused(documentRef);
+    const activeElement = tuiGetNativeFocused(documentRef);
 
     // TODO: iframe warning
     if (activeElement instanceof HTMLElement) {

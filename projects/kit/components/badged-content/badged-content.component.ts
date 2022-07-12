@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {isNumber, px, tuiDefaultProp} from '@taiga-ui/cdk';
+import {isNumber, tuiPx, tuiDefaultProp} from '@taiga-ui/cdk';
 import {sizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -71,7 +71,7 @@ export class TuiBadgedContentComponent {
     get boxShadow(): string {
         const borderWidth = this.sizeBig ? 3 : 2;
 
-        return `0 0 0 ${px(borderWidth)}`;
+        return `0 0 0 ${tuiPx(borderWidth)}`;
     }
 
     contentIsNumber(content: PolymorpheusContent): boolean {
