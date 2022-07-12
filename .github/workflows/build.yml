@@ -13,12 +13,11 @@ on:
       - 'package.json'
       - 'tsconfig*'
     branches:
-      - main
       - '!release/**'
   push:
     branches:
-      - main
       - '!release/**'
+
 env:
   NX_BRANCH: ${{ github.event.number }}
   IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
