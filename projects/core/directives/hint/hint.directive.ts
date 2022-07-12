@@ -18,7 +18,7 @@ import {
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
-import {DESCRIBED_BY} from '@taiga-ui/core/directives/described-by';
+import {DESCRIBED_BY} from '@taiga-ui/core/constants';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, of, Subject} from 'rxjs';
@@ -34,11 +34,16 @@ import {
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 
-export const HINT_HOVERED_CLASS = `_hint_hovered`;
+export const HINT_HOVERED_CLASS = '_hint_hovered';
 
 @Directive({
-    selector: `[tuiHint]:not(ng-container)`,
-    providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
+    selector: '[tuiHint]:not(ng-container)',
+    providers: [
+        TuiObscuredService,
+        TuiParentsScrollService,
+        TuiDestroyService,
+        TuiHoveredService,
+    ],
 })
 export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     @Input()
@@ -62,7 +67,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     set tuiHint(value: PolymorpheusContent | null) {
         if (!value) {
             this.hideTooltip();
-            this.content = ``;
+            this.content = '';
 
             return;
         }
@@ -90,10 +95,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         super(elementRef, hintService, activeZone, options);
 
         // @bad TODO: Use private provider
-        combineLatest(
-            hoveredService.createHovered$(elementRef.nativeElement),
-            this.componentHovered$.pipe(startWith(false)),
-        )
+        combineLatest(hoveredService, this.componentHovered$.pipe(startWith(false)))
             .pipe(
                 map(
                     ([directiveHovered, componentHovered]) =>
@@ -107,7 +109,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                     );
                 }),
                 switchMap(visible =>
-                    visible && this.mode !== `overflow`
+                    visible && this.mode !== 'overflow'
                         ? obscured$.pipe(
                               map(obscured => !obscured),
                               take(2),
@@ -145,7 +147,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     }
 
     protected showTooltip(): void {
-        if (this.content === ``) {
+        if (this.content === '') {
             return;
         }
 
