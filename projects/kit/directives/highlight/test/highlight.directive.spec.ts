@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHighlightModule} from '../highlight.module';
 
-describe(`TuiHighlight directive`, () => {
+describe('TuiHighlight directive', () => {
     @Component({
         template: `
             <div
@@ -44,27 +43,21 @@ describe(`TuiHighlight directive`, () => {
         fixture.detectChanges();
     });
 
-    it(`Highlight is shown`, () => {
-        const element = document.querySelector(`#ica`)?.firstElementChild;
+    it('Highlight is shown', () => {
+        const element = document.querySelector('#ica')?.firstElementChild as HTMLElement;
 
-        tuiAssertIsHTMLElement(element);
-
-        expect(element.style.display).toBe(`block`);
+        expect(element.style.display).toBe('block');
     });
 
-    it(`Highlight is not shown`, () => {
-        const element = document.querySelector(`#dong`)?.firstElementChild;
+    it('Highlight is not shown', () => {
+        const element = document.querySelector('#dong')?.firstElementChild as HTMLElement;
 
-        tuiAssertIsHTMLElement(element);
-
-        expect(element.style.display).toBe(`none`);
+        expect(element.style.display).toBe('none');
     });
 
-    it(`Highlight color is yellow`, () => {
-        const element = document.querySelector(`#aaa`)?.firstElementChild;
+    it('Highlight color is yellow', () => {
+        const element = document.querySelector('#aaa')?.firstElementChild as HTMLElement;
 
-        tuiAssertIsHTMLElement(element);
-
-        expect(element.style.background).toBe(`yellow`);
+        expect(element.style.background).toBe('yellow');
     });
 });
