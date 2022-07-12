@@ -15,7 +15,7 @@ import {
     quantize,
     round,
     setNativeFocused,
-    tuiAssertIsHTMLElement,
+    tuiAssertIsElement,
     tuiDefaultProp,
     TuiEventWith,
     TuiNativeFocusableElement,
@@ -159,7 +159,7 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$
             .pipe(
                 map((event: MouseEvent | TouchEvent) => {
-                    tuiAssertIsHTMLElement(event.currentTarget);
+                    tuiAssertIsElement(event.currentTarget);
 
                     const rect = event.currentTarget.getBoundingClientRect();
                     const clientX =

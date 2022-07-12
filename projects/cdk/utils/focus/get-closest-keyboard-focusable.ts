@@ -15,7 +15,7 @@ import {isNativeMouseFocusable} from './is-native-mouse-focusable';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getClosestFocusable(
-    initial: HTMLElement,
+    initial: Element,
     prev: boolean = false,
     root: Node,
     keyboard: boolean = true,
@@ -43,7 +43,8 @@ export function getClosestFocusable(
             initial = treeWalker.currentNode;
         }
 
-        if (check(initial)) {
+        // TODO: iframe warning
+        if (check(initial) && initial instanceof HTMLElement) {
             return initial;
         }
     }
