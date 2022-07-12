@@ -1,15 +1,15 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
     clamp,
+    getClosestFocusable,
+    isNativeMouseFocusable,
     setNativeFocused,
-    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
-    tuiIsNativeMouseFocusable,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Directive({
-    selector: `[tuiToolbarNavigationManager]`,
+    selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {
     constructor(
@@ -18,12 +18,12 @@ export class TuiToolbarNavigationManagerDirective {
 
     private get toolsContainers(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(`[tuiItem]`),
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiItem]'),
         );
     }
 
-    @HostListener(`keydown.arrowRight.prevent`, [`false`])
-    @HostListener(`keydown.arrowLeft.prevent`, [`true`])
+    @HostListener('keydown.arrowRight.prevent', ['false'])
+    @HostListener('keydown.arrowLeft.prevent', ['true'])
     onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
         const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
@@ -49,9 +49,9 @@ export class TuiToolbarNavigationManagerDirective {
             : this.toolsContainers;
 
         for (const el of tools) {
-            const focusableElement = tuiIsNativeMouseFocusable(el)
+            const focusableElement = isNativeMouseFocusable(el)
                 ? el
-                : tuiGetClosestFocusable(el, false, el, false);
+                : getClosestFocusable(el, false, el, false);
 
             if (focusableElement) {
                 return focusableElement;
@@ -62,26 +62,21 @@ export class TuiToolbarNavigationManagerDirective {
     }
 
     private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {
-        if (tuiIsNativeMouseFocusable(wrapper)) {
+        if (isNativeMouseFocusable(wrapper)) {
             return wrapper;
         }
 
-        const lookedInside = tuiGetClosestFocusable(wrapper, false, wrapper, false);
+        const lookedInside = getClosestFocusable(wrapper, false, wrapper, false);
 
         return (
             lookedInside ||
-            tuiGetClosestFocusable(wrapper, true, this.elementRef.nativeElement, false)
+            getClosestFocusable(wrapper, true, this.elementRef.nativeElement, false)
         );
     }
 
     private findNextTool(wrapper: HTMLElement): HTMLElement | null {
-        return tuiIsNativeMouseFocusable(wrapper)
+        return isNativeMouseFocusable(wrapper)
             ? wrapper
-            : tuiGetClosestFocusable(
-                  wrapper,
-                  false,
-                  this.elementRef.nativeElement,
-                  false,
-              );
+            : getClosestFocusable(wrapper, false, this.elementRef.nativeElement, false);
     }
 }

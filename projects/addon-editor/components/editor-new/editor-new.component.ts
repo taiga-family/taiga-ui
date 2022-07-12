@@ -129,7 +129,7 @@ export class TuiEditorNewComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     private readonly isSelectionLink = ({startContainer, endContainer}: Range): boolean =>

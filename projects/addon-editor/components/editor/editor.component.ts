@@ -23,7 +23,6 @@ import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@taiga-ui/addon-editor/token
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     isNodeIn,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -32,6 +31,7 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsNativeFocusedIn,
     typedFromEvent,
     watch,
 } from '@taiga-ui/cdk';
@@ -151,7 +151,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         return (
             (!!this.focusableElement && this.focusableElement.focused) ||
             (!!this.toolbar && this.toolbar.focused) ||
-            (!!this.editLink && isNativeFocusedIn(this.editLink.nativeElement))
+            (!!this.editLink && tuiIsNativeFocusedIn(this.editLink.nativeElement))
         );
     }
 

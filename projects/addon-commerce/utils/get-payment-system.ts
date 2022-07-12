@@ -1,7 +1,7 @@
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 export function tuiGetPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
-    if (cardNumber === ``) {
+    if (cardNumber === '') {
         return null;
     }
 
@@ -11,23 +11,23 @@ export function tuiGetPaymentSystem(cardNumber: string): TuiPaymentSystem | null
     const four = Number.parseInt(cardNumber.slice(0, 4), 10);
 
     if (tuiIsMaestro(three, two, one)) {
-        return `maestro`;
+        return 'maestro';
     }
 
     if (tuiIsMastercard(four, two, one)) {
-        return `mastercard`;
+        return 'mastercard';
     }
 
     if (tuiIsMir(four)) {
-        return `mir`;
+        return 'mir';
     }
 
     if (tuiIsElectron(four)) {
-        return `electron`;
+        return 'electron';
     }
 
     if (tuiIsVisa(one)) {
-        return `visa`;
+        return 'visa';
     }
 
     return null;

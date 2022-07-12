@@ -1,9 +1,9 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
+    getClosestFocusable,
     isPresent,
     setNativeMouseFocused,
     TuiDestroyService,
-    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -22,9 +22,8 @@ import {
     tap,
 } from 'rxjs/operators';
 
-// TODO: Refactor
 @Directive({
-    selector: `tui-hosted-dropdown[tuiDropdownHover]`,
+    selector: 'tui-hosted-dropdown[tuiDropdownHover]',
     providers: [TuiDestroyService],
 })
 export class TuiDropdownHoverDirective {
@@ -43,25 +42,25 @@ export class TuiDropdownHoverDirective {
         );
 
         const open$ = merge(
-            typedFromEvent(nativeElement, `mouseenter`),
-            typedFromEvent(nativeElement, `click`).pipe(
+            typedFromEvent(nativeElement, 'mouseenter'),
+            typedFromEvent(nativeElement, 'click').pipe(
                 tap(e => e.stopImmediatePropagation()),
             ),
             dropdown$.pipe(
                 switchMap(element =>
                     merge(
-                        typedFromEvent(element, `focusin`),
-                        typedFromEvent(element, `mouseenter`),
+                        typedFromEvent(element, 'focusin'),
+                        typedFromEvent(element, 'mouseenter'),
                     ),
                 ),
             ),
         ).pipe(mapTo(true));
 
         const close$ = merge(
-            typedFromEvent(nativeElement, `mouseleave`),
+            typedFromEvent(nativeElement, 'mouseleave'),
             dropdown$.pipe(
                 switchMap(element =>
-                    typedFromEvent(element, `mouseleave`).pipe(
+                    typedFromEvent(element, 'mouseleave').pipe(
                         filter(() => !tuiIsNativeFocusedIn(element)),
                     ),
                 ),
@@ -79,7 +78,7 @@ export class TuiDropdownHoverDirective {
             });
     }
 
-    @HostListener(`mouseenter`)
+    @HostListener('mouseenter')
     onMouseEnter(): void {
         const {host} = this.dropdown;
 
@@ -87,7 +86,7 @@ export class TuiDropdownHoverDirective {
             return;
         }
 
-        const focusable = tuiGetClosestFocusable(host, false, host, false);
+        const focusable = getClosestFocusable(host, false, host, false);
 
         if (focusable) {
             setNativeMouseFocused(focusable);
