@@ -3,11 +3,11 @@
     "assets": [
         "src"
     ],
+    "allowedNonPeerDependencies": [
+        "."
+    ],
     "dest": "../../dist/icons",
     "lib": {
         "entryFile": "./public-api.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-        "."
-    ]
+    }
 }

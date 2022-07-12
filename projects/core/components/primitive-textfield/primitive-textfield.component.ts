@@ -19,7 +19,6 @@ import {
     TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -42,6 +41,7 @@ import {
     TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldOptions,
 } from './primitive-textfield-options';
+import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
@@ -60,7 +60,7 @@ const ICON_PADDING_S = 1.5;
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
+    implements TuiPrimitiveTextfield
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
