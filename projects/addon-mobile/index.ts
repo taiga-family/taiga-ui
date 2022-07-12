@@ -1,7 +1,6 @@
 export * from '@taiga-ui/addon-mobile/components';
 export * from '@taiga-ui/addon-mobile/const';
 export * from '@taiga-ui/addon-mobile/directives';
-export * from '@taiga-ui/addon-mobile/enums';
 export * from '@taiga-ui/addon-mobile/interfaces';
 export * from '@taiga-ui/addon-mobile/tokens';
 export * from '@taiga-ui/addon-mobile/types';

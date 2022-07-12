@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Inject, Input, Optional, Renderer2} from '@angular/core';
-import {TuiTouchModeT} from '@taiga-ui/addon-mobile/types';
+import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {findTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
     TUI_IS_IOS,
@@ -24,7 +24,7 @@ const STYLE = {
 export class TuiTouchableDirective {
     @Input()
     @tuiDefaultProp()
-    tuiTouchable: TuiTouchModeT | '' = '';
+    tuiTouchable: TuiTouchMode | '' = '';
 
     constructor(
         @Optional() @Inject(TUI_ELEMENT_REF) elementRef: ElementRef<HTMLElement> | null,
@@ -64,7 +64,7 @@ export class TuiTouchableDirective {
             });
     }
 
-    get style(): TuiTouchModeT {
+    get style(): TuiTouchMode {
         return this.tuiTouchable || 'transform';
     }
 

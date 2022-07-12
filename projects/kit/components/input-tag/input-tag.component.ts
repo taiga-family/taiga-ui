@@ -24,7 +24,6 @@ import {
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
     getActualTarget,
-    isNativeFocusedIn,
     preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -33,6 +32,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     TuiScrollService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -216,7 +216,7 @@ export class TuiInputTagComponent
 
     get focused(): boolean {
         return (
-            isNativeFocusedIn(this.elementRef.nativeElement) ||
+            tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
             !!this.hostedDropdown?.focused
         );
     }
