@@ -20,13 +20,13 @@ import {
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
-    getNativeFocused,
-    px,
     TuiActiveZoneDirective,
     TuiBooleanHandler,
     TuiDestroyService,
     TuiDropdownPortalService,
+    tuiGetNativeFocused,
     TuiParentsScrollService,
+    tuiPx,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {
@@ -134,7 +134,7 @@ export class TuiDropdownSelectionDirective
         )
             .pipe(
                 map(() => {
-                    const active = getNativeFocused(this.documentRef);
+                    const active = tuiGetNativeFocused(this.documentRef);
                     const selection = this.documentRef.getSelection();
 
                     // TODO: iframe warning
@@ -274,10 +274,10 @@ export class TuiDropdownSelectionDirective
         const range = this.documentRef.createRange();
         const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
 
-        ghost.style.top = px(top - hostRect.top);
-        ghost.style.left = px(left - hostRect.left);
-        ghost.style.width = px(width);
-        ghost.style.height = px(height);
+        ghost.style.top = tuiPx(top - hostRect.top);
+        ghost.style.left = tuiPx(left - hostRect.left);
+        ghost.style.width = tuiPx(width);
+        ghost.style.height = tuiPx(height);
         ghost.textContent = CHAR_ZERO_WIDTH_SPACE + element.value + CHAR_NO_BREAK_SPACE;
 
         range.setStart(ghost.firstChild!, selectionStart || 0);
