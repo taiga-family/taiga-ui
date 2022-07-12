@@ -9,10 +9,10 @@ import {
 } from '@angular/core';
 import {
     blurNativeFocused,
-    isNativeFocusedIn,
     isSafari,
     TUI_IS_IOS,
     tuiDefaultProp,
+    tuiIsNativeFocusedIn,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
@@ -81,6 +81,6 @@ export class TuiLoaderComponent {
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 }
