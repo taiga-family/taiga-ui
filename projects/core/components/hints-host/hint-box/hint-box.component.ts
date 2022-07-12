@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
-    px,
     TuiContextWithImplicit,
     TuiDestroyService,
     tuiPure,
+    tuiPx,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
@@ -39,43 +39,43 @@ const ARROW_SIZE = 8;
 const ARROW_OFFSET = 16;
 const ARROWHEAD_OFFSET = ARROW_OFFSET + (ARROW_SIZE * Math.sqrt(2)) / 2;
 const reverseDirectionsVertical: {[key in TuiDirection]: TuiDirection} = {
-    'top-left': `bottom-left`,
-    'top-right': `bottom-right`,
-    'bottom-left': `top-left`,
-    'bottom-right': `top-right`,
-    left: `right`,
-    right: `left`,
-    'top-middle': `bottom-middle`,
-    'bottom-middle': `top-middle`,
+    'top-left': 'bottom-left',
+    'top-right': 'bottom-right',
+    'bottom-left': 'top-left',
+    'bottom-right': 'top-right',
+    left: 'right',
+    right: 'left',
+    'top-middle': 'bottom-middle',
+    'bottom-middle': 'top-middle',
 };
 const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
-    'top-left': `top-right`,
-    'top-right': `top-left`,
-    'bottom-left': `bottom-right`,
-    'bottom-right': `bottom-left`,
-    left: `right`,
-    right: `left`,
-    'top-middle': `top-middle`,
-    'bottom-middle': `bottom-middle`,
+    'top-left': 'top-right',
+    'top-right': 'top-left',
+    'bottom-left': 'bottom-right',
+    'bottom-right': 'bottom-left',
+    left: 'right',
+    right: 'left',
+    'top-middle': 'top-middle',
+    'bottom-middle': 'bottom-middle',
 };
 
 // TODO: consider abstracting UI and move to CDK, split hint and overflow
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
 @Component({
-    selector: `tui-hint-box[hint]`,
-    templateUrl: `./hint-box.template.html`,
-    styleUrls: [`./hint-box.style.less`],
+    selector: 'tui-hint-box[hint]',
+    templateUrl: './hint-box.template.html',
+    styleUrls: ['./hint-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
     animations: [tuiFadeIn],
 })
 export class TuiHintBoxComponent {
-    @ViewChild(`arrow`)
+    @ViewChild('arrow')
     private readonly arrow?: ElementRef<HTMLElement>;
 
-    @HostBinding(`@tuiFadeIn`)
-    readonly animation = {value: ``, ...this.options} as const;
+    @HostBinding('@tuiFadeIn')
+    readonly animation = {value: '', ...this.options} as const;
 
     constructor(
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -100,12 +100,12 @@ export class TuiHintBoxComponent {
     }
 
     @tuiPure
-    @HostBinding(`class._untouchable`)
+    @HostBinding('class._untouchable')
     get isUntouchable(): boolean {
         return this.hint instanceof TuiPointerHintDirective;
     }
 
-    @HostBinding(`attr.data-mode`)
+    @HostBinding('attr.data-mode')
     get mode(): TuiHintModeT | null {
         return this.hint.mode;
     }
@@ -125,7 +125,7 @@ export class TuiHintBoxComponent {
      * Styles are set directly to avoid visual shake of element
      */
     private calculatePosition(): void {
-        if (this.mode !== `overflow`) {
+        if (this.mode !== 'overflow') {
             this.calculateCoordinates();
         } else {
             this.setOverflowStyles();
@@ -146,14 +146,14 @@ export class TuiHintBoxComponent {
         const tooltipRect = tooltip.getBoundingClientRect();
         const isHostLong = hostRect.width > ARROWHEAD_OFFSET * 2;
         const directions: TuiDirection[] = [
-            `left`,
-            `right`,
-            `bottom-left`,
-            `bottom-right`,
-            `bottom-middle`,
-            `top-left`,
-            `top-right`,
-            `top-middle`,
+            'left',
+            'right',
+            'bottom-left',
+            'bottom-right',
+            'bottom-middle',
+            'top-left',
+            'top-right',
+            'top-middle',
         ];
 
         let top = 0;
@@ -185,35 +185,35 @@ export class TuiHintBoxComponent {
         // eslint-disable-next-line no-constant-condition
         while (true) {
             switch (direction) {
-                case `left`:
+                case 'left':
                     top = horizontalTop;
                     left = horizontalLeft;
                     break;
-                case `right`:
+                case 'right':
                     top = horizontalTop;
                     left = horizontalRight;
                     break;
-                case `top-right`:
+                case 'top-right':
                     top = verticalTop;
                     left = verticalRight;
                     break;
-                case `top-left`:
+                case 'top-left':
                     top = verticalTop;
                     left = verticalLeft;
                     break;
-                case `bottom-right`:
+                case 'bottom-right':
                     top = verticalBottom;
                     left = verticalRight;
                     break;
-                case `bottom-left`:
+                case 'bottom-left':
                     top = verticalBottom;
                     left = verticalLeft;
                     break;
-                case `bottom-middle`:
+                case 'bottom-middle':
                     top = verticalBottom;
                     left = verticalMiddle;
                     break;
-                case `top-middle`:
+                case 'top-middle':
                     top = verticalTop;
                     left = verticalMiddle;
                     break;
@@ -238,10 +238,10 @@ export class TuiHintBoxComponent {
                 directions.splice(directions.indexOf(direction), 1)[0] || direction;
         }
 
-        style.top = px(top);
-        style.left = px(left);
+        style.top = tuiPx(top);
+        style.left = tuiPx(left);
 
-        tooltip.setAttribute(`data-tui-host-direction`, direction);
+        tooltip.setAttribute('data-tui-host-direction', direction);
     }
 
     private calculateMobileCoordinates(): void {
@@ -259,9 +259,9 @@ export class TuiHintBoxComponent {
             hostRect.bottom > 0 &&
             hostRect.bottom + 2 * SPACE + tooltipRect.height < this.windowRef.innerHeight;
         const direction =
-            (this.hint.direction.includes(`top`) && verticalTopFit) || !verticalBottomFit
-                ? `top`
-                : `bottom`;
+            (this.hint.direction.includes('top') && verticalTopFit) || !verticalBottomFit
+                ? 'top'
+                : 'bottom';
         const attemptedLeft =
             portalRect.left + hostRect.left + hostRect.width / 2 - tooltipRect.width / 2;
         const left = Math.max(
@@ -271,26 +271,26 @@ export class TuiHintBoxComponent {
             SPACE * 2,
         );
 
-        style.left = px(left);
-        style.top = direction === `top` ? px(verticalTop) : px(verticalBottom);
+        style.left = tuiPx(left);
+        style.top = direction === 'top' ? tuiPx(verticalTop) : tuiPx(verticalBottom);
 
         if (this.arrow) {
-            this.arrow.nativeElement.style.left = px(
+            this.arrow.nativeElement.style.left = tuiPx(
                 hostRect.left <= SPACE * 2 && hostRect.width > ARROW_OFFSET * 2
                     ? ARROW_OFFSET
                     : hostRect.left + hostRect.width / 2 - left - ARROW_SIZE / 2,
             );
         }
 
-        tooltip.setAttribute(`data-tui-host-direction`, direction);
+        tooltip.setAttribute('data-tui-host-direction', direction);
     }
 
     private setOverflowStyles(): void {
         const hostRect = this.hint.getElementClientRect();
         const {style} = this.elementRef.nativeElement;
 
-        style.top = px(hostRect.top - window.innerHeight - TOP_PADDING - BORDER_WIDTH);
-        style.left = px(hostRect.left - LEFT_PADDING - BORDER_WIDTH);
-        style.width = px(hostRect.width + LEFT_PADDING * 2 + BORDER_WIDTH * 2);
+        style.top = tuiPx(hostRect.top - window.innerHeight - TOP_PADDING - BORDER_WIDTH);
+        style.left = tuiPx(hostRect.left - LEFT_PADDING - BORDER_WIDTH);
+        style.width = tuiPx(hostRect.width + LEFT_PADDING * 2 + BORDER_WIDTH * 2);
     }
 }
