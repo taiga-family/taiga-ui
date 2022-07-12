@@ -22,8 +22,6 @@ All notable changes to this project will be documented in this file. See
 - **addon-editor:** support styles without paragraph for lists
   ([#2092](https://github.com/tinkoff/taiga-ui/issues/2092))
   ([a4d841a](https://github.com/tinkoff/taiga-ui/commit/a4d841a96b88d7ff7def73770e383bb00982a53a))
-- **cdk:** remove deprecated API for fingerprint firefox ([#2055](https://github.com/tinkoff/taiga-ui/issues/2055))
-  ([e7e5a92](https://github.com/tinkoff/taiga-ui/commit/e7e5a9229d369d0899fb906696d564a55788e850))
 - **core:** `tuiLink` mustn't break inline model for anchors ([#2083](https://github.com/tinkoff/taiga-ui/issues/2083))
   ([eff9b8f](https://github.com/tinkoff/taiga-ui/commit/eff9b8f71bbd744378c256a8df8ff9eaa2775353))
 - **core:** align to baseline value decoration postfix ([#2070](https://github.com/tinkoff/taiga-ui/issues/2070))
