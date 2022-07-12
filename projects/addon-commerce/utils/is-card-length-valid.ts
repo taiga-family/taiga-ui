@@ -1,5 +1,3 @@
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-
 import {tuiGetPaymentSystem} from './get-payment-system';
 
 /**
@@ -11,14 +9,14 @@ export function tuiIsCardLengthValid(cardNumber: string): boolean {
     const paymentSystem = tuiGetPaymentSystem(cardNumber);
 
     switch (paymentSystem) {
-        case TuiPaymentSystem.Electron:
+        case 'electron':
             return length === 16;
-        case TuiPaymentSystem.Maestro:
+        case 'maestro':
             return length > 11 && length < 20;
-        case TuiPaymentSystem.Mastercard:
-        case TuiPaymentSystem.Mir:
+        case 'mastercard':
+        case 'mir':
             return length > 15 && length < 20;
-        case TuiPaymentSystem.Visa:
+        case 'visa':
             return length > 12 && length < 20;
         default:
             return length > 8 && length < 20;

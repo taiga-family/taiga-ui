@@ -275,7 +275,7 @@ export class TuiPrimitiveTextfieldComponent
         }
 
         event.preventDefault();
-        setNativeFocused(nativeFocusableElement);
+        nativeFocusableElement.focus();
     }
 
     onModelChange(value: string): void {

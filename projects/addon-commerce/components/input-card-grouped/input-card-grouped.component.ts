@@ -17,9 +17,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     tuiCreateAutoCorrectedExpirePipe,
     tuiGetPaymentSystem,
@@ -64,12 +63,12 @@ const STUB: TuiCard = {
     expire: '',
     cvc: '',
 };
-const ICONS = {
-    [TuiPaymentSystem.Mir]: 'tuiIconMir',
-    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
-    [TuiPaymentSystem.Electron]: 'tuiIconElectron',
-    [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
-    [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
+const ICONS: Record<TuiPaymentSystem, string> = {
+    mir: 'tuiIconMir',
+    visa: 'tuiIconVisa',
+    electron: 'tuiIconElectron',
+    mastercard: 'tuiIconMastercard',
+    maestro: 'tuiIconMaestro',
 };
 
 // @dynamic
