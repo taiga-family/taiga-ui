@@ -10,7 +10,5 @@ import {tuiGetNativeFocused} from './get-native-focused';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiIsNativeFocused(node: Node | null): boolean {
-    return (
-        !!node && !!node.ownerDocument && tuiGetNativeFocused(node.ownerDocument) === node
-    );
+    return !!node?.ownerDocument && tuiGetNativeFocused(node.ownerDocument) === node;
 }

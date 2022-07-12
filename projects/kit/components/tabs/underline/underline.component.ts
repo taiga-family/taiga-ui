@@ -8,7 +8,7 @@ import {
     NgZone,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiDefaultProp, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiZonefree} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
 import {Observable, of, ReplaySubject} from 'rxjs';
@@ -54,7 +54,7 @@ export class TuiUnderlineComponent {
     readonly transform$ = asCallable(
         this.refresh$.pipe(
             map(element =>
-                element ? `translate3d(${tuiPx(element.offsetLeft)}, 0, 0)` : null,
+                element ? `translate3d(${element.offsetLeft}px, 0, 0)` : null,
             ),
         ),
     );
