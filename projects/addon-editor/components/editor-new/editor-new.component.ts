@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     forwardRef,
     Inject,
     Input,
@@ -12,28 +13,30 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
+import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
-    TuiStringHandler,
+    tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
+import {Mark} from 'prosemirror-model';
 import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
 @Component({
-    selector: `tui-editor[new]`,
-    templateUrl: `./editor-new.component.html`,
-    styleUrls: [`./editor-new.style.less`],
+    selector: 'tui-editor[new]',
+    templateUrl: './editor-new.component.html',
+    styleUrls: ['./editor-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -47,9 +50,12 @@ export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
     implements OnDestroy
 {
+    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
+    private readonly editLink?: ElementRef<HTMLElement>;
+
     @Input()
     @tuiDefaultProp()
-    exampleText = ``;
+    exampleText = '';
 
     @Input()
     @tuiDefaultProp()
@@ -57,8 +63,6 @@ export class TuiEditorNewComponent
 
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
-
-    focused = false;
 
     constructor(
         @Optional()
@@ -68,8 +72,6 @@ export class TuiEditorNewComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
         @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
-        @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
-        private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -82,6 +84,14 @@ export class TuiEditorNewComponent
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
     }
 
+    get focused(): boolean {
+        return (
+            !!this.editor?.isFocused ||
+            (!!this.toolbar && this.toolbar.focused) ||
+            (!!this.editLink && tuiIsNativeFocusedIn(this.editLink.nativeElement))
+        );
+    }
+
     get placeholderRaised(): boolean {
         return (this.computedFocused && !this.readOnly) || this.hasValue;
     }
@@ -92,23 +102,18 @@ export class TuiEditorNewComponent
         );
     }
 
-    writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value || ``);
-
-        super.writeValue(processed);
-
-        if (processed !== value) {
-            this.control?.setValue(processed);
-        }
-    }
-
     onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onActiveZone(focused: boolean): void {
-        this.focused = focused;
-        this.updateFocused(focused);
+    selectLinkIfClosest(): void {
+        if (this.getMarkedLinkBeforeSelectClosest()) {
+            this.editor?.selectClosest();
+        }
+    }
+
+    onActiveZone(active: boolean): void {
+        this.updateFocused(active);
     }
 
     onModelChange(value: string): void {
@@ -129,13 +134,19 @@ export class TuiEditorNewComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
-    private readonly isSelectionLink = ({startContainer, endContainer}: Range): boolean =>
-        !!startContainer.parentElement?.closest(`a`)?.contains(endContainer);
+    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive('link');
 
     private get hasValue(): boolean {
         return !!this.value;
+    }
+
+    private getMarkedLinkBeforeSelectClosest(): Mark | null {
+        const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
+        const isLink = link?.type.name === 'link';
+
+        return isLink ? link : null;
     }
 }
