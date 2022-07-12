@@ -3,6 +3,7 @@
     "files": ["src/main.browser.ts", "src/polyfills.ts"],
     "include": ["**/*.d.ts"],
     "angularCompilerOptions": {
-        "strictMetadataEmit": false
+        "strictMetadataEmit": false,
+        "compilationMode": "full"
     }
 }
