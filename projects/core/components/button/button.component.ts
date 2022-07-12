@@ -40,6 +40,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
             useExisting: forwardRef(() => TuiButtonComponent),
         },
         TuiDestroyService,
+        TuiHoveredService,
         TuiFocusVisibleService,
     ],
 })
@@ -92,7 +93,6 @@ export class TuiButtonComponent
         super();
 
         hoveredService
-            .createHovered$(elementRef.nativeElement)
             .pipe(watch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(hovered => {
                 this.updateHovered(hovered);
