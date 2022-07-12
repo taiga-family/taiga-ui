@@ -14,13 +14,13 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     clamp,
-    isNativeFocused,
     isPresent,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -151,7 +151,7 @@ export class TuiInputCountComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get exampleText(): string {
