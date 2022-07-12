@@ -1,6 +1,6 @@
-import {LanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
+export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Kolor', 'Gradient'],
     toolbarTools: {
         undo: 'Cofnij',

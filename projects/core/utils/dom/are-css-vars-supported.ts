@@ -1,4 +1,4 @@
-import {isEdgeOlderThan} from '@taiga-ui/cdk';
+import {tuiIsEdgeOlderThan} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: use {@link tuiAreCssVarsSupported} instead
@@ -6,7 +6,7 @@ import {isEdgeOlderThan} from '@taiga-ui/cdk';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function areCssVarsSupported(cssRef: typeof CSS, userAgent: string): boolean {
-    return cssRef.supports('(--a: 0)') && !isEdgeOlderThan(17, userAgent);
+    return cssRef.supports('(--a: 0)') && !tuiIsEdgeOlderThan(17, userAgent);
 }
 
 export const tuiAreCssVarsSupported = areCssVarsSupported;
