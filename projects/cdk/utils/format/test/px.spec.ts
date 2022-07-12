@@ -1,7 +1,7 @@
-import {px} from '../px';
+import {tuiPx} from '../px';
 
 describe('px', () => {
     it('returns number with px', () => {
-        expect(px(42)).toBe('42px');
+        expect(tuiPx(42)).toBe('42px');
     });
 });
