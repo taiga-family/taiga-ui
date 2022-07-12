@@ -11,6 +11,17 @@ import {
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+function calculateColorSegments(colors: string[], progressWidth: number): string {
+    const segmentWidth = Math.ceil(progressWidth / colors.length);
+    const colorsString = colors.reduce(
+        (acc, color, i) =>
+            `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
+        '',
+    );
+
+    return `linear-gradient(to right ${colorsString})`;
+}
+
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     host: {
@@ -33,7 +44,7 @@ export class TuiProgressColorSegmentsDirective {
             map(() =>
                 this.isOldBrowsers
                     ? this.colors[0]
-                    : this.calculateColorSegments(
+                    : calculateColorSegments(
                           this.colors,
                           this.elementRef.nativeElement.offsetWidth,
                       ),
@@ -46,15 +57,4 @@ export class TuiProgressColorSegmentsDirective {
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {}
-
-    private calculateColorSegments(colors: string[], progressWidth: number): string {
-        const segmentWidth = Math.ceil(progressWidth / colors.length);
-        const colorsString = colors.reduce(
-            (acc, color, i) =>
-                `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-            '',
-        );
-
-        return `linear-gradient(to right ${colorsString})`;
-    }
 }
