@@ -15,13 +15,13 @@ import {
     getClosestFocusable,
     inRange,
     POLLING_TIME,
-    px,
     TuiActiveZoneDirective,
     tuiAssertIsHTMLElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
     TuiOverscrollMode,
     tuiPure,
+    tuiPx,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
@@ -213,11 +213,11 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                     right + DEFAULT_MARGIN > viewportWidth ||
                     inRange(left + DEFAULT_MARGIN, 0, viewportWidth)
                 ) {
-                    style.left = px(left);
+                    style.left = tuiPx(left);
                     style.right = 'auto';
                 } else {
                     style.left = 'auto';
-                    style.right = px(right);
+                    style.right = tuiPx(right);
                 }
 
                 break;
@@ -227,9 +227,9 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                     left + DEFAULT_MARGIN > viewportWidth
                 ) {
                     style.left = 'auto';
-                    style.right = px(right);
+                    style.right = tuiPx(right);
                 } else {
-                    style.left = px(left);
+                    style.left = tuiPx(left);
                     style.right = 'auto';
                 }
 
@@ -268,9 +268,9 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         if (finalDirection === 'top') {
             this.dropdownAnimation = this.animationBottom;
 
-            style.maxHeight = px(Math.min(boxHeightLimit, topAvailableHeight));
+            style.maxHeight = tuiPx(Math.min(boxHeightLimit, topAvailableHeight));
             style.top = 'auto';
-            style.bottom = px(
+            style.bottom = tuiPx(
                 hostRect.bottom -
                     directiveRect.top -
                     DEFAULT_MARGIN +
@@ -280,8 +280,8 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         } else {
             this.dropdownAnimation = this.animationTop;
 
-            style.maxHeight = px(Math.min(boxHeightLimit, bottomAvailableHeight));
-            style.top = px(
+            style.maxHeight = tuiPx(Math.min(boxHeightLimit, bottomAvailableHeight));
+            style.top = tuiPx(
                 directiveRect.bottom -
                     hostRect.top -
                     DEFAULT_MARGIN +
@@ -361,12 +361,12 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     private calculateWidth(style: CSSStyleDeclaration, directiveRect: ClientRect): void {
         style.width =
             this.directive.limitMinWidth === 'fixed' && !this.directive.sided
-                ? px(directiveRect.width)
+                ? tuiPx(directiveRect.width)
                 : '';
 
         if (this.directive.limitMinWidth === 'min' && !this.directive.sided) {
-            style.minWidth = px(directiveRect.width);
-            style.maxWidth = px(DEFAULT_MAX_WIDTH);
+            style.minWidth = tuiPx(directiveRect.width);
+            style.maxWidth = tuiPx(DEFAULT_MAX_WIDTH);
 
             return;
         }

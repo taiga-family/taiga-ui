@@ -1,5 +1,5 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {isNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {concat, merge, Observable} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -55,7 +55,7 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
             typedFromEvent(element, `focus`).pipe(take(1)),
             // filtering out blur events when element remains focused so that we ignore browser tab focus loss
             elementBlur$.pipe(
-                filter(() => !isNativeFocused(element)),
+                filter(() => !tuiIsNativeFocused(element)),
                 take(1),
                 ignoreElements(),
             ),
