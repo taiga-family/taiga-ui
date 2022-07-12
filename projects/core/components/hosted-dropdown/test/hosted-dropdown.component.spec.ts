@@ -1,7 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
+import {tuiAssertIsElement} from '@taiga-ui/cdk';
 import {configureTestSuite, tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiTextfieldControllerModule} from '../../../directives';
@@ -134,11 +134,7 @@ describe('TuiHostedDropdown', () => {
         pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
 
-        const element = document.querySelector('#native-button');
-
-        tuiAssertIsHTMLElement(element);
-
-        nativeButton = element;
+        nativeButton = document.querySelector('#native-button') as HTMLElement;
     });
 
     describe('Buttons', () => {
@@ -152,7 +148,7 @@ describe('TuiHostedDropdown', () => {
         it('Clicking on another button does not open the dropdown', () => {
             const element = testComponent.tuiButton.nativeFocusableElement;
 
-            tuiAssertIsHTMLElement(element);
+            tuiAssertIsElement(element);
 
             element.click();
             fixture.detectChanges();
@@ -238,7 +234,7 @@ describe('TuiHostedDropdown', () => {
         it('Clicking on the host does not open the dropdown', () => {
             const element = testComponent.tuiTextfield.nativeFocusableElement;
 
-            tuiAssertIsHTMLElement(element);
+            tuiAssertIsElement(element);
 
             element.click();
             fixture.detectChanges();
@@ -292,7 +288,7 @@ describe('TuiHostedDropdown', () => {
         it('Clicking on the first focused element does not open the dropdown', () => {
             const element = testComponent.tuiButton.nativeFocusableElement;
 
-            tuiAssertIsHTMLElement(element);
+            tuiAssertIsElement(element);
 
             element.click();
             fixture.detectChanges();
@@ -303,7 +299,7 @@ describe('TuiHostedDropdown', () => {
         it('An element with tuiHostedDropdownHost is used as a host, clicking on it opens a dropdown', () => {
             const element = testComponent.target.nativeFocusableElement;
 
-            tuiAssertIsHTMLElement(element);
+            tuiAssertIsElement(element);
 
             element.click();
             fixture.detectChanges();

@@ -15,7 +15,7 @@ import {
     EMPTY_QUERY,
     getOriginalArrayFromQueryList,
     itemsQueryListObservable,
-    tuiAssertIsHTMLElement,
+    tuiAssertIsElement,
     tuiDefaultProp,
     tuiMoveFocus,
     tuiPure,
@@ -115,11 +115,12 @@ export class TuiStepperComponent {
     }
 
     private moveFocus(current: EventTarget, step: number): void {
-        tuiAssertIsHTMLElement(current);
+        tuiAssertIsElement(current);
 
         const stepElements = this.getNativeElements(this.steps);
+        const index = stepElements.findIndex(item => item === current);
 
-        tuiMoveFocus(stepElements.indexOf(current), stepElements, step);
+        tuiMoveFocus(index, stepElements, step);
     }
 
     private scrollIntoView(targetStepIndex: number): void {
