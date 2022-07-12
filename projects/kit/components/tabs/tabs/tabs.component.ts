@@ -21,14 +21,11 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {
     EMPTY_QUERY,
-    moveFocus,
-    TUI_IS_ANDROID,
-    TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiMoveFocus,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -36,7 +33,7 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
-const TAB_ACTIVE_CLASS = `_active`;
+const TAB_ACTIVE_CLASS = '_active';
 
 // TODO: 3.0 remove in ivy compilation
 export const OBSERVER_INIT = {
@@ -45,9 +42,9 @@ export const OBSERVER_INIT = {
 
 // @dynamic
 @Component({
-    selector: `tui-tabs, nav[tuiTabs]`,
-    templateUrl: `./tabs.template.html`,
-    styleUrls: [`./tabs.style.less`],
+    selector: 'tui-tabs, nav[tuiTabs]',
+    templateUrl: './tabs.template.html',
+    styleUrls: ['./tabs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -64,11 +61,11 @@ export class TuiTabsComponent implements AfterViewChecked {
     readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     @Input()
-    @HostBinding(`class._underline`)
+    @HostBinding('class._underline')
     @tuiDefaultProp()
     underline = this.options.underline;
 
-    @Input(`activeItemIndex`)
+    @Input('activeItemIndex')
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
         this.scrollTo(this.tabs[index]);
@@ -76,12 +73,6 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
-
-    @HostBinding(`class._ios`)
-    readonly isIos: boolean;
-
-    @HostBinding(`class._android`)
-    readonly isAndroid: boolean;
 
     activeItemIndex = 0;
 
@@ -91,13 +82,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiResizeService) resize$: Observable<void>,
-        @Inject(TUI_IS_IOS) isIos: boolean,
-        @Inject(TUI_IS_ANDROID) isAndroid: boolean,
-        @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
     ) {
-        this.isIos = mobileAware && isIos;
-        this.isAndroid = mobileAware && isAndroid;
-
         resize$.pipe(filter(() => this.underline)).subscribe(() => {
             changeDetectorRef.detectChanges();
         });
@@ -105,7 +90,7 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     get tabs(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(`[tuiTab]`),
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
         );
     }
 
@@ -113,7 +98,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         return this.tabs[this.activeItemIndex] || null;
     }
 
-    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, [`$event.target`])
+    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
     onActivate(element: HTMLElement): void {
         const index = this.tabs.findIndex(tab => tab === element);
 
@@ -125,12 +110,12 @@ export class TuiTabsComponent implements AfterViewChecked {
         this.activeItemIndexChange.emit(index);
     }
 
-    @HostListener(`keydown.arrowRight.prevent`, [`$event.target`, `1`])
-    @HostListener(`keydown.arrowLeft.prevent`, [`$event.target`, `-1`])
+    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     onKeyDownArrow(current: HTMLElement, step: number): void {
         const {tabs} = this;
 
-        moveFocus(tabs.indexOf(current), tabs, step);
+        tuiMoveFocus(tabs.indexOf(current), tabs, step);
     }
 
     ngAfterViewChecked(): void {
@@ -138,12 +123,12 @@ export class TuiTabsComponent implements AfterViewChecked {
 
         tabs.forEach(nativeElement => {
             this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, `tabIndex`, `-1`);
+            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
         });
 
         if (activeElement) {
             this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(activeElement, `tabIndex`, `0`);
+            this.renderer.setAttribute(activeElement, 'tabIndex', '0');
         }
     }
 

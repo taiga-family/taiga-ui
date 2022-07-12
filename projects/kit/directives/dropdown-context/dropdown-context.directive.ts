@@ -12,12 +12,12 @@ import {
 import {
     EMPTY_CLIENT_RECT,
     getClosestFocusable,
-    getNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
     TuiDropdownPortalService,
+    tuiGetNativeFocused,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
@@ -106,7 +106,7 @@ export class TuiDropdownContextDirective
     @HostListener(`document:keydown.arrowDown`, [`$event`, `true`])
     @HostListener(`document:keydown.arrowUp`, [`$event`, `false`])
     onArrow(event: KeyboardEvent, down: boolean): void {
-        const activeElement = getNativeFocused(this.documentRef);
+        const activeElement = tuiGetNativeFocused(this.documentRef);
         const focusInside = activeElement && this.activeZone.contains(activeElement);
 
         if (!this.dropdownContent || focusInside) {

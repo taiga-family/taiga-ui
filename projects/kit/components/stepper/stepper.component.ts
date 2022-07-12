@@ -15,9 +15,9 @@ import {
     EMPTY_QUERY,
     getOriginalArrayFromQueryList,
     itemsQueryListObservable,
-    moveFocus,
     tuiAssertIsHTMLElement,
     tuiDefaultProp,
+    tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiOrientationT} from '@taiga-ui/core';
@@ -119,7 +119,7 @@ export class TuiStepperComponent {
 
         const stepElements = this.getNativeElements(this.steps);
 
-        moveFocus(stepElements.indexOf(current), stepElements, step);
+        tuiMoveFocus(stepElements.indexOf(current), stepElements, step);
     }
 
     private scrollIntoView(targetStepIndex: number): void {

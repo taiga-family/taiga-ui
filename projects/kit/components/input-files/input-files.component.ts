@@ -17,11 +17,11 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -120,7 +120,7 @@ export class TuiInputFilesComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get computedPseudoHovered(): boolean | null {

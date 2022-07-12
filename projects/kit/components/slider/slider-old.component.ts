@@ -10,9 +10,9 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {AbstractTuiSlider} from '@taiga-ui/kit/abstract';
@@ -60,7 +60,7 @@ export class TuiSliderOldComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get left(): number {

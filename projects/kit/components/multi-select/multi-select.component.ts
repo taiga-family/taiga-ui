@@ -18,7 +18,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
-    isNativeFocused,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
@@ -26,6 +25,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiMapper,
     tuiPure,
     TuiStringHandler,
@@ -276,7 +276,7 @@ export class TuiMultiSelectComponent<T>
             this.editable &&
             this.interactive &&
             nativeFocusableElement &&
-            isNativeFocused(nativeFocusableElement)
+            tuiIsNativeFocused(nativeFocusableElement)
         ) {
             this.hostedDropdown?.updateOpen(!this.open);
         }
