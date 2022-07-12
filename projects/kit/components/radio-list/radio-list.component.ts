@@ -17,12 +17,12 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     EMPTY_QUERY,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiIdentityMatcher,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiOrientationT, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
@@ -95,7 +95,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     computeId(index: number): string {
