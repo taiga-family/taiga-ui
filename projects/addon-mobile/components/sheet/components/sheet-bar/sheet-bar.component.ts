@@ -3,8 +3,8 @@ import {clamp} from '@taiga-ui/cdk';
 import {tuiZonefulMap} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TuiSheetHost} from '../../sheet';
-import {TUI_SHEET_HOST, TUI_SHEET_SCROLL} from '../../sheet-tokens';
+import {TuiSheetRequiredProps} from '../../sheet';
+import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Component({
     selector: 'tui-sheet-bar',
@@ -18,7 +18,7 @@ export class TuiSheetBarComponent {
     );
 
     constructor(
-        @Inject(TUI_SHEET_HOST) private readonly sheet: TuiSheetHost,
+        @Inject(TUI_SHEET) private readonly sheet: TuiSheetRequiredProps,
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {}

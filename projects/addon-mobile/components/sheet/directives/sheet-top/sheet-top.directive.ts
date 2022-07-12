@@ -4,8 +4,8 @@ import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TuiSheetHost} from '../../sheet';
-import {TUI_SHEET_HOST, TUI_SHEET_SCROLL} from '../../sheet-tokens';
+import {TuiSheetRequiredProps} from '../../sheet';
+import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 // So that borders get rounded when image is visible for at least 10px
 const OFFSET = 10;
@@ -37,8 +37,8 @@ export class TuiSheetTopDirective {
 
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(TUI_SHEET_HOST)
-        private readonly component: TuiSheetHost,
+        @Inject(TUI_SHEET)
+        private readonly component: TuiSheetRequiredProps,
         @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 

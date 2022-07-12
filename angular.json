@@ -866,7 +866,7 @@
                     "options": {
                         "parallel": false,
                         "commands": [
-                            "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
+                            "tsc -p ./projects/taiga-schematics/tsconfig.spec.json --tsBuildInfoFile null",
                             "jasmine ./dist/taiga-schematics/**/*.spec.js"
                         ]
                     },

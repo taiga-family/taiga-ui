@@ -52,8 +52,8 @@
         "concurrently": "concurrently --success all --group --timings",
         "affected:test:libs": "nx affected --target test --parallel --exclude=demo",
         "affected:build:libs": "nx affected --target build --parallel --exclude=demo",
-        "run-many:test:libs": "nx run-many --target test --all --parallel --exclude=demo",
-        "run-many:build:libs": "nx run-many --target build --parallel --all --exclude=demo",
+        "run-many:test:libs": "nx run-many --target test --all --exclude=demo",
+        "run-many:build:libs": "nx run-many --target build --all --exclude=demo",
         "run-many:publish:libs": "nx run-many --target publish --all"
     },
     "lint-staged": {

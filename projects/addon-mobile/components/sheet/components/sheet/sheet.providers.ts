@@ -6,7 +6,7 @@ import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
 
 import {iosScrollFactory} from '../../ios.hacks';
-import {TUI_SHEET_DRAGGED, TUI_SHEET_HOST, TUI_SHEET_SCROLL} from '../../sheet-tokens';
+import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TuiSheetComponent} from './sheet.component';
 
 export const TUI_SHEET_PROVIDERS: Provider[] = [
@@ -25,7 +25,7 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         useExisting: ElementRef,
     },
     {
-        provide: TUI_SHEET_HOST,
+        provide: TUI_SHEET,
         useExisting: forwardRef(() => TuiSheetComponent),
     },
 ];

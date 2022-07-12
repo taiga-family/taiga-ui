@@ -12,7 +12,7 @@ export interface TuiSheet<O, I = undefined>
     completeWith(value: O): void;
 }
 
-export interface TuiSheetHost<T = unknown> {
+export interface TuiSheetRequiredProps<T = unknown> {
     stops: readonly number[];
     item: TuiSheet<T>;
 }

@@ -1,9 +1,9 @@
 import {InjectionToken} from '@angular/core';
 
-import {TuiSheetHost} from './sheet';
+import {TuiSheetRequiredProps} from './sheet';
 
-export const TUI_SHEET_HOST = new InjectionToken<TuiSheetHost>(
-    '[TUI_SHEET_HOST] Sheet main component',
+export const TUI_SHEET = new InjectionToken<TuiSheetRequiredProps>(
+    '[TUI_SHEET] Sheet main component',
 );
 
 export const TUI_SHEET_SCROLL = new InjectionToken<number>(
