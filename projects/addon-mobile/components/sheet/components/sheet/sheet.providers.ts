@@ -1,27 +1,13 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, InjectionToken, NgZone, Provider} from '@angular/core';
+import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
 import {TUI_IS_IOS, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
 
 import {iosScrollFactory} from '../../ios.hacks';
-
-export const TUI_SHEET_SCROLL = new InjectionToken<number>(
-    'Current scrollTop of a sheet',
-);
-
-export const TUI_SHEET_DRAGGED = new InjectionToken<boolean>(
-    'The sheet is being dragged',
-);
-
-/** @deprecated use option argument for each Sheet */
-export const TUI_SHEET_OFFSET = new InjectionToken<number>(
-    'Offset from the top at which the sheet stops',
-    {
-        factory: () => 16,
-    },
-);
+import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
+import {TuiSheetComponent} from './sheet.component';
 
 export const TUI_SHEET_PROVIDERS: Provider[] = [
     {
@@ -37,6 +23,10 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     {
         provide: TUI_SCROLL_REF,
         useExisting: ElementRef,
+    },
+    {
+        provide: TUI_SHEET,
+        useExisting: forwardRef(() => TuiSheetComponent),
     },
 ];
 
