@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
     pressedObservable,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
@@ -21,6 +20,7 @@ import {
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     TuiHoveredService,
+    tuiIsNativeFocused,
     watch,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives';
@@ -126,7 +126,7 @@ export class TuiButtonComponent
     }
 
     get focused(): boolean {
-        return !this.showLoader && isNativeFocused(this.elementRef.nativeElement);
+        return !this.showLoader && tuiIsNativeFocused(this.elementRef.nativeElement);
     }
 
     get loaderSize(): TuiSizeS {
