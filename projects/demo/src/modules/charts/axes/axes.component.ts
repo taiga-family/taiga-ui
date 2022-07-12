@@ -4,7 +4,7 @@ import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_SOLID,
     TuiLineHandler,
-    TuiLineTypeT,
+    TuiLineType,
 } from '@taiga-ui/addon-charts';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -30,12 +30,7 @@ export class ExampleTuiAxesComponent {
         LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
-    readonly lineVariants: readonly TuiLineTypeT[] = [
-        'solid',
-        'dashed',
-        'none',
-        'hidden',
-    ];
+    readonly lineVariants: readonly TuiLineType[] = ['solid', 'dashed', 'none', 'hidden'];
 
     readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],

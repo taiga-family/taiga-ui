@@ -19,7 +19,6 @@ import {NgControl} from '@angular/forms';
 import {
     clamp,
     EMPTY_QUERY,
-    isNativeFocusedIn,
     nonNegativeFiniteAssertion,
     quantize,
     round,
@@ -27,6 +26,7 @@ import {
     tuiAssert,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -152,7 +152,7 @@ export class TuiRangeComponent
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     get fractionStep(): number {
