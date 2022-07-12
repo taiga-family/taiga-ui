@@ -21,7 +21,7 @@ import {Observable} from 'rxjs';
 
 /**
  * @deprecated use {@link TuiSliderComponent} instead
- * TODO: 3.0 remove
+ * TODO: 3.0 remove / hello
  */
 // @dynamic
 @Component({

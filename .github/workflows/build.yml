@@ -12,11 +12,6 @@ on:
       - 'angular.json'
       - 'package.json'
       - 'tsconfig*'
-    branches:
-      - '!release/**'
-  push:
-    branches:
-      - '!release/**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}
