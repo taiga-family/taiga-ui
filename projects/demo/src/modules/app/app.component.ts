@@ -31,7 +31,11 @@ import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
     selector: 'app',
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],
-    host: {'[class._is-cypress-mode]': 'isCypress'},
+    host: {
+        '[class._is-cypress-mode]': 'isCypress',
+        '[$.class._loaded]': 'pageLoaded$',
+        '($.class._loaded)': '0',
+    },
     encapsulation: ViewEncapsulation.None,
     providers: [
         TuiDestroyService,
@@ -58,6 +62,7 @@ export class AppComponent implements OnInit {
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         private readonly injector: Injector,
+        @Inject(TUI_DOC_PAGE_LOADED) readonly pageLoaded$: Observable<boolean>,
     ) {}
 
     async ngOnInit(): Promise<void> {
