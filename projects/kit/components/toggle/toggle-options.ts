@@ -13,12 +13,6 @@ export interface TuiToggleOptions {
     readonly size: TuiSizeL;
 }
 
-/**
- * @deprecated: use TuiToggleOptions instead
- * todo: remove in 3.0
- */
-export type ToggleOptions = TuiToggleOptions;
-
 /** Default values for the toggle options. */
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     icons: {
