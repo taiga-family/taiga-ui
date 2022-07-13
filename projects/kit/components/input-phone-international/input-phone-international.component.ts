@@ -42,7 +42,7 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {MASK_AFTER_CODE_REGEXP} from './const/countries';
+import {MASK_AFTER_CODE_REGEXP} from './const/mask-after-code-regexp';
 import {
     TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
     TuiInputPhoneInternationalOptions,
