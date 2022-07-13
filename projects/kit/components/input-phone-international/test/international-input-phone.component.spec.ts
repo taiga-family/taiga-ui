@@ -5,11 +5,11 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TUI_ICONS_PATH, TuiRootModule} from '@taiga-ui/core';
 import {
-    Language,
     TUI_ENGLISH_LANGUAGE,
     TUI_LANGUAGE,
     TUI_RUSSIAN_LANGUAGE,
     TuiCountryIsoCode,
+    TuiLanguage,
 } from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternationalComponent,
@@ -55,7 +55,7 @@ describe(`InputPhoneInternational`, () => {
     let testComponent: TestComponent;
     let component: TuiInputPhoneInternationalComponent;
 
-    const initializeTestModule = (language: Language = TUI_ENGLISH_LANGUAGE): void => {
+    const initializeTestModule = (language: TuiLanguage = TUI_ENGLISH_LANGUAGE): void => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [
