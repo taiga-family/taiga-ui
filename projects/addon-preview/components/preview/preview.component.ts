@@ -18,7 +18,7 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
-import {LanguagePreview} from '@taiga-ui/i18n';
+import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
 import {map, mapTo, startWith} from 'rxjs/operators';
 
@@ -86,7 +86,7 @@ export class TuiPreviewComponent {
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
         @Inject(TUI_PREVIEW_TEXTS)
-        readonly texts$: Observable<LanguagePreview['previewTexts']>,
+        readonly texts$: Observable<TuiLanguagePreview['previewTexts']>,
     ) {}
 
     rotate(): void {
