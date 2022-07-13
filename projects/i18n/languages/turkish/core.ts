@@ -1,7 +1,7 @@
-import {LanguageCore} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '@taiga-ui/i18n/languages/english';
 
-export const TUI_TURKISH_LANGUAGE_CORE: LanguageCore = {
+export const TUI_TURKISH_LANGUAGE_CORE: TuiLanguageCore = {
     months: [
         `Ocak`,
         `Şubat`,
