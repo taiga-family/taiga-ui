@@ -2,16 +2,25 @@ import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    isEdgeOlderThan,
-    isIE,
     TuiDestroyService,
+    tuiIsEdgeOlderThan,
+    tuiIsIE,
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {calculateColorSegments} from '../utils/calculate-color-segments';
+function calculateColorSegments(colors: string[], progressWidth: number): string {
+    const segmentWidth = Math.ceil(progressWidth / colors.length);
+    const colorsString = colors.reduce(
+        (acc, color, i) =>
+            `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
+        '',
+    );
+
+    return `linear-gradient(to right ${colorsString})`;
+}
 
 @Directive({
     selector: `progress[tuiProgressBar][tuiProgressColorSegments]`,
@@ -23,8 +32,8 @@ import {calculateColorSegments} from '../utils/calculate-color-segments';
 })
 export class TuiProgressColorSegmentsDirective {
     private readonly isOldBrowsers =
-        isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
-        isIE(this.userAgent);
+        tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
+        tuiIsIE(this.userAgent);
 
     @Input(`tuiProgressColorSegments`)
     colors: string[] = [];
