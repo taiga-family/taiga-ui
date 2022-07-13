@@ -3,12 +3,12 @@ import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
 
 export const TUI_PHONE_MASK: TuiTextMaskList = [
     CHAR_PLUS,
-    `7`,
-    ` `,
+    '7',
+    ' ',
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
-    ` `,
+    ' ',
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
@@ -22,7 +22,7 @@ export const TUI_PHONE_MASK: TuiTextMaskList = [
 export const TUI_TIME_MASK: TuiTextMaskList = [
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
-    `:`,
+    ':',
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
 ];

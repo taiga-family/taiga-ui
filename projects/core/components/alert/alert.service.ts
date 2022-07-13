@@ -6,7 +6,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAlertComponent} from './alert.component';
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class TuiAlertService extends AbstractTuiDialogService<TuiAlertOptions<any>> {
     protected readonly component = new PolymorpheusComponent(TuiAlertComponent);
 
