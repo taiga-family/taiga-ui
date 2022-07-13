@@ -7,7 +7,7 @@ import {
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
@@ -36,7 +36,7 @@ export class TuiTableCellColorComponent {
         private readonly defaultOptions: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
     ) {}
 
     isBlankColor(color: string): boolean {
