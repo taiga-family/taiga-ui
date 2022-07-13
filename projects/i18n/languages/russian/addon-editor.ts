@@ -1,6 +1,6 @@
-import {LanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
+export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Сплошной цвет', 'Градиент'],
     toolbarTools: {
         undo: 'Отменить',

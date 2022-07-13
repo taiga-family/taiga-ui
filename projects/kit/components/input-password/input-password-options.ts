@@ -10,12 +10,6 @@ export interface TuiInputPasswordOptions {
     }>;
 }
 
-/**
- * @deprecated: use TuiInputPasswordOptions instead
- * todo: remove in 3.0
- */
-export type InputPasswordOptions = TuiInputPasswordOptions;
-
 // TODO: 3.0 remove in ivy compilation
 export const PASSWORD_ICON_HIDE = ({
     $implicit,

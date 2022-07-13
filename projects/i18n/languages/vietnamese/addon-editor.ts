@@ -1,6 +1,6 @@
-import {LanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
+export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Màu thuần', 'Màu chuyển sắc'],
     toolbarTools: {
         undo: 'Hoàn tác',

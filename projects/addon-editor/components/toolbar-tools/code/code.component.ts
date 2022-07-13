@@ -5,7 +5,7 @@ import {
     TUI_EDITOR_CODE_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/addon-editor/tokens';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
@@ -25,9 +25,9 @@ export class TuiCodeComponent {
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_CODE_OPTIONS)
-        readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
+        readonly codeOptionsTexts$: Observable<TuiLanguageEditor['editorCodeOptions']>,
     ) {}
 
     onCode(isCodeBlock: boolean): void {
