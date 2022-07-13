@@ -809,12 +809,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'ResizableColumn',
-                keywords: 'таблица, столбцы, размер, table, size, column',
-                route: '/components/resizable-column',
-            },
-            {
-                section: $localize`Components`,
                 title: 'TablePagination',
                 keywords: 'таблица, страницы, pagination, page',
                 route: '/components/table-pagination',
