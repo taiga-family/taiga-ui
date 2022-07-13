@@ -6,7 +6,7 @@ import {
     TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/addon-editor/tokens';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -45,10 +45,10 @@ export class TuiFontSizeComponent {
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_FONT_OPTIONS)
         private readonly fontOptionsTexts$: Observable<
-            LanguageEditor['editorFontOptions']
+            TuiLanguageEditor['editorFontOptions']
         >,
     ) {}
 
