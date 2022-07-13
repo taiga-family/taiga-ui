@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {LanguageKit} from '@taiga-ui/i18n';
+import {TuiLanguageKit} from '@taiga-ui/i18n';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
@@ -32,7 +32,7 @@ export class TuiPreviewPaginationComponent {
 
     constructor(
         @Inject(TUI_PAGINATION_TEXTS)
-        readonly texts$: Observable<LanguageKit['pagination']>,
+        readonly texts$: Observable<TuiLanguageKit['pagination']>,
     ) {}
 
     get leftButtonDisabled(): boolean {

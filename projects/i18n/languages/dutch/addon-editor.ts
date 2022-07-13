@@ -1,6 +1,6 @@
-import {LanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_DUTCH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
+export const TUI_DUTCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Effen kleur', 'Kleurverloop'],
     toolbarTools: {
         undo: 'Undo',

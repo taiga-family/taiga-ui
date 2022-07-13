@@ -20,9 +20,8 @@
             </button>
         </tui-opt-group>
         <tui-opt-group label="Sith">
-            <!-- passing component to tuiHideSelected is not needed in Ivy -->
             <button
-                *ngFor="let item of sith | tuiHideSelected: component"
+                *ngFor="let item of sith | tuiHideSelected"
                 tuiOption
                 [value]="item"
             >
