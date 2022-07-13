@@ -31,7 +31,7 @@ import {
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
@@ -92,7 +92,7 @@ export class TuiToolbarNewComponent {
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
     ) {}
