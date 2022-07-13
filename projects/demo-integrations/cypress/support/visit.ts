@@ -112,7 +112,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
 
-    // cy.get('app._loaded').should('exist'); // uncomment when next-app will have this class
+    cy.get('app._loaded').should('exist');
 
     if (hideHeader) {
         cy.tuiHideHeader();
