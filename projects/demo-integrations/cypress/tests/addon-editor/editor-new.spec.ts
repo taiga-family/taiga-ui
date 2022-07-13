@@ -175,8 +175,12 @@ describe('Editor', () => {
                 .matchImageSnapshot('4-4-bullet-and-ordered-list');
 
             function toggleBullet(iconType: string): void {
-                cy.get('@wrapper').find(`button[icon="tuiIconViewListLarge"]`).click();
-                cy.get('tui-dropdown-box').find(`button[icon="${iconType}"]`).click();
+                cy.get('@wrapper')
+                    .find(`button[icon="tuiIconViewListLarge"]`)
+                    .click({force: true});
+                cy.get('tui-dropdown-box')
+                    .find(`button[icon="${iconType}"]`)
+                    .click({force: true});
             }
 
             function clearEditor(): void {
