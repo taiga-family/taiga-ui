@@ -1284,15 +1284,6 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/resizable-column',
-        loadChildren: async () =>
-            (await import('../tables/resizable-column/resizable-column.module'))
-                .ExampleTuiResizableColumnModule,
-        data: {
-            title: 'ResizableColumns',
-        },
-    },
-    {
         path: 'components/reorder',
         loadChildren: async () =>
             (await import('../tables/reorder/reorder.module')).ExampleTuiReorderModule,

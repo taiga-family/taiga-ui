@@ -5,11 +5,7 @@ import {map, switchMap} from 'rxjs/operators';
 
 import {TUI_LANGUAGE} from './language';
 
-/**
- * @deprecated: use {@link tuiExtractI18n} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function extractI18n<K extends keyof TuiLanguage>(
+export function tuiExtractI18n<K extends keyof TuiLanguage>(
     key: K,
 ): () => Observable<TuiLanguage[K]> {
     return () =>
@@ -20,5 +16,3 @@ export function extractI18n<K extends keyof TuiLanguage>(
             map((lang: TuiLanguage) => lang[key]),
         );
 }
-
-export const tuiExtractI18n = extractI18n;
