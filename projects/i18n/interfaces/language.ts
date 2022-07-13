@@ -3,11 +3,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
-/**
- * @deprecated use {@link TuiLanguageCore}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface LanguageCore {
+export interface TuiLanguageCore {
     months: MONTHS_ARRAY;
     close: string;
     nothingFoundMessage: string;
@@ -24,13 +20,7 @@ export interface LanguageCore {
     countries: Record<TuiCountryIsoCode, string>;
 }
 
-export interface TuiLanguageCore extends LanguageCore {}
-
-/**
- * @deprecated use {@link TuiLanguageKit}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface LanguageKit {
+export interface TuiLanguageKit {
     cancel: string;
     done: string;
     more: string;
@@ -94,13 +84,7 @@ export interface LanguageKit {
     };
 }
 
-export interface TuiLanguageKit extends LanguageKit {}
-
-/**
- * @deprecated use {@link TuiLanguageCommerce}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface LanguageCommerce {
+export interface TuiLanguageCommerce {
     /**
      * Short and full card number text
      * [@string 'Number', @string 'Card number']
@@ -113,13 +97,7 @@ export interface LanguageCommerce {
     cardExpiry: [string, string];
 }
 
-export interface TuiLanguageCommerce extends LanguageCommerce {}
-
-/**
- * @deprecated use {@link TuiLanguageTable}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface LanguageTable {
+export interface TuiLanguageTable {
     /**
      * 'Show/hide' button title
      */
@@ -131,13 +109,7 @@ export interface LanguageTable {
     };
 }
 
-export interface TuiLanguageTable extends LanguageTable {}
-
-/**
- * @deprecated use {@link TuiLanguageEditor}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface LanguageEditor {
+export interface TuiLanguageEditor {
     colorSelectorModeNames: [string, string];
     toolbarTools: {
         undo: string;
@@ -189,13 +161,7 @@ export interface LanguageEditor {
     };
 }
 
-export interface TuiLanguageEditor extends LanguageEditor {}
-
-/**
- * @deprecated use {@link TuiLanguagePreview}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export type LanguagePreview = {
+export type TuiLanguagePreview = {
     previewTexts: {
         rotate: string;
     };
@@ -206,18 +172,10 @@ export type LanguagePreview = {
     };
 };
 
-export interface TuiLanguagePreview extends LanguagePreview {}
-
-/**
- * @deprecated use {@link TuiLanguage}
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface Language
-    extends LanguageCore,
-        LanguageKit,
-        LanguageCommerce,
-        LanguageTable,
-        LanguageEditor,
-        LanguagePreview {}
-
-export interface TuiLanguage extends Language {}
+export interface TuiLanguage
+    extends TuiLanguageCore,
+        TuiLanguageKit,
+        TuiLanguageCommerce,
+        TuiLanguageTable,
+        TuiLanguageEditor,
+        TuiLanguagePreview {}
