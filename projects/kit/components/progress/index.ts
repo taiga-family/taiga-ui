@@ -4,6 +4,3 @@ export * from './progress-bar/progress-color-segments.directive';
 export * from './progress-circle/progress-circle.component';
 export * from './progress-label/progress-label.component';
 export * from './progress-segmented/progress-segmented.component';
-export * from './utils/abstract-color-segments';
-export * from './utils/progress-color-segments.pipe';
-export * from './utils/progress-color-segments-async.pipe';
