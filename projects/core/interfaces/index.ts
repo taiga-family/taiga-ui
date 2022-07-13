@@ -8,7 +8,6 @@ export * from './dropdown-directive';
 export * from './hint';
 export * from './icon-error';
 export * from './media';
-export * from './notification-options';
 export * from './number-format-settings';
 export * from './textfield-host';
 export * from './value-content-context';

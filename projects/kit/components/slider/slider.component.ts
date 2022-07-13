@@ -14,9 +14,9 @@ import {NgControl, NgModel} from '@angular/forms';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    isEdgeOlderThan,
     tuiDefaultProp,
     tuiPure,
+    tuiIsEdgeOlderThan,
     watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
@@ -99,7 +99,7 @@ export class TuiSliderComponent {
 
     @HostBinding(`class._old-edge`)
     get isOldEdge(): boolean {
-        return isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
+        return tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
     }
 
     @tuiPure
