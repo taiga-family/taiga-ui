@@ -1,10 +1,10 @@
-import {LanguageTable} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageTable} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_SPANISH_LANGUAGE_ADDON_TABLE: LanguageTable = {
-    showHideText: `Mostrar/Ocultar`,
+export const TUI_SPANISH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
+    showHideText: 'Mostrar/Ocultar',
     paginationTexts: {
-        pages: `Páginas`,
-        linesPerPage: `Lineas por página`,
-        of: `de`,
+        pages: 'Páginas',
+        linesPerPage: 'Lineas por página',
+        of: 'de',
     },
 };
