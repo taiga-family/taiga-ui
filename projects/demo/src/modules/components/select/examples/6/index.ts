@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
@@ -19,11 +20,7 @@ class User {
 
 const databaseMockData: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User(
-        'Alex',
-        'Inkin',
-        new URL('../../../../../assets/images/avatar.jpg', import.meta.url).toString(),
-    ),
+    new User('Alex', 'Inkin', assets`/images/avatar.jpg`),
     new User('Dmitriy', 'Demenskiy'),
     new User('Evgeniy', 'Mamaev'),
     new User('Ivan', 'Ishmametiev'),

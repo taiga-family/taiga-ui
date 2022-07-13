@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import {combineLatest, merge, Observable, of, Subject} from 'rxjs';
 import {map, share, startWith, switchMap, tap} from 'rxjs/operators';
@@ -26,12 +27,7 @@ const DATA: readonly User[] = [
         '+75678901234',
         'http://marsibarsi.me/images/1x1small.jpg',
     ),
-    new User(
-        'Alex',
-        'Inkin',
-        '+75678901234',
-        new URL('../../../../../assets/images/avatar.jpg', import.meta.url).toString(),
-    ),
+    new User('Alex', 'Inkin', '+75678901234', assets`/images/avatar.jpg`),
 ];
 
 @Component({

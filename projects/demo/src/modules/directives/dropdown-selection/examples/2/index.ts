@@ -1,6 +1,7 @@
 import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit';
@@ -27,10 +28,7 @@ export class TuiDropdownSelectionExample2 {
     readonly items = [
         {
             name: 'Alexander Inkin',
-            avatar: new URL(
-                '../../../../../assets/images/avatar.jpg',
-                import.meta.url,
-            ).toString(),
+            avatar: assets`/images/avatar.jpg`,
             login: 'a.inkin',
         },
         {
