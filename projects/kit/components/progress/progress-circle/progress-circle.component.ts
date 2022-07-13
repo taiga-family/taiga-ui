@@ -10,8 +10,8 @@ import {
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    isEdgeOlderThan,
     tuiDefaultProp,
+    tuiIsEdgeOlderThan,
 } from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
@@ -50,7 +50,7 @@ export class TuiProgressCircleComponent {
     }
 
     get oldEdgeRadiusFallback(): number | null {
-        if (!isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {
+        if (!tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {
             return null;
         }
 

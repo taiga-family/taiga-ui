@@ -6,7 +6,7 @@ import {
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {isFlat} from '@taiga-ui/kit/utils';
+import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 export type ArrayElement<A> = A extends ReadonlyArray<infer T>
     ? A extends ReadonlyArray<ReadonlyArray<infer G>>
@@ -14,11 +14,7 @@ export type ArrayElement<A> = A extends ReadonlyArray<infer T>
         : T
     : never;
 
-/**
- * @deprecated
- * TODO: 3.0 replace with {@link AbstractTuiFilterByInput}
- */
-export abstract class TuiFilterByInputBase {
+export abstract class AbstractTuiFilterByInput {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
 
     protected get query(): string {
@@ -38,7 +34,7 @@ export abstract class TuiFilterByInputBase {
             return null;
         }
 
-        return isFlat(items)
+        return tuiIsFlat(items)
             ? this.filterFlat(items, matcher, stringify, query)
             : this.filter2d(items, matcher, stringify, query);
     }
@@ -81,5 +77,3 @@ export abstract class TuiFilterByInputBase {
         );
     }
 }
-
-export abstract class AbstractTuiFilterByInput extends TuiFilterByInputBase {}
