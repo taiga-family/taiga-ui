@@ -27,13 +27,13 @@ import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
 import {
-    Language,
-    LanguageCore,
-    LanguageCommerce,
-    LanguageEditor,
+    TuiLanguage,
+    TuiLanguageCore,
+    TuiLanguageCommerce,
+    TuiLanguageEditor,
     LanguagePreview,
-    LanguageTable,
-    LanguageKit
+    TuiLanguageTable,
+    TuiLanguageKit
 } from '@taiga-ui/i18n';
 import { ToggleOptions } from '@taiga-ui/cdk';
 const options: ButtonOptions = {};
@@ -43,13 +43,13 @@ const config: WithDateMaskPipeConfig = {}
 const notificationOptions: TuiNotificationOptions = {};
 const notificationOptionsWithData: TuiNotificationOptionsWithData<string> = {};
 const COUNTRIES: Country[] = [];
-const language: Language
-        | LanguageCore
-        | LanguageCommerce
-        | LanguageEditor
+const language: TuiLanguage
+        | TuiLanguageCore
+        | TuiLanguageCommerce
+        | TuiLanguageEditor
         | LanguagePreview
-        | LanguageTable
-        | LanguageKit
+        | TuiLanguageTable
+        | TuiLanguageKit
         | null = null;
 
 @Component({

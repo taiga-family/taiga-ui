@@ -1,10 +1,6 @@
 const EDGE = 'edge/';
 
-/**
- * @deprecated: use {@link tuiIsEdgeOlderThan} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isEdgeOlderThan(version: number, userAgent: string): boolean {
+export function tuiIsEdgeOlderThan(version: number, userAgent: string): boolean {
     const currentVersion = parseInt(
         userAgent.slice(userAgent.toLowerCase().indexOf(EDGE) + EDGE.length),
         10,
@@ -12,5 +8,3 @@ export function isEdgeOlderThan(version: number, userAgent: string): boolean {
 
     return currentVersion < version;
 }
-
-export const tuiIsEdgeOlderThan = isEdgeOlderThan;

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
-import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
@@ -67,8 +67,8 @@ export class TuiDocExampleComponent {
         @Attribute('id')
         readonly id: string | null,
         @Inject(Clipboard) private readonly clipboard: Clipboard,
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
         @Inject(LOCATION) private readonly location: Location,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
@@ -93,8 +93,8 @@ export class TuiDocExampleComponent {
         const url = `${currentUrl}#${this.id}`;
 
         this.clipboard.copy(url);
-        this.notifications
-            .show(this.texts[1], {
+        this.alertService
+            .open(this.texts[1], {
                 label: this.texts[2],
                 status: TuiNotification.Success,
             })
