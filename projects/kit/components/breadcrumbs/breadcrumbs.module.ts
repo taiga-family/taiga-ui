@@ -10,7 +10,6 @@ import {
 import {TuiLinkModule, TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
 
 import {TuiBreadcrumbsComponent} from './breadcrumbs.component';
-import {TuiBreadcrumbsWrapperComponent} from './breadcrumbs-wrapper.component';
 
 @NgModule({
     imports: [
@@ -23,7 +22,7 @@ import {TuiBreadcrumbsWrapperComponent} from './breadcrumbs-wrapper.component';
         TuiModeModule,
         TuiItemModule,
     ],
-    declarations: [TuiBreadcrumbsComponent, TuiBreadcrumbsWrapperComponent],
-    exports: [TuiBreadcrumbsComponent, TuiBreadcrumbsWrapperComponent, TuiItemDirective],
+    declarations: [TuiBreadcrumbsComponent],
+    exports: [TuiBreadcrumbsComponent, TuiItemDirective],
 })
 export class TuiBreadcrumbsModule {}

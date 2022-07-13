@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTouchableModule} from '@taiga-ui/addon-mobile';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
@@ -16,7 +16,7 @@ import {ExampleTuiTouchableComponent} from './touchable.component';
         TuiLinkModule,
         TuiTouchableModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiTouchableComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTouchableComponent)),
     ],
     declarations: [ExampleTuiTouchableComponent, TuiTouchableExample1],
     exports: [ExampleTuiTouchableComponent],

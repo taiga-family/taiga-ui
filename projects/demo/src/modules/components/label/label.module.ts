@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiLabelModule,
     TuiTextfieldControllerModule,
@@ -24,7 +24,7 @@ import {ExampleTuiLabelComponent} from './label.component';
         TuiTooltipModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLabelComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLabelComponent)),
     ],
     declarations: [
         ExampleTuiLabelComponent,

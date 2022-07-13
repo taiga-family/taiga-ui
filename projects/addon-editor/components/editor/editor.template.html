@@ -1,12 +1,13 @@
-<tui-wrapper
+<div
+    tuiWrapper
     appearance="textfield"
     class="t-outline"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [hover]="computedHovered"
     [invalid]="computedInvalid"
-></tui-wrapper>
+></div>
 <div
     class="t-wrapper"
     (tuiHoveredChange)="onHovered($event)"

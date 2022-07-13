@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
 >
     <div class="toggle">
@@ -71,4 +72,4 @@
         (tuiPressedChange)="onPressed($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
-</tui-wrapper>
+</div>

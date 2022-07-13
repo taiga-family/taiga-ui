@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {TuiButtonModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
@@ -22,7 +22,7 @@ import {TuiEditorExample1} from './examples/1';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         TuiLinkModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiEditorComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorComponent)),
     ],
     declarations: [ExampleTuiEditorComponent, TuiEditorExample1],
     exports: [ExampleTuiEditorComponent],

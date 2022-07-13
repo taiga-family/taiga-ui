@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLabelModule} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
@@ -19,7 +19,7 @@ import {ExampleProgressSegmentedComponent} from './progress-segmented.component'
         TuiProgressModule,
         TuiLabelModule,
         TuiMoneyModule,
-        RouterModule.forChild(generateRoutes(ExampleProgressSegmentedComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleProgressSegmentedComponent)),
     ],
     declarations: [
         ExampleProgressSegmentedComponent,

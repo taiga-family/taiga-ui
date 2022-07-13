@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiToggleModule} from '@taiga-ui/kit';
 
@@ -17,7 +17,7 @@ import {ExampleTuiThemeSwitcherComponent} from './theme-switcher.component';
         TuiToggleModule,
         TuiNotificationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiThemeSwitcherComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiThemeSwitcherComponent)),
     ],
     declarations: [
         ExampleTuiThemeSwitcherComponent,
