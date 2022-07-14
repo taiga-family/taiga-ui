@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -40,7 +40,7 @@ import {TuiAccordionExample4} from './examples/4';
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiAccordionComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAccordionComponent)),
     ],
     declarations: [
         ExampleTuiAccordionComponent,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiHintControllerModule,
@@ -31,7 +31,7 @@ import {ExampleTuiInputMonthRangeComponent} from './input-month-range.component'
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiNotificationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputMonthRangeComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputMonthRangeComponent)),
     ],
     declarations: [
         ExampleTuiInputMonthRangeComponent,
