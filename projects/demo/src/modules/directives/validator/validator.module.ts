@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiValidatorModule} from '@taiga-ui/cdk';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {
@@ -27,7 +27,7 @@ import {ExampleTuiValidatorComponent} from './validator.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiValidatorComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiValidatorComponent)),
     ],
     declarations: [ExampleTuiValidatorComponent, TuiValidatorExample1],
     exports: [ExampleTuiValidatorComponent],
