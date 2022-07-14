@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -22,7 +21,7 @@ class User {
 
 const databaseMockData: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
+    new User('Alex', 'Inkin', assets`/images/avatar.jpg`),
     new User('Dmitriy', 'Demenskiy'),
     new User('Evgeniy', 'Mamaev'),
     new User('Ivan', 'Ishmametiev'),
