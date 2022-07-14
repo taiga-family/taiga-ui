@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 
 import {TuiNotificationExample1} from './examples/1';
@@ -16,7 +16,7 @@ import {ExampleTuiNotificationComponent} from './notification.component';
         FormsModule,
         ReactiveFormsModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiNotificationComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiNotificationComponent)),
     ],
     declarations: [
         ExampleTuiNotificationComponent,

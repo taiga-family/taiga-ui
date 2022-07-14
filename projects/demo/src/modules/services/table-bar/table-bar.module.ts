@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -23,7 +23,7 @@ import {ExampleTuiTableBarComponent} from './table-bar.component';
         FormsModule,
         TuiModeModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiTableBarComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTableBarComponent)),
     ],
     declarations: [ExampleTuiTableBarComponent, TuiTableBarExampleComponent1],
     exports: [ExampleTuiTableBarComponent],

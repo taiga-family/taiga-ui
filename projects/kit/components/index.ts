@@ -13,7 +13,6 @@ export * from '@taiga-ui/kit/components/checkbox-block';
 export * from '@taiga-ui/kit/components/checkbox-labeled';
 export * from '@taiga-ui/kit/components/combo-box';
 export * from '@taiga-ui/kit/components/data-list-wrapper';
-export * from '@taiga-ui/kit/components/field-error';
 export * from '@taiga-ui/kit/components/files';
 export * from '@taiga-ui/kit/components/filter';
 export * from '@taiga-ui/kit/components/input';

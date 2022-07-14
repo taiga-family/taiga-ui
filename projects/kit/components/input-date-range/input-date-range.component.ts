@@ -17,7 +17,6 @@ import {
     changeDateSeparator,
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
-    nullableSame,
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
     TUI_DATE_FORMAT,
@@ -35,6 +34,7 @@ import {
     TuiFocusableElementAccessor,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -190,7 +190,7 @@ export class TuiInputDateRangeComponent
     get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.items.find(item =>
-                nullableSame(
+                tuiNullableSame(
                     this.value,
                     item.range,
                     (a, b) =>
@@ -321,7 +321,7 @@ export class TuiInputDateRangeComponent
             this.nativeValue = ``;
         }
 
-        if (!nullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
+        if (!tuiNullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
             this.updateValue(range);
         }
     }

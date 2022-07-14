@@ -1,11 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
 import {ShadowsComponent} from './shadows.component';
 
 @NgModule({
-    imports: [TuiAddonDocModule, RouterModule.forChild(generateRoutes(ShadowsComponent))],
+    imports: [
+        TuiAddonDocModule,
+        RouterModule.forChild(tuiGenerateRoutes(ShadowsComponent)),
+    ],
     declarations: [ShadowsComponent],
     exports: [ShadowsComponent],
 })

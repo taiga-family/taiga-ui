@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 
 import {ExampleTuiThemeNightComponent} from './theme-night.component';
@@ -9,7 +9,7 @@ import {ExampleTuiThemeNightComponent} from './theme-night.component';
     imports: [
         TuiLinkModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiThemeNightComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiThemeNightComponent)),
     ],
     declarations: [ExampleTuiThemeNightComponent],
     exports: [ExampleTuiThemeNightComponent],
