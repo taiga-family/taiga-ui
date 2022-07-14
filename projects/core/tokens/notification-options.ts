@@ -7,11 +7,6 @@ export interface TuiNotificationDefaultOptions
     readonly defaultAutoCloseTime: number;
 }
 
-/**
- * @deprecated: remove in v3.0, use TuiNotificationDefaultOptions
- */
-export type NotificationTokenOptions = TuiNotificationDefaultOptions;
-
 /** Default values for the notification options. */
 export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     autoClose: true,

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiRatingModule} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {ExampleTuiRatingComponent} from './rating.component';
         TuiButtonModule,
         TuiAddonDocModule,
         ReactiveFormsModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiRatingComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRatingComponent)),
     ],
     declarations: [ExampleTuiRatingComponent, TuiRatingExample1, TuiRatingExample2],
     exports: [ExampleTuiRatingComponent],

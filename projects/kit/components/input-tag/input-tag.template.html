@@ -5,11 +5,12 @@
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <tui-wrapper
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
         [focused]="computedFocused"
-        [hovered]="computedHovered"
+        [hover]="computedHovered"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
         (tuiHoveredChange)="onHoveredChange($event)"
@@ -156,5 +157,5 @@
                 class="t-error-icon"
             ></tui-svg>
         </ng-template>
-    </tui-wrapper>
+    </div>
 </tui-hosted-dropdown>

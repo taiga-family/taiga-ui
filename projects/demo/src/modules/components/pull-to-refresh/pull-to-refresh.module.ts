@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
 import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
 
@@ -16,7 +16,7 @@ import {ExampleTuiPullToRefreshComponent} from './pull-to-refresh.component';
         TuiButtonModule,
         TuiNotificationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiPullToRefreshComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPullToRefreshComponent)),
     ],
     declarations: [
         ExampleTuiPullToRefreshComponent,
