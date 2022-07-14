@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPortalModule} from '@taiga-ui/cdk';
 import {TuiToggleModule} from '@taiga-ui/kit';
 
@@ -14,7 +14,7 @@ import {ExampleTuiPortalComponent} from './portal.component';
         TuiToggleModule,
         TuiPortalModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiPortalComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPortalComponent)),
     ],
     declarations: [ExampleTuiPortalComponent, TuiPortalExample1],
     exports: [ExampleTuiPortalComponent],
