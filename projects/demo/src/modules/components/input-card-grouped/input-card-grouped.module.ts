@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule, TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiErrorModule,
@@ -35,7 +35,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         ReactiveFormsModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputCardGroupedComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCardGroupedComponent)),
         PolymorpheusModule,
     ],
     declarations: [

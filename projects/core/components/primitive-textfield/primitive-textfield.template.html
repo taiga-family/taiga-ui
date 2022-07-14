@@ -1,12 +1,13 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
-<tui-wrapper
+<div
+    tuiWrapper
     automation-id="tui-primitive-textfield__wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
     [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
@@ -122,4 +123,4 @@
             </ng-template>
         </div>
     </div>
-</tui-wrapper>
+</div>

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
 import {TuiProgressCircleExample1} from './examples/1';
@@ -15,7 +15,7 @@ import {ExampleProgressCircleComponent} from './progress-circle.component';
         CommonModule,
         TuiAddonDocModule,
         TuiProgressModule,
-        RouterModule.forChild(generateRoutes(ExampleProgressCircleComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleProgressCircleComponent)),
     ],
     declarations: [
         ExampleProgressCircleComponent,
