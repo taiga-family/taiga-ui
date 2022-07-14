@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDropdownControllerModule,
@@ -24,7 +24,7 @@ import {TuiDropdownControllerExample1} from './examples/1';
         TuiHostedDropdownModule,
         TuiDropdownControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiDropdownControllerComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownControllerComponent)),
     ],
     declarations: [ExampleTuiDropdownControllerComponent, TuiDropdownControllerExample1],
     exports: [ExampleTuiDropdownControllerComponent],
