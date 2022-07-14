@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiIslandModule} from '@taiga-ui/kit';
 
@@ -14,7 +14,7 @@ import {ExampleTuiRippleComponent} from './ripple.component';
         TuiIslandModule,
         TuiRippleModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiRippleComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRippleComponent)),
     ],
     declarations: [ExampleTuiRippleComponent, TuiRippleExample1],
     exports: [ExampleTuiRippleComponent],

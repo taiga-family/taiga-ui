@@ -104,12 +104,6 @@ export class TuiPrimitiveTextfieldComponent
     @Output()
     readonly valueChange = new EventEmitter<string>();
 
-    /**
-     * @deprecated TODO: 3.0 remove
-     */
-    @Output()
-    readonly autofilledChange = new EventEmitter<boolean>();
-
     @ContentChildren(PolymorpheusOutletComponent)
     readonly content?: QueryList<unknown>;
 
@@ -304,7 +298,6 @@ export class TuiPrimitiveTextfieldComponent
         }
 
         this.autofilled = autofilled;
-        this.autofilledChange.emit(autofilled);
     }
 
     private updateValue(value: string): void {
