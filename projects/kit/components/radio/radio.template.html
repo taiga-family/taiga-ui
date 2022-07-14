@@ -1,9 +1,10 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
     [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
 >
     <div
@@ -26,4 +27,4 @@
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
-</tui-wrapper>
+</div>
