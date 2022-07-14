@@ -23,14 +23,23 @@ const ITEMS = [
     },
 ];
 
-describe(`Breadcrumbs`, () => {
+describe('Breadcrumbs Wrapper', () => {
     @Component({
         template: `
             <tui-breadcrumbs
-                automation-id="tui-breadcrumbs__component"
-                [items]="items"
+                automation-id="tui-breadcrumbs-wrapper__component"
                 [size]="size"
-            ></tui-breadcrumbs>
+            >
+                <ng-container *ngFor="let item of items">
+                    <a
+                        *tuiItem
+                        tuiLink
+                        [routerLink]="item.routerLink"
+                    >
+                        {{ item.caption }}
+                    </a>
+                </ng-container>
+            </tui-breadcrumbs>
         `,
     })
     class TestComponent {

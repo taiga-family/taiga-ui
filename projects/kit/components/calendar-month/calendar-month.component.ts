@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -17,6 +16,7 @@ import {
     tuiDefaultProp,
     TuiMonth,
     TuiMonthRange,
+    tuiNullableSame,
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
@@ -242,7 +242,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     private updateHoveredItem(month: TuiMonth | null): void {
-        if (nullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
+        if (tuiNullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
             return;
         }
 
