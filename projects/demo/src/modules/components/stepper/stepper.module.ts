@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiStepperModule} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {ExampleTuiStepperComponent} from './stepper.component';
         TuiStepperModule,
         TuiLinkModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiStepperComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiStepperComponent)),
     ],
     declarations: [ExampleTuiStepperComponent, TuiStepperExample1, TuiStepperExample2],
     exports: [ExampleTuiStepperComponent],

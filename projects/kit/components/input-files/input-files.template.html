@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     appearance="input-file"
     class="t-wrapper"
     [class._mobile]="isMobile"
     [focused]="computedFocused"
-    [hovered]="computedHovered || fileDragged"
-    [pressed]="computedPressed"
+    [hover]="computedHovered || fileDragged"
+    [active]="computedPressed"
     [disabled]="computedDisabled"
 >
     <label
@@ -46,4 +47,4 @@
             />
         </ng-container>
     </label>
-</tui-wrapper>
+</div>
