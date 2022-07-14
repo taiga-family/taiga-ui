@@ -472,7 +472,6 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "outputs": ["dist/demo"],
                     "options": {
-                        "aot": true,
                         "outputPath": "dist/demo/browser",
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.browser.ts",
@@ -507,7 +506,13 @@
                             "node_modules/prismjs/components/prism-markup.min.js",
                             "node_modules/prismjs/components/prism-typescript.min.js"
                         ],
-                        "allowedCommonJsDependencies": ["angular2-text-mask", "markdown-it"]
+                        "allowedCommonJsDependencies": ["angular2-text-mask", "markdown-it"],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
                     },
                     "configurations": {
                         "production": {
@@ -521,9 +526,6 @@
                             "outputHashing": "all",
                             "sourceMap": false,
                             "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": false,
-                            "vendorChunk": true,
                             "buildOptimizer": true,
                             "statsJson": false,
                             "progress": false,
@@ -548,9 +550,6 @@
                             "outputHashing": "all",
                             "sourceMap": false,
                             "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": false,
-                            "vendorChunk": true,
                             "buildOptimizer": true,
                             "statsJson": false,
                             "progress": false,
@@ -582,8 +581,10 @@
                         },
                         "ru": {
                             "localize": ["ru"]
-                        }
-                    }
+                        },
+                        "development": {}
+                    },
+                    "defaultConfiguration": "production"
                 },
                 "mkcert": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -602,7 +603,6 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "demo:build",
                         "port": 3333,
                         "sslCert": ".ssl/localhost.pem",
                         "sslKey": ".ssl/localhost-key.pem"
@@ -620,8 +620,12 @@
                         },
                         "ru": {
                             "browserTarget": "demo:build:ru"
+                        },
+                        "development": {
+                            "browserTarget": "demo:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "serve:ssl": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -645,16 +649,18 @@
                 },
                 "serve:ssr": {
                     "builder": "@nguniversal/builders:ssr-dev-server",
-                    "options": {
-                        "browserTarget": "demo:build",
-                        "serverTarget": "demo:server"
-                    },
+                    "options": {},
                     "configurations": {
                         "production": {
                             "browserTarget": "demo:build:production",
                             "serverTarget": "demo:server:production"
+                        },
+                        "development": {
+                            "serverTarget": "demo:server:development",
+                            "browserTarget": "demo:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "serve:compiled": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -668,15 +674,19 @@
                         "tsConfig": "projects/demo/tsconfig.server.json",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
-                        }
+                        },
+                        "sourceMap": true,
+                        "optimization": false
                     },
                     "configurations": {
                         "production": {
                             "outputHashing": "media",
                             "sourceMap": false,
                             "optimization": true
-                        }
-                    }
+                        },
+                        "development": {}
+                    },
+                    "defaultConfiguration": "production"
                 },
                 "prerender": {
                     "builder": "@nguniversal/builders:prerender",
