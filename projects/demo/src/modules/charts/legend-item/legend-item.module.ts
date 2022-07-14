@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiLegendItemModule, TuiRingChartModule} from '@taiga-ui/addon-charts';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
 import {
     TuiNotificationModule,
@@ -28,7 +28,7 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         PolymorpheusModule,
         TuiHoveredModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLegendItemComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLegendItemComponent)),
     ],
     declarations: [
         ExampleTuiLegendItemComponent,

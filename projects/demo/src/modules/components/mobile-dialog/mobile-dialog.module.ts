@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiButtonModule} from '@taiga-ui/core';
 
@@ -14,7 +14,7 @@ import {ExampleTuiMobileDialogComponent} from './mobile-dialog.component';
         TuiMobileDialogModule,
         TuiButtonModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiMobileDialogComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMobileDialogComponent)),
     ],
     declarations: [ExampleTuiMobileDialogComponent, TuiMobileDialogExample1],
     exports: [ExampleTuiMobileDialogComponent],

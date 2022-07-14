@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
@@ -28,7 +28,7 @@ import {ExampleTuiPreviewComponent} from './preview.component';
         TuiSvgModule,
         TuiLoaderModule,
         TuiSwipeModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiPreviewComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPreviewComponent)),
     ],
     declarations: [
         ExampleTuiPreviewComponent,

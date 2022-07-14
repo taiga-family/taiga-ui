@@ -310,15 +310,6 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/field-error',
-        loadChildren: async () =>
-            (await import('../components/field-error/field-error.module'))
-                .ExampleTuiFieldErrorModule,
-        data: {
-            title: 'FieldError',
-        },
-    },
-    {
         path: 'pipes/field-error',
         loadChildren: async () =>
             (await import('../pipes/field-error/field-error.module'))

@@ -4,10 +4,7 @@
     display: flex;
     align-items: center;
     height: 2.5rem;
-
-    &[data-size='m'] {
-        font: var(--tui-font-text-s);
-    }
+    font: var(--tui-font-text-s);
 
     &[data-size='l'] {
         font: var(--tui-font-text-m);
@@ -17,9 +14,4 @@
 .t-icon {
     margin: 0 @space;
     color: var(--tui-text-03);
-}
-
-a.t-active-link[data-mode='onLight'] {
-    color: var(--tui-text-03);
-    pointer-events: none;
 }

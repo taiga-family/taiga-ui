@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiToolbarModule} from '@taiga-ui/addon-editor';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
@@ -30,7 +30,7 @@ import {ExampleTuiToolbarComponent} from './toolbar.component';
         TuiAddonDocModule,
         TuiIslandModule,
         TuiNotificationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiToolbarComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiToolbarComponent)),
     ],
     declarations: [ExampleTuiToolbarComponent, TuiToolbarExample1],
     exports: [ExampleTuiToolbarComponent],
