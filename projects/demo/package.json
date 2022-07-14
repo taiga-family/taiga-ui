@@ -3,7 +3,7 @@
     "private": true,
     "dependencies": {
         "@ng-web-apis/universal": "1.9.5",
-        "@nguniversal/express-engine": "^9.1.1",
+        "@nguniversal/express-engine": "~12.1.3",
         "@stackblitz/sdk": "^1.8.0",
         "@tinkoff/angular-contenteditable-accessor": "~1.2.0",
         "@tinkoff/ng-dompurify": "^3.0.0",
