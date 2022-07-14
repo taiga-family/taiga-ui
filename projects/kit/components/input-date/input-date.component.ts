@@ -17,7 +17,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
-    nullableSame,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
@@ -32,6 +31,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -294,6 +294,6 @@ export class TuiInputDateComponent
         oldValue: TuiDay | null,
         newValue: TuiDay | null,
     ): boolean {
-        return nullableSame(oldValue, newValue, (a, b) => a.daySame(b));
+        return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 }

@@ -5,9 +5,8 @@ import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
-// TODO: 3.0 remove `tui-wrapper` mode
 @Directive({
-    selector: 'tui-wrapper, [tuiWrapper]',
+    selector: '[tuiWrapper]',
     providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',
@@ -20,13 +19,11 @@ export class TuiWrapperDirective {
     @Input()
     readOnly = false;
 
-    // TODO: 3.0 Rename to `hover`
     @Input()
-    hovered: boolean | null = null;
+    hover: boolean | null = null;
 
-    // TODO: 3.0 Rename to `active`
     @Input()
-    pressed: boolean | null = null;
+    active: boolean | null = null;
 
     @Input()
     focused = false;
@@ -60,11 +57,11 @@ export class TuiWrapperDirective {
             return TuiInteractiveState.Readonly;
         }
 
-        if (this.pressed) {
+        if (this.active) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (this.hovered) {
+        if (this.hover) {
             return TuiInteractiveState.Hovered;
         }
 
@@ -73,11 +70,11 @@ export class TuiWrapperDirective {
 
     @HostBinding('class._no-hover')
     get noHover(): boolean {
-        return this.readOnly || this.hovered === false;
+        return this.readOnly || this.hover === false;
     }
 
     @HostBinding('class._no-active')
     get noActive(): boolean {
-        return this.readOnly || this.pressed === false;
+        return this.readOnly || this.active === false;
     }
 }

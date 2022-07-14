@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -21,6 +20,7 @@ import {
     TuiDestroyService,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
     tuiPure,
     watch,
 } from '@taiga-ui/cdk';
@@ -81,10 +81,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
-
-    /** @deprecated TODO: 3.0 remove */
-    @Output()
-    readonly rangeChange = new EventEmitter<TuiDayRange | null>();
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
@@ -181,13 +177,12 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
-        this.rangeChange.emit(value);
     }
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.items.find(item =>
-                nullableSame<TuiDayRange>(
+                tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
                     (a, b) =>
