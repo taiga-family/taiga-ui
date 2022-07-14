@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION} from '../../../support/shared.entities';
+import {EXAMPLE_ID} from '../../../support/shared.entities';
 
 describe('InputTag', () => {
     beforeEach(() => cy.tuiVisit(`components/input-tag`));
@@ -24,18 +24,18 @@ describe('InputTag', () => {
     });
 
     it('switch theme mode', {responseTimeout: 30_000}, () => {
-        cy.get('tui-doc-example').should('be.visible');
-
-        cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION).matchImageSnapshot(
-            '01-light-mode',
-            {capture: 'fullPage'},
-        );
+        cy.get('tui-doc-example')
+            .findByAutomationId(EXAMPLE_ID)
+            .each(($el, index) => {
+                cy.wrap($el).matchImageSnapshot(`01-light-mode-${index}`);
+            });
 
         cy.get('.night-mode').click();
 
-        cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION).matchImageSnapshot(
-            '01-night-mode',
-            {capture: 'fullPage'},
-        );
+        cy.get('tui-doc-example')
+            .findByAutomationId(EXAMPLE_ID)
+            .each(($el, index) => {
+                cy.wrap($el).matchImageSnapshot(`01-night-mode-${index}`);
+            });
     });
 });
