@@ -14,7 +14,7 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@angular-devkit/schematics": "~11.2.19",
+        "@angular-devkit/schematics": "~12.2.17",
         "highlight.js": "^11.5.1",
         "markdown-it": "^12.3.2",
         "ngx-highlightjs": "^4.1.4",
