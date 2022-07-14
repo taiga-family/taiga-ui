@@ -67,7 +67,18 @@ export class TuiSliderComponent {
     }
 
     get value(): number {
-        return Number(this.elementRef.nativeElement.value) || 0;
+        const {elementRef, control} = this;
+        const noKeySteps = !elementRef.nativeElement.hasAttribute('data-key-steps');
+
+        if (noKeySteps && control instanceof NgModel) {
+            /**
+             * If developer uses `[(ngModel)]` and programmatically change value,
+             * the `elementRef.nativeElement.value` is equal to the previous value at this moment.
+             */
+            return control.viewModel;
+        }
+
+        return Number(elementRef.nativeElement.value) || 0;
     }
 
     set value(newValue: number) {
@@ -93,7 +104,7 @@ export class TuiSliderComponent {
         @Optional()
         @Self()
         @Inject(NgControl)
-        control: NgControl | null,
+        private readonly control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
