@@ -159,7 +159,7 @@ export class TuiInputTagComponent
             this.scrollToStart$.next();
         }
 
-        this.pseudoFocused = value;
+        this.pseudoFocus = value;
     }
 
     @Output()

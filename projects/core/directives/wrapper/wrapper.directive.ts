@@ -26,7 +26,7 @@ export class TuiWrapperDirective {
     active: boolean | null = null;
 
     @Input()
-    focused = false;
+    focus = false;
 
     @Input()
     invalid = false;
@@ -44,7 +44,7 @@ export class TuiWrapperDirective {
 
     @HostBinding('class._focused')
     get computedFocused(): boolean {
-        return this.focused && !this.disabled;
+        return this.focus && !this.disabled;
     }
 
     @HostBinding('attr.data-state')

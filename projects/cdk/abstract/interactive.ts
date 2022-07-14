@@ -18,15 +18,15 @@ export abstract class AbstractTuiInteractive {
 
     @Input()
     @tuiDefaultProp()
-    pseudoHovered: boolean | null = null;
+    pseudoHover: boolean | null = null;
 
     @Input()
     @tuiDefaultProp()
-    pseudoPressed: boolean | null = null;
+    pseudoActive: boolean | null = null;
 
     @Input()
     @tuiDefaultProp()
-    pseudoFocused: boolean | null = null;
+    pseudoFocus: boolean | null = null;
 
     /**
      * Determines if component is focusable with keyboard.
@@ -65,12 +65,12 @@ export abstract class AbstractTuiInteractive {
 
     @HostBinding('class._focused')
     get computedFocused(): boolean {
-        return !this.computedDisabled && (this.pseudoFocused ?? this.focused);
+        return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
     }
 
     @HostBinding('class._focus-visible')
     get computedFocusVisible(): boolean {
-        return !this.computedDisabled && (this.pseudoFocused ?? this.focusVisible);
+        return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
     }
 
     // TODO: 3.0 Consider removing since native input is exposed

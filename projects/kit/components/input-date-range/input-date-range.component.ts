@@ -214,7 +214,7 @@ export class TuiInputDateRangeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 

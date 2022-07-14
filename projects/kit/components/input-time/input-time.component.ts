@@ -127,7 +127,7 @@ export class TuiInputTimeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 

@@ -3,9 +3,9 @@
         tuiWrapper
         [appearance]="appearance"
         [disabled]="computedDisabled"
-        [focused]="computedFocusVisible"
-        [hover]="pseudoHovered"
-        [active]="pseudoPressed"
+        [focus]="computedFocusVisible"
+        [hover]="pseudoHover"
+        [active]="pseudoActive"
         [invalid]="computedInvalid"
     >
         <div class="content-wrapper">
@@ -15,9 +15,9 @@
                     [disabled]="computedDisabled || readOnly"
                     [nativeId]="nativeId"
                     [pseudoInvalid]="computedInvalid"
-                    [pseudoFocused]="false"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="false"
+                    [pseudoHover]="pseudoHover"
+                    [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
                     [focusable]="focusable"
                     [ngModel]="value"

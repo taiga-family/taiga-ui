@@ -3,9 +3,9 @@
     appearance="input-file"
     class="t-wrapper"
     [class._mobile]="isMobile"
-    [focused]="computedFocused"
-    [hover]="pseudoHovered || fileDragged"
-    [active]="pseudoPressed"
+    [focus]="computedFocused"
+    [hover]="pseudoHover || fileDragged"
+    [active]="pseudoActive"
     [disabled]="computedDisabled"
 >
     <label
