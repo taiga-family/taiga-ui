@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -20,19 +19,19 @@ class User {
 }
 
 const databaseMockData: readonly User[] = [
-    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
-    new User(`Alex`, `Inkin`, avatar),
-    new User(`Dmitriy`, `Demenskiy`),
-    new User(`Evgeniy`, `Mamaev`),
-    new User(`Ivan`, `Ishmametiev`),
-    new User(`Igor`, `Katsuba`),
-    new User(`Yulia`, `Tsareva`),
+    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
+    new User('Alex', 'Inkin', assets`/images/avatar.jpg`),
+    new User('Dmitriy', 'Demenskiy'),
+    new User('Evgeniy', 'Mamaev'),
+    new User('Ivan', 'Ishmametiev'),
+    new User('Igor', 'Katsuba'),
+    new User('Yulia', 'Tsareva'),
 ];
 
 @Component({
-    selector: `tui-select-example-6`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-select-example-6',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
