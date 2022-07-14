@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -21,19 +20,19 @@ class User {
 }
 
 const databaseMockData: readonly User[] = [
-    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
-    new User(`Alex`, `Inkin`, avatar),
-    new User(`Dmitriy`, `Demenskiy`),
-    new User(`Evgeniy`, `Mamaev`),
-    new User(`Ivan`, `Ishmametiev`),
-    new User(`Igor`, `Katsuba`),
-    new User(`Yulia`, `Tsareva`),
+    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
+    new User('Alex', 'Inkin', assets`/images/avatar.jpg`),
+    new User('Dmitriy', 'Demenskiy'),
+    new User('Evgeniy', 'Mamaev'),
+    new User('Ivan', 'Ishmametiev'),
+    new User('Igor', 'Katsuba'),
+    new User('Yulia', 'Tsareva'),
 ];
 
 @Component({
-    selector: `tui-multi-select-example-2`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-multi-select-example-2',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
@@ -59,7 +58,7 @@ export class TuiMultiSelectExample2 {
      */
     private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
         const result = databaseMockData.filter(user =>
-            TUI_DEFAULT_MATCHER(user, searchQuery || ``),
+            TUI_DEFAULT_MATCHER(user, searchQuery || ''),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));
