@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     class="t-wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [hover]="computedHovered"
     [invalid]="computedInvalid"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
@@ -88,7 +89,7 @@
         (tuiPressedChange)="focusToTextInput()"
         (activeThumbChange)="onActiveThumbChange($event)"
     ></tui-range>
-</tui-wrapper>
+</div>
 
 <!-- TODO: 3.0 remove -->
 <ng-template

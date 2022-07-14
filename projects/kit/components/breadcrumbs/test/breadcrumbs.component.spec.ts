@@ -10,27 +10,36 @@ import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
 
 const ITEMS = [
     {
-        caption: 'Select',
-        routerLink: '/tui-select',
+        caption: 'Selects',
+        routerLink: '/components/select',
     },
     {
         caption: 'Multi',
-        routerLink: '/tui-multi-select',
+        routerLink: '/components/multi-select',
     },
     {
         caption: 'With tags',
-        routerLink: '/tui-multi-select',
+        routerLink: '/components/multi-select',
     },
 ];
 
-describe('Breadcrumbs', () => {
+describe('Breadcrumbs Wrapper', () => {
     @Component({
         template: `
             <tui-breadcrumbs
-                automation-id="tui-breadcrumbs__component"
-                [items]="items"
+                automation-id="tui-breadcrumbs-wrapper__component"
                 [size]="size"
-            ></tui-breadcrumbs>
+            >
+                <ng-container *ngFor="let item of items">
+                    <a
+                        *tuiItem
+                        tuiLink
+                        [routerLink]="item.routerLink"
+                    >
+                        {{ item.caption }}
+                    </a>
+                </ng-container>
+            </tui-breadcrumbs>
         `,
     })
     class TestComponent {
@@ -47,7 +56,7 @@ describe('Breadcrumbs', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-breadcrumbs__';
+            return 'tui-breadcrumbs-wrapper__';
         },
     };
 

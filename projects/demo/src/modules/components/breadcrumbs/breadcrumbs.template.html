@@ -18,10 +18,17 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-breadcrumbs
-                [items]="items"
-                [size]="size"
-            ></tui-breadcrumbs>
+            <tui-breadcrumbs [size]="size">
+                <ng-container *ngFor="let item of items">
+                    <a
+                        *tuiItem
+                        tuiLink
+                        [routerLink]="item.routerLink"
+                    >
+                        {{ item.caption }}
+                    </a>
+                </ng-container>
+            </tui-breadcrumbs>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
