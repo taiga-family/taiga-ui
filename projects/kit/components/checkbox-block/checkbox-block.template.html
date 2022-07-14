@@ -3,12 +3,13 @@
     (tuiHoveredChange)="onHovered($event)"
     (tuiPressedChange)="onPressed($event)"
 >
-    <tui-wrapper
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [disabled]="computedDisabled"
         [focused]="computedFocusVisible"
-        [hovered]="computedHovered"
-        [pressed]="computedPressed"
+        [hover]="computedHovered"
+        [active]="computedPressed"
         [invalid]="computedInvalid"
     >
         <div class="t-content-wrapper">
@@ -33,5 +34,5 @@
                 </div>
             </div>
         </div>
-    </tui-wrapper>
+    </div>
 </label>

@@ -3,7 +3,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule, TuiDocCopyModule} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    TuiDocCopyModule,
+    tuiGenerateRoutes,
+} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiExpandModule,
@@ -31,7 +35,7 @@ import {IconSetComponent} from './icon-set.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(IconSetComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(IconSetComponent)),
     ],
     declarations: [IconSetComponent, TuiIconSetExample1],
     exports: [IconSetComponent],
