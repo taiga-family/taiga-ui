@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiRippleModule,
     TuiThemeAndroidModule,
@@ -27,7 +27,7 @@ import {ExampleTuiMobileThemesComponent} from './mobile-themes.component';
         TuiRippleModule,
         TuiTouchableModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiMobileThemesComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMobileThemesComponent)),
     ],
     declarations: [
         ExampleTuiMobileThemesComponent,

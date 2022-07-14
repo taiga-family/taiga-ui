@@ -9,12 +9,12 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     tuiDefaultProp,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
@@ -189,7 +189,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     private updateHoveredItem(day: TuiDay | null): void {
-        if (nullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
+        if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
         }
 

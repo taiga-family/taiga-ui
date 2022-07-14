@@ -1,8 +1,9 @@
-<tui-wrapper
+<div
+    tuiWrapper
     class="t-wrapper"
     [appearance]="appearance"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
 >
@@ -41,4 +42,4 @@
         [size]="loaderSize"
         [inheritColor]="true"
     ></tui-loader>
-</tui-wrapper>
+</div>
