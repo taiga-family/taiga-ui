@@ -3,7 +3,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule, TuiDocCopyModule} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    TuiDocCopyModule,
+    tuiGenerateRoutes,
+} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiInputModule, TuiIslandModule} from '@taiga-ui/kit';
 
@@ -20,7 +24,7 @@ import {VariablesComponent} from './variables.component';
         TuiInputModule,
         TuiCheckboxLabeledModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(VariablesComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(VariablesComponent)),
         FormsModule,
     ],
     declarations: [VariablesComponent, TuiVariablesExample1],

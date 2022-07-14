@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiForAsyncModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -31,7 +31,7 @@ import {IconHighlightPipe} from './pipes/icon-highlight.pipe';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(IconsComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
         TuiForAsyncModule,
     ],
     declarations: [
