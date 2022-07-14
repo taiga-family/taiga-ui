@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActionModule} from '@taiga-ui/kit';
 
 import {ExampleTuiActionComponent} from './action.component';
@@ -13,7 +13,7 @@ import {TuiActionExample2} from './examples/2';
         CommonModule,
         TuiActionModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiActionComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiActionComponent)),
     ],
     declarations: [ExampleTuiActionComponent, TuiActionExample1, TuiActionExample2],
     exports: [ExampleTuiActionComponent],

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
@@ -34,7 +34,7 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         TuiSheetModule,
         IntersectionObserverModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiSheetComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetComponent)),
     ],
     declarations: [
         ExampleTuiSheetComponent,

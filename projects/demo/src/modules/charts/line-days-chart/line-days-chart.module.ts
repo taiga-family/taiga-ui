@@ -7,7 +7,7 @@ import {
     TuiLineChartModule,
     TuiLineDaysChartModule,
 } from '@taiga-ui/addon-charts';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiFilterPipeModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiInputDateRangeModule, TuiSelectModule} from '@taiga-ui/kit';
@@ -30,7 +30,7 @@ import {ExampleTuiLineDaysChartComponent} from './line-days-chart.component';
         TuiLineDaysChartModule,
         TuiInputDateRangeModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLineDaysChartComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineDaysChartComponent)),
     ],
     declarations: [
         ExampleTuiLineDaysChartComponent,
