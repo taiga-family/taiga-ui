@@ -3,7 +3,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule, TuiDocCopyModule} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    TuiDocCopyModule,
+    tuiGenerateRoutes,
+} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiInputModule} from '@taiga-ui/kit';
 
@@ -20,7 +24,7 @@ import {WrapperComponent} from './wrapper.component';
         TuiCheckboxLabeledModule,
         TuiAddonDocModule,
         TuiLinkModule,
-        RouterModule.forChild(generateRoutes(WrapperComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(WrapperComponent)),
         FormsModule,
     ],
     declarations: [WrapperComponent, TuiWrapperExample1],

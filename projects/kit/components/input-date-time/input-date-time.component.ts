@@ -16,7 +16,6 @@ import {
     changeDateSeparator,
     clamp,
     DATE_FILLER_LENGTH,
-    nullableSame,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
@@ -30,6 +29,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
+    tuiNullableSame,
     tuiPure,
     TuiTime,
     TuiTimeMode,
@@ -301,8 +301,8 @@ export class TuiInputDateTimeComponent
         newValue: [TuiDay | null, TuiTime | null],
     ): boolean {
         return (
-            nullableSame(oldValue[0], newValue[0], (a, b) => a.daySame(b)) &&
-            nullableSame(oldValue[1], newValue[1], (a, b) => String(a) === String(b))
+            tuiNullableSame(oldValue[0], newValue[0], (a, b) => a.daySame(b)) &&
+            tuiNullableSame(oldValue[1], newValue[1], (a, b) => String(a) === String(b))
         );
     }
 
