@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -22,7 +22,7 @@ import {ExampleTuiRadioListComponent} from './radio-list.component';
         InheritedDocumentationModule,
         PolymorpheusModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiRadioListComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRadioListComponent)),
     ],
     declarations: [
         ExampleTuiRadioListComponent,

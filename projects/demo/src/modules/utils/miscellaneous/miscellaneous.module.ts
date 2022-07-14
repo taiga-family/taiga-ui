@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 
@@ -21,7 +21,7 @@ import {ExampleMiscellaneousComponent} from './miscellaneous.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleMiscellaneousComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleMiscellaneousComponent)),
     ],
     declarations: [
         ExampleMiscellaneousComponent,

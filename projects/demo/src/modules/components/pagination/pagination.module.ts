@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiBadgeModule,
     TuiInputSliderModule,
@@ -27,7 +27,7 @@ import {ExampleTuiPaginationComponent} from './pagination.component';
         FormsModule,
         ReactiveFormsModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiPaginationComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPaginationComponent)),
         PolymorpheusModule,
     ],
     declarations: [
