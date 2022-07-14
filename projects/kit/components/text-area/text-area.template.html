@@ -4,8 +4,8 @@
     class="t-outline"
     [appearance]="appearance"
     [disabled]="disabled"
-    [focus]="computedFocused"
-    [hover]="pseudoHover"
+    [focused]="computedFocused"
+    [hover]="computedHovered"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
 >
@@ -19,6 +19,7 @@
 
     <label
         class="t-content"
+        (tuiHoveredChange)="onHovered($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-wrapper">

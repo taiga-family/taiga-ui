@@ -5,13 +5,14 @@
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [focus]="computedFocused"
-    [hover]="pseudoHover"
-    [active]="pseudoActive"
+    [focused]="computedFocused"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
     [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
     (click.prevent.silent)="(0)"
+    (tuiHoveredChange)="onHovered($event)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >
     <ng-content select="input"></ng-content>
@@ -40,17 +41,19 @@
         automation-id="tui-primitive-textfield__value"
         class="t-input t-input_template"
     >
-        <ng-content select="tuiContent"></ng-content>
+        <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
     <div class="t-content">
         <div
             *ngIf="iconLeftContent"
+            polymorpheus-outlet
             class="t-icon t-icon_left"
+            [content]="iconLeftContent"
+            [context]="{$implicit: size}"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-iconSrc>
+                <tui-svg [src]="iconSrc"></tui-svg>
+            </ng-template>
         </div>
         <div class="t-wrapper">
             <label
@@ -74,25 +77,29 @@
         </div>
         <div
             *ngIf="hasCustomContent"
+            polymorpheus-outlet
             automation-id="tui-primitive-textfield__custom-content"
             class="t-custom-content"
+            [content]="controller.customContent"
         >
-            <tui-svg
-                *polymorpheusOutlet="controller.customContent as src"
-                class="t-custom-icon"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-iconSrc>
+                <tui-svg
+                    class="t-custom-icon"
+                    [src]="iconSrc"
+                ></tui-svg>
+            </ng-template>
         </div>
         <span
             *ngIf="hasCleaner"
+            polymorpheus-outlet
             automation-id="tui-primitive-textfield__cleaner"
             class="t-cleaner"
+            [content]="iconCleaner"
             (click.stop)="clear()"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconCleaner as src"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg [src]="icon"></tui-svg>
+            </ng-template>
         </span>
         <tui-tooltip
             *ngIf="hasTooltip"
@@ -106,12 +113,14 @@
         ></tui-tooltip>
         <div
             *ngIf="iconContent"
+            polymorpheus-outlet
             class="t-icon"
+            [content]="iconContent"
+            [context]="{$implicit: size}"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-iconSrc>
+                <tui-svg [src]="iconSrc"></tui-svg>
+            </ng-template>
         </div>
     </div>
 </div>

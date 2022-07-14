@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiCopyProcessorModule} from '@taiga-ui/cdk';
+import {TuiCopyProcessorModule} from '@taiga-ui/cdk/directives/copy-processor';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 import {ExampleTuiCopyProcessorComponent} from './copy-processor.component';

@@ -2,16 +2,23 @@
     tuiWrapper
     [appearance]="appearance"
     [disabled]="disabled"
-    [focus]="focused"
+    [focused]="focused"
     [hover]="hovered"
     [active]="pressed"
     [invalid]="invalid"
 >
-    <tui-svg
-        *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-        class="mark"
-        [class.mark_on]="!empty"
-        [src]="src"
-    ></tui-svg>
+    <span
+        polymorpheus-outlet
+        [content]="icon"
+        [context]="{$implicit: size}"
+    >
+        <ng-template let-icon>
+            <tui-svg
+                class="mark"
+                [class.mark_on]="!empty"
+                [src]="icon"
+            ></tui-svg>
+        </ng-template>
+    </span>
     <ng-content></ng-content>
 </div>

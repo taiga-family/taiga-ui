@@ -5,11 +5,12 @@
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [focus]="computedFocused"
-    [hover]="pseudoHover"
+    [focused]="computedFocused"
+    [hover]="computedHovered"
     [invalid]="computedInvalid"
     [tuiDropdown]="open"
     [tuiDropdownContent]="dropdown || ''"
+    (tuiHoveredChange)="onHovered($event)"
     (tuiActiveZoneChange)="onActiveZoneChange($event)"
     (scroll)="onScroll($event)"
     (mousedown)="onMouseDown($event)"
@@ -128,14 +129,17 @@
     <div class="t-icons">
         <div
             *ngIf="icon"
+            polymorpheus-outlet
             class="t-icon-outlet"
+            [content]="icon"
         >
-            <tui-svg
-                *polymorpheusOutlet="icon as text"
-                automation-id="tui-input-card-grouped__icon"
-                class="t-card"
-                [src]="text"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg
+                    automation-id="tui-input-card-grouped__icon"
+                    class="t-card"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
         </div>
         <tui-svg
             *ngIf="hasCleaner"

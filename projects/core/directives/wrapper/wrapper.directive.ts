@@ -6,10 +6,10 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 @Directive({
-    selector: `[tuiWrapper]`,
+    selector: '[tuiWrapper]',
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': `mode$`,
+        '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiWrapperDirective {
@@ -26,28 +26,28 @@ export class TuiWrapperDirective {
     active: boolean | null = null;
 
     @Input()
-    focus = false;
+    focused = false;
 
     @Input()
     invalid = false;
 
     @Input()
-    @HostBinding(`attr.data-appearance`)
-    appearance = ``;
+    @HostBinding('attr.data-appearance')
+    appearance = '';
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
-    @HostBinding(`class._invalid`)
+    @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return !this.disabled && !this.readOnly && this.invalid;
     }
 
-    @HostBinding(`class._focused`)
+    @HostBinding('class._focused')
     get computedFocused(): boolean {
-        return this.focus && !this.disabled;
+        return this.focused && !this.disabled;
     }
 
-    @HostBinding(`attr.data-state`)
+    @HostBinding('attr.data-state')
     get interactiveState(): TuiInteractiveState | string | null {
         if (this.disabled) {
             return TuiInteractiveState.Disabled;
@@ -58,22 +58,22 @@ export class TuiWrapperDirective {
         }
 
         if (this.active) {
-            return TuiInteractiveState.Active;
+            return TuiInteractiveState.Pressed;
         }
 
         if (this.hover) {
-            return TuiInteractiveState.Hover;
+            return TuiInteractiveState.Hovered;
         }
 
         return null;
     }
 
-    @HostBinding(`class._no-hover`)
+    @HostBinding('class._no-hover')
     get noHover(): boolean {
         return this.readOnly || this.hover === false;
     }
 
-    @HostBinding(`class._no-active`)
+    @HostBinding('class._no-active')
     get noActive(): boolean {
         return this.readOnly || this.active === false;
     }

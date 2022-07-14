@@ -3,9 +3,9 @@
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [focus]="computedFocusVisible"
-    [hover]="pseudoHover"
-    [active]="pseudoActive"
+    [focused]="computedFocusVisible"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
 >
     <div class="toggle">
@@ -17,15 +17,19 @@
             [showLoader]="checked"
         ></tui-loader>
         <span
-            *ngIf="showIcons && !showLoader"
+            polymorpheus-outlet
             class="icon-wrapper"
+            [content]="iconOn"
+            [context]="{$implicit: size}"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconOn as src; context: {$implicit: size}"
-                automation-id="tui-toggle__check-icon"
-                class="icon"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    automation-id="tui-toggle__check-icon"
+                    class="icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
         </span>
         <div class="circle"></div>
         <tui-loader
@@ -36,15 +40,19 @@
             [showLoader]="!checked"
         ></tui-loader>
         <span
-            *ngIf="showIcons && !showLoader"
+            polymorpheus-outlet
             class="icon-wrapper"
+            [content]="iconOff"
+            [context]="{$implicit: size}"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconOff as src; context: {$implicit: size}"
-                automation-id="tui-toggle__cancel-icon"
-                class="icon icon_off"
-                [src]="src"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    automation-id="tui-toggle__cancel-icon"
+                    class="icon icon_off"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
         </span>
     </div>
     <input
@@ -60,6 +68,8 @@
         [tuiFocusable]="focusable"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusedChange)="onFocused($event)"
+        (tuiHoveredChange)="onHovered($event)"
+        (tuiPressedChange)="onPressed($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
 </div>

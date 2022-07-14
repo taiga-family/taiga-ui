@@ -1,28 +1,33 @@
 <div
     tuiWrapper
-    *tuiLet="editorLoaded$ | async as editorLoaded"
     appearance="textfield"
-    class="t-wrapper"
+    class="t-outline"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
     [hover]="computedHovered"
     [invalid]="computedInvalid"
+></div>
+<div
+    class="t-wrapper"
     (tuiHoveredChange)="onHovered($event)"
-    (tuiActiveZoneChange)="onActiveZone($event)"
+    (mousedown)="onMouseDown($event)"
 >
     <div class="t-toolbar-wrapper">
         <tui-toolbar
-            *ngIf="editorLoaded"
-            new
-            [tools]="tools"
+            *ngIf="initialized"
             [disabled]="!interactive"
-        >
-            <ng-content select="tools"></ng-content>
-        </tui-toolbar>
+            [tools]="tools"
+            [colors]="colors"
+            [attr.aria-labelledby]="id"
+            (linkAdded)="onAddLink($event)"
+            (texClicked)="onTex()"
+            (attachClicked)="onAttach()"
+        ></tui-toolbar>
         <div
             class="t-placeholder"
             [class.t-placeholder_raised]="placeholderRaised"
+            [id]="id"
         >
             <ng-content></ng-content>
         </div>
@@ -33,36 +38,30 @@
             {{ exampleText }}
         </div>
     </div>
-
-    <tui-scrollbar
-        tuiEditorPortal
-        class="t-scrollbar"
-    >
+    <tui-scrollbar class="t-scrollbar">
         <div
-            *ngIf="editorLoaded"
+            *ngIf="initialized"
             tuiDropdownLimitWidth="auto"
             tuiDropdownSelectionPosition="tag"
             [tuiDropdownSelection]="dropdownSelectionHandler"
             [tuiDropdownContent]="dropdown"
-        >
-            <div
-                tuiTiptapEditor
-                spellcheck="false"
-                class="tui-editor-socket"
-                [value]="value"
-                [editable]="interactive"
-                (valueChange)="onModelChange($event)"
-                (stateChange)="(0)"
-            ></div>
-        </div>
-
+        ></div>
+        <iframe
+            #focusableElement="tuiDesignMode"
+            tuiDesignMode
+            class="t-editor"
+            [attr.aria-labelledby]="id"
+            [exampleText]="exampleText"
+            [disabled]="!interactive"
+            [ngModel]="value"
+            (ngModelChange)="onModelChange($event)"
+            (focusedChange)="onFocusedChange($event)"
+        ></iframe>
         <ng-template #dropdown>
             <tui-edit-link
-                (addLink)="addLink($event)"
-                (removeLink)="removeLink()"
+                (addLink)="onAddLink($event)"
+                (removeLink)="onRemoveLink()"
             ></tui-edit-link>
         </ng-template>
-
-        <tui-editor-portal-host></tui-editor-portal-host>
     </tui-scrollbar>
 </div>

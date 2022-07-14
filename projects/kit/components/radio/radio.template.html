@@ -2,9 +2,9 @@
     tuiWrapper
     [appearance]="appearance"
     [disabled]="computedDisabled"
-    [focus]="computedFocusVisible"
-    [hover]="pseudoHover"
-    [active]="pseudoActive"
+    [focused]="computedFocusVisible"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [invalid]="computedInvalid"
 >
     <div
@@ -22,6 +22,8 @@
         [tuiChecked]="checked"
         [tuiFocusable]="isFocusable"
         (tuiFocusedChange)="onFocused($event)"
+        (tuiHoveredChange)="onHovered($event)"
+        (tuiPressedChange)="onPressed($event)"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
