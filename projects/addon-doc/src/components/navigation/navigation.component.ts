@@ -78,7 +78,7 @@ export class TuiDocNavigationComponent {
             changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment);
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment!);
         });
     }
 
