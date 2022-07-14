@@ -88,10 +88,7 @@ describe('Slider', () => {
                     .findByAutomationId(EXAMPLE_ID)
                     .should('be.visible')
                     .as('example');
-                cy.get('@example')
-                    // `ng-reflect-model` ensures that example was not changed, and we check `[(ngModel)]`
-                    .find('input[type="range"][ng-reflect-model]')
-                    .as('slider');
+                cy.get('@example').find('input[type="range"]').as('slider');
                 cy.get('@example')
                     .find('button[icon="tuiIconMinus"]')
                     .should('be.visible')
@@ -152,10 +149,7 @@ describe('Slider', () => {
                     .findByAutomationId(EXAMPLE_ID)
                     .should('be.visible')
                     .as('example');
-                cy.get('@example')
-                    // `ng-reflect-model` ensures that example was not changed, and we check `[formControl]`
-                    .find('input[type="range"][ng-reflect-form]')
-                    .as('slider');
+                cy.get('@example').find('input[type="range"]').as('slider');
                 cy.get('@example').find('button').should('be.visible').as('tickLabels');
 
                 cy.get('@slider').tuiScrollIntoView();
