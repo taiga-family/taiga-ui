@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiOverscrollModule} from '@taiga-ui/cdk';
 
 import {TuiOverscrollExample1} from './examples/1';
@@ -14,7 +14,7 @@ import {ExampleTuiOverscrollComponent} from './overscroll.component';
         CommonModule,
         TuiOverscrollModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiOverscrollComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiOverscrollComponent)),
     ],
     declarations: [
         ExampleTuiOverscrollComponent,

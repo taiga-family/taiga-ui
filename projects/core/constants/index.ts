@@ -6,6 +6,5 @@ export * from './described-by';
 export * from './editing-keys';
 export * from './events';
 export * from './mask-caret-trap';
-export * from './media';
 export * from './regexp';
 export * from './version';
