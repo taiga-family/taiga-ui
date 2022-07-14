@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiDropdownControllerModule,
@@ -43,7 +43,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputTagComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
     ],
     declarations: [
         ExampleTuiInputTagComponent,
