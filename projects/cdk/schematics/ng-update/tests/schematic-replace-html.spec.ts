@@ -68,7 +68,7 @@ const TEMPLATE_BEFORE = `
 </tui-primitive-textfield>
 
 <div tuiWrapper
-    [hovered]="computedHovered"
+    [hover]="computedHovered"
 >any</div>
 
 <tui-select (hoveredChange)="onHoverChange(event$)"></tui-select>
