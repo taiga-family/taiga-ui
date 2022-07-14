@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {generateRoutes, TuiAddonDocModule,
+import {tuiGenerateRoutes, TuiAddonDocModule,
     TuiDocExampleModule,
     TuiDocPageModule,
     TuiDocDocumentationModule,
@@ -22,7 +22,7 @@ import {<%= classify(name) %>Example<%=i%>} from './examples/<%=i%>'; <%}%>
         TuiDocDocumentationModule,
         TuiDocCodeModule,
         TuiDocDemoModule,
-        RouterModule.forChild(generateRoutes(Example<%= classify(name) %>Component)),
+        RouterModule.forChild(tuiGenerateRoutes(Example<%= classify(name) %>Component)),
     ],
     declarations: [Example<%= classify(name) %>Component, <% for(let i=1; i<=samples; i++) {%>
                    <%= classify(name) %>Example<%=i%>,<%}%>
