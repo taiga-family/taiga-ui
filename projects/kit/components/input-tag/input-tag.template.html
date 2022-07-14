@@ -9,22 +9,27 @@
         tuiWrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
-        [focus]="computedFocused"
-        [hover]="pseudoHover"
+        [focused]="computedFocused"
+        [hover]="computedHovered"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
+        (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">
             <div
                 *ngIf="iconLeft"
+                polymorpheus-outlet
                 class="t-icons t-icons_left"
+                [content]="iconLeft"
+                [context]="{$implicit: size}"
             >
-                <tui-svg
-                    *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
-                    class="t-icon"
-                    [src]="src"
-                ></tui-svg>
+                <ng-template let-icon>
+                    <tui-svg
+                        class="t-icon"
+                        [src]="icon"
+                    ></tui-svg>
+                </ng-template>
             </div>
             <div class="t-wrapper">
                 <div class="t-absolute-wrapper">
@@ -131,12 +136,18 @@
                     [showDelay]="hintController.showDelay"
                     [hideDelay]="hintController.hideDelay"
                 ></tui-tooltip>
-                <div *ngIf="icon">
-                    <tui-svg
-                        *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-                        class="t-icon"
-                        [src]="src"
-                    ></tui-svg>
+                <div
+                    *ngIf="icon"
+                    polymorpheus-outlet
+                    [content]="icon"
+                    [context]="{$implicit: size}"
+                >
+                    <ng-template let-iconSrc>
+                        <tui-svg
+                            class="t-icon"
+                            [src]="iconSrc"
+                        ></tui-svg>
+                    </ng-template>
                 </div>
             </div>
         </div>

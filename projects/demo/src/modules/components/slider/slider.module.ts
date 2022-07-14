@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGenerateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiLinkModule,

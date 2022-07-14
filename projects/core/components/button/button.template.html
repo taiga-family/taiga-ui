@@ -2,32 +2,38 @@
     tuiWrapper
     class="t-wrapper"
     [appearance]="appearance"
-    [hover]="pseudoHover"
-    [active]="pseudoActive"
+    [hover]="computedHovered"
+    [active]="computedPressed"
     [disabled]="computedDisabled"
-    [focus]="computedFocusVisible"
+    [focused]="computedFocusVisible"
 >
     <span class="t-content">
         <span
             *ngIf="icon"
+            polymorpheus-outlet
             class="t-left"
+            [content]="icon"
         >
-            <tui-svg
-                *polymorpheusOutlet="icon as text"
-                class="t-icon"
-                [src]="text"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg
+                    class="t-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
         </span>
         <ng-content></ng-content>
         <span
             *ngIf="iconRight"
+            polymorpheus-outlet
             class="t-right"
+            [content]="iconRight"
         >
-            <tui-svg
-                *polymorpheusOutlet="iconRight as text"
-                class="t-icon"
-                [src]="text"
-            ></tui-svg>
+            <ng-template let-icon>
+                <tui-svg
+                    class="t-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
         </span>
     </span>
     <tui-loader

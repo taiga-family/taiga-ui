@@ -1,0 +1,67 @@
+<div
+    tuiWrapper
+    appearance="textfield"
+    class="t-outline"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focused]="computedFocused"
+    [hover]="computedHovered"
+    [invalid]="computedInvalid"
+></div>
+<div
+    class="t-wrapper"
+    (tuiHoveredChange)="onHovered($event)"
+    (mousedown)="onMouseDown($event)"
+>
+    <div class="t-toolbar-wrapper">
+        <tui-toolbar
+            *ngIf="initialized"
+            [disabled]="!interactive"
+            [tools]="tools"
+            [colors]="colors"
+            [attr.aria-labelledby]="id"
+            (linkAdded)="onAddLink($event)"
+            (texClicked)="onTex()"
+            (attachClicked)="onAttach()"
+        ></tui-toolbar>
+        <div
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
+            [id]="id"
+        >
+            <ng-content></ng-content>
+        </div>
+        <div
+            *ngIf="hasExampleText"
+            class="t-example-text"
+        >
+            {{ exampleText }}
+        </div>
+    </div>
+    <tui-scrollbar class="t-scrollbar">
+        <div
+            *ngIf="initialized"
+            tuiDropdownLimitWidth="auto"
+            tuiDropdownSelectionPosition="tag"
+            [tuiDropdownSelection]="dropdownSelectionHandler"
+            [tuiDropdownContent]="dropdown"
+        ></div>
+        <iframe
+            #focusableElement="tuiDesignMode"
+            tuiDesignMode
+            class="t-editor"
+            [attr.aria-labelledby]="id"
+            [exampleText]="exampleText"
+            [disabled]="!interactive"
+            [ngModel]="value"
+            (ngModelChange)="onModelChange($event)"
+            (focusedChange)="onFocusedChange($event)"
+        ></iframe>
+        <ng-template #dropdown>
+            <tui-edit-link
+                (addLink)="onAddLink($event)"
+                (removeLink)="onRemoveLink()"
+            ></tui-edit-link>
+        </ng-template>
+    </tui-scrollbar>
+</div>
