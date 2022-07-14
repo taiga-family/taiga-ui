@@ -1,9 +1,9 @@
 <tui-primitive-textfield
     tuiValueAccessor
     class="textfield"
-    [pseudoHovered]="computedHovered"
+    [pseudoHovered]="pseudoHovered"
     [pseudoFocused]="computedFocused"
-    [pseudoPressed]="computedPressed"
+    [pseudoPressed]="pseudoPressed"
     [invalid]="computedInvalid"
     [tuiTextfieldInputMode]="inputMode"
     [tuiTextfieldMaxLength]="calculatedMaxLength"
@@ -15,9 +15,7 @@
     [postfix]="postfix"
     [focusable]="focusable"
     (valueChange)="onValueChange($event)"
-    (hoveredChange)="onHovered($event)"
     (focusedChange)="onFocused($event)"
-    (pressedChange)="onPressed($event)"
     (keydown)="onKeyDown($event)"
 >
     <ng-content></ng-content>

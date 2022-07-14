@@ -10,10 +10,9 @@
         [appearance]="appearance"
         [readOnly]="readOnly"
         [focused]="computedFocused"
-        [hover]="computedHovered"
+        [hover]="pseudoHovered"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
-        (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">

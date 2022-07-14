@@ -1,8 +1,4 @@
-<label
-    class="wrapper"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
->
+<label class="wrapper">
     <tui-radio
         [focusable]="focusable"
         [identityMatcher]="identityMatcher"
@@ -12,8 +8,8 @@
         [pseudoDisabled]="computedDisabled"
         [pseudoInvalid]="computedInvalid"
         [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="computedHovered"
-        [pseudoPressed]="computedPressed"
+        [pseudoHovered]="pseudoHovered"
+        [pseudoPressed]="pseudoPressed"
         [size]="size"
         [item]="item"
         [ngModel]="value"

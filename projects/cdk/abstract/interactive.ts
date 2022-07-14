@@ -45,22 +45,8 @@ export abstract class AbstractTuiInteractive {
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
 
-    /** @deprecated use `tuiPressedChange` directive */
-    @Output()
-    readonly pressedChange = new EventEmitter<boolean>();
-
-    /** @deprecated use `tuiHoveredChange` directive */
-    @Output()
-    readonly hoveredChange = new EventEmitter<boolean>();
-
     @Output()
     readonly focusVisibleChange = new EventEmitter<boolean>();
-
-    /** @deprecated use `tuiHoveredChange` directive */
-    hovered = false;
-
-    /** @deprecated use `tuiPressedChange` directive */
-    pressed = false;
 
     focusVisible = false;
 
@@ -71,18 +57,6 @@ export abstract class AbstractTuiInteractive {
     @HostBinding('class._disabled')
     get computedDisabled(): boolean {
         return this.disabled;
-    }
-
-    /** @deprecated */
-    @HostBinding('class._hovered')
-    get computedHovered(): boolean {
-        return !this.computedDisabled && (this.pseudoHovered ?? this.hovered);
-    }
-
-    /** @deprecated */
-    @HostBinding('class._pressed')
-    get computedPressed(): boolean {
-        return !this.computedDisabled && (this.pseudoPressed ?? this.pressed);
     }
 
     get computedFocusable(): boolean {
@@ -102,26 +76,6 @@ export abstract class AbstractTuiInteractive {
     // TODO: 3.0 Consider removing since native input is exposed
     get id(): string {
         return this.nativeId ? this.nativeId : this.autoIdString;
-    }
-
-    /** @deprecated */
-    protected updateHovered(hovered: boolean): void {
-        if (this.hovered === hovered) {
-            return;
-        }
-
-        this.hovered = hovered;
-        this.hoveredChange.emit(hovered);
-    }
-
-    /** @deprecated */
-    protected updatePressed(pressed: boolean): void {
-        if (this.pressed === pressed) {
-            return;
-        }
-
-        this.pressed = pressed;
-        this.pressedChange.emit(pressed);
     }
 
     protected updateFocused(focused: boolean): void {

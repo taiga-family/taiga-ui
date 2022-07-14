@@ -213,10 +213,6 @@ export class TuiInputTimeComponent
         });
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onArrowUp(event: Event): void {
         if (this.items.length) {
             return;

@@ -417,10 +417,6 @@ export class TuiInputTagComponent
         this.open = this.hasNativeValue;
     }
 
-    onHoveredChange(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     setDisabledState(): void {
         super.setDisabledState();
         this.open = false;

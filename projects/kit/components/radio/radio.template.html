@@ -3,8 +3,8 @@
     [appearance]="appearance"
     [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
-    [hover]="computedHovered"
-    [active]="computedPressed"
+    [hover]="pseudoHovered"
+    [active]="pseudoPressed"
     [invalid]="computedInvalid"
 >
     <div
@@ -22,8 +22,6 @@
         [tuiChecked]="checked"
         [tuiFocusable]="isFocusable"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiHoveredChange)="onHovered($event)"
-        (tuiPressedChange)="onPressed($event)"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />

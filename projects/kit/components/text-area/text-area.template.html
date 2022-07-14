@@ -5,7 +5,7 @@
     [appearance]="appearance"
     [disabled]="disabled"
     [focused]="computedFocused"
-    [hover]="computedHovered"
+    [hover]="pseudoHovered"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
 >
@@ -19,7 +19,6 @@
 
     <label
         class="t-content"
-        (tuiHoveredChange)="onHovered($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-wrapper">

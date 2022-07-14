@@ -2,8 +2,8 @@
     [size]="size"
     [disabled]="disabled"
     [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [hovered]="!!pseudoHovered"
+    [pressed]="!!pseudoPressed"
     [invalid]="computedInvalid"
     [value]="value"
 >
@@ -17,8 +17,6 @@
         [tuiChecked]="value"
         [tuiFocusable]="computedFocusable"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiHoveredChange)="onHovered($event)"
-        (tuiPressedChange)="onPressed($event)"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />

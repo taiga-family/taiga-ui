@@ -3,7 +3,6 @@
     [canOpen]="interactive"
     [content]="datalist || ''"
     [(open)]="open"
-    (tuiHoveredChange)="onHoveredChange($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-input-tag
@@ -17,7 +16,7 @@
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
         [readOnly]="readOnly"
         [inputHidden]="!editable"
-        [pseudoHovered]="computedHovered"
+        [pseudoHovered]="pseudoHovered"
         [pseudoFocused]="computedFocused"
         [pseudoInvalid]="computedInvalid"
         [editable]="false"

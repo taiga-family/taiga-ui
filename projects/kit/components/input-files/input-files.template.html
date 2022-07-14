@@ -4,8 +4,8 @@
     class="t-wrapper"
     [class._mobile]="isMobile"
     [focused]="computedFocused"
-    [hover]="computedHovered || fileDragged"
-    [active]="computedPressed"
+    [hover]="pseudoHovered || fileDragged"
+    [active]="pseudoPressed"
     [disabled]="computedDisabled"
 >
     <label
@@ -38,9 +38,7 @@
                 [multiple]="multiple"
                 [tuiFocusable]="focusable"
                 (change)="onFilesSelected(input, texts, units)"
-                (tuiHoveredChange)="onHovered($event)"
                 (tuiFocusedChange)="onFocused($event)"
-                (tuiPressedChange)="onPressed($event)"
                 (tuiDroppableDropped)="onDropped($event, texts, units)"
                 (tuiDroppableDragOverChange)="onDragOver($event)"
                 (mousedown.prevent.silent)="(0)"

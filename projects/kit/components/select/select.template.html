@@ -19,7 +19,6 @@
         [focusable]="computedFocusable"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (keydown.delete.prevent)="onKeyDownDelete()"
         (keydown.backspace.prevent)="onKeyDownDelete()"
     >

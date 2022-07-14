@@ -244,14 +244,6 @@ export class TuiInputSliderComponent
         this.updateFocused(focused);
     }
 
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     private get textInputValue(): string {
         return this.inputNumberRef?.nativeValue || '';
     }

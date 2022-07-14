@@ -228,10 +228,6 @@ export class TuiMultiSelectComponent<T>
     > = handler => stringifiable =>
         typeof stringifiable === 'string' || handler(stringifiable.item);
 
-    onHoveredChange(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onSpace(event: Event): void {
         if (!this.editable) {
             event.preventDefault();

@@ -342,14 +342,6 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 

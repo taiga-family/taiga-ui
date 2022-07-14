@@ -103,14 +103,6 @@ export class TuiInputColorComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     protected getFallbackValue(): string {
         return '#000000';
     }

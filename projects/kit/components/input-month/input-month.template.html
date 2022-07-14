@@ -17,7 +17,6 @@
         [invalid]="computedInvalid"
         [value]="(value | tuiMapper: formatter | async) || ''"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>

@@ -5,12 +5,11 @@
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
-    [hover]="computedHovered"
+    [hover]="pseudoHovered"
     [invalid]="computedInvalid"
 ></div>
 <div
     class="t-wrapper"
-    (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
 >
     <div class="t-toolbar-wrapper">

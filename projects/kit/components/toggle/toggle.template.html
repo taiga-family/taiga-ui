@@ -4,8 +4,8 @@
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
-    [hover]="computedHovered"
-    [active]="computedPressed"
+    [hover]="pseudoHovered"
+    [active]="pseudoPressed"
     [invalid]="computedInvalid"
 >
     <div class="toggle">
@@ -68,8 +68,6 @@
         [tuiFocusable]="focusable"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiHoveredChange)="onHovered($event)"
-        (tuiPressedChange)="onPressed($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
 </div>
