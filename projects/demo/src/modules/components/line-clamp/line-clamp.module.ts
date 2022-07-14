@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiLineClampModule} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         CommonModule,
         TuiLineClampModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLineClampComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineClampComponent)),
         TuiButtonModule,
         TuiIslandModule,
     ],

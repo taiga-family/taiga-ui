@@ -1,11 +1,12 @@
-<tui-wrapper
+<div
     *ngIf="cardGroupedTexts$ | async as texts"
+    tuiWrapper
     class="t-common-wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [hover]="computedHovered"
     [invalid]="computedInvalid"
     [tuiDropdown]="open"
     [tuiDropdownContent]="dropdown || ''"
@@ -154,4 +155,4 @@
             (click)="toggle()"
         ></tui-svg>
     </div>
-</tui-wrapper>
+</div>

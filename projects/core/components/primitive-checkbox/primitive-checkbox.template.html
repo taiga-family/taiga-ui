@@ -1,9 +1,10 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
     [disabled]="disabled"
     [focused]="focused"
-    [hovered]="hovered"
-    [pressed]="pressed"
+    [hover]="hovered"
+    [active]="pressed"
     [invalid]="invalid"
 >
     <span
@@ -20,4 +21,4 @@
         </ng-template>
     </span>
     <ng-content></ng-content>
-</tui-wrapper>
+</div>
