@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiRadioModule} from '@taiga-ui/kit';
 
@@ -22,7 +22,7 @@ import {ExampleTuiRadioComponent} from './radio.component';
         TuiLinkModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiRadioComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRadioComponent)),
     ],
     declarations: [ExampleTuiRadioComponent, TuiRadioExample1, TuiRadioExample2],
     exports: [ExampleTuiRadioComponent],

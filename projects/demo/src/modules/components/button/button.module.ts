@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -39,7 +39,7 @@ import {TuiButtonExample5} from './examples/5';
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiButtonComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiButtonComponent)),
         TuiLinkModule,
     ],
     declarations: [

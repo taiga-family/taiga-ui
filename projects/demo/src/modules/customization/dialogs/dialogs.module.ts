@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {PromptModule} from './examples/1/prompt/prompt.module';
         TuiButtonModule,
         TuiAvatarModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(DialogsComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(DialogsComponent)),
     ],
     declarations: [DialogsComponent, TuiDialogsExample1],
     exports: [DialogsComponent],
