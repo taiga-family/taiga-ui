@@ -13,7 +13,7 @@
         [tuiHint]="hintText$ | async"
         [tuiHintId]="codeBtn.id"
         [tuiDescribedBy]="codeBtn.id"
-        [pseudoPressed]="codes.open || (insideCode$ | async)"
+        [pseudoActive]="codes.open || (insideCode$ | async)"
         [focusable]="codes.open"
     ></button>
     <ng-template #codesDropdown>
