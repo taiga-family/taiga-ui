@@ -194,7 +194,7 @@ const TEMPLATE_AFTER = `
 <div tuiWrapper
     [appearance]="appearance"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
+    [focus]="computedFocusVisible"
     [hover]="computedHovered"
     [active]="computedPressed"
     [invalid]="computedInvalid"
