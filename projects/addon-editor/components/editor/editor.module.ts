@@ -1,35 +1,43 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiEditorSocketModule} from '@taiga-ui/addon-editor/components/editor-socket';
+import {
+    TuiEditorNewComponent,
+    TuiEditorNewModule,
+} from '@taiga-ui/addon-editor/components/editor-new';
 import {TuiToolbarModule} from '@taiga-ui/addon-editor/components/toolbar';
-import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
+import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiDesignModeModule} from '@taiga-ui/addon-editor/directives/design-mode';
 import {TuiActiveZoneModule, TuiItemDirective, TuiLetModule} from '@taiga-ui/cdk';
-import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiScrollbarModule,
+    TuiWrapperModule,
+} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
 
 import {TuiEditorComponent} from './editor.component';
-import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
-import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
 
 @NgModule({
-    declarations: [
-        TuiEditorComponent,
-        TuiEditorPortalHostComponent,
-        TuiEditorPortalDirective,
-    ],
     imports: [
         CommonModule,
-        TuiToolbarModule,
+        FormsModule,
+        TuiLetModule,
+        TuiActiveZoneModule,
         TuiWrapperModule,
         TuiScrollbarModule,
-        TuiEditLinkModule,
-        TuiActiveZoneModule,
+        TuiLinkModule,
+        TuiButtonModule,
         TuiDropdownSelectionModule,
-        TuiTiptapEditorModule,
-        TuiEditorSocketModule,
-        TuiLetModule,
+        TuiToolbarModule,
+        TuiEditLinkModule,
+        TuiDesignModeModule,
+        TuiEditorNewModule,
+        TuiToolbarNewModule,
     ],
-    exports: [TuiEditorComponent, TuiItemDirective],
+    declarations: [TuiEditorComponent],
+    exports: [TuiEditorComponent, TuiEditorNewComponent, TuiItemDirective],
 })
 export class TuiEditorModule {}

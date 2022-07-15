@@ -1,7 +1,6 @@
 <button class="t-prevent-parent-label-behavior">
     <!-- @note: this is a html huck to avoid autofocus, if the parent element is a label  -->
 </button>
-<ng-container *ngIf="editor.stateChange$ | async"></ng-container>
 <div
     [tuiFocusable]="focusable"
     (focus)="onTopFocus()"
@@ -10,48 +9,48 @@
     [tuiFocusable]="focusable"
     (focus)="onBottomFocus()"
 ></div>
-
-<section
-    *ngIf="texts$ | async as texts"
-    tuiToolbarNavigationManager
-    class="t-tools-wrapper"
->
+<!--TODO: i18n-->
+<ng-container *ngIf="texts$ | async as texts">
     <div
         *ngIf="enabled(TuiEditorTool.Undo)"
         class="t-block"
     >
         <button
+            #button
             #undoBtn
-            tuiItem
             tuiIconButton
             type="button"
             size="s"
             icon="tuiIconUndoLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.undo"
             [tuiHintId]="undoBtn.id"
             [tuiDescribedBy]="undoBtn.id"
             [disabled]="undoDisabled"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="undo()"
         ></button>
         <button
+            #button
             #redoBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconRedoLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.redo"
             [tuiHintId]="redoBtn.id"
             [tuiDescribedBy]="redoBtn.id"
             [disabled]="redoDisabled"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="redo()"
         ></button>
     </div>
@@ -59,58 +58,303 @@
         *ngIf="enabled(TuiEditorTool.Size)"
         class="t-block"
     >
-        <tui-font-size
-            tuiItem
-            class="t-tool t-wrapper"
-        ></tui-font-size>
+        <tui-hosted-dropdown
+            #fonts
+            class="t-wrapper"
+            [content]="fontsDropdown"
+        >
+            <button
+                #button
+                #fontsBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                appearance="icon"
+                icon="tuiIconFontLarge"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.font"
+                [tuiHintId]="fontsBtn.id"
+                [tuiDescribedBy]="fontsBtn.id"
+                [pseudoActive]="fonts.open"
+                [focusable]="fonts.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <ng-template #fontsDropdown>
+                <tui-data-list #dropdown>
+                    <button
+                        *ngFor="let item of fontsOptions"
+                        tuiOption
+                        [style.fontFamily]="item.family"
+                        [style.fontSize.px]="item.px"
+                        (click)="onFont(item.size)"
+                    >
+                        {{ item.name }}
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-hosted-dropdown>
     </div>
     <div
         *ngIf="firstBigBlockEnabled"
         class="t-block"
     >
-        <tui-font-style
+        <!-- @bad TODO: Keyboard navigation-->
+        <tui-hosted-dropdown
             *ngIf="formatEnabled"
-            tuiItem
-            class="t-tool t-wrapper"
-            [enabledTools]="toolsSet"
-        ></tui-font-style>
-
-        <tui-align-content
+            #format
+            class="t-wrapper"
+            [content]="formatDropdown"
+        >
+            <button
+                #button
+                #formatBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconFormatLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.fontStyle"
+                [tuiHintId]="formatBtn.id"
+                [tuiDescribedBy]="formatBtn.id"
+                [pseudoActive]="format.open || bold || italic || underline || strikeThrough"
+                [focusable]="format.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <ng-template #formatDropdown>
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
+                    <button
+                        *ngIf="enabled(TuiEditorTool.Bold)"
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconBoldLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.bold"
+                        [pseudoActive]="bold"
+                        (click)="toggleBold()"
+                    ></button>
+                    <button
+                        *ngIf="enabled(TuiEditorTool.Italic)"
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconItalicLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.italic"
+                        [pseudoActive]="italic"
+                        (click)="toggleItalic()"
+                    ></button>
+                    <button
+                        *ngIf="enabled(TuiEditorTool.Underline)"
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconUnderlineLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.underline"
+                        [pseudoActive]="underline"
+                        (click)="toggleUnderline()"
+                    ></button>
+                    <button
+                        *ngIf="enabled(TuiEditorTool.Strikethrough)"
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconStrikeThroughLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.strikeThrough"
+                        [pseudoActive]="strikeThrough"
+                        (click)="toggleStrikeThrough()"
+                    ></button>
+                </div>
+            </ng-template>
+        </tui-hosted-dropdown>
+        <!-- @bad TODO: Keyboard navigation-->
+        <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Align)"
-            tuiItem
-            class="t-tool t-wrapper"
-        ></tui-align-content>
-
-        <tui-list-configs
+            #align
+            class="t-wrapper"
+            [content]="alignDropdown"
+        >
+            <button
+                #button
+                #alignBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAlignLeftLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.justify"
+                [tuiHintId]="alignBtn.id"
+                [tuiDescribedBy]="alignBtn.id"
+                [pseudoActive]="align.open"
+                [focusable]="align.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <ng-template #alignDropdown>
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconAlignLeftLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.justifyLeft"
+                        (click)="onAlign('justifyLeft')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconAlignCenterLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.justifyCenter"
+                        (click)="onAlign('justifyCenter')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconAlignRightLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.justifyRight"
+                        (click)="onAlign('justifyRight')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconAlignJustifyLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.justifyFull"
+                        (click)="onAlign('justifyFull')"
+                    ></button>
+                </div>
+            </ng-template>
+        </tui-hosted-dropdown>
+        <!-- @bad TODO: Keyboard navigation-->
+        <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.List)"
-            tuiItem
-            class="t-tool t-wrapper"
-        ></tui-list-configs>
-
+            #list
+            class="t-wrapper"
+            [content]="listDropdown"
+        >
+            <button
+                #button
+                #listBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconViewListLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.list"
+                [tuiHintId]="listBtn.id"
+                [tuiDescribedBy]="listBtn.id"
+                [pseudoActive]="list.open || unorderedList || orderedList"
+                [focusable]="list.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <ng-template #listDropdown>
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconViewListLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.unorderedList"
+                        [pseudoActive]="unorderedList"
+                        (click)="toggleUnorderedList()"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconOLLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.orderedList"
+                        [pseudoActive]="orderedList"
+                        (click)="toggleOrderedList()"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconIndentLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.indent"
+                        [disabled]="!unorderedList && !orderedList"
+                        (click)="indent()"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="s"
+                        icon="tuiIconOutdentLarge"
+                        appearance="icon"
+                        class="t-button t-button_margin"
+                        [tuiHint]="texts.outdent"
+                        [disabled]="!unorderedList && !orderedList"
+                        (click)="outdent()"
+                    ></button>
+                </div>
+            </ng-template>
+        </tui-hosted-dropdown>
         <button
             *ngIf="enabled(TuiEditorTool.Quote)"
             #button
             #quoteBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconQuoteLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.quote"
             [tuiHintId]="quoteBtn.id"
             [tuiDescribedBy]="quoteBtn.id"
             [pseudoActive]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleQuote()"
         ></button>
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Link)"
             #link
-            tuiItem
             class="t-wrapper"
             [canOpen]="!a"
             [content]="linkDropdown"
@@ -124,12 +368,15 @@
                 icon="tuiIconLinkLarge"
                 appearance="icon"
                 tuiHintDirection="top-left"
-                class="t-tool"
+                class="t-button"
                 [tuiHint]="texts.link"
                 [tuiHintId]="linkBtn.id"
                 [tuiDescribedBy]="linkBtn.id"
                 [pseudoActive]="link.open || a"
                 [focusable]="link.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+                (click)="onLinkClick()"
             ></button>
             <ng-template #linkDropdown>
                 <tui-edit-link
@@ -144,17 +391,18 @@
             #button
             #attachBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconAttachLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.attach"
             [tuiHintId]="attachBtn.id"
             [tuiDescribedBy]="attachBtn.id"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="onAttach()"
         ></button>
     </div>
@@ -167,18 +415,19 @@
             #button
             #subBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconSubscriptLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.subscript"
             [tuiHintId]="subBtn.id"
             [tuiDescribedBy]="subBtn.id"
             [pseudoActive]="subscript"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleSubscript()"
         ></button>
         <button
@@ -186,18 +435,19 @@
             #button
             #supBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconSuperscriptLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.superscript"
             [tuiHintId]="supBtn.id"
             [tuiDescribedBy]="supBtn.id"
             [pseudoActive]="superscript"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleSuperscript()"
         ></button>
     </div>
@@ -205,69 +455,158 @@
         *ngIf="enabled(TuiEditorTool.Color) || enabled(TuiEditorTool.Hilite)"
         class="t-block"
     >
-        <tui-text-color
+        <!-- TODO: refactor colors -->
+        <!-- @bad TODO: Keyboard navigation-->
+        <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Color)"
-            tuiItem
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        ></tui-text-color>
-
-        <tui-highlight-color
+            #color
+            class="t-wrapper"
+            [content]="colorDropdown"
+            [tuiDropdownMaxHeight]="999"
+        >
+            <button
+                #button
+                #colorBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconColorLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.foreColor"
+                [tuiHintId]="colorBtn.id"
+                [tuiDescribedBy]="colorBtn.id"
+                [pseudoActive]="color.open"
+                [focusable]="color.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <div
+                class="t-plate"
+                [style.background]="foreColor"
+            ></div>
+            <ng-template
+                #colorDropdown
+                let-activeZone
+            >
+                <tui-color-selector
+                    class="t-color-picker"
+                    [tuiActiveZoneParent]="activeZone"
+                    [colors]="colors"
+                    [color]="foreColor"
+                    (colorChange)="setForeColor($event)"
+                ></tui-color-selector>
+            </ng-template>
+        </tui-hosted-dropdown>
+        <!-- @bad TODO: Keyboard navigation-->
+        <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Hilite)"
-            tuiItem
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        ></tui-highlight-color>
+            #hilite
+            class="t-wrapper"
+            [content]="hiliteDropdown"
+            [tuiDropdownMaxHeight]="999"
+        >
+            <button
+                #button
+                #hiliteBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                tuiHintDirection="top-left"
+                appearance="icon"
+                icon="tuiIconHiliteLarge"
+                class="t-button"
+                [tuiHint]="texts.backColor"
+                [tuiHintId]="hiliteBtn.id"
+                [tuiDescribedBy]="hiliteBtn.id"
+                [pseudoActive]="hilite.open"
+                [focusable]="hilite.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <div
+                *ngIf="!hiliteColorBlank"
+                class="t-plate"
+                [style.background]="hiliteColor"
+            ></div>
+            <ng-template
+                #hiliteDropdown
+                let-activeZone
+            >
+                <tui-color-selector
+                    class="t-color-picker"
+                    [tuiActiveZoneParent]="activeZone"
+                    [colors]="colors"
+                    [color]="hiliteColor"
+                    (colorChange)="setHiliteColor($event)"
+                ></tui-color-selector>
+            </ng-template>
+        </tui-hosted-dropdown>
     </div>
     <div
         *ngIf="secondBigBlockEnabled"
         class="t-block"
     >
-        <tui-code
+        <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Code)"
-            tuiItem
-            class="t-tool t-wrapper"
-        ></tui-code>
-
+            #codes
+            class="t-wrapper"
+            [content]="codesDropdown"
+        >
+            <button
+                #button
+                #codeBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconCodeLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.code"
+                [tuiHintId]="codeBtn.id"
+                [tuiDescribedBy]="codeBtn.id"
+                [pseudoActive]="codes.open || code || pre"
+                [focusable]="codes.open"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <ng-template #codesDropdown>
+                <tui-data-list #dropdown>
+                    <button
+                        *ngFor="let item of codeOptions"
+                        tuiOption
+                        (click)="onCode(item)"
+                    >
+                        {{ item }}
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-hosted-dropdown>
         <button
             *ngIf="enabled(TuiEditorTool.Tex)"
             #button
             #texBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconTeXLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool"
+            class="t-button"
             [tuiHint]="texts.tex"
             [tuiHintId]="texBtn.id"
             [tuiDescribedBy]="texBtn.id"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="onTeX()"
         ></button>
         <div
             *ngIf="enabled(TuiEditorTool.Img)"
-            tuiItem
             class="t-wrapper"
         >
-            <button
-                #button
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconImgLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                class="t-tool"
-                [tuiHint]="texts.image"
-                [id]="button.id"
-                [tuiHintId]="button.id"
-                [focusable]="false"
-                (click)="image.click()"
-            ></button>
-
             <input
                 #image
                 type="file"
@@ -276,23 +615,41 @@
                 [tuiFocusable]="false"
                 (change)="onImage(image)"
             />
+            <button
+                #button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconImgLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-button"
+                [tuiHint]="texts.image"
+                [id]="button.id"
+                [tuiHintId]="button.id"
+                [focusable]="false"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+                (click)="image.click()"
+            ></button>
         </div>
         <button
             *ngIf="enabled(TuiEditorTool.HR)"
             #button
             #hrBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconHrLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.insertHorizontalRule"
             [tuiHintId]="hrBtn.id"
             [tuiDescribedBy]="hrBtn.id"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="insertHorizontalRule()"
         ></button>
     </div>
@@ -304,60 +661,19 @@
             #button
             #clearBtn
             tuiIconButton
-            tuiItem
             type="button"
             size="s"
             icon="tuiIconClearFormatLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
+            class="t-button t-button_margin"
             [tuiHint]="texts.clear"
             [tuiHintId]="clearBtn.id"
             [tuiDescribedBy]="clearBtn.id"
             [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="removeFormat()"
         ></button>
     </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Details)"
-        class="t-block"
-    >
-        <tui-details
-            tuiItem
-            class="t-tool t-tool_margin"
-        ></tui-details>
-
-        <tui-details-remove
-            tuiItem
-            class="t-tool t-tool_margin"
-        ></tui-details-remove>
-    </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Table)"
-        class="t-block"
-    >
-        <tui-table-create
-            tuiItem
-            class="t-tool t-tool_margin"
-        ></tui-table-create>
-
-        <tui-table-row-column-manager
-            tuiItem
-            class="t-tool t-tool_margin"
-        ></tui-table-row-column-manager>
-
-        <tui-table-merge-cells
-            tuiItem
-            class="t-tool t-tool_margin"
-        ></tui-table-merge-cells>
-
-        <tui-table-cell-color
-            tuiItem
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        ></tui-table-cell-color>
-    </div>
-    <div class="t-block">
-        <ng-content></ng-content>
-    </div>
-</section>
+</ng-container>
