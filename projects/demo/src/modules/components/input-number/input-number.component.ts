@@ -59,6 +59,10 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
+    readonly alignVariants: readonly string[] = ['left', 'right'];
+
+    align = this.alignVariants[0];
+
     readonly autocompleteVariants: TuiAutofillFieldName[] = ['off', 'transaction-amount'];
 
     autocomplete: TuiAutofillFieldName | '' = '';
@@ -73,7 +77,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     precision = this.precisionVariants[0];
 
-    readonly postfixVariants: readonly string[] = ['', '$', 'GBP'];
+    readonly postfixVariants: readonly string[] = ['', '$', 'GBP', 'Very long text'];
 
     prefix = this.postfixVariants[0];
 
