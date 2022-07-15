@@ -119,14 +119,6 @@ export class TuiInputCopyComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     copy(): void {
         if (!this.textfield || !this.textfield.nativeFocusableElement) {
             return;

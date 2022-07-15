@@ -106,10 +106,6 @@ export class TuiInputMonthComponent
         this.close();
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

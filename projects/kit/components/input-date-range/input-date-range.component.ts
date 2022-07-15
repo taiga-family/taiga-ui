@@ -214,7 +214,7 @@ export class TuiInputDateRangeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 
@@ -340,14 +340,6 @@ export class TuiInputDateRangeComponent
             this.updateValue(null);
             this.nativeValue = '';
         }
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onActiveZone(focused: boolean): void {
