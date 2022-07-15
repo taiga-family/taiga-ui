@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiFocusableModule,
-    TuiFocusedModule,
-    TuiHoveredModule,
-    TuiPressedModule,
-} from '@taiga-ui/cdk';
+import {TuiFocusableModule, TuiFocusedModule} from '@taiga-ui/cdk';
 import {TuiRadioModule} from '@taiga-ui/kit/components/radio';
 
 import {TuiRadioLabeledComponent} from './radio-labeled.component';
@@ -17,8 +12,6 @@ import {TuiRadioLabeledComponent} from './radio-labeled.component';
         FormsModule,
         TuiFocusableModule,
         TuiFocusedModule,
-        TuiHoveredModule,
-        TuiPressedModule,
         TuiRadioModule,
     ],
     declarations: [TuiRadioLabeledComponent],

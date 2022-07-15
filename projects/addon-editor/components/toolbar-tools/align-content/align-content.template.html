@@ -16,7 +16,7 @@
             [tuiHint]="texts.justify"
             [tuiHintId]="alignBtn.id"
             [tuiDescribedBy]="alignBtn.id"
-            [pseudoPressed]="align.open"
+            [pseudoActive]="align.open"
             [focusable]="align.open"
         ></button>
         <ng-template #alignDropdown>
@@ -28,7 +28,7 @@
                     icon="tuiIconAlignLeftLarge"
                     appearance="icon"
                     class="t-option t-option_margin"
-                    [pseudoPressed]="alignState.left"
+                    [pseudoActive]="alignState.left"
                     [tuiHint]="texts.justifyLeft"
                     (click)="editor.onAlign('left')"
                 ></button>
@@ -39,7 +39,7 @@
                     icon="tuiIconAlignCenterLarge"
                     appearance="icon"
                     class="t-option t-option_margin"
-                    [pseudoPressed]="alignState.center"
+                    [pseudoActive]="alignState.center"
                     [tuiHint]="texts.justifyCenter"
                     (click)="editor.onAlign('center')"
                 ></button>
@@ -50,7 +50,7 @@
                     icon="tuiIconAlignRightLarge"
                     appearance="icon"
                     class="t-option t-option_margin"
-                    [pseudoPressed]="alignState.right"
+                    [pseudoActive]="alignState.right"
                     [tuiHint]="texts.justifyRight"
                     (click)="editor.onAlign('right')"
                 ></button>
@@ -61,7 +61,7 @@
                     icon="tuiIconAlignJustifyLarge"
                     appearance="icon"
                     class="t-option t-option_margin"
-                    [pseudoPressed]="alignState.justify"
+                    [pseudoActive]="alignState.justify"
                     [tuiHint]="texts.justifyFull"
                     (click)="editor.onAlign('justify')"
                 ></button>
