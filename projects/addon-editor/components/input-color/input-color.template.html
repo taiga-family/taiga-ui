@@ -7,9 +7,9 @@
         tuiTextfieldAutocomplete="off"
         class="t-textfield"
         [tuiTextfieldIconLeft]="color"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoPressed]="pseudoPressed"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoActive]="pseudoActive"
         [invalid]="computedInvalid"
         [focusable]="focusable"
         [nativeId]="nativeId"
@@ -18,8 +18,6 @@
         [value]="value"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
-        (hoveredChange)="onHovered($event)"
-        (pressedChange)="onPressed($event)"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>

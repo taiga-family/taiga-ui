@@ -112,12 +112,6 @@ export class TuiAccordionItemComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    onHovered(hovered: boolean): void {
-        if (!this.disableHover) {
-            this.updateHovered(hovered);
-        }
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

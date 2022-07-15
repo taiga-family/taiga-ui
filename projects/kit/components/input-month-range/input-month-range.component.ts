@@ -119,10 +119,6 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onOpenChange(open: boolean): void {
         this.open = open;
     }
