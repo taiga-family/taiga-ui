@@ -58,10 +58,7 @@ export class TuiLineClampComponent implements AfterViewInit {
     content: PolymorpheusContent = '';
 
     @Output()
-    readonly overflowChange: Observable<{isOverflown: boolean}> = this.isOverflown$.pipe(
-        distinctUntilChanged(),
-        map(isOverflown => ({isOverflown})),
-    );
+    readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(distinctUntilChanged());
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
