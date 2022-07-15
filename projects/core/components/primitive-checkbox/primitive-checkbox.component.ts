@@ -34,11 +34,11 @@ export class TuiPrimitiveCheckboxComponent {
 
     @Input()
     @tuiDefaultProp()
-    hovered = false;
+    hovered: boolean | null = false;
 
     @Input()
     @tuiDefaultProp()
-    pressed = false;
+    pressed: boolean | null = false;
 
     @Input()
     @tuiDefaultProp()

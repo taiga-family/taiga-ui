@@ -131,14 +131,6 @@ export class TuiToggleComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
