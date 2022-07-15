@@ -22,7 +22,6 @@ import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
-    map,
     mapTo,
     pairwise,
     startWith,
