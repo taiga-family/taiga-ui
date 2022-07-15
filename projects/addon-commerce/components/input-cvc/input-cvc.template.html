@@ -9,13 +9,12 @@
     [textMask]="textMaskOptions"
     [invalid]="computedInvalid"
     [focusable]="focusable"
-    [pseudoHovered]="pseudoHovered"
-    [pseudoPressed]="pseudoPressed"
-    [pseudoFocused]="pseudoFocused"
+    [pseudoHover]="pseudoHover"
+    [pseudoActive]="pseudoActive"
+    [pseudoFocus]="pseudoFocus"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
-    (hoveredChange)="onHovered($event)"
     (copy.prevent)="onCopy()"
 >
     <ng-content></ng-content>

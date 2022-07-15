@@ -124,7 +124,7 @@ export class TuiInputFilesComponent
     }
 
     get computedPseudoHovered(): boolean | null {
-        return this.pseudoHovered ?? (this.fileDragged || null);
+        return this.pseudoHover ?? (this.fileDragged || null);
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {
@@ -148,16 +148,8 @@ export class TuiInputFilesComponent
         return this.getValueArray(this.value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onFilesSelected(
