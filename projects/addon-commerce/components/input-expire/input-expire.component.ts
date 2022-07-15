@@ -110,10 +110,6 @@ export class TuiInputExpireComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     protected getFallbackValue(): string {
         return ``;
     }
