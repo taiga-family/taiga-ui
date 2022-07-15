@@ -9,11 +9,10 @@
         tuiWrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
-        [focused]="computedFocused"
-        [hover]="computedHovered"
+        [focus]="computedFocused"
+        [hover]="pseudoHover"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
-        (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">
