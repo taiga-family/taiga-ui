@@ -1,15 +1,11 @@
-<label
-    class="t-wrapper"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
->
+<label class="t-wrapper">
     <div
         tuiWrapper
         [appearance]="appearance"
         [disabled]="computedDisabled"
-        [focused]="computedFocusVisible"
-        [hover]="computedHovered"
-        [active]="computedPressed"
+        [focus]="computedFocusVisible"
+        [hover]="pseudoHover"
+        [active]="pseudoActive"
         [invalid]="computedInvalid"
     >
         <div class="t-content-wrapper">
@@ -24,9 +20,9 @@
                     [readOnly]="readOnly"
                     [pseudoDisabled]="computedDisabled"
                     [pseudoInvalid]="computedInvalid"
-                    [pseudoFocused]="false"
-                    [pseudoHovered]="computedHovered"
-                    [pseudoPressed]="computedPressed"
+                    [pseudoFocus]="false"
+                    [pseudoHover]="pseudoHover"
+                    [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
                     [ngModel]="value"
                     (ngModelChange)="onModelChange($event)"

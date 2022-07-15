@@ -133,14 +133,6 @@ export class TuiInputPasswordComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
     }

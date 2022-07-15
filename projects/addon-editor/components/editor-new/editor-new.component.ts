@@ -102,10 +102,6 @@ export class TuiEditorNewComponent
         );
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     selectLinkIfClosest(): void {
         if (this.getMarkedLinkBeforeSelectClosest()) {
             this.editor?.selectClosest();
