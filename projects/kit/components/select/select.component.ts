@@ -127,10 +127,6 @@ export class TuiSelectComponent<T>
         this.updateFocused(active);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
             this.updateValue(null);

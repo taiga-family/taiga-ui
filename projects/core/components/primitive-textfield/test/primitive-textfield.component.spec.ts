@@ -31,7 +31,7 @@ describe('PrimitiveTextfield', () => {
                 [disabled]="disabled"
                 [filler]="filler"
                 [postfix]="postfix"
-                [pseudoFocused]="focused"
+                [pseudoFocus]="focused"
                 [(value)]="value"
             ></tui-primitive-textfield>
         `,

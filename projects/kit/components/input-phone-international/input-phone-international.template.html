@@ -16,7 +16,7 @@
             [disabled]="disabled"
             [focusable]="focusable"
             [editable]="false"
-            [pseudoFocused]="open || null"
+            [pseudoFocus]="open || null"
             [readOnly]="readOnly"
             [tuiHintContent]="null"
         ></tui-primitive-textfield>
@@ -30,8 +30,8 @@
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
             [readOnly]="readOnly"
             [pseudoInvalid]="computedInvalid"
-            [pseudoFocused]="pseudoFocused"
-            [pseudoHovered]="pseudoHovered"
+            [pseudoFocus]="pseudoFocus"
+            [pseudoHover]="pseudoHover"
             (ngModelChange)="onModelChange($event)"
         >
             <ng-content></ng-content>

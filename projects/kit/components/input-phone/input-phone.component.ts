@@ -164,10 +164,6 @@ export class TuiInputPhoneComponent
         return this.computedValue !== this.countryCode && this.textfieldCleaner.cleaner;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onDrop(event: DragEvent): void {
         if (!event.dataTransfer) {
             return;

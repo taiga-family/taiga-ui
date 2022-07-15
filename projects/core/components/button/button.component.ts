@@ -1,6 +1,5 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     forwardRef,
@@ -11,21 +10,15 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    pressedObservable,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_TAKE_ONLY_TRUSTED_EVENTS,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
-    TuiHoveredService,
     tuiIsNativeFocused,
-    watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
 
@@ -40,7 +33,6 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
             useExisting: forwardRef(() => TuiButtonComponent),
         },
         TuiDestroyService,
-        TuiHoveredService,
         TuiFocusVisibleService,
     ],
 })
@@ -83,27 +75,9 @@ export class TuiButtonComponent
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
-        private readonly takeOnlyTrustedEvents: boolean,
         @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
     ) {
         super();
-
-        hoveredService
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(hovered => {
-                this.updateHovered(hovered);
-            });
-        pressedObservable(elementRef.nativeElement, {
-            onlyTrusted: this.takeOnlyTrustedEvents,
-        })
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(pressed => {
-                this.updatePressed(pressed);
-            });
         focusVisible$.subscribe(focusVisible => {
             this.updateFocusVisible(focusVisible);
         });

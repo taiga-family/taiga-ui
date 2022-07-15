@@ -78,12 +78,6 @@ export class TuiActionComponent extends AbstractTuiInteractive {
         this.updateFocused(focused);
     }
 
-    @HostListener('mouseenter', ['true'])
-    @HostListener('mouseleave', ['false'])
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
