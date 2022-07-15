@@ -18,15 +18,15 @@ export abstract class AbstractTuiInteractive {
 
     @Input()
     @tuiDefaultProp()
-    pseudoHovered: boolean | null = null;
+    pseudoHover: boolean | null = null;
 
     @Input()
     @tuiDefaultProp()
-    pseudoPressed: boolean | null = null;
+    pseudoActive: boolean | null = null;
 
     @Input()
     @tuiDefaultProp()
-    pseudoFocused: boolean | null = null;
+    pseudoFocus: boolean | null = null;
 
     /**
      * Determines if component is focusable with keyboard.
@@ -45,22 +45,8 @@ export abstract class AbstractTuiInteractive {
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
 
-    /** @deprecated use `tuiPressedChange` directive */
-    @Output()
-    readonly pressedChange = new EventEmitter<boolean>();
-
-    /** @deprecated use `tuiHoveredChange` directive */
-    @Output()
-    readonly hoveredChange = new EventEmitter<boolean>();
-
     @Output()
     readonly focusVisibleChange = new EventEmitter<boolean>();
-
-    /** @deprecated use `tuiHoveredChange` directive */
-    hovered = false;
-
-    /** @deprecated use `tuiPressedChange` directive */
-    pressed = false;
 
     focusVisible = false;
 
@@ -73,55 +59,23 @@ export abstract class AbstractTuiInteractive {
         return this.disabled;
     }
 
-    /** @deprecated */
-    @HostBinding('class._hovered')
-    get computedHovered(): boolean {
-        return !this.computedDisabled && (this.pseudoHovered ?? this.hovered);
-    }
-
-    /** @deprecated */
-    @HostBinding('class._pressed')
-    get computedPressed(): boolean {
-        return !this.computedDisabled && (this.pseudoPressed ?? this.pressed);
-    }
-
     get computedFocusable(): boolean {
         return !this.computedDisabled && (this.focusable || this.focused);
     }
 
     @HostBinding('class._focused')
     get computedFocused(): boolean {
-        return !this.computedDisabled && (this.pseudoFocused ?? this.focused);
+        return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
     }
 
     @HostBinding('class._focus-visible')
     get computedFocusVisible(): boolean {
-        return !this.computedDisabled && (this.pseudoFocused ?? this.focusVisible);
+        return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
     }
 
     // TODO: 3.0 Consider removing since native input is exposed
     get id(): string {
         return this.nativeId ? this.nativeId : this.autoIdString;
-    }
-
-    /** @deprecated */
-    protected updateHovered(hovered: boolean): void {
-        if (this.hovered === hovered) {
-            return;
-        }
-
-        this.hovered = hovered;
-        this.hoveredChange.emit(hovered);
-    }
-
-    /** @deprecated */
-    protected updatePressed(pressed: boolean): void {
-        if (this.pressed === pressed) {
-            return;
-        }
-
-        this.pressed = pressed;
-        this.pressedChange.emit(pressed);
     }
 
     protected updateFocused(focused: boolean): void {
