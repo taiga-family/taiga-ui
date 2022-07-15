@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
     Inject,
@@ -35,7 +36,7 @@ import {
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent implements AfterViewInit {
+export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
@@ -99,8 +100,6 @@ export class TuiLineClampComponent implements AfterViewInit {
     }
 
     get computedContent(): PolymorpheusContent {
-        this.isOverflown$.next(this.overflown);
-
         return this.options.showHint && this.overflown ? this.content : '';
     }
 
@@ -120,6 +119,10 @@ export class TuiLineClampComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.initialized = true;
+    }
+
+    ngDoCheck(): void {
+        this.isOverflown$.next(this.overflown);
     }
 
     private skipInitialTransition(): void {
