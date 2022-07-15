@@ -5,8 +5,6 @@ import {
     TuiFocusableModule,
     TuiFocusedModule,
     TuiFocusVisibleModule,
-    TuiHoveredModule,
-    TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {TuiWrapperModule} from '@taiga-ui/core';
 
@@ -18,8 +16,6 @@ import {TuiRadioComponent} from './radio.component';
         TuiCheckedModule,
         TuiFocusableModule,
         TuiFocusedModule,
-        TuiHoveredModule,
-        TuiPressedModule,
         TuiFocusVisibleModule,
         TuiWrapperModule,
     ],

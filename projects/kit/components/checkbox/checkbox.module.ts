@@ -5,8 +5,6 @@ import {
     TuiFocusableModule,
     TuiFocusedModule,
     TuiFocusVisibleModule,
-    TuiHoveredModule,
-    TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {TuiPrimitiveCheckboxModule} from '@taiga-ui/core';
 
@@ -18,8 +16,6 @@ import {TuiCheckboxComponent} from './checkbox.component';
         TuiCheckedModule,
         TuiFocusableModule,
         TuiFocusedModule,
-        TuiHoveredModule,
-        TuiPressedModule,
         TuiFocusVisibleModule,
         TuiPrimitiveCheckboxModule,
     ],
