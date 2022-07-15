@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION, NIGHT_THEME_KEY} from './shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION, NIGHT_THEME_KEY} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
@@ -110,9 +110,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         cy.get('@app').invoke('addClass', '_no-smooth-scroll');
     }
 
-    cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
+    cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION); // wait until app load some synchronous code
 
-    // cy.get('app._loaded').should('exist'); // uncomment when next-app will have this class
+    cy.get('app._loaded').should('exist');
 
     if (hideHeader) {
         cy.tuiHideHeader();
