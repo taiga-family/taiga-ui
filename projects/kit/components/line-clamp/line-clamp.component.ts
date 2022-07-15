@@ -8,13 +8,26 @@ import {
     Inject,
     Input,
     NgZone,
+    Output,
     Renderer2,
     ViewChild,
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
+import {
+    TUI_LINE_CLAMP_OPTIONS,
+    TuiLineClampOptions,
+} from '@taiga-ui/kit/components/line-clamp/line-clamp-options';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {
+    distinctUntilChanged,
+    filter,
+    map,
+    mapTo,
+    pairwise,
+    startWith,
+    switchMap,
+} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-line-clamp',
@@ -27,6 +40,7 @@ export class TuiLineClampComponent implements AfterViewInit {
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly linesLimit$ = new BehaviorSubject(1);
+    private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
 
     @Input()
@@ -43,11 +57,22 @@ export class TuiLineClampComponent implements AfterViewInit {
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
+    @Input()
+    @tuiDefaultProp()
+    showHint = this.options.showHint;
+
+    @Output()
+    readonly overflowChange: Observable<{isOverflown: boolean}> = this.isOverflown$.pipe(
+        distinctUntilChanged(),
+        map(isOverflown => ({isOverflown})),
+    );
+
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
     ) {
         this.skipInitialTransition();
     }
@@ -81,7 +106,9 @@ export class TuiLineClampComponent implements AfterViewInit {
     }
 
     get computedContent(): PolymorpheusContent {
-        return this.overflown ? this.content : '';
+        this.isOverflown$.next(this.overflown);
+
+        return this.showHint && this.overflown ? this.content : '';
     }
 
     @HostBinding('style.maxHeight.px')
