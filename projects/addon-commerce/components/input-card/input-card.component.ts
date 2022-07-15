@@ -155,10 +155,6 @@ export class TuiInputCardComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     writeValue(value: string | null): void {
         const currentBin = this.bin;
 
