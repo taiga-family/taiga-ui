@@ -13,10 +13,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
-import {
-    TUI_LINE_CLAMP_OPTIONS,
-    TuiLineClampOptions,
-} from './line-clamp-options';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
@@ -27,6 +23,11 @@ import {
     startWith,
     switchMap,
 } from 'rxjs/operators';
+
+import {
+    TUI_LINE_CLAMP_OPTIONS,
+    TuiLineClampOptions,
+} from './line-clamp-options';
 
 @Component({
     selector: 'tui-line-clamp',
