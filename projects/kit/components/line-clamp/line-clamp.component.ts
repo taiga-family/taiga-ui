@@ -57,10 +57,6 @@ export class TuiLineClampComponent implements AfterViewInit {
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
-    @Input()
-    @tuiDefaultProp()
-    showHint = this.options.showHint;
-
     @Output()
     readonly overflowChange: Observable<{isOverflown: boolean}> = this.isOverflown$.pipe(
         distinctUntilChanged(),
@@ -108,7 +104,7 @@ export class TuiLineClampComponent implements AfterViewInit {
     get computedContent(): PolymorpheusContent {
         this.isOverflown$.next(this.overflown);
 
-        return this.showHint && this.overflown ? this.content : '';
+        return this.options.showHint && this.overflown ? this.content : '';
     }
 
     @HostBinding('style.maxHeight.px')
