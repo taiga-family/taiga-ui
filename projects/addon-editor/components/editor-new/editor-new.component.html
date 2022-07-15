@@ -4,15 +4,14 @@
     class="t-outline"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hover]="computedHovered"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
     [invalid]="computedInvalid"
 >
     <div
         *tuiLet="editorLoaded$ | async as editorLoaded"
         class="t-wrapper"
         [class.t-wrapper_disabled]="disabled"
-        (tuiHoveredChange)="onHovered($event)"
         (tuiActiveZoneChange)="onActiveZone($event)"
     >
         <div class="t-toolbar-wrapper">

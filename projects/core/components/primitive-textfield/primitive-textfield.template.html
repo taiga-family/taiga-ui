@@ -5,14 +5,13 @@
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hover]="computedHovered"
-    [active]="computedPressed"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
     [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
     (click.prevent.silent)="(0)"
-    (tuiHoveredChange)="onHovered($event)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >
     <ng-content select="input"></ng-content>

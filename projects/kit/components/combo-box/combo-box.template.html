@@ -8,8 +8,8 @@
     <tui-primitive-textfield
         automation-id="tui-combo-box__textfield"
         class="textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="computedHovered"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
@@ -18,7 +18,6 @@
         [focusable]="computedFocusable"
         [value]="nativeValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (click)="toggle()"
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
