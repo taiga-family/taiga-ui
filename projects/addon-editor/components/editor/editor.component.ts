@@ -208,10 +208,6 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         this.updateValue(value.trim() === '<br>' ? '' : value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onFocusedChange(focused: boolean): void {
         this.updateFocused(focused);
         this.linkDropdownEnabled = focused || this.linkDropdownEnabled;
