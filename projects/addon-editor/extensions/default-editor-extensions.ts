@@ -25,6 +25,9 @@ export const defaultEditorExtensions = [
     import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiDetailsContent),
     import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiDetails),
     import('@taiga-ui/addon-editor/extensions/details').then(m => m.TuiSummary),
+    import('@taiga-ui/addon-editor/extensions/font-size').then(
+        ({TuiFontSize}) => TuiFontSize,
+    ),
 ];
 
 // TODO: 3.0 remove in ivy compilation

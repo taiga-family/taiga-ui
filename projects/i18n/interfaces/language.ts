@@ -183,7 +183,9 @@ export interface LanguageEditor {
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];
     editorFontOptions: {
+        small: string;
         normal: string;
+        large: string;
         title: string;
         subtitle: string;
     };

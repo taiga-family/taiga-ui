@@ -4,8 +4,11 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
     TUI_EDITOR_FONT_OPTIONS,
+    TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
+    TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
+import {tuiPx} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -17,32 +20,13 @@ import {map} from 'rxjs/operators';
 })
 export class TuiFontSizeComponent {
     readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
-        this.fontOptionsTexts$.pipe(
-            map(texts => [
-                {
-                    px: 15,
-                    name: texts.normal,
-                },
-                {
-                    px: 24,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.subtitle,
-                    headingLevel: 2,
-                    weight: 'bold',
-                },
-                {
-                    px: 30,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.title,
-                    headingLevel: 1,
-                    weight: 'bold',
-                },
-            ]),
-        );
+        this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
 
     readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
 
     constructor(
+        @Inject(TUI_EDITOR_OPTIONS)
+        private readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
@@ -52,11 +36,11 @@ export class TuiFontSizeComponent {
         >,
     ) {}
 
-    onClick({headingLevel}: Partial<TuiEditorFontOption>): void {
+    onClick({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
         } else {
-            this.editor.setParagraph();
+            this.editor.setParagraph({fontSize: tuiPx(px || 0)});
         }
     }
 }

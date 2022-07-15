@@ -50,6 +50,8 @@ export const TUI_ENGLISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Code in the text', 'Code in block'],
     editorFontOptions: {
+        small: 'Small',
+        large: 'Large',
         normal: 'Normal',
         title: 'Title',
         subtitle: 'Subtitle',

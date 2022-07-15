@@ -50,7 +50,9 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Код', 'Код в блоке'],
     editorFontOptions: {
+        small: 'Small',
         normal: 'Обычный',
+        large: 'Large',
         title: 'Заголовок',
         subtitle: 'Подзаголовок',
     },

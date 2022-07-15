@@ -50,7 +50,9 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Code in the text', 'Code in block'],
     editorFontOptions: {
+        small: 'Small',
         normal: 'Normal',
+        large: 'Large',
         title: 'Title',
         subtitle: 'Subtitle',
     },

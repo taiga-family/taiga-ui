@@ -50,7 +50,9 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Codice nel testo', 'Codice nel blocco'],
     editorFontOptions: {
+        small: 'Small',
         normal: 'Normale',
+        large: 'Large',
         title: 'Titolo',
         subtitle: 'Sottotitolo',
     },
