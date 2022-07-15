@@ -111,6 +111,7 @@ describe('Slider', () => {
 
                 cy.get('@example').matchImageSnapshot(
                     '05-slider-ngModel-decrease-by-1-step',
+                    {padding: [30, 0, 0, 0]},
                 );
             });
 
@@ -124,6 +125,7 @@ describe('Slider', () => {
 
                 cy.get('@example').matchImageSnapshot(
                     '06-slider-ngModel-increase-by-1-step',
+                    {padding: [30, 0, 0, 0]},
                 );
             });
 
@@ -137,6 +139,7 @@ describe('Slider', () => {
 
                 cy.get('@example').matchImageSnapshot(
                     '07-slider-ngModel-increase-by-2-step',
+                    {padding: [30, 0, 0, 0]},
                 );
             });
         });

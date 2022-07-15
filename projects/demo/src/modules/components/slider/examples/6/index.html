@@ -8,14 +8,30 @@
         class="minus"
         (click)="change(-0.25)"
     ></button>
-    <input
-        tuiSlider
-        type="range"
-        step="any"
-        [min]="min"
-        [max]="max"
-        [(ngModel)]="value"
-    />
+    <label
+        tuiSliderThumbLabel
+        class="slider-wrapper"
+    >
+        <div
+            tuiHintMode="onDark"
+            tuiHintDirection="top-middle"
+            [tuiManualHint]="hint"
+            [tuiManualHintShow]="!!(showHint$ | async)"
+        ></div>
+
+        <ng-template #hint>
+            {{ value | percent }}
+        </ng-template>
+
+        <input
+            tuiSlider
+            type="range"
+            step="any"
+            [min]="min"
+            [max]="max"
+            [(ngModel)]="value"
+        />
+    </label>
     <button
         tuiIconButton
         appearance="flat"

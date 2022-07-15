@@ -8,13 +8,14 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 
-import {TuiSliderComponent} from './slider.component';
 import {
     TuiSliderKeyStepsDirective,
     TuiSliderTickLabelPipe,
-} from './slider-key-steps.directive';
+} from './helpers/slider-key-steps.directive';
+import {TuiSliderReadonlyDirective} from './helpers/slider-readonly.directive';
+import {TuiSliderThumbLabelComponent} from './helpers/slider-thumb-label/slider-thumb-label.component';
+import {TuiSliderComponent} from './slider.component';
 import {TuiSliderOldComponent} from './slider-old.component';
-import {TuiSliderReadonlyDirective} from './slider-readonly.directive';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import {TuiSliderReadonlyDirective} from './slider-readonly.directive';
     ],
     declarations: [
         TuiSliderComponent,
+        TuiSliderThumbLabelComponent,
         TuiSliderKeyStepsDirective,
         TuiSliderReadonlyDirective,
         TuiSliderTickLabelPipe,
@@ -34,6 +36,7 @@ import {TuiSliderReadonlyDirective} from './slider-readonly.directive';
     ],
     exports: [
         TuiSliderComponent,
+        TuiSliderThumbLabelComponent,
         TuiSliderKeyStepsDirective,
         TuiSliderReadonlyDirective,
         TuiSliderTickLabelPipe,

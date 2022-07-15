@@ -1,0 +1,28 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+}
+
+.calculate-ghost-params(@thumb) {
+    width: @thumb;
+    height: @thumb;
+    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb));
+}
+
+.t-ghost {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    pointer-events: none;
+
+    &[data-size='s'] {
+        .calculate-ghost-params(@thumb-diameters[@s]);
+    }
+
+    &[data-size='m'] {
+        .calculate-ghost-params(@thumb-diameters[@m]);
+    }
+}
