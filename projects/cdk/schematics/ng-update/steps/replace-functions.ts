@@ -2,13 +2,24 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {Node} from 'ng-morph';
 import {removeImport} from '../../utils/import-manipulations';
 import {DEPRECATED_FUNCTIONS} from '../constants/deprecated-functions';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function replaceFunctions() {
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} functions replacing...`);
+
     replacePadStart(getNamedImportReferences('padStart', '@taiga-ui/cdk'));
     replaceFallbackValue(getNamedImportReferences('fallbackValue', '@taiga-ui/cdk'));
     replaceCustomEvent(getNamedImportReferences('tuiCustomEvent', '@taiga-ui/cdk'));
     replaceClosestElement(getNamedImportReferences('getClosestElement', '@taiga-ui/cdk'));
     replaceDeprecatedFunction();
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
 }
 
 function replaceDeprecatedFunction() {

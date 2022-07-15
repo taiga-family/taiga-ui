@@ -2,11 +2,22 @@ import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {ENUMS_TO_REPLACE} from '../constants/enums';
 import {removeImport} from '../../utils/import-manipulations';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function replaceEnums(): void {
-    ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) => {
-        replaceEnumWithString(name, replaceValues, keepAsType);
-    });
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
+
+    ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) =>
+        replaceEnumWithString(name, replaceValues, keepAsType),
+    );
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
 }
 
 function replaceEnumWithString(

@@ -1,8 +1,17 @@
 import {CallExpression, Identifier, Node, SyntaxKind} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {insertTodo} from '../../utils/insert-todo';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function dateTimeMigrations() {
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
+
     migrateProperty({
         namedImport: 'TuiDay',
         moduleSpecifier: '@taiga-ui/cdk',
@@ -88,6 +97,8 @@ export function dateTimeMigrations() {
             callback: node => insertTodoBeforeNode(node, message),
         });
     });
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
 }
 
 function migrateProperty({

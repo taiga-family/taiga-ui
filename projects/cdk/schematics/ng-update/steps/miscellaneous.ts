@@ -1,8 +1,17 @@
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node, SyntaxKind, TypeReferenceNode} from 'ng-morph';
 import {insertTodo} from '../../utils/insert-todo';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function miscellaneousMigrations() {
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
+
     replaceEnumProperty({
         enumName: 'TuiCurrency',
         from: 'HongKong_dollar',
@@ -19,6 +28,8 @@ export function miscellaneousMigrations() {
         'addStyle',
         'addStyle method has been removed. Use components approach',
     );
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
 }
 
 function addWarningToMethod(className: string, method: string, message: string) {
