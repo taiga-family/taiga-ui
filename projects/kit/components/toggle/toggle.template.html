@@ -3,9 +3,9 @@
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
-    [hover]="computedHovered"
-    [active]="computedPressed"
+    [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
     <div class="t-toggle">
@@ -68,8 +68,6 @@
         [tuiFocusable]="focusable"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiHoveredChange)="onHovered($event)"
-        (tuiPressedChange)="onPressed($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
 </div>

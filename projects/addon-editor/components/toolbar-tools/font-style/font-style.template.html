@@ -17,7 +17,7 @@
             [tuiHint]="texts.fontStyle"
             [tuiHintId]="formatBtn.id"
             [tuiDescribedBy]="formatBtn.id"
-            [pseudoPressed]="format.open || state.bold || state.italic || state.underline || state.strike"
+            [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
             [focusable]="format.open"
         ></button>
         <ng-template #formatDropdown>
@@ -31,7 +31,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.bold"
-                    [pseudoPressed]="state.bold"
+                    [pseudoActive]="state.bold"
                     (click)="editor.toggleBold()"
                 ></button>
                 <button
@@ -43,7 +43,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.italic"
-                    [pseudoPressed]="state.italic"
+                    [pseudoActive]="state.italic"
                     (click)="editor.toggleItalic()"
                 ></button>
                 <button
@@ -55,7 +55,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.underline"
-                    [pseudoPressed]="state.underline"
+                    [pseudoActive]="state.underline"
                     (click)="editor.toggleUnderline()"
                 ></button>
                 <button
@@ -67,7 +67,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.strikeThrough"
-                    [pseudoPressed]="state.strike"
+                    [pseudoActive]="state.strike"
                     (click)="editor.toggleStrike()"
                 ></button>
             </div>
