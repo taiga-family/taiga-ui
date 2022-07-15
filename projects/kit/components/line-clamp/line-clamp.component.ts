@@ -16,7 +16,7 @@ import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-u
 import {
     TUI_LINE_CLAMP_OPTIONS,
     TuiLineClampOptions,
-} from '@taiga-ui/kit/components/line-clamp/line-clamp-options';
+} from './line-clamp-options';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
