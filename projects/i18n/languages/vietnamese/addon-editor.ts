@@ -40,8 +40,8 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         splitCells: 'Tách ô',
         rowsColumnsManaging: 'Quản lý hàng và cột',
         cellColor: 'Màu ô',
-        setDetails: 'Details',
-        removeDetails: 'Remove details',
+        setDetails: 'Chi tiết',
+        removeDetails: 'Hủy chi tiết',
     },
     editorTableCommands: [
         ['Chèn cột trước', 'Chèn cột sau'],
