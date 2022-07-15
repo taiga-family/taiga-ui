@@ -4,11 +4,22 @@ import {getImports, ImportSpecifier, Node} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {TYPES_TO_RENAME} from '../constants/types';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function renameTypes(): void {
-    TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier, preserveGenerics}) => {
-        renameType(from, to, moduleSpecifier, preserveGenerics);
-    });
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
+
+    TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
+        renameType(from, to, moduleSpecifier, preserveGenerics),
+    );
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
 }
 
 function renameType(

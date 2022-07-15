@@ -30,11 +30,20 @@ import {ElementLocation} from 'parse5';
 import {addProviderToComponent} from 'ng-morph';
 import {getNgComponents} from '../../utils/angular/ng-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
+
     const componentWithTemplatesPaths = getComponentTemplates('**/**');
     const actions = [
         replaceTags,
@@ -55,6 +64,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
             action({resource, fileSystem, recorder});
         });
     });
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }
 
 function replaceAttrsByDirective({

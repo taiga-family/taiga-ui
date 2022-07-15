@@ -9,6 +9,13 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
@@ -16,6 +23,8 @@ export const DEPRECATED_PROGRESS_PIPES_REG =
 const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 
 export function migrateProgress(fileSystem: DevkitFileSystem): void {
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
+
     const templateResources = getComponentTemplates('**/**');
 
     for (const templateResource of templateResources) {
@@ -25,6 +34,8 @@ export function migrateProgress(fileSystem: DevkitFileSystem): void {
     fileSystem.commitEdits();
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
 }
 
 function replaceProgressColorSegmentsPipe(

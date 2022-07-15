@@ -3,16 +3,29 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {Node, PropertyAccessExpression, SyntaxKind, TypeReferenceNode} from 'ng-morph';
 import {removeImport} from '../../utils/import-manipulations';
 import {addUniqueImport} from '../../utils/add-unique-import';
-import {infoLog} from '../../utils/colored-log';
+import {
+    infoLog,
+    PROCESSING_SYMBOL,
+    processLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 
 export function replaceServices(): void {
-    SERVICES_TO_REPLACE.forEach(service => {
-        infoLog(`replacing ${service.from.name}`);
-        replaceService(service);
-    });
+    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
+
+    SERVICES_TO_REPLACE.forEach(service => replaceService(service));
+
+    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
 }
 
 function replaceService({from, to, replaceMethods}: ReplacementService): void {
+    processLog(
+        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
+    );
+
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     references.forEach(ref => {

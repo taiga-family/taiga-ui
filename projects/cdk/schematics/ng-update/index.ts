@@ -4,7 +4,7 @@ import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
-import {replaceConsts} from './steps/replace-const';
+import {replaceConstants} from './steps/replace-const';
 import {replaceDeepImports} from './steps/replace-deep-import';
 import {showWarnings} from './steps/show-warnings';
 import {replaceServices} from './steps/replace-services';
@@ -15,67 +15,47 @@ import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import {infoLog, successLog} from '../utils/colored-log';
+import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        console.info('\x1b[35m', `taiga packages will be updated to ${TAIGA_VERSION}`);
+        const t0 = performance.now();
+
+        titleLog(
+            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+        );
 
         const fileSystem = getFileSystem(tree);
 
-        infoLog('replacing deep imports...');
         replaceDeepImports();
-        successLog('deep imports replaced');
-
-        infoLog('replacing enums imports...');
         replaceEnums();
-        successLog('enums replaced');
-
-        infoLog('renaming types...');
         renameTypes();
-        successLog('types renamed');
-
-        infoLog('replacing consts...');
-        replaceConsts();
-        successLog('constants replaced');
-
-        infoLog('replacing services...');
+        replaceConstants();
         replaceServices();
-        successLog('services replaced');
-
         showWarnings(context);
-
-        infoLog('migrating templates...');
         migrateTemplates(fileSystem);
-        successLog('templates migrated');
 
         fileSystem.commitEdits();
         saveActiveProject();
         const updatedFileSystem = getFileSystem(tree);
 
-        infoLog('migrating sliders...');
         migrateSliders(updatedFileSystem);
-        successLog('sliders migrated');
-
-        infoLog('migrating progress bars');
         migrateProgress(updatedFileSystem);
-        successLog('progress bars migrated');
-
-        infoLog('removing modules...');
         removeModules();
-        successLog('modules removed');
-
-        infoLog('migrating taiga date/time ...');
         dateTimeMigrations();
-        successLog('date/time migrated');
-
-        infoLog('miscellaneous migrating...');
         replaceFunctions();
         miscellaneousMigrations();
-        successLog('miscellaneous migrated');
-
         saveActiveProject();
+
+        const t1 = performance.now();
+        const sum = t1 - t0;
+        const result =
+            sum > 1000 ? `${(sum / 1000).toFixed(2)} sec.` : `${sum.toFixed(2)} ms.`;
+
+        titleLog(
+            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${result} \n`,
+        );
     };
 }
 
