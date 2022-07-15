@@ -20,9 +20,7 @@ describe('InputNumber', () => {
                 const readableFormatText = 'Very long text';
 
                 cy.tuiVisit(
-                    encodeURI(
-                        `/components/input-number/API?tuiMode=null&style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
-                    ),
+                    `/components/input-number/API?tuiMode=null&style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
                 );
 
                 cy.get('#demoContent').matchImageSnapshot(

@@ -7,7 +7,7 @@ describe('Input', () => {
 
     it('has custom content (text) + cleaner + hint which dont overlapping each others', () => {
         cy.tuiVisit(
-            `${INPUT_PAGE_URL}/API?tuiHintContent=Some%20content&tuiTextfieldCleaner=true&tuiTextfieldCustomContent=%3Cspan%3ELongTextContent%3C%2Fspan%3E`,
+            `${INPUT_PAGE_URL}/API?tuiHintContent=Some%20content&tuiTextfieldCleaner=true&tuiTextfieldCustomContent=%3Cspan%3ELongTextContent%3Cspan%3E`,
         );
 
         cy.get('#demoContent')

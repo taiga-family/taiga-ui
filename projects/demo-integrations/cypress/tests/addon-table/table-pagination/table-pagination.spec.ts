@@ -19,9 +19,7 @@ describe('TablePagination', () => {
             const longNumber = 10000000000000000000;
 
             cy.tuiVisit(
-                encodeURI(
-                    `/components/table-pagination/API?items=[0, ${longNumber}]&size=${longNumber}&total=${longNumber}&page=0`,
-                ),
+                `/components/table-pagination/API?items=[0, ${longNumber}]&size=${longNumber}&total=${longNumber}&page=0`,
             );
             initializeAliases('#demoContent');
 

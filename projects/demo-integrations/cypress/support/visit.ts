@@ -61,12 +61,16 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     stubExternalIcons();
     stubMetrics();
 
+    const encodedPath = encodeURI(
+        decodeURIComponent(path), // @note: prevent twice encoding
+    );
+
     cy.visit('/', {
         onBeforeLoad: window => {
             const baseHref =
                 window.document.baseURI.replace(`${window.location.origin}/`, '') ||
                 DEFAULT_BASE_HREF;
-            const nextUrl = `/${baseHref}${path}`.replace(REPEATED_SLASH_REG, '/');
+            const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, '/');
 
             setBeforeLoadOptions(window, {inIframe});
 
@@ -79,7 +83,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
                 });
             }
         },
-    }).then(() => cy.url().should('include', path));
+    }).then(() => cy.url().should('include', encodedPath));
 
     if (waitAllIcons) {
         cy.intercept('*.svg').as('icons');
