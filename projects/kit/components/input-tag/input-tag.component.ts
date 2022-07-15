@@ -159,7 +159,7 @@ export class TuiInputTagComponent
             this.scrollToStart$.next();
         }
 
-        this.pseudoFocused = value;
+        this.pseudoFocus = value;
     }
 
     @Output()
@@ -415,10 +415,6 @@ export class TuiInputTagComponent
         }
 
         this.open = this.hasNativeValue;
-    }
-
-    onHoveredChange(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     setDisabledState(): void {

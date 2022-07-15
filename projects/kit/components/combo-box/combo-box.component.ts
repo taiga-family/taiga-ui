@@ -201,10 +201,6 @@ export class TuiComboBoxComponent<T>
         super.updateValue(value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     toggle(): void {
         this.hostedDropdown?.updateOpen(!this.open);
     }
