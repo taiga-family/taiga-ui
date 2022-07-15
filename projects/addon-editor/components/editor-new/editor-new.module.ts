@@ -3,12 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
-import {
-    TuiActiveZoneModule,
-    TuiHoveredModule,
-    TuiItemDirective,
-    TuiLetModule,
-} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiItemDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
 
@@ -26,7 +21,6 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         CommonModule,
         TuiToolbarNewModule,
         TuiWrapperModule,
-        TuiHoveredModule,
         TuiScrollbarModule,
         TuiEditLinkModule,
         TuiActiveZoneModule,

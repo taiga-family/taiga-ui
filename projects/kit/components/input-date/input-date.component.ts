@@ -264,10 +264,6 @@ export class TuiInputDateComponent
         this.open = false;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
