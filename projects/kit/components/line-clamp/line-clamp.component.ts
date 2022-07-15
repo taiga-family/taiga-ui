@@ -1,4 +1,5 @@
 import {
+    AfterViewChecked,
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -22,7 +23,7 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent implements AfterViewInit {
+export class TuiLineClampComponent implements AfterViewInit, AfterViewChecked {
     @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
@@ -73,11 +74,12 @@ export class TuiLineClampComponent implements AfterViewInit {
             return false;
         }
 
-        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
-        const {clientHeight, clientWidth} = this.elementRef.nativeElement;
+        if (this.height === null || this.maxHeight === null) {
+            return false;
+        }
 
         // 4px buffer for IE/Edge incorrectly rounding scrollHeight
-        return scrollHeight - clientHeight > 4 || scrollWidth - clientWidth > 0;
+        return this.height > this.maxHeight + 4;
     }
 
     get computedContent(): PolymorpheusContent {
@@ -100,6 +102,12 @@ export class TuiLineClampComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.initialized = true;
+    }
+
+    ngAfterViewChecked(): void {
+        // need because the first maxHeight is set after ngAfterViewInit
+        // and you need to recalculate the overflown property
+        this.cd.detectChanges();
     }
 
     private skipInitialTransition(): void {
