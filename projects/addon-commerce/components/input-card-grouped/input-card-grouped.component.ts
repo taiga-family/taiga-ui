@@ -379,10 +379,6 @@ export class TuiInputCardGroupedComponent
         this.open = active && this.open;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onMouseDown(event: MouseEvent): void {
         tuiAssertIsElement(event.target);
 

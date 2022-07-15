@@ -12,8 +12,8 @@
         tuiTextfieldInputMode="numeric"
         class="t-textfield"
         [tuiTextfieldIcon]="computedMobile ? mobileIconContent : iconContent"
-        [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="pseudoHovered"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [filler]="getComputedFiller(filler)"
         [nativeId]="nativeId"
@@ -23,7 +23,6 @@
         [textMask]="computedMask"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
