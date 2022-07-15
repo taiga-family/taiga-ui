@@ -127,7 +127,7 @@ export class TuiInputTimeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 
@@ -211,10 +211,6 @@ export class TuiInputTimeComponent
                 this.nativeValue = this.nativeValue.slice(0, -1);
             }
         });
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     onArrowUp(event: Event): void {

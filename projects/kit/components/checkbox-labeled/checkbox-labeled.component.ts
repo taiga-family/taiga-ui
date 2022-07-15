@@ -76,14 +76,6 @@ export class TuiCheckboxLabeledComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     onModelChange(value: boolean): void {
         this.updateValue(value);
     }

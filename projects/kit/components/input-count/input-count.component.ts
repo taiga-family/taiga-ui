@@ -187,14 +187,6 @@ export class TuiInputCountComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     onValueChange(): void {
         const capped = this.capValue(this.nativeNumberValue);
 

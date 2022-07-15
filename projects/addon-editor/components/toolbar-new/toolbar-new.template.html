@@ -102,7 +102,7 @@
             [tuiHint]="texts.quote"
             [tuiHintId]="quoteBtn.id"
             [tuiDescribedBy]="quoteBtn.id"
-            [pseudoPressed]="blockquote"
+            [pseudoActive]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
             (click)="toggleQuote()"
@@ -128,7 +128,7 @@
                 [tuiHint]="texts.link"
                 [tuiHintId]="linkBtn.id"
                 [tuiDescribedBy]="linkBtn.id"
-                [pseudoPressed]="link.open || a"
+                [pseudoActive]="link.open || a"
                 [focusable]="link.open"
             ></button>
             <ng-template #linkDropdown>
@@ -177,7 +177,7 @@
             [tuiHint]="texts.subscript"
             [tuiHintId]="subBtn.id"
             [tuiDescribedBy]="subBtn.id"
-            [pseudoPressed]="subscript"
+            [pseudoActive]="subscript"
             [focusable]="false"
             (click)="toggleSubscript()"
         ></button>
@@ -196,7 +196,7 @@
             [tuiHint]="texts.superscript"
             [tuiHintId]="supBtn.id"
             [tuiDescribedBy]="supBtn.id"
-            [pseudoPressed]="superscript"
+            [pseudoActive]="superscript"
             [focusable]="false"
             (click)="toggleSuperscript()"
         ></button>
