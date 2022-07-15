@@ -271,14 +271,6 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     getFormattedValue(value: number): string {
         const absValue = Math.abs(value);
         const hasFraction = absValue % 1 > 0;

@@ -84,10 +84,6 @@ export class TuiInputComponent
         this.open = true;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }

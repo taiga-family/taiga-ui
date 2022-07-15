@@ -173,14 +173,6 @@ export class TuiTextAreaComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     onValueChange(value: string): void {
         this.updateValue(value);
     }

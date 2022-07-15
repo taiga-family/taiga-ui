@@ -276,10 +276,6 @@ export class TuiPrimitiveTextfieldComponent
         this.updateValue(value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
     }
