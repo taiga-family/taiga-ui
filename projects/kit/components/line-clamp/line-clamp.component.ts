@@ -96,10 +96,6 @@ export class TuiLineClampComponent implements AfterViewInit {
     }
 
     @HostListener('transitionend')
-    transitionend(): void {
-        this.cd.detectChanges();
-    }
-
     updateView(): void {
         this.cd.detectChanges();
     }
