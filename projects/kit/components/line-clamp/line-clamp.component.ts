@@ -5,6 +5,7 @@ import {
     Component,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     NgZone,
@@ -92,6 +93,11 @@ export class TuiLineClampComponent implements AfterViewInit {
     @HostBinding('style.height.px')
     get height(): number | null {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
+    }
+
+    @HostListener('transitionend')
+    transitionend(): void {
+        this.cd.detectChanges();
     }
 
     updateView(): void {
