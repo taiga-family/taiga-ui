@@ -3,18 +3,32 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
     Inject,
     Input,
     NgZone,
+    Output,
     Renderer2,
     ViewChild,
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {
+    distinctUntilChanged,
+    filter,
+    mapTo,
+    pairwise,
+    startWith,
+    switchMap,
+} from 'rxjs/operators';
+
+import {
+    TUI_LINE_CLAMP_OPTIONS,
+    TuiLineClampOptions,
+} from './line-clamp-options';
 
 @Component({
     selector: 'tui-line-clamp',
@@ -22,11 +36,12 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent implements AfterViewInit {
+export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly linesLimit$ = new BehaviorSubject(1);
+    private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
 
     @Input()
@@ -43,11 +58,15 @@ export class TuiLineClampComponent implements AfterViewInit {
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
+    @Output()
+    readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(distinctUntilChanged());
+
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
     ) {
         this.skipInitialTransition();
     }
@@ -81,7 +100,7 @@ export class TuiLineClampComponent implements AfterViewInit {
     }
 
     get computedContent(): PolymorpheusContent {
-        return this.overflown ? this.content : '';
+        return this.options.showHint && this.overflown ? this.content : '';
     }
 
     @HostBinding('style.maxHeight.px')
@@ -100,6 +119,10 @@ export class TuiLineClampComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.initialized = true;
+    }
+
+    ngDoCheck(): void {
+        this.isOverflown$.next(this.overflown);
     }
 
     private skipInitialTransition(): void {
