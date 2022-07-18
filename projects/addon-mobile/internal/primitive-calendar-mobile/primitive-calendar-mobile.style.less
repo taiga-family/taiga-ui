@@ -8,6 +8,8 @@
 
 :host {
     width: 20.75rem;
+    // TODO: investigate problem in mobile calendar
+    /* stylelint-disable-next-line */
     max-width: 100vw;
 
     &._ios {
@@ -39,10 +41,14 @@
     }
 
     &:before {
+        // TODO: investigate problem in mobile calendar
+        /* stylelint-disable-next-line */
         right: -100vw;
     }
 
     &:first-child:before {
+        // TODO: investigate problem in mobile calendar
+        /* stylelint-disable-next-line */
         left: -100vw;
     }
 
@@ -58,6 +64,8 @@
         }
 
         &:last-child:first-child:before {
+            // TODO: investigate problem in mobile calendar
+            /* stylelint-disable-next-line */
             right: -100vw;
         }
     }
