@@ -11,6 +11,10 @@ module.exports = {
                         property: 'screenshot',
                         message: 'Please use matchImageSnapshot instead.',
                     },
+                    {
+                        property: 'visit',
+                        message: 'Please use tuiVisit instead.',
+                    },
                 ],
             },
         },

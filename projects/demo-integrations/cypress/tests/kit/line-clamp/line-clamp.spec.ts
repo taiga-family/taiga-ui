@@ -21,7 +21,7 @@ describe('LineClamp', () => {
 
     describe('Very long word', () => {
         it('`linesLimit=1` + only long word', () => {
-            cy.visit(
+            cy.tuiVisit(
                 '/components/line-clamp/API?content=Incomprehensibilities&linesLimit=1',
             );
 
