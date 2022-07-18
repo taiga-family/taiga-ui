@@ -7,6 +7,7 @@
         [tuiSheetWrapper]="item.offset"
         [class.t-wrapper_overlay]="item.overlay"
         [class.t-wrapper_closeable]="item.closeable"
+        (click.self)="close(item)"
     >
         <tui-sheet
             tuiScrollRef
