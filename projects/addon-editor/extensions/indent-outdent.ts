@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {clamp} from '@taiga-ui/cdk';
-import {Command, Extension, GlobalAttributes} from '@tiptap/core';
+import {Command, Editor, Extension, GlobalAttributes} from '@tiptap/core';
 import {Node} from 'prosemirror-model';
 import {AllSelection, TextSelection, Transaction} from 'prosemirror-state';
 
@@ -16,11 +16,11 @@ declare module '@tiptap/core' {
             /**
              * Set the indent attribute
              */
-            indent: () => Command;
+            indent: () => Command | null;
             /**
              * Unset the indent attribute
              */
-            outdent: () => Command;
+            outdent: () => Command | null;
         };
     }
 }
@@ -69,6 +69,10 @@ export function isTodoListNode({type}: Node): boolean {
 
 export function isListNode(node: Node): boolean {
     return isBulletListNode(node) || isOrderedListNode(node) || isTodoListNode(node);
+}
+
+export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
+    return editor.isActive('bulletList') || editor.isActive('orderedList');
 }
 
 function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Transaction {
@@ -200,8 +204,14 @@ export const Indent = Extension.create<IndentOptions>({
 
     addKeyboardShortcuts(): any {
         return {
-            Tab: () => this.editor.commands.indent(),
-            'Shift-Tab': () => this.editor.commands.outdent(),
+            Tab: () =>
+                tuiIsOrderedOrBulletList(this.editor)
+                    ? null
+                    : this.editor.commands.indent(),
+            'Shift-Tab': () =>
+                tuiIsOrderedOrBulletList(this.editor)
+                    ? null
+                    : this.editor.commands.indent(),
         };
     },
 });

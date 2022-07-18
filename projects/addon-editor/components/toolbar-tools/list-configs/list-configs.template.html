@@ -52,7 +52,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.indent"
-                    (click)="editor.indent()"
+                    (click)="sinkListItemOrIndent()"
                 ></button>
                 <button
                     tuiIconButton
@@ -62,7 +62,7 @@
                     appearance="icon"
                     class="t-option"
                     [tuiHint]="texts.outdent"
-                    (click)="editor.outdent()"
+                    (click)="liftListItemOrOutdent()"
                 ></button>
             </div>
         </ng-template>
