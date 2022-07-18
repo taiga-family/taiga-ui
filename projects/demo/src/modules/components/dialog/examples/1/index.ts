@@ -19,4 +19,14 @@ export class TuiDialogExampleComponent1 {
             .open('This is a plain string dialog', {label: 'Heading', size: 's'})
             .subscribe();
     }
+
+    showDialogWithCustomButton(): void {
+        this.dialogService
+            .open('Good, Anakin, Good!', {
+                label: 'Star wars. Episode III',
+                size: 's',
+                data: {button: 'Do it!'},
+            })
+            .subscribe();
+    }
 }
