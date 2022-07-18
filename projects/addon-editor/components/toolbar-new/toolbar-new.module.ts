@@ -5,6 +5,7 @@ import {
     TuiAlignContentModule,
     TuiCodeModule,
     TuiDetailsModule,
+    TuiEditorToolGroup,
     TuiFontSizeModule,
     TuiFontStyleModule,
     TuiHighlightColorModule,
@@ -48,6 +49,7 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiHighlightColorModule,
         TuiCodeModule,
         TuiDetailsModule,
+        TuiEditorToolGroup,
     ],
     declarations: [
         TuiToolbarNewComponent,

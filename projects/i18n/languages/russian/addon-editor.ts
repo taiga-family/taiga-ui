@@ -36,6 +36,8 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         superscript: `Надстрочный`,
         subscript: `Подстрочный`,
         insertTable: `Добавить таблицу`,
+        insertGroup: `Добавить группу`,
+        removeGroup: `Удалить группу`,
         mergeCells: `Объединить ячейки`,
         splitCells: `Разъединить ячейки`,
         rowsColumnsManaging: `Управление строками и столбцами`,

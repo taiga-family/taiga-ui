@@ -98,6 +98,17 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
         ),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
+    };
+
+    readonly example6: TuiDocExample = {
+        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
+        HTML: import(`!!raw-loader!./examples/6/index.html`),
+        LESS: import(`!!raw-loader!./examples/6/index.less`),
+    };
+
     readonly control = new FormControl();
 
     readonly toolsVariants: readonly TuiEditorTool[][] = [

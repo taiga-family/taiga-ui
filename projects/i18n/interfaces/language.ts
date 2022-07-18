@@ -173,6 +173,8 @@ export interface LanguageEditor {
         superscript: string;
         subscript: string;
         insertTable: string;
+        insertGroup: string;
+        removeGroup: string;
         mergeCells: string;
         splitCells: string;
         rowsColumnsManaging: string;
