@@ -3,9 +3,7 @@ describe('LineClamp', () => {
         const basicText = 'Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici';
 
         it('linesLimit=1', () => {
-            cy.tuiVisit(
-                encodeURI(`/components/line-clamp/API?content=${basicText}&linesLimit=1`),
-            );
+            cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=1`);
 
             cy.get('#demoContent')
                 .should('be.visible')
@@ -13,9 +11,7 @@ describe('LineClamp', () => {
         });
 
         it('linesLimit=2', () => {
-            cy.tuiVisit(
-                encodeURI(`/components/line-clamp/API?content=${basicText}&linesLimit=2`),
-            );
+            cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
 
             cy.get('#demoContent')
                 .should('be.visible')
@@ -39,9 +35,7 @@ describe('LineClamp', () => {
                 'The near incomprehensibility of the instructions made assembling the desk a nightmare.';
 
             cy.tuiVisit(
-                encodeURI(
-                    `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
-                ),
+                `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
             );
 
             cy.get('#demoContent')
