@@ -35,6 +35,7 @@ import {TuiSliderComponent} from './slider.component';
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
     host: {
+        '[attr.data-key-steps]': 'true',
         '[attr.aria-valuenow]': 'controlValue',
         '[attr.aria-valuemin]': 'min',
         '[attr.aria-valuemax]': 'max',

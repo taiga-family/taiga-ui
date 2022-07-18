@@ -9,7 +9,13 @@
 />
 
 <div class="ticks-labels">
-    <span *ngFor="let label of labels">${{ label }}</span>
+    <button
+        *ngFor="let label of labels"
+        class="tick-label"
+        (click)="patchValue(label)"
+    >
+        ${{ label }}
+    </button>
 </div>
 
 <p>

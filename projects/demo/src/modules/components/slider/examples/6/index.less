@@ -1,0 +1,26 @@
+@import 'taiga-ui-local';
+
+@border-radius: 1rem;
+
+.zoom-controller {
+    border-radius: @border-radius;
+    background: var(--tui-base-05);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 18rem;
+    column-gap: 0.5rem;
+
+    @media @mobile {
+        max-width: 100%;
+    }
+}
+
+.minus {
+    border-radius: @border-radius 0 0 @border-radius;
+}
+
+.plus {
+    border-radius: 0 @border-radius @border-radius 0;
+}
