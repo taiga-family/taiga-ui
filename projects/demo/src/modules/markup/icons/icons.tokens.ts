@@ -19,16 +19,14 @@ const {LARGE, NORMAL} = ensureIcons();
 
 export const ICONS: DemoTuiIconsTabs = {
     'Description and examples': {
-        'Normal interface icons (16px)': NORMAL,
-        'Large interface icons (24px)': LARGE,
-        'Payment systems': COMMERCE,
+        [`Normal interface icons / 16px (${NORMAL.length})`]: NORMAL,
+        [`Large interface icons / 24px (${LARGE.length})`]: LARGE,
+        [`Payment systems (${COMMERCE.length})`]: COMMERCE,
     },
 };
 
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
-    new InjectionToken<DemoTuiIconsTabs>('Icons', {
-        factory: () => ICONS,
-    });
+    new InjectionToken<DemoTuiIconsTabs>('Icons', {factory: () => ICONS});
 
 /**
  * @description:
