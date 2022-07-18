@@ -21,9 +21,11 @@ export function tuiAssertIsHTMLElement(node?: PossibleNode): asserts node is HTM
     const document = (node as Node)?.ownerDocument;
     const defaultView = document?.defaultView as unknown as DefaultView;
     const isHTMLElement =
-        node instanceof defaultView?.HTMLElement ||
-        node instanceof defaultView?.Element ||
-        node instanceof defaultView?.HTMLDocument;
+        node !== null &&
+        node !== undefined &&
+        (node instanceof defaultView?.HTMLElement ||
+            node instanceof defaultView?.Element ||
+            node instanceof defaultView?.HTMLDocument);
 
     tuiAssert.assert(isHTMLElement, 'Node is not an Element');
 }
