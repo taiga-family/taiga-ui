@@ -78,6 +78,8 @@ export abstract class TuiEditor {
     abstract enter(): void;
     abstract setDetails(): void;
     abstract removeDetails(): void;
+    abstract setGroup(): void;
+    abstract removeGroup(): void;
 }
 
 @Directive()

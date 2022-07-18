@@ -316,4 +316,12 @@ export class TuiTiptapEditorService extends TuiEditor {
     removeDetails(): void {
         this.editor.commands.removeDetails();
     }
+
+    setGroup(): void {
+        this.editor.commands.setGroup();
+    }
+
+    removeGroup(): void {
+        this.editor.commands.removeGroup();
+    }
 }

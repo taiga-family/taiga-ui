@@ -1,0 +1,28 @@
+<button
+    #insert
+    tuiIconButton
+    type="button"
+    size="s"
+    icon="tuiIconPlusLarge"
+    appearance="icon"
+    [focusable]="false"
+    [tuiHint]="insertGroupText$ | async"
+    [tuiHintId]="insert.id"
+    [tuiDescribedBy]="insert.id"
+    (click)="addGroup()"
+></button>
+
+<button
+    #remove
+    tuiIconButton
+    type="button"
+    size="s"
+    icon="tuiIconRemoveLarge"
+    appearance="icon"
+    [focusable]="false"
+    [disabled]="!!(disabled$ | async)"
+    [tuiHint]="removeGroupText$ | async"
+    [tuiHintId]="remove.id"
+    [tuiDescribedBy]="remove.id"
+    (click)="removeGroup()"
+></button>

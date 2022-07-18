@@ -36,6 +36,8 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         superscript: `Chỉ số trên`,
         subscript: `Chỉ số dưới`,
         insertTable: `Chèn bảng`,
+        insertGroup: `Insert group`,
+        removeGroup: `Remove group`,
         mergeCells: `Hợp nhất ô`,
         splitCells: `Tách ô`,
         rowsColumnsManaging: `Quản lý hàng và cột`,

@@ -36,6 +36,8 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         superscript: `Exposant`,
         subscript: `Indice`,
         insertTable: `Insert table`,
+        insertGroup: `Insert group`,
+        removeGroup: `Remove group`,
         mergeCells: `Merge cells`,
         splitCells: `Split cells`,
         rowsColumnsManaging: `Managing rows and columns`,

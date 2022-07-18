@@ -36,6 +36,8 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         superscript: `Apice`,
         subscript: `Pedice`,
         insertTable: `Inserisci tabella`,
+        insertGroup: `Insert group`,
+        removeGroup: `Remove group`,
         mergeCells: `Unisci celle`,
         splitCells: `Dividi celle`,
         rowsColumnsManaging: `Gestione righe e colonne`,

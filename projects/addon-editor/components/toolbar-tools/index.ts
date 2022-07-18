@@ -3,6 +3,7 @@ export * from '@taiga-ui/addon-editor/components/toolbar-tools/code';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/details';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/font-size';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/font-style';
+export * from '@taiga-ui/addon-editor/components/toolbar-tools/group';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/highlight-color';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/list-configs';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/table-cell-color';
