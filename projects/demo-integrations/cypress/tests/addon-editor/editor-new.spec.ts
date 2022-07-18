@@ -129,50 +129,118 @@ describe('Editor', () => {
             }
         });
 
-        it('support regular bullet/ordered lists without paragraph in content', () => {
-            cy.get('#basic')
-                .findByAutomationId('tui-doc-example')
-                .tuiScrollIntoView()
-                .as('wrapper');
+        describe('ordered list / bullet list', () => {
+            beforeEach(() => {
+                cy.get('#basic')
+                    .findByAutomationId('tui-doc-example')
+                    .tuiScrollIntoView()
+                    .as('wrapper');
 
-            cy.get('@wrapper').find('button').eq(1).click();
-            cy.get('@wrapper').find('[contenteditable]').as('editor');
+                cy.get('@wrapper').find('[contenteditable]').as('editor');
 
-            cy.get('@wrapper')
-                .wait(WAIT_BEFORE_SCREENSHOT)
-                .matchImageSnapshot('4-1-bullet-and-ordered-list');
+                clearEditor();
 
-            clearEditor();
-            toggleBullet('tuiIconViewListLarge');
+                cy.wait(WAIT_BEFORE_SCREENSHOT);
+            });
 
-            cy.get('@editor').type('1{enter}').type('{enter}');
+            it('show example 2 (without paragraph in content)', () => {
+                cy.get('@wrapper').find('button').eq(1).click();
 
-            toggleBullet('tuiIconOLLarge');
+                cy.get('@wrapper')
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot('4-1-bullet-and-ordered-list');
+            });
 
-            cy.get('@editor').type('A');
-            cy.get('@wrapper')
-                .wait(WAIT_BEFORE_SCREENSHOT)
-                .matchImageSnapshot('4-2-bullet-and-ordered-list');
+            it('show example 3 (without paragraph in content)', () => {
+                cy.get('@wrapper').find('button').eq(1).click();
 
-            clearEditor();
-            toggleBullet('tuiIconViewListLarge');
+                cy.get('@wrapper')
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot('5-1-bullet-and-ordered-nested-list');
+            });
 
-            cy.get('@editor').type(
-                'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
-            );
-            cy.get('@wrapper')
-                .wait(WAIT_BEFORE_SCREENSHOT)
-                .matchImageSnapshot('4-3-bullet-and-ordered-list');
+            it('emulate user toggling', () => {
+                toggleBullet('tuiIconViewListLarge');
 
-            clearEditor();
-            toggleBullet('tuiIconOLLarge');
+                cy.get('@editor').type('1{enter}').type('{enter}');
 
-            cy.get('@editor').type(
-                'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
-            );
-            cy.get('@wrapper')
-                .wait(WAIT_BEFORE_SCREENSHOT)
-                .matchImageSnapshot('4-4-bullet-and-ordered-list');
+                toggleBullet('tuiIconOLLarge');
+
+                cy.get('@editor').type('A');
+                cy.get('@wrapper')
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot('6-1-bullet-and-ordered-list');
+
+                clearEditor();
+                toggleBullet('tuiIconViewListLarge');
+
+                cy.get('@editor').type(
+                    'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
+                );
+                cy.get('@wrapper')
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot('6-2-bullet-and-ordered-list');
+
+                clearEditor();
+                toggleBullet('tuiIconOLLarge');
+
+                cy.get('@editor').type(
+                    'first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line',
+                );
+                cy.get('@wrapper')
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot('6-3-bullet-and-ordered-list');
+            });
+
+            it('nested', () => {
+                toggleBullet('tuiIconViewListLarge');
+                cy.get('@editor').type('1{enter}');
+                cy.get('@editor').type('2');
+                toggleBullet('tuiIconIndentLarge');
+
+                cy.get('@wrapper').matchImageSnapshot('7-1-nested-list');
+
+                cy.get('@editor').type('{enter}');
+                cy.get('@editor').type('3');
+                toggleBullet('tuiIconIndentLarge');
+
+                cy.get('@wrapper').matchImageSnapshot('7-2-nested-list');
+
+                cy.get('@editor').type('{enter}');
+                cy.get('@editor').type('4');
+                toggleBullet('tuiIconIndentLarge');
+
+                cy.get('@wrapper').matchImageSnapshot('7-3-nested-list');
+
+                cy.get('@editor').type('{enter}');
+                toggleBullet('tuiIconOutdentLarge');
+
+                cy.get('@wrapper').matchImageSnapshot('7-4-nested-list');
+
+                cy.get('@editor').type('{enter}');
+                toggleBullet('tuiIconOutdentLarge');
+                cy.get('@editor').type('5');
+
+                cy.get('@wrapper').matchImageSnapshot('7-6-nested-list');
+
+                cy.get('@editor').type('{enter}');
+                cy.get('@editor').type('{enter}');
+
+                /**
+                 * Custom list (with nested)
+                 */
+                cy.get('@editor').type('I. 6');
+                toggleBullet('tuiIconIndentLarge');
+
+                cy.get('@editor').type('{enter}');
+                cy.get('@editor').type('II. 7');
+                toggleBullet('tuiIconIndentLarge');
+
+                cy.get('@editor').type('{enter}');
+                cy.get('@editor').type('III. 8');
+
+                cy.get('@wrapper').matchImageSnapshot('7-7-nested-list');
+            });
 
             function toggleBullet(iconType: string): void {
                 cy.get('@wrapper')

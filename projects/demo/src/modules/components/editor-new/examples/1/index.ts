@@ -53,4 +53,42 @@ export class TuiEditorNewExample1 {
             `,
         );
     }
+
+    example3(): void {
+        this.control.setValue(
+            `
+                <ul>
+                  <li>
+                    1
+                    <ul>
+                      <li>
+                        2
+                        <ul>
+                          <li>3</li>
+                          <li>4</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>5</li>
+                </ul>
+
+                <ol>
+                  <li>
+                    1
+                    <ol>
+                      <li>
+                        2
+                        <ol>
+                          <li>3</li>
+                          <li>4</li>
+                        </ol>
+                      </li>
+                    </ol>
+                  </li>
+                  <li>5</li>
+                </ol>
+            `,
+        );
+    }
 }

@@ -147,6 +147,14 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
+    sinkListItem(): void {
+        this.editor.chain().focus().sinkListItem('listItem').run();
+    }
+
+    liftListItem(): void {
+        this.editor.chain().focus().liftListItem('listItem').run();
+    }
+
     isActive(nameOrAttributes: Record<string, string> | string): boolean {
         return this.editor.isActive(nameOrAttributes);
     }

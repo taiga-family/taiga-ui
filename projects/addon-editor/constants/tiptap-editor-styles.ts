@@ -46,6 +46,19 @@ export const tiptapEditorStyles = `
     margin: 8px 14px 1px -22px;
     background-color: var(--tui-primary);
     vertical-align: top;
+    box-sizing: border-box;
+}
+
+.tui-editor-socket li ul > li:before {
+    background: none;
+    border: 2px solid var(--tui-primary);
+}
+
+.tui-editor-socket li ul > li > ul > li:before {
+    background: var(--tui-primary);
+    border-radius: 0;
+    width: 6px;
+    height: 6px;
 }
 
 .tui-editor-socket ol {
