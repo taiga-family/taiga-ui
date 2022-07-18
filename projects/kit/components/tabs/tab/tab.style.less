@@ -29,12 +29,6 @@
     transition-property: color, box-shadow, opacity;
     margin-left: var(--tui-tab-margin, 1.5rem);
 
-    @media (hover: hover) {
-        &:hover {
-            color: var(--tui-text-01);
-        }
-    }
-
     &:disabled {
         opacity: var(--tui-disabled-opacity);
         pointer-events: none;
@@ -133,6 +127,12 @@
         & .t-highlight {
             width: auto;
         }
+    }
+}
+
+@media (hover: hover) {
+    :host:hover {
+        color: var(--tui-text-01);
     }
 }
 
