@@ -26,10 +26,7 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-import {
-    TUI_LINE_CLAMP_OPTIONS,
-    TuiLineClampOptions,
-} from './line-clamp-options';
+import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options';
 
 @Component({
     selector: 'tui-line-clamp',
@@ -60,7 +57,9 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     content: PolymorpheusContent = '';
 
     @Output()
-    readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(distinctUntilChanged());
+    readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
