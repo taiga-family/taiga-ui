@@ -6,6 +6,7 @@ import {
     DoCheck,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     NgZone,
@@ -113,6 +114,7 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
+    @HostListener('transitionend')
     updateView(): void {
         this.cd.detectChanges();
     }
