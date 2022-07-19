@@ -12,6 +12,7 @@ import {join} from 'path';
 import {Subscription} from 'rxjs';
 import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {MIGRATION_WARNINGS} from '../constants/warnings';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -116,4 +117,6 @@ function createMainFiles(): void {
     createSourceFile('test/app/app.component.ts', BEFORE);
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
+
+    createAngularJson();
 }
