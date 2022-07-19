@@ -111,7 +111,6 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
             ],
@@ -130,7 +129,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('should add styles without dublicates, taiga styles first', async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
@@ -149,7 +148,6 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
               "some.style"
