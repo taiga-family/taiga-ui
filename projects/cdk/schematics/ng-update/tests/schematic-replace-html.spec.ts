@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -420,6 +421,32 @@ describe('ng-update', () => {
         );
     });
 
+    it('should add font style in angular.json', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('angular.json')).toEqual(
+            `
+{
+  "version": 1,
+  "defaultProject": "demo",
+  "projects": {
+    "demo": {
+        "architect": {
+          "build": {
+            "options": {
+              "main": "test/main.ts",
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+            ]
+            }
+          }
+        }
+    }
+  }
+}`,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -433,4 +460,6 @@ function createMainFiles(): void {
     createSourceFile('test/app/test-inline.component.ts', COMPONENT_BEFORE);
 
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+
+    createAngularJson();
 }
