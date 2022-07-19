@@ -24,7 +24,7 @@
                     size="m"
                     (click)="context.$implicit.complete()"
                 >
-                    OK
+                    {{ $any(context.data)?.button || 'OK' }}
                 </button>
             </div>
         </ng-template>
