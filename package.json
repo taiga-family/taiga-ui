@@ -31,7 +31,7 @@
         "exec": "ts-node --project tsconfig.tools.json",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
-        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --write --cache node_modules/.cache/prettier",
+        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --cache node_modules/.cache/prettier",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
         "build:demo": "nx build --prod --configuration=production",
