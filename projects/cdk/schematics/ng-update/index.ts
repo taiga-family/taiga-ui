@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
@@ -17,15 +17,35 @@ import {migrateProgress} from './steps/migrate-progress';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
+import {addStylesToAngularJson} from '../utils/add-styles';
+import {TAIGA_THEME_FONTS} from '../constants/taiga-styles';
+const {performance} = require('perf_hooks');
 
-export function updateToV3(_: Schema): Rule {
+export function updateToV3(options: Schema): Rule {
+    const t0 = performance.now();
+
+    titleLog(
+        `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+    );
+
+    return chain([
+        main(options),
+        addTaigaStyles(options),
+        () => {
+            const t1 = performance.now();
+            const sum = t1 - t0;
+            const result =
+                sum > 1000 ? `${(sum / 1000).toFixed(2)} sec.` : `${sum.toFixed(2)} ms.`;
+
+            titleLog(
+                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${result} \n`,
+            );
+        },
+    ]);
+}
+
+function main(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        const t0 = performance.now();
-
-        titleLog(
-            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
-        );
-
         const fileSystem = getFileSystem(tree);
 
         replaceDeepImports();
@@ -47,15 +67,14 @@ export function updateToV3(_: Schema): Rule {
         replaceFunctions();
         miscellaneousMigrations();
         saveActiveProject();
+    };
+}
 
-        const t1 = performance.now();
-        const sum = t1 - t0;
-        const result =
-            sum > 1000 ? `${(sum / 1000).toFixed(2)} sec.` : `${sum.toFixed(2)} ms.`;
+function addTaigaStyles(options: Schema): Rule {
+    return async (_: Tree) => {
+        const taigaStyles = [TAIGA_THEME_FONTS];
 
-        titleLog(
-            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${result} \n`,
-        );
+        return addStylesToAngularJson(options, taigaStyles);
     };
 }
 
