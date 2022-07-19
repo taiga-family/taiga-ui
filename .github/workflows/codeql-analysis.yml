@@ -10,7 +10,7 @@ on:
 
 jobs:
   analyze:
-    if: ${{ !contains(github.head_ref, 'release/') }}
+    if: ${{ !contains(github.ref_name, 'release/') }}
     name: Analyze
     runs-on: ubuntu-latest
     permissions:

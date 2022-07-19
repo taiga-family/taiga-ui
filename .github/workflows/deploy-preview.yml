@@ -8,7 +8,7 @@ env:
 
 jobs:
   build_and_preview:
-    if: ${{ !contains(github.head_ref, 'release/') }}
+    if: ${{ !contains(github.ref_name, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:
