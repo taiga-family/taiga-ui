@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.54.0](https://github.com/tinkoff/taiga-ui/compare/v2.53.0...v2.54.0) (2022-07-19)
+
+### Features
+
+- **addon-editor:** support customization font-size ([#2133](https://github.com/tinkoff/taiga-ui/issues/2133))
+  ([5760b45](https://github.com/tinkoff/taiga-ui/commit/5760b45916d4753f54db62d63c3663c73debe277))
+- **core:** customization default text to button in dialog ([#2140](https://github.com/tinkoff/taiga-ui/issues/2140))
+  ([003e41a](https://github.com/tinkoff/taiga-ui/commit/003e41a2b5055a63f3a5f88b0ac15716ca40a8dc))
+- **kit:** `LineClamp` add `showHint` option add `overflowChange` output
+  ([#2130](https://github.com/tinkoff/taiga-ui/issues/2130))
+  ([293dc6a](https://github.com/tinkoff/taiga-ui/commit/293dc6adf1227f88f07c9a287355df5a25fcb75e))
+
+### Bug Fixes
+
+- **addon-editor:** support nested bullet list ([#2139](https://github.com/tinkoff/taiga-ui/issues/2139))
+  ([07198f5](https://github.com/tinkoff/taiga-ui/commit/07198f51a938bf66b9668112331bdf8cc8804d4a))
+- **addon-mobile:** close sheet when extended to full state ([#2116](https://github.com/tinkoff/taiga-ui/issues/2116))
+  ([d040eb4](https://github.com/tinkoff/taiga-ui/commit/d040eb40dee01d117d3f276adc72213998828428))
+- **core:** changed `vw/vh` to `percentage` for correct ensure viewport in safari
+  ([#2135](https://github.com/tinkoff/taiga-ui/issues/2135))
+  ([a25a63e](https://github.com/tinkoff/taiga-ui/commit/a25a63e9836bb37daf781109be314cea522fdebf))
+- **i18n:** fix vietnamese ([#2126](https://github.com/tinkoff/taiga-ui/issues/2126))
+  ([c8fce24](https://github.com/tinkoff/taiga-ui/commit/c8fce24c3db254f7c70acb6780282d859e9355e9))
+- **kit:** `LineClamp` incorrect calculation of `overflown` ([#2136](https://github.com/tinkoff/taiga-ui/issues/2136))
+  ([0609f65](https://github.com/tinkoff/taiga-ui/commit/0609f658b0991cb3b9cd6a8e07179289f57e4107))
+- **kit:** `Slider` incorrect progress-filling after patching of `[(ngModel)]`-value
+  ([#2123](https://github.com/tinkoff/taiga-ui/issues/2123))
+  ([5e825c6](https://github.com/tinkoff/taiga-ui/commit/5e825c605252ebc0cc5b487a6de6213d737cee09))
+- pin peer dependency range for `@ng-web-apis/*` ([#2151](https://github.com/tinkoff/taiga-ui/issues/2151))
+  ([08583b7](https://github.com/tinkoff/taiga-ui/commit/08583b7ab09c779216dcd154912179f21a38c8ca))
+
 ## [2.53.0](https://github.com/tinkoff/taiga-ui/compare/v2.52.0...v2.53.0) (2022-07-11)
 
 ### Features
