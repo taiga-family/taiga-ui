@@ -4,5 +4,6 @@ export * from '@taiga-ui/cdk/utils/focus';
 export * from '@taiga-ui/cdk/utils/format';
 export * from '@taiga-ui/cdk/utils/math';
 export * from '@taiga-ui/cdk/utils/miscellaneous';
+export * from '@taiga-ui/cdk/utils/nil';
 export * from '@taiga-ui/cdk/utils/os';
 export * from '@taiga-ui/cdk/utils/svg';
