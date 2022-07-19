@@ -13,11 +13,11 @@ const ICON_ASSETS = {
 
 export function addTaigaIcons(options: Schema): Rule {
     return async (_: Tree) => {
-        return addTaigaStylesToAngularJson(options);
+        return addTaigaAssetsToAngularJson(options);
     };
 }
 
-export function addTaigaStylesToAngularJson(options: Schema): Rule {
+export function addTaigaAssetsToAngularJson(options: Schema): Rule {
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
 
