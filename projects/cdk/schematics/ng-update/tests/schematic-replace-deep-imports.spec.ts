@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -76,4 +77,6 @@ export class AppComponent {}`,
         'test/app/app.template.less',
         `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
     );
+
+    createAngularJson();
 }
