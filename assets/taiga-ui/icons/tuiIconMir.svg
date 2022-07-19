@@ -1,20 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2em" focusable="false" height="2em">
+<svg focusable="false" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
     <g id="tuiIconMir" xmlns="http://www.w3.org/2000/svg">
         <svg
-            x="50%"
-            y="50%"
-            width="2em"
             height="2em"
             overflow="visible"
             viewBox="0 0 32 32"
+            width="2em"
+            x="50%"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            y="50%"
         >
             <svg x="-16" y="-16">
                 <defs>
-                    <linearGradient id="tui-mir-gradient" x1="-0.18041958%" y1="50%" x2="100%" y2="50%">
-                        <stop stop-color="#00B4E6" offset="0%" />
-                        <stop stop-color="#088CCB" offset="100%" />
+                    <linearGradient id="tui-mir-gradient" x1="-0.18041958%" x2="100%" y1="50%" y2="50%">
+                        <stop offset="0%" stop-color="#00B4E6" />
+                        <stop offset="100%" stop-color="#088CCB" />
                     </linearGradient>
                 </defs>
                 <g transform="translate(0, 12)">
