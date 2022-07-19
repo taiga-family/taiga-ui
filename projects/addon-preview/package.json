@@ -15,7 +15,7 @@
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@ng-web-apis/mutation-observer": ">=1.1.0",
+        "@ng-web-apis/mutation-observer": ">=1.1.0 < 2",
         "@taiga-ui/cdk": ">=2.53.0",
         "@taiga-ui/core": ">=2.53.0",
         "@taiga-ui/i18n": ">=2.53.0",

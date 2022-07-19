@@ -48,7 +48,7 @@
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@angular/platform-browser": ">=9.0.0",
-        "@ng-web-apis/common": "=1.12.1 < 2",
+        "@ng-web-apis/common": ">=1.12.1 < 2",
         "@taiga-ui/cdk": ">=2.53.0",
         "@taiga-ui/core": ">=2.53.0",
         "@taiga-ui/i18n": ">=2.53.0",
