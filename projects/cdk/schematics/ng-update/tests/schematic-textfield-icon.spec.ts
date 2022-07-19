@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -155,4 +156,6 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+
+    createAngularJson();
 }

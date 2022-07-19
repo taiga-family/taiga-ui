@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -450,4 +451,5 @@ function createMainFiles(): void {
         'test/inline-html-child/inline-html-child.component.ts',
         INLINE_HTML_CHILD_COMPONENT_BEFORE,
     );
+    createAngularJson();
 }

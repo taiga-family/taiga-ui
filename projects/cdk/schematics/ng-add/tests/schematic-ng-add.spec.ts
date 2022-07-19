@@ -16,6 +16,7 @@ import {
     TAIGA_VERSION,
 } from '../constants/versions';
 import {Schema} from '../schema';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../collection.json');
 
@@ -110,8 +111,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
             ],
             "assets": [
               {
@@ -128,7 +129,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('should add styles without dublicates, taiga styles first', async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
@@ -147,8 +148,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -208,39 +209,6 @@ export class AppModule {}
         resetActiveProject();
     });
 });
-
-function createAngularJson(
-    {stylesExist}: {stylesExist: boolean} = {stylesExist: false},
-): void {
-    createSourceFile(
-        'angular.json',
-        `
-{
-  "version": 1,
-  "defaultProject": "demo",
-  "projects": {
-    "demo": {
-        "architect": {
-          "build": {
-            "options": {
-              "main": "test/main.ts",
-            ${
-                stylesExist
-                    ? `"styles": [
-                  "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                  "some.style"
-                ]
-                `
-                    : ``
-            }}
-          }
-        }
-    }
-  }
-}`,
-        {overwrite: true},
-    );
-}
 
 function createMainFiles(): void {
     createSourceFile(
