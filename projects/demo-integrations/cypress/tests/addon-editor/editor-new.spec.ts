@@ -11,46 +11,34 @@ describe('Editor', () => {
     beforeEach(() => cy.viewport(1600, 900));
 
     describe('Check fonts in light and dark mode', () => {
-        for (const [index, options] of [
+        for (const [index, {enableNightMode}] of [
             {enableNightMode: true},
             {enableNightMode: false},
         ].entries()) {
-            it(`check font in editor, enableNightMode is ${options.enableNightMode}`, () => {
-                cy.tuiVisit(EDITOR_PAGE_URL, options);
+            it(`check font in editor, enableNightMode is ${enableNightMode}`, () => {
+                cy.tuiVisit(EDITOR_PAGE_URL, {enableNightMode});
 
                 tuiInitBaseWrapper();
                 tuiGetContentEditable().type('{selectall}{backspace}');
 
-                tuiOpenFontTool();
-                tuiGetScreenshotArea().matchImageSnapshot(
-                    `${index + 1}-1-night-mode-enabled-${
-                        options.enableNightMode
-                    }-font-tools`,
-                );
+                for (const [position, type] of [
+                    'Small',
+                    'Normal',
+                    'Large',
+                    'Subtitle',
+                    'Title',
+                ].entries()) {
+                    const screenshot = `${
+                        index + 1
+                    }-1-night-mode-enabled-${enableNightMode}-font-${position}-${type}`;
 
-                tuiOpenFontTool().find('button').eq(0).click();
-                tuiGetContentEditable().type('HelloWorld__Normal{enter}');
-                tuiGetScreenshotArea().matchImageSnapshot(
-                    `${index + 1}-1-night-mode-enabled-${
-                        options.enableNightMode
-                    }-font-tools-past-normal`,
-                );
+                    tuiOpenFontTool()
+                        .findByAutomationId(`tui_font__${type.toLowerCase()}`)
+                        .click();
 
-                tuiOpenFontTool().find('button').eq(1).click();
-                tuiGetContentEditable().type('HelloWorld__Subtitle{enter}');
-                tuiGetScreenshotArea().matchImageSnapshot(
-                    `${index + 1}-1-night-mode-enabled-${
-                        options.enableNightMode
-                    }-font-tools-past-subtitle`,
-                );
-
-                tuiOpenFontTool().find('button').eq(2).click();
-                tuiGetContentEditable().type('HelloWorld__Title{enter}');
-                tuiGetScreenshotArea().matchImageSnapshot(
-                    `${index + 1}-1-night-mode-enabled-${
-                        options.enableNightMode
-                    }-font-tools-past-title`,
-                );
+                    tuiGetContentEditable().type(`${type}{enter}`);
+                    tuiGetScreenshotArea().matchImageSnapshot(screenshot);
+                }
             });
         }
     });

@@ -243,8 +243,12 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().setHeading({level}).run();
     }
 
-    setParagraph(): void {
+    setParagraph(options?: {fontSize: string}): void {
         this.editor.chain().focus().setParagraph().run();
+
+        if (options) {
+            this.editor.chain().setMark('textStyle', options).run();
+        }
     }
 
     setHardBreak(): void {

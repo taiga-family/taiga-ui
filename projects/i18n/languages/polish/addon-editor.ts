@@ -50,7 +50,9 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Kod w tekście', 'Kod w bloku'],
     editorFontOptions: {
+        small: 'Small',
         normal: 'Normalny',
+        large: 'Large',
         title: 'Tytuł',
         subtitle: 'Podtytuł',
     },

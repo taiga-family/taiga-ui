@@ -61,7 +61,7 @@ export abstract class TuiEditor {
     abstract canSplitCells(): boolean;
     abstract splitCell(): void;
     abstract setHeading(level: number): void;
-    abstract setParagraph(): void;
+    abstract setParagraph(options?: {fontSize: string}): void;
     abstract setHardBreak(): void;
     abstract setTextSelection(value: number | Range): void;
     abstract toggleLink(href: string): void;

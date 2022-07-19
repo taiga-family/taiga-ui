@@ -50,7 +50,9 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     ],
     editorCodeOptions: ['Mã trong dòng', 'Mã trong khối'],
     editorFontOptions: {
+        small: 'Small',
         normal: 'Thường',
+        large: 'Large',
         title: 'Tiêu đề',
         subtitle: 'Phụ đề',
     },
