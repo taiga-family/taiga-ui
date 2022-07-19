@@ -1,7 +1,9 @@
 .wrapper-hover(@ruleset) {
-    &:hover:not(._no-hover),
-    &[data-state='hovered'] {
-        @ruleset();
+    @media (hover: hover) {
+        &:hover:not(._no-hover),
+        &[data-state='hovered'] {
+            @ruleset();
+        }
     }
 }
 
