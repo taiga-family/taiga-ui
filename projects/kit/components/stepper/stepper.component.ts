@@ -20,7 +20,7 @@ import {
     tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT} from '@taiga-ui/core';
+import {TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
@@ -49,7 +49,7 @@ export class TuiStepperComponent {
     @Input()
     @HostBinding('attr.data-orientation')
     @tuiDefaultProp()
-    orientation: TuiOrientationT = 'horizontal';
+    orientation: TuiOrientation = 'horizontal';
 
     @Input()
     @tuiDefaultProp()

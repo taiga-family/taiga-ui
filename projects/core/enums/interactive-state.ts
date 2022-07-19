@@ -4,8 +4,6 @@
 export const enum TuiInteractiveState {
     Disabled = 'disabled',
     Readonly = 'readonly',
-    // TODO: 3.0 Rename to `active`
-    Pressed = 'pressed',
-    // TODO: 3.0 Rename to `hover`
-    Hovered = 'hovered',
+    Active = 'active',
+    Hover = 'hover',
 }

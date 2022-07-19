@@ -33,7 +33,7 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimalT,
+    TuiDecimal,
     TuiSizeL,
     TuiTextfieldController,
 } from '@taiga-ui/core';
@@ -172,7 +172,7 @@ export class TuiInputRangeComponent
         return getFractionPartPadded(this.quantum).length;
     }
 
-    get decimal(): TuiDecimalT {
+    get decimal(): TuiDecimal {
         return this.precision ? 'not-zero' : 'never';
     }
 

@@ -18,7 +18,7 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {TuiOrientationT} from '@taiga-ui/core/types';
+import {TuiOrientation} from '@taiga-ui/core/types';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ const MIN_WIDTH = 24;
 })
 export class TuiScrollbarDirective {
     @Input()
-    tuiScrollbar: TuiOrientationT = 'vertical';
+    tuiScrollbar: TuiOrientation = 'vertical';
 
     constructor(
         @Inject(NgZone) ngZone: NgZone,

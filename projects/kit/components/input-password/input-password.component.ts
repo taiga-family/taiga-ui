@@ -26,7 +26,7 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiBrightness,
     TuiHintControllerDirective,
-    TuiHintModeT,
+    TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -70,7 +70,7 @@ export class TuiInputPasswordComponent
 
     isPasswordHidden = true;
 
-    readonly computedMode$: Observable<TuiHintModeT | null> = combineLatest([
+    readonly computedMode$: Observable<TuiHintMode | null> = combineLatest([
         this.mode$.pipe(map(val => (val === 'onDark' ? 'onDark' : null))),
         this.hintController.change$.pipe(
             startWith(null),

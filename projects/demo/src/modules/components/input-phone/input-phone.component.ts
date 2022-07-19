@@ -5,7 +5,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
@@ -52,9 +52,9 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',

@@ -1,6 +1,6 @@
 import {Directive, HostBinding, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core/types';
+import {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
 
 import {TuiGroupStylesComponent} from './group-styles.component';
 
@@ -14,7 +14,7 @@ import {TuiGroupStylesComponent} from './group-styles.component';
 export class TuiGroupDirective {
     @Input()
     @tuiDefaultProp()
-    orientation: TuiOrientationT = 'horizontal';
+    orientation: TuiOrientation = 'horizontal';
 
     @Input()
     @HostBinding('class.tui-group_adaptive')

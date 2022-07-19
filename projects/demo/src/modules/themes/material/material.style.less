@@ -35,7 +35,8 @@
             transform: scale(0);
         }
 
-        &[data-state='hovered'] {
+        &:hover:not(._no-hover),
+        &[data-state='hover'] {
             background: #ececec;
             box-shadow: inset 0 -1px rgba(0, 0, 0, 0.87);
         }

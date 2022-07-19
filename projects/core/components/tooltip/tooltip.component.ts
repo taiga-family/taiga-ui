@@ -10,7 +10,7 @@ import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiHintModeT} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiHintMode} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -62,7 +62,7 @@ export class TuiTooltipComponent {
 
     // TODO: Simplify
     @HostBinding('attr.data-mode')
-    get computedMode(): TuiHintModeT | null {
+    get computedMode(): TuiHintMode | null {
         return this.mode || (this.globalMode === 'onDark' ? 'onDark' : null);
     }
 

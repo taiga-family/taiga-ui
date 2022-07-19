@@ -33,7 +33,7 @@ import {
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
-    TuiDecimalT,
+    TuiDecimal,
     tuiEnableAutoCorrectDecimalSymbol,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
@@ -78,7 +78,7 @@ export class TuiInputNumberComponent
 
     @Input()
     @tuiDefaultProp()
-    decimal: TuiDecimalT = 'not-zero';
+    decimal: TuiDecimal = 'not-zero';
 
     @Input()
     @tuiDefaultProp()
@@ -175,7 +175,7 @@ export class TuiInputNumberComponent
 
     mask: TuiMapper<boolean, TextMaskConfig> = (
         allowNegative: boolean,
-        decimal: TuiDecimalT,
+        decimal: TuiDecimal,
         decimalLimit: number,
         nativeFocusableElement: HTMLInputElement | null,
     ) =>

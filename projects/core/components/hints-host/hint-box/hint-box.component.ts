@@ -23,7 +23,7 @@ import {TuiHintDirective} from '@taiga-ui/core/directives';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
+import {TuiDirection, TuiHintMode} from '@taiga-ui/core/types';
 import {tuiIsMobile} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -106,7 +106,7 @@ export class TuiHintBoxComponent {
     }
 
     @HostBinding('attr.data-mode')
-    get mode(): TuiHintModeT | null {
+    get mode(): TuiHintMode | null {
         return this.hint.mode;
     }
 

@@ -3,11 +3,13 @@
     background: #bc71c9;
     color: #fff;
 
-    &[data-state='hovered'] {
+    &:hover:not(._no-hover),
+    &[data-state='hover'] {
         background: #a381ff;
     }
 
-    &[data-state='pressed'] {
+    &:active:not(._no-active),
+    &[data-state='active'] {
         background: #8f75d1;
     }
 

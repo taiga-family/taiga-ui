@@ -1,14 +1,14 @@
 @mixin wrapper-hover {
     &:hover:not(._no-hover),
-    &[data-state='hovered'] {
+    &[data-state='hover'] {
         @content;
     }
 }
 
 @mixin wrapper-active {
     &:active:not(._no-active),
-    &[data-state='pressed'],
-    &[data-state='pressed']:hover {
+    &[data-state='active'],
+    &[data-state='active']:hover {
         @content;
     }
 }

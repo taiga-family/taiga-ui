@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
-    TuiDecimalT,
+    TuiDecimal,
     TuiHintControllerModule,
     TuiSizeL,
     TuiSizeS,
@@ -48,7 +48,7 @@ describe('InputNumber', () => {
         });
 
         readOnly = false;
-        decimal: TuiDecimalT = 'never';
+        decimal: TuiDecimal = 'never';
         cleaner = true;
         defaultValues = false;
         size: TuiSizeS | TuiSizeL = 'm';

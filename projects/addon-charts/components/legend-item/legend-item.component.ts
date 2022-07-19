@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {colorFallback, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeS} from '@taiga-ui/core';
 
-// TODO: 3.0 Remove fallback
 @Component({
     selector: 'tui-legend-item',
     templateUrl: './legend-item.template.html',
@@ -37,6 +36,6 @@ export class TuiLegendItemComponent {
             return null;
         }
 
-        return this.color.startsWith('var(') ? this.color : colorFallback(this.color);
+        return this.color;
     }
 }
