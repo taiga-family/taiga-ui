@@ -12,7 +12,8 @@ export class IconSetComponent {
     readonly exampleSanitizer = import('!!raw-loader!./examples/sanitizer/sanitizer.md');
 
     readonly example1 = {
-        'process-icons.js': import('!!raw-loader!./examples/1/process-icons.md'),
+        'process-icons.js': import('!!raw-loader!./examples/1/process-icons.js.md'),
+        'process-icons.ts': import('!!raw-loader!./examples/1/process-icons.ts.md'),
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
         HTML: import('!!raw-loader!./examples/1/index.html'),
     };
