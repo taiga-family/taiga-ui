@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.54.1](https://github.com/tinkoff/taiga-ui/compare/v2.54.0...v2.54.1) (2022-07-20)
+
+### Bug Fixes
+
+- **addon-editor:** add `font-size` entry point ([#2161](https://github.com/tinkoff/taiga-ui/issues/2161))
+  ([2451d45](https://github.com/tinkoff/taiga-ui/commit/2451d454bdd3675f9b7ad79aac5c6cd606797b0d))
+- **addon-mobile:** replaced `percentages` to `vh` for prevent regression
+  ([#2162](https://github.com/tinkoff/taiga-ui/issues/2162))
+  ([5af99eb](https://github.com/tinkoff/taiga-ui/commit/5af99ebc6680d37ed507882d8e78cb54353d667e))
+
 ## [2.54.0](https://github.com/tinkoff/taiga-ui/compare/v2.53.0...v2.54.0) (2022-07-19)
 
 ### Features
