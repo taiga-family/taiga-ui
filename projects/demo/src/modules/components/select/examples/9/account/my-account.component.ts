@@ -15,5 +15,6 @@ export interface MyAccount {
     styleUrls: ['./my-account.component.less'],
 })
 export class ExampleMyAccountComponent {
-    @Input() account!: MyAccount;
+    @Input()
+    account!: MyAccount;
 }
