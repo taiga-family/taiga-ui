@@ -44,7 +44,7 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('When initialized without value and defaultViewedMonthSecond shows the month of the local date', () => {
-            expect(component.userViewedMonthFirst.toString).toBe(
+            expect(component.userViewedMonthFirst.toString()).toBe(
                 TuiMonth.currentLocal().toString(),
             );
         });
