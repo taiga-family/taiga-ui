@@ -16,10 +16,9 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
     ],
 })
 export class TuiHintControllerDirective extends AbstractTuiController {
-    // TODO: 3.0 Remove null
     @Input('tuiHintContent')
     @tuiDefaultProp()
-    content: PolymorpheusContent | null = null;
+    content: PolymorpheusContent = '';
 
     @Input('tuiHintDirection')
     @tuiDefaultProp()

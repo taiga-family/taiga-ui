@@ -23,7 +23,6 @@ import {
     TuiHandler,
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -78,13 +77,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     get focused(): boolean {
         return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
-    }
-
-    @tuiPure
-    getItemContentContext($implicit: T): TuiContextWithImplicit<T> {
-        return {
-            $implicit,
-        };
     }
 
     onCheckbox(value: boolean, item: T): void {

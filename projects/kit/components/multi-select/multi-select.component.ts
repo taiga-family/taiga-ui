@@ -26,6 +26,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsString,
     TuiMapper,
     tuiPure,
     TuiStringHandler,
@@ -203,10 +204,6 @@ export class TuiMultiSelectComponent<T>
         );
     }
 
-    get context(): TuiContextWithImplicit<readonly T[]> {
-        return this.getContext(this.value);
-    }
-
     @tuiPure
     getStringifier(
         stringify: TuiStringHandler<T>,
@@ -226,7 +223,7 @@ export class TuiMultiSelectComponent<T>
         TuiBooleanHandler<T>,
         TuiBooleanHandler<string | TuiStringifiableItem<T>>
     > = handler => stringifiable =>
-        typeof stringifiable === 'string' || handler(stringifiable.item);
+        tuiIsString(stringifiable) || handler(stringifiable.item);
 
     onSpace(event: Event): void {
         if (!this.editable) {
@@ -299,11 +296,6 @@ export class TuiMultiSelectComponent<T>
     setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
-    }
-
-    @tuiPure
-    private getContext($implicit: readonly T[]): TuiContextWithImplicit<readonly T[]> {
-        return {$implicit};
     }
 
     private updateSearch(search: string | null): void {

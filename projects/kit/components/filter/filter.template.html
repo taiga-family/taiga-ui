@@ -12,11 +12,9 @@
             automation-id="tui-filter__content"
             class="content"
         >
-            <div
-                polymorpheus-outlet
-                [content]="content"
-                [context]="getItemContentContext(item)"
-            ></div>
+            <ng-container *polymorpheusOutlet="content as text; context: {$implicit: item}">
+                {{ text }}
+            </ng-container>
             <tui-badge
                 *ngIf="badgeHandler(item) as badgeValue"
                 automation-id="tui-filter__badge"

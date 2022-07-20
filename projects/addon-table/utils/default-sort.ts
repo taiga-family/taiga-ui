@@ -1,4 +1,4 @@
-import {TuiDay} from '@taiga-ui/cdk';
+import {TuiDay, tuiIsString} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: use {@link tuiDefaultSort} instead
@@ -12,7 +12,7 @@ export function defaultSort<T>(x: T, y: T): number {
         return 0;
     }
 
-    if (typeof a === 'string' && typeof b === 'string') {
+    if (tuiIsString(a) && tuiIsString(b)) {
         return a.localeCompare(b);
     }
 

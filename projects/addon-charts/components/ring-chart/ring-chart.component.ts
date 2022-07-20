@@ -7,13 +7,10 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiRingChartContext} from '@taiga-ui/addon-charts/interfaces';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: 3.0 Refactor to use ng-content
 @Component({
     selector: 'tui-ring-chart',
     templateUrl: './ring-chart.template.html',
@@ -34,11 +31,6 @@ export class TuiRingChartComponent {
     @Input()
     @tuiDefaultProp()
     colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
-
-    /** @deprecated */
-    @Input()
-    @tuiDefaultProp()
-    content: PolymorpheusContent<TuiRingChartContext> = '';
 
     @Input()
     @tuiDefaultProp()

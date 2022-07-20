@@ -1,6 +1,6 @@
 import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {
@@ -23,7 +23,7 @@ export class TuiErrorComponent {
     @Input('error')
     @tuiDefaultProp()
     set errorSetter(error: TuiValidationError | string | null) {
-        this.error = typeof error === 'string' ? new TuiValidationError(error) : error;
+        this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }
 
     error: TuiValidationError | null = null;
