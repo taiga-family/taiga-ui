@@ -57,7 +57,7 @@ describe('InputMonthRange', () => {
             component.nativeFocusableElement!.focus();
             component.writeValue(testRange);
 
-            expect(component.computeValue('May 2020', 'May 2020')).toBe(`May 2020 — `);
+            expect(component.computeValue('May 2020', 'May 2020')).toBe(`May 2020 – `);
         });
 
         it('returns a full of stringified range if single month and readonly state', () => {
@@ -69,7 +69,7 @@ describe('InputMonthRange', () => {
             component.writeValue(testRange);
 
             expect(component.computeValue('May 2020', 'May 2020')).toBe(
-                `May 2020 — May 2020`,
+                `May 2020 – May 2020`,
             );
         });
 
@@ -81,7 +81,7 @@ describe('InputMonthRange', () => {
             component.writeValue(testRange);
 
             expect(component.computeValue('May 2020', 'July 2020')).toBe(
-                `May 2020 — July 2020`,
+                `May 2020 – July 2020`,
             );
         });
 
@@ -92,7 +92,7 @@ describe('InputMonthRange', () => {
             component.writeValue(testRange);
 
             expect(component.computeValue('May 2020', 'May 2020')).toBe(
-                `May 2020 — May 2020`,
+                `May 2020 – May 2020`,
             );
         });
     });
