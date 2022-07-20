@@ -15,7 +15,7 @@ env:
 
 jobs:
   lint:
-    if: ${{ !contains(github.head_ref, 'release/') }}
+    if: ${{ !contains(github.ref_name, 'release/') }}
     name: Format
     runs-on: ubuntu-latest
     env:
