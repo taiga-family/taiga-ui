@@ -18,6 +18,7 @@ module.exports = {
 
         // @custom
         './scripts/eslint/cypress.js',
+        './scripts/eslint/decorators.js',
         './scripts/eslint/naming-convention.js',
     ],
     ignorePatterns: [
