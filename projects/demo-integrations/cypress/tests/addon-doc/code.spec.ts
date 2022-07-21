@@ -5,6 +5,9 @@ describe('Code blocks', () => {
         it(tabName, () => {
             cy.tuiVisit('/components/line-clamp');
             cy.get('#basic tui-tabs-with-more [tuiTab]').contains(tabName).click();
+
+            cy.tuiWaitCodeHighlight();
+
             cy.get('#basic')
                 .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
                 .matchImageSnapshot(`01-${i}-code-block-${tabName}`);
@@ -13,6 +16,8 @@ describe('Code blocks', () => {
 
     it('API page', () => {
         cy.tuiVisit('/components/line-clamp/Setup');
+
+        cy.tuiWaitCodeHighlight();
 
         cy.get('tui-doc-code').each(($el, index) => {
             cy.wrap($el)
