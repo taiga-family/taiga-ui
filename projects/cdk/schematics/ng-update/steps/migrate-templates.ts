@@ -10,7 +10,7 @@ import {
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
-    findElementInTemplateByFn,
+    findElementsInTemplateByFn,
     findElementsByTagName,
     findElementsWithAttribute,
     hasElementAttribute,
@@ -314,7 +314,7 @@ function migrateTuiHideSelectedPipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elementsWithPipe = findElementInTemplateByFn(template, el =>
+    const elementsWithPipe = findElementsInTemplateByFn(template, el =>
         el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 

@@ -6,7 +6,7 @@ import {
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
 import {
-    findElementByFn,
+    findElementsByFn,
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
@@ -32,7 +32,7 @@ export function migratePolymorpheus({
         const contentVal = element.attrs.find(attr => attr.name === '[content]')?.value;
         const contextVal = element.attrs.find(attr => attr.name === '[context]')?.value;
 
-        const defaultTemplateEl = findElementByFn(
+        const defaultTemplateEl = findElementsByFn(
             element.childNodes,
             el => el.tagName === 'ng-template',
         )[0];
