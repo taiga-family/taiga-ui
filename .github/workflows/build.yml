@@ -19,7 +19,7 @@ env:
 
 jobs:
   build:
-    if: ${{ !contains(github.ref_name, 'release/') }}
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Packages
     runs-on: ubuntu-latest
     env:
