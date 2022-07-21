@@ -9,30 +9,30 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ListsComponent {
     readonly example1: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        HTML: import('./examples/3/index.html?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        HTML: import('./examples/4/index.html?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/5/index.html'),
+        HTML: import('./examples/5/index.html?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/6/index.html'),
+        HTML: import('./examples/6/index.html?raw'),
     };
 
     readonly example7: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/7/index.html'),
+        HTML: import('./examples/7/index.html?raw'),
     };
 }
