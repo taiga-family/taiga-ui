@@ -10,7 +10,7 @@ import {
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
-    findElementByFn,
+    findElementsInTemplateByFn,
     findElementsByTagName,
     findElementsWithAttribute,
     hasElementAttribute,
@@ -26,7 +26,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
-import {ElementLocation} from 'parse5';
+import {addProviderToComponent} from 'ng-morph';
 import {getNgComponents} from '../../utils/angular/ng-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
@@ -37,10 +37,9 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {ALL_TS_FILES} from '../../constants';
+import {replaceTag} from '../../utils/replace-tag';
 import {printProgress} from '../../utils/progress';
-
-const START_TAG_OFFSET = 1;
-const END_TAG_OFFSET = 2;
+import {migratePolymorpheus} from './migrate-polymorpheus';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -56,6 +55,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         addEditorProviders,
         migrateTuiHideSelectedPipe,
         removeInputs,
+        migratePolymorpheus,
     ];
 
     componentWithTemplatesPaths.forEach((resource, templateIndex, templates) => {
@@ -279,29 +279,6 @@ function replaceFieldError({
     });
 }
 
-function replaceTag(
-    recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation,
-    from: string,
-    to: string,
-    templateOffset = 0,
-    addAttributes: string[] = [],
-) {
-    const startTagOffset = sourceCodeLocation.startTag.startOffset;
-    const endTagOffset = sourceCodeLocation.endTag?.startOffset;
-
-    if (endTagOffset) {
-        recorder.remove(endTagOffset + templateOffset + END_TAG_OFFSET, from.length);
-        recorder.insertRight(endTagOffset + templateOffset + END_TAG_OFFSET, to);
-    }
-
-    recorder.remove(startTagOffset + templateOffset + START_TAG_OFFSET, from.length);
-    recorder.insertRight(
-        startTagOffset + templateOffset + START_TAG_OFFSET,
-        `${to} ${addAttributes.join(' ')}`,
-    );
-}
-
 function addEditorProviders({
     resource,
     fileSystem,
@@ -350,7 +327,7 @@ function migrateTuiHideSelectedPipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elementsWithPipe = findElementByFn(template, el =>
+    const elementsWithPipe = findElementsInTemplateByFn(template, el =>
         el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 
