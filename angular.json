@@ -469,9 +469,12 @@
             },
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-builders/custom-webpack:browser",
                     "outputs": ["dist/demo"],
                     "options": {
+                        "customWebpackConfig": {
+                            "path": "projects/demo/webpack.config.ts"
+                        },
                         "outputPath": "dist/demo/browser",
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.browser.ts",
@@ -601,7 +604,7 @@
                     }
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@angular-builders/custom-webpack:dev-server",
                     "options": {
                         "port": 3333,
                         "sslCert": ".ssl/localhost.pem",
@@ -629,23 +632,33 @@
                 },
                 "serve:ssl": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx mkcert demo && nx serve --ssl"}
+                    "options": {
+                        "command": "nx mkcert demo && nx serve --ssl"
+                    }
                 },
                 "serve:ip": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx serve --open --host 0.0.0.0 --disable-host-check"}
+                    "options": {
+                        "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
+                    }
                 },
                 "serve:ru": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx serve --configuration ru"}
+                    "options": {
+                        "command": "nx serve --configuration ru"
+                    }
                 },
                 "serve:default": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx serve --configuration def"}
+                    "options": {
+                        "command": "nx serve --configuration def"
+                    }
                 },
                 "serve:shadow": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "nx serve --configuration shadow"}
+                    "options": {
+                        "command": "nx serve --configuration shadow"
+                    }
                 },
                 "serve:ssr": {
                     "builder": "@nguniversal/builders:ssr-dev-server",
@@ -664,11 +677,16 @@
                 },
                 "serve:compiled": {
                     "builder": "@nrwl/workspace:run-commands",
-                    "options": {"command": "angular-http-server -p 3333 --silent"}
+                    "options": {
+                        "command": "angular-http-server -p 3333 --silent"
+                    }
                 },
                 "server": {
-                    "builder": "@angular-devkit/build-angular:server",
+                    "builder": "@angular-builders/custom-webpack:server",
                     "options": {
+                        "customWebpackConfig": {
+                            "path": "projects/demo/webpack.config.ts"
+                        },
                         "outputPath": "dist/demo/server",
                         "main": "projects/demo/server.ts",
                         "tsConfig": "projects/demo/tsconfig.server.json",
@@ -700,13 +718,13 @@
                     }
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@angular-builders/custom-webpack:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
                     }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular-builders/custom-webpack:karma",
                     "options": {
                         "codeCoverage": false,
                         "main": "projects/demo/test.ts",
