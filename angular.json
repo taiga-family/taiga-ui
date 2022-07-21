@@ -684,6 +684,9 @@
                 "server": {
                     "builder": "@angular-builders/custom-webpack:server",
                     "options": {
+                        "customWebpackConfig": {
+                            "path": "projects/demo/webpack.config.ts"
+                        },
                         "outputPath": "dist/demo/server",
                         "main": "projects/demo/server.ts",
                         "tsConfig": "projects/demo/tsconfig.server.json",
