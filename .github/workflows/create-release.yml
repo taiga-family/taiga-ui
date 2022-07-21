@@ -22,7 +22,7 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    if: ${{ contains(github.ref_name, 'main') || contains(github.ref_name, 'release/') }}
+    if: ${{ contains(github.ref, 'main') || contains(github.ref, 'release/') }}
     env:
       IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}

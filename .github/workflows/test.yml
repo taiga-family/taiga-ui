@@ -25,7 +25,7 @@ env:
 
 jobs:
   test:
-    if: ${{ !contains(github.ref_name, 'release/') }}
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Karma
     runs-on: ubuntu-latest
     steps:
