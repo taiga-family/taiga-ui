@@ -11,12 +11,14 @@ import {tuiScrollIntoView} from './scroll-into-view';
 import {tuiSetNightMode} from './set-night-mode';
 import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
+import {tuiWaitCodeHighlight} from './wait-code-highlight';
 import {tuiWaitKitDialog} from './wait-kit-dialog';
 
 declare global {
     namespace Cypress {
         interface Chainable {
             getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
+
             findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
             tuiVisit: typeof tuiVisit;
@@ -25,9 +27,12 @@ declare global {
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
             tuiHideVersionManager: typeof tuiHideVersionManager;
+            tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
+
             tuiScrollIntoView(): Chainable;
+
             tuiFocus(): Chainable;
         }
 
@@ -57,6 +62,7 @@ Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
 Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
 Cypress.Commands.add('tuiHideNavigation', tuiHideNavigation);
 Cypress.Commands.add('tuiHideVersionManager', tuiHideVersionManager);
+Cypress.Commands.add('tuiWaitCodeHighlight', tuiWaitCodeHighlight);
 
 Cypress.Commands.add(
     'tuiTab',
