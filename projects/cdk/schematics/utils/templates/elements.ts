@@ -2,11 +2,10 @@ import {ChildNode, Element, parseFragment} from 'parse5';
 
 const ALWAYS_TRUE_HANDLER = (): true => true;
 
-export function findElementByFn(
-    html: string,
+export function findElementsByFn(
+    nodes: ChildNode[],
     predicateFn: (el: Element) => boolean,
 ): Element[] {
-    const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
 
     const visitNodes = (nodes: ChildNode[]) => {
@@ -23,13 +22,21 @@ export function findElementByFn(
         });
     };
 
-    visitNodes(document.childNodes);
+    visitNodes(nodes);
 
     return elements;
 }
 
+export function findElementsInTemplateByFn(
+    html: string,
+    predicateFn: (el: Element) => boolean,
+): Element[] {
+    const document = parseFragment(html, {sourceCodeLocationInfo: true});
+    return findElementsByFn(document.childNodes, predicateFn);
+}
+
 export function findElementsByTagName(html: string, tagName: string): Element[] {
-    return findElementByFn(html, el => el.tagName === tagName);
+    return findElementsInTemplateByFn(html, el => el.tagName === tagName);
 }
 
 /**
@@ -40,7 +47,7 @@ export function findElementsWithAttribute(
     html: string,
     attributeName: string,
 ): Element[] {
-    return findElementByFn(html, el =>
+    return findElementsInTemplateByFn(html, el =>
         el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
     );
 }
