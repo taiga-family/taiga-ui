@@ -29,7 +29,7 @@ import {
 } from '@taiga-ui/kit/utils';
 import {map} from 'rxjs/operators';
 
-import {TuiSliderComponent} from './slider.component';
+import {TuiSliderComponent} from '../slider.component';
 
 // @dynamic
 @Directive({

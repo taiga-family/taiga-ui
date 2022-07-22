@@ -1,0 +1,12 @@
+<ng-container *ngIf="control?.valueChanges | async"></ng-container>
+
+<div
+    class="t-ghost"
+    [attr.data-size]="size"
+    [style.left.px]="ghostLeft"
+    [style.--tui-slider-thumb-ratio]="ratio"
+>
+    <ng-content></ng-content>
+</div>
+
+<ng-content select="input[type=range]"></ng-content>

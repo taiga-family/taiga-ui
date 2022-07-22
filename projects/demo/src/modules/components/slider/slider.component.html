@@ -103,7 +103,13 @@
             i18n-heading
             heading="Complex"
             [content]="example6"
+            [description]="tuiSliderThumbLabelDescription"
         >
+            <ng-template #tuiSliderThumbLabelDescription>
+                Use
+                <code>tuiSliderThumbLabel</code>
+                for positioning any content so it slides alongside the thumb.
+            </ng-template>
             <tui-slider-example-6></tui-slider-example-6>
         </tui-doc-example>
     </ng-template>

@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiLinkModule,
+    TuiManualHintModule,
     TuiModeModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
@@ -30,6 +31,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiNotificationModule,
         TuiModeModule,
         TuiButtonModule,
+        TuiManualHintModule,
         RouterModule.forChild(generateRoutes(ExampleTuiSliderComponent)),
     ],
     declarations: [
