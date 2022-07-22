@@ -12,13 +12,13 @@ import {
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     AbstractTuiPortalHostComponent,
-    getClosestFocusable,
-    inRange,
     POLLING_TIME,
     TuiActiveZoneDirective,
     tuiAssertIsElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
+    tuiGetClosestFocusable,
+    tuiInRange,
     TuiOverscrollMode,
     tuiPure,
     tuiPx,
@@ -211,7 +211,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             case 'left':
                 if (
                     right + DEFAULT_MARGIN > viewportWidth ||
-                    inRange(left + DEFAULT_MARGIN, 0, viewportWidth)
+                    tuiInRange(left + DEFAULT_MARGIN, 0, viewportWidth)
                 ) {
                     style.left = tuiPx(left);
                     style.right = 'auto';
@@ -223,7 +223,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                 break;
             case 'right':
                 if (
-                    inRange(right + DEFAULT_MARGIN, 0, viewportWidth) ||
+                    tuiInRange(right + DEFAULT_MARGIN, 0, viewportWidth) ||
                     left + DEFAULT_MARGIN > viewportWidth
                 ) {
                     style.left = 'auto';
@@ -382,10 +382,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
         tuiAssertIsElement(host);
 
-        let focusable = getClosestFocusable(host, previous, root);
+        let focusable = tuiGetClosestFocusable(host, previous, root);
 
         while (focusable !== null && host.contains(focusable)) {
-            focusable = getClosestFocusable(focusable, previous, root);
+            focusable = tuiGetClosestFocusable(focusable, previous, root);
         }
 
         focusable?.focus();

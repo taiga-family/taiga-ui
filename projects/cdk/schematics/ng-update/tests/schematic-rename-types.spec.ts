@@ -23,7 +23,7 @@ import {
 import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ScrollIntoViewDirective, CodeComponent } from '@taiga-ui/addon-doc';
 import { TableBar } from '@taiga-ui/addon-tablebars';
-import { InvalidDayException, InvalidMonthException, InvalidYearException } from '@taiga-ui/cdk/exceptions';
+import { TuiInvalidDayException, TuiInvalidMonthException, TuiInvalidYearException } from '@taiga-ui/cdk/exceptions';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';

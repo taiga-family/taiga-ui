@@ -1,6 +1,5 @@
 import {TuiDay} from '../day';
-import {TuiMonth} from '../month';
-import {mockDateInside, pendingIfNotMoscowTimeZone} from './helpers';
+import {tuiMockDateInside, tuiPendingIfNotMoscowTimeZone} from './helpers';
 
 describe('TuiDay', () => {
     describe('static method', () => {
@@ -56,11 +55,11 @@ describe('TuiDay', () => {
 
         describe('currentLocal returns date', () => {
             beforeEach(() => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
             });
 
             it('same as UTC if UTC is the local time zone', () => {
-                mockDateInside(Date.UTC(2000, 0, 15, 10), () => {
+                tuiMockDateInside(Date.UTC(2000, 0, 15, 10), () => {
                     const currentDate = TuiDay.currentLocal();
 
                     expect(currentDate.year).toBe(2000);
@@ -70,7 +69,7 @@ describe('TuiDay', () => {
             });
 
             it('later than UTC if UTC day is earlier than local time zone', () => {
-                mockDateInside(Date.UTC(2000, 0, 15, 23), () => {
+                tuiMockDateInside(Date.UTC(2000, 0, 15, 23), () => {
                     const currentDate = TuiDay.currentLocal();
 
                     expect(currentDate.year).toBe(2000);
@@ -82,11 +81,11 @@ describe('TuiDay', () => {
 
         describe('currentUtc returns date', () => {
             beforeEach(() => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
             });
 
             it('UTC is the same as local', () => {
-                mockDateInside(new Date(2000, 0, 31, 10), () => {
+                tuiMockDateInside(new Date(2000, 0, 31, 10), () => {
                     const currentDate = TuiDay.currentUtc();
 
                     expect(currentDate.year).toBe(2000);
@@ -96,100 +95,12 @@ describe('TuiDay', () => {
             });
 
             it('UTC is smaller than local', () => {
-                mockDateInside(new Date(2000, 0, 1, 2), () => {
+                tuiMockDateInside(new Date(2000, 0, 1, 2), () => {
                     const currentDate = TuiDay.currentUtc();
 
                     expect(currentDate.year).toBe(1999);
                     expect(currentDate.month).toBe(11);
                     expect(currentDate.day).toBe(31);
-                });
-            });
-        });
-
-        describe('getDayFromMonthRowCol returns', () => {
-            describe('day from adjacent month if these coordinates are outside current month', () => {
-                describe('2016.03', () => {
-                    let y2016m2: TuiMonth;
-
-                    beforeEach(() => {
-                        y2016m2 = new TuiMonth(2016, 2);
-                    });
-
-                    it('row 0 col 0', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2016m2, 0, 0)).toEqual(
-                            new TuiDay(2016, 1, 29),
-                        );
-                    });
-
-                    it('row 4 col 6', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2016m2, 4, 6)).toEqual(
-                            new TuiDay(2016, 3, 3),
-                        );
-                    });
-
-                    it('row 5 col 0', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2016m2, 5, 0)).toEqual(
-                            new TuiDay(2016, 3, 4),
-                        );
-                    });
-                });
-
-                describe('1995.01', () => {
-                    let y1995m0: TuiMonth;
-
-                    beforeEach(() => {
-                        y1995m0 = new TuiMonth(1995, 0);
-                    });
-
-                    it('row 0 col 5', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y1995m0, 0, 5)).toEqual(
-                            new TuiDay(1994, 11, 31),
-                        );
-                    });
-
-                    it('row 5 col 2', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y1995m0, 5, 2)).toEqual(
-                            new TuiDay(1995, 1, 1),
-                        );
-                    });
-                });
-            });
-
-            describe('day by coordinates', () => {
-                describe('for 2018.03 and', () => {
-                    let y2018m2: TuiMonth;
-
-                    beforeEach(() => {
-                        y2018m2 = new TuiMonth(2018, 2);
-                    });
-
-                    it('row 0 col 3 === 1', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2018m2, 0, 3).day).toBe(1);
-                    });
-
-                    it('row 3 col 2 === 21', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2018m2, 3, 2).day).toBe(21);
-                    });
-
-                    it('row 4 col 4 === 30', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y2018m2, 4, 4).day).toBe(30);
-                    });
-                });
-
-                describe('for 1995.01 and', () => {
-                    let y1995m0: TuiMonth;
-
-                    beforeEach(() => {
-                        y1995m0 = new TuiMonth(1995, 0);
-                    });
-
-                    it('row 1 col 1 === 3', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y1995m0, 1, 1).day).toBe(3);
-                    });
-
-                    it('row 5 col 1 === 31', () => {
-                        expect(TuiDay.getDayFromMonthRowCol(y1995m0, 5, 1).day).toBe(31);
-                    });
                 });
             });
         });
@@ -962,7 +873,7 @@ describe('TuiDay', () => {
             });
 
             it('toLocalNativeDate returns native Date with time zone offset', () => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
 
                 const result = new TuiDay(2000, 0, 1);
 
@@ -970,7 +881,7 @@ describe('TuiDay', () => {
             });
 
             it('toUtcNativeDate returns native Date without time zone offset', () => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
 
                 const result = new TuiDay(2000, 0, 1);
 
