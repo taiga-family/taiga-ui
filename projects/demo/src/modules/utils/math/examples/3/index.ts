@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {normalizeToIntNumber} from '@taiga-ui/cdk';
+import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-math-example-3',
@@ -21,6 +21,6 @@ export class TuiMathExample3 {
     get normalized(): number {
         const {value, min, max} = this.parametersForm.value;
 
-        return normalizeToIntNumber(value, min, max);
+        return tuiNormalizeToIntNumber(value, min, max);
     }
 }

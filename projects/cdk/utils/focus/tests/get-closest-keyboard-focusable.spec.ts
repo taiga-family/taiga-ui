@@ -1,11 +1,11 @@
-import {getClosestKeyboardFocusable} from '../get-closest-keyboard-focusable';
+import {tuiGetClosestFocusable} from '../get-closest-keyboard-focusable';
 
 describe('getClosestKeyboardFocusable', () => {
     it('returns null if root has no document', () => {
         const root: Node = {} as unknown as Node;
         const divElement = document.createElement('div');
 
-        expect(getClosestKeyboardFocusable(divElement, true, root)).toBe(null);
+        expect(tuiGetClosestFocusable(divElement, true, root)).toBe(null);
     });
 
     it('returns closest focusable if there is backwords', () => {
@@ -17,7 +17,7 @@ describe('getClosestKeyboardFocusable', () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(getClosestKeyboardFocusable(divElement, true, root)).toBe(buttonElement);
+        expect(tuiGetClosestFocusable(divElement, true, root)).toBe(buttonElement);
 
         document.body.removeChild(root);
     });
@@ -31,7 +31,7 @@ describe('getClosestKeyboardFocusable', () => {
         root.appendChild(buttonElement);
         document.body.appendChild(root);
 
-        expect(getClosestKeyboardFocusable(divElement, false, root)).toBe(buttonElement);
+        expect(tuiGetClosestFocusable(divElement, false, root)).toBe(buttonElement);
 
         document.body.removeChild(root);
     });
@@ -43,7 +43,7 @@ describe('getClosestKeyboardFocusable', () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(getClosestKeyboardFocusable(divElement, undefined, root)).toBe(null);
+        expect(tuiGetClosestFocusable(divElement, undefined, root)).toBe(null);
 
         document.body.removeChild(root);
     });
