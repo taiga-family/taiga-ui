@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getClosestKeyboardFocusable,
     itemsQueryListObservable,
     preventDefault,
     setNativeFocused,
+    tuiGetClosestFocusable,
     tuiPure,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -160,7 +160,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             return;
         }
 
-        const item = getClosestKeyboardFocusable(
+        const item = tuiGetClosestFocusable(
             content.nativeElement,
             false,
             content.nativeElement,
