@@ -7,9 +7,9 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 })
 export class Example<%= classify(name) %>Component {
     <% for(let i =1; i<=samples; i++) {%>readonly example<%=i%> = {
-            TypeScript: import('!!raw-loader!./examples/<%=i%>/index.ts'),
-            HTML: import('!!raw-loader!./examples/<%=i%>/index.html'),
+            TypeScript: import('./examples/<%=i%>/index.ts?raw'),
+            HTML: import('./examples/<%=i%>/index.html?raw'),
         };
     <% } %>
-    readonly exampleImportModule = import('!!raw-loader!./import/import-module.md');
+    readonly exampleImportModule = import('./import/import-module.md?raw');
 }

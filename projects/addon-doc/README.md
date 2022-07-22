@@ -123,8 +123,8 @@ npm i @taiga-ui/addon-doc
    export class SuperComponent {
      // Keys would be used as tabs for code example
      readonly example = {
-       TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-       HTML: import('!!raw-loader!./examples/1/index.html'),
+       TypeScript: import('./examples/1/index.ts?raw'),
+       HTML: import('./examples/1/index.html?raw'),
      };
 
      readonly inputVariants = ['input 1', 'input 2'];
