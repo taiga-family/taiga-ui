@@ -1,9 +1,9 @@
 import {
     DAYS_IN_WEEK,
-    inRange,
     tuiAssert,
     TuiDay,
     TuiDayOfWeek,
+    tuiInRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
 
@@ -55,9 +55,9 @@ export const getDayFromMonthRowCol = ({
     firstDayOfWeek: TuiDayOfWeek;
 }): TuiDay => {
     tuiAssert.assert(Number.isInteger(rowIndex));
-    tuiAssert.assert(inRange(rowIndex, 0, 6));
+    tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
     tuiAssert.assert(Number.isInteger(colIndex));
-    tuiAssert.assert(inRange(colIndex, 0, DAYS_IN_WEEK));
+    tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
 
     let day =
         rowIndex * DAYS_IN_WEEK +
