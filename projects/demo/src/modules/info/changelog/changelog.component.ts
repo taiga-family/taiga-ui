@@ -12,7 +12,7 @@ import {switchMap} from 'rxjs/operators';
     changeDetection,
 })
 export class ChangelogComponent {
-    readonly changelog = of(import('!!raw-loader!../../../../../../CHANGELOG.md')).pipe(
+    readonly changelog = of(import('../../../../../../CHANGELOG.md?raw')).pipe(
         switchMap(rawLoad),
     );
 }

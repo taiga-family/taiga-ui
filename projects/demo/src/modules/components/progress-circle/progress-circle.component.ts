@@ -27,28 +27,28 @@ export class ExampleProgressCircleComponent {
     color = this.colorVariants[0];
 
     readonly basicExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly sizesExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly labelExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly colorsExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 }
