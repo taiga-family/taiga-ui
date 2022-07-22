@@ -9,8 +9,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class VariablesComponent {
     readonly example1: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly vars: Record<string, string> = {

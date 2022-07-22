@@ -9,20 +9,20 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class SpacesComponent {
     readonly exampleBasicImportsLess = import(
-        '!!raw-loader!./examples/import/basic-imports-less.md'
+        './examples/import/basic-imports-less.md?raw'
     );
 
-    readonly exampleIndexLess = import('!!raw-loader!./examples/import/index-less.md');
+    readonly exampleIndexLess = import('./examples/import/index-less.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.style.less'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.style.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.style.less'),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.style.less?raw'),
     };
 }

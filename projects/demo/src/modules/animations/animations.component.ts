@@ -13,26 +13,26 @@ export class ExampleAnimationsComponent {
     readonly speedTicksLabels: number[] = [0, 600, 1200, 1800, 2400, 3000];
 
     readonly heightCollapseExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/height-collapse/index.html'),
-        TypeScript: import('!!raw-loader!./examples/height-collapse/index.ts'),
-        LESS: import('!!raw-loader!./examples/height-collapse/index.less'),
+        HTML: import('./examples/height-collapse/index.html?raw'),
+        TypeScript: import('./examples/height-collapse/index.ts?raw'),
+        LESS: import('./examples/height-collapse/index.less?raw'),
     };
 
     readonly widthCollapseExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/width-collapse/index.html'),
-        TypeScript: import('!!raw-loader!./examples/width-collapse/index.ts'),
-        LESS: import('!!raw-loader!./examples/width-collapse/index.less'),
+        HTML: import('./examples/width-collapse/index.html?raw'),
+        TypeScript: import('./examples/width-collapse/index.ts?raw'),
+        LESS: import('./examples/width-collapse/index.less?raw'),
     };
 
     readonly fadeInExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/fade-in/index.html'),
-        TypeScript: import('!!raw-loader!./examples/fade-in/index.ts'),
-        LESS: import('!!raw-loader!./examples/fade-in/index.less'),
+        HTML: import('./examples/fade-in/index.html?raw'),
+        TypeScript: import('./examples/fade-in/index.ts?raw'),
+        LESS: import('./examples/fade-in/index.less?raw'),
     };
 
     readonly scaleInExample: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/scale-in/index.html'),
-        TypeScript: import('!!raw-loader!./examples/scale-in/index.ts'),
-        LESS: import('!!raw-loader!./examples/scale-in/index.less'),
+        HTML: import('./examples/scale-in/index.html?raw'),
+        TypeScript: import('./examples/scale-in/index.ts?raw'),
+        LESS: import('./examples/scale-in/index.less?raw'),
     };
 }
