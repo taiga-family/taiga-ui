@@ -13,16 +13,16 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    getClosestFocusable,
     isElementEditable,
-    isNativeKeyboardFocusable,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
+    tuiIsNativeKeyboardFocusable,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -96,9 +96,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return isNativeKeyboardFocusable(this.host)
+        return tuiIsNativeKeyboardFocusable(this.host)
             ? this.host
-            : getClosestFocusable(this.host, false, this.elementRef.nativeElement);
+            : tuiGetClosestFocusable(this.host, false, this.elementRef.nativeElement);
     }
 
     @HostBinding('class._hosted_dropdown_focused')
@@ -223,7 +223,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const initial = first
             ? this.wrapper.nativeElement
             : this.wrapper.nativeElement.nextElementSibling;
-        const focusable = getClosestFocusable(
+        const focusable = tuiGetClosestFocusable(
             initial,
             !first,
             this.wrapper.nativeElement,

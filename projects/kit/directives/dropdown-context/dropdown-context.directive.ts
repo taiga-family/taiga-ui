@@ -11,12 +11,12 @@ import {
 } from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
-    getClosestFocusable,
     setNativeFocused,
     TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
     TuiDropdownPortalService,
+    tuiGetClosestFocusable,
     tuiGetNativeFocused,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
@@ -118,7 +118,7 @@ export class TuiDropdownContextDirective
         const nextEl = this.dropdownContent.nextElementSibling;
         const initial =
             down || !this.checkIsFocusableElement(nextEl) ? this.dropdownContent : nextEl;
-        const focusable = getClosestFocusable(initial, !down, this.dropdownContent);
+        const focusable = tuiGetClosestFocusable(initial, !down, this.dropdownContent);
 
         if (focusable === null) {
             return;

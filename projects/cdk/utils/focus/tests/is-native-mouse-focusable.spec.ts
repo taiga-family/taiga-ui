@@ -1,16 +1,16 @@
-import {isNativeMouseFocusable} from '../is-native-mouse-focusable';
+import {tuiIsNativeMouseFocusable} from '../is-native-mouse-focusable';
 
 describe('isNativeMouseFocusable', () => {
     it('DIV is not mouse focusable', () => {
         const element = document.createElement('div');
 
-        expect(isNativeMouseFocusable(element)).toEqual(false);
+        expect(tuiIsNativeMouseFocusable(element)).toEqual(false);
     });
 
     it('BUTTON is mouse focusable', () => {
         const element = document.createElement('button');
 
-        expect(isNativeMouseFocusable(element)).toEqual(true);
+        expect(tuiIsNativeMouseFocusable(element)).toEqual(true);
     });
 
     it('disabled BUTTON is not mouse focusable', () => {
@@ -18,7 +18,7 @@ describe('isNativeMouseFocusable', () => {
 
         element.setAttribute('disabled', '');
 
-        expect(isNativeMouseFocusable(element)).toEqual(false);
+        expect(tuiIsNativeMouseFocusable(element)).toEqual(false);
     });
 
     it('BUTTON with tabIndex === -1 is not mouse focusable', () => {
@@ -26,6 +26,6 @@ describe('isNativeMouseFocusable', () => {
 
         element.setAttribute('disabled', '');
 
-        expect(isNativeMouseFocusable(element)).toEqual(false);
+        expect(tuiIsNativeMouseFocusable(element)).toEqual(false);
     });
 });
