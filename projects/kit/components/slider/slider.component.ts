@@ -104,7 +104,7 @@ export class TuiSliderComponent {
         @Optional()
         @Self()
         @Inject(NgControl)
-        readonly control: NgControl | null,
+        private readonly control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLInputElement>,

@@ -4,6 +4,7 @@ import {
     Component,
     ContentChild,
 } from '@angular/core';
+import {NgControl} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -19,6 +20,9 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     @ContentChild(TuiSliderComponent)
     readonly slider?: TuiSliderComponent;
 
+    @ContentChild(NgControl)
+    readonly control?: NgControl;
+
     get size(): TuiSizeS {
         return this.slider?.size || 'm';
     }
@@ -33,7 +37,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
 
     ngAfterContentInit(): void {
         tuiAssert.assert(
-            Boolean(this.slider?.control?.valueChanges),
+            Boolean(this.control?.valueChanges),
             `\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n` +
                 'Use [(ngModel)] or [formControl] or formControlName for correct work.',
         );
