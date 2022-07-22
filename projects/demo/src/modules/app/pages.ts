@@ -765,12 +765,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'Slider[deprecated]',
-                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
-                route: '/components/slider-deprecated',
-            },
-            {
-                section: $localize`Components`,
                 title: 'Range',
                 keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
                 route: '/components/range',
