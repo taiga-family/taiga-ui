@@ -9,8 +9,8 @@ import {TuiPluralize} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiPluralizeComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     index = 10;
 

@@ -8,28 +8,26 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiPdfViewerComponent {
-    readonly exampleService = import('!!raw-loader!./examples/import/service.md');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleService = import('./examples/import/service.md?raw');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
         'actions-content.component.ts': import(
-            '!!raw-loader!./examples/2/actions-content.component.ts'
+            './examples/2/actions-content.component.ts?raw'
         ),
-        'pdf-content.component.ts': import(
-            '!!raw-loader!./examples/2/pdf-content.component.ts'
-        ),
+        'pdf-content.component.ts': import('./examples/2/pdf-content.component.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
 }

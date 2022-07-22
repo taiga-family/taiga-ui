@@ -9,13 +9,13 @@ import {tuiKitIcons} from '@taiga-ui/icons';
     changeDetection,
 })
 export class IconSetComponent {
-    readonly exampleSanitizer = import('!!raw-loader!./examples/sanitizer/sanitizer.md');
+    readonly exampleSanitizer = import('./examples/sanitizer/sanitizer.md?raw');
 
     readonly example1 = {
-        'process-icons.js': import('!!raw-loader!./examples/1/process-icons.js.md'),
-        'process-icons.ts': import('!!raw-loader!./examples/1/process-icons.ts.md'),
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        'process-icons.js': import('./examples/1/process-icons.js.md?raw'),
+        'process-icons.ts': import('./examples/1/process-icons.ts.md?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly names = Object.keys(tuiKitIcons);

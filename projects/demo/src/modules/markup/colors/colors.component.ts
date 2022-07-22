@@ -20,9 +20,7 @@ import {
     changeDetection,
 })
 export class ColorsComponent {
-    readonly basicImportsLess = import(
-        '!!raw-loader!./examples/import/basic-imports-less.md'
-    );
+    readonly basicImportsLess = import('./examples/import/basic-imports-less.md?raw');
 
     readonly base = BASE;
     readonly baseNight = BASE_NIGHT;

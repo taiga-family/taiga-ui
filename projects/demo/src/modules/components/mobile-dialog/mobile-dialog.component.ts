@@ -9,13 +9,11 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiMobileDialogComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleInsertComponent = import(
-        '!!raw-loader!./examples/import/insert-component.md'
-    );
+    readonly exampleInsertComponent = import('./examples/import/insert-component.md?raw');
 }
