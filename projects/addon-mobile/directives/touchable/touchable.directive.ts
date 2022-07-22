@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Input, Optional, Renderer2} from '@angular/core';
 import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
-import {findTouchIndex} from '@taiga-ui/addon-mobile/utils';
+import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
     TUI_IS_IOS,
     tuiDefaultProp,
@@ -74,7 +74,7 @@ export class TuiTouchableDirective {
         identifier: number,
     ): boolean {
         const {ownerDocument} = element;
-        const id = findTouchIndex(touches, identifier);
+        const id = tuiFindTouchIndex(touches, identifier);
 
         if (!ownerDocument || id === -1) {
             return true;

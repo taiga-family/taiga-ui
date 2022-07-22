@@ -11,9 +11,9 @@ import {
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {draw} from '@taiga-ui/addon-charts/utils';
 import {
-    inRange,
     tuiDefaultProp,
     TuiIdService,
+    tuiInRange,
     tuiPure,
     TuiStringHandler,
     tuiZoneOptimized,
@@ -27,7 +27,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function smoothingAssertion(smoothingFactor: number): boolean {
-    return inRange(smoothingFactor, 0, 100);
+    return tuiInRange(smoothingFactor, 0, 100);
 }
 
 const SMOOTHING_MESSAGE = `smoothingFactor must be between 0 and 100`;
