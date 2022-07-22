@@ -27,11 +27,14 @@
             [icon]="icon"
             (click)="toggleState()"
         ></button>
-        <tui-slider
+        <input
+            tuiSlider
+            type="range"
+            step="any"
             class="slider"
             [max]="video.duration"
             [(ngModel)]="currentTime"
-        ></tui-slider>
+        />
         <div class="time">
             <time [attr.datetime]="getTime(currentTime)">
                 {{ getTime(currentTime) }}

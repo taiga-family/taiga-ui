@@ -13,8 +13,6 @@ import {merge, Observable, of, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
 const STEP = 0.5;
-const SLIDER_SIZE = 104;
-const GHOST_OFFSET_PX = 36;
 
 @Component({
     selector: 'tui-preview-zoom',
@@ -50,13 +48,6 @@ export class TuiPreviewZoomComponent {
         @Inject(TUI_PREVIEW_ZOOM_TEXTS)
         readonly zoomTexts$: Observable<LanguagePreview['zoomTexts']>,
     ) {}
-
-    get ghostLeft(): number {
-        const position = (this.value - this.min) * SLIDER_SIZE;
-        const range = this.max - this.min;
-
-        return GHOST_OFFSET_PX + Math.round(position / range);
-    }
 
     get leftButtonDisabled(): boolean {
         return this.value === this.min;

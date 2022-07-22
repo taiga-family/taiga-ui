@@ -66,12 +66,15 @@
                     ></tui-toggle>
                     Push notifications
                 </label>
-                <tui-slider
+                <input
+                    tuiSlider
+                    type="range"
+                    step="any"
                     size="m"
                     class="tui-space_vertical-6"
                     [max]="140"
                     [ngModel]="80"
-                ></tui-slider>
+                />
                 <div class="icons">
                     <button
                         tuiIconButton

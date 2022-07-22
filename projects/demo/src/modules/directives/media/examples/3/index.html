@@ -23,10 +23,13 @@
             Waterplea
         </a>
         — Strays
-        <tui-slider
+        <input
+            tuiSlider
+            type="range"
+            step="any"
             class="slider"
             [max]="audio.duration"
             [(ngModel)]="currentTime"
-        ></tui-slider>
+        />
     </div>
 </div>
