@@ -21,7 +21,6 @@ import {tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_FUNCTION,
     getClipboardDataText,
-    getClosestFocusable,
     preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -29,6 +28,7 @@ import {
     TuiDestroyService,
     TuiEventWith,
     TuiFocusableElementAccessor,
+    tuiGetClosestFocusable,
     TuiHandler,
     tuiIsNativeFocused,
     tuiRequiredSetter,
@@ -219,7 +219,7 @@ export class TuiDesignModeDirective
 
                 event.preventDefault();
 
-                const element = getClosestFocusable(
+                const element = tuiGetClosestFocusable(
                     this.elementRef.nativeElement,
                     event.shiftKey,
                     this.elementRef.nativeElement.ownerDocument.body,
