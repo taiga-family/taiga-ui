@@ -17,7 +17,6 @@
         <div class="t-toolbar-wrapper">
             <tui-toolbar
                 *ngIf="editorLoaded"
-                new
                 [tools]="tools"
                 [disabled]="!interactive"
             >
@@ -50,6 +49,7 @@
             >
                 <div
                     tuiTiptapEditor
+                    tuiEditorSocket
                     spellcheck="false"
                     class="tui-editor-socket"
                     [value]="value"

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
@@ -39,7 +39,7 @@ export class TuiFontStyleComponent {
     );
 
     constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
+        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
     ) {}
