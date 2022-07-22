@@ -11,7 +11,7 @@ import {TuiMonthRange} from './month-range';
  * @deprecated
  */
 export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
-    [`DMY`, `YMD`, `MDY`].includes(dateMode);
+    ['DMY', 'YMD', 'MDY'].includes(dateMode);
 
 /**
  * An immutable range of two {@link TuiDay} objects
@@ -37,16 +37,6 @@ export class TuiDayRange extends TuiMonthRange {
     }
 
     /**
-     * @deprecated
-     */
-    static normalizeParse(
-        rangeString: string,
-        dateFiller: string,
-        dateRangeFiller: string,
-    ): TuiDayRange;
-    static normalizeParse(rangeString: string, dateMode?: TuiDateMode): TuiDayRange;
-
-    /**
      * Parse and correct a day range in string format
      *
      * @param rangeString a string of dates in a format dd.mm.yyyy - dd.mm.yyyy
@@ -55,13 +45,11 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateMode: string | TuiDateMode = `DMY`,
+        dateMode: TuiDateMode = 'DMY',
     ): TuiDayRange {
-        const dateFormat = isDateMode(dateMode) ? dateMode : `DMY`;
-
         const leftDay = TuiDay.normalizeParse(
             rangeString.slice(0, DATE_FILLER_LENGTH),
-            dateFormat,
+            dateMode,
         );
 
         if (rangeString.length < DATE_RANGE_FILLER_LENGTH) {
@@ -72,24 +60,13 @@ export class TuiDayRange extends TuiMonthRange {
             leftDay,
             TuiDay.normalizeParse(
                 rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
-                dateFormat,
+                dateMode,
             ),
         );
     }
 
     get isSingleDay(): boolean {
         return this.from.daySame(this.to);
-    }
-
-    /**
-     * Human readable format.
-     * @deprecated use {@link getFormattedDayRange} instead
-     */
-    get formattedDayRange(): string {
-        const from = this.from.getFormattedDay(`DMY`, `.`);
-        const to = this.to.getFormattedDay(`DMY`, `.`);
-
-        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
     /**
@@ -123,7 +100,7 @@ export class TuiDayRange extends TuiMonthRange {
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    toString(dateFormat: TuiDateMode = `DMY`, dateSeparator: string = `.`): string {
+    toString(dateFormat: TuiDateMode = 'DMY', dateSeparator: string = '.'): string {
         const from = this.from.getFormattedDay(dateFormat, dateSeparator);
         const to = this.to.getFormattedDay(dateFormat, dateSeparator);
 
