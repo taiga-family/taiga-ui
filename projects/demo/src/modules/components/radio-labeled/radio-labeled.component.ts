@@ -8,9 +8,9 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-tui-radio-labeled`,
-    templateUrl: `./radio-labeled.template.html`,
-    styleUrls: [`./radio-labeled.style.less`],
+    selector: 'example-tui-radio-labeled',
+    templateUrl: './radio-labeled.template.html',
+    styleUrls: ['./radio-labeled.style.less'],
     changeDetection,
     providers: [
         {
@@ -20,29 +20,29 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly items = [{name: `tariff1`}, {name: `tariff2`}, {name: `tariff3`}];
+    readonly items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];
 
-    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 
