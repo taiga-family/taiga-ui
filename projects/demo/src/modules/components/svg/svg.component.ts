@@ -6,29 +6,29 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiThemeService} from '../../app/theme.service';
 
 @Component({
-    selector: `example-tui-svg`,
-    templateUrl: `./svg.template.html`,
+    selector: 'example-tui-svg',
+    templateUrl: './svg.template.html',
     changeDetection,
 })
 export class ExampleTuiSvgComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly iconVariants: readonly string[] = [
-        `https://ng-web-apis.github.io/dist/assets/images/web-api.svg`,
-        `tuiIconTooltip`,
+        'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
+        'tuiIconTooltip',
         `<svg xmlns="http://www.w3.org/2000/svg"
              width="24px"
              height="24px"
