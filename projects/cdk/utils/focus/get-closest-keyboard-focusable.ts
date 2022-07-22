@@ -1,10 +1,9 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 
-import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
-import {isNativeMouseFocusable} from './is-native-mouse-focusable';
+import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
+import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
 
 /**
- * @deprecated: use {@link tuiGetClosestFocusable} instead
  * Finds the closest element that can be focused with a keyboard or mouse in theory
  *
  * @param initial current HTML element
@@ -13,8 +12,7 @@ import {isNativeMouseFocusable} from './is-native-mouse-focusable';
  * @param keyboard determine if only keyboard focus is of interest
  *
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getClosestFocusable(
+export function tuiGetClosestFocusable(
     initial: Element,
     prev: boolean = false,
     root: Node,
@@ -24,7 +22,7 @@ export function getClosestFocusable(
         return null;
     }
 
-    const check = keyboard ? isNativeKeyboardFocusable : isNativeMouseFocusable;
+    const check = keyboard ? tuiIsNativeKeyboardFocusable : tuiIsNativeMouseFocusable;
 
     // Deprecated but ony this overload works in IE
     // Filter must be a function in IE, other modern browsers are compliant to this format
@@ -51,10 +49,3 @@ export function getClosestFocusable(
 
     return null;
 }
-
-/**
- * @deprecated: use {@link tuiGetClosestFocusable} instead
- */
-export const getClosestKeyboardFocusable = getClosestFocusable;
-
-export const tuiGetClosestFocusable = getClosestFocusable;

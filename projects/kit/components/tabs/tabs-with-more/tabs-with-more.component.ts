@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getClosestFocusable,
     setNativeFocused,
     toInt,
     TuiActiveZoneDirective,
@@ -24,6 +23,7 @@ import {
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiGetClosestFocusable,
     tuiIsNativeFocused,
     TuiItemDirective,
 } from '@taiga-ui/cdk';
@@ -181,7 +181,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
-        const target = getClosestFocusable(button, prev, wrapper);
+        const target = tuiGetClosestFocusable(button, prev, wrapper);
 
         if (target) {
             setNativeFocused(target);
