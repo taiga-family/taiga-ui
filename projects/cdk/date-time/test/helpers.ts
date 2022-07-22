@@ -2,13 +2,9 @@ declare const global: {Date: typeof Date};
 
 const OriginalDate = global.Date;
 
-/**
- * @deprecated: use {@link tuiMockCurrentDate} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function mockCurrentDate(dateOrNumber: Date | number): void {
+export function tuiMockCurrentDate(dateOrNumber: Date | number): void {
     const date: Date =
-        typeof dateOrNumber === `number` ? new OriginalDate(dateOrNumber) : dateOrNumber;
+        typeof dateOrNumber === 'number' ? new OriginalDate(dateOrNumber) : dateOrNumber;
 
     class MockDate extends OriginalDate {
         constructor() {
@@ -21,40 +17,19 @@ export function mockCurrentDate(dateOrNumber: Date | number): void {
     global.Date = MockDate as typeof Date;
 }
 
-export const tuiMockCurrentDate = mockCurrentDate;
-
-/**
- * @deprecated: use {@link tuiRestoreRealDate} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function restoreRealDate(): void {
+export function tuiRestoreRealDate(): void {
     global.Date = OriginalDate;
 }
 
-export const tuiRestoreRealDate = restoreRealDate;
-
-/**
- * @deprecated: use {@link tuiMockDateInside} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function mockDateInside(dateMock: Date | number, callback: () => void): void {
-    mockCurrentDate(dateMock);
+export function tuiMockDateInside(dateMock: Date | number, callback: () => void): void {
+    tuiMockCurrentDate(dateMock);
     callback();
-    restoreRealDate();
+    tuiRestoreRealDate();
 }
 
-export const tuiMockDateInside = mockDateInside;
-
 // @bad TODO: find a legal way to spoof time zone on windows
-/**
- * @deprecated: use {@link tuiPendingIfNotMoscowTimeZone} instead
- * Skips the test on time zones other than `'Europe/Moscow'`.
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function pendingIfNotMoscowTimeZone(): void {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== `Europe/Moscow`) {
+export function tuiPendingIfNotMoscowTimeZone(): void {
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== 'Europe/Moscow') {
         pending();
     }
 }
-
-export const tuiPendingIfNotMoscowTimeZone = pendingIfNotMoscowTimeZone;
