@@ -8,13 +8,13 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiPureComponent {
-    readonly exampleDecorator = import('!!raw-loader!./import/example-decorator.md');
+    readonly exampleDecorator = import('./import/example-decorator.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./pure-getter.component.ts'),
+        TypeScript: import('./pure-getter.component.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./pure-function.component.ts'),
+        TypeScript: import('./pure-function.component.ts?raw'),
     };
 }

@@ -9,7 +9,7 @@ import {tuiIconTrashLarge} from '@taiga-ui/icons';
     changeDetection,
 })
 export class ExampleTuiSvgComponent {
-    injectService = import('!!raw-loader!./examples/inject-service.md');
+    injectService = import('./examples/inject-service.md?raw');
 
     constructor(@Inject(TuiSvgService) tuiSvgService: TuiSvgService) {
         tuiSvgService.define({tuiIconTrashLarge});

@@ -19,19 +19,19 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
-    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
+    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
     showIcons = false;

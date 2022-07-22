@@ -8,11 +8,11 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiFilterComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/template.html'),
+        TypeScript: import('./examples/1/component.ts?raw'),
+        HTML: import('./examples/1/template.html?raw'),
     };
 }
