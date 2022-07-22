@@ -9,8 +9,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-tui-input-number`,
-    templateUrl: `./input-number.template.html`,
+    selector: 'example-tui-input-number',
+    templateUrl: './input-number.template.html',
     changeDetection,
     providers: [
         {
@@ -20,35 +20,35 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
     };
 
     readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
@@ -59,15 +59,15 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    readonly alignVariants: readonly string[] = [`left`, `right`];
+    readonly alignVariants: readonly string[] = ['left', 'right'];
 
     align = this.alignVariants[0];
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
+    readonly autocompleteVariants: TuiAutofillFieldName[] = ['off', 'transaction-amount'];
 
-    autocomplete: TuiAutofillFieldName | '' = ``;
+    autocomplete: TuiAutofillFieldName | '' = '';
 
-    readonly decimalVariants: readonly TuiDecimalT[] = [`not-zero`, `always`, `never`];
+    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 
@@ -77,7 +77,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     precision = this.precisionVariants[0];
 
-    readonly postfixVariants: readonly string[] = [``, `$`, `GBP`, `Very long text`];
+    readonly postfixVariants: readonly string[] = ['', '$', 'GBP', 'Very long text'];
 
     prefix = this.postfixVariants[0];
 
