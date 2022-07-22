@@ -26,14 +26,14 @@ function getImportArray(
                 sourceFile,
                 appComponentPath,
                 `* as example${index}Html`,
-                `!!raw-loader!./examples/${index}/index.html`,
+                `./examples/${index}/index.html?raw`,
                 true,
             ),
             insertImport(
                 sourceFile,
                 appComponentPath,
                 `* as example${index}Ts`,
-                `!!raw-loader!./examples/${index}/index.ts`,
+                `./examples/${index}/index.ts?raw`,
                 true,
             ),
         );

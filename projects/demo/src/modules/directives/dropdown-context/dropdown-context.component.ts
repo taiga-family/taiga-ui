@@ -13,9 +13,9 @@ import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-dropdown-context`,
-    templateUrl: `./dropdown-context.component.html`,
-    styleUrls: [`./dropdown-context.component.less`],
+    selector: 'example-dropdown-context',
+    templateUrl: './dropdown-context.component.html',
+    styleUrls: ['./dropdown-context.component.less'],
     changeDetection,
     providers: [
         {
@@ -25,38 +25,38 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
     ],
 })
 export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly exampleBasic: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly exampleContextMenu: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly exampleReportMistakeForm: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
+        'bottom',
+        'top',
     ];
 
     readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
-        `min`,
-        `auto`,
-        `fixed`,
+        'min',
+        'auto',
+        'fixed',
     ];
 
     dropdownAlign = this.dropdownAlignVariants[0];

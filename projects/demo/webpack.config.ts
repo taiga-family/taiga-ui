@@ -16,6 +16,12 @@ import {merge} from 'webpack-merge';
  */
 const RAW_TS_QUERY = /raw/;
 
+/**
+ * Default Angular configurations have rules to compile (uglify) ts/less-files.
+ * We don't need any transformations for RAW loading of these files.
+ */
+const DONT_MUTATE_RAW_FILE_CONTENTS = ['*.ts', '*.less', '*.html'];
+
 const config: Configuration = {
     module: {
         /**
@@ -28,15 +34,7 @@ const config: Configuration = {
          */
         rules: [
             {
-                test: /\.md$/i,
-                type: 'asset/source',
-            },
-            {
-                test: /\.html$/i,
-                type: 'asset/source',
-            },
-            {
-                test: /\.ts$/i,
+                test: /\.(ts|html|less|md|svg)$/i,
                 resourceQuery: RAW_TS_QUERY,
                 type: 'asset/source',
             },
@@ -45,15 +43,12 @@ const config: Configuration = {
 };
 
 export default (ngConfigs: Configuration): Configuration => {
-    /**
-     * Default Angular configurations have rules to transform (uglify) ts-files.
-     * We don't need these transformations for raw loading of ts-files.
-     */
     const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
         if (
             typeof rule === 'object' &&
-            rule?.test instanceof RegExp &&
-            rule.test.test('*.ts')
+            DONT_MUTATE_RAW_FILE_CONTENTS.some(
+                pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
+            )
         ) {
             return {...rule, resourceQuery: {not: [RAW_TS_QUERY]}};
         }
