@@ -7,7 +7,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleTuiRequiredSetterComponent {
-    exampleDecorator = import('!!raw-loader!./import/example-decorator.md');
+    exampleDecorator = import('./import/example-decorator.md?raw');
 
     quantity?: number;
 
