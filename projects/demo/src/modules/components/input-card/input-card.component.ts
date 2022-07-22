@@ -9,9 +9,9 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-input-card`,
-    templateUrl: `./input-card.template.html`,
-    styleUrls: [`./input-card.style.less`],
+    selector: 'example-input-card',
+    templateUrl: './input-card.template.html',
+    styleUrls: ['./input-card.style.less'],
     changeDetection,
     providers: [
         {
@@ -21,15 +21,15 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
-    card = ``;
+    card = '';
 
     readonly lengthVariants: TuiCodeCVCLength[] = [3, 4];
 
@@ -37,19 +37,21 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     cleaner = false;
 
-    exampleText = `0000 0000 0000 0000`;
+    exampleText = '0000 0000 0000 0000';
 
     hintContentCVC = null;
 
-    hintDirectionCVC: TuiHintOptions['direction'] = `bottom-left`;
+    hintDirectionCVC: TuiHintOptions['direction'] = 'bottom-left';
 
     hintModeCVC = null;
 
     readonly cards: Record<string, string> = {
-        common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
-        universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
-        intersection: `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
-        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
+        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
+        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
+        intersection:
+            'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg',
+        mutation:
+            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
     };
 
     cardSrcVariants = Object.keys(this.cards);
@@ -63,12 +65,12 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     autocompleteEnabledExpire = false;
 
     control = new FormGroup({
-        card: new FormControl(``, [
+        card: new FormControl('', [
             Validators.required,
-            tuiCreateLuhnValidator(`Invalid card number`),
+            tuiCreateLuhnValidator('Invalid card number'),
         ]),
-        expire: new FormControl(``, Validators.required),
-        cvc: new FormControl(``, Validators.required),
+        expire: new FormControl('', Validators.required),
+        cvc: new FormControl('', Validators.required),
     });
 
     constructor(
@@ -83,27 +85,27 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     }
 
     get disabledCard(): boolean {
-        return this.isDisabled(`card`);
+        return this.isDisabled('card');
     }
 
     set disabledCard(value: boolean) {
-        this.toggleDisabled(value, `card`);
+        this.toggleDisabled(value, 'card');
     }
 
     get disabledExpire(): boolean {
-        return this.isDisabled(`expire`);
+        return this.isDisabled('expire');
     }
 
     set disabledExpire(value: boolean) {
-        this.toggleDisabled(value, `expire`);
+        this.toggleDisabled(value, 'expire');
     }
 
     get disabledCVC(): boolean {
-        return this.isDisabled(`cvc`);
+        return this.isDisabled('cvc');
     }
 
     set disabledCVC(value: boolean) {
-        this.toggleDisabled(value, `cvc`);
+        this.toggleDisabled(value, 'cvc');
     }
 
     isDisabled(control: string): boolean {
