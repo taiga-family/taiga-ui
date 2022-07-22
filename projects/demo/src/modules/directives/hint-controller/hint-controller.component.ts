@@ -4,34 +4,34 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 
 @Component({
-    selector: `example-tui-hint-controller`,
-    templateUrl: `./hint-controller.template.html`,
+    selector: 'example-tui-hint-controller',
+    templateUrl: './hint-controller.template.html',
     changeDetection,
 })
 export class ExampleTuiHintControllerComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly modeVariants: readonly TuiHintModeT[] = [`error`];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
 
-    tuiHintContent = `Example hint content`;
+    tuiHintContent = 'Example hint content';
 
     tuiHintMode: TuiHintModeT | null = null;
 
     readonly directionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
+        'left',
+        'right',
+        'bottom-left',
+        'bottom-right',
+        'bottom-middle',
+        'top-left',
+        'top-right',
+        'top-middle',
     ];
 
     tuiHintDirection: TuiDirection = this.directionVariants[2];
