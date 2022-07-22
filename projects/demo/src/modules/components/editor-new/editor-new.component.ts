@@ -5,9 +5,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
-    tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
-    TUI_EDITOR_STYLES,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
 
@@ -15,8 +13,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-tui-editor-new`,
-    templateUrl: `./editor-new.template.html`,
+    selector: 'example-tui-editor-new',
+    templateUrl: './editor-new.template.html',
     changeDetection,
     providers: [
         {
@@ -27,80 +25,65 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultEditorExtensions,
         },
-        {
-            provide: TUI_EDITOR_STYLES,
-            useValue: tiptapEditorStyles,
-        },
     ],
 })
 export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
-    readonly provideExtensions = import(
-        `!!raw-loader!./examples/import/provide-extensions.md`
-    );
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly provideExtensions = import('./examples/import/provide-extensions.md?raw');
 
     readonly exampleEditorOptionsToken = import(
-        `!!raw-loader!./examples/import/editor-options-token.md`
+        './examples/import/editor-options-token.md?raw'
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        LESS: import('./examples/2/index.less?raw'),
         'smiles-tool/emoji.extension.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/emoji.extension.ts`
+            './examples/2/smiles-tool/emoji.extension.ts?raw'
         ),
         'smiles-tool/smiles-tool.component.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts`
+            './examples/2/smiles-tool/smiles-tool.component.ts?raw'
         ),
         'smiles-tool/smiles-tool.template.html': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html`
+            './examples/2/smiles-tool/smiles-tool.template.html?raw'
         ),
         'smiles-tool/smiles-tool.styles.less': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less`
+            './examples/2/smiles-tool/smiles-tool.styles.less?raw'
         ),
         'smiles-tool/smiles-tool.module.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts`
+            './examples/2/smiles-tool/smiles-tool.module.ts?raw'
         ),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
         'image-preview/image-preview.component.ts': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.component.ts`
+            './examples/4/image-preview/image-preview.component.ts?raw'
         ),
         'image-preview/image-preview.module.ts': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.module.ts`
+            './examples/4/image-preview/image-preview.module.ts?raw'
         ),
         'image-preview/image-preview.style.less': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.style.less`
+            './examples/4/image-preview/image-preview.style.less?raw'
         ),
         'image-preview.template.html': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.template.html`
-        ),
-    };
-
-    readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
-        'legacy-editor.ts': import(
-            `!!raw-loader!../../../../../addon-editor/utils/legacy-converter`
+            './examples/4/image-preview/image-preview.template.html?raw'
         ),
     };
 
