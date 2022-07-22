@@ -1,9 +1,9 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
-    getClosestFocusable,
     isPresent,
     setNativeMouseFocused,
     TuiDestroyService,
+    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -86,7 +86,7 @@ export class TuiDropdownHoverDirective {
             return;
         }
 
-        const focusable = getClosestFocusable(host, false, host, false);
+        const focusable = tuiGetClosestFocusable(host, false, host, false);
 
         if (focusable) {
             setNativeMouseFocused(focusable);
