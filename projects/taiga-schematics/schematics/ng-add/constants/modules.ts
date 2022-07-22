@@ -5,12 +5,12 @@ export interface ImportingModule {
 
 export const MAIN_MODULES: ReadonlyArray<ImportingModule> = [
     {
-        name: 'TuiRootModule',
-        packageName: '@taiga-ui/core',
-    },
-    {
         name: 'BrowserAnimationsModule',
         packageName: '@angular/platform-browser/animations',
+    },
+    {
+        name: 'TuiRootModule',
+        packageName: '@taiga-ui/core',
     },
 ];
 
