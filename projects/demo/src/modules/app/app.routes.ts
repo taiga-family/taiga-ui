@@ -743,15 +743,6 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/slider-deprecated',
-        loadChildren: async () =>
-            (await import('../components/slider-old/slider-old.module'))
-                .ExampleTuiSliderOldModule,
-        data: {
-            title: 'Slider[deprecated]',
-        },
-    },
-    {
         path: 'navigation/stepper',
         loadChildren: async () =>
             (await import('../components/stepper/stepper.module'))
