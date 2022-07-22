@@ -1,7 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
-import {inRange} from '@taiga-ui/cdk/utils/math';
+import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {
     HOURS_IN_DAY,
@@ -43,13 +43,13 @@ export class TuiTime implements TuiTimeLike {
     ): boolean {
         return (
             Number.isInteger(hours) &&
-            inRange(hours, 0, HOURS_IN_DAY) &&
+            tuiInRange(hours, 0, HOURS_IN_DAY) &&
             Number.isInteger(minutes) &&
-            inRange(minutes, 0, MINUTES_IN_HOUR) &&
+            tuiInRange(minutes, 0, MINUTES_IN_HOUR) &&
             Number.isInteger(seconds) &&
-            inRange(seconds, 0, SECONDS_IN_MINUTE) &&
+            tuiInRange(seconds, 0, SECONDS_IN_MINUTE) &&
             Number.isInteger(ms) &&
-            inRange(ms, 0, 1000)
+            tuiInRange(ms, 0, 1000)
         );
     }
 
@@ -78,7 +78,7 @@ export class TuiTime implements TuiTimeLike {
     static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
         tuiAssert.assert(Number.isInteger(milliseconds));
         tuiAssert.assert(
-            inRange(milliseconds, 0, MILLISECONDS_IN_DAY),
+            tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
             `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
         );
 

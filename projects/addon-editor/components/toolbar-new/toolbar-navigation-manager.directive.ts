@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
     clamp,
-    getClosestFocusable,
-    isNativeMouseFocusable,
     setNativeFocused,
+    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
+    tuiIsNativeMouseFocusable,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
@@ -49,9 +49,9 @@ export class TuiToolbarNavigationManagerDirective {
             : this.toolsContainers;
 
         for (const el of tools) {
-            const focusableElement = isNativeMouseFocusable(el)
+            const focusableElement = tuiIsNativeMouseFocusable(el)
                 ? el
-                : getClosestFocusable(el, false, el, false);
+                : tuiGetClosestFocusable(el, false, el, false);
 
             if (focusableElement) {
                 return focusableElement;
@@ -62,21 +62,26 @@ export class TuiToolbarNavigationManagerDirective {
     }
 
     private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {
-        if (isNativeMouseFocusable(wrapper)) {
+        if (tuiIsNativeMouseFocusable(wrapper)) {
             return wrapper;
         }
 
-        const lookedInside = getClosestFocusable(wrapper, false, wrapper, false);
+        const lookedInside = tuiGetClosestFocusable(wrapper, false, wrapper, false);
 
         return (
             lookedInside ||
-            getClosestFocusable(wrapper, true, this.elementRef.nativeElement, false)
+            tuiGetClosestFocusable(wrapper, true, this.elementRef.nativeElement, false)
         );
     }
 
     private findNextTool(wrapper: HTMLElement): HTMLElement | null {
-        return isNativeMouseFocusable(wrapper)
+        return tuiIsNativeMouseFocusable(wrapper)
             ? wrapper
-            : getClosestFocusable(wrapper, false, this.elementRef.nativeElement, false);
+            : tuiGetClosestFocusable(
+                  wrapper,
+                  false,
+                  this.elementRef.nativeElement,
+                  false,
+              );
     }
 }
