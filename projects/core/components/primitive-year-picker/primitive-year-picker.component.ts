@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    inRange,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDayRange,
     tuiDefaultProp,
+    tuiInRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -176,7 +176,7 @@ export class TuiPrimitiveYearPickerComponent {
             return false;
         }
 
-        return inRange(
+        return tuiInRange(
             item,
             Math.min(value.from.year, hoveredItem),
             Math.max(value.from.year, hoveredItem),
