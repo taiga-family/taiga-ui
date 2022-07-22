@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {inRange} from '@taiga-ui/cdk';
+import {tuiInRange} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-math-example-2`,
@@ -21,6 +21,6 @@ export class TuiMathExample2 {
     get ranged(): boolean {
         const {value, fromInclude, toExclude} = this.parametersForm.value;
 
-        return inRange(value, fromInclude, toExclude);
+        return tuiInRange(value, fromInclude, toExclude);
     }
 }
