@@ -3,5 +3,4 @@ export * from './helpers/slider-readonly.directive';
 export * from './helpers/slider-thumb-label/slider-thumb-label.component';
 export * from './slider.component';
 export * from './slider.module';
-export * from './slider-old.component';
 export * from './slider-options';
