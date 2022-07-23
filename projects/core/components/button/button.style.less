@@ -6,8 +6,6 @@
 @padding-l: 2.25rem;
 @padding-xl: 2.5rem;
 @icon-margin: 0.5rem;
-@font-size-large: 0.9375rem;
-@font-size-extra-large: 1.0625rem;
 
 :host {
     .clearbtn();
@@ -19,7 +17,6 @@
     border-radius: var(--tui-radius-m);
     user-select: none;
     text-decoration: none;
-    font-weight: bold;
     outline: none;
 
     &[disabled] {
@@ -59,7 +56,8 @@
 
     &[data-size='m'] {
         height: var(--tui-height-m);
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
         &[data-shape='square'],
         &[tuiIconButton] {
@@ -70,7 +68,8 @@
 
     &[data-size='l'] {
         height: var(--tui-height-l);
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
         &[data-shape='square'],
         &[tuiIconButton] {
@@ -81,7 +80,8 @@
 
     &[data-size='xl'] {
         height: 3.75rem;
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
         &[data-shape='square'],
         &[tuiIconButton] {
