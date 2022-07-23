@@ -235,6 +235,7 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.VN]: {mask: '+84(###) ####-###', name: 'Вьетнам'},
     [TuiCountryIsoCode.VU]: {mask: '+678##-#####', name: 'Вануату '},
     [TuiCountryIsoCode.WS]: {mask: '+685##-####', name: 'Самоа'},
+    [TuiCountryIsoCode.XK]: {mask: '+383##-###-###', name: 'Республика Косово'},
     [TuiCountryIsoCode.YE]: {mask: '+967###-###-###', name: 'Йемен '},
     [TuiCountryIsoCode.ZA]: {mask: '+27##-###-####', name: 'Южно-Африканская Респ.'},
     [TuiCountryIsoCode.ZM]: {mask: '+260##-###-####', name: 'Замбия'},

@@ -203,6 +203,7 @@ export const TUI_VIETNAMESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string
     [TuiCountryIsoCode.VN]: 'Việt Nam',
     [TuiCountryIsoCode.VU]: 'Vanuatu',
     [TuiCountryIsoCode.WS]: 'Samoa',
+    [TuiCountryIsoCode.XK]: 'Republic of Kosovo',
     [TuiCountryIsoCode.YE]: 'Yemen',
     [TuiCountryIsoCode.ZA]: 'Nam Phi',
     [TuiCountryIsoCode.ZM]: 'Zambia',
