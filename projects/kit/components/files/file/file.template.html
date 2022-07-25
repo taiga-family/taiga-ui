@@ -17,11 +17,13 @@
 
 <ng-template #fileInfoTemplate>
     <div
-        polymorpheus-outlet
         class="t-preview"
         [class.t-preview_big]="isBig"
-        [content]="leftContent || defaultLeftContent"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="leftContent || defaultLeftContent as text">
+            {{ text }}
+        </ng-container>
+    </div>
     <div class="t-wrapper">
         <div class="t-text">
             <div
@@ -46,11 +48,13 @@
         </div>
         <div
             *ngIf="content$ | async as content"
-            polymorpheus-outlet
             automation-id="tui-file__content"
             class="t-content"
-            [content]="content"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="content as text">
+                {{ text }}
+            </ng-container>
+        </div>
         <ng-content></ng-content>
     </div>
     <ng-container *ngIf="allowDelete">
