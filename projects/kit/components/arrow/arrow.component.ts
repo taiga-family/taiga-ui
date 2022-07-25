@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {
     sizeBigger,
     TUI_TEXTFIELD_SIZE,
@@ -23,6 +23,11 @@ export class TuiArrowComponent {
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
     ) {}
+
+    @HostBinding('class._rotated')
+    get rotated(): boolean {
+        return this.dropdown.open;
+    }
 
     get arrowIcon(): PolymorpheusContent {
         return sizeBigger(this.textfieldSize.size)

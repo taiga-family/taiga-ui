@@ -37,21 +37,24 @@
     >
         <div
             *ngIf="computedGroup"
-            polymorpheus-outlet
             class="t-group"
             [class.t-group_fullsize]="inputTag.labelOutside"
-            [context]="context"
-            [content]="valueContent"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
+                {{ text }}
+            </ng-container>
+        </div>
 
         <div
             *ngIf="arrow"
-            polymorpheus-outlet
             automation-id="tui-multi-select__arrow"
             tuiPreventDefault="mousedown"
             class="t-arrow"
-            [content]="arrow"
             (click.prevent)="onArrowClick()"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="arrow as text">
+                {{ text }}
+            </ng-container>
+        </div>
     </div>
 </tui-hosted-dropdown>

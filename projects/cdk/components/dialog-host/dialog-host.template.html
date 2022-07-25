@@ -1,7 +1,6 @@
 <ng-container *ngIf="dialogs$ | async as dialogs">
     <section
         *ngFor="let item of dialogs"
-        polymorpheus-outlet
         tuiFocusTrap
         tuiScrollRef
         tuiOverscroll="all"
@@ -10,9 +9,9 @@
         class="t-dialog"
         @tuiParentAnimation
         [attr.aria-labelledby]="item.id"
-        [content]="item.component"
-        [context]="item"
-    ></section>
+    >
+        <ng-container *polymorpheusOutlet="item.component; context: item"></ng-container>
+    </section>
     <div
         *tuiLet="isDialogClosesOnBack$ | async as isDialogClosesOnBack"
         class="t-overlay"
