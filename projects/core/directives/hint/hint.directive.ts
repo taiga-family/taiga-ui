@@ -61,10 +61,9 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     @tuiDefaultProp()
     tuiHintHost: HTMLElement | null = null;
 
-    // TODO: 3.0 Remove null
     @Input()
     @tuiRequiredSetter()
-    set tuiHint(value: PolymorpheusContent | null) {
+    set tuiHint(value: PolymorpheusContent) {
         if (!value) {
             this.hideTooltip();
             this.content = '';

@@ -29,15 +29,15 @@
         ></ng-content>
         <div
             *ngIf="value !== null"
-            polymorpheus-outlet
+            ngProjectAs="tuiContent"
             automation-id="tui-select__value"
             class="t-value"
-            [content]="computedContent"
-            [context]="{$implicit: value, active: computedFocused}"
         >
-            <ng-template let-primitiveValue>
-                <div class="t-primitive-value">{{ primitiveValue }}</div>
-            </ng-template>
+            <div
+                *polymorpheusOutlet="computedContent as text; context: {$implicit: value, active: computedFocused}"
+                class="t-primitive-value"
+                [textContent]="text"
+            ></div>
         </div>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

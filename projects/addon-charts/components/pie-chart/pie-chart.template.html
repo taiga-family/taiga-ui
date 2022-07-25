@@ -57,9 +57,8 @@
     let-index
 >
     <div
-        polymorpheus-outlet
+        *polymorpheusOutlet="hintContent as text; context: {$implicit: index}"
         class="t-text"
-        [content]="hintContent"
-        [context]="{$implicit: index}"
+        [textContent]="text"
     ></div>
 </ng-template>

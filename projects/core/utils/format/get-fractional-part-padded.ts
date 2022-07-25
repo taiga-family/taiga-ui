@@ -1,4 +1,6 @@
-import {numberToStringWithoutExp} from './number-to-string-without-exp';
+import {tuiIsNumber} from '@taiga-ui/cdk';
+
+import {tuiNumberToStringWithoutExp} from './number-to-string-without-exp';
 
 /**
  * @deprecated: use {@link tuiGetFractionPartPadded} instead
@@ -10,9 +12,9 @@ import {numberToStringWithoutExp} from './number-to-string-without-exp';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getFractionPartPadded(value: number, precision?: number | null): string {
-    const [, fractionPartPadded = ``] = numberToStringWithoutExp(value).split(`.`);
+    const [, fractionPartPadded = ''] = tuiNumberToStringWithoutExp(value).split('.');
 
-    return typeof precision === `number`
+    return tuiIsNumber(precision)
         ? fractionPartPadded.slice(0, Math.max(0, precision))
         : fractionPartPadded;
 }

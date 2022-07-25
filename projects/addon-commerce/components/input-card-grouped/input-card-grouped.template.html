@@ -128,17 +128,14 @@
     <div class="t-icons">
         <div
             *ngIf="icon"
-            polymorpheus-outlet
             class="t-icon-outlet"
-            [content]="icon"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    automation-id="tui-input-card-grouped__icon"
-                    class="t-card"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="icon as text"
+                automation-id="tui-input-card-grouped__icon"
+                class="t-card"
+                [src]="text"
+            ></tui-svg>
         </div>
         <tui-svg
             *ngIf="hasCleaner"
