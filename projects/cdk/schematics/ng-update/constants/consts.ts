@@ -122,4 +122,34 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiPdfViewerModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiPdfViewerModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPreviewHostModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiPreviewModule',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+    },
+    {
+        from: {
+            name: 'TuiProgressModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiProgressModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

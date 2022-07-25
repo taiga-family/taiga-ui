@@ -106,4 +106,16 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/core',
         message: 'colorFallback has been deleted in 3.0, please use CSS variables',
     },
+    {
+        name: 'TuiInputSearchModule',
+        moduleSpecifier: '@taiga-ui/proprietary-core',
+        message:
+            'Use TuiInputModule (@taiga-ui/kit) with icon "tuiIconSearchLarge": https://taiga-ui.dev/components/input/API?iconAlign=left&icon=tuiIconSearchLarge',
+    },
+    {
+        name: 'TuiCarouselModule',
+        moduleSpecifier: '@taiga-ui/proprietary-core',
+        message:
+            'Proprietary Carousel is old and has different API. Use new version of the same module from @taiga-ui/kit. Also, check new API: https://taiga-ui.dev/components/carousel/API',
+    },
 ];

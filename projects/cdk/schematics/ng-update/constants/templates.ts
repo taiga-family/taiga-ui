@@ -278,4 +278,16 @@ export const TEMPLATE_COMMENTS = [
         comment:
             'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
     },
+    {
+        tag: 'tui-preview-host',
+        withAttr: 'ngProjectAs',
+        comment:
+            '"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup',
+    },
+    {
+        tag: 'tui-progress',
+        withAttr: 'value',
+        comment:
+            'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
+    },
 ] as const;
