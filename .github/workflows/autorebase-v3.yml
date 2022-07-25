@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Autorebase from v3.x branch
-        continue-on-error: true
         uses: peter-evans/rebase@v2
         with:
           base: v3.x
