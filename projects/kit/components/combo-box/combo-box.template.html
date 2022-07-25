@@ -28,19 +28,21 @@
         ></ng-content>
         <div
             *ngIf="showValueTemplate"
-            polymorpheus-outlet
+            ngProjectAs="tuiContent"
             automation-id="tui-combo-box__template"
             class="value"
-            [content]="computedContent"
-            [context]="{$implicit: value!, active: computedFocused}"
-        ></div>
+        >
+            <ng-container
+                *polymorpheusOutlet="computedContent as text; context: {$implicit: value!, active: computedFocused}"
+            >
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-primitive-textfield>
 
     <ng-template #icon>
-        <div
-            polymorpheus-outlet
-            class="t-icon"
-            [content]="arrow"
-        ></div>
+        <div class="t-icon">
+            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+        </div>
     </ng-template>
 </tui-hosted-dropdown>
