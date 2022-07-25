@@ -1,4 +1,4 @@
-import {CHAR_EN_DASH, CHAR_PLUS} from '@taiga-ui/cdk';
+import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 
 export type TuiMoneySignT =
     | 'negative-only'
@@ -7,4 +7,4 @@ export type TuiMoneySignT =
     | 'force-negative'
     | 'force-positive';
 
-export type TuiMoneySignSymbol = '' | typeof CHAR_EN_DASH | typeof CHAR_PLUS;
+export type TuiMoneySignSymbol = '' | typeof CHAR_MINUS | typeof CHAR_PLUS;

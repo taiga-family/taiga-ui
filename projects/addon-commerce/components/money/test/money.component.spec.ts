@@ -8,7 +8,7 @@ import {
     TuiMoneyModule,
     TuiMoneySignT,
 } from '@taiga-ui/addon-commerce';
-import {CHAR_EN_DASH} from '@taiga-ui/cdk';
+import {CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
@@ -217,7 +217,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign!.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
         it('if set to ALWAYS, plus is shown', () => {
@@ -236,7 +236,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign!.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
         it('if set to Never, plus is not shown', () => {
@@ -264,7 +264,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign!.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
         it('if set to FORCE_NEGATIVE, minus is shown for negative numbers', () => {
@@ -274,7 +274,7 @@ describe('Money', () => {
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
+            expect(sign!.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
         it('if set to FORCE_POSITIVE, plus is shown for positive numbers', () => {

@@ -10,7 +10,7 @@ import {
     TuiMoneySignSymbol,
     TuiMoneySignT,
 } from '@taiga-ui/addon-commerce/types';
-import {CHAR_EN_DASH, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
+import {CHAR_MINUS, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
@@ -59,7 +59,7 @@ export class TuiMoneyComponent {
     get red(): boolean {
         return (
             this.colored &&
-            (this.signSymbol === CHAR_EN_DASH ||
+            (this.signSymbol === CHAR_MINUS ||
                 (this.value < 0 && this.sign !== 'force-positive'))
         );
     }

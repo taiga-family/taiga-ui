@@ -23,12 +23,20 @@ export const CHAR_EM_DASH = '\u2014';
 
 /**
  * {@link https://unicode-table.com/en/002D/ Hyphen (minus sign)}
- * is used to combine words or as minus sign before digits.
- * @example well-behaved, -42
+ * is used to combine words.
+ * @example well-behaved
  * ___
  * Don't confuse with {@link CHAR_EN_DASH} or {@link CHAR_EM_DASH}!
  */
 export const CHAR_HYPHEN = '\u002D';
+
+/**
+ * {@link https://unicode-table.com/en/2212/ Minus}
+ * is used as math operator symbol or before negative digits.
+ * ---
+ * Can be used as `&minus;`. Don't confuse with {@link CHAR_HYPHEN}
+ */
+export const CHAR_MINUS = '\u2212';
 
 /**
  * {@link https://unicode-table.com/en/002B/ Plus}
