@@ -6,6 +6,7 @@ import {
     TuiFocusedModule,
     TuiFocusVisibleModule,
     TuiHoveredModule,
+    TuiItemDirective,
     TuiLetModule,
     TuiPressedModule,
 } from '@taiga-ui/cdk';
@@ -17,6 +18,11 @@ import {
     TuiSvgModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {
+    TuiFileComponent,
+    TuiFilesComponent,
+    TuiFilesModule,
+} from '@taiga-ui/kit/components/files';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputFilesComponent} from './input-files.component';
@@ -38,8 +44,14 @@ import {TuiInputFilesComponent} from './input-files.component';
         TuiLoaderModule,
         TuiButtonModule,
         TuiGroupModule,
+        TuiFilesModule,
     ],
     declarations: [TuiInputFilesComponent],
-    exports: [TuiInputFilesComponent],
+    exports: [
+        TuiInputFilesComponent,
+        TuiFilesComponent,
+        TuiFileComponent,
+        TuiItemDirective,
+    ],
 })
 export class TuiInputFilesModule {}
