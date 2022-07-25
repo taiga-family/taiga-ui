@@ -39,7 +39,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
-import {PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
@@ -92,7 +92,7 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     postfix = ``;
 
-    @ContentChildren(PolymorpheusOutletComponent)
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     constructor(

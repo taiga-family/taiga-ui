@@ -43,11 +43,13 @@
         <ng-template tuiExpandContent>
             <div
                 *ngIf="lazyContent"
-                polymorpheus-outlet
                 automation-id="tui-accordion__item-content"
                 class="t-content"
-                [content]="lazyContent"
-            ></div>
+            >
+                <ng-container *polymorpheusOutlet="lazyContent as text">
+                    {{ text }}
+                </ng-container>
+            </div>
         </ng-template>
     </tui-expand>
 </div>

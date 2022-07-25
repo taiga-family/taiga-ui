@@ -3,7 +3,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
-import {TuiDestroyService, tuiIsIE, tuiPure, tuiPx} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiIsIE, tuiIsString, tuiPure, tuiPx} from '@taiga-ui/cdk';
 import {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -81,7 +81,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
     onModelChange(variable: string, value: string | number): void {
         this.variables = {
             ...this.variables,
-            [variable]: typeof value === 'string' ? value : tuiPx(value),
+            [variable]: tuiIsString(value) ? value : tuiPx(value),
         };
     }
 
