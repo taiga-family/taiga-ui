@@ -31,10 +31,9 @@
         polymorpheus
     >
         <div
-            polymorpheus-outlet
+            *polymorpheusOutlet="hintContent as text; context: getContentContext(index)"
             class="t-text"
-            [content]="hintContent"
-            [context]="getContentContext(index)"
+            [textContent]="text"
         ></div>
     </ng-template>
 </div>

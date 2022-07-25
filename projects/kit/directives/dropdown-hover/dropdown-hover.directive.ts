@@ -22,6 +22,7 @@ import {
     tap,
 } from 'rxjs/operators';
 
+// TODO: Refactor
 @Directive({
     selector: 'tui-hosted-dropdown[tuiDropdownHover]',
     providers: [TuiDestroyService],

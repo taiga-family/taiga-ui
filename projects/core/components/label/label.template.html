@@ -1,11 +1,8 @@
-<span
-    polymorpheus-outlet
-    class="t-label"
-    [content]="label"
-    [context]="context"
->
-    <ng-template let-text>
-        <span class="t-text">{{ text }}</span>
-    </ng-template>
+<span class="t-label">
+    <span
+        *polymorpheusOutlet="label as text; context: context"
+        class="t-text"
+        [textContent]="text"
+    ></span>
 </span>
 <span class="t-content"><ng-content></ng-content></span>
