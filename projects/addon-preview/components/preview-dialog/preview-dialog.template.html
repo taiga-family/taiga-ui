@@ -1,7 +1,9 @@
 <div
-    polymorpheus-outlet
     class="t-dialog-content"
     @tuiSlideInTop
-    [content]="context.content"
-    [context]="context"
-></div>
+>
+    <!-- TODO: Polymorpheus fix type -->
+    <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
+        {{ text }}
+    </ng-container>
+</div>

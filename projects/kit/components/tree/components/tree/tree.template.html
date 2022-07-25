@@ -3,12 +3,11 @@
     #view
     [tuiTreeNode]="value"
 >
-    <div
-        *ngIf="$any(value) !== children"
-        polymorpheus-outlet
-        [content]="content"
-        [context]="{$implicit: value, node: view}"
-    ></div>
+    <ng-container *ngIf="$any(value) !== children">
+        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: value, node: view}">
+            {{ text }}
+        </ng-container>
+    </ng-container>
     <tui-tree
         *ngFor="let child of children"
         [value]="child"
