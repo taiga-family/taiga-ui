@@ -29,12 +29,6 @@ export function tabsRefreshFactory(
     );
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const MUTATION_CONFIG = {
-    childList: true,
-    subtree: true,
-    characterData: true,
-};
 export const TABS_REFRESH = new InjectionToken<Observable<unknown>>('Refresh stream');
 export const TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
@@ -42,7 +36,11 @@ export const TABS_PROVIDERS: Provider[] = [
     MutationObserverService,
     {
         provide: MUTATION_OBSERVER_INIT,
-        useValue: MUTATION_CONFIG,
+        useValue: {
+            childList: true,
+            subtree: true,
+            characterData: true,
+        },
     },
     {
         provide: TABS_REFRESH,

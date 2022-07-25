@@ -14,10 +14,8 @@ export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>
     },
 );
 
-// TODO: 3.0 remove in ivy compilation
-export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
-// TODO: 3.0 remove in ivy compilation
-export const isFakeHistoryState = (
+const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+const isFakeHistoryState = (
     historyState: Record<string, unknown>,
 ): historyState is typeof FAKE_HISTORY_STATE =>
     historyState?.label === FAKE_HISTORY_STATE.label;

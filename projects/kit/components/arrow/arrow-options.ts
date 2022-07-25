@@ -10,14 +10,10 @@ export interface TuiArrowOptions {
     readonly iconLarge: PolymorpheusContent;
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const TUI_ARROW_ICON_SMALL = 'tuiIconChevronDown';
-export const TUI_ARROW_ICON_LARGE = 'tuiIconChevronDownLarge';
-
 /** Default values for arrow options */
 export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
-    iconSmall: TUI_ARROW_ICON_SMALL,
-    iconLarge: TUI_ARROW_ICON_LARGE,
+    iconSmall: 'tuiIconChevronDown',
+    iconLarge: 'tuiIconChevronDownLarge',
 };
 
 export const TUI_ARROW_OPTIONS = new InjectionToken<TuiArrowOptions>(

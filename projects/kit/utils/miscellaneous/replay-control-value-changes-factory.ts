@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {NgControl} from '@angular/forms';
 import {
     TuiControlValueTransformer,
@@ -12,10 +11,8 @@ import {map} from 'rxjs/operators';
 
 /**
  * @internal
- * @deprecated use {@link tuiReplayControlValueChangesFactory}
- * TODO: 3.0 name should be shorter and start with lowercase letter.
  */
-export function TuiReplayControlValueChangesFactory<
+export function tuiReplayControlValueChangesFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
@@ -31,5 +28,3 @@ export function TuiReplayControlValueChangesFactory<
           )
         : of(null);
 }
-
-export const tuiReplayControlValueChangesFactory = TuiReplayControlValueChangesFactory;

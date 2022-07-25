@@ -11,17 +11,9 @@ import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
-import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {Observable} from 'rxjs';
+import {tuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
-
-// TODO: 3.0 remove in ivy compilation
-export const RANGE_STREAM_FACTORY = <T extends TuiDayRange>(
-    control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<T>,
-): Observable<T | null> | null =>
-    TuiReplayControlValueChangesFactory<T>(control, valueTransformer);
 
 export const TUI_INPUT_DATE_RANGE_PROVIDERS = [
     {
@@ -38,7 +30,10 @@ export const TUI_INPUT_DATE_RANGE_PROVIDERS = [
             [new Optional(), new Self(), NgControl],
             [new Optional(), forwardRef(() => TUI_DATE_RANGE_VALUE_TRANSFORMER)],
         ],
-        useFactory: RANGE_STREAM_FACTORY,
+        useFactory: <T extends TuiDayRange>(
+            control: NgControl | null,
+            valueTransformer: TuiControlValueTransformer<T>,
+        ) => tuiReplayControlValueChangesFactory(control, valueTransformer),
     },
     LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
 ];

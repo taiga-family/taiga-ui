@@ -14,15 +14,11 @@ export interface TuiInputCountOptions {
     readonly postfix: string;
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const PASSWORD_ICON_UP = 'tuiIconPlus';
-export const PASSWORD_ICON_DOWN = 'tuiIconMinus';
-
 /** Default values for the input count options. */
 export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
     icons: {
-        up: PASSWORD_ICON_UP,
-        down: PASSWORD_ICON_DOWN,
+        up: 'tuiIconPlus',
+        down: 'tuiIconMinus',
     },
     appearance: 'textfield',
     hideButtons: false,

@@ -12,17 +12,9 @@ import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
-import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {Observable} from 'rxjs';
+import {tuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
-
-// TODO: 3.0 remove in ivy compilation
-export const TIME_STREAM_FACTORY = <T extends [TuiDay | null, TuiTime | null]>(
-    control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<T>,
-): Observable<T | null> | null =>
-    TuiReplayControlValueChangesFactory<T>(control, valueTransformer);
 
 export const TUI_INPUT_DATE_TIME_PROVIDERS = [
     {
@@ -39,7 +31,10 @@ export const TUI_INPUT_DATE_TIME_PROVIDERS = [
             [new Optional(), new Self(), NgControl],
             [new Optional(), forwardRef(() => TUI_DATE_TIME_VALUE_TRANSFORMER)],
         ],
-        useFactory: TIME_STREAM_FACTORY,
+        useFactory: <T extends [TuiDay | null, TuiTime | null]>(
+            control: NgControl | null,
+            valueTransformer: TuiControlValueTransformer<T>,
+        ) => tuiReplayControlValueChangesFactory(control, valueTransformer),
     },
     LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
 ];
