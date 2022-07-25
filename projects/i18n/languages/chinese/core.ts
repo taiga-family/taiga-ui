@@ -1,8 +1,8 @@
-import { LanguageCore } from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 
-import { TUI_CHINESE_LANGUAGE_COUNTRIES } from './countries';
+import {TUI_CHINESE_LANGUAGE_COUNTRIES} from './countries';
 
-export const TUI_CHINESE_LANGUAGE_CORE: LanguageCore = {
+export const TUI_CHINESE_LANGUAGE_CORE: TuiLanguageCore = {
     months: [
         '一月',
         '二月',
@@ -15,7 +15,7 @@ export const TUI_CHINESE_LANGUAGE_CORE: LanguageCore = {
         '九月',
         '十月',
         '十一月',
-        '十二月'
+        '十二月',
     ],
     close: '关闭',
     nothingFoundMessage: '什么都没找到',
