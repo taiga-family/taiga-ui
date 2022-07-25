@@ -6,10 +6,12 @@
 <ng-content></ng-content>
 <div
     *ngIf="empty$ | async"
-    polymorpheus-outlet
     class="t-empty"
-    [content]="emptyContent || (defaultEmptyContent$ | async)"
-></div>
+>
+    <ng-container *polymorpheusOutlet="emptyContent || (defaultEmptyContent$ | async) as text">
+        {{ text }}
+    </ng-container>
+</div>
 <div
     tabindex="0"
     class="t-trap"

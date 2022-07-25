@@ -6,19 +6,23 @@
 >
     <label
         *ngIf="item.label"
-        polymorpheus-outlet
         automation-id="tui-notification-alert__heading"
         class="t-heading"
-        [content]="$any(item.label)"
-        [context]="context"
-    ></label>
+    >
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="$any(item.label) as text; context: context">
+            {{ text }}
+        </ng-container>
+    </label>
     <div
-        polymorpheus-outlet
         automation-id="tui-notification-alert__content"
         class="t-content"
-        [content]="item.content"
-        [context]="$any(context)"
-    ></div>
+    >
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="item.content as text; context: $any(context)">
+            {{ text }}
+        </ng-container>
+    </div>
 </tui-notification>
 <ng-template #noClose>
     <tui-notification
@@ -27,18 +31,22 @@
     >
         <label
             *ngIf="item.label"
-            polymorpheus-outlet
             automation-id="tui-notification-alert__heading"
             class="t-heading"
-            [content]="$any(item.label)"
-            [context]="context"
-        ></label>
+        >
+            <!-- TODO: Polymorpheus fix type -->
+            <ng-container *polymorpheusOutlet="$any(item.label) as text; context: context">
+                {{ text }}
+            </ng-container>
+        </label>
         <div
-            polymorpheus-outlet
             automation-id="tui-notification-alert__content"
             class="t-content"
-            [content]="item.content"
-            [context]="$any(context)"
-        ></div>
+        >
+            <!-- TODO: Polymorpheus fix type -->
+            <ng-container *polymorpheusOutlet="item.content as text; context: $any(context)">
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-notification>
 </ng-template>
