@@ -7,7 +7,7 @@ import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
 import {TuiInputCardGroupedModule} from '../input-card-grouped.module';
 
-describe(`InputCardGrouped`, () => {
+describe('InputCardGrouped', () => {
     @Component({
         template: `
             <tui-input-card-grouped
@@ -24,12 +24,12 @@ describe(`InputCardGrouped`, () => {
         @ViewChild(TuiInputCardGroupedComponent, {static: true})
         component!: TuiInputCardGroupedComponent;
 
-        @ViewChild(`customIconTemplate`, {read: TemplateRef})
+        @ViewChild('customIconTemplate', {read: TemplateRef})
         customIconTemplate!: TemplateRef<any>;
 
-        control = new FormControl(``);
+        control = new FormControl('');
 
-        onBinChange = jasmine.createSpy(`bin`);
+        onBinChange = jasmine.createSpy('bin');
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -49,193 +49,193 @@ describe(`InputCardGrouped`, () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputCardPO = new TuiNativeInputPO(fixture, `tui-input-card-grouped__card`);
-        inputExpirePO = new TuiNativeInputPO(fixture, `tui-input-card-grouped__expire`);
-        inputCVCPO = new TuiNativeInputPO(fixture, `tui-input-card-grouped__cvc`);
+        inputCardPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__card');
+        inputExpirePO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__expire');
+        inputCVCPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__cvc');
 
         await fixture.whenStable();
     });
 
-    it(`Clear resets control to null`, () => {
+    it('Clear resets control to null', () => {
         testComponent.control.setValue({
-            card: `123`,
-            expire: `12/12`,
-            cvc: `321`,
+            card: '123',
+            expire: '12/12',
+            cvc: '321',
         });
         testComponent.component.clear();
 
         expect(testComponent.control.value).toBeNull();
     });
 
-    describe(`Card number`, () => {
-        describe(`binChange`, () => {
-            it(`Less than 6 digits entered`, () => {
-                setCard(`12345`);
+    describe('Card number', () => {
+        describe('binChange', () => {
+            it('Less than 6 digits entered', () => {
+                setCard('12345');
 
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
             });
 
-            it(`6 and more digits entered`, () => {
-                setCard(`123456789`);
+            it('6 and more digits entered', () => {
+                setCard('123456789');
 
-                expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
+                expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
             });
 
-            it(`Value has changed, first 6 digits are the same`, () => {
-                setCard(`123456789`);
+            it('Value has changed, first 6 digits are the same', () => {
+                setCard('123456789');
                 testComponent.onBinChange.calls.reset();
-                setCard(`123456987`);
+                setCard('123456987');
 
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
             });
 
-            it(`Value has changed, first 6 digits have changed`, () => {
-                setCard(`123456789`);
+            it('Value has changed, first 6 digits have changed', () => {
+                setCard('123456789');
                 testComponent.onBinChange.calls.reset();
-                setCard(`654321789`);
+                setCard('654321789');
 
-                expect(testComponent.onBinChange).toHaveBeenCalledWith(`654321`);
+                expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
             });
 
-            it(`Value has changed, now it has less than 6 digits`, () => {
-                setCard(`123456789`);
+            it('Value has changed, now it has less than 6 digits', () => {
+                setCard('123456789');
                 testComponent.onBinChange.calls.reset();
-                setCard(`123`);
+                setCard('123');
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
             });
         });
 
-        describe(`Formatting`, () => {
-            it(`13`, async () => {
-                await testFormat(`4000000000000`, `4000 0000 0000 0`);
+        describe('Formatting', () => {
+            it('13', async () => {
+                await testFormat('4000000000000', '4000 0000 0000 0');
             });
 
-            it(`14`, async () => {
-                await testFormat(`40000000000000`, `4000 0000 0000 00`);
+            it('14', async () => {
+                await testFormat('40000000000000', '4000 0000 0000 00');
             });
 
-            it(`15`, async () => {
-                await testFormat(`400000000000000`, `4000 0000 0000 000`);
+            it('15', async () => {
+                await testFormat('400000000000000', '4000 0000 0000 000');
             });
 
-            it(`16`, async () => {
-                await testFormat(`4000000000000000`, `4000 0000 0000 0000`);
+            it('16', async () => {
+                await testFormat('4000000000000000', '4000 0000 0000 0000');
             });
 
-            it(`17`, async () => {
-                await testFormat(`40000000000000000`, `4000 0000 0000 0000 0`);
+            it('17', async () => {
+                await testFormat('40000000000000000', '4000 0000 0000 0000 0');
             });
 
-            it(`18`, async () => {
-                await testFormat(`400000000000000000`, `4000 0000 0000 0000 00`);
+            it('18', async () => {
+                await testFormat('400000000000000000', '4000 0000 0000 0000 00');
             });
 
-            it(`19`, async () => {
-                await testFormat(`4000000000000000000`, `4000 0000 0000 0000 000`);
-            });
-        });
-    });
-
-    describe(`Expiration date`, () => {
-        it(`keeps correct value as is`, () => {
-            inputExpirePO.sendText(`12/12`);
-
-            expect(getExpire()).toBe(`12/12`);
-            expect(inputExpirePO.value).toBe(`12/12`);
-        });
-
-        describe(`fixes incorrect value`, () => {
-            it(`replaces 50/08 with 05/08`, () => {
-                inputExpirePO.sendText(`50/08`);
-
-                expect(getExpire()).toBe(`05/08`);
-                expect(inputExpirePO.value).toBe(`05/08`);
-            });
-
-            it(`replaces 14/08 with 12/08`, () => {
-                inputExpirePO.sendText(`14/08`);
-
-                expect(getExpire()).toBe(`12/08`);
-                expect(inputExpirePO.value).toBe(`12/08`);
-            });
-
-            it(`replaces 00/08 with 01/08`, () => {
-                inputExpirePO.sendText(`00/08`);
-
-                expect(getExpire()).toBe(`01/08`);
-                expect(inputExpirePO.value).toBe(`01/08`);
+            it('19', async () => {
+                await testFormat('4000000000000000000', '4000 0000 0000 0000 000');
             });
         });
     });
 
-    describe(`Focus`, () => {
-        it(`focus remains in card input when invalid card is entered`, () => {
+    describe('Expiration date', () => {
+        it('keeps correct value as is', () => {
+            inputExpirePO.sendText('12/12');
+
+            expect(getExpire()).toBe('12/12');
+            expect(inputExpirePO.value).toBe('12/12');
+        });
+
+        describe('fixes incorrect value', () => {
+            it('replaces 50/08 with 05/08', () => {
+                inputExpirePO.sendText('50/08');
+
+                expect(getExpire()).toBe('05/08');
+                expect(inputExpirePO.value).toBe('05/08');
+            });
+
+            it('replaces 14/08 with 12/08', () => {
+                inputExpirePO.sendText('14/08');
+
+                expect(getExpire()).toBe('12/08');
+                expect(inputExpirePO.value).toBe('12/08');
+            });
+
+            it('replaces 00/08 with 01/08', () => {
+                inputExpirePO.sendText('00/08');
+
+                expect(getExpire()).toBe('01/08');
+                expect(inputExpirePO.value).toBe('01/08');
+            });
+        });
+    });
+
+    describe('Focus', () => {
+        it('focus remains in card input when invalid card is entered', () => {
             inputCardPO.focus();
-            inputCardPO.sendText(`8888888888889999`);
+            inputCardPO.sendText('8888888888889999');
 
             expect(inputCardPO.focused).toBe(true);
         });
 
-        it(`focuses expire input when valid card is entered`, () => {
+        it('focuses expire input when valid card is entered', () => {
             inputCardPO.focus();
-            inputCardPO.sendText(`563693784073`);
+            inputCardPO.sendText('563693784073');
 
             expect(inputExpirePO.focused).toBe(true);
         });
 
-        it(`focus remains in expire input when date is not fully entered`, () => {
+        it('focus remains in expire input when date is not fully entered', () => {
             inputCardPO.focus();
-            inputCardPO.sendText(`563693784073`);
-            inputExpirePO.sendText(`12/2`);
+            inputCardPO.sendText('563693784073');
+            inputExpirePO.sendText('12/2');
 
             expect(inputExpirePO.focused).toBe(true);
         });
 
-        it(`focuses cvc input when expiration date is fully entered`, () => {
+        it('focuses cvc input when expiration date is fully entered', () => {
             inputCardPO.focus();
-            inputCardPO.sendText(`563693784073`);
-            inputExpirePO.sendText(`12/21`);
+            inputCardPO.sendText('563693784073');
+            inputExpirePO.sendText('12/21');
 
             expect(inputCVCPO.focused).toBe(true);
         });
     });
 
-    describe(`iconSrc`, () => {
-        beforeEach(() => setCard(`4111 1111 1111 1111`));
+    describe('iconSrc', () => {
+        beforeEach(() => setCard('4111 1111 1111 1111'));
 
-        it(`input-card-grouped have a default icon`, () => {
+        it('input-card-grouped have a default icon', () => {
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
-            expect(testComponent.component.icon).toEqual(`tuiIconVisa`);
-            expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
+            expect(testComponent.component.defaultIcon).toEqual('tuiIconVisa');
+            expect(testComponent.component.icon).toEqual('tuiIconVisa');
+            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
 
             expect(expectCardOutlet()).toBeFalsy();
             fixture.detectChanges();
             expect(expectCardOutlet()).toBeTruthy();
         });
 
-        it(`input-card-grouped have tuiIconMastercard icon`, () => {
-            testComponent.component.cardSrc = `tuiIconMastercard`;
+        it('input-card-grouped have tuiIconMastercard icon', () => {
+            testComponent.component.cardSrc = 'tuiIconMastercard';
 
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
-            expect(testComponent.component.icon).toEqual(`tuiIconMastercard`);
-            expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
+            expect(testComponent.component.defaultIcon).toEqual('tuiIconVisa');
+            expect(testComponent.component.icon).toEqual('tuiIconMastercard');
+            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
 
             expect(expectCardOutlet()).toBeFalsy();
             fixture.detectChanges();
             expect(expectCardOutlet()).toBeTruthy();
         });
 
-        it(`input-card-grouped have TemplateRef`, () => {
+        it('input-card-grouped have TemplateRef', () => {
             testComponent.component.cardSrc =
                 fixture.componentInstance.customIconTemplate;
 
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
+            expect(testComponent.component.defaultIcon).toEqual('tuiIconVisa');
             expect(testComponent.component.icon).toEqual(jasmine.any(TemplateRef));
-            expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
+            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
 
             expect(expectCardOutlet()).toBeFalsy();
             fixture.detectChanges();
@@ -264,8 +264,8 @@ describe(`InputCardGrouped`, () => {
     function expectCardOutlet(): boolean {
         return (
             fixture.componentRef.location?.nativeElement?.querySelectorAll(
-                `.t-icon-outlet`,
-            )?.length === 1 ?? false
+                '.t-icon-outlet',
+            )?.length === 1 || false
         );
     }
 

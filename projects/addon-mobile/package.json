@@ -17,11 +17,11 @@
         "@angular/cdk": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@ng-web-apis/common": ">=1.12.1 < 2",
-        "@taiga-ui/cdk": ">=2.58.0",
-        "@taiga-ui/core": ">=2.58.0",
-        "@taiga-ui/kit": ">=2.58.0",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@ng-web-apis/common": ">=2.0.0",
+        "@taiga-ui/cdk": ">=2.55.0",
+        "@taiga-ui/core": ">=2.55.0",
+        "@taiga-ui/kit": ">=2.55.0",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
     }
 }

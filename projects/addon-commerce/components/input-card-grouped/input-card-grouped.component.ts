@@ -114,7 +114,7 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    cardSrc: PolymorpheusContent | null = null; // TODO: 3.0 will be deleted `null` in v3.0
+    cardSrc: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -198,15 +198,15 @@ export class TuiInputCardGroupedComponent
     }
 
     get card(): string {
-        return this.value?.card ?? '';
+        return this.value?.card || '';
     }
 
     get expire(): string {
-        return this.value?.expire ?? '';
+        return this.value?.expire || '';
     }
 
     get cvc(): string {
-        return this.value?.cvc ?? '';
+        return this.value?.cvc || '';
     }
 
     get hasCleaner(): boolean {
@@ -223,8 +223,8 @@ export class TuiInputCardGroupedComponent
         return paymentSystem && ICONS[paymentSystem];
     }
 
-    get icon(): PolymorpheusContent | null {
-        return this.cardSrc ?? this.defaultIcon;
+    get icon(): PolymorpheusContent {
+        return this.cardSrc || this.defaultIcon;
     }
 
     get bin(): string | null {
