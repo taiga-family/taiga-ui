@@ -82,19 +82,19 @@
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
             <ng-template #hint>
-                <div
-                    *ngIf="hintDirective; else single"
-                    polymorpheus-outlet
-                    class="t-text"
-                    [content]="hintDirective.hint"
-                    [context]="getContentContext(point, index)"
-                ></div>
-                <ng-template #single>
+                <ng-container *ngIf="hintDirective; else single">
                     <div
-                        polymorpheus-outlet
+                        *polymorpheusOutlet="hintDirective.hint as text; context: getContentContext(point, index)"
                         class="t-text"
-                        [content]="hintContent"
-                        [context]="{$implicit: point, index: index}"
+                        [textContent]="text"
+                    ></div>
+                </ng-container>
+                <ng-template #single>
+                    <!-- TODO: Polymorpheus fix type -->
+                    <div
+                        *polymorpheusOutlet="$any(hintContent) as text; context: {$implicit: point, index: index}"
+                        class="t-text"
+                        [textContent]="text"
                     ></div>
                 </ng-template>
             </ng-template>

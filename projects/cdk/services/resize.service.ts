@@ -28,7 +28,7 @@ export class TuiResizeService extends ResizeObserverService {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(RESIZE_OBSERVER_SUPPORT) support: boolean,
-        @Inject(RESIZE_OPTION_BOX) box: ResizeObserverOptions['box'],
+        @Inject(RESIZE_OPTION_BOX) box: ResizeObserverBoxOptions,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
         super(elementRef, ngZone, support, box);

@@ -9,7 +9,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken<Observable<Element | null>
         factory: () => {
             const stub = {onRemovalComplete: () => {}};
             const element$ = new BehaviorSubject<Element | null>(null);
-            const engine = inject(ɵAnimationEngine, InjectFlags.Optional) ?? stub;
+            const engine = inject(ɵAnimationEngine, InjectFlags.Optional) || stub;
             const {onRemovalComplete = stub.onRemovalComplete} = engine;
 
             engine.onRemovalComplete = (element, context) => {

@@ -90,7 +90,7 @@ export abstract class AbstractExampleTuiControl
         'tuiIconMastercardMono',
     ];
 
-    customContentSelected: PolymorpheusContent | null = null;
+    customContentSelected: PolymorpheusContent = '';
 
     inputMode = this.inputModeVariants[0];
 
@@ -145,7 +145,7 @@ export abstract class AbstractExampleTuiControl
 
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
-    get customContent(): PolymorpheusContent | null {
+    get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
             : this.customContentSelected;

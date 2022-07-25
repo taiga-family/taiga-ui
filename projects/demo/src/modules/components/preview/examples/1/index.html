@@ -46,17 +46,11 @@
             (click)="preview.complete()"
         ></button>
 
-        <div
-            polymorpheus-outlet
-            [content]="previewContent"
-        >
-            <ng-template let-src>
-                <img
-                    alt=""
-                    [src]="src"
-                />
-            </ng-template>
-        </div>
+        <img
+            *polymorpheusOutlet="previewContent as src"
+            alt=""
+            [src]="src"
+        />
     </tui-preview>
 </ng-template>
 
