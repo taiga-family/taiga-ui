@@ -9,7 +9,13 @@ import {
     Input,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, itemsQueryListObservable, watch} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    itemsQueryListObservable,
+    tuiIsNumber,
+    tuiIsString,
+    watch,
+} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
@@ -152,7 +158,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     isPrimitivePolymorpheusContent(value: unknown): boolean {
-        return typeof value === 'string' || typeof value === 'number';
+        return tuiIsString(value) || tuiIsNumber(value);
     }
 
     showCleaner(type: string): boolean {

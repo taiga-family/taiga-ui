@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
-import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -83,7 +83,8 @@ export class TuiDocExampleComponent {
             Record<string, string>
         >,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
-        @Inject(TUI_DOC_CODE_ACTIONS) readonly codeActions: PolymorpheusContent[],
+        @Inject(TUI_DOC_CODE_ACTIONS)
+        readonly codeActions: Array<PolymorpheusContent<TuiContextWithImplicit<string>>>,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(NgLocation) private readonly ngLocation: NgLocation,
@@ -110,7 +111,7 @@ export class TuiDocExampleComponent {
     edit(files: Record<string, string>): void {
         this.loading$.next(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id ?? '', files)
+            ?.edit(this.componentName, this.id || '', files)
             .finally(() => this.loading$.next(false));
     }
 

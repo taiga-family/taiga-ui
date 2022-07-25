@@ -20,7 +20,7 @@
         "@angular/core": ">=9.0.0",
         "@taiga-ui/cdk": ">=2.54.1",
         "@taiga-ui/core": ">=2.54.1",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
     }
 }

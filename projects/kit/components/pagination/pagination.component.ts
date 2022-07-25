@@ -175,10 +175,6 @@ export class TuiPaginationComponent
         return this.index === index && !this.focused;
     }
 
-    getItemContext(index: number): TuiContextWithImplicit<number> {
-        return {$implicit: index};
-    }
-
     /**
      * Get index by element index
      * @param elementIndex

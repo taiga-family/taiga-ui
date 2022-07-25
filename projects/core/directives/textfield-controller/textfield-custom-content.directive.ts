@@ -17,9 +17,8 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT =
     ],
 })
 export class TuiTextfieldCustomContentDirective extends AbstractTuiController {
-    // TODO: 3.0 Remove null
     @Input('tuiTextfieldCustomContent')
-    customContent: PolymorpheusContent | null = '';
+    customContent: PolymorpheusContent = '';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsString} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -36,7 +36,7 @@ export class TuiProgressSegmentedComponent {
     colors: string | readonly string[] = 'var(--tui-primary)';
 
     getActiveColor(index: number = 0): string | null {
-        return typeof this.colors === 'string'
+        return tuiIsString(this.colors)
             ? this.colors
             : this.colors[index] || this.colors[this.colors.length - 1];
     }

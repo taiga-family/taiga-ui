@@ -9,11 +9,11 @@
             class="expand"
             (click)="onClick()"
         >
-            <span
-                polymorpheus-outlet
-                class="name"
-                [content]="heading"
-            ></span>
+            <span class="name">
+                <ng-container *polymorpheusOutlet="heading as text">
+                    {{ text }}
+                </ng-container>
+            </span>
             <tui-svg
                 src="tuiIconChevronDownLarge"
                 class="chevron"

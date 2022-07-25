@@ -1,17 +1,14 @@
 <div class="wrapper">
     <tui-ring-chart
         [value]="value"
-        [content]="content"
         [(activeItemIndex)]="activeItemIndex"
-    ></tui-ring-chart>
-
-    <ng-template #content>
+    >
         <tui-money
             [singleColor]="true"
             [value]="sum"
         ></tui-money>
         <div>Total</div>
-    </ng-template>
+    </tui-ring-chart>
 
     <div class="legend">
         <tui-legend-item
