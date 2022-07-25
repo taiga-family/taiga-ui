@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-data-list-example-5`,

@@ -5,8 +5,8 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core/tokens';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';

@@ -18,13 +18,13 @@
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@ng-web-apis/mutation-observer": ">=1.1.0 < 2",
+        "@ng-web-apis/mutation-observer": ">=2.0.0",
         "@taiga-ui/cdk": ">=2.62.1",
         "@taiga-ui/core": ">=2.62.1",
         "@taiga-ui/i18n": ">=2.62.1",
         "@taiga-ui/icons": ">=2.62.1",
         "@taiga-ui/kit": ">=2.62.1",
-        "@tinkoff/ng-polymorpheus": ">=3.0.0",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
     },
     "publishConfig": {

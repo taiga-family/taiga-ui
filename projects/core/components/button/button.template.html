@@ -11,30 +11,24 @@
     <span class="t-content">
         <span
             *ngIf="icon"
-            polymorpheus-outlet
             class="t-left"
-            [content]="icon"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    class="t-icon"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="icon as text"
+                class="t-icon"
+                [src]="text"
+            ></tui-svg>
         </span>
         <ng-content></ng-content>
         <span
             *ngIf="iconRight"
-            polymorpheus-outlet
             class="t-right"
-            [content]="iconRight"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    class="t-icon"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconRight as text"
+                class="t-icon"
+                [src]="text"
+            ></tui-svg>
         </span>
     </span>
     <tui-loader

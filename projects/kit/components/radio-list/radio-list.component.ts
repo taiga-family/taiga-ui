@@ -106,14 +106,6 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return this.disabledItemHandler(item);
     }
 
-    getContentContext(
-        item: T,
-        index: number,
-        active: boolean,
-    ): TuiValueContentContext<T> & {index: number} {
-        return {$implicit: item, index, active};
-    }
-
     onModelChange(value: T): void {
         this.updateValue(value);
     }
