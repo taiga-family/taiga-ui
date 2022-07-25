@@ -22,11 +22,13 @@
     <ng-content></ng-content>
     <div
         *ngIf="computedValueContent && !focused"
-        polymorpheus-outlet
+        ngProjectAs="tuiContent"
         automation-id="tui-input-slider__value-content"
-        [content]="computedValueContent"
-        [context]="{$implicit: value}"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="computedValueContent as text; context: {$implicit: value}">
+            {{ text }}
+        </ng-container>
+    </div>
 </tui-input-number>
 
 <!--TODO: remove in v3.0-->

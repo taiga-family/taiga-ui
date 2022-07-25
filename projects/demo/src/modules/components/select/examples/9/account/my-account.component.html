@@ -1,15 +1,10 @@
-<span
-    polymorpheus-outlet
-    class="icon"
-    [content]="account.paymentSystem"
->
-    <ng-template let-iconSrc>
-        <tui-marker-icon
-            size="xs"
-            class="icon-content"
-            [src]="iconSrc"
-        ></tui-marker-icon>
-    </ng-template>
+<span class="icon">
+    <tui-marker-icon
+        *polymorpheusOutlet="account.paymentSystem as src"
+        size="xs"
+        class="icon-content"
+        [src]="src"
+    ></tui-marker-icon>
 </span>
 <span class="info">
     <span class="name">{{ account.name }}</span>

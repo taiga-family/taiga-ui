@@ -38,10 +38,9 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     tuiHintHideDelay: TuiPointerHintOptions['tuiHintHideDelay'] =
         this.options.tuiHintHideDelay;
 
-    // TODO: 3.0 Remove null
     @Input()
     @tuiRequiredSetter()
-    set tuiPointerHint(value: PolymorpheusContent | null) {
+    set tuiPointerHint(value: PolymorpheusContent) {
         if (!value) {
             this.hideTooltip();
             this.content = '';
