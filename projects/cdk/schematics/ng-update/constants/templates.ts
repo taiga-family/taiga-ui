@@ -282,7 +282,7 @@ export const TEMPLATE_COMMENTS = [
         tag: 'tui-preview-host',
         withAttr: 'ngProjectAs',
         comment:
-            '"Preview"-component no more needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup',
+            '"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup',
     },
     {
         tag: 'tui-progress',

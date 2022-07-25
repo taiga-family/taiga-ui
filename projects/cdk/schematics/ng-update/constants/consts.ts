@@ -144,16 +144,6 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
     },
     {
         from: {
-            name: 'TuiCarouselModule',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
-        },
-        to: {
-            name: 'TuiCarouselModule',
-            moduleSpecifier: '@taiga-ui/kit',
-        },
-    },
-    {
-        from: {
             name: 'TuiProgressModule',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
