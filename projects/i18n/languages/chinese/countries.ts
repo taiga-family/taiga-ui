@@ -1,4 +1,4 @@
-import { TuiCountryIsoCode } from '@taiga-ui/i18n/enums';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 export const TUI_CHINESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     [TuiCountryIsoCode.AD]: '安道尔',
@@ -206,5 +206,5 @@ export const TUI_CHINESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.YE]: '也门',
     [TuiCountryIsoCode.ZA]: '南非',
     [TuiCountryIsoCode.ZM]: '赞比亚',
-    [TuiCountryIsoCode.ZW]: '津巴布韦'
+    [TuiCountryIsoCode.ZW]: '津巴布韦',
 };
