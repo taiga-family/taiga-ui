@@ -7,7 +7,7 @@ import {
     FormGroupName,
     NgControl,
 } from '@angular/forms';
-import {tuiPure, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, Observable, of} from 'rxjs';
@@ -17,7 +17,7 @@ const EMPTY_RECORD = {};
 
 // @dynamic
 @Pipe({
-    name: `tuiFieldError`,
+    name: 'tuiFieldError',
     pure: false,
 })
 export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
@@ -116,7 +116,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || ``;
+        return id || fallback || '';
     }
 
     @tuiPure
@@ -128,16 +128,16 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
             return of(firstError);
         }
 
-        if (errorContent === undefined && typeof firstError === `string`) {
+        if (errorContent === undefined && tuiIsString(firstError)) {
             return of(new TuiValidationError(firstError));
         }
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
-                map(error => new TuiValidationError(error || ``, firstError)),
+                map(error => new TuiValidationError(error || '', firstError)),
             );
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        return of(new TuiValidationError(errorContent || '', firstError));
     }
 }

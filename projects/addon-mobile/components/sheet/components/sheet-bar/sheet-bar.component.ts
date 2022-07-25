@@ -24,6 +24,6 @@ export class TuiSheetBarComponent {
     ) {}
 
     private get stop(): number {
-        return this.sheet.stops[0] ?? 0;
+        return this.sheet.stops[0] || 0;
     }
 }

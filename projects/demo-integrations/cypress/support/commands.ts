@@ -105,7 +105,7 @@ tuiAddMatchImageSnapshotCommand({
     failureThreshold: 0.0004,
     failureThresholdType: `percent`,
     comparisonMethod: `ssim`,
-    diffDirection: `vertical`,
+    diffDirection: `horizontal`,
     customDiffConfig: {
         ssim: `fast`,
         windowSize: 24,

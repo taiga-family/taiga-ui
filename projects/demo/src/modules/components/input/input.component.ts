@@ -102,7 +102,7 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LONG_TEXT_TEMPLATE,
     ];
 
-    get customContent(): PolymorpheusContent | null {
+    get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE
             ? this.longTextRef
             : this.customContentSelected;

@@ -5,10 +5,12 @@
 >
     <div
         *ngIf="leftContent"
-        polymorpheus-outlet
         class="t-left-content"
-        [content]="leftContent"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="leftContent as text">
+            {{ text }}
+        </ng-container>
+    </div>
     <span
         automation-id="tui-tag__text"
         class="t-text"

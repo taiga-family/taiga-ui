@@ -2,7 +2,7 @@ import {Inject, Injectable, InjectionToken} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
 
-export const DEFAULT_THEME = `Open-source`;
+export const DEFAULT_THEME = 'Open-source';
 
 export const TUI_DEMO_DEFAULT_THEME = new InjectionToken<string>(
     `[TUI_DEMO_DEFAULT_THEME]: Name of default theme`,
@@ -10,7 +10,7 @@ export const TUI_DEMO_DEFAULT_THEME = new InjectionToken<string>(
 );
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiThemeService extends BehaviorSubject<string> {
     constructor(
@@ -21,7 +21,7 @@ export class TuiThemeService extends BehaviorSubject<string> {
     }
 
     next(value: string): void {
-        this.storage.setItem(`theme`, value);
+        this.storage.setItem('theme', value);
         super.next(value);
     }
 }

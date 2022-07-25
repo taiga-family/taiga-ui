@@ -22,14 +22,11 @@
       (click)="download()"
     ></button>
 
-    <div
-      polymorpheus-outlet
-      [content]="previewContent"
-    >
-      <ng-template let-src>
-        <img [src]="src" />
-      </ng-template>
-    </div>
+    <img
+      *polymorpheusOutlet="previewContent as src"
+      alt=""
+      [src]="src"
+    />
   </tui-preview>
 </ng-template>
 ```

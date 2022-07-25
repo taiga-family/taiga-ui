@@ -35,11 +35,9 @@
                         (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                         (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
                     >
-                        <div
-                            polymorpheus-outlet
-                            [content]="content || index + 1"
-                            [context]="getItemContext(index)"
-                        ></div>
+                        <ng-container *polymorpheusOutlet="content || index + 1 as text; context: {$implicit: index}">
+                            {{ text }}
+                        </ng-container>
                     </button>
                 </ng-container>
             </ng-container>

@@ -1,8 +1,6 @@
 <span
-    polymorpheus-outlet
     automation-id="tui-tooltip__icon"
     class="t-tooltip-icon"
-    [content]="icon"
     [tuiHintId]="describeId"
     [tuiHint]="content"
     [tuiHintDirection]="direction"
@@ -10,7 +8,8 @@
     [tuiHintHideDelay]="hideDelay"
     [tuiHintMode]="computedMode"
 >
-    <ng-template let-icon>
-        <tui-svg [src]="icon"></tui-svg>
-    </ng-template>
+    <tui-svg
+        *polymorpheusOutlet="icon as src"
+        [src]="src"
+    ></tui-svg>
 </span>

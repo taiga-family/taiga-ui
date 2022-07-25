@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -15,7 +14,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
-import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {TuiHintDirective} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -34,8 +34,8 @@ import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options'
     styleUrls: [`./line-clamp.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent implements AfterViewInit, DoCheck {
-    @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
+export class TuiLineClampComponent implements AfterViewInit {
+    @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly linesLimit$ = new BehaviorSubject(1);
