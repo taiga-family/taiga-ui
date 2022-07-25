@@ -21,12 +21,13 @@
     >
         <div
             #wrapper
-            polymorpheus-outlet
-            [content]="content"
-            [context]="{$implicit: activeZone}"
             (keydown.esc)="onKeyDownEsc($event)"
             (keydown)="onKeydown($event)"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="content as text; context: {$implicit: activeZone}">
+                {{ text }}
+            </ng-container>
+        </div>
         <!--This DIV is here to start backwards TreeWalker for focusing last focusable item on ArrowUp-->
         <div></div>
     </ng-template>

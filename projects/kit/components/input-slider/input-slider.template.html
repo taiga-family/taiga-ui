@@ -3,8 +3,8 @@
     [max]="max"
     [precision]="precision"
     [decimal]="decimal"
-    [prefix]="showValueContent ? '' : prefix"
-    [postfix]="showValueContent ? '' : postfix || (value | i18nPlural: pluralizeMap || pluralizeMapFallback)"
+    [prefix]="prefix"
+    [postfix]="postfix || (value | i18nPlural: pluralizeMap || pluralizeMapFallback)"
     [tuiTextfieldCustomContent]="controller.customContent || deprecatedSecondary"
     [tuiTextfieldSize]="computedSize"
     [tuiTextfieldLabelOutside]="computedSize !== 'l'"
@@ -21,12 +21,14 @@
 >
     <ng-content></ng-content>
     <div
-        *ngIf="showValueContent"
-        polymorpheus-outlet
+        *ngIf="computedValueContent && !focused"
+        ngProjectAs="tuiContent"
         automation-id="tui-input-slider__value-content"
-        [content]="computedValueContent"
-        [context]="{$implicit: value}"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="computedValueContent as text; context: {$implicit: value}">
+            {{ text }}
+        </ng-container>
+    </div>
 </tui-input-number>
 
 <!--TODO: remove in v3.0-->
