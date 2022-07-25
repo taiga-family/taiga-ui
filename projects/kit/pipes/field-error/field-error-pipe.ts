@@ -16,7 +16,7 @@ import {map} from 'rxjs/operators';
 const EMPTY_RECORD = {};
 
 @Pipe({
-    name: `tuiFieldError`,
+    name: 'tuiFieldError',
     pure: false,
 })
 export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
@@ -115,7 +115,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || ``;
+        return id || fallback || '';
     }
 
     @tuiPure
@@ -133,10 +133,10 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
-                map(error => new TuiValidationError(error || ``, firstError)),
+                map(error => new TuiValidationError(error || '', firstError)),
             );
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        return of(new TuiValidationError(errorContent || '', firstError));
     }
 }
