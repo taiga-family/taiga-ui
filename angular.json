@@ -9,6 +9,7 @@
             "sourceRoot": "projects/addon-charts",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -50,6 +51,7 @@
             "sourceRoot": "projects/addon-commerce",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -91,6 +93,7 @@
             "sourceRoot": "projects/addon-doc/src",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -139,6 +142,7 @@
                     "displayBlock": true
                 }
             },
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -180,6 +184,7 @@
             "sourceRoot": "projects/addon-mobile/src",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -221,6 +226,7 @@
             "sourceRoot": "projects/addon-preview/src",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -261,6 +267,7 @@
             "sourceRoot": "projects/addon-table",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -302,6 +309,7 @@
             "sourceRoot": "projects/addon-tablebars/src",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -343,6 +351,7 @@
             "sourceRoot": "projects/cdk",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "prebuild": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -422,6 +431,7 @@
             "sourceRoot": "projects/core",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -467,6 +477,7 @@
                     "ru": "projects/demo/src/locale/messages.ru.xlf"
                 }
             },
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
@@ -715,6 +726,7 @@
             "sourceRoot": "projects/i18n",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -743,6 +755,7 @@
             "sourceRoot": "projects/icons/src",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "preprocess": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -789,6 +802,7 @@
             "sourceRoot": "projects/kit",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -829,6 +843,7 @@
             "root": "projects/taiga-schematics",
             "sourceRoot": "projects/taiga-schematics",
             "projectType": "library",
+            "implicitDependencies": ["!testing"],
             "architect": {
                 "prebuild": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -891,6 +906,7 @@
             "sourceRoot": "projects/testing",
             "projectType": "library",
             "prefix": "tui",
+            "implicitDependencies": ["cdk"],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
