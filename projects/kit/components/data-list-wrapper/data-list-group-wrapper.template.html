@@ -16,12 +16,9 @@
             [value]="item"
             [disabled]="disabledItemHandler(item)"
         >
-            <span
-                polymorpheus-outlet
-                class="t-content"
-                [content]="itemContent"
-                [context]="getContext(item, elementRef)"
-            ></span>
+            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                {{ text }}
+            </ng-container>
         </button>
     </tui-opt-group>
 </tui-data-list>

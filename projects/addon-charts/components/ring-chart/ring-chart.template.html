@@ -1,17 +1,7 @@
 <div class="t-content">
-    <div
-        *ngIf="content; else ngContent"
-        polymorpheus-outlet
-        automation-id="tui-ring-chart__content"
-        class="t-wrapper"
-        [content]="content"
-        [context]="{$implicit: activeItemIndex, value: value}"
-    ></div>
-    <ng-template #ngContent>
-        <div class="t-wrapper">
-            <ng-content></ng-content>
-        </div>
-    </ng-template>
+    <div class="t-wrapper">
+        <ng-content></ng-content>
+    </div>
 </div>
 
 <tui-pie-chart

@@ -6,12 +6,12 @@
 ></div>
 <div
     automation-id="tui-hint-box__tooltip"
-    polymorpheus-outlet
     class="t-tooltip"
-    [content]="hint.content"
     (tuiHoveredChange)="onHovered($event)"
 >
-    <ng-template let-text>
-        <span class="t-text">{{ text }}</span>
-    </ng-template>
+    <span
+        *polymorpheusOutlet="hint.content as text"
+        class="t-text"
+        [textContent]="text"
+    ></span>
 </div>

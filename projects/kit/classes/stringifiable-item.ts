@@ -1,4 +1,4 @@
-import {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {TuiStringHandler} from '@taiga-ui/cdk';
 
 /**
  * Wrapper around an item to add `toString()` method

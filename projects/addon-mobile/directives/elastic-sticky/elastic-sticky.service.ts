@@ -36,7 +36,7 @@ export class TuiElasticStickyService extends Observable<number> {
                     take(1),
                     switchMap(() => {
                         const closest = nativeElement.closest(SCROLL_REF_SELECTOR);
-                        const host = scrollRef?.nativeElement ?? closest;
+                        const host = scrollRef?.nativeElement || closest;
                         const {offsetHeight} = nativeElement;
                         const offsetTop = this.getInitialOffset(
                             host || windowRef,

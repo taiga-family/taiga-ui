@@ -13,19 +13,12 @@
         automation-id="tui-input-file__label"
     >
         <a tuiLink>
-            <span
-                polymorpheus-outlet
-                class="t-inline"
-                [content]="computedLink$ | async"
-            ></span>
+            <ng-container *polymorpheusOutlet="computedLink$ | async as text">
+                {{ text }}
+            </ng-container>
         </a>
-        <ng-container *ngIf="computedLabel$ | async as computedLabel">
-            <span>&nbsp;</span>
-            <span
-                polymorpheus-outlet
-                class="t-inline"
-                [content]="computedLabel"
-            ></span>
+        <ng-container *polymorpheusOutlet="computedLabel$ | async as text">
+            {{ text }}
         </ng-container>
         <ng-container *ngIf="!readOnly && !computedDisabled">
             <input
