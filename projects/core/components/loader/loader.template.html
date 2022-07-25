@@ -32,10 +32,12 @@
 
     <div
         *ngIf="hasText"
-        polymorpheus-outlet
         automation-id="tui-loader__text"
         class="t-text"
         [class.t-text_horizontal]="isHorizontal"
-        [content]="textContent"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="textContent as text">
+            {{ text }}
+        </ng-container>
+    </div>
 </div>

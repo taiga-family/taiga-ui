@@ -27,7 +27,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 })
 export class TuiSelectOptionComponent<T> implements OnInit {
     readonly selected$ = merge(
-        this.control.valueChanges ?? EMPTY,
+        this.control.valueChanges || EMPTY,
         typedFromEvent(this.elementRef.nativeElement, 'animationstart'),
     ).pipe(
         startWith(null),

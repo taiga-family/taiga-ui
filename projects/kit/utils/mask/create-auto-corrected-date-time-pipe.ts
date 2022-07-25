@@ -1,4 +1,4 @@
-import {DATE_FILLER_LENGTH, TuiTimeMode} from '@taiga-ui/cdk';
+import {DATE_FILLER_LENGTH, tuiIsString, TuiTimeMode} from '@taiga-ui/cdk';
 import {
     TuiTextMaskConfig,
     TuiTextMaskOptions,
@@ -39,7 +39,7 @@ export function tuiCreateAutoCorrectedDateTimePipe(
             {} as unknown as TuiTextMaskOptions & TuiTextMaskConfig,
         );
 
-        if (!pipedTime || typeof pipedTime === 'string') {
+        if (!pipedTime || tuiIsString(pipedTime)) {
             return false;
         }
 

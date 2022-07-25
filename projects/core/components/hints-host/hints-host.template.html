@@ -1,10 +1,9 @@
 <div
     *ngFor="let hint of hints$ | async"
     role="tooltip"
-    polymorpheus-outlet
     @tuiParentAnimation
     [attr.id]="hint.id"
-    [content]="hint.component || component"
-    [context]="{$implicit: hint}"
     [tuiActiveZoneParent]="hint.activeZone"
-></div>
+>
+    <ng-container *polymorpheusOutlet="hint.component || component; context: {$implicit: hint}"></ng-container>
+</div>

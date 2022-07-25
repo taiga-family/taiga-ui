@@ -31,7 +31,7 @@ export class TuiTreeService<T> {
     ) {}
 
     getChildren(item: T): readonly T[] {
-        return this.map.get(item) ?? [this.loading];
+        return this.map.get(item) || [this.loading];
     }
 
     loadChildren(item: T): void {

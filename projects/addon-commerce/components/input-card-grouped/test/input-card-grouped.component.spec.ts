@@ -265,7 +265,7 @@ describe('InputCardGrouped', () => {
         return (
             fixture.componentRef.location?.nativeElement?.querySelectorAll(
                 '.t-icon-outlet',
-            )?.length === 1 ?? false
+            )?.length === 1 || false
         );
     }
 

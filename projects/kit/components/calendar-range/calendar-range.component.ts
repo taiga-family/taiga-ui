@@ -18,6 +18,7 @@ import {
     TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsString,
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
@@ -141,9 +142,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     isItemActive(item: string | TuiDayRangePeriod): boolean {
         const {activePeriod} = this;
 
-        return (
-            (typeof item === 'string' && activePeriod === null) || activePeriod === item
-        );
+        return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
     }
 
     onRangeChange(dayRange: TuiDayRange): void {

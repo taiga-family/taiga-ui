@@ -9,7 +9,7 @@ export const DEFAULT_THEME = 'Open-source';
 })
 export class TuiThemeService extends BehaviorSubject<string> {
     constructor(@Inject(LOCAL_STORAGE) private readonly storage: Storage) {
-        super(storage.getItem('theme') ?? DEFAULT_THEME);
+        super(storage.getItem('theme') || DEFAULT_THEME);
     }
 
     next(value: string): void {

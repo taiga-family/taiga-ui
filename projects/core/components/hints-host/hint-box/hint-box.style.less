@@ -10,7 +10,6 @@
     left: 0;
     max-width: 18rem;
     min-height: var(--tui-height-m);
-    padding: @space * 3 @space * 4;
     background: var(--tui-primary);
     border-radius: var(--tui-radius-l);
     color: var(--tui-primary-text);
@@ -134,6 +133,7 @@
 .t-tooltip {
     font: var(--tui-font-text-s);
     word-wrap: break-word;
+    padding: @space * 3 @space * 4;
 
     :host[data-mode='overflow'] & {
         font: inherit;

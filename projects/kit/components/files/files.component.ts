@@ -35,7 +35,7 @@ export class TuiFilesComponent {
     ) {}
 
     get hasExtraItems(): boolean {
-        return !!this.max && (this.items?.length ?? 0) > this.max;
+        return !!this.max && (this.items?.length || 0) > this.max;
     }
 
     toggle(): void {

@@ -8,6 +8,6 @@ export const TUI_DOC_SOURCE_CODE: InjectionToken<
 > = new InjectionToken<PolymorpheusContent<TuiDocSourceCodePathOptions>>(
     'Source code link',
     {
-        factory: () => '',
+        factory: () => null,
     },
 );

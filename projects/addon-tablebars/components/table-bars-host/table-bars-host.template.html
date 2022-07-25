@@ -14,12 +14,12 @@
             [class.t-container_adaptive]="item.adaptive"
         >
             <div class="t-inner">
-                <div
-                    polymorpheus-outlet
-                    class="t-content"
-                    [content]="item.content"
-                    [context]="getItemContext(item)"
-                ></div>
+                <div class="t-content">
+                    <!-- TODO: Polymorpheus fix type -->
+                    <ng-container *polymorpheusOutlet="$any(item.content) as text; context: getItemContext(item)">
+                        {{ text }}
+                    </ng-container>
+                </div>
 
                 <button
                     *ngIf="item.hasCloseButton"

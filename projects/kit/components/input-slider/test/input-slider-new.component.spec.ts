@@ -533,14 +533,16 @@ describe('InputSlider[new]', () => {
 
 function getTextInputCustomValue(): string {
     return (
-        pageObject.getByAutomationId(testContext.textInputCustomValueAutoId)
-            ?.nativeElement.textContent || ''
+        pageObject
+            .getByAutomationId(testContext.textInputCustomValueAutoId)
+            ?.nativeElement.textContent.trim() || ''
     );
 }
 
 function getTextfieldCustomContent(): string {
     return (
-        pageObject.getByAutomationId(testContext.customContentAutoId)?.nativeElement
-            .textContent || ''
+        pageObject
+            .getByAutomationId(testContext.customContentAutoId)
+            ?.nativeElement.textContent.trim() || ''
     );
 }
