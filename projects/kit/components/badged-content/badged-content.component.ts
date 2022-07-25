@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {isNumber, tuiPx, tuiDefaultProp} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {tuiDefaultProp, tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
+import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -65,7 +65,7 @@ export class TuiBadgedContentComponent {
     }
 
     get sizeBig(): boolean {
-        return sizeBigger(this.size);
+        return tuiSizeBigger(this.size);
     }
 
     get boxShadow(): string {
@@ -74,12 +74,12 @@ export class TuiBadgedContentComponent {
         return `0 0 0 ${tuiPx(borderWidth)}`;
     }
 
-    contentIsNumber(content: PolymorpheusContent): boolean {
-        return isNumber(content.valueOf());
+    contentIsNumber(content: PolymorpheusContent): content is number {
+        return tuiIsNumber(content?.valueOf());
     }
 
-    contentIsString(content: PolymorpheusContent): boolean {
-        return typeof content.valueOf() === 'string';
+    contentIsString(content: PolymorpheusContent): content is string {
+        return tuiIsString(content?.valueOf());
     }
 
     getStatus(color: string): TuiStatus {

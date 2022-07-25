@@ -31,10 +31,17 @@
         <ng-content></ng-content>
         <div
             *ngIf="showLeftValueContent"
-            polymorpheus-outlet
-            [content]="minLabel ? legacyMinLabel : leftValueContent"
-            [context]="{$implicit: value[0]}"
-        ></div>
+            ngProjectAs="tuiContent"
+        >
+            <ng-container
+                *polymorpheusOutlet="
+                    minLabel ? legacyMinLabel : leftValueContent as text;
+                    context: {$implicit: value[0]}
+                "
+            >
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-input-number>
 
     <div class="t-right">
@@ -58,10 +65,17 @@
         >
             <div
                 *ngIf="showRightValueContent"
-                polymorpheus-outlet
-                [content]="maxLabel ? legacyMaxLabel : rightValueContent"
-                [context]="{$implicit: value[1]}"
-            ></div>
+                ngProjectAs="tuiContent"
+            >
+                <ng-container
+                    *polymorpheusOutlet="
+                        maxLabel ? legacyMaxLabel : rightValueContent as text;
+                        context: {$implicit: value[1]}
+                    "
+                >
+                    {{ text }}
+                </ng-container>
+            </div>
         </tui-input-number>
 
         <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->

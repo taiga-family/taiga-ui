@@ -12,11 +12,14 @@
         ></div>
         <div
             #content
-            polymorpheus-outlet
             class="t-content"
-            [content]="directive.content"
-            [context]="getContext(directive.context, activeZone)"
-        ></div>
+        >
+            <ng-container
+                *polymorpheusOutlet="directive.content as text; context: getContext(directive.context, activeZone)"
+            >
+                {{ text }}
+            </ng-container>
+        </div>
         <div
             tabindex="0"
             (focus)="onBottomFocus()"
