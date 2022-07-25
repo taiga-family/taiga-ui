@@ -1,9 +1,7 @@
 <ng-template #template><ng-content></ng-content></ng-template>
-<div
-    polymorpheus-outlet
-    [content]="content"
-    [context]="{$implicit: this, template: template}"
-></div>
+<ng-container *polymorpheusOutlet="content as text; context: {$implicit: this, template: template}">
+    {{ text }}
+</ng-container>
 <tui-expand
     *ngIf="isExpandable"
     role="group"

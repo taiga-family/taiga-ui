@@ -34,8 +34,7 @@
 </ng-template>
 
 <ng-template #hint>
-    <div
-        polymorpheus-outlet
-        [content]="hintText$ | async"
-    ></div>
+    <ng-container *polymorpheusOutlet="hintText$ | async as text">
+        {{ text }}
+    </ng-container>
 </ng-template>

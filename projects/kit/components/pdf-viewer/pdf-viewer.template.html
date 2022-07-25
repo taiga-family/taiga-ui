@@ -1,11 +1,11 @@
 <header class="t-header">
     <h2 class="t-title">{{ context.label }}</h2>
-    <div
-        polymorpheus-outlet
-        class="t-actions"
-        [content]="context.actions"
-        [context]="context"
-    ></div>
+    <div class="t-actions">
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="$any(context.actions) as text; context: context">
+            {{ text }}
+        </ng-container>
+    </div>
     <button
         tuiIconButton
         shape="rounded"
@@ -17,16 +17,11 @@
         (click)="context.$implicit.complete()"
     ></button>
 </header>
-<section
-    polymorpheus-outlet
-    class="t-content"
-    [content]="context.content"
-    [context]="context"
->
-    <ng-template let-content>
-        <iframe
-            class="t-iframe"
-            [src]="content"
-        ></iframe>
-    </ng-template>
+<section class="t-content">
+    <!-- TODO: Polymorpheus fix type -->
+    <iframe
+        *polymorpheusOutlet="$any(context.content) as content; context: context"
+        class="t-iframe"
+        [src]="content"
+    ></iframe>
 </section>
