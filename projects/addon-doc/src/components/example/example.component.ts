@@ -1,4 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
+import {Location as NgLocation} from '@angular/common';
 import {
     Attribute,
     ChangeDetectionStrategy,
@@ -7,6 +8,7 @@ import {
     Input,
     Optional,
 } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
@@ -82,6 +84,9 @@ export class TuiDocExampleComponent {
         >,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(TUI_DOC_CODE_ACTIONS) readonly codeActions: PolymorpheusContent[],
+        @Inject(Router) private readonly router: Router,
+        @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
+        @Inject(NgLocation) private readonly ngLocation: NgLocation,
     ) {}
 
     copyExampleLink(): void {
@@ -92,6 +97,7 @@ export class TuiDocExampleComponent {
                 : this.location.href;
         const url = `${currentUrl}#${this.id}`;
 
+        this.setFragmentWithoutRedirect(this.id);
         this.clipboard.copy(url);
         this.notifications
             .show(this.texts[1], {
@@ -106,5 +112,13 @@ export class TuiDocExampleComponent {
         this.codeEditor
             ?.edit(this.componentName, this.id ?? '', files)
             .finally(() => this.loading$.next(false));
+    }
+
+    private setFragmentWithoutRedirect(id: string | null): void {
+        const url = this.router
+            .createUrlTree([], {relativeTo: this.route, fragment: id || ''})
+            .toString();
+
+        this.ngLocation.go(url);
     }
 }
