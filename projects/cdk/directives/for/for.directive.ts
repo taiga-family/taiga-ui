@@ -14,8 +14,7 @@ import {
 export class TuiForDirective<T, K = unknown> implements OnChanges {
     private ref?: EmbeddedViewRef<unknown>;
 
-    @Input()
-    ngForOf: T[] | readonly T[] | null = [];
+    @Input() ngForOf: T[] | readonly T[] | null = [];
 
     @Input()
     ngForElse?: TemplateRef<K>;
