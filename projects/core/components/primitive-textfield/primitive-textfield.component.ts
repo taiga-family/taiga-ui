@@ -31,7 +31,7 @@ import {
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -104,7 +104,7 @@ export class TuiPrimitiveTextfieldComponent
     @Output()
     readonly valueChange = new EventEmitter<string>();
 
-    @ContentChildren(PolymorpheusOutletComponent)
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     readonly content?: QueryList<unknown>;
 
     autofilled = false;

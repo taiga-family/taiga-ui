@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -55,7 +56,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     cardSrcVariants: readonly string[] = Object.keys(this.cards);
 
-    cardSrcSelected: PolymorpheusContent | null = null;
+    cardSrcSelected: PolymorpheusContent = '';
 
     autocompleteEnabled = false;
 
@@ -78,8 +79,8 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         super();
     }
 
-    get cardSrc(): PolymorpheusContent | null {
-        return typeof this.cardSrcSelected === 'string'
+    get cardSrc(): PolymorpheusContent {
+        return tuiIsString(this.cardSrcSelected)
             ? this.cards[this.cardSrcSelected]
             : this.cardSrcSelected;
     }

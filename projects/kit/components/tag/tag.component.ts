@@ -95,10 +95,9 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
-    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
-    leftContent: PolymorpheusContent | null = null;
+    leftContent: PolymorpheusContent = '';
 
     @Output()
     readonly edited = new EventEmitter<string>();
