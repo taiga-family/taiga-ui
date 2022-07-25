@@ -14,8 +14,7 @@ import {concatMap, delay, takeUntil} from 'rxjs/operators';
 export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
-    @Input()
-    tuiForAsyncOf: readonly T[] | undefined | null;
+    @Input() tuiForAsyncOf: readonly T[] | undefined | null;
 
     @Input()
     tuiForAsyncTimeout = 10;
