@@ -199,6 +199,7 @@ export enum TuiCountryIsoCode {
     VN = 'VN',
     VU = 'VU',
     WS = 'WS',
+    XK = 'XK',
     YE = 'YE',
     ZA = 'ZA',
     ZM = 'ZM',

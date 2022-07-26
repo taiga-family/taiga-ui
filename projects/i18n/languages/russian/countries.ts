@@ -207,4 +207,5 @@ export const TUI_RUSSIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.ZA]: 'Южно-Африканская Респ.',
     [TuiCountryIsoCode.ZM]: 'Замбия',
     [TuiCountryIsoCode.ZW]: 'Зимбабве',
+    [TuiCountryIsoCode.XK]: 'Республика Косово',
 };
