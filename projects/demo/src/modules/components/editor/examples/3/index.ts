@@ -4,9 +4,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
-    TUI_EDITOR_STYLES,
     TUI_IMAGE_LOADER,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
@@ -32,15 +30,11 @@ import {switchMap, takeUntil} from 'rxjs/operators';
                 ),
             ],
         },
-        {
-            provide: TUI_EDITOR_STYLES,
-            useValue: tiptapEditorStyles,
-        },
     ],
     changeDetection,
     encapsulation,
 })
-export class TuiEditorNewExample3 {
+export class TuiEditorExample3 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     base64Image$ = this.http
