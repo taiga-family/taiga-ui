@@ -15,8 +15,8 @@ export class TuiInputSliderExample5 {
     readonly max = 100;
     readonly min = 0;
 
-    readonly controlWithMinLabel = new FormControl(this.min);
-    readonly controlWithMaxLabel = new FormControl(this.max);
+    readonly smallControl = new FormControl(this.min);
+    readonly bigControl = new FormControl(this.max);
 
     readonly customLabel = ({
         $implicit,

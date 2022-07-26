@@ -5,12 +5,13 @@
         [max]="max"
         [segments]="2"
         [valueContent]="customLabel"
-        [formControl]="controlWithMinLabel"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]="smallControl"
     ></tui-input-slider>
 
     <div class="slider-ticks-labels">
         <span></span>
-        <span>Other custom label</span>
+        <span>Custom label</span>
         <span></span>
     </div>
 </section>
@@ -20,7 +21,7 @@
     [min]="min"
     [max]="max"
     [valueContent]="customLabel"
-    [formControl]="controlWithMaxLabel"
+    [formControl]="bigControl"
 >
     How much do you love Taiga UI?
 </tui-input-slider>
