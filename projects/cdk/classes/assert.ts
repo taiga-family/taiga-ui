@@ -11,19 +11,22 @@ export const tuiAssert = {
 
 type PossibleNode = Node | Element | EventTarget | null;
 
+// TODO: remove `DefaultView` in v3.0
+// TS 3.8 Property 'Element' does not exist on type 'Window'.
 interface DefaultView {
     Element: typeof Node;
     HTMLElement: typeof Node;
     HTMLDocument: typeof Node;
 }
 
+// TODO: replace `HTMLElement` to `Element` in v3.0
+// TS 3.8 Argument of type Argument of type 'TuiNativeFocusableElement | HTMLElement' is not assignable to parameter of type 'HTMLElement'.
 export function tuiAssertIsHTMLElement(node?: PossibleNode): asserts node is HTMLElement {
-    const document = (node as Node)?.ownerDocument;
-    const defaultView = document?.defaultView as unknown as DefaultView;
-    const isHTMLElement =
-        node instanceof defaultView?.HTMLElement ||
-        node instanceof defaultView?.Element ||
-        node instanceof defaultView?.HTMLDocument;
+    const defaultView = (node as Node)?.ownerDocument
+        ?.defaultView as unknown as DefaultView;
+    const isElement =
+        !!defaultView &&
+        (node instanceof defaultView.Element || node instanceof defaultView.HTMLDocument);
 
-    tuiAssert.assert(isHTMLElement, 'Node is not an Element');
+    tuiAssert.assert(isElement, 'Node is not an Element');
 }
