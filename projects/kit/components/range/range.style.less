@@ -2,6 +2,7 @@
 
 @track-height: 0.125rem;
 @extra-click-area-space: 0.4375rem;
+@tick-thickness: 0.25rem;
 
 :host {
     position: relative;
@@ -38,7 +39,7 @@
     height: 100%;
 
     /* Filled selected range */
-    &:after {
+    &:before {
         content: '';
         position: absolute;
         top: 0;
@@ -47,6 +48,22 @@
         height: 100%;
         background: var(--tui-primary);
         margin: 0 (-@thumb-width / 2);
+    }
+
+    /* Ticks */
+    &:after {
+        .fullsize(absolute, inset);
+        content: '';
+        left: ((@thumb-width - @tick-thickness) / 2);
+        right: ((@thumb-width + @tick-thickness) / 2);
+        background-image: repeating-linear-gradient(
+            to right,
+            var(--tui-base-07) 0 @tick-thickness,
+            transparent 0 calc(var(--segment-width) / var(--bg-size-ratio))
+        );
+        background-position-x: right;
+        background-repeat: no-repeat;
+        background-size: calc(100% * var(--bg-size-ratio));
     }
 }
 
@@ -127,48 +144,4 @@
     :host._disabled & {
         opacity: 1; // prevent double overlay for disabled state
     }
-}
-
-// TODO delete in v3.0
-.t-segments {
-    .fullsize(absolute, inset);
-
-    :host[data-size='s'] & {
-        .tui-slider-ticks-labels(s);
-        padding: 0 (@thumb-diameters[ @s] / 2);
-    }
-
-    :host[data-size='m'] & {
-        .tui-slider-ticks-labels(m);
-        padding: 0 (@thumb-diameters[ @m] / 2);
-    }
-}
-
-// TODO Use background-image with repeating-linear-gradient to make ticks
-.t-segment:not(:last-of-type):not(:first-of-type):before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background: var(--tui-base-07);
-    width: 0.25rem;
-    height: 100%;
-}
-
-// TODO delete in v3.0
-.t-segment {
-    &:last-of-type .t-number {
-        margin-right: (-@thumb-diameters[ @m] / 2);
-    }
-
-    &:first-of-type .t-number {
-        margin-left: (-@thumb-diameters[ @m] / 2);
-    }
-}
-
-// TODO delete in v3.0
-.t-number {
-    display: inline-block;
-    margin-top: 0.5rem;
 }
