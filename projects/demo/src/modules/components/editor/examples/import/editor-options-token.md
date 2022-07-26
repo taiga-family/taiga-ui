@@ -1,4 +1,4 @@
-```typescript
+```ts
 import {tuiEditorOptionsProvider, TuiEditorOptions} from '@taiga-ui/addon-editor';
 
 const YOUR_PARAMS: TuiEditorOptions = {
