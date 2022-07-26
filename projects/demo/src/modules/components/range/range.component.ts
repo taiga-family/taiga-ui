@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
@@ -67,17 +67,6 @@ export class ExampleTuiRangeComponent {
     readonly stepsVariants: readonly number[] = [0, 4, 10];
 
     steps = this.stepsVariants[0];
-
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
-        {
-            one: 'year',
-            other: 'years',
-        },
-    ];
-
-    pluralize: Record<string, string> | TuiPluralize | null = null;
 
     readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
