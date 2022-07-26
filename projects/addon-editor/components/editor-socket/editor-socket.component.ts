@@ -14,13 +14,13 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 
 // @dynamic
 @Component({
-    selector: `tui-editor-socket`,
-    template: ``,
-    styleUrls: [`./editor-socket.component.less`],
+    selector: 'tui-editor-socket',
+    template: '',
+    styleUrls: ['./editor-socket.component.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: `tui-editor-socket`,
+        class: 'tui-editor-socket',
     },
 })
 export class TuiEditorSocketComponent {
@@ -28,11 +28,11 @@ export class TuiEditorSocketComponent {
     set content(content: string) {
         this.renderer.setProperty(
             this.elementRef.nativeElement,
-            `innerHTML`,
+            'innerHTML',
             this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(
                       SecurityContext.HTML,
-                      content.replace(/colwidth/g, `width`),
+                      content.replace(/colwidth/g, 'width'),
                   )
                 : this.sanitizer.sanitize(SecurityContext.HTML, content),
         );
