@@ -810,6 +810,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
+                title: 'TableFilters',
+                keywords: 'таблица, filter, фильтр',
+                route: '/components/table-filters',
+            },
+            {
+                section: $localize`Components`,
                 title: 'Table',
                 keywords: 'таблица, data, cell, tr, th, td, row, col, grid',
                 route: '/components/table',
