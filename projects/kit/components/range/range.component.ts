@@ -112,7 +112,7 @@ export class TuiRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    segments = 0;
+    segments = 1;
 
     @Input()
     @tuiDefaultProp()
@@ -132,9 +132,6 @@ export class TuiRangeComponent
         @Inject(DOCUMENT) documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_FROM_TO_TEXTS) fromToTexts$: Observable<[string, string]>,
-        @Optional()
-        @Inject(TuiNewRangeDirective)
-        readonly isNew: TuiNewRangeDirective | null,
     ) {
         super(control, changeDetectorRef, documentRef, fromToTexts$);
     }
@@ -165,6 +162,10 @@ export class TuiRangeComponent
 
     get computedKeySteps(): TuiKeySteps {
         return this.computePureKeySteps(this.keySteps, this.min, this.max);
+    }
+
+    get segmentWidthRatio(): number {
+        return 1 / this.segments;
     }
 
     @HostBinding('style.--left.%')
