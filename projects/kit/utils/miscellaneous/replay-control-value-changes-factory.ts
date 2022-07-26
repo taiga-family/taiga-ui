@@ -12,7 +12,7 @@ import {map} from 'rxjs/operators';
 /**
  * @internal
  */
-export function tuiReplayControlValueChangesFactory<
+export function tuiReplayedValueChangesFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,

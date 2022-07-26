@@ -11,7 +11,7 @@ import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
-import {tuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
+import {tuiReplayedValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
 
@@ -33,7 +33,7 @@ export const TUI_INPUT_DATE_RANGE_PROVIDERS = [
         useFactory: <T extends TuiDayRange>(
             control: NgControl | null,
             valueTransformer: TuiControlValueTransformer<T>,
-        ) => tuiReplayControlValueChangesFactory(control, valueTransformer),
+        ) => tuiReplayedValueChangesFactory(control, valueTransformer),
     },
     LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
 ];

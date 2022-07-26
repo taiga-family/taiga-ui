@@ -8,7 +8,7 @@ import {
 } from '@taiga-ui/cdk';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_CALENDAR_DATA_STREAM, TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
-import {tuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
+import {tuiReplayedValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 
 import {TuiInputDateComponent} from './input-date.component';
 
@@ -26,7 +26,7 @@ export const TUI_INPUT_DATE_PROVIDERS = [
         useFactory: <T extends TuiDay>(
             control: NgControl | null,
             valueTransformer: TuiControlValueTransformer<T>,
-        ) => tuiReplayControlValueChangesFactory(control, valueTransformer),
+        ) => tuiReplayedValueChangesFactory(control, valueTransformer),
     },
     {
         provide: AbstractTuiControl,
