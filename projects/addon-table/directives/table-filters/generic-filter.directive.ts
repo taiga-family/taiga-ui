@@ -1,22 +1,22 @@
 import {Directive, Input} from '@angular/core';
-import {TuiCheck} from '@taiga-ui/addon-table/interfaces';
-import {TUI_TABLE_FILTER} from '@taiga-ui/addon-table/tokens';
 import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
+
+import {AbstractTuiTableFilter} from './abstract-table-filter';
 
 @Directive({
     selector: '[tuiGenericFilter]',
     providers: [
         {
-            provide: TUI_TABLE_FILTER,
+            provide: AbstractTuiTableFilter,
             useExisting: TuiGenericFilterDirective,
         },
     ],
 })
-export class TuiGenericFilterDirective implements TuiCheck {
+export class TuiGenericFilterDirective<T, G> extends AbstractTuiTableFilter<T, G> {
     @Input()
-    tuiGenericFilter: (item: any, value: any) => boolean = ALWAYS_TRUE_HANDLER;
+    tuiGenericFilter: (item: T, value: G) => boolean = ALWAYS_TRUE_HANDLER;
 
-    check(item: any, value: any): boolean {
+    filter(item: T, value: G): boolean {
         return this.tuiGenericFilter(item, value);
     }
 }

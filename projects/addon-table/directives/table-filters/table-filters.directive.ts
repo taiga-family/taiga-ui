@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {identity, merge, Observable, ReplaySubject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
-import {TuiTableFilterDirective} from './table-filter.directive';
+import {TuiTableFilter} from './table-filter';
 
 @Directive({
     selector: '[tuiTableFilters]',
@@ -10,14 +10,14 @@ import {TuiTableFilterDirective} from './table-filter.directive';
 export class TuiTableFiltersDirective<T> {
     private readonly refresh$ = new ReplaySubject<Observable<unknown>>(1);
 
-    private filters: ReadonlyArray<TuiTableFilterDirective<T>> = [];
+    private filters: ReadonlyArray<TuiTableFilter<T>> = [];
 
-    register(filter: TuiTableFilterDirective<T>): void {
+    register(filter: TuiTableFilter<T>): void {
         this.filters = this.filters.concat(filter);
         this.update();
     }
 
-    unregister(filter: TuiTableFilterDirective<T>): void {
+    unregister(filter: TuiTableFilter<T>): void {
         this.filters = this.filters.filter(item => item !== filter);
         this.update();
     }

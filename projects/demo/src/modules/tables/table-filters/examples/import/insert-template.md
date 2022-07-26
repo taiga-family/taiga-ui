@@ -17,7 +17,7 @@
         tuiTh
       >
         <tui-input-number
-          tuiTableFilter="balance"
+          tuiTableFilter
           [tuiGenericFilter]="filter"
           [formControl]="balance"
         >
