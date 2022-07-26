@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.55.0](https://github.com/tinkoff/taiga-ui/compare/v2.54.1...v2.55.0) (2022-07-26)
+
+### Features
+
+- **addon-doc:** set fragment to url when copy link ([#2178](https://github.com/tinkoff/taiga-ui/issues/2178))
+  ([17a469a](https://github.com/tinkoff/taiga-ui/commit/17a469a9bf13d9620f52f5b44849bc850d2b7849))
+- **addon-table:** `TableFilters` add new module ([#2210](https://github.com/tinkoff/taiga-ui/issues/2210))
+  ([8e31064](https://github.com/tinkoff/taiga-ui/commit/8e310641a1c52f4f74e76a70fce6c674fd084aef))
+- **core:** add more customization for `font-size` in buttons ([#2188](https://github.com/tinkoff/taiga-ui/issues/2188))
+  ([2538537](https://github.com/tinkoff/taiga-ui/commit/2538537c37dc1572b4cba9935e21c56352c6f619))
+- **i18n:** add `Republic of Kosovo` code ([#2187](https://github.com/tinkoff/taiga-ui/issues/2187))
+  ([75269aa](https://github.com/tinkoff/taiga-ui/commit/75269aa5acee8178738068393c653c4c41646086))
+- **i18n:** add Chinese language
+  ([9d65b46](https://github.com/tinkoff/taiga-ui/commit/9d65b468c950fb9a109a58ff3f49d355dbdc702e))
+- **kit:** `Slider` new helper `tuiSliderThumbLabel` ([#2128](https://github.com/tinkoff/taiga-ui/issues/2128))
+  ([664fc95](https://github.com/tinkoff/taiga-ui/commit/664fc9587fa35269b63363b177288ef955259afe))
+
+### Bug Fixes
+
+- **addon-commerce:** incorrect punctuation marks ([#2160](https://github.com/tinkoff/taiga-ui/issues/2160))
+  ([97e51ca](https://github.com/tinkoff/taiga-ui/commit/97e51ca80ffd4922df8b57f69ddc1f1e97a280a2))
+- **cdk, schematics:** add BrowserAnimationsModule before TuiRootModule
+  ([#2173](https://github.com/tinkoff/taiga-ui/issues/2173))
+  ([a17eace](https://github.com/tinkoff/taiga-ui/commit/a17eace1df4b1eee69d0d041953f3ee157bcaa25))
+- **cdk:** right-hand side of 'instanceof' is not an object ([#2206](https://github.com/tinkoff/taiga-ui/issues/2206))
+  ([6dc142c](https://github.com/tinkoff/taiga-ui/commit/6dc142cfe5c8f48cb3fd56fc73de8ff57440de3e))
+- **core:** redundant width by `desktop-m-min` for alerts ([#2196](https://github.com/tinkoff/taiga-ui/issues/2196))
+  ([d40e14d](https://github.com/tinkoff/taiga-ui/commit/d40e14dc46bbf60da39b54491691802649327ff4))
+- **i18n:** translated some fields for `addon-editor` ([#2204](https://github.com/tinkoff/taiga-ui/issues/2204))
+  ([948d3d5](https://github.com/tinkoff/taiga-ui/commit/948d3d52500d85af01bf54e52aba1a2436089286))
+- **kit:** clamp activeIndex for `tabs-with-more` ([#2101](https://github.com/tinkoff/taiga-ui/issues/2101))
+  ([15649f9](https://github.com/tinkoff/taiga-ui/commit/15649f9581db5df0b37e135145c42461f8adf672))
+
 ### [2.54.1](https://github.com/tinkoff/taiga-ui/compare/v2.54.0...v2.54.1) (2022-07-20)
 
 ### Bug Fixes
