@@ -1,0 +1,47 @@
+<tui-doc-page
+    header="TableFilters"
+    package="ADDON-TABLE"
+    type="components"
+>
+    <ng-template
+        i18n
+        pageTab
+    >
+        <p>This module allows you to filter table data in a flexible way.</p>
+
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-table-filters-example-1></tui-table-filters-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiTableFiltersModule</code>
+                    into a module where you want to filter data for your table
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add directives and pipe to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

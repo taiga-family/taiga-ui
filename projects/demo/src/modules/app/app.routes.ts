@@ -1310,6 +1310,15 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/table-filters',
+        loadChildren: async () =>
+            (await import('../tables/table-filters/table-filters.module'))
+                .ExampleTuiTableFiltersModule,
+        data: {
+            title: 'TableFilters',
+        },
+    },
+    {
         path: 'components/table-pagination',
         loadChildren: async () =>
             (await import('../tables/table-pagination/table-pagination.module'))

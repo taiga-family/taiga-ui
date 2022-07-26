@@ -28,5 +28,5 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['ProgressBar', 'ProgressCircle', 'ProgressSegmented', 'Loader'],
     ['Preview', 'PdfViewer'],
     ['Icons', 'Svg', 'SvgService', 'MarkerIcon'],
-    ['Table', 'TablePagination'],
+    ['Table', 'TablePagination', 'TableFilters'],
 ];

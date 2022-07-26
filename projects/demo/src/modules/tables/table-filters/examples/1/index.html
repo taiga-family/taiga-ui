@@ -1,0 +1,54 @@
+<ng-container tuiTableFilters>
+    <form
+        class="form"
+        [formGroup]="form"
+    >
+        <tui-input-number
+            tuiTableFilter="balance"
+            formControlName="balance"
+            class="control"
+            [tuiGenericFilter]="filter"
+        >
+            Minimal balance
+        </tui-input-number>
+        <label>
+            <tui-toggle
+                [ngModelOptions]="{standalone: true}"
+                [ngModel]="form.enabled"
+                (ngModelChange)="onToggle($event)"
+            ></tui-toggle>
+            Enable filtering
+        </label>
+    </form>
+    <table
+        tuiTable
+        class="table"
+        [columns]="columns"
+    >
+        <thead>
+            <tr tuiThGroup>
+                <th tuiTh>Name</th>
+                <th tuiTh>Balance</th>
+            </tr>
+        </thead>
+        <tbody tuiTbody>
+            <tr
+                *ngFor="let item of data | tuiTableFilters | async"
+                tuiTr
+            >
+                <td
+                    *tuiCell="'name'"
+                    tuiTd
+                >
+                    {{ item.name }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
