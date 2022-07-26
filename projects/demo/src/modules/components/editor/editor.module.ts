@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
-import {ExampleEditorNewComponent} from './editor.component';
+import {ExampleEditorComponent} from './editor.component';
 import {TuiEditorExample1} from './examples/1';
 import {TuiEditorExample2} from './examples/2';
 import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.module';
@@ -35,15 +35,15 @@ import {ImagePreviewExampleModule} from './examples/4/image-preview/image-previe
         TuiSvgModule,
         ExampleSmilesToolModule,
         ImagePreviewExampleModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleEditorNewComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleEditorComponent)),
     ],
     declarations: [
-        ExampleEditorNewComponent,
+        ExampleEditorComponent,
         TuiEditorExample1,
         TuiEditorExample2,
         TuiEditorExample3,
         TuiEditorExample4,
     ],
-    exports: [ExampleEditorNewComponent],
+    exports: [ExampleEditorComponent],
 })
 export class ExampleTuiEditorModule {}

@@ -19,7 +19,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleEditorNewComponent),
+            useExisting: forwardRef(() => ExampleEditorComponent),
         },
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -27,7 +27,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
+export class ExampleEditorComponent extends AbstractExampleTuiControl {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     readonly provideExtensions = import('./examples/import/provide-extensions.md?raw');
