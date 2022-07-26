@@ -14,6 +14,7 @@ tui-input-files {
     }
 }
 
+/* stylelint-disable order/order */
 [tuiWrapper][data-appearance='input-file'] {
     display: flex;
     background: transparent;
@@ -35,20 +36,6 @@ tui-input-files {
 
     &._mobile:after {
         border: 1px solid;
-    }
-
-    &:hover:not(._no-hover),
-    &[data-state='hover'] {
-        background: var(--tui-secondary);
-
-        &:after {
-            color: var(--tui-link-hover);
-        }
-    }
-
-    &:active:not(._no-active),
-    &[data-state='active'] {
-        background: var(--tui-secondary-hover);
     }
 
     &[data-state='disabled'] {
@@ -73,28 +60,26 @@ tui-input-files {
             color: var(--tui-text-01-night);
         }
 
+        &._focused:after {
+            color: var(--tui-text-01-night);
+        }
+
         /* stylelint-disable selector-max-specificity */
-        &:hover:not(._no-hover),
-        &[data-state='hover'] {
+        .wrapper-hover({
             background: var(--tui-clear-inverse-hover);
 
             &:after {
                 color: var(--tui-text-03-night);
             }
-        }
+        });
 
-        &:active:not(._no-active),
-        &[data-state='active'] {
+        .wrapper-active({
             background: var(--tui-clear-inverse-active);
 
             &:after {
                 color: var(--tui-text-03-night);
             }
-        }
-
-        &._focused:after {
-            color: var(--tui-text-01-night);
-        }
+        });
     }
 
     &[data-mode='onLight'] {
@@ -104,22 +89,32 @@ tui-input-files {
             color: var(--tui-text-01);
         }
 
-        &:hover:not(._no-hover),
-        &[data-state='hover'] {
+        .wrapper-hover({
             background: var(--tui-clear-hover);
 
             &:after {
                 color: var(--tui-text-03);
             }
-        }
+        });
 
-        &:active:not(._no-active),
-        &[data-state='active'] {
+        .wrapper-active({
             background: var(--tui-clear-active);
 
             &:after {
                 color: var(--tui-text-03);
             }
-        }
+        });
     }
+
+    .wrapper-hover({
+        background: var(--tui-secondary);
+
+        &:after {
+            color: var(--tui-link-hover);
+        }
+    });
+
+    .wrapper-active({
+        background: var(--tui-secondary-hover);
+    });
 }

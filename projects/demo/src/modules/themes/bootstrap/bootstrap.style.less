@@ -36,10 +36,7 @@
             color: #959aa0;
         }
 
-        &:hover:not(._no-hover),
-        &[data-state='hover'] {
-            background: transparent;
-        }
+        .wrapper-hover({background: transparent});
 
         &._focused:after {
             color: #db6574;
@@ -52,10 +49,9 @@
             color: #959aa0;
         }
 
-        &:hover:not(._no-hover),
-        &[data-state='hover'] {
+        .wrapper-hover({
             background: transparent;
-        }
+        });
 
         &._focused:after {
             color: #80bdff;

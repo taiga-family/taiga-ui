@@ -32,10 +32,6 @@ export class TuiLegendItemComponent {
 
     @HostBinding('style.--tui-primary')
     get computedColor(): string | null {
-        if (this.color === 'var(--tui-primary)') {
-            return null;
-        }
-
-        return this.color;
+        return this.color === 'var(--tui-primary)' ? null : this.color;
     }
 }

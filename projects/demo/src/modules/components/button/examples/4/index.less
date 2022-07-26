@@ -1,17 +1,16 @@
+@import 'taiga-ui-local';
 // This goes into global, unencapsulated styles
 [tuiWrapper][data-appearance='custom'] {
     background: #bc71c9;
     color: #fff;
 
-    &:hover:not(._no-hover),
-    &[data-state='hover'] {
+    .wrapper-hover({
         background: #a381ff;
-    }
+    });
 
-    &:active:not(._no-active),
-    &[data-state='active'] {
+    .wrapper-active({
         background: #8f75d1;
-    }
+    });
 
     &[data-state='disabled'] {
         background: #eaecee;
