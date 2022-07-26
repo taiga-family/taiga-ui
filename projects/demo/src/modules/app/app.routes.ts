@@ -874,29 +874,11 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/toolbar',
-        loadChildren: async () =>
-            (await import('../components/toolbar/toolbar.module'))
-                .ExampleTuiToolbarModule,
-        data: {
-            title: 'Toolbar',
-        },
-    },
-    {
         path: 'components/editor',
         loadChildren: async () =>
             (await import('../components/editor/editor.module')).ExampleTuiEditorModule,
         data: {
             title: 'Editor',
-        },
-    },
-    {
-        path: 'components/editor-new',
-        loadChildren: async () =>
-            (await import('../components/editor-new/editor-new.module'))
-                .ExampleTuiEditorNewModule,
-        data: {
-            title: 'Editor[new]',
         },
     },
     {

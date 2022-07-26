@@ -14,7 +14,7 @@ import {map, shareReplay, take} from 'rxjs/operators';
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';
 
-export const TUI_EDITOR_NEW_PROVIDERS = [
+export const TUI_EDITOR_PROVIDERS = [
     {
         provide: LAZY_EDITOR_EXTENSIONS,
         deps: [TUI_EDITOR_EXTENSIONS],
