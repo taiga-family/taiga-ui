@@ -4,6 +4,10 @@ import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
+    if (!relatedTarget) {
+        return true;
+    }
+
     tuiAssertIsHTMLElement(currentTarget);
     tuiAssertIsHTMLElement(relatedTarget);
 
