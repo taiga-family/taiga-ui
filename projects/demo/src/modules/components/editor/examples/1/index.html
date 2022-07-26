@@ -2,20 +2,42 @@
     <button
         tuiButton
         type="button"
-        (click)="onClick()"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="example1()"
     >
-        Set value
+        Ex. #1
+    </button>
+
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="example2()"
+    >
+        Ex. #2
+    </button>
+
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="example3()"
+    >
+        Ex. #3
     </button>
 </p>
+
 <tui-editor
-    i18n
-    exampleText="Describe a problem with templates"
+    new
+    exampleText="exampleText"
     class="editor"
-    [(ngModel)]="model"
+    [formControl]="control"
 >
-    Describe a problem
+    Placeholder
 </tui-editor>
+
 <h4>HTML:</h4>
-<tui-editor-socket [content]="model"></tui-editor-socket>
+<tui-editor-socket [content]="control.value"></tui-editor-socket>
+
 <h4>Text:</h4>
-<p>{{ model }}</p>
+<p>{{ control.value }}</p>

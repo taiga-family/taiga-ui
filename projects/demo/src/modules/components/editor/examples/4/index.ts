@@ -2,12 +2,7 @@ import {Component, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    tiptapEditorStyles,
-    TUI_EDITOR_EXTENSIONS,
-    TUI_EDITOR_STYLES,
-    TuiEditorTool,
-} from '@taiga-ui/addon-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
@@ -26,15 +21,11 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
                 ),
             ],
         },
-        {
-            provide: TUI_EDITOR_STYLES,
-            useValue: tiptapEditorStyles,
-        },
     ],
     changeDetection,
     encapsulation,
 })
-export class TuiEditorNewExample4 {
+export class TuiEditorExample4 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     control = new FormControl(``);

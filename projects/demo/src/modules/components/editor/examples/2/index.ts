@@ -25,7 +25,7 @@ export async function importEmojiExtension(): Promise<unknown> {
     changeDetection,
     encapsulation,
 })
-export class TuiEditorNewExample2 {
+export class TuiEditorExample2 {
     readonly builtInTools = [TuiEditorTool.Undo];
     readonly control = new FormControl(``, Validators.required);
 }

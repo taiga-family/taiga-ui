@@ -1,7 +1,7 @@
 import './tiptap-editor.types';
 
 import {Inject, Injectable} from '@angular/core';
-import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {getMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
@@ -15,7 +15,7 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 // @dynamic
 @Injectable()
-export class TuiTiptapEditorService extends TuiEditor {
+export class TuiTiptapEditorService extends AbstractTuiEditor {
     get isFocused(): boolean {
         return this.editor.isFocused;
     }

@@ -17,7 +17,6 @@
         <div class="t-toolbar-wrapper">
             <tui-toolbar
                 *ngIf="editorLoaded"
-                new
                 [tools]="tools"
                 [disabled]="!interactive"
             >
@@ -48,7 +47,7 @@
                 [tuiDropdownSelection]="dropdownSelectionHandler"
                 [tuiDropdownContent]="dropdown"
             >
-                <div
+                <tui-editor-socket
                     tuiTiptapEditor
                     spellcheck="false"
                     class="tui-editor-socket"
@@ -57,7 +56,7 @@
                     (valueChange)="onModelChange($event)"
                     (stateChange)="(0)"
                     (click)="selectLinkIfClosest()"
-                ></div>
+                ></tui-editor-socket>
             </div>
 
             <ng-template #dropdown>
