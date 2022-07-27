@@ -4,7 +4,7 @@ import {tuiWatchedControllerFactory} from '@taiga-ui/core/providers';
 
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
-export const TUI_HINT_WATCHED_CONTROLLER = new InjectionToken('watched hint controller');
+export const TUI_HINT_WATCHED_CONTROLLER = new InjectionToken(`watched hint controller`);
 
 export const HINT_CONTROLLER_PROVIDER: Provider = [
     TuiDestroyService,

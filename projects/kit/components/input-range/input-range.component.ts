@@ -45,12 +45,12 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-range',
-    templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    selector: `tui-input-range`,
+    templateUrl: `./input-range.template.html`,
+    styleUrls: [`./input-range.style.less`],
     host: {
-        '[attr.data-size]': 'controller.size',
-        '[class._label-outside]': 'controller.labelOutside',
+        '[attr.data-size]': `controller.size`,
+        '[class._label-outside]': `controller.labelOutside`,
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -80,20 +80,20 @@ export class TuiInputRangeComponent
     max = 100;
 
     @Input()
-    @tuiDefaultProp(q => q > 0, '[quantum] must be positive')
+    @tuiDefaultProp(q => q > 0, `[quantum] must be positive`)
     quantum = 1;
 
     @Input()
     @tuiDefaultProp(
         s => s >= 0 && Number.isInteger(s),
-        '[steps] must be non-negative integer',
+        `[steps] must be non-negative integer`,
     )
     steps = 0;
 
     @Input()
     @tuiDefaultProp(
         s => s > 0 && Number.isInteger(s),
-        '[segments] must be positive integer',
+        `[segments] must be positive integer`,
     )
     segments = 1;
 
@@ -103,17 +103,17 @@ export class TuiInputRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
-    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
     pluralize: Record<string, string> | null = null;
 
-    lastActiveSide: 'left' | 'right' = 'left';
+    lastActiveSide: 'left' | 'right' = `left`;
 
     constructor(
         @Optional()
@@ -154,7 +154,7 @@ export class TuiInputRangeComponent
         return Boolean(
             this.leftValueContent &&
                 !tuiIsNativeFocused(this.leftFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
+                !(this.rangeRef?.focused && this.lastActiveSide === `left`),
         );
     }
 
@@ -162,7 +162,7 @@ export class TuiInputRangeComponent
         return Boolean(
             this.rightValueContent &&
                 !tuiIsNativeFocused(this.rightFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
+                !(this.rangeRef?.focused && this.lastActiveSide === `right`),
         );
     }
 
@@ -171,7 +171,7 @@ export class TuiInputRangeComponent
     }
 
     get decimal(): TuiDecimal {
-        return this.precision ? 'not-zero' : 'never';
+        return this.precision ? `not-zero` : `never`;
     }
 
     get computedSteps(): number {
@@ -237,7 +237,7 @@ export class TuiInputRangeComponent
     onRangeValue(value: [number, number]): void {
         this.safelyUpdateValue(value);
 
-        const rightValueChanged = this.lastActiveSide === 'right';
+        const rightValueChanged = this.lastActiveSide === `right`;
 
         this.updateTextInputValue(
             this.value[rightValueChanged ? 1 : 0],
@@ -247,7 +247,7 @@ export class TuiInputRangeComponent
 
     focusToTextInput(): void {
         const element =
-            this.lastActiveSide === 'left'
+            this.lastActiveSide === `left`
                 ? this.leftFocusableElement
                 : this.rightFocusableElement;
 
@@ -298,13 +298,13 @@ export class TuiInputRangeComponent
 }
 
 @Directive({
-    selector: '[tuiTextfieldAppearance]',
+    selector: `[tuiTextfieldAppearance]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
             deps: [ElementRef],
             useFactory: ({nativeElement}: ElementRef) =>
-                nativeElement.getAttribute('tuiTextfieldAppearance'),
+                nativeElement.getAttribute(`tuiTextfieldAppearance`),
         },
     ],
 })

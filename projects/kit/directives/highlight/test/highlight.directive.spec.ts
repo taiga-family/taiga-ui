@@ -4,7 +4,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHighlightModule} from '../highlight.module';
 
-describe('TuiHighlight directive', () => {
+describe(`TuiHighlight directive`, () => {
     @Component({
         template: `
             <div
@@ -43,21 +43,21 @@ describe('TuiHighlight directive', () => {
         fixture.detectChanges();
     });
 
-    it('Highlight is shown', () => {
-        const element = document.querySelector('#ica')?.firstElementChild as HTMLElement;
+    it(`Highlight is shown`, () => {
+        const element = document.querySelector(`#ica`)?.firstElementChild as HTMLElement;
 
-        expect(element.style.display).toBe('block');
+        expect(element.style.display).toBe(`block`);
     });
 
-    it('Highlight is not shown', () => {
-        const element = document.querySelector('#dong')?.firstElementChild as HTMLElement;
+    it(`Highlight is not shown`, () => {
+        const element = document.querySelector(`#dong`)?.firstElementChild as HTMLElement;
 
-        expect(element.style.display).toBe('none');
+        expect(element.style.display).toBe(`none`);
     });
 
-    it('Highlight color is yellow', () => {
-        const element = document.querySelector('#aaa')?.firstElementChild as HTMLElement;
+    it(`Highlight color is yellow`, () => {
+        const element = document.querySelector(`#aaa`)?.firstElementChild as HTMLElement;
 
-        expect(element.style.background).toBe('yellow');
+        expect(element.style.background).toBe(`yellow`);
     });
 });

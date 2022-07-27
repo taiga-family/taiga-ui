@@ -34,37 +34,37 @@ export abstract class AbstractTuiDropdown
 {
     abstract refresh$: Observable<unknown>;
 
-    @Input('tuiDropdownContent')
+    @Input(`tuiDropdownContent`)
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
-    @Input('tuiDropdownHost')
+    @Input(`tuiDropdownHost`)
     @tuiDefaultProp()
     tuiDropdownHost: TuiNativeFocusableElement | HTMLElement | null = null;
 
-    @Input('tuiDropdownMinHeight')
+    @Input(`tuiDropdownMinHeight`)
     @tuiDefaultProp()
     minHeight = DEFAULT_MIN_HEIGHT;
 
-    @Input('tuiDropdownMaxHeight')
+    @Input(`tuiDropdownMaxHeight`)
     @tuiDefaultProp()
     maxHeight = DEFAULT_MAX_HEIGHT;
 
-    @Input('tuiDropdownAlign')
+    @Input(`tuiDropdownAlign`)
     @tuiDefaultProp()
-    align: TuiHorizontalDirection = 'left';
+    align: TuiHorizontalDirection = `left`;
 
-    @Input('tuiDropdownDirection')
+    @Input(`tuiDropdownDirection`)
     @tuiDefaultProp()
     direction: TuiVerticalDirection | null = null;
 
-    @Input('tuiDropdownSided')
+    @Input(`tuiDropdownSided`)
     @tuiDefaultProp()
     sided = false;
 
-    @Input('tuiDropdownLimitWidth')
+    @Input(`tuiDropdownLimitWidth`)
     @tuiDefaultProp()
-    limitMinWidth: TuiDropdownWidth = 'min';
+    limitMinWidth: TuiDropdownWidth = `min`;
 
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 

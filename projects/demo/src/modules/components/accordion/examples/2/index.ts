@@ -12,25 +12,25 @@ class Account {
 }
 
 @Component({
-    selector: 'tui-accordion-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-accordion-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiAccordionExample2 {
     readonly accounts = [
-        new Account('Rubles', 500),
-        new Account('Dollar', 237),
-        new Account('Euro', 100),
+        new Account(`Rubles`, 500),
+        new Account(`Dollar`, 237),
+        new Account(`Euro`, 100),
     ];
 
     svgIcons = {
-        rubles: import('./rubles.svg?raw'),
+        rubles: import(`./rubles.svg?raw`),
     };
 
     testForm = new FormGroup({
-        name: new FormControl(''),
+        name: new FormControl(``),
         accounts: new FormControl(this.accounts[0]),
     });
 }

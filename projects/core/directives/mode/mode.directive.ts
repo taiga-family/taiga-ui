@@ -3,9 +3,9 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TuiBrightness} from '@taiga-ui/core/types';
 
 @Directive({
-    selector: '[tuiMode]',
+    selector: `[tuiMode]`,
 })
 export class TuiModeDirective extends AbstractTuiController {
-    @Input('tuiMode')
+    @Input(`tuiMode`)
     mode: TuiBrightness | null = null;
 }

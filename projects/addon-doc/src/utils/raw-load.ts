@@ -2,12 +2,12 @@ import {RawLoaderContent} from '../interfaces/page';
 
 // TODO: delete it when all `!!raw-loader!` will be replaced by webpack `asset/source`.
 function trimExportDefault(fileContent: string): string {
-    return fileContent.startsWith('export default "')
+    return fileContent.startsWith(`export default "`)
         ? fileContent
-              .replace(/^export\sdefault\s["']/gi, '')
-              .replace(/['"];$/gi, '')
-              .replaceAll('\\n', '\n')
-              .replaceAll('\\"', '"')
+              .replace(/^export\sdefault\s["']/gi, ``)
+              .replace(/['"];$/gi, ``)
+              .replaceAll(`\\n`, `\n`)
+              .replaceAll(`\\"`, `"`)
         : fileContent;
 }
 
