@@ -10,9 +10,9 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-ring-chart',
-    templateUrl: './ring-chart.template.html',
-    styleUrls: ['./ring-chart.style.less'],
+    selector: `tui-ring-chart`,
+    templateUrl: `./ring-chart.template.html`,
+    styleUrls: [`./ring-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiRingChartComponent {
@@ -21,9 +21,9 @@ export class TuiRingChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeXL = 'm';
+    size: TuiSizeS | TuiSizeXL = `m`;
 
     @Input()
     @tuiDefaultProp()

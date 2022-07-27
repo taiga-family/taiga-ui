@@ -13,9 +13,9 @@ export interface User {
 }
 
 @Component({
-    selector: 'tui-dropdown-selection-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-dropdown-selection-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -23,18 +23,18 @@ export class TuiDropdownSelectionExample2 {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    value = 'Type @ to see a dropdown';
+    value = `Type @ to see a dropdown`;
 
     readonly items = [
         {
-            name: 'Alexander Inkin',
+            name: `Alexander Inkin`,
             avatar: assets`/images/avatar.jpg`,
-            login: 'a.inkin',
+            login: `a.inkin`,
         },
         {
-            name: 'Roman Sedov',
-            avatar: '',
-            login: 'r.sedov',
+            name: `Roman Sedov`,
+            avatar: ``,
+            login: `r.sedov`,
         },
     ];
 
@@ -43,7 +43,7 @@ export class TuiDropdownSelectionExample2 {
     }
 
     predicate: TuiBooleanHandler<Range> = range =>
-        getWordRange(range).toString().startsWith('@');
+        getWordRange(range).toString().startsWith(`@`);
 
     onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
@@ -57,7 +57,7 @@ export class TuiDropdownSelectionExample2 {
     }
 
     filterItems(textarea: HTMLTextAreaElement): readonly User[] {
-        const search = this.getCurrentSearch(textarea).replace('@', '');
+        const search = this.getCurrentSearch(textarea).replace(`@`, ``);
 
         return this.getFilteredItems(this.items, search);
     }
@@ -81,6 +81,6 @@ export class TuiDropdownSelectionExample2 {
     }
 
     private getCurrentSearch(textarea: HTMLTextAreaElement): string {
-        return textarea.value.slice(textarea.value.indexOf('@'), textarea.selectionStart);
+        return textarea.value.slice(textarea.value.indexOf(`@`), textarea.selectionStart);
     }
 }
