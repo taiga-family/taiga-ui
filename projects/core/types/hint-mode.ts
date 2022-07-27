@@ -1,1 +1,1 @@
-export type TuiHintModeT = 'error' | 'onDark' | 'overflow';
+export type TuiHintMode = 'error' | 'onDark' | 'overflow';
