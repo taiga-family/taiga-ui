@@ -28,19 +28,19 @@ import {rawLoadRecord} from '../../utils/raw-load-record';
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
 @Component({
-    selector: 'tui-doc-example',
-    templateUrl: './example.template.html',
-    styleUrls: ['./example.style.less'],
+    selector: `tui-doc-example`,
+    templateUrl: `./example.template.html`,
+    styleUrls: [`./example.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocExampleComponent {
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
 
     @Input()
-    heading: PolymorpheusContent = '';
+    heading: PolymorpheusContent = ``;
 
     @Input()
-    description: PolymorpheusContent = '';
+    description: PolymorpheusContent = ``;
 
     @Input()
     set content(content: TuiDocExample) {
@@ -66,7 +66,7 @@ export class TuiDocExampleComponent {
     readonly loading$ = new Subject<boolean>();
 
     constructor(
-        @Attribute('id')
+        @Attribute(`id`)
         readonly id: string | null,
         @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiAlertService)
@@ -91,7 +91,7 @@ export class TuiDocExampleComponent {
     ) {}
 
     copyExampleLink(): void {
-        const hashPosition = this.location.href.indexOf('#');
+        const hashPosition = this.location.href.indexOf(`#`);
         const currentUrl =
             hashPosition > -1
                 ? this.location.href.slice(0, Math.max(0, hashPosition))
@@ -111,13 +111,13 @@ export class TuiDocExampleComponent {
     edit(files: Record<string, string>): void {
         this.loading$.next(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id || '', files)
+            ?.edit(this.componentName, this.id || ``, files)
             .finally(() => this.loading$.next(false));
     }
 
     private setFragmentWithoutRedirect(id: string | null): void {
         const url = this.router
-            .createUrlTree([], {relativeTo: this.route, fragment: id || ''})
+            .createUrlTree([], {relativeTo: this.route, fragment: id || ``})
             .toString();
 
         this.ngLocation.go(url);

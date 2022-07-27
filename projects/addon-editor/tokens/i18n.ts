@@ -5,7 +5,7 @@ import {tuiExtractI18n} from '@taiga-ui/i18n';
 export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
     `tui-color-selector i18n`,
     {
-        factory: () => ['Solid color', 'Gradient'],
+        factory: () => [`Solid color`, `Gradient`],
     },
 );
 
@@ -25,26 +25,26 @@ export type EditorToolbarTexts =
     | 'backColor';
 
 export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken(`tui-editor-toolbar i18n`, {
-    factory: tuiExtractI18n('toolbarTools'),
+    factory: tuiExtractI18n(`toolbarTools`),
 });
 
 export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
-    'tui-editor-toolbar table i18n',
+    `tui-editor-toolbar table i18n`,
     {
-        factory: tuiExtractI18n('editorTableCommands'),
+        factory: tuiExtractI18n(`editorTableCommands`),
     },
 );
 
 export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
-    'tui-editor-toolbar codes options',
+    `tui-editor-toolbar codes options`,
     {
-        factory: tuiExtractI18n('editorCodeOptions'),
+        factory: tuiExtractI18n(`editorCodeOptions`),
     },
 );
 
 export const TUI_EDITOR_FONT_OPTIONS = new InjectionToken(
-    'tui-editor-toolbar font options',
+    `tui-editor-toolbar font options`,
     {
-        factory: tuiExtractI18n('editorFontOptions'),
+        factory: tuiExtractI18n(`editorFontOptions`),
     },
 );

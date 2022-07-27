@@ -15,13 +15,13 @@ import {Observable, of, ReplaySubject} from 'rxjs';
 import {debounceTime, map, mapTo, share, switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-underline',
-    template: '',
-    styleUrls: ['./underline.style.less'],
+    selector: `tui-underline`,
+    template: ``,
+    styleUrls: [`./underline.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiUnderlineComponent {
@@ -42,15 +42,15 @@ export class TuiUnderlineComponent {
         this.element$.next(element);
     }
 
-    @HostListener('$.style.transitionProperty')
+    @HostListener(`$.style.transitionProperty`)
     readonly transition$ = asCallable(
         this.element$.pipe(
-            map(element => element && 'all'),
+            map(element => element && `all`),
             debounceTime(50),
         ),
     );
 
-    @HostListener('$.style.transform')
+    @HostListener(`$.style.transform`)
     readonly transform$ = asCallable(
         this.refresh$.pipe(
             map(element =>
@@ -59,7 +59,7 @@ export class TuiUnderlineComponent {
         ),
     );
 
-    @HostListener('$.style.width.px')
+    @HostListener(`$.style.width.px`)
     readonly width$ = asCallable(
         this.refresh$.pipe(map(element => element?.clientWidth || 0)),
     );
@@ -70,8 +70,8 @@ export class TuiUnderlineComponent {
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {
-        nativeElement['$.style.transitionProperty'] = this.transition$;
-        nativeElement['$.style.transform'] = this.transform$;
-        nativeElement['$.style.width.px'] = this.width$;
+        nativeElement[`$.style.transitionProperty`] = this.transition$;
+        nativeElement[`$.style.transform`] = this.transform$;
+        nativeElement[`$.style.width.px`] = this.width$;
     }
 }
