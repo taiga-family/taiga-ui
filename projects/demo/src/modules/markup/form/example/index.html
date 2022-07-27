@@ -77,14 +77,17 @@
                 <div class="tui-form__row">
                     <tui-input-slider
                         formControlName="quantityValue"
+                        postfix="₽"
                         [min]="50000"
                         [max]="3000000"
                         [segments]="1"
-                        [pluralize]="pluralize"
-                        [segmentsPluralize]="pluralize"
                     >
                         Some slider
                     </tui-input-slider>
+                    <div class="ticks-labels">
+                        <span>from 50 000 ₽</span>
+                        <span>to 3 000 000 ₽</span>
+                    </div>
                     <div class="tui-form__field-note">Some additional text</div>
                     <tui-error
                         formControlName="quantityValue"
