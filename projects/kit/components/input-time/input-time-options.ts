@@ -13,22 +13,16 @@ export interface TuiInputTimeOptions {
     readonly itemSize: TuiSizeS | TuiSizeL;
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const INPUT_TIME_ICON = ({
-    $implicit,
-}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>): string =>
-    $implicit === `s` ? `tuiIconTime` : `tuiIconTimeLarge`;
-
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
-    icon: INPUT_TIME_ICON,
-    mode: `HH:MM`,
-    postfix: ``,
+    icon: ({$implicit}) => ($implicit === 's' ? 'tuiIconTime' : 'tuiIconTimeLarge'),
+    mode: 'HH:MM',
+    postfix: '',
     maxValues: MAX_TIME_VALUES,
-    itemSize: `m`,
+    itemSize: 'm',
 };
 
 export const TUI_INPUT_TIME_OPTIONS = new InjectionToken<TuiInputTimeOptions>(
-    `Default parameters for input time component`,
+    'Default parameters for input time component',
     {
         factory: () => TUI_INPUT_TIME_DEFAULT_OPTIONS,
     },

@@ -6,9 +6,6 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
 import {TuiSelectComponent} from './select.component';
 
-// TODO: 3.0 remove in ivy compilation
-export const SELECT_OPTION: unknown = TUI_SELECT_OPTION;
-
 export const TUI_SELECT_PROVIDERS = [
     {
         provide: AbstractTuiControl,
@@ -24,7 +21,7 @@ export const TUI_SELECT_PROVIDERS = [
     },
     {
         provide: TUI_OPTION_CONTENT,
-        useValue: SELECT_OPTION,
+        useValue: TUI_SELECT_OPTION,
     },
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
 ];
