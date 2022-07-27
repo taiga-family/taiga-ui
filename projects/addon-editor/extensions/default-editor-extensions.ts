@@ -3,7 +3,7 @@ import type {StarterKitOptions} from '@tiptap/starter-kit';
 
 export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/starter-kit`)
-        .then(m => m.StarterKit)
+        .then(starterKitExtractor)
         .then(starterKitConfigurator),
     import(`@tiptap/extension-text-align`).then(m =>
         m.default.configure({types: [`heading`, `paragraph`]}),
@@ -31,6 +31,14 @@ export const defaultEditorExtensions = [
         ({TuiFontSize}) => TuiFontSize,
     ),
 ];
+
+// TODO: 3.0 remove in ivy compilation
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function starterKitExtractor<T>(importedExtension: {
+    StarterKit: Extension<T>;
+}): Extension<T> {
+    return importedExtension.StarterKit;
+}
 
 // TODO: 3.0 remove in ivy compilation
 // eslint-disable-next-line @typescript-eslint/naming-convention
