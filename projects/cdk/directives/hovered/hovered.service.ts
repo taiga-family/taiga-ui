@@ -5,6 +5,10 @@ import {merge, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, mapTo} from 'rxjs/operators';
 
 function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
+    if (!relatedTarget) {
+        return true;
+    }
+
     tuiAssertIsElement(currentTarget);
     tuiAssertIsElement(relatedTarget);
 

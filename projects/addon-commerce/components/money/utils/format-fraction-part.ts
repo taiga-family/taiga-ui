@@ -1,8 +1,8 @@
-import {TuiDecimalT, TuiNumberFormatSettings} from '@taiga-ui/core';
+import {TuiDecimal, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 export function tuiFormatFractionPart(options: {
     value: number;
-    decimal: TuiDecimalT;
+    decimal: TuiDecimal;
     precision: number;
     numberFormat: TuiNumberFormatSettings;
 }): string {
