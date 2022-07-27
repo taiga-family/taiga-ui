@@ -30,11 +30,11 @@ import {
 import {TextMaskConfig} from 'angular2-text-mask';
 
 const icons: Record<TuiPaymentSystem, string> = {
-    mir: 'tuiIconMir',
-    visa: 'tuiIconVisa',
-    electron: 'tuiIconElectron',
-    mastercard: 'tuiIconMastercard',
-    maestro: 'tuiIconMaestro',
+    mir: `tuiIconMir`,
+    visa: `tuiIconVisa`,
+    electron: `tuiIconElectron`,
+    mastercard: `tuiIconMastercard`,
+    maestro: `tuiIconMaestro`,
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -42,16 +42,16 @@ export function cardTextfieldControllerFactory(
     directive: TuiTextfieldExampleTextDirective | null,
 ): TuiTextfieldExampleTextDirective {
     directive = directive || new TuiTextfieldExampleTextDirective();
-    directive.exampleText = '0000 0000 0000 0000';
+    directive.exampleText = `0000 0000 0000 0000`;
 
     return directive;
 }
 
 // @dynamic
 @Component({
-    selector: 'tui-input-card',
-    templateUrl: './input-card.template.html',
-    styleUrls: ['./input-card.style.less'],
+    selector: `tui-input-card`,
+    templateUrl: `./input-card.template.html`,
+    styleUrls: [`./input-card.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -133,13 +133,13 @@ export class TuiInputCardComponent
 
     get formattedCard(): string {
         return this.value
-            .split('')
+            .split(``)
             .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
-            .join('');
+            .join(``);
     }
 
     onValueChange(value: string): void {
-        const parsed = value.split(' ').join('');
+        const parsed = value.split(` `).join(``);
         const currentBin = this.bin;
 
         this.updateValue(parsed);
@@ -168,6 +168,6 @@ export class TuiInputCardComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

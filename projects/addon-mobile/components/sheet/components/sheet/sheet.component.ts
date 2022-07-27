@@ -25,35 +25,35 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
 // @dynamic
 @Component({
-    selector: 'tui-sheet',
-    templateUrl: 'sheet.template.html',
-    styleUrls: ['sheet.style.less'],
+    selector: `tui-sheet`,
+    templateUrl: `sheet.template.html`,
+    styleUrls: [`sheet.style.less`],
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        role: 'dialog',
-        '[attr.aria-labelledby]': 'id',
-        '[class._ios]': 'isIos',
+        role: `dialog`,
+        '[attr.aria-labelledby]': `id`,
+        '[class._ios]': `isIos`,
         // '[class._stuck]': 'true', // Initially disable snapping for Firefox
-        '[$.class._stuck]': 'stuck$',
-        '($.class._stuck)': 'stuck$',
+        '[$.class._stuck]': `stuck$`,
+        '($.class._stuck)': `stuck$`,
     },
 })
 export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
-    @ViewChild('sheet')
+    @ViewChild(`sheet`)
     private readonly sheet?: ElementRef<HTMLElement>;
 
-    @ViewChild('content')
+    @ViewChild(`content`)
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChildren('stops')
+    @ViewChildren(`stops`)
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
     item!: TuiSheet<T>;
 
-    id = '';
+    id = ``;
 
     readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
@@ -85,7 +85,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         };
     }
 
-    @HostListener(TUI_SHEET_ID, ['$event.detail'])
+    @HostListener(TUI_SHEET_ID, [`$event.detail`])
     onId(id: string): void {
         this.id = id;
     }
@@ -103,7 +103,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
             fakeSmoothScroll(nativeElement, top - nativeElement.scrollTop - 16);
         }
 
-        nativeElement.scrollTo({top, behavior: 'smooth'});
+        nativeElement.scrollTo({top, behavior: `smooth`});
     }
 
     close(): void {

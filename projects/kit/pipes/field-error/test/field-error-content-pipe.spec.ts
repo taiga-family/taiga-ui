@@ -15,8 +15,8 @@ import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe('TuiFieldErrorContentPipe', () => {
-    const testError = 'testError';
+describe(`TuiFieldErrorContentPipe`, () => {
+    const testError = `testError`;
     const max = 15;
 
     @Component({
@@ -75,20 +75,20 @@ describe('TuiFieldErrorContentPipe', () => {
     });
 
     beforeEach(() => {
-        document.body.style.margin = '0';
+        document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    describe('Hint', () => {
-        it('shows validation error', fakeAsync(() => {
+    describe(`Hint`, () => {
+        it(`shows validation error`, fakeAsync(() => {
             showHint();
             fixture.detectChanges();
             expect(getTooltip()!.textContent!.trim()).toBe(testError);
         }));
 
-        it('shows validation error (function error)', fakeAsync(() => {
+        it(`shows validation error (function error)`, fakeAsync(() => {
             component.control.setValue(22);
             showHint();
             fixture.detectChanges();
@@ -99,7 +99,7 @@ describe('TuiFieldErrorContentPipe', () => {
     function showHint(): void {
         component.control.markAsTouched();
         fixture.detectChanges();
-        getHost().dispatchEvent(new Event('mouseenter'));
+        getHost().dispatchEvent(new Event(`mouseenter`));
         fixture.detectChanges();
         tick(500);
         fixture.detectChanges();
@@ -107,7 +107,7 @@ describe('TuiFieldErrorContentPipe', () => {
     }
 
     function getHost(): Element {
-        const element = document.querySelector('#hint-host');
+        const element = document.querySelector(`#hint-host`);
 
         tuiAssertIsElement(element);
 
@@ -115,6 +115,6 @@ describe('TuiFieldErrorContentPipe', () => {
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector('[automation-id=tui-hint-box__tooltip]');
+        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
     }
 });

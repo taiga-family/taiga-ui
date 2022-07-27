@@ -9,26 +9,26 @@ import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
-    selector: 'example-tui-line-days-chart',
-    templateUrl: './line-days-chart.template.html',
-    styleUrls: ['./line-days-chart.style.less'],
+    selector: `example-tui-line-days-chart`,
+    templateUrl: `./line-days-chart.template.html`,
+    styleUrls: [`./line-days-chart.style.less`],
     changeDetection,
 })
 export class ExampleTuiLineDaysChartComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-        'pipe.ts': import('./examples/2/pipe.ts?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        'pipe.ts': import(`./examples/2/pipe.ts?raw`),
     };
 
     readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
@@ -61,7 +61,7 @@ export class ExampleTuiLineDaysChartComponent {
     );
 
     readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
-        y => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
+        y => `${(10 * y).toLocaleString(`en-US`, {maximumFractionDigits: 0})} $`,
     ];
 
     readonly xStringifyVariants$: Observable<ReadonlyArray<TuiStringHandler<TuiDay>>> =
@@ -71,11 +71,11 @@ export class ExampleTuiLineDaysChartComponent {
         ReadonlyArray<PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>>
     > = this.months$.pipe(
         map(months => [
-            '',
+            ``,
             ({$implicit}) =>
                 `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(
                     10 * $implicit[1]
-                ).toLocaleString('en-US', {
+                ).toLocaleString(`en-US`, {
                     maximumFractionDigits: 0,
                 })} $`,
         ]),
@@ -85,7 +85,7 @@ export class ExampleTuiLineDaysChartComponent {
 
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = ``;
 
     dots = false;
 

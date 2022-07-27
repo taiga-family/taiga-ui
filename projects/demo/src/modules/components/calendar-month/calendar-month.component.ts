@@ -14,22 +14,22 @@ import {
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
+    selector: `example-tui-calendar-month`,
+    templateUrl: `./calendar-month.template.html`,
     changeDetection,
 })
 export class ExampleTuiCalendarMonthComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly minVariants = [TUI_FIRST_DAY, new TuiMonth(2019, 2), new TuiMonth(2007, 0)];
