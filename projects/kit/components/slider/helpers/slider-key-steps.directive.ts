@@ -14,12 +14,14 @@ import {
     AbstractTuiControl,
     clamp,
     tuiAssert,
+    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
+    tuiCheckKeyStepsHaveMinMaxPercents,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
@@ -42,7 +44,11 @@ export class TuiSliderKeyStepsDirective
     implements TuiFocusableElementAccessor
 {
     @Input()
-    keySteps!: TuiKeySteps;
+    @tuiDefaultProp(
+        tuiCheckKeyStepsHaveMinMaxPercents,
+        `Should contain min and max values`,
+    )
+    keySteps: TuiKeySteps = [];
 
     @Output()
     keyStepsInput = typedFromEvent(this.elementRef.nativeElement, `input`).pipe(

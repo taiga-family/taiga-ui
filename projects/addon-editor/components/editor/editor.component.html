@@ -1,6 +1,6 @@
 <div
-    tuiWrapper
     *tuiLet="editorLoaded$ | async as editorLoaded"
+    tuiWrapper
     appearance="textfield"
     class="t-wrapper"
     [readOnly]="readOnly"
@@ -8,13 +8,11 @@
     [focus]="computedFocused"
     [hover]="pseudoHover"
     [invalid]="computedInvalid"
-    (tuiHoveredChange)="onHovered($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="editorLoaded"
-            new
             [tools]="tools"
             [disabled]="!interactive"
         >

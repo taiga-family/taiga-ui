@@ -13,10 +13,10 @@ import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
-    selector: 'tui-breadcrumbs',
+    selector: `tui-breadcrumbs`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './breadcrumbs.template.html',
-    styleUrls: ['./breadcrumbs.style.less'],
+    templateUrl: `./breadcrumbs.template.html`,
+    styleUrls: [`./breadcrumbs.style.less`],
     providers: [
         {
             provide: TuiModeDirective,
@@ -26,15 +26,15 @@ import {Subject} from 'rxjs';
 })
 export class TuiBreadcrumbsComponent implements TuiModeDirective {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     readonly change$ = new Subject<void>();
-    readonly mode = 'onLight';
+    readonly mode = `onLight`;
 
     ngOnChanges(): void {}
 }

@@ -13,7 +13,7 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 // @dynamic
 @Directive({
-    selector: '[tuiTiptapEditor]',
+    selector: `[tuiTiptapEditor]`,
     providers: [TuiDestroyService],
 })
 export class TuiTiptapEditorDirective {

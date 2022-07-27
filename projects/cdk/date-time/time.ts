@@ -24,7 +24,7 @@ export class TuiTime implements TuiTimeLike {
     ) {
         tuiAssert.assert(
             TuiTime.isValidTime(hours, minutes, seconds, ms),
-            'Time must be real, but got:',
+            `Time must be real, but got:`,
             hours,
             minutes,
             seconds,
@@ -154,14 +154,14 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
+        const needAddMs = mode === `HH:MM:SS.MSS` || (!mode && this.ms > 0);
         const needAddSeconds =
-            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
+            needAddMs || mode === `HH:MM:SS` || (!mode && this.seconds > 0);
 
         return (
             `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ''}` +
-            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ''}`
+            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ``}` +
+            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ``}`
         );
     }
 
@@ -191,6 +191,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     private formatTime(time: number, digits: number = 2): string {
-        return String(time).padStart(digits, '0');
+        return String(time).padStart(digits, `0`);
     }
 }

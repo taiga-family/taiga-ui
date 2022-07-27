@@ -50,7 +50,8 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     readonly cards: Record<string, string> = {
         common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
         universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
-        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
+        mutation:
+            `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     cardSrcVariants: readonly string[] = Object.keys(this.cards);

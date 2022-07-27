@@ -79,7 +79,7 @@ export class TuiYear implements TuiYearLike {
     }
 
     get formattedYear(): string {
-        return String(this.year).padStart(4, '0');
+        return String(this.year).padStart(4, `0`);
     }
 
     get isLeapYear(): boolean {
