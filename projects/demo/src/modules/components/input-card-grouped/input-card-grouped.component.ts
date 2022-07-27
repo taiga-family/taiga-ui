@@ -11,9 +11,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-input-card-grouped',
-    templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    selector: `example-input-card-grouped`,
+    templateUrl: `./input-card-grouped.template.html`,
+    styleUrls: [`./input-card-grouped.style.less`],
     changeDetection,
     providers: [
         {
@@ -23,44 +23,44 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly cards: Record<string, string> = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
+        common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
+        universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
         mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+            `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     cardSrcVariants: readonly string[] = Object.keys(this.cards);
 
-    cardSrcSelected: PolymorpheusContent = '';
+    cardSrcSelected: PolymorpheusContent = ``;
 
     autocompleteEnabled = false;
 
-    exampleText = '0000 0000 0000 0000';
+    exampleText = `0000 0000 0000 0000`;
 
     readonly codeLengthVariants: TuiCodeCVCLength[] = [3, 4];
 

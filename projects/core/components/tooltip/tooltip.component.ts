@@ -16,9 +16,9 @@ import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-tooltip',
-    templateUrl: './tooltip.template.html',
-    styleUrls: ['./tooltip.style.less'],
+    selector: `tui-tooltip`,
+    templateUrl: `./tooltip.template.html`,
+    styleUrls: [`./tooltip.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
 })
@@ -27,7 +27,7 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -47,7 +47,7 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    describeId = '';
+    describeId = ``;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
@@ -61,13 +61,13 @@ export class TuiTooltipComponent {
     }
 
     // TODO: Simplify
-    @HostBinding('attr.data-mode')
+    @HostBinding(`attr.data-mode`)
     get computedMode(): TuiHintMode | null {
-        return this.mode || (this.globalMode === 'onDark' ? 'onDark' : null);
+        return this.mode || (this.globalMode === `onDark` ? `onDark` : null);
     }
 
-    @HostListener('mousedown', ['$event'])
-    @HostListener('click', ['$event'])
+    @HostListener(`mousedown`, [`$event`])
+    @HostListener(`click`, [`$event`])
     stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();

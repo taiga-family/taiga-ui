@@ -7,12 +7,12 @@ export interface TuiPrimitiveTextfieldOptions {
 
 /** Default values for primitive textfield options */
 export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptions = {
-    iconCleaner: 'tuiIconCloseLarge',
+    iconCleaner: `tuiIconCloseLarge`,
 };
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
     new InjectionToken<TuiPrimitiveTextfieldOptions>(
-        'Default parameters for primitive textfield component',
+        `Default parameters for primitive textfield component`,
         {
             factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
         },

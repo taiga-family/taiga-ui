@@ -8,8 +8,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-tui-toggle',
-    templateUrl: './toggle.template.html',
+    selector: `example-tui-toggle`,
+    templateUrl: `./toggle.template.html`,
     changeDetection,
     providers: [
         {
@@ -19,19 +19,19 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     showIcons = false;
@@ -42,7 +42,7 @@ export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
 
     readonly control = new FormControl(false);
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
     size: TuiSizeL = this.sizeVariants[0];
 

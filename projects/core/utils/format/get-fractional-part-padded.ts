@@ -13,7 +13,7 @@ export function tuiGetFractionPartPadded(
     value: number,
     precision?: number | null,
 ): string {
-    const [, fractionPartPadded = ''] = tuiNumberToStringWithoutExp(value).split('.');
+    const [, fractionPartPadded = ``] = tuiNumberToStringWithoutExp(value).split(`.`);
 
     return tuiIsNumber(precision)
         ? fractionPartPadded.slice(0, Math.max(0, precision))

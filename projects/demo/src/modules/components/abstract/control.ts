@@ -25,7 +25,7 @@ viewBox="0 0 24 24">
    s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
 </svg>`;
 
-const CUSTOM_SVG_NAME = 'Bell';
+const CUSTOM_SVG_NAME = `Bell`;
 
 type TuiPossibleGenericType = any;
 
@@ -35,66 +35,66 @@ export abstract class AbstractExampleTuiControl
 {
     abstract readonly control: AbstractControl;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    readonly hintContentVariants: readonly string[] = ['Some content'];
+    readonly hintContentVariants: readonly string[] = [`Some content`];
 
     readonly hintDirectionVariants: readonly TuiDirection[] = [
-        'left',
-        'right',
-        'bottom-left',
-        'bottom-right',
-        'bottom-middle',
-        'top-left',
-        'top-right',
-        'top-middle',
+        `left`,
+        `right`,
+        `bottom-left`,
+        `bottom-right`,
+        `bottom-middle`,
+        `top-left`,
+        `top-right`,
+        `top-middle`,
     ];
 
-    readonly hintModeVariants: readonly TuiHintMode[] = ['error', 'onDark'];
+    readonly hintModeVariants: readonly TuiHintMode[] = [`error`, `onDark`];
 
     readonly typeVariants: readonly TuiInputType[] = [
-        'text',
-        'email',
-        'password',
-        'tel',
-        'url',
+        `text`,
+        `email`,
+        `password`,
+        `tel`,
+        `url`,
     ];
 
     readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
     readonly autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
-        '',
-        'off',
-        'cc-name',
-        'cc-number',
-        'cc-exp-month',
-        'cc-exp-year',
-        'cc-type',
-        'given-name',
-        'additional-name',
-        'family-name',
-        'username',
-        'email',
-        'street-address',
-        'postal-code',
-        'country-name',
+        ``,
+        `off`,
+        `cc-name`,
+        `cc-number`,
+        `cc-exp-month`,
+        `cc-exp-year`,
+        `cc-type`,
+        `given-name`,
+        `additional-name`,
+        `family-name`,
+        `username`,
+        `email`,
+        `street-address`,
+        `postal-code`,
+        `country-name`,
     ];
 
-    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
     readonly customContentVariants: PolymorpheusContent[] = [
         CUSTOM_SVG_NAME,
-        'tuiIconSearchLarge',
-        'tuiIconCalendarLarge',
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
+        `tuiIconSearchLarge`,
+        `tuiIconCalendarLarge`,
+        `tuiIconVisaMono`,
+        `tuiIconMastercardMono`,
     ];
 
-    customContentSelected: PolymorpheusContent = '';
+    customContentSelected: PolymorpheusContent = ``;
 
     inputMode = this.inputModeVariants[0];
 
-    autocomplete: TuiAutofillFieldName | '' = '';
+    autocomplete: TuiAutofillFieldName | '' = ``;
 
     maxLength: TuiPossibleGenericType | null = null;
 
@@ -112,7 +112,7 @@ export abstract class AbstractExampleTuiControl
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
 
-    exampleText = '';
+    exampleText = ``;
 
     maxHeight: number | null = null;
 
@@ -122,20 +122,20 @@ export abstract class AbstractExampleTuiControl
 
     hintMode: TuiHintMode | null = null;
 
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
 
     dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        'top',
-        'bottom',
+        `top`,
+        `bottom`,
     ];
 
-    readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPiechartLarge'];
+    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
 
     iconLeft = this.iconLeftVariants[0];
 

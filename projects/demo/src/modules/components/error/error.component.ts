@@ -4,25 +4,25 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiValidationError} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'example-tui-error',
-    templateUrl: './error.template.html',
+    selector: `example-tui-error`,
+    templateUrl: `./error.template.html`,
     changeDetection,
 })
 export class ExampleTuiErrorComponent {
-    @ViewChild('errorContent')
+    @ViewChild(`errorContent`)
     errorContent?: TemplateRef<Record<string, unknown>>;
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly errorVariants: readonly string[] = [
-        'Error as string',
-        'Error as HTML content',
+        `Error as string`,
+        `Error as HTML content`,
     ];
 
     selectedError = this.errorVariants[0];
@@ -36,6 +36,6 @@ export class ExampleTuiErrorComponent {
             return this.selectedError;
         }
 
-        return new TuiValidationError(this.errorContent || '');
+        return new TuiValidationError(this.errorContent || ``);
     }
 }
