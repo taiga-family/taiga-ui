@@ -6,8 +6,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
@@ -26,11 +24,6 @@ export class TuiRingChartComponent {
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeXL = 'm';
-
-    /** @deprecated */
-    @Input()
-    @tuiDefaultProp()
-    colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
 
     @Input()
     @tuiDefaultProp()

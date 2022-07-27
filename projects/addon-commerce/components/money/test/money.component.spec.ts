@@ -9,7 +9,7 @@ import {
     TuiMoneySign,
 } from '@taiga-ui/addon-commerce';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDecimal} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 describe('Money', () => {
@@ -30,7 +30,7 @@ describe('Money', () => {
         component!: TuiMoneyComponent;
 
         value = 237;
-        decimal: TuiDecimalT = 'not-zero';
+        decimal: TuiDecimal = 'not-zero';
         currency: TuiCurrencyVariants = null;
         sign: TuiMoneySign = 'negative-only';
         colored = false;

@@ -1,4 +1,3 @@
-export * from '@taiga-ui/core/directives/color';
 export * from '@taiga-ui/core/directives/described-by';
 export * from '@taiga-ui/core/directives/dropdown';
 export * from '@taiga-ui/core/directives/dropdown-controller';

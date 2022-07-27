@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tooltip',
@@ -36,9 +36,9 @@ export class ExampleTuiTooltipComponent {
 
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
+    readonly modeVariants: readonly TuiHintMode[] = ['error'];
 
-    mode: TuiHintModeT | null = null;
+    mode: TuiHintMode | null = null;
 
     directionVariants: readonly TuiDirection[] = [
         'left',
