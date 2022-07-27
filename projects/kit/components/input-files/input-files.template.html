@@ -4,7 +4,7 @@
     class="t-wrapper"
     [class._mobile]="isMobile"
     [focus]="computedFocused"
-    [hover]="pseudoHover || fileDragged"
+    [hover]="pseudoHover || fileDragged || null"
     [active]="pseudoActive"
     [disabled]="computedDisabled"
 >

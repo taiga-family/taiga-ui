@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
+import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-group',
@@ -39,9 +39,9 @@ export class ExampleTuiGroupComponent {
     rounded = true;
     collapsed = false;
 
-    readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];
+    readonly orientationVariants: readonly TuiOrientation[] = ['horizontal', 'vertical'];
 
-    orientation: TuiOrientationT = this.orientationVariants[0];
+    orientation: TuiOrientation = this.orientationVariants[0];
 
     readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
