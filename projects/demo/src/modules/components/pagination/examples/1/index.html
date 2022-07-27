@@ -1,11 +1,14 @@
 <tui-input-slider
-    secondary="index"
-    size="m"
+    tuiTextfieldSize="m"
     class="slider"
+    [tuiTextfieldCustomContent]="inputCustomContent"
+    [tuiTextfieldLabelOutside]="true"
     [max]="length - 1"
     [quantum]="1"
     [(ngModel)]="index"
 ></tui-input-slider>
+
+<ng-template #inputCustomContent>index</ng-template>
 
 <tui-pagination
     [length]="length"
