@@ -28,19 +28,19 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
 // @bad TODO refactor to make more flexible
 // @dynamic
 @Component({
-    selector: 'tui-doc-documentation',
-    templateUrl: './documentation.template.html',
-    styleUrls: ['./documentation.style.less'],
+    selector: `tui-doc-documentation`,
+    templateUrl: `./documentation.template.html`,
+    styleUrls: [`./documentation.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
-        trigger('emitEvent', [
-            transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
+        trigger(`emitEvent`, [
+            transition(`:increment`, [style({opacity: 1}), animate(`500ms ease-in`)]),
         ]),
     ],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     @Input()
-    heading = '';
+    heading = ``;
 
     @Input()
     showValues = true;
@@ -76,46 +76,46 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     getColor(color: string): string {
         if (color.length === 4) {
             return color
-                .split('')
+                .split(``)
                 .reduce<string[]>((result, current) => [...result, current, current], [])
-                .join('')
-                .replace('#', '');
+                .join(``)
+                .replace(`#`, ``);
         }
 
-        if (color.startsWith('#')) {
+        if (color.startsWith(`#`)) {
             return color;
         }
 
-        if (color === 'transparent') {
-            return '#000000';
+        if (color === `transparent`) {
+            return `#000000`;
         }
 
         const parsed = color
-            .replace('rgb(', '')
-            .replace('rgba(', '')
-            .replace(')', '')
-            .replace(' ', '')
-            .split(',')
+            .replace(`rgb(`, ``)
+            .replace(`rgba(`, ``)
+            .replace(`)`, ``)
+            .replace(` `, ``)
+            .split(`,`)
             .map(v => Number.parseInt(v, 10)) as [number, number, number];
 
         return rgbToHex(...parsed);
     }
 
     getOpacity(color: string): number {
-        if (color.startsWith('#') || color.startsWith('rgb(')) {
+        if (color.startsWith(`#`) || color.startsWith(`rgb(`)) {
             return 100;
         }
 
-        if (color === 'transparent') {
+        if (color === `transparent`) {
             return 0;
         }
 
-        const lastComma = color.lastIndexOf(',');
+        const lastComma = color.lastIndexOf(`,`);
         const parsed = color
             .slice(lastComma)
-            .replace(')', '')
-            .replace(' ', '')
-            .replace(',', '');
+            .replace(`)`, ``)
+            .replace(` `, ``)
+            .replace(`,`, ``);
 
         return Math.round(Number.parseFloat(parsed) * 100);
     }
@@ -124,7 +124,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         color: string,
     ): void {
-        const opacity = this.getOpacity(connector.documentationPropertyValue || '');
+        const opacity = this.getOpacity(connector.documentationPropertyValue || ``);
 
         if (opacity === 100) {
             connector.onValueChange(color);
@@ -132,7 +132,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             return;
         }
 
-        const rgb = hexToRgb(color).join(', ');
+        const rgb = hexToRgb(color).join(`, `);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -142,7 +142,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         opacity: number,
     ): void {
-        const hex = this.getColor(connector.documentationPropertyValue || '');
+        const hex = this.getColor(connector.documentationPropertyValue || ``);
         const rgb = hexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
@@ -150,11 +150,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     stripOptional(name: string): string {
-        return name.replace('?', '');
+        return name.replace(`?`, ``);
     }
 
     isOptional(name: string): boolean {
-        return name.includes('?');
+        return name.includes(`?`);
     }
 
     isPrimitivePolymorpheusContent(value: unknown): boolean {
@@ -162,11 +162,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     showCleaner(type: string): boolean {
-        return type.includes('null');
+        return type.includes(`null`);
     }
 
     showContentTooltip(type: string): boolean {
-        return type.includes('PolymorpheusContent');
+        return type.includes(`PolymorpheusContent`);
     }
 
     inspectAny(data: unknown): string {
