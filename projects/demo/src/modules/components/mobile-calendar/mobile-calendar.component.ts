@@ -7,8 +7,8 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    tuiControlValue,
     TuiDay,
-    tuiReplayedValueChangesFrom,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -69,5 +69,5 @@ export class ExampleTuiMobileCalendarComponent {
 
     control = new FormControl();
 
-    stream = tuiReplayedValueChangesFrom<TuiDay>(this.control);
+    stream = tuiControlValue<TuiDay>(this.control);
 }
