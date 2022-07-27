@@ -25,7 +25,6 @@ export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
 export const TUI_AUTOFOCUS_PROVIDERS = [
     {
         provide: TUI_AUTOFOCUS_HANDLER,
-        // TODO: replace to useClass in v3.0
         useFactory: (
             tuiFocusableComponent: TuiFocusableElementAccessor | null,
             elementRef: ElementRef<HTMLElement>,
