@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
@@ -54,11 +54,11 @@ export class ExampleTuiDropdownSelectionComponent {
 
     tuiDropdownDirection: TuiVerticalDirection | null = null;
 
-    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
+    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
         'fixed',
         'min',
         'auto',
     ];
 
-    tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];
+    tuiDropdownLimitWidth: TuiDropdownWidth = this.tuiDropdownLimitWidthVariants[0];
 }
