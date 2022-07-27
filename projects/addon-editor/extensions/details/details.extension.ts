@@ -21,7 +21,7 @@ declare module '@tiptap/core' {
 }
 
 export const TuiDetails = Node.create<TuiDetailsOptions>({
-    name: 'details',
+    name: `details`,
 
     addOptions() {
         return {
@@ -34,7 +34,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             opened: {
                 default: true,
                 keepOnSplit: false,
-                parseHTML: element => element.getAttribute('data-opened') === 'true',
+                parseHTML: element => element.getAttribute(`data-opened`) === `true`,
                 renderHTML: attributes => ({
                     'data-opened': attributes.opened,
                 }),
@@ -42,9 +42,9 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
         };
     },
 
-    content: 'summary detailsContent',
+    content: `summary detailsContent`,
 
-    group: 'block',
+    group: `block`,
 
     allowGapCursor: true,
     isolating: true,
@@ -59,25 +59,25 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
 
     renderHTML({HTMLAttributes}) {
         return [
-            'div',
-            {class: 'details-wrapper details-wrapper_rendered'},
-            ['details', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
-            ['button', {class: 'details-arrow'}],
+            `div`,
+            {class: `details-wrapper details-wrapper_rendered`},
+            [`details`, mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
+            [`button`, {class: `details-arrow`}],
         ];
     },
 
     addNodeView() {
         return ({node}) => {
-            const wrapper = document.createElement('div');
-            const details = document.createElement('details');
-            const button = document.createElement('button');
+            const wrapper = document.createElement(`div`);
+            const details = document.createElement(`details`);
+            const button = document.createElement(`button`);
 
-            wrapper.className = 'details-wrapper';
-            button.className = 'details-arrow';
+            wrapper.className = `details-wrapper`;
+            button.className = `details-arrow`;
 
             details.open = node.attrs.opened;
 
-            button.addEventListener('click', () => {
+            button.addEventListener(`click`, () => {
                 details.open = !details.open;
                 (node.attrs as unknown as Record<string, unknown>).opened = details.open;
             });

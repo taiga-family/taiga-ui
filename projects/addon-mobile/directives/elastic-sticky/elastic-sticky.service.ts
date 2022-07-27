@@ -43,7 +43,7 @@ export class TuiElasticStickyService extends Observable<number> {
                             nativeElement,
                         );
 
-                        return typedFromEvent(host || windowRef, 'scroll').pipe(
+                        return typedFromEvent(host || windowRef, `scroll`).pipe(
                             map(() =>
                                 Math.max(
                                     1 -

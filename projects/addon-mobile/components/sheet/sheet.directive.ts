@@ -16,12 +16,12 @@ import {TuiSheetService} from './sheet.service';
 import {TuiSheetOptions} from './sheet-options';
 
 @Directive({
-    selector: 'ng-template[tuiSheet]',
+    selector: `ng-template[tuiSheet]`,
 })
 export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     private readonly open$ = new Subject<boolean>();
 
-    @Input('tuiSheetOptions')
+    @Input(`tuiSheetOptions`)
     @tuiDefaultProp()
     options: Partial<TuiSheetOptions> = {};
 

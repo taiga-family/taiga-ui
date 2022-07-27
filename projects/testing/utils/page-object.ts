@@ -10,9 +10,9 @@ export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 
     static getIds({nativeElement}: DebugElement): string[] {
-        const attributeValue: string | null = nativeElement.getAttribute('automation-id');
+        const attributeValue: string | null = nativeElement.getAttribute(`automation-id`);
 
-        return attributeValue === null ? [] : attributeValue.split(' ');
+        return attributeValue === null ? [] : attributeValue.split(` `);
     }
 
     static containsId(debugElement: DebugElement, automationId: string): boolean {
@@ -68,6 +68,6 @@ export class TuiPageObject<T> {
         }
 
         inputDebugElement.nativeElement.value = value;
-        inputDebugElement.nativeElement.dispatchEvent(new Event('input'));
+        inputDebugElement.nativeElement.dispatchEvent(new Event(`input`));
     }
 }

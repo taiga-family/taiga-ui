@@ -3,9 +3,9 @@ import {stubExternalIcons} from './stub-external-icons.util';
 import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
 
-const NEXT_URL_STORAGE_KEY = 'env';
-const DEFAULT_BASE_HREF = 'next/';
-const REPEATED_SLASH_REG = new RegExp('//', 'g');
+const NEXT_URL_STORAGE_KEY = `env`;
+const DEFAULT_BASE_HREF = `next/`;
+const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
 
 interface TuiVisitOptions {
     /**
@@ -37,12 +37,11 @@ const setBeforeLoadOptions = (
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        windowRef['parent'] = windowRef;
+        windowRef[`parent`] = windowRef;
     }
 };
 
-const MOBILE_USER_AGENT =
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1';
+const MOBILE_USER_AGENT = `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1`;
 
 export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     const {
@@ -65,12 +64,12 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         decodeURIComponent(path), // @note: prevent twice encoding
     );
 
-    cy.visit('/', {
+    cy.visit(`/`, {
         onBeforeLoad: window => {
             const baseHref =
-                window.document.baseURI.replace(`${window.location.origin}/`, '') ||
+                window.document.baseURI.replace(`${window.location.origin}/`, ``) ||
                 DEFAULT_BASE_HREF;
-            const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, '/');
+            const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, `/`);
 
             setBeforeLoadOptions(window, {inIframe});
 
@@ -78,45 +77,45 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             window.localStorage.setItem(NIGHT_THEME_KEY, enableNightMode.toString());
 
             if (pseudoMobile) {
-                Object.defineProperty(window.navigator, 'userAgent', {
+                Object.defineProperty(window.navigator, `userAgent`, {
                     value: MOBILE_USER_AGENT,
                 });
             }
         },
-    }).then(() => cy.url().should('include', encodedPath));
+    }).then(() => cy.url().should(`include`, encodedPath));
 
     if (waitAllIcons) {
-        cy.intercept('*.svg').as('icons');
+        cy.intercept(`*.svg`).as(`icons`);
     }
 
-    cy.window().should('have.property', 'Cypress');
+    cy.window().should(`have.property`, `Cypress`);
 
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
 
-    cy.document().its('fonts.size').should('be.greaterThan', 0);
-    cy.document().its('fonts.status').should('equal', 'loaded');
+    cy.document().its(`fonts.size`).should(`be.greaterThan`, 0);
+    cy.document().its(`fonts.status`).should(`equal`, `loaded`);
 
     if (waitAllIcons) {
-        waitAllRequests('@icons');
+        waitAllRequests(`@icons`);
     }
 
-    cy.get('._is-cypress-mode').as('app');
+    cy.get(`._is-cypress-mode`).as(`app`);
 
     if (hideCursor) {
-        cy.get('@app').invoke('addClass', '_hide-cursor');
+        cy.get(`@app`).invoke(`addClass`, `_hide-cursor`);
     }
 
     if (hideScrollbar) {
-        cy.get('@app').invoke('addClass', '_hide-scrollbar');
+        cy.get(`@app`).invoke(`addClass`, `_hide-scrollbar`);
     }
 
     if (noSmoothScroll) {
-        cy.get('@app').invoke('addClass', '_no-smooth-scroll');
+        cy.get(`@app`).invoke(`addClass`, `_no-smooth-scroll`);
     }
 
     cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION); // wait until app load some synchronous code
 
-    cy.get('app._loaded').should('exist');
+    cy.get(`app._loaded`).should(`exist`);
 
     if (hideHeader) {
         cy.tuiHideHeader();

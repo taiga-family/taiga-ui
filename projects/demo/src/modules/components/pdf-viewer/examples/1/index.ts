@@ -6,8 +6,8 @@ import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-pdf-viewer-example-1',
-    templateUrl: './index.html',
+    selector: `tui-pdf-viewer-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -20,9 +20,9 @@ export class TuiPdfViewerExample1 {
     show(actions: PolymorpheusContent<TuiPdfViewerOptions>): void {
         this.pdfService
             .open(
-                this.sanitizer.bypassSecurityTrustResourceUrl('/assets/media/taiga.pdf'),
+                this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/media/taiga.pdf`),
                 {
-                    label: 'Taiga UI',
+                    label: `Taiga UI`,
                     actions,
                 },
             )

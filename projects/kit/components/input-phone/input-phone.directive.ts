@@ -4,7 +4,7 @@ import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 import {TuiInputPhoneComponent} from './input-phone.component';
 
 @Directive({
-    selector: 'tui-input-phone',
+    selector: `tui-input-phone`,
     providers: [
         {
             provide: TUI_TEXTFIELD_HOST,
@@ -35,7 +35,7 @@ export class TuiInputPhoneDirective
             return;
         }
 
-        this.input.type = 'tel';
+        this.input.type = `tel`;
         this.input.inputMode = this.host.inputMode;
     }
 }

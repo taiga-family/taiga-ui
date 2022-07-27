@@ -7,7 +7,7 @@ import {getDayFromMonthRowCol} from './utils';
 const CALENDAR_ROWS_COUNT = 6;
 
 @Pipe({
-    name: 'tuiCalendarSheet',
+    name: `tuiCalendarSheet`,
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
     private currentMonth: TuiMonth | null = null;

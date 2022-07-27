@@ -3,7 +3,7 @@ import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: 'ng-template[tuiRow]',
+    selector: `ng-template[tuiRow]`,
 })
 export class TuiRowDirective<T> {
     @Input()

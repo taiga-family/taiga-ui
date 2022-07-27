@@ -7,7 +7,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiDropdownModule} from '../dropdown.module';
 
-describe('TuiDropdown directive', () => {
+describe(`TuiDropdown directive`, () => {
     @Component({
         template: `
             <tui-root>
@@ -40,7 +40,7 @@ describe('TuiDropdown directive', () => {
     let testComponent: TestComponent;
     const testContext = {
         get prefix() {
-            return 'tui-dropdown-directive__';
+            return `tui-dropdown-directive__`;
         },
     };
 
@@ -63,15 +63,15 @@ describe('TuiDropdown directive', () => {
         fixture.detectChanges();
     });
 
-    it('when tuiDropdown = false, dropdown is not shown', () => {
+    it(`when tuiDropdown = false, dropdown is not shown`, () => {
         expect(getDropdown()).toBe(null);
     });
 
-    it('when tuiDropdown = true, dropdown is shown', () => {
+    it(`when tuiDropdown = true, dropdown is shown`, () => {
         testComponent.open = true;
         fixture.detectChanges();
 
-        expect(getDropdown()!.nativeElement.textContent!.trim()).toBe('Droppy down');
+        expect(getDropdown()!.nativeElement.textContent!.trim()).toBe(`Droppy down`);
     });
 
     function getDropdown(): ElementRef<HTMLDivElement> | null {

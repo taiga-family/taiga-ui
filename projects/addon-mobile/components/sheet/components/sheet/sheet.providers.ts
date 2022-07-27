@@ -8,16 +8,16 @@ import {map, mapTo, share} from 'rxjs/operators';
 import {iosScrollFactory} from '../../ios.hacks';
 
 export const TUI_SHEET_SCROLL = new InjectionToken<number>(
-    'Current scrollTop of a sheet',
+    `Current scrollTop of a sheet`,
 );
 
 export const TUI_SHEET_DRAGGED = new InjectionToken<boolean>(
-    'The sheet is being dragged',
+    `The sheet is being dragged`,
 );
 
 /** @deprecated use option argument for each Sheet */
 export const TUI_SHEET_OFFSET = new InjectionToken<number>(
-    'Offset from the top at which the sheet stops',
+    `Offset from the top at which the sheet stops`,
     {
         factory: () => 16,
     },
@@ -45,8 +45,8 @@ export function sheetDraggedFactory({
     nativeElement,
 }: ElementRef<HTMLElement>): Observable<boolean> {
     return merge(
-        typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(mapTo(true)),
-        typedFromEvent(nativeElement, 'touchend').pipe(mapTo(false)),
+        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(mapTo(true)),
+        typedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
     );
 }
 
@@ -60,8 +60,8 @@ export function sheetScrollFactory(
     return isIos
         ? iosScrollFactory(nativeElement, documentRef, ngZone)
         : merge(
-              typedFromEvent(nativeElement, 'scroll'),
-              typedFromEvent(nativeElement, 'load', {capture: true}),
+              typedFromEvent(nativeElement, `scroll`),
+              typedFromEvent(nativeElement, `load`, {capture: true}),
           ).pipe(
               map(() => nativeElement.scrollTop),
               tuiZonefree(ngZone),

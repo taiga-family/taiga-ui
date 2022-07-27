@@ -26,9 +26,9 @@ class Account {
 }
 
 @Component({
-    selector: 'example-tui-combo-box',
-    templateUrl: './combo-box.template.html',
-    styleUrls: ['./combo-box.style.less'],
+    selector: `example-tui-combo-box`,
+    templateUrl: `./combo-box.template.html`,
+    styleUrls: [`./combo-box.style.less`],
     changeDetection,
     providers: [
         {
@@ -38,69 +38,69 @@ class Account {
     ],
 })
 export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
-    @ViewChild('valueTemplateContent')
+    @ViewChild(`valueTemplateContent`)
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
-    > = '';
+    > = ``;
 
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
 
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
-        'user.ts': import('!!raw-loader!./examples/2/user'),
-        'request.service.ts': import('!!raw-loader!./examples/2/request.service'),
-        'database-mock-data.ts': import('!!raw-loader!./examples/2/database-mock-data'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        'user.ts': import(`!!raw-loader!./examples/2/user`),
+        'request.service.ts': import(`!!raw-loader!./examples/2/request.service`),
+        'database-mock-data.ts': import(`!!raw-loader!./examples/2/database-mock-data`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
-        LESS: import('!!raw-loader!./examples/5/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        LESS: import(`!!raw-loader!./examples/5/index.less`),
         'index-change.directive.ts': import(
-            '!!raw-loader!./examples/5/index-change.directive.ts'
+            `!!raw-loader!./examples/5/index-change.directive.ts`
         ),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
-        HTML: import('!!raw-loader!./examples/6/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
+        HTML: import(`!!raw-loader!./examples/6/index.html`),
     };
 
     readonly items = [
-        new Account('Rubles', 500),
-        new Account('Dollars', 237),
-        new Account('Netherlands Antillean Guilder and Falkland Islands Pound', 700),
+        new Account(`Rubles`, 500),
+        new Account(`Dollars`, 237),
+        new Account(`Netherlands Antillean Guilder and Falkland Islands Pound`, 700),
     ];
 
     strict = true;
 
-    search: string | null = '';
+    search: string | null = ``;
 
-    valueTemplateVariants = ['', 'Template'];
+    valueTemplateVariants = [``, `Template`];
 
-    selectedValueTemplate = '';
+    selectedValueTemplate = ``;
 
     readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
@@ -130,15 +130,15 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
-            : '';
+            : ``;
     }
 
     @tuiPure
     filter(query: string | null): readonly Account[] {
-        return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query || ''));
+        return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query || ``));
     }
 
     setValue(): void {
-        this.control.setValue(new Account('Dollars', 237));
+        this.control.setValue(new Account(`Dollars`, 237));
     }
 }

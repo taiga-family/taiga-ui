@@ -29,7 +29,7 @@ export class TuiParentsScrollService extends Observable<Event> {
 
             return merge<Event>(
                 ...eventTargets.map<Observable<Event>>(element =>
-                    typedFromEvent(element, 'scroll'),
+                    typedFromEvent(element, `scroll`),
                 ),
             );
         });

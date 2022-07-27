@@ -1,19 +1,19 @@
 function inspectArray(array: readonly unknown[], depth: number): string {
     if (depth === 0) {
-        return '[…]';
+        return `[…]`;
     }
 
-    let result = '';
+    let result = ``;
     let first = true;
 
     for (let index = 0; index < array.length; index++) {
         if (first) {
             first = false;
         } else {
-            result += ', ';
+            result += `, `;
         }
 
-        result += index in array ? inspectAny(array[index], depth - 1) : 'empty';
+        result += index in array ? inspectAny(array[index], depth - 1) : `empty`;
     }
 
     return `[${result}]`;
@@ -24,7 +24,7 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
         return `{…}`;
     }
 
-    let result = '';
+    let result = ``;
 
     let first = true;
 
@@ -36,7 +36,7 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
         if (first) {
             first = false;
         } else {
-            result += ', ';
+            result += `, `;
         }
 
         result += `${key}: ${inspectAny(object[key], depth - 1)}`;
@@ -55,16 +55,16 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function inspectAny<T>(data: T, depth: number): string {
     if (data === null) {
-        return 'null';
+        return `null`;
     }
 
     switch (typeof data) {
-        case 'string':
+        case `string`:
             return `'${data}'`;
-        case 'undefined':
-        case 'number':
-        case 'boolean':
-        case 'function':
+        case `undefined`:
+        case `number`:
+        case `boolean`:
+        case `function`:
             return String(data);
     }
 

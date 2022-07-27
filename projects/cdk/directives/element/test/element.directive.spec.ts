@@ -8,7 +8,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiElementModule} from '../element.module';
 
-describe('TuiElement directive', () => {
+describe(`TuiElement directive`, () => {
     @Component({
         template: `
             <tui-dropdown-host
@@ -49,11 +49,11 @@ describe('TuiElement directive', () => {
         fixture.detectChanges();
     });
 
-    it('gets native element behind component', () => {
+    it(`gets native element behind component`, () => {
         expect(testComponent.component instanceof TuiDropdownHostComponent).toBe(true);
         expect(testComponent.element?.nativeElement instanceof HTMLElement).toBe(true);
         expect(testComponent.element?.nativeElement.tagName.toLowerCase()).toBe(
-            'tui-dropdown-host',
+            `tui-dropdown-host`,
         );
     });
 });

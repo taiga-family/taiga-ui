@@ -4,8 +4,8 @@ import {TuiNotificationContentContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-notifications-service-example',
-    templateUrl: './alert-example.template.html',
+    selector: `tui-notifications-service-example`,
+    templateUrl: `./alert-example.template.html`,
     changeDetection,
 })
 export class AlertExampleComponent {

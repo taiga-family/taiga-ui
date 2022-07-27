@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 
 // @dynamic
 @Pipe({
-    name: 'labels',
+    name: `labels`,
 })
 export class LabelsPipe implements PipeTransform {
     constructor(

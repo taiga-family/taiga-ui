@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {ceil, floor, round} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-math-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-math-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

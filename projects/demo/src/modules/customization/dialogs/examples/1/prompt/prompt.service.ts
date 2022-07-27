@@ -6,12 +6,12 @@ import {PromptComponent} from './prompt.component';
 import {PromptOptions} from './prompt-options';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class PromptService extends AbstractTuiDialogService<PromptOptions> {
     readonly defaultOptions = {
-        heading: 'Are you sure?',
-        buttons: ['Yes', 'No'],
+        heading: `Are you sure?`,
+        buttons: [`Yes`, `No`],
     } as const;
 
     readonly component = new PolymorpheusComponent(PromptComponent);

@@ -20,9 +20,9 @@ import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 
 @Component({
-    selector: 'tui-accordion',
-    styleUrls: ['./accordion.style.less'],
-    templateUrl: 'accordion.template.html',
+    selector: `tui-accordion`,
+    styleUrls: [`./accordion.style.less`],
+    templateUrl: `accordion.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

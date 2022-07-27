@@ -30,12 +30,12 @@ export function smoothingAssertion(smoothingFactor: number): boolean {
     return inRange(smoothingFactor, 0, 100);
 }
 
-const SMOOTHING_MESSAGE = 'smoothingFactor must be between 0 and 100';
+const SMOOTHING_MESSAGE = `smoothingFactor must be between 0 and 100`;
 
 @Component({
-    selector: 'tui-line-chart',
-    templateUrl: './line-chart.template.html',
-    styleUrls: ['./line-chart.style.less'],
+    selector: `tui-line-chart`,
+    templateUrl: `./line-chart.template.html`,
+    styleUrls: [`./line-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineChartComponent {
@@ -43,7 +43,7 @@ export class TuiLineChartComponent {
 
     private readonly autoIdString: string;
 
-    @Input('value')
+    @Input(`value`)
     @tuiDefaultProp()
     set valueSetter(value: readonly TuiPoint[]) {
         this.value = value.filter(item => !item.some(isNaN));
@@ -71,7 +71,7 @@ export class TuiLineChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> = '';
+    hintContent: PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -116,7 +116,7 @@ export class TuiLineChartComponent {
             ? `url(${this.locationRef.prepareExternalUrl(this.locationRef.path())}#${
                   this.fillId
               })`
-            : 'none';
+            : `none`;
     }
 
     get viewBox(): string {
@@ -146,7 +146,7 @@ export class TuiLineChartComponent {
         );
     }
 
-    @HostListener('mouseleave')
+    @HostListener(`mouseleave`)
     onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(NaN);
@@ -221,7 +221,7 @@ export class TuiLineChartComponent {
         return value.reduce(
             (d, point, index) =>
                 index ? `${d} ${draw(value, index, smoothingFactor)}` : `M ${point}`,
-            '',
+            ``,
         );
     }
 

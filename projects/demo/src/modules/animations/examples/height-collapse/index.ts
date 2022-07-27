@@ -5,9 +5,9 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDurationOptions, tuiHeightCollapse} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-height-collapse-example',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-height-collapse-example`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     animations: [tuiHeightCollapse],
@@ -20,6 +20,6 @@ export class TuiHeightCollapseExample {
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {value: ``, params: {duration}};
     }
 }

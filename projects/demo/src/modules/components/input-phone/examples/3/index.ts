@@ -23,18 +23,18 @@ class User {
 
 const DATA: readonly User[] = [
     new User(
-        'Roman',
-        'Sedov',
-        '+75678901234',
-        'http://marsibarsi.me/images/1x1small.jpg',
+        `Roman`,
+        `Sedov`,
+        `+75678901234`,
+        `http://marsibarsi.me/images/1x1small.jpg`,
     ),
-    new User('Alex', 'Inkin', '+75678901234', avatar),
+    new User(`Alex`, `Inkin`, `+75678901234`, avatar),
 ];
 
 @Component({
-    selector: 'tui-input-phone-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-phone-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -43,7 +43,7 @@ export class TuiInputPhoneExample3 {
 
     private readonly selected$ = new Subject<User>();
 
-    value = '';
+    value = ``;
 
     readonly user$ = merge(
         this.selected$,
@@ -65,7 +65,7 @@ export class TuiInputPhoneExample3 {
     );
 
     readonly items$ = this.search$.pipe(
-        startWith(''),
+        startWith(``),
         switchMap(value =>
             this.request(value).pipe(
                 map(response => (this.isFullMatch(response, value) ? [] : response)),
@@ -75,7 +75,7 @@ export class TuiInputPhoneExample3 {
 
     readonly placeholder$ = combineLatest(this.user$, this.search$).pipe(
         map(([user, search]) => user || this.getPlaceholder(search)),
-        startWith('Phone number or name'),
+        startWith(`Phone number or name`),
     );
 
     onSearch(search: string): void {
@@ -100,14 +100,14 @@ export class TuiInputPhoneExample3 {
 
     private getPlaceholder(search: string): string {
         if (!search) {
-            return 'Phone number or name';
+            return `Phone number or name`;
         }
 
-        if (search.startsWith('+')) {
-            return 'Phone number';
+        if (search.startsWith(`+`)) {
+            return `Phone number`;
         }
 
-        return 'Name';
+        return `Name`;
     }
 
     private isFullMatch(response: readonly User[], value: string): boolean {

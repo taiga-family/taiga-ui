@@ -46,9 +46,9 @@ export function nonNegativeInteger(length: number): boolean {
 
 // @dynamic
 @Component({
-    selector: 'tui-pagination',
-    templateUrl: './pagination.template.html',
-    styleUrls: ['./pagination.style.less'],
+    selector: `tui-pagination`,
+    templateUrl: `./pagination.template.html`,
+    styleUrls: [`./pagination.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -61,16 +61,16 @@ export class TuiPaginationComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
-    @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
+    @ViewChildren(`element`, {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
     private readonly elements: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
+    @tuiDefaultProp(nonNegativeInteger, `Must be non-negative integer`)
     length = 1;
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -101,7 +101,7 @@ export class TuiPaginationComponent
      * Active page index
      */
     @Input()
-    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
+    @tuiDefaultProp(nonNegativeInteger, `Must be non-negative integer`)
     index = 0;
 
     @Output()
@@ -156,7 +156,7 @@ export class TuiPaginationComponent
     }
 
     get sizeM(): boolean {
-        return this.size === 'm';
+        return this.size === `m`;
     }
 
     get mode(): TuiBrightness | null {
@@ -220,7 +220,7 @@ export class TuiPaginationComponent
     }
 
     getSmallElementMode(index: number, mode: TuiBrightness | null): TuiAppearance {
-        return this.index === index && mode !== 'onLight'
+        return this.index === index && mode !== `onLight`
             ? TuiAppearance.Primary
             : TuiAppearance.Secondary;
     }

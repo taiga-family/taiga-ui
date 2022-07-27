@@ -4,7 +4,7 @@ import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 import {TuiInputPasswordComponent} from './input-password.component';
 
 @Directive({
-    selector: 'tui-input-password',
+    selector: `tui-input-password`,
     providers: [
         {
             provide: TUI_TEXTFIELD_HOST,
@@ -28,7 +28,7 @@ export class TuiInputPasswordDirective
 
     ngDoCheck(): void {
         if (this.input) {
-            this.input.type = this.host.isPasswordHidden ? 'password' : 'text';
+            this.input.type = this.host.isPasswordHidden ? `password` : `text`;
         }
     }
 }

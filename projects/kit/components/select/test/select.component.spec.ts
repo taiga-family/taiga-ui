@@ -24,15 +24,15 @@ class Beast {
 }
 
 const ITEMS = [
-    new Beast('mouse', 'Gray', '0'),
-    new Beast('cat', 'Sly', '1'),
-    new Beast('raccoon', 'Naughty', '2'),
+    new Beast(`mouse`, `Gray`, `0`),
+    new Beast(`cat`, `Sly`, `1`),
+    new Beast(`raccoon`, `Naughty`, `2`),
 ];
 
-const CHECKMARK = 'tui-select-option__checkmark';
+const CHECKMARK = `tui-select-option__checkmark`;
 const MATCHER: TuiIdentityMatcher<Beast> = (item1, item2) => item1.id === item2.id;
 
-describe('Select', () => {
+describe(`Select`, () => {
     @Component({
         template: `
             <tui-root>
@@ -87,70 +87,70 @@ describe('Select', () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
 
-        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('Cleaning the field', () => {
+    describe(`Cleaning the field`, () => {
         beforeEach(() => {
             testComponent.cleaner = true;
             fixture.detectChanges();
         });
 
-        it('delete key clears the field', () => {
+        it(`delete key clears the field`, () => {
             testComponent.control.setValue(ITEMS[0]);
             fixture.detectChanges();
-            inputPO.sendKeydown('delete');
+            inputPO.sendKeydown(`delete`);
 
             expect(testComponent.control.value).toBeNull();
         });
 
-        it('if the cross is disabled, the delete key does not clear the field', () => {
+        it(`if the cross is disabled, the delete key does not clear the field`, () => {
             testComponent.cleaner = false;
             testComponent.control.setValue(ITEMS[0]);
             fixture.detectChanges();
-            inputPO.sendKeydown('delete');
+            inputPO.sendKeydown(`delete`);
 
             expect(testComponent.control.value).not.toBeNull();
         });
     });
 
-    describe('identityMatcher', () => {
-        describe('Default matcher', () => {
+    describe(`identityMatcher`, () => {
+        describe(`Default matcher`, () => {
             beforeEach(() => {
-                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown(`ArrowDown`);
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it(`Considers the same object to be identical to itself`, () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it("Doesn't consider copies of objects identical", () => {
-                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
+            it(`Doesn't consider copies of objects identical`, () => {
+                testComponent.control.setValue(new Beast(`mouse`, `Gray`, `0`));
                 fixture.detectChanges();
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).toBeNull();
             });
         });
 
-        describe('Custom matcher (matching by id)', () => {
+        describe(`Custom matcher (matching by id)`, () => {
             beforeEach(() => {
                 testComponent.identityMatcher = MATCHER;
                 fixture.detectChanges();
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it(`Considers the same object to be identical to itself`, () => {
                 testComponent.control.setValue(ITEMS[0]);
-                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown(`ArrowDown`);
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it('Considers copies of objects identical', () => {
-                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
-                inputPO.sendKeydown('ArrowDown');
+            it(`Considers copies of objects identical`, () => {
+                testComponent.control.setValue(new Beast(`mouse`, `Gray`, `0`));
+                inputPO.sendKeydown(`ArrowDown`);
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });

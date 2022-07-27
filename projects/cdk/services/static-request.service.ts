@@ -3,7 +3,7 @@ import {Observable, Observer} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiStaticRequestService {
     private readonly cache = new Map<string, Observable<string>>();
@@ -31,7 +31,7 @@ export class TuiStaticRequestService {
                 }
             };
 
-            xhr.open('GET', url);
+            xhr.open(`GET`, url);
             xhr.send();
 
             return () => {

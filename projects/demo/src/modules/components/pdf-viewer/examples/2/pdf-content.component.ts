@@ -11,11 +11,21 @@ import {mapTo} from 'rxjs/operators';
         ></iframe>
         <ng-template #loading><tui-loader size="xl"></tui-loader></ng-template>
     `,
-    styles: [':host { display: flex; height: 100% } :host > * { flex: 1 }'],
+    styles: [
+        `
+            :host {
+                display: flex;
+                height: 100%;
+            }
+            :host > * {
+                flex: 1;
+            }
+        `,
+    ],
 })
 export class PdfContent {
     readonly src$ = timer(3000).pipe(
-        mapTo(this.sanitizer.bypassSecurityTrustResourceUrl('/assets/media/taiga.pdf')),
+        mapTo(this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/media/taiga.pdf`)),
     );
 
     constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}

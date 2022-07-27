@@ -36,9 +36,9 @@ class Beast {
 }
 
 const ITEMS = [
-    new Beast('mouse', 'Gray', '0'),
-    new Beast('cat', 'Sly', '1'),
-    new Beast('raccoon', 'Naughty', '2'),
+    new Beast(`mouse`, `Gray`, `0`),
+    new Beast(`cat`, `Sly`, `1`),
+    new Beast(`raccoon`, `Naughty`, `2`),
 ];
 
 function stringify({trait}: Beast): string {
@@ -49,7 +49,7 @@ function identityMatcher(item1: Beast, item2: Beast): boolean {
     return item1.id === item2.id;
 }
 
-describe('ComboBox', () => {
+describe(`ComboBox`, () => {
     @Component({
         template: `
             <tui-root>
@@ -80,10 +80,10 @@ describe('ComboBox', () => {
         control = new FormControl();
         defaultInputs = false;
         cleaner = false;
-        size: TuiSizeS | TuiSizeL = 'm';
+        size: TuiSizeS | TuiSizeL = `m`;
         readOnly = false;
-        hintContent: string | null = 'prompt';
-        exampleText = 'exampleText';
+        hintContent: string | null = `prompt`;
+        exampleText = `exampleText`;
 
         get stringify(): TuiStringHandler<Beast> {
             return this.defaultInputs ? TUI_DEFAULT_STRINGIFY : stringify;
@@ -115,7 +115,7 @@ describe('ComboBox', () => {
             providers: [
                 {
                     provide: TUI_ARROW_MODE,
-                    useValue: {interactive: TUI_ARROW, disabled: ''},
+                    useValue: {interactive: TUI_ARROW, disabled: ``},
                 },
             ],
         });
@@ -130,18 +130,18 @@ describe('ComboBox', () => {
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('stringify', () => {
+    describe(`stringify`, () => {
         beforeEach(() => {
             testComponent.defaultInputs = true;
             testComponent.control.setValue(ITEMS[0]);
             fixture.detectChanges();
         });
 
-        it('The default is String(item)', () => {
+        it(`The default is String(item)`, () => {
             expect(getValue()!.nativeElement.textContent.trim()).toBe(String(ITEMS[0]));
         });
 
-        it('Custom value', () => {
+        it(`Custom value`, () => {
             testComponent.defaultInputs = false;
             fixture.detectChanges();
 
@@ -149,12 +149,12 @@ describe('ComboBox', () => {
         });
     });
 
-    it('When changing items, substitutes an exact match in the control', async () => {
+    it(`When changing items, substitutes an exact match in the control`, async () => {
         testComponent.defaultInputs = true;
         testComponent.items = [];
         testComponent.control.setValue(ITEMS[0]);
         fixture.detectChanges();
-        inputPO.sendText('Sly cat');
+        inputPO.sendText(`Sly cat`);
 
         expect(testComponent.control.value).toBeNull();
 
@@ -165,15 +165,15 @@ describe('ComboBox', () => {
         expect(testComponent.control.value).toBe(ITEMS[1]);
     });
 
-    describe('identityMatcher', () => {
-        describe('Default matcher', () => {
+    describe(`identityMatcher`, () => {
+        describe(`Default matcher`, () => {
             beforeEach(() => {
                 testComponent.defaultInputs = true;
                 fixture.detectChanges();
-                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown(`ArrowDown`);
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it(`Considers the same object to be identical to itself`, () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
@@ -181,59 +181,59 @@ describe('ComboBox', () => {
             });
 
             it(`Doesn't consider copies of objects identical`, () => {
-                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
+                testComponent.control.setValue(new Beast(`mouse`, `Gray`, `0`));
                 fixture.detectChanges();
 
                 expect(getCheckmark()).toBeNull();
             });
         });
 
-        describe('Custom matcher (matching by id)', () => {
+        describe(`Custom matcher (matching by id)`, () => {
             beforeEach(() => {
-                inputPO.sendKeydown('ArrowDown');
+                inputPO.sendKeydown(`ArrowDown`);
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it(`Considers the same object to be identical to itself`, () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
 
-            it('Considers copies of objects identical', () => {
-                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
+            it(`Considers copies of objects identical`, () => {
+                testComponent.control.setValue(new Beast(`mouse`, `Gray`, `0`));
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
         });
 
-        describe('dropdown', () => {
-            it('empty value opens dropdown', () => {
-                testComponent.component.onValueChange('');
+        describe(`dropdown`, () => {
+            it(`empty value opens dropdown`, () => {
+                testComponent.component.onValueChange(``);
                 fixture.detectChanges();
                 expect(testComponent.component.open).toEqual(true);
             });
         });
 
-        describe('readonly state', () => {
+        describe(`readonly state`, () => {
             beforeEach(() => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
             });
 
-            it('should be no icon', () => {
-                fixture.debugElement.query(By.css('.t-icon'));
-                expect(fixture.debugElement.query(By.css('.t-icon'))).toBeFalsy();
+            it(`should be no icon`, () => {
+                fixture.debugElement.query(By.css(`.t-icon`));
+                expect(fixture.debugElement.query(By.css(`.t-icon`))).toBeFalsy();
             });
         });
     });
 
     function getValue(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-combo-box__template');
+        return pageObject.getByAutomationId(`tui-combo-box__template`);
     }
 
     function getCheckmark(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-select-option__checkmark');
+        return pageObject.getByAutomationId(`tui-select-option__checkmark`);
     }
 });

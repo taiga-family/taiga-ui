@@ -6,8 +6,8 @@ import {TuiFileLike} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-files-example-1',
-    templateUrl: './index.html',
+    selector: `tui-input-files-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

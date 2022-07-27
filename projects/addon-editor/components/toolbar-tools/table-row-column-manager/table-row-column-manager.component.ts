@@ -33,8 +33,8 @@ export enum TableComands {
 }
 
 @Component({
-    selector: 'tui-table-row-column-manager',
-    templateUrl: './table-row-column-manager.template.html',
+    selector: `tui-table-row-column-manager`,
+    templateUrl: `./table-row-column-manager.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
@@ -47,7 +47,7 @@ export class TuiTableRowColumnManagerComponent {
         [TuiTableCommands.DeleteRow]: () => this.editor.deleteRow(),
     };
 
-    readonly isActive$ = this.editor.isActive$('table');
+    readonly isActive$ = this.editor.isActive$(`table`);
 
     readonly rowsColumnsManagingText$ = this.texts$.pipe(
         map(texts => texts.rowsColumnsManaging),

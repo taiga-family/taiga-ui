@@ -7,12 +7,12 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_MANUAL_HINT_OPTIONS, TuiManualHintOptions} from './manual-hint-options';
 
 @Directive({
-    selector: '[tuiManualHint]:not(ng-container)',
+    selector: `[tuiManualHint]:not(ng-container)`,
 })
 export class TuiManualHintDirective extends AbstractTuiHint {
-    @Input('tuiManualHint')
+    @Input(`tuiManualHint`)
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     @Input()
     @tuiRequiredSetter()

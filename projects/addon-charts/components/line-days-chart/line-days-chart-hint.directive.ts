@@ -33,16 +33,16 @@ import {
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
 @Directive({
-    selector: '[tuiLineChartHint]',
+    selector: `[tuiLineChartHint]`,
     providers: [TuiDestroyService],
 })
 export class TuiLineDaysChartHintDirective {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
-    @Input('tuiLineChartHint')
+    @Input(`tuiLineChartHint`)
     @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = ``;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,

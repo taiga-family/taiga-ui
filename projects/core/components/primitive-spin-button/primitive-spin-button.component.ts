@@ -15,13 +15,13 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
-    selector: 'tui-primitive-spin-button',
+    selector: `tui-primitive-spin-button`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './primitive-spin-button.template.html',
-    styleUrls: ['./primitive-spin-button.style.less'],
+    templateUrl: `./primitive-spin-button.template.html`,
+    styleUrls: [`./primitive-spin-button.style.less`],
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
-    @ViewChild('wrapper')
+    @ViewChild(`wrapper`)
     private readonly wrapper?: ElementRef<HTMLElement>;
 
     @Input()

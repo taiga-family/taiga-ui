@@ -1,4 +1,4 @@
-const EDGE = 'edge/';
+const EDGE = `edge/`;
 
 /**
  * @deprecated: use {@link tuiIsEdgeOlderThan} instead

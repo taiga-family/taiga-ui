@@ -8,8 +8,8 @@ interface User {
 }
 
 @Component({
-    selector: 'tui-stringify-content-example1',
-    templateUrl: './index.html',
+    selector: `tui-stringify-content-example1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -18,12 +18,12 @@ export class TuiStringifyContentExample1 {
 
     readonly items = [
         {
-            name: 'John',
-            surname: 'Cleese',
+            name: `John`,
+            surname: `Cleese`,
         },
         {
-            name: 'Eric',
-            surname: 'Idle',
+            name: `Eric`,
+            surname: `Idle`,
         },
     ];
 

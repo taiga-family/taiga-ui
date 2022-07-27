@@ -3,12 +3,12 @@ import {TuiController} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_CUSTOM_CONTENT =
-    new InjectionToken<TuiTextfieldCustomContentDirective>('tuiTextfieldCustomContent', {
+    new InjectionToken<TuiTextfieldCustomContentDirective>(`tuiTextfieldCustomContent`, {
         factory: customContentDirectiveFactory,
     });
 
 @Directive({
-    selector: '[tuiTextfieldCustomContent]',
+    selector: `[tuiTextfieldCustomContent]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_CUSTOM_CONTENT,
@@ -18,8 +18,8 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT =
 })
 export class TuiTextfieldCustomContentDirective extends TuiController {
     // TODO: 3.0 Remove null
-    @Input('tuiTextfieldCustomContent')
-    customContent: PolymorpheusContent | null = '';
+    @Input(`tuiTextfieldCustomContent`)
+    customContent: PolymorpheusContent | null = ``;
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

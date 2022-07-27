@@ -3,7 +3,7 @@ import {pressedObservable} from '@taiga-ui/cdk/observables';
 import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
 
 @Directive({
-    selector: '[tuiPressedChange]',
+    selector: `[tuiPressedChange]`,
 })
 export class TuiPressedDirective {
     @Output()

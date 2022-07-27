@@ -29,9 +29,9 @@ import {
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({
-    selector: 'tui-checkbox-block',
-    templateUrl: './checkbox-block.template.html',
-    styleUrls: ['./checkbox-block.style.less'],
+    selector: `tui-checkbox-block`,
+    templateUrl: `./checkbox-block.template.html`,
+    styleUrls: [`./checkbox-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -48,19 +48,19 @@ export class TuiCheckboxBlockComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding(`attr.data-tui-host-align`)
     @tuiDefaultProp()
-    contentAlign: TuiHorizontalDirection = 'right';
+    contentAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('class._hidden_checkbox')
+    @HostBinding(`class._hidden_checkbox`)
     @tuiDefaultProp()
     hideCheckbox = false;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'l';
+    size: TuiSizeS | TuiSizeL = `l`;
 
     constructor(
         @Optional()
@@ -79,13 +79,13 @@ export class TuiCheckboxBlockComponent
         return this.checkbox ? this.checkbox.nativeFocusableElement : null;
     }
 
-    @HostBinding('class._active')
+    @HostBinding(`class._active`)
     get checked(): boolean {
         return this.value !== false && this.hideCheckbox;
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.size === 'l' ? 'l' : 'm';
+        return this.size === `l` ? `l` : `m`;
     }
 
     get focused(): boolean {

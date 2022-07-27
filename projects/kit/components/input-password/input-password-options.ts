@@ -21,12 +21,12 @@ export const PASSWORD_ICON_HIDE = ({
     $implicit,
 }: TuiContextWithImplicit<TuiSizeS | TuiSizeL>):
     | 'tuiIconEyeClosed'
-    | 'tuiIconHideLarge' => ($implicit === 's' ? 'tuiIconEyeClosed' : 'tuiIconHideLarge');
+    | 'tuiIconHideLarge' => ($implicit === `s` ? `tuiIconEyeClosed` : `tuiIconHideLarge`);
 
 export const PASSWORD_ICON_SHOW = ({
     $implicit,
 }: TuiContextWithImplicit<TuiSizeS | TuiSizeL>): 'tuiIconEyeOpen' | 'tuiIconShowLarge' =>
-    $implicit === 's' ? 'tuiIconEyeOpen' : 'tuiIconShowLarge';
+    $implicit === `s` ? `tuiIconEyeOpen` : `tuiIconShowLarge`;
 
 /** Default values for the input password options. */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
@@ -37,7 +37,7 @@ export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
 };
 
 export const TUI_INPUT_PASSWORD_OPTIONS = new InjectionToken<TuiInputPasswordOptions>(
-    'Default parameters for input password component',
+    `Default parameters for input password component`,
     {
         factory: () => TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
     },

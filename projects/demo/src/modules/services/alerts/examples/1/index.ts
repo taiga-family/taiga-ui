@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-alerts-example-1',
-    templateUrl: './index.html',
+    selector: `tui-alerts-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -16,6 +16,6 @@ export class TuiAlertsExampleComponent1 {
     ) {}
 
     showNotification(): void {
-        this.alertService.open('A simple option', {label: 'With a heading!'}).subscribe();
+        this.alertService.open(`A simple option`, {label: `With a heading!`}).subscribe();
     }
 }

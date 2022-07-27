@@ -5,8 +5,8 @@ import {interval} from 'rxjs';
 import {startWith} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-let-example-1',
-    templateUrl: './index.html',
+    selector: `tui-let-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

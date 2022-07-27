@@ -15,7 +15,7 @@ export type NotificationTokenOptions = TuiNotificationDefaultOptions;
 /** Default values for the notification options. */
 export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     autoClose: true,
-    label: '',
+    label: ``,
     status: TuiNotification.Info,
     hasIcon: true,
     hasCloseButton: true,
@@ -23,7 +23,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
 };
 
 export const TUI_NOTIFICATION_OPTIONS = new InjectionToken<TuiNotificationDefaultOptions>(
-    'Default parameters for notification alert component',
+    `Default parameters for notification alert component`,
     {
         factory: () => TUI_NOTIFICATION_DEFAULT_OPTIONS,
     },

@@ -15,14 +15,14 @@ import {
 
 // @dynamic
 @Component({
-    selector: 'tui-customization',
-    templateUrl: './customization.template.html',
-    styleUrls: ['./customization.style.less'],
+    selector: `tui-customization`,
+    templateUrl: `./customization.template.html`,
+    styleUrls: [`./customization.style.less`],
     changeDetection,
     providers: TUI_DOC_CUSTOMIZATION_PROVIDERS,
 })
 export class TuiCustomizationComponent implements AfterViewInit {
-    @ViewChild('demo')
+    @ViewChild(`demo`)
     private readonly demo?: TuiDocDemoComponent;
 
     readonly isIE = isIE(this.userAgent);
@@ -71,36 +71,36 @@ export class TuiCustomizationComponent implements AfterViewInit {
     }
 
     isLight(key: string): boolean {
-        return key.includes('onDark');
+        return key.includes(`onDark`);
     }
 
     isDark(key: string): boolean {
-        return key.includes('onLight');
+        return key.includes(`onLight`);
     }
 
     onModelChange(variable: string, value: string | number): void {
         this.variables = {
             ...this.variables,
-            [variable]: typeof value === 'string' ? value : px(value),
+            [variable]: typeof value === `string` ? value : px(value),
         };
     }
 
     getType(key: string): 'number' | 'color' | 'string' {
         const variable = this.variables[key];
 
-        if (key.includes('boxshadow')) {
-            return 'string';
+        if (key.includes(`boxshadow`)) {
+            return `string`;
         }
 
-        return variable.startsWith('#') || variable.startsWith('rgb')
-            ? 'color'
-            : 'number';
+        return variable.startsWith(`#`) || variable.startsWith(`rgb`)
+            ? `color`
+            : `number`;
     }
 
     getVariable(key: string): string | number {
         const variable = this.variables[key];
 
-        return variable.includes('px') ? Number.parseInt(variable, 10) : variable;
+        return variable.includes(`px`) ? Number.parseInt(variable, 10) : variable;
     }
 
     @tuiPure
@@ -117,7 +117,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
     private stringify(variables: Record<string, string>): string {
         return Object.keys(variables).reduce(
             (result, key) => `${key}: ${variables[key]}; ${result}`,
-            '',
+            ``,
         );
     }
 }

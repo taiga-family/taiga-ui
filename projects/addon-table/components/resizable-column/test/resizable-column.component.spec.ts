@@ -5,7 +5,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiResizableColumnComponent} from '../resizable-column.component';
 import {TuiResizableColumnModule} from '../resizable-column.module';
 
-describe('TuiResizableColumnComponent', () => {
+describe(`TuiResizableColumnComponent`, () => {
     @Component({
         template: `
             <table>
@@ -39,7 +39,7 @@ describe('TuiResizableColumnComponent', () => {
         });
     });
 
-    it('compiles', () => {
+    it(`compiles`, () => {
         const fixture = TestBed.createComponent(TestComponent);
 
         fixture.detectChanges();

@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-slider-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-slider-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -16,7 +16,7 @@ export class TuiInputSliderExample3 {
     readonly max = 1_000_000;
     readonly min = 0;
     readonly totalSteps = 100;
-    readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
+    readonly ticksLabels = [`0`, `10K`, `100K`, `500k`, `1000K`];
 
     readonly keySteps: TuiKeySteps = [
         // [percent, value]

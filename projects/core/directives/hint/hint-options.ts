@@ -12,7 +12,7 @@ export interface TuiHintOptions extends TuiAbstractHintOptions {
 }
 
 // TODO: 3.0 remove in ivy compilation
-export const TUI_TOOLTIP_ICON = 'tuiIconTooltipLarge';
+export const TUI_TOOLTIP_ICON = `tuiIconTooltipLarge`;
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
@@ -23,7 +23,7 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 };
 
 export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>(
-    'Default parameters for hint directive',
+    `Default parameters for hint directive`,
     {
         factory: () => TUI_HINT_DEFAULT_OPTIONS,
     },

@@ -16,27 +16,27 @@ import {
 import {Observable} from 'rxjs';
 
 export const STATUS_ICON = {
-    info: 'tuiIconInfo',
-    success: 'tuiIconCheckCircle',
-    error: 'tuiIconCancel',
-    warning: 'tuiIconAttention',
+    info: `tuiIconInfo`,
+    success: `tuiIconCheckCircle`,
+    error: `tuiIconCancel`,
+    warning: `tuiIconAttention`,
 } as const;
 
 // @bad TODO: Think about moving to kit
 @Component({
-    selector: 'tui-notification',
-    templateUrl: './notification.template.html',
-    styleUrls: ['./notification.style.less'],
+    selector: `tui-notification`,
+    templateUrl: `./notification.template.html`,
+    styleUrls: [`./notification.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNotificationComponent {
     @Input()
-    @HostBinding('class._has-icon')
+    @HostBinding(`class._has-icon`)
     @tuiDefaultProp()
     hasIcon = this.options.hasIcon;
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
     status: 'info' | 'error' | 'warning' | 'success' = this.options.status;
 
@@ -53,7 +53,7 @@ export class TuiNotificationComponent {
         return STATUS_ICON[this.status];
     }
 
-    @HostBinding('class._has-close-button')
+    @HostBinding(`class._has-close-button`)
     get hasClose(): boolean {
         return !!this.close.observers.length;
     }

@@ -23,17 +23,17 @@ import {TuiFieldErrorComponent} from '../field-error.component';
 import {TuiFieldErrorModule} from '../field-error.module';
 
 const ZIP_CODE_REGEXP = /^\d{6}$/;
-const ZIP_CODE_MESSAGE = 'Индекс - 6 цифр';
+const ZIP_CODE_MESSAGE = `Индекс - 6 цифр`;
 
 const testContext = {
     get prefix() {
-        return 'tui-error__';
+        return `tui-error__`;
     },
 };
 
 function arrayValidator(array: AbstractControl): ValidationErrors | null {
     return array instanceof FormArray && array.controls.length < 2
-        ? {length: new TuiValidationError('Invalid array length')}
+        ? {length: new TuiValidationError(`Invalid array length`)}
         : null;
 }
 
@@ -51,7 +51,7 @@ function formGroupValidator(form: AbstractControl): ValidationErrors | null {
         }
     }
 
-    return error ? {error: new TuiValidationError('There are empty values')} : null;
+    return error ? {error: new TuiValidationError(`There are empty values`)} : null;
 }
 
 function zipCodeValidator(field: AbstractControl): ValidationErrors | null {
@@ -69,8 +69,8 @@ function getZipCodeValidatorWithContent(
             : {zipCode: new TuiValidationError(content)};
 }
 
-describe('FieldError', () => {
-    describe('formArray', () => {
+describe(`FieldError`, () => {
+    describe(`formArray`, () => {
         @Component({
             template: `
                 <div [formGroup]="testForm">
@@ -83,15 +83,15 @@ describe('FieldError', () => {
             component!: TuiFieldErrorComponent;
 
             testForm = new FormGroup({
-                formArray: new FormArray([new FormControl('')], [arrayValidator]),
+                formArray: new FormArray([new FormControl(``)], [arrayValidator]),
             });
 
             get formData(): FormArray {
-                return <FormArray>this.testForm.get('formArray');
+                return <FormArray>this.testForm.get(`formArray`);
             }
 
             addItem(): void {
-                this.formData.push(new FormControl(''));
+                this.formData.push(new FormControl(``));
             }
         }
 
@@ -119,15 +119,15 @@ describe('FieldError', () => {
             fixture.detectChanges();
         });
 
-        it('Validator error output due to incorrect length', () => {
+        it(`Validator error output due to incorrect length`, () => {
             testComponent.formData.markAsTouched();
             fixture.detectChanges();
 
             expect(isErrorVisible(pageObject)).toBe(true);
-            expect(getErrorText(pageObject)).toBe('Invalid array length');
+            expect(getErrorText(pageObject)).toBe(`Invalid array length`);
         });
 
-        it('If the conditions of the validator are met, hide the error', () => {
+        it(`If the conditions of the validator are met, hide the error`, () => {
             testComponent.addItem();
             fixture.detectChanges();
 
@@ -135,7 +135,7 @@ describe('FieldError', () => {
         });
     });
 
-    describe('formGroup', () => {
+    describe(`formGroup`, () => {
         @Component({
             template: `
                 <div [formGroup]="testForm">
@@ -152,8 +152,8 @@ describe('FieldError', () => {
 
             testForm = new FormGroup(
                 {
-                    item_1: new FormControl(''),
-                    item_2: new FormControl(''),
+                    item_1: new FormControl(``),
+                    item_2: new FormControl(``),
                 },
                 [formGroupValidator],
             );
@@ -180,25 +180,25 @@ describe('FieldError', () => {
             fixture.detectChanges();
         });
 
-        it('Displaying validator error due to lack of value from form checkers', () => {
-            testComponent.testForm.controls.item_1.setValue('test');
+        it(`Displaying validator error due to lack of value from form checkers`, () => {
+            testComponent.testForm.controls.item_1.setValue(`test`);
             testComponent.testForm.markAsTouched();
             fixture.detectChanges();
 
             expect(isErrorVisible(pageObject)).toBe(true);
-            expect(getErrorText(pageObject)).toBe('There are empty values');
+            expect(getErrorText(pageObject)).toBe(`There are empty values`);
         });
 
-        it('If the conditions of the validator are met, hide the error', () => {
-            testComponent.testForm.controls.item_1.setValue('test');
-            testComponent.testForm.controls.item_2.setValue('test');
+        it(`If the conditions of the validator are met, hide the error`, () => {
+            testComponent.testForm.controls.item_1.setValue(`test`);
+            testComponent.testForm.controls.item_2.setValue(`test`);
             fixture.detectChanges();
 
             expect(isErrorVisible(pageObject)).toBe(false);
         });
     });
 
-    describe('formControlName', () => {
+    describe(`formControlName`, () => {
         @Component({
             template: `
                 <form [formGroup]="testForm">
@@ -219,7 +219,7 @@ describe('FieldError', () => {
             `,
         })
         class TestComponent {
-            @ViewChild('errorContent', {static: true})
+            @ViewChild(`errorContent`, {static: true})
             errorContent!: PolymorpheusTemplate<Record<string, unknown>>;
 
             readonly testMes = ZIP_CODE_MESSAGE;
@@ -252,33 +252,33 @@ describe('FieldError', () => {
             fixture = TestBed.createComponent(TestComponent);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
-            input = testComponent.testForm.controls['control'];
+            input = testComponent.testForm.controls[`control`];
 
             inputPO = new TuiNativeInputPO(
                 fixture,
-                'tui-primitive-textfield__native-input',
+                `tui-primitive-textfield__native-input`,
             );
         });
 
-        describe('untouched', () => {
-            it('The error is not shown in an empty field', () => {
+        describe(`untouched`, () => {
+            it(`The error is not shown in an empty field`, () => {
                 input.setValidators([Validators.required]);
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(false);
             });
 
-            it('The error is not shown in the filled field', () => {
+            it(`The error is not shown in the filled field`, () => {
                 input.setValidators([zipCodeValidator]);
-                input.setValue('012');
+                input.setValue(`012`);
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(false);
             });
         });
 
-        describe('touched', () => {
-            it('Default error shown for standard validator', () => {
+        describe(`touched`, () => {
+            it(`Default error shown for standard validator`, () => {
                 input.setValidators([Validators.required]);
                 input.markAsTouched();
                 fixture.detectChanges();
@@ -286,12 +286,12 @@ describe('FieldError', () => {
                 const errorText = getErrorText(pageObject);
 
                 expect(isErrorVisible(pageObject)).toBe(true);
-                expect(errorText).toBe('Value is invalid');
+                expect(errorText).toBe(`Value is invalid`);
             });
 
-            it('For a custom validator with a string, the corresponding error text is shown', () => {
+            it(`For a custom validator with a string, the corresponding error text is shown`, () => {
                 input.setValidators([zipCodeValidator]);
-                input.setValue('012');
+                input.setValue(`012`);
                 input.markAsTouched();
                 fixture.detectChanges();
 
@@ -301,11 +301,11 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('For a custom validator with a template, the corresponding error text is shown', () => {
+            it(`For a custom validator with a template, the corresponding error text is shown`, () => {
                 const content = testComponent.errorContent;
 
                 input.setValidators([getZipCodeValidatorWithContent(content)]);
-                input.setValue('012');
+                input.setValue(`012`);
                 input.markAsTouched();
                 fixture.detectChanges();
 
@@ -315,13 +315,13 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('If you enter a correct value in an invalid field, the error is hidden', async () => {
+            it(`If you enter a correct value in an invalid field, the error is hidden`, async () => {
                 input.setValidators([zipCodeValidator]);
-                input.setValue('012');
+                input.setValue(`012`);
                 input.markAsTouched();
                 fixture.detectChanges();
 
-                inputPO.sendText('012345');
+                inputPO.sendText(`012345`);
                 fixture.detectChanges();
 
                 await fixture.whenStable();
@@ -329,37 +329,37 @@ describe('FieldError', () => {
                 expect(isErrorVisible(pageObject)).toBe(false);
             });
 
-            it('If you enter an incorrect value in a valid field, an error appears', () => {
+            it(`If you enter an incorrect value in a valid field, an error appears`, () => {
                 input.setValidators([zipCodeValidator]);
-                input.setValue('012345');
+                input.setValue(`012345`);
                 input.markAsTouched();
                 fixture.detectChanges();
 
-                inputPO.sendText('012');
+                inputPO.sendText(`012`);
 
                 expect(isErrorVisible(pageObject)).toBe(true);
                 expect(getErrorText(pageObject)).toBe(ZIP_CODE_MESSAGE);
             });
         });
 
-        describe('Custom error order', () => {
-            it('Errors are displayed in the specified order', () => {
-                testComponent.order = ['required', 'zipCode'];
+        describe(`Custom error order`, () => {
+            it(`Errors are displayed in the specified order`, () => {
+                testComponent.order = [`required`, `zipCode`];
                 input.setValidators([Validators.required, zipCodeValidator]);
                 input.markAsTouched();
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(true);
-                expect(getErrorText(pageObject)).toBe('Value is invalid');
+                expect(getErrorText(pageObject)).toBe(`Value is invalid`);
             });
 
-            it('Changing the order changes the error text', () => {
-                testComponent.order = ['required', 'zipCode'];
+            it(`Changing the order changes the error text`, () => {
+                testComponent.order = [`required`, `zipCode`];
                 input.setValidators([Validators.required, zipCodeValidator]);
                 input.markAsTouched();
                 fixture.detectChanges();
 
-                testComponent.order = ['zipCode', 'required'];
+                testComponent.order = [`zipCode`, `required`];
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(true);
@@ -375,7 +375,7 @@ describe('FieldError', () => {
     }
 
     function getErrorText<T>(pageObject: TuiPageObject<T>): string {
-        return getErrorElement(pageObject)?.nativeElement.textContent.trim() || '';
+        return getErrorElement(pageObject)?.nativeElement.textContent.trim() || ``;
     }
 
     function getErrorElement<T>(pageObject: TuiPageObject<T>): DebugElement | null {

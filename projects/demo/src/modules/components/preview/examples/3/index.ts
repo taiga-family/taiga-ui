@@ -8,23 +8,23 @@ import {BehaviorSubject, Observable, of, timer} from 'rxjs';
 import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-preview-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-preview-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiPreviewExample3 {
-    @ViewChild('preview')
+    @ViewChild(`preview`)
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     readonly items = [
         {
-            title: 'some table.xlsx',
+            title: `some table.xlsx`,
             hasPreview: false,
         },
         {
-            title: 'Content #2',
+            title: `Content #2`,
             hasPreview: true,
         },
     ];
@@ -42,11 +42,11 @@ export class TuiPreviewExample3 {
 
     readonly imageSrc$ = this.item$.pipe(
         switchMap(item =>
-            item.hasPreview ? this.emulateBackendRequest().pipe(startWith('')) : of(null),
+            item.hasPreview ? this.emulateBackendRequest().pipe(startWith(``)) : of(null),
         ),
     );
 
-    readonly loading$ = this.imageSrc$.pipe(map(src => src === ''));
+    readonly loading$ = this.imageSrc$.pipe(map(src => src === ``));
 
     constructor(
         @Inject(PreviewDialogService)
@@ -54,16 +54,16 @@ export class TuiPreviewExample3 {
     ) {}
 
     show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview || ``).subscribe();
     }
 
     download(): void {
-        console.info('downloading...');
+        console.info(`downloading...`);
     }
 
     emulateBackendRequest(): Observable<string> {
         return timer(1500).pipe(
-            mapTo('https://ng-web-apis.github.io/dist/assets/images/web-api.svg'),
+            mapTo(`https://ng-web-apis.github.io/dist/assets/images/web-api.svg`),
         );
     }
 }

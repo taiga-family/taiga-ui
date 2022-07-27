@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/kit';
 
-describe('Tag component options', () => {
+describe(`Tag component options`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -22,8 +22,8 @@ describe('Tag component options', () => {
             declarations: [TestComponent],
             providers: [
                 tuiTagOptionsProvider({
-                    size: 'l',
-                    status: 'error',
+                    size: `l`,
+                    status: `error`,
                     autoColor: true,
                 }),
             ],
@@ -34,9 +34,9 @@ describe('Tag component options', () => {
         fixture.detectChanges();
     });
 
-    it('override by custom options', () => {
-        expect(testComponent.component.size).toEqual('l');
-        expect(testComponent.component.status).toEqual('error');
+    it(`override by custom options`, () => {
+        expect(testComponent.component.size).toEqual(`l`);
+        expect(testComponent.component.status).toEqual(`error`);
         expect(testComponent.component.autoColor).toEqual(true);
     });
 });

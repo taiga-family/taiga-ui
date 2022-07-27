@@ -5,23 +5,23 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {getPaymentSystem} from '@taiga-ui/addon-commerce';
 
 @Component({
-    selector: 'tui-miscellaneous-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-miscellaneous-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiMiscellaneousExample4 {
     readonly items = [
-        '6734567890123456',
-        '5536567890123456',
-        '2202567890123456',
-        '4405567890123456',
-        '4000567890123456',
+        `6734567890123456`,
+        `5536567890123456`,
+        `2202567890123456`,
+        `4405567890123456`,
+        `4000567890123456`,
     ];
 
     parametersForm = new FormGroup({
-        cardNumber: new FormControl(''),
+        cardNumber: new FormControl(``),
     });
 
     get paymentSystem(): string | null {

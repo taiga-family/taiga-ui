@@ -4,13 +4,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiHintOptionsProvider} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-tooltip-example-4',
-    templateUrl: './index.html',
+    selector: `tui-tooltip-example-4`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiHintOptionsProvider({
-            tooltipIcon: 'tuiIconCameraLarge',
+            tooltipIcon: `tuiIconCameraLarge`,
         }),
     ],
 })

@@ -4,12 +4,12 @@ export const viewportWidth = 1440;
 export const viewportHeight = 900;
 
 export default defineConfig({
-    projectId: 'sorry-cypress',
+    projectId: `sorry-cypress`,
     video: false,
     viewportWidth,
     viewportHeight,
-    fixturesFolder: 'cypress/fixtures',
-    screenshotsFolder: 'cypress/screenshots',
+    fixturesFolder: `cypress/fixtures`,
+    screenshotsFolder: `cypress/screenshots`,
 
     /**
      * @description:
@@ -34,16 +34,16 @@ export default defineConfig({
     numTestsKeptInMemory: 50,
 
     e2e: {
-        specPattern: 'cypress/tests/**/*.spec.ts',
-        supportFile: 'cypress/support/e2e.ts',
-        baseUrl: 'http://localhost:3333',
+        specPattern: `cypress/tests/**/*.spec.ts`,
+        supportFile: `cypress/support/e2e.ts`,
+        baseUrl: `http://localhost:3333`,
         /**
          * @description:
          * We've imported your old cypress plugins here.
          * You may want to clean this up later by importing these.
          */
         setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
-            return require('./cypress/plugins/index.ts').default(on, config);
+            return require(`./cypress/plugins/index.ts`).default(on, config);
         },
     },
 });

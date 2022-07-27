@@ -17,7 +17,7 @@ class ExampleTransformer implements TuiControlValueTransformer<From, To> {
 }
 
 @Directive({
-    selector: 'tui-input-date[toNativeDate]',
+    selector: `tui-input-date[toNativeDate]`,
     providers: [
         {
             provide: TUI_DATE_VALUE_TRANSFORMER,

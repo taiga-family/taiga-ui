@@ -1,20 +1,20 @@
 const DEEP_PATHS = [
     /* CORE */
-    'components/button',
-    'components/calendar',
-    'components/group',
-    'components/link',
-    'components/notification',
+    `components/button`,
+    `components/calendar`,
+    `components/group`,
+    `components/link`,
+    `components/notification`,
     /* KIT */
-    'components/avatar',
-    'components/badge',
-    'components/badged-content',
-    'components/calendar-month',
-    'components/filter',
-    'components/island',
-    'components/marker-icon',
-    'navigation/stepper',
-    'components/toggle',
+    `components/avatar`,
+    `components/badge`,
+    `components/badged-content`,
+    `components/calendar-month`,
+    `components/filter`,
+    `components/island`,
+    `components/marker-icon`,
+    `navigation/stepper`,
+    `components/toggle`,
 ];
 
 const toggleExclusions: Record<string, readonly number[]> = {
@@ -35,8 +35,8 @@ const makeDemoSnapshot = (
     optionIndex: number,
 ): void => {
     cy.wrap($input)
-        .parents('table.t-table tr')
-        .find('[automation-id="tui-documentation__property-name"]')
+        .parents(`table.t-table tr`)
+        .find(`[automation-id="tui-documentation__property-name"]`)
         .then(propertyName$ => propertyName$.text().trim())
         .then(property => {
             return cy
@@ -46,7 +46,7 @@ const makeDemoSnapshot = (
         });
 };
 
-describe('Deep', () => {
+describe(`Deep`, () => {
     for (const path of DEEP_PATHS) {
         it(path, () => {
             let counter = 1;
@@ -85,10 +85,10 @@ describe('Deep', () => {
                     .click({force: true});
             });
 
-            cy.get('table.t-table')
+            cy.get(`table.t-table`)
                 .then($table =>
-                    $table.find('tui-toggle').length
-                        ? cy.get('table.t-table tui-toggle')
+                    $table.find(`tui-toggle`).length
+                        ? cy.get(`table.t-table tui-toggle`)
                         : [],
                 )
                 .each((toggle$, index) => {

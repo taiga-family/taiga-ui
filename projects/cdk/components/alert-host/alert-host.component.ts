@@ -13,9 +13,9 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-alert-host',
-    templateUrl: './alert-host.template.html',
-    styleUrls: ['./alert-host.style.less'],
+    selector: `tui-alert-host`,
+    templateUrl: `./alert-host.template.html`,
+    styleUrls: [`./alert-host.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [TUI_PARENT_ANIMATION],
     encapsulation: ViewEncapsulation.None,

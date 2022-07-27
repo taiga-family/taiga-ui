@@ -15,10 +15,10 @@ import {Subject} from 'rxjs';
 import {TuiBreadcrumbDirective} from './breadcrumb.directive';
 
 @Component({
-    selector: 'tui-breadcrumbs:not([items])',
+    selector: `tui-breadcrumbs:not([items])`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './breadcrumbs-wrapper.template.html',
-    styleUrls: ['./breadcrumbs-wrapper.style.less'],
+    templateUrl: `./breadcrumbs-wrapper.template.html`,
+    styleUrls: [`./breadcrumbs-wrapper.style.less`],
     providers: [
         {
             provide: TuiModeDirective,
@@ -28,15 +28,15 @@ import {TuiBreadcrumbDirective} from './breadcrumb.directive';
 })
 export class TuiBreadcrumbsWrapperComponent implements TuiModeDirective {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @ContentChildren(TuiBreadcrumbDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     readonly change$ = new Subject<void>();
-    readonly mode = 'onLight';
+    readonly mode = `onLight`;
 
     ngOnChanges(): void {}
 }

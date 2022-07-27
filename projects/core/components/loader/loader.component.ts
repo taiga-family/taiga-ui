@@ -22,9 +22,9 @@ import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 
 // @dynamic
 @Component({
-    selector: 'tui-loader',
-    templateUrl: './loader.template.html',
-    styleUrls: ['./loader.style.less'],
+    selector: `tui-loader`,
+    templateUrl: `./loader.template.html`,
+    styleUrls: [`./loader.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLoaderComponent {
@@ -56,7 +56,7 @@ export class TuiLoaderComponent {
         this.loading = value;
     }
 
-    @HostBinding('class._loading')
+    @HostBinding(`class._loading`)
     loading = true;
 
     readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;

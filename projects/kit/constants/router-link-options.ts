@@ -1,5 +1,5 @@
 export const DEFAULT_ROUTER_LINK_OPTIONS = {
-    fragment: '',
+    fragment: ``,
     preserveFragment: true,
     replaceUrl: false,
     skipLocationChange: false,

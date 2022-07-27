@@ -6,7 +6,7 @@ export function fixedDropdownControllerFactory(
     directive: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
     directive = directive || new TuiDropdownControllerDirective();
-    directive.limitWidth = 'fixed';
+    directive.limitWidth = `fixed`;
 
     return directive;
 }
@@ -24,7 +24,7 @@ export function leftAlignedDropdownControllerFactory(
     directive: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
     directive = directive || new TuiDropdownControllerDirective();
-    directive.align = 'left';
+    directive.align = `left`;
 
     return directive;
 }

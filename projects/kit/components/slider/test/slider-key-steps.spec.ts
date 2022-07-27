@@ -6,7 +6,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiSliderModule} from '../slider.module';
 
-describe('TuiSliderKeyStepsDirective', () => {
+describe(`TuiSliderKeyStepsDirective`, () => {
     @Component({
         template: `
             <input
@@ -21,7 +21,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         `,
     })
     class TestComponent {
-        @ViewChild('slider', {static: true, read: ElementRef})
+        @ViewChild(`slider`, {static: true, read: ElementRef})
         inputElRef!: ElementRef<HTMLInputElement>;
 
         control = new FormControl(720_000);
@@ -52,10 +52,10 @@ describe('TuiSliderKeyStepsDirective', () => {
         testComponent = fixture.componentInstance;
     });
 
-    describe("correctly sets initial value on native input (values satisfy input's steps)", () => {
-        it('720_000 => 26/30', () => {
+    describe(`correctly sets initial value on native input (values satisfy input's steps)`, () => {
+        it(`720_000 => 26/30`, () => {
             fixture.detectChanges();
-            expect(testComponent.inputElRef.nativeElement.value).toBe('26');
+            expect(testComponent.inputElRef.nativeElement.value).toBe(`26`);
         });
 
         const controlNativeValuesMap = [
@@ -103,7 +103,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         }
     });
 
-    describe("makes correct approximation for native input value from formControl's initial values (which don't satisfy input's steps)", () => {
+    describe(`makes correct approximation for native input value from formControl's initial values (which don't satisfy input's steps)`, () => {
         const testsConditions = [
             {controlValue: 999_999, expectedNativeValue: 30},
             {controlValue: 945_000, expectedNativeValue: 29},
@@ -132,7 +132,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         }
     });
 
-    describe("works with float numbers (even if value doesn't satisfy input's steps)", () => {
+    describe(`works with float numbers (even if value doesn't satisfy input's steps)`, () => {
         beforeEach(() => {
             testComponent.control = new FormControl(null);
             testComponent.keySteps = [
@@ -186,7 +186,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         }
     });
 
-    describe('works even if slider has negative `min`-property', () => {
+    describe(`works even if slider has negative \`min\`-property`, () => {
         beforeEach(() => {
             testComponent.min = -10;
             testComponent.max = 10;
@@ -243,7 +243,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         }
     });
 
-    it('sets the thumb to the `min`-value when the lowest keyStep value equals to the uppermost one', () => {
+    it(`sets the thumb to the \`min\`-value when the lowest keyStep value equals to the uppermost one`, () => {
         testComponent.keySteps = [
             [0, 25_000],
             [100, 25_000],

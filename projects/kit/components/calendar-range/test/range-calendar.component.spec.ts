@@ -26,7 +26,7 @@ export function tuiRangeCalendarTestFactory(
     return control ? tuiReplayedValueChangesFrom(control) : of(null);
 }
 
-describe('rangeCalendarComponent', () => {
+describe(`rangeCalendarComponent`, () => {
     @Component({
         template: `
             <tui-root>
@@ -92,37 +92,37 @@ describe('rangeCalendarComponent', () => {
         fixture.detectChanges();
     });
 
-    it('showing two calendars if items is an empty array', () => {
+    it(`showing two calendars if items is an empty array`, () => {
         testComponent.items = [];
 
         expect(getCalendars()).not.toBeNull();
     });
 
-    describe('points', () => {
+    describe(`points`, () => {
         beforeEach(() => {
             testComponent.items = tuiCreateDefaultDayRangePeriods();
             fixture.detectChanges();
         });
 
-        it('If there are items - one calendar with a menu is shown, and 2 calendars are hidden', () => {
+        it(`If there are items - one calendar with a menu is shown, and 2 calendars are hidden`, () => {
             expect(getCalendar()).not.toBeNull();
         });
 
-        it('Default items from generator', () => {
+        it(`Default items from generator`, () => {
             const items = getItems();
 
             expect(items.length).toBe(7);
         });
 
-        it('If the value does not fit any range, check the box next to "Other date..."', () => {
+        it(`If the value does not fit any range, check the box next to "Other date..."`, () => {
             expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
         });
 
-        it('If the value does not fit the range, the range has no tick', () => {
+        it(`If the value does not fit the range, the range has no tick`, () => {
             expect(getItems()[5].nativeElement.contains(getCheckmark())).toBe(false);
         });
 
-        it('Interval selection takes into account min / max', () => {
+        it(`Interval selection takes into account min / max`, () => {
             const today = TuiDay.currentLocal();
             const startOfMonth = today.append({day: 1 - today.day});
             const startOfLastMonth = startOfMonth.append({month: -1});
@@ -140,7 +140,7 @@ describe('rangeCalendarComponent', () => {
             ).toBe(true);
         });
 
-        it('Intervals that are completely outside min and max are not displayed', () => {
+        it(`Intervals that are completely outside min and max are not displayed`, () => {
             const today = TuiDay.currentLocal();
 
             testComponent.min = TuiDay.currentLocal().append({
@@ -154,16 +154,16 @@ describe('rangeCalendarComponent', () => {
 
             const items = getItems().map(item => item.nativeElement.textContent.trim());
 
-            expect(items.some(item => item === 'Yesterday')).toBe(true);
-            expect(items.some(item => item === 'Today')).toBe(false);
+            expect(items.some(item => item === `Yesterday`)).toBe(true);
+            expect(items.some(item => item === `Today`)).toBe(false);
         });
 
-        it('When redefining intervals, the list always contains "Other date..."', () => {
+        it(`When redefining intervals, the list always contains "Other date..."`, () => {
             const august = new TuiDayRange(
                 new TuiDay(1944, 7, 1),
                 new TuiDay(1944, 7, 31),
             );
-            const title = 'In August 44th';
+            const title = `In August 44th`;
 
             testComponent.items = [new TuiDayRangePeriod(august, title)];
             fixture.detectChanges();
@@ -172,24 +172,24 @@ describe('rangeCalendarComponent', () => {
 
             expect(items.length).toBe(2);
             expect(items[0].nativeElement.textContent.trim()).toBe(title);
-            expect(items[1].nativeElement.textContent.trim()).toBe('Other date...');
+            expect(items[1].nativeElement.textContent.trim()).toBe(`Other date...`);
         });
     });
 
     function getCalendar(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-calendar-range__calendar');
+        return pageObject.getByAutomationId(`tui-calendar-range__calendar`);
     }
 
     function getCalendars(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-calendar-range__calendars');
+        return pageObject.getByAutomationId(`tui-calendar-range__calendars`);
     }
 
     function getCheckmark(): HTMLElement {
-        return pageObject.getByAutomationId('tui-calendar-range__checkmark')!
+        return pageObject.getByAutomationId(`tui-calendar-range__checkmark`)!
             .nativeElement;
     }
 
     function getItems(): DebugElement[] {
-        return pageObject.getAllByAutomationId('tui-calendar-range__menu__item');
+        return pageObject.getAllByAutomationId(`tui-calendar-range__menu__item`);
     }
 });

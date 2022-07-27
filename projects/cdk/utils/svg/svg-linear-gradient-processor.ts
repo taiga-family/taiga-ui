@@ -20,7 +20,7 @@ export function svgLinearGradientProcessor(svg: string, salt?: number | string):
     return uniqueIds.reduce(
         (processed, previousId) =>
             processed.replace(
-                new RegExp(previousId, 'g'),
+                new RegExp(previousId, `g`),
                 `${previousId}_${salt || makeRandomSalt()}`,
             ),
         svg,

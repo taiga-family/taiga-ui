@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_TAG_STATUS, TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 
-describe('InputTag [TUI_TAG_STATUS=neutral]', () => {
+describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
     @Component({
         template: `
             <tui-root>
@@ -21,17 +21,17 @@ describe('InputTag [TUI_TAG_STATUS=neutral]', () => {
                 ></tui-input-tag>
             </tui-root>
         `,
-        providers: [{provide: TUI_TAG_STATUS, useValue: 'neutral'}],
+        providers: [{provide: TUI_TAG_STATUS, useValue: `neutral`}],
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
         component!: TuiInputTagComponent;
 
-        tags = ['Tag1', 'Tag2'];
+        tags = [`Tag1`, `Tag2`];
 
         labelOutside = true;
-        exampleText = 'Example';
-        size: TuiSizeS | TuiSizeL = 's';
+        exampleText = `Example`;
+        size: TuiSizeS | TuiSizeL = `s`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -52,8 +52,8 @@ describe('InputTag [TUI_TAG_STATUS=neutral]', () => {
 
         expect(
             fixture.nativeElement
-                .querySelector('[data-tui-host-status]')
-                ?.getAttribute('data-tui-host-status'),
-        ).toEqual('neutral');
+                .querySelector(`[data-tui-host-status]`)
+                ?.getAttribute(`data-tui-host-status`),
+        ).toEqual(`neutral`);
     });
 });

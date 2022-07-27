@@ -20,15 +20,15 @@ import {EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-select-option',
-    templateUrl: './select-option.template.html',
-    styleUrls: ['./select-option.style.less'],
+    selector: `tui-select-option`,
+    templateUrl: `./select-option.template.html`,
+    styleUrls: [`./select-option.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit {
     readonly selected$ = merge(
         this.control.valueChanges ?? EMPTY,
-        typedFromEvent(this.elementRef.nativeElement, 'animationstart'),
+        typedFromEvent(this.elementRef.nativeElement, `animationstart`),
     ).pipe(
         startWith(null),
         map(() => this.selected),

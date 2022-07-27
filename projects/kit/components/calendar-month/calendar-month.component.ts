@@ -30,9 +30,9 @@ const TODAY = TuiDay.currentLocal();
 
 // @dynamic
 @Component({
-    selector: 'tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
-    styleUrls: ['./calendar-month.style.less'],
+    selector: `tui-calendar-month`,
+    templateUrl: `./calendar-month.template.html`,
+    styleUrls: [`./calendar-month.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
@@ -75,7 +75,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         @Inject(TUI_CALENDAR_MONTHS) readonly months$: Observable<readonly string[]>,
     ) {}
 
-    @HostBinding('class._single')
+    @HostBinding(`class._single`)
     get isSingle(): boolean {
         return (
             this.value !== null &&

@@ -14,22 +14,22 @@ import {
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
+    selector: `example-tui-calendar-month`,
+    templateUrl: `./calendar-month.template.html`,
     changeDetection,
 })
 export class ExampleTuiCalendarMonthComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
     };
 
     readonly minVariants = [TUI_FIRST_DAY, new TuiMonth(2019, 2), new TuiMonth(2007, 0)];

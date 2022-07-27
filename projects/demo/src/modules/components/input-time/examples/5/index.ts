@@ -5,13 +5,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-time-example-5',
-    templateUrl: './index.html',
+    selector: `tui-input-time-example-5`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiInputTimeOptionsProvider({
-            mode: 'HH:MM',
+            mode: `HH:MM`,
             maxValues: {HH: 11, MM: 59, SS: 59, MS: 999},
         }),
     ],
@@ -23,6 +23,6 @@ export class TuiInputTimeExample5 {
     });
 
     get postfix(): string {
-        return this.testForm.value?.isPm ? 'PM' : 'AM';
+        return this.testForm.value?.isPm ? `PM` : `AM`;
     }
 }

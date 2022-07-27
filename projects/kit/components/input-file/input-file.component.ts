@@ -42,9 +42,9 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
 // @dynamic
 @Component({
-    selector: 'tui-input-file',
-    templateUrl: './input-file.template.html',
-    styleUrls: ['./input-file.style.less'],
+    selector: `tui-input-file`,
+    templateUrl: `./input-file.template.html`,
+    styleUrls: [`./input-file.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MODE_PROVIDER,
@@ -62,15 +62,15 @@ export class TuiInputFileComponent
 
     @Input()
     @tuiDefaultProp()
-    link: PolymorpheusContent = '';
+    link: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent = '';
+    label: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    accept = '';
+    accept = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -78,7 +78,7 @@ export class TuiInputFileComponent
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -99,7 +99,7 @@ export class TuiInputFileComponent
     @Output()
     rejectedFilesChange = new EventEmitter<readonly TuiFileLike[]>();
 
-    @ViewChild('input')
+    @ViewChild(`input`)
     readonly input?: ElementRef<HTMLInputElement>;
 
     constructor(
@@ -157,7 +157,7 @@ export class TuiInputFileComponent
     get fileDragged(): boolean {
         return (
             !!this.dataTransfer &&
-            Array.prototype.indexOf.call(this.dataTransfer.types, 'Files') !== -1
+            Array.prototype.indexOf.call(this.dataTransfer.types, `Files`) !== -1
         );
     }
 
@@ -200,7 +200,7 @@ export class TuiInputFileComponent
         units: [string, string, string],
     ): void {
         this.processSelectedFiles(input.files, texts, units);
-        input.value = '';
+        input.value = ``;
     }
 
     onDropped(
@@ -226,7 +226,7 @@ export class TuiInputFileComponent
     }
 
     getAppearance(mode: null | unknown): string {
-        return mode === null ? '' : TuiAppearance.Outline;
+        return mode === null ? `` : TuiAppearance.Outline;
     }
 
     @tuiPure
@@ -236,12 +236,12 @@ export class TuiInputFileComponent
         link: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         if (fileDragged) {
-            return of('');
+            return of(``);
         }
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && link === ''
+                multiple && link === ``
                     ? texts.defaultLinkMultiple
                     : link || texts.defaultLinkSingle,
             ),
@@ -256,7 +256,7 @@ export class TuiInputFileComponent
         label: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         if (isMobile) {
-            return of('');
+            return of(``);
         }
 
         if (fileDragged) {
@@ -267,7 +267,7 @@ export class TuiInputFileComponent
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && label === ''
+                multiple && label === ``
                     ? texts.defaultLabelMultiple
                     : label || texts.defaultLabelSingle,
             ),
@@ -305,7 +305,7 @@ export class TuiInputFileComponent
     private getAcceptArray(accept: string): readonly string[] {
         return accept
             .toLowerCase()
-            .split(',')
+            .split(`,`)
             .map(format => format.trim());
     }
 
@@ -355,14 +355,14 @@ export class TuiInputFileComponent
             return true;
         }
 
-        const extension = `.${(file.name.split('.').pop() || '').toLowerCase()}`;
+        const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
 
         return this.acceptArray.some(
             format =>
                 format === extension ||
                 format === file.type ||
-                (format.split('/')[1] === '*' &&
-                    file.type.split('/')[0] === format.split('/')[0]),
+                (format.split(`/`)[1] === `*` &&
+                    file.type.split(`/`)[0] === format.split(`/`)[0]),
         );
     }
 

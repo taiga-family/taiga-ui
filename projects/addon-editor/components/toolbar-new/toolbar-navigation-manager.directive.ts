@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 
 @Directive({
-    selector: '[tuiToolbarNavigationManager]',
+    selector: `[tuiToolbarNavigationManager]`,
 })
 export class TuiToolbarNavigationManagerDirective {
     constructor(
@@ -19,13 +19,13 @@ export class TuiToolbarNavigationManagerDirective {
     private get toolsContainers(): readonly HTMLElement[] {
         return Array.from(
             this.elementRef.nativeElement.querySelectorAll<HTMLElement>(
-                '[tuiToolbarTool]',
+                `[tuiToolbarTool]`,
             ),
         );
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['false'])
-    @HostListener('keydown.arrowLeft.prevent', ['true'])
+    @HostListener(`keydown.arrowRight.prevent`, [`false`])
+    @HostListener(`keydown.arrowLeft.prevent`, [`true`])
     onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
         const focusedToolIndex = toolsContainers.findIndex(isNativeFocusedIn);

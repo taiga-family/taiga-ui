@@ -5,8 +5,8 @@ import {Observable} from 'rxjs';
 import {TuiElasticStickyService} from './elastic-sticky.service';
 
 @Directive({
-    selector: '[tuiElasticSticky]',
-    exportAs: 'tuiElasticSticky',
+    selector: `[tuiElasticSticky]`,
+    exportAs: `tuiElasticSticky`,
     providers: [TuiElasticStickyService, TuiDestroyService],
 })
 export class TuiElasticStickyDirective {

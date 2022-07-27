@@ -7,9 +7,9 @@ export function tuiFormatFractionPart(options: {
     numberFormat: TuiNumberFormatSettings;
 }): string {
     const {value, decimal, numberFormat, precision} = options;
-    const fraction = value.toFixed(precision).split('.')[1];
+    const fraction = value.toFixed(precision).split(`.`)[1];
     const shouldShow =
-        decimal !== 'never' && (decimal === 'always' || !!parseInt(fraction, 10));
+        decimal !== `never` && (decimal === `always` || !!parseInt(fraction, 10));
 
-    return shouldShow ? `${numberFormat.decimalSeparator}${fraction}` : '';
+    return shouldShow ? `${numberFormat.decimalSeparator}${fraction}` : ``;
 }

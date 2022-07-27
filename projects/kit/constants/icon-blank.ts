@@ -1,1 +1,1 @@
-export const iconBlank = '<svg></svg>';
+export const iconBlank = `<svg></svg>`;

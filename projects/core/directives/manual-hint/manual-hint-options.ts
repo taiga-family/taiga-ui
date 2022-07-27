@@ -12,7 +12,7 @@ export const TUI_MANUAL_HINT_DEFAULT_OPTIONS: TuiManualHintOptions = {
 };
 
 export const TUI_MANUAL_HINT_OPTIONS = new InjectionToken<TuiManualHintOptions>(
-    'Default parameters for manual hint directive',
+    `Default parameters for manual hint directive`,
     {
         factory: () => TUI_MANUAL_HINT_DEFAULT_OPTIONS,
     },

@@ -6,9 +6,9 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {PromptOptions} from './prompt-options';
 
 @Component({
-    selector: 'prompt',
-    templateUrl: './prompt.template.html',
-    styleUrls: ['./prompt.style.less'],
+    selector: `prompt`,
+    templateUrl: `./prompt.template.html`,
+    styleUrls: [`./prompt.style.less`],
     changeDetection,
 })
 export class PromptComponent {

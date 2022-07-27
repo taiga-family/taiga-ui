@@ -30,20 +30,20 @@ import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
 export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
 
 @Component({
-    selector: 'tui-tag, a[tuiTag]',
-    templateUrl: './tag.template.html',
-    styleUrls: ['./tag.style.less'],
+    selector: `tui-tag, a[tuiTag]`,
+    templateUrl: `./tag.template.html`,
+    styleUrls: [`./tag.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiTagComponent {
     // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
     @tuiDefaultProp()
-    value = '';
+    value = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -56,14 +56,14 @@ export class TuiTagComponent {
 
     @Input()
     @tuiDefaultProp()
-    separator: string | RegExp = ',';
+    separator: string | RegExp = `,`;
 
     @Input()
     @tuiDefaultProp()
     maxLength: number | null = null;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = this.options.size;
 
@@ -72,12 +72,12 @@ export class TuiTagComponent {
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
     status: TuiStatusT = this.options.status;
 
     @Input()
-    @HostBinding('class._hoverable')
+    @HostBinding(`class._hoverable`)
     @tuiDefaultProp()
     hoverable = false;
 
@@ -86,12 +86,12 @@ export class TuiTagComponent {
     removable = false;
 
     @Input()
-    @HostBinding('class._disabled')
+    @HostBinding(`class._disabled`)
     @tuiDefaultProp()
     disabled = false;
 
     @Input()
-    @HostBinding('class._autocolor')
+    @HostBinding(`class._autocolor`)
     @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
@@ -103,12 +103,12 @@ export class TuiTagComponent {
     @Output()
     readonly edited = new EventEmitter<string>();
 
-    @HostBinding('class._editing')
+    @HostBinding(`class._editing`)
     editing = false;
 
     editedText: string | null = null;
 
-    @ViewChild('input', {read: ElementRef})
+    @ViewChild(`input`, {read: ElementRef})
     set input(input: ElementRef<HTMLInputElement>) {
         if (input) {
             setNativeFocused(input.nativeElement);
@@ -134,15 +134,15 @@ export class TuiTagComponent {
     }
 
     get loaderSize(): TuiSizeXS {
-        return sizeBigger(this.size) ? 's' : 'xs';
+        return sizeBigger(this.size) ? `s` : `xs`;
     }
 
-    @HostBinding('class._has-icon')
+    @HostBinding(`class._has-icon`)
     get hasIcon(): boolean {
         return this.showLoader || this.removable;
     }
 
-    @HostListener('keydown.enter', ['$event'])
+    @HostListener(`keydown.enter`, [`$event`])
     edit(event: Event): void {
         if (!this.canEdit) {
             return;
@@ -153,8 +153,8 @@ export class TuiTagComponent {
         this.editedText = this.value;
     }
 
-    @HostListener('keydown.delete', ['$event'])
-    @HostListener('keydown.backspace', ['$event'])
+    @HostListener(`keydown.delete`, [`$event`])
+    @HostListener(`keydown.backspace`, [`$event`])
     remove(event: Event): void {
         if (!this.canRemove) {
             return;
@@ -162,7 +162,7 @@ export class TuiTagComponent {
 
         event.preventDefault();
         event.stopPropagation();
-        this.edited.emit('');
+        this.edited.emit(``);
     }
 
     onInput(value: string): void {
@@ -183,12 +183,12 @@ export class TuiTagComponent {
         event.stopPropagation();
 
         switch (event.key.toLowerCase()) {
-            case 'enter':
+            case `enter`:
                 event.preventDefault();
-                this.save(this.editedText || '');
+                this.save(this.editedText || ``);
                 break;
-            case 'escape':
-            case 'esc':
+            case `escape`:
+            case `esc`:
                 event.preventDefault();
                 this.stopEditing();
                 setNativeFocused(this.elementRef.nativeElement);

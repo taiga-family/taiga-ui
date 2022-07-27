@@ -7,8 +7,8 @@
 // @bad TODO: convert stringHashToHsl to stringHashToRgb
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function stringHashToHsl(value: string): string {
-    if (value === '') {
-        return '';
+    if (value === ``) {
+        return ``;
     }
 
     let hash = 0;

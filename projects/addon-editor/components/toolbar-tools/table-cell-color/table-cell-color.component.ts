@@ -12,9 +12,9 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-table-cell-color',
-    templateUrl: './table-cell-color.template.html',
-    styleUrls: ['../tools-common.less'],
+    selector: `tui-table-cell-color`,
+    templateUrl: `./table-cell-color.template.html`,
+    styleUrls: [`../tools-common.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCellColorComponent {
@@ -24,7 +24,7 @@ export class TuiTableCellColorComponent {
 
     readonly cellColorText$ = this.texts$.pipe(map(texts => texts.cellColor));
 
-    readonly isActive$ = this.editor.isActive$('table');
+    readonly isActive$ = this.editor.isActive$(`table`);
 
     readonly cellColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getCellColor() || this.defaultOptions.blankColor),

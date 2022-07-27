@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-table-filters-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-table-filters-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -16,11 +16,11 @@ export class TuiTableFiltersExample1 {
     });
 
     readonly data = [
-        {name: 'Alex Inkin', balance: 1323525},
-        {name: 'Roman Sedov', balance: 523242},
-        {name: 'Vladimir Potekhin', balance: 645465},
-        {name: 'Nikita Barsukov', balance: 468468},
-        {name: 'Maxim Ivanov', balance: 498654},
+        {name: `Alex Inkin`, balance: 1323525},
+        {name: `Roman Sedov`, balance: 523242},
+        {name: `Vladimir Potekhin`, balance: 645465},
+        {name: `Nikita Barsukov`, balance: 468468},
+        {name: `Maxim Ivanov`, balance: 498654},
     ] as const;
 
     readonly columns = Object.keys(this.data[0]);

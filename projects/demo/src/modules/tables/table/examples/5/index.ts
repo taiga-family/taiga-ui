@@ -11,29 +11,29 @@ interface User {
 
 const TODAY = TuiDay.currentLocal();
 const FIRST = [
-    'John',
-    'Jane',
-    'Jack',
-    'Jill',
-    'James',
-    'Joan',
-    'Jim',
-    'Julia',
-    'Joe',
-    'Julia',
+    `John`,
+    `Jane`,
+    `Jack`,
+    `Jill`,
+    `James`,
+    `Joan`,
+    `Jim`,
+    `Julia`,
+    `Joe`,
+    `Julia`,
 ];
 
 const LAST = [
-    'Smith',
-    'West',
-    'Brown',
-    'Jones',
-    'Davis',
-    'Miller',
-    'Johnson',
-    'Jackson',
-    'Williams',
-    'Wilson',
+    `Smith`,
+    `West`,
+    `Brown`,
+    `Jones`,
+    `Davis`,
+    `Miller`,
+    `Johnson`,
+    `Jackson`,
+    `Williams`,
+    `Wilson`,
 ];
 
 const DATA: readonly User[] = Array.from({length: 300}, () => ({
@@ -44,16 +44,16 @@ const DATA: readonly User[] = Array.from({length: 300}, () => ({
 }));
 
 @Component({
-    selector: 'tui-table-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-table-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiTableExample5 {
     readonly data = DATA;
 
-    readonly columns = ['name', 'dob', 'age'];
+    readonly columns = [`name`, `dob`, `age`];
 
     readonly ageSorter: TuiComparator<User> = (a: User, b: User) => getAge(a) - getAge(b);
 

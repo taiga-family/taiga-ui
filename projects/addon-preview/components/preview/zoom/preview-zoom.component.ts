@@ -15,9 +15,9 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 const STEP = 0.5;
 
 @Component({
-    selector: 'tui-preview-zoom',
-    templateUrl: './preview-zoom.template.html',
-    styleUrls: ['./preview-zoom.style.less'],
+    selector: `tui-preview-zoom`,
+    templateUrl: `./preview-zoom.template.html`,
+    styleUrls: [`./preview-zoom.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoomComponent {

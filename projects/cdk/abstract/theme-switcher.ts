@@ -19,7 +19,7 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
             return;
         }
 
-        const styles = this.documentRef.head.querySelectorAll('style');
+        const styles = this.documentRef.head.querySelectorAll(`style`);
 
         (<typeof AbstractTuiThemeSwitcher>this.constructor).style =
             styles[styles.length - 1];

@@ -6,8 +6,8 @@ import {TuiDialogContext, TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-multi-select-example-9',
-    templateUrl: './index.html',
+    selector: `tui-multi-select-example-9`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -15,12 +15,12 @@ export class TuiMultiSelectExample9 {
     readonly testValue = new FormControl([]);
 
     readonly items: readonly string[] = [
-        'Luke Skywalker',
-        'Leia Organa Solo',
-        'Darth Vader',
-        'Han Solo',
-        'Obi-Wan Kenobi',
-        'Yoda',
+        `Luke Skywalker`,
+        `Leia Organa Solo`,
+        `Darth Vader`,
+        `Han Solo`,
+        `Obi-Wan Kenobi`,
+        `Yoda`,
     ];
 
     constructor(

@@ -1,13 +1,13 @@
 import {TuiIdService} from '../id.service';
 
-describe('TuiIdService', () => {
+describe(`TuiIdService`, () => {
     let service: TuiIdService;
 
     beforeEach(() => {
         service = new TuiIdService();
     });
 
-    it('increments number of id', () => {
+    it(`increments number of id`, () => {
         const id1 = service.generate();
         const id2 = service.generate();
         const match1 = id1.match(/\d/);

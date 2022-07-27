@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-tag-example-1',
-    templateUrl: './index.html',
+    selector: `tui-tag-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiTagExample1 {
-    tag = 'Hello';
+    tag = `Hello`;
 }

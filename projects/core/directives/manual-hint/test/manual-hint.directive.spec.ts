@@ -9,7 +9,7 @@ import {TuiManualHintModule} from '../manual-hint.module';
 
 type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
 
-describe('ManualHint', () => {
+describe(`ManualHint`, () => {
     @Component({
         template: `
             <tui-root>
@@ -37,7 +37,7 @@ describe('ManualHint', () => {
         ],
     })
     class TestComponent {
-        hint: Hint = 'Tooltip text';
+        hint: Hint = `Tooltip text`;
         show = false;
         host = true;
     }
@@ -58,13 +58,13 @@ describe('ManualHint', () => {
     });
 
     beforeEach(() => {
-        document.body.style.margin = '0';
+        document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    it('Tooltip is showed with flag', fakeAsync(() => {
+    it(`Tooltip is showed with flag`, fakeAsync(() => {
         component.show = true;
 
         fixture.detectChanges();
@@ -73,7 +73,7 @@ describe('ManualHint', () => {
         expect(getTooltip()).not.toBeNull();
     }));
 
-    it('Tooltip disappears if host disappears with flag', async () => {
+    it(`Tooltip disappears if host disappears with flag`, async () => {
         component.show = true;
 
         fixture.detectChanges();
@@ -88,7 +88,7 @@ describe('ManualHint', () => {
         expect(getTooltip()).toBeNull();
     });
 
-    it('Tooltip is not showed with no flag', async () => {
+    it(`Tooltip is not showed with no flag`, async () => {
         component.show = false;
 
         fixture.detectChanges();
@@ -99,6 +99,6 @@ describe('ManualHint', () => {
     });
 
     function getTooltip(): Element | null {
-        return document.querySelector('[automation-id=tui-hint-box__tooltip]');
+        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
     }
 });

@@ -1,9 +1,9 @@
 import {tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
-describe('tryParseMarkdown', () => {
-    const codeSection = '```';
+describe(`tryParseMarkdown`, () => {
+    const codeSection = `\`\`\``;
 
-    it('should be correct parse markdown', () => {
+    it(`should be correct parse markdown`, () => {
         const tsCode = `
 import {TuiAvatarModule} from '@taiga-ui/kit';
 
@@ -32,10 +32,10 @@ ${codeSection}\nContent without type\n${codeSection}
 ${codeSection}html\n${htmlCode}\n${codeSection}
         `,
             ),
-        ).toEqual([`${tsCode}\n`, 'Content without type\n', `${htmlCode}\n`]);
+        ).toEqual([`${tsCode}\n`, `Content without type\n`, `${htmlCode}\n`]);
     });
 
-    it('should correct parse plain text', () => {
+    it(`should correct parse plain text`, () => {
         const txt = `
 // ...
 
@@ -52,7 +52,7 @@ export class MyAvatarModule {
         expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
     });
 
-    it('correct parse typescript file as plain text', () => {
+    it(`correct parse typescript file as plain text`, () => {
         const txt = `
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
@@ -76,7 +76,7 @@ export class TuiRatingExample1 {
         expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
     });
 
-    it('should be correct parse with deep markdown in variable', () => {
+    it(`should be correct parse with deep markdown in variable`, () => {
         const code = `
 ${codeSection}ts
 const a = "${codeSection}\
@@ -86,6 +86,8 @@ ${codeSection}\
 ${codeSection}
         `;
 
-        expect(tryParseMarkdownCodeBlock(code)).toEqual(['const a = "```#Title```";\n']);
+        expect(tryParseMarkdownCodeBlock(code)).toEqual([
+            `const a = "\`\`\`#Title\`\`\`";\n`,
+        ]);
     });
 });

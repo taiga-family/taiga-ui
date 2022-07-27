@@ -12,7 +12,7 @@ export const calculateColorSegments = (
     const colorsString = colors.reduce(
         (acc, color, i) =>
             `${acc}, ${color} ${px(i * segmentWidth)} ${px((i + 1) * segmentWidth)}`,
-        '',
+        ``,
     );
 
     return `linear-gradient(to right ${colorsString})`;

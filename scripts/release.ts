@@ -8,9 +8,9 @@ import {makeReleaseBranch} from './shared/make-release-branch';
 import {TuiReleaseMode} from './shared/release-mode';
 import {runStandardVersion} from './shared/run-standard-verion';
 
-const ci = hasFlag('--ci-mode');
-const mode = getValueByFlag<TuiReleaseMode>('--release-as', 'minor');
-const dryRun = getValueByFlag<'true' | 'false'>('--dry-run', 'false') === 'true';
+const ci = hasFlag(`--ci-mode`);
+const mode = getValueByFlag<TuiReleaseMode>(`--release-as`, `minor`);
+const dryRun = getValueByFlag<'true' | 'false'>(`--dry-run`, `false`) === `true`;
 const newVersion = bumpVersion(version, mode);
 
 infoLog(JSON.stringify({ci, mode, newVersion, dryRun}, null, 4));

@@ -7,17 +7,17 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-align-content',
-    templateUrl: './align-content.template.html',
-    styleUrls: ['../tools-common.less'],
+    selector: `tui-align-content`,
+    templateUrl: `./align-content.template.html`,
+    styleUrls: [`../tools-common.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentComponent {
     readonly alignState$ = combineLatest([
-        this.editor.isActive$({textAlign: 'left'}),
-        this.editor.isActive$({textAlign: 'right'}),
-        this.editor.isActive$({textAlign: 'center'}),
-        this.editor.isActive$({textAlign: 'justify'}),
+        this.editor.isActive$({textAlign: `left`}),
+        this.editor.isActive$({textAlign: `right`}),
+        this.editor.isActive$({textAlign: `center`}),
+        this.editor.isActive$({textAlign: `justify`}),
     ]).pipe(
         map(([left, right, center, justify]) => ({
             left,

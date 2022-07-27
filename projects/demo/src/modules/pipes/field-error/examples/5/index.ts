@@ -19,15 +19,15 @@ function asyncValidatorFn(isCypress: boolean): AsyncValidatorFn {
         return field.value && latinChars.test(field.value)
             ? of(null)
             : of({
-                  error: new TuiValidationError('Only latin letters allowed'),
+                  error: new TuiValidationError(`Only latin letters allowed`),
               }).pipe(isCypress ? delay(0) : delay(5000));
     };
 }
 
 @Component({
-    selector: 'tui-field-error-pipe-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-field-error-pipe-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -39,10 +39,10 @@ export class TuiFieldErrorPipeExample5 {
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
     ) {
         this.form = this.fb.group({
-            text: ['русский текст', Validators.required],
+            text: [`русский текст`, Validators.required],
         });
 
-        this.form.controls['text'].setAsyncValidators(asyncValidatorFn(isCypress));
-        this.form.controls['text'].markAsTouched();
+        this.form.controls[`text`].setAsyncValidators(asyncValidatorFn(isCypress));
+        this.form.controls[`text`].markAsTouched();
     }
 }

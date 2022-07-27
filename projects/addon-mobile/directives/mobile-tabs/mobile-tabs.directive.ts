@@ -6,7 +6,7 @@ import {TuiMobileTabsComponent} from './mobile-tabs.component';
 
 // @dynamic
 @Directive({
-    selector: '[tuiMobileTabs]',
+    selector: `[tuiMobileTabs]`,
     providers: [
         {
             provide: TUI_TAB_MARGIN,
@@ -23,14 +23,14 @@ export class TuiMobileTabsDirective {
         directiveStyles.addComponent(TuiMobileTabsComponent);
     }
 
-    @HostBinding('attr.data-platform')
+    @HostBinding(`attr.data-platform`)
     get platform(): 'ios' | 'android' | null {
         if (this.isIos) {
-            return 'ios';
+            return `ios`;
         }
 
         if (this.isAndroid) {
-            return 'android';
+            return `android`;
         }
 
         return null;

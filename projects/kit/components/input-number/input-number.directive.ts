@@ -4,7 +4,7 @@ import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 import {TuiInputNumberComponent} from './input-number.component';
 
 @Directive({
-    selector: 'tui-input-number',
+    selector: `tui-input-number`,
     providers: [
         {
             provide: TUI_TEXTFIELD_HOST,
@@ -36,6 +36,6 @@ export class TuiInputNumberDirective
         }
 
         this.input.maxLength = this.host.calculatedMaxLength;
-        this.input.inputMode = 'decimal';
+        this.input.inputMode = `decimal`;
     }
 }

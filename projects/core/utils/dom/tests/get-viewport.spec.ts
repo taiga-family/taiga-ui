@@ -5,8 +5,8 @@ import {
     TuiMedia,
 } from '@taiga-ui/core';
 
-describe('viewport', () => {
-    it('width/height', () => {
+describe(`viewport`, () => {
+    it(`width/height`, () => {
         setViewport(770, 600);
 
         expect(window.document.documentElement.clientWidth).toEqual(755);
@@ -19,7 +19,7 @@ describe('viewport', () => {
         expect(tuiGetViewportHeight(window)).toEqual(600);
     });
 
-    describe('iPhone X', () => {
+    describe(`iPhone X`, () => {
         const emulatedDesktopWidth = 1280;
         const logicalIphoneWidth = 375;
         const mobileBreakPoint = 768;
@@ -48,7 +48,7 @@ describe('viewport', () => {
             ).toEqual(true);
         });
 
-        it('device-width is not mobile', () => {
+        it(`device-width is not mobile`, () => {
             expect(
                 tuiIsMobile(
                     {
@@ -60,7 +60,7 @@ describe('viewport', () => {
             ).toEqual(false);
         });
 
-        it('device-width is mobile', () => {
+        it(`device-width is mobile`, () => {
             expect(
                 tuiIsMobile(
                     {
@@ -75,12 +75,12 @@ describe('viewport', () => {
 });
 
 function setViewport(width: number, height: number): void {
-    spyOnProperty(window, 'innerWidth').and.returnValue(width);
-    spyOnProperty(window, 'innerHeight').and.returnValue(height);
-    spyOnProperty(window.document.documentElement, 'clientWidth').and.returnValue(
+    spyOnProperty(window, `innerWidth`).and.returnValue(width);
+    spyOnProperty(window, `innerHeight`).and.returnValue(height);
+    spyOnProperty(window.document.documentElement, `clientWidth`).and.returnValue(
         width - 15 /* scroll width */,
     );
-    spyOnProperty(window.document.documentElement, 'clientHeight').and.returnValue(
+    spyOnProperty(window.document.documentElement, `clientHeight`).and.returnValue(
         height,
     );
 }

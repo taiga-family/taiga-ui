@@ -6,7 +6,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiValidatorModule} from '../validator.module';
 
-describe('TuiValidator directive', () => {
+describe(`TuiValidator directive`, () => {
     @Component({
         template: `
             <input
@@ -40,12 +40,12 @@ describe('TuiValidator directive', () => {
         fixture.detectChanges();
     });
 
-    describe('adds validator', () => {
-        it('valid initially', () => {
+    describe(`adds validator`, () => {
+        it(`valid initially`, () => {
             expect(testComponent.control.valid).toBe(true);
         });
 
-        it('becomes invalid', () => {
+        it(`becomes invalid`, () => {
             testComponent.show = true;
             fixture.detectChanges();
 

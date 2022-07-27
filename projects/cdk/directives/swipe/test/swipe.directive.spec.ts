@@ -6,7 +6,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiSwipe} from '../../../interfaces/swipe';
 import {TuiSwipeModule} from '../swipe.module';
 
-describe('TuiSwipe directive', () => {
+describe(`TuiSwipe directive`, () => {
     @Component({
         template: `
             <div
@@ -16,7 +16,7 @@ describe('TuiSwipe directive', () => {
         `,
     })
     class TestComponent {
-        swiped = '';
+        swiped = ``;
 
         onSwipe(swipe: TuiSwipe): void {
             this.swiped = swipe.direction;
@@ -37,36 +37,36 @@ describe('TuiSwipe directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css('.main'));
+        testElement = fixture.debugElement.query(By.css(`.main`));
 
         fixture.detectChanges();
     });
 
-    it('emits events bottom', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
-        sendTouchEvent(0, 100, testElement.nativeElement, 'touchend', 1);
+    it(`emits events bottom`, () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
+        sendTouchEvent(0, 100, testElement.nativeElement, `touchend`, 1);
 
         fixture.detectChanges();
 
-        expect(testComponent.swiped).toBe('bottom');
+        expect(testComponent.swiped).toBe(`bottom`);
     });
 
-    it('emits events right', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
-        sendTouchEvent(100, 0, testElement.nativeElement, 'touchend', 1);
+    it(`emits events right`, () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
+        sendTouchEvent(100, 0, testElement.nativeElement, `touchend`, 1);
 
         fixture.detectChanges();
 
-        expect(testComponent.swiped).toBe('right');
+        expect(testComponent.swiped).toBe(`right`);
     });
 
-    it('does not emits events due to threshold', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend', 1);
+    it(`does not emits events due to threshold`, () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
+        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`, 1);
 
         fixture.detectChanges();
 
-        expect(testComponent.swiped).toBe('');
+        expect(testComponent.swiped).toBe(``);
     });
 
     function sendTouchEvent(

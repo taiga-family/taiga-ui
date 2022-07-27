@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {px} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-format-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-format-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

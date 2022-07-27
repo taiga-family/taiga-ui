@@ -23,5 +23,5 @@ export function monthFormatterFactory(
             ? pipe
                   .transform(month)
                   .pipe(map(formatted => `${formatted} ${month.formattedYear}`))
-            : of('');
+            : of(``);
 }

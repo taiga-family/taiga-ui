@@ -7,9 +7,9 @@ export function tuiHorizontalDirectionToNumber(
     direction: TuiHorizontalDirection,
 ): -1 | 1 {
     switch (direction) {
-        case 'left':
+        case `left`:
             return -1;
-        case 'right':
+        case `right`:
             return 1;
     }
 }

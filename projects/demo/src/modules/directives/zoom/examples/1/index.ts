@@ -6,9 +6,9 @@ import {Subject} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-zoom-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-zoom-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

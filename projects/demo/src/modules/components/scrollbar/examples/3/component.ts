@@ -6,9 +6,9 @@ import {TuiScrollbarComponent} from '@taiga-ui/core';
 const SOME_OFFSET_CONST = 20;
 
 @Component({
-    selector: 'tui-scrollbar-example-3',
-    templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    selector: `tui-scrollbar-example-3`,
+    templateUrl: `./template.html`,
+    styleUrls: [`./style.less`],
     changeDetection,
     encapsulation,
 })

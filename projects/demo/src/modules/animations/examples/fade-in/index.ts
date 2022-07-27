@@ -7,9 +7,9 @@ import {from, of} from 'rxjs';
 import {concatMap, delay, repeat, startWith} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-fade-in-example',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-fade-in-example`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     animations: [tuiFadeIn],
@@ -26,6 +26,6 @@ export class TuiFadeInExample {
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {value: ``, params: {duration}};
     }
 }

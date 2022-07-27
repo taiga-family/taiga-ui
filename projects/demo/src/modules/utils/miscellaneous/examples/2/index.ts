@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {flatLength} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-miscellaneous-example-2',
-    templateUrl: './index.html',
+    selector: `tui-miscellaneous-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

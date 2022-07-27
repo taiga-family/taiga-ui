@@ -51,21 +51,21 @@ import {Observable} from 'rxjs';
  * @deprecated TODO remove me in v3.0 and make `InputSlider` always "new".
  */
 @Directive({
-    selector: 'tui-input-slider[new]',
+    selector: `tui-input-slider[new]`,
 })
 export class TuiNewInputSliderDirective {}
 
 // @dynamic
 @Component({
-    selector: 'tui-input-slider',
-    templateUrl: './input-slider.template.html',
-    styleUrls: ['./input-slider.style.less'],
+    selector: `tui-input-slider`,
+    templateUrl: `./input-slider.template.html`,
+    styleUrls: [`./input-slider.style.less`],
     host: {
         /**
          * TODO delete it in v3.0
          * Dont forget to clear html-tags
          */
-        '[class._show-ticks-labels]': '!isNew',
+        '[class._show-ticks-labels]': `!isNew`,
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -73,7 +73,7 @@ export class TuiNewInputSliderDirective {}
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputSliderComponent),
         },
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
+        tuiSliderOptionsProvider({trackColor: `transparent`}),
         HINT_CONTROLLER_PROVIDER,
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
@@ -101,7 +101,7 @@ export class TuiInputSliderComponent
     max = Infinity;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
+    @tuiDefaultProp(quantumAssertion, `Quantum must be positive`)
     quantum = 1;
 
     @Input()
@@ -118,15 +118,15 @@ export class TuiInputSliderComponent
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
-    prefix = '';
+    prefix = ``;
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix = ``;
 
     /**
      * @deprecated use `tuiTextfieldCustomContent` instead
@@ -134,7 +134,7 @@ export class TuiInputSliderComponent
      */
     @Input()
     @tuiDefaultProp()
-    secondary = '';
+    secondary = ``;
 
     constructor(
         @Optional()
@@ -174,7 +174,7 @@ export class TuiInputSliderComponent
     }
 
     get decimal(): TuiDecimalT {
-        return this.precision ? 'not-zero' : 'never';
+        return this.precision ? `not-zero` : `never`;
     }
 
     /**
@@ -183,11 +183,11 @@ export class TuiInputSliderComponent
     get computedSize(): TuiSizeL {
         if (this.isNew) {
             tuiAssert.assert(
-                this.controller.size !== 's',
-                "Size 's' is not supported by this input.",
+                this.controller.size !== `s`,
+                `Size 's' is not supported by this input.`,
             );
 
-            return this.controller.size === 'l' ? 'l' : 'm';
+            return this.controller.size === `l` ? `l` : `m`;
         }
 
         return this.size;
@@ -253,7 +253,7 @@ export class TuiInputSliderComponent
     }
 
     private get textInputValue(): string {
-        return this.inputNumberRef?.nativeValue || '';
+        return this.inputNumberRef?.nativeValue || ``;
     }
 
     protected getFallbackValue(): number {

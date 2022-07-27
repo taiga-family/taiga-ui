@@ -14,13 +14,13 @@
  ```
  * */
 export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
-    chai.Assertion.addMethod('inViewport', function () {
+    chai.Assertion.addMethod(`inViewport`, function () {
         const subject = this._obj;
         const {top, bottom} = subject[0].getBoundingClientRect();
 
         const viewportHeight: number =
             // @ts-ignore TS2339: Property 'state' does not exist on type 'cy & CyEventEmitter'.
-            Cypress.$(cy.state('window')).height() || 0;
+            Cypress.$(cy.state(`window`)).height() || 0;
 
         const subjectOverlapsAllViewport = top < 0 && bottom > viewportHeight;
         const topBorderIsVisible = top >= 0 && top < viewportHeight;
@@ -28,8 +28,8 @@ export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
 
         this.assert(
             subjectOverlapsAllViewport || topBorderIsVisible || bottomBorderIsVisible,
-            'expected #{this} to be in viewport',
-            'expected #{this} to not be in viewport',
+            `expected #{this} to be in viewport`,
+            `expected #{this} to not be in viewport`,
             subject,
         );
     });

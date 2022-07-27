@@ -12,9 +12,9 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-highlight-color',
-    templateUrl: './highlight-color.template.html',
-    styleUrls: ['../tools-common.less'],
+    selector: `tui-highlight-color`,
+    templateUrl: `./highlight-color.template.html`,
+    styleUrls: [`../tools-common.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiHighlightColorComponent {

@@ -36,14 +36,14 @@ class User {
 }
 
 const ITEMS = [
-    new User('Роман', 'Седов', '0'),
-    new User('Roman', 'Sedov', '1'),
-    new User('Water', 'plea', '2'),
-    new User('Alex', 'Inkin', '3'),
-    new User('Александр', 'Инкин', '4'),
+    new User(`Роман`, `Седов`, `0`),
+    new User(`Roman`, `Sedov`, `1`),
+    new User(`Water`, `plea`, `2`),
+    new User(`Alex`, `Inkin`, `3`),
+    new User(`Александр`, `Инкин`, `4`),
 ];
 
-describe('Input', () => {
+describe(`Input`, () => {
     @Component({
         template: `
             <tui-root>
@@ -77,7 +77,7 @@ describe('Input', () => {
         @ViewChild(TuiInputComponent, {static: true})
         component!: TuiInputComponent;
 
-        @ViewChild('submit')
+        @ViewChild(`submit`)
         submit!: ElementRef<HTMLButtonElement>;
 
         cleaner = false;
@@ -88,16 +88,16 @@ describe('Input', () => {
 
         items: User[] | null = ITEMS;
 
-        size: TuiSizeS | TuiSizeL = 'm';
+        size: TuiSizeS | TuiSizeL = `m`;
 
-        exampleText = 'placeholder';
+        exampleText = `placeholder`;
 
-        hintContent: string | null = 'prompt';
+        hintContent: string | null = `prompt`;
 
         group = new FormGroup({control: new FormControl()});
 
         get control(): FormControl {
-            return this.group.get('control') as FormControl;
+            return this.group.get(`control`) as FormControl;
         }
     }
 
@@ -108,7 +108,7 @@ describe('Input', () => {
     let updateSpy: jasmine.Spy;
 
     function getDropdown(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-data-list-wrapper');
+        return pageObject.getByAutomationId(`tui-data-list-wrapper`);
     }
 
     configureTestSuite(() => {
@@ -135,173 +135,173 @@ describe('Input', () => {
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('Autocomplete', () => {
+    describe(`Autocomplete`, () => {
         beforeEach(() => {
             fixture.detectChanges();
             inputPO.focus();
         });
 
-        describe('Dropdown appears', () => {
-            it('down arrow', () => {
-                inputPO.sendKeydown('arrowDown');
+        describe(`Dropdown appears`, () => {
+            it(`down arrow`, () => {
+                inputPO.sendKeydown(`arrowDown`);
 
                 expect(getDropdown()).not.toBeNull();
             });
 
-            it('при вводе', () => {
-                inputPO.sendText('ен');
+            it(`при вводе`, () => {
+                inputPO.sendText(`ен`);
 
                 expect(getDropdown()).not.toBeNull();
             });
         });
 
-        describe('Dropdown does not appear', () => {
-            it('Dropdown does not appear on focus', () => {
+        describe(`Dropdown does not appear`, () => {
+            it(`Dropdown does not appear on focus`, () => {
                 expect(getDropdown()).toBeNull();
             });
 
-            it('down arrow when readonly is on', () => {
+            it(`down arrow when readonly is on`, () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
-                inputPO.sendKeydown('arrowDown');
+                inputPO.sendKeydown(`arrowDown`);
 
                 expect(getDropdown()).toBeNull();
             });
         });
 
-        it('Dropdown is hidden by Esc', () => {
-            inputPO.sendText('ен');
-            inputPO.sendKeydown('escape');
+        it(`Dropdown is hidden by Esc`, () => {
+            inputPO.sendText(`ен`);
+            inputPO.sendKeydown(`escape`);
 
             expect(getDropdown()).toBeNull();
         });
 
-        it('The value is substituted when selecting an item from the dropdown', () => {
-            inputPO.sendText('ен');
+        it(`The value is substituted when selecting an item from the dropdown`, () => {
+            inputPO.sendText(`ен`);
             pageObject
-                .getByAutomationId('tui-data-list-wrapper__option')!
+                .getByAutomationId(`tui-data-list-wrapper__option`)!
                 .nativeElement.click();
 
             expect(testComponent.control.value).toBe(ITEMS[0].toString());
         });
     });
 
-    describe('Updating the state of the control', () => {
+    describe(`Updating the state of the control`, () => {
         beforeEach(() => {
-            updateSpy = spyOn(testComponent.component, 'checkControlUpdate');
+            updateSpy = spyOn(testComponent.component, `checkControlUpdate`);
         });
 
-        it('updateValueAndValidity causes the control to be updated', () => {
+        it(`updateValueAndValidity causes the control to be updated`, () => {
             testComponent.control.updateValueAndValidity();
             fixture.detectChanges();
 
             expect(updateSpy).toHaveBeenCalled();
         });
 
-        it('setErrors calls update of the control', () => {
+        it(`setErrors calls update of the control`, () => {
             testComponent.control.setErrors({test: true});
             fixture.detectChanges();
 
             expect(updateSpy).toHaveBeenCalled();
         });
 
-        it('Updating the control updates the input', async () => {
-            testComponent.control.setValue('321');
+        it(`Updating the control updates the input`, async () => {
+            testComponent.control.setValue(`321`);
             fixture.detectChanges();
             await fixture.whenStable();
 
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe('321');
+            expect(inputPO.value).toBe(`321`);
         });
 
-        it('updateOn: change is updated when the value is changed', () => {
-            testComponent.control.setValue('321');
+        it(`updateOn: change is updated when the value is changed`, () => {
+            testComponent.control.setValue(`321`);
             fixture.detectChanges();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
 
-            expect(testComponent.control.value).toBe('123');
+            expect(testComponent.control.value).toBe(`123`);
         });
 
-        it('updateOn: blur is not updated on value change', () => {
+        it(`updateOn: blur is not updated on value change`, () => {
             testComponent.group = new FormGroup({
-                control: new FormControl('321', {updateOn: 'blur'}),
+                control: new FormControl(`321`, {updateOn: `blur`}),
             });
             fixture.detectChanges();
 
             inputPO.focus();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
 
-            expect(testComponent.control.value).toBe('321');
+            expect(testComponent.control.value).toBe(`321`);
         });
 
-        it('updateOn: blur is updated on leaving the field', () => {
+        it(`updateOn: blur is updated on leaving the field`, () => {
             testComponent.group = new FormGroup({
-                control: new FormControl('321', {updateOn: 'blur'}),
+                control: new FormControl(`321`, {updateOn: `blur`}),
             });
             fixture.detectChanges();
 
             inputPO.focus();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
             testComponent.submit.nativeElement.focus();
 
-            expect(testComponent.control.value).toBe('123');
+            expect(testComponent.control.value).toBe(`123`);
         });
 
-        it('updateOn: submit is not updated on value change', () => {
+        it(`updateOn: submit is not updated on value change`, () => {
             testComponent.group = new FormGroup({
-                control: new FormControl('321', {updateOn: 'submit'}),
+                control: new FormControl(`321`, {updateOn: `submit`}),
             });
             fixture.detectChanges();
 
             inputPO.focus();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
 
-            expect(testComponent.control.value).toBe('321');
+            expect(testComponent.control.value).toBe(`321`);
         });
 
-        it('updateOn: submit is not updated on leaving the field', () => {
+        it(`updateOn: submit is not updated on leaving the field`, () => {
             testComponent.group = new FormGroup({
-                control: new FormControl('321', {updateOn: 'submit'}),
+                control: new FormControl(`321`, {updateOn: `submit`}),
             });
             fixture.detectChanges();
 
             inputPO.focus();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
             testComponent.submit.nativeElement.focus();
 
-            expect(testComponent.control.value).toBe('321');
+            expect(testComponent.control.value).toBe(`321`);
         });
 
-        it('updateOn: submit is updated on form submission', () => {
+        it(`updateOn: submit is updated on form submission`, () => {
             testComponent.group = new FormGroup({
-                control: new FormControl('321', {updateOn: 'submit'}),
+                control: new FormControl(`321`, {updateOn: `submit`}),
             });
             fixture.detectChanges();
 
             inputPO.focus();
-            inputPO.sendText('123');
+            inputPO.sendText(`123`);
             testComponent.submit.nativeElement.click();
 
-            expect(testComponent.control.value).toBe('123');
+            expect(testComponent.control.value).toBe(`123`);
         });
     });
 
-    describe('Return to field as you type', () => {
+    describe(`Return to field as you type`, () => {
         beforeEach(() => {
             fixture.detectChanges();
             inputPO.focus();
-            inputPO.sendKeydown('ArrowDown');
-            inputPO.sendKeydown('ArrowDown');
+            inputPO.sendKeydown(`ArrowDown`);
+            inputPO.sendKeydown(`ArrowDown`);
         });
 
-        it('Focus in the dropdown', () => {
+        it(`Focus in the dropdown`, () => {
             expect(tuiActiveText()).toBe(ITEMS[0].toString());
         });
 
-        it('Entering characters brings focus to the input field', () => {
-            tuiDispatchOnActive('e');
+        it(`Entering characters brings focus to the input field`, () => {
+            tuiDispatchOnActive(`e`);
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
@@ -349,15 +349,15 @@ describe('Input', () => {
         });
     });
 
-    it('Loading shown when items === null', () => {
+    it(`Loading shown when items === null`, () => {
         testComponent.items = null;
         fixture.detectChanges();
         inputPO.focus();
-        inputPO.sendKeydown('ArrowDown');
+        inputPO.sendKeydown(`ArrowDown`);
         fixture.detectChanges();
 
         expect(
-            pageObject.getByAutomationId('tui-data-list-wrapper__loader'),
+            pageObject.getByAutomationId(`tui-data-list-wrapper__loader`),
         ).not.toBeNull();
     });
 });

@@ -5,8 +5,8 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Directive({
-    selector: '[tuiSwipe]',
-    outputs: ['tuiSwipe'],
+    selector: `[tuiSwipe]`,
+    outputs: [`tuiSwipe`],
     providers: [TuiSwipeService],
 })
 export class TuiSwipeDirective {

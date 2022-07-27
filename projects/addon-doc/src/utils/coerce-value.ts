@@ -8,7 +8,7 @@ export function coerceValue<T>(value?: T): T | number | string | boolean | null 
     if (isEmptyParamValue(prepared)) {
         return null;
     } else if (isBooleanParamValue(prepared)) {
-        return String(prepared) === 'true';
+        return String(prepared) === `true`;
     } else if (isNumberParamValue(prepared)) {
         return Number(prepared);
     }
@@ -27,11 +27,11 @@ export function coerceValue<T>(value?: T): T | number | string | boolean | null 
 export const tuiCoerceValue = coerceValue;
 
 function isEmptyParamValue(value: string): boolean {
-    return ['undefined', 'null', 'NaN', 'Infinity'].includes(value);
+    return [`undefined`, `null`, `NaN`, `Infinity`].includes(value);
 }
 
 function isBooleanParamValue(value: string): boolean {
-    return value === 'true' || value === 'false';
+    return value === `true` || value === `false`;
 }
 
 function isNumberParamValue(value: string): boolean {
@@ -41,9 +41,9 @@ function isNumberParamValue(value: string): boolean {
 }
 
 function isPossibleArray(value: string): boolean {
-    return value.startsWith('[') && value.endsWith(']');
+    return value.startsWith(`[`) && value.endsWith(`]`);
 }
 
 function isPossibleObject(value: string): boolean {
-    return value.startsWith('{') && value.endsWith('}');
+    return value.startsWith(`{`) && value.endsWith(`}`);
 }

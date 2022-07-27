@@ -6,16 +6,16 @@ import {fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-destroy-example',
-    templateUrl: './template.html',
+    selector: `tui-destroy-example`,
+    templateUrl: `./template.html`,
     changeDetection,
     encapsulation,
     providers: [TuiDestroyService],
 })
 export class TuiDestroyExample {
     constructor(destroy$: TuiDestroyService, {nativeElement}: ElementRef<HTMLElement>) {
-        fromEvent(nativeElement, 'click')
+        fromEvent(nativeElement, `click`)
             .pipe(takeUntil(destroy$))
-            .subscribe(() => console.info('click'));
+            .subscribe(() => console.info(`click`));
     }
 }

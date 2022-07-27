@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-calendar-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-calendar-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

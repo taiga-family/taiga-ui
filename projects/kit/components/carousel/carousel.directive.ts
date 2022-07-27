@@ -5,16 +5,16 @@ import {BehaviorSubject, combineLatest, EMPTY, interval, merge, Observable} from
 import {mapTo, switchMap} from 'rxjs/operators';
 
 @Directive({
-    selector: 'tui-carousel',
+    selector: `tui-carousel`,
 })
 export class TuiCarouselDirective extends Observable<unknown> {
     private readonly duration$ = new BehaviorSubject(0);
 
     private readonly running$ = merge(
-        typedFromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(mapTo(false)),
-        typedFromEvent(this.elementRef.nativeElement, 'touchstart').pipe(mapTo(false)),
-        typedFromEvent(this.elementRef.nativeElement, 'touchend').pipe(mapTo(true)),
-        typedFromEvent(this.elementRef.nativeElement, 'mouseleave').pipe(mapTo(true)),
+        typedFromEvent(this.elementRef.nativeElement, `mouseenter`).pipe(mapTo(false)),
+        typedFromEvent(this.elementRef.nativeElement, `touchstart`).pipe(mapTo(false)),
+        typedFromEvent(this.elementRef.nativeElement, `touchend`).pipe(mapTo(true)),
+        typedFromEvent(this.elementRef.nativeElement, `mouseleave`).pipe(mapTo(true)),
         this.visible$,
     );
 

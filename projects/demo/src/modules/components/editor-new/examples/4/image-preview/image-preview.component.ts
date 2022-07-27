@@ -5,14 +5,14 @@ import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {TuiDialogContext} from '@taiga-ui/core';
 
 @Component({
-    selector: 'image-preview-example',
-    templateUrl: './image-preview.template.html',
-    styleUrls: ['./image-preview.style.less'],
+    selector: `image-preview-example`,
+    templateUrl: `./image-preview.template.html`,
+    styleUrls: [`./image-preview.style.less`],
     changeDetection,
     encapsulation,
 })
 export class ImagePreviewExampleComponent {
-    @ViewChild('previewImages')
+    @ViewChild(`previewImages`)
     template?: TemplateRef<TuiDialogContext>;
 
     image?: HTMLImageElement;
@@ -24,6 +24,6 @@ export class ImagePreviewExampleComponent {
 
     showImage(image: HTMLImageElement): void {
         this.image = image;
-        this.dialogService.open(this.template || '').subscribe();
+        this.dialogService.open(this.template || ``).subscribe();
     }
 }

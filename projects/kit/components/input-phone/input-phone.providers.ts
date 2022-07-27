@@ -13,7 +13,7 @@ import {flatMap, startWith, takeUntil, windowToggle} from 'rxjs/operators';
 import {TuiInputPhoneComponent} from './input-phone.component';
 
 export const SELECTION_STREAM = new InjectionToken<Observable<unknown>>(
-    'A stream of selection changes',
+    `A stream of selection changes`,
 );
 export const INPUT_PHONE_PROVIDERS = [
     TuiDestroyService,
@@ -42,10 +42,10 @@ export function selectionStreamFactory(
     destroy$: Observable<unknown>,
     documentRef: Document,
 ): Observable<unknown> {
-    return fromEvent(documentRef, 'selectionchange').pipe(
+    return fromEvent(documentRef, `selectionchange`).pipe(
         windowToggle(
-            merge(fromEvent(documentRef, 'mouseup'), fromEvent(documentRef, 'keydown')),
-            () => fromEvent(documentRef, 'mousedown'),
+            merge(fromEvent(documentRef, `mouseup`), fromEvent(documentRef, `keydown`)),
+            () => fromEvent(documentRef, `mousedown`),
         ),
         flatMap(windowed$ => windowed$.pipe(startWith(null))),
         takeUntil(destroy$),

@@ -5,8 +5,8 @@ import {TUI_DIALOGS} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-token-example-2',
-    templateUrl: './index.html',
+    selector: `tui-token-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

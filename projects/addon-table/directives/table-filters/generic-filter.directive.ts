@@ -4,7 +4,7 @@ import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
 import {AbstractTuiTableFilter} from './abstract-table-filter';
 
 @Directive({
-    selector: '[tuiGenericFilter]',
+    selector: `[tuiGenericFilter]`,
     providers: [
         {
             provide: AbstractTuiTableFilter,

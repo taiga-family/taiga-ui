@@ -7,22 +7,22 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 /** @deprecated use `<th tuiTh [resizable]="true">` from {@link TuiTableModule} */
 // @dynamic
 @Directive({
-    selector: '[tuiResizableColumn]',
+    selector: `[tuiResizableColumn]`,
 })
 export class TuiResizableColumnDirective {
     @Output()
     readonly tuiResizableColumn = typedFromEvent(
         this.elementRef.nativeElement,
-        'mousedown',
+        `mousedown`,
     ).pipe(
         preventDefault(),
         switchMap(() => {
             const {width, right} = this.parentRef.nativeElement.getBoundingClientRect();
 
-            return typedFromEvent(this.documentRef, 'mousemove').pipe(
+            return typedFromEvent(this.documentRef, `mousemove`).pipe(
                 distinctUntilChanged(),
                 map(({clientX}) => width + clientX - right),
-                takeUntil(typedFromEvent(this.documentRef, 'mouseup')),
+                takeUntil(typedFromEvent(this.documentRef, `mouseup`)),
             );
         }),
     );

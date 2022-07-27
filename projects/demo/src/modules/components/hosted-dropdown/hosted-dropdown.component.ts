@@ -12,9 +12,9 @@ import {
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-hosted-dropdown',
-    templateUrl: './hosted-dropdown.template.html',
-    styleUrls: ['./hosted-dropdown.style.less'],
+    selector: `example-tui-hosted-dropdown`,
+    templateUrl: `./hosted-dropdown.template.html`,
+    styleUrls: [`./hosted-dropdown.style.less`],
     changeDetection,
     providers: [
         {
@@ -24,65 +24,65 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiHostedDropdownComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
     };
 
     minHeight = DEFAULT_MIN_HEIGHT;
 
     maxHeight = DEFAULT_MAX_HEIGHT;
 
-    alignVariants: readonly TuiHorizontalDirection[] = ['right', 'left'];
+    alignVariants: readonly TuiHorizontalDirection[] = [`right`, `left`];
 
     align = this.alignVariants[0];
 
     readonly directionVariants: ReadonlyArray<TuiVerticalDirection | null> = [
         null,
-        'top',
-        'bottom',
+        `top`,
+        `bottom`,
     ];
 
     direction: TuiVerticalDirection | null = this.directionVariants[0];
 
-    readonly limitWidthVariants: readonly TuiDropdownWidthT[] = ['auto', 'fixed', 'min'];
+    readonly limitWidthVariants: readonly TuiDropdownWidthT[] = [`auto`, `fixed`, `min`];
 
     limitWidth: TuiDropdownWidthT = this.limitWidthVariants[0];
 
     open = false;
 
-    input = '';
+    input = ``;
 
-    canOpenVariants = [true, 'getter this.input.length > 2'];
+    canOpenVariants = [true, `getter this.input.length > 2`];
 
     canOpenSelected = this.canOpenVariants[0];
 
-    readonly contentVariants = ['Template', 'Custom string'];
+    readonly contentVariants = [`Template`, `Custom string`];
 
     content = this.contentVariants[0];
 
     get template(): boolean {
-        return this.content === 'Template';
+        return this.content === `Template`;
     }
 
     get canOpen(): boolean {

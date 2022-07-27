@@ -7,31 +7,31 @@ import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {MyAccount} from './account/my-account.component';
 
 @Component({
-    selector: 'tui-select-example-9',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-select-example-9`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiSelectExample9 {
     readonly accounts: MyAccount[] = [
         {
-            name: 'Dollar deposit',
+            name: `Dollar deposit`,
             amount: 237000,
             currency: TuiCurrency.Dollar,
-            paymentSystem: 'tuiIconVisa',
+            paymentSystem: `tuiIconVisa`,
         },
         {
-            name: 'Pound deposit',
+            name: `Pound deposit`,
             amount: 100,
             currency: TuiCurrency.Pound,
-            paymentSystem: 'tuiIconMastercard',
+            paymentSystem: `tuiIconMastercard`,
         },
         {
-            name: 'Rouble deposit',
+            name: `Rouble deposit`,
             amount: 1234567890,
             currency: TuiCurrency.Ruble,
-            paymentSystem: 'tuiIconMir',
+            paymentSystem: `tuiIconMir`,
         },
     ];
 

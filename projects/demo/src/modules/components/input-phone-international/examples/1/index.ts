@@ -5,15 +5,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Component({
-    selector: 'tui-input-phone-international-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-phone-international-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiInputPhoneExample1 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl('+77777777777', Validators.required),
+        testValue: new FormControl(`+77777777777`, Validators.required),
     });
 
     readonly countries: readonly TuiCountryIsoCode[] = [
@@ -26,12 +26,12 @@ export class TuiInputPhoneExample1 {
     countryIsoCode = TuiCountryIsoCode.RU;
 
     contact = {
-        phone: '+375123456789',
+        phone: `+375123456789`,
         phoneCountryCode: TuiCountryIsoCode.BY,
     };
 
     patchValue(): void {
         this.countryIsoCode = this.contact.phoneCountryCode;
-        this.testForm.get('testValue')?.patchValue(this.contact.phone);
+        this.testForm.get(`testValue`)?.patchValue(this.contact.phone);
     }
 }

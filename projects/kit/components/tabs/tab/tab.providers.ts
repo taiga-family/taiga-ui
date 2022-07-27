@@ -12,9 +12,9 @@ import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {EMPTY, identity, merge, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
-export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
+export const TUI_TAB_ACTIVATE = `tui-tab-activate`;
 export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>(
-    'Stream of tab activation events',
+    `Stream of tab activation events`,
 );
 export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -50,7 +50,7 @@ export function tabActiveFactory(
     return merge(
         mutationObserver,
         routerLinkActiveService.pipe(filter(identity)),
-        nativeElement.matches('button') ? typedFromEvent(nativeElement, 'click') : EMPTY,
+        nativeElement.matches(`button`) ? typedFromEvent(nativeElement, `click`) : EMPTY,
     ).pipe(
         map(() =>
             nativeElement.dispatchEvent(

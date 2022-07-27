@@ -5,17 +5,17 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 
 export async function importStarterKit(): Promise<unknown> {
-    return (await import('@tiptap/starter-kit')).default;
+    return (await import(`@tiptap/starter-kit`)).default;
 }
 
 export async function importEmojiExtension(): Promise<unknown> {
-    return (await import('./smiles-tool/emoji.extension')).EmojiExtension;
+    return (await import(`./smiles-tool/emoji.extension`)).EmojiExtension;
 }
 
 @Component({
-    selector: 'tui-editor-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-editor-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -27,5 +27,5 @@ export async function importEmojiExtension(): Promise<unknown> {
 })
 export class TuiEditorNewExample2 {
     readonly builtInTools = [TuiEditorTool.Undo];
-    readonly control = new FormControl('', Validators.required);
+    readonly control = new FormControl(``, Validators.required);
 }

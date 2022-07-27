@@ -18,7 +18,7 @@ export type RadioOptions = TuiRadioOptions;
 
 /** Default values for the checkbox options. */
 export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
-    size: 'm',
+    size: `m`,
     appearances: {
         unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
@@ -26,7 +26,7 @@ export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
 };
 
 export const TUI_RADIO_OPTIONS = new InjectionToken<TuiRadioOptions>(
-    'Default parameters for radio component',
+    `Default parameters for radio component`,
     {
         factory: () => TUI_RADIO_DEFAULT_OPTIONS,
     },

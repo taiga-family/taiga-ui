@@ -7,8 +7,8 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-table-create',
-    templateUrl: './table-create.template.html',
+    selector: `tui-table-create`,
+    templateUrl: `./table-create.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCreateComponent {

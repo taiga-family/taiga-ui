@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiPure} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'example-tui-pure-getter',
+    selector: `example-tui-pure-getter`,
     template: `
         <div
             *ngIf="show"

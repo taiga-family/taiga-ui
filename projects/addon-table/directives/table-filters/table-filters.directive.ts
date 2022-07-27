@@ -5,7 +5,7 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 import {TuiTableFilter} from './table-filter';
 
 @Directive({
-    selector: '[tuiTableFilters]',
+    selector: `[tuiTableFilters]`,
 })
 export class TuiTableFiltersDirective<T> {
     private readonly refresh$ = new ReplaySubject<Observable<unknown>>(1);

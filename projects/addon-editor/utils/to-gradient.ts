@@ -8,8 +8,8 @@ import {parseColor} from './parse-color';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function toGradient({stops, side}: TuiParsedGradient): string {
     return `linear-gradient(${side}, ${stops
-        .map(({color, position}) => `rgba(${parseColor(color).join(', ')}) ${position}`)
-        .join(', ')})`;
+        .map(({color, position}) => `rgba(${parseColor(color).join(`, `)}) ${position}`)
+        .join(`, `)})`;
 }
 
 export const tuiToGradient = toGradient;

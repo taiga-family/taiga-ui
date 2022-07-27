@@ -8,17 +8,17 @@ import {Observable} from 'rxjs';
 import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
 
 @Directive({
-    selector: 'thead[tuiThead]',
+    selector: `thead[tuiThead]`,
     providers: [
         TUI_STUCK_PROVIDER,
         IntersectionObserverService,
         {
             provide: INTERSECTION_ROOT_MARGIN,
-            useValue: '0px 10000px 10000px 10000px',
+            useValue: `0px 10000px 10000px 10000px`,
         },
     ],
     host: {
-        '($.class._stuck)': 'stuck$',
+        '($.class._stuck)': `stuck$`,
     },
 })
 export class TuiTheadDirective {

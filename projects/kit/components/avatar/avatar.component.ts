@@ -12,18 +12,18 @@ import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 
 @Component({
-    selector: 'tui-avatar',
+    selector: `tui-avatar`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './avatar.template.html',
-    styleUrls: ['./avatar.style.less'],
+    templateUrl: `./avatar.template.html`,
+    styleUrls: [`./avatar.style.less`],
 })
 export class TuiAvatarComponent {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size = this.options.size;
 
-    @Input('avatarUrl')
+    @Input(`avatarUrl`)
     @tuiRequiredSetter()
     set avatarUrlSetter(avatarUrl: string | null) {
         this.isUrlValid = !!avatarUrl;
@@ -32,14 +32,14 @@ export class TuiAvatarComponent {
 
     @Input()
     @tuiDefaultProp()
-    text = '';
+    text = ``;
 
     @Input()
     @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
     @Input()
-    @HostBinding('class._rounded')
+    @HostBinding(`class._rounded`)
     @tuiDefaultProp()
     rounded: boolean = this.options.rounded;
 
@@ -49,22 +49,22 @@ export class TuiAvatarComponent {
 
     constructor(@Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions) {}
 
-    @HostBinding('style.background')
+    @HostBinding(`style.background`)
     get bgColor(): string {
-        return this.autoColor ? stringHashToHsl(this.text) : '';
+        return this.autoColor ? stringHashToHsl(this.text) : ``;
     }
 
-    @HostBinding('class._has-avatar')
+    @HostBinding(`class._has-avatar`)
     get hasAvatar(): boolean {
         return this.avatarUrl !== null && this.isUrlValid;
     }
 
     get computedText(): string {
-        if (this.hasAvatar || this.text === '') {
-            return '';
+        if (this.hasAvatar || this.text === ``) {
+            return ``;
         }
 
-        const words = this.text.split(' ');
+        const words = this.text.split(` `);
 
         return words.length > 1 && sizeBigger(this.size)
             ? words[0].slice(0, 1) + words[1].slice(0, 1)

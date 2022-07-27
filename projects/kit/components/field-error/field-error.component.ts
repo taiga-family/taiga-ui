@@ -22,12 +22,12 @@ import {map} from 'rxjs/operators';
 const EMPTY_RECORD = {};
 // @dynamic
 @Component({
-    selector: 'tui-field-error',
+    selector: `tui-field-error`,
     // @bad TODO: find a way to get 'touched' state change
     // https://github.com/angular/angular/issues/10887
     changeDetection: ChangeDetectionStrategy.Default,
-    templateUrl: './field-error.template.html',
-    styleUrls: ['./field-error.style.less'],
+    templateUrl: `./field-error.template.html`,
+    styleUrls: [`./field-error.style.less`],
 })
 export class TuiFieldErrorComponent {
     @Input()
@@ -139,7 +139,7 @@ export class TuiFieldErrorComponent {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || '';
+        return id || fallback || ``;
     }
 
     @tuiPure
@@ -151,16 +151,16 @@ export class TuiFieldErrorComponent {
             return of(firstError);
         }
 
-        if (errorContent === undefined && typeof firstError === 'string') {
+        if (errorContent === undefined && typeof firstError === `string`) {
             return of(new TuiValidationError(firstError));
         }
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
-                map(error => new TuiValidationError(error || '', firstError)),
+                map(error => new TuiValidationError(error || ``, firstError)),
             );
         }
 
-        return of(new TuiValidationError(errorContent || '', firstError));
+        return of(new TuiValidationError(errorContent || ``, firstError));
     }
 }

@@ -21,18 +21,18 @@ export function volumeAssertion(volume: number): boolean {
 }
 
 @Directive({
-    selector: 'video[tuiMedia], audio[tuiMedia]',
-    exportAs: 'tuiMedia',
+    selector: `video[tuiMedia], audio[tuiMedia]`,
+    exportAs: `tuiMedia`,
 })
 export class TuiMediaDirective {
     private playbackRate = 1;
 
     @Input()
-    @HostBinding('volume')
+    @HostBinding(`volume`)
     @tuiDefaultProp(volumeAssertion)
     volume = 1;
 
-    @Input('playbackRate')
+    @Input(`playbackRate`)
     @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set playbackRateSetter(playbackRate: number) {
         this.updatePlaybackRate(playbackRate);
@@ -80,28 +80,28 @@ export class TuiMediaDirective {
     }
 
     // @bad TODO: Make sure no other events can affect this like network issues etc.
-    @HostListener('ended', ['true'])
-    @HostListener('pause', ['true'])
-    @HostListener('play', ['false'])
+    @HostListener(`ended`, [`true`])
+    @HostListener(`pause`, [`true`])
+    @HostListener(`play`, [`false`])
     onPausedChange(paused: boolean): void {
         this.pausedChange.emit(paused);
         this.updatePlaybackRate(this.playbackRate);
     }
 
-    @HostListener('volumechange')
+    @HostListener(`volumechange`)
     onVolumeChange(): void {
         this.volume = this.elementRef.nativeElement.volume;
         this.volumeChange.emit(this.volume);
     }
 
-    @HostListener('timeupdate')
-    @HostListener('seeking')
-    @HostListener('seeked')
+    @HostListener(`timeupdate`)
+    @HostListener(`seeking`)
+    @HostListener(`seeked`)
     onCurrentTimeChange(): void {
         this.currentTimeChange.emit(this.currentTime);
     }
 
-    @HostListener('durationchange')
+    @HostListener(`durationchange`)
     changeDetectionTrigger(): void {
         // @bad TODO: consider if other events need to trigger CD
     }

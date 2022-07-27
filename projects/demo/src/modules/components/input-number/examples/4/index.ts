@@ -4,15 +4,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-input-number-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-number-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     providers: [
         {
             provide: TUI_NUMBER_FORMAT,
-            useValue: {decimalSeparator: '.', thousandSeparator: ','},
+            useValue: {decimalSeparator: `.`, thousandSeparator: `,`},
         },
     ],
 })

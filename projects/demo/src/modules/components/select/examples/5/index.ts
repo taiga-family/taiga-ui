@@ -11,18 +11,18 @@ interface Python {
 }
 
 const ITEMS: readonly Python[] = [
-    {id: 42, name: 'John Cleese'},
-    {id: 237, name: 'Eric Idle'},
-    {id: 666, name: 'Michael Palin'},
-    {id: 123, name: 'Terry Gilliam'},
-    {id: 777, name: 'Terry Jones'},
-    {id: 999, name: 'Graham Chapman'},
+    {id: 42, name: `John Cleese`},
+    {id: 237, name: `Eric Idle`},
+    {id: 666, name: `Michael Palin`},
+    {id: 123, name: `Terry Gilliam`},
+    {id: 777, name: `Terry Jones`},
+    {id: 999, name: `Graham Chapman`},
 ];
 
 @Component({
-    selector: 'tui-select-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-select-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -38,6 +38,6 @@ export class TuiSelectExample5 {
     ): TuiStringHandler<TuiContextWithImplicit<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 
-        return ({$implicit}: TuiContextWithImplicit<number>) => map.get($implicit) || '';
+        return ({$implicit}: TuiContextWithImplicit<number>) => map.get($implicit) || ``;
     }
 }

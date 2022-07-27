@@ -4,17 +4,17 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiTagOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tag-example-5',
-    templateUrl: './index.html',
+    selector: `tui-tag-example-5`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiTagOptionsProvider({
-            size: 'l',
-            status: 'success',
+            size: `l`,
+            status: `success`,
         }),
     ],
 })
 export class TuiTagExample5 {
-    tag = 'Hello';
+    tag = `Hello`;
 }

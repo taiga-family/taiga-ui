@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-input-time-example-1',
-    templateUrl: './index.html',
+    selector: `tui-input-time-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

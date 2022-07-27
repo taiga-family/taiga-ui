@@ -20,7 +20,7 @@ import {TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 
 @Directive({
-    selector: '[tuiDropdown]:not(ng-container)',
+    selector: `[tuiDropdown]:not(ng-container)`,
     providers: [
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
@@ -33,7 +33,7 @@ export class TuiDropdownDirective
     extends AbstractTuiDropdown
     implements TuiDropdown, AfterViewChecked, OnDestroy
 {
-    @Input('tuiDropdown')
+    @Input(`tuiDropdown`)
     set open(value: boolean) {
         this.toggleDropdown(value);
     }

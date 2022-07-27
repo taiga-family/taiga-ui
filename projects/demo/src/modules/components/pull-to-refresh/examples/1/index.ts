@@ -9,8 +9,8 @@ import {Subject} from 'rxjs';
 const loaded$ = new Subject<void>();
 
 @Component({
-    selector: 'tui-pull-to-refresh-example-1',
-    templateUrl: './index.html',
+    selector: `tui-pull-to-refresh-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
@@ -35,7 +35,7 @@ export class TuiPullToRefreshExample1 {
     ) {}
 
     onPull(): void {
-        this.alertService.open('Loading...').subscribe();
+        this.alertService.open(`Loading...`).subscribe();
     }
 
     finishLoading(): void {

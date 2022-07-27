@@ -8,7 +8,7 @@ export const MICRO_OFFSET = 10 ** -6;
 export const PULLED_DISTANCE = 50;
 
 export const TUI_PULLING = new InjectionToken<Observable<number>>(
-    'Stream that emits content pulling',
+    `Stream that emits content pulling`,
 );
 
 export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
@@ -26,15 +26,15 @@ export function pullingFactory(
     {nativeElement}: ElementRef<HTMLElement>,
 ): Observable<number> {
     return merge(
-        typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
+        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
             filter(() => nativeElement.scrollTop === 0),
             switchMap(touchStart =>
-                typedFromEvent(nativeElement, 'touchmove').pipe(
+                typedFromEvent(nativeElement, `touchmove`).pipe(
                     map(
                         touchMove =>
                             touchMove.touches[0].clientY - touchStart.touches[0].clientY,
                     ),
-                    takeUntil(typedFromEvent(nativeElement, 'touchend')),
+                    takeUntil(typedFromEvent(nativeElement, `touchend`)),
                     endWith(0),
                 ),
             ),

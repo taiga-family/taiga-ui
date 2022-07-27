@@ -28,12 +28,12 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
     }
 
     return concat(
-        typedFromEvent(element, 'mousedown').pipe(
+        typedFromEvent(element, `mousedown`).pipe(
             take(1),
             map(event => new TuiDragState(TuiDragStage.Start, event)),
         ),
         merge(
-            typedFromEvent(ownerDocument, 'mousemove').pipe(
+            typedFromEvent(ownerDocument, `mousemove`).pipe(
                 map(event => new TuiDragState(TuiDragStage.Continues, event)),
             ),
             mouseDragFinishFrom(ownerDocument).pipe(

@@ -16,7 +16,7 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
 }
 
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
-    image: '',
+    image: ``,
     imageSlide: true,
     stops: [],
     initial: 0,
@@ -26,7 +26,7 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 };
 
 export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
-    'Default parameters for sheet component',
+    `Default parameters for sheet component`,
     {
         factory: () => ({...TUI_SHEET_DEFAULT_OPTIONS, offset: inject(TUI_SHEET_OFFSET)}),
     },

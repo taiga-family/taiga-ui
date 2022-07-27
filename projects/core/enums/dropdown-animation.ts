@@ -1,4 +1,4 @@
 export const enum TuiDropdownAnimation {
-    FadeInBottom = 'fadeInBottom',
-    FadeInTop = 'fadeInTop',
+    FadeInBottom = `fadeInBottom`,
+    FadeInTop = `fadeInTop`,
 }

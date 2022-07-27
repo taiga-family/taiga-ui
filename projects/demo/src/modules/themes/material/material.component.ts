@@ -4,9 +4,9 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 // @dynamic
 @Component({
-    selector: 'material',
-    styleUrls: ['./material.style.less'],
-    template: '',
+    selector: `material`,
+    styleUrls: [`./material.style.less`],
+    template: ``,
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

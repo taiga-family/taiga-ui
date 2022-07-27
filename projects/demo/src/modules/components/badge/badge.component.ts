@@ -5,64 +5,64 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatusT} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-badge',
-    templateUrl: './badge.template.html',
+    selector: `example-badge`,
+    templateUrl: `./badge.template.html`,
     changeDetection,
 })
 export class ExampleTuiBadgeComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
     };
 
     readonly statusVariants: readonly TuiStatusT[] = [
-        'default',
-        'primary',
-        'custom',
-        'success',
-        'error',
-        'warning',
-        'info',
-        'neutral',
+        `default`,
+        `primary`,
+        `custom`,
+        `success`,
+        `error`,
+        `warning`,
+        `info`,
+        `neutral`,
     ];
 
     status = this.statusVariants[0];
 
     values: {[key: string]: string | number} = {
-        Taiga: 'Taiga',
+        Taiga: `Taiga`,
         '5': 5,
         '100': 100,
-        '"100"': '100',
-        '""': '',
+        '"100"': `100`,
+        '""': ``,
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
 
     valueVariants: ReadonlyArray<string | number> = Object.keys(this.values);
 
-    value: string | number = 'Taiga';
+    value: string | number = `Taiga`;
 
     hoverable = false;
 

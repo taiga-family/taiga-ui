@@ -5,8 +5,8 @@ import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-3',
-    templateUrl: './index.html',
+    selector: `tui-dialog-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

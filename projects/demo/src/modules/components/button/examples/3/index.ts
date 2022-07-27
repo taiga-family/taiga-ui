@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_ARROW} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-button-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-button-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

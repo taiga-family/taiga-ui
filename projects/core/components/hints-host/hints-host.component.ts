@@ -8,13 +8,13 @@ import {Observable} from 'rxjs';
 import {TuiHintBoxComponent} from './hint-box/hint-box.component';
 
 @Component({
-    selector: 'tui-hints-host',
-    templateUrl: './hints-host.template.html',
-    styleUrls: ['./hints-host.style.less'],
+    selector: `tui-hints-host`,
+    templateUrl: `./hints-host.template.html`,
+    styleUrls: [`./hints-host.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [TUI_PARENT_ANIMATION],
     host: {
-        'aria-live': 'polite',
+        'aria-live': `polite`,
     },
 })
 export class TuiHintsHostComponent {

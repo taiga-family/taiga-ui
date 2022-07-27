@@ -2,7 +2,7 @@ import {Directive, Inject, Input, Renderer2} from '@angular/core';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: '[tuiInputOpacity]',
+    selector: `[tuiInputOpacity]`,
 })
 export class TuiInputOpacityDirective {
     @Input()
@@ -10,7 +10,7 @@ export class TuiInputOpacityDirective {
         const {nativeFocusableElement} = this.tuiFocusableComponent;
 
         if (nativeFocusableElement) {
-            this.renderer.setStyle(nativeFocusableElement, 'opacity', opacity / 100);
+            this.renderer.setStyle(nativeFocusableElement, `opacity`, opacity / 100);
         }
     }
 

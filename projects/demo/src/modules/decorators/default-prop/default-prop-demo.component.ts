@@ -4,15 +4,17 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 // @dynamic
 @Component({
-    selector: 'example-tui-default-prop-demo',
-    template: 'Value: {{quantity}}',
+    selector: `example-tui-default-prop-demo`,
+    template: `
+        Value: {{ quantity }}
+    `,
     changeDetection,
 })
 export class ExampleTuiDefaultPropDemoComponent {
     @Input()
     @tuiDefaultProp(
         quantity => Number.isInteger(quantity) && quantity >= 5,
-        'Should be integer number more than min value',
+        `Should be integer number more than min value`,
     )
     quantity: number | undefined = 10;
 }

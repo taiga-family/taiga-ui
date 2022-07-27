@@ -5,7 +5,7 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {TuiTableDirective} from '../directives/table.directive';
 
 @Pipe({
-    name: 'tuiTableSort',
+    name: `tuiTableSort`,
     pure: false,
 })
 export class TuiTableSortPipe<T> implements PipeTransform {

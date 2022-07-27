@@ -27,13 +27,13 @@ enum State {
 const LOADER_HEIGHT = 48;
 
 @Component({
-    selector: 'tui-expand',
-    templateUrl: './expand.template.html',
+    selector: `tui-expand`,
+    templateUrl: `./expand.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./expand.style.less'],
+    styleUrls: [`./expand.style.less`],
 })
 export class TuiExpandComponent {
-    @ViewChild('wrapper')
+    @ViewChild(`wrapper`)
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
     private state = State.Idle;
@@ -42,7 +42,7 @@ export class TuiExpandComponent {
     @tuiDefaultProp()
     async = false;
 
-    @Input('expanded')
+    @Input(`expanded`)
     @tuiRequiredSetter()
     set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
@@ -65,25 +65,25 @@ export class TuiExpandComponent {
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
     content: TemplateRef<NgIfContext<boolean>> | null = null;
 
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
+    @HostBinding(`class._expanded`)
+    @HostBinding(`attr.aria-expanded`)
     expanded: boolean | null = null;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {}
 
-    @HostBinding('class._overflow')
+    @HostBinding(`class._overflow`)
     get overflow(): boolean {
         return this.state !== State.Idle;
     }
 
-    @HostBinding('class._loading')
+    @HostBinding(`class._loading`)
     get loading(): boolean {
         return !!this.expanded && this.async && this.state === State.Loading;
     }
 
-    @HostBinding('style.height.px')
+    @HostBinding(`style.height.px`)
     get height(): number | null {
         const {expanded, state, contentWrapper} = this;
 
@@ -113,18 +113,18 @@ export class TuiExpandComponent {
         return this.expanded || this.state !== State.Idle;
     }
 
-    @HostListener('transitionend', ['$event'])
+    @HostListener(`transitionend`, [`$event`])
     onTransitionEnd(event: TransitionEvent): void {
         if (
             isCurrentTarget(event) &&
-            event.propertyName === 'opacity' &&
+            event.propertyName === `opacity` &&
             this.state === State.Animated
         ) {
             this.state = State.Idle;
         }
     }
 
-    @HostListener(TUI_EXPAND_LOADED, ['$event'])
+    @HostListener(TUI_EXPAND_LOADED, [`$event`])
     onExpandLoaded(event: Event): void {
         event.stopPropagation();
 

@@ -20,7 +20,7 @@ export function modeFactory(
           )
         : of(null);
 
-    nativeElement['$.data-mode.attr'] = mode$;
+    nativeElement[`$.data-mode.attr`] = mode$;
 
     return mode$;
 }

@@ -33,9 +33,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
 
 @Component({
-    selector: 'tui-toggle',
-    templateUrl: './toggle.template.html',
-    styleUrls: ['./toggle.style.less'],
+    selector: `tui-toggle`,
+    templateUrl: `./toggle.template.html`,
+    styleUrls: [`./toggle.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -48,7 +48,7 @@ export class TuiToggleComponent
     extends AbstractTuiControl<boolean>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
@@ -64,7 +64,7 @@ export class TuiToggleComponent
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -106,19 +106,19 @@ export class TuiToggleComponent
     }
 
     get sizeM(): boolean {
-        return this.size === 'm';
+        return this.size === `m`;
     }
 
-    @HostBinding('class._checked')
+    @HostBinding(`class._checked`)
     get checked(): boolean {
         return this.value;
     }
 
     get loaderSize(): TuiSizeXS {
-        return this.sizeM ? 'xs' : 's';
+        return this.sizeM ? `xs` : `s`;
     }
 
-    @HostBinding('attr.data-mode')
+    @HostBinding(`attr.data-mode`)
     get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }

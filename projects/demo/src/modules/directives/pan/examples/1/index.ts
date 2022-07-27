@@ -6,9 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-pan-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-pan-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

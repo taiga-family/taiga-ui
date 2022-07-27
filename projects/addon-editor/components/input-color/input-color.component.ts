@@ -37,9 +37,9 @@ export function longDropdownControllerFactory(
 }
 
 @Component({
-    selector: 'tui-input-color',
-    templateUrl: './input-color.template.html',
-    styleUrls: ['./input-color.style.less'],
+    selector: `tui-input-color`,
+    templateUrl: `./input-color.template.html`,
+    styleUrls: [`./input-color.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -90,7 +90,7 @@ export class TuiInputColorComponent
         return this.sanitize(this.value, this.domSanitizer);
     }
 
-    @HostListener('click')
+    @HostListener(`click`)
     onClick(): void {
         this.open = !this.open;
     }
@@ -112,12 +112,12 @@ export class TuiInputColorComponent
     }
 
     protected getFallbackValue(): string {
-        return '#000000';
+        return `#000000`;
     }
 
     @tuiPure
     private sanitize(value: string, domSanitizer: DomSanitizer): SafeStyle | string {
-        return value.startsWith('linear-gradient(')
+        return value.startsWith(`linear-gradient(`)
             ? domSanitizer.bypassSecurityTrustStyle(
                   toGradient(parseGradient(getGradientData(value))),
               )

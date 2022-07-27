@@ -6,14 +6,14 @@ import {
     TuiTextMaskListHandler,
 } from '@taiga-ui/core/mask';
 
-const ASSERTION = 'Correction function must return single char or null';
+const ASSERTION = `Correction function must return single char or null`;
 
 export function tuiCreateCorrectionMask(
     allowed: RegExp,
     correctionHandler: TuiTextMaskCorrectionHandler,
 ): TuiTextMaskListHandler {
     return rawValue => {
-        const mask = rawValue.split('').reduce<TuiTextMaskList>((result, char, index) => {
+        const mask = rawValue.split(``).reduce<TuiTextMaskList>((result, char, index) => {
             const corrected = correctionHandler(char, index);
 
             tuiAssert.assert(corrected === null || corrected.length === 1, ASSERTION);

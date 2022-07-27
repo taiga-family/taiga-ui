@@ -54,10 +54,10 @@ export abstract class AbstractTuiSlider<T>
         TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
     >();
 
-    @ViewChild('dotLeft', {read: ElementRef})
+    @ViewChild(`dotLeft`, {read: ElementRef})
     protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
 
-    @ViewChild('dotRight', {read: ElementRef})
+    @ViewChild(`dotRight`, {read: ElementRef})
     protected dotRight?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
@@ -77,7 +77,7 @@ export abstract class AbstractTuiSlider<T>
     steps = 0;
 
     @Input()
-    @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
+    @tuiDefaultProp(nonNegativeFiniteAssertion, `Quantum must be a non-negative number`)
     quantum = 0;
 
     // TODO: remove setter in v3.0:
@@ -90,9 +90,9 @@ export abstract class AbstractTuiSlider<T>
     }
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -114,7 +114,7 @@ export abstract class AbstractTuiSlider<T>
         super(ngControl, changeDetectorRef);
     }
 
-    @HostBinding('class._segmented')
+    @HostBinding(`class._segmented`)
     get segmented(): boolean {
         return this.segments > 0;
     }
@@ -150,10 +150,10 @@ export abstract class AbstractTuiSlider<T>
     ngOnInit(): void {
         super.ngOnInit();
 
-        const mouseMoves$ = typedFromEvent(this.documentRef, 'mousemove');
-        const mouseUps$ = typedFromEvent(this.documentRef, 'mouseup');
-        const touchMoves$ = typedFromEvent(this.documentRef, 'touchmove');
-        const touchEnds$ = typedFromEvent(this.documentRef, 'touchend');
+        const mouseMoves$ = typedFromEvent(this.documentRef, `mousemove`);
+        const mouseUps$ = typedFromEvent(this.documentRef, `mouseup`);
+        const touchMoves$ = typedFromEvent(this.documentRef, `touchmove`);
+        const touchEnds$ = typedFromEvent(this.documentRef, `touchend`);
         let isPointerDownRight: boolean;
 
         this.pointerDown$
@@ -250,7 +250,7 @@ export abstract class AbstractTuiSlider<T>
 
     getSegmentPrefix(segment: number, texts: [string, string]): string {
         if (this.segments !== 1) {
-            return '';
+            return ``;
         }
 
         if (segment === 0) {

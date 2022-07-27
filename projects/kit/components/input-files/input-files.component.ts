@@ -37,9 +37,9 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
 // @dynamic
 @Component({
-    selector: 'tui-input-files',
-    templateUrl: './input-files.template.html',
-    styleUrls: ['./input-files.style.less'],
+    selector: `tui-input-files`,
+    templateUrl: `./input-files.template.html`,
+    styleUrls: [`./input-files.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     providers: [
@@ -54,22 +54,22 @@ export class TuiInputFilesComponent
     extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('input')
+    @ViewChild(`input`)
     private readonly input?: ElementRef<HTMLInputElement>;
 
     private dataTransfer: DataTransfer | null = null;
 
     @Input()
     @tuiDefaultProp()
-    link: PolymorpheusContent = '';
+    link: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent = '';
+    label: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    accept = '';
+    accept = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -77,7 +77,7 @@ export class TuiInputFilesComponent
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -141,7 +141,7 @@ export class TuiInputFilesComponent
     }
 
     get fileDragged(): boolean {
-        return !!this.dataTransfer?.types.includes('Files');
+        return !!this.dataTransfer?.types.includes(`Files`);
     }
 
     get arrayValue(): readonly TuiFileLike[] {
@@ -166,7 +166,7 @@ export class TuiInputFilesComponent
         units: [string, string, string],
     ): void {
         this.processSelectedFiles(input.files, texts, units);
-        input.value = '';
+        input.value = ``;
     }
 
     onDropped(
@@ -194,10 +194,10 @@ export class TuiInputFilesComponent
         link: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         return fileDragged
-            ? of('')
+            ? of(``)
             : this.inputFileTexts$.pipe(
                   map(texts =>
-                      multiple && link === ''
+                      multiple && link === ``
                           ? texts.defaultLinkMultiple
                           : link || texts.defaultLinkSingle,
                   ),
@@ -212,7 +212,7 @@ export class TuiInputFilesComponent
         label: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         if (isMobile) {
-            return of('');
+            return of(``);
         }
 
         if (fileDragged) {
@@ -223,7 +223,7 @@ export class TuiInputFilesComponent
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && label === ''
+                multiple && label === ``
                     ? texts.defaultLabelMultiple
                     : label || texts.defaultLabelSingle,
             ),
@@ -291,14 +291,14 @@ export class TuiInputFilesComponent
             return true;
         }
 
-        const extension = `.${(file.name.split('.').pop() || '').toLowerCase()}`;
+        const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
 
         return getAcceptArray(this.accept).some(
             format =>
                 format === extension ||
                 format === file.type ||
-                (format.split('/')[1] === '*' &&
-                    file.type.split('/')[0] === format.split('/')[0]),
+                (format.split(`/`)[1] === `*` &&
+                    file.type.split(`/`)[0] === format.split(`/`)[0]),
         );
     }
 

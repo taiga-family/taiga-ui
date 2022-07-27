@@ -15,17 +15,17 @@ import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-editor-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-editor-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tiptap/starter-kit').then(m => m.default),
-                import('@taiga-ui/addon-editor/extensions/image-editor').then(m =>
+                import(`@tiptap/starter-kit`).then(m => m.default),
+                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(m =>
                     m.createImageEditorExtension(injector),
                 ),
             ],
@@ -42,10 +42,10 @@ export class TuiEditorNewExample3 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     base64Image$ = this.http
-        .get('assets/images/lumberjack.png', {responseType: 'blob'})
+        .get(`assets/images/lumberjack.png`, {responseType: `blob`})
         .pipe(switchMap(file => this.imageLoader(file)));
 
-    control = new FormControl('');
+    control = new FormControl(``);
 
     constructor(
         @Inject(TUI_IMAGE_LOADER)

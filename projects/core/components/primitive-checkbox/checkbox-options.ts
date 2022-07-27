@@ -25,7 +25,7 @@ export type CheckboxOptions = TuiCheckboxOptions;
 
 /** Default values for the checkbox options. */
 export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
-    size: 'm',
+    size: `m`,
     appearances: {
         unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
@@ -33,16 +33,16 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
     },
     icons: {
         checked({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge';
+            return $implicit === `m` ? `tuiIconCheck` : `tuiIconCheckLarge`;
         },
         indeterminate({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge';
+            return $implicit === `m` ? `tuiIconMinus` : `tuiIconMinusLarge`;
         },
     },
 };
 
 export const TUI_CHECKBOX_OPTIONS = new InjectionToken<TuiCheckboxOptions>(
-    'Default parameters for checkbox component',
+    `Default parameters for checkbox component`,
     {
         factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
     },

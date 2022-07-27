@@ -8,9 +8,9 @@ import {
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-palette',
-    templateUrl: './palette.template.html',
-    styleUrls: ['./palette.style.less'],
+    selector: `tui-palette`,
+    templateUrl: `./palette.template.html`,
+    styleUrls: [`./palette.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPaletteComponent {

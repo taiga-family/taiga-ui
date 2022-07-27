@@ -9,30 +9,30 @@ export function passwordValidator(field: AbstractControl): Validators | null {
     return field.value && latinChars.test(field.value)
         ? null
         : {
-              other: 'Only latin letters are allowed',
+              other: `Only latin letters are allowed`,
           };
 }
 
 export function superComputerValidator(field: AbstractControl): Validators | null {
-    return field.value === '42'
+    return field.value === `42`
         ? null
         : {
-              other: 'Wrong',
+              other: `Wrong`,
           };
 }
 
 @Component({
-    selector: 'tui-field-error-example-1',
-    templateUrl: './index.html',
+    selector: `tui-field-error-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiFieldErrorExample1 {
-    readonly testValue1 = new FormControl('', [Validators.required, passwordValidator]);
+    readonly testValue1 = new FormControl(``, [Validators.required, passwordValidator]);
 
     readonly testForm = new FormGroup({
         testValue1: this.testValue1,
-        testValue2: new FormControl('', [Validators.required, superComputerValidator]),
+        testValue2: new FormControl(``, [Validators.required, superComputerValidator]),
     });
 
     constructor() {

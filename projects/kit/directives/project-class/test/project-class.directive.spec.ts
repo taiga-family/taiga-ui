@@ -8,7 +8,7 @@ import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
 import {TuiProjectClassModule} from '../project-class.module';
 
-describe('Directive TuiProjectClassDirective', () => {
+describe(`Directive TuiProjectClassDirective`, () => {
     @Component({
         template: `
             <div
@@ -30,7 +30,7 @@ describe('Directive TuiProjectClassDirective', () => {
         `,
     })
     class TestComponent {
-        classNames = ['_focused'];
+        classNames = [`_focused`];
         control = new FormControl();
         items = [1, 2, 3];
     }
@@ -57,18 +57,18 @@ describe('Directive TuiProjectClassDirective', () => {
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    it('if the child does not have the required class, it is not on the host either', () => {
-        expect(getParentElement().classList.contains('_focused')).toBe(false);
+    it(`if the child does not have the required class, it is not on the host either`, () => {
+        expect(getParentElement().classList.contains(`_focused`)).toBe(false);
     });
 
-    it('if a class appears on the child, it is projected to the host', () => {
+    it(`if a class appears on the child, it is projected to the host`, () => {
         inputPO.focus();
         fixture.detectChanges();
 
-        expect(getParentElement().classList.contains('_focused')).toBe(true);
+        expect(getParentElement().classList.contains(`_focused`)).toBe(true);
     });
 
     function getParentElement(): HTMLElement {
-        return document.getElementById('parent')!;
+        return document.getElementById(`parent`)!;
     }
 });

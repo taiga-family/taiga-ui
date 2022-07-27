@@ -15,7 +15,7 @@ import {
 
 // @dynamic
 @Directive({
-    selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
+    selector: `[tuiDroppableDropped], [tuiDroppableDragOverChange]`,
     providers: [TuiDestroyService],
 })
 export class TuiDroppableDirective {
@@ -29,26 +29,26 @@ export class TuiDroppableDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        this.tuiDroppableDropped = typedFromEvent(nativeElement, 'drop').pipe(
+        this.tuiDroppableDropped = typedFromEvent(nativeElement, `drop`).pipe(
             preventDefault(),
             map(event => event.dataTransfer),
             filter(isPresent),
         );
 
-        this.tuiDroppableDragOverChange = typedFromEvent(nativeElement, 'dragenter').pipe(
+        this.tuiDroppableDragOverChange = typedFromEvent(nativeElement, `dragenter`).pipe(
             switchMap(({target, dataTransfer}) =>
                 merge(
-                    typedFromEvent(nativeElement, 'dragleave').pipe(
+                    typedFromEvent(nativeElement, `dragleave`).pipe(
                         filter(event => event.target === target),
                     ),
-                    typedFromEvent(nativeElement, 'drop'),
+                    typedFromEvent(nativeElement, `drop`),
                 ).pipe(mapTo(null), startWith(dataTransfer)),
             ),
             distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
         );
 
         // Required by Drag and Drop API to stop redirecting
-        typedFromEvent(nativeElement, 'dragover')
+        typedFromEvent(nativeElement, `dragover`)
             .pipe(preventDefault(), takeUntil(destroy$))
             .subscribe();
     }

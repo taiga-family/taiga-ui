@@ -15,9 +15,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // TODO: 3.0 Refactor to use ng-content
 @Component({
-    selector: 'tui-ring-chart',
-    templateUrl: './ring-chart.template.html',
-    styleUrls: ['./ring-chart.style.less'],
+    selector: `tui-ring-chart`,
+    templateUrl: `./ring-chart.template.html`,
+    styleUrls: [`./ring-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiRingChartComponent {
@@ -26,9 +26,9 @@ export class TuiRingChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeXL = 'm';
+    size: TuiSizeS | TuiSizeXL = `m`;
 
     /** @deprecated */
     @Input()
@@ -38,7 +38,7 @@ export class TuiRingChartComponent {
     /** @deprecated */
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<TuiRingChartContext> = '';
+    content: PolymorpheusContent<TuiRingChartContext> = ``;
 
     @Input()
     @tuiDefaultProp()

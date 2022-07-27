@@ -23,7 +23,7 @@ export function pressedObservable(
         throw new TuiOwnerDocumentException();
     }
 
-    return typedFromEvent(element, 'mousedown').pipe(
+    return typedFromEvent(element, `mousedown`).pipe(
         filter(({isTrusted}) => isTrusted || !onlyTrusted),
         switchMapTo(
             mouseDragFinishFrom(ownerDocument).pipe(

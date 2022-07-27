@@ -10,7 +10,7 @@ type AbstractTuiHint = any;
  * Service for displaying hints/tooltips
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiHintService extends BehaviorSubject<readonly AbstractTuiHint[]> {
     /**

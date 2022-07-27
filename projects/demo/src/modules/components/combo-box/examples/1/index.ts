@@ -21,14 +21,14 @@ class User {
 }
 
 const databaseMockData: readonly User[] = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, avatar),
 ];
 
 @Component({
-    selector: 'tui-combo-box-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-combo-box-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -58,7 +58,7 @@ export class TuiComboBoxExample1 {
      */
     private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
         const result = databaseMockData.filter(user =>
-            TUI_DEFAULT_MATCHER(user, searchQuery || ''),
+            TUI_DEFAULT_MATCHER(user, searchQuery || ``),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

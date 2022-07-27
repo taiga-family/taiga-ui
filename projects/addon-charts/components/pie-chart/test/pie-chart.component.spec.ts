@@ -5,7 +5,7 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPieChartModule} from '../pie-chart.module';
 
-describe('PieChart', () => {
+describe(`PieChart`, () => {
     @Component({
         template: `
             <tui-pie-chart [value]="value"></tui-pie-chart>
@@ -26,7 +26,7 @@ describe('PieChart', () => {
                 {
                     provide: Location,
                     useValue: {
-                        path: () => '',
+                        path: () => ``,
                     },
                 },
             ],
@@ -39,7 +39,7 @@ describe('PieChart', () => {
         fixture.detectChanges();
     });
 
-    it('Has segment for each item in value', () => {
-        expect(pageObject.getAllByAutomationId('tui-pie-chart__segment').length).toBe(3);
+    it(`Has segment for each item in value`, () => {
+        expect(pageObject.getAllByAutomationId(`tui-pie-chart__segment`).length).toBe(3);
     });
 });

@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFileLike} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-files-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-files-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

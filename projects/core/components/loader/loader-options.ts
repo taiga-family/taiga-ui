@@ -9,13 +9,13 @@ export interface TuiLoaderOptions {
 
 /** Default values for the loader options. */
 export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
-    size: 'm',
+    size: `m`,
     inheritColor: false,
     overlay: false,
 };
 
 export const TUI_LOADER_OPTIONS = new InjectionToken<TuiLoaderOptions>(
-    'Default parameters for loader component',
+    `Default parameters for loader component`,
     {
         factory: () => TUI_LOADER_DEFAULT_OPTIONS,
     },

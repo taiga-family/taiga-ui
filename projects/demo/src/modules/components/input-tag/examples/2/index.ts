@@ -5,17 +5,17 @@ import {Observable, of, Subject} from 'rxjs';
 import {delay, startWith, switchMap} from 'rxjs/operators';
 
 const databaseMockData: readonly string[] = [
-    'John Cleese',
-    'Eric Idle',
-    'Michael Palin',
-    'Terry Gilliam',
-    'Terry Jones',
-    'Graham Chapman',
+    `John Cleese`,
+    `Eric Idle`,
+    `Michael Palin`,
+    `Terry Gilliam`,
+    `Terry Jones`,
+    `Graham Chapman`,
 ];
 
 @Component({
-    selector: 'tui-input-tag-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-tag-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

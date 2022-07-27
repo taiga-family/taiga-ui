@@ -20,7 +20,7 @@ export const convertToSundayFirstWeekFormat = (
 
 export const TUI_ORDERED_SHORT_WEEK_DAYS = new InjectionToken<
     Observable<WEEK_DAYS_NAMES>
->('Ordered calendars i18n texts', {
+>(`Ordered calendars i18n texts`, {
     factory: () => {
         const firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 

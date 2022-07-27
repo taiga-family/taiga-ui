@@ -5,15 +5,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-time-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-time-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiInputTimeOptionsProvider({
-            icon: 'tuiIconCheckCircleLarge',
-            mode: 'HH:MM:SS',
-            itemSize: 's',
+            icon: `tuiIconCheckCircleLarge`,
+            mode: `HH:MM:SS`,
+            itemSize: `s`,
         }),
     ],
 })

@@ -4,9 +4,9 @@ import {first} from 'rxjs/operators';
 
 import {preventDefault} from '../prevent-default';
 
-describe('preventDefault operator function', () => {
-    it('prevents event default behavior', fakeAsync(() => {
-        const event = new Event('click', {cancelable: true});
+describe(`preventDefault operator function`, () => {
+    it(`prevents event default behavior`, fakeAsync(() => {
+        const event = new Event(`click`, {cancelable: true});
         const subject = new Subject<Event>();
 
         subject.pipe(preventDefault(), first()).subscribe();

@@ -10,14 +10,14 @@ import {combineLatest, merge, Observable} from 'rxjs';
 import {filter, mapTo, takeUntil, tap} from 'rxjs/operators';
 
 const SLIDER_INTERACTION_KEYS = new Set([
-    'ArrowLeft',
-    'ArrowRight',
-    'ArrowUp',
-    'ArrowDown',
-    'Home',
-    'End',
-    'PageUp',
-    'PageDown',
+    `ArrowLeft`,
+    `ArrowRight`,
+    `ArrowUp`,
+    `ArrowDown`,
+    `Home`,
+    `End`,
+    `PageUp`,
+    `PageDown`,
 ]);
 
 /**
@@ -26,7 +26,7 @@ const SLIDER_INTERACTION_KEYS = new Set([
  */
 // @dynamic
 @Directive({
-    selector: 'input[tuiSlider][readonly]',
+    selector: `input[tuiSlider][readonly]`,
     providers: [TuiDestroyService],
 })
 export class TuiSliderReadonlyDirective {
@@ -40,13 +40,13 @@ export class TuiSliderReadonlyDirective {
         @Inject(TuiDestroyService)
         destroy$: Observable<unknown>,
     ) {
-        const touchStart$ = typedFromEvent(elementRef.nativeElement, 'touchstart', {
+        const touchStart$ = typedFromEvent(elementRef.nativeElement, `touchstart`, {
             passive: false,
         });
-        const touchMove$ = typedFromEvent(documentRef, 'touchmove', {
+        const touchMove$ = typedFromEvent(documentRef, `touchmove`, {
             passive: false,
         });
-        const touchEnd$ = typedFromEvent(documentRef, 'touchend', {
+        const touchEnd$ = typedFromEvent(documentRef, `touchend`, {
             passive: true,
         });
 
@@ -70,14 +70,14 @@ export class TuiSliderReadonlyDirective {
             .subscribe(([moveEvent]) => this.preventEvent(moveEvent));
     }
 
-    @HostListener('mousedown', ['$event'])
+    @HostListener(`mousedown`, [`$event`])
     preventEvent(event: Event): void {
         if (event.cancelable && tuiCoerceBooleanProperty(this.readonly)) {
             event.preventDefault();
         }
     }
 
-    @HostListener('keydown', ['$event'])
+    @HostListener(`keydown`, [`$event`])
     preventKeyboardInteraction(event: KeyboardEvent): void {
         if (SLIDER_INTERACTION_KEYS.has(event.key)) {
             this.preventEvent(event);

@@ -7,9 +7,9 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-elastic-sticky-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-elastic-sticky-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

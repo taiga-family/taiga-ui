@@ -29,9 +29,9 @@ import {
 import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options';
 
 @Component({
-    selector: 'tui-line-clamp',
-    templateUrl: './line-clamp.template.html',
-    styleUrls: ['./line-clamp.style.less'],
+    selector: `tui-line-clamp`,
+    templateUrl: `./line-clamp.template.html`,
+    styleUrls: [`./line-clamp.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineClampComponent implements AfterViewInit, DoCheck {
@@ -54,7 +54,7 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     @Output()
     readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(
@@ -79,7 +79,7 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
             switchMap(([prev, next]) =>
                 next >= prev
                     ? of(next)
-                    : typedFromEvent(this.elementRef.nativeElement, 'transitionend').pipe(
+                    : typedFromEvent(this.elementRef.nativeElement, `transitionend`).pipe(
                           filter(isCurrentTarget),
                           mapTo(next),
                       ),
@@ -100,20 +100,20 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     }
 
     get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content : '';
+        return this.options.showHint && this.overflown ? this.content : ``;
     }
 
-    @HostBinding('style.maxHeight.px')
+    @HostBinding(`style.maxHeight.px`)
     get maxHeight(): number | null {
         return this.initialized ? this.lineHeight * this.linesLimit$.value : null;
     }
 
-    @HostBinding('style.height.px')
+    @HostBinding(`style.height.px`)
     get height(): number | null {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
-    @HostListener('transitionend')
+    @HostListener(`transitionend`)
     updateView(): void {
         this.cd.detectChanges();
     }
@@ -129,7 +129,7 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     private skipInitialTransition(): void {
         this.ngZone.runOutsideAngular(() => {
             setTimeout(() => {
-                this.renderer.addClass(this.elementRef.nativeElement, '_initialized');
+                this.renderer.addClass(this.elementRef.nativeElement, `_initialized`);
                 this.cd.detectChanges();
             });
         });

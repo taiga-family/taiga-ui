@@ -19,15 +19,15 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
 // TODO: Accessibility
 // @dynamic
 @Component({
-    selector: 'tui-table-bars-host',
+    selector: `tui-table-bars-host`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './table-bars-host.template.html',
-    styleUrls: ['./table-bars-host.style.less'],
+    templateUrl: `./table-bars-host.template.html`,
+    styleUrls: [`./table-bars-host.style.less`],
     animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {
     readonly animation = {
-        value: '',
+        value: ``,
         ...this.options,
     } as const;
 
@@ -44,11 +44,11 @@ export class TuiTableBarsHostComponent {
     }
 
     get closeIcon(): string {
-        return this.isMobile ? 'tuiIconClose' : 'tuiIconRemoveLarge';
+        return this.isMobile ? `tuiIconClose` : `tuiIconRemoveLarge`;
     }
 
     getMode(mode: TuiBrightness): TuiBrightness | null {
-        return mode === 'onLight' ? 'onDark' : null;
+        return mode === `onLight` ? `onDark` : null;
     }
 
     onCloseClick(itemToRemove: TableBar): void {

@@ -14,8 +14,8 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-font-size',
-    templateUrl: './font-size.template.html',
+    selector: `tui-font-size`,
+    templateUrl: `./font-size.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontSizeComponent {

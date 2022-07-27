@@ -14,7 +14,7 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 // @dynamic
 @Directive({
-    selector: '[tuiTiptapEditor]',
+    selector: `[tuiTiptapEditor]`,
     providers: [TuiDestroyService],
 })
 export class TuiTiptapEditorDirective {
@@ -46,7 +46,7 @@ export class TuiTiptapEditorDirective {
         @Inject(TUI_EDITOR_STYLES) styles: string,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
-        directiveStyles.addStyle(styles, 'data-tui-editor-socket');
+        directiveStyles.addStyle(styles, `data-tui-editor-socket`);
 
         this.editorLoaded$.pipe(takeUntil(destroy$)).subscribe(() => {
             this.renderer.appendChild(

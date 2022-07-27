@@ -10,13 +10,13 @@ import {
 } from '@angular/core';
 
 @Directive({
-    selector: 'input[tuiChecked], input[tuiCheckedChange]',
+    selector: `input[tuiChecked], input[tuiCheckedChange]`,
 })
 export class TuiCheckedDirective {
     @Input()
     set tuiChecked(checked: null | boolean) {
-        this.updateProperty('checked', checked || false);
-        this.updateProperty('indeterminate', checked === null);
+        this.updateProperty(`checked`, checked || false);
+        this.updateProperty(`indeterminate`, checked === null);
     }
 
     @Output()
@@ -27,12 +27,12 @@ export class TuiCheckedDirective {
         private readonly element: ElementRef<HTMLInputElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {
-        this.updateProperty('checked', false);
+        this.updateProperty(`checked`, false);
     }
 
-    @HostListener('change', ['$event.target'])
+    @HostListener(`change`, [`$event.target`])
     onChange({checked}: HTMLInputElement): void {
-        this.updateProperty('indeterminate', false);
+        this.updateProperty(`indeterminate`, false);
         this.tuiCheckedChange.emit(checked);
     }
 

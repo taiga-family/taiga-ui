@@ -26,7 +26,7 @@ import {TuiRippleStylesComponent} from './ripple-styles.component';
 const TOUCH_MOVE_DELAY = 100;
 
 @Directive({
-    selector: '[tuiRipple]',
+    selector: `[tuiRipple]`,
     providers: TUI_RIPPLE_PROVIDERS,
 })
 export class TuiRippleDirective {
@@ -43,8 +43,8 @@ export class TuiRippleDirective {
     ) {
         directiveStyles.addComponent(TuiRippleStylesComponent);
 
-        const touchEnd$ = typedFromEvent(nativeElement, 'touchend');
-        const touchMove$ = typedFromEvent(nativeElement, 'touchmove');
+        const touchEnd$ = typedFromEvent(nativeElement, `touchend`);
+        const touchMove$ = typedFromEvent(nativeElement, `touchmove`);
 
         end$.subscribe(element => {
             renderer.removeChild(nativeElement, element);
@@ -52,7 +52,7 @@ export class TuiRippleDirective {
         start$
             .pipe(
                 mergeMap(ripple => {
-                    const animationEndOn$ = typedFromEvent(ripple, 'animationend');
+                    const animationEndOn$ = typedFromEvent(ripple, `animationend`);
 
                     return race(
                         timer(TOUCH_MOVE_DELAY).pipe(mapTo(false)),
@@ -64,7 +64,7 @@ export class TuiRippleDirective {
                         tap(() => {
                             renderer.setStyle(
                                 ripple,
-                                'background',
+                                `background`,
                                 this.tuiRipple || null,
                             );
                             renderer.appendChild(nativeElement, ripple);
@@ -83,7 +83,7 @@ export class TuiRippleDirective {
                 takeUntil(destroy$),
             )
             .subscribe(element => {
-                renderer.setStyle(element, 'animationName', RIPPLE_OFF);
+                renderer.setStyle(element, `animationName`, RIPPLE_OFF);
             });
     }
 }

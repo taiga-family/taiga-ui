@@ -6,7 +6,7 @@ import {pluralize} from '@taiga-ui/core/utils/format';
  * @deprecated This implementation targets Russian.
  * Use https://angular.io/api/common/I18nPluralPipe
  */
-@Pipe({name: 'tuiPluralize'})
+@Pipe({name: `tuiPluralize`})
 export class TuiPluralizePipe implements PipeTransform {
     /**
      * Chooses correct plural form

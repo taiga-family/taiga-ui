@@ -5,7 +5,7 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function otherDecimalSymbol(symbol: TuiDecimalSymbol): TuiDecimalSymbol {
-    return symbol === '.' ? ',' : '.';
+    return symbol === `.` ? `,` : `.`;
 }
 
 export const tuiOtherDecimalSymbol = otherDecimalSymbol;

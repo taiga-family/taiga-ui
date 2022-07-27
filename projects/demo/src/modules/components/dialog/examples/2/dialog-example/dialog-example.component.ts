@@ -4,14 +4,14 @@ import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'dialog-example',
-    templateUrl: './dialog-example.template.html',
-    styleUrls: ['./dialog-example.style.less'],
+    selector: `dialog-example`,
+    templateUrl: `./dialog-example.template.html`,
+    styleUrls: [`./dialog-example.style.less`],
     changeDetection,
 })
 export class DialogExampleComponent {
     value: number | null = null;
-    name = '';
+    name = ``;
     items = [10, 50, 100];
 
     constructor(

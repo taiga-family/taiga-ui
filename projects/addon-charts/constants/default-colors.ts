@@ -6,7 +6,7 @@ export const DEFAULT_COLORS: ReadonlyArray<TuiColor | string> = [
     TuiSupportColor.Havelock,
     TuiSupportColor.Feijoa,
     TuiSupportColor.Lilac,
-    'base-05',
+    `base-05`,
     TuiSupportColor.Mustard,
     TuiSupportColor.Texas,
     TuiSupportColor.Tan,

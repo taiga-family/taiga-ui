@@ -8,17 +8,17 @@ export interface TuiPrimitiveTextfieldOptions {
 }
 
 // TODO: 3.0 remove in ivy compilation
-export const TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
+export const TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER = `tuiIconCloseLarge`;
 
 /** Default values for primitive textfield options */
 export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptions = {
-    iconAlign: 'right',
+    iconAlign: `right`,
     iconCleaner: TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER,
 };
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
     new InjectionToken<TuiPrimitiveTextfieldOptions>(
-        'Default parameters for primitive textfield component',
+        `Default parameters for primitive textfield component`,
         {
             factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
         },

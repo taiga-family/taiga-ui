@@ -38,15 +38,15 @@ const GAP: Record<TuiSizeXL, number> = {
 };
 
 @Component({
-    selector: 'tui-arc-chart',
-    templateUrl: './arc-chart.template.html',
-    styleUrls: ['./arc-chart.style.less'],
+    selector: `tui-arc-chart`,
+    templateUrl: `./arc-chart.template.html`,
+    styleUrls: [`./arc-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArcChartComponent {
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
-    @ViewChildren('arc')
+    @ViewChildren(`arc`)
     set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
         this.arcs$.next(arcs);
     }
@@ -56,9 +56,9 @@ export class TuiArcChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXL = 'm';
+    size: TuiSizeXL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -66,11 +66,11 @@ export class TuiArcChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    minLabel = '0%';
+    minLabel = `0%`;
 
     @Input()
     @tuiDefaultProp()
-    maxLabel = '100%';
+    maxLabel = `100%`;
 
     @Input()
     @tuiDefaultProp()
@@ -102,13 +102,13 @@ export class TuiArcChartComponent {
         });
     }
 
-    @HostBinding('style.width.rem')
-    @HostBinding('style.height.rem')
+    @HostBinding(`style.width.rem`)
+    @HostBinding(`style.height.rem`)
     get width(): number {
         return SIZE[this.size];
     }
 
-    @HostBinding('style.strokeWidth.rem')
+    @HostBinding(`style.strokeWidth.rem`)
     get strokeWidth(): number {
         return WIDTH[this.size];
     }
@@ -145,8 +145,8 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
         .toArray()
         .map(({nativeElement}, index) =>
             merge(
-                typedFromEvent(nativeElement, 'mouseenter').pipe(mapTo(index)),
-                typedFromEvent(nativeElement, 'mouseleave').pipe(mapTo(NaN)),
+                typedFromEvent(nativeElement, `mouseenter`).pipe(mapTo(index)),
+                typedFromEvent(nativeElement, `mouseleave`).pipe(mapTo(NaN)),
             ),
         );
 }

@@ -8,7 +8,7 @@ import {TuiPreviewDialogComponent} from './preview-dialog.component';
  * @deprecated: use {@link TuiPreviewDialogService}
  * TODO: remove in v3.0
  */
-@Injectable({providedIn: 'root'})
+@Injectable({providedIn: `root`})
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export class PreviewDialogService extends AbstractTuiDialogService<unknown> {
     readonly defaultOptions = {};
@@ -21,5 +21,5 @@ export const PREVIEW_DIALOG_PROVIDER: Provider = {
     multi: true,
 };
 
-@Injectable({providedIn: 'root'})
+@Injectable({providedIn: `root`})
 export class TuiPreviewDialogService extends PreviewDialogService {}

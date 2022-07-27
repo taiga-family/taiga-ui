@@ -10,9 +10,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-input-card-grouped',
-    templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    selector: `example-input-card-grouped`,
+    templateUrl: `./input-card-grouped.template.html`,
+    styleUrls: [`./input-card-grouped.style.less`],
     changeDetection,
     providers: [
         {
@@ -22,35 +22,34 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!../input-card-grouped/examples/4/index.ts'),
-        HTML: import('!!raw-loader!../input-card-grouped/examples/4/index.html'),
+        TypeScript: import(`!!raw-loader!../input-card-grouped/examples/4/index.ts`),
+        HTML: import(`!!raw-loader!../input-card-grouped/examples/4/index.html`),
     };
 
     readonly cards: Record<string, string> = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+        common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
+        universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
+        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     cardSrcVariants: readonly string[] = Object.keys(this.cards);
@@ -59,7 +58,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     autocompleteEnabled = false;
 
-    exampleText = '0000 0000 0000 0000';
+    exampleText = `0000 0000 0000 0000`;
 
     readonly codeLengthVariants: TuiCodeCVCLength[] = [3, 4];
 
@@ -79,7 +78,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     }
 
     get cardSrc(): PolymorpheusContent | null {
-        return typeof this.cardSrcSelected === 'string'
+        return typeof this.cardSrcSelected === `string`
             ? this.cards[this.cardSrcSelected]
             : this.cardSrcSelected;
     }

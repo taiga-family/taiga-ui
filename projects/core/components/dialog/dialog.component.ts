@@ -9,30 +9,30 @@ import {Observable} from 'rxjs';
 
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
-const REQUIRED_ERROR = new Error('Required dialog was dismissed');
+const REQUIRED_ERROR = new Error(`Required dialog was dismissed`);
 
 // @dynamic
 @Component({
-    selector: 'tui-dialog',
-    templateUrl: './dialog.template.html',
-    styleUrls: ['./dialog.style.less'],
+    selector: `tui-dialog`,
+    templateUrl: `./dialog.template.html`,
+    styleUrls: [`./dialog.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_DIALOG_PROVIDERS,
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiDialogComponent<O, I> {
     private readonly animation = {
-        value: '',
+        value: ``,
         params: {
-            start: '40px',
+            start: `40px`,
             duration: this.duration,
         },
     } as const;
 
     private readonly fullscreenAnimation = {
-        value: '',
+        value: ``,
         params: {
-            start: '100vh',
+            start: `100vh`,
             duration: this.duration,
         },
     } as const;
@@ -51,20 +51,20 @@ export class TuiDialogComponent<O, I> {
         });
     }
 
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiDialogSize {
         return this.context.size;
     }
 
-    @HostBinding('class._centered')
+    @HostBinding(`class._centered`)
     get header(): PolymorpheusContent {
         return this.context.header;
     }
 
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
+    @HostBinding(`@tuiSlideInTop`)
+    @HostBinding(`@tuiFadeIn`)
     get slideInTop(): TuiAnimationOptions {
-        return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
+        return this.size === `fullscreen` || this.size === `page` || this.isMobile
             ? this.fullscreenAnimation
             : this.animation;
     }

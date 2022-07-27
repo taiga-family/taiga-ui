@@ -9,9 +9,9 @@ import {
 import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
 
 @Component({
-    selector: 'version-manager',
-    templateUrl: './version-manager.template.html',
-    styleUrls: ['./version-manager.style.less'],
+    selector: `version-manager`,
+    templateUrl: `./version-manager.template.html`,
+    styleUrls: [`./version-manager.style.less`],
     providers: VERSION_MANAGER_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

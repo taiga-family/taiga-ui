@@ -10,7 +10,7 @@ import {BehaviorSubject} from 'rxjs';
  */
 // @dynamic
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiSvgService {
     private originals: Record<string, string> = {};
@@ -49,7 +49,7 @@ export class TuiSvgService {
         const parsed = this.parseSrc(name, src);
 
         if (!parsed) {
-            tuiAssert.assert(false, 'Unable to parse given SVG src');
+            tuiAssert.assert(false, `Unable to parse given SVG src`);
 
             return;
         }
@@ -69,7 +69,7 @@ export class TuiSvgService {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
+                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || ``,
         );
     }
 }

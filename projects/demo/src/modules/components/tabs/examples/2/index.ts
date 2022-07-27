@@ -5,8 +5,8 @@ import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-tabs-example-2',
-    templateUrl: './index.html',
+    selector: `tui-tabs-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
@@ -23,16 +23,16 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiTabsExample2 {
     readonly items = [
         {
-            text: 'Maps',
-            icon: 'tuiIconCard',
+            text: `Maps`,
+            icon: `tuiIconCard`,
         },
         {
-            text: 'Calls',
-            icon: 'tuiIconCall',
+            text: `Calls`,
+            icon: `tuiIconCall`,
         },
         {
-            text: 'Settings',
-            icon: 'tuiIconSettings',
+            text: `Settings`,
+            icon: `tuiIconSettings`,
         },
     ];
 

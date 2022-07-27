@@ -26,9 +26,9 @@ import {
 
 // @dynamic
 @Component({
-    selector: 'tui-carousel',
-    templateUrl: 'carousel.template.html',
-    styleUrls: ['carousel.style.less'],
+    selector: `tui-carousel`,
+    templateUrl: `carousel.template.html`,
+    styleUrls: [`carousel.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -41,7 +41,7 @@ export class TuiCarouselComponent {
     private translate = 0;
 
     @Input()
-    @HostBinding('class._draggable')
+    @HostBinding(`class._draggable`)
     @tuiDefaultProp()
     draggable = false;
 
@@ -59,7 +59,7 @@ export class TuiCarouselComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
-    @HostBinding('class._transitioned')
+    @HostBinding(`class._transitioned`)
     transitioned = true;
 
     constructor(
@@ -74,10 +74,10 @@ export class TuiCarouselComponent {
         return `translateX(${100 * x}%)`;
     }
 
-    @HostListener('touchstart', ['false'])
-    @HostListener('touchend', ['true'])
-    @HostListener('mousedown', ['false'])
-    @HostListener('document:mouseup.silent', ['true'])
+    @HostListener(`touchstart`, [`false`])
+    @HostListener(`touchend`, [`true`])
+    @HostListener(`mousedown`, [`false`])
+    @HostListener(`document:mouseup.silent`, [`true`])
     onTransitioned(transitioned: boolean): void {
         this.transitioned = transitioned;
 
@@ -135,9 +135,9 @@ export class TuiCarouselComponent {
     onSwipe(direction: TuiSwipeDirection): void {
         if (Math.round(this.translate) !== -this.index || !this.computedDraggable) {
             return;
-        } else if (direction === 'left') {
+        } else if (direction === `left`) {
             this.next();
-        } else if (direction === 'right') {
+        } else if (direction === `right`) {
             this.prev();
         }
     }

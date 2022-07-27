@@ -7,17 +7,17 @@ import {TuiAlertService, TuiDialogContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-preview-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-preview-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiPreviewExample1 {
-    @ViewChild('preview')
+    @ViewChild(`preview`)
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
-    @ViewChild('contentSample')
+    @ViewChild(`contentSample`)
     readonly contentSample?: TemplateRef<Record<string, unknown>>;
 
     index = 0;
@@ -31,35 +31,35 @@ export class TuiPreviewExample1 {
     ) {}
 
     get title(): string {
-        return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
+        return this.index === 0 ? `Transaction cert.jpg` : `My face.jpg`;
     }
 
     get previewContent(): PolymorpheusContent {
         return this.index === 0 && this.contentSample
             ? this.contentSample
-            : 'http://marsibarsi.me/images/1x1small.jpg';
+            : `http://marsibarsi.me/images/1x1small.jpg`;
     }
 
     show(): void {
-        this.previewService.open(this.preview || '').subscribe({
-            complete: () => console.info('complete'),
+        this.previewService.open(this.preview || ``).subscribe({
+            complete: () => console.info(`complete`),
         });
     }
 
     download(): void {
-        this.alertService.open('Downloading...').subscribe();
+        this.alertService.open(`Downloading...`).subscribe();
     }
 
     delete(): void {
-        this.alertService.open('Deleting...').subscribe();
+        this.alertService.open(`Deleting...`).subscribe();
     }
 
     onSwipe(swipe: TuiSwipe): void {
-        if (swipe.direction === 'left') {
+        if (swipe.direction === `left`) {
             this.index = clamp(this.index + 1, 0, this.length - 1);
         }
 
-        if (swipe.direction === 'right') {
+        if (swipe.direction === `right`) {
             this.index = clamp(this.index - 1, 0, this.length - 1);
         }
     }

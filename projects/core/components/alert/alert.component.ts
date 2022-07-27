@@ -38,24 +38,24 @@ export interface TuiNotificationContentContext<O = void, I = undefined>
 
 // TODO: 3.0 Refactor according to new context by 3.0 and get rid of $any in template
 @Component({
-    selector: 'tui-alert',
-    templateUrl: './alert.template.html',
-    styleUrls: ['./alert.style.less'],
+    selector: `tui-alert`,
+    templateUrl: `./alert.template.html`,
+    styleUrls: [`./alert.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
-    host: {role: 'alert'},
+    host: {role: `alert`},
 })
 export class TuiAlertComponent<O, I> implements OnInit {
     private readonly autoClose =
-        typeof this.item.autoClose === 'function'
+        typeof this.item.autoClose === `function`
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
 
-    @HostBinding('@tuiFadeIn')
-    @HostBinding('@tuiSlideInRight')
-    @HostBinding('@tuiHeightCollapse')
-    readonly animation = {value: '', ...this.animationOptions} as const;
+    @HostBinding(`@tuiFadeIn`)
+    @HostBinding(`@tuiSlideInRight`)
+    @HostBinding(`@tuiHeightCollapse`)
+    readonly animation = {value: ``, ...this.animationOptions} as const;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -112,9 +112,9 @@ export class TuiAlertComponent<O, I> implements OnInit {
             isNumber(this.autoClose) ? this.autoClose : this.options.defaultAutoCloseTime,
         )
             .pipe(
-                takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
+                takeUntil(fromEvent(this.elementRef.nativeElement, `mouseenter`)),
                 // eslint-disable-next-line rxjs/no-ignored-notifier
-                repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),
+                repeatWhen(() => fromEvent(this.elementRef.nativeElement, `mouseleave`)),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => this.closeNotification());

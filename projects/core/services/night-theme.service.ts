@@ -5,12 +5,12 @@ import {map, share, startWith} from 'rxjs/operators';
 
 // @dynamic
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiNightThemeService extends Observable<boolean> {
     constructor(@Inject(WINDOW) windowRef: Window) {
-        const media = windowRef.matchMedia('(prefers-color-scheme: dark)');
-        const media$ = fromEvent(media, 'change').pipe(
+        const media = windowRef.matchMedia(`(prefers-color-scheme: dark)`);
+        const media$ = fromEvent(media, `change`).pipe(
             startWith(null),
             map(() => media.matches),
             share(),

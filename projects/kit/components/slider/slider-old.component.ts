@@ -25,11 +25,11 @@ import {Observable} from 'rxjs';
  */
 // @dynamic
 @Component({
-    selector: 'tui-slider',
-    templateUrl: '../../abstract/slider/slider.common.template.html',
+    selector: `tui-slider`,
+    templateUrl: `../../abstract/slider/slider.common.template.html`,
     styleUrls: [
-        '../../abstract/slider/slider.common.style.less',
-        './slider-old.style.less',
+        `../../abstract/slider/slider.common.style.less`,
+        `./slider-old.style.less`,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

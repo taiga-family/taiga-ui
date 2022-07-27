@@ -17,7 +17,7 @@ export const TUI_POINTER_HINT_DEFAULT_OPTIONS: TuiPointerHintOptions = {
 };
 
 export const TUI_POINTER_HINT_OPTIONS = new InjectionToken<TuiPointerHintOptions>(
-    'Default parameters for pointer hint directive',
+    `Default parameters for pointer hint directive`,
     {
         factory: () => TUI_POINTER_HINT_DEFAULT_OPTIONS,
     },

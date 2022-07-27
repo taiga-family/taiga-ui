@@ -9,13 +9,13 @@ import {
 import {EMPTY, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-export const RIPPLE_ON = 'tuiRippleOn';
-export const RIPPLE_OFF = 'tuiRippleOff';
+export const RIPPLE_ON = `tuiRippleOn`;
+export const RIPPLE_OFF = `tuiRippleOff`;
 export const TUI_RIPPLE_START = new InjectionToken<Observable<HTMLElement>>(
-    'Stream of ripple elements to add',
+    `Stream of ripple elements to add`,
 );
 export const TUI_RIPPLE_END = new InjectionToken<Observable<HTMLElement>>(
-    'Stream of ripple elements to remove',
+    `Stream of ripple elements to remove`,
 );
 export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -40,7 +40,7 @@ export function rippleStartFactory(
 ): Observable<HTMLElement> {
     return isIOS || !touchSupported
         ? EMPTY
-        : typedFromEvent(nativeElement, 'touchstart').pipe(
+        : typedFromEvent(nativeElement, `touchstart`).pipe(
               map(({touches}) => {
                   const {clientX, clientY} = touches[touches.length - 1];
                   const {width, height, top, left} =
@@ -49,12 +49,12 @@ export function rippleStartFactory(
                   const dimension = radius * 2;
                   const x = clientX - left - radius;
                   const y = clientY - top - radius;
-                  const ripple = renderer.createElement('div');
+                  const ripple = renderer.createElement(`div`);
 
-                  renderer.addClass(ripple, 'tui-ripple');
+                  renderer.addClass(ripple, `tui-ripple`);
                   renderer.setAttribute(
                       ripple,
-                      'style',
+                      `style`,
                       `
                         width: ${dimension}px;
                         height: ${dimension}px;
@@ -78,7 +78,7 @@ export function rippleEndFactory(
 ): Observable<EventTarget> {
     return isIOS || !touchSupported
         ? EMPTY
-        : typedFromEvent(nativeElement, 'animationend').pipe(
+        : typedFromEvent(nativeElement, `animationend`).pipe(
               filter(({animationName}) => animationName === RIPPLE_OFF),
               map(({target}) => target),
               filter(isPresent),

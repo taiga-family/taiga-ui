@@ -28,13 +28,13 @@ import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 
 // @dynamic
 @Component({
-    selector: 'app',
-    templateUrl: './app.template.html',
-    styleUrls: ['./app.style.less'],
+    selector: `app`,
+    templateUrl: `./app.template.html`,
+    styleUrls: [`./app.style.less`],
     host: {
-        '[class._is-cypress-mode]': 'isCypress',
-        '[$.class._loaded]': 'pageLoaded$',
-        '($.class._loaded)': '0',
+        '[class._is-cypress-mode]': `isCypress`,
+        '[$.class._loaded]': `pageLoaded$`,
+        '($.class._loaded)': `0`,
     },
     encapsulation: ViewEncapsulation.None,
     providers: [
@@ -50,7 +50,7 @@ import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 })
 export class AppComponent implements OnInit {
     readonly isLanding$ = this.router.events.pipe(
-        map(() => this.router.routerState.snapshot.url === '/'),
+        map(() => this.router.routerState.snapshot.url === `/`),
         distinctUntilChanged(),
     );
 
@@ -81,17 +81,17 @@ export class AppComponent implements OnInit {
     }
 
     private async replaceEnvInURI(): Promise<void> {
-        const env = this.localStorage.getItem('env');
+        const env = this.localStorage.getItem(`env`);
 
         if (env) {
-            localStorage.removeItem('env');
-            await this.router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
+            localStorage.removeItem(`env`);
+            await this.router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ``));
         }
     }
 
     private enableYandexMetrika(): void {
         if (!environment.production || this.isCypress) {
-            console.info('Yandex.Metrika disabled for non-production mode.');
+            console.info(`Yandex.Metrika disabled for non-production mode.`);
 
             return;
         }
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
                     metrika?.hit(event.urlAfterRedirects, {referer: event.url});
                 });
         } catch {
-            console.error('You forgot to import MetrikaModule!');
+            console.error(`You forgot to import MetrikaModule!`);
         }
     }
 }

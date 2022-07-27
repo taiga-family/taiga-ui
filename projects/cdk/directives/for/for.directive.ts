@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-    selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
+    selector: `[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]`,
 })
 export class TuiForDirective<T, K = unknown> implements OnChanges {
     private ref?: EmbeddedViewRef<unknown>;

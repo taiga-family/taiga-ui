@@ -28,11 +28,11 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     @Input()
     @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = '';
+    emptyContent: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = 'm';
+    size: TuiSizeXS | TuiSizeL = `m`;
 
     protected constructor(protected readonly itemsHandlers: TuiItemsHandlers<T>) {}
 

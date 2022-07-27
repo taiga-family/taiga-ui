@@ -15,7 +15,7 @@ import {TuiHintModule} from '../hint.module';
 
 type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
 
-describe('Hint', () => {
+describe(`Hint`, () => {
     @Component({
         template: `
             <tui-root>
@@ -41,7 +41,7 @@ describe('Hint', () => {
         ],
     })
     class TestComponent {
-        hint: Hint = 'Tooltip text';
+        hint: Hint = `Tooltip text`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -60,42 +60,42 @@ describe('Hint', () => {
     });
 
     beforeEach(() => {
-        document.body.style.margin = '0';
+        document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    it('Hint is not shown immediately', () => {
-        getHost().dispatchEvent(new Event('mouseenter'));
+    it(`Hint is not shown immediately`, () => {
+        getHost().dispatchEvent(new Event(`mouseenter`));
         fixture.detectChanges();
         expect(getTooltip()).toBe(null);
     });
 
-    describe('Hint', () => {
+    describe(`Hint`, () => {
         beforeEach(fakeAsync(() => {
-            getHost().dispatchEvent(new Event('mouseenter'));
+            getHost().dispatchEvent(new Event(`mouseenter`));
             fixture.detectChanges();
             tick(500);
             fixture.detectChanges();
             discardPeriodicTasks();
         }));
 
-        it('is shown after 500ms', async () => {
+        it(`is shown after 500ms`, async () => {
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getTooltip()!.textContent!.trim()).toBe('Tooltip text');
+            expect(getTooltip()!.textContent!.trim()).toBe(`Tooltip text`);
         });
 
-        it('is hidden immediately if null is passed as content', async () => {
+        it(`is hidden immediately if null is passed as content`, async () => {
             setHint(null);
 
             await fixture.whenStable();
             expect(getTooltip()).toBeNull();
         });
 
-        it('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
-            getHost().dispatchEvent(new Event('mouseleave'));
+        it(`is hidden after pointer left host with 200ms delay`, fakeAsync(async () => {
+            getHost().dispatchEvent(new Event(`mouseleave`));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
@@ -106,9 +106,9 @@ describe('Hint', () => {
         }));
     });
 
-    describe('Hint is not shown', () => {
-        it('when content is empty string', fakeAsync(() => {
-            setHintThenEnterMouse('');
+    describe(`Hint is not shown`, () => {
+        it(`when content is empty string`, fakeAsync(() => {
+            setHintThenEnterMouse(``);
             tick(500);
             fixture.detectChanges();
             discardPeriodicTasks();
@@ -116,7 +116,7 @@ describe('Hint', () => {
             expect(getTooltip()).toBeNull();
         }));
 
-        it('when content is null', fakeAsync(() => {
+        it(`when content is null`, fakeAsync(() => {
             setHintThenEnterMouse(null);
             tick(500);
             fixture.detectChanges();
@@ -128,13 +128,13 @@ describe('Hint', () => {
         function setHintThenEnterMouse(hint: Hint): void {
             setHint(hint);
 
-            getHost().dispatchEvent(new Event('mouseenter'));
+            getHost().dispatchEvent(new Event(`mouseenter`));
             fixture.detectChanges();
         }
     });
 
     function getHost(): HTMLElement {
-        const element = document.querySelector('#hint-host');
+        const element = document.querySelector(`#hint-host`);
 
         tuiAssertIsHTMLElement(element);
 
@@ -142,7 +142,7 @@ describe('Hint', () => {
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector('[automation-id=tui-hint-box__tooltip]');
+        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
     }
 
     function setHint(hint: Hint): void {

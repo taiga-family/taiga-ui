@@ -19,17 +19,17 @@ export function tuiDefaultFontOptionsHandler(
         },
         {
             px: 24,
-            family: 'var(--tui-font-heading)',
+            family: `var(--tui-font-heading)`,
             name: texts.subtitle,
             headingLevel: 2,
-            weight: 'bold',
+            weight: `bold`,
         },
         {
             px: 30,
-            family: 'var(--tui-font-heading)',
+            family: `var(--tui-font-heading)`,
             name: texts.title,
             headingLevel: 1,
-            weight: 'bold',
+            weight: `bold`,
         },
     ];
 }

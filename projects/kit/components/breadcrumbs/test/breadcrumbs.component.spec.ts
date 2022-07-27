@@ -10,20 +10,20 @@ import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
 
 const ITEMS = [
     {
-        caption: 'Select',
-        routerLink: '/tui-select',
+        caption: `Select`,
+        routerLink: `/tui-select`,
     },
     {
-        caption: 'Multi',
-        routerLink: '/tui-multi-select',
+        caption: `Multi`,
+        routerLink: `/tui-multi-select`,
     },
     {
-        caption: 'With tags',
-        routerLink: '/tui-multi-select',
+        caption: `With tags`,
+        routerLink: `/tui-multi-select`,
     },
 ];
 
-describe('Breadcrumbs', () => {
+describe(`Breadcrumbs`, () => {
     @Component({
         template: `
             <tui-breadcrumbs
@@ -39,7 +39,7 @@ describe('Breadcrumbs', () => {
 
         items = ITEMS;
 
-        size: TuiSizeL = 'm';
+        size: TuiSizeL = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -47,7 +47,7 @@ describe('Breadcrumbs', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-breadcrumbs__';
+            return `tui-breadcrumbs__`;
         },
     };
 
@@ -69,24 +69,24 @@ describe('Breadcrumbs', () => {
         fixture.detectChanges();
     });
 
-    describe('size:', () => {
-        it('default is medium', () => {
-            expect(getBreadcrumbs().attributes['data-size']).toBe('m');
+    describe(`size:`, () => {
+        it(`default is medium`, () => {
+            expect(getBreadcrumbs().attributes[`data-size`]).toBe(`m`);
         });
 
-        it('large is set for size = "l"', () => {
-            testComponent.size = 'l';
+        it(`large is set for size = "l"`, () => {
+            testComponent.size = `l`;
             fixture.detectChanges();
 
-            expect(getBreadcrumbs().attributes['data-size']).toBe('l');
+            expect(getBreadcrumbs().attributes[`data-size`]).toBe(`l`);
         });
     });
 
-    describe('icon:', () => {
-        it('the last element is missing ', () => {
+    describe(`icon:`, () => {
+        it(`the last element is missing `, () => {
             const itemsArrayLength = ITEMS.length;
             const iconsArrayLength = fixture.debugElement.queryAll(
-                By.css('.icon'),
+                By.css(`.icon`),
             ).length;
 
             expect(iconsArrayLength).toBe(itemsArrayLength - 1);

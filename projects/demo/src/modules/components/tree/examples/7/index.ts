@@ -17,16 +17,16 @@ export interface Item {
 }
 
 @Component({
-    selector: 'tui-tree-example-7',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-tree-example-7`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     providers: [
         TuiTreeService,
         {
             provide: TUI_TREE_START,
-            useValue: {text: 'Topmost'},
+            useValue: {text: `Topmost`},
         },
         {
             provide: TUI_TREE_LOADER,

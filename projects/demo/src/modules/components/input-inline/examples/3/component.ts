@@ -6,15 +6,15 @@ import {Observable, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-input-inline-example-3',
-    templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    selector: `tui-input-inline-example-3`,
+    templateUrl: `./template.html`,
+    styleUrls: [`./style.less`],
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
 })
 export class TuiInputInlineExample3 implements OnInit {
-    count = '0';
+    count = `0`;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,

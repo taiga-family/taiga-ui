@@ -24,49 +24,47 @@ class Account {
 }
 
 @Component({
-    selector: 'tui-form-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.style.less'],
+    selector: `tui-form-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.style.less`],
     changeDetection,
 })
 export class TuiExample {
     readonly svgIcons = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        intersection:
-            'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg',
-        mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+        common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
+        universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
+        intersection: `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
+        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
-    persons = [new User('Roman', 'Sedov'), new User('Alex', 'Inkin')];
+    persons = [new User(`Roman`, `Sedov`), new User(`Alex`, `Inkin`)];
 
-    pluralize: TuiPluralize = ['₽', '₽', '₽'];
+    pluralize: TuiPluralize = [`₽`, `₽`, `₽`];
 
     accounts = [
-        new Account('1', 'Common', 24876.55, TuiCurrency.Ruble, this.svgIcons.common),
-        new Account('2', 'Universal', 335, TuiCurrency.Dollar, this.svgIcons.universal),
+        new Account(`1`, `Common`, 24876.55, TuiCurrency.Ruble, this.svgIcons.common),
+        new Account(`2`, `Universal`, 335, TuiCurrency.Dollar, this.svgIcons.universal),
         new Account(
-            '3',
-            'Intersection',
+            `3`,
+            `Intersection`,
             10000,
             TuiCurrency.Euro,
             this.svgIcons.intersection,
         ),
-        new Account('4', 'Mutation', 100, TuiCurrency.Pound, this.svgIcons.mutation),
+        new Account(`4`, `Mutation`, 100, TuiCurrency.Pound, this.svgIcons.mutation),
     ];
 
     testForm = new FormGroup({
-        nameValue: new FormControl('', Validators.required),
-        textValue: new FormControl('', Validators.required),
-        passwordValue: new FormControl('', Validators.required),
-        phoneValue: new FormControl('', Validators.required),
-        moneyValue: new FormControl('100', Validators.required),
+        nameValue: new FormControl(``, Validators.required),
+        textValue: new FormControl(``, Validators.required),
+        passwordValue: new FormControl(``, Validators.required),
+        phoneValue: new FormControl(``, Validators.required),
+        moneyValue: new FormControl(`100`, Validators.required),
         periodValue: new FormControl(new TuiDay(2017, 2, 15), Validators.required),
         timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
         personValue: new FormControl(this.persons[0]),
         quantityValue: new FormControl(0, Validators.required),
-        radioValue: new FormControl('with-commission'),
+        radioValue: new FormControl(`with-commission`),
         accountWherefrom: new FormControl(null),
         accountWhere: new FormControl(null),
         checkboxValue: new FormControl(false),

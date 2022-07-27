@@ -11,9 +11,9 @@ import {
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-line-days-chart-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-line-days-chart-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
 })
 export class TuiLineDaysChartExample2 {

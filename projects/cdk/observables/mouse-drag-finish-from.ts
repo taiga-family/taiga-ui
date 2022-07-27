@@ -12,7 +12,7 @@ import {typedFromEvent} from './typed-from-event';
 export function mouseDragFinishFrom<
     T extends TuiTypedEventTarget<TuiEventWith<DragEvent, T>>,
 >(target: Exclude<T, null>): Observable<TuiEventWith<MouseEvent, T>> {
-    return merge(typedFromEvent(target, 'mouseup'), typedFromEvent(target, 'dragend'));
+    return merge(typedFromEvent(target, `mouseup`), typedFromEvent(target, `dragend`));
 }
 
 export const tuiMouseDragFinishFrom = mouseDragFinishFrom;

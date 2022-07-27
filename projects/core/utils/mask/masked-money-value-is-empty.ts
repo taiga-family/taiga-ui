@@ -6,9 +6,9 @@ import {CHAR_HYPHEN} from '@taiga-ui/cdk';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function maskedMoneyValueIsEmpty(value: string): boolean {
     switch (value) {
-        case '':
+        case ``:
         case CHAR_HYPHEN:
-        case ',':
+        case `,`:
         case `${CHAR_HYPHEN},`:
             return true;
         default:

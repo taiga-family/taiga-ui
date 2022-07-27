@@ -7,11 +7,11 @@ import {TableBar} from '../classes/table-bar';
 import {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
 const NO_HOST =
-    'Table bars are disabled, enable support by adding TuiTableBarsHostModule to your main app module ' +
-    'and tui-table-bars-host component to app template';
+    `Table bars are disabled, enable support by adding TuiTableBarsHostModule to your main app module ` +
+    `and tui-table-bars-host component to app template`;
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiTableBarsService {
     readonly bar$ = new ReplaySubject<TableBar | null>(1);

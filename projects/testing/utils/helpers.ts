@@ -39,7 +39,7 @@ export function HarnessWith<T>(
 
         // @ts-ignore
         static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
-            throw new Error('Hummus');
+            throw new Error(`Hummus`);
         }
     } as unknown as ComponentHarnessConstructor<ComponentHarness> & {
         with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;

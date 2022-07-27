@@ -4,9 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-range-example-1',
-    templateUrl: './index.html',
-    styles: ['tui-input-range {max-width: 30rem}'],
+    selector: `tui-input-range-example-1`,
+    templateUrl: `./index.html`,
+    styles: [
+        `
+            tui-input-range {
+                max-width: 30rem;
+            }
+        `,
+    ],
     changeDetection,
     encapsulation,
 })

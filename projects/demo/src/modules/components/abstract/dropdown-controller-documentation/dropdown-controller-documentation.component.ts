@@ -21,8 +21,8 @@ export interface ExampleTuiDropdown {
 }
 
 @Component({
-    selector: 'dropdown-controller-documentation',
-    templateUrl: './dropdown-controller-documentation.template.html',
+    selector: `dropdown-controller-documentation`,
+    templateUrl: `./dropdown-controller-documentation.template.html`,
     changeDetection,
 })
 export class DropdownControllerDocumentationComponent {

@@ -8,23 +8,23 @@ export interface Item {
 }
 
 @Component({
-    selector: 'tui-filter-example1',
-    templateUrl: './template.html',
+    selector: `tui-filter-example1`,
+    templateUrl: `./template.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiFilterExample1 {
     readonly items: readonly Item[] = [
         {
-            name: 'Sword',
+            name: `Sword`,
             price: 1000,
         },
         {
-            name: 'Axe',
+            name: `Axe`,
             price: 100,
         },
         {
-            name: 'Spear',
+            name: `Spear`,
             price: 500,
         },
     ];

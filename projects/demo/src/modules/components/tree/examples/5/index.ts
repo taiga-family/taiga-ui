@@ -13,9 +13,9 @@ interface TreeNode {
 }
 
 @Component({
-    selector: 'tui-tree-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    selector: `tui-tree-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`index.less`],
     providers: [
         {
             provide: TUI_TREE_CONTENT,
@@ -27,25 +27,25 @@ interface TreeNode {
 })
 export class TuiTreeExample5 {
     readonly data: TreeNode = {
-        text: 'Topmost',
+        text: `Topmost`,
         children: [
             {
-                text: 'Top level 1',
+                text: `Top level 1`,
                 children: [
                     {
-                        text: 'Another item',
+                        text: `Another item`,
                         children: [
-                            {text: 'Next level 1'},
-                            {text: 'Next level 2'},
-                            {text: 'Next level 3'},
+                            {text: `Next level 1`},
+                            {text: `Next level 2`},
+                            {text: `Next level 3`},
                         ],
                     },
                 ],
             },
-            {text: 'Top level 2'},
+            {text: `Top level 2`},
             {
-                text: 'Top level 3',
-                children: [{text: 'Test 1'}, {text: 'Test 2'}],
+                text: `Top level 3`,
+                children: [{text: `Test 1`}, {text: `Test 2`}],
             },
         ],
     };

@@ -10,8 +10,8 @@ import {switchMap, takeUntil} from 'rxjs/operators';
 import {AlertExampleComponent} from './alert-example/alert-example.component';
 
 @Component({
-    selector: 'tui-alerts-example-3',
-    templateUrl: './index.html',
+    selector: `tui-alerts-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -27,7 +27,7 @@ export class TuiAlertsExampleComponent3 {
             .open<boolean>(
                 new PolymorpheusComponent(AlertExampleComponent, this.injector),
                 {
-                    label: 'Question',
+                    label: `Question`,
                     status: TuiNotification.Error,
                     autoClose: false,
                 },
@@ -35,7 +35,7 @@ export class TuiAlertsExampleComponent3 {
             .pipe(
                 switchMap(response =>
                     alertService.open(`Got a value — ${response}`, {
-                        label: 'Information',
+                        label: `Information`,
                     }),
                 ),
                 takeUntil(router.events),

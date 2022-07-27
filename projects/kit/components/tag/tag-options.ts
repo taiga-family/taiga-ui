@@ -10,13 +10,13 @@ export interface TuiTagOptions {
 
 /** Default values for the tag options. */
 export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
-    size: 'm',
-    status: 'default',
+    size: `m`,
+    status: `default`,
     autoColor: false,
 };
 
 export const TUI_TAG_OPTIONS = new InjectionToken<TuiTagOptions>(
-    'Default parameters for tag component',
+    `Default parameters for tag component`,
     {
         factory: () => TUI_TAG_DEFAULT_OPTIONS,
     },

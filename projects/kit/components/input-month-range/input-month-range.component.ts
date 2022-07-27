@@ -37,9 +37,9 @@ import {TUI_INPUT_MONTH_RANGE_PROVIDERS} from './input-month-range.providers';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-month-range',
-    templateUrl: './input-month-range.template.html',
-    styleUrls: ['./input-month-range.style.less'],
+    selector: `tui-input-month-range`,
+    templateUrl: `./input-month-range.template.html`,
+    styleUrls: [`./input-month-range.style.less`],
     providers: TUI_INPUT_MONTH_RANGE_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -89,12 +89,12 @@ export class TuiInputMonthRangeComponent
 
     get calendarIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
     computeValue(from: string | null, to: string | null): string {
-        const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
+        const formattedTo = from === to && this.focused && !this.readOnly ? `` : to;
 
         return `${from} ${CHAR_EN_DASH} ${formattedTo}`;
     }

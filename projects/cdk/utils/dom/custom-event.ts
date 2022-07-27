@@ -4,11 +4,11 @@ export function tuiCustomEvent<T = null>(
     {bubbles = false, cancelable = false, detail = null}: CustomEventInit<T | null> = {},
     documentRef: Document,
 ): CustomEvent {
-    if (typeof CustomEvent === 'function') {
+    if (typeof CustomEvent === `function`) {
         return new CustomEvent(name, {bubbles, cancelable, detail});
     }
 
-    const customEvent = documentRef.createEvent('CustomEvent');
+    const customEvent = documentRef.createEvent(`CustomEvent`);
 
     customEvent.initCustomEvent(name, bubbles, cancelable, detail);
 

@@ -4,7 +4,7 @@ import {watchedControllerFactory} from '@taiga-ui/core/providers';
 
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
-export const TUI_HINT_WATCHED_CONTROLLER = new InjectionToken('watched hint controller');
+export const TUI_HINT_WATCHED_CONTROLLER = new InjectionToken(`watched hint controller`);
 // TODO: 3.0 remove in ivy compilation
 export const HINT_CONTROLLER_FACTORY = watchedControllerFactory;
 export const HINT_CONTROLLER_PROVIDER: Provider = [

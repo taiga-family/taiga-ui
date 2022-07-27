@@ -2,7 +2,7 @@ import {QueryList} from '@angular/core';
 
 import {itemsQueryListObservable} from '../items-query-list-observable';
 
-describe('itemsQueryListObservable', () => {
+describe(`itemsQueryListObservable`, () => {
     let queryList: QueryList<number>;
 
     beforeEach(() => {
@@ -10,7 +10,7 @@ describe('itemsQueryListObservable', () => {
         queryList.reset([1, 2]);
     });
 
-    it('emits current array on subscription', () => {
+    it(`emits current array on subscription`, () => {
         let result: readonly number[] | null = null;
 
         itemsQueryListObservable<number>(queryList).subscribe(data => {
@@ -20,7 +20,7 @@ describe('itemsQueryListObservable', () => {
         expect<readonly number[] | null>(result).toEqual([1, 2]);
     });
 
-    it('emits new array on changes', () => {
+    it(`emits new array on changes`, () => {
         let result: readonly number[] | null = null;
 
         itemsQueryListObservable<number>(queryList).subscribe(data => {

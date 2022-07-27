@@ -7,25 +7,25 @@ import {formatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'example-tui-pie-chart',
-    templateUrl: './pie-chart.template.html',
-    styleUrls: ['./pie-chart.style.less'],
+    selector: `example-tui-pie-chart`,
+    templateUrl: `./pie-chart.template.html`,
+    styleUrls: [`./pie-chart.style.less`],
     changeDetection,
 })
 export class ExampleTuiPieChartComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly valueVariants = [
@@ -41,11 +41,11 @@ export class ExampleTuiPieChartComponent {
     activeItemIndex = this.activeItemIndexVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXL> = [
-        'xs',
-        's',
-        'm',
-        'l',
-        'xl',
+        `xs`,
+        `s`,
+        `m`,
+        `l`,
+        `xl`,
     ];
 
     size = this.sizeVariants[2];
@@ -53,7 +53,7 @@ export class ExampleTuiPieChartComponent {
     readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<number>>
     > = [
-        '',
+        ``,
         ({$implicit}) => this.getPercent($implicit),
         ({$implicit}) => this.format($implicit),
     ];

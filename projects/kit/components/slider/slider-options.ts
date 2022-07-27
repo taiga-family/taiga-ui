@@ -7,12 +7,12 @@ export interface TuiSliderOptions {
 }
 
 export const TUI_SLIDER_DEFAULT_OPTIONS: TuiSliderOptions = {
-    size: 'm',
-    trackColor: 'var(--tui-base-03)',
+    size: `m`,
+    trackColor: `var(--tui-base-03)`,
 };
 
 export const TUI_SLIDER_OPTIONS = new InjectionToken<TuiSliderOptions>(
-    'Default parameters for Slider component',
+    `Default parameters for Slider component`,
     {factory: () => TUI_SLIDER_DEFAULT_OPTIONS},
 );
 

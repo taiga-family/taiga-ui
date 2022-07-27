@@ -23,7 +23,7 @@ export function formatSize(
         return `${(size / BYTES_PER_KB).toFixed(0)} ${units[1]}`;
     }
 
-    return `${round(size / BYTES_PER_MB, 2).toLocaleString('ru-RU')} ${units[2]}`;
+    return `${round(size / BYTES_PER_MB, 2).toLocaleString(`ru-RU`)} ${units[2]}`;
 }
 
 export const tuiFormatSize = formatSize;

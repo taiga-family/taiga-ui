@@ -11,7 +11,7 @@ import {TuiKeySteps} from '../../../types/key-steps';
 import {TuiSliderModule} from '../slider.module';
 import {TuiSliderOldComponent} from '../slider-old.component';
 
-describe('Slider-old', () => {
+describe(`Slider-old`, () => {
     @Component({
         template: `
             <tui-slider
@@ -50,15 +50,15 @@ describe('Slider-old', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    const keydownArrowLeft = new KeyboardEvent('keydown', {
-        key: 'arrowLeft',
+    const keydownArrowLeft = new KeyboardEvent(`keydown`, {
+        key: `arrowLeft`,
     });
-    const keydownArrowRight = new KeyboardEvent('keydown', {
-        key: 'arrowRight',
+    const keydownArrowRight = new KeyboardEvent(`keydown`, {
+        key: `arrowRight`,
     });
     const testContext = {
         get prefix() {
-            return 'tui-slider__';
+            return `tui-slider__`;
         },
     };
 
@@ -78,7 +78,7 @@ describe('Slider-old', () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiSliderModule],
             declarations: [TestComponent],
-            providers: [NG_EVENT_PLUGINS, {provide: LOCALE_ID, useValue: 'ru-RU'}],
+            providers: [NG_EVENT_PLUGINS, {provide: LOCALE_ID, useValue: `ru-RU`}],
         });
     });
 
@@ -89,53 +89,53 @@ describe('Slider-old', () => {
         fixture.detectChanges();
     });
 
-    describe('Default values', () => {
+    describe(`Default values`, () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
         });
 
-        it('No segments', () => {
+        it(`No segments`, () => {
             expect(getSegments().length).toBe(0);
         });
 
-        it('Pressing the left arrow decreases the value by 5%', () => {
+        it(`Pressing the left arrow decreases the value by 5%`, () => {
             getDot().dispatchEvent(keydownArrowLeft);
 
             expect(testComponent.testValue.value).toBe(4.5);
         });
 
-        it('Pressing the right arrow increases the value by 5%', () => {
+        it(`Pressing the right arrow increases the value by 5%`, () => {
             getDot().dispatchEvent(keydownArrowRight);
 
             expect(testComponent.testValue.value).toBe(5.5);
         });
     });
 
-    it('The bar is 40% full', () => {
-        expect(getBar().style.right).toBe('60%');
+    it(`The bar is 40% full`, () => {
+        expect(getBar().style.right).toBe(`60%`);
     });
 
-    describe('Segments', () => {
-        it('Segments are present', () => {
+    describe(`Segments`, () => {
+        it(`Segments are present`, () => {
             expect(getSegments().length).toBe(11);
         });
 
-        it('Segments are signed correctly', () => {
-            expect(getSegments()[1].nativeElement.textContent.trim()).toBe('2');
+        it(`Segments are signed correctly`, () => {
+            expect(getSegments()[1].nativeElement.textContent.trim()).toBe(`2`);
         });
 
-        it('Segments are signed correctly with plural', () => {
-            testComponent.pluralize = ['год', 'года', 'лет'];
+        it(`Segments are signed correctly with plural`, () => {
+            testComponent.pluralize = [`год`, `года`, `лет`];
             fixture.detectChanges();
 
             expect(
-                getSegments()[1].nativeElement.textContent.replace(/\s+/g, ' ').trim(),
-            ).toBe('2 года');
+                getSegments()[1].nativeElement.textContent.replace(/\s+/g, ` `).trim(),
+            ).toBe(`2 года`);
         });
     });
 
-    describe('Non-linear dependence', () => {
+    describe(`Non-linear dependence`, () => {
         beforeEach(() => {
             testComponent.keySteps = [[50, 100]];
             testComponent.min = 0;
@@ -144,53 +144,53 @@ describe('Slider-old', () => {
             fixture.detectChanges();
         });
 
-        it('The bar is 25% full', () => {
-            expect(getBar().style.right).toBe('75%');
+        it(`The bar is 25% full`, () => {
+            expect(getBar().style.right).toBe(`75%`);
         });
 
-        it('The bar is 50% full', () => {
+        it(`The bar is 50% full`, () => {
             testComponent.testValue.setValue(100);
             fixture.detectChanges();
 
-            expect(getBar().style.right).toBe('50%');
+            expect(getBar().style.right).toBe(`50%`);
         });
 
-        it('The bar is 75% full', () => {
+        it(`The bar is 75% full`, () => {
             testComponent.testValue.setValue(550);
             fixture.detectChanges();
 
-            expect(getBar().style.right).toBe('25%');
+            expect(getBar().style.right).toBe(`25%`);
         });
     });
 
-    describe('Steps', () => {
-        it('Pressing the left arrow decreases the value by one step', () => {
+    describe(`Steps`, () => {
+        it(`Pressing the left arrow decreases the value by one step`, () => {
             getDot().dispatchEvent(keydownArrowLeft);
 
             expect(testComponent.testValue.value).toBe(4);
         });
 
-        it('Pressing the right arrow increases the value by one step', () => {
+        it(`Pressing the right arrow increases the value by one step`, () => {
             getDot().dispatchEvent(keydownArrowRight);
 
             expect(testComponent.testValue.value).toBe(6);
         });
 
-        it('Pressing the left arrow correctly paints the strip', () => {
+        it(`Pressing the left arrow correctly paints the strip`, () => {
             getDot().dispatchEvent(keydownArrowLeft);
             fixture.detectChanges();
 
-            expect(getBar().style.right).toBe('70%');
+            expect(getBar().style.right).toBe(`70%`);
         });
 
-        it('Pressing the right arrow correctly paints the strip', () => {
+        it(`Pressing the right arrow correctly paints the strip`, () => {
             getDot().dispatchEvent(keydownArrowRight);
             fixture.detectChanges();
 
-            expect(getBar().style.right).toBe('50%');
+            expect(getBar().style.right).toBe(`50%`);
         });
 
-        it('Prevents the value from decreasing below the minimum', () => {
+        it(`Prevents the value from decreasing below the minimum`, () => {
             testComponent.testValue.setValue(1);
             getDot().dispatchEvent(keydownArrowLeft);
             fixture.detectChanges();
@@ -198,7 +198,7 @@ describe('Slider-old', () => {
             expect(testComponent.testValue.value).toBe(1);
         });
 
-        it('Prevents the value from exceeding the maximum', () => {
+        it(`Prevents the value from exceeding the maximum`, () => {
             testComponent.testValue.setValue(11);
             getDot().dispatchEvent(keydownArrowRight);
             fixture.detectChanges();
@@ -206,7 +206,7 @@ describe('Slider-old', () => {
             expect(testComponent.testValue.value).toBe(11);
         });
 
-        it('Adds a value to the closest allowed step', () => {
+        it(`Adds a value to the closest allowed step`, () => {
             testComponent.testValue.setValue(3.3);
             getDot().dispatchEvent(keydownArrowRight);
             fixture.detectChanges();
@@ -215,7 +215,7 @@ describe('Slider-old', () => {
         });
     });
 
-    describe('Quantum', () => {
+    describe(`Quantum`, () => {
         beforeEach(() => {
             testComponent.min = 0;
             testComponent.max = 10;
@@ -225,21 +225,21 @@ describe('Slider-old', () => {
             fixture.detectChanges();
         });
 
-        it('Pressing the right arrow without specified steps increases the value by one quantum', () => {
+        it(`Pressing the right arrow without specified steps increases the value by one quantum`, () => {
             getDot().dispatchEvent(keydownArrowRight);
             fixture.detectChanges();
 
             expect(testComponent.testValue.value).toBe(5.1);
         });
 
-        it('Pressing the left arrow without specified steps decreases the value by one step', () => {
+        it(`Pressing the left arrow without specified steps decreases the value by one step`, () => {
             getDot().dispatchEvent(keydownArrowLeft);
             fixture.detectChanges();
 
             expect(testComponent.testValue.value).toBe(4.9);
         });
 
-        it('Adds a value to the closest allowed step and round to the closest quantum', () => {
+        it(`Adds a value to the closest allowed step and round to the closest quantum`, () => {
             testComponent.testValue.setValue(0);
             testComponent.quantum = 1;
             testComponent.steps = 3;

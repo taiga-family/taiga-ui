@@ -23,9 +23,9 @@ import {
 import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
 
 @Component({
-    selector: 'tui-rating',
-    templateUrl: './rating.template.html',
-    styleUrls: ['./rating.style.less'],
+    selector: `tui-rating`,
+    templateUrl: `./rating.template.html`,
+    styleUrls: [`./rating.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -38,7 +38,7 @@ export class TuiRatingComponent
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -88,8 +88,8 @@ export class TuiRatingComponent
         return (100 * this.value) / this.max;
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

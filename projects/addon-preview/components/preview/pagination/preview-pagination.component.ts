@@ -13,9 +13,9 @@ import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-preview-pagination',
-    templateUrl: './preview-pagination.template.html',
-    styleUrls: ['./preview-pagination.style.less'],
+    selector: `tui-preview-pagination`,
+    templateUrl: `./preview-pagination.template.html`,
+    styleUrls: [`./preview-pagination.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewPaginationComponent {
@@ -43,8 +43,8 @@ export class TuiPreviewPaginationComponent {
         return this.index === this.length - 1;
     }
 
-    @HostListener('document:keydown.arrowRight.prevent', ['1'])
-    @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
+    @HostListener(`document:keydown.arrowRight.prevent`, [`1`])
+    @HostListener(`document:keydown.arrowLeft.prevent`, [`-1`])
     onArrowClick(step: number): void {
         this.updateIndex(clamp(this.index + step, 0, this.length - 1));
     }

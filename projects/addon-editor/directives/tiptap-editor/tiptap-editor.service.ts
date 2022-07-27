@@ -44,14 +44,14 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editorRef.subscribe(editor => {
             this.editor = editor;
 
-            editor.on('transaction', () => {
+            editor.on(`transaction`, () => {
                 this.stateChange$.next();
             });
 
-            editor.on('update', () => {
+            editor.on(`update`, () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
-                const value: string = isEmptyParagraph(json) ? '' : content;
+                const value: string = isEmptyParagraph(json) ? `` : content;
 
                 this.valueChange$.next(value);
             });
@@ -71,19 +71,19 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     getFontColor(): string {
-        return this.editor.getAttributes('textStyle').fontColor || 'rgb(51, 51, 51)';
+        return this.editor.getAttributes(`textStyle`).fontColor || `rgb(51, 51, 51)`;
     }
 
     getBackgroundColor(): string {
         return (
-            this.editor?.getAttributes('textStyle').backgroundColor || 'rgb(51, 51, 51)'
+            this.editor?.getAttributes(`textStyle`).backgroundColor || `rgb(51, 51, 51)`
         );
     }
 
     getCellColor(): string {
         return (
-            this.editor.getAttributes('tableCell').background ||
-            this.editor.getAttributes('tableHeader').background
+            this.editor.getAttributes(`tableCell`).background ||
+            this.editor.getAttributes(`tableHeader`).background
         );
     }
 
@@ -148,11 +148,11 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     sinkListItem(): void {
-        this.editor.chain().focus().sinkListItem('listItem').run();
+        this.editor.chain().focus().sinkListItem(`listItem`).run();
     }
 
     liftListItem(): void {
-        this.editor.chain().focus().liftListItem('listItem').run();
+        this.editor.chain().focus().liftListItem(`listItem`).run();
     }
 
     isActive(nameOrAttributes: Record<string, string> | string): boolean {
@@ -247,7 +247,7 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().setParagraph().run();
 
         if (options) {
-            this.editor.chain().setMark('textStyle', options).run();
+            this.editor.chain().setMark(`textStyle`, options).run();
         }
     }
 

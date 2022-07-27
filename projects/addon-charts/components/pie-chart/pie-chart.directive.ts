@@ -14,7 +14,7 @@ import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
 
 // @dynamic
 @Directive({
-    selector: 'path[tuiPieChart]',
+    selector: `path[tuiPieChart]`,
     providers: [TuiDestroyService],
 })
 export class TuiPieChartDirective {
@@ -57,7 +57,7 @@ export class TuiPieChartDirective {
                 takeUntil(destroy$),
             )
             .subscribe(([start, end]) => {
-                nativeElement.setAttribute('d', describeSector(start, end));
+                nativeElement.setAttribute(`d`, describeSector(start, end));
             });
     }
 }

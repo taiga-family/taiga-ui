@@ -7,7 +7,7 @@
  * @deprecated use join type {@link TuiOverscrollModeT}
  */
 export const enum TuiOverscrollMode {
-    All = 'all',
-    Scroll = 'scroll',
-    None = 'none',
+    All = `all`,
+    Scroll = `scroll`,
+    None = `none`,
 }

@@ -6,7 +6,7 @@ import {TuiSheet} from './sheet';
 import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiSheetService {
     readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);

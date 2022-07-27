@@ -5,35 +5,35 @@ import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core/types';
 import {TuiGroupStylesComponent} from './group-styles.component';
 
 @Directive({
-    selector: '[tuiGroup]:not(ng-container)',
+    selector: `[tuiGroup]:not(ng-container)`,
     host: {
-        class: 'tui-group',
-        role: 'group',
+        class: `tui-group`,
+        role: `group`,
     },
 })
 export class TuiGroupDirective {
     @Input()
     @tuiDefaultProp()
-    orientation: TuiOrientationT = 'horizontal';
+    orientation: TuiOrientationT = `horizontal`;
 
     @Input()
-    @HostBinding('class.tui-group_adaptive')
+    @HostBinding(`class.tui-group_adaptive`)
     @tuiDefaultProp()
     adaptive = false;
 
     @Input()
-    @HostBinding('class.tui-group_collapsed')
+    @HostBinding(`class.tui-group_collapsed`)
     @tuiDefaultProp()
     collapsed = false;
 
     @Input()
-    @HostBinding('class.tui-group_rounded')
+    @HostBinding(`class.tui-group_rounded`)
     @tuiDefaultProp()
     rounded = true;
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
@@ -41,18 +41,18 @@ export class TuiGroupDirective {
         directiveStyles.addComponent(TuiGroupStylesComponent);
     }
 
-    @HostBinding('class.tui-group_orientation_horizontal')
+    @HostBinding(`class.tui-group_orientation_horizontal`)
     get orientationHorizontal(): boolean {
-        return this.orientation === 'horizontal';
+        return this.orientation === `horizontal`;
     }
 
-    @HostBinding('class.tui-group_orientation_vertical')
+    @HostBinding(`class.tui-group_orientation_vertical`)
     get orientationVertical(): boolean {
-        return this.orientation === 'vertical';
+        return this.orientation === `vertical`;
     }
 
-    @HostBinding('class.tui-group_radius_large')
+    @HostBinding(`class.tui-group_radius_large`)
     get sizeLarge(): boolean {
-        return this.size === 'l';
+        return this.size === `l`;
     }
 }

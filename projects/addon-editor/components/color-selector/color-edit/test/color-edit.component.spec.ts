@@ -17,7 +17,7 @@ class TestComponent {
     color = [255, 0, 0, 1];
 }
 
-describe('ColorEdit', () => {
+describe(`ColorEdit`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -32,18 +32,18 @@ describe('ColorEdit', () => {
         fixture.detectChanges();
     });
 
-    it('HEX', () => {
-        expect(testComponent.component.hex).toBe('ff0000');
+    it(`HEX`, () => {
+        expect(testComponent.component.hex).toBe(`ff0000`);
     });
 
-    it('Updates', () => {
-        testComponent.component.onHexChange('00ff00');
+    it(`Updates`, () => {
+        testComponent.component.onHexChange(`00ff00`);
 
         expect(testComponent.color).toEqual([0, 255, 0, 1]);
     });
 
-    it('Does not trigger if HEX is not fully entered', () => {
-        testComponent.component.onHexChange('00ff');
+    it(`Does not trigger if HEX is not fully entered`, () => {
+        testComponent.component.onHexChange(`00ff`);
 
         expect(testComponent.color).toEqual([255, 0, 0, 1]);
     });

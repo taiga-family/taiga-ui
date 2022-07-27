@@ -8,7 +8,7 @@ const OriginalDate = global.Date;
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function mockCurrentDate(dateOrNumber: Date | number): void {
     const date: Date =
-        typeof dateOrNumber === 'number' ? new OriginalDate(dateOrNumber) : dateOrNumber;
+        typeof dateOrNumber === `number` ? new OriginalDate(dateOrNumber) : dateOrNumber;
 
     class MockDate extends OriginalDate {
         constructor() {
@@ -52,7 +52,7 @@ export const tuiMockDateInside = mockDateInside;
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function pendingIfNotMoscowTimeZone(): void {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== 'Europe/Moscow') {
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== `Europe/Moscow`) {
         pending();
     }
 }

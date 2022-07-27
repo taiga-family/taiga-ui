@@ -4,9 +4,9 @@ import {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'search-dialog-example',
-    templateUrl: './search-dialog-example.template.html',
-    styleUrls: ['./search-dialog-example.component.less'],
+    selector: `search-dialog-example`,
+    templateUrl: `./search-dialog-example.template.html`,
+    styleUrls: [`./search-dialog-example.component.less`],
     changeDetection,
 })
 export class SearchDialogExampleComponent {

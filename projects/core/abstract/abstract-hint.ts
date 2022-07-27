@@ -7,15 +7,15 @@ import {TuiAbstractHintOptions} from './abstract-hint-options';
 
 @Directive()
 export abstract class AbstractTuiHint implements OnDestroy {
-    @Input('tuiHintMode')
+    @Input(`tuiHintMode`)
     @tuiDefaultProp()
     mode: TuiAbstractHintOptions['mode'] = this.options.mode;
 
-    @Input('tuiHintDirection')
+    @Input(`tuiHintDirection`)
     @tuiDefaultProp()
     direction: TuiAbstractHintOptions['direction'] = this.options.direction;
 
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     protected constructor(
         protected readonly elementRef: ElementRef<HTMLElement>,

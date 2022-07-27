@@ -30,9 +30,9 @@ import {
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
-    selector: 'tui-radio-block',
-    templateUrl: './radio-block.template.html',
-    styleUrls: ['./radio-block.style.less'],
+    selector: `tui-radio-block`,
+    templateUrl: `./radio-block.template.html`,
+    styleUrls: [`./radio-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -56,17 +56,17 @@ export class TuiRadioBlockComponent<T>
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding(`attr.data-tui-host-align`)
     @tuiDefaultProp()
-    contentAlign: TuiHorizontalDirection = 'right';
+    contentAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'l';
+    size: TuiSizeS | TuiSizeL = `l`;
 
     @Input()
-    @HostBinding('class._hidden_radio')
+    @HostBinding(`class._hidden_radio`)
     @tuiDefaultProp()
     hideRadio = false;
 
@@ -95,18 +95,18 @@ export class TuiRadioBlockComponent<T>
         return !!this.radio && this.radio.focused;
     }
 
-    @HostBinding('class._disabled')
+    @HostBinding(`class._disabled`)
     get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
-    @HostBinding('class._active')
+    @HostBinding(`class._active`)
     get checked(): boolean {
         return this.value === this.item && this.hideRadio;
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.size === 'l' ? 'l' : 'm';
+        return this.size === `l` ? `l` : `m`;
     }
 
     get appearance(): TuiAppearance {

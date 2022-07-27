@@ -2,7 +2,7 @@ import {VIRTUAL_SCROLL_STRATEGY, VirtualScrollStrategy} from '@angular/cdk/scrol
 import {Directive, Inject, Output} from '@angular/core';
 
 @Directive({
-    selector: '[indexChange]',
+    selector: `[indexChange]`,
 })
 export class IndexChangeDirective {
     @Output()

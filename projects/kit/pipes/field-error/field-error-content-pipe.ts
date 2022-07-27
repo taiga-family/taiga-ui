@@ -6,7 +6,7 @@ import {TuiFieldErrorPipe} from './field-error-pipe';
 
 // @dynamic
 @Pipe({
-    name: 'tuiFieldErrorContent',
+    name: `tuiFieldErrorContent`,
     pure: false,
 })
 export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
@@ -32,10 +32,10 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
         const error = this.asyncPipe.transform(this.fieldErrorPipe.transform(order));
 
         if (!error) {
-            return '';
+            return ``;
         }
 
-        return typeof error.message === 'function'
+        return typeof error.message === `function`
             ? error.message(error.context)
             : error.message;
     }

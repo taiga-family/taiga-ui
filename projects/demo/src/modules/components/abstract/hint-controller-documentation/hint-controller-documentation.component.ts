@@ -5,8 +5,8 @@ import {AbstractExampleTuiControl} from '../control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'hint-controller-documentation',
-    templateUrl: './hint-controller-documentation.template.html',
+    selector: `hint-controller-documentation`,
+    templateUrl: `./hint-controller-documentation.template.html`,
     changeDetection,
 })
 export class HintControllerDocumentationComponent {

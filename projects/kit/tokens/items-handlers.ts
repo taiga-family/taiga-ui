@@ -21,7 +21,7 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
 };
 
 export const TUI_ITEMS_HANDLERS = new InjectionToken<TuiItemsHandlers<unknown>>(
-    'Default items handlers for components',
+    `Default items handlers for components`,
     {
         factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
     },

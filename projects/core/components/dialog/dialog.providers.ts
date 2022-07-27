@@ -15,7 +15,7 @@ import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
-    'A stream to close dialogs',
+    `A stream to close dialogs`,
     {
         factory: () => EMPTY,
     },
@@ -34,18 +34,18 @@ export function dialogCloseStreamFactory(
 ): Observable<unknown> {
     return dismissible
         ? merge(
-              typedFromEvent(nativeElement, 'click').pipe(filter(isCurrentTarget)),
-              typedFromEvent(documentRef, 'keydown').pipe(
+              typedFromEvent(nativeElement, `click`).pipe(filter(isCurrentTarget)),
+              typedFromEvent(documentRef, `keydown`).pipe(
                   // TODO: iframe warning
                   filter(
                       ({key, target}) =>
-                          key === 'Escape' &&
+                          key === `Escape` &&
                           target instanceof Element &&
                           (!containsOrAfter(nativeElement, target) ||
                               nativeElement.contains(target)),
                   ),
               ),
-              typedFromEvent(documentRef, 'mousedown').pipe(
+              typedFromEvent(documentRef, `mousedown`).pipe(
                   // TODO: iframe warning
                   filter(
                       ({target, clientX}) =>
@@ -55,7 +55,7 @@ export function dialogCloseStreamFactory(
                           !containsOrAfter(nativeElement, target),
                   ),
                   switchMapTo(
-                      typedFromEvent(documentRef, 'mouseup').pipe(
+                      typedFromEvent(documentRef, `mouseup`).pipe(
                           take(1),
                           // TODO: iframe warning
                           filter(
@@ -72,7 +72,7 @@ export function dialogCloseStreamFactory(
 }
 
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(
-    'Dialogs closing stream',
+    `Dialogs closing stream`,
 );
 export const TUI_DIALOG_PROVIDERS: Provider[] = [
     TuiDestroyService,

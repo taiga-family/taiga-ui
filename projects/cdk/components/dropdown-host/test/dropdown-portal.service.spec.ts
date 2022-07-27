@@ -9,14 +9,14 @@ import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
 
 import {TuiDropdownPortalService} from '../dropdown-portal.service';
 
-describe('PortalService', () => {
+describe(`PortalService`, () => {
     let service: TuiDropdownPortalService;
 
     beforeEach(() => {
         service = new TuiDropdownPortalService();
     });
 
-    it('Template removing', () => {
+    it(`Template removing`, () => {
         let called = 0;
         const viewRefStub: EmbeddedViewRef<unknown> = {
             destroy: () => called++,
@@ -26,7 +26,7 @@ describe('PortalService', () => {
         expect(called).toEqual(1);
     });
 
-    it('HostView removing', () => {
+    it(`HostView removing`, () => {
         let called = 0;
         const componentRefStub: ComponentRef<unknown> = {
             hostView: {destroy: () => called++},
@@ -36,8 +36,8 @@ describe('PortalService', () => {
         expect(called).toEqual(1);
     });
 
-    it('throws an error with no host', () => {
-        let actual = '';
+    it(`throws an error with no host`, () => {
+        let actual = ``;
         const a: ComponentFactory<unknown> = null as unknown as ComponentFactory<unknown>;
         const b: Injector = null as unknown as Injector;
 
@@ -47,10 +47,10 @@ describe('PortalService', () => {
             actual = err.message;
         }
 
-        expect(actual).toEqual('Portals cannot be used without TuiPortalHostComponent');
+        expect(actual).toEqual(`Portals cannot be used without TuiPortalHostComponent`);
     });
 
-    it('addTemplateChild with host attached', () => {
+    it(`addTemplateChild with host attached`, () => {
         const a: TemplateRef<unknown> = null as unknown as TemplateRef<unknown>;
         const result: EmbeddedViewRef<unknown> = {} as EmbeddedViewRef<unknown>;
         const componentPortalStub: AbstractTuiPortalHostComponent = {

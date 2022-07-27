@@ -14,7 +14,7 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
 
 export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS =
     new InjectionToken<TuiInputPhoneInternationalOptions>(
-        'Default parameters for input phone international component',
+        `Default parameters for input phone international component`,
         {
             factory: () => TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
         },

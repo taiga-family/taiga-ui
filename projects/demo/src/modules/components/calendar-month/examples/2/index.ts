@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-calendar-month-example-2',
-    templateUrl: './index.html',
+    selector: `tui-calendar-month-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

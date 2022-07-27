@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-scrollbar-example-4',
-    templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    selector: `tui-scrollbar-example-4`,
+    templateUrl: `./template.html`,
+    styleUrls: [`./style.less`],
     changeDetection,
     encapsulation,
 })

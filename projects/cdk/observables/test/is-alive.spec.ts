@@ -3,7 +3,7 @@ import {Subject} from 'rxjs';
 
 import {tuiIsAlive} from '../is-alive';
 
-describe('Observable.prototype.tuiIsAlive', () => {
+describe(`Observable.prototype.tuiIsAlive`, () => {
     let $: Subject<unknown>;
     let result: boolean[];
 
@@ -12,7 +12,7 @@ describe('Observable.prototype.tuiIsAlive', () => {
         result = [];
     });
 
-    it('initially emits nothing, after event emits "true" and after a tick emits "false"', fakeAsync(() => {
+    it(`initially emits nothing, after event emits "true" and after a tick emits "false"`, fakeAsync(() => {
         $.pipe(tuiIsAlive()).subscribe(alive => {
             result.push(alive);
         });
@@ -28,7 +28,7 @@ describe('Observable.prototype.tuiIsAlive', () => {
         expect<boolean | null>(result).toEqual([true, false]);
     }));
 
-    it('if during a lifespan another event comes, "true" is not emitted again', fakeAsync(() => {
+    it(`if during a lifespan another event comes, "true" is not emitted again`, fakeAsync(() => {
         $.pipe(tuiIsAlive(300)).subscribe(alive => {
             result.push(alive);
         });

@@ -7,7 +7,7 @@ import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiPointerHintDirective} from '../pointer-hint.directive';
 import {TuiPointerHintModule} from '../pointer-hint.module';
 
-describe('PointerHint', () => {
+describe(`PointerHint`, () => {
     @Component({
         template: `
             <tui-root>
@@ -37,10 +37,10 @@ describe('PointerHint', () => {
         @ViewChild(TuiPointerHintDirective, {static: true})
         directive!: TuiPointerHintDirective;
 
-        @ViewChild('hintHost', {static: true})
+        @ViewChild(`hintHost`, {static: true})
         host!: ElementRef<HTMLElement>;
 
-        hint = 'Tooltip text';
+        hint = `Tooltip text`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -56,7 +56,7 @@ describe('PointerHint', () => {
     });
 
     beforeEach(() => {
-        document.body.style.margin = '0';
+        document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         hostElement = component.host.nativeElement;
@@ -64,24 +64,24 @@ describe('PointerHint', () => {
         fixture.detectChanges();
     });
 
-    it('is not shown by default', fakeAsync(() => {
+    it(`is not shown by default`, fakeAsync(() => {
         expect(getTooltip()).toBeNull();
     }));
 
-    it('has default clientRect', fakeAsync(() => {
+    it(`has default clientRect`, fakeAsync(() => {
         const clientRect = directive.getElementClientRect();
 
         expect(clientRect.left).toBe(0);
         expect(clientRect.top).toBe(0);
     }));
 
-    it('recalculates clientRect from user mouse moving', fakeAsync(() => {
-        const hoverEvent = new MouseEvent('hover');
+    it(`recalculates clientRect from user mouse moving`, fakeAsync(() => {
+        const hoverEvent = new MouseEvent(`hover`);
 
         hostElement.dispatchEvent(hoverEvent);
 
         component.host.nativeElement.dispatchEvent(
-            new MouseEvent('mousemove', {
+            new MouseEvent(`mousemove`, {
                 clientX: 10,
                 clientY: 10,
             }),
@@ -94,6 +94,6 @@ describe('PointerHint', () => {
     }));
 
     function getTooltip(): Element | null {
-        return document.querySelector('[automation-id=tui-hint-box__tooltip]');
+        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
     }
 });

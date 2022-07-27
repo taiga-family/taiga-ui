@@ -5,6 +5,6 @@ import {Directive} from '@angular/core';
  * TODO: 3.0 Migrate everything to this directive
  */
 @Directive({
-    selector: 'ng-template[tuiItem]',
+    selector: `ng-template[tuiItem]`,
 })
 export class TuiItemDirective {}

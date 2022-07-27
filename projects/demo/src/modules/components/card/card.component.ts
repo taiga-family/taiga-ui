@@ -14,34 +14,34 @@ const BRAND_LOGOS = [
 ];
 
 @Component({
-    selector: 'example-tui-card',
-    templateUrl: './card.template.html',
-    styleUrls: ['card.style.less'],
+    selector: `example-tui-card`,
+    templateUrl: `./card.template.html`,
+    styleUrls: [`card.style.less`],
     changeDetection,
 })
 export class ExampleTuiCardComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
     readonly exampleCustomizeStyles = import(
-        '!!raw-loader!./examples/import/customize-styles.md'
+        `!!raw-loader!./examples/import/customize-styles.md`
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     paymentSystemVariants: readonly TuiPaymentSystem[] = [
@@ -51,13 +51,13 @@ export class ExampleTuiCardComponent {
         TuiPaymentSystem.Mir,
     ];
 
-    brandLogoVariants = ['', ...BRAND_LOGOS];
+    brandLogoVariants = [``, ...BRAND_LOGOS];
 
-    sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    sizeVariants: readonly TuiSizeS[] = [`s`, `m`];
 
     active = false;
     brandLogo = this.brandLogoVariants[0];
-    cardNumber = '9999';
+    cardNumber = `9999`;
     paymentSystem: TuiPaymentSystem | null = null;
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 }

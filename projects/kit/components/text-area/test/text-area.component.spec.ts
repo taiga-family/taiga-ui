@@ -16,7 +16,7 @@ import {TuiTextAreaModule} from '../text-area.module';
 
 const DEFAULT_HEIGHT = 108;
 
-describe('TextArea', () => {
+describe(`TextArea`, () => {
     @Component({
         template: `
             <tui-text-area
@@ -42,11 +42,11 @@ describe('TextArea', () => {
 
         maxLength: number | null = null;
 
-        exampleText = 'placeholder';
+        exampleText = `placeholder`;
 
         expandable = false;
 
-        hintContent: string | null = 'prompt';
+        hintContent: string | null = `prompt`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -69,7 +69,7 @@ describe('TextArea', () => {
             return inputPO;
         },
         get prefix() {
-            return 'tui-text-area__';
+            return `tui-text-area__`;
         },
     };
 
@@ -115,21 +115,21 @@ describe('TextArea', () => {
         inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native`);
     });
 
-    describe('expandable:', () => {
-        it('by default the field is not stretched', () => {
+    describe(`expandable:`, () => {
+        it(`by default the field is not stretched`, () => {
             fixture.detectChanges();
 
             expect(component.computeMaxHeight).toBeNull();
         });
 
-        it('when expandable true, the field has MaxHeight', () => {
+        it(`when expandable true, the field has MaxHeight`, () => {
             testComponent.expandable = true;
             fixture.detectChanges();
 
             expect(component.computeMaxHeight).not.toBeNull();
         });
 
-        it('the default MaxHeight value is calculated correctly', () => {
+        it(`the default MaxHeight value is calculated correctly`, () => {
             testComponent.expandable = true;
             fixture.detectChanges();
 
@@ -138,7 +138,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
         });
 
-        it('when rows change, MaxHeight is calculated correctly', () => {
+        it(`when rows change, MaxHeight is calculated correctly`, () => {
             testComponent.expandable = true;
             testComponent.rows = 10;
             fixture.detectChanges();
@@ -148,7 +148,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
         });
 
-        it('when rows change, MaxHeight is calculated correctly', () => {
+        it(`when rows change, MaxHeight is calculated correctly`, () => {
             testComponent.expandable = true;
             testComponent.rows = 15;
             fixture.detectChanges();
@@ -158,7 +158,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
         });
 
-        it('when expandable is true and the content size increases, the tui-outline height increases', () => {
+        it(`when expandable is true and the content size increases, the tui-outline height increases`, () => {
             testComponent.expandable = true;
             testComponent.control.setValue(`
                 Льется дождик золотой,
@@ -181,27 +181,27 @@ describe('TextArea', () => {
         });
     });
 
-    describe('counter and maxLength:', () => {
-        it('there is no counter by default', () => {
+    describe(`counter and maxLength:`, () => {
+        it(`there is no counter by default`, () => {
             fixture.detectChanges();
 
             expect(getCounter()).toBeNull();
         });
 
-        it('there is no counter by default', () => {
+        it(`there is no counter by default`, () => {
             fixture.detectChanges();
 
             expect(getCounter()).toBeNull();
         });
 
-        it('with set maxLength the counter is', () => {
+        it(`with set maxLength the counter is`, () => {
             testComponent.maxLength = 200;
             fixture.detectChanges();
 
             expect(getCounter()).not.toBeNull();
         });
 
-        it('with maxLength set and there is no counter in the disabled state', () => {
+        it(`with maxLength set and there is no counter in the disabled state`, () => {
             testComponent.maxLength = 200;
             testComponent.control.disable();
             fixture.detectChanges();
@@ -209,7 +209,7 @@ describe('TextArea', () => {
             expect(getCounter()).toBeNull();
         });
 
-        it('with maxLength set and there is no counter in the readOnly state', () => {
+        it(`with maxLength set and there is no counter in the readOnly state`, () => {
             testComponent.maxLength = 200;
             testComponent.readOnly = true;
             fixture.detectChanges();
@@ -218,31 +218,31 @@ describe('TextArea', () => {
         });
     });
 
-    describe('placeholder', () => {
-        it('if no value is given, placeholder is shown', () => {
+    describe(`placeholder`, () => {
+        it(`if no value is given, placeholder is shown`, () => {
             fixture.detectChanges();
 
             expect(getPlaceholder()).not.toBeNull();
         });
 
-        it('if value is empty string, placeholder is shown', () => {
-            testComponent.control.setValue('');
+        it(`if value is empty string, placeholder is shown`, () => {
+            testComponent.control.setValue(``);
             fixture.detectChanges();
 
             expect(getPlaceholder()).not.toBeNull();
         });
 
-        it('value is given then placeholder is shown', () => {
-            testComponent.control.setValue('test');
+        it(`value is given then placeholder is shown`, () => {
+            testComponent.control.setValue(`test`);
             fixture.detectChanges();
 
             expect(getPlaceholder()).not.toBeNull();
         });
     });
 
-    describe('tooltip', () => {
-        it('if set, tooltip is shown', () => {
-            testComponent.hintContent = 'Tooltip';
+    describe(`tooltip`, () => {
+        it(`if set, tooltip is shown`, () => {
+            testComponent.hintContent = `Tooltip`;
 
             fixture.detectChanges();
 

@@ -11,17 +11,17 @@ import {Observable, Subject, timer} from 'rxjs';
 import {map, mapTo, shareReplay, startWith, switchMap} from 'rxjs/operators';
 
 const DICTIONARY = [
-    {id: 1, name: 'Luke Skywalker'},
-    {id: 2, name: 'Princess Leia'},
-    {id: 3, name: 'Darth Vader'},
-    {id: 4, name: 'Han Solo'},
-    {id: 5, name: 'Obi-Wan Kenobi'},
-    {id: 6, name: 'Yoda'},
+    {id: 1, name: `Luke Skywalker`},
+    {id: 2, name: `Princess Leia`},
+    {id: 3, name: `Darth Vader`},
+    {id: 4, name: `Han Solo`},
+    {id: 5, name: `Obi-Wan Kenobi`},
+    {id: 6, name: `Yoda`},
 ];
 
 @Component({
-    selector: 'tui-multi-select-example-4',
-    templateUrl: './index.html',
+    selector: `tui-multi-select-example-4`,
+    templateUrl: `./index.html`,
     changeDetection,
 })
 export class TuiMultiSelectExample4 {
@@ -35,7 +35,7 @@ export class TuiMultiSelectExample4 {
 
     // Items only hold IDs
     readonly items$ = this.search$.pipe(
-        startWith(''),
+        startWith(``),
         switchMap(search =>
             this.server$.pipe(
                 map(items =>
@@ -56,13 +56,13 @@ export class TuiMultiSelectExample4 {
         startWith(new Map()),
         map(
             map => (id: number | TuiContextWithImplicit<number>) =>
-                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
+                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || `Loading...`,
         ),
     );
 
     readonly control = new FormControl([2, 3]);
 
     onSearch(search: string | null): void {
-        this.search$.next(search || '');
+        this.search$.next(search || ``);
     }
 }

@@ -3,7 +3,7 @@ import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {formatCurrency} from '@taiga-ui/addon-commerce/utils';
 
 @Pipe({
-    name: 'tuiCurrency',
+    name: `tuiCurrency`,
 })
 export class TuiCurrencyPipe implements PipeTransform {
     transform(currency: TuiCurrencyVariants): string {

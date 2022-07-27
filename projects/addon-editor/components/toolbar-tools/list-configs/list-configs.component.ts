@@ -8,15 +8,15 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-list-configs',
-    templateUrl: './list-configs.template.html',
-    styleUrls: ['../tools-common.less'],
+    selector: `tui-list-configs`,
+    templateUrl: `./list-configs.template.html`,
+    styleUrls: [`../tools-common.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiListConfigsComponent {
     readonly listState$ = combineLatest([
-        this.editor.isActive$('orderedList'),
-        this.editor.isActive$('bulletList'),
+        this.editor.isActive$(`orderedList`),
+        this.editor.isActive$(`bulletList`),
     ]).pipe(
         map(([ordered, unordered]) => ({
             ordered,

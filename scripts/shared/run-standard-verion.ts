@@ -7,10 +7,10 @@ export function runStandardVersion(
     mode: TuiReleaseMode,
     enabledDryRun: boolean,
 ): void {
-    const dryRun = enabledDryRun ? '--dry-run' : '';
-    const options: CommonExecOptions = {stdio: 'inherit'};
+    const dryRun = enabledDryRun ? `--dry-run` : ``;
+    const options: CommonExecOptions = {stdio: `inherit`};
 
-    if (mode === 'prerelease') {
+    if (mode === `prerelease`) {
         execSync(
             `
             npm run release -- \

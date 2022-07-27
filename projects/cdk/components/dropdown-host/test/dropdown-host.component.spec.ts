@@ -7,7 +7,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiDropdownHostComponent} from '../dropdown-host.component';
 import {TuiDropdownHostModule} from '../dropdown-host.module';
 
-describe('DropdownHost', () => {
+describe(`DropdownHost`, () => {
     @Component({
         template: `
             <tui-dropdown-host>
@@ -36,11 +36,11 @@ describe('DropdownHost', () => {
         fixture.detectChanges();
     });
 
-    it('calculates clientRect', () => {
+    it(`calculates clientRect`, () => {
         expect(testComponent.dropdownHost!.clientRect.top).toBeGreaterThanOrEqual(0);
     });
 
-    it('calculates fixedPositionOffset', () => {
+    it(`calculates fixedPositionOffset`, () => {
         expect(
             testComponent.dropdownHost!.fixedPositionOffset().top,
         ).toBeGreaterThanOrEqual(0);

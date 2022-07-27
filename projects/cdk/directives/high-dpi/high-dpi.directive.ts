@@ -6,7 +6,7 @@ import {WINDOW} from '@ng-web-apis/common';
  * @dynamic
  */
 @Directive({
-    selector: '[tuiHighDpi]',
+    selector: `[tuiHighDpi]`,
 })
 export class TuiHighDpiDirective {
     constructor(

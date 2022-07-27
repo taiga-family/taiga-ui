@@ -6,9 +6,9 @@ import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-tooltip-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-tooltip-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
@@ -16,7 +16,7 @@ import {takeUntil} from 'rxjs/operators';
 export class TuiTooltipExample1 {
     loader = true;
 
-    text = '';
+    text = ``;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
@@ -26,7 +26,7 @@ export class TuiTooltipExample1 {
             .pipe(watch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(() => {
                 this.loader = !this.loader;
-                this.text = this.text ? '' : 'Error 502: Bad Gateway';
+                this.text = this.text ? `` : `Error 502: Bad Gateway`;
             });
     }
 }

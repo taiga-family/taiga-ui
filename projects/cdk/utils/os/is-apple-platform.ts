@@ -11,7 +11,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function isApplePlatform(navigator: Navigator): boolean {
-    return navigator.platform.indexOf('Mac') === 0 || navigator.platform === 'iPhone';
+    return navigator.platform.indexOf(`Mac`) === 0 || navigator.platform === `iPhone`;
 }
 
 export const tuiIsApplePlatform = isApplePlatform;

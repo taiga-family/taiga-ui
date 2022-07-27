@@ -26,11 +26,11 @@ declare module '@tiptap/core' {
     }
 }
 
-const IMAGE_EDITOR_PARSE_META = [{tag: 'img[data-type="image-editor"]'}];
+const IMAGE_EDITOR_PARSE_META = [{tag: `img[data-type="image-editor"]`}];
 
 const DEFAULT_IMAGE_ATTRS = {
     src: {
-        default: '',
+        default: ``,
         keepOnSplit: false,
     },
     width: {
@@ -38,19 +38,19 @@ const DEFAULT_IMAGE_ATTRS = {
         keepOnSplit: false,
     },
     alt: {
-        default: '',
+        default: ``,
         keepOnSplit: false,
     },
     title: {
-        default: '',
+        default: ``,
         keepOnSplit: false,
     },
 };
 
 export const createImageEditorExtension = (injector: Injector): Node => {
     return Node.create({
-        name: 'imageEditor',
-        group: 'block',
+        name: `imageEditor`,
+        group: `block`,
         atom: true,
         draggable: true,
 
@@ -64,8 +64,8 @@ export const createImageEditorExtension = (injector: Injector): Node => {
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             return [
-                'img',
-                mergeAttributes(HTMLAttributes, {'data-type': 'image-editor'}),
+                `img`,
+                mergeAttributes(HTMLAttributes, {'data-type': `image-editor`}),
             ];
         },
 

@@ -42,7 +42,7 @@ import {map, switchMapTo, takeUntil} from 'rxjs/operators';
 
 // @dynamic
 @Directive({
-    selector: '[tuiDropdownSelection]:not(ng-container)',
+    selector: `[tuiDropdownSelection]:not(ng-container)`,
     providers: [
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
@@ -75,8 +75,8 @@ export class TuiDropdownSelectionDirective
         this.toggleDropdownBox(inHostAndValid);
     }
 
-    @Input('tuiDropdownSelectionPosition')
-    position: 'selection' | 'word' | 'tag' = 'selection';
+    @Input(`tuiDropdownSelectionPosition`)
+    position: 'selection' | 'word' | 'tag' = `selection`;
 
     constructor(
         @Inject(DOCUMENT) documentRef: Document,
@@ -121,15 +121,15 @@ export class TuiDropdownSelectionDirective
         const {nativeElement} = this.elementRef;
 
         merge(
-            typedFromEvent(this.documentRef, 'mouseup'),
-            typedFromEvent(nativeElement, 'mousedown').pipe(
+            typedFromEvent(this.documentRef, `mouseup`),
+            typedFromEvent(nativeElement, `mousedown`).pipe(
                 switchMapTo(
-                    typedFromEvent(nativeElement, 'mousemove').pipe(
-                        takeUntil(typedFromEvent(this.documentRef, 'mouseup')),
+                    typedFromEvent(nativeElement, `mousemove`).pipe(
+                        takeUntil(typedFromEvent(this.documentRef, `mouseup`)),
                     ),
                 ),
             ),
-            typedFromEvent(nativeElement, 'keyup'),
+            typedFromEvent(nativeElement, `keyup`),
         )
             .pipe(
                 map(() => {
@@ -206,7 +206,7 @@ export class TuiDropdownSelectionDirective
         }
 
         switch (this.position) {
-            case 'tag': {
+            case `tag`: {
                 const {commonAncestorContainer} = this.range;
                 const element =
                     commonAncestorContainer.nodeType === Node.ELEMENT_NODE
@@ -215,7 +215,7 @@ export class TuiDropdownSelectionDirective
 
                 return (element as Element).getBoundingClientRect();
             }
-            case 'word':
+            case `word`:
                 return getWordRange(this.range).getBoundingClientRect();
             default:
                 return this.range.getBoundingClientRect();
@@ -289,14 +289,14 @@ export class TuiDropdownSelectionDirective
      * Create an invisible DIV styled exactly like input/textarea element inside directive
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
-        const ghost = this.renderer.createElement('div');
+        const ghost = this.renderer.createElement(`div`);
         const {nativeElement} = this.viewContainerRef.element;
         const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
 
-        ghost.style.position = 'absolute';
-        ghost.style.pointerEvents = 'none';
-        ghost.style.opacity = '0';
-        ghost.style.whiteSpace = 'pre-wrap';
+        ghost.style.position = `absolute`;
+        ghost.style.pointerEvents = `none`;
+        ghost.style.opacity = `0`;
+        ghost.style.whiteSpace = `pre-wrap`;
         ghost.style.font = font;
         ghost.style.letterSpacing = letterSpacing;
         ghost.style.textTransform = textTransform;

@@ -22,26 +22,26 @@ class User {
 }
 
 const DATA: readonly User[] = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
-    new User('Gabriel José', 'de la Concordia «Gabo» García Márquez'),
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, avatar),
+    new User(`Gabriel José`, `de la Concordia «Gabo» García Márquez`),
 ];
 
 @Component({
-    selector: 'tui-input-example-8',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-example-8`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiInputExample8 {
-    readonly control = new FormControl('');
+    readonly control = new FormControl(``);
 
-    firstName = '';
-    lastName = '';
+    firstName = ``;
+    lastName = ``;
 
     readonly items$ = this.control.valueChanges.pipe(
-        startWith(''),
+        startWith(``),
         switchMap(value =>
             this.request(value).pipe(
                 map(response => {

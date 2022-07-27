@@ -6,7 +6,7 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {TuiDropdownContextModule} from '@taiga-ui/kit/directives';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe('TuiDropdownContext directive', () => {
+describe(`TuiDropdownContext directive`, () => {
     @Component({
         template: `
             <tui-root>
@@ -32,8 +32,8 @@ describe('TuiDropdownContext directive', () => {
         });
     });
 
-    const rightClickEvent = new MouseEvent('contextmenu');
-    const escButtonEvent = new KeyboardEvent('keydown', {key: 'escape'});
+    const rightClickEvent = new MouseEvent(`contextmenu`);
+    const escButtonEvent = new KeyboardEvent(`keydown`, {key: `escape`});
     let fixture: ComponentFixture<TestComponent>;
 
     beforeEach(() => {
@@ -41,28 +41,28 @@ describe('TuiDropdownContext directive', () => {
         fixture.detectChanges();
     });
 
-    it('does not show dropdown if NO right-click was made', async () => {
+    it(`does not show dropdown if NO right-click was made`, async () => {
         await fixture.whenStable();
         expect(getTextInsideDropdown()).toBeNull();
     });
 
-    it('does not show dropdown if left-click was made', async () => {
+    it(`does not show dropdown if left-click was made`, async () => {
         getRootBlock()?.click();
         await fixture.whenStable();
         expect(getTextInsideDropdown()).toBeNull();
     });
 
-    it('shows dropdown if right-click was made', () => {
+    it(`shows dropdown if right-click was made`, () => {
         dispatchEventFromRoot(rightClickEvent);
 
-        expect(getTextInsideDropdown()).toBe('Text inside dropdown');
+        expect(getTextInsideDropdown()).toBe(`Text inside dropdown`);
     });
 
-    it('closes dropdown on esc button', async () => {
+    it(`closes dropdown on esc button`, async () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
-        expect(getTextInsideDropdown()).toBe('Text inside dropdown');
+        expect(getTextInsideDropdown()).toBe(`Text inside dropdown`);
         document.dispatchEvent(escButtonEvent);
         fixture.detectChanges();
 
@@ -71,7 +71,7 @@ describe('TuiDropdownContext directive', () => {
         expect(getTextInsideDropdown()).toBeNull();
     });
 
-    it('does not close dropdown on left click inside', async () => {
+    it(`does not close dropdown on left click inside`, async () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
@@ -84,7 +84,7 @@ describe('TuiDropdownContext directive', () => {
         expect(getTextInsideDropdown()).not.toBeFalsy();
     });
 
-    it('closes dropdown on left click outside', async () => {
+    it(`closes dropdown on left click outside`, async () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
@@ -98,7 +98,7 @@ describe('TuiDropdownContext directive', () => {
 
     function get$Dropdown(): HTMLElement | null {
         return (
-            fixture.debugElement.query(By.css('#insideDropdown'))?.nativeElement || null
+            fixture.debugElement.query(By.css(`#insideDropdown`))?.nativeElement || null
         );
     }
 
@@ -107,7 +107,7 @@ describe('TuiDropdownContext directive', () => {
     }
 
     function getRootBlock(): HTMLElement | null {
-        return fixture.debugElement.query(By.css('#root'))?.nativeElement || null;
+        return fixture.debugElement.query(By.css(`#root`))?.nativeElement || null;
     }
 
     function dispatchEventFromRoot(event: Event): void {

@@ -4,7 +4,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getActualTarget(event: Event): Node {
-    if ('composedPath' in event) {
+    if (`composedPath` in event) {
         return (event as any).composedPath()[0];
     }
 

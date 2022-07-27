@@ -10,9 +10,9 @@ import {numberToStringWithoutExp} from './number-to-string-without-exp';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getFractionPartPadded(value: number, precision?: number | null): string {
-    const [, fractionPartPadded = ''] = numberToStringWithoutExp(value).split('.');
+    const [, fractionPartPadded = ``] = numberToStringWithoutExp(value).split(`.`);
 
-    return typeof precision === 'number'
+    return typeof precision === `number`
         ? fractionPartPadded.slice(0, Math.max(0, precision))
         : fractionPartPadded;
 }

@@ -20,15 +20,15 @@ import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
-    selector: 'tui-file',
+    selector: `tui-file`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './file.template.html',
-    styleUrls: ['./file.style.less'],
+    templateUrl: `./file.template.html`,
+    styleUrls: [`./file.style.less`],
 })
 export class TuiFileOldComponent {
     @Input()
     @tuiDefaultProp()
-    file: TuiFileLike = {name: ''};
+    file: TuiFileLike = {name: ``};
 
     @Input()
     @tuiDefaultProp()
@@ -36,7 +36,7 @@ export class TuiFileOldComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -49,7 +49,7 @@ export class TuiFileOldComponent {
     @Output()
     readonly fileRemoved = new EventEmitter<void>();
 
-    @HostBinding('class._focused')
+    @HostBinding(`class._focused`)
     focused = false;
 
     constructor(
@@ -64,11 +64,11 @@ export class TuiFileOldComponent {
     ) {}
 
     get preview(): SafeValue {
-        return this.isBig ? this.createPreview(this.file, this.sanitizer) : '';
+        return this.isBig ? this.createPreview(this.file, this.sanitizer) : ``;
     }
 
     get isBig(): boolean {
-        return this.size === 'l';
+        return this.size === `l`;
     }
 
     get isLoading(): boolean {
@@ -85,30 +85,30 @@ export class TuiFileOldComponent {
 
     get icon(): string {
         if (this.state === TuiFileState.Normal && this.isBig) {
-            return 'tuiIconDefaultDocLarge';
+            return `tuiIconDefaultDocLarge`;
         }
 
         switch (this.state) {
             case TuiFileState.Deleted:
-                return 'tuiIconTrashLarge';
+                return `tuiIconTrashLarge`;
             case TuiFileState.Error:
-                return 'tuiIconAlertCircleLarge';
+                return `tuiIconAlertCircleLarge`;
             default:
-                return 'tuiIconCheckCircleLarge';
+                return `tuiIconCheckCircleLarge`;
         }
     }
 
-    @HostBinding('class._link')
+    @HostBinding(`class._link`)
     get src(): string {
-        return this.file.src || '';
+        return this.file.src || ``;
     }
 
     get name(): string {
-        return this.file.name.split('.').slice(0, -1).join('.');
+        return this.file.name.split(`.`).slice(0, -1).join(`.`);
     }
 
     get type(): string {
-        return `.${this.file.name.split('.').pop()}` || '';
+        return `.${this.file.name.split(`.`).pop()}` || ``;
     }
 
     get content$(): Observable<PolymorpheusContent> {
@@ -135,7 +135,7 @@ export class TuiFileOldComponent {
     ): Observable<PolymorpheusContent> {
         return state === TuiFileState.Error && !file.content
             ? fileTexts$.pipe(map(texts => texts.loadingError))
-            : of(this.file.content || '');
+            : of(this.file.content || ``);
     }
 
     @tuiPure
@@ -153,10 +153,10 @@ export class TuiFileOldComponent {
         }
 
         // TODO: iframe warning
-        if (file instanceof File && file.type && file.type.startsWith('image/')) {
+        if (file instanceof File && file.type && file.type.startsWith(`image/`)) {
             return sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
-        return '';
+        return ``;
     }
 }

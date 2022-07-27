@@ -6,7 +6,7 @@ import {TuiSortByDirective} from './sort-by.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    selector: 'th[tuiTh][tuiSortable]',
+    selector: `th[tuiTh][tuiSortable]`,
 })
 export class TuiSortableDirective<T> implements DoCheck, OnInit {
     constructor(

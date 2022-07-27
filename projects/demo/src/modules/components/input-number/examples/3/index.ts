@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-number-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-number-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

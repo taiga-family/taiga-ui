@@ -4,9 +4,9 @@ import {first} from 'rxjs/operators';
 
 import {stopPropagation} from '../stop-propagation';
 
-describe('stopPropagation operator function', () => {
-    it('stops event propagation', fakeAsync(() => {
-        const event = new Event('click');
+describe(`stopPropagation operator function`, () => {
+    it(`stops event propagation`, fakeAsync(() => {
+        const event = new Event(`click`);
         const subject = new Subject<Event>();
 
         subject.pipe(stopPropagation(), first()).subscribe();

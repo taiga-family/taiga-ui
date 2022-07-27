@@ -4,12 +4,12 @@ import {TUI_BUTTON_OPTIONS, TuiAppearance, TuiButtonOptions} from '@taiga-ui/cor
 // TODO: 3.0 remove in ivy compilation
 export const CAROUSEL_BUTTON_OPTIONS: TuiButtonOptions = {
     appearance: TuiAppearance.Secondary,
-    shape: 'rounded',
-    size: 'm',
+    shape: `rounded`,
+    size: `m`,
 };
 
 @Directive({
-    selector: '[tuiCarouselButtons]',
+    selector: `[tuiCarouselButtons]`,
     providers: [
         {
             provide: TUI_BUTTON_OPTIONS,

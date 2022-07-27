@@ -1,6 +1,6 @@
 import {DIALOG_PAGE_URL} from '../../../support/shared.entities';
 
-describe('Dialogs', () => {
+describe(`Dialogs`, () => {
     for (const [index, {width, height}] of [
         {width: 720, height: 900},
         {width: 1620, height: 900},
@@ -11,41 +11,41 @@ describe('Dialogs', () => {
                 cy.tuiVisit(DIALOG_PAGE_URL);
             });
 
-            it('A dialog and a nested dialog are open correctly', () => {
+            it(`A dialog and a nested dialog are open correctly`, () => {
                 cy.get(`tui-dialog-example-2 button`).first().click();
                 cy.tuiWaitKitDialog();
-                cy.get('tui-dialog').matchImageSnapshot(`${index}-1-dialogs`);
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-1-dialogs`);
 
-                cy.get('dialog-example button').eq(1).click();
+                cy.get(`dialog-example button`).eq(1).click();
                 cy.tuiWaitKitDialog();
 
-                cy.get('tui-dialog').eq(1).matchImageSnapshot(`${index}-2-dialogs`);
+                cy.get(`tui-dialog`).eq(1).matchImageSnapshot(`${index}-2-dialogs`);
             });
 
-            it('Mobile dialog works', () => {
+            it(`Mobile dialog works`, () => {
                 cy.get(`tui-dialog-example-4 button`).first().click();
                 cy.tuiWaitKitDialog();
-                cy.get('tui-dialog').matchImageSnapshot(`${index}-3-dialogs`);
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-3-dialogs`);
             });
 
-            it('Dialog with directive works', () => {
+            it(`Dialog with directive works`, () => {
                 cy.get(`tui-dialog-example-6 button`).first().click();
                 cy.tuiWaitKitDialog();
-                cy.get('tui-dialog').matchImageSnapshot(
+                cy.get(`tui-dialog`).matchImageSnapshot(
                     `${index}-4-dialogs-dialog-directive`,
                 );
             });
 
-            it('show simple', () => {
+            it(`show simple`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(0).click();
                 cy.tuiWaitKitDialog();
-                cy.get('tui-dialog').matchImageSnapshot(`${index}-5-dialogs`);
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-5-dialogs`);
             });
 
-            it('show simple with custom button', () => {
+            it(`show simple with custom button`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(1).click();
                 cy.tuiWaitKitDialog();
-                cy.get('tui-dialog').matchImageSnapshot(`${index}-6-dialogs`);
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-6-dialogs`);
             });
         });
     }

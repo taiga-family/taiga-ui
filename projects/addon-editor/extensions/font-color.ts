@@ -22,11 +22,11 @@ declare module '@tiptap/core' {
 }
 
 export const FontColor = Extension.create<FontColorOptions>({
-    name: 'fontColor',
+    name: `fontColor`,
 
     addOptions(): FontColorOptions {
         return {
-            types: ['textStyle'],
+            types: [`textStyle`],
         };
     },
 
@@ -43,7 +43,7 @@ export const FontColor = Extension.create<FontColorOptions>({
                                       style: `color: ${fontColor}`,
                                   }
                                 : {},
-                        parseHTML: ({style}) => style.color.replace(/['"]+/g, ''),
+                        parseHTML: ({style}) => style.color.replace(/['"]+/g, ``),
                         keepOnSplit: false,
                     },
                 },
@@ -59,11 +59,11 @@ export const FontColor = Extension.create<FontColorOptions>({
             setFontColor:
                 fontColor =>
                 ({chain}) =>
-                    chain().setMark('textStyle', {fontColor}).run(),
+                    chain().setMark(`textStyle`, {fontColor}).run(),
             unsetFontColor:
                 () =>
                 ({chain}) =>
-                    chain().setMark('textStyle', {fontColor: null}).run(),
+                    chain().setMark(`textStyle`, {fontColor: null}).run(),
         };
     },
 });
