@@ -12,9 +12,9 @@ import {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-mobile-calendar-dialog',
-    templateUrl: './mobile-calendar-dialog.template.html',
-    styleUrls: ['./mobile-calendar-dialog.style.less'],
+    selector: `tui-mobile-calendar-dialog`,
+    templateUrl: `./mobile-calendar-dialog.template.html`,
+    styleUrls: [`./mobile-calendar-dialog.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileCalendarDialogComponent {

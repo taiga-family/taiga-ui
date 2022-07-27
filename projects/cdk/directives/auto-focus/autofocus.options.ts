@@ -19,7 +19,7 @@ export interface TuiAutofocusHandler {
 }
 
 export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
-    'Autofocusing handler',
+    `Autofocusing handler`,
 );
 
 // TODO: 3.0 remove in ivy compilation

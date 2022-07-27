@@ -5,16 +5,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-field-error-content-pipe-example-6',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-field-error-content-pipe-example-6`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     providers: [
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Enter this!',
+                required: `Enter this!`,
                 max: (context: {max: number}): string =>
                     `Too expensive, max ${context.max}`,
             },
@@ -22,11 +22,11 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
     ],
 })
 export class TuiFieldErrorContentPipeExample6 {
-    readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
+    readonly data = [{name: `Latte`}, {name: `Cappuccino`}] as const;
 
     latteControl = new FormControl(null, [Validators.required, Validators.max(6)]);
     cappuccinoControl = new FormControl(null, [Validators.required, Validators.max(5)]);
     controls = [this.latteControl, this.cappuccinoControl];
 
-    readonly columns = ['name', 'price'];
+    readonly columns = [`name`, `price`];
 }

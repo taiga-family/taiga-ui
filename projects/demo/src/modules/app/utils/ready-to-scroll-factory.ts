@@ -11,12 +11,12 @@ export function readyToScrollFactory(
         debounceTime(0), // Synchronous scrollIntoView (after click) does not work https://stackoverflow.com/a/56971002
         map(() => {
             const host = hostElement.nativeElement;
-            const exampleElements = Array.from(host.querySelectorAll('tui-doc-example'));
-            const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
+            const exampleElements = Array.from(host.querySelectorAll(`tui-doc-example`));
+            const codeElements = Array.from(host.querySelectorAll(`tui-doc-code`));
 
             return (
-                exampleElements.every(el => el.querySelector('.t-example')) &&
-                codeElements.every(el => el.querySelector('.t-code'))
+                exampleElements.every(el => el.querySelector(`.t-example`)) &&
+                codeElements.every(el => el.querySelector(`.t-code`))
             );
         }),
     );

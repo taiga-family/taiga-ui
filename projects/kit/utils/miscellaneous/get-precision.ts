@@ -4,7 +4,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getPrecision(num: number): number {
-    const [, fractionPart = ''] = String(num).split('.');
+    const [, fractionPart = ``] = String(num).split(`.`);
 
     return fractionPart.length;
 }

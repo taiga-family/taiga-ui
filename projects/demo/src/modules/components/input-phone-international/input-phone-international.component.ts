@@ -13,8 +13,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-phone-international',
-    templateUrl: './input-phone-international.template.html',
+    selector: `example-tui-input-phone-international`,
+    templateUrl: `./input-phone-international.template.html`,
     changeDetection,
     providers: [
         {
@@ -24,27 +24,27 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     cleaner = false;
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        'top',
-        'bottom',
+        `top`,
+        `bottom`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;
@@ -53,7 +53,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
 
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
-    control = new FormControl('', [Validators.required, Validators.minLength(9)]);
+    control = new FormControl(``, [Validators.required, Validators.minLength(9)]);
 
     readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [

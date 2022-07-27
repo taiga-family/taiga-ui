@@ -13,7 +13,7 @@ import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.comp
 
 // @dynamic
 @Directive({
-    selector: 'tui-sheet[close]',
+    selector: `tui-sheet[close]`,
 })
 export class TuiSheetCloseDirective {
     @Output()

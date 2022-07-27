@@ -38,15 +38,15 @@ export const DEFAULT_TABS = [
     $localize`Setup`,
     $localize`How to use`,
 ];
-const TITLE_PREFIX = 'Taiga UI: ';
+const TITLE_PREFIX = `Taiga UI: `;
 
 export const HIGHLIGHT_OPTIONS_VALUE = {
-    coreLibraryLoader: async () => import('highlight.js/lib/core'),
-    lineNumbersLoader: async () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+    coreLibraryLoader: async () => import(`highlight.js/lib/core`),
+    lineNumbersLoader: async () => import(`highlightjs-line-numbers.js`), // Optional, only if you want the line numbers
     languages: {
-        typescript: async () => import('highlight.js/lib/languages/typescript'),
-        less: async () => import('highlight.js/lib/languages/less'),
-        xml: async () => import('highlight.js/lib/languages/xml'),
+        typescript: async () => import(`highlight.js/lib/languages/typescript`),
+        less: async () => import(`highlight.js/lib/languages/less`),
+        xml: async () => import(`highlight.js/lib/languages/xml`),
     },
 };
 
@@ -64,7 +64,7 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: (context: TuiDocSourceCodePathOptions) => {
-            const link = 'https://github.com/tinkoff/taiga-ui/tree/main/projects';
+            const link = `https://github.com/tinkoff/taiga-ui/tree/main/projects`;
 
             if (!context.package) {
                 return null;
@@ -117,7 +117,7 @@ export const APP_PROVIDERS = [
     },
     {
         provide: TUI_DOC_SCROLL_BEHAVIOR,
-        useFactory: () => (inject(TUI_IS_CYPRESS) ? 'auto' : 'smooth'), // https://github.com/cypress-io/cypress/issues/4640
+        useFactory: () => (inject(TUI_IS_CYPRESS) ? `auto` : `smooth`), // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,

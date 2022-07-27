@@ -20,9 +20,9 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
-    selector: 'tbody[tuiTbody]',
-    templateUrl: './tbody.template.html',
-    styleUrls: ['./tbody.style.less'],
+    selector: `tbody[tuiTbody]`,
+    templateUrl: `./tbody.template.html`,
+    styleUrls: [`./tbody.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
@@ -33,7 +33,7 @@ export class TuiTbodyComponent<T> {
 
     @Input()
     @tuiDefaultProp()
-    heading: PolymorpheusContent = '';
+    heading: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()

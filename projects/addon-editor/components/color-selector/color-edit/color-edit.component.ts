@@ -10,9 +10,9 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
-    selector: 'tui-color-edit',
-    templateUrl: './color-edit.template.html',
-    styleUrls: ['./color-edit.style.less'],
+    selector: `tui-color-edit`,
+    templateUrl: `./color-edit.template.html`,
+    styleUrls: [`./color-edit.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorEditComponent {
@@ -28,7 +28,7 @@ export class TuiColorEditComponent {
         guide: false,
     };
 
-    readonly modes = ['HEX', 'RGB'];
+    readonly modes = [`HEX`, `RGB`];
 
     mode = this.modes[0];
 

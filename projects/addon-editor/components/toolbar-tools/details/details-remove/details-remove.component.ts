@@ -7,13 +7,13 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-details-remove',
-    templateUrl: './details-remove.template.html',
+    selector: `tui-details-remove`,
+    templateUrl: `./details-remove.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsRemoveComponent {
     readonly disabled$ = this.editor.stateChange$.pipe(
-        map(() => !this.editor.isActive('details')),
+        map(() => !this.editor.isActive(`details`)),
         distinctUntilChanged(),
     );
 

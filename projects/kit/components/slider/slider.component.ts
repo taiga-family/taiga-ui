@@ -29,9 +29,9 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
      * {@link https://github.com/angular/angular/blob/master/packages/forms/src/directives/range_value_accessor.ts#L45 RangeValueAccessor}
      * cannot be matched by its CSS selector.
      */
-    selector: 'input[type=range][tuiSlider]',
+    selector: `input[type=range][tuiSlider]`,
     template: ``,
-    styleUrls: ['./slider.style.less'],
+    styleUrls: [`./slider.style.less`],
     host: {
         /**
          * For change detection.
@@ -39,14 +39,14 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
          * We draw filling of progress by `background: linear-gradient(...)` of the track.
          * This function triggers change detection (for {@link valuePercentage} function) when we drag thumb of the input.
          */
-        '(input)': '0',
-        '[style.--tui-slider-track-color]': 'options.trackColor',
+        '(input)': `0`,
+        '[style.--tui-slider-track-color]': `options.trackColor`,
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeS = this.options.size;
 
@@ -68,7 +68,7 @@ export class TuiSliderComponent {
 
     get value(): number {
         const {elementRef, control} = this;
-        const noKeySteps = !elementRef.nativeElement.hasAttribute('data-key-steps');
+        const noKeySteps = !elementRef.nativeElement.hasAttribute(`data-key-steps`);
 
         if (noKeySteps && control instanceof NgModel) {
             /**
@@ -85,17 +85,17 @@ export class TuiSliderComponent {
         this.elementRef.nativeElement.value = `${newValue}`;
     }
 
-    @HostBinding('style.--tui-slider-fill-percentage.%')
+    @HostBinding(`style.--tui-slider-fill-percentage.%`)
     get valuePercentage(): number {
         return (100 * (this.value - this.min)) / (this.max - this.min) || 0;
     }
 
-    @HostBinding('style.--tui-slider-segment-width.%')
+    @HostBinding(`style.--tui-slider-segment-width.%`)
     get segmentWidth(): number {
         return 100 / Math.max(1, this.segments);
     }
 
-    @HostBinding('class._old-edge')
+    @HostBinding(`class._old-edge`)
     get isOldEdge(): boolean {
         return isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
     }

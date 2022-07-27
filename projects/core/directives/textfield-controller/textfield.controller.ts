@@ -36,7 +36,7 @@ export class TuiTextfieldController {
     }
 
     get customContent(): PolymorpheusContent {
-        return this.customContentDirective.customContent || '';
+        return this.customContentDirective.customContent || ``;
     }
 
     get exampleText(): string {

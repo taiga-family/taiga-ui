@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 
 import {watch} from '../watch';
 
-describe('Watch operator function', () => {
+describe(`Watch operator function`, () => {
     let $: Subject<unknown>;
     let called = 0;
 
@@ -17,7 +17,7 @@ describe('Watch operator function', () => {
         called = 0;
     });
 
-    it('initially emits nothing, after event emits "true" and after a tick emits "false"', fakeAsync(() => {
+    it(`initially emits nothing, after event emits "true" and after a tick emits "false"`, fakeAsync(() => {
         $.pipe(watch(chrStub)).subscribe();
 
         $.next();

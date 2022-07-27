@@ -21,9 +21,9 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 }
 
 @Component({
-    selector: 'tui-input-file-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-file-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -66,7 +66,7 @@ export class TuiInputFileExample1 {
         const result =
             delay % 2
                 ? null
-                : new RejectedFile(file, 'Server responded for odd number of time');
+                : new RejectedFile(file, `Server responded for odd number of time`);
 
         return timer(delay).pipe(mapTo(result));
     }

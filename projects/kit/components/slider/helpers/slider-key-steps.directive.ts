@@ -33,12 +33,12 @@ import {TuiSliderComponent} from '../slider.component';
 
 // @dynamic
 @Directive({
-    selector: 'input[tuiSlider][keySteps]',
+    selector: `input[tuiSlider][keySteps]`,
     host: {
-        '[attr.data-key-steps]': 'true',
-        '[attr.aria-valuenow]': 'controlValue',
-        '[attr.aria-valuemin]': 'min',
-        '[attr.aria-valuemax]': 'max',
+        '[attr.data-key-steps]': `true`,
+        '[attr.aria-valuenow]': `controlValue`,
+        '[attr.aria-valuemin]': `min`,
+        '[attr.aria-valuemax]': `max`,
     },
 })
 export class TuiSliderKeyStepsDirective
@@ -48,12 +48,12 @@ export class TuiSliderKeyStepsDirective
     @Input()
     @tuiDefaultProp(
         tuiCheckKeyStepsHaveMinMaxPercents,
-        'Should contain min and max values',
+        `Should contain min and max values`,
     )
     keySteps: TuiKeySteps = [];
 
     @Output()
-    keyStepsInput = typedFromEvent(this.elementRef.nativeElement, 'input').pipe(
+    keyStepsInput = typedFromEvent(this.elementRef.nativeElement, `input`).pipe(
         map(() => this.controlValue),
     );
 
@@ -89,7 +89,7 @@ export class TuiSliderKeyStepsDirective
         super(control, changeDetectorRef);
     }
 
-    @HostListener('change')
+    @HostListener(`change`)
     updateControlValue(): void {
         this.updateValue(this.controlValue);
     }
@@ -103,7 +103,7 @@ export class TuiSliderKeyStepsDirective
 
         tuiAssert.assert(
             controlValue === clampedControlValue,
-            '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
+            `\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max`,
         );
 
         this.slider.value = this.transformToNativeValue(clampedControlValue);
@@ -129,7 +129,7 @@ export class TuiSliderKeyStepsDirective
  * TODO delete it in v3.0
  *
  */
-@Pipe({name: 'tuiSliderTickLabel'})
+@Pipe({name: `tuiSliderTickLabel`})
 export class TuiSliderTickLabelPipe implements PipeTransform {
     transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
         const percentage = (100 / totalSegments) * tickIndex;

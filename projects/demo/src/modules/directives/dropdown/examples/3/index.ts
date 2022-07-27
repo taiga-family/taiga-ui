@@ -6,9 +6,9 @@ import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-dropdown-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-dropdown-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
@@ -16,7 +16,7 @@ import {takeUntil} from 'rxjs/operators';
 export class TuiDropdownExample3 {
     open = false;
 
-    value = 'some data';
+    value = `some data`;
 
     showBigText = false;
 

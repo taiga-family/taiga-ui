@@ -7,8 +7,8 @@ import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {ExampleDateTimeTransformer} from './value-transformer';
 
 @Component({
-    selector: 'tui-input-date-time-example-4',
-    templateUrl: './index.html',
+    selector: `tui-input-date-time-example-4`,
+    templateUrl: `./index.html`,
     providers: [
         {
             provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
@@ -19,5 +19,5 @@ import {ExampleDateTimeTransformer} from './value-transformer';
     encapsulation,
 })
 export class TuiInputDateTimeExample4 {
-    readonly control = new FormControl('19.01.2022, 12:33');
+    readonly control = new FormControl(`19.01.2022, 12:33`);
 }

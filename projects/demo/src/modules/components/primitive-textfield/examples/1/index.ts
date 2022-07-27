@@ -13,9 +13,9 @@ import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-primitive-textfield-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-primitive-textfield-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -46,15 +46,15 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get icon(): string {
-        return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
+        return this.isPasswordHidden ? `tuiIconHideLarge` : `tuiIconShowLarge`;
     }
 
     get hint(): string {
-        return this.isPasswordHidden ? 'Show password' : 'Hide password';
+        return this.isPasswordHidden ? `Show password` : `Hide password`;
     }
 
     get inputType(): string {
-        return this.isPasswordHidden ? 'password' : 'text';
+        return this.isPasswordHidden ? `password` : `text`;
     }
 
     onValueChange(textValue: string): void {
@@ -70,6 +70,6 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

@@ -39,7 +39,7 @@ export function tuiCreateAutoCorrectedDateTimePipe(
             {} as unknown as TuiTextMaskOptions & TuiTextMaskConfig,
         );
 
-        if (!pipedTime || typeof pipedTime === 'string') {
+        if (!pipedTime || typeof pipedTime === `string`) {
             return false;
         }
 

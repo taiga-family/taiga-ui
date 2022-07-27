@@ -22,11 +22,11 @@ declare module '@tiptap/core' {
 }
 
 export const BackgroundColor = Extension.create<BackgroundColorOptions>({
-    name: 'backgroundColor',
+    name: `backgroundColor`,
 
     addOptions(): BackgroundColorOptions {
         return {
-            types: ['textStyle'],
+            types: [`textStyle`],
         };
     },
 
@@ -44,7 +44,7 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
                                   }
                                 : {},
                         parseHTML: ({style}) =>
-                            style.backgroundColor.replace(/['"]+/g, ''),
+                            style.backgroundColor.replace(/['"]+/g, ``),
                         keepOnSplit: false,
                     },
                 },
@@ -60,11 +60,11 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
             setBackgroundColor:
                 backgroundColor =>
                 ({chain}) =>
-                    chain().setMark('textStyle', {backgroundColor}).run(),
+                    chain().setMark(`textStyle`, {backgroundColor}).run(),
             unsetBackgroundColor:
                 () =>
                 ({chain}) =>
-                    chain().setMark('textStyle', {backgroundColor: null}).run(),
+                    chain().setMark(`textStyle`, {backgroundColor: null}).run(),
         };
     },
 });

@@ -25,7 +25,7 @@ let documentMouseDownIsAlive$: Observable<boolean>;
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function focusVisibleObservable(element: Element): Observable<boolean> {
-    const elementBlur$ = typedFromEvent(element, 'blur');
+    const elementBlur$ = typedFromEvent(element, `blur`);
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -33,14 +33,14 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
     }
 
     if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {
-        documentMouseUpIsAlive$ = typedFromEvent(ownerDocument, 'mouseup', {
+        documentMouseUpIsAlive$ = typedFromEvent(ownerDocument, `mouseup`, {
             capture: true,
         }).pipe(
             tuiIsAlive(),
             startWith(false),
             shareReplay({bufferSize: 1, refCount: true}),
         );
-        documentMouseDownIsAlive$ = typedFromEvent(ownerDocument, 'mousedown', {
+        documentMouseDownIsAlive$ = typedFromEvent(ownerDocument, `mousedown`, {
             capture: true,
         }).pipe(
             tuiIsAlive(),
@@ -52,7 +52,7 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
     return merge(
         // focus events excluding ones that came right after mouse action
         concat(
-            typedFromEvent(element, 'focus').pipe(take(1)),
+            typedFromEvent(element, `focus`).pipe(take(1)),
             // filtering out blur events when element remains focused so that we ignore browser tab focus loss
             elementBlur$.pipe(
                 filter(() => !isNativeFocused(element)),

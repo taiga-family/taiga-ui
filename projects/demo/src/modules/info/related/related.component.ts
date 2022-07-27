@@ -7,9 +7,9 @@ import {
 } from '../testing/screenshot-github-bot/screenshot-github-bot.component';
 
 @Component({
-    selector: 'related',
-    templateUrl: 'related.template.html',
-    styleUrls: ['./related.style.less'],
+    selector: `related`,
+    templateUrl: `related.template.html`,
+    styleUrls: [`./related.style.less`],
     changeDetection,
 })
 export class RelatedComponent {

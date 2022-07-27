@@ -4,7 +4,7 @@ import {TuiForAsyncModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
 
-describe('TuiForAsync directive', () => {
+describe(`TuiForAsync directive`, () => {
     let fixture: ComponentFixture<AbstractTuiTestComponent>;
     let testComponent: AbstractTuiTestComponent;
 
@@ -15,7 +15,7 @@ describe('TuiForAsync directive', () => {
         constructor(readonly elementRef: ElementRef<HTMLElement>) {}
     }
 
-    describe('Basic', () => {
+    describe(`Basic`, () => {
         @Component({
             template: `
                 <div *tuiForAsync="let item of items$ | async; timeout: 1000">
@@ -38,96 +38,96 @@ describe('TuiForAsync directive', () => {
             fixture.detectChanges();
         });
 
-        it('when tuiForAsync is falsy', () => {
-            expect(text()).toBe('');
+        it(`when tuiForAsync is falsy`, () => {
+            expect(text()).toBe(``);
         });
 
-        it('when tuiForAsync is empty shows empty content', () => {
+        it(`when tuiForAsync is empty shows empty content`, () => {
             testComponent.items$.next([]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
         });
 
-        it('when regular tuiForAsync', fakeAsync(() => {
-            testComponent.items$.next(['1', '2', '3']);
+        it(`when regular tuiForAsync`, fakeAsync(() => {
+            testComponent.items$.next([`1`, `2`, `3`]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             tick(1000);
 
-            expect(text()).toBe('1');
+            expect(text()).toBe(`1`);
 
             tick(1000);
 
-            expect(text()).toBe('1  2');
+            expect(text()).toBe(`1  2`);
 
             tick(1000);
 
-            expect(text()).toBe('1  2  3');
+            expect(text()).toBe(`1  2  3`);
         }));
 
-        it('tuiForAsync should be re-rerender content when source is changed', fakeAsync(() => {
-            testComponent.items$.next(['1', '2']);
+        it(`tuiForAsync should be re-rerender content when source is changed`, fakeAsync(() => {
+            testComponent.items$.next([`1`, `2`]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             tick(2000);
 
-            expect(text()).toBe('1  2');
+            expect(text()).toBe(`1  2`);
 
             tick(2000);
 
-            testComponent.items$.next(['5', '6']);
+            testComponent.items$.next([`5`, `6`]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             tick(2000);
 
-            expect(text()).toBe('5  6');
+            expect(text()).toBe(`5  6`);
 
             tick(2000);
 
             testComponent.items$.next(null);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
         }));
 
-        it('prevent race condition', fakeAsync(() => {
-            testComponent.items$.next(['1', '2', '3']);
+        it(`prevent race condition`, fakeAsync(() => {
+            testComponent.items$.next([`1`, `2`, `3`]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             // race condition
             setTimeout(() => {
-                testComponent.items$.next(['5', '6']);
+                testComponent.items$.next([`5`, `6`]);
                 fixture.detectChanges();
             }, 1500);
 
             tick(1000);
 
-            expect(text()).toBe('1');
+            expect(text()).toBe(`1`);
 
             tick(1000);
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             tick(1000);
 
-            expect(text()).toBe('5');
+            expect(text()).toBe(`5`);
 
             tick(1000);
 
-            expect(text()).toBe('5  6');
+            expect(text()).toBe(`5  6`);
         }));
     });
 
-    describe('Support index', () => {
+    describe(`Support index`, () => {
         @Component({
             template: `
                 <div
@@ -156,27 +156,27 @@ describe('TuiForAsync directive', () => {
             fixture.detectChanges();
         });
 
-        it('when regular tuiForAsync with index', fakeAsync(() => {
-            testComponent.items$.next(['x', 'y', 'z']);
+        it(`when regular tuiForAsync with index`, fakeAsync(() => {
+            testComponent.items$.next([`x`, `y`, `z`]);
             fixture.detectChanges();
 
-            expect(text()).toBe('');
+            expect(text()).toBe(``);
 
             tick(1000);
 
-            expect(text()).toBe('0');
+            expect(text()).toBe(`0`);
 
             tick(1000);
 
-            expect(text()).toBe('0  1');
+            expect(text()).toBe(`0  1`);
 
             tick(1000);
 
-            expect(text()).toBe('0  1  2');
+            expect(text()).toBe(`0  1  2`);
         }));
     });
 
     function text(): string {
-        return testComponent.elementRef.nativeElement.textContent?.trim() || '';
+        return testComponent.elementRef.nativeElement.textContent?.trim() || ``;
     }
 });

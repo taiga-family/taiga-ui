@@ -9,9 +9,9 @@ import {TUI_DOC_MENU_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_LOGO} from '../../tokens/logo';
 
 @Component({
-    selector: 'header[tuiDocHeader]',
-    templateUrl: './header.template.html',
-    styleUrls: ['./header.style.less'],
+    selector: `header[tuiDocHeader]`,
+    templateUrl: `./header.template.html`,
+    styleUrls: [`./header.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocHeaderComponent {
@@ -21,8 +21,8 @@ export class TuiDocHeaderComponent {
         this.router.events.pipe(mapTo(false)),
         this.stream$,
         this.swipes$.pipe(
-            filter(swipe => swipe.direction === 'left' || swipe.direction === 'right'),
-            map(swipe => swipe.direction === 'right'),
+            filter(swipe => swipe.direction === `left` || swipe.direction === `right`),
+            map(swipe => swipe.direction === `right`),
         ),
     ).pipe(startWith(false), distinctUntilChanged());
 

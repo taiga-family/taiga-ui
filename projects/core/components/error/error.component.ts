@@ -12,23 +12,23 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-error',
-    templateUrl: './error.template.html',
-    styleUrls: ['./error.style.less'],
+    selector: `tui-error`,
+    templateUrl: `./error.template.html`,
+    styleUrls: [`./error.style.less`],
     providers: [MODE_PROVIDER],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiErrorComponent {
-    @Input('error')
+    @Input(`error`)
     @tuiDefaultProp()
     set errorSetter(error: TuiValidationError | string | null) {
-        this.error = typeof error === 'string' ? new TuiValidationError(error) : error;
+        this.error = typeof error === `string` ? new TuiValidationError(error) : error;
     }
 
     error: TuiValidationError | null = null;
 
-    readonly animation = {value: '', ...this.options} as const;
+    readonly animation = {value: ``, ...this.options} as const;
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,

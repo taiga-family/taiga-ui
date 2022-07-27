@@ -1,7 +1,7 @@
 import {svgLinearGradientProcessor} from '@taiga-ui/cdk';
 
-describe('svgLinearGradientProcessor', () => {
-    it('correct replacing ids', () => {
+describe(`svgLinearGradientProcessor`, () => {
+    it(`correct replacing ids`, () => {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient
         id="r4wzZI4nTYpRSYqL7WQ95a"
         x1="37"
@@ -38,7 +38,7 @@ describe('svgLinearGradientProcessor', () => {
     /></svg>
 `;
 
-        expect(svgLinearGradientProcessor(svg, 'MOCK_ID'))
+        expect(svgLinearGradientProcessor(svg, `MOCK_ID`))
             .toEqual(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient
         id="r4wzZI4nTYpRSYqL7WQ95a_MOCK_ID"
         x1="37"
@@ -76,7 +76,7 @@ describe('svgLinearGradientProcessor', () => {
 `);
     });
 
-    it('ignore hex color', () => {
+    it(`ignore hex color`, () => {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
 
@@ -105,7 +105,7 @@ describe('svgLinearGradientProcessor', () => {
  </g>
 </svg>`;
 
-        expect(svgLinearGradientProcessor(svg, 'MOCK_ID'))
+        expect(svgLinearGradientProcessor(svg, `MOCK_ID`))
             .toEqual(`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
 

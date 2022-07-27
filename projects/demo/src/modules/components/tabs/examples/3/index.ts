@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-tabs-example-3',
-    templateUrl: './index.html',
+    selector: `tui-tabs-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

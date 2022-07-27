@@ -6,21 +6,21 @@ import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-expand',
-    templateUrl: './expand.template.html',
-    styleUrls: ['./expand.style.less'],
+    selector: `example-expand`,
+    templateUrl: `./expand.template.html`,
+    styleUrls: [`./expand.style.less`],
     changeDetection,
 })
 export class ExampleTuiExpandComponent {
     @ViewChild(TuiExpandComponent, {read: ElementRef})
     expand?: ElementRef;
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
     };
 
     expanded = false;

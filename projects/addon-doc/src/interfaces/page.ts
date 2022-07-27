@@ -15,9 +15,9 @@ export interface TuiDocPageGroup extends TuiDocPageBase {
 export type RawLoaderContent = Promise<{default: string}> | string;
 
 export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
-    TS: 'TypeScript',
-    LESS: 'LESS',
-    HTML: 'HTML',
+    TS: `TypeScript`,
+    LESS: `LESS`,
+    HTML: `HTML`,
 } as const;
 
 export type TuiDocExample =

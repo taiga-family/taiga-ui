@@ -10,9 +10,9 @@ import {
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 
 @Component({
-    selector: 'tui-primitive-year-month-pagination',
-    templateUrl: './primitive-year-month-pagination.template.html',
-    styleUrls: ['./primitive-year-month-pagination.style.less'],
+    selector: `tui-primitive-year-month-pagination`,
+    templateUrl: `./primitive-year-month-pagination.template.html`,
+    styleUrls: [`./primitive-year-month-pagination.style.less`],
 })
 export class TuiPrimitiveYearMonthPaginationComponent
     implements TuiWithOptionalMinMax<TuiMonth>

@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-token-example-3',
-    templateUrl: './index.html',
+    selector: `tui-token-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

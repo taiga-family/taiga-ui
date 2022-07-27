@@ -1,9 +1,9 @@
 import {moveFocus} from '../move-focus';
 
-describe('move focus', () => {
-    it('   ', () => {
-        const first = document.createElement('button');
-        const second = document.createElement('textarea');
+describe(`move focus`, () => {
+    it(`   `, () => {
+        const first = document.createElement(`button`);
+        const second = document.createElement(`textarea`);
 
         document.body.appendChild(first);
         document.body.appendChild(second);

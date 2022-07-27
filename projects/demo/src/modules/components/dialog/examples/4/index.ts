@@ -6,9 +6,9 @@ import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-dialog-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -37,7 +37,7 @@ export class TuiDialogExampleComponent4 {
 
     onFilterClick(): void {
         this.filters = true;
-        this.dialogService.open('Dialog with filters').subscribe({
+        this.dialogService.open(`Dialog with filters`).subscribe({
             complete: () => {
                 this.filters = false;
             },

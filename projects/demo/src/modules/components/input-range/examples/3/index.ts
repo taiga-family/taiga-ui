@@ -4,9 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-range-example-3',
-    templateUrl: './index.html',
-    styles: ['tui-input-range {max-width: 30rem}'],
+    selector: `tui-input-range-example-3`,
+    templateUrl: `./index.html`,
+    styles: [
+        `
+            tui-input-range {
+                max-width: 30rem;
+            }
+        `,
+    ],
     changeDetection,
     encapsulation,
 })
@@ -15,8 +21,8 @@ export class TuiInputRangeExample3 {
 
     // See https://angular.io/api/common/I18nPluralPipe
     readonly pluralize = {
-        '=0': 'days later',
-        '=1': 'day later',
-        other: 'days later',
+        '=0': `days later`,
+        '=1': `day later`,
+        other: `days later`,
     };
 }

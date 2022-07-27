@@ -10,9 +10,9 @@ export interface MyAccount {
 }
 
 @Component({
-    selector: 'my-account',
-    templateUrl: './my-account.component.html',
-    styleUrls: ['./my-account.component.less'],
+    selector: `my-account`,
+    templateUrl: `./my-account.component.html`,
+    styleUrls: [`./my-account.component.less`],
 })
 export class ExampleMyAccountComponent {
     @Input()

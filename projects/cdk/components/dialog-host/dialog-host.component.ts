@@ -8,14 +8,14 @@ import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
-    'Is closing dialog on browser backward navigation enabled',
+    `Is closing dialog on browser backward navigation enabled`,
     {
         factory: () => of(false),
     },
 );
 
 // TODO: 3.0 remove in ivy compilation
-export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+export const FAKE_HISTORY_STATE = {label: `ignoreMe`} as const;
 // TODO: 3.0 remove in ivy compilation
 export const isFakeHistoryState = (
     historyState: Record<string, unknown>,
@@ -24,9 +24,9 @@ export const isFakeHistoryState = (
 
 // @dynamic
 @Component({
-    selector: 'tui-dialog-host',
-    templateUrl: './dialog-host.template.html',
-    styleUrls: ['./dialog-host.style.less'],
+    selector: `tui-dialog-host`,
+    templateUrl: `./dialog-host.template.html`,
+    styleUrls: [`./dialog-host.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [TUI_PARENT_ANIMATION],
 })
@@ -71,7 +71,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         popupOpened: boolean,
         isDialogClosesOnBack: boolean,
     ): void {
-        if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
+        if (!isDialogClosesOnBack || propertyName !== `letter-spacing`) {
             return;
         }
 

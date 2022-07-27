@@ -23,13 +23,13 @@ class ItemWithBadge {
     }
 }
 
-const ARR_STRING = ['Clothes and footwear'];
+const ARR_STRING = [`Clothes and footwear`];
 
-const ARR_OBJECT = [new ItemWithBadge('Focused Zone', BADGE_VALUE)];
+const ARR_OBJECT = [new ItemWithBadge(`Focused Zone`, BADGE_VALUE)];
 
-const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge('Focused Zone', 0)];
+const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge(`Focused Zone`, 0)];
 
-describe('Filter', () => {
+describe(`Filter`, () => {
     @Component({
         template: `
             <tui-filter
@@ -51,7 +51,7 @@ describe('Filter', () => {
 
         items: readonly string[] | readonly ItemWithBadge[] = ARR_STRING;
 
-        size: TuiSizeS = 'm';
+        size: TuiSizeS = `m`;
 
         badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
@@ -62,7 +62,7 @@ describe('Filter', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-filter__';
+            return `tui-filter__`;
         },
     };
 
@@ -93,19 +93,19 @@ describe('Filter', () => {
         return pageObject.getByAutomationId(`${testContext.prefix}badge`)!;
     }
 
-    describe('value', () => {
-        it('default absent', () => {
+    describe(`value`, () => {
+        it(`default absent`, () => {
             expect(testComponent.control.value.length).toBe(0);
         });
 
-        it('set from checked items', () => {
+        it(`set from checked items`, () => {
             component.onCheckbox(true, ARR_STRING[0]);
             fixture.detectChanges();
 
             expect(testComponent.control.value).toEqual(ARR_STRING);
         });
 
-        it('set when creating a control', () => {
+        it(`set when creating a control`, () => {
             testComponent.control.setValue(ARR_STRING);
             fixture.detectChanges();
 
@@ -113,42 +113,42 @@ describe('Filter', () => {
         });
     });
 
-    describe('content items', () => {
-        it('passed correctly if items is an array of strings', () => {
+    describe(`content items`, () => {
+        it(`passed correctly if items is an array of strings`, () => {
             expect(getContent().nativeElement.textContent.trim()).toBe(
-                'Clothes and footwear',
+                `Clothes and footwear`,
             );
         });
 
-        it('passed correctly if items is an array of objects with toString', () => {
+        it(`passed correctly if items is an array of objects with toString`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
             expect(getContent().nativeElement.textContent.trim()).toBe(
-                'Focused Zone\n10',
+                `Focused Zone\n10`,
             );
         });
     });
 
-    describe('badge', () => {
-        it('missing if badgeHandler returns NaN', () => {
+    describe(`badge`, () => {
+        it(`missing if badgeHandler returns NaN`, () => {
             expect(getBadge()).toBeNull();
         });
 
-        it('missing if badgeHandler returns 0', () => {
+        it(`missing if badgeHandler returns 0`, () => {
             testComponent.items = ARR_OBJECT_WITH_ZERO_BADGE;
             fixture.detectChanges();
 
             expect(getBadge()).toBeNull();
         });
 
-        it('present if badgeHandler returns a number', () => {
+        it(`present if badgeHandler returns a number`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
             expect(getBadge()).not.toBeNull();
         });
 
-        it('has the correct meaning', () => {
+        it(`has the correct meaning`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
@@ -156,36 +156,36 @@ describe('Filter', () => {
         });
     });
 
-    describe('disabled element', () => {
-        it('false by default', () => {
-            expect(getCheckbox().nativeElement.classList.contains('_disabled')).toBe(
+    describe(`disabled element`, () => {
+        it(`false by default`, () => {
+            expect(getCheckbox().nativeElement.classList.contains(`_disabled`)).toBe(
                 false,
             );
         });
 
-        it('present if disabledHandler returned true', () => {
-            testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
+        it(`present if disabledHandler returned true`, () => {
+            testComponent.disabledItemHandler = item => item.indexOf(`footwear`) > -1;
             fixture.detectChanges();
             expect(getCheckbox().componentInstance.ngControl.isDisabled).toBe(true);
         });
     });
 
-    describe('size', () => {
-        it('if m, then both CheckboxBlock and badge have m', () => {
+    describe(`size`, () => {
+        it(`if m, then both CheckboxBlock and badge have m`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-size']).toBe('m');
-            expect(getBadge().attributes['data-size']).toBe('m');
+            expect(getCheckbox().attributes[`data-size`]).toBe(`m`);
+            expect(getBadge().attributes[`data-size`]).toBe(`m`);
         });
 
-        it('if s, then both CheckboxBlock and badge have s', () => {
+        it(`if s, then both CheckboxBlock and badge have s`, () => {
             testComponent.items = ARR_OBJECT;
-            testComponent.size = 's';
+            testComponent.size = `s`;
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-size']).toBe('s');
-            expect(getBadge().attributes['data-size']).toBe('s');
+            expect(getCheckbox().attributes[`data-size`]).toBe(`s`);
+            expect(getBadge().attributes[`data-size`]).toBe(`s`);
         });
     });
 });

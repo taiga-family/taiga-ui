@@ -19,7 +19,7 @@ export interface TuiCardGroupedTexts {
 
 export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
     Observable<TuiCardGroupedTexts>
->('InputCardGrouped texts', {
+>(`InputCardGrouped texts`, {
     factory: () =>
         inputGroupedTextsFactory(
             inject(WINDOW),
@@ -42,7 +42,7 @@ export function inputGroupedTextsFactory(
         `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
     );
 
-    return typedFromEvent(media, 'change').pipe(
+    return typedFromEvent(media, `change`).pipe(
         startWith(null),
         switchMap(() =>
             combineLatest([

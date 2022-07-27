@@ -27,7 +27,7 @@ export function tuiPure<T>(
         };
     }
 
-    if (typeof value !== 'function') {
+    if (typeof value !== `function`) {
         throw new TuiPureException();
     }
 

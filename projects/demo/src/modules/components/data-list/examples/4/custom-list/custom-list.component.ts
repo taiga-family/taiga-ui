@@ -9,15 +9,15 @@ interface Items<T> {
 }
 
 @Component({
-    selector: 'custom-list',
-    templateUrl: './custom-list.template.html',
+    selector: `custom-list`,
+    templateUrl: `./custom-list.template.html`,
     changeDetection,
 })
 export class CustomListComponent<T> {
     @Input()
     items: ReadonlyArray<Items<T>> = [];
 
-    value = '';
+    value = ``;
 
     readonly all = EMPTY_ARRAY;
 

@@ -12,9 +12,9 @@ import {round, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-color-picker',
-    templateUrl: './color-picker.template.html',
-    styleUrls: ['./color-picker.style.less'],
+    selector: `tui-color-picker`,
+    templateUrl: `./color-picker.template.html`,
+    styleUrls: [`./color-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerComponent {
@@ -58,8 +58,8 @@ export class TuiColorPickerComponent {
     get gradient(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(
             `linear-gradient(to right, rgba(${this.currentColor.join(
-                ',',
-            )}, 0), rgb(${this.currentColor.join(',')}))`,
+                `,`,
+            )}, 0), rgb(${this.currentColor.join(`,`)}))`,
         );
     }
 

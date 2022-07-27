@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {formatNumber} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-format-example-6',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-format-example-6`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -15,8 +15,8 @@ export class TuiFormatExample6 {
     parametersForm = new FormGroup({
         value: new FormControl(123456.789),
         decimalLimit: new FormControl(2),
-        decimalSeparator: new FormControl('.'),
-        thousandSeparator: new FormControl(' '),
+        decimalSeparator: new FormControl(`.`),
+        thousandSeparator: new FormControl(` `),
     });
 
     get formattedNumber(): string {

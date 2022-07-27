@@ -4,7 +4,7 @@ import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 import {TuiInputCountComponent} from './input-count.component';
 
 @Directive({
-    selector: 'tui-input-count',
+    selector: `tui-input-count`,
     providers: [
         {
             provide: TUI_TEXTFIELD_HOST,
@@ -18,7 +18,7 @@ export class TuiInputCountDirective extends TuiAbstractTextfieldHost<TuiInputCou
     }
 
     process(input: HTMLInputElement): void {
-        input.autocomplete = 'off';
-        input.inputMode = 'numeric';
+        input.autocomplete = `off`;
+        input.inputMode = `numeric`;
     }
 }

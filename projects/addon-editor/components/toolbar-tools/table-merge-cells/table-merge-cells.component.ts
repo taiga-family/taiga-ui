@@ -7,8 +7,8 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-table-merge-cells',
-    templateUrl: './table-merge-cells.template.html',
+    selector: `tui-table-merge-cells`,
+    templateUrl: `./table-merge-cells.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableMergeCellsComponent {

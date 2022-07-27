@@ -6,10 +6,10 @@ import {TuiBreadCrumbsItem} from '@taiga-ui/kit/interfaces';
 
 /** @deprecated use `<tui-breadcrumbs>` from {@link TuiBreadcrumbsWrapperComponent} */
 @Component({
-    selector: 'tui-breadcrumbs[items]',
+    selector: `tui-breadcrumbs[items]`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './breadcrumbs.template.html',
-    styleUrls: ['./breadcrumbs.style.less'],
+    templateUrl: `./breadcrumbs.template.html`,
+    styleUrls: [`./breadcrumbs.style.less`],
 })
 export class TuiBreadcrumbsComponent {
     @Input()
@@ -17,9 +17,9 @@ export class TuiBreadcrumbsComponent {
     items: readonly TuiBreadCrumbsItem[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     readonly routerLinkOptions: TuiMapper<TuiBreadCrumbsItem, any> = ({
         routerLinkOptions,

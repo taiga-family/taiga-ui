@@ -36,9 +36,9 @@ import {TUI_INPUT_MONTH_PROVIDERS} from './input-month.providers';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-month',
-    templateUrl: './input-month.template.html',
-    styleUrls: ['./input-month.style.less'],
+    selector: `tui-input-month`,
+    templateUrl: `./input-month.template.html`,
+    styleUrls: [`./input-month.style.less`],
     providers: TUI_INPUT_MONTH_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -88,8 +88,8 @@ export class TuiInputMonthComponent
 
     get calendarIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
     onValueChange(value: string): void {

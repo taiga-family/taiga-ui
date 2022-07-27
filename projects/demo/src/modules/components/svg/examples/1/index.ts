@@ -9,9 +9,9 @@ import {mapTo} from 'rxjs/operators';
 import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
 
 @Component({
-    selector: 'tui-svg-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-svg-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

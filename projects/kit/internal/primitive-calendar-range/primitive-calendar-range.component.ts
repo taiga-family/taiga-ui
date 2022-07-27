@@ -31,9 +31,9 @@ import {takeUntil} from 'rxjs/operators';
  * @internal
  */
 @Component({
-    selector: 'tui-primitive-calendar-range',
-    templateUrl: './primitive-calendar-range.template.html',
-    styleUrls: ['./primitive-calendar-range.style.less'],
+    selector: `tui-primitive-calendar-range`,
+    templateUrl: `./primitive-calendar-range.template.html`,
+    styleUrls: [`./primitive-calendar-range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

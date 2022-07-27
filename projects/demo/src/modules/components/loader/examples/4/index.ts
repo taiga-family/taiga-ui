@@ -4,14 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-loader-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-loader-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     providers: [
         tuiLoaderOptionsProvider({
-            size: 'l',
+            size: `l`,
             inheritColor: false,
             overlay: true,
         }),

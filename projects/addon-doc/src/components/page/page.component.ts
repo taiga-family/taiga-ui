@@ -16,24 +16,24 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
 @Component({
-    selector: 'tui-doc-page',
-    templateUrl: './page.template.html',
-    styleUrls: ['./page.style.less'],
+    selector: `tui-doc-page`,
+    templateUrl: `./page.template.html`,
+    styleUrls: [`./page.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPageComponent {
     @Input()
-    header = '';
+    header = ``;
 
     @Input()
-    package = '';
+    package = ``;
 
     @Input()
-    type = '';
+    type = ``;
 
     @Input()
-    path = '';
+    path = ``;
 
     @ContentChildren(TuiDocPageTabConnectorDirective)
     readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
@@ -41,7 +41,7 @@ export class TuiDocPageComponent {
     activeItemIndex = NaN;
 
     constructor(
-        @Attribute('deprecated') readonly deprecated: string | null,
+        @Attribute(`deprecated`) readonly deprecated: string | null,
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
         @Inject(PAGE_SEE_ALSO) readonly seeAlso: readonly string[],
     ) {}
@@ -50,7 +50,7 @@ export class TuiDocPageComponent {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
     }
 
-    getRouterLink(tab: string = ''): string {
-        return `./${tab.replace(/ /g, '_')}`;
+    getRouterLink(tab: string = ``): string {
+        return `./${tab.replace(/ /g, `_`)}`;
     }
 }

@@ -5,7 +5,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function rgbToHex(r: number, g: number, b: number): string {
-    return `#${[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('')}`;
+    return `#${[r, g, b].map(x => x.toString(16).padStart(2, `0`)).join(``)}`;
 }
 
 export const tuiRgbToHex = rgbToHex;
@@ -16,10 +16,10 @@ export const tuiRgbToHex = rgbToHex;
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function hexToRgb(hex: string): [number, number, number] {
     const matches = hex
-        .replace('#', '')
-        .split('')
+        .replace(`#`, ``)
+        .split(``)
         .map((char, _, array) => (array.length === 3 ? char + char : char))
-        .join('')
+        .join(``)
         .match(/.{2}/g);
 
     return matches

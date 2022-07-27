@@ -12,17 +12,17 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
 }) => {
     switch ($implicit) {
         case 10:
-            return 'Ten';
+            return `Ten`;
         case total:
-            return 'Show all rows';
+            return `Show all rows`;
         default:
             return $implicit;
     }
 };
 
 @Component({
-    selector: 'tui-table-pagination-example-2',
-    templateUrl: './index.html',
+    selector: `tui-table-pagination-example-2`,
+    templateUrl: `./index.html`,
     providers: [
         tuiTablePaginationOptionsProvider({sizeOptionContent: customOptionContent}),
     ],

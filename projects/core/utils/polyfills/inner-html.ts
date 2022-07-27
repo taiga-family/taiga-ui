@@ -6,7 +6,7 @@ import {TuiXmlParsingException} from '@taiga-ui/cdk';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function innerHTML(documentRef: Document): void {
-    const svg = documentRef.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const svg = documentRef.createElementNS(`http://www.w3.org/2000/svg`, `svg`);
 
     if (svg.innerHTML !== undefined) {
         return;
@@ -15,7 +15,7 @@ export function innerHTML(documentRef: Document): void {
     const serializer = new XMLSerializer();
     const parser = new DOMParser();
 
-    Object.defineProperty(SVGElement.prototype, 'innerHTML', {
+    Object.defineProperty(SVGElement.prototype, `innerHTML`, {
         get: function (this: SVGElement): string {
             const result: string[] = [];
             let childNode: any = this.firstChild;
@@ -25,7 +25,7 @@ export function innerHTML(documentRef: Document): void {
                 childNode = childNode.nextSibling;
             }
 
-            return result.join('');
+            return result.join(``);
         },
         set: function (this: SVGElement, text: string) {
             while (this.firstChild) {
@@ -35,7 +35,7 @@ export function innerHTML(documentRef: Document): void {
             try {
                 const svgDocElement = parser.parseFromString(
                     text,
-                    'image/svg+xml',
+                    `image/svg+xml`,
                 ).documentElement;
 
                 if (this.ownerDocument) {

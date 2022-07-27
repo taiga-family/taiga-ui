@@ -22,7 +22,7 @@ import {
 import {TUI_POINTER_HINT_OPTIONS, TuiPointerHintOptions} from './pointer-hint-options';
 
 @Directive({
-    selector: '[tuiPointerHint]:not(ng-container)',
+    selector: `[tuiPointerHint]:not(ng-container)`,
     providers: [TuiDestroyService],
 })
 export class TuiPointerHintDirective extends AbstractTuiHint {
@@ -44,7 +44,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     set tuiPointerHint(value: PolymorpheusContent | null) {
         if (!value) {
             this.hideTooltip();
-            this.content = '';
+            this.content = ``;
 
             return;
         }
@@ -52,7 +52,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
         this.content = value;
     }
 
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
@@ -103,7 +103,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     private initMouseMoveSubscription(): void {
         const mouseMove$: Observable<MouseEvent> = typedFromEvent(
             this.elementRef.nativeElement,
-            'mousemove',
+            `mousemove`,
         );
 
         mouseMove$.pipe(takeUntil(this.destroy$)).subscribe(({clientX, clientY}) => {

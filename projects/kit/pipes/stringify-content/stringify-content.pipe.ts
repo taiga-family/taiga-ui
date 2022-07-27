@@ -3,7 +3,7 @@ import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 
 @Pipe({
-    name: 'tuiStringifyContent',
+    name: `tuiStringifyContent`,
 })
 export class TuiStringifyContentPipe implements PipeTransform {
     transform<T>(

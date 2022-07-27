@@ -4,7 +4,7 @@ import {TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
 import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
-describe('Calendar', () => {
+describe(`Calendar`, () => {
     @Component({
         template: `
             <tui-calendar
@@ -37,7 +37,7 @@ describe('Calendar', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix(): string {
-            return 'tui-calendar__';
+            return `tui-calendar__`;
         },
     };
 
@@ -56,29 +56,29 @@ describe('Calendar', () => {
         fixture.detectChanges();
     });
 
-    it('Year selection is not initially visible', () => {
+    it(`Year selection is not initially visible`, () => {
         expect(pageObject.getByAutomationId(`${testContext.prefix}year`)).toBeNull();
     });
 
-    it('Month selection is initially visible', () => {
+    it(`Month selection is initially visible`, () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}pagination`),
         ).not.toBeNull();
     });
 
-    it('Day selection is initially visible', () => {
+    it(`Day selection is initially visible`, () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}calendar`),
         ).not.toBeNull();
     });
 
-    it('onPaginationYearClick changes year correctly', () => {
+    it(`onPaginationYearClick changes year correctly`, () => {
         component.onPaginationYearClick(new TuiYear(2002));
 
-        expect(component.year!.formattedYear).toBe('2002');
+        expect(component.year!.formattedYear).toBe(`2002`);
     });
 
-    it('onPickerYearClick sets year as null', () => {
+    it(`onPickerYearClick sets year as null`, () => {
         const year = new TuiYear(2002);
 
         component.onPickerYearClick(year);
@@ -86,7 +86,7 @@ describe('Calendar', () => {
         expect(component.year).toBe(null);
     });
 
-    it('onPaginationValueChange does not update month if it is the same with current', () => {
+    it(`onPaginationValueChange does not update month if it is the same with current`, () => {
         const date = new Date();
         const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
         const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
@@ -98,7 +98,7 @@ describe('Calendar', () => {
         expect(component.month).toBe(savedMonth);
     });
 
-    it('click on day calls emitter', () => {
+    it(`click on day calls emitter`, () => {
         let result: unknown;
         const savedDay = new TuiDay(2019, 2, 1);
 
@@ -111,7 +111,7 @@ describe('Calendar', () => {
         expect(result).toBe(savedDay);
     });
 
-    it('monitors hover on a certain day', () => {
+    it(`monitors hover on a certain day`, () => {
         const hoveredDay = new TuiDay(2019, 2, 1);
 
         component.onHoveredItemChange(hoveredDay);
@@ -119,7 +119,7 @@ describe('Calendar', () => {
         expect(component.hoveredItem).toBe(hoveredDay);
     });
 
-    it('does not monitor hover on the day secondly and more', () => {
+    it(`does not monitor hover on the day secondly and more`, () => {
         const hoveredDay = new TuiDay(2019, 2, 1);
 
         component.hoveredItem = hoveredDay;
@@ -128,7 +128,7 @@ describe('Calendar', () => {
         expect(component.hoveredItem).toBe(hoveredDay);
     });
 
-    it('if minViewedMonth is less than set min, it will be computed as min', () => {
+    it(`if minViewedMonth is less than set min, it will be computed as min`, () => {
         const minDay = new TuiDay(2019, 2, 3);
         const beforeMinDay = minDay.append({month: -1});
 
@@ -138,7 +138,7 @@ describe('Calendar', () => {
         expect(component.computedMinViewedMonth).toBe(minDay);
     });
 
-    it('if maxViewedMonth is more than set max, it will be computed as max', () => {
+    it(`if maxViewedMonth is more than set max, it will be computed as max`, () => {
         const maxDay = new TuiDay(2019, 2, 3);
         const afterMaxDay = maxDay.append({month: 1});
 

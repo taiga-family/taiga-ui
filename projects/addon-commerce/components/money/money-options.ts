@@ -13,16 +13,16 @@ export interface TuiMoneyOptions {
 }
 
 export const TUI_MONEY_DEFAULT_DEFAULT_OPTIONS: TuiMoneyOptions = {
-    decimal: 'not-zero',
+    decimal: `not-zero`,
     currency: TuiCurrency.Ruble,
-    sign: 'negative-only',
+    sign: `negative-only`,
     colored: false,
     precision: 2,
     singleColor: false,
 };
 
 export const TUI_MONEY_OPTIONS = new InjectionToken<TuiMoneyOptions>(
-    'Default parameters for money component',
+    `Default parameters for money component`,
     {
         factory: () => TUI_MONEY_DEFAULT_DEFAULT_OPTIONS,
     },

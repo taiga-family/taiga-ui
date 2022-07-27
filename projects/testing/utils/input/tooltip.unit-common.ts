@@ -24,7 +24,7 @@ export function tuiTestTooltip(context: TestParams): void {
     let fixture: ComponentFixture<unknown>;
     let testComponent: TestComponent;
 
-    describe('Tooltip in a field', () => {
+    describe(`Tooltip in a field`, () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -33,8 +33,8 @@ export function tuiTestTooltip(context: TestParams): void {
             fixture.detectChanges();
         });
 
-        describe('There is tooltip content', () => {
-            it('if field is disabled, there is no tooltip', () => {
+        describe(`There is tooltip content`, () => {
+            it(`if field is disabled, there is no tooltip`, () => {
                 testComponent.disabled = true;
 
                 if (testComponent.control) {
@@ -46,13 +46,13 @@ export function tuiTestTooltip(context: TestParams): void {
                 expect(getTooltip()).toBeNull();
             });
 
-            it('if field is not disabled, there is tooltip', () => {
+            it(`if field is not disabled, there is tooltip`, () => {
                 fixture.detectChanges();
 
                 expect(getTooltip()).not.toBeNull();
             });
 
-            it('if field is readonly, there is tooltip', () => {
+            it(`if field is readonly, there is tooltip`, () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
@@ -60,13 +60,13 @@ export function tuiTestTooltip(context: TestParams): void {
             });
         });
 
-        describe('There is no tooltip content', () => {
+        describe(`There is no tooltip content`, () => {
             beforeEach(() => {
                 testComponent.hintContent = null;
                 fixture.detectChanges();
             });
 
-            it('tooltip without content is hidden', () => {
+            it(`tooltip without content is hidden`, () => {
                 fixture.detectChanges();
 
                 expect(getTooltip()).toBeNull();

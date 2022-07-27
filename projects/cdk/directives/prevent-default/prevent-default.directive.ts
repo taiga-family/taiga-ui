@@ -10,7 +10,7 @@ import {takeUntil} from 'rxjs/operators';
  * @dynamic
  */
 @Directive({
-    selector: '[tuiPreventDefault]',
+    selector: `[tuiPreventDefault]`,
     providers: [TuiDestroyService],
 })
 export class TuiPreventDefaultDirective {
@@ -18,7 +18,7 @@ export class TuiPreventDefaultDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Attribute('tuiPreventDefault') eventName: string,
+        @Attribute(`tuiPreventDefault`) eventName: string,
     ) {
         fromEvent(nativeElement, eventName, {passive: false})
             .pipe(tuiZonefree(ngZone), preventDefault(), takeUntil(destroy$))

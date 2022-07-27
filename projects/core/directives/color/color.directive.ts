@@ -8,22 +8,22 @@ import {COLOR} from './color.const';
  * @deprecated use CSS custom properties
  */
 @Directive({
-    selector: '[tuiColor],[tuiBackground]',
+    selector: `[tuiColor],[tuiBackground]`,
 })
 export class TuiColorDirective {
     @Input()
-    @HostBinding('attr.data-tui-color')
+    @HostBinding(`attr.data-tui-color`)
     @tuiDefaultProp()
-    tuiColor: TuiColor | string = '';
+    tuiColor: TuiColor | string = ``;
 
     @Input()
-    @HostBinding('attr.data-tui-background')
+    @HostBinding(`attr.data-tui-background`)
     @tuiDefaultProp()
-    tuiBackground: TuiColor | string = '';
+    tuiBackground: TuiColor | string = ``;
 
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
-        directiveStyles.addStyle(COLOR, 'TuiColorDirective');
+        directiveStyles.addStyle(COLOR, `TuiColorDirective`);
     }
 }

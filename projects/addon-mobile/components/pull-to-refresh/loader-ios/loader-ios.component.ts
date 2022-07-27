@@ -5,8 +5,8 @@ const LOADED_STEP = 8;
 const ROTATE_X_STEP = 30;
 
 @Component({
-    selector: 'tui-mobile-ios-loader',
-    templateUrl: './loader-ios.template.html',
+    selector: `tui-mobile-ios-loader`,
+    templateUrl: `./loader-ios.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

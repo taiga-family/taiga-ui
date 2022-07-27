@@ -5,6 +5,6 @@ import {AbstractTuiPortalService} from '@taiga-ui/cdk/abstract';
  * Service for displaying dropdown portals
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiDropdownPortalService extends AbstractTuiPortalService {}

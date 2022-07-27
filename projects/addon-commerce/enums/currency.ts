@@ -14,7 +14,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: RUB
      * @description Countries and territories: Russia
      */
-    Ruble = 'RUB',
+    Ruble = `RUB`,
 
     /**
      * Euro
@@ -23,7 +23,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: EUR
      * @description Countries and territories: Åland Islands (AX), European Union (EU), Andorra (AD), Austria (AT), Belgium (BE), Cyprus (CY), Estonia (EE), Finland (FI), France (FR), French Southern and Antarctic Lands (TF), Germany (DE), Greece (GR), Guadeloupe (GP), Ireland (IE), Italy (IT), Latvia (LV), Lithuania (LT), Luxembourg (LU), Malta (MT), French Guiana (GF), Martinique (MQ), Mayotte (YT), Monaco (MC), Montenegro (ME), Netherlands (NL), Portugal (PT), Réunion (RE), Saint Barthélemy (BL), Saint Martin (MF), Saint Pierre and Miquelon (PM), San Marino (SM), Slovakia (SK), Slovenia (SI), Spain (ES), Vatican City (VA)
      */
-    Euro = 'EUR',
+    Euro = `EUR`,
 
     /**
      * United States dollar
@@ -32,7 +32,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: USD
      * @description Countries and territories: United States, American Samoa (AS), British Indian Ocean Territory (IO) (also uses GBP), British Virgin Islands (VG), Caribbean Netherlands (BQ – Bonaire, Sint Eustatius and Saba), Ecuador (EC), El Salvador (SV), Guam (GU), Marshall Islands (MH), Federated States of Micronesia (FM), Northern Mariana Islands (MP), Palau (PW), Panama (PA) (as well as Panamanian Balboa), Puerto Rico (PR), Timor-Leste (TL), Turks and Caicos Islands (TC), U.S. Virgin Islands (VI), United States Minor Outlying Islands (UM)
      */
-    Dollar = 'USD',
+    Dollar = `USD`,
 
     /**
      * Pound sterling
@@ -41,7 +41,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: GBP
      * @description Countries and territories: United Kingdom, Isle of Man (IM, see Manx pound), Jersey (JE, see Jersey pound), Guernsey (GG, see Guernsey pound), Tristan da Cunha (SH-TA)
      */
-    Pound = 'GBP',
+    Pound = `GBP`,
 
     /**
      * Thai baht
@@ -50,7 +50,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: THB
      * @description Countries and territories: Thailand
      */
-    Baht = 'THB',
+    Baht = `THB`,
 
     /**
      * Turkish lira
@@ -59,7 +59,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: TRY
      * @description Countries and territories: Turkey
      */
-    TurkishLira = 'TRY',
+    TurkishLira = `TRY`,
 
     /**
      * Chinese yuan
@@ -68,7 +68,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: CNY
      * @description Countries and territories: China
      */
-    YuanRenminbi = 'CNY',
+    YuanRenminbi = `CNY`,
 
     /**
      * Kazakhstani tenge
@@ -77,7 +77,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: KZT
      * @description Countries and territories: Kazakhstan
      */
-    Tenge = 'KZT',
+    Tenge = `KZT`,
 
     /**
      * Israeli new shekel
@@ -86,7 +86,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: ILS
      * @description Countries and territories: Israel
      */
-    IsraeliShekel = 'ILS',
+    IsraeliShekel = `ILS`,
 
     /**
      * Indian rupee
@@ -95,7 +95,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: INR
      * @description Countries and territories: India, Bhutan
      */
-    IndianRupee = 'INR',
+    IndianRupee = `INR`,
 
     /**
      * Japanese yen
@@ -104,7 +104,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: JPY
      * @description Countries and territories: Japan
      */
-    Yen = 'JPY',
+    Yen = `JPY`,
 
     /**
      * South Korean won
@@ -113,7 +113,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: KRW
      * @description Countries and territories: South Korea
      */
-    Won = 'KRW',
+    Won = `KRW`,
 
     /**
      * Swiss franc
@@ -122,7 +122,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: CHF
      * @description Countries and territories: Switzerland, Liechtenstein (LI)
      */
-    SwissFranc = 'CHF',
+    SwissFranc = `CHF`,
 
     /**
      * Singapore dollar
@@ -131,7 +131,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: SGD
      * @description Countries and territories: Singapore
      */
-    SingaporeDollar = 'SGD',
+    SingaporeDollar = `SGD`,
 
     /**
      * Australian dollar
@@ -140,7 +140,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: AUD
      * @description Countries and territories: Australia, Christmas Island (CX), Cocos (Keeling) Islands (CC), Heard Island and McDonald Islands (HM), Kiribati (KI), Nauru (NR), Norfolk Island (NF), Tuvalu (TV)
      */
-    AustralianDollar = 'AUD',
+    AustralianDollar = `AUD`,
 
     /**
      * Hong Kong dollar
@@ -149,14 +149,14 @@ export const enum TuiCurrency {
      * @description Alphabetic code: HKD
      * @description Countries and territories: Hong Kong
      */
-    HongKongDollar = 'HKD',
+    HongKongDollar = `HKD`,
 
     /**
      * @deprecated:
      * TODO: 3.0 replace with {@link HongKongDollar}
      */
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    HongKong_dollar = 'HKD',
+    HongKong_dollar = `HKD`,
 
     /**
      * Canadian dollar
@@ -165,7 +165,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: CAD
      * @description Countries and territories: Canada
      */
-    CanadianDollar = 'CAD',
+    CanadianDollar = `CAD`,
 
     /**
      * Armenian dram
@@ -174,7 +174,7 @@ export const enum TuiCurrency {
      * @description Alphabetic code: AMD
      * @description Countries and territories: Armenia
      */
-    ArmenianDram = 'AMD',
+    ArmenianDram = `AMD`,
 
     /**
      * Ukrainian hryvnia
@@ -183,6 +183,6 @@ export const enum TuiCurrency {
      * @description Alphabetic code: UAH
      * @description Countries and territories: Ukraine
      */
-    Hryvnia = 'UAH',
-    MexicanPeso = 'MXN',
+    Hryvnia = `UAH`,
+    MexicanPeso = `MXN`,
 }

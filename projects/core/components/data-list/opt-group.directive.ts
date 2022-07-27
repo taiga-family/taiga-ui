@@ -2,14 +2,14 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: 'tui-opt-group',
+    selector: `tui-opt-group`,
     host: {
-        role: 'group',
+        role: `group`,
     },
 })
 export class TuiOptGroupDirective {
     @Input()
-    @HostBinding('attr.data-label')
+    @HostBinding(`attr.data-label`)
     @tuiDefaultProp()
-    label = '';
+    label = ``;
 }

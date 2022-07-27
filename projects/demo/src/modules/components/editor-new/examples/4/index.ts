@@ -11,17 +11,17 @@ import {
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-editor-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-editor-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tiptap/starter-kit').then(m => m.default),
-                import('@taiga-ui/addon-editor/extensions/image-editor').then(m =>
+                import(`@tiptap/starter-kit`).then(m => m.default),
+                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(m =>
                     m.createImageEditorExtension(injector),
                 ),
             ],
@@ -37,7 +37,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 export class TuiEditorNewExample4 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    control = new FormControl('');
+    control = new FormControl(``);
 
     constructor() {
         this.control.patchValue(`

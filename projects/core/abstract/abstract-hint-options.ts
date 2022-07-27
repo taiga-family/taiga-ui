@@ -8,5 +8,5 @@ export interface TuiAbstractHintOptions {
 /** Default values for abstract hint options */
 export const TUI_ABSTRACT_HINT_DEFAULT_OPTIONS: TuiAbstractHintOptions = {
     mode: null,
-    direction: 'bottom-left',
+    direction: `bottom-left`,
 };

@@ -4,12 +4,14 @@ import {TuiGroupDirective} from './group.directive';
 
 /** @deprecated */
 @Component({
-    selector: 'tui-group',
+    selector: `tui-group`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
+    template: `
+        <ng-content></ng-content>
+    `,
     host: {
-        class: 'tui-group',
-        role: 'group',
+        class: `tui-group`,
+        role: `group`,
     },
 })
 export class TuiGroupComponent extends TuiGroupDirective {}

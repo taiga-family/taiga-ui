@@ -9,9 +9,9 @@ import {TuiSheetService} from '../../sheet.service';
 
 // @dynamic
 @Component({
-    selector: 'tui-sheets-host',
-    templateUrl: 'sheets-host.template.html',
-    styleUrls: ['sheets-host.style.less'],
+    selector: `tui-sheets-host`,
+    templateUrl: `sheets-host.template.html`,
+    styleUrls: [`sheets-host.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
 })

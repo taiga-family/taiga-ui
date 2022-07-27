@@ -13,7 +13,7 @@ import {map, switchMap} from 'rxjs/operators';
  * Directive that monitors element visibility
  */
 @Directive({
-    selector: '[tuiObscured]',
+    selector: `[tuiObscured]`,
     providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
 })
 export class TuiObscuredDirective {

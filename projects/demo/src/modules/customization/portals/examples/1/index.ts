@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {CustomPortalService} from './portal/custom-portal.service';
 
 @Component({
-    selector: 'tui-portals-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-portals-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
 })
 export class TuiPortalsExample1 {

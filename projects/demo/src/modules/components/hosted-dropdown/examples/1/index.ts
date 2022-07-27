@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-hosted-dropdown-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-hosted-dropdown-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -14,7 +14,7 @@ export class TuiHostedDropdownExample1 {
     @ViewChild(TuiHostedDropdownComponent)
     component?: TuiHostedDropdownComponent;
 
-    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+    readonly items = [`Edit`, `Download`, `Rename`, `Delete`];
 
     open = false;
 

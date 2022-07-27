@@ -14,10 +14,10 @@ import {map} from 'rxjs/operators';
 import {calculateColorSegments} from '../utils/calculate-color-segments';
 
 @Directive({
-    selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
+    selector: `progress[tuiProgressBar][tuiProgressColorSegments]`,
     host: {
-        '[$.style.--tui-progress-color]': 'calcSegments$',
-        '($.style.--tui-progress-color)': '0',
+        '[$.style.--tui-progress-color]': `calcSegments$`,
+        '($.style.--tui-progress-color)': `0`,
     },
     providers: [TuiDestroyService, TuiResizeService],
 })
@@ -26,7 +26,7 @@ export class TuiProgressColorSegmentsDirective {
         isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
         isIE(this.userAgent);
 
-    @Input('tuiProgressColorSegments')
+    @Input(`tuiProgressColorSegments`)
     colors: string[] = [];
 
     @tuiPure

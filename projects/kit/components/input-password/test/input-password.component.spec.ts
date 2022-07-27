@@ -10,7 +10,7 @@ import {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
 
-describe('InputPassword', () => {
+describe(`InputPassword`, () => {
     @Component({
         template: `
             <tui-input-password
@@ -26,7 +26,7 @@ describe('InputPassword', () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeS | TuiSizeL = 'm';
+        size: TuiSizeS | TuiSizeL = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -67,16 +67,16 @@ describe('InputPassword', () => {
         fixture.detectChanges();
     });
 
-    describe('Behavior of the Show Password icon"', () => {
-        it('It is initially present and represents the "Closed Eye"', () => {
+    describe(`Behavior of the Show Password icon"`, () => {
+        it(`It is initially present and represents the "Closed Eye"`, () => {
             const icon = getIcon();
             const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconHideLarge');
+            expect(iconSrc).toBe(`tuiIconHideLarge`);
         });
 
-        it('When you click on it, the icon represents "Open eye"', () => {
+        it(`When you click on it, the icon represents "Open eye"`, () => {
             const icon = getIcon();
 
             icon!.nativeElement.click();
@@ -84,34 +84,34 @@ describe('InputPassword', () => {
             const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconShowLarge');
+            expect(iconSrc).toBe(`tuiIconShowLarge`);
         });
 
-        it('Small icons are small', () => {
-            testComponent.size = 's';
+        it(`Small icons are small`, () => {
+            testComponent.size = `s`;
             fixture.detectChanges();
 
             const icon = getIcon();
             let iconSrc = getIconScr();
 
-            expect(iconSrc).toBe('tuiIconEyeClosed');
+            expect(iconSrc).toBe(`tuiIconEyeClosed`);
 
             icon!.nativeElement.click();
 
             iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconEyeOpen');
+            expect(iconSrc).toBe(`tuiIconEyeOpen`);
         });
 
-        it('If readOnly - no icon', () => {
+        it(`If readOnly - no icon`, () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             expect(getIcon()).toBeNull();
         });
 
-        it('If disabled - no icon', () => {
+        it(`If disabled - no icon`, () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
@@ -119,37 +119,37 @@ describe('InputPassword', () => {
         });
     });
 
-    describe('Field visibility', () => {
-        it('Initially, the field is type = "password", so only dots are visible when entering', () => {
+    describe(`Field visibility`, () => {
+        it(`Initially, the field is type = "password", so only dots are visible when entering`, () => {
             const inputType = component.inputType;
 
-            expect(inputType).toBe('password');
+            expect(inputType).toBe(`password`);
         });
 
-        it('When you click on the "Show password" icon, the field becomes type = "text"', () => {
+        it(`When you click on the "Show password" icon, the field becomes type = "text"`, () => {
             getIcon()!.nativeElement.click();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe('text');
+            expect(inputType).toBe(`text`);
         });
 
-        it('With readOnly, the type field="password"', () => {
+        it(`With readOnly, the type field="password"`, () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe('password');
+            expect(inputType).toBe(`password`);
         });
 
-        it('When the field is disabled type="password"', () => {
+        it(`When the field is disabled type="password"`, () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe('password');
+            expect(inputType).toBe(`password`);
         });
     });
 });

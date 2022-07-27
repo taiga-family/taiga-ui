@@ -28,8 +28,8 @@ export function tuiCreateTimeMask(
 
     return [
         ...tuiCreateTimePartMask(HH),
-        ...tuiCreateTimePartMask(MM, ':'),
-        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(SS, ':') : []),
-        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(MS, '.') : []),
+        ...tuiCreateTimePartMask(MM, `:`),
+        ...(mode.includes(`HH:MM:SS`) ? tuiCreateTimePartMask(SS, `:`) : []),
+        ...(mode === `HH:MM:SS.MSS` ? tuiCreateTimePartMask(MS, `.`) : []),
     ];
 }

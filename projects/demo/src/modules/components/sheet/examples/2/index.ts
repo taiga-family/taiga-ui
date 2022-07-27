@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
 
 @Component({
-    selector: 'tui-sheet-example-2',
-    templateUrl: './index.html',
+    selector: `tui-sheet-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -14,7 +14,7 @@ export class TuiSheetExample2 {
 
     readonly options: Partial<TuiSheetOptions> = {
         overlay: true,
-        image: 'assets/images/avatar.jpg',
+        image: `assets/images/avatar.jpg`,
     };
 
     toggle(): void {

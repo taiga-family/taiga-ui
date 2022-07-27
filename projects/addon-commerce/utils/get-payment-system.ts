@@ -5,7 +5,7 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
-    if (cardNumber === '') {
+    if (cardNumber === ``) {
         return null;
     }
 

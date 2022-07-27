@@ -56,15 +56,15 @@ export enum IndentProps {
 }
 
 export function isBulletListNode({type}: Node): boolean {
-    return type.name === 'bullet_list';
+    return type.name === `bullet_list`;
 }
 
 export function isOrderedListNode({type}: Node): boolean {
-    return type.name === 'order_list';
+    return type.name === `order_list`;
 }
 
 export function isTodoListNode({type}: Node): boolean {
-    return type.name === 'todo_list';
+    return type.name === `todo_list`;
 }
 
 export function isListNode(node: Node): boolean {
@@ -72,7 +72,7 @@ export function isListNode(node: Node): boolean {
 }
 
 export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
-    return editor.isActive('bulletList') || editor.isActive('orderedList');
+    return editor.isActive(`bulletList`) || editor.isActive(`orderedList`);
 }
 
 function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Transaction {
@@ -119,7 +119,7 @@ function updateIndentLevel(tr: Transaction, delta: number): Transaction {
     doc.nodesBetween(from, to, (node: Node, pos: number) => {
         const {name} = node.type;
 
-        if (name === 'paragraph' || name === 'heading') {
+        if (name === `paragraph` || name === `heading`) {
             tr = setNodeIndentMarkup(tr, pos, delta);
 
             return false;
@@ -132,11 +132,11 @@ function updateIndentLevel(tr: Transaction, delta: number): Transaction {
 }
 
 export const Indent = Extension.create<IndentOptions>({
-    name: 'indent',
+    name: `indent`,
 
     addOptions(): IndentOptions {
         return {
-            types: ['heading', 'paragraph'],
+            types: [`heading`, `paragraph`],
             indentLevels: [0, 30, 60, 90, 120, 150, 180, 210],
             defaultIndentLevel: 0,
         };

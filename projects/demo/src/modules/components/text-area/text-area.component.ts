@@ -8,8 +8,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-text-area',
-    templateUrl: './text-area.template.html',
+    selector: `example-tui-text-area`,
+    templateUrl: `./text-area.template.html`,
     changeDetection,
     providers: [
         {
@@ -20,43 +20,43 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 })
 export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        LESS: import(`!!raw-loader!./examples/4/index.less`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
-        HTML: import('!!raw-loader!./examples/6/index.html'),
-        LESS: import('!!raw-loader!./examples/6/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
+        HTML: import(`!!raw-loader!./examples/6/index.html`),
+        LESS: import(`!!raw-loader!./examples/6/index.less`),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
 
     readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 
@@ -70,7 +70,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     control = new FormControl();
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = [`m`, `l`];
 
     size: TuiSizeM | TuiSizeL = this.sizeVariants[1];
 }

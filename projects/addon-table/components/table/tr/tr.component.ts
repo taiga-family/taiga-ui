@@ -15,8 +15,8 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTbodyComponent} from '../tbody/tbody.component';
 
 @Component({
-    selector: 'tr[tuiTr]',
-    templateUrl: './tr.template.html',
+    selector: `tr[tuiTr]`,
+    templateUrl: `./tr.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })

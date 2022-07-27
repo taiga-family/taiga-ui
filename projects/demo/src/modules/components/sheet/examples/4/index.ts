@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
 
 @Component({
-    selector: 'tui-sheet-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-sheet-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -16,7 +16,7 @@ export class TuiSheetExample4 {
     elastic = 1;
 
     readonly options: Partial<TuiSheetOptions> = {
-        stops: ['12rem'],
+        stops: [`12rem`],
     };
 
     get transform(): string {

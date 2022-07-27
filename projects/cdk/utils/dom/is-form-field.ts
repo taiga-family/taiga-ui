@@ -5,8 +5,8 @@ export function tuiIsFormFieldElement(
 
     return (
         !!textfield &&
-        'value' in textfield &&
-        'selectionStart' in textfield &&
-        'selectionEnd' in textfield
+        `value` in textfield &&
+        `selectionStart` in textfield &&
+        `selectionEnd` in textfield
     );
 }

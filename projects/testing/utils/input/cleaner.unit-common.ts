@@ -25,7 +25,7 @@ interface TestComponent {
 
 export function tuiTestCleaner(
     context: TestParams,
-    setValue: unknown = 'value',
+    setValue: unknown = `value`,
     clearValue: unknown = null,
 ): void {
     let pageObject: TuiPageObject<unknown>;
@@ -33,7 +33,7 @@ export function tuiTestCleaner(
     let testComponent: TestComponent;
     let inputPO: TuiNativeInputPO;
 
-    describe('Cross for field cleaning', () => {
+    describe(`Cross for field cleaning`, () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -43,12 +43,12 @@ export function tuiTestCleaner(
             fixture.detectChanges();
         });
 
-        describe('Cross included', () => {
+        describe(`Cross included`, () => {
             beforeEach(() => {
                 testComponent.cleaner = true;
             });
 
-            it('If no value is specified, the cross is not shown', () => {
+            it(`If no value is specified, the cross is not shown`, () => {
                 updateValue(clearValue);
 
                 fixture.detectChanges();
@@ -56,7 +56,7 @@ export function tuiTestCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('If the field is readonly, the cross is not shown', () => {
+            it(`If the field is readonly, the cross is not shown`, () => {
                 updateValue(setValue);
 
                 testComponent.readOnly = true;
@@ -65,7 +65,7 @@ export function tuiTestCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('If the field is disabled, the cross is not shown', () => {
+            it(`If the field is disabled, the cross is not shown`, () => {
                 updateValue(setValue);
 
                 if (testComponent.control) {
@@ -78,7 +78,7 @@ export function tuiTestCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('If a value is specified, a cross is shown', () => {
+            it(`If a value is specified, a cross is shown`, () => {
                 updateValue(setValue);
 
                 fixture.detectChanges();
@@ -86,7 +86,7 @@ export function tuiTestCleaner(
                 expect(getCleaner()).not.toBeNull();
             });
 
-            it('When you click on the cross, the field value is cleared', () => {
+            it(`When you click on the cross, the field value is cleared`, () => {
                 updateValue(setValue);
 
                 fixture.detectChanges();
@@ -94,7 +94,7 @@ export function tuiTestCleaner(
                 getCleaner()!.nativeElement.click();
                 fixture.detectChanges();
 
-                expect(inputPO.value).toBe('');
+                expect(inputPO.value).toBe(``);
 
                 if (testComponent.control !== undefined) {
                     expect(testComponent.control.value).toEqual(clearValue);
@@ -106,8 +106,8 @@ export function tuiTestCleaner(
             });
         });
 
-        describe('Cross disabled', () => {
-            it('The value is set, the cross is not shown', () => {
+        describe(`Cross disabled`, () => {
+            it(`The value is set, the cross is not shown`, () => {
                 updateValue(setValue);
 
                 testComponent.cleaner = false;

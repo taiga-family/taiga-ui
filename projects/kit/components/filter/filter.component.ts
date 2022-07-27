@@ -30,9 +30,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @bad TODO: Add active zone to track focus
 @Component({
-    selector: 'tui-filter',
-    templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
+    selector: `tui-filter`,
+    templateUrl: `./filter.template.html`,
+    styleUrls: [`./filter.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
@@ -45,9 +45,9 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()

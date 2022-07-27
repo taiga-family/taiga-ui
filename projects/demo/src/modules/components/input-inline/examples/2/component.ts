@@ -4,14 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-input-inline-example-2',
-    templateUrl: './template.html',
+    selector: `tui-input-inline-example-2`,
+    templateUrl: `./template.html`,
     changeDetection,
     encapsulation,
-    styleUrls: ['./style.less'],
+    styleUrls: [`./style.less`],
 })
 export class TuiInputInlineExample2 {
-    heading = 'Page heading';
+    heading = `Page heading`;
     editing = false;
 
     constructor(
@@ -31,6 +31,6 @@ export class TuiInputInlineExample2 {
     }
 
     private saveHeading(newHeading: string): void {
-        this.alertService.open(newHeading, {label: 'New heading'}).subscribe();
+        this.alertService.open(newHeading, {label: `New heading`}).subscribe();
     }
 }

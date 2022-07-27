@@ -13,19 +13,19 @@ const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 32 32"></svg>
 `;
 
-const STATIC_REQUEST_MOCK_RESULT = 'result';
-const BAD_URL = 'http://bad-url.ru/qwe.svg#test';
+const STATIC_REQUEST_MOCK_RESULT = `result`;
+const BAD_URL = `http://bad-url.ru/qwe.svg#test`;
 const STATIC_REQUEST_MOCK = {
     request: (url: string) => {
         if (url === BAD_URL) {
-            return throwError(() => new Error('error'));
+            return throwError(() => new Error(`error`));
         }
 
         return of(STATIC_REQUEST_MOCK_RESULT);
     },
 };
 
-describe('Svg', () => {
+describe(`Svg`, () => {
     @Component({
         template: `
             <tui-svg [src]="icon"></tui-svg>
@@ -35,7 +35,7 @@ describe('Svg', () => {
         @ViewChild(TuiSvgComponent)
         svgComponent!: TuiSvgComponent;
 
-        icon = '';
+        icon = ``;
 
         constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
             svgService.define({
@@ -66,12 +66,12 @@ describe('Svg', () => {
         fixture.detectChanges();
     });
 
-    describe('source svg code', () => {
+    describe(`source svg code`, () => {
         beforeEach(() => {
-            testComponent.icon = '<svg>Text</svg>';
+            testComponent.icon = `<svg>Text</svg>`;
         });
 
-        it('innerHTML$ emits correctly', () => {
+        it(`innerHTML$ emits correctly`, () => {
             let result: unknown;
 
             fixture.detectChanges();
@@ -82,55 +82,55 @@ describe('Svg', () => {
                     result = html;
                 });
 
-            expect(result).toBe('<svg>Text</svg>');
+            expect(result).toBe(`<svg>Text</svg>`);
         });
-        it('inserts content SVG into DOM', () => {
+        it(`inserts content SVG into DOM`, () => {
             fixture.detectChanges();
 
-            const svgIcon = fixture.debugElement.query(By.css('tui-svg'));
+            const svgIcon = fixture.debugElement.query(By.css(`tui-svg`));
 
-            expect(svgIcon.nativeElement.textContent).toBe('Text');
+            expect(svgIcon.nativeElement.textContent).toBe(`Text`);
         });
 
-        it('isInnerHtml', () => {
+        it(`isInnerHtml`, () => {
             fixture.detectChanges();
 
             expect(testComponent.svgComponent.isInnerHTML).toBe(true);
         });
     });
 
-    describe('named icon', () => {
+    describe(`named icon`, () => {
         beforeEach(() => {
-            testComponent.icon = 'customIcon';
+            testComponent.icon = `customIcon`;
         });
 
-        it('not isInnerHtml', () => {
+        it(`not isInnerHtml`, () => {
             fixture.detectChanges();
 
             expect(testComponent.svgComponent.isInnerHTML).toBe(false);
         });
 
-        it('returns correct use', () => {
+        it(`returns correct use`, () => {
             fixture.detectChanges();
 
-            expect(testComponent.svgComponent.use).toBe('#customIcon');
+            expect(testComponent.svgComponent.use).toBe(`#customIcon`);
         });
     });
 
-    describe('external', () => {
-        const extLink = 'https://google.com/test.svg';
+    describe(`external`, () => {
+        const extLink = `https://google.com/test.svg`;
 
         beforeEach(() => {
             testComponent.icon = extLink;
         });
 
-        it('isInnerHtml', () => {
+        it(`isInnerHtml`, () => {
             fixture.detectChanges();
 
             expect(testComponent.svgComponent.isInnerHTML).toBe(true);
         });
 
-        it('innerHTML$ emits correctly downloaded svg', () => {
+        it(`innerHTML$ emits correctly downloaded svg`, () => {
             let result: unknown;
 
             fixture.detectChanges();
@@ -144,7 +144,7 @@ describe('Svg', () => {
             expect(result).toBe(STATIC_REQUEST_MOCK_RESULT);
         });
 
-        it('innerHTML$ handles error correctly', () => {
+        it(`innerHTML$ handles error correctly`, () => {
             let result: unknown;
 
             testComponent.svgComponent.innerHTML$.pipe(skip(2)).subscribe(value => {
@@ -154,7 +154,7 @@ describe('Svg', () => {
             testComponent.icon = BAD_URL;
             fixture.detectChanges();
 
-            expect(result).toBe('');
+            expect(result).toBe(``);
         });
     });
 });

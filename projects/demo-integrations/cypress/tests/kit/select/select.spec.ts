@@ -3,20 +3,20 @@ import {
     SELECT_PAGE_URL,
 } from '../../../support/shared.entities';
 
-describe('Select', () => {
+describe(`Select`, () => {
     beforeEach(() => {
-        cy.viewport('macbook-13');
+        cy.viewport(`macbook-13`);
         cy.tuiVisit(SELECT_PAGE_URL);
     });
 
-    it('opens dropdown by click on icon', () => {
-        cy.get('#base tui-select')
+    it(`opens dropdown by click on icon`, () => {
+        cy.get(`#base tui-select`)
             .last()
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .trigger('click', {x: 300, y: 30});
+            .trigger(`click`, {x: 300, y: 30});
 
-        cy.get('#base')
+        cy.get(`#base`)
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .matchImageSnapshot('01-click-arrow');
+            .matchImageSnapshot(`01-click-arrow`);
     });
 });

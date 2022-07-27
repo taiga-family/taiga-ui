@@ -17,7 +17,7 @@ export class TuiRepeatTimesContext implements TuiContextWithImplicit<number> {
  * {@link TuiRepeatTimesContext.$implicit index} of a template instance.
  */
 @Directive({
-    selector: '[tuiRepeatTimes][tuiRepeatTimesOf]',
+    selector: `[tuiRepeatTimes][tuiRepeatTimesOf]`,
 })
 export class TuiRepeatTimesDirective {
     @Input()

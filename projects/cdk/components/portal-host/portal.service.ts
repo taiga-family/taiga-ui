@@ -6,6 +6,6 @@ import {AbstractTuiPortalService} from '@taiga-ui/cdk/abstract';
  * TODO: 3.0 replace with {@link TuiDropdownPortalService}
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiPortalService extends AbstractTuiPortalService {}

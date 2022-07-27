@@ -12,9 +12,9 @@ import {map, startWith, withLatestFrom} from 'rxjs/operators';
 
 // @dynamic
 @Component({
-    selector: 'tui-mobile-calendar-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-mobile-calendar-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -50,7 +50,7 @@ export class TuiMobileCalendarExample1 {
         );
 
         this.dialog$ = dialogService.open(content, {
-            size: 'fullscreen',
+            size: `fullscreen`,
             closeable: false,
             data: {
                 min: TuiDay.currentLocal(),
@@ -64,7 +64,7 @@ export class TuiMobileCalendarExample1 {
 
     getParsed(value: TuiDay, months: string[]): string {
         if (!value) {
-            return 'Choose a date';
+            return `Choose a date`;
         }
 
         const {month, day, year} = value as TuiDay;

@@ -10,8 +10,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-slider',
-    templateUrl: './input-slider.template.html',
+    selector: `example-tui-input-slider`,
+    templateUrl: `./input-slider.template.html`,
     changeDetection,
     providers: [
         {
@@ -21,37 +21,37 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        TypeScript: import('!!raw-loader!./examples/1/index'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/1/index`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
-        TypeScript: import('!!raw-loader!./examples/2/index'),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`!!raw-loader!./examples/2/index`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        TypeScript: import('!!raw-loader!./examples/3/index'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/3/index`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        TypeScript: import('!!raw-loader!./examples/4/index'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/4/index`),
+        LESS: import(`!!raw-loader!./examples/4/index.less`),
     };
 
     readonly example5: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/5/index.html'),
-        TypeScript: import('!!raw-loader!./examples/5/index'),
-        LESS: import('!!raw-loader!./examples/5/index.less'),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/5/index`),
+        LESS: import(`!!raw-loader!./examples/5/index.less`),
     };
 
     readonly control = new FormControl(0);
@@ -74,19 +74,19 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
     size = this.sizeVariants[1];
 
-    prefix = '';
-    postfix = '';
+    prefix = ``;
+    postfix = ``;
 
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        [`year`, `years`, `years`],
+        {one: `thing`, few: `things`, many: `things`, other: `things`},
         {
-            one: 'year',
-            other: 'years',
+            one: `year`,
+            other: `years`,
         },
     ];
 
@@ -94,27 +94,27 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     segmentsPluralize: Record<string, string> | TuiPluralize | null = null;
 
-    readonly secondaryVariants: readonly string[] = ['getter of percent', 'Something'];
+    readonly secondaryVariants: readonly string[] = [`getter of percent`, `Something`];
 
     secondarySelected: string | null = null;
 
     readonly valueContentVariants = [
-        '',
-        'TOP SECRET',
+        ``,
+        `TOP SECRET`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.max ? 'MAX' : val,
+            val === this.max ? `MAX` : val,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.min ? 'MIN' : val,
-        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? 'FIVE' : val),
+            val === this.min ? `MIN` : val,
+        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? `FIVE` : val),
     ];
 
     valueContent = this.valueContentVariants[0];
 
-    readonly minLabelVariants: readonly string[] = ['', 'Nothing'];
+    readonly minLabelVariants: readonly string[] = [``, `Nothing`];
 
     minLabel = this.minLabelVariants[0];
 
-    readonly maxLabelVariants: readonly string[] = ['', 'Everything'];
+    readonly maxLabelVariants: readonly string[] = [``, `Everything`];
 
     maxLabel = this.maxLabelVariants[0];
 
@@ -122,12 +122,12 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     keySteps: TuiKeySteps | null = null;
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = ['off', 'transaction-amount'];
-    autocomplete: TuiAutofillFieldName | '' = '';
+    readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
+    autocomplete: TuiAutofillFieldName | '' = ``;
 
     readonly customContentVariants: string[] = [
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
+        `tuiIconVisaMono`,
+        `tuiIconMastercardMono`,
     ];
 
     customContentSelected = null;
@@ -135,6 +135,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     get secondary(): string {
         return this.secondarySelected === this.secondaryVariants[0]
             ? `${Math.round((this.control.value / this.max) * 100)}%`
-            : this.secondarySelected || '';
+            : this.secondarySelected || ``;
     }
 }

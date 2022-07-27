@@ -5,7 +5,7 @@ import {isFlat} from '@taiga-ui/kit/utils';
 import {TuiMultiSelectComponent} from './multi-select.component';
 
 @Pipe({
-    name: 'tuiHideSelected',
+    name: `tuiHideSelected`,
     pure: false,
 })
 export class TuiHideSelectedPipe implements PipeTransform {

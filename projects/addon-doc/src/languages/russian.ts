@@ -11,15 +11,15 @@ import {
 } from '../tokens/i18n';
 
 // TODO: 3.0 remove in ivy compilation
-export const DEMO_TEXTS = ['Сделано с помощью директивы: ', 'Фон', 'Детали формы'];
+export const DEMO_TEXTS = [`Сделано с помощью директивы: `, `Фон`, `Детали формы`];
 export const DOC_TEXTS = [
-    'Аргумент',
-    'Тип',
-    'Имя и описание',
-    'Значение',
-    'Для работы с динамическими шаблонами используется',
+    `Аргумент`,
+    `Тип`,
+    `Имя и описание`,
+    `Значение`,
+    `Для работы с динамическими шаблонами используется`,
 ];
-export const EXAMPLE_TEXTS = ['Превью', 'Ссылка на пример скопирована', 'Готово'];
+export const EXAMPLE_TEXTS = [`Превью`, `Ссылка на пример скопирована`, `Готово`];
 
 export const TUI_DOC_RUSSIAN: Provider[] = [
     {
@@ -36,18 +36,18 @@ export const TUI_DOC_RUSSIAN: Provider[] = [
     },
     {
         provide: TUI_DOC_MENU_TEXT,
-        useValue: 'Меню',
+        useValue: `Меню`,
     },
     {
         provide: TUI_DOC_SEARCH_TEXT,
-        useValue: 'Поиск',
+        useValue: `Поиск`,
     },
     {
         provide: TUI_DOC_SEE_ALSO_TEXT,
-        useValue: 'Смотрите также',
+        useValue: `Смотрите также`,
     },
     {
         provide: TUI_DOC_SOURCE_CODE_TEXT,
-        useValue: 'Исходный код',
+        useValue: `Исходный код`,
     },
 ];

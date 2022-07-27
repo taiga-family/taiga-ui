@@ -10,15 +10,15 @@ export function updatePackageJsonStructure(
 ): void {
     const {name, dependencies, peerDependencies, devDependencies, packages} = packageJson;
 
-    if (typeof name === 'string' && isTuiPackageName(name, ignores)) {
+    if (typeof name === `string` && isTuiPackageName(name, ignores)) {
         bumpTuiVersionInPackageJson(packageJson, version);
     }
 
-    if (typeof dependencies === 'object') {
+    if (typeof dependencies === `object`) {
         bumpTuiDeps({deps: dependencies, version, ignores});
     }
 
-    if (typeof peerDependencies === 'object') {
+    if (typeof peerDependencies === `object`) {
         bumpTuiDeps({
             deps: peerDependencies,
             version,
@@ -27,11 +27,11 @@ export function updatePackageJsonStructure(
         });
     }
 
-    if (typeof devDependencies === 'object') {
+    if (typeof devDependencies === `object`) {
         bumpTuiDeps({deps: devDependencies, version, ignores});
     }
 
-    if (isPackageLockFile && typeof packages === 'object') {
+    if (isPackageLockFile && typeof packages === `object`) {
         for (const packageLockJson of Object.values(packages)) {
             if (!isTuiPackageName(packageLockJson?.name, ignores)) {
                 continue;

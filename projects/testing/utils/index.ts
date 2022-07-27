@@ -10,3 +10,4 @@ export * from './input/tooltip.unit-common';
 export * from './keyboard-event';
 export * from './native-input.page-object';
 export * from './page-object';
+export * from './replace-nbsp';

@@ -13,8 +13,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-editor-new',
-    templateUrl: './editor-new.template.html',
+    selector: `example-tui-editor-new`,
+    templateUrl: `./editor-new.template.html`,
     changeDetection,
     providers: [
         {
@@ -28,64 +28,64 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
     readonly provideExtensions = import(
-        '!!raw-loader!./examples/import/provide-extensions.md'
+        `!!raw-loader!./examples/import/provide-extensions.md`
     );
 
     readonly exampleEditorOptionsToken = import(
-        '!!raw-loader!./examples/import/editor-options-token.md'
+        `!!raw-loader!./examples/import/editor-options-token.md`
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
         'smiles-tool/emoji.extension.ts': import(
-            '!!raw-loader!./examples/2/smiles-tool/emoji.extension.ts'
+            `!!raw-loader!./examples/2/smiles-tool/emoji.extension.ts`
         ),
         'smiles-tool/smiles-tool.component.ts': import(
-            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts'
+            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts`
         ),
         'smiles-tool/smiles-tool.template.html': import(
-            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html'
+            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html`
         ),
         'smiles-tool/smiles-tool.styles.less': import(
-            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less'
+            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less`
         ),
         'smiles-tool/smiles-tool.module.ts': import(
-            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts'
+            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts`
         ),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        LESS: import(`!!raw-loader!./examples/4/index.less`),
         'image-preview/image-preview.component.ts': import(
-            '!!raw-loader!./examples/4/image-preview/image-preview.component.ts'
+            `!!raw-loader!./examples/4/image-preview/image-preview.component.ts`
         ),
         'image-preview/image-preview.module.ts': import(
-            '!!raw-loader!./examples/4/image-preview/image-preview.module.ts'
+            `!!raw-loader!./examples/4/image-preview/image-preview.module.ts`
         ),
         'image-preview/image-preview.style.less': import(
-            '!!raw-loader!./examples/4/image-preview/image-preview.style.less'
+            `!!raw-loader!./examples/4/image-preview/image-preview.style.less`
         ),
         'image-preview.template.html': import(
-            '!!raw-loader!./examples/4/image-preview/image-preview.template.html'
+            `!!raw-loader!./examples/4/image-preview/image-preview.template.html`
         ),
     };
 

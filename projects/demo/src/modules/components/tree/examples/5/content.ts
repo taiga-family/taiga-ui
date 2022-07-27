@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'folders',
+    selector: `folders`,
     template: `
         <tui-svg
             class="tui-space_right-2"
@@ -10,13 +10,13 @@ import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
         ></tui-svg>
         <ng-container [ngTemplateOutlet]="context.template"></ng-container>
     `,
-    styleUrls: ['content.less'],
+    styleUrls: [`content.less`],
     host: {
-        '(click)': 'onClick()',
+        '(click)': `onClick()`,
     },
 })
 export class FoldersComponent extends TuiTreeItemContentComponent {
     get icon(): string {
-        return this.isExpandable ? 'tuiIconFolderLarge' : 'tuiIconFileLarge';
+        return this.isExpandable ? `tuiIconFolderLarge` : `tuiIconFileLarge`;
     }
 }

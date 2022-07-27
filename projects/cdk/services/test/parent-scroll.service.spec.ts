@@ -3,12 +3,12 @@ import {TestBed} from '@angular/core/testing';
 import {TuiParentsScrollService} from '@taiga-ui/cdk/services';
 import {take} from 'rxjs/operators';
 
-describe('TuiParentsScrollService', () => {
+describe(`TuiParentsScrollService`, () => {
     let element: HTMLElement;
     let service: TuiParentsScrollService;
 
     beforeEach(() => {
-        element = document.createElement('div');
+        element = document.createElement(`div`);
         document.body.appendChild(element);
 
         TestBed.configureTestingModule({
@@ -28,19 +28,19 @@ describe('TuiParentsScrollService', () => {
         document.body.removeChild(element);
     });
 
-    it('should dispatch scroll event on the first subscription', () => {
+    it(`should dispatch scroll event on the first subscription`, () => {
         let event = null;
 
         service.pipe(take(1)).subscribe(value => {
             event = value;
         });
 
-        element.dispatchEvent(new Event('scroll'));
+        element.dispatchEvent(new Event(`scroll`));
 
         expect(event).toBeTruthy();
     });
 
-    it('should dispatch scroll event on next subscriptions', () => {
+    it(`should dispatch scroll event on next subscriptions`, () => {
         let event = null;
         const subscription = service.subscribe();
 
@@ -49,7 +49,7 @@ describe('TuiParentsScrollService', () => {
             event = value;
         });
 
-        element.dispatchEvent(new Event('scroll'));
+        element.dispatchEvent(new Event(`scroll`));
         expect(event).toBeTruthy();
     });
 });

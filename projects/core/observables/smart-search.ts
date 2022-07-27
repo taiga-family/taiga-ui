@@ -20,10 +20,10 @@ export function smartSearch<T>(
         source.pipe(
             debounceTime(searchDebounceTimeMs),
             scan((previousSearched, current) => {
-                return previousSearched !== '' && current.startsWith(previousSearched)
+                return previousSearched !== `` && current.startsWith(previousSearched)
                     ? previousSearched
                     : current;
-            }, ''),
+            }, ``),
             distinctUntilChanged(),
             switchMap(value => getSearchFunction(value).pipe(startWith(null))),
             startWith(EMPTY_ARRAY),

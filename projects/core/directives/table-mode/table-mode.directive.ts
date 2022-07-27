@@ -5,11 +5,11 @@ import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
  * @deprecated use @taiga-ui/addon-table
  */
 @Directive({
-    selector: '[tuiTableMode]',
+    selector: `[tuiTableMode]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
-            useValue: 'table', // TuiAppearance.Table
+            useValue: `table`, // TuiAppearance.Table
         },
     ],
 })

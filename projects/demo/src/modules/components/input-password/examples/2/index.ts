@@ -6,25 +6,25 @@ import {TUI_PASSWORD_TEXTS, tuiInputPasswordOptionsProvider} from '@taiga-ui/kit
 import {of} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-password-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-password-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiInputPasswordOptionsProvider({
             icons: {
-                hide: 'tuiIconLockLarge',
-                show: 'tuiIconLockOpenLarge',
+                hide: `tuiIconLockLarge`,
+                show: `tuiIconLockOpenLarge`,
             },
         }),
         {
             provide: TUI_PASSWORD_TEXTS,
-            useValue: of(['']),
+            useValue: of([``]),
         },
     ],
 })
 export class TuiInputPasswordExample2 {
     testForm = new FormGroup({
-        testValue: new FormControl('password', Validators.required),
+        testValue: new FormControl(`password`, Validators.required),
     });
 }

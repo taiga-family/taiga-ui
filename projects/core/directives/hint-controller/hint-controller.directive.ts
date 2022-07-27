@@ -7,7 +7,7 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
 // TODO: v2.0 use in Charts
 @Directive({
-    selector: '[tuiHintContent]',
+    selector: `[tuiHintContent]`,
     providers: [
         {
             provide: TUI_HINT_CONTROLLER,
@@ -17,23 +17,23 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 })
 export class TuiHintControllerDirective extends TuiController {
     // TODO: 3.0 Remove null
-    @Input('tuiHintContent')
+    @Input(`tuiHintContent`)
     @tuiDefaultProp()
     content: PolymorpheusContent | null = null;
 
-    @Input('tuiHintDirection')
+    @Input(`tuiHintDirection`)
     @tuiDefaultProp()
     direction: TuiHintOptions['direction'] = this.options.direction;
 
-    @Input('tuiHintMode')
+    @Input(`tuiHintMode`)
     @tuiDefaultProp()
     mode: TuiHintOptions['mode'] = this.options.mode;
 
-    @Input('tuiHintShowDelay')
+    @Input(`tuiHintShowDelay`)
     @tuiDefaultProp()
     showDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
-    @Input('tuiHintHideDelay')
+    @Input(`tuiHintHideDelay`)
     @tuiDefaultProp()
     hideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 

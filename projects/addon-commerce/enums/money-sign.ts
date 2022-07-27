@@ -8,9 +8,9 @@
  * TODO: delete in v3.0
  */
 export const enum TuiMoneySign {
-    NegativeOnly = 'negative-only',
-    Always = 'always',
-    Never = 'never',
-    ForceNegative = 'force-negative',
-    ForcePositive = 'force-positive',
+    NegativeOnly = `negative-only`,
+    Always = `always`,
+    Never = `never`,
+    ForceNegative = `force-negative`,
+    ForcePositive = `force-positive`,
 }

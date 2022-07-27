@@ -11,11 +11,11 @@ import {TuiDirectiveStylesService} from '@taiga-ui/cdk/services';
 import {TuiAutofilledStyleComponent} from './autofilled-style.component';
 
 @Directive({
-    selector: '[tuiAutofilledChange]',
-    host: {class: 'tui-autofill'},
+    selector: `[tuiAutofilledChange]`,
+    host: {class: `tui-autofill`},
 })
 export class TuiAutofilledDirective {
-    @HostBinding('class._autofilled')
+    @HostBinding(`class._autofilled`)
     autofilled = false;
 
     @Output()
@@ -27,10 +27,10 @@ export class TuiAutofilledDirective {
         directiveStyles.addComponent(TuiAutofilledStyleComponent);
     }
 
-    @HostListener('transitionstart', ['$event'])
+    @HostListener(`transitionstart`, [`$event`])
     transitionStartHandler({propertyName, target}: TransitionEvent): void {
         const matchedAutofill =
-            propertyName.includes('box-shadow') && (target as Element)?.matches('input');
+            propertyName.includes(`box-shadow`) && (target as Element)?.matches(`input`);
 
         if (matchedAutofill) {
             this.autofilled = !this.autofilled;

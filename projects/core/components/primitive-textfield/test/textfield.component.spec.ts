@@ -5,7 +5,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
-describe('Textfield', () => {
+describe(`Textfield`, () => {
     @Component({
         template: `
             <input
@@ -25,16 +25,16 @@ describe('Textfield', () => {
         `,
     })
     class TestComponent {
-        @ViewChild('auto', {read: ElementRef})
+        @ViewChild(`auto`, {read: ElementRef})
         readonly auto!: ElementRef<HTMLElement>;
 
-        @ViewChild('attr', {read: ElementRef})
+        @ViewChild(`attr`, {read: ElementRef})
         readonly attr!: ElementRef<HTMLElement>;
 
-        @ViewChild('bind', {read: ElementRef})
+        @ViewChild(`bind`, {read: ElementRef})
         readonly bind!: ElementRef<HTMLElement>;
 
-        value = 'bind';
+        value = `bind`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -61,17 +61,17 @@ describe('Textfield', () => {
         fixture.detectChanges();
     });
 
-    describe('id binding', () => {
-        it('Auto id generation works', () => {
+    describe(`id binding`, () => {
+        it(`Auto id generation works`, () => {
             expect(testComponent.auto.nativeElement.id).toBeTruthy();
         });
 
-        it('Static id is not overridden', () => {
-            expect(testComponent.attr.nativeElement.id).toBe('attr');
+        it(`Static id is not overridden`, () => {
+            expect(testComponent.attr.nativeElement.id).toBe(`attr`);
         });
 
-        it('Dynamic id binding works', () => {
-            expect(testComponent.bind.nativeElement.id).toBe('bind');
+        it(`Dynamic id binding works`, () => {
+            expect(testComponent.bind.nativeElement.id).toBe(`bind`);
         });
     });
 });

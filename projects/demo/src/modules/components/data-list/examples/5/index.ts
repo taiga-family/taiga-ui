@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 
 @Component({
-    selector: 'tui-data-list-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-data-list-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -18,7 +18,7 @@ export class TuiDataListExample5 {
     dollar = 75; // 1 dollar = 75 rub
 
     readonly testForm = new FormGroup({
-        testValue: new FormControl('mail@mail.ru'),
+        testValue: new FormControl(`mail@mail.ru`),
     });
 
     readonly moneyForm = new FormGroup({
@@ -31,11 +31,11 @@ export class TuiDataListExample5 {
     );
 
     get testValue(): string {
-        return this.testForm.get('testValue')?.value;
+        return this.testForm.get(`testValue`)?.value;
     }
 
     get moneyValue(): number {
-        return Number(this.moneyForm.get('moneyValue')?.value) || 0;
+        return Number(this.moneyForm.get(`moneyValue`)?.value) || 0;
     }
 
     onDayClick(day: TuiDay): void {

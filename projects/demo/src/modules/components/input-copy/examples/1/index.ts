@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-copy-example-1',
-    templateUrl: './index.html',
+    selector: `tui-input-copy-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiInputCopyExample1 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl('', Validators.required),
+        testValue: new FormControl(``, Validators.required),
     });
 }

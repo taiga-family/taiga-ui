@@ -8,11 +8,11 @@ export type DemoTuiIconsList = ReadonlyArray<string | DemoTuiIcon>;
 export type DemoTuiIconsTabs = Record<string, Record<string, DemoTuiIconsList>>;
 
 export const COMMERCE: DemoTuiIcon[] = [
-    'tuiIconElectron',
-    'tuiIconMaestro',
-    'tuiIconMastercard',
-    'tuiIconMir',
-    'tuiIconVisa',
+    `tuiIconElectron`,
+    `tuiIconMaestro`,
+    `tuiIconMastercard`,
+    `tuiIconMir`,
+    `tuiIconVisa`,
 ];
 
 const {LARGE, NORMAL} = ensureIcons();
@@ -26,7 +26,7 @@ export const ICONS: DemoTuiIconsTabs = {
 };
 
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
-    new InjectionToken<DemoTuiIconsTabs>('Icons', {factory: () => ICONS});
+    new InjectionToken<DemoTuiIconsTabs>(`Icons`, {factory: () => ICONS});
 
 /**
  * @description:
@@ -40,14 +40,14 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     for (const icon in allIcons) {
         const shouldSkip =
             commerceSet.has(icon as DemoTuiIcon) ||
-            icon === 'tuiCoreIcons' ||
-            icon === 'tuiKitIcons';
+            icon === `tuiCoreIcons` ||
+            icon === `tuiKitIcons`;
 
         if (shouldSkip) {
             continue;
         }
 
-        if (icon.includes('Large')) {
+        if (icon.includes(`Large`)) {
             large.push(icon as DemoTuiIcon);
         } else {
             normal.push(icon as DemoTuiIcon);

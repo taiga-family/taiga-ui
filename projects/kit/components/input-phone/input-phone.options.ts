@@ -7,13 +7,13 @@ export interface TuiInputPhoneOptions {
 }
 
 export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
-    phoneMaskAfterCountryCode: '### ###-##-##',
+    phoneMaskAfterCountryCode: `### ###-##-##`,
     allowText: false,
-    countryCode: '+7',
+    countryCode: `+7`,
 };
 
 export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken<TuiInputPhoneOptions>(
-    'Default parameters for input phone component',
+    `Default parameters for input phone component`,
     {
         factory: () => TUI_INPUT_PHONE_DEFAULT_OPTIONS,
     },

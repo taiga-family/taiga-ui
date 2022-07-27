@@ -13,9 +13,9 @@ import {Observable} from 'rxjs';
 
 // @bad TODO: a11y
 @Component({
-    selector: 'tui-reorder',
-    templateUrl: './reorder.template.html',
-    styleUrls: ['./reorder.style.less'],
+    selector: `tui-reorder`,
+    templateUrl: `./reorder.template.html`,
+    styleUrls: [`./reorder.style.less`],
 })
 export class TuiReorderComponent<T> {
     @Input()
@@ -36,7 +36,7 @@ export class TuiReorderComponent<T> {
         @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
     ) {}
 
-    @HostListener('focusout.stop')
+    @HostListener(`focusout.stop`)
     noop(): void {}
 
     isEnabled(item: T): boolean {
@@ -44,7 +44,7 @@ export class TuiReorderComponent<T> {
     }
 
     getIcon(item: T): string {
-        return this.isEnabled(item) ? 'tuiIconEyeOpen' : 'tuiIconEyeClosed';
+        return this.isEnabled(item) ? `tuiIconEyeOpen` : `tuiIconEyeClosed`;
     }
 
     toggle(toggled: T): void {

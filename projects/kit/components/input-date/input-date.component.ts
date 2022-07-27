@@ -64,9 +64,9 @@ import {TUI_INPUT_DATE_PROVIDERS} from './input-date.providers';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-date',
-    templateUrl: './input-date.template.html',
-    styleUrls: ['./input-date.style.less'],
+    selector: `tui-input-date`,
+    templateUrl: `./input-date.template.html`,
+    styleUrls: [`./input-date.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_INPUT_DATE_PROVIDERS,
 })
@@ -158,8 +158,8 @@ export class TuiInputDateComponent
 
     get calendarIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
     get computedValue(): string {
@@ -181,7 +181,7 @@ export class TuiInputDateComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
     }
 
     set nativeValue(value: string) {
@@ -208,7 +208,7 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
-    @HostListener('click')
+    @HostListener(`click`)
     onClick(): void {
         if (!this.isMobile) {
             this.open = !this.open;
@@ -216,7 +216,7 @@ export class TuiInputDateComponent
     }
 
     getComputedFiller(filler: string): string {
-        return this.activeItem ? '' : filler;
+        return this.activeItem ? `` : filler;
     }
 
     onMobileClick(): void {
@@ -228,7 +228,7 @@ export class TuiInputDateComponent
 
         this.dialogService
             .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
+                size: `fullscreen`,
                 closeable: false,
                 data: {
                     single: true,
@@ -287,7 +287,7 @@ export class TuiInputDateComponent
 
     writeValue(value: TuiDay | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
+        this.nativeValue = value ? this.computedValue : ``;
     }
 
     protected valueIdenticalComparator(

@@ -1,6 +1,6 @@
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
 
-const SIZES: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
+const SIZES: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [`xs`, `s`, `m`, `l`, `xl`, `xxl`];
 
 /**
  * @deprecated: use {@link tuiSizeBigger} instead
@@ -12,7 +12,7 @@ const SIZES: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = ['xs', 's', 'm', 'l', 'xl',
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function sizeBigger(
     size: TuiSizeXS | TuiSizeXXL,
-    biggerThanSize: TuiSizeXS | TuiSizeXXL = 's',
+    biggerThanSize: TuiSizeXS | TuiSizeXXL = `s`,
 ): boolean {
     return SIZES.indexOf(size) > SIZES.indexOf(biggerThanSize);
 }

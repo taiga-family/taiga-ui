@@ -8,10 +8,10 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
  * @returns time as a string
  */
 export function tuiCreateAutoCorrectedTimePipe(
-    timeMode: TuiTimeMode = 'HH:MM',
+    timeMode: TuiTimeMode = `HH:MM`,
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
 ): TuiTextMaskPipeHandler {
-    const timeFormatArray = ['HH', 'MM', 'SS', 'MS'] as const;
+    const timeFormatArray = [`HH`, `MM`, `SS`, `MS`] as const;
     const safeValues = {
         ...MAX_TIME_VALUES,
         ...maxValues,
@@ -19,7 +19,7 @@ export function tuiCreateAutoCorrectedTimePipe(
 
     return conformedValue => {
         const indexesOfPipedChars: number[] = [];
-        const conformedValueArr = conformedValue.split('');
+        const conformedValueArr = conformedValue.split(``);
 
         timeFormatArray.forEach(format => {
             const position = timeMode.indexOf(format);
@@ -27,7 +27,7 @@ export function tuiCreateAutoCorrectedTimePipe(
 
             if (parseInt(conformedValueArr[position], 10) > maxFirstDigit) {
                 conformedValueArr[position + 1] = conformedValueArr[position];
-                conformedValueArr[position] = '0';
+                conformedValueArr[position] = `0`;
                 indexesOfPipedChars.push(position);
             }
         });
@@ -41,7 +41,7 @@ export function tuiCreateAutoCorrectedTimePipe(
         return isInvalid
             ? false
             : {
-                  value: conformedValueArr.join(''),
+                  value: conformedValueArr.join(``),
                   indexesOfPipedChars,
               };
     };

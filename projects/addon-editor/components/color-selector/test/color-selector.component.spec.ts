@@ -18,14 +18,14 @@ class TestComponent {
     component!: TuiColorSelectorComponent;
 
     colors = new Map([
-        ['hap', '#ff0000'],
-        ['ica', 'linear-gradient(red, blue)'],
+        [`hap`, `#ff0000`],
+        [`ica`, `linear-gradient(red, blue)`],
     ]);
 
-    color = '#0000ff';
+    color = `#0000ff`;
 }
 
-describe('ColorSelector', () => {
+describe(`ColorSelector`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -40,12 +40,12 @@ describe('ColorSelector', () => {
         fixture.detectChanges();
     });
 
-    it('Parses color', () => {
+    it(`Parses color`, () => {
         expect(testComponent.component.color).toEqual([0, 0, 255, 1]);
     });
 
-    it('Filters out gradients from palette', () => {
-        expect(testComponent.component.palette.get('hap')).toBe('#ff0000');
-        expect(testComponent.component.palette.get('ica')).toBeUndefined();
+    it(`Filters out gradients from palette`, () => {
+        expect(testComponent.component.palette.get(`hap`)).toBe(`#ff0000`);
+        expect(testComponent.component.palette.get(`ica`)).toBeUndefined();
     });
 });

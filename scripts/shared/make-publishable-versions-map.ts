@@ -4,16 +4,16 @@ import {TAIGA_VERSION} from '../../projects/cdk/schematics/ng-add/constants/vers
 
 function getAllSortedTags(): string[] {
     return execSync(
-        'git for-each-ref --sort=v:refname --format "%(refname:strip=2)" refs/tags',
+        `git for-each-ref --sort=v:refname --format "%(refname:strip=2)" refs/tags`,
     )
         .toString()
-        .split('\n')
+        .split(`\n`)
         .map(cleanupVersion)
         .filter(Boolean);
 }
 
 function cleanupVersion(version: string): string {
-    return version.replace(/[A-Za-z-]/g, '').replace(/[~^]/g, '');
+    return version.replace(/[A-Za-z-]/g, ``).replace(/[~^]/g, ``);
 }
 
 /**
@@ -40,7 +40,7 @@ export function makePublishableVersionsMap(): Map<number, string> {
 
     publishableVersions = new Map([...publishableVersions].sort(([a], [b]) => b - a));
 
-    console.info('\x1B[32m%s\x1B[0m', '[old last versions]:', publishableVersions);
+    console.info(`\x1B[32m%s\x1B[0m`, `[old last versions]:`, publishableVersions);
 
     return publishableVersions;
 }

@@ -7,16 +7,16 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 enum Department {
-    IT = 'IT',
-    HR = 'HR',
-    HeadOffice = 'Heads',
-    Delivery = 'Delivery',
+    IT = `IT`,
+    HR = `HR`,
+    HeadOffice = `Heads`,
+    Delivery = `Delivery`,
 }
 
 @Component({
-    selector: 'tui-filter-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-filter-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

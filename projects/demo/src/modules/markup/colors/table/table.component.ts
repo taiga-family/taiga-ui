@@ -9,9 +9,9 @@ import {TuiThemeService} from '../../../app/theme.service';
 import {Color} from '../colors.constants';
 
 @Component({
-    selector: 'table[colors]',
-    templateUrl: './table.template.html',
-    styleUrls: ['./table.style.less'],
+    selector: `table[colors]`,
+    templateUrl: `./table.template.html`,
+    styleUrls: [`./table.style.less`],
     changeDetection,
 })
 export class TableComponent {
@@ -23,7 +23,7 @@ export class TableComponent {
     colors: readonly Color[] = [];
 
     @Input()
-    @HostBinding('class._dark')
+    @HostBinding(`class._dark`)
     dark = false;
 
     readonly theme$ = this.themeService.pipe(delay(1));

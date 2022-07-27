@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-token-example-6',
-    templateUrl: './index.html',
+    selector: `tui-token-example-6`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

@@ -13,30 +13,30 @@ export function positiveInt(value: number): boolean {
 }
 
 @Component({
-    selector: 'tui-progress-segmented',
-    templateUrl: './progress-segmented.template.html',
-    styleUrls: ['./progress-segmented.style.less'],
+    selector: `tui-progress-segmented`,
+    templateUrl: `./progress-segmented.template.html`,
+    styleUrls: [`./progress-segmented.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressSegmentedComponent {
     @Input()
-    @tuiDefaultProp(nonNegativeInt, 'Must be non-negative integer between 0 and max')
+    @tuiDefaultProp(nonNegativeInt, `Must be non-negative integer between 0 and max`)
     value = 0;
 
     @Input()
-    @tuiDefaultProp(positiveInt, 'Must be positive integer')
+    @tuiDefaultProp(positiveInt, `Must be positive integer`)
     max = 1;
 
     @Input()
-    @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    @HostBinding(`attr.data-size`)
+    size: TuiSizeS = `m`;
 
     @Input()
     @tuiDefaultProp()
-    colors: string | readonly string[] = 'var(--tui-primary)';
+    colors: string | readonly string[] = `var(--tui-primary)`;
 
     getActiveColor(index: number = 0): string | null {
-        return typeof this.colors === 'string'
+        return typeof this.colors === `string`
             ? this.colors
             : this.colors[index] || this.colors[this.colors.length - 1];
     }

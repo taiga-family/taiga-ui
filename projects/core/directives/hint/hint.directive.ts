@@ -34,10 +34,10 @@ import {
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 
-export const HINT_HOVERED_CLASS = '_hint_hovered';
+export const HINT_HOVERED_CLASS = `_hint_hovered`;
 
 @Directive({
-    selector: '[tuiHint]:not(ng-container)',
+    selector: `[tuiHint]:not(ng-container)`,
     providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
 })
 export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
@@ -62,7 +62,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     set tuiHint(value: PolymorpheusContent | null) {
         if (!value) {
             this.hideTooltip();
-            this.content = '';
+            this.content = ``;
 
             return;
         }
@@ -107,7 +107,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                     );
                 }),
                 switchMap(visible =>
-                    visible && this.mode !== 'overflow'
+                    visible && this.mode !== `overflow`
                         ? obscured$.pipe(
                               map(obscured => !obscured),
                               take(2),
@@ -145,7 +145,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     }
 
     protected showTooltip(): void {
-        if (this.content === '') {
+        if (this.content === ``) {
             return;
         }
 

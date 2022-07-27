@@ -38,25 +38,25 @@ export function shouldFocus({
 // TODO: Consider all use cases for aria roles
 @Component({
     selector: `button[tuiOption], a[tuiOption]`,
-    templateUrl: './option.template.html',
-    styleUrls: ['./option.style.less'],
+    templateUrl: `./option.template.html`,
+    styleUrls: [`./option.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        tabIndex: '-1',
-        type: 'button',
-        '[attr.disabled]': 'disabled || null',
+        tabIndex: `-1`,
+        type: `button`,
+        '[attr.disabled]': `disabled || null`,
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = 'm';
+    size: TuiSizeXS | TuiSizeL = `m`;
 
     @Input()
-    @HostBinding('attr.role')
+    @HostBinding(`attr.role`)
     @tuiDefaultProp()
-    role: TuiOptionRole = 'option';
+    role: TuiOptionRole = `option`;
 
     @Input()
     @tuiDefaultProp()
@@ -84,12 +84,12 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         readonly dropdown: TuiDropdownDirective | null,
     ) {}
 
-    @HostBinding('class._with-dropdown')
+    @HostBinding(`class._with-dropdown`)
     get active(): boolean {
         return !!this.dropdown && !!this.dropdown.dropdownBoxRef;
     }
 
-    @HostListener('click')
+    @HostListener(`click`)
     onClick(): void {
         if (this.host && this.value !== undefined) {
             this.host.handleOption(this.value);
@@ -98,8 +98,8 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
-    @HostListener('mousemove.init', ['$event'])
-    @HostListener('mousemove.silent', ['$event'])
+    @HostListener(`mousemove.init`, [`$event`])
+    @HostListener(`mousemove.silent`, [`$event`])
     onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         setNativeFocused(currentTarget, true, true);
     }

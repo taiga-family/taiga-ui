@@ -12,7 +12,7 @@ export function defaultSort<T>(x: T, y: T): number {
         return 0;
     }
 
-    if (typeof a === 'string' && typeof b === 'string') {
+    if (typeof a === `string` && typeof b === `string`) {
         return a.localeCompare(b);
     }
 

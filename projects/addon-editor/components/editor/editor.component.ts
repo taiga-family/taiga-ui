@@ -39,7 +39,7 @@ import {TUI_DOCUMENT_OR_SHADOW_ROOT, TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {merge, Subscription} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
-const TEMP_URL = 'TEMP_URL';
+const TEMP_URL = `TEMP_URL`;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoot | null {
@@ -55,9 +55,9 @@ export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
 
 // @dynamic
 @Component({
-    selector: 'tui-editor:not([new])',
-    templateUrl: './editor.template.html',
-    styleUrls: ['./editor.style.less'],
+    selector: `tui-editor:not([new])`,
+    templateUrl: `./editor.template.html`,
+    styleUrls: [`./editor.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -88,7 +88,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     @Input()
     @tuiDefaultProp()
-    exampleText = '';
+    exampleText = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -98,7 +98,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
-    @ViewChild('focusableElement', {read: TuiDesignModeDirective})
+    @ViewChild(`focusableElement`, {read: TuiDesignModeDirective})
     readonly focusableElement?: TuiDesignModeDirective;
 
     linkDropdownEnabled = false;
@@ -122,8 +122,8 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
         // @bad TODO: Better dropdown show/hide handling, host obscured etc.
         merge(
-            typedFromEvent(windowRef, 'mousedown'),
-            typedFromEvent(windowRef, 'focusin'),
+            typedFromEvent(windowRef, `mousedown`),
+            typedFromEvent(windowRef, `focusin`),
         )
             .pipe(
                 filter(
@@ -163,7 +163,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         return (
             !!this.focusableElement &&
             !!this.focusableElement.documentRef &&
-            this.focusableElement.documentRef.readyState === 'complete'
+            this.focusableElement.documentRef.readyState === `complete`
         );
     }
 
@@ -195,7 +195,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             !this.focusableElement.nativeFocusableElement ||
             !(event.target instanceof Element) ||
             this.focusableElement.nativeFocusableElement.contains(event.target) ||
-            !!getClosestElement(event.target, 'button')
+            !!getClosestElement(event.target, `button`)
         ) {
             return;
         }
@@ -205,7 +205,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     }
 
     onModelChange(value: string): void {
-        this.updateValue(value.trim() === '<br>' ? '' : value);
+        this.updateValue(value.trim() === `<br>` ? `` : value);
     }
 
     onHovered(hovered: boolean): void {
@@ -218,8 +218,8 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     }
 
     onAddLink(url: string): void {
-        this.selectClosest('a');
-        this.computedDocument.execCommand('createLink', false, TEMP_URL);
+        this.selectClosest(`a`);
+        this.computedDocument.execCommand(`createLink`, false, TEMP_URL);
 
         const link = this.computedDocument.querySelector<HTMLAnchorElement>(
             `[href="${TEMP_URL}"]`,
@@ -229,16 +229,16 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             return;
         }
 
-        link.target = '_blank';
-        link.rel = '_noopener';
+        link.target = `_blank`;
+        link.rel = `_noopener`;
         link.href = url;
 
-        this.computedDocument.dispatchEvent(new Event('input'));
+        this.computedDocument.dispatchEvent(new Event(`input`));
     }
 
     onRemoveLink(): void {
-        this.selectClosest('a');
-        this.computedDocument.execCommand('unlink');
+        this.selectClosest(`a`);
+        this.computedDocument.execCommand(`unlink`);
         this.linkDropdownEnabled = false;
 
         // @awful TODO think of a better way
@@ -249,22 +249,22 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     // @bad TODO
     onAttach(): void {
-        tuiAssert.assert(false, 'Attach is not implemented yet');
+        tuiAssert.assert(false, `Attach is not implemented yet`);
     }
 
     // @bad TODO
     onTex(): void {
-        tuiAssert.assert(false, 'Attach is not implemented yet');
+        tuiAssert.assert(false, `Attach is not implemented yet`);
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
     private readonly isSelectionLink: TuiBooleanHandler<Range> = ({
         startContainer,
         endContainer,
-    }) => isNodeIn(startContainer, 'a') && isNodeIn(endContainer, 'a');
+    }) => isNodeIn(startContainer, `a`) && isNodeIn(endContainer, `a`);
 
     private get hasValue(): boolean {
         return !!this.value;

@@ -46,8 +46,8 @@ import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 
-const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
-const MONOSPACE_FONT = 'Courier';
+const DEFAULT_FONT = `haas, helvetica, arial, sans-serif`;
+const MONOSPACE_FONT = `Courier`;
 const IE_TRANSPARENT = 16777215;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -57,27 +57,27 @@ export function toolsAssertion(tools: readonly TuiEditorTool[]): boolean {
 
 // @dynamic
 @Component({
-    selector: 'tui-toolbar:not([new])',
-    templateUrl: './toolbar.template.html',
-    styleUrls: ['./toolbar.style.less'],
+    selector: `tui-toolbar:not([new])`,
+    templateUrl: `./toolbar.template.html`,
+    styleUrls: [`./toolbar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        role: 'toolbar',
+        role: `toolbar`,
     },
 })
 export class TuiToolbarComponent {
-    @ViewChildren('button')
+    @ViewChildren(`button`)
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
 
-    @ViewChildren('dropdown', {read: ElementRef})
+    @ViewChildren(`dropdown`, {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly documentRef: Document;
     private range: Range | null = null;
 
     @Input()
-    @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
+    @tuiDefaultProp(toolsAssertion, `Attach and TeX are not yet implemented in Editor`)
     tools: readonly TuiEditorTool[] = defaultEditorTools;
 
     @Input()
@@ -89,7 +89,7 @@ export class TuiToolbarComponent {
     editor: HTMLElement | null = null;
 
     @Input()
-    @HostBinding('class._disabled')
+    @HostBinding(`class._disabled`)
     @tuiDefaultProp()
     disabled = false;
 
@@ -107,36 +107,36 @@ export class TuiToolbarComponent {
     // TODO: i18n
     readonly fontsOptions: readonly TuiEditorFontOption[] = [
         {
-            size: '2',
+            size: `2`,
             px: 13,
-            name: 'Small',
+            name: `Small`,
         },
         {
-            size: '3',
+            size: `3`,
             px: 15,
-            name: 'Normal',
+            name: `Normal`,
         },
         {
-            size: '4',
+            size: `4`,
             px: 17,
-            name: 'Large',
+            name: `Large`,
         },
         {
-            size: '5',
+            size: `5`,
             px: 24,
-            family: 'var(--tui-font-heading)',
-            name: 'Subtitle',
+            family: `var(--tui-font-heading)`,
+            name: `Subtitle`,
         },
         {
-            size: '6',
+            size: `6`,
             px: 30,
-            family: 'var(--tui-font-heading)',
-            name: 'Title',
+            family: `var(--tui-font-heading)`,
+            name: `Title`,
         },
     ];
 
     // TODO: i18n
-    readonly codeOptions: readonly string[] = ['Code in the text', 'Code in block'];
+    readonly codeOptions: readonly string[] = [`Code in the text`, `Code in block`];
 
     constructor(
         @Inject(TuiDestroyService)
@@ -159,8 +159,8 @@ export class TuiToolbarComponent {
         this.documentRef = shadowRootRef || documentRef;
 
         merge(
-            typedFromEvent(this.documentRef, 'selectionchange'),
-            typedFromEvent(this.documentRef, 'input'),
+            typedFromEvent(this.documentRef, `selectionchange`),
+            typedFromEvent(this.documentRef, `input`),
         )
             .pipe(takeUntil(destroy$))
             .subscribe(() => {
@@ -198,43 +198,43 @@ export class TuiToolbarComponent {
     }
 
     get bold(): boolean {
-        return this.documentRef.queryCommandState('bold');
+        return this.documentRef.queryCommandState(`bold`);
     }
 
     get italic(): boolean {
-        return this.documentRef.queryCommandState('italic');
+        return this.documentRef.queryCommandState(`italic`);
     }
 
     get underline(): boolean {
-        return this.documentRef.queryCommandState('underline');
+        return this.documentRef.queryCommandState(`underline`);
     }
 
     get strikeThrough(): boolean {
-        return this.documentRef.queryCommandState('strikeThrough');
+        return this.documentRef.queryCommandState(`strikeThrough`);
     }
 
     get unorderedList(): boolean {
-        return this.documentRef.queryCommandState('insertUnorderedList');
+        return this.documentRef.queryCommandState(`insertUnorderedList`);
     }
 
     get orderedList(): boolean {
-        return this.documentRef.queryCommandState('insertOrderedList');
+        return this.documentRef.queryCommandState(`insertOrderedList`);
     }
 
     get blockquote(): boolean {
         const selection = this.documentRef.getSelection();
 
-        return !!selection && isSelectionIn(selection, 'blockquote');
+        return !!selection && isSelectionIn(selection, `blockquote`);
     }
 
     get a(): boolean {
         const selection = this.documentRef.getSelection();
 
-        return !!selection && isSelectionIn(selection, 'a');
+        return !!selection && isSelectionIn(selection, `a`);
     }
 
     get foreColorBlank(): boolean {
-        return this.foreColor === 'rgb(51, 51, 51)';
+        return this.foreColor === `rgb(51, 51, 51)`;
     }
 
     get hiliteColorBlank(): boolean {
@@ -243,25 +243,25 @@ export class TuiToolbarComponent {
         return (
             !hiliteColor ||
             String(hiliteColor) === String(IE_TRANSPARENT) ||
-            hiliteColor === 'transparent' ||
-            hiliteColor === 'rgba(0, 0, 0, 0)' ||
-            (hiliteColor === 'rgb(0, 0, 0)' && !this.focused)
+            hiliteColor === `transparent` ||
+            hiliteColor === `rgba(0, 0, 0, 0)` ||
+            (hiliteColor === `rgb(0, 0, 0)` && !this.focused)
         );
     }
 
     get undoDisabled(): boolean {
-        return !this.documentRef.queryCommandEnabled('undo');
+        return !this.documentRef.queryCommandEnabled(`undo`);
     }
 
     get redoDisabled(): boolean {
-        return !this.documentRef.queryCommandEnabled('redo');
+        return !this.documentRef.queryCommandEnabled(`redo`);
     }
 
     get code(): boolean {
         // fontName can return null in IE for some reason
         return (
             !this.pre &&
-            (this.documentRef.queryCommandValue('fontName') || '').replace(/"/g, '') ===
+            (this.documentRef.queryCommandValue(`fontName`) || ``).replace(/"/g, ``) ===
                 MONOSPACE_FONT
         );
     }
@@ -269,20 +269,20 @@ export class TuiToolbarComponent {
     get pre(): boolean {
         const selection = this.documentRef.getSelection();
 
-        return !!selection && isSelectionIn(selection, 'pre');
+        return !!selection && isSelectionIn(selection, `pre`);
     }
 
     get subscript(): boolean {
-        return this.documentRef.queryCommandState('subscript');
+        return this.documentRef.queryCommandState(`subscript`);
     }
 
     get superscript(): boolean {
-        return this.documentRef.queryCommandState('superscript');
+        return this.documentRef.queryCommandState(`superscript`);
     }
 
     get foreColor(): string {
         const color: string | number =
-            this.documentRef.queryCommandValue('foreColor') || 'rgb(51, 51, 51)';
+            this.documentRef.queryCommandValue(`foreColor`) || `rgb(51, 51, 51)`;
 
         // Number in IE
         return isNumber(color) ? this.numberToColor(color) : color;
@@ -291,7 +291,7 @@ export class TuiToolbarComponent {
     get hiliteColor(): string {
         if (!isFirefox(this.userAgent)) {
             // Doesn't work in Firefox for more than a decade: https://bugzilla.mozilla.org/show_bug.cgi?id=547848
-            const color = this.documentRef.queryCommandValue('backColor');
+            const color = this.documentRef.queryCommandValue(`backColor`);
 
             // Number in IE
             return isNumber(color) && color !== IE_TRANSPARENT
@@ -313,7 +313,7 @@ export class TuiToolbarComponent {
             element = element.parentElement;
         }
 
-        return '';
+        return ``;
     }
 
     get formatEnabled(): boolean {
@@ -392,7 +392,7 @@ export class TuiToolbarComponent {
 
     onFont(size: string): void {
         this.focusEditor();
-        this.documentRef.execCommand('fontSize', false, size);
+        this.documentRef.execCommand(`fontSize`, false, size);
     }
 
     onAlign(align: string): void {
@@ -411,7 +411,7 @@ export class TuiToolbarComponent {
                 });
         }
 
-        input.value = '';
+        input.value = ``;
     }
 
     onAttach(): void {
@@ -448,73 +448,73 @@ export class TuiToolbarComponent {
 
     undo(): void {
         this.focusEditor();
-        this.documentRef.execCommand('undo');
+        this.documentRef.execCommand(`undo`);
     }
 
     redo(): void {
         this.focusEditor();
-        this.documentRef.execCommand('redo');
+        this.documentRef.execCommand(`redo`);
     }
 
     indent(): void {
         this.focusEditor();
-        this.documentRef.execCommand('indent');
+        this.documentRef.execCommand(`indent`);
     }
 
     outdent(): void {
         this.focusEditor();
-        this.documentRef.execCommand('outdent');
+        this.documentRef.execCommand(`outdent`);
     }
 
     insertHorizontalRule(): void {
         this.focusEditor();
-        this.documentRef.execCommand('insertHorizontalRule');
+        this.documentRef.execCommand(`insertHorizontalRule`);
     }
 
     removeFormat(): void {
         // @bad TODO: Write our own method to remove PRE etc
         this.focusEditor();
-        this.documentRef.execCommand('removeFormat');
+        this.documentRef.execCommand(`removeFormat`);
     }
 
     setForeColor(color: string): void {
         this.focusEditor();
-        this.documentRef.execCommand('foreColor', false, color);
+        this.documentRef.execCommand(`foreColor`, false, color);
     }
 
     setHiliteColor(color: string): void {
         this.focusEditor();
-        this.documentRef.execCommand('hiliteColor', false, color);
+        this.documentRef.execCommand(`hiliteColor`, false, color);
     }
 
     toggleBold(): void {
         this.focusEditor();
-        this.documentRef.execCommand('bold');
+        this.documentRef.execCommand(`bold`);
     }
 
     toggleItalic(): void {
         this.focusEditor();
-        this.documentRef.execCommand('italic');
+        this.documentRef.execCommand(`italic`);
     }
 
     toggleUnderline(): void {
         this.focusEditor();
-        this.documentRef.execCommand('underline');
+        this.documentRef.execCommand(`underline`);
     }
 
     toggleStrikeThrough(): void {
         this.focusEditor();
-        this.documentRef.execCommand('strikeThrough');
+        this.documentRef.execCommand(`strikeThrough`);
     }
 
     toggleOrderedList(): void {
         this.focusEditor();
-        this.documentRef.execCommand('insertOrderedList');
+        this.documentRef.execCommand(`insertOrderedList`);
     }
 
     toggleUnorderedList(): void {
         this.focusEditor();
-        this.documentRef.execCommand('insertUnorderedList');
+        this.documentRef.execCommand(`insertUnorderedList`);
     }
 
     toggleQuote(): void {
@@ -527,18 +527,18 @@ export class TuiToolbarComponent {
 
     toggleSubscript(): void {
         this.focusEditor();
-        this.documentRef.execCommand('subscript');
+        this.documentRef.execCommand(`subscript`);
     }
 
     toggleSuperscript(): void {
         this.focusEditor();
-        this.documentRef.execCommand('superscript');
+        this.documentRef.execCommand(`superscript`);
     }
 
     private toggleCode(): void {
         this.focusEditor();
         this.documentRef.execCommand(
-            'fontName',
+            `fontName`,
             false,
             this.code ? DEFAULT_FONT : MONOSPACE_FONT,
         );
@@ -550,9 +550,9 @@ export class TuiToolbarComponent {
 
         if (!selection || selection.isCollapsed || !this.pre) {
             this.documentRef.execCommand(
-                'formatBlock',
+                `formatBlock`,
                 false,
-                this.pre ? '<P>' : '<PRE>',
+                this.pre ? `<P>` : `<PRE>`,
             );
 
             return;
@@ -562,11 +562,11 @@ export class TuiToolbarComponent {
             .call(selection.getRangeAt(0).cloneContents().childNodes)
             // Actually a Node, but early return handles text nodes
             .map((node: Element) => {
-                if (!node.tagName || node.tagName.toLowerCase() !== 'pre') {
+                if (!node.tagName || node.tagName.toLowerCase() !== `pre`) {
                     return node;
                 }
 
-                const p = this.documentRef.createElement('p');
+                const p = this.documentRef.createElement(`p`);
 
                 p.innerHTML = node.innerHTML;
 
@@ -575,7 +575,7 @@ export class TuiToolbarComponent {
             .reduce(
                 (result: string, node: Element) =>
                     result + (node.outerHTML || node.nodeValue),
-                '',
+                ``,
             );
 
         tuiInsertHtml(this.documentRef, html);
@@ -584,7 +584,7 @@ export class TuiToolbarComponent {
 
     private addImage(image: string): void {
         this.focusEditor();
-        this.documentRef.execCommand('insertImage', false, image);
+        this.documentRef.execCommand(`insertImage`, false, image);
     }
 
     private focusFirst(): void {

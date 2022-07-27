@@ -16,7 +16,7 @@ export function formatCurrency(currency: TuiCurrencyVariants): string {
 export const tuiFormatCurrency = formatCurrency;
 
 function stringifyCurrency(currency: TuiCurrencyVariants): string {
-    return currency === null || typeof currency === 'string'
-        ? currency || ''
-        : padStart(String(currency), 3, '0');
+    return currency === null || typeof currency === `string`
+        ? currency || ``
+        : padStart(String(currency), 3, `0`);
 }

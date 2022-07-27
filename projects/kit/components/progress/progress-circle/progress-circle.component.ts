@@ -17,13 +17,13 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 // @dynamic
 @Component({
-    selector: 'tui-progress-circle',
-    templateUrl: './progress-circle.template.html',
-    styleUrls: ['./progress-circle.style.less'],
+    selector: `tui-progress-circle`,
+    templateUrl: `./progress-circle.template.html`,
+    styleUrls: [`./progress-circle.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressCircleComponent {
-    @ViewChild('progressCircle', {static: true})
+    @ViewChild(`progressCircle`, {static: true})
     private readonly progressCircle!: ElementRef<SVGCircleElement>;
 
     @Input()
@@ -35,16 +35,16 @@ export class TuiProgressCircleComponent {
     max = 1;
 
     @Input()
-    @HostBinding('style.--tui-progress-color')
+    @HostBinding(`style.--tui-progress-color`)
     @tuiDefaultProp()
     color: string | null = null;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeXL = 'm';
+    size: TuiSizeS | TuiSizeXL = `m`;
 
-    @HostBinding('style.--progress-percentage')
+    @HostBinding(`style.--progress-percentage`)
     get progressPercentage(): number {
         return this.value / this.max;
     }

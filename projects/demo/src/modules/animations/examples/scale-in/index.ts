@@ -5,9 +5,9 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDurationOptions, tuiScaleIn} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-scale-in-example',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-scale-in-example`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     animations: [tuiScaleIn],
@@ -17,13 +17,13 @@ export class TuiScaleInExample {
     speed = 0;
 
     readonly todoTasks = [
-        {title: 'Install Angular', completed: true},
-        {title: 'Install Taiga UI', completed: false},
-        {title: 'Look into "Getting Started"', completed: false},
+        {title: `Install Angular`, completed: true},
+        {title: `Install Taiga UI`, completed: false},
+        {title: `Look into "Getting Started"`, completed: false},
     ];
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {value: ``, params: {duration}};
     }
 }

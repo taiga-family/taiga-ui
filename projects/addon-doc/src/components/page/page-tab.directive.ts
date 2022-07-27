@@ -2,7 +2,7 @@ import {Directive, Inject, Input, TemplateRef} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: '[pageTab]',
+    selector: `[pageTab]`,
 })
 export class TuiDocPageTabConnectorDirective {
     @Input()

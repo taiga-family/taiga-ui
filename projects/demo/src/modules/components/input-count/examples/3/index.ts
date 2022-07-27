@@ -5,17 +5,17 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInputCountOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-count-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-count-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         tuiInputCountOptionsProvider({
             icons: {
-                up: 'tuiIconChevronUp',
-                down: 'tuiIconChevronDown',
+                up: `tuiIconChevronUp`,
+                down: `tuiIconChevronDown`,
             },
-            appearance: 'secondary',
+            appearance: `secondary`,
             step: 10,
             min: 10,
             max: 100,

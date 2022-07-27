@@ -1,5 +1,5 @@
 export class TuiValuePresentException extends Error {
     constructor() {
-        super('Value must present');
+        super(`Value must present`);
     }
 }

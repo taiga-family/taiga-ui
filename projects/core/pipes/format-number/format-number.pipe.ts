@@ -3,7 +3,7 @@ import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {formatNumber} from '@taiga-ui/core/utils/format';
 
-@Pipe({name: 'tuiFormatNumber'})
+@Pipe({name: `tuiFormatNumber`})
 export class TuiFormatNumberPipe implements PipeTransform {
     constructor(
         @Inject(TUI_NUMBER_FORMAT)

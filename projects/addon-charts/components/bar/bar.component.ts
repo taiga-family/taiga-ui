@@ -13,9 +13,9 @@ import {colorFallback, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 // TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
-    selector: 'tui-bar',
-    templateUrl: './bar.template.html',
-    styleUrls: ['./bar.style.less'],
+    selector: `tui-bar`,
+    templateUrl: `./bar.template.html`,
+    styleUrls: [`./bar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarComponent {
@@ -28,9 +28,9 @@ export class TuiBarComponent {
     colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = `m`;
 
     constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 

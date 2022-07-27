@@ -5,15 +5,15 @@ import {TuiPdfViewerService} from './pdf-viewer.service';
 import {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Directive({
-    selector: 'ng-template[tuiPdfViewer]',
+    selector: `ng-template[tuiPdfViewer]`,
     providers: [
         {
             provide: AbstractTuiDialogService,
             useExisting: TuiPdfViewerService,
         },
     ],
-    inputs: ['options: tuiPdfViewerOptions', 'open: tuiPdfViewer'],
-    outputs: ['openChange: tuiPdfViewerChange'],
+    inputs: [`options: tuiPdfViewerOptions`, `open: tuiPdfViewer`],
+    outputs: [`openChange: tuiPdfViewerChange`],
 })
 export class TuiPdfViewerDirective<T> extends AbstractTuiDialogDirective<
     TuiPdfViewerOptions<T>

@@ -25,8 +25,8 @@ const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secon
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 
 @Component({
-    selector: 'example-tui-input-date',
-    templateUrl: './input-date.template.html',
+    selector: `example-tui-input-date`,
+    templateUrl: `./input-date.template.html`,
     changeDetection,
     providers: [
         {
@@ -36,37 +36,37 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
 
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
         'native-date-transformer.directive.ts': import(
-            '!!raw-loader!./examples/5/native-date-transformer.directive.ts'
+            `!!raw-loader!./examples/5/native-date-transformer.directive.ts`
         ),
     };
 
@@ -92,7 +92,7 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Until today')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), `Until today`)],
     ];
 
     readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
@@ -104,9 +104,9 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     items = this.itemsVariants[0];
 
-    autocompleteVariants: TuiAutofillFieldName[] = ['off', 'bday'];
+    autocompleteVariants: TuiAutofillFieldName[] = [`off`, `bday`];
 
-    autocomplete: TuiAutofillFieldName | '' = '';
+    autocomplete: TuiAutofillFieldName | '' = ``;
 
     cleaner = false;
 

@@ -24,9 +24,9 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
-    selector: 'tui-primitive-calendar',
-    templateUrl: './primitive-calendar.template.html',
-    styleUrls: ['./primitive-calendar.style.less'],
+    selector: `tui-primitive-calendar`,
+    templateUrl: `./primitive-calendar.template.html`,
+    styleUrls: [`./primitive-calendar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
@@ -68,7 +68,7 @@ export class TuiPrimitiveCalendarComponent {
         readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
     ) {}
 
-    @HostBinding('class._single')
+    @HostBinding(`class._single`)
     get isSingle(): boolean {
         return (
             this.value !== null &&

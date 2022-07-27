@@ -7,11 +7,11 @@ export interface TuiVersionMeta {
 
 export const TAIGA_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: 'next',
-        baseHref: 'next',
+        label: `next`,
+        baseHref: `next`,
     },
     {
         label: `latest (v${VERSION})`,
-        baseHref: '',
+        baseHref: ``,
     },
 ];

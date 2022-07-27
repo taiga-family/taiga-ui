@@ -10,28 +10,28 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-dropdown',
-    templateUrl: './dropdown.template.html',
-    styleUrls: ['./dropdown.style.less'],
+    selector: `example-tui-dropdown`,
+    templateUrl: `./dropdown.template.html`,
+    styleUrls: [`./dropdown.style.less`],
     changeDetection,
 })
 export class ExampleTuiDropdownComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
     };
 
     tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
@@ -40,21 +40,21 @@ export class ExampleTuiDropdownComponent {
 
     tuiDropdownSided = false;
 
-    alignVariants: TuiHorizontalDirection[] = ['right', 'left'];
+    alignVariants: TuiHorizontalDirection[] = [`right`, `left`];
 
     tuiDropdownAlign = this.alignVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        'top',
-        'bottom',
+        `top`,
+        `bottom`,
     ];
 
     tuiDropdownDirection: TuiVerticalDirection | null = null;
 
     readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
-        'fixed',
-        'min',
-        'auto',
+        `fixed`,
+        `min`,
+        `auto`,
     ];
 
     tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];

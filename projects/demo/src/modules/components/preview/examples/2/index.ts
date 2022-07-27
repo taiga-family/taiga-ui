@@ -5,14 +5,14 @@ import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {TuiDialogContext} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-preview-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-preview-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiPreviewExample2 {
-    @ViewChild('preview')
+    @ViewChild(`preview`)
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     constructor(
@@ -21,6 +21,6 @@ export class TuiPreviewExample2 {
     ) {}
 
     show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview || ``).subscribe();
     }
 }

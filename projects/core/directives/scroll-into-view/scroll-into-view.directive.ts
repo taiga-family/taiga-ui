@@ -10,7 +10,7 @@ import {takeUntil} from 'rxjs/operators';
  */
 // @dynamic
 @Directive({
-    selector: '[tuiScrollIntoView]',
+    selector: `[tuiScrollIntoView]`,
     providers: [TuiDestroyService],
 })
 export class TuiScrollIntoViewDirective {

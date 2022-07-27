@@ -4,5 +4,5 @@ import {Observable} from 'rxjs';
 
 export const TUI_MODE: InjectionToken<Observable<TuiBrightness | null>> =
     new InjectionToken<Observable<TuiBrightness | null>>(
-        'Mode stream for private providers',
+        `Mode stream for private providers`,
     );

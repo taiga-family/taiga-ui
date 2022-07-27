@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-    selector: '[tuiToolbarTool]',
+    selector: `[tuiToolbarTool]`,
 })
 export class TuiToolbarToolDirective {}

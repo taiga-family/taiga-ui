@@ -44,7 +44,7 @@ export const MULTI_SELECT_ACCESSOR = {
 };
 
 @Directive({
-    selector: '[tuiMultiSelectGroup]',
+    selector: `[tuiMultiSelectGroup]`,
     providers: [
         {
             provide: TUI_OPTION_CONTENT,

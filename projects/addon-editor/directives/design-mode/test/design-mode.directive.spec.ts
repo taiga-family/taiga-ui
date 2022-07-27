@@ -6,7 +6,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiDesignModeDirective} from '../design-mode.directive';
 import {TuiDesignModeModule} from '../design-mode.module';
 
-describe('TuiDesignMode directive', () => {
+describe(`TuiDesignMode directive`, () => {
     @Component({
         template: `
             <iframe
@@ -19,12 +19,12 @@ describe('TuiDesignMode directive', () => {
         @ViewChild(TuiDesignModeDirective, {read: ElementRef})
         element!: ElementRef<HTMLIFrameElement>;
 
-        model = '';
+        model = ``;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    const html = '<b>HTML</b>';
+    const html = `<b>HTML</b>`;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -40,12 +40,12 @@ describe('TuiDesignMode directive', () => {
     });
 
     // TODO: Understand why this doesn't work
-    xit('works there', () => {
+    xit(`works there`, () => {
         const documentRef = contentDocument();
 
         if (documentRef) {
             documentRef.body.innerHTML = html;
-            documentRef.dispatchEvent(new Event('input'));
+            documentRef.dispatchEvent(new Event(`input`));
         }
 
         fixture.detectChanges();
@@ -53,7 +53,7 @@ describe('TuiDesignMode directive', () => {
         expect(testComponent.model).toBe(html);
     });
 
-    it('works here', async () => {
+    it(`works here`, async () => {
         testComponent.model = html;
         fixture.detectChanges();
 
@@ -61,7 +61,7 @@ describe('TuiDesignMode directive', () => {
 
         await fixture.whenStable();
 
-        expect(documentRef ? documentRef.body.innerHTML : '').toBe(html);
+        expect(documentRef ? documentRef.body.innerHTML : ``).toBe(html);
     });
 
     function contentDocument(): Document | null {

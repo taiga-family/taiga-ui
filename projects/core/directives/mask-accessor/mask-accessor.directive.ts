@@ -15,7 +15,7 @@ export function fallbackAccessorFactory(
 }
 
 @Directive({
-    selector: 'input[tuiMaskAccessor]',
+    selector: `input[tuiMaskAccessor]`,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

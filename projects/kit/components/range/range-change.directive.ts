@@ -9,7 +9,7 @@ import {TuiRangeComponent} from './range.component';
 
 // @dynamic
 @Directive({
-    selector: 'tui-range',
+    selector: `tui-range`,
     providers: [TuiDestroyService],
 })
 export class TuiRangeChangeDirective {
@@ -18,24 +18,24 @@ export class TuiRangeChangeDirective {
      * Dont forget to use setPointerCapture instead of listening all documentRef events
      */
     private readonly pointerDown$ = merge(
-        typedFromEvent(this.elementRef.nativeElement, 'touchstart', {passive: true}).pipe(
+        typedFromEvent(this.elementRef.nativeElement, `touchstart`, {passive: true}).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.elementRef.nativeElement, 'mousedown', {passive: true}),
+        typedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
     );
 
     private readonly pointerMove$ = merge(
-        typedFromEvent(this.documentRef, 'touchmove').pipe(
+        typedFromEvent(this.documentRef, `touchmove`).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.documentRef, 'mousemove'),
+        typedFromEvent(this.documentRef, `mousemove`),
     );
 
     private readonly pointerUp$ = merge(
-        typedFromEvent(this.documentRef, 'touchend', {passive: true}),
-        typedFromEvent(this.documentRef, 'mouseup', {passive: true}),
+        typedFromEvent(this.documentRef, `touchend`, {passive: true}),
+        typedFromEvent(this.documentRef, `mouseup`, {passive: true}),
     );
 
     @Output()
@@ -70,7 +70,7 @@ export class TuiRangeChangeDirective {
                     this.range.fractionGuard(fraction),
                 );
 
-                this.range.processValue(value, activeThumb === 'right');
+                this.range.processValue(value, activeThumb === `right`);
             });
     }
 
@@ -90,9 +90,9 @@ export class TuiRangeChangeDirective {
 
         switch (target) {
             case leftSliderRef.nativeElement:
-                return 'left';
+                return `left`;
             case rightSliderRef.nativeElement:
-                return 'right';
+                return `right`;
             default:
                 return this.findNearestActiveThumb(clientX);
         }
@@ -106,7 +106,7 @@ export class TuiRangeChangeDirective {
         return Math.abs(deltaLeft) > Math.abs(deltaRight) ||
             deltaRight > 0 ||
             (this.range.left === 0 && this.range.right === 100)
-            ? 'right'
-            : 'left';
+            ? `right`
+            : `left`;
     }
 }

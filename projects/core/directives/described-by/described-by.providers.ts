@@ -19,7 +19,7 @@ import {
 const DELAY = 1000;
 
 export const TUI_DESCRIBED_BY_SHOW = new InjectionToken<Observable<boolean>>(
-    'Accessible tooltip visibility stream',
+    `Accessible tooltip visibility stream`,
 );
 export const TUI_DESCRIBED_BY_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -44,22 +44,22 @@ export function describedByFactory(
                     mapTo(true),
                     takeUntil(
                         merge(
-                            typedFromEvent(nativeElement, 'keydown'),
-                            typedFromEvent(nativeElement, 'blur'),
+                            typedFromEvent(nativeElement, `keydown`),
+                            typedFromEvent(nativeElement, `blur`),
                         ),
                     ),
                 ),
             ),
             switchMapTo(
                 merge(
-                    typedFromEvent(nativeElement, 'keydown').pipe(
-                        filter(({key}) => key === 'Escape'),
+                    typedFromEvent(nativeElement, `keydown`).pipe(
+                        filter(({key}) => key === `Escape`),
                         take(1),
                         stopPropagation(),
                         mapTo(false),
                         startWith(true),
                     ),
-                    typedFromEvent(nativeElement, 'blur').pipe(mapTo(false)),
+                    typedFromEvent(nativeElement, `blur`).pipe(mapTo(false)),
                 ),
             ),
         )

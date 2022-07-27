@@ -20,19 +20,19 @@ class User {
 }
 
 const databaseMockData: readonly User[] = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
-    new User('Dmitriy', 'Demenskiy'),
-    new User('Evgeniy', 'Mamaev'),
-    new User('Ivan', 'Ishmametiev'),
-    new User('Igor', 'Katsuba'),
-    new User('Yulia', 'Tsareva'),
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, avatar),
+    new User(`Dmitriy`, `Demenskiy`),
+    new User(`Evgeniy`, `Mamaev`),
+    new User(`Ivan`, `Ishmametiev`),
+    new User(`Igor`, `Katsuba`),
+    new User(`Yulia`, `Tsareva`),
 ];
 
 @Component({
-    selector: 'tui-select-example-6',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-select-example-6`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

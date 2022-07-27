@@ -87,7 +87,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
         const scrollTop = this.getOffsetForIndex(index);
 
-        if (behavior !== 'smooth') {
+        if (behavior !== `smooth`) {
             this.viewport.scrollToOffset(scrollTop, behavior);
 
             return;

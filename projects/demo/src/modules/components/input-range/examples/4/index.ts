@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-range-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-range-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -15,6 +15,6 @@ export class TuiInputRangeExample4 {
 
     // See https://angular.io/api/common/I18nPluralPipe
     readonly pluralize = {
-        other: '%',
+        other: `%`,
     };
 }

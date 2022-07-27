@@ -13,13 +13,13 @@ export function bumpTuiDeps({
     isPeerDependency,
     ignores,
 }: TuiBumpDepsOptions): void {
-    const prefix = isPeerDependency ? '>=' : '^';
+    const prefix = isPeerDependency ? `>=` : `^`;
     const keys = Object.keys(deps).filter(key => isTuiPackageName(key, ignores));
 
     for (const key of keys) {
-        if (typeof deps[key] === 'string') {
+        if (typeof deps[key] === `string`) {
             deps[key] = `${prefix}${version}`;
-        } else if (deps[key]?.hasOwnProperty('requires')) {
+        } else if (deps[key]?.hasOwnProperty(`requires`)) {
             bumpTuiDeps({
                 deps: (deps[key] as Record<string, Record<string, string>>).requires,
                 isPeerDependency,

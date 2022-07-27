@@ -14,29 +14,29 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-field-error-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-field-error-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiFieldErrorExample3 {
-    @ViewChild('phoneErrorContent')
-    phoneErrorContent: PolymorpheusContent = '';
+    @ViewChild(`phoneErrorContent`)
+    phoneErrorContent: PolymorpheusContent = ``;
 
     testForm = new FormGroup({
         phones: new FormArray(
-            [new FormControl('', [Validators.required, this.getPhoneLengthValidator()])],
+            [new FormControl(``, [Validators.required, this.getPhoneLengthValidator()])],
             [this.getPhoneArrayValidator()],
         ),
     });
 
     get formData(): FormArray {
-        return <FormArray>this.testForm.get('phones');
+        return <FormArray>this.testForm.get(`phones`);
     }
 
     addPhone(): void {
-        this.formData.push(new FormControl('', this.addValidators()));
+        this.formData.push(new FormControl(``, this.addValidators()));
     }
 
     removePhone(index: number): void {
@@ -76,7 +76,7 @@ export class TuiFieldErrorExample3 {
             (!!array.controls.filter(item => item.errors).length && array.controls.length)
                 ? {
                       length: new TuiValidationError(
-                          'You should add at least 2 phone number',
+                          `You should add at least 2 phone number`,
                       ),
                   }
                 : null) as ValidatorFn;

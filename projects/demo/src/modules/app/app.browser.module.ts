@@ -37,7 +37,7 @@ const PRODUCTION_MODULES = environment.production
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
-        BrowserModule.withServerTransition({appId: 'tui-demo'}),
+        BrowserModule.withServerTransition({appId: `tui-demo`}),
         AppRoutingModule,
         BrowserAnimationsModule,
         TuiDocMainModule,

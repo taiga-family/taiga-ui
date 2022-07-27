@@ -4,7 +4,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiComboBoxComponent} from './combo-box.component';
 
 @Directive({
-    selector: 'tui-combo-box[strict]',
+    selector: `tui-combo-box[strict]`,
 })
 export class TuiComboBoxStrictDirective<T> {
     @Input()
@@ -16,7 +16,7 @@ export class TuiComboBoxStrictDirective<T> {
         private readonly comboBox: TuiComboBoxComponent<T | string>,
     ) {}
 
-    @HostListener('input')
+    @HostListener(`input`)
     onInput(): void {
         if (!this.strict && this.comboBox.search) {
             this.comboBox.updateValue(this.comboBox.search);

@@ -19,13 +19,13 @@ export interface TuiButtonOptions {
 export type ButtonOptions = TuiButtonOptions;
 
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
-    size: 'l',
+    size: `l`,
     shape: null,
     appearance: TuiAppearance.Primary,
 };
 
 export const TUI_BUTTON_OPTIONS = new InjectionToken<TuiButtonOptions>(
-    'Default parameters for button component',
+    `Default parameters for button component`,
     {
         factory: () => TUI_BUTTON_DEFAULT_OPTIONS,
     },

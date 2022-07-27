@@ -8,7 +8,7 @@ import {
 
 // TODO: 3.0 change input name to tuiAutoFocus and handle empty string
 @Directive({
-    selector: '[tuiAutoFocus]',
+    selector: `[tuiAutoFocus]`,
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
 export class TuiAutoFocusDirective implements AfterViewInit {

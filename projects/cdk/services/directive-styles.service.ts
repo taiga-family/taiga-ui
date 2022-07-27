@@ -15,7 +15,7 @@ import {TUI_DEFAULT_RENDERER} from '@taiga-ui/cdk/tokens';
  * @dynamic
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiDirectiveStylesService {
     private readonly map = new Map<Type<unknown>, unknown>();
@@ -45,10 +45,10 @@ export class TuiDirectiveStylesService {
             return;
         }
 
-        const style = this.renderer.createElement('style');
+        const style = this.renderer.createElement(`style`);
 
-        this.renderer.setProperty(style, 'textContent', styles);
-        this.renderer.setAttribute(style, attribute, '');
+        this.renderer.setProperty(style, `textContent`, styles);
+        this.renderer.setAttribute(style, attribute, ``);
         this.documentRef.head.appendChild(style);
     }
 }

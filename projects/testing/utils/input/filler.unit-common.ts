@@ -19,7 +19,7 @@ interface TestComponent {
 
 export function tuiTestFiller(
     context: TestParams,
-    setValue: unknown = 'value',
+    setValue: unknown = `value`,
     clearValue: unknown = null,
 ): void {
     let pageObject: TuiPageObject<unknown>;
@@ -27,7 +27,7 @@ export function tuiTestFiller(
     let testComponent: TestComponent;
     let inputPO: TuiNativeInputPO;
 
-    describe('Filler (mask)', () => {
+    describe(`Filler (mask)`, () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -37,17 +37,17 @@ export function tuiTestFiller(
             fixture.detectChanges();
         });
 
-        describe('if there is no value in the field', () => {
+        describe(`if there is no value in the field`, () => {
             beforeEach(() => {
                 testComponent.control.setValue(clearValue);
                 fixture.detectChanges();
             });
 
-            it('not visible', () => {
+            it(`not visible`, () => {
                 expect(getFiller()).toBeNull();
             });
 
-            it('when focusing appears', async () => {
+            it(`when focusing appears`, async () => {
                 inputPO.focus();
                 fixture.detectChanges();
                 await fixture.whenStable();
@@ -55,17 +55,17 @@ export function tuiTestFiller(
             });
         });
 
-        describe('if the field has a value', () => {
+        describe(`if the field has a value`, () => {
             beforeEach(() => {
                 testComponent.control.setValue(setValue);
                 fixture.detectChanges();
             });
 
-            it('not visible', () => {
+            it(`not visible`, () => {
                 expect(getFiller()).toBeNull();
             });
 
-            it('also not visible when focusing', () => {
+            it(`also not visible when focusing`, () => {
                 inputPO.nativeElement.focus();
                 fixture.detectChanges();
 

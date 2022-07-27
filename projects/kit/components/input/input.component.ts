@@ -32,9 +32,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_INPUT_PROVIDERS} from './input.providers';
 
 @Component({
-    selector: 'tui-input',
-    templateUrl: './input.template.html',
-    styleUrls: ['./input.style.less'],
+    selector: `tui-input`,
+    templateUrl: `./input.template.html`,
+    styleUrls: [`./input.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_INPUT_PROVIDERS,
 })
@@ -54,12 +54,12 @@ export class TuiInputComponent
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'left';
+    iconAlign: TuiHorizontalDirection = `left`;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    > = ``;
 
     open = false;
 
@@ -111,7 +111,7 @@ export class TuiInputComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
     private focusInput(preventScroll: boolean = false): void {

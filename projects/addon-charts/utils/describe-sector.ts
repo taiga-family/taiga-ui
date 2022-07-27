@@ -1,6 +1,6 @@
 import {toInt, toRadians} from '@taiga-ui/cdk';
 
-const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
+const EMPTY = `M 100 0 A 100 100 0 1 1 100 0 L 0 0`;
 
 /**
  * @deprecated: use {@link tuiDescribeSector} instead
@@ -22,18 +22,18 @@ export function describeSector(startAngle: number, endAngle: number): string {
     const endY = Math.sin(endRad) * 100;
     const largeArcFlag = toInt(endAngle - startAngle > 180);
     const result = [
-        'M',
+        `M`,
         startX,
         startY,
-        'A 100 100 0',
+        `A 100 100 0`,
         largeArcFlag,
         1,
         endX,
         endY,
-        'L 0 0',
+        `L 0 0`,
     ];
 
-    return isNaN(endX) ? EMPTY : result.join(' ');
+    return isNaN(endX) ? EMPTY : result.join(` `);
 }
 
 export const tuiDescribeSector = describeSector;

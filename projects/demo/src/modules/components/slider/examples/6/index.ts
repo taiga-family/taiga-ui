@@ -6,9 +6,9 @@ import {BehaviorSubject, of, timer} from 'rxjs';
 import {distinctUntilChanged, mapTo, switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-slider-example-6',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-slider-example-6`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -23,8 +23,8 @@ export class TuiSliderExample6 {
         switchMap(active => (active ? of(true) : timer(1000).pipe(mapTo(false)))),
     );
 
-    @HostListener('pointerdown', ['true'])
-    @HostListener('document:pointerup', ['false'])
+    @HostListener(`pointerdown`, [`true`])
+    @HostListener(`document:pointerup`, [`false`])
     onKeydown(show: boolean): void {
         this.active$.next(show);
     }

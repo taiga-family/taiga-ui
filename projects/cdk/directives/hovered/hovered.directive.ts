@@ -15,20 +15,20 @@ export function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
 }
 
 @Directive({
-    selector: '[tuiHoveredChange]',
+    selector: `[tuiHoveredChange]`,
 })
 export class TuiHoveredDirective {
     @Output()
     readonly tuiHoveredChange = new EventEmitter<boolean>();
 
-    @HostListener('mouseenter')
+    @HostListener(`mouseenter`)
     onHover(): void {
         this.tuiHoveredChange.emit(true);
     }
 
     @shouldCall(movedOut)
-    @HostListener('mouseout.init', ['$event'])
-    @HostListener('mouseout.silent', ['$event'])
+    @HostListener(`mouseout.init`, [`$event`])
+    @HostListener(`mouseout.silent`, [`$event`])
     onOut(_: MouseEvent): void {
         this.tuiHoveredChange.emit(false);
     }

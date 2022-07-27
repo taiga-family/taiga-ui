@@ -11,7 +11,7 @@ if (environment.production) {
 const bootstrap = async (): Promise<NgModuleRef<AppBrowserModule>> =>
     platformBrowserDynamic().bootstrapModule(AppBrowserModule);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener(`DOMContentLoaded`, () => {
     setTimeout(() => {
         bootstrap().catch(err => console.error(err));
     });

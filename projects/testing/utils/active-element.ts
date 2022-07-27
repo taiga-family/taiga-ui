@@ -4,7 +4,7 @@ import {createKeyboardEvent} from './keyboard-event';
 
 export function tuiDispatchOnActive<T>(key: string, fixture?: ComponentFixture<T>): void {
     if (document.activeElement) {
-        document.activeElement.dispatchEvent(createKeyboardEvent(key, 'keydown'));
+        document.activeElement.dispatchEvent(createKeyboardEvent(key, `keydown`));
     }
 
     if (fixture) {
@@ -13,7 +13,7 @@ export function tuiDispatchOnActive<T>(key: string, fixture?: ComponentFixture<T
 }
 
 export function tuiActiveText(): string {
-    return document.activeElement?.textContent?.trim() || '';
+    return document.activeElement?.textContent?.trim() || ``;
 }
 
 export function tuiIsActive(element: Element): boolean {

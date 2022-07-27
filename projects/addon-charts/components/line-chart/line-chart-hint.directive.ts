@@ -34,7 +34,7 @@ import {
 import {TuiLineChartComponent} from './line-chart.component';
 
 @Directive({
-    selector: '[tuiLineChartHint]',
+    selector: `[tuiLineChartHint]`,
     providers: [TuiDestroyService],
 })
 export class TuiLineChartHintDirective {
@@ -44,9 +44,9 @@ export class TuiLineChartHintDirective {
     @ContentChildren(forwardRef(() => TuiLineChartComponent), {read: ElementRef})
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @Input('tuiLineChartHint')
+    @Input(`tuiLineChartHint`)
     @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = ``;
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
@@ -87,7 +87,7 @@ export class TuiLineChartHintDirective {
         this.chartsRef.forEach(({nativeElement}, index) =>
             this.renderer.setStyle(
                 nativeElement,
-                'z-index',
+                `z-index`,
                 sorted.indexOf(current[index]),
             ),
         );

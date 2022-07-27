@@ -41,9 +41,9 @@ import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options'
 
 // @dynamic
 @Component({
-    selector: 'tui-input-time',
-    templateUrl: './input-time.template.html',
-    styleUrls: ['./input-time.style.less'],
+    selector: `tui-input-time`,
+    templateUrl: `./input-time.template.html`,
+    styleUrls: [`./input-time.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -123,7 +123,7 @@ export class TuiInputTimeComponent
     }
 
     get computedSearch(): string {
-        return this.computedValue.length !== this.mode.length ? this.computedValue : '';
+        return this.computedValue.length !== this.mode.length ? this.computedValue : ``;
     }
 
     get innerPseudoFocused(): boolean | null {
@@ -143,7 +143,7 @@ export class TuiInputTimeComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
     }
 
     set nativeValue(value: string) {
@@ -159,7 +159,7 @@ export class TuiInputTimeComponent
         return this.timeTexts$.pipe(map(texts => texts[mode]));
     }
 
-    @HostListener('click')
+    @HostListener(`click`)
     onClick(): void {
         this.open = !this.open;
     }
@@ -196,8 +196,8 @@ export class TuiInputTimeComponent
         if (
             focused ||
             this.value !== null ||
-            this.nativeValue === '' ||
-            this.mode === 'HH:MM'
+            this.nativeValue === `` ||
+            this.mode === `HH:MM`
         ) {
             return;
         }
@@ -207,7 +207,7 @@ export class TuiInputTimeComponent
         this.updateValue(parsedTime);
 
         setTimeout(() => {
-            if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
+            if (this.nativeValue.endsWith(`.`) || this.nativeValue.endsWith(`:`)) {
                 this.nativeValue = this.nativeValue.slice(0, -1);
             }
         });
@@ -244,7 +244,7 @@ export class TuiInputTimeComponent
 
     writeValue(value: TuiTime | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
+        this.nativeValue = value ? this.computedValue : ``;
     }
 
     @tuiPure

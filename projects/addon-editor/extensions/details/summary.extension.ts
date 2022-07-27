@@ -5,7 +5,7 @@ export interface TuiSummaryOptions {
 }
 
 export const TuiSummary = Node.create<TuiSummaryOptions>({
-    name: 'summary',
+    name: `summary`,
 
     addOptions() {
         return {
@@ -13,9 +13,9 @@ export const TuiSummary = Node.create<TuiSummaryOptions>({
         };
     },
 
-    content: 'paragraph',
+    content: `paragraph`,
 
-    group: 'block',
+    group: `block`,
 
     parseHTML() {
         return [
@@ -27,7 +27,7 @@ export const TuiSummary = Node.create<TuiSummaryOptions>({
 
     renderHTML({HTMLAttributes}) {
         return [
-            'summary',
+            `summary`,
             mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
             0,
         ];

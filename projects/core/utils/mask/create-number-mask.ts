@@ -16,7 +16,7 @@ const NON_ZERO_DIGIT = /[1-9]/;
  */
 export function tuiCreateNumberMask({
     allowDecimal = false,
-    decimalSymbol = ',',
+    decimalSymbol = `,`,
     thousandSymbol = CHAR_NO_BREAK_SPACE,
     autoCorrectDecimalSymbol = true,
     decimalLimit = 2,
@@ -31,13 +31,13 @@ export function tuiCreateNumberMask({
 
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {
-            const conformedWithoutSeparator = rawValue.split(thousandSymbol).join('');
+            const conformedWithoutSeparator = rawValue.split(thousandSymbol).join(``);
             const previousConformedValueWithoutDecimalSymbolAndSeparator =
                 previousConformedValue
                     .split(thousandSymbol)
-                    .join('')
+                    .join(``)
                     .split(decimalSymbol)
-                    .join('');
+                    .join(``);
 
             // Forbid removal of decimal separator if decimal part is required
             if (
@@ -56,7 +56,7 @@ export function tuiCreateNumberMask({
             isDecimalSymbol(rawValue, decimalSymbol, autoCorrectDecimalSymbol) &&
             allowDecimal
         ) {
-            return ['0', decimalSymbol, TUI_DIGIT_REGEXP];
+            return [`0`, decimalSymbol, TUI_DIGIT_REGEXP];
         }
 
         if (isNegative) {
@@ -70,17 +70,17 @@ export function tuiCreateNumberMask({
         );
         const hasDecimal = decimalIndex !== -1;
         const integer = hasDecimal ? rawValue.slice(0, decimalIndex) : rawValue;
-        const thousandSeparators = integer.match(new RegExp(thousandSymbol, 'g')) || [];
+        const thousandSeparators = integer.match(new RegExp(thousandSymbol, `g`)) || [];
         const integerCapped = integerLimit
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
-        const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, '');
+        const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, ``);
         const [leadingZerosMatch] = integerCappedClean.match(
             TUI_LEADING_ZEROES_REGEXP,
-        ) || [''];
+        ) || [``];
         const leadingZerosAmount = leadingZerosMatch.length;
         const integerCappedZerosClean = integerCappedClean
-            .replace(/^0+(?!\.|$)/, '')
+            .replace(/^0+(?!\.|$)/, ``)
             .trim();
         const withSeparator = addThousandsSeparator(
             integerCappedZerosClean,
@@ -91,7 +91,7 @@ export function tuiCreateNumberMask({
         if ((hasDecimal && allowDecimal) || requireDecimal) {
             const fraction = hasDecimal
                 ? convertToMask(
-                      rawValue.slice(decimalIndex + 1).replace(TUI_NON_DIGITS_REGEXP, ''),
+                      rawValue.slice(decimalIndex + 1).replace(TUI_NON_DIGITS_REGEXP, ``),
                   )
                 : [];
             const fractionCapped = decimalLimit
@@ -109,7 +109,7 @@ export function tuiCreateNumberMask({
             }
         }
 
-        const isOnlyZeroDigit = mask.length === 1 && integerCappedZerosClean === '0';
+        const isOnlyZeroDigit = mask.length === 1 && integerCappedZerosClean === `0`;
 
         if (isNegative) {
             if (mask.length === 0) {
@@ -183,7 +183,7 @@ function isDecimalSymbol(
 
 function convertToMask(strNumber: string): Array<string | RegExp> {
     return strNumber
-        .split('')
+        .split(``)
         .map(char => (TUI_DIGIT_REGEXP.test(char) ? TUI_DIGIT_REGEXP : char));
 }
 

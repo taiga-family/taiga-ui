@@ -4,7 +4,7 @@ const OriginalDate = global.Date;
 
 export function tuiMockCurrentDate(dateOrNumber: Date | number): void {
     const date: Date =
-        typeof dateOrNumber === 'number' ? new OriginalDate(dateOrNumber) : dateOrNumber;
+        typeof dateOrNumber === `number` ? new OriginalDate(dateOrNumber) : dateOrNumber;
 
     class MockDate extends OriginalDate {
         constructor() {
@@ -32,7 +32,7 @@ export function tuiMockDateInside(dateMock: Date | number, callback: () => void)
  * Skips the test on time zones other than `'Europe/Moscow'`.
  */
 export function tuiPendingIfNotMoscowTimeZone(): void {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== 'Europe/Moscow') {
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== `Europe/Moscow`) {
         pending();
     }
 }

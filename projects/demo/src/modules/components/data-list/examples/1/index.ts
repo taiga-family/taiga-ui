@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_ARROW} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-data-list-example-1',
-    templateUrl: './index.html',
+    selector: `tui-data-list-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -17,16 +17,16 @@ export class TuiDataListExample1 {
             label: $localize`Components`,
             items: [
                 {
-                    label: 'Input',
-                    routerLink: '/components/input',
+                    label: `Input`,
+                    routerLink: `/components/input`,
                 },
                 {
-                    label: 'Select',
-                    routerLink: '/components/select',
+                    label: `Select`,
+                    routerLink: `/components/select`,
                 },
                 {
-                    label: 'DataList',
-                    routerLink: '/components/data-list',
+                    label: `DataList`,
+                    routerLink: `/components/data-list`,
                 },
             ],
         },
@@ -35,20 +35,20 @@ export class TuiDataListExample1 {
             items: [
                 {
                     label: $localize`Icons`,
-                    routerLink: '/icons',
+                    routerLink: `/icons`,
                 },
                 {
                     label: $localize`Typography`,
-                    routerLink: '/typography',
+                    routerLink: `/typography`,
                 },
             ],
         },
         {
-            label: '',
+            label: ``,
             items: [
                 {
                     label: $localize`Changelog`,
-                    routerLink: '/changelog',
+                    routerLink: `/changelog`,
                 },
             ],
         },

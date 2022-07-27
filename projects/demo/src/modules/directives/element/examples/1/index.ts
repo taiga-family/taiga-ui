@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-element-example-1',
-    templateUrl: './index.html',
+    selector: `tui-element-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

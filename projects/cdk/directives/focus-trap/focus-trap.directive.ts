@@ -17,9 +17,9 @@ import {
 
 // @dynamic
 @Directive({
-    selector: '[tuiFocusTrap]',
+    selector: `[tuiFocusTrap]`,
     host: {
-        tabIndex: '0',
+        tabIndex: `0`,
     },
 })
 export class TuiFocusTrapDirective implements OnDestroy {
@@ -42,12 +42,12 @@ export class TuiFocusTrapDirective implements OnDestroy {
         });
     }
 
-    @HostListener('blur')
+    @HostListener(`blur`)
     onBlur(): void {
-        this.renderer.removeAttribute(this.elementRef.nativeElement, 'tabIndex');
+        this.renderer.removeAttribute(this.elementRef.nativeElement, `tabIndex`);
     }
 
-    @HostListener('window:focusin.silent', ['$event.target'])
+    @HostListener(`window:focusin.silent`, [`$event.target`])
     onFocusIn(node: Node): void {
         if (containsOrAfter(this.elementRef.nativeElement, node)) {
             return;

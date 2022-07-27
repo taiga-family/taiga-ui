@@ -11,19 +11,19 @@ import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
  * @dynamic
  */
 @Directive({
-    selector: '[tuiOverscroll]',
+    selector: `[tuiOverscroll]`,
     providers: [TuiDestroyService],
 })
 export class TuiOverscrollDirective {
-    @Input('tuiOverscroll')
-    mode: TuiOverscrollModeT | '' = 'scroll';
+    @Input(`tuiOverscroll`)
+    mode: TuiOverscrollModeT | '' = `scroll`;
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        typedFromEvent(nativeElement, 'wheel', {passive: false})
+        typedFromEvent(nativeElement, `wheel`, {passive: false})
             .pipe(
                 filter(() => this.enabled),
                 tuiZonefree(ngZone),
@@ -37,7 +37,7 @@ export class TuiOverscrollDirective {
                 );
             });
 
-        typedFromEvent(nativeElement, 'touchstart', {passive: true})
+        typedFromEvent(nativeElement, `touchstart`, {passive: true})
             .pipe(
                 switchMap(({touches}) => {
                     let {clientX, clientY} = touches[0];
@@ -45,7 +45,7 @@ export class TuiOverscrollDirective {
                     let deltaY = 0;
                     let vertical: boolean;
 
-                    return typedFromEvent(nativeElement, 'touchmove', {
+                    return typedFromEvent(nativeElement, `touchmove`, {
                         passive: false,
                     }).pipe(
                         filter(() => this.enabled),
@@ -77,12 +77,12 @@ export class TuiOverscrollDirective {
     }
 
     get enabled(): boolean {
-        return this.mode !== 'none';
+        return this.mode !== `none`;
     }
 
-    @HostBinding('style.overscrollBehavior')
+    @HostBinding(`style.overscrollBehavior`)
     get overscrollBehavior(): 'contain' | null {
-        return this.enabled ? 'contain' : null;
+        return this.enabled ? `contain` : null;
     }
 
     private processEvent(
@@ -96,14 +96,14 @@ export class TuiOverscrollDirective {
         if (
             !cancelable ||
             !(target instanceof Element) ||
-            (target as HTMLInputElement)?.type === 'range'
+            (target as HTMLInputElement)?.type === `range`
         ) {
             return;
         }
 
         // This is all what's needed in Chrome/Firefox thanks to CSS overscroll-behavior
         if (
-            this.mode === 'all' &&
+            this.mode === `all` &&
             ((vertical && !currentTarget.contains(getScrollParent(target))) ||
                 (!vertical && !currentTarget.contains(getScrollParent(target, false))))
         ) {

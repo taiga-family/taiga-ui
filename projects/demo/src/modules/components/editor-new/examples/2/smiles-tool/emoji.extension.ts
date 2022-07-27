@@ -1,22 +1,22 @@
 import {Extension, GlobalAttributes} from '@tiptap/core';
 
 export const EmojiExtension = Extension.create({
-    name: 'emoji',
+    name: `emoji`,
     addGlobalAttributes(): GlobalAttributes {
         return [
             {
-                types: ['paragraph'],
+                types: [`paragraph`],
                 attributes: {
                     dataType: {
-                        default: '',
+                        default: ``,
                         keepOnSplit: false,
                         renderHTML: ({dataType}) =>
-                            dataType === 'emoji'
+                            dataType === `emoji`
                                 ? {
-                                      style: 'display: inline',
+                                      style: `display: inline`,
                                   }
                                 : null,
-                        parseHTML: element => element.getAttribute('data-type'),
+                        parseHTML: element => element.getAttribute(`data-type`),
                     },
                 },
             },

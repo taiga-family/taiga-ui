@@ -5,7 +5,7 @@
 export function isPresumedHTMLString(candidate: string): boolean {
     const trimmed = candidate.trim();
 
-    return trimmed.startsWith('<') && trimmed.endsWith('>');
+    return trimmed.startsWith(`<`) && trimmed.endsWith(`>`);
 }
 
 export const tuiIsPresumedHTMLString = isPresumedHTMLString;

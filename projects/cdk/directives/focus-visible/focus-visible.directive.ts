@@ -9,8 +9,8 @@ import {Observable} from 'rxjs';
  * @dynamic
  */
 @Directive({
-    selector: '[tuiFocusVisibleChange]',
-    outputs: ['tuiFocusVisibleChange'],
+    selector: `[tuiFocusVisibleChange]`,
+    outputs: [`tuiFocusVisibleChange`],
     providers: [TuiDestroyService, TuiFocusVisibleService],
 })
 export class TuiFocusVisibleDirective {

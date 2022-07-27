@@ -10,15 +10,15 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-code',
-    templateUrl: './code.component.html',
+    selector: `tui-code`,
+    templateUrl: `./code.component.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCodeComponent {
     readonly hintText$ = this.texts$.pipe(map(texts => texts.code));
 
     readonly insideCode$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.isActive('code') || this.editor.isActive('codeBlock')),
+        map(() => this.editor.isActive(`code`) || this.editor.isActive(`codeBlock`)),
         distinctUntilChanged(),
     );
 

@@ -6,8 +6,8 @@ import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {TuiFileLike} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-files-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-files-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -16,27 +16,27 @@ export class TuiInputFilesExample3 {
 
     readonly files: readonly TuiFileLike[] = [
         {
-            name: 'Loaded.txt',
+            name: `Loaded.txt`,
         },
         {
-            name: 'A file with a very very long title to check that it can be cut correctly.txt',
+            name: `A file with a very very long title to check that it can be cut correctly.txt`,
         },
     ];
 
     loadingFile: TuiFileLike | null = {
-        name: 'Loading file.txt',
+        name: `Loading file.txt`,
     };
 
     readonly rejectedFiles: readonly TuiFileLike[] = [
         {
-            name: 'File with an error.txt',
-            content: 'Something went wrong this time',
+            name: `File with an error.txt`,
+            content: `Something went wrong this time`,
         },
     ];
 
     readonly fileWithLink: TuiFileLike = {
-        name: 'with link.txt',
-        src: 'https://tools.ietf.org/html/rfc675',
+        name: `with link.txt`,
+        src: `https://tools.ietf.org/html/rfc675`,
     };
 
     removedFiles = [this.loadingFile as TuiFileLike];

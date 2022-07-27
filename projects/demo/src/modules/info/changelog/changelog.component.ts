@@ -5,14 +5,14 @@ import {of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: 'changelog',
-    templateUrl: 'changelog.template.html',
-    styleUrls: ['./changelog.style.less'],
+    selector: `changelog`,
+    templateUrl: `changelog.template.html`,
+    styleUrls: [`./changelog.style.less`],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class ChangelogComponent {
-    readonly changelog = of(import('!!raw-loader!../../../../../../CHANGELOG.md')).pipe(
+    readonly changelog = of(import(`!!raw-loader!../../../../../../CHANGELOG.md`)).pipe(
         switchMap(rawLoad),
     );
 }

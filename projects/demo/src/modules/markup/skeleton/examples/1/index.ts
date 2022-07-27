@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-skeleton-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-skeleton-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -17,7 +17,7 @@ export class TuiSkeletonExample1 {
 
     skeletonVisible = false;
     lightMode = false;
-    placeholder = 'Some paragraph with information';
+    placeholder = `Some paragraph with information`;
 
     showSkeleton(): void {
         this.skeletonVisible = !this.skeletonVisible;

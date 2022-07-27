@@ -6,7 +6,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPressedModule} from '../pressed.module';
 
-describe('TuiPressed directive', () => {
+describe(`TuiPressed directive`, () => {
     @Component({
         template: `
             <div
@@ -44,52 +44,52 @@ describe('TuiPressed directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        wrapperElement = fixture.debugElement.query(By.css('.wrapper'));
-        innerElement = fixture.debugElement.query(By.css('.inner'));
+        wrapperElement = fixture.debugElement.query(By.css(`.wrapper`));
+        innerElement = fixture.debugElement.query(By.css(`.inner`));
 
         fixture.detectChanges();
     });
 
-    describe('when pressed', () => {
-        it('emits "true"', () => {
-            const event = new MouseEvent('mousedown', {clientX: 5, clientY: 100});
+    describe(`when pressed`, () => {
+        it(`emits "true"`, () => {
+            const event = new MouseEvent(`mousedown`, {clientX: 5, clientY: 100});
 
             innerElement.nativeElement.dispatchEvent(event);
             fixture.detectChanges();
             expect(testComponent.pressed).toBe(true);
         });
 
-        describe('emits "false" after pressing stopped', () => {
-            describe('on initial element via', () => {
-                it('mouseup', () => {
+        describe(`emits "false" after pressing stopped`, () => {
+            describe(`on initial element via`, () => {
+                it(`mouseup`, () => {
                     innerElement.nativeElement.dispatchEvent(
-                        new MouseEvent('mouseup', {bubbles: true}),
+                        new MouseEvent(`mouseup`, {bubbles: true}),
                     );
                     fixture.detectChanges();
                     expect(testComponent.pressed).toBe(false);
                 });
 
-                it('dragend', () => {
+                it(`dragend`, () => {
                     innerElement.nativeElement.dispatchEvent(
-                        new MouseEvent('dragend', {bubbles: true}),
+                        new MouseEvent(`dragend`, {bubbles: true}),
                     );
                     fixture.detectChanges();
                     expect(testComponent.pressed).toBe(false);
                 });
             });
 
-            describe('on other element via', () => {
-                it('mouseup', () => {
+            describe(`on other element via`, () => {
+                it(`mouseup`, () => {
                     wrapperElement.nativeElement.dispatchEvent(
-                        new MouseEvent('mouseup', {bubbles: true}),
+                        new MouseEvent(`mouseup`, {bubbles: true}),
                     );
                     fixture.detectChanges();
                     expect(testComponent.pressed).toBe(false);
                 });
 
-                it('dragend', () => {
+                it(`dragend`, () => {
                     wrapperElement.nativeElement.dispatchEvent(
-                        new MouseEvent('dragend', {bubbles: true}),
+                        new MouseEvent(`dragend`, {bubbles: true}),
                     );
                     fixture.detectChanges();
                     expect(testComponent.pressed).toBe(false);

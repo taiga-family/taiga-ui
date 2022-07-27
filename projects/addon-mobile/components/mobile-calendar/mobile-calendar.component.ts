@@ -57,18 +57,18 @@ import {
 
 // @dynamic
 @Component({
-    selector: 'tui-mobile-calendar',
-    templateUrl: './mobile-calendar.template.html',
-    styleUrls: ['./mobile-calendar.style.less'],
+    selector: `tui-mobile-calendar`,
+    templateUrl: `./mobile-calendar.template.html`,
+    styleUrls: [`./mobile-calendar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS'},
+    host: {'[class._ios]': `isIOS`},
 })
 export class TuiMobileCalendarComponent {
-    @ViewChild('yearsScrollRef')
+    @ViewChild(`yearsScrollRef`)
     private readonly yearsScrollRef?: CdkVirtualScrollViewport;
 
-    @ViewChild('monthsScrollRef')
+    @ViewChild(`monthsScrollRef`)
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     private readonly today = TuiDay.currentLocal();
@@ -174,11 +174,11 @@ export class TuiMobileCalendarComponent {
 
     getState(index: number): 'active' | 'adjacent' | null {
         if (this.isYearActive(index)) {
-            return 'active';
+            return `active`;
         }
 
         if (this.isYearActive(index - 1) || this.isYearActive(index + 1)) {
-            return 'adjacent';
+            return `adjacent`;
         }
 
         return null;
@@ -209,7 +209,7 @@ export class TuiMobileCalendarComponent {
 
         this.activeMonth += this.getMonthOffset(year);
         this.activeYear = year;
-        this.scrollToActiveYear('smooth');
+        this.scrollToActiveYear(`smooth`);
 
         // Delay is required to run months scroll in the next frame to prevent flicker
         setTimeout(() => {
@@ -288,13 +288,13 @@ export class TuiMobileCalendarComponent {
 
         const touchstart$ = typedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
-            'touchstart',
+            `touchstart`,
         );
         const touchend$ = typedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
-            'touchend',
+            `touchend`,
         );
-        const click$ = typedFromEvent(yearsScrollRef.elementRef.nativeElement, 'click');
+        const click$ = typedFromEvent(yearsScrollRef.elementRef.nativeElement, `click`);
 
         // Refresh activeYear
         yearsScrollRef
@@ -339,7 +339,7 @@ export class TuiMobileCalendarComponent {
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {
-                this.scrollToActiveYear('smooth');
+                this.scrollToActiveYear(`smooth`);
             });
     }
 
@@ -352,12 +352,12 @@ export class TuiMobileCalendarComponent {
 
         const touchstart$ = typedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
-            'touchstart',
+            `touchstart`,
             {passive: true},
         );
         const touchend$ = typedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
-            'touchend',
+            `touchend`,
         );
 
         // Smooth scroll to the closest month after scrolling is done
@@ -377,7 +377,7 @@ export class TuiMobileCalendarComponent {
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {
-                this.scrollToActiveMonth('smooth');
+                this.scrollToActiveMonth(`smooth`);
             });
     }
 

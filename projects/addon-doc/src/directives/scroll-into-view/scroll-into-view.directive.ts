@@ -10,7 +10,7 @@ import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
  * TODO: remove in v3.0
  */
 @Directive({
-    selector: '[scrollIntoView]',
+    selector: `[scrollIntoView]`,
     providers: [TuiDestroyService],
 })
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -43,7 +43,7 @@ export class ScrollIntoViewDirective {
 }
 
 @Directive({
-    selector: '[tuiScrollIntoViewLink]',
+    selector: `[tuiScrollIntoViewLink]`,
     providers: [TuiDestroyService],
 })
 export class TuiScrollIntoViewLinkDirective extends ScrollIntoViewDirective {}

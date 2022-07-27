@@ -10,7 +10,7 @@ import {
     TUI_INPUT_COUNT_OPTIONS,
 } from '../input-count-options';
 
-describe('InputCount', () => {
+describe(`InputCount`, () => {
     @Component({
         template: `
             <tui-input-count
@@ -50,7 +50,7 @@ describe('InputCount', () => {
     let inputPO: TuiNativeInputPO;
     const testContext = {
         get prefix() {
-            return 'tui-input-count__';
+            return `tui-input-count__`;
         },
     };
 
@@ -69,38 +69,38 @@ describe('InputCount', () => {
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('Initialization', () => {
-        describe('Value not passed', () => {
+    describe(`Initialization`, () => {
+        describe(`Value not passed`, () => {
             beforeEach(() => {
                 testComponent.defaultStep = true;
                 fixture.detectChanges();
             });
 
-            it('During initialization, fallback value 0 is displayed, control does not change values', async () => {
+            it(`During initialization, fallback value 0 is displayed, control does not change values`, async () => {
                 await fixture.whenStable();
 
-                expect(inputPO.value).toBe('0');
+                expect(inputPO.value).toBe(`0`);
                 expect(testComponent.control.value).toBe(null);
             });
         });
 
-        describe('The value was passed when creating the control', () => {
+        describe(`The value was passed when creating the control`, () => {
             beforeEach(() => {
                 testComponent.control.setValue(12);
                 testComponent.defaultStep = true;
                 fixture.detectChanges();
             });
 
-            it('Value does not change during initialization', async () => {
+            it(`Value does not change during initialization`, async () => {
                 await fixture.whenStable();
-                expect(inputPO.value).toBe('12');
+                expect(inputPO.value).toBe(`12`);
                 expect(testComponent.control.value).toBe(12);
             });
         });
     });
 
-    describe('Change value using buttons', () => {
-        describe('step not set', () => {
+    describe(`Change value using buttons`, () => {
+        describe(`step not set`, () => {
             beforeEach(async () => {
                 testComponent.defaultStep = true;
                 testComponent.control.setValue(1);
@@ -108,37 +108,37 @@ describe('InputCount', () => {
                 await fixture.whenStable();
             });
 
-            it('Pressing the plus increases the value by 1', () => {
+            it(`Pressing the plus increases the value by 1`, () => {
                 clickPlusButton();
 
-                expect(inputPO.value).toBe('2');
+                expect(inputPO.value).toBe(`2`);
                 expect(testComponent.control.value).toBe(2);
             });
 
-            it('Pressing the minus decreases the value by 1', () => {
+            it(`Pressing the minus decreases the value by 1`, () => {
                 clickMinusButton();
 
-                expect(inputPO.value).toBe('0');
+                expect(inputPO.value).toBe(`0`);
                 expect(testComponent.control.value).toBe(0);
             });
 
-            it('With readOnly, plus and minus presses are ignored', () => {
+            it(`With readOnly, plus and minus presses are ignored`, () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
                 clickPlusButton();
 
-                expect(inputPO.value).toBe('1');
+                expect(inputPO.value).toBe(`1`);
                 expect(testComponent.control.value).toBe(1);
 
                 clickMinusButton();
 
-                expect(inputPO.value).toBe('1');
+                expect(inputPO.value).toBe(`1`);
                 expect(testComponent.control.value).toBe(1);
             });
         });
 
-        describe('Negative range is set', () => {
+        describe(`Negative range is set`, () => {
             beforeEach(() => {
                 testComponent.defaultStep = true;
                 testComponent.control.setValue(-17);
@@ -147,25 +147,25 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('Pressing the plus increases the value by 1', async () => {
+            it(`Pressing the plus increases the value by 1`, async () => {
                 clickPlusButton();
 
                 // Should wait for the mask updating
                 await fixture.whenStable();
-                expect(inputPO.value).toBe('-16');
+                expect(inputPO.value).toBe(`-16`);
                 expect(testComponent.control.value).toBe(-16);
             });
 
-            it('Pressing the minus decreases the value by 1', async () => {
+            it(`Pressing the minus decreases the value by 1`, async () => {
                 clickMinusButton();
 
                 await fixture.whenStable();
-                expect(inputPO.value).toBe('-18');
+                expect(inputPO.value).toBe(`-18`);
                 expect(testComponent.control.value).toBe(-18);
             });
         });
 
-        describe('A step other than 1 is set', () => {
+        describe(`A step other than 1 is set`, () => {
             beforeEach(() => {
                 testComponent.customStep = true;
                 testComponent.control.setValue(6);
@@ -175,29 +175,29 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('Pressing the plus increases the value by the specified step', () => {
+            it(`Pressing the plus increases the value by the specified step`, () => {
                 clickPlusButton();
 
-                expect(inputPO.value).toBe('11');
+                expect(inputPO.value).toBe(`11`);
                 expect(testComponent.control.value).toBe(11);
             });
 
-            it('Pressing the "minus" decreases the value by a given step', () => {
+            it(`Pressing the "minus" decreases the value by a given step`, () => {
                 clickMinusButton();
 
-                expect(inputPO.value).toBe('1');
+                expect(inputPO.value).toBe(`1`);
                 expect(testComponent.control.value).toBe(1);
             });
 
-            it('Cannot make value greater than maxValue', () => {
+            it(`Cannot make value greater than maxValue`, () => {
                 clickPlusButton(); // the new value is 11
                 clickPlusButton(); // the new value would be 16, but it is greater than maxValue
 
-                expect(inputPO.value).toBe('12');
+                expect(inputPO.value).toBe(`12`);
                 expect(testComponent.control.value).toBe(12);
             });
 
-            it('Cannot make value less than min', () => {
+            it(`Cannot make value less than min`, () => {
                 clickMinusButton(); // value became === 1
                 clickMinusButton(); // the new value would be -4, but it's less than min
 
@@ -205,7 +205,7 @@ describe('InputCount', () => {
                 expect(testComponent.control.value).toBe(testComponent.min);
             });
 
-            it('If the value is equal to the maximum, the "plus" button is disabled', async () => {
+            it(`If the value is equal to the maximum, the "plus" button is disabled`, async () => {
                 testComponent.control.setValue(12);
                 fixture.detectChanges();
 
@@ -214,7 +214,7 @@ describe('InputCount', () => {
                 expect(testComponent.component.plusButtonDisabled).toBe(true);
             });
 
-            it('If the value is equal to the minimum, the "minus" button is disabled', async () => {
+            it(`If the value is equal to the minimum, the "minus" button is disabled`, async () => {
                 testComponent.control.setValue(testComponent.min);
                 fixture.detectChanges();
 
@@ -225,54 +225,54 @@ describe('InputCount', () => {
         });
     });
 
-    describe('Changing a value using a text box', () => {
+    describe(`Changing a value using a text box`, () => {
         beforeEach(() => {
             testComponent.defaultStep = true;
         });
 
-        it('Entering in the field changes the valuecontrol', () => {
+        it(`Entering in the field changes the valuecontrol`, () => {
             fixture.detectChanges();
 
-            inputPO.sendText('12');
+            inputPO.sendText(`12`);
 
             expect(testComponent.control.value).toBe(12);
         });
 
-        it('Entering a large number in the field changes the value to the limit', () => {
+        it(`Entering a large number in the field changes the value to the limit`, () => {
             fixture.detectChanges();
 
-            inputPO.sendText('43000789');
+            inputPO.sendText(`43000789`);
 
             expect(testComponent.control.value).toBe(testComponent.max);
         });
 
-        it('If you enter a number less than min, the new value is min', async () => {
+        it(`If you enter a number less than min, the new value is min`, async () => {
             testComponent.min = 10;
             fixture.detectChanges();
 
-            inputPO.sendTextAndBlur('7');
+            inputPO.sendTextAndBlur(`7`);
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe('10');
+            expect(inputPO.value).toBe(`10`);
             expect(testComponent.control.value).toBe(10);
         });
 
-        it('If you enter a number greater than max, the new value is max', () => {
+        it(`If you enter a number greater than max, the new value is max`, () => {
             testComponent.max = 10;
             fixture.detectChanges();
 
-            inputPO.sendTextAndBlur('15');
+            inputPO.sendTextAndBlur(`15`);
 
-            expect(inputPO.value).toBe('10');
+            expect(inputPO.value).toBe(`10`);
             expect(testComponent.control.value).toBe(10);
         });
 
-        it('If you erase the field contents, the minimum value is restored', async () => {
+        it(`If you erase the field contents, the minimum value is restored`, async () => {
             testComponent.control.setValue(123);
             fixture.detectChanges();
 
-            inputPO.sendText('');
+            inputPO.sendText(``);
             testComponent.component.onFocused(false);
 
             fixture.detectChanges();
@@ -283,17 +283,17 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(0);
         });
 
-        it('Entering in the field negative value changes the valuecontrol correctly', () => {
+        it(`Entering in the field negative value changes the valuecontrol correctly`, () => {
             testComponent.min = -100;
             fixture.detectChanges();
 
-            inputPO.sendText('-12');
+            inputPO.sendText(`-12`);
 
             expect(testComponent.control.value).toBe(-12);
         });
     });
 
-    describe('Changing the value using the arrows on the keyboard', () => {
+    describe(`Changing the value using the arrows on the keyboard`, () => {
         beforeEach(() => {
             testComponent.customStep = true;
             testComponent.control.setValue(10);
@@ -303,37 +303,37 @@ describe('InputCount', () => {
             fixture.detectChanges();
         });
 
-        it('Pressing the up arrow increases the value by the specified step', () => {
-            inputPO.sendKeydown('ArrowUp');
+        it(`Pressing the up arrow increases the value by the specified step`, () => {
+            inputPO.sendKeydown(`ArrowUp`);
 
-            expect(inputPO.value).toBe('15');
+            expect(inputPO.value).toBe(`15`);
             expect(testComponent.control.value).toBe(15);
         });
 
-        it('Pressing the down arrow decreases the value by the specified step', () => {
-            inputPO.sendKeydown('ArrowDown');
+        it(`Pressing the down arrow decreases the value by the specified step`, () => {
+            inputPO.sendKeydown(`ArrowDown`);
 
-            expect(inputPO.value).toBe('5');
+            expect(inputPO.value).toBe(`5`);
             expect(testComponent.control.value).toBe(5);
         });
 
-        it('Cannot make value greater than maxValue', () => {
-            inputPO.sendKeydown('ArrowUp'); // value became === 15
-            inputPO.sendKeydown('ArrowUp'); // value should have become 20, but it's > maxValue
+        it(`Cannot make value greater than maxValue`, () => {
+            inputPO.sendKeydown(`ArrowUp`); // value became === 15
+            inputPO.sendKeydown(`ArrowUp`); // value should have become 20, but it's > maxValue
 
-            expect(inputPO.value).toBe('17');
+            expect(inputPO.value).toBe(`17`);
             expect(testComponent.control.value).toBe(17);
         });
 
-        it('Cannot make value less than min', () => {
-            inputPO.sendKeydown('ArrowDown'); // value became === 5
-            inputPO.sendKeydown('ArrowDown'); // value should have become 0, but it's < min
+        it(`Cannot make value less than min`, () => {
+            inputPO.sendKeydown(`ArrowDown`); // value became === 5
+            inputPO.sendKeydown(`ArrowDown`); // value should have become 0, but it's < min
 
-            expect(inputPO.value).toBe('2');
+            expect(inputPO.value).toBe(`2`);
             expect(testComponent.control.value).toBe(2);
         });
 
-        it('Pressing the up arrow increases the negative value by the specified step', async () => {
+        it(`Pressing the up arrow increases the negative value by the specified step`, async () => {
             testComponent.control.setValue(-10);
             testComponent.step = 5;
             testComponent.min = -20;
@@ -343,11 +343,11 @@ describe('InputCount', () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe('-5');
+            expect(inputPO.value).toBe(`-5`);
             expect(testComponent.control.value).toBe(-5);
         });
 
-        it('Pressing the down arrow decreases the negative value by the specified step', async () => {
+        it(`Pressing the down arrow decreases the negative value by the specified step`, async () => {
             testComponent.control.setValue(-10);
             testComponent.step = 5;
             testComponent.min = -20;
@@ -357,16 +357,16 @@ describe('InputCount', () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe('-15');
+            expect(inputPO.value).toBe(`-15`);
             expect(testComponent.control.value).toBe(-15);
         });
     });
 
-    it('maxlength is set to 18 by default', () => {
+    it(`maxlength is set to 18 by default`, () => {
         testComponent.defaultStep = true;
         fixture.detectChanges();
 
-        expect(inputPO.nativeElement.getAttribute('maxlength')).toBe('18');
+        expect(inputPO.nativeElement.getAttribute(`maxlength`)).toBe(`18`);
     });
 
     function clickPlusButton(): void {
@@ -392,7 +392,7 @@ describe('InputCount', () => {
     }
 });
 
-describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
+describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
     @Component({
         template: `
             <tui-input-count
@@ -427,8 +427,8 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
                     useValue: {
                         ...TUI_INPUT_COUNT_DEFAULT_OPTIONS,
                         icons: {
-                            up: 'tuiIconChevronUp',
-                            down: 'tuiIconChevronDown',
+                            up: `tuiIconChevronUp`,
+                            down: `tuiIconChevronDown`,
                         },
                         step,
                         min,
@@ -446,27 +446,27 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('A step other than 1 is set', () => {
+    describe(`A step other than 1 is set`, () => {
         beforeEach(() => {
             testComponent.control.setValue(6);
             fixture.detectChanges();
         });
 
-        it('Increase the value by the specified step', () => {
+        it(`Increase the value by the specified step`, () => {
             testComponent.component.increaseValue();
 
-            expect(inputPO.value).toBe('11');
+            expect(inputPO.value).toBe(`11`);
             expect(testComponent.control.value).toBe(11);
         });
 
-        it('Decrease the value by a given step', () => {
+        it(`Decrease the value by a given step`, () => {
             testComponent.component.decreaseValue();
 
-            expect(inputPO.value).toBe('1');
+            expect(inputPO.value).toBe(`1`);
             expect(testComponent.control.value).toBe(1);
         });
 
-        it('Cannot make value greater than maxValue', () => {
+        it(`Cannot make value greater than maxValue`, () => {
             testComponent.component.increaseValue(); // the new value is 11
             testComponent.component.increaseValue(); // the new value would be 16, but it is greater than maxValue
 
@@ -474,7 +474,7 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
             expect(testComponent.control.value).toBe(max);
         });
 
-        it('Cannot make value less than min', () => {
+        it(`Cannot make value less than min`, () => {
             testComponent.component.decreaseValue(); // value became === 1
             testComponent.component.decreaseValue(); // the new value would be -4, but it's less than min
 

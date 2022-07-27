@@ -18,12 +18,12 @@ export function setNativeMouseFocused(
         return;
     }
 
-    if (typeof Event === 'function') {
-        element.dispatchEvent(new Event('mousedown', {bubbles: true, cancelable: true}));
+    if (typeof Event === `function`) {
+        element.dispatchEvent(new Event(`mousedown`, {bubbles: true, cancelable: true}));
     } else {
-        const event = element.ownerDocument.createEvent('Event');
+        const event = element.ownerDocument.createEvent(`Event`);
 
-        event.initEvent('mousedown', true, true);
+        event.initEvent(`mousedown`, true, true);
         element.dispatchEvent(event);
     }
 

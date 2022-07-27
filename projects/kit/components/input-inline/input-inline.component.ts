@@ -22,9 +22,9 @@ import {
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 
 @Component({
-    selector: 'tui-input-inline',
-    templateUrl: './input-inline.template.html',
-    styleUrls: ['./input-inline.style.less'],
+    selector: `tui-input-inline`,
+    templateUrl: `./input-inline.template.html`,
+    styleUrls: [`./input-inline.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,
@@ -38,7 +38,7 @@ export class TuiInputInlineComponent
     extends AbstractTuiControl<string | number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('native')
+    @ViewChild(`native`)
     private readonly native?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -64,7 +64,7 @@ export class TuiInputInlineComponent
     }
 
     get hasValue(): boolean {
-        return this.value !== '';
+        return this.value !== ``;
     }
 
     onValueChange(value: string): void {
@@ -76,6 +76,6 @@ export class TuiInputInlineComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

@@ -24,9 +24,9 @@ const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
 
 @Component({
-    selector: 'tui-primitive-year-picker',
-    templateUrl: './primitive-year-picker.template.html',
-    styleUrls: ['./primitive-year-picker.style.less'],
+    selector: `tui-primitive-year-picker`,
+    templateUrl: `./primitive-year-picker.template.html`,
+    styleUrls: [`./primitive-year-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearPickerComponent {
@@ -57,7 +57,7 @@ export class TuiPrimitiveYearPickerComponent {
     @Output()
     readonly yearClick = new EventEmitter<TuiYear>();
 
-    @HostBinding('class._single')
+    @HostBinding(`class._single`)
     get isSingle(): boolean {
         const {value} = this;
 

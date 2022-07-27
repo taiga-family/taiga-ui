@@ -4,7 +4,7 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 import {tuiCreateUnfinishedValidator} from '@taiga-ui/kit/validators';
 
 @Directive({
-    selector: '[tuiUnfinishedValidator]',
+    selector: `[tuiUnfinishedValidator]`,
     providers: [
         {
             provide: NG_VALIDATORS,
@@ -16,13 +16,13 @@ import {tuiCreateUnfinishedValidator} from '@taiga-ui/kit/validators';
 export class TuiUnfinishedValidatorDirective implements Validator {
     readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
-        this.message || '',
+        this.message || ``,
     );
 
     constructor(
         @Inject(Injector)
         private readonly injector: Injector,
-        @Attribute('tuiUnfinishedValidator')
+        @Attribute(`tuiUnfinishedValidator`)
         private readonly message: string | null,
     ) {}
 }

@@ -5,9 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-input-slider-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-slider-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -23,11 +23,11 @@ export class TuiInputSliderExample5 {
     }: TuiContextWithImplicit<number>): string | number => {
         switch ($implicit) {
             case this.max:
-                return "Digits can't describe my love!";
+                return `Digits can't describe my love!`;
             case this.min:
-                return 'Just a label for min value';
+                return `Just a label for min value`;
             case (this.max - this.min) / 2:
-                return 'Middle';
+                return `Middle`;
             default:
                 return $implicit;
         }

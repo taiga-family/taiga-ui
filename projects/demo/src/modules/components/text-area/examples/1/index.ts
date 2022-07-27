@@ -4,15 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-text-area-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-text-area-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiTextAreaExample1 {
     testForm = new FormGroup({
-        testValue1: new FormControl('A field', Validators.required),
-        testValue2: new FormControl('This one can be expanded', Validators.required),
+        testValue1: new FormControl(`A field`, Validators.required),
+        testValue2: new FormControl(`This one can be expanded`, Validators.required),
     });
 }

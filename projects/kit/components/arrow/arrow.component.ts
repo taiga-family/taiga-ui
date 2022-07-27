@@ -10,9 +10,9 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
 
 @Component({
-    selector: 'tui-arrow',
-    templateUrl: './arrow.template.html',
-    styleUrls: ['./arrow.style.less'],
+    selector: `tui-arrow`,
+    templateUrl: `./arrow.template.html`,
+    styleUrls: [`./arrow.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArrowComponent {

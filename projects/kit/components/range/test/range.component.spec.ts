@@ -8,7 +8,7 @@ import {createKeyboardEvent, TuiPageObject} from '@taiga-ui/testing';
 import {TuiRangeComponent} from '../range.component';
 import {TuiRangeModule} from '../range.module';
 
-describe('Range', () => {
+describe(`Range`, () => {
     @Component({
         template: `
             <tui-root>
@@ -43,11 +43,11 @@ describe('Range', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    const keydownArrowLeft = createKeyboardEvent('ArrowLeft', 'keydown');
-    const keydownArrowRight = createKeyboardEvent('ArrowRight', 'keydown');
+    const keydownArrowLeft = createKeyboardEvent(`ArrowLeft`, `keydown`);
+    const keydownArrowRight = createKeyboardEvent(`ArrowRight`, `keydown`);
     const testContext = {
         get prefix() {
-            return 'tui-range__';
+            return `tui-range__`;
         },
     };
 
@@ -63,8 +63,8 @@ describe('Range', () => {
         const computedStyles = testComponent.elementRef.nativeElement;
 
         return {
-            left: getComputedStyle(computedStyles).getPropertyValue('--left'),
-            right: getComputedStyle(computedStyles).getPropertyValue('--right'),
+            left: getComputedStyle(computedStyles).getPropertyValue(`--left`),
+            right: getComputedStyle(computedStyles).getPropertyValue(`--right`),
         };
     }
 
@@ -80,78 +80,78 @@ describe('Range', () => {
         fixture.detectChanges();
     });
 
-    it('The bar is filled from 20% to 40%', () => {
-        expect(getFilledRangeOffeset().left).toBe('20%');
-        expect(getFilledRangeOffeset().right).toBe('60%');
+    it(`The bar is filled from 20% to 40%`, () => {
+        expect(getFilledRangeOffeset().left).toBe(`20%`);
+        expect(getFilledRangeOffeset().right).toBe(`60%`);
     });
 
-    describe('Changing values', () => {
-        describe('Left point', () => {
-            it('Pressing the left arrow decreases the value by one step', () => {
+    describe(`Changing values`, () => {
+        describe(`Left point`, () => {
+            it(`Pressing the left arrow decreases the value by one step`, () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
 
                 expect(testComponent.testValue.value[0]).toBe(2);
                 expect(testComponent.testValue.value[1]).toBe(5);
             });
 
-            it('Pressing the right arrow increases the value by one step', () => {
+            it(`Pressing the right arrow increases the value by one step`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
 
                 expect(testComponent.testValue.value[0]).toBe(4);
                 expect(testComponent.testValue.value[1]).toBe(5);
             });
 
-            it('Pressing the left arrow correctly paints the strip', () => {
+            it(`Pressing the left arrow correctly paints the strip`, () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe('10%');
-                expect(getFilledRangeOffeset().right).toBe('60%');
+                expect(getFilledRangeOffeset().left).toBe(`10%`);
+                expect(getFilledRangeOffeset().right).toBe(`60%`);
             });
 
-            it('Pressing the right arrow correctly paints the strip', () => {
+            it(`Pressing the right arrow correctly paints the strip`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe('30%');
-                expect(getFilledRangeOffeset().right).toBe('60%');
+                expect(getFilledRangeOffeset().left).toBe(`30%`);
+                expect(getFilledRangeOffeset().right).toBe(`60%`);
             });
         });
 
-        describe('Right point', () => {
-            it('Pressing the left arrow decreases the value by one step', () => {
+        describe(`Right point`, () => {
+            it(`Pressing the left arrow decreases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
 
                 expect(testComponent.testValue.value[0]).toBe(3);
                 expect(testComponent.testValue.value[1]).toBe(4);
             });
 
-            it('Pressing the right arrow increases the value by one step', () => {
+            it(`Pressing the right arrow increases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowRight);
 
                 expect(testComponent.testValue.value[0]).toBe(3);
                 expect(testComponent.testValue.value[1]).toBe(6);
             });
 
-            it('Pressing the left arrow correctly paints the strip', () => {
+            it(`Pressing the left arrow correctly paints the strip`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe('20%');
-                expect(getFilledRangeOffeset().right).toBe('70%');
+                expect(getFilledRangeOffeset().left).toBe(`20%`);
+                expect(getFilledRangeOffeset().right).toBe(`70%`);
             });
 
-            it('Pressing the right arrow correctly paints the strip', () => {
+            it(`Pressing the right arrow correctly paints the strip`, () => {
                 getRight().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe('20%');
-                expect(getFilledRangeOffeset().right).toBe('50%');
+                expect(getFilledRangeOffeset().left).toBe(`20%`);
+                expect(getFilledRangeOffeset().right).toBe(`50%`);
             });
         });
 
-        describe('Borders', () => {
-            it('Prevents the left border from exceeding the right', () => {
+        describe(`Borders`, () => {
+            it(`Prevents the left border from exceeding the right`, () => {
                 testComponent.testValue.setValue([5, 5]);
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
@@ -159,7 +159,7 @@ describe('Range', () => {
                 expect(testComponent.testValue.value[0]).toBe(5);
             });
 
-            it('Prevents the right border from dropping below the left', () => {
+            it(`Prevents the right border from dropping below the left`, () => {
                 testComponent.testValue.setValue([5, 5]);
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
@@ -167,7 +167,7 @@ describe('Range', () => {
                 expect(testComponent.testValue.value[1]).toBe(5);
             });
 
-            it('Prevents the value from decreasing below the minimum', () => {
+            it(`Prevents the value from decreasing below the minimum`, () => {
                 testComponent.testValue.setValue([1, 11]);
                 getLeft().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
@@ -175,7 +175,7 @@ describe('Range', () => {
                 expect(testComponent.testValue.value[0]).toBe(1);
             });
 
-            it('Prevents the value from exceeding the maximum', () => {
+            it(`Prevents the value from exceeding the maximum`, () => {
                 testComponent.testValue.setValue([1, 11]);
                 getRight().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
@@ -183,7 +183,7 @@ describe('Range', () => {
                 expect(testComponent.testValue.value[1]).toBe(11);
             });
 
-            it('Adds a value to the closest allowed step', () => {
+            it(`Adds a value to the closest allowed step`, () => {
                 testComponent.testValue.setValue([3.3, 5]);
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
@@ -192,7 +192,7 @@ describe('Range', () => {
             });
         });
 
-        describe('Quantum', () => {
+        describe(`Quantum`, () => {
             beforeEach(() => {
                 testComponent.min = 0;
                 testComponent.max = 10;
@@ -202,21 +202,21 @@ describe('Range', () => {
                 fixture.detectChanges();
             });
 
-            it('Pressing the right arrow without specified steps increases the value by one quantum', () => {
+            it(`Pressing the right arrow without specified steps increases the value by one quantum`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
                 expect(testComponent.testValue.value[0]).toBe(1.1);
             });
 
-            it('Pressing the left arrow without specified steps decreases the value by one step', () => {
+            it(`Pressing the left arrow without specified steps decreases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
                 expect(testComponent.testValue.value[1]).toBe(4.9);
             });
 
-            it('Adds a value to the closest allowed step and round to the closest quantum', () => {
+            it(`Adds a value to the closest allowed step and round to the closest quantum`, () => {
                 testComponent.testValue.setValue([0, 10]);
                 testComponent.quantum = 1;
                 testComponent.steps = 3;
@@ -229,7 +229,7 @@ describe('Range', () => {
             });
         });
 
-        describe('keySteps', () => {
+        describe(`keySteps`, () => {
             beforeEach(() => {
                 testComponent.keySteps = [
                     [0, 0],
@@ -245,43 +245,43 @@ describe('Range', () => {
             const testsContexts = [
                 {
                     value: [0, 10_000],
-                    leftOffset: '0%',
-                    rightOffset: '75%',
+                    leftOffset: `0%`,
+                    rightOffset: `75%`,
                 },
                 {
                     value: [10_000, 10_000],
-                    leftOffset: '25%',
-                    rightOffset: '75%',
+                    leftOffset: `25%`,
+                    rightOffset: `75%`,
                 },
                 {
                     value: [10_000, 100_000],
-                    leftOffset: '25%',
-                    rightOffset: '50%',
+                    leftOffset: `25%`,
+                    rightOffset: `50%`,
                 },
                 {
                     value: [100_000, 100_000],
-                    leftOffset: '50%',
-                    rightOffset: '50%',
+                    leftOffset: `50%`,
+                    rightOffset: `50%`,
                 },
                 {
                     value: [100_000, 500_000],
-                    leftOffset: '50%',
-                    rightOffset: '25%',
+                    leftOffset: `50%`,
+                    rightOffset: `25%`,
                 },
                 {
                     value: [500_000, 500_000],
-                    leftOffset: '75%',
-                    rightOffset: '25%',
+                    leftOffset: `75%`,
+                    rightOffset: `25%`,
                 },
                 {
                     value: [500_000, 750_000],
-                    leftOffset: '75%',
-                    rightOffset: '12.5%',
+                    leftOffset: `75%`,
+                    rightOffset: `12.5%`,
                 },
                 {
                     value: [750_000, 1_000_000],
-                    leftOffset: '87.5%',
-                    rightOffset: '0%',
+                    leftOffset: `87.5%`,
+                    rightOffset: `0%`,
                 },
             ] as const;
 

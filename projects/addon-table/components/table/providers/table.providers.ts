@@ -31,7 +31,7 @@ export function inputCountOptionsFactory(
 export const TUI_TABLE_PROVIDERS = [
     {
         provide: INTERSECTION_ROOT_MARGIN,
-        useValue: '10000px 10000px 10000px 0px',
+        useValue: `10000px 10000px 10000px 0px`,
     },
     {
         provide: INTERSECTION_THRESHOLD,
@@ -40,7 +40,7 @@ export const TUI_TABLE_PROVIDERS = [
     {
         provide: TUI_TEXTFIELD_APPEARANCE,
         // TODO: 3.0 remove in ivy compilation
-        useValue: 'table', // TuiAppearance.Table
+        useValue: `table`, // TuiAppearance.Table
     },
     {
         provide: TUI_TEXTFIELD_LABEL_OUTSIDE,

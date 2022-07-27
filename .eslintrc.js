@@ -37,6 +37,8 @@ module.exports = {
     plugins: ['unicorn'],
     parser: '@typescript-eslint/parser',
     rules: {
+        quotes: 'off',
+        '@typescript-eslint/quotes': ['error', 'backtick'],
         'dot-notation': 'off',
         '@typescript-eslint/dot-notation': [
             'error',

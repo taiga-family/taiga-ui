@@ -21,9 +21,9 @@ export function scrollRefFactory({
 
 // @dynamic
 @Component({
-    selector: 'tui-scrollbar',
-    templateUrl: './scrollbar.template.html',
-    styleUrls: ['./scrollbar.style.less'],
+    selector: `tui-scrollbar`,
+    templateUrl: `./scrollbar.template.html`,
+    styleUrls: [`./scrollbar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -37,8 +37,8 @@ export class TuiScrollbarComponent {
     private delegated = false;
 
     private readonly isLegacy: boolean =
-        !this.cssRef.supports('position', 'sticky') ||
-        (isFirefox(this.userAgent) && !this.cssRef.supports('scrollbar-width', 'none'));
+        !this.cssRef.supports(`position`, `sticky`) ||
+        (isFirefox(this.userAgent) && !this.cssRef.supports(`scrollbar-width`, `none`));
 
     @Input()
     @tuiDefaultProp()
@@ -57,18 +57,18 @@ export class TuiScrollbarComponent {
         return !this.hidden && !this.isIos && (!this.isLegacy || this.delegated);
     }
 
-    @HostBinding('class._legacy')
+    @HostBinding(`class._legacy`)
     get showNative(): boolean {
         return this.isLegacy && !this.hidden && !this.delegated;
     }
 
-    @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
+    @HostListener(`${TUI_SCROLLABLE}.stop`, [`$event.detail`])
     onScrollable(element: HTMLElement): void {
         this.delegated = true;
         this.browserScrollRef.nativeElement = element;
     }
 
-    @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
+    @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, [`$event.detail`])
     scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;

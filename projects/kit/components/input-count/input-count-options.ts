@@ -21,8 +21,8 @@ export interface TuiInputCountOptions {
 export type InputCountOptions = TuiInputCountOptions;
 
 // TODO: 3.0 remove in ivy compilation
-export const PASSWORD_ICON_UP = 'tuiIconPlus';
-export const PASSWORD_ICON_DOWN = 'tuiIconMinus';
+export const PASSWORD_ICON_UP = `tuiIconPlus`;
+export const PASSWORD_ICON_DOWN = `tuiIconMinus`;
 
 /** Default values for the input count options. */
 export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
@@ -30,16 +30,16 @@ export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
         up: PASSWORD_ICON_UP,
         down: PASSWORD_ICON_DOWN,
     },
-    appearance: 'textfield',
+    appearance: `textfield`,
     hideButtons: false,
     min: 0,
     max: Infinity,
     step: 1,
-    postfix: '',
+    postfix: ``,
 };
 
 export const TUI_INPUT_COUNT_OPTIONS = new InjectionToken<TuiInputCountOptions>(
-    'Default parameters for input count component',
+    `Default parameters for input count component`,
     {
         factory: () => TUI_INPUT_COUNT_DEFAULT_OPTIONS,
     },

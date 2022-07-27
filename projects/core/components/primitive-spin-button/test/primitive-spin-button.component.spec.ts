@@ -6,7 +6,7 @@ import {
 } from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe('primitiveSpinButton', () => {
+describe(`primitiveSpinButton`, () => {
     @Component({
         template: `
             <tui-primitive-spin-button>My button</tui-primitive-spin-button>
@@ -35,7 +35,7 @@ describe('primitiveSpinButton', () => {
         fixture.detectChanges();
     });
 
-    it('emits left click if it is not disabled', () => {
+    it(`emits left click if it is not disabled`, () => {
         let result: unknown = {};
 
         component.leftClick.subscribe((voidResult: void) => {
@@ -47,7 +47,7 @@ describe('primitiveSpinButton', () => {
         expect(result).not.toBeDefined();
     });
 
-    it('emits right click if it is not disabled', () => {
+    it(`emits right click if it is not disabled`, () => {
         let result: unknown = {};
 
         component.rightClick.subscribe((voidResult: void) => {
@@ -59,7 +59,7 @@ describe('primitiveSpinButton', () => {
         expect(result).not.toBeDefined();
     });
 
-    it('emits focus if it was updated', () => {
+    it(`emits focus if it was updated`, () => {
         let result: unknown;
 
         component.focusedChange.subscribe((focused: boolean) => {
@@ -71,7 +71,7 @@ describe('primitiveSpinButton', () => {
         expect(result).toBe(true);
     });
 
-    it('emits focusVisible if it was updated', () => {
+    it(`emits focusVisible if it was updated`, () => {
         let result: unknown;
 
         component.focusVisibleChange.subscribe((focusVisible: boolean) => {

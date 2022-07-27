@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 import {TuiAutofilledDirective, TuiAutofilledModule} from '@taiga-ui/cdk/directives';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe('TuiAutofillModule', () => {
+describe(`TuiAutofillModule`, () => {
     @Component({
         template: `
             <input
@@ -17,7 +17,7 @@ describe('TuiAutofillModule', () => {
         `,
     })
     class TestComponent {
-        value = '';
+        value = ``;
         autofilled = false;
     }
 
@@ -41,51 +41,51 @@ describe('TuiAutofillModule', () => {
             .injector.get(TuiAutofilledDirective);
     });
 
-    it('correctly works if `tuiAutofilledChange` is set to `input`', () => {
+    it(`correctly works if \`tuiAutofilledChange\` is set to \`input\``, () => {
         expect(testComponent.autofilled).toBeFalse();
-        expect(testComponent.value).toBe('');
-        expect(getInputClassList(fixture)).toEqual(['tui-autofill']);
+        expect(testComponent.value).toBe(``);
+        expect(getInputClassList(fixture)).toEqual([`tui-autofill`]);
 
         /**
          * emulate autofill (focus)
          */
         directiveInstance.transitionStartHandler({
-            propertyName: 'box-shadow',
+            propertyName: `box-shadow`,
             target: getInput(fixture) as EventTarget,
         } as TransitionEvent);
-        getInput(fixture).value = '1111 2222 3333 4444';
+        getInput(fixture).value = `1111 2222 3333 4444`;
         getInput(fixture).dispatchEvent(
-            new InputEvent('input', {data: '1111 2222 3333 4444'}),
+            new InputEvent(`input`, {data: `1111 2222 3333 4444`}),
         );
         fixture.detectChanges();
 
-        expect(getInputClassList(fixture)).toEqual(['tui-autofill', '_autofilled']);
+        expect(getInputClassList(fixture)).toEqual([`tui-autofill`, `_autofilled`]);
         expect(testComponent.autofilled).toBeTrue();
-        expect(testComponent.value).toBe('1111 2222 3333 4444');
+        expect(testComponent.value).toBe(`1111 2222 3333 4444`);
 
         /**
          * emulate autofill (blur)
          */
         directiveInstance.transitionStartHandler({
-            propertyName: 'box-shadow',
+            propertyName: `box-shadow`,
             target: getInput(fixture) as EventTarget,
         } as TransitionEvent);
-        getInput(fixture).value = '';
-        getInput(fixture).dispatchEvent(new InputEvent('input', {data: ''}));
+        getInput(fixture).value = ``;
+        getInput(fixture).dispatchEvent(new InputEvent(`input`, {data: ``}));
         fixture.detectChanges();
 
         expect(testComponent.autofilled).toBeFalse();
-        expect(testComponent.value).toBe('');
-        expect(getInputClassList(fixture)).toEqual(['tui-autofill']);
+        expect(testComponent.value).toBe(``);
+        expect(getInputClassList(fixture)).toEqual([`tui-autofill`]);
     });
 });
 
 function getInput<T>(fixture: ComponentFixture<T>): HTMLInputElement {
-    return fixture.nativeElement?.querySelector('#cardNumber');
+    return fixture.nativeElement?.querySelector(`#cardNumber`);
 }
 
 function getInputClassList<T>(fixture: ComponentFixture<T>): string[] {
     return Array.from(getInput<T>(fixture)?.classList || []).filter(
-        className => !className.includes('ng-'),
+        className => !className.includes(`ng-`),
     );
 }

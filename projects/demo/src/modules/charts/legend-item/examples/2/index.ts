@@ -5,9 +5,9 @@ import {sum, tuiPure} from '@taiga-ui/cdk';
 import {formatNumber, TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-legend-item-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-legend-item-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -16,7 +16,7 @@ export class TuiLegendItemExample2 {
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.data);
-    readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
+    readonly labels = [`Axes`, `Faxes`, `Taxes`, `Saxes`, `Other`];
 
     constructor(
         @Inject(TuiAlertService)

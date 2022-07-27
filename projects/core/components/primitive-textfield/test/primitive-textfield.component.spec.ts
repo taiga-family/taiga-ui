@@ -17,7 +17,7 @@ import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
-describe('PrimitiveTextfield', () => {
+describe(`PrimitiveTextfield`, () => {
     @Component({
         template: `
             <tui-primitive-textfield
@@ -46,17 +46,17 @@ describe('PrimitiveTextfield', () => {
 
         labelOutside = false;
 
-        size: TuiSizeS | TuiSizeL = 'm';
+        size: TuiSizeS | TuiSizeL = `m`;
 
-        exampleText = 'placeholder';
+        exampleText = `placeholder`;
 
-        hintContent: string | null = 'prompt';
+        hintContent: string | null = `prompt`;
 
-        value = '';
+        value = ``;
 
-        filler = '';
+        filler = ``;
 
-        postfix = '';
+        postfix = ``;
 
         invalid = false;
 
@@ -84,7 +84,7 @@ describe('PrimitiveTextfield', () => {
             return inputPO;
         },
         get prefix() {
-            return 'tui-primitive-textfield__';
+            return `tui-primitive-textfield__`;
         },
     };
 
@@ -109,27 +109,27 @@ describe('PrimitiveTextfield', () => {
         inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native-input`);
     });
 
-    describe('value decoration', () => {
+    describe(`value decoration`, () => {
         beforeEach(() => {
-            testComponent.size = 'l';
+            testComponent.size = `l`;
         });
 
-        it('is not shown when value is empty and field is not focused', () => {
-            const example = 'text';
-            const postfix = 'post';
+        it(`is not shown when value is empty and field is not focused`, () => {
+            const example = `text`;
+            const postfix = `post`;
 
             testComponent.exampleText = example;
             testComponent.postfix = postfix;
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()).toBe('');
+            expect(getValueDecoration()).toBe(``);
         });
 
-        it('value, filler and postfix are shown when value is not empty and field is focused', () => {
-            const value = 'value';
-            const filler = 'filler';
-            const postfix = 'post';
+        it(`value, filler and postfix are shown when value is not empty and field is focused`, () => {
+            const value = `value`;
+            const filler = `filler`;
+            const postfix = `post`;
 
             testComponent.value = value;
             testComponent.filler = filler;
@@ -143,9 +143,9 @@ describe('PrimitiveTextfield', () => {
             );
         });
 
-        it('value and postfix are shown when value is not empty', () => {
-            const value = 'value';
-            const postfix = 'post';
+        it(`value and postfix are shown when value is not empty`, () => {
+            const value = `value`;
+            const postfix = `post`;
 
             testComponent.value = value;
             testComponent.postfix = postfix;
@@ -156,21 +156,21 @@ describe('PrimitiveTextfield', () => {
         });
     });
 
-    describe('Example of filling in the field (example-text)', () => {
-        it('if the input is not focused, then example-text is not shown', async () => {
+    describe(`Example of filling in the field (example-text)`, () => {
+        it(`if the input is not focused, then example-text is not shown`, async () => {
             await fixture.whenStable();
-            expect(getValueDecoration()).toBe('');
+            expect(getValueDecoration()).toBe(``);
         });
 
-        it('if the input has value, then example-text is not shown', async () => {
-            testComponent.value = 'value';
+        it(`if the input has value, then example-text is not shown`, async () => {
+            testComponent.value = `value`;
             await fixture.whenStable();
             fixture.detectChanges();
             expect(getValueDecoration()).toBe(testComponent.value);
         });
 
-        it('if the input is focused, then example-text is shown', async () => {
-            testComponent.value = '';
+        it(`if the input is focused, then example-text is shown`, async () => {
+            testComponent.value = ``;
             testComponent.focused = true;
 
             fixture.detectChanges();
@@ -180,7 +180,7 @@ describe('PrimitiveTextfield', () => {
         });
     });
 
-    tuiTestCleaner(testContext, 'test', '');
+    tuiTestCleaner(testContext, `test`, ``);
 
     tuiTestTooltip(testContext);
 
@@ -188,8 +188,8 @@ describe('PrimitiveTextfield', () => {
 
     function getValueDecoration(): string {
         return pageObject
-            .getByAutomationId('tui-primitive-textfield__value-decoration')!
+            .getByAutomationId(`tui-primitive-textfield__value-decoration`)!
             .nativeElement.textContent.trim()
-            .replace('\n ', '');
+            .replace(`\n `, ``);
     }
 });

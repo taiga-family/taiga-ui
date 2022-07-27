@@ -7,14 +7,14 @@ import {ceil, tuiPure} from '@taiga-ui/cdk';
 const BENJI = 100;
 
 @Component({
-    selector: 'tui-axes-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-axes-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiAxesExample2 {
-    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
+    private readonly setNames = [`cdk`, `core`, `kit`, `charts`];
 
     readonly value: ReadonlyArray<[number, number, number, number]> = [
         [10, 20, 3, 7],
@@ -24,12 +24,12 @@ export class TuiAxesExample2 {
     ];
 
     readonly axisYSecondaryLabels = [
-        '',
+        ``,
         `${this.getMax(this.value) / 2} k`,
         `${this.getMax(this.value)} k`,
     ];
 
-    readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
+    readonly axisXLabels = [`Q1`, `Q2`, `Q3`, `Q4`];
 
     readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
 

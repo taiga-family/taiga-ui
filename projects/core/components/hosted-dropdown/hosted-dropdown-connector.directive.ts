@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-    selector: '[tuiHostedDropdownHost]',
+    selector: `[tuiHostedDropdownHost]`,
 })
 export class TuiHostedDropdownConnectorDirective {}

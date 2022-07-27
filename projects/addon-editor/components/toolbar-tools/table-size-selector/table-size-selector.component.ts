@@ -14,9 +14,9 @@ const MIN_DISTANCE_PX = 70;
 
 // @dynamic
 @Component({
-    selector: 'tui-table-size-selector',
-    templateUrl: './table-size-selector.template.html',
-    styleUrls: ['./table-size-selector.style.less'],
+    selector: `tui-table-size-selector`,
+    templateUrl: `./table-size-selector.template.html`,
+    styleUrls: [`./table-size-selector.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableSizeSelectorComponent {

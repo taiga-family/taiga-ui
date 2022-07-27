@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRatingComponent, TuiRatingModule} from '@taiga-ui/kit/components';
 
-describe('Rating', () => {
+describe(`Rating`, () => {
     let component: TuiRatingComponent;
     let testComponent: AbstractTestComponent;
 
@@ -14,7 +14,7 @@ describe('Rating', () => {
         rate!: number;
     }
 
-    describe('Template Driven', () => {
+    describe(`Template Driven`, () => {
         let fixture: ComponentFixture<TestComponent>;
 
         @Component({
@@ -39,7 +39,7 @@ describe('Rating', () => {
         });
 
         // noinspection DuplicatedCode
-        it('should be update value by setRate', () => {
+        it(`should be update value by setRate`, () => {
             expect(testComponent.rate).toEqual(2);
             expect(component.percent).toEqual(40);
             expect(component.value).toEqual(2);
@@ -58,7 +58,7 @@ describe('Rating', () => {
         });
 
         // noinspection DuplicatedCode
-        it('should be update value by setRateByReverseIndex', () => {
+        it(`should be update value by setRateByReverseIndex`, () => {
             expect(testComponent.rate).toEqual(2);
             expect(component.percent).toEqual(40);
             expect(component.value).toEqual(2);
@@ -69,7 +69,7 @@ describe('Rating', () => {
             expect(component.value).toEqual(4);
         });
 
-        it('try set invalid value', () => {
+        it(`try set invalid value`, () => {
             expect(testComponent.rate).toEqual(2);
             expect(component.value).toEqual(2);
             expect(component.percent).toEqual(40);
@@ -88,7 +88,7 @@ describe('Rating', () => {
         });
     });
 
-    describe('Reactive forms', () => {
+    describe(`Reactive forms`, () => {
         let fixture: ComponentFixture<TestComponent>;
 
         @Component({
@@ -106,7 +106,7 @@ describe('Rating', () => {
             }
 
             get rate(): number {
-                return this.form.get('rating')?.value;
+                return this.form.get(`rating`)?.value;
             }
         }
 
@@ -123,7 +123,7 @@ describe('Rating', () => {
         });
 
         // noinspection DuplicatedCode
-        it('should be update value by setRate', () => {
+        it(`should be update value by setRate`, () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.percent).toEqual(0);
             expect(component.value).toEqual(0);
@@ -141,7 +141,7 @@ describe('Rating', () => {
         });
 
         // noinspection DuplicatedCode
-        it('should be update value by setRateByReverseIndex', () => {
+        it(`should be update value by setRateByReverseIndex`, () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.percent).toEqual(0);
             expect(component.value).toEqual(0);
@@ -154,7 +154,7 @@ describe('Rating', () => {
             expect(component.value).toEqual(4);
         });
 
-        it('try set invalid value', () => {
+        it(`try set invalid value`, () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.value).toEqual(0);
             expect(component.percent).toEqual(0);

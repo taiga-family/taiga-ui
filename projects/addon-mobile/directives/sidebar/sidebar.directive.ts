@@ -16,7 +16,7 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({
-    selector: '[tuiSidebar]',
+    selector: `[tuiSidebar]`,
 })
 export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>
@@ -24,10 +24,10 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
 {
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
-    @Input('tuiSidebarDirection')
-    direction: TuiHorizontalDirection = 'left';
+    @Input(`tuiSidebarDirection`)
+    direction: TuiHorizontalDirection = `left`;
 
-    @Input('tuiSidebarAutoWidth')
+    @Input(`tuiSidebarAutoWidth`)
     autoWidth = false;
 
     @Input()

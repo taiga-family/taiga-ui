@@ -16,16 +16,15 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({
-    selector:
-        '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
-    exportAs: 'tuiActiveZone',
+    selector: `[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)`,
+    exportAs: `tuiActiveZone`,
 })
 export class TuiActiveZoneDirective implements OnDestroy {
     private subActiveZones: readonly TuiActiveZoneDirective[] = [];
 
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
 
-    @Input('tuiActiveZoneParent')
+    @Input(`tuiActiveZoneParent`)
     @tuiDefaultProp()
     set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
         this.setZone(zone);

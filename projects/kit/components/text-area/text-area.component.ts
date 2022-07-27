@@ -43,21 +43,21 @@ export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
 
 @Component({
-    selector: 'tui-text-area',
-    templateUrl: './text-area.template.html',
-    styleUrls: ['./text-area.style.less'],
+    selector: `tui-text-area`,
+    templateUrl: `./text-area.template.html`,
+    styleUrls: [`./text-area.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TEXT_AREA_PROVIDERS,
     host: {
-        '($.data-mode.attr)': 'mode$',
-        '[class._ios]': 'isIOS',
+        '($.data-mode.attr)': `mode$`,
+        '[class._ios]': `isIOS`,
     },
 })
 export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
     @ContentChild(TuiTextfieldComponent, {read: ElementRef})
@@ -68,7 +68,7 @@ export class TuiTextAreaComponent
     rows = DEFAULT_ROWS;
 
     @Input()
-    @HostBinding('class._expandable')
+    @HostBinding(`class._expandable`)
     @tuiDefaultProp()
     expandable = false;
 
@@ -89,7 +89,7 @@ export class TuiTextAreaComponent
         super(control, changeDetectorRef);
     }
 
-    @HostBinding('class._label-outside')
+    @HostBinding(`class._label-outside`)
     get labelOutside(): boolean {
         return this.controller.labelOutside;
     }
@@ -108,12 +108,12 @@ export class TuiTextAreaComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    @HostBinding('style.--border-end.rem')
+    @HostBinding(`style.--border-end.rem`)
     get border(): number {
         return getBorder(false, this.hasCleaner, this.hasTooltip);
     }
@@ -122,17 +122,17 @@ export class TuiTextAreaComponent
         return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
-    @HostBinding('class._has-tooltip')
+    @HostBinding(`class._has-tooltip`)
     get hasTooltip(): boolean {
         return !!this.hintController.content && !this.disabled;
     }
 
-    @HostBinding('class._has-value')
+    @HostBinding(`class._has-value`)
     get hasValue(): boolean {
-        return this.value !== '';
+        return this.value !== ``;
     }
 
-    @HostBinding('class._has-counter')
+    @HostBinding(`class._has-counter`)
     get hasCounter(): boolean {
         return !!this.controller.maxLength && this.interactive;
     }
@@ -167,8 +167,8 @@ export class TuiTextAreaComponent
         return this.value.slice(this.controller.maxLength || Infinity);
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
@@ -198,10 +198,10 @@ export class TuiTextAreaComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
     private get lineHeight(): number {
-        return this.controller.size === 'm' ? LINE_HEIGHT_M : LINE_HEIGHT_L;
+        return this.controller.size === `m` ? LINE_HEIGHT_M : LINE_HEIGHT_L;
     }
 }

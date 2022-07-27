@@ -9,9 +9,9 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-font-style',
-    templateUrl: './font-style.template.html',
-    styleUrls: ['../tools-common.less'],
+    selector: `tui-font-style`,
+    templateUrl: `./font-style.template.html`,
+    styleUrls: [`../tools-common.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleComponent {
@@ -25,10 +25,10 @@ export class TuiFontStyleComponent {
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
     readonly fontStyleState$ = combineLatest([
-        this.editor.isActive$('bold'),
-        this.editor.isActive$('italic'),
-        this.editor.isActive$('underline'),
-        this.editor.isActive$('strike'),
+        this.editor.isActive$(`bold`),
+        this.editor.isActive$(`italic`),
+        this.editor.isActive$(`underline`),
+        this.editor.isActive$(`strike`),
     ]).pipe(
         map(([bold, italic, underline, strike]) => ({
             bold,

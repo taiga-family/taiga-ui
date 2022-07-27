@@ -6,6 +6,6 @@ export function tuiCardExpireValidator({
     value,
 }: AbstractControl): ValidationErrors | null {
     return value?.expire?.length === 5 && !isExpireValid(value?.expire)
-        ? {expire: new TuiValidationError('Expire date')}
+        ? {expire: new TuiValidationError(`Expire date`)}
         : null;
 }

@@ -15,34 +15,34 @@ export function minLengthValidator(context: {requiredLength: string}): string {
 }
 
 @Component({
-    selector: 'tui-field-error-pipe-example-2',
-    templateUrl: './index.html',
+    selector: `tui-field-error-pipe-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Enter this!',
-                email: 'Enter a valid email',
+                required: `Enter this!`,
+                email: `Enter a valid email`,
                 maxlength: maxLengthValidator,
                 minlength: minLengthValidator,
                 min: interval(2000).pipe(
                     scan(acc => !acc, false),
-                    map(val => (val ? 'Fix please' : 'Min number 3')),
-                    startWith('Min number 3'),
+                    map(val => (val ? `Fix please` : `Min number 3`)),
+                    startWith(`Min number 3`),
                 ),
             },
         },
     ],
 })
 export class TuiFieldErrorPipeExample2 {
-    readonly testValue1 = new FormControl('', [
+    readonly testValue1 = new FormControl(``, [
         Validators.minLength(4),
         Validators.maxLength(4),
     ]);
 
-    readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
+    readonly testValue2 = new FormControl(``, [Validators.required, Validators.email]);
 
     readonly testValue3 = new FormControl(2, [Validators.min(3)]);
 

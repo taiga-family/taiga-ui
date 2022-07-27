@@ -6,7 +6,7 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {TuiIslandComponent} from '../island.component';
 import {TuiIslandModule} from '../island.module';
 
-describe('Island', () => {
+describe(`Island`, () => {
     @Component({
         template: `
             <tui-island
@@ -24,8 +24,8 @@ describe('Island', () => {
         component!: TuiIslandComponent;
 
         hoverable = false;
-        textAlign: 'left' | 'right' | 'center' = 'left';
-        size: TuiSizeL = 'm';
+        textAlign: 'left' | 'right' | 'center' = `left`;
+        size: TuiSizeL = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -34,7 +34,7 @@ describe('Island', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-island__';
+            return `tui-island__`;
         },
     };
 
@@ -57,15 +57,15 @@ describe('Island', () => {
         component = testComponent.component;
     });
 
-    describe('size:', () => {
-        it('if not specified, island size m', () => {
+    describe(`size:`, () => {
+        it(`if not specified, island size m`, () => {
             const size = component.sizeM;
 
             expect(size).toBe(true);
         });
 
-        it('if the value is l, the size of the island is l', () => {
-            testComponent.size = 'l';
+        it(`if the value is l, the size of the island is l`, () => {
+            testComponent.size = `l`;
             fixture.detectChanges();
 
             const size = component.sizeL;
@@ -74,15 +74,15 @@ describe('Island', () => {
         });
     });
 
-    describe('textAlign:', () => {
-        it('if no value is specified, the text is left aligned', () => {
+    describe(`textAlign:`, () => {
+        it(`if no value is specified, the text is left aligned`, () => {
             const textAlign = component.textAlignLeft;
 
             expect(textAlign).toBe(true);
         });
 
-        it('if you pass center, the text will be centered', () => {
-            testComponent.textAlign = 'center';
+        it(`if you pass center, the text will be centered`, () => {
+            testComponent.textAlign = `center`;
             fixture.detectChanges();
 
             const textAlign = component.textAlignCenter;
@@ -91,12 +91,12 @@ describe('Island', () => {
         });
     });
 
-    describe('hoverable:', () => {
-        it('if true, hover works', () => {
+    describe(`hoverable:`, () => {
+        it(`if true, hover works`, () => {
             testComponent.hoverable = true;
             fixture.detectChanges();
 
-            expect(getIsland().classes['tui-island_hoverable']).toBe(true);
+            expect(getIsland().classes[`tui-island_hoverable`]).toBe(true);
         });
     });
 });

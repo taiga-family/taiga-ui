@@ -8,36 +8,36 @@ import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'example-tui-table-bar',
-    templateUrl: './table-bar.template.html',
-    styleUrls: ['./table-bar.style.less'],
+    selector: `example-tui-table-bar`,
+    templateUrl: `./table-bar.template.html`,
+    styleUrls: [`./table-bar.style.less`],
     changeDetection,
 })
 export class ExampleTuiTableBarComponent implements OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
-    @ViewChild('tableBarTemplate')
-    readonly tableBarTemplate: PolymorpheusContent = '';
+    @ViewChild(`tableBarTemplate`)
+    readonly tableBarTemplate: PolymorpheusContent = ``;
 
     readonly exampleServiceUsage = import(
-        '!!raw-loader!./examples/import/service-usage.md'
+        `!!raw-loader!./examples/import/service-usage.md`
     );
 
     readonly exampleServiceUsageHtml = import(
-        '!!raw-loader!./examples/import/service-usage-html.md'
+        `!!raw-loader!./examples/import/service-usage-html.md`
     );
 
-    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.md');
-    readonly exampleModule = import('!!raw-loader!./examples/import/module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/template.md');
+    readonly exampleLazyModule = import(`!!raw-loader!./examples/import/lazy-module.md`);
+    readonly exampleModule = import(`!!raw-loader!./examples/import/module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/template.md`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
 
-    readonly modeVariants: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    readonly modeVariants: readonly TuiBrightness[] = [`onLight`, `onDark`];
 
     mode = this.modeVariants[0];
 
@@ -56,7 +56,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
-            .open(this.tableBarTemplate || '', {
+            .open(this.tableBarTemplate || ``, {
                 adaptive: this.adaptive,
                 mode: this.mode,
                 hasCloseButton: this.hasCloseButton,

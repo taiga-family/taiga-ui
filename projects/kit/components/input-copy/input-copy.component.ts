@@ -34,9 +34,9 @@ import {TUI_INPUT_COPY_PROVIDERS} from './input-copy.providers';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-copy',
-    templateUrl: './input-copy.template.html',
-    styleUrls: ['./input-copy.style.less'],
+    selector: `tui-input-copy`,
+    templateUrl: `./input-copy.template.html`,
+    styleUrls: [`./input-copy.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_INPUT_COPY_PROVIDERS,
 })
@@ -51,11 +51,11 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    successMessage: PolymorpheusContent = '';
+    successMessage: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    messageDirection: TuiDirection = 'bottom-left';
+    messageDirection: TuiDirection = `bottom-left`;
 
     @Input()
     @tuiDefaultProp()
@@ -75,7 +75,7 @@ export class TuiInputCopyComponent
         super(control, changeDetectorRef);
     }
 
-    @HostBinding('class._has-value')
+    @HostBinding(`class._has-value`)
     get hasValue(): boolean {
         return !!this.value;
     }
@@ -108,7 +108,7 @@ export class TuiInputCopyComponent
     }
 
     get icon(): string {
-        return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
+        return this.textfieldSize.size === `s` ? `tuiIconCopy` : `tuiIconCopyLarge`;
     }
 
     onValueChange(value: string): void {
@@ -133,11 +133,11 @@ export class TuiInputCopyComponent
         }
 
         this.textfield.nativeFocusableElement.select();
-        this.documentRef.execCommand('copy');
+        this.documentRef.execCommand(`copy`);
         this.copy$.next();
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

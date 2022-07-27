@@ -17,9 +17,9 @@ import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
 import {tuiFormatSignSymbol} from './utils/format-sign-symbol';
 
 @Component({
-    selector: 'tui-money',
-    templateUrl: './money.template.html',
-    styleUrls: ['./money.style.less'],
+    selector: `tui-money`,
+    templateUrl: `./money.template.html`,
+    styleUrls: [`./money.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMoneyComponent {
@@ -55,25 +55,25 @@ export class TuiMoneyComponent {
         return tuiFormatSignSymbol(this.value, this.sign);
     }
 
-    @HostBinding('class._red')
+    @HostBinding(`class._red`)
     get red(): boolean {
         return (
             this.colored &&
             (this.signSymbol === CHAR_MINUS ||
-                (this.value < 0 && this.sign !== 'force-positive'))
+                (this.value < 0 && this.sign !== `force-positive`))
         );
     }
 
-    @HostBinding('class._green')
+    @HostBinding(`class._green`)
     get green(): boolean {
         return (
             this.colored &&
             (this.signSymbol === CHAR_PLUS ||
-                (this.value > 0 && this.sign !== 'force-negative'))
+                (this.value > 0 && this.sign !== `force-negative`))
         );
     }
 
-    @HostBinding('class._inherit-color')
+    @HostBinding(`class._inherit-color`)
     get inheritColor(): boolean {
         return this.singleColor || (this.value === 0 && this.colored);
     }

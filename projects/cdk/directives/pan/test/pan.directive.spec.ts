@@ -5,7 +5,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPanModule} from '../pan.module';
 
-describe('TuiPan directive', () => {
+describe(`TuiPan directive`, () => {
     @Component({
         template: `
             <div
@@ -36,16 +36,16 @@ describe('TuiPan directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css('.main'));
+        testElement = fixture.debugElement.query(By.css(`.main`));
 
         fixture.detectChanges();
     });
 
-    it('emits delta', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchmove');
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchmove');
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend');
+    it(`emits delta`, () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`);
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`);
 
         fixture.detectChanges();
 

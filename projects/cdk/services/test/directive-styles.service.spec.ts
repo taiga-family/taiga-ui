@@ -2,8 +2,8 @@ import {ComponentFactoryResolver, Injector, Renderer2} from '@angular/core';
 
 import {TuiDirectiveStylesService} from '../directive-styles.service';
 
-describe('TuiDirectiveStylesService service', () => {
-    it('does nothing with renderer if there is no head.querySelector', () => {
+describe(`TuiDirectiveStylesService service`, () => {
+    it(`does nothing with renderer if there is no head.querySelector`, () => {
         let called = 0;
         const stub: unknown = {
             head: {
@@ -18,16 +18,16 @@ describe('TuiDirectiveStylesService service', () => {
             null as unknown as Renderer2,
         );
 
-        service.addStyle('test', 'test');
+        service.addStyle(`test`, `test`);
 
         expect(called).toBe(1);
     });
 
-    it('add styles to renderer', () => {
+    it(`add styles to renderer`, () => {
         let called = 0;
 
         const rendererStub: unknown = {
-            createElement: () => document.createElement('div'),
+            createElement: () => document.createElement(`div`),
             setProperty: () => ++called,
             setAttribute: () => ++called,
         };
@@ -39,7 +39,7 @@ describe('TuiDirectiveStylesService service', () => {
             rendererStub as Renderer2,
         );
 
-        service.addStyle('p { color: black; }', 'test');
+        service.addStyle(`p { color: black; }`, `test`);
 
         expect(called).toBe(2);
     });

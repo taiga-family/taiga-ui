@@ -4,14 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {sum} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-ring-chart-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-ring-chart-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiRingChartExample2 {
-    private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
+    private readonly labels = [`Food`, `Cafe`, `Open Source`, `Taxi`, `other`];
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly total = sum(...this.value);
 
@@ -22,6 +22,6 @@ export class TuiRingChartExample2 {
     }
 
     get label(): string {
-        return isNaN(this.index) ? 'Total' : this.labels[this.index];
+        return isNaN(this.index) ? `Total` : this.labels[this.index];
     }
 }

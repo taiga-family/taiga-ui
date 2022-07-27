@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Directive({
-    selector: '[tuiResize]',
-    outputs: ['tuiResize'],
+    selector: `[tuiResize]`,
+    outputs: [`tuiResize`],
     providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiResizeDirective {

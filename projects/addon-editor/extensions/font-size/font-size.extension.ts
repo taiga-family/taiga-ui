@@ -22,10 +22,10 @@ interface FontSizeOptions {
 }
 
 export const TuiFontSize = Extension.create<FontSizeOptions>({
-    name: 'fontSize',
+    name: `fontSize`,
 
     addOptions(): FontSizeOptions {
-        return {types: ['textStyle']};
+        return {types: [`textStyle`]};
     },
 
     addGlobalAttributes() {
@@ -49,12 +49,12 @@ export const TuiFontSize = Extension.create<FontSizeOptions>({
             setFontSize:
                 (fontSize: string) =>
                 ({chain}) =>
-                    chain().setMark('textStyle', {fontSize}).run(),
+                    chain().setMark(`textStyle`, {fontSize}).run(),
             unsetFontSize:
                 () =>
                 ({chain}) =>
                     chain()
-                        .setMark('textStyle', {fontSize: null})
+                        .setMark(`textStyle`, {fontSize: null})
                         .removeEmptyTextStyle()
                         .run(),
         };

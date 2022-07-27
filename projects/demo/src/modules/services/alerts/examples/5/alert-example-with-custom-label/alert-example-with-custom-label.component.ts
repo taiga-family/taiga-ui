@@ -5,8 +5,8 @@ import {TuiNotification, TuiNotificationContentContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-notifications-service-example-with-custom-label',
-    templateUrl: './alert-example-with-custom-label.template.html',
+    selector: `tui-notifications-service-example-with-custom-label`,
+    templateUrl: `./alert-example-with-custom-label.template.html`,
     changeDetection,
 })
 export class AlertExampleWithCustomLabelComponent {

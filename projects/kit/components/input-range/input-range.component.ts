@@ -46,9 +46,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-range',
-    templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    selector: `tui-input-range`,
+    templateUrl: `./input-range.template.html`,
+    styleUrls: [`./input-range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -62,7 +62,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
          * TODO: 3.0 delete it
          * Dont forget to clear html-tags
          */
-        '[class._show-ticks-labels]': '!isNew',
+        '[class._show-ticks-labels]': `!isNew`,
     },
 })
 /**
@@ -89,7 +89,7 @@ export class TuiInputRangeComponent
     max = Infinity;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
+    @tuiDefaultProp(quantumAssertion, `Quantum must be positive`)
     quantum = 1;
 
     @Input()
@@ -106,13 +106,13 @@ export class TuiInputRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
-    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
-    lastActiveSide: 'left' | 'right' = 'left';
+    lastActiveSide: 'left' | 'right' = `left`;
 
     constructor(
         @Optional()
@@ -156,7 +156,7 @@ export class TuiInputRangeComponent
         return Boolean(
             (this.minLabel || this.leftValueContent) &&
                 !isNativeFocused(this.leftFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
+                !(this.rangeRef?.focused && this.lastActiveSide === `left`),
         );
     }
 
@@ -164,7 +164,7 @@ export class TuiInputRangeComponent
         return Boolean(
             (this.maxLabel || this.rightValueContent) &&
                 !isNativeFocused(this.rightFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
+                !(this.rangeRef?.focused && this.lastActiveSide === `right`),
         );
     }
 
@@ -173,7 +173,7 @@ export class TuiInputRangeComponent
     }
 
     get decimal(): TuiDecimalT {
-        return this.precision ? 'not-zero' : 'never';
+        return this.precision ? `not-zero` : `never`;
     }
 
     get computedSteps(): number {
@@ -181,14 +181,14 @@ export class TuiInputRangeComponent
     }
 
     get computedSize(): TuiSizeL {
-        return this.isNew && this.controller.size !== 's'
+        return this.isNew && this.controller.size !== `s`
             ? this.controller.size
             : this.size;
     }
 
-    @HostBinding('class._label-outside')
+    @HostBinding(`class._label-outside`)
     get legacyLabelOutside(): boolean {
-        return this.isNew ? this.controller.labelOutside : this.computedSize === 'm';
+        return this.isNew ? this.controller.labelOutside : this.computedSize === `m`;
     }
 
     onActiveZone(active: boolean): void {
@@ -246,7 +246,7 @@ export class TuiInputRangeComponent
     onRangeValue(value: [number, number]): void {
         this.safelyUpdateValue(value);
 
-        const rightValueChanged = this.lastActiveSide === 'right';
+        const rightValueChanged = this.lastActiveSide === `right`;
 
         this.updateTextInputValue(
             this.value[rightValueChanged ? 1 : 0],
@@ -256,7 +256,7 @@ export class TuiInputRangeComponent
 
     focusToTextInput(): void {
         const element =
-            this.lastActiveSide === 'left'
+            this.lastActiveSide === `left`
                 ? this.leftFocusableElement
                 : this.rightFocusableElement;
 
@@ -309,11 +309,11 @@ export class TuiInputRangeComponent
 export function tuiTextfieldAppearanceDirectiveFactory({
     nativeElement,
 }: ElementRef): string {
-    return nativeElement.getAttribute('tuiTextfieldAppearance');
+    return nativeElement.getAttribute(`tuiTextfieldAppearance`);
 }
 
 @Directive({
-    selector: '[tuiTextfieldAppearance]',
+    selector: `[tuiTextfieldAppearance]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,

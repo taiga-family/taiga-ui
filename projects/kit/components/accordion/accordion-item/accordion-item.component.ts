@@ -27,9 +27,9 @@ import {TuiAccordionItemContentDirective} from './accordion-item-content.directi
 import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
 
 @Component({
-    selector: 'tui-accordion-item',
-    templateUrl: './accordion-item.template.html',
-    styleUrls: ['./accordion-item.style.less'],
+    selector: `tui-accordion-item`,
+    templateUrl: `./accordion-item.template.html`,
+    styleUrls: [`./accordion-item.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -39,38 +39,38 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
         MODE_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
-    @HostBinding('class._no-padding')
+    @HostBinding(`class._no-padding`)
     @tuiDefaultProp()
     noPadding = false;
 
     @Input()
-    @HostBinding('class._has-arrow')
+    @HostBinding(`class._has-arrow`)
     @tuiDefaultProp()
     showArrow = true;
 
     @Input()
-    @HostBinding('attr.data-tui-host-borders')
+    @HostBinding(`attr.data-tui-host-borders`)
     @tuiDefaultProp()
-    borders: 'all' | 'top-bottom' | null = 'all';
+    borders: 'all' | 'top-bottom' | null = `all`;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 
     @Input()
-    @HostBinding('class._disabled')
+    @HostBinding(`class._disabled`)
     @tuiDefaultProp()
     disabled = false;
 

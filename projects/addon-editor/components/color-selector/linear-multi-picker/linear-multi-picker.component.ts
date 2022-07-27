@@ -13,9 +13,9 @@ import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-linear-multi-picker',
-    templateUrl: './linear-multi-picker.template.html',
-    styleUrls: ['./linear-multi-picker.style.less'],
+    selector: `tui-linear-multi-picker`,
+    templateUrl: `./linear-multi-picker.template.html`,
+    styleUrls: [`./linear-multi-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })
@@ -38,7 +38,7 @@ export class TuiLinearMultiPickerComponent {
         });
     }
 
-    @HostListener('document:mouseup')
+    @HostListener(`document:mouseup`)
     onMouseUp(): void {
         this.index = NaN;
     }

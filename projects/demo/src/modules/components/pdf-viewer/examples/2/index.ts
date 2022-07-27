@@ -18,8 +18,8 @@ export type Buttons = ReadonlyArray<
 >;
 
 @Component({
-    selector: 'tui-pdf-viewer-example-2',
-    templateUrl: './index.html',
+    selector: `tui-pdf-viewer-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -32,16 +32,16 @@ export class TuiPdfViewerExample2 {
 
     show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
-            label: 'Taiga UI',
+            label: `Taiga UI`,
             actions: new PolymorpheusComponent(ActionsContent),
             data: [
                 {
-                    text: 'Sign',
-                    onClick: context => context.completeWith('Document signed'),
+                    text: `Sign`,
+                    onClick: context => context.completeWith(`Document signed`),
                 },
                 {
-                    text: 'Deny',
-                    onClick: context => context.completeWith('Document denied'),
+                    text: `Deny`,
+                    onClick: context => context.completeWith(`Document denied`),
                 },
             ],
         };

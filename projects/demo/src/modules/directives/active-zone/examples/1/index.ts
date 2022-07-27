@@ -5,9 +5,9 @@ import {setNativeFocused} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-active-zone-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-active-zone-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

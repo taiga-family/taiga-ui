@@ -21,11 +21,11 @@ export function iosScrollFactory(
     documentRef: Document,
     ngZone: NgZone,
 ): Observable<number> {
-    const load$ = typedFromEvent(element, 'load', {capture: true});
-    const touchstart$ = typedFromEvent(element, 'touchstart', {passive: true});
-    const touchmove$ = typedFromEvent(documentRef, 'touchmove', {passive: true});
-    const touchend$ = typedFromEvent(documentRef, 'touchend');
-    const scroll$ = typedFromEvent(element, 'scroll').pipe(map(() => element.scrollTop));
+    const load$ = typedFromEvent(element, `load`, {capture: true});
+    const touchstart$ = typedFromEvent(element, `touchstart`, {passive: true});
+    const touchmove$ = typedFromEvent(documentRef, `touchmove`, {passive: true});
+    const touchend$ = typedFromEvent(documentRef, `touchend`);
+    const scroll$ = typedFromEvent(element, `scroll`).pipe(map(() => element.scrollTop));
     const result$ = merge(
         load$.pipe(
             delay(0),
@@ -72,11 +72,11 @@ export function processDragged(
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
-    style.transition = 'none';
+    style.transition = `none`;
     style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
     setTimeout(() => {
-        style.transition = '';
-        style.transform = '';
+        style.transition = ``;
+        style.transform = ``;
     });
 }

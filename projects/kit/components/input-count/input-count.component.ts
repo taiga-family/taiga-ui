@@ -46,9 +46,9 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
 
 // @dynamic
 @Component({
-    selector: 'tui-input-count',
-    templateUrl: './input-count.template.html',
-    styleUrls: ['./input-count.style.less'],
+    selector: `tui-input-count`,
+    templateUrl: `./input-count.template.html`,
+    styleUrls: [`./input-count.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -86,7 +86,7 @@ export class TuiInputCountComponent
 
     @Input()
     @tuiDefaultProp()
-    prefix = '';
+    prefix = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -126,9 +126,9 @@ export class TuiInputCountComponent
     }
 
     // TODO: 3.0 Remove in v.3
-    @HostBinding('class._hide-buttons')
+    @HostBinding(`class._hide-buttons`)
     get buttonsHidden(): boolean {
-        return this.hideButtons || this.appearance === 'table';
+        return this.hideButtons || this.appearance === `table`;
     }
 
     get iconUp(): PolymorpheusContent<Record<string, unknown>> {
@@ -145,7 +145,7 @@ export class TuiInputCountComponent
             : this.primitiveTextfield.nativeFocusableElement;
     }
 
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -233,13 +233,13 @@ export class TuiInputCountComponent
 
     onKeydown(event: KeyboardEvent): void {
         switch (event.key) {
-            case 'ArrowUp':
-            case 'Up':
+            case `ArrowUp`:
+            case `Up`:
                 this.increaseValue();
                 event.preventDefault();
                 break;
-            case 'ArrowDown':
-            case 'Down':
+            case `ArrowDown`:
+            case `Down`:
                 this.decreaseValue();
                 event.preventDefault();
                 break;
@@ -254,13 +254,13 @@ export class TuiInputCountComponent
 
     private get nativeNumberValue(): number {
         return parseInt(
-            this.nativeValue.split(this.numberFormat.thousandSeparator).join(''),
+            this.nativeValue.split(this.numberFormat.thousandSeparator).join(``),
             10,
         );
     }
 
     private get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
     }
 
     private set nativeValue(value: string) {

@@ -11,9 +11,9 @@ import {TuiSizeS} from '@taiga-ui/core';
 import {TuiSliderComponent} from '../../slider.component';
 
 @Component({
-    selector: '[tuiSliderThumbLabel]',
-    templateUrl: './slider-thumb-label.template.html',
-    styleUrls: ['./slider-thumb-label.style.less'],
+    selector: `[tuiSliderThumbLabel]`,
+    templateUrl: `./slider-thumb-label.template.html`,
+    styleUrls: [`./slider-thumb-label.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderThumbLabelComponent implements AfterContentInit {
@@ -24,7 +24,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     readonly control?: NgControl;
 
     get size(): TuiSizeS {
-        return this.slider?.size || 'm';
+        return this.slider?.size || `m`;
     }
 
     get ratio(): number {
@@ -39,7 +39,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
         tuiAssert.assert(
             Boolean(this.control?.valueChanges),
             `\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n` +
-                'Use [(ngModel)] or [formControl] or formControlName for correct work.',
+                `Use [(ngModel)] or [formControl] or formControlName for correct work.`,
         );
     }
 }

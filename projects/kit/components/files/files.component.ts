@@ -13,9 +13,9 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-files',
-    templateUrl: './files.component.html',
-    styleUrls: ['./files.component.less'],
+    selector: `tui-files`,
+    templateUrl: `./files.component.html`,
+    styleUrls: [`./files.component.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })

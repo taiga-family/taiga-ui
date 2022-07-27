@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'elderly',
-    styleUrls: ['./elderly.style.less'],
-    template: '',
+    selector: `elderly`,
+    styleUrls: [`./elderly.style.less`],
+    template: ``,
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

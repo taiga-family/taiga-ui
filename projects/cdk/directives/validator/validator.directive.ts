@@ -11,7 +11,7 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 
 @Directive({
-    selector: '[tuiValidator]',
+    selector: `[tuiValidator]`,
     providers: [
         {
             provide: NG_VALIDATORS,

@@ -6,6 +6,6 @@ export function tuiCardNumberValidator({
     value,
 }: AbstractControl): ValidationErrors | null {
     return value?.card && !isCardNumberValid(value.card)
-        ? {card: new TuiValidationError('Invalid card number')}
+        ? {card: new TuiValidationError(`Invalid card number`)}
         : null;
 }

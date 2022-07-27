@@ -3,6 +3,7 @@ import {ComponentFixture} from '@angular/core/testing';
 
 import {createKeyboardEvent} from './keyboard-event';
 import {TuiPageObject} from './page-object';
+import {tuiReplaceNbsp} from './replace-nbsp';
 
 export class TuiNativeInputPO {
     private readonly pageObject: TuiPageObject<unknown>;
@@ -23,7 +24,7 @@ export class TuiNativeInputPO {
     }
 
     get value(): string {
-        return this.nativeElement.value;
+        return tuiReplaceNbsp(this.nativeElement.value);
     }
 
     get focused(): boolean {
@@ -34,7 +35,7 @@ export class TuiNativeInputPO {
         const nativeElement = this.nativeElement;
 
         nativeElement.value = value;
-        nativeElement.dispatchEvent(new Event('input', {bubbles: true}));
+        nativeElement.dispatchEvent(new Event(`input`, {bubbles: true}));
 
         this.fixture.detectChanges();
     }
@@ -47,7 +48,7 @@ export class TuiNativeInputPO {
     }
 
     sendKeydown(key: string): void {
-        this.nativeElement.dispatchEvent(createKeyboardEvent(key, 'keydown'));
+        this.nativeElement.dispatchEvent(createKeyboardEvent(key, `keydown`));
         this.fixture.detectChanges();
     }
 

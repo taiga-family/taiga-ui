@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-password-example-1',
-    templateUrl: './index.html',
+    selector: `tui-input-password-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiInputPasswordExample1 {
     testForm = new FormGroup({
-        testValue: new FormControl('password', Validators.required),
+        testValue: new FormControl(`password`, Validators.required),
     });
 }

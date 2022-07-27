@@ -6,8 +6,8 @@ import {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
-    selector: '[tuiTreeController][map]',
-    exportAs: 'tuiTreeController',
+    selector: `[tuiTreeController][map]`,
+    exportAs: `tuiTreeController`,
     providers: [
         {
             provide: TUI_TREE_ACCESSOR,
@@ -22,7 +22,7 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>
 {
-    @Input('tuiTreeController')
+    @Input(`tuiTreeController`)
     @tuiDefaultProp()
     fallback = true;
 

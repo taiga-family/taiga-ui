@@ -18,20 +18,20 @@ import {TuiSidebarDirective} from './sidebar.directive';
 
 // @dynamic
 @Component({
-    selector: 'aside[tuiSidebar]',
-    templateUrl: './sidebar.template.html',
-    styleUrls: ['./sidebar.style.less'],
+    selector: `aside[tuiSidebar]`,
+    templateUrl: `./sidebar.template.html`,
+    styleUrls: [`./sidebar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideIn],
 })
 export class TuiSidebarComponent implements DoCheck {
     private readonly left = {
-        value: 'left',
+        value: `left`,
         ...this.options,
     } as const;
 
     private readonly right = {
-        value: 'right',
+        value: `right`,
         ...this.options,
     } as const;
 
@@ -40,12 +40,12 @@ export class TuiSidebarComponent implements DoCheck {
         @Inject(TuiSidebarDirective) private readonly directive: TuiSidebarDirective,
     ) {}
 
-    @HostBinding('@tuiSlideIn')
+    @HostBinding(`@tuiSlideIn`)
     get animation(): TuiAnimationOptions {
-        return this.direction === 'left' ? this.left : this.right;
+        return this.direction === `left` ? this.left : this.right;
     }
 
-    @HostBinding('class')
+    @HostBinding(`class`)
     get direction(): TuiHorizontalDirection {
         return this.directive.direction;
     }

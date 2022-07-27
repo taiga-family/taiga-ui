@@ -14,26 +14,26 @@ import {BehaviorSubject, Subject} from 'rxjs';
 
 import {coerceValue} from '../../utils/coerce-value';
 
-const SERIALIZED_SUFFIX = '$';
+const SERIALIZED_SUFFIX = `$`;
 
 export type DocumentationPropertyType = 'input' | 'output' | 'input-output' | null;
 
 // @bad TODO: refactor output and value sync
 @Directive({
-    selector: 'ng-template[documentationPropertyName]',
-    exportAs: 'documentationProperty',
+    selector: `ng-template[documentationPropertyName]`,
+    exportAs: `documentationProperty`,
 })
 export class TuiDocDocumentationPropertyConnectorDirective<T>
     implements OnInit, OnChanges
 {
     @Input()
-    documentationPropertyName = '';
+    documentationPropertyName = ``;
 
     @Input()
     documentationPropertyMode: DocumentationPropertyType = null;
 
     @Input()
-    documentationPropertyType = '';
+    documentationPropertyType = ``;
 
     @Input()
     documentationPropertyValue!: T;
@@ -64,11 +64,11 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
 
     get attrName(): string {
         switch (this.documentationPropertyMode) {
-            case 'input':
+            case `input`:
                 return `[${this.documentationPropertyName}]`;
-            case 'output':
+            case `output`:
                 return `(${this.documentationPropertyName})`;
-            case 'input-output':
+            case `input-output`:
                 return `[(${this.documentationPropertyName})]`;
             default:
                 return this.documentationPropertyName;
@@ -80,7 +80,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     }
 
     get shouldShowValues(): boolean {
-        return this.documentationPropertyMode !== 'output';
+        return this.documentationPropertyMode !== `output`;
     }
 
     ngOnChanges(): void {
@@ -126,7 +126,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
                 ? this.documentationPropertyValues.indexOf(value as T)
                 : value;
 
-        const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
+        const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : ``;
         const propName = this.documentationPropertyName + suffix;
 
         tree.queryParams = {

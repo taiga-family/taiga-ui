@@ -10,7 +10,7 @@
 export function padStart(
     sourceString: string,
     minResultLength: number,
-    padString: string = ' ',
+    padString: string = ` `,
 ): string {
     const padSize = minResultLength - sourceString.length;
 

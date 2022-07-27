@@ -7,7 +7,7 @@ import {TuiPaymentSystem} from '../../../enums/payment-system';
 import {TuiInputCardComponent} from '../input-card.component';
 import {TuiInputCardModule} from '../input-card.module';
 
-describe('InputCard', () => {
+describe(`InputCard`, () => {
     @Component({
         template: `
             <tui-input-card
@@ -20,9 +20,9 @@ describe('InputCard', () => {
         @ViewChild(TuiInputCardComponent, {static: true})
         component!: TuiInputCardComponent;
 
-        control = new FormControl('');
+        control = new FormControl(``);
 
-        onBinChange = jasmine.createSpy('bin');
+        onBinChange = jasmine.createSpy(`bin`);
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -41,105 +41,105 @@ describe('InputCard', () => {
         fixture.detectChanges();
     });
 
-    describe('binChange', () => {
-        it('Less than 6 characters', () => {
-            testComponent.control.setValue('12345');
+    describe(`binChange`, () => {
+        it(`Less than 6 characters`, () => {
+            testComponent.control.setValue(`12345`);
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it('6 and more characters', () => {
-            testComponent.control.setValue('123456789');
+        it(`6 and more characters`, () => {
+            testComponent.control.setValue(`123456789`);
 
-            expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
+            expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
         });
 
-        it('The value has changed, the first 6 characters are unchanged', () => {
-            testComponent.control.setValue('123456789');
+        it(`The value has changed, the first 6 characters are unchanged`, () => {
+            testComponent.control.setValue(`123456789`);
             testComponent.onBinChange.calls.reset();
-            testComponent.control.setValue('123456987');
+            testComponent.control.setValue(`123456987`);
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it('The value has changed, the first 6 characters have changed', () => {
-            testComponent.control.setValue('123456789');
+        it(`The value has changed, the first 6 characters have changed`, () => {
+            testComponent.control.setValue(`123456789`);
             testComponent.onBinChange.calls.reset();
-            testComponent.control.setValue('654321789');
+            testComponent.control.setValue(`654321789`);
 
-            expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
+            expect(testComponent.onBinChange).toHaveBeenCalledWith(`654321`);
         });
 
-        it('The value has changed to less than 6 characters', () => {
-            testComponent.control.setValue('123456789');
+        it(`The value has changed to less than 6 characters`, () => {
+            testComponent.control.setValue(`123456789`);
             testComponent.onBinChange.calls.reset();
-            testComponent.control.setValue('123');
+            testComponent.control.setValue(`123`);
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
         });
     });
 
-    describe('paymentSystem', () => {
-        it('visa', () => {
-            testComponent.control.setValue('4111 1111 1111 1111');
+    describe(`paymentSystem`, () => {
+        it(`visa`, () => {
+            testComponent.control.setValue(`4111 1111 1111 1111`);
 
             expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Visa);
         });
 
-        it('electron', () => {
-            testComponent.control.setValue('4917300800000000');
+        it(`electron`, () => {
+            testComponent.control.setValue(`4917300800000000`);
 
             expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Electron);
         });
 
-        it('mir', () => {
-            testComponent.control.setValue('2200654321000000');
+        it(`mir`, () => {
+            testComponent.control.setValue(`2200654321000000`);
 
             expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Mir);
         });
 
-        it('mastercard', () => {
-            testComponent.control.setValue('5500 0000 0000 0004');
+        it(`mastercard`, () => {
+            testComponent.control.setValue(`5500 0000 0000 0004`);
 
             expect(testComponent.component.paymentSystem).toBe(
                 TuiPaymentSystem.Mastercard,
             );
         });
 
-        it('maestro', () => {
-            testComponent.control.setValue('6759649826438453');
+        it(`maestro`, () => {
+            testComponent.control.setValue(`6759649826438453`);
 
             expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Maestro);
         });
     });
 
-    describe('Formatting', () => {
-        it('13', async () => {
-            await testFormat('4000000000000', '4000 0000 0000 0');
+    describe(`Formatting`, () => {
+        it(`13`, async () => {
+            await testFormat(`4000000000000`, `4000 0000 0000 0`);
         });
 
-        it('14', async () => {
-            await testFormat('40000000000000', '4000 0000 0000 00');
+        it(`14`, async () => {
+            await testFormat(`40000000000000`, `4000 0000 0000 00`);
         });
 
-        it('15', async () => {
-            await testFormat('400000000000000', '4000 0000 0000 000');
+        it(`15`, async () => {
+            await testFormat(`400000000000000`, `4000 0000 0000 000`);
         });
 
-        it('16', async () => {
-            await testFormat('4000000000000000', '4000 0000 0000 0000');
+        it(`16`, async () => {
+            await testFormat(`4000000000000000`, `4000 0000 0000 0000`);
         });
 
-        it('17', async () => {
-            await testFormat('40000000000000000', '4000 0000 0000 0000 0');
+        it(`17`, async () => {
+            await testFormat(`40000000000000000`, `4000 0000 0000 0000 0`);
         });
 
-        it('18', async () => {
-            await testFormat('400000000000000000', '4000 0000 0000 0000 00');
+        it(`18`, async () => {
+            await testFormat(`400000000000000000`, `4000 0000 0000 0000 00`);
         });
 
-        it('19', async () => {
-            await testFormat('4000000000000000000', '4000 0000 0000 0000 000');
+        it(`19`, async () => {
+            await testFormat(`4000000000000000000`, `4000 0000 0000 0000 000`);
         });
     });
 

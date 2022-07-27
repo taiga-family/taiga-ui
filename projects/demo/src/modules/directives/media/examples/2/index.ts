@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {SECONDS_IN_MINUTE} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-media-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-media-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -15,7 +15,7 @@ export class TuiMediaExample2 {
     paused = true;
 
     get icon(): string {
-        return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
+        return this.paused ? `tuiIconPlayLarge` : `tuiIconPauseLarge`;
     }
 
     getTime(time: number): string {

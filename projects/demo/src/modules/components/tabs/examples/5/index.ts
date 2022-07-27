@@ -3,23 +3,23 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-tabs-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-tabs-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiTabsExample5 {
-    readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
+    readonly collaborators = [`Carol Cleveland`, `Neil Innes`];
 
     readonly tabs = [
-        'John Cleese',
-        'Eric Idle',
+        `John Cleese`,
+        `Eric Idle`,
         this.collaborators,
-        'Michael Palin',
-        'Terry Jones',
-        'Terry Gilliam',
-        'Graham Chapman',
+        `Michael Palin`,
+        `Terry Jones`,
+        `Terry Gilliam`,
+        `Graham Chapman`,
     ];
 
     activeElement = String(this.tabs[0]);
@@ -45,6 +45,6 @@ export class TuiTabsExample5 {
     }
 
     isString(tab: unknown): tab is string {
-        return typeof tab === 'string';
+        return typeof tab === `string`;
     }
 }

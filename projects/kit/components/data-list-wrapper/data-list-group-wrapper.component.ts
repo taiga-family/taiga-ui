@@ -12,9 +12,9 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 
 @Component({
-    selector: 'tui-data-list-wrapper[labels]',
-    templateUrl: './data-list-group-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    selector: `tui-data-list-wrapper[labels]`,
+    templateUrl: `./data-list-group-wrapper.template.html`,
+    styleUrls: [`./data-list-wrapper.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

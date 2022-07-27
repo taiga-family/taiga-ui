@@ -7,10 +7,10 @@ import {Observable} from 'rxjs';
 
 // TODO: 3.0 remove `tui-wrapper` mode
 @Directive({
-    selector: 'tui-wrapper, [tuiWrapper]',
+    selector: `tui-wrapper, [tuiWrapper]`,
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiWrapperDirective {
@@ -35,22 +35,22 @@ export class TuiWrapperDirective {
     invalid = false;
 
     @Input()
-    @HostBinding('attr.data-appearance')
-    appearance = '';
+    @HostBinding(`attr.data-appearance`)
+    appearance = ``;
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
-    @HostBinding('class._invalid')
+    @HostBinding(`class._invalid`)
     get computedInvalid(): boolean {
         return !this.disabled && !this.readOnly && this.invalid;
     }
 
-    @HostBinding('class._focused')
+    @HostBinding(`class._focused`)
     get computedFocused(): boolean {
         return this.focused && !this.disabled;
     }
 
-    @HostBinding('attr.data-state')
+    @HostBinding(`attr.data-state`)
     get interactiveState(): TuiInteractiveState | string | null {
         if (this.disabled) {
             return TuiInteractiveState.Disabled;
@@ -71,12 +71,12 @@ export class TuiWrapperDirective {
         return null;
     }
 
-    @HostBinding('class._no-hover')
+    @HostBinding(`class._no-hover`)
     get noHover(): boolean {
         return this.readOnly || this.hovered === false;
     }
 
-    @HostBinding('class._no-active')
+    @HostBinding(`class._no-active`)
     get noActive(): boolean {
         return this.readOnly || this.pressed === false;
     }

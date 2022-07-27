@@ -12,9 +12,9 @@ import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-linear-picker',
-    templateUrl: './linear-picker.template.html',
-    styleUrls: ['./linear-picker.style.less'],
+    selector: `tui-linear-picker`,
+    templateUrl: `./linear-picker.template.html`,
+    styleUrls: [`./linear-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })

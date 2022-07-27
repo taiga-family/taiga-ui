@@ -1,4 +1,4 @@
-const DEFAULT_FORMAT = 'text/plain';
+const DEFAULT_FORMAT = `text/plain`;
 
 /**
  * @deprecated: use {@link tuiGetClipboardDataText} instead
@@ -9,10 +9,10 @@ export function getClipboardDataText(
     event: ClipboardEvent,
     format: string = DEFAULT_FORMAT,
 ): string {
-    return 'clipboardData' in event && event.clipboardData !== null
+    return `clipboardData` in event && event.clipboardData !== null
         ? event.clipboardData.getData(format) ||
               event.clipboardData.getData(DEFAULT_FORMAT)
-        : (event as any).target.ownerDocument.defaultView.clipboardData.getData('text');
+        : (event as any).target.ownerDocument.defaultView.clipboardData.getData(`text`);
 }
 
 export const tuiGetClipboardDataText = getClipboardDataText;

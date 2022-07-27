@@ -25,9 +25,9 @@ import {mapTo} from 'rxjs/operators';
 
 // @bad TODO: Think about extending Interactive
 @Component({
-    selector: 'a[tuiLink], button[tuiLink]',
-    templateUrl: './link.template.html',
-    styleUrls: ['./link.style.less'],
+    selector: `a[tuiLink], button[tuiLink]`,
+    templateUrl: `./link.template.html`,
+    styleUrls: [`./link.style.less`],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -38,14 +38,14 @@ import {mapTo} from 'rxjs/operators';
         MODE_PROVIDER,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'tuiLink',
+    exportAs: `tuiLink`,
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
-    @HostBinding('class._pseudo')
+    @HostBinding(`class._pseudo`)
     @tuiDefaultProp()
     pseudo = false;
 
@@ -56,24 +56,24 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
+    iconAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('class._icon-rotated')
+    @HostBinding(`class._icon-rotated`)
     @tuiDefaultProp()
     iconRotated = false;
 
     @Input()
-    @HostBinding('attr.data-host-mode')
+    @HostBinding(`attr.data-host-mode`)
     @tuiDefaultProp()
     mode: 'positive' | 'negative' | null = null;
 
-    @HostBinding('class._focus-visible')
+    @HostBinding(`class._focus-visible`)
     focusVisible = false;
 
     readonly focusedChange = merge(
-        typedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(mapTo(true)),
-        typedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(mapTo(false)),
+        typedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
+        typedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
     );
 
     constructor(
@@ -101,10 +101,10 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get iconAlignLeft(): boolean {
-        return this.hasIcon && this.iconAlign === 'left';
+        return this.hasIcon && this.iconAlign === `left`;
     }
 
     get iconAlignRight(): boolean {
-        return this.hasIcon && this.iconAlign === 'right';
+        return this.hasIcon && this.iconAlign === `right`;
     }
 }

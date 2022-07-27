@@ -27,9 +27,9 @@ const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
 @Component({
-    selector: 'tui-preview',
-    templateUrl: './preview.template.html',
-    styleUrls: ['./preview.style.less'],
+    selector: `tui-preview`,
+    templateUrl: `./preview.template.html`,
+    styleUrls: [`./preview.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
     providers: [TuiDestroyService],
@@ -58,17 +58,17 @@ export class TuiPreviewComponent {
         dragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
-        typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
+        typedFromEvent(this.elementRef.nativeElement, `touchmove`, {passive: true}).pipe(
             mapTo(false),
         ),
-        typedFromEvent(this.elementRef.nativeElement, 'wheel', {passive: true}).pipe(
+        typedFromEvent(this.elementRef.nativeElement, `wheel`, {passive: true}).pipe(
             mapTo(false),
         ),
     );
 
     readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
-        map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
-        startWith('initial'),
+        map(({stage}) => (stage === TuiDragStage.Continues ? `grabbing` : `initial`)),
+        startWith(`initial`),
     );
 
     readonly wrapperTransform$ = combineLatest([

@@ -19,8 +19,8 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
     ) {
         super(subscriber => {
             merge(
-                typedFromEvent(nativeElement, 'touchstart', {passive: true}),
-                typedFromEvent(documentRef, 'touchend'),
+                typedFromEvent(nativeElement, `touchstart`, {passive: true}),
+                typedFromEvent(documentRef, `touchend`),
             )
                 .pipe(
                     pairwise(),

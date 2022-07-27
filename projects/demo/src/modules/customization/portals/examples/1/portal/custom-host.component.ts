@@ -6,9 +6,9 @@ import {AbstractTuiPortalService} from '@taiga-ui/cdk/abstract/portal-service';
 import {CustomPortalService} from './custom-portal.service';
 
 @Component({
-    selector: 'custom-host',
-    templateUrl: './custom-host.template.html',
-    styleUrls: ['./custom-host.style.less'],
+    selector: `custom-host`,
+    templateUrl: `./custom-host.template.html`,
+    styleUrls: [`./custom-host.style.less`],
     changeDetection,
     providers: [{provide: AbstractTuiPortalService, useExisting: CustomPortalService}],
 })

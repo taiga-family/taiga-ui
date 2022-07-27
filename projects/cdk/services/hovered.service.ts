@@ -15,7 +15,7 @@ import {
 /** @deprecated TODO remove in v3.0 */
 // @dynamic
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiHoveredService {
     private readonly documentEvents$: Observable<Event>;
@@ -25,8 +25,8 @@ export class TuiHoveredService {
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         this.documentEvents$ = merge(
-            typedFromEvent(documentRef, 'mousemove'),
-            typedFromEvent(documentRef, 'touchstart', {capture: true}),
+            typedFromEvent(documentRef, `mousemove`),
+            typedFromEvent(documentRef, `touchstart`, {capture: true}),
         );
     }
 
@@ -35,12 +35,12 @@ export class TuiHoveredService {
         options: AddEventListenerOptions = {passive: true},
     ): Observable<boolean> {
         return merge(
-            typedFromEvent(target, 'mouseenter', options),
-            typedFromEvent(target, 'touchstart', options),
+            typedFromEvent(target, `mouseenter`, options),
+            typedFromEvent(target, `touchstart`, options),
         ).pipe(
             switchMap(() =>
                 merge(
-                    typedFromEvent(target, 'mouseleave', options),
+                    typedFromEvent(target, `mouseleave`, options),
                     this.documentEvents$.pipe(
                         filter(event => !target.contains(getActualTarget(event))),
                         tuiZoneOptimized(this.ngZone),

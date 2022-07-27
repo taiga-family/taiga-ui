@@ -9,13 +9,13 @@ import {TuiIdService} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-export const TUI_SHEET_CLOSE = 'tui-sheet-close';
-export const TUI_SHEET_ID = 'tui-sheet-id';
+export const TUI_SHEET_CLOSE = `tui-sheet-close`;
+export const TUI_SHEET_ID = `tui-sheet-id`;
 
 @Component({
-    selector: '[tuiSheetHeading]',
-    templateUrl: 'sheet-heading.template.html',
-    styleUrls: ['sheet-heading.style.less'],
+    selector: `[tuiSheetHeading]`,
+    templateUrl: `sheet-heading.template.html`,
+    styleUrls: [`sheet-heading.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSheetHeadingComponent implements AfterViewInit {

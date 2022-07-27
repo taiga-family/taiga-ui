@@ -5,9 +5,9 @@ import {TuiSwipe} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 
 @Component({
-    selector: 'tui-swipe-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-swipe-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -21,11 +21,11 @@ export class TuiSwipeExample2 {
     onSwipe(swipe: TuiSwipe): void {
         console.info(swipe.direction);
 
-        if (swipe.direction === 'left') {
+        if (swipe.direction === `left`) {
             this.toggle(true);
         }
 
-        if (swipe.direction === 'right') {
+        if (swipe.direction === `right`) {
             this.toggle(false);
         }
     }

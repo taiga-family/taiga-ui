@@ -13,14 +13,14 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 
 // @dynamic
 @Component({
-    selector: 'tui-primitive-checkbox',
-    templateUrl: './primitive-checkbox.template.html',
-    styleUrls: ['./primitive-checkbox.style.less'],
+    selector: `tui-primitive-checkbox`,
+    templateUrl: `./primitive-checkbox.template.html`,
+    styleUrls: [`./primitive-checkbox.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -44,7 +44,7 @@ export class TuiPrimitiveCheckboxComponent {
     @tuiDefaultProp()
     invalid = false;
 
-    @Input('value')
+    @Input(`value`)
     @tuiDefaultProp()
     set valueSetter(value: boolean | null) {
         if (value !== false) {

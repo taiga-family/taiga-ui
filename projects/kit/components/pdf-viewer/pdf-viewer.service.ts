@@ -8,14 +8,14 @@ import {TuiPdfViewerComponent} from './pdf-viewer.component';
 import {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 const DIALOG = new PolymorpheusComponent(TuiPdfViewerComponent);
-const DEFAULT_OPTIONS = {label: '', actions: ''} as const;
+const DEFAULT_OPTIONS = {label: ``, actions: ``} as const;
 
 type Content<G> = PolymorpheusContent<
     TuiBaseDialogContext<G> & TuiPdfViewerOptions<unknown>
 >;
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiPdfViewerService extends AbstractTuiDialogService<
     TuiPdfViewerOptions<unknown>

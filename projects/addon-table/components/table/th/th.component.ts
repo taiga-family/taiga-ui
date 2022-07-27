@@ -17,9 +17,9 @@ import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 
 @Component({
-    selector: 'th[tuiTh]',
-    templateUrl: './th.template.html',
-    styleUrls: ['./th.style.less'],
+    selector: `th[tuiTh]`,
+    templateUrl: `./th.template.html`,
+    styleUrls: [`./th.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -40,11 +40,11 @@ export class TuiThComponent<T> {
     resizable = false;
 
     @Input()
-    @HostBinding('class._sticky')
+    @HostBinding(`class._sticky`)
     @tuiDefaultProp()
     sticky = false;
 
-    @HostBinding('style.width.px')
+    @HostBinding(`style.width.px`)
     width: number | null = null;
 
     constructor(
@@ -69,7 +69,7 @@ export class TuiThComponent<T> {
     }
 
     get icon(): string {
-        return this.isCurrent ? 'tuiIconSortDown' : 'tuiIconSortOff';
+        return this.isCurrent ? `tuiIconSortDown` : `tuiIconSortOff`;
     }
 
     onResized(width: number): void {

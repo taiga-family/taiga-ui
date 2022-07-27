@@ -6,7 +6,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
 @Directive({
-    selector: 'tui-primitive-textfield',
+    selector: `tui-primitive-textfield`,
     providers: [
         {
             provide: TUI_TEXTFIELD_HOST,

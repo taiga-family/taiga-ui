@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Directive({
-    selector: '[tuiZoom]',
-    outputs: ['tuiZoom'],
+    selector: `[tuiZoom]`,
+    outputs: [`tuiZoom`],
     providers: [TuiZoomService],
     host: {
-        '[style.touch-action]': '"none"',
+        '[style.touch-action]': `"none"`,
     },
 })
 export class TuiZoomDirective {

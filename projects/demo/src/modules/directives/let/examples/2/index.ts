@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-let-example-2',
-    templateUrl: './index.html',
+    selector: `tui-let-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -16,8 +16,8 @@ export class TuiLetExample2 {
     ) {}
 
     get getter(): string {
-        this.alertService.open('Getter called').subscribe();
+        this.alertService.open(`Getter called`).subscribe();
 
-        return '🐳';
+        return `🐳`;
     }
 }

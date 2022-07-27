@@ -9,12 +9,12 @@ export interface TuiMultiSelectOptions<T> {
 
 export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = {
     expandable: true,
-    valueContent: '',
+    valueContent: ``,
 };
 
 export const TUI_MULTI_SELECT_OPTIONS = new InjectionToken<
     TuiMultiSelectOptions<unknown>
->('Default parameters for multi select component', {
+>(`Default parameters for multi select component`, {
     factory: () => TUI_MULTI_SELECT_DEFAULT_OPTIONS,
 });
 

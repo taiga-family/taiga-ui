@@ -1,7 +1,7 @@
 import {tuiPure} from '../pure';
 
-describe('tuiPure', () => {
-    it('calls getter only once and then sets result as a value property on the object', () => {
+describe(`tuiPure`, () => {
+    it(`calls getter only once and then sets result as a value property on the object`, () => {
         let count = 0;
 
         class TestClass {
@@ -9,22 +9,22 @@ describe('tuiPure', () => {
             get someGetter(): string {
                 count++;
 
-                return 'test';
+                return `test`;
             }
         }
 
         const testObject = new TestClass();
 
         expect(count).toBe(0);
-        expect(testObject.someGetter).toBe('test');
+        expect(testObject.someGetter).toBe(`test`);
         expect(count).toBe(1);
-        expect(testObject.someGetter).toBe('test');
-        expect(testObject.someGetter).toBe('test');
+        expect(testObject.someGetter).toBe(`test`);
+        expect(testObject.someGetter).toBe(`test`);
         expect(count).toBe(1);
     });
 
-    it('memoizes function result', () => {
-        const name = 'Alex';
+    it(`memoizes function result`, () => {
+        const name = `Alex`;
         const age = 30;
 
         class TestClass {
@@ -40,8 +40,8 @@ describe('tuiPure', () => {
         expect(testObject.combine(name, age)).toBe(result);
     });
 
-    it('has access to this', () => {
-        const name = 'Alex';
+    it(`has access to this`, () => {
+        const name = `Alex`;
         const age = 30;
 
         class TestClass {
@@ -53,13 +53,13 @@ describe('tuiPure', () => {
             }
         }
 
-        const testObject = new TestClass('awesome');
+        const testObject = new TestClass(`awesome`);
         const result = testObject.combine(name, age);
 
         expect(testObject.combine(name, age)).toBe(result);
     });
 
-    it('memoize function without arguments', () => {
+    it(`memoize function without arguments`, () => {
         class TestClass {
             sideEffect = 0;
 
@@ -83,7 +83,7 @@ describe('tuiPure', () => {
         expect(testObject.sideEffect).toEqual(1);
     });
 
-    it('memoize function without arguments and return undefined by default', () => {
+    it(`memoize function without arguments and return undefined by default`, () => {
         class TestClass {
             sideEffect = 0;
 

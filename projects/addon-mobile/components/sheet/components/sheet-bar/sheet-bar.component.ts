@@ -7,9 +7,9 @@ import {TuiSheetComponent} from '../sheet/sheet.component';
 import {TUI_SHEET_SCROLL} from '../sheet/sheet.providers';
 
 @Component({
-    selector: 'tui-sheet-bar',
-    templateUrl: 'sheet-bar.template.html',
-    styleUrls: ['sheet-bar.style.less'],
+    selector: `tui-sheet-bar`,
+    templateUrl: `sheet-bar.template.html`,
+    styleUrls: [`sheet-bar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSheetBarComponent {

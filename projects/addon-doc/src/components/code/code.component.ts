@@ -7,15 +7,15 @@ import {rawLoad} from '../../utils/raw-load';
 import {tryParseMarkdownCodeBlock} from './parse-code-block';
 
 @Component({
-    selector: 'tui-doc-code',
-    templateUrl: './code.template.html',
-    styleUrls: ['./code.style.less'],
+    selector: `tui-doc-code`,
+    templateUrl: `./code.template.html`,
+    styleUrls: [`./code.style.less`],
 })
 export class TuiDocCodeComponent {
-    private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>('');
+    private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>(``);
 
     @Input()
-    filename = '';
+    filename = ``;
 
     readonly processor$ = this.rawLoader$$.pipe(
         switchMap(rawLoad),
@@ -27,7 +27,7 @@ export class TuiDocCodeComponent {
         this.rawLoader$$.next(code);
     }
 
-    @HostBinding('class._has-filename')
+    @HostBinding(`class._has-filename`)
     get hasFilename(): boolean {
         return !!this.filename;
     }

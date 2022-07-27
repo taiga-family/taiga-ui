@@ -11,8 +11,8 @@ export interface TuiArrowOptions {
 }
 
 // TODO: 3.0 remove in ivy compilation
-export const TUI_ARROW_ICON_SMALL = 'tuiIconChevronDown';
-export const TUI_ARROW_ICON_LARGE = 'tuiIconChevronDownLarge';
+export const TUI_ARROW_ICON_SMALL = `tuiIconChevronDown`;
+export const TUI_ARROW_ICON_LARGE = `tuiIconChevronDownLarge`;
 
 /** Default values for arrow options */
 export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
@@ -21,7 +21,7 @@ export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
 };
 
 export const TUI_ARROW_OPTIONS = new InjectionToken<TuiArrowOptions>(
-    'Default parameters for arrow component',
+    `Default parameters for arrow component`,
     {
         factory: () => TUI_ARROW_DEFAULT_OPTIONS,
     },
@@ -44,7 +44,7 @@ export interface TuiArrowMode {
 }
 
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
-    'Type of icon in dropdowns for interactive or disable mode',
+    `Type of icon in dropdowns for interactive or disable mode`,
     {
         factory: () => ({
             interactive: TUI_ARROW,

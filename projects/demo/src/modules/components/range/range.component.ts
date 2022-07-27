@@ -6,36 +6,36 @@ import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-range',
-    templateUrl: './range.template.html',
+    selector: `example-range`,
+    templateUrl: `./range.template.html`,
     changeDetection,
 })
 export class ExampleTuiRangeComponent {
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
-    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
 
     readonly example1: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        TypeScript: import('!!raw-loader!./examples/1/index'),
+        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/1/index`),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        TypeScript: import('!!raw-loader!./examples/2/index'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/2/index`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
-        TypeScript: import('!!raw-loader!./examples/3/index'),
+        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import(`!!raw-loader!./examples/3/index`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        TypeScript: import('!!raw-loader!./examples/4/index'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/4/index`),
+        LESS: import(`!!raw-loader!./examples/4/index.less`),
     };
 
     readonly control = new FormControl([0, 0]);
@@ -54,7 +54,7 @@ export class ExampleTuiRangeComponent {
         this.control.enable();
     }
 
-    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = [`s`, `m`];
 
     size: TuiSizeS = this.sizeVariants[1];
 
@@ -69,11 +69,11 @@ export class ExampleTuiRangeComponent {
     steps = this.stepsVariants[0];
 
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        [`year`, `years`, `years`],
+        {one: `thing`, few: `things`, many: `things`, other: `things`},
         {
-            one: 'year',
-            other: 'years',
+            one: `year`,
+            other: `years`,
         },
     ];
 

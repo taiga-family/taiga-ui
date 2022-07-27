@@ -3,14 +3,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-badged-content-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-badged-content-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiBadgedContentExample2 {
-    value = '';
+    value = ``;
 
     contentTop = 0;
 
@@ -19,11 +19,11 @@ export class TuiBadgedContentExample2 {
     }
 
     get color(): string {
-        return this.contentTop === 50 ? 'tuiIconCheck' : 'var(--tui-error-fill)';
+        return this.contentTop === 50 ? `tuiIconCheck` : `var(--tui-error-fill)`;
     }
 
     get contentBottom(): string {
-        return this.contentTop === 50 ? '' : '';
+        return this.contentTop === 50 ? `` : ``;
     }
 
     onClick(): void {

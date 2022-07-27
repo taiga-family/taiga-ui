@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
-    selector: 'tui-for-example-1',
-    templateUrl: './index.html',
+    selector: `tui-for-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -21,7 +21,7 @@ export class TuiForExample1 {
             this.items$.next(
                 delay % 2
                     ? []
-                    : ['William "Bill" S. Preston Esq.', 'Ted "Theodore" Logan'],
+                    : [`William "Bill" S. Preston Esq.`, `Ted "Theodore" Logan`],
             );
         }, delay);
     }

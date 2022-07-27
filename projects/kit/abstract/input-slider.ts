@@ -41,7 +41,7 @@ export abstract class AbstractTuiInputSlider<T>
      */
     @Input()
     @tuiDefaultProp()
-    minLabel = '';
+    minLabel = ``;
 
     /**
      * @deprecated This input-property will be deleted in next major update.
@@ -54,7 +54,7 @@ export abstract class AbstractTuiInputSlider<T>
      */
     @Input()
     @tuiDefaultProp()
-    maxLabel = '';
+    maxLabel = ``;
 
     // TODO: remove setter in v3.0:
     @Input()
@@ -94,7 +94,7 @@ export abstract class AbstractTuiInputSlider<T>
     steps = 0;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
+    @tuiDefaultProp(quantumAssertion, `Quantum must be positive`)
     quantum = 1;
 
     @Input()
@@ -106,9 +106,9 @@ export abstract class AbstractTuiInputSlider<T>
      * TODO delete in v3.0
      */
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'l';
+    size: TuiSizeL = `l`;
 
     /**
      * @deprecated replace by input-property {@link pluralize} in v3.0
@@ -118,23 +118,23 @@ export abstract class AbstractTuiInputSlider<T>
     segmentsPluralizeMap: Record<string, string> | null = null;
     /** @deprecated TODO remove in v3.0 */
     readonly pluralizeMapFallback = {
-        one: '',
-        few: '',
-        many: '',
-        other: '',
+        one: ``,
+        few: ``,
+        many: ``,
+        other: ``,
     };
 
     /** @deprecated TODO remove in v3.0 */
     @tuiPure
     getTickPrefix(segment: number, segments: number, texts: [string, string]): string {
         if (segments !== 1) {
-            return '';
+            return ``;
         }
 
         return segment === 0 ? `${texts[0]}` : `${texts[1]}`;
     }
 
-    @HostBinding('class._segmented')
+    @HostBinding(`class._segmented`)
     get segmented(): boolean {
         return this.segments > 0;
     }

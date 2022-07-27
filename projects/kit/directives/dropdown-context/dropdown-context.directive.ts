@@ -27,7 +27,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 // @dynamic
 @Directive({
-    selector: '[tuiDropdownContext]',
+    selector: `[tuiDropdownContext]`,
     providers: [
         TuiDestroyService,
         TuiActiveZoneDirective,
@@ -43,9 +43,9 @@ export class TuiDropdownContextDirective
 {
     private lastClickedClientRect = EMPTY_CLIENT_RECT;
 
-    @Input('tuiDropdownContext')
+    @Input(`tuiDropdownContext`)
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent = ``;
 
     readonly refresh$ = EMPTY;
 
@@ -83,18 +83,18 @@ export class TuiDropdownContextDirective
         return this.dropdownBoxRef?.instance.contentElementRef?.nativeElement || null;
     }
 
-    @HostListener('click')
+    @HostListener(`click`)
     onHostClick(): void {
         this.closeDropdownBox();
     }
 
-    @HostListener('contextmenu.prevent', ['$event.clientX', '$event.clientY'])
+    @HostListener(`contextmenu.prevent`, [`$event.clientX`, `$event.clientY`])
     onContextMenu(x: number, y: number): void {
         this.closeDropdownBox();
         this.openDropdown(x, y);
     }
 
-    @HostListener('document:contextmenu', ['$event.target'])
+    @HostListener(`document:contextmenu`, [`$event.target`])
     onAnotherContextOpen(target: HTMLElement): void {
         const isAnotherContextOpened = !this.elementRef.nativeElement.contains(target);
 
@@ -103,8 +103,8 @@ export class TuiDropdownContextDirective
         }
     }
 
-    @HostListener('document:keydown.arrowDown', ['$event', 'true'])
-    @HostListener('document:keydown.arrowUp', ['$event', 'false'])
+    @HostListener(`document:keydown.arrowDown`, [`$event`, `true`])
+    @HostListener(`document:keydown.arrowUp`, [`$event`, `false`])
     onArrow(event: KeyboardEvent, down: boolean): void {
         const activeElement = getNativeFocused(this.documentRef);
         const focusInside = activeElement && this.activeZone.contains(activeElement);
@@ -127,7 +127,7 @@ export class TuiDropdownContextDirective
         setNativeFocused(focusable);
     }
 
-    @HostListener('document:keydown.esc', ['$event'])
+    @HostListener(`document:keydown.esc`, [`$event`])
     onKeyDownEsc(event: KeyboardEvent): void {
         if (!this.dropdownContent) {
             return;
@@ -143,6 +143,6 @@ export class TuiDropdownContextDirective
     }
 
     private checkIsFocusableElement(element: Element | null): element is HTMLElement {
-        return !!element && 'focus' in element && 'blur' in element;
+        return !!element && `focus` in element && `blur` in element;
     }
 }

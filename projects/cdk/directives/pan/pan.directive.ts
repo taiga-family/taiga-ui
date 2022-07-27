@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Directive({
-    selector: '[tuiPan]',
-    outputs: ['tuiPan'],
+    selector: `[tuiPan]`,
+    outputs: [`tuiPan`],
     providers: [TuiPanService],
 })
 export class TuiPanDirective {

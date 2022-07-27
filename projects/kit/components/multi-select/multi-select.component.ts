@@ -56,9 +56,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
 
 @Component({
-    selector: 'tui-multi-select',
-    templateUrl: './multi-select.template.html',
-    styleUrls: ['./multi-select.style.less'],
+    selector: `tui-multi-select`,
+    templateUrl: `./multi-select.template.html`,
+    styleUrls: [`./multi-select.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -101,10 +101,10 @@ export class TuiMultiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    search: string | null = '';
+    search: string | null = ``;
 
     @Input()
-    @HostBinding('class._editable')
+    @HostBinding(`class._editable`)
     @tuiDefaultProp()
     editable = true;
 
@@ -123,7 +123,7 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    > = ``;
 
     open = false;
 
@@ -148,7 +148,7 @@ export class TuiMultiSelectComponent<T>
         svgService.define({iconBlank});
     }
 
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
@@ -176,11 +176,11 @@ export class TuiMultiSelectComponent<T>
 
     // @bad TODO: think of a better way
     get searchOrSpace(): string {
-        return this.computedGroup ? ' ' : this.searchString;
+        return this.computedGroup ? ` ` : this.searchString;
     }
 
     get searchString(): string {
-        return this.search === null ? '' : this.search;
+        return this.search === null ? `` : this.search;
     }
 
     /**
@@ -188,7 +188,7 @@ export class TuiMultiSelectComponent<T>
      * to prevent overflow of arrow icon by many tags
      */
     get tagIcon(): string {
-        return this.interactive ? 'iconBlank' : '';
+        return this.interactive ? `iconBlank` : ``;
     }
 
     get inputHidden(): boolean {
@@ -226,7 +226,7 @@ export class TuiMultiSelectComponent<T>
         TuiBooleanHandler<T>,
         TuiBooleanHandler<string | TuiStringifiableItem<T>>
     > = handler => stringifiable =>
-        typeof stringifiable === 'string' || handler(stringifiable.item);
+        typeof stringifiable === `string` || handler(stringifiable.item);
 
     onHoveredChange(hovered: boolean): void {
         this.updateHovered(hovered);

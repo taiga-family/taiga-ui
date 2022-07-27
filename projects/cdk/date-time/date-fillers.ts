@@ -5,7 +5,7 @@ import {RANGE_SEPARATOR_CHAR} from './date-time';
 /**
  * @deprecated dont use it. See {@link TUI_DATE_FORMAT}
  */
-export const TUI_DATE_FILLER = new InjectionToken<string>('date filler for Taiga UI', {
+export const TUI_DATE_FILLER = new InjectionToken<string>(`date filler for Taiga UI`, {
     factory: () => `dd.mm.yyyy`,
 });
 
@@ -13,7 +13,7 @@ export const TUI_DATE_FILLER = new InjectionToken<string>('date filler for Taiga
  * @deprecated dont use it
  */
 export const TUI_DATE_RANGE_FILLER = new InjectionToken<string>(
-    'date range filler for Taiga UI',
+    `date range filler for Taiga UI`,
     {
         factory: () => {
             const dateFiller = inject(TUI_DATE_FILLER);

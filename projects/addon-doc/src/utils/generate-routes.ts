@@ -9,11 +9,11 @@ import {Routes} from '@angular/router';
 export function generateRoutes(type: Type<unknown>): Routes {
     return [
         {
-            path: '',
+            path: ``,
             component: type,
             children: [
                 {
-                    path: ':tab',
+                    path: `:tab`,
                     component: type,
                 },
             ],

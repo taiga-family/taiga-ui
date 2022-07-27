@@ -15,15 +15,15 @@ import {
 } from './utils';
 
 const APP_COMP_META = {
-    SELECTOR: 'my-app',
-    TEMPLATE_URL: './app.component.html',
-    STYLE_URLS: ['./app.component.less'],
-    CLASS_NAME: 'AppComponent',
+    SELECTOR: `my-app`,
+    TEMPLATE_URL: `./app.component.html`,
+    STYLE_URLS: [`./app.component.less`],
+    CLASS_NAME: `AppComponent`,
 } as const;
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    readonly name = 'Stackblitz';
+    readonly name = `Stackblitz`;
 
     async edit(
         component: string,
@@ -75,7 +75,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         stackblitz.openProject({
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
-            template: 'angular-cli',
+            template: `angular-cli`,
             dependencies: STACKBLITZ_DEPS,
             files: {
                 ...modifiedSupportFiles,
@@ -88,9 +88,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-                [appPrefix`app.component.less`]: prepareLess(content.LESS || ''),
+                [appPrefix`app.component.less`]: prepareLess(content.LESS || ``),
             },
-            tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
+            tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
         });
     }
 }

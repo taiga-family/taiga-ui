@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-time-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-time-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

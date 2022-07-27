@@ -8,9 +8,9 @@ const COPIED_TIMEOUT = 1500;
 
 // @dynamic
 @Component({
-    selector: 'tui-doc-copy',
-    templateUrl: './copy.template.html',
-    styleUrls: ['./copy.style.less'],
+    selector: `tui-doc-copy`,
+    templateUrl: `./copy.template.html`,
+    styleUrls: [`./copy.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

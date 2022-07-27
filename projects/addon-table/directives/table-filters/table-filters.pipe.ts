@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {TuiTableFiltersDirective} from './table-filters.directive';
 
 @Pipe({
-    name: 'tuiTableFilters',
+    name: `tuiTableFilters`,
 })
 export class TuiTableFiltersPipe<T> implements PipeTransform {
     constructor(

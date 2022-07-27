@@ -28,5 +28,5 @@ export function tuiAssertIsHTMLElement(node?: PossibleNode): asserts node is HTM
         !!defaultView &&
         (node instanceof defaultView.Element || node instanceof defaultView.HTMLDocument);
 
-    tuiAssert.assert(isElement, 'Node is not an Element');
+    tuiAssert.assert(isElement, `Node is not an Element`);
 }

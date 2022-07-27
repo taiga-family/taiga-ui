@@ -42,9 +42,9 @@ declare global {
     }
 }
 
-Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
+Cypress.Commands.add(`getByAutomationId`, id => cy.get(`[automation-id=${id}]`));
 Cypress.Commands.add(
-    'findByAutomationId',
+    `findByAutomationId`,
     {prevSubject: true},
     <S>(subject: S, id: string) =>
         /**
@@ -56,29 +56,29 @@ Cypress.Commands.add(
          */
         cy.wrap(subject).find(`[automation-id=${id}]`),
 );
-Cypress.Commands.add('tuiVisit', tuiVisit);
-Cypress.Commands.add('tuiHideHeader', tuiHideHeader);
-Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
-Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
-Cypress.Commands.add('tuiHideNavigation', tuiHideNavigation);
-Cypress.Commands.add('tuiHideVersionManager', tuiHideVersionManager);
-Cypress.Commands.add('tuiWaitCodeHighlight', tuiWaitCodeHighlight);
+Cypress.Commands.add(`tuiVisit`, tuiVisit);
+Cypress.Commands.add(`tuiHideHeader`, tuiHideHeader);
+Cypress.Commands.add(`tuiWaitKitDialog`, tuiWaitKitDialog);
+Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
+Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
+Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
+Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
 
 Cypress.Commands.add(
-    'tuiTab',
-    {prevSubject: ['optional', 'element', 'window', 'document']},
+    `tuiTab`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiTab,
 );
 
 Cypress.Commands.add(
-    'tuiScrollIntoView',
-    {prevSubject: ['optional', 'element', 'window', 'document']},
+    `tuiScrollIntoView`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiScrollIntoView,
 );
 
 Cypress.Commands.add(
-    'tuiFocus',
-    {prevSubject: ['optional', 'element', 'window', 'document']},
+    `tuiFocus`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiFocus,
 );
 
@@ -86,11 +86,11 @@ tuiAddMatchImageSnapshotCommand({
     allowSizeMismatch: true, // Windows CI fix
     runInProcess: true, // macOS CI fix
     failureThreshold: 0.0004,
-    failureThresholdType: 'percent',
-    comparisonMethod: 'ssim',
-    diffDirection: 'vertical',
+    failureThresholdType: `percent`,
+    comparisonMethod: `ssim`,
+    diffDirection: `vertical`,
     customDiffConfig: {
-        ssim: 'fast',
+        ssim: `fast`,
         windowSize: 24,
     } as any,
 });

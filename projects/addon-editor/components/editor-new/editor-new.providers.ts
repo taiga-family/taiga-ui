@@ -52,7 +52,7 @@ export function extensionsFactory(
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function initializationTipTapContainer(renderer: Renderer2): HTMLElement {
-    return renderer.createElement('div');
+    return renderer.createElement(`div`);
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

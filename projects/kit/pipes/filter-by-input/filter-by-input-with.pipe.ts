@@ -9,7 +9,7 @@ import {
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 
 @Pipe({
-    name: 'tuiFilterByInputWith',
+    name: `tuiFilterByInputWith`,
     pure: false,
 })
 export class TuiFilterByInputWithPipe

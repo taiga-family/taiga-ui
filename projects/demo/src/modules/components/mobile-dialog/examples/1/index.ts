@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 import {switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-mobile-dialog-example-1',
-    templateUrl: './index.html',
+    selector: `tui-mobile-dialog-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
@@ -27,13 +27,13 @@ export class TuiMobileDialogExample1 {
     ) {}
 
     show(): void {
-        const actions = ['No thanks', 'Remind me later', 'Rate now'];
+        const actions = [`No thanks`, `Remind me later`, `Rate now`];
 
         this.dialogService
             .open(
-                'If you like this app, please take a moment to leave a positive rating.',
+                `If you like this app, please take a moment to leave a positive rating.`,
                 {
-                    label: 'What do you think?',
+                    label: `What do you think?`,
                     actions,
                 },
             )

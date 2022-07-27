@@ -7,8 +7,8 @@ import {EMPTY, Observable, Subject} from 'rxjs';
 import {first, retry, switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-sheet-example-1',
-    templateUrl: './index.html',
+    selector: `tui-sheet-example-1`,
+    templateUrl: `./index.html`,
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
@@ -25,7 +25,7 @@ export class TuiSheetExample1 {
                 switchMap((_, i) =>
                     i % 2
                         ? EMPTY
-                        : service.open('Simple sheet', {overlay: true}).pipe(first()),
+                        : service.open(`Simple sheet`, {overlay: true}).pipe(first()),
                 ),
                 retry(),
                 takeUntil(destroy$),

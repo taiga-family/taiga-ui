@@ -11,9 +11,9 @@ const FILLER_ARRAY: readonly number[] = [1];
 
 // TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
-    selector: 'tui-bar-set',
-    templateUrl: './bar-set.template.html',
-    styleUrls: ['./bar-set.style.less'],
+    selector: `tui-bar-set`,
+    templateUrl: `./bar-set.template.html`,
+    styleUrls: [`./bar-set.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSetComponent {
@@ -27,7 +27,7 @@ export class TuiBarSetComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL | null = 'm';
+    size: TuiSizeS | TuiSizeL | null = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -44,7 +44,7 @@ export class TuiBarSetComponent {
     }
 
     get computedSize(): TuiSizeS | TuiSizeL {
-        return this.size || 'm';
+        return this.size || `m`;
     }
 
     getHeight(value: number): number {

@@ -7,15 +7,15 @@ import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {DemoTuiIconsList} from '../icons.tokens';
 
 @Component({
-    selector: 'icons-group',
-    templateUrl: './icons-group.template.html',
-    styleUrls: ['./icons-group.style.less'],
+    selector: `icons-group`,
+    templateUrl: `./icons-group.template.html`,
+    styleUrls: [`./icons-group.style.less`],
     changeDetection,
 })
 export class IconsGroupComponent {
     iconsValues: Record<string, DemoTuiIconsList> = {};
     keys: string[] = [];
-    search = '';
+    search = ``;
 
     @Input()
     @tuiRequiredSetter()

@@ -41,8 +41,8 @@ import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
 const PADDING = 26;
 
 @Directive({
-    selector: 'iframe[tuiDesignMode]',
-    exportAs: 'tuiDesignMode',
+    selector: `iframe[tuiDesignMode]`,
+    exportAs: `tuiDesignMode`,
     providers: [
         TuiDestroyService,
         {
@@ -61,8 +61,8 @@ export class TuiDesignModeDirective
 {
     private onTouched = EMPTY_FUNCTION;
     private onChange = EMPTY_FUNCTION;
-    private _value = '';
-    private _exampleText = '';
+    private _value = ``;
+    private _exampleText = ``;
     private _disabled = false;
     private readonly observer = new MutationObserver(() => this.update());
 
@@ -75,8 +75,8 @@ export class TuiDesignModeDirective
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
 
-    @HostBinding('style.pointerEvents')
-    pointerEvents = 'all';
+    @HostBinding(`style.pointerEvents`)
+    pointerEvents = `all`;
 
     constructor(
         @Inject(TuiDestroyService)
@@ -95,7 +95,7 @@ export class TuiDesignModeDirective
         @Inject(TUI_SANITIZER)
         private readonly tuiSanitizer: Sanitizer | null,
     ) {
-        this.renderer.setStyle(this.elementRef.nativeElement, 'visibility', 'hidden');
+        this.renderer.setStyle(this.elementRef.nativeElement, `visibility`, `hidden`);
     }
 
     get nativeFocusableElement(): HTMLElement | null {
@@ -122,15 +122,15 @@ export class TuiDesignModeDirective
         return contentDocument;
     }
 
-    @HostListener('load')
+    @HostListener(`load`)
     onLoad(): void {
         this.initDOM();
         this.initObserver();
         this.initSubscriptions();
     }
 
-    @HostListener('document:mousedown', ['"none"'])
-    @HostListener('document:mouseup', ['"all"'])
+    @HostListener(`document:mousedown`, [`"none"`])
+    @HostListener(`document:mouseup`, [`"all"`])
     onPointer(pointerEvents: 'all' | 'none'): void {
         this.pointerEvents = pointerEvents;
     }
@@ -142,7 +142,7 @@ export class TuiDesignModeDirective
             return;
         }
 
-        this.renderer.setProperty(this.documentRef.body, 'innerHTML', value || '');
+        this.renderer.setProperty(this.documentRef.body, `innerHTML`, value || ``);
         this.updateHeight();
     }
 
@@ -160,26 +160,26 @@ export class TuiDesignModeDirective
         if (this.documentRef) {
             this.renderer.setProperty(
                 this.documentRef,
-                'designMode',
-                disabled ? 'off' : 'on',
+                `designMode`,
+                disabled ? `off` : `on`,
             );
         }
     }
 
     private initDOM(): void {
-        const styleTag: HTMLStyleElement = this.renderer.createElement('style');
+        const styleTag: HTMLStyleElement = this.renderer.createElement(`style`);
         const styles: Text = this.renderer.createText(this.styles);
 
-        styleTag.type = 'text/css';
+        styleTag.type = `text/css`;
         styleTag.appendChild(styles);
 
-        this.renderer.addClass(this.computedDocument.body, 'tui-editor-socket');
+        this.renderer.addClass(this.computedDocument.body, `tui-editor-socket`);
         this.renderer.appendChild(this.computedDocument.head, styleTag);
         this.setDisabledState(this._disabled);
         this.setExampleText(this._exampleText);
         this.writeValue(this._value);
-        this.computedDocument.execCommand('defaultParagraphSeparator', false, 'p');
-        this.renderer.removeStyle(this.elementRef.nativeElement, 'visibility');
+        this.computedDocument.execCommand(`defaultParagraphSeparator`, false, `p`);
+        this.renderer.removeStyle(this.elementRef.nativeElement, `visibility`);
     }
 
     private initObserver(): void {
@@ -201,7 +201,7 @@ export class TuiDesignModeDirective
     }
 
     private initInputSubscription(): void {
-        typedFromEvent(this.computedDocument, 'input')
+        typedFromEvent(this.computedDocument, `input`)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this.observer.disconnect();
@@ -210,10 +210,10 @@ export class TuiDesignModeDirective
     }
 
     private initTabSubscription(): void {
-        typedFromEvent(this.computedDocument, 'keydown')
+        typedFromEvent(this.computedDocument, `keydown`)
             .pipe(takeUntil(this.destroy$))
             .subscribe(event => {
-                if (event.key !== 'Tab' || !this.elementRef.nativeElement.ownerDocument) {
+                if (event.key !== `Tab` || !this.elementRef.nativeElement.ownerDocument) {
                     return;
                 }
 
@@ -237,8 +237,8 @@ export class TuiDesignModeDirective
         }
 
         merge(
-            typedFromEvent(this.computedDocument.defaultView, 'blur').pipe(mapTo(false)),
-            typedFromEvent(this.computedDocument.defaultView, 'focus').pipe(mapTo(true)),
+            typedFromEvent(this.computedDocument.defaultView, `blur`).pipe(mapTo(false)),
+            typedFromEvent(this.computedDocument.defaultView, `focus`).pipe(mapTo(true)),
         )
             .pipe(takeUntil(this.destroy$))
             .subscribe(focused => {
@@ -252,15 +252,15 @@ export class TuiDesignModeDirective
     }
 
     private initPasteSubscription(): void {
-        typedFromEvent(this.computedDocument, 'paste')
+        typedFromEvent(this.computedDocument, `paste`)
             .pipe(
                 filter(
                     event =>
                         !event.clipboardData ||
-                        !event.clipboardData.types.includes('Files'),
+                        !event.clipboardData.types.includes(`Files`),
                 ),
                 preventDefault(),
-                map(event => this.sanitize(getClipboardDataText(event, 'text/html'))),
+                map(event => this.sanitize(getClipboardDataText(event, `text/html`))),
                 takeUntil(this.destroy$),
             )
             .subscribe(html => {
@@ -269,7 +269,7 @@ export class TuiDesignModeDirective
     }
 
     private initDropSubscription(): void {
-        typedFromEvent(this.computedDocument, 'drop')
+        typedFromEvent(this.computedDocument, `drop`)
             .pipe(
                 filter(
                     (
@@ -285,20 +285,20 @@ export class TuiDesignModeDirective
                 this.setSelectionAt(event.x, event.y);
 
                 if (
-                    Array.prototype.indexOf.call(event.dataTransfer.types, 'Files') !== -1
+                    Array.prototype.indexOf.call(event.dataTransfer.types, `Files`) !== -1
                 ) {
                     this.handleImageDrop(event.dataTransfer);
                 } else {
                     tuiInsertHtml(
                         this.computedDocument,
-                        this.sanitize(event.dataTransfer.getData('text/html')),
+                        this.sanitize(event.dataTransfer.getData(`text/html`)),
                     );
                 }
             });
     }
 
     private initImageSubscription(): void {
-        typedFromEvent(this.computedDocument, 'load', {capture: true})
+        typedFromEvent(this.computedDocument, `load`, {capture: true})
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this.updateHeight();
@@ -311,7 +311,7 @@ export class TuiDesignModeDirective
         if (this.documentRef) {
             this.renderer.setAttribute(
                 this.documentRef.body,
-                'aria-placeholder',
+                `aria-placeholder`,
                 exampleText,
             );
         }
@@ -321,7 +321,7 @@ export class TuiDesignModeDirective
         for (let i = 0; i < dataTransfer.files.length; i++) {
             const file = dataTransfer.files.item(i);
 
-            if (file?.type.startsWith('image/')) {
+            if (file?.type.startsWith(`image/`)) {
                 this.imageLoader(file)
                     .pipe(take(1), takeUntil(this.destroy$))
                     .subscribe(image => {
@@ -334,7 +334,7 @@ export class TuiDesignModeDirective
     }
 
     private addImage(image: string): void {
-        this.computedDocument.execCommand('insertImage', false, image);
+        this.computedDocument.execCommand(`insertImage`, false, image);
     }
 
     private update(): void {
@@ -359,7 +359,7 @@ export class TuiDesignModeDirective
 
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
-            'height',
+            `height`,
             String(range.getBoundingClientRect().height + PADDING),
         );
     }
@@ -415,7 +415,7 @@ export class TuiDesignModeDirective
         return (
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, content)
-                : this.sanitizer.sanitize(SecurityContext.HTML, content)) || ''
+                : this.sanitizer.sanitize(SecurityContext.HTML, content)) || ``
         );
     }
 

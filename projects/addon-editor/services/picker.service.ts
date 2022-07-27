@@ -14,14 +14,14 @@ export class TuiPickerService extends Observable<TuiPoint> {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(DOCUMENT) documentRef: Document,
     ) {
-        const point$ = typedFromEvent(nativeElement, 'mousedown').pipe(
+        const point$ = typedFromEvent(nativeElement, `mousedown`).pipe(
             preventDefault(),
             switchMap(event => {
-                const mouseMove$ = typedFromEvent(documentRef, 'mousemove').pipe(
+                const mouseMove$ = typedFromEvent(documentRef, `mousemove`).pipe(
                     map(({clientX, clientY}) =>
                         getElementPoint(clientX, clientY, nativeElement),
                     ),
-                    takeUntil(typedFromEvent(documentRef, 'mouseup')),
+                    takeUntil(typedFromEvent(documentRef, `mouseup`)),
                 );
 
                 return event.target === nativeElement

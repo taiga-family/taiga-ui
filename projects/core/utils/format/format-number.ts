@@ -19,7 +19,7 @@ import {getFractionPartPadded} from './get-fractional-part-padded';
 export function formatNumber(
     value: number,
     decimalLimit: number | null = null,
-    decimalSeparator: string = ',',
+    decimalSeparator: string = `,`,
     thousandSeparator: string = CHAR_NO_BREAK_SPACE,
     zeroPadding: boolean = true,
 ): string {
@@ -33,16 +33,16 @@ export function formatNumber(
                 decimalLimit - fractionPartPadded.length,
                 0,
             );
-            const zeroPartString = '0'.repeat(zeroPaddingSize);
+            const zeroPartString = `0`.repeat(zeroPaddingSize);
 
             fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
         } else {
-            fractionPartPadded = fractionPartPadded.replace(/0*$/, '');
+            fractionPartPadded = fractionPartPadded.replace(/0*$/, ``);
         }
     }
 
     const remainder = integerPartString.length % 3;
-    const sign = value < 0 ? CHAR_HYPHEN : '';
+    const sign = value < 0 ? CHAR_HYPHEN : ``;
     let result = sign + integerPartString.charAt(0);
 
     for (let i = 1; i < integerPartString.length; i++) {

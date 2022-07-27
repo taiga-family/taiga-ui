@@ -8,9 +8,9 @@ const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secon
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 
 @Component({
-    selector: 'tui-calendar-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-calendar-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

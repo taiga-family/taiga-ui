@@ -8,13 +8,13 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
 import {TUI_MEDIA} from './media';
 
 export const TUI_IS_MOBILE_RES = new InjectionToken<Observable<boolean>>(
-    'Mobile resolution stream for private providers',
+    `Mobile resolution stream for private providers`,
     {
         factory: () => {
             const windowRef = inject(WINDOW);
             const media = inject(TUI_MEDIA);
 
-            return typedFromEvent(windowRef, 'resize').pipe(
+            return typedFromEvent(windowRef, `resize`).pipe(
                 share(),
                 startWith(null),
                 map(() => tuiIsMobile(windowRef, media)),

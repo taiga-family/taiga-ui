@@ -7,8 +7,8 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 
 @Component({
-    selector: 'tui-dialog-example-2',
-    templateUrl: './index.html',
+    selector: `tui-dialog-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -18,7 +18,7 @@ export class TuiDialogExampleComponent2 {
         {
             data: 237,
             dismissible: true,
-            label: 'Heading',
+            label: `Heading`,
         },
     );
 
@@ -33,7 +33,7 @@ export class TuiDialogExampleComponent2 {
                 console.info(`Dialog emitted data = ${data}`);
             },
             complete: () => {
-                console.info('Dialog closed');
+                console.info(`Dialog closed`);
             },
         });
     }
