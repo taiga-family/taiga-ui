@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
 
@@ -105,7 +105,7 @@ export class TuiInputExample4 {
 
     lastUser: User | null = null;
 
-    readonly users$ = tuiReplayedValueChangesFrom<string>(this.user).pipe(
+    readonly users$ = tuiControlValue<string>(this.user).pipe(
         map(value => {
             const filtered = USERS.filter(user => TUI_DEFAULT_MATCHER(user, value));
 

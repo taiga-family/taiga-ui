@@ -5,12 +5,9 @@ export interface TuiPrimitiveTextfieldOptions {
     readonly iconCleaner: PolymorpheusContent;
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
-
 /** Default values for primitive textfield options */
 export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptions = {
-    iconCleaner: TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER,
+    iconCleaner: 'tuiIconCloseLarge',
 };
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
