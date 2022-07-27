@@ -5,4 +5,5 @@ export * from './indent-outdent';
 export * from './table-cell-background';
 export * from '@taiga-ui/addon-editor/extensions/font-size';
 export * from '@taiga-ui/addon-editor/extensions/image-editor';
+export * from '@taiga-ui/addon-editor/extensions/starter-kit';
 export * from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
