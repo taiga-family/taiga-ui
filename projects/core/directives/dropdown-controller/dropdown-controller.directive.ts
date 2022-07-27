@@ -11,7 +11,7 @@ import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
 
 @Directive({
     selector:
-        '[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownSided]',
+        `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownSided]`,
     providers: [
         {
             provide: TUI_DROPDOWN_CONTROLLER,
@@ -20,27 +20,27 @@ import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
     ],
 })
 export class TuiDropdownControllerDirective extends AbstractTuiController {
-    @Input('tuiDropdownAlign')
+    @Input(`tuiDropdownAlign`)
     @tuiDefaultProp()
-    align: TuiHorizontalDirection = 'right';
+    align: TuiHorizontalDirection = `right`;
 
-    @Input('tuiDropdownDirection')
+    @Input(`tuiDropdownDirection`)
     @tuiDefaultProp()
     direction: TuiVerticalDirection | null = null;
 
-    @Input('tuiDropdownLimitWidth')
+    @Input(`tuiDropdownLimitWidth`)
     @tuiDefaultProp()
-    limitWidth: TuiDropdownWidth = 'auto';
+    limitWidth: TuiDropdownWidth = `auto`;
 
-    @Input('tuiDropdownMinHeight')
+    @Input(`tuiDropdownMinHeight`)
     @tuiDefaultProp()
     minHeight = DEFAULT_MIN_HEIGHT;
 
-    @Input('tuiDropdownMaxHeight')
+    @Input(`tuiDropdownMaxHeight`)
     @tuiDefaultProp()
     maxHeight = DEFAULT_MAX_HEIGHT;
 
-    @Input('tuiDropdownSided')
+    @Input(`tuiDropdownSided`)
     @tuiDefaultProp()
     sided = false;
 }

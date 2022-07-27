@@ -24,7 +24,7 @@ export class TuiArrowComponent {
         @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
     ) {}
 
-    @HostBinding('class._rotated')
+    @HostBinding(`class._rotated`)
     get rotated(): boolean {
         return this.dropdown.open;
     }
