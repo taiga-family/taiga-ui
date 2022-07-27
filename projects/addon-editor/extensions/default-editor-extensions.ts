@@ -2,7 +2,9 @@ import type {Extension} from '@tiptap/core';
 import type {StarterKitOptions} from '@tiptap/starter-kit';
 
 export const defaultEditorExtensions = [
-    import(`@tiptap/starter-kit`).then(defaultExtractor).then(starterKitConfigurator),
+    import(`@taiga-ui/addon-editor/extensions/starter-kit`)
+        .then(m => m.StarterKit)
+        .then(starterKitConfigurator),
     import(`@tiptap/extension-text-align`).then(m =>
         m.default.configure({types: [`heading`, `paragraph`]}),
     ),

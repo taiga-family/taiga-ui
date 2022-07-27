@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 
 export async function importStarterKit(): Promise<unknown> {
-    return (await import(`@tiptap/starter-kit`)).default;
+    return (await import(`@taiga-ui/addon-editor/extensions/starter-kit`)).StarterKit;
 }
 
 export async function importEmojiExtension(): Promise<unknown> {

@@ -20,7 +20,9 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import(`@tiptap/starter-kit`).then(m => m.default),
+                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                    m => m.StarterKit,
+                ),
                 import(`@taiga-ui/addon-editor/extensions/image-editor`).then(m =>
                     m.createImageEditorExtension(injector),
                 ),
