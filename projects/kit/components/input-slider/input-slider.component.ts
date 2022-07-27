@@ -1,9 +1,7 @@
-import {I18nPluralPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Directive,
     ElementRef,
     forwardRef,
     Inject,
@@ -14,79 +12,44 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControl,
     clamp,
     round,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiAssert,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
+    tuiPure,
 } from '@taiga-ui/cdk';
-import {
-    getFractionPartPadded,
-    HINT_CONTROLLER_PROVIDER,
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimalT,
-    TuiSizeL,
-    TuiTextfieldController,
-} from '@taiga-ui/core';
-import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
+import {getFractionPartPadded, TuiDecimalT, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {
     TuiSliderComponent,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-
-/**
- * Turn on new `InputSlider`'s version.
- * The new version will behave almost the same as `InputSlider` from the next major release.
- * @deprecated TODO remove me in v3.0 and make `InputSlider` always "new".
- */
-@Directive({
-    selector: `tui-input-slider[new]`,
-})
-export class TuiNewInputSliderDirective {}
 
 // @dynamic
 @Component({
-    selector: `tui-input-slider`,
-    templateUrl: `./input-slider.template.html`,
-    styleUrls: [`./input-slider.style.less`],
-    host: {
-        /**
-         * TODO delete it in v3.0
-         * Dont forget to clear html-tags
-         */
-        '[class._show-ticks-labels]': `!isNew`,
-    },
+    selector: 'tui-input-slider',
+    templateUrl: './input-slider.template.html',
+    styleUrls: ['./input-slider.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        I18nPluralPipe,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputSliderComponent),
         },
-        tuiSliderOptionsProvider({trackColor: `transparent`}),
-        HINT_CONTROLLER_PROVIDER,
-        TEXTFIELD_CONTROLLER_PROVIDER,
+        tuiSliderOptionsProvider({trackColor: 'transparent'}),
     ],
 })
-/**
- * TODO replace `extends AbstractTuiInputSlider<number>` by `extends AbstractTuiControl<number> implements TuiWithOptionalMinMax<number>`
- * in v3.0
- */
 export class TuiInputSliderComponent
-    extends AbstractTuiInputSlider<number>
-    implements TuiFocusableElementAccessor
+    extends AbstractTuiControl<number>
+    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChild(TuiInputNumberComponent)
     private readonly inputNumberRef?: TuiInputNumberComponent;
@@ -100,19 +63,25 @@ export class TuiInputSliderComponent
 
     @Input()
     @tuiDefaultProp()
-    max = Infinity;
+    max = 100;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, `Quantum must be positive`)
+    @tuiDefaultProp(q => q > 0, 'Quantum must be positive')
     quantum = 1;
 
     @Input()
-    @tuiDefaultProp()
+    @tuiDefaultProp(
+        s => s >= 0 && Number.isInteger(s),
+        'Steps must be non-negative integer',
+    )
     steps = 0;
 
     @Input()
-    @tuiDefaultProp()
-    segments = 0;
+    @tuiDefaultProp(
+        s => s > 0 && Number.isInteger(s),
+        'Segments must be positive integer',
+    )
+    segments = 1;
 
     @Input()
     @tuiDefaultProp()
@@ -120,23 +89,15 @@ export class TuiInputSliderComponent
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
+    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
 
     @Input()
     @tuiDefaultProp()
-    prefix = ``;
+    prefix = '';
 
     @Input()
     @tuiDefaultProp()
-    postfix = ``;
-
-    /**
-     * @deprecated use `tuiTextfieldCustomContent` instead
-     * TODO delete in v3.0
-     */
-    @Input()
-    @tuiDefaultProp()
-    secondary = ``;
+    postfix = '';
 
     constructor(
         @Optional()
@@ -144,13 +105,6 @@ export class TuiInputSliderComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Inject(TUI_FROM_TO_TEXTS) readonly fromToTexts$: Observable<[string, string]>,
-        @Optional()
-        @Inject(TuiNewInputSliderDirective)
-        readonly isNew: TuiNewInputSliderDirective | null,
-        @Inject(I18nPluralPipe) readonly i18nPlural: I18nPluralPipe,
     ) {
         super(control, changeDetectorRef);
     }
@@ -177,44 +131,27 @@ export class TuiInputSliderComponent
     }
 
     get decimal(): TuiDecimalT {
-        return this.precision ? `not-zero` : `never`;
+        return this.precision ? 'not-zero' : 'never';
     }
 
-    get showValueContent(): boolean {
-        return Boolean(this.computedValueContent && !this.focused);
+    get step(): number {
+        return (this.max - this.min) / this.computedSteps;
     }
 
-    /**
-     * TODO remove old property `size` in v3.0
-     */
-    get computedSize(): TuiSizeL {
-        if (this.isNew) {
-            tuiAssert.assert(
-                this.controller.size !== `s`,
-                `Size 's' is not supported by this input.`,
-            );
-
-            return this.controller.size === `l` ? `l` : `m`;
-        }
-
-        return this.size;
-    }
-
-    /**
-     * @deprecated for backward compatibility
-     * TODO replace by just `this.valueContent` in v3.0
-     */
-    get computedValueContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.minLabel || this.maxLabel
-            ? legacyMinMaxLabel(this)
-            : this.valueContent;
+    @tuiPure
+    computePureKeySteps(
+        keySteps: TuiKeySteps | null,
+        min: number,
+        max: number,
+    ): TuiKeySteps {
+        return [[0, min], ...(keySteps || []), [100, max]];
     }
 
     focusTextInput(): void {
         const focusableElement = this.inputNumberRef?.nativeFocusableElement;
 
         if (focusableElement) {
-            setNativeFocused(focusableElement);
+            focusableElement.focus();
         }
     }
 
@@ -252,14 +189,14 @@ export class TuiInputSliderComponent
     }
 
     private get textInputValue(): string {
-        return this.inputNumberRef?.nativeValue || ``;
+        return this.inputNumberRef?.nativeValue || '';
     }
 
     protected getFallbackValue(): number {
         return 0;
     }
 
-    protected valueGuard(value: number): number {
+    private valueGuard(value: number): number {
         const roundedValue = round(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,
@@ -274,38 +211,4 @@ export class TuiInputSliderComponent
                 this.inputNumberRef.getFormattedValue(value);
         }
     }
-}
-
-function quantumAssertion(quantum: number): boolean {
-    return quantum > 0;
-}
-
-/**
- * @deprecated helper for backward compatibility.
- * TODO remove in v3.0
- */
-function legacyMinMaxLabel({
-    min,
-    max,
-    minLabel,
-    maxLabel,
-    i18nPlural,
-    pluralizeMap,
-}: TuiInputSliderComponent): (
-    context: TuiContextWithImplicit<number>,
-) => string | number {
-    return ({$implicit: value}: TuiContextWithImplicit<number>) => {
-        const valueWithPlural = `${value} ${
-            pluralizeMap ? i18nPlural.transform(value, pluralizeMap) : ``
-        }`;
-
-        switch (value) {
-            case min:
-                return minLabel || valueWithPlural;
-            case max:
-                return maxLabel || valueWithPlural;
-            default:
-                return valueWithPlural;
-        }
-    };
 }
