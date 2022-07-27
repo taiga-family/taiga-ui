@@ -142,7 +142,7 @@ describe('PrimitiveCalendar', () => {
 
             component.onItemPressed(dayToPress);
 
-            expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Pressed);
+            expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Active);
         });
 
         it('returns hovered state if it is not disabled and pressed', () => {
@@ -150,7 +150,7 @@ describe('PrimitiveCalendar', () => {
 
             component.onItemHovered(dayToHover);
 
-            expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hovered);
+            expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hover);
         });
     });
 

@@ -99,11 +99,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         }
 
         if (pressedItem?.monthSame(item)) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (hoveredItem?.monthSame(item)) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;

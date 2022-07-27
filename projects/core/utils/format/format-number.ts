@@ -1,6 +1,6 @@
 import {CHAR_HYPHEN, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
-import {getFractionPartPadded} from './get-fractional-part-padded';
+import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 
 // TODO: refactor later to `formatNumber(value: number, options: Partial<AllTheStuff>)`
 /**
@@ -25,7 +25,7 @@ export function formatNumber(
 ): string {
     const integerPartString = String(Math.floor(Math.abs(value)));
 
-    let fractionPartPadded = getFractionPartPadded(value, decimalLimit);
+    let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
 
     if (decimalLimit !== null) {
         if (zeroPadding) {

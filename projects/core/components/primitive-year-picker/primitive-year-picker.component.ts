@@ -103,11 +103,11 @@ export class TuiPrimitiveYearPickerComponent {
         }
 
         if (pressedItem === item) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (hoveredItem === item) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;

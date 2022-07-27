@@ -1,6 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {
     sum,
     TuiContextWithImplicit,
@@ -9,7 +7,7 @@ import {
     TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -40,10 +38,6 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
-
-    @Input()
-    @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL | null = 'm';
 
     @Input()
@@ -56,7 +50,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintMode: TuiHintModeT | null = null;
+    hintMode: TuiHintMode | null = null;
 
     constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();

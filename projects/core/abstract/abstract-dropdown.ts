@@ -19,7 +19,7 @@ import {TuiDropdownBoxComponent} from '@taiga-ui/core/components/dropdown-box';
 import {DEFAULT_MAX_HEIGHT, DEFAULT_MIN_HEIGHT} from '@taiga-ui/core/constants';
 import {TuiDropdown} from '@taiga-ui/core/interfaces';
 import {
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
@@ -64,7 +64,7 @@ export abstract class AbstractTuiDropdown
 
     @Input('tuiDropdownLimitWidth')
     @tuiDefaultProp()
-    limitMinWidth: TuiDropdownWidthT = 'min';
+    limitMinWidth: TuiDropdownWidth = 'min';
 
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 

@@ -1,6 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
@@ -30,7 +30,7 @@ export class InheritedDocumentationComponent {
         'top-middle',
     ];
 
-    readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
+    readonly modeVariants: readonly TuiHintMode[] = ['error', 'onDark'];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)

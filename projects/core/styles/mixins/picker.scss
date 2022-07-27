@@ -110,13 +110,13 @@
                 }
             }
 
-            &[data-state='hovered'] > .t-item:before,
-            &[data-state='hovered'] > .t-item:after {
+            &[data-state='hover'] > .t-item:before,
+            &[data-state='hover'] > .t-item:after {
                 background-color: var(--tui-primary-hover);
             }
 
-            &[data-state='pressed'] > .t-item:before,
-            &[data-state='pressed'] > .t-item:after {
+            &[data-state='active'] > .t-item:before,
+            &[data-state='active'] > .t-item:after {
                 background-color: var(--tui-primary-active);
             }
         }
@@ -153,12 +153,12 @@
             }
         }
 
-        &[data-state='hovered']:hover:not([data-range])
+        &[data-state='hover']:hover:not([data-range])
             > .t-item {
             background-color: var(--tui-secondary-hover);
         }
 
-        &[data-state='pressed']:hover:not([data-range])
+        &[data-state='active']:hover:not([data-range])
             > .t-item {
             background-color: var(--tui-secondary-active);
         }

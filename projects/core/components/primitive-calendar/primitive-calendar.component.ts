@@ -19,7 +19,7 @@ import {
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
 import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from '@taiga-ui/core/tokens';
-import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
+import {TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 // @dynamic
@@ -80,7 +80,7 @@ export class TuiPrimitiveCalendarComponent {
         day: TuiDay,
         today: boolean,
         inRange: boolean,
-    ): null | [TuiColor | string] | [TuiColor | string, TuiColor | string] => {
+    ): null | [string] | [string, string] => {
         if (today || inRange) {
             return null;
         }
@@ -98,11 +98,11 @@ export class TuiPrimitiveCalendarComponent {
         }
 
         if (pressedItem?.daySame(item)) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (hoveredItem?.daySame(item)) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;
