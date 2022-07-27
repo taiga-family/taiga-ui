@@ -20,11 +20,11 @@ import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
-    xs: '50',
-    s: '50',
-    m: '77.8',
-    l: '81.9',
-    xl: '81.3',
+    xs: `50`,
+    s: `50`,
+    m: `77.8`,
+    l: `81.9`,
+    xl: `81.3`,
 };
 const TRANSFORM = {
     xs: 1.15,
@@ -35,9 +35,9 @@ const TRANSFORM = {
 };
 
 @Component({
-    selector: 'tui-pie-chart',
-    templateUrl: './pie-chart.template.html',
-    styleUrls: ['./pie-chart.style.less'],
+    selector: `tui-pie-chart`,
+    templateUrl: `./pie-chart.template.html`,
+    styleUrls: [`./pie-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPieChartComponent {
@@ -48,13 +48,13 @@ export class TuiPieChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXL = 'm';
+    size: TuiSizeXS | TuiSizeXL = `m`;
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -74,7 +74,7 @@ export class TuiPieChartComponent {
         this.autoIdString = idService.generate();
     }
 
-    @HostBinding('class._empty')
+    @HostBinding(`class._empty`)
     get empty(): boolean {
         return !this.getSum(this.value);
     }
@@ -108,7 +108,7 @@ export class TuiPieChartComponent {
     }
 
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
-        return this.hintContent ? hint : '';
+        return this.hintContent ? hint : ``;
     }
 
     onHovered(hovered: boolean, index: number): void {

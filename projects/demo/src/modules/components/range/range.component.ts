@@ -6,36 +6,36 @@ import {TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-range',
-    templateUrl: './range.template.html',
+    selector: `example-range`,
+    templateUrl: `./range.template.html`,
     changeDetection,
 })
 export class ExampleTuiRangeComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
     readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('./examples/2/index.html?raw'),
-        TypeScript: import('./examples/2/index.ts?raw'),
-        LESS: import('./examples/2/index.less?raw'),
+        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('./examples/4/index.html?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
-        LESS: import('./examples/4/index.less?raw'),
+        HTML: import(`./examples/4/index.html?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
     readonly control = new FormControl([0, 0]);
@@ -54,7 +54,7 @@ export class ExampleTuiRangeComponent {
         this.control.enable();
     }
 
-    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = [`s`, `m`];
 
     size: TuiSizeS = this.sizeVariants[1];
 

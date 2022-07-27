@@ -5,8 +5,8 @@ import {USER_AGENT} from '@ng-web-apis/common';
 import {isEdge, isFirefox, tuiIsEdgeOlderThan, tuiIsIE} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-browser-example-1',
-    templateUrl: './index.html',
+    selector: `tui-browser-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -16,20 +16,20 @@ export class TuiBrowserExample1 {
     get aboutMyBrowser(): string {
         if (isEdge(this.userAgent)) {
             if (tuiIsEdgeOlderThan(13, this.userAgent)) {
-                return 'Edge older than 13';
+                return `Edge older than 13`;
             }
 
-            return 'Edge until 13';
+            return `Edge until 13`;
         }
 
         if (tuiIsIE(this.userAgent)) {
-            return 'Unfortunately, you have IE11';
+            return `Unfortunately, you have IE11`;
         }
 
         if (isFirefox(this.userAgent)) {
-            return 'Okay, you have Firefox!';
+            return `Okay, you have Firefox!`;
         }
 
-        return 'You have Chromium based browser, cool!';
+        return `You have Chromium based browser, cool!`;
     }
 }

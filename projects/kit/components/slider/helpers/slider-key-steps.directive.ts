@@ -32,12 +32,12 @@ import {TuiSliderComponent} from '../slider.component';
 
 // @dynamic
 @Directive({
-    selector: 'input[tuiSlider][keySteps]',
+    selector: `input[tuiSlider][keySteps]`,
     host: {
-        '[attr.data-key-steps]': 'true',
+        '[attr.data-key-steps]': `true`,
         '[attr.aria-valuenow]': `safeCurrentValue`,
-        '[attr.aria-valuemin]': 'min',
-        '[attr.aria-valuemax]': 'max',
+        '[attr.aria-valuemin]': `min`,
+        '[attr.aria-valuemax]': `max`,
     },
 })
 export class TuiSliderKeyStepsDirective
