@@ -41,9 +41,9 @@ import {takeUntil, throttleTime} from 'rxjs/operators';
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
 @Component({
-    selector: 'tui-dropdown-box',
-    templateUrl: './dropdown-box.template.html',
-    styleUrls: ['./dropdown-box.style.less'],
+    selector: `tui-dropdown-box`,
+    templateUrl: `./dropdown-box.template.html`,
+    styleUrls: [`./dropdown-box.style.less`],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService],
     animations: [tuiDropdownAnimation],
@@ -64,10 +64,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
      */
     private prevDirectionIsTop = false;
 
-    @HostBinding('@tuiDropdownAnimation')
+    @HostBinding(`@tuiDropdownAnimation`)
     dropdownAnimation!: TuiAnimationOptions;
 
-    @ViewChild('content', {read: ElementRef})
+    @ViewChild(`content`, {read: ElementRef})
     readonly contentElementRef?: ElementRef<HTMLElement>;
 
     constructor(
@@ -85,7 +85,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         merge(
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
             this.directive.refresh$,
-            fromEvent(this.windowRef, 'resize'),
+            fromEvent(this.windowRef, `resize`),
         )
             .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
             .subscribe(() => {
@@ -94,7 +94,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     }
 
     get overscroll(): TuiOverscrollMode {
-        return this.inModal ? 'all' : 'scroll';
+        return this.inModal ? `all` : `scroll`;
     }
 
     @tuiPure
@@ -122,13 +122,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     @tuiPure
     private get inModal(): boolean {
         // @awful TODO: get rid of component tag name dependency
-        return !!this.directive.host.closest('tui-dialog-host');
+        return !!this.directive.host.closest(`tui-dialog-host`);
     }
 
     @tuiPure
     private get inOption(): boolean {
         // @awful TODO: get rid of component tag name dependency
-        return !!this.directive.host.closest('[tuiOption]');
+        return !!this.directive.host.closest(`[tuiOption]`);
     }
 
     private calculatePositionAndSize(): void {
@@ -138,7 +138,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             ? this.portalHost.fixedPositionOffset()
             : this.portalHost.clientRect;
 
-        style.position = this.directive.fixed ? 'fixed' : 'absolute';
+        style.position = this.directive.fixed ? `fixed` : `absolute`;
 
         this.calculateVerticalPosition(style, clientRect, hostRect);
         this.calculateHorizontalPosition(style, clientRect, hostRect);
@@ -160,29 +160,29 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         let finalAlign: TuiHorizontalDirection = this.directive.align;
 
         switch (this.directive.align) {
-            case 'left':
+            case `left`:
                 if (
                     isDropdownSizeHypotheticallyFitsViewport &&
                     dropdownRect.right > screenWidth
                 ) {
-                    finalAlign = 'right';
+                    finalAlign = `right`;
                 }
 
                 break;
-            case 'right':
+            case `right`:
                 if (isDropdownSizeHypotheticallyFitsViewport && dropdownRect.left < 0) {
-                    finalAlign = 'left';
+                    finalAlign = `left`;
                 }
 
                 break;
         }
 
-        if (style.right === 'auto' && isDropdownSizeActuallyFitsViewport) {
-            finalAlign = 'left';
+        if (style.right === `auto` && isDropdownSizeActuallyFitsViewport) {
+            finalAlign = `left`;
         }
 
-        if (style.left === 'auto' && isDropdownSizeActuallyFitsViewport) {
-            finalAlign = 'right';
+        if (style.left === `auto` && isDropdownSizeActuallyFitsViewport) {
+            finalAlign = `right`;
         }
 
         return finalAlign;
@@ -208,29 +208,29 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const viewportWidth = tuiGetViewportWidth(this.windowRef);
 
         switch (this.getFinalAlign(style, directiveRect)) {
-            case 'left':
+            case `left`:
                 if (
                     right + DEFAULT_MARGIN > viewportWidth ||
                     tuiInRange(left + DEFAULT_MARGIN, 0, viewportWidth)
                 ) {
                     style.left = tuiPx(left);
-                    style.right = 'auto';
+                    style.right = `auto`;
                 } else {
-                    style.left = 'auto';
+                    style.left = `auto`;
                     style.right = tuiPx(right);
                 }
 
                 break;
-            case 'right':
+            case `right`:
                 if (
                     tuiInRange(right + DEFAULT_MARGIN, 0, viewportWidth) ||
                     left + DEFAULT_MARGIN > viewportWidth
                 ) {
-                    style.left = 'auto';
+                    style.left = `auto`;
                     style.right = tuiPx(right);
                 } else {
                     style.left = tuiPx(left);
-                    style.right = 'auto';
+                    style.right = `auto`;
                 }
 
                 break;
@@ -263,13 +263,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const finalDirection = this.getFinalDirection(directiveRect);
         const optionOffset = this.inOption ? DEFAULT_MARGIN * 2 : 0;
 
-        this.prevDirectionIsTop = finalDirection === 'top';
+        this.prevDirectionIsTop = finalDirection === `top`;
 
-        if (finalDirection === 'top') {
+        if (finalDirection === `top`) {
             this.dropdownAnimation = this.animationBottom;
 
             style.maxHeight = tuiPx(Math.min(boxHeightLimit, topAvailableHeight));
-            style.top = 'auto';
+            style.top = `auto`;
             style.bottom = tuiPx(
                 hostRect.bottom -
                     directiveRect.top -
@@ -288,7 +288,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                     offset -
                     optionOffset,
             );
-            style.bottom = 'auto';
+            style.bottom = `auto`;
         }
     }
 
@@ -306,15 +306,15 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
         // Given direction is applied if we can fit the box in the limits that way
         switch (this.directive.direction) {
-            case 'top':
+            case `top`:
                 if (topAvailableHeight >= this.directive.minHeight) {
-                    finalDirection = 'top';
+                    finalDirection = `top`;
                 }
 
                 break;
-            case 'bottom':
+            case `bottom`:
                 if (bottomAvailableHeight >= this.directive.minHeight) {
-                    finalDirection = 'bottom';
+                    finalDirection = `bottom`;
                 }
 
                 break;
@@ -339,13 +339,13 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             // If there is enough space to fit below without scroll,
             // choose 'bottom', unless it was previously on the top
             if (this.prevDirectionIsTop && topAvailableHeight >= visualHeight) {
-                finalDirection = 'top';
+                finalDirection = `top`;
             } else if (bottomAvailableHeight >= visualHeight) {
-                finalDirection = 'bottom';
+                finalDirection = `bottom`;
             } else {
                 // Corner case — select direction with more space
                 finalDirection =
-                    bottomAvailableHeight >= topAvailableHeight ? 'bottom' : 'top';
+                    bottomAvailableHeight >= topAvailableHeight ? `bottom` : `top`;
             }
         }
 
@@ -360,19 +360,19 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
      */
     private calculateWidth(style: CSSStyleDeclaration, directiveRect: ClientRect): void {
         style.width =
-            this.directive.limitMinWidth === 'fixed' && !this.directive.sided
+            this.directive.limitMinWidth === `fixed` && !this.directive.sided
                 ? tuiPx(directiveRect.width)
-                : '';
+                : ``;
 
-        if (this.directive.limitMinWidth === 'min' && !this.directive.sided) {
+        if (this.directive.limitMinWidth === `min` && !this.directive.sided) {
             style.minWidth = tuiPx(directiveRect.width);
             style.maxWidth = tuiPx(DEFAULT_MAX_WIDTH);
 
             return;
         }
 
-        style.minWidth = '';
-        style.maxWidth = '';
+        style.minWidth = ``;
+        style.maxWidth = ``;
     }
 
     private moveFocusOutside(previous: boolean): void {

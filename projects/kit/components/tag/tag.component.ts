@@ -97,7 +97,7 @@ export class TuiTagComponent {
 
     @Input()
     @tuiDefaultProp()
-    leftContent: PolymorpheusContent = '';
+    leftContent: PolymorpheusContent = ``;
 
     @Output()
     readonly edited = new EventEmitter<string>();
