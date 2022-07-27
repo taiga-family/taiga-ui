@@ -37,9 +37,9 @@ import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-calendar-range',
-    templateUrl: './calendar-range.template.html',
-    styleUrls: ['./calendar-range.style.less'],
+    selector: `tui-calendar-range`,
+    templateUrl: `./calendar-range.template.html`,
+    styleUrls: [`./calendar-range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
@@ -162,7 +162,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     }
 
     onItemSelect(item: string | TuiDayRangePeriod): void {
-        if (typeof item !== 'string') {
+        if (typeof item !== `string`) {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 
             return;
