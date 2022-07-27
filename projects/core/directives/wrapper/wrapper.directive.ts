@@ -58,11 +58,11 @@ export class TuiWrapperDirective {
         }
 
         if (this.active) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (this.hover) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;
