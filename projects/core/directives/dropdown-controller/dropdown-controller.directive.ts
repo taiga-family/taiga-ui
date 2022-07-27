@@ -10,8 +10,7 @@ import {
 import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
 
 @Directive({
-    selector:
-        `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownSided]`,
+    selector: `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownSided]`,
     providers: [
         {
             provide: TUI_DROPDOWN_CONTROLLER,
