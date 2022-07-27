@@ -32,10 +32,8 @@ export class TuiExample {
     readonly svgIcons = {
         common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
         universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
-        intersection:
-            `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
-        mutation:
-            `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
+        intersection: `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
+        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     persons = [new User(`Roman`, `Sedov`), new User(`Alex`, `Inkin`)];
