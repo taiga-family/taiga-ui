@@ -2,7 +2,7 @@ import {Directive, forwardRef, Input} from '@angular/core';
 import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {DEFAULT_MAX_HEIGHT, DEFAULT_MIN_HEIGHT} from '@taiga-ui/core/constants';
 import {
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
@@ -30,7 +30,7 @@ export class TuiDropdownControllerDirective extends AbstractTuiController {
 
     @Input('tuiDropdownLimitWidth')
     @tuiDefaultProp()
-    limitWidth: TuiDropdownWidthT = 'auto';
+    limitWidth: TuiDropdownWidth = 'auto';
 
     @Input('tuiDropdownMinHeight')
     @tuiDefaultProp()
