@@ -40,7 +40,7 @@ export interface TuiStarterKitOptions {
 }
 
 export const StarterKit = Extension.create<TuiStarterKitOptions>({
-    name: 'starterKit',
+    name: `starterKit`,
 
     addExtensions() {
         const extensions = [];
