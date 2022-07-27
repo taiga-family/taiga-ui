@@ -23,7 +23,11 @@ import {
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {getFractionPartPadded, TuiDecimalT, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiDecimal,
+    tuiGetFractionPartPadded,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {
     TuiSliderComponent,
@@ -127,10 +131,10 @@ export class TuiInputSliderComponent
     }
 
     get precision(): number {
-        return getFractionPartPadded(this.quantum).length;
+        return tuiGetFractionPartPadded(this.quantum).length;
     }
 
-    get decimal(): TuiDecimalT {
+    get decimal(): TuiDecimal {
         return this.precision ? 'not-zero' : 'never';
     }
 
