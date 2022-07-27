@@ -5,7 +5,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiInputMode} from '../../../types/input-mode';
 import {TuiInputModeModule} from '../input-mode.module';
 
-describe('TuiInputMode directive', () => {
+describe(`TuiInputMode directive`, () => {
     @Component({
         template: `
             <input
@@ -25,16 +25,16 @@ describe('TuiInputMode directive', () => {
         `,
     })
     class TestComponent {
-        @ViewChild('inputDefault')
+        @ViewChild(`inputDefault`)
         inputDefault!: ElementRef<HTMLInputElement>;
 
-        @ViewChild('inputCustom')
+        @ViewChild(`inputCustom`)
         inputCustom!: ElementRef<HTMLInputElement>;
 
-        @ViewChild('inputWithPattern')
+        @ViewChild(`inputWithPattern`)
         inputWithPattern!: ElementRef<HTMLInputElement>;
 
-        inputMode: TuiInputMode = 'decimal';
+        inputMode: TuiInputMode = `decimal`;
 
         default = true;
     }
@@ -55,39 +55,39 @@ describe('TuiInputMode directive', () => {
         fixture.detectChanges();
     });
 
-    describe('Default value', () => {
-        it('sets inputmode', () => {
-            expect(native().getAttribute('inputmode')).toBe('text');
+    describe(`Default value`, () => {
+        it(`sets inputmode`, () => {
+            expect(native().getAttribute(`inputmode`)).toBe(`text`);
         });
 
-        it('sets x-inputmode', () => {
-            expect(native().getAttribute('x-inputmode')).toBe('text');
+        it(`sets x-inputmode`, () => {
+            expect(native().getAttribute(`x-inputmode`)).toBe(`text`);
         });
 
-        it('does not touch pattern', () => {
-            expect(native().getAttribute('pattern')).toBe('123');
+        it(`does not touch pattern`, () => {
+            expect(native().getAttribute(`pattern`)).toBe(`123`);
         });
     });
 
-    describe('Custom value', () => {
-        it('sets inputmode', () => {
-            expect(custom().getAttribute('inputmode')).toBe('decimal');
+    describe(`Custom value`, () => {
+        it(`sets inputmode`, () => {
+            expect(custom().getAttribute(`inputmode`)).toBe(`decimal`);
         });
 
-        it('sets x-inputmode', () => {
-            expect(custom().getAttribute('x-inputmode')).toBe('decimal');
+        it(`sets x-inputmode`, () => {
+            expect(custom().getAttribute(`x-inputmode`)).toBe(`decimal`);
         });
 
-        it('does not touch pattern', () => {
-            expect(custom().getAttribute('pattern')).toBeNull();
+        it(`does not touch pattern`, () => {
+            expect(custom().getAttribute(`pattern`)).toBeNull();
         });
 
         // Only does so on iOS
-        it('does not add pattern for numeric', () => {
-            testComponent.inputMode = 'numeric';
+        it(`does not add pattern for numeric`, () => {
+            testComponent.inputMode = `numeric`;
             fixture.detectChanges();
 
-            expect(custom().getAttribute('pattern')).toBeNull();
+            expect(custom().getAttribute(`pattern`)).toBeNull();
         });
     });
 

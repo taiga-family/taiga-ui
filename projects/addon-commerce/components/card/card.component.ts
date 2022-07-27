@@ -8,50 +8,50 @@ export function cardNumberAssertion({length}: string): boolean {
     return !length || length === 4;
 }
 
-export const cardNumberAssertionMessage = 'cardNumber should contain 4 symbols';
+export const cardNumberAssertionMessage = `cardNumber should contain 4 symbols`;
 
 const icons: Record<TuiPaymentSystem, string> = {
-    mir: 'tuiIconMirMono',
-    visa: 'tuiIconVisaMono',
-    electron: 'tuiIconElectronMono',
-    mastercard: 'tuiIconMastercard',
-    maestro: 'tuiIconMaestro',
+    mir: `tuiIconMirMono`,
+    visa: `tuiIconVisaMono`,
+    electron: `tuiIconElectronMono`,
+    mastercard: `tuiIconMastercard`,
+    maestro: `tuiIconMaestro`,
 };
 
 @Component({
-    selector: 'tui-card',
-    templateUrl: 'card.template.html',
-    styleUrls: ['./card.style.less'],
+    selector: `tui-card`,
+    templateUrl: `card.template.html`,
+    styleUrls: [`./card.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCardComponent {
     @Input()
-    @HostBinding('class._active')
+    @HostBinding(`class._active`)
     @tuiDefaultProp()
     active = false;
 
     @Input()
     @tuiDefaultProp()
-    brandLogo = '';
+    brandLogo = ``;
 
     @Input()
     @tuiDefaultProp(cardNumberAssertion, cardNumberAssertionMessage)
-    cardNumber = '';
+    cardNumber = ``;
 
     @Input()
     @tuiDefaultProp()
     paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 
     get hasBrandLogo(): boolean {
-        return !!this.brandLogo && this.size === 'm';
+        return !!this.brandLogo && this.size === `m`;
     }
 
     get paymentSystemLogo(): string {
-        return this.paymentSystem ? icons[this.paymentSystem] : '';
+        return this.paymentSystem ? icons[this.paymentSystem] : ``;
     }
 }

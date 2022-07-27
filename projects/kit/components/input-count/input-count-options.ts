@@ -17,19 +17,19 @@ export interface TuiInputCountOptions {
 /** Default values for the input count options. */
 export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
     icons: {
-        up: 'tuiIconPlus',
-        down: 'tuiIconMinus',
+        up: `tuiIconPlus`,
+        down: `tuiIconMinus`,
     },
-    appearance: 'textfield',
+    appearance: `textfield`,
     hideButtons: false,
     min: 0,
     max: Infinity,
     step: 1,
-    postfix: '',
+    postfix: ``,
 };
 
 export const TUI_INPUT_COUNT_OPTIONS = new InjectionToken<TuiInputCountOptions>(
-    'Default parameters for input count component',
+    `Default parameters for input count component`,
     {
         factory: () => TUI_INPUT_COUNT_DEFAULT_OPTIONS,
     },

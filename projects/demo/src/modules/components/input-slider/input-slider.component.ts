@@ -10,8 +10,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-slider',
-    templateUrl: './input-slider.template.html',
+    selector: `example-tui-input-slider`,
+    templateUrl: `./input-slider.template.html`,
     changeDetection,
     providers: [
         {
@@ -21,37 +21,37 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
-        LESS: import('./examples/3/index.less?raw'),
+        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('./examples/4/index.html?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
-        LESS: import('./examples/4/index.less?raw'),
+        HTML: import(`./examples/4/index.html?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        HTML: import('./examples/5/index.html?raw'),
-        TypeScript: import('./examples/5/index.ts?raw'),
-        LESS: import('./examples/5/index.less?raw'),
+        HTML: import(`./examples/5/index.html?raw`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
     readonly control = new FormControl(0);
@@ -72,21 +72,21 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
     size = this.sizeVariants[1];
 
-    prefix = '';
-    postfix = '';
+    prefix = ``;
+    postfix = ``;
 
     readonly valueContentVariants = [
-        '',
-        'TOP SECRET',
+        ``,
+        `TOP SECRET`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.max ? 'MAX' : val,
+            val === this.max ? `MAX` : val,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.min ? 'MIN' : val,
-        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? 'FIVE' : val),
+            val === this.min ? `MIN` : val,
+        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? `FIVE` : val),
     ];
 
     valueContent = this.valueContentVariants[0];
@@ -95,12 +95,12 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     keySteps: TuiKeySteps | null = null;
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = ['off', 'transaction-amount'];
-    autocomplete: TuiAutofillFieldName | '' = '';
+    readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
+    autocomplete: TuiAutofillFieldName | '' = ``;
 
     readonly customContentVariants: string[] = [
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
+        `tuiIconVisaMono`,
+        `tuiIconMastercardMono`,
     ];
 
     customContentSelected = null;
