@@ -1,9 +1,9 @@
 import {NgControl} from '@angular/forms';
 import {
+    tuiControlValue,
     TuiControlValueTransformer,
     TuiDay,
     TuiDayRange,
-    tuiReplayedValueChangesFrom,
     TuiTime,
 } from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
@@ -12,14 +12,14 @@ import {map} from 'rxjs/operators';
 /**
  * @internal
  */
-export function tuiReplayedValueChangesFactory<
+export function tuiControlValueFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
     valueTransformer?: TuiControlValueTransformer<T> | null,
 ): Observable<T | null> | null {
     return control
-        ? tuiReplayedValueChangesFrom(control).pipe(
+        ? tuiControlValue(control).pipe(
               map(value =>
                   valueTransformer
                       ? valueTransformer.fromControlValue(value)
