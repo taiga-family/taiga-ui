@@ -94,6 +94,15 @@
         >
             <tui-editor-example-4></tui-editor-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-processing"
+            i18n-heading
+            heading="Custom processing content"
+            [content]="example5"
+        >
+            <tui-editor-example-5></tui-editor-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -122,6 +131,16 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="ngModel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValue]="control.value"
+                (documentationPropertyValueChange)="control.setValue($event)"
+            >
+                Example pass HTML code
             </ng-template>
             <ng-template
                 i18n

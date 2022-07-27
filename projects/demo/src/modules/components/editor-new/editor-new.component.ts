@@ -5,7 +5,9 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
+    tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
+    TUI_EDITOR_STYLES,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
 
@@ -24,6 +26,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultEditorExtensions,
+        },
+        {
+            provide: TUI_EDITOR_STYLES,
+            useValue: tiptapEditorStyles,
         },
     ],
 })
@@ -86,6 +92,15 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
         ),
         'image-preview.template.html': import(
             `!!raw-loader!./examples/4/image-preview/image-preview.template.html`
+        ),
+    };
+
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
+        'legacy-editor.ts': import(
+            '!!raw-loader!../../../../../addon-editor/utils/legacy-converter'
         ),
     };
 
