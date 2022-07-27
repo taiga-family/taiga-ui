@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiOrientationT} from '@taiga-ui/core';
+import {TuiOrientation} from '@taiga-ui/core';
 import {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
@@ -25,9 +25,9 @@ export class ExampleTuiStepperComponent {
 
     activeItemIndex = 0;
 
-    readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];
+    readonly orientationVariants: readonly TuiOrientation[] = ['horizontal', 'vertical'];
 
-    orientation: TuiOrientationT = this.orientationVariants[0];
+    orientation: TuiOrientation = this.orientationVariants[0];
 
     readonly iconVariants = ['', 'tuiIconTimeLarge', 'tuiIconHeart'];
 

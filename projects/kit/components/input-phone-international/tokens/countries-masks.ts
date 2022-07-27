@@ -207,6 +207,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.VN]: '+84(###) ####-###',
             [TuiCountryIsoCode.VU]: '+678##-#####',
             [TuiCountryIsoCode.WS]: '+685##-####',
+            [TuiCountryIsoCode.XK]: '+383##-###-###',
             [TuiCountryIsoCode.YE]: '+967###-###-###',
             [TuiCountryIsoCode.ZA]: '+27##-###-####',
             [TuiCountryIsoCode.ZM]: '+260##-###-####',
