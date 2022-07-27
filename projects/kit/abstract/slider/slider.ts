@@ -21,12 +21,7 @@ import {
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {
-    TuiPluralize,
-    tuiPluralizeToICU,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
@@ -80,14 +75,9 @@ export abstract class AbstractTuiSlider<T>
     @tuiDefaultProp(nonNegativeFiniteAssertion, `Quantum must be a non-negative number`)
     quantum = 0;
 
-    // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
-        this.pluralizeMap = Array.isArray(pluralize)
-            ? tuiPluralizeToICU(pluralize)
-            : pluralize;
-    }
+    pluralize: Record<string, string> | null = null;
 
     @Input()
     @HostBinding(`attr.data-size`)
@@ -101,8 +91,6 @@ export abstract class AbstractTuiSlider<T>
     focusVisibleLeft = false;
 
     focusVisibleRight = false;
-
-    pluralizeMap: Record<string, string> | null = null;
 
     protected constructor(
         ngControl: NgControl | null,
