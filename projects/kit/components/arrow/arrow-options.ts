@@ -12,12 +12,12 @@ export interface TuiArrowOptions {
 
 /** Default values for arrow options */
 export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
-    iconSmall: 'tuiIconChevronDown',
-    iconLarge: 'tuiIconChevronDownLarge',
+    iconSmall: `tuiIconChevronDown`,
+    iconLarge: `tuiIconChevronDownLarge`,
 };
 
 export const TUI_ARROW_OPTIONS = new InjectionToken<TuiArrowOptions>(
-    'Default parameters for arrow component',
+    `Default parameters for arrow component`,
     {
         factory: () => TUI_ARROW_DEFAULT_OPTIONS,
     },
@@ -40,7 +40,7 @@ export interface TuiArrowMode {
 }
 
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
-    'Type of icon in dropdowns for interactive or disable mode',
+    `Type of icon in dropdowns for interactive or disable mode`,
     {
         factory: () => ({
             interactive: TUI_ARROW,

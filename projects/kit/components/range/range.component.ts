@@ -44,13 +44,13 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
-    selector: 'tui-range',
-    templateUrl: './range.template.html',
-    styleUrls: ['./range.style.less'],
+    selector: `tui-range`,
+    templateUrl: `./range.template.html`,
+    styleUrls: [`./range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.tabindex]': '-1',
-        '[attr.aria-disabled]': 'computedDisabled',
+        '[attr.tabindex]': `-1`,
+        '[attr.aria-disabled]': `computedDisabled`,
     },
     providers: [
         {
@@ -91,13 +91,13 @@ export class TuiRangeComponent
      * It can be done after removing backward compatibility code inside {@link computePureKeySteps} in v3.0
      * */
     @Input()
-    @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
+    @tuiDefaultProp(nonNegativeFiniteAssertion, `Quantum must be a non-negative number`)
     quantum = 0;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -110,7 +110,7 @@ export class TuiRangeComponent
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    lastActiveThumb: 'right' | 'left' = 'right';
+    lastActiveThumb: 'right' | 'left' = `right`;
 
     constructor(
         @Optional()
@@ -157,26 +157,26 @@ export class TuiRangeComponent
         return 1 / this.segments;
     }
 
-    @HostBinding('style.--left.%')
+    @HostBinding(`style.--left.%`)
     get left(): number {
         return this.getPercentageFromValue(this.value[0]);
     }
 
-    @HostBinding('style.--right.%')
+    @HostBinding(`style.--right.%`)
     get right(): number {
         return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    @HostListener('keydown.arrowUp.prevent', ['1', '$event.target'])
-    @HostListener('keydown.arrowRight.prevent', ['1', '$event.target'])
-    @HostListener('keydown.arrowLeft.prevent', ['-1', '$event.target'])
-    @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
+    @HostListener(`keydown.arrowUp.prevent`, [`1`, `$event.target`])
+    @HostListener(`keydown.arrowRight.prevent`, [`1`, `$event.target`])
+    @HostListener(`keydown.arrowLeft.prevent`, [`-1`, `$event.target`])
+    @HostListener(`keydown.arrowDown.prevent`, [`-1`, `$event.target`])
     changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
         const leftThumbElement = sliderLeftRef.nativeElement;
@@ -184,7 +184,7 @@ export class TuiRangeComponent
 
         const isRightThumb =
             target === this.elementRef.nativeElement
-                ? this.lastActiveThumb === 'right'
+                ? this.lastActiveThumb === `right`
                 : target === rightThumbElement;
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
         const previousValue = isRightThumb ? this.value[1] : this.value[0];
@@ -208,7 +208,7 @@ export class TuiRangeComponent
             this.updateStart(guardedValue);
         }
 
-        this.lastActiveThumb = right ? 'right' : 'left';
+        this.lastActiveThumb = right ? `right` : `left`;
     }
 
     fractionGuard(fraction: number): number {
@@ -255,10 +255,10 @@ export class TuiRangeComponent
         // TODO replace all function by `return keySteps || [[0, min], [100, max]]` in v3.0
         tuiAssert.assert(
             !keySteps,
-            '\n' +
-                'Input property [keySteps] should contain min and max percents.\n' +
-                'We have taken [min] and [max] properties of your component for now (but it will not work in v3.0).\n' +
-                'See example how properly use [keySteps]: https://taiga-ui.dev/components/range#key-steps',
+            `\n` +
+                `Input property [keySteps] should contain min and max percents.\n` +
+                `We have taken [min] and [max] properties of your component for now (but it will not work in v3.0).\n` +
+                `See example how properly use [keySteps]: https://taiga-ui.dev/components/range#key-steps`,
         );
 
         return [[0, min], ...(keySteps || []), [100, max]];

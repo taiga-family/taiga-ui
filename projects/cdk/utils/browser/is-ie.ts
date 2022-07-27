@@ -1,3 +1,3 @@
 export function tuiIsIE(userAgent: string): boolean {
-    return userAgent.toLowerCase().includes('trident');
+    return userAgent.toLowerCase().includes(`trident`);
 }
