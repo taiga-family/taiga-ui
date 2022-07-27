@@ -1,6 +1,6 @@
 import {TuiActiveZoneDirective, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
@@ -16,7 +16,7 @@ export interface TuiDropdown<C = object> {
     minHeight: number;
     maxHeight: number;
     direction?: TuiVerticalDirection | null;
-    limitMinWidth?: TuiDropdownWidthT;
+    limitMinWidth?: TuiDropdownWidth;
     sided?: boolean;
     fixed?: boolean;
     activeZone?: TuiActiveZoneDirective | null;
