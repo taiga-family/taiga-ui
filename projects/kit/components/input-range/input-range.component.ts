@@ -29,11 +29,11 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
-    getFractionPartPadded,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
+    tuiGetFractionPartPadded,
     TuiSizeL,
     TuiTextfieldController,
 } from '@taiga-ui/core';
@@ -169,7 +169,7 @@ export class TuiInputRangeComponent
     }
 
     get precision(): number {
-        return getFractionPartPadded(this.quantum).length;
+        return tuiGetFractionPartPadded(this.quantum).length;
     }
 
     get decimal(): TuiDecimal {

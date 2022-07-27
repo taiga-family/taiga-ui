@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
-    getFractionPartPadded,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
     TUI_DECIMAL_SYMBOLS,
@@ -35,6 +34,7 @@ import {
     tuiCreateNumberMask,
     TuiDecimal,
     tuiEnableAutoCorrectDecimalSymbol,
+    tuiGetFractionPartPadded,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
@@ -279,7 +279,9 @@ export class TuiInputNumberComponent
                 ? this.precision
                 : 0;
 
-        const fraction = hasFraction ? getFractionPartPadded(value, this.precision) : '';
+        const fraction = hasFraction
+            ? tuiGetFractionPartPadded(value, this.precision)
+            : '';
 
         if (this.focused && this.decimal !== 'always') {
             limit = fraction.length;

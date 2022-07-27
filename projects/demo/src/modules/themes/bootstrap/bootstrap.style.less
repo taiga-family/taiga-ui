@@ -25,10 +25,12 @@
             color: #ced4da;
         }
 
-        &._focused:after {
-            color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
+        .wrapper-focus({
+            &:after {
+                color: #80bdff;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+        });
     }
 
     [tui-wrapper][data-appearance='textfield'][data-mode='onDark'] {
@@ -38,10 +40,12 @@
 
         .wrapper-hover({background: transparent});
 
-        &._focused:after {
-            color: #db6574;
-            box-shadow: none;
-        }
+        .wrapper-focus({
+            &:after {
+                color: #db6574;
+                box-shadow: none;
+            }
+        });
     }
 
     [tui-wrapper][data-appearance='textfield'][data-mode='onLight'] {
@@ -53,10 +57,12 @@
             background: transparent;
         });
 
-        &._focused:after {
-            color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
+        .wrapper-focus({
+            &:after {
+                color: #80bdff;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+        });
     }
 
     // TODO: Cover this by CSS vars

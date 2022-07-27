@@ -38,20 +38,22 @@ tui-input-files {
         border: 1px solid;
     }
 
-    &[data-state='disabled'] {
+    .wrapper-disabled({
         opacity: var(--tui-disabled-opacity);
         pointer-events: none;
 
         &:after {
             color: var(--tui-text-03);
         }
-    }
+    });
 
-    &._focused:after {
-        border-style: solid;
-        border-width: 2px;
-        color: var(--tui-focus);
-    }
+    .wrapper-focus({
+        &:after {
+            border-style: solid;
+            border-width: 2px;
+            color: var(--tui-focus);
+        }
+    });
 
     &[data-mode='onDark'] {
         color: var(--tui-text-01-night);
@@ -60,9 +62,11 @@ tui-input-files {
             color: var(--tui-text-01-night);
         }
 
-        &._focused:after {
+        .wrapper-focus({
+            &:after {
             color: var(--tui-text-01-night);
-        }
+            }}
+        );
 
         /* stylelint-disable selector-max-specificity */
         .wrapper-hover({
