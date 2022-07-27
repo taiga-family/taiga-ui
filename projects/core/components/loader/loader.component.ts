@@ -42,7 +42,7 @@ export class TuiLoaderComponent {
 
     @Input()
     @tuiDefaultProp()
-    textContent: PolymorpheusContent = '';
+    textContent: PolymorpheusContent = ``;
 
     @Input()
     @tuiRequiredSetter()

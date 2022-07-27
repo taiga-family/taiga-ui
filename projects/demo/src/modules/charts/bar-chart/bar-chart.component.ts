@@ -7,45 +7,45 @@ import {formatNumber, TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const MONTHS: readonly string[] = [
-    'Jan 2019',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
+    `Jan 2019`,
+    `Feb`,
+    `Mar`,
+    `Apr`,
+    `May`,
+    `Jun`,
+    `Jul`,
+    `Aug`,
+    `Sep`,
+    `Oct`,
+    `Nov`,
+    `Dec`,
 ];
 
 @Component({
-    selector: 'example-tui-bar-chart',
-    templateUrl: './bar-chart.template.html',
-    styleUrls: ['./bar-chart.style.less'],
+    selector: `example-tui-bar-chart`,
+    templateUrl: `./bar-chart.template.html`,
+    styleUrls: [`./bar-chart.style.less`],
     changeDetection,
 })
 export class ExampleTuiBarChartComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     collapsed = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
     size: TuiSizeS | TuiSizeL | null = null;
 
@@ -68,14 +68,14 @@ export class ExampleTuiBarChartComponent {
     readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<number>>
     > = [
-        '',
+        ``,
         ({$implicit}) => this.getHint($implicit),
         ({$implicit}) => MONTHS[$implicit],
     ];
 
     hintContent = this.contentVariants[0];
 
-    readonly hintModeVariants: readonly TuiHintMode[] = ['onDark', 'error'];
+    readonly hintModeVariants: readonly TuiHintMode[] = [`onDark`, `error`];
 
     hintMode: TuiHintMode | null = null;
 
@@ -86,7 +86,7 @@ export class ExampleTuiBarChartComponent {
                     `${result}${formatNumber(set[index])} ${tuiGetCurrencySymbol(
                         TuiCurrency.Ruble,
                     )}\n`,
-                '',
+                ``,
             )
             .trim();
     }

@@ -15,20 +15,20 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'label[tuiLabel]',
-    templateUrl: './label.template.html',
-    styleUrls: ['./label.style.less'],
+    selector: `label[tuiLabel]`,
+    templateUrl: `./label.template.html`,
+    styleUrls: [`./label.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiLabelComponent<T> {
     // TODO: 3.0 Rename to tuiLabel
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent<TuiContextWithImplicit<T | null>> = '';
+    label: PolymorpheusContent<TuiContextWithImplicit<T | null>> = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -37,7 +37,7 @@ export class TuiLabelComponent<T> {
     };
 
     @ContentChild(NgControl)
-    @HostBinding('class._control')
+    @HostBinding(`class._control`)
     readonly control?: NgControl;
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
