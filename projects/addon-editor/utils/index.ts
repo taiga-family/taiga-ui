@@ -6,6 +6,7 @@ export * from './hsv-to-rgb';
 export * from './insert-html';
 export * from './insert-text';
 export * from './is-selection-in';
+export * from './legacy-converter';
 export * from './parse-color';
 export * from './parse-gradient';
 export * from './rgb-to-hex';

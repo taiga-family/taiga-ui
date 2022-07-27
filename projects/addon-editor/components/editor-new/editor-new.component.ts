@@ -18,7 +18,7 @@ import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
+import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -26,6 +26,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
+    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
 import {Mark} from 'prosemirror-model';
@@ -72,6 +73,8 @@ export class TuiEditorNewComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
         @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
+        @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
+        private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -100,6 +103,16 @@ export class TuiEditorNewComponent
         return (
             !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
         );
+    }
+
+    writeValue(value: string | null): void {
+        const processed = this.contentProcessor(value || ``);
+
+        super.writeValue(processed);
+
+        if (processed !== value) {
+            this.control?.setValue(processed);
+        }
     }
 
     onHovered(hovered: boolean): void {
