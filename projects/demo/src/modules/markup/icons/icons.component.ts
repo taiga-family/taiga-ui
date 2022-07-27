@@ -5,17 +5,17 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 
 @Component({
-    selector: 'icons',
-    templateUrl: 'icons.template.html',
+    selector: `icons`,
+    templateUrl: `icons.template.html`,
     changeDetection,
 })
 export class IconsComponent {
     readonly keys = Object.keys(this.icons);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./customization/customization-icons.component.ts?raw'),
-        HTML: import('./customization/customization-icons.template.html?raw'),
-        LESS: import('./customization/customization-icons.style.less?raw'),
+        TypeScript: import(`./customization/customization-icons.component.ts?raw`),
+        HTML: import(`./customization/customization-icons.template.html?raw`),
+        LESS: import(`./customization/customization-icons.style.less?raw`),
     };
 
     constructor(@Inject(TUI_DEMO_ICONS) readonly icons: DemoTuiIconsTabs) {}

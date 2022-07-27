@@ -52,8 +52,8 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
             fakeFocusTimeoutId = this.windowRef.setTimeout(() => {
                 clearTimeout(elementFocusTimeoutId);
 
-                fakeInput.removeEventListener('blur', blurHandler);
-                fakeInput.removeEventListener('focus', focusHandler);
+                fakeInput.removeEventListener(`blur`, blurHandler);
+                fakeInput.removeEventListener(`focus`, focusHandler);
 
                 elementFocusTimeoutId = this.windowRef.setTimeout(() => {
                     this.element.focus({preventScroll: false});
@@ -62,8 +62,8 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
             });
         };
 
-        fakeInput.addEventListener('blur', blurHandler, {once: true});
-        fakeInput.addEventListener('focus', focusHandler);
+        fakeInput.addEventListener(`blur`, blurHandler, {once: true});
+        fakeInput.addEventListener(`focus`, focusHandler);
 
         if (this.insideDialog()) {
             this.windowRef.document.body.appendChild(fakeInput);
@@ -80,13 +80,13 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * before focus to real textfield element
      */
     private makeFakeInput(): HTMLInputElement {
-        const fakeInput: HTMLInputElement = this.renderer.createElement('input');
+        const fakeInput: HTMLInputElement = this.renderer.createElement(`input`);
         const rect: DOMRect = this.element.getBoundingClientRect();
 
         fakeInput.style.height = tuiPx(rect.height);
         fakeInput.style.width = tuiPx(rect.width / 2);
-        fakeInput.style.position = 'fixed';
-        fakeInput.style.opacity = '0';
+        fakeInput.style.position = `fixed`;
+        fakeInput.style.opacity = `0`;
         fakeInput.style.fontSize = tuiPx(16); // disable possible auto zoom
         fakeInput.readOnly = true; // prevent keyboard for fake input
 
@@ -102,7 +102,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
             parseFloat(
                 this.windowRef
                     .getComputedStyle(this.element)
-                    .getPropertyValue('--tui-duration'),
+                    .getPropertyValue(`--tui-duration`),
             ) || 0
         );
     }
@@ -115,7 +115,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * and then that dialog will be shaking
      */
     private insideDialog(): boolean {
-        return !!this.element.closest('tui-dialog');
+        return !!this.element.closest(`tui-dialog`);
     }
 
     /**
@@ -130,8 +130,8 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         const documentRef = this.windowRef.document;
 
         for (const element of [documentRef.documentElement, documentRef.body]) {
-            element.style.setProperty('overflow', 'auto');
-            element.style.setProperty('height', '100%');
+            element.style.setProperty(`overflow`, `auto`);
+            element.style.setProperty(`height`, `100%`);
         }
     }
 }

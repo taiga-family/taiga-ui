@@ -7,7 +7,7 @@ import {TUI_NUMBER_FORMAT, TuiDecimal} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
-describe('InputNumber - backward compatibility for separators', () => {
+describe(`InputNumber - backward compatibility for separators`, () => {
     @Component({
         template: `
             <ng-container [formGroup]="form">
@@ -26,7 +26,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         control = new FormControl(12345.0);
         form = new FormGroup({control: this.control});
 
-        decimal: TuiDecimal = 'always';
+        decimal: TuiDecimal = `always`;
         precision = 2;
     }
 
@@ -36,7 +36,7 @@ describe('InputNumber - backward compatibility for separators', () => {
     let pageObject: TuiPageObject<TestComponent>;
     let nativeInput: HTMLInputElement;
 
-    describe('Format - {d d d,d}', () => {
+    describe(`Format - {d d d,d}`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [
@@ -58,16 +58,16 @@ describe('InputNumber - backward compatibility for separators', () => {
             fixture.detectChanges();
         });
 
-        it('comma usage', () => {
-            nativeInput.value = '55666,7777';
+        it(`comma usage`, () => {
+            nativeInput.value = `55666,7777`;
             nativeInput.focus();
             fixture.detectChanges();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
 
-        it('dot usage', () => {
-            nativeInput.value = '55666.7777';
+        it(`dot usage`, () => {
+            nativeInput.value = `55666.7777`;
             nativeInput.focus();
             fixture.detectChanges();
 
@@ -75,7 +75,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         });
     });
 
-    describe('Format - {d d d,d}', () => {
+    describe(`Format - {d d d,d}`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [
@@ -97,16 +97,16 @@ describe('InputNumber - backward compatibility for separators', () => {
             fixture.detectChanges();
         });
 
-        it('comma usage', () => {
-            nativeInput.value = '55666,7777';
+        it(`comma usage`, () => {
+            nativeInput.value = `55666,7777`;
             nativeInput.focus();
             fixture.detectChanges();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
 
-        it('dot usage', () => {
-            nativeInput.value = '55666.7777';
+        it(`dot usage`, () => {
+            nativeInput.value = `55666.7777`;
             nativeInput.focus();
             fixture.detectChanges();
 
@@ -114,7 +114,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         });
     });
 
-    describe('Format - {d,d,d.d}', () => {
+    describe(`Format - {d,d,d.d}`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [
@@ -126,7 +126,7 @@ describe('InputNumber - backward compatibility for separators', () => {
                 providers: [
                     {
                         provide: TUI_NUMBER_FORMAT,
-                        useValue: {decimalSeparator: '.', thousandSeparator: ','},
+                        useValue: {decimalSeparator: `.`, thousandSeparator: `,`},
                     },
                 ],
             });
@@ -142,16 +142,16 @@ describe('InputNumber - backward compatibility for separators', () => {
             fixture.detectChanges();
         });
 
-        it('comma usage', () => {
-            nativeInput.value = '556,667,777';
+        it(`comma usage`, () => {
+            nativeInput.value = `556,667,777`;
             nativeInput.focus();
             fixture.detectChanges();
 
             expect(component.computedValue).toBe(`556,667,777.00`);
         });
 
-        it('dot usage', () => {
-            nativeInput.value = '556,667,777.99';
+        it(`dot usage`, () => {
+            nativeInput.value = `556,667,777.99`;
             nativeInput.focus();
             fixture.detectChanges();
 
@@ -160,6 +160,6 @@ describe('InputNumber - backward compatibility for separators', () => {
     });
 
     function getNativeInput(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-primitive-textfield__native-input');
+        return pageObject.getByAutomationId(`tui-primitive-textfield__native-input`);
     }
 });

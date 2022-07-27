@@ -30,9 +30,9 @@ import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-radio-list',
-    templateUrl: './radio-list.template.html',
-    styleUrls: ['./radio-list.style.less'],
+    selector: `tui-radio-list`,
+    templateUrl: `./radio-list.template.html`,
+    styleUrls: [`./radio-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -51,18 +51,18 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-orientation')
+    @HostBinding(`attr.data-tui-host-orientation`)
     @tuiDefaultProp()
-    orientation: TuiOrientation = 'vertical';
+    orientation: TuiOrientation = `vertical`;
 
     @Input()
     @tuiDefaultProp()
