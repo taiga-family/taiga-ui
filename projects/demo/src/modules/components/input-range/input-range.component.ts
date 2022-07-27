@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -61,7 +61,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    segments = 0;
+    segments = 1;
 
     steps = 0;
 
@@ -73,8 +73,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     size = this.sizeVariants[1];
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
+    readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: 'thing', few: 'things', many: 'things', other: 'things'},
         {
             one: 'year',
@@ -82,17 +81,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    pluralize: TuiPluralize | Record<string, string> | null = null;
-
-    segmentsPluralize: Record<string, string> | TuiPluralize | null = null;
-
-    minLabelVariants: readonly string[] = ['', 'Nothing'];
-
-    minLabel = this.minLabelVariants[0];
-
-    maxLabelVariants: readonly string[] = ['', 'Everything'];
-
-    maxLabel = this.maxLabelVariants[0];
+    pluralize: Record<string, string> | null = null;
 
     keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
