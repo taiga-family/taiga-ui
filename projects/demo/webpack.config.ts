@@ -28,9 +28,6 @@ const config: Configuration = {
          * With Webpack 5, the raw-loader is no longer needed.
          * Asset modules provide a built-in way to provide raw-loader functionality without additional dependencies.
          * @see https://webpack.js.org/guides/asset-modules/
-         * ___
-         * Less-files are already parsed as 'asset/source' (built-in angular configuration).
-         * No need to duplicate them (it produces conflicts).
          */
         rules: [
             {
