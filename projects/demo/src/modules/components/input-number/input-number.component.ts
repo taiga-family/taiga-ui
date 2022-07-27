@@ -3,7 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAutofillFieldName} from '@taiga-ui/cdk';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDecimal} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -67,7 +67,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     autocomplete: TuiAutofillFieldName | '' = '';
 
-    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
+    readonly decimalVariants: readonly TuiDecimal[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 

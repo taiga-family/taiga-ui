@@ -7,7 +7,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
+import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -46,8 +46,8 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly orientationVariants: readonly TuiOrientationT[] = ['vertical', 'horizontal'];
-    orientation: TuiOrientationT = this.orientationVariants[0];
+    readonly orientationVariants: readonly TuiOrientation[] = ['vertical', 'horizontal'];
+    orientation: TuiOrientation = this.orientationVariants[0];
 
     readonly items: readonly ItemRadio[] = [
         {

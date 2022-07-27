@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDirection,
-    TuiHintModeT,
+    TuiHintMode,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -157,7 +157,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'top-middle',
     ];
 
-    readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
+    readonly hintModeVariants: readonly TuiHintMode[] = ['error', 'onDark'];
 
     invalid = false;
 
@@ -165,7 +165,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
-    hintMode: TuiHintModeT | null = null;
+    hintMode: TuiHintMode | null = null;
 
     get customContent(): string | null {
         return this.customContentSelected === CUSTOM_SVG_NAME

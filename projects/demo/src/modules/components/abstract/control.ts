@@ -4,8 +4,8 @@ import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
     TuiDirection,
-    TuiDropdownWidthT,
-    TuiHintModeT,
+    TuiDropdownWidth,
+    TuiHintMode,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -50,7 +50,7 @@ export abstract class AbstractExampleTuiControl
         'top-middle',
     ];
 
-    readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
+    readonly hintModeVariants: readonly TuiHintMode[] = ['error', 'onDark'];
 
     readonly typeVariants: readonly TuiInputType[] = [
         'text',
@@ -120,15 +120,15 @@ export abstract class AbstractExampleTuiControl
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
-    hintMode: TuiHintModeT | null = null;
+    hintMode: TuiHintMode | null = null;
 
     readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
