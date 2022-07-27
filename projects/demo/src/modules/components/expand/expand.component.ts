@@ -4,21 +4,21 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-expand',
-    templateUrl: './expand.template.html',
-    styleUrls: ['./expand.style.less'],
+    selector: `example-expand`,
+    templateUrl: `./expand.template.html`,
+    styleUrls: [`./expand.style.less`],
     changeDetection,
 })
 export class ExampleTuiExpandComponent {
     @ViewChild(TuiExpandComponent, {read: ElementRef})
     expand?: ElementRef;
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     expanded = false;

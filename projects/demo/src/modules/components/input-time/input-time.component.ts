@@ -22,8 +22,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-time',
-    templateUrl: './input-time.template.html',
+    selector: `example-tui-input-time`,
+    templateUrl: `./input-time.template.html`,
     changeDetection,
     providers: [
         {
@@ -33,37 +33,37 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
     };
 
     cleaner = false;
@@ -73,19 +73,19 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiTime>> = [
         ALWAYS_FALSE_HANDLER,
         (item: TuiTime) => {
-            return String(item) === '06:00' || item > TuiTime.currentLocal();
+            return String(item) === `06:00` || item > TuiTime.currentLocal();
         },
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
 
     dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        'top',
-        'bottom',
+        `top`,
+        `bottom`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;
@@ -94,7 +94,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
-    readonly itemSizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    readonly itemSizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
     itemSize: TuiSizeS | TuiSizeL = this.itemSizeVariants[1];
 
@@ -107,7 +107,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     strict = false;
 
-    readonly modeVariants: readonly TuiTimeMode[] = ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'];
+    readonly modeVariants: readonly TuiTimeMode[] = [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`];
 
     mode = this.modeVariants[0];
 }
