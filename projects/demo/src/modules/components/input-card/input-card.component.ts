@@ -48,10 +48,8 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     readonly cards: Record<string, string> = {
         common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
         universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
-        intersection:
-            `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
-        mutation:
-            `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
+        intersection: `https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg`,
+        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     cardSrcVariants = Object.keys(this.cards);
