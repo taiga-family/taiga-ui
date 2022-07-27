@@ -1,7 +1,7 @@
 .wrapper-hover(@ruleset) {
     @media (hover: hover) {
         &:hover:not(._no-hover),
-        &[data-state='hovered'] {
+        &[data-state='hover'] {
             @ruleset();
         }
     }
@@ -9,8 +9,8 @@
 
 .wrapper-active(@ruleset) {
     &:active:not(._no-active),
-    &[data-state='pressed'],
-    &[data-state='pressed']:hover {
+    &[data-state='active'],
+    &[data-state='active']:hover {
         @ruleset();
     }
 }

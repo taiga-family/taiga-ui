@@ -77,7 +77,7 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
 
             component.onItemPressed(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Pressed);
+            expect(component.getItemState(item)).toBe(TuiInteractiveState.Active);
         });
 
         it(`returns hovered state if it is not disabled and pressed`, () => {
@@ -85,7 +85,7 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
 
             component.onItemHovered(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Hovered);
+            expect(component.getItemState(item)).toBe(TuiInteractiveState.Hover);
         });
     });
 

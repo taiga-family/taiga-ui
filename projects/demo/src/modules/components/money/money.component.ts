@@ -7,7 +7,7 @@ import {
     TuiMoneySign,
 } from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDecimal} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-money',
@@ -45,7 +45,7 @@ export class ExampleTuiMoneyComponent {
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
+    readonly decimalVariants: readonly TuiDecimal[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 
