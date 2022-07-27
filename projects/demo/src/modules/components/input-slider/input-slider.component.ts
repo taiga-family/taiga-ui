@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAutofillFieldName, TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -64,8 +64,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    readonly segmentsVariants: readonly number[] = [0, 1, 5, 13];
-
     segments = 1;
 
     steps = 0;
@@ -81,23 +79,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     prefix = '';
     postfix = '';
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
-        {
-            one: 'year',
-            other: 'years',
-        },
-    ];
-
-    pluralize: Record<string, string> | TuiPluralize | null = null;
-
-    segmentsPluralize: Record<string, string> | TuiPluralize | null = null;
-
-    readonly secondaryVariants: readonly string[] = ['getter of percent', 'Something'];
-
-    secondarySelected: string | null = null;
-
     readonly valueContentVariants = [
         '',
         'TOP SECRET',
@@ -109,14 +90,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     valueContent = this.valueContentVariants[0];
-
-    readonly minLabelVariants: readonly string[] = ['', 'Nothing'];
-
-    minLabel = this.minLabelVariants[0];
-
-    readonly maxLabelVariants: readonly string[] = ['', 'Everything'];
-
-    maxLabel = this.maxLabelVariants[0];
 
     readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
@@ -131,10 +104,4 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     customContentSelected = null;
-
-    get secondary(): string {
-        return this.secondarySelected === this.secondaryVariants[0]
-            ? `${Math.round((this.control.value / this.max) * 100)}%`
-            : this.secondarySelected || '';
-    }
 }
