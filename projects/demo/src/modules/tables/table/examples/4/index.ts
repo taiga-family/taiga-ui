@@ -7,8 +7,8 @@ import {
     isPresent,
     toInt,
     TUI_DEFAULT_MATCHER,
+    tuiControlValue,
     TuiDay,
-    tuiReplayedValueChangesFrom,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
@@ -89,7 +89,7 @@ export class TuiTableExample4 {
         this.direction$,
         this.page$,
         this.size$,
-        tuiReplayedValueChangesFrom<number>(this.minAge),
+        tuiControlValue<number>(this.minAge),
     ]).pipe(
         // zero time debounce for a case when both key and direction change
         debounceTime(0),
