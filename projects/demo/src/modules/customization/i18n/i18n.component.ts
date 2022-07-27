@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class I18nComponent {
     readonly readme = from(
-        import('../../../../../i18n/README.md?raw') as Promise<{
+        import(`../../../../../i18n/README.md?raw`) as Promise<{
             default: string;
         }>,
     ).pipe(map(readme => readme.default.split(`Supported languages:`)[1]));

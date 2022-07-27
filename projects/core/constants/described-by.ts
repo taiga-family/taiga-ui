@@ -1,1 +1,1 @@
-export const DESCRIBED_BY = '_described-by';
+export const DESCRIBED_BY = `_described-by`;

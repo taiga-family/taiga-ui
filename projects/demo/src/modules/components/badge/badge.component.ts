@@ -5,55 +5,55 @@ import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-badge',
-    templateUrl: './badge.template.html',
+    selector: `example-badge`,
+    templateUrl: `./badge.template.html`,
     changeDetection,
 })
 export class ExampleTuiBadgeComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly statusVariants: readonly TuiStatus[] = [
-        'default',
-        'primary',
-        'custom',
-        'success',
-        'error',
-        'warning',
-        'info',
-        'neutral',
+        `default`,
+        `primary`,
+        `custom`,
+        `success`,
+        `error`,
+        `warning`,
+        `info`,
+        `neutral`,
     ];
 
     status = this.statusVariants[0];
 
     values: {[key: string]: string | number} = {
-        Taiga: 'Taiga',
+        Taiga: `Taiga`,
         '5': 5,
         '100': 100,
-        '"100"': '100',
-        '""': '',
+        '"100"': `100`,
+        '""': ``,
     };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeL> = [`xs`, `s`, `m`, `l`];
@@ -62,7 +62,7 @@ export class ExampleTuiBadgeComponent {
 
     valueVariants: ReadonlyArray<string | number> = Object.keys(this.values);
 
-    value: string | number = 'Taiga';
+    value: string | number = `Taiga`;
 
     hoverable = false;
 

@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 import {TuiHoveredService} from './hovered.service';
 
 @Directive({
-    selector: '[tuiHoveredChange]',
-    outputs: ['tuiHoveredChange'],
+    selector: `[tuiHoveredChange]`,
+    outputs: [`tuiHoveredChange`],
     providers: [TuiHoveredService],
 })
 export class TuiHoveredDirective {

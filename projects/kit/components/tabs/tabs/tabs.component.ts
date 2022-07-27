@@ -33,13 +33,13 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
-const TAB_ACTIVE_CLASS = '_active';
+const TAB_ACTIVE_CLASS = `_active`;
 
 // @dynamic
 @Component({
-    selector: 'tui-tabs, nav[tuiTabs]',
-    templateUrl: './tabs.template.html',
-    styleUrls: ['./tabs.style.less'],
+    selector: `tui-tabs, nav[tuiTabs]`,
+    templateUrl: `./tabs.template.html`,
+    styleUrls: [`./tabs.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -58,11 +58,11 @@ export class TuiTabsComponent implements AfterViewChecked {
     readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     @Input()
-    @HostBinding('class._underline')
+    @HostBinding(`class._underline`)
     @tuiDefaultProp()
     underline = this.options.underline;
 
-    @Input('activeItemIndex')
+    @Input(`activeItemIndex`)
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
         this.scrollTo(this.tabs[index]);
@@ -87,7 +87,7 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     get tabs(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(`[tuiTab]`),
         );
     }
 
@@ -95,7 +95,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         return this.tabs[this.activeItemIndex] || null;
     }
 
-    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
+    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, [`$event.target`])
     onActivate(element: HTMLElement): void {
         const index = this.tabs.findIndex(tab => tab === element);
 
@@ -107,8 +107,8 @@ export class TuiTabsComponent implements AfterViewChecked {
         this.activeItemIndexChange.emit(index);
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
+    @HostListener(`keydown.arrowRight.prevent`, [`$event.target`, `1`])
+    @HostListener(`keydown.arrowLeft.prevent`, [`$event.target`, `-1`])
     onKeyDownArrow(current: HTMLElement, step: number): void {
         const {tabs} = this;
 
@@ -120,12 +120,12 @@ export class TuiTabsComponent implements AfterViewChecked {
 
         tabs.forEach(nativeElement => {
             this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
+            this.renderer.setAttribute(nativeElement, `tabIndex`, `-1`);
         });
 
         if (activeElement) {
             this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(activeElement, 'tabIndex', '0');
+            this.renderer.setAttribute(activeElement, `tabIndex`, `0`);
         }
     }
 

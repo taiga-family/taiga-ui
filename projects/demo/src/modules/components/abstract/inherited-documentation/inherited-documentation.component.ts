@@ -9,8 +9,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
 import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 @Component({
-    selector: 'inherited-documentation',
-    templateUrl: './inherited-documentation.template.html',
+    selector: `inherited-documentation`,
+    templateUrl: `./inherited-documentation.template.html`,
     changeDetection,
 })
 export class InheritedDocumentationComponent {
@@ -20,17 +20,17 @@ export class InheritedDocumentationComponent {
     readonly booleanVariants: readonly boolean[] = [false, true];
 
     readonly directionVariants: readonly TuiDirection[] = [
-        'left',
-        'right',
-        'bottom-left',
-        'bottom-right',
-        'bottom-middle',
-        'top-left',
-        'top-right',
-        'top-middle',
+        `left`,
+        `right`,
+        `bottom-left`,
+        `bottom-right`,
+        `bottom-middle`,
+        `top-left`,
+        `top-right`,
+        `top-middle`,
     ];
 
-    readonly modeVariants: readonly TuiHintMode[] = ['error', 'onDark'];
+    readonly modeVariants: readonly TuiHintMode[] = [`error`, `onDark`];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)

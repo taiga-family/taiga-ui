@@ -5,7 +5,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiPx(value: number): string {
-    tuiAssert.assert(Number.isFinite(value), 'Value must be finite number');
+    tuiAssert.assert(Number.isFinite(value), `Value must be finite number`);
 
     return `${value}px`;
 }
