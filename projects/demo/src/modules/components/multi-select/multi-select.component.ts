@@ -13,7 +13,7 @@ import {
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -115,9 +115,9 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     editable = true;
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     search: string | null = '';
 
