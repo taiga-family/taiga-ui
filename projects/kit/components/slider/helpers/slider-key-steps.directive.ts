@@ -7,8 +7,6 @@ import {
     Input,
     Optional,
     Output,
-    Pipe,
-    PipeTransform,
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -121,19 +119,5 @@ export class TuiSliderKeyStepsDirective
         );
 
         return (newValuePercentage * (max - min)) / 100 + min;
-    }
-}
-
-/**
- * @deprecated DONT USE IT! It is just temporary solution for internal purposes only. We will delete it in next major release.
- * TODO delete it in v3.0
- *
- */
-@Pipe({name: 'tuiSliderTickLabel'})
-export class TuiSliderTickLabelPipe implements PipeTransform {
-    transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
-        const percentage = (100 / totalSegments) * tickIndex;
-
-        return tuiPercentageToKeyStepValue(percentage, keySteps);
     }
 }
