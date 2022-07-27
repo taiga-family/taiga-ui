@@ -86,9 +86,7 @@ describe(`CalendarMonth`, () => {
 
             component.pressedItem = pressedMonth;
 
-            expect(component.getItemState(pressedMonth)).toBe(
-                TuiInteractiveState.Pressed,
-            );
+            expect(component.getItemState(pressedMonth)).toBe(TuiInteractiveState.Active);
         });
 
         it(`returns hovered if there is`, () => {
@@ -96,7 +94,7 @@ describe(`CalendarMonth`, () => {
 
             component.hoveredItem = hoveredItem;
 
-            expect(component.getItemState(hoveredItem)).toBe(TuiInteractiveState.Hovered);
+            expect(component.getItemState(hoveredItem)).toBe(TuiInteractiveState.Hover);
         });
 
         it(`returns null if there is no state`, () => {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-hint-controller',
@@ -17,11 +17,11 @@ export class ExampleTuiHintControllerComponent {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
+    readonly modeVariants: readonly TuiHintMode[] = ['error'];
 
     tuiHintContent = 'Example hint content';
 
-    tuiHintMode: TuiHintModeT | null = null;
+    tuiHintMode: TuiHintMode | null = null;
 
     readonly directionVariants: readonly TuiDirection[] = [
         'left',

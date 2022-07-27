@@ -11,7 +11,7 @@ import {
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
+    TuiDropdownWidth,
     TuiSizeL,
     TuiSizeS,
     TuiVerticalDirection,
@@ -79,9 +79,9 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
