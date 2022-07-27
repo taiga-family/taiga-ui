@@ -16,7 +16,7 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
     const colorsString = colors.reduce(
         (acc, color, i) =>
             `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-        '',
+        ``,
     );
 
     return `linear-gradient(to right ${colorsString})`;

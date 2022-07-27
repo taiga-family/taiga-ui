@@ -6,8 +6,8 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-manual-hint',
-    templateUrl: './manual-hint.template.html',
+    selector: `example-manual-hint`,
+    templateUrl: `./manual-hint.template.html`,
     changeDetection,
     providers: [
         {
@@ -17,17 +17,17 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
     ],
 })
 export class ExampleTuiManualHintComponent extends AbstractExampleTuiHint {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     show = false;
 
     sayHi(): void {
-        console.info('Hi all!');
+        console.info(`Hi all!`);
     }
 }
