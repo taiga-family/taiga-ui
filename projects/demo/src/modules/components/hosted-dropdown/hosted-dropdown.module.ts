@@ -20,6 +20,7 @@ import {
     TuiInputModule,
     TuiSelectModule,
     TuiTabsModule,
+    TuiToggleModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -52,6 +53,7 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         TuiDataListWrapperModule,
         DropdownControllerDocumentationModule,
         TuiAddonDocModule,
+        TuiToggleModule,
         RouterModule.forChild(generateRoutes(ExampleTuiHostedDropdownComponent)),
     ],
     declarations: [
