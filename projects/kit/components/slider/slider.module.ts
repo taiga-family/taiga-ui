@@ -1,10 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
-import {
-    TuiSliderKeyStepsDirective,
-    TuiSliderTickLabelPipe,
-} from './helpers/slider-key-steps.directive';
+import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
 import {TuiSliderReadonlyDirective} from './helpers/slider-readonly.directive';
 import {TuiSliderThumbLabelComponent} from './helpers/slider-thumb-label/slider-thumb-label.component';
 import {TuiSliderComponent} from './slider.component';
@@ -16,14 +13,12 @@ import {TuiSliderComponent} from './slider.component';
         TuiSliderThumbLabelComponent,
         TuiSliderKeyStepsDirective,
         TuiSliderReadonlyDirective,
-        TuiSliderTickLabelPipe,
     ],
     exports: [
         TuiSliderComponent,
         TuiSliderThumbLabelComponent,
         TuiSliderKeyStepsDirective,
         TuiSliderReadonlyDirective,
-        TuiSliderTickLabelPipe,
     ],
 })
 export class TuiSliderModule {}
