@@ -13,10 +13,10 @@ import {
     isPresent,
     itemsQueryListObservable,
     TUI_DEFAULT_IDENTITY_MATCHER,
+    tuiControlValue,
     tuiDefaultProp,
     TuiIdentityMatcher,
     tuiPure,
-    tuiReplayedValueChangesFrom,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -129,7 +129,7 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private get valueChanges$(): Observable<readonly T[]> {
-        return tuiReplayedValueChangesFrom<readonly T[]>(this.control).pipe(
+        return tuiControlValue<readonly T[]>(this.control).pipe(
             map(value => value || []),
         );
     }
