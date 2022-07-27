@@ -8,8 +8,6 @@ import {
     Input,
     Optional,
     Output,
-    Pipe,
-    PipeTransform,
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -34,11 +32,12 @@ import {TuiSliderComponent} from '../slider.component';
 
 // @dynamic
 @Directive({
-    selector: `input[tuiSlider][keySteps]`,
+    selector: 'input[tuiSlider][keySteps]',
     host: {
+        '[attr.data-key-steps]': 'true',
         '[attr.aria-valuenow]': `safeCurrentValue`,
-        '[attr.aria-valuemin]': `min`,
-        '[attr.aria-valuemax]': `max`,
+        '[attr.aria-valuemin]': 'min',
+        '[attr.aria-valuemax]': 'max',
     },
 })
 export class TuiSliderKeyStepsDirective
@@ -90,14 +89,6 @@ export class TuiSliderKeyStepsDirective
         super(control, changeDetectorRef);
     }
 
-    /**
-     * TODO: 3.0
-     * ___
-     * Also add @HostListener(`input`): to be similar to
-     * {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/range_value_accessor.ts#L47-L48 RangeValueAccessor}
-     * ___
-     * Remove {@link keyStepsInput}
-     */
     @HostListener(`change`)
     updateControlValue(): void {
         this.updateValue(this.controlValue);
@@ -130,19 +121,5 @@ export class TuiSliderKeyStepsDirective
         );
 
         return (newValuePercentage * (max - min)) / 100 + min;
-    }
-}
-
-/**
- * @deprecated DONT USE IT! It is just temporary solution for internal purposes only. We will delete it in next major release.
- * TODO delete it in v3.0
- *
- */
-@Pipe({name: `tuiSliderTickLabel`})
-export class TuiSliderTickLabelPipe implements PipeTransform {
-    transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
-        const percentage = (100 / totalSegments) * tickIndex;
-
-        return tuiPercentageToKeyStepValue(percentage, keySteps);
     }
 }
