@@ -29,7 +29,7 @@ export function tabsRefreshFactory(
     );
 }
 
-export const TABS_REFRESH = new InjectionToken<Observable<unknown>>('Refresh stream');
+export const TABS_REFRESH = new InjectionToken<Observable<unknown>>(`Refresh stream`);
 export const TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
     TuiDestroyService,

@@ -10,8 +10,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-range',
-    templateUrl: './input-range.template.html',
+    selector: `example-tui-input-range`,
+    templateUrl: `./input-range.template.html`,
     changeDetection,
     providers: [
         {
@@ -21,34 +21,34 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import('./examples/4/index.html?raw'),
-        LESS: import('./examples/4/index.less?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
     control = new FormControl([0, 10]);
@@ -69,15 +69,15 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
     size = this.sizeVariants[1];
 
     readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        {one: `thing`, few: `things`, many: `things`, other: `things`},
         {
-            one: 'year',
-            other: 'years',
+            one: `year`,
+            other: `years`,
         },
     ];
 
@@ -88,14 +88,14 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     keySteps: TuiKeySteps | null = null;
 
     readonly valueContentVariants = [
-        '',
-        'TOP SECRET',
+        ``,
+        `TOP SECRET`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.max ? 'MAX' : `${val}`,
+            val === this.max ? `MAX` : `${val}`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.min ? 'MIN' : `${val}`,
+            val === this.min ? `MIN` : `${val}`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === 5 ? 'FIVE' : `${val}`,
+            val === 5 ? `FIVE` : `${val}`,
     ];
 
     leftValueContent = this.valueContentVariants[0];

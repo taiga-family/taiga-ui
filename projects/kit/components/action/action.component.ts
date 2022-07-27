@@ -20,9 +20,9 @@ import {
 
 // TODO: 3.0 Refactor to button[tuiAction]
 @Component({
-    selector: 'tui-action, a[tuiAction]',
-    templateUrl: './action.template.html',
-    styleUrls: ['./action.style.less'],
+    selector: `tui-action, a[tuiAction]`,
+    templateUrl: `./action.template.html`,
+    styleUrls: [`./action.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -34,14 +34,14 @@ import {
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
     @tuiDefaultProp()
-    icon = '';
+    icon = ``;
 
-    readonly isLink = this.elementRef.nativeElement.matches('a');
+    readonly isLink = this.elementRef.nativeElement.matches(`a`);
 
     readonly disabled = false;
 
@@ -72,8 +72,8 @@ export class TuiActionComponent extends AbstractTuiInteractive {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
