@@ -4,6 +4,6 @@ import {identity} from 'rxjs';
 
 export const TUI_EDITOR_CONTENT_PROCESSOR: InjectionToken<TuiStringHandler<string>> =
     new InjectionToken<TuiStringHandler<string>>(
-        'Content value processor for tui-editor',
+        `Content value processor for tui-editor`,
         {factory: () => identity},
     );

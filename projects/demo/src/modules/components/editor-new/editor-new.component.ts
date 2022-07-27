@@ -96,11 +96,11 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
-        LESS: import('!!raw-loader!./examples/5/index.less'),
+        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
+        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        LESS: import(`!!raw-loader!./examples/5/index.less`),
         'legacy-editor.ts': import(
-            '!!raw-loader!../../../../../addon-editor/utils/legacy-converter'
+            `!!raw-loader!../../../../../addon-editor/utils/legacy-converter`
         ),
     };
 

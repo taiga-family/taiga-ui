@@ -106,7 +106,7 @@ export class TuiEditorNewComponent
     }
 
     writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value || '');
+        const processed = this.contentProcessor(value || ``);
 
         super.writeValue(processed);
 

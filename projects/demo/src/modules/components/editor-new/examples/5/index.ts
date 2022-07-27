@@ -12,9 +12,9 @@ import {
 } from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: 'tui-editor-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-editor-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,

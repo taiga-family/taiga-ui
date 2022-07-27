@@ -3,7 +3,7 @@
  * This converter help you to painlessly migrate old tags to the tui-editor[new]
  */
 export function tuiLegacyEditorConverter(content: string): string {
-    const tree = new DOMParser().parseFromString(content, 'text/html');
+    const tree = new DOMParser().parseFromString(content, `text/html`);
 
     migration(tree.body);
 
@@ -16,34 +16,34 @@ function migration(element: Element): void {
             migration(child);
         }
 
-        if (child.tagName === 'FONT') {
-            if (child.hasAttribute('size')) {
-                switch (child.getAttribute('size')) {
-                    case '6': {
-                        migrateHeading('h1', child);
+        if (child.tagName === `FONT`) {
+            if (child.hasAttribute(`size`)) {
+                switch (child.getAttribute(`size`)) {
+                    case `6`: {
+                        migrateHeading(`h1`, child);
                         break;
                     }
-                    case '5': {
-                        migrateHeading('h2', child);
-                        break;
-                    }
-
-                    case '4': {
-                        migrateParagraph('17px', child);
+                    case `5`: {
+                        migrateHeading(`h2`, child);
                         break;
                     }
 
-                    case '3': {
-                        migrateParagraph('15px', child);
+                    case `4`: {
+                        migrateParagraph(`17px`, child);
                         break;
                     }
 
-                    case '2': {
-                        migrateParagraph('13px', child);
+                    case `3`: {
+                        migrateParagraph(`15px`, child);
+                        break;
+                    }
+
+                    case `2`: {
+                        migrateParagraph(`13px`, child);
                         break;
                     }
                 }
-            } else if (child.hasAttribute('color')) {
+            } else if (child.hasAttribute(`color`)) {
                 migrateFontHighlight(child);
             }
         }
@@ -55,7 +55,7 @@ function migrateHeading(selector: string, element: Element): void {
 
     heading.innerHTML = element.innerHTML;
 
-    if (element.parentElement?.tagName === 'P') {
+    if (element.parentElement?.tagName === `P`) {
         const newRef = element.parentElement?.parentElement?.insertBefore(
             heading,
             element.parentElement,
@@ -72,23 +72,23 @@ function migrateHeading(selector: string, element: Element): void {
 }
 
 function migrateParagraph(fontSize: string, element: Element): void {
-    const p = document.createElement('p');
-    const span = document.createElement('span');
+    const p = document.createElement(`p`);
+    const span = document.createElement(`span`);
 
-    span.setAttribute('style', `font-size: ${fontSize}`);
+    span.setAttribute(`style`, `font-size: ${fontSize}`);
     span.innerHTML = element.innerHTML;
     p.append(span);
 
     element.parentElement?.replaceChild(
-        element.parentElement.tagName === 'P' ? span : p,
+        element.parentElement.tagName === `P` ? span : p,
         element,
     );
 }
 
 function migrateFontHighlight(element: Element): void {
-    const span = document.createElement('span');
+    const span = document.createElement(`span`);
 
-    span.setAttribute('style', `color: ${element.getAttribute('color')}`);
+    span.setAttribute(`style`, `color: ${element.getAttribute(`color`)}`);
     span.innerHTML = element.innerHTML;
     element.parentElement?.replaceChild(span, element);
 }

@@ -1,7 +1,7 @@
 import {tuiLegacyEditorConverter} from '@taiga-ui/addon-editor';
 
-describe('tuiLegacyEditorConverter', () => {
-    it('works', () => {
+describe(`tuiLegacyEditorConverter`, () => {
+    it(`works`, () => {
         const before = `WYSIWYG (What you see is what you get) — Rich Text Editor for using with Angular forms.
 <p>
     <font size="6"><font color="#168a21">Heading</font></font>
@@ -46,6 +46,6 @@ describe('tuiLegacyEditorConverter', () => {
     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>`;
 
-        expect(tuiLegacyEditorConverter(before).replace(/>\s+</g, '><')).toEqual(after);
+        expect(tuiLegacyEditorConverter(before).replace(/>\s+</g, `><`)).toEqual(after);
     });
 });
