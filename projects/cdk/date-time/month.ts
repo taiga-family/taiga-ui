@@ -86,7 +86,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     get formattedMonthPart(): string {
-        return String(this.month + 1).padStart(2, '0');
+        return String(this.month + 1).padStart(2, `0`);
     }
 
     /**

@@ -10,20 +10,20 @@ import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
 
 const ITEMS = [
     {
-        caption: `Select`,
-        routerLink: `/tui-select`,
+        caption: `Selects`,
+        routerLink: `/components/select`,
     },
     {
         caption: `Multi`,
-        routerLink: `/tui-multi-select`,
+        routerLink: `/components/multi-select`,
     },
     {
         caption: `With tags`,
-        routerLink: `/tui-multi-select`,
+        routerLink: `/components/multi-select`,
     },
 ];
 
-describe('Breadcrumbs Wrapper', () => {
+describe(`Breadcrumbs Wrapper`, () => {
     @Component({
         template: `
             <tui-breadcrumbs
@@ -56,7 +56,7 @@ describe('Breadcrumbs Wrapper', () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return `tui-breadcrumbs__`;
+            return `tui-breadcrumbs-wrapper__`;
         },
     };
 

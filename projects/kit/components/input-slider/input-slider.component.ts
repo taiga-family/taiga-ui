@@ -39,16 +39,16 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @dynamic
 @Component({
-    selector: 'tui-input-slider',
-    templateUrl: './input-slider.template.html',
-    styleUrls: ['./input-slider.style.less'],
+    selector: `tui-input-slider`,
+    templateUrl: `./input-slider.template.html`,
+    styleUrls: [`./input-slider.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputSliderComponent),
         },
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
+        tuiSliderOptionsProvider({trackColor: `transparent`}),
     ],
 })
 export class TuiInputSliderComponent
@@ -70,20 +70,20 @@ export class TuiInputSliderComponent
     max = 100;
 
     @Input()
-    @tuiDefaultProp(q => q > 0, 'Quantum must be positive')
+    @tuiDefaultProp(q => q > 0, `Quantum must be positive`)
     quantum = 1;
 
     @Input()
     @tuiDefaultProp(
         s => s >= 0 && Number.isInteger(s),
-        'Steps must be non-negative integer',
+        `Steps must be non-negative integer`,
     )
     steps = 0;
 
     @Input()
     @tuiDefaultProp(
         s => s > 0 && Number.isInteger(s),
-        'Segments must be positive integer',
+        `Segments must be positive integer`,
     )
     segments = 1;
 
@@ -93,15 +93,15 @@ export class TuiInputSliderComponent
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
     @Input()
     @tuiDefaultProp()
-    prefix = '';
+    prefix = ``;
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix = ``;
 
     constructor(
         @Optional()
@@ -135,7 +135,7 @@ export class TuiInputSliderComponent
     }
 
     get decimal(): TuiDecimal {
-        return this.precision ? 'not-zero' : 'never';
+        return this.precision ? `not-zero` : `never`;
     }
 
     get step(): number {
@@ -193,7 +193,7 @@ export class TuiInputSliderComponent
     }
 
     private get textInputValue(): string {
-        return this.inputNumberRef?.nativeValue || '';
+        return this.inputNumberRef?.nativeValue || ``;
     }
 
     protected getFallbackValue(): number {
