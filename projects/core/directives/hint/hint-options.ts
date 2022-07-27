@@ -11,15 +11,12 @@ export interface TuiHintOptions extends TuiAbstractHintOptions {
     readonly tooltipIcon: PolymorpheusContent;
 }
 
-// TODO: 3.0 remove in ivy compilation
-export const TUI_TOOLTIP_ICON = 'tuiIconTooltipLarge';
-
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     ...TUI_ABSTRACT_HINT_DEFAULT_OPTIONS,
     tuiHintShowDelay: 500,
     tuiHintHideDelay: 200,
-    tooltipIcon: TUI_TOOLTIP_ICON,
+    tooltipIcon: 'tuiIconTooltipLarge',
 };
 
 export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>(

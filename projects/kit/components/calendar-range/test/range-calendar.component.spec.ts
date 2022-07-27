@@ -4,10 +4,10 @@ import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_LAST_DAY,
+    tuiControlValue,
     TuiDay,
     TuiDayRange,
     TuiMonth,
-    tuiReplayedValueChangesFrom,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
@@ -23,7 +23,7 @@ import {TuiCalendarRangeModule} from '../calendar-range.module';
 export function tuiRangeCalendarTestFactory(
     control: NgControl | null,
 ): Observable<TuiDayRange | null> | null {
-    return control ? tuiReplayedValueChangesFrom(control) : of(null);
+    return control ? tuiControlValue(control) : of(null);
 }
 
 describe('rangeCalendarComponent', () => {
