@@ -1,7 +1,7 @@
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
+import {TuiDirection, TuiHintMode} from '@taiga-ui/core/types';
 
 export interface TuiAbstractHintOptions {
-    readonly mode: TuiHintModeT | null;
+    readonly mode: TuiHintMode | null;
     readonly direction: TuiDirection;
 }
 
