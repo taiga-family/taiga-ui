@@ -6,9 +6,6 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 
-// TODO: 3.0 remove in ivy compilation
-export const COMBOBOX_OPTION: unknown = TUI_SELECT_OPTION;
-
 export const TUI_COMBO_BOX_PROVIDERS = [
     {
         provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -24,7 +21,7 @@ export const TUI_COMBO_BOX_PROVIDERS = [
     },
     {
         provide: TUI_OPTION_CONTENT,
-        useValue: COMBOBOX_OPTION,
+        useValue: TUI_SELECT_OPTION,
     },
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
 ];
