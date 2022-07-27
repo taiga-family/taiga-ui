@@ -48,8 +48,7 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: `oder mehrere Dateien hier ablegen`,
         defaultLinkSingle: `Datei auswählen`,
         defaultLinkMultiple: `Dateien auswählen`,
-        maxSizeRejectionReason:
-            `Die Dateigröße überschreitet die maximal zulässige Größe von `,
+        maxSizeRejectionReason: `Die Dateigröße überschreitet die maximal zulässige Größe von `,
         formatRejectionReason: `Ungültiges Dateiformat`,
         drop: `Datei hier ablegen`,
         dropMultiple: `Dateien hier ablegen`,
