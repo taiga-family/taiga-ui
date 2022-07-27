@@ -11,7 +11,7 @@ import {TuiMonthRange} from './month-range';
  * @deprecated
  */
 export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
-    ['DMY', 'YMD', 'MDY'].includes(dateMode);
+    [`DMY`, `YMD`, `MDY`].includes(dateMode);
 
 /**
  * An immutable range of two {@link TuiDay} objects
@@ -45,7 +45,7 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateMode: TuiDateMode = 'DMY',
+        dateMode: TuiDateMode = `DMY`,
     ): TuiDayRange {
         const leftDay = TuiDay.normalizeParse(
             rangeString.slice(0, DATE_FILLER_LENGTH),
@@ -100,7 +100,7 @@ export class TuiDayRange extends TuiMonthRange {
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    toString(dateFormat: TuiDateMode = 'DMY', dateSeparator: string = '.'): string {
+    toString(dateFormat: TuiDateMode = `DMY`, dateSeparator: string = `.`): string {
         const from = this.from.getFormattedDay(dateFormat, dateSeparator);
         const to = this.to.getFormattedDay(dateFormat, dateSeparator);
 

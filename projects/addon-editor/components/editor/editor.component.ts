@@ -1,4 +1,3 @@
-import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -13,158 +12,85 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {WINDOW} from '@ng-web-apis/common';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
-import {TuiDesignModeDirective} from '@taiga-ui/addon-editor/directives/design-mode';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@taiga-ui/addon-editor/tokens';
+import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    isNodeIn,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiAssert,
-    tuiAssertIsElement,
     TuiBooleanHandler,
     tuiDefaultProp,
-    TuiDestroyService,
     tuiIsNativeFocusedIn,
-    typedFromEvent,
-    watch,
 } from '@taiga-ui/cdk';
-import {TUI_DOCUMENT_OR_SHADOW_ROOT, TUI_ELEMENT_REF} from '@taiga-ui/core';
-import {merge, Subscription} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {Editor} from '@tiptap/core';
+import {Mark} from 'prosemirror-model';
+import {Observable} from 'rxjs';
 
-const TEMP_URL = 'TEMP_URL';
+import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoot | null {
-    return editor.focusableElement ? editor.focusableElement.documentRef : null;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
-    return editor.focusableElement?.documentRef
-        ? new ElementRef(editor.focusableElement.documentRef.body)
-        : null;
-}
-
-// @dynamic
 @Component({
-    selector: 'tui-editor:not([new])',
-    templateUrl: './editor.template.html',
-    styleUrls: ['./editor.style.less'],
+    selector: `tui-editor`,
+    templateUrl: `./editor.component.html`,
+    styleUrls: [`./editor.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiEditorComponent),
         },
-        {
-            provide: TUI_DOCUMENT_OR_SHADOW_ROOT,
-            deps: [forwardRef(() => TuiEditorComponent)],
-            useFactory: documentFactory,
-        },
-        {
-            provide: TUI_ELEMENT_REF,
-            deps: [forwardRef(() => TuiEditorComponent)],
-            useFactory: elementFactory,
-        },
+        TUI_EDITOR_PROVIDERS,
     ],
 })
 export class TuiEditorComponent extends AbstractTuiControl<string> implements OnDestroy {
-    @ViewChild(TuiToolbarComponent)
-    private readonly toolbar?: TuiToolbarComponent;
-
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
 
-    private readonly resizeSubscription?: Subscription;
-
     @Input()
     @tuiDefaultProp()
-    exampleText = '';
+    exampleText = ``;
 
     @Input()
     @tuiDefaultProp()
     tools: readonly TuiEditorTool[] = defaultEditorTools;
 
-    @Input()
-    @tuiDefaultProp()
-    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
-
-    @ViewChild('focusableElement', {read: TuiDesignModeDirective})
-    readonly focusableElement?: TuiDesignModeDirective;
-
-    linkDropdownEnabled = false;
+    @ViewChild(TuiToolbarComponent)
+    readonly toolbar?: TuiToolbarComponent;
 
     constructor(
-        @Inject(DOCUMENT)
-        private readonly documentRef: Document,
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
-        @Inject(WINDOW) windowRef: Window,
         @Optional()
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
+        @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
+        @Inject(TuiTiptapEditorService) readonly editorService: AbstractTuiEditor,
     ) {
         super(control, changeDetectorRef);
-
-        // @bad TODO: Better dropdown show/hide handling, host obscured etc.
-        merge(
-            typedFromEvent(windowRef, 'mousedown'),
-            typedFromEvent(windowRef, 'focusin'),
-        )
-            .pipe(
-                filter(
-                    ({target}) =>
-                        this.linkDropdownEnabled &&
-                        target instanceof Node &&
-                        !elementRef.nativeElement.contains(target) &&
-                        !this.editLink?.nativeElement.contains(target),
-                ),
-                watch(changeDetectorRef),
-                takeUntil(destroy$),
-            )
-            .subscribe(() => {
-                this.linkDropdownEnabled = false;
-            });
     }
 
-    get nativeFocusableElement(): HTMLElement | null {
-        return this.computedDisabled || !this.focusableElement
-            ? null
-            : this.focusableElement.nativeFocusableElement;
+    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+    }
+
+    get editor(): AbstractTuiEditor | null {
+        return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
     }
 
     get focused(): boolean {
         return (
-            (!!this.focusableElement && this.focusableElement.focused) ||
+            !!this.editor?.isFocused ||
             (!!this.toolbar && this.toolbar.focused) ||
             (!!this.editLink && tuiIsNativeFocusedIn(this.editLink.nativeElement))
         );
     }
 
-    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.linkDropdownEnabled ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
-    }
-
-    get initialized(): boolean {
-        return (
-            !!this.focusableElement &&
-            !!this.focusableElement.documentRef &&
-            this.focusableElement.documentRef.readyState === 'complete'
-        );
+    get placeholderRaised(): boolean {
+        return (this.computedFocused && !this.readOnly) || this.hasValue;
     }
 
     get hasExampleText(): boolean {
@@ -173,125 +99,47 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         );
     }
 
-    get placeholderRaised(): boolean {
-        return (this.computedFocused && !this.readOnly) || this.hasValue;
-    }
-
-    get computedDocument(): Document {
-        return this.focusableElement
-            ? this.focusableElement.computedDocument
-            : this.documentRef;
-    }
-
-    ngOnDestroy(): void {
-        if (this.resizeSubscription) {
-            this.resizeSubscription.unsubscribe();
+    selectLinkIfClosest(): void {
+        if (this.getMarkedLinkBeforeSelectClosest()) {
+            this.editor?.selectClosest();
         }
     }
 
-    onMouseDown(event: MouseEvent): void {
-        if (
-            !this.focusableElement ||
-            !this.focusableElement.nativeFocusableElement ||
-            !(event.target instanceof Element) ||
-            this.focusableElement.nativeFocusableElement.contains(event.target) ||
-            !!event.target.closest('button')
-        ) {
-            return;
-        }
-
-        event.preventDefault();
-        setNativeFocused(this.focusableElement.nativeFocusableElement);
+    onActiveZone(active: boolean): void {
+        this.updateFocused(active);
     }
 
     onModelChange(value: string): void {
-        this.updateValue(value.trim() === '<br>' ? '' : value);
+        this.updateValue(value);
     }
 
-    onFocusedChange(focused: boolean): void {
-        this.updateFocused(focused);
-        this.linkDropdownEnabled = focused || this.linkDropdownEnabled;
+    addLink(link: string): void {
+        this.editor?.selectClosest();
+        this.editor?.setLink(link);
     }
 
-    onAddLink(url: string): void {
-        this.selectClosest('a');
-        this.computedDocument.execCommand('createLink', false, TEMP_URL);
-
-        const link = this.computedDocument.querySelector<HTMLAnchorElement>(
-            `[href="${TEMP_URL}"]`,
-        );
-
-        if (!link) {
-            return;
-        }
-
-        link.target = '_blank';
-        link.rel = '_noopener';
-        link.href = url;
-
-        this.computedDocument.dispatchEvent(new Event('input'));
+    removeLink(): void {
+        this.editor?.unsetLink();
     }
 
-    onRemoveLink(): void {
-        this.selectClosest('a');
-        this.computedDocument.execCommand('unlink');
-        this.linkDropdownEnabled = false;
-
-        // @awful TODO think of a better way
-        setTimeout(() => {
-            this.linkDropdownEnabled = true;
-        });
-    }
-
-    // @bad TODO
-    onAttach(): void {
-        tuiAssert.assert(false, 'Attach is not implemented yet');
-    }
-
-    // @bad TODO
-    onTex(): void {
-        tuiAssert.assert(false, 'Attach is not implemented yet');
+    ngOnDestroy(): void {
+        this.editor?.destroy();
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
-    private readonly isSelectionLink: TuiBooleanHandler<Range> = ({
-        startContainer,
-        endContainer,
-    }) => isNodeIn(startContainer, 'a') && isNodeIn(endContainer, 'a');
+    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive(`link`);
 
     private get hasValue(): boolean {
         return !!this.value;
     }
 
-    private selectClosest(selector: string): void {
-        setNativeFocused(this.computedDocument.body);
+    private getMarkedLinkBeforeSelectClosest(): Mark | null {
+        const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
+        const isLink = link?.type.name === `link`;
 
-        const selection = this.computedDocument.getSelection();
-
-        if (!selection) {
-            return;
-        }
-
-        const range = selection.getRangeAt(0);
-        const {commonAncestorContainer} = range;
-        const suitableNode =
-            commonAncestorContainer.nodeType === Node.TEXT_NODE
-                ? commonAncestorContainer.parentElement
-                : commonAncestorContainer;
-
-        if (!suitableNode) {
-            return;
-        }
-
-        tuiAssertIsElement(suitableNode);
-
-        const element = suitableNode.closest(selector);
-
-        if (element) {
-            range.selectNode(element);
-        }
+        return isLink ? link : null;
     }
 }

@@ -7,7 +7,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiBadgeComponent} from '../badge.component';
 import {TuiBadgeModule} from '../badge.module';
 
-describe('Badge', () => {
+describe(`Badge`, () => {
     @Component({
         template: `
             <tui-badge
@@ -24,9 +24,9 @@ describe('Badge', () => {
         @ViewChild(TuiBadgeComponent, {read: ElementRef, static: true})
         element!: ElementRef<Element>;
 
-        size: TuiSizeL = 'm';
+        size: TuiSizeL = `m`;
         value!: number | string;
-        status: TuiStatus = 'default';
+        status: TuiStatus = `default`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -47,70 +47,70 @@ describe('Badge', () => {
         component = testComponent.component;
     });
 
-    describe('value:', () => {
-        it('if it accepts a two-digit number, it outputs it', () => {
+    describe(`value:`, () => {
+        it(`if it accepts a two-digit number, it outputs it`, () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual('99');
+            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(`99`);
         });
 
-        it('if it takes three digits or more, it displays the abbreviation 99+', () => {
+        it(`if it takes three digits or more, it displays the abbreviation 99+`, () => {
             testComponent.value = 999;
             fixture.detectChanges();
 
             expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                '99+',
+                `99+`,
             );
         });
 
-        it('if it accepts a string, it outputs it', () => {
-            testComponent.value = 'Text';
+        it(`if it accepts a string, it outputs it`, () => {
+            testComponent.value = `Text`;
             fixture.detectChanges();
 
             expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                'Text',
+                `Text`,
             );
         });
 
-        it('if it accepts a string containing a number, it outputs it unchanged', () => {
-            testComponent.value = '125';
+        it(`if it accepts a string containing a number, it outputs it unchanged`, () => {
+            testComponent.value = `125`;
             fixture.detectChanges();
 
             expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                '125',
+                `125`,
             );
         });
     });
 
-    describe('padding:', () => {
-        it('if value is a number, padding has size m', () => {
+    describe(`padding:`, () => {
+        it(`if value is a number, padding has size m`, () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
-            expect(component.padding).toBe('m');
+            expect(component.padding).toBe(`m`);
         });
 
-        it('if value is a string, padding has size l', () => {
-            testComponent.value = '99';
+        it(`if value is a string, padding has size l`, () => {
+            testComponent.value = `99`;
             fixture.detectChanges();
 
-            expect(component.padding).toBe('l');
+            expect(component.padding).toBe(`l`);
         });
 
-        it('if value is empty, padding is none', () => {
-            expect(component.padding).toBe('none');
+        it(`if value is empty, padding is none`, () => {
+            expect(component.padding).toBe(`none`);
         });
     });
 
-    describe('states: ', () => {
-        it('if value is empty, add appropriate css class', () => {
-            testComponent.value = '';
+    describe(`states: `, () => {
+        it(`if value is empty, add appropriate css class`, () => {
+            testComponent.value = ``;
 
             fixture.detectChanges();
 
             expect(
-                testComponent.element.nativeElement.classList.contains('_empty-value'),
+                testComponent.element.nativeElement.classList.contains(`_empty-value`),
             ).toBeTruthy();
         });
     });

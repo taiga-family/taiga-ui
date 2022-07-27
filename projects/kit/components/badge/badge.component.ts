@@ -18,58 +18,58 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-badge',
+    selector: `tui-badge`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './badge.template.html',
-    styleUrls: ['./badge.style.less'],
+    templateUrl: `./badge.template.html`,
+    styleUrls: [`./badge.style.less`],
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiBadgeComponent {
     @Input()
     @tuiDefaultProp()
-    value: PolymorpheusContent = '';
+    value: PolymorpheusContent = ``;
 
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeL = `m`;
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
-    status: TuiStatus = 'default';
+    status: TuiStatus = `default`;
 
     @Input()
-    @HostBinding('class._hoverable')
+    @HostBinding(`class._hoverable`)
     @tuiDefaultProp()
     hoverable = false;
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
-    @HostBinding('attr.data-tui-host-padding')
+    @HostBinding(`attr.data-tui-host-padding`)
     get padding(): string {
         if (this.isEmpty) {
-            return 'none';
+            return `none`;
         }
 
-        return isNumber(this.value?.valueOf()) ? 'm' : 'l';
+        return isNumber(this.value?.valueOf()) ? `m` : `l`;
     }
 
     get outputValue(): string {
         const value = this.value?.valueOf();
 
         if (isNumber(value) && value > 99) {
-            return '99+';
+            return `99+`;
         } else {
             return String(this.value);
         }
     }
 
-    @HostBinding('class._empty-value')
+    @HostBinding(`class._empty-value`)
     get isEmpty(): boolean {
-        return this.value === '';
+        return this.value === ``;
     }
 }
