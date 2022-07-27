@@ -12,7 +12,6 @@ describe('InputRange', () => {
         template: `
             <tui-input-range
                 *ngIf="default"
-                max="10"
                 [formControl]="control"
             ></tui-input-range>
             <tui-input-range
@@ -20,8 +19,6 @@ describe('InputRange', () => {
                 [formControl]="control"
                 [max]="max"
                 [min]="min"
-                [minLabel]="minLabel"
-                [maxLabel]="maxLabel"
                 [pluralize]="pluralize"
                 [readOnly]="readOnly"
                 [steps]="steps"
@@ -40,9 +37,7 @@ describe('InputRange', () => {
         quantum = 5;
         readOnly = false;
         steps = 0;
-        minLabel = 'Nothing';
-        maxLabel = 'All';
-        pluralize = ['год', 'года', 'лет'];
+        pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -96,11 +91,11 @@ describe('InputRange', () => {
             initializeInputsPO();
         });
 
-        it('minLabel is missing', () => {
+        it('[leftValueContent] is missing', () => {
             expect(getLeftValueContent()).toBeNull();
         });
 
-        it('maxLabel is missing', () => {
+        it('[rightValueContent] is missing', () => {
             testComponent.control.setValue([0, 10]);
             fixture.detectChanges();
 
@@ -115,33 +110,11 @@ describe('InputRange', () => {
 
     describe('Labels', () => {
         it('Plural signature is present', () => {
-            expect(getLeftValueContent()).toBe(`0${CHAR_NO_BREAK_SPACE}лет`);
-            expect(getRightValueContent()).toBe(`1${CHAR_NO_BREAK_SPACE}год`);
+            expect(getLeftValueDecoration()).toContain('лет');
+            expect(getRightValueDecoration()).toBe('год');
         });
 
-        it('minLabel is shown', () => {
-            testComponent.control.setValue([-10, 10]);
-            fixture.detectChanges();
-
-            expect(getLeftValueContent()).toBe(testComponent.minLabel);
-        });
-
-        it('minLabel missing on focus', () => {
-            testComponent.control.setValue([-10, 10]);
-            inputPOLeft.focus();
-
-            expect(getLeftValueContent()).toBeNull();
-            expect(getLeftValueDecoration()).toBe('0 лет');
-        });
-
-        it('maxLabel is shown', () => {
-            testComponent.control.setValue([-10, 10]);
-            fixture.detectChanges();
-
-            expect(getRightValueContent()).toBe(testComponent.maxLabel);
-        });
-
-        it('maxLabel missing on focus', () => {
+        it('[rightValueContent] missing on focus', () => {
             testComponent.control.setValue([-10, 10]);
             inputPORight.focus();
 
