@@ -1,11 +1,14 @@
 <tui-input-slider
-    secondary="activePadding"
-    size="m"
+    tuiTextfieldSize="m"
     class="slider"
+    [tuiTextfieldCustomContent]="inputCustomContent"
+    [tuiTextfieldLabelOutside]="true"
     [max]="6"
     [quantum]="1"
     [(ngModel)]="activePadding"
 ></tui-input-slider>
+
+<ng-template #inputCustomContent>activePadding</ng-template>
 
 <tui-pagination
     [activePadding]="activePadding"
