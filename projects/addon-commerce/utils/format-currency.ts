@@ -17,6 +17,6 @@ export const tuiFormatCurrency = formatCurrency;
 
 function stringifyCurrency(currency: TuiCurrencyVariants): string {
     return currency === null || tuiIsString(currency)
-        ? currency || ''
-        : String(currency).padStart(3, '0');
+        ? currency || ``
+        : String(currency).padStart(3, `0`);
 }

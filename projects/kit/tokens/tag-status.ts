@@ -5,6 +5,6 @@ import {TuiStatus} from '@taiga-ui/kit/types';
 export const TUI_TAG_STATUS = new InjectionToken<TuiStatus>(
     `Status for tags inside InputTag component`,
     {
-        factory: () => 'primary',
+        factory: () => `primary`,
     },
 );

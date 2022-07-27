@@ -35,8 +35,8 @@ export function sheetDraggedFactory({
     nativeElement,
 }: ElementRef<HTMLElement>): Observable<boolean> {
     return merge(
-        typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(mapTo(true)),
-        typedFromEvent(nativeElement, 'touchend').pipe(mapTo(false)),
+        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(mapTo(true)),
+        typedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
     );
 }
 
@@ -50,8 +50,8 @@ export function sheetScrollFactory(
     return isIos
         ? iosScrollFactory(nativeElement, documentRef, ngZone)
         : merge(
-              typedFromEvent(nativeElement, 'scroll'),
-              typedFromEvent(nativeElement, 'load', {capture: true}),
+              typedFromEvent(nativeElement, `scroll`),
+              typedFromEvent(nativeElement, `load`, {capture: true}),
           ).pipe(
               map(() => nativeElement.scrollTop),
               tuiZonefree(ngZone),

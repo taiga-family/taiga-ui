@@ -34,9 +34,9 @@ import {Observable} from 'rxjs';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
 @Component({
-    selector: 'tui-editor',
-    templateUrl: './editor.component.html',
-    styleUrls: ['./editor.style.less'],
+    selector: `tui-editor`,
+    templateUrl: `./editor.component.html`,
+    styleUrls: [`./editor.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -52,7 +52,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     @Input()
     @tuiDefaultProp()
-    exampleText = '';
+    exampleText = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -127,10 +127,10 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
-    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive('link');
+    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive(`link`);
 
     private get hasValue(): boolean {
         return !!this.value;
@@ -138,7 +138,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     private getMarkedLinkBeforeSelectClosest(): Mark | null {
         const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
-        const isLink = link?.type.name === 'link';
+        const isLink = link?.type.name === `link`;
 
         return isLink ? link : null;
     }
