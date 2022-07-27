@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Directive,
     ElementRef,
     forwardRef,
     HostBinding,
@@ -42,16 +41,6 @@ import {
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
 import {Observable} from 'rxjs';
-
-/**
- * Turn on new mode for `Range` and `InputRange`.
- * The new version of component will behave almost the same as the same component from the next major release.
- * @deprecated TODO remove me in v3.0 and make `Range` and `InputRange` always "new".
- */
-@Directive({
-    selector: 'tui-range[new], tui-input-range[new]',
-})
-export class TuiNewRangeDirective {}
 
 // @dynamic
 @Component({

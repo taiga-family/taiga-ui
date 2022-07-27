@@ -1,10 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneModule, TuiPressedModule} from '@taiga-ui/cdk';
-import {TuiTextfieldControllerModule, TuiWrapperModule} from '@taiga-ui/core';
+import {TuiWrapperModule} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
-import {TuiNewRangeDirective, TuiRangeModule} from '@taiga-ui/kit/components/range';
+import {TuiRangeModule} from '@taiga-ui/kit/components/range';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {
@@ -16,16 +16,14 @@ import {
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
         PolymorpheusModule,
         TuiActiveZoneModule,
         TuiInputNumberModule,
         TuiPressedModule,
         TuiRangeModule,
-        TuiTextfieldControllerModule,
         TuiWrapperModule,
     ],
     declarations: [TuiInputRangeComponent, TuiTextfieldAppearanceDirective],
-    exports: [TuiInputRangeComponent, TuiNewRangeDirective],
+    exports: [TuiInputRangeComponent],
 })
 export class TuiInputRangeModule {}
