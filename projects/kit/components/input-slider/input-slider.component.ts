@@ -177,6 +177,10 @@ export class TuiInputSliderComponent
         return this.precision ? `not-zero` : `never`;
     }
 
+    get showValueContent(): boolean {
+        return Boolean(this.computedValueContent && !this.focused);
+    }
+
     /**
      * TODO remove old property `size` in v3.0
      */
