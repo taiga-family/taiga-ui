@@ -1,6 +1,6 @@
 {
     "name": "taiga-ui",
-    "version": "2.61.0",
+    "version": "3.0.0-rc.3",
     "description": "Taiga UI package that provides ng add command for Taiga library",
     "keywords": [
         "angular",
