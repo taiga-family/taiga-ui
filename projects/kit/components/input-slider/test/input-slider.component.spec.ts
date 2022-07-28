@@ -129,8 +129,11 @@ describe(`InputSlider[legacy props]`, () => {
     });
 
     describe(`Labels`, () => {
-        it(`valueContent not shown (max > value > min)`, () => {
-            expect(aid(testContext.valueContentAutoId).textContent.trim()).toBe(``);
+        it(`valueDecoration (postfix/prefix) not shown (max > value > min; no focus)`, () => {
+            expect(aid(testContext.valueDecorationAutoId).textContent.trim()).toBe(`0`);
+            expect(aid(testContext.valueContentAutoId).textContent.trim()).toMatch(
+                /^0\s+лет$/,
+            );
         });
 
         it(`valueContent is missing on focus (value = min)`, () => {
@@ -153,7 +156,7 @@ describe(`InputSlider[legacy props]`, () => {
 
         describe(`legacy props checks`, () => {
             it(`Plural signature is present (legacy \`pluralize\` prop)`, () => {
-                expect(aid(testContext.valueDecorationAutoId).textContent.trim()).toMatch(
+                expect(aid(testContext.valueContentAutoId).textContent.trim()).toMatch(
                     /0\s+лет/,
                 );
             });
