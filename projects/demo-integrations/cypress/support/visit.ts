@@ -22,6 +22,7 @@ interface TuiVisitOptions {
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
+    skipExpectUrl?: boolean;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
@@ -52,6 +53,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideScrollbar = true,
         noSmoothScroll = true,
         hideHeader = true,
+        skipExpectUrl = false,
         hideNavigation = true,
         hideVersionManager = true,
         pseudoMobile = false,
@@ -82,7 +84,13 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
                 });
             }
         },
-    }).then(() => cy.url().should(`include`, encodedPath));
+    }).then(() => {
+        if (skipExpectUrl) {
+            cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+        } else {
+            cy.url().should(`include`, encodedPath);
+        }
+    });
 
     if (waitAllIcons) {
         cy.intercept(`*.svg`).as(`icons`);
