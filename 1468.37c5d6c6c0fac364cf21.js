@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1468],{rNIn:function(n,t,o){"use strict";o.r(t),t.default='```html\n<div (tuiActiveZoneChange)="onActiveZone($event)">\n  <button\n    tuiButton\n    type="button"\n  >\n    Button 1\n  </button>\n  <button\n    tuiButton\n    type="button"\n  >\n    Button 2\n  </button>\n</div>\n```\n'}}]);
