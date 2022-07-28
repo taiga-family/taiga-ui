@@ -22,7 +22,6 @@ import {
     quantize,
     round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiAssert,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
@@ -36,7 +35,6 @@ import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
-    tuiCheckKeyStepsHaveMinMaxPercents,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
@@ -248,20 +246,12 @@ export class TuiRangeComponent
         min: number,
         max: number,
     ): TuiKeySteps {
-        if (keySteps && tuiCheckKeyStepsHaveMinMaxPercents(keySteps)) {
-            return keySteps;
-        }
-
-        // TODO replace all function by `return keySteps || [[0, min], [100, max]]` in v3.0
-        tuiAssert.assert(
-            !keySteps,
-            `\n` +
-                `Input property [keySteps] should contain min and max percents.\n` +
-                `We have taken [min] and [max] properties of your component for now (but it will not work in v3.0).\n` +
-                `See example how properly use [keySteps]: https://taiga-ui.dev/components/range#key-steps`,
+        return (
+            keySteps || [
+                [0, min],
+                [100, max],
+            ]
         );
-
-        return [[0, min], ...(keySteps || []), [100, max]];
     }
 
     private updateStart(value: number): void {
