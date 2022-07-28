@@ -1,6 +1,6 @@
 import {createInterface} from 'readline';
 
-export async function checkChangelogBeforePush(): Promise<string> {
+export async function checkChangelogBeforePush(): Promise<string | undefined> {
     const readline = createInterface({
         input: process.stdin,
         output: process.stdout,
