@@ -8,6 +8,7 @@ export * from './get-element-offset';
 export * from './get-scroll-parent';
 export * from './get-selected-text';
 export * from './is-current-target';
+export * from './is-element';
 export * from './is-form-field';
 export * from './is-inside-iframe';
 export * from './is-node-in';

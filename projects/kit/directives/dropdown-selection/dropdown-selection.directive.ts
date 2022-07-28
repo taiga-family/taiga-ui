@@ -111,7 +111,7 @@ export class TuiDropdownSelectionDirective
         );
         this.documentRef = shadowRootRef || documentRef;
 
-        // SSR protection
+        // TODO: make better SSR protection
         if (!this.documentRef.createRange) {
             return;
         }
@@ -121,6 +121,7 @@ export class TuiDropdownSelectionDirective
         const {nativeElement} = this.elementRef;
 
         merge(
+            typedFromEvent(this.documentRef, `selectionchange`),
             typedFromEvent(this.documentRef, `mouseup`),
             typedFromEvent(nativeElement, `mousedown`).pipe(
                 switchMapTo(
