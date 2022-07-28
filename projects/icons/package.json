@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/icons",
-    "version": "2.57.0",
+    "version": "3.0.0-rc.0",
     "description": "Taiga UI icons pack",
     "keywords": [
         "angular",
@@ -15,7 +15,7 @@
     "devDependencies": {
         "@rollup/pluginutils": "~4.2.1",
         "@types/svgo": "~2.6.3",
-        "rollup": "~2.77.2",
+        "rollup": "~2.75.6",
         "rollup-plugin-typescript2": "~0.32.1",
         "svgo": "~2.8.0"
     }
