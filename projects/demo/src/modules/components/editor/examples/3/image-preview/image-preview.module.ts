@@ -15,7 +15,11 @@ import {ImagePreviewExampleComponent} from './image-preview.component';
         PolymorpheusModule,
         TuiEditorImagePreviewModule,
     ],
-    exports: [TuiEditorImagePreviewModule, ImagePreviewExampleComponent],
+    exports: [
+        TuiEditorImagePreviewModule,
+        TuiEditorImagePreviewModule,
+        ImagePreviewExampleComponent,
+    ],
     declarations: [ImagePreviewExampleComponent],
 })
 export class ImagePreviewExampleModule {}

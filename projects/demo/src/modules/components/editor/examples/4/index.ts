@@ -1,44 +1,35 @@
-import {Component, Injector} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {
+    defaultEditorExtensions,
+    TUI_EDITOR_CONTENT_PROCESSOR,
+    TUI_EDITOR_EXTENSIONS,
+    tuiLegacyEditorConverter,
+} from '@taiga-ui/addon-editor';
 
 @Component({
     selector: `tui-editor-example-4`,
     templateUrl: `./index.html`,
     styleUrls: [`./index.less`],
     providers: [
-        TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
-                    m => m.StarterKit,
-                ),
-                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(m =>
-                    m.createImageEditorExtension(injector),
-                ),
-            ],
+            useValue: defaultEditorExtensions,
+        },
+        {
+            provide: TUI_EDITOR_CONTENT_PROCESSOR,
+            useValue: tuiLegacyEditorConverter,
         },
     ],
     changeDetection,
     encapsulation,
 })
 export class TuiEditorExample4 {
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
-
-    control = new FormControl(``);
-
-    constructor() {
-        this.control.patchValue(`
-                <p>Small image</p>
-                <img data-type="image-editor" src="assets/images/lumberjack.png" width="300">
-
-                <p>Big image</p>
-                <img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">
-            `);
-    }
+    control = new FormControl(
+        // Legacy HTML markup from DB
+        `WYSIWYG (What you see is what you get) — Rich Text Editor for using with Angular forms.<p><font size="6">Heading</font></p><font size="4">Lorem ipsum dolor sit amet <font color="#ff78a7">consectetur adipiscing elit</font>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span style="background-color: rgb(163, 129, 255);">Ut enim </span></font><blockquote>ad minim veniam, <u>quis nostrud exercitation</u> <b>ullamco</b>, laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</blockquote><p style="text-align: right;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>`,
+        Validators.required,
+    );
 }

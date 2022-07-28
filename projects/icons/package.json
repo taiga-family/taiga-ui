@@ -15,7 +15,7 @@
     "devDependencies": {
         "@rollup/pluginutils": "~4.2.1",
         "@types/svgo": "~2.6.3",
-        "rollup": "~2.75.6",
+        "rollup": "~2.77.2",
         "rollup-plugin-typescript2": "~0.32.1",
         "svgo": "~2.8.0"
     }

@@ -293,3 +293,39 @@
     top: 1.75rem;
     transform: rotate(225deg);
 }
+
+.t-editor-placeholder:before {
+    content: attr(data-placeholder);
+    float: left;
+    color: var(--tui-base-05);
+    pointer-events: none;
+    height: 0;
+}
+
+.tui-group-node {
+    display: flex;
+    flex-direction: row;
+}
+
+.tui-group-node:hover > .tui-group-pointer {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.tui-group-pointer {
+    opacity: 0;
+    min-height: 0.8125rem;
+    max-height: 0.8125rem;
+    min-width: 0.8125rem;
+    max-width: 0.8125rem;
+    margin: 0.3125rem 0.3125rem 0 0;
+    cursor: grab;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg"><path d="M4 14c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zM2 6C.9 6 0 6.9 0 8s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6C.9 0 0 .9 0 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill-opacity="0.2" fill="black" /></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+[data-mode='onDark'] .tui-group-pointer {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg"><path d="M4 14c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zM2 6C.9 6 0 6.9 0 8s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6C.9 0 0 .9 0 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill-opacity="0.2" fill="white" /></svg>');
+}

@@ -14,11 +14,13 @@ import {
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleEditorComponent} from './editor.component';
 import {TuiEditorExample1} from './examples/1';
+import {ExampleSmilesToolModule} from './examples/1/smiles-tool/smiles-tool.module';
 import {TuiEditorExample2} from './examples/2';
-import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.module';
 import {TuiEditorExample3} from './examples/3';
+import {ImagePreviewExampleModule} from './examples/3/image-preview/image-preview.module';
 import {TuiEditorExample4} from './examples/4';
-import {ImagePreviewExampleModule} from './examples/4/image-preview/image-preview.module';
+import {TuiEditorExample5} from './examples/5';
+import {TuiEditorExample6} from './examples/6';
 
 @NgModule({
     imports: [
@@ -43,6 +45,8 @@ import {ImagePreviewExampleModule} from './examples/4/image-preview/image-previe
         TuiEditorExample2,
         TuiEditorExample3,
         TuiEditorExample4,
+        TuiEditorExample6,
+        TuiEditorExample5,
     ],
     exports: [ExampleEditorComponent],
 })

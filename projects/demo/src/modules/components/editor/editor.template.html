@@ -32,21 +32,12 @@
         </tui-notification>
 
         <tui-doc-example
-            id="basic"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
-            <tui-editor-example-1></tui-editor-example-1>
-        </tui-doc-example>
-
-        <tui-doc-example
             id="custom-tool"
             i18n-heading
-            heading="With custom tool"
-            [content]="example2"
+            heading="Custom tool"
+            [content]="example1"
         >
-            <h3>You can create your own tool:</h3>
+            You can create your own tool:
             <ul
                 i18n
                 class="tui-list tui-space_bottom-6"
@@ -73,37 +64,60 @@
                     <code>&lt;tui-editor&gt;</code>
                     .
                 </li>
-                <li class="tui-list__item">
-                    Mark every tool wrapper with
-                    <code>tuiItem</code>
-                    -directive
-                </li>
             </ul>
-            <tui-editor-example-2></tui-editor-example-2>
+            <tui-editor-example-1></tui-editor-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="resizable-image"
             i18n-heading
-            heading="With resizable image"
+            heading="Resizable image"
+            [content]="example2"
+        >
+            <tui-editor-example-2></tui-editor-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="preview-image"
+            i18n-heading
+            heading="Preview for images"
             [content]="example3"
         >
             <tui-editor-example-3></tui-editor-example-3>
         </tui-doc-example>
 
         <tui-doc-example
-            id="preview-image"
+            id="custom-processing"
             i18n-heading
-            heading="Show preview for images"
+            heading="Custom processing content"
             [content]="example4"
         >
             <tui-editor-example-4></tui-editor-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="draggable-groups"
+            i18n-heading
+            heading="Draggable groups the looks like in Notion"
+            [content]="example5"
+        >
+            <tui-editor-example-5></tui-editor-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="nested-groups"
+            i18n-heading
+            heading="Simple create nested groups"
+            [content]="example6"
+        >
+            <tui-editor-example-6></tui-editor-example-6>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-editor
+                [style.max-height.px]="maxHeight"
                 [formControl]="control"
                 [focusable]="focusable"
                 [exampleText]="exampleText"
@@ -115,6 +129,12 @@
             >
                 Start typing
             </tui-editor>
+
+            <h4>HTML:</h4>
+            <tui-editor-socket [content]="control.value"></tui-editor-socket>
+
+            <h4>Text:</h4>
+            <p>{{ control.value }}</p>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -129,10 +149,29 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="ngModel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValue]="control.value"
+                (documentationPropertyValueChange)="control.setValue($event)"
+            >
+                Example pass HTML code
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="exampleText"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
+            >
+                Example text shown on empty focused input
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="max-height"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="maxHeight"
             >
                 Example text shown on empty focused input
             </ng-template>

@@ -1,4 +1,8 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION, NIGHT_THEME_KEY} from './shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    NIGHT_THEME_KEY,
+    WAIT_BEFORE_SCREENSHOT,
+} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
@@ -22,6 +26,7 @@ interface TuiVisitOptions {
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
+    skipExpectUrl?: boolean;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
@@ -52,6 +57,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideScrollbar = true,
         noSmoothScroll = true,
         hideHeader = true,
+        skipExpectUrl = false,
         hideNavigation = true,
         hideVersionManager = true,
         pseudoMobile = false,
@@ -82,7 +88,13 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
                 });
             }
         },
-    }).then(() => cy.url().should(`include`, encodedPath));
+    }).then(() => {
+        if (skipExpectUrl) {
+            cy.wait(WAIT_BEFORE_SCREENSHOT);
+        } else {
+            cy.url().should(`include`, encodedPath);
+        }
+    });
 
     if (waitAllIcons) {
         cy.intercept(`*.svg`).as(`icons`);
