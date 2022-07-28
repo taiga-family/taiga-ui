@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.56.0](https://github.com/tinkoff/taiga-ui/compare/v2.55.0...v2.56.0) (2022-07-28)
+
+### Features
+
+- **addon-editor:** add `TUI_EDITOR_CONTENT_PROCESSOR` ([#2213](https://github.com/tinkoff/taiga-ui/issues/2213))
+  ([ce4c5d4](https://github.com/tinkoff/taiga-ui/commit/ce4c5d473688d193baec29bcccd7fdff6d819fba))
+
+### Bug Fixes
+
+- **addon-editor:** fix editing links ([#2228](https://github.com/tinkoff/taiga-ui/issues/2228))
+  ([f8ffee0](https://github.com/tinkoff/taiga-ui/commit/f8ffee053462f6e9c1130b6814bd8cdb41a62a3b))
+- **kit:** `InputSlider` props `[prefix]`/`[postfix]` + `[valueContent]` overlaps each other on blur
+  ([#2225](https://github.com/tinkoff/taiga-ui/issues/2225))
+  ([b75802e](https://github.com/tinkoff/taiga-ui/commit/b75802ec35347782de8ad2a650df92f2a12e6b77))
+
 ## [2.55.0](https://github.com/tinkoff/taiga-ui/compare/v2.54.1...v2.55.0) (2022-07-26)
 
 ### Features
