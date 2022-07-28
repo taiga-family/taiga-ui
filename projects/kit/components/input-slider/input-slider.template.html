@@ -34,7 +34,7 @@
     [tuiFocusable]="false"
     [max]="computedSteps"
     [segments]="segments"
-    [keySteps]="computePureKeySteps(keySteps, min, max)"
+    [keySteps]="computeKeySteps(keySteps, min, max)"
     [attr.disabled]="readOnly || disabled || null"
     [ngModel]="value"
     (keyStepsInput)="onSliderChange($event)"
