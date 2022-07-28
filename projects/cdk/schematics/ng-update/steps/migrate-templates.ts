@@ -40,6 +40,7 @@ import {ALL_TS_FILES} from '../../constants';
 import {replaceTag} from '../../utils/replace-tag';
 import {printProgress} from '../../utils/progress';
 import {migratePolymorpheus} from './migrate-polymorpheus';
+import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -277,6 +278,14 @@ function replaceFieldError({
             [input],
         );
     });
+
+    if (elements.length) {
+        addImportToClosestModule(
+            resource.componentPath,
+            'TuiErrorModule',
+            '@taiga-ui/core',
+        );
+    }
 }
 
 function addEditorProviders({
