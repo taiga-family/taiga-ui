@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     forwardRef,
     Inject,
     Input,
@@ -13,7 +12,6 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
@@ -22,14 +20,12 @@ import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-edito
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
-import {Mark} from 'prosemirror-model';
 import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
@@ -51,9 +47,6 @@ export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
     implements OnDestroy
 {
-    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
-    private readonly editLink?: ElementRef<HTMLElement>;
-
     @Input()
     @tuiDefaultProp()
     exampleText = ``;
@@ -64,6 +57,8 @@ export class TuiEditorNewComponent
 
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
+
+    focused = false;
 
     constructor(
         @Optional()
@@ -85,14 +80,6 @@ export class TuiEditorNewComponent
 
     get editor(): TuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
-    }
-
-    get focused(): boolean {
-        return (
-            !!this.editor?.isFocused ||
-            (!!this.toolbar && this.toolbar.focused) ||
-            (!!this.editLink && isNativeFocusedIn(this.editLink.nativeElement))
-        );
     }
 
     get placeholderRaised(): boolean {
@@ -119,14 +106,9 @@ export class TuiEditorNewComponent
         this.updateHovered(hovered);
     }
 
-    selectLinkIfClosest(): void {
-        if (this.getMarkedLinkBeforeSelectClosest()) {
-            this.editor?.selectClosest();
-        }
-    }
-
-    onActiveZone(active: boolean): void {
-        this.updateFocused(active);
+    onActiveZone(focused: boolean): void {
+        this.focused = focused;
+        this.updateFocused(focused);
     }
 
     onModelChange(value: string): void {
@@ -150,16 +132,10 @@ export class TuiEditorNewComponent
         return ``;
     }
 
-    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive(`link`);
+    private readonly isSelectionLink = ({startContainer, endContainer}: Range): boolean =>
+        !!startContainer.parentElement?.closest(`a`)?.contains(endContainer);
 
     private get hasValue(): boolean {
         return !!this.value;
-    }
-
-    private getMarkedLinkBeforeSelectClosest(): Mark | null {
-        const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
-        const isLink = link?.type.name === `link`;
-
-        return isLink ? link : null;
     }
 }
