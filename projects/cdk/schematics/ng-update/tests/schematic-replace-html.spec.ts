@@ -350,7 +350,8 @@ import {TestComponent} from './test.component';
 export class ExampleModule {}
 `;
 
-const MODULE_AFTER = `import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
+const MODULE_AFTER = `import { TuiErrorModule } from "@taiga-ui/core";
+import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
 import { TuiFieldErrorPipeModule } from "@taiga-ui/kit";
 
 import {CommonModule} from '@angular/common';
@@ -367,7 +368,8 @@ import {TestComponent} from './test.component';
         TuiAutofilledModule,
         TuiPressedModule,
         TuiHoveredModule,
-        TuiScrollIntoViewLinkModule
+        TuiScrollIntoViewLinkModule,
+        TuiErrorModule
     ],
     declarations: [
         TestComponent,
