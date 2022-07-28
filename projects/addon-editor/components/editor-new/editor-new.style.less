@@ -4,6 +4,7 @@
     .createStackingContext();
     display: block;
     font: var(--tui-font-text-m);
+    border-radius: var(--tui-radius-m);
 
     & ::ng-deep .tui-editor-socket {
         display: block;
@@ -18,12 +19,6 @@
     }
 }
 
-.t-outline {
-    max-height: inherit;
-    min-height: inherit;
-    border-radius: var(--tui-radius-m);
-}
-
 .t-wrapper {
     display: flex;
     max-height: inherit;
@@ -31,10 +26,7 @@
     cursor: text;
     overflow: hidden;
     flex-direction: column;
-
-    &_disabled {
-        cursor: initial;
-    }
+    border-radius: inherit;
 }
 
 .t-placeholder {
