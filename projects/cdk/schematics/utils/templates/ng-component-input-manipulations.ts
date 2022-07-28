@@ -1,3 +1,4 @@
+import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Element} from 'parse5';
 import {
     getPathFromTemplateResource,
@@ -5,15 +6,12 @@ import {
     getTemplateOffset,
 } from './template-resource';
 import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
-import {getNgComponents} from '../angular/ng-component';
-import {findNgModule} from '../angular/ng-module';
-import {addImportToNgModule, DevkitFileSystem} from 'ng-morph';
-import {addUniqueImport} from '../add-unique-import';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
     findElementsWithAttribute,
 } from './elements';
+import {addImportToClosestModule} from '../add-import-to-closest-module';
 
 /**
  * Replace component input property by new value
@@ -182,19 +180,11 @@ export function replaceInputPropertyByDirective({
     });
 
     if (wasModified && directiveModule) {
-        const [ngComponent] = getNgComponents(templateResource.componentPath);
-        const ngModule = ngComponent ? findNgModule(ngComponent) : null;
-
-        if (ngModule) {
-            addImportToNgModule(ngModule, directiveModule.name, {
-                unique: true,
-            });
-            addUniqueImport(
-                ngModule.getSourceFile().getFilePath(),
-                directiveModule.name,
-                directiveModule.moduleSpecifier,
-            );
-        }
+        addImportToClosestModule(
+            templateResource.componentPath,
+            directiveModule.name,
+            directiveModule.moduleSpecifier,
+        );
     }
 }
 
