@@ -83,7 +83,13 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     pluralize: Record<string, string> | null = null;
 
-    keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
+    keyStepsVariants: readonly TuiKeySteps[] = [
+        [
+            [0, 0],
+            [50, 1_000],
+            [100, 10_000],
+        ],
+    ];
 
     keySteps: TuiKeySteps | null = null;
 
