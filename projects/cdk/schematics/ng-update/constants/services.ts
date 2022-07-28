@@ -23,7 +23,7 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
         },
         to: {
             name: 'TuiAlertService',
-            moduleSpecifier: '@taiga-ui/cdk',
+            moduleSpecifier: '@taiga-ui/core',
         },
         replaceMethods: [
             {
