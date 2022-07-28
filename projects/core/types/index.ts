@@ -9,6 +9,5 @@ export * from './hint-mode';
 export * from './marker-handler';
 export * from './option-role';
 export * from './orientation';
-export * from './pluralize';
 export * from './point';
 export * from './size';
