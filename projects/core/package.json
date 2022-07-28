@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "2.62.1",
+    "version": "3.0.0-rc.3",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -15,7 +15,7 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@taiga-ui/i18n": "^2.62.1",
+        "@taiga-ui/i18n": "^3.0.0-rc.3",
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
@@ -27,8 +27,8 @@
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=2.0.0",
         "@ng-web-apis/mutation-observer": ">=2.0.0",
-        "@taiga-ui/cdk": ">=2.62.1",
-        "@taiga-ui/i18n": ">=2.62.1",
+        "@taiga-ui/cdk": ">=3.0.0-rc.3",
+        "@taiga-ui/i18n": ">=3.0.0-rc.3",
         "@tinkoff/ng-event-plugins": ">=3.0.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
