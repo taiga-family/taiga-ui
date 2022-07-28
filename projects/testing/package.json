@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "2.61.0",
+    "version": "3.0.0-rc.3",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
         "cypress-image-snapshot": "^4.0.1",
