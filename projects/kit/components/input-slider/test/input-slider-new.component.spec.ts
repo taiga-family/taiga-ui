@@ -17,6 +17,8 @@ import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/tes
                 [quantum]="quantum"
                 [steps]="steps"
                 [valueContent]="valueContent"
+                [prefix]="prefix"
+                [postfix]="postfix"
                 [tuiTextfieldCustomContent]="textfieldCustomContent"
             ></tui-input-slider>
 
@@ -39,6 +41,8 @@ class TestComponent {
     steps = 0;
     valueContent: unknown = ``;
     textfieldCustomContent: unknown = ``;
+    prefix = `$`;
+    postfix = `things`;
 
     get percent(): number {
         return Math.round((this.control.value / (this.max - this.min)) * 100);
@@ -56,6 +60,10 @@ const testContext = {
 
     get customContentAutoId() {
         return `tui-primitive-textfield__custom-content`;
+    },
+
+    get valueDecorationAutoId() {
+        return `tui-primitive-textfield__value-decoration`;
     },
 };
 
@@ -309,6 +317,8 @@ describe(`InputSlider[new]`, () => {
             await fixture.whenStable();
 
             expect(testComponent.control.value).toBe(value);
+            expect(getValueDecoration()).not.toContain(testComponent.prefix);
+            expect(getValueDecoration()).not.toContain(testComponent.postfix);
             expect(getTextInputCustomValue()).toBe(expectedContent);
         };
 
@@ -541,6 +551,13 @@ function getTextInputCustomValue(): string {
 function getTextfieldCustomContent(): string {
     return (
         pageObject.getByAutomationId(testContext.customContentAutoId)?.nativeElement
+            .textContent || ``
+    );
+}
+
+function getValueDecoration(): string {
+    return (
+        pageObject.getByAutomationId(testContext.valueDecorationAutoId)?.nativeElement
             .textContent || ``
     );
 }

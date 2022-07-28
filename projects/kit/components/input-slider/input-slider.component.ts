@@ -1,3 +1,4 @@
+import {I18nPluralPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -69,6 +70,7 @@ export class TuiNewInputSliderDirective {}
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        I18nPluralPipe,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputSliderComponent),
@@ -148,6 +150,7 @@ export class TuiInputSliderComponent
         @Optional()
         @Inject(TuiNewInputSliderDirective)
         readonly isNew: TuiNewInputSliderDirective | null,
+        @Inject(I18nPluralPipe) readonly i18nPlural: I18nPluralPipe,
     ) {
         super(control, changeDetectorRef);
     }
@@ -175,6 +178,10 @@ export class TuiInputSliderComponent
 
     get decimal(): TuiDecimalT {
         return this.precision ? `not-zero` : `never`;
+    }
+
+    get showValueContent(): boolean {
+        return Boolean(this.computedValueContent && !this.focused);
     }
 
     /**
@@ -290,17 +297,23 @@ function legacyMinMaxLabel({
     max,
     minLabel,
     maxLabel,
+    i18nPlural,
+    pluralizeMap,
 }: TuiInputSliderComponent): (
     context: TuiContextWithImplicit<number>,
 ) => string | number {
     return ({$implicit: value}: TuiContextWithImplicit<number>) => {
+        const valueWithPlural = `${value} ${
+            pluralizeMap ? i18nPlural.transform(value, pluralizeMap) : ``
+        }`;
+
         switch (value) {
             case min:
-                return minLabel || value;
+                return minLabel || valueWithPlural;
             case max:
-                return maxLabel || value;
+                return maxLabel || valueWithPlural;
             default:
-                return value;
+                return valueWithPlural;
         }
     };
 }
