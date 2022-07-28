@@ -143,12 +143,13 @@ export class TuiInputSliderComponent
     }
 
     @tuiPure
-    computePureKeySteps(
-        keySteps: TuiKeySteps | null,
-        min: number,
-        max: number,
-    ): TuiKeySteps {
-        return [[0, min], ...(keySteps || []), [100, max]];
+    computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
+        return (
+            keySteps || [
+                [0, min],
+                [100, max],
+            ]
+        );
     }
 
     focusTextInput(): void {
