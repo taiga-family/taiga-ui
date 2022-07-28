@@ -82,7 +82,12 @@ function addTaigaStyles(options: Schema): Rule {
     return async (_: Tree) => {
         const taigaStyles = [TAIGA_THEME_FONTS];
 
-        return addStylesToAngularJson(options, taigaStyles);
+        return addStylesToAngularJson(
+            options,
+            taigaStyles,
+            existingStyles =>
+                !!existingStyles?.some(s => String(s).includes('tinkoff-theme')),
+        );
     };
 }
 
