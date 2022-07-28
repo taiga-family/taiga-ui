@@ -1,11 +1,31 @@
-import {WAIT_BEFORE_SCREENSHOT} from '../../tests/addon-editor/utils';
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    EDITOR_PAGE_URL,
+    WAIT_BEFORE_SCREENSHOT,
+} from '../shared.entities';
+import {HTML_EDITOR_BASIC_EXAMPLE} from './html';
 
-export function tuiInitBaseWrapper(): void {
-    cy.get(`#basic`)
-        .findByAutomationId(`tui-doc-example`)
-        .tuiScrollIntoView()
-        .as(`wrapper`);
+export function tuiVisitEditorApiPage({
+    content,
+    maxHeight,
+    enableNightMode,
+}: Partial<{content: string; maxHeight: number; enableNightMode: boolean}> = {}): void {
+    cy.viewport(1650, 900).tuiVisit(
+        `${EDITOR_PAGE_URL}/API?ngModel=${
+            content ?? HTML_EDITOR_BASIC_EXAMPLE
+        }&max-height=${maxHeight ?? 300}`,
+        {skipExpectUrl: true, enableNightMode: enableNightMode ?? false},
+    );
+
+    cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+}
+
+export function tuiGetDemoContent(): Cypress.Chainable<JQuery> {
+    return cy.get(`#demoContent`).tuiScrollIntoView();
+}
+
+export function tuiClearEditor(): void {
+    tuiGetContentEditable().type(`{selectall}{backspace}`);
 }
 
 export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): void {
@@ -29,7 +49,7 @@ export function tuiFocusToStartInEditor(): void {
 }
 
 export function tuiInsertLink(): void {
-    cy.get(`@wrapper`).find(`button[icon=tuiIconLinkLarge]`).click({force: true});
+    tuiGetDemoContent().find(`button[icon=tuiIconLinkLarge]`).click({force: true});
 }
 
 export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {
@@ -37,11 +57,11 @@ export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {
 }
 
 export function tuiGetScreenshotArea(): Cypress.Chainable<JQuery> {
-    return cy.get(`@wrapper`).wait(WAIT_BEFORE_SCREENSHOT);
+    return tuiGetDemoContent().find(`tui-editor`).wait(WAIT_BEFORE_SCREENSHOT);
 }
 
 export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
-    cy.get(`@wrapper`).find(`button[icon="tuiIconFontLarge"]`).as(`iconFontLargeTool`);
+    tuiGetDemoContent().find(`button[icon="tuiIconFontLarge"]`).as(`iconFontLargeTool`);
 
     cy.get(`body`).then($body => {
         if ($body.find(`tui-data-list[role="listbox"]`).length === 0) {
@@ -53,7 +73,7 @@ export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
 }
 
 export function tuiGetContentEditable(): Cypress.Chainable<JQuery> {
-    return cy.get(`@wrapper`).find(`[contenteditable]`);
+    return tuiGetDemoContent().find(`[contenteditable]`);
 }
 
 export function tuiSelectTag(selector: Cypress.Chainable<JQuery>): void {
@@ -76,5 +96,5 @@ export function tuiSelectTag(selector: Cypress.Chainable<JQuery>): void {
 }
 
 export function tuiGetEditorScrollbarArea(): Cypress.Chainable<JQuery> {
-    return cy.get(`@wrapper`).find(`tui-editor tui-scrollbar`).eq(0);
+    return tuiGetDemoContent().find(`tui-editor tui-scrollbar`).eq(0);
 }

@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from './utils';
+import {WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe(`Editor's color picker`, () => {
     beforeEach(() => cy.tuiVisit(`components/color-picker`));

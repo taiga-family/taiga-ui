@@ -114,6 +114,8 @@ export abstract class AbstractExampleTuiControl
 
     exampleText = ``;
 
+    maxHeight: number | null = null;
+
     hintContent: string | null = null;
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];

@@ -45,62 +45,56 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
         HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
         LESS: import(`!!raw-loader!./examples/1/index.less`),
+        'smiles-tool/emoji.extension.ts': import(
+            `!!raw-loader!./examples/1/smiles-tool/emoji.extension.ts`
+        ),
+        'smiles-tool/smiles-tool.component.ts': import(
+            `!!raw-loader!./examples/1/smiles-tool/smiles-tool.component.ts`
+        ),
+        'smiles-tool/smiles-tool.template.html': import(
+            `!!raw-loader!./examples/1/smiles-tool/smiles-tool.template.html`
+        ),
+        'smiles-tool/smiles-tool.styles.less': import(
+            `!!raw-loader!./examples/1/smiles-tool/smiles-tool.styles.less`
+        ),
+        'smiles-tool/smiles-tool.module.ts': import(
+            `!!raw-loader!./examples/1/smiles-tool/smiles-tool.module.ts`
+        ),
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
         TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
         LESS: import(`!!raw-loader!./examples/2/index.less`),
-        'smiles-tool/emoji.extension.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/emoji.extension.ts`
-        ),
-        'smiles-tool/smiles-tool.component.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts`
-        ),
-        'smiles-tool/smiles-tool.template.html': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html`
-        ),
-        'smiles-tool/smiles-tool.styles.less': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less`
-        ),
-        'smiles-tool/smiles-tool.module.ts': import(
-            `!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts`
-        ),
     };
 
     readonly example3: TuiDocExample = {
         TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
         HTML: import(`!!raw-loader!./examples/3/index.html`),
         LESS: import(`!!raw-loader!./examples/3/index.less`),
+        'image-preview/image-preview.component.ts': import(
+            `!!raw-loader!./examples/3/image-preview/image-preview.component.ts`
+        ),
+        'image-preview/image-preview.module.ts': import(
+            `!!raw-loader!./examples/3/image-preview/image-preview.module.ts`
+        ),
+        'image-preview/image-preview.style.less': import(
+            `!!raw-loader!./examples/3/image-preview/image-preview.style.less`
+        ),
+        'image-preview.template.html': import(
+            `!!raw-loader!./examples/3/image-preview/image-preview.template.html`
+        ),
     };
 
     readonly example4: TuiDocExample = {
         TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
         HTML: import(`!!raw-loader!./examples/4/index.html`),
         LESS: import(`!!raw-loader!./examples/4/index.less`),
-        'image-preview/image-preview.component.ts': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.component.ts`
-        ),
-        'image-preview/image-preview.module.ts': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.module.ts`
-        ),
-        'image-preview/image-preview.style.less': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.style.less`
-        ),
-        'image-preview.template.html': import(
-            `!!raw-loader!./examples/4/image-preview/image-preview.template.html`
-        ),
-    };
-
-    readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
         'legacy-editor.ts': import(
-            `!!raw-loader!../../../../../addon-editor/utils/legacy-converter`
+            `!!raw-loader!./../../../../../addon-editor/utils/legacy-converter.ts`
         ),
     };
 
