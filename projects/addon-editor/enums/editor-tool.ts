@@ -24,4 +24,5 @@ export enum TuiEditorTool {
     SplitCells = `splitCells`,
     RowsColumnsManaging = `rowsColumnsManaging`,
     Details = `details`,
+    Group = `group`,
 }

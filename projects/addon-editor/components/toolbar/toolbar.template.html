@@ -333,6 +333,15 @@
         ></tui-details-remove>
     </div>
     <div
+        *ngIf="enabled(TuiEditorTool.Group)"
+        class="t-block"
+    >
+        <tui-editor-group-tool
+            tuiItem
+            class="t-tool t-tool_margin"
+        ></tui-editor-group-tool>
+    </div>
+    <div
         *ngIf="enabled(TuiEditorTool.Table)"
         class="t-block"
     >

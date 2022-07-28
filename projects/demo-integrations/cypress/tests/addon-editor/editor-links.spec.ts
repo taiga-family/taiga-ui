@@ -3,22 +3,16 @@ import {
     tuiGetContentEditable,
     tuiGetEditLinkInput,
     tuiGetScreenshotArea,
-    tuiInitBaseWrapper,
     tuiInsertLink,
     tuiOpenAnchorDropdown,
     tuiSelectTag,
     tuiTrashValueByEditLink,
+    tuiVisitEditorApiPage,
 } from '../../support/editor/helpers';
-import {EDITOR_PAGE_URL} from '../../support/shared.entities';
 
 describe(`Editing links in Editor`, () => {
     beforeEach(() => {
-        cy.viewport(1600, 900);
-        cy.tuiVisit(EDITOR_PAGE_URL);
-    });
-
-    beforeEach(() => {
-        tuiInitBaseWrapper();
+        tuiVisitEditorApiPage();
         tuiFocusToStartInEditor();
     });
 
@@ -28,7 +22,9 @@ describe(`Editing links in Editor`, () => {
             .first()
             .contains(`adipiscing elit`)
             .should(`have.attr`, `href`)
-            .and(`include`, `http://taiga-ui.dev`);
+            .and(`include`, `/taiga-ui.dev`);
+
+        tuiFocusToStartInEditor(); // clear hints
 
         tuiGetScreenshotArea().matchImageSnapshot(`1-exist-link`);
     });

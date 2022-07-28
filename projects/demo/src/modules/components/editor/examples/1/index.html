@@ -1,43 +1,16 @@
-<p>
-    <button
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        (click)="example1()"
-    >
-        Ex. #1
-    </button>
-
-    <button
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        (click)="example2()"
-    >
-        Ex. #2
-    </button>
-
-    <button
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        (click)="example3()"
-    >
-        Ex. #3
-    </button>
-</p>
-
 <tui-editor
-    new
-    exampleText="exampleText"
     class="editor"
     [formControl]="control"
+    [tools]="builtInTools"
 >
-    Placeholder
+    Smiles are custom tool. Try it.
+
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiItem></smiles-tool>
+
+        <span class="hint">
+            <tui-svg src="tuiIconArrowLeft"></tui-svg>
+            click it
+        </span>
+    </ng-container>
 </tui-editor>
-
-<h4>HTML:</h4>
-<tui-editor-socket [content]="control.value"></tui-editor-socket>
-
-<h4>Text:</h4>
-<p>{{ control.value }}</p>

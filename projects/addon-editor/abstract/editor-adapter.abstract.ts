@@ -74,4 +74,6 @@ export abstract class AbstractTuiEditor {
     abstract enter(): void;
     abstract setDetails(): void;
     abstract removeDetails(): void;
+    abstract setGroup(): void;
+    abstract removeGroup(): void;
 }

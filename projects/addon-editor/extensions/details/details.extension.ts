@@ -1,11 +1,5 @@
-import {
-    CommandProps,
-    getHTMLFromFragment,
-    mergeAttributes,
-    Node,
-    RawCommands,
-} from '@tiptap/core';
-import {EditorState} from 'prosemirror-state';
+import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/addon-editor/utils';
+import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
 
 export interface TuiDetailsOptions {
     readonly HTMLAttributes: Record<string, unknown>;
@@ -96,15 +90,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             setDetails:
                 () =>
                 ({commands, state}) => {
-                    const currentNodeContent = state.selection.$head.parent.textContent;
-                    const selected = state.doc.cut(
-                        state.selection.from,
-                        state.selection.to,
-                    );
-
-                    const content = selected.content.size
-                        ? getHTMLFromFragment(selected.content, state.schema)
-                        : currentNodeContent;
+                    const content = tuiGetSelectedContent(state);
 
                     return commands.insertContent(
                         `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
@@ -113,32 +99,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             removeDetails:
                 () =>
                 ({state, dispatch}) =>
-                    deleteNode(state, dispatch, this.name),
+                    tuiDeleteNode(state, dispatch, this.name),
         };
     },
 });
-
-function deleteNode(
-    state: EditorState,
-    dispatch: CommandProps['dispatch'],
-    nodeName: string,
-): boolean {
-    const position = state.selection.$anchor;
-
-    for (let depth = position.depth; depth > 0; depth--) {
-        const node = position.node(depth);
-
-        if (node.type.name === nodeName) {
-            if (dispatch)
-                dispatch(
-                    state.tr
-                        .delete(position.before(depth), position.after(depth))
-                        .scrollIntoView(),
-                );
-
-            return true;
-        }
-    }
-
-    return false;
-}
