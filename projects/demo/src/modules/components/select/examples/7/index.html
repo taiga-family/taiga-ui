@@ -21,10 +21,7 @@
                         tuiOption
                         [value]="item"
                     >
-                        <label
-                            tuiLabel
-                            [label]="item.name"
-                        >
+                        <label [tuiLabel]="item.name">
                             {{ item.account }}
                         </label>
                     </button>
@@ -39,7 +36,7 @@
                     >
                         <label
                             tuiLabel
-                            [label]="item.name"
+                            [tuiLabel]="item.name"
                         >
                             {{ item.account }}
                         </label>
