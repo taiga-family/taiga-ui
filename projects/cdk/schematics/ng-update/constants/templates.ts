@@ -75,6 +75,26 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: '[label]',
+            withAttrsNames: ['tuiLabel'],
+        },
+
+        to: {
+            attrName: '[tuiLabel]',
+        },
+    },
+    {
+        from: {
+            attrName: 'label',
+            withAttrsNames: ['tuiLabel'],
+        },
+
+        to: {
+            attrName: 'tuiLabel',
+        },
+    },
+    {
+        from: {
             attrName: '[focused]',
             withTagNames: ['tui-wrapper'],
             withAttrsNames: ['tuiWrapper'],
@@ -171,6 +191,10 @@ export const INPUTS_TO_REMOVE: InputToRemove[] = [
     {
         inputName: 'iconAlign',
         tags: ['tui-input', 'tui-primitive-textfield', 'tui-input-tag'],
+    },
+    {
+        inputName: 'tuiLabel',
+        tags: ['label'],
     },
 ];
 
@@ -369,6 +393,12 @@ export const TEMPLATE_COMMENTS = [
         withAttr: 'value',
         comment:
             'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
+    },
+    {
+        tag: 'tui-input-file',
+        withAttr: 'loadingFiles',
+        comment:
+            'This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) ',
     },
     {
         tag: 'tui-input-tag',
