@@ -1,73 +1,66 @@
 <div
+    *tuiLet="editorLoaded$ | async as editorLoaded"
     tuiWrapper
     appearance="textfield"
-    class="t-outline"
+    class="t-wrapper"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focus]="computedFocused"
     [hover]="pseudoHover"
     [invalid]="computedInvalid"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <div
-        *tuiLet="editorLoaded$ | async as editorLoaded"
-        class="t-wrapper"
-        [class.t-wrapper_disabled]="disabled"
-        (tuiActiveZoneChange)="onActiveZone($event)"
-    >
-        <div class="t-toolbar-wrapper">
-            <tui-toolbar
-                *ngIf="editorLoaded"
-                new
-                [tools]="tools"
-                [disabled]="!interactive"
-            >
-                <ng-content select="tools"></ng-content>
-            </tui-toolbar>
-            <div
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-            >
-                <ng-content></ng-content>
-            </div>
-            <div
-                *ngIf="hasExampleText"
-                class="t-example-text"
-            >
-                {{ exampleText }}
-            </div>
+    <div class="t-toolbar-wrapper">
+        <tui-toolbar
+            *ngIf="editorLoaded"
+            [tools]="tools"
+            [disabled]="!interactive"
+        >
+            <ng-content select="tools"></ng-content>
+        </tui-toolbar>
+        <div
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
+        >
+            <ng-content></ng-content>
         </div>
+        <div
+            *ngIf="hasExampleText"
+            class="t-example-text"
+        >
+            {{ exampleText }}
+        </div>
+    </div>
 
-        <tui-scrollbar
-            tuiEditorPortal
-            class="t-scrollbar"
+    <tui-scrollbar
+        tuiEditorPortal
+        class="t-scrollbar"
+    >
+        <div
+            *ngIf="editorLoaded"
+            tuiDropdownLimitWidth="auto"
+            tuiDropdownSelectionPosition="tag"
+            [tuiDropdownSelection]="dropdownSelectionHandler"
+            [tuiDropdownContent]="dropdown"
         >
             <div
-                *ngIf="editorLoaded"
-                tuiDropdownLimitWidth="auto"
-                tuiDropdownSelectionPosition="tag"
-                [tuiDropdownSelection]="dropdownSelectionHandler"
-                [tuiDropdownContent]="dropdown"
-            >
-                <div
-                    tuiTiptapEditor
-                    spellcheck="false"
-                    class="tui-editor-socket"
-                    [value]="value"
-                    [editable]="interactive"
-                    (valueChange)="onModelChange($event)"
-                    (stateChange)="(0)"
-                    (click)="selectLinkIfClosest()"
-                ></div>
-            </div>
+                tuiTiptapEditor
+                spellcheck="false"
+                class="tui-editor-socket"
+                [value]="value"
+                [editable]="interactive"
+                (valueChange)="onModelChange($event)"
+                (stateChange)="(0)"
+            ></div>
+        </div>
 
-            <ng-template #dropdown>
-                <tui-edit-link
-                    (addLink)="addLink($event)"
-                    (removeLink)="removeLink()"
-                ></tui-edit-link>
-            </ng-template>
+        <ng-template #dropdown>
+            <tui-edit-link
+                (addLink)="addLink($event)"
+                (removeLink)="removeLink()"
+            ></tui-edit-link>
+        </ng-template>
 
-            <tui-editor-portal-host></tui-editor-portal-host>
-        </tui-scrollbar>
-    </div>
+        <tui-editor-portal-host></tui-editor-portal-host>
+    </tui-scrollbar>
 </div>
