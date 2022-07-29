@@ -67,11 +67,10 @@
                     [formControl]="control"
                     [min]="min"
                     [max]="max"
-                    [steps]="steps"
+                    [step]="step"
                     [segments]="segments"
                     [keySteps]="keySteps"
                     [size]="size"
-                    [quantum]="quantum"
                 ></tui-range>
             </ng-template>
         </tui-doc-demo>
@@ -93,7 +92,13 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="min"
             >
-                Min value
+                The lowest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>0</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -102,46 +107,28 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
-                Max value
+                The greatest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>100</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="steps"
+                documentationPropertyName="step"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="stepsVariants"
-                [(documentationPropertyValue)]="steps"
+                [(documentationPropertyValue)]="step"
             >
-                Number of actual discrete slider steps
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="quantum"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="quantumVariants"
-                [(documentationPropertyValue)]="quantum"
-            >
-                Quantum
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="segments"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="segments"
-            >
-                A number of visual segments
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="keySteps"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiKeySteps"
-                [documentationPropertyValues]="keyStepsVariants"
-                [(documentationPropertyValue)]="keySteps"
-            >
-                Anchor points of non-uniform format between value and position
+                A number that specifies the granularity that the value must adhere.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -152,6 +139,43 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+
+                <p>
+                    The default is
+                    <code>m</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    (no ticks).
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps | null"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Anchor points of non-uniform format between value and position.
+
+                <p>
+                    The default is
+                    <code>null</code>
+                    .
+                </p>
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
