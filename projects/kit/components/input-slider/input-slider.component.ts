@@ -138,6 +138,10 @@ export class TuiInputSliderComponent
         return this.precision ? `not-zero` : `never`;
     }
 
+    get showValueContent(): boolean {
+        return Boolean(this.valueContent && !this.focused);
+    }
+
     get step(): number {
         return (this.max - this.min) / this.computedSteps;
     }
