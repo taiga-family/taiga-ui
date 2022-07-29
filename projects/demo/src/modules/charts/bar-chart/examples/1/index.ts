@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {ceil} from '@taiga-ui/cdk';
+import {tuiCeil} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-bar-chart-example-1`,
@@ -20,6 +20,6 @@ export class TuiBarChartExample1 {
     readonly labelsY = [`0`, `10 000`];
 
     getHeight(max: number): number {
-        return (max / ceil(max, -3)) * 100;
+        return (max / tuiCeil(max, -3)) * 100;
     }
 }
