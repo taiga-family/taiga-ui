@@ -30,6 +30,11 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<label
+    tuiLabel
+    label="Step"
+></label>
+
 <tui-field-error formControlName="control"></tui-field-error>
 <tui-field-error formControlName="control" [order]="order"></tui-field-error>
 
@@ -167,6 +172,11 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
+<label
+    ${''}
+    tuiLabel="Step"
+></label>
+
 <tui-error [error]="[] | tuiFieldError | async" formControlName="control"></tui-error>
 <tui-error [error]="order | tuiFieldError | async" formControlName="control"></tui-error>
 
