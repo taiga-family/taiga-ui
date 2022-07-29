@@ -25,6 +25,10 @@ export function replaceFunctions() {
 function replaceDeprecatedFunction() {
     DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
         getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
+            if (ref.wasForgotten()) {
+                return;
+            }
+
             const parent = ref.getParent();
 
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
