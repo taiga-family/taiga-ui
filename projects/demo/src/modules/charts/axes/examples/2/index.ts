@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_NONE} from '@taiga-ui/addon-charts';
-import {ceil, tuiPure} from '@taiga-ui/cdk';
+import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
 
 const BENJI = 100;
 
@@ -49,7 +49,7 @@ export class TuiAxesExample2 {
 
     @tuiPure
     private getMax(value: ReadonlyArray<[number, number, number, number]>): number {
-        return ceil(
+        return tuiCeil(
             value.reduce((max, value) => Math.max(...value, max), 0),
             -1,
         );

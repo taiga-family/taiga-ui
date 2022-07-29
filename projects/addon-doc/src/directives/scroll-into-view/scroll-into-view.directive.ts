@@ -5,18 +5,13 @@ import {debounceTime, filter, switchMapTo, takeUntil} from 'rxjs/operators';
 
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 
-/**
- * @deprecated: use {@link TuiScrollIntoViewLinkDirective}
- * TODO: remove in v3.0
- */
 @Directive({
-    selector: `[scrollIntoView]`,
+    selector: `[tuiScrollIntoViewLink]`,
     providers: [TuiDestroyService],
 })
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export class ScrollIntoViewDirective {
+export class TuiScrollIntoViewLinkDirective {
     @Input()
-    set scrollIntoView(shallWe: boolean) {
+    set tuiScrollIntoViewLink(shallWe: boolean) {
         this.scroll$.next(shallWe);
     }
 
@@ -41,9 +36,3 @@ export class ScrollIntoViewDirective {
             });
     }
 }
-
-@Directive({
-    selector: `[tuiScrollIntoViewLink]`,
-    providers: [TuiDestroyService],
-})
-export class TuiScrollIntoViewLinkDirective extends ScrollIntoViewDirective {}

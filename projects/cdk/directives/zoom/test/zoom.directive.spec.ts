@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiZoom} from '../../../interfaces/zoom';
-import {floor} from '../../../utils/math';
+import {tuiFloor} from '../../../utils/math';
 import {TuiZoomModule} from '../zoom.module';
 
 describe(`TuiZoom directive`, () => {
@@ -50,7 +50,7 @@ describe(`TuiZoom directive`, () => {
 
         fixture.detectChanges();
 
-        expect(floor(testComponent.scale, 2)).toEqual(0.85);
+        expect(tuiFloor(testComponent.scale, 2)).toEqual(0.85);
     });
 
     it(`wheel`, () => {
@@ -60,7 +60,7 @@ describe(`TuiZoom directive`, () => {
 
         fixture.detectChanges();
 
-        expect(floor(testComponent.scale, 2)).toEqual(1.01);
+        expect(tuiFloor(testComponent.scale, 2)).toEqual(1.01);
     });
 
     function sendTouchEvent(
