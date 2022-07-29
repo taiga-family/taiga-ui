@@ -27,6 +27,7 @@ import {
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -180,6 +181,16 @@ export class TuiInputRangeComponent
 
     get step(): number {
         return (this.max - this.min) / this.computedSteps;
+    }
+
+    @tuiPure
+    computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
+        return (
+            keySteps || [
+                [0, min],
+                [100, max],
+            ]
+        );
     }
 
     onActiveZone(active: boolean): void {
