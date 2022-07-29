@@ -2,10 +2,7 @@
     class="b-form"
     [formGroup]="testForm"
 >
-    <label
-        tuiLabel
-        label="Secret number"
-    >
+    <label tuiLabel="Secret number">
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"
@@ -25,9 +22,8 @@
     </label>
 
     <label
-        tuiLabel
-        i18n-label
-        label="Enter company name"
+        i18n-tuiLabel
+        tuiLabel="Enter company name"
         class="tui-space_top-4"
     >
         <tui-input

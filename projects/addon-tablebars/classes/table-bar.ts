@@ -4,12 +4,7 @@ import {Observer} from 'rxjs';
 
 import {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
-/**
- * @deprecated: use {@link TuiTableBar}
- * TODO: remove in v3.0
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export class TableBar {
+export class TuiTableBar {
     readonly adaptive: boolean;
 
     readonly hasCloseButton: boolean;
@@ -32,5 +27,3 @@ export class TableBar {
         this.observer.complete();
     }
 }
-
-export class TuiTableBar extends TableBar {}

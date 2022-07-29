@@ -18,7 +18,6 @@ import {
     AbstractTuiControl,
     clamp,
     EMPTY_QUERY,
-    round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TuiContextWithImplicit,
@@ -28,6 +27,7 @@ import {
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
     tuiPure,
+    tuiRound,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -290,7 +290,7 @@ export class TuiInputRangeComponent
     }
 
     private calibrate(value: number): number {
-        const roundedValue = round(
+        const roundedValue = tuiRound(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,
         );
