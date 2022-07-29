@@ -152,13 +152,6 @@ export const enum TuiCurrency {
     HongKongDollar = `HKD`,
 
     /**
-     * @deprecated:
-     * TODO: 3.0 replace with {@link HongKongDollar}
-     */
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    HongKong_dollar = `HKD`,
-
-    /**
      * Canadian dollar
      *
      * @description Numeric code: 124

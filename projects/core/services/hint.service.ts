@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 
-// TODO: 3.0 can it be removed? It prevented seps cycling before 2.0
+// It prevented seps cycling
 type TuiHintDirective = any;
 
 type AbstractTuiHint = any;

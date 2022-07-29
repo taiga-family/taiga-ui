@@ -49,10 +49,9 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @tuiDefaultProp()
     pseudo = false;
 
-    // TODO: 3.0 Remove `null`
     @Input()
     @tuiDefaultProp()
-    icon: string | null = null;
+    icon = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -97,7 +96,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get hasIcon(): boolean {
-        return this.icon !== null;
+        return !!this.icon;
     }
 
     get iconAlignLeft(): boolean {
