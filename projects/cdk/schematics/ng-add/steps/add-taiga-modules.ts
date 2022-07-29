@@ -25,6 +25,14 @@ export function addTaigaModules(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);
+
+        if (!project) {
+            context.logger.warn(
+                '[WARNING]: Target project not found in current workspace',
+            );
+            return;
+        }
+
         const buildOptions = getProjectTargetOptions(project, 'build');
 
         setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
