@@ -36,12 +36,7 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <label
-                tuiLabel
-                [label]="getLabel(template)"
-            >
-                Content inside label
-            </label>
+            <label [tuiLabel]="getLabel(template)">Content inside label</label>
         </tui-doc-demo>
         <ng-template #template>
             Label is a template

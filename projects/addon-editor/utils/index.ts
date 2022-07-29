@@ -12,5 +12,5 @@ export * from './legacy-converter';
 export * from './parse-color';
 export * from './parse-gradient';
 export * from './rgb-to-hex';
-export * from './rgb-to-hsv';
 export * from './to-gradient';
+export * from './tui-rgb-to-hsv';
