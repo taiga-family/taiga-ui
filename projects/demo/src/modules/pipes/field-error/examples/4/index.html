@@ -1,8 +1,7 @@
 <form [formGroup]="testForm">
     <label
         *ngFor="let phone of formData.controls; let i = index"
-        tuiLabel
-        label="Phone number {{ i + 1 }}"
+        tuiLabel="Phone number {{ i + 1 }}"
         formArrayName="phones"
         class="tui-space_bottom-4"
     >
