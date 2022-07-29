@@ -125,7 +125,7 @@ export class TuiEditLinkComponent {
 
         const a = focusNode.parentElement.closest(`a`);
 
-        return a ? this.removePrefix(a.getAttribute(`href`) || ``) : ``;
+        return a ? this.removePrefix(a.getAttribute(`href`) || ``) : this.url;
     }
 
     private removePrefix(url: string): string {
