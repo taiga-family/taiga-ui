@@ -18,10 +18,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
 
-import {
-    ScrollIntoViewModule,
-    TuiScrollIntoViewLinkModule,
-} from '../../directives/scroll-into-view/scroll-into-view.module';
+import {TuiScrollIntoViewLinkModule} from '../../directives/scroll-into-view/scroll-into-view.module';
 import {TuiDocNavigationComponent} from './navigation.component';
 
 @NgModule({
@@ -29,7 +26,6 @@ import {TuiDocNavigationComponent} from './navigation.component';
         CommonModule,
         FormsModule,
         RouterModule,
-        ScrollIntoViewModule,
         TuiScrollIntoViewLinkModule,
         TuiButtonModule,
         TuiPrimitiveTextfieldModule,

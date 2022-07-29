@@ -89,7 +89,7 @@
                 routerLinkActive="t-sublink_active"
                 class="t-sublink"
                 [routerLink]="item.route"
-                [scrollIntoView]="isActive(item.route)"
+                [tuiScrollIntoViewLink]="isActive(item.route)"
                 (click)="closeMenu()"
             >
                 {{ item.title }}
@@ -125,7 +125,7 @@
                                 routerLinkActive="t-sublink_active"
                                 class="t-sublink t-sublink_small"
                                 [routerLink]="subPage.route"
-                                [scrollIntoView]="isActive(subPage.route)"
+                                [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
                                 {{ subPage.title }}
