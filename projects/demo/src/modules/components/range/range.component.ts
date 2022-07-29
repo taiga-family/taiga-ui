@@ -62,11 +62,9 @@ export class ExampleTuiRangeComponent {
 
     max = 100;
 
-    segments = 0;
+    step = 1;
 
-    readonly stepsVariants: readonly number[] = [0, 4, 10];
-
-    steps = this.stepsVariants[0];
+    segments = 1;
 
     readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [
@@ -77,8 +75,4 @@ export class ExampleTuiRangeComponent {
     ];
 
     keySteps: TuiKeySteps | null = null;
-
-    readonly quantumVariants: readonly number[] = [0.01, 0.1, 1, 10];
-
-    quantum = this.quantumVariants[0];
 }
