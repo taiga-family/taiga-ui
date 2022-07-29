@@ -42,7 +42,7 @@ export class ExampleTuiLinkComponent {
 
     readonly iconAlignValues: readonly TuiHorizontalDirection[] = [`right`, `left`];
 
-    icon: string | null = null;
+    icon = ``;
 
     readonly iconVariants = [`tuiIconStarLarge`, `tuiIconGeoLarge`];
 

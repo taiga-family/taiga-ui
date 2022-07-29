@@ -5,10 +5,8 @@ import {
     EventEmitter,
     HostListener,
     Inject,
-    Optional,
     Output,
 } from '@angular/core';
-import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
@@ -37,9 +35,6 @@ export class TuiEditLinkComponent {
     constructor(
         @Inject(DOCUMENT)
         private readonly documentRef: Document,
-        @Optional()
-        @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
-        private readonly shadowRootRef: DocumentOrShadowRoot | null,
     ) {}
 
     get hasUrl(): boolean {
@@ -111,9 +106,8 @@ export class TuiEditLinkComponent {
         this.url = ``;
     }
 
-    // TODO: 3.0 remove shadow root ref in v3.0
     private makeUrl(): string {
-        const selection = (this.shadowRootRef || this.documentRef).getSelection();
+        const selection = this.documentRef.getSelection();
 
         return selection ? this.getHref(selection) : ``;
     }
