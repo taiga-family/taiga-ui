@@ -2,33 +2,17 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 const MAX_PRECISION = 292;
 
-/**
- * @deprecated: use {@link tuiRound} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function round(value: number, precision: number = 0): number {
+export function tuiRound(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.round);
 }
 
-/**
- * @deprecated: use {@link tuiCeil} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function ceil(value: number, precision: number = 0): number {
+export function tuiCeil(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.ceil);
 }
 
-/**
- * @deprecated: use {@link tuiFloor} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function floor(value: number, precision: number = 0): number {
+export function tuiFloor(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.floor);
 }
-
-export const tuiRound = round;
-export const tuiCeil = ceil;
-export const tuiFloor = floor;
 
 /**
  * Rounding number to the set precision

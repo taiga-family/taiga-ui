@@ -14,7 +14,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     clamp,
-    round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -22,6 +21,7 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
     tuiPure,
+    tuiRound,
 } from '@taiga-ui/cdk';
 import {
     TuiDecimal,
@@ -206,7 +206,7 @@ export class TuiInputSliderComponent
     }
 
     private valueGuard(value: number): number {
-        const roundedValue = round(
+        const roundedValue = tuiRound(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,
         );
