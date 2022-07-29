@@ -3,8 +3,8 @@
     [max]="max"
     [precision]="precision"
     [decimal]="decimal"
-    [prefix]="prefix"
-    [postfix]="postfix"
+    [prefix]="showValueContent ? '' : prefix"
+    [postfix]="showValueContent ? '' : postfix"
     [readOnly]="readOnly"
     [pseudoFocus]="computedFocused"
     [pseudoHover]="pseudoHover"
@@ -18,7 +18,7 @@
 >
     <ng-content></ng-content>
     <div
-        *ngIf="valueContent && !focused"
+        *ngIf="showValueContent"
         ngProjectAs="tuiContent"
         automation-id="tui-input-slider__value-content"
     >
