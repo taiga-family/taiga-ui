@@ -18,6 +18,7 @@
         "@tiptap/extension-bubble-menu": "2.0.0-beta.60",
         "@tiptap/extension-image": "2.0.0-beta.30",
         "@tiptap/extension-link": "2.0.0-beta.42",
+        "@tiptap/extension-placeholder": "2.0.0-beta.53",
         "@tiptap/extension-subscript": "2.0.0-beta.13",
         "@tiptap/extension-superscript": "2.0.0-beta.13",
         "@tiptap/extension-table": "2.0.0-beta.53",

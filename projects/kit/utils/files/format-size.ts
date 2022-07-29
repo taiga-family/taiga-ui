@@ -1,4 +1,4 @@
-import {round} from '@taiga-ui/cdk';
+import {tuiRound} from '@taiga-ui/cdk';
 
 const BYTES_PER_KB = 1000;
 const BYTES_PER_MB = 1000 * BYTES_PER_KB;
@@ -23,7 +23,7 @@ export function formatSize(
         return `${(size / BYTES_PER_KB).toFixed(0)} ${units[1]}`;
     }
 
-    return `${round(size / BYTES_PER_MB, 2).toLocaleString(`ru-RU`)} ${units[2]}`;
+    return `${tuiRound(size / BYTES_PER_MB, 2).toLocaleString(`ru-RU`)} ${units[2]}`;
 }
 
 export const tuiFormatSize = formatSize;
