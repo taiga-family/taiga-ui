@@ -1,3 +1,4 @@
+export const WAIT_BEFORE_SCREENSHOT = 1000; // editor has a huge number of icons (that is why we wait so long)
 export const DEFAULT_TIMEOUT_BEFORE_ACTION = 50;
 export const PROSE_MIRROR_EDITOR_SELECTOR = `[contenteditable].ProseMirror`;
 export const NIGHT_THEME_KEY = `night`;

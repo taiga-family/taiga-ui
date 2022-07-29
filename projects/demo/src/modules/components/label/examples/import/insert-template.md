@@ -1,8 +1,5 @@
 ```html
-<label
-  tuiLabel
-  label="Some label"
->
+<label tuiLabel="Some label">
   <tui-input
     formControlName="testValue"
     tuiTextfieldSize="m"
