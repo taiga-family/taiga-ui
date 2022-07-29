@@ -4,9 +4,9 @@ import {addStylesToAngularJson} from '../../utils/add-styles';
 import {TAIGA_THEME_FONTS, TAIGA_THEME_STYLE} from '../../constants/taiga-styles';
 
 export function addTaigaStyles(options: Schema): Rule {
-    return async (_: Tree) => {
+    return async (_: Tree, context) => {
         const taigaStyles = [TAIGA_THEME_STYLE, TAIGA_THEME_FONTS];
 
-        return addStylesToAngularJson(options, taigaStyles);
+        return addStylesToAngularJson(options, context, taigaStyles);
     };
 }
