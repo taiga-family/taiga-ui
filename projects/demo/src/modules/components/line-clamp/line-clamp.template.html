@@ -37,7 +37,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-line-clamp
-                [style.width.px]="100"
+                [style.maxWidth.px]="maxWidth"
                 [content]="content || defaultExampleContent"
                 [linesLimit]="linesLimit"
                 [lineHeight]="lineHeight"
@@ -61,6 +61,15 @@
                 [(documentationPropertyValue)]="content"
             >
                 Content
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="style.maxWidth.px"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxWidth"
+            >
+                Value of max-width
             </ng-template>
             <ng-template
                 i18n
