@@ -21,9 +21,11 @@ export function addTaigaAssetsToAngularJson(options: Schema): Rule {
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
 
-        const targetOptions = getProjectTargetOptions(project, 'build');
-        const assets = targetOptions.assets as JsonArray | undefined;
+        if (project) {
+            const targetOptions = getProjectTargetOptions(project, 'build');
+            const assets = targetOptions.assets as JsonArray | undefined;
 
-        targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
+            targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
+        }
     });
 }
