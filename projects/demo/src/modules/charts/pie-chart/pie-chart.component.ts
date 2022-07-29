@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {round, sum, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {sum, TuiContextWithImplicit, tuiRound} from '@taiga-ui/cdk';
 import {formatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -61,7 +61,7 @@ export class ExampleTuiPieChartComponent {
     hintContent = this.contentVariants[0];
 
     getPercent(index: number): string {
-        return `${round((100 * this.value[index]) / sum(...this.value), 2)} %`;
+        return `${tuiRound((100 * this.value[index]) / sum(...this.value), 2)} %`;
     }
 
     format(index: number): string {

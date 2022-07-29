@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {ceil, floor, round} from '@taiga-ui/cdk';
+import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-math-example-1`,
@@ -20,18 +20,18 @@ export class TuiMathExample1 {
     get rounded(): number {
         const {value, precision} = this.parametersForm.value;
 
-        return round(value, precision);
+        return tuiRound(value, precision);
     }
 
     get floored(): number {
         const {value, precision} = this.parametersForm.value;
 
-        return floor(value, precision);
+        return tuiFloor(value, precision);
     }
 
     get ceiled(): number {
         const {value, precision} = this.parametersForm.value;
 
-        return ceil(value, precision);
+        return tuiCeil(value, precision);
     }
 }

@@ -9,11 +9,11 @@ import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     clamp,
     dragAndDropFrom,
-    round,
     tuiDefaultProp,
     TuiDestroyService,
     TuiDragStage,
     tuiPx,
+    tuiRound,
     TuiZoom,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -148,7 +148,7 @@ export class TuiPreviewComponent {
         const {clientHeight, clientWidth} = this.elementRef.nativeElement;
 
         return bigSize
-            ? round(
+            ? tuiRound(
                   Math.min(
                       (clientHeight * INITIAL_SCALE_COEF) / contentHeight,
                       (clientWidth * INITIAL_SCALE_COEF) / contentWidth,
