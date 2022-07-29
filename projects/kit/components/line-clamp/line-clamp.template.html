@@ -1,10 +1,12 @@
 <div
+    *tuiLet="lineClamp$ | async as lineClamp"
     polymorpheus-outlet
     tuiHintId="unnecessary"
     tuiHintMode="overflow"
-    class="wrapper"
+    class="t-wrapper"
     [tuiHint]="computedContent"
-    [style.-webkit-line-clamp]="lineClamp$ | async"
     [content]="content"
+    [style.-webkit-line-clamp]="lineClamp"
+    [style.word-break]="lineClamp > 1 ? 'break-word' : 'break-all'"
     (tuiResize)="updateView()"
 ></div>

@@ -42,4 +42,21 @@ describe(`LineClamp`, () => {
                 .matchImageSnapshot(`04-[linesLimit=2]-longWord`);
         });
     });
+
+    describe(`Single line (break-all) and multiple line (break-words)`, () => {
+        for (const {width, linesLimit} of [
+            {width: 60, linesLimit: 1},
+            {width: 60, linesLimit: 3},
+        ]) {
+            it(`linesLimit=${linesLimit}`, () => {
+                cy.tuiVisit(
+                    `components/line-clamp/API?tuiMode=null&style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
+                );
+
+                cy.get(`#demoContent`)
+                    .should(`be.visible`)
+                    .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
+            });
+        }
+    });
 });
