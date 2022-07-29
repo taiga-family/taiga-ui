@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION, EXAMPLE_ID} from '../../support/shared.entities';
+import {EXAMPLE_ID, WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe(`Icons`, () => {
     it(`display icons that are easily customizable`, () => {
@@ -6,7 +6,7 @@ describe(`Icons`, () => {
 
         cy.get(`#base`)
             .findByAutomationId(EXAMPLE_ID)
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`customize-icons8`);
     });
 });

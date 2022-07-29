@@ -1,4 +1,8 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION, NIGHT_THEME_KEY} from './shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    NIGHT_THEME_KEY,
+    WAIT_BEFORE_SCREENSHOT,
+} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
@@ -86,7 +90,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         },
     }).then(() => {
         if (skipExpectUrl) {
-            cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+            cy.wait(WAIT_BEFORE_SCREENSHOT);
         } else {
             cy.url().should(`include`, encodedPath);
         }
