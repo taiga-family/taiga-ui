@@ -131,6 +131,15 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: '[quantum]',
+            withTagNames: ['tui-range'],
+        },
+        to: {
+            attrName: '[step]',
+        },
+    },
+    {
+        from: {
             attrName: '*tuiTab',
             withTagNames: ['*'],
         },
@@ -342,6 +351,12 @@ export const TEMPLATE_COMMENTS = [
         withAttr: 'pluralize',
         comment:
             'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
+    },
+    {
+        tag: 'tui-range',
+        withAttr: 'steps',
+        comment:
+            'This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API',
     },
     {
         tag: 'tui-preview-host',
