@@ -27,32 +27,9 @@ declare module '@tiptap/core' {
 
 export enum IndentProps {
     Min = 0,
-    /**
-     * @deprecated:
-     * TODO: 3.0 replace with {@link Min}
-     */
-    min = 0,
-
     Max = 210,
-    /**
-     * @deprecated:
-     * TODO: 3.0 replace with {@link Max}
-     */
-    max = 210,
-
     More = 30,
-    /**
-     * @deprecated:
-     * TODO: 3.0 replace with {@link More}
-     */
-    more = 30,
-
     Less = -30,
-    /**
-     * @deprecated:
-     * TODO: 3.0 replace with {@link Less}
-     */
-    less = -30,
 }
 
 export function isBulletListNode({type}: Node): boolean {
@@ -86,8 +63,8 @@ function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Trans
         return tr;
     }
 
-    const minIndent = IndentProps.min;
-    const maxIndent = IndentProps.max;
+    const minIndent = IndentProps.Min;
+    const maxIndent = IndentProps.Max;
 
     const indent = clamp((node.attrs.indent || 0) + delta, minIndent, maxIndent);
 
@@ -173,7 +150,7 @@ export const Indent = Extension.create<IndentOptions>({
                     const {selection} = state;
 
                     tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.more);
+                    tr = updateIndentLevel(tr, IndentProps.More);
 
                     if (tr.docChanged && dispatch) {
                         dispatch(tr);
@@ -189,7 +166,7 @@ export const Indent = Extension.create<IndentOptions>({
                     const {selection} = state;
 
                     tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.less);
+                    tr = updateIndentLevel(tr, IndentProps.Less);
 
                     if (tr.docChanged && dispatch) {
                         dispatch(tr);

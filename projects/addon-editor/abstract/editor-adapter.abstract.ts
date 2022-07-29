@@ -4,12 +4,8 @@ import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
 
-/**
- * @deprecated
- * TODO: 3.0 replace with {@link AbstractTuiEditor}
- */
 @Directive()
-export abstract class TuiEditor {
+export abstract class AbstractTuiEditor {
     abstract readonly isFocused: boolean;
     abstract readonly html: string;
     abstract editable: boolean;
@@ -81,6 +77,3 @@ export abstract class TuiEditor {
     abstract setGroup(): void;
     abstract removeGroup(): void;
 }
-
-@Directive()
-export abstract class AbstractTuiEditor extends TuiEditor {}
