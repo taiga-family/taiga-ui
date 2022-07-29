@@ -41,15 +41,26 @@ export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): voi
 }
 
 export function tuiTrashValueByEditLink(): void {
-    cy.get(`button[icon=tuiIconTrashLarge]`).click({force: true});
+    cy.get(`button[icon=tuiIconTrashLarge]`)
+        .click({force: true})
+        .wait(WAIT_BEFORE_SCREENSHOT);
 }
 
 export function tuiFocusToStartInEditor(): void {
-    tuiGetContentEditable().type(`{moveToStart}`).click({force: true});
+    tuiGetContentEditable().type(`{moveToStart}`).click().wait(WAIT_BEFORE_SCREENSHOT);
 }
 
 export function tuiInsertLink(): void {
-    tuiGetDemoContent().find(`button[icon=tuiIconLinkLarge]`).click({force: true});
+    tuiGetDemoContent()
+        .find(`tui-toolbar button[icon=tuiIconLinkLarge]`)
+        .click()
+        .wait(WAIT_BEFORE_SCREENSHOT);
+
+    cy.get(`body`).then($body => {
+        if ($body.find(`tui-edit-link`).length === 0) {
+            tuiInsertLink();
+        }
+    });
 }
 
 export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {

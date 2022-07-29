@@ -24,6 +24,8 @@ describe(`Editing links in Editor`, () => {
             .should(`have.attr`, `href`)
             .and(`include`, `/taiga-ui.dev`);
 
+        tuiFocusToStartInEditor(); // clear hints
+
         tuiGetScreenshotArea().matchImageSnapshot(`1-exist-link`);
     });
 
