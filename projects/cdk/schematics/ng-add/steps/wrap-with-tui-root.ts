@@ -19,6 +19,11 @@ export function wrapWithTuiRootComponent(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);
+
+        if (!project) {
+            return;
+        }
+
         const buildOptions = getProjectTargetOptions(project, 'build');
 
         const appTemplatePath = getAppTemplatePath(tree, buildOptions.main as string);
