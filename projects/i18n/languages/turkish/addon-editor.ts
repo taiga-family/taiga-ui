@@ -36,6 +36,8 @@ export const TUI_TURKISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         superscript: `Üst Simge`,
         subscript: `Alt Simge`,
         insertTable: `Insert table`,
+        insertGroup: `Insert group`,
+        removeGroup: `Remove group`,
         mergeCells: `Merge cells`,
         splitCells: `Split cells`,
         rowsColumnsManaging: `Managing rows and columns`,
