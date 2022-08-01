@@ -26,7 +26,6 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
 
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
-// @dynamic
 @Component({
     selector: `tui-doc-documentation`,
     templateUrl: `./documentation.template.html`,

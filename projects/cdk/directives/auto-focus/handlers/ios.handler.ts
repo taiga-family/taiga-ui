@@ -14,7 +14,6 @@ import {tuiPx} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
-// @dynamic
 @Directive()
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     constructor(

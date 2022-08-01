@@ -40,7 +40,6 @@ import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
 import {map, switchMapTo, takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Directive({
     selector: `[tuiDropdownSelection]:not(ng-container)`,
     providers: [

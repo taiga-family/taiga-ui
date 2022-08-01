@@ -17,7 +17,6 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `tui-scroll-controls`,
     templateUrl: `./scroll-controls.template.html`,
