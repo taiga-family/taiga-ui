@@ -7,7 +7,6 @@ import {takeUntil} from 'rxjs/operators';
 /**
  * Simple prevent default on event directive when you do not need anything
  * else on event and do not want to trigger change detection
- * @dynamic
  */
 @Directive({
     selector: `[tuiPreventDefault]`,

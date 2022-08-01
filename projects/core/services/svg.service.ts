@@ -8,7 +8,6 @@ import {BehaviorSubject} from 'rxjs';
 /**
  * Service for reusing SVGs without inlining each instance
  */
-// @dynamic
 @Injectable({
     providedIn: `root`,
 })

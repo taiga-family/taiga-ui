@@ -24,7 +24,6 @@ const SLIDER_INTERACTION_KEYS = new Set([
  * Native <input type='range' readonly> doesn't work.
  * This directive imitates this native behaviour.
  */
-// @dynamic
 @Directive({
     selector: `input[tuiSlider][readonly]`,
     providers: [TuiDestroyService],

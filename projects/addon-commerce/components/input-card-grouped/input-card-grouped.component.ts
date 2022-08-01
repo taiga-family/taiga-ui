@@ -71,7 +71,6 @@ const ICONS: Record<TuiPaymentSystem, string> = {
     maestro: `tuiIconMaestro`,
 };
 
-// @dynamic
 @Component({
     selector: `tui-input-card-grouped`,
     templateUrl: `./input-card-grouped.template.html`,

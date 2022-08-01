@@ -39,7 +39,6 @@ import {map} from 'rxjs/operators';
 
 import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
 
-// @dynamic
 @Component({
     selector: `tui-input-time`,
     templateUrl: `./input-time.template.html`,
