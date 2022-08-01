@@ -59,7 +59,6 @@ import {map, pluck} from 'rxjs/operators';
 
 import {TUI_INPUT_DATE_TIME_PROVIDERS} from './input-date-time.providers';
 
-// @dynamic
 @Component({
     selector: `tui-input-date-time`,
     templateUrl: `./input-date-time.template.html`,

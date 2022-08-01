@@ -25,7 +25,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Directive({
     selector: `[tuiDropdownContext]`,
     providers: [
