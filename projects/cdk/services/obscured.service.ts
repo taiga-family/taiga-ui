@@ -2,7 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {getElementObscurers} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {
     delay,
@@ -43,7 +43,7 @@ export class TuiObscuredService extends Observable<null | readonly Element[]> {
             merge(parentsScroll$, fromEvent(windowRef, `resize`)).pipe(delay(0)),
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
         ).pipe(
-            map(() => getElementObscurers(nativeElement)),
+            map(() => tuiGetElementObscures(nativeElement)),
             startWith(null),
             distinctUntilChanged(),
             tuiZoneOptimized(ngZone),

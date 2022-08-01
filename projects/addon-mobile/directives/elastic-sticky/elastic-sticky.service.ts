@@ -1,8 +1,8 @@
 import {ElementRef, Inject, Injectable, NgZone, Optional} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    getElementOffset,
     TuiDestroyService,
+    tuiGetElementOffset,
     tuiZoneOptimized,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -73,7 +73,7 @@ export class TuiElasticStickyService extends Observable<number> {
     private getInitialOffset(host: Element | Window, element: HTMLElement): number {
         // TODO: iframe warning
         return host instanceof Element
-            ? getElementOffset(host, element).offsetTop
+            ? tuiGetElementOffset(host, element).offsetTop
             : element.getBoundingClientRect().top;
     }
 }

@@ -1,12 +1,10 @@
 /**
- * @deprecated: use {@link tuiGetScrollParent} instead
  * Finds the nearest parent with scroll in it
  *
  * @param element initial element
  * @param vertical flag for orientation of scroll
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getScrollParent(
+export function tuiGetScrollParent(
     element: Element | null,
     vertical: boolean = true,
 ): Element | null {
@@ -22,7 +20,5 @@ export function getScrollParent(
         return element;
     }
 
-    return getScrollParent(element.parentElement, vertical);
+    return tuiGetScrollParent(element.parentElement, vertical);
 }
-
-export const tuiGetScrollParent = getScrollParent;

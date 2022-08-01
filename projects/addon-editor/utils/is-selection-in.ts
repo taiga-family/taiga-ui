@@ -1,14 +1,12 @@
-import {isNodeIn} from '@taiga-ui/cdk';
+import {tuiIsNodeIn} from '@taiga-ui/cdk';
 
 /**
- * @deprecated: use {@link tuiIsSelectionIn} instead
  * Checks if selection is inside a specific selector
  * @param selection
  * @param selector
  * @return true if selection is completely inside a particular selector
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isSelectionIn(
+export function tuiIsSelectionIn(
     {anchorNode, focusNode}: Selection,
     selector: string,
 ): boolean {
@@ -16,9 +14,7 @@ export function isSelectionIn(
     return (
         !!anchorNode &&
         !!focusNode &&
-        isNodeIn(anchorNode, selector) &&
-        isNodeIn(focusNode, selector)
+        tuiIsNodeIn(anchorNode, selector) &&
+        tuiIsNodeIn(focusNode, selector)
     );
 }
-
-export const tuiIsSelectionIn = isSelectionIn;

@@ -1,7 +1,7 @@
-import {hexToRgb} from '../hex-to-rgb';
+import {tuiHexToRgb} from '../hex-to-rgb';
 
-describe(`hexToRgb`, () => {
+describe(`tuiHexToRgb`, () => {
     it(`works`, () => {
-        expect(hexToRgb(`2aed03`)).toEqual([42, 237, 3]);
+        expect(tuiHexToRgb(`2aed03`)).toEqual([42, 237, 3]);
     });
 });
