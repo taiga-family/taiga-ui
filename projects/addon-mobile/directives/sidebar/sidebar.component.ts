@@ -16,7 +16,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 
-// @dynamic
 @Component({
     selector: `aside[tuiSidebar]`,
     templateUrl: `./sidebar.template.html`,

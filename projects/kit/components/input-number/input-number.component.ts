@@ -44,7 +44,6 @@ import {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
 
-// @dynamic
 @Component({
     selector: `tui-input-number`,
     templateUrl: `./input-number.template.html`,

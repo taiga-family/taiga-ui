@@ -17,7 +17,6 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 
-// @dynamic
 @Component({
     selector: `app`,
     templateUrl: `./app.template.html`,

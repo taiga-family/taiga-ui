@@ -23,7 +23,6 @@ import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
-// @dynamic
 @Component({
     selector: `tui-sheet`,
     templateUrl: `sheet.template.html`,
