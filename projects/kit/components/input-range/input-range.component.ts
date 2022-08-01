@@ -44,7 +44,6 @@ import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// @dynamic
 @Component({
     selector: `tui-input-range`,
     templateUrl: `./input-range.template.html`,

@@ -24,7 +24,6 @@ import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
 
-// @dynamic
 @Directive({
     selector: `[tuiScrollbar]`,
     providers: [TuiDestroyService],

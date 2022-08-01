@@ -18,7 +18,6 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-// @dynamic
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
     constructor(

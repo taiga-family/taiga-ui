@@ -12,7 +12,6 @@ import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
 
-// @dynamic
 @Directive({
     selector: `path[tuiPieChart]`,
     providers: [TuiDestroyService],

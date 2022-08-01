@@ -5,7 +5,6 @@ import {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
 
-// @dynamic
 @Directive({
     selector: `[tuiCopyProcessor]`,
 })
