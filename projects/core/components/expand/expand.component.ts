@@ -12,7 +12,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {isCurrentTarget, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsCurrentTarget, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
@@ -116,7 +116,7 @@ export class TuiExpandComponent {
     @HostListener(`transitionend`, [`$event`])
     onTransitionEnd(event: TransitionEvent): void {
         if (
-            isCurrentTarget(event) &&
+            tuiIsCurrentTarget(event) &&
             event.propertyName === `opacity` &&
             this.state === State.Animated
         ) {

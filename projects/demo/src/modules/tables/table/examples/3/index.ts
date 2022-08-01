@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
+import {TuiComparator, tuiDefaultSort} from '@taiga-ui/addon-table';
 import {TuiDay} from '@taiga-ui/cdk';
 
 interface Item {
@@ -79,7 +79,7 @@ export class TuiTableExample3 {
         value > 400 ? null : {minPrice: `Price must be above $400`};
 
     readonly totalSorter: TuiComparator<Item> = (a, b) =>
-        defaultSort(a.price * a.quantity, b.price * b.quantity);
+        tuiDefaultSort(a.price * a.quantity, b.price * b.quantity);
 
     getTotal({price, quantity}: Item): number {
         return price * quantity;

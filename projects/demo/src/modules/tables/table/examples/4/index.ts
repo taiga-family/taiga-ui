@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
+import {TuiComparator, tuiDefaultSort} from '@taiga-ui/addon-table';
 import {
     isPresent,
     toInt,
@@ -172,8 +172,8 @@ export class TuiTableExample4 {
 function sortBy(key: 'name' | 'dob' | 'age', direction: -1 | 1): TuiComparator<User> {
     return (a, b) =>
         key === `age`
-            ? direction * defaultSort(getAge(a), getAge(b))
-            : direction * defaultSort(a[key], b[key]);
+            ? direction * tuiDefaultSort(getAge(a), getAge(b))
+            : direction * tuiDefaultSort(a[key], b[key]);
 }
 
 function getAge({dob}: User): number {

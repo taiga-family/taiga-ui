@@ -3,7 +3,7 @@ import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 
-import {mouseDragFinishFrom} from './mouse-drag-finish-from';
+import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {typedFromEvent} from './typed-from-event';
 
 export const enum TuiDragStage {
@@ -16,11 +16,7 @@ export class TuiDragState {
     constructor(readonly stage: TuiDragStage, readonly event: MouseEvent) {}
 }
 
-/**
- * @deprecated: use {@link tuiDragAndDropFrom} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
+export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -36,7 +32,7 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
             typedFromEvent(ownerDocument, `mousemove`).pipe(
                 map(event => new TuiDragState(TuiDragStage.Continues, event)),
             ),
-            mouseDragFinishFrom(ownerDocument).pipe(
+            tuiMouseDragFinishFrom(ownerDocument).pipe(
                 take(1),
                 map(event => new TuiDragState(TuiDragStage.End, event)),
                 endWith(null),
@@ -44,5 +40,3 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
         ).pipe(takeWhile(isPresent)),
     ).pipe(repeat());
 }
-
-export const tuiDragAndDropFrom = dragAndDropFrom;
