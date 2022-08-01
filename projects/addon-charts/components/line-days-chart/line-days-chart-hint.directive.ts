@@ -1,42 +1,37 @@
 import {
+    AfterContentInit,
     ContentChildren,
     Directive,
-    ElementRef,
     forwardRef,
     Inject,
     Input,
     NgZone,
     QueryList,
 } from '@angular/core';
-import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
     TuiDestroyService,
+    TuiHoveredService,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {HINT_HOVERED_CLASS, TuiPoint} from '@taiga-ui/core';
+import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {
-    distinctUntilChanged,
-    filter,
-    map,
-    startWith,
-    takeUntil,
-    throttleTime,
-} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
+// TODO: Consider extending TuiLineChartHintDirective
 @Directive({
     selector: `[tuiLineChartHint]`,
-    providers: [TuiDestroyService],
+    providers: [TuiDestroyService, TuiHoveredService],
 })
-export class TuiLineDaysChartHintDirective {
+export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
@@ -45,23 +40,21 @@ export class TuiLineDaysChartHintDirective {
     hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = ``;
 
     constructor(
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) ngZone: NgZone,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-    ) {
-        animationFrame$
+        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
+    ) {}
+
+    ngAfterContentInit(): void {
+        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
-                throttleTime(200),
-                map(() => !!nativeElement.querySelector(`.${HINT_HOVERED_CLASS}`)),
-                startWith(false),
-                distinctUntilChanged(),
-                tuiZonefree(ngZone),
-                filter(v => !v),
-                takeUntil(destroy$),
+                map(([drivers, hovered]) => !drivers && !hovered),
+                filter(Boolean),
+                tuiZonefree(this.ngZone),
+                takeUntil(this.destroy$),
             )
             .subscribe(() => {
-                this.charts.forEach(chart => chart.onHovered(null));
+                this.charts.forEach(chart => chart.onHovered(NaN));
             });
     }
 
