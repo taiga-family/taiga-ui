@@ -4,7 +4,6 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import {TuiMobileDialogOptions} from './mobile-dialog-options';
 
-// @dynamic
 @Component({
     selector: `tui-mobile-dialog`,
     templateUrl: `./mobile-dialog.template.html`,

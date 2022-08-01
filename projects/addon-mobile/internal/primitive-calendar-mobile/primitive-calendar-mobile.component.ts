@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 
 /**
  * @internal
- * @dynamic
  */
 @Component({
     selector: `tui-primitive-calendar-mobile`,

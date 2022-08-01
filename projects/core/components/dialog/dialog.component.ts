@@ -11,7 +11,6 @@ import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers'
 
 const REQUIRED_ERROR = new Error(`Required dialog was dismissed`);
 
-// @dynamic
 @Component({
     selector: `tui-dialog`,
     templateUrl: `./dialog.template.html`,

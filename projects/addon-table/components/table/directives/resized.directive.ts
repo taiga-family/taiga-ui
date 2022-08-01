@@ -4,7 +4,6 @@ import {preventDefault, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Directive({
     selector: `[tuiResized]`,
 })

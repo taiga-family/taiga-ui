@@ -20,7 +20,6 @@ import {
 
 import {TuiDestroyService} from './destroy.service';
 
-// @dynamic
 @Injectable()
 export class TuiResizeService extends ResizeObserverService {
     constructor(
