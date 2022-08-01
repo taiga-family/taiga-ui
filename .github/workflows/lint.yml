@@ -9,6 +9,7 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
   IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
   IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
