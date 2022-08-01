@@ -1,13 +1,13 @@
-import {containsOrAfter} from '../contains-or-after';
+import {tuiContainsOrAfter} from '../contains-or-after';
 
-describe(`containsOrAfter`, () => {
+describe(`tuiContainsOrAfter`, () => {
     it(`Parent contains child`, () => {
         const parent = document.createElement(`div`);
         const child = document.createElement(`button`);
 
         parent.appendChild(child);
 
-        expect(containsOrAfter(parent, child)).toEqual(true);
+        expect(tuiContainsOrAfter(parent, child)).toEqual(true);
     });
 
     it(`Child does not contain parent`, () => {
@@ -16,6 +16,6 @@ describe(`containsOrAfter`, () => {
 
         parent.appendChild(child);
 
-        expect(containsOrAfter(child, parent)).toEqual(false);
+        expect(tuiContainsOrAfter(child, parent)).toEqual(false);
     });
 });

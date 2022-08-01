@@ -1,13 +1,13 @@
-import {dragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk';
+import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk';
 import {skip, take} from 'rxjs/operators';
 
-describe(`dragAndDropFrom`, () => {
+describe(`tuiDragAndDropFrom`, () => {
     it(`throws an error if there is no document`, () => {
         let result: unknown;
         const element: Element = {ownerDocument: undefined} as unknown as Element;
 
         try {
-            dragAndDropFrom(element).subscribe();
+            tuiDragAndDropFrom(element).subscribe();
         } catch (e) {
             result = e;
         }
@@ -19,7 +19,7 @@ describe(`dragAndDropFrom`, () => {
         let result: unknown;
         const element = document.createElement(`div`);
 
-        dragAndDropFrom(element)
+        tuiDragAndDropFrom(element)
             .pipe(take(1))
             .subscribe(event => {
                 result = event.stage;
@@ -34,7 +34,7 @@ describe(`dragAndDropFrom`, () => {
         let result: unknown;
         const element = document.createElement(`div`);
 
-        dragAndDropFrom(element)
+        tuiDragAndDropFrom(element)
             .pipe(skip(1), take(1))
             .subscribe(event => {
                 result = event.stage;
@@ -49,7 +49,7 @@ describe(`dragAndDropFrom`, () => {
         let result: unknown;
         const element = document.createElement(`div`);
 
-        dragAndDropFrom(element)
+        tuiDragAndDropFrom(element)
             .pipe(skip(2), take(1))
             .subscribe(event => {
                 result = event.stage;

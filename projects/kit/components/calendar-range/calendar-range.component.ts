@@ -23,7 +23,7 @@ import {
     TuiMonth,
     tuiNullableSame,
     tuiPure,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -98,7 +98,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
 
         valueChanges
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
                 this.value = value;
             });

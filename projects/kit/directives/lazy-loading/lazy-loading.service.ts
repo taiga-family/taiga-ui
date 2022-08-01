@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Inject, Injectable} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService, watch} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {catchError, filter, mapTo, switchMap, take, takeUntil} from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class TuiLazyLoadingService extends Observable<string> {
                             filter(([{isIntersecting}]) => isIntersecting),
                             mapTo(src),
                             catchError(() => of(src)),
-                            watch(changeDetectorRef),
+                            tuiWatch(changeDetectorRef),
                             take(1),
                         ),
                     ),

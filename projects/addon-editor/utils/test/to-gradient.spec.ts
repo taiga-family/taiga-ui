@@ -1,9 +1,9 @@
-import {toGradient} from '../to-gradient';
+import {tuiToGradient} from '../to-gradient';
 
-describe(`toGradient`, () => {
+describe(`tuiToGradient`, () => {
     it(`test case 1`, () => {
         expect(
-            toGradient({
+            tuiToGradient({
                 stops: [
                     {
                         color: `rgba(0, 255, 0, 1)`,
@@ -23,7 +23,7 @@ describe(`toGradient`, () => {
 
     it(`test case 2`, () => {
         expect(
-            toGradient({
+            tuiToGradient({
                 stops: [
                     {
                         color: `rgb(42, 237, 0)`,

@@ -1,9 +1,9 @@
-import {rawLoad} from '../raw-load';
-import {rawLoadRecord} from '../raw-load-record';
+import {tuiRawLoad} from '../raw-load';
+import {tuiRawLoadRecord} from '../raw-load-record';
 
 describe(`tui-doc raw content utils`, () => {
     it(`rawLoadRecord`, async () => {
-        const result = await rawLoadRecord({
+        const result = await tuiRawLoadRecord({
             TypeScript: `Hello`,
             HTML: Promise.resolve({default: `World`}),
         });
@@ -15,11 +15,11 @@ describe(`tui-doc raw content utils`, () => {
     });
 
     it(`rawLoad`, async () => {
-        let result = await rawLoad(`Hello`);
+        let result = await tuiRawLoad(`Hello`);
 
         expect(result).toBe(`Hello`);
 
-        result = await rawLoad(Promise.resolve({default: `World`}));
+        result = await tuiRawLoad(Promise.resolve({default: `World`}));
         expect(result).toBe(`World`);
     });
 });

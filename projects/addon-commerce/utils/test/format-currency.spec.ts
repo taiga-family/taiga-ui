@@ -1,33 +1,33 @@
-import {formatCurrency} from '../format-currency';
+import {tuiFormatCurrency} from '../format-currency';
 
-describe(`formatCurrency`, () => {
+describe(`tuiFormatCurrency`, () => {
     it(`returns founded currency symbol`, () => {
         const usdCode = `USD`;
 
-        expect(formatCurrency(usdCode)).toBe(`$`);
+        expect(tuiFormatCurrency(usdCode)).toBe(`$`);
     });
 
     it(`returns custom currency`, () => {
         const customCurrency = `CSTM`;
 
-        expect(formatCurrency(customCurrency)).toBe(customCurrency);
+        expect(tuiFormatCurrency(customCurrency)).toBe(customCurrency);
     });
 
     it(`returns empty string if there is no value`, () => {
         const noCurrency = null;
 
-        expect(formatCurrency(noCurrency)).toBe(``);
+        expect(tuiFormatCurrency(noCurrency)).toBe(``);
     });
 
     it(`returns correct currency from number currency code`, () => {
         const dollarCode = 840;
 
-        expect(formatCurrency(dollarCode)).toBe(`$`);
+        expect(tuiFormatCurrency(dollarCode)).toBe(`$`);
     });
 
     it(`returns correct currency from number currency code with 2 decimal`, () => {
         const australianDollar = 36;
 
-        expect(formatCurrency(australianDollar)).toBe(`A$`);
+        expect(tuiFormatCurrency(australianDollar)).toBe(`A$`);
     });
 });

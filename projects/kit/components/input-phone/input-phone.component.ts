@@ -15,12 +15,12 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    getClipboardDataText,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiGetClipboardDataText,
     TuiInputMode,
     tuiIsNativeFocused,
     tuiRequiredSetter,
@@ -173,7 +173,7 @@ export class TuiInputPhoneComponent
     }
 
     onPaste(event: Event): void {
-        this.setValueWithoutPrefix(getClipboardDataText(event as ClipboardEvent));
+        this.setValueWithoutPrefix(tuiGetClipboardDataText(event as ClipboardEvent));
     }
 
     onActiveZone(active: boolean): void {

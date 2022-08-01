@@ -5,7 +5,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {hexToRgb, rgbToHex} from '@taiga-ui/addon-editor/utils';
+import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TextMaskConfig} from 'angular2-text-mask';
 
@@ -37,7 +37,7 @@ export class TuiColorEditComponent {
     }
 
     get hex(): string {
-        return rgbToHex(this.color[0], this.color[1], this.color[2]);
+        return tuiRgbToHex(this.color[0], this.color[1], this.color[2]);
     }
 
     get opacity(): number {
@@ -49,7 +49,7 @@ export class TuiColorEditComponent {
             return;
         }
 
-        const rgb = hexToRgb(hex);
+        const rgb = tuiHexToRgb(hex);
 
         this.updateColor([rgb[0], rgb[1], rgb[2], this.color[3]]);
     }
