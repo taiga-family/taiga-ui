@@ -23,7 +23,7 @@ import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
-import {rawLoadRecord} from '../../utils/raw-load-record';
+import {tuiRawLoadRecord} from '../../utils/raw-load-record';
 
 @Component({
     selector: `tui-doc-example`,
@@ -57,7 +57,7 @@ export class TuiDocExampleComponent {
     readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
 
     readonly processor$: Observable<Record<string, string>> = this.rawLoader$$.pipe(
-        switchMap(rawLoadRecord),
+        switchMap(tuiRawLoadRecord),
         map(value => this.processContent(value)),
     );
 
