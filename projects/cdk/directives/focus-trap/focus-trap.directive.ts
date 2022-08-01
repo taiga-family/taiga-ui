@@ -7,7 +7,7 @@ import {
     OnDestroy,
     Renderer2,
 } from '@angular/core';
-import {containsOrAfter} from '@taiga-ui/cdk/utils/dom';
+import {tuiContainsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
     blurNativeFocused,
     setNativeFocused,
@@ -48,7 +48,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
 
     @HostListener(`window:focusin.silent`, [`$event.target`])
     onFocusIn(node: Node): void {
-        if (containsOrAfter(this.elementRef.nativeElement, node)) {
+        if (tuiContainsOrAfter(this.elementRef.nativeElement, node)) {
             return;
         }
 

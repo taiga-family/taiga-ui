@@ -20,7 +20,7 @@ import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 import {TUI_DOC_SCROLL_BEHAVIOR} from '../../tokens/scroll-behavior';
 import {TuiDocPages} from '../../types/pages';
-import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
+import {tuiTransliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
     NAVIGATION_LABELS,
@@ -132,8 +132,8 @@ export class TuiDocNavigationComponent {
                     return (
                         title.includes(search) ||
                         keywords.includes(search) ||
-                        title.includes(transliterateKeyboardLayout(search)) ||
-                        keywords.includes(transliterateKeyboardLayout(search)) ||
+                        title.includes(tuiTransliterateKeyboardLayout(search)) ||
+                        keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
                         search.replace(/-/gi, ``).includes(title)
                     );
                 }),
