@@ -17,7 +17,6 @@ import {
 import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 
-// @dynamic
 @Component({
     selector: `input[tuiTextfield], textarea[tuiTextfield]`,
     template: ``,

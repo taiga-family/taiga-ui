@@ -28,7 +28,6 @@ import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from '../slider.component';
 
-// @dynamic
 @Directive({
     selector: `input[tuiSlider][keySteps]`,
     host: {
