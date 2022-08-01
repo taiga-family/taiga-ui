@@ -28,7 +28,6 @@ import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
 import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
 
-// @dynamic
 @Component({
     selector: `tui-radio`,
     templateUrl: `./radio.template.html`,

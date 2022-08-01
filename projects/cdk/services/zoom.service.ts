@@ -8,7 +8,6 @@ import {filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
 
 const TOUCH_SENSITIVITY = 0.01;
 
-// @dynamic
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor(

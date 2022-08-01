@@ -26,7 +26,6 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 
-// @dynamic
 @Component({
     selector: `app`,
     templateUrl: `./app.template.html`,

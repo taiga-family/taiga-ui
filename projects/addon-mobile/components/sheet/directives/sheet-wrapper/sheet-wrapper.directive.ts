@@ -11,7 +11,6 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 // Safety offset for shadow
 const OFFSET = 16;
 
-// @dynamic
 @Directive({
     selector: `[tuiSheetWrapper]`,
     host: {
