@@ -4,9 +4,6 @@ import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise, repeat, switchMapTo, takeUntil} from 'rxjs/operators';
 
-/**
- * @dynamic
- */
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
     constructor(

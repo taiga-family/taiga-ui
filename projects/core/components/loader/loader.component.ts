@@ -20,7 +20,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 
-// @dynamic
 @Component({
     selector: `tui-loader`,
     templateUrl: `./loader.template.html`,

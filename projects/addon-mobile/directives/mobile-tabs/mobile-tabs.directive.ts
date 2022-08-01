@@ -4,7 +4,6 @@ import {TUI_TAB_MARGIN} from '@taiga-ui/kit';
 
 import {TuiMobileTabsComponent} from './mobile-tabs.component';
 
-// @dynamic
 @Directive({
     selector: `[tuiMobileTabs]`,
     providers: [

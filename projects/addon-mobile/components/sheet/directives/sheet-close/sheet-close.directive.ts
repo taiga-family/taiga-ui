@@ -8,7 +8,6 @@ import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
 import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
-// @dynamic
 @Directive({
     selector: `tui-sheet[close]`,
 })

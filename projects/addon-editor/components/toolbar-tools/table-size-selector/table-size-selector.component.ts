@@ -12,7 +12,6 @@ const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
 const MIN_DISTANCE_PX = 70;
 
-// @dynamic
 @Component({
     selector: `tui-table-size-selector`,
     templateUrl: `./table-size-selector.template.html`,

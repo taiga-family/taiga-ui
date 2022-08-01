@@ -34,7 +34,6 @@ import {Observable} from 'rxjs';
 
 import {TUI_INPUT_MONTH_PROVIDERS} from './input-month.providers';
 
-// @dynamic
 @Component({
     selector: `tui-input-month`,
     templateUrl: `./input-month.template.html`,

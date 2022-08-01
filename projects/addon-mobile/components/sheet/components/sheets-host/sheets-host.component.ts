@@ -7,7 +7,6 @@ import {Observable} from 'rxjs';
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
 
-// @dynamic
 @Component({
     selector: `tui-sheets-host`,
     templateUrl: `sheets-host.template.html`,

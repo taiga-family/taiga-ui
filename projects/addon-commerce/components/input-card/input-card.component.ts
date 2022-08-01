@@ -47,7 +47,6 @@ export function cardTextfieldControllerFactory(
     return directive;
 }
 
-// @dynamic
 @Component({
     selector: `tui-input-card`,
     templateUrl: `./input-card.template.html`,

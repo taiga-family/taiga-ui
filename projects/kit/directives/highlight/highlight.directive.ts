@@ -9,7 +9,6 @@ import {
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Directive({
     selector: `[tuiHighlight]`,
     host: {

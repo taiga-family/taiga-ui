@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 
-// @dynamic
 @Component({
     selector: `tui-editor-socket`,
     template: ``,
