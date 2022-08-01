@@ -1,4 +1,4 @@
-import {isCurrentTarget} from '../is-current-target';
+import {tuiIsCurrentTarget} from '../is-current-target';
 
 describe(`isCurrentTarget`, () => {
     it(`Target is equal to currentTarget`, () => {
@@ -7,6 +7,6 @@ describe(`isCurrentTarget`, () => {
         Object.defineProperty(event, `target`, {value: `<button>`});
         Object.defineProperty(event, `currentTarget`, {value: `<button>`});
 
-        expect(isCurrentTarget(event)).toEqual(true);
+        expect(tuiIsCurrentTarget(event)).toEqual(true);
     });
 });

@@ -1,4 +1,4 @@
-import {getClipboardDataText} from '@taiga-ui/cdk';
+import {tuiGetClipboardDataText} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: use {@link tuiExtractValueFromEvent} instead
@@ -8,7 +8,7 @@ export function extractValueFromEvent(event: DragEvent | ClipboardEvent): string
     // TODO: iframe warning
     return event instanceof DragEvent
         ? event.dataTransfer?.getData(`text/plain`) || ``
-        : getClipboardDataText(event);
+        : tuiGetClipboardDataText(event);
 }
 
 export const tuiExtractValueFromEvent = extractValueFromEvent;

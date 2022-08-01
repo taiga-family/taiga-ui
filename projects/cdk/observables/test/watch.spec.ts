@@ -2,9 +2,9 @@ import {ChangeDetectorRef} from '@angular/core';
 import {fakeAsync, tick} from '@angular/core/testing';
 import {Subject} from 'rxjs';
 
-import {watch} from '../watch';
+import {tuiWatch} from '../watch';
 
-describe(`Watch operator function`, () => {
+describe(`tuiWatch operator function`, () => {
     let $: Subject<unknown>;
     let called = 0;
 
@@ -18,7 +18,7 @@ describe(`Watch operator function`, () => {
     });
 
     it(`initially emits nothing, after event emits "true" and after a tick emits "false"`, fakeAsync(() => {
-        $.pipe(watch(chrStub)).subscribe();
+        $.pipe(tuiWatch(chrStub)).subscribe();
 
         $.next();
         tick();

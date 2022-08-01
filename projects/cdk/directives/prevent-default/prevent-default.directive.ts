@@ -1,5 +1,5 @@
 import {Attribute, Directive, ElementRef, Inject, NgZone} from '@angular/core';
-import {preventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {fromEvent, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -20,7 +20,7 @@ export class TuiPreventDefaultDirective {
         @Attribute(`tuiPreventDefault`) eventName: string,
     ) {
         fromEvent(nativeElement, eventName, {passive: false})
-            .pipe(tuiZonefree(ngZone), preventDefault(), takeUntil(destroy$))
+            .pipe(tuiZonefree(ngZone), tuiPreventDefault(), takeUntil(destroy$))
             .subscribe();
     }
 }

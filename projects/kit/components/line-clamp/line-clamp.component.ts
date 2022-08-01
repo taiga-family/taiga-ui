@@ -13,7 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsCurrentTarget, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
 import {TuiHintDirective} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
@@ -80,7 +80,7 @@ export class TuiLineClampComponent implements AfterViewInit {
                 next >= prev
                     ? of(next)
                     : typedFromEvent(this.elementRef.nativeElement, `transitionend`).pipe(
-                          filter(isCurrentTarget),
+                          filter(tuiIsCurrentTarget),
                           mapTo(next),
                       ),
             ),
