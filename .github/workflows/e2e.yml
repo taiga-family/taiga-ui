@@ -19,6 +19,7 @@ env:
   BASE_REF_DEMO: dist/demo/browser/${{ github.base_ref }}
   LOCAL_REF_DEMO: dist/demo/browser
   NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   NG_SERVER_PORT: 3333
 
 jobs:
