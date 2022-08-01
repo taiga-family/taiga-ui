@@ -25,8 +25,6 @@ import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-pr
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 import {rawLoadRecord} from '../../utils/raw-load-record';
 
-// Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
 @Component({
     selector: `tui-doc-example`,
     templateUrl: `./example.template.html`,

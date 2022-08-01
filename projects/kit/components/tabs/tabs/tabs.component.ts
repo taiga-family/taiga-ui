@@ -35,7 +35,6 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
 const TAB_ACTIVE_CLASS = `_active`;
 
-// @dynamic
 @Component({
     selector: `tui-tabs, nav[tuiTabs]`,
     templateUrl: `./tabs.template.html`,

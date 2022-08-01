@@ -4,7 +4,6 @@ import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Pipe({name: `tuiMonth`})
 export class TuiMonthPipe implements PipeTransform {
     constructor(@Inject(TUI_MONTHS) private readonly months$: Observable<string[]>) {}

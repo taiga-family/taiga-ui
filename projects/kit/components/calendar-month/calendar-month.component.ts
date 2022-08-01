@@ -28,7 +28,6 @@ import {Observable} from 'rxjs';
 
 const TODAY = TuiDay.currentLocal();
 
-// @dynamic
 @Component({
     selector: `tui-calendar-month`,
     templateUrl: `./calendar-month.template.html`,
