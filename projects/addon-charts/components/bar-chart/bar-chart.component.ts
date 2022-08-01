@@ -10,8 +10,7 @@ import {
 import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
+function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
 
     return valid;
