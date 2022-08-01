@@ -8,6 +8,7 @@ import {TUI_GERMAN_LANGUAGE_CORE} from './core';
 import {TUI_GERMAN_LANGUAGE_KIT} from './kit';
 
 export const TUI_GERMAN_LANGUAGE: Language = {
+    name: `german`,
     ...TUI_GERMAN_LANGUAGE_CORE,
     ...TUI_GERMAN_LANGUAGE_KIT,
     ...TUI_GERMAN_LANGUAGE_ADDON_TABLE,

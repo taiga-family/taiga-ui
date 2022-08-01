@@ -8,6 +8,7 @@ import {TUI_PORTUGUESE_LANGUAGE_CORE} from './core';
 import {TUI_PORTUGUESE_LANGUAGE_KIT} from './kit';
 
 export const TUI_PORTUGUESE_LANGUAGE: Language = {
+    name: `portuguese`,
     ...TUI_PORTUGUESE_LANGUAGE_CORE,
     ...TUI_PORTUGUESE_LANGUAGE_KIT,
     ...TUI_PORTUGUESE_LANGUAGE_ADDON_TABLE,

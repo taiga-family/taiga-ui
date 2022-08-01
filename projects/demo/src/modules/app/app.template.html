@@ -23,10 +23,20 @@
                 GitHub
             </a>
         </ng-container>
+        <tui-language-switcher
+            tuiTextfieldSize="m"
+            ngProjectAs="tuiDocNavigation"
+            class="language-switcher"
+        >
+            Language of components
+        </tui-language-switcher>
         <version-manager
+            tuiTextfieldSize="m"
             ngProjectAs="tuiDocNavigation"
             class="app-version"
-        ></version-manager>
+        >
+            Version
+        </version-manager>
         <tui-sheets-host ngProjectAs="tuiOverContent"></tui-sheets-host>
         <custom-host ngProjectAs="tuiOverContent"></custom-host>
         <tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>

@@ -477,11 +477,32 @@
                     "ru": "projects/demo/src/locale/messages.ru.xlf"
                 }
             },
-            "implicitDependencies": ["!testing"],
+            "implicitDependencies": [
+                "i18n",
+                "!testing",
+                "!cdk",
+                "!core",
+                "!icons",
+                "!kit",
+                "!addon-charts",
+                "!addon-commerce",
+                "!addon-doc",
+                "!addon-editor",
+                "!addon-mobile",
+                "!addon-preview",
+                "!addon-table",
+                "!addon-tablebars"
+            ],
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "outputs": ["dist/demo"],
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ],
                     "options": {
                         "aot": true,
                         "outputPath": "dist/demo/browser",
@@ -613,6 +634,12 @@
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ],
                     "options": {
                         "browserTarget": "demo:build",
                         "port": 3333,

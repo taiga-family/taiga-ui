@@ -8,6 +8,7 @@ import {TUI_UKRAINIAN_LANGUAGE_CORE} from './core';
 import {TUI_UKRAINIAN_LANGUAGE_KIT} from './kit';
 
 export const TUI_UKRAINIAN_LANGUAGE: Language = {
+    name: `ukrainian`,
     ...TUI_UKRAINIAN_LANGUAGE_CORE,
     ...TUI_UKRAINIAN_LANGUAGE_KIT,
     ...TUI_UKRAINIAN_LANGUAGE_ADDON_COMMERCE,

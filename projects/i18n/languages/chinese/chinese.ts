@@ -8,6 +8,7 @@ import {TUI_CHINESE_LANGUAGE_CORE} from './core';
 import {TUI_CHINESE_LANGUAGE_KIT} from './kit';
 
 export const TUI_CHINESE_LANGUAGE: TuiLanguage = {
+    name: `chinese`,
     ...TUI_CHINESE_LANGUAGE_CORE,
     ...TUI_CHINESE_LANGUAGE_KIT,
     ...TUI_CHINESE_LANGUAGE_ADDON_TABLE,
