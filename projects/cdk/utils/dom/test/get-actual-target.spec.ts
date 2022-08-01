@@ -1,4 +1,4 @@
-import {getActualTarget} from '../get-actual-target';
+import {tuiGetActualTarget} from '../get-actual-target';
 
 describe(`isCurrentTarget`, () => {
     it(`Actual target from composedPath`, () => {
@@ -7,7 +7,7 @@ describe(`isCurrentTarget`, () => {
 
         Object.defineProperty(event, `composedPath`, {value: () => [target]});
 
-        expect(getActualTarget(event)).toEqual(target);
+        expect(tuiGetActualTarget(event)).toEqual(target);
     });
 
     it(`Actual target is event.target`, () => {
@@ -16,6 +16,6 @@ describe(`isCurrentTarget`, () => {
 
         Object.defineProperty(event, `target`, {value: target});
 
-        expect(getActualTarget(event as Event)).toEqual(target);
+        expect(tuiGetActualTarget(event as Event)).toEqual(target);
     });
 });

@@ -12,8 +12,8 @@ import {
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
-    getDocumentOrShadowRoot,
     tuiAssert,
+    tuiGetDocumentOrShadowRoot,
     tuiIsIE,
     tuiPure,
     tuiRequiredSetter,
@@ -102,7 +102,7 @@ export class TuiSvgComponent {
 
     private get isShadowDOM(): boolean {
         return (
-            getDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
+            tuiGetDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
         );
     }
 

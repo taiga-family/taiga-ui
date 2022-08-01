@@ -11,11 +11,11 @@ import {
     EMPTY_QUERY,
     getOriginalArrayFromQueryList,
     isPresent,
-    itemsQueryListObservable,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
     tuiDefaultProp,
     TuiIdentityMatcher,
+    tuiItemsQueryListObservable,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -65,12 +65,12 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     get empty$(): Observable<boolean> {
-        return itemsQueryListObservable(this.options).pipe(map(({length}) => !length));
+        return tuiItemsQueryListObservable(this.options).pipe(map(({length}) => !length));
     }
 
     @tuiPure
     get disabled$(): Observable<boolean> {
-        return itemsQueryListObservable(this.options).pipe(
+        return tuiItemsQueryListObservable(this.options).pipe(
             map(items => items.every(({disabled}) => disabled)),
         );
     }
@@ -122,7 +122,7 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private get items$(): Observable<readonly T[]> {
-        return itemsQueryListObservable(this.options).pipe(
+        return tuiItemsQueryListObservable(this.options).pipe(
             map(options => options.map(({value}) => value).filter(isPresent)),
         );
     }
