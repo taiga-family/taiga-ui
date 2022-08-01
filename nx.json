@@ -14,7 +14,7 @@
     "npmScope": "taiga-ui",
     "tasksRunnerOptions": {
         "default": {
-            "runner": "@nx-cloud/runners/firebase",
+            "runner": "@nrwl/nx-cloud",
             "options": {
                 "cacheableOperations": ["build", "test", "lint"],
                 "parallel": 1

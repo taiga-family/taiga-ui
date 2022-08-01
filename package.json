@@ -96,6 +96,7 @@
         "@nrwl/cli": "14.3.1",
         "@nrwl/eslint-plugin-nx": "14.3.1",
         "@nrwl/node": "14.3.1",
+        "@nrwl/nx-cloud": "14.2.0",
         "@nrwl/tao": "14.3.1",
         "@nrwl/workspace": "14.3.1",
         "@nx-cloud/runners": "1.1.0",
