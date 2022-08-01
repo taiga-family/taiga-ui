@@ -25,7 +25,6 @@ export function scrollRefFactory({
     return browserScrollRef;
 }
 
-// @dynamic
 @Component({
     selector: `tui-scrollbar`,
     templateUrl: `./scrollbar.template.html`,

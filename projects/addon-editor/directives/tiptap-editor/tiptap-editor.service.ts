@@ -13,7 +13,6 @@ import {isEmptyParagraph} from './utils/is-empty-paragraph';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
-// @dynamic
 @Injectable()
 export class TuiTiptapEditorService extends AbstractTuiEditor {
     get isFocused(): boolean {

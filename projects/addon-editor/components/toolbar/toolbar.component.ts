@@ -38,7 +38,6 @@ import {take} from 'rxjs/operators';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
-// @dynamic
 @Component({
     selector: `tui-toolbar`,
     templateUrl: `./toolbar.template.html`,

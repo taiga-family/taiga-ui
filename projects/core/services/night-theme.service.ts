@@ -3,7 +3,6 @@ import {WINDOW} from '@ng-web-apis/common';
 import {fromEvent, Observable} from 'rxjs';
 import {map, share, startWith} from 'rxjs/operators';
 
-// @dynamic
 @Injectable({
     providedIn: `root`,
 })
