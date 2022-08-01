@@ -12,7 +12,7 @@ import {
 import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
 import {BehaviorSubject, Subject} from 'rxjs';
 
-import {coerceValue} from '../../utils/coerce-value';
+import {tuiCoerceValue} from '../../utils/coerce-value';
 
 const SERIALIZED_SUFFIX = `$`;
 
@@ -112,7 +112,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         const value =
             !!propertyValueWithSuffix && this.documentationPropertyValues
                 ? this.documentationPropertyValues[propertyValueWithSuffix as number]
-                : coerceValue(propertyValue);
+                : tuiCoerceValue(propertyValue);
 
         this.onValueChange(value as T);
     }

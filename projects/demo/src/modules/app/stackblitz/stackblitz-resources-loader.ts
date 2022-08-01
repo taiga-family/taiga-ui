@@ -1,4 +1,4 @@
-import {rawLoad, tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
+import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 interface TuiProjectFiles {
     angularJson: string;
@@ -20,20 +20,20 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             stylesContent,
             appModuleTsContent,
         ]: string[] = await Promise.all([
-            rawLoad(import(`./project-files/configs.md?raw`)),
-            rawLoad(import(`./project-files/src/main.ts.md?raw`)),
-            rawLoad(import(`./project-files/src/index.html.md?raw`)),
-            rawLoad(import(`./project-files/src/polyfills.ts.md?raw`)),
-            rawLoad(import(`./project-files/src/styles.less.md?raw`)),
-            rawLoad(import(`./project-files/src/app/app.module.ts.md?raw`)),
+            tuiRawLoad(import(`./project-files/configs.md?raw`)),
+            tuiRawLoad(import(`./project-files/src/main.ts.md?raw`)),
+            tuiRawLoad(import(`./project-files/src/index.html.md?raw`)),
+            tuiRawLoad(import(`./project-files/src/polyfills.ts.md?raw`)),
+            tuiRawLoad(import(`./project-files/src/styles.less.md?raw`)),
+            tuiRawLoad(import(`./project-files/src/app/app.module.ts.md?raw`)),
         ]);
 
-        const [angularJson, tsconfig] = tryParseMarkdownCodeBlock(configsContent);
-        const [mainTs] = tryParseMarkdownCodeBlock(mainTsContent);
-        const [indexHtml] = tryParseMarkdownCodeBlock(indexHtmlContent);
-        const [polyfills] = tryParseMarkdownCodeBlock(polyfillsContent);
-        const [styles] = tryParseMarkdownCodeBlock(stylesContent);
-        const [appModuleTs] = tryParseMarkdownCodeBlock(appModuleTsContent);
+        const [angularJson, tsconfig] = tuiTryParseMarkdownCodeBlock(configsContent);
+        const [mainTs] = tuiTryParseMarkdownCodeBlock(mainTsContent);
+        const [indexHtml] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
+        const [polyfills] = tuiTryParseMarkdownCodeBlock(polyfillsContent);
+        const [styles] = tuiTryParseMarkdownCodeBlock(stylesContent);
+        const [appModuleTs] = tuiTryParseMarkdownCodeBlock(appModuleTsContent);
 
         return {angularJson, tsconfig, mainTs, indexHtml, polyfills, appModuleTs, styles};
     }
@@ -81,50 +81,60 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             noneLess,
             wrapperBaseLess,
         ]: string[] = await Promise.all([
-            rawLoad(import(`../../../../../core/styles/taiga-ui-stackblitz.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/taiga-ui-global.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/taiga-ui-local.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/mixins.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/picker.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/slider.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/text.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/textfield.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/mixins/wrapper.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/variables/media.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/basic/keyframes.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/basic/normalize.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/basic/main.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-container.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-form.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-group.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-island.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-list.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-mobile-only.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-palette.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-required.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-row.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-skeleton.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-space.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-table.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/markup/tui-text.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/variables.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/icon.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/outline.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/primary.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/accent.less?raw`)),
-            rawLoad(
+            tuiRawLoad(import(`../../../../../core/styles/taiga-ui-stackblitz.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/taiga-ui-global.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/taiga-ui-local.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/mixins.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/picker.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/slider.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/text.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/textfield.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/mixins/wrapper.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/variables/media.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/basic/keyframes.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/basic/normalize.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/basic/main.less?raw`)),
+            tuiRawLoad(
+                import(`../../../../../core/styles/markup/tui-container.less?raw`),
+            ),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-form.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-group.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-island.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-list.less?raw`)),
+            tuiRawLoad(
+                import(`../../../../../core/styles/markup/tui-mobile-only.less?raw`),
+            ),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-palette.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-required.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-row.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-skeleton.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-space.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-table.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/markup/tui-text.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/variables.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/icon.less?raw`)),
+            tuiRawLoad(
+                import(`../../../../../core/styles/theme/wrapper/outline.less?raw`),
+            ),
+            tuiRawLoad(
+                import(`../../../../../core/styles/theme/wrapper/primary.less?raw`),
+            ),
+            tuiRawLoad(
+                import(`../../../../../core/styles/theme/wrapper/accent.less?raw`),
+            ),
+            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/secondary.less?raw`),
             ),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/table.less?raw`)),
-            rawLoad(
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/table.less?raw`)),
+            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/textfield.less?raw`),
             ),
-            rawLoad(
+            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/whiteblock.less?raw`),
             ),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/none.less?raw`)),
-            rawLoad(import(`../../../../../core/styles/theme/wrapper/base.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/none.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/base.less?raw`)),
         ]);
 
         styles[`styles/taiga-ui-stackblitz.less`] = stackblitzLess;

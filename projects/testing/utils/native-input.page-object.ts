@@ -1,7 +1,7 @@
 import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 
-import {createKeyboardEvent} from './keyboard-event';
+import {tuiCreateKeyboardEvent} from './keyboard-event';
 import {TuiPageObject} from './page-object';
 import {tuiReplaceNbsp} from './replace-nbsp';
 
@@ -48,7 +48,7 @@ export class TuiNativeInputPO {
     }
 
     sendKeydown(key: string): void {
-        this.nativeElement.dispatchEvent(createKeyboardEvent(key, `keydown`));
+        this.nativeElement.dispatchEvent(tuiCreateKeyboardEvent(key, `keydown`));
         this.fixture.detectChanges();
     }
 

@@ -1,8 +1,6 @@
-/**
- * @deprecated: use {@link tuiCoerceValue} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function coerceValue<T>(value?: T): T | number | string | boolean | null | object {
+export function tuiCoerceValue<T>(
+    value?: T,
+): T | number | string | boolean | null | object {
     const prepared = String(value).trim();
 
     if (isEmptyParamValue(prepared)) {
@@ -23,8 +21,6 @@ export function coerceValue<T>(value?: T): T | number | string | boolean | null 
         return decodedValue;
     }
 }
-
-export const tuiCoerceValue = coerceValue;
 
 function isEmptyParamValue(value: string): boolean {
     return [`undefined`, `null`, `NaN`, `Infinity`].includes(value);

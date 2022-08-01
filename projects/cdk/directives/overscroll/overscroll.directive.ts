@@ -2,7 +2,7 @@ import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angula
 import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
-import {canScroll, getScrollParent} from '@taiga-ui/cdk/utils/dom';
+import {tuiCanScroll, tuiGetScrollParent} from '@taiga-ui/cdk/utils/dom';
 import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 
@@ -103,8 +103,8 @@ export class TuiOverscrollDirective {
         // This is all what's needed in Chrome/Firefox thanks to CSS overscroll-behavior
         if (
             this.mode === `all` &&
-            ((vertical && !currentTarget.contains(getScrollParent(target))) ||
-                (!vertical && !currentTarget.contains(getScrollParent(target, false))))
+            ((vertical && !currentTarget.contains(tuiGetScrollParent(target))) ||
+                (!vertical && !currentTarget.contains(tuiGetScrollParent(target, false))))
         ) {
             event.preventDefault();
 
@@ -114,8 +114,8 @@ export class TuiOverscrollDirective {
         // This is Safari/IE/Edge fallback
         if (
             vertical &&
-            ((negative && !canScroll(target, currentTarget, true, false)) ||
-                (!negative && !canScroll(target, currentTarget, true, true)))
+            ((negative && !tuiCanScroll(target, currentTarget, true, false)) ||
+                (!negative && !tuiCanScroll(target, currentTarget, true, true)))
         ) {
             event.preventDefault();
 
@@ -124,8 +124,8 @@ export class TuiOverscrollDirective {
 
         if (
             !vertical &&
-            ((negative && !canScroll(target, currentTarget, false, false)) ||
-                (!negative && !canScroll(target, currentTarget, false, true)))
+            ((negative && !tuiCanScroll(target, currentTarget, false, false)) ||
+                (!negative && !tuiCanScroll(target, currentTarget, false, true)))
         ) {
             event.preventDefault();
         }

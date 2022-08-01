@@ -1,4 +1,4 @@
-import {getClipboardDataText} from '../get-clipboard-data-text';
+import {tuiGetClipboardDataText} from '../get-clipboard-data-text';
 
 describe(`getClipboardDataText`, () => {
     it(`ClipboardData in event`, () => {
@@ -9,7 +9,7 @@ describe(`getClipboardDataText`, () => {
 
         const event = new ClipboardEvent(`copy`, {clipboardData: clipboardData});
 
-        expect(getClipboardDataText(event)).toEqual(data);
+        expect(tuiGetClipboardDataText(event)).toEqual(data);
     });
 
     it(`ClipboardData not in event`, () => {
@@ -21,6 +21,6 @@ describe(`getClipboardDataText`, () => {
             },
         });
 
-        expect(getClipboardDataText(event)).toEqual(`data`);
+        expect(tuiGetClipboardDataText(event)).toEqual(`data`);
     });
 });

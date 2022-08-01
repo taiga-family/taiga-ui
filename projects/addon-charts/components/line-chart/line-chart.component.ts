@@ -9,7 +9,7 @@ import {
     Optional,
 } from '@angular/core';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
-import {draw} from '@taiga-ui/addon-charts/utils';
+import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {
     tuiDefaultProp,
     TuiIdService,
@@ -216,7 +216,7 @@ export class TuiLineChartComponent {
     private getD(value: readonly TuiPoint[], smoothingFactor: number): string {
         return value.reduce(
             (d, point, index) =>
-                index ? `${d} ${draw(value, index, smoothingFactor)}` : `M ${point}`,
+                index ? `${d} ${tuiDraw(value, index, smoothingFactor)}` : `M ${point}`,
             ``,
         );
     }
