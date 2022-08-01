@@ -44,7 +44,6 @@ import {Observable} from 'rxjs';
 
 import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
 
-// @dynamic
 @Component({
     selector: `tui-input-count`,
     templateUrl: `./input-count.template.html`,

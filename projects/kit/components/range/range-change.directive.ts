@@ -7,7 +7,6 @@ import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/op
 
 import {TuiRangeComponent} from './range.component';
 
-// @dynamic
 @Directive({
     selector: `tui-range`,
     providers: [TuiDestroyService],

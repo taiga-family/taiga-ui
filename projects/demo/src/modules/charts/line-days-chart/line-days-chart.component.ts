@@ -7,7 +7,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `example-tui-line-days-chart`,
     templateUrl: `./line-days-chart.template.html`,

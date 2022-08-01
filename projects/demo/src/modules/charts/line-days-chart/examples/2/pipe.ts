@@ -4,7 +4,6 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Pipe({
     name: `labels`,
 })

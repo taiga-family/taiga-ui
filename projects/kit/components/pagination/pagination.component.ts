@@ -44,7 +44,6 @@ export function nonNegativeInteger(length: number): boolean {
     return Number.isInteger(length) && length >= 0;
 }
 
-// @dynamic
 @Component({
     selector: `tui-pagination`,
     templateUrl: `./pagination.template.html`,

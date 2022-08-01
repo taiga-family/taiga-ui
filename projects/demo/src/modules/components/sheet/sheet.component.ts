@@ -9,7 +9,6 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// @dynamic
 @Component({
     selector: `example-sheet`,
     templateUrl: `./sheet.template.html`,

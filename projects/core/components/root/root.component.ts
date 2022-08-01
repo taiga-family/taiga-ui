@@ -11,7 +11,6 @@ import {
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `tui-root`,
     templateUrl: `root.template.html`,

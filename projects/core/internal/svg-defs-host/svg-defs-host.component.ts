@@ -13,7 +13,6 @@ import {TuiSvgService} from '@taiga-ui/core/services';
 import {innerHTML} from '@taiga-ui/core/utils/polyfills';
 import {takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `tui-svg-defs-host`,
     templateUrl: `./svg-defs-host.template.html`,

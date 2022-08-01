@@ -20,7 +20,6 @@ const isFakeHistoryState = (
 ): historyState is typeof FAKE_HISTORY_STATE =>
     historyState?.label === FAKE_HISTORY_STATE.label;
 
-// @dynamic
 @Component({
     selector: `tui-dialog-host`,
     templateUrl: `./dialog-host.template.html`,

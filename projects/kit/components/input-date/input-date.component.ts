@@ -62,7 +62,6 @@ import {map, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_DATE_PROVIDERS} from './input-date.providers';
 
-// @dynamic
 @Component({
     selector: `tui-input-date`,
     templateUrl: `./input-date.template.html`,

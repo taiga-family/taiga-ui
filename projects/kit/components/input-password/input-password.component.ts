@@ -42,7 +42,6 @@ import {
     TuiInputPasswordOptions,
 } from './input-password-options';
 
-// @dynamic
 @Component({
     selector: `tui-input-password`,
     templateUrl: `./input-password.template.html`,

@@ -11,7 +11,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 
-// @dynamic
 @Component({
     selector: `tui-primitive-checkbox`,
     templateUrl: `./primitive-checkbox.template.html`,

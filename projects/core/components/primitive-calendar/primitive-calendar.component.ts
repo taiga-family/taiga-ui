@@ -22,7 +22,6 @@ import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from '@taiga-ui/core/token
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Component({
     selector: `tui-primitive-calendar`,
     templateUrl: `./primitive-calendar.template.html`,
