@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
-import {createKeyboardEvent, TuiPageObject} from '@taiga-ui/testing';
+import {tuiCreateKeyboardEvent, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiRangeComponent} from '../range.component';
 import {TuiRangeModule} from '../range.module';
@@ -41,8 +41,8 @@ describe(`Range`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    const keydownArrowLeft = createKeyboardEvent(`ArrowLeft`, `keydown`);
-    const keydownArrowRight = createKeyboardEvent(`ArrowRight`, `keydown`);
+    const keydownArrowLeft = tuiCreateKeyboardEvent(`ArrowLeft`, `keydown`);
+    const keydownArrowRight = tuiCreateKeyboardEvent(`ArrowRight`, `keydown`);
     const testContext = {
         get prefix() {
             return `tui-range__`;

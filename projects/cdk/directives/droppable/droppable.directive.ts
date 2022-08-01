@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {preventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
@@ -29,7 +29,7 @@ export class TuiDroppableDirective {
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         this.tuiDroppableDropped = typedFromEvent(nativeElement, `drop`).pipe(
-            preventDefault(),
+            tuiPreventDefault(),
             map(event => event.dataTransfer),
             filter(isPresent),
         );
@@ -48,7 +48,7 @@ export class TuiDroppableDirective {
 
         // Required by Drag and Drop API to stop redirecting
         typedFromEvent(nativeElement, `dragover`)
-            .pipe(preventDefault(), takeUntil(destroy$))
+            .pipe(tuiPreventDefault(), takeUntil(destroy$))
             .subscribe();
     }
 }

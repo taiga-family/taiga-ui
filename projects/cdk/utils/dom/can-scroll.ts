@@ -1,8 +1,4 @@
-/**
- * @deprecated: use {@link tuiCanScroll} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function canScroll(
+export function tuiCanScroll(
     element: Element,
     rootElement: Element,
     vertical: boolean,
@@ -12,8 +8,6 @@ export function canScroll(
         ? canScrollVertical(element, rootElement, scrollEnd)
         : canScrollHorizontal(element, rootElement, scrollEnd);
 }
-
-export const tuiCanScroll = canScroll;
 
 function canScrollVertical(
     element: Element,

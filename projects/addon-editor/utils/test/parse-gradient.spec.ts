@@ -1,9 +1,11 @@
-import {parseGradient} from '../parse-gradient';
+import {tuiParseGradient} from '../parse-gradient';
 
-describe(`parseGradient`, () => {
+describe(`tuiParseGradient`, () => {
     it(`test case 1`, () => {
         expect(
-            parseGradient(`to bottom right, rgba(0, 255, 255, 1), rgba(255, 0, 255, 0)`),
+            tuiParseGradient(
+                `to bottom right, rgba(0, 255, 255, 1), rgba(255, 0, 255, 0)`,
+            ),
         ).toEqual({
             stops: [
                 {
@@ -20,14 +22,16 @@ describe(`parseGradient`, () => {
     });
 
     it(`test case 2`, () => {
-        expect(parseGradient(`red 10%, blue 20%`)).toEqual({
+        expect(tuiParseGradient(`red 10%, blue 20%`)).toEqual({
             stops: [],
             side: `to bottom`,
         });
     });
 
     it(`test case 3`, () => {
-        expect(parseGradient(`to top left, #ff0000 10%, rgb(0, 255, 255) 20%`)).toEqual({
+        expect(
+            tuiParseGradient(`to top left, #ff0000 10%, rgb(0, 255, 255) 20%`),
+        ).toEqual({
             stops: [
                 {
                     color: `#ff0000`,
@@ -44,7 +48,7 @@ describe(`parseGradient`, () => {
 
     it(`test case 4`, () => {
         expect(
-            parseGradient(
+            tuiParseGradient(
                 `to top, #ff0000 10%, rgb(0, 255, 255) 20%, rgba(255, 0, 0, 0.1) 40%, #00ff00 100%`,
             ),
         ).toEqual({

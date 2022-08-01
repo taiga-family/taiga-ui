@@ -38,11 +38,7 @@ const REGEXP_ARRAY = [
     `\\s*)?`,
 ];
 
-/**
- * @deprecated: use {@link tuiParseGradient} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function parseGradient(input: string): TuiParsedGradient {
+export function tuiParseGradient(input: string): TuiParsedGradient {
     const stopsRegexp = new RegExp(REGEXP_ARRAY.join(``), `gi`);
     const stopsString =
         input.startsWith(`to`) || input.match(/^\d/)
@@ -72,8 +68,6 @@ export function parseGradient(input: string): TuiParsedGradient {
         side,
     };
 }
-
-export const tuiParseGradient = parseGradient;
 
 function getPosition(match: string, stops: number): string {
     const fallback = stops === 1 ? `100%` : `${stops}%`;
