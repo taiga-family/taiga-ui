@@ -39,11 +39,6 @@ import {Observable} from 'rxjs';
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function nonNegativeInteger(length: number): boolean {
-    return Number.isInteger(length) && length >= 0;
-}
-
 @Component({
     selector: `tui-pagination`,
     templateUrl: `./pagination.template.html`,
@@ -332,4 +327,8 @@ export class TuiPaginationComponent
         this.index = index;
         this.indexChange.emit(index);
     }
+}
+
+function nonNegativeInteger(length: number): boolean {
+    return Number.isInteger(length) && length >= 0;
 }

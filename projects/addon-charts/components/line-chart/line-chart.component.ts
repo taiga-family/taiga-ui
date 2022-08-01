@@ -25,13 +25,6 @@ import {distinctUntilChanged} from 'rxjs/operators';
 
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function smoothingAssertion(smoothingFactor: number): boolean {
-    return tuiInRange(smoothingFactor, 0, 100);
-}
-
-const SMOOTHING_MESSAGE = `smoothingFactor must be between 0 and 100`;
-
 @Component({
     selector: `tui-line-chart`,
     templateUrl: `./line-chart.template.html`,
@@ -66,7 +59,10 @@ export class TuiLineChartComponent {
     height = 0;
 
     @Input()
-    @tuiDefaultProp(smoothingAssertion, SMOOTHING_MESSAGE)
+    @tuiDefaultProp(
+        (smoothingFactor: number) => tuiInRange(smoothingFactor, 0, 100),
+        `smoothingFactor must be between 0 and 100`,
+    )
     smoothingFactor = 0;
 
     @Input()
