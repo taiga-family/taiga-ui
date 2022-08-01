@@ -11,6 +11,7 @@ import {
 import {TuiToggleModule} from '@taiga-ui/kit';
 
 import {TuiDocHeaderModule} from '../../internal/header/header.module';
+import {TuiLanguageSwitcherModule} from '../language-switcher/language-switcher.module';
 import {TuiDocNavigationModule} from '../navigation/navigation.module';
 import {TuiDocMainComponent} from './main.component';
 
@@ -26,6 +27,7 @@ import {TuiDocMainComponent} from './main.component';
         TuiDialogModule,
         TuiAlertModule,
         TuiDocNavigationModule,
+        TuiLanguageSwitcherModule,
     ],
     declarations: [TuiDocMainComponent],
     exports: [TuiDocMainComponent],

@@ -21,6 +21,7 @@ import {
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
+import {TUI_LANGUAGE_SWITCHER} from '@taiga-ui/i18n/switch';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {of} from 'rxjs';
@@ -127,4 +128,5 @@ export const APP_PROVIDERS = [
         provide: TUI_DIALOG_CLOSES_ON_BACK,
         useFactory: () => of(!isInsideIframe(inject(WINDOW))), // for cypress tests
     },
+    TUI_LANGUAGE_SWITCHER,
 ];

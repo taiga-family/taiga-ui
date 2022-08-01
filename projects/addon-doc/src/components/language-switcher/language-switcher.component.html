@@ -1,0 +1,37 @@
+<tui-select
+    tuiTextfieldSize="s"
+    class="language-switcher"
+    [valueContent]="content"
+    [ngModel]="language"
+    [ngModelOptions]="{standalone: true}"
+>
+    Language
+    <input
+        tuiTextfield
+        placeholder="Language"
+    />
+
+    <ng-template tuiDataList>
+        <tui-data-list>
+            <button
+                *ngFor="let country of languages"
+                tuiOption
+                [textContent]="flags.get(country)"
+                (click)="set(country)"
+            ></button>
+            <button
+                tuiOption
+                (click)="clear()"
+            >
+                Reset
+            </button>
+        </tui-data-list>
+    </ng-template>
+</tui-select>
+
+<ng-template
+    #content
+    let-country
+>
+    {{ country | titlecase }}
+</ng-template>

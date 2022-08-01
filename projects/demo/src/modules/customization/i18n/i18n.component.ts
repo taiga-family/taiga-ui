@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {from} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -16,4 +17,21 @@ export class I18nComponent {
             default: string;
         }>,
     ).pipe(map(readme => readme.default.split(`Supported languages:`)[1]));
+
+    exampleModule = import(`!!raw-loader!./app.module.md`);
+
+    example1: TuiDocExample = {
+        'language-switcher.component.html': import(
+            `!!raw-loader!../../../../../addon-doc/src/components/language-switcher/language-switcher.component.html`
+        ),
+        'language-switcher.component.ts': import(
+            `!!raw-loader!../../../../../addon-doc/src/components/language-switcher/language-switcher.component.ts`
+        ),
+        'language-switcher.module.ts': import(
+            `!!raw-loader!../../../../../addon-doc/src/components/language-switcher/language-switcher.module.ts`
+        ),
+        'language-switcher.component.less': import(
+            `!!raw-loader!../../../../../addon-doc/src/components/language-switcher/language-switcher.component.less`
+        ),
+    };
 }
