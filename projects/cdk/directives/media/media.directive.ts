@@ -10,16 +10,6 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function nonNegativeFiniteAssertion(value: number): boolean {
-    return isFinite(value) && value >= 0;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function volumeAssertion(volume: number): boolean {
-    return isFinite(volume) && volume >= 0 && volume <= 1;
-}
-
 @Directive({
     selector: `video[tuiMedia], audio[tuiMedia]`,
     exportAs: `tuiMedia`,
@@ -29,7 +19,7 @@ export class TuiMediaDirective {
 
     @Input()
     @HostBinding(`volume`)
-    @tuiDefaultProp(volumeAssertion)
+    @tuiDefaultProp((volume: number) => isFinite(volume) && volume >= 0 && volume <= 1)
     volume = 1;
 
     @Input(`playbackRate`)
@@ -110,4 +100,8 @@ export class TuiMediaDirective {
         this.playbackRate = playbackRate;
         this.elementRef.nativeElement.playbackRate = this.playbackRate;
     }
+}
+
+function nonNegativeFiniteAssertion(value: number): boolean {
+    return isFinite(value) && value >= 0;
 }
