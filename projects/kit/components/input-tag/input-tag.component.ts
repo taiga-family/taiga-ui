@@ -23,8 +23,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    getActualTarget,
-    preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
@@ -32,7 +30,9 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiGetActualTarget,
     tuiIsNativeFocusedIn,
+    tuiPreventDefault,
     TuiScrollService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -316,7 +316,7 @@ export class TuiInputTagComponent
     }
 
     onMouseDown(event: MouseEvent): void {
-        const actualTarget = getActualTarget(event);
+        const actualTarget = tuiGetActualTarget(event);
 
         if (
             !this.focusableElement ||
@@ -470,7 +470,7 @@ export class TuiInputTagComponent
 
         const wheel$ = typedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
             filter(event => event.deltaX === 0 && this.shouldScroll(nativeElement)),
-            preventDefault(),
+            tuiPreventDefault(),
             map(({deltaY}) =>
                 Math.max(nativeElement.scrollLeft + deltaY * EVENT_Y_TO_X_COEFFICIENT, 0),
             ),

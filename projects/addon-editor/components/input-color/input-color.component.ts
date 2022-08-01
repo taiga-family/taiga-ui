@@ -11,7 +11,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {getGradientData, parseGradient, toGradient} from '@taiga-ui/addon-editor/utils';
+import {
+    tuiGetGradientData,
+    tuiParseGradient,
+    tuiToGradient,
+} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
     tuiDefaultProp,
@@ -111,7 +115,7 @@ export class TuiInputColorComponent
     private sanitize(value: string, domSanitizer: DomSanitizer): SafeStyle | string {
         return value.startsWith(`linear-gradient(`)
             ? domSanitizer.bypassSecurityTrustStyle(
-                  toGradient(parseGradient(getGradientData(value))),
+                  tuiToGradient(tuiParseGradient(tuiGetGradientData(value))),
               )
             : value;
     }

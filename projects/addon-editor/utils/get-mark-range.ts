@@ -25,11 +25,7 @@ function findMarkInSet(
     );
 }
 
-/**
- * @deprecated: use {@link tuiGetMarkRange} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getMarkRange(
+export function tuiGetMarkRange(
     pos?: ResolvedPos,
     type?: MarkType,
     attributes: Record<string, unknown> = {},
@@ -75,5 +71,3 @@ export function getMarkRange(
         to: endPos,
     };
 }
-
-export const tuiGetMarkRange = getMarkRange;

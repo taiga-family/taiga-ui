@@ -11,17 +11,17 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    itemsQueryListObservable,
     tuiIsNumber,
     tuiIsString,
-    watch,
+    tuiItemsQueryListObservable,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
-import {hexToRgb, rgbToHex} from '../../utils/color-conversion';
-import {inspectAny} from '../../utils/inspect';
+import {tuiHexToRgb, tuiRgbToHex} from '../../utils/color-conversion';
+import {tuiInspectAny} from '../../utils/inspect';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
 // @bad TODO subscribe propertiesConnectors changes
@@ -60,10 +60,10 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     ) {}
 
     ngAfterContentInit(): void {
-        itemsQueryListObservable(this.propertiesConnectors)
+        tuiItemsQueryListObservable(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
-                watch(this.changeDetectorRef),
+                tuiWatch(this.changeDetectorRef),
             )
             .subscribe();
     }
@@ -97,7 +97,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .split(`,`)
             .map(v => Number.parseInt(v, 10)) as [number, number, number];
 
-        return rgbToHex(...parsed);
+        return tuiRgbToHex(...parsed);
     }
 
     getOpacity(color: string): number {
@@ -131,7 +131,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             return;
         }
 
-        const rgb = hexToRgb(color).join(`, `);
+        const rgb = tuiHexToRgb(color).join(`, `);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -142,7 +142,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         opacity: number,
     ): void {
         const hex = this.getColor(connector.documentationPropertyValue || ``);
-        const rgb = hexToRgb(hex);
+        const rgb = tuiHexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -169,6 +169,6 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     inspectAny(data: unknown): string {
-        return inspectAny(data, 2);
+        return tuiInspectAny(data, 2);
     }
 }
