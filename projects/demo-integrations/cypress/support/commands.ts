@@ -5,6 +5,7 @@ import {
 
 import {tuiFocus} from './focus';
 import {tuiHideHeader} from './hide-header';
+import {tuiHideLanguageSwitcher} from './hide-language-switcher';
 import {tuiHideNavigation} from './hide-navigation';
 import {tuiHideVersionManager} from './hide-version-manager';
 import {tuiScrollIntoView} from './scroll-into-view';
@@ -27,6 +28,7 @@ declare global {
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
             tuiHideVersionManager: typeof tuiHideVersionManager;
+            tuiHideLanguageSwitcher: typeof tuiHideLanguageSwitcher;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
@@ -63,6 +65,7 @@ Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
 Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
 Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
 Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
+Cypress.Commands.add(`tuiHideLanguageSwitcher`, tuiHideLanguageSwitcher);
 
 Cypress.Commands.add(
     `tuiTab`,

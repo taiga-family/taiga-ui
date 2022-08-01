@@ -23,6 +23,7 @@ interface TuiVisitOptions {
     hideCursor?: boolean;
     hideScrollbar?: boolean;
     hideVersionManager?: boolean;
+    hideLanguageSwitcher?: boolean;
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
@@ -60,6 +61,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         skipExpectUrl = false,
         hideNavigation = true,
         hideVersionManager = true,
+        hideLanguageSwitcher = true,
         pseudoMobile = false,
     } = options;
 
@@ -139,5 +141,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     if (hideVersionManager) {
         cy.tuiHideVersionManager();
+    }
+
+    if (hideLanguageSwitcher) {
+        cy.tuiHideLanguageSwitcher();
     }
 }

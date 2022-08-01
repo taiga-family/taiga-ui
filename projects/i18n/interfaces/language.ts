@@ -1,5 +1,7 @@
 import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
+import {TuiLanguageName} from './language-names';
+
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
@@ -212,6 +214,10 @@ export type LanguagePreview = {
 
 export interface TuiLanguagePreview extends LanguagePreview {}
 
+export interface TuiLanguageMeta {
+    name: TuiLanguageName;
+}
+
 /**
  * @deprecated use {@link TuiLanguage}
  */
@@ -222,6 +228,7 @@ export interface Language
         LanguageCommerce,
         LanguageTable,
         LanguageEditor,
-        LanguagePreview {}
+        LanguagePreview,
+        TuiLanguageMeta {}
 
 export interface TuiLanguage extends Language {}

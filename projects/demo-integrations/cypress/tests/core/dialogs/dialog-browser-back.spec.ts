@@ -22,6 +22,7 @@ describe(`Dialogs + browser back navigation`, () => {
             hideHeader: false,
             hideNavigation: false,
             hideVersionManager: false,
+            hideLanguageSwitcher: false,
         }); // need to check that browser back navigation is not broken after closing all dialogs
     });
 

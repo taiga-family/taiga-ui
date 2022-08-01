@@ -3,5 +3,21 @@
     i18n-header
     header="Internationalization"
 >
-    <markdown [data]="(readme | async) || ''"></markdown>
+    <ng-template pageTab="Supported languages">
+        <markdown [data]="(readme | async) || ''"></markdown>
+    </ng-template>
+
+    <ng-template pageTab="Dynamic loader">
+        <tui-doc-code
+            filename="app.module.ts"
+            [code]="exampleModule"
+        ></tui-doc-code>
+
+        <tui-doc-example
+            id="theme-switcher"
+            [content]="example1"
+        >
+            <tui-language-switcher>Language</tui-language-switcher>
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>

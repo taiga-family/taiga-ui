@@ -1,3 +1,4 @@
+export * from '@taiga-ui/i18n/languages/chinese';
 export * from '@taiga-ui/i18n/languages/dutch';
 export * from '@taiga-ui/i18n/languages/english';
 export * from '@taiga-ui/i18n/languages/french';

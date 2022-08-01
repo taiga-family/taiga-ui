@@ -8,6 +8,7 @@ import {TUI_ITALIAN_LANGUAGE_CORE} from './core';
 import {TUI_ITALIAN_LANGUAGE_KIT} from './kit';
 
 export const TUI_ITALIAN_LANGUAGE: Language = {
+    name: `italian`,
     ...TUI_ITALIAN_LANGUAGE_CORE,
     ...TUI_ITALIAN_LANGUAGE_KIT,
     ...TUI_ITALIAN_LANGUAGE_ADDON_TABLE,

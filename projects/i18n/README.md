@@ -12,20 +12,21 @@
 
 Supported languages:
 
-| Language             |      Constant name      | Coverage |
-| -------------------- | :---------------------: | -------: |
-| English (by default) |  TUI_ENGLISH_LANGUAGE   |     100% |
-| Russian              |  TUI_RUSSIAN_LANGUAGE   |     100% |
-| Spanish              |  TUI_SPANISH_LANGUAGE   |     100% |
-| German               |   TUI_GERMAN_LANGUAGE   |     100% |
-| Turkish              |  TUI_TURKISH_LANGUAGE   |     100% |
-| Dutch                |   TUI_DUTCH_LANGUAGE    |     100% |
-| Ukrainian            | TUI_UKRAINIAN_LANGUAGE  |     100% |
-| French               |   TUI_FRENCH_LANGUAGE   |     100% |
-| Vietnamese           | TUI_VIETNAMESE_LANGUAGE |     100% |
-| Portuguese           | TUI_PORTUGUESE_LANGUAGE |     100% |
-| Italian              |  TUI_ITALIAN_LANGUAGE   |     100% |
-| Polish               |   TUI_POLISH_LANGUAGE   |     100% |
+| Language             |      Constant name      |
+| -------------------- | :---------------------: |
+| English (by default) |  TUI_ENGLISH_LANGUAGE   |
+| Russian              |  TUI_RUSSIAN_LANGUAGE   |
+| Spanish              |  TUI_SPANISH_LANGUAGE   |
+| German               |   TUI_GERMAN_LANGUAGE   |
+| Turkish              |  TUI_TURKISH_LANGUAGE   |
+| Dutch                |   TUI_DUTCH_LANGUAGE    |
+| Ukrainian            | TUI_UKRAINIAN_LANGUAGE  |
+| French               |   TUI_FRENCH_LANGUAGE   |
+| Vietnamese           | TUI_VIETNAMESE_LANGUAGE |
+| Portuguese           | TUI_PORTUGUESE_LANGUAGE |
+| Italian              |  TUI_ITALIAN_LANGUAGE   |
+| Polish               |   TUI_POLISH_LANGUAGE   |
+| Chinese              |  TUI_CHINESE_LANGUAGE   |
 
 <!-- Do not change next line without i18n demo page -->
 

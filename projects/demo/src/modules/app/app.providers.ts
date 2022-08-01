@@ -1,5 +1,5 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {inject} from '@angular/core';
+import {inject, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {
@@ -21,6 +21,7 @@ import {
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
+import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {of} from 'rxjs';
@@ -50,7 +51,7 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
     },
 };
 
-export const APP_PROVIDERS = [
+export const APP_PROVIDERS: Provider[] = [
     Title,
     PROMPT_PROVIDER,
     {
@@ -127,4 +128,13 @@ export const APP_PROVIDERS = [
         provide: TUI_DIALOG_CLOSES_ON_BACK,
         useFactory: () => of(!isInsideIframe(inject(WINDOW))), // for cypress tests
     },
+    tuiLanguageSwitcher(
+        async (language: TuiLanguageName): Promise<unknown> =>
+            import(
+                /* webpackMode: "lazy" */
+                /* webpackChunkName: "i18n-lazy-" */
+                /* webpackExports: ["named"] */
+                `dist/i18n/esm2015/languages/${language}`
+            ),
+    ),
 ];
