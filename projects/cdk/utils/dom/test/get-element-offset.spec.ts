@@ -1,6 +1,6 @@
-import {getElementOffset} from '../get-element-offset';
+import {tuiGetElementOffset} from '../get-element-offset';
 
-describe(`getElementOfset`, () => {
+describe(`tuiGetElementOffset`, () => {
     it(`should return offsets`, () => {
         const grandParent = document.createElement(`div`);
         const parent = document.createElement(`div`);
@@ -12,7 +12,7 @@ describe(`getElementOfset`, () => {
         Object.defineProperty(child, `offsetParent`, {value: parent});
         Object.defineProperty(parent, `offsetParent`, {value: grandParent});
 
-        expect(getElementOffset(grandParent, child)).toEqual({
+        expect(tuiGetElementOffset(grandParent, child)).toEqual({
             offsetTop: 0,
             offsetLeft: 0,
         });

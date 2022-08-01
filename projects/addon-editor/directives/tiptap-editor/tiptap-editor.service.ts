@@ -3,13 +3,13 @@ import './tiptap-editor.types';
 import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
-import {getMarkRange} from '@taiga-ui/addon-editor/utils';
+import {tuiGetMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-import {isEmptyParagraph} from './utils/is-empty-paragraph';
+import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -50,7 +50,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             editor.on(`update`, () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
-                const value: string = isEmptyParagraph(json) ? `` : content;
+                const value: string = tuiIsEmptyParagraph(json) ? `` : content;
 
                 this.valueChange$.next(value);
             });
@@ -297,7 +297,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     selectClosest(): void {
         const pos = this.editor.state.selection.anchor;
         const {schema, doc} = this.editor.state;
-        const range = getMarkRange(doc.resolve(pos), schema.marks.link);
+        const range = tuiGetMarkRange(doc.resolve(pos), schema.marks.link);
 
         if (range) {
             this.editor.chain().setTextSelection(range).run();

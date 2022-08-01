@@ -15,10 +15,10 @@ import {
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
-    isInsideIframe,
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_IS_CYPRESS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
+    tuiIsInsideIframe,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
@@ -125,6 +125,6 @@ export const APP_PROVIDERS = [
     },
     {
         provide: TUI_DIALOG_CLOSES_ON_BACK,
-        useFactory: () => of(!isInsideIframe(inject(WINDOW))), // for cypress tests
+        useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
     },
 ];

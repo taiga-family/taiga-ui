@@ -1,10 +1,10 @@
-import {getDocumentOrShadowRoot} from '../get-document-or-shadow-root';
+import {tuiGetDocumentOrShadowRoot} from '../get-document-or-shadow-root';
 
 describe(`getDocumentOrShadowRoot`, () => {
     it(`Node not in body`, () => {
         const element = document.createElement(`div`);
 
-        expect(getDocumentOrShadowRoot(element)).toEqual(
+        expect(tuiGetDocumentOrShadowRoot(element)).toEqual(
             element.ownerDocument as Document,
         );
     });
@@ -14,7 +14,7 @@ describe(`getDocumentOrShadowRoot`, () => {
 
         document.body.appendChild(element);
 
-        expect(getDocumentOrShadowRoot(element)).toEqual(
+        expect(tuiGetDocumentOrShadowRoot(element)).toEqual(
             element.getRootNode() as Document,
         );
 

@@ -1,8 +1,8 @@
-import {smartSearch} from '@taiga-ui/core';
+import {tuiSmartSearch} from '@taiga-ui/core';
 import {from, Observable, of} from 'rxjs';
 import {skip, take} from 'rxjs/operators';
 
-describe(`smartSearch`, () => {
+describe(`tuiSmartSearch`, () => {
     let source: Observable<string>;
 
     beforeEach(() => {
@@ -11,7 +11,9 @@ describe(`smartSearch`, () => {
 
     it(`starts with empty array`, () => {
         let result: unknown;
-        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(take(1))
@@ -24,7 +26,9 @@ describe(`smartSearch`, () => {
 
     it(`returns null starting search`, () => {
         let result: unknown;
-        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(skip(1), take(1))
@@ -37,7 +41,9 @@ describe(`smartSearch`, () => {
 
     it(`returns search result of function`, () => {
         let result: unknown;
-        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(skip(2), take(1))
@@ -52,7 +58,7 @@ describe(`smartSearch`, () => {
         let result: unknown;
         let counter = 0;
 
-        const operator = smartSearch<string>((search: string) => {
+        const operator = tuiSmartSearch<string>((search: string) => {
             counter++;
 
             return of([`${search}result`]);

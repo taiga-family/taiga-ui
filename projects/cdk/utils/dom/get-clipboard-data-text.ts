@@ -1,11 +1,9 @@
 const DEFAULT_FORMAT = `text/plain`;
 
 /**
- * @deprecated: use {@link tuiGetClipboardDataText} instead
  * Gets text from data of clipboardEvent, it also works in IE and Edge browsers
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getClipboardDataText(
+export function tuiGetClipboardDataText(
     event: ClipboardEvent,
     format: string = DEFAULT_FORMAT,
 ): string {
@@ -14,5 +12,3 @@ export function getClipboardDataText(
               event.clipboardData.getData(DEFAULT_FORMAT)
         : (event as any).target.ownerDocument.defaultView.clipboardData.getData(`text`);
 }
-
-export const tuiGetClipboardDataText = getClipboardDataText;

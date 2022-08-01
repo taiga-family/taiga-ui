@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    itemsQueryListObservable,
-    preventDefault,
     setNativeFocused,
     tuiGetClosestFocusable,
+    tuiItemsQueryListObservable,
+    tuiPreventDefault,
     tuiPure,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -84,7 +84,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
 
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
-        return itemsQueryListObservable(this.elements).pipe(
+        return tuiItemsQueryListObservable(this.elements).pipe(
             map(array => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );
@@ -98,7 +98,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                     ...elements.map((element, index) =>
                         typedFromEvent(element, `keydown`).pipe(
                             filter(({keyCode}) => keyCode === 39),
-                            preventDefault(),
+                            tuiPreventDefault(),
                             mapTo(index),
                         ),
                     ),

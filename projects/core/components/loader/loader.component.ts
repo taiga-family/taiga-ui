@@ -9,10 +9,10 @@ import {
 } from '@angular/core';
 import {
     blurNativeFocused,
-    isSafari,
     TUI_IS_IOS,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
+    tuiIsSafari,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
@@ -57,7 +57,7 @@ export class TuiLoaderComponent {
     @HostBinding(`class._loading`)
     loading = true;
 
-    readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;
+    readonly isApple = tuiIsSafari(this.elementRef.nativeElement) || this.isIos;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,

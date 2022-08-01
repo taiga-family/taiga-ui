@@ -15,7 +15,7 @@ import {
     CHROMIUM_EDGE_START_VERSION,
     tuiDefaultProp,
     tuiIsEdgeOlderThan,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
@@ -118,7 +118,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            control.valueChanges?.pipe(watch(changeDetectorRef), take(1)).subscribe();
+            control.valueChanges?.pipe(tuiWatch(changeDetectorRef), take(1)).subscribe();
         }
     }
 }

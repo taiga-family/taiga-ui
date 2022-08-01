@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {isCurrentTarget, isFirefox} from '@taiga-ui/cdk';
+import {tuiIsCurrentTarget, tuiIsFirefox} from '@taiga-ui/cdk';
 import {BehaviorSubject} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ export class TuiPresentDirective implements OnDestroy {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) userAgent: string,
     ) {
-        if (isFirefox(userAgent)) {
+        if (tuiIsFirefox(userAgent)) {
             return;
         }
 
@@ -61,7 +61,7 @@ export class TuiPresentDirective implements OnDestroy {
     @HostListener(`animationcancel`, [`$event`, `false`])
     @HostListener(`animationstart`, [`$event`, `true`])
     onAnimation(event: Event, visibility: boolean): void {
-        if (isCurrentTarget(event)) {
+        if (tuiIsCurrentTarget(event)) {
             this.visibility$.next(visibility);
         }
     }
