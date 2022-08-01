@@ -11,7 +11,6 @@ import {takeUntil} from 'rxjs/operators';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
-// @dynamic
 @Directive({
     selector: `[tuiTiptapEditor]`,
     providers: [TuiDestroyService],

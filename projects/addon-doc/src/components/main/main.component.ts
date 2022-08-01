@@ -10,7 +10,6 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
-// @dynamic
 @Component({
     selector: `tui-doc-main`,
     templateUrl: `./main.template.html`,

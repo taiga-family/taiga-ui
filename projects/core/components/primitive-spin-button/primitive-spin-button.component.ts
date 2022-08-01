@@ -13,7 +13,6 @@ import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Component({
     selector: `tui-primitive-spin-button`,
     changeDetection: ChangeDetectionStrategy.OnPush,

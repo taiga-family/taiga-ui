@@ -35,7 +35,6 @@ import {map} from 'rxjs/operators';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
-// @dynamic
 @Component({
     selector: `tui-input-files`,
     templateUrl: `./input-files.template.html`,
