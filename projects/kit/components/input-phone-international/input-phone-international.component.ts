@@ -50,7 +50,6 @@ import {
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
 import {extractValueFromEvent} from './utils/extract-value-from-event';
 
-// @dynamic
 @Component({
     selector: `tui-input-phone-international`,
     templateUrl: `./input-phone-international.template.html`,

@@ -24,7 +24,6 @@ import {
     TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 
-// @dynamic
 @Component({
     selector: `tui-carousel`,
     templateUrl: `carousel.template.html`,

@@ -28,7 +28,6 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 
-// @dynamic
 @Component({
     selector: `tui-doc-navigation`,
     templateUrl: `navigation.template.html`,

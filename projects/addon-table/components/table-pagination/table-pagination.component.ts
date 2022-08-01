@@ -9,7 +9,6 @@ import {
     TuiTablePaginationOptions,
 } from './table-pagination-options';
 
-// @dynamic
 @Component({
     selector: `tui-table-pagination`,
     templateUrl: `./table-pagination.template.html`,

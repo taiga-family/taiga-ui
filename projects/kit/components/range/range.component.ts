@@ -32,7 +32,6 @@ import {
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
 
-// @dynamic
 @Component({
     selector: `tui-range`,
     templateUrl: `./range.template.html`,

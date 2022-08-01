@@ -55,7 +55,6 @@ import {
     TUI_VALUE_STREAM,
 } from './mobile-calendar.providers';
 
-// @dynamic
 @Component({
     selector: `tui-mobile-calendar`,
     templateUrl: `./mobile-calendar.template.html`,

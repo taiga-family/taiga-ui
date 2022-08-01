@@ -14,7 +14,6 @@ export const TUI_EDITOR_MIN_IMAGE_WIDTH = new InjectionToken<number>(
     },
 );
 
-// @dynamic
 @Component({
     selector: `tui-image-editor`,
     templateUrl: `./image-editor.component.html`,
