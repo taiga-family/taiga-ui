@@ -14,11 +14,11 @@ import {
 import {
     EMPTY_QUERY,
     isPresent,
-    itemsQueryListObservable,
     setNativeMouseFocused,
     tuiAssertIsElement,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
+    tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -68,7 +68,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @tuiPure
     get empty$(): Observable<boolean> {
-        return itemsQueryListObservable(this.options).pipe(map(({length}) => !length));
+        return tuiItemsQueryListObservable(this.options).pipe(map(({length}) => !length));
     }
 
     @HostListener(`focusin`, [`$event.relatedTarget`, `$event.currentTarget`])

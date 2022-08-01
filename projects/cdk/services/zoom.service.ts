@@ -1,6 +1,6 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
-import {preventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {distanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
@@ -22,7 +22,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                         typedFromEvent(nativeElement, `touchmove`, {
                             passive: true,
                         }).pipe(
-                            preventDefault(),
+                            tuiPreventDefault(),
                             scan(
                                 (prev, event) => {
                                     const distance = distanceBetweenTouches(event);
@@ -58,7 +58,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                     ),
                 ),
                 typedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
-                    preventDefault(),
+                    tuiPreventDefault(),
                     map(wheel => ({
                         clientX: wheel.clientX,
                         clientY: wheel.clientY,

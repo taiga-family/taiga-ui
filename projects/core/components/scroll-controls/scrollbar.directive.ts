@@ -11,9 +11,9 @@ import {
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
-    preventDefault,
-    stopPropagation,
     TuiDestroyService,
+    tuiPreventDefault,
+    tuiStopPropagation,
     tuiZonefree,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -54,12 +54,12 @@ export class TuiScrollbarDirective {
 
         merge(
             mousedownWrapper$.pipe(
-                preventDefault(),
+                tuiPreventDefault(),
                 map(event => this.getScrolled(event, 0.5, 0.5)),
             ),
             mousedown$.pipe(
-                preventDefault(),
-                stopPropagation(),
+                tuiPreventDefault(),
+                tuiStopPropagation(),
                 switchMap(event => {
                     const rect = nativeElement.getBoundingClientRect();
                     const vertical = getOffsetVertical(event, rect);

@@ -1,8 +1,8 @@
 import {QueryList} from '@angular/core';
 
-import {itemsQueryListObservable} from '../items-query-list-observable';
+import {tuiItemsQueryListObservable} from '../items-query-list-observable';
 
-describe(`itemsQueryListObservable`, () => {
+describe(`tuiItemsQueryListObservable`, () => {
     let queryList: QueryList<number>;
 
     beforeEach(() => {
@@ -13,7 +13,7 @@ describe(`itemsQueryListObservable`, () => {
     it(`emits current array on subscription`, () => {
         let result: readonly number[] | null = null;
 
-        itemsQueryListObservable<number>(queryList).subscribe(data => {
+        tuiItemsQueryListObservable<number>(queryList).subscribe(data => {
             result = data;
         });
 
@@ -23,7 +23,7 @@ describe(`itemsQueryListObservable`, () => {
     it(`emits new array on changes`, () => {
         let result: readonly number[] | null = null;
 
-        itemsQueryListObservable<number>(queryList).subscribe(data => {
+        tuiItemsQueryListObservable<number>(queryList).subscribe(data => {
             result = data;
         });
 

@@ -1,10 +1,6 @@
 const DEFAULT: [number, number, number, number] = [0, 0, 0, 1];
 
-/**
- * @deprecated: use {@link tuiParseColor} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function parseColor(color: string): [number, number, number, number] {
+export function tuiParseColor(color: string): [number, number, number, number] {
     const stripped = color
         .replace(`#`, ``)
         .replace(`rgba(`, ``)
@@ -37,5 +33,3 @@ export function parseColor(color: string): [number, number, number, number] {
         parsed[3] === undefined ? DEFAULT[3] : parsed[3],
     ];
 }
-
-export const tuiParseColor = parseColor;
