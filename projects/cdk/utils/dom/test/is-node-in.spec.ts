@@ -1,12 +1,12 @@
-import {isNodeIn} from '../is-node-in';
+import {tuiIsNodeIn} from '../is-node-in';
 
-describe(`isNodeIn`, () => {
+describe(`tuiIsNodeIn`, () => {
     it(`tag selector`, () => {
         const div = document.createElement(`div`);
 
         document.body.appendChild(div);
 
-        expect(isNodeIn(div, `div`)).toEqual(true);
+        expect(tuiIsNodeIn(div, `div`)).toEqual(true);
 
         document.body.removeChild(div);
     });
@@ -18,7 +18,7 @@ describe(`isNodeIn`, () => {
 
         document.body.appendChild(div);
 
-        expect(isNodeIn(div, `.hello`)).toEqual(true);
+        expect(tuiIsNodeIn(div, `.hello`)).toEqual(true);
 
         document.body.removeChild(div);
     });
@@ -31,7 +31,7 @@ describe(`isNodeIn`, () => {
 
         document.body.appendChild(p);
 
-        expect(isNodeIn(textNode, `p`)).toEqual(true);
+        expect(tuiIsNodeIn(textNode, `p`)).toEqual(true);
 
         document.body.removeChild(p);
     });

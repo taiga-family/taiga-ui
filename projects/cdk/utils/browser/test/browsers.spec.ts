@@ -1,6 +1,6 @@
-import {isEdge} from '../is-edge';
+import {tuiIsEdge} from '../is-edge';
 import {tuiIsEdgeOlderThan} from '../is-edge-older-than';
-import {isFirefox} from '../is-firefox';
+import {tuiIsFirefox} from '../is-firefox';
 import {tuiIsIE} from '../is-ie';
 
 describe(`Browsers`, () => {
@@ -9,12 +9,12 @@ describe(`Browsers`, () => {
     });
 
     it(`isEdge`, () => {
-        expect(isEdge(`edge`)).toBe(true);
+        expect(tuiIsEdge(`edge`)).toBe(true);
     });
 
     it(`isFirefox`, () => {
-        expect(isFirefox(`firefox`)).toBe(true);
-        expect(isFirefox(`Firefox`)).toBe(true);
+        expect(tuiIsFirefox(`firefox`)).toBe(true);
+        expect(tuiIsFirefox(`Firefox`)).toBe(true);
     });
 
     it(`isEdgeOlderThan`, () => {

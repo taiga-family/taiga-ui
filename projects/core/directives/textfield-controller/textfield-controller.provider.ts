@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, InjectionToken, Provider} from '@angular/core';
-import {TuiDestroyService, watch} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {merge, NEVER, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -66,7 +66,7 @@ export function textfieldWatchedControllerFactory(
     ]
 ): TuiTextfieldController {
     const change$ = merge(...controllers.map(({change$}) => change$ || NEVER)).pipe(
-        watch(changeDetectorRef),
+        tuiWatch(changeDetectorRef),
         takeUntil(destroy$),
     );
 

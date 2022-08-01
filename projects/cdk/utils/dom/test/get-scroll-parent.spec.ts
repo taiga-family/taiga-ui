@@ -1,8 +1,8 @@
-import {getScrollParent} from '../get-scroll-parent';
+import {tuiGetScrollParent} from '../get-scroll-parent';
 
-describe(`getScrollParent`, () => {
+describe(`tuiGetScrollParent`, () => {
     it(`There is no element`, () => {
-        expect(getScrollParent(null)).toEqual(null);
+        expect(tuiGetScrollParent(null)).toEqual(null);
     });
 
     it(`Should return element. Vertical is true`, () => {
@@ -11,7 +11,7 @@ describe(`getScrollParent`, () => {
         Object.defineProperty(element, `scrollHeight`, {value: 5});
         Object.defineProperty(element, `clientHeight`, {value: 0});
 
-        expect(getScrollParent(element)).toEqual(element);
+        expect(tuiGetScrollParent(element)).toEqual(element);
     });
 
     it(`Should return element. Vertical is false`, () => {
@@ -20,7 +20,7 @@ describe(`getScrollParent`, () => {
         Object.defineProperty(element, `scrollWidth`, {value: 5});
         Object.defineProperty(element, `clientWidth`, {value: 0});
 
-        expect(getScrollParent(element, false)).toEqual(element);
+        expect(tuiGetScrollParent(element, false)).toEqual(element);
     });
 
     it(`Shoul return parent element`, () => {
@@ -35,6 +35,6 @@ describe(`getScrollParent`, () => {
         Object.defineProperty(parentElement, `scrollWidth`, {value: 5});
         Object.defineProperty(parentElement, `clientWidth`, {value: 0});
 
-        expect(getScrollParent(childElement, false)).toEqual(parentElement);
+        expect(tuiGetScrollParent(childElement, false)).toEqual(parentElement);
     });
 });

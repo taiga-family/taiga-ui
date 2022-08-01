@@ -5,7 +5,7 @@ import {
     TuiDayRange,
     TuiDestroyService,
     TuiScrollService,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {EMPTY, Observable} from 'rxjs';
@@ -41,5 +41,5 @@ export function valueStreamFactory(
     destroy$: Observable<void>,
     changeDetectorRef: ChangeDetectorRef,
 ): Observable<TuiDayRange | null> {
-    return (value$ || EMPTY).pipe(watch(changeDetectorRef), takeUntil(destroy$));
+    return (value$ || EMPTY).pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$));
 }
