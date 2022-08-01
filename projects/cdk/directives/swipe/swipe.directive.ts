@@ -3,7 +3,6 @@ import {TuiSwipe} from '@taiga-ui/cdk/interfaces';
 import {TuiSwipeService} from '@taiga-ui/cdk/services';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Directive({
     selector: `[tuiSwipe]`,
     outputs: [`tuiSwipe`],

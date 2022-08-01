@@ -15,7 +15,6 @@ import {
     tuiGetNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
 
-// @dynamic
 @Directive({
     selector: `[tuiFocusTrap]`,
     host: {

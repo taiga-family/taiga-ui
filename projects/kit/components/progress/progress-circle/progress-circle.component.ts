@@ -15,7 +15,6 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
-// @dynamic
 @Component({
     selector: `tui-progress-circle`,
     templateUrl: `./progress-circle.template.html`,

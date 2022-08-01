@@ -12,7 +12,6 @@ const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
 const END = MAX_LENGTH - START - 10;
 
-// @dynamic
 @Component({
     selector: `tui-edit-link`,
     templateUrl: `./edit-link.template.html`,
