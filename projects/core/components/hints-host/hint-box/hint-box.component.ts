@@ -60,8 +60,6 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
 };
 
 // TODO: consider abstracting UI and move to CDK, split hint and overflow
-// Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
 @Component({
     selector: `tui-hint-box[hint]`,
     templateUrl: `./hint-box.template.html`,

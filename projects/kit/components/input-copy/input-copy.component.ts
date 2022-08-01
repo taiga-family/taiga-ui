@@ -32,7 +32,6 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
 import {TUI_INPUT_COPY_PROVIDERS} from './input-copy.providers';
 
-// @dynamic
 @Component({
     selector: `tui-input-copy`,
     templateUrl: `./input-copy.template.html`,

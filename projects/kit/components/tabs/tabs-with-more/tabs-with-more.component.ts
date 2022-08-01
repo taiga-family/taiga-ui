@@ -36,7 +36,6 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
-// @dynamic
 @Component({
     selector: `tui-tabs-with-more, nav[tuiTabsWithMore]`,
     templateUrl: `./tabs-with-more.template.html`,

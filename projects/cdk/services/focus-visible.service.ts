@@ -9,7 +9,6 @@ import {TuiDestroyService} from './destroy.service';
  * Service to imitate :focus-visible
  * (https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible)
  * in browsers that do not support it
- * @dynamic
  */
 @Injectable()
 export class TuiFocusVisibleService extends Observable<boolean> {
