@@ -9,7 +9,11 @@ import {
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
-import {getGradientData, parseColor, parseGradient} from '@taiga-ui/addon-editor/utils';
+import {
+    tuiGetGradientData,
+    tuiParseColor,
+    tuiParseGradient,
+} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -240,7 +244,7 @@ export class TuiColorSelectorComponent {
             return;
         }
 
-        const gradient = parseGradient(getGradientData(color));
+        const gradient = tuiParseGradient(tuiGetGradientData(color));
 
         this.currentMode = this.modes[1];
         this.direction = gradient.side;
@@ -250,7 +254,7 @@ export class TuiColorSelectorComponent {
                 ? gradient.stops.map<[number, [number, number, number, number]]>(
                       ({color, position}) => [
                           parseFloat(position) / 100,
-                          parseColor(color),
+                          tuiParseColor(color),
                       ],
                   )
                 : DEFAULT_STEPS,
@@ -260,6 +264,6 @@ export class TuiColorSelectorComponent {
     private parseColor(color: string): void {
         this.currentMode = this.modes[0];
         this.currentStop = 0;
-        this.color = parseColor(color);
+        this.color = tuiParseColor(color);
     }
 }

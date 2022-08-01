@@ -1,8 +1,8 @@
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {
-    stopPropagation,
     TuiDestroyService,
     TuiFocusVisibleService,
+    tuiStopPropagation,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {merge, Observable, timer} from 'rxjs';
@@ -55,7 +55,7 @@ export function describedByFactory(
                     typedFromEvent(nativeElement, `keydown`).pipe(
                         filter(({key}) => key === `Escape`),
                         take(1),
-                        stopPropagation(),
+                        tuiStopPropagation(),
                         mapTo(false),
                         startWith(true),
                     ),

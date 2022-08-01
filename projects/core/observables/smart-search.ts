@@ -8,11 +8,7 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-/**
- * @deprecated: use {@link tuiSmartSearch} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function smartSearch<T>(
+export function tuiSmartSearch<T>(
     getSearchFunction: (search: string) => Observable<readonly T[] | readonly T[][]>,
     searchDebounceTimeMs: number = 400,
 ): OperatorFunction<string, readonly T[] | readonly T[][] | null> {
@@ -29,5 +25,3 @@ export function smartSearch<T>(
             startWith(EMPTY_ARRAY),
         );
 }
-
-export const tuiSmartSearch = smartSearch;
