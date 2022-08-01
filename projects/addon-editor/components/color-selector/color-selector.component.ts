@@ -30,7 +30,6 @@ const ICONS: Record<TuiGradientDirection, string> = {
     'to top': `tuiIconArrowUp`,
 };
 
-// @dynamic
 @Component({
     selector: `tui-color-selector`,
     templateUrl: `./color-selector.template.html`,

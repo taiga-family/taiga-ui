@@ -20,7 +20,6 @@ import {map} from 'rxjs/operators';
 
 type FileTexts = 'loadingError' | 'preview' | 'remove';
 
-// @dynamic
 @Component({
     selector: `tui-file`,
     changeDetection: ChangeDetectionStrategy.OnPush,

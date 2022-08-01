@@ -10,7 +10,6 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 // So that borders get rounded when image is visible for at least 10px
 const OFFSET = 10;
 
-// @dynamic
 @Directive({
     selector: `[tuiSheetTop]`,
     host: {

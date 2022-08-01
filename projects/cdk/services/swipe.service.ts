@@ -7,9 +7,6 @@ import {getSwipeDirection, isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise} from 'rxjs/operators';
 
-/**
- * @dynamic
- */
 @Injectable()
 export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor(

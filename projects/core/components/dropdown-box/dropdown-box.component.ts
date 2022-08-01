@@ -38,8 +38,6 @@ import {takeUntil, throttleTime} from 'rxjs/operators';
  *  This component is used to show template in a portal using default style of white rounded box with a shadow
  */
 // @bad TODO: OnPush
-// Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
 @Component({
     selector: `tui-dropdown-box`,
     templateUrl: `./dropdown-box.template.html`,

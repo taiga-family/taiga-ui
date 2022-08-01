@@ -5,7 +5,6 @@ import {map, mapTo, startWith, switchMap, tap} from 'rxjs/operators';
 import {TuiTreeLoader} from './tree.interfaces';
 import {TUI_TREE_LOADER, TUI_TREE_LOADING, TUI_TREE_START} from './tree.tokens';
 
-// @dynamic
 @Injectable()
 export class TuiTreeService<T> {
     private readonly map = new Map<T, readonly T[]>([[this.loading, []]]);
