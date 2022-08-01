@@ -38,7 +38,6 @@ const MISSING_EXTERNAL_ICON = `External icon is missing on the given URL`;
 const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
-// @dynamic
 @Component({
     selector: `tui-svg`,
     templateUrl: `./svg.template.html`,

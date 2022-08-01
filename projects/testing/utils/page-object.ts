@@ -5,7 +5,6 @@ import {
     TuiFieldNotFoundException,
 } from '@taiga-ui/testing/exceptions';
 
-// @dynamic
 export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 

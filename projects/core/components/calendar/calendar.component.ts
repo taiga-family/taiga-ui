@@ -22,7 +22,6 @@ import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
-// @dynamic
 @Component({
     selector: `tui-calendar`,
     templateUrl: `./calendar.template.html`,

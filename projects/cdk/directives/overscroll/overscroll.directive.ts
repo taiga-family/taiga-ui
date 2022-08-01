@@ -8,7 +8,6 @@ import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 /**
  * Directive to isolate scrolling, i.e. prevent body scroll behind modal dialog
- * @dynamic
  */
 @Directive({
     selector: `[tuiOverscroll]`,

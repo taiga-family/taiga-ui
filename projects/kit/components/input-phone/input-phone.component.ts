@@ -42,7 +42,6 @@ import {Observable} from 'rxjs';
 import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
-// @dynamic
 @Component({
     selector: `tui-input-phone`,
     templateUrl: `./input-phone.template.html`,

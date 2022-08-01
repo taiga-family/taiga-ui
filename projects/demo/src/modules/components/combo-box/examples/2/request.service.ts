@@ -13,7 +13,6 @@ import {
 import {databaseMockData} from './database-mock-data';
 import {User} from './user';
 
-// @dynamic
 @Injectable()
 export class RequestService {
     private readonly request$ = new Subject<string>();

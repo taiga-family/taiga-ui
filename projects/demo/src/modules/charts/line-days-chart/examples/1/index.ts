@@ -13,7 +13,6 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `tui-line-days-chart-example-1`,
     templateUrl: `./index.html`,
