@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {getElementObscurers, TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiGetElementObscures} from '@taiga-ui/cdk';
 import {Observable, ReplaySubject} from 'rxjs';
 import {debounceTime, filter, switchMapTo, takeUntil} from 'rxjs/operators';
 
@@ -28,7 +28,7 @@ export class TuiScrollIntoViewLinkDirective {
                 filter(Boolean),
                 switchMapTo(this.scroll$),
                 debounceTime(750),
-                filter(shallWe => shallWe && !!getElementObscurers(nativeElement)),
+                filter(shallWe => shallWe && !!tuiGetElementObscures(nativeElement)),
                 takeUntil(destroy$),
             )
             .subscribe(() => {

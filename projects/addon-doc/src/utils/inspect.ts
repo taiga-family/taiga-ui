@@ -13,7 +13,7 @@ function inspectArray(array: readonly unknown[], depth: number): string {
             result += `, `;
         }
 
-        result += index in array ? inspectAny(array[index], depth - 1) : `empty`;
+        result += index in array ? tuiInspectAny(array[index], depth - 1) : `empty`;
     }
 
     return `[${result}]`;
@@ -39,21 +39,19 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
             result += `, `;
         }
 
-        result += `${key}: ${inspectAny(object[key], depth - 1)}`;
+        result += `${key}: ${tuiInspectAny(object[key], depth - 1)}`;
     }
 
     return `{${result}}`;
 }
 
 /**
- * @deprecated: use {@link tuiInspectAny} instead
  * Returns readable JS entity
  * @param data
  * @param depth
  * @return readable JS entity
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function inspectAny<T>(data: T, depth: number): string {
+export function tuiInspectAny<T>(data: T, depth: number): string {
     if (data === null) {
         return `null`;
     }
@@ -78,5 +76,3 @@ export function inspectAny<T>(data: T, depth: number): string {
 
     return inspectObject(data as unknown as {[key: string]: unknown}, depth);
 }
-
-export const tuiInspectAny = inspectAny;

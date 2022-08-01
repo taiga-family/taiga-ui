@@ -1,7 +1,12 @@
 import {ChangeDetectorRef, Component, Inject, NgZone, OnInit} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_CYPRESS, TuiDestroyService, tuiZoneOptimized, watch} from '@taiga-ui/cdk';
+import {
+    TUI_IS_CYPRESS,
+    TuiDestroyService,
+    tuiWatch,
+    tuiZoneOptimized,
+} from '@taiga-ui/cdk';
 import {Observable, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -29,7 +34,11 @@ export class TuiInputInlineExample3 implements OnInit {
         }
 
         timer(0, 3000)
-            .pipe(tuiZoneOptimized(this.zone), watch(this.cd), takeUntil(this.destroy$))
+            .pipe(
+                tuiZoneOptimized(this.zone),
+                tuiWatch(this.cd),
+                takeUntil(this.destroy$),
+            )
             .subscribe(value => {
                 this.count = String(value);
             });

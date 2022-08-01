@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Input, NgZone} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
-import {describeSector} from '@taiga-ui/addon-charts/utils';
+import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {
     clamp,
     easeInOutQuad,
@@ -56,7 +56,7 @@ export class TuiPieChartDirective {
                 takeUntil(destroy$),
             )
             .subscribe(([start, end]) => {
-                nativeElement.setAttribute(`d`, describeSector(start, end));
+                nativeElement.setAttribute(`d`, tuiDescribeSector(start, end));
             });
     }
 }

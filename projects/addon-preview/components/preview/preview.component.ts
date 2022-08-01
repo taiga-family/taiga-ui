@@ -8,9 +8,9 @@ import {
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     clamp,
-    dragAndDropFrom,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiDragAndDropFrom,
     TuiDragStage,
     tuiPx,
     tuiRound,
@@ -55,7 +55,7 @@ export class TuiPreviewComponent {
     );
 
     readonly transitioned$ = merge(
-        dragAndDropFrom(this.elementRef.nativeElement).pipe(
+        tuiDragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
         typedFromEvent(this.elementRef.nativeElement, `touchmove`, {passive: true}).pipe(
@@ -66,7 +66,7 @@ export class TuiPreviewComponent {
         ),
     );
 
-    readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
+    readonly cursor$ = tuiDragAndDropFrom(this.elementRef.nativeElement).pipe(
         map(({stage}) => (stage === TuiDragStage.Continues ? `grabbing` : `initial`)),
         startWith(`initial`),
     );
