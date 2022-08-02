@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[433],{VDzn:function(n,o,t){"use strict";t.r(o),o.default="```ts\nimport {TuiBadgedContentModule} from '@taiga-ui/kit';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiBadgedContentModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
