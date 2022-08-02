@@ -30,16 +30,17 @@ import {
 import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from '../slider.component';
+import {TUI_SLIDER_HAS_KEY_STEPS} from './tokens';
 
 // @dynamic
 @Directive({
     selector: `input[tuiSlider][keySteps]`,
     host: {
-        '[attr.data-key-steps]': `true`,
-        '[attr.aria-valuenow]': `controlValue`,
+        '[attr.aria-valuenow]': `safeCurrentValue`,
         '[attr.aria-valuemin]': `min`,
         '[attr.aria-valuemax]': `max`,
     },
+    providers: [{provide: TUI_SLIDER_HAS_KEY_STEPS, useValue: true}],
 })
 export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
@@ -89,6 +90,14 @@ export class TuiSliderKeyStepsDirective
         super(control, changeDetectorRef);
     }
 
+    /**
+     * TODO: 3.0
+     * ___
+     * Also add @HostListener(`input`): to be similar to
+     * {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/range_value_accessor.ts#L47-L48 RangeValueAccessor}
+     * ___
+     * Remove {@link keyStepsInput}
+     */
     @HostListener(`change`)
     updateControlValue(): void {
         this.updateValue(this.controlValue);

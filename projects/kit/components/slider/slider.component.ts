@@ -20,6 +20,7 @@ import {
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
+import {TUI_SLIDER_HAS_KEY_STEPS} from './helpers/tokens';
 import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
 
 @Component({
@@ -68,9 +69,8 @@ export class TuiSliderComponent {
 
     get value(): number {
         const {elementRef, control} = this;
-        const noKeySteps = !elementRef.nativeElement.hasAttribute(`data-key-steps`);
 
-        if (noKeySteps && control instanceof NgModel) {
+        if (!this.hasKeySteps && control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `elementRef.nativeElement.value` is equal to the previous value at this moment.
@@ -109,6 +109,7 @@ export class TuiSliderComponent {
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_SLIDER_HAS_KEY_STEPS) private readonly hasKeySteps: boolean,
     ) {
         if (control instanceof NgModel) {
             /**
