@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.57.0](https://github.com/tinkoff/taiga-ui/compare/v2.56.0...v2.57.0) (2022-08-02)
+
+### Features
+
+- **addon-editor:** add group extension
+  ([86082f2](https://github.com/tinkoff/taiga-ui/commit/86082f21b369095129eb4fbe69cf462df10aae9a))
+
+### Bug Fixes
+
+- **kit:** use `break-all` for `LineClamp`
+  ([2a24854](https://github.com/tinkoff/taiga-ui/commit/2a24854b8608ac2bdfed4f15eca44ffeb343c9e7))
+
 ## [2.56.0](https://github.com/tinkoff/taiga-ui/compare/v2.55.0...v2.56.0) (2022-07-28)
 
 ### Features
