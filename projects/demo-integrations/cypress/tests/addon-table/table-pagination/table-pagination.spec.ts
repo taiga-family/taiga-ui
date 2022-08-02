@@ -1,3 +1,5 @@
+import {WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
+
 describe(`TablePagination`, () => {
     beforeEach(() => {
         cy.viewport(`macbook-13`);
@@ -40,8 +42,12 @@ describe(`TablePagination`, () => {
         initializeAliases(`#custom-size-option-content`);
 
         cy.get(`@linesPerPageSelect`).click();
+
         waitForCheckmarkIcon();
-        cy.get(`tui-dropdown-box`).matchImageSnapshot(`2-[sizeOptionContent]-dropdown`);
+
+        cy.get(`tui-dropdown-box`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`2-[sizeOptionContent]-dropdown`);
     });
 });
 

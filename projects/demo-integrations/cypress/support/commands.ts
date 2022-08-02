@@ -4,6 +4,7 @@ import {
 } from '@taiga-ui/testing/cypress';
 
 import {tuiFocus} from './focus';
+import {tuiHideDocPage, tuiShowDocPage} from './hide-doc-page';
 import {tuiHideHeader} from './hide-header';
 import {tuiHideLanguageSwitcher} from './hide-language-switcher';
 import {tuiHideNavigation} from './hide-navigation';
@@ -30,6 +31,8 @@ declare global {
             tuiHideVersionManager: typeof tuiHideVersionManager;
             tuiHideLanguageSwitcher: typeof tuiHideLanguageSwitcher;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
+            tuiHideDocPage: typeof tuiHideDocPage;
+            tuiShowDocPage: typeof tuiShowDocPage;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
 
@@ -66,6 +69,8 @@ Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
 Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
 Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
 Cypress.Commands.add(`tuiHideLanguageSwitcher`, tuiHideLanguageSwitcher);
+Cypress.Commands.add(`tuiHideDocPage`, tuiHideDocPage);
+Cypress.Commands.add(`tuiShowDocPage`, tuiShowDocPage);
 
 Cypress.Commands.add(
     `tuiTab`,

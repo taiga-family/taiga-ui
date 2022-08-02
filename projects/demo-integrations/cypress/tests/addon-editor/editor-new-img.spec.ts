@@ -1,28 +1,33 @@
 import {EDITOR_PAGE_URL, WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe(`Examples with preview images`, () => {
-    beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
+    beforeEach(() => cy.viewport(1650, 900).tuiVisit(EDITOR_PAGE_URL));
 
     it(`preview display of images`, () => {
-        cy.get(`#preview-image`)
-            .findByAutomationId(`tui-doc-example`)
+        cy.get(`#preview-image`).findByAutomationId(`tui-doc-example`).as(`wrapper`);
+
+        cy.get(`@wrapper`).tuiScrollIntoView().click();
+
+        cy.get(`@wrapper`)
+            .find(`.tui-editor-socket`)
+            .eq(1)
             .tuiScrollIntoView()
-            .as(`wrapper`);
-
-        cy.get(`@wrapper`).click().wait(WAIT_BEFORE_SCREENSHOT);
-
-        cy.matchImageSnapshot(`3-1-two-visible-image`, {capture: `viewport`});
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`3-1-two-visible-image`, {capture: `viewport`});
 
         cy.get(`@wrapper`)
             .find(`tui-editor-socket`)
             .find(`img`)
             .filter(`[src="assets/images/big-wallpaper.jpg"]`)
             .filter(`:visible`)
-            .click()
-            .wait(WAIT_BEFORE_SCREENSHOT);
+            .click();
 
-        cy.matchImageSnapshot(`3-1-preview-big-wallpaper`, {capture: `viewport`});
+        cy.tuiHideDocPage();
+        cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`3-2-preview-big-wallpaper`, {
+            capture: `viewport`,
+        });
 
+        cy.tuiShowDocPage();
         closePreview();
 
         cy.get(`@wrapper`)
@@ -30,15 +35,18 @@ describe(`Examples with preview images`, () => {
             .find(`img`)
             .filter(`[src="assets/images/lumberjack.png"]`)
             .filter(`:visible`)
-            .click()
-            .wait(WAIT_BEFORE_SCREENSHOT);
+            .click();
 
-        cy.matchImageSnapshot(`3-1-preview-lumberjack`, {capture: `viewport`});
+        cy.tuiHideDocPage();
+        cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`3-3-preview-lumberjack`, {
+            capture: `viewport`,
+        });
 
+        cy.tuiShowDocPage();
         closePreview();
-
-        function closePreview(): void {
-            cy.get(`tui-preview`).find(`button[icon=tuiIconCloseLarge]`).click();
-        }
     });
 });
+
+function closePreview(): void {
+    cy.get(`tui-preview`).find(`button[icon=tuiIconCloseLarge]`).click();
+}

@@ -34,6 +34,9 @@ describe(`Editing links in Editor`, () => {
         tuiInsertLink();
         tuiGetEditLinkInput().type(`wysiwyg.com`);
         tuiGetEditLinkInput().type(`{enter}`);
+
+        tuiFocusToStartInEditor(); // clear hints
+
         tuiGetScreenshotArea().matchImageSnapshot(`2-1-added-new-link`);
         tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
         tuiGetScreenshotArea().matchImageSnapshot(`2-2-focused-new-link`);
@@ -42,6 +45,9 @@ describe(`Editing links in Editor`, () => {
         tuiInsertLink();
         tuiGetEditLinkInput().type(`example.com`);
         tuiGetEditLinkInput().type(`{enter}`);
+
+        tuiFocusToStartInEditor(); // clear hints
+
         tuiGetScreenshotArea().matchImageSnapshot(`2-3-added-new-link-2`);
         tuiOpenAnchorDropdown({containHref: `http://example.com`});
         tuiGetScreenshotArea().matchImageSnapshot(`2-4-focused-new-link-2`);
@@ -62,6 +68,8 @@ describe(`Editing links in Editor`, () => {
         tuiGetScreenshotArea().matchImageSnapshot(`3-1-before-remove-link`);
 
         tuiTrashValueByEditLink();
+        tuiFocusToStartInEditor(); // clear hints
+
         tuiGetScreenshotArea().matchImageSnapshot(`3-2-after-remove-link`);
     });
 });
