@@ -16,6 +16,7 @@ import {
     CHROMIUM_EDGE_START_VERSION,
     isEdgeOlderThan,
     tuiDefaultProp,
+    tuiPure,
     watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
@@ -69,8 +70,7 @@ export class TuiSliderComponent {
     }
 
     get value(): number {
-        const {elementRef, control, injector} = this;
-        const hasKeySteps = Boolean(injector.get(TuiSliderKeyStepsDirective, null));
+        const {elementRef, control, hasKeySteps} = this;
 
         if (!hasKeySteps && control instanceof NgModel) {
             /**
@@ -100,6 +100,11 @@ export class TuiSliderComponent {
     @HostBinding(`class._old-edge`)
     get isOldEdge(): boolean {
         return isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
+    }
+
+    @tuiPure
+    get hasKeySteps(): boolean {
+        return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
     }
 
     constructor(
