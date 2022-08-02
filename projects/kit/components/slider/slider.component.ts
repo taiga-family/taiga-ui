@@ -5,6 +5,7 @@ import {
     ElementRef,
     HostBinding,
     Inject,
+    Injector,
     Input,
     Optional,
     Self,
@@ -20,7 +21,7 @@ import {
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
-import {TUI_SLIDER_HAS_KEY_STEPS} from './helpers/tokens';
+import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
 
 @Component({
@@ -68,9 +69,10 @@ export class TuiSliderComponent {
     }
 
     get value(): number {
-        const {elementRef, control} = this;
+        const {elementRef, control, injector} = this;
+        const hasKeySteps = Boolean(injector.get(TuiSliderKeyStepsDirective, null));
 
-        if (!this.hasKeySteps && control instanceof NgModel) {
+        if (!hasKeySteps && control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `elementRef.nativeElement.value` is equal to the previous value at this moment.
@@ -109,7 +111,7 @@ export class TuiSliderComponent {
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(TUI_SLIDER_HAS_KEY_STEPS) private readonly hasKeySteps: boolean,
+        @Inject(Injector) private readonly injector: Injector,
     ) {
         if (control instanceof NgModel) {
             /**

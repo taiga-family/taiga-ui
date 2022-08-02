@@ -2,6 +2,7 @@ import {
     ChangeDetectorRef,
     Directive,
     ElementRef,
+    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -30,7 +31,6 @@ import {
 import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from '../slider.component';
-import {TUI_SLIDER_HAS_KEY_STEPS} from './tokens';
 
 // @dynamic
 @Directive({
@@ -40,7 +40,6 @@ import {TUI_SLIDER_HAS_KEY_STEPS} from './tokens';
         '[attr.aria-valuemin]': `min`,
         '[attr.aria-valuemax]': `max`,
     },
-    providers: [{provide: TUI_SLIDER_HAS_KEY_STEPS, useValue: true}],
 })
 export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
@@ -85,7 +84,8 @@ export class TuiSliderKeyStepsDirective
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
-        @Inject(TuiSliderComponent) private readonly slider: TuiSliderComponent,
+        @Inject(forwardRef(() => TuiSliderComponent))
+        private readonly slider: TuiSliderComponent,
     ) {
         super(control, changeDetectorRef);
     }
