@@ -25,10 +25,15 @@ describe(`Examples with groups in editor`, () => {
             .matchImageSnapshot(`2-1-draggable-groups`);
 
         cy.get(`@wrapper`).find(`button[icon=tuiIconPlusLarge]`).click({force: true});
-        cy.get(`@wrapper`).matchImageSnapshot(`2-2-draggable-groups`);
+
+        cy.get(`@wrapper`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`2-2-draggable-groups`);
 
         cy.document().then(doc => cy.wrap(doc.activeElement).type(`123`));
 
-        cy.get(`@wrapper`).matchImageSnapshot(`2-3-draggable-groups`);
+        cy.get(`@wrapper`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`2-3-draggable-groups`);
     });
 });
