@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {tuiPreventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -31,7 +31,7 @@ export class TuiDroppableDirective {
         this.tuiDroppableDropped = typedFromEvent(nativeElement, `drop`).pipe(
             tuiPreventDefault(),
             map(event => event.dataTransfer),
-            filter(isPresent),
+            filter(tuiIsPresent),
         );
 
         this.tuiDroppableDragOverChange = typedFromEvent(nativeElement, `dragenter`).pipe(

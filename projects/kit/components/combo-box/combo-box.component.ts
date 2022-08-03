@@ -15,7 +15,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isPresent,
     setNativeFocused,
     TUI_STRICT_MATCHER,
     TuiActiveZoneDirective,
@@ -23,6 +22,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
@@ -134,7 +134,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get showValueTemplate(): boolean {
-        return isPresent(this.value) && !this.focused;
+        return tuiIsPresent(this.value) && !this.focused;
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
