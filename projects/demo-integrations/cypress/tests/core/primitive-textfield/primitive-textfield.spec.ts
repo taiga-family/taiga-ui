@@ -11,7 +11,7 @@ describe(`TuiPrimitiveTextfield`, () => {
             .first()
             .click()
             .wait(500)
-            .get(`tui-hint-box`)
+            .get(`tui-hint`)
             .click();
         cy.matchImageSnapshot(`hint`, {capture: `viewport`});
     });
