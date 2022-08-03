@@ -1,12 +1,10 @@
 /**
- * @deprecated: use {@link tuiNumberToStringWithoutExp} instead
  * Convert number to string with replacing exponent part on decimals
  *
  * @param value the number
  * @return string representation of a number
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function numberToStringWithoutExp(value: number): string {
+export function tuiNumberToStringWithoutExp(value: number): string {
     const valueAsString = String(value);
     const [numberPart, expPart] = valueAsString.split(`e-`);
 
@@ -21,5 +19,3 @@ export function numberToStringWithoutExp(value: number): string {
 
     return valueWithoutExp;
 }
-
-export const tuiNumberToStringWithoutExp = numberToStringWithoutExp;

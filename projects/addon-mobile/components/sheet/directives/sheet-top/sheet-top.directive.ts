@@ -1,6 +1,6 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -45,6 +45,6 @@ export class TuiSheetTopDirective {
         const value = scrollTop - this.stop;
         const total = this.windowRef.innerHeight - this.component.item.offset - this.stop;
 
-        return this.stop && clamp(100 - (value / total) * 100, 0, 100);
+        return this.stop && tuiClamp(100 - (value / total) * 100, 0, 100);
     }
 }

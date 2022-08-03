@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
     TuiHostedDropdownComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -30,7 +30,7 @@ export class TuiArrowComponent {
     }
 
     get arrowIcon(): PolymorpheusContent {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? this.options.iconLarge
             : this.options.iconSmall;
     }

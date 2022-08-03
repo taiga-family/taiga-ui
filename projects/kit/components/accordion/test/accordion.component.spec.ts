@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {getOriginalArrayFromQueryList} from '@taiga-ui/cdk';
+import {tuiGetOriginalArrayFromQueryList} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
@@ -222,7 +222,7 @@ describe(`Accordion`, () => {
             sendKeydown(space);
             fixture.detectChanges();
 
-            expect(getOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
+            expect(tuiGetOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
                 false,
             );
         });
@@ -239,7 +239,7 @@ describe(`Accordion`, () => {
             sendKeydown(enter);
             fixture.detectChanges();
 
-            expect(getOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
+            expect(tuiGetOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
                 false,
             );
         });
@@ -249,7 +249,7 @@ describe(`Accordion`, () => {
             sendKeydown(esc);
             fixture.detectChanges();
 
-            expect(getOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
+            expect(tuiGetOriginalArrayFromQueryList(testComponent.items)[0].open).toBe(
                 false,
             );
         });

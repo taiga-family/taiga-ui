@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getOriginalArrayFromQueryList,
     tuiAssertIsElement,
     tuiDefaultProp,
+    tuiGetOriginalArrayFromQueryList,
     tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
@@ -88,7 +88,7 @@ export class TuiStepperComponent {
     }
 
     indexOf(step: HTMLElement): number {
-        return getOriginalArrayFromQueryList(this.steps).findIndex(
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
         );
     }

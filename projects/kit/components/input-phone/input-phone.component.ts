@@ -26,11 +26,11 @@ import {
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
-    formatPhone,
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_TEXTFIELD_CLEANER,
     TuiDataListDirective,
     TuiDataListHost,
+    tuiFormatPhone,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldCleanerDirective,
@@ -147,7 +147,7 @@ export class TuiInputPhoneComponent
 
     get computedValue(): string {
         return this.value
-            ? formatPhone(this.value, this.countryCode, this.phoneMaskAfterCountryCode)
+            ? tuiFormatPhone(this.value, this.countryCode, this.phoneMaskAfterCountryCode)
             : this.search || ``;
     }
 

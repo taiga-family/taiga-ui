@@ -1,11 +1,9 @@
 import {tuiGetNativeFocused} from './get-native-focused';
 
 /**
- * @deprecated: use {@link tuiBlurNativeFocused} instead
  * Finds and blurs current active element, including shadow DOM
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function blurNativeFocused(documentRef: Document): void {
+export function tuiBlurNativeFocused(documentRef: Document): void {
     const activeElement = tuiGetNativeFocused(documentRef);
 
     // TODO: iframe warning
@@ -13,5 +11,3 @@ export function blurNativeFocused(documentRef: Document): void {
         activeElement.blur();
     }
 }
-
-export const tuiBlurNativeFocused = blurNativeFocused;

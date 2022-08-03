@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {isPresent} from '@taiga-ui/cdk';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-miscellaneous-example-5`,
@@ -22,7 +22,7 @@ export class TuiMiscellaneousExample5 {
         const {value} = this.parametersForm.value;
         const objectedValue = this.objectifyValue(value);
 
-        return isPresent(objectedValue);
+        return tuiIsPresent(objectedValue);
     }
 
     private objectifyValue(value: string): string | null | undefined {
