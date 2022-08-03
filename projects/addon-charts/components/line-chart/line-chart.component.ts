@@ -7,10 +7,13 @@ import {
     Input,
     NgZone,
     Optional,
+    QueryList,
+    ViewChildren,
 } from '@angular/core';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {
+    EMPTY_QUERY,
     tuiDefaultProp,
     TuiIdService,
     tuiInRange,
@@ -18,7 +21,7 @@ import {
     TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
@@ -35,6 +38,9 @@ export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();
 
     private readonly autoIdString: string;
+
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input(`value`)
     @tuiDefaultProp()
