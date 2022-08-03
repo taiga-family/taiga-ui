@@ -376,6 +376,36 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `Hint`,
+        subPages: [
+            {
+                section: $localize`Components`,
+                title: `Tooltip`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
+                route: `/components/tooltip`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `Hint`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт`,
+                route: `/directives/hint`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `ManualHint`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт`,
+                route: `/directives/hint-manual`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `PointerHint`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор`,
+                route: `/directives/hint-pointer`,
+            },
+        ],
+    },
+    {
+        section: $localize`Components`,
         title: `MarkerIcon`,
         keywords: `icon, картинка, свг, иконка, svg, графика`,
         route: `/components/marker-icon`,
@@ -798,12 +828,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
-        title: `Tooltip`,
-        keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
-        route: `/components/tooltip`,
-    },
-    {
-        section: $localize`Components`,
         title: `Tree`,
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
@@ -973,33 +997,15 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `Hint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт`,
-                route: `/directives/hint`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `LazyLoading`,
                 keywords: `img, skeleton, скелетон, загрузка, картинки`,
                 route: `/directives/lazy-loading`,
             },
             {
                 section: $localize`Tools`,
-                title: `ManualHint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт`,
-                route: `/directives/manual-hint`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `Overscroll`,
                 keywords: `overscroll, scroll, скролл`,
                 route: `/directives/overscroll`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `PointerHint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор`,
-                route: `/directives/pointer-hint`,
             },
             {
                 section: $localize`Tools`,

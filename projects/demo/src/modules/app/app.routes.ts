@@ -1172,21 +1172,21 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/manual-hint`,
+        path: `directives/hint-manual`,
         loadChildren: async () =>
-            (await import(`../directives/manual-hint/manual-hint.module`))
-                .ExampleTuiManualHintModule,
+            (await import(`../directives/hint-manual/hint-manual.module`))
+                .ExampleTuiHintManualModule,
         data: {
-            title: `ManualHint`,
+            title: `HintManual`,
         },
     },
     {
-        path: `directives/pointer-hint`,
+        path: `directives/hint-pointer`,
         loadChildren: async () =>
-            (await import(`../directives/pointer-hint/pointer-hint.module`))
-                .ExampleTuiPointerHintModule,
+            (await import(`../directives/hint-pointer/hint-pointer.module`))
+                .ExampleTuiHintPointerModule,
         data: {
-            title: `PointerHint`,
+            title: `HintPointer`,
         },
     },
     {

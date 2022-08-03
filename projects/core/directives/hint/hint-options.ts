@@ -1,26 +1,26 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {
-    TUI_ABSTRACT_HINT_DEFAULT_OPTIONS,
-    TuiAbstractHintOptions,
-} from '@taiga-ui/core/abstract';
+import {TuiHintDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export interface TuiHintOptions extends TuiAbstractHintOptions {
-    readonly tuiHintShowDelay: number;
-    readonly tuiHintHideDelay: number;
-    readonly tooltipIcon: PolymorpheusContent;
+export interface TuiHintOptions {
+    readonly direction: TuiHintDirection;
+    readonly showDelay: number;
+    readonly hideDelay: number;
+    readonly appearance: string;
+    readonly icon: PolymorpheusContent;
 }
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
-    ...TUI_ABSTRACT_HINT_DEFAULT_OPTIONS,
-    tuiHintShowDelay: 500,
-    tuiHintHideDelay: 200,
-    tooltipIcon: `tuiIconTooltipLarge`,
+    direction: `bottom-left`,
+    showDelay: 500,
+    hideDelay: 200,
+    appearance: ``,
+    icon: `tuiIconTooltipLarge`,
 };
 
 export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>(
-    `Default parameters for hint directive`,
+    `[TUI_HINT_OPTIONS] Default parameters for hint directive`,
     {
         factory: () => TUI_HINT_DEFAULT_OPTIONS,
     },
