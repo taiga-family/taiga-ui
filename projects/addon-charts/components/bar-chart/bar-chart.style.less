@@ -15,9 +15,13 @@
     justify-content: center;
     height: 100%;
 
-    &_hoverable._hint_hovered {
-        background-color: rgba(0, 0, 0, 0.05);
+    &_hoverable {
         cursor: pointer;
+
+        &:hover,
+        &.t-wrapper_hovered {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
     }
 }
 
@@ -39,8 +43,4 @@
     &:focus {
         box-shadow: 0 0 0 2px var(--tui-focus);
     }
-}
-
-.t-text {
-    white-space: pre-wrap;
 }

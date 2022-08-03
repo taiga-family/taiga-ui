@@ -34,7 +34,7 @@
                 class="wrapper"
                 [tuiHintContent]="tuiHintContent"
                 [tuiHintDirection]="tuiHintDirection"
-                [tuiHintMode]="tuiHintMode"
+                [tuiHintAppearance]="tuiHintAppearance"
                 [tuiHintShowDelay]="tuiHintShowDelay"
                 [tuiHintHideDelay]="tuiHintHideDelay"
             >
@@ -52,11 +52,11 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="tuiHintMode"
+                documentationPropertyName="tuiHintAppearance"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiTooltipMode | null"
-                [documentationPropertyValues]="modeVariants"
-                [(documentationPropertyValue)]="tuiHintMode"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="tuiHintAppearance"
             >
                 Hint controller mode
             </ng-template>
