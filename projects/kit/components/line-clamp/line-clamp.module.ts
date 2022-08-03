@@ -5,6 +5,8 @@ import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLineClampComponent} from './line-clamp.component';
+import {TuiLineClampBoxComponent} from './line-clamp-box/line-clamp-box.component';
+import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @NgModule({
     imports: [
@@ -14,7 +16,11 @@ import {TuiLineClampComponent} from './line-clamp.component';
         TuiResizeModule,
         TuiLetModule,
     ],
-    declarations: [TuiLineClampComponent],
+    declarations: [
+        TuiLineClampComponent,
+        TuiLineClampBoxComponent,
+        TuiLineClampPositionDirective,
+    ],
     exports: [TuiLineClampComponent],
 })
 export class TuiLineClampModule {}

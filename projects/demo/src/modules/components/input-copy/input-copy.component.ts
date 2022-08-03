@@ -62,7 +62,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     successMessage = this.successMessageVariants[0];
 
     messageDirection = this.hintDirectionVariants[0];
-    messageMode = this.hintModeVariants[0];
+    messageMode = this.hintAppearanceVariants[0];
 
     get notificationTemplate(): PolymorpheusContent {
         return this.successMessage === `Template`

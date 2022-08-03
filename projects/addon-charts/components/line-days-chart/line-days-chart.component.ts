@@ -20,12 +20,14 @@ import {
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
+    tuiIsNumber,
     TuiMonth,
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
@@ -46,6 +48,9 @@ const DUMMY: TuiPoint = [NaN, NaN];
 export class TuiLineDaysChartComponent {
     @ViewChildren(TuiLineChartComponent)
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input(`value`)
     @tuiDefaultProp()
@@ -143,8 +148,8 @@ export class TuiLineDaysChartComponent {
         return index - offset;
     }
 
-    onHovered(day: TuiDay | null): void {
-        if (!day) {
+    onHovered(day: TuiDay | number): void {
+        if (tuiIsNumber(day)) {
             this.charts.forEach(chart => chart.onHovered(NaN));
 
             return;
