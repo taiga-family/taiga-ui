@@ -1,1 +1,1 @@
-export type TuiPoint = Readonly<[number, number]>;
+export type TuiPoint = Readonly<[top: number, left: number]>;

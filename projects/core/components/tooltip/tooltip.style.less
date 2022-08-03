@@ -16,15 +16,15 @@
         color: var(--tui-text-02);
     }
 
-    &[data-mode='onDark'] {
+    &[data-appearance='onDark'] {
         color: var(--tui-text-01-night);
     }
 
-    &[data-mode='onLight'] {
+    &[data-appearance='onLight'] {
         color: var(--tui-text-01);
     }
 
-    &[data-mode='error'] {
+    &[data-appearance='error'] {
         color: var(--tui-error-fill);
     }
 }
@@ -35,16 +35,15 @@
     width: 100%;
     height: 100%;
 
-    :host:not([data-mode]) &._hint_hovered {
+    :host:not([data-appearance]) &_hovered {
         color: var(--tui-text-02);
     }
 
-    :host[data-mode='onLight'] &,
-    :host[data-mode='onDark'] & {
+    :host[data-appearance='onLight'] &,
+    :host[data-appearance='onDark'] & {
         opacity: var(--tui-disabled-opacity);
 
-        &:hover,
-        &._hint_hovered {
+        &_hovered {
             opacity: 1;
         }
     }
