@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
-import {TUI_IS_IOS, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
@@ -35,8 +35,8 @@ export function sheetDraggedFactory({
     nativeElement,
 }: ElementRef<HTMLElement>): Observable<boolean> {
     return merge(
-        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(mapTo(true)),
-        typedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
+        tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(mapTo(true)),
+        tuiTypedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
     );
 }
 
@@ -50,8 +50,8 @@ export function sheetScrollFactory(
     return isIos
         ? iosScrollFactory(nativeElement, documentRef, ngZone)
         : merge(
-              typedFromEvent(nativeElement, `scroll`),
-              typedFromEvent(nativeElement, `load`, {capture: true}),
+              tuiTypedFromEvent(nativeElement, `scroll`),
+              tuiTypedFromEvent(nativeElement, `load`, {capture: true}),
           ).pipe(
               map(() => nativeElement.scrollTop),
               tuiZonefree(ngZone),
