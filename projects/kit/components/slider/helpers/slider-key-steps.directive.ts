@@ -2,6 +2,7 @@ import {
     ChangeDetectorRef,
     Directive,
     ElementRef,
+    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -35,8 +36,7 @@ import {TuiSliderComponent} from '../slider.component';
 @Directive({
     selector: `input[tuiSlider][keySteps]`,
     host: {
-        '[attr.data-key-steps]': `true`,
-        '[attr.aria-valuenow]': `controlValue`,
+        '[attr.aria-valuenow]': `safeCurrentValue`,
         '[attr.aria-valuemin]': `min`,
         '[attr.aria-valuemax]': `max`,
     },
@@ -84,11 +84,20 @@ export class TuiSliderKeyStepsDirective
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
-        @Inject(TuiSliderComponent) private readonly slider: TuiSliderComponent,
+        @Inject(forwardRef(() => TuiSliderComponent))
+        private readonly slider: TuiSliderComponent,
     ) {
         super(control, changeDetectorRef);
     }
 
+    /**
+     * TODO: 3.0
+     * ___
+     * Also add @HostListener(`input`): to be similar to
+     * {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/range_value_accessor.ts#L47-L48 RangeValueAccessor}
+     * ___
+     * Remove {@link keyStepsInput}
+     */
     @HostListener(`change`)
     updateControlValue(): void {
         this.updateValue(this.controlValue);
