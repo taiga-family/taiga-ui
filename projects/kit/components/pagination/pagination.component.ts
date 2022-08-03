@@ -13,10 +13,10 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    clamp,
     EMPTY_QUERY,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -202,7 +202,11 @@ export class TuiPaginationComponent
 
         const computedIndex = this.index - this.maxHalfLength + elementIndex;
 
-        return clamp(computedIndex, elementIndex, this.lastIndex - reverseElementIndex);
+        return tuiClamp(
+            computedIndex,
+            elementIndex,
+            this.lastIndex - reverseElementIndex,
+        );
     }
 
     getElementMode(index: number): TuiAppearance {
@@ -303,7 +307,7 @@ export class TuiPaginationComponent
 
     private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
-            clamp(
+            tuiClamp(
                 this.index + tuiHorizontalDirectionToNumber(direction),
                 0,
                 this.lastIndex,

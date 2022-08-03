@@ -9,21 +9,21 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     EMPTY_QUERY,
-    getOriginalArrayFromQueryList,
-    isPresent,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
     tuiDefaultProp,
+    tuiGetOriginalArrayFromQueryList,
     TuiIdentityMatcher,
+    tuiIsPresent,
     tuiItemsQueryListObservable,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_DATA_LIST_HOST,
     TUI_OPTION_CONTENT,
     TuiDataListHost,
     TuiOptionComponent,
+    tuiSizeBigger,
     TuiSizeL,
     TuiSizeXS,
 } from '@taiga-ui/core';
@@ -60,7 +60,7 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.options.first && sizeBigger(this.options.first.size) ? `l` : `m`;
+        return this.options.first && tuiSizeBigger(this.options.first.size) ? `l` : `m`;
     }
 
     @tuiPure
@@ -113,7 +113,7 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     private get values(): readonly T[] {
-        return this.filter(getOriginalArrayFromQueryList(this.options));
+        return this.filter(tuiGetOriginalArrayFromQueryList(this.options));
     }
 
     private get matcher(): TuiIdentityMatcher<T> {
@@ -123,7 +123,7 @@ export class TuiMultiSelectGroupComponent<T> {
     @tuiPure
     private get items$(): Observable<readonly T[]> {
         return tuiItemsQueryListObservable(this.options).pipe(
-            map(options => options.map(({value}) => value).filter(isPresent)),
+            map(options => options.map(({value}) => value).filter(tuiIsPresent)),
         );
     }
 
@@ -136,6 +136,6 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private filter(items: ReadonlyArray<TuiOptionComponent<T>>): readonly T[] {
-        return items.map(({value}) => value).filter(isPresent);
+        return items.map(({value}) => value).filter(tuiIsPresent);
     }
 }

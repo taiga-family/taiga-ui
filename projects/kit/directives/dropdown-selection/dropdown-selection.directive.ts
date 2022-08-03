@@ -36,7 +36,7 @@ import {
     TUI_ELEMENT_REF,
     TuiDropdown,
 } from '@taiga-ui/core';
-import {getWordRange} from '@taiga-ui/kit/utils/dom';
+import {tuiGetWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
 import {map, switchMapTo, takeUntil} from 'rxjs/operators';
 
@@ -216,7 +216,7 @@ export class TuiDropdownSelectionDirective
                 return (element as Element).getBoundingClientRect();
             }
             case `word`:
-                return getWordRange(this.range).getBoundingClientRect();
+                return tuiGetWordRange(this.range).getBoundingClientRect();
             default:
                 return this.range.getBoundingClientRect();
         }

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {formatPhone} from '@taiga-ui/core';
+import {tuiFormatPhone} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-format-example-5`,
@@ -21,6 +21,6 @@ export class TuiFormatExample5 {
     get formattedPhone(): string {
         const {value, countryCode, phoneMask} = this.parametersForm.value;
 
-        return formatPhone(value, countryCode, phoneMask);
+        return tuiFormatPhone(value, countryCode, phoneMask);
     }
 }
