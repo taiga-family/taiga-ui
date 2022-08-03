@@ -13,7 +13,7 @@ import {TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiFileState} from '@taiga-ui/kit/types';
-import {formatSize} from '@taiga-ui/kit/utils/files';
+import {tuiFormatSize} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -146,7 +146,7 @@ export class TuiFileComponent {
         file: TuiFileLike,
         units$: Observable<[string, string, string]>,
     ): Observable<string | null> {
-        return units$.pipe(map(units => formatSize(units, file.size)));
+        return units$.pipe(map(units => tuiFormatSize(units, file.size)));
     }
 
     @tuiPure

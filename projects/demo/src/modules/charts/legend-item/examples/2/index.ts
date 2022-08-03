@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {sum, tuiPure} from '@taiga-ui/cdk';
-import {formatNumber, TuiAlertService} from '@taiga-ui/core';
+import {tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-legend-item-example-2`,
@@ -15,7 +15,7 @@ export class TuiLegendItemExample2 {
     private enabled = new Array(5).fill(true);
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
-    readonly sum = sum(...this.data);
+    readonly sum = tuiSum(...this.data);
     readonly labels = [`Axes`, `Faxes`, `Taxes`, `Saxes`, `Other`];
 
     constructor(
@@ -38,7 +38,7 @@ export class TuiLegendItemExample2 {
     onClick(index: number): void {
         if (this.isEnabled(index)) {
             this.alertService
-                .open(`Category spendings: ${formatNumber(this.data[index])} ₽`, {
+                .open(`Category spendings: ${tuiFormatNumber(this.data[index])} ₽`, {
                     label: this.labels[index],
                 })
                 .subscribe();

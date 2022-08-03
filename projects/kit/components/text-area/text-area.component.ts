@@ -22,12 +22,12 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
-    getBorder,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
+    tuiGetBorder,
     TuiHintControllerDirective,
     TuiSizeL,
     TuiSizeS,
@@ -115,7 +115,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`style.--border-end.rem`)
     get border(): number {
-        return getBorder(false, this.hasCleaner, this.hasTooltip);
+        return tuiGetBorder(false, this.hasCleaner, this.hasTooltip);
     }
 
     get hasCleaner(): boolean {

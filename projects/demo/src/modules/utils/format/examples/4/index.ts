@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {capitalize} from '@taiga-ui/core';
+import {tuiCapitalize} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-format-example-4`,
@@ -19,6 +19,6 @@ export class TuiFormatExample4 {
     get capitalized(): string {
         const {value} = this.parametersForm.value;
 
-        return capitalize(value);
+        return tuiCapitalize(value);
     }
 }

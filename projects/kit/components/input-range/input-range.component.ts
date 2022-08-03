@@ -16,10 +16,10 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
     EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -294,7 +294,7 @@ export class TuiInputRangeComponent
             TUI_FLOATING_PRECISION,
         );
 
-        return clamp(roundedValue, this.min, this.max);
+        return tuiClamp(roundedValue, this.min, this.max);
     }
 
     private updateTextInputValue(value: number, right: boolean): void {

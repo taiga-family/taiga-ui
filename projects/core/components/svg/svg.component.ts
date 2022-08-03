@@ -29,7 +29,7 @@ import {
     TUI_SVG_CONTENT_PROCESSOR,
     TUI_SVG_SRC_PROCESSOR,
 } from '@taiga-ui/core/tokens';
-import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
@@ -119,7 +119,7 @@ export class TuiSvgComponent {
     }
 
     private get isSrc(): boolean {
-        return isPresumedHTMLString(this.icon);
+        return tuiIsPresumedHTMLString(this.icon);
     }
 
     private get isName(): boolean {

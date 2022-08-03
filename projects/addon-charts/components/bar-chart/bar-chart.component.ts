@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    sum,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     TuiMapper,
     tuiPure,
+    tuiSum,
 } from '@taiga-ui/cdk';
 import {TuiDriver, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -83,7 +83,7 @@ export class TuiBarChartComponent {
         set,
         collapsed: boolean,
         max: number,
-    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
+    ) => (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
         return this.hasHint ? hint : ``;

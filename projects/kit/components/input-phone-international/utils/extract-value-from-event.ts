@@ -1,14 +1,8 @@
 import {tuiGetClipboardDataText} from '@taiga-ui/cdk';
 
-/**
- * @deprecated: use {@link tuiExtractValueFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function extractValueFromEvent(event: DragEvent | ClipboardEvent): string {
+export function tuiExtractValueFromEvent(event: DragEvent | ClipboardEvent): string {
     // TODO: iframe warning
     return event instanceof DragEvent
         ? event.dataTransfer?.getData(`text/plain`) || ``
         : tuiGetClipboardDataText(event);
 }
-
-export const tuiExtractValueFromEvent = extractValueFromEvent;
