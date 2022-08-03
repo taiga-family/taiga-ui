@@ -43,7 +43,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     hintDirectionCVC: TuiHintOptions['direction'] = `bottom-left`;
 
-    hintModeCVC = null;
+    hintAppearanceCVC = ``;
 
     readonly cards: Record<string, string> = {
         common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
