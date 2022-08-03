@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {formatNumber, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const MONTHS: readonly string[] = [
@@ -83,7 +83,7 @@ export class ExampleTuiBarChartComponent {
         return this.value
             .reduce(
                 (result, set) =>
-                    `${result}${formatNumber(set[index])} ${tuiGetCurrencySymbol(
+                    `${result}${tuiFormatNumber(set[index])} ${tuiGetCurrencySymbol(
                         TuiCurrency.Ruble,
                     )}\n`,
                 ``,

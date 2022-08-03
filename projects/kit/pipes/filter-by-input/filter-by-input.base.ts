@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {
-    isPresent,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     tuiPure,
     TuiStringHandler,
     TuiStringMatcher,
@@ -47,7 +47,7 @@ export abstract class AbstractTuiFilterByInput {
     ): readonly T[] {
         const match = this.getMatch(items, stringify, query);
 
-        return isPresent(match)
+        return tuiIsPresent(match)
             ? items
             : items.filter(item => matcher(item, query, stringify));
     }
@@ -59,10 +59,10 @@ export abstract class AbstractTuiFilterByInput {
         query: string,
     ): ReadonlyArray<readonly T[]> {
         const match = items.find(item =>
-            isPresent(this.getMatch(item, stringify, query)),
+            tuiIsPresent(this.getMatch(item, stringify, query)),
         );
 
-        return isPresent(match)
+        return tuiIsPresent(match)
             ? items
             : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
     }

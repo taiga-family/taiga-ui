@@ -1,14 +1,12 @@
 import {CHAR_NO_BREAK_SPACE, CHAR_ZERO_WIDTH_SPACE, svgNodeFilter} from '@taiga-ui/cdk';
 
 /**
- * @deprecated: use {@link tuiGetWordRange} instead
  * Creates a cloned range with its boundaries set at word boundaries
  *
  * @param currentRange a range to clone
  * @return modified range
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getWordRange(currentRange: Range): Range {
+export function tuiGetWordRange(currentRange: Range): Range {
     const range = currentRange.cloneRange();
     const {startContainer, startOffset, endContainer, endOffset} = range;
     const {ownerDocument} = startContainer;
@@ -77,5 +75,3 @@ export function getWordRange(currentRange: Range): Range {
 
     return range;
 }
-
-export const tuiGetWordRange = getWordRange;

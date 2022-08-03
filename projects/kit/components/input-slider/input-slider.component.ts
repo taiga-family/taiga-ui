@@ -13,8 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -210,7 +210,7 @@ export class TuiInputSliderComponent
             TUI_FLOATING_PRECISION,
         );
 
-        return clamp(roundedValue, this.min, this.max);
+        return tuiClamp(roundedValue, this.min, this.max);
     }
 
     private updateTextInputValue(value: number): void {

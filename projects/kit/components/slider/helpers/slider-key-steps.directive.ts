@@ -13,8 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
     tuiAssert,
+    tuiClamp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     typedFromEvent,
@@ -92,7 +92,7 @@ export class TuiSliderKeyStepsDirective
             return;
         }
 
-        const clampedControlValue = clamp(controlValue, this.min, this.max);
+        const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
 
         tuiAssert.assert(
             controlValue === clampedControlValue,

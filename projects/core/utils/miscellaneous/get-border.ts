@@ -1,11 +1,7 @@
 const ITEM_SIZE = 1.5;
 const CONTENT_SIZE = 2.5;
 
-/**
- * @deprecated: use {@link tuiGetBorder} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getBorder(
+export function tuiGetBorder(
     hasIcon: boolean,
     hasCleaner: boolean = false,
     hasTooltip: boolean = false,
@@ -31,5 +27,3 @@ export function getBorder(
 
     return border;
 }
-
-export const tuiGetBorder = getBorder;

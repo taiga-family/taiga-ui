@@ -13,15 +13,15 @@ import {
 import {setNativeFocused, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    sizeBigger,
     TUI_MODE,
     TuiBrightness,
+    tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
 } from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
-import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
+import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -121,7 +121,7 @@ export class TuiTagComponent {
     ) {}
 
     get backgroundColor(): string | null {
-        return this.autoColor ? stringHashToHsl(this.value) : null;
+        return this.autoColor ? tuiStringHashToHsl(this.value) : null;
     }
 
     get canRemove(): boolean {
@@ -133,7 +133,7 @@ export class TuiTagComponent {
     }
 
     get loaderSize(): TuiSizeXS {
-        return sizeBigger(this.size) ? `s` : `xs`;
+        return tuiSizeBigger(this.size) ? `s` : `xs`;
     }
 
     @HostBinding(`class._has-icon`)
