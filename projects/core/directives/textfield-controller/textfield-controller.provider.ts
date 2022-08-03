@@ -43,38 +43,6 @@ import {TUI_TEXTFIELD_TYPE, TuiTextfieldTypeDirective} from './textfield-type.di
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>(`watched textfield controller`);
 
-/**
- * @deprecated: use {@link tuiTextfieldWatchedControllerFactory} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function textfieldWatchedControllerFactory(
-    changeDetectorRef: ChangeDetectorRef,
-    destroy$: Observable<void>,
-    ...controllers: [
-        TuiTextfieldAutocompleteDirective,
-        TuiTextfieldCleanerDirective,
-        TuiTextfieldCustomContentDirective,
-        TuiTextfieldExampleTextDirective,
-        TuiTextfieldIconDirective,
-        TuiTextfieldIconLeftDirective,
-        TuiTextfieldInputModeDirective,
-        TuiTextfieldLabelOutsideDirective,
-        TuiTextfieldMaxLengthDirective,
-        TuiTextfieldSizeDirective,
-        // @ts-ignore remove after TS update
-        TuiTextfieldTypeDirective,
-    ]
-): TuiTextfieldController {
-    const change$ = merge(...controllers.map(({change$}) => change$ || NEVER)).pipe(
-        tuiWatch(changeDetectorRef),
-        takeUntil(destroy$),
-    );
-
-    change$.subscribe();
-
-    return new TuiTextfieldController(change$, ...controllers);
-}
-
 export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
     TuiDestroyService,
     {
@@ -94,8 +62,30 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_SIZE,
             TUI_TEXTFIELD_TYPE,
         ],
-        useFactory: textfieldWatchedControllerFactory,
+        useFactory: (
+            changeDetectorRef: ChangeDetectorRef,
+            destroy$: Observable<void>,
+            ...controllers: [
+                TuiTextfieldAutocompleteDirective,
+                TuiTextfieldCleanerDirective,
+                TuiTextfieldCustomContentDirective,
+                TuiTextfieldExampleTextDirective,
+                TuiTextfieldIconDirective,
+                TuiTextfieldIconLeftDirective,
+                TuiTextfieldInputModeDirective,
+                TuiTextfieldLabelOutsideDirective,
+                TuiTextfieldMaxLengthDirective,
+                TuiTextfieldSizeDirective,
+                TuiTextfieldTypeDirective,
+            ]
+        ) => {
+            const change$ = merge(
+                ...controllers.map(({change$}) => change$ || NEVER),
+            ).pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$));
+
+            change$.subscribe();
+
+            return new TuiTextfieldController(change$, ...controllers);
+        },
     },
 ];
-
-export const tuiTextfieldWatchedControllerFactory = textfieldWatchedControllerFactory;

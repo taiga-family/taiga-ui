@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
-import {typedFromEvent} from './typed-from-event';
+import {tuiTypedFromEvent} from './typed-from-event';
 
 export interface TuiPressedObservableOptions {
     onlyTrusted: boolean;
@@ -19,7 +19,7 @@ export function tuiPressedObservable(
         throw new TuiOwnerDocumentException();
     }
 
-    return typedFromEvent(element, `mousedown`).pipe(
+    return tuiTypedFromEvent(element, `mousedown`).pipe(
         filter(({isTrusted}) => isTrusted || !onlyTrusted),
         switchMapTo(
             tuiMouseDragFinishFrom(ownerDocument).pipe(
