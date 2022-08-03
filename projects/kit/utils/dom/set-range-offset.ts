@@ -1,11 +1,9 @@
 import {svgNodeFilter} from '@taiga-ui/cdk';
 
 /**
- * @deprecated: use {@link tuiSetRangeOffset} instead
  * Range.setStart/set-end, except it uses offset in characters only
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function setRangeOffset(
+export function tuiSetRangeOffset(
     range: Range,
     node: HTMLElement,
     offset: number,
@@ -40,5 +38,3 @@ export function setRangeOffset(
         }
     }
 }
-
-export const tuiSetRangeOffset = setRangeOffset;

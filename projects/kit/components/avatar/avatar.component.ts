@@ -6,8 +6,8 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
-import {sizeBigger} from '@taiga-ui/core';
-import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
+import {tuiSizeBigger} from '@taiga-ui/core';
+import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 
@@ -51,7 +51,7 @@ export class TuiAvatarComponent {
 
     @HostBinding(`style.background`)
     get bgColor(): string {
-        return this.autoColor ? stringHashToHsl(this.text) : ``;
+        return this.autoColor ? tuiStringHashToHsl(this.text) : ``;
     }
 
     @HostBinding(`class._has-avatar`)
@@ -66,7 +66,7 @@ export class TuiAvatarComponent {
 
         const words = this.text.split(` `);
 
-        return words.length > 1 && sizeBigger(this.size)
+        return words.length > 1 && tuiSizeBigger(this.size)
             ? words[0].slice(0, 1) + words[1].slice(0, 1)
             : words[0].slice(0, 1);
     }

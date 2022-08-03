@@ -2,10 +2,10 @@ import {Directive, ElementRef, Inject, Input, NgZone} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {
-    clamp,
-    easeInOutQuad,
+    tuiClamp,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEaseInOutQuad,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
@@ -43,7 +43,9 @@ export class TuiPieChartDirective {
 
                     return animationFrame$.pipe(
                         map(timestamp =>
-                            easeInOutQuad(clamp((timestamp - now) / duration, 0, 1)),
+                            tuiEaseInOutQuad(
+                                tuiClamp((timestamp - now) / duration, 0, 1),
+                            ),
                         ),
                         takeWhile(progress => progress < 1, true),
                         map(progress => [

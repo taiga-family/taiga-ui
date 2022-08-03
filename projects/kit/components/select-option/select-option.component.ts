@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    isPresent,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TuiContextWithImplicit,
     TuiIdentityMatcher,
+    tuiIsPresent,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TuiDataListHost, TuiOptionComponent} from '@taiga-ui/core';
@@ -58,7 +58,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
          */
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         Promise.resolve().then(() => {
-            if (isPresent(this.option.value) && this.host.checkOption) {
+            if (tuiIsPresent(this.option.value) && this.host.checkOption) {
                 this.host.checkOption(this.option.value);
             }
         });
@@ -66,8 +66,8 @@ export class TuiSelectOptionComponent<T> implements OnInit {
 
     protected get selected(): boolean {
         return (
-            isPresent(this.option.value) &&
-            isPresent(this.control.value) &&
+            tuiIsPresent(this.option.value) &&
+            tuiIsPresent(this.control.value) &&
             this.matcher(this.control.value, this.option.value)
         );
     }

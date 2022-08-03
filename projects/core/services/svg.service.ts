@@ -2,7 +2,7 @@ import {Inject, Injectable, Optional, Sanitizer, SecurityContext} from '@angular
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import {processIcon} from '@taiga-ui/core/utils/dom';
+import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';
 import {BehaviorSubject} from 'rxjs';
 
 /**
@@ -61,7 +61,7 @@ export class TuiSvgService {
     }
 
     private parseSrc(name: string, src: string): SafeHtml {
-        return this.sanitize(processIcon(src, name));
+        return this.sanitize(tuiProcessIcon(src, name));
     }
 
     private sanitize(src: string): SafeHtml {

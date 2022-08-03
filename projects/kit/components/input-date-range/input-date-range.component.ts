@@ -37,13 +37,13 @@ import {
     tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_EXAMPLE_TEXT,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldExampleTextDirective,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
@@ -167,7 +167,7 @@ export class TuiInputDateRangeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }

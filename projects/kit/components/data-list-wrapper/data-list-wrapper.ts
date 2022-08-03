@@ -6,7 +6,12 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, isPresent, tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    tuiDefaultProp,
+    tuiIsNativeFocused,
+    tuiIsPresent,
+} from '@taiga-ui/cdk';
 import {
     TuiOptionComponent,
     TuiSizeL,
@@ -53,6 +58,6 @@ export abstract class AbstractTuiDataListWrapper<T> {
             .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
-            .filter(isPresent);
+            .filter(tuiIsPresent);
     }
 }
