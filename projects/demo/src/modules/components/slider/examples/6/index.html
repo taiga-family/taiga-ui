@@ -13,10 +13,10 @@
         class="slider-wrapper"
     >
         <div
-            tuiHintMode="onDark"
-            tuiHintDirection="top-middle"
-            [tuiManualHint]="hint"
-            [tuiManualHintShow]="!!(showHint$ | async)"
+            tuiHintAppearance="onDark"
+            tuiHintDirection="top"
+            [tuiHint]="hint"
+            [tuiHintManual]="!!(showHint$ | async)"
         ></div>
 
         <ng-template #hint>

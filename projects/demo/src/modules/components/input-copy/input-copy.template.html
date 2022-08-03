@@ -36,7 +36,7 @@
                 [tuiTextfieldCleaner]="cleaner"
                 [successMessage]="notificationTemplate"
                 [messageDirection]="hintDirection"
-                [messageMode]="hintMode"
+                [messageAppearance]="hintAppearance"
                 [readOnly]="readOnly"
                 [pseudoInvalid]="pseudoInvalid"
                 [pseudoFocus]="pseudoFocused"
@@ -81,7 +81,7 @@
                 documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintModeT | null"
-                [documentationPropertyValues]="hintModeVariants"
+                [documentationPropertyValues]="hintAppearanceVariants"
                 [(documentationPropertyValue)]="messageMode"
             >
                 Message tooltip mode

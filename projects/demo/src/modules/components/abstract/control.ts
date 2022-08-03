@@ -3,9 +3,8 @@ import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDirection,
+    TUI_HINT_DIRECTIONS,
     TuiDropdownWidth,
-    TuiHintMode,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -39,18 +38,9 @@ export abstract class AbstractExampleTuiControl
 
     readonly hintContentVariants: readonly string[] = [`Some content`];
 
-    readonly hintDirectionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
-    ];
+    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintModeVariants: readonly TuiHintMode[] = [`error`, `onDark`];
+    readonly hintAppearanceVariants = [``, `error`, `onDark`];
 
     readonly typeVariants: readonly TuiInputType[] = [
         `text`,
@@ -118,9 +108,9 @@ export abstract class AbstractExampleTuiControl
 
     hintContent: string | null = null;
 
-    hintDirection: TuiDirection = this.hintDirectionVariants[2];
+    hintDirection = this.hintDirectionVariants[0];
 
-    hintMode: TuiHintMode | null = null;
+    hintAppearance = this.hintAppearanceVariants[0];
 
     readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 

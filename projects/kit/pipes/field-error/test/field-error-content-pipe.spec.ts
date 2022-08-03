@@ -115,6 +115,6 @@ describe(`TuiFieldErrorContentPipe`, () => {
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
+        return document.querySelector(`tui-hint`);
     }
 });
