@@ -17,7 +17,6 @@ import {
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -64,9 +63,5 @@ export class TuiTooltipComponent extends TuiHintControllerDirective {
             event.preventDefault();
             event.stopPropagation();
         }
-    }
-
-    get icon(): PolymorpheusContent {
-        return this.options.icon;
     }
 }

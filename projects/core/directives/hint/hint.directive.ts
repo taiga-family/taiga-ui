@@ -21,6 +21,7 @@ import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 
 @Directive({
     selector: `[tuiHint]:not(ng-container)`,
@@ -34,8 +35,8 @@ import {TUI_HINT_COMPONENT} from './hint.providers';
         },
     ],
 })
-export class TuiHintDirective
-    implements OnDestroy, OnChanges, TuiHint, TuiRectAccessor, TuiVehicle
+export class TuiHintDirective<C>
+    implements OnDestroy, OnChanges, TuiHint<C>, TuiRectAccessor, TuiVehicle
 {
     @Input()
     @tuiDefaultProp()
@@ -43,10 +44,14 @@ export class TuiHintDirective
 
     @Input(`tuiHint`)
     @tuiDefaultProp()
-    content: PolymorpheusContent = ``;
+    content: PolymorpheusContent<C> = ``;
+
+    @Input(`tuiHintContext`)
+    context?: C;
 
     @Input(`tuiHintAppearance`)
-    appearance = ``;
+    @tuiDefaultProp()
+    appearance = this.options.appearance;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -56,6 +61,7 @@ export class TuiHintDirective
         @Inject(TuiActiveZoneDirective)
         readonly activeZone: TuiActiveZoneDirective | null,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
+        @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
     ) {
         this.hintService.register(this);
     }
