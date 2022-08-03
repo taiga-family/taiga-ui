@@ -17,9 +17,9 @@ describe(`TuiHint`, () => {
     });
 
     it(`Manual hint works`, () => {
-        cy.tuiVisit(`/directives/manual-hint/API?tuiMode=null&tuiManualHintShow=true`);
+        cy.tuiVisit(`/directives/hint-manual/API?tuiHintManual=true`);
 
-        cy.get(`tui-hint-box`)
+        cy.get(`tui-hint`)
             .first()
             .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`manual-hint`);
