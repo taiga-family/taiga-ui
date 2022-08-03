@@ -30,7 +30,7 @@ import {
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -213,7 +213,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @HostBinding(`style.--border-end.rem`)
     get borderEnd(): number {
-        return getBorder(
+        return tuiGetBorder(
             !!this.iconContent,
             this.hasCleaner,
             this.hasTooltip,

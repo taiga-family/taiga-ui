@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {sum, TuiContextWithImplicit, tuiRound} from '@taiga-ui/cdk';
-import {formatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiContextWithImplicit, tuiRound, tuiSum} from '@taiga-ui/cdk';
+import {tuiFormatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -61,11 +61,11 @@ export class ExampleTuiPieChartComponent {
     hintContent = this.contentVariants[0];
 
     getPercent(index: number): string {
-        return `${tuiRound((100 * this.value[index]) / sum(...this.value), 2)} %`;
+        return `${tuiRound((100 * this.value[index]) / tuiSum(...this.value), 2)} %`;
     }
 
     format(index: number): string {
-        return `${formatNumber(this.value[index])} ${tuiGetCurrencySymbol(
+        return `${tuiFormatNumber(this.value[index])} ${tuiGetCurrencySymbol(
             TuiCurrency.Ruble,
         )}`;
     }

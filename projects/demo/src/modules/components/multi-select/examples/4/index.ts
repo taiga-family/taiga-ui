@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    isNumber,
     TUI_DEFAULT_MATCHER,
     TuiContextWithImplicit,
     TuiHandler,
+    tuiIsNumber,
 } from '@taiga-ui/cdk';
 import {Observable, Subject, timer} from 'rxjs';
 import {map, mapTo, shareReplay, startWith, switchMap} from 'rxjs/operators';
@@ -56,7 +56,7 @@ export class TuiMultiSelectExample4 {
         startWith(new Map()),
         map(
             map => (id: number | TuiContextWithImplicit<number>) =>
-                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || `Loading...`,
+                (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || `Loading...`,
         ),
     );
 

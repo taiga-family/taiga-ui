@@ -7,9 +7,10 @@ import {
 } from '@angular/cdk/testing';
 
 /**
- * @deprecated use {@link tuiWithPredicate}
+ * Decorator to add default static 'with' method.
+ * Use in conjunction with {@link tuiHarnessWith} mixin.
  */
-export function withPredicate<
+export function tuiWithPredicate<
     T extends ComponentHarnessConstructor<ComponentHarness> & {
         with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     },
@@ -21,15 +22,11 @@ export function withPredicate<
 }
 
 /**
- * Decorator to add default static 'with' method.
- * Use in conjunction with {@link HarnessWith} mixin.
+ * Mixin to extend {@link ComponentHarness} and add typed
+ * static 'with' method. Use {@link tuiWithPredicate} decorator
+ * to monkey-patch default static 'with' method.
  */
-export const tuiWithPredicate = withPredicate;
-
-/**
- * @deprecated use {@link tuiHarnessWith}
- */
-export function HarnessWith<T>(
+export function tuiHarnessWith<T>(
     hostSelector: string,
 ): ComponentHarnessConstructor<ComponentHarness> & {
     with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
@@ -45,10 +42,3 @@ export function HarnessWith<T>(
         with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     };
 }
-
-/**
- * Mixin to extend {@link ComponentHarness} and add typed
- * static 'with' method. Use {@link withPredicate} decorator
- * to monkey-patch default static 'with' method.
- */
-export const tuiHarnessWith = HarnessWith;

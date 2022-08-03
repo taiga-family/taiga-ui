@@ -8,14 +8,14 @@ import {
     Input,
 } from '@angular/core';
 import {
-    blurNativeFocused,
     TUI_IS_IOS,
+    tuiBlurNativeFocused,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiIsSafari,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
-import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
@@ -48,7 +48,7 @@ export class TuiLoaderComponent {
     set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
         if (value && this.focused) {
-            blurNativeFocused(this.documentRef);
+            tuiBlurNativeFocused(this.documentRef);
         }
 
         this.loading = value;
@@ -75,7 +75,7 @@ export class TuiLoaderComponent {
     }
 
     get isHorizontal(): boolean {
-        return !sizeBigger(this.size);
+        return !tuiSizeBigger(this.size);
     }
 
     get focused(): boolean {
