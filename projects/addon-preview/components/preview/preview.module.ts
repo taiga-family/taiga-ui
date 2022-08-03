@@ -8,7 +8,6 @@ import {
     TuiButtonModule,
     TuiHintModule,
     TuiLoaderModule,
-    TuiManualHintModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
@@ -31,7 +30,6 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiSliderModule,
         TuiHintModule,
         TuiDragModule,
-        TuiManualHintModule,
         TuiResizeModule,
         TuiSvgModule,
         TuiLoaderModule,

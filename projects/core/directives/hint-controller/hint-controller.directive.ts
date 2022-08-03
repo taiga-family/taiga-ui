@@ -24,19 +24,19 @@ export class TuiHintControllerDirective extends AbstractTuiController {
     @tuiDefaultProp()
     direction: TuiHintOptions['direction'] = this.options.direction;
 
-    @Input(`tuiHintMode`)
+    @Input(`tuiHintAppearance`)
     @tuiDefaultProp()
-    mode: TuiHintOptions['mode'] = this.options.mode;
+    appearance = ``;
 
     @Input(`tuiHintShowDelay`)
     @tuiDefaultProp()
-    showDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
+    showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
     @Input(`tuiHintHideDelay`)
     @tuiDefaultProp()
-    hideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
+    hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
-    constructor(@Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions) {
+    constructor(@Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions) {
         super();
     }
 }

@@ -1,12 +1,13 @@
 <span
     automation-id="tui-tooltip__icon"
     class="icon"
+    [class.icon_hovered]="driver$ | async"
     [tuiHintId]="describeId"
     [tuiHint]="content"
     [tuiHintDirection]="direction"
     [tuiHintShowDelay]="showDelay"
     [tuiHintHideDelay]="hideDelay"
-    [tuiHintMode]="computedMode"
+    [tuiHintAppearance]="computedAppearance"
 >
     <tui-svg
         *polymorpheusOutlet="icon as src"
