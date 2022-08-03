@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {formatNumber, TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {formatNumber, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const MONTHS: readonly string[] = [
@@ -75,9 +75,9 @@ export class ExampleTuiBarChartComponent {
 
     hintContent = this.contentVariants[0];
 
-    readonly hintModeVariants: readonly TuiHintMode[] = [`onDark`, `error`];
+    readonly hintAppearanceVariants = [``, `onDark`, `error`];
 
-    hintMode: TuiHintMode | null = null;
+    hintAppearance = this.hintAppearanceVariants[0];
 
     getHint(index: number): string {
         return this.value

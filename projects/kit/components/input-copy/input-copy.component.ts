@@ -20,8 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiDirection,
-    TuiHintMode,
+    TuiHintDirection,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
@@ -54,11 +53,11 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    messageDirection: TuiDirection = `bottom-left`;
+    messageDirection: TuiHintDirection = `bottom-left`;
 
     @Input()
     @tuiDefaultProp()
-    messageMode: TuiHintMode | null = null;
+    messageAppearance = ``;
 
     constructor(
         @Optional()

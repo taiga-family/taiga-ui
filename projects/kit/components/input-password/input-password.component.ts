@@ -26,7 +26,6 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiBrightness,
     TuiHintControllerDirective,
-    TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -69,15 +68,15 @@ export class TuiInputPasswordComponent
 
     isPasswordHidden = true;
 
-    readonly computedMode$: Observable<TuiHintMode | null> = combineLatest([
-        this.mode$.pipe(map(val => (val === `onDark` ? `onDark` : null))),
+    readonly computedAppearance$: Observable<string> = combineLatest([
+        this.mode$.pipe(map(val => (val === `onDark` ? `onDark` : ``))),
         this.hintController.change$.pipe(
             startWith(null),
-            map(() => this.hintController.mode),
+            map(() => this.hintController.appearance),
         ),
     ]).pipe(
         map(([mode, controller]) => controller || mode),
-        startWith(null),
+        startWith(``),
     );
 
     readonly type!: TuiContextWithImplicit<TuiSizeS | TuiSizeL>;
