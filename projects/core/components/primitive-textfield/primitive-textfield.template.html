@@ -70,6 +70,7 @@
                     automation-id="tui-primitive-textfield__value-decoration"
                     aria-hidden="true"
                     class="t-value-decoration"
+                    [class.t-has-value]="value"
                     [style.textIndent.px]="getIndent$(focusableElement) | async"
                 ></tui-value-decoration>
             </div>
