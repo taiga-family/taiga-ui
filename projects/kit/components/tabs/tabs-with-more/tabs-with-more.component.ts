@@ -17,7 +17,6 @@ import {
 import {
     EMPTY_QUERY,
     setNativeFocused,
-    toInt,
     TuiActiveZoneDirective,
     tuiAssertIsElement,
     tuiClamp,
@@ -26,6 +25,7 @@ import {
     tuiGetClosestFocusable,
     tuiIsNativeFocused,
     TuiItemDirective,
+    tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -230,7 +230,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
-            const safetyOffset = toInt(this.maxIndex === maxIndex - 1);
+            const safetyOffset = tuiToInt(this.maxIndex === maxIndex - 1);
 
             if (currentWidth + safetyOffset < clientWidth) {
                 return maxIndex;

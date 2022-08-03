@@ -14,7 +14,6 @@ import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
-    clamp,
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
@@ -22,6 +21,7 @@ import {
     TUI_LAST_DAY,
     TuiActiveZoneDirective,
     TuiBooleanHandler,
+    tuiClamp,
     TuiContextWithImplicit,
     TuiControlValueTransformer,
     TuiDateMode,
@@ -35,9 +35,9 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -157,7 +157,7 @@ export class TuiInputDateTimeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
@@ -361,6 +361,6 @@ export class TuiInputDateTimeComponent
                 ? this.max[1].toAbsoluteMilliseconds()
                 : Infinity;
 
-        return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
+        return TuiTime.fromAbsoluteMilliseconds(tuiClamp(ms, min, max));
     }
 }

@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';
-import {getWordRange} from '@taiga-ui/kit';
+import {tuiGetWordRange} from '@taiga-ui/kit';
 
 export interface User {
     readonly name: string;
@@ -43,7 +43,7 @@ export class TuiDropdownSelectionExample2 {
     }
 
     predicate: TuiBooleanHandler<Range> = range =>
-        getWordRange(range).toString().startsWith(`@`);
+        tuiGetWordRange(range).toString().startsWith(`@`);
 
     onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
