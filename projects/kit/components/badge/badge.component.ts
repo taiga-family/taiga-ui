@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -49,13 +49,13 @@ export class TuiBadgeComponent {
             return `none`;
         }
 
-        return isNumber(this.value?.valueOf()) ? `m` : `l`;
+        return tuiIsNumber(this.value?.valueOf()) ? `m` : `l`;
     }
 
     get outputValue(): string {
         const value = this.value?.valueOf();
 
-        if (isNumber(value) && value > 99) {
+        if (tuiIsNumber(value) && value > 99) {
             return `99+`;
         } else {
             return String(this.value);

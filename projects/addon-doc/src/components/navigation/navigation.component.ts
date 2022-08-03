@@ -10,7 +10,7 @@ import {
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {TuiDestroyService, tuiPure, uniqBy} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
@@ -123,7 +123,7 @@ export class TuiDocNavigationComponent {
         search: string,
     ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
-            uniqBy(
+            tuiUniqBy(
                 section.filter(({title, keywords = ``}) => {
                     title = title.toLowerCase();
                     search = search.toLowerCase();

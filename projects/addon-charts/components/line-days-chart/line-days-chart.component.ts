@@ -16,11 +16,11 @@ import {
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    isPresent,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
     tuiIsNumber,
+    tuiIsPresent,
     TuiMonth,
     tuiPure,
     TuiStringHandler,
@@ -211,7 +211,7 @@ export class TuiLineDaysChartComponent {
                     .map<TuiPoint | null>(([{month, year}, y], index) =>
                         month + year * 12 === absoluteMonth ? [index + offset, y] : null,
                     )
-                    .filter(isPresent),
+                    .filter(tuiIsPresent),
             )
             .map((month, index, array) =>
                 index === array.length - 1

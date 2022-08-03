@@ -48,7 +48,7 @@ import {
     TuiInputPhoneInternationalOptions,
 } from './input-phone-international.options';
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
-import {extractValueFromEvent} from './utils/extract-value-from-event';
+import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 
 @Component({
     selector: `tui-input-phone-international`,
@@ -149,7 +149,7 @@ export class TuiInputPhoneInternationalComponent
     @HostListener(`paste.capture.prevent.stop`, [`$event`])
     @HostListener(`drop.capture.prevent.stop`, [`$event`])
     onPaste(event: ClipboardEvent | DragEvent): void {
-        let value = extractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, ``);
+        let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, ``);
         const countryIsoCode = this.extractCountryCode(value);
 
         if (!countryIsoCode) {

@@ -1,5 +1,9 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {formatNumber, TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
+import {
+    TUI_NUMBER_FORMAT,
+    tuiFormatNumber,
+    TuiNumberFormatSettings,
+} from '@taiga-ui/core';
 
 @Pipe({name: `tuiIntegerPart`})
 export class TuiIntegerPartPipe implements PipeTransform {
@@ -8,7 +12,7 @@ export class TuiIntegerPartPipe implements PipeTransform {
     ) {}
 
     transform(value: number, precision: number): string {
-        return formatNumber(
+        return tuiFormatNumber(
             Math.floor(Math.abs(Number(value.toFixed(precision)))),
             null,
             this.numberFormat.decimalSeparator,

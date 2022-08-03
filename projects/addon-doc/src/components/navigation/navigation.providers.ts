@@ -1,6 +1,6 @@
 import {InjectionToken, Provider} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {isPresent, TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
@@ -44,7 +44,7 @@ export function titleProviderFactory(
     return router.events.pipe(
         filter(event => event instanceof NavigationEnd),
         map(() => activatedRoute.firstChild),
-        filter(isPresent),
+        filter(tuiIsPresent),
         mergeMap(({data}) => data),
         map(({title}) => titlePrefix + title),
         takeUntil(destroy$),
@@ -55,7 +55,7 @@ export function titleProviderFactory(
 export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
         .map(({section}) => section)
-        .filter(isPresent)
+        .filter(tuiIsPresent)
         .filter((item, index, array) => array.indexOf(item) === index);
 }
 

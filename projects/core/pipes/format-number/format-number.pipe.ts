@@ -1,7 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
-import {formatNumber} from '@taiga-ui/core/utils/format';
+import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 
 @Pipe({name: `tuiFormatNumber`})
 export class TuiFormatNumberPipe implements PipeTransform {
@@ -26,7 +26,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
         thousandSeparator: string = this.numberFormat.thousandSeparator,
         zeroPadding: boolean = this.numberFormat.zeroPadding,
     ): string {
-        return formatNumber(
+        return tuiFormatNumber(
             value,
             decimalLimit,
             decimalSeparator,
