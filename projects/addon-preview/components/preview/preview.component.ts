@@ -14,8 +14,8 @@ import {
     TuiDragStage,
     tuiPx,
     tuiRound,
+    tuiTypedFromEvent,
     TuiZoom,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
@@ -58,10 +58,10 @@ export class TuiPreviewComponent {
         tuiDragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
-        typedFromEvent(this.elementRef.nativeElement, `touchmove`, {passive: true}).pipe(
-            mapTo(false),
-        ),
-        typedFromEvent(this.elementRef.nativeElement, `wheel`, {passive: true}).pipe(
+        tuiTypedFromEvent(this.elementRef.nativeElement, `touchmove`, {
+            passive: true,
+        }).pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `wheel`, {passive: true}).pipe(
             mapTo(false),
         ),
     );

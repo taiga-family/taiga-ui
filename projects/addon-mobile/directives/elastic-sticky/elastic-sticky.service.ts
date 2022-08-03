@@ -3,8 +3,8 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     TuiDestroyService,
     tuiGetElementOffset,
+    tuiTypedFromEvent,
     tuiZoneOptimized,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -42,7 +42,7 @@ export class TuiElasticStickyService extends Observable<number> {
                             nativeElement,
                         );
 
-                        return typedFromEvent(host || windowRef, `scroll`).pipe(
+                        return tuiTypedFromEvent(host || windowRef, `scroll`).pipe(
                             map(() =>
                                 Math.max(
                                     1 -

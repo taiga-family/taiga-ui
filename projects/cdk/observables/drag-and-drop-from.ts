@@ -4,7 +4,7 @@ import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
-import {typedFromEvent} from './typed-from-event';
+import {tuiTypedFromEvent} from './typed-from-event';
 
 export const enum TuiDragStage {
     Start,
@@ -24,12 +24,12 @@ export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     }
 
     return concat(
-        typedFromEvent(element, `mousedown`).pipe(
+        tuiTypedFromEvent(element, `mousedown`).pipe(
             take(1),
             map(event => new TuiDragState(TuiDragStage.Start, event)),
         ),
         merge(
-            typedFromEvent(ownerDocument, `mousemove`).pipe(
+            tuiTypedFromEvent(ownerDocument, `mousemove`).pipe(
                 map(event => new TuiDragState(TuiDragStage.Continues, event)),
             ),
             tuiMouseDragFinishFrom(ownerDocument).pipe(
