@@ -1,5 +1,5 @@
 import {NgZone} from '@angular/core';
-import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
@@ -21,11 +21,13 @@ export function iosScrollFactory(
     documentRef: Document,
     ngZone: NgZone,
 ): Observable<number> {
-    const load$ = typedFromEvent(element, `load`, {capture: true});
-    const touchstart$ = typedFromEvent(element, `touchstart`, {passive: true});
-    const touchmove$ = typedFromEvent(documentRef, `touchmove`, {passive: true});
-    const touchend$ = typedFromEvent(documentRef, `touchend`);
-    const scroll$ = typedFromEvent(element, `scroll`).pipe(map(() => element.scrollTop));
+    const load$ = tuiTypedFromEvent(element, `load`, {capture: true});
+    const touchstart$ = tuiTypedFromEvent(element, `touchstart`, {passive: true});
+    const touchmove$ = tuiTypedFromEvent(documentRef, `touchmove`, {passive: true});
+    const touchend$ = tuiTypedFromEvent(documentRef, `touchend`);
+    const scroll$ = tuiTypedFromEvent(element, `scroll`).pipe(
+        map(() => element.scrollTop),
+    );
     const result$ = merge(
         load$.pipe(
             delay(0),
