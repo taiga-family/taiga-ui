@@ -13,22 +13,22 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
-    isPresent,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
+    tuiFormatNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -162,11 +162,11 @@ export class TuiInputCountComponent
     }
 
     get minusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value <= this.min);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value <= this.min);
     }
 
     get plusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value >= this.max);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value >= this.max);
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false): void {
@@ -263,7 +263,7 @@ export class TuiInputCountComponent
     }
 
     private safeUpdateValue(newValue: number): void {
-        const value = clamp(newValue, this.min, this.max);
+        const value = tuiClamp(newValue, this.min, this.max);
 
         this.updateValue(value);
         this.nativeValue = this.formatNumber(value);
@@ -288,7 +288,7 @@ export class TuiInputCountComponent
     }
 
     private formatNumber(value: number): string {
-        return formatNumber(
+        return tuiFormatNumber(
             value,
             null,
             this.numberFormat.decimalSeparator,

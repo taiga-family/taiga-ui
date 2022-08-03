@@ -13,14 +13,14 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    isPresent,
-    setNativeMouseFocused,
     tuiAssertIsElement,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
+    tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_DATA_LIST_ACCESSOR, TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
@@ -94,7 +94,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @HostListener(`mouseleave`, [`$event.target`])
     handleFocusLossIfNecessary(element: Element = this.elementRef.nativeElement): void {
         if (this.origin && tuiIsNativeFocusedIn(element)) {
-            setNativeMouseFocused(this.origin, true, true);
+            tuiSetNativeMouseFocused(this.origin, true, true);
         }
     }
 
@@ -103,7 +103,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
             .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
-            .filter(isPresent);
+            .filter(tuiIsPresent);
     }
 
     onFocus({target}: Event, top: boolean): void {

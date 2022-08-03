@@ -25,16 +25,16 @@ import {
     TuiMapper,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
-    maskedMoneyValueIsEmpty,
-    maskedNumberStringToNumber,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimal,
     tuiEnableAutoCorrectDecimalSymbol,
+    tuiFormatNumber,
     tuiGetFractionPartPadded,
+    tuiMaskedMoneyValueIsEmpty,
+    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
@@ -202,7 +202,7 @@ export class TuiInputNumberComponent
         } as TuiTextMaskOptions as unknown as TextMaskConfig);
 
     onValueChange(value: string): void {
-        if (maskedMoneyValueIsEmpty(value)) {
+        if (tuiMaskedMoneyValueIsEmpty(value)) {
             this.updateValue(null);
 
             return;
@@ -222,7 +222,7 @@ export class TuiInputNumberComponent
 
         if (
             capped !==
-            maskedNumberStringToNumber(
+            tuiMaskedNumberStringToNumber(
                 value,
                 this.numberFormat.decimalSeparator,
                 this.numberFormat.thousandSeparator,
@@ -286,7 +286,7 @@ export class TuiInputNumberComponent
             limit = fraction.length;
         }
 
-        return formatNumber(
+        return tuiFormatNumber(
             value,
             limit,
             this.numberFormat.decimalSeparator,
@@ -317,7 +317,7 @@ export class TuiInputNumberComponent
     }
 
     private get nativeNumberValue(): number {
-        return maskedNumberStringToNumber(
+        return tuiMaskedNumberStringToNumber(
             this.nativeValue,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
@@ -330,7 +330,7 @@ export class TuiInputNumberComponent
     }
 
     private absoluteCapInputValue(inputValue: string): number | null {
-        const value = maskedNumberStringToNumber(
+        const value = tuiMaskedNumberStringToNumber(
             inputValue,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
