@@ -1,7 +1,11 @@
 import {ElementRef, InjectionToken, Optional, Provider} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {TuiDestroyService, TuiFocusVisibleService, typedFromEvent} from '@taiga-ui/cdk';
+import {
+    TuiDestroyService,
+    TuiFocusVisibleService,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {EMPTY, identity, merge, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
@@ -42,7 +46,9 @@ export function tabActiveFactory(
     return merge(
         mutationObserver,
         routerLinkActiveService.pipe(filter(identity)),
-        nativeElement.matches(`button`) ? typedFromEvent(nativeElement, `click`) : EMPTY,
+        nativeElement.matches(`button`)
+            ? tuiTypedFromEvent(nativeElement, `click`)
+            : EMPTY,
     ).pipe(
         map(() =>
             nativeElement.dispatchEvent(

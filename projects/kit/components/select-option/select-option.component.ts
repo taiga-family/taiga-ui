@@ -12,7 +12,7 @@ import {
     TuiContextWithImplicit,
     TuiIdentityMatcher,
     tuiIsPresent,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TuiDataListHost, TuiOptionComponent} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -28,7 +28,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 export class TuiSelectOptionComponent<T> implements OnInit {
     readonly selected$ = merge(
         this.control.valueChanges || EMPTY,
-        typedFromEvent(this.elementRef.nativeElement, `animationstart`),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `animationstart`),
     ).pipe(
         startWith(null),
         map(() => this.selected),

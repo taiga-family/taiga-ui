@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
 import {TuiNodeViewNgComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
-import {TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -60,8 +60,8 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         super();
 
         merge(
-            typedFromEvent(this.documentRef, `touchend`),
-            typedFromEvent(this.documentRef, `mouseup`),
+            tuiTypedFromEvent(this.documentRef, `touchend`),
+            tuiTypedFromEvent(this.documentRef, `mouseup`),
         )
             .pipe(takeUntil(destroy$))
             .subscribe(() => this.updateAttributes({width: this.width}));
