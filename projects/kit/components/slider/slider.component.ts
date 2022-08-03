@@ -15,7 +15,6 @@ import {USER_AGENT} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
     tuiDefaultProp,
-    tuiPure,
     tuiIsEdgeOlderThan,
     tuiPure,
     tuiWatch,

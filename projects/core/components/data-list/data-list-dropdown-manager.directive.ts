@@ -12,7 +12,7 @@ import {
     tuiItemsQueryListObservable,
     tuiPreventDefault,
     tuiPure,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {EMPTY, merge, Observable} from 'rxjs';
@@ -58,12 +58,13 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                     }
 
                     const {nativeElement} = dropdown.dropdownBoxRef.location;
-                    const mouseEnter$ = typedFromEvent(nativeElement, `mouseenter`).pipe(
-                        take(1),
-                    );
+                    const mouseEnter$ = tuiTypedFromEvent(
+                        nativeElement,
+                        `mouseenter`,
+                    ).pipe(take(1));
                     const esc$ = merge(
-                        typedFromEvent(element.nativeElement, `keydown`),
-                        typedFromEvent(nativeElement, `keydown`),
+                        tuiTypedFromEvent(element.nativeElement, `keydown`),
+                        tuiTypedFromEvent(nativeElement, `keydown`),
                     ).pipe(filter(({keyCode}) => keyCode === 27));
 
                     return merge(mouseEnter$, esc$).pipe(
@@ -96,7 +97,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             switchMap(elements =>
                 merge(
                     ...elements.map((element, index) =>
-                        typedFromEvent(element, `keydown`).pipe(
+                        tuiTypedFromEvent(element, `keydown`).pipe(
                             filter(({keyCode}) => keyCode === 39),
                             tuiPreventDefault(),
                             mapTo(index),
@@ -113,7 +114,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             switchMap(elements =>
                 merge(
                     ...elements.map((element, index) =>
-                        typedFromEvent(element, `click`).pipe(mapTo(index)),
+                        tuiTypedFromEvent(element, `click`).pipe(mapTo(index)),
                     ),
                 ),
             ),
@@ -127,8 +128,8 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                 merge(
                     ...elements.map((element, index) =>
                         merge(
-                            typedFromEvent(element, `focus`),
-                            typedFromEvent(element, `blur`),
+                            tuiTypedFromEvent(element, `focus`),
+                            tuiTypedFromEvent(element, `blur`),
                         ).pipe(
                             filter(({relatedTarget}) =>
                                 this.notInDropdown(relatedTarget, index),
