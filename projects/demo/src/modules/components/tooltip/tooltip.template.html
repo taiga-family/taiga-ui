@@ -44,7 +44,7 @@
         <tui-doc-demo>
             <tui-tooltip
                 content="You data is hidden"
-                [mode]="mode"
+                [appearance]="appearance"
                 [describeId]="describeId"
                 [direction]="direction"
                 [showDelay]="showDelay"
@@ -56,6 +56,16 @@
             />
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="appearance"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Hint appearance
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="content"
@@ -77,16 +87,6 @@
                 and use
                 <code>[tuiDescribedBy]="theSameId"</code>
                 directive on focusable element
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="mode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiTooltipMode | null"
-                [documentationPropertyValues]="modeVariants"
-                [(documentationPropertyValue)]="mode"
-            >
-                Tooltip mode
             </ng-template>
             <ng-template
                 i18n

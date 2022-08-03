@@ -5,6 +5,7 @@ export * from './default-marker-handler';
 export * from './described-by';
 export * from './editing-keys';
 export * from './events';
+export * from './hint-directions';
 export * from './mask-caret-trap';
 export * from './regexp';
 export * from './version';
