@@ -2,130 +2,61 @@ import {
     Directive,
     ElementRef,
     Inject,
+    INJECTOR,
     Input,
+    OnChanges,
     OnDestroy,
     Optional,
-    Renderer2,
-    Self,
 } from '@angular/core';
+import {TuiActiveZoneDirective, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
-    TuiActiveZoneDirective,
-    tuiDefaultProp,
-    TuiDestroyService,
-    TuiHoveredService,
-    TuiObscuredService,
-    TuiParentsScrollService,
-    tuiRequiredSetter,
-} from '@taiga-ui/cdk';
-import {AbstractTuiHint} from '@taiga-ui/core/abstract';
+    tuiAsRectAccessor,
+    tuiAsVehicle,
+    TuiRectAccessor,
+    TuiVehicle,
+} from '@taiga-ui/core/abstract';
 import {DESCRIBED_BY} from '@taiga-ui/core/constants';
+import {TuiHint} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, of, Subject} from 'rxjs';
-import {
-    delay,
-    distinctUntilChanged,
-    map,
-    startWith,
-    switchMap,
-    take,
-    takeUntil,
-} from 'rxjs/operators';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
-
-export const HINT_HOVERED_CLASS = `_hint_hovered`;
+import {TUI_HINT_COMPONENT} from './hint.providers';
 
 @Directive({
     selector: `[tuiHint]:not(ng-container)`,
     providers: [
-        TuiObscuredService,
-        TuiParentsScrollService,
-        TuiDestroyService,
-        TuiHoveredService,
+        tuiAsRectAccessor(TuiHintDirective),
+        tuiAsVehicle(TuiHintDirective),
+        {
+            provide: PolymorpheusComponent,
+            deps: [TUI_HINT_COMPONENT, INJECTOR],
+            useClass: PolymorpheusComponent,
+        },
     ],
 })
-export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
-    @Input()
-    tuiHintId?: string;
-
-    @Input()
-    @tuiDefaultProp()
-    tuiHintShowDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
-
+export class TuiHintDirective
+    implements OnDestroy, OnChanges, TuiHint, TuiRectAccessor, TuiVehicle
+{
     @Input()
     @tuiDefaultProp()
-    tuiHintHideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
+    tuiHintId = ``;
 
-    @Input()
+    @Input(`tuiHint`)
     @tuiDefaultProp()
-    tuiHintHost: HTMLElement | null = null;
+    content: PolymorpheusContent = ``;
 
-    @Input()
-    @tuiRequiredSetter()
-    set tuiHint(value: PolymorpheusContent) {
-        if (!value) {
-            this.hideTooltip();
-            this.content = ``;
-
-            return;
-        }
-
-        this.content = value;
-    }
-
-    readonly componentHovered$ = new Subject<boolean>();
+    @Input(`tuiHintAppearance`)
+    appearance = ``;
 
     constructor(
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiHintService) hintService: TuiHintService,
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
-        @Inject(TuiObscuredService)
-        @Self()
-        obscured$: TuiObscuredService,
-        @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(PolymorpheusComponent)
+        readonly component: PolymorpheusComponent<object, object>,
         @Optional()
         @Inject(TuiActiveZoneDirective)
-        activeZone: TuiActiveZoneDirective | null,
-        @Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions,
+        readonly activeZone: TuiActiveZoneDirective | null,
+        @Inject(TuiHintService) private readonly hintService: TuiHintService,
     ) {
-        super(elementRef, hintService, activeZone, options);
-
-        // @bad TODO: Use private provider
-        combineLatest(hoveredService, this.componentHovered$.pipe(startWith(false)))
-            .pipe(
-                map(
-                    ([directiveHovered, componentHovered]) =>
-                        directiveHovered || componentHovered,
-                ),
-                switchMap(visible => {
-                    this.toggleClass(visible);
-
-                    return of(visible).pipe(
-                        delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
-                    );
-                }),
-                switchMap(visible =>
-                    visible && this.mode !== `overflow`
-                        ? obscured$.pipe(
-                              map(obscured => !obscured),
-                              take(2),
-                          )
-                        : of(visible),
-                ),
-                distinctUntilChanged(),
-                takeUntil(destroy$),
-            )
-            .subscribe(visible => {
-                if (visible) {
-                    this.showTooltip();
-                } else {
-                    this.hideTooltip();
-                }
-            });
-
         this.hintService.register(this);
     }
 
@@ -133,37 +64,26 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         return this.tuiHintId ? this.tuiHintId + DESCRIBED_BY : null;
     }
 
-    get host(): HTMLElement {
-        return this.tuiHintHost ? this.tuiHintHost : this.elementRef.nativeElement;
-    }
-
-    getElementClientRect(): ClientRect {
-        return this.host.getBoundingClientRect();
+    ngOnChanges(): void {
+        if (!this.content) {
+            this.toggle(false);
+        }
     }
 
     ngOnDestroy(): void {
+        this.toggle(false);
         this.hintService.unregister(this);
     }
 
-    protected showTooltip(): void {
-        if (this.content === ``) {
-            return;
-        }
-
-        this.toggleClass(true);
-        this.hintService.add(this);
+    getClientRect(): ClientRect {
+        return this.elementRef.nativeElement.getBoundingClientRect();
     }
 
-    protected hideTooltip(): void {
-        this.toggleClass(false);
-        this.hintService.remove(this);
-    }
-
-    private toggleClass(add: boolean): void {
-        if (add) {
-            this.renderer.addClass(this.elementRef.nativeElement, HINT_HOVERED_CLASS);
+    toggle(show: boolean): void {
+        if (show && this.content) {
+            this.hintService.add(this);
         } else {
-            this.renderer.removeClass(this.elementRef.nativeElement, HINT_HOVERED_CLASS);
+            this.hintService.remove(this);
         }
     }
 }

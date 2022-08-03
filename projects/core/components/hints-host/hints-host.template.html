@@ -5,5 +5,5 @@
     [attr.id]="hint.id"
     [tuiActiveZoneParent]="hint.activeZone"
 >
-    <ng-container *polymorpheusOutlet="hint.component || component; context: {$implicit: hint}"></ng-container>
+    <ng-container *polymorpheusOutlet="hint.component; context: {$implicit: hint}"></ng-container>
 </div>

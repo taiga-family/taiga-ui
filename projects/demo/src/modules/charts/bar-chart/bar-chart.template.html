@@ -44,7 +44,7 @@
                 [max]="max"
                 [size]="size"
                 [hintContent]="hintContent"
-                [hintMode]="hintMode"
+                [hintAppearance]="hintAppearance"
             ></tui-bar-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -69,11 +69,11 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="hintMode"
+                documentationPropertyName="hintAppearance"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintModeT | null"
-                [documentationPropertyValues]="hintModeVariants"
-                [(documentationPropertyValue)]="hintMode"
+                [documentationPropertyValues]="hintAppearanceVariants"
+                [(documentationPropertyValue)]="hintAppearance"
             >
                 Hint mode
             </ng-template>

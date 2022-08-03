@@ -5,5 +5,6 @@ export interface TuiHint {
     readonly id: string | null;
     readonly component: PolymorpheusComponent<object, object>;
     readonly content: PolymorpheusContent;
+    readonly appearance: string;
     readonly activeZone: TuiActiveZoneDirective | null;
 }
