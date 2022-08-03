@@ -5,7 +5,7 @@ import {
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {race} from 'rxjs';
@@ -39,7 +39,7 @@ export class TuiTouchableDirective {
 
         const element = elementRef ? elementRef.nativeElement : nativeElement;
 
-        typedFromEvent(element, `touchstart`, {passive: true})
+        tuiTypedFromEvent(element, `touchstart`, {passive: true})
             .pipe(
                 tap(() => {
                     this.onTouchStart(renderer, element);
@@ -47,12 +47,12 @@ export class TuiTouchableDirective {
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
                     race(
-                        typedFromEvent(element, `touchmove`, {passive: true}).pipe(
+                        tuiTypedFromEvent(element, `touchmove`, {passive: true}).pipe(
                             filter(({touches}) =>
                                 this.hasTouchLeft(element, touches, identifier),
                             ),
                         ),
-                        typedFromEvent(element, `touchend`),
+                        tuiTypedFromEvent(element, `touchend`),
                     ).pipe(take(1)),
                 ),
                 takeUntil(destroy$),

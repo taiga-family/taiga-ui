@@ -34,7 +34,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiPreventDefault,
     TuiScrollService,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
     HINT_CONTROLLER_PROVIDER,
@@ -468,7 +468,7 @@ export class TuiInputTagComponent
 
         const {nativeElement} = scroller.browserScrollRef;
 
-        const wheel$ = typedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
+        const wheel$ = tuiTypedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
             filter(event => event.deltaX === 0 && this.shouldScroll(nativeElement)),
             tuiPreventDefault(),
             map(({deltaY}) =>
