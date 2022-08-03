@@ -8,8 +8,7 @@ import {
     TuiInputType,
 } from '@taiga-ui/cdk';
 import {
-    TuiDirection,
-    TuiHintMode,
+    TUI_HINT_DIRECTIONS,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -146,26 +145,17 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     readonly hintContentVariants: readonly string[] = [`Ivan Ivanov`];
 
-    readonly hintDirectionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
-    ];
+    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintModeVariants: readonly TuiHintMode[] = [`error`, `onDark`];
+    readonly hintAppearanceVariants = [``, `error`, `onDark`];
 
     invalid = false;
 
     hintContent = null;
 
-    hintDirection: TuiDirection = this.hintDirectionVariants[2];
+    hintDirection = this.hintDirectionVariants[0];
 
-    hintMode: TuiHintMode | null = null;
+    hintAppearance = this.hintAppearanceVariants[0];
 
     get customContent(): string | null {
         return this.customContentSelected === CUSTOM_SVG_NAME

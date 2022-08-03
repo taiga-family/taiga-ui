@@ -3,10 +3,11 @@
     tuiHintDirection="top-left"
     class="t-wrapper"
     [class.t-wrapper_hoverable]="hasHint"
+    [class.t-wrapper_hovered]="drivers.get(index) | async"
     [tuiHintHost]="hintHost"
     [tuiHintId]="getHintId(index)"
     [tuiHint]="getHint(hint)"
-    [tuiHintMode]="hintMode"
+    [tuiHintAppearance]="hintAppearance"
 >
     <div
         class="t-container"
@@ -29,10 +30,9 @@
         #hint="polymorpheus"
         polymorpheus
     >
-        <div
-            *polymorpheusOutlet="hintContent as text; context: getContentContext(index)"
-            class="t-text"
-            [textContent]="text"
-        ></div>
+        <!-- TODO: Consider adding context to Hint directive -->
+        <ng-container *polymorpheusOutlet="hintContent as text; context: {$implicit: index}">
+            {{ text }}
+        </ng-container>
     </ng-template>
 </div>
