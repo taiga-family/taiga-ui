@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    isPresent,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsPresent,
     tuiItemsQueryListObservable,
 } from '@taiga-ui/cdk';
 import {identity, merge} from 'rxjs';
@@ -51,7 +51,7 @@ export class TuiAccordionComponent implements AfterContentInit {
             map(([previous, current]) =>
                 current.find(item => !previous.includes(item) && item.open),
             ),
-            filter(isPresent),
+            filter(tuiIsPresent),
         );
         const rowsOpen$ = merge(
             rows$.pipe(

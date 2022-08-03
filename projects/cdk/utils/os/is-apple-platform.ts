@@ -1,5 +1,4 @@
 /**
- * @deprecated: use {@link tuiIsApplePlatform} instead
  * @description:
  * All Chrome / Chromium-based browsers will return MacIntel on macOS,
  * no matter what the hardware architecture is. See the source code here:
@@ -9,9 +8,6 @@
  * Documentation:
  * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/platform
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isApplePlatform(navigator: Navigator): boolean {
+export function tuiIsApplePlatform(navigator: Navigator): boolean {
     return navigator.platform.indexOf(`Mac`) === 0 || navigator.platform === `iPhone`;
 }
-
-export const tuiIsApplePlatform = isApplePlatform;

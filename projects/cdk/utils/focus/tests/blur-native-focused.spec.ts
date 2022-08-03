@@ -1,4 +1,4 @@
-import {blurNativeFocused} from '../blur-native-focused';
+import {tuiBlurNativeFocused} from '../blur-native-focused';
 import {setNativeFocused} from '../set-native-focused';
 
 describe(`blurNativeFocused`, () => {
@@ -19,7 +19,7 @@ describe(`blurNativeFocused`, () => {
     });
 
     it(`Blurs element`, () => {
-        blurNativeFocused(document);
+        tuiBlurNativeFocused(document);
 
         expect(document.activeElement).toBe(document.body);
     });

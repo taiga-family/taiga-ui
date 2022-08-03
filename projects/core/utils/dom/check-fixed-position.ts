@@ -1,8 +1,4 @@
-/**
- * @deprecated: use {@link tuiCheckFixedPosition} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function checkFixedPosition(element: HTMLElement | null): boolean {
+export function tuiCheckFixedPosition(element: HTMLElement | null): boolean {
     if (!element || typeof getComputedStyle === `undefined`) {
         return false;
     }
@@ -11,8 +7,6 @@ export function checkFixedPosition(element: HTMLElement | null): boolean {
 
     return (
         style.getPropertyValue(`position`) === `fixed` ||
-        checkFixedPosition(element.parentElement)
+        tuiCheckFixedPosition(element.parentElement)
     );
 }
-
-export const tuiCheckFixedPosition = checkFixedPosition;

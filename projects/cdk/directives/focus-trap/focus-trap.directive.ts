@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import {tuiContainsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
-    blurNativeFocused,
     setNativeFocused,
+    tuiBlurNativeFocused,
     tuiGetClosestFocusable,
     tuiGetNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
@@ -64,7 +64,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        blurNativeFocused(this.documentRef);
+        tuiBlurNativeFocused(this.documentRef);
 
         /**
          * HostListeners are triggered even after ngOnDestroy

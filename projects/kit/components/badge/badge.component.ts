@@ -55,13 +55,13 @@ export class TuiBadgeComponent {
             return `none`;
         }
 
-        return isNumber(this.value?.valueOf()) ? `m` : `l`;
+        return tuiIsNumber(this.value?.valueOf()) ? `m` : `l`;
     }
 
     get outputValue(): string {
         const value = this.value?.valueOf();
 
-        if (isNumber(value) && value > 99) {
+        if (tuiIsNumber(value) && value > 99) {
             return `99+`;
         } else {
             return String(this.value);

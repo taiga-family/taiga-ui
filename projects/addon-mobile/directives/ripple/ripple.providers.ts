@@ -1,9 +1,9 @@
 import {ElementRef, InjectionToken, Provider, Renderer2} from '@angular/core';
 import {
-    isPresent,
     TUI_IS_IOS,
     TUI_TOUCH_SUPPORTED,
     TuiDestroyService,
+    tuiIsPresent,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {EMPTY, Observable} from 'rxjs';
@@ -81,7 +81,7 @@ export function rippleEndFactory(
         : typedFromEvent(nativeElement, `animationend`).pipe(
               filter(({animationName}) => animationName === RIPPLE_OFF),
               map(({target}) => target),
-              filter(isPresent),
+              filter(tuiIsPresent),
               takeUntil(destroy$),
           );
 }

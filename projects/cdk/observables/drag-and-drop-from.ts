@@ -1,5 +1,5 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 
@@ -37,6 +37,6 @@ export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
                 map(event => new TuiDragState(TuiDragStage.End, event)),
                 endWith(null),
             ),
-        ).pipe(takeWhile(isPresent)),
+        ).pipe(takeWhile(tuiIsPresent)),
     ).pipe(repeat());
 }

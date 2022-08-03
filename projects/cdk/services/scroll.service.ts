@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {clamp} from '@taiga-ui/cdk/utils/math';
-import {easeInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import {defer, Observable, of, timer} from 'rxjs';
 import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
 
@@ -35,7 +35,7 @@ export class TuiScrollService {
             ? of([scrollTop, scrollLeft] as [number, number])
             : defer(() => of(this.performanceRef.now())).pipe(
                   switchMap(start => this.animationFrame$.pipe(map(now => now - start))),
-                  map(elapsed => easeInOutQuad(clamp(elapsed / duration, 0, 1))),
+                  map(elapsed => tuiEaseInOutQuad(tuiClamp(elapsed / duration, 0, 1))),
                   map(
                       percent =>
                           [
