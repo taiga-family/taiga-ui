@@ -1,38 +1,25 @@
 import {TuiEventWith, TuiTypedEventTarget} from '@taiga-ui/cdk/types';
 import {fromEvent, Observable} from 'rxjs';
 
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<E extends keyof WindowEventMap>(
+export function tuiTypedFromEvent<E extends keyof WindowEventMap>(
     target: Window,
     event: E,
     options?: AddEventListenerOptions,
 ): Observable<TuiEventWith<WindowEventMap[E], typeof target>>;
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<E extends keyof DocumentEventMap>(
+
+export function tuiTypedFromEvent<E extends keyof DocumentEventMap>(
     target: Document,
     event: E,
     options?: AddEventListenerOptions,
 ): Observable<TuiEventWith<DocumentEventMap[E], typeof target>>;
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<T extends Element, E extends keyof HTMLElementEventMap>(
+
+export function tuiTypedFromEvent<T extends Element, E extends keyof HTMLElementEventMap>(
     target: T,
     event: E,
     options?: AddEventListenerOptions,
 ): Observable<TuiEventWith<HTMLElementEventMap[E], typeof target>>;
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<
+
+export function tuiTypedFromEvent<
     E extends Event,
     T extends TuiTypedEventTarget<TuiEventWith<E, T>>,
 >(
@@ -40,25 +27,17 @@ export function typedFromEvent<
     event: string,
     options?: AddEventListenerOptions,
 ): Observable<TuiEventWith<E, T>>;
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<E extends Event>(
+
+export function tuiTypedFromEvent<E extends Event>(
     target: TuiTypedEventTarget<E>,
     event: string,
     options?: AddEventListenerOptions,
 ): Observable<E>;
-/**
- * @deprecated: use {@link tuiTypedFromEvent} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function typedFromEvent<E extends Event>(
+
+export function tuiTypedFromEvent<E extends Event>(
     target: TuiTypedEventTarget<E>,
     event: string,
     options: AddEventListenerOptions = {},
 ): Observable<E> {
     return fromEvent(target, event, options);
 }
-
-export const tuiTypedFromEvent = typedFromEvent;

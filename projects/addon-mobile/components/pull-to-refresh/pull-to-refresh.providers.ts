@@ -1,6 +1,6 @@
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile/tokens';
-import {TUI_IS_IOS, typedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {endWith, filter, map, mapTo, scan, switchMap, takeUntil} from 'rxjs/operators';
 
@@ -26,15 +26,15 @@ export function pullingFactory(
     {nativeElement}: ElementRef<HTMLElement>,
 ): Observable<number> {
     return merge(
-        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+        tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
             filter(() => nativeElement.scrollTop === 0),
             switchMap(touchStart =>
-                typedFromEvent(nativeElement, `touchmove`).pipe(
+                tuiTypedFromEvent(nativeElement, `touchmove`).pipe(
                     map(
                         touchMove =>
                             touchMove.touches[0].clientY - touchStart.touches[0].clientY,
                     ),
-                    takeUntil(typedFromEvent(nativeElement, `touchend`)),
+                    takeUntil(tuiTypedFromEvent(nativeElement, `touchend`)),
                     endWith(0),
                 ),
             ),
