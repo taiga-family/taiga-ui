@@ -10,7 +10,7 @@ import {tuiHintOptionsProvider} from '@taiga-ui/core';
     encapsulation,
     providers: [
         tuiHintOptionsProvider({
-            tooltipIcon: `tuiIconCameraLarge`,
+            icon: `tuiIconCameraLarge`,
         }),
     ],
 })
