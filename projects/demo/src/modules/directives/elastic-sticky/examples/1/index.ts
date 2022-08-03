@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
-import {clamp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ export class TuiElasticStickyExample1 implements AfterViewInit {
         // If we use it like that instead of (tuiElasticSticky)="onElasticSticky($event)"
         // we will not trigger unnecessary change detection when scale is less than 0.5
         this.scale$ = this.elasticSticky.tuiElasticSticky.pipe(
-            map(scale => clamp(scale, 0.5, 1)),
+            map(scale => tuiClamp(scale, 0.5, 1)),
             startWith(1),
             distinctUntilChanged(),
         );

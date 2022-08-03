@@ -1,9 +1,9 @@
-import {uniqBy} from '../uniq-by';
+import {tuiUniqBy} from '../uniq-by';
 
 describe(`uniqBy`, () => {
     it(`removes entries with repeated key`, () => {
         expect(
-            uniqBy(
+            tuiUniqBy(
                 [
                     {
                         id: 1,

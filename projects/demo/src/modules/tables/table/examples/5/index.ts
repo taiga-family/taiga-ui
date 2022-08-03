@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComparator} from '@taiga-ui/addon-table';
-import {toInt, TuiDay} from '@taiga-ui/cdk';
+import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
 
 interface User {
     readonly name: string;
@@ -66,7 +66,7 @@ function getAge({dob}: User): number {
     const years = TODAY.year - dob.year;
     const months = TODAY.month - dob.month;
     const days = TODAY.day - dob.day;
-    const offset = toInt(months > 0 || (!months && days > 9));
+    const offset = tuiToInt(months > 0 || (!months && days > 9));
 
     return years + offset;
 }

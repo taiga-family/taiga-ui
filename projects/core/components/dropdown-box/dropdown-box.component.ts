@@ -30,7 +30,7 @@ import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
-import {getScreenWidth, tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
+import {tuiGetScreenWidth, tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {takeUntil, throttleTime} from 'rxjs/operators';
 
@@ -149,7 +149,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     ): TuiHorizontalDirection {
         const dropdownRect = this.elementRef.nativeElement.getBoundingClientRect();
         const dropdownWidth = this.elementRef.nativeElement.offsetWidth;
-        const screenWidth = getScreenWidth(this.windowRef.document);
+        const screenWidth = tuiGetScreenWidth(this.windowRef.document);
         const isDropdownSizeHypotheticallyFitsViewport =
             directiveRect.left + dropdownWidth < screenWidth ||
             directiveRect.right - dropdownWidth > 0;

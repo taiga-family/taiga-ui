@@ -22,9 +22,9 @@ import {
     TuiMonthRange,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -87,7 +87,7 @@ export class TuiInputMonthRangeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
