@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {tuiPreventDefault, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 
@@ -9,15 +9,18 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 })
 export class TuiResizedDirective {
     @Output()
-    readonly tuiResized = typedFromEvent(this.elementRef.nativeElement, `mousedown`).pipe(
+    readonly tuiResized = tuiTypedFromEvent(
+        this.elementRef.nativeElement,
+        `mousedown`,
+    ).pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} = this.parentRef.nativeElement.getBoundingClientRect();
 
-            return typedFromEvent(this.documentRef, `mousemove`).pipe(
+            return tuiTypedFromEvent(this.documentRef, `mousemove`).pipe(
                 distinctUntilChanged(),
                 map(({clientX}) => width + clientX - right),
-                takeUntil(typedFromEvent(this.documentRef, `mouseup`)),
+                takeUntil(tuiTypedFromEvent(this.documentRef, `mouseup`)),
             );
         }),
     );
