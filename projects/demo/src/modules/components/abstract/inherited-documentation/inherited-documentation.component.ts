@@ -1,6 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
@@ -19,18 +19,9 @@ export class InheritedDocumentationComponent {
 
     readonly booleanVariants: readonly boolean[] = [false, true];
 
-    readonly directionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
-    ];
+    readonly directionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly modeVariants: readonly TuiHintMode[] = [`error`, `onDark`];
+    readonly appearanceVariants = [``, `error`, `onDark`];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)

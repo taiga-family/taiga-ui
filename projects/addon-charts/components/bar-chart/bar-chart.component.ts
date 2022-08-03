@@ -1,5 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
+import {
+    EMPTY_QUERY,
     sum,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -7,8 +15,9 @@ import {
     TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiDriver, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
@@ -26,6 +35,9 @@ const VALUE_ERROR = `All arrays must be of the same length`;
 })
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
+
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()
     @tuiDefaultProp(valueAssertion, VALUE_ERROR)
@@ -49,7 +61,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintMode: TuiHintMode | null = null;
+    hintAppearance = ``;
 
     constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();
@@ -65,13 +77,6 @@ export class TuiBarChartComponent {
 
     get computedMax(): number {
         return this.max || this.getMax(this.value, this.collapsed);
-    }
-
-    @tuiPure
-    getContentContext(index: number): TuiContextWithImplicit<number> {
-        return {
-            $implicit: index,
-        };
     }
 
     readonly percentMapper: TuiMapper<readonly number[], number> = (

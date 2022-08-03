@@ -5,7 +5,7 @@ export * from './decimal-symbol';
 export * from './dialog-size';
 export * from './direction';
 export * from './dropdown-width';
-export * from './hint-mode';
+export * from './hint-direction';
 export * from './marker-handler';
 export * from './option-role';
 export * from './orientation';

@@ -44,7 +44,7 @@
     &:focus,
     .t-column_hovered &,
     .t-column:hover &,
-    .t-column._hint_hovered & {
+    .t-column_hint_hovered & {
         opacity: 1;
     }
 }
@@ -69,16 +69,12 @@
 
     :host[style^='z-index: 0'] .t-column_hovered &,
     :host:not([style]) .t-column:hover &,
-    :host:not([style]) .t-column._hint_hovered &,
+    :host:not([style]) .t-column_hint_hovered &,
     :host[style^='z-index: 0'] .t-column_hovered + &,
     :host:not([style]) .t-column:hover + &,
-    :host:not([style]) .t-column._hint_hovered + & {
+    :host:not([style]) .t-column_hint_hovered + & {
         opacity: 1;
     }
-}
-
-.t-text {
-    white-space: pre-wrap;
 }
 
 .t-hint {
