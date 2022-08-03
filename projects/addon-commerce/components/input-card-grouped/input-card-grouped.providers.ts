@@ -5,7 +5,7 @@ import {
     TUI_CARD_EXPIRY_TEXTS,
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
-import {typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {combineLatest, Observable, of} from 'rxjs';
@@ -42,7 +42,7 @@ export function inputGroupedTextsFactory(
         `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
     );
 
-    return typedFromEvent(media, `change`).pipe(
+    return tuiTypedFromEvent(media, `change`).pipe(
         startWith(null),
         switchMap(() =>
             combineLatest([

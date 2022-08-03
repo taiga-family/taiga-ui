@@ -15,7 +15,7 @@ import {
     TuiFocusVisibleService,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -71,8 +71,8 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     focusVisible = false;
 
     readonly focusedChange = merge(
-        typedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
-        typedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
     );
 
     constructor(

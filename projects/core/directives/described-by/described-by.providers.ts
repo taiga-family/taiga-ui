@@ -3,7 +3,7 @@ import {
     TuiDestroyService,
     TuiFocusVisibleService,
     tuiStopPropagation,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {merge, Observable, timer} from 'rxjs';
 import {
@@ -44,22 +44,22 @@ export function describedByFactory(
                     mapTo(true),
                     takeUntil(
                         merge(
-                            typedFromEvent(nativeElement, `keydown`),
-                            typedFromEvent(nativeElement, `blur`),
+                            tuiTypedFromEvent(nativeElement, `keydown`),
+                            tuiTypedFromEvent(nativeElement, `blur`),
                         ),
                     ),
                 ),
             ),
             switchMapTo(
                 merge(
-                    typedFromEvent(nativeElement, `keydown`).pipe(
+                    tuiTypedFromEvent(nativeElement, `keydown`).pipe(
                         filter(({key}) => key === `Escape`),
                         take(1),
                         tuiStopPropagation(),
                         mapTo(false),
                         startWith(true),
                     ),
-                    typedFromEvent(nativeElement, `blur`).pipe(mapTo(false)),
+                    tuiTypedFromEvent(nativeElement, `blur`).pipe(mapTo(false)),
                 ),
             ),
         )
