@@ -17,7 +17,7 @@ import {
     tuiClamp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
@@ -44,7 +44,7 @@ export class TuiSliderKeyStepsDirective
     keySteps!: TuiKeySteps;
 
     @Output()
-    keyStepsInput = typedFromEvent(this.elementRef.nativeElement, `input`).pipe(
+    keyStepsInput = tuiTypedFromEvent(this.elementRef.nativeElement, `input`).pipe(
         map(() => this.controlValue),
     );
 

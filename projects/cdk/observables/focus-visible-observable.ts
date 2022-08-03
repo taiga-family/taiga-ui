@@ -15,13 +15,13 @@ import {
 } from 'rxjs/operators';
 
 import {tuiIsAlive} from './is-alive';
-import {typedFromEvent} from './typed-from-event';
+import {tuiTypedFromEvent} from './typed-from-event';
 
 let documentMouseUpIsAlive$: Observable<boolean>;
 let documentMouseDownIsAlive$: Observable<boolean>;
 
 export function tuiFocusVisibleObservable(element: Element): Observable<boolean> {
-    const elementBlur$ = typedFromEvent(element, `blur`);
+    const elementBlur$ = tuiTypedFromEvent(element, `blur`);
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -29,14 +29,14 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
     }
 
     if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {
-        documentMouseUpIsAlive$ = typedFromEvent(ownerDocument, `mouseup`, {
+        documentMouseUpIsAlive$ = tuiTypedFromEvent(ownerDocument, `mouseup`, {
             capture: true,
         }).pipe(
             tuiIsAlive(),
             startWith(false),
             shareReplay({bufferSize: 1, refCount: true}),
         );
-        documentMouseDownIsAlive$ = typedFromEvent(ownerDocument, `mousedown`, {
+        documentMouseDownIsAlive$ = tuiTypedFromEvent(ownerDocument, `mousedown`, {
             capture: true,
         }).pipe(
             tuiIsAlive(),
@@ -48,7 +48,7 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
     return merge(
         // focus events excluding ones that came right after mouse action
         concat(
-            typedFromEvent(element, `focus`).pipe(take(1)),
+            tuiTypedFromEvent(element, `focus`).pipe(take(1)),
             // filtering out blur events when element remains focused so that we ignore browser tab focus loss
             elementBlur$.pipe(
                 filter(() => !tuiIsNativeFocused(element)),

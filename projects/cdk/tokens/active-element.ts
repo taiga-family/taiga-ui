@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetActualTarget, tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
 import {merge, Observable, of, timer} from 'rxjs';
 import {
@@ -27,11 +27,11 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
             const removedElement$ = inject(TUI_REMOVED_ELEMENT);
             const windowRef = inject(WINDOW);
             const documentRef = inject(DOCUMENT);
-            const focusout$ = typedFromEvent(windowRef, `focusout`);
-            const focusin$ = typedFromEvent(windowRef, `focusin`);
-            const blur$ = typedFromEvent(windowRef, `blur`);
-            const mousedown$ = typedFromEvent(windowRef, `mousedown`);
-            const mouseup$ = typedFromEvent(windowRef, `mouseup`);
+            const focusout$ = tuiTypedFromEvent(windowRef, `focusout`);
+            const focusin$ = tuiTypedFromEvent(windowRef, `focusin`);
+            const blur$ = tuiTypedFromEvent(windowRef, `blur`);
+            const mousedown$ = tuiTypedFromEvent(windowRef, `mousedown`);
+            const mouseup$ = tuiTypedFromEvent(windowRef, `mouseup`);
 
             return merge(
                 focusout$.pipe(
@@ -90,8 +90,8 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
 
 function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
     return merge(
-        typedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
-        typedFromEvent(root, `focusout`).pipe(
+        tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
+        tuiTypedFromEvent(root, `focusout`).pipe(
             filter(
                 ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
             ),
