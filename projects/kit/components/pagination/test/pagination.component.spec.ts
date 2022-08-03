@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {isPresent} from '@taiga-ui/cdk';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPaginationComponent} from '../pagination.component';
@@ -56,19 +56,19 @@ describe(`TuiPaginationComponent`, () => {
         activePadding,
         sidePadding,
     }: TuiPaginationParams): void {
-        if (isPresent<number>(index)) {
+        if (tuiIsPresent<number>(index)) {
             testComponent.index = index;
         }
 
-        if (isPresent<number>(length)) {
+        if (tuiIsPresent<number>(length)) {
             testComponent.length = length;
         }
 
-        if (isPresent<number>(activePadding)) {
+        if (tuiIsPresent<number>(activePadding)) {
             testComponent.activePadding = activePadding;
         }
 
-        if (isPresent<number>(sidePadding)) {
+        if (tuiIsPresent<number>(sidePadding)) {
             testComponent.sidePadding = sidePadding;
         }
 

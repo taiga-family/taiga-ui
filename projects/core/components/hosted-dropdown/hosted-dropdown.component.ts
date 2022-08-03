@@ -13,7 +13,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    isElementEditable,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
@@ -21,6 +20,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiGetClosestFocusable,
+    tuiIsElementEditable,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     TuiNativeFocusableElement,
@@ -31,7 +31,7 @@ import {
     TUI_DROPDOWN_WATCHED_CONTROLLER,
     TuiDropdownControllerDirective,
 } from '@taiga-ui/core/directives/dropdown-controller';
-import {isEditingKey} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
@@ -151,11 +151,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
         if (
             !defaultPrevented &&
-            isEditingKey(key) &&
+            tuiIsEditingKey(key) &&
             this.hostEditable &&
             // TODO: iframe warning
             target instanceof HTMLElement &&
-            !isElementEditable(target)
+            !tuiIsElementEditable(target)
         ) {
             this.focusHost();
         }
@@ -188,7 +188,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const host = this.nativeFocusableElement || this.host;
 
         // TODO: iframe warning
-        return host instanceof HTMLElement && isElementEditable(host);
+        return host instanceof HTMLElement && tuiIsElementEditable(host);
     }
 
     private focusDropdown(event: KeyboardEvent, first: boolean): void {
@@ -213,7 +213,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         ) {
             this.updateOpen(true);
 
-            if (!isElementEditable(host)) {
+            if (!tuiIsElementEditable(host)) {
                 event.preventDefault();
             }
 

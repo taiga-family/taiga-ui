@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {clamp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk';
 import {Command, Editor, Extension, GlobalAttributes} from '@tiptap/core';
 import {Node} from 'prosemirror-model';
 import {AllSelection, TextSelection, Transaction} from 'prosemirror-state';
@@ -66,7 +66,7 @@ function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Trans
     const minIndent = IndentProps.Min;
     const maxIndent = IndentProps.Max;
 
-    const indent = clamp((node.attrs.indent || 0) + delta, minIndent, maxIndent);
+    const indent = tuiClamp((node.attrs.indent || 0) + delta, minIndent, maxIndent);
 
     if (indent === node.attrs.indent) {
         return tr;

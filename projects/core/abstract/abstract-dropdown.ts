@@ -23,7 +23,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
-import {checkFixedPosition} from '@taiga-ui/core/utils/dom';
+import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -98,7 +98,7 @@ export abstract class AbstractTuiDropdown
 
     @tuiPure
     get fixed(): boolean {
-        return checkFixedPosition(this.elementRef.nativeElement);
+        return tuiCheckFixedPosition(this.elementRef.nativeElement);
     }
 
     @tuiPure

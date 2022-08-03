@@ -28,7 +28,7 @@ import {
 import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {formatSize, getAcceptArray} from '@taiga-ui/kit/utils/files';
+import {tuiFormatSize, tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -259,7 +259,7 @@ export class TuiInputFilesComponent
                     size: file.size,
                     content:
                         texts.maxSizeRejectionReason +
-                        formatSize(units, this.maxFileSize),
+                        tuiFormatSize(units, this.maxFileSize),
                 })),
                 ...wrongFormatFiles.map(file => ({
                     name: file.name,
@@ -284,7 +284,7 @@ export class TuiInputFilesComponent
 
         const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
 
-        return getAcceptArray(this.accept).some(
+        return tuiGetAcceptArray(this.accept).some(
             format =>
                 format === extension ||
                 format === file.type ||

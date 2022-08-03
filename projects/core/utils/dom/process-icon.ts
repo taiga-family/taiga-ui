@@ -2,11 +2,7 @@ const WIDTH_SEARCH = `width="`;
 const HEIGHT_SEARCH = `height="`;
 const START = `<svg`;
 
-/**
- * @deprecated: use {@link tuiProcessIcon} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function processIcon(source: string, name: string): string {
+export function tuiProcessIcon(source: string, name: string): string {
     if (source.includes(`id="${name}"`)) {
         return source;
     }
@@ -60,5 +56,3 @@ export function processIcon(source: string, name: string): string {
         -height / 2
     }">${src}</svg></svg></g>`;
 }
-
-export const tuiProcessIcon = processIcon;
