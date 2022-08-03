@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
-import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {tuiCanScroll, tuiGetScrollParent} from '@taiga-ui/cdk/utils/dom';
@@ -22,7 +22,7 @@ export class TuiOverscrollDirective {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        typedFromEvent(nativeElement, `wheel`, {passive: false})
+        tuiTypedFromEvent(nativeElement, `wheel`, {passive: false})
             .pipe(
                 filter(() => this.enabled),
                 tuiZonefree(ngZone),
@@ -36,7 +36,7 @@ export class TuiOverscrollDirective {
                 );
             });
 
-        typedFromEvent(nativeElement, `touchstart`, {passive: true})
+        tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true})
             .pipe(
                 switchMap(({touches}) => {
                     let {clientX, clientY} = touches[0];
@@ -44,7 +44,7 @@ export class TuiOverscrollDirective {
                     let deltaY = 0;
                     let vertical: boolean;
 
-                    return typedFromEvent(nativeElement, `touchmove`, {
+                    return tuiTypedFromEvent(nativeElement, `touchmove`, {
                         passive: false,
                     }).pipe(
                         filter(() => this.enabled),
