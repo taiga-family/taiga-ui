@@ -12,7 +12,6 @@ export * from './is-ios';
 export * from './is-mobile';
 export * from './is-webkit';
 export * from './removed-element';
-export * from './sanitizer';
 export * from './swipe-options';
 export * from './take-only-trusted-events';
 export * from './touch-supported';

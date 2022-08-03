@@ -1,6 +1,6 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
-import {tuiPreventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
@@ -16,10 +16,10 @@ export class TuiZoomService extends Observable<TuiZoom> {
     ) {
         super(subscriber => {
             merge(
-                typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
                     filter(({touches}) => touches.length > 1),
                     switchMap(startEvent =>
-                        typedFromEvent(nativeElement, `touchmove`, {
+                        tuiTypedFromEvent(nativeElement, `touchmove`, {
                             passive: true,
                         }).pipe(
                             tuiPreventDefault(),
@@ -53,11 +53,11 @@ export class TuiZoomService extends Observable<TuiZoom> {
 
                                 return {clientX, clientY, delta, event};
                             }),
-                            takeUntil(typedFromEvent(nativeElement, `touchend`)),
+                            takeUntil(tuiTypedFromEvent(nativeElement, `touchend`)),
                         ),
                     ),
                 ),
-                typedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
+                tuiTypedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
                     tuiPreventDefault(),
                     map(wheel => ({
                         clientX: wheel.clientX,

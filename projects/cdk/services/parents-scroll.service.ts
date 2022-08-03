@@ -1,6 +1,6 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {defer, merge, Observable} from 'rxjs';
 
 /**
@@ -27,7 +27,7 @@ export class TuiParentsScrollService extends Observable<Event> {
 
             return merge<Event>(
                 ...eventTargets.map<Observable<Event>>(element =>
-                    typedFromEvent(element, `scroll`),
+                    tuiTypedFromEvent(element, `scroll`),
                 ),
             );
         });

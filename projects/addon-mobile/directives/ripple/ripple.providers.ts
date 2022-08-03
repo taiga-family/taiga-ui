@@ -4,7 +4,7 @@ import {
     TUI_TOUCH_SUPPORTED,
     TuiDestroyService,
     tuiIsPresent,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {EMPTY, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
@@ -40,7 +40,7 @@ export function rippleStartFactory(
 ): Observable<HTMLElement> {
     return isIOS || !touchSupported
         ? EMPTY
-        : typedFromEvent(nativeElement, `touchstart`).pipe(
+        : tuiTypedFromEvent(nativeElement, `touchstart`).pipe(
               map(({touches}) => {
                   const {clientX, clientY} = touches[touches.length - 1];
                   const {width, height, top, left} =
@@ -78,7 +78,7 @@ export function rippleEndFactory(
 ): Observable<EventTarget> {
     return isIOS || !touchSupported
         ? EMPTY
-        : typedFromEvent(nativeElement, `animationend`).pipe(
+        : tuiTypedFromEvent(nativeElement, `animationend`).pipe(
               filter(({animationName}) => animationName === RIPPLE_OFF),
               map(({target}) => target),
               filter(tuiIsPresent),

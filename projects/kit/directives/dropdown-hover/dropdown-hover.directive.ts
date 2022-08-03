@@ -5,7 +5,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsPresent,
     tuiSetNativeMouseFocused,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {merge, Observable, of, timer} from 'rxjs';
@@ -43,25 +43,25 @@ export class TuiDropdownHoverDirective {
         );
 
         const open$ = merge(
-            typedFromEvent(nativeElement, `mouseenter`),
-            typedFromEvent(nativeElement, `click`).pipe(
+            tuiTypedFromEvent(nativeElement, `mouseenter`),
+            tuiTypedFromEvent(nativeElement, `click`).pipe(
                 tap(e => e.stopImmediatePropagation()),
             ),
             dropdown$.pipe(
                 switchMap(element =>
                     merge(
-                        typedFromEvent(element, `focusin`),
-                        typedFromEvent(element, `mouseenter`),
+                        tuiTypedFromEvent(element, `focusin`),
+                        tuiTypedFromEvent(element, `mouseenter`),
                     ),
                 ),
             ),
         ).pipe(mapTo(true));
 
         const close$ = merge(
-            typedFromEvent(nativeElement, `mouseleave`),
+            tuiTypedFromEvent(nativeElement, `mouseleave`),
             dropdown$.pipe(
                 switchMap(element =>
-                    typedFromEvent(element, `mouseleave`).pipe(
+                    tuiTypedFromEvent(element, `mouseleave`).pipe(
                         filter(() => !tuiIsNativeFocusedIn(element)),
                     ),
                 ),

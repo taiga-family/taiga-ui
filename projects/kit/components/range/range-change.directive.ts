@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, EventEmitter, Inject, Output} from '@angular/core';
-import {tuiClamp, TuiDestroyService, tuiRound, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {merge, Observable} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
@@ -17,24 +17,26 @@ export class TuiRangeChangeDirective {
      * Dont forget to use setPointerCapture instead of listening all documentRef events
      */
     private readonly pointerDown$ = merge(
-        typedFromEvent(this.elementRef.nativeElement, `touchstart`, {passive: true}).pipe(
+        tuiTypedFromEvent(this.elementRef.nativeElement, `touchstart`, {
+            passive: true,
+        }).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
     );
 
     private readonly pointerMove$ = merge(
-        typedFromEvent(this.documentRef, `touchmove`).pipe(
+        tuiTypedFromEvent(this.documentRef, `touchmove`).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.documentRef, `mousemove`),
+        tuiTypedFromEvent(this.documentRef, `mousemove`),
     );
 
     private readonly pointerUp$ = merge(
-        typedFromEvent(this.documentRef, `touchend`, {passive: true}),
-        typedFromEvent(this.documentRef, `mouseup`, {passive: true}),
+        tuiTypedFromEvent(this.documentRef, `touchend`, {passive: true}),
+        tuiTypedFromEvent(this.documentRef, `mouseup`, {passive: true}),
     );
 
     @Output()
