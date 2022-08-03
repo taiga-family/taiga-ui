@@ -27,7 +27,7 @@ import {
     tuiGetNativeFocused,
     TuiParentsScrollService,
     tuiPx,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiDropdown,
@@ -120,16 +120,16 @@ export class TuiDropdownSelectionDirective
         const {nativeElement} = this.elementRef;
 
         merge(
-            typedFromEvent(this.documentRef, `selectionchange`),
-            typedFromEvent(this.documentRef, `mouseup`),
-            typedFromEvent(nativeElement, `mousedown`).pipe(
+            tuiTypedFromEvent(this.documentRef, `selectionchange`),
+            tuiTypedFromEvent(this.documentRef, `mouseup`),
+            tuiTypedFromEvent(nativeElement, `mousedown`).pipe(
                 switchMapTo(
-                    typedFromEvent(nativeElement, `mousemove`).pipe(
-                        takeUntil(typedFromEvent(this.documentRef, `mouseup`)),
+                    tuiTypedFromEvent(nativeElement, `mousemove`).pipe(
+                        takeUntil(tuiTypedFromEvent(this.documentRef, `mouseup`)),
                     ),
                 ),
             ),
-            typedFromEvent(nativeElement, `keyup`),
+            tuiTypedFromEvent(nativeElement, `keyup`),
         )
             .pipe(
                 map(() => {

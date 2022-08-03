@@ -3,7 +3,6 @@ export * from './ease-in-out-quad';
 export * from './flat-length';
 export * from './get-original-array-from-query-list';
 export * from './get-swipe-direction';
-export * from './identity';
 export * from './is-element-editable';
 export * from './is-number';
 export * from './is-present';

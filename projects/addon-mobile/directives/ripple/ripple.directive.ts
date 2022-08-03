@@ -2,7 +2,7 @@ import {Directive, ElementRef, Inject, Input, Renderer2} from '@angular/core';
 import {
     TuiDestroyService,
     TuiDirectiveStylesService,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {Observable, race, timer} from 'rxjs';
 import {
@@ -43,8 +43,8 @@ export class TuiRippleDirective {
     ) {
         directiveStyles.addComponent(TuiRippleStylesComponent);
 
-        const touchEnd$ = typedFromEvent(nativeElement, `touchend`);
-        const touchMove$ = typedFromEvent(nativeElement, `touchmove`);
+        const touchEnd$ = tuiTypedFromEvent(nativeElement, `touchend`);
+        const touchMove$ = tuiTypedFromEvent(nativeElement, `touchmove`);
 
         end$.subscribe(element => {
             renderer.removeChild(nativeElement, element);
@@ -52,7 +52,7 @@ export class TuiRippleDirective {
         start$
             .pipe(
                 mergeMap(ripple => {
-                    const animationEndOn$ = typedFromEvent(ripple, `animationend`);
+                    const animationEndOn$ = tuiTypedFromEvent(ripple, `animationend`);
 
                     return race(
                         timer(TOUCH_MOVE_DELAY).pipe(mapTo(false)),

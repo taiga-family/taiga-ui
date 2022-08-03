@@ -6,7 +6,7 @@ import {
     TuiDestroyService,
     TuiDialog,
     tuiIsCurrentTarget,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
@@ -34,8 +34,8 @@ export function dialogCloseStreamFactory(
 ): Observable<unknown> {
     return dismissible
         ? merge(
-              typedFromEvent(nativeElement, `click`).pipe(filter(tuiIsCurrentTarget)),
-              typedFromEvent(documentRef, `keydown`).pipe(
+              tuiTypedFromEvent(nativeElement, `click`).pipe(filter(tuiIsCurrentTarget)),
+              tuiTypedFromEvent(documentRef, `keydown`).pipe(
                   // TODO: iframe warning
                   filter(
                       ({key, target}) =>
@@ -45,7 +45,7 @@ export function dialogCloseStreamFactory(
                               nativeElement.contains(target)),
                   ),
               ),
-              typedFromEvent(documentRef, `mousedown`).pipe(
+              tuiTypedFromEvent(documentRef, `mousedown`).pipe(
                   // TODO: iframe warning
                   filter(
                       ({target, clientX}) =>
@@ -55,7 +55,7 @@ export function dialogCloseStreamFactory(
                           !tuiContainsOrAfter(nativeElement, target),
                   ),
                   switchMapTo(
-                      typedFromEvent(documentRef, `mouseup`).pipe(
+                      tuiTypedFromEvent(documentRef, `mouseup`).pipe(
                           take(1),
                           // TODO: iframe warning
                           filter(
