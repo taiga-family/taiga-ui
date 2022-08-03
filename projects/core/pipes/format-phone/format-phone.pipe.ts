@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {CHAR_PLUS, tuiAssert} from '@taiga-ui/cdk';
-import {formatPhone} from '@taiga-ui/core/utils/format';
+import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 
 @Pipe({name: `tuiFormatPhone`})
 export class TuiFormatPhonePipe implements PipeTransform {
@@ -21,6 +21,6 @@ export class TuiFormatPhonePipe implements PipeTransform {
             `Undefined was passed to tuiFormatPhone pipe`,
         );
 
-        return formatPhone(value, countryCode, phoneMask);
+        return tuiFormatPhone(value, countryCode, phoneMask);
     }
 }

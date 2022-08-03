@@ -8,10 +8,10 @@ import {
     OnInit,
 } from '@angular/core';
 import {
-    isNumber,
     TuiContextWithImplicit,
     TuiDestroyService,
     TuiDialog,
+    tuiIsNumber,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
@@ -109,7 +109,9 @@ export class TuiAlertComponent<O, I> implements OnInit {
         }
 
         timer(
-            isNumber(this.autoClose) ? this.autoClose : this.options.defaultAutoCloseTime,
+            tuiIsNumber(this.autoClose)
+                ? this.autoClose
+                : this.options.defaultAutoCloseTime,
         )
             .pipe(
                 takeUntil(fromEvent(this.elementRef.nativeElement, `mouseenter`)),

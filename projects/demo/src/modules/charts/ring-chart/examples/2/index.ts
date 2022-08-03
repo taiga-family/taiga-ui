@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {sum} from '@taiga-ui/cdk';
+import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-ring-chart-example-2`,
@@ -13,7 +13,7 @@ import {sum} from '@taiga-ui/cdk';
 export class TuiRingChartExample2 {
     private readonly labels = [`Food`, `Cafe`, `Open Source`, `Taxi`, `other`];
     readonly value = [13769, 12367, 10172, 3018, 2592];
-    readonly total = sum(...this.value);
+    readonly total = tuiSum(...this.value);
 
     index = NaN;
 

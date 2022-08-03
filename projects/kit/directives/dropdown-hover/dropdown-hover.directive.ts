@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
-    isPresent,
-    setNativeMouseFocused,
     TuiDestroyService,
     tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
+    tuiSetNativeMouseFocused,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
@@ -38,7 +38,7 @@ export class TuiDropdownHoverDirective {
             // Give change detection time to open dropdown
             debounceTime(0),
             map(() => dropdown.dropdown),
-            filter(isPresent),
+            filter(tuiIsPresent),
             share(),
         );
 
@@ -90,7 +90,7 @@ export class TuiDropdownHoverDirective {
         const focusable = tuiGetClosestFocusable(host, false, host, false);
 
         if (focusable) {
-            setNativeMouseFocused(focusable);
+            tuiSetNativeMouseFocused(focusable);
         }
     }
 }

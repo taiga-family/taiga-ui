@@ -1,7 +1,7 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
-    clamp,
     setNativeFocused,
+    tuiClamp,
     tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     tuiIsNativeMouseFocusable,
@@ -28,7 +28,7 @@ export class TuiToolbarNavigationManagerDirective {
         const {toolsContainers} = this;
         const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
 
-        const targetToolIndex = clamp(
+        const targetToolIndex = tuiClamp(
             focusedToolIndex + (toPrevious ? -1 : 1),
             0,
             toolsContainers.length - 1,
