@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {flatLength} from '@taiga-ui/cdk';
+import {tuiFlatLength} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-miscellaneous-example-2`,
@@ -11,7 +11,7 @@ import {flatLength} from '@taiga-ui/cdk';
 })
 export class TuiMiscellaneousExample2 {
     get flatted(): number {
-        return flatLength([
+        return tuiFlatLength([
             [1, 2],
             [3, 4],
             [5, 6],
