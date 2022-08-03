@@ -7,13 +7,6 @@ import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
 
 /**
- * Temporary type guard to satisfy ts-overloading of normalizeParse method
- * @deprecated
- */
-export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
-    [`DMY`, `YMD`, `MDY`].includes(dateMode);
-
-/**
  * An immutable range of two {@link TuiDay} objects
  */
 export class TuiDayRange extends TuiMonthRange {

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
-    clamp,
+    tuiClamp,
     tuiDefaultProp,
     TuiDestroyService,
     tuiDragAndDropFrom,
@@ -174,7 +174,7 @@ export class TuiPreviewComponent {
 
     private processZoom(clientX: number, clientY: number, delta: number): void {
         const oldScale = this.zoom$.value;
-        const newScale = clamp(oldScale + delta, this.minZoom, 2);
+        const newScale = tuiClamp(oldScale + delta, this.minZoom, 2);
 
         const center = this.getScaleCenter(
             {clientX, clientY},
@@ -197,7 +197,7 @@ export class TuiPreviewComponent {
     private getGuardedCoordinates(x: number, y: number): readonly [number, number] {
         const {offsetX, offsetY} = this.offsets;
 
-        return [clamp(x, -offsetX, offsetX), clamp(y, -offsetY, offsetY)];
+        return [tuiClamp(x, -offsetX, offsetX), tuiClamp(y, -offsetY, offsetY)];
     }
 
     private getScaleCenter(

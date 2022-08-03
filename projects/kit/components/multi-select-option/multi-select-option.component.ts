@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {isPresent} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeL} from '@taiga-ui/core';
+import {tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiSizeBigger, TuiSizeL} from '@taiga-ui/core';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 
 @Component({
@@ -11,13 +11,13 @@ import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 })
 export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T> {
     get size(): TuiSizeL {
-        return sizeBigger(this.option.size) ? `l` : `m`;
+        return tuiSizeBigger(this.option.size) ? `l` : `m`;
     }
 
     protected get selected(): boolean {
         return (
-            isPresent(this.option.value) &&
-            isPresent(this.control.value) &&
+            tuiIsPresent(this.option.value) &&
+            tuiIsPresent(this.control.value) &&
             !!this.control.value.find((item: T) => this.matcher(item, this.option.value!))
         );
     }

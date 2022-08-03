@@ -4,11 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComparator, tuiDefaultSort} from '@taiga-ui/addon-table';
 import {
-    isPresent,
-    toInt,
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
     TuiDay,
+    tuiIsPresent,
+    tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
@@ -110,14 +110,14 @@ export class TuiTableExample4 {
     readonly loading$ = this.request$.pipe(map(value => !value));
 
     readonly total$ = this.request$.pipe(
-        filter(isPresent),
+        filter(tuiIsPresent),
         map(({length}) => length),
         startWith(1),
     );
 
     readonly data$: Observable<readonly User[]> = this.request$.pipe(
-        filter(isPresent),
-        map(users => users.filter(isPresent)),
+        filter(tuiIsPresent),
+        map(users => users.filter(tuiIsPresent)),
         startWith([]),
     );
 
@@ -180,7 +180,7 @@ function getAge({dob}: User): number {
     const years = TODAY.year - dob.year;
     const months = TODAY.month - dob.month;
     const days = TODAY.day - dob.day;
-    const offset = toInt(months > 0 || (!months && days > 9));
+    const offset = tuiToInt(months > 0 || (!months && days > 9));
 
     return years + offset;
 }

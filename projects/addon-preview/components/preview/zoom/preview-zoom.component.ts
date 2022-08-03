@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
-import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {merge, Observable, of, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
@@ -62,7 +62,7 @@ export class TuiPreviewZoomComponent {
     }
 
     onModelChange(value: number): void {
-        const clamped = clamp(value, this.min, this.max);
+        const clamped = tuiClamp(value, this.min, this.max);
 
         if (clamped === this.value) {
             return;

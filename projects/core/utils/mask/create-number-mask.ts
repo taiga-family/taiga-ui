@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/core/constants';
 import {TuiNumberMaskOptions, TuiTextMaskListHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
-import {otherDecimalSymbol} from '@taiga-ui/core/utils/format';
+import {tuiOtherDecimalSymbol} from '@taiga-ui/core/utils/format';
 
 const NON_ZERO_DIGIT = /[1-9]/;
 
@@ -98,7 +98,7 @@ export function tuiCreateNumberMask({
                 ? fraction.slice(0, decimalLimit)
                 : fraction;
 
-            if (rawValue[decimalIndex] !== otherDecimalSymbol(decimalSymbol)) {
+            if (rawValue[decimalIndex] !== tuiOtherDecimalSymbol(decimalSymbol)) {
                 mask.push(MASK_CARET_TRAP);
             }
 
@@ -165,7 +165,7 @@ function getDecimalSymbolIndex(
 
     return Math.max(
         str.lastIndexOf(decimalSymbol),
-        str.lastIndexOf(otherDecimalSymbol(decimalSymbol)),
+        str.lastIndexOf(tuiOtherDecimalSymbol(decimalSymbol)),
     );
 }
 
