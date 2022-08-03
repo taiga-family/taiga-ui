@@ -14,8 +14,8 @@ import {
     TuiDestroyService,
     tuiPreventDefault,
     tuiStopPropagation,
+    tuiTypedFromEvent,
     tuiZonefree,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiOrientation} from '@taiga-ui/core/types';
@@ -47,10 +47,10 @@ export class TuiScrollbarDirective {
         @Inject(ViewportScroller) private readonly viewportScroller: ViewportScroller,
     ) {
         const {nativeElement} = this.elementRef;
-        const mousedown$ = typedFromEvent(nativeElement, `mousedown`);
-        const mousemove$ = typedFromEvent(this.documentRef, `mousemove`);
-        const mouseup$ = typedFromEvent(this.documentRef, `mouseup`);
-        const mousedownWrapper$ = typedFromEvent(wrapper.nativeElement, `mousedown`);
+        const mousedown$ = tuiTypedFromEvent(nativeElement, `mousedown`);
+        const mousemove$ = tuiTypedFromEvent(this.documentRef, `mousemove`);
+        const mouseup$ = tuiTypedFromEvent(this.documentRef, `mouseup`);
+        const mousedownWrapper$ = tuiTypedFromEvent(wrapper.nativeElement, `mousedown`);
 
         merge(
             mousedownWrapper$.pipe(

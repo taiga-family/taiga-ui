@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiZonefull, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, startWith, switchMap} from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 export class TuiSheetCloseDirective {
     @Output()
     readonly close: Observable<unknown> = merge(
-        typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
+        tuiTypedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             startWith(false),
             switchMap(dragged =>
