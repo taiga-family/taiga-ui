@@ -20,8 +20,8 @@ import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 
 @Component({
     selector: `tui-value-decoration`,
-    templateUrl: `value-decoration.template.html`,
-    styleUrls: [`value-decoration.style.less`],
+    templateUrl: `./value-decoration.template.html`,
+    styleUrls: [`./value-decoration.style.less`],
     // It follows Change Detection of PrimitiveTextfield
     changeDetection: ChangeDetectionStrategy.Default,
 })

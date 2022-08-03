@@ -4,12 +4,12 @@
 
 :host {
     &._autofilled {
-        .t-value-decoration {
-            display: none;
+        .t-value-decoration:not(.t-has-value) {
+            visibility: hidden;
         }
 
-        &[data-size='s'],
-        &[data-size='m'] {
+        &[data-size='s']:not(._focused),
+        &[data-size='m']:not(._focused) {
             .t-placeholder {
                 visibility: hidden;
             }
