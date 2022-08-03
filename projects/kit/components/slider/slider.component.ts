@@ -17,6 +17,7 @@ import {
     tuiDefaultProp,
     tuiPure,
     tuiIsEdgeOlderThan,
+    tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
