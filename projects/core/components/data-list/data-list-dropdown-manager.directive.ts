@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    setNativeFocused,
     tuiGetClosestFocusable,
     tuiItemsQueryListObservable,
     tuiPreventDefault,
@@ -73,7 +72,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                                 event.stopPropagation();
                             }
 
-                            setNativeFocused(element.nativeElement);
+                            element.nativeElement.focus();
                             // TODO: iframe warning
                             dropdown.open = event instanceof MouseEvent;
                         }),
@@ -168,7 +167,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
         );
 
         if (item) {
-            setNativeFocused(item);
+            item.focus();
         }
     }
 }
