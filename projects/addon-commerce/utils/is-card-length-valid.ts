@@ -3,7 +3,6 @@ import {tuiGetPaymentSystem} from './get-payment-system';
 /**
  * Validates card number length using payment system dictionary
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiIsCardLengthValid(cardNumber: string): boolean {
     const {length} = cardNumber;
     const paymentSystem = tuiGetPaymentSystem(cardNumber);

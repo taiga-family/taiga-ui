@@ -33,21 +33,21 @@ export const INPUT_PHONE_PROVIDERS = [
     {
         provide: SELECTION_STREAM,
         deps: [TuiDestroyService, DOCUMENT],
-        useFactory: selectionStreamFactory,
+        useFactory: (
+            destroy$: Observable<unknown>,
+            documentRef: Document,
+        ): Observable<unknown> => {
+            return fromEvent(documentRef, `selectionchange`).pipe(
+                windowToggle(
+                    merge(
+                        fromEvent(documentRef, `mouseup`),
+                        fromEvent(documentRef, `keydown`),
+                    ),
+                    () => fromEvent(documentRef, `mousedown`),
+                ),
+                flatMap(windowed$ => windowed$.pipe(startWith(null))),
+                takeUntil(destroy$),
+            );
+        },
     },
 ];
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function selectionStreamFactory(
-    destroy$: Observable<unknown>,
-    documentRef: Document,
-): Observable<unknown> {
-    return fromEvent(documentRef, `selectionchange`).pipe(
-        windowToggle(
-            merge(fromEvent(documentRef, `mouseup`), fromEvent(documentRef, `keydown`)),
-            () => fromEvent(documentRef, `mousedown`),
-        ),
-        flatMap(windowed$ => windowed$.pipe(startWith(null))),
-        takeUntil(destroy$),
-    );
-}
