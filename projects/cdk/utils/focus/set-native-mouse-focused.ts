@@ -1,5 +1,3 @@
-import {setNativeFocused} from './set-native-focused';
-
 /**
  * Focuses or blurs element with mouse action imitation (to spoof {@link TuiFocusVisibleService})
  *
@@ -25,5 +23,9 @@ export function tuiSetNativeMouseFocused(
         element.dispatchEvent(event);
     }
 
-    setNativeFocused(element, focused, preventScroll);
+    if (focused) {
+        element.focus({preventScroll});
+    } else {
+        element.blur();
+    }
 }
