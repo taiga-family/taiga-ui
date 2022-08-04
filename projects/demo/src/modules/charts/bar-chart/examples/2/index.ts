@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-bar-chart-example-2`,
@@ -17,4 +19,9 @@ export class TuiBarChartExample2 {
 
     readonly labelsX = [`Jan 2021`, `Feb`, `Mar`];
     readonly labelsY = [`0`, `10 000`];
+
+    readonly hint = ({$implicit}: TuiContextWithImplicit<number>): string =>
+        this.value
+            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, ``)
+            .trim();
 }
