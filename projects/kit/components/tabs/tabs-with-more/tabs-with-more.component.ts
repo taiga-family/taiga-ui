@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    setNativeFocused,
     TuiActiveZoneDirective,
     tuiAssertIsElement,
     tuiClamp,
@@ -168,7 +167,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         let index = tabs.length - 2;
 
         while (index >= 0) {
-            setNativeFocused(tabs[index]);
+            tabs[index].focus();
 
             if (tuiIsNativeFocused(tabs[index])) {
                 return;
@@ -183,7 +182,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const target = tuiGetClosestFocusable(button, prev, wrapper);
 
         if (target) {
-            setNativeFocused(target);
+            target.focus();
         }
     }
 
@@ -197,7 +196,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     private focusMore(): void {
         if (this.moreButton) {
-            setNativeFocused(this.moreButton.nativeElement);
+            this.moreButton.nativeElement.focus();
         }
     }
 

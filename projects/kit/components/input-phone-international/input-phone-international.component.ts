@@ -16,7 +16,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -190,7 +189,7 @@ export class TuiInputPhoneInternationalComponent
         }
 
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement);
+            this.nativeFocusableElement.focus();
         }
     }
 

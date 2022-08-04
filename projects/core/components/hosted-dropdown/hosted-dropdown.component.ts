@@ -13,7 +13,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
@@ -233,7 +232,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             return;
         }
 
-        setNativeFocused(focusable);
+        focusable.focus();
         event.preventDefault();
     }
 
@@ -249,7 +248,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const host = this.nativeFocusableElement;
 
         if (host !== null) {
-            setNativeFocused(host, true, true);
+            host.focus({preventScroll: true});
         }
     }
 
