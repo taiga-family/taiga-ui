@@ -149,12 +149,12 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     {
         from: 'hexToRgb',
         to: 'tuiHexToRgb',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
+        moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
         from: 'hsvToRgb',
         to: 'tuiHsvToRgb',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
+        moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
         from: 'isSelectionIn',
@@ -164,7 +164,7 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     {
         from: 'parseColor',
         to: 'tuiParseColor',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
+        moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
         from: 'parseGradient',
@@ -174,12 +174,12 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     {
         from: 'rgbToHex',
         to: 'tuiRgbToHex',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
+        moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
         from: 'rgbToHsv',
         to: 'tuiRgbToHsv',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
+        moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
         from: 'toGradient',
