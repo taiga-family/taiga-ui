@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {setNativeFocused, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -110,7 +110,7 @@ export class TuiTagComponent {
     @ViewChild(`input`, {read: ElementRef})
     set input(input: ElementRef<HTMLInputElement>) {
         if (input) {
-            setNativeFocused(input.nativeElement);
+            input.nativeElement.focus();
         }
     }
 
@@ -190,7 +190,7 @@ export class TuiTagComponent {
             case `esc`:
                 event.preventDefault();
                 this.stopEditing();
-                setNativeFocused(this.elementRef.nativeElement);
+                this.elementRef.nativeElement.focus();
                 break;
             default:
                 break;
