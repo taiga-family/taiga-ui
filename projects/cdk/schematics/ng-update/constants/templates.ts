@@ -185,6 +185,114 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: 'tuiItem',
         },
     },
+    {
+        from: {
+            attrName: 'tuiManualHint',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHint',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiManualHint]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHint]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiManualHintShow]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintManual]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiPointerHint]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintPointer [tuiHint]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiPointerHint',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintPointer tuiHint',
+        },
+    },
+    {
+        from: {
+            attrName: 'messageMode',
+            withTagNames: ['tui-input-copy'],
+        },
+        to: {
+            attrName: 'messageAppearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[messageMode]',
+            withTagNames: ['tui-input-copy'],
+        },
+        to: {
+            attrName: '[messageAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: '[hintMode]',
+            withTagNames: ['tui-bar-chart'],
+        },
+        to: {
+            attrName: '[hintAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiHintMode',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintAppearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiHintMode]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: 'mode',
+            withTagNames: ['tui-tooltip'],
+        },
+        to: {
+            attrName: 'appearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[mode]',
+            withTagNames: ['tui-tooltip'],
+        },
+        to: {
+            attrName: '[appearance]',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
