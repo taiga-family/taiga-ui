@@ -108,10 +108,6 @@ export class TuiPieChartComponent {
         return index === this.activeItemIndex ? transform : null;
     }
 
-    getHint(hint: PolymorpheusContent): PolymorpheusContent {
-        return this.hintContent ? hint : ``;
-    }
-
     onHovered(hovered: boolean, index: number): void {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
