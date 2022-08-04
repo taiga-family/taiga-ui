@@ -13,12 +13,6 @@ import {
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
-export function dataStreamFactory(
-    component: ExampleTuiMobileCalendarComponent,
-): Observable<TuiDay> {
-    return component.stream;
-}
-
 @Component({
     selector: `example-tui-mobile-calendar`,
     templateUrl: `./mobile-calendar.template.html`,
@@ -28,7 +22,9 @@ export function dataStreamFactory(
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [ExampleTuiMobileCalendarComponent],
-            useFactory: dataStreamFactory,
+            useFactory: (
+                component: ExampleTuiMobileCalendarComponent,
+            ): Observable<TuiDay> => component.stream,
         },
     ],
 })

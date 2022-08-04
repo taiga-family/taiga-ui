@@ -30,16 +30,6 @@ import {
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function longDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
-): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
-    directive.maxHeight = 600;
-
-    return directive;
-}
-
 @Component({
     selector: `tui-input-color`,
     templateUrl: `./input-color.template.html`,
@@ -49,7 +39,14 @@ export function longDropdownControllerFactory(
         {
             provide: TUI_DROPDOWN_CONTROLLER,
             deps: [[new Optional(), TuiDropdownControllerDirective]],
-            useFactory: longDropdownControllerFactory,
+            useFactory: (
+                directive: TuiDropdownControllerDirective | null,
+            ): TuiDropdownControllerDirective => {
+                directive = directive || new TuiDropdownControllerDirective();
+                directive.maxHeight = 600;
+
+                return directive;
+            },
         },
     ],
 })

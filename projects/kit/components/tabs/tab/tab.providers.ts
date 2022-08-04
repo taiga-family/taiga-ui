@@ -26,34 +26,33 @@ export const TUI_TAB_PROVIDERS: Provider[] = [
             [new Optional(), MutationObserverService],
             [new Optional(), RouterLinkActive],
         ],
-        useFactory: tabActiveFactory,
+        useFactory: (
+            {nativeElement}: ElementRef<HTMLElement>,
+            routerLinkActiveService: Observable<boolean>,
+            mutationObserverService: MutationObserverService | null,
+            routerLinkActive: RouterLinkActive | null,
+        ): Observable<unknown> => {
+            const mutationObserver =
+                routerLinkActive && mutationObserverService
+                    ? mutationObserverService.pipe(
+                          filter(() => routerLinkActive.isActive),
+                      )
+                    : EMPTY;
+
+            return merge(
+                mutationObserver,
+                routerLinkActiveService.pipe(filter(identity)),
+                nativeElement.matches(`button`)
+                    ? tuiTypedFromEvent(nativeElement, `click`)
+                    : EMPTY,
+            ).pipe(
+                map(() =>
+                    nativeElement.dispatchEvent(
+                        new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true}),
+                    ),
+                ),
+            );
+        },
     },
     MODE_PROVIDER,
 ];
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function tabActiveFactory(
-    {nativeElement}: ElementRef<HTMLElement>,
-    routerLinkActiveService: Observable<boolean>,
-    mutationObserverService: MutationObserverService | null,
-    routerLinkActive: RouterLinkActive | null,
-): Observable<unknown> {
-    const mutationObserver =
-        routerLinkActive && mutationObserverService
-            ? mutationObserverService.pipe(filter(() => routerLinkActive.isActive))
-            : EMPTY;
-
-    return merge(
-        mutationObserver,
-        routerLinkActiveService.pipe(filter(identity)),
-        nativeElement.matches(`button`)
-            ? tuiTypedFromEvent(nativeElement, `click`)
-            : EMPTY,
-    ).pipe(
-        map(() =>
-            nativeElement.dispatchEvent(
-                new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true}),
-            ),
-        ),
-    );
-}

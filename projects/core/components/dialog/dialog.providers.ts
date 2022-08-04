@@ -23,54 +23,6 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 
 const SCROLLBAR_PLACEHOLDER = 17;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function dialogCloseStreamFactory(
-    documentRef: Document,
-    windowRef: Window,
-    {nativeElement}: ElementRef<HTMLElement>,
-    close$: Observable<void>,
-    destroy$: Observable<void>,
-    {dismissible}: TuiDialog<TuiDialogOptions<unknown>, unknown>,
-): Observable<unknown> {
-    return dismissible
-        ? merge(
-              tuiTypedFromEvent(nativeElement, `click`).pipe(filter(tuiIsCurrentTarget)),
-              tuiTypedFromEvent(documentRef, `keydown`).pipe(
-                  // TODO: iframe warning
-                  filter(
-                      ({key, target}) =>
-                          key === `Escape` &&
-                          target instanceof Element &&
-                          (!tuiContainsOrAfter(nativeElement, target) ||
-                              nativeElement.contains(target)),
-                  ),
-              ),
-              tuiTypedFromEvent(documentRef, `mousedown`).pipe(
-                  // TODO: iframe warning
-                  filter(
-                      ({target, clientX}) =>
-                          target instanceof Element &&
-                          tuiGetViewportWidth(windowRef) - clientX >
-                              SCROLLBAR_PLACEHOLDER &&
-                          !tuiContainsOrAfter(nativeElement, target),
-                  ),
-                  switchMapTo(
-                      tuiTypedFromEvent(documentRef, `mouseup`).pipe(
-                          take(1),
-                          // TODO: iframe warning
-                          filter(
-                              ({target}) =>
-                                  target instanceof Element &&
-                                  !tuiContainsOrAfter(nativeElement, target),
-                          ),
-                      ),
-                  ),
-              ),
-              close$,
-          ).pipe(takeUntil(destroy$))
-        : close$;
-}
-
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(
     `Dialogs closing stream`,
 );
@@ -86,6 +38,53 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
             TuiDestroyService,
             POLYMORPHEUS_CONTEXT,
         ],
-        useFactory: dialogCloseStreamFactory,
+        useFactory: (
+            documentRef: Document,
+            windowRef: Window,
+            {nativeElement}: ElementRef<HTMLElement>,
+            close$: Observable<void>,
+            destroy$: Observable<void>,
+            {dismissible}: TuiDialog<TuiDialogOptions<unknown>, unknown>,
+        ): Observable<unknown> => {
+            return dismissible
+                ? merge(
+                      tuiTypedFromEvent(nativeElement, `click`).pipe(
+                          filter(tuiIsCurrentTarget),
+                      ),
+                      tuiTypedFromEvent(documentRef, `keydown`).pipe(
+                          // TODO: iframe warning
+                          filter(
+                              ({key, target}) =>
+                                  key === `Escape` &&
+                                  target instanceof Element &&
+                                  (!tuiContainsOrAfter(nativeElement, target) ||
+                                      nativeElement.contains(target)),
+                          ),
+                      ),
+                      tuiTypedFromEvent(documentRef, `mousedown`).pipe(
+                          // TODO: iframe warning
+                          filter(
+                              ({target, clientX}) =>
+                                  target instanceof Element &&
+                                  tuiGetViewportWidth(windowRef) - clientX >
+                                      SCROLLBAR_PLACEHOLDER &&
+                                  !tuiContainsOrAfter(nativeElement, target),
+                          ),
+                          switchMapTo(
+                              tuiTypedFromEvent(documentRef, `mouseup`).pipe(
+                                  take(1),
+                                  // TODO: iframe warning
+                                  filter(
+                                      ({target}) =>
+                                          target instanceof Element &&
+                                          !tuiContainsOrAfter(nativeElement, target),
+                                  ),
+                              ),
+                          ),
+                      ),
+                      close$,
+                  ).pipe(takeUntil(destroy$))
+                : close$;
+        },
     },
 ];
