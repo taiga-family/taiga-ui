@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: `example-tui-line-chart`,
@@ -63,21 +62,9 @@ export class ExampleTuiLineChartComponent {
         x => `${100 * x}`,
     ];
 
-    readonly hintContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<TuiPoint>>
-    > = [
-        ``,
-        ({$implicit}) =>
-            `${100 * $implicit[0]}\n${(10 * $implicit[1]).toLocaleString(`ru-RU`, {
-                maximumFractionDigits: 0,
-            })} $`,
-    ];
-
     yStringify: TuiStringHandler<number> | null = null;
 
     xStringify: TuiStringHandler<number> | null = null;
-
-    hintContent = this.hintContentVariants[0];
 
     x = 0;
 
