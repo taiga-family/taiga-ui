@@ -6,7 +6,6 @@ import {tuiGetNativeFocused} from './get-native-focused';
  * @param node
  * @return true if focused node is contained within element
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiIsNativeFocusedIn(node: Node): boolean {
     // !node.contains - check for IE11
     if (!node.ownerDocument || !node.contains) {

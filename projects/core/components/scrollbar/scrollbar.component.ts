@@ -18,13 +18,6 @@ import {
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function scrollRefFactory({
-    browserScrollRef,
-}: TuiScrollbarComponent): ElementRef<HTMLElement> {
-    return browserScrollRef;
-}
-
 @Component({
     selector: `tui-scrollbar`,
     templateUrl: `./scrollbar.template.html`,
@@ -34,7 +27,9 @@ export function scrollRefFactory({
         {
             provide: TUI_SCROLL_REF,
             deps: [TuiScrollbarComponent],
-            useFactory: scrollRefFactory,
+            useFactory: ({
+                browserScrollRef,
+            }: TuiScrollbarComponent): ElementRef<HTMLElement> => browserScrollRef,
         },
     ],
 })

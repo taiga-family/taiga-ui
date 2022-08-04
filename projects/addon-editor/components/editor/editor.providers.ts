@@ -18,12 +18,23 @@ export const TUI_EDITOR_PROVIDERS = [
     {
         provide: LAZY_EDITOR_EXTENSIONS,
         deps: [TUI_EDITOR_EXTENSIONS],
-        useFactory: extensionsFactory,
+        useFactory: (
+            extensions: Array<Promise<Extension>>,
+        ): Observable<ReadonlyArray<Extension | Mark | Node>> => {
+            const extensions$ = new ReplaySubject<ReadonlyArray<Extension | Mark | Node>>(
+                1,
+            );
+
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            Promise.all(extensions).then(extensions => extensions$.next(extensions));
+
+            return extensions$;
+        },
     },
     {
         provide: INITIALIZATION_TIPTAP_CONTAINER,
         deps: [Renderer2],
-        useFactory: initializationTipTapContainer,
+        useFactory: (renderer: Renderer2): HTMLElement => renderer.createElement(`div`),
     },
     {
         provide: TIPTAP_EDITOR,
@@ -32,44 +43,24 @@ export const TUI_EDITOR_PROVIDERS = [
             LAZY_EDITOR_EXTENSIONS,
             LAZY_TIPTAP_EDITOR,
         ],
-        useFactory: editorFactory,
+        useFactory: (
+            element: HTMLElement,
+            extensions: Observable<Array<Extension | Mark | Node>>,
+            editor: Observable<typeof Editor>,
+        ): Observable<Editor> => {
+            return combineLatest([editor, extensions]).pipe(
+                take(1),
+                map(
+                    ([LazyEditor, extensions]) =>
+                        new LazyEditor({
+                            element,
+                            extensions,
+                        }),
+                ),
+                shareReplay({bufferSize: 1, refCount: true}),
+            );
+        },
     },
     TuiTiptapEditorService,
     TuiEditorPortalService,
 ];
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function extensionsFactory(
-    extensions: Array<Promise<Extension>>,
-): Observable<ReadonlyArray<Extension | Mark | Node>> {
-    const extensions$ = new ReplaySubject<ReadonlyArray<Extension | Mark | Node>>(1);
-
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Promise.all(extensions).then(extensions => extensions$.next(extensions));
-
-    return extensions$;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function initializationTipTapContainer(renderer: Renderer2): HTMLElement {
-    return renderer.createElement(`div`);
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function editorFactory(
-    element: HTMLElement,
-    extensions: Observable<Array<Extension | Mark | Node>>,
-    editor: Observable<typeof Editor>,
-): Observable<Editor> {
-    return combineLatest([editor, extensions]).pipe(
-        take(1),
-        map(
-            ([LazyEditor, extensions]) =>
-                new LazyEditor({
-                    element,
-                    extensions,
-                }),
-        ),
-        shareReplay({bufferSize: 1, refCount: true}),
-    );
-}

@@ -1,8 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface WindowWithCypress extends Window {
+interface WindowWithCypress extends Window {
     Cypress?: unknown;
 }
 
