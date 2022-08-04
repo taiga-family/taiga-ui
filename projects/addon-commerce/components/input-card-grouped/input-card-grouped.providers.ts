@@ -6,7 +6,6 @@ import {
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
@@ -20,42 +19,32 @@ export interface TuiCardGroupedTexts {
 export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
     Observable<TuiCardGroupedTexts>
 >(`InputCardGrouped texts`, {
-    factory: () =>
-        inputGroupedTextsFactory(
-            inject(WINDOW),
-            inject(TUI_CARD_NUMBER_TEXTS),
-            inject(TUI_CARD_EXPIRY_TEXTS),
-            inject(TUI_CARD_CVC_TEXTS),
-            inject(TUI_MEDIA),
-        ),
+    factory: () => {
+        const windowRef = inject(WINDOW);
+        const cardNumberTexts = inject(TUI_CARD_NUMBER_TEXTS);
+        const expiryTexts = inject(TUI_CARD_EXPIRY_TEXTS);
+        const cvcTexts = inject(TUI_CARD_CVC_TEXTS);
+        const {desktopSmall} = inject(TUI_MEDIA);
+
+        const media = windowRef.matchMedia(
+            `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
+        );
+
+        return tuiTypedFromEvent(media, `change`).pipe(
+            startWith(null),
+            switchMap(() =>
+                combineLatest([
+                    of(Number(media.matches)),
+                    cardNumberTexts,
+                    expiryTexts,
+                    cvcTexts,
+                ]),
+            ),
+            map(([index, cardNumber, expiry, cvcTexts]) => ({
+                cardNumberText: cardNumber[index],
+                expiryText: expiry[index],
+                cvcText: cvcTexts[index],
+            })),
+        );
+    },
 });
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function inputGroupedTextsFactory(
-    windowRef: Window,
-    cardNumberTexts: Observable<[string, string]>,
-    expiryTexts: Observable<[string, string]>,
-    cvcTexts: Observable<[string, string]>,
-    {desktopSmall}: TuiMedia,
-): Observable<TuiCardGroupedTexts> {
-    const media = windowRef.matchMedia(
-        `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
-    );
-
-    return tuiTypedFromEvent(media, `change`).pipe(
-        startWith(null),
-        switchMap(() =>
-            combineLatest([
-                of(Number(media.matches)),
-                cardNumberTexts,
-                expiryTexts,
-                cvcTexts,
-            ]),
-        ),
-        map(([index, cardNumber, expiry, cvcTexts]) => ({
-            cardNumberText: cardNumber[index],
-            expiryText: expiry[index],
-            cvcText: cvcTexts[index],
-        })),
-    );
-}

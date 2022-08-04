@@ -7,31 +7,6 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiMultiSelectComponent} from '../multi-select.component';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function hostFallbackFactory<T>(
-    control: NgControl,
-    host: TuiDataListHost<T> | null,
-): TuiDataListHost<T> {
-    return (
-        host || {
-            handleOption: option => {
-                if (!control.control) {
-                    return;
-                }
-
-                const value = control.value || [];
-                const index = value.indexOf(option);
-
-                control.control.setValue(
-                    index === -1
-                        ? [...value, option]
-                        : [...value.slice(0, index), ...value.slice(index + 1)],
-                );
-            },
-        }
-    );
-}
-
 export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
     TuiMultiSelectOptionComponent,
 );
@@ -49,7 +24,32 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
                 NgControl,
                 [new Optional(), forwardRef(() => TuiMultiSelectComponent)],
             ],
-            useFactory: hostFallbackFactory,
+            useFactory: <T>(
+                control: NgControl,
+                host: TuiDataListHost<T> | null,
+            ): TuiDataListHost<T> => {
+                return (
+                    host || {
+                        handleOption: option => {
+                            if (!control.control) {
+                                return;
+                            }
+
+                            const value = control.value || [];
+                            const index = value.indexOf(option);
+
+                            control.control.setValue(
+                                index === -1
+                                    ? [...value, option]
+                                    : [
+                                          ...value.slice(0, index),
+                                          ...value.slice(index + 1),
+                                      ],
+                            );
+                        },
+                    }
+                );
+            },
         },
         {
             provide: NG_VALUE_ACCESSOR,

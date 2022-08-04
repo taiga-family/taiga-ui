@@ -27,41 +27,38 @@ export const TUI_DESCRIBED_BY_PROVIDERS: Provider[] = [
     {
         provide: TUI_DESCRIBED_BY_SHOW,
         deps: [TuiFocusVisibleService, ElementRef],
-        useFactory: describedByFactory,
-    },
-];
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function describedByFactory(
-    focusVisible$: Observable<boolean>,
-    {nativeElement}: ElementRef<HTMLElement>,
-): Observable<boolean> {
-    return focusVisible$
-        .pipe(
-            filter(Boolean),
-            switchMapTo(
-                timer(DELAY).pipe(
-                    mapTo(true),
-                    takeUntil(
-                        merge(
-                            tuiTypedFromEvent(nativeElement, `keydown`),
-                            tuiTypedFromEvent(nativeElement, `blur`),
+        useFactory: (
+            focusVisible$: Observable<boolean>,
+            {nativeElement}: ElementRef<HTMLElement>,
+        ): Observable<boolean> => {
+            return focusVisible$
+                .pipe(
+                    filter(Boolean),
+                    switchMapTo(
+                        timer(DELAY).pipe(
+                            mapTo(true),
+                            takeUntil(
+                                merge(
+                                    tuiTypedFromEvent(nativeElement, `keydown`),
+                                    tuiTypedFromEvent(nativeElement, `blur`),
+                                ),
+                            ),
                         ),
                     ),
-                ),
-            ),
-            switchMapTo(
-                merge(
-                    tuiTypedFromEvent(nativeElement, `keydown`).pipe(
-                        filter(({key}) => key === `Escape`),
-                        take(1),
-                        tuiStopPropagation(),
-                        mapTo(false),
-                        startWith(true),
+                    switchMapTo(
+                        merge(
+                            tuiTypedFromEvent(nativeElement, `keydown`).pipe(
+                                filter(({key}) => key === `Escape`),
+                                take(1),
+                                tuiStopPropagation(),
+                                mapTo(false),
+                                startWith(true),
+                            ),
+                            tuiTypedFromEvent(nativeElement, `blur`).pipe(mapTo(false)),
+                        ),
                     ),
-                    tuiTypedFromEvent(nativeElement, `blur`).pipe(mapTo(false)),
-                ),
-            ),
-        )
-        .pipe(distinctUntilChanged());
-}
+                )
+                .pipe(distinctUntilChanged());
+        },
+    },
+];
