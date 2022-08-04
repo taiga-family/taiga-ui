@@ -5,7 +5,9 @@ import {tuiFadeIn} from '@taiga-ui/core/animations';
 
 @Component({
     selector: `tui-line-clamp-box`,
-    templateUrl: `./line-clamp-box.template.html`,
+    template: `
+        <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
+    `,
     styleUrls: [`./line-clamp-box.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
