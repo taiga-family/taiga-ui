@@ -37,6 +37,16 @@
             heading="Hint"
             [content]="example4"
         >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint-controller"
+                    tuiLink
+                >
+                    <code>HintController</code>
+                </a>
+                directive to enable hints
+            </tui-notification>
             <tui-line-chart-example-4></tui-line-chart-example-4>
         </tui-doc-example>
 
@@ -65,7 +75,6 @@
                     [value]="value"
                     [filled]="filled"
                     [dots]="dots"
-                    [hintContent]="hintContent"
                     [xStringify]="xStringify"
                     [yStringify]="yStringify"
                 ></tui-line-chart>
@@ -89,19 +98,6 @@
                 [(documentationPropertyValue)]="filled"
             >
                 Filled with gradient
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="hintContentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Content of hint for hover. It has
-                <code>$implicit</code>
-                in context with a tuple
-                <code>[TuiPoint, number]</code>
             </ng-template>
             <ng-template
                 i18n

@@ -5,7 +5,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
-// TODO: v2.0 use in Charts
 @Directive({
     selector: `[tuiHintContent]`,
     providers: [
@@ -15,26 +14,31 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
         },
     ],
 })
-export class TuiHintControllerDirective extends AbstractTuiController {
+export class TuiHintControllerDirective
+    extends AbstractTuiController
+    implements TuiHintOptions
+{
     @Input(`tuiHintContent`)
     @tuiDefaultProp()
-    content: PolymorpheusContent = ``;
+    content: PolymorpheusContent<any> = ``;
 
     @Input(`tuiHintDirection`)
     @tuiDefaultProp()
-    direction: TuiHintOptions['direction'] = this.options.direction;
+    direction = this.options.direction;
 
     @Input(`tuiHintAppearance`)
     @tuiDefaultProp()
-    appearance = ``;
+    appearance = this.options.appearance;
 
     @Input(`tuiHintShowDelay`)
     @tuiDefaultProp()
-    showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
+    showDelay = this.options.showDelay;
 
     @Input(`tuiHintHideDelay`)
     @tuiDefaultProp()
-    hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+    hideDelay = this.options.hideDelay;
+
+    icon = this.options.icon;
 
     constructor(@Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions) {
         super();
