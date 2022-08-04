@@ -15,7 +15,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -317,7 +316,7 @@ export class TuiInputPhoneComponent
 
     private focusInput(): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, true);
+            this.nativeFocusableElement.focus({preventScroll: true});
         }
     }
 

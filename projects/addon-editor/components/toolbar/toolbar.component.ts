@@ -25,7 +25,6 @@ import {
 } from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
-    setNativeFocused,
     tuiDefaultProp,
     TuiHandler,
     tuiIsNativeFocusedIn,
@@ -265,7 +264,7 @@ export class TuiToolbarComponent {
         const firstButton = this.navigationManager?.findFirstFocusableTool();
 
         if (firstButton) {
-            setNativeFocused(firstButton);
+            firstButton.focus();
         }
     }
 
@@ -273,7 +272,7 @@ export class TuiToolbarComponent {
         const lastButton = this.navigationManager?.findFirstFocusableTool(true);
 
         if (lastButton) {
-            setNativeFocused(lastButton);
+            lastButton.focus();
         }
     }
 }

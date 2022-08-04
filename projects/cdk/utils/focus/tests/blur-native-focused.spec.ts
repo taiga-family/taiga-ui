@@ -1,5 +1,4 @@
 import {tuiBlurNativeFocused} from '../blur-native-focused';
-import {setNativeFocused} from '../set-native-focused';
 
 describe(`blurNativeFocused`, () => {
     let element: HTMLInputElement;
@@ -7,7 +6,7 @@ describe(`blurNativeFocused`, () => {
     beforeEach(() => {
         element = document.createElement(`input`);
         document.body.appendChild(element);
-        setNativeFocused(element, true);
+        element.focus();
     });
 
     afterAll(() => {

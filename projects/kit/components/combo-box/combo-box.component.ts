@@ -15,7 +15,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    setNativeFocused,
     TUI_STRICT_MATCHER,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
@@ -230,7 +229,7 @@ export class TuiComboBoxComponent<T>
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 }
