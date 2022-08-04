@@ -32,19 +32,21 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
 @Component({
     selector: `tui-hint`,
     template: `
-        <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
+        <ng-container *polymorpheusOutlet="content as text; context: context">
+            {{ text }}
+        </ng-container>
     `,
     styleUrls: [`./hint.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
     animations: [tuiFadeIn],
 })
-export class TuiHintComponent {
+export class TuiHintComponent<C = unknown> {
     @HostBinding(`@tuiFadeIn`)
     readonly animation = {value: ``, ...this.options} as const;
 
     @HostBinding(`attr.data-appearance`)
-    readonly appearance = this.context.$implicit.appearance || this.mode?.mode;
+    readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
     @HostBinding(`class._untouchable`)
     readonly untouchable = this.driver instanceof TuiHintPointerDirective;
@@ -57,7 +59,7 @@ export class TuiHintComponent {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiContextWithImplicit<TuiHint>,
+        private readonly polymorpheus: TuiContextWithImplicit<TuiHint<C>>,
         @Inject(TuiDriver) private readonly driver: TuiDriver,
         @Optional()
         @Inject(TuiModeDirective)
@@ -72,8 +74,12 @@ export class TuiHintComponent {
         }
     }
 
-    get content(): PolymorpheusContent {
-        return this.context.$implicit.content;
+    get content(): PolymorpheusContent<C> {
+        return this.polymorpheus.$implicit.content;
+    }
+
+    get context(): C | undefined {
+        return this.polymorpheus.$implicit.context;
     }
 
     @tuiPure
