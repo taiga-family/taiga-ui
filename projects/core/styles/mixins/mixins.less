@@ -60,15 +60,14 @@
         border-radius: inherit;
         color: inherit !important;
         background-color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
 
         & when (@mode = default) {
-            -webkit-text-fill-color: var(--tui-text-01) !important;
             border-color: var(--tui-autofill);
             -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
         }
 
         & when (@mode = dark) {
-            -webkit-text-fill-color: var(--tui-text-01-night) !important;
             border-color: var(--tui-autofill-night);
             -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill-night) inset !important;
         }
