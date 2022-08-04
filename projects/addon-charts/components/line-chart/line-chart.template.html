@@ -51,6 +51,7 @@
     </ng-container>
     <ng-container *ngIf="hasHints">
         <ng-container *ngFor="let point of value; let index = index">
+            <!-- TODO: Fix hint type -->
             <div
                 *ngIf="value.length > 1 || dots"
                 tuiHintDirection="top"
@@ -58,7 +59,8 @@
                 [class.t-column_hovered]="hovered === index"
                 [class.t-column_hint_hovered]="drivers.get(index) | async"
                 [tuiHintHost]="hintHost"
-                [tuiHint]="hintDirective || hintContent ? hint : ''"
+                [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                [tuiHintContext]="getContentContext(point, index)"
                 [tuiHintId]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
@@ -82,24 +84,6 @@
                 class="t-line t-line_horizontal"
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
-            <ng-template #hint>
-                <!-- TODO: Consider adding context to Hint directive -->
-                <ng-container *ngIf="hintDirective; else single">
-                    <ng-container
-                        *polymorpheusOutlet="hintDirective.hint as text; context: getContentContext(point, index)"
-                    >
-                        {{ text }}
-                    </ng-container>
-                </ng-container>
-                <ng-template #single>
-                    <!-- TODO: Polymorpheus fix type -->
-                    <ng-container
-                        *polymorpheusOutlet="$any(hintContent) as text; context: {$implicit: point, index: index}"
-                    >
-                        {{ text }}
-                    </ng-container>
-                </ng-template>
-            </ng-template>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="getHovered(hovered) as point">
