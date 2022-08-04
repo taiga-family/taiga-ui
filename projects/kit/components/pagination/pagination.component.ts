@@ -14,7 +14,6 @@ import {
 import {
     AbstractTuiInteractive,
     EMPTY_QUERY,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiClamp,
     TuiContextWithImplicit,
@@ -233,7 +232,7 @@ export class TuiPaginationComponent
         );
 
         if (previous?.nativeFocusableElement) {
-            setNativeFocused(previous.nativeFocusableElement);
+            previous.nativeFocusableElement.focus();
         }
     }
 
@@ -247,7 +246,7 @@ export class TuiPaginationComponent
         );
 
         if (next?.nativeFocusableElement) {
-            setNativeFocused(next.nativeFocusableElement);
+            next.nativeFocusableElement.focus();
         }
     }
 
@@ -319,7 +318,7 @@ export class TuiPaginationComponent
         const {nativeFocusableElement} = this;
 
         if (nativeFocusableElement) {
-            setNativeFocused(nativeFocusableElement);
+            nativeFocusableElement.focus();
         }
     }
 

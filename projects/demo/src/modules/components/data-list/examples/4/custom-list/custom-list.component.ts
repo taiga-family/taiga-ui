@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {EMPTY_ARRAY, setNativeFocused, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiDataListComponent, tuiIsEditingKey} from '@taiga-ui/core';
 
 interface Items<T> {
@@ -29,7 +29,7 @@ export class CustomListComponent<T> {
 
     onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && tuiIsEditingKey(key)) {
-            setNativeFocused(element, true, true);
+            element.focus({preventScroll: true});
         }
     }
 }
