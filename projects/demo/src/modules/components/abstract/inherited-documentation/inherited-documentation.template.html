@@ -114,31 +114,25 @@
         </ng-template>
     </tui-doc-documentation>
 </ng-container>
-<ng-container *ngIf="isTuiHint(documentedComponent)">
-    <h6 class="tui-text_h6">
-        Inherited from
-        <code>AbstractHint</code>
-    </h6>
-    <tui-doc-documentation>
-        <ng-template
-            i18n
-            documentationPropertyName="tuiHintDirection"
-            documentationPropertyMode="input"
-            documentationPropertyType="TuiDirection"
-            [documentationPropertyValues]="directionVariants"
-            [(documentationPropertyValue)]="documentedComponent.direction"
-        >
-            Hint direction
-        </ng-template>
-        <ng-template
-            i18n
-            documentationPropertyName="tuiHintAppearance"
-            documentationPropertyMode="input"
-            documentationPropertyType="string"
-            [documentationPropertyValues]="appearanceVariants"
-            [(documentationPropertyValue)]="documentedComponent.appearance"
-        >
-            Hint mode
-        </ng-template>
-    </tui-doc-documentation>
-</ng-container>
+<tui-doc-documentation *ngIf="isTuiHint(documentedComponent)">
+    <ng-template
+        i18n
+        documentationPropertyName="tuiHintDirection"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiHintDirection"
+        [documentationPropertyValues]="directionVariants"
+        [(documentationPropertyValue)]="documentedComponent.direction"
+    >
+        Hint direction
+    </ng-template>
+    <ng-template
+        i18n
+        documentationPropertyName="tuiHintAppearance"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="appearanceVariants"
+        [(documentationPropertyValue)]="documentedComponent.appearance"
+    >
+        Hint mode
+    </ng-template>
+</tui-doc-documentation>
