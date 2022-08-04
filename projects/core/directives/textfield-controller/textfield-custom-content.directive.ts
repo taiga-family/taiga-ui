@@ -4,7 +4,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_CUSTOM_CONTENT =
     new InjectionToken<TuiTextfieldCustomContentDirective>(`tuiTextfieldCustomContent`, {
-        factory: customContentDirectiveFactory,
+        factory: () => new TuiTextfieldCustomContentDirective(),
     });
 
 @Directive({
@@ -19,9 +19,4 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT =
 export class TuiTextfieldCustomContentDirective extends AbstractTuiController {
     @Input(`tuiTextfieldCustomContent`)
     customContent: PolymorpheusContent = ``;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function customContentDirectiveFactory(): TuiTextfieldCustomContentDirective {
-    return new TuiTextfieldCustomContentDirective();
 }

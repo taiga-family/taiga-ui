@@ -37,16 +37,6 @@ const icons: Record<TuiPaymentSystem, string> = {
     maestro: `tuiIconMaestro`,
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function cardTextfieldControllerFactory(
-    directive: TuiTextfieldExampleTextDirective | null,
-): TuiTextfieldExampleTextDirective {
-    directive = directive || new TuiTextfieldExampleTextDirective();
-    directive.exampleText = `0000 0000 0000 0000`;
-
-    return directive;
-}
-
 @Component({
     selector: `tui-input-card`,
     templateUrl: `./input-card.template.html`,
@@ -60,7 +50,14 @@ export function cardTextfieldControllerFactory(
         {
             provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
             deps: [[new Optional(), TuiTextfieldExampleTextDirective]],
-            useFactory: cardTextfieldControllerFactory,
+            useFactory: (
+                directive: TuiTextfieldExampleTextDirective | null,
+            ): TuiTextfieldExampleTextDirective => {
+                directive = directive || new TuiTextfieldExampleTextDirective();
+                directive.exampleText = `0000 0000 0000 0000`;
+
+                return directive;
+            },
         },
     ],
 })
