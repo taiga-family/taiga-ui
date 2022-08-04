@@ -1,7 +1,7 @@
 export interface ReplacementConst {
     readonly from: {
         readonly name: string;
-        readonly moduleSpecifier?: string;
+        readonly moduleSpecifier?: string | string[];
     };
     readonly to: {
         readonly name: string;
@@ -150,6 +150,106 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         to: {
             name: 'TuiProgressModule',
             moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'hexToRgb',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'hsvToRgb',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'parseColor',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'rgbToHex',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'rgbToHsv',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/cdk',
         },
     },
 ];
