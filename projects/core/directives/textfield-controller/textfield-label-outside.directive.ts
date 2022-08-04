@@ -3,7 +3,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_LABEL_OUTSIDE =
     new InjectionToken<TuiTextfieldLabelOutsideDirective>(`tuiTextfieldLabelOutside`, {
-        factory: labelOutsideDirectiveFactory,
+        factory: () => new TuiTextfieldLabelOutsideDirective(),
     });
 
 @Directive({
@@ -18,9 +18,4 @@ export const TUI_TEXTFIELD_LABEL_OUTSIDE =
 export class TuiTextfieldLabelOutsideDirective extends AbstractTuiController {
     @Input(`tuiTextfieldLabelOutside`)
     labelOutside = false;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function labelOutsideDirectiveFactory(): TuiTextfieldLabelOutsideDirective {
-    return new TuiTextfieldLabelOutsideDirective();
 }

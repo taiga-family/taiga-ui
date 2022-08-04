@@ -31,15 +31,15 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
             TuiDestroyService,
             ChangeDetectorRef,
         ],
-        useFactory: valueStreamFactory,
+        useFactory: (
+            value$: Observable<TuiDayRange | null> | null,
+            destroy$: Observable<void>,
+            changeDetectorRef: ChangeDetectorRef,
+        ): Observable<TuiDayRange | null> => {
+            return (value$ || EMPTY).pipe(
+                tuiWatch(changeDetectorRef),
+                takeUntil(destroy$),
+            );
+        },
     },
 ];
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function valueStreamFactory(
-    value$: Observable<TuiDayRange | null> | null,
-    destroy$: Observable<void>,
-    changeDetectorRef: ChangeDetectorRef,
-): Observable<TuiDayRange | null> {
-    return (value$ || EMPTY).pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$));
-}
