@@ -23,7 +23,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
     TuiBooleanHandler,
@@ -349,7 +348,7 @@ export class TuiInputTagComponent
         }
 
         event.preventDefault();
-        setNativeFocused(this.tags.last.nativeElement);
+        this.tags.last.nativeElement.focus();
     }
 
     onFieldKeyDownEnter(): void {
@@ -448,7 +447,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        setNativeFocused(tag.nativeElement);
+        tag.nativeElement.focus();
 
         if (
             flag * this.scrollBar.nativeElement.clientWidth -
@@ -525,7 +524,7 @@ export class TuiInputTagComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 }

@@ -18,7 +18,6 @@ import {
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
-    setNativeFocused,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
@@ -372,7 +371,7 @@ export class TuiInputDateRangeComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 
