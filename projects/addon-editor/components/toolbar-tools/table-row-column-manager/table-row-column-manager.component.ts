@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
