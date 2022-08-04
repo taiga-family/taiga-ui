@@ -9,7 +9,7 @@
         [width]="400"
         [height]="200"
         [value]="value"
-        [hintContent]="hint"
+        [tuiHintContent]="hint"
     ></tui-line-chart>
 </tui-axes>
 
@@ -19,13 +19,14 @@
     [horizontalLines]="2"
 >
     <tui-line-chart
+        tuiHintAppearance="error"
+        [tuiHintContent]="hintContent"
         [x]="0"
         [y]="0"
         [width]="400"
         [height]="200"
         [value]="singleValue"
         [dots]="true"
-        [hintContent]="hintContent"
     ></tui-line-chart>
 </tui-axes>
 

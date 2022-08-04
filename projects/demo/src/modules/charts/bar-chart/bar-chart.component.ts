@@ -1,25 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-const MONTHS: readonly string[] = [
-    `Jan 2019`,
-    `Feb`,
-    `Mar`,
-    `Apr`,
-    `May`,
-    `Jun`,
-    `Jul`,
-    `Aug`,
-    `Sep`,
-    `Oct`,
-    `Nov`,
-    `Dec`,
-];
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: `example-tui-bar-chart`,
@@ -64,30 +46,4 @@ export class ExampleTuiBarChartComponent {
     ];
 
     value = this.valueVariants[0];
-
-    readonly contentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<number>>
-    > = [
-        ``,
-        ({$implicit}) => this.getHint($implicit),
-        ({$implicit}) => MONTHS[$implicit],
-    ];
-
-    hintContent = this.contentVariants[0];
-
-    readonly hintAppearanceVariants = [``, `onDark`, `error`];
-
-    hintAppearance = this.hintAppearanceVariants[0];
-
-    getHint(index: number): string {
-        return this.value
-            .reduce(
-                (result, set) =>
-                    `${result}${tuiFormatNumber(set[index])} ${tuiGetCurrencySymbol(
-                        TuiCurrency.Ruble,
-                    )}\n`,
-                ``,
-            )
-            .trim();
-    }
 }
