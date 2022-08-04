@@ -13,7 +13,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     tuiClamp,
@@ -175,7 +174,7 @@ export class TuiInputCountComponent
         }
 
         event.preventDefault();
-        setNativeFocused(this.nativeFocusableElement);
+        this.nativeFocusableElement.focus();
     }
 
     onFocused(focused: boolean): void {
