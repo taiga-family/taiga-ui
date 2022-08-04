@@ -15,7 +15,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    setNativeFocused,
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -185,7 +184,7 @@ export class TuiTextAreaComponent
         event.preventDefault();
 
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement);
+            this.nativeFocusableElement.focus();
         }
     }
 

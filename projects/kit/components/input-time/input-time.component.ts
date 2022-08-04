@@ -14,7 +14,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
     TuiBooleanHandler,
@@ -323,7 +322,7 @@ export class TuiInputTimeComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
             this.close();
         }
     }
