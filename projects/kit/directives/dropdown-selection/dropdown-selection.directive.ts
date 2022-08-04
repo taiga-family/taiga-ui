@@ -38,7 +38,7 @@ import {
 } from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
-import {map, switchMapTo, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, map, switchMapTo, takeUntil} from 'rxjs/operators';
 
 // @dynamic
 @Directive({
@@ -148,13 +148,18 @@ export class TuiDropdownSelectionDirective
 
                     return selection?.rangeCount ? selection.getRangeAt(0) : this.range;
                 }),
+                distinctUntilChanged(),
                 takeUntil(destroy$),
             )
             .subscribe(range => {
                 const contained =
                     !!range && nativeElement.contains(range.commonAncestorContainer);
 
-                this.range = contained ? range : this.range;
+                this.range =
+                    contained &&
+                    range?.commonAncestorContainer.nodeType === Node.TEXT_NODE
+                        ? range
+                        : this.range;
 
                 const valid =
                     contained &&
