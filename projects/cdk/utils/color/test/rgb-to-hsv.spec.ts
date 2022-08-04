@@ -1,4 +1,4 @@
-import {tuiRgbToHsv} from '../tui-rgb-to-hsv';
+import {tuiRgbToHsv} from '../rgb-to-hsv';
 
 describe(`rgbToHsv`, () => {
     it(`works`, () => {
