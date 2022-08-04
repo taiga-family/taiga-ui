@@ -18,21 +18,19 @@ export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_CUSTOMIZATION_VARS,
         deps: [WINDOW, CSS_VARS],
-        useFactory: varsFactory,
+        useFactory: (
+            windowRef: Window,
+            variables: readonly string[],
+        ): Record<string, string> => {
+            const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
+
+            return variables.reduce(
+                (dictionary, variable) => ({
+                    ...dictionary,
+                    [variable]: styles.getPropertyValue(variable).trim(),
+                }),
+                {},
+            );
+        },
     },
 ];
-
-export function varsFactory(
-    windowRef: Window,
-    variables: readonly string[],
-): Record<string, string> {
-    const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
-
-    return variables.reduce(
-        (dictionary, variable) => ({
-            ...dictionary,
-            [variable]: styles.getPropertyValue(variable).trim(),
-        }),
-        {},
-    );
-}
