@@ -3,7 +3,6 @@
  *
  * @return element or null
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiGetNativeFocused(documentRef: Document): Element | null {
     if (!documentRef.activeElement || !documentRef.activeElement.shadowRoot) {
         return documentRef.activeElement;

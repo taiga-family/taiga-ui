@@ -10,15 +10,13 @@ export const SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
 export const VERSION_MANAGER_PROVIDERS: Provider[] = [
     {
         provide: SELECTED_VERSION_META,
-        useFactory: selectedVersionMetaFactory,
         deps: [LocationStrategy],
+        useFactory: (s: LocationStrategy): TuiVersionMeta | null => {
+            return (
+                TAIGA_VERSIONS_META.find(
+                    meta => meta.baseHref === s.getBaseHref().replace(/\//g, ``),
+                ) || null
+            );
+        },
     },
 ];
-
-export function selectedVersionMetaFactory(s: LocationStrategy): TuiVersionMeta | null {
-    return (
-        TAIGA_VERSIONS_META.find(
-            meta => meta.baseHref === s.getBaseHref().replace(/\//g, ``),
-        ) || null
-    );
-}
