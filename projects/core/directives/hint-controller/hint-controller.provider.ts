@@ -6,7 +6,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives/hint';
 import {tuiWatchedControllerFactory} from '@taiga-ui/core/providers';
 
 import {TuiHintControllerDirective} from './hint-controller.directive';

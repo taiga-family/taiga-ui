@@ -38,7 +38,7 @@ export class TuiHintControllerDirective
     @tuiDefaultProp()
     hideDelay = this.options.hideDelay;
 
-    icon = `tuiIconTooltipLarge`;
+    icon = this.options.icon;
 
     constructor(@Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions) {
         super();
