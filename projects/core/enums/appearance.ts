@@ -3,6 +3,7 @@ export const enum TuiAppearance {
     Primary = `primary`,
     Accent = `accent`,
     Secondary = `secondary`,
+    SecondaryDestructive = `secondary-destructive`,
     Table = `table`,
     Textfield = `textfield`,
     Flat = `flat`,
