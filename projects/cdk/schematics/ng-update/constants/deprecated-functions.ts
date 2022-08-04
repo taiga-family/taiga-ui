@@ -97,16 +97,6 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
         moduleSpecifier: ['@taiga-ui/addon-doc'],
     },
     {
-        from: 'rgbToHex',
-        to: 'tuiRgbToHex',
-        moduleSpecifier: ['@taiga-ui/addon-doc'],
-    },
-    {
-        from: 'hexToRgb',
-        to: 'tuiHexToRgb',
-        moduleSpecifier: ['@taiga-ui/addon-doc'],
-    },
-    {
         from: 'generateRoutes',
         to: 'tuiGenerateRoutes',
         moduleSpecifier: ['@taiga-ui/addon-doc'],
@@ -147,38 +137,13 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
         moduleSpecifier: ['@taiga-ui/addon-editor'],
     },
     {
-        from: 'hexToRgb',
-        to: 'tuiHexToRgb',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
-    },
-    {
-        from: 'hsvToRgb',
-        to: 'tuiHsvToRgb',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
-    },
-    {
         from: 'isSelectionIn',
         to: 'tuiIsSelectionIn',
         moduleSpecifier: ['@taiga-ui/addon-editor'],
     },
     {
-        from: 'parseColor',
-        to: 'tuiParseColor',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
-    },
-    {
         from: 'parseGradient',
         to: 'tuiParseGradient',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
-    },
-    {
-        from: 'rgbToHex',
-        to: 'tuiRgbToHex',
-        moduleSpecifier: ['@taiga-ui/addon-editor'],
-    },
-    {
-        from: 'rgbToHsv',
-        to: 'tuiRgbToHsv',
         moduleSpecifier: ['@taiga-ui/addon-editor'],
     },
     {
