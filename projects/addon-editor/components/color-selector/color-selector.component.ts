@@ -9,12 +9,8 @@ import {
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
-import {
-    tuiGetGradientData,
-    tuiParseColor,
-    tuiParseGradient,
-} from '@taiga-ui/addon-editor/utils';
-import {tuiDefaultProp, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {tuiGetGradientData, tuiParseGradient} from '@taiga-ui/addon-editor/utils';
+import {tuiDefaultProp, tuiParseColor, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
