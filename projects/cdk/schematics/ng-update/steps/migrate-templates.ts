@@ -57,6 +57,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         migrateTuiHideSelectedPipe,
         removeInputs,
         migratePolymorpheus,
+        replaceInputValues,
     ];
 
     componentWithTemplatesPaths.forEach((resource, templateIndex, templates) => {
@@ -360,6 +361,57 @@ function migrateTuiHideSelectedPipe({
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
+    });
+}
+
+function replaceInputValues({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}) {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const ATTR_VALUES = [
+        {
+            attrName: 'tuiHintDirection',
+            values: [
+                {from: 'bottom-middle', to: 'bottom'},
+                {from: 'top-middle', to: 'top'},
+            ],
+        },
+    ] as const;
+
+    ATTR_VALUES.forEach(({attrName, values}) => {
+        const elements = [...findElementsWithAttribute(template, attrName)];
+        elements.forEach(element => {
+            const {name, value} =
+                element.attrs.find(attr => attr.name === attrName.toLowerCase()) || {};
+
+            if (!name || !value) {
+                return;
+            }
+
+            values.forEach(({from, to}) => {
+                if (value === from) {
+                    const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
+                        name
+                    ] || {startOffset: 0, endOffset: 0};
+                    recorder.remove(
+                        templateOffset + startOffset,
+                        endOffset - startOffset,
+                    );
+                    recorder.insertRight(
+                        templateOffset + startOffset,
+                        `${attrName}="${to}"`,
+                    );
+                }
+            });
+        });
     });
 }
 
