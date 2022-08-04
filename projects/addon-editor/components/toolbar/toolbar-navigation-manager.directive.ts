@@ -1,6 +1,5 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
-    setNativeFocused,
     tuiClamp,
     tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
@@ -39,7 +38,7 @@ export class TuiToolbarNavigationManagerDirective {
             : this.findNextTool(targetToolWrapper);
 
         if (targetTool) {
-            setNativeFocused(targetTool);
+            targetTool.focus();
         }
     }
 

@@ -11,7 +11,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
-    setNativeFocused,
     TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
@@ -123,7 +122,7 @@ export class TuiDropdownContextDirective
             return;
         }
 
-        setNativeFocused(focusable);
+        focusable.focus();
     }
 
     @HostListener(`document:keydown.esc`, [`$event`])

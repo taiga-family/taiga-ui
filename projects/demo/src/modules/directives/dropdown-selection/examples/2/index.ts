@@ -2,7 +2,7 @@ import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';
 import {tuiGetWordRange} from '@taiga-ui/kit';
 
@@ -53,7 +53,7 @@ export class TuiDropdownSelectionExample2 {
         }
 
         event.preventDefault();
-        setNativeFocused(item.nativeElement);
+        item.nativeElement.focus();
     }
 
     filterItems(textarea: HTMLTextAreaElement): readonly User[] {
@@ -68,7 +68,7 @@ export class TuiDropdownSelectionExample2 {
         const caret = value.indexOf(login) + login.length;
 
         this.value = value;
-        setNativeFocused(textarea);
+        textarea.focus();
         textarea.value = value;
         textarea.setSelectionRange(caret, caret);
     }
