@@ -7,8 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {tuiHsvToRgb, tuiRgbToHsv} from '@taiga-ui/addon-editor/utils';
-import {tuiDefaultProp, tuiPure, tuiRound} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
