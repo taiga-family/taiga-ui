@@ -3,6 +3,7 @@ import {
     Component,
     Inject,
     Input,
+    Optional,
     QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -15,7 +16,13 @@ import {
     tuiPure,
     tuiSum,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    TUI_HINT_CONTROLLER_OPTIONS,
+    TuiDriver,
+    TuiHintControllerDirective,
+    TuiSizeL,
+    TuiSizeS,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -32,6 +39,7 @@ const VALUE_ERROR = `All arrays must be of the same length`;
     templateUrl: `./bar-chart.template.html`,
     styleUrls: [`./bar-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [TUI_HINT_CONTROLLER_OPTIONS],
 })
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
@@ -55,20 +63,17 @@ export class TuiBarChartComponent {
     @tuiDefaultProp()
     collapsed = false;
 
-    @Input()
-    @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
-
-    @Input()
-    @tuiDefaultProp()
-    hintAppearance = ``;
-
-    constructor(@Inject(TuiIdService) idService: TuiIdService) {
+    constructor(
+        @Optional()
+        @Inject(TuiHintControllerDirective)
+        private readonly hintController: TuiHintControllerDirective | null,
+        @Inject(TuiIdService) idService: TuiIdService,
+    ) {
         this.autoIdString = idService.generate();
     }
 
-    get hasHint(): boolean {
-        return !!this.hintContent;
+    get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+        return this.hintController?.content || ``;
     }
 
     get transposed(): ReadonlyArray<readonly number[]> {
@@ -84,10 +89,6 @@ export class TuiBarChartComponent {
         collapsed: boolean,
         max: number,
     ) => (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
-
-    getHint(hint: PolymorpheusContent): PolymorpheusContent {
-        return this.hasHint ? hint : ``;
-    }
 
     getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;

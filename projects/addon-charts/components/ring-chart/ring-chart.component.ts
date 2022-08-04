@@ -27,10 +27,6 @@ export class TuiRingChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    masked = true;
-
-    @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()

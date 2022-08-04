@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAxesModule, TuiBarChartModule} from '@taiga-ui/addon-charts';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHintModule} from '@taiga-ui/core';
+import {TuiHintControllerModule, TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {ExampleTuiAxesComponent} from './axes.component';
@@ -18,6 +18,7 @@ import {TuiAxesExample2} from './examples/2';
         TuiAxesModule,
         TuiBarChartModule,
         TuiHintModule,
+        TuiHintControllerModule,
         PolymorpheusModule,
         TuiMoneyModule,
         TuiAddonDocModule,

@@ -1,13 +1,14 @@
 <div
     *ngFor="let set of transposed; let index = index"
-    tuiHintDirection="top-left"
+    tuiHintDirection="top"
     class="t-wrapper"
-    [class.t-wrapper_hoverable]="hasHint"
+    [class.t-wrapper_hoverable]="!!hintContent"
     [class.t-wrapper_hovered]="drivers.get(index) | async"
     [tuiHintHost]="hintHost"
     [tuiHintId]="getHintId(index)"
-    [tuiHint]="getHint(hint)"
-    [tuiHintAppearance]="hintAppearance"
+    [tuiHint]="hintContent"
+    [tuiHintContext]="{$implicit: index}"
+    (mouseenter.once)="(0)"
 >
     <div
         class="t-container"
@@ -20,19 +21,10 @@
         <tui-bar-set
             class="t-set"
             [tuiDescribedBy]="getHintId(index)"
-            [tuiFocusable]="hasHint"
+            [tuiFocusable]="!!hintContent"
             [value]="set"
             [size]="size"
             [collapsed]="collapsed"
         ></tui-bar-set>
     </div>
-    <ng-template
-        #hint="polymorpheus"
-        polymorpheus
-    >
-        <!-- TODO: Consider adding context to Hint directive -->
-        <ng-container *polymorpheusOutlet="hintContent as text; context: {$implicit: index}">
-            {{ text }}
-        </ng-container>
-    </ng-template>
 </div>
