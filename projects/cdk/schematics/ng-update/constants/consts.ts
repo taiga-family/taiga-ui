@@ -63,6 +63,26 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         },
     },
     {
+        from: {
+            name: 'TuiManualHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPointerHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
         from: {name: 'identity', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'identity', moduleSpecifier: 'rxjs'},
     },
