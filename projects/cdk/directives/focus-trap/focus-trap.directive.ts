@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {tuiContainsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
-    setNativeFocused,
     tuiBlurNativeFocused,
     tuiGetClosestFocusable,
     tuiGetNativeFocused,
@@ -37,7 +36,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          */
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         Promise.resolve().then(() => {
-            setNativeFocused(this.elementRef.nativeElement);
+            this.elementRef.nativeElement.focus();
         });
     }
 
@@ -59,7 +58,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
         );
 
         if (focusable) {
-            setNativeFocused(focusable);
+            focusable.focus();
         }
     }
 
@@ -76,7 +75,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
         Promise.resolve().then(() => {
             // TODO: iframe warning
             if (this.activeElement instanceof HTMLElement) {
-                setNativeFocused(this.activeElement);
+                this.activeElement.focus();
             }
         });
     }
