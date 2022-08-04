@@ -11,16 +11,17 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    tuiHexToRgb,
     tuiIsNumber,
     tuiIsString,
     tuiItemsQueryListObservable,
+    tuiRgbToHex,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
-import {tuiHexToRgb, tuiRgbToHex} from '../../utils/color-conversion';
 import {tuiInspectAny} from '../../utils/inspect';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
