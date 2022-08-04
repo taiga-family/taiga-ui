@@ -41,24 +41,9 @@
             [attr.transform]="getTransform(index)"
             [style.color]="getColor(index)"
             [tuiPieChart]="segments[index]"
-            [tuiHint]="getHint(hint)"
+            [tuiHint]="hintContent"
+            [tuiHintContext]="{$implicit: index}"
             (tuiHoveredChange)="onHovered($event, index)"
-        >
-            <ng-template #hint>
-                <ng-container
-                    [ngTemplateOutlet]="template"
-                    [ngTemplateOutletContext]="{$implicit: index}"
-                ></ng-container>
-            </ng-template>
-        </path>
+        />
     </g>
 </svg>
-<ng-template
-    #template
-    let-index
->
-    <!-- TODO: Consider adding context to Hint directive -->
-    <ng-container *polymorpheusOutlet="hintContent as text; context: {$implicit: index}">
-        {{ text }}
-    </ng-container>
-</ng-template>

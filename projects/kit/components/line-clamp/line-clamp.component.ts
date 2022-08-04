@@ -31,7 +31,7 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-import {TuiLineClampBoxComponent} from './line-clamp-box/line-clamp-box.component';
+import {TuiLineClampBoxComponent} from './line-clamp-box.component';
 import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options';
 
 @Component({

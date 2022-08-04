@@ -21,7 +21,12 @@ import {
     TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiPoint} from '@taiga-ui/core';
+import {
+    TUI_HINT_CONTROLLER_OPTIONS,
+    TuiDriver,
+    TuiHintControllerDirective,
+    TuiPoint,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
@@ -33,6 +38,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     templateUrl: `./line-chart.template.html`,
     styleUrls: [`./line-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [TUI_HINT_CONTROLLER_OPTIONS],
 })
 export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();
@@ -73,10 +79,6 @@ export class TuiLineChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> = ``;
-
-    @Input()
-    @tuiDefaultProp()
     xStringify: TuiStringHandler<number> | null = null;
 
     @Input()
@@ -100,6 +102,9 @@ export class TuiLineChartComponent {
         @Optional()
         @Inject(TuiLineChartHintDirective)
         readonly hintDirective: TuiLineChartHintDirective | null,
+        @Optional()
+        @Inject(TuiHintControllerDirective)
+        readonly hintController: TuiHintControllerDirective | null,
     ) {
         this.autoIdString = idService.generate();
     }
@@ -107,6 +112,10 @@ export class TuiLineChartComponent {
     @tuiPure
     get hovered$(): Observable<number> {
         return this._hovered$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.ngZone));
+    }
+
+    get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
+        return this.hintController?.content || ``;
     }
 
     get fillId(): string {
@@ -176,10 +185,10 @@ export class TuiLineChartComponent {
     getContentContext(
         $implicit: TuiPoint,
         index: number,
-    ): TuiLineChartHintContext<readonly TuiPoint[]> {
+    ): TuiLineChartHintContext<readonly TuiPoint[] | TuiPoint> {
         return (
             this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
-                $implicit: [],
+                $implicit,
                 index,
             }
         );
