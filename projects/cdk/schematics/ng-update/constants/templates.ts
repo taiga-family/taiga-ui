@@ -254,7 +254,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             withTagNames: ['tui-bar-chart'],
         },
         to: {
-            attrName: '[hintAppearance]',
+            attrName: '[tuiHintAppearance]',
         },
     },
     {
@@ -455,6 +455,15 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
         directiveModule: {
             name: 'TuiScrollIntoViewLinkModule',
             moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        componentSelector: ['tui-bar-chart', 'tui-pie-chart', 'tui-line-chart'],
+        inputProperty: 'hintContent',
+        directive: 'tuiHintContent',
+        directiveModule: {
+            name: 'TuiHintControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];

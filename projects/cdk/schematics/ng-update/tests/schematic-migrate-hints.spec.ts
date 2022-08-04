@@ -36,6 +36,13 @@ const TEMPLATE_BEFORE = `
     Hint
 </button>
 
+<tui-bar-chart
+    class="chart"
+    [value]="value"
+    [hintContent]="hint"
+    [hintMode]="appearance"
+></tui-bar-chart>
+
 <tui-tooltip
       describeId="example3"
       mode="onDark"
@@ -60,6 +67,13 @@ const TEMPLATE_AFTER = `
 >
     Hint
 </button>
+
+<tui-bar-chart
+    class="chart"
+    [value]="value"
+    [tuiHintContent]="hint"
+    [tuiHintAppearance]="appearance"
+></tui-bar-chart>
 
 <tui-tooltip
       describeId="example3"
