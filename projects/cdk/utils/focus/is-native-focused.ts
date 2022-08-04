@@ -8,7 +8,6 @@ import {tuiGetNativeFocused} from './get-native-focused';
  * @param node or null (as a common return value of DOM nodes walking)
  * @return true if focused
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function tuiIsNativeFocused(node: Node | null): boolean {
     return !!node?.ownerDocument && tuiGetNativeFocused(node.ownerDocument) === node;
 }

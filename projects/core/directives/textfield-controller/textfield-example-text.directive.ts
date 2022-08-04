@@ -3,7 +3,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_EXAMPLE_TEXT =
     new InjectionToken<TuiTextfieldExampleTextDirective>(`tuiTextfieldExampleText`, {
-        factory: exampleTextDirectiveFactory,
+        factory: () => new TuiTextfieldExampleTextDirective(),
     });
 
 @Directive({
@@ -18,9 +18,4 @@ export const TUI_TEXTFIELD_EXAMPLE_TEXT =
 export class TuiTextfieldExampleTextDirective extends AbstractTuiController {
     @Input(`tuiTextfieldExampleText`)
     exampleText = ``;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function exampleTextDirectiveFactory(): TuiTextfieldExampleTextDirective {
-    return new TuiTextfieldExampleTextDirective();
 }

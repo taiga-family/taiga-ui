@@ -16,13 +16,6 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function inputCountOptionsFactory(
-    options: TuiInputCountOptions,
-): TuiInputCountOptions {
-    return {...options, hideButtons: true};
-}
-
 export const TUI_TABLE_PROVIDERS = [
     {
         provide: INTERSECTION_ROOT_MARGIN,
@@ -45,7 +38,10 @@ export const TUI_TABLE_PROVIDERS = [
     {
         provide: TUI_INPUT_COUNT_OPTIONS,
         deps: [[new SkipSelf(), TUI_INPUT_COUNT_OPTIONS]],
-        useFactory: inputCountOptionsFactory,
+        useFactory: (options: TuiInputCountOptions): TuiInputCountOptions => ({
+            ...options,
+            hideButtons: true,
+        }),
     },
     {
         provide: TUI_TEXTFIELD_SIZE,
