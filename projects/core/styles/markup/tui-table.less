@@ -35,6 +35,7 @@
         vertical-align: middle;
         height: 2.5rem;
         color: var(--tui-text-02);
+        background: inherit;
 
         &_font-size_l,
         .tui-table_font-size_l & {
@@ -49,6 +50,7 @@
         word-wrap: break-word;
         height: 3.4375rem;
         color: var(--tui-text-01);
+        background: inherit;
 
         &_size_l,
         .tui-table_size_l & {
@@ -75,12 +77,43 @@
         box-sizing: border-box;
         text-align: left;
 
+        .tui-table_size_l &:before {
+            width: 1rem;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+
+        &_first:before,
+        &_last:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0.75rem;
+            height: 100%;
+            background: inherit;
+            border-top-left-radius: 0.75rem;
+            border-bottom-left-radius: 0.75rem;
+        }
+
         &_first {
+            position: relative;
             padding-left: 0;
+            overflow: visible;
+
+            &:before {
+                right: 100%;
+            }
         }
 
         &_last {
+            position: relative;
             padding-right: 0;
+            overflow: visible;
+
+            &:before {
+                left: 100%;
+                transform: scaleX(-1);
+            }
         }
 
         &_text_center {
