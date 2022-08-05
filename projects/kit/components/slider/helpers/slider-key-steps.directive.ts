@@ -7,7 +7,6 @@ import {
     Inject,
     Input,
     Optional,
-    Output,
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -17,14 +16,12 @@ import {
     tuiClamp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
-import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from '../slider.component';
 
@@ -43,11 +40,6 @@ export class TuiSliderKeyStepsDirective
     @Input()
     keySteps!: TuiKeySteps;
 
-    @Output()
-    keyStepsInput = tuiTypedFromEvent(this.elementRef.nativeElement, `input`).pipe(
-        map(() => this.controlValue),
-    );
-
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.elementRef.nativeElement;
     }
@@ -57,15 +49,11 @@ export class TuiSliderKeyStepsDirective
     }
 
     get min(): number {
-        return this.keySteps[0]?.[1] || 0;
+        return this.keySteps[0][1];
     }
 
     get max(): number {
-        return this.keySteps[this.keySteps.length - 1]?.[1] || 100;
-    }
-
-    get controlValue(): number {
-        return tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps);
+        return this.keySteps[this.keySteps.length - 1][1];
     }
 
     constructor(
@@ -81,17 +69,12 @@ export class TuiSliderKeyStepsDirective
         super(control, changeDetectorRef);
     }
 
-    /**
-     * TODO: 3.0
-     * ___
-     * Also add @HostListener(`input`): to be similar to
-     * {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/range_value_accessor.ts#L47-L48 RangeValueAccessor}
-     * ___
-     * Remove {@link keyStepsInput}
-     */
+    @HostListener(`input`)
     @HostListener(`change`)
     updateControlValue(): void {
-        this.updateValue(this.controlValue);
+        this.updateValue(
+            tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
+        );
     }
 
     writeValue(controlValue: number | null): void {
