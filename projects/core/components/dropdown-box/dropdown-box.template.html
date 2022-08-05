@@ -1,11 +1,11 @@
 <div
     #activeZone="tuiActiveZone"
-    class="wrapper"
+    class="t-wrapper"
     [tuiOverscroll]="overscroll"
     [tuiMode]="null"
     [tuiActiveZoneParent]="directive.activeZone || null"
 >
-    <tui-scrollbar class="scroll">
+    <tui-scrollbar class="t-scroll">
         <div
             tabindex="0"
             (focus)="onTopFocus()"
@@ -13,7 +13,7 @@
         <div
             #content
             polymorpheus-outlet
-            class="content"
+            class="t-content"
             [content]="directive.content"
             [context]="getContext(directive.context, activeZone)"
         ></div>

@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     *tuiLet="countriesNames$ | async as countriesNames"
-    class="hosted-dropdown"
+    class="t-hosted-dropdown"
     [content]="dropdown"
     [canOpen]="!readOnly"
     [(open)]="open"
@@ -9,7 +9,7 @@
     <div tuiGroup>
         <tui-primitive-textfield
             tuiHostedDropdownHost
-            class="country-select tui-group__auto-width-item"
+            class="t-country-select tui-group__auto-width-item"
             [tuiTextfieldCustomContent]="countryValueContent"
             [tuiTextfieldLabelOutside]="true"
             [disabled]="disabled"
@@ -22,7 +22,7 @@
         ></tui-primitive-textfield>
         <tui-input-phone
             tuiTextfieldAutocomplete="off"
-            class="input-phone tui-group__auto-width-item"
+            class="t-input-phone tui-group__auto-width-item"
             [ngModel]="value"
             [disabled]="disabled"
             [focusable]="focusable"
@@ -47,13 +47,13 @@
             >
                 <img
                     alt=""
-                    class="country-item-flag"
+                    class="t-country-item-flag"
                     [src]="getFlagPath(item)"
                 />
-                <span class="country-item-name">
+                <span class="t-country-item-name">
                     {{ countriesNames[item] }}
                 </span>
-                <span class="country-item-code">
+                <span class="t-country-item-code">
                     {{ item | tuiMapper: isoToCountryCodeMapper }}
                 </span>
             </button>
@@ -62,7 +62,7 @@
 
     <ng-template #countryValueContent>
         <img
-            class="flag"
+            class="t-flag"
             [alt]="countriesNames[countryIsoCode]"
             [src]="countryFlagPath"
         />

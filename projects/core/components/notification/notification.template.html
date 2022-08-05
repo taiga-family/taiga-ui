@@ -1,10 +1,10 @@
 <tui-svg
     *ngIf="hasIcon"
     automation-id="tui-notification__icon"
-    class="icon"
+    class="t-icon"
     [src]="icon"
 ></tui-svg>
-<div class="content">
+<div class="t-content">
     <ng-content></ng-content>
 </div>
 <button
@@ -15,7 +15,7 @@
     size="xs"
     icon="tuiIconCloseLarge"
     appearance="icon"
-    class="close"
+    class="t-close"
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>

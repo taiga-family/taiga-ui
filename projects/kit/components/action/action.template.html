@@ -1,14 +1,14 @@
 <label
     *ngIf="!isLink; else content"
     automation-id="tui-action__content"
-    class="wrapper"
+    class="t-wrapper"
 >
     <ng-container [ngTemplateOutlet]="content"></ng-container>
     <button
         #focusableElement
         type="button"
         automation-id="tui-action__native"
-        class="button"
+        class="t-button"
         [id]="id"
         [tuiDescribedBy]="id"
         [tuiFocusable]="computedFocusable"
@@ -16,12 +16,12 @@
     ></button>
 </label>
 <ng-template #content>
-    <div class="wrapper">
+    <div class="t-wrapper">
         <ng-content></ng-content>
     </div>
 </ng-template>
 <tui-marker-icon
     size="s"
-    class="icon"
+    class="t-icon"
     [src]="icon"
 ></tui-marker-icon>

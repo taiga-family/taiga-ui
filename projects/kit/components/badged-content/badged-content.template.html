@@ -2,14 +2,14 @@
 
 <div
     *ngIf="topNotification"
-    class="notification notification_top"
+    class="t-notification t-notification_top"
     [style.background]="topNotification"
     [style.boxShadow]="boxShadow"
 ></div>
 
 <div
     *ngIf="bottomNotification"
-    class="notification notification_bottom"
+    class="t-notification t-notification_bottom"
     [style.background]="bottomNotification"
     [style.boxShadow]="boxShadow"
 ></div>
@@ -17,7 +17,7 @@
 <div
     *ngIf="contentTop"
     polymorpheus-outlet
-    class="content content_top"
+    class="t-content t-content_top"
     [style.boxShadow]="boxShadow"
     [content]="contentTop"
 >
@@ -31,7 +31,7 @@
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
-            class="icon"
+            class="t-icon"
             [style.color]="colorTop"
             [src]="content"
         ></tui-svg>
@@ -41,7 +41,7 @@
 <div
     *ngIf="contentBottom && sizeBig"
     polymorpheus-outlet
-    class="content content_bottom"
+    class="t-content t-content_bottom"
     [style.boxShadow]="boxShadow"
     [content]="contentBottom"
 >
@@ -55,7 +55,7 @@
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
-            class="icon"
+            class="t-icon"
             [style.color]="colorBottom"
             [src]="content"
         ></tui-svg>

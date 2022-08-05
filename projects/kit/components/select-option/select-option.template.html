@@ -3,9 +3,9 @@
     *ngIf="selected$ | async; else dummy"
     automation-id="tui-select-option__checkmark"
     src="tuiIconCheckLarge"
-    class="checkmark"
+    class="t-checkmark"
     [tuiScrollIntoView]="true"
 ></tui-svg>
 <ng-template #dummy>
-    <span class="dummy"></span>
+    <span class="t-dummy"></span>
 </ng-template>

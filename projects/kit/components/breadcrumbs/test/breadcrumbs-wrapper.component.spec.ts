@@ -95,7 +95,7 @@ describe(`Breadcrumbs Wrapper`, () => {
         it(`the last element is missing `, () => {
             const itemsArrayLength = ITEMS.length;
             const iconsArrayLength = fixture.debugElement.queryAll(
-                By.css(`.icon`),
+                By.css(`.t-icon`),
             ).length;
 
             expect(iconsArrayLength).toBe(itemsArrayLength - 1);

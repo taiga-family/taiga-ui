@@ -5,7 +5,7 @@ import {EXAMPLE_ID} from '../../support/shared.entities';
 describe(`Demo`, () => {
     for (const path of DEMO_PATHS) {
         it(path, () => {
-            cy.tuiVisit(path);
+            cy.tuiVisit(path, {hideScrollbar: path !== `components/scrollbar`});
 
             cy.get(`tui-doc-example`).each((example, index) => {
                 cy.wrap(example)

@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="interactive"
     [content]="datalist || ''"
     [(open)]="open"
@@ -7,7 +7,7 @@
 >
     <tui-primitive-textfield
         automation-id="tui-combo-box__textfield"
-        class="textfield"
+        class="t-textfield"
         [pseudoFocused]="computedFocused"
         [pseudoHovered]="computedHovered"
         [invalid]="computedInvalid"
@@ -31,7 +31,7 @@
             *ngIf="showValueTemplate"
             polymorpheus-outlet
             automation-id="tui-combo-box__template"
-            class="value"
+            class="t-value"
             [content]="computedContent"
             [context]="{$implicit: value!, active: computedFocused}"
         ></div>

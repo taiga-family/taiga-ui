@@ -1,5 +1,5 @@
 <div
-    class="content"
+    class="t-content"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <ng-container *ngIf="sizeM; else smallButtons">
@@ -11,7 +11,7 @@
                 size="s"
                 appearance="flat"
                 icon="tuiIconChevronLeft"
-                class="button"
+                class="t-button"
                 [title]="texts[0]"
                 [disabled]="arrowIsDisabledLeft"
                 [focusable]="false"
@@ -27,7 +27,7 @@
                         automation-id="tui-pagination__element"
                         shape="square"
                         size="s"
-                        class="button"
+                        class="t-button"
                         [disabled]="disabled"
                         [focusable]="elementIsFocusable(index)"
                         [appearance]="getElementMode(index)"
@@ -50,7 +50,7 @@
                 size="s"
                 appearance="flat"
                 icon="tuiIconChevronRight"
-                class="button"
+                class="t-button"
                 [title]="texts[1]"
                 [disabled]="arrowIsDisabledRight"
                 [focusable]="false"
@@ -65,8 +65,8 @@
             tuiButton
             type="button"
             shape="square"
-            class="button button_small"
-            [class.button_active]="indexItem === index"
+            class="t-button t-button_small"
+            [class.t-button_active]="indexItem === index"
             [disabled]="disabled"
             [focusable]="elementIsFocusable(indexItem)"
             [appearance]="getSmallElementMode(indexItem, mode)"
@@ -78,7 +78,7 @@
     <ng-template #dotsTemplate>
         <div
             automation-id="tui-pagination__element"
-            class="dots"
+            class="t-dots"
         ></div>
     </ng-template>
 </div>

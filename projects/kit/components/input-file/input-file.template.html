@@ -1,8 +1,8 @@
 <tui-wrapper
     *ngIf="multiple || !value"
-    class="wrapper"
-    [class.wrapper_mobile]="isMobile"
-    [class.wrapper_has-files]="hasFiles"
+    class="t-wrapper"
+    [class.t-wrapper_mobile]="isMobile"
+    [class.t-wrapper_has-files]="hasFiles"
     [appearance]="getAppearance(mode$ | async)"
     [focused]="computedFocused"
     [hovered]="computedHovered || fileDragged"
@@ -17,7 +17,7 @@
         <a tuiLink>
             <span
                 polymorpheus-outlet
-                class="inline"
+                class="t-inline"
                 [content]="computedLink$ | async"
             ></span>
         </a>
@@ -25,7 +25,7 @@
             <span>&nbsp;</span>
             <span
                 polymorpheus-outlet
-                class="inline"
+                class="t-inline"
                 [content]="computedLabel"
             ></span>
         </ng-container>
@@ -35,7 +35,7 @@
                 #input
                 type="file"
                 tuiPreventDefault="mousedown"
-                class="native"
+                class="t-native"
                 [id]="id"
                 [accept]="accept"
                 [multiple]="multiple"
@@ -55,7 +55,7 @@
     *tuiLet="mode$ | async as mode"
     tuiGroup
     orientation="vertical"
-    class="files"
+    class="t-files"
     [collapsed]="true"
 >
     <tui-file

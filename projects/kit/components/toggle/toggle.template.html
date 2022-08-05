@@ -7,17 +7,17 @@
     [pressed]="computedPressed"
     [invalid]="computedInvalid"
 >
-    <div class="toggle">
+    <div class="t-toggle">
         <tui-loader
             *ngIf="showLoader"
-            class="loader"
+            class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="checked"
         ></tui-loader>
         <span
             polymorpheus-outlet
-            class="icon-wrapper"
+            class="t-icon-wrapper"
             [content]="iconOn"
             [context]="{$implicit: size}"
         >
@@ -25,22 +25,22 @@
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
                     automation-id="tui-toggle__check-icon"
-                    class="icon"
+                    class="t-icon"
                     [src]="icon"
                 ></tui-svg>
             </ng-template>
         </span>
-        <div class="circle"></div>
+        <div class="t-circle"></div>
         <tui-loader
             *ngIf="showLoader"
-            class="loader"
+            class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="!checked"
         ></tui-loader>
         <span
             polymorpheus-outlet
-            class="icon-wrapper"
+            class="t-icon-wrapper"
             [content]="iconOff"
             [context]="{$implicit: size}"
         >
@@ -48,7 +48,7 @@
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
                     automation-id="tui-toggle__cancel-icon"
-                    class="icon icon_off"
+                    class="t-icon t-icon_off"
                     [src]="icon"
                 ></tui-svg>
             </ng-template>
@@ -59,7 +59,7 @@
         type="checkbox"
         role="switch"
         automation-id="tui-toggle__checkbox"
-        class="checkbox"
+        class="t-checkbox"
         [attr.aria-checked]="value"
         [id]="id"
         [disabled]="disabled"

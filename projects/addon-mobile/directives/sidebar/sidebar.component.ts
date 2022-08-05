@@ -46,6 +46,10 @@ export class TuiSidebarComponent implements DoCheck {
     }
 
     @HostBinding(`class`)
+    get directionHostClass(): string {
+        return `t-${this.directive.direction}`;
+    }
+
     get direction(): TuiHorizontalDirection {
         return this.directive.direction;
     }

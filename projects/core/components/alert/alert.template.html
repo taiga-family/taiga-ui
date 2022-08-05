@@ -8,14 +8,14 @@
         *ngIf="item.label"
         polymorpheus-outlet
         automation-id="tui-notification-alert__heading"
-        class="heading"
+        class="t-heading"
         [content]="$any(item.label)"
         [context]="context"
     ></label>
     <div
         polymorpheus-outlet
         automation-id="tui-notification-alert__content"
-        class="content"
+        class="t-content"
         [content]="item.content"
         [context]="$any(context)"
     ></div>
@@ -29,14 +29,14 @@
             *ngIf="item.label"
             polymorpheus-outlet
             automation-id="tui-notification-alert__heading"
-            class="heading"
+            class="t-heading"
             [content]="$any(item.label)"
             [context]="context"
         ></label>
         <div
             polymorpheus-outlet
             automation-id="tui-notification-alert__content"
-            class="content"
+            class="t-content"
             [content]="item.content"
             [context]="$any(context)"
         ></div>

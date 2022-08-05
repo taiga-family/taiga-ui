@@ -12,7 +12,7 @@
     (dayClick)="onDayClick($event)"
 ></tui-primitive-calendar-range>
 <ng-template #presets>
-    <div class="wrapper">
+    <div class="t-wrapper">
         <tui-calendar
             automation-id="tui-calendar-range__calendar"
             tuiPreventDefault="mousedown"
@@ -27,7 +27,7 @@
         <tui-data-list
             role="menu"
             automation-id="tui-calendar-range__menu"
-            class="menu"
+            class="t-menu"
         >
             <button
                 *ngFor="let item of items | tuiMapper: mapper:min:max:minLength:(otherDateText$ | async)"
@@ -45,7 +45,7 @@
                     *ngIf="isItemActive(item)"
                     automation-id="tui-calendar-range__checkmark"
                     src="tuiIconCheck"
-                    class="checkmark"
+                    class="t-checkmark"
                 ></tui-svg>
             </button>
         </tui-data-list>

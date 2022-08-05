@@ -2,7 +2,7 @@
     *ngIf="spinTexts$ | async as texts"
     #wrapper
     tuiPreventDefault="mousedown"
-    class="wrapper"
+    class="t-wrapper"
     [tuiFocusable]="computedFocusable"
     (tuiFocusedChange)="onFocused($event)"
     (tuiFocusVisibleChange)="onFocusVisible($event)"
@@ -16,13 +16,13 @@
         appearance=""
         automation-id="tui-primitive-spin-button__left"
         icon="tuiIconChevronLeftLarge"
-        class="arrow"
-        [class.arrow_hidden]="leftComputedDisabled"
+        class="t-arrow"
+        [class.t-arrow_hidden]="leftComputedDisabled"
         [title]="texts[0]"
         [focusable]="false"
         (click)="onLeftClick()"
     ></button>
-    <span class="content">
+    <span class="t-content">
         <ng-content></ng-content>
     </span>
     <button
@@ -32,8 +32,8 @@
         appearance=""
         automation-id="tui-primitive-spin-button__right"
         icon="tuiIconChevronRightLarge"
-        class="arrow"
-        [class.arrow_hidden]="rightComputedDisabled"
+        class="t-arrow"
+        [class.t-arrow_hidden]="rightComputedDisabled"
         [title]="texts[1]"
         [focusable]="false"
         (click)="onRightClick()"

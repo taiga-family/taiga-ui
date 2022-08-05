@@ -50,7 +50,7 @@
     }
 }
 
-.track {
+.t-track {
     :host[data-size='s'] & {
         .track(@thumb-diameters[@s]);
     }
@@ -98,7 +98,7 @@
     }
 }
 
-.thumb {
+.t-thumb {
     .ignore-track-pointer-events();
     .remove-track-background();
     position: absolute;
@@ -130,7 +130,7 @@
 }
 
 // TODO delete in v3.0
-.segments {
+.t-segments {
     .fullsize(absolute, inset);
 
     :host[data-size='s'] & {
@@ -145,7 +145,7 @@
 }
 
 // TODO Use background-image with repeating-linear-gradient to make ticks
-.segment:not(:last-of-type):not(:first-of-type):before {
+.t-segment:not(:last-of-type):not(:first-of-type):before {
     content: '';
     position: absolute;
     left: 0;
@@ -157,18 +157,18 @@
 }
 
 // TODO delete in v3.0
-.segment {
-    &:last-of-type .number {
+.t-segment {
+    &:last-of-type .t-number {
         margin-right: (-@thumb-diameters[ @m] / 2);
     }
 
-    &:first-of-type .number {
+    &:first-of-type .t-number {
         margin-left: (-@thumb-diameters[ @m] / 2);
     }
 }
 
 // TODO delete in v3.0
-.number {
+.t-number {
     display: inline-block;
     margin-top: 0.5rem;
 }

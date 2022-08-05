@@ -1,5 +1,5 @@
 <label
-    class="wrapper"
+    class="t-wrapper"
     (tuiHoveredChange)="onHovered($event)"
     (tuiPressedChange)="onPressed($event)"
 >
@@ -18,8 +18,8 @@
         (focusedChange)="onFocused($event)"
     ></tui-checkbox>
     <div
-        class="content"
-        [class.content_disabled]="computedDisabled"
+        class="t-content"
+        [class.t-content_disabled]="computedDisabled"
     >
         <ng-content></ng-content>
     </div>
