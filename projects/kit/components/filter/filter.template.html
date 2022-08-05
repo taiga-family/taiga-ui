@@ -1,7 +1,7 @@
 <ng-container *ngFor="let item of items">
     <tui-checkbox-block
         automation-id="tui-filter__checkbox"
-        class="item"
+        class="t-item"
         [disabled]="disabledItemHandler(item)"
         [hideCheckbox]="true"
         [ngModel]="isCheckboxEnabled(item)"
@@ -10,7 +10,7 @@
     >
         <div
             automation-id="tui-filter__content"
-            class="content"
+            class="t-content"
         >
             <div
                 polymorpheus-outlet
@@ -21,8 +21,8 @@
                 *ngIf="badgeHandler(item) as badgeValue"
                 automation-id="tui-filter__badge"
                 tuiMode="onLight"
-                class="badge"
-                [class.badge_disabled]="disabledItemHandler(item)"
+                class="t-badge"
+                [class.t-badge_disabled]="disabledItemHandler(item)"
                 [size]="size"
                 [value]="badgeValue"
             ></tui-badge>

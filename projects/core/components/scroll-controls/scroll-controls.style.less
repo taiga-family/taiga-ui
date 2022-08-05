@@ -18,7 +18,7 @@
     pointer-events: none;
 }
 
-.bar {
+.t-bar {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -43,7 +43,7 @@
     }
 }
 
-.thumb {
+.t-thumb {
     .transition(all, 0.15s);
     position: absolute;
     border-radius: 6.25rem;
@@ -68,25 +68,25 @@
         background-color: var(--tui-text-01-night);
     }
 
-    .bar_vertical & {
+    .t-bar_vertical & {
         right: 0;
         width: @scroll-width;
         min-height: @scroll-min-size;
     }
 
-    .bar_vertical:hover &,
-    .bar_vertical &:active {
+    .t-bar_vertical:hover &,
+    .t-bar_vertical &:active {
         width: @scroll-width-large;
     }
 
-    .bar_horizontal & {
+    .t-bar_horizontal & {
         bottom: 0;
         height: @scroll-width;
         min-width: @scroll-min-size;
     }
 
-    .bar_horizontal:hover &,
-    .bar_horizontal &:active {
+    .t-bar_horizontal:hover &,
+    .t-bar_horizontal &:active {
         height: @scroll-width-large;
     }
 }

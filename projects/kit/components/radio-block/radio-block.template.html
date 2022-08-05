@@ -1,5 +1,5 @@
 <label
-    class="wrapper"
+    class="t-wrapper"
     (tuiHoveredChange)="onHovered($event)"
     (tuiPressedChange)="onPressed($event)"
 >
@@ -11,10 +11,10 @@
         [pressed]="computedPressed"
         [invalid]="computedInvalid"
     >
-        <div class="content-wrapper">
-            <div class="content">
+        <div class="t-content-wrapper">
+            <div class="t-content">
                 <tui-radio
-                    class="view"
+                    class="t-view"
                     [focusable]="focusable"
                     [identityMatcher]="identityMatcher"
                     [item]="item"
@@ -32,7 +32,7 @@
                     (focusedChange)="onFocused($event)"
                     (focusVisibleChange)="onFocusVisible($event)"
                 ></tui-radio>
-                <div class="label">
+                <div class="t-label">
                     <ng-content></ng-content>
                 </div>
             </div>

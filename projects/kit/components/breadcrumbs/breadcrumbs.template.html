@@ -4,7 +4,7 @@
             #rla="routerLinkActive"
             tuiLink
             tuiMode="onLight"
-            routerLinkActive="active-link"
+            routerLinkActive="t-active-link"
             [attr.tabindex]="rla.isActive ? -1 : null"
             [fragment]="options.fragment"
             [preserveFragment]="options.preserveFragment"
@@ -20,7 +20,7 @@
         <tui-svg
             *ngIf="!lastItem"
             src="tuiIconChevronRight"
-            class="icon"
+            class="t-icon"
         ></tui-svg>
     </ng-container>
 </ng-container>

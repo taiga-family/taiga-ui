@@ -6,7 +6,7 @@
     <a
         rel="noreferrer noopener"
         target="_blank"
-        class="link"
+        class="t-link"
         [href]="src"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     >
@@ -16,13 +16,13 @@
 
 <ng-template #fileInfoTemplate>
     <div
-        class="preview"
-        [class.preview_big]="isBig"
+        class="t-preview"
+        [class.t-preview_big]="isBig"
     >
         <img
             *ngIf="preview && (fileTexts$ | async) as texts; else loader"
             automation-id="tui-file__preview"
-            class="image"
+            class="t-image"
             [alt]="texts.preview"
             [src]="preview"
         />
@@ -30,38 +30,38 @@
             <tui-loader
                 *ngIf="isLoading; else svg"
                 automation-id="tui-file__loader"
-                class="loader"
+                class="t-loader"
                 [inheritColor]="isBig"
             ></tui-loader>
         </ng-template>
         <ng-template #svg>
             <tui-svg
                 automation-id="tui-file__icon"
-                class="icon"
-                [class.icon_deleted]="isDeleted"
-                [class.icon_error]="isError"
+                class="t-icon"
+                [class.t-icon_deleted]="isDeleted"
+                [class.t-icon_error]="isError"
                 [src]="icon"
             ></tui-svg>
         </ng-template>
     </div>
-    <div class="wrapper">
-        <div class="text">
+    <div class="t-wrapper">
+        <div class="t-text">
             <div
                 automation-id="tui-file__name"
-                class="name"
+                class="t-name"
             >
                 {{ name }}
             </div>
             <div
                 automation-id="tui-file__type"
-                class="type"
+                class="t-type"
             >
                 {{ type }}
             </div>
             <div
                 *ngIf="showSize && (fileSize$ | async) as fileSize"
                 automation-id="tui-file__size"
-                class="size"
+                class="t-size"
             >
                 {{ fileSize }}
             </div>
@@ -70,7 +70,7 @@
             *ngIf="content$ | async as content"
             polymorpheus-outlet
             automation-id="tui-file__content"
-            class="content"
+            class="t-content"
             [content]="content"
         ></div>
     </div>
@@ -83,9 +83,9 @@
             size="xs"
             icon="tuiIconCloseLarge"
             appearance="icon"
-            class="remove"
+            class="t-remove"
             [title]="texts.remove"
-            [class.remove_mobile]="isMobile"
+            [class.t-remove_mobile]="isMobile"
             (click.prevent)="onRemoveClick()"
         ></button>
     </ng-container>

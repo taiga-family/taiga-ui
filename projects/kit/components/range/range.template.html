@@ -1,11 +1,11 @@
-<div class="track">
+<div class="t-track">
     <input
         tuiSlider
         readonly
         type="range"
         step="any"
         automation-id="tui-range__left"
-        class="thumb"
+        class="t-thumb"
         [min]="min"
         [max]="max"
         [ngModel]="value[0]"
@@ -20,7 +20,7 @@
         type="range"
         step="any"
         automation-id="tui-range__right"
-        class="thumb"
+        class="t-thumb"
         [min]="min"
         [max]="max"
         [ngModel]="value[1]"
@@ -34,17 +34,17 @@
 <!-- TODO backward compatibility only (remove in v3.0) -->
 <div
     *ngIf="segments > 0"
-    class="segments"
+    class="t-segments"
 >
     <span
         *tuiRepeatTimes="let tickIndex of segments + 1"
         automation-id="tui-slider__segment"
-        class="segment"
+        class="t-segment"
     >
         <ng-container *ngIf="fromToTexts$ | async as fromToText">
             <span
                 *ngIf="!isNew"
-                class="number"
+                class="t-number"
             >
                 {{ getSegmentPrefix(tickIndex, fromToText) }}
                 {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | tuiFormatNumber }}

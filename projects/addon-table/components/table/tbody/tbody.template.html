@@ -1,23 +1,23 @@
 <ng-content></ng-content>
 <tr *ngIf="heading">
     <th
-        class="heading"
+        class="t-heading"
         [colSpan]="table.columns.length"
     >
         <button
             type="button"
-            class="expand"
+            class="t-expand"
             (click)="onClick()"
         >
             <span
                 polymorpheus-outlet
-                class="name"
+                class="t-name"
                 [content]="heading"
             ></span>
             <tui-svg
                 src="tuiIconChevronDownLarge"
-                class="chevron"
-                [class.chevron_rotated]="open"
+                class="t-chevron"
+                [class.t-chevron_rotated]="open"
             ></tui-svg>
         </button>
     </th>

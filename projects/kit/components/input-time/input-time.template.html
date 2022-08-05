@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="wrapper"
+    class="t-wrapper"
     [canOpen]="interactive && !!filtered.length"
     [content]="dropdownContent"
     [open]="interactive && open && !!filtered.length"
@@ -9,7 +9,7 @@
     <tui-primitive-textfield
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
-        class="textfield"
+        class="t-textfield"
         [filler]="(getFiller$(mode) | async) || ''"
         [nativeId]="nativeId"
         [pseudoFocused]="innerPseudoFocused"

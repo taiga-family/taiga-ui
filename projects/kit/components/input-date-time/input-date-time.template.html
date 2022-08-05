@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="interactive"
     [content]="dropdown"
     [open]="open && interactive"
@@ -9,7 +9,7 @@
         automation-id="tui-input-date-time__textfield"
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
-        class="textfield"
+        class="t-textfield"
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
@@ -33,7 +33,7 @@
 
     <ng-template #iconContent>
         <tui-svg
-            [class.icon]="!computedDisabled"
+            [class.t-icon]="!computedDisabled"
             [src]="calendarIcon"
         ></tui-svg>
     </ng-template>

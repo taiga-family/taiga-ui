@@ -1,6 +1,15 @@
 module.exports = {
     extends: ['@tinkoff/stylelint-config/less', '@tinkoff/stylelint-config/angular'],
-    ignoreFiles: ['**/demo/**', '**/dist/**', '**/coverage/**', '**/node_modules/**'],
+    ignoreFiles: [
+        '**/demo/**',
+        '**/dist/**',
+        '**/coverage/**',
+        '**/node_modules/**',
+
+        // TODO: remove in v3.0
+        '**/slider-old.style.less',
+        '**/slider.common.style.less',
+    ],
     rules: {
         'unit-allowed-list': [
             'px',
@@ -21,5 +30,6 @@ module.exports = {
                 ignoreFunctions: ['/fade/'],
             },
         ],
+        'selector-class-pattern': '^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$',
     },
 };

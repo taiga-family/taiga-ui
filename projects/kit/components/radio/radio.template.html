@@ -8,13 +8,13 @@
 >
     <div
         *ngIf="checked"
-        class="mark"
+        class="t-mark"
         [@tuiScaleIn]="animation"
     ></div>
     <input
         #focusableElement
         type="radio"
-        class="native"
+        class="t-native"
         [id]="id"
         [attr.name]="computedName"
         [disabled]="computedDisabled"
