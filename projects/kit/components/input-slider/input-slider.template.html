@@ -37,6 +37,6 @@
     [keySteps]="computeKeySteps(keySteps, min, max)"
     [attr.disabled]="readOnly || disabled || null"
     [ngModel]="value"
-    (keyStepsInput)="onSliderChange($event)"
+    (ngModelChange)="onSliderChange($event)"
     (click)="focusTextInput()"
 />
