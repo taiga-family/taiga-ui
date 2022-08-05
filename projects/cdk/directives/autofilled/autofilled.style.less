@@ -1,15 +1,13 @@
-.tui-autofill {
-    &,
-    input {
-        // @note: need for listen (transitionstart) event
-        // don't use more than one listener property
-        transition: box-shadow 0.01s;
+.tui-autofill input,
+input.tui-autofill {
+    // @note: need for listen (transitionstart) event
+    // don't use more than one listener property
+    transition: box-shadow 0.01s;
 
-        //noinspection CssInvalidPseudoSelector
-        &::-webkit-credit-card-auto-fill-button {
-            pointer-events: none;
-            background-color: transparent !important;
-            -webkit-mask-image: none !important;
-        }
+    //noinspection CssInvalidPseudoSelector
+    &::-webkit-credit-card-auto-fill-button {
+        pointer-events: none;
+        background-color: transparent !important;
+        -webkit-mask-image: none !important;
     }
 }

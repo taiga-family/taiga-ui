@@ -60,6 +60,7 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         `primary`,
         `accent`,
         `secondary`,
+        `secondary-destructive`,
         `outline`,
         `flat`,
         `whiteblock`,

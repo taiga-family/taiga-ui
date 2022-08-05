@@ -1,0 +1,29 @@
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='secondary-destructive'],
+[tuiWrapper][data-appearance='secondary-destructive'] {
+    background: var(--tui-error-bg);
+    color: var(--tui-negative);
+
+    &[data-mode='onDark'] {
+        background: var(--tui-error-bg-night);
+        color: var(--tui-negative-night);
+
+        .wrapper-hover({
+            background: var(--tui-error-bg-night-hover);
+        });
+
+        .wrapper-active({
+            background: var(--tui-error-bg-night-hover);
+        });
+    }
+
+    .wrapper-hover({
+        background: var(--tui-error-bg-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-error-bg-hover);
+    });
+}
