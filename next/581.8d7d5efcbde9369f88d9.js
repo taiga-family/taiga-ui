@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[581],{"2Pvg":function(t,o,n){"use strict";n.r(o),o.default='```html\n<form [formGroup]="testForm">\n  <tui-combo-box formControlName="testValue">\n    <tui-data-list-wrapper\n      *tuiDataList\n      [items]="items"\n    ></tui-data-list-wrapper>\n  </tui-combo-box>\n</form>\n```\n'}}]);

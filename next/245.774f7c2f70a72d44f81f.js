@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[245],{azMu:function(n,e,i){"use strict";i.r(e),e.default=".flag {\n    width: 1.75rem;\n    height: 1.25rem;\n    margin-right: 0.5rem;\n}\n"}}]);
