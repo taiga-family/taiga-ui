@@ -294,6 +294,6 @@ export const TEMPLATE_COMMENTS = [
         tag: 'tui-input-tag',
         withAttr: 'allowSpaces',
         comment:
-            'Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#forbid-spaces',
+            'Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags',
     },
 ] as const;

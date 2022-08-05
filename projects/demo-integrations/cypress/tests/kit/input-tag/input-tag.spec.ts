@@ -39,8 +39,8 @@ describe(`InputTag`, () => {
             });
     });
 
-    it(`allows to forbid spaces via property [separator]`, () => {
-        cy.get(`#forbid-spaces`)
+    it(`allows to forbid spaces inside tags via property [separator]`, () => {
+        cy.get(`#no-spaces-inside-tags`)
             .findByAutomationId(EXAMPLE_ID)
             .should(`be.visible`)
             .as(`wrapper`);
