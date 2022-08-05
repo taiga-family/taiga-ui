@@ -28,17 +28,12 @@ import {of} from 'rxjs';
 
 import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt.service';
 import {SEE_ALSO_GROUPS} from './app.const';
+import {TUI_DEFAULT_TABS} from './app.tabs';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
 
-export const DEFAULT_TABS = [
-    $localize`Description and examples`,
-    $localize`API`,
-    $localize`Setup`,
-    $localize`How to use`,
-];
 const TITLE_PREFIX = `Taiga UI: `;
 
 export const HIGHLIGHT_OPTIONS_VALUE = {
@@ -98,7 +93,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_DEFAULT_TABS,
-        useValue: DEFAULT_TABS,
+        useValue: TUI_DEFAULT_TABS,
     },
     {
         provide: TUI_DOC_LOGO,
