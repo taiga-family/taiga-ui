@@ -30,9 +30,16 @@ describe(`TuiKeySteps type`, () => {
     });
 
     describe(`Invalid cases`, () => {
+        it(`empty array`, () => {
+            // @ts-expect-error Source has 0 element(s) but target requires 2.
+            const keySteps: TuiKeySteps = [];
+
+            expect(keySteps).toBeDefined();
+        });
+
         it(`no minimum`, () => {
             const keySteps: TuiKeySteps = [
-                // @ts-expect-error
+                // @ts-expect-error TS2322: Type '25' is not assignable to type '0'.
                 [25, 10_000],
                 [50, 100_000],
                 [75, 500_000],
@@ -43,7 +50,7 @@ describe(`TuiKeySteps type`, () => {
         });
 
         it(`no maximum`, () => {
-            // @ts-expect-error
+            // @ts-expect-error Type '75' is not assignable to type '100'.
             const keySteps: TuiKeySteps = [
                 [0, 0],
                 [25, 10_000],
@@ -56,7 +63,7 @@ describe(`TuiKeySteps type`, () => {
 
         it(`no max and no min`, () => {
             const keySteps: TuiKeySteps = [
-                // @ts-expect-error
+                // @ts-expect-error TS2322: Type '25' is not assignable to type '0'.
                 [25, 10_000],
                 [50, 100_000],
                 [75, 500_000],
