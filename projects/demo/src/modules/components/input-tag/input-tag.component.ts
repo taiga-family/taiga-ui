@@ -60,6 +60,11 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
         LESS: import(`!!raw-loader!./examples/6/index.less`),
     };
 
+    readonly example7: TuiDocExample = {
+        TypeScript: import(`!!raw-loader!./examples/7/index.ts`),
+        HTML: import(`!!raw-loader!./examples/7/index.html`),
+    };
+
     readonly control = new FormControl(
         [`John Cleese`, `Eric Idle`, `Michael Palin`],
         Validators.required,
@@ -73,7 +78,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     uniqueTags = true;
 
-    readonly separatorVariants = [`,`, `;`, /[\d]/];
+    readonly separatorVariants = [`,`, `;`, /[\d]/, /[\s,]/];
 
     separator = this.separatorVariants[0];
 

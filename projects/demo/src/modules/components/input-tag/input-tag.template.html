@@ -65,6 +65,21 @@
         >
             <tui-input-tag-example-6></tui-input-tag-example-6>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="forbid-spaces"
+            i18n-heading
+            heading="Forbid spaces"
+            [content]="example7"
+            [description]="forbidSpacesDescription"
+        >
+            <ng-template #forbidSpacesDescription>
+                Use power of RegExp to forbid spaces via property
+                <code>[separator]</code>
+                .
+            </ng-template>
+            <tui-input-tag-example-7></tui-input-tag-example-7>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -133,9 +148,31 @@
                 documentationPropertyName="allowSpaces"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="allowSpaces"
             >
-                Allow spaces inside tag
+                Allow spaces inside tag.
+
+                <p>In next major release spaces are always allowed by default.</p>
+
+                <p>
+                    <strong>
+                        Use property
+                        <code>[separator]</code>
+                        to forbid spaces.
+                    </strong>
+                </p>
+                <p>
+                    See this
+                    <a
+                        tuiLink
+                        routerLink="/components/input-tag"
+                        fragment="forbid-spaces"
+                    >
+                        example
+                    </a>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n

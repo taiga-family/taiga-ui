@@ -24,6 +24,7 @@ import {TuiInputTagExample3} from './examples/3';
 import {TuiInputTagExample4} from './examples/4';
 import {TuiInputTagExample5} from './examples/5';
 import {TuiInputTagExample6} from './examples/6';
+import {TuiInputTagExample7} from './examples/7';
 import {ExampleTuiInputTagComponent} from './input-tag.component';
 
 @NgModule({
@@ -52,6 +53,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiInputTagExample4,
         TuiInputTagExample5,
         TuiInputTagExample6,
+        TuiInputTagExample7,
     ],
     exports: [ExampleTuiInputTagComponent],
 })

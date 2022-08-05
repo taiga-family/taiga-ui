@@ -38,4 +38,21 @@ describe(`InputTag`, () => {
                 cy.wrap($el).matchImageSnapshot(`01-night-mode-${index}`);
             });
     });
+
+    it(`allows to forbid spaces via property [separator]`, () => {
+        cy.get(`#forbid-spaces`)
+            .findByAutomationId(EXAMPLE_ID)
+            .should(`be.visible`)
+            .as(`wrapper`);
+
+        cy.get(`@wrapper`)
+            .tuiScrollIntoView()
+            .findByAutomationId(`tui-input-tag__native`)
+            .type(`taiga ui library `);
+
+        cy.get(`@wrapper`).find(`tui-tag`).should(`have.length`, 6);
+        cy.get(`@wrapper`)
+            .find(`tui-input-tag`)
+            .matchImageSnapshot(`04-input-tag-forbidden-spaces`, {padding: 5});
+    });
 });

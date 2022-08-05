@@ -290,4 +290,10 @@ export const TEMPLATE_COMMENTS = [
         comment:
             'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
     },
+    {
+        tag: 'tui-input-tag',
+        withAttr: 'allowSpaces',
+        comment:
+            'Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#forbid-spaces',
+    },
 ] as const;
