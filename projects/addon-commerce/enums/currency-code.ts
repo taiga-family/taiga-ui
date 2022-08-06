@@ -184,5 +184,13 @@ export const enum TuiCurrencyCode {
      * @description Countries and territories: Ukraine
      */
     Hryvnia = `980`,
+
+    /**
+     * Mexican peso
+     *
+     * @description Numeric code: 484
+     * @description Alphabetic code: MXN
+     * @description Countries and territories: Mexico
+     */
     MexicanPeso = `484`,
 }
