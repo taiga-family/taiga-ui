@@ -6,8 +6,11 @@ import {
     TuiLanguageName,
     TuiLanguageStorage,
 } from '@taiga-ui/i18n/interfaces';
-import {TUI_LANGUAGE_LOADER, TUI_LANGUAGE_STORAGE_KEY} from '@taiga-ui/i18n/tokens';
-import {TUI_DEFAULT_LANGUAGE} from '@taiga-ui/i18n/tools';
+import {
+    TUI_DEFAULT_LANGUAGE,
+    TUI_LANGUAGE_LOADER,
+    TUI_LANGUAGE_STORAGE_KEY,
+} from '@taiga-ui/i18n/tokens';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 
 import {tuiAsyncLoadLanguage} from './utils';
