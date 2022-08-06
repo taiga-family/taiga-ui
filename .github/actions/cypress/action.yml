@@ -21,6 +21,7 @@ runs:
         echo "_X11_NO_MITSHM=1" >> $GITHUB_ENV
         echo "_MITSHM=0" >> $GITHUB_ENV
         echo "DISPLAY=:99" >> $GITHUB_ENV
+        echo "SNAPSHOTS_KEY=e2e-screenshots-${GITHUB_REF//\//-}" >> $GITHUB_ENV
         echo "SNAPSHOTS_PATH=${{ inputs.snapshot-path }}" >> $GITHUB_ENV
         echo "CYPRESS_API_URL=${{ inputs.cypress-api-url }}" >> $GITHUB_ENV
 

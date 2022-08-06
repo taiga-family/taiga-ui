@@ -153,15 +153,15 @@ jobs:
           find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
           exit 1
 
-      - name: Upload artifact
+      - name: Update artifacts / ${{ env.SNAPSHOTS_KEY }}
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: screenshots-${{ matrix.specFolder }}
-          path: ${{ env.SNAPSHOTS_PATH }}
+          path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
+          name: ${{ env.SNAPSHOTS_KEY }}
           if-no-files-found: ignore
-          retention-days: 5
+          retention-days: 1
 
 concurrency:
-  group: demo-integrations-${{ github.workflow }}-${{ github.ref }}
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
