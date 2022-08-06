@@ -22,6 +22,16 @@ export const CHAR_EN_DASH = `\u2013`;
 export const CHAR_EM_DASH = `\u2014`;
 
 /**
+ * {@link https://unicode-table.com/en/00AB/ Left-Pointing Double Angle Quotation Mark}
+ */
+export const CHAR_LAQUO = `\u00AB`;
+
+/**
+ * {@link https://unicode-table.com/en/00BB/ Right-Pointing Double Angle Quotation Mark}
+ */
+export const CHAR_RAQUO = `\u00BB`;
+
+/**
  * {@link https://unicode-table.com/en/002D/ Hyphen (minus sign)}
  * is used to combine words.
  * @example well-behaved
