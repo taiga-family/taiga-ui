@@ -1,7 +1,6 @@
 import type {Provider} from '@angular/core';
 import {TuiLanguageLoader} from '@taiga-ui/i18n/interfaces';
-import {TUI_LANGUAGE_LOADER} from '@taiga-ui/i18n/tokens';
-import {TUI_LANGUAGE} from '@taiga-ui/i18n/tools';
+import {TUI_LANGUAGE, TUI_LANGUAGE_LOADER} from '@taiga-ui/i18n/tokens';
 
 import {TuiLanguageSwitcher} from './language-switcher.service';
 
