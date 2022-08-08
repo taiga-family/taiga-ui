@@ -453,10 +453,6 @@ describe(`TuiYear`, () => {
                 it(`TuiYear {year: 1900} if passed value was {year: -100}`, () => {
                     expect(y2000.append({year: -100}).year).toBe(1900);
                 });
-
-                it(`TuiYear {year: 1900} if passed value was {year: 100}, true`, () => {
-                    expect(y2000.append({year: 100}, true).year).toBe(1900);
-                });
             });
 
             describe(`valueOf returns`, () => {

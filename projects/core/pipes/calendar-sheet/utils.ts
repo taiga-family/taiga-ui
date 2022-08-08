@@ -7,11 +7,10 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 
-// TODO: 3.0 Remove export in ivy compilation
 /**
  * Computes day of week offset of the beginning of the month
  */
-export const getMonthStartDaysOffset = (
+const getMonthStartDaysOffset = (
     month: TuiMonth,
     firstDayOfWeek: TuiDayOfWeek,
 ): number => {
@@ -22,14 +21,6 @@ export const getMonthStartDaysOffset = (
         : DAYS_IN_WEEK - (firstDayOfWeek - startMonthOffsetFromSunday);
 };
 
-/*
-TODO: 3.0 delete:
- * TuiDay.getDayFromMonthRowCol
- * TuiMonth.monthStartDaysOffset
- * TuiMonth.weeksRowsCount
- * TuiYear.yearStartDaysOffset
- * TuiYear.getYearStartDaysOffset
- */
 /**
  * Calculated day on a calendar grid
  * @return resulting day on these coordinates (could exceed passed month)

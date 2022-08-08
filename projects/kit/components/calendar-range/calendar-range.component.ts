@@ -203,7 +203,10 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 return disabledItemHandler(item);
             }
 
-            const disabledBefore = value.from.append(minLength, true).append({day: 1});
+            const negativeMinLength = Object.fromEntries(
+                Object.entries(minLength).map(([key, value]) => [key, -value]),
+            );
+            const disabledBefore = value.from.append(negativeMinLength).append({day: 1});
             const disabledAfter = value.from.append(minLength).append({day: -1});
             const inDisabledRange =
                 disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
