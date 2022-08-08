@@ -2,20 +2,25 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
  * Formatting configuration for displayed numbers
- * decimalSeparator - example: 100,45 (',' by default)
- * thousandSeparator - example: 360 000 (' ' by default)
  */
 export interface TuiNumberFormatSettings {
     /**
-     * separator between the integer and the decimal part
+     * Number of digits of decimal part.
+     * @note Use `Infinity` to keep untouched.
+     */
+    readonly decimalLimit: number;
+    /**
+     * Separator between the integer and the decimal part.
+     * @example 0,42 (',' by default)
      */
     readonly decimalSeparator: TuiDecimalSymbol;
     /**
-     * separator between thousands
+     * Separator between thousands.
+     * @example 360 000 (' ' by default)
      */
     readonly thousandSeparator: string;
     /**
-     * enable zeros at the end of decimal part
+     * Enable zeros at the end of decimal part.
      */
     readonly zeroPadding: boolean;
 }

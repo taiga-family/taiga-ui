@@ -8,26 +8,23 @@ import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
  * padding decimal part with zeroes to given length
  *
  * @param value the input number
- * @param decimalLimit number of digits of decimal part, null to keep untouched
- * @param decimalSeparator See {@link TuiNumberFormatSettings}
- * @param thousandSeparator See {@link TuiNumberFormatSettings}
- * @param zeroPadding See {@link TuiNumberFormatSettings}
+ * @param options See {@link TuiNumberFormatSettings}
  * @return the formatted string
  */
 export function tuiFormatNumber(
     value: number,
     {
-        decimalLimit = null,
+        decimalLimit = Infinity,
         decimalSeparator = `,`,
         thousandSeparator = CHAR_NO_BREAK_SPACE,
         zeroPadding = true,
-    }: Partial<TuiNumberFormatSettings & {decimalLimit: number | null}> = {},
+    }: Partial<TuiNumberFormatSettings> = {},
 ): string {
     const integerPartString = String(Math.floor(Math.abs(value)));
 
     let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
 
-    if (decimalLimit !== null) {
+    if (Number.isFinite(decimalLimit)) {
         if (zeroPadding) {
             const zeroPaddingSize: number = Math.max(
                 decimalLimit - fractionPartPadded.length,

@@ -46,18 +46,18 @@
             <ng-template
                 i18n
                 documentationPropertyName="decimalLimit"
-                documentationPropertyType="number | null"
+                documentationPropertyType="number"
                 [documentationPropertyValues]="decimalLimitVariants"
                 [(documentationPropertyValue)]="decimalLimit"
             >
                 Digits after comma (use
-                <code>null</code>
+                <code>Infinity</code>
                 not to change)
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="decimalSeparator"
-                documentationPropertyType="string"
+                documentationPropertyType="TuiDecimalSymbol"
                 [documentationPropertyValues]="decimalSeparatorVariants"
                 [(documentationPropertyValue)]="decimalSeparator"
             >

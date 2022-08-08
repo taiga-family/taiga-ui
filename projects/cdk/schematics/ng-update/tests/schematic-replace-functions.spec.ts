@@ -22,16 +22,22 @@ import {
 
 tuiFormatNumber(1000);
 tuiFormatNumber(1.234, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: ' ', zeroPadding: true});
-tuiFormatNumber(123.45, {decimalLimit: 2, decimalSeparator: '.', thousandSeparator: ' ', zeroPadding: true});
-tuiFormatNumber(12345.67, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: true});
-tuiFormatNumber(27, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: false});
+tuiFormatNumber(123.45, {decimalLimit: 3, decimalSeparator: '.', thousandSeparator: ' ', zeroPadding: true});
+tuiFormatNumber(12345.67, {decimalLimit: 4, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: true});
+tuiFormatNumber(27, {decimalLimit: 5, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: false});
+
+const dynamicDecimalLimit = Math.random() > 0.5;
+const decimalSeparatorVariable = ',';
+const thousandSeparatorVariable = '_';
+const zeroPaddingVariable = false;
+tuiFormatNumber(42, {decimalLimit: dynamicDecimalLimit === null ? Infinity : dynamicDecimalLimit, decimalSeparator: decimalSeparatorVariable, thousandSeparator: thousandSeparatorVariable, zeroPadding: zeroPaddingVariable});
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent extends AbstractTuiController {
     some = number ?? 5;
 
     get formattedNumber(): number {
-        return tuiFormatNumber(Math.floor(rawNumber), {decimalLimit: null, decimalSeparator: this.numberFormat.decimalSeparator, thousandSeparator: this.numberFormat.thousandSeparator, zeroPadding: true});
+        return tuiFormatNumber(Math.floor(rawNumber), {decimalLimit: Infinity, decimalSeparator: this.numberFormat.decimalSeparator, thousandSeparator: this.numberFormat.thousandSeparator, zeroPadding: true});
     }
 
     method(): void {
@@ -65,9 +71,15 @@ import {
 
 tuiFormatNumber(1000);
 tuiFormatNumber(1.234, 2);
-tuiFormatNumber(123.45, 2, '.');
-tuiFormatNumber(12345.67, 2, ',', '.');
-tuiFormatNumber(27, 2, ',', '.', false);
+tuiFormatNumber(123.45, 3, '.');
+tuiFormatNumber(12345.67, 4, ',', '.');
+tuiFormatNumber(27, 5, ',', '.', false);
+
+const dynamicDecimalLimit = Math.random() > 0.5;
+const decimalSeparatorVariable = ',';
+const thousandSeparatorVariable = '_';
+const zeroPaddingVariable = false;
+tuiFormatNumber(42, dynamicDecimalLimit, decimalSeparatorVariable, thousandSeparatorVariable, zeroPaddingVariable);
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent extends AbstractTuiController {

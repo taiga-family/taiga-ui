@@ -116,14 +116,21 @@ function modifyFormatNumberArgs(): void {
             if (args.length > 1) {
                 const [
                     value,
-                    decimalLimit = null,
+                    decimalLimit = `Infinity`,
                     decimalSeparator = `','`,
                     thousandSeparator = `'\u00A0'`,
                     zeroPadding = true,
                 ] = args.map(arg => arg.getText());
+                const notNullDecimalLimit =
+                    decimalLimit === `null` ? `Infinity` : decimalLimit;
+                const conditionalDecimalLimit = !Number.isNaN(+notNullDecimalLimit)
+                    ? notNullDecimalLimit
+                    : `${decimalLimit} === null ? Infinity : ${decimalLimit}`;
+
+                debugger;
 
                 fn.replaceWithText(
-                    `tuiFormatNumber(${value}, {decimalLimit: ${decimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
+                    `tuiFormatNumber(${value}, {decimalLimit: ${conditionalDecimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
                 );
             }
         });

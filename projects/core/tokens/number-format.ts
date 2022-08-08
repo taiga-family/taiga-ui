@@ -9,6 +9,7 @@ export const TUI_NUMBER_FORMAT = new InjectionToken<TuiNumberFormatSettings>(
             decimalSeparator: `,`,
             thousandSeparator: CHAR_NO_BREAK_SPACE,
             zeroPadding: true,
+            decimalLimit: Infinity,
         }),
     },
 );

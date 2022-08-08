@@ -14,14 +14,14 @@ export class TuiFormatNumberPipe implements PipeTransform {
      * Formats number adding thousand separators and correct decimal separator
      * padding decimal part with zeroes to given length
      * @param value number
-     * @param decimalLimit – number of digits of decimal part, null to keep untouched
+     * @param decimalLimit – number of digits of decimal part, Infinity to keep untouched
      * @param decimalSeparator See {@link TuiNumberFormatSettings}
      * @param thousandSeparator See {@link TuiNumberFormatSettings}
      * @param zeroPadding See {@link TuiNumberFormatSettings}
      */
     transform(
         value: number,
-        decimalLimit: number | null = null,
+        decimalLimit: number = Infinity,
         decimalSeparator: TuiNumberFormatSettings['decimalSeparator'] = this.numberFormat
             .decimalSeparator,
         thousandSeparator: TuiNumberFormatSettings['thousandSeparator'] = this
