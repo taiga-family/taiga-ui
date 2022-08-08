@@ -64,6 +64,8 @@ describe(`Editing links in Editor`, () => {
         tuiGetEditLinkInput().type(`wysiwyg.com`);
         tuiGetEditLinkInput().type(`{enter}`);
 
+        tuiFocusToStartInEditor(); // clear hints
+
         tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
         tuiGetScreenshotArea().matchImageSnapshot(`3-1-before-remove-link`);
 
