@@ -143,20 +143,13 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably alters current month and year by passed offset
      *
      * @param offset
-     * @param backwards shift date backwards
      * @return new month and year object as a result of offsetting current
      */
-    append({year = 0, month = 0}: TuiMonthLike, backwards: boolean = false): TuiMonth {
-        if (backwards) {
-            year *= -1;
-            month *= -1;
-        }
-
+    append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
 
         return new TuiMonth(
