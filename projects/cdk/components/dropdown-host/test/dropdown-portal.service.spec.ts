@@ -1,11 +1,6 @@
-import {
-    ComponentFactory,
-    ComponentRef,
-    EmbeddedViewRef,
-    Injector,
-    TemplateRef,
-} from '@angular/core';
+import {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
 import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDropdownPortalService} from '../dropdown-portal.service';
 
@@ -38,11 +33,10 @@ describe(`PortalService`, () => {
 
     it(`throws an error with no host`, () => {
         let actual = ``;
-        const a: ComponentFactory<unknown> = null as unknown as ComponentFactory<unknown>;
-        const b: Injector = null as unknown as Injector;
+        const a = null as unknown as PolymorpheusComponent<unknown, any>;
 
         try {
-            service.add(a, b);
+            service.add(a);
         } catch (err) {
             actual = err.message;
         }
