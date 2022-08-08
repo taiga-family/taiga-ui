@@ -477,30 +477,21 @@
                     "ru": "projects/demo/src/locale/messages.ru.xlf"
                 }
             },
-            "implicitDependencies": [
-                "i18n",
-                "!testing",
-                "!cdk",
-                "!core",
-                "!icons",
-                "!kit",
-                "!addon-charts",
-                "!addon-commerce",
-                "!addon-doc",
-                "!addon-editor",
-                "!addon-mobile",
-                "!addon-preview",
-                "!addon-table",
-                "!addon-tablebars"
-            ],
+            "implicitDependencies": ["!testing"],
             "architect": {
+                "prebuild": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "nx build i18n"
+                    }
+                },
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "outputs": ["dist/demo"],
                     "dependsOn": [
                         {
-                            "target": "build",
-                            "projects": "dependencies"
+                            "target": "prebuild",
+                            "projects": "self"
                         }
                     ],
                     "options": {
@@ -636,8 +627,8 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "dependsOn": [
                         {
-                            "target": "build",
-                            "projects": "dependencies"
+                            "target": "prebuild",
+                            "projects": "self"
                         }
                     ],
                     "options": {

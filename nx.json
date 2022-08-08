@@ -17,8 +17,7 @@
             "runner": "@nrwl/nx-cloud",
             "options": {
                 "cacheableOperations": ["build", "test", "lint"],
-                "parallel": 1,
-                "runtimeCacheInputs": ["node -v", "tar cvf - ./projects/ | sha256sum"]
+                "parallel": 1
             }
         }
     },
