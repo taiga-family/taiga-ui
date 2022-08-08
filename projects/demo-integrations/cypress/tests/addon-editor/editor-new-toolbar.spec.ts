@@ -2,6 +2,7 @@ import {tuiGetDemoContent, tuiVisitEditorApiPage} from '../../support/editor/hel
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EDITOR_PAGE_URL,
+    PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
 } from '../../support/shared.entities';
 
@@ -49,7 +50,7 @@ describe(`Editor's toolbar`, () => {
             .tuiScrollIntoView()
             .as(`wrapper`);
 
-        cy.get(`@wrapper`).find(`[contenteditable]`).as(`input`);
+        cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`input`);
 
         cy.get(`.smiles`).should(`not.exist`);
         cy.get(`@input`).should(`not.be.focused`);
@@ -92,7 +93,7 @@ describe(`Editor's toolbar`, () => {
     it(`make a html table by 2x2`, () => {
         tuiGetDemoContent().as(`wrapper`);
 
-        cy.get(`@wrapper`).find(`[contenteditable]`).as(`input`);
+        cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`input`);
 
         cy.get(`@input`).type(`\n`).blur().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
@@ -123,7 +124,7 @@ describe(`Editor's toolbar`, () => {
 
     it(`set table without style inheritance`, () => {
         tuiGetDemoContent().as(`wrapper`);
-        cy.get(`@wrapper`).find(`[contenteditable]`).as(`input`);
+        cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`input`);
 
         cy.get(`@input`).type(`{selectall}{backspace}`).should(`be.visible`).blur();
 

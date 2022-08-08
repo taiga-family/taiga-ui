@@ -16,7 +16,10 @@ import {
     HTML_EDITOR_EXAMPLE_NESTED_UL,
     HTML_EDITOR_EXAMPLE_UL,
 } from '../../support/editor/html';
-import {WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
+import {
+    PROSE_MIRROR_EDITOR_SELECTOR,
+    WAIT_BEFORE_SCREENSHOT,
+} from '../../support/shared.entities';
 
 describe(`Editor API`, () => {
     describe(`Check fonts in light and dark mode`, () => {
@@ -94,7 +97,8 @@ describe(`Editor API`, () => {
         it(`emulate user toggling`, () => {
             tuiVisitEditorApiPage({content: ``});
             tuiGetDemoContent().as(`wrapper`);
-            cy.get(`@wrapper`).find(`[contenteditable]`).as(`editor`);
+
+            cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`editor`);
 
             toggleBullet(`tuiIconViewListLarge`);
 
@@ -131,7 +135,8 @@ describe(`Editor API`, () => {
         it(`nested`, () => {
             tuiVisitEditorApiPage({content: ``});
             tuiGetDemoContent().as(`wrapper`);
-            cy.get(`@wrapper`).find(`[contenteditable]`).as(`editor`);
+
+            cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`editor`);
 
             toggleBullet(`tuiIconViewListLarge`);
             cy.get(`@editor`).type(`1{enter}`);
