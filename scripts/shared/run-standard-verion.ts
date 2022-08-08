@@ -21,6 +21,6 @@ export function runStandardVersion(
             options,
         );
     } else {
-        execSync(`npm run release -- --release-as ${version}  ${dryRun}`, options);
+        execSync(`npm run release -- --release-as ${version} ${dryRun}`, options);
     }
 }
