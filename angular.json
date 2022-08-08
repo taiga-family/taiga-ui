@@ -34,7 +34,7 @@
                         "tsConfig": "projects/addon-charts/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-charts/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -76,7 +76,7 @@
                         "tsConfig": "projects/addon-commerce/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-commerce/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -118,7 +118,7 @@
                         "tsConfig": "projects/addon-doc/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-doc/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -167,7 +167,7 @@
                         "tsConfig": "projects/addon-editor/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-editor/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -209,7 +209,7 @@
                         "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-mobile/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -250,7 +250,7 @@
                         "tsConfig": "projects/addon-preview/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-preview/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -292,7 +292,7 @@
                         "tsConfig": "projects/addon-table/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-table/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -334,7 +334,7 @@
                         "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-tablebars/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },
@@ -521,7 +521,7 @@
                             "node_modules/prismjs/themes/prism-okaidia.css"
                         ],
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         },
                         "scripts": [
                             "node_modules/marked/lib/marked.js",
@@ -697,7 +697,7 @@
                         "main": "projects/demo/server.ts",
                         "tsConfig": "projects/demo/tsconfig.server.json",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     },
                     "configurations": {
@@ -733,7 +733,7 @@
                         "karmaConfig": "projects/demo/karma.conf.js",
                         "tsConfig": "projects/demo/tsconfig.spec.json",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 }
@@ -815,6 +815,28 @@
                 }
             }
         },
+        "styles": {
+            "root": "projects/styles",
+            "sourceRoot": "projects/styles",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/styles"],
+                    "options": {
+                        "tsConfig": "tsconfig.build.json",
+                        "project": "projects/styles/ng-package.json"
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm run exec -- ./scripts/publish.ts --path ./dist/styles"
+                    }
+                }
+            }
+        },
         "kit": {
             "root": "projects/kit",
             "sourceRoot": "projects/kit",
@@ -845,7 +867,7 @@
                         "tsConfig": "projects/kit/tsconfig.spec.json",
                         "karmaConfig": "projects/kit/karma.conf.js",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
+                            "includePaths": ["projects/styles"]
                         }
                     }
                 },

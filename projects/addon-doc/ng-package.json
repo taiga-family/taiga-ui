@@ -4,7 +4,7 @@
     "lib": {
         "entryFile": "src/public-api.ts",
         "styleIncludePaths": [
-            "../core/styles"
+            "../styles"
         ]
     },
     "whitelistedNonPeerDependencies": [

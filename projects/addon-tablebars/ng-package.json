@@ -4,7 +4,7 @@
     "lib": {
         "entryFile": "index.ts",
         "styleIncludePaths": [
-            "../core/styles"
+            "../styles"
         ]
     },
     "whitelistedNonPeerDependencies": [

@@ -1,0 +1,300 @@
+@mixin textfield-host() {
+    @include text-basic();
+    position: relative;
+    display: block;
+    border-radius: var(--tui-radius-m);
+
+    &[data-size='s'] {
+        height: var(--tui-height-s);
+        min-height: var(--tui-height-s);
+        max-height: var(--tui-height-s);
+    }
+
+    &[data-size='m'] {
+        height: var(--tui-height-m);
+        min-height: var(--tui-height-m);
+        max-height: var(--tui-height-m);
+    }
+
+    &[data-size='l'] {
+        height: var(--tui-height-l);
+        min-height: var(--tui-height-l);
+        max-height: var(--tui-height-l);
+        font-size: 15px;
+    }
+}
+
+@mixin textfield-content() {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+    align-items: center;
+    overflow: hidden;
+
+    :host[data-size='s'] & {
+        padding-right: 8px;
+    }
+
+    :host[data-size='l'] & {
+        padding-left: 16px;
+    }
+}
+
+@mixin textfield-input() {
+    @include text-basic();
+    @include clearinput();
+    @include fullsize();
+    padding: 0 12px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: inherit;
+
+    :host[data-size='s'] & {
+        padding: 0 8px 0 12px;
+    }
+
+    :host[data-size='l'] & {
+        padding: 0 16px;
+    }
+
+    :host._disabled & {
+        // $bad TODO: research why you can reach disabled textfield with mask inside a label without that
+        pointer-events: none;
+    }
+
+    :host[data-size='l']:not(._label-outside) & {
+        padding-top: 20px;
+
+        // Workaround for raising placeholder in temporary autofill
+        &:-webkit-autofill + .content .placeholder {
+            width: 114%; // compensation of scale(0.87)
+            transform: translateY(-10px) scale(0.87);
+        }
+    }
+
+    :host[data-size='m']:not(._label-outside) & {
+        padding-top: 18px;
+
+        // Workaround for raising placeholder in temporary autofill
+        &:-webkit-autofill + .content .placeholder {
+            width: 118%; // compensation of scale(0.85)
+            transform: translateY(-8px) scale(0.85);
+        }
+    }
+}
+
+@mixin textfield-wrapper() {
+    flex: 1;
+    min-width: 0;
+    padding-right: $space;
+}
+
+@mixin textfield-placeholder() {
+    @include transition('transform, min-width, color, letter-spacing');
+    @include text-basic();
+    @include text-overflow();
+    display: block;
+    width: 100%;
+    height: 20px;
+    font-size: 13px;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: none;
+    color: var(--tui-text-02);
+    transform-origin: left;
+    letter-spacing: normal;
+    text-transform: none;
+
+    &_raised {
+        width: 114%; // compensation of scale(0.87)
+        transform: translateY(-10px) scale(0.87);
+
+        :host[data-size='m'] & {
+            width: 118%;
+            transform: translateY(-8px) scale(0.85);
+            letter-spacing: 0.025rem;
+        }
+
+        :host._invalid:not(._focused) &,
+        :host._invalid:not(._focused):hover & {
+            color: var(--tui-error-fill);
+        }
+
+        :host[data-mode='onDark']._invalid:not(._focused) &,
+        :host[data-mode='onDark']._invalid:not(._focused):hover & {
+            color: var(--tui-error-fill-night);
+        }
+    }
+
+    :host._focused &,
+    :host[data-size='m']._focused._label-outside &,
+    :host[data-size='l']._focused._label-outside & {
+        color: var(--tui-text-03);
+    }
+
+    :host[data-size='l'] & {
+        font-size: 15px;
+    }
+
+    :host[data-size='m']._focused:not(._label-outside) &,
+    :host[data-size='l']._focused:not(._label-outside) & {
+        color: var(--tui-text-01);
+    }
+
+    /* stylelint-disable selector-max-specificity */
+    // textfield-light
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-02-night);
+    }
+
+    :host[data-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
+    :host[data-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
+        color: var(--tui-text-01-night);
+    }
+
+    :host[data-mode='onDark']._focused &,
+    :host[data-size='m'][data-mode='onDark']._focused._label-outside &,
+    :host[data-size='l'][data-mode='onDark']._focused._label-outside & {
+        color: var(--tui-text-02-night);
+    }
+    /* stylelint-enable selector-max-specificity */
+
+    @supports (-webkit-hyphens: none) {
+        & {
+            transition-property: transform, color, letter-spacing;
+        }
+    }
+}
+
+@mixin input-icon() {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    color: var(--tui-text-03);
+
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+@mixin icon-button() {
+    @include transition(all);
+    @include input-icon();
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition-property: color, transform;
+
+    &:hover {
+        color: var(--tui-text-02);
+    }
+
+    :host._readonly &,
+    :host._disabled & {
+        pointer-events: none;
+    }
+
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-03-night);
+
+        &:hover {
+            color: var(--tui-text-01-night);
+        }
+    }
+}
+
+@mixin example-text() {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    margin: -20px 0;
+    padding: 10px 0;
+    box-sizing: content-box;
+    color: var(--tui-text-03);
+    letter-spacing: normal;
+    text-transform: none;
+
+    :host[data-size='m']._label-outside & {
+        margin-top: -19px;
+    }
+
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+@mixin textfield() {
+    :host {
+        @include textfield-host();
+    }
+
+    .input {
+        @include textfield-input();
+    }
+
+    .ghost {
+        visibility: hidden;
+        white-space: pre;
+        text-overflow: clip;
+    }
+
+    .filler {
+        vertical-align: middle;
+    }
+
+    .content {
+        @include textfield-content();
+    }
+
+    .wrapper {
+        @include textfield-wrapper();
+    }
+
+    .value-decoration {
+        @include example-text();
+    }
+
+    .value-decoration-inner {
+        @include text-overflow();
+        min-width: 0;
+    }
+
+    .postfix {
+        @include transition('color');
+        color: var(--tui-text-01);
+
+        &_shifted {
+            margin-left: 0.5ch;
+        }
+
+        :host[data-mode='onDark'] & {
+            color: var(--tui-text-01-night);
+        }
+    }
+
+    .placeholder {
+        @include textfield-placeholder();
+    }
+
+    .cleaner {
+        @include icon-button();
+    }
+
+    // $bad TODO: Refactor this and interactive icons together
+    .icon {
+        @include input-icon();
+
+        &_left {
+            margin: 0 2 * $space 0 -$space;
+
+            :host[data-size='s'] & {
+                margin-right: $space;
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='icon'],
+[tuiWrapper][data-appearance='icon'] {
+    background: transparent;
+    color: var(--tui-base-06);
+
+    &[data-mode='onDark'] {
+        color: var(--tui-text-01-night);
+        opacity: var(--tui-disabled-opacity);
+
+        .wrapper-focus({
+            --tui-focus: var(--tui-base-01);
+        });
+
+        .wrapper-hover({
+            color: var(--tui-text-01-night);
+            opacity: 1;
+        });
+
+        .wrapper-active({
+            color: var(--tui-text-01-night);
+            opacity: 1;
+        });
+    }
+
+    &[data-mode='onLight'] {
+        color: var(--tui-text-01);
+        opacity: var(--tui-disabled-opacity);
+
+        .wrapper-hover({
+            color: var(--tui-text-01);
+            opacity: 1;
+        });
+
+        .wrapper-active({
+            color: var(--tui-text-01);
+            opacity: 1;
+        });
+    }
+
+    .wrapper-hover({
+        color: var(--tui-base-07);
+        opacity: 1;
+    });
+
+    .wrapper-active({
+        color: var(--tui-base-08);
+        opacity: 1;
+    });
+}

@@ -1,0 +1,29 @@
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='accent'],
+[tuiWrapper][data-appearance='accent'] {
+    background: var(--tui-accent);
+    color: var(--tui-accent-text);
+
+    .wrapper-hover({
+        background: var(--tui-accent-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-accent-active);
+    });
+
+    .wrapper-invalid({
+        color: var(--tui-negative-night);
+        background: var(--tui-error-bg);
+
+        .wrapper-hover({
+            background: var(--tui-error-bg-hover);
+        });
+
+        .wrapper-focus({
+            --tui-focus: var(--tui-error-fill);
+        });
+    });
+}

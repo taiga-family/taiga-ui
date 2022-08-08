@@ -1,0 +1,100 @@
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='textfield'],
+[tuiWrapper][data-appearance='textfield'] {
+    .transition(~'box-shadow, background');
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+
+    &[data-appearance='textfield']:after {
+        .transition(color);
+        color: var(--tui-base-03);
+    }
+
+    .wrapper-hover({
+        box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+    });
+
+    .wrapper-focus({
+        box-shadow: none;
+
+        --tui-focus: var(--tui-primary);
+    });
+
+    .wrapper-readonly({
+        box-shadow: none;
+
+        &:after {
+            color: var(--tui-base-04);
+        }
+    });
+
+    .wrapper-disabled({
+        box-shadow: none;
+    });
+
+    .wrapper-invalid({
+        --tui-focus: var(--tui-error-fill-night);
+    });
+}
+
+tui-wrapper[data-appearance='textfield'][data-mode='onDark'],
+[tuiWrapper][data-appearance='textfield'][data-mode='onDark'] {
+    background: var(--tui-clear-inverse);
+    color: var(--tui-text-01-night);
+
+    &:after {
+        color: var(--tui-text-03-night);
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    .wrapper-hover({
+        background: var(--tui-clear-inverse-hover);
+    });
+
+    .wrapper-readonly({
+        background: transparent;
+    });
+
+    .wrapper-focus({
+        background: rgba(255, 255, 255, 0.08);
+
+        --tui-focus: var(--tui-primary);
+
+        &:after {
+            transition: none;
+            opacity: 1;
+        }
+    });
+
+    .wrapper-invalid({
+        --tui-focus: var(--tui-error-fill-night);
+    });
+}
+
+tui-wrapper[data-appearance='textfield'][data-mode='onLight'],
+[tuiWrapper][data-appearance='textfield'][data-mode='onLight'] {
+    background: var(--tui-clear);
+
+    .wrapper-hover({
+        background: var(--tui-clear-hover);
+    });
+
+    .wrapper-readonly({
+        background: transparent;
+    });
+
+    .wrapper-invalid({
+        &:after {
+            color: var(--tui-error-fill);
+        }
+    });
+
+    .wrapper-focus({
+        background: transparent;
+
+        --tui-focus: var(--tui-text-01);
+    });
+}

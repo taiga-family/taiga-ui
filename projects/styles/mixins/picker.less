@@ -1,0 +1,164 @@
+.picker(@itemSize) {
+    :host {
+        display: block;
+        font: var(--tui-font-text-m);
+    }
+
+    .t-row {
+        .createStackingContext();
+        display: flex;
+        justify-content: space-between;
+        height: 2.25rem;
+    }
+
+    .t-item {
+        position: relative;
+        flex: 1;
+        line-height: 2rem;
+        border-radius: var(--tui-radius-m);
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: var(--tui-radius-m);
+        }
+    }
+
+    .t-cell {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: @itemSize;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        background-clip: content-box;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: var(--tui-radius-m);
+        }
+
+        &_today:after {
+            .center-left();
+            content: '';
+            bottom: 0.3125rem;
+            height: 0.125rem;
+            width: 0.75rem;
+            border-radius: 0.375rem;
+            background-color: var(--tui-text-02);
+        }
+
+        &_interval {
+            &:before {
+                background: var(--tui-base-02);
+
+                :host._single & {
+                    background: var(--tui-secondary-hover);
+                }
+            }
+
+            &:not(:last-child):before {
+                right: -@itemSize;
+            }
+
+            &:last-child:first-child:before {
+                right: 0;
+            }
+
+            &:first-child > .t-item {
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
+            }
+
+            &:last-child > .t-item {
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
+            }
+
+            & > .t-item {
+                border-radius: 0;
+            }
+        }
+
+        &[data-range] {
+            &:after {
+                background-color: var(--tui-primary-text);
+            }
+
+            & > .t-item {
+                color: var(--tui-primary-text);
+
+                &:before,
+                &:after {
+                    background-color: var(--tui-primary);
+                }
+            }
+
+            &[data-state='hovered'] > .t-item:before,
+            &[data-state='hovered'] > .t-item:after {
+                background-color: var(--tui-primary-hover);
+            }
+
+            &[data-state='pressed'] > .t-item:before,
+            &[data-state='pressed'] > .t-item:after {
+                background-color: var(--tui-primary-active);
+            }
+        }
+
+        &[data-range='end'] > .t-item {
+            &:before {
+                left: 0.25rem;
+            }
+
+            &:after {
+                left: -2rem;
+                right: 100%;
+                transform: translateX(1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
+            }
+        }
+
+        &[data-range='start'] > .t-item {
+            &:before {
+                right: 0.25rem;
+            }
+
+            &:after {
+                left: 100%;
+                right: -2rem;
+                transform: translateX(-1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
+            }
+        }
+
+        &[data-state='disabled'] {
+            pointer-events: none;
+
+            & > .t-item {
+                opacity: 0.36;
+            }
+        }
+
+        &[data-state='hovered']:hover:not([data-range]) > .t-item {
+            background-color: var(--tui-secondary-hover);
+        }
+
+        &[data-state='pressed']:hover:not([data-range]) > .t-item {
+            background-color: var(--tui-secondary-active);
+        }
+    }
+}

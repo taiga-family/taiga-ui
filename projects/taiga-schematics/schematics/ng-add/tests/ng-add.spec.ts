@@ -110,8 +110,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
+              "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less"
             ],
             "assets": [
               {
@@ -147,8 +147,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
               "some.style"
             ],
             "assets": [
@@ -227,7 +227,7 @@ function createAngularJson(
             ${
                 stylesExist
                     ? `"styles": [
-                  "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+                  "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
                   "some.style"
                 ]
                 `

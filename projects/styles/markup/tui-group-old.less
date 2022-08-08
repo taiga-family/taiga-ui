@@ -1,0 +1,322 @@
+.tui-group {
+    .createStackingContext();
+    display: flex;
+
+    & > * {
+        flex: 1 1 0;
+        min-width: 0;
+
+        &:nth-child(n) {
+            border-radius: 0;
+        }
+
+        &:not(:last-child) {
+            margin-right: (@space / 2);
+        }
+    }
+
+    /* stylelint-disable */
+    &_collapsed {
+        & > * {
+            z-index: 1;
+
+            &:not(:last-child) {
+                margin-right: -0.0625rem;
+            }
+
+            &._readonly,
+            &._disabled,
+            &._readonly:hover,
+            &._disabled:hover {
+                z-index: 0;
+            }
+
+            &:hover,
+            &._hovered,
+            &._pressed {
+                z-index: 3;
+            }
+
+            &._invalid {
+                z-index: 2;
+
+                &:hover,
+                &._hovered,
+                &._pressed {
+                    z-index: 4;
+                }
+            }
+
+            // @bad TODO: remove "touched" and "focus-visible"
+            &._hosted_dropdown_focused,
+            &._focus-visible,
+            &._focused.ng-touched,
+            &._focused.ng-untouched {
+                z-index: 5;
+            }
+
+            &._active,
+            &[data-appearance='whiteblock-active'] {
+                z-index: 6;
+            }
+
+            &._focus-visible {
+                &._focused,
+                &._active,
+                &[data-appearance='whiteblock-active'] {
+                    z-index: 7;
+                }
+            }
+        }
+    }
+
+    &_orientation_vertical {
+        display: inline-flex;
+        flex-direction: column;
+
+        & > * {
+            min-height: auto;
+            flex: 0 0 auto;
+
+            &:not(:last-child) {
+                margin-right: 0;
+                margin-bottom: (@space / 2);
+            }
+        }
+
+        &.tui-group_collapsed {
+            & > * {
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: -0.0625rem;
+                }
+            }
+        }
+    }
+
+    &_rounded.tui-group_orientation_horizontal {
+        & > * {
+            &:first-child {
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
+            }
+
+            &:last-child {
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
+            }
+        }
+    }
+
+    &_rounded.tui-group_orientation_horizontal.tui-group_radius_large {
+        & > * {
+            &:first-child {
+                border-top-left-radius: var(--tui-radius-l);
+                border-bottom-left-radius: var(--tui-radius-l);
+            }
+
+            &:last-child {
+                border-top-right-radius: var(--tui-radius-l);
+                border-bottom-right-radius: var(--tui-radius-l);
+            }
+        }
+    }
+
+    &_rounded.tui-group_orientation_vertical {
+        & > * {
+            &:first-child {
+                border-top-left-radius: var(--tui-radius-m);
+                border-top-right-radius: var(--tui-radius-m);
+            }
+
+            &:last-child {
+                border-bottom-left-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
+            }
+        }
+    }
+
+    &_rounded.tui-group_orientation_vertical.tui-group_radius_large {
+        & > * {
+            &:first-child {
+                border-top-left-radius: var(--tui-radius-l);
+                border-top-right-radius: var(--tui-radius-l);
+            }
+
+            &:last-child {
+                border-bottom-left-radius: var(--tui-radius-l);
+                border-bottom-right-radius: var(--tui-radius-l);
+            }
+        }
+    }
+
+    &_rounded.tui-group_adaptive {
+        &.tui-group_orientation_vertical:not(.tui-group_collapsed),
+        &.tui-group_orientation_horizontal {
+            & > * {
+                @media @mobile {
+                    &:first-child:not(:last-child),
+                    &:last-child:not(:first-child) {
+                        border-radius: var(--tui-radius-m);
+                    }
+                }
+            }
+        }
+    }
+
+    &_rounded.tui-group_adaptive.tui-group_radius_large {
+        &.tui-group_orientation_vertical:not(.tui-group_collapsed),
+        &.tui-group_orientation_horizontal {
+            & > * {
+                @media @mobile {
+                    &:first-child:not(:last-child),
+                    &:last-child:not(:first-child) {
+                        border-radius: var(--tui-radius-l);
+                    }
+                }
+            }
+        }
+    }
+
+    &_adaptive {
+        &.tui-group_orientation_vertical {
+            @media @mobile {
+                width: 100%;
+
+                & > * {
+                    &:nth-child(n):not(:only-child) {
+                        border-radius: var(--tui-radius-m);
+                    }
+
+                    &:not(:last-child) {
+                        margin-bottom: @space * 4;
+                    }
+                }
+
+                &.tui-group_collapsed {
+                    & > * {
+                        &:nth-child(n):not(:only-child) {
+                            border-radius: 0;
+                        }
+
+                        &:first-child:not(:last-child) {
+                            border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
+                        }
+
+                        &:last-child:not(:first-child) {
+                            border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
+                        }
+
+                        &:not(:last-child) {
+                            margin-bottom: -0.0625rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.tui-group_orientation_horizontal {
+            @media @mobile {
+                flex-direction: column;
+                width: 100%;
+
+                & > * {
+                    &:nth-child(n):not(:only-child) {
+                        border-radius: var(--tui-radius-m);
+                    }
+
+                    &:not(:last-child) {
+                        margin-right: 0;
+                        margin-bottom: @space * 4;
+                    }
+                }
+
+                &.tui-group_collapsed {
+                    & > * {
+                        &:nth-child(n):not(:only-child) {
+                            border-radius: 0;
+                        }
+
+                        &:first-child:not(:last-child) {
+                            border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
+                        }
+
+                        &:last-child:not(:first-child) {
+                            border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
+                        }
+
+                        &:not(:last-child) {
+                            margin-right: 0;
+                            margin-bottom: -0.0625rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &_adaptive.tui-group_radius_large {
+        &.tui-group_orientation_vertical {
+            @media @mobile {
+                & > * {
+                    &:nth-child(n):not(:only-child) {
+                        border-radius: var(--tui-radius-l);
+                    }
+                }
+
+                &.tui-group_collapsed {
+                    & > * {
+                        &:nth-child(n):not(:only-child) {
+                            border-radius: 0;
+                        }
+
+                        &:first-child:not(:last-child) {
+                            border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+                        }
+
+                        &:last-child:not(:first-child) {
+                            border-radius: 0 0 var(--tui-radius-l) var(--tui-radius-l);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.tui-group_orientation_horizontal {
+            @media @mobile {
+                & > * {
+                    &:nth-child(n):not(:only-child) {
+                        border-radius: var(--tui-radius-l);
+                    }
+                }
+
+                &.tui-group_collapsed {
+                    & > * {
+                        &:nth-child(n):not(:only-child) {
+                            border-radius: 0;
+                        }
+
+                        &:first-child:not(:last-child) {
+                            border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+                        }
+
+                        &:last-child:not(:first-child) {
+                            border-radius: 0 0 var(--tui-radius-l) var(--tui-radius-l);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* stylelint-enable */
+
+    &__auto-width-item {
+        min-width: auto;
+        flex: 0 0 auto;
+    }
+
+    // specificity is the reason of this selector
+    & .tui-group__inherit-item {
+        border-radius: inherit;
+    }
+}
