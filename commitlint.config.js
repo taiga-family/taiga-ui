@@ -1,14 +1,20 @@
 module.exports = {
     extends: ['@commitlint/config-conventional'],
     rules: {
-        'type-enum': async () =>
-            import('@commitlint/config-conventional')
-                .then(m => m.default)
-                .then(({rules}) => {
-                    // https://commitlint.js.org/#/reference-rules?id=rules
-                    const [level, applicable, types] = rules['type-enum'];
+        'scope-enum': () => {
+            const {readdirSync, statSync} = require('fs');
+            const dir = 'projects';
+            const projectsNames = readdirSync(dir).filter(entity =>
+                statSync(`${dir}/${entity}`).isDirectory(),
+            );
 
-                    return [level, applicable, [...types, 'deprecate']];
-                }),
+            return [2, 'always', projectsNames];
+        },
+        'type-enum': () => {
+            const [level, applicable, types] = require('@commitlint/config-conventional')
+                .rules['type-enum'];
+
+            return [level, applicable, [...types, 'deprecate']];
+        },
     },
 };
