@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[558],{R7JH:function(n,o,i){"use strict";i.r(o),o.default="```ts\nimport {TuiColorPickerModule} from '@taiga-ui/addon-editor';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiColorPickerModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

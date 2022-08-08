@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[331],{Kf7d:function(n,e,w){"use strict";w.r(e),e.default=".axes {\n    height: 18.75rem;\n    width: 37.5rem;\n}\n"}}]);
