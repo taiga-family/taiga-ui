@@ -143,6 +143,20 @@
         "scripts": {
             "postchangelog": "npm run exec -- ./scripts/postchangelog.ts",
             "postbump": "npm run exec -- ./scripts/postbump.ts"
-        }
+        },
+        "types": [
+            {
+                "type": "feat",
+                "section": "Features"
+            },
+            {
+                "type": "fix",
+                "section": "Bug Fixes"
+            },
+            {
+                "type": "deprecate",
+                "section": "Deprecations"
+            }
+        ]
     }
 }
