@@ -1,6 +1,5 @@
 import {
     AfterViewChecked,
-    ComponentFactoryResolver,
     Directive,
     ElementRef,
     forwardRef,
@@ -39,8 +38,6 @@ export class TuiDropdownDirective
     }
 
     constructor(
-        @Inject(ComponentFactoryResolver)
-        componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
         @Inject(TuiDropdownPortalService)
         portalService: TuiDropdownPortalService,
@@ -50,6 +47,6 @@ export class TuiDropdownDirective
         activeZone: TuiActiveZoneDirective | null,
         @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
     ) {
-        super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+        super(injector, portalService, elementRef, activeZone);
     }
 }
