@@ -1,6 +1,5 @@
 import {
     AfterViewChecked,
-    ComponentFactoryResolver,
     ComponentRef,
     Directive,
     ElementRef,
@@ -24,7 +23,7 @@ import {
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 // @bad TODO: Possibly refactor to make more abstract
@@ -33,6 +32,11 @@ export abstract class AbstractTuiDropdown
     implements TuiDropdown, AfterViewChecked, OnDestroy
 {
     abstract refresh$: Observable<unknown>;
+
+    private readonly component = new PolymorpheusComponent(
+        TuiDropdownBoxComponent,
+        this.injector,
+    );
 
     @Input(`tuiDropdownContent`)
     @tuiDefaultProp()
@@ -69,7 +73,6 @@ export abstract class AbstractTuiDropdown
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 
     protected constructor(
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
         private readonly injector: Injector,
         private readonly portalService: TuiDropdownPortalService,
         protected readonly elementRef: ElementRef<HTMLElement>,
@@ -115,11 +118,7 @@ export abstract class AbstractTuiDropdown
             return;
         }
 
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-            TuiDropdownBoxComponent,
-        );
-
-        this.dropdownBoxRef = this.portalService.add(componentFactory, this.injector);
+        this.dropdownBoxRef = this.portalService.add(this.component);
         this.dropdownBoxRef.changeDetectorRef.detectChanges();
     }
 
