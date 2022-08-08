@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    ComponentFactoryResolver,
     Directive,
     ElementRef,
     forwardRef,
@@ -53,13 +52,11 @@ export class TuiDropdownContextDirective
         protected readonly elementRef: ElementRef,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(ComponentFactoryResolver)
-        componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
         @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService,
         readonly activeZone: TuiActiveZoneDirective,
     ) {
-        super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+        super(injector, portalService, elementRef, activeZone);
 
         activeZone.tuiActiveZoneChange
             .pipe(

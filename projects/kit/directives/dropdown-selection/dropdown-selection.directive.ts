@@ -1,7 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectorRef,
-    ComponentFactoryResolver,
     Directive,
     ElementRef,
     forwardRef,
@@ -79,8 +78,6 @@ export class TuiDropdownSelectionDirective
 
     constructor(
         @Inject(DOCUMENT) documentRef: Document,
-        @Inject(ComponentFactoryResolver)
-        componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
         @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService,
         @Host() @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
@@ -101,13 +98,7 @@ export class TuiDropdownSelectionDirective
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ViewContainerRef) private readonly viewContainerRef: ViewContainerRef,
     ) {
-        super(
-            componentFactoryResolver,
-            injector,
-            portalService,
-            customElementRef || elementRef,
-            activeZone,
-        );
+        super(injector, portalService, customElementRef || elementRef, activeZone);
         this.documentRef = shadowRootRef || documentRef;
 
         // TODO: make better SSR protection
