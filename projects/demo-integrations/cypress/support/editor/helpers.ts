@@ -29,14 +29,9 @@ export function tuiClearEditor(): void {
 }
 
 export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): void {
-    /**
-     * Clicking anywhere on a contenteditable box
-     * always places the caret at the end of the word.
-     * bug: https://github.com/cypress-io/cypress/issues/5721
-     */
     tuiGetContentEditable()
         .find(`a[href="${containHref}"]`)
-        .click()
+        .type(`{leftArrow}`)
         .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 }
 
