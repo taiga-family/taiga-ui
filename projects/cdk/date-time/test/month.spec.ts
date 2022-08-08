@@ -486,13 +486,6 @@ describe(`TuiMonth`, () => {
                     expect(result.month).toBe(6);
                 });
 
-                it(`TuiMonth {year: 1999 month: 6} if passed value was {year: 1}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({year: 1}, true);
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(6);
-                });
-
                 it(`TuiMonth {year: 2001, month: 6} if passed value was {month: 12}`, () => {
                     const result: TuiMonth = y2000m6.append({month: 12});
 
@@ -502,13 +495,6 @@ describe(`TuiMonth`, () => {
 
                 it(`TuiMonth {year: 1999, month: 6} if passed value was {month: -12}`, () => {
                     const result: TuiMonth = y2000m6.append({month: -12});
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(6);
-                });
-
-                it(`TuiMonth {year: 1999, month: 6} if passed value was {month: 12}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({month: 12}, true);
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(6);
@@ -529,13 +515,6 @@ describe(`TuiMonth`, () => {
                         year: -1,
                         month: -1,
                     });
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(5);
-                });
-
-                it(`TuiMonth {year: 1999, month: 5} if passed value was {year: 1, month: 1}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({year: 1, month: 1}, true);
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(5);

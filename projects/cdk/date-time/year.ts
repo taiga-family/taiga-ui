@@ -99,16 +99,11 @@ export class TuiYear implements TuiYearLike {
         return this.year > year;
     }
 
-    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably offsets year
      */
-    append({year = 0}: TuiYearLike, backwards: boolean = false): TuiYear {
+    append({year = 0}: TuiYearLike): TuiYear {
         tuiAssert.assert(Number.isInteger(year));
-
-        if (backwards) {
-            year *= -1;
-        }
 
         const resultYear = this.year + year;
 
