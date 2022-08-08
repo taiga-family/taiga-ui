@@ -17,10 +17,6 @@ export class TuiProjectClassDirective implements AfterViewChecked {
     ) {}
 
     ngAfterViewChecked(): void {
-        if (!this.classNames.length) {
-            return;
-        }
-
         this.classNames.forEach(className => {
             const hostElement = this.elementRef.nativeElement;
 
