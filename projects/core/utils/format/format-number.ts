@@ -1,25 +1,27 @@
 import {CHAR_HYPHEN, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
 import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 
-// TODO: refactor later to `formatNumber(value: number, options: Partial<AllTheStuff>)`
 /**
  * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
  * @param value the input number
  * @param decimalLimit number of digits of decimal part, null to keep untouched
- * @param decimalSeparator separator between the integer and the decimal part
- * @param thousandSeparator separator between thousands
- * @param zeroPadding enable zeros at the end of decimal part
+ * @param decimalSeparator See {@link TuiNumberFormatSettings}
+ * @param thousandSeparator See {@link TuiNumberFormatSettings}
+ * @param zeroPadding See {@link TuiNumberFormatSettings}
  * @return the formatted string
  */
 export function tuiFormatNumber(
     value: number,
-    decimalLimit: number | null = null,
-    decimalSeparator: string = `,`,
-    thousandSeparator: string = CHAR_NO_BREAK_SPACE,
-    zeroPadding: boolean = true,
+    {
+        decimalLimit = null,
+        decimalSeparator = `,`,
+        thousandSeparator = CHAR_NO_BREAK_SPACE,
+        zeroPadding = true,
+    }: Partial<TuiNumberFormatSettings & {decimalLimit: number | null}> = {},
 ): string {
     const integerPartString = String(Math.floor(Math.abs(value)));
 

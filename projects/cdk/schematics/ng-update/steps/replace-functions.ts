@@ -17,6 +17,7 @@ export function replaceFunctions() {
     replaceFallbackValue(getNamedImportReferences('fallbackValue', '@taiga-ui/cdk'));
     replaceCustomEvent(getNamedImportReferences('tuiCustomEvent', '@taiga-ui/cdk'));
     replaceClosestElement(getNamedImportReferences('getClosestElement', '@taiga-ui/cdk'));
+    modifyFormatNumberArgs();
     replaceDeprecatedFunction();
 
     successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
@@ -100,4 +101,30 @@ function replaceFallbackValue(references: Node[]) {
             parent.replaceWithText(`${firstArg.getText()} ?? ${secondArg.getText()}`);
         }
     });
+}
+
+function modifyFormatNumberArgs(): void {
+    [
+        ...getNamedImportReferences('formatNumber', '@taiga-ui/core'),
+        ...getNamedImportReferences('tuiFormatNumber', '@taiga-ui/core'),
+    ]
+        .map(ref => ref.getParent())
+        .filter(Node.isCallExpression)
+        .forEach(fn => {
+            const args = fn.getArguments();
+
+            if (args.length > 1) {
+                const [
+                    value,
+                    decimalLimit = null,
+                    decimalSeparator = `','`,
+                    thousandSeparator = `'\u00A0'`,
+                    zeroPadding = true,
+                ] = args.map(arg => arg.getText());
+
+                fn.replaceWithText(
+                    `tuiFormatNumber(${value}, {decimalLimit: ${decimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
+                );
+            }
+        });
 }
