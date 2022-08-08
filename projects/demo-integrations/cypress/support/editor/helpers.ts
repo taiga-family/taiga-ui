@@ -1,6 +1,7 @@
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EDITOR_PAGE_URL,
+    PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
 } from '../shared.entities';
 import {HTML_EDITOR_BASIC_EXAMPLE} from './html';
@@ -79,7 +80,7 @@ export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
 }
 
 export function tuiGetContentEditable(): Cypress.Chainable<JQuery> {
-    return tuiGetDemoContent().find(`[contenteditable]`);
+    return tuiGetDemoContent().find(PROSE_MIRROR_EDITOR_SELECTOR);
 }
 
 export function tuiSelectTag(selector: Cypress.Chainable<JQuery>): void {
