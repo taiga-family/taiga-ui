@@ -715,14 +715,6 @@ describe(`TuiDay`, () => {
                     expect(result.day).toBe(15);
                 });
 
-                it(`TuiDay {year: 1995, month: 6, day: 15} if {year: 5}, true was passed`, () => {
-                    const result = y2000m6d15.append({year: 5}, true);
-
-                    expect(result.year).toBe(1995);
-                    expect(result.month).toBe(6);
-                    expect(result.day).toBe(15);
-                });
-
                 it(`TuiDay {year: 2000, month: 11, day: 15} if {month: 5} was passed`, () => {
                     const result = y2000m6d15.append({month: 5});
 
@@ -739,14 +731,6 @@ describe(`TuiDay`, () => {
                     expect(result.day).toBe(15);
                 });
 
-                it(`TuiDay {year: 2000, month: 1, day: 15} if {month: 5}, true was passed`, () => {
-                    const result = y2000m6d15.append({month: 5}, true);
-
-                    expect(result.year).toBe(2000);
-                    expect(result.month).toBe(1);
-                    expect(result.day).toBe(15);
-                });
-
                 it(`TuiDay {year: 2000, month: 6, day: 20} if {day: 5} was passed`, () => {
                     const result = y2000m6d15.append({day: 5});
 
@@ -757,14 +741,6 @@ describe(`TuiDay`, () => {
 
                 it(`TuiDay {year: 2000, month: 6, day: 10} if {day: -5} was passed`, () => {
                     const result = y2000m6d15.append({day: -5});
-
-                    expect(result.year).toBe(2000);
-                    expect(result.month).toBe(6);
-                    expect(result.day).toBe(10);
-                });
-
-                it(`TuiDay {year: 2000, month: 6, day: 10} if {day: 5}, true was passed`, () => {
-                    const result = y2000m6d15.append({day: 5}, true);
 
                     expect(result.year).toBe(2000);
                     expect(result.month).toBe(6);
@@ -821,14 +797,6 @@ describe(`TuiDay`, () => {
 
                 it(`TuiDay {year: 1999, month: 11, day: 31} if {month: -6, day: -15} was passed`, () => {
                     const result = y2000m6d15.append({month: -6, day: -15});
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(11);
-                    expect(result.day).toBe(31);
-                });
-
-                it(`TuiDay {year: 1999, month: 11, day: 31} if {month: 6, day: 15}, true was passed`, () => {
-                    const result = y2000m6d15.append({month: 6, day: 15}, true);
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(11);
