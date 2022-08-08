@@ -27,10 +27,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function shouldFocus({
-    currentTarget,
-}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
+function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
     return !tuiIsNativeFocused(currentTarget);
 }
 

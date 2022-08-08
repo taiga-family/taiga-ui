@@ -289,7 +289,6 @@ export class TuiDay extends TuiMonth {
         return this;
     }
 
-    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably alters current day by passed offset
      *
@@ -298,19 +297,9 @@ export class TuiDay extends TuiMonth {
      * to not interfere with parent classes methods
      *
      * @param offset
-     * @param backwards shift date backwards
      * @return new date object as a result of offsetting current
      */
-    append(
-        {year = 0, month = 0, day = 0}: TuiDayLike,
-        backwards: boolean = false,
-    ): TuiDay {
-        if (backwards) {
-            year *= -1;
-            month *= -1;
-            day *= -1;
-        }
-
+    append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;
