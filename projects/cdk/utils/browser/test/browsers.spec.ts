@@ -1,13 +1,8 @@
 import {tuiIsEdge} from '../is-edge';
 import {tuiIsEdgeOlderThan} from '../is-edge-older-than';
 import {tuiIsFirefox} from '../is-firefox';
-import {tuiIsIE} from '../is-ie';
 
 describe(`Browsers`, () => {
-    it(`isIE`, () => {
-        expect(tuiIsIE(`trident`)).toBe(true);
-    });
-
     it(`isEdge`, () => {
         expect(tuiIsEdge(`edge`)).toBe(true);
     });
