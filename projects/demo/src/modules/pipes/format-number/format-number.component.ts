@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDecimalSymbol} from '@taiga-ui/core';
 
 @Component({
     selector: `example-tui-format-number`,
@@ -19,9 +20,9 @@ export class ExampleTuiFormatNumberComponent {
 
     value = 100;
 
-    readonly decimalLimitVariants = [0, 2, 4];
-    decimalLimit: number | null = null;
+    readonly decimalLimitVariants = [Infinity, 0, 2, 4];
+    decimalLimit = this.decimalLimitVariants[0];
 
-    readonly decimalSeparatorVariants: readonly string[] = [`,`, `.`, `/`];
-    decimalSeparator = this.decimalSeparatorVariants[0];
+    readonly decimalSeparatorVariants: TuiDecimalSymbol[] = [`,`, `.`];
+    decimalSeparator: TuiDecimalSymbol = this.decimalSeparatorVariants[0];
 }
