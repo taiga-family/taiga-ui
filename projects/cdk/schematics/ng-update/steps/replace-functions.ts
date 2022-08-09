@@ -127,8 +127,6 @@ function modifyFormatNumberArgs(): void {
                     ? notNullDecimalLimit
                     : `${decimalLimit} === null ? Infinity : ${decimalLimit}`;
 
-                debugger;
-
                 fn.replaceWithText(
                     `tuiFormatNumber(${value}, {decimalLimit: ${conditionalDecimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
                 );

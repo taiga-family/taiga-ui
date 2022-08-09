@@ -10,8 +10,8 @@ import {
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
-    findElementsInTemplateByFn,
     findElementsByTagName,
+    findElementsInTemplateByFn,
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
@@ -39,6 +39,7 @@ import {
 import {replaceTag} from '../../utils/replace-tag';
 import {migratePolymorpheus} from './migrate-polymorpheus';
 import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
+import {TODO_MARK} from '../../utils/insert-todo';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -56,6 +57,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         removeInputs,
         migratePolymorpheus,
         replaceInputValues,
+        addWarningForFormatNumberPipe,
     ];
 
     componentWithTemplatesPaths.forEach(resource => {
@@ -177,10 +179,7 @@ function addHTMLCommentTags({
             .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
 
         elementStartOffsets.forEach(offset => {
-            recorder.insertRight(
-                offset,
-                `<!-- TODO: (Taiga UI migration) ${comment} -->\n`,
-            );
+            recorder.insertRight(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
         });
     });
 }
@@ -349,6 +348,26 @@ function migrateTuiHideSelectedPipe({
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
     });
+}
+
+function addWarningForFormatNumberPipe({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    if (template.match(/\|\s*tuiFormatNumber\s*:\s/gi)) {
+        recorder.insertLeft(
+            templateOffset && templateOffset + 1,
+            `<!-- ${TODO_MARK} tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->`,
+        );
+    }
 }
 
 function replaceInputValues({
