@@ -31,7 +31,7 @@ import {
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
-    private readonly dropdowns: QueryList<any> = EMPTY_QUERY;
+    private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
 
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
