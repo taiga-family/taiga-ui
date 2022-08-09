@@ -14,9 +14,7 @@ export class TuiIntegerPartPipe implements PipeTransform {
     transform(value: number, precision: number): string {
         return tuiFormatNumber(
             Math.floor(Math.abs(Number(value.toFixed(precision)))),
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
+            this.numberFormat,
         );
     }
 }
