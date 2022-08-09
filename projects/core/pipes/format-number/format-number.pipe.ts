@@ -14,24 +14,9 @@ export class TuiFormatNumberPipe implements PipeTransform {
      * Formats number adding thousand separators and correct decimal separator
      * padding decimal part with zeroes to given length
      * @param value number
-     * @param decimalSeparator
-     * @param thousandSeparator
-     * @param decimalLimit number of digits of decimal part, null to keep untouched
-     * @param zeroPadding enable zeros at the end of decimal part
+     * @param settings See {@link TuiNumberFormatSettings}
      */
-    transform(
-        value: number,
-        decimalLimit: number | null = null,
-        decimalSeparator: string = this.numberFormat.decimalSeparator,
-        thousandSeparator: string = this.numberFormat.thousandSeparator,
-        zeroPadding: boolean = this.numberFormat.zeroPadding,
-    ): string {
-        return tuiFormatNumber(
-            value,
-            decimalLimit,
-            decimalSeparator,
-            thousandSeparator,
-            zeroPadding,
-        );
+    transform(value: number, settings: Partial<TuiNumberFormatSettings> = {}): string {
+        return tuiFormatNumber(value, {...this.numberFormat, ...settings});
     }
 }

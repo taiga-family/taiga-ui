@@ -23,6 +23,10 @@ export class TuiFormatExample6 {
         const {value, decimalLimit, decimalSeparator, thousandSeparator} =
             this.parametersForm.value;
 
-        return tuiFormatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
+        return tuiFormatNumber(value, {
+            decimalLimit,
+            decimalSeparator,
+            thousandSeparator,
+        });
     }
 }
