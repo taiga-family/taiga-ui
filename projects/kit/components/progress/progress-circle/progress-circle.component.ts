@@ -48,6 +48,7 @@ export class TuiProgressCircleComponent {
         return this.value / this.max;
     }
 
+    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
     get oldEdgeRadiusFallback(): number | null {
         if (!tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {
             return null;
