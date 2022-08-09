@@ -287,11 +287,6 @@ export class TuiInputCountComponent
     }
 
     private formatNumber(value: number): string {
-        return tuiFormatNumber(
-            value,
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        return tuiFormatNumber(value, this.numberFormat);
     }
 }
