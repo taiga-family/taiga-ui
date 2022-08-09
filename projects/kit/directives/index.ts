@@ -1,3 +1,4 @@
+export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';
 export * from '@taiga-ui/kit/directives/dropdown-context';
 export * from '@taiga-ui/kit/directives/dropdown-hover';
 export * from '@taiga-ui/kit/directives/dropdown-selection';
