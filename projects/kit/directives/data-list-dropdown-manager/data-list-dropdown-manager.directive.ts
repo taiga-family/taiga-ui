@@ -13,7 +13,7 @@ import {
     tuiPure,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {
     debounceTime,
@@ -26,13 +26,12 @@ import {
     tap,
 } from 'rxjs/operators';
 
-// TODO: 3.0 Move into separate module
 @Directive({
     selector: `tui-data-list[tuiDataListDropdownManager]`,
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
-    private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
+    private readonly dropdowns: QueryList<any> = EMPTY_QUERY;
 
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
