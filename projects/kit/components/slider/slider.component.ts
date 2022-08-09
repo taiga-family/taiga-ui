@@ -97,6 +97,7 @@ export class TuiSliderComponent {
         return 100 / Math.max(1, this.segments);
     }
 
+    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
     @HostBinding(`class._old-edge`)
     get isOldEdge(): boolean {
         return tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);

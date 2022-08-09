@@ -10,11 +10,10 @@ import {
     SecurityContext,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
-    tuiIsIE,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -46,7 +45,6 @@ const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = tuiIsIE(this.userAgent);
     private icon = ``;
 
     @Input()
@@ -70,7 +68,6 @@ export class TuiSvgComponent {
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_SVG_SRC_PROCESSOR)
         private readonly srcProcessor: TuiStringHandler<string>,
         @Inject(TUI_SVG_CONTENT_PROCESSOR)
@@ -111,7 +108,7 @@ export class TuiSvgComponent {
     }
 
     private get isExternal(): boolean {
-        return this.isUrl || (this.isIE && this.isUse) || this.isCrossDomain;
+        return this.isUrl || this.isCrossDomain;
     }
 
     private get isUrl(): boolean {
