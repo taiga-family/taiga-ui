@@ -19,7 +19,7 @@
             }
         },
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "builder": "@angular-builders/custom-webpack:browser",
             "outputs": ["dist/demo"],
             "dependsOn": [
                 {
@@ -28,7 +28,9 @@
                 }
             ],
             "options": {
-                "aot": true,
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.config.ts"
+                },
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
                 "main": "projects/demo/src/main.browser.ts",
@@ -62,7 +64,14 @@
                     "node_modules/prismjs/components/prism-less.min.js",
                     "node_modules/prismjs/components/prism-markup.min.js",
                     "node_modules/prismjs/components/prism-typescript.min.js"
-                ]
+                ],
+                "allowedCommonJsDependencies": ["angular2-text-mask", "markdown-it"],
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": false,
+                "sourceMap": true,
+                "optimization": false,
+                "namedChunks": true
             },
             "configurations": {
                 "production": {
@@ -75,11 +84,7 @@
                     "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": false,
-                    "extractCss": true,
                     "namedChunks": false,
-                    "aot": true,
-                    "extractLicenses": false,
-                    "vendorChunk": true,
                     "buildOptimizer": true,
                     "statsJson": false,
                     "progress": false,
@@ -103,11 +108,7 @@
                     "outputPath": "dist/demo/browser/next",
                     "outputHashing": "all",
                     "sourceMap": false,
-                    "extractCss": true,
                     "namedChunks": false,
-                    "aot": true,
-                    "extractLicenses": false,
-                    "vendorChunk": true,
                     "buildOptimizer": true,
                     "statsJson": false,
                     "progress": false,
@@ -139,8 +140,10 @@
                 },
                 "ru": {
                     "localize": ["ru"]
-                }
-            }
+                },
+                "development": {}
+            },
+            "defaultConfiguration": "production"
         },
         "mkcert": {
             "builder": "@nrwl/workspace:run-commands",
@@ -157,7 +160,7 @@
             }
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "builder": "@angular-builders/custom-webpack:dev-server",
             "dependsOn": [
                 {
                     "target": "prebuild",
@@ -165,7 +168,6 @@
                 }
             ],
             "options": {
-                "browserTarget": "demo:build",
                 "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
@@ -183,39 +185,54 @@
                 },
                 "ru": {
                     "browserTarget": "demo:build:ru"
+                },
+                "development": {
+                    "browserTarget": "demo:build:development"
                 }
-            }
+            },
+            "defaultConfiguration": "development"
         },
         "serve-ssl": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "nx mkcert demo && nx serve --ssl"}
+            "options": {
+                "command": "nx mkcert demo && nx serve --ssl"
+            }
         },
         "serve-ip": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "nx serve --open --host 0.0.0.0 --disable-host-check"}
+            "options": {
+                "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
+            }
         },
         "serve-ru": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "nx serve --configuration ru"}
+            "options": {
+                "command": "nx serve --configuration ru"
+            }
         },
         "serve-default": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "nx serve --configuration def"}
+            "options": {
+                "command": "nx serve --configuration def"
+            }
         },
         "serve-shadow": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "nx serve --configuration shadow"}
+            "options": {
+                "command": "nx serve --configuration shadow"
+            }
         },
         "serve-ssr": {
             "builder": "@nguniversal/builders:ssr-dev-server",
-            "options": {
-                "browserTarget": "demo:build",
-                "serverTarget": "demo:server"
-            },
+            "options": {},
             "configurations": {
                 "production": {
                     "browserTarget": "demo:build:production",
                     "serverTarget": "demo:server:production"
+                },
+                "development": {
+                    "serverTarget": "demo:server:development",
+                    "browserTarget": "demo:build:development"
                 }
             },
             "dependsOn": [
@@ -223,7 +240,8 @@
                     "target": "prebuild",
                     "projects": "self"
                 }
-            ]
+            ],
+            "defaultConfiguration": "development"
         },
         "serve-compiled": {
             "builder": "@nrwl/workspace:run-commands",
@@ -233,22 +251,29 @@
             }
         },
         "server": {
-            "builder": "@angular-devkit/build-angular:server",
+            "builder": "@angular-builders/custom-webpack:server",
             "options": {
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.config.ts"
+                },
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server.ts",
                 "tsConfig": "projects/demo/tsconfig.server.json",
                 "stylePreprocessorOptions": {
                     "includePaths": ["projects/core/styles"]
-                }
+                },
+                "sourceMap": true,
+                "optimization": false
             },
             "configurations": {
                 "production": {
                     "outputHashing": "media",
                     "sourceMap": false,
                     "optimization": true
-                }
-            }
+                },
+                "development": {}
+            },
+            "defaultConfiguration": "production"
         },
         "prerender": {
             "builder": "@nguniversal/builders:prerender",
@@ -262,13 +287,13 @@
             }
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "builder": "@angular-builders/custom-webpack:extract-i18n",
             "options": {
                 "browserTarget": "demo:build"
             }
         },
         "test": {
-            "builder": "@angular-devkit/build-angular:karma",
+            "builder": "@angular-builders/custom-webpack:karma",
             "options": {
                 "codeCoverage": false,
                 "main": "projects/demo/test.ts",
