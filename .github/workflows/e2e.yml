@@ -101,6 +101,8 @@ jobs:
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
         run: |
           npm run concurrently \
+              "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
               "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
@@ -135,6 +137,8 @@ jobs:
           CYPRESS_failOnSnapshotDiff: 0
         run: |
           npm run concurrently \
+              "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
               "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
