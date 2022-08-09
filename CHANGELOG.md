@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.58.0](https://github.com/tinkoff/taiga-ui/compare/v2.57.0...v2.58.0) (2022-08-08)
+
+### Features
+
+- **addon-commerce:** add description for Mexican peso currency
+  ([ec943be](https://github.com/tinkoff/taiga-ui/commit/ec943bec478cc6828d5f4842d8d572d99ba58092))
+- **cdk:** add laquo and raquo unicode symbols
+  ([fe66091](https://github.com/tinkoff/taiga-ui/commit/fe660914b4c5ad4053218bf1091a47a154531ffc))
+- **core:** `Button` add `secondary-destructive` appearance ([#2282](https://github.com/tinkoff/taiga-ui/issues/2282))
+  ([de84eb6](https://github.com/tinkoff/taiga-ui/commit/de84eb6765910b2c0a29596875cfd2da635b25e7))
+- **core:** add round corners to paddingless tables ([#2284](https://github.com/tinkoff/taiga-ui/issues/2284))
+  ([d481c76](https://github.com/tinkoff/taiga-ui/commit/d481c76fb14d0932794d42cc0b1e5d56782c1c40))
+- **i18n:** add switcher for language
+  ([4e1b70e](https://github.com/tinkoff/taiga-ui/commit/4e1b70e838765bfe2d836b5c5c58d80337d2a069))
+
+### Bug Fixes
+
+- **cdk:** correct autofill value for input controls
+  ([4af8e20](https://github.com/tinkoff/taiga-ui/commit/4af8e2091826a103ed77cf21aca611f16f8dba36))
+- **core:** card number overlay after autofill in dark theme
+  ([16dc18c](https://github.com/tinkoff/taiga-ui/commit/16dc18c1353d5166753241944e561d21e7613013))
+- **kit:** `Slider` incorrect calculations with `[ngModel]` + `[keySteps]`
+  ([#2262](https://github.com/tinkoff/taiga-ui/issues/2262))
+  ([99dfee1](https://github.com/tinkoff/taiga-ui/commit/99dfee172da461844b1f5b80531640970d691856))
+- **kit:** current range must be a text node only
+  ([58951ba](https://github.com/tinkoff/taiga-ui/commit/58951ba92151d44a355db4494ae8749a2ef57bf6))
+
+### Deprecations
+
+- **kit:** `InputTag` deprecate property `[allowSpaces]` ([#2286](https://github.com/tinkoff/taiga-ui/issues/2286))
+  ([0a6c5d2](https://github.com/tinkoff/taiga-ui/commit/0a6c5d28f80af784598a83939d8d56601b016a3b))
+
 ## [2.57.0](https://github.com/tinkoff/taiga-ui/compare/v2.56.0...v2.57.0) (2022-08-02)
 
 ### Features
