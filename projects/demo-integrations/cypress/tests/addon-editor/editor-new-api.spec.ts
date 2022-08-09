@@ -207,9 +207,15 @@ describe(`Editor API`, () => {
             tuiInsertLink();
             tuiGetEditLinkInput().type(`wysiwyg.com`);
             tuiGetEditLinkInput().type(`{enter}`);
+
+            tuiFocusToStartInEditor(); // clear hints
+
             tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
             tuiGetEditorScrollbarArea().scrollTo(0, 100);
-            tuiGetScreenshotArea().matchImageSnapshot(`1-1-added-new-link`);
+            tuiGetScreenshotArea().matchImageSnapshot(`8-1-added-new-link`);
+
+            tuiGetEditorScrollbarArea().scrollTo(0, 0);
+            tuiGetScreenshotArea().matchImageSnapshot(`8-2-added-new-link`);
         });
     });
 });
