@@ -13,7 +13,7 @@ import {
     tuiPure,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {
     debounceTime,
@@ -26,7 +26,6 @@ import {
     tap,
 } from 'rxjs/operators';
 
-// TODO: 3.0 Move into separate module
 @Directive({
     selector: `tui-data-list[tuiDataListDropdownManager]`,
 })
