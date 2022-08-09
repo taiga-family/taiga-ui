@@ -2,6 +2,7 @@ export * from './absolute-box-sizes';
 export * from './decimal-symbols';
 export * from './default-icons-path';
 export * from './default-marker-handler';
+export * from './default-number-format';
 export * from './described-by';
 export * from './editing-keys';
 export * from './events';

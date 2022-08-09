@@ -38,6 +38,8 @@ const TEMPLATE_BEFORE = `
 <tui-field-error formControlName="control"></tui-field-error>
 <tui-field-error formControlName="control" [order]="order"></tui-field-error>
 
+<p>Formatted number: {{ 10500.33 | tuiFormatNumber: 4:'.':'_':false }}</p>
+
 <table>
   <thead>
         <tr tuiThGroup>
@@ -171,7 +173,7 @@ const TEMPLATE_BEFORE = `
 </tui-breadcrumbs>
 `;
 
-const TEMPLATE_AFTER = `
+const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
 <label
     ${''}
     tuiLabel="Step"
@@ -179,6 +181,8 @@ const TEMPLATE_AFTER = `
 
 <tui-error [error]="[] | tuiFieldError | async" formControlName="control"></tui-error>
 <tui-error [error]="order | tuiFieldError | async" formControlName="control"></tui-error>
+
+<p>Formatted number: {{ 10500.33 | tuiFormatNumber: 4:'.':'_':false }}</p>
 
 <table>
   <thead>
@@ -323,14 +327,14 @@ const TEMPLATE_AFTER = `
 `;
 
 const COMPONENT_BEFORE = `
-@Component({template: '<tui-group><div></div></tui-group>'})
+@Component({template: '<tui-group><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></tui-group>'})
 export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
 `;
 
 const COMPONENT_AFTER = `
-@Component({template: '<div tuiGroup><div></div></div>'})
+@Component({template: '<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number --><div tuiGroup><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></div>'})
 export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
