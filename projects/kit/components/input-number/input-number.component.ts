@@ -273,7 +273,7 @@ export class TuiInputNumberComponent
     getFormattedValue(value: number): string {
         const absValue = Math.abs(value);
         const hasFraction = absValue % 1 > 0;
-        let limit =
+        let decimalLimit =
             this.decimal === `always` || (hasFraction && this.decimal !== `never`)
                 ? this.precision
                 : 0;
@@ -283,16 +283,13 @@ export class TuiInputNumberComponent
             : ``;
 
         if (this.focused && this.decimal !== `always`) {
-            limit = fraction.length;
+            decimalLimit = fraction.length;
         }
 
-        return tuiFormatNumber(
-            value,
-            limit,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-            this.numberFormat.zeroPadding,
-        );
+        return tuiFormatNumber(value, {
+            ...this.numberFormat,
+            decimalLimit,
+        });
     }
 
     private get isNativeValueNotFinished(): boolean {
