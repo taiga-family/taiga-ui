@@ -6,7 +6,7 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "prebuild": {
-            "builder": "@angular-devkit/build-ng-packagr:build",
+            "builder": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/cdk/ng-package.json"
