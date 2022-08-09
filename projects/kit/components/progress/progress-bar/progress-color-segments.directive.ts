@@ -4,7 +4,6 @@ import {
     CHROMIUM_EDGE_START_VERSION,
     TuiDestroyService,
     tuiIsEdgeOlderThan,
-    tuiIsIE,
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
@@ -31,9 +30,11 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
     providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiProgressColorSegmentsDirective {
-    private readonly isOldBrowsers =
-        tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
-        tuiIsIE(this.userAgent);
+    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
+    private readonly isOldBrowsers = tuiIsEdgeOlderThan(
+        CHROMIUM_EDGE_START_VERSION,
+        this.userAgent,
+    );
 
     @Input(`tuiProgressColorSegments`)
     colors: string[] = [];
