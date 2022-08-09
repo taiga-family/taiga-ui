@@ -102,6 +102,7 @@ jobs:
         run: |
           npm run concurrently \
               "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "sleep 10 && npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
               "sleep 20 && npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
@@ -137,6 +138,7 @@ jobs:
         run: |
           npm run concurrently \
               "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
+              "sleep 10 && npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
               "sleep 20 && npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
 
       - name: Clean up resources
