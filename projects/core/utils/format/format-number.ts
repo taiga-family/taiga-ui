@@ -1,4 +1,5 @@
-import {CHAR_HYPHEN, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {CHAR_HYPHEN} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
 import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
@@ -8,18 +9,17 @@ import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
  * padding decimal part with zeroes to given length
  *
  * @param value the input number
- * @param options See {@link TuiNumberFormatSettings}
+ * @param settings See {@link TuiNumberFormatSettings}
  * @return the formatted string
  */
 export function tuiFormatNumber(
     value: number,
-    {
-        decimalLimit = Infinity,
-        decimalSeparator = `,`,
-        thousandSeparator = CHAR_NO_BREAK_SPACE,
-        zeroPadding = true,
-    }: Partial<TuiNumberFormatSettings> = {},
+    settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
+    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding} = {
+        ...TUI_DEFAULT_NUMBER_FORMAT,
+        ...settings,
+    };
     const integerPartString = String(Math.floor(Math.abs(value)));
 
     let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
