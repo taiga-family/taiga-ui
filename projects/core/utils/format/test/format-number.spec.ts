@@ -34,50 +34,99 @@ describe(`Number formatting`, () => {
     });
 
     it(`finishes the fractional part with zeros to a given value`, () => {
-        expect(tuiFormatNumber(123, 2)).toBe(`123,00`);
+        expect(tuiFormatNumber(123, {decimalLimit: 2})).toBe(`123,00`);
     });
 
     it(`discards the extra fractional part`, () => {
-        expect(tuiFormatNumber(1.234, 2)).toBe(`1,23`);
+        expect(tuiFormatNumber(1.234, {decimalLimit: 2})).toBe(`1,23`);
     });
 
     it(`discards the fractional part altogether`, () => {
-        expect(tuiFormatNumber(5.678, 0)).toBe(`5`);
+        expect(tuiFormatNumber(5.678, {decimalLimit: 0})).toBe(`5`);
     });
 
     it(`accepts custom fractional separator`, () => {
-        expect(tuiFormatNumber(123.45, 2, `.`)).toBe(`123.45`);
+        expect(tuiFormatNumber(123.45, {decimalLimit: 2, decimalSeparator: `.`})).toBe(
+            `123.45`,
+        );
     });
 
     it(`accepts custom thousands separator`, () => {
-        expect(tuiFormatNumber(12345.67, 2, `,`, `.`)).toBe(`12.345,67`);
+        expect(
+            tuiFormatNumber(12345.67, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+            }),
+        ).toBe(`12.345,67`);
     });
 
     it(`do not add zeros when disable zero padding flag`, () => {
-        expect(tuiFormatNumber(12345.6, 2, `,`, `.`, false)).toBe(`12.345,6`);
+        expect(
+            tuiFormatNumber(12345.6, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+                zeroPadding: false,
+            }),
+        ).toBe(`12.345,6`);
     });
 
     it(`add zeros with default behavior`, () => {
-        expect(tuiFormatNumber(12345.6, 2, `,`, `.`)).toBe(`12.345,60`);
+        expect(
+            tuiFormatNumber(12345.6, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+            }),
+        ).toBe(`12.345,60`);
     });
 
     it(`value with exponent and fractional part with and decimal bigger than precision`, () => {
-        expect(tuiFormatNumber(1.23e-8, 12)).toBe(`0,000000012300`);
+        expect(tuiFormatNumber(1.23e-8, {decimalLimit: 12})).toBe(`0,000000012300`);
     });
 
     it(`deletes trailing zeros when zero padding flag is disabled`, () => {
-        expect(tuiFormatNumber(12345.6078, 2, `,`, `.`, false)).toBe(`12.345,6`);
+        expect(
+            tuiFormatNumber(12345.6078, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+                zeroPadding: false,
+            }),
+        ).toBe(`12.345,6`);
     });
 
     it(`displays without decimal separator when zero padding flag is disabled and there is no significant digits`, () => {
-        expect(tuiFormatNumber(12345.006, 2, `,`, `.`, false)).toBe(`12.345`);
+        expect(
+            tuiFormatNumber(12345.006, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+                zeroPadding: false,
+            }),
+        ).toBe(`12.345`);
     });
 
     it(`does not delete significant zeros in decimal part when padding flag is disabled`, () => {
-        expect(tuiFormatNumber(0.01, 2, `,`, `.`, false)).toBe(`0,01`);
+        expect(
+            tuiFormatNumber(0.01, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+                zeroPadding: false,
+            }),
+        ).toBe(`0,01`);
     });
 
     it(`deletes trailing zeros only in decimal part when zero padding flag is disabled`, () => {
-        expect(tuiFormatNumber(0.001, 2, `,`, `.`, false)).toBe(`0`);
+        expect(
+            tuiFormatNumber(0.001, {
+                decimalLimit: 2,
+                decimalSeparator: `,`,
+                thousandSeparator: `.`,
+                zeroPadding: false,
+            }),
+        ).toBe(`0`);
     });
 });
