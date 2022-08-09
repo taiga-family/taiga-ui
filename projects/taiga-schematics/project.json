@@ -5,7 +5,7 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "prebuild": {
-            "builder": "@angular-devkit/build-ng-packagr:build",
+            "builder": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/taiga-schematics/ng-package.json"
@@ -42,7 +42,7 @@
             "options": {
                 "parallel": false,
                 "commands": [
-                    "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
+                    "tsc -p ./projects/taiga-schematics/tsconfig.spec.json --tsBuildInfoFile null",
                     "jasmine ./dist/taiga-schematics/**/*.spec.js"
                 ]
             },
