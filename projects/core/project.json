@@ -6,7 +6,7 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "build": {
-            "builder": "@angular-devkit/build-ng-packagr:build",
+            "builder": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/core"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
