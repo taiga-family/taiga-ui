@@ -51,6 +51,7 @@
                 "baseHref": "/",
                 "showCircularDependencies": false,
                 "styles": [
+                    "projects/demo/src/normalize.less",
                     "projects/demo/src/styles.less",
                     "projects/demo/src/styles.scss",
                     "node_modules/prismjs/themes/prism-okaidia.css"

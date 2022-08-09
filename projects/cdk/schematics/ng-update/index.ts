@@ -19,6 +19,7 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 import {addStylesToAngularJson} from '../utils/add-styles';
 import {TAIGA_THEME_FONTS} from '../constants/taiga-styles';
+import {replaceStyles} from './steps/replace-styles';
 const {performance} = require('perf_hooks');
 
 export function updateToV3(options: Schema): Rule {
@@ -53,6 +54,7 @@ function main(_: Schema): Rule {
         renameTypes();
         replaceConstants();
         replaceServices();
+        replaceStyles();
         showWarnings(context);
         migrateTemplates(fileSystem);
 
@@ -85,7 +87,7 @@ function addTaigaStyles(options: Schema): Rule {
 }
 
 function getFileSystem(tree: Tree): DevkitFileSystem {
-    const project = createProject(tree, '/', '**/**.{html,ts}');
+    const project = createProject(tree, '/', '**/**.{html,ts,less}');
     setActiveProject(project);
     return project.getFileSystem().fs;
 }

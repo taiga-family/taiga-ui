@@ -14,7 +14,7 @@ export function getNgModules(
  * Find NgModule where the component was declared.
  */
 export function findNgModule(ngComponent: ClassDeclaration): ClassDeclaration | null {
-    const allNgModules = getNgModules('**/**');
+    const allNgModules = getNgModules('**/**.ts');
     return (
         allNgModules.find(module => {
             const moduleFile = module.getSourceFile();

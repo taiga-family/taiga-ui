@@ -12,7 +12,7 @@ const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 export function replaceDeepImports(): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deep imports...`);
 
-    const deepImports = getImports('**/**').filter(imp =>
+    const deepImports = getImports('**/**.ts').filter(imp =>
         DEEP_REGEX.test(imp.getModuleSpecifier().getLiteralValue()),
     );
 

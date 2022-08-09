@@ -10,7 +10,7 @@ const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
 
 export function migrateInputRange(fileSystem: DevkitFileSystem): void {
-    const templateResources = getComponentTemplates('**/**');
+    const templateResources = getComponentTemplates('**/**.ts');
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
