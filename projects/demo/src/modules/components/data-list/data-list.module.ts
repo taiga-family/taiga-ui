@@ -20,6 +20,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiArrowModule,
+    TuiDataListDropdownManagerModule,
     TuiDropdownHoverModule,
     TuiInputDateRangeModule,
     TuiInputModule,
@@ -49,6 +50,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiArrowModule,
         TuiNotificationModule,
         TuiDataListModule,
+        TuiDataListDropdownManagerModule,
         TuiSvgModule,
         TuiHostedDropdownModule,
         TuiButtonModule,
