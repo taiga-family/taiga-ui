@@ -16,6 +16,7 @@ describe(`TuiLazyLoading directive`, () => {
                 loading="lazy"
                 src="${picsumPhotos}"
                 alt="picsum"
+                style="--tui-clear-hover: rgba(0, 0, 0, 0.16)"
             />
         `,
     })
@@ -37,7 +38,10 @@ describe(`TuiLazyLoading directive`, () => {
     });
 
     it(`Image has background color`, () => {
-        expect(getHtmlImage().style.backgroundColor).toBe(`rgba(0, 0, 0, 0.16)`);
+        expect(getHtmlImage().style.background).toBe(`var(--tui-clear-hover)`);
+        expect(getHtmlImage().style.getPropertyValue(`--tui-clear-hover`).trim()).toBe(
+            `rgba(0, 0, 0, 0.16)`,
+        );
     });
 
     it(`Loading animation is shown`, () => {
