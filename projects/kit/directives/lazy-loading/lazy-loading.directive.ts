@@ -26,7 +26,7 @@ export class TuiLazyLoadingDirective {
     animation = `tuiSkeletonVibe ease-in-out 1s infinite alternate`;
 
     @HostBinding(`style.background`)
-    background = `rgba(0, 0, 0, .16)`;
+    background = `var(--tui-clear-hover)`;
 
     @HostBinding(`attr.src`)
     src: string | null = null;
