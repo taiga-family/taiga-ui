@@ -5,7 +5,7 @@
     } as can"
 >
     <button
-        *tuiLet="texts$ | async as texts"
+        *ngIf="texts$ | async as texts"
         #tableMergeSplitBtn
         tuiIconButton
         type="button"

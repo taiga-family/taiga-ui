@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDescribedByModule,
@@ -17,7 +16,6 @@ import {TuiFontStyleComponent} from './font-style.component';
         TuiButtonModule,
         TuiHintModule,
         TuiDescribedByModule,
-        TuiLetModule,
     ],
     declarations: [TuiFontStyleComponent],
     exports: [TuiFontStyleComponent],
