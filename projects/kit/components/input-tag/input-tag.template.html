@@ -57,7 +57,6 @@
                                 class="t-tag"
                                 [status]="(status$ | async)!"
                                 [leftContent]="getLeftContent(item)"
-                                [allowSpaces]="allowSpaces"
                                 [tuiFocusable]="false"
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"

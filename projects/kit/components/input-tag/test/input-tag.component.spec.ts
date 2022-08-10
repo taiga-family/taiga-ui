@@ -42,7 +42,6 @@ describe(`InputTag`, () => {
                     [formControl]="control"
                     [readOnly]="readOnly"
                     [separator]="separator"
-                    [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldExampleText]="exampleText"
@@ -63,8 +62,7 @@ describe(`InputTag`, () => {
         defaultInputs = false;
         cleaner = true;
         readOnly = false;
-        allowSpaces = true;
-        separator = `,`;
+        separator: string | RegExp = `,`;
         labelOutside = true;
         exampleText = `Example`;
         size: TuiSizeS | TuiSizeL = `m`;
@@ -219,7 +217,7 @@ describe(`InputTag`, () => {
         });
     });
 
-    describe(`Adding tags with spaces when the allowSpaces option is enabled`, () => {
+    describe(`Adding tags with spaces (spaces inside tags are allowed)`, () => {
         it(`Spaces are preserved and not tagged`, () => {
             inputPO.focus();
             fixture.detectChanges();
@@ -231,9 +229,9 @@ describe(`InputTag`, () => {
         });
     });
 
-    describe(`Adding tags when the allowSpaces option is disabled`, () => {
+    describe(`Adding tags when spaces inside tags are forbidden`, () => {
         beforeEach(() => {
-            testComponent.allowSpaces = false;
+            testComponent.separator = /[\s,]/;
             inputPO.focus();
             fixture.detectChanges();
         });
