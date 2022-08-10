@@ -1,5 +1,5 @@
 <!-- @bad TODO: Keyboard navigation-->
-<ng-container *tuiLet="texts$ | async as texts">
+<ng-container *ngIf="texts$ | async as texts">
     <tui-hosted-dropdown
         *ngIf="fontStyleState$ | async as state"
         #format

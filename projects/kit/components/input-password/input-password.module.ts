@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiHintModule,
     TuiPrimitiveTextfieldModule,
@@ -19,7 +18,6 @@ import {TuiInputPasswordDirective} from './input-password.directive';
         CommonModule,
         FormsModule,
         PolymorpheusModule,
-        TuiLetModule,
         TuiSvgModule,
         TuiHintModule,
         TuiPrimitiveTextfieldModule,
