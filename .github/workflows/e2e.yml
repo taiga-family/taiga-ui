@@ -95,7 +95,7 @@ jobs:
 
       - name: Serve ${{ env.LOCAL_REF_DEMO }} in background
         run: |
-          npx nx serve:compiled -- --path ${{ env.LOCAL_REF_DEMO }} \
+          npx nx serve-compiled -- --path ${{ env.LOCAL_REF_DEMO }} \
             & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
@@ -126,7 +126,7 @@ jobs:
 
       - name: Serve ${{ env.BASE_REF_DEMO }} in background
         run: |
-          npx nx serve:compiled -- --path ${{ env.BASE_REF_DEMO }} \
+          npx nx serve-compiled -- --path ${{ env.BASE_REF_DEMO }} \
             & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.BASE_REF_DEMO }}
