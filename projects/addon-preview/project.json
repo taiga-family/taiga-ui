@@ -1,0 +1,41 @@
+{
+    "root": "projects/addon-preview",
+    "sourceRoot": "projects/addon-preview/src",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-ng-packagr:build",
+            "outputs": ["dist/addon-preview"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/addon-preview/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ]
+        },
+        "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "outputs": ["coverage/addon-preview"],
+            "options": {
+                "main": "projects/addon-preview/test.ts",
+                "tsConfig": "projects/addon-preview/tsconfig.spec.json",
+                "karmaConfig": "projects/addon-preview/karma.conf.js",
+                "stylePreprocessorOptions": {
+                    "includePaths": ["projects/core/styles"]
+                }
+            }
+        },
+        "publish": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "npm run exec -- ./scripts/publish.ts --path ./dist/addon-preview"
+            }
+        }
+    }
+}
