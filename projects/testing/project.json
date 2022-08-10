@@ -1,0 +1,23 @@
+{
+    "root": "projects/testing",
+    "sourceRoot": "projects/testing",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["cdk"],
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-ng-packagr:build",
+            "outputs": ["dist/testing"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/testing/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ]
+        }
+    }
+}
