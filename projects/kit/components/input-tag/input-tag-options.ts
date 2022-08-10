@@ -1,13 +1,16 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
+import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
     readonly separator: string | RegExp;
     readonly uniqueTags: boolean;
+    readonly tagStatus: TuiStatus;
 }
 
 export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
     separator: `,`,
     uniqueTags: true,
+    tagStatus: `primary`,
 };
 
 export const TUI_INPUT_TAG_OPTIONS = new InjectionToken<TuiInputTagOptions>(
