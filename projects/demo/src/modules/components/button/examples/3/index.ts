@@ -12,6 +12,4 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 })
 export class TuiButtonExample3 {
     readonly arrow = TUI_ARROW;
-
-    open = false;
 }
