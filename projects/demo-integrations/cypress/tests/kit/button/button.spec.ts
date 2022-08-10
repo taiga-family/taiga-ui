@@ -7,7 +7,7 @@ describe(`Button`, () => {
             .tuiScrollIntoView()
             .as(`content`);
 
-        cy.get(`@content`).find(`button[data-appearance=primary]`).as('button');
+        cy.get(`@content`).find(`button[data-appearance=primary]`).as(`button`);
 
         cy.matchImageSnapshot(`1-button-rotating`, {capture: `viewport`});
         cy.get(`@button`).click();
