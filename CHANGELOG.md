@@ -7,11 +7,11 @@ All notable changes to this project will be documented in this file. See
 
 ### Bug Fixes
 
-- **core:** replace hardcoded skeleton color with css variable
+- **core:** support dark-theme for `tui-skeleton`
   ([6de5167](https://github.com/tinkoff/taiga-ui/commit/6de5167cfaecbcbeb93e9df35cd168185c242d94))
 - **kit:** support dark-theme for `TuiLazyLoadingDirective`
   ([70d703b](https://github.com/tinkoff/taiga-ui/commit/70d703b14cb368b1d83a1d8b59c9f9313be6158b))
-- prevent emit `null` for editor
+- **addon-editor:**: prevent emit `null` for editor
   ([4f0ddad](https://github.com/tinkoff/taiga-ui/commit/4f0ddada32ea0643bbaa0c1cb83c3f3d4e367179))
 
 ## [2.58.0](https://github.com/tinkoff/taiga-ui/compare/v2.57.0...v2.58.0) (2022-08-08)
