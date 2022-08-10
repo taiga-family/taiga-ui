@@ -14,8 +14,4 @@ export class TuiButtonExample3 {
     readonly arrow = TUI_ARROW;
 
     open = false;
-
-    onClick(): void {
-        this.open = !this.open;
-    }
 }
