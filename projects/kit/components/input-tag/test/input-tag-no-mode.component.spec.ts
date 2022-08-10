@@ -10,7 +10,7 @@ import {
 import {
     TuiInputTagComponent,
     TuiInputTagModule,
-    tuiInputTagOptionsProvider,
+    tuiTagOptionsProvider,
 } from '@taiga-ui/kit';
 
 describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
@@ -25,7 +25,7 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
                 ></tui-input-tag>
             </tui-root>
         `,
-        providers: [tuiInputTagOptionsProvider({tagStatus: `neutral`})],
+        providers: [tuiTagOptionsProvider({status: `neutral`})],
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)

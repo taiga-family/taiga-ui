@@ -56,6 +56,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import {TUI_TAG_OPTIONS, TuiTagOptions} from '@taiga-ui/kit/components/tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -192,6 +193,8 @@ export class TuiInputTagComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
+        @Inject(TUI_TAG_OPTIONS)
+        private readonly tagOptions: TuiTagOptions,
         @Optional()
         @Inject(TuiHostedDropdownComponent)
         private readonly parentHostedDropdown?: TuiHostedDropdownComponent,
@@ -276,7 +279,7 @@ export class TuiInputTagComponent
     }
 
     get status(): TuiStatus {
-        return this.modeDirective?.mode ? `default` : this.options.tagStatus;
+        return this.modeDirective?.mode ? `default` : this.tagOptions.status;
     }
 
     get canOpen(): boolean {
