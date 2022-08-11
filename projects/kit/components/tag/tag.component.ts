@@ -27,8 +27,6 @@ import {Observable} from 'rxjs';
 
 import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
 
-export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
-
 @Component({
     selector: `tui-tag, a[tuiTag]`,
     templateUrl: `./tag.template.html`,
@@ -48,11 +46,6 @@ export class TuiTagComponent {
     @Input()
     @tuiDefaultProp()
     editable = false;
-
-    // TODO: 3.0: Remove
-    @Input()
-    @tuiDefaultProp()
-    allowSpaces = true;
 
     @Input()
     @tuiDefaultProp()
@@ -165,9 +158,7 @@ export class TuiTagComponent {
     }
 
     onInput(value: string): void {
-        const newTags = this.allowSpaces
-            ? value.split(this.separator)
-            : value.split(ALLOWED_SPACE_REGEXP);
+        const newTags = value.split(this.separator);
 
         if (newTags.length > 1) {
             this.save(String(newTags));
