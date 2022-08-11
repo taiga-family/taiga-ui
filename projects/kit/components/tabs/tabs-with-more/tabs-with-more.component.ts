@@ -238,7 +238,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             }
         }
 
-        return 0;
+        return -1;
     }
 
     private updateActiveItemIndex(activeItemIndex: number): void {
