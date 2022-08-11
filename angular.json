@@ -18,7 +18,6 @@
         "i18n": "projects/i18n",
         "icons": "projects/icons",
         "kit": "projects/kit",
-        "taiga-schematics": "projects/taiga-schematics",
         "testing": "projects/testing"
     }
 }
