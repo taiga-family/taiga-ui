@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.59.0](https://github.com/tinkoff/taiga-ui/compare/v2.58.1...v2.59.0) (2022-08-11)
+
+### Features
+
+- **core:** `Button` add `mono` style ([#2339](https://github.com/tinkoff/taiga-ui/issues/2339))
+  ([943c57c](https://github.com/tinkoff/taiga-ui/commit/943c57c2103cde34ab1a5da8f6c9b8551f78b4bf))
+
+### Bug Fixes
+
+- **cdk:** don't override deep imports inside less files
+  ([edf2505](https://github.com/tinkoff/taiga-ui/commit/edf2505e1a13194c49db66c85ff4a498cc216a4b))
+- **i18n:** `InputFiles` small misspells corrections (English)
+  ([#2344](https://github.com/tinkoff/taiga-ui/issues/2344))
+  ([59a1b3d](https://github.com/tinkoff/taiga-ui/commit/59a1b3d316ca73770e4bff611edd6a23e11ce774))
+- **kit:** `Tabs` fix opening dropdown on clicking margin area
+  ([#2338](https://github.com/tinkoff/taiga-ui/issues/2338))
+  ([de37918](https://github.com/tinkoff/taiga-ui/commit/de379184653c1b4bd62ff8666422e134400d6584))
+
 ### [2.58.1](https://github.com/tinkoff/taiga-ui/compare/v2.58.0...v2.58.1) (2022-08-10)
 
 ### Bug Fixes
