@@ -56,9 +56,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
-import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, Subject} from 'rxjs';
@@ -112,11 +110,6 @@ export class TuiInputTagComponent
 
     private readonly scrollToStart$ = new Subject<void>();
     private readonly scrollToEnd$ = new Subject<void>();
-
-    // TODO: 3.0 Remove
-    @Input()
-    @tuiDefaultProp()
-    allowSpaces = true;
 
     @Input()
     @tuiDefaultProp()
@@ -193,7 +186,6 @@ export class TuiInputTagComponent
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_MODE)
         private readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
@@ -284,7 +276,7 @@ export class TuiInputTagComponent
     }
 
     get status(): TuiStatus {
-        return this.modeDirective?.mode ? `default` : this.tagStatus;
+        return this.modeDirective?.mode ? `default` : this.options.tagStatus;
     }
 
     get canOpen(): boolean {
@@ -398,9 +390,7 @@ export class TuiInputTagComponent
     }
 
     onInput(value: string): void {
-        const array = this.allowSpaces
-            ? value.split(this.separator)
-            : value.split(ALLOWED_SPACE_REGEXP);
+        const array = value.split(this.separator);
         const tags = array
             .map(item => item.trim())
             .filter((item, index, {length}) => item.length > 0 && index !== length - 1);
