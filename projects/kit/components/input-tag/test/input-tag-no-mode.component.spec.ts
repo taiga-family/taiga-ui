@@ -7,7 +7,11 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TUI_TAG_STATUS, TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
+import {
+    TuiInputTagComponent,
+    TuiInputTagModule,
+    tuiInputTagOptionsProvider,
+} from '@taiga-ui/kit';
 
 describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
     @Component({
@@ -21,7 +25,7 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
                 ></tui-input-tag>
             </tui-root>
         `,
-        providers: [{provide: TUI_TAG_STATUS, useValue: `neutral`}],
+        providers: [tuiInputTagOptionsProvider({tagStatus: `neutral`})],
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
