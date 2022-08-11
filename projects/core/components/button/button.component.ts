@@ -43,7 +43,7 @@ export class TuiButtonComponent
     @Input()
     @HostBinding(`attr.data-appearance`)
     @tuiDefaultProp()
-    appearance = this.options.appearance || ``;
+    appearance = this.options.appearance;
 
     @Input()
     @tuiDefaultProp()
