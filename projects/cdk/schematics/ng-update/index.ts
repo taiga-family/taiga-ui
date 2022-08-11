@@ -1,5 +1,10 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import {
+    createProject,
+    saveActiveProject,
+    setActiveProject,
+    DevkitFileSystem,
+} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
 import {replaceEnums} from './steps/replace-enums';
@@ -14,7 +19,6 @@ import {removeModules} from './steps/remove-module';
 import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 

@@ -15,7 +15,7 @@ import {
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {DevkitFileSystem} from 'ng-morph';
 import {TemplateResource} from '../interfaces/template-resourse';
 import {
     getInputPropertyOffsets,

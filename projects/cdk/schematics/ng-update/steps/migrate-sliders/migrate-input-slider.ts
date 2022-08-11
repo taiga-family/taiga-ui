@@ -1,5 +1,10 @@
-import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {
+    addMethods,
+    createProject,
+    saveActiveProject,
+    setActiveProject,
+    DevkitFileSystem,
+} from 'ng-morph';
 
 import {
     removeInputProperty,

@@ -1,4 +1,3 @@
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Element} from 'parse5';
 import {
     getPathFromTemplateResource,
@@ -8,7 +7,7 @@ import {
 import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
 import {getNgComponents} from '../angular/ng-component';
 import {findNgModule} from '../angular/ng-module';
-import {addImportToNgModule} from 'ng-morph';
+import {addImportToNgModule, DevkitFileSystem} from 'ng-morph';
 import {addUniqueImport} from '../add-unique-import';
 import {
     findAttributeOnElementWithAttrs,
