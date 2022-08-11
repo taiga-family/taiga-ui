@@ -29,12 +29,16 @@ $desktop-lg-min: 'screen and (min-width: 1360px)';
 
 // actual
 
-$mobile-m: 'screen and (max-width: 47.9375em)';
+$mobile-m: 'screen and (max-width: 47.9625em)';
 $mobile-m-min: 'screen and (min-width: 20em)';
-$mobile-m-interval: '(min-width: 20em) and (max-width: 47.9375em)';
+$mobile-m-interval: '(min-width: 20em) and (max-width: 47.9625em)';
 
-$desktop-s: 'screen and (max-width: 79.9375em)';
+$tablet-lg: 'screen and (max-width: 63.9625em)';
+$tablet-lg-min: 'screen and (min-width: 48em)';
+$tablet-lg-interval: '(min-width: 48em) and (max-width: 63.9625em)';
+
+$desktop-s: 'screen and (max-width: 79.9625em)';
 $desktop-s-min: 'screen and (min-width: 64em)';
-$desktop-s-interval: '(min-width: 64em) and (max-width: 79.9375em)';
+$desktop-s-interval: '(min-width: 64em) and (max-width: 79.9625em)';
 
 $desktop-m-min: 'screen and (min-width: 80em)';

@@ -1,40 +1,45 @@
+/*
+Every max-width of breakpoint is equal:
+next min-width - 60% from 1px (1/16 * 0.6 = 0.0375)
+*/
+
 @media-retina: ~'(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
-@media-retina-mobile: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 37.4375em), (min-resolution: 192dpi) and (max-width: 37.4375em)';
-@media-retina-tablet: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 63.9375em), (min-resolution: 192dpi) and (max-width: 63.9375em)';
-@media-retina-desktop: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 84.9375em), (min-resolution: 192dpi) and (max-width: 84.9375em)';
+@media-retina-mobile: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 37.4625em), (min-resolution: 192dpi) and (max-width: 37.4625em)';
+@media-retina-tablet: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 63.9625em), (min-resolution: 192dpi) and (max-width: 63.9625em)';
+@media-retina-desktop: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 84.9625em), (min-resolution: 192dpi) and (max-width: 84.9625em)';
 
 // deprecated
 
-@mobile: ~'screen and (max-width: 37.4375em)';
+@mobile: ~'screen and (max-width: 37.4625em)';
 @mobile-min: ~'screen and (min-width: 20em)';
-@mobile-interval: ~'(min-width: 20em) and (max-width: 37.4375em)';
+@mobile-interval: ~'(min-width: 20em) and (max-width: 37.4625em)';
 
-@tablet-s: ~'screen and (max-width: 47.9375em)';
+@tablet-s: ~'screen and (max-width: 47.9625em)';
 @tablet-s-min: ~'screen and (min-width: 37.5em)';
-@tablet-s-interval: ~'(min-width: 37.5em) and (max-width: 47.9375em)';
+@tablet-s-interval: ~'(min-width: 37.5em) and (max-width: 47.9625em)';
 
-@tablet: ~'screen and (max-width: 63.9375em)';
+@tablet: ~'screen and (max-width: 63.9625em)';
 @tablet-min: ~'screen and (min-width: 37.5em)';
-@tablet-interval: ~'(min-width: 37.5em) and (max-width: 63.9375em)';
+@tablet-interval: ~'(min-width: 37.5em) and (max-width: 63.9625em)';
 
-@desktop: ~'screen and (max-width: 84.9375em)';
+@desktop: ~'screen and (max-width: 84.9625em)';
 @desktop-min: ~'screen and (min-width: 64em)';
-@desktop-interval: ~'(min-width: 64em) and (max-width: 84.9375em)';
+@desktop-interval: ~'(min-width: 64em) and (max-width: 84.9625em)';
 
 @desktop-lg-min: ~'screen and (min-width: 85em)';
 
 // actual
 
-@mobile-m: ~'screen and (max-width: 47.9375em)';
+@mobile-m: ~'screen and (max-width: 47.9625em)';
 @mobile-m-min: ~'screen and (min-width: 22.5em)';
-@mobile-m-interval: ~'(min-width: 22.5em) and (max-width: 47.9375em)';
+@mobile-m-interval: ~'(min-width: 22.5em) and (max-width: 47.9625em)';
 
-@tablet-lg: ~'screen and (max-width: 63.9375em)';
+@tablet-lg: ~'screen and (max-width: 63.9625em)';
 @tablet-lg-min: ~'screen and (min-width: 48em)';
-@tablet-lg-interval: ~'(min-width: 48em) and (max-width: 63.9375em)';
+@tablet-lg-interval: ~'(min-width: 48em) and (max-width: 63.9625em)';
 
-@desktop-s: ~'screen and (max-width: 79.9375em)';
+@desktop-s: ~'screen and (max-width: 79.9625em)';
 @desktop-s-min: ~'screen and (min-width: 64em)';
-@desktop-s-interval: ~'(min-width: 64em) and (max-width: 79.9375em)';
+@desktop-s-interval: ~'(min-width: 64em) and (max-width: 79.9625em)';
 
 @desktop-m-min: ~'screen and (min-width: 80em)';
