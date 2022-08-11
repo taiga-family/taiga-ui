@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "2.58.1",
+    "version": "2.59.0",
     "description": "Taiga UI Angular main components kit",
     "keywords": [
         "angular",
@@ -23,9 +23,9 @@
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=1.12.1 < 2",
         "@ng-web-apis/mutation-observer": ">=1.1.0 < 2",
-        "@taiga-ui/cdk": ">=2.58.1",
-        "@taiga-ui/core": ">=2.58.1",
-        "@taiga-ui/i18n": ">=2.58.1",
+        "@taiga-ui/cdk": ">=2.59.0",
+        "@taiga-ui/core": ">=2.59.0",
+        "@taiga-ui/i18n": ">=2.59.0",
         "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "rxjs": ">=6.0.0"
     }
