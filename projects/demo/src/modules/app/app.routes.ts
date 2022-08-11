@@ -1101,6 +1101,18 @@ export const ROUTES = [
             title: `Typography`,
         },
     },
+    {
+        path: `breakpoints`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `projects/demo/src/modules/markup/breakpoints/breakpoints.module`
+                )
+            ).BreakpointsModule,
+        data: {
+            title: `Breakpoints`,
+        },
+    },
     // DIRECTIVES
     {
         path: `directives/active-zone`,

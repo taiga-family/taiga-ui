@@ -1,0 +1,80 @@
+<tui-doc-page
+    header="Breakpoints"
+    package="CORE"
+    path="core/styles/variables"
+>
+    <ng-template pageTab>
+        <p>Breakpoints are widths that determine how your responsive layout behaves across different viewport sizes.</p>
+
+        <table
+            tuiTable
+            [columns]="columnsNames"
+        >
+            <caption class="table-caption">Our library includes the following breakpoints:</caption>
+            <thead>
+                <tr tuiThGroup>
+                    <th
+                        *ngFor="let column of columnsNames"
+                        tuiTh
+                    >
+                        {{ column | tuiDocExampleCapitalize }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody
+                tuiTbody
+                [data]="breakpoints"
+            >
+                <tr
+                    *tuiRow="let breakpoint of breakpoints"
+                    tuiTr
+                >
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        <tui-doc-copy
+                            i18n
+                            class="copy"
+                            [cdkCopyToClipboard]="breakpoint.name"
+                        >
+                            Copy
+                        </tui-doc-copy>
+                        {{ breakpoint.name }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <tui-doc-example
+            id="usage"
+            i18n-heading
+            heading="Usage"
+            [content]="example1"
+        >
+            <example-css-breakpoints-1></example-css-breakpoints-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>Add import to your file with styles:</p>
+
+                <tui-doc-code
+                    filename="your-file.styles.less"
+                    [code]="importTaigaUILocalLess"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Use breakpoints inside media queries:</p>
+
+                <tui-doc-code
+                    filename="your-file.styles.less"
+                    [code]="exampleBaseUsage"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
