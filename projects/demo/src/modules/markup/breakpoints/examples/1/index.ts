@@ -1,13 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     selector: `example-css-breakpoints-1`,
     templateUrl: `./index.html`,
     styleUrls: [`./index.less`],
     changeDetection,
+    encapsulation,
 })
-export class ExampleCSSBreakpointsComponent1 {
+export class ExampleBreakpointsComponent1 {
     breakpoints = [
         `mobile-m`,
         `mobile-m-min`,

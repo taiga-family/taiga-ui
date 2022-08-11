@@ -65,9 +65,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Common`,
-        title: $localize`CSS Breakpoints`,
-        keywords: `css, breakpoint, breakpoints, media, query, брейкпоинты`,
-        route: `/css-breakpoints`,
+        title: $localize`Breakpoints`,
+        keywords: `css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив`,
+        route: `/breakpoints`,
     },
     {
         section: $localize`Common`,

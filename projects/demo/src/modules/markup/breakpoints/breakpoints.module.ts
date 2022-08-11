@@ -9,8 +9,8 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 
-import {CSSBreakpointsComponent} from './css-breakpoints.component';
-import {ExampleCSSBreakpointsComponent1} from './examples/1';
+import {BreakpointsComponent} from './breakpoints.component';
+import {ExampleBreakpointsComponent1} from './examples/1';
 
 @NgModule({
     imports: [
@@ -19,9 +19,9 @@ import {ExampleCSSBreakpointsComponent1} from './examples/1';
         TuiTableModule,
         TuiDocCopyModule,
         ClipboardModule,
-        RouterModule.forChild(tuiGenerateRoutes(CSSBreakpointsComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(BreakpointsComponent)),
     ],
-    declarations: [CSSBreakpointsComponent, ExampleCSSBreakpointsComponent1],
-    exports: [CSSBreakpointsComponent],
+    declarations: [BreakpointsComponent, ExampleBreakpointsComponent1],
+    exports: [BreakpointsComponent],
 })
-export class CSSBreakpointsModule {}
+export class BreakpointsModule {}

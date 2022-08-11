@@ -1,17 +1,20 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import fileWithBreakpoints from '!!raw-loader!@taiga-ui/core/styles/variables/media.less';
 
 @Component({
     selector: `css-breakpoints`,
-    templateUrl: `./css-breakpoints.template.html`,
-    styleUrls: [`./css-breakpoints.style.less`],
+    templateUrl: `./breakpoints.template.html`,
+    styleUrls: [`./breakpoints.style.less`],
     changeDetection,
+    encapsulation,
 })
-export class CSSBreakpointsComponent {
-    breakpoints = parseBreakpoints(removeLegacyVariables(fileWithBreakpoints));
+export class BreakpointsComponent {
+    readonly breakpoints = parseBreakpoints(removeLegacyVariables(fileWithBreakpoints));
+    readonly columnsNames = Object.keys(this.breakpoints[0]);
 
     readonly importTaigaUILocalLess = import(
         `!!raw-loader!./examples/import/import-taiga-ui-local-less.md`
