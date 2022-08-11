@@ -109,7 +109,6 @@
                     [uniqueTags]="uniqueTags"
                     [separator]="separator"
                     [readOnly]="readOnly"
-                    [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
                     [inputHidden]="inputHidden"
                     [pseudoHover]="pseudoHovered"
@@ -143,36 +142,6 @@
                 Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="allowSpaces"
-                documentationPropertyType="boolean"
-                documentationPropertyMode="input"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="allowSpaces"
-            >
-                Allow spaces inside tag.
-
-                <p>In next major release spaces are always allowed by default.</p>
-
-                <p>
-                    <strong>
-                        Use property
-                        <code>[separator]</code>
-                        to forbid spaces.
-                    </strong>
-                </p>
-                <p>
-                    See this
-                    <a
-                        tuiLink
-                        routerLink="/components/input-tag"
-                        fragment="no-spaces-inside-tags"
-                    >
-                        example
-                    </a>
-                    .
-                </p>
             </ng-template>
             <ng-template
                 i18n
