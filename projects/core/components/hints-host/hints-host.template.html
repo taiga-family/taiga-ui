@@ -3,7 +3,7 @@
     role="tooltip"
     @tuiParentAnimation
     [attr.id]="hint.id"
-    [tuiActiveZoneParent]="hint.activeZone"
+    [tuiActiveZoneParent]="hint.activeZone || null"
 >
     <ng-container *polymorpheusOutlet="hint.component; context: {$implicit: hint}"></ng-container>
 </div>

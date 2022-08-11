@@ -83,15 +83,19 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     ) {}
 
     get host(): HTMLElement {
-        return this.dropdownHost
-            ? this.dropdownHost.nativeElement
-            : this.elementRef.nativeElement;
+        return this.dropdownHost?.nativeElement || this.elementRef.nativeElement;
     }
 
-    get dropdown(): HTMLElement | null {
-        return !this.dropdownDirective || this.dropdownDirective.dropdownBoxRef === null
-            ? null
-            : this.dropdownDirective.dropdownBoxRef.location.nativeElement;
+    get computedHost(): HTMLElement {
+        return (
+            this.dropdownHost?.nativeElement ||
+            this.nativeFocusableElement ||
+            this.elementRef.nativeElement
+        );
+    }
+
+    get dropdown(): HTMLElement | undefined {
+        return this.dropdownDirective?.dropdownBoxRef?.location.nativeElement;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -112,21 +116,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @HostListener(`focusin`, [`$event.target`])
     onFocusIn(target: HTMLElement): void {
-        const host = this.dropdownHost
-            ? this.dropdownHost.nativeElement
-            : this.nativeFocusableElement || this.elementRef.nativeElement;
-
-        if (!host.contains(target)) {
+        if (!this.computedHost.contains(target)) {
             this.updateOpen(false);
         }
     }
 
     @HostListener(`click`, [`$event.target`])
     onClick(target: HTMLElement): void {
-        const host = this.nativeFocusableElement || this.host;
-        const dropdownHost = this.dropdownHost ? this.dropdownHost.nativeElement : host;
-
-        if (!this.hostEditable && dropdownHost.contains(target)) {
+        if (!this.hostEditable && this.computedHost.contains(target)) {
             this.updateOpen(!this.open);
         }
     }
@@ -184,10 +181,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     private get hostEditable(): boolean {
-        const host = this.nativeFocusableElement || this.host;
-
-        // TODO: iframe warning
-        return host instanceof HTMLElement && tuiIsElementEditable(host);
+        return tuiIsElementEditable(this.computedHost);
     }
 
     private focusDropdown(event: KeyboardEvent, first: boolean): void {
@@ -206,7 +200,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         if (
             !this.wrapper ||
             !this.open ||
-            this.dropdown === null ||
+            !this.dropdown ||
             // TODO: iframe warning
             !(this.wrapper.nativeElement.nextElementSibling instanceof HTMLElement)
         ) {
@@ -228,7 +222,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             this.wrapper.nativeElement,
         );
 
-        if (focusable === null) {
+        if (!focusable) {
             return;
         }
 
@@ -247,7 +241,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     private focusHost(): void {
         const host = this.nativeFocusableElement;
 
-        if (host !== null) {
+        if (host) {
             host.focus({preventScroll: true});
         }
     }

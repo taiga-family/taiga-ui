@@ -121,10 +121,8 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
 
     @tuiPure
     private getStops(stops: QueryList<ElementRef<HTMLElement>>): readonly number[] {
-        return stops
-            .toArray()
-            .map(
-                ({nativeElement}) => nativeElement.offsetTop + nativeElement.clientHeight,
-            );
+        return stops.map(
+            ({nativeElement}) => nativeElement.offsetTop + nativeElement.clientHeight,
+        );
     }
 }

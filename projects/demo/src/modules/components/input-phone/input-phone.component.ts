@@ -57,8 +57,8 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
     dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;
