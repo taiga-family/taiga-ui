@@ -25,7 +25,7 @@ const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 export function migrateProgress(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
-    const templateResources = getComponentTemplates('**/**');
+    const templateResources = getComponentTemplates('**/**.ts');
 
     for (const templateResource of templateResources) {
         replaceProgressColorSegmentsPipe(templateResource, fileSystem);

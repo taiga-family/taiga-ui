@@ -20,7 +20,7 @@ describe('ng-update', () => {
         host = new UnitTestTree(new HostTree());
         runner = new SchematicTestRunner('schematics', collectionPath);
 
-        setActiveProject(createProject(host));
+        setActiveProject(createProject(host, '/', '**/**'));
 
         createMainFiles();
 
@@ -38,6 +38,14 @@ import { unknown } from '@taiga-ui/core'
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {}`,
+        );
+
+        expect(tree.readContent('test/style.less')).toEqual(
+            `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
+        );
+
+        expect(tree.readContent('test/app/app.template.less')).toEqual(
+            `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
         );
     });
 
@@ -59,4 +67,13 @@ export class AppComponent {}`,
     );
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
+
+    createSourceFile(
+        'test/style.less',
+        `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
+    );
+    createSourceFile(
+        'test/app/app.template.less',
+        `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
+    );
 }
