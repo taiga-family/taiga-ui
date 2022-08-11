@@ -23,12 +23,11 @@
                 </tr>
             </thead>
             <tbody
-                *ngIf="breakpoints | async as data"
                 tuiTbody
-                [data]="data"
+                [data]="breakpoints"
             >
                 <tr
-                    *tuiRow="let breakpoint of data"
+                    *tuiRow="let breakpoint of breakpoints"
                     tuiTr
                 >
                     <td

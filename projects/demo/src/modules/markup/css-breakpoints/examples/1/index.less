@@ -16,8 +16,8 @@
 
 .item {
     height: 100px;
-    background: var(--tui-negative);
-    color: var(--tui-text-01-night);
+    background: var(--tui-neutral-bg);
+    color: var(--tui-text-01);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,8 @@
 each(@breakpoints, {
     .@{value} {
         @media @@value {
-            background: var(--tui-positive);
+            background: var(--tui-primary);
+            color: var(--tui-primary-text);
         }
     }
 });

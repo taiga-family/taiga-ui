@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiRawLoad} from '@taiga-ui/addon-doc';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+
+import fileWithBreakpoints from '!!raw-loader!@taiga-ui/core/styles/variables/media.less';
 
 @Component({
     selector: `css-breakpoints`,
@@ -9,11 +11,7 @@ import {TuiDocExample, tuiRawLoad} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class CSSBreakpointsComponent {
-    breakpoints = tuiRawLoad(
-        import(`!!raw-loader!@taiga-ui/core/styles/variables/media.less`),
-    )
-        .then(removeLegacyVariables)
-        .then(parseBreakpoints);
+    breakpoints = parseBreakpoints(removeLegacyVariables(fileWithBreakpoints));
 
     readonly importTaigaUILocalLess = import(
         `!!raw-loader!./examples/import/import-taiga-ui-local-less.md`
@@ -32,7 +30,12 @@ export class CSSBreakpointsComponent {
 
 // TODO delete in v3.0
 function removeLegacyVariables(file: string): string {
-    return file.slice(file.indexOf(`// actual`) + `// actual`.length).trim();
+    const codeComment = `// actual`;
+    const startOffset = file.includes(codeComment)
+        ? file.indexOf(codeComment) + codeComment.length
+        : 0;
+
+    return file.slice(startOffset).trim();
 }
 
 function parseBreakpoints(file: string): Array<{name: string; value: string}> {
