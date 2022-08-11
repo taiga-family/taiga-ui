@@ -1104,11 +1104,7 @@ export const ROUTES = [
     {
         path: `breakpoints`,
         loadChildren: async () =>
-            (
-                await import(
-                    `projects/demo/src/modules/markup/breakpoints/breakpoints.module`
-                )
-            ).BreakpointsModule,
+            (await import(`../markup/breakpoints/breakpoints.module`)).BreakpointsModule,
         data: {
             title: `Breakpoints`,
         },
