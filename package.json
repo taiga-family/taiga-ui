@@ -22,7 +22,7 @@
         "projects/*"
     ],
     "scripts": {
-        "postinstall": "husky install || echo 'skip error' && ngcc --async || echo 'skip error'",
+        "postinstall": "npm run exec -- ./scripts/postinstall.ts",
         "start": "nx serve",
         "build:ssr": "nx build --prod && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
