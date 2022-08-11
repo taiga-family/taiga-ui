@@ -16,7 +16,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@angular-devkit/schematics": "^9.1.12",
-        "ng-morph": "^2.0.0"
+        "ng-morph": "^2.1.0"
     },
     "devDependencies": {
         "@angular-devkit/schematics-cli": "~0.901.12"

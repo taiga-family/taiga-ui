@@ -1,6 +1,10 @@
 import {Element} from 'parse5';
-import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {
+    createProject,
+    saveActiveProject,
+    setActiveProject,
+    DevkitFileSystem,
+} from 'ng-morph';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {TemplateResource} from '../interfaces/template-resourse';
 import {findElementsWithAttribute} from '../../utils/templates/elements';

@@ -1,5 +1,11 @@
-import {ClassDeclaration, getClasses, getImports, Pattern, Query} from 'ng-morph';
-import {StructureType} from 'ng-morph/utils/types/structure-type';
+import {
+    ClassDeclaration,
+    getClasses,
+    getImports,
+    Pattern,
+    Query,
+    StructureType,
+} from 'ng-morph';
 
 export function getNgModules(
     pattern: Pattern,

@@ -1,8 +1,13 @@
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {TemplateResource} from '../../interfaces/template-resourse';
 import {replaceInputProperty} from '../../../utils/templates/ng-component-input-manipulations';
-import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import {
+    addMethods,
+    createProject,
+    saveActiveProject,
+    setActiveProject,
+    DevkitFileSystem,
+} from 'ng-morph';
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 

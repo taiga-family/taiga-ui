@@ -6,9 +6,9 @@ import {
     Pattern,
     PropertyAssignment,
     Query,
+    StructureType,
 } from 'ng-morph';
 import * as path from 'path';
-import {StructureType} from 'ng-morph/utils/types/structure-type';
 import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
 
 export function getComponentTemplates(
