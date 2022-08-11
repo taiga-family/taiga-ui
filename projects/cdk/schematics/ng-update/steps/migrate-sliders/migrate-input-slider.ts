@@ -12,7 +12,7 @@ import {getComponentTemplates} from '../../../utils/templates/get-component-temp
 import {hasElementAttribute} from '../../../utils/templates/elements';
 
 export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
-    const templateResources = getComponentTemplates('**/**');
+    const templateResources = getComponentTemplates('**/**.ts');
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
     for (const templateResource of templateResources) {
