@@ -6,6 +6,8 @@
     },
     "files": ["src/main.server.ts", "server.ts"],
     "angularCompilerOptions": {
-        "entryModule": "./src/app/app.server.module#AppServerModule"
+        "enableIvy": true,
+        "entryModule": "./src/app/app.server.module#AppServerModule",
+        "strictMetadataEmit": false
     }
 }

@@ -186,27 +186,27 @@
                 }
             }
         },
-        "serve:ssl": {
+        "serve-ssl": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "nx mkcert demo && nx serve --ssl"}
         },
-        "serve:ip": {
+        "serve-ip": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "nx serve --open --host 0.0.0.0 --disable-host-check"}
         },
-        "serve:ru": {
+        "serve-ru": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "nx serve --configuration ru"}
         },
-        "serve:default": {
+        "serve-default": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "nx serve --configuration def"}
         },
-        "serve:shadow": {
+        "serve-shadow": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "nx serve --configuration shadow"}
         },
-        "serve:ssr": {
+        "serve-ssr": {
             "builder": "@nguniversal/builders:ssr-dev-server",
             "options": {
                 "browserTarget": "demo:build",
@@ -217,9 +217,15 @@
                     "browserTarget": "demo:build:production",
                     "serverTarget": "demo:server:production"
                 }
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "prebuild",
+                    "projects": "self"
+                }
+            ]
         },
-        "serve:compiled": {
+        "serve-compiled": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {"command": "angular-http-server -p 3333 --silent"}
         },
