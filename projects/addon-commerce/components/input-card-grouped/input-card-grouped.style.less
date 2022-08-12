@@ -120,11 +120,11 @@
         color: var(--tui-text-03-night);
     }
 
-    &_card {
+    &_card,
+    :host[data-mode='onDark'] &_card {
         &:not(.t-input_hidden),
         &:not(.t-input_hidden)::placeholder,
         &:not(.t-input_hidden):-webkit-autofill {
-            caret-color: var(--tui-base-09);
             color: transparent !important;
             -webkit-text-fill-color: transparent !important;
         }
