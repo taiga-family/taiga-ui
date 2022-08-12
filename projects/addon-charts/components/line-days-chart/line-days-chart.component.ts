@@ -157,13 +157,11 @@ export class TuiLineDaysChartComponent {
 
         const index = TuiMonth.lengthBetween(this.value[0][0], day);
         const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
-        const array = this.charts.toArray();
-        const current = array[index];
-        const {value} = current;
+        const current = this.charts.get(index);
 
-        array.forEach(chart => {
+        this.charts.forEach(chart => {
             if (chart === current) {
-                current.onHovered(value.findIndex(point => point[0] === x));
+                current.onHovered(current.value.findIndex(point => point[0] === x));
             } else {
                 chart.onHovered(NaN);
             }
