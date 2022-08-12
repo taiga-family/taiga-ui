@@ -18,7 +18,7 @@ import {
 import {TuiDriver, TuiRectAccessor} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiHint} from '@taiga-ui/core/interfaces';
+import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
@@ -59,7 +59,7 @@ export class TuiHintComponent<C = unknown> {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly polymorpheus: TuiContextWithImplicit<TuiHint<C>>,
+        private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
         @Inject(TuiDriver) private readonly driver: TuiDriver,
         @Optional()
         @Inject(TuiModeDirective)

@@ -43,8 +43,8 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     cleaner = false;
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;

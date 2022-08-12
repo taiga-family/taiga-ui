@@ -121,8 +121,8 @@ export abstract class AbstractExampleTuiControl
     dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
