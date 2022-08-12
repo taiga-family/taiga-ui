@@ -265,7 +265,6 @@ export class TuiMultiSelectComponent<T>
 
     onClick({nativeFocusableElement}: TuiInputTagComponent): void {
         if (
-            this.editable &&
             this.interactive &&
             nativeFocusableElement &&
             tuiIsNativeFocused(nativeFocusableElement)
