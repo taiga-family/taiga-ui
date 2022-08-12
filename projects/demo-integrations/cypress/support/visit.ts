@@ -28,6 +28,7 @@ interface TuiVisitOptions {
     hideHeader?: boolean;
     hideNavigation?: boolean;
     skipExpectUrl?: boolean;
+    rootSelector?: string;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
@@ -63,6 +64,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideVersionManager = true,
         hideLanguageSwitcher = true,
         pseudoMobile = false,
+        rootSelector = `app`,
     } = options;
 
     stubExternalIcons();
@@ -113,7 +115,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         waitAllRequests(`@icons`);
     }
 
-    cy.get(`._is-cypress-mode`).as(`app`);
+    cy.get(`${rootSelector}._is-cypress-mode`).as(`app`);
 
     if (hideCursor) {
         cy.get(`@app`).invoke(`addClass`, `_hide-cursor`);
@@ -129,7 +131,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION); // wait until app load some synchronous code
 
-    cy.get(`app._loaded`).should(`exist`);
+    cy.get(`${rootSelector}._loaded`).should(`exist`);
 
     if (hideHeader) {
         cy.tuiHideHeader();
