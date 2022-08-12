@@ -7,7 +7,7 @@ const INDENTATION = 4;
 
 export function syncVersions(
     filesOrDirectories: string[],
-    version: string,
+    newVersion: string,
     ignores: string[] = [],
 ): void {
     const patterns = filesOrDirectories.map(pattern =>
@@ -22,9 +22,15 @@ export function syncVersions(
 
     for (const file of files) {
         const packageJson = JSON.parse(readFileSync(file).toString());
-        const isPackageLockJson = file.endsWith(`-lock.json`);
+        const isPackageLockFile = file.endsWith(`-lock.json`);
 
-        updatePackageJsonStructure(packageJson, version, isPackageLockJson, ignores);
+        updatePackageJsonStructure({
+            packageJson,
+            prevVersion: packageJson.version,
+            newVersion,
+            isPackageLockFile,
+            ignores,
+        });
         writeFileSync(file, `${JSON.stringify(packageJson, null, INDENTATION)}\n`);
         console.info(`\x1B[32m%s\x1B[0m`, `[synchronized]:`, file);
     }
