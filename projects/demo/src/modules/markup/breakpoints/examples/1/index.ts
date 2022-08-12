@@ -20,5 +20,6 @@ export class ExampleBreakpointsComponent1 {
         `desktop-s`,
         `desktop-s-min`,
         `desktop-s-interval`,
+        `desktop-m-min`,
     ] as const;
 }
