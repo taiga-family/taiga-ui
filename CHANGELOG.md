@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.59.1](https://github.com/tinkoff/taiga-ui/compare/v2.59.0...v2.59.1) (2022-08-12)
+
+### Bug Fixes
+
+- **core:** css media breakpoints correction (edge cases)
+  ([e504965](https://github.com/tinkoff/taiga-ui/commit/e5049650fdc548eda8ec8f797cc98854c6e9a521))
+- **core:** set transparent of autofill only for bank cards
+  ([3ccad4d](https://github.com/tinkoff/taiga-ui/commit/3ccad4dbc54daf1c365caf3ee51d4d629a41ee99))
+
 ## [2.59.0](https://github.com/tinkoff/taiga-ui/compare/v2.58.1...v2.59.0) (2022-08-11)
 
 ### Features
