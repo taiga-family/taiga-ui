@@ -84,8 +84,8 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;

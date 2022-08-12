@@ -341,6 +341,6 @@ describe(`InputPhoneInternational`, () => {
     }
 
     function getCountrySelector(): DebugElement {
-        return fixture.debugElement.query(By.css(`.t-country-select`));
+        return fixture.debugElement.query(By.css(`.t-country-select input`));
     }
 });
