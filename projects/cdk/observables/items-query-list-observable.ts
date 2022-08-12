@@ -10,7 +10,7 @@ export function tuiItemsQueryListObservable<T>(
     queryList: QueryList<T>,
 ): Observable<readonly T[]> {
     return queryList.changes.pipe(
+        startWith(null),
         map(() => tuiGetOriginalArrayFromQueryList(queryList)),
-        startWith(tuiGetOriginalArrayFromQueryList(queryList)),
     );
 }

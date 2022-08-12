@@ -55,7 +55,6 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     getOptions(includeDisabled: boolean = false): readonly T[] {
         return this.optionsQuery
-            .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);

@@ -16,7 +16,7 @@ import {
     TuiVehicle,
 } from '@taiga-ui/core/abstract';
 import {DESCRIBED_BY} from '@taiga-ui/core/constants';
-import {TuiHint} from '@taiga-ui/core/interfaces';
+import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -36,7 +36,7 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
     ],
 })
 export class TuiHintDirective<C>
-    implements OnDestroy, OnChanges, TuiHint<C>, TuiRectAccessor, TuiVehicle
+    implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
     @Input()
     @tuiDefaultProp()
@@ -57,17 +57,17 @@ export class TuiHintDirective<C>
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(PolymorpheusComponent)
         readonly component: PolymorpheusComponent<object, object>,
-        @Optional()
-        @Inject(TuiActiveZoneDirective)
-        readonly activeZone: TuiActiveZoneDirective | null,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
+        @Optional()
+        @Inject(TuiActiveZoneDirective)
+        readonly activeZone?: TuiActiveZoneDirective | null,
     ) {
         this.hintService.register(this);
     }
 
-    get id(): string | null {
-        return this.tuiHintId ? this.tuiHintId + DESCRIBED_BY : null;
+    get id(): string | undefined {
+        return this.tuiHintId ? this.tuiHintId + DESCRIBED_BY : undefined;
     }
 
     ngOnChanges(): void {

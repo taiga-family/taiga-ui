@@ -40,17 +40,13 @@ export abstract class AbstractTuiPortalHostComponent {
         const parent = component.createInjector(this.injector);
         const resolver = parent.get(ComponentFactoryResolver);
         const factory = resolver.resolveComponentFactory(component.component);
-        const injector = Injector.create({
-            parent,
-            providers: [
-                {
-                    provide: AbstractTuiPortalHostComponent,
-                    useValue: this,
-                },
-            ],
-        });
+        const providers = [{provide: AbstractTuiPortalHostComponent, useValue: this}];
+        const injector = Injector.create({parent, providers});
+        const ref = this.viewContainerRef.createComponent(factory, undefined, injector);
 
-        return this.viewContainerRef.createComponent<C>(factory, undefined, injector);
+        ref.changeDetectorRef.detectChanges();
+
+        return ref;
     }
 
     addTemplateChild<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {

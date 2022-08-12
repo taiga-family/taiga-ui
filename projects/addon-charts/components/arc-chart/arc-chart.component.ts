@@ -141,12 +141,10 @@ export class TuiArcChartComponent {
 }
 
 function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
-    return arcs
-        .toArray()
-        .map(({nativeElement}, index) =>
-            merge(
-                tuiTypedFromEvent(nativeElement, `mouseenter`).pipe(mapTo(index)),
-                tuiTypedFromEvent(nativeElement, `mouseleave`).pipe(mapTo(NaN)),
-            ),
-        );
+    return arcs.map(({nativeElement}, index) =>
+        merge(
+            tuiTypedFromEvent(nativeElement, `mouseenter`).pipe(mapTo(index)),
+            tuiTypedFromEvent(nativeElement, `mouseleave`).pipe(mapTo(NaN)),
+        ),
+    );
 }
