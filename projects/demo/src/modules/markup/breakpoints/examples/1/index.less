@@ -24,7 +24,7 @@
 }
 
 @breakpoints: mobile-m, mobile-m-min, mobile-m-interval, tablet-lg, tablet-lg-min, tablet-lg-interval, desktop-s,
-    desktop-s-min, desktop-s-interval;
+    desktop-s-min, desktop-s-interval, desktop-m-min;
 
 each(@breakpoints, {
     .@{value} {
@@ -34,3 +34,7 @@ each(@breakpoints, {
         }
     }
 });
+
+.desktop-m-min {
+    grid-column: span 3;
+}
