@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,7 +12,7 @@ import {NgControl} from '@angular/forms';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -33,12 +32,7 @@ import {TextMaskConfig} from 'angular2-text-mask';
     templateUrl: `./input-cvc.template.html`,
     styleUrls: [`./input-cvc.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCVCComponent),
-        },
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiInputCVCComponent)],
 })
 export class TuiInputCVCComponent
     extends AbstractTuiControl<string>

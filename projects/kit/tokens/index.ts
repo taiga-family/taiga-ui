@@ -1,4 +1,4 @@
-export * from './calendar-data-stream';
+export * from './calendar-date-stream';
 export * from './date-inputs-value-transformers';
 export * from './i18n';
 export * from './items-handlers';

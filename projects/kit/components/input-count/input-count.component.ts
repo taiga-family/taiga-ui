@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,8 +12,9 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -49,14 +49,8 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
     styleUrls: [`./input-count.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCountComponent),
-        },
-        {
-            provide: AbstractTuiControl,
-            useExisting: forwardRef(() => TuiInputCountComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCountComponent),
+        tuiAsControl(TuiInputCountComponent),
     ],
 })
 export class TuiInputCountComponent

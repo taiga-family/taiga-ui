@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -18,8 +17,9 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -33,8 +33,8 @@ import {
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
-    TUI_DATA_LIST_HOST,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    tuiAsDataListHost,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -61,17 +61,12 @@ import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-op
     styleUrls: [`./multi-select.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiMultiSelectComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiMultiSelectComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
+        tuiAsControl(TuiMultiSelectComponent),
+        tuiAsDataListHost(TuiMultiSelectComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>

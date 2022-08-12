@@ -5,7 +5,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -25,7 +24,8 @@ import {
 } from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiAssertIsElement,
     TuiBooleanHandler,
     TuiCreditCardAutofillName,
@@ -38,11 +38,11 @@ import {
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    TUI_DATA_LIST_HOST,
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_APPEARANCE,
+    tuiAsDataListHost,
     TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
@@ -77,15 +77,10 @@ const ICONS: Record<TuiPaymentSystem, string> = {
     styleUrls: [`./input-card-grouped.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiAsFocusableItemAccessor(TuiInputCardGroupedComponent),
+        tuiAsControl(TuiInputCardGroupedComponent),
+        tuiAsDataListHost(TuiInputCardGroupedComponent),
         MODE_PROVIDER,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCardGroupedComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiInputCardGroupedComponent),
-        },
     ],
     host: {
         '($.data-mode.attr)': `mode$`,

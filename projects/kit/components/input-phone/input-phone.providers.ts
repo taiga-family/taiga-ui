@@ -1,37 +1,22 @@
 import {DOCUMENT} from '@angular/common';
-import {forwardRef, InjectionToken} from '@angular/core';
-import {
-    AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiDestroyService,
-} from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {InjectionToken} from '@angular/core';
+import {tuiAsControl, tuiAsFocusableItemAccessor, TuiDestroyService} from '@taiga-ui/cdk';
+import {tuiAsDataListHost} from '@taiga-ui/core';
 import {fromEvent, merge, Observable} from 'rxjs';
-import {flatMap, startWith, takeUntil, windowToggle} from 'rxjs/operators';
+import {mergeMap, startWith, takeUntil, windowToggle} from 'rxjs/operators';
 
 import {TuiInputPhoneComponent} from './input-phone.component';
 
-export const SELECTION_STREAM = new InjectionToken<Observable<unknown>>(
+export const TUI_SELECTION_STREAM = new InjectionToken<Observable<unknown>>(
     `A stream of selection changes`,
 );
-export const INPUT_PHONE_PROVIDERS = [
+export const TUI_INPUT_PHONE_PROVIDERS = [
     TuiDestroyService,
-    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+    tuiAsFocusableItemAccessor(TuiInputPhoneComponent),
+    tuiAsControl(TuiInputPhoneComponent),
+    tuiAsDataListHost(TuiInputPhoneComponent),
     {
-        provide: AbstractTuiControl,
-        useExisting: forwardRef(() => TuiInputPhoneComponent),
-    },
-    {
-        provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-        useExisting: forwardRef(() => TuiInputPhoneComponent),
-    },
-    {
-        provide: TUI_DATA_LIST_HOST,
-        useExisting: forwardRef(() => TuiInputPhoneComponent),
-    },
-    {
-        provide: SELECTION_STREAM,
+        provide: TUI_SELECTION_STREAM,
         deps: [TuiDestroyService, DOCUMENT],
         useFactory: (
             destroy$: Observable<unknown>,
@@ -45,7 +30,7 @@ export const INPUT_PHONE_PROVIDERS = [
                     ),
                     () => fromEvent(documentRef, `mousedown`),
                 ),
-                flatMap(windowed$ => windowed$.pipe(startWith(null))),
+                mergeMap(windowed$ => windowed$.pipe(startWith(null))),
                 takeUntil(destroy$),
             );
         },

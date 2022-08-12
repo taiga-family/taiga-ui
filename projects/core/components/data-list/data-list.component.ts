@@ -23,7 +23,7 @@ import {
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
-import {TUI_DATA_LIST_ACCESSOR, TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -38,12 +38,7 @@ import {TuiOptionComponent} from './option/option.component';
     styleUrls: [`./data-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    providers: [
-        {
-            provide: TUI_DATA_LIST_ACCESSOR,
-            useExisting: forwardRef(() => TuiDataListComponent),
-        },
-    ],
+    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})

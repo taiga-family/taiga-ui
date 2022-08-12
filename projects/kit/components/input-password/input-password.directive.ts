@@ -1,16 +1,11 @@
-import {Directive, DoCheck, forwardRef} from '@angular/core';
-import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
+import {Directive, DoCheck} from '@angular/core';
+import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPasswordComponent} from './input-password.component';
 
 @Directive({
     selector: `tui-input-password`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiInputPasswordDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiInputPasswordDirective)],
 })
 export class TuiInputPasswordDirective
     extends TuiAbstractTextfieldHost<TuiInputPasswordComponent>

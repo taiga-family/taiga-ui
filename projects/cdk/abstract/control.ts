@@ -5,6 +5,8 @@ import {
     Input,
     OnDestroy,
     OnInit,
+    Provider,
+    Type,
 } from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
@@ -227,4 +229,11 @@ export abstract class AbstractTuiControl<T>
             ? this.valueTransformer.toControlValue(componentValue)
             : componentValue;
     }
+}
+
+export function tuiAsControl(useExisting: Type<AbstractTuiControl<any>>): Provider {
+    return {
+        provide: AbstractTuiControl,
+        useExisting,
+    };
 }

@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -17,7 +16,7 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -43,10 +42,7 @@ const icons: Record<TuiPaymentSystem, string> = {
     styleUrls: [`./input-card.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCardComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCardComponent),
         {
             provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
             deps: [[new Optional(), TuiTextfieldExampleTextDirective]],

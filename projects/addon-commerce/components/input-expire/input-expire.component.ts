@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,7 +12,7 @@ import {NgControl} from '@angular/forms';
 import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -30,12 +29,7 @@ import {TextMaskConfig} from 'angular2-text-mask';
     templateUrl: `./input-expire.template.html`,
     styleUrls: [`./input-expire.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputExpireComponent),
-        },
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiInputExpireComponent)],
 })
 export class TuiInputExpireComponent
     extends AbstractTuiControl<string>

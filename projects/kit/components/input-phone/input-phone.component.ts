@@ -35,18 +35,20 @@ import {
     TuiTextfieldCleanerDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 
 import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
-import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
+import {TUI_INPUT_PHONE_PROVIDERS, TUI_SELECTION_STREAM} from './input-phone.providers';
 
 @Component({
     selector: `tui-input-phone`,
     templateUrl: `./input-phone.template.html`,
     styleUrls: [`./input-phone.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: INPUT_PHONE_PROVIDERS,
+    providers: TUI_INPUT_PHONE_PROVIDERS,
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
@@ -117,12 +119,10 @@ export class TuiInputPhoneComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(SELECTION_STREAM)
-        selection$: Observable<unknown>,
+        @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
-        @Inject(TUI_INPUT_PHONE_OPTIONS)
-        private readonly options: TuiInputPhoneOptions,
+        @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,
     ) {
         super(control, changeDetectorRef);
 
