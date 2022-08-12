@@ -163,8 +163,8 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     valueContent = this.valueContentVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     dropdownDirection: TuiVerticalDirection | null = null;
