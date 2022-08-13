@@ -16,8 +16,11 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiFocusableElementAccessor,
     tuiGetClipboardDataText,
     TuiInputMode,
@@ -27,6 +30,7 @@ import {
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_TEXTFIELD_CLEANER,
+    tuiAsDataListHost,
     TuiDataListDirective,
     TuiDataListHost,
     tuiFormatPhone,
@@ -36,18 +40,24 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_SELECTION_STREAM} from '@taiga-ui/kit/tokens';
 import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
-import {TUI_INPUT_PHONE_PROVIDERS, TUI_SELECTION_STREAM} from './input-phone.providers';
 
 @Component({
     selector: `tui-input-phone`,
     templateUrl: `./input-phone.template.html`,
     styleUrls: [`./input-phone.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_PHONE_PROVIDERS,
+    providers: [
+        TuiDestroyService,
+        tuiAsFocusableItemAccessor(TuiInputPhoneComponent),
+        tuiAsControl(TuiInputPhoneComponent),
+        tuiAsDataListHost(TuiInputPhoneComponent),
+    ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputPhoneComponent
@@ -114,10 +124,8 @@ export class TuiInputPhoneComponent
     open = false;
 
     constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
+        @Optional() @Self() @Inject(NgControl) control: NgControl | null,
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)
@@ -126,7 +134,7 @@ export class TuiInputPhoneComponent
     ) {
         super(control, changeDetectorRef);
 
-        selection$.subscribe(() => {
+        selection$.pipe(takeUntil(destroy$)).subscribe(() => {
             this.setCaretPosition();
         });
     }
