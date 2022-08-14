@@ -22,9 +22,9 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
-    TUI_OPTION_CONTENT,
     TUI_TEXTFIELD_CLEANER,
     tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
@@ -52,10 +52,7 @@ import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
         tuiAsFocusableItemAccessor(TuiSelectComponent),
         tuiAsControl(TuiSelectComponent),
         tuiAsDataListHost(TuiSelectComponent),
-        {
-            provide: TUI_OPTION_CONTENT,
-            useValue: TUI_SELECT_OPTION,
-        },
+        tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })

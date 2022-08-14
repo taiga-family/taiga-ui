@@ -18,6 +18,7 @@ import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
     TuiActiveZoneDirective,
+    tuiArrayToggle,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -247,14 +248,8 @@ export class TuiMultiSelectComponent<T>
             return;
         }
 
-        const index = value.indexOf(options[0]);
-
         event.preventDefault();
-        this.updateValue(
-            index === -1
-                ? [...value, options[0]]
-                : [...value.slice(0, index), ...value.slice(index + 1)],
-        );
+        this.updateValue(tuiArrayToggle(value, options[0]));
         this.updateSearch(null);
     }
 

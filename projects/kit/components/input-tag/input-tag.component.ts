@@ -23,6 +23,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
     TuiActiveZoneDirective,
+    tuiArrayRemove,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -497,10 +498,7 @@ export class TuiInputTagComponent
     private deleteLastEnabledItem(): void {
         for (let index = this.value.length - 1; index >= 0; index--) {
             if (!this.disabledItemHandler(this.value[index])) {
-                this.updateValue([
-                    ...this.value.slice(0, index),
-                    ...this.value.slice(index + 1, this.value.length),
-                ]);
+                this.updateValue(tuiArrayRemove(this.value, index));
 
                 break;
             }

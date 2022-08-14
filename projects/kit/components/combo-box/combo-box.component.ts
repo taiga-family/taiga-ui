@@ -28,8 +28,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
-    TUI_OPTION_CONTENT,
     tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -55,10 +55,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         tuiAsFocusableItemAccessor(TuiComboBoxComponent),
         tuiAsDataListHost(TuiComboBoxComponent),
         tuiAsControl(TuiComboBoxComponent),
-        {
-            provide: TUI_OPTION_CONTENT,
-            useValue: TUI_SELECT_OPTION,
-        },
+        tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })

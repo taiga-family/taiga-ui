@@ -16,6 +16,7 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
+    tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -43,6 +44,7 @@ const icons: Record<TuiPaymentSystem, string> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputCardComponent),
+        tuiAsControl(TuiInputCardComponent),
         {
             provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
             deps: [[new Optional(), TuiTextfieldExampleTextDirective]],

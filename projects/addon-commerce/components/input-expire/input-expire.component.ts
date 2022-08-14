@@ -12,6 +12,7 @@ import {NgControl} from '@angular/forms';
 import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
+    tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -29,7 +30,10 @@ import {TextMaskConfig} from 'angular2-text-mask';
     templateUrl: `./input-expire.template.html`,
     styleUrls: [`./input-expire.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiInputExpireComponent)],
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputExpireComponent),
+        tuiAsControl(TuiInputExpireComponent),
+    ],
 })
 export class TuiInputExpireComponent
     extends AbstractTuiControl<string>

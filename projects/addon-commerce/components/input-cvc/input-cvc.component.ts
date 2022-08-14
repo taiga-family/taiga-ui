@@ -12,6 +12,7 @@ import {NgControl} from '@angular/forms';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiControl,
+    tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -32,7 +33,10 @@ import {TextMaskConfig} from 'angular2-text-mask';
     templateUrl: `./input-cvc.template.html`,
     styleUrls: [`./input-cvc.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiInputCVCComponent)],
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputCVCComponent),
+        tuiAsControl(TuiInputCVCComponent),
+    ],
 })
 export class TuiInputCVCComponent
     extends AbstractTuiControl<string>

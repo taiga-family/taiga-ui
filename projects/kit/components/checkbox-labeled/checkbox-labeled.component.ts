@@ -12,6 +12,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
+    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -26,7 +27,10 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
     templateUrl: `./checkbox-labeled.template.html`,
     styleUrls: [`./checkbox-labeled.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent)],
+    providers: [
+        tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
+        tuiAsControl(TuiCheckboxLabeledComponent),
+    ],
 })
 export class TuiCheckboxLabeledComponent
     extends AbstractTuiNullableControl<boolean>
