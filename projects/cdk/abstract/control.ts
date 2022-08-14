@@ -231,7 +231,7 @@ export abstract class AbstractTuiControl<T>
     }
 }
 
-export function tuiAsControl(useExisting: Type<AbstractTuiControl<any>>): Provider {
+export function tuiAsControl<T>(useExisting: Type<AbstractTuiControl<T>>): Provider {
     return {
         provide: AbstractTuiControl,
         useExisting,
