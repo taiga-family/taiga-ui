@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -28,10 +28,8 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
     styleUrls: [`./rating.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRatingComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRatingComponent),
+        tuiAsControl(TuiRatingComponent),
     ],
 })
 export class TuiRatingComponent

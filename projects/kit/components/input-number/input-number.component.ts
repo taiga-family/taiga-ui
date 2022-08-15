@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -14,11 +13,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    AbstractTuiControl,
     AbstractTuiNullableControl,
     EMPTY_QUERY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_IOS,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
@@ -50,14 +49,8 @@ const DEFAULT_MAX_LENGTH = 18;
     styleUrls: [`./input-number.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputNumberComponent),
-        },
-        {
-            provide: AbstractTuiControl,
-            useExisting: forwardRef(() => TuiInputNumberComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputNumberComponent),
+        tuiAsControl(TuiInputNumberComponent),
     ],
 })
 export class TuiInputNumberComponent

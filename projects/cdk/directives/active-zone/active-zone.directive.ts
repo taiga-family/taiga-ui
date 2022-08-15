@@ -12,6 +12,7 @@ import {
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
@@ -92,11 +93,9 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     private removeSubActiveZone(activeZone: TuiActiveZoneDirective): void {
-        const index = this.subActiveZones.findIndex(item => item === activeZone);
-
-        this.subActiveZones = [
-            ...this.subActiveZones.slice(0, index),
-            ...this.subActiveZones.slice(index + 1),
-        ];
+        this.subActiveZones = tuiArrayRemove(
+            this.subActiveZones,
+            this.subActiveZones.indexOf(activeZone),
+        );
     }
 }

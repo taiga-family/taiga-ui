@@ -12,7 +12,7 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
@@ -34,7 +34,7 @@ describe(`MobileCalendar`, () => {
         `,
         providers: [
             {
-                provide: TUI_CALENDAR_DATA_STREAM,
+                provide: TUI_CALENDAR_DATE_STREAM,
                 useValue: of(tomorrow),
             },
         ],

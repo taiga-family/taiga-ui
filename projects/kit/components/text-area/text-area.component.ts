@@ -16,11 +16,16 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TUI_IS_IOS,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
+    HINT_CONTROLLER_PROVIDER,
+    MODE_PROVIDER,
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
@@ -35,8 +40,6 @@ import {
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TUI_TEXT_AREA_PROVIDERS} from './text-area.providers';
-
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
@@ -46,7 +49,13 @@ export const LINE_HEIGHT_L = 24;
     templateUrl: `./text-area.template.html`,
     styleUrls: [`./text-area.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TEXT_AREA_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiTextAreaComponent),
+        tuiAsControl(TuiTextAreaComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+        HINT_CONTROLLER_PROVIDER,
+        MODE_PROVIDER,
+    ],
     host: {
         '($.data-mode.attr)': `mode$`,
         '[class._ios]': `isIOS`,

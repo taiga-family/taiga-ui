@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -38,10 +38,8 @@ import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
     styleUrls: [`./toggle.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiToggleComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiToggleComponent),
+        tuiAsControl(TuiToggleComponent),
     ],
 })
 export class TuiToggleComponent
