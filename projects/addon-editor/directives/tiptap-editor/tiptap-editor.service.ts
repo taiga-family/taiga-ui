@@ -271,14 +271,6 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().unsetLink().run();
     }
 
-    indent(): void {
-        this.editor.commands.indent();
-    }
-
-    outdent(): void {
-        this.editor.commands.outdent();
-    }
-
     focus(): void {
         this.editor.chain().focus().run();
     }
