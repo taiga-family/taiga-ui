@@ -94,15 +94,10 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
       - name: Serve ${{ env.LOCAL_REF_DEMO }} in background
-        run: |
-          npx nx serve-compiled -- --path ${{ env.LOCAL_REF_DEMO }} \
-            & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
+        run: npx nx serve-compiled --path ${{ env.LOCAL_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
-        run: |
-          npm run concurrently \
-              "npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
-              "sleep 20 && npm run cy2:run:localhost -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
+        run: npx nx e2e-ci --key localhost --folder ${{ matrix.specFolder }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -125,19 +120,14 @@ jobs:
       - run: cat ${{ env.BASE_REF_DEMO }}/index.html
 
       - name: Serve ${{ env.BASE_REF_DEMO }} in background
-        run: |
-          npx nx serve-compiled -- --path ${{ env.BASE_REF_DEMO }} \
-            & npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
+        run: npx nx serve-compiled --path ${{ env.BASE_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.BASE_REF_DEMO }}
         continue-on-error: true
         env: # note: need to collect all
           # diff files for lumberjack bot
           CYPRESS_failOnSnapshotDiff: 0
-        run: |
-          npm run concurrently \
-              "npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'" \
-              "sleep 20 && npm run cy2:run:demo:next -- --spec '**/${{ matrix.specFolder }}/**/*.spec.ts'"
+        run: npx nx e2e-ci --key next --folder ${{ matrix.specFolder }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
