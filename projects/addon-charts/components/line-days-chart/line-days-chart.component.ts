@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -41,7 +40,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
     providers: [
         {
             provide: TuiLineChartHintDirective,
-            useExisting: forwardRef(() => TuiLineDaysChartComponent),
+            useExisting: TuiLineDaysChartComponent,
         },
     ],
 })

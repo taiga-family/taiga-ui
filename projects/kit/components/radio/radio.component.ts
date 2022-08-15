@@ -4,7 +4,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -16,7 +15,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
@@ -34,10 +34,8 @@ import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
     styleUrls: [`./radio.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioComponent),
+        tuiAsControl(TuiRadioComponent),
     ],
     animations: [tuiScaleIn],
 })

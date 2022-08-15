@@ -5,7 +5,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -23,8 +22,10 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
+    tuiArrayRemove,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -39,11 +40,11 @@ import {
     HINT_CONTROLLER_PROVIDER,
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    tuiAsDataListHost,
     TuiBrightness,
     TuiDataListDirective,
     TuiDataListHost,
@@ -72,19 +73,14 @@ const EVENT_Y_TO_X_COEFFICIENT = 3;
     templateUrl: `./input-tag.template.html`,
     styleUrls: [`./input-tag.style.less`],
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputTagComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiInputTagComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputTagComponent),
+        tuiAsControl(TuiInputTagComponent),
+        tuiAsDataListHost(TuiInputTagComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
         HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
@@ -502,10 +498,7 @@ export class TuiInputTagComponent
     private deleteLastEnabledItem(): void {
         for (let index = this.value.length - 1; index >= 0; index--) {
             if (!this.disabledItemHandler(this.value[index])) {
-                this.updateValue([
-                    ...this.value.slice(0, index),
-                    ...this.value.slice(index + 1, this.value.length),
-                ]);
+                this.updateValue(tuiArrayRemove(this.value, index));
 
                 break;
             }

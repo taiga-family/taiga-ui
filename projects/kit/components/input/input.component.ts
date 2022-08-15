@@ -13,26 +13,37 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
+    tuiAsDataListHost,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {
+    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+    TUI_VALUE_ACCESSOR_PROVIDER,
+} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {TUI_INPUT_PROVIDERS} from './input.providers';
 
 @Component({
     selector: `tui-input`,
     templateUrl: `./input.template.html`,
     styleUrls: [`./input.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_PROVIDERS,
+    providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputComponent),
+        tuiAsDataListHost(TuiInputComponent),
+        tuiAsControl(TuiInputComponent),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>

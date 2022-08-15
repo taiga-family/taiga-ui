@@ -15,7 +15,7 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
-import {TUI_CALENDAR_DATA_STREAM} from '../../../tokens/calendar-data-stream';
+import {TUI_CALENDAR_DATE_STREAM} from '../../../tokens/calendar-date-stream';
 import {tuiCreateDefaultDayRangePeriods} from '../../../utils/miscellaneous/create-default-day-range-periods';
 import {TuiCalendarRangeComponent} from '../calendar-range.component';
 import {TuiCalendarRangeModule} from '../calendar-range.module';
@@ -40,7 +40,7 @@ describe(`rangeCalendarComponent`, () => {
         `,
         providers: [
             {
-                provide: TUI_CALENDAR_DATA_STREAM,
+                provide: TUI_CALENDAR_DATE_STREAM,
                 deps: [[new Optional(), new Self(), NgControl]],
                 useFactory: tuiRangeCalendarTestFactory,
             },
