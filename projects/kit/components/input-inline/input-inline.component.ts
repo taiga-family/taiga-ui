@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,7 +12,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -28,10 +27,7 @@ import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputInlineComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputInlineComponent),
     ],
 })
 export class TuiInputInlineComponent

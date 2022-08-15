@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -17,8 +16,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -41,13 +40,7 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
     styleUrls: [`./input-files.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    providers: [
-        MODE_PROVIDER,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputFilesComponent),
-        },
-    ],
+    providers: [MODE_PROVIDER, tuiAsFocusableItemAccessor(TuiInputFilesComponent)],
 })
 export class TuiInputFilesComponent
     extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>

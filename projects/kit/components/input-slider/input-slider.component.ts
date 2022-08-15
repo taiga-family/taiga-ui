@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,7 +12,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -43,10 +43,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     styleUrls: [`./input-slider.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputSliderComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputSliderComponent),
+        tuiAsControl(TuiInputSliderComponent),
         tuiSliderOptionsProvider({trackColor: `transparent`}),
     ],
 })

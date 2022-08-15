@@ -15,6 +15,8 @@ import {
     CHAR_EN_DASH,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiHandler,
@@ -23,24 +25,33 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
+    TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import {
+    LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
+    TUI_MONTH_FORMATTER_PROVIDER,
+} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
-
-import {TUI_INPUT_MONTH_RANGE_PROVIDERS} from './input-month-range.providers';
 
 @Component({
     selector: `tui-input-month-range`,
     templateUrl: `./input-month-range.template.html`,
     styleUrls: [`./input-month-range.style.less`],
-    providers: TUI_INPUT_MONTH_RANGE_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputMonthRangeComponent),
+        tuiAsControl(TuiInputMonthRangeComponent),
+        TUI_MONTH_FORMATTER_PROVIDER,
+        TuiMonthPipe,
+    ],
+    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
