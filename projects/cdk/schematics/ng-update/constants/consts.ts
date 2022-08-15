@@ -24,6 +24,16 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
     },
     {
         from: {
+            name: 'TUI_CALENDAR_DATA_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TUI_DATE_MASK',
         },
         to: {

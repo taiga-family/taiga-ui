@@ -1,14 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    forwardRef,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {
     TUI_AUTOFOCUS_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
     TuiAutoFocusModule,
     TuiFocusableElementAccessor,
@@ -68,12 +62,7 @@ describe(`TuiAutoFocus directive`, () => {
             `,
             selector: `focusable-component`,
             changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [
-                {
-                    provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-                    useExisting: forwardRef(() => TestFocusableComponent),
-                },
-            ],
+            providers: [tuiAsFocusableItemAccessor(TestFocusableComponent)],
         })
         class TestFocusableComponent implements TuiFocusableElementAccessor {
             @ViewChild(`input`)

@@ -35,7 +35,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
     templateUrl: `./color-selector.template.html`,
     styleUrls: [`./color-selector.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
+    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiColorSelectorComponent {
     private stops = new Map(DEFAULT_STEPS);

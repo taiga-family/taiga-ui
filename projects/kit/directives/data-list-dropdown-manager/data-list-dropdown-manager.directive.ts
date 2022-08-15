@@ -48,10 +48,10 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         dropdown.open = index === active;
                     });
 
-                    const element = this.elements.toArray()[active];
-                    const dropdown = this.dropdowns.toArray()[active];
+                    const element = this.elements.get(active);
+                    const dropdown = this.dropdowns.get(active);
 
-                    if (!element || !dropdown || !dropdown.dropdownBoxRef) {
+                    if (!element || !dropdown?.dropdownBoxRef) {
                         return EMPTY;
                     }
 
@@ -142,13 +142,9 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     }
 
     private notInDropdown(element: EventTarget | null, index: number): boolean {
-        const dropdown = this.dropdowns.toArray()[index];
-
-        return (
-            !dropdown ||
-            !dropdown.dropdownBoxRef ||
-            !dropdown.dropdownBoxRef.location.nativeElement.contains(element)
-        );
+        return !this.dropdowns
+            .get(index)
+            ?.dropdownBoxRef?.location.nativeElement.contains(element);
     }
 
     private tryToFocus(index: number): void {

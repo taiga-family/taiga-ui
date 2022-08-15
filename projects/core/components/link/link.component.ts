@@ -2,13 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
 } from '@angular/core';
 import {
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
@@ -29,10 +28,7 @@ import {mapTo} from 'rxjs/operators';
     templateUrl: `./link.template.html`,
     styleUrls: [`./link.style.less`],
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiLinkComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiLinkComponent),
         TuiFocusVisibleService,
         TuiDestroyService,
         MODE_PROVIDER,

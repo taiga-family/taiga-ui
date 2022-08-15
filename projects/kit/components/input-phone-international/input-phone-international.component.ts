@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -16,7 +15,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -55,12 +55,10 @@ import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
     styleUrls: [`./input-phone-international.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputPhoneInternationalComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
+        tuiAsControl(TuiInputPhoneInternationalComponent),
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputPhoneInternationalComponent
     extends AbstractTuiControl<string>
