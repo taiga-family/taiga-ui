@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -21,13 +22,16 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
+    HINT_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
@@ -35,7 +39,6 @@ import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-poly
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 import {
     TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldOptions,
@@ -50,7 +53,12 @@ const ICON_PADDING_S = 1.5;
     templateUrl: `./primitive-textfield.template.html`,
     styleUrls: [`./primitive-textfield.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+        HINT_CONTROLLER_PROVIDER,
+        MODE_PROVIDER,
+    ],
     host: {
         '($.data-mode.attr)': `mode$`,
         '[class._autofilled]': `autofilled`,

@@ -45,8 +45,8 @@ export class ExampleTuiDropdownComponent {
     tuiDropdownAlign = this.alignVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
         `bottom`,
+        `top`,
     ];
 
     tuiDropdownDirection: TuiVerticalDirection | null = null;

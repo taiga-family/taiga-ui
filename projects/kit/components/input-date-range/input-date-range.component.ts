@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     HostListener,
@@ -23,6 +24,8 @@ import {
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiControlValueTransformer,
     TuiDateMode,
@@ -50,10 +53,12 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
+import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
+    tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateRangePipe,
@@ -64,13 +69,17 @@ import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_DATE_RANGE_PROVIDERS} from './input-date-range.providers';
-
 @Component({
     selector: `tui-input-date-range`,
     templateUrl: `./input-date-range.template.html`,
     styleUrls: [`./input-date-range.style.less`],
-    providers: TUI_INPUT_DATE_RANGE_PROVIDERS,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),
+        tuiAsControl(TuiInputDateRangeComponent),
+        tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
+    ],
+    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>

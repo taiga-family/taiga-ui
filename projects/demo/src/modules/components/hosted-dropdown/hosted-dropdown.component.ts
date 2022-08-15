@@ -59,7 +59,7 @@ export class ExampleTuiHostedDropdownComponent {
 
     readonly directionVariants: readonly TuiVerticalDirection[] = [`bottom`, `top`];
 
-    direction = this.directionVariants[0];
+    direction: TuiVerticalDirection | null = null;
 
     readonly limitWidthVariants: readonly TuiDropdownWidth[] = [`auto`, `fixed`, `min`];
 

@@ -17,9 +17,7 @@ export abstract class AbstractTuiDialogService<T> extends Observable<
         [],
     );
 
-    protected constructor(
-        @Inject(TuiIdService) private readonly idService: TuiIdService,
-    ) {
+    constructor(@Inject(TuiIdService) private readonly idService: TuiIdService) {
         super(observer => this.dialogs$.subscribe(observer));
     }
 

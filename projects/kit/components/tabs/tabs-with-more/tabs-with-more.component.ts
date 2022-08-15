@@ -33,14 +33,14 @@ import {filter, map} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
-import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
+import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
 
 @Component({
     selector: `tui-tabs-with-more, nav[tuiTabsWithMore]`,
     templateUrl: `./tabs-with-more.template.html`,
     styleUrls: [`./tabs-with-more.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TABS_PROVIDERS,
+    providers: TUI_TABS_PROVIDERS,
 })
 export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ViewChild(TuiTabComponent, {read: ElementRef})
@@ -82,7 +82,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     constructor(
         @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(TUI_TAB_MARGIN) private readonly margin: number,
-        @Inject(TABS_REFRESH) private readonly refresh$: Observable<unknown>,
+        @Inject(TUI_TABS_REFRESH) private readonly refresh$: Observable<unknown>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,

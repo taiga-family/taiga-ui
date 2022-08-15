@@ -4,7 +4,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostBinding,
     HostListener,
     Inject,
@@ -13,8 +12,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -41,10 +40,7 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
     styleUrls: [`./hosted-dropdown.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiHostedDropdownComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiHostedDropdownComponent),
         DROPDOWN_CONTROLLER_PROVIDER,
     ],
 })
