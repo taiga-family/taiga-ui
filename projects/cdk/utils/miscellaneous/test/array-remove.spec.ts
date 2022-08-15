@@ -5,8 +5,12 @@ describe(`tuiArrayRemove`, () => {
         expect(tuiArrayRemove([1, 2, 3], 1)).toEqual([1, 3]);
     });
 
-    it(`ignores negative indices`, () => {
+    it(`ignores invalid indices`, () => {
         expect(tuiArrayRemove([1, 2, 3], -1)).toEqual([1, 2, 3]);
+        expect(tuiArrayRemove([1, 2, 3], -10)).toEqual([1, 2, 3]);
+        expect(tuiArrayRemove([1, 2, 3], NaN)).toEqual([1, 2, 3]);
+        expect(tuiArrayRemove([1, 2, 3], -Infinity)).toEqual([1, 2, 3]);
+        expect(tuiArrayRemove([1, 2, 3], Infinity)).toEqual([1, 2, 3]);
     });
 
     it(`ignores indices outside array length`, () => {
