@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
+    ElementRef,
     Inject,
     Input,
     OnDestroy,
@@ -14,15 +14,19 @@ import {NgControl} from '@angular/forms';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
-import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
+import {
+    TuiTiptapEditorDirective,
+    TuiTiptapEditorService,
+} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
+    TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
@@ -35,15 +39,15 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     templateUrl: `./editor.component.html`,
     styleUrls: [`./editor.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiEditorComponent),
-        },
-        TUI_EDITOR_PROVIDERS,
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiEditorComponent), TUI_EDITOR_PROVIDERS],
 })
-export class TuiEditorComponent extends AbstractTuiControl<string> implements OnDestroy {
+export class TuiEditorComponent
+    extends AbstractTuiControl<string>
+    implements OnDestroy, TuiFocusableElementAccessor
+{
+    @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
+    private readonly element?: ElementRef<HTMLElement>;
+
     @Input()
     @tuiDefaultProp()
     exampleText = ``;
@@ -69,6 +73,10 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get nativeFocusableElement(): HTMLElement | null {
+        return this.computedDisabled ? null : this.element?.nativeElement || null;
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {

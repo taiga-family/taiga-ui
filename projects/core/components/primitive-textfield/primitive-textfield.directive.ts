@@ -1,18 +1,13 @@
-import {Directive, forwardRef, Inject} from '@angular/core';
+import {Directive, Inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {TuiAbstractTextfieldHost} from '@taiga-ui/core/abstract';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
+import {tuiAsTextfieldHost} from '@taiga-ui/core/tokens';
 
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
 @Directive({
     selector: `tui-primitive-textfield`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiPrimitiveTextfieldDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiPrimitiveTextfieldDirective)],
 })
 export class TuiPrimitiveTextfieldDirective extends TuiAbstractTextfieldHost<any> {
     constructor(

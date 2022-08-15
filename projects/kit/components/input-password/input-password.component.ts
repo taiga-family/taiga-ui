@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Optional,
     Self,
@@ -11,7 +10,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     TuiInputType,
@@ -47,14 +47,8 @@ import {
     styleUrls: [`./input-password.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputPasswordComponent),
-        },
-        {
-            provide: AbstractTuiControl,
-            useExisting: forwardRef(() => TuiInputPasswordComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputPasswordComponent),
+        tuiAsControl(TuiInputPasswordComponent),
         HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
