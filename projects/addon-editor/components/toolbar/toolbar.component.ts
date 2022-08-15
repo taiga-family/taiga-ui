@@ -42,7 +42,7 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
     templateUrl: `./toolbar.template.html`,
     styleUrls: [`./toolbar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
+    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
         role: `toolbar`,
     },

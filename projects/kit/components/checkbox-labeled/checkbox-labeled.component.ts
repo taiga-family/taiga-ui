@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,7 +12,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -28,10 +28,8 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
     styleUrls: [`./checkbox-labeled.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxLabeledComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
+        tuiAsControl(TuiCheckboxLabeledComponent),
     ],
 })
 export class TuiCheckboxLabeledComponent
