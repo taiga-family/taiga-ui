@@ -1,4 +1,5 @@
 import {
+    WAIT_BEFORE_SCREENSHOT,
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EXAMPLE_ID,
 } from '../../../support/shared.entities';
@@ -54,7 +55,7 @@ describe(`DataList`, () => {
             .tuiScrollIntoView()
             .as(`complexDemo`);
 
-        cy.matchImageSnapshot(`5-1-data-list-initial`, {
+        cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`5-1-data-list-initial`, {
             capture: `viewport`,
             blackout: [`tui-doc-navigation`],
         });
