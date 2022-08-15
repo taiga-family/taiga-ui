@@ -227,7 +227,10 @@
         },
         "serve-compiled": {
             "builder": "@nrwl/workspace:run-commands",
-            "options": {"command": "angular-http-server -p 3333 --silent"}
+            "options": {
+                "command": "angular-http-server -p {args.port} --silent --path {args.path} & npx wait-on http://localhost:{args.port} --timeout 5000",
+                "forwardAllArgs": false
+            }
         },
         "server": {
             "builder": "@angular-devkit/build-angular:server",
@@ -274,6 +277,37 @@
                 "stylePreprocessorOptions": {
                     "includePaths": ["projects/core/styles"]
                 }
+            }
+        },
+        "e2e": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress open --browser chrome --project ./projects/demo-integrations"
+                ]
+            }
+        },
+        "e2e-headless": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress open --browser chrome --headless --project ./projects/demo-integrations"
+                ]
+            }
+        },
+        "e2e-ci": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": true,
+                "commands": [
+                    {"command": "echo \"CYPRESS_API_URL: $CYPRESS_API_URL\"", "forwardAllArgs": false},
+                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.spec.ts'",
+                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.spec.ts'"
+                ]
             }
         }
     }
