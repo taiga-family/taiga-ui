@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     HostListener,
     Inject,
@@ -11,7 +10,7 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
@@ -32,10 +31,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
     styleUrls: [`./button.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiButtonComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiButtonComponent),
         TuiDestroyService,
         TuiFocusVisibleService,
     ],

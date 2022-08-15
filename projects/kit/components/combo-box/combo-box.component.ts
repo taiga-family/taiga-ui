@@ -17,6 +17,8 @@ import {
     AbstractTuiNullableControl,
     TUI_STRICT_MATCHER,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -26,6 +28,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
+    tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -37,17 +41,23 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {TUI_COMBO_BOX_PROVIDERS} from './combo-box.providers';
 
 @Component({
     selector: `tui-combo-box`,
     templateUrl: `./combo-box.template.html`,
     styleUrls: [`./combo-box.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_COMBO_BOX_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiComboBoxComponent),
+        tuiAsDataListHost(TuiComboBoxComponent),
+        tuiAsControl(TuiComboBoxComponent),
+        tuiAsOptionContent(TUI_SELECT_OPTION),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T>

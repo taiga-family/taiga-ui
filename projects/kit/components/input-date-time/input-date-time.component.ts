@@ -20,6 +20,8 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiClamp,
     TuiContextWithImplicit,
@@ -43,10 +45,12 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
+import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_TIME_TEXTS,
+    tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
@@ -57,14 +61,17 @@ import {TextMaskConfig} from 'angular2-text-mask';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
-import {TUI_INPUT_DATE_TIME_PROVIDERS} from './input-date-time.providers';
-
 @Component({
     selector: `tui-input-date-time`,
     templateUrl: `./input-date-time.template.html`,
     styleUrls: [`./input-date-time.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_DATE_TIME_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputDateTimeComponent),
+        tuiAsControl(TuiInputDateTimeComponent),
+        tuiDateStreamWithTransformer(TUI_DATE_TIME_VALUE_TRANSFORMER),
+    ],
+    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>

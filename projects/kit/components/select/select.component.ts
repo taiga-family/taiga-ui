@@ -14,6 +14,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -21,6 +23,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_CLEANER,
+    tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
@@ -32,10 +36,11 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_SELECT_PROVIDERS} from './select.providers';
 import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
 
 @Component({
@@ -43,7 +48,13 @@ import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
     templateUrl: `./select.template.html`,
     styleUrls: [`./select.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_SELECT_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiSelectComponent),
+        tuiAsControl(TuiSelectComponent),
+        tuiAsDataListHost(TuiSelectComponent),
+        tuiAsOptionContent(TUI_SELECT_OPTION),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
