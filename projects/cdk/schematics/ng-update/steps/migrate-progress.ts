@@ -1,9 +1,9 @@
 import {Element} from 'parse5';
 import {
     createProject,
+    DevkitFileSystem,
     saveActiveProject,
     setActiveProject,
-    DevkitFileSystem,
 } from 'ng-morph';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {TemplateResource} from '../interfaces/template-resourse';
@@ -20,6 +20,7 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {ALL_TS_FILES} from '../../constants';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
@@ -29,7 +30,7 @@ const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 export function migrateProgress(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
-    const templateResources = getComponentTemplates('**/**.ts');
+    const templateResources = getComponentTemplates(ALL_TS_FILES);
 
     for (const templateResource of templateResources) {
         replaceProgressColorSegmentsPipe(templateResource, fileSystem);

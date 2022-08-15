@@ -1,10 +1,11 @@
 import {arrayFlat, getImports, Node} from 'ng-morph';
+import {ALL_TS_FILES} from '../constants';
 
 export function getNamedImportReferences(
     namedImport: string,
     moduleSpecifier: string | string[] = '**/**',
 ): Node[] {
-    const importDeclarations = getImports('**/**', {
+    const importDeclarations = getImports(ALL_TS_FILES, {
         namedImports: [namedImport],
         moduleSpecifier: moduleSpecifier,
     });

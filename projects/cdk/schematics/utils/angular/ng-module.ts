@@ -6,6 +6,7 @@ import {
     Query,
     StructureType,
 } from 'ng-morph';
+import {ALL_TS_FILES} from '../../constants';
 
 export function getNgModules(
     pattern: Pattern,
@@ -20,7 +21,7 @@ export function getNgModules(
  * Find NgModule where the component was declared.
  */
 export function findNgModule(ngComponent: ClassDeclaration): ClassDeclaration | null {
-    const allNgModules = getNgModules('**/**.ts');
+    const allNgModules = getNgModules(ALL_TS_FILES);
     return (
         allNgModules.find(module => {
             const moduleFile = module.getSourceFile();
