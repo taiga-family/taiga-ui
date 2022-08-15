@@ -22,6 +22,7 @@ import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {ALL_FILES} from '../constants';
+import {getExecutionTime} from '../utils/get-execution-time';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -53,13 +54,10 @@ export function updateToV3(_: Schema): Rule {
         miscellaneousMigrations();
         saveActiveProject();
 
-        const t1 = performance.now();
-        const sum = t1 - t0;
-        const result =
-            sum > 1000 ? `${(sum / 1000).toFixed(2)} sec.` : `${sum.toFixed(2)} ms.`;
+        const executionTime = getExecutionTime(t0, performance.now());
 
         titleLog(
-            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${result} \n`,
+            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
         );
     };
 }

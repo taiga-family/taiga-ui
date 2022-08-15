@@ -3,15 +3,19 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {insertTodo} from '../../utils/insert-todo';
 import {
     infoLog,
+    PROCESSING_SYMBOL,
+    processLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {getExecutionTime} from '../../utils/get-execution-time';
 
 export function dateTimeMigrations() {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
 
+    let start = performance.now();
     migrateProperty({
         namedImport: 'TuiDay',
         moduleSpecifier: '@taiga-ui/cdk',
@@ -21,7 +25,12 @@ export function dateTimeMigrations() {
                 node.getText().replace('formattedDay', 'getFormattedDay("DMY", ".")'),
             ),
     });
+    processLog(
+        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
+            `(${getExecutionTime(start, performance.now())})`,
+    );
 
+    start = performance.now();
     migrateProperty({
         namedImport: 'TuiDayRange',
         moduleSpecifier: '@taiga-ui/cdk',
@@ -33,7 +42,12 @@ export function dateTimeMigrations() {
                     .replace('formattedDayRange', 'getFormattedDayRange("DMY", ".")'),
             ),
     });
+    processLog(
+        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
+            `(${getExecutionTime(start, performance.now())})`,
+    );
 
+    start = performance.now();
     migrateProperty({
         namedImport: 'TuiDayRange',
         moduleSpecifier: '@taiga-ui/cdk',
@@ -45,6 +59,10 @@ export function dateTimeMigrations() {
             }
         },
     });
+    processLog(
+        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
+            `(${getExecutionTime(start, performance.now())})`,
+    );
 
     [
         {
@@ -90,12 +108,17 @@ export function dateTimeMigrations() {
                 'weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
         },
     ].forEach(({namedImport, field, message}) => {
+        start = performance.now();
         migrateProperty({
             namedImport,
             moduleSpecifier: '@taiga-ui/cdk',
             from: field,
             callback: node => insertTodoBeforeNode(node, message),
         });
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
     });
 
     successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
