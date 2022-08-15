@@ -37,6 +37,7 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {ALL_TS_FILES} from '../../constants';
+import {printProgress} from '../../utils/progress';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -57,10 +58,21 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         removeInputs,
     ];
 
-    componentWithTemplatesPaths.forEach(resource => {
+    componentWithTemplatesPaths.forEach((resource, templateIndex, templates) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
-        actions.forEach(action => {
+        const isLastTemplate = templateIndex === templates.length - 1;
+
+        actions.forEach((action, actionIndex) => {
+            const isLastAction = actionIndex === actions.length - 1;
+            const progressLog = `${templateIndex + 1} / ${templates.length} (${
+                action.name
+            }...)`;
+
+            printProgress(
+                `${SMALL_TAB_SYMBOL.repeat(2)}${progressLog}`,
+                isLastTemplate && isLastAction,
+            );
             action({resource, fileSystem, recorder});
         });
     });
