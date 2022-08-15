@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -18,7 +17,8 @@ import {
     ALWAYS_FALSE_HANDLER,
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiIdentityMatcher,
@@ -35,10 +35,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     styleUrls: [`./radio-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioListComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioListComponent),
+        tuiAsControl(TuiRadioListComponent),
     ],
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {

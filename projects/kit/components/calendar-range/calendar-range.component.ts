@@ -32,7 +32,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
-import {TUI_CALENDAR_DATA_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
+import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -86,8 +86,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     constructor(
-        @Inject(TUI_CALENDAR_DATA_STREAM)
         @Optional()
+        @Inject(TUI_CALENDAR_DATE_STREAM)
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,

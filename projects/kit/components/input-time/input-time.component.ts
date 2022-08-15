@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -14,8 +13,9 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -44,12 +44,10 @@ import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options'
     styleUrls: [`./input-time.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputTimeComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputTimeComponent),
+        tuiAsControl(TuiInputTimeComponent),
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>

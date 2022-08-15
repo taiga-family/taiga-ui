@@ -4,7 +4,6 @@ import {
     Component,
     Directive,
     ElementRef,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -17,8 +16,9 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -54,10 +54,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputRangeComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputRangeComponent),
+        tuiAsControl(TuiInputRangeComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })

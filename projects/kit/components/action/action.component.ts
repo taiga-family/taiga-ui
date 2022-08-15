@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -10,7 +9,7 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusVisibleService,
@@ -27,10 +26,7 @@ import {
     providers: [
         TuiDestroyService,
         TuiFocusVisibleService,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiActionComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiActionComponent),
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
