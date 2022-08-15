@@ -13,6 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -24,19 +26,22 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
-
-import {TUI_INPUT_COPY_PROVIDERS} from './input-copy.providers';
 
 @Component({
     selector: `tui-input-copy`,
     templateUrl: `./input-copy.template.html`,
     styleUrls: [`./input-copy.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_COPY_PROVIDERS,
+    providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputCopyComponent),
+        tuiAsControl(TuiInputCopyComponent),
+    ],
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>

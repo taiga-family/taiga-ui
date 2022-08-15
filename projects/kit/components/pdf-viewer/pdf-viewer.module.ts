@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TUI_DIALOGS} from '@taiga-ui/cdk';
+import {tuiAsDialog} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -12,13 +12,6 @@ import {TuiPdfViewerService} from './pdf-viewer.service';
     imports: [CommonModule, TuiButtonModule, PolymorpheusModule],
     declarations: [TuiPdfViewerComponent, TuiPdfViewerDirective],
     exports: [TuiPdfViewerComponent, TuiPdfViewerDirective],
-    providers: [
-        {
-            provide: TUI_DIALOGS,
-            useExisting: TuiPdfViewerService,
-            multi: true,
-        },
-    ],
-    entryComponents: [TuiPdfViewerComponent],
+    providers: [tuiAsDialog(TuiPdfViewerService)],
 })
 export class TuiPdfViewerModule {}

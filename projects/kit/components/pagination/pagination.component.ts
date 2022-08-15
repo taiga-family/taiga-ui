@@ -3,7 +3,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -15,6 +14,7 @@ import {
     AbstractTuiInteractive,
     EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -43,12 +43,7 @@ const ACTIVE_ITEM_LENGTH = 1;
     templateUrl: `./pagination.template.html`,
     styleUrls: [`./pagination.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiPaginationComponent),
-        },
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiPaginationComponent)],
 })
 export class TuiPaginationComponent
     extends AbstractTuiInteractive

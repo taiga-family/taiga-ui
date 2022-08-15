@@ -5988,7 +5988,7 @@
       </trans-unit>
       <trans-unit id="52c593e32d72b29535d657c77c5994fa3b5cce3f" datatype="html">
         <source>
-            You can use <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>TUI_CALENDAR_DATA_STREAM<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> token to set value
+            You can use <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>TUI_CALENDAR_DATE_STREAM<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> token to set value
             from outside (see samples)
         </source>
         <context-group purpose="location">

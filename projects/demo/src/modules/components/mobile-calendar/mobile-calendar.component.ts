@@ -10,7 +10,7 @@ import {
     tuiControlValue,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -20,7 +20,7 @@ import {Observable} from 'rxjs';
     changeDetection,
     providers: [
         {
-            provide: TUI_CALENDAR_DATA_STREAM,
+            provide: TUI_CALENDAR_DATE_STREAM,
             deps: [ExampleTuiMobileCalendarComponent],
             useFactory: (
                 component: ExampleTuiMobileCalendarComponent,
