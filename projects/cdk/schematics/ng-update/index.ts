@@ -1,9 +1,9 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {
     createProject,
+    DevkitFileSystem,
     saveActiveProject,
     setActiveProject,
-    DevkitFileSystem,
 } from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
@@ -13,6 +13,7 @@ import {replaceConstants} from './steps/replace-const';
 import {replaceDeepImports} from './steps/replace-deep-import';
 import {showWarnings} from './steps/show-warnings';
 import {replaceServices} from './steps/replace-services';
+import {dateTimeMigrations} from './steps/migrate-date-time';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateSliders} from './steps/migrate-sliders';
 import {removeModules} from './steps/remove-module';
@@ -20,7 +21,7 @@ import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
-import {dateTimeMigrations} from './steps/migrate-date-time';
+import {ALL_FILES} from '../constants';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -64,7 +65,7 @@ export function updateToV3(_: Schema): Rule {
 }
 
 function getFileSystem(tree: Tree): DevkitFileSystem {
-    const project = createProject(tree, '/', '**/**.{html,ts}');
+    const project = createProject(tree, '/', [ALL_FILES]);
     setActiveProject(project);
     return project.getFileSystem().fs;
 }

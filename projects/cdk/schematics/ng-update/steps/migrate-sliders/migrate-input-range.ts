@@ -4,18 +4,19 @@ import {replaceInputProperty} from '../../../utils/templates/ng-component-input-
 import {
     addMethods,
     createProject,
+    DevkitFileSystem,
     saveActiveProject,
     setActiveProject,
-    DevkitFileSystem,
 } from 'ng-morph';
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
+import {ALL_TS_FILES} from '../../../constants';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
 
 export function migrateInputRange(fileSystem: DevkitFileSystem): void {
-    const templateResources = getComponentTemplates('**/**.ts');
+    const templateResources = getComponentTemplates(ALL_TS_FILES);
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
@@ -26,7 +27,7 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
 
     save(fileSystem);
 
-    for (const componentPath of COMPONENTS_WITH_MIN_LABELS) {
+    for (const componentPath of Array.from(COMPONENTS_WITH_MIN_LABELS)) {
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range',
@@ -36,7 +37,7 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
         ]);
     }
 
-    for (const componentPath of COMPONENTS_WITH_MAX_LABELS) {
+    for (const componentPath of Array.from(COMPONENTS_WITH_MAX_LABELS)) {
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',

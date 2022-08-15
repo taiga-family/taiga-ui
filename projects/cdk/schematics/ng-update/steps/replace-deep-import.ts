@@ -6,13 +6,14 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {ALL_TS_FILES} from '../../constants';
 
 const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 
 export function replaceDeepImports(): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deep imports...`);
 
-    const deepImports = getImports('**/**.ts').filter(imp =>
+    const deepImports = getImports(ALL_TS_FILES).filter(imp =>
         DEEP_REGEX.test(imp.getModuleSpecifier().getLiteralValue()),
     );
 

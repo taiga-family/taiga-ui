@@ -15,7 +15,7 @@ import {
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
-import {DevkitFileSystem} from 'ng-morph';
+import {addProviderToComponent, DevkitFileSystem} from 'ng-morph';
 import {TemplateResource} from '../interfaces/template-resourse';
 import {
     getInputPropertyOffsets,
@@ -27,7 +27,6 @@ import {
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
 import {ElementLocation} from 'parse5';
-import {addProviderToComponent} from 'ng-morph';
 import {getNgComponents} from '../../utils/angular/ng-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
@@ -37,6 +36,7 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {ALL_TS_FILES} from '../../constants';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
@@ -44,7 +44,7 @@ const END_TAG_OFFSET = 2;
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
-    const componentWithTemplatesPaths = getComponentTemplates('**/**');
+    const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
     const actions = [
         replaceTags,
         replaceAttrs,

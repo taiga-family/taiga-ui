@@ -2,6 +2,7 @@ import {SchematicContext} from '@angular-devkit/schematics';
 import {getImports} from 'ng-morph';
 
 import {MIGRATION_WARNINGS, MigrationWarning} from '../constants/warnings';
+import {ALL_TS_FILES} from '../../constants';
 
 export function showWarnings(context: SchematicContext): void {
     MIGRATION_WARNINGS.forEach(warning => showWarning(warning, context));
@@ -11,7 +12,7 @@ function showWarning(
     {name, message, moduleSpecifier = '**/**'}: MigrationWarning,
     {logger}: SchematicContext,
 ): void {
-    const references = getImports('**/**', {
+    const references = getImports(ALL_TS_FILES, {
         moduleSpecifier,
         namedImports: [name],
     })

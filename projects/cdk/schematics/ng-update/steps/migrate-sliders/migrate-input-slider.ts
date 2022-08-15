@@ -1,9 +1,9 @@
 import {
     addMethods,
     createProject,
+    DevkitFileSystem,
     saveActiveProject,
     setActiveProject,
-    DevkitFileSystem,
 } from 'ng-morph';
 
 import {
@@ -15,9 +15,10 @@ import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {hasElementAttribute} from '../../../utils/templates/elements';
+import {ALL_TS_FILES} from '../../../constants';
 
 export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
-    const templateResources = getComponentTemplates('**/**.ts');
+    const templateResources = getComponentTemplates(ALL_TS_FILES);
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
     for (const templateResource of templateResources) {
@@ -32,7 +33,7 @@ export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
 
-    for (const componentPath of COMPONENTS_WITH_MIN_MAX_LABELS) {
+    for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
         addMinMaxLabelMethod(componentPath);
     }
 }

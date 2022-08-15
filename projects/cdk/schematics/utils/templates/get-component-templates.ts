@@ -30,7 +30,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource {
 
     if (templateUrl) {
         const templatePath = path.parse(
-            templateUrl?.getInitializer()?.getText().replace(/['"]/g, '') || '',
+            templateUrl?.getInitializer()?.getText().replace(/['"`]/g, '') || '',
         );
 
         return {
