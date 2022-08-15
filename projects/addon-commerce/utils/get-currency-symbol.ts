@@ -66,6 +66,15 @@ export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null 
         case TuiCurrency.Hryvnia:
         case TuiCurrencyCode.Hryvnia:
             return `₴`;
+        case TuiCurrency.UzbekSum:
+        case TuiCurrencyCode.UzbekSum:
+            return `So'm`;
+        case TuiCurrency.KyrgyzstanSom:
+        case TuiCurrencyCode.KyrgyzstanSom:
+            return `c`;
+        case TuiCurrency.Dirham:
+        case TuiCurrencyCode.Dirham:
+            return `Dh`;
         default:
             return null;
     }
