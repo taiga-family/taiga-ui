@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.60.0](https://github.com/tinkoff/taiga-ui/compare/v2.59.1...v2.60.0) (2022-08-15)
+
+### Features
+
+- **addon-commerce:** add `UZS`, `KGS`, `AED` ([#2357](https://github.com/tinkoff/taiga-ui/issues/2357))
+  ([488f3ec](https://github.com/tinkoff/taiga-ui/commit/488f3ecf02ddbb554ebfcb06a605017ffa3259fe))
+
+### Bug Fixes
+
+- **addon-table:** fix sort chevron direction to correctly match the sorting state.
+  ([cb6b9ec](https://github.com/tinkoff/taiga-ui/commit/cb6b9ec745e630ea9c28cfb6b8c554dbdf585d4a))
+- **cdk:** `ParentAnimation` properly query direct child ([#2368](https://github.com/tinkoff/taiga-ui/issues/2368))
+  ([12c78ad](https://github.com/tinkoff/taiga-ui/commit/12c78adc68c4098f372e4639ff2057b5107e6748))
+
 ### [2.59.1](https://github.com/tinkoff/taiga-ui/compare/v2.59.0...v2.59.1) (2022-08-12)
 
 ### Bug Fixes
