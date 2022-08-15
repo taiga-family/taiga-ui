@@ -193,4 +193,31 @@ export const enum TuiCurrency {
      * @description Countries and territories: Mexico
      */
     MexicanPeso = `MXN`,
+
+    /**
+     * Uzbek sum
+     *
+     * @description Numeric code: 860
+     * @description Alphabetic code: UZS
+     * @description Countries and territories: Uzbekistan
+     */
+    UzbekSum = `UZS`,
+
+    /**
+     * Kyrgyzstani som
+     *
+     * @description Numeric code: 417
+     * @description Alphabetic code: KGS
+     * @description Countries and territories: Kyrgyzstan
+     */
+    KyrgyzstanSom = `KGS`,
+
+    /**
+     * United Arab Emirates dirham
+     *
+     * @description Numeric code: 784
+     * @description Alphabetic code: AED
+     * @description Countries and territories: United Arab Emirates
+     */
+    Dirham = `AED`,
 }
