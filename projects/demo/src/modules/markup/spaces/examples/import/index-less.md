@@ -1,3 +1,3 @@
 ```less
-@import '~@taiga-ui/core/styles/taiga-ui-global';
+@import '~@taiga-ui/styles/taiga-ui-global';
 ```

@@ -41,6 +41,7 @@ describe('ng-add', () => {
     it('should add main modules in package.json', async () => {
         const options: Schema = {
             addSanitizer: false,
+            addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: [],
@@ -65,6 +66,7 @@ describe('ng-add', () => {
     it('should add additional modules in package.json', async () => {
         const options: Schema = {
             addSanitizer: true,
+            addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
@@ -110,8 +112,9 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-local.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-global.less"
             ],
             "assets": [
               {
@@ -128,7 +131,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('should add styles without dublicates, taiga styles first', async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
@@ -147,8 +150,9 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-local.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-global.less",
               "some.style"
             ],
             "assets": [
@@ -169,6 +173,7 @@ describe('ng-add', () => {
     it('Should add Taiga-ui modules and providers to main module', async () => {
         const options: Schema = {
             addSanitizer: true,
+            addGlobalStyles: false,
             addDialogsModule: true,
             addAlertModule: true,
             addons: [],
