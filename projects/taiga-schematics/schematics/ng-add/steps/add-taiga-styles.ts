@@ -5,7 +5,10 @@ import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
 
-const TAIGA_GLOBAL_STYLE = 'node_modules/@taiga-ui/core/styles/taiga-ui-global.less';
+const TAIGA_GLOBAL_STYLE = [
+    'node_modules/@taiga-ui/core/styles/taiga-ui-local.less',
+    'node_modules/@taiga-ui/styles/taiga-ui-global.less',
+];
 const TAIGA_THEME_STYLE = 'node_modules/@taiga-ui/core/styles/taiga-ui-theme.less';
 
 export function addTaigaStyles(options: Schema): Rule {
@@ -19,7 +22,7 @@ export function addTaigaStylesToAngularJson(options: Schema): Rule {
         const project = getProject(options, workspace);
         const targetOptions = getProjectTargetOptions(project, 'build');
         const styles = targetOptions.styles as JsonArray | undefined;
-        const taigaStyles = [TAIGA_GLOBAL_STYLE, TAIGA_THEME_STYLE];
+        const taigaStyles = [TAIGA_THEME_STYLE, ...TAIGA_GLOBAL_STYLE];
 
         targetOptions.styles = styles
             ? Array.from(new Set([...taigaStyles, ...styles]))

@@ -103,6 +103,7 @@
         "@types/parse5": "^6.0.3",
         "@types/webpack-env": "^1.17.0",
         "angular-http-server": "^1.10.0",
+        "cpy-cli": "^4.1.0",
         "cy2": "~2.0.0",
         "cypress": "~10.0.3",
         "eslint-plugin-decorator-position": "~5.0.1",
