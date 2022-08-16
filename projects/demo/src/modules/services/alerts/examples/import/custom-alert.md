@@ -1,18 +1,19 @@
 ```ts
+import {TuiAlertOptions} from '@taiga-ui/core';
+import {TuiDialog} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {TuiNotificationContentContext} from '@taiga-ui/core';
 
 //...
 
 export class NotificationExampleComponent {
-  constructor(@Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiNotificationContentContext<boolean>) {}
+  constructor(@Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialog<TuiAlertOptions<boolean>, boolean>) {}
 
   ok() {
-    this.context.emitAndCloseHook(true);
+    this.context.completeWith(true);
   }
 
   cancel() {
-    this.context.emitAndCloseHook(false);
+    this.context.completeWith(false);
   }
 }
 ```

@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiNotificationContentContext} from '@taiga-ui/core';
+import {TuiDialog} from '@taiga-ui/cdk';
+import {TuiAlertOptions} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -14,7 +15,7 @@ export class AlertExampleWithDataComponent {
 
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiNotificationContentContext<number, number>,
+        private readonly context: TuiDialog<TuiAlertOptions<number>, number>,
     ) {
         this.value = this.context.data;
     }
@@ -24,6 +25,6 @@ export class AlertExampleWithDataComponent {
     }
 
     submit(): void {
-        this.context.emitAndCloseHook(this.value);
+        this.context.completeWith(this.value);
     }
 }
