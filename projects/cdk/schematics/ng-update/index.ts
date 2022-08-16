@@ -18,6 +18,7 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 import {addStylesToAngularJson} from '../utils/add-styles';
 import {TAIGA_THEME_FONTS} from '../constants/taiga-styles';
+import {replaceStyles} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 
@@ -61,6 +62,7 @@ function main(_: Schema): Rule {
         renameTypes();
         replaceConstants();
         replaceServices();
+        replaceStyles();
         showWarnings(context);
         migrateTemplates(fileSystem);
 
