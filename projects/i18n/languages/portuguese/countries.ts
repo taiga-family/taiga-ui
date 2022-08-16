@@ -203,7 +203,7 @@ export const TUI_PORTUGUESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string
     [TuiCountryIsoCode.VN]: `Vietnã`,
     [TuiCountryIsoCode.VU]: `Vanuatu`,
     [TuiCountryIsoCode.WS]: `Samoa`,
-    [TuiCountryIsoCode.XK]: `Republic of Kosovo`,
+    [TuiCountryIsoCode.XK]: `Kosovo`,
     [TuiCountryIsoCode.YE]: `Yemén`,
     [TuiCountryIsoCode.ZA]: `África do Sul`,
     [TuiCountryIsoCode.ZM]: `Zâmbia`,
