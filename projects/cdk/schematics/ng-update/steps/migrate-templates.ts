@@ -26,7 +26,6 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
-import {addProviderToComponent} from 'ng-morph';
 import {getNgComponents} from '../../utils/angular/ng-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
