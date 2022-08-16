@@ -124,4 +124,10 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'TUI_EDITOR_STYLES token has been deleted in 3.0, please use global styles to override default editor styles',
     },
+    {
+        name: 'TuiNotificationContentContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiNotificationContentContext has been deleted in 3.0. Please, use TuiDialog<TuiAlertOptions<I>, O> instead of TuiNotificationContentContext<O, I>',
+    },
 ];

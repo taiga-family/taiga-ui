@@ -10,7 +10,7 @@
         class="t-heading"
     >
         <!-- TODO: Polymorpheus fix type -->
-        <ng-container *polymorpheusOutlet="$any(item.label) as text; context: context">
+        <ng-container *polymorpheusOutlet="$any(item.label) as text; context: item">
             {{ text }}
         </ng-container>
     </label>
@@ -19,7 +19,7 @@
         class="t-content"
     >
         <!-- TODO: Polymorpheus fix type -->
-        <ng-container *polymorpheusOutlet="item.content as text; context: $any(context)">
+        <ng-container *polymorpheusOutlet="item.content as text; context: $any(item)">
             {{ text }}
         </ng-container>
     </div>
@@ -35,7 +35,7 @@
             class="t-heading"
         >
             <!-- TODO: Polymorpheus fix type -->
-            <ng-container *polymorpheusOutlet="$any(item.label) as text; context: context">
+            <ng-container *polymorpheusOutlet="$any(item.label) as text; context: item">
                 {{ text }}
             </ng-container>
         </label>
@@ -44,7 +44,7 @@
             class="t-content"
         >
             <!-- TODO: Polymorpheus fix type -->
-            <ng-container *polymorpheusOutlet="item.content as text; context: $any(context)">
+            <ng-container *polymorpheusOutlet="item.content as text; context: $any(item)">
                 {{ text }}
             </ng-container>
         </div>
