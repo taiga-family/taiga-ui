@@ -6,4 +6,4 @@ const EXCLUDE_FILE_PATTERNS = [
 
 const FILTERED_PATHS = `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS})`;
 export const ALL_TS_FILES = `${FILTERED_PATHS}.ts`;
-export const ALL_FILES = `${FILTERED_PATHS}.{html,ts}`;
+export const ALL_FILES = `${FILTERED_PATHS}.{html,ts,less}`;
