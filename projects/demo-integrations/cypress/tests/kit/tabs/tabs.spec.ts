@@ -23,6 +23,8 @@ describe(`Tabs`, () => {
                 .tuiScrollIntoView()
                 .as(`complex`);
 
+            cy.wait(WAIT_BEFORE_SCREENSHOT);
+
             cy.get(`@complex`)
                 .get(`button[type="button"]`)
                 .contains(`Collaborators`)

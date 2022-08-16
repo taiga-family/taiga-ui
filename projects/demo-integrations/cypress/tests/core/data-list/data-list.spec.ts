@@ -36,9 +36,8 @@ describe(`DataList`, () => {
             .type(`{rightarrow}`)
             .type(`{downarrow}`.repeat(2));
 
-        cy.matchImageSnapshot(`3-#submenu`, {
+        cy.get(`tui-doc-page`).matchImageSnapshot(`3-#submenu`, {
             capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
         });
     });
 
@@ -55,17 +54,15 @@ describe(`DataList`, () => {
             .tuiScrollIntoView()
             .as(`complexDemo`);
 
-        cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`5-1-data-list-initial`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-1-data-list-initial`, {capture: `viewport`});
 
         cy.get(`@complexDemo`).find(`button`).first().click();
 
-        cy.matchImageSnapshot(`5-2-data-list-opened`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-2-data-list-opened`, {capture: `viewport`});
 
         cy.getByAutomationId(`tui-data-money-input`)
             .findByAutomationId(`tui-primitive-textfield__native-input`)
@@ -75,10 +72,9 @@ describe(`DataList`, () => {
             .should(`have.value`, ``)
             .type(`2000`, {force: true});
 
-        cy.matchImageSnapshot(`5-3-data-list-converted-money`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-3-data-list-converted-money`, {capture: `viewport`});
 
         cy.getByAutomationId(`tui-data-list-email-option`)
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -91,10 +87,9 @@ describe(`DataList`, () => {
             .should(`have.value`, ``)
             .type(`demo@taiga-ui.io`, {force: true});
 
-        cy.matchImageSnapshot(`5-4-data-list-email-opened`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-4-data-list-email-opened`, {capture: `viewport`});
 
         cy.getByAutomationId(`tui-data-list-range-option`)
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -106,10 +101,9 @@ describe(`DataList`, () => {
             .should(`have.value`, ``)
             .type(`04.02.2022 – 04.02.2023`, {force: true});
 
-        cy.matchImageSnapshot(`5-5-data-list-range-opened`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-5-data-list-range-opened`, {capture: `viewport`});
 
         cy.getByAutomationId(`tui-data-list-calendar-option`)
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -118,17 +112,15 @@ describe(`DataList`, () => {
             .eq(4)
             .click({force: true});
 
-        cy.matchImageSnapshot(`5-6-data-list-calendar-opened`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-6-data-list-calendar-opened`, {capture: `viewport`});
 
         cy.get(`@complexDemo`).wait(DEFAULT_TIMEOUT_BEFORE_ACTION).click();
 
-        cy.matchImageSnapshot(`5-7-data-list-finish`, {
-            capture: `viewport`,
-            blackout: [`tui-doc-navigation`],
-        });
+        cy.get(`tui-doc-page`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`5-7-data-list-finish`, {capture: `viewport`});
     });
 
     it(`Options with long text`, () => {
