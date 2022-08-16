@@ -1,6 +1,7 @@
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EXAMPLE_ID,
+    WAIT_BEFORE_SCREENSHOT,
 } from '../../../support/shared.entities';
 
 describe(`Tabs`, () => {
@@ -22,13 +23,15 @@ describe(`Tabs`, () => {
                 .tuiScrollIntoView()
                 .as(`complex`);
 
+            cy.wait(WAIT_BEFORE_SCREENSHOT);
+
             cy.get(`@complex`)
                 .get(`button[type="button"]`)
                 .contains(`Collaborators`)
                 .click();
 
             cy.get(`@complex`)
-                .wait(400) // wait animation for prevent flaky tests
+                .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`02-1-complex-select-collaborators`);
 
             cy.get(`tui-dropdown-box`)
@@ -37,7 +40,7 @@ describe(`Tabs`, () => {
                 .click();
 
             cy.get(`@complex`)
-                .wait(400) // wait animation for prevent flaky tests
+                .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`02-2-complex-select-collaborators`);
         });
     });
