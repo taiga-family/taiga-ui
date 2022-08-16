@@ -27,6 +27,7 @@ export class AppComponent {
     normalized = TuiDayRange.normalizeParse(a, b, c);
 
     other: TuiDay = getTuiDay();
+    value: TuiMonth | null = null;
 
     show(): void {
        const kek = this.some;
@@ -37,7 +38,17 @@ export class AppComponent {
 
        this.other.getDayFromMonthRowCol(1, 2, 3);
 
-       return TuiMonth.formattedMonth;
+       return this.value.formattedMonth;
+    }
+
+    dummyFn1() {
+        const {value, var1} = this;
+
+        return value.notDeprecatedProperty;
+    }
+
+    dummyFn2() {
+        const {value, var2} = this;
     }
 }`;
 
@@ -56,6 +67,7 @@ export class AppComponent {
     normalized = TuiDayRange.normalizeParse(a, "DMY");
 
     other: TuiDay = getTuiDay();
+    value: TuiMonth | null = null;
 
     show(): void {
        const kek = this.some;
@@ -68,7 +80,17 @@ export class AppComponent {
        this.other.getDayFromMonthRowCol(1, 2, 3);
 
 // TODO: (Taiga UI migration) formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit
-       return TuiMonth.formattedMonth;
+       return this.value.formattedMonth;
+    }
+
+    dummyFn1() {
+        const {value, var1} = this;
+
+        return value.notDeprecatedProperty;
+    }
+
+    dummyFn2() {
+        const {value, var2} = this;
     }
 }`;
 
