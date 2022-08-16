@@ -212,7 +212,7 @@ function replaceIdentifierReferences(
          * If `identifier` is equal to `var` from `method1` (1),
          * then `identifier.findReferencesAsNodes` will return array with 2 references: (2) and (3).
          */
-        .filter(ref => areBothObjectDestructuring(ref, identifier))
+        .filter(ref => !areBothObjectDestructuring(ref, identifier))
         .forEach(ref => {
             if (ref.wasForgotten()) {
                 return;
@@ -264,8 +264,8 @@ function insertTodoBeforeNode(node: Node, message: string) {
 }
 
 function areBothObjectDestructuring(ref: Node, identifier: Identifier): boolean {
-    return !(
+    return Boolean(
         identifier.getFirstAncestorByKind(SyntaxKind.BindingElement) &&
-        ref.getFirstAncestorByKind(SyntaxKind.BindingElement)
+            ref.getFirstAncestorByKind(SyntaxKind.BindingElement),
     );
 }
