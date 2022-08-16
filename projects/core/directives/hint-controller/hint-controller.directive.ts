@@ -20,7 +20,7 @@ export class TuiHintControllerDirective
 {
     @Input(`tuiHintContent`)
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = ``;
+    content: PolymorpheusContent = ``;
 
     @Input(`tuiHintDirection`)
     @tuiDefaultProp()

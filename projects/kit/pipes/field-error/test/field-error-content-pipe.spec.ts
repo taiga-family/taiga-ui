@@ -8,7 +8,6 @@ import {
 } from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsElement} from '@taiga-ui/cdk';
 import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit/components';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
@@ -107,11 +106,7 @@ describe(`TuiFieldErrorContentPipe`, () => {
     }
 
     function getHost(): Element {
-        const element = document.querySelector(`#hint-host`);
-
-        tuiAssertIsElement(element);
-
-        return element;
+        return document.querySelector(`#hint-host`)!;
     }
 
     function getTooltip(): Element | null {

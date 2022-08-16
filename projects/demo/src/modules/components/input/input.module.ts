@@ -9,7 +9,7 @@ import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiGroupModule,
     TuiHintControllerModule,
     TuiLinkModule,
@@ -72,7 +72,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,

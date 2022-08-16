@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 
@@ -15,7 +15,7 @@ import {ExampleSmilesToolComponent} from './smiles-tool.component';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiActiveZoneModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
     ],
     declarations: [ExampleSmilesToolComponent],
     exports: [ExampleSmilesToolComponent],

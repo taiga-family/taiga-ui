@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiGroupModule,
     TuiHintControllerModule,
     TuiLinkModule,
@@ -43,7 +43,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiNotificationModule,

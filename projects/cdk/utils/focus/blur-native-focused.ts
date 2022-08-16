@@ -1,3 +1,5 @@
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+
 import {tuiGetNativeFocused} from './get-native-focused';
 
 /**
@@ -6,8 +8,7 @@ import {tuiGetNativeFocused} from './get-native-focused';
 export function tuiBlurNativeFocused(documentRef: Document): void {
     const activeElement = tuiGetNativeFocused(documentRef);
 
-    // TODO: iframe warning
-    if (activeElement instanceof HTMLElement) {
+    if (tuiIsHTMLElement(activeElement)) {
         activeElement.blur();
     }
 }

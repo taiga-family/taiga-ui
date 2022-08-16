@@ -1,52 +1,89 @@
 import {
-    AfterViewChecked,
+    ComponentRef,
     Directive,
     ElementRef,
-    forwardRef,
     Inject,
-    Injector,
+    INJECTOR,
     Input,
+    OnChanges,
     OnDestroy,
-    Optional,
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
+    TuiContextWithImplicit,
+    tuiDefaultProp,
     TuiDropdownPortalService,
-    TuiParentsScrollService,
+    tuiPure,
 } from '@taiga-ui/cdk';
-import {AbstractTuiDropdown} from '@taiga-ui/core/abstract';
-import {TuiDropdown} from '@taiga-ui/core/interfaces';
-import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
+import {
+    tuiAsRectAccessor,
+    tuiAsVehicle,
+    TuiRectAccessor,
+    TuiVehicle,
+} from '@taiga-ui/core/abstract';
+import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 
 @Directive({
     selector: `[tuiDropdown]:not(ng-container)`,
+    exportAs: `tuiDropdown`,
     providers: [
+        tuiAsRectAccessor(TuiDropdownDirective),
+        tuiAsVehicle(TuiDropdownDirective),
         {
-            provide: TUI_DROPDOWN_DIRECTIVE,
-            useExisting: forwardRef(() => TuiDropdownDirective),
+            provide: PolymorpheusComponent,
+            deps: [TUI_DROPDOWN_COMPONENT, INJECTOR],
+            useClass: PolymorpheusComponent,
         },
-        TuiParentsScrollService,
     ],
 })
 export class TuiDropdownDirective
-    extends AbstractTuiDropdown
-    implements TuiDropdown, AfterViewChecked, OnDestroy
+    implements OnDestroy, OnChanges, TuiPortalItem, TuiRectAccessor, TuiVehicle
 {
     @Input(`tuiDropdown`)
-    set open(value: boolean) {
-        this.toggleDropdown(value);
-    }
+    @tuiDefaultProp()
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = ``;
+
+    dropdownBoxRef: ComponentRef<unknown> | null = null;
 
     constructor(
-        @Inject(Injector) injector: Injector,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(PolymorpheusComponent)
+        readonly component: PolymorpheusComponent<unknown, any>,
         @Inject(TuiDropdownPortalService)
-        portalService: TuiDropdownPortalService,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiActiveZoneDirective)
-        @Optional()
-        activeZone: TuiActiveZoneDirective | null,
-        @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
-    ) {
-        super(injector, portalService, elementRef, activeZone);
+        private readonly dropdownService: TuiDropdownPortalService,
+    ) {}
+
+    @tuiPure
+    get position(): `absolute` | `fixed` {
+        return tuiCheckFixedPosition(this.elementRef.nativeElement)
+            ? `fixed`
+            : `absolute`;
+    }
+
+    ngOnChanges(): void {
+        if (!this.content) {
+            this.toggle(false);
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.toggle(false);
+    }
+
+    getClientRect(): ClientRect {
+        return this.elementRef.nativeElement.getBoundingClientRect();
+    }
+
+    toggle(show: boolean): void {
+        if (show && this.content && !this.dropdownBoxRef) {
+            this.dropdownBoxRef = this.dropdownService.add(this.component);
+        } else if (!show && this.dropdownBoxRef) {
+            this.dropdownService.remove(this.dropdownBoxRef);
+            this.dropdownBoxRef = null;
+        }
     }
 }

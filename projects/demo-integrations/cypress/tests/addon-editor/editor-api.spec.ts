@@ -206,7 +206,7 @@ describe(`Editor API`, () => {
             cy.get(`@wrapper`)
                 .find(`button[icon="tuiIconViewListLarge"]`)
                 .click({force: true});
-            cy.get(`tui-dropdown-box`)
+            cy.get(`tui-dropdown`)
                 .find(`button[icon="${iconType}"]`)
                 .click({force: true});
         }

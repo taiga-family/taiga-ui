@@ -1,0 +1,32 @@
+@import '../../styles/taiga-ui-local.less';
+
+:host {
+    .createStackingContext();
+    .shadow(2);
+    position: absolute;
+    display: flex;
+    background-color: var(--tui-elevation-01);
+    border-radius: var(--tui-radius-m);
+    overflow: hidden;
+    border: 1px solid var(--tui-base-03);
+    box-sizing: border-box;
+
+    &.ng-animating {
+        pointer-events: none;
+    }
+}
+
+.t-wrapper {
+    flex-grow: 1;
+    max-width: 100%;
+    max-height: inherit;
+    overflow: visible;
+}
+
+.t-scroll {
+    height: 100%;
+}
+
+.t-primitive {
+    padding: 1rem;
+}

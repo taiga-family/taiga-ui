@@ -338,6 +338,42 @@ export const ROUTES = [
         },
     },
     {
+        path: `directives/dropdown`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown/dropdown.module`))
+                .ExampleTuiDropdownModule,
+        data: {
+            title: `Dropdown`,
+        },
+    },
+    {
+        path: `directives/dropdown-context`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-context/dropdown-context.module`))
+                .ExampleTuiDropdownContextModule,
+        data: {
+            title: `DropdownContext`,
+        },
+    },
+    {
+        path: `directives/dropdown-hover`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-hover/dropdown-hover.module`))
+                .ExampleTuiDropdownHoverModule,
+        data: {
+            title: `DropdownHover`,
+        },
+    },
+    {
+        path: `directives/dropdown-selection`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-selection/dropdown-selection.module`))
+                .ExampleTuiDropdownSelectionModule,
+        data: {
+            title: `DropdownSelection`,
+        },
+    },
+    {
         path: `components/input-inline`,
         loadChildren: async () =>
             (await import(`../components/input-inline/input-inline.module`))
@@ -1084,33 +1120,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/dropdown`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown/dropdown.module`))
-                .ExampleTuiDropdownModule,
-        data: {
-            title: `Dropdown`,
-        },
-    },
-    {
-        path: `directives/dropdown-context`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-context/dropdown-context.module`))
-                .ExampleTuiDropdownContextModule,
-        data: {
-            title: `DropdownContext`,
-        },
-    },
-    {
-        path: `directives/dropdown-selection`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-selection/dropdown-selection.module`))
-                .ExampleTuiDropdownSelectionModule,
-        data: {
-            title: `DropdownSelection`,
-        },
-    },
-    {
         path: `directives/described-by`,
         loadChildren: async () =>
             (await import(`../directives/described-by/described-by.module`))
@@ -1451,15 +1460,6 @@ export const ROUTES = [
                 .ExampleTuiTableBarModule,
         data: {
             title: `TableBarService`,
-        },
-    },
-    {
-        path: `directives/dropdown-controller`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-controller/dropdown-controller.module`))
-                .ExampleTuiDropdownControllerModule,
-        data: {
-            title: `DropdownController`,
         },
     },
     {

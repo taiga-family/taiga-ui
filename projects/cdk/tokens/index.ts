@@ -11,6 +11,7 @@ export * from './is-firefox';
 export * from './is-ios';
 export * from './is-mobile';
 export * from './is-webkit';
+export * from './range';
 export * from './removed-element';
 export * from './swipe-options';
 export * from './take-only-trusted-events';

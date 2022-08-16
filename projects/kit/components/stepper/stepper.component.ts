@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiAssertIsElement,
     tuiDefaultProp,
     tuiGetOriginalArrayFromQueryList,
+    tuiIsElement,
     tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
@@ -115,7 +115,9 @@ export class TuiStepperComponent {
     }
 
     private moveFocus(current: EventTarget, step: number): void {
-        tuiAssertIsElement(current);
+        if (!tuiIsElement(current)) {
+            return;
+        }
 
         const stepElements = this.getNativeElements(this.steps);
         const index = stepElements.findIndex(item => item === current);

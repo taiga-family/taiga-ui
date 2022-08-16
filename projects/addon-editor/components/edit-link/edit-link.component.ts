@@ -7,6 +7,7 @@ import {
     Inject,
     Output,
 } from '@angular/core';
+import {tuiIsElement} from '@taiga-ui/cdk';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
@@ -65,14 +66,9 @@ export class TuiEditLinkComponent {
 
     @HostListener(`mousedown`, [`$event`])
     onMouseDown(event: MouseEvent): void {
-        const tagName =
-            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : ``;
-
-        if (tagName === `a` || tagName === `button` || tagName === `input`) {
-            return;
+        if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
+            event.preventDefault();
         }
-
-        event.preventDefault();
     }
 
     onSave(): void {
