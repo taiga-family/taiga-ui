@@ -215,7 +215,7 @@ export type LanguagePreview = {
 export interface TuiLanguagePreview extends LanguagePreview {}
 
 export interface TuiLanguageMeta {
-    name: TuiLanguageName;
+    name: TuiLanguageName | string;
 }
 
 /**
