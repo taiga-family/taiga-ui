@@ -203,7 +203,7 @@ export const TUI_CHINESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.VN]: `越南`,
     [TuiCountryIsoCode.VU]: `瓦努阿图`,
     [TuiCountryIsoCode.WS]: `萨摩亚`,
-    [TuiCountryIsoCode.XK]: `科索沃共和國`,
+    [TuiCountryIsoCode.XK]: `科索沃`,
     [TuiCountryIsoCode.YE]: `也门`,
     [TuiCountryIsoCode.ZA]: `南非`,
     [TuiCountryIsoCode.ZM]: `赞比亚`,
