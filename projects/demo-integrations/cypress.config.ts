@@ -3,7 +3,7 @@ import {defineConfig} from 'cypress';
 export const viewportWidth = 1440;
 export const viewportHeight = 900;
 
-export default defineConfig({
+export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     projectId: `sorry-cypress`,
     video: false,
     viewportWidth,
@@ -46,4 +46,6 @@ export default defineConfig({
             return require(`./cypress/plugins/index.ts`).default(on, config);
         },
     },
-});
+};
+
+export default defineConfig(TUI_CYPRESS_CONFIG);
