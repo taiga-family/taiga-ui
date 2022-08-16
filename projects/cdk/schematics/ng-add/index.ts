@@ -36,6 +36,13 @@ function addDependencies(tree: Tree, options: Schema): void {
         });
     });
 
+    if (options.addGlobalStyles) {
+        addPackageJsonDependency(tree, {
+            name: `@taiga-ui/styles`,
+            version: TAIGA_VERSION,
+        });
+    }
+
     if (options.addSanitizer) {
         addPackageJsonDependency(tree, {
             name: '@tinkoff/ng-dompurify',
