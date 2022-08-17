@@ -192,29 +192,57 @@ function replaceIdentifierReferences(
     from: string,
     callback: (node: Node) => void,
 ) {
-    identifier.findReferencesAsNodes().forEach(ref => {
-        let parent = ref.getParent();
-
-        if (
-            parent?.getText() === `this.${identifier.getText()}` ||
-            parent?.getText() === identifier.getText()
-        ) {
-            replaceIdentifier(parent, from, callback);
-        }
-
-        if (parent?.getText().startsWith('this')) {
-            parent = parent?.getParent();
-        }
-
-        if (Node.isPropertyAccessExpression(parent)) {
-            const searched = parent
-                .getChildrenOfKind(SyntaxKind.Identifier)
-                .find(identifier => identifier.getText() === from);
-            if (searched) {
-                callback(parent!);
+    identifier
+        .findReferencesAsNodes()
+        /**
+         * `findReferencesAsNodes` has strange behavior.
+         * Imagine schematics run on the following file:
+         * ```
+         * class Dummy {
+         *  var = 5;
+         *  method1() {
+         *      const {var} = this; // (1)
+         *      return var; // (2)
+         *  }
+         *  method2() {
+         *      const {var} = this; // (3)
+         *  }
+         * }
+         * ```
+         * If `identifier` is equal to `var` from `method1` (1),
+         * then `identifier.findReferencesAsNodes` will return array with 2 references: (2) and (3).
+         */
+        .filter(ref => !areBothObjectDestructuring(ref, identifier))
+        .forEach(ref => {
+            if (ref.wasForgotten()) {
+                return;
             }
-        }
-    });
+            let parent = ref.getParent();
+
+            if (
+                parent?.getText() === `this.${identifier.getText()}` ||
+                parent?.getText() === identifier.getText()
+            ) {
+                replaceIdentifier(parent, from, callback);
+            }
+
+            if (parent?.wasForgotten()) {
+                return;
+            }
+
+            if (parent?.getText().startsWith('this')) {
+                parent = parent?.getParent();
+            }
+
+            if (Node.isPropertyAccessExpression(parent)) {
+                const searched = parent
+                    .getChildrenOfKind(SyntaxKind.Identifier)
+                    .find(identifier => identifier.getText() === from);
+                if (searched) {
+                    callback(parent!);
+                }
+            }
+        });
 }
 
 function changeNormalizeArgs(node: CallExpression) {
@@ -233,4 +261,11 @@ function insertTodoBeforeNode(node: Node, message: string) {
     if (identifier) {
         insertTodo(identifier, message);
     }
+}
+
+function areBothObjectDestructuring(ref: Node, identifier: Identifier): boolean {
+    return Boolean(
+        identifier.getFirstAncestorByKind(SyntaxKind.BindingElement) &&
+            ref.getFirstAncestorByKind(SyntaxKind.BindingElement),
+    );
 }
