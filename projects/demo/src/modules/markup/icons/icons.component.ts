@@ -6,7 +6,8 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 
 @Component({
     selector: `icons`,
-    templateUrl: `icons.template.html`,
+    templateUrl: `./icons.template.html`,
+    styleUrls: [`./icons.style.less`],
     changeDetection,
 })
 export class IconsComponent {
