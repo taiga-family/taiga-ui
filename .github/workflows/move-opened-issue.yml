@@ -8,8 +8,7 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.8.1
+      - uses: actions/add-to-project@0.3.0
         with:
-          project: Taiga-UI
-          column: '💡 Backlog'
-          repo-token: ${{ secrets.TINKOFF_BOT_PAT }}
+          project-url: https://github.com/orgs/Tinkoff/projects/3
+          github-token: ${{ secrets.TINKOFF_BOT_PAT }}
