@@ -16,14 +16,14 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      * Time, in milliseconds, to wait until most
      * DOM based commands are considered timed out.
      */
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 30_000,
 
     /**
      * @description:
      * Time, in milliseconds, to wait until a response
      * in a cy.request(), cy.wait(),
      */
-    responseTimeout: 10000,
+    responseTimeout: 30_000,
 
     /**
      * @description:
@@ -31,7 +31,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      * Reduce this number if you are experiencing high memory
      * consumption in your browser during a test run.
      */
-    numTestsKeptInMemory: 50,
+    numTestsKeptInMemory: 0,
 
     e2e: {
         specPattern: `cypress/tests/**/*.spec.ts`,
