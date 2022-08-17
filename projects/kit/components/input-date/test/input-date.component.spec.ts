@@ -463,6 +463,6 @@ function getCalendarCell(dayNumber: number): DebugElement | null {
     return (
         pageObject
             .getAllByAutomationId(`tui-primitive-calendar__cell`)
-            .find(el => Number(el.nativeElement.innerText.trim()) === dayNumber) || null
+            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) || null
     );
 }

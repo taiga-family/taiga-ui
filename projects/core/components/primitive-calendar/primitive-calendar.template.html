@@ -2,7 +2,7 @@
     <div
         *ngFor="let day of weekDays$ | async"
         class="t-cell"
-        [innerText]="day"
+        [textContent]="day"
     ></div>
 </div>
 <div *tuiLet="month | tuiCalendarSheet: true as sheet">

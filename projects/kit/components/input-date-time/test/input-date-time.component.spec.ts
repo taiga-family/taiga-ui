@@ -500,6 +500,6 @@ function getCalendarCell(dayNumber: number): DebugElement | null {
     return (
         pageObject
             .getAllByAutomationId(testContext.calendarCellAutomationId)
-            .find(el => Number(el.nativeElement.innerText.trim()) === dayNumber) || null
+            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) || null
     );
 }
