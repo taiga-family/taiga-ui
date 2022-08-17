@@ -16,6 +16,7 @@ export default async (
     on(`before:browser:launch`, (browser, launchOptions) => {
         if (browser.name === `chrome`) {
             launchOptions.args.push(
+                `--font-render-hinting=none`, // prevent inconsistent text rendering in headless mode
                 `--window-size=${viewportWidth},${viewportHeight}`,
                 `--force-device-scale-factor=2`,
                 `--high-dpi-support=1`,

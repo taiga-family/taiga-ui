@@ -1,19 +1,21 @@
-import {
-    DEFAULT_TIMEOUT_BEFORE_ACTION,
-    DROPDOWN_CONTEXT_PAGE_URL,
-} from '../../../support/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
 
 describe(`DropdownContext`, () => {
     beforeEach(() => {
         cy.viewport(720, 900);
-        cy.tuiVisit(DROPDOWN_CONTEXT_PAGE_URL);
+        cy.tuiVisit(`directives/dropdown-context`);
+
+        // note: synchronized viewport position for prevent flaky tests
+        cy.get(`tui-doc-example[heading="Context menu"]`)
+            .findByAutomationId(`tui-doc-example`)
+            .tuiScrollIntoView();
     });
 
     it(`opens dropdown on right click`, () => {
         cy.get(`#contextMenu`).find(`tr`).last().rightclick();
 
         cy.window()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`01-opened-context-menu`, {capture: `viewport`});
     });
 
@@ -21,13 +23,18 @@ describe(`DropdownContext`, () => {
         cy.get(`#contextMenu`).find(`tr`).eq(1).rightclick();
 
         cy.get(`body`).type(`{downarrow}{downarrow}`);
+
         cy.window()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`02-arrow-down`, {capture: `viewport`});
 
         cy.focused().click();
+
+        cy.tuiHideDocPage();
+        cy.tuiWaitKitDialog();
+
         cy.window()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`02-arrow-down-clicked`, {capture: `viewport`});
     });
 
@@ -37,14 +44,13 @@ describe(`DropdownContext`, () => {
         cy.get(`body`).type(`{uparrow}`);
 
         cy.window()
-            // 300ms - debounce time of DataListDropdownManager + 100ms for flaky-free test
-            .wait(400)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`03-arrow-up`, {capture: `viewport`});
 
         cy.get(`body`).type(`{rightarrow}`);
 
         cy.window()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`03-arrow-up-right`, {capture: `viewport`});
     });
 });
