@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {isNumber, px, tuiDefaultProp} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {sizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatusT} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-const BADGE_SIZE: {[key: string]: TuiSizeS | TuiSizeL} = {
-    xs: `s`,
+const BADGE_SIZE: {[key: string]: TuiSizeXS | TuiSizeL} = {
+    xs: `xs`,
     s: `s`,
     m: `s`,
     l: `m`,
@@ -49,22 +49,15 @@ export class TuiBadgedContentComponent {
     rounded = false;
 
     get topNotification(): string {
-        return (!this.contentTop && this.colorTop) ||
-            (this.contentTop && this.contentIsNumber(this.contentTop) && this.badgeHidden)
-            ? this.colorTop
-            : ``;
+        return !this.contentTop && this.colorTop ? this.colorTop : ``;
     }
 
     get bottomNotification(): string {
         return !this.contentBottom && this.colorBottom ? this.colorBottom : ``;
     }
 
-    get badgeSize(): TuiSizeS | TuiSizeL {
+    get badgeSize(): TuiSizeXS | TuiSizeL {
         return BADGE_SIZE[this.size];
-    }
-
-    get badgeHidden(): boolean {
-        return this.size === `xs`;
     }
 
     get sizeBig(): boolean {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiStatusT} from '@taiga-ui/kit';
 
 @Component({
@@ -56,9 +56,9 @@ export class ExampleTuiBadgeComponent {
         '""': ``,
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeL> = [`xs`, `s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeXS | TuiSizeL = this.sizeVariants[1];
 
     valueVariants: ReadonlyArray<string | number> = Object.keys(this.values);
 

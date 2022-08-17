@@ -163,6 +163,11 @@
 .t-icon {
     color: var(--tui-success-fill);
 
+    :host[data-size='xs'] & {
+        transform: scale(2/3);
+        margin: -0.25rem;
+    }
+
     :host[data-size='s'] &,
     :host[data-size='m'] & {
         width: 1.5rem;
