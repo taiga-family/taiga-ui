@@ -107,83 +107,103 @@ const BEFORE_LOCAL_STYLE = `
         color: red;
     }
 }
+
+.negative-media {
+    @media not @mobile-m {
+        color: green;
+    }
+
+    @media not @desktop {
+        color: green;
+    }
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
 
 .legacy-breakpoints {
-    @media @mobile-m {
+    @media @tui-mobile {
         color: red;
     }
-    @media @mobile-m-min {
+    @media @tui-mobile-min {
         color: red;
     }
-    @media @mobile-m-interval {
+    @media @tui-mobile-interval {
         color: red;
     }
-    @media @mobile-m {
+    @media @tui-mobile {
         color: red;
     }
-    @media @mobile-m-min {
+    @media @tui-mobile-min {
         color: red;
     }
-    @media @mobile-m-interval {
+    @media @tui-mobile-interval {
         color: red;
     }
-    @media @tablet-lg {
+    @media @tui-tablet {
         color: red;
     }
-    @media @tablet-lg-min {
+    @media @tui-tablet-min {
         color: red;
     }
-    @media @tablet-lg-interval {
+    @media @tui-tablet-interval {
         color: red;
     }
-    @media @desktop-s {
+    @media @tui-desktop {
         color: red;
     }
-    @media @desktop-s-min {
+    @media @tui-desktop-min {
         color: red;
     }
-    @media @desktop-s-interval {
+    @media @tui-desktop-interval {
         color: red;
     }
-    @media @desktop-m-min {
+    @media @tui-desktop-lg-min {
         color: red;
     }
 }
 
 .actual-breakpoints {
-    @media @mobile-m {
+    @media @tui-mobile {
         color: red;
     }
-    @media @mobile-m-min {
+    @media @tui-mobile-min {
         color: red;
     }
-    @media @mobile-m-interval {
+    @media @tui-mobile-interval {
         color: red;
     }
-    @media @tablet-lg {
+    @media @tui-tablet {
         color: red;
     }
-    @media @tablet-lg-min {
+    @media @tui-tablet-min {
         color: red;
     }
-    @media @tablet-lg-interval {
+    @media @tui-tablet-interval {
         color: red;
     }
-    @media @desktop-s {
+    @media @tui-desktop {
         color: red;
     }
-    @media @desktop-s-min {
+    @media @tui-desktop-min {
         color: red;
     }
-    @media @desktop-s-interval {
+    @media @tui-desktop-interval {
         color: red;
     }
-    @media @desktop-m-min {
+    @media @tui-desktop-lg-min {
         color: red;
+    }
+}
+
+.negative-media {
+    @media not @tui-mobile {
+        color: green;
+    }
+
+    @media not @tui-desktop {
+        color: green;
     }
 }
 `;

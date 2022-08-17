@@ -8,7 +8,7 @@
     margin: auto;
     font: var(--tui-font-text-xs);
 
-    @media @desktop-s-min {
+    @media @tui-desktop-min {
         font: var(--tui-font-text-s);
         width: 500px;
     }
@@ -23,8 +23,8 @@
     align-items: center;
 }
 
-@breakpoints: mobile-m, mobile-m-min, mobile-m-interval, tablet-lg, tablet-lg-min, tablet-lg-interval, desktop-s,
-    desktop-s-min, desktop-s-interval, desktop-m-min;
+@breakpoints: tui-mobile, tui-mobile-min, tui-mobile-interval, tui-tablet, tui-tablet-min, tui-tablet-interval,
+    tui-desktop, tui-desktop-min, tui-desktop-interval, tui-desktop-lg-min;
 
 each(@breakpoints, {
     .@{value} {
@@ -35,6 +35,6 @@ each(@breakpoints, {
     }
 });
 
-.desktop-m-min {
+.tui-desktop-lg-min {
     grid-column: span 3;
 }

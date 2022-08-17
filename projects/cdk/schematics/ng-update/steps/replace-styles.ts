@@ -10,7 +10,7 @@ export function replaceStyles() {
             if (fullText.includes(`taiga-ui-local`)) {
                 DEPRECATED_BREAKPOINTS.forEach(({from, to}) => {
                     fullText = fullText.replaceAll(
-                        new RegExp(`(?<=@media\\s*)(${from})(?=[\\s,{])`, 'g'),
+                        new RegExp(`(?<=@media.*)(${from})(?=[\\s,{])`, 'g'),
                         to,
                     );
                 });

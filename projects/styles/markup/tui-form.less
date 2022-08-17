@@ -10,7 +10,7 @@
         margin-top: @fields-space-large;
         margin-bottom: @fields-space;
 
-        @media @mobile-m {
+        @media @tui-mobile {
             font: var(--tui-font-text-l);
             font-weight: bold;
             margin-bottom: @fields-space-mobile;
@@ -27,7 +27,7 @@
         &_margin-bottom_small {
             margin-bottom: @fields-space - @space;
 
-            @media @mobile-m {
+            @media @tui-mobile {
                 margin-bottom: @fields-space-mobile - @space;
             }
         }
@@ -44,7 +44,7 @@
         &_multi-fields {
             display: flex;
 
-            @media @mobile-m {
+            @media @tui-mobile {
                 flex-wrap: wrap;
             }
         }
@@ -52,7 +52,7 @@
         &_half-width {
             width: ~'calc(50% - (@{fields-space} / 2))';
 
-            @media @mobile-m {
+            @media @tui-mobile {
                 width: 100%;
             }
         }
@@ -62,7 +62,7 @@
             flex-wrap: wrap;
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             margin-top: @fields-space-mobile;
         }
     }
@@ -76,7 +76,7 @@
             margin-left: 0;
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             flex-basis: 100%;
             margin-top: @fields-space-mobile;
             margin-left: 0;
@@ -121,7 +121,7 @@
             justify-content: center;
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             flex-direction: column;
             margin-top: @fields-space-large-mobile;
         }
@@ -134,7 +134,7 @@
             margin-left: 0;
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             margin-top: @space * 2;
             margin-left: 0;
         }
