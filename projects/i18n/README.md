@@ -44,10 +44,11 @@ You have English by default.
 
 If you want to change it, you need to provide `TUI_LANGUAGE` token in your app.module:
 
+**./app.module.ts**
+
 ```ts
 import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 
-// app.module
 @NgModule({
   // ...
   providers: [
@@ -71,5 +72,53 @@ Feel free to add new languages!
 2. Copy `english` folder and rename new folder with the name of language you speak
 3. Translate entities in files. If you need some clarification, take a look at interfaces of entities. If you need more,
    please write to us via issues or any other way of contact :)
+
+**./serbian/index.ts**
+
+```ts
+import {TuiLanguage, TuiLanguagePreview} from '@taiga-ui/i18n';
+import {TUI_SERBIAN_LANGUAGE_ADDON_COMMERCE} from './addon-commerce';
+import {TUI_SERBIAN_LANGUAGE_ADDON_TABLE} from './addon-table';
+import {TUI_ENGLISH_LANGUAGE_ADDON_EDITOR} from './addon-editor';
+import {TUI_SERBIAN_LANGUAGE_CORE} from './core';
+import {TUI_SERBIAN_LANGUAGE_KIT} from './kit';
+
+const TUI_SERBIAN_LANGUAGE_PREVIEW: TuiLanguagePreview = {
+  previewTexts: {rotate: 'rotiraj'},
+  zoomTexts: {
+    zoomOut: 'odzumiraj',
+    zoomIn: 'zumiraj',
+    reset: 'reset',
+  },
+};
+
+export const TUI_SERBIAN_LANGUAGE: TuiLanguage = {
+  ...TUI_SERBIAN_LANGUAGE_CORE,
+  ...TUI_SERBIAN_LANGUAGE_KIT,
+  ...TUI_SERBIAN_LANGUAGE_ADDON_TABLE,
+  ...TUI_SERBIAN_LANGUAGE_ADDON_COMMERCE,
+  ...TUI_ENGLISH_LANGUAGE_ADDON_EDITOR,
+  ...TUI_SERBIAN_LANGUAGE_PREVIEW,
+  name: 'serbian',
+};
+```
+
+**./app.module.ts**
+
+```ts
+import {TUI_LANGUAGE} from '@taiga-ui/i18n';
+import {TUI_SERBIAN_LANGUAGE} from './serbian';
+
+@NgModule({
+  // ...
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_SERBIAN_LANGUAGE),
+    },
+  ],
+})
+export class AppModule {}
+```
 
 Thank you!
