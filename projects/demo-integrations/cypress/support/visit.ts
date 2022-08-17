@@ -125,7 +125,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         cy.get(`@app`).invoke(`addClass`, `_no-smooth-scroll`);
     }
 
-    cy.get(rootSelector).should('have.class', '_loaded');
+    cy.get(rootSelector).should(`have.class`, `_loaded`);
 
     if (hideHeader) {
         cy.tuiHideHeader();
