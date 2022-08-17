@@ -202,6 +202,10 @@
     &[data-tui-host-padding='m'] {
         padding: 0 @padding - 0.25rem;
 
+        &[data-size='xs'] {
+            padding: 0 @padding - 0.5rem;
+        }
+
         &[data-size='s'] {
             padding: 0 @padding - 0.375rem;
         }
@@ -214,12 +218,27 @@
     &[data-tui-host-padding='l'] {
         padding: 0 @padding - 0.125rem;
 
+        &[data-size='xs'] {
+            padding: 0 @padding - 0.375rem;
+        }
+
         &[data-size='s'] {
             padding: 0 @padding - 0.25rem;
         }
 
         &[data-size='l'] {
             padding: 0 @padding;
+        }
+    }
+
+    &[data-size='xs'] {
+        font: var(--tui-font-text-xs);
+        height: 1rem;
+        min-width: 1rem;
+
+        .left-content:before {
+            width: 0.34375rem;
+            height: 0.34375rem;
         }
     }
 

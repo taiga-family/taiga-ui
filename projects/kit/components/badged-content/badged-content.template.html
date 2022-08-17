@@ -23,7 +23,7 @@
 >
     <ng-template let-content>
         <tui-badge
-            *ngIf="contentIsNumber(content) && !badgeHidden"
+            *ngIf="contentIsNumber(content)"
             [status]="getStatus(colorTop)"
             [style.backgroundColor]="colorTop"
             [size]="badgeSize"
