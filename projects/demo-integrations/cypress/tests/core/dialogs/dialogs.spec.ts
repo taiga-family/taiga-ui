@@ -13,12 +13,17 @@ describe(`Dialogs`, () => {
 
             it(`A dialog and a nested dialog are open correctly`, () => {
                 cy.get(`tui-dialog-example-2 button`).first().click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
+
                 cy.get(`tui-dialog`)
                     .wait(WAIT_BEFORE_SCREENSHOT)
                     .matchImageSnapshot(`${index}-1-dialogs`);
 
                 cy.get(`dialog-example button`).eq(1).click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`)
@@ -29,7 +34,10 @@ describe(`Dialogs`, () => {
 
             it(`Mobile dialog works`, () => {
                 cy.get(`tui-dialog-example-4 button`).first().click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
+
                 cy.get(`tui-dialog`)
                     .wait(WAIT_BEFORE_SCREENSHOT)
                     .matchImageSnapshot(`${index}-3-dialogs`);
@@ -37,7 +45,10 @@ describe(`Dialogs`, () => {
 
             it(`Dialog with directive works`, () => {
                 cy.get(`tui-dialog-example-6 button`).first().click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
+
                 cy.get(`tui-dialog`).matchImageSnapshot(
                     `${index}-4-dialogs-dialog-directive`,
                 );
@@ -45,13 +56,19 @@ describe(`Dialogs`, () => {
 
             it(`show simple`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(0).click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
+
                 cy.get(`tui-dialog`).matchImageSnapshot(`${index}-5-dialogs`);
             });
 
             it(`show simple with custom button`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(1).click();
+
+                cy.tuiHideDocPage();
                 cy.tuiWaitKitDialog();
+
                 cy.get(`tui-dialog`).matchImageSnapshot(`${index}-6-dialogs`);
             });
         });

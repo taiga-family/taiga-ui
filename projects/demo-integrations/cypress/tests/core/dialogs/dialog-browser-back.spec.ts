@@ -37,28 +37,29 @@ describe(`Dialogs + browser back navigation`, () => {
                 .find(`button`)
                 .first()
                 .click();
+
+            cy.tuiHideDocPage();
             cy.tuiWaitKitDialog();
 
             cy.get(`tui-dialog`).get(`button`).contains(`Show one more dialog`).click();
+
             cy.tuiWaitKitDialog();
 
-            cy.matchImageSnapshot(`4-1-opened-all-dialogs`, {
-                capture: `viewport`,
-                blackout: [`tui-doc-navigation`],
-            });
+            cy.matchImageSnapshot(`4-1-opened-all-dialogs`, {capture: `viewport`});
+
             goBack();
-            cy.matchImageSnapshot(`4-2-after-first-back-nav`, {
-                capture: `viewport`,
-                blackout: [`tui-doc-navigation`],
-            });
+
+            cy.matchImageSnapshot(`4-2-after-first-back-nav`, {capture: `viewport`});
+
             goBack();
+
             cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION) // wait for scrollbar
-                .matchImageSnapshot(`4-3-after-second-back-nav`, {
-                    capture: `viewport`,
-                    blackout: [`tui-doc-navigation`],
-                });
+                .matchImageSnapshot(`4-3-after-second-back-nav`, {capture: `viewport`});
+
             cy.url().should(`equal`, getFullUrl(DIALOG_PAGE_URL));
+
             goBack();
+
             cy.url().should(`equal`, getFullUrl(`/`));
         });
 
@@ -94,10 +95,13 @@ describe(`Dialogs + browser back navigation`, () => {
                 .first()
                 .click();
 
+            cy.tuiHideDocPage();
             cy.tuiWaitKitDialog();
 
             cy.url().should(`equal`, getFullUrl(DIALOG_PAGE_URL));
+
             goBack();
+
             cy.url().should(`equal`, getFullUrl(`/`));
         });
     });
