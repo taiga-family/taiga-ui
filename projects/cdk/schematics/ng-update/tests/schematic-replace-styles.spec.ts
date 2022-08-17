@@ -32,10 +32,160 @@ const AFTER_GLOBAL_STYLE = `
 
 const BEFORE_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
+
+.legacy-breakpoints {
+    @media @mobile {
+        color: red;
+    }
+    @media @mobile-min {
+        color: red;
+    }
+    @media @mobile-interval {
+        color: red;
+    }
+    @media @tablet-s {
+        color: red;
+    }
+    @media @tablet-s-min {
+        color: red;
+    }
+    @media @tablet-s-interval {
+        color: red;
+    }
+    @media @tablet {
+        color: red;
+    }
+    @media @tablet-min {
+        color: red;
+    }
+    @media @tablet-interval {
+        color: red;
+    }
+    @media @desktop {
+        color: red;
+    }
+    @media @desktop-min {
+        color: red;
+    }
+    @media @desktop-interval {
+        color: red;
+    }
+    @media @desktop-lg-min {
+        color: red;
+    }
+}
+
+.actual-breakpoints {
+    @media @mobile-m {
+        color: red;
+    }
+    @media @mobile-m-min {
+        color: red;
+    }
+    @media @mobile-m-interval {
+        color: red;
+    }
+    @media @tablet-lg {
+        color: red;
+    }
+    @media @tablet-lg-min {
+        color: red;
+    }
+    @media @tablet-lg-interval {
+        color: red;
+    }
+    @media @desktop-s {
+        color: red;
+    }
+    @media @desktop-s-min {
+        color: red;
+    }
+    @media @desktop-s-interval {
+        color: red;
+    }
+    @media @desktop-m-min {
+        color: red;
+    }
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
+
+.legacy-breakpoints {
+    @media @mobile-m {
+        color: red;
+    }
+    @media @mobile-m-min {
+        color: red;
+    }
+    @media @mobile-m-interval {
+        color: red;
+    }
+    @media @mobile-m {
+        color: red;
+    }
+    @media @mobile-m-min {
+        color: red;
+    }
+    @media @mobile-m-interval {
+        color: red;
+    }
+    @media @tablet-lg {
+        color: red;
+    }
+    @media @tablet-lg-min {
+        color: red;
+    }
+    @media @tablet-lg-interval {
+        color: red;
+    }
+    @media @desktop-s {
+        color: red;
+    }
+    @media @desktop-s-min {
+        color: red;
+    }
+    @media @desktop-s-interval {
+        color: red;
+    }
+    @media @desktop-m-min {
+        color: red;
+    }
+}
+
+.actual-breakpoints {
+    @media @mobile-m {
+        color: red;
+    }
+    @media @mobile-m-min {
+        color: red;
+    }
+    @media @mobile-m-interval {
+        color: red;
+    }
+    @media @tablet-lg {
+        color: red;
+    }
+    @media @tablet-lg-min {
+        color: red;
+    }
+    @media @tablet-lg-interval {
+        color: red;
+    }
+    @media @desktop-s {
+        color: red;
+    }
+    @media @desktop-s-min {
+        color: red;
+    }
+    @media @desktop-s-interval {
+        color: red;
+    }
+    @media @desktop-m-min {
+        color: red;
+    }
+}
 `;
 
 describe('replace styles', () => {

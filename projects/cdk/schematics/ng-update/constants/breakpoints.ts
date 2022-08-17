@@ -1,0 +1,15 @@
+export const DEPRECATED_BREAKPOINTS = [
+    {from: `@mobile`, to: `@mobile-m`},
+    {from: `@mobile-min`, to: `@mobile-m-min`},
+    {from: `@mobile-interval`, to: `@mobile-m-interval`},
+    {from: `@tablet-s`, to: `@mobile-m`},
+    {from: `@tablet-s-min`, to: `@mobile-m-min`},
+    {from: `@tablet-s-interval`, to: `@mobile-m-interval`},
+    {from: `@tablet`, to: `@tablet-lg`},
+    {from: `@tablet-min`, to: `@tablet-lg-min`},
+    {from: `@tablet-interval`, to: `@tablet-lg-interval`},
+    {from: `@desktop`, to: `@desktop-s`},
+    {from: `@desktop-min`, to: `@desktop-s-min`},
+    {from: `@desktop-interval`, to: `@desktop-s-interval`},
+    {from: `@desktop-lg-min`, to: `@desktop-m-min`},
+] as const;
