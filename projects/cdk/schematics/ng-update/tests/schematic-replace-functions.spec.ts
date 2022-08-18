@@ -26,6 +26,11 @@ export class AppComponent extends AbstractTuiController {
         this.some = '1000'.padStart(10, " ");
         return String(this.day).padStart(2, '0');
     }
+
+    private hasClosest(suitableNode: any, selector: string): void {
+        const element = (suitableNode as Element).closest(selector);
+        return Boolean(element);
+    }
 }
 
 expect(element.closest('div')).toEqual(div);
@@ -51,6 +56,11 @@ export class AppComponent extends AbstractTuiController {
     get formattedDayPart(): string {
         this.some = padStart('1000', 10);
         return padStart(String(this.day), 2, '0');
+    }
+
+    private hasClosest(suitableNode: any, selector: string): void {
+        const element = getClosestElement(suitableNode as Element, selector);
+        return Boolean(element);
     }
 }
 
