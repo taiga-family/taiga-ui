@@ -59,17 +59,17 @@
     }
 
     &_adaptive.tui-row {
-        @media @desktop-m-min {
+        @media @tui-desktop-lg-min {
             margin-left: -@space-large;
             margin-right: -@space-large;
         }
 
-        @media @desktop-s {
+        @media @tui-desktop {
             margin-left: -@space-normal;
             margin-right: -@space-normal;
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             margin-left: -@space-small;
             margin-right: -@space-small;
         }
@@ -80,12 +80,12 @@
         margin-right: -@space-normal;
     }
 
-    @media @desktop-m-min {
+    @media @tui-desktop-lg-min {
         margin-left: -@space-large;
         margin-right: -@space-large;
     }
 
-    @media @desktop-s {
+    @media @tui-desktop {
         margin-left: -@space-normal;
         margin-right: -@space-normal;
     }
@@ -100,15 +100,15 @@
     }
 
     .tui-row_adaptive & {
-        @media @desktop-m-min {
+        @media @tui-desktop-lg-min {
             .generate-columns(lg, 12, @space-large);
         }
 
-        @media @desktop-s {
+        @media @tui-desktop {
             .generate-columns(md, 12, @space-normal);
         }
 
-        @media @mobile-m {
+        @media @tui-mobile {
             .generate-columns(xs, 12, @space-small);
         }
     }
@@ -117,7 +117,7 @@
         .generate-sme-columns(12, @space-normal);
     }
 
-    @media @desktop-m-min {
+    @media @tui-desktop-lg-min {
         .generate-sme-columns(12, @space-large);
     }
 }
@@ -125,15 +125,15 @@
 .tui-col-offset {
     .generate-sme-offset-columns(12);
 
-    @media @mobile-m-interval {
+    @media @tui-mobile-interval {
         .generate-offset-columns(xs, 12);
     }
 
-    @media @desktop-s {
+    @media @tui-desktop {
         .generate-offset-columns(md, 12);
     }
 
-    @media @desktop-m-min {
+    @media @tui-desktop-lg-min {
         .generate-offset-columns(lg, 12);
     }
 }

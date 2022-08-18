@@ -2,7 +2,7 @@
 .image {
   width: 300px;
 
-  @media @mobile-m {
+  @media @tui-mobile {
     width: 100%;
   }
 }
