@@ -301,12 +301,12 @@ describe(`MultiSelect`, () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
-            expect(getArrow(pageObject)?.nativeElement.innerText).toEqual(`★`);
+            expect(getArrow(pageObject)?.nativeElement.textContent).toEqual(`★`);
 
             testComponent.control.enable();
             fixture.detectChanges();
 
-            expect(getArrow(pageObject)?.nativeElement.innerText).toEqual(`☆`);
+            expect(getArrow(pageObject)?.nativeElement.textContent).toEqual(`☆`);
         });
     });
 });
