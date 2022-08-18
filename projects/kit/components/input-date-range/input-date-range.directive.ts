@@ -18,5 +18,6 @@ export class TuiInputDateRangeDirective extends TuiAbstractTextfieldHost<TuiInpu
 
     process(input: HTMLInputElement): void {
         input.inputMode = `numeric`;
+        input.placeholder = this.host.computedExampleText;
     }
 }

@@ -6,11 +6,14 @@
   <div>
     <tui-input
       formControlName="testValue"
-      tuiTextfieldExampleText="House"
       tuiHintContent="Write a number"
       class="tui-group__inherit-item"
     >
       House
+      <input
+        tuiTextfield
+        placeholder="House"
+      />
     </tui-input>
     <tui-error
       formControlName="testValue"
@@ -20,11 +23,14 @@
   <div>
     <tui-input
       formControlName="testValue2"
-      tuiTextfieldExampleText="House building"
       tuiHintContent="Write house building"
       class="tui-group__inherit-item"
     >
       House building
+      <input
+        tuiTextfield
+        placeholder="House building"
+      />
     </tui-input>
     <tui-error
       formControlName="testValue2"
@@ -34,11 +40,14 @@
   <div>
     <tui-input
       formControlName="testValue3"
-      tuiTextfieldExampleText="Apartament number"
       tuiHintContent="Write an apartament number only"
       class="tui-group__inherit-item"
     >
       Apartament
+      <input
+        tuiTextfield
+        placeholder="Apartment number"
+      />
     </tui-input>
     <tui-error
       formControlName="testValue3"

@@ -22,11 +22,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_EXAMPLE_TEXT,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextfieldExampleTextDirective,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {TextMaskConfig} from 'angular2-text-mask';
 
 const icons: Record<TuiPaymentSystem, string> = {
@@ -45,18 +41,6 @@ const icons: Record<TuiPaymentSystem, string> = {
     providers: [
         tuiAsFocusableItemAccessor(TuiInputCardComponent),
         tuiAsControl(TuiInputCardComponent),
-        {
-            provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
-            deps: [[new Optional(), TuiTextfieldExampleTextDirective]],
-            useFactory: (
-                directive: TuiTextfieldExampleTextDirective | null,
-            ): TuiTextfieldExampleTextDirective => {
-                directive = directive || new TuiTextfieldExampleTextDirective();
-                directive.exampleText = `0000 0000 0000 0000`;
-
-                return directive;
-            },
-        },
     ],
 })
 export class TuiInputCardComponent
@@ -69,6 +53,10 @@ export class TuiInputCardComponent
     @Input()
     @tuiDefaultProp()
     cardSrc: string | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    placeholder = `0000 0000 0000 0000`;
 
     @Input()
     @tuiDefaultProp()

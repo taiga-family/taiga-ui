@@ -3,8 +3,11 @@
     tuiHintDirection="bottom-right"
     class="input"
     [tuiTextfieldCleaner]="true"
-    [tuiTextfieldMaxLength]="100"
     [(ngModel)]="value"
 >
     مونتى بايثون
+    <textarea
+        tuiTextfield
+        maxlength="100"
+    ></textarea>
 </tui-text-area>

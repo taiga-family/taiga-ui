@@ -92,7 +92,7 @@ export class TuiInputCVCComponent
             : TuiCreditCardAutofillName.Off;
     }
 
-    get computedExampleText(): string {
+    get computedPlaceholder(): string {
         return this.textfieldLabelOutside.labelOutside ? `` : this.exampleText;
     }
 

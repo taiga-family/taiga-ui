@@ -23,7 +23,7 @@ export class TuiInputPasswordDirective
 
     ngDoCheck(): void {
         if (this.input) {
-            this.input.type = this.host.isPasswordHidden ? `password` : `text`;
+            this.input.type = this.host.inputType;
         }
     }
 }

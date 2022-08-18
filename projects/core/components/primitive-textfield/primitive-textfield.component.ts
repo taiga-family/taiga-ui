@@ -191,7 +191,7 @@ export class TuiPrimitiveTextfieldComponent
 
     get placeholderVisible(): boolean {
         const hasDecor =
-            this.controller.exampleText ||
+            this.nativeFocusableElement?.placeholder ||
             this.prefix ||
             this.postfix ||
             this.nativeFocusableElement?.placeholder;
@@ -241,7 +241,8 @@ export class TuiPrimitiveTextfieldComponent
 
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
-        return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
+        return this.nativeFocusableElement?.autocomplete ===
+            TuiCreditCardAutofillName.CcExp
             ? `ccexpiryyear`
             : null;
     }

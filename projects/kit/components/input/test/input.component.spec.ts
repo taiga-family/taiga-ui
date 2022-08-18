@@ -51,7 +51,6 @@ describe(`Input`, () => {
                     <tui-input
                         formControlName="control"
                         [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldExampleText]="exampleText"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [tuiTextfieldSize]="size"
                         [tuiHintContent]="hintContent"
@@ -89,8 +88,6 @@ describe(`Input`, () => {
         items: User[] | null = ITEMS;
 
         size: TuiSizeS | TuiSizeL = `m`;
-
-        exampleText = `placeholder`;
 
         hintContent: string | null = `prompt`;
 

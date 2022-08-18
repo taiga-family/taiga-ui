@@ -8,7 +8,6 @@
 >
     <tui-primitive-textfield
         tuiValueAccessor
-        tuiTextfieldInputMode="numeric"
         class="t-textfield"
         [filler]="(getFiller$(mode) | async) || ''"
         [nativeId]="nativeId"
@@ -28,6 +27,10 @@
         (keydown.arrowDown)="onArrowDown($event)"
     >
         <ng-content></ng-content>
+        <input
+            tuiTextfield
+            tuiInputMode="numeric"
+        />
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
 <ng-template #dropdownContent>

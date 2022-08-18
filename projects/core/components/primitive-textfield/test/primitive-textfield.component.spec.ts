@@ -22,7 +22,6 @@ describe(`PrimitiveTextfield`, () => {
         template: `
             <tui-primitive-textfield
                 [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
                 [tuiHintContent]="hintContent"
@@ -33,7 +32,12 @@ describe(`PrimitiveTextfield`, () => {
                 [postfix]="postfix"
                 [pseudoFocus]="focused"
                 [(value)]="value"
-            ></tui-primitive-textfield>
+            >
+                <input
+                    tuiTextfield
+                    placeholder="exampleText"
+                />
+            </tui-primitive-textfield>
         `,
     })
     class TestComponent {

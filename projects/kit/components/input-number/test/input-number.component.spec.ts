@@ -26,7 +26,6 @@ describe(`InputNumber`, () => {
                     [decimal]="decimal"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiHintContent]="hintContent"
                 >
                     Enter the amount
@@ -53,7 +52,6 @@ describe(`InputNumber`, () => {
         defaultValues = false;
         size: TuiSizeS | TuiSizeL = `m`;
         hintContent: string | null = `prompt`;
-        exampleText = `placeholder`;
     }
 
     let fixture: ComponentFixture<TestComponent>;

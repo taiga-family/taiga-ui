@@ -15,5 +15,6 @@ export class TuiInputCountDirective extends TuiAbstractTextfieldHost<TuiInputCou
     process(input: HTMLInputElement): void {
         input.autocomplete = `off`;
         input.inputMode = `numeric`;
+        input.maxLength = 18;
     }
 }

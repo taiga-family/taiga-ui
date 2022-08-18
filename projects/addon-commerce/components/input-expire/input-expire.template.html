@@ -1,9 +1,6 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldInputMode="numeric"
-    tuiTextfieldExampleText="00/00"
     class="t-input"
-    [tuiTextfieldAutocomplete]="autocomplete"
     [nativeId]="nativeId"
     [disabled]="disabled"
     [readOnly]="readOnly"
@@ -17,4 +14,10 @@
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
+    <input
+        tuiTextfield
+        tuiInputMode="numeric"
+        placeholder="00/00"
+        [attr.autocomplete]="autocomplete"
+    />
 </tui-primitive-textfield>

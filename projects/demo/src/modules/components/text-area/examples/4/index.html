@@ -5,8 +5,9 @@
     To highlight extra characters:
     <ul class="steps">
         <li>
-            Set
-            <code>tuiTextfieldMaxLength</code>
+            use
+            <code>maxLength</code>
+            input
         </li>
         <li class="steps_optional">
             (Optional) Dont forget to set form validator (for example,
@@ -28,7 +29,7 @@
             formControlName="testValue1"
             tuiHintContent="it's just a joke"
             [expandable]="true"
-            [tuiTextfieldMaxLength]="maxLength"
+            [maxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
         >
             Type it
