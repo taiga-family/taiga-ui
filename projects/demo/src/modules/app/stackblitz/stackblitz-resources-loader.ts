@@ -71,10 +71,12 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             variablesLess,
             themeWrapperLess,
             iconLess,
+            monoLess,
             outlineLess,
             primaryLess,
             accentLess,
             secondaryLess,
+            secondaryDestructiveLess,
             tableLess,
             wrapperTextfieldLess,
             whiteblockLess,
@@ -167,6 +169,9 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
                 import(`!!raw-loader!../../../../../core/styles/theme/wrapper/icon.less`),
             ),
             rawLoad(
+                import(`!!raw-loader!../../../../../core/styles/theme/wrapper/mono.less`),
+            ),
+            rawLoad(
                 import(
                     `!!raw-loader!../../../../../core/styles/theme/wrapper/outline.less`
                 ),
@@ -184,6 +189,11 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             rawLoad(
                 import(
                     `!!raw-loader!../../../../../core/styles/theme/wrapper/secondary.less`
+                ),
+            ),
+            rawLoad(
+                import(
+                    `!!raw-loader!../../../../../core/styles/theme/wrapper/secondary-destructive.less`
                 ),
             ),
             rawLoad(
@@ -238,10 +248,13 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         styles[`styles/theme/variables.less`] = variablesLess;
         styles[`styles/theme/wrapper.less`] = themeWrapperLess;
         styles[`styles/theme/wrapper/icon.less`] = iconLess;
+        styles[`styles/theme/wrapper/mono.less`] = monoLess;
         styles[`styles/theme/wrapper/outline.less`] = outlineLess;
         styles[`styles/theme/wrapper/primary.less`] = primaryLess;
         styles[`styles/theme/wrapper/accent.less`] = accentLess;
         styles[`styles/theme/wrapper/secondary.less`] = secondaryLess;
+        styles[`styles/theme/wrapper/secondary-destructive.less`] =
+            secondaryDestructiveLess;
         styles[`styles/theme/wrapper/table.less`] = tableLess;
         styles[`styles/theme/wrapper/textfield.less`] = wrapperTextfieldLess;
         styles[`styles/theme/wrapper/whiteblock.less`] = whiteblockLess;
