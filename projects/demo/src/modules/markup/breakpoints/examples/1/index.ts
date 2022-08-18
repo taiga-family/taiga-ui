@@ -11,15 +11,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class ExampleBreakpointsComponent1 {
     breakpoints = [
-        `mobile-m`,
-        `mobile-m-min`,
-        `mobile-m-interval`,
-        `tablet-lg`,
-        `tablet-lg-min`,
-        `tablet-lg-interval`,
-        `desktop-s`,
-        `desktop-s-min`,
-        `desktop-s-interval`,
-        `desktop-m-min`,
+        `tui-mobile`,
+        `tui-mobile-min`,
+        `tui-mobile-interval`,
+        `tui-tablet`,
+        `tui-tablet-min`,
+        `tui-tablet-interval`,
+        `tui-desktop`,
+        `tui-desktop-min`,
+        `tui-desktop-interval`,
+        `tui-desktop-lg-min`,
     ] as const;
 }
