@@ -49,6 +49,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
                 'tui-range',
                 'tui-input-range',
                 'tui-input-slider',
+                'tui-feed-item',
             ],
         },
         to: {attrName: ''},
@@ -291,6 +292,42 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
         },
         to: {
             attrName: '[appearance]',
+        },
+    },
+    {
+        from: {
+            attrName: '[itemLabel]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[description]',
+        },
+    },
+    {
+        from: {
+            attrName: '[itemValue]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[title]',
+        },
+    },
+    {
+        from: {
+            attrName: '[sumLabel]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[secondaryDescription]',
+        },
+    },
+    {
+        from: {
+            attrName: '[sumValue]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[secondaryTitle]',
         },
     },
 ];
