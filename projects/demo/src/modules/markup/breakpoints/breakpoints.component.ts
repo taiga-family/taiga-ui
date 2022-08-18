@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-
-import fileWithBreakpoints from '!!raw-loader!@taiga-ui/core/styles/variables/media.less';
+import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw';
 
 @Component({
     selector: `css-breakpoints`,
@@ -13,36 +12,37 @@ import fileWithBreakpoints from '!!raw-loader!@taiga-ui/core/styles/variables/me
     encapsulation,
 })
 export class BreakpointsComponent {
-    readonly breakpoints = parseBreakpoints(removeLegacyVariables(fileWithBreakpoints));
+    readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
     readonly columnsNames = Object.keys(this.breakpoints[0]);
 
     readonly importTaigaUILocalLess = import(
-        `!!raw-loader!./examples/import/import-taiga-ui-local-less.md`
+        `./examples/import/import-taiga-ui-local-less.md?raw`
     );
 
-    readonly exampleBaseUsage = import(
-        `!!raw-loader!./examples/import/base-breakpoint-usage.md`
-    );
+    readonly exampleBaseUsage = import(`./examples/import/base-breakpoint-usage.md?raw`);
 
     readonly example1: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
     };
 }
 
-// TODO delete in v3.0
-function removeLegacyVariables(file: string): string {
-    const codeComment = `// actual`;
-    const startOffset = file.includes(codeComment)
-        ? file.indexOf(codeComment) + codeComment.length
-        : 0;
-
-    return file.slice(startOffset).trim();
-}
+/**
+ * Match all code comments.
+ *
+ * @example
+ * ```less
+ * /* code comment (and multiline code comments) * /
+ * // code comment
+ * ```
+ */
+// eslint-disable-next-line unicorn/no-unsafe-regex
+const CODE_COMMENTS = /(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;
 
 function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     return file
+        .replace(CODE_COMMENTS, ``)
         .split(`;`)
         .map(line => line.trim())
         .filter(Boolean)
