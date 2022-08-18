@@ -186,12 +186,15 @@
         padding: 0 1rem;
     }
 
-    :host._ios & {
-        padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
-    }
-
     :host[data-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
+    }
+
+    /* Safari 9+, < 13.1 */
+    @supports (-webkit-marquee-repetition: infinite) and (object-fit: fill) {
+        :host._ios & {
+            padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
+        }
     }
 }
 
