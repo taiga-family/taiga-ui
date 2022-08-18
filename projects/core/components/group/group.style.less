@@ -156,7 +156,7 @@
         &.tui-group_orientation_vertical:not(.tui-group_collapsed),
         &.tui-group_orientation_horizontal {
             & > * {
-                @media @mobile-m {
+                @media @tui-mobile {
                     &:first-child:not(:last-child),
                     &:last-child:not(:first-child) {
                         border-radius: var(--tui-radius-m);
@@ -170,7 +170,7 @@
         &.tui-group_orientation_vertical:not(.tui-group_collapsed),
         &.tui-group_orientation_horizontal {
             & > * {
-                @media @mobile-m {
+                @media @tui-mobile {
                     &:first-child:not(:last-child),
                     &:last-child:not(:first-child) {
                         border-radius: var(--tui-radius-l);
@@ -182,7 +182,7 @@
 
     &_adaptive {
         &.tui-group_orientation_vertical {
-            @media @mobile-m {
+            @media @tui-mobile {
                 width: 100%;
 
                 & > * {
@@ -218,7 +218,7 @@
         }
 
         &.tui-group_orientation_horizontal {
-            @media @mobile-m {
+            @media @tui-mobile {
                 flex-direction: column;
                 width: 100%;
 
@@ -259,7 +259,7 @@
 
     &_adaptive.tui-group_radius_large {
         &.tui-group_orientation_vertical {
-            @media @mobile-m {
+            @media @tui-mobile {
                 & > * {
                     &:nth-child(n):not(:only-child) {
                         border-radius: var(--tui-radius-l);
@@ -285,7 +285,7 @@
         }
 
         &.tui-group_orientation_horizontal {
-            @media @mobile-m {
+            @media @tui-mobile {
                 & > * {
                     &:nth-child(n):not(:only-child) {
                         border-radius: var(--tui-radius-l);
