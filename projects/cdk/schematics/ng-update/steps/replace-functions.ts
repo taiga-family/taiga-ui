@@ -30,7 +30,7 @@ function replaceDeprecatedFunction() {
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
                 parent?.replaceWithText(
                     parent
-                        ?.getFullText()
+                        ?.getText({includeJsDocComments: false})
                         .trim()
                         .replace(from, to ?? from),
                 );
