@@ -30,7 +30,7 @@
         "*** Workflow ***": "",
         "exec": "ts-node --project tsconfig.tools.json",
         "stylelint": "stylelint '**/*.{less,css}'",
-        "lint": "eslint --cache --trace --cache-location node_modules/.cache/eslint",
+        "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --cache node_modules/.cache/prettier",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
