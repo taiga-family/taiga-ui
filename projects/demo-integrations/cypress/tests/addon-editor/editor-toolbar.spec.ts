@@ -76,6 +76,12 @@ describe(`Editor's toolbar`, () => {
             .type(`awesome library for awesome people`)
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
+        // TODO: Figure out scroll issue
+        cy.get(`#custom-tool`)
+            .findByAutomationId(`tui-doc-example`)
+            .tuiScrollIntoView()
+            .as(`wrapper`);
+
         cy.get(`@wrapper`)
             .findByAutomationId(`smiles-tool__button`)
             .should(`be.visible`)

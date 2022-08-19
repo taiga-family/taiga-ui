@@ -105,10 +105,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get isMoreAlone(): boolean {
-        return (
-            this.lastVisibleIndex < 0 ||
-            (this.lastVisibleIndex === 0 && this.options.exposeActive)
-        );
+        return this.lastVisibleIndex < 0 && !this.options.exposeActive;
     }
 
     get isMoreVisible(): boolean {
