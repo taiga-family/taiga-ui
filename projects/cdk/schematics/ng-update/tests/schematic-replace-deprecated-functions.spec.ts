@@ -447,6 +447,9 @@ class Component {
     isFlat();
   }
 }
+
+// Even simple comment can cause schematics error :)
+typedFromEvent(nativeElement, 'dragover').subscribe();
 `;
 
 const AFTER = `
@@ -817,6 +820,9 @@ class Component {
     tuiIsFlat();
   }
 }
+
+// Even simple comment can cause schematics error :)
+tuiTypedFromEvent(nativeElement, 'dragover').subscribe();
 `;
 
 describe('replace functions', () => {
