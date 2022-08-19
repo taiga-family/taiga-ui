@@ -154,9 +154,12 @@ export class TuiTextAreaComponent
     }
 
     get hasExampleText(): boolean {
-        const text = this.textfield?.nativeElement.placeholder;
-
-        return !!text && this.focused && !this.hasValue && !this.readOnly;
+        return (
+            !!this.textfield?.nativeElement.placeholder &&
+            this.focused &&
+            !this.hasValue &&
+            !this.readOnly
+        );
     }
 
     get computeMaxHeight(): number | null {

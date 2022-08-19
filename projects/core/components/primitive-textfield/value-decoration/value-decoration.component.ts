@@ -77,9 +77,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     }
 
     private get exampleText(): string {
-        const exampleText = this.placeholder;
-
-        return !this.value && this.focused ? exampleText : ``;
+        return !this.value && this.focused ? this.placeholder : ``;
     }
 
     private get decorationsVisible(): boolean {

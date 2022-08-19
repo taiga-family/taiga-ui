@@ -2,12 +2,10 @@
     tuiHintContent="معلومات شخصيه"
     tuiHintDirection="bottom-right"
     class="input"
+    [maxLength]="100"
     [tuiTextfieldCleaner]="true"
     [(ngModel)]="value"
 >
     مونتى بايثون
-    <textarea
-        tuiTextfield
-        maxlength="100"
-    ></textarea>
+    <textarea tuiTextfield></textarea>
 </tui-text-area>

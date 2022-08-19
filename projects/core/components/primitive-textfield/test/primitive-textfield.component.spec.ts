@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
@@ -35,7 +36,7 @@ describe(`PrimitiveTextfield`, () => {
             >
                 <input
                     tuiTextfield
-                    placeholder="exampleText"
+                    [attr.placeholder]="exampleText"
                 />
             </tui-primitive-textfield>
         `,
@@ -176,11 +177,12 @@ describe(`PrimitiveTextfield`, () => {
         it(`if the input is focused, then example-text is shown`, async () => {
             testComponent.value = ``;
             testComponent.focused = true;
+            const input = fixture.debugElement.query(By.css(`input`)).nativeElement;
 
             fixture.detectChanges();
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getValueDecoration()).toBe(testComponent.exampleText);
+            expect(input.placeholder).toBe(testComponent.exampleText);
         });
     });
 

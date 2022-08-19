@@ -3,21 +3,21 @@
     class="t-input"
     [nativeId]="nativeId"
     [disabled]="disabled"
+    [textMask]="textMaskOptions"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
     [pseudoHover]="pseudoHover"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
-    [textMask]="textMaskOptions"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
 >
-    <ng-content></ng-content>
     <input
         tuiTextfield
         tuiInputMode="numeric"
         placeholder="00/00"
         [attr.autocomplete]="autocomplete"
     />
+    <ng-content></ng-content>
 </tui-primitive-textfield>
