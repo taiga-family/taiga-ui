@@ -106,6 +106,18 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.document().its(`fonts.size`).should(`be.greaterThan`, 0);
     cy.document().its(`fonts.status`).should(`equal`, `loaded`);
+    cy.document()
+        // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
+        // The promise will only resolve once the document has completed loading fonts,
+        // layout operations are completed, and no further font loads are needed.
+        .then(document => (document as any)?.fonts.ready)
+        .then(() => cy.log(`Font loading completed`));
+
+    if (Cypress.env(`waitRenderedFont`)) {
+        cy.get(`body`, {log: false})
+            .should(`have.css`, `font-family`)
+            .and(`match`, new RegExp(Cypress.env(`waitRenderedFont`)));
+    }
 
     if (waitAllIcons) {
         waitAllRequests(`@icons`);

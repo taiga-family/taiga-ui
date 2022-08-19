@@ -4,25 +4,23 @@ describe(`ComboBox`, () => {
             it(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, () => {
                 visitBy(strict);
                 openFormValue();
-                matchImageSnapshot(`01-combo-box-default-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 getInput().type(`Rubles (500)`);
                 waitCheckmark();
-                matchImageSnapshot(`02-combo-box-show-checkmark-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 clickFirstOption();
                 focusWrapper();
-                matchImageSnapshot(`03-combo-box-selected-value-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 getInput().type(`{backspace}`);
                 focusWrapper();
-                matchImageSnapshot(
-                    `04-combo-box-clear-last-symbol-value-strict-${strict}`,
-                );
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 getInput().type(`{selectall}{backspace}`);
                 focusWrapper();
-                matchImageSnapshot(`05-combo-box-clear-all-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
             });
 
             it(`correct word match when strict is ${strict}`, () => {
@@ -31,7 +29,7 @@ describe(`ComboBox`, () => {
 
                 getInput().type(`dOlLaRs (237)`);
                 waitCheckmark();
-                matchImageSnapshot(`06-combo-box-correct-matched-value-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 getInput()
                     .type(`{backspace}`, {force: true})
@@ -39,18 +37,16 @@ describe(`ComboBox`, () => {
                     .type(`{backspace}`, {force: true})
                     .wait(200)
                     .type(`{backspace}`, {force: true});
-                matchImageSnapshot(`07-combo-box-does-not-clear-value-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 focusWrapper();
-                matchImageSnapshot(`08-combo-box-unfocused-value-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 getInput().type(`{selectall}{backspace}`, {force: true});
-                matchImageSnapshot(`09-combo-box-cleared-value-strict-${strict}`);
+                cy.matchImageSnapshot({capture: `viewport`});
 
                 focusWrapper();
-                matchImageSnapshot(
-                    `10-combo-box-unfocused-without-value-strict-${strict}`,
-                );
+                cy.matchImageSnapshot({capture: `viewport`});
             });
         }
 
@@ -60,10 +56,6 @@ describe(`ComboBox`, () => {
 
         function openFormValue(): void {
             cy.get(`button span`).contains(`Form value`).click();
-        }
-
-        function matchImageSnapshot(name: string): void {
-            cy.matchImageSnapshot(name, {capture: `viewport`});
         }
 
         function focusWrapper(): void {
