@@ -11,6 +11,12 @@
             "description": "Sets up the project after dependencies have been installed",
             "factory": "./ng-add/setup-project",
             "schema": "./ng-add/schema.json"
+        },
+        "updateToV3": {
+            "private": true,
+            "description": "Manually run migration to update Taiga to v3.x.x",
+            "factory": "./ng-update/index#updateToV3",
+            "schema": "./ng-update/schema.json"
         }
     }
 }

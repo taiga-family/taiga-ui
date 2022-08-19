@@ -6,7 +6,6 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
-import {Schema} from '../ng-add/schema';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
 import {replaceConstants} from './steps/replace-const';
@@ -24,7 +23,17 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 
-export function updateToV3(_: Schema): Rule {
+interface Schema {
+    /**
+     * @example
+     * ```console
+     * schematics ./dist/cdk:updateToV3 --allow-private --skip-deep-imports --dry-run false
+     * ```
+     */
+    'skip-deep-imports': boolean;
+}
+
+export function updateToV3(cliFlags: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const t0 = performance.now();
 
@@ -34,7 +43,7 @@ export function updateToV3(_: Schema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        replaceDeepImports();
+        !cliFlags['skip-deep-imports'] && replaceDeepImports();
         replaceEnums();
         renameTypes();
         replaceConstants();

@@ -1,4 +1,4 @@
-const EXCLUDE_DIRECTORIES = ['scripts', 'dist'].join('|');
+const EXCLUDE_DIRECTORIES = ['scripts', 'dist', 'node_modules'].join('|');
 const EXCLUDE_FILE_PATTERNS = [
     `*__name@dasherize__*`, // schematics templates
     `*.d`, // typings
