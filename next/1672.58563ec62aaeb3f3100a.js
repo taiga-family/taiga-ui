@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1672],{d4RY:function(n,i,e){"use strict";e.r(i),i.default="```less\n.image {\n  width: 300px;\n\n  @media @mobile-m {\n    width: 100%;\n  }\n}\n```\n"}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[404],{l3IP:function(n,t,e){"use strict";e.r(t),t.default='```html\n<tui-pie-chart [value]="value"></tui-pie-chart>\n```\n'}}]);

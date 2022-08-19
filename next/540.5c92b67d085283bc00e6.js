@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[540],{tG60:function(n,t,e){"use strict";e.r(t),t.default=".example {\n    color: var(--tui-text-03);\n}\n"}}]);
