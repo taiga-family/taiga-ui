@@ -63,9 +63,12 @@ function replaceClosestElement(references: Node[]) {
             removeImport(parent);
         } else if (Node.isCallExpression(parent)) {
             const [firstArg, secondArg] = parent.getArguments();
-            parent.replaceWithText(
-                `${firstArg.getText()}.closest(${secondArg.getText()})`,
-            );
+            const firstArgText = firstArg.getText();
+            const element = firstArgText.includes(' as ') // e.g, `getClosestElement(el as Element, ...)`
+                ? `(${firstArgText})`
+                : firstArgText;
+
+            parent.replaceWithText(`${element}.closest(${secondArg.getText()})`);
         }
     });
 }
