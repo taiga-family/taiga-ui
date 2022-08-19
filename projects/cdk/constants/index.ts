@@ -8,3 +8,4 @@ export * from './polling-time';
 export * from './stringify';
 export * from './svg-node-filter';
 export * from './unicode-chars';
+export * from './version';

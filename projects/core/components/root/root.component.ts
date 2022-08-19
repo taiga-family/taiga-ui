@@ -1,7 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
-import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
-import {VERSION} from '@taiga-ui/core/constants';
+import {TUI_DIALOGS, TUI_IS_MOBILE, TUI_VERSION, tuiAssert} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -20,7 +19,7 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
     host: {
-        'data-tui-version': VERSION,
+        'data-tui-version': TUI_VERSION,
         '[style.--tui-duration]': `duration + "ms"`,
         '($.class._mobile)': `isMobileRes$`,
     },

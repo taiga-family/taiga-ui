@@ -1,4 +1,4 @@
-import {VERSION} from '@taiga-ui/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
 export interface TuiVersionMeta {
     label: string;
@@ -11,7 +11,7 @@ export const TAIGA_VERSIONS_META: readonly TuiVersionMeta[] = [
         baseHref: `next`,
     },
     {
-        label: `latest (v${VERSION})`,
+        label: `latest (v${TUI_VERSION})`,
         baseHref: ``,
     },
 ];
