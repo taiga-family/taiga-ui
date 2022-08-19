@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {
     createProject,
     DevkitFileSystem,
@@ -23,15 +23,30 @@ import {migrateProgress} from './steps/migrate-progress';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
+import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
 
-export function updateToV3(_: Schema): Rule {
+export function updateToV3(options: Schema): Rule {
+    const t0 = performance.now();
+
+    titleLog(
+        `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+    );
+
+    return chain([
+        main(options),
+        migrateTaigaProprietaryIcons(options),
+        () => {
+            const executionTime = getExecutionTime(t0, performance.now());
+
+            titleLog(
+                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+            );
+        },
+    ]);
+}
+
+function main(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        const t0 = performance.now();
-
-        titleLog(
-            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
-        );
-
         const fileSystem = getFileSystem(tree);
 
         replaceDeepImports();
@@ -53,12 +68,6 @@ export function updateToV3(_: Schema): Rule {
         replaceFunctions();
         miscellaneousMigrations();
         saveActiveProject();
-
-        const executionTime = getExecutionTime(t0, performance.now());
-
-        titleLog(
-            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-        );
     };
 }
 
