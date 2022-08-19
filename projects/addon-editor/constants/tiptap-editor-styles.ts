@@ -4,6 +4,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket {
     margin: 0;
     overflow: hidden;
+    white-space: pre-wrap;
 }
 
 .tui-editor-socket p:empty:after {

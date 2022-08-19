@@ -43,11 +43,7 @@ export class TuiEditorNewExample3 {
 
     constructor() {
         this.control.patchValue(`
-                <p>Small image</p>
-                <img data-type="image-editor" src="assets/images/lumberjack.png" width="300">
-
-                <p>Big image</p>
-                <img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">
+                <p>Small image</p><img data-type="image-editor" src="assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">
             `);
     }
 }
