@@ -1,4 +1,25 @@
 describe(`ComboBox`, () => {
+    describe(`Examples`, () => {
+        it(`show non strict`, () => {
+            cy.viewport(360, 290).tuiVisit(`components/combo-box`);
+
+            cy.get(`tui-doc-example[heading]`)
+                .not(`[id="virtual"]`)
+                .invoke(`attr`, `style`, `display: none`);
+
+            cy.get(`tui-doc-example`)
+                .filter(`[heading="Virtual scroll"]`)
+                .findByAutomationId(`tui-doc-example`)
+                .tuiScrollIntoView()
+                .findByAutomationId(`tui-primitive-textfield__native-input`)
+                .type(`Canada`);
+
+            cy.matchImageSnapshot(`01-combo-box-example-non-strict-search`, {
+                capture: `viewport`,
+            });
+        });
+    });
+
     describe(`API`, () => {
         for (const strict of [true, false]) {
             it(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, () => {

@@ -35,6 +35,15 @@
         >
             <tui-filter-by-input-example-3></tui-filter-by-input-example-3>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="non-strict"
+            i18n-heading
+            heading="Non strict"
+            [content]="example4"
+        >
+            <tui-filter-by-input-example-4></tui-filter-by-input-example-4>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab="Setup">
@@ -58,6 +67,15 @@
                 <tui-doc-code
                     filename="myComponent.template.html"
                     [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Custom options:</p>
+
+                <tui-doc-code
+                    filename="my-component.component.ts"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

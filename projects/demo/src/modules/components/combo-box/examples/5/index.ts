@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_FILTER_BY_INPUT_OPTIONS} from '@taiga-ui/kit';
 
 @Component({
     selector: `tui-combo-box-example-5`,
@@ -8,6 +9,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
+    providers: [
+        {
+            provide: TUI_FILTER_BY_INPUT_OPTIONS,
+            useValue: {
+                strictMode: false,
+            },
+        },
+    ],
 })
 export class TuiComboBoxExample5 {
     value = null;

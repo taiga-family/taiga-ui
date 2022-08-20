@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {
-    isPresent,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     tuiPure,
     TuiStringHandler,
     TuiStringMatcher,
@@ -20,6 +20,7 @@ export type ArrayElement<A> = A extends ReadonlyArray<infer T>
  */
 export abstract class TuiFilterByInputBase {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
+    protected abstract strictMode: boolean;
 
     protected get query(): string {
         return this.accessor.nativeFocusableElement
@@ -49,11 +50,15 @@ export abstract class TuiFilterByInputBase {
         stringify: TuiStringHandler<T>,
         query: string,
     ): readonly T[] {
-        const match = this.getMatch(items, stringify, query);
+        if (this.strictMode) {
+            const match = this.getMatch(items, stringify, query);
 
-        return isPresent(match)
-            ? items
-            : items.filter(item => matcher(item, query, stringify));
+            return tuiIsPresent(match)
+                ? items
+                : items.filter(item => matcher(item, query, stringify));
+        }
+
+        return items.filter(item => matcher(item, query, stringify));
     }
 
     private filter2d<T>(
@@ -62,13 +67,17 @@ export abstract class TuiFilterByInputBase {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        const match = items.find(item =>
-            isPresent(this.getMatch(item, stringify, query)),
-        );
+        if (this.strictMode) {
+            const match = items.find(item =>
+                tuiIsPresent(this.getMatch(item, stringify, query)),
+            );
 
-        return isPresent(match)
-            ? items
-            : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
+            return tuiIsPresent(match)
+                ? items
+                : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
+        }
+
+        return items.map(inner => this.filterFlat(inner, matcher, stringify, query));
     }
 
     private getMatch<T>(

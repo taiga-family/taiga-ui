@@ -8,6 +8,10 @@ import {
 } from '@taiga-ui/cdk';
 
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
+import {
+    TUI_FILTER_BY_INPUT_OPTIONS,
+    TuiFilterByInputOptions,
+} from './filter-by-input.options';
 
 @Pipe({
     name: `tuiFilterByInput`,
@@ -17,9 +21,13 @@ export class TuiFilterByInputPipe
     extends AbstractTuiFilterByInput
     implements PipeTransform
 {
+    protected readonly strictMode = this.options.strictMode;
+
     constructor(
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         protected readonly accessor: TuiFocusableElementAccessor,
+        @Inject(TUI_FILTER_BY_INPUT_OPTIONS)
+        protected readonly options: TuiFilterByInputOptions,
     ) {
         super();
     }
