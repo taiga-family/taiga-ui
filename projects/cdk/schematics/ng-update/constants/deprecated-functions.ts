@@ -353,7 +353,7 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     },
     {
         from: 'getClosestKeyboardFocusable',
-        to: 'tuiGetClosestKeyboardFocusable',
+        to: 'tuiGetClosestFocusable',
         moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {

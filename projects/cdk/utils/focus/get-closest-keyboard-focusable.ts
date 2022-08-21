@@ -1,10 +1,10 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 
-import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
-import {isNativeMouseFocusable} from './is-native-mouse-focusable';
+import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
+import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
 
 /**
- * @deprecated: use {@link tuiGetClosestFocusable} instead
+ * @deprecated: use {@link tuiGetClosestFocusableElement} instead
  * Finds the closest element that can be focused with a keyboard or mouse in theory
  *
  * @param initial current HTML element
@@ -20,11 +20,37 @@ export function getClosestFocusable(
     root: Node,
     keyboard: boolean = true,
 ): HTMLElement | null {
+    return tuiGetClosestFocusableElement({initial, root, prev, keyboard});
+}
+
+/**
+ * @deprecated: use {@link tuiGetClosestFocusableElement} instead
+ */
+export const getClosestKeyboardFocusable = getClosestFocusable;
+
+/**
+ * @deprecated: use {@link tuiGetClosestFocusableElement} instead
+ */
+export const tuiGetClosestFocusable = getClosestFocusable;
+
+export interface TuiGetClosestFocusableElementOptions {
+    initial: Element;
+    root: Node;
+    prev?: boolean;
+    keyboard?: boolean;
+}
+
+export function tuiGetClosestFocusableElement({
+    initial,
+    root,
+    prev = false,
+    keyboard = true,
+}: TuiGetClosestFocusableElementOptions): HTMLElement | null {
     if (!root.ownerDocument) {
         return null;
     }
 
-    const check = keyboard ? isNativeKeyboardFocusable : isNativeMouseFocusable;
+    const check = keyboard ? tuiIsNativeKeyboardFocusable : tuiIsNativeMouseFocusable;
 
     // Deprecated but ony this overload works in IE
     // Filter must be a function in IE, other modern browsers are compliant to this format
@@ -44,16 +70,9 @@ export function getClosestFocusable(
         }
 
         if (check(initial)) {
-            return initial;
+            return initial as unknown as HTMLElement;
         }
     }
 
     return null;
 }
-
-/**
- * @deprecated: use {@link tuiGetClosestFocusable} instead
- */
-export const getClosestKeyboardFocusable = getClosestFocusable;
-
-export const tuiGetClosestFocusable = getClosestFocusable;
