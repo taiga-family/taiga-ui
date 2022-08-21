@@ -127,10 +127,10 @@ export class TuiDropdownComponent {
         const host = document.createElement(`div`);
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
-        let focusable = tuiGetClosestFocusable(host, root, previous);
+        let focusable = tuiGetClosestFocusable({initial: host, root, previous});
 
         while (focusable !== null && host.contains(focusable)) {
-            focusable = tuiGetClosestFocusable(focusable, root, previous);
+            focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
         }
 
         focusable?.focus();

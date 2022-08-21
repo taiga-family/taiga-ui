@@ -14,6 +14,7 @@ import {createAngularJson} from '../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../migration.json');
 
 const AFTER = `import {Component} from '@angular/core';
+import { tuiGetClosestFocusable } from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,
@@ -25,6 +26,11 @@ tuiFormatNumber(1.234, {decimalLimit: 2, decimalSeparator: ',', thousandSeparato
 tuiFormatNumber(123.45, {decimalLimit: 3, decimalSeparator: '.', thousandSeparator: ' ', zeroPadding: true});
 tuiFormatNumber(12345.67, {decimalLimit: 4, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: true});
 tuiFormatNumber(27, {decimalLimit: 5, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: false});
+
+tuiGetClosestFocusable({initial: el, root: el, previous: false, keyboard: false});
+tuiGetClosestFocusable({initial: host, root: root, previous: previous, keyboard: true});
+tuiGetClosestFocusable({initial: button, root: wrapper, previous: prev, keyboard: true});
+tuiGetClosestFocusable({initial: host, root: host, previous: true, keyboard: true});
 
 const dynamicDecimalLimit = Math.random() > 0.5;
 const decimalSeparatorVariable = ',';
@@ -49,6 +55,13 @@ export class AppComponent extends AbstractTuiController {
         return String(this.day).padStart(2, '0');
     }
 
+    test(): void {
+        tuiGetClosestFocusable({initial: this.host, root: this.elementRef.nativeElement, previous: false, keyboard: true});
+        tuiGetClosestFocusable({initial: wrapper, root: this.elementRef.nativeElement, previous: true, keyboard: false});
+        const focusable = tuiGetClosestFocusable({initial: this.elementRef.nativeElement, root: this.elementRef.nativeElement, previous: false, keyboard: true});
+        const focusable = tuiGetClosestFocusable({initial: initial, root: this.wrapper.nativeElement, previous: !first, keyboard: true});
+    }
+
     constructor(@Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings) {}
 
     private hasClosest(suitableNode: any, selector: string): void {
@@ -67,7 +80,7 @@ const event = new CustomEvent("hello", {
 `;
 
 const BEFORE = `import {Component} from '@angular/core';
-import { fallbackValue, tuiCustomEvent, getClosestElement, padStart } from '@taiga-ui/cdk';
+import { fallbackValue, tuiCustomEvent, getClosestElement, padStart, tuiGetClosestFocusable } from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,
@@ -79,6 +92,11 @@ tuiFormatNumber(1.234, 2);
 tuiFormatNumber(123.45, 3, '.');
 tuiFormatNumber(12345.67, 4, ',', '.');
 tuiFormatNumber(27, 5, ',', '.', false);
+
+tuiGetClosestFocusable(el, false, el, false);
+tuiGetClosestFocusable(host, previous, root);
+tuiGetClosestFocusable(button, prev, wrapper);
+tuiGetClosestFocusable(host, true, host, true);
 
 const dynamicDecimalLimit = Math.random() > 0.5;
 const decimalSeparatorVariable = ',';
@@ -106,6 +124,21 @@ export class AppComponent extends AbstractTuiController {
     get formattedDayPart(): string {
         this.some = padStart('1000', 10);
         return padStart(String(this.day), 2, '0');
+    }
+
+    test(): void {
+        tuiGetClosestFocusable(this.host, false, this.elementRef.nativeElement);
+        tuiGetClosestFocusable(wrapper, true, this.elementRef.nativeElement, false);
+        const focusable = tuiGetClosestFocusable(
+            this.elementRef.nativeElement,
+            false,
+            this.elementRef.nativeElement,
+        );
+        const focusable = tuiGetClosestFocusable(
+            initial,
+            !first,
+            this.wrapper.nativeElement,
+        );
     }
 
     constructor(@Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings) {}
