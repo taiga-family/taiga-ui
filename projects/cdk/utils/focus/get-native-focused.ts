@@ -4,7 +4,7 @@
  * @return element or null
  */
 export function tuiGetNativeFocused(documentRef: Document): Element | null {
-    if (!documentRef.activeElement || !documentRef.activeElement.shadowRoot) {
+    if (!documentRef.activeElement?.shadowRoot) {
         return documentRef.activeElement;
     }
 

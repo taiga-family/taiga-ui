@@ -8,7 +8,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -54,7 +54,7 @@ import {TuiComboBoxExample6} from './examples/6';
         TuiNotificationModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
         TuiStringifyContentPipeModule,

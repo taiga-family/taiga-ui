@@ -1,22 +1,24 @@
-import {Component} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
 import {TuiDropdownPosition} from '@taiga-ui/kit';
+
+import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: `example-tui-dropdown-selection`,
     templateUrl: `./dropdown-selection.template.html`,
     styleUrls: [`./dropdown-selection.style.less`],
     changeDetection,
+    providers: [
+        {
+            provide: ABSTRACT_PROPS_ACCESSOR,
+            useExisting: forwardRef(() => ExampleTuiDropdownSelectionComponent),
+        },
+    ],
 })
-export class ExampleTuiDropdownSelectionComponent {
+export class ExampleTuiDropdownSelectionComponent extends AbstractExampleTuiDropdown {
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
@@ -33,32 +35,5 @@ export class ExampleTuiDropdownSelectionComponent {
 
     positionVariants: TuiDropdownPosition[] = [`selection`, `word`, `tag`];
 
-    open = false;
-
     position = this.positionVariants[0];
-
-    tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    tuiDropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-
-    tuiDropdownSided = false;
-
-    alignVariants: TuiHorizontalDirection[] = [`right`, `left`];
-
-    tuiDropdownAlign = this.alignVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
-        `bottom`,
-    ];
-
-    tuiDropdownDirection: TuiVerticalDirection | null = null;
-
-    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
-        `fixed`,
-        `min`,
-        `auto`,
-    ];
-
-    tuiDropdownLimitWidth: TuiDropdownWidth = this.tuiDropdownLimitWidthVariants[0];
 }

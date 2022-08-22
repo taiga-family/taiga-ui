@@ -45,7 +45,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             .pipe(
                 switchMap(active => {
                     this.dropdowns.forEach((dropdown, index) => {
-                        dropdown.open = index === active;
+                        dropdown.toggle(index === active);
                     });
 
                     const element = this.elements.get(active);
@@ -72,8 +72,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                             }
 
                             element.nativeElement.focus();
-                            // TODO: iframe warning
-                            dropdown.open = event instanceof MouseEvent;
+                            dropdown.toggle(`offsetX` in event);
                         }),
                     );
                 }),
@@ -148,18 +147,15 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     }
 
     private tryToFocus(index: number): void {
-        const dropdown = this.dropdowns.toArray()[index];
-        const content = dropdown?.dropdownBoxRef?.instance.contentElementRef;
+        const content = this.dropdowns.get(index)?.dropdownBoxRef?.location.nativeElement;
 
         if (!content) {
             return;
         }
 
-        const item = tuiGetClosestFocusable(
-            content.nativeElement,
-            false,
-            content.nativeElement,
-        );
+        // First item is focus trap
+        const focusTrap = tuiGetClosestFocusable(content, content);
+        const item = tuiGetClosestFocusable(focusTrap || content, content);
 
         if (item) {
             item.focus();

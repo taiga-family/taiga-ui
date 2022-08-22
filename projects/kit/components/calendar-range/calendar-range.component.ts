@@ -199,7 +199,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
         return item => {
-            if (!value || !value.isSingleDay || !minLength) {
+            if (!value?.isSingleDay || !minLength) {
                 return disabledItemHandler(item);
             }
 

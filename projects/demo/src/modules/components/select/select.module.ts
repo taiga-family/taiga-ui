@@ -9,7 +9,7 @@ import {TuiAutoFocusModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/c
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintControllerModule,
     TuiLabelModule,
     TuiLinkModule,
@@ -62,7 +62,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiMoneyModule,
         TuiAvatarModule,
         TuiSvgModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAutoFocusModule,

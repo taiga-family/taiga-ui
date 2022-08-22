@@ -1,22 +1,22 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiActiveZoneModule, TuiAutoFocusModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiExpandModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiModeModule,
-    TuiPrimitiveTextfieldModule,
     TuiScrollbarModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordionModule, TuiInputModule} from '@taiga-ui/kit';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiScrollIntoViewLinkModule} from '../../directives/scroll-into-view/scroll-into-view.module';
 import {TuiDocNavigationComponent} from './navigation.component';
@@ -24,11 +24,12 @@ import {TuiDocNavigationComponent} from './navigation.component';
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         RouterModule,
+        PolymorpheusModule,
         TuiScrollIntoViewLinkModule,
         TuiButtonModule,
-        TuiPrimitiveTextfieldModule,
+        TuiInputModule,
         TuiTextfieldControllerModule,
         TuiActiveZoneModule,
         TuiLetModule,
@@ -36,7 +37,7 @@ import {TuiDocNavigationComponent} from './navigation.component';
         TuiLinkModule,
         TuiExpandModule,
         TuiHostedDropdownModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiAccordionModule,
         TuiScrollbarModule,
         TuiSvgModule,

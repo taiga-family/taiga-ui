@@ -1,0 +1,111 @@
+<tui-doc-page
+    header="DropdownHover"
+    package="CORE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p i18n>
+            <code>DropdownHover</code>
+            shows dropdown with custom template upon hover
+        </p>
+
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-dropdown-hover-example-1></tui-dropdown-hover-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="hosted-dropdown"
+            heading="HostedDropdown"
+            [content]="example2"
+        >
+            <tui-dropdown-hover-example-2></tui-dropdown-hover-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p
+                i18n
+                tuiDropdownHover
+                [tuiDropdownShowDelay]="showDelay"
+                [tuiDropdownHideDelay]="hideDelay"
+                [tuiDropdown]="dropdownContent"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+            >
+                Hover pointer over
+                <strong>to see a dropdown</strong>
+            </p>
+            <ng-template #dropdownContent>
+                <div
+                    i18n
+                    class="dropdown"
+                >
+                    Here you can have any content
+                    <p>You can select a text inside a dropdown and it will not close a dropdown</p>
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
+                </div>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownShowDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show delay for dropdown appearance after hover
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownHideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide delay for dropdown to disappear after pointer is moved away
+            </ng-template>
+            <dropdown-documentation></dropdown-documentation>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiDropdownModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -7,11 +7,13 @@ import {
     Inject,
     Optional,
 } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
+import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
@@ -39,11 +41,16 @@ export class TuiDocNavigationComponent {
     @HostBinding(`class._open`)
     menuOpen = false;
 
-    search = ``;
-    open = false;
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
     active = ``;
+
+    readonly search = new FormControl(``);
+
+    readonly filtered$ = tuiControlValue<string>(this.search).pipe(
+        filter(search => search.length > 2),
+        map(search => this.filterItems(this.flattenSubPages(this.items), search)),
+    );
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
@@ -82,11 +89,7 @@ export class TuiDocNavigationComponent {
     }
 
     get canOpen(): boolean {
-        return this.search.length > 2;
-    }
-
-    get filteredItems(): ReadonlyArray<readonly TuiDocPage[]> {
-        return this.filterItems(this.flattenSubPages(this.items), this.search);
+        return this.search.value.length > 2;
     }
 
     get itemsWithoutSections(): TuiDocPages {
@@ -105,15 +108,10 @@ export class TuiDocNavigationComponent {
         this.menuOpen = false;
     }
 
-    onSearchChange(search: string): void {
-        this.search = search;
-        this.open = this.canOpen;
-    }
-
-    onClick(): void {
-        this.open = false;
+    onClick(input: TuiInputComponent): void {
+        input.open = false;
         this.menuOpen = false;
-        this.search = ``;
+        this.search.setValue(``);
         this.openActivePageGroup();
     }
 

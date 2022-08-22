@@ -85,7 +85,7 @@ export class TuiInputExpireComponent
     onValueChange(value: string): void {
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
-        if (!this.input || !this.input.nativeFocusableElement) {
+        if (!this.input?.nativeFocusableElement) {
             return;
         }
 

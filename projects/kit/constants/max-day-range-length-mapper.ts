@@ -6,7 +6,7 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiMapper<TuiDay, TuiDay> = (
     maxLength: TuiDayLike | null,
     backwards: boolean,
 ) => {
-    if (!value || !value.isSingleDay || !maxLength) {
+    if (!value?.isSingleDay || !maxLength) {
         return min;
     }
 

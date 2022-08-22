@@ -45,7 +45,7 @@ describe(`TablePagination`, () => {
 
         waitForCheckmarkIcon();
 
-        cy.get(`tui-dropdown-box`)
+        cy.get(`tui-dropdown`)
             .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`2-[sizeOptionContent]-dropdown`);
     });
@@ -65,7 +65,7 @@ function initializeAliases(selectorToTablePagination: string): void {
 }
 
 function waitForCheckmarkIcon(): void {
-    cy.get(`tui-dropdown-box`)
+    cy.get(`tui-dropdown`)
         .find(`tui-svg[src=tuiIconCheckLarge] use`)
         .should(`be.visible`)
         .invoke(`height`)
