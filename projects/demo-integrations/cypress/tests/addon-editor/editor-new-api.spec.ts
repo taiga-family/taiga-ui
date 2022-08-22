@@ -167,21 +167,6 @@ describe(`Editor API`, () => {
             cy.get(`@editor`).type(`5`);
 
             cy.get(`@wrapper`).matchImageSnapshot(`7-6-nested-list`);
-
-            cy.get(`@editor`).type(`{enter}`);
-            cy.get(`@editor`).type(`{enter}`);
-
-            cy.get(`@editor`).type(`I. 6`);
-            toggleBullet(`tuiIconIndentLarge`);
-
-            cy.get(`@editor`).type(`{enter}`);
-            cy.get(`@editor`).type(`II. 7`);
-            toggleBullet(`tuiIconIndentLarge`);
-
-            cy.get(`@editor`).type(`{enter}`);
-            cy.get(`@editor`).type(`III. 8`);
-
-            cy.get(`@wrapper`).matchImageSnapshot(`7-7-nested-list`);
         });
 
         function toggleBullet(iconType: string): void {

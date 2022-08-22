@@ -45,18 +45,8 @@ export class TuiEditorNewExample5 {
     control = new FormControl(``);
 
     constructor() {
-        this.control.patchValue(`
-            <div data-type="group">
-              <p>This is a boring paragraph.</p>
-            </div>
-
-            <div data-type="group">
-              <p>And another draggable paragraph.</p>
-            </div>
-
-            <div data-type="group">
-              <p>Let’s finish with a boring paragraph.</p>
-            </div>
-        `);
+        this.control.patchValue(
+            `<div data-type="group"><p>This is a boring paragraph.</p></div><div data-type="group"><p>And another draggable paragraph.</p></div><div data-type="group"><p>Let’s finish with a boring paragraph.</p></div>`,
+        );
     }
 }

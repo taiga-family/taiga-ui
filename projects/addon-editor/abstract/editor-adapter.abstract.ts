@@ -67,8 +67,6 @@ export abstract class TuiEditor {
     abstract toggleLink(href: string): void;
     abstract setLink(href: string): void;
     abstract unsetLink(): void;
-    abstract indent(): void;
-    abstract outdent(): void;
     abstract destroy(): void;
     abstract selectClosest(): void;
     abstract focus(): void;
