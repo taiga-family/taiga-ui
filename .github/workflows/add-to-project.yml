@@ -1,0 +1,15 @@
+name: Move new issues into Triage
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  automate-project-columns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@v0.3.0
+        with:
+          project-url: https://github.com/orgs/Tinkoff/projects/3
+          github-token: ${{ secrets.TINKOFF_BOT_PAT }}
+          labeled: 'need triage'
