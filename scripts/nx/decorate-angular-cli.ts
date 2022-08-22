@@ -20,10 +20,10 @@
  * - Remove the script from your postinstall script in your package.json
  * - Delete and reinstall your node_modules
  */
-import {execSync} from 'child_process';
-import {existsSync, readFileSync, writeFileSync} from 'fs';
-import {output as CliOutput} from 'nx/src/utils/output';
-import {platform} from 'os';
+const {execSync} = require(`child_process`);
+const {existsSync, readFileSync, writeFileSync} = require(`fs`);
+const {output: CliOutput} = require(`nx/src/utils/output`);
+const {platform} = require(`os`);
 
 const isWindows = platform() === `win32`;
 let output: typeof CliOutput;
