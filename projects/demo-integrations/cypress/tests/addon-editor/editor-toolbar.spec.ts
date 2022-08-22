@@ -42,7 +42,8 @@ describe(`Editor's toolbar`, () => {
             .matchImageSnapshot(`1-1-tui-palette-not-exist`);
     });
 
-    it(`has the possibility to add custom tool`, () => {
+    // TODO: Figure out scroll issue
+    xit(`has the possibility to add custom tool`, () => {
         cy.tuiVisit(EDITOR_PAGE_URL);
 
         cy.get(`#custom-tool`)

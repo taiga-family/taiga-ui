@@ -11,7 +11,7 @@ import {
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHostedDropdownModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {TuiColorPickerExample2} from './examples/2';
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiInputColorModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,

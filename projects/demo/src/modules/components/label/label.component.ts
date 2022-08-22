@@ -30,7 +30,7 @@ export class ExampleTuiLabelComponent {
 
     label = this.labelVariants[0];
 
-    getLabel(directive: TemplateRef<Record<string, unknown>>): PolymorpheusContent<any> {
+    getLabel(directive: TemplateRef<Record<string, unknown>>): PolymorpheusContent {
         return this.label === this.labelVariants[1] ? directive : this.label;
     }
 }

@@ -1,12 +1,22 @@
 <p>
     Make right click on this icon ->
     <tui-svg
+        #dropdown="tuiDropdown"
         src="tuiIconSettingsLarge"
+        tuiDropdownContext
         class="icon"
-        [tuiDropdownContext]="iconInfo"
-    ></tui-svg>
+        [tuiDropdown]="content"
+    >
+        <ng-template #content>
+            <span class="text">Nothing special</span>
+            <button
+                tuiIconButton
+                size="s"
+                appearance="icon"
+                icon="tuiIconCloseLarge"
+                title="Close"
+                (click)="dropdown.toggle(false)"
+            ></button>
+        </ng-template>
+    </tui-svg>
 </p>
-
-<ng-template #iconInfo>
-    <p class="text">Nothing special</p>
-</ng-template>

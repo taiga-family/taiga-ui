@@ -1,21 +1,13 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
 
-import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.component';
+import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: `example-dropdown-context`,
     templateUrl: `./dropdown-context.component.html`,
-    styleUrls: [`./dropdown-context.component.less`],
     changeDetection,
     providers: [
         {
@@ -24,7 +16,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
         },
     ],
 })
-export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
+export class ExampleTuiDropdownContextComponent extends AbstractExampleTuiDropdown {
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
@@ -45,24 +37,4 @@ export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
         HTML: import(`./examples/3/index.html?raw`),
         LESS: import(`./examples/3/index.less?raw`),
     };
-
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
-    ];
-
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
-        `min`,
-        `auto`,
-        `fixed`,
-    ];
-
-    dropdownAlign = this.dropdownAlignVariants[0];
-    dropdownDirection: TuiVerticalDirection | null = null;
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
-    dropdownSided = false;
 }

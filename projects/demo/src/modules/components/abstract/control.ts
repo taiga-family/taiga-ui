@@ -1,8 +1,7 @@
 import {AbstractControl} from '@angular/forms';
 import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
+    TUI_DROPDOWN_DEFAULT_OPTIONS,
     TUI_HINT_DIRECTIONS,
     TuiDropdownWidth,
     TuiHorizontalDirection,
@@ -12,7 +11,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
+import {AbstractExampleTuiDropdown} from './dropdown';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +29,7 @@ type TuiPossibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
-    implements ExampleTuiDropdown
+    implements AbstractExampleTuiDropdown
 {
     abstract readonly control: AbstractControl;
 
@@ -106,6 +105,10 @@ export abstract class AbstractExampleTuiControl
 
     maxHeight: number | null = null;
 
+    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
+
+    iconLeft = this.iconLeftVariants[0];
+
     hintContent: string | null = null;
 
     hintDirection = this.hintDirectionVariants[0];
@@ -114,28 +117,27 @@ export abstract class AbstractExampleTuiControl
 
     readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
-    dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
+    dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
+        `fixed`,
+        `min`,
+        `auto`,
+    ];
 
-    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         `bottom`,
         `top`,
     ];
 
-    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
+    dropdownDirection: TuiVerticalDirection | null =
+        TUI_DROPDOWN_DEFAULT_OPTIONS.direction;
 
-    iconLeft = this.iconLeftVariants[0];
+    dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
 
-    dropdownDirection: TuiVerticalDirection | null = null;
-
-    dropdownSided = false;
-
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
+    dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
 
     get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME

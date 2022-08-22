@@ -32,10 +32,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
-import {
-    LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    TUI_MONTH_FORMATTER_PROVIDER,
-} from '@taiga-ui/kit/providers';
+import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
@@ -51,7 +48,6 @@ import {Observable} from 'rxjs';
         TUI_MONTH_FORMATTER_PROVIDER,
         TuiMonthPipe,
     ],
-    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>

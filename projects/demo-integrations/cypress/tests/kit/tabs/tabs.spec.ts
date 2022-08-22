@@ -34,7 +34,7 @@ describe(`Tabs`, () => {
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`02-1-complex-select-collaborators`);
 
-            cy.get(`tui-dropdown-box`)
+            cy.get(`tui-dropdown`)
                 .get(`button[type="button"]`)
                 .contains(`Neil Innes`)
                 .click();

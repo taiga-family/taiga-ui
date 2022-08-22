@@ -5,7 +5,7 @@ import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDescribedByModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -17,7 +17,7 @@ import {TuiTextColorComponent} from './text-color.component';
         CommonModule,
         TuiButtonModule,
         TuiHostedDropdownModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiHintModule,
         TuiDescribedByModule,
         TuiPaletteModule,

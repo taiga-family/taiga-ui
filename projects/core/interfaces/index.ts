@@ -4,7 +4,6 @@ export * from './data-list-accessor';
 export * from './data-list-host';
 export * from './dialog-context';
 export * from './dialog-options';
-export * from './dropdown-directive';
 export * from './icon-error';
 export * from './media';
 export * from './number-format-settings';
