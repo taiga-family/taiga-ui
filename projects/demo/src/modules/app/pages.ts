@@ -43,6 +43,12 @@ export const pages: TuiDocPages = [
         title: $localize`Testing`,
         subPages: [
             {
+                section: $localize`Jest`,
+                title: $localize`Jest`,
+                keywords: `test, tests, testing, jest, ReferenceError, IntersectionObserver`,
+                route: `/testing/jest`,
+            },
+            {
                 section: $localize`Documentation`,
                 title: $localize`Disable animation`,
                 keywords: `test, tests, testing, cypress, тестирование, тесты, тест, tips, советы`,

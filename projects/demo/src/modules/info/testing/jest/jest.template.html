@@ -1,0 +1,83 @@
+<tui-doc-page
+    i18n-header
+    header="Jest"
+>
+    <p>
+        If you use Jest to run your tests, you need additional configuration because Jest is running on a Node.js
+        emulator.
+    </p>
+
+    <p>
+        Taiga UI uses
+        <code>@ng-web-apis/common</code>
+        to avoid accessing global variables like
+        <code>window</code>
+        or
+        <code>navigator</code>
+        directly. Which requires Server Side Rendering (SSR) with the help of its sister library
+        <code>@ng-web-apis/universal</code>
+        for Jest to run properly.
+    </p>
+
+    <p>
+        Otherwise, you're gonna face errors like
+        <code>ReferenceError: IntersectionObserver is not defined</code>
+    </p>
+
+    <h2>
+        Using
+        <code>@angular-builders/jest</code>
+        or
+        <code>jest-preset-angular</code>
+    </h2>
+
+    <p>If you're using one of these libraries. You can follow the following steps :</p>
+
+    <ol class="tui-list">
+        <li class="tui-list__item">
+            Install
+            <code>npm i @ng-web-apis/universal --save-dev</code>
+            (install it as a devDependency only if you will use it for Jest, otherwise install it as a regular
+            dependency)
+        </li>
+        <li class="tui-list__item">
+            Add a
+            <code>setupFilesAfterEnv</code>
+            property to your
+            <code>jest.config.js</code>
+            or
+            <code>package.json</code>
+            jest configuration (depending on where your configuration is) with the path to
+            <code>setup-jest.js</code>
+            if you have not already.
+
+            <tui-doc-code
+                filename="jest.config.js"
+                [code]="jestConfigJs"
+            ></tui-doc-code>
+            or
+            <tui-doc-code
+                filename="package.json"
+                [code]="packageJson"
+            ></tui-doc-code>
+        </li>
+        <li class="tui-list__item">
+            Create the file
+            <code>setup-jest.js</code>
+            (wherever you want as long as it's at the path referenced above) if you have not already. For example here
+            at the root of the project.
+        </li>
+        <li class="tui-list__item">
+            Add the following line to the
+            <code>setup-jest.js</code>
+            :
+            <code>import '@ng-web-apis/universal/mocks';</code>
+            .
+
+            <tui-doc-code
+                filename="setup-jest.js"
+                [code]="setupJestJs"
+            ></tui-doc-code>
+        </li>
+    </ol>
+</tui-doc-page>
