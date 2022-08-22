@@ -1,3 +1,5 @@
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+
 /**
  * Checks for signs that element can be focused with keyboard. tabIndex above 0 is ignored to
  * only target natural focus order. Not checking the possibility of an element to
@@ -9,9 +11,8 @@ export function tuiIsNativeKeyboardFocusable(element: Element): boolean {
         return false;
     }
 
-    // TODO: iframe warning
     if (
-        (element instanceof HTMLElement && element.isContentEditable) ||
+        (tuiIsHTMLElement(element) && element.isContentEditable) ||
         element.getAttribute(`tabIndex`) === `0`
     ) {
         return true;

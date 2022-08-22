@@ -1,18 +1,29 @@
+<p>
+    <label class="toggle">
+        <tui-toggle
+            size="l"
+            [(ngModel)]="open"
+        ></tui-toggle>
+        Show help
+    </label>
+</p>
 You can ask any questions about
-<code>tuiDropdown</code>
+<code
+    tuiDropdownDirection="bottom"
+    tuiDropdown="A directive to show content in a dropdown"
+    [textContent]="'tuiDropdown'"
+    [tuiDropdownManual]="open"
+></code>
 and
 <button
     tuiLink
-    tuiDropdownAlign="right"
     tuiDropdownDirection="top"
-    [tuiDropdownContent]="dropdownContent"
-    [tuiDropdown]="open"
-    (mouseenter)="onMouseEnter()"
-    (mouseleave)="onMouseLeave()"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownManual]="open"
 >
     Alex
 </button>
-will answer you with joy!
+will gladly answer!
 
 <ng-template #dropdownContent>
     <div class="dropdown">

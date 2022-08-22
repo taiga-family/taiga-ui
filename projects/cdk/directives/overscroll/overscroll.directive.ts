@@ -2,7 +2,7 @@ import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angula
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
-import {tuiCanScroll, tuiGetScrollParent} from '@taiga-ui/cdk/utils/dom';
+import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 
@@ -91,10 +91,9 @@ export class TuiOverscrollDirective {
     ): void {
         const {target, currentTarget, cancelable} = event;
 
-        // TODO: iframe warning
         if (
             !cancelable ||
-            !(target instanceof Element) ||
+            !tuiIsElement(target) ||
             (target as HTMLInputElement)?.type === `range`
         ) {
             return;

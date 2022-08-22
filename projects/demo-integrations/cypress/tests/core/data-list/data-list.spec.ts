@@ -11,12 +11,12 @@ describe(`DataList`, () => {
 
     it(`Custom list`, () => {
         cy.get(`#custom tui-select`).should(`be.visible`).click();
-        cy.get(`tui-dropdown-box`).should(`be.visible`).matchImageSnapshot(`1-#custom`);
+        cy.get(`tui-dropdown`).should(`be.visible`).matchImageSnapshot(`1-#custom`);
     });
 
     it(`Links`, () => {
         cy.get(`#links [automation-id=${EXAMPLE_ID}] tui-hosted-dropdown`).click();
-        cy.get(`tui-dropdown-box`).should(`be.visible`).matchImageSnapshot(`2-#links`);
+        cy.get(`tui-dropdown`).should(`be.visible`).matchImageSnapshot(`2-#links`);
     });
 
     it(`Submenu`, () => {
@@ -46,7 +46,7 @@ describe(`DataList`, () => {
             .tuiScrollIntoView()
             .click();
 
-        cy.get(`tui-dropdown-box`).should(`be.visible`).matchImageSnapshot(`4-#control`);
+        cy.get(`tui-dropdown`).should(`be.visible`).matchImageSnapshot(`4-#control`);
     });
 
     it(`Complex`, {responseTimeout: 30_000}, () => {
@@ -128,7 +128,7 @@ describe(`DataList`, () => {
             .tuiScrollIntoView()
             .click();
 
-        cy.get(`tui-dropdown-box`)
+        cy.get(`tui-dropdown`)
             .should(`be.visible`)
             .matchImageSnapshot(`6-#long-text-options`);
     });

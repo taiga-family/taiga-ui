@@ -8,7 +8,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintControllerModule,
     TuiLabelModule,
     TuiLinkModule,
@@ -50,7 +50,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiHintControllerModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,

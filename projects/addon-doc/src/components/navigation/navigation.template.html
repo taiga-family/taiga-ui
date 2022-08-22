@@ -1,45 +1,32 @@
-<tui-hosted-dropdown
-    *tuiLet="filteredItems as filtered"
-    tuiAutoFocus
-    tuiDropdownLimitWidth="fixed"
+<tui-input
+    #input
+    tuiTextfieldSize="m"
+    tuiTextfieldIconLeft="tuiIconSearch"
     class="t-input"
+    [formControl]="search"
     [tuiAutoFocus]="!!sidebar"
-    [content]="dropdown"
-    [canOpen]="canOpen"
-    [(open)]="open"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
 >
-    <tui-primitive-textfield
-        tuiTextfieldSize="m"
-        tuiTextfieldIconLeft="tuiIconSearch"
-        [pseudoFocus]="open || null"
-        [tuiTextfieldCleaner]="true"
-        [tuiTextfieldLabelOutside]="true"
-        [value]="search"
-        (valueChange)="onSearchChange($event)"
-    >
-        {{ searchText }}
-    </tui-primitive-textfield>
-    <ng-template
-        #dropdown
-        let-activeZone
-    >
-        <tui-data-list>
+    {{ searchText }}
+    <ng-container *ngIf="canOpen">
+        <tui-data-list *tuiDataList>
             <tui-opt-group
-                *ngFor="let group of filtered; let index = index"
+                *ngFor="let group of filtered$ | async; let index = index"
                 [label]="labels[index] || ''"
             >
                 <a
                     *ngFor="let item of group"
                     tuiOption
                     [routerLink]="item.route"
-                    (click)="onClick()"
+                    (click)="onClick(input)"
                 >
                     {{ item.title }}
                 </a>
             </tui-opt-group>
         </tui-data-list>
-    </ng-template>
-</tui-hosted-dropdown>
+    </ng-container>
+</tui-input>
 
 <nav class="t-navigation">
     <tui-scrollbar

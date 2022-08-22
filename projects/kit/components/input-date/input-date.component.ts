@@ -48,7 +48,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK} from '@taiga-ui/kit/constants';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -74,7 +73,6 @@ import {map, takeUntil} from 'rxjs/operators';
         tuiAsControl(TuiInputDateComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
     ],
-    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>

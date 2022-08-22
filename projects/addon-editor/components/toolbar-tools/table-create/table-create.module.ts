@@ -4,7 +4,7 @@ import {TuiTableSizeSelectorModule} from '@taiga-ui/addon-editor/components/tool
 import {
     TuiButtonModule,
     TuiDescribedByModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -15,7 +15,7 @@ import {TuiTableCreateComponent} from './table-create.component';
     imports: [
         CommonModule,
         TuiHostedDropdownModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiButtonModule,
         TuiHintModule,
         TuiDescribedByModule,

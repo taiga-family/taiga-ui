@@ -1,23 +1,18 @@
 <div
+    *tuiLet="!!(open$ | async) as isOpen"
     #activeZone="tuiActiveZone"
     class="t-wrapper"
-    [tuiDropdownAlign]="controller.align"
-    [tuiDropdownDirection]="controller.direction"
-    [tuiDropdownHost]="nativeFocusableElement"
-    [tuiDropdownLimitWidth]="controller.limitWidth"
-    [tuiDropdownMinHeight]="controller.minHeight"
-    [tuiDropdownMaxHeight]="controller.maxHeight"
-    [tuiDropdownSided]="controller.sided"
-    [tuiDropdownContent]="dropdown"
-    [tuiDropdown]="open && canOpen"
-    [tuiObscuredEnabled]="open"
+    [tuiDropdownHost]="host"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownManual]="isOpen && canOpen"
+    [tuiObscuredEnabled]="isOpen"
     (tuiObscured)="onHostObscured($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <ng-content></ng-content>
     <ng-template
         #dropdown="polymorpheus"
-        polymorpheus
+        [polymorpheus]="context"
     >
         <div
             #wrapper

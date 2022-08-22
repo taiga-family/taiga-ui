@@ -17,11 +17,11 @@ import {
 import {
     EMPTY_QUERY,
     TuiActiveZoneDirective,
-    tuiAssertIsElement,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     tuiGetClosestFocusable,
+    tuiIsElement,
     tuiIsNativeFocused,
     TuiItemDirective,
     tuiToInt,
@@ -104,6 +104,10 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             : this.moreButton?.nativeElement || null;
     }
 
+    get isMoreAlone(): boolean {
+        return this.lastVisibleIndex < 0 && !this.options.exposeActive;
+    }
+
     get isMoreVisible(): boolean {
         return this.lastVisibleIndex < this.items.length - 1;
     }
@@ -155,9 +159,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     onArrowRight(event: Event): void {
-        tuiAssertIsElement(event.target);
-
-        if (tuiIsNativeFocused(event.target)) {
+        if (tuiIsElement(event.target) && tuiIsNativeFocused(event.target)) {
             this.focusMore();
         }
     }
@@ -179,7 +181,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
-        const target = tuiGetClosestFocusable(button, prev, wrapper);
+        const target = tuiGetClosestFocusable(button, wrapper, prev);
 
         if (target) {
             target.focus();
