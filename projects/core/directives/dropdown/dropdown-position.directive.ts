@@ -30,6 +30,7 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
         const hostRect = this.accessor.getClientRect();
         const {innerHeight, innerWidth} = this.windowRef;
         const {minHeight, align, direction} = this.options;
+        const right = Math.max(hostRect.right - width, TUI_DROPDOWN_OFFSET);
         const available = {
             top: hostRect.top - 2 * TUI_DROPDOWN_OFFSET,
             bottom: innerHeight - hostRect.bottom - 2 * TUI_DROPDOWN_OFFSET,
@@ -37,14 +38,11 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
         const position = {
             top: hostRect.top - TUI_DROPDOWN_OFFSET - height,
             bottom: hostRect.bottom + TUI_DROPDOWN_OFFSET,
-            right: Math.max(hostRect.right - width, TUI_DROPDOWN_OFFSET),
+            right,
             left:
                 hostRect.left + width < innerWidth - TUI_DROPDOWN_OFFSET
                     ? hostRect.left
-                    : Math.max(
-                          innerWidth - hostRect.left - width - TUI_DROPDOWN_OFFSET,
-                          TUI_DROPDOWN_OFFSET,
-                      ),
+                    : right,
         } as const;
         const better = available.top > available.bottom ? `top` : `bottom`;
 
