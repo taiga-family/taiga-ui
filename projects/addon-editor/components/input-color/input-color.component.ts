@@ -24,8 +24,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DROPDOWN_CONTROLLER,
-    TuiDropdownControllerDirective,
+    tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
@@ -35,20 +34,7 @@ import {
     templateUrl: `./input-color.template.html`,
     styleUrls: [`./input-color.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_DROPDOWN_CONTROLLER,
-            deps: [[new Optional(), TuiDropdownControllerDirective]],
-            useFactory: (
-                directive: TuiDropdownControllerDirective | null,
-            ): TuiDropdownControllerDirective => {
-                directive = directive || new TuiDropdownControllerDirective();
-                directive.maxHeight = 600;
-
-                return directive;
-            },
-        },
-    ],
+    viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
 })
 export class TuiInputColorComponent
     extends AbstractTuiControl<string>

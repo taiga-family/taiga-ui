@@ -345,22 +345,40 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: `HostedDropdown`,
-                keywords: `dropdown, hover, контекст, выпадашка, дропдаун, меню, menu`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
                 route: `/components/hosted-dropdown`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `Dropdown`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownContext`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
+                route: `/directives/dropdown-context`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownHover`,
+                keywords: `dropdown, hover, выпадашка, дропдаун`,
+                route: `/directives/dropdown-hover`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownSelection`,
+                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown-selection`,
             },
         ],
     },
     {
         section: $localize`Components`,
-        title: `Errors`,
-        subPages: [
-            {
-                section: $localize`Components`,
-                title: `Error`,
-                keywords: `error, ошибка`,
-                route: `/components/error`,
-            },
-        ],
+        title: `Error`,
+        keywords: `error, ошибка`,
+        route: `/components/error`,
     },
     {
         section: $localize`Components`,
@@ -967,24 +985,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `Dropdown`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownContext`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
-                route: `/directives/dropdown-context`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownSelection`,
-                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown-selection`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `ElasticSticky`,
                 keywords: `масштаб, sticky, заголовок, шапка, mobile, смартфон, pwa, native, hybrid`,
                 route: `/directives/elastic-sticky`,
@@ -1078,12 +1078,6 @@ export const pages: TuiDocPages = [
                 title: `Sidebar`,
                 keywords: `sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню`,
                 route: `/directives/sidebar`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownController`,
-                keywords: `контроллер, ввод, параметры, настройка, выпадашка, список, айтемы, items`,
-                route: `/directives/dropdown-controller`,
             },
             {
                 section: $localize`Tools`,

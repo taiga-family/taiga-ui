@@ -8,14 +8,3 @@ export const tuiAssert = {
             : EMPTY_FUNCTION;
     },
 };
-
-type PossibleNode = Node | Element | EventTarget | null;
-
-export function tuiAssertIsElement(node?: PossibleNode): asserts node is Element {
-    const defaultView = (node as Node)?.ownerDocument?.defaultView;
-    const isElement =
-        !!defaultView &&
-        (node instanceof defaultView.Element || node instanceof defaultView.HTMLDocument);
-
-    tuiAssert.assert(isElement, `Node is not an Element`);
-}

@@ -7,7 +7,7 @@ import {
     OnDestroy,
     Renderer2,
 } from '@angular/core';
-import {tuiContainsOrAfter} from '@taiga-ui/cdk/utils/dom';
+import {tuiContainsOrAfter, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiBlurNativeFocused,
     tuiGetClosestFocusable,
@@ -47,15 +47,13 @@ export class TuiFocusTrapDirective implements OnDestroy {
 
     @HostListener(`window:focusin.silent`, [`$event.target`])
     onFocusIn(node: Node): void {
-        if (tuiContainsOrAfter(this.elementRef.nativeElement, node)) {
+        const {nativeElement} = this.elementRef;
+
+        if (tuiContainsOrAfter(nativeElement, node)) {
             return;
         }
 
-        const focusable = tuiGetClosestFocusable(
-            this.elementRef.nativeElement,
-            false,
-            this.elementRef.nativeElement,
-        );
+        const focusable = tuiGetClosestFocusable(nativeElement, nativeElement);
 
         if (focusable) {
             focusable.focus();
@@ -73,8 +71,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          */
         // eslint-disable-next-line
         Promise.resolve().then(() => {
-            // TODO: iframe warning
-            if (this.activeElement instanceof HTMLElement) {
+            if (tuiIsHTMLElement(this.activeElement)) {
                 this.activeElement.focus();
             }
         });

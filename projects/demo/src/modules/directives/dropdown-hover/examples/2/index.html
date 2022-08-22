@@ -1,0 +1,54 @@
+<nav
+    tuiTabs
+    [(activeItemIndex)]="index"
+>
+    <button tuiTab>Just a tab</button>
+    <tui-hosted-dropdown
+        tuiDropdownHover
+        [content]="content"
+        [(open)]="open"
+    >
+        <button
+            tuiHostedDropdownHost
+            tuiTab
+            (tui-tab-activate.stop)="(0)"
+        >
+            Hoverable/Clickable
+        </button>
+        <ng-template #content>
+            <tui-data-list (click)="onClick()">
+                <button tuiOption>Option 1</button>
+                <button tuiOption>Option 2</button>
+                <button tuiOption>Option 3</button>
+            </tui-data-list>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <button tuiTab>Another tab</button>
+    <tui-hosted-dropdown
+        tuiDropdownAlign="right"
+        tuiDropdownHover
+        [content]="settings"
+        [(open)]="openSettings"
+    >
+        <button
+            tuiHostedDropdownHost
+            tuiTab
+            (tui-tab-activate.stop)="(0)"
+        >
+            <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+        </button>
+
+        <ng-template #settings>
+            <div
+                class="settings"
+                [formGroup]="testForm"
+            >
+                <tui-toggle
+                    formControlName="option"
+                    size="l"
+                ></tui-toggle>
+                Turn option
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+</nav>

@@ -45,7 +45,7 @@ export class TuiDialogExampleComponent4 {
     }
 
     showDialog(
-        content: PolymorpheusContent<any>,
+        content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
         const templateRef = this.portalService.addTemplate(button);
