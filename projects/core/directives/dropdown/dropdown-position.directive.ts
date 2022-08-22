@@ -38,13 +38,13 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
             top: hostRect.top - TUI_DROPDOWN_OFFSET - height,
             bottom: hostRect.bottom + TUI_DROPDOWN_OFFSET,
             right: Math.max(hostRect.right - width, TUI_DROPDOWN_OFFSET),
-            left: Math.min(
-                hostRect.left,
-                Math.max(
-                    innerWidth - hostRect.left - width - TUI_DROPDOWN_OFFSET,
-                    TUI_DROPDOWN_OFFSET,
-                ),
-            ),
+            left:
+                hostRect.left + width < innerWidth - TUI_DROPDOWN_OFFSET
+                    ? hostRect.left
+                    : Math.max(
+                          innerWidth - hostRect.left - width - TUI_DROPDOWN_OFFSET,
+                          TUI_DROPDOWN_OFFSET,
+                      ),
         } as const;
         const better = available.top > available.bottom ? `top` : `bottom`;
 
