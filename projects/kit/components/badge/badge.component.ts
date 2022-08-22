@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -13,7 +13,7 @@ import {
     TuiSizeL,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 

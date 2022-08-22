@@ -108,7 +108,7 @@ export class TuiRadioBlockComponent<T>
     }
 
     get appearance(): TuiAppearance {
-        if (!this.modeDirective || !this.modeDirective.mode) {
+        if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
                 : TuiAppearance.Whiteblock;

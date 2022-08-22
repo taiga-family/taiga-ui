@@ -7,14 +7,14 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiDropdownModule} from '../dropdown.module';
 
-describe(`TuiDropdown directive`, () => {
+describe(`TuiDropdownDirective`, () => {
     @Component({
         template: `
             <tui-root>
                 <button automation-id="tui-dropdown-directive__button"></button>
                 <div
-                    [tuiDropdownContent]="dropdown"
-                    [tuiDropdown]="open"
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownManual]="open"
                 >
                     Hosty host
                     <button automation-id="tui-dropdown-directive__host"></button>
@@ -63,11 +63,11 @@ describe(`TuiDropdown directive`, () => {
         fixture.detectChanges();
     });
 
-    it(`when tuiDropdown = false, dropdown is not shown`, () => {
+    it(`when tuiDropdownManual = false, dropdown is not shown`, () => {
         expect(getDropdown()).toBe(null);
     });
 
-    it(`when tuiDropdown = true, dropdown is shown`, () => {
+    it(`when tuiDropdownManual = true, dropdown is shown`, () => {
         testComponent.open = true;
         fixture.detectChanges();
 

@@ -129,100 +129,31 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/textfield.less?raw`),
             ),
+            tuiRawLoad(import(`../../../../../core/styles/theme/variables.less?raw`)),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/mono.less?raw`)),
             tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-form.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/outline.less?raw`),
             ),
             tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-group.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/primary.less?raw`),
             ),
             tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-island.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/accent.less?raw`),
             ),
             tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-list.less?raw`),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/markup/tui-mobile-only.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-palette.less?raw`),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/markup/tui-required.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-row.less?raw`),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/markup/tui-skeleton.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-space.less?raw`),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-table.less?raw`),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/markup/tui-text.less?raw`),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/theme/variables.less?raw`),
-            ),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper.less?raw`)),
-            tuiRawLoad(
-                import(`../../../../../core/styles/theme/wrapper/icon.less?raw`),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/theme/wrapper/mono.less?raw`),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/outline.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/primary.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/accent.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/secondary.less?raw`
-                ),
+                import(`../../../../../core/styles/theme/wrapper/secondary.less?raw`),
             ),
             tuiRawLoad(
                 import(
                     `../../../../../core/styles/theme/wrapper/secondary-destructive.less?raw`
                 ),
             ),
+            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/table.less?raw`)),
             tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/table.less?raw`
-                ),
+                import(`../../../../../core/styles/theme/wrapper/textfield.less?raw`),
             ),
             tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/textfield.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(
-                    `../../../../../core/styles/theme/wrapper/whiteblock.less?raw`
-                ),
-            ),
-            tuiRawLoad(
-                import(`../../../../../core/styles/theme/wrapper/none.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/whiteblock.less?raw`),
             ),
             tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/none.less?raw`)),
             tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/base.less?raw`)),

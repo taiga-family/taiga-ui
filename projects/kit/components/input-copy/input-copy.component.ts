@@ -123,7 +123,7 @@ export class TuiInputCopyComponent
     }
 
     copy(): void {
-        if (!this.textfield || !this.textfield.nativeFocusableElement) {
+        if (!this.textfield?.nativeFocusableElement) {
             return;
         }
 

@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiAssertIsElement,
     tuiDefaultProp,
+    tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
     tuiItemsQueryListObservable,
@@ -101,7 +101,9 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     }
 
     onFocus({target}: Event, top: boolean): void {
-        tuiAssertIsElement(target);
+        if (!tuiIsElement(target)) {
+            return;
+        }
 
         const {elements} = this;
 

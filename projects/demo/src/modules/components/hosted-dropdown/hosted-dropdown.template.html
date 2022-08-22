@@ -46,32 +46,18 @@
         >
             <tui-hosted-dropdown-example-3></tui-hosted-dropdown-example-3>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="hover"
-            i18n-heading
-            heading="On hover"
-            [content]="example4"
-        >
-            <tui-notification>
-                Add
-                <code>TuiDropdownHoverModule</code>
-                to use it
-            </tui-notification>
-            <tui-hosted-dropdown-example-4></tui-hosted-dropdown-example-4>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-hosted-dropdown
                 [content]="template ? dropdown : content"
-                [tuiDropdownAlign]="align"
                 [canOpen]="canOpen"
-                [tuiDropdownDirection]="direction"
-                [tuiDropdownLimitWidth]="limitWidth"
-                [tuiDropdownMinHeight]="minHeight"
-                [tuiDropdownMaxHeight]="maxHeight"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
                 [(open)]="open"
             >
                 <tui-input
@@ -141,7 +127,7 @@
                 Content inside a dropdown
             </ng-template>
         </tui-doc-documentation>
-        <dropdown-controller-documentation></dropdown-controller-documentation>
+        <dropdown-documentation></dropdown-documentation>
     </ng-template>
 
     <ng-template pageTab>

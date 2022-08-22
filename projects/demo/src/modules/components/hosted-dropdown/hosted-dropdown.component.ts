@@ -1,14 +1,8 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
 
+import {AbstractExampleTuiDropdown} from '../abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
@@ -23,7 +17,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiHostedDropdownComponent {
+export class ExampleTuiHostedDropdownComponent extends AbstractExampleTuiDropdown {
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
@@ -48,22 +42,6 @@ export class ExampleTuiHostedDropdownComponent {
         TypeScript: import(`./examples/4/index.ts?raw`),
         HTML: import(`./examples/4/index.html?raw`),
     };
-
-    minHeight = DEFAULT_MIN_HEIGHT;
-
-    maxHeight = DEFAULT_MAX_HEIGHT;
-
-    alignVariants: readonly TuiHorizontalDirection[] = [`right`, `left`];
-
-    align = this.alignVariants[0];
-
-    readonly directionVariants: readonly TuiVerticalDirection[] = [`bottom`, `top`];
-
-    direction: TuiVerticalDirection | null = null;
-
-    readonly limitWidthVariants: readonly TuiDropdownWidth[] = [`auto`, `fixed`, `min`];
-
-    limitWidth: TuiDropdownWidth = this.limitWidthVariants[0];
 
     open = false;
 

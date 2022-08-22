@@ -7,7 +7,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -34,7 +34,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         TuiButtonModule,
         TuiSvgModule,
         TuiAvatarModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiInputPhoneModule,

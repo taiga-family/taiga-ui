@@ -18,7 +18,6 @@ const TEXTFIELD_CONTROLLER_SELECTORS = [
 const DROPDOWN_CONTROLLER_SELECTORS = [
     `tuiDropdownAlign`,
     `tuiDropdownDirection`,
-    `tuiDropdownSided`,
     `tuiDropdownLimitWidth`,
     `tuiDropdownMinHeight`,
     `tuiDropdownMaxHeight`,

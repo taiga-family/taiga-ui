@@ -29,6 +29,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
+    TUI_SELECTION_STREAM,
     TUI_TEXTFIELD_CLEANER,
     tuiAsDataListHost,
     TuiDataListDirective,
@@ -40,7 +41,6 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_SELECTION_STREAM} from '@taiga-ui/kit/tokens';
 import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
