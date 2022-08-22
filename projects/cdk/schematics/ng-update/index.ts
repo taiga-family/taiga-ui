@@ -22,6 +22,7 @@ import {TAIGA_THEME_FONTS} from '../constants/taiga-styles';
 import {replaceStyles} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
+import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
 
 export function updateToV3(options: Schema): Rule {
     const t0 = performance.now();
@@ -33,6 +34,7 @@ export function updateToV3(options: Schema): Rule {
     return chain([
         main(options),
         addTaigaStyles(options),
+        migrateTaigaProprietaryIcons(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
