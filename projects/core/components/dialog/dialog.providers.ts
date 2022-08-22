@@ -6,6 +6,7 @@ import {
     TuiDestroyService,
     TuiDialog,
     tuiIsCurrentTarget,
+    tuiIsElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
@@ -52,20 +53,18 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
                           filter(tuiIsCurrentTarget),
                       ),
                       tuiTypedFromEvent(documentRef, `keydown`).pipe(
-                          // TODO: iframe warning
                           filter(
                               ({key, target}) =>
                                   key === `Escape` &&
-                                  target instanceof Element &&
+                                  tuiIsElement(target) &&
                                   (!tuiContainsOrAfter(nativeElement, target) ||
                                       nativeElement.contains(target)),
                           ),
                       ),
                       tuiTypedFromEvent(documentRef, `mousedown`).pipe(
-                          // TODO: iframe warning
                           filter(
                               ({target, clientX}) =>
-                                  target instanceof Element &&
+                                  tuiIsElement(target) &&
                                   tuiGetViewportWidth(windowRef) - clientX >
                                       SCROLLBAR_PLACEHOLDER &&
                                   !tuiContainsOrAfter(nativeElement, target),
@@ -73,10 +72,9 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
                           switchMapTo(
                               tuiTypedFromEvent(documentRef, `mouseup`).pipe(
                                   take(1),
-                                  // TODO: iframe warning
                                   filter(
                                       ({target}) =>
-                                          target instanceof Element &&
+                                          tuiIsElement(target) &&
                                           !tuiContainsOrAfter(nativeElement, target),
                                   ),
                               ),

@@ -5,7 +5,7 @@ import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDescribedByModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -20,7 +20,7 @@ import {TuiHighlightColorComponent} from './highlight-color.component';
         TuiPaletteModule,
         TuiHintModule,
         TuiDescribedByModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiActiveZoneModule,
         TuiLetModule,
     ],

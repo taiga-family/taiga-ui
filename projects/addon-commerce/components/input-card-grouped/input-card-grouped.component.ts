@@ -26,11 +26,12 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiAssertIsElement,
     TuiBooleanHandler,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsElement,
+    tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
     tuiPure,
@@ -374,9 +375,7 @@ export class TuiInputCardGroupedComponent
     }
 
     onMouseDown(event: MouseEvent): void {
-        tuiAssertIsElement(event.target);
-
-        if (event.target.matches(`input`)) {
+        if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
             return;
         }
 
@@ -385,9 +384,9 @@ export class TuiInputCardGroupedComponent
     }
 
     onScroll({currentTarget}: Event): void {
-        tuiAssertIsElement(currentTarget);
-
-        currentTarget.scrollLeft = 0;
+        if (tuiIsElement(currentTarget)) {
+            currentTarget.scrollLeft = 0;
+        }
     }
 
     clear(): void {

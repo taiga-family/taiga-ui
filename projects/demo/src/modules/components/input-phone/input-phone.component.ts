@@ -2,13 +2,6 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -47,25 +40,6 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
     };
 
     cleaner = false;
-
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
-
-    dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
-
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
-
-    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
-    ];
-
-    dropdownDirection: TuiVerticalDirection | null = null;
-
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
     control = new FormControl(``, [Validators.required, Validators.minLength(12)]);
 

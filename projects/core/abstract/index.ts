@@ -1,5 +1,4 @@
 export * from './abstract-driver.directive';
-export * from './abstract-dropdown';
 export * from './abstract-textfield-host';
 export * from './driver';
 export * from './position-accessor';

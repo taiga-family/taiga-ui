@@ -1,18 +1,15 @@
 import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
-import {tuiAssertIsElement} from '@taiga-ui/cdk/classes';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiIsElement} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, mapTo} from 'rxjs/operators';
 
 function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
-    if (!relatedTarget) {
-        return true;
-    }
-
-    tuiAssertIsElement(currentTarget);
-    tuiAssertIsElement(relatedTarget);
-
-    return !currentTarget.contains(relatedTarget);
+    return (
+        !tuiIsElement(relatedTarget) ||
+        !tuiIsElement(currentTarget) ||
+        !currentTarget.contains(relatedTarget)
+    );
 }
 
 @Injectable()

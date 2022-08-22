@@ -1,5 +1,10 @@
 ```html
-<div [tuiDropdownContext]="content">Host element</div>
+<div
+  tuiDropdownContext
+  [tuiDropdown]="content"
+>
+  Host element
+</div>
 
 <ng-template
   #content

@@ -14,6 +14,10 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {provide: AbstractTuiPortalService, useExisting: TuiDropdownPortalService},
+        {
+            provide: AbstractTuiPortalHostComponent,
+            useExisting: TuiEditorPortalHostComponent,
+        },
     ],
 })
 export class TuiEditorPortalHostComponent extends AbstractTuiPortalHostComponent {}

@@ -12,9 +12,9 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiDropdownContextModule, TuiTextAreaModule} from '@taiga-ui/kit';
+import {TuiDataListDropdownManagerModule, TuiTextAreaModule} from '@taiga-ui/kit';
 
-import {DropdownControllerDocumentationModule} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.module';
+import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
 import {ExampleTuiDropdownContextComponent} from './dropdown-context.component';
 import {TuiDropdownContextExample1} from './examples/1';
 import {TuiDropdownContextExample2} from './examples/2';
@@ -27,7 +27,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiDataListModule,
         TuiSvgModule,
         TuiTableModule,
-        TuiDropdownContextModule,
+        TuiDataListDropdownManagerModule,
         TuiTextAreaModule,
         TuiButtonModule,
         TuiLinkModule,
@@ -35,7 +35,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiActiveZoneModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownContextComponent)),
         ReactiveFormsModule,
-        DropdownControllerDocumentationModule,
+        DropdownDocumentationModule,
     ],
     declarations: [
         ExampleTuiDropdownContextComponent,

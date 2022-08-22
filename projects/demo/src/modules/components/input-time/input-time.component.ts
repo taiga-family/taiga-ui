@@ -8,14 +8,7 @@ import {
     TuiTime,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiSizeL,
-    TuiSizeS,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -78,21 +71,6 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
-
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
-
-    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
-    ];
-
-    dropdownDirection: TuiVerticalDirection | null = null;
-
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
     readonly itemSizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
