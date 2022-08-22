@@ -30,7 +30,7 @@
             "options": {
                 "parallel": false,
                 "commands": [
-                    "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json --tsBuildInfoFile null",
+                    "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
                     "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json",
                     "cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
                 ]
