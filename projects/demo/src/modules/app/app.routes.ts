@@ -61,8 +61,7 @@ export const ROUTES = [
     {
         path: `testing/jest`,
         loadChildren: async () =>
-            (await import(`../info/testing/jest/jest.module`))
-                .JestModule,
+            (await import(`../info/testing/jest/jest.module`)).JestModule,
         data: {
             title: `Jest`,
         },
