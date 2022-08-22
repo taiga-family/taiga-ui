@@ -1,6 +1,5 @@
 export * from '@taiga-ui/core/directives/described-by';
 export * from '@taiga-ui/core/directives/dropdown';
-export * from '@taiga-ui/core/directives/dropdown-controller';
 export * from '@taiga-ui/core/directives/hint';
 export * from '@taiga-ui/core/directives/hint-controller';
 export * from '@taiga-ui/core/directives/mask-accessor';

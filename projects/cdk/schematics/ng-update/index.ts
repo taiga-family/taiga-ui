@@ -22,20 +22,10 @@ import {replaceStyles} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
+import {Schema} from '../ng-add/schema';
 
-interface Schema {
-    /**
-     * @example
-     * ```console
-     * schematics ./dist/cdk:updateToV3 --allow-private --skip-deep-imports --dry-run false
-     * ```
-     */
-    'skip-deep-imports': boolean;
-}
-
-export function updateToV3(cliFlags: Schema): Rule {
-    return async (tree: Tree, context: SchematicContext) => {
-        const t0 = performance.now();
+export function updateToV3(options: Schema): Rule {
+    const t0 = performance.now();
 
     titleLog(
         `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
@@ -55,11 +45,11 @@ export function updateToV3(cliFlags: Schema): Rule {
     ]);
 }
 
-function main(_: Schema): Rule {
+function main(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
-        !cliFlags['skip-deep-imports'] && replaceDeepImports();
+        !options['skip-deep-imports'] && replaceDeepImports();
         replaceEnums();
         renameTypes();
         replaceConstants();

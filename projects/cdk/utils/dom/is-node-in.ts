@@ -1,3 +1,5 @@
+import {tuiIsElement, tuiIsTextNode} from './element-checks';
+
 /**
  * Checks if node is inside a specific selector
  *
@@ -6,7 +8,7 @@
  * @return true if node is inside a particular selector
  */
 export function tuiIsNodeIn(node: Node, selector: string): boolean {
-    return node.nodeType === Node.TEXT_NODE
+    return tuiIsTextNode(node)
         ? !!node.parentElement?.closest(selector)
-        : node.nodeType === Node.ELEMENT_NODE && !!(node as Element).closest(selector);
+        : tuiIsElement(node) && !!node.closest(selector);
 }

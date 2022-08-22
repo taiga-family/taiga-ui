@@ -1,4 +1,5 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 
 import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
@@ -14,8 +15,8 @@ import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
  */
 export function tuiGetClosestFocusable(
     initial: Element,
-    prev: boolean = false,
     root: Node,
+    prev: boolean = false,
     keyboard: boolean = true,
 ): HTMLElement | null {
     if (!root.ownerDocument) {
@@ -23,26 +24,20 @@ export function tuiGetClosestFocusable(
     }
 
     const check = keyboard ? tuiIsNativeKeyboardFocusable : tuiIsNativeMouseFocusable;
-
-    // Deprecated but ony this overload works in IE
-    // Filter must be a function in IE, other modern browsers are compliant to this format
     const treeWalker = root.ownerDocument.createTreeWalker(
         root,
         NodeFilter.SHOW_ELEMENT,
         svgNodeFilter,
-        false,
     );
 
     treeWalker.currentNode = initial;
 
     while (prev ? treeWalker.previousNode() : treeWalker.nextNode()) {
-        // TODO: iframe warning
-        if (treeWalker.currentNode instanceof HTMLElement) {
+        if (tuiIsHTMLElement(treeWalker.currentNode)) {
             initial = treeWalker.currentNode;
         }
 
-        // TODO: iframe warning
-        if (check(initial) && initial instanceof HTMLElement) {
+        if (check(initial) && tuiIsHTMLElement(initial)) {
             return initial;
         }
     }

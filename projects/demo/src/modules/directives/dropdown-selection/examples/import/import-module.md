@@ -1,12 +1,12 @@
 ```ts
-import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
+import {TuiDropdownModule} from '@taiga-ui/core';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiDropdownSelectionModule,
+    TuiDropdownModule,
   ],
   // ...
 })

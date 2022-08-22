@@ -31,6 +31,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
+    tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiPreventDefault,
     TuiScrollService,
@@ -308,8 +309,7 @@ export class TuiInputTagComponent
         if (
             !this.focusableElement ||
             actualTarget === this.focusableElement.nativeElement ||
-            // TODO: iframe warning
-            !(event.target instanceof Element) ||
+            !tuiIsElement(event.target) ||
             this.cleanerSvg?.nativeElement.contains(event.target) ||
             (this.tagsContainer &&
                 actualTarget !== this.tagsContainer.nativeElement &&

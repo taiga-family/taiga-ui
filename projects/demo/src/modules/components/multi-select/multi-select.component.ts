@@ -10,15 +10,7 @@ import {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -99,10 +91,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     labelOutside = true;
 
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-
     readonly items = [
         new Account(`Ruble`, 500),
         new Account(`Dollar`, 500),
@@ -114,10 +102,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     expandable = true;
 
     editable = true;
-
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [`fixed`, `min`];
-
-    dropdownLimitWidth: TuiDropdownWidth = this.dropdownLimitWidthVariants[0];
 
     search: string | null = ``;
 
@@ -152,26 +136,11 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     maxLength = null;
 
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
-
-    dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
-
     readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<readonly Account[]>>
     > = [``, ({$implicit: {length}}) => `Selected: ${length}`];
 
     valueContent = this.valueContentVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
-    ];
-
-    dropdownDirection: TuiVerticalDirection | null = null;
-
-    itemContentSelected = null;
-
-    itemContentVariants = [`template`];
 
     control = new FormControl();
 
