@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintControllerModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
@@ -33,7 +33,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiLinkModule,
         InheritedDocumentationModule,
         TuiButtonModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiToggleModule,

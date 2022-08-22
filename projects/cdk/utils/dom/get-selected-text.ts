@@ -1,4 +1,4 @@
-import {tuiIsFormFieldElement} from './is-form-field';
+import {tuiIsTextfield} from './element-checks';
 
 /**
  * @description:
@@ -9,7 +9,7 @@ import {tuiIsFormFieldElement} from './is-form-field';
  * https://bugzilla.mozilla.org/show_bug.cgi?id=85686
  */
 export function tuiGetSelectedText({getSelection, document}: Window): string | null {
-    return tuiIsFormFieldElement(document.activeElement)
+    return document.activeElement && tuiIsTextfield(document.activeElement)
         ? document.activeElement.value.slice(
               document.activeElement.selectionStart || 0,
               document.activeElement.selectionEnd || 0,

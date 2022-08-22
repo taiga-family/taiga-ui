@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiErrorModule,
     TuiHintControllerModule,
     TuiLinkModule,
@@ -39,7 +39,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiInputTagModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiAddonDocModule,

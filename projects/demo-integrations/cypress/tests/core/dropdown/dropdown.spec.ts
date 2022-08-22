@@ -9,7 +9,7 @@ describe(`Dropdown`, () => {
         cy.get(`tui-dropdown-example-1 button`).first().click().wait(1000);
         cy.matchImageSnapshot(`1`);
 
-        cy.get(`tui-dropdown-example-2 button`).first().trigger(`mouseenter`).wait(1000);
+        cy.get(`tui-dropdown-example-2 input`).first().click().wait(1000);
         cy.matchImageSnapshot(`2`);
     });
 

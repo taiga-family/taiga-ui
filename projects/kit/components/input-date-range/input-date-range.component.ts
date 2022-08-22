@@ -53,7 +53,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
@@ -79,7 +78,6 @@ import {map, takeUntil} from 'rxjs/operators';
         tuiAsControl(TuiInputDateRangeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
     ],
-    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>

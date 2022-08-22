@@ -12,7 +12,6 @@ import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp, tuiParseColor, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
@@ -35,7 +34,6 @@ const ICONS: Record<TuiGradientDirection, string> = {
     templateUrl: `./color-selector.template.html`,
     styleUrls: [`./color-selector.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiColorSelectorComponent {
     private stops = new Map(DEFAULT_STEPS);
