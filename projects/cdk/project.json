@@ -30,12 +30,7 @@
             "builder": "@nrwl/workspace:run-commands",
             "options": {
                 "parallel": false,
-                "commands": [
-                    "tsc -p ./tsconfig.schematics.json --tsBuildInfoFile null",
-                    "cp ./projects/cdk/schematics/collection.json ./dist/cdk/schematics/collection.json",
-                    "cp ./projects/cdk/schematics/migration.json ./dist/cdk/schematics/migration.json",
-                    "cp ./projects/cdk/schematics/ng-add/schema.json ./dist/cdk/schematics/ng-add/schema.json"
-                ]
+                "commands": ["tsc -p ./tsconfig.schematics.json"]
             }
         },
         "test": {
@@ -59,7 +54,7 @@
             "options": {
                 "parallel": false,
                 "commands": [
-                    "tsc -p ./projects/cdk/schematics/tsconfig.spec.json --tsBuildInfoFile null",
+                    "tsc -p ./projects/cdk/schematics/tsconfig.spec.json",
                     "jasmine ./dist/cdk/schematics/**/*.spec.js"
                 ]
             },
