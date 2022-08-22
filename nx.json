@@ -11,7 +11,11 @@
         "tsconfig.*.json": "*",
         "tsconfig.json": "*"
     },
-    "npmScope": "taiga-ui",
+    "targetDefaults": {
+        "build": {
+            "inputs": ["!{projectRoot}/**/*.spec.ts"]
+        }
+    },
     "tasksRunnerOptions": {
         "default": {
             "runner": "@nrwl/nx-cloud",

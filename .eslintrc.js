@@ -4,10 +4,6 @@
 module.exports = {
     root: true,
     extends: [
-        // TODO: warning No cached ProjectGraph is available. The rule will be skipped. @nrwl/nx/enforce-module-boundaries
-        // If you encounter this error as part of running standard `nx` commands then please open an issue on
-        // https://github.com/nrwl/nx
-        // './scripts/eslint/nx.js',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',
@@ -17,6 +13,7 @@ module.exports = {
         '@tinkoff/eslint-config-angular/member-ordering',
 
         // @custom
+        './scripts/eslint/nx.js',
         './scripts/eslint/cypress.js',
         './scripts/eslint/decorators.js',
         './scripts/eslint/naming-convention.js',
@@ -34,9 +31,16 @@ module.exports = {
         sourceType: 'module',
         project: [require.resolve('./tsconfig.eslint.json')],
     },
-    plugins: ['unicorn'],
+    plugins: ['unicorn', 'file-progress'],
     parser: '@typescript-eslint/parser',
+    settings: {
+        progress: {
+            hide: false,
+            successMessage: 'Lint done...',
+        },
+    },
     rules: {
+        'file-progress/activate': 1,
         quotes: 'off',
         '@typescript-eslint/quotes': ['error', 'backtick'],
         'dot-notation': 'off',
