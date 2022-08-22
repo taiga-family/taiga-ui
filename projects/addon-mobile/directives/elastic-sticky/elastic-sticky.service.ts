@@ -71,8 +71,7 @@ export class TuiElasticStickyService extends Observable<number> {
     }
 
     private getInitialOffset(host: Element | Window, element: HTMLElement): number {
-        // TODO: iframe warning
-        return host instanceof Element
+        return `nodeType` in host
             ? tuiGetElementOffset(host, element).offsetTop
             : element.getBoundingClientRect().top;
     }

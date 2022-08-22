@@ -19,6 +19,8 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsElement,
+    tuiIsInput,
     tuiIsNativeFocused,
     tuiPure,
     TuiTime,
@@ -277,8 +279,7 @@ export class TuiInputTimeComponent
     private processArrow(event: Event, shift: -1 | 1): void {
         const {target} = event;
 
-        // TODO: iframe warning
-        if (this.readOnly || !(target instanceof HTMLInputElement)) {
+        if (this.readOnly || !tuiIsElement(target) || !tuiIsInput(target)) {
             return;
         }
 

@@ -1,7 +1,7 @@
 ```html
 <div
   tuiDropdownSelection
-  [tuiDropdownContent]="content"
+  [tuiDropdown]="content"
 >
   Host element
 </div>

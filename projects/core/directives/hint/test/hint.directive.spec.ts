@@ -7,7 +7,6 @@ import {
     tick,
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsElement} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
@@ -134,11 +133,7 @@ describe(`Hint`, () => {
     });
 
     function getHost(): Element {
-        const element = document.querySelector(`#hint-host`);
-
-        tuiAssertIsElement(element);
-
-        return element;
+        return document.querySelector(`#hint-host`)!;
     }
 
     function getTooltip(): Element | null {

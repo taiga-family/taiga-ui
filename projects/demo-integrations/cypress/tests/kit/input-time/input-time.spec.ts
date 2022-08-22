@@ -86,7 +86,7 @@ describe(`InputTime`, () => {
         }
 
         function getDropdown(): Cypress.Chainable<JQuery> {
-            return cy.get(`tui-dropdown-box tui-scrollbar`);
+            return cy.get(`tui-dropdown tui-scrollbar`);
         }
     });
 });

@@ -20,9 +20,9 @@ export class TuiDialogsExample1 {
     ) {}
 
     onClick(
-        choose: PolymorpheusContent<any>,
-        poorly: PolymorpheusContent<any>,
-        wisely: PolymorpheusContent<any>,
+        choose: PolymorpheusContent,
+        poorly: PolymorpheusContent,
+        wisely: PolymorpheusContent,
     ): void {
         this.promptService
             .open<unknown>(choose, {
