@@ -1,16 +1,20 @@
 import {Schema} from '../ng-add/schema';
-import {Rule, SchematicContext} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getProject} from './get-project';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {JsonArray} from '@angular-devkit/core';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
+import {addPackageJsonDependency} from 'ng-morph';
+import {TAIGA_VERSION} from '../ng-add/constants/versions';
+import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 
 export function addStylesToAngularJson(
     options: Schema,
     context: SchematicContext,
     taigaStyles: string[],
     filter?: (styles: JsonArray | undefined) => boolean,
-    stylesToReplace?: {from: string; to: string},
+    stylesToReplace?: {from: string; to: string[]},
+    tree?: Tree,
 ): Rule {
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
@@ -31,12 +35,32 @@ export function addStylesToAngularJson(
             return;
         }
 
-        targetOptions.styles = styles
-            ? Array.from(new Set([...taigaStyles, ...styles])).map(style =>
-                  stylesToReplace
-                      ? String(style).replace(stylesToReplace.from, stylesToReplace.to)
-                      : style,
-              )
-            : taigaStyles;
+        if (!styles) {
+            targetOptions.styles = taigaStyles;
+            return;
+        }
+
+        if (
+            tree &&
+            stylesToReplace &&
+            styles.find(style => style === stylesToReplace.from)
+        ) {
+            targetOptions.styles = Array.from(
+                new Set([
+                    ...taigaStyles,
+                    ...stylesToReplace.to,
+                    ...styles.filter(style => style !== stylesToReplace.from),
+                ]),
+            );
+
+            addPackageJsonDependency(tree, {
+                name: `@taiga-ui/styles`,
+                version: TAIGA_VERSION,
+            });
+
+            context.addTask(new NodePackageInstallTask());
+        } else {
+            targetOptions.styles = Array.from(new Set([...taigaStyles, ...styles]));
+        }
     });
 }
