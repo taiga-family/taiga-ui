@@ -2,6 +2,7 @@ import {execSync} from 'child_process';
 import {resolve} from 'path';
 
 import {
+    errorLog,
     infoLog,
     processLog,
     successLog,
@@ -18,7 +19,7 @@ const dryRun = hasFlag(`--dry-run`);
     infoLog(`version: ${packageJson.version}`);
 
     if (versionExists()) {
-        successLog(`${packageJson.name}@${packageJson.version} is already published`);
+        errorLog(`${packageJson.name}@${packageJson.version} is already published`);
 
         return;
     }
@@ -27,11 +28,13 @@ const dryRun = hasFlag(`--dry-run`);
 
     processLog(command);
     execSync(command, {stdio: `inherit`, encoding: `utf8`});
-    successLog(`${packageJson.name}@${packageJson.version} is published now`);
+    successLog(`+${packageJson.name}@${packageJson.version} is published successfully`);
 
     function versionExists(): boolean {
         const versions: string[] = JSON.parse(
-            execSync(`npm view ${packageJson.name} versions --json`).toString(),
+            execSync(
+                `npm view ${packageJson.name} versions --json || echo "[]"`,
+            ).toString(),
         );
 
         return versions.includes(packageJson.version);
