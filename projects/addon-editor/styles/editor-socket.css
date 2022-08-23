@@ -14,6 +14,7 @@ body.tui-editor-socket {
     font-size: 15px;
     font-family: tuiText, 'Manrope', sans-serif;
     line-height: 24px;
+    white-space: pre-wrap;
 }
 
 .tui-editor-socket ul,
