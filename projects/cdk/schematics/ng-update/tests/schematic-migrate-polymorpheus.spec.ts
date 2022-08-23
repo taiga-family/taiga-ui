@@ -111,4 +111,5 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
     createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }
