@@ -4,21 +4,42 @@ import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
 
+export interface TuiGetClosestFocusableOptions {
+    /**
+     * @description:
+     * current HTML element
+     */
+    initial: Element;
+
+    /**
+     * @description:
+     * top Node limiting the search area
+     */
+    root: Node;
+
+    /**
+     * @description:
+     * should it look backwards instead (find item that will be focused with Shift + Tab)
+     */
+    previous?: boolean;
+
+    /**
+     * @description:
+     * determine if only keyboard focus is of interest
+     */
+    keyboard?: boolean;
+}
+
 /**
+ * @description:
  * Finds the closest element that can be focused with a keyboard or mouse in theory
- *
- * @param initial current HTML element
- * @param prev should it look backwards instead (find item that will be focused with Shift + Tab)
- * @param root top Node limiting the search area
- * @param keyboard determine if only keyboard focus is of interest
- *
  */
-export function tuiGetClosestFocusable(
-    initial: Element,
-    root: Node,
-    prev: boolean = false,
-    keyboard: boolean = true,
-): HTMLElement | null {
+export function tuiGetClosestFocusable({
+    initial,
+    root,
+    previous = false,
+    keyboard = true,
+}: TuiGetClosestFocusableOptions): HTMLElement | null {
     if (!root.ownerDocument) {
         return null;
     }
@@ -32,12 +53,12 @@ export function tuiGetClosestFocusable(
 
     treeWalker.currentNode = initial;
 
-    while (prev ? treeWalker.previousNode() : treeWalker.nextNode()) {
+    while (previous ? treeWalker.previousNode() : treeWalker.nextNode()) {
         if (tuiIsHTMLElement(treeWalker.currentNode)) {
             initial = treeWalker.currentNode;
         }
 
-        if (check(initial) && tuiIsHTMLElement(initial)) {
+        if (tuiIsHTMLElement(initial) && check(initial)) {
             return initial;
         }
     }
