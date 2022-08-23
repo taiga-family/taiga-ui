@@ -93,6 +93,46 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         },
     },
     {
+        from: {
+            name: 'TuiDropdownControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownSelectionModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownHoverModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownContextModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
         from: {name: 'identity', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'identity', moduleSpecifier: 'rxjs'},
     },
