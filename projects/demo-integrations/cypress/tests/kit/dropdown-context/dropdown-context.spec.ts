@@ -19,25 +19,6 @@ describe(`DropdownContext`, () => {
             .matchImageSnapshot(`01-opened-context-menu`, {capture: `viewport`});
     });
 
-    it(`focuses content inside on Arrow Down key`, () => {
-        cy.get(`#contextMenu`).find(`tr`).eq(1).rightclick();
-
-        cy.get(`body`).type(`{downarrow}{downarrow}`);
-
-        cy.window()
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`02-arrow-down`, {capture: `viewport`});
-
-        cy.focused().click();
-
-        cy.tuiHideDocPage();
-        cy.tuiWaitKitDialog();
-
-        cy.window()
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`02-arrow-down-clicked`, {capture: `viewport`});
-    });
-
     it(`focuses content inside on Arrow Up key`, () => {
         cy.get(`#contextMenu`).find(`tr`).eq(2).rightclick();
 
