@@ -113,7 +113,10 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return tuiIsNativeKeyboardFocusable(this.host)
             ? this.host
-            : tuiGetClosestFocusable(this.host, this.elementRef.nativeElement);
+            : tuiGetClosestFocusable({
+                  initial: this.host,
+                  root: this.elementRef.nativeElement,
+              });
     }
 
     @HostBinding(`class._hosted_dropdown_focused`)
@@ -225,11 +228,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const initial = first
             ? this.wrapper.nativeElement
             : this.wrapper.nativeElement.nextElementSibling;
-        const focusable = tuiGetClosestFocusable(
+        const focusable = tuiGetClosestFocusable({
             initial,
-            this.wrapper.nativeElement,
-            !first,
-        );
+            root: this.wrapper.nativeElement,
+            previous: !first,
+        });
 
         if (!focusable) {
             return;

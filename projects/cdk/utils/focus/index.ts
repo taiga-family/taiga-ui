@@ -1,5 +1,5 @@
 export * from './blur-native-focused';
-export * from './get-closest-keyboard-focusable';
+export * from './get-closest-focusable';
 export * from './get-native-focused';
 export * from './is-native-focused';
 export * from './is-native-focused-in';
