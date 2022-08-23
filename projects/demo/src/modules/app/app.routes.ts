@@ -59,6 +59,14 @@ export const ROUTES = [
         },
     },
     {
+        path: `testing/jest`,
+        loadChildren: async () =>
+            (await import(`../info/testing/jest/jest.module`)).JestModule,
+        data: {
+            title: `Jest`,
+        },
+    },
+    {
         path: `testing/disable-animation`,
         loadChildren: async () =>
             (await import(`../info/testing/disable-animation/disable-animation.module`))
