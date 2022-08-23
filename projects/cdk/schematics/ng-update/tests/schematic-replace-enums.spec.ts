@@ -82,4 +82,5 @@ export class AppComponent {
     createSourceFile('test/app/app.template.html', `<app></app>`);
 
     createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }
