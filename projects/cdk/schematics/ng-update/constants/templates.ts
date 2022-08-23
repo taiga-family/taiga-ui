@@ -96,6 +96,26 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: '[state]',
+            withAttrsNames: ['tuiStep'],
+        },
+
+        to: {
+            attrName: '[stepState]',
+        },
+    },
+    {
+        from: {
+            attrName: 'state',
+            withAttrsNames: ['tuiStep'],
+        },
+
+        to: {
+            attrName: 'stepState',
+        },
+    },
+    {
+        from: {
             attrName: '[focused]',
             withTagNames: ['tui-wrapper'],
             withAttrsNames: ['tuiWrapper'],
