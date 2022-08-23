@@ -25,6 +25,7 @@ import {addStylesToAngularJson} from '../utils/add-styles';
 import {
     TAIGA_GLOBAL_OLD,
     TAIGA_GLOBAL_STYLE,
+    TAIGA_LOCAL_STYLE,
     TAIGA_THEME_FONTS,
 } from '../constants/taiga-styles';
 import {replaceStyles} from './steps/replace-styles';
@@ -84,8 +85,10 @@ function main(options: Schema): Rule {
 function addTaigaStyles(options: Schema): Rule {
     return async (tree: Tree, context) => {
         const taigaStyles = [TAIGA_THEME_FONTS];
-        const stylesToReplace = {from: TAIGA_GLOBAL_OLD, to: TAIGA_GLOBAL_STYLE};
-
+        const stylesToReplace = {
+            from: TAIGA_GLOBAL_OLD,
+            to: [TAIGA_LOCAL_STYLE, TAIGA_GLOBAL_STYLE],
+        };
         addPackageJsonDependency(tree, {
             name: `@taiga-ui/styles`,
             version: TAIGA_VERSION,
@@ -98,6 +101,7 @@ function addTaigaStyles(options: Schema): Rule {
             existingStyles =>
                 !!existingStyles?.some(s => String(s).includes('tinkoff-theme')),
             stylesToReplace,
+            tree,
         );
     };
 }
