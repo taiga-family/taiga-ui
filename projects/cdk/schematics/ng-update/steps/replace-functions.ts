@@ -17,8 +17,9 @@ export function replaceFunctions() {
     replaceFallbackValue(getNamedImportReferences('fallbackValue', '@taiga-ui/cdk'));
     replaceCustomEvent(getNamedImportReferences('tuiCustomEvent', '@taiga-ui/cdk'));
     replaceClosestElement(getNamedImportReferences('getClosestElement', '@taiga-ui/cdk'));
-    modifyFormatNumberArgs();
     replaceDeprecatedFunction();
+    modifyFormatNumberArgs();
+    modifyClosestFocusable();
 
     successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
 }
@@ -132,6 +133,25 @@ function modifyFormatNumberArgs(): void {
 
                 fn.replaceWithText(
                     `tuiFormatNumber(${value}, {decimalLimit: ${conditionalDecimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
+                );
+            }
+        });
+}
+
+function modifyClosestFocusable(): void {
+    getNamedImportReferences('tuiGetClosestFocusable', '@taiga-ui/cdk')
+        .map(ref => ref.getParent())
+        .filter(Node.isCallExpression)
+        .forEach(fn => {
+            const args = fn.getArguments();
+
+            if (args.length > 1) {
+                const [initial, prev = false, root, keyboard = true] = args.map(arg =>
+                    arg.getText(),
+                );
+
+                fn.replaceWithText(
+                    `tuiGetClosestFocusable({initial: ${initial}, root: ${root}, previous: ${prev}, keyboard: ${keyboard}})`,
                 );
             }
         });

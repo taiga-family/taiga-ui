@@ -53,7 +53,10 @@ export class TuiFocusTrapDirective implements OnDestroy {
             return;
         }
 
-        const focusable = tuiGetClosestFocusable(nativeElement, nativeElement);
+        const focusable = tuiGetClosestFocusable({
+            initial: nativeElement,
+            root: nativeElement,
+        });
 
         if (focusable) {
             focusable.focus();

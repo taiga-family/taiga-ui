@@ -179,9 +179,9 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean): void {
+    onWrapperArrow(event: Event, wrapper: HTMLElement, previous: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
-        const target = tuiGetClosestFocusable(button, wrapper, prev);
+        const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
 
         if (target) {
             target.focus();
