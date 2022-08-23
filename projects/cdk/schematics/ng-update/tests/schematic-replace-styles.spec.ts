@@ -253,4 +253,5 @@ export class AppComponent {
     createSourceFile('test/app/app.template.less', BEFORE_LOCAL_STYLE);
 
     createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }
