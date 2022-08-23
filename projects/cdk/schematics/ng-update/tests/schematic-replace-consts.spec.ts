@@ -37,7 +37,7 @@ export class AppComponent extends AbstractTuiController {
     control = new FormControl('', [Validators.nullValidator]);
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
-        if (tuiGetClosestFocusable(target, 'button')) {
+        if (tuiGetClosestFocusable({initial: target, root: 'button', previous: false, keyboard: true})) {
             return null;
         }
     }
@@ -87,7 +87,7 @@ export class AppComponent extends TuiController {
     control = new FormControl('', [EMPTY_VALIDATOR]);
 
     onMouseDown(event: MouseEvent, target: HTMLElement) {
-        if (tuiGetClosestFocusable(target, 'button')) {
+        if (tuiGetClosestFocusable(target, false, 'button')) {
             return null;
         }
     }

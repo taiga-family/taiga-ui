@@ -154,8 +154,11 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
         }
 
         // First item is focus trap
-        const focusTrap = tuiGetClosestFocusable(content, content);
-        const item = tuiGetClosestFocusable(focusTrap || content, content);
+        const focusTrap = tuiGetClosestFocusable({initial: content, root: content});
+        const item = tuiGetClosestFocusable({
+            initial: focusTrap || content,
+            root: content,
+        });
 
         if (item) {
             item.focus();

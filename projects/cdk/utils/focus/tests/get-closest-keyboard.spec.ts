@@ -1,11 +1,11 @@
-import {tuiGetClosestFocusable} from '../get-closest-keyboard-focusable';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk';
 
-describe(`getClosestKeyboardFocusable`, () => {
+describe(`tuiGetClosestFocusable`, () => {
     it(`returns null if root has no document`, () => {
         const root: Node = {} as unknown as Node;
         const divElement = document.createElement(`div`);
 
-        expect(tuiGetClosestFocusable(divElement, root)).toBe(null);
+        expect(tuiGetClosestFocusable({initial: divElement, root})).toBe(null);
     });
 
     it(`returns closest focusable going backwards`, () => {
@@ -17,7 +17,9 @@ describe(`getClosestKeyboardFocusable`, () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(tuiGetClosestFocusable(divElement, root, true)).toBe(buttonElement);
+        expect(tuiGetClosestFocusable({initial: divElement, root, previous: true})).toBe(
+            buttonElement,
+        );
 
         document.body.removeChild(root);
     });
@@ -31,7 +33,7 @@ describe(`getClosestKeyboardFocusable`, () => {
         root.appendChild(buttonElement);
         document.body.appendChild(root);
 
-        expect(tuiGetClosestFocusable(divElement, root)).toBe(buttonElement);
+        expect(tuiGetClosestFocusable({initial: divElement, root})).toBe(buttonElement);
 
         document.body.removeChild(root);
     });
@@ -43,7 +45,7 @@ describe(`getClosestKeyboardFocusable`, () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(tuiGetClosestFocusable(divElement, root)).toBe(null);
+        expect(tuiGetClosestFocusable({initial: divElement, root})).toBe(null);
 
         document.body.removeChild(root);
     });
