@@ -38,7 +38,7 @@
             <ng-container
                 *tuiForAsync="let icon of filtered"
                 [ngTemplateOutlet]="iconGroup?.template || null"
-                [ngTemplateOutletContext]="{icon: icon, copyPath: copyPath}"
+                [ngTemplateOutletContext]="{icon: icon, group: key, copyPath: copyPath}"
             ></ng-container>
         </div>
     </ng-container>
