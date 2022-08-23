@@ -35,7 +35,6 @@ const TEMPLATE_BEFORE = `
     formControlName="testValue"
     icon="icon"
     iconAlign="right"
-    tuiTextfieldExampleText="House"
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
@@ -54,12 +53,12 @@ const TEMPLATE_AFTER = `
 <tui-input
     formControlName="testValue"
     tuiTextfieldIconLeft="icon"
-    tuiTextfieldExampleText="House"
+    ${''}
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
     House
-</tui-input>
+<input tuiTextfield placeholder="House"/> </tui-input>
 
 <tui-input-tag [tuiTextfieldIconLeft]="icon" ></tui-input-tag>
 
@@ -67,7 +66,6 @@ const TEMPLATE_AFTER = `
     formControlName="testValue"
     tuiTextfieldIcon="icon"
     ${''}
-    tuiTextfieldExampleText="House"
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >

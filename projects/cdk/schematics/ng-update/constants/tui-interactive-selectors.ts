@@ -46,7 +46,7 @@ export const TUI_INTERACTIVE_SELECTORS = [
     'tui-input-number',
     'tui-input-time',
     'tui-input-time',
-    'tui-multiselect',
+    'tui-multi-select',
     'tui-filter',
     'tui-input-tag',
 ];

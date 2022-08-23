@@ -42,6 +42,7 @@ import {printProgress} from '../../utils/progress';
 import {migratePolymorpheus} from './migrate-polymorpheus';
 import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
 import {TODO_MARK} from '../../utils/insert-todo';
+import {migrateTextfieldController} from './migrate-textfield-controller';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -58,6 +59,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         migrateTuiHideSelectedPipe,
         removeInputs,
         migratePolymorpheus,
+        migrateTextfieldController,
         replaceInputValues,
         migrateBinaryAttributes,
         addWarningForFormatNumberPipe,
