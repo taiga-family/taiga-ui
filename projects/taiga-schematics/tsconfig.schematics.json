@@ -2,9 +2,14 @@
     "extends": "../../tsconfig.schematics.json",
     "compilerOptions": {
         "baseUrl": ".",
-        "rootDir": "schematics",
+        "rootDir": ".",
         "outDir": "../../dist/taiga-schematics"
     },
-    "include": ["schematics/**/*"],
-    "exclude": ["schematics/**/*.spec.ts"]
+    "include": [
+        "./schematics/**/*",
+        "./schematics/**/collection.json",
+        "./schematics/**/migration.json",
+        "./schematics/**/schema.json"
+    ],
+    "exclude": ["./schematics/**/*.spec.ts"]
 }

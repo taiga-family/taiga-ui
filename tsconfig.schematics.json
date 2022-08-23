@@ -5,11 +5,15 @@
         "declaration": true,
         "target": "es6",
         "module": "commonjs",
-        "outDir": "dist/cdk/schematics",
-        "rootDir": "projects/cdk/schematics",
+        "outDir": "dist/cdk",
+        "rootDir": "projects/cdk",
+        "composite": false,
+        "incremental": false,
+        "tsBuildInfoFile": null,
         "types": ["jasmine", "jasmine-ajax", "node", "webpack-env"]
     },
     "include": [
+        "projects/cdk/constants/version.ts",
         "projects/cdk/schematics/**/*",
         "projects/cdk/schematics/**/collection.json",
         "projects/cdk/schematics/**/migration.json",

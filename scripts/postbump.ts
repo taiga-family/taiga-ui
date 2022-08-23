@@ -7,7 +7,7 @@ import {syncVersions} from './shared/sync-versions';
 
 (function main(): void {
     syncVersions([`./projects`, `./package-lock.json`], version);
-    overwriteVersion(resolve(`./projects/core/constants/version.ts`), version);
+    overwriteVersion(resolve(`./projects/cdk/constants/version.ts`), version);
     execSync(`git add **/package.json`, {stdio: `inherit`});
     execSync(`git add ./projects/core/constants/version.ts`, {stdio: `inherit`});
 })();
