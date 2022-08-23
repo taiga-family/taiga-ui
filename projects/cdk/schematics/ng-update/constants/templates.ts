@@ -350,6 +350,42 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[secondaryTitle]',
         },
     },
+    {
+        from: {
+            attrName: 'tuiDropdown',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiDropdownManual',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDropdown]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiDropdownManual]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiDropdownContent',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiDropdown',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDropdownContent]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiDropdown]',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
@@ -524,6 +560,13 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
         },
     },
 ];
+
+/**
+ * @example `<div [tuiDropdownSided]="true" />` => `<div tuiDropdownSided />`
+ */
+export const TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE = [
+    'tuiDropdownSided',
+] as const;
 
 export const TEMPLATE_COMMENTS = [
     {
