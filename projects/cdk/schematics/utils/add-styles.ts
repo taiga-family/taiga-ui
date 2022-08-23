@@ -10,6 +10,7 @@ export function addStylesToAngularJson(
     context: SchematicContext,
     taigaStyles: string[],
     filter?: (styles: JsonArray | undefined) => boolean,
+    stylesToReplace?: {from: string; to: string},
 ): Rule {
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
@@ -31,7 +32,11 @@ export function addStylesToAngularJson(
         }
 
         targetOptions.styles = styles
-            ? Array.from(new Set([...taigaStyles, ...styles]))
+            ? Array.from(new Set([...taigaStyles, ...styles])).map(style =>
+                  stylesToReplace
+                      ? String(style).replace(stylesToReplace.from, stylesToReplace.to)
+                      : style,
+              )
             : taigaStyles;
     });
 }

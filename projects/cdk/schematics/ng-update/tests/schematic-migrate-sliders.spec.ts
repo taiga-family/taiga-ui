@@ -452,4 +452,5 @@ function createMainFiles(): void {
         INLINE_HTML_CHILD_COMPONENT_BEFORE,
     );
     createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }
