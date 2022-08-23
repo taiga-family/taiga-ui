@@ -18,7 +18,26 @@
             component and all Taiga UI component accepting icons as input.
         </p>
 
-        <icons-group [icons]="icons[key]"></icons-group>
+        <icons-group [icons]="icons[key]">
+            <ng-template
+                iconGroup
+                let-icon="icon"
+                let-copyPath="copyPath"
+            >
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="m"
+                    i18n-title
+                    title="Copy"
+                    appearance="icon"
+                    class="icon"
+                    [attr.aria-label]="icon"
+                    [icon]="icon"
+                    (click)="copyPath(icon)"
+                ></button>
+            </ng-template>
+        </icons-group>
     </ng-template>
 
     <ng-template pageTab="SVG Processing">
