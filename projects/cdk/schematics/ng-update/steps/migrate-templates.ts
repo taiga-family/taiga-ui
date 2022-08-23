@@ -6,6 +6,7 @@ import {
     INPUTS_TO_REMOVE,
     TAGS_TO_REPLACE,
     TEMPLATE_COMMENTS,
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE,
 } from '../constants/templates';
 import {
     findAttributeOnElementWithAttrs,
@@ -58,6 +59,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         removeInputs,
         migratePolymorpheus,
         replaceInputValues,
+        migrateBinaryAttributes,
         addWarningForFormatNumberPipe,
     ];
 
@@ -359,6 +361,43 @@ function migrateTuiHideSelectedPipe({
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
+    });
+}
+
+function migrateBinaryAttributes({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach(attrName => {
+        const elements = findElementsInTemplateByFn(template, el =>
+            el.attrs?.some(
+                attr =>
+                    attr.value === 'true' && attr.name.includes(attrName.toLowerCase()),
+            ),
+        );
+
+        elements.forEach(el => {
+            const attrLocations = el.sourceCodeLocation?.attrs;
+
+            if (!attrLocations) {
+                return;
+            }
+
+            const {startOffset, endOffset} =
+                attrLocations[`[${attrName.toLowerCase()}]`] ||
+                attrLocations[attrName.toLowerCase()];
+
+            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+            recorder.insertRight(templateOffset + startOffset, attrName);
+        });
     });
 }
 
