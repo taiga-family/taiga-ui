@@ -7,8 +7,6 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- **cdk:** schematics shouldn't be a direct depended on cdk ([#2414](https://github.com/tinkoff/taiga-ui/issues/2414))
-  ([0f4ce73](https://github.com/tinkoff/taiga-ui/commit/0f4ce73f1158fcee065be18620b7f6211065eb18))
 - **kit:** `Badge` add new `xs` size ([#2397](https://github.com/tinkoff/taiga-ui/issues/2397))
   ([90ba012](https://github.com/tinkoff/taiga-ui/commit/90ba01248193409d4360eab9e16990167b078366))
 
@@ -18,8 +16,6 @@ All notable changes to this project will be documented in this file. See
   ([8f0c6db](https://github.com/tinkoff/taiga-ui/commit/8f0c6db3611b27ecdbdc711d87c0b8fe1a61198d))
 - **core:** character descenders overflow the line ([#2387](https://github.com/tinkoff/taiga-ui/issues/2387))
   ([6125137](https://github.com/tinkoff/taiga-ui/commit/61251373982182b8074240c5ba4513234ddb76af))
-- **i18n:** rename `Republic of Kosovo` to `Kosovo`
-  ([1bed3e9](https://github.com/tinkoff/taiga-ui/commit/1bed3e97c04697fb63d5838fb54c077f708d2286))
 - **i18n:** support typings for custom languages ([#2384](https://github.com/tinkoff/taiga-ui/issues/2384))
   ([bed8892](https://github.com/tinkoff/taiga-ui/commit/bed8892b0b9cbe7afc1e8d87413e8551c94c137c))
 - **kit:** `TextArea` fix incorrect padding on newer iOS ([#2403](https://github.com/tinkoff/taiga-ui/issues/2403))
