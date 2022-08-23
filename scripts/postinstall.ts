@@ -1,7 +1,7 @@
 import {execSync} from 'child_process';
 
-import {getValueByFlag} from './shared/argv.utils';
 import {infoLog} from '../projects/cdk/schematics/utils/colored-log';
+import {getValueByFlag} from './shared/argv.utils';
 
 const cwd = getValueByFlag<string>(`--cwd`, `./`);
 
