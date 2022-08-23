@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[344],{CoAp:function(n,e,o){"use strict";o.r(e),e.default=".bars {\n    height: 6.25rem;\n    width: 10rem;\n    box-shadow: 0 1px var(--tui-base-03);\n}\n"}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1497],{jBNn:function(n,e,t){"use strict";t.r(e),e.default="```ts\nexport class MyComponent {\n  @tuiPure\n  get complexCalculationWithFixedResult(): number {\n    // ...\n  }\n\n  @tuiPure\n  someMethod(arg1: number, arg2: {}): {} {\n    // ...\n  }\n}\n```\n"}}]);

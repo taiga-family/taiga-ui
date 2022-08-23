@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[464],{"8waH":function(n,o,t){"use strict";t.r(o),o.default='```html\n<tui-badged-content\n  [contentTop]="contentTop"\n  [colorTop]="colorTop"\n>\n  Content to wrap\n</tui-badged-content>\n```\n'}}]);
