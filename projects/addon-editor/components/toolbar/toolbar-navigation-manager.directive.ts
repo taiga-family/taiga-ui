@@ -50,7 +50,7 @@ export class TuiToolbarNavigationManagerDirective {
         for (const el of tools) {
             const focusableElement = tuiIsNativeMouseFocusable(el)
                 ? el
-                : tuiGetClosestFocusable(el, el, false, false);
+                : tuiGetClosestFocusable({initial: el, root: el, keyboard: false});
 
             if (focusableElement) {
                 return focusableElement;
@@ -65,22 +65,30 @@ export class TuiToolbarNavigationManagerDirective {
             return wrapper;
         }
 
-        const lookedInside = tuiGetClosestFocusable(wrapper, wrapper, false, false);
+        const lookedInside = tuiGetClosestFocusable({
+            initial: wrapper,
+            root: wrapper,
+            keyboard: false,
+        });
 
         return (
             lookedInside ||
-            tuiGetClosestFocusable(wrapper, this.elementRef.nativeElement, true, false)
+            tuiGetClosestFocusable({
+                initial: wrapper,
+                root: this.elementRef.nativeElement,
+                previous: true,
+                keyboard: false,
+            })
         );
     }
 
     private findNextTool(wrapper: HTMLElement): HTMLElement | null {
         return tuiIsNativeMouseFocusable(wrapper)
             ? wrapper
-            : tuiGetClosestFocusable(
-                  wrapper,
-                  this.elementRef.nativeElement,
-                  false,
-                  false,
-              );
+            : tuiGetClosestFocusable({
+                  initial: wrapper,
+                  root: this.elementRef.nativeElement,
+                  keyboard: false,
+              });
     }
 }
