@@ -12,7 +12,7 @@ const cwd = getValueByFlag<string>(`--cwd`, `./`);
         `
         husky install || echo 'skip error'
         ngcc --async || echo 'skip error'
-        ts-node ${cwd}scripts/nx/decorate-angular-cli || echo 'skip error'
+        ts-node -p ${cwd}tsconfig.tools.json ${cwd}scripts/nx/decorate-angular-cli
     `,
         {stdio: `inherit`},
     );
