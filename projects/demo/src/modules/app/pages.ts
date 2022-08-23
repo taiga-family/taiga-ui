@@ -43,7 +43,7 @@ export const pages: TuiDocPages = [
         title: $localize`Testing`,
         subPages: [
             {
-                section: $localize`Jest`,
+                section: $localize`Documentation`,
                 title: $localize`Jest`,
                 keywords: `test, tests, testing, jest, ReferenceError, IntersectionObserver`,
                 route: `/testing/jest`,
