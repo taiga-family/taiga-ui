@@ -158,4 +158,5 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
 
     createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

@@ -1,5 +1,10 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import {
+    addPackageJsonDependency,
+    createProject,
+    saveActiveProject,
+    setActiveProject,
+} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
@@ -17,7 +22,11 @@ import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 import {addStylesToAngularJson} from '../utils/add-styles';
-import {TAIGA_THEME_FONTS} from '../constants/taiga-styles';
+import {
+    TAIGA_GLOBAL_OLD,
+    TAIGA_GLOBAL_STYLE,
+    TAIGA_THEME_FONTS,
+} from '../constants/taiga-styles';
 import {replaceStyles} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
@@ -73,8 +82,14 @@ function main(options: Schema): Rule {
 }
 
 function addTaigaStyles(options: Schema): Rule {
-    return async (_: Tree, context) => {
+    return async (tree: Tree, context) => {
         const taigaStyles = [TAIGA_THEME_FONTS];
+        const stylesToReplace = {from: TAIGA_GLOBAL_OLD, to: TAIGA_GLOBAL_STYLE};
+
+        addPackageJsonDependency(tree, {
+            name: `@taiga-ui/styles`,
+            version: TAIGA_VERSION,
+        });
 
         return addStylesToAngularJson(
             options,
@@ -82,6 +97,7 @@ function addTaigaStyles(options: Schema): Rule {
             taigaStyles,
             existingStyles =>
                 !!existingStyles?.some(s => String(s).includes('tinkoff-theme')),
+            stylesToReplace,
         );
     };
 }
