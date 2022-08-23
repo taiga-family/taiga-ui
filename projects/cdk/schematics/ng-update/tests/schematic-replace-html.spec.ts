@@ -30,6 +30,21 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<button
+    tuiButton
+    type="button"
+    iconRight="tuiIconChevronDown"
+    [tuiDropdownContent]="dropdownContent"
+    [tuiDropdown]="open"
+    [tuiDropdownSided]="true"
+    (click)="onClick()"
+>
+    Choose
+</button>
+<ng-template #dropdownContent>
+    <div class="dropdown">But there is nothing to choose...</div>
+</ng-template>
+
 <label
     tuiLabel
     label="Step"
@@ -174,6 +189,21 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+<button
+    tuiButton
+    type="button"
+    iconRight="tuiIconChevronDown"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownManual]="open"
+    tuiDropdownSided
+    (click)="onClick()"
+>
+    Choose
+</button>
+<ng-template #dropdownContent>
+    <div class="dropdown">But there is nothing to choose...</div>
+</ng-template>
+
 <label
     ${''}
     tuiLabel="Step"
