@@ -23,7 +23,6 @@ const BEFORE_GLOBAL_STYLE = `
 
 const AFTER_GLOBAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-fonts';
-@import '~@taiga-ui/core/styles/taiga-ui-local';
 @import '~@taiga-ui/styles/taiga-ui-global';
 @import '~@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 @import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-v2';
