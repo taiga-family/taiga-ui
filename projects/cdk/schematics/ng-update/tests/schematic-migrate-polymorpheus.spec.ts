@@ -53,13 +53,19 @@ const TEMPLATE_BEFORE = `
 
 const TEMPLATE_AFTER = `
 <div
-            >
+    ${''}
+    ${''}
+    ${''}
+>
 <ng-container *polymorpheusOutlet="content as text; context: context">
     {{ text }}
 </ng-container></div>
 
 <div
-            >
+    ${''}
+    ${''}
+    ${''}
+>
     <ng-container *polymorpheusOutlet="content as hapica; context: context" >
         <div>{{ hapica }}</div>
     </ng-container>
@@ -67,8 +73,10 @@ const TEMPLATE_AFTER = `
 
 <div
     *ngIf="icon"
-        class="t-icon-outlet"
-    >
+    ${''}
+    class="t-icon-outlet"
+    ${''}
+>
     <ng-container *polymorpheusOutlet="icon as icon" >
         <tui-svg
             automation-id="tui-input-card-grouped__icon"
