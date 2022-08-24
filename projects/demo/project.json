@@ -49,7 +49,6 @@
                     }
                 ],
                 "baseHref": "/",
-                "showCircularDependencies": false,
                 "styles": [
                     "projects/demo/src/normalize.less",
                     "projects/demo/src/styles.less",
