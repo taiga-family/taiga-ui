@@ -8,6 +8,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
@@ -22,10 +23,11 @@ import {
     TuiHoveredService,
     watch,
 } from '@taiga-ui/cdk';
+import {TuiModeDirective} from '@taiga-ui/core/directives';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {EMPTY, Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
 
@@ -47,10 +49,11 @@ export class TuiButtonComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor, TuiButtonOptions
 {
+    private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
+
     @Input()
-    @HostBinding(`attr.data-appearance`)
     @tuiDefaultProp()
-    appearance = this.options.appearance || ``;
+    appearance: TuiButtonOptions['appearance'] = null;
 
     @Input()
     @tuiDefaultProp()
@@ -79,7 +82,16 @@ export class TuiButtonComponent
     @tuiDefaultProp()
     size = this.options.size;
 
+    readonly appearance$ = this.mode$.pipe(
+        startWith(null),
+        map(() => this.computedAppearance),
+        distinctUntilChanged(),
+    );
+
     constructor(
+        @Optional()
+        @Inject(TuiModeDirective)
+        private readonly mode: TuiModeDirective | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
@@ -119,6 +131,11 @@ export class TuiButtonComponent
 
     get loaderSize(): TuiSizeS {
         return this.size === `l` || this.size === `xl` ? `m` : `s`;
+    }
+
+    @HostBinding(`attr.data-appearance`)
+    get computedAppearance(): string {
+        return this.appearance ?? (this.options.appearance || ``);
     }
 
     @HostBinding(`attr.disabled`)

@@ -1,6 +1,7 @@
+<ng-container *ngIf="appearance$ | async"></ng-container>
 <tui-wrapper
     class="t-wrapper"
-    [appearance]="appearance"
+    [appearance]="computedAppearance"
     [hovered]="computedHovered"
     [pressed]="computedPressed"
     [disabled]="computedDisabled"
