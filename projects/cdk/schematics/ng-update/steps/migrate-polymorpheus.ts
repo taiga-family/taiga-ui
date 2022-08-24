@@ -108,7 +108,7 @@ function removeOldInputs(
     ];
 
     offsets.forEach(([start, end]) => {
-        recorder.remove(start + templateOffset, end - start + 1);
+        recorder.remove(start + templateOffset, end - start);
     });
 }
 
