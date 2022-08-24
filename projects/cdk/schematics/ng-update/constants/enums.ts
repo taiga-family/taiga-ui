@@ -91,7 +91,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             Pass: 'pass',
         },
-        keepAsType: false,
+        keepAsType: true,
     },
     {
         name: 'TuiStatus',
@@ -124,7 +124,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Word: 'word',
             Tag: 'tag',
         },
-        keepAsType: false,
+        keepAsType: true,
     },
     {
         name: 'TuiBorders',

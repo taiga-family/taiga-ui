@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiFormatNumberPipeModule, TuiLinkModule} from '@taiga-ui/core';
+import {
+    TuiFormatNumberPipeModule,
+    TuiLinkModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiInputSliderModule, TuiRadioListModule} from '@taiga-ui/kit';
 
 import {TuiFormatNumberExample1} from './examples/1';
@@ -20,6 +24,7 @@ import {ExampleTuiFormatNumberComponent} from './format-number.component';
         TuiAddonDocModule,
         TuiLinkModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFormatNumberComponent)),
+        TuiTextfieldControllerModule,
     ],
     declarations: [ExampleTuiFormatNumberComponent, TuiFormatNumberExample1],
     exports: [ExampleTuiFormatNumberComponent],
