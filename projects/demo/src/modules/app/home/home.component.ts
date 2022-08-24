@@ -28,6 +28,9 @@ export class HomeComponent {
     readonly customGlobalStyle = import(
         `../../../../../styles/taiga-ui-global.less?raw`
     ).then(({default: content}) => ({
-        default: content.replaceAll(`@import '`, `@import '~@taiga-ui/styles/`),
+        default: content
+            .replaceAll(`@import '`, `@import '~@taiga-ui/styles/`)
+            .replaceAll(`.less`, ``)
+            .replace(`~@taiga-ui/styles/@taiga-ui/core`, `~@taiga-ui/core`),
     }));
 }
