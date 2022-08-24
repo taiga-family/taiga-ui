@@ -48,4 +48,9 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     },
 };
 
-export default defineConfig(TUI_CYPRESS_CONFIG);
+export default defineConfig({
+    ...TUI_CYPRESS_CONFIG,
+    env: {
+        waitRenderedFont: `Manrope`,
+    },
+});

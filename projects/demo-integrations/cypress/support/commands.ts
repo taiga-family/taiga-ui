@@ -1,6 +1,7 @@
 import {
     tuiAddMatchImageSnapshotCommand,
     tuiBeInViewportAssertion,
+    tuiWaitAllImgInside,
 } from '@taiga-ui/testing/cypress';
 
 import {tuiFocus} from './focus';
@@ -39,6 +40,8 @@ declare global {
             tuiScrollIntoView(): Chainable;
 
             tuiFocus(): Chainable;
+
+            tuiWaitAllImgInside(enabled?: boolean): Chainable;
         }
 
         interface Chainer<Subject> {
@@ -88,6 +91,12 @@ Cypress.Commands.add(
     `tuiFocus`,
     {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiFocus,
+);
+
+Cypress.Commands.add(
+    `tuiWaitAllImgInside`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    tuiWaitAllImgInside,
 );
 
 tuiAddMatchImageSnapshotCommand({

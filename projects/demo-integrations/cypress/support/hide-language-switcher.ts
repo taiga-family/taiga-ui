@@ -1,7 +1,11 @@
 export const tuiHideLanguageSwitcher = (): void => {
-    cy.get(`body`).then($body => {
+    cy.get(`body`, {log: false}).then($body => {
         if ($body.find(`tui-language-switcher`).length > 0) {
-            cy.get(`tui-language-switcher`).invoke(`attr`, `style`, `visibility: hidden`);
+            cy.get(`tui-language-switcher`, {log: false}).invoke(
+                `attr`,
+                `style`,
+                `visibility: hidden`,
+            );
         }
     });
 };
