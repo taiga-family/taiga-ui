@@ -42,8 +42,7 @@ export class AppComponent {}`,
         );
 
         expect(tree.readContent('test/style.less')).toEqual(
-            `@import '~@taiga-ui/core/styles/taiga-ui-local';
-@import '~@taiga-ui/styles/taiga-ui-global';`,
+            `@import '~@taiga-ui/styles/taiga-ui-global';`,
         );
 
         expect(tree.readContent('test/app/app.template.less')).toEqual(
