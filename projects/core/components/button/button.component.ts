@@ -26,8 +26,8 @@ import {
 import {TuiModeDirective} from '@taiga-ui/core/directives';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {EMPTY, Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
 
@@ -49,6 +49,8 @@ export class TuiButtonComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor, TuiButtonOptions
 {
+    private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
+
     @Input()
     @tuiDefaultProp()
     appearance: TuiButtonOptions['appearance'] = null;
@@ -80,8 +82,16 @@ export class TuiButtonComponent
     @tuiDefaultProp()
     size = this.options.size;
 
+    readonly appearance$ = this.mode$.pipe(
+        startWith(null),
+        map(() => this.computedAppearance),
+        distinctUntilChanged(),
+    );
+
     constructor(
-        @Optional() @Inject(TuiModeDirective) readonly mode: TuiModeDirective | null,
+        @Optional()
+        @Inject(TuiModeDirective)
+        private readonly mode: TuiModeDirective | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
