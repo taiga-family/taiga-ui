@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.61.0](https://github.com/tinkoff/taiga-ui/compare/v2.60.0...v2.61.0) (2022-08-23)
+
+### Features
+
+- **kit:** `Badge` add new `xs` size ([#2397](https://github.com/tinkoff/taiga-ui/issues/2397))
+  ([90ba012](https://github.com/tinkoff/taiga-ui/commit/90ba01248193409d4360eab9e16990167b078366))
+
+### Bug Fixes
+
+- **addon-editor:** fix tab behaviour ([#2375](https://github.com/tinkoff/taiga-ui/issues/2375))
+  ([8f0c6db](https://github.com/tinkoff/taiga-ui/commit/8f0c6db3611b27ecdbdc711d87c0b8fe1a61198d))
+- **core:** character descenders overflow the line ([#2387](https://github.com/tinkoff/taiga-ui/issues/2387))
+  ([6125137](https://github.com/tinkoff/taiga-ui/commit/61251373982182b8074240c5ba4513234ddb76af))
+- **i18n:** support typings for custom languages ([#2384](https://github.com/tinkoff/taiga-ui/issues/2384))
+  ([bed8892](https://github.com/tinkoff/taiga-ui/commit/bed8892b0b9cbe7afc1e8d87413e8551c94c137c))
+- **kit:** `TextArea` fix incorrect padding on newer iOS ([#2403](https://github.com/tinkoff/taiga-ui/issues/2403))
+  ([de4f160](https://github.com/tinkoff/taiga-ui/commit/de4f1609f68f5e8fd5f05308db800afb044f3026))
+
 ## [2.60.0](https://github.com/tinkoff/taiga-ui/compare/v2.59.1...v2.60.0) (2022-08-15)
 
 ### Features
