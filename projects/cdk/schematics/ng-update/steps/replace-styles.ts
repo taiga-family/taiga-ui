@@ -19,7 +19,7 @@ export function replaceStyles() {
             sourceFile.replaceWithText(
                 fullText.replace(
                     `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
-                    `@import '~@taiga-ui/core/styles/taiga-ui-local';\n@import '~@taiga-ui/styles/taiga-ui-global';`,
+                    `@import '~@taiga-ui/styles/taiga-ui-global';`,
                 ),
             );
         });

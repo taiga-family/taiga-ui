@@ -224,7 +224,6 @@ describe('ng-add', () => {
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-local.less",
               "node_modules/@taiga-ui/styles/taiga-ui-global.less",
               "some.style"
             ],
