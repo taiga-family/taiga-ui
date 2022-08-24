@@ -20,6 +20,16 @@
             heading="With labels"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint-controller"
+                    tuiLink
+                >
+                    <code>HintController</code>
+                </a>
+                directive to enable hints
+            </tui-notification>
             <tui-pie-chart-example-2></tui-pie-chart-example-2>
         </tui-doc-example>
     </ng-template>
@@ -29,7 +39,6 @@
             <tui-pie-chart
                 class="chart"
                 [value]="value"
-                [hintContent]="hintContent"
                 [size]="size"
                 [(activeItemIndex)]="activeItemIndex"
             ></tui-pie-chart>
@@ -44,16 +53,6 @@
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active fragment
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Content for hint. It gets active segment index in context
             </ng-template>
             <ng-template
                 i18n
