@@ -23,9 +23,8 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 import {addStylesToAngularJson} from '../utils/add-styles';
 import {
-    TAIGA_GLOBAL_OLD,
-    TAIGA_GLOBAL_STYLE,
-    TAIGA_LOCAL_STYLE,
+    TAIGA_GLOBAL_OLD_STYLE,
+    TAIGA_GLOBAL_NEW_STYLE,
     TAIGA_THEME_FONTS,
 } from '../constants/taiga-styles';
 import {replaceStyles} from './steps/replace-styles';
@@ -86,8 +85,8 @@ function addTaigaStyles(options: Schema): Rule {
     return async (tree: Tree, context) => {
         const taigaStyles = [TAIGA_THEME_FONTS];
         const stylesToReplace = {
-            from: TAIGA_GLOBAL_OLD,
-            to: [TAIGA_LOCAL_STYLE, TAIGA_GLOBAL_STYLE],
+            from: TAIGA_GLOBAL_OLD_STYLE,
+            to: [TAIGA_GLOBAL_NEW_STYLE],
         };
         addPackageJsonDependency(tree, {
             name: `@taiga-ui/styles`,

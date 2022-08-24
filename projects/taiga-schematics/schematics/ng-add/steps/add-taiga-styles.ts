@@ -5,10 +5,7 @@ import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
 
-const TAIGA_GLOBAL_STYLE = [
-    'node_modules/@taiga-ui/core/styles/taiga-ui-local.less',
-    'node_modules/@taiga-ui/styles/taiga-ui-global.less',
-];
+const TAIGA_GLOBAL_STYLE = ['node_modules/@taiga-ui/styles/taiga-ui-global.less'];
 const TAIGA_THEME_STYLE = 'node_modules/@taiga-ui/core/styles/taiga-ui-theme.less';
 
 export function addTaigaStyles(options: Schema): Rule {
