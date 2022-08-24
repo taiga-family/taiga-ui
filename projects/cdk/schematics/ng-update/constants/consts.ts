@@ -322,4 +322,74 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {
+            name: 'TuiAccountModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccountComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccount',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccount',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'tuiAccountDelegate',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'tuiAccountDelegate',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccountDelegateComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountDelegateComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'CURRENCY_ICONS',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'CURRENCY_ICONS',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ACCOUNT_PROJECTOR',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TUI_ACCOUNT_PROJECTOR',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
 ];
