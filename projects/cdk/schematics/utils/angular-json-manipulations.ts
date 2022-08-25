@@ -3,10 +3,22 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getProject} from './get-project';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {JsonArray} from '@angular-devkit/core';
-import {updateWorkspace} from '@schematics/angular/utility/workspace';
+import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
+
+export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
+    return (
+        getWorkspace(tree)
+            .then(() => false)
+            /**
+             * Possible error – "Invalid format version detected - Expected:[ 1 ] Found: [ 2 ]"
+             * @see https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/core/src/workspace/json/reader.ts#L67-L69
+             */
+            .catch(() => true)
+    );
+}
 
 export function addStylesToAngularJson(
     options: Schema,

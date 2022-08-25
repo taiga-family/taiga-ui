@@ -1,6 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
-import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
@@ -17,7 +16,10 @@ import {migrateProgress} from './steps/migrate-progress';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
-import {addStylesToAngularJson} from '../utils/add-styles';
+import {
+    addStylesToAngularJson,
+    isInvalidAngularJson,
+} from '../utils/angular-json-manipulations';
 import {
     TAIGA_GLOBAL_NEW_STYLE,
     TAIGA_GLOBAL_OLD_STYLE,
@@ -85,15 +87,7 @@ function addTaigaStyles(options: Schema): Rule {
             to: [TAIGA_GLOBAL_NEW_STYLE],
         };
 
-        const isSupportedAngularJson = await getWorkspace(tree)
-            .then(() => true)
-            .catch(() => false);
-
-        if (!isSupportedAngularJson) {
-            /**
-             * Possible error – "Invalid format version detected - Expected:[ 1 ] Found: [ 2 ]"
-             * @see https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/core/src/workspace/json/reader.ts#L67-L69
-             */
+        if (await isInvalidAngularJson(tree)) {
             context.logger.warn(
                 `[WARNING]: Schematics don't support this version of angular.json.\n` +
                     `– Add styles ${taigaStyles.join(',')} to angular.json manually.\n` +
