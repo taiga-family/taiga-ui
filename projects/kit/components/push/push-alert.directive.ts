@@ -1,4 +1,11 @@
-import {ChangeDetectorRef, Directive, Inject, Input, TemplateRef} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Directive,
+    forwardRef,
+    Inject,
+    Input,
+    TemplateRef,
+} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable, Subject} from 'rxjs';
@@ -22,7 +29,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {
         @Inject(TemplateRef) template: TemplateRef<any>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TuiPushService) push: TuiPushService,
+        @Inject(forwardRef(() => TuiPushService)) push: TuiPushService,
     ) {
         super(template, changeDetectorRef);
 
