@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[397],{s19l:function(n,t,a){"use strict";a.r(t),t.default='```html\n<tui-line-days-chart\n  [y]="0"\n  [height]="100"\n  [value]="value"\n></tui-line-days-chart>\n```\n'}}]);
