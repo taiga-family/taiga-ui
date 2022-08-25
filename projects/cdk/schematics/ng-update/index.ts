@@ -1,10 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {
-    addPackageJsonDependency,
-    createProject,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
@@ -89,10 +84,6 @@ function addTaigaStyles(options: Schema): Rule {
             from: TAIGA_GLOBAL_OLD_STYLE,
             to: [TAIGA_GLOBAL_NEW_STYLE],
         };
-        addPackageJsonDependency(tree, {
-            name: `@taiga-ui/styles`,
-            version: TAIGA_VERSION,
-        });
 
         const isSupportedAngularJson = await getWorkspace(tree)
             .then(() => true)
@@ -106,7 +97,7 @@ function addTaigaStyles(options: Schema): Rule {
             context.logger.warn(
                 `[WARNING]: Schematics don't support this version of angular.json.\n` +
                     `– Add styles ${taigaStyles.join(',')} to angular.json manually.\n` +
-                    `– Manually replace "${TAIGA_GLOBAL_OLD_STYLE}" with "${TAIGA_GLOBAL_NEW_STYLE}" inside "styles" of angular.json`,
+                    `– Manually replace "${TAIGA_GLOBAL_OLD_STYLE}" with "${TAIGA_GLOBAL_NEW_STYLE}" inside "styles" of angular.json (don't forget to install "@taiga-ui/styles")`,
             );
             return;
         }
