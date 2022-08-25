@@ -12,6 +12,7 @@ import {
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {
+    TuiAlertModule,
     TuiDialogModule,
     TuiLinkModule,
     TuiModeModule,
@@ -53,6 +54,7 @@ const PRODUCTION_MODULES = environment.production
         TuiPreviewModule,
         TuiPdfViewerModule,
         TuiSheetModule,
+        TuiAlertModule,
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,

@@ -1,6 +1,7 @@
 export * from './drag-and-drop-from';
 export * from './focus-visible-observable';
 export * from './is-alive';
+export * from './is-observed';
 export * from './items-query-list-observable';
 export * from './mouse-drag-finish-from';
 export * from './must-be-present';

@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TUI_IS_MOBILE, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiDefaultProp, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiFileState, TuiFileStateT} from '@taiga-ui/kit/enums';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
@@ -84,7 +84,7 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return !!this.removed.observers.length;
+        return tuiIsObserved(this.removed);
     }
 
     get icon(): string {

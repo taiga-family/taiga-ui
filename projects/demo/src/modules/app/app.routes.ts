@@ -1430,6 +1430,16 @@ export const ROUTES = [
         },
     },
     {
+        path: `pipes/format-date`,
+        loadChildren: async () =>
+            import(`../pipes/format-date/format-date.module`).then(
+                m => m.ExampleTuiFormatDateModule,
+            ),
+        data: {
+            title: `FormatDate`,
+        },
+    },
+    {
         path: `pipes/format-number`,
         loadChildren: async () =>
             (await import(`../pipes/format-number/format-number.module`))

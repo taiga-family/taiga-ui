@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {tuiAssert} from '@taiga-ui/cdk';
+import {tuiAssert, tuiIsObserved} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
 
@@ -18,7 +18,7 @@ export class TuiTableBarsService {
 
     open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
         return new Observable(observer => {
-            tuiAssert.assert(!!this.bar$.observers.length, NO_HOST);
+            tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
 
             const tableBar = new TableBar(observer, content, options);
 

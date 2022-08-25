@@ -7,7 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
@@ -55,6 +55,6 @@ export class TuiNotificationComponent {
 
     @HostBinding(`class._has-close-button`)
     get hasClose(): boolean {
-        return !!this.close.observers.length;
+        return tuiIsObserved(this.close);
     }
 }

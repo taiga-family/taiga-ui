@@ -1144,7 +1144,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: `Currency`,
-                keywords: `cyrrency, валюты, деньги, пайп, pipe`,
+                keywords: `currency, валюты, деньги, пайп, pipe`,
                 route: `/pipes/currency`,
             },
             {
@@ -1158,6 +1158,12 @@ export const pages: TuiDocPages = [
                 title: `FilterByInput`,
                 keywords: `filter, совпадения, ngfor, for, match, пайп, pipe, input, combobox`,
                 route: `/pipes/filter-by-input`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `FormatDate`,
+                keywords: `format, форматирование, преобразование, дата, date, timestamp, пайп, pipe`,
+                route: `/pipes/format-date`,
             },
             {
                 section: $localize`Tools`,
