@@ -1,0 +1,64 @@
+<div
+    tuiSidebarPortal
+    class="container"
+    [class.sidebar-side]="open && mode.value === 'side'"
+>
+    <tui-sidebar-portal-host></tui-sidebar-portal-host>
+
+    <div class="group">
+        <div tuiGroup>
+            <tui-select [formControl]="mode">
+                Sidenav mode
+                <input
+                    tuiTextfield
+                    placeholder="Choose mode"
+                />
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="modeState"
+                ></tui-data-list-wrapper>
+            </tui-select>
+
+            <tui-select [formControl]="backdrop">
+                Has backdrop
+                <input
+                    tuiTextfield
+                    placeholder="Choose backdrop"
+                />
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="backdropState"
+                ></tui-data-list-wrapper>
+            </tui-select>
+
+            <button
+                tuiButton
+                type="button"
+                (click)="toggle(!open)"
+                (tuiActiveZoneChange)="backdrop.value ? toggle($event) : 0"
+            >
+                Show sidebar
+                <div *tuiSidebar="open; options: {mode: mode.value, hasBackdrop: backdrop.value}">
+                    <ng-container [ngTemplateOutlet]="sidebarContent"></ng-container>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #sidebarContent>
+    <tui-accordion-item borders="top-bottom">
+        Other libraries
+        <ng-template tuiAccordionItemContent>
+            <a
+                *ngFor="let link of tinkoff"
+                tuiLink
+                target="_blank"
+                href="https://github.com/tinkoff/{{ link }}"
+                class="link"
+            >
+                {{ link }}
+            </a>
+        </ng-template>
+    </tui-accordion-item>
+</ng-template>

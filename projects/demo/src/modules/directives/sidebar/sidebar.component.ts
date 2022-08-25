@@ -17,4 +17,22 @@ export class ExampleTuiSidebarComponent {
         HTML: import(`!!raw-loader!./examples/1/index.html`),
         LESS: import(`!!raw-loader!./examples/1/index.less`),
     };
+
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
+        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        './sidebar/my-sidebar.component.html': import(
+            `!!raw-loader!./examples/2/sidebar/my-sidebar.component.html`
+        ),
+        './sidebar/my-sidebar.component.less': import(
+            `!!raw-loader!./examples/2/sidebar/my-sidebar.component.less`
+        ),
+        './sidebar/my-sidebar.component.ts': import(
+            `!!raw-loader!./examples/2/sidebar/my-sidebar.component.ts`
+        ),
+        './sidebar/my-sidebar.module.ts': import(
+            `!!raw-loader!./examples/2/sidebar/my-sidebar.module.ts`
+        ),
+    };
 }

@@ -1,0 +1,59 @@
+:host {
+    overflow: hidden;
+}
+
+.backdrop {
+    pointer-events: none;
+    top: 0;
+
+    &.has-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: all;
+        background: rgba(0, 0, 0, 0.2);
+        transition: background-color 0.5s;
+    }
+}
+
+.side-offset {
+    height: 100%;
+}
+
+.wrapper {
+    pointer-events: none;
+    width: auto;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+
+    &.side {
+        position: absolute;
+    }
+
+    &.over {
+        position: absolute;
+        width: 100%;
+    }
+}
+
+@keyframes mySlideIn {
+    from {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.aside {
+    pointer-events: all;
+    transform: translate3d(0, 0, 0);
+    animation: mySlideIn 0.5s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--tui-base-01);
+    box-shadow: 5px 0 5px -5px #333;
+    width: 16rem;
+    height: 100%;
+}

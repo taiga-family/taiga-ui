@@ -1,0 +1,25 @@
+<div
+    class="backdrop"
+    [class.has-backdrop]="options.hasBackdrop"
+    [style.left.px]="options.mode === 'side' ? sideContainer.offsetWidth : 0"
+    [style.width]="options.mode === 'side' ? 'calc(100% - ' + sideContainer.offsetWidth + 'px)' : '100%'"
+></div>
+
+<div
+    *ngIf="options.mode === 'side'"
+    class="side-offset"
+    [style.width.px]="sideContainer.offsetWidth"
+></div>
+
+<div
+    #sideContainer
+    class="wrapper"
+    [class]="options.mode"
+>
+    <div
+        tuiActiveZone
+        polymorpheus-outlet
+        class="aside"
+        [content]="content"
+    ></div>
+</div>
