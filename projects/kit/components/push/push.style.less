@@ -1,0 +1,89 @@
+@import 'taiga-ui-local';
+
+:host {
+    .shadow();
+    position: relative;
+    display: block;
+    width: 22.5rem;
+    box-sizing: border-box;
+    padding: 1.25rem 1.25rem 0.25rem;
+    overflow: hidden;
+    font: var(--tui-font-text-m);
+    border-radius: var(--tui-radius-l);
+    background: var(--tui-elevation-02);
+}
+
+.t-image {
+    display: flex;
+    flex-direction: column;
+    max-height: 10.625rem;
+    overflow: hidden;
+    margin: -1.25rem -1.25rem 1.25rem;
+}
+
+.t-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    color: rgba(0, 0, 0, 0.54);
+    background: rgba(242, 242, 242, 0.32);
+    backdrop-filter: blur(1rem);
+}
+
+.t-top {
+    display: flex;
+    align-items: center;
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-02);
+}
+
+.t-icon {
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    transform: scale(0.833);
+    transform-origin: top left;
+    color: var(--tui-link);
+}
+
+.t-time:before {
+    content: '•';
+    display: inline-block;
+    width: 1rem;
+    text-align: center;
+}
+
+.t-heading {
+    line-height: 1.25rem;
+    font-weight: bold;
+    margin: 0.75rem 0 0.25rem;
+}
+
+.t-heading,
+.t-content {
+    /* stylelint-disable-next-line */
+    display: -webkit-box;
+
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+    overflow: hidden;
+}
+
+.t-actons {
+    display: flex;
+    align-items: center;
+    font: var(--tui-font-text-s);
+}
+
+.t-button:not(:empty) {
+    margin: 0.75rem 0.75rem 0.75rem 0;
+}
+
+.t-link {
+    margin: 0.75rem 0;
+
+    &:empty {
+        margin: 0.5rem;
+    }
+}

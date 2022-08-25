@@ -1,0 +1,29 @@
+<div class="t-image"><ng-content select="img"></ng-content></div>
+<button
+    *ngIf="closeable"
+    tuiIconButton
+    icon="tuiIconCloseLarge"
+    size="xs"
+    appearance=""
+    shape="rounded"
+    class="t-close"
+    [title]="closeWord$ | async"
+    (click)="close.emit()"
+></button>
+<div class="t-top">
+    <span class="t-icon"><ng-content select="tui-svg"></ng-content></span>
+    {{ type }}
+    <span
+        *ngIf="timestamp"
+        class="t-time"
+        [textContent]="timestamp | tuiFormatDate | async"
+    ></span>
+</div>
+<h3 class="t-heading">{{ heading }}</h3>
+<div class="t-content">
+    <ng-content></ng-content>
+</div>
+<div class="t-actons">
+    <span class="t-button"><ng-content select="[tuiButton]"></ng-content></span>
+    <span class="t-link"><ng-content select="[tuiLink]"></ng-content></span>
+</div>

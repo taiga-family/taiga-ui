@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <tui-push
+        heading="Rachael"
+        type="Replicant"
+        class="push"
+        [timestamp]="1661358075379"
+        (close)="onClose()"
+    >
+        <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+        Do you like our owl?
+        <button tuiButton>It's artificial?</button>
+        <button tuiLink>Nice hooters!</button>
+    </tui-push>
+
+    <tui-push
+        heading="Deckard"
+        type="Human?"
+        class="push"
+        [timestamp]="1661357000000"
+    >
+        <tui-svg
+            src="tuiIconShowLarge"
+            class="human"
+        ></tui-svg>
+        I've had people walk out on me before, but not when I was being so charming.
+    </tui-push>
+</div>
+
+<tui-push
+    heading="Roy"
+    type="Replicant"
+    (close)="onClose()"
+>
+    <img
+        src="assets/images/roy.jpg"
+        alt=""
+    />
+    <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+    I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched C-Beams
+    glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears in rain.
+    <button tuiLink>Time to die</button>
+</tui-push>

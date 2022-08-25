@@ -1,0 +1,62 @@
+<tui-doc-page
+    header="Push"
+    package="PROPRIETARY-CORE"
+>
+    <ng-template pageTab>
+        <p>Notifications is style of native browser push</p>
+
+        <tui-doc-example
+            id="base"
+            heading="basic"
+            [content]="example1"
+        >
+            <tui-push-example-1></tui-push-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="service"
+            heading="with service"
+            [content]="example2"
+        >
+            <tui-push-example-2></tui-push-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="directive"
+            heading="with directive"
+            [content]="example3"
+        >
+            <tui-push-example-3></tui-push-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPushModule</code>
+                в тот же модуль, куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Для использования через сервис подключить
+                <code>TuiPushModule</code>
+                к главному модулю и смотреть пример.
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

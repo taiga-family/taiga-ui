@@ -606,6 +606,14 @@ export const ROUTES = [
         },
     },
     {
+        path: `push`,
+        loadChildren: async () =>
+            import(`../components/push/push.module`).then(m => m.ExampleTuiPushModule),
+        data: {
+            title: `Push`,
+        },
+    },
+    {
         path: `components/mobile-dialog`,
         loadChildren: async () =>
             (await import(`../components/mobile-dialog/mobile-dialog.module`))
