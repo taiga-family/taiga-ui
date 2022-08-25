@@ -1,16 +1,21 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule, TuiGroupModule,
+    TuiButtonModule,
+    TuiGroupModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAccordionModule, TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
+import {
+    TuiAccordionModule,
+    TuiDataListWrapperModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarExample1} from './examples/1';
