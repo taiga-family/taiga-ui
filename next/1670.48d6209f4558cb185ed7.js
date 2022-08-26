@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1670],{NjY6:function(n,i,t){"use strict";t.r(i),i.default='```html\n<tui-island tuiTouchable="transform">...</tui-island>\n<a\n  tuiLink\n  tuiTouchable="opacity"\n>\n  ...\n</a>\n```\n'}}]);
