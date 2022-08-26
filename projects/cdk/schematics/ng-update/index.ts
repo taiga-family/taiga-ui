@@ -1,10 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {
-    addPackageJsonDependency,
-    createProject,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
@@ -21,10 +16,13 @@ import {migrateProgress} from './steps/migrate-progress';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
-import {addStylesToAngularJson} from '../utils/add-styles';
 import {
-    TAIGA_GLOBAL_OLD_STYLE,
+    addStylesToAngularJson,
+    isInvalidAngularJson,
+} from '../utils/angular-json-manipulations';
+import {
     TAIGA_GLOBAL_NEW_STYLE,
+    TAIGA_GLOBAL_OLD_STYLE,
     TAIGA_THEME_FONTS,
 } from '../constants/taiga-styles';
 import {replaceStyles} from './steps/replace-styles';
@@ -88,10 +86,15 @@ function addTaigaStyles(options: Schema): Rule {
             from: TAIGA_GLOBAL_OLD_STYLE,
             to: [TAIGA_GLOBAL_NEW_STYLE],
         };
-        addPackageJsonDependency(tree, {
-            name: `@taiga-ui/styles`,
-            version: TAIGA_VERSION,
-        });
+
+        if (await isInvalidAngularJson(tree)) {
+            context.logger.warn(
+                `[WARNING]: Schematics don't support this version of angular.json.\n` +
+                    `– Add styles ${taigaStyles.join(',')} to angular.json manually.\n` +
+                    `– Manually replace "${TAIGA_GLOBAL_OLD_STYLE}" with "${TAIGA_GLOBAL_NEW_STYLE}" inside "styles" of angular.json (don't forget to install "@taiga-ui/styles")`,
+            );
+            return;
+        }
 
         return addStylesToAngularJson(
             options,
