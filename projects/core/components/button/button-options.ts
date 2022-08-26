@@ -4,7 +4,11 @@ import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiButtonOptions {
     readonly size: TuiSizeXS | TuiSizeXL;
-    readonly appearance: keyof Record<TuiAppearance, string> | TuiAppearance | string;
+    readonly appearance:
+        | keyof Record<TuiAppearance, string>
+        | TuiAppearance
+        | string
+        | null;
     readonly shape: 'square' | 'rounded' | null;
 }
 
