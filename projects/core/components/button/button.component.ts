@@ -44,7 +44,7 @@ export class TuiButtonComponent
 
     @Input()
     @tuiDefaultProp()
-    appearance: TuiButtonOptions['appearance'] = ``;
+    appearance: TuiButtonOptions['appearance'] = null;
 
     @Input()
     @tuiDefaultProp()

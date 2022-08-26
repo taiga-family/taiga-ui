@@ -13,6 +13,6 @@ export class TuiButtonExample1 {
     readonly avatarUrl = assets`/images/avatar.jpg`;
 
     onClick(event: MouseEvent): void {
-        console.info(`click`, this.avatarUrl, event);
+        console.info(`click `, this.avatarUrl, event);
     }
 }
