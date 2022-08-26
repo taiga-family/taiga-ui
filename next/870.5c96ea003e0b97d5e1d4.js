@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[870],{zQNM:function(n,w,i){"use strict";i.r(w),w.default=".input {\n    max-width: 24.375rem;\n}\n"}}]);

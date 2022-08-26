@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1132],{vEsi:function(i,e,t){"use strict";t.r(e),e.default='```html\n<tui-primitive-checkbox [value]="true"></tui-primitive-checkbox>\n<tui-primitive-checkbox [value]="false"></tui-primitive-checkbox>\n<tui-primitive-checkbox [value]="null"></tui-primitive-checkbox>\n```\n'}}]);

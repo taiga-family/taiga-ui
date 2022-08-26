@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1548],{EvhV:function(n,w,e){"use strict";e.r(w),w.default=".menu {\n    width: 12.5rem;\n}\n"}}]);
