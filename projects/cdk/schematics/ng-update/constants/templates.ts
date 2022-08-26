@@ -415,6 +415,11 @@ export const TAGS_TO_REPLACE: ReplacementTags[] = [
         to: 'input',
         addAttributes: ['tuiSlider', 'type="range"'],
     },
+    {
+        from: 'tui-action',
+        to: 'button',
+        addAttributes: ['tuiAction'],
+    },
 ];
 
 export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
