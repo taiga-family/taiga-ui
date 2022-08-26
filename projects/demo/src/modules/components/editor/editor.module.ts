@@ -21,6 +21,7 @@ import {ImagePreviewExampleModule} from './examples/3/image-preview/image-previe
 import {TuiEditorExample4} from './examples/4';
 import {TuiEditorExample5} from './examples/5';
 import {TuiEditorExample6} from './examples/6';
+import {TuiEditorExample7} from './examples/7';
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import {TuiEditorExample6} from './examples/6';
         TuiEditorExample4,
         TuiEditorExample6,
         TuiEditorExample5,
+        TuiEditorExample7,
     ],
     exports: [ExampleEditorComponent],
 })

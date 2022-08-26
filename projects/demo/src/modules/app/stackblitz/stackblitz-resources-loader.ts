@@ -59,7 +59,6 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             tuiIslandLess,
             tuiListLess,
             tuiMobileOnlyLess,
-            tuiPaletteLess,
             tuiRequiredLess,
             tuiRowLess,
             tuiSkeletonLess,
@@ -98,7 +97,6 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             tuiRawLoad(import(`../../../../../styles/markup/tui-island.less?raw`)),
             tuiRawLoad(import(`../../../../../styles/markup/tui-list.less?raw`)),
             tuiRawLoad(import(`../../../../../styles/markup/tui-mobile-only.less?raw`)),
-            tuiRawLoad(import(`../../../../../styles/markup/tui-palette.less?raw`)),
             tuiRawLoad(import(`../../../../../styles/markup/tui-required.less?raw`)),
             tuiRawLoad(import(`../../../../../styles/markup/tui-row.less?raw`)),
             tuiRawLoad(import(`../../../../../styles/markup/tui-skeleton.less?raw`)),
@@ -178,7 +176,6 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         styles[`styles/markup/tui-island.less`] = tuiIslandLess;
         styles[`styles/markup/tui-list.less`] = tuiListLess;
         styles[`styles/markup/tui-mobile-only.less`] = tuiMobileOnlyLess;
-        styles[`styles/markup/tui-palette.less`] = tuiPaletteLess;
         styles[`styles/markup/tui-required.less`] = tuiRequiredLess;
         styles[`styles/markup/tui-row.less`] = tuiRowLess;
         styles[`styles/markup/tui-skeleton.less`] = tuiSkeletonLess;
