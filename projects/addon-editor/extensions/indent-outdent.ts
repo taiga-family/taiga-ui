@@ -4,8 +4,7 @@ export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
     return editor.isActive(`bulletList`) || editor.isActive(`orderedList`);
 }
 
-// TODO: rename to TuiTabExtension in 3.0
-export const Indent = Extension.create({
+export const TuiTabExtension = Extension.create({
     name: `indent`,
 
     addKeyboardShortcuts(): any {
