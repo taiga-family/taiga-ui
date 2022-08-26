@@ -1,5 +1,5 @@
 import {AnimationOptions} from '@angular/animations';
-import {Component, HostBinding, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
@@ -16,6 +16,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
     selector: `tui-push-alert`,
     templateUrl: `./push-alert.template.html`,
     styleUrls: [`./push-alert.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
     host: {role: `alert`},
 })

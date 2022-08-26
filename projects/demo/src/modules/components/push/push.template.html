@@ -51,7 +51,7 @@
             </tui-push>
         </tui-doc-demo>
 
-        <tui-doc-documentation heading="Inputs">
+        <tui-doc-documentation heading="Inputs/Outputs">
             <ng-template
                 i18n
                 documentationPropertyName="heading"
@@ -82,6 +82,13 @@
                     <code>FormatDate</code>
                 </a>
                 pipe.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="close"
+                documentationPropertyMode="output"
+                documentationPropertyType="void"
+            >
+                Output for close button clicks. If you do not listen to this output, close button is hidden.
             </ng-template>
         </tui-doc-documentation>
 

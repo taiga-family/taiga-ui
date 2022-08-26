@@ -606,7 +606,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `push`,
+        path: `components/push`,
         loadChildren: async () =>
             import(`../components/push/push.module`).then(m => m.ExampleTuiPushModule),
         data: {
