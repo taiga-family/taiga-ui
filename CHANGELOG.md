@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.62.0](https://github.com/tinkoff/taiga-ui/compare/v2.61.0...v2.62.0) (2022-08-26)
+
+### Features
+
+- **addon-editor:** add `TUI_EDITOR_MAX_IMAGE_WIDTH` token ([#2476](https://github.com/tinkoff/taiga-ui/issues/2476))
+  ([8757537](https://github.com/tinkoff/taiga-ui/commit/8757537e61109f36c1d55be36a0be8af352fbca5))
+- **cdk:** `FormatDate` add new pipe ([#2468](https://github.com/tinkoff/taiga-ui/issues/2468))
+  ([e953b16](https://github.com/tinkoff/taiga-ui/commit/e953b160707b8030fd037d51a7b20b578beaf815))
+- **kit:** `Push` add new component ([#2469](https://github.com/tinkoff/taiga-ui/issues/2469))
+  ([8de5a65](https://github.com/tinkoff/taiga-ui/commit/8de5a650ef6d62ce30094baa6fc28c5dda20d4ad))
+
 ## [2.61.0](https://github.com/tinkoff/taiga-ui/compare/v2.60.0...v2.61.0) (2022-08-23)
 
 ### Features
