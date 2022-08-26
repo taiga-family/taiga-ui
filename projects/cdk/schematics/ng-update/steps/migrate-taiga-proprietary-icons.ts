@@ -18,6 +18,8 @@ const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
     4,
 )} to angular.json manually`;
 
+type Asset = string | {glob: string; input: string; ignore: string[]; output: string};
+
 export function migrateTaigaProprietaryIcons(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         let proprietaryIcons: string | null = null;
@@ -55,11 +57,12 @@ export function migrateTaigaProprietaryIcons(options: Schema): Rule {
                   const targetOptions = getProjectTargetOptions(project, 'build');
 
                   if (Array.isArray(targetOptions?.assets)) {
-                      const hasIcons = targetOptions.assets.find(asset =>
-                          (asset as any)?.input.includes(
-                              '@taiga-ui/proprietary-tds-icons/src',
-                          ),
-                      );
+                      const tdsSrc = '@taiga-ui/proprietary-tds-icons/src';
+                      const hasIcons = (targetOptions.assets as Asset[]).find(asset => {
+                          return typeof asset === 'string'
+                              ? asset.includes(tdsSrc)
+                              : asset?.input?.includes(tdsSrc);
+                      });
 
                       if (hasIcons) {
                           return;
