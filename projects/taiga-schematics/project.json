@@ -5,45 +5,22 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "prebuild": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "projects/taiga-schematics/ng-package.json"
+                "command": "nx build cdk"
             }
         },
         "build": {
-            "builder": "@nrwl/workspace:run-commands",
+            "builder": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/taiga-schematics"],
             "options": {
-                "parallel": false,
-                "commands": ["nx prebuild taiga-schematics", "nx postbuild taiga-schematics"]
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/taiga-schematics/ng-package.json"
             },
+
             "dependsOn": [
                 {
-                    "target": "build",
-                    "projects": "dependencies"
-                }
-            ]
-        },
-        "postbuild": {
-            "builder": "@nrwl/workspace:run-commands",
-            "options": {
-                "command": "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json"
-            }
-        },
-        "test": {
-            "builder": "@nrwl/workspace:run-commands",
-            "outputs": ["dist/taiga-schematics"],
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "tsc -p ./projects/taiga-schematics/tsconfig.spec.json --tsBuildInfoFile null",
-                    "jasmine ./dist/taiga-schematics/**/*.spec.js"
-                ]
-            },
-            "dependsOn": [
-                {
-                    "target": "postbuild",
+                    "target": "prebuild",
                     "projects": "self"
                 }
             ]
