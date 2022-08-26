@@ -15,10 +15,9 @@
         [style.color]="context.iconColor"
         [src]="context.icon"
     ></tui-svg>
-    <div
-        polymorpheus-outlet
-        [content]="context.content"
-    ></div>
+    <ng-container *polymorpheusOutlet="context.content as text">
+        {{ text }}
+    </ng-container>
     <button
         *ngIf="context.buttons.length > 1"
         tuiButton
@@ -35,8 +34,7 @@
     </button>
 </tui-push>
 <ng-template #content>
-    <div
-        polymorpheus-outlet
-        [content]="context.content"
-    ></div>
+    <ng-container *polymorpheusOutlet="context.content as text">
+        {{ text }}
+    </ng-container>
 </ng-template>
