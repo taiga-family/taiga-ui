@@ -4,12 +4,6 @@
     "projectType": "library",
     "implicitDependencies": ["!testing"],
     "architect": {
-        "prebuild": {
-            "builder": "@nrwl/workspace:run-commands",
-            "options": {
-                "command": "nx build cdk"
-            }
-        },
         "build": {
             "builder": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/taiga-schematics"],
@@ -17,11 +11,10 @@
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/taiga-schematics/ng-package.json"
             },
-
             "dependsOn": [
                 {
-                    "target": "prebuild",
-                    "projects": "self"
+                    "target": "build",
+                    "projects": "dependencies"
                 }
             ]
         },
