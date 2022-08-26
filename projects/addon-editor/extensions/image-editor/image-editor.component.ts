@@ -14,6 +14,13 @@ export const TUI_EDITOR_MIN_IMAGE_WIDTH = new InjectionToken<number>(
     },
 );
 
+export const TUI_EDITOR_MAX_IMAGE_WIDTH = new InjectionToken<number>(
+    `Max size of resizable image inside editor`,
+    {
+        factory: () => Infinity,
+    },
+);
+
 // @dynamic
 @Component({
     selector: `tui-image-editor`,
@@ -46,7 +53,8 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
     }
 
     constructor(
-        @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) private readonly minWidth: number,
+        @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly minWidth: number,
+        @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly maxWidth: number,
         @Inject(DOCUMENT) readonly documentRef: Document,
         @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
     ) {
@@ -61,6 +69,9 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
     }
 
     onHorizontalDrag([x]: readonly [number, number], direction: number): void {
-        this._width = Math.max(this.minWidth, this.width + direction * x);
+        this._width = Math.max(
+            this.minWidth,
+            Math.min(this.maxWidth, this.width + direction * x),
+        );
     }
 }
