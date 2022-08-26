@@ -1,0 +1,168 @@
+<tui-doc-page
+    header="Push"
+    package="KIT"
+>
+    <ng-template pageTab>
+        <p>Notifications in style of native browser push</p>
+
+        <tui-doc-example
+            id="base"
+            heading="basic"
+            [content]="example1"
+        >
+            <tui-push-example-1></tui-push-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="service"
+            heading="with service"
+            [content]="example2"
+        >
+            <tui-push-example-2></tui-push-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="directive"
+            heading="with directive"
+            [content]="example3"
+        >
+            <tui-push-example-3></tui-push-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-push
+                [heading]="heading"
+                [type]="type"
+                [timestamp]="timestamp"
+                (close)="onClose()"
+            >
+                <img
+                    src="assets/images/roy.jpg"
+                    alt=""
+                />
+                <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+                I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
+                C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears
+                in rain.
+                <button tuiButton>I want more life</button>
+                <button tuiLink>Time to die</button>
+            </tui-push>
+        </tui-doc-demo>
+
+        <tui-doc-documentation heading="Inputs/Outputs">
+            <ng-template
+                i18n
+                documentationPropertyName="heading"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="heading"
+            >
+                Heading of the push
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="type"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="type"
+            >
+                Small text near icon, typically, category of the message
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="timestamp"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="timestamp"
+            >
+                Timestamp of the arrival. Formatted with
+                <a
+                    tuiLink
+                    routerLink="/pipes/format-date"
+                >
+                    <code>FormatDate</code>
+                </a>
+                pipe.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="close"
+                documentationPropertyMode="output"
+                documentationPropertyType="void"
+            >
+                Output for close button clicks. If you do not listen to this output, close button is hidden.
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation
+            heading="Content slots"
+            [showValues]="false"
+        >
+            <ng-template
+                i18n
+                documentationPropertyName="tui-svg"
+                documentationPropertyType="Icon"
+            >
+                Icon in the corner
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="img"
+                documentationPropertyType="Image"
+            >
+                Image at the top (360×170px)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiLink"
+                documentationPropertyType="Link/Button"
+            >
+                Single button
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiButton"
+                documentationPropertyType="Link/Button"
+            >
+                Additional button when it requires two
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="ng-content"
+                documentationPropertyType="Arbitrary"
+            >
+                The rest of the content is that push body.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                To use inline import
+                <code>TuiPushModule</code>
+                in the same module where you want to use our component:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Make sure to include
+                <code>TuiPushModule</code>
+                in your main module to be able to show push like alerts.
+            </li>
+
+            <li>See examples to explore display options.</li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

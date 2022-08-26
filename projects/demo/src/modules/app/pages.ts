@@ -598,6 +598,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `Push`,
+        keywords: `push, пуш, нотификаци, notification, alert`,
+        route: `/components/push`,
+    },
+    {
+        section: $localize`Components`,
         title: `Mobile`,
         subPages: [
             {

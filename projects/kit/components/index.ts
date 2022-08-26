@@ -43,6 +43,7 @@ export * from '@taiga-ui/kit/components/multi-select-option';
 export * from '@taiga-ui/kit/components/pagination';
 export * from '@taiga-ui/kit/components/pdf-viewer';
 export * from '@taiga-ui/kit/components/progress';
+export * from '@taiga-ui/kit/components/push';
 export * from '@taiga-ui/kit/components/radio';
 export * from '@taiga-ui/kit/components/radio-block';
 export * from '@taiga-ui/kit/components/radio-group';

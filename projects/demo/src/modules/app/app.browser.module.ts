@@ -18,7 +18,7 @@ import {
     TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiPdfViewerModule} from '@taiga-ui/kit';
+import {TuiPdfViewerModule, TuiPushModule} from '@taiga-ui/kit';
 import {MetrikaModule} from 'ng-yandex-metrika';
 import {MarkdownModule} from 'ngx-markdown';
 
@@ -55,6 +55,7 @@ const PRODUCTION_MODULES = environment.production
         TuiPdfViewerModule,
         TuiSheetModule,
         TuiAlertModule,
+        TuiPushModule,
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,
