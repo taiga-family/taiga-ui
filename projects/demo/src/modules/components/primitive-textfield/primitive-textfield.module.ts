@@ -5,7 +5,6 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
     TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
@@ -37,7 +36,6 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiNotificationModule,
-        TuiHintControllerModule,
         TuiAvatarModule,
         TuiLinkModule,
         TuiSvgModule,

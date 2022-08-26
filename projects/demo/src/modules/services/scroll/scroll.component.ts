@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-// TODO: Update to use new scroll$
 @Component({
     selector: `example-tui-scrollbar`,
     templateUrl: `./scroll.template.html`,

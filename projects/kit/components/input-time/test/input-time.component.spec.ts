@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTime} from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -74,7 +74,7 @@ describe(`InputTime`, () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
             ],
             declarations: [TestComponent],
         });

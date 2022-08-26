@@ -1,20 +1,19 @@
-import {Directive, forwardRef, Inject, Input} from '@angular/core';
+import {Directive, forwardRef, Inject, Input, SkipSelf} from '@angular/core';
 import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_HINT_CONTROLLER} from './hint-controller.token';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 
 @Directive({
     selector: `[tuiHintContent]`,
     providers: [
         {
-            provide: TUI_HINT_CONTROLLER,
-            useExisting: forwardRef(() => TuiHintControllerDirective),
+            provide: TUI_HINT_OPTIONS,
+            useExisting: forwardRef(() => TuiHintOptionsDirective),
         },
     ],
 })
-export class TuiHintControllerDirective
+export class TuiHintOptionsDirective
     extends AbstractTuiController
     implements TuiHintOptions
 {
@@ -40,7 +39,9 @@ export class TuiHintControllerDirective
 
     icon = this.options.icon;
 
-    constructor(@Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions) {
+    constructor(
+        @SkipSelf() @Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions,
+    ) {
         super();
     }
 }

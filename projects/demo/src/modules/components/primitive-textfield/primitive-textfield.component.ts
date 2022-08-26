@@ -143,7 +143,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     size = this.sizeVariants[2];
 
-    readonly hintContentVariants: readonly string[] = [`Ivan Ivanov`];
+    readonly hintContentVariants: readonly string[] = [``, `Ivan Ivanov`];
 
     readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
@@ -151,7 +151,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     invalid = false;
 
-    hintContent = null;
+    hintContent = this.hintContentVariants[0];
 
     hintDirection = this.hintDirectionVariants[0];
 

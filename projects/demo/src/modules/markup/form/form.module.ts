@@ -9,7 +9,7 @@ import {
     TuiDataListModule,
     TuiErrorModule,
     TuiGroupModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLabelModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -65,7 +65,7 @@ import {FormComponent} from './form.component';
         TuiGroupModule,
         TuiRadioBlockModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLabelModule,

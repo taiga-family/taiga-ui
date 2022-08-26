@@ -1,3 +1,4 @@
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <div
     tuiWrapper
     automation-id="tui-text-area__wrapper"
@@ -74,15 +75,15 @@
                 (click.stop)="onValueChange('')"
             ></tui-svg>
             <tui-tooltip
-                *ngIf="hasTooltip"
+                *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                 automation-id="tui-text-area__tooltip"
                 class="t-tooltip"
                 [describeId]="id"
-                [direction]="hintController.direction"
-                [appearance]="hintController.appearance"
-                [content]="hintController.content || ''"
-                [showDelay]="hintController.showDelay"
-                [hideDelay]="hintController.hideDelay"
+                [direction]="hintOptions.direction"
+                [appearance]="hintOptions.appearance"
+                [content]="hintOptions.content"
+                [showDelay]="hintOptions.showDelay"
+                [hideDelay]="hintOptions.hideDelay"
             ></tui-tooltip>
         </div>
     </label>

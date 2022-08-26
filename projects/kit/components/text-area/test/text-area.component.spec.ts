@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     configureTestSuite,
     TuiNativeInputPO,
@@ -101,7 +101,7 @@ describe(`TextArea`, () => {
                 ReactiveFormsModule,
                 TuiTextAreaModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
             ],
             declarations: [TestComponent],
         });

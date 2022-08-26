@@ -38,10 +38,8 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
-    HINT_CONTROLLER_PROVIDER,
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -49,7 +47,7 @@ import {
     TuiBrightness,
     TuiDataListDirective,
     TuiDataListHost,
-    TuiHintControllerDirective,
+    TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
@@ -78,7 +76,6 @@ const EVENT_Y_TO_X_COEFFICIENT = 3;
         tuiAsControl(TuiInputTagComponent),
         tuiAsDataListHost(TuiInputTagComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
@@ -183,8 +180,9 @@ export class TuiInputTagComponent
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_MODE)
         private readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
@@ -264,12 +262,12 @@ export class TuiInputTagComponent
         );
     }
 
-    get hasTooltip(): boolean {
-        return !!this.hintController.content && !this.disabled;
-    }
-
     get hasRightIcons(): boolean {
-        return this.hasCleaner || this.hasTooltip || !!this.icon;
+        return (
+            this.hasCleaner ||
+            !!this.icon ||
+            (!!this.hintOptions?.content && !this.computedDisabled)
+        );
     }
 
     get status(): TuiStatus {

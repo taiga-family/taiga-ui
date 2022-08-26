@@ -19,13 +19,11 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    HINT_CONTROLLER_PROVIDER,
     MODE_PROVIDER,
-    TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_SIZE,
     TuiBrightness,
-    TuiHintControllerDirective,
+    TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -33,7 +31,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
+import {combineLatest, EMPTY, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 import {
@@ -49,7 +47,6 @@ import {
     providers: [
         tuiAsFocusableItemAccessor(TuiInputPasswordComponent),
         tuiAsControl(TuiInputPasswordComponent),
-        HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
 })
@@ -60,13 +57,15 @@ export class TuiInputPasswordComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
+
     isPasswordHidden = true;
 
     readonly computedAppearance$: Observable<string> = combineLatest([
         this.mode$.pipe(map(val => (val === `onDark` ? `onDark` : ``))),
-        this.hintController.change$.pipe(
+        this.directive$.pipe(
             startWith(null),
-            map(() => this.hintController.appearance),
+            map(() => this.hintOptions?.appearance || ``),
         ),
     ]).pipe(
         map(([mode, controller]) => controller || mode),
@@ -87,8 +86,9 @@ export class TuiInputPasswordComponent
         readonly passwordTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
         readonly options: TuiInputPasswordOptions,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_MODE)
         private readonly mode$: Observable<TuiBrightness | null>,
     ) {

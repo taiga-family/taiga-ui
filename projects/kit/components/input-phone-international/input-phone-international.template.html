@@ -8,6 +8,7 @@
 >
     <div tuiGroup>
         <tui-primitive-textfield
+            tuiHintContent=""
             class="t-country-select tui-group__auto-width-item"
             [tuiTextfieldCustomContent]="countryValueContent"
             [tuiTextfieldLabelOutside]="true"
@@ -17,7 +18,6 @@
             [editable]="false"
             [pseudoFocus]="open || null"
             [readOnly]="readOnly"
-            [tuiHintContent]="null"
         ></tui-primitive-textfield>
         <tui-input-phone
             tuiTextfieldAutocomplete="off"

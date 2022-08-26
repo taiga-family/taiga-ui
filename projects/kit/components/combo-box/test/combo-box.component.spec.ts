@@ -11,7 +11,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -107,7 +107,7 @@ describe(`ComboBox`, () => {
                 TuiComboBoxModule,
                 TuiRootModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],

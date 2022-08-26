@@ -23,16 +23,14 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
-    HINT_CONTROLLER_PROVIDER,
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
     tuiGetBorder,
-    TuiHintControllerDirective,
+    TuiHintOptionsDirective,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldComponent,
@@ -53,7 +51,6 @@ export const LINE_HEIGHT_L = 24;
         tuiAsFocusableItemAccessor(TuiTextAreaComponent),
         tuiAsControl(TuiTextAreaComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
     host: {
@@ -91,8 +88,9 @@ export class TuiTextAreaComponent
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
@@ -132,7 +130,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`class._has-tooltip`)
     get hasTooltip(): boolean {
-        return !!this.hintController.content && !this.disabled;
+        return !!this.hintOptions?.content && !this.computedDisabled;
     }
 
     @HostBinding(`class._has-value`)

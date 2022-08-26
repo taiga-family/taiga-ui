@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
@@ -28,7 +28,7 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         TuiAddonDocModule,
         TuiButtonModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputPasswordComponent)),
     ],

@@ -11,7 +11,7 @@ import {
     tuiTestTooltip,
 } from '@taiga-ui/testing';
 
-import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
+import {TuiHintModule} from '../../../directives/hint/hint.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
@@ -94,7 +94,7 @@ describe(`PrimitiveTextfield`, () => {
                 NoopAnimationsModule,
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiRootModule,
             ],
             declarations: [TestComponent],
