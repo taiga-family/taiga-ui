@@ -4,12 +4,19 @@ import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProject} from '../../utils/get-project';
 import {Schema} from '../../ng-add/schema';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
+import {isInvalidAngularJson} from '../../utils/angular-json-manipulations';
 
 const PROPRIETARY_TDS_ICON_ASSETS = {
     glob: '**/*',
     input: 'node_modules/@taiga-ui/proprietary-tds-icons/src',
     output: 'assets/taiga-ui/icons',
 };
+
+const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
+    PROPRIETARY_TDS_ICON_ASSETS,
+    null,
+    4,
+)} to angular.json manually`;
 
 export function migrateTaigaProprietaryIcons(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -23,6 +30,13 @@ export function migrateTaigaProprietaryIcons(options: Schema): Rule {
             // noop
         }
 
+        if (await isInvalidAngularJson(tree)) {
+            context.logger.warn(
+                `[WARNING]: Schematics don't support this version of angular.json. ${MANUAL_MIGRATION_TIPS}`,
+            );
+            return;
+        }
+
         return getSourceFiles('**/angular.json').length > 0
             ? updateWorkspace(workspace => {
                   if (proprietaryIcons === null) {
@@ -33,11 +47,7 @@ export function migrateTaigaProprietaryIcons(options: Schema): Rule {
 
                   if (!project) {
                       context.logger.warn(
-                          `[WARNING]: Target project not found. Add ${JSON.stringify(
-                              PROPRIETARY_TDS_ICON_ASSETS,
-                              null,
-                              4,
-                          )} to angular.json manually`,
+                          `[WARNING]: Target project not found. ${MANUAL_MIGRATION_TIPS}`,
                       );
                       return;
                   }
