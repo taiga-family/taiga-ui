@@ -1,4 +1,5 @@
 import {Directive, DoCheck} from '@angular/core';
+import {tuiIsInput} from '@taiga-ui/cdk';
 import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPasswordComponent} from './input-password.component';
@@ -22,8 +23,11 @@ export class TuiInputPasswordDirective
     }
 
     ngDoCheck(): void {
-        if (this.input) {
-            this.input.type = this.host.inputType;
+        if (
+            this.host.nativeFocusableElement &&
+            tuiIsInput(this.host.nativeFocusableElement)
+        ) {
+            this.host.nativeFocusableElement.type = this.host.inputType;
         }
     }
 }

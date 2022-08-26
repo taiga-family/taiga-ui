@@ -303,6 +303,7 @@ describe(`InputNumber`, () => {
     });
 
     it(`maxlength is set to 23 by default (18 digits + 5 default separators)`, () => {
+        fixture.detectChanges();
         const nativeInput = getNativeInput()!.nativeElement;
 
         expect(nativeInput.getAttribute(`maxlength`)).toBe(`23`);

@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {TuiInputModeModule} from '@taiga-ui/cdk';
 import {
     TuiHintControllerModule,
     TuiPrimitiveTextfieldModule,
@@ -17,7 +16,6 @@ import {TuiInputCVCComponent} from './input-cvc.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiValueAccessorModule,
-        TuiInputModeModule,
     ],
     declarations: [TuiInputCVCComponent],
     exports: [TuiInputCVCComponent],

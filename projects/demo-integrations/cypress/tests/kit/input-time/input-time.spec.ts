@@ -18,11 +18,12 @@ describe(`InputTime`, () => {
                     .as(`wrapper`);
 
                 cy.get(`@wrapper`)
-                    .findByAutomationId(`tui-primitive-textfield__native-input`)
+                    .find(`input`)
+                    .first()
                     .each((input, index) => {
                         cy.wrap(input)
                             .focus()
-                            .type(`{selectall}{backspace}`)
+                            .type(`{selectall}{backspace}`, {force: true})
                             .focused()
                             .matchImageSnapshot(
                                 `0${parentIndex + 1}-input-time-${id}-${index + 1}`,
@@ -80,9 +81,7 @@ describe(`InputTime`, () => {
         }
 
         function getInput(): Cypress.Chainable<JQuery> {
-            return cy
-                .get(`#demoContent`)
-                .findByAutomationId(`tui-primitive-textfield__native-input`);
+            return cy.get(`#demoContent`).find(`input`).first();
         }
 
         function getDropdown(): Cypress.Chainable<JQuery> {

@@ -16,10 +16,8 @@
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
-    <input
-        tuiTextfield
-        tuiInputMode="numeric"
-        [attr.placeholder]="placeholder"
-        [attr.autocomplete]="autocomplete"
-    />
+    <ng-content
+        select="input"
+        ngProjectAs="input"
+    ></ng-content>
 </tui-primitive-textfield>

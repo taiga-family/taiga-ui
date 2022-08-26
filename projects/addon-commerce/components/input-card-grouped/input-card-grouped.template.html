@@ -23,7 +23,7 @@
                 #inputCard
                 type="text"
                 automation-id="tui-input-card-grouped__card"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input t-input_card"
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="!card.length && focused"
@@ -72,7 +72,7 @@
                 type="text"
                 placeholder="00/00"
                 automation-id="tui-input-card-grouped__expire"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input"
                 [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
@@ -103,7 +103,7 @@
                 #inputCVC
                 type="text"
                 automation-id="tui-input-card-grouped__cvc"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input"
                 [class.t-input_prefilled]="cvcPrefilled"
                 [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"

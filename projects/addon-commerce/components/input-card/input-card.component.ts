@@ -56,10 +56,6 @@ export class TuiInputCardComponent
 
     @Input()
     @tuiDefaultProp()
-    placeholder = `0000 0000 0000 0000`;
-
-    @Input()
-    @tuiDefaultProp()
     autocompleteEnabled = false;
 
     @Output()

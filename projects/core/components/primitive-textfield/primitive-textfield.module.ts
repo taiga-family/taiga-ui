@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAutofilledModule, TuiFocusableModule, TuiInputModeModule} from '@taiga-ui/cdk';
+import {TuiAutofilledModule, TuiFocusableModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core/components/svg';
 import {TuiTooltipModule} from '@taiga-ui/core/components/tooltip';
 import {TuiDescribedByModule} from '@taiga-ui/core/directives/described-by';
@@ -21,7 +21,6 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         PolymorpheusModule,
         TuiMaskAccessorModule,
         TuiFocusableModule,
-        TuiInputModeModule,
         TuiWrapperModule,
         TuiSvgModule,
         TuiTooltipModule,
