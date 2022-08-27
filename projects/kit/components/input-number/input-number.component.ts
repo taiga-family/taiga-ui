@@ -70,11 +70,11 @@ export class TuiInputNumberComponent
 
     @Input()
     @tuiDefaultProp()
-    min = -Infinity;
+    min = Number.MIN_SAFE_INTEGER;
 
     @Input()
     @tuiDefaultProp()
-    max = Infinity;
+    max = Number.MAX_SAFE_INTEGER;
 
     @Input()
     @tuiDefaultProp()
