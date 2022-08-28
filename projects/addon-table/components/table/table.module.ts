@@ -5,6 +5,7 @@ import {TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiCellDirective} from './directives/cell.directive';
+import {TuiDirectionByOrderDirective} from './directives/direction-by-order.directive';
 import {TuiHeadDirective} from './directives/head.directive';
 import {TuiResizedDirective} from './directives/resized.directive';
 import {TuiRowDirective} from './directives/row.directive';
@@ -36,6 +37,7 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiTheadDirective,
         TuiResizedDirective,
         TuiTableSortPipe,
+        TuiDirectionByOrderDirective,
     ],
     exports: [
         TuiTableDirective,
@@ -51,6 +53,7 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiSortableDirective,
         TuiTheadDirective,
         TuiTableSortPipe,
+        TuiDirectionByOrderDirective,
     ],
 })
 export class TuiTableModule {}
