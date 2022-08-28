@@ -153,6 +153,33 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: '[pseudoHovered]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoHover]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoFocused]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoFocus]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoPressed]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoActive]',
+        },
+    },
+    {
+        from: {
             attrName: '(rangeChange)',
             withTagNames: ['tui-calendar-range'],
         },
