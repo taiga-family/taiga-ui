@@ -29,29 +29,21 @@ describe(`InputDate`, () => {
     });
 
     describe(`API`, () => {
-        for (const exampleText of [``, `1234`]) {
-            for (const size of [`s`, `m`, `l`]) {
-                it(`correct filler display for size ${size.toUpperCase()}, exampleText=${exampleText}`, () => {
-                    cy.tuiVisit(
-                        `components/input-date/API?tuiMode=null&tuiTextfieldSize=${size}&tuiTextfieldExampleText=${exampleText}`,
-                    );
+        for (const size of [`s`, `m`, `l`]) {
+            it(`correct filler display for size ${size.toUpperCase()}`, () => {
+                cy.tuiVisit(
+                    `components/input-date/API?tuiMode=null&tuiTextfieldSize=${size}`,
+                );
 
-                    getInput().click();
-                    matchImageSnapshot(
-                        `input-date-size-${size}-filled-tuiTextfieldExampleText-${exampleText}`,
-                    );
+                getInput().click();
+                matchImageSnapshot(`input-date-size-${size}-filled`);
 
-                    getInput().type(`01.`);
-                    matchImageSnapshot(
-                        `input-date-size-${size}-set-day-tuiTextfieldExampleText-${exampleText}`,
-                    );
+                getInput().type(`01.`);
+                matchImageSnapshot(`input-date-size-${size}-set-day`);
 
-                    getInput().type(`06.1994`);
-                    matchImageSnapshot(
-                        `input-date-size-${size}-set-full-tuiTextfieldExampleText-${exampleText}`,
-                    );
-                });
-            }
+                getInput().type(`06.1994`);
+                matchImageSnapshot(`input-date-size-${size}-set-full`);
+            });
         }
 
         function getInput(): Cypress.Chainable<JQuery> {

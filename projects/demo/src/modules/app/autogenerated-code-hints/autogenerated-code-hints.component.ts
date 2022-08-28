@@ -5,14 +5,10 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 const HINT_CONTROLLER_SELECTORS = [`tuiHintContent`];
 
 const TEXTFIELD_CONTROLLER_SELECTORS = [
-    `tuiTextfieldAutocomplete`,
     `tuiTextfieldCleaner`,
     `tuiTextfieldCustomContent`,
-    `tuiTextfieldExampleText`,
-    `tuiTextfieldInputMode`,
     `tuiTextfieldLabelOutside`,
     `tuiTextfieldSize`,
-    `tuiTextfieldType`,
 ];
 
 const DROPDOWN_CONTROLLER_SELECTORS = [

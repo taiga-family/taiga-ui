@@ -75,10 +75,9 @@
                 [formControl]="control"
                 [focusable]="focusable"
                 [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldMaxLength]="maxLength"
                 [tuiTextfieldSize]="size"
+                [maxLength]="maxLength"
                 [expandable]="expandable"
                 [pseudoInvalid]="pseudoInvalid"
                 [pseudoFocus]="pseudoFocused"
@@ -114,6 +113,18 @@
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all content
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Use maxLength for highlighting extra characters. If you want to limit the number of characters, add
+                <code><textarea tuiTextfield></textarea></code>
+                with native maxlength attribute.
             </ng-template>
             <ng-template
                 i18n

@@ -50,37 +50,15 @@
             <ng-template>
                 <tui-input
                     [formControl]="control"
-                    [tuiTextfieldAutocomplete]="autocomplete"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldInputMode]="inputMode"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldExampleText]="exampleText"
                 >
                     Hello
                 </tui-input>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiTextfieldAutocomplete"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiAutofillFieldName | null"
-                [documentationPropertyValues]="autocompleteVariants"
-                [(documentationPropertyValue)]="autocomplete"
-            >
-                <code>autocomplete</code>
-                attribute for a native input (
-                <a
-                    tuiLink
-                    target="_blanl"
-                    href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control"
-                >
-                    see names
-                </a>
-                )
-            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="tuiTextfieldCleaner"
@@ -110,26 +88,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="tuiTextfieldExampleText"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="exampleText"
-            >
-                Example text shown on empty focused input
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiTextfieldInputMode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiInputModeT"
-                [documentationPropertyValues]="inputModeVariants"
-                [(documentationPropertyValue)]="inputMode"
-            >
-                <code>inputmode</code>
-                attribute for a native input. You can use it to set screen keyboard view on mobile devices
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldLabelOutside"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -145,16 +103,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="tuiTextfieldMaxLength"
-                documentationPropertyMode="input"
-                documentationPropertyType="number | null"
-                [documentationPropertyValues]="maxLengthVariants"
-                [(documentationPropertyValue)]="maxLength"
-            >
-                Maximum number of symbols to type. Does not with with mask together
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
@@ -162,17 +110,6 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiTextfieldType"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiInputTypeT"
-                [documentationPropertyValues]="typeVariants"
-                [(documentationPropertyValue)]="type"
-            >
-                <code>type</code>
-                attribute for a native input
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

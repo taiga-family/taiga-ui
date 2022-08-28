@@ -20,7 +20,6 @@
             [tuiHintContent]="null"
         ></tui-primitive-textfield>
         <tui-input-phone
-            tuiTextfieldAutocomplete="off"
             class="t-input-phone tui-group__auto-width-item"
             [ngModel]="value"
             [disabled]="disabled"
@@ -34,6 +33,10 @@
             (ngModelChange)="onModelChange($event)"
         >
             <ng-content></ng-content>
+            <input
+                tuiTextfield
+                autocomplete="off"
+            />
         </tui-input-phone>
     </div>
 

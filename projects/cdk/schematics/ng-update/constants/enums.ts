@@ -116,6 +116,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             OnDark: 'onDark',
         },
+        keepAsType: true,
     },
     {
         name: 'TuiDropdownPosition',
