@@ -14,7 +14,6 @@ export * from '@taiga-ui/cdk/directives/for';
 export * from '@taiga-ui/cdk/directives/for-async';
 export * from '@taiga-ui/cdk/directives/high-dpi';
 export * from '@taiga-ui/cdk/directives/hovered';
-export * from '@taiga-ui/cdk/directives/input-mode';
 export * from '@taiga-ui/cdk/directives/item';
 export * from '@taiga-ui/cdk/directives/let';
 export * from '@taiga-ui/cdk/directives/media';

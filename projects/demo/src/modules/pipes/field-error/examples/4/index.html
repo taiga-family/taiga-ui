@@ -8,11 +8,15 @@
         <span class="row">
             <tui-input-phone
                 formControlName="{{ i }}"
-                tuiTextfieldAutocomplete="off"
                 tuiTextfieldSize="m"
                 class="input"
                 [tuiTextfieldLabelOutside]="true"
-            ></tui-input-phone>
+            >
+                <input
+                    tuiTextfield
+                    autocomplete="off"
+                />
+            </tui-input-phone>
             <button
                 tuiIconButton
                 type="button"

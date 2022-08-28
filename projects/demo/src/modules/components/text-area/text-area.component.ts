@@ -60,7 +60,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 
-    maxLength = null;
+    maxLength: number | null = null;
 
     readonly rowsVariants: readonly number[] = [8, 15, 30];
 

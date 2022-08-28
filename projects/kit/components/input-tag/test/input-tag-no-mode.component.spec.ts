@@ -19,7 +19,6 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
             <tui-root>
                 <tui-input-tag
                     [ngModel]="tags"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                 ></tui-input-tag>
@@ -34,7 +33,6 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
         tags = [`Tag1`, `Tag2`];
 
         labelOutside = true;
-        exampleText = `Example`;
         size: TuiSizeS | TuiSizeL = `s`;
     }
 

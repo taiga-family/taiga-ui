@@ -1,8 +1,6 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldInputMode="numeric"
     class="t-input"
-    [tuiTextfieldExampleText]="computedExampleText"
     [disabled]="disabled"
     [readOnly]="readOnly"
     [nativeId]="nativeId"
@@ -18,4 +16,10 @@
     (copy.prevent)="onCopy()"
 >
     <ng-content></ng-content>
+    <input
+        tuiTextfield
+        inputmode="numeric"
+        [attr.autocomplete]="autocomplete"
+        [attr.placeholder]="computedPlaceholder"
+    />
 </tui-primitive-textfield>

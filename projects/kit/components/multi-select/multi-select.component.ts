@@ -100,6 +100,10 @@ export class TuiMultiSelectComponent<T>
     search: string | null = ``;
 
     @Input()
+    @tuiDefaultProp()
+    placeholder = ``;
+
+    @Input()
     @HostBinding(`class._editable`)
     @tuiDefaultProp()
     editable = true;

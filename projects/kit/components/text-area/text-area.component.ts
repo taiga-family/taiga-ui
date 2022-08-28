@@ -76,6 +76,10 @@ export class TuiTextAreaComponent
     rows = DEFAULT_ROWS;
 
     @Input()
+    @tuiDefaultProp()
+    maxLength: number | null = null;
+
+    @Input()
     @HostBinding(`class._expandable`)
     @tuiDefaultProp()
     expandable = false;
@@ -142,7 +146,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`class._has-counter`)
     get hasCounter(): boolean {
-        return !!this.controller.maxLength && this.interactive;
+        return !!this.maxLength && this.interactive;
     }
 
     get hasPlaceholder(): boolean {
@@ -150,10 +154,12 @@ export class TuiTextAreaComponent
     }
 
     get hasExampleText(): boolean {
-        const text =
-            this.controller.exampleText || this.textfield?.nativeElement.placeholder;
-
-        return !!text && this.focused && !this.hasValue && !this.readOnly;
+        return (
+            !!this.textfield?.nativeElement.placeholder &&
+            this.focused &&
+            !this.hasValue &&
+            !this.readOnly
+        );
     }
 
     get computeMaxHeight(): number | null {
@@ -168,11 +174,11 @@ export class TuiTextAreaComponent
     }
 
     get fittedContent(): string {
-        return this.value.slice(0, this.controller.maxLength || Infinity);
+        return this.value.slice(0, this.maxLength || Infinity);
     }
 
     get extraContent(): string {
-        return this.value.slice(this.controller.maxLength || Infinity);
+        return this.value.slice(this.maxLength || Infinity);
     }
 
     @HostListener(`focusin`, [`true`])

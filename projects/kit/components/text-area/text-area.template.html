@@ -14,7 +14,7 @@
         automation-id="tui-text-area__counter"
         class="t-counter"
     >
-        {{ value.length }}/{{ controller.maxLength }}
+        {{ value.length }}/{{ maxLength }}
     </div>
 
     <label
@@ -41,7 +41,7 @@
                             aria-hidden="true"
                             class="t-pseudo-content"
                         >
-                            <span [textContent]="fittedContent || controller.exampleText"></span>
+                            <span [textContent]="fittedContent || nativeFocusableElement?.placeholder"></span>
                             <span
                                 class="t-pseudo-content__extra"
                                 [textContent]="extraContent"
@@ -52,7 +52,6 @@
                             #focusableElement
                             automation-id="tui-text-area__native"
                             class="t-input"
-                            [placeholder]="controller.exampleText"
                             [id]="id"
                             [tuiDescribedBy]="id"
                             [tuiFocusable]="computedFocusable"

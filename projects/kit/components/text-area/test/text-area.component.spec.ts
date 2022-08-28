@@ -22,8 +22,7 @@ describe(`TextArea`, () => {
             <tui-text-area
                 [expandable]="expandable"
                 [formControl]="control"
-                [tuiTextfieldExampleText]="exampleText"
-                [tuiTextfieldMaxLength]="maxLength"
+                [maxLength]="maxLength"
                 [readOnly]="readOnly"
                 [rows]="rows"
                 [tuiHintContent]="hintContent"
@@ -41,8 +40,6 @@ describe(`TextArea`, () => {
         rows = DEFAULT_ROWS;
 
         maxLength: number | null = null;
-
-        exampleText = `placeholder`;
 
         expandable = false;
 

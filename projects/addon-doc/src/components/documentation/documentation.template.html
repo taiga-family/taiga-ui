@@ -119,14 +119,18 @@
                             tuiGroup
                         >
                             <tui-primitive-textfield
-                                tuiTextfieldType="text"
                                 tuiTextfieldSize="m"
                                 [attr.id]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
                                 [tuiInputOpacity]="getOpacity(propertyConnector.documentationPropertyValue)"
                                 [value]="getColor(propertyConnector.documentationPropertyValue)"
                                 (valueChange)="onColorChange(propertyConnector, $event)"
-                            ></tui-primitive-textfield>
+                            >
+                                <input
+                                    tuiTextfield
+                                    type="text"
+                                />
+                            </tui-primitive-textfield>
                             <tui-input-count
                                 tuiTextfieldSize="m"
                                 [max]="100"

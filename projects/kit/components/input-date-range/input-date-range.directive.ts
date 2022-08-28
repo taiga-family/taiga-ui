@@ -19,4 +19,10 @@ export class TuiInputDateRangeDirective extends TuiAbstractTextfieldHost<TuiInpu
     process(input: HTMLInputElement): void {
         input.inputMode = `numeric`;
     }
+
+    ngDoCheck(): void {
+        if (this.host.nativeFocusableElement) {
+            this.host.nativeFocusableElement.placeholder = this.host.computedExampleText;
+        }
+    }
 }

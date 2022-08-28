@@ -23,10 +23,14 @@
     tuiTextfieldSize="m"
     [textMask]="hexMask"
     [tuiTextfieldLabelOutside]="true"
-    [tuiTextfieldMaxLength]="6"
     [value]="hex"
     (valueChange)="onHexChange($event)"
-></tui-primitive-textfield>
+>
+    <input
+        tuiTextfield
+        maxlength="6"
+    />
+</tui-primitive-textfield>
 <ng-template #rgb>
     <tui-input-count
         tuiTextfieldSize="m"

@@ -21,16 +21,12 @@ export class TuiInputNumberDirective
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement): void {
-        this.input = input;
-    }
-
     ngDoCheck(): void {
-        if (!this.input) {
+        if (!this.host.nativeFocusableElement) {
             return;
         }
 
-        this.input.maxLength = this.host.calculatedMaxLength;
-        this.input.inputMode = `decimal`;
+        this.host.nativeFocusableElement.maxLength = this.host.calculatedMaxLength;
+        this.host.nativeFocusableElement.inputMode = `decimal`;
     }
 }

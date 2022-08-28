@@ -1,12 +1,7 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TuiAutofillFieldName,
-    TuiContextWithImplicit,
-    TuiInputMode,
-    TuiInputType,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
     TUI_HINT_DIRECTIONS,
     TuiHorizontalDirection,
@@ -82,8 +77,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         `url`,
     ];
 
-    type: TuiInputType = `text`;
-
     cleaner = false;
 
     editable = true;
@@ -97,25 +90,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     readonly maxLengthVariants: readonly number[] = [10];
 
     maxLength = null;
-
-    autocompleteVariants = [
-        `off`,
-        `cc-name`,
-        `cc-number`,
-        `cc-exp-month`,
-        `cc-exp-year`,
-        `cc-type`,
-        `given-name`,
-        `additional-name`,
-        `family-name`,
-        `username`,
-        `email`,
-        `street-address`,
-        `postal-code`,
-        `country-name`,
-    ];
-
-    autocomplete: TuiAutofillFieldName | '' = ``;
 
     readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 

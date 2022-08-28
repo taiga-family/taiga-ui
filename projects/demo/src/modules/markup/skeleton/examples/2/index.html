@@ -37,13 +37,16 @@
                     </h3>
                     <div class="tui-form__row">
                         <tui-input
-                            tuiTextfieldExampleText="Name Surname"
                             formControlName="nameValue"
                             tuiHintContent="With a hint"
                             [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
                             Some input
+                            <input
+                                tuiTextfield
+                                placeholder="Name Surname"
+                            />
                         </tui-input>
                     </div>
                     <div class="tui-form__row tui-form__row_multi-fields">

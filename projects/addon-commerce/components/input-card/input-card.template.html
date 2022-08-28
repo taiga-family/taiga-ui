@@ -1,8 +1,6 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldInputMode="numeric"
     class="t-input"
-    [tuiTextfieldAutocomplete]="autocomplete"
     [tuiTextfieldCustomContent]="icon"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -18,4 +16,8 @@
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
+    <ng-content
+        select="input"
+        ngProjectAs="input"
+    ></ng-content>
 </tui-primitive-textfield>

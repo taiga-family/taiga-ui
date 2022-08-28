@@ -29,7 +29,6 @@ import {TuiInputDateModule} from '../input-date.module';
                 [readOnly]="readOnly"
                 [min]="min"
                 [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
                 [tuiHintContent]="hintContent"
@@ -56,8 +55,6 @@ class TestComponent {
     size: TuiSizeS | TuiSizeL = `m`;
 
     hintContent: string | null = `prompt`;
-
-    exampleText = ``;
 }
 
 let fixture: ComponentFixture<TestComponent>;
