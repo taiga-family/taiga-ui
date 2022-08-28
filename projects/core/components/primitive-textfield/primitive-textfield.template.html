@@ -1,4 +1,5 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <div
     tuiWrapper
     automation-id="tui-primitive-textfield__wrapper"
@@ -91,14 +92,14 @@
             ></tui-svg>
         </span>
         <tui-tooltip
-            *ngIf="hasTooltip"
+            *ngIf="hintOptions && hintOptions.content && !computedDisabled"
             automation-id="tui-primitive-textfield__tooltip"
             [describeId]="computedId"
-            [content]="hintController.content || ''"
-            [direction]="hintController.direction"
-            [appearance]="hintController.appearance"
-            [showDelay]="hintController.showDelay"
-            [hideDelay]="hintController.hideDelay"
+            [content]="hintOptions.content"
+            [direction]="hintOptions.direction"
+            [appearance]="hintOptions.appearance"
+            [showDelay]="hintOptions.showDelay"
+            [hideDelay]="hintOptions.hideDelay"
         ></tui-tooltip>
         <div
             *ngIf="iconContent"

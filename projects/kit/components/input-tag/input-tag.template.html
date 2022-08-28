@@ -1,3 +1,4 @@
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <tui-hosted-dropdown
     class="t-hosted"
     [canOpen]="canOpen"
@@ -120,15 +121,15 @@
                     (click.stop)="onCleanerClick()"
                 ></tui-svg>
                 <tui-tooltip
-                    *ngIf="hasTooltip"
+                    *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                     automation-id="tui-input-tag__tooltip"
                     describeId="placeholer_until_accesibility_is_added"
                     class="t-tooltip"
-                    [direction]="hintController.direction"
-                    [appearance]="hintController.appearance"
-                    [content]="hintController.content || ''"
-                    [showDelay]="hintController.showDelay"
-                    [hideDelay]="hintController.hideDelay"
+                    [direction]="hintOptions.direction"
+                    [appearance]="hintOptions.appearance"
+                    [content]="hintOptions.content"
+                    [showDelay]="hintOptions.showDelay"
+                    [hideDelay]="hintOptions.hideDelay"
                 ></tui-tooltip>
                 <div *ngIf="icon">
                     <tui-svg

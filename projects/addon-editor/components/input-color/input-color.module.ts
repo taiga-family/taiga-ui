@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
@@ -16,7 +15,6 @@ import {TuiInputColorComponent} from './input-color.component';
         CommonModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,

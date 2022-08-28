@@ -21,12 +21,7 @@ import {
     TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {
-    TUI_HINT_CONTROLLER_OPTIONS,
-    TuiDriver,
-    TuiHintControllerDirective,
-    TuiPoint,
-} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
@@ -38,7 +33,6 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     templateUrl: `./line-chart.template.html`,
     styleUrls: [`./line-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [TUI_HINT_CONTROLLER_OPTIONS],
 })
 export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();
@@ -103,8 +97,8 @@ export class TuiLineChartComponent {
         @Inject(TuiLineChartHintDirective)
         readonly hintDirective: TuiLineChartHintDirective | null,
         @Optional()
-        @Inject(TuiHintControllerDirective)
-        readonly hintController: TuiHintControllerDirective | null,
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
         this.autoIdString = idService.generate();
     }
@@ -115,7 +109,7 @@ export class TuiLineChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintController?.content || ``;
+        return this.hintOptions?.content || ``;
     }
 
     get fillId(): string {

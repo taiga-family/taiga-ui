@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiErrorModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -42,7 +42,7 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiLinkModule,
         TuiLabelModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiNotificationModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,

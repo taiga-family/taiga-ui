@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDropdownModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputPhoneInternationalModule} from '@taiga-ui/kit';
@@ -25,7 +25,7 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         InheritedDocumentationModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
         TuiButtonModule,
         RouterModule.forChild(

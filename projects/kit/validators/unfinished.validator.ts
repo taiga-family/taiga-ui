@@ -1,5 +1,10 @@
 import {AbstractControl, ValidatorFn} from '@angular/forms';
-import {TuiFocusableElementAccessor, TuiValidationError} from '@taiga-ui/cdk';
+import {
+    TuiFocusableElementAccessor,
+    tuiIsHTMLElement,
+    tuiIsInput,
+    TuiValidationError,
+} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function tuiCreateUnfinishedValidator(
@@ -13,8 +18,8 @@ export function tuiCreateUnfinishedValidator(
 
         return value === null &&
             nativeInput &&
-            // TODO: iframe warning
-            nativeInput.nativeFocusableElement instanceof HTMLInputElement &&
+            tuiIsHTMLElement(nativeInput.nativeFocusableElement) &&
+            tuiIsInput(nativeInput.nativeFocusableElement) &&
             nativeInput.nativeFocusableElement.value !== ``
             ? {unfinished: new TuiValidationError(message)}
             : null;

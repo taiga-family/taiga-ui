@@ -9,7 +9,7 @@ import {
     TuiDay,
 } from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -86,7 +86,7 @@ const DEFAULT_TESTING_MODULE_META = {
         NoopAnimationsModule,
         TuiInputDateModule,
         ReactiveFormsModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiTextfieldControllerModule,
     ],
     declarations: [TestComponent],

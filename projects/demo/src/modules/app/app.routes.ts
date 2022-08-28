@@ -1489,15 +1489,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/hint-controller`,
-        loadChildren: async () =>
-            (await import(`../directives/hint-controller/hint-controller.module`))
-                .ExampleTuiHintControllerModule,
-        data: {
-            title: `HintController`,
-        },
-    },
-    {
         path: `directives/textfield-controller`,
         loadChildren: async () =>
             (

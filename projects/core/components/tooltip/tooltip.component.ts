@@ -11,8 +11,8 @@ import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDriver} from '@taiga-ui/core/abstract';
 import {
     TUI_HINT_OPTIONS,
-    TuiHintControllerDirective,
     TuiHintOptions,
+    TuiHintOptionsDirective,
 } from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -28,7 +28,7 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService, MODE_PROVIDER],
     inputs: [`content`, `direction`, `appearance`, `showDelay`, `hideDelay`],
 })
-export class TuiTooltipComponent extends TuiHintControllerDirective {
+export class TuiTooltipComponent extends TuiHintOptionsDirective {
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiDriver)

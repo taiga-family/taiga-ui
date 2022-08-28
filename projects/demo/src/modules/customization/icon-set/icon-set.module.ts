@@ -11,7 +11,7 @@ import {
 import {
     TuiButtonModule,
     TuiExpandModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
@@ -33,7 +33,7 @@ import {IconSetComponent} from './icon-set.component';
         TuiInputDateRangeModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(IconSetComponent)),
     ],
