@@ -5,7 +5,6 @@
     [content]="tableDropdown"
 >
     <button
-        #tableBtn
         tuiIconButton
         type="button"
         size="s"
@@ -13,8 +12,7 @@
         appearance="icon"
         tuiHintDirection="top-left"
         [tuiHint]="insertTableText$ | async"
-        [tuiHintId]="tableBtn.id"
-        [tuiDescribedBy]="tableBtn.id"
+        [tuiHintDescribe]="''"
         [focusable]="table.open"
     ></button>
 </tui-hosted-dropdown>

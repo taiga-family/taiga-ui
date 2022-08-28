@@ -61,7 +61,7 @@
                 [tuiHintHost]="hintHost"
                 [tuiHint]="$any(hintDirective?.hint || hintContent)"
                 [tuiHintContext]="getContentContext(point, index)"
-                [tuiHintId]="getHintId(index)"
+                [tuiHintDescribe]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
                 (mouseenter)="onMouseEnter(index)"
@@ -76,7 +76,7 @@
                     [style.left.%]="getOffset(index)"
                     [style.bottom.%]="getBottom(point[1])"
                     [tuiFocusable]="isFocusable"
-                    [tuiDescribedBy]="getHintId(index)"
+                    [id]="getHintId(index)"
                 ></div>
             </div>
             <div

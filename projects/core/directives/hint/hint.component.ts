@@ -4,6 +4,7 @@ import {
     Component,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Optional,
 } from '@angular/core';
@@ -15,7 +16,7 @@ import {
     tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {TuiRectAccessor} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
@@ -49,7 +50,7 @@ export class TuiHintComponent<C = any> {
     readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
     @HostBinding(`class._untouchable`)
-    readonly untouchable = this.driver instanceof TuiHintPointerDirective;
+    readonly untouchable = !!this.pointer;
 
     constructor(
         @Inject(TuiHoveredService) hovered$: Observable<boolean>,
@@ -60,7 +61,10 @@ export class TuiHintComponent<C = any> {
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
-        @Inject(TuiDriver) private readonly driver: TuiDriver,
+        @Inject(TuiHintHoverDirective) private readonly hover: TuiHintHoverDirective,
+        @Optional()
+        @Inject(TuiHintPointerDirective)
+        private readonly pointer: unknown,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,
@@ -69,9 +73,7 @@ export class TuiHintComponent<C = any> {
             this.update(top, left);
         });
 
-        if (driver instanceof TuiHintHoverDirective) {
-            hovered$.pipe(takeUntil(destroy$)).subscribe(hover => driver.toggle(hover));
-        }
+        hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
     }
 
     get content(): PolymorpheusContent<C> {
@@ -80,6 +82,13 @@ export class TuiHintComponent<C = any> {
 
     get context(): C | undefined {
         return this.polymorpheus.$implicit.context;
+    }
+
+    @HostListener(`document:click`, [`$event.target`])
+    onClick(target: HTMLElement): void {
+        if (!this.elementRef.nativeElement.contains(target)) {
+            this.hover.toggle(false);
+        }
     }
 
     @tuiPure

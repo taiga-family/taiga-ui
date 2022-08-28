@@ -4,6 +4,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHintComponent} from './hint.component';
 import {TuiHintDirective} from './hint.directive';
+import {TuiHintDescribeDirective} from './hint-describe.directive';
 import {TuiHintDriverDirective} from './hint-driver.directive';
 import {TuiHintHostDirective} from './hint-host.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
@@ -22,6 +23,7 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintHoverDirective,
         TuiHintManualDirective,
         TuiHintPointerDirective,
+        TuiHintDescribeDirective,
         TuiHintPositionDirective,
         TuiHintOptionsDirective,
     ],
@@ -33,6 +35,7 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintHoverDirective,
         TuiHintManualDirective,
         TuiHintPointerDirective,
+        TuiHintDescribeDirective,
         TuiHintPositionDirective,
         TuiHintOptionsDirective,
     ],

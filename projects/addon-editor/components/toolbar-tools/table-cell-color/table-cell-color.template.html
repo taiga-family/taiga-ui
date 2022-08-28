@@ -7,7 +7,6 @@
         [canOpen]="isActive"
     >
         <button
-            #cellColorBtn
             tuiIconButton
             type="button"
             size="s"
@@ -15,8 +14,7 @@
             appearance="icon"
             icon="tuiIconPaintLarge"
             [tuiHint]="cellColorText$ | async"
-            [tuiHintId]="cellColorBtn.id"
-            [tuiDescribedBy]="cellColorBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="cellColorSelect.open"
             [focusable]="cellColorSelect.open"
             [disabled]="!isActive"

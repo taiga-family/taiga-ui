@@ -25,7 +25,6 @@ export class ExampleTuiHintComponent extends AbstractExampleTuiHint {
         HTML: import(`./examples/1/index.html?raw`),
     };
 
-    id = ``;
     showDelay = 500;
     hideDelay = 200;
 }

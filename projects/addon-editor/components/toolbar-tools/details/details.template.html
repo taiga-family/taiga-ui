@@ -1,6 +1,5 @@
 <button
     *ngIf="texts$ | async as text"
-    #detailBtn
     tuiIconButton
     type="button"
     size="s"
@@ -8,8 +7,7 @@
     appearance="icon"
     tuiHintDirection="top-left"
     [tuiHint]="text.setDetails"
-    [tuiHintId]="detailBtn.id"
-    [tuiDescribedBy]="detailBtn.id"
+    [tuiHintDescribe]="''"
     [focusable]="false"
     (click)="setDetails()"
 ></button>

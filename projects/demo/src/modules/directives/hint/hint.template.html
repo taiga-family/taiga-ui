@@ -18,20 +18,26 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
+            <ng-template #hint>
+                To be accessible, hint should be set to a focusable element. See
+                <a
+                    tuiLink
+                    routerLink="/directives/hint-describe"
+                >
+                    <code>HintDescribe</code>
+                </a>
+            </ng-template>
             <span
-                tuiHint="To be accessible, hint should be set to a focusable element"
+                [tuiHint]="hint"
                 [tuiHintAppearance]="appearance"
-                [tuiHintId]="id"
                 [tuiHintDirection]="direction"
                 [tuiHintShowDelay]="showDelay"
                 [tuiHintHideDelay]="hideDelay"
+                [tuiHintDescribe]="'qwerty'"
             >
                 Hover it!
             </span>
-            <input
-                placeholder="id: qwerty"
-                tuiDescribedBy="qwerty"
-            />
+            <input id="qwerty" />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -40,19 +46,6 @@
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyName="tuiHintId"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="id"
-            >
-                To be accessible, hint should be set to a focusable element and user with Screen Readers will listen to
-                hint text after a small delay when focusing textfield. Set unique
-                <code>describeId</code>
-                and use
-                <code>[tuiDescribedBy]="theSameId"</code>
-                directive on focusable element
             </ng-template>
             <ng-template
                 documentationPropertyName="tuiHintShowDelay"

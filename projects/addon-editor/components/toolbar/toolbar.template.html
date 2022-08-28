@@ -10,7 +10,7 @@
     [tuiFocusable]="focusable"
     (focus)="onBottomFocus()"
 ></div>
-
+<!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
 <section
     *ngIf="texts$ | async as texts"
     tuiToolbarNavigationManager
@@ -21,7 +21,6 @@
         class="t-block"
     >
         <button
-            #undoBtn
             tuiItem
             tuiIconButton
             type="button"
@@ -31,14 +30,12 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.undo"
-            [tuiHintId]="undoBtn.id"
-            [tuiDescribedBy]="undoBtn.id"
+            [tuiHintDescribe]="''"
             [disabled]="undoDisabled"
             [focusable]="false"
             (click)="undo()"
         ></button>
         <button
-            #redoBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -48,8 +45,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.redo"
-            [tuiHintId]="redoBtn.id"
-            [tuiDescribedBy]="redoBtn.id"
+            [tuiHintDescribe]="''"
             [disabled]="redoDisabled"
             [focusable]="false"
             (click)="redo()"
@@ -90,7 +86,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.Quote)"
             #button
-            #quoteBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -100,8 +95,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.quote"
-            [tuiHintId]="quoteBtn.id"
-            [tuiDescribedBy]="quoteBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
@@ -117,7 +111,6 @@
         >
             <button
                 #button
-                #linkBtn
                 tuiIconButton
                 type="button"
                 size="s"
@@ -126,8 +119,7 @@
                 tuiHintDirection="top-left"
                 class="t-tool"
                 [tuiHint]="texts.link"
-                [tuiHintId]="linkBtn.id"
-                [tuiDescribedBy]="linkBtn.id"
+                [tuiHintDescribe]="''"
                 [pseudoActive]="link.open || a"
                 [focusable]="link.open"
             ></button>
@@ -142,7 +134,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.Attach)"
             #button
-            #attachBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -152,8 +143,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.attach"
-            [tuiHintId]="attachBtn.id"
-            [tuiDescribedBy]="attachBtn.id"
+            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="onAttach()"
         ></button>
@@ -165,7 +155,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.Sub)"
             #button
-            #subBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -175,8 +164,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.subscript"
-            [tuiHintId]="subBtn.id"
-            [tuiDescribedBy]="subBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="subscript"
             [focusable]="false"
             (click)="toggleSubscript()"
@@ -184,7 +172,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.Sup)"
             #button
-            #supBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -194,8 +181,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.superscript"
-            [tuiHintId]="supBtn.id"
-            [tuiDescribedBy]="supBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="superscript"
             [focusable]="false"
             (click)="toggleSuperscript()"
@@ -232,7 +218,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.Tex)"
             #button
-            #texBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -242,8 +227,7 @@
             tuiHintDirection="top-left"
             class="t-tool"
             [tuiHint]="texts.tex"
-            [tuiHintId]="texBtn.id"
-            [tuiDescribedBy]="texBtn.id"
+            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="onTeX()"
         ></button>
@@ -262,8 +246,7 @@
                 tuiHintDirection="top-left"
                 class="t-tool"
                 [tuiHint]="texts.image"
-                [id]="button.id"
-                [tuiHintId]="button.id"
+                [tuiHintDescribe]="''"
                 [focusable]="false"
                 (click)="image.click()"
             ></button>
@@ -280,7 +263,6 @@
         <button
             *ngIf="enabled(TuiEditorTool.HR)"
             #button
-            #hrBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -290,8 +272,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.insertHorizontalRule"
-            [tuiHintId]="hrBtn.id"
-            [tuiDescribedBy]="hrBtn.id"
+            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="insertHorizontalRule()"
         ></button>
@@ -302,7 +283,6 @@
     >
         <button
             #button
-            #clearBtn
             tuiIconButton
             tuiItem
             type="button"
@@ -312,8 +292,7 @@
             tuiHintDirection="top-left"
             class="t-tool t-tool_margin"
             [tuiHint]="texts.clear"
-            [tuiHintId]="clearBtn.id"
-            [tuiDescribedBy]="clearBtn.id"
+            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="removeFormat()"
         ></button>

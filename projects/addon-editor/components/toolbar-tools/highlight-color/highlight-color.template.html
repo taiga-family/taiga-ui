@@ -6,7 +6,6 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
-        #hiliteBtn
         tuiIconButton
         type="button"
         size="s"
@@ -16,8 +15,7 @@
         automation-id="toolbar__hilite-button"
         class="t-tool"
         [tuiHint]="backColorText$ | async"
-        [tuiHintId]="hiliteBtn.id"
-        [tuiDescribedBy]="hiliteBtn.id"
+        [tuiHintDescribe]="''"
         [pseudoActive]="hilite.open"
         [focusable]="hilite.open"
     ></button>

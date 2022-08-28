@@ -6,6 +6,5 @@ export interface TuiPortalItem<C = any> {
     readonly content: PolymorpheusContent<C>;
     readonly context?: C;
     readonly appearance?: string;
-    readonly id?: string;
     readonly activeZone?: TuiActiveZoneDirective | null;
 }

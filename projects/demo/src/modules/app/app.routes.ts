@@ -1136,15 +1136,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/described-by`,
-        loadChildren: async () =>
-            (await import(`../directives/described-by/described-by.module`))
-                .ExampleTuiDescribedByModule,
-        data: {
-            title: `DescribedBy`,
-        },
-    },
-    {
         path: `directives/elastic-sticky`,
         loadChildren: async () =>
             (await import(`../directives/elastic-sticky/elastic-sticky.module`))

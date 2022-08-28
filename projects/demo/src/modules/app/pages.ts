@@ -416,13 +416,19 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `ManualHint`,
+                title: `HintDescribe`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, accessibility, a11y, доступность`,
+                route: `/directives/hint-describe`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `HintManual`,
                 keywords: `tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт`,
                 route: `/directives/hint-manual`,
             },
             {
                 section: $localize`Tools`,
-                title: `PointerHint`,
+                title: `HintPointer`,
                 keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор`,
                 route: `/directives/hint-pointer`,
             },
@@ -976,12 +982,6 @@ export const pages: TuiDocPages = [
                 title: `CopyProcessor`,
                 keywords: `copy, clipboard, копия, буфер`,
                 route: `/directives/copy-processor`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DescribedBy`,
-                keywords: ``,
-                route: `/directives/described-by`,
             },
             {
                 section: $localize`Tools`,

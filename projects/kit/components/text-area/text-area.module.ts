@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
-    TuiDescribedByModule,
     TuiPrimitiveTextfieldModule,
     TuiScrollbarModule,
     TuiSvgModule,
@@ -23,7 +22,6 @@ import {TuiTextAreaDirective} from './text-area.directive';
         TuiScrollbarModule,
         TuiTooltipModule,
         TuiWrapperModule,
-        TuiDescribedByModule,
         TuiSvgModule,
         TuiPrimitiveTextfieldModule,
     ],
