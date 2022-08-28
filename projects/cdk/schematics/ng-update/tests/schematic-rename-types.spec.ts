@@ -19,6 +19,7 @@ import {
     TuiNotificationOptions,
     TuiNotificationOptionsWithData,
     AnotherType,
+    TuiAbstractTextfieldHost
 } from '@taiga-ui/core';
 import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ScrollIntoViewDirective, CodeComponent } from '@taiga-ui/addon-doc';
@@ -28,13 +29,13 @@ import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
 import {
-    TuiLanguage,
-    TuiLanguageCore,
-    TuiLanguageCommerce,
-    TuiLanguageEditor,
+    Language,
+    LanguageCore,
+    LanguageCommerce,
+    LanguageEditor,
     LanguagePreview,
-    TuiLanguageTable,
-    TuiLanguageKit
+    LanguageTable,
+    LanguageKit
 } from '@taiga-ui/i18n';
 import { ToggleOptions } from '@taiga-ui/cdk';
 const options: ButtonOptions = {};
@@ -44,13 +45,13 @@ const config: WithDateMaskPipeConfig = {}
 const notificationOptions: TuiNotificationOptions = {};
 const notificationOptionsWithData: TuiNotificationOptionsWithData<string> = {};
 const COUNTRIES: Country[] = [];
-const language: TuiLanguage
-        | TuiLanguageCore
-        | TuiLanguageCommerce
-        | TuiLanguageEditor
+const language: Language
+        | LanguageCore
+        | LanguageCommerce
+        | LanguageEditor
         | LanguagePreview
-        | TuiLanguageTable
-        | TuiLanguageKit
+        | LanguageTable
+        | LanguageKit
         | null = null;
 
 @Component({
@@ -72,14 +73,13 @@ export class AppComponent {
    }
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: InputTimeOptions) {}
 }
+
+export class Textfield extends TuiAbstractTextfieldHost {}
 `;
 
 const AFTER = `
 import { Component } from '@angular/core';
-import {
-    TuiAlertOptions,
-    AnotherType,
-} from '@taiga-ui/core';
+import { TuiAlertOptions, AnotherType, AbstractTuiTextfieldHost } from '@taiga-ui/core';
 import { TuiInputCountOptions } from '@taiga-ui/kit';
 import { TuiScrollIntoViewLinkDirective, TuiCodeComponent } from '@taiga-ui/addon-doc';
 import { TuiTableBar } from '@taiga-ui/addon-tablebars';
@@ -132,6 +132,8 @@ export class AppComponent {
    }
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: TuiInputTimeOptions) {}
 }
+
+export class Textfield extends AbstractTuiTextfieldHost {}
 `;
 
 describe('ng-update', () => {

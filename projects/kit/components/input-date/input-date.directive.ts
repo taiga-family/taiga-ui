@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputDateComponent} from './input-date.component';
 
@@ -7,7 +7,7 @@ import {TuiInputDateComponent} from './input-date.component';
     selector: `tui-input-date`,
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
 })
-export class TuiInputDateDirective extends TuiAbstractTextfieldHost<TuiInputDateComponent> {
+export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDateComponent> {
     get value(): string {
         return this.host.computedValue;
     }

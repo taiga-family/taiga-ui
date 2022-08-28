@@ -432,4 +432,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiAbstractTextfieldHost',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'AbstractTuiTextfieldHost',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];

@@ -6,7 +6,7 @@ import {
     TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {combineLatest, Observable, Subject} from 'rxjs';
 import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
@@ -18,7 +18,7 @@ import {TuiInputMonthRangeComponent} from './input-month-range.component';
     providers: [tuiAsTextfieldHost(TuiInputMonthRangeDirective), TuiDestroyService],
 })
 export class TuiInputMonthRangeDirective
-    extends TuiAbstractTextfieldHost<TuiInputMonthRangeComponent>
+    extends AbstractTuiTextfieldHost<TuiInputMonthRangeComponent>
     implements DoCheck
 {
     private readonly value$ = new Subject<TuiMonthRange | null>();
