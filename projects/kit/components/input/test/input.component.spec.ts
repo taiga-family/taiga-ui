@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiDataListModule,
     tuiEditingKeys,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -116,7 +116,7 @@ describe(`Input`, () => {
                 ReactiveFormsModule,
                 TuiInputModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],

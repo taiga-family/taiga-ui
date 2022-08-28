@@ -8,6 +8,7 @@ import {TuiHintDriverDirective} from './hint-driver.directive';
 import {TuiHintHostDirective} from './hint-host.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintManualDirective} from './hint-manual.directive';
+import {TuiHintOptionsDirective} from './hint-options.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
 import {TuiHintPositionDirective} from './hint-position.directive';
 
@@ -22,6 +23,7 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintManualDirective,
         TuiHintPointerDirective,
         TuiHintPositionDirective,
+        TuiHintOptionsDirective,
     ],
     exports: [
         TuiHintComponent,
@@ -32,6 +34,7 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintManualDirective,
         TuiHintPointerDirective,
         TuiHintPositionDirective,
+        TuiHintOptionsDirective,
     ],
     entryComponents: [TuiHintComponent],
 })

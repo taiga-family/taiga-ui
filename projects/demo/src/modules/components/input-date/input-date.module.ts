@@ -7,7 +7,7 @@ import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
     TuiErrorModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
@@ -42,7 +42,7 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiMobileCalendarDialogModule,
         TuiUnfinishedValidatorModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiNotificationModule,

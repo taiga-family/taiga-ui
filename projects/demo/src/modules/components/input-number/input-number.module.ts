@@ -6,7 +6,6 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -35,7 +34,6 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiButtonModule,
         TuiLinkModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
         TuiNotificationModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,

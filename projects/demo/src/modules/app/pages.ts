@@ -1081,12 +1081,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `HintController`,
-                keywords: `контроллер, ввод, параметры, настройка, hint, tooltip, подсказка`,
-                route: `/directives/hint-controller`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `TextfieldController`,
                 keywords:
                     `контроллер, ввод, параметры, настройка, cleaner, autocomplete, exampleText, inputMode, ` +

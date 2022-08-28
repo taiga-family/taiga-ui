@@ -41,7 +41,7 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
     providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
     animations: [tuiFadeIn],
 })
-export class TuiHintComponent<C = unknown> {
+export class TuiHintComponent<C = any> {
     @HostBinding(`@tuiFadeIn`)
     readonly animation = {value: ``, ...this.options} as const;
 

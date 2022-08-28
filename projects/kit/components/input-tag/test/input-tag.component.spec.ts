@@ -9,7 +9,7 @@ import {
     TuiFocusedModule,
 } from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -103,7 +103,7 @@ describe(`InputTag`, () => {
                 TuiInputTagModule,
                 TuiFocusedModule,
                 TuiRootModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiTextfieldControllerModule,
             ],
             declarations: [TestComponent],

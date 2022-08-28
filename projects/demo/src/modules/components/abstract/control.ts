@@ -35,7 +35,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    readonly hintContentVariants: readonly string[] = [`Some content`];
+    readonly hintContentVariants: readonly string[] = [``, `Some content`];
 
     readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
@@ -109,7 +109,7 @@ export abstract class AbstractExampleTuiControl
 
     iconLeft = this.iconLeftVariants[0];
 
-    hintContent: string | null = null;
+    hintContent = this.hintContentVariants[0];
 
     hintDirection = this.hintDirectionVariants[0];
 

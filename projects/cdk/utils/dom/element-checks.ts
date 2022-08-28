@@ -1,4 +1,3 @@
-// TODO: Refactor to use this check everywhere
 export function tuiIsInput(element: Element): element is HTMLInputElement {
     return element.matches(`input`);
 }

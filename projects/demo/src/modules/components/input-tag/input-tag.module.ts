@@ -7,7 +7,7 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiErrorModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -41,7 +41,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiFieldErrorPipeModule,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
     ],

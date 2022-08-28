@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -35,7 +35,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         CommonModule,
         TuiRadioListModule,
         TuiButtonModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
         TuiLinkModule,
         TuiSvgModule,

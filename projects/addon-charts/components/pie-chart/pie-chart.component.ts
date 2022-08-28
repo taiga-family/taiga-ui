@@ -17,13 +17,7 @@ import {
     tuiPure,
     tuiSum,
 } from '@taiga-ui/cdk';
-import {
-    TUI_HINT_CONTROLLER_OPTIONS,
-    TuiHintControllerDirective,
-    tuiHintOptionsProvider,
-    TuiSizeXL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
@@ -46,8 +40,6 @@ const TRANSFORM = {
     templateUrl: `./pie-chart.template.html`,
     styleUrls: [`./pie-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiHintOptionsProvider({showDelay: 0, hideDelay: 0})],
-    viewProviders: [TUI_HINT_CONTROLLER_OPTIONS],
 })
 export class TuiPieChartComponent {
     private readonly autoIdString: string;
@@ -76,10 +68,15 @@ export class TuiPieChartComponent {
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(Location) private readonly locationRef: Location,
         @Optional()
-        @Inject(TuiHintControllerDirective)
-        private readonly hintController: TuiHintControllerDirective | null,
+        @Inject(TuiHintOptionsDirective)
+        private readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
         this.autoIdString = idService.generate();
+
+        if (this.hintOptions) {
+            this.hintOptions.showDelay = 0;
+            this.hintOptions.hideDelay = 0;
+        }
     }
 
     @HostBinding(`class._empty`)
@@ -88,7 +85,7 @@ export class TuiPieChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.hintController?.content || ``;
+        return this.hintOptions?.content || ``;
     }
 
     get maskId(): string {

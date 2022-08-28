@@ -8,6 +8,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
     Output,
     QueryList,
     ViewChild,
@@ -21,11 +22,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {
-    HINT_CONTROLLER_PROVIDER,
-    TUI_HINT_WATCHED_CONTROLLER,
-    TuiHintControllerDirective,
-} from '@taiga-ui/core/directives/hint-controller';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -56,7 +53,6 @@ const ICON_PADDING_S = 1.5;
     providers: [
         tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],
     host: {
@@ -122,8 +118,9 @@ export class TuiPrimitiveTextfieldComponent
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
         readonly options: TuiPrimitiveTextfieldOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -136,12 +133,10 @@ export class TuiPrimitiveTextfieldComponent
             return null;
         }
 
-        // TODO: 3.0 Refactor this after we drop built-in input element
-        return (
-            (this.focusableElement.nativeElement
-                .previousElementSibling as HTMLInputElement | null) ||
-            this.focusableElement.nativeElement
-        );
+        const {nativeElement} = this.focusableElement;
+
+        return (nativeElement.previousElementSibling ||
+            nativeElement) as HTMLInputElement | null;
     }
 
     get focused(): boolean {
@@ -169,12 +164,15 @@ export class TuiPrimitiveTextfieldComponent
 
     get hasCleaner(): boolean {
         return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
+            this.controller.cleaner &&
+            this.hasValue &&
+            !this.computedDisabled &&
+            !this.readOnly
         );
     }
 
     get hasTooltip(): boolean {
-        return !!this.hintController?.content && !this.disabled;
+        return !!this.hintOptions?.content && !this.computedDisabled;
     }
 
     get hasCustomContent(): boolean {
