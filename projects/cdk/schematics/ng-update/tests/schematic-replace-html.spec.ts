@@ -30,6 +30,12 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<tui-expand [expanded]="expanded">
+    <ng-template tuiExpandContent>
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+
 <button
     tuiButton
     type="button"
@@ -189,6 +195,12 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+<tui-expand [expanded]="expanded">
+    <ng-template >
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+
 <button
     tuiButton
     type="button"
