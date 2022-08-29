@@ -64,20 +64,26 @@ describe(`Card`, () => {
             testComponent.brandLogo = logo;
         });
 
-        it(`is shown if there is and size is m`, () => {
+        it(`is shown if there is and size is m`, async () => {
             testComponent.size = `m`;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.hasBrandLogo).toBe(true);
+            const tuiCard = await loader.getHarness(TuiCardHarness);
+            const hasBrandLogo = await tuiCard.hasBrandLogo();
+
+            expect(hasBrandLogo).toBeTruthy();
         });
 
-        it(`is not shown if there is and size is s`, () => {
+        it(`is not shown if there is and size is s`, async () => {
             testComponent.size = `s`;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.hasBrandLogo).toBe(false);
+            const tuiCard = await loader.getHarness(TuiCardHarness);
+            const hasBrandLogo = await tuiCard.hasBrandLogo();
+
+            expect(hasBrandLogo).toBeFalsy();
         });
     });
 });

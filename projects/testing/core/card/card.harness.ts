@@ -11,4 +11,12 @@ export class TuiCardHarness extends tuiHarnessWith<TuiCardHarness>(`tui-card`) {
 
         return !!tuiSvg;
     }
+
+    async hasBrandLogo(): Promise<boolean> {
+        const tuiSvg = await this.locatorForOptional(
+            TuiSvgHarness.with({selector: `.t-brand-logo`}),
+        )();
+
+        return !!tuiSvg;
+    }
 }
