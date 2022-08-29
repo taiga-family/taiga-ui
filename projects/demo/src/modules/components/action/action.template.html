@@ -26,20 +26,47 @@
         >
             <tui-action-example-2></tui-action-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            i18n-heading
+            heading="Sizes"
+            [content]="example3"
+        >
+            <tui-action-example-3></tui-action-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="reversed-no-shadow"
+            i18n-heading
+            heading="Reversed & No Shadow"
+            [content]="example4"
+        >
+            <tui-action-example-4></tui-action-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="vertical"
+            i18n-heading
+            heading="Vertical"
+            [content]="example5"
+        >
+            <tui-action-example-5></tui-action-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <button
-                tuiAction
-                [icon]="icon"
-                [style.--tui-action-color]="color"
-                [style.--tui-action-background]="background"
-            >
+            <button tuiAction>
                 It's not pining, it's passed on! This parrot is no more! It has ceased to be! It's expired and gone to
                 meet its maker! This is a late parrot! It's a stiff! Bereft of life, it rests in peace! If you hadn't
                 nailed it to the perch, it would be pushing up the daisies! It's rung down the curtain and joined the
                 choir invisible. This is an ex-parrot!
+                <tui-marker-icon
+                    size="s"
+                    class="tui-island__marker"
+                    [src]="icon"
+                ></tui-marker-icon>
             </button>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -51,22 +78,6 @@
                 [(documentationPropertyValue)]="icon"
             >
                 Icon
-            </ng-template>
-        </tui-doc-documentation>
-        <tui-doc-documentation heading="CSS variables">
-            <ng-template
-                documentationPropertyName="--tui-action-color"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="color"
-            >
-                Color of the icon
-            </ng-template>
-            <ng-template
-                documentationPropertyName="--tui-action-background"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="background"
-            >
-                Background of the icon
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

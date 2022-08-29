@@ -24,6 +24,24 @@ export class ExampleTuiActionComponent {
         TypeScript: import(`./examples/2/index.ts?raw`),
     };
 
+    readonly example3: TuiDocExample = {
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+    };
+
+    readonly example4: TuiDocExample = {
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+    };
+
+    readonly example5: TuiDocExample = {
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+    };
+
     readonly iconVariants = [
         `tuiIconPrintLarge`,
         `tuiIconLoginLarge`,
@@ -31,7 +49,4 @@ export class ExampleTuiActionComponent {
     ];
 
     icon = this.iconVariants[0];
-
-    color = `var(--tui-link)`;
-    background = `var(--tui-base-02)`;
 }
