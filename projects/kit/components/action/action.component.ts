@@ -21,6 +21,9 @@ import {
     selector: `button[tuiAction], a[tuiAction]`,
     templateUrl: `./action.template.html`,
     styleUrls: [`./action.style.less`],
+    host: {
+        class: `tui-island tui-island_hoverable`,
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,

@@ -175,4 +175,15 @@
         width: ~'calc(100% + 2.375rem);'; // margin compensation
         margin: @padding-large calc(-1.25rem + 1px) calc(-1.25rem + 1px); // 1px is compensations of border
     }
+
+    &__marker {
+        &:first-child:not(:only-child) {
+            margin-right: 1.25rem;
+        }
+
+        &:not(:first-child),
+        &:only-child {
+            margin-left: 1.25rem;
+        }
+    }
 }
