@@ -209,4 +209,74 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
         },
         keepAsType: true,
     },
+    {
+        name: 'TuiCreditCardAutofillName',
+        replaceValues: {
+            Off: `off`,
+            CcName: `cc-name`,
+            CcNumber: `cc-number`,
+            CcCsc: `cc-csc`,
+            CcExpMonth: `cc-exp-month`,
+            CcExpYear: `cc-exp-year`,
+            CcExp: `cc-exp`,
+            CcType: `cc-type`,
+        },
+    },
+    {
+        name: 'TuiNameAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Name: `name`,
+            GivenName: `given-name`,
+            AdditionalName: `additional-name`,
+            FamilyName: `family-name`,
+        },
+    },
+    {
+        name: 'TuiAccountAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Username: `username`,
+            NewPassword: `new-password`,
+            CurrentPassword: `current-password`,
+        },
+    },
+    {
+        name: 'TuiEmailAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Email: `email`,
+        },
+    },
+    {
+        name: 'TuiAddressAutofillName',
+        replaceValues: {
+            Off: `off`,
+            StreetAddress: `street-address`,
+            PostalCode: `postal-code`,
+            CountryName: `country-name`,
+        },
+    },
+    {
+        name: 'TuiPhoneAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Tel: `tel`,
+        },
+    },
+    {
+        name: 'TuiDateAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Bday: `bday`,
+        },
+    },
+    {
+        name: 'TuiTransactionAutofillName',
+        replaceValues: {
+            Off: `off`,
+            TransactionCurrency: `transaction-currency`,
+            TransactionAmount: `transaction-amount`,
+        },
+    },
 ];

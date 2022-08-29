@@ -26,8 +26,8 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
+    TuiAutofillFieldName,
     TuiBooleanHandler,
-    TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsElement,
@@ -252,22 +252,16 @@ export class TuiInputCardGroupedComponent
         return this.isFocusable(this.card) && !this.cardFocused;
     }
 
-    get autocompleteCard(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcNumber
-            : TuiCreditCardAutofillName.Off;
+    get autocompleteCard(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-number` : `off`;
     }
 
-    get autocompleteExpire(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcExp
-            : TuiCreditCardAutofillName.Off;
+    get autocompleteExpire(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-exp` : `off`;
     }
 
-    get autocompleteCVC(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcCsc
-            : TuiCreditCardAutofillName.Off;
+    get autocompleteCVC(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-csc` : `off`;
     }
 
     // Safari expiration date autofill workaround
