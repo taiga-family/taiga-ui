@@ -1,3 +1,4 @@
+export * from './autocomplete';
 export * from './date-mode';
 export * from './dialog';
 export * from './event-with';
