@@ -15,9 +15,7 @@ import {
 import {tuiDefaultProp, tuiIsCurrentTarget, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
-import {TuiExpandContentDirective} from './expand-content.directive';
-
-enum State {
+const enum State {
     Idle,
     Loading,
     Prepared,
@@ -29,8 +27,8 @@ const LOADER_HEIGHT = 48;
 @Component({
     selector: `tui-expand`,
     templateUrl: `./expand.template.html`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: [`./expand.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiExpandComponent {
     @ViewChild(`wrapper`)
@@ -62,7 +60,7 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    @ContentChild(TemplateRef)
     content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding(`class._expanded`)
