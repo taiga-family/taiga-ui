@@ -44,7 +44,6 @@ export class TuiNotificationsService {
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptions | TuiNotificationOptionsWithData<I> = {},
     ): Observable<O> {
-        // @ts-ignore
-        return this.alert.open(content, options);
+        return this.alert.open(content as any, options) as unknown as Observable<O>;
     }
 }
