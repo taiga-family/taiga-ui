@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.62.1](https://github.com/tinkoff/taiga-ui/compare/v2.62.0...v2.62.1) (2022-08-29)
+
+### Bug Fixes
+
+- **cdk:** support to override return type in compile time for dialogs
+  ([#2503](https://github.com/tinkoff/taiga-ui/issues/2503))
+  ([6bac921](https://github.com/tinkoff/taiga-ui/commit/6bac921e91362c0d0543d5014bcef186c3bab1ec))
+
 ## [2.62.0](https://github.com/tinkoff/taiga-ui/compare/v2.61.0...v2.62.0) (2022-08-26)
 
 ### Features
