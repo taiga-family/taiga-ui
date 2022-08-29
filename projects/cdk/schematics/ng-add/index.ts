@@ -4,6 +4,7 @@ import {
     addPackageJsonDependency,
     getPackageJsonDependency,
     NodeDependencyType,
+    removePackageJsonDependency,
 } from 'ng-morph';
 import {MAIN_PACKAGES} from './constants/packages';
 import {
@@ -35,6 +36,8 @@ function addDependencies(tree: Tree, options: Schema): void {
             version: TAIGA_VERSION,
         });
     });
+
+    removeTaigaSchematicsPackage(tree);
 
     if (options.addGlobalStyles) {
         addPackageJsonDependency(tree, {
@@ -78,5 +81,15 @@ function addAngularCdkDep(tree: Tree): void {
             name: '@angular/cdk',
             version: `^${majorVersionArr[0]}.0.0`,
         });
+    }
+}
+
+function removeTaigaSchematicsPackage(tree: Tree): void {
+    try {
+        if (!!getPackageJsonDependency(tree, 'taiga-ui')?.version) {
+            removePackageJsonDependency(tree, 'taiga-ui');
+        }
+    } catch {
+        // noop
     }
 }
