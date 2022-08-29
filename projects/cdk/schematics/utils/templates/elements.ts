@@ -39,6 +39,10 @@ export function findElementsByTagName(html: string, tagName: string): Element[] 
     return findElementsInTemplateByFn(html, el => el.tagName === tagName);
 }
 
+export function findElementsByTagNames(html: string, tagNames: string[]): Element[] {
+    return findElementsInTemplateByFn(html, el => tagNames.includes(el.tagName));
+}
+
 /**
  * Parses a HTML fragment and traverses all AST nodes in order find elements that
  * include the specified attribute.
