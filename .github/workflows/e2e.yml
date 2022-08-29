@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       sorry-cypress-director:
-        image: agoldis/sorry-cypress-director:2.1
+        image: agoldis/sorry-cypress-director:2.3.2
         ports:
           - 1234:1234
     strategy:

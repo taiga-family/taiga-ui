@@ -71,7 +71,7 @@ module.exports = {
         '@typescript-eslint/ban-types': 'error',
         '@typescript-eslint/no-for-in-array': 'error',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'off',
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',
