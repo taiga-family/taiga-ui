@@ -449,6 +449,42 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[maxLength]',
         },
     },
+    {
+        from: {
+            attrName: '[tuiHintId]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintDescribe]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiHintId',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintDescribe',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDescribedBy]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[id]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiDescribedBy',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'id',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
