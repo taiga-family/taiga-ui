@@ -413,6 +413,42 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[tuiDropdown]',
         },
     },
+    {
+        from: {
+            attrName: 'tuiTextfieldExampleText',
+            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+        },
+        to: {
+            attrName: 'placeholder',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiTextfieldMaxLength',
+            withTagNames: ['tui-input-tag', 'tui-text-area'],
+        },
+        to: {
+            attrName: 'maxLength',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiTextfieldExampleText]',
+            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+        },
+        to: {
+            attrName: '[placeholder]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiTextfieldMaxLength]',
+            withTagNames: ['tui-input-tag', 'tui-text-area'],
+        },
+        to: {
+            attrName: '[maxLength]',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
