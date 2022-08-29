@@ -25,7 +25,7 @@ export class TuiDialogsExample1 {
         wisely: PolymorpheusContent<any>,
     ): void {
         this.promptService
-            .open<unknown>(choose, {
+            .open(choose, {
                 heading: `Taiga UI is the best`,
                 buttons: [`Absolutely!`, `No way!`],
             })

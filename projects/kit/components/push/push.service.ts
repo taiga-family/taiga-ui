@@ -7,12 +7,10 @@ import {TUI_PUSH_DEFAULT_OPTIONS, TuiPushOptions} from './push.options';
 import {TuiPushAlertComponent} from './push-alert.component';
 
 @Injectable({providedIn: `root`})
-export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions> {
+export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions, string> {
     protected readonly component = new PolymorpheusComponent(TuiPushAlertComponent);
     protected readonly defaultOptions = TUI_PUSH_DEFAULT_OPTIONS;
 
-    // TODO: fix types
-    // @ts-ignore
     open(
         content: PolymorpheusContent<TuiBaseDialogContext<string> & TuiPushOptions>,
         options: Partial<TuiPushOptions> = {},

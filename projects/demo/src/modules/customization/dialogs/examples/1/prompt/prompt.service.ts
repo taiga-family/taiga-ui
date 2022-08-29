@@ -8,7 +8,7 @@ import {PromptOptions} from './prompt-options';
 @Injectable({
     providedIn: `root`,
 })
-export class PromptService extends AbstractTuiDialogService<PromptOptions> {
+export class PromptService extends AbstractTuiDialogService<PromptOptions, boolean> {
     readonly defaultOptions = {
         heading: `Are you sure?`,
         buttons: [`Yes`, `No`],
