@@ -178,8 +178,8 @@
 
     /* Artificially increased specificity */
     &__marker&__marker {
-        color: var(--tui-link);
-        background-color: var(--tui-base-02);
+        color: var(--tui-action-color, var(--tui-link));
+        background-color: var(--tui-action-background, var(--tui-base-02));
 
         &:first-child:not(:only-child) {
             margin-right: 1.25rem;

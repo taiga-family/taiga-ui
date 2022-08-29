@@ -5,10 +5,12 @@ import {
     HostBinding,
     HostListener,
     Inject,
+    Input,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
+    tuiDefaultProp,
     TuiDestroyService,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
@@ -17,9 +19,7 @@ import {
 
 @Component({
     selector: `button[tuiAction], a[tuiAction]`,
-    template: `
-        <ng-content></ng-content>
-    `,
+    templateUrl: `./action.template.html`,
     styleUrls: [`./action.style.less`],
     host: {
         class: `tui-island tui-island_hoverable`,
@@ -32,6 +32,10 @@ import {
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
+    @Input()
+    @tuiDefaultProp()
+    icon = ``;
+
     readonly disabled = false;
 
     constructor(

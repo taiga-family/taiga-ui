@@ -1,14 +1,10 @@
 ```html
 <button
   tuiAction
+  [icon]="icon"
   (click)="onClick()"
 >
   Button
-  <tui-marker-icon
-    size="s"
-    class="tui-island__marker"
-    [src]="icon"
-  ></tui-marker-icon>
 </button>
 
 <a
@@ -20,6 +16,7 @@
     size="m"
     class="tui-island__marker"
     [src]="icon"
+    [style.color]="'red'"
   ></tui-marker-icon>
 </a>
 ```
