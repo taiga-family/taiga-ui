@@ -12,7 +12,7 @@ describe(`expand`, () => {
                 [async]="async"
                 [expanded]="expanded"
             >
-                <ng-template tuiExpandContent>
+                <ng-template>
                     <div #content>content</div>
                 </ng-template>
             </tui-expand>

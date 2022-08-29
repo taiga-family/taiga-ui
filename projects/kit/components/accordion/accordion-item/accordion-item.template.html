@@ -34,13 +34,7 @@
         [async]="async"
         [expanded]="open"
     >
-        <div
-            *ngIf="eagerContent"
-            class="t-content"
-        >
-            <ng-content select="[tuiAccordionItemContent]"></ng-content>
-        </div>
-        <ng-template tuiExpandContent>
+        <ng-template>
             <div
                 *ngIf="lazyContent"
                 automation-id="tui-accordion__item-content"
@@ -51,5 +45,11 @@
                 </ng-container>
             </div>
         </ng-template>
+        <div
+            *ngIf="eagerContent"
+            class="t-content"
+        >
+            <ng-content select="[tuiAccordionItemContent]"></ng-content>
+        </div>
     </tui-expand>
 </div>
