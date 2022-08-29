@@ -1,4 +1,4 @@
-<ng-container *tuiLet="refresh$ | async as bars">
+<ng-container *ngIf="refresh$ | async as bars">
     <div
         *ngIf="bars[0]"
         tuiScrollbarWrapper

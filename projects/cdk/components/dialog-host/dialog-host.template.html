@@ -16,7 +16,7 @@
         *tuiLet="isDialogClosesOnBack$ | async as isDialogClosesOnBack"
         class="t-overlay"
         [class.t-overlay_visible]="dialogs.length"
-        (window:popstate)="closeLast(dialogs, isDialogClosesOnBack)"
-        (transitionend)="onDialog($event, !!dialogs.length, isDialogClosesOnBack)"
+        (window:popstate)="closeLast(dialogs, !!isDialogClosesOnBack)"
+        (transitionend)="onDialog($event, !!dialogs.length, !!isDialogClosesOnBack)"
     ></div>
 </ng-container>

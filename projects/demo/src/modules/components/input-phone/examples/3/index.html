@@ -7,7 +7,7 @@
     (searchChange)="onSearch($event)"
 >
     {{ placeholder$ | async }}
-    <ng-container *ngIf="items.length">
+    <ng-container *ngIf="items?.length">
         <tui-data-list *tuiDataList>
             <button
                 *ngFor="let item of items"

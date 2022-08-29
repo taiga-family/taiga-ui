@@ -4,7 +4,7 @@
     class="t-wrapper"
     [tuiHint]="computedContent"
     [style.-webkit-line-clamp]="lineClamp"
-    [style.word-break]="lineClamp > 1 ? 'break-word' : 'break-all'"
+    [style.word-break]="(lineClamp || 0) > 1 ? 'break-word' : 'break-all'"
     (tuiResize)="updateView()"
 >
     <ng-container *polymorpheusOutlet="content as text">

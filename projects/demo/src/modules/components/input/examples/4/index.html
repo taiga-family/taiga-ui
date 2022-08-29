@@ -12,7 +12,7 @@
             tuiTextfield
             placeholder="Type your name or surname"
         />
-        <ng-container *ngIf="users.length">
+        <ng-container *ngIf="users?.length">
             <tui-data-list *tuiDataList>
                 <button
                     *ngFor="let user of users"
