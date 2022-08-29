@@ -17,6 +17,7 @@ import {
     tuiDefaultProp,
     TuiIdService,
     tuiInRange,
+    tuiIsPresent,
     tuiPure,
     TuiStringHandler,
     tuiZoneOptimized,
@@ -188,9 +189,11 @@ export class TuiLineChartComponent {
         );
     }
 
-    getHovered(hovered: number): TuiPoint | null {
+    getHovered(hovered: number | null): TuiPoint | null {
         // This checks for NaN and null too since async pipe returns null before first item
-        return Number.isInteger(hovered) ? this.value[hovered] : null;
+        return tuiIsPresent(hovered) && Number.isInteger(hovered)
+            ? this.value[hovered]
+            : null;
     }
 
     getBottom(y: number): number {

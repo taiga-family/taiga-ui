@@ -2,7 +2,7 @@
     *tuiLet="isActive$ | async as active"
     #tableCommand
     [content]="tableOptionsDropdown"
-    [canOpen]="active"
+    [canOpen]="!!active"
 >
     <button
         tuiIconButton

@@ -4,7 +4,7 @@
         #cellColorSelect
         [content]="cellColorDropdown"
         [tuiDropdownMaxHeight]="999"
-        [canOpen]="isActive"
+        [canOpen]="!!isActive"
     >
         <button
             tuiIconButton
@@ -20,7 +20,7 @@
             [disabled]="!isActive"
         ></button>
         <div
-            *ngIf="!isBlankColor(cellColor)"
+            *ngIf="!isBlankColor(cellColor || '')"
             class="t-plate t-plate_paint"
             [style.background]="cellColor"
         ></div>

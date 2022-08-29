@@ -20,7 +20,7 @@
         [focusable]="hilite.open"
     ></button>
     <div
-        *ngIf="!isBlankColor(selectedColor)"
+        *ngIf="!isBlankColor(selectedColor || '')"
         class="t-plate"
         [style.background]="selectedColor"
     ></div>
