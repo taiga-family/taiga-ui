@@ -9,6 +9,21 @@
     >
         Component that shows some action. Better to use it in a group.
 
+        <tui-notification class="tui-space_vertical-4">
+            This component requires
+            <code>@taiga-ui/styles</code>
+            optional package with
+            <code>@taiga-ui/styles/taiga-ui-global</code>
+            <a
+                tuiLink
+                routerLink="/getting-started"
+                fragment="styles"
+            >
+                added to your global styles
+            </a>
+            .
+        </tui-notification>
+
         <tui-doc-example
             id="basic"
             i18n-heading
@@ -25,6 +40,33 @@
             [content]="example2"
         >
             <tui-action-example-2></tui-action-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            i18n-heading
+            heading="Sizes"
+            [content]="example3"
+        >
+            <tui-action-example-3></tui-action-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="reversed-no-shadow"
+            i18n-heading
+            heading="Reversed & No Shadow"
+            [content]="example4"
+        >
+            <tui-action-example-4></tui-action-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="vertical"
+            i18n-heading
+            heading="Vertical"
+            [content]="example5"
+        >
+            <tui-action-example-5></tui-action-example-5>
         </tui-doc-example>
     </ng-template>
 

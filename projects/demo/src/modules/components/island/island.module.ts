@@ -7,6 +7,7 @@ import {
     TuiButtonModule,
     TuiErrorModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -35,6 +36,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
+        TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
     ],
     declarations: [
