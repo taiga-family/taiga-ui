@@ -6,7 +6,6 @@
         [content]="listDropdown"
     >
         <button
-            #listBtn
             tuiIconButton
             type="button"
             size="s"
@@ -15,8 +14,7 @@
             tuiHintDirection="top-left"
             automation-id="toolbar__ordering-list-button"
             [tuiHint]="texts.list"
-            [tuiHintId]="listBtn.id"
-            [tuiDescribedBy]="listBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="list.open || listState.unordered || listState.ordered"
             [focusable]="list.open"
         ></button>

@@ -6,7 +6,6 @@
         [content]="formatDropdown"
     >
         <button
-            #formatBtn
             tuiIconButton
             type="button"
             size="s"
@@ -15,8 +14,7 @@
             tuiHintDirection="top-left"
             automation-id="toolbar__font-style-button"
             [tuiHint]="texts.fontStyle"
-            [tuiHintId]="formatBtn.id"
-            [tuiDescribedBy]="formatBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
             [focusable]="format.open"
         ></button>

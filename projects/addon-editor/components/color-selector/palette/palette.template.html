@@ -4,7 +4,7 @@
     class="t-button"
     [style.background]="color.value"
     [tuiHint]="color.key"
-    [tuiHintId]="color.key"
-    [tuiDescribedBy]="color.key"
+    [tuiHintDescribe]="color.key"
+    [id]="color.key"
     (click)="selectedColor.emit(color.value)"
 ></button>

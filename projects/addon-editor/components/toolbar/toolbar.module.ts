@@ -17,12 +17,7 @@ import {
     TuiTextColorModule,
 } from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
-import {
-    TuiButtonModule,
-    TuiDescribedByModule,
-    TuiHintModule,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 
 import {TuiToolbarComponent} from './toolbar.component';
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
@@ -35,7 +30,6 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiEditLinkModule,
-        TuiDescribedByModule,
         TuiTableMergeCellsModule,
         TuiTableCellColorModule,
         TuiTableRowColumnManagerModule,

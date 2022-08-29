@@ -1136,15 +1136,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/described-by`,
-        loadChildren: async () =>
-            (await import(`../directives/described-by/described-by.module`))
-                .ExampleTuiDescribedByModule,
-        data: {
-            title: `DescribedBy`,
-        },
-    },
-    {
         path: `directives/elastic-sticky`,
         loadChildren: async () =>
             (await import(`../directives/elastic-sticky/elastic-sticky.module`))
@@ -1188,12 +1179,12 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/lazy-loading`,
+        path: `directives/hint-describe`,
         loadChildren: async () =>
-            (await import(`../directives/lazy-loading/lazy-loading.module`))
-                .ExampleTuiLazyLoadingModule,
+            (await import(`../directives/hint-describe/hint-describe.module`))
+                .ExampleTuiHintDescribeModule,
         data: {
-            title: `LazyLoading`,
+            title: `HintDescribe`,
         },
     },
     {
@@ -1212,6 +1203,15 @@ export const ROUTES = [
                 .ExampleTuiHintPointerModule,
         data: {
             title: `HintPointer`,
+        },
+    },
+    {
+        path: `directives/lazy-loading`,
+        loadChildren: async () =>
+            (await import(`../directives/lazy-loading/lazy-loading.module`))
+                .ExampleTuiLazyLoadingModule,
+        data: {
+            title: `LazyLoading`,
         },
     },
     {

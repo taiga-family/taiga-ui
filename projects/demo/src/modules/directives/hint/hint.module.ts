@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDescribedByModule, TuiHintModule} from '@taiga-ui/core';
+import {TuiHintModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
@@ -13,7 +13,6 @@ import {ExampleTuiHintComponent} from './hint.component';
     imports: [
         TuiHintModule,
         TuiAvatarModule,
-        TuiDescribedByModule,
         CommonModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,

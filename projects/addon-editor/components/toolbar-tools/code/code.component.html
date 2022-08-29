@@ -3,7 +3,6 @@
     [content]="codesDropdown"
 >
     <button
-        #codeBtn
         tuiIconButton
         type="button"
         size="s"
@@ -11,8 +10,7 @@
         appearance="icon"
         tuiHintDirection="top-left"
         [tuiHint]="hintText$ | async"
-        [tuiHintId]="codeBtn.id"
-        [tuiDescribedBy]="codeBtn.id"
+        [tuiHintDescribe]="''"
         [pseudoActive]="codes.open || (insideCode$ | async)"
         [focusable]="codes.open"
     ></button>

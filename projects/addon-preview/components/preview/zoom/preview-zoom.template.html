@@ -47,11 +47,11 @@
         tuiIconButton
         tuiPreviewAction
         icon="tuiIconCollapse"
-        tuiHintId="Collapse"
         tuiHintDirection="top-right"
         tuiHintAppearance="onDark"
         class="t-reset-button"
         [tuiHint]="texts.reset"
+        [tuiHintDescribe]="''"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
     ></button>

@@ -58,9 +58,9 @@
         ></tui-linear-multi-picker>
     </div>
     <div class="t-buttons">
+        <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
         <button
             *ngFor="let button of buttons"
-            #directionBtn
             tuiIconButton
             type="button"
             size="xs"
@@ -69,8 +69,7 @@
             [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"
             [tuiHint]="button"
-            [tuiHintId]="directionBtn.id"
-            [tuiDescribedBy]="directionBtn.id"
+            [tuiHintDescribe]="''"
             (click)="onDirectionChange(button)"
         ></button>
     </div>

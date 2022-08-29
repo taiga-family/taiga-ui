@@ -6,7 +6,6 @@
         [content]="alignDropdown"
     >
         <button
-            #alignBtn
             tuiIconButton
             type="button"
             size="s"
@@ -14,8 +13,7 @@
             appearance="icon"
             tuiHintDirection="top-left"
             [tuiHint]="texts.justify"
-            [tuiHintId]="alignBtn.id"
-            [tuiDescribedBy]="alignBtn.id"
+            [tuiHintDescribe]="''"
             [pseudoActive]="align.open"
             [focusable]="align.open"
         ></button>

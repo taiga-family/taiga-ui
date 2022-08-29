@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiFocusableModule, TuiLetModule} from '@taiga-ui/cdk';
-import {TuiDescribedByModule, TuiHintModule} from '@taiga-ui/core';
+import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLineChartComponent} from './line-chart.component';
@@ -13,7 +13,6 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
         PolymorpheusModule,
         TuiHintModule,
         TuiFocusableModule,
-        TuiDescribedByModule,
         TuiLetModule,
     ],
     declarations: [TuiLineChartComponent, TuiLineChartHintDirective],

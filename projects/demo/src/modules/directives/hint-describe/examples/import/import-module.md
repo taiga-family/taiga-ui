@@ -1,12 +1,12 @@
 ```ts
-import {TuiDescribedByModule} from '@taiga-ui/kit';
+import {TuiHintModule} from '@taiga-ui/core';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiDescribedByModule,
+    TuiHintModule,
   ],
   // ...
 })

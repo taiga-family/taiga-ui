@@ -1,46 +1,34 @@
 <tui-doc-page
-    header="Hint"
+    header="HintDescribe"
     package="CORE"
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>Directive to show a hint by hover of an element</p>
+        <p i18n>Directive to show a hint in accessible way upon keyboard focus</p>
 
         <tui-doc-example
-            id="multiple"
+            id="base"
             i18n-heading
             heading="Basic"
             [content]="example1"
         >
-            <tui-hint-example-1></tui-hint-example-1>
+            <tui-hint-describe-example-1></tui-hint-describe-example-1>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <ng-template #hint>
-                To be accessible, hint should be set to a focusable element. See
-                <a
-                    tuiLink
-                    routerLink="/directives/hint-describe"
-                >
-                    <code>HintDescribe</code>
-                </a>
-            </ng-template>
-            <span
-                [tuiHint]="hint"
+            <input
+                tuiHint="I will be visible upon keyboard focus"
+                tuiHintDescribe="qwerty"
+                placeholder="My id is 'qwerty'"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
-                [tuiHintShowDelay]="showDelay"
-                [tuiHintHideDelay]="hideDelay"
-                [tuiHintDescribe]="'qwerty'"
-            >
-                Hover it!
-            </span>
-            <input id="qwerty" />
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="tuiHint"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -48,20 +36,13 @@
                 Content
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintShowDelay"
+                i18n
+                documentationPropertyName="tuiHintDescribe"
                 documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="showDelay"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="id"
             >
-                Show Delay
-            </ng-template>
-            <ng-template
-                documentationPropertyName="tuiHintHideDelay"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="hideDelay"
-            >
-                Hide Delay
+                Id of the element
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

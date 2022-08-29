@@ -15,7 +15,6 @@ import {
     TuiRectAccessor,
     TuiVehicle,
 } from '@taiga-ui/core/abstract';
-import {DESCRIBED_BY} from '@taiga-ui/core/constants';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -38,10 +37,6 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    @Input()
-    @tuiDefaultProp()
-    tuiHintId = ``;
-
     @Input(`tuiHint`)
     @tuiDefaultProp()
     content: PolymorpheusContent<C> = ``;
@@ -62,13 +57,7 @@ export class TuiHintDirective<C>
         @Optional()
         @Inject(TuiActiveZoneDirective)
         readonly activeZone?: TuiActiveZoneDirective | null,
-    ) {
-        this.hintService.register(this);
-    }
-
-    get id(): string | undefined {
-        return this.tuiHintId ? this.tuiHintId + DESCRIBED_BY : undefined;
-    }
+    ) {}
 
     ngOnChanges(): void {
         if (!this.content) {
@@ -78,7 +67,6 @@ export class TuiHintDirective<C>
 
     ngOnDestroy(): void {
         this.toggle(false);
-        this.hintService.unregister(this);
     }
 
     getClientRect(): ClientRect {
