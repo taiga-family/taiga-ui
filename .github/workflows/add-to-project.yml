@@ -12,4 +12,3 @@ jobs:
         with:
           project-url: https://github.com/orgs/Tinkoff/projects/3
           github-token: ${{ secrets.TINKOFF_BOT_PAT }}
-          labeled: 'state: need triage'
