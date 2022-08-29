@@ -176,11 +176,7 @@
         margin: @padding-large calc(-1.25rem + 1px) calc(-1.25rem + 1px); // 1px is compensations of border
     }
 
-    /* Artificially increased specificity */
-    &__marker&__marker {
-        color: var(--tui-action-color, var(--tui-link));
-        background-color: var(--tui-action-background, var(--tui-base-02));
-
+    &__marker {
         &:first-child:not(:only-child) {
             margin-right: 1.25rem;
         }
