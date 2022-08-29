@@ -55,14 +55,6 @@ describe(`Card`, () => {
 
             expect(hasPaymentSystemLogo).toBeTruthy();
         });
-
-        it(`returns empty string if paymentSystem is not inputed`, () => {
-            testComponent.paymentSystem = null;
-
-            fixture.detectChanges();
-
-            expect(testComponent.component.paymentSystemLogo).toBe(``);
-        });
     });
 
     describe(`brandLogo`, () => {
