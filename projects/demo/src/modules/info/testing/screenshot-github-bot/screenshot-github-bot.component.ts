@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 export const SCREENSHOT_BOT_NAME = `Lumberjack`;
 export const SCREENSHOT_BOT_LINK = `https://github.com/apps/lumberjack-bot`;
@@ -7,6 +7,7 @@ export const SCREENSHOT_BOT_LINK = `https://github.com/apps/lumberjack-bot`;
     selector: `screenshot-github-bot`,
     templateUrl: `./screenshot-github-bot.template.html`,
     styleUrls: [`./screenshot-github-bot.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScreenshotGithubBotComponent {
     readonly botName = SCREENSHOT_BOT_NAME;
