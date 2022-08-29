@@ -1,5 +1,4 @@
 <button
-    #insert
     tuiIconButton
     type="button"
     size="s"
@@ -7,13 +6,11 @@
     appearance="icon"
     [focusable]="false"
     [tuiHint]="insertGroupText$ | async"
-    [tuiHintId]="insert.id"
-    [tuiDescribedBy]="insert.id"
+    [tuiHintDescribe]="''"
     (click)="addGroup()"
 ></button>
 
 <button
-    #remove
     tuiIconButton
     type="button"
     size="s"
@@ -22,7 +19,6 @@
     [focusable]="false"
     [disabled]="!!(disabled$ | async)"
     [tuiHint]="removeGroupText$ | async"
-    [tuiHintId]="remove.id"
-    [tuiDescribedBy]="remove.id"
+    [tuiHintDescribe]="''"
     (click)="removeGroup()"
 ></button>

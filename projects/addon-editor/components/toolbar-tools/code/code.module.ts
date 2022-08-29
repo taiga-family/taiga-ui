@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDescribedByModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -16,7 +15,6 @@ import {TuiCodeComponent} from './code.component';
         TuiHostedDropdownModule,
         TuiButtonModule,
         TuiHintModule,
-        TuiDescribedByModule,
         TuiDataListModule,
     ],
     declarations: [TuiCodeComponent],

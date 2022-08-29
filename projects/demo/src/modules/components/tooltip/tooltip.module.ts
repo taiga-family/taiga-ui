@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiDescribedByModule,
     TuiHintModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -31,7 +30,6 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiInputModule,
         PolymorpheusModule,
         TuiModeModule,
-        TuiDescribedByModule,
         TuiAddonDocModule,
         CommonModule,
         FormsModule,

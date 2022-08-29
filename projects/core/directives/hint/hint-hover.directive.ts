@@ -1,4 +1,4 @@
-import {Directive, Inject, Input} from '@angular/core';
+import {Directive, HostListener, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
@@ -33,6 +33,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
+    @HostListener(`click`, [`true`])
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
     }

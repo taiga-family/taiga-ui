@@ -2,6 +2,7 @@ export * from './hint.component';
 export * from './hint.directive';
 export * from './hint.module';
 export * from './hint.providers';
+export * from './hint-describe.directive';
 export * from './hint-driver.directive';
 export * from './hint-host.directive';
 export * from './hint-hover.directive';

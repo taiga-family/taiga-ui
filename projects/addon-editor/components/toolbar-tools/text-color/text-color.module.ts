@@ -4,7 +4,6 @@ import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/color-selector
 import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDescribedByModule,
     TuiDropdownModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -19,7 +18,6 @@ import {TuiTextColorComponent} from './text-color.component';
         TuiHostedDropdownModule,
         TuiDropdownModule,
         TuiHintModule,
-        TuiDescribedByModule,
         TuiPaletteModule,
         TuiActiveZoneModule,
         TuiLetModule,

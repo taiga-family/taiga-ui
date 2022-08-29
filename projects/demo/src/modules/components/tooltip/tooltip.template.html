@@ -51,8 +51,8 @@
                 [hideDelay]="hideDelay"
             ></tui-tooltip>
             <input
+                id="qwerty"
                 placeholder="id: qwerty"
-                tuiDescribedBy="qwerty"
             />
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -82,11 +82,9 @@
                 [(documentationPropertyValue)]="describeId"
             >
                 To be accessible, hint should be set to a focusable element and user with Screen Readers will listen to
-                hint text after a small delay when focusing textfield. Set unique
-                <code>describeId</code>
-                and use
-                <code>[tuiDescribedBy]="theSameId"</code>
-                directive on focusable element
+                hint text after a small delay when focusing textfield. Set
+                <code>id</code>
+                of your focusable element here.
             </ng-template>
             <ng-template
                 i18n
