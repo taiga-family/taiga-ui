@@ -16,16 +16,19 @@ const DEFAULT_OPTIONS = {
     providedIn: `root`,
 })
 export class TuiMobileDialogService extends AbstractTuiDialogService<
-    TuiMobileDialogOptions<any>
+    TuiMobileDialogOptions<any>,
+    number
 > {
     protected readonly component = DIALOG;
     protected readonly defaultOptions: TuiMobileDialogOptions<any> =
         DEFAULT_OPTIONS as any;
 
-    open<I, O = number>(
-        content: PolymorpheusContent<TuiBaseDialogContext<O> & TuiMobileDialogOptions<I>>,
-        options: Partial<TuiMobileDialogOptions<I>> = {},
-    ): Observable<O> {
+    open(
+        content: PolymorpheusContent<
+            TuiBaseDialogContext<number> & TuiMobileDialogOptions<any>
+        >,
+        options: Partial<TuiMobileDialogOptions<any>> = {},
+    ): Observable<number> {
         return super.open(content, options);
     }
 }
