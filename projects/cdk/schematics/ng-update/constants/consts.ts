@@ -402,4 +402,14 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
     },
+    {
+        from: {
+            name: 'TuiAutofillFieldNameT',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiAutofillFieldName',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
 ];

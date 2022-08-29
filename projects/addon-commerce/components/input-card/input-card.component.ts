@@ -18,7 +18,7 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiCreditCardAutofillName,
+    TuiAutofillFieldName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
@@ -95,10 +95,8 @@ export class TuiInputCardComponent
         return paymentSystem ? icons[paymentSystem] : null;
     }
 
-    get autocomplete(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcNumber
-            : TuiCreditCardAutofillName.Off;
+    get autocomplete(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-number` : `off`;
     }
 
     get paymentSystem(): TuiPaymentSystem | null {

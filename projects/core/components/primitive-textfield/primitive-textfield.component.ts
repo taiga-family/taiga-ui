@@ -17,7 +17,6 @@ import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    TuiCreditCardAutofillName,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiPure,
@@ -236,8 +235,7 @@ export class TuiPrimitiveTextfieldComponent
 
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
-        return this.nativeFocusableElement?.autocomplete ===
-            TuiCreditCardAutofillName.CcExp
+        return this.nativeFocusableElement?.autocomplete === `cc-exp`
             ? `ccexpiryyear`
             : null;
     }

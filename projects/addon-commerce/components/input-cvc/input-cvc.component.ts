@@ -14,7 +14,7 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiCreditCardAutofillName,
+    TuiAutofillFieldName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -86,10 +86,8 @@ export class TuiInputCVCComponent
         return !!this.input && this.input.focused;
     }
 
-    get autocomplete(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcCsc
-            : TuiCreditCardAutofillName.Off;
+    get autocomplete(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-csc` : `off`;
     }
 
     get computedPlaceholder(): string {
