@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiSelectComponent} from './select.component';
 
@@ -7,7 +7,7 @@ import {TuiSelectComponent} from './select.component';
     selector: `tui-select`,
     providers: [tuiAsTextfieldHost(TuiSelectDirective)],
 })
-export class TuiSelectDirective extends TuiAbstractTextfieldHost<
+export class TuiSelectDirective extends AbstractTuiTextfieldHost<
     TuiSelectComponent<unknown>
 > {
     get readOnly(): boolean {

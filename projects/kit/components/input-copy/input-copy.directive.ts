@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputCopyComponent} from './input-copy.component';
 
@@ -7,7 +7,7 @@ import {TuiInputCopyComponent} from './input-copy.component';
     selector: `tui-input-copy`,
     providers: [tuiAsTextfieldHost(TuiInputCopyDirective)],
 })
-export class TuiInputCopyDirective extends TuiAbstractTextfieldHost<TuiInputCopyComponent> {
+export class TuiInputCopyDirective extends AbstractTuiTextfieldHost<TuiInputCopyComponent> {
     onValueChange(value: string): void {
         this.host.onValueChange(value);
     }

@@ -1,5 +1,6 @@
 import {ExistingProvider, Type} from '@angular/core';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiRectAccessor {
     abstract getClientRect(): ClientRect;
 }

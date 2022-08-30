@@ -7,7 +7,7 @@ import {TuiDriver} from './driver';
 import {TuiVehicle} from './vehicle';
 
 @Directive()
-export class AbstractTuiDriverDirective {
+export abstract class AbstractTuiDriverDirective {
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TuiDriver) driver$: Observable<boolean>,

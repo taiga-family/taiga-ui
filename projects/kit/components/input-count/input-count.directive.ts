@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputCountComponent} from './input-count.component';
 
@@ -8,7 +8,7 @@ import {TuiInputCountComponent} from './input-count.component';
     providers: [tuiAsTextfieldHost(TuiInputCountDirective)],
 })
 export class TuiInputCountDirective
-    extends TuiAbstractTextfieldHost<TuiInputCountComponent>
+    extends AbstractTuiTextfieldHost<TuiInputCountComponent>
     implements AfterViewInit
 {
     onValueChange(): void {

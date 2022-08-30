@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputCardComponent} from './input-card.component';
 
@@ -8,7 +8,7 @@ import {TuiInputCardComponent} from './input-card.component';
     providers: [tuiAsTextfieldHost(TuiInputCardDirective)],
 })
 export class TuiInputCardDirective
-    extends TuiAbstractTextfieldHost<TuiInputCardComponent>
+    extends AbstractTuiTextfieldHost<TuiInputCardComponent>
     implements AfterViewInit
 {
     onValueChange(value: string): void {

@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiTextAreaComponent} from './text-area.component';
 
@@ -7,7 +7,7 @@ import {TuiTextAreaComponent} from './text-area.component';
     selector: `tui-text-area`,
     providers: [tuiAsTextfieldHost(TuiTextAreaDirective)],
 })
-export class TuiTextAreaDirective extends TuiAbstractTextfieldHost<TuiTextAreaComponent> {
+export class TuiTextAreaDirective extends AbstractTuiTextfieldHost<TuiTextAreaComponent> {
     onValueChange(value: string): void {
         this.host.onValueChange(value);
     }

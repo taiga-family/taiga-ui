@@ -1,6 +1,6 @@
 import {Directive, DoCheck} from '@angular/core';
 import {tuiIsInput} from '@taiga-ui/cdk';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPasswordComponent} from './input-password.component';
 
@@ -9,7 +9,7 @@ import {TuiInputPasswordComponent} from './input-password.component';
     providers: [tuiAsTextfieldHost(TuiInputPasswordDirective)],
 })
 export class TuiInputPasswordDirective
-    extends TuiAbstractTextfieldHost<TuiInputPasswordComponent>
+    extends AbstractTuiTextfieldHost<TuiInputPasswordComponent>
     implements DoCheck
 {
     input?: HTMLInputElement;

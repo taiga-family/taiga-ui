@@ -1,5 +1,5 @@
 import {Directive, DoCheck} from '@angular/core';
-import {TuiAbstractTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputNumberComponent} from './input-number.component';
 
@@ -8,7 +8,7 @@ import {TuiInputNumberComponent} from './input-number.component';
     providers: [tuiAsTextfieldHost(TuiInputNumberDirective)],
 })
 export class TuiInputNumberDirective
-    extends TuiAbstractTextfieldHost<TuiInputNumberComponent>
+    extends AbstractTuiTextfieldHost<TuiInputNumberComponent>
     implements DoCheck
 {
     input?: HTMLInputElement;
