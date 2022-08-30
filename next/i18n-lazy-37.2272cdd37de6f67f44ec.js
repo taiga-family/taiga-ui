@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[20692],{41131:(c,o,_)=>{var s=_(14607),a=_(9357),n=_(71245),E=_(228),t=_(46798),O=_(75843);Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({name:"dutch"},t.m),O.i),E.p),s.A),a.Q),n.c)}}]);
