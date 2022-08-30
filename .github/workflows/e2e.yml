@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 10
 
       - name: Try rebase locally for check affected e2e
-        if: !contains(github.head_ref , 'v3.x')
+        if: ${{ !contains(github.head_ref , 'v3.x') }}
         uses: ./.github/actions/rebase
 
       - name: Setup Node.js and Cache
