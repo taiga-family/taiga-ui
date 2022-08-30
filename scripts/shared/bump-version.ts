@@ -5,15 +5,17 @@ export function bumpVersion(version: string, mode: TuiReleaseMode): string {
         .split(/[.-]/)
         .map(value => Number(value));
 
+    const possibilityMajor = rc === -1 ? ++major : major;
+
     switch (mode) {
         case `major`:
-            return `${++major}.0.0`;
+            return `${possibilityMajor}.0.0`;
         case `minor`:
-            return `${major}.${++minor}.0`;
+            return `${possibilityMajor}.${++minor}.0`;
         case `patch`:
-            return `${major}.${minor}.${++patch}`;
+            return `${possibilityMajor}.${minor}.${++patch}`;
         case `prerelease`:
-            return `${rc === -1 ? ++major : major}.0.0-rc.${++rc}`;
+            return `${possibilityMajor}.0.0-rc.${++rc}`;
         default:
             return version;
     }
