@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'v3.x'
     paths:
       - 'projects/**'
       - 'angular.json'
