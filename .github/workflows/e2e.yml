@@ -24,7 +24,7 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') && !contains(github.head_ref, 'v3.x') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo # for reuse in e2e jobs
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +48,7 @@ jobs:
         run: npm run build:demo
 
   cypress:
-    if: ${{ !contains(github.head_ref , 'release/') && !contains(github.head_ref, 'v3.x') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     runs-on: ubuntu-latest
     services:
