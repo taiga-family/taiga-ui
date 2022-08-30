@@ -5,15 +5,19 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiPx} from '@taiga-ui/cdk';
 import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
+    DEFAULT_ROWS,
+    LINE_HEIGHT_L,
+    TuiTextAreaComponent,
+    TuiTextAreaModule,
+} from '@taiga-ui/kit';
+import {
     configureTestSuite,
     TuiNativeInputPO,
     TuiPageObject,
     tuiTestFormControlState,
 } from '@taiga-ui/testing';
 
-import {DEFAULT_ROWS, LINE_HEIGHT_L, TuiTextAreaComponent} from '../text-area.component';
-import {TuiTextAreaModule} from '../text-area.module';
-
+// @ts-ignore
 const DEFAULT_HEIGHT = 108;
 
 describe(`TextArea`, () => {
@@ -72,10 +76,6 @@ describe(`TextArea`, () => {
 
     function getPlaceholder(): DebugElement | null {
         return pageObject.getByAutomationId(`${testContext.prefix}placeholder`);
-    }
-
-    function getWrapper(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}wrapper`)!;
     }
 
     function getTooltip(): DebugElement {
@@ -174,7 +174,9 @@ describe(`TextArea`, () => {
 
             fixture.detectChanges();
 
-            expect(getWrapper().nativeElement.offsetHeight > DEFAULT_HEIGHT).toBeTruthy();
+            expect(
+                (testComponent.component.computeMaxHeight ?? 0) > DEFAULT_HEIGHT,
+            ).toBeTruthy();
         });
     });
 

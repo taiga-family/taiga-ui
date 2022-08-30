@@ -1,4 +1,4 @@
-import {tuiToGradient} from '../to-gradient';
+import {tuiToGradient} from '@taiga-ui/addon-editor';
 
 describe(`tuiToGradient`, () => {
     it(`test case 1`, () => {

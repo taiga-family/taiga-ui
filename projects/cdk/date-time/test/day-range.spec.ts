@@ -1,6 +1,4 @@
-import {RANGE_SEPARATOR_CHAR} from '../date-time';
-import {TuiDay} from '../day';
-import {TuiDayRange} from '../day-range';
+import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
 describe(`TuiDayRange`, () => {
     describe(`static method`, () => {

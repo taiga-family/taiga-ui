@@ -1,4 +1,4 @@
-import {tuiIsNodeIn} from '../is-node-in';
+import {tuiIsNodeIn} from '@taiga-ui/cdk';
 
 describe(`tuiIsNodeIn`, () => {
     it(`tag selector`, () => {

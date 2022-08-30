@@ -1,9 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiTagComponent} from '../tag.component';
-import {TuiTagModule} from '../tag.module';
 
 describe(`Tag`, () => {
     @Component({
@@ -33,7 +31,7 @@ describe(`Tag`, () => {
         removable = true;
         editable = true;
         autoColor = false;
-        editedSpy = jasmine.createSpy(`edited`);
+        editedSpy = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -71,7 +69,7 @@ describe(`Tag`, () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
-        testComponent.editedSpy.calls.reset();
+        testComponent.editedSpy.mockClear();
         fixture.detectChanges();
     });
 

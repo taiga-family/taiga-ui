@@ -1,4 +1,4 @@
-import {svgNodeFilter} from '../svg-node-filter';
+import {svgNodeFilter} from '@taiga-ui/cdk';
 
 // TODO: 3.0 rewrite tests after IE removing
 describe(`SvgNodeFilter`, () => {

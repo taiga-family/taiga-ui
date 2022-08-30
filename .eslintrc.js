@@ -98,7 +98,8 @@ module.exports = {
                 currentProject: `(?<=/projects/)([-\\w]+)`,
                 ignoreImports: [
                     '\\?raw',
-                    '@taiga-ui/testing/cypress', // TODO temporary workaround until it can be imported from @taiga-ui/testing
+                    '@taiga-ui/testing/cypress',
+                    '@taiga-ui/testing/setup-jest',
                 ],
             },
         ],

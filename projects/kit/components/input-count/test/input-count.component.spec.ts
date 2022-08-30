@@ -1,14 +1,8 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiInputCountComponent, TuiInputCountModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputCountComponent} from '../input-count.component';
-import {TuiInputCountModule} from '../input-count.module';
-import {
-    TUI_INPUT_COUNT_DEFAULT_OPTIONS,
-    TUI_INPUT_COUNT_OPTIONS,
-} from '../input-count-options';
 
 describe(`InputCount`, () => {
     @Component({
@@ -172,7 +166,7 @@ describe(`InputCount`, () => {
                 testComponent.step = 5;
                 testComponent.min = -1;
                 testComponent.max = 12;
-                fixture.detectChanges();
+                fixture.autoDetectChanges();
             });
 
             it(`Pressing the plus increases the value by the specified step`, () => {
@@ -191,6 +185,10 @@ describe(`InputCount`, () => {
 
             it(`Cannot make value greater than maxValue`, () => {
                 clickPlusButton(); // the new value is 11
+
+                expect(inputPO.value).toBe(`11`);
+                expect(testComponent.control.value).toBe(11);
+
                 clickPlusButton(); // the new value would be 16, but it is greater than maxValue
 
                 expect(inputPO.value).toBe(`12`);
@@ -230,7 +228,7 @@ describe(`InputCount`, () => {
             testComponent.defaultStep = true;
         });
 
-        it(`Entering in the field changes the valuecontrol`, () => {
+        it(`Entering in the field changes the value control`, () => {
             fixture.detectChanges();
 
             inputPO.sendText(`12`);
@@ -283,7 +281,7 @@ describe(`InputCount`, () => {
             expect(testComponent.control.value).toBe(0);
         });
 
-        it(`Entering in the field negative value changes the valuecontrol correctly`, () => {
+        it(`Entering in the field negative value changes the value control correctly`, () => {
             testComponent.min = -100;
             fixture.detectChanges();
 
@@ -300,7 +298,7 @@ describe(`InputCount`, () => {
             testComponent.step = 5;
             testComponent.min = 2;
             testComponent.max = 17;
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         it(`Pressing the up arrow increases the value by the specified step`, () => {
@@ -366,20 +364,20 @@ describe(`InputCount`, () => {
         testComponent.defaultStep = true;
         fixture.detectChanges();
 
-        expect(inputPO.nativeElement.getAttribute(`maxlength`)).toBe(`18`);
+        expect(inputPO.nativeElement?.getAttribute(`maxlength`)).toBe(`18`);
     });
 
     function clickPlusButton(): void {
         const plusButton = getPlusButton();
 
-        plusButton!.nativeElement.click();
+        plusButton?.nativeElement.click();
         fixture.detectChanges();
     }
 
     function clickMinusButton(): void {
         const minusButton = getMinusButton();
 
-        minusButton!.nativeElement.click();
+        minusButton?.nativeElement.click();
         fixture.detectChanges();
     }
 
@@ -390,96 +388,4 @@ describe(`InputCount`, () => {
     function getMinusButton(): DebugElement | null {
         return pageObject.getByAutomationId(`${testContext.prefix}minus-button`);
     }
-});
-
-describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
-    @Component({
-        template: `
-            <tui-input-count
-                [formControl]="control"
-                [readOnly]="readOnly"
-            ></tui-input-count>
-        `,
-    })
-    class TestComponent {
-        @ViewChild(TuiInputCountComponent)
-        component!: TuiInputCountComponent;
-
-        control = new FormControl();
-        readOnly = false;
-    }
-
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let inputPO: TuiNativeInputPO;
-
-    const min = 0;
-    const max = 12;
-    const step = 5;
-
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCountModule],
-            declarations: [TestComponent],
-            providers: [
-                {
-                    provide: TUI_INPUT_COUNT_OPTIONS,
-                    useValue: {
-                        ...TUI_INPUT_COUNT_DEFAULT_OPTIONS,
-                        icons: {
-                            up: `tuiIconChevronUp`,
-                            down: `tuiIconChevronDown`,
-                        },
-                        step,
-                        min,
-                        max,
-                    },
-                },
-            ],
-        });
-    });
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(TestComponent);
-        testComponent = fixture.componentInstance;
-
-        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
-    });
-
-    describe(`A step other than 1 is set`, () => {
-        beforeEach(() => {
-            testComponent.control.setValue(6);
-            fixture.detectChanges();
-        });
-
-        it(`Increase the value by the specified step`, () => {
-            testComponent.component.increaseValue();
-
-            expect(inputPO.value).toBe(`11`);
-            expect(testComponent.control.value).toBe(11);
-        });
-
-        it(`Decrease the value by a given step`, () => {
-            testComponent.component.decreaseValue();
-
-            expect(inputPO.value).toBe(`1`);
-            expect(testComponent.control.value).toBe(1);
-        });
-
-        it(`Cannot make value greater than maxValue`, () => {
-            testComponent.component.increaseValue(); // the new value is 11
-            testComponent.component.increaseValue(); // the new value would be 16, but it is greater than maxValue
-
-            expect(inputPO.value).toBe(max.toString());
-            expect(testComponent.control.value).toBe(max);
-        });
-
-        it(`Cannot make value less than min`, () => {
-            testComponent.component.decreaseValue(); // value became === 1
-            testComponent.component.decreaseValue(); // the new value would be -4, but it's less than min
-
-            expect(inputPO.value).toBe(min.toString());
-            expect(testComponent.control.value).toBe(min);
-        });
-    });
 });

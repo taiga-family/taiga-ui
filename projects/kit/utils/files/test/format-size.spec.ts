@@ -1,4 +1,4 @@
-import {tuiFormatSize} from '../format-size';
+import {tuiFormatSize} from '@taiga-ui/kit';
 
 const units: [string, string, string] = [`B`, `KB`, `MB`];
 

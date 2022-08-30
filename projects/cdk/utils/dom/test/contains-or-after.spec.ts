@@ -1,4 +1,4 @@
-import {tuiContainsOrAfter} from '../contains-or-after';
+import {tuiContainsOrAfter} from '@taiga-ui/cdk';
 
 describe(`tuiContainsOrAfter`, () => {
     it(`Parent contains child`, () => {

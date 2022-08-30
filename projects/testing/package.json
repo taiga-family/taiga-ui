@@ -10,15 +10,14 @@
         "@types/cypress-image-snapshot": "^3.1.6",
         "@types/jasmine": "~3.10.6",
         "@types/jasmine-ajax": "^3.3.3",
-        "jasmine": "^4.2.0",
+        "@types/jest": "^29.1.2",
+        "@types/jsdom": "^16.2.15",
+        "jasmine": "^4.4.0",
         "jasmine-spec-reporter": "^4.2.1",
-        "karma": "^6.4.0",
-        "karma-allure-reporter": "^1.4.6",
-        "karma-chrome-launcher": "~2.2.0",
-        "karma-coverage-istanbul-reporter": "~2.1.1",
-        "karma-jasmine": "^2.0.1",
-        "karma-jasmine-ajax": "^0.1.13",
-        "karma-jasmine-html-reporter": "^1.7.0",
-        "karma-mocha-reporter": "^2.2.5"
+        "jest": "^29.1.2",
+        "jest-environment-jsdom": "^29.1.2",
+        "jest-environment-node": "^29.1.2",
+        "jest-preset-angular": "^12.2.2",
+        "ts-jest": "^29.0.3"
     }
 }

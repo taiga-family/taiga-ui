@@ -1,4 +1,4 @@
-import {tuiHexToRgb} from '../hex-to-rgb';
+import {tuiHexToRgb} from '@taiga-ui/cdk';
 
 describe(`tuiHexToRgb`, () => {
     it(`works`, () => {

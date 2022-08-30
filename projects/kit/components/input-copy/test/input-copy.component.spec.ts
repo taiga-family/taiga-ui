@@ -3,10 +3,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputCopyComponent, TuiInputCopyModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputCopyComponent} from '../input-copy.component';
-import {TuiInputCopyModule} from '../input-copy.module';
 
 describe(`InputCopy`, () => {
     @Component({
@@ -92,7 +90,7 @@ describe(`InputCopy`, () => {
 
     describe(`Behavior when clicking on the icon`, () => {
         it(`When you click on the "Copy" icon, copy command is executed`, () => {
-            const func = spyOn(document, `execCommand`);
+            const func = jest.spyOn(document, `execCommand`);
 
             getIcon()!.nativeElement.click();
 

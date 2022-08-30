@@ -1,4 +1,4 @@
-import {tuiUniqBy} from '../uniq-by';
+import {tuiUniqBy} from '@taiga-ui/cdk';
 
 describe(`uniqBy`, () => {
     it(`removes entries with repeated key`, () => {

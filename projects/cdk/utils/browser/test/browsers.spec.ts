@@ -1,6 +1,4 @@
-import {tuiIsEdge} from '../is-edge';
-import {tuiIsEdgeOlderThan} from '../is-edge-older-than';
-import {tuiIsFirefox} from '../is-firefox';
+import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox} from '@taiga-ui/cdk';
 
 describe(`Browsers`, () => {
     it(`isEdge`, () => {

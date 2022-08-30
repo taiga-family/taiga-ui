@@ -1,4 +1,4 @@
-import {tuiPure} from '../pure';
+import {tuiPure} from '@taiga-ui/cdk';
 
 describe(`tuiPure`, () => {
     it(`calls getter only once and then sets result as a value property on the object`, () => {

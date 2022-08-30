@@ -29,10 +29,3 @@ export function tuiMockDateInside(dateMock: Date | number, callback: () => void)
     callback();
     tuiRestoreRealDate();
 }
-
-// @bad TODO: find a legal way to spoof time zone on windows
-export function tuiPendingIfNotMoscowTimeZone(): void {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== `Europe/Moscow`) {
-        pending();
-    }
-}

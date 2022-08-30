@@ -1,11 +1,12 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TuiInputCardGroupedComponent,
+    TuiInputCardGroupedModule,
+} from '@taiga-ui/addon-commerce';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
-
-import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
-import {TuiInputCardGroupedModule} from '../input-card-grouped.module';
 
 describe(`InputCardGrouped`, () => {
     @Component({
@@ -29,7 +30,7 @@ describe(`InputCardGrouped`, () => {
 
         control = new FormControl(``);
 
-        onBinChange = jasmine.createSpy(`bin`);
+        onBinChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -45,7 +46,7 @@ describe(`InputCardGrouped`, () => {
         });
     });
 
-    beforeEach(async () => {
+    beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
@@ -53,7 +54,7 @@ describe(`InputCardGrouped`, () => {
         inputExpirePO = new TuiNativeInputPO(fixture, `tui-input-card-grouped__expire`);
         inputCVCPO = new TuiNativeInputPO(fixture, `tui-input-card-grouped__cvc`);
 
-        await fixture.whenStable();
+        fixture.autoDetectChanges();
     });
 
     it(`Clear resets control to null`, () => {
@@ -83,7 +84,7 @@ describe(`InputCardGrouped`, () => {
 
             it(`Value has changed, first 6 digits are the same`, () => {
                 setCard(`123456789`);
-                testComponent.onBinChange.calls.reset();
+                testComponent.onBinChange.mockClear();
                 setCard(`123456987`);
 
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
@@ -91,7 +92,7 @@ describe(`InputCardGrouped`, () => {
 
             it(`Value has changed, first 6 digits have changed`, () => {
                 setCard(`123456789`);
-                testComponent.onBinChange.calls.reset();
+                testComponent.onBinChange.mockClear();
                 setCard(`654321789`);
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith(`654321`);
@@ -99,7 +100,7 @@ describe(`InputCardGrouped`, () => {
 
             it(`Value has changed, now it has less than 6 digits`, () => {
                 setCard(`123456789`);
-                testComponent.onBinChange.calls.reset();
+                testComponent.onBinChange.mockClear();
                 setCard(`123`);
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
@@ -234,7 +235,7 @@ describe(`InputCardGrouped`, () => {
 
             expect(testComponent.control.valid).toEqual(true);
             expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
-            expect(testComponent.component.icon).toEqual(jasmine.any(TemplateRef));
+            expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
 
             expect(expectCardOutlet()).toBeFalsy();

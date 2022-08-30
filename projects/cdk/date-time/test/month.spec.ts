@@ -1,6 +1,5 @@
-import {TuiMonthNumber} from '../../enums/month-number';
-import {TuiMonth} from '../month';
-import {tuiMockDateInside, tuiPendingIfNotMoscowTimeZone} from './helpers';
+import {TuiMonth, TuiMonthNumber} from '@taiga-ui/cdk';
+import {tuiMockDateInside} from '@taiga-ui/cdk/date-time/test/helpers';
 
 describe(`TuiMonth`, () => {
     describe(`static method`, () => {
@@ -119,10 +118,6 @@ describe(`TuiMonth`, () => {
         });
 
         describe(`currentLocal`, () => {
-            beforeEach(() => {
-                tuiPendingIfNotMoscowTimeZone();
-            });
-
             it(`UTC month is the same as local`, () => {
                 tuiMockDateInside(Date.UTC(2000, 0, 31, 10), () => {
                     const currentDate = TuiMonth.currentLocal();
@@ -143,10 +138,6 @@ describe(`TuiMonth`, () => {
         });
 
         describe(`currentUtc`, () => {
-            beforeEach(() => {
-                tuiPendingIfNotMoscowTimeZone();
-            });
-
             it(`UTC is the same as local`, () => {
                 tuiMockDateInside(new Date(2000, 0, 31, 10), () => {
                     const currentDate = TuiMonth.currentUtc();
@@ -555,10 +546,10 @@ describe(`TuiMonth`, () => {
                 it(`the primitive value of a TuiMonth object`, () => {
                     const month = new TuiMonth(2000, 5);
 
-                    expect(Number(month)).toBeInstanceOf(Number);
-                    expect(month.valueOf()).toBeInstanceOf(Number);
-                    expect(month > new TuiMonth(2000, 4)).toBeTrue();
-                    expect(month < new TuiMonth(2001, 6)).toBeTrue();
+                    expect(typeof Number(month)).toEqual(`number`);
+                    expect(typeof month.valueOf()).toEqual(`number`);
+                    expect(month > new TuiMonth(2000, 4)).toBeTruthy();
+                    expect(month < new TuiMonth(2001, 6)).toBeTruthy();
                 });
             });
 
@@ -566,24 +557,24 @@ describe(`TuiMonth`, () => {
                 it(`a number if the hint is number`, () => {
                     const month = new TuiMonth(1998, 7);
 
-                    expect(Number(month)).toBeInstanceOf(Number);
-                    expect(month.valueOf()).toBeInstanceOf(Number);
-                    expect(month[Symbol.toPrimitive](`number`)).toBeInstanceOf(Number);
+                    expect(typeof Number(month)).toEqual(`number`);
+                    expect(typeof month.valueOf()).toEqual(`number`);
+                    expect(typeof month[Symbol.toPrimitive](`number`)).toEqual(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const month = new TuiMonth(2030, 1);
 
-                    expect(String(month)).toBeInstanceOf(String);
-                    expect(month.toString()).toBeInstanceOf(String);
-                    expect(month[Symbol.toPrimitive](`string`)).toBeInstanceOf(String);
+                    expect(typeof String(month)).toEqual(`string`);
+                    expect(typeof month.toString()).toEqual(`string`);
+                    expect(typeof month[Symbol.toPrimitive](`string`)).toEqual(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const month = new TuiMonth(1905, 2);
 
-                    expect(`${month}`).toBeInstanceOf(String);
-                    expect(month[Symbol.toPrimitive](`default`)).toBeInstanceOf(String);
+                    expect(typeof `${month}`).toEqual(`string`);
+                    expect(typeof month[Symbol.toPrimitive](`default`)).toEqual(`string`);
                 });
             });
         });

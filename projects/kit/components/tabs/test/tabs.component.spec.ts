@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TuiTabsModule} from '@taiga-ui/kit';
 import {configureTestSuite, tuiDispatchOnActive} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
-import {TuiTabsModule} from '../tabs.module';
-
-describe(`Tabs`, () => {
+// TODO: move to cypress component testing
+xdescribe(`Tabs`, () => {
     @Component({
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">

@@ -1,4 +1,4 @@
-import {tuiIsNativeKeyboardFocusable} from '../is-native-keyboard-focusable';
+import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
 
 describe(`isNativeKeyboardFocusable`, () => {
     it(`DIV not focusable`, () => {

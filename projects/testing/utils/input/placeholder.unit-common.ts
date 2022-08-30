@@ -33,7 +33,7 @@ export function tuiTestPlaceholder(
             fixture = context.fixture;
             testComponent = context.testComponent;
 
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         describe(`in size S`, () => {

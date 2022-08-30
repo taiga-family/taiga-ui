@@ -1,4 +1,4 @@
-import {tuiGetElementOffset} from '../get-element-offset';
+import {tuiGetElementOffset} from '@taiga-ui/cdk';
 
 describe(`tuiGetElementOffset`, () => {
     it(`should return offsets`, () => {

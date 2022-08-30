@@ -1,4 +1,4 @@
-import {TuiYear} from '../year';
+import {TuiYear} from '@taiga-ui/cdk';
 
 describe(`TuiYear`, () => {
     describe(`static method`, () => {
@@ -459,10 +459,10 @@ describe(`TuiYear`, () => {
                 it(`the primitive value of a TuiYear object`, () => {
                     const year = new TuiYear(2000);
 
-                    expect(Number(year)).toBeInstanceOf(Number);
-                    expect(year.valueOf()).toBeInstanceOf(Number);
-                    expect(year > new TuiYear(1999)).toBeTrue();
-                    expect(year < new TuiYear(2001)).toBeTrue();
+                    expect(typeof Number(year)).toEqual(`number`);
+                    expect(typeof year.valueOf()).toEqual(`number`);
+                    expect(year > new TuiYear(1999)).toBeTruthy();
+                    expect(year < new TuiYear(2001)).toBeTruthy();
                 });
             });
 
@@ -470,24 +470,24 @@ describe(`TuiYear`, () => {
                 it(`a number if the hint is number`, () => {
                     const year = new TuiYear(1701);
 
-                    expect(Number(year)).toBeInstanceOf(Number);
-                    expect(year.valueOf()).toBeInstanceOf(Number);
-                    expect(year[Symbol.toPrimitive](`number`)).toBeInstanceOf(Number);
+                    expect(typeof Number(year)).toEqual(`number`);
+                    expect(typeof year.valueOf()).toEqual(`number`);
+                    expect(typeof year[Symbol.toPrimitive](`number`)).toEqual(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const year = new TuiYear(2201);
 
-                    expect(String(year)).toBeInstanceOf(String);
-                    expect(year.toString()).toBeInstanceOf(String);
-                    expect(year[Symbol.toPrimitive](`string`)).toBeInstanceOf(String);
+                    expect(typeof String(year)).toEqual(`string`);
+                    expect(typeof year.toString()).toEqual(`string`);
+                    expect(typeof year[Symbol.toPrimitive](`string`)).toEqual(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const year = new TuiYear(2002);
 
-                    expect(`${year}`).toBeInstanceOf(String);
-                    expect(year[Symbol.toPrimitive](`default`)).toBeInstanceOf(String);
+                    expect(typeof `${year}`).toEqual(`string`);
+                    expect(typeof year[Symbol.toPrimitive](`default`)).toEqual(`string`);
                 });
             });
         });

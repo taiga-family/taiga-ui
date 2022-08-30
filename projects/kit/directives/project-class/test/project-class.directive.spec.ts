@@ -2,11 +2,12 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiProjectClassModule,
+} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
-
-import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
-import {TuiProjectClassModule} from '../project-class.module';
 
 describe(`Directive TuiProjectClassDirective`, () => {
     @Component({

@@ -1,4 +1,4 @@
-import {tuiClamp} from '../clamp';
+import {tuiClamp} from '@taiga-ui/cdk';
 
 describe(`clamp`, () => {
     it(`returns min if value is smaller`, () => {

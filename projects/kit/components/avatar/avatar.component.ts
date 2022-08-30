@@ -13,9 +13,9 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 
 @Component({
     selector: `tui-avatar`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: `./avatar.template.html`,
     styleUrls: [`./avatar.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAvatarComponent {
     @Input()

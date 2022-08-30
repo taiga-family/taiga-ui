@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {TUI_EXPAND_LOADED, TuiExpandModule} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED, TuiExpandComponent, TuiExpandModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;
@@ -9,6 +9,7 @@ describe(`expand`, () => {
     @Component({
         template: `
             <tui-expand
+                #expand
                 [async]="async"
                 [expanded]="expanded"
             >
@@ -21,6 +22,12 @@ describe(`expand`, () => {
     class TestComponent {
         @ViewChild(`content`)
         content!: ElementRef<HTMLDivElement>;
+
+        @ViewChild(`expand`, {read: ElementRef})
+        expandElement!: ElementRef<HTMLElement>;
+
+        @ViewChild(`expand`)
+        expandComponent!: TuiExpandComponent;
 
         expanded = false;
 
@@ -82,37 +89,33 @@ describe(`expand`, () => {
         });
 
         describe(`after that expanded changes to false`, () => {
-            beforeEach(done => {
-                setTimeout(() => {
-                    testComponent.expanded = false;
-                    fixture.detectChanges();
-                    done();
-                }, 100);
-            });
-
             it(`and the content does not disappear immediately`, () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it(`and after the end of the animation, the content disappears`, done => {
-                setTimeout(() => {
-                    fixture.detectChanges();
-                    expect(testComponent.content).not.toBeDefined();
-                    done();
-                }, ANIMATION_DELAY);
-            });
+            it(`and after the end of the animation, the content disappears`, fakeAsync(() => {
+                expect(testComponent.expandComponent.contentVisible).toBeTruthy();
+                expect(testComponent.content).toBeDefined();
+
+                testComponent.expanded = false;
+                fixture.detectChanges();
+
+                tick(ANIMATION_DELAY);
+                transitionend();
+
+                expect(testComponent.expandComponent.contentVisible).toBeFalsy();
+                expect(testComponent.content).not.toBeDefined();
+            }));
         });
     });
 
     describe(`async`, () => {
-        beforeEach(async () => {
+        beforeEach(() => {
             testComponent.async = true;
             testComponent.expanded = false;
             fixture.detectChanges();
             testComponent.expanded = true;
             fixture.detectChanges();
-
-            await fixture.whenStable();
         });
 
         it(`content is being processed`, () => {
@@ -136,4 +139,16 @@ describe(`expand`, () => {
             expect(pageObject.getByAutomationId(`tui-loader__loader`)).toBeNull();
         }));
     });
+
+    /**
+     * @note:
+     * JDOM doesn't support native transitionend
+     */
+    function transitionend(): void {
+        const event = new Event(`transitionend`);
+
+        (event as any).propertyName = `opacity`;
+        testComponent.expandElement.nativeElement.dispatchEvent(event);
+        fixture.detectChanges();
+    }
 });

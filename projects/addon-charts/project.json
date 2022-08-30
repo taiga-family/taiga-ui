@@ -21,16 +21,10 @@
             ]
         },
         "test": {
-            "builder": "@angular-devkit/build-angular:karma",
+            "builder": "@nrwl/workspace:run-commands",
             "outputs": ["coverage/addon-charts"],
             "options": {
-                "codeCoverage": true,
-                "main": "projects/addon-charts/test.ts",
-                "tsConfig": "projects/addon-charts/tsconfig.spec.json",
-                "karmaConfig": "projects/addon-charts/karma.conf.js",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                }
+                "command": "jest --testMatch '**/projects/addon-charts/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-charts/**/*.ts' --coverage-directory=coverage/addon-charts"
             }
         },
         "publish": {

@@ -1,4 +1,4 @@
-import {tuiCeil, tuiFloor, tuiRound} from '../round';
+import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
 
 describe(`round`, () => {
     describe(`round - rounds up and down`, () => {

@@ -1,6 +1,4 @@
-import {RANGE_SEPARATOR_CHAR} from '../date-time';
-import {TuiMonth} from '../month';
-import {TuiMonthRange} from '../month-range';
+import {RANGE_SEPARATOR_CHAR, TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 
 describe(`TuiMonthRange`, () => {
     describe(`static method`, () => {

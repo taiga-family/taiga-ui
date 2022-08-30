@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, ElementRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiElementModule} from '@taiga-ui/cdk';
 import {
     TuiDropdownHostComponent,
     TuiDropdownHostModule,
 } from '@taiga-ui/cdk/components/dropdown-host';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiElementModule} from '../element.module';
 
 describe(`TuiElement directive`, () => {
     @Component({

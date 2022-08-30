@@ -1,4 +1,4 @@
-import {tuiGetPaymentSystem} from '../get-payment-system';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
 
 describe(`getPaymentSystem`, () => {
     describe(`Visa`, () => {

@@ -1,6 +1,5 @@
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
-
-import {tuiMarkControlAsTouchedAndValidate} from '../mark-control-as-touched-and-validate';
+import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 
 describe(`markControlAsTouchedAndValidate`, () => {
     it(`FormControl`, () => {

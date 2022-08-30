@@ -1,4 +1,4 @@
-import {tuiIsCurrentTarget} from '../is-current-target';
+import {tuiIsCurrentTarget} from '@taiga-ui/cdk';
 
 describe(`isCurrentTarget`, () => {
     it(`Target is equal to currentTarget`, () => {

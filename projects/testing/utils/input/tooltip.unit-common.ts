@@ -30,7 +30,7 @@ export function tuiTestTooltip(context: TestParams): void {
             fixture = context.fixture;
             testComponent = context.testComponent;
 
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         describe(`There is tooltip content`, () => {

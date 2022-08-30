@@ -1,9 +1,8 @@
 import {Location} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiPieChartModule} from '@taiga-ui/addon-charts';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiPieChartModule} from '../pie-chart.module';
 
 describe(`PieChart`, () => {
     @Component({

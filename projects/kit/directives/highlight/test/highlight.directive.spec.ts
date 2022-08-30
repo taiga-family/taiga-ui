@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
+import {TuiHighlightModule} from '@taiga-ui/kit';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiHighlightModule} from '../highlight.module';
 
 describe(`TuiHighlight directive`, () => {
     @Component({

@@ -1,8 +1,7 @@
 import {fakeAsync} from '@angular/core/testing';
+import {tuiPreventDefault} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 import {first} from 'rxjs/operators';
-
-import {tuiPreventDefault} from '../prevent-default';
 
 describe(`preventDefault operator function`, () => {
     it(`prevents event default behavior`, fakeAsync(() => {

@@ -3,12 +3,13 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    TuiHintModule,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {configureTestSuite, TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
-
-import {TuiHintModule} from '../../../directives/hint/hint.module';
-import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
-import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
 describe(`PrimitiveTextfield`, () => {
     @Component({

@@ -1,10 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {TuiBarSetComponent, TuiBarSetModule} from '@taiga-ui/addon-charts';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiBarSetComponent} from '../bar-set.component';
-import {TuiBarSetModule} from '../bar-set.module';
 
 describe(`BarSet`, () => {
     @Component({

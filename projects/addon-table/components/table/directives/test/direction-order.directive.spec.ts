@@ -20,7 +20,7 @@ describe(`TuiDirectionOrder directive`, () => {
         readonly table!: TuiTableDirective<any>;
 
         directionOrder = `asc`;
-        directionOrderChange = jasmine.createSpy();
+        directionOrderChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -57,13 +57,13 @@ describe(`TuiDirectionOrder directive`, () => {
         it(`emits ascending directionOrder`, () => {
             testComponent.table.directionChange.emit(1);
 
-            expect(testComponent.directionOrderChange).toHaveBeenCalledOnceWith(`asc`);
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith(`asc`);
         });
 
         it(`emits descending directionOrder`, () => {
             testComponent.table.directionChange.emit(-1);
 
-            expect(testComponent.directionOrderChange).toHaveBeenCalledOnceWith(`desc`);
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith(`desc`);
         });
     });
 });

@@ -1,5 +1,4 @@
-import {tuiRawLoad} from '../raw-load';
-import {tuiRawLoadRecord} from '../raw-load-record';
+import {tuiRawLoad, tuiRawLoadRecord} from '@taiga-ui/addon-doc';
 
 describe(`tui-doc raw content utils`, () => {
     it(`rawLoadRecord`, async () => {

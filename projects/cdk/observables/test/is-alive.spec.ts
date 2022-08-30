@@ -1,7 +1,6 @@
 import {fakeAsync, tick} from '@angular/core/testing';
+import {tuiIsAlive} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
-
-import {tuiIsAlive} from '../is-alive';
 
 describe(`Observable.prototype.tuiIsAlive`, () => {
     let $: Subject<unknown>;

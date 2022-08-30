@@ -1,4 +1,4 @@
-import {TuiValidationError} from '../validation-error';
+import {TuiValidationError} from '@taiga-ui/cdk';
 
 describe(`TuiValidationError`, () => {
     it(`with content and context`, () => {

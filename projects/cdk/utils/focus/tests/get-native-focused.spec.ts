@@ -1,4 +1,4 @@
-import {tuiGetNativeFocused} from '../get-native-focused';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 
 describe(`getNativeFocused`, () => {
     it(`returns active focused element in document`, () => {

@@ -1,4 +1,4 @@
-import {tuiFlatLength} from '../flat-length';
+import {tuiFlatLength} from '@taiga-ui/cdk';
 
 describe(`flatLength`, () => {
     it(`Calculates correctly for single nested array`, () => {

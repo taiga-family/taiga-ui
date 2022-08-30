@@ -1,4 +1,4 @@
-import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/kit/components';
+import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/kit';
 
 describe(`tuiHideSelected pipe`, () => {
     let multiSelect: any;

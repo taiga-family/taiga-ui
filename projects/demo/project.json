@@ -301,15 +301,11 @@
             }
         },
         "test": {
-            "builder": "@angular-builders/custom-webpack:karma",
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["coverage/demo"],
             "options": {
-                "codeCoverage": false,
-                "main": "projects/demo/test.ts",
-                "karmaConfig": "projects/demo/karma.conf.js",
-                "tsConfig": "projects/demo/tsconfig.spec.json",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                }
+                "command": "jest --testMatch '**/projects/demo/**/*.spec.ts'",
+                "forwardAllArgs": true
             }
         },
         "e2e": {

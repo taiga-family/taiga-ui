@@ -1,4 +1,4 @@
-import {tuiRgbToHsv} from '../rgb-to-hsv';
+import {tuiRgbToHsv} from '@taiga-ui/cdk';
 
 describe(`rgbToHsv`, () => {
     it(`works`, () => {

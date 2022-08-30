@@ -1,9 +1,8 @@
 import {Component, ElementRef, Inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiForModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
-
-import {TuiForModule} from '../for.module';
 
 describe(`TuiFor directive`, () => {
     @Component({

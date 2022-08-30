@@ -1,4 +1,4 @@
-import {TuiLetContext} from '../let-context';
+import {TuiLetContext} from '@taiga-ui/cdk';
 
 describe(`LetContext`, () => {
     it(`Has $implicit with data`, () => {

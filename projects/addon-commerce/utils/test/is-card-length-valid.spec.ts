@@ -1,4 +1,4 @@
-import {tuiIsCardLengthValid} from '../is-card-length-valid';
+import {tuiIsCardLengthValid} from '@taiga-ui/addon-commerce';
 
 describe(`isCardLengthValid`, () => {
     describe(`Visa`, () => {

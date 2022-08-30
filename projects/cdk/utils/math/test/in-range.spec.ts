@@ -1,4 +1,4 @@
-import {tuiInRange} from '../in-range';
+import {tuiInRange} from '@taiga-ui/cdk';
 
 describe(`inRange returns`, () => {
     describe(`false if value`, () => {

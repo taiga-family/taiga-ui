@@ -1,4 +1,4 @@
-import {tuiGetActualTarget} from '../get-actual-target';
+import {tuiGetActualTarget} from '@taiga-ui/cdk';
 
 describe(`isCurrentTarget`, () => {
     it(`Actual target from composedPath`, () => {

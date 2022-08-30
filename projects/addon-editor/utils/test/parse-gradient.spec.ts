@@ -1,4 +1,4 @@
-import {tuiParseGradient} from '../parse-gradient';
+import {tuiParseGradient} from '@taiga-ui/addon-editor';
 
 describe(`tuiParseGradient`, () => {
     it(`test case 1`, () => {

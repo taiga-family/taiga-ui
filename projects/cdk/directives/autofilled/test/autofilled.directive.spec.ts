@@ -42,7 +42,7 @@ describe(`TuiAutofillModule`, () => {
     });
 
     it(`correctly works if \`tuiAutofilledChange\` is set to \`input\``, () => {
-        expect(testComponent.autofilled).toBeFalse();
+        expect(testComponent.autofilled).toBeFalsy();
         expect(testComponent.value).toBe(``);
         expect(getInputClassList(fixture)).toEqual([`tui-autofill`]);
 
@@ -60,7 +60,7 @@ describe(`TuiAutofillModule`, () => {
         fixture.detectChanges();
 
         expect(getInputClassList(fixture)).toEqual([`tui-autofill`, `_autofilled`]);
-        expect(testComponent.autofilled).toBeTrue();
+        expect(testComponent.autofilled).toBeTruthy();
         expect(testComponent.value).toBe(`1111 2222 3333 4444`);
 
         /**
@@ -74,7 +74,7 @@ describe(`TuiAutofillModule`, () => {
         getInput(fixture).dispatchEvent(new InputEvent(`input`, {data: ``}));
         fixture.detectChanges();
 
-        expect(testComponent.autofilled).toBeFalse();
+        expect(testComponent.autofilled).toBeFalsy();
         expect(testComponent.value).toBe(``);
         expect(getInputClassList(fixture)).toEqual([`tui-autofill`]);
     });

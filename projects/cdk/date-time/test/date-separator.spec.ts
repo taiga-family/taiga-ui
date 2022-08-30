@@ -1,4 +1,4 @@
-import {changeDateSeparator} from '@taiga-ui/cdk/date-time';
+import {changeDateSeparator} from '@taiga-ui/cdk';
 
 describe(`changeDateSeparator`, () => {
     it(`works with DMY format`, () => {

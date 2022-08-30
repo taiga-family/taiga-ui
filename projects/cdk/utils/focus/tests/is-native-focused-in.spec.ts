@@ -1,4 +1,4 @@
-import {tuiIsNativeFocusedIn} from '../is-native-focused-in';
+import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 
 describe(`isNativeFocusedIn`, () => {
     it(`element is not focused in`, () => {

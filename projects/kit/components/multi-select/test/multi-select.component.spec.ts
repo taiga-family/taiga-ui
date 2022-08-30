@@ -14,7 +14,12 @@ import {
     TuiDataListWrapperModule,
     TuiMultiSelectComponent,
 } from '@taiga-ui/kit/components';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {
+    configureTestSuite,
+    TUI_SANITIZER_MOCK,
+    TuiNativeInputPO,
+    TuiPageObject,
+} from '@taiga-ui/testing';
 
 describe(`MultiSelect`, () => {
     describe(`Basic`, () => {
@@ -81,6 +86,7 @@ describe(`MultiSelect`, () => {
                     TuiHintModule,
                 ],
                 declarations: [TestComponent],
+                providers: [TUI_SANITIZER_MOCK],
             });
         });
 
@@ -173,8 +179,7 @@ describe(`MultiSelect`, () => {
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            // TODO: flaky
-            xit(`Esc closes the dropdown`, () => {
+            it(`Esc closes the dropdown`, () => {
                 inputPO.sendKeydown(`ArrowDown`);
                 fixture.detectChanges();
                 inputPO.sendKeydown(`Escape`);
@@ -285,6 +290,7 @@ describe(`MultiSelect`, () => {
                         provide: TUI_ARROW_MODE,
                         useValue: {interactive: `☆`, disabled: `★`},
                     },
+                    TUI_SANITIZER_MOCK,
                 ],
             });
         });

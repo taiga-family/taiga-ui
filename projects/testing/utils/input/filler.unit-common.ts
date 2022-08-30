@@ -66,7 +66,7 @@ export function tuiTestFiller(
             });
 
             it(`also not visible when focusing`, () => {
-                inputPO.nativeElement.focus();
+                inputPO.nativeElement?.focus();
                 fixture.detectChanges();
 
                 expect(getFiller()).toBeNull();

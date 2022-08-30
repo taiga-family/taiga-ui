@@ -1,4 +1,4 @@
-import {tuiGetScrollParent} from '../get-scroll-parent';
+import {tuiGetScrollParent} from '@taiga-ui/cdk';
 
 describe(`tuiGetScrollParent`, () => {
     it(`There is no element`, () => {

@@ -11,15 +11,13 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     tuiCreateKeyboardEvent,
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
-
-import {TuiInputTimeComponent} from '../input-time.component';
-import {TuiInputTimeModule} from '../input-time.module';
 
 const TIMES = [
     new TuiTime(0, 0),

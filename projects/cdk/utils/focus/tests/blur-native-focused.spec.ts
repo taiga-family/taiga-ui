@@ -1,4 +1,4 @@
-import {tuiBlurNativeFocused} from '../blur-native-focused';
+import {tuiBlurNativeFocused} from '@taiga-ui/cdk';
 
 describe(`blurNativeFocused`, () => {
     let element: HTMLInputElement;

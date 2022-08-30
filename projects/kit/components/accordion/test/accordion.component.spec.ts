@@ -5,15 +5,16 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiGetOriginalArrayFromQueryList} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiAccordionComponent,
+    TuiAccordionItemComponent,
+    TuiAccordionModule,
+    TuiInputModule,
+    TuiSelectComponent,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputModule} from '../../input/input.module';
-import {TuiSelectComponent} from '../../select/select.component';
-import {TuiSelectModule} from '../../select/select.module';
-import {TuiAccordionComponent} from '../accordion.component';
-import {TuiAccordionModule} from '../accordion.module';
-import {TuiAccordionItemComponent} from '../accordion-item/accordion-item.component';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}

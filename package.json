@@ -33,7 +33,7 @@
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --cache node_modules/.cache/prettier",
-        "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
+        "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
         "build:demo": "nx build",
         "build:demo:next": "nx build -c next --skip-nx-cache",
@@ -45,7 +45,6 @@
         "*** CI ***": "",
         "affected:test:libs": "nx affected --target test --exclude=demo",
         "affected:build:libs": "nx affected --target build --exclude=demo",
-        "run-many:test:libs": "nx run-many --target test --all --exclude=demo",
         "run-many:build:libs": "nx run-many --target build --all --exclude=demo",
         "run-many:publish:libs": "nx run-many --target publish --all"
     },

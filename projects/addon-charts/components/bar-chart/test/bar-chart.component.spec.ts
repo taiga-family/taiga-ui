@@ -1,9 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiBarChartComponent, TuiBarChartModule} from '@taiga-ui/addon-charts';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiBarChartComponent} from '../bar-chart.component';
-import {TuiBarChartModule} from '../bar-chart.module';
 
 describe(`BarChart`, () => {
     @Component({

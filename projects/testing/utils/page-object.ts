@@ -1,9 +1,5 @@
 import {DebugElement, Predicate} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
-import {
-    TuiElementIsNotInputException,
-    TuiFieldNotFoundException,
-} from '@taiga-ui/testing/exceptions';
 
 export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
@@ -46,27 +42,5 @@ export class TuiPageObject<T> {
         return debugEls.sort(
             (a, b) => domEls.indexOf(a.nativeElement) - domEls.indexOf(b.nativeElement),
         );
-    }
-
-    sendTextToInput(
-        automationId: string,
-        value: string,
-        debugElement: DebugElement = this.fixture.debugElement,
-    ): void {
-        const inputDebugElement: DebugElement | null = this.getByAutomationId(
-            automationId,
-            debugElement,
-        );
-
-        if (inputDebugElement === null) {
-            throw new TuiFieldNotFoundException(automationId);
-        }
-
-        if (!(inputDebugElement.nativeElement instanceof HTMLInputElement)) {
-            throw new TuiElementIsNotInputException(automationId);
-        }
-
-        inputDebugElement.nativeElement.value = value;
-        inputDebugElement.nativeElement.dispatchEvent(new Event(`input`));
     }
 }

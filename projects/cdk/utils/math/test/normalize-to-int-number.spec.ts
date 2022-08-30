@@ -1,4 +1,4 @@
-import {tuiNormalizeToIntNumber} from '../normalize-to-int-number';
+import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
 
 describe(`normalizeToIntNumber`, () => {
     const min = -10;

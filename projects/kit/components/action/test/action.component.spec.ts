@@ -114,10 +114,8 @@ describe(`Action`, () => {
             const action = await loader.getHarness(
                 TuiActionHarness.with({selector: `button`}),
             );
-            const spy = spyOn(
-                <any>testComponent.component,
-                `updateFocused`,
-            ).and.callThrough();
+
+            const spy = jest.spyOn(<any>testComponent.component, `updateFocused`);
 
             await (await action.host()).focus();
             expect(spy).toHaveBeenCalledWith(true);

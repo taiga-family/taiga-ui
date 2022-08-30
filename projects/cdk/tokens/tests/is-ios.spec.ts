@@ -1,8 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {NAVIGATOR} from '@ng-web-apis/common';
+import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TUI_IS_IOS} from '../is-ios';
 
 describe(`TUI_IS_IOS`, () => {
     describe(`basic is IOS positive`, () => {
