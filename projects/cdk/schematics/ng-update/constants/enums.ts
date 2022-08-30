@@ -103,6 +103,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             Warning: 'warning',
         },
+        keepAsType: true,
     },
     {
         name: 'TuiMarkerIconMode',

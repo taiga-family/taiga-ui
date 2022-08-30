@@ -412,4 +412,24 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {
+            name: 'TuiMarkerIconModeT',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiMarkerIconMode',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiStatusT',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiStatus',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
