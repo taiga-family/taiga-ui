@@ -1,0 +1,14 @@
+<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconClose" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="1em" overflow="visible" viewBox="0 0 24 24" width="1em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <path
+                    clip-rule="evenodd"
+                    d="M8.707 7.293a1 1 0 0 0-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 1 0 1.414 1.414L12 13.414l3.293 3.293a1 1 0 0 0 1.414-1.414L13.414 12l3.293-3.293a1 1 0 0 0-1.414-1.414L12 10.586 8.707 7.293z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>
