@@ -306,7 +306,7 @@
                 "commands": [
                     {"command": "echo \"CYPRESS_API_URL: $CYPRESS_API_URL\"", "forwardAllArgs": false},
                     "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.spec.ts'",
-                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.spec.ts'"
+                    "sleep 10 && npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.spec.ts'"
                 ]
             }
         }
