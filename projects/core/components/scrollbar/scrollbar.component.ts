@@ -12,8 +12,8 @@ import {
     TUI_IS_IOS,
     tuiDefaultProp,
     tuiGetElementOffset,
+    TuiInjectionTokenType,
     tuiIsFirefox,
-    TuiInjectionTokenType
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
