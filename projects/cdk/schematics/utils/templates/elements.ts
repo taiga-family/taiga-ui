@@ -31,6 +31,11 @@ export function findElementsInTemplateByFn(
     html: string,
     predicateFn: (el: Element) => boolean,
 ): Element[] {
+    // utf8 with BOM adds an extra character to the beginning of the string
+    if (html.charCodeAt(0) === 0xfeff) {
+        html = html.substr(1);
+    }
+
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     return findElementsByFn(document.childNodes, predicateFn);
 }
