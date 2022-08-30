@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -16,13 +15,13 @@ import {
     tuiDefaultProp,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
-// @dynamic
 @Component({
     selector: `tui-calendar`,
     templateUrl: `./calendar.template.html`,
@@ -130,7 +129,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     }
 
     private updateHoveredDay(day: TuiDay | null): void {
-        if (nullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
+        if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
         }
 

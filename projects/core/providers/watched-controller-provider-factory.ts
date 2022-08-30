@@ -1,20 +1,14 @@
 import {ChangeDetectorRef} from '@angular/core';
-import {TuiController, watch} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiWatch} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-/**
- * @deprecated: use {@link tuiWatchedControllerFactory} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function watchedControllerFactory(
-    controller: TuiController,
+export function tuiWatchedControllerFactory(
+    controller: AbstractTuiController,
     changeDetectorRef: ChangeDetectorRef,
     destroy$: Observable<void>,
-): TuiController {
-    controller.change$.pipe(watch(changeDetectorRef), takeUntil(destroy$)).subscribe();
+): AbstractTuiController {
+    controller.change$.pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$)).subscribe();
 
     return controller;
 }
-
-export const tuiWatchedControllerFactory = watchedControllerFactory;

@@ -1,10 +1,13 @@
+import {tuiIsNumber} from '@taiga-ui/cdk';
+
 declare const global: {Date: typeof Date};
 
 const OriginalDate = global.Date;
 
 export function tuiMockCurrentDate(dateOrNumber: Date | number): void {
-    const date: Date =
-        typeof dateOrNumber === `number` ? new OriginalDate(dateOrNumber) : dateOrNumber;
+    const date: Date = tuiIsNumber(dateOrNumber)
+        ? new OriginalDate(dateOrNumber)
+        : dateOrNumber;
 
     class MockDate extends OriginalDate {
         constructor() {

@@ -2,12 +2,11 @@ import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -71,7 +70,13 @@ const accountsAlex = [
 ];
 const USERS = [
     new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`, accountsRoman),
-    new User(`Alex`, `Inkin`, avatar, accountsAlex, `1234123412341234`),
+    new User(
+        `Alex`,
+        `Inkin`,
+        assets`/images/avatar.jpg`,
+        accountsAlex,
+        `1234123412341234`,
+    ),
     new User(`Dmitriy`, `Demenskiy`),
     new User(`Evgeniy`, `Mamaev`),
     new User(`Ivan`, `Ishmametiev`),
@@ -100,7 +105,7 @@ export class TuiInputExample4 {
 
     lastUser: User | null = null;
 
-    readonly users$ = tuiReplayedValueChangesFrom<string>(this.user).pipe(
+    readonly users$ = tuiControlValue<string>(this.user).pipe(
         map(value => {
             const filtered = USERS.filter(user => TUI_DEFAULT_MATCHER(user, value));
 

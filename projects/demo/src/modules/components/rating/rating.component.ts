@@ -14,27 +14,27 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
 })
 export class ExampleTuiRatingComponent {
     readonly exampleModule: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/import-module.md`
+        `./examples/import/import-module.md?raw`
     );
 
     readonly exampleHtml: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/insert-template.md`
+        `./examples/import/insert-template.md?raw`
     );
 
     readonly exampleOptions: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/define-options.md`
+        `./examples/import/define-options.md?raw`
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     control = new FormControl(5);

@@ -8,28 +8,28 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class PortalsComponent {
-    host = import(`!!raw-loader!./examples/setup/create-host.md`);
-    service = import(`!!raw-loader!./examples/setup/create-service.md`);
-    insert = import(`!!raw-loader!./examples/setup/insert-host.md`);
+    host = import(`./examples/setup/create-host.md?raw`);
+    service = import(`./examples/setup/create-service.md?raw`);
+    insert = import(`./examples/setup/insert-host.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
         'portal/custom-portal.service.ts': import(
-            `!!raw-loader!./examples/1/portal/custom-portal.service.ts`
+            `./examples/1/portal/custom-portal.service.ts?raw`
         ),
         'portal/custom-host.component.ts': import(
-            `!!raw-loader!./examples/1/portal/custom-host.component`
+            `./examples/1/portal/custom-host.component.ts?raw`
         ),
         'portal/custom-host.template.html': import(
-            `!!raw-loader!./examples/1/portal/custom-host.template.html`
+            `./examples/1/portal/custom-host.template.html?raw`
         ),
         'portal/custom-host.module.ts': import(
-            `!!raw-loader!./examples/1/portal/сustom-host.module`
+            `./examples/1/portal/сustom-host.module.ts?raw`
         ),
         'portal/custom-host.style.less': import(
-            `!!raw-loader!./examples/1/portal/custom-host.style.less`
+            `./examples/1/portal/custom-host.style.less?raw`
         ),
     };
 }

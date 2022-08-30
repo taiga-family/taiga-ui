@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiContextWithImplicit, tuiPure} from '@taiga-ui/cdk';
-import {TuiNotification, TuiNotificationContentContext} from '@taiga-ui/core';
+import {TuiContextWithImplicit, TuiDialog, tuiPure} from '@taiga-ui/cdk';
+import {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -17,11 +17,11 @@ export class AlertExampleWithCustomLabelComponent {
 
     @tuiPure
     get status(): TuiNotification {
-        return this.context.$implicit;
+        return this.context.status;
     }
 
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiNotificationContentContext<boolean>,
+        private readonly context: TuiDialog<TuiAlertOptions<unknown>, boolean>,
     ) {}
 }

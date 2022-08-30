@@ -4,9 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiGroupModule,
-    TuiHintControllerModule,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -42,8 +41,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
         TuiInputOpacityModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiNotificationModule,

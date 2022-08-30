@@ -4,10 +4,10 @@ import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_LAST_DAY,
+    tuiControlValue,
     TuiDay,
     TuiDayRange,
     TuiMonth,
-    tuiReplayedValueChangesFrom,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
@@ -15,7 +15,7 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
-import {TUI_CALENDAR_DATA_STREAM} from '../../../tokens/calendar-data-stream';
+import {TUI_CALENDAR_DATE_STREAM} from '../../../tokens/calendar-date-stream';
 import {tuiCreateDefaultDayRangePeriods} from '../../../utils/miscellaneous/create-default-day-range-periods';
 import {TuiCalendarRangeComponent} from '../calendar-range.component';
 import {TuiCalendarRangeModule} from '../calendar-range.module';
@@ -23,7 +23,7 @@ import {TuiCalendarRangeModule} from '../calendar-range.module';
 export function tuiRangeCalendarTestFactory(
     control: NgControl | null,
 ): Observable<TuiDayRange | null> | null {
-    return control ? tuiReplayedValueChangesFrom(control) : of(null);
+    return control ? tuiControlValue(control) : of(null);
 }
 
 describe(`rangeCalendarComponent`, () => {
@@ -34,13 +34,13 @@ describe(`rangeCalendarComponent`, () => {
                     [items]="items"
                     [min]="min"
                     [max]="max"
-                    (rangeChange)="onRangeChange($event)"
+                    (valueChange)="onRangeChange($event)"
                 ></tui-calendar-range>
             </tui-root>
         `,
         providers: [
             {
-                provide: TUI_CALENDAR_DATA_STREAM,
+                provide: TUI_CALENDAR_DATE_STREAM,
                 deps: [[new Optional(), new Self(), NgControl]],
                 useFactory: tuiRangeCalendarTestFactory,
             },

@@ -1,21 +1,23 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldInputMode="numeric"
-    tuiTextfieldExampleText="00/00"
     class="t-input"
-    [tuiTextfieldAutocomplete]="autocomplete"
     [nativeId]="nativeId"
     [disabled]="disabled"
+    [textMask]="textMaskOptions"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
-    [pseudoHovered]="pseudoHovered"
-    [pseudoPressed]="pseudoPressed"
-    [pseudoFocused]="pseudoFocused"
-    [textMask]="textMaskOptions"
+    [pseudoHover]="pseudoHover"
+    [pseudoActive]="pseudoActive"
+    [pseudoFocus]="pseudoFocus"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
-    (hoveredChange)="onHovered($event)"
 >
+    <input
+        tuiTextfield
+        inputmode="numeric"
+        placeholder="00/00"
+        [attr.autocomplete]="autocomplete"
+    />
     <ng-content></ng-content>
 </tui-primitive-textfield>

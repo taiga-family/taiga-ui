@@ -8,7 +8,7 @@
         appearance="flat"
         icon="tuiIconMoreVer"
         type="button"
-        [pseudoHovered]="dropdown.open || null"
+        [pseudoHover]="dropdown.open || null"
     ></button>
 </tui-hosted-dropdown>
 <ng-template
@@ -29,21 +29,21 @@
         </button>
         <button
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
             [size]="size"
-            [tuiDropdown]="false"
-            [tuiDropdownContent]="burgersTmp"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="burgersTmp"
         >
             Burgers
         </button>
         <button
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
             [size]="size"
-            [tuiDropdown]="false"
-            [tuiDropdownContent]="drinksTmp"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="drinksTmp"
         >
             Drinks
         </button>
@@ -71,11 +71,11 @@
             </button>
             <button
                 tuiOption
+                tuiDropdownSided
                 tuiDropdownAlign="right"
                 [size]="size"
-                [tuiDropdown]="false"
-                [tuiDropdownContent]="drinksTmp"
-                [tuiDropdownSided]="true"
+                [tuiDropdownManual]="false"
+                [tuiDropdown]="drinksTmp"
             >
                 Nested menu
             </button>

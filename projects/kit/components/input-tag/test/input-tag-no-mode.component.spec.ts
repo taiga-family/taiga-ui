@@ -7,7 +7,11 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TUI_TAG_STATUS, TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
+import {
+    TuiInputTagComponent,
+    TuiInputTagModule,
+    tuiInputTagOptionsProvider,
+} from '@taiga-ui/kit';
 
 describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
     @Component({
@@ -15,13 +19,12 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
             <tui-root>
                 <tui-input-tag
                     [ngModel]="tags"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                 ></tui-input-tag>
             </tui-root>
         `,
-        providers: [{provide: TUI_TAG_STATUS, useValue: `neutral`}],
+        providers: [tuiInputTagOptionsProvider({tagStatus: `neutral`})],
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
@@ -30,7 +33,6 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
         tags = [`Tag1`, `Tag2`];
 
         labelOutside = true;
-        exampleText = `Example`;
         size: TuiSizeS | TuiSizeL = `s`;
     }
 

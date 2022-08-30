@@ -7,15 +7,13 @@ import {
     OnDestroy,
     Renderer2,
 } from '@angular/core';
-import {containsOrAfter} from '@taiga-ui/cdk/utils/dom';
+import {tuiContainsOrAfter, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    blurNativeFocused,
-    getClosestFocusable,
-    getNativeFocused,
-    setNativeFocused,
+    tuiBlurNativeFocused,
+    tuiGetClosestFocusable,
+    tuiGetNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
 
-// @dynamic
 @Directive({
     selector: `[tuiFocusTrap]`,
     host: {
@@ -23,7 +21,7 @@ import {
     },
 })
 export class TuiFocusTrapDirective implements OnDestroy {
-    private readonly activeElement = getNativeFocused(this.documentRef);
+    private readonly activeElement = tuiGetNativeFocused(this.documentRef);
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
@@ -38,7 +36,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          */
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         Promise.resolve().then(() => {
-            setNativeFocused(this.elementRef.nativeElement);
+            this.elementRef.nativeElement.focus();
         });
     }
 
@@ -49,23 +47,24 @@ export class TuiFocusTrapDirective implements OnDestroy {
 
     @HostListener(`window:focusin.silent`, [`$event.target`])
     onFocusIn(node: Node): void {
-        if (containsOrAfter(this.elementRef.nativeElement, node)) {
+        const {nativeElement} = this.elementRef;
+
+        if (tuiContainsOrAfter(nativeElement, node)) {
             return;
         }
 
-        const focusable = getClosestFocusable(
-            this.elementRef.nativeElement,
-            false,
-            this.elementRef.nativeElement,
-        );
+        const focusable = tuiGetClosestFocusable({
+            initial: nativeElement,
+            root: nativeElement,
+        });
 
         if (focusable) {
-            setNativeFocused(focusable);
+            focusable.focus();
         }
     }
 
     ngOnDestroy(): void {
-        blurNativeFocused(this.documentRef);
+        tuiBlurNativeFocused(this.documentRef);
 
         /**
          * HostListeners are triggered even after ngOnDestroy
@@ -75,9 +74,8 @@ export class TuiFocusTrapDirective implements OnDestroy {
          */
         // eslint-disable-next-line
         Promise.resolve().then(() => {
-            // TODO: iframe warning
-            if (this.activeElement instanceof HTMLElement) {
-                setNativeFocused(this.activeElement);
+            if (tuiIsHTMLElement(this.activeElement)) {
+                this.activeElement.focus();
             }
         });
     }

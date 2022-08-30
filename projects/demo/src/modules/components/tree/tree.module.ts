@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -34,7 +34,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         FormsModule,
         CommonModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiTreeComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTreeComponent)),
     ],
     entryComponents: [FoldersComponent],
     declarations: [

@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -18,14 +17,16 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
-    isNativeFocused,
-    setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
+    tuiArrayToggle,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
+    tuiIsString,
     TuiMapper,
     tuiPure,
     TuiStringHandler,
@@ -33,8 +34,8 @@ import {
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
-    TUI_DATA_LIST_HOST,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    tuiAsDataListHost,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -61,17 +62,12 @@ import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-op
     styleUrls: [`./multi-select.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiMultiSelectComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiMultiSelectComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
+        tuiAsControl(TuiMultiSelectComponent),
+        tuiAsDataListHost(TuiMultiSelectComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>
@@ -102,6 +98,10 @@ export class TuiMultiSelectComponent<T>
     @Input()
     @tuiDefaultProp()
     search: string | null = ``;
+
+    @Input()
+    @tuiDefaultProp()
+    placeholder = ``;
 
     @Input()
     @HostBinding(`class._editable`)
@@ -203,10 +203,6 @@ export class TuiMultiSelectComponent<T>
         );
     }
 
-    get context(): TuiContextWithImplicit<readonly T[]> {
-        return this.getContext(this.value);
-    }
-
     @tuiPure
     getStringifier(
         stringify: TuiStringHandler<T>,
@@ -226,11 +222,7 @@ export class TuiMultiSelectComponent<T>
         TuiBooleanHandler<T>,
         TuiBooleanHandler<string | TuiStringifiableItem<T>>
     > = handler => stringifiable =>
-        typeof stringifiable === `string` || handler(stringifiable.item);
-
-    onHoveredChange(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
+        tuiIsString(stringifiable) || handler(stringifiable.item);
 
     onSpace(event: Event): void {
         if (!this.editable) {
@@ -260,23 +252,16 @@ export class TuiMultiSelectComponent<T>
             return;
         }
 
-        const index = value.indexOf(options[0]);
-
         event.preventDefault();
-        this.updateValue(
-            index === -1
-                ? [...value, options[0]]
-                : [...value.slice(0, index), ...value.slice(index + 1)],
-        );
+        this.updateValue(tuiArrayToggle(value, options[0]));
         this.updateSearch(null);
     }
 
     onClick({nativeFocusableElement}: TuiInputTagComponent): void {
         if (
-            this.editable &&
             this.interactive &&
             nativeFocusableElement &&
-            isNativeFocused(nativeFocusableElement)
+            tuiIsNativeFocused(nativeFocusableElement)
         ) {
             this.hostedDropdown?.updateOpen(!this.open);
         }
@@ -305,11 +290,6 @@ export class TuiMultiSelectComponent<T>
         this.open = false;
     }
 
-    @tuiPure
-    private getContext($implicit: readonly T[]): TuiContextWithImplicit<readonly T[]> {
-        return {$implicit};
-    }
-
     private updateSearch(search: string | null): void {
         if (this.search === search) {
             return;
@@ -321,7 +301,7 @@ export class TuiMultiSelectComponent<T>
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 }

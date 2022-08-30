@@ -1,13 +1,12 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, EventEmitter, Inject, Output} from '@angular/core';
-import {clamp, round, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {merge, Observable} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TuiRangeComponent} from './range.component';
 
-// @dynamic
 @Directive({
     selector: `tui-range`,
     providers: [TuiDestroyService],
@@ -18,24 +17,26 @@ export class TuiRangeChangeDirective {
      * Dont forget to use setPointerCapture instead of listening all documentRef events
      */
     private readonly pointerDown$ = merge(
-        typedFromEvent(this.elementRef.nativeElement, `touchstart`, {passive: true}).pipe(
+        tuiTypedFromEvent(this.elementRef.nativeElement, `touchstart`, {
+            passive: true,
+        }).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
     );
 
     private readonly pointerMove$ = merge(
-        typedFromEvent(this.documentRef, `touchmove`).pipe(
+        tuiTypedFromEvent(this.documentRef, `touchmove`).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        typedFromEvent(this.documentRef, `mousemove`),
+        tuiTypedFromEvent(this.documentRef, `mousemove`),
     );
 
     private readonly pointerUp$ = merge(
-        typedFromEvent(this.documentRef, `touchend`, {passive: true}),
-        typedFromEvent(this.documentRef, `mouseup`, {passive: true}),
+        tuiTypedFromEvent(this.documentRef, `touchend`, {passive: true}),
+        tuiTypedFromEvent(this.documentRef, `mouseup`, {passive: true}),
     );
 
     @Output()
@@ -60,15 +61,13 @@ export class TuiRangeChangeDirective {
                     }
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),
-                map(({clientX}) => clamp(this.getFractionFromEvents(clientX), 0, 1)),
+                map(({clientX}) => this.getFractionFromEvents(clientX)),
                 takeUntil(this.pointerUp$),
                 repeat(),
                 takeUntil(destroy$),
             )
             .subscribe(fraction => {
-                const value = this.range.getValueFromFraction(
-                    this.range.fractionGuard(fraction),
-                );
+                const value = this.range.getValueFromFraction(fraction);
 
                 this.range.processValue(value, activeThumb === `right`);
             });
@@ -79,7 +78,7 @@ export class TuiRangeChangeDirective {
         const value = clickClientX - hostRect.left;
         const total = hostRect.width;
 
-        return round(value / total, TUI_FLOATING_PRECISION);
+        return tuiClamp(tuiRound(value / total, TUI_FLOATING_PRECISION), 0, 1);
     }
 
     private detectActiveThumb(

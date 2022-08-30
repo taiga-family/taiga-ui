@@ -310,15 +310,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/field-error`,
-        loadChildren: async () =>
-            (await import(`../components/field-error/field-error.module`))
-                .ExampleTuiFieldErrorModule,
-        data: {
-            title: `FieldError`,
-        },
-    },
-    {
         path: `pipes/field-error`,
         loadChildren: async () =>
             (await import(`../pipes/field-error/field-error.module`))
@@ -352,6 +343,42 @@ export const ROUTES = [
                 .ExampleTuiHostedDropdownModule,
         data: {
             title: `HostedDropdown`,
+        },
+    },
+    {
+        path: `directives/dropdown`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown/dropdown.module`))
+                .ExampleTuiDropdownModule,
+        data: {
+            title: `Dropdown`,
+        },
+    },
+    {
+        path: `directives/dropdown-context`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-context/dropdown-context.module`))
+                .ExampleTuiDropdownContextModule,
+        data: {
+            title: `DropdownContext`,
+        },
+    },
+    {
+        path: `directives/dropdown-hover`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-hover/dropdown-hover.module`))
+                .ExampleTuiDropdownHoverModule,
+        data: {
+            title: `DropdownHover`,
+        },
+    },
+    {
+        path: `directives/dropdown-selection`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-selection/dropdown-selection.module`))
+                .ExampleTuiDropdownSelectionModule,
+        data: {
+            title: `DropdownSelection`,
         },
     },
     {
@@ -423,15 +450,6 @@ export const ROUTES = [
                 .ExampleTuiInputDateTimeModule,
         data: {
             title: `InputDateTime`,
-        },
-    },
-    {
-        path: `components/input-file`,
-        loadChildren: async () =>
-            (await import(`../components/input-file/input-file.module`))
-                .ExampleTuiInputFileModule,
-        data: {
-            title: `InputFile`,
         },
     },
     {
@@ -769,15 +787,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/slider-deprecated`,
-        loadChildren: async () =>
-            (await import(`../components/slider-old/slider-old.module`))
-                .ExampleTuiSliderOldModule,
-        data: {
-            title: `Slider[deprecated]`,
-        },
-    },
-    {
         path: `navigation/stepper`,
         loadChildren: async () =>
             (await import(`../components/stepper/stepper.module`))
@@ -917,29 +926,11 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/toolbar`,
-        loadChildren: async () =>
-            (await import(`../components/toolbar/toolbar.module`))
-                .ExampleTuiToolbarModule,
-        data: {
-            title: `Toolbar`,
-        },
-    },
-    {
         path: `components/editor`,
         loadChildren: async () =>
             (await import(`../components/editor/editor.module`)).ExampleTuiEditorModule,
         data: {
             title: `Editor`,
-        },
-    },
-    {
-        path: `components/editor-new`,
-        loadChildren: async () =>
-            (await import(`../components/editor-new/editor-new.module`))
-                .ExampleTuiEditorNewModule,
-        data: {
-            title: `Editor[new]`,
         },
     },
     {
@@ -1145,42 +1136,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `directives/dropdown`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown/dropdown.module`))
-                .ExampleTuiDropdownModule,
-        data: {
-            title: `Dropdown`,
-        },
-    },
-    {
-        path: `directives/dropdown-context`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-context/dropdown-context.module`))
-                .ExampleTuiDropdownContextModule,
-        data: {
-            title: `DropdownContext`,
-        },
-    },
-    {
-        path: `directives/dropdown-selection`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-selection/dropdown-selection.module`))
-                .ExampleTuiDropdownSelectionModule,
-        data: {
-            title: `DropdownSelection`,
-        },
-    },
-    {
-        path: `directives/described-by`,
-        loadChildren: async () =>
-            (await import(`../directives/described-by/described-by.module`))
-                .ExampleTuiDescribedByModule,
-        data: {
-            title: `DescribedBy`,
-        },
-    },
-    {
         path: `directives/elastic-sticky`,
         loadChildren: async () =>
             (await import(`../directives/elastic-sticky/elastic-sticky.module`))
@@ -1224,30 +1179,39 @@ export const ROUTES = [
         },
     },
     {
+        path: `directives/hint-describe`,
+        loadChildren: async () =>
+            (await import(`../directives/hint-describe/hint-describe.module`))
+                .ExampleTuiHintDescribeModule,
+        data: {
+            title: `HintDescribe`,
+        },
+    },
+    {
+        path: `directives/hint-manual`,
+        loadChildren: async () =>
+            (await import(`../directives/hint-manual/hint-manual.module`))
+                .ExampleTuiHintManualModule,
+        data: {
+            title: `HintManual`,
+        },
+    },
+    {
+        path: `directives/hint-pointer`,
+        loadChildren: async () =>
+            (await import(`../directives/hint-pointer/hint-pointer.module`))
+                .ExampleTuiHintPointerModule,
+        data: {
+            title: `HintPointer`,
+        },
+    },
+    {
         path: `directives/lazy-loading`,
         loadChildren: async () =>
             (await import(`../directives/lazy-loading/lazy-loading.module`))
                 .ExampleTuiLazyLoadingModule,
         data: {
             title: `LazyLoading`,
-        },
-    },
-    {
-        path: `directives/manual-hint`,
-        loadChildren: async () =>
-            (await import(`../directives/manual-hint/manual-hint.module`))
-                .ExampleTuiManualHintModule,
-        data: {
-            title: `ManualHint`,
-        },
-    },
-    {
-        path: `directives/pointer-hint`,
-        loadChildren: async () =>
-            (await import(`../directives/pointer-hint/pointer-hint.module`))
-                .ExampleTuiPointerHintModule,
-        data: {
-            title: `PointerHint`,
         },
     },
     {
@@ -1306,15 +1270,6 @@ export const ROUTES = [
                 .ExampleTuiPresentModule,
         data: {
             title: `Present`,
-        },
-    },
-    {
-        path: `components/resizable-column`,
-        loadChildren: async () =>
-            (await import(`../tables/resizable-column/resizable-column.module`))
-                .ExampleTuiResizableColumnModule,
-        data: {
-            title: `ResizableColumns`,
         },
     },
     {
@@ -1531,24 +1486,6 @@ export const ROUTES = [
                 .ExampleTuiTableBarModule,
         data: {
             title: `TableBarService`,
-        },
-    },
-    {
-        path: `directives/dropdown-controller`,
-        loadChildren: async () =>
-            (await import(`../directives/dropdown-controller/dropdown-controller.module`))
-                .ExampleTuiDropdownControllerModule,
-        data: {
-            title: `DropdownController`,
-        },
-    },
-    {
-        path: `directives/hint-controller`,
-        loadChildren: async () =>
-            (await import(`../directives/hint-controller/hint-controller.module`))
-                .ExampleTuiHintControllerModule,
-        data: {
-            title: `HintController`,
         },
     },
     {

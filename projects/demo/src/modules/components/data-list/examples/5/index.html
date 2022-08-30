@@ -26,42 +26,42 @@
     >
         <button
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
-            [tuiDropdown]="true"
-            [tuiDropdownContent]="money"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="true"
+            [tuiDropdown]="money"
         >
             💰 Money:
         </button>
         <button
             automation-id="tui-data-list-calendar-option"
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdown]="false"
-            [tuiDropdownContent]="calendar"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="calendar"
         >
             📅 Calendar: {{ dateValue }}
         </button>
         <button
             automation-id="tui-data-list-email-option"
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdown]="false"
-            [tuiDropdownContent]="input"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="input"
         >
             📧 Email: {{ testValue }}
         </button>
         <button
             automation-id="tui-data-list-range-option"
             tuiOption
+            tuiDropdownSided
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
-            [tuiDropdown]="false"
-            [tuiDropdownContent]="range"
-            [tuiDropdownSided]="true"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="range"
         >
             ⌛ Range: {{ rangeValue }}
         </button>
@@ -86,11 +86,11 @@
         >
             <button
                 tuiOption
+                tuiDropdownSided
                 tuiDropdownDirection="bottom"
                 tuiDropdownAlign="right"
-                [tuiDropdown]="true"
-                [tuiDropdownContent]="currency"
-                [tuiDropdownSided]="true"
+                [tuiDropdownManual]="true"
+                [tuiDropdown]="currency"
             >
                 Exchange Rates:
             </button>

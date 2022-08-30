@@ -1,18 +1,13 @@
-import {Directive, forwardRef} from '@angular/core';
-import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
+import {Directive} from '@angular/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiSelectComponent} from './select.component';
 
 @Directive({
     selector: `tui-select`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiSelectDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiSelectDirective)],
 })
-export class TuiSelectDirective extends TuiAbstractTextfieldHost<
+export class TuiSelectDirective extends AbstractTuiTextfieldHost<
     TuiSelectComponent<unknown>
 > {
     get readOnly(): boolean {

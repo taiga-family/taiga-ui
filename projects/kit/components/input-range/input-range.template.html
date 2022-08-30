@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     class="t-wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
     [invalid]="computedInvalid"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
@@ -16,11 +17,9 @@
         [max]="value[1]"
         [precision]="precision"
         [decimal]="decimal"
-        [postfix]="pluralizeMap && !showLeftValueContent ? (value[0] | i18nPlural: pluralizeMap) : ''"
+        [postfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural: pluralize) : ''"
         [disabled]="computedDisabled"
         [readOnly]="readOnly"
-        [tuiTextfieldSize]="computedSize"
-        [tuiTextfieldLabelOutside]="legacyLabelOutside"
         [ngModel]="value[0]"
         (ngModelChange)="onInputLeft($event)"
         (focusedChange)="onTextInputFocused($event, false)"
@@ -30,10 +29,12 @@
         <ng-content></ng-content>
         <div
             *ngIf="showLeftValueContent"
-            polymorpheus-outlet
-            [content]="minLabel ? legacyMinLabel : leftValueContent"
-            [context]="{$implicit: value[0]}"
-        ></div>
+            ngProjectAs="tuiContent"
+        >
+            <ng-container *polymorpheusOutlet="leftValueContent as text; context: {$implicit: value[0]}">
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-input-number>
 
     <div class="t-right">
@@ -47,8 +48,6 @@
             [decimal]="decimal"
             [disabled]="computedDisabled"
             [readOnly]="readOnly"
-            [tuiTextfieldSize]="computedSize"
-            [tuiTextfieldLabelOutside]="legacyLabelOutside"
             [ngModel]="value[1]"
             (ngModelChange)="onInputRight($event)"
             (focusedChange)="onTextInputFocused($event, true)"
@@ -57,30 +56,31 @@
         >
             <div
                 *ngIf="showRightValueContent"
-                polymorpheus-outlet
-                [content]="maxLabel ? legacyMaxLabel : rightValueContent"
-                [context]="{$implicit: value[1]}"
-            ></div>
+                ngProjectAs="tuiContent"
+            >
+                <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
+                    {{ text }}
+                </ng-container>
+            </div>
         </tui-input-number>
 
         <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
         <span
-            *ngIf="!showRightValueContent && pluralizeMap"
+            *ngIf="!showRightValueContent && pluralize"
             automation-id="tui-input-range__pluralize-right"
             class="t-pluralize-right"
         >
-            &nbsp;{{ value[1] | i18nPlural: pluralizeMap }}
+            &nbsp;{{ value[1] | i18nPlural: pluralize }}
         </span>
     </div>
 
     <tui-range
-        class="t-slider"
+        class="t-range"
         [min]="min"
         [max]="max"
-        [steps]="computedSteps"
+        [step]="step"
         [segments]="segments"
-        [keySteps]="keySteps"
-        [pluralize]="segmentsPluralizeMap"
+        [keySteps]="computeKeySteps(keySteps, min, max)"
         [focusable]="false"
         [disabled]="readOnly || disabled"
         [ngModel]="value"
@@ -88,26 +88,4 @@
         (tuiPressedChange)="focusToTextInput()"
         (activeThumbChange)="onActiveThumbChange($event)"
     ></tui-range>
-</tui-wrapper>
-
-<!-- TODO: 3.0 remove -->
-<ng-template
-    #legacyMinLabel
-    let-value
->
-    <ng-container *ngIf="value === min">{{ minLabel }}</ng-container>
-    <ng-container *ngIf="value !== min">
-        {{ value }}&nbsp;{{ value | i18nPlural: pluralizeMap || pluralizeMapFallback }}
-    </ng-container>
-</ng-template>
-
-<!-- TODO: 3.0 remove -->
-<ng-template
-    #legacyMaxLabel
-    let-value
->
-    <ng-container *ngIf="value === max">{{ maxLabel }}</ng-container>
-    <ng-container *ngIf="value !== max">
-        {{ value }}&nbsp;{{ value | i18nPlural: pluralizeMap || pluralizeMapFallback }}
-    </ng-container>
-</ng-template>
+</div>

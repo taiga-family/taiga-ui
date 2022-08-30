@@ -1,7 +1,7 @@
 export interface ReplacementConst {
     readonly from: {
         readonly name: string;
-        readonly moduleSpecifier?: string;
+        readonly moduleSpecifier?: string | string[];
     };
     readonly to: {
         readonly name: string;
@@ -20,6 +20,16 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
             name: 'Validators.nullValidator',
             namedImport: 'Validators',
             moduleSpecifier: '@angular/forms',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_CALENDAR_DATA_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
@@ -59,6 +69,76 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         },
         to: {
             name: 'TuiAlertModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiHintControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiManualHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPointerHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownSelectionModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownHoverModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownContextModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDropdownModule',
             moduleSpecifier: '@taiga-ui/core',
         },
     },
@@ -150,6 +230,216 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
         to: {
             name: 'TuiProgressModule',
             moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'hexToRgb',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiHexToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'hsvToRgb',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiHsvToRgb',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'parseColor',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiParseColor',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'rgbToHex',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+        },
+        to: {
+            name: 'tuiRgbToHex',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'rgbToHsv',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/addon-editor',
+        },
+        to: {
+            name: 'tuiRgbToHsv',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccountModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccountComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccount',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccount',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'tuiAccountDelegate',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'tuiAccountDelegate',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccountDelegateComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiAccountDelegateComponent',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'CURRENCY_ICONS',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'CURRENCY_ICONS',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ACCOUNT_PROJECTOR',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TUI_ACCOUNT_PROJECTOR',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAutofillFieldNameT',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiAutofillFieldName',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMarkerIconModeT',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiMarkerIconMode',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiStatusT',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiStatus',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAbstractTextfieldHost',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'AbstractTuiTextfieldHost',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];

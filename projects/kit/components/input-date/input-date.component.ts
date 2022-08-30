@@ -17,13 +17,14 @@ import {
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
-    nullableSame,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     TuiControlValueTransformer,
@@ -32,14 +33,15 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -50,6 +52,7 @@ import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
+    tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDatePipe,
@@ -60,15 +63,16 @@ import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_DATE_PROVIDERS} from './input-date.providers';
-
-// @dynamic
 @Component({
     selector: `tui-input-date`,
     templateUrl: `./input-date.template.html`,
     styleUrls: [`./input-date.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_DATE_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputDateComponent),
+        tuiAsControl(TuiInputDateComponent),
+        tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+    ],
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
@@ -157,7 +161,7 @@ export class TuiInputDateComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
@@ -264,10 +268,6 @@ export class TuiInputDateComponent
         this.open = false;
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
@@ -294,6 +294,6 @@ export class TuiInputDateComponent
         oldValue: TuiDay | null,
         newValue: TuiDay | null,
     ): boolean {
-        return nullableSame(oldValue, newValue, (a, b) => a.daySame(b));
+        return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 }

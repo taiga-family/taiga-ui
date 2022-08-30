@@ -11,7 +11,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 
-// @dynamic
 @Component({
     selector: `tui-primitive-checkbox`,
     templateUrl: `./primitive-checkbox.template.html`,
@@ -34,11 +33,11 @@ export class TuiPrimitiveCheckboxComponent {
 
     @Input()
     @tuiDefaultProp()
-    hovered = false;
+    hovered: boolean | null = false;
 
     @Input()
     @tuiDefaultProp()
-    pressed = false;
+    pressed: boolean | null = false;
 
     @Input()
     @tuiDefaultProp()

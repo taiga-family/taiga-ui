@@ -3,7 +3,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,14 +12,14 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    clamp,
     EMPTY_QUERY,
-    isNativeFocusedIn,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
+    tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -39,23 +38,12 @@ import {Observable} from 'rxjs';
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function nonNegativeInteger(length: number): boolean {
-    return Number.isInteger(length) && length >= 0;
-}
-
-// @dynamic
 @Component({
     selector: `tui-pagination`,
     templateUrl: `./pagination.template.html`,
     styleUrls: [`./pagination.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiPaginationComponent),
-        },
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiPaginationComponent)],
 })
 export class TuiPaginationComponent
     extends AbstractTuiInteractive
@@ -145,7 +133,7 @@ export class TuiPaginationComponent
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     /**
@@ -173,10 +161,6 @@ export class TuiPaginationComponent
 
     elementIsFocusable(index: number): boolean {
         return this.index === index && !this.focused;
-    }
-
-    getItemContext(index: number): TuiContextWithImplicit<number> {
-        return {$implicit: index};
     }
 
     /**
@@ -212,7 +196,11 @@ export class TuiPaginationComponent
 
         const computedIndex = this.index - this.maxHalfLength + elementIndex;
 
-        return clamp(computedIndex, elementIndex, this.lastIndex - reverseElementIndex);
+        return tuiClamp(
+            computedIndex,
+            elementIndex,
+            this.lastIndex - reverseElementIndex,
+        );
     }
 
     getElementMode(index: number): TuiAppearance {
@@ -239,7 +227,7 @@ export class TuiPaginationComponent
         );
 
         if (previous?.nativeFocusableElement) {
-            setNativeFocused(previous.nativeFocusableElement);
+            previous.nativeFocusableElement.focus();
         }
     }
 
@@ -253,7 +241,7 @@ export class TuiPaginationComponent
         );
 
         if (next?.nativeFocusableElement) {
-            setNativeFocused(next.nativeFocusableElement);
+            next.nativeFocusableElement.focus();
         }
     }
 
@@ -313,7 +301,7 @@ export class TuiPaginationComponent
 
     private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
-            clamp(
+            tuiClamp(
                 this.index + tuiHorizontalDirectionToNumber(direction),
                 0,
                 this.lastIndex,
@@ -325,7 +313,7 @@ export class TuiPaginationComponent
         const {nativeFocusableElement} = this;
 
         if (nativeFocusableElement) {
-            setNativeFocused(nativeFocusableElement);
+            nativeFocusableElement.focus();
         }
     }
 
@@ -337,4 +325,8 @@ export class TuiPaginationComponent
         this.index = index;
         this.indexChange.emit(index);
     }
+}
+
+function nonNegativeInteger(length: number): boolean {
+    return Number.isInteger(length) && length >= 0;
 }

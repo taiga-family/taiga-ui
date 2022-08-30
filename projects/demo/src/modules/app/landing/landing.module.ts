@@ -7,7 +7,7 @@ import {TuiPreventDefaultModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiCalendarModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -32,7 +32,7 @@ import {LandingComponent} from './landing.component';
         TuiInputDateModule,
         TuiCalendarModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiPreventDefaultModule,
         TuiCheckboxLabeledModule,
         TuiToggleModule,

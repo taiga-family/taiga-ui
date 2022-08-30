@@ -7,6 +7,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleTuiThemeNightComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 }

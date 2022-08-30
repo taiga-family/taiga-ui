@@ -11,7 +11,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -60,7 +60,6 @@ describe(`ComboBox`, () => {
                     [readOnly]="readOnly"
                     [tuiTextfieldSize]="size"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiHintContent]="hintContent"
                 >
                     Who stole the ball?
@@ -83,7 +82,6 @@ describe(`ComboBox`, () => {
         size: TuiSizeS | TuiSizeL = `m`;
         readOnly = false;
         hintContent: string | null = `prompt`;
-        exampleText = `exampleText`;
 
         get stringify(): TuiStringHandler<Beast> {
             return this.defaultInputs ? TUI_DEFAULT_STRINGIFY : stringify;
@@ -107,7 +105,7 @@ describe(`ComboBox`, () => {
                 TuiComboBoxModule,
                 TuiRootModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],

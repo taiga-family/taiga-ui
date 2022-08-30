@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -48,7 +49,8 @@ export class AppComponent {
 
 const AFTER = `import { TuiPreviewDialogService } from "@taiga-ui/addon-preview";
 import { TuiCodeEditor } from "@taiga-ui/addon-doc";
-import { TuiDropdownPortalService, TuiAlertService } from "@taiga-ui/cdk";
+import { TuiAlertService } from "@taiga-ui/core";
+import { TuiDropdownPortalService } from "@taiga-ui/cdk";
 import { Component } from '@angular/core';
 
 function etc(service: TuiAlertService) {
@@ -109,4 +111,7 @@ function createMainFiles(): void {
     createSourceFile('test/app/app.component.ts', BEFORE);
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
+
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

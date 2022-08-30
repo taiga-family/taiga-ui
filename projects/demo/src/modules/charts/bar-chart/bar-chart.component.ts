@@ -1,25 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {getCurrencySymbol, TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {formatNumber, TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-const MONTHS: readonly string[] = [
-    `Jan 2019`,
-    `Feb`,
-    `Mar`,
-    `Apr`,
-    `May`,
-    `Jun`,
-    `Jul`,
-    `Aug`,
-    `Sep`,
-    `Oct`,
-    `Nov`,
-    `Dec`,
-];
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: `example-tui-bar-chart`,
@@ -28,19 +10,19 @@ const MONTHS: readonly string[] = [
     changeDetection,
 })
 export class ExampleTuiBarChartComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     collapsed = false;
@@ -64,30 +46,4 @@ export class ExampleTuiBarChartComponent {
     ];
 
     value = this.valueVariants[0];
-
-    readonly contentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<number>>
-    > = [
-        ``,
-        ({$implicit}) => this.getHint($implicit),
-        ({$implicit}) => MONTHS[$implicit],
-    ];
-
-    hintContent = this.contentVariants[0];
-
-    readonly hintModeVariants: readonly TuiHintModeT[] = [`onDark`, `error`];
-
-    hintMode: TuiHintModeT | null = null;
-
-    getHint(index: number): string {
-        return this.value
-            .reduce(
-                (result, set) =>
-                    `${result}${formatNumber(set[index])} ${getCurrencySymbol(
-                        TuiCurrency.Ruble,
-                    )}\n`,
-                ``,
-            )
-            .trim();
-    }
 }

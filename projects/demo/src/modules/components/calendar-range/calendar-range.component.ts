@@ -10,16 +10,11 @@ import {
     TuiDayLike,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiBaseColor,
-    TuiColor,
-    TuiMarkerHandler,
-} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {tuiCreateDefaultDayRangePeriods, TuiDayRangePeriod} from '@taiga-ui/kit';
 
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
     selector: `example-calendar-range`,
@@ -27,21 +22,21 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     changeDetection,
 })
 export class ExampleTuiCalendarRangeComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly minVariants = [

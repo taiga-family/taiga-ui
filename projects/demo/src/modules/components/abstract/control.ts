@@ -1,11 +1,9 @@
 import {AbstractControl} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDirection,
-    TuiDropdownWidthT,
-    TuiHintModeT,
+    TUI_DROPDOWN_DEFAULT_OPTIONS,
+    TUI_HINT_DIRECTIONS,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -13,7 +11,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
+import {AbstractExampleTuiDropdown} from './dropdown';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -31,28 +29,19 @@ type TuiPossibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
-    implements ExampleTuiDropdown
+    implements AbstractExampleTuiDropdown
 {
     abstract readonly control: AbstractControl;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    readonly hintContentVariants: readonly string[] = [`Some content`];
+    readonly hintContentVariants: readonly string[] = [``, `Some content`];
 
-    readonly hintDirectionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
-    ];
+    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintModeVariants: readonly TuiHintModeT[] = [`error`, `onDark`];
+    readonly hintAppearanceVariants = [``, `error`, `onDark`];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
+    readonly typeVariants: readonly TuiInputType[] = [
         `text`,
         `email`,
         `password`,
@@ -80,7 +69,7 @@ export abstract class AbstractExampleTuiControl
         `country-name`,
     ];
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = [`text`, `numeric`];
+    readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
     readonly customContentVariants: PolymorpheusContent[] = [
         CUSTOM_SVG_NAME,
@@ -90,7 +79,7 @@ export abstract class AbstractExampleTuiControl
         `tuiIconMastercardMono`,
     ];
 
-    customContentSelected: PolymorpheusContent | null = null;
+    customContentSelected: PolymorpheusContent = ``;
 
     inputMode = this.inputModeVariants[0];
 
@@ -98,7 +87,7 @@ export abstract class AbstractExampleTuiControl
 
     maxLength: TuiPossibleGenericType | null = null;
 
-    type: TuiInputTypeT = this.typeVariants[0];
+    type: TuiInputType = this.typeVariants[0];
 
     cleaner = false;
 
@@ -116,34 +105,41 @@ export abstract class AbstractExampleTuiControl
 
     maxHeight: number | null = null;
 
-    hintContent: string | null = null;
+    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
 
-    hintDirection: TuiDirection = this.hintDirectionVariants[2];
+    iconLeft = this.iconLeftVariants[0];
 
-    hintMode: TuiHintModeT | null = null;
+    hintContent = this.hintContentVariants[0];
+
+    hintDirection = this.hintDirectionVariants[0];
+
+    hintAppearance = this.hintAppearanceVariants[0];
 
     readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
-    dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
+    dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [`fixed`, `min`];
-
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
-        `bottom`,
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
+        `fixed`,
+        `min`,
+        `auto`,
     ];
 
-    dropdownDirection: TuiVerticalDirection | null = null;
+    dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
 
-    dropdownSided = false;
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
+        `bottom`,
+        `top`,
+    ];
 
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
+    dropdownDirection: TuiVerticalDirection | null =
+        TUI_DROPDOWN_DEFAULT_OPTIONS.direction;
 
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
+    dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
 
-    get customContent(): PolymorpheusContent | null {
+    dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
+
+    get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
             : this.customContentSelected;

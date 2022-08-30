@@ -5,17 +5,14 @@ import {
     EventEmitter,
     HostListener,
     Inject,
-    Optional,
     Output,
 } from '@angular/core';
-import {getClosestElement} from '@taiga-ui/cdk';
-import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
+import {tuiIsElement} from '@taiga-ui/cdk';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
 const END = MAX_LENGTH - START - 10;
 
-// @dynamic
 @Component({
     selector: `tui-edit-link`,
     templateUrl: `./edit-link.template.html`,
@@ -38,9 +35,6 @@ export class TuiEditLinkComponent {
     constructor(
         @Inject(DOCUMENT)
         private readonly documentRef: Document,
-        @Optional()
-        @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
-        private readonly shadowRootRef: DocumentOrShadowRoot | null,
     ) {}
 
     get hasUrl(): boolean {
@@ -72,14 +66,9 @@ export class TuiEditLinkComponent {
 
     @HostListener(`mousedown`, [`$event`])
     onMouseDown(event: MouseEvent): void {
-        const tagName =
-            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : ``;
-
-        if (tagName === `a` || tagName === `button` || tagName === `input`) {
-            return;
+        if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
+            event.preventDefault();
         }
-
-        event.preventDefault();
     }
 
     onSave(): void {
@@ -112,19 +101,18 @@ export class TuiEditLinkComponent {
         this.url = ``;
     }
 
-    // TODO: 3.0 remove shadow root ref in v3.0
     private makeUrl(): string {
-        const selection = (this.shadowRootRef || this.documentRef).getSelection();
+        const selection = this.documentRef.getSelection();
 
         return selection ? this.getHref(selection) : ``;
     }
 
     private getHref({focusNode}: Selection): string {
-        if (!focusNode || !focusNode.parentElement) {
+        if (!focusNode?.parentElement) {
             return ``;
         }
 
-        const a = getClosestElement(focusNode.parentElement, `a`);
+        const a = focusNode.parentElement.closest(`a`);
 
         return a ? this.removePrefix(a.getAttribute(`href`) || ``) : this.url;
     }

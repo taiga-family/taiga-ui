@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     Inject,
-    Input,
     Optional,
     Self,
     TemplateRef,
@@ -13,30 +12,38 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    setNativeFocused,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
+    tuiAsDataListHost,
     TuiDataListDirective,
     TuiDataListHost,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {
+    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+    TUI_VALUE_ACCESSOR_PROVIDER,
+} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {TUI_INPUT_PROVIDERS} from './input.providers';
 
 @Component({
     selector: `tui-input`,
     templateUrl: `./input.template.html`,
     styleUrls: [`./input.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_PROVIDERS,
+    providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputComponent),
+        tuiAsDataListHost(TuiInputComponent),
+        tuiAsControl(TuiInputComponent),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>
@@ -47,14 +54,6 @@ export class TuiInputComponent
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    @Input()
-    @tuiDefaultProp()
-    icon: string | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = `left`;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
@@ -81,7 +80,7 @@ export class TuiInputComponent
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }
@@ -93,10 +92,6 @@ export class TuiInputComponent
     onValueChange(value: string): void {
         this.updateValue(value);
         this.open = true;
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     onActiveZone(active: boolean): void {
@@ -116,7 +111,7 @@ export class TuiInputComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 

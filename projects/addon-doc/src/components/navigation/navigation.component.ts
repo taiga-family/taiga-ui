@@ -7,11 +7,13 @@ import {
     Inject,
     Optional,
 } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {TuiDestroyService, tuiPure, uniqBy} from '@taiga-ui/cdk';
+import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
@@ -20,7 +22,7 @@ import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 import {TUI_DOC_SCROLL_BEHAVIOR} from '../../tokens/scroll-behavior';
 import {TuiDocPages} from '../../types/pages';
-import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
+import {tuiTransliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
     NAVIGATION_LABELS,
@@ -28,7 +30,6 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 
-// @dynamic
 @Component({
     selector: `tui-doc-navigation`,
     templateUrl: `navigation.template.html`,
@@ -40,11 +41,16 @@ export class TuiDocNavigationComponent {
     @HostBinding(`class._open`)
     menuOpen = false;
 
-    search = ``;
-    open = false;
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
     active = ``;
+
+    readonly search = new FormControl(``);
+
+    readonly filtered$ = tuiControlValue<string>(this.search).pipe(
+        filter(search => search.length > 2),
+        map(search => this.filterItems(this.flattenSubPages(this.items), search)),
+    );
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
@@ -78,16 +84,12 @@ export class TuiDocNavigationComponent {
             changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment);
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment!);
         });
     }
 
     get canOpen(): boolean {
-        return this.search.length > 2;
-    }
-
-    get filteredItems(): ReadonlyArray<readonly TuiDocPage[]> {
-        return this.filterItems(this.flattenSubPages(this.items), this.search);
+        return this.search.value.length > 2;
     }
 
     get itemsWithoutSections(): TuiDocPages {
@@ -106,15 +108,10 @@ export class TuiDocNavigationComponent {
         this.menuOpen = false;
     }
 
-    onSearchChange(search: string): void {
-        this.search = search;
-        this.open = this.canOpen;
-    }
-
-    onClick(): void {
-        this.open = false;
+    onClick(input: TuiInputComponent): void {
+        input.open = false;
         this.menuOpen = false;
-        this.search = ``;
+        this.search.setValue(``);
         this.openActivePageGroup();
     }
 
@@ -124,7 +121,7 @@ export class TuiDocNavigationComponent {
         search: string,
     ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
-            uniqBy(
+            tuiUniqBy(
                 section.filter(({title, keywords = ``}) => {
                     title = title.toLowerCase();
                     search = search.toLowerCase();
@@ -133,8 +130,8 @@ export class TuiDocNavigationComponent {
                     return (
                         title.includes(search) ||
                         keywords.includes(search) ||
-                        title.includes(transliterateKeyboardLayout(search)) ||
-                        keywords.includes(transliterateKeyboardLayout(search)) ||
+                        title.includes(tuiTransliterateKeyboardLayout(search)) ||
+                        keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
                         search.replace(/-/gi, ``).includes(title)
                     );
                 }),

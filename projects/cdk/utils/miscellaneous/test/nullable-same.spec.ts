@@ -1,4 +1,4 @@
-import {nullableSame} from '../nullable-same';
+import {tuiNullableSame} from '../nullable-same';
 
 describe(`nullableSame`, () => {
     interface Test {
@@ -14,25 +14,25 @@ describe(`nullableSame`, () => {
 
     describe(`returns true if`, () => {
         it(`a = null, b = null`, () => {
-            expect(nullableSame(null, null, testMather)).toBe(true);
+            expect(tuiNullableSame(null, null, testMather)).toBe(true);
         });
 
         it(`a = {id: 1}, b = {id: 1}`, () => {
-            expect(nullableSame(value1, value1, testMather)).toBe(true);
+            expect(tuiNullableSame(value1, value1, testMather)).toBe(true);
         });
     });
 
     describe(`returns false if`, () => {
         it(`a = {id: 1}, b = null`, () => {
-            expect(nullableSame(value1, null, testMather)).toBe(false);
+            expect(tuiNullableSame(value1, null, testMather)).toBe(false);
         });
 
         it(`a = null, b = {id: 1}`, () => {
-            expect(nullableSame(null, value1, testMather)).toBe(false);
+            expect(tuiNullableSame(null, value1, testMather)).toBe(false);
         });
 
         it(`a = {id: 1}, b = {id: 2}`, () => {
-            expect(nullableSame(value1, value2, testMather)).toBe(false);
+            expect(tuiNullableSame(value1, value2, testMather)).toBe(false);
         });
     });
 });

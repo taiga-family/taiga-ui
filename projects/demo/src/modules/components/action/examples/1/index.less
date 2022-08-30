@@ -1,11 +1,13 @@
-.wrapper {
+:host {
     display: flex;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 1.5rem;
 }
 
 .action {
     flex: 1;
     align-items: center;
-    margin-right: 3rem;
 
     &:first-child {
         --tui-action-color: var(--tui-positive);
@@ -13,8 +15,6 @@
     }
 
     &:last-child {
-        margin-right: 0;
-
         --tui-action-color: var(--tui-negative);
         --tui-action-background: var(--tui-error-bg);
     }

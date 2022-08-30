@@ -29,7 +29,7 @@ export class TuiLetDirective<T> {
     static ngTemplateContextGuard<T>(
         _dir: TuiLetDirective<T>,
         _ctx: unknown,
-    ): _ctx is TuiLetDirective<Exclude<T, null | undefined>> {
+    ): _ctx is TuiLetDirective<T> {
         return true;
     }
 }

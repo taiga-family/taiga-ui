@@ -24,13 +24,13 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     customTemplate: PolymorpheusContent = ``;
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
     readonly control = new FormControl(``, Validators.required);
 
@@ -62,7 +62,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     successMessage = this.successMessageVariants[0];
 
     messageDirection = this.hintDirectionVariants[0];
-    messageMode = this.hintModeVariants[0];
+    messageMode = this.hintAppearanceVariants[0];
 
     get notificationTemplate(): PolymorpheusContent {
         return this.successMessage === `Template`

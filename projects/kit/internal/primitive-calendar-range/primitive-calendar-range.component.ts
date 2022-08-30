@@ -20,10 +20,10 @@ import {
     TuiDestroyService,
     TuiMapper,
     TuiMonth,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit/tokens';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -75,7 +75,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
     constructor(
-        @Inject(TUI_CALENDAR_DATA_STREAM)
+        @Inject(TUI_CALENDAR_DATE_STREAM)
         @Optional()
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
@@ -86,7 +86,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         }
 
         valueChanges
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
                 this.value = value;
                 this.updateViewedMonths();

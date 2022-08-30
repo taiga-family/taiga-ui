@@ -2,10 +2,9 @@
     *tuiLet="isActive$ | async as active"
     #tableCommand
     [content]="tableOptionsDropdown"
-    [canOpen]="active"
+    [canOpen]="!!active"
 >
     <button
-        #tableCommandsBtn
         tuiIconButton
         type="button"
         size="s"
@@ -13,8 +12,7 @@
         appearance="icon"
         tuiHintDirection="top-left"
         [tuiHint]="rowsColumnsManagingText$ | async"
-        [tuiHintId]="tableCommandsBtn.id"
-        [tuiDescribedBy]="tableCommandsBtn.id"
+        [tuiHintDescribe]="''"
         [focusable]="tableCommand.open"
         [disabled]="!active"
     ></button>

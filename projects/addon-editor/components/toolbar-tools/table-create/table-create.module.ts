@@ -3,8 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiTableSizeSelectorModule} from '@taiga-ui/addon-editor/components/toolbar-tools/table-size-selector';
 import {
     TuiButtonModule,
-    TuiDescribedByModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -15,10 +14,9 @@ import {TuiTableCreateComponent} from './table-create.component';
     imports: [
         CommonModule,
         TuiHostedDropdownModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiButtonModule,
         TuiHintModule,
-        TuiDescribedByModule,
         TuiTableSizeSelectorModule,
     ],
     declarations: [TuiTableCreateComponent],

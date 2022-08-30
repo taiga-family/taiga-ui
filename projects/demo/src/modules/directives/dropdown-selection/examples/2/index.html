@@ -1,9 +1,9 @@
 <tui-text-area
     #textarea
     tuiDropdownSelectionPosition="word"
-    [tuiDropdownContent]="dropdown"
+    [tuiDropdown]="dropdown"
     [tuiDropdownSelection]="predicate"
-    [pseudoFocused]="focused"
+    [pseudoFocus]="(driver | async) || null"
     [(ngModel)]="value"
     (keydown.arrowUp)="onArrow($event, 'last')"
     (keydown.arrowDown)="onArrow($event, 'first')"

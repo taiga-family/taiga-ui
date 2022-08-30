@@ -1,16 +1,22 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTime} from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {
+    configureTestSuite,
+    tuiCreateKeyboardEvent,
+    TuiNativeInputPO,
+    TuiPageObject,
+} from '@taiga-ui/testing';
 
 import {TuiInputTimeComponent} from '../input-time.component';
 import {TuiInputTimeModule} from '../input-time.module';
@@ -61,6 +67,7 @@ describe(`InputTime`, () => {
     let component: TuiInputTimeComponent;
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
+    let input: HTMLInputElement;
 
     function getDropdown(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-input-time__dropdown`);
@@ -74,7 +81,7 @@ describe(`InputTime`, () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
             ],
             declarations: [TestComponent],
         });
@@ -87,6 +94,7 @@ describe(`InputTime`, () => {
         fixture.detectChanges();
         component = testComponent.component;
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        input = fixture.debugElement.query(By.css(`input`)).nativeElement;
         await fixture.whenStable();
         fixture.detectChanges();
     });
@@ -94,7 +102,7 @@ describe(`InputTime`, () => {
     describe(`Initial value`, () => {
         it(`The value in the field is formatted by mask`, async () => {
             await fixture.whenStable();
-            expect(inputPO.value).toBe(`12:30`);
+            expect(input.value).toBe(`12:30`);
         });
 
         it(`The initial value in the formControl is issued as an object with the hours and minutes properties`, () => {
@@ -113,7 +121,7 @@ describe(`InputTime`, () => {
             await fixture.whenStable();
             fixture.detectChanges();
             await fixture.whenStable();
-            expect(inputPO.value).toBe(`22:30`);
+            expect(input.value).toBe(`22:30`);
         });
 
         it(`In the formControl is issued as an object with hours and minutes properties`, () => {
@@ -142,50 +150,57 @@ describe(`InputTime`, () => {
         beforeEach(async () => await fixture.whenStable());
 
         it(`If the cursor is at position 0, then pressing UP increases the hour by 1`, () => {
-            inputPO.focus();
+            input.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
-            inputPO.sendKeydown(`ArrowUp`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`13:30`);
+            expect(input.value).toBe(`13:30`);
         });
 
         it(`If the cursor is at position 4, then pressing UP increases the minute by 1`, () => {
-            inputPO.focus();
+            input.focus();
             component.nativeFocusableElement!.setSelectionRange(4, 4);
-            inputPO.sendKeydown(`ArrowUp`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`12:31`);
+            expect(input.value).toBe(`12:31`);
         });
 
         it(`If the cursor is at position 0, then pressing DOWN decreases the hour by 1`, () => {
-            inputPO.focus();
+            input.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
-            inputPO.sendKeydown(`ArrowDown`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`11:30`);
+            expect(input.value).toBe(`11:30`);
         });
 
         it(`If the cursor is at position 4, then pressing DOWN decreases the minute by 1`, () => {
-            inputPO.focus();
+            input.focus();
             component.nativeFocusableElement!.setSelectionRange(4, 4);
-            inputPO.sendKeydown(`ArrowDown`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`12:29`);
+            expect(input.value).toBe(`12:29`);
         });
 
         it(`When readOnly is ignored`, async () => {
             testComponent.readOnly = true;
-            inputPO.focus();
+            input.focus();
+            fixture.detectChanges();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
             await fixture.whenStable();
 
-            inputPO.sendKeydown(`ArrowUp`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`12:30`);
+            expect(input.value).toBe(`12:30`);
 
-            inputPO.sendKeydown(`ArrowDown`);
+            input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
+            fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`12:30`);
+            expect(input.value).toBe(`12:30`);
         });
     });
 
@@ -194,12 +209,13 @@ describe(`InputTime`, () => {
             testComponent.items = TIMES;
 
             fixture.detectChanges();
-            inputPO.focus();
+            input.focus();
         });
 
         describe(`Dropdown appears`, () => {
             it(`down arrow`, () => {
-                inputPO.sendKeydown(`arrowDown`);
+                input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
+                fixture.detectChanges();
 
                 expect(getDropdown()).not.toBeNull();
             });
@@ -219,7 +235,8 @@ describe(`InputTime`, () => {
             it(`down arrow when readonly is on`, () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
-                inputPO.sendKeydown(`arrowDown`);
+                input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
+                fixture.detectChanges();
 
                 expect(getDropdown()).toBeNull();
             });

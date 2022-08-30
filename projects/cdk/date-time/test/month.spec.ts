@@ -1,6 +1,6 @@
 import {TuiMonthNumber} from '../../enums/month-number';
 import {TuiMonth} from '../month';
-import {mockDateInside, pendingIfNotMoscowTimeZone} from './helpers';
+import {tuiMockDateInside, tuiPendingIfNotMoscowTimeZone} from './helpers';
 
 describe(`TuiMonth`, () => {
     describe(`static method`, () => {
@@ -120,11 +120,11 @@ describe(`TuiMonth`, () => {
 
         describe(`currentLocal`, () => {
             beforeEach(() => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
             });
 
             it(`UTC month is the same as local`, () => {
-                mockDateInside(Date.UTC(2000, 0, 31, 10), () => {
+                tuiMockDateInside(Date.UTC(2000, 0, 31, 10), () => {
                     const currentDate = TuiMonth.currentLocal();
 
                     expect(currentDate.year).toBe(2000);
@@ -133,7 +133,7 @@ describe(`TuiMonth`, () => {
             });
 
             it(`UTC month is smaller than local`, () => {
-                mockDateInside(Date.UTC(2000, 0, 31, 23), () => {
+                tuiMockDateInside(Date.UTC(2000, 0, 31, 23), () => {
                     const currentDate = TuiMonth.currentLocal();
 
                     expect(currentDate.year).toBe(2000);
@@ -144,11 +144,11 @@ describe(`TuiMonth`, () => {
 
         describe(`currentUtc`, () => {
             beforeEach(() => {
-                pendingIfNotMoscowTimeZone();
+                tuiPendingIfNotMoscowTimeZone();
             });
 
             it(`UTC is the same as local`, () => {
-                mockDateInside(new Date(2000, 0, 31, 10), () => {
+                tuiMockDateInside(new Date(2000, 0, 31, 10), () => {
                     const currentDate = TuiMonth.currentUtc();
 
                     expect(currentDate.year).toBe(2000);
@@ -157,7 +157,7 @@ describe(`TuiMonth`, () => {
             });
 
             it(`UTC is smaller than local`, () => {
-                mockDateInside(new Date(2000, 0, 1, 2), () => {
+                tuiMockDateInside(new Date(2000, 0, 1, 2), () => {
                     const currentDate = TuiMonth.currentUtc();
 
                     expect(currentDate.year).toBe(1999);
@@ -210,38 +210,6 @@ describe(`TuiMonth`, () => {
                     it(`'12' if month is 11`, () => {
                         expect(new TuiMonth(2000, 11).formattedMonthPart).toBe(`12`);
                     });
-                });
-            });
-
-            describe(`formattedMonth returns`, () => {
-                it(`'01.2000' for TuiMonth {year: 2000, month: 0}`, () => {
-                    expect(new TuiMonth(2000, 0).formattedMonth).toBe(`01.2000`);
-                });
-
-                it(`'05.2000' for TuiMonth {year: 2000, month: 4}`, () => {
-                    expect(new TuiMonth(2000, 4).formattedMonth).toBe(`05.2000`);
-                });
-
-                it(`'10.0000' for TuiMonth {year: 0, month: 9}`, () => {
-                    expect(new TuiMonth(0, 9).formattedMonth).toBe(`10.0000`);
-                });
-
-                it(`'12.1995' for TuiMonth {year: 1995, month: 11}`, () => {
-                    expect(new TuiMonth(1995, 11).formattedMonth).toBe(`12.1995`);
-                });
-            });
-
-            describe(`weeksRowsCount`, () => {
-                it(`2018.02`, () => {
-                    expect(new TuiMonth(2018, 1).weeksRowsCount).toBe(5);
-                });
-
-                it(`2018.04`, () => {
-                    expect(new TuiMonth(2018, 3).weeksRowsCount).toBe(6);
-                });
-
-                it(`2021.02`, () => {
-                    expect(new TuiMonth(2010, 1).weeksRowsCount).toBe(4);
                 });
             });
 
@@ -318,20 +286,6 @@ describe(`TuiMonth`, () => {
                     expect(new TuiMonth(2001, TuiMonthNumber.February).daysCount).toBe(
                         28,
                     );
-                });
-            });
-
-            describe(`monthStartDaysOffset`, () => {
-                it(`2018.02`, () => {
-                    expect(new TuiMonth(2018, 1).monthStartDaysOffset).toBe(3);
-                });
-
-                it(`1995.04`, () => {
-                    expect(new TuiMonth(1995, 3).monthStartDaysOffset).toBe(5);
-                });
-
-                it(`3011.10`, () => {
-                    expect(new TuiMonth(3011, 9).monthStartDaysOffset).toBe(1);
                 });
             });
         });
@@ -532,13 +486,6 @@ describe(`TuiMonth`, () => {
                     expect(result.month).toBe(6);
                 });
 
-                it(`TuiMonth {year: 1999 month: 6} if passed value was {year: 1}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({year: 1}, true);
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(6);
-                });
-
                 it(`TuiMonth {year: 2001, month: 6} if passed value was {month: 12}`, () => {
                     const result: TuiMonth = y2000m6.append({month: 12});
 
@@ -548,13 +495,6 @@ describe(`TuiMonth`, () => {
 
                 it(`TuiMonth {year: 1999, month: 6} if passed value was {month: -12}`, () => {
                     const result: TuiMonth = y2000m6.append({month: -12});
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(6);
-                });
-
-                it(`TuiMonth {year: 1999, month: 6} if passed value was {month: 12}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({month: 12}, true);
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(6);
@@ -575,13 +515,6 @@ describe(`TuiMonth`, () => {
                         year: -1,
                         month: -1,
                     });
-
-                    expect(result.year).toBe(1999);
-                    expect(result.month).toBe(5);
-                });
-
-                it(`TuiMonth {year: 1999, month: 5} if passed value was {year: 1, month: 1}, true`, () => {
-                    const result: TuiMonth = y2000m6.append({year: 1, month: 1}, true);
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(5);
@@ -654,11 +587,5 @@ describe(`TuiMonth`, () => {
                 });
             });
         });
-    });
-
-    it(`stringified value equals formatted`, () => {
-        const month = new TuiMonth(2000, 0);
-
-        expect(month.toString()).toBe(month.formattedMonth);
     });
 });

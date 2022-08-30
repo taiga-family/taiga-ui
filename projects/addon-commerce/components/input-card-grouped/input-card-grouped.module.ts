@@ -5,8 +5,6 @@ import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
     TuiActiveZoneModule,
     TuiFocusableModule,
-    TuiHoveredModule,
-    TuiInputModeModule,
     TuiLetModule,
     TuiMapperPipeModule,
     TuiPreventDefaultModule,
@@ -25,9 +23,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         TuiFocusableModule,
         TuiSvgModule,
         TuiWrapperModule,
-        TuiHoveredModule,
         TuiActiveZoneModule,
-        TuiInputModeModule,
         TuiMapperPipeModule,
         TuiDropdownModule,
         TuiPreventDefaultModule,

@@ -1,16 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsString} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function nonNegativeInt(value: number): boolean {
-    return Number.isInteger(value) && value >= 0;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function positiveInt(value: number): boolean {
-    return Number.isInteger(value) && value > 0;
-}
 
 @Component({
     selector: `tui-progress-segmented`,
@@ -20,11 +10,17 @@ export function positiveInt(value: number): boolean {
 })
 export class TuiProgressSegmentedComponent {
     @Input()
-    @tuiDefaultProp(nonNegativeInt, `Must be non-negative integer between 0 and max`)
+    @tuiDefaultProp(
+        (value: number) => Number.isInteger(value) && value >= 0,
+        `Must be non-negative integer between 0 and max`,
+    )
     value = 0;
 
     @Input()
-    @tuiDefaultProp(positiveInt, `Must be positive integer`)
+    @tuiDefaultProp(
+        (value: number) => Number.isInteger(value) && value > 0,
+        `Must be positive integer`,
+    )
     max = 1;
 
     @Input()
@@ -36,7 +32,7 @@ export class TuiProgressSegmentedComponent {
     colors: string | readonly string[] = `var(--tui-primary)`;
 
     getActiveColor(index: number = 0): string | null {
-        return typeof this.colors === `string`
+        return tuiIsString(this.colors)
             ? this.colors
             : this.colors[index] || this.colors[this.colors.length - 1];
     }

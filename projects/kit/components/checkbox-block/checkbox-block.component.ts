@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,10 +12,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -34,10 +34,8 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
     styleUrls: [`./checkbox-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxBlockComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxBlockComponent),
+        tuiAsControl(TuiCheckboxBlockComponent),
     ],
 })
 export class TuiCheckboxBlockComponent
@@ -89,11 +87,11 @@ export class TuiCheckboxBlockComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
-        if (!this.modeDirective || !this.modeDirective.mode) {
+        if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
                 : TuiAppearance.Whiteblock;
@@ -104,14 +102,6 @@ export class TuiCheckboxBlockComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onFocusVisible(focusVisible: boolean): void {

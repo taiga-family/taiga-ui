@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -14,13 +13,15 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocused,
-    setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsElement,
+    tuiIsInput,
+    tuiIsNativeFocused,
     tuiPure,
     TuiTime,
     TuiTimeLike,
@@ -39,19 +40,16 @@ import {map} from 'rxjs/operators';
 
 import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
 
-// @dynamic
 @Component({
     selector: `tui-input-time`,
     templateUrl: `./input-time.template.html`,
     styleUrls: [`./input-time.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputTimeComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputTimeComponent),
+        tuiAsControl(TuiInputTimeComponent),
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
@@ -105,7 +103,7 @@ export class TuiInputTimeComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get filtered(): readonly TuiTime[] {
@@ -127,7 +125,7 @@ export class TuiInputTimeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 
@@ -213,10 +211,6 @@ export class TuiInputTimeComponent
         });
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onArrowUp(event: Event): void {
         if (this.items.length) {
             return;
@@ -285,8 +279,7 @@ export class TuiInputTimeComponent
     private processArrow(event: Event, shift: -1 | 1): void {
         const {target} = event;
 
-        // TODO: iframe warning
-        if (this.readOnly || !(target instanceof HTMLInputElement)) {
+        if (this.readOnly || !tuiIsElement(target) || !tuiIsInput(target)) {
             return;
         }
 
@@ -328,7 +321,7 @@ export class TuiInputTimeComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
             this.close();
         }
     }

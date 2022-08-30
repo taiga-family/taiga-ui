@@ -6,7 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
-import {TuiLineHandler, TuiLineTypeT} from '@taiga-ui/addon-charts/types';
+import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -26,7 +26,7 @@ import {Observable} from 'rxjs';
 export class TuiAxesComponent {
     @Input()
     @tuiDefaultProp()
-    axisX: TuiLineTypeT = `solid`;
+    axisX: TuiLineType = `solid`;
 
     @Input()
     @tuiDefaultProp()
@@ -34,7 +34,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisY: TuiLineTypeT = `solid`;
+    axisY: TuiLineType = `solid`;
 
     @Input()
     @tuiDefaultProp()

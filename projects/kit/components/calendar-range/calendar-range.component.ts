@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -19,10 +18,12 @@ import {
     TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsString,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
     tuiPure,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -31,7 +32,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
-import {TUI_CALENDAR_DATA_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
+import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -82,15 +83,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
-    /** @deprecated TODO: 3.0 remove */
-    @Output()
-    readonly rangeChange = new EventEmitter<TuiDayRange | null>();
-
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     constructor(
-        @Inject(TUI_CALENDAR_DATA_STREAM)
         @Optional()
+        @Inject(TUI_CALENDAR_DATE_STREAM)
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
@@ -101,7 +98,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
 
         valueChanges
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
                 this.value = value;
             });
@@ -145,9 +142,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     isItemActive(item: string | TuiDayRangePeriod): boolean {
         const {activePeriod} = this;
 
-        return (
-            (typeof item === `string` && activePeriod === null) || activePeriod === item
-        );
+        return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
     }
 
     onRangeChange(dayRange: TuiDayRange): void {
@@ -181,13 +176,12 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
-        this.rangeChange.emit(value);
     }
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.items.find(item =>
-                nullableSame<TuiDayRange>(
+                tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
                     (a, b) =>
@@ -205,11 +199,14 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
         return item => {
-            if (!value || !value.isSingleDay || !minLength) {
+            if (!value?.isSingleDay || !minLength) {
                 return disabledItemHandler(item);
             }
 
-            const disabledBefore = value.from.append(minLength, true).append({day: 1});
+            const negativeMinLength = Object.fromEntries(
+                Object.entries(minLength).map(([key, value]) => [key, -value]),
+            );
+            const disabledBefore = value.from.append(negativeMinLength).append({day: 1});
             const disabledAfter = value.from.append(minLength).append({day: -1});
             const inDisabledRange =
                 disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);

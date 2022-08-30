@@ -10,23 +10,23 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class ExampleTuiBadgedContentComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     rounded = false;

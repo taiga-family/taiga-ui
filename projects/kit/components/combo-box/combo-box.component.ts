@@ -15,18 +15,21 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    isPresent,
-    setNativeFocused,
     TUI_STRICT_MATCHER,
     TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
+    tuiIsPresent,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
+    tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -38,17 +41,23 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {TUI_COMBO_BOX_PROVIDERS} from './combo-box.providers';
 
 @Component({
     selector: `tui-combo-box`,
     templateUrl: `./combo-box.template.html`,
     styleUrls: [`./combo-box.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_COMBO_BOX_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiComboBoxComponent),
+        tuiAsDataListHost(TuiComboBoxComponent),
+        tuiAsControl(TuiComboBoxComponent),
+        tuiAsOptionContent(TUI_SELECT_OPTION),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -124,7 +133,7 @@ export class TuiComboBoxComponent<T>
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }
@@ -134,7 +143,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get showValueTemplate(): boolean {
-        return isPresent(this.value) && !this.focused;
+        return tuiIsPresent(this.value) && !this.focused;
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
@@ -201,10 +210,6 @@ export class TuiComboBoxComponent<T>
         super.updateValue(value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     toggle(): void {
         this.hostedDropdown?.updateOpen(!this.open);
     }
@@ -234,7 +239,7 @@ export class TuiComboBoxComponent<T>
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 }

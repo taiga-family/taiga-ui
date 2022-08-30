@@ -51,14 +51,17 @@
     </ng-container>
     <ng-container *ngIf="hasHints">
         <ng-container *ngFor="let point of value; let index = index">
+            <!-- TODO: Fix hint type -->
             <div
                 *ngIf="value.length > 1 || dots"
-                tuiHintDirection="top-left"
+                tuiHintDirection="top"
                 class="t-column"
                 [class.t-column_hovered]="hovered === index"
+                [class.t-column_hint_hovered]="drivers.get(index) | async"
                 [tuiHintHost]="hintHost"
-                [tuiHint]="hintDirective || hintContent ? hint : ''"
-                [tuiHintId]="getHintId(index)"
+                [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                [tuiHintContext]="getContentContext(point, index)"
+                [tuiHintDescribe]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
                 (mouseenter)="onMouseEnter(index)"
@@ -73,7 +76,7 @@
                     [style.left.%]="getOffset(index)"
                     [style.bottom.%]="getBottom(point[1])"
                     [tuiFocusable]="isFocusable"
-                    [tuiDescribedBy]="getHintId(index)"
+                    [id]="getHintId(index)"
                 ></div>
             </div>
             <div
@@ -81,23 +84,6 @@
                 class="t-line t-line_horizontal"
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
-            <ng-template #hint>
-                <div
-                    *ngIf="hintDirective; else single"
-                    polymorpheus-outlet
-                    class="t-text"
-                    [content]="hintDirective.hint"
-                    [context]="getContentContext(point, index)"
-                ></div>
-                <ng-template #single>
-                    <div
-                        polymorpheus-outlet
-                        class="t-text"
-                        [content]="hintContent"
-                        [context]="{$implicit: point, index: index}"
-                    ></div>
-                </ng-template>
-            </ng-template>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="getHovered(hovered) as point">

@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -41,7 +42,7 @@ export class AppComponent {}`,
         );
 
         expect(tree.readContent('test/style.less')).toEqual(
-            `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
+            `@import '~@taiga-ui/styles/taiga-ui-global';`,
         );
 
         expect(tree.readContent('test/app/app.template.less')).toEqual(
@@ -76,4 +77,7 @@ export class AppComponent {}`,
         'test/app/app.template.less',
         `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
     );
+
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

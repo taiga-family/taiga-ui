@@ -9,23 +9,15 @@ import {
 } from '@angular/core';
 import {CSS as CSS_TOKEN, USER_AGENT} from '@ng-web-apis/common';
 import {
-    getElementOffset,
-    isFirefox,
     TUI_IS_IOS,
     tuiDefaultProp,
+    tuiGetElementOffset,
     TuiInjectionTokenType,
+    tuiIsFirefox,
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function scrollRefFactory({
-    browserScrollRef,
-}: TuiScrollbarComponent): ElementRef<HTMLElement> {
-    return browserScrollRef;
-}
-
-// @dynamic
 @Component({
     selector: `tui-scrollbar`,
     templateUrl: `./scrollbar.template.html`,
@@ -35,7 +27,9 @@ export function scrollRefFactory({
         {
             provide: TUI_SCROLL_REF,
             deps: [TuiScrollbarComponent],
-            useFactory: scrollRefFactory,
+            useFactory: ({
+                browserScrollRef,
+            }: TuiScrollbarComponent): ElementRef<HTMLElement> => browserScrollRef,
         },
     ],
 })
@@ -44,7 +38,8 @@ export class TuiScrollbarComponent {
 
     private readonly isLegacy: boolean =
         !this.cssRef.supports(`position`, `sticky`) ||
-        (isFirefox(this.userAgent) && !this.cssRef.supports(`scrollbar-width`, `none`));
+        (tuiIsFirefox(this.userAgent) &&
+            !this.cssRef.supports(`scrollbar-width`, `none`));
 
     @Input()
     @tuiDefaultProp()
@@ -82,7 +77,7 @@ export class TuiScrollbarComponent {
         }
 
         const {nativeElement} = this.browserScrollRef;
-        const {offsetTop, offsetLeft} = getElementOffset(nativeElement, detail);
+        const {offsetTop, offsetLeft} = tuiGetElementOffset(nativeElement, detail);
 
         nativeElement.scrollTop =
             offsetTop + detail.offsetHeight / 2 - nativeElement.clientHeight / 2;

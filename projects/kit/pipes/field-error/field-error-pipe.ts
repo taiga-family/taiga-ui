@@ -7,7 +7,7 @@ import {
     FormGroupName,
     NgControl,
 } from '@angular/forms';
-import {tuiPure, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, Observable, of} from 'rxjs';
@@ -15,7 +15,6 @@ import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
 
-// @dynamic
 @Pipe({
     name: `tuiFieldError`,
     pure: false,
@@ -128,7 +127,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
             return of(firstError);
         }
 
-        if (errorContent === undefined && typeof firstError === `string`) {
+        if (errorContent === undefined && tuiIsString(firstError)) {
             return of(new TuiValidationError(firstError));
         }
 

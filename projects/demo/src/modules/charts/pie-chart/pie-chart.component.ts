@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {getCurrencySymbol, TuiCurrency} from '@taiga-ui/addon-commerce';
+import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {round, sum, TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {formatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiContextWithImplicit, tuiRound, tuiSum} from '@taiga-ui/cdk';
+import {tuiFormatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -13,19 +13,19 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class ExampleTuiPieChartComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly valueVariants = [
@@ -61,11 +61,11 @@ export class ExampleTuiPieChartComponent {
     hintContent = this.contentVariants[0];
 
     getPercent(index: number): string {
-        return `${round((100 * this.value[index]) / sum(...this.value), 2)} %`;
+        return `${tuiRound((100 * this.value[index]) / tuiSum(...this.value), 2)} %`;
     }
 
     format(index: number): string {
-        return `${formatNumber(this.value[index])} ${getCurrencySymbol(
+        return `${tuiFormatNumber(this.value[index])} ${tuiGetCurrencySymbol(
             TuiCurrency.Ruble,
         )}`;
     }

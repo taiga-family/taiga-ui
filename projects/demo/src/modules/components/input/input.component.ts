@@ -26,68 +26,67 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     @ViewChild(`justLongText`, {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
-    private _customContentSelected: PolymorpheusContent | null = null;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
-
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
-        HTML: import(`!!raw-loader!./examples/6/index.html`),
-        LESS: import(`!!raw-loader!./examples/6/index.less`),
+        TypeScript: import(`./examples/6/index.ts?raw`),
+        HTML: import(`./examples/6/index.html?raw`),
+        LESS: import(`./examples/6/index.less?raw`),
     };
 
     readonly example7: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/7/index.ts`),
-        HTML: import(`!!raw-loader!./examples/7/index.html`),
-        LESS: import(`!!raw-loader!./examples/7/index.less`),
+        TypeScript: import(`./examples/7/index.ts?raw`),
+        HTML: import(`./examples/7/index.html?raw`),
+        LESS: import(`./examples/7/index.less?raw`),
     };
 
     readonly example8: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/8/index.ts`),
-        HTML: import(`!!raw-loader!./examples/8/index.html`),
-        LESS: import(`!!raw-loader!./examples/8/index.less`),
+        TypeScript: import(`./examples/8/index.ts?raw`),
+        HTML: import(`./examples/8/index.html?raw`),
+        LESS: import(`./examples/8/index.less?raw`),
     };
 
     readonly example9: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/9/index.ts`),
-        HTML: import(`!!raw-loader!./examples/9/index.html`),
-        LESS: import(`!!raw-loader!./examples/9/index.less`),
+        TypeScript: import(`./examples/9/index.ts?raw`),
+        HTML: import(`./examples/9/index.html?raw`),
+        LESS: import(`./examples/9/index.less?raw`),
     };
 
-    readonly iconVariants = [null, `tuiIconSearch`, `tuiIconCalendar`];
+    readonly iconVariants = [``, `tuiIconSearchLarge`, `tuiIconCalendarLarge`];
 
     icon = this.iconVariants[0];
+    iconLeft = this.iconVariants[0];
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
@@ -103,13 +102,13 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LONG_TEXT_TEMPLATE,
     ];
 
-    get customContentSelected(): PolymorpheusContent | null {
-        return this._customContentSelected === LONG_TEXT_TEMPLATE
+    get customContent(): PolymorpheusContent {
+        return this.customContentSelected === LONG_TEXT_TEMPLATE
             ? this.longTextRef
-            : this._customContentSelected;
+            : this.customContentSelected;
     }
 
-    set customContentSelected(newValue) {
-        this._customContentSelected = newValue;
+    set customContent(newValue) {
+        this.customContentSelected = newValue;
     }
 }

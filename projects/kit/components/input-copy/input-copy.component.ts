@@ -13,6 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -20,25 +22,26 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiDirection,
-    TuiHintModeT,
+    TuiHintDirection,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
-import {TUI_INPUT_COPY_PROVIDERS} from './input-copy.providers';
-
-// @dynamic
 @Component({
     selector: `tui-input-copy`,
     templateUrl: `./input-copy.template.html`,
     styleUrls: [`./input-copy.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_COPY_PROVIDERS,
+    providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputCopyComponent),
+        tuiAsControl(TuiInputCopyComponent),
+    ],
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
@@ -55,11 +58,11 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    messageDirection: TuiDirection = `bottom-left`;
+    messageDirection: TuiHintDirection = `bottom-left`;
 
     @Input()
     @tuiDefaultProp()
-    messageMode: TuiHintModeT | null = null;
+    messageAppearance = ``;
 
     constructor(
         @Optional()
@@ -119,16 +122,8 @@ export class TuiInputCopyComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     copy(): void {
-        if (!this.textfield || !this.textfield.nativeFocusableElement) {
+        if (!this.textfield?.nativeFocusableElement) {
             return;
         }
 

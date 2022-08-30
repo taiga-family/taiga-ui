@@ -11,7 +11,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {getGradientData, parseGradient, toGradient} from '@taiga-ui/addon-editor/utils';
+import {
+    tuiGetGradientData,
+    tuiParseGradient,
+    tuiToGradient,
+} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
     tuiDefaultProp,
@@ -20,34 +24,17 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DROPDOWN_CONTROLLER,
-    TuiDropdownControllerDirective,
+    tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function longDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
-): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
-    directive.maxHeight = 600;
-
-    return directive;
-}
 
 @Component({
     selector: `tui-input-color`,
     templateUrl: `./input-color.template.html`,
     styleUrls: [`./input-color.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_DROPDOWN_CONTROLLER,
-            deps: [[new Optional(), TuiDropdownControllerDirective]],
-            useFactory: longDropdownControllerFactory,
-        },
-    ],
+    viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
 })
 export class TuiInputColorComponent
     extends AbstractTuiControl<string>
@@ -103,14 +90,6 @@ export class TuiInputColorComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
-    }
-
     protected getFallbackValue(): string {
         return `#000000`;
     }
@@ -119,7 +98,7 @@ export class TuiInputColorComponent
     private sanitize(value: string, domSanitizer: DomSanitizer): SafeStyle | string {
         return value.startsWith(`linear-gradient(`)
             ? domSanitizer.bypassSecurityTrustStyle(
-                  toGradient(parseGradient(getGradientData(value))),
+                  tuiToGradient(tuiParseGradient(tuiGetGradientData(value))),
               )
             : value;
     }

@@ -7,11 +7,9 @@
 >
     <tui-primitive-textfield
         tuiValueAccessor
-        tuiTextfieldType="tel"
         class="t-textfield"
-        [tuiTextfieldInputMode]="inputMode"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoFocused]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoFocus]="computedFocused"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
@@ -21,7 +19,6 @@
         [value]="computedValue"
         [tuiTextfieldCleaner]="canClean"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (drop)="onDrop($event)"
         (keydown.backspace)="onBackspace($event)"
         (paste.prevent)="onPaste($event)"

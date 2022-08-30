@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     HostListener,
@@ -17,14 +18,14 @@ import {
     changeDateSeparator,
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
-    nullableSame,
     RANGE_SEPARATOR_CHAR,
-    setNativeFocused,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiControlValueTransformer,
     TuiDateMode,
@@ -35,16 +36,15 @@ import {
     TuiFocusableElementAccessor,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_DEFAULT_MARKER_HANDLER,
-    TUI_TEXTFIELD_EXAMPLE_TEXT,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    TuiTextfieldExampleTextDirective,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -55,6 +55,7 @@ import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
+    tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateRangePipe,
@@ -65,14 +66,16 @@ import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_DATE_RANGE_PROVIDERS} from './input-date-range.providers';
-
-// @dynamic
 @Component({
     selector: `tui-input-date-range`,
     templateUrl: `./input-date-range.template.html`,
     styleUrls: [`./input-date-range.style.less`],
-    providers: TUI_INPUT_DATE_RANGE_PROVIDERS,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),
+        tuiAsControl(TuiInputDateRangeComponent),
+        tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
+    ],
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
@@ -142,8 +145,6 @@ export class TuiInputDateRangeComponent
         private readonly mobileCalendar: Type<object> | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)
-        private readonly textfieldExampleText: TuiTextfieldExampleTextDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
@@ -168,7 +169,7 @@ export class TuiInputDateRangeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
@@ -178,7 +179,9 @@ export class TuiInputDateRangeComponent
     }
 
     get computedExampleText(): string {
-        return this.items.length ? this.textfieldExampleText.exampleText : ``;
+        return this.items.length
+            ? this.textfield?.nativeFocusableElement?.placeholder || ``
+            : ``;
     }
 
     get computedMask(): TextMaskConfig {
@@ -190,7 +193,7 @@ export class TuiInputDateRangeComponent
     get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.items.find(item =>
-                nullableSame(
+                tuiNullableSame(
                     this.value,
                     item.range,
                     (a, b) =>
@@ -214,7 +217,7 @@ export class TuiInputDateRangeComponent
     }
 
     get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocused === false) {
+        if (this.pseudoFocus === false) {
             return false;
         }
 
@@ -321,7 +324,7 @@ export class TuiInputDateRangeComponent
             this.nativeValue = ``;
         }
 
-        if (!nullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
+        if (!tuiNullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
             this.updateValue(range);
         }
     }
@@ -340,14 +343,6 @@ export class TuiInputDateRangeComponent
             this.updateValue(null);
             this.nativeValue = ``;
         }
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onActiveZone(focused: boolean): void {
@@ -381,7 +376,7 @@ export class TuiInputDateRangeComponent
 
     private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 

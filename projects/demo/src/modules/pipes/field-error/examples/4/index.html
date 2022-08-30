@@ -1,19 +1,22 @@
 <form [formGroup]="testForm">
     <label
         *ngFor="let phone of formData.controls; let i = index"
-        tuiLabel
-        label="Phone number {{ i + 1 }}"
+        tuiLabel="Phone number {{ i + 1 }}"
         formArrayName="phones"
         class="tui-space_bottom-4"
     >
         <span class="row">
             <tui-input-phone
                 formControlName="{{ i }}"
-                tuiTextfieldAutocomplete="off"
                 tuiTextfieldSize="m"
                 class="input"
                 [tuiTextfieldLabelOutside]="true"
-            ></tui-input-phone>
+            >
+                <input
+                    tuiTextfield
+                    autocomplete="off"
+                />
+            </tui-input-phone>
             <button
                 tuiIconButton
                 type="button"

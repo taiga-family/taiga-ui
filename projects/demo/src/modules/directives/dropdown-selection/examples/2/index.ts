@@ -1,11 +1,10 @@
-import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
-import {TuiOptionComponent} from '@taiga-ui/core';
-import {getWordRange} from '@taiga-ui/kit';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {assets} from '@demo/utils';
+import {EMPTY_QUERY, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
+import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
 
 export interface User {
     readonly name: string;
@@ -24,12 +23,15 @@ export class TuiDropdownSelectionExample2 {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    @ViewChild(TuiDriver)
+    readonly driver?: Observable<boolean>;
+
     value = `Type @ to see a dropdown`;
 
     readonly items = [
         {
             name: `Alexander Inkin`,
-            avatar,
+            avatar: assets`/images/avatar.jpg`,
             login: `a.inkin`,
         },
         {
@@ -39,12 +41,8 @@ export class TuiDropdownSelectionExample2 {
         },
     ];
 
-    get focused(): true | null {
-        return !!this.options.length || null;
-    }
-
     predicate: TuiBooleanHandler<Range> = range =>
-        getWordRange(range).toString().startsWith(`@`);
+        tuiGetWordRange(range).toString().startsWith(`@`);
 
     onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
@@ -54,7 +52,7 @@ export class TuiDropdownSelectionExample2 {
         }
 
         event.preventDefault();
-        setNativeFocused(item.nativeElement);
+        item.nativeElement.focus();
     }
 
     filterItems(textarea: HTMLTextAreaElement): readonly User[] {
@@ -69,7 +67,7 @@ export class TuiDropdownSelectionExample2 {
         const caret = value.indexOf(login) + login.length;
 
         this.value = value;
-        setNativeFocused(textarea);
+        textarea.focus();
         textarea.value = value;
         textarea.setSelectionRange(caret, caret);
     }

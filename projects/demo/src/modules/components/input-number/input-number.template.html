@@ -163,20 +163,18 @@
                 <tui-input-number
                     [formControl]="control"
                     [focusable]="focusable"
-                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldType]="type"
                     [min]="min"
                     [max]="max"
                     [style.text-align]="align"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
@@ -184,7 +182,7 @@
                     [postfix]="postfix"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Type a sum
                 </tui-input-number>

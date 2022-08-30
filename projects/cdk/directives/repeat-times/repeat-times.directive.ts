@@ -1,7 +1,7 @@
 import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk/interfaces';
-import {clamp} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 const MAX_VALUE = 0x10000;
 
@@ -23,7 +23,7 @@ export class TuiRepeatTimesDirective {
     @Input()
     @tuiRequiredSetter()
     set tuiRepeatTimesOf(count: number) {
-        const safeCount = Math.floor(clamp(count, 0, MAX_VALUE));
+        const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
 
         const {length} = this.viewContainer;
 

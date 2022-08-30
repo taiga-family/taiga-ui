@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -16,8 +15,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
-    setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -42,27 +41,24 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {MASK_AFTER_CODE_REGEXP} from './const/countries';
+import {MASK_AFTER_CODE_REGEXP} from './const/mask-after-code-regexp';
 import {
     TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
     TuiInputPhoneInternationalOptions,
 } from './input-phone-international.options';
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
-import {extractValueFromEvent} from './utils/extract-value-from-event';
+import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 
-// @dynamic
 @Component({
     selector: `tui-input-phone-international`,
     templateUrl: `./input-phone-international.template.html`,
     styleUrls: [`./input-phone-international.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputPhoneInternationalComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
+        tuiAsControl(TuiInputPhoneInternationalComponent),
     ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputPhoneInternationalComponent
     extends AbstractTuiControl<string>
@@ -150,7 +146,7 @@ export class TuiInputPhoneInternationalComponent
     @HostListener(`paste.capture.prevent.stop`, [`$event`])
     @HostListener(`drop.capture.prevent.stop`, [`$event`])
     onPaste(event: ClipboardEvent | DragEvent): void {
-        let value = extractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, ``);
+        let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, ``);
         const countryIsoCode = this.extractCountryCode(value);
 
         if (!countryIsoCode) {
@@ -191,7 +187,7 @@ export class TuiInputPhoneInternationalComponent
         }
 
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement);
+            this.nativeFocusableElement.focus();
         }
     }
 

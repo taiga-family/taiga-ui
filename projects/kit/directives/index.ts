@@ -1,6 +1,4 @@
-export * from '@taiga-ui/kit/directives/dropdown-context';
-export * from '@taiga-ui/kit/directives/dropdown-hover';
-export * from '@taiga-ui/kit/directives/dropdown-selection';
+export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';
 export * from '@taiga-ui/kit/directives/highlight';
 export * from '@taiga-ui/kit/directives/lazy-loading';
 export * from '@taiga-ui/kit/directives/present';

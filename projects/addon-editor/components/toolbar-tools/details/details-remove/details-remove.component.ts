@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
@@ -18,9 +18,9 @@ export class TuiDetailsRemoveComponent {
     );
 
     constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
+        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
     ) {}
 
     removeDetails(): void {

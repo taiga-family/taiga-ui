@@ -1,10 +1,10 @@
 import {
     CHAR_HYPHEN,
     CHAR_NO_BREAK_SPACE,
-    getDocumentOrShadowRoot,
-    isNativeFocused,
-    isSafari,
     tuiAssert,
+    tuiGetDocumentOrShadowRoot,
+    tuiIsNativeFocused,
+    tuiIsSafari,
 } from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
@@ -25,7 +25,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
     // Guess for which browser I need this :)
     let previousCaret = -1;
-    const unlucky = (!!nativeInput && isSafari(nativeInput)) || isIOS;
+    const unlucky = (!!nativeInput && tuiIsSafari(nativeInput)) || isIOS;
 
     if (nativeInput && unlucky) {
         nativeInput.addEventListener(`beforeinput`, () => {
@@ -40,7 +40,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
         }
 
         // remove these hacks after text mask library has changed
-        if (nativeInput && unlucky && isNativeFocused(nativeInput)) {
+        if (nativeInput && unlucky && tuiIsNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(
                 config.previousConformedValue,
                 conformedValue,
@@ -54,8 +54,8 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
         if (
             nativeInput &&
-            nativeInput.ownerDocument !== getDocumentOrShadowRoot(nativeInput) &&
-            isNativeFocused(nativeInput) &&
+            nativeInput.ownerDocument !== tuiGetDocumentOrShadowRoot(nativeInput) &&
+            tuiIsNativeFocused(nativeInput) &&
             config.currentCaretPosition
         ) {
             const realCaretPosition =

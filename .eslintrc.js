@@ -72,6 +72,10 @@ module.exports = {
         '@typescript-eslint/no-for-in-array': 'error',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
+        // TODO: investigate and switch it on
+        '@typescript-eslint/no-unused-vars': 'off',
+        // TODO: investigate and switch it on
+        '@typescript-eslint/no-extraneous-class': 'off',
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',

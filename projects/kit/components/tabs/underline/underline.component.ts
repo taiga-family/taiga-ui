@@ -2,16 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     HostListener,
     Inject,
     Input,
     NgZone,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {px, TUI_IS_ANDROID, TUI_IS_IOS, tuiDefaultProp, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiZonefree} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {asCallable} from '@tinkoff/ng-event-plugins';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {debounceTime, map, mapTo, share, switchMap} from 'rxjs/operators';
@@ -44,12 +42,6 @@ export class TuiUnderlineComponent {
         this.element$.next(element);
     }
 
-    @HostBinding(`class._ios`)
-    readonly isIos = this.mobileAware && this.ios;
-
-    @HostBinding(`class._android`)
-    readonly isAndroid = this.mobileAware && this.android;
-
     @HostListener(`$.style.transitionProperty`)
     readonly transition$ = asCallable(
         this.element$.pipe(
@@ -62,7 +54,7 @@ export class TuiUnderlineComponent {
     readonly transform$ = asCallable(
         this.refresh$.pipe(
             map(element =>
-                element ? `translate3d(${px(element.offsetLeft)}, 0, 0)` : null,
+                element ? `translate3d(${element.offsetLeft}px, 0, 0)` : null,
             ),
         ),
     );
@@ -76,9 +68,6 @@ export class TuiUnderlineComponent {
         @Inject(ElementRef) {nativeElement}: ElementRef,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
-        @Inject(TUI_MOBILE_AWARE) private readonly mobileAware: boolean,
-        @Inject(TUI_IS_IOS) private readonly ios: boolean,
-        @Inject(TUI_IS_ANDROID) private readonly android: boolean,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {
         nativeElement[`$.style.transitionProperty`] = this.transition$;

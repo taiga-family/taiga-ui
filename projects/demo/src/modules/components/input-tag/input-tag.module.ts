@@ -2,12 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiErrorModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -39,11 +39,11 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiInputTagModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputTagComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
     ],
     declarations: [
         ExampleTuiInputTagComponent,

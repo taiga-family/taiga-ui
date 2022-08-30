@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -29,8 +30,36 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<tui-expand [expanded]="expanded">
+    <ng-template tuiExpandContent>
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+
+<button
+    tuiButton
+    type="button"
+    iconRight="tuiIconChevronDown"
+    [tuiDropdownContent]="dropdownContent"
+    [tuiDropdown]="open"
+    [tuiDropdownSided]="true"
+    (click)="onClick()"
+>
+    Choose
+</button>
+<ng-template #dropdownContent>
+    <div class="dropdown">But there is nothing to choose...</div>
+</ng-template>
+
+<label
+    tuiLabel
+    label="Step"
+></label>
+
 <tui-field-error formControlName="control"></tui-field-error>
 <tui-field-error formControlName="control" [order]="order"></tui-field-error>
+
+<p>Formatted number: {{ 10500.33 | tuiFormatNumber: 4:'.':'_':false }}</p>
 
 <table>
   <thead>
@@ -44,7 +73,11 @@ const TEMPLATE_BEFORE = `
         </tr>
   </thead>
 </table>
-<tui-editor new [formControl]="control"></tui-editor>
+<tui-editor new [formControl]="control">
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiToolbarTool></smiles-tool>
+    </ng-container>
+</tui-editor>
 <tui-editor [formControl]="control"></tui-editor>
 <tui-group class="some_class">
     <div class="content"></div>
@@ -64,7 +97,7 @@ const TEMPLATE_BEFORE = `
 </tui-primitive-textfield>
 
 <div tuiWrapper
-    [hovered]="computedHovered"
+    [hover]="computedHovered"
 >any</div>
 
 <tui-select (hoveredChange)="onHoverChange(event$)"></tui-select>
@@ -134,11 +167,64 @@ const TEMPLATE_BEFORE = `
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
+
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button *tuiTab tuiTab>Maps</button>
+    <button
+        *tuiTab
+        tuiTab
+    >
+        Calls
+    </button>
+</tui-tabs-with-more>
+
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a
+            *tuiBreadcrumb
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
 `;
 
-const TEMPLATE_AFTER = `
+const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+<tui-expand [expanded]="expanded">
+    <ng-template >
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+
+<button
+    tuiButton
+    type="button"
+    iconRight="tuiIconChevronDown"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownManual]="open"
+    tuiDropdownSided
+    (click)="onClick()"
+>
+    Choose
+</button>
+<ng-template #dropdownContent>
+    <div class="dropdown">But there is nothing to choose...</div>
+</ng-template>
+
+<label
+    ${''}
+    tuiLabel="Step"
+></label>
+
 <tui-error [error]="[] | tuiFieldError | async" formControlName="control"></tui-error>
 <tui-error [error]="order | tuiFieldError | async" formControlName="control"></tui-error>
+
+<p>Formatted number: {{ 10500.33 | tuiFormatNumber: 4:'.':'_':false }}</p>
 
 <table>
   <thead>
@@ -152,7 +238,11 @@ const TEMPLATE_AFTER = `
         </tr>
   </thead>
 </table>
-<tui-editor  [formControl]="control"></tui-editor>
+<tui-editor  [formControl]="control">
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiItem></smiles-tool>
+    </ng-container>
+</tui-editor>
 <tui-editor [formControl]="control"></tui-editor>
 <div tuiGroup class="some_class">
     <div class="content"></div>
@@ -161,7 +251,7 @@ const TEMPLATE_AFTER = `
 <div tuiWrapper
     [appearance]="appearance"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
+    [focus]="computedFocusVisible"
     [hover]="computedHovered"
     [active]="computedPressed"
     [invalid]="computedInvalid"
@@ -180,7 +270,7 @@ const TEMPLATE_AFTER = `
 <tui-breadcrumbs>
     <ng-container *ngFor="let item of items$ | async">
         <a
-            *tuiBreadcrumb
+            *tuiItem
             tuiLink
             [routerLink]="item.routerLink"
         >
@@ -251,17 +341,42 @@ const TEMPLATE_AFTER = `
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
+
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button *tuiItem tuiTab>Maps</button>
+    <button
+        *tuiItem
+        tuiTab
+    >
+        Calls
+    </button>
+</tui-tabs-with-more>
+
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a
+            *tuiItem
+            tuiLink
+            [routerLink]="item.routerLink"
+        >
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
 `;
 
 const COMPONENT_BEFORE = `
-@Component({template: '<tui-group><div></div></tui-group>'})
+@Component({template: '<tui-group><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></tui-group>'})
 export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
 `;
 
 const COMPONENT_AFTER = `
-@Component({template: '<div tuiGroup><div></div></div>'})
+@Component({template: '<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number --><div tuiGroup><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></div>'})
 export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }
@@ -291,7 +406,8 @@ import {TestComponent} from './test.component';
 export class ExampleModule {}
 `;
 
-const MODULE_AFTER = `import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
+const MODULE_AFTER = `import { TuiErrorModule } from "@taiga-ui/core";
+import { TuiAutofilledModule, TuiPressedModule, TuiHoveredModule } from "@taiga-ui/cdk";
 import { TuiFieldErrorPipeModule } from "@taiga-ui/kit";
 
 import {CommonModule} from '@angular/common';
@@ -308,7 +424,8 @@ import {TestComponent} from './test.component';
         TuiAutofilledModule,
         TuiPressedModule,
         TuiHoveredModule,
-        TuiScrollIntoViewLinkModule
+        TuiScrollIntoViewLinkModule,
+        TuiErrorModule
     ],
     declarations: [
         TestComponent,
@@ -362,6 +479,32 @@ describe('ng-update', () => {
         );
     });
 
+    it('should add font style in angular.json', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('angular.json')).toEqual(
+            `
+{
+  "version": 1,
+  "defaultProject": "demo",
+  "projects": {
+    "demo": {
+        "architect": {
+          "build": {
+            "options": {
+              "main": "test/main.ts",
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+            ]
+            }
+          }
+        }
+    }
+  }
+}`,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -375,4 +518,7 @@ function createMainFiles(): void {
     createSourceFile('test/app/test-inline.component.ts', COMPONENT_BEFORE);
 
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

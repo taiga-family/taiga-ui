@@ -1,29 +1,15 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
     TUI_EDITOR_TABLE_COMMANDS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/addon-editor/tokens';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export enum TuiTableCommands {
-    InsertColumnBefore,
-    InsertColumnAfter,
-    InsertRowBefore,
-    InsertRowAfter,
-    DeleteColumn,
-    DeleteRow,
-}
-
-// `export const TableComands = TuiTableCommands;` doesn't work as expected type reference
-/**
- * @deprecated in v3.0 {@link TuiTableCommands}
- */
-export enum TableComands {
     InsertColumnBefore,
     InsertColumnAfter,
     InsertRowBefore,
@@ -54,11 +40,11 @@ export class TuiTableRowColumnManagerComponent {
     );
 
     constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
+        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_TABLE_COMMANDS)
-        readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
+        readonly tableCommandTexts$: Observable<TuiLanguageEditor['editorTableCommands']>,
     ) {}
 
     onTableOption(command: TuiTableCommands): void {

@@ -1,15 +1,15 @@
-<tui-wrapper
+<div
     *ngIf="cardGroupedTexts$ | async as texts"
+    tuiWrapper
     class="t-common-wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
     [invalid]="computedInvalid"
-    [tuiDropdown]="open"
-    [tuiDropdownContent]="dropdown || ''"
-    (tuiHoveredChange)="onHovered($event)"
+    [tuiDropdownManual]="open"
+    [tuiDropdown]="dropdown || ''"
     (tuiActiveZoneChange)="onActiveZoneChange($event)"
     (scroll)="onScroll($event)"
     (mousedown)="onMouseDown($event)"
@@ -23,7 +23,7 @@
                 #inputCard
                 type="text"
                 automation-id="tui-input-card-grouped__card"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input t-input_card"
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="!card.length && focused"
@@ -72,7 +72,7 @@
                 type="text"
                 placeholder="00/00"
                 automation-id="tui-input-card-grouped__expire"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input"
                 [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
@@ -103,7 +103,7 @@
                 #inputCVC
                 type="text"
                 automation-id="tui-input-card-grouped__cvc"
-                tuiInputMode="numeric"
+                inputmode="numeric"
                 class="t-input"
                 [class.t-input_prefilled]="cvcPrefilled"
                 [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
@@ -128,17 +128,14 @@
     <div class="t-icons">
         <div
             *ngIf="icon"
-            polymorpheus-outlet
             class="t-icon-outlet"
-            [content]="icon"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    automation-id="tui-input-card-grouped__icon"
-                    class="t-card"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="icon as text"
+                automation-id="tui-input-card-grouped__icon"
+                class="t-card"
+                [src]="text"
+            ></tui-svg>
         </div>
         <tui-svg
             *ngIf="hasCleaner"
@@ -154,4 +151,4 @@
             (click)="toggle()"
         ></tui-svg>
     </div>
-</tui-wrapper>
+</div>

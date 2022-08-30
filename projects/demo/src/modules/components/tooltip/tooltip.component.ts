@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 @Component({
     selector: `example-tooltip`,
@@ -10,48 +10,39 @@ import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 })
 export class ExampleTuiTooltipComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly modeVariants: readonly TuiHintModeT[] = [`error`];
+    readonly appearanceVariants = [``, `error`];
 
-    mode: TuiHintModeT | null = null;
+    appearance = this.appearanceVariants[0];
 
-    directionVariants: readonly TuiDirection[] = [
-        `left`,
-        `right`,
-        `bottom-left`,
-        `bottom-right`,
-        `bottom-middle`,
-        `top-left`,
-        `top-right`,
-        `top-middle`,
-    ];
+    directionVariants = TUI_HINT_DIRECTIONS;
 
-    direction: TuiDirection = this.directionVariants[2];
+    direction = this.directionVariants[0];
 
     describeId = ``;
 

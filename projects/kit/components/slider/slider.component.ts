@@ -14,10 +14,10 @@ import {NgControl, NgModel} from '@angular/forms';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    isEdgeOlderThan,
     tuiDefaultProp,
+    tuiIsEdgeOlderThan,
     tuiPure,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
@@ -97,9 +97,10 @@ export class TuiSliderComponent {
         return 100 / Math.max(1, this.segments);
     }
 
+    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
     @HostBinding(`class._old-edge`)
     get isOldEdge(): boolean {
-        return isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
+        return tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
     }
 
     @tuiPure
@@ -126,7 +127,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            control.valueChanges?.pipe(watch(changeDetectorRef), take(1)).subscribe();
+            control.valueChanges?.pipe(tuiWatch(changeDetectorRef), take(1)).subscribe();
         }
     }
 }

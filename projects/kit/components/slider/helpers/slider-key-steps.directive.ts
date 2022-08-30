@@ -7,32 +7,24 @@ import {
     Inject,
     Input,
     Optional,
-    Output,
-    Pipe,
-    PipeTransform,
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
-    isNativeFocused,
     tuiAssert,
-    tuiDefaultProp,
+    tuiClamp,
     TuiFocusableElementAccessor,
-    typedFromEvent,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
-    tuiCheckKeyStepsHaveMinMaxPercents,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
-import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from '../slider.component';
 
-// @dynamic
 @Directive({
     selector: `input[tuiSlider][keySteps]`,
     host: {
@@ -46,35 +38,22 @@ export class TuiSliderKeyStepsDirective
     implements TuiFocusableElementAccessor
 {
     @Input()
-    @tuiDefaultProp(
-        tuiCheckKeyStepsHaveMinMaxPercents,
-        `Should contain min and max values`,
-    )
-    keySteps: TuiKeySteps = [];
-
-    @Output()
-    keyStepsInput = typedFromEvent(this.elementRef.nativeElement, `input`).pipe(
-        map(() => this.controlValue),
-    );
+    keySteps!: TuiKeySteps;
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.elementRef.nativeElement;
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get min(): number {
-        return this.keySteps[0]?.[1] || 0;
+        return this.keySteps[0][1];
     }
 
     get max(): number {
-        return this.keySteps[this.keySteps.length - 1]?.[1] || 100;
-    }
-
-    get controlValue(): number {
-        return tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps);
+        return this.keySteps[this.keySteps.length - 1][1];
     }
 
     constructor(
@@ -90,17 +69,12 @@ export class TuiSliderKeyStepsDirective
         super(control, changeDetectorRef);
     }
 
-    /**
-     * TODO: 3.0
-     * ___
-     * Also add @HostListener(`input`): to be similar to
-     * {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/range_value_accessor.ts#L47-L48 RangeValueAccessor}
-     * ___
-     * Remove {@link keyStepsInput}
-     */
+    @HostListener(`input`)
     @HostListener(`change`)
     updateControlValue(): void {
-        this.updateValue(this.controlValue);
+        this.updateValue(
+            tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
+        );
     }
 
     writeValue(controlValue: number | null): void {
@@ -108,7 +82,7 @@ export class TuiSliderKeyStepsDirective
             return;
         }
 
-        const clampedControlValue = clamp(controlValue, this.min, this.max);
+        const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
 
         tuiAssert.assert(
             controlValue === clampedControlValue,
@@ -130,19 +104,5 @@ export class TuiSliderKeyStepsDirective
         );
 
         return (newValuePercentage * (max - min)) / 100 + min;
-    }
-}
-
-/**
- * @deprecated DONT USE IT! It is just temporary solution for internal purposes only. We will delete it in next major release.
- * TODO delete it in v3.0
- *
- */
-@Pipe({name: `tuiSliderTickLabel`})
-export class TuiSliderTickLabelPipe implements PipeTransform {
-    transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
-        const percentage = (100 / totalSegments) * tickIndex;
-
-        return tuiPercentageToKeyStepValue(percentage, keySteps);
     }
 }

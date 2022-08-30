@@ -13,14 +13,14 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getOriginalArrayFromQueryList,
-    itemsQueryListObservable,
-    moveFocus,
-    tuiAssertIsHTMLElement,
     tuiDefaultProp,
+    tuiGetOriginalArrayFromQueryList,
+    tuiIsElement,
+    tuiItemsQueryListObservable,
+    tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT} from '@taiga-ui/core';
+import {TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
@@ -49,7 +49,7 @@ export class TuiStepperComponent {
     @Input()
     @HostBinding(`attr.data-orientation`)
     @tuiDefaultProp()
-    orientation: TuiOrientationT = `horizontal`;
+    orientation: TuiOrientation = `horizontal`;
 
     @Input()
     @tuiDefaultProp()
@@ -62,7 +62,7 @@ export class TuiStepperComponent {
     get changes$(): Observable<unknown> {
         // Delay is required to trigger change detection after steps are rendered
         // so they can update their "active" status
-        return itemsQueryListObservable(this.steps).pipe(delay(0));
+        return tuiItemsQueryListObservable(this.steps).pipe(delay(0));
     }
 
     @HostListener(`keydown.arrowRight`, [`$event`, `1`])
@@ -88,7 +88,7 @@ export class TuiStepperComponent {
     }
 
     indexOf(step: HTMLElement): number {
-        return getOriginalArrayFromQueryList(this.steps).findIndex(
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
         );
     }
@@ -115,11 +115,14 @@ export class TuiStepperComponent {
     }
 
     private moveFocus(current: EventTarget, step: number): void {
-        tuiAssertIsHTMLElement(current);
+        if (!tuiIsElement(current)) {
+            return;
+        }
 
         const stepElements = this.getNativeElements(this.steps);
+        const index = stepElements.findIndex(item => item === current);
 
-        moveFocus(stepElements.indexOf(current), stepElements, step);
+        tuiMoveFocus(index, stepElements, step);
     }
 
     private scrollIntoView(targetStepIndex: number): void {

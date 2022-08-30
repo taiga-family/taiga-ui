@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -16,16 +15,18 @@ import {
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    isPresent,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
+    tuiIsNumber,
+    tuiIsPresent,
     TuiMonth,
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
@@ -39,13 +40,16 @@ const DUMMY: TuiPoint = [NaN, NaN];
     providers: [
         {
             provide: TuiLineChartHintDirective,
-            useExisting: forwardRef(() => TuiLineDaysChartComponent),
+            useExisting: TuiLineDaysChartComponent,
         },
     ],
 })
 export class TuiLineDaysChartComponent {
     @ViewChildren(TuiLineChartComponent)
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input(`value`)
     @tuiDefaultProp()
@@ -143,8 +147,8 @@ export class TuiLineDaysChartComponent {
         return index - offset;
     }
 
-    onHovered(day: TuiDay | null): void {
-        if (!day) {
+    onHovered(day: TuiDay | number): void {
+        if (tuiIsNumber(day)) {
             this.charts.forEach(chart => chart.onHovered(NaN));
 
             return;
@@ -152,13 +156,11 @@ export class TuiLineDaysChartComponent {
 
         const index = TuiMonth.lengthBetween(this.value[0][0], day);
         const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
-        const array = this.charts.toArray();
-        const current = array[index];
-        const {value} = current;
+        const current = this.charts.get(index);
 
-        array.forEach(chart => {
+        this.charts.forEach(chart => {
             if (chart === current) {
-                current.onHovered(value.findIndex(point => point[0] === x));
+                current.onHovered(current.value.findIndex(point => point[0] === x));
             } else {
                 chart.onHovered(NaN);
             }
@@ -206,7 +208,7 @@ export class TuiLineDaysChartComponent {
                     .map<TuiPoint | null>(([{month, year}, y], index) =>
                         month + year * 12 === absoluteMonth ? [index + offset, y] : null,
                     )
-                    .filter(isPresent),
+                    .filter(tuiIsPresent),
             )
             .map((month, index, array) =>
                 index === array.length - 1

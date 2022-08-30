@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,8 +12,9 @@ import {NgControl} from '@angular/forms';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiCreditCardAutofillName,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    TuiAutofillFieldName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -34,10 +34,8 @@ import {TextMaskConfig} from 'angular2-text-mask';
     styleUrls: [`./input-cvc.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCVCComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCVCComponent),
+        tuiAsControl(TuiInputCVCComponent),
     ],
 })
 export class TuiInputCVCComponent
@@ -88,22 +86,16 @@ export class TuiInputCVCComponent
         return !!this.input && this.input.focused;
     }
 
-    get autocomplete(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcCsc
-            : TuiCreditCardAutofillName.Off;
+    get autocomplete(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-csc` : `off`;
     }
 
-    get computedExampleText(): string {
+    get computedPlaceholder(): string {
         return this.textfieldLabelOutside.labelOutside ? `` : this.exampleText;
     }
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     onCopy(): void {}

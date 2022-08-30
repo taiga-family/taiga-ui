@@ -4,10 +4,9 @@
         #cellColorSelect
         [content]="cellColorDropdown"
         [tuiDropdownMaxHeight]="999"
-        [canOpen]="isActive"
+        [canOpen]="!!isActive"
     >
         <button
-            #cellColorBtn
             tuiIconButton
             type="button"
             size="s"
@@ -15,14 +14,13 @@
             appearance="icon"
             icon="tuiIconPaintLarge"
             [tuiHint]="cellColorText$ | async"
-            [tuiHintId]="cellColorBtn.id"
-            [tuiDescribedBy]="cellColorBtn.id"
-            [pseudoPressed]="cellColorSelect.open"
+            [tuiHintDescribe]="''"
+            [pseudoActive]="cellColorSelect.open"
             [focusable]="cellColorSelect.open"
             [disabled]="!isActive"
         ></button>
         <div
-            *ngIf="!isBlankColor(cellColor)"
+            *ngIf="!isBlankColor(cellColor || '')"
             class="t-plate t-plate_paint"
             [style.background]="cellColor"
         ></div>

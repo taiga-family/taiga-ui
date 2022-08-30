@@ -28,14 +28,13 @@
         <button
             tuiTab
             [class._active]="isMoreActive"
-            [class.t-no-margin]="lastVisibleIndex < 0"
+            [class.t-no-margin]="isMoreAlone"
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
         >
-            <span
-                polymorpheus-outlet
-                [content]="moreContent || more"
-            ></span>
+            <ng-container *polymorpheusOutlet="moreContent || more as text">
+                {{ text }}
+            </ng-container>
         </button>
         <ng-template #more>
             {{ moreWord$ | async }}

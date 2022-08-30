@@ -31,13 +31,16 @@
             <div class="date">
                 <tui-input-date
                     required
-                    tuiTextfieldExampleText="dd.mm.yyyy"
                     [(ngModel)]="date"
                     (mousedown.capture.stop)="(0)"
                     (click.capture.stop)="(0)"
                     (keydown.capture.stop)="(0)"
                 >
                     Choose date
+                    <input
+                        tuiTextfield
+                        placeholder="dd.mm.yyyy"
+                    />
                 </tui-input-date>
                 <tui-calendar
                     tuiPreventDefault="mousedown"

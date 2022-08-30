@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -34,7 +35,6 @@ const TEMPLATE_BEFORE = `
     formControlName="testValue"
     icon="icon"
     iconAlign="right"
-    tuiTextfieldExampleText="House"
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
@@ -53,20 +53,19 @@ const TEMPLATE_AFTER = `
 <tui-input
     formControlName="testValue"
     tuiTextfieldIconLeft="icon"
-    tuiTextfieldExampleText="House"
+    ${''}
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
     House
-</tui-input>
+<input tuiTextfield placeholder="House"/> </tui-input>
 
-<tui-input-tag [iconLeft]="icon" ></tui-input-tag>
+<tui-input-tag [tuiTextfieldIconLeft]="icon" ></tui-input-tag>
 
 <tui-input
     formControlName="testValue"
     tuiTextfieldIcon="icon"
     ${''}
-    tuiTextfieldExampleText="House"
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
@@ -155,4 +154,7 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

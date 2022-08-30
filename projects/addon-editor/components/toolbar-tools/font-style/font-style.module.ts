@@ -1,22 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {
-    TuiButtonModule,
-    TuiDescribedByModule,
-    TuiHintModule,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 
 import {TuiFontStyleComponent} from './font-style.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        TuiHostedDropdownModule,
-        TuiButtonModule,
-        TuiHintModule,
-        TuiDescribedByModule,
-    ],
+    imports: [CommonModule, TuiHostedDropdownModule, TuiButtonModule, TuiHintModule],
     declarations: [TuiFontStyleComponent],
     exports: [TuiFontStyleComponent],
 })

@@ -1,10 +1,12 @@
-<tui-wrapper
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<div
+    tuiWrapper
     automation-id="tui-text-area__wrapper"
     class="t-outline"
     [appearance]="appearance"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
 >
@@ -13,12 +15,11 @@
         automation-id="tui-text-area__counter"
         class="t-counter"
     >
-        {{ value.length }}/{{ controller.maxLength }}
+        {{ value.length }}/{{ maxLength }}
     </div>
 
     <label
         class="t-content"
-        (tuiHoveredChange)="onHovered($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-wrapper">
@@ -41,7 +42,7 @@
                             aria-hidden="true"
                             class="t-pseudo-content"
                         >
-                            <span [textContent]="fittedContent || controller.exampleText"></span>
+                            <span [textContent]="fittedContent || nativeFocusableElement?.placeholder"></span>
                             <span
                                 class="t-pseudo-content__extra"
                                 [textContent]="extraContent"
@@ -52,9 +53,7 @@
                             #focusableElement
                             automation-id="tui-text-area__native"
                             class="t-input"
-                            [placeholder]="controller.exampleText"
                             [id]="id"
-                            [tuiDescribedBy]="id"
                             [tuiFocusable]="computedFocusable"
                             [disabled]="computedDisabled"
                             [ngModel]="value"
@@ -74,16 +73,16 @@
                 (click.stop)="onValueChange('')"
             ></tui-svg>
             <tui-tooltip
-                *ngIf="hasTooltip"
+                *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                 automation-id="tui-text-area__tooltip"
                 class="t-tooltip"
                 [describeId]="id"
-                [direction]="hintController.direction"
-                [mode]="hintController.mode"
-                [content]="hintController.content || ''"
-                [showDelay]="hintController.showDelay"
-                [hideDelay]="hintController.hideDelay"
+                [direction]="hintOptions.direction"
+                [appearance]="hintOptions.appearance"
+                [content]="hintOptions.content"
+                [showDelay]="hintOptions.showDelay"
+                [hideDelay]="hintOptions.hideDelay"
             ></tui-tooltip>
         </div>
     </label>
-</tui-wrapper>
+</div>

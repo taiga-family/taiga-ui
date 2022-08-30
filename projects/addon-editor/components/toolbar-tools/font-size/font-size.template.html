@@ -3,7 +3,6 @@
     [content]="fontsDropdown"
 >
     <button
-        #fontsBtn
         tuiIconButton
         type="button"
         size="s"
@@ -11,9 +10,8 @@
         icon="tuiIconFontLarge"
         tuiHintDirection="top-left"
         [tuiHint]="fontText$ | async"
-        [tuiHintId]="fontsBtn.id"
-        [tuiDescribedBy]="fontsBtn.id"
-        [pseudoPressed]="fonts.open"
+        [tuiHintDescribe]="''"
+        [pseudoActive]="fonts.open"
         [focusable]="fonts.open"
     ></button>
     <ng-template #fontsDropdown>

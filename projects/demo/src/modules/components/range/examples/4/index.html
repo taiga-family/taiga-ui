@@ -1,12 +1,9 @@
 <tui-range
     id="range-with-key-steps"
-    new
     size="m"
     class="range"
-    [min]="min"
-    [max]="max"
+    [step]="stepPercentage"
     [keySteps]="keySteps"
-    [steps]="2 * segments"
     [segments]="segments"
     [(ngModel)]="value"
 ></tui-range>

@@ -13,11 +13,10 @@ import {
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TableBar} from '../../classes/table-bar';
+import {TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility
-// @dynamic
 @Component({
     selector: `tui-table-bars-host`,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,11 +50,11 @@ export class TuiTableBarsHostComponent {
         return mode === `onLight` ? `onDark` : null;
     }
 
-    onCloseClick(itemToRemove: TableBar): void {
+    onCloseClick(itemToRemove: TuiTableBar): void {
         itemToRemove.close();
     }
 
-    getItemContext(item: TableBar): TuiContextWithImplicit<() => void> {
+    getItemContext(item: TuiTableBar): TuiContextWithImplicit<() => void> {
         return {
             $implicit: () => item.close(),
         };

@@ -1,7 +1,6 @@
-import {inject, InjectionToken} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_SHEET_OFFSET} from './components/sheet/sheet.providers';
 import {TuiSheet} from './sheet';
 
 export interface TuiSheetOptions<I = undefined, O = unknown> {
@@ -28,6 +27,6 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
     `Default parameters for sheet component`,
     {
-        factory: () => ({...TUI_SHEET_DEFAULT_OPTIONS, offset: inject(TUI_SHEET_OFFSET)}),
+        factory: () => ({...TUI_SHEET_DEFAULT_OPTIONS}),
     },
 );

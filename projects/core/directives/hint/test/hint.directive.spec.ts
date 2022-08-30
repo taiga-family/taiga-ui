@@ -7,7 +7,6 @@ import {
     tick,
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
@@ -95,7 +94,7 @@ describe(`Hint`, () => {
         });
 
         it(`is hidden after pointer left host with 200ms delay`, fakeAsync(async () => {
-            getHost().dispatchEvent(new Event(`mouseleave`));
+            getHost().dispatchEvent(new Event(`mouseout`));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
@@ -133,16 +132,12 @@ describe(`Hint`, () => {
         }
     });
 
-    function getHost(): HTMLElement {
-        const element = document.querySelector(`#hint-host`);
-
-        tuiAssertIsHTMLElement(element);
-
-        return element;
+    function getHost(): Element {
+        return document.querySelector(`#hint-host`)!;
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector(`[automation-id=tui-hint-box__tooltip]`);
+        return document.querySelector(`tui-hint`);
     }
 
     function setHint(hint: Hint): void {

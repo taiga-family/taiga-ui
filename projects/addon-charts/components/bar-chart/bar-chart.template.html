@@ -1,12 +1,14 @@
 <div
     *ngFor="let set of transposed; let index = index"
-    tuiHintDirection="top-left"
+    tuiHintDirection="top"
     class="t-wrapper"
-    [class.t-wrapper_hoverable]="hasHint"
+    [class.t-wrapper_hoverable]="!!hintContent"
+    [class.t-wrapper_hovered]="drivers.get(index) | async"
     [tuiHintHost]="hintHost"
-    [tuiHintId]="getHintId(index)"
-    [tuiHint]="getHint(hint)"
-    [tuiHintMode]="hintMode"
+    [tuiHint]="hintContent"
+    [tuiHintContext]="{$implicit: index}"
+    [tuiHintDescribe]="getHintId(index)"
+    (mouseenter.once)="(0)"
 >
     <div
         class="t-container"
@@ -18,23 +20,11 @@
         ></div>
         <tui-bar-set
             class="t-set"
-            [tuiDescribedBy]="getHintId(index)"
-            [tuiFocusable]="hasHint"
+            [id]="getHintId(index)"
+            [tuiFocusable]="!!hintContent"
             [value]="set"
             [size]="size"
             [collapsed]="collapsed"
-            [colorHandler]="colorHandler"
         ></tui-bar-set>
     </div>
-    <ng-template
-        #hint="polymorpheus"
-        polymorpheus
-    >
-        <div
-            polymorpheus-outlet
-            class="t-text"
-            [content]="hintContent"
-            [context]="getContentContext(index)"
-        ></div>
-    </ng-template>
 </div>

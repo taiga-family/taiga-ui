@@ -26,7 +26,7 @@ export class TuiAccordionExample2 {
     ];
 
     svgIcons = {
-        rubles: import(`!!raw-loader!./rubles.svg`) as Promise<{default: string}>,
+        rubles: import(`./rubles.svg?raw`),
     };
 
     testForm = new FormGroup({

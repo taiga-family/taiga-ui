@@ -8,14 +8,7 @@ import {
     TuiTime,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
-    TuiSizeL,
-    TuiSizeS,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -33,37 +26,37 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleOptions = import(`!!raw-loader!./examples/import/define-options.md`);
+    readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
     };
 
     cleaner = false;
@@ -78,21 +71,6 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
-
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [`fixed`, `min`];
-
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
-        `bottom`,
-    ];
-
-    dropdownDirection: TuiVerticalDirection | null = null;
-
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
     readonly itemSizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 

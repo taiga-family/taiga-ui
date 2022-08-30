@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -25,7 +25,7 @@ import {TuiColorEditComponent} from './color-edit.component';
         TuiSelectModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiInputCountModule,
         TuiDataListModule,
     ],

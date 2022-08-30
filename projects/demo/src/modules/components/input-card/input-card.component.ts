@@ -21,12 +21,12 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     card = ``;
@@ -43,7 +43,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     hintDirectionCVC: TuiHintOptions['direction'] = `bottom-left`;
 
-    hintModeCVC = null;
+    hintAppearanceCVC = ``;
 
     readonly cards: Record<string, string> = {
         common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,

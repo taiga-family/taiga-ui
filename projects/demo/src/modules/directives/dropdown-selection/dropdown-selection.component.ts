@@ -1,64 +1,39 @@
-import {Component} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
-import {TuiDropdownPositionT} from '@taiga-ui/kit';
+import {TuiDropdownPosition} from '@taiga-ui/kit';
+
+import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: `example-tui-dropdown-selection`,
     templateUrl: `./dropdown-selection.template.html`,
     styleUrls: [`./dropdown-selection.style.less`],
     changeDetection,
+    providers: [
+        {
+            provide: ABSTRACT_PROPS_ACCESSOR,
+            useExisting: forwardRef(() => ExampleTuiDropdownSelectionComponent),
+        },
+    ],
 })
-export class ExampleTuiDropdownSelectionComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+export class ExampleTuiDropdownSelectionComponent extends AbstractExampleTuiDropdown {
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    positionVariants: TuiDropdownPositionT[] = [`selection`, `word`, `tag`];
-
-    open = false;
+    positionVariants: TuiDropdownPosition[] = [`selection`, `word`, `tag`];
 
     position = this.positionVariants[0];
-
-    tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    tuiDropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-
-    tuiDropdownSided = false;
-
-    alignVariants: TuiHorizontalDirection[] = [`right`, `left`];
-
-    tuiDropdownAlign = this.alignVariants[0];
-
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `top`,
-        `bottom`,
-    ];
-
-    tuiDropdownDirection: TuiVerticalDirection | null = null;
-
-    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
-        `fixed`,
-        `min`,
-        `auto`,
-    ];
-
-    tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];
 }

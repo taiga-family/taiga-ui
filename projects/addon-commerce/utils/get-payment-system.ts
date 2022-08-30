@@ -1,10 +1,6 @@
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
-/**
- * @deprecated: use {@link tuiGetPaymentSystem} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
+export function tuiGetPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
     if (cardNumber === ``) {
         return null;
     }
@@ -14,36 +10,30 @@ export function getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
     const three = Number.parseInt(cardNumber.slice(0, 3), 10);
     const four = Number.parseInt(cardNumber.slice(0, 4), 10);
 
-    if (isMaestro(three, two, one)) {
-        return TuiPaymentSystem.Maestro;
+    if (tuiIsMaestro(three, two, one)) {
+        return `maestro`;
     }
 
-    if (isMastercard(four, two, one)) {
-        return TuiPaymentSystem.Mastercard;
+    if (tuiIsMastercard(four, two, one)) {
+        return `mastercard`;
     }
 
-    if (isMir(four)) {
-        return TuiPaymentSystem.Mir;
+    if (tuiIsMir(four)) {
+        return `mir`;
     }
 
-    if (isElectron(four)) {
-        return TuiPaymentSystem.Electron;
+    if (tuiIsElectron(four)) {
+        return `electron`;
     }
 
-    if (isVisa(one)) {
-        return TuiPaymentSystem.Visa;
+    if (tuiIsVisa(one)) {
+        return `visa`;
     }
 
     return null;
 }
 
-export const tuiGetPaymentSystem = getPaymentSystem;
-
-/**
- * @deprecated: use {@link tuiIsMaestro} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isMaestro(three: number, two: number, one: number): boolean {
+export function tuiIsMaestro(three: number, two: number, one: number): boolean {
     if (one === 6) {
         return true;
     }
@@ -59,13 +49,7 @@ export function isMaestro(three: number, two: number, one: number): boolean {
     return three < 510;
 }
 
-export const tuiIsMaestro = isMaestro;
-
-/**
- * @deprecated: use {@link tuiIsMastercard} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isMastercard(four: number, two: number, one: number): boolean {
+export function tuiIsMastercard(four: number, two: number, one: number): boolean {
     if (one === 5) {
         return true;
     }
@@ -85,23 +69,11 @@ export function isMastercard(four: number, two: number, one: number): boolean {
     return four > 2220 && four < 2721;
 }
 
-export const tuiIsMastercard = isMastercard;
-
-/**
- * @deprecated: use {@link tuiIsMir} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isMir(four: number): boolean {
+export function tuiIsMir(four: number): boolean {
     return four > 2199 && four < 2205;
 }
 
-export const tuiIsMir = isMir;
-
-/**
- * @deprecated: use {@link tuiIsElectron} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isElectron(four: number): boolean {
+export function tuiIsElectron(four: number): boolean {
     switch (four) {
         case 4026:
         case 4175:
@@ -116,14 +88,6 @@ export function isElectron(four: number): boolean {
     }
 }
 
-export const tuiIsElectron = isElectron;
-
-/**
- * @deprecated: use {@link tuiIsVisa} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isVisa(one: number): boolean {
+export function tuiIsVisa(one: number): boolean {
     return one === 4;
 }
-
-export const tuiIsVisa = isVisa;

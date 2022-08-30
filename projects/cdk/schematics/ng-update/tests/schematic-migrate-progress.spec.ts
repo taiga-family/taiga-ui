@@ -9,6 +9,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {DEPRECATED_PROGRESS_PIPES_REG} from '../steps/migrate-progress';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -160,4 +161,6 @@ describe('migrate progress', () => {
 function createMainFiles(): void {
     createSourceFile('test/app-with-progress/app.component.ts', APP_COMPONENT);
     createSourceFile('test/app-with-progress/app.template.html', TEMPLATE_BEFORE);
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

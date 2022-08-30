@@ -1,12 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    forwardRef,
-    Inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core';
+import {tuiAsDataListAccessor} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
@@ -16,12 +10,7 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
     templateUrl: `./data-list-wrapper.template.html`,
     styleUrls: [`./data-list-wrapper.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_DATA_LIST_ACCESSOR,
-            useExisting: forwardRef(() => TuiDataListWrapperComponent),
-        },
-    ],
+    providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()

@@ -3,8 +3,8 @@
     "include": ["projects/**/*"],
     "exclude": ["projects/**/*.spec.ts", "projects/demo-integrations", "**/schematics/**/*"],
     "angularCompilerOptions": {
-        "enableIvy": false,
-        "compilationMode": "full",
+        "enableIvy": true,
+        "compilationMode": "partial",
         "preserveWhitespaces": false,
         "annotateForClosureCompiler": false,
         "skipTemplateCodegen": true,
@@ -28,7 +28,7 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "target": "es2015",
-        "module": "esnext",
+        "module": "es2020",
         "lib": ["esnext", "dom"],
         "typeRoots": ["node_modules/@types"],
         "skipLibCheck": true,
@@ -85,7 +85,8 @@
             "@taiga-ui/addon-mobile": ["projects/addon-mobile/index"],
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
-            "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"]
+            "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"],
+            "@demo/utils": ["projects/demo/src/utils/index"]
         }
     }
 }

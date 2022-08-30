@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -14,10 +13,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 
 import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
@@ -28,10 +28,8 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
     styleUrls: [`./rating.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRatingComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRatingComponent),
+        tuiAsControl(TuiRatingComponent),
     ],
 })
 export class TuiRatingComponent
@@ -77,7 +75,7 @@ export class TuiRatingComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get isFocusable(): boolean {

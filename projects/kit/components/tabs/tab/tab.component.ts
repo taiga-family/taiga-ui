@@ -8,15 +8,9 @@ import {
     Optional,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {
-    isNativeFocused,
-    setNativeFocused,
-    TUI_IS_ANDROID,
-    TUI_IS_IOS,
-    TuiFocusVisibleService,
-} from '@taiga-ui/cdk';
+import {TuiFocusVisibleService, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {TUI_MOBILE_AWARE, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
+import {TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
@@ -34,12 +28,6 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     },
 })
 export class TuiTabComponent implements OnDestroy {
-    @HostBinding(`class._ios`)
-    readonly isIos: boolean;
-
-    @HostBinding(`class._android`)
-    readonly isAndroid: boolean;
-
     @HostBinding(`class._focus-visible`)
     focusVisible = false;
 
@@ -51,14 +39,8 @@ export class TuiTabComponent implements OnDestroy {
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
         @Inject(TUI_TAB_MARGIN) readonly margin: number,
-        @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
-        @Inject(TUI_IS_IOS) isIos: boolean,
-        @Inject(TUI_IS_ANDROID) isAndroid: boolean,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
     ) {
-        this.isIos = mobileAware && isIos;
-        this.isAndroid = mobileAware && isAndroid;
-
         focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
         });
@@ -70,8 +52,8 @@ export class TuiTabComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (isNativeFocused(this.elementRef.nativeElement)) {
-            setNativeFocused(this.elementRef.nativeElement, false);
+        if (tuiIsNativeFocused(this.elementRef.nativeElement)) {
+            this.elementRef.nativeElement.blur();
         }
     }
 }

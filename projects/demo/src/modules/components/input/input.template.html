@@ -218,20 +218,15 @@
                     [formControl]="control"
                     [focusable]="focusable"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [icon]="icon"
-                    [iconAlign]="iconAlign"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [readOnly]="readOnly"
-                    [tuiTextfieldType]="type"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldAutocomplete]="autocomplete"
-                    [tuiTextfieldInputMode]="inputMode"
                     [tuiTextfieldSize]="size"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldMaxLength]="maxLength"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -239,7 +234,7 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     placeholder
                     <strong>strong text</strong>
@@ -268,29 +263,19 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="icon"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                An icon. It can be stringified svg or a name of icon registered in
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
                 <a
                     tuiLink
                     routerLink="/services/svg-service"
                 >
                     <code>SvgService</code>
                 </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

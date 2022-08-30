@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "2.62.1",
+    "version": "3.0.0-rc.6",
     "description": "Taiga UI Angular main components kit",
     "keywords": [
         "angular",
@@ -13,20 +13,21 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@ng-web-apis/intersection-observer": "^2.1.0",
-        "angular2-text-mask": "^9.0.0"
+        "@ng-web-apis/intersection-observer": "^3.0.0",
+        "angular2-text-mask": "^9.0.0",
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
-        "@ng-web-apis/common": ">=1.12.1 < 2",
-        "@ng-web-apis/mutation-observer": ">=1.1.0 < 2",
-        "@taiga-ui/cdk": ">=2.62.1",
-        "@taiga-ui/core": ">=2.62.1",
-        "@taiga-ui/i18n": ">=2.62.1",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@ng-web-apis/common": ">=2.0.0",
+        "@ng-web-apis/mutation-observer": ">=2.0.0",
+        "@taiga-ui/cdk": ">=3.0.0-rc.6",
+        "@taiga-ui/core": ">=3.0.0-rc.6",
+        "@taiga-ui/i18n": ">=3.0.0-rc.6",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
     }
 }

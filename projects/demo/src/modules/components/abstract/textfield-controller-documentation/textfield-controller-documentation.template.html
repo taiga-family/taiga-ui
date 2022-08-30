@@ -20,25 +20,6 @@
 <tui-doc-documentation>
     <ng-template
         i18n
-        documentationPropertyName="tuiTextfieldAutocomplete"
-        documentationPropertyMode="input"
-        documentationPropertyType="TuiAutofillFieldName | null"
-        [documentationPropertyValues]="documentedComponent.autocompleteVariants"
-        [(documentationPropertyValue)]="documentedComponent.autocomplete"
-    >
-        <code>autocomplete</code>
-        attribute for a native input (
-        <a
-            tuiLink
-            target="_blanl"
-            href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control"
-        >
-            see names
-        </a>
-        )
-    </ng-template>
-    <ng-template
-        i18n
         documentationPropertyName="tuiTextfieldCleaner"
         documentationPropertyMode="input"
         documentationPropertyType="boolean"
@@ -66,26 +47,6 @@
     </ng-template>
     <ng-template
         i18n
-        documentationPropertyName="tuiTextfieldExampleText"
-        documentationPropertyMode="input"
-        documentationPropertyType="string"
-        [(documentationPropertyValue)]="documentedComponent.exampleText"
-    >
-        Example text shown on empty focused input
-    </ng-template>
-    <ng-template
-        i18n
-        documentationPropertyName="tuiTextfieldInputMode"
-        documentationPropertyMode="input"
-        documentationPropertyType="TuiInputModeT"
-        [documentationPropertyValues]="documentedComponent.inputModeVariants"
-        [(documentationPropertyValue)]="documentedComponent.inputMode"
-    >
-        <code>inputmode</code>
-        attribute for a native input. You can use it to set screen keyboard view on mobile devices
-    </ng-template>
-    <ng-template
-        i18n
         documentationPropertyName="tuiTextfieldLabelOutside"
         documentationPropertyMode="input"
         documentationPropertyType="boolean"
@@ -108,16 +69,6 @@
     </ng-template>
     <ng-template
         i18n
-        documentationPropertyName="tuiTextfieldMaxLength"
-        documentationPropertyMode="input"
-        documentationPropertyType="number | null"
-        [documentationPropertyValues]="documentedComponent.maxLengthVariants"
-        [(documentationPropertyValue)]="documentedComponent.maxLength"
-    >
-        Maximum number of symbols to type. Does not with with mask together
-    </ng-template>
-    <ng-template
-        i18n
         documentationPropertyName="tuiTextfieldSize"
         documentationPropertyMode="input"
         documentationPropertyType="TuiSizeS | TuiSizeL"
@@ -128,13 +79,18 @@
     </ng-template>
     <ng-template
         i18n
-        documentationPropertyName="tuiTextfieldType"
+        documentationPropertyName="tuiTextfieldIconLeft"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiInputTypeT"
-        [documentationPropertyValues]="documentedComponent.typeVariants"
-        [(documentationPropertyValue)]="documentedComponent.type"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.iconLeftVariants"
+        [(documentationPropertyValue)]="documentedComponent.iconLeft"
     >
-        <code>type</code>
-        attribute for a native input
+        A left icon. It can be stringified svg or a name of icon registered in
+        <a
+            tuiLink
+            routerLink="/services/svg-service"
+        >
+            <code>SvgService</code>
+        </a>
     </ng-template>
 </tui-doc-documentation>

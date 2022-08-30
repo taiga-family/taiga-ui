@@ -1,5 +1,5 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {isPresent, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsPresent} from '@taiga-ui/cdk';
 
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
@@ -53,7 +53,7 @@ export class TuiTreeControllerDirective<T>
         const value = this.items.get(item);
         const expanded = this.isExpanded(item);
 
-        if (!isPresent(value)) {
+        if (!tuiIsPresent(value)) {
             return;
         }
 

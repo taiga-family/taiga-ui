@@ -33,10 +33,10 @@
             class="text b-full-width"
         >
             Formatted number:
-            {{ value | tuiFormatNumber: decimalLimit:decimalSeparator }}
+            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} }}
         </p>
         <tui-input-slider
-            size="m"
+            tuiTextfieldSize="m"
             class="slider"
             [max]="10000000"
             [quantum]="0.111"
@@ -46,18 +46,18 @@
             <ng-template
                 i18n
                 documentationPropertyName="decimalLimit"
-                documentationPropertyType="number | null"
+                documentationPropertyType="number"
                 [documentationPropertyValues]="decimalLimitVariants"
                 [(documentationPropertyValue)]="decimalLimit"
             >
                 Digits after comma (use
-                <code>null</code>
+                <code>Infinity</code>
                 not to change)
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="decimalSeparator"
-                documentationPropertyType="string"
+                documentationPropertyType="TuiDecimalSymbol"
                 [documentationPropertyValues]="decimalSeparatorVariants"
                 [(documentationPropertyValue)]="decimalSeparator"
             >

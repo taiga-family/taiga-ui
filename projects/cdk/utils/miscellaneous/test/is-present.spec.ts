@@ -1,39 +1,39 @@
-import {isPresent} from '../is-present';
+import {tuiIsPresent} from '../is-present';
 
 describe(`isPresent`, () => {
     describe(`returns "true" if`, () => {
         it(`value === 1`, () => {
-            expect(isPresent(1)).toBe(true);
+            expect(tuiIsPresent(1)).toBe(true);
         });
 
         it(`value === 0`, () => {
-            expect(isPresent(0)).toBe(true);
+            expect(tuiIsPresent(0)).toBe(true);
         });
 
         it(`value === false`, () => {
-            expect(isPresent(false)).toBe(true);
+            expect(tuiIsPresent(false)).toBe(true);
         });
 
         it(`value === NaN`, () => {
-            expect(isPresent(NaN)).toBe(true);
+            expect(tuiIsPresent(NaN)).toBe(true);
         });
 
         it(`value === ''`, () => {
-            expect(isPresent(``)).toBe(true);
+            expect(tuiIsPresent(``)).toBe(true);
         });
 
         it(`value === []`, () => {
-            expect(isPresent([])).toBe(true);
+            expect(tuiIsPresent([])).toBe(true);
         });
     });
 
     describe(`returns "false" if`, () => {
         it(`value === null`, () => {
-            expect(isPresent(null)).toBe(false);
+            expect(tuiIsPresent(null)).toBe(false);
         });
 
         it(`value === undefined`, () => {
-            expect(isPresent(undefined)).toBe(false);
+            expect(tuiIsPresent(undefined)).toBe(false);
         });
     });
 });

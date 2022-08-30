@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
@@ -35,10 +35,8 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
     styleUrls: [`./radio-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioBlockComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioBlockComponent),
+        tuiAsControl(TuiRadioBlockComponent),
     ],
 })
 export class TuiRadioBlockComponent<T>
@@ -110,7 +108,7 @@ export class TuiRadioBlockComponent<T>
     }
 
     get appearance(): TuiAppearance {
-        if (!this.modeDirective || !this.modeDirective.mode) {
+        if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
                 : TuiAppearance.Whiteblock;
@@ -121,14 +119,6 @@ export class TuiRadioBlockComponent<T>
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onFocusVisible(focusVisible: boolean): void {

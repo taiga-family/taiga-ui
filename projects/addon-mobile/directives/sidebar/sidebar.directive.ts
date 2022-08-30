@@ -1,6 +1,5 @@
 import {
     ChangeDetectorRef,
-    ComponentFactoryResolver,
     ComponentRef,
     Directive,
     Inject,
@@ -9,9 +8,9 @@ import {
     OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk';
+import {TuiDropdownPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarComponent} from './sidebar.component';
 
@@ -22,6 +21,11 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>
     implements OnDestroy
 {
+    private readonly component = new PolymorpheusComponent(
+        TuiSidebarComponent,
+        this.injector,
+    );
+
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
     @Input(`tuiSidebarDirection`)
@@ -42,10 +46,8 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     constructor(
         @Inject(TemplateRef) readonly content: TemplateRef<T>,
         @Inject(Injector) private readonly injector: Injector,
-        @Inject(ComponentFactoryResolver)
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(TuiPortalService)
-        private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(content, changeDetectorRef);
@@ -60,10 +62,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
             return;
         }
 
-        const componentFactory =
-            this.componentFactoryResolver.resolveComponentFactory(TuiSidebarComponent);
-
-        this.sidebarRef = this.portalService.add(componentFactory, this.injector);
+        this.sidebarRef = this.portalService.add(this.component);
         this.sidebarRef.changeDetectorRef.detectChanges();
     }
 

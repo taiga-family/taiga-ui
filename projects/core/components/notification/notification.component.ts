@@ -22,7 +22,6 @@ export const STATUS_ICON = {
     warning: `tuiIconAttention`,
 } as const;
 
-// @bad TODO: Think about moving to kit
 @Component({
     selector: `tui-notification`,
     templateUrl: `./notification.template.html`,

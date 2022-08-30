@@ -15,7 +15,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
@@ -23,7 +22,7 @@ import {
     tuiDefaultProp,
     TuiHandler,
     TuiIdentityMatcher,
-    tuiPure,
+    tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -69,7 +68,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+    content: PolymorpheusContent = ({$implicit}: TuiContextWithImplicit<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
@@ -77,14 +76,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
-    }
-
-    @tuiPure
-    getItemContentContext($implicit: T): TuiContextWithImplicit<T> {
-        return {
-            $implicit,
-        };
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     onCheckbox(value: boolean, item: T): void {

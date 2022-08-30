@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -17,15 +16,16 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     EMPTY_QUERY,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiIdentityMatcher,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
+import {TuiOrientation, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -35,10 +35,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     styleUrls: [`./radio-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioListComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioListComponent),
+        tuiAsControl(TuiRadioListComponent),
     ],
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
@@ -62,7 +60,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @Input()
     @HostBinding(`attr.data-tui-host-orientation`)
     @tuiDefaultProp()
-    orientation: TuiOrientationT = `vertical`;
+    orientation: TuiOrientation = `vertical`;
 
     @Input()
     @tuiDefaultProp()
@@ -95,7 +93,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     computeId(index: number): string {
@@ -104,14 +102,6 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
 
     itemIsDisabled(item: T): boolean {
         return this.disabledItemHandler(item);
-    }
-
-    getContentContext(
-        item: T,
-        index: number,
-        active: boolean,
-    ): TuiValueContentContext<T> & {index: number} {
-        return {$implicit: item, index, active};
     }
 
     onModelChange(value: T): void {

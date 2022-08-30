@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/i18n",
-    "version": "2.62.1",
+    "version": "3.0.0-rc.6",
     "description": "A package with tools for Taiga UI library i18n",
     "keywords": [
         "angular",
@@ -14,6 +14,9 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "peerDependencies": {
         "@angular/core": ">=9.0.0",
         "rxjs": ">=6.0.0"

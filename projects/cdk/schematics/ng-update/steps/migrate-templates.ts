@@ -6,12 +6,13 @@ import {
     INPUTS_TO_REMOVE,
     TAGS_TO_REPLACE,
     TEMPLATE_COMMENTS,
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE,
 } from '../constants/templates';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
-    findElementByFn,
     findElementsByTagName,
+    findElementsInTemplateByFn,
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
@@ -26,7 +27,6 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
-import {ElementLocation} from 'parse5';
 import {getNgComponents} from '../../utils/angular/ng-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
@@ -37,10 +37,12 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {ALL_TS_FILES} from '../../constants';
+import {replaceTag} from '../../utils/replace-tag';
 import {printProgress} from '../../utils/progress';
-
-const START_TAG_OFFSET = 1;
-const END_TAG_OFFSET = 2;
+import {migratePolymorpheus} from './migrate-polymorpheus';
+import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
+import {TODO_MARK} from '../../utils/insert-todo';
+import {migrateTextfieldController} from './migrate-textfield-controller';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -56,6 +58,11 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         addEditorProviders,
         migrateTuiHideSelectedPipe,
         removeInputs,
+        migratePolymorpheus,
+        migrateTextfieldController,
+        replaceInputValues,
+        migrateBinaryAttributes,
+        addWarningForFormatNumberPipe,
     ];
 
     componentWithTemplatesPaths.forEach((resource, templateIndex, templates) => {
@@ -188,10 +195,7 @@ function addHTMLCommentTags({
             .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
 
         elementStartOffsets.forEach(offset => {
-            recorder.insertRight(
-                offset,
-                `<!-- TODO: (Taiga UI migration) ${comment} -->\n`,
-            );
+            recorder.insertRight(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
         });
     });
 }
@@ -224,7 +228,7 @@ function replaceBreadcrumbs({
             `
     <ng-container *ngFor="let item of ${itemsValue}">
         <a
-            *tuiBreadcrumb
+            *tuiItem
             tuiLink
             [routerLink]="item.routerLink"
         >
@@ -277,29 +281,14 @@ function replaceFieldError({
             [input],
         );
     });
-}
 
-function replaceTag(
-    recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation,
-    from: string,
-    to: string,
-    templateOffset = 0,
-    addAttributes: string[] = [],
-) {
-    const startTagOffset = sourceCodeLocation.startTag.startOffset;
-    const endTagOffset = sourceCodeLocation.endTag?.startOffset;
-
-    if (endTagOffset) {
-        recorder.remove(endTagOffset + templateOffset + END_TAG_OFFSET, from.length);
-        recorder.insertRight(endTagOffset + templateOffset + END_TAG_OFFSET, to);
+    if (elements.length) {
+        addImportToClosestModule(
+            resource.componentPath,
+            'TuiErrorModule',
+            '@taiga-ui/core',
+        );
     }
-
-    recorder.remove(startTagOffset + templateOffset + START_TAG_OFFSET, from.length);
-    recorder.insertRight(
-        startTagOffset + templateOffset + START_TAG_OFFSET,
-        `${to} ${addAttributes.join(' ')}`,
-    );
 }
 
 function addEditorProviders({
@@ -350,7 +339,7 @@ function migrateTuiHideSelectedPipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elementsWithPipe = findElementByFn(template, el =>
+    const elementsWithPipe = findElementsInTemplateByFn(template, el =>
         el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 
@@ -374,6 +363,114 @@ function migrateTuiHideSelectedPipe({
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
+    });
+}
+
+function migrateBinaryAttributes({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach(attrName => {
+        const elements = findElementsInTemplateByFn(template, el =>
+            el.attrs?.some(
+                attr =>
+                    attr.value === 'true' && attr.name.includes(attrName.toLowerCase()),
+            ),
+        );
+
+        elements.forEach(el => {
+            const attrLocations = el.sourceCodeLocation?.attrs;
+
+            if (!attrLocations) {
+                return;
+            }
+
+            const {startOffset, endOffset} =
+                attrLocations[`[${attrName.toLowerCase()}]`] ||
+                attrLocations[attrName.toLowerCase()];
+
+            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+            recorder.insertRight(templateOffset + startOffset, attrName);
+        });
+    });
+}
+
+function addWarningForFormatNumberPipe({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    if (template.match(/\|\s*tuiFormatNumber\s*:\s/gi)) {
+        recorder.insertLeft(
+            templateOffset && templateOffset + 1,
+            `<!-- ${TODO_MARK} tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->`,
+        );
+    }
+}
+
+function replaceInputValues({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    resource: TemplateResource;
+    recorder: UpdateRecorder;
+    fileSystem: DevkitFileSystem;
+}) {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const ATTR_VALUES = [
+        {
+            attrName: 'tuiHintDirection',
+            values: [
+                {from: 'bottom-middle', to: 'bottom'},
+                {from: 'top-middle', to: 'top'},
+            ],
+        },
+    ] as const;
+
+    ATTR_VALUES.forEach(({attrName, values}) => {
+        const elements = [...findElementsWithAttribute(template, attrName)];
+        elements.forEach(element => {
+            const {name, value} =
+                element.attrs.find(attr => attr.name === attrName.toLowerCase()) || {};
+
+            if (!name || !value) {
+                return;
+            }
+
+            values.forEach(({from, to}) => {
+                if (value === from) {
+                    const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
+                        name
+                    ] || {startOffset: 0, endOffset: 0};
+                    recorder.remove(
+                        templateOffset + startOffset,
+                        endOffset - startOffset,
+                    );
+                    recorder.insertRight(
+                        templateOffset + startOffset,
+                        `${attrName}="${to}"`,
+                    );
+                }
+            });
+        });
     });
 }
 

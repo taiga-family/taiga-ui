@@ -8,27 +8,29 @@
 >
     <tui-primitive-textfield
         tuiValueAccessor
-        tuiTextfieldInputMode="numeric"
         class="t-textfield"
         [filler]="(getFiller$(mode) | async) || ''"
         [nativeId]="nativeId"
-        [pseudoFocused]="innerPseudoFocused"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoPressed]="pseudoPressed"
+        [pseudoFocus]="innerPseudoFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoActive]="pseudoActive"
         [invalid]="computedInvalid"
         [focusable]="focusable"
         [disabled]="disabled"
         [readOnly]="readOnly"
         [textMask]="textMaskOptions"
-        [iconContent]="icon"
+        [tuiTextfieldIcon]="icon"
         [value]="computedValue"
         [postfix]="postfix"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (keydown.arrowUp)="onArrowUp($event)"
         (keydown.arrowDown)="onArrowDown($event)"
     >
         <ng-content></ng-content>
+        <input
+            tuiTextfield
+            inputmode="numeric"
+        />
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
 <ng-template #dropdownContent>

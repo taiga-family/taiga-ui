@@ -15,28 +15,28 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    setNativeFocused,
     TUI_IS_IOS,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
-    getBorder,
-    TUI_HINT_WATCHED_CONTROLLER,
+    MODE_PROVIDER,
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
-    TuiHintControllerDirective,
+    tuiGetBorder,
+    TuiHintOptionsDirective,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldComponent,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-
-import {TUI_TEXT_AREA_PROVIDERS} from './text-area.providers';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
@@ -47,7 +47,12 @@ export const LINE_HEIGHT_L = 24;
     templateUrl: `./text-area.template.html`,
     styleUrls: [`./text-area.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TEXT_AREA_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiTextAreaComponent),
+        tuiAsControl(TuiTextAreaComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+        MODE_PROVIDER,
+    ],
     host: {
         '($.data-mode.attr)': `mode$`,
         '[class._ios]': `isIOS`,
@@ -68,6 +73,10 @@ export class TuiTextAreaComponent
     rows = DEFAULT_ROWS;
 
     @Input()
+    @tuiDefaultProp()
+    maxLength: number | null = null;
+
+    @Input()
     @HostBinding(`class._expandable`)
     @tuiDefaultProp()
     expandable = false;
@@ -83,8 +92,9 @@ export class TuiTextAreaComponent
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
@@ -105,7 +115,7 @@ export class TuiTextAreaComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     @HostBinding(`attr.data-size`)
@@ -115,7 +125,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`style.--border-end.rem`)
     get border(): number {
-        return getBorder(false, this.hasCleaner, this.hasTooltip);
+        return tuiGetBorder(false, this.hasCleaner, this.hasTooltip);
     }
 
     get hasCleaner(): boolean {
@@ -124,7 +134,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`class._has-tooltip`)
     get hasTooltip(): boolean {
-        return !!this.hintController.content && !this.disabled;
+        return !!this.hintOptions?.content && !this.computedDisabled;
     }
 
     @HostBinding(`class._has-value`)
@@ -134,7 +144,7 @@ export class TuiTextAreaComponent
 
     @HostBinding(`class._has-counter`)
     get hasCounter(): boolean {
-        return !!this.controller.maxLength && this.interactive;
+        return !!this.maxLength && this.interactive;
     }
 
     get hasPlaceholder(): boolean {
@@ -142,10 +152,12 @@ export class TuiTextAreaComponent
     }
 
     get hasExampleText(): boolean {
-        const text =
-            this.controller.exampleText || this.textfield?.nativeElement.placeholder;
-
-        return !!text && this.focused && !this.hasValue && !this.readOnly;
+        return (
+            !!this.textfield?.nativeElement.placeholder &&
+            this.focused &&
+            !this.hasValue &&
+            !this.readOnly
+        );
     }
 
     get computeMaxHeight(): number | null {
@@ -160,25 +172,17 @@ export class TuiTextAreaComponent
     }
 
     get fittedContent(): string {
-        return this.value.slice(0, this.controller.maxLength || Infinity);
+        return this.value.slice(0, this.maxLength || Infinity);
     }
 
     get extraContent(): string {
-        return this.value.slice(this.controller.maxLength || Infinity);
+        return this.value.slice(this.maxLength || Infinity);
     }
 
     @HostListener(`focusin`, [`true`])
     @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onValueChange(value: string): void {
@@ -193,7 +197,7 @@ export class TuiTextAreaComponent
         event.preventDefault();
 
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement);
+            this.nativeFocusableElement.focus();
         }
     }
 

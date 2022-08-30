@@ -28,19 +28,16 @@
             <tui-input-copy
                 [formControl]="control"
                 [focusable]="focusable"
-                [tuiTextfieldAutocomplete]="autocomplete"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [tuiTextfieldMaxLength]="maxLength"
                 [tuiTextfieldCleaner]="cleaner"
                 [successMessage]="notificationTemplate"
                 [messageDirection]="hintDirection"
-                [messageMode]="hintMode"
+                [messageAppearance]="hintAppearance"
                 [readOnly]="readOnly"
                 [pseudoInvalid]="pseudoInvalid"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
             >
                 Type a text
             </tui-input-copy>
@@ -81,7 +78,7 @@
                 documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintModeT | null"
-                [documentationPropertyValues]="hintModeVariants"
+                [documentationPropertyValues]="hintAppearanceVariants"
                 [(documentationPropertyValue)]="messageMode"
             >
                 Message tooltip mode

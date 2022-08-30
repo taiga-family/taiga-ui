@@ -4,7 +4,7 @@ import {
     tuiCoerceBooleanProperty,
     tuiDefaultProp,
     TuiDestroyService,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {combineLatest, merge, Observable} from 'rxjs';
 import {filter, mapTo, takeUntil, tap} from 'rxjs/operators';
@@ -24,7 +24,6 @@ const SLIDER_INTERACTION_KEYS = new Set([
  * Native <input type='range' readonly> doesn't work.
  * This directive imitates this native behaviour.
  */
-// @dynamic
 @Directive({
     selector: `input[tuiSlider][readonly]`,
     providers: [TuiDestroyService],
@@ -40,13 +39,13 @@ export class TuiSliderReadonlyDirective {
         @Inject(TuiDestroyService)
         destroy$: Observable<unknown>,
     ) {
-        const touchStart$ = typedFromEvent(elementRef.nativeElement, `touchstart`, {
+        const touchStart$ = tuiTypedFromEvent(elementRef.nativeElement, `touchstart`, {
             passive: false,
         });
-        const touchMove$ = typedFromEvent(documentRef, `touchmove`, {
+        const touchMove$ = tuiTypedFromEvent(documentRef, `touchmove`, {
             passive: false,
         });
-        const touchEnd$ = typedFromEvent(documentRef, `touchend`, {
+        const touchEnd$ = tuiTypedFromEvent(documentRef, `touchend`, {
             passive: true,
         });
 

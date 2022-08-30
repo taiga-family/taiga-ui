@@ -2,8 +2,8 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {px} from '@taiga-ui/cdk';
-import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {tuiPx} from '@taiga-ui/cdk';
+import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     configureTestSuite,
     TuiNativeInputPO,
@@ -22,8 +22,7 @@ describe(`TextArea`, () => {
             <tui-text-area
                 [expandable]="expandable"
                 [formControl]="control"
-                [tuiTextfieldExampleText]="exampleText"
-                [tuiTextfieldMaxLength]="maxLength"
+                [maxLength]="maxLength"
                 [readOnly]="readOnly"
                 [rows]="rows"
                 [tuiHintContent]="hintContent"
@@ -41,8 +40,6 @@ describe(`TextArea`, () => {
         rows = DEFAULT_ROWS;
 
         maxLength: number | null = null;
-
-        exampleText = `placeholder`;
 
         expandable = false;
 
@@ -101,7 +98,7 @@ describe(`TextArea`, () => {
                 ReactiveFormsModule,
                 TuiTextAreaModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
             ],
             declarations: [TestComponent],
         });
@@ -135,7 +132,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when rows change, MaxHeight is calculated correctly`, () => {
@@ -145,7 +142,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when rows change, MaxHeight is calculated correctly`, () => {
@@ -155,7 +152,7 @@ describe(`TextArea`, () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(px(maxHeight));
+            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it(`when expandable is true and the content size increases, the tui-outline height increases`, () => {

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiColorPickerModule,
     TuiColorSelectorModule,
@@ -11,7 +11,7 @@ import {
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHostedDropdownModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,11 +27,11 @@ import {TuiColorPickerExample2} from './examples/2';
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiInputColorModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiColorPickerComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiColorPickerComponent)),
         FormsModule,
         TuiColorPickerModule,
     ],

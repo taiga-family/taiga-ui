@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiPluralize} from '@taiga-ui/core';
 
 class User {
     constructor(readonly firstName: string, readonly lastName: string) {}
@@ -39,8 +38,6 @@ export class TuiExample {
 
     persons = [new User(`Roman`, `Sedov`), new User(`Alex`, `Inkin`)];
 
-    pluralize: TuiPluralize = [`₽`, `₽`, `₽`];
-
     accounts = [
         new Account(`1`, `Common`, 24876.55, TuiCurrency.Ruble, this.svgIcons.common),
         new Account(`2`, `Universal`, 335, TuiCurrency.Dollar, this.svgIcons.universal),
@@ -63,7 +60,7 @@ export class TuiExample {
         periodValue: new FormControl(new TuiDay(2017, 2, 15), Validators.required),
         timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
         personValue: new FormControl(this.persons[0]),
-        quantityValue: new FormControl(0, Validators.required),
+        quantityValue: new FormControl(50_000, Validators.required),
         radioValue: new FormControl(`with-commission`),
         accountWherefrom: new FormControl(null),
         accountWhere: new FormControl(null),

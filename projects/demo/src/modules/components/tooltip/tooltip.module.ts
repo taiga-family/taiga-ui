@@ -2,9 +2,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiDescribedByModule,
     TuiHintModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -31,12 +30,11 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiInputModule,
         PolymorpheusModule,
         TuiModeModule,
-        TuiDescribedByModule,
         TuiAddonDocModule,
         CommonModule,
         FormsModule,
         TuiTextfieldControllerModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiTooltipComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTooltipComponent)),
     ],
     declarations: [
         ExampleTuiTooltipComponent,

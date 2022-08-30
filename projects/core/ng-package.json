@@ -3,11 +3,11 @@
     "assets": [
         "styles"
     ],
+    "allowedNonPeerDependencies": [
+        "."
+    ],
     "dest": "../../dist/core",
     "lib": {
         "entryFile": "index.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-        "."
-    ]
+    }
 }

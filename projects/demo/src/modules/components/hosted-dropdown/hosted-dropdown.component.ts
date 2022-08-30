@@ -1,14 +1,8 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
 
+import {AbstractExampleTuiDropdown} from '../abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
@@ -23,51 +17,26 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiHostedDropdownComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+export class ExampleTuiHostedDropdownComponent extends AbstractExampleTuiDropdown {
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
-
-    readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-    };
-
-    minHeight = DEFAULT_MIN_HEIGHT;
-
-    maxHeight = DEFAULT_MAX_HEIGHT;
-
-    alignVariants: readonly TuiHorizontalDirection[] = [`right`, `left`];
-
-    align = this.alignVariants[0];
-
-    readonly directionVariants: ReadonlyArray<TuiVerticalDirection | null> = [
-        null,
-        `top`,
-        `bottom`,
-    ];
-
-    direction: TuiVerticalDirection | null = this.directionVariants[0];
-
-    readonly limitWidthVariants: readonly TuiDropdownWidthT[] = [`auto`, `fixed`, `min`];
-
-    limitWidth: TuiDropdownWidthT = this.limitWidthVariants[0];
 
     open = false;
 

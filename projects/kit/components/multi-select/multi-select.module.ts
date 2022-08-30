@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
     TuiActiveZoneModule,
-    TuiHoveredModule,
     TuiLetModule,
     TuiMapperPipeModule,
     TuiPreventDefaultModule,
@@ -13,6 +12,7 @@ import {
     TuiHostedDropdownModule,
     TuiPrimitiveCheckboxModule,
     TuiSvgModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
@@ -34,13 +34,13 @@ import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-gr
         TuiArrowModule,
         TuiLetModule,
         TuiMapperPipeModule,
-        TuiHoveredModule,
         TuiSvgModule,
         TuiHostedDropdownModule,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
         TuiPrimitiveCheckboxModule,
         TuiDataListModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [
         TuiMultiSelectComponent,

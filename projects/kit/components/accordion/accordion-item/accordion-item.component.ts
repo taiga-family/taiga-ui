@@ -5,7 +5,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,10 +13,10 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
@@ -31,13 +30,7 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
     templateUrl: `./accordion-item.template.html`,
     styleUrls: [`./accordion-item.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiAccordionItemComponent),
-        },
-        MODE_PROVIDER,
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiAccordionItemComponent), MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': `mode$`,
     },
@@ -109,13 +102,7 @@ export class TuiAccordionItemComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    onHovered(hovered: boolean): void {
-        if (!this.disableHover) {
-            this.updateHovered(hovered);
-        }
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     onFocused(focused: boolean): void {

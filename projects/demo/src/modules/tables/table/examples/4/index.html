@@ -38,7 +38,7 @@
     [showLoader]="!!(loading$ | async)"
 >
     <table
-        *tuiLet="data$ | async as data"
+        *ngIf="data$ | async as data"
         tuiTable
         class="table"
         [columns]="columns"

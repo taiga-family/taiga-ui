@@ -11,7 +11,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {tuiDefaultProp, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
 import {merge, Observable, ReplaySubject} from 'rxjs';
 import {mapTo, startWith, switchMap, tap} from 'rxjs/operators';
@@ -141,12 +141,10 @@ export class TuiArcChartComponent {
 }
 
 function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
-    return arcs
-        .toArray()
-        .map(({nativeElement}, index) =>
-            merge(
-                typedFromEvent(nativeElement, `mouseenter`).pipe(mapTo(index)),
-                typedFromEvent(nativeElement, `mouseleave`).pipe(mapTo(NaN)),
-            ),
-        );
+    return arcs.map(({nativeElement}, index) =>
+        merge(
+            tuiTypedFromEvent(nativeElement, `mouseenter`).pipe(mapTo(index)),
+            tuiTypedFromEvent(nativeElement, `mouseleave`).pipe(mapTo(NaN)),
+        ),
+    );
 }

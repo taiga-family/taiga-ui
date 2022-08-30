@@ -1,15 +1,14 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
 import {
-    px,
     svgNodeFilter,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiPx,
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Directive({
     selector: `[tuiHighlight]`,
     host: {
@@ -80,10 +79,10 @@ export class TuiHighlightDirective implements OnChanges {
             const {style} = this.highlight;
 
             style.background = this.tuiHighlightColor;
-            style.left = px(left - hostRect.left);
-            style.top = px(top - hostRect.top);
-            style.width = px(width);
-            style.height = px(height);
+            style.left = tuiPx(left - hostRect.left);
+            style.top = tuiPx(top - hostRect.top);
+            style.width = tuiPx(width);
+            style.height = tuiPx(height);
             style.display = `block`;
 
             return;

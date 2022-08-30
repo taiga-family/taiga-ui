@@ -15,6 +15,8 @@ import {
     CHAR_EN_DASH,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiHandler,
@@ -22,26 +24,30 @@ import {
     TuiMonthRange,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
+    TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
-import {TUI_INPUT_MONTH_RANGE_PROVIDERS} from './input-month-range.providers';
-
-// @dynamic
 @Component({
     selector: `tui-input-month-range`,
     templateUrl: `./input-month-range.template.html`,
     styleUrls: [`./input-month-range.style.less`],
-    providers: TUI_INPUT_MONTH_RANGE_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputMonthRangeComponent),
+        tuiAsControl(TuiInputMonthRangeComponent),
+        TUI_MONTH_FORMATTER_PROVIDER,
+        TuiMonthPipe,
+    ],
 })
 export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
@@ -88,7 +94,7 @@ export class TuiInputMonthRangeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
@@ -117,10 +123,6 @@ export class TuiInputMonthRangeComponent
 
         this.updateValue(TuiMonthRange.sort(this.value.from, month));
         this.close();
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     onOpenChange(open: boolean): void {

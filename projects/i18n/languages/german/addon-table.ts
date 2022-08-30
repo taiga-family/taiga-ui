@@ -1,6 +1,6 @@
-import {LanguageTable} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageTable} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_GERMAN_LANGUAGE_ADDON_TABLE: LanguageTable = {
+export const TUI_GERMAN_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
     showHideText: `Anzeigen/Ausblenden`,
     paginationTexts: {
         pages: `Seiten`,

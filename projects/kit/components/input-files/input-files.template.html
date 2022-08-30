@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     appearance="input-file"
     class="t-wrapper"
     [class._mobile]="isMobile"
-    [focused]="computedFocused"
-    [hovered]="computedHovered || fileDragged"
-    [pressed]="computedPressed"
+    [focus]="computedFocused"
+    [hover]="pseudoHover || fileDragged || null"
+    [active]="pseudoActive"
     [disabled]="computedDisabled"
 >
     <label
@@ -12,19 +13,12 @@
         automation-id="tui-input-file__label"
     >
         <a tuiLink>
-            <span
-                polymorpheus-outlet
-                class="t-inline"
-                [content]="computedLink$ | async"
-            ></span>
+            <ng-container *polymorpheusOutlet="computedLink$ | async as text">
+                {{ text }}
+            </ng-container>
         </a>
-        <ng-container *ngIf="computedLabel$ | async as computedLabel">
-            <span>&nbsp;</span>
-            <span
-                polymorpheus-outlet
-                class="t-inline"
-                [content]="computedLabel"
-            ></span>
+        <ng-container *polymorpheusOutlet="computedLabel$ | async as text">
+            {{ text }}
         </ng-container>
         <ng-container *ngIf="!readOnly && !computedDisabled">
             <input
@@ -37,13 +31,11 @@
                 [multiple]="multiple"
                 [tuiFocusable]="focusable"
                 (change)="onFilesSelected(input, texts, units)"
-                (tuiHoveredChange)="onHovered($event)"
                 (tuiFocusedChange)="onFocused($event)"
-                (tuiPressedChange)="onPressed($event)"
                 (tuiDroppableDropped)="onDropped($event, texts, units)"
                 (tuiDroppableDragOverChange)="onDragOver($event)"
                 (mousedown.prevent.silent)="(0)"
             />
         </ng-container>
     </label>
-</tui-wrapper>
+</div>

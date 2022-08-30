@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiDataListModule,
     tuiEditingKeys,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -51,7 +51,6 @@ describe(`Input`, () => {
                     <tui-input
                         formControlName="control"
                         [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldExampleText]="exampleText"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [tuiTextfieldSize]="size"
                         [tuiHintContent]="hintContent"
@@ -90,8 +89,6 @@ describe(`Input`, () => {
 
         size: TuiSizeS | TuiSizeL = `m`;
 
-        exampleText = `placeholder`;
-
         hintContent: string | null = `prompt`;
 
         group = new FormGroup({control: new FormControl()});
@@ -119,7 +116,7 @@ describe(`Input`, () => {
                 ReactiveFormsModule,
                 TuiInputModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],

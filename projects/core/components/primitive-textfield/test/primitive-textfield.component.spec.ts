@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
@@ -11,7 +12,7 @@ import {
     tuiTestTooltip,
 } from '@taiga-ui/testing';
 
-import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
+import {TuiHintModule} from '../../../directives/hint/hint.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
@@ -22,7 +23,6 @@ describe(`PrimitiveTextfield`, () => {
         template: `
             <tui-primitive-textfield
                 [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
                 [tuiHintContent]="hintContent"
@@ -31,9 +31,14 @@ describe(`PrimitiveTextfield`, () => {
                 [disabled]="disabled"
                 [filler]="filler"
                 [postfix]="postfix"
-                [pseudoFocused]="focused"
+                [pseudoFocus]="focused"
                 [(value)]="value"
-            ></tui-primitive-textfield>
+            >
+                <input
+                    tuiTextfield
+                    [attr.placeholder]="exampleText"
+                />
+            </tui-primitive-textfield>
         `,
     })
     class TestComponent {
@@ -94,7 +99,7 @@ describe(`PrimitiveTextfield`, () => {
                 NoopAnimationsModule,
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiRootModule,
             ],
             declarations: [TestComponent],
@@ -172,11 +177,12 @@ describe(`PrimitiveTextfield`, () => {
         it(`if the input is focused, then example-text is shown`, async () => {
             testComponent.value = ``;
             testComponent.focused = true;
+            const input = fixture.debugElement.query(By.css(`input`)).nativeElement;
 
             fixture.detectChanges();
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getValueDecoration()).toBe(testComponent.exampleText);
+            expect(input.placeholder).toBe(testComponent.exampleText);
         });
     });
 

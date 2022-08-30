@@ -345,28 +345,40 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: `HostedDropdown`,
-                keywords: `dropdown, hover, контекст, выпадашка, дропдаун, меню, menu`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
                 route: `/components/hosted-dropdown`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `Dropdown`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownContext`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
+                route: `/directives/dropdown-context`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownHover`,
+                keywords: `dropdown, hover, выпадашка, дропдаун`,
+                route: `/directives/dropdown-hover`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `DropdownSelection`,
+                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown-selection`,
             },
         ],
     },
     {
         section: $localize`Components`,
-        title: `Errors`,
-        subPages: [
-            {
-                section: $localize`Components`,
-                title: `Error`,
-                keywords: `error, ошибка`,
-                route: `/components/error`,
-            },
-            {
-                section: $localize`Components`,
-                title: `FieldError [deprecated]`,
-                keywords: `field, поле, форма, error, ошибка, field-error`,
-                route: `/components/field-error`,
-            },
-        ],
+        title: `Error`,
+        keywords: `error, ошибка`,
+        route: `/components/error`,
     },
     {
         section: $localize`Components`,
@@ -385,6 +397,42 @@ export const pages: TuiDocPages = [
         title: `Group`,
         keywords: `buttongroup, форма, поле, кнопка, группировка, группа, Group`,
         route: `/components/group`,
+    },
+    {
+        section: $localize`Components`,
+        title: `Hint`,
+        subPages: [
+            {
+                section: $localize`Components`,
+                title: `Tooltip`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
+                route: `/components/tooltip`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `Hint`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт`,
+                route: `/directives/hint`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `HintDescribe`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, accessibility, a11y, доступность`,
+                route: `/directives/hint-describe`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `HintManual`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт`,
+                route: `/directives/hint-manual`,
+            },
+            {
+                section: $localize`Tools`,
+                title: `HintPointer`,
+                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор`,
+                route: `/directives/hint-pointer`,
+            },
+        ],
     },
     {
         section: $localize`Components`,
@@ -447,12 +495,6 @@ export const pages: TuiDocPages = [
                     `поле, инпут, форма, ввод, input, календарь, день, ` +
                     `неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс`,
                 route: `/components/input-date-time`,
-            },
-            {
-                section: $localize`Components`,
-                title: `InputFile`,
-                keywords: `селект, форма, файл, загрузка, ввод, input, file, attach, load`,
-                route: `/components/input-file`,
             },
             {
                 section: $localize`Components`,
@@ -539,12 +581,6 @@ export const pages: TuiDocPages = [
                 title: `Editor`,
                 keywords: `wysiwyg, редактор, текст, html, rich, text, input, инпут, ввод`,
                 route: `/components/editor`,
-            },
-            {
-                section: $localize`Components`,
-                title: `Editor[new]`,
-                keywords: `wysiwyg, editor, редактор, текст, html, rich, text, input, инпут, ввод`,
-                route: `/components/editor-new`,
             },
             {
                 section: $localize`Components`,
@@ -752,12 +788,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: `Slider[deprecated]`,
-                keywords: `инпут, числа, форма, ввод, slider, слайдер, range, диапазон`,
-                route: `/components/slider-deprecated`,
-            },
-            {
-                section: $localize`Components`,
                 title: `Range`,
                 keywords: `инпут, числа, форма, ввод, slider, слайдер, range, диапазон`,
                 route: `/components/range`,
@@ -787,12 +817,6 @@ export const pages: TuiDocPages = [
                 title: `Reorder`,
                 keywords: `таблица, столбцы, порядок, order, выбор`,
                 route: `/components/reorder`,
-            },
-            {
-                section: $localize`Components`,
-                title: `ResizableColumn`,
-                keywords: `таблица, столбцы, размер, table, size, column`,
-                route: `/components/resizable-column`,
             },
             {
                 section: $localize`Components`,
@@ -840,21 +864,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
-        title: `Tooltip`,
-        keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
-        route: `/components/tooltip`,
-    },
-    {
-        section: $localize`Components`,
         title: `Tree`,
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
-    },
-    {
-        section: $localize`Components`,
-        title: `Toolbar`,
-        keywords: `editor, редактор, текст, html, rich, text, input, инпут, ввод`,
-        route: `/components/toolbar`,
     },
     // Navigation
     {
@@ -973,30 +985,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `DescribedBy`,
-                keywords: ``,
-                route: `/directives/described-by`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `Dropdown`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownContext`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
-                route: `/directives/dropdown-context`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownSelection`,
-                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown-selection`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `ElasticSticky`,
                 keywords: `масштаб, sticky, заголовок, шапка, mobile, смартфон, pwa, native, hybrid`,
                 route: `/directives/elastic-sticky`,
@@ -1021,33 +1009,15 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `Hint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт`,
-                route: `/directives/hint`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `LazyLoading`,
                 keywords: `img, skeleton, скелетон, загрузка, картинки`,
                 route: `/directives/lazy-loading`,
             },
             {
                 section: $localize`Tools`,
-                title: `ManualHint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт`,
-                route: `/directives/manual-hint`,
-            },
-            {
-                section: $localize`Tools`,
                 title: `Overscroll`,
                 keywords: `overscroll, scroll, скролл`,
                 route: `/directives/overscroll`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `PointerHint`,
-                keywords: `tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор`,
-                route: `/directives/pointer-hint`,
             },
             {
                 section: $localize`Tools`,
@@ -1108,18 +1078,6 @@ export const pages: TuiDocPages = [
                 title: `Sidebar`,
                 keywords: `sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню`,
                 route: `/directives/sidebar`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `DropdownController`,
-                keywords: `контроллер, ввод, параметры, настройка, выпадашка, список, айтемы, items`,
-                route: `/directives/dropdown-controller`,
-            },
-            {
-                section: $localize`Tools`,
-                title: `HintController`,
-                keywords: `контроллер, ввод, параметры, настройка, hint, tooltip, подсказка`,
-                route: `/directives/hint-controller`,
             },
             {
                 section: $localize`Tools`,
@@ -1259,7 +1217,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: $localize`Format`,
-                keywords: `Инструменты, утилиты, форматирующие, format, px, padStart, getCurrencySymbol, capitalize,
+                keywords: `Инструменты, утилиты, форматирующие, format, px, getCurrencySymbol, capitalize,
                            formatPhone`,
                 route: `/utils/format`,
             },

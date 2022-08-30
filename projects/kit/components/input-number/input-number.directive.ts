@@ -1,19 +1,14 @@
-import {Directive, DoCheck, forwardRef} from '@angular/core';
-import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
+import {Directive, DoCheck} from '@angular/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputNumberComponent} from './input-number.component';
 
 @Directive({
     selector: `tui-input-number`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiInputNumberDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiInputNumberDirective)],
 })
 export class TuiInputNumberDirective
-    extends TuiAbstractTextfieldHost<TuiInputNumberComponent>
+    extends AbstractTuiTextfieldHost<TuiInputNumberComponent>
     implements DoCheck
 {
     input?: HTMLInputElement;
@@ -26,16 +21,12 @@ export class TuiInputNumberDirective
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement): void {
-        this.input = input;
-    }
-
     ngDoCheck(): void {
-        if (!this.input) {
+        if (!this.host.nativeFocusableElement) {
             return;
         }
 
-        this.input.maxLength = this.host.calculatedMaxLength;
-        this.input.inputMode = `decimal`;
+        this.host.nativeFocusableElement.maxLength = this.host.calculatedMaxLength;
+        this.host.nativeFocusableElement.inputMode = `decimal`;
     }
 }

@@ -9,6 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -18,11 +19,12 @@ import {
     TuiNotificationOptions,
     TuiNotificationOptionsWithData,
     AnotherType,
+    TuiAbstractTextfieldHost
 } from '@taiga-ui/core';
 import { InputCountOptions } from '@taiga-ui/kit/components';
 import { ScrollIntoViewDirective, CodeComponent } from '@taiga-ui/addon-doc';
 import { TableBar } from '@taiga-ui/addon-tablebars';
-import { InvalidDayException, InvalidMonthException, InvalidYearException } from '@taiga-ui/cdk/exceptions';
+import { TuiInvalidDayException, TuiInvalidMonthException, TuiInvalidYearException } from '@taiga-ui/cdk/exceptions';
 import { ButtonOptions, some, InputCountOptions, WithDateMaskPipeConfig } from '@taiga-ui/core/types';
 import { InputPasswordOptions } from '@taiga-ui/kit/components/input-password';
 import { TUI_INPUT_TIME_OPTIONS, InputTimeOptions, Country, RadioOptions } from '@taiga-ui/kit';
@@ -71,14 +73,13 @@ export class AppComponent {
    }
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: InputTimeOptions) {}
 }
+
+export class Textfield extends TuiAbstractTextfieldHost {}
 `;
 
 const AFTER = `
 import { Component } from '@angular/core';
-import {
-    TuiAlertOptions,
-    AnotherType,
-} from '@taiga-ui/core';
+import { TuiAlertOptions, AnotherType, AbstractTuiTextfieldHost } from '@taiga-ui/core';
 import { TuiInputCountOptions } from '@taiga-ui/kit';
 import { TuiScrollIntoViewLinkDirective, TuiCodeComponent } from '@taiga-ui/addon-doc';
 import { TuiTableBar } from '@taiga-ui/addon-tablebars';
@@ -131,6 +132,8 @@ export class AppComponent {
    }
    constructor(@Inject(TUI_INPUT_TIME_OPTIONS) readonly options: TuiInputTimeOptions) {}
 }
+
+export class Textfield extends AbstractTuiTextfieldHost {}
 `;
 
 describe('ng-update', () => {
@@ -163,4 +166,7 @@ function createMainFiles(): void {
     createSourceFile('test/app/app.component.ts', BEFORE);
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
+
+    createAngularJson();
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

@@ -38,28 +38,6 @@ export interface InputToRemove {
 
 export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     {
-        from: {
-            attrName: 'icon',
-            withTagNames: ['tui-input-tag'],
-            filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
-        },
-        to: {
-            attrName: 'iconLeft',
-        },
-    },
-    {
-        from: {
-            attrName: '[icon]',
-            withTagNames: ['tui-input-tag'],
-            filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
-        },
-        to: {
-            attrName: '[iconLeft]',
-        },
-    },
-    {
         from: {attrName: 'tuiResizableColumn', withAttrsNames: ['tuiResizableColumn']},
         to: {attrName: 'tuiTh [resizable]="true"'},
     },
@@ -71,6 +49,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
                 'tui-range',
                 'tui-input-range',
                 'tui-input-slider',
+                'tui-feed-item',
             ],
         },
         to: {attrName: ''},
@@ -97,6 +76,110 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: '[label]',
+            withAttrsNames: ['tuiLabel'],
+        },
+
+        to: {
+            attrName: '[tuiLabel]',
+        },
+    },
+    {
+        from: {
+            attrName: 'label',
+            withAttrsNames: ['tuiLabel'],
+        },
+
+        to: {
+            attrName: 'tuiLabel',
+        },
+    },
+    {
+        from: {
+            attrName: '[state]',
+            withAttrsNames: ['tuiStep'],
+        },
+
+        to: {
+            attrName: '[stepState]',
+        },
+    },
+    {
+        from: {
+            attrName: 'state',
+            withAttrsNames: ['tuiStep'],
+        },
+
+        to: {
+            attrName: 'stepState',
+        },
+    },
+    {
+        from: {
+            attrName: '[focused]',
+            withTagNames: ['tui-wrapper'],
+            withAttrsNames: ['tuiWrapper'],
+        },
+        to: {
+            attrName: '[focus]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoPressed]',
+            withTagNames: TUI_INTERACTIVE_SELECTORS,
+        },
+        to: {
+            attrName: '[pseudoActive]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoHovered]',
+            withTagNames: TUI_INTERACTIVE_SELECTORS,
+        },
+        to: {
+            attrName: '[pseudoHover]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoFocused]',
+            withTagNames: TUI_INTERACTIVE_SELECTORS,
+        },
+        to: {
+            attrName: '[pseudoFocus]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoHovered]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoHover]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoFocused]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoFocus]',
+        },
+    },
+    {
+        from: {
+            attrName: '[pseudoPressed]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {
+            attrName: '[pseudoActive]',
+        },
+    },
+    {
+        from: {
             attrName: '(rangeChange)',
             withTagNames: ['tui-calendar-range'],
         },
@@ -114,12 +197,308 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: '[step]',
         },
     },
+    {
+        from: {
+            attrName: '[quantum]',
+            withTagNames: ['tui-range'],
+        },
+        to: {
+            attrName: '[step]',
+        },
+    },
+    {
+        from: {
+            attrName: '*tuiTab',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '*tuiItem',
+        },
+    },
+    {
+        from: {
+            attrName: '*tuiBreadcrumb',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '*tuiItem',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiToolbarTool',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiItem',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiManualHint',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHint',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiManualHint]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHint]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiManualHintShow]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintManual]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiPointerHint]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintPointer [tuiHint]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiPointerHint',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintPointer tuiHint',
+        },
+    },
+    {
+        from: {
+            attrName: 'messageMode',
+            withTagNames: ['tui-input-copy'],
+        },
+        to: {
+            attrName: 'messageAppearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[messageMode]',
+            withTagNames: ['tui-input-copy'],
+        },
+        to: {
+            attrName: '[messageAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: '[hintMode]',
+            withTagNames: ['tui-bar-chart'],
+        },
+        to: {
+            attrName: '[tuiHintAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiHintMode',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintAppearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiHintMode]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintAppearance]',
+        },
+    },
+    {
+        from: {
+            attrName: 'mode',
+            withTagNames: ['tui-tooltip'],
+        },
+        to: {
+            attrName: 'appearance',
+        },
+    },
+    {
+        from: {
+            attrName: '[mode]',
+            withTagNames: ['tui-tooltip'],
+        },
+        to: {
+            attrName: '[appearance]',
+        },
+    },
+    {
+        from: {
+            attrName: '[itemLabel]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[description]',
+        },
+    },
+    {
+        from: {
+            attrName: '[itemValue]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[title]',
+        },
+    },
+    {
+        from: {
+            attrName: '[sumLabel]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[secondaryDescription]',
+        },
+    },
+    {
+        from: {
+            attrName: '[sumValue]',
+            withTagNames: ['tui-feed-item'],
+        },
+        to: {
+            attrName: '[secondaryTitle]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiDropdown',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiDropdownManual',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDropdown]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiDropdownManual]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiDropdownContent',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiDropdown',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDropdownContent]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiDropdown]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiTextfieldExampleText',
+            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+        },
+        to: {
+            attrName: 'placeholder',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiTextfieldMaxLength',
+            withTagNames: ['tui-input-tag', 'tui-text-area'],
+        },
+        to: {
+            attrName: 'maxLength',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiTextfieldExampleText]',
+            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+        },
+        to: {
+            attrName: '[placeholder]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiTextfieldMaxLength]',
+            withTagNames: ['tui-input-tag', 'tui-text-area'],
+        },
+        to: {
+            attrName: '[maxLength]',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiHintId]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiHintDescribe]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiHintId',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiHintDescribe',
+        },
+    },
+    {
+        from: {
+            attrName: '[tuiDescribedBy]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[id]',
+        },
+    },
+    {
+        from: {
+            attrName: 'tuiDescribedBy',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'id',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
     {
         inputName: 'iconAlign',
         tags: ['tui-input', 'tui-primitive-textfield', 'tui-input-tag'],
+    },
+    {
+        inputName: 'tuiLabel',
+        tags: ['label'],
+    },
+    {
+        inputName: 'tuiExpandContent',
+        tags: ['ng-template'],
     },
 ];
 
@@ -138,6 +517,11 @@ export const TAGS_TO_REPLACE: ReplacementTags[] = [
         from: 'tui-slider',
         to: 'input',
         addAttributes: ['tuiSlider', 'type="range"'],
+    },
+    {
+        from: 'tui-action',
+        to: 'button',
+        addAttributes: ['tuiAction'],
     },
 ];
 
@@ -243,6 +627,29 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
             element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
     },
     {
+        componentSelector: 'tui-input-tag',
+        inputProperty: 'icon',
+        directive: 'tuiTextfieldIcon',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            !hasElementAttribute(element, 'iconAlign') ||
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+    },
+    {
+        componentSelector: 'tui-input-tag',
+        inputProperty: 'icon',
+        directive: 'tuiTextfieldIconLeft',
+        directiveModule: {
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+    },
+    {
         componentSelector: '*',
         inputProperty: 'scrollIntoView',
         directive: 'tuiScrollIntoViewLink',
@@ -251,7 +658,23 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        componentSelector: ['tui-bar-chart', 'tui-pie-chart', 'tui-line-chart'],
+        inputProperty: 'hintContent',
+        directive: 'tuiHintContent',
+        directiveModule: {
+            name: 'TuiHintControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
+
+/**
+ * @example `<div [tuiDropdownSided]="true" />` => `<div tuiDropdownSided />`
+ */
+export const TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE = [
+    'tuiDropdownSided',
+] as const;
 
 export const TEMPLATE_COMMENTS = [
     {
@@ -279,6 +702,12 @@ export const TEMPLATE_COMMENTS = [
             'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
     },
     {
+        tag: 'tui-range',
+        withAttr: 'steps',
+        comment:
+            'This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API',
+    },
+    {
         tag: 'tui-preview-host',
         withAttr: 'ngProjectAs',
         comment:
@@ -289,6 +718,12 @@ export const TEMPLATE_COMMENTS = [
         withAttr: 'value',
         comment:
             'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
+    },
+    {
+        tag: 'tui-input-file',
+        withAttr: 'loadingFiles',
+        comment:
+            'This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) ',
     },
     {
         tag: 'tui-input-tag',

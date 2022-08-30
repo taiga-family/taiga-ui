@@ -118,4 +118,16 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'Proprietary Carousel is old and has different API. Use new version of the same module from @taiga-ui/kit. Also, check new API: https://taiga-ui.dev/components/carousel/API',
     },
+    {
+        name: 'TUI_EDITOR_STYLES',
+        moduleSpecifier: '@taiga-ui/addon-editor',
+        message:
+            'TUI_EDITOR_STYLES token has been deleted in 3.0, please use global styles to override default editor styles',
+    },
+    {
+        name: 'TuiNotificationContentContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiNotificationContentContext has been deleted in 3.0. Please, use TuiDialog<TuiAlertOptions<I>, O> instead of TuiNotificationContentContext<O, I>',
+    },
 ];

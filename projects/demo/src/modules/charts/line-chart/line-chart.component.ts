@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: `example-tui-line-chart`,
@@ -12,37 +11,37 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class ExampleTuiLineChartComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
     readonly value: readonly TuiPoint[] = [
@@ -63,21 +62,9 @@ export class ExampleTuiLineChartComponent {
         x => `${100 * x}`,
     ];
 
-    readonly hintContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<TuiPoint>>
-    > = [
-        ``,
-        ({$implicit}) =>
-            `${100 * $implicit[0]}\n${(10 * $implicit[1]).toLocaleString(`ru-RU`, {
-                maximumFractionDigits: 0,
-            })} $`,
-    ];
-
     yStringify: TuiStringHandler<number> | null = null;
 
     xStringify: TuiStringHandler<number> | null = null;
-
-    hintContent = this.hintContentVariants[0];
 
     x = 0;
 

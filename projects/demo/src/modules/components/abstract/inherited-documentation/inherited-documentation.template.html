@@ -1,4 +1,4 @@
-<dropdown-controller-documentation *ngIf="dropdown"></dropdown-controller-documentation>
+<dropdown-documentation *ngIf="dropdown"></dropdown-documentation>
 <ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
     <hint-controller-documentation></hint-controller-documentation>
     <textfield-controller-documentation></textfield-controller-documentation>
@@ -114,31 +114,26 @@
         </ng-template>
     </tui-doc-documentation>
 </ng-container>
-<ng-container *ngIf="isTuiHint(documentedComponent)">
-    <h6 class="tui-text_h6">
-        Inherited from
-        <code>AbstractHint</code>
-    </h6>
-    <tui-doc-documentation>
-        <ng-template
-            i18n
-            documentationPropertyName="tuiHintDirection"
-            documentationPropertyMode="input"
-            documentationPropertyType="TuiDirection"
-            [documentationPropertyValues]="directionVariants"
-            [(documentationPropertyValue)]="documentedComponent.direction"
-        >
-            Hint direction
-        </ng-template>
-        <ng-template
-            i18n
-            documentationPropertyName="tuiHintMode"
-            documentationPropertyMode="input"
-            documentationPropertyType="TuiHintModeT | null"
-            [documentationPropertyValues]="modeVariants"
-            [(documentationPropertyValue)]="documentedComponent.mode"
-        >
-            Hint mode
-        </ng-template>
-    </tui-doc-documentation>
-</ng-container>
+<!-- TODO: Do we need this? -->
+<tui-doc-documentation *ngIf="isTuiHint(documentedComponent)">
+    <ng-template
+        i18n
+        documentationPropertyName="tuiHintDirection"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiHintDirection"
+        [documentationPropertyValues]="directionVariants"
+        [(documentationPropertyValue)]="documentedComponent.direction"
+    >
+        Hint direction
+    </ng-template>
+    <ng-template
+        i18n
+        documentationPropertyName="tuiHintAppearance"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="appearanceVariants"
+        [(documentationPropertyValue)]="documentedComponent.appearance"
+    >
+        Hint mode
+    </ng-template>
+</tui-doc-documentation>

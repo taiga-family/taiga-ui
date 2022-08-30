@@ -14,6 +14,8 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiDay,
     tuiDefaultProp,
@@ -23,24 +25,28 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
+    TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
+import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
-import {TUI_INPUT_MONTH_PROVIDERS} from './input-month.providers';
-
-// @dynamic
 @Component({
     selector: `tui-input-month`,
     templateUrl: `./input-month.template.html`,
     styleUrls: [`./input-month.style.less`],
-    providers: TUI_INPUT_MONTH_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputMonthComponent),
+        tuiAsControl(TuiInputMonthComponent),
+        TUI_MONTH_FORMATTER_PROVIDER,
+        TuiMonthPipe,
+    ],
 })
 export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
@@ -87,7 +93,7 @@ export class TuiInputMonthComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? `tuiIconCalendarLarge`
             : `tuiIconCalendar`;
     }
@@ -104,10 +110,6 @@ export class TuiInputMonthComponent
     onMonthClick(month: TuiMonth): void {
         this.updateValue(month);
         this.close();
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     onFocused(focused: boolean): void {

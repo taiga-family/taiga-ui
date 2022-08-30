@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,10 +12,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
@@ -28,10 +28,8 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
     styleUrls: [`./checkbox-labeled.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxLabeledComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
+        tuiAsControl(TuiCheckboxLabeledComponent),
     ],
 })
 export class TuiCheckboxLabeledComponent
@@ -60,7 +58,7 @@ export class TuiCheckboxLabeledComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -74,14 +72,6 @@ export class TuiCheckboxLabeledComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onModelChange(value: boolean): void {

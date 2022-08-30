@@ -6,19 +6,18 @@ import {
     HostBinding,
     Inject,
     Input,
+    Optional,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
+import {SafeValue} from '@angular/platform-browser';
 import {
-    sum,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     tuiPure,
+    tuiSum,
 } from '@taiga-ui/cdk';
-import {colorFallback, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
@@ -36,7 +35,6 @@ const TRANSFORM = {
     xl: 1.08,
 };
 
-// TODO: 3.0 Remove sanitizer when Angular version is bumped
 @Component({
     selector: `tui-pie-chart`,
     templateUrl: `./pie-chart.template.html`,
@@ -57,14 +55,6 @@ export class TuiPieChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
-
-    @Input()
-    @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
-
-    @Input()
-    @tuiDefaultProp()
     masked = false;
 
     @Input()
@@ -77,14 +67,25 @@ export class TuiPieChartComponent {
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(Location) private readonly locationRef: Location,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        private readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
         this.autoIdString = idService.generate();
+
+        if (this.hintOptions) {
+            this.hintOptions.showDelay = 0;
+            this.hintOptions.hideDelay = 0;
+        }
     }
 
     @HostBinding(`class._empty`)
     get empty(): boolean {
         return !this.getSum(this.value);
+    }
+
+    get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+        return this.hintOptions?.content || ``;
     }
 
     get maskId(): string {
@@ -115,23 +116,17 @@ export class TuiPieChartComponent {
         return index === this.activeItemIndex ? transform : null;
     }
 
-    getHint(hint: PolymorpheusContent): PolymorpheusContent {
-        return this.hintContent ? hint : ``;
-    }
-
     onHovered(hovered: boolean, index: number): void {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
     getColor(index: number): SafeValue {
-        return this.sanitizer.bypassSecurityTrustStyle(
-            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
-        );
+        return `var(--tui-chart-${index}`;
     }
 
     @tuiPure
     private getSum(value: readonly number[]): number {
-        return sum(...value);
+        return tuiSum(...value);
     }
 
     @tuiPure

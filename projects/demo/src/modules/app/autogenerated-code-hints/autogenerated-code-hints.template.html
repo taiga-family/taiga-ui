@@ -4,14 +4,33 @@
     tuiDropdownDirection="top"
     [content]="content"
 >
-    <tui-svg
-        src="tuiIconAlertCircleLarge"
+    <button
+        tuiIconButton
+        appearance=""
+        size="s"
+        icon="tuiIconAlertCircleLarge"
         class="icon"
-    ></tui-svg>
+    ></button>
 </tui-hosted-dropdown>
 
 <ng-template #content>
     <ul class="tui-list tui-list_small hints">
+        <li
+            *ngIf="includesHintController(code)"
+            class="tui-list__item"
+        >
+            Don't forget to import
+            <a
+                tuiLink
+                routerLink="/directives/hint"
+            >
+                TuiHintModule
+            </a>
+            to use
+            <code>tuiHintContent</code>
+            and other parameters for underlying hint.
+        </li>
+
         <li
             *ngIf="includesTextfieldController(code)"
             class="tui-list__item"
@@ -37,11 +56,9 @@
                 tuiLink
                 routerLink="/directives/dropdown-controller"
             >
-                TuiDropdownControllerModule
+                TuiDropdownModule
             </a>
-            to use
-            <code>tuiDropdown*</code>
-            -controllers.
+            to configure dropdown options.
         </li>
     </ul>
 </ng-template>

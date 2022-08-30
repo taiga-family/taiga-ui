@@ -1,15 +1,12 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiSwipe, TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
-import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
-import {getSwipeDirection, isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGetSwipeDirection, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise} from 'rxjs/operators';
 
-/**
- * @dynamic
- */
 @Injectable()
 export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor(
@@ -19,8 +16,8 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
     ) {
         super(subscriber => {
             merge(
-                typedFromEvent(nativeElement, `touchstart`, {passive: true}),
-                typedFromEvent(documentRef, `touchend`),
+                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}),
+                tuiTypedFromEvent(documentRef, `touchend`),
             )
                 .pipe(
                     pairwise(),
@@ -46,14 +43,14 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
                             duration < timeout
                         ) {
                             return {
-                                direction: getSwipeDirection(distanceX, distanceY),
+                                direction: tuiGetSwipeDirection(distanceX, distanceY),
                                 events: [start, end] as [TouchEvent, TouchEvent],
                             };
                         }
 
                         return null;
                     }),
-                    filter(isPresent),
+                    filter(tuiIsPresent),
                 )
                 .subscribe(subscriber);
         });

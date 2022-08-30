@@ -1,18 +1,14 @@
-import {getNativeFocused} from './get-native-focused';
-import {setNativeFocused} from './set-native-focused';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+
+import {tuiGetNativeFocused} from './get-native-focused';
 
 /**
- * @deprecated: use {@link tuiBlurNativeFocused} instead
  * Finds and blurs current active element, including shadow DOM
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function blurNativeFocused(documentRef: Document): void {
-    const activeElement = getNativeFocused(documentRef);
+export function tuiBlurNativeFocused(documentRef: Document): void {
+    const activeElement = tuiGetNativeFocused(documentRef);
 
-    // TODO: iframe warning
-    if (activeElement instanceof HTMLElement) {
-        setNativeFocused(activeElement, false);
+    if (tuiIsHTMLElement(activeElement)) {
+        activeElement.blur();
     }
 }
-
-export const tuiBlurNativeFocused = blurNativeFocused;

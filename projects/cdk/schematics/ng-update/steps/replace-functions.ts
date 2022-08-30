@@ -18,6 +18,8 @@ export function replaceFunctions() {
     replaceCustomEvent(getNamedImportReferences('tuiCustomEvent', '@taiga-ui/cdk'));
     replaceClosestElement(getNamedImportReferences('getClosestElement', '@taiga-ui/cdk'));
     replaceDeprecatedFunction();
+    modifyFormatNumberArgs();
+    modifyClosestFocusable();
 
     successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
 }
@@ -25,6 +27,10 @@ export function replaceFunctions() {
 function replaceDeprecatedFunction() {
     DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
         getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
+            if (ref.wasForgotten()) {
+                return;
+            }
+
             const parent = ref.getParent();
 
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
@@ -99,4 +105,54 @@ function replaceFallbackValue(references: Node[]) {
             parent.replaceWithText(`${firstArg.getText()} ?? ${secondArg.getText()}`);
         }
     });
+}
+
+function modifyFormatNumberArgs(): void {
+    [
+        ...getNamedImportReferences('formatNumber', '@taiga-ui/core'),
+        ...getNamedImportReferences('tuiFormatNumber', '@taiga-ui/core'),
+    ]
+        .map(ref => ref.getParent())
+        .filter(Node.isCallExpression)
+        .forEach(fn => {
+            const args = fn.getArguments();
+
+            if (args.length > 1) {
+                const [
+                    value,
+                    decimalLimit = `Infinity`,
+                    decimalSeparator = `','`,
+                    thousandSeparator = `'\u00A0'`,
+                    zeroPadding = true,
+                ] = args.map(arg => arg.getText());
+                const notNullDecimalLimit =
+                    decimalLimit === `null` ? `Infinity` : decimalLimit;
+                const conditionalDecimalLimit = !Number.isNaN(+notNullDecimalLimit)
+                    ? notNullDecimalLimit
+                    : `${decimalLimit} === null ? Infinity : ${decimalLimit}`;
+
+                fn.replaceWithText(
+                    `tuiFormatNumber(${value}, {decimalLimit: ${conditionalDecimalLimit}, decimalSeparator: ${decimalSeparator}, thousandSeparator: ${thousandSeparator}, zeroPadding: ${zeroPadding}})`,
+                );
+            }
+        });
+}
+
+function modifyClosestFocusable(): void {
+    getNamedImportReferences('tuiGetClosestFocusable', '@taiga-ui/cdk')
+        .map(ref => ref.getParent())
+        .filter(Node.isCallExpression)
+        .forEach(fn => {
+            const args = fn.getArguments();
+
+            if (args.length > 1) {
+                const [initial, prev = false, root, keyboard = true] = args.map(arg =>
+                    arg.getText(),
+                );
+
+                fn.replaceWithText(
+                    `tuiGetClosestFocusable({initial: ${initial}, root: ${root}, previous: ${prev}, keyboard: ${keyboard}})`,
+                );
+            }
+        });
 }

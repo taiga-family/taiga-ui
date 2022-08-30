@@ -1,0 +1,33 @@
+<p>
+    <button
+        tuiIconButton
+        appearance="secondary"
+        icon="tuiIconTooltipLarge"
+        tuiHint="Works well with icon buttons"
+        tuiHintDirection="right"
+        tuiHintDescribe
+    ></button>
+</p>
+<p>
+    <button
+        id="button"
+        appearance="secondary"
+        tuiButton
+        icon="tuiIconTooltipLarge"
+    >
+        Hint
+    </button>
+    <tui-tooltip
+        content="Or with external tooltip"
+        direction="right"
+        describeId="button"
+        class="tui-space_top-4 tui-space_left-4"
+    ></tui-tooltip>
+</p>
+<tui-input
+    tuiHintContent="This is built-in with controls"
+    class="b-form"
+    [(ngModel)]="value"
+>
+    Input with accessible hint
+</tui-input>

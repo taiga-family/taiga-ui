@@ -8,20 +8,18 @@
     <tui-primitive-textfield
         automation-id="tui-input-date-time__textfield"
         tuiValueAccessor
-        tuiTextfieldInputMode="numeric"
         class="t-textfield"
-        [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="pseudoHovered"
+        [tuiTextfieldIcon]="iconContent"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [filler]="(filler$ | async) || ''"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="iconContent"
         [disabled]="computedDisabled"
         [textMask]="textMaskOptions"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>

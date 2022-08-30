@@ -9,18 +9,24 @@ import {
     Input,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, itemsQueryListObservable, watch} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    tuiHexToRgb,
+    tuiIsNumber,
+    tuiIsString,
+    tuiItemsQueryListObservable,
+    tuiRgbToHex,
+    tuiWatch,
+} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
-import {hexToRgb, rgbToHex} from '../../utils/color-conversion';
-import {inspectAny} from '../../utils/inspect';
+import {tuiInspectAny} from '../../utils/inspect';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
-// @dynamic
 @Component({
     selector: `tui-doc-documentation`,
     templateUrl: `./documentation.template.html`,
@@ -55,10 +61,10 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     ) {}
 
     ngAfterContentInit(): void {
-        itemsQueryListObservable(this.propertiesConnectors)
+        tuiItemsQueryListObservable(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
-                watch(this.changeDetectorRef),
+                tuiWatch(this.changeDetectorRef),
             )
             .subscribe();
     }
@@ -92,7 +98,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .split(`,`)
             .map(v => Number.parseInt(v, 10)) as [number, number, number];
 
-        return rgbToHex(...parsed);
+        return tuiRgbToHex(...parsed);
     }
 
     getOpacity(color: string): number {
@@ -126,7 +132,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             return;
         }
 
-        const rgb = hexToRgb(color).join(`, `);
+        const rgb = tuiHexToRgb(color).join(`, `);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -137,7 +143,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         opacity: number,
     ): void {
         const hex = this.getColor(connector.documentationPropertyValue || ``);
-        const rgb = hexToRgb(hex);
+        const rgb = tuiHexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -152,7 +158,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     isPrimitivePolymorpheusContent(value: unknown): boolean {
-        return typeof value === `string` || typeof value === `number`;
+        return tuiIsString(value) || tuiIsNumber(value);
     }
 
     showCleaner(type: string): boolean {
@@ -164,6 +170,6 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     inspectAny(data: unknown): string {
-        return inspectAny(data, 2);
+        return tuiInspectAny(data, 2);
     }
 }

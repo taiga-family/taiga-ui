@@ -8,19 +8,18 @@ import {
     Input,
 } from '@angular/core';
 import {
-    blurNativeFocused,
-    isNativeFocusedIn,
-    isSafari,
     TUI_IS_IOS,
+    tuiBlurNativeFocused,
     tuiDefaultProp,
+    tuiIsNativeFocusedIn,
+    tuiIsSafari,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
-import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 
-// @dynamic
 @Component({
     selector: `tui-loader`,
     templateUrl: `./loader.template.html`,
@@ -40,17 +39,16 @@ export class TuiLoaderComponent {
     @tuiDefaultProp()
     overlay = this.options.overlay;
 
-    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
-    textContent: PolymorpheusContent | null = null;
+    textContent: PolymorpheusContent = ``;
 
     @Input()
     @tuiRequiredSetter()
     set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
         if (value && this.focused) {
-            blurNativeFocused(this.documentRef);
+            tuiBlurNativeFocused(this.documentRef);
         }
 
         this.loading = value;
@@ -59,7 +57,7 @@ export class TuiLoaderComponent {
     @HostBinding(`class._loading`)
     loading = true;
 
-    readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;
+    readonly isApple = tuiIsSafari(this.elementRef.nativeElement) || this.isIos;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
@@ -77,10 +75,10 @@ export class TuiLoaderComponent {
     }
 
     get isHorizontal(): boolean {
-        return !sizeBigger(this.size);
+        return !tuiSizeBigger(this.size);
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 }

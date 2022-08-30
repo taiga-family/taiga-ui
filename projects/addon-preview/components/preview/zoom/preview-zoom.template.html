@@ -11,10 +11,10 @@
         ></button>
         <label tuiSliderThumbLabel>
             <div
-                tuiHintMode="onDark"
+                tuiHintAppearance="onDark"
                 tuiHintDirection="top-right"
-                [tuiManualHint]="hint"
-                [tuiManualHintShow]="!!(hintShow$ | async)"
+                [tuiHint]="hint"
+                [tuiHintManual]="!!(hintShow$ | async)"
             ></div>
 
             <ng-template #hint>
@@ -47,11 +47,11 @@
         tuiIconButton
         tuiPreviewAction
         icon="tuiIconCollapse"
-        tuiHintId="Collapse"
         tuiHintDirection="top-right"
-        tuiHintMode="onDark"
+        tuiHintAppearance="onDark"
         class="t-reset-button"
         [tuiHint]="texts.reset"
+        [tuiHintDescribe]="''"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
     ></button>

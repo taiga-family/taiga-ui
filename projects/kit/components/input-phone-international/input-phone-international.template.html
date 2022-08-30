@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    *tuiLet="countriesNames$ | async as countriesNames"
+    *ngIf="countriesNames$ | async as countriesNames"
     class="t-hosted-dropdown"
     [content]="dropdown"
     [canOpen]="!readOnly"
@@ -8,20 +8,18 @@
 >
     <div tuiGroup>
         <tui-primitive-textfield
-            tuiHostedDropdownHost
+            tuiHintContent=""
             class="t-country-select tui-group__auto-width-item"
             [tuiTextfieldCustomContent]="countryValueContent"
             [tuiTextfieldLabelOutside]="true"
+            [tuiTextfieldIcon]="arrow"
             [disabled]="disabled"
             [focusable]="focusable"
             [editable]="false"
-            [iconContent]="arrow"
-            [pseudoFocused]="open || null"
+            [pseudoFocus]="open || null"
             [readOnly]="readOnly"
-            [tuiHintContent]="null"
         ></tui-primitive-textfield>
         <tui-input-phone
-            tuiTextfieldAutocomplete="off"
             class="t-input-phone tui-group__auto-width-item"
             [ngModel]="value"
             [disabled]="disabled"
@@ -30,11 +28,15 @@
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
             [readOnly]="readOnly"
             [pseudoInvalid]="computedInvalid"
-            [pseudoFocused]="pseudoFocused"
-            [pseudoHovered]="pseudoHovered"
+            [pseudoFocus]="pseudoFocus"
+            [pseudoHover]="pseudoHover"
             (ngModelChange)="onModelChange($event)"
         >
             <ng-content></ng-content>
+            <input
+                tuiTextfield
+                autocomplete="off"
+            />
         </tui-input-phone>
     </div>
 

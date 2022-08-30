@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
-    TuiHintControllerModule,
+    TuiDropdownModule,
+    TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiScrollbarModule,
@@ -50,13 +50,13 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,
-        TuiDropdownControllerModule,
-        TuiHintControllerModule,
+        TuiDropdownModule,
+        TuiHintModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
         TuiLabelModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiMultiSelectComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
     ],
     declarations: [

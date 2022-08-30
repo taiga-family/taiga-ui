@@ -1,19 +1,13 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    forwardRef,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {
-    isNativeFocused,
     TUI_AUTOFOCUS_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
     TuiAutoFocusModule,
     TuiFocusableElementAccessor,
     TuiIosAutofocusHandler,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {EMPTY} from 'rxjs';
@@ -52,7 +46,7 @@ describe(`TuiAutoFocus directive`, () => {
         it(`focuses`, fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
-            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
@@ -68,12 +62,7 @@ describe(`TuiAutoFocus directive`, () => {
             `,
             selector: `focusable-component`,
             changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [
-                {
-                    provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-                    useExisting: forwardRef(() => TestFocusableComponent),
-                },
-            ],
+            providers: [tuiAsFocusableItemAccessor(TestFocusableComponent)],
         })
         class TestFocusableComponent implements TuiFocusableElementAccessor {
             @ViewChild(`input`)
@@ -162,7 +151,7 @@ describe(`TuiAutoFocus directive`, () => {
         it(`focuses`, fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
-            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
@@ -170,9 +159,8 @@ describe(`TuiAutoFocus directive`, () => {
         @Component({
             template: `
                 <div
-                    tuiAutoFocus
                     tabindex="0"
-                    [autoFocus]="autoFocus"
+                    [tuiAutoFocus]="autoFocus"
                 ></div>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
@@ -200,7 +188,7 @@ describe(`TuiAutoFocus directive`, () => {
         it(`does not focus element`, fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
-            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(false);
+            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(false);
         }));
     });
 });

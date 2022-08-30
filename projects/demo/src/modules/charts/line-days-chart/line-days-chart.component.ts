@@ -7,7 +7,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: `example-tui-line-days-chart`,
     templateUrl: `./line-days-chart.template.html`,
@@ -15,20 +14,20 @@ import {map} from 'rxjs/operators';
     changeDetection,
 })
 export class ExampleTuiLineDaysChartComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
-        'pipe.ts': import(`!!raw-loader!./examples/2/pipe.ts`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        'pipe.ts': import(`./examples/2/pipe.ts?raw`),
     };
 
     readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [

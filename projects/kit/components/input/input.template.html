@@ -8,18 +8,15 @@
     <tui-primitive-textfield
         automation-id="tui-input__textfield"
         class="t-textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="computedHovered"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="icon"
-        [iconAlign]="iconAlign"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="value"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
     >
         <ng-content></ng-content>
         <ng-content

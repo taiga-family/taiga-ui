@@ -10,19 +10,14 @@ import {
     TuiBooleanHandler,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiBaseColor,
-    TuiColor,
-    TuiMarkerHandler,
-} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
     selector: `example-tui-input-date`,
@@ -36,37 +31,37 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
         'native-date-transformer.directive.ts': import(
-            `!!raw-loader!./examples/5/native-date-transformer.directive.ts`
+            `./examples/5/native-date-transformer.directive.ts?raw`
         ),
     };
 

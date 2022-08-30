@@ -22,7 +22,7 @@ import {
     TuiDestroyService,
     TuiMapper,
     TuiMonth,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_ORDERED_SHORT_WEEK_DAYS} from '@taiga-ui/core';
 import {
@@ -55,7 +55,6 @@ import {
     TUI_VALUE_STREAM,
 } from './mobile-calendar.providers';
 
-// @dynamic
 @Component({
     selector: `tui-mobile-calendar`,
     templateUrl: `./mobile-calendar.template.html`,
@@ -286,15 +285,18 @@ export class TuiMobileCalendarComponent {
             return;
         }
 
-        const touchstart$ = typedFromEvent(
+        const touchstart$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             `touchstart`,
         );
-        const touchend$ = typedFromEvent(
+        const touchend$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             `touchend`,
         );
-        const click$ = typedFromEvent(yearsScrollRef.elementRef.nativeElement, `click`);
+        const click$ = tuiTypedFromEvent(
+            yearsScrollRef.elementRef.nativeElement,
+            `click`,
+        );
 
         // Refresh activeYear
         yearsScrollRef
@@ -350,12 +352,12 @@ export class TuiMobileCalendarComponent {
             return;
         }
 
-        const touchstart$ = typedFromEvent(
+        const touchstart$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
             `touchstart`,
             {passive: true},
         );
-        const touchend$ = typedFromEvent(
+        const touchend$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
             `touchend`,
         );

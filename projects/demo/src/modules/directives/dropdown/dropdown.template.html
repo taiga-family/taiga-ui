@@ -63,14 +63,13 @@
                 <button
                     tuiButton
                     type="button"
-                    [tuiDropdownContent]="dropdownContent"
-                    [tuiDropdownMinHeight]="tuiDropdownMinHeight"
-                    [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
-                    [tuiDropdownAlign]="tuiDropdownAlign"
-                    [tuiDropdownDirection]="tuiDropdownDirection"
-                    [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
-                    [tuiDropdownSided]="tuiDropdownSided"
-                    [tuiDropdown]="open"
+                    [tuiDropdown]="dropdownContent"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownManual]="open"
                     (tuiObscured)="onObscured($event)"
                     (click)="onClick()"
                 >
@@ -91,7 +90,7 @@
                             Do not touch!
                         </button>
                         <p>Everything you want... *</p>
-                        <sub>* except cases of Worldwide rights violation</sub>
+                        <sub>* except cases of human rights violation</sub>
                     </div>
                 </ng-template>
             </span>
@@ -99,90 +98,22 @@
         <tui-doc-documentation>
             <ng-template
                 i18n
-                documentationPropertyName="tuiDropdown"
+                documentationPropertyName="tuiDropdownManual"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="open"
             >
-                Show dropdown
+                Show dropdown (basic manual implementation, see related pages for other options)
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="tuiDropdownContent"
+                documentationPropertyName="tuiDropdown"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
             </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="alignVariants"
-                [(documentationPropertyValue)]="tuiDropdownAlign"
-            >
-                Align of dropdown (does not work together with
-                <code>limitWidth === 'fixed'</code>
-                )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiVerticalDirection | null"
-                [documentationPropertyValues]="dropdownDirectionVariants"
-                [(documentationPropertyValue)]="tuiDropdownDirection"
-            >
-                Set a vertical direction of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownHost"
-                documentationPropertyMode="input"
-                documentationPropertyType="HTMLElement | null"
-            >
-                Set dropdown host manually. For example, it will be a target if someone blurs dropdown with
-                Tab/Shift+Tab. Element with a directive is used by default.
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownLimitWidth"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidthT"
-                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
-                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
-            >
-                Limit dropdown width
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMinHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMinHeight"
-            >
-                Minimum height to calculate that dropdown fits to setted
-                <code>tuiDropdownDirection</code>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMaxHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
-            >
-                Maximum height of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownSided"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="tuiDropdownSided"
-            >
-                Dropdown is sided by host
-            </ng-template>
+            <dropdown-documentation></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 

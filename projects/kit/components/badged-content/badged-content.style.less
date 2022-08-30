@@ -8,10 +8,7 @@
     position: absolute;
     border-radius: 100%;
     box-shadow: 0 0 0 2px currentColor;
-
-    &:not([data-tui-background]) {
-        background-color: currentColor;
-    }
+    background-color: currentColor;
 
     &_top {
         :host[data-size='xs']:not(._rounded) &,
@@ -121,42 +118,6 @@
     :host[data-size='xxl'] & {
         width: 1.5rem;
         height: 1.5rem;
-    }
-}
-
-.t-icon,
-.t-notification {
-    &[data-tui-color='normal'] {
-        color: var(--tui-base-06);
-    }
-
-    &[data-tui-color='onDark'] {
-        color: var(--tui-secondary);
-    }
-
-    &[data-tui-color='gray'] {
-        color: var(--tui-base-03);
-    }
-
-    &[data-tui-color='warning'] {
-        color: var(--tui-primary);
-    }
-
-    &[data-tui-color='secondary'] {
-        color: var(--tui-info-fill);
-    }
-
-    &[data-tui-color='highlight'],
-    &[data-tui-color='white'] {
-        color: var(--tui-base-01);
-    }
-
-    &[data-tui-color='transparent-dark'] {
-        color: var(--tui-clear);
-    }
-
-    &[data-tui-color='transparent-light'] {
-        color: var(--tui-clear-inverse);
     }
 }
 

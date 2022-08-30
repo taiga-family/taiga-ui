@@ -1,4 +1,4 @@
-import {round} from '@taiga-ui/cdk';
+import {tuiRound} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
@@ -26,7 +26,7 @@ export function tuiPercentageToKeyStepValue(
         (valuePercentage - lowerStepPercent) / (upperStepPercent - lowerStepPercent);
     const controlValue = (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
 
-    return round(controlValue, TUI_FLOATING_PRECISION);
+    return tuiRound(controlValue, TUI_FLOATING_PRECISION);
 }
 
 export function tuiKeyStepValueToPercentage(
@@ -41,8 +41,4 @@ export function tuiKeyStepValueToPercentage(
     const ratio = (value - lowerStepValue) / (upperStepValue - lowerStepValue) || 0;
 
     return (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;
-}
-
-export function tuiCheckKeyStepsHaveMinMaxPercents(steps: TuiKeySteps): boolean {
-    return !steps.length || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100);
 }

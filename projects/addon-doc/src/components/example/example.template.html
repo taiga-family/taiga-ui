@@ -3,8 +3,8 @@
     class="t-title"
 >
     <span
-        polymorpheus-outlet
-        [content]="heading | tuiDocExampleCapitalize"
+        *polymorpheusOutlet="heading | tuiDocExampleCapitalize as text"
+        [textContent]="text"
     ></span>
     <button
         *ngIf="id"
@@ -20,10 +20,12 @@
 </h3>
 <h4
     *ngIf="description"
-    polymorpheus-outlet
     class="t-description"
-    [content]="description | tuiDocExampleCapitalize"
-></h4>
+>
+    <ng-container *polymorpheusOutlet="description | tuiDocExampleCapitalize as text">
+        {{ text }}
+    </ng-container>
+</h4>
 
 <div
     *ngIf="processor$ | async as files"
@@ -37,7 +39,7 @@
             >
                 <ng-container *ngFor="let tab of tabs">
                     <button
-                        *tuiTab
+                        *tuiItem
                         tuiTab
                     >
                         {{ tab }}
@@ -92,11 +94,9 @@
 >
     <section class="t-code-actions">
         <ng-container *ngFor="let action of codeActions">
-            <div
-                polymorpheus-outlet
-                [content]="action"
-                [context]="{$implicit: code}"
-            ></div>
+            <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
+                {{ text }}
+            </ng-container>
         </ng-container>
         <tui-doc-copy [cdkCopyToClipboard]="code"></tui-doc-copy>
     </section>

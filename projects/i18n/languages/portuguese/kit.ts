@@ -1,6 +1,6 @@
-import {LanguageKit} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageKit} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_PORTUGUESE_LANGUAGE_KIT: LanguageKit = {
+export const TUI_PORTUGUESE_LANGUAGE_KIT: TuiLanguageKit = {
     cancel: `Cancelar`,
     done: `Concluir`,
     more: `Mais`,

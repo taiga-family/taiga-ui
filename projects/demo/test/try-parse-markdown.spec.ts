@@ -1,4 +1,4 @@
-import {tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
+import {tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 describe(`tryParseMarkdown`, () => {
     const codeSection = `\`\`\``;
@@ -21,7 +21,7 @@ export class MyAvatarModule {
         const htmlCode = `<p>hello world</p>`;
 
         expect(
-            tryParseMarkdownCodeBlock(
+            tuiTryParseMarkdownCodeBlock(
                 `
 ${codeSection}ts\n${tsCode}\n${codeSection}
 
@@ -49,7 +49,7 @@ export class MyAvatarModule {
 }
 `;
 
-        expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
+        expect(tuiTryParseMarkdownCodeBlock(txt)).toEqual([txt]);
     });
 
     it(`correct parse typescript file as plain text`, () => {
@@ -73,7 +73,7 @@ export class TuiRatingExample1 {
 }
 `;
 
-        expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
+        expect(tuiTryParseMarkdownCodeBlock(txt)).toEqual([txt]);
     });
 
     it(`should be correct parse with deep markdown in variable`, () => {
@@ -86,7 +86,7 @@ ${codeSection}\
 ${codeSection}
         `;
 
-        expect(tryParseMarkdownCodeBlock(code)).toEqual([
+        expect(tuiTryParseMarkdownCodeBlock(code)).toEqual([
             `const a = "\`\`\`#Title\`\`\`";\n`,
         ]);
     });

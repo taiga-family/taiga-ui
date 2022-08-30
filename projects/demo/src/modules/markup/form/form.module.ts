@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
     TuiErrorModule,
     TuiGroupModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLabelModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -65,12 +65,12 @@ import {FormComponent} from './form.component';
         TuiGroupModule,
         TuiRadioBlockModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLabelModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(FormComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(FormComponent)),
     ],
     declarations: [FormComponent, TuiExample],
     exports: [FormComponent],

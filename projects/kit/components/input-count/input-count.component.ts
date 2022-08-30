@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,22 +12,22 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
-    isNativeFocused,
-    isPresent,
-    setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
+    tuiFormatNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -44,21 +43,14 @@ import {Observable} from 'rxjs';
 
 import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
 
-// @dynamic
 @Component({
     selector: `tui-input-count`,
     templateUrl: `./input-count.template.html`,
     styleUrls: [`./input-count.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCountComponent),
-        },
-        {
-            provide: AbstractTuiControl,
-            useExisting: forwardRef(() => TuiInputCountComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCountComponent),
+        tuiAsControl(TuiInputCountComponent),
     ],
 })
 export class TuiInputCountComponent
@@ -125,7 +117,6 @@ export class TuiInputCountComponent
         } as TuiTextMaskOptions as unknown as TextMaskConfig;
     }
 
-    // TODO: 3.0 Remove in v.3
     @HostBinding(`class._hide-buttons`)
     get buttonsHidden(): boolean {
         return this.hideButtons || this.appearance === `table`;
@@ -151,7 +142,7 @@ export class TuiInputCountComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get exampleText(): string {
@@ -163,11 +154,11 @@ export class TuiInputCountComponent
     }
 
     get minusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value <= this.min);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value <= this.min);
     }
 
     get plusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value >= this.max);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value >= this.max);
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false): void {
@@ -176,7 +167,7 @@ export class TuiInputCountComponent
         }
 
         event.preventDefault();
-        setNativeFocused(this.nativeFocusableElement);
+        this.nativeFocusableElement.focus();
     }
 
     onFocused(focused: boolean): void {
@@ -185,14 +176,6 @@ export class TuiInputCountComponent
         }
 
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onValueChange(): void {
@@ -272,7 +255,7 @@ export class TuiInputCountComponent
     }
 
     private safeUpdateValue(newValue: number): void {
-        const value = clamp(newValue, this.min, this.max);
+        const value = tuiClamp(newValue, this.min, this.max);
 
         this.updateValue(value);
         this.nativeValue = this.formatNumber(value);
@@ -297,11 +280,6 @@ export class TuiInputCountComponent
     }
 
     private formatNumber(value: number): string {
-        return formatNumber(
-            value,
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        return tuiFormatNumber(value, this.numberFormat);
     }
 }

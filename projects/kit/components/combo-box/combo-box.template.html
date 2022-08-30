@@ -8,17 +8,16 @@
     <tui-primitive-textfield
         automation-id="tui-combo-box__textfield"
         class="t-textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="computedHovered"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="arrow ? icon : ''"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="nativeValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (click)="toggle()"
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
@@ -29,19 +28,21 @@
         ></ng-content>
         <div
             *ngIf="showValueTemplate"
-            polymorpheus-outlet
+            ngProjectAs="tuiContent"
             automation-id="tui-combo-box__template"
             class="t-value"
-            [content]="computedContent"
-            [context]="{$implicit: value!, active: computedFocused}"
-        ></div>
+        >
+            <ng-container
+                *polymorpheusOutlet="computedContent as text; context: {$implicit: value!, active: computedFocused}"
+            >
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-primitive-textfield>
 
     <ng-template #icon>
-        <div
-            polymorpheus-outlet
-            class="t-icon"
-            [content]="arrow"
-        ></div>
+        <div class="t-icon">
+            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+        </div>
     </ng-template>
 </tui-hosted-dropdown>

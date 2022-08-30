@@ -94,11 +94,11 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldMaxLength]="maxLength"
                     [tuiTextfieldSize]="size"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
@@ -106,15 +106,12 @@
                     [expandable]="expandable"
                     [uniqueTags]="uniqueTags"
                     [separator]="separator"
-                    [icon]="icon"
-                    [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
-                    [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
                     [inputHidden]="inputHidden"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
-                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
                     [pseudoInvalid]="pseudoInvalid"
                     [(search)]="search"
                 >
@@ -143,36 +140,6 @@
                 Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="allowSpaces"
-                documentationPropertyType="boolean"
-                documentationPropertyMode="input"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="allowSpaces"
-            >
-                Allow spaces inside tag.
-
-                <p>In next major release spaces are always allowed by default.</p>
-
-                <p>
-                    <strong>
-                        Use property
-                        <code>[separator]</code>
-                        to forbid spaces.
-                    </strong>
-                </p>
-                <p>
-                    See this
-                    <a
-                        tuiLink
-                        routerLink="/components/input-tag"
-                        fragment="no-spaces-inside-tags"
-                    >
-                        example
-                    </a>
-                    .
-                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -222,32 +189,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="icon"
-                documentationPropertyMode="input"
-                documentationPropertyType="string | null"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
-            >
-                An icon. It can be stringified svg or a name of icon registered in
-                <a
-                    tuiLink
-                    routerLink="/services/svg-service"
-                >
-                    <code>SvgService</code>
-                </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="inputHidden"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -264,6 +205,22 @@
                 [(documentationPropertyValue)]="tagValidator"
             >
                 A function that cheks that tag is valid
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
+                    <code>SvgService</code>
+                </a>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

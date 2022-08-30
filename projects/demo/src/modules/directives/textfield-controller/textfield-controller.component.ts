@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -11,21 +11,21 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiTextfieldControllerComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = [`text`, `numeric`];
+    readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
     readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
+    readonly typeVariants: readonly TuiInputType[] = [
         `text`,
         `email`,
         `password`,
@@ -33,7 +33,7 @@ export class ExampleTuiTextfieldControllerComponent {
         `url`,
     ];
 
-    type: TuiInputTypeT = this.typeVariants[0];
+    type: TuiInputType = this.typeVariants[0];
 
     readonly customContentVariants = [`Bell`];
 

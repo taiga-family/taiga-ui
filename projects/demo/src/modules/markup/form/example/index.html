@@ -77,14 +77,17 @@
                 <div class="tui-form__row">
                     <tui-input-slider
                         formControlName="quantityValue"
+                        postfix="₽"
                         [min]="50000"
                         [max]="3000000"
                         [segments]="1"
-                        [pluralize]="pluralize"
-                        [segmentsPluralize]="pluralize"
                     >
                         Some slider
                     </tui-input-slider>
+                    <div class="ticks-labels">
+                        <span>from 50 000 ₽</span>
+                        <span>to 3 000 000 ₽</span>
+                    </div>
                     <div class="tui-form__field-note">Some additional text</div>
                     <tui-error
                         formControlName="quantityValue"
@@ -195,10 +198,7 @@
                 </div>
                 <h3 class="tui-form__header tui-form__header_margin-bottom_small">Header</h3>
                 <div class="tui-form__row">
-                    <label
-                        tuiLabel
-                        label="From"
-                    >
+                    <label tuiLabel="From">
                         <tui-select
                             formControlName="accountWherefrom"
                             class="accounts-select"
@@ -215,10 +215,7 @@
                     </label>
                 </div>
                 <div class="tui-form__row">
-                    <label
-                        tuiLabel
-                        label="To"
-                    >
+                    <label tuiLabel="To">
                         <tui-select
                             formControlName="accountWhere"
                             class="accounts-select"

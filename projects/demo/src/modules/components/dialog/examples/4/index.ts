@@ -1,7 +1,7 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {clamp, TuiPortalService} from '@taiga-ui/cdk';
+import {tuiClamp, TuiDropdownPortalService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -19,8 +19,8 @@ export class TuiDialogExampleComponent4 {
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-        @Inject(TuiPortalService)
-        private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
     ) {}
 
     get transform(): string {
@@ -32,7 +32,7 @@ export class TuiDialogExampleComponent4 {
     }
 
     onElastic(value: number): void {
-        this.scale = clamp(value, 0.5, 1);
+        this.scale = tuiClamp(value, 0.5, 1);
     }
 
     onFilterClick(): void {
@@ -45,7 +45,7 @@ export class TuiDialogExampleComponent4 {
     }
 
     showDialog(
-        content: PolymorpheusContent<any>,
+        content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
         const templateRef = this.portalService.addTemplate(button);

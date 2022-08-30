@@ -1,17 +1,16 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {
-    InvalidDayException,
-    InvalidMonthException,
-    InvalidYearException,
+    TuiInvalidDayException,
+    TuiInvalidMonthException,
+    TuiInvalidYearException,
 } from '@taiga-ui/cdk/exceptions';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
-import {padStart} from '@taiga-ui/cdk/utils/format';
-import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
+import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
-import {DAYS_IN_WEEK, MIN_DAY, MONTHS_IN_YEAR} from './date-time';
+import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonth} from './month';
 import {TuiYear} from './year';
 
@@ -51,43 +50,12 @@ export class TuiDay extends TuiMonth {
         return (
             TuiMonth.isValidMonth(year, month) &&
             Number.isInteger(day) &&
-            inRange(
+            tuiInRange(
                 day,
                 MIN_DAY,
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         );
-    }
-
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Calculated day on a calendar grid
-     *
-     * @param month
-     * @param row row in a calendar
-     * @param col column in a calendar
-     * @return resulting day on these coordinates (could exceed passed month)
-     */
-    static getDayFromMonthRowCol(month: TuiMonth, row: number, col: number): TuiDay {
-        tuiAssert.assert(Number.isInteger(row));
-        tuiAssert.assert(inRange(row, 0, 6));
-        tuiAssert.assert(Number.isInteger(col));
-        tuiAssert.assert(inRange(col, 0, DAYS_IN_WEEK));
-
-        let day = row * DAYS_IN_WEEK + col - month.monthStartDaysOffset + 1;
-
-        if (day > month.daysCount) {
-            day = day - month.daysCount;
-            month = month.append({month: 1});
-        }
-
-        if (day <= 0) {
-            month = month.append({month: -1});
-            day = month.daysCount + day;
-        }
-
-        return new TuiDay(month.year, month.month, day);
     }
 
     /**
@@ -199,22 +167,22 @@ export class TuiDay extends TuiMonth {
         const {day, month, year} = this.parseRawDateString(yearMonthDayString, `YMD`);
 
         if (!TuiYear.isValidYear(year)) {
-            throw new InvalidYearException(year);
+            throw new TuiInvalidYearException(year);
         }
 
         if (!TuiMonth.isValidMonth(year, month)) {
-            throw new InvalidMonthException(month);
+            throw new TuiInvalidMonthException(month);
         }
 
         if (
             !Number.isInteger(day) ||
-            !inRange(
+            !tuiInRange(
                 day,
                 MIN_DAY,
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         ) {
-            throw new InvalidDayException(day);
+            throw new TuiInvalidDayException(day);
         }
 
         return new TuiDay(year, month, day);
@@ -228,19 +196,11 @@ export class TuiDay extends TuiMonth {
             TuiYear.isLeapYear(year),
         );
 
-        return normalizeToIntNumber(day, 1, monthDaysCount);
+        return tuiNormalizeToIntNumber(day, 1, monthDaysCount);
     }
 
     get formattedDayPart(): string {
-        return padStart(String(this.day), 2, `0`);
-    }
-
-    /**
-     * @deprecated use {@link getFormattedDay} instead
-     * Formatted whole date
-     */
-    get formattedDay(): string {
-        return `${this.formattedDayPart}.${this.formattedMonth}`;
+        return String(this.day).padStart(2, `0`);
     }
 
     get isWeekend(): boolean {
@@ -329,7 +289,6 @@ export class TuiDay extends TuiMonth {
         return this;
     }
 
-    // TODO: 3.0 Consider removing `backwards` option
     /**
      * Immutably alters current day by passed offset
      *
@@ -338,19 +297,9 @@ export class TuiDay extends TuiMonth {
      * to not interfere with parent classes methods
      *
      * @param offset
-     * @param backwards shift date backwards
      * @return new date object as a result of offsetting current
      */
-    append(
-        {year = 0, month = 0, day = 0}: TuiDayLike,
-        backwards: boolean = false,
-    ): TuiDay {
-        if (backwards) {
-            year *= -1;
-            month *= -1;
-            day *= -1;
-        }
-
+    append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;

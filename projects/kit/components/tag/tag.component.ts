@@ -10,24 +10,22 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {setNativeFocused, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    sizeBigger,
     TUI_MODE,
     TuiBrightness,
+    tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
-import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
+import {TuiStatus} from '@taiga-ui/kit/types';
+import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
-
-export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
 
 @Component({
     selector: `tui-tag, a[tuiTag]`,
@@ -49,11 +47,6 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     editable = false;
 
-    // TODO: 3.0: Remove
-    @Input()
-    @tuiDefaultProp()
-    allowSpaces = true;
-
     @Input()
     @tuiDefaultProp()
     separator: string | RegExp = `,`;
@@ -74,7 +67,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
-    status: TuiStatusT = this.options.status;
+    status: TuiStatus = this.options.status;
 
     @Input()
     @HostBinding(`class._hoverable`)
@@ -95,10 +88,9 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
-    // TODO: 3.0 Remove null
     @Input()
     @tuiDefaultProp()
-    leftContent: PolymorpheusContent | null = null;
+    leftContent: PolymorpheusContent = ``;
 
     @Output()
     readonly edited = new EventEmitter<string>();
@@ -111,7 +103,7 @@ export class TuiTagComponent {
     @ViewChild(`input`, {read: ElementRef})
     set input(input: ElementRef<HTMLInputElement>) {
         if (input) {
-            setNativeFocused(input.nativeElement);
+            input.nativeElement.focus();
         }
     }
 
@@ -122,7 +114,7 @@ export class TuiTagComponent {
     ) {}
 
     get backgroundColor(): string | null {
-        return this.autoColor ? stringHashToHsl(this.value) : null;
+        return this.autoColor ? tuiStringHashToHsl(this.value) : null;
     }
 
     get canRemove(): boolean {
@@ -134,7 +126,7 @@ export class TuiTagComponent {
     }
 
     get loaderSize(): TuiSizeXS {
-        return sizeBigger(this.size) ? `s` : `xs`;
+        return tuiSizeBigger(this.size) ? `s` : `xs`;
     }
 
     @HostBinding(`class._has-icon`)
@@ -166,9 +158,7 @@ export class TuiTagComponent {
     }
 
     onInput(value: string): void {
-        const newTags = this.allowSpaces
-            ? value.split(this.separator)
-            : value.split(ALLOWED_SPACE_REGEXP);
+        const newTags = value.split(this.separator);
 
         if (newTags.length > 1) {
             this.save(String(newTags));
@@ -191,7 +181,7 @@ export class TuiTagComponent {
             case `esc`:
                 event.preventDefault();
                 this.stopEditing();
-                setNativeFocused(this.elementRef.nativeElement);
+                this.elementRef.nativeElement.focus();
                 break;
             default:
                 break;

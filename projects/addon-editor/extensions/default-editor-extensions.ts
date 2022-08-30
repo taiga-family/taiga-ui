@@ -1,10 +1,7 @@
-import type {Extension} from '@tiptap/core';
-import type {StarterKitOptions} from '@tiptap/starter-kit';
-
 export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/starter-kit`)
-        .then(starterKitExtractor)
-        .then(starterKitConfigurator),
+        .then(({StarterKit}) => StarterKit)
+        .then(extension => extension.configure({heading: {levels: [1, 2]}})),
     import(`@tiptap/extension-text-align`).then(m =>
         m.default.configure({types: [`heading`, `paragraph`]}),
     ),
@@ -22,7 +19,7 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-table-row`).then(m => m.default),
     import(`@tiptap/extension-table-cell`).then(m => m.default),
     import(`@tiptap/extension-table-header`).then(m => m.TableHeader),
-    import(`./indent-outdent`).then(m => m.Indent),
+    import(`./indent-outdent`).then(m => m.TuiTabExtension),
     import(`./table-cell-background`).then(m => m.TableCellBackground),
     import(`@taiga-ui/addon-editor/extensions/details`).then(m => m.TuiDetailsContent),
     import(`@taiga-ui/addon-editor/extensions/details`).then(m => m.TuiDetails),
@@ -31,27 +28,3 @@ export const defaultEditorExtensions = [
         ({TuiFontSize}) => TuiFontSize,
     ),
 ];
-
-// TODO: 3.0 remove in ivy compilation
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function starterKitExtractor<T>(importedExtension: {
-    StarterKit: Extension<T>;
-}): Extension<T> {
-    return importedExtension.StarterKit;
-}
-
-// TODO: 3.0 remove in ivy compilation
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function defaultExtractor<T>(importedExtension: {
-    default: Extension<T>;
-}): Extension<T> {
-    return importedExtension.default;
-}
-
-// TODO: 3.0 remove in ivy compilation
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function starterKitConfigurator(
-    extension: Extension<StarterKitOptions>,
-): Extension<StarterKitOptions> {
-    return extension.configure({heading: {levels: [1, 2]}});
-}

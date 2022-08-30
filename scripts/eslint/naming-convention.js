@@ -15,7 +15,13 @@ module.exports = {
                         selector: 'class',
                         modifiers: ['exported'],
                         format: ['PascalCase'],
-                        prefix: ['AbstractTui', 'Tui'],
+                        prefix: ['Tui'],
+                    },
+                    {
+                        selector: 'class',
+                        modifiers: ['exported', 'abstract'],
+                        format: ['PascalCase'],
+                        prefix: ['AbstractTui'],
                     },
                     {
                         selector: 'function',

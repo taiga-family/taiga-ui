@@ -111,11 +111,12 @@
                     [focusable]="focusable"
                     [valueContent]="valueContent"
                     [identityMatcher]="identityMatcher"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [readOnly]="readOnly"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -123,12 +124,11 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Choose an account
                     <tui-data-list-wrapper
@@ -202,7 +202,7 @@
                 A template for custom view of selected value
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
     </ng-template>
 
     <ng-template pageTab>

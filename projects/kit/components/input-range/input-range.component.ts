@@ -4,8 +4,6 @@ import {
     Component,
     Directive,
     ElementRef,
-    forwardRef,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -16,62 +14,54 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    clamp,
+    AbstractTuiControl,
     EMPTY_QUERY,
-    isNativeFocused,
-    isNativeFocusedIn,
-    round,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
+    tuiPure,
+    tuiRound,
 } from '@taiga-ui/cdk';
 import {
-    getFractionPartPadded,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimalT,
-    TuiSizeL,
+    TuiDecimal,
+    tuiGetFractionPartPadded,
     TuiTextfieldController,
+    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {AbstractTuiInputSlider, quantumAssertion} from '@taiga-ui/kit/abstract';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
-import {TuiNewRangeDirective, TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// @dynamic
 @Component({
     selector: `tui-input-range`,
     templateUrl: `./input-range.template.html`,
     styleUrls: [`./input-range.style.less`],
+    host: {
+        '[attr.data-size]': `controller.size`,
+        '[class._label-outside]': `controller.labelOutside`,
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputRangeComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputRangeComponent),
+        tuiAsControl(TuiInputRangeComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
-    host: {
-        /**
-         * TODO: 3.0 delete it
-         * Dont forget to clear html-tags
-         */
-        '[class._show-ticks-labels]': `!isNew`,
-    },
 })
-/**
- * `AbstractTuiInputSlider` includes all legacy code (it can be deleted in v3.0)
- * TODO replace `extends AbstractTuiInputSlider<[number, number]>` by `extends AbstractTuiControl<[number, number]> implements TuiWithOptionalMinMax<number>`
- */
 export class TuiInputRangeComponent
-    extends AbstractTuiInputSlider<[number, number]>
-    implements TuiFocusableElementAccessor
+    extends AbstractTuiControl<[number, number]>
+    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChildren(TuiInputNumberComponent)
     private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
@@ -83,22 +73,27 @@ export class TuiInputRangeComponent
     @tuiDefaultProp()
     min = 0;
 
-    /* TODO: make `100` as default value (like in native sliders) */
     @Input()
     @tuiDefaultProp()
-    max = Infinity;
+    max = 100;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, `Quantum must be positive`)
+    @tuiDefaultProp(q => q > 0, `[quantum] must be positive`)
     quantum = 1;
 
     @Input()
-    @tuiDefaultProp()
+    @tuiDefaultProp(
+        s => s >= 0 && Number.isInteger(s),
+        `[steps] must be non-negative integer`,
+    )
     steps = 0;
 
     @Input()
-    @tuiDefaultProp()
-    segments = 0;
+    @tuiDefaultProp(
+        s => s > 0 && Number.isInteger(s),
+        `[segments] must be positive integer`,
+    )
+    segments = 1;
 
     @Input()
     @tuiDefaultProp()
@@ -111,6 +106,10 @@ export class TuiInputRangeComponent
     @Input()
     @tuiDefaultProp()
     rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
+
+    @Input()
+    @tuiDefaultProp()
+    pluralize: Record<string, string> | null = null;
 
     lastActiveSide: 'left' | 'right' = `left`;
 
@@ -127,9 +126,6 @@ export class TuiInputRangeComponent
         @Inject(ElementRef) private readonly elementRef: ElementRef,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Optional()
-        @Inject(TuiNewRangeDirective)
-        readonly isNew: TuiNewRangeDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
@@ -149,30 +145,30 @@ export class TuiInputRangeComponent
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     get showLeftValueContent(): boolean {
         return Boolean(
-            (this.minLabel || this.leftValueContent) &&
-                !isNativeFocused(this.leftFocusableElement) &&
+            this.leftValueContent &&
+                !tuiIsNativeFocused(this.leftFocusableElement) &&
                 !(this.rangeRef?.focused && this.lastActiveSide === `left`),
         );
     }
 
     get showRightValueContent(): boolean {
         return Boolean(
-            (this.maxLabel || this.rightValueContent) &&
-                !isNativeFocused(this.rightFocusableElement) &&
+            this.rightValueContent &&
+                !tuiIsNativeFocused(this.rightFocusableElement) &&
                 !(this.rangeRef?.focused && this.lastActiveSide === `right`),
         );
     }
 
     get precision(): number {
-        return getFractionPartPadded(this.quantum).length;
+        return tuiGetFractionPartPadded(this.quantum).length;
     }
 
-    get decimal(): TuiDecimalT {
+    get decimal(): TuiDecimal {
         return this.precision ? `not-zero` : `never`;
     }
 
@@ -180,15 +176,18 @@ export class TuiInputRangeComponent
         return this.steps || (this.max - this.min) / this.quantum;
     }
 
-    get computedSize(): TuiSizeL {
-        return this.isNew && this.controller.size !== `s`
-            ? this.controller.size
-            : this.size;
+    get step(): number {
+        return (this.max - this.min) / this.computedSteps;
     }
 
-    @HostBinding(`class._label-outside`)
-    get legacyLabelOutside(): boolean {
-        return this.isNew ? this.controller.labelOutside : this.computedSize === `m`;
+    @tuiPure
+    computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
+        return (
+            keySteps || [
+                [0, min],
+                [100, max],
+            ]
+        );
     }
 
     onActiveZone(active: boolean): void {
@@ -288,12 +287,12 @@ export class TuiInputRangeComponent
     }
 
     private calibrate(value: number): number {
-        const roundedValue = round(
+        const roundedValue = tuiRound(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,
         );
 
-        return clamp(roundedValue, this.min, this.max);
+        return tuiClamp(roundedValue, this.min, this.max);
     }
 
     private updateTextInputValue(value: number, right: boolean): void {
@@ -306,19 +305,14 @@ export class TuiInputRangeComponent
     }
 }
 
-export function tuiTextfieldAppearanceDirectiveFactory({
-    nativeElement,
-}: ElementRef): string {
-    return nativeElement.getAttribute(`tuiTextfieldAppearance`);
-}
-
 @Directive({
     selector: `[tuiTextfieldAppearance]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
             deps: [ElementRef],
-            useFactory: tuiTextfieldAppearanceDirectiveFactory,
+            useFactory: ({nativeElement}: ElementRef) =>
+                nativeElement.getAttribute(`tuiTextfieldAppearance`),
         },
     ],
 })

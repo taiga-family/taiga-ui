@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/icons",
-    "version": "2.62.1",
+    "version": "3.0.0-rc.6",
     "description": "Taiga UI icons pack",
     "keywords": [
         "angular",
@@ -9,6 +9,9 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "devDependencies": {
         "@rollup/pluginutils": "~4.2.1",
         "@types/svgo": "~2.6.3",

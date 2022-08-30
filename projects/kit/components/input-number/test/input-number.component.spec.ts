@@ -4,8 +4,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
-    TuiDecimalT,
-    TuiHintControllerModule,
+    TuiDecimal,
+    TuiHintModule,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldControllerModule,
@@ -26,7 +26,6 @@ describe(`InputNumber`, () => {
                     [decimal]="decimal"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiHintContent]="hintContent"
                 >
                     Enter the amount
@@ -48,12 +47,11 @@ describe(`InputNumber`, () => {
         });
 
         readOnly = false;
-        decimal: TuiDecimalT = `never`;
+        decimal: TuiDecimal = `never`;
         cleaner = true;
         defaultValues = false;
         size: TuiSizeS | TuiSizeL = `m`;
         hintContent: string | null = `prompt`;
-        exampleText = `placeholder`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -69,7 +67,7 @@ describe(`InputNumber`, () => {
                 TuiInputNumberModule,
                 ReactiveFormsModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
             ],
             declarations: [TestComponent],
         });
@@ -305,6 +303,7 @@ describe(`InputNumber`, () => {
     });
 
     it(`maxlength is set to 23 by default (18 digits + 5 default separators)`, () => {
+        fixture.detectChanges();
         const nativeInput = getNativeInput()!.nativeElement;
 
         expect(nativeInput.getAttribute(`maxlength`)).toBe(`23`);

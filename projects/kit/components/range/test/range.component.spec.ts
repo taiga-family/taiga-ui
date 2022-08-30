@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
-import {createKeyboardEvent, TuiPageObject} from '@taiga-ui/testing';
+import {tuiCreateKeyboardEvent, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiRangeComponent} from '../range.component';
 import {TuiRangeModule} from '../range.module';
@@ -16,9 +16,8 @@ describe(`Range`, () => {
                     [formControl]="testValue"
                     [max]="max"
                     [min]="min"
-                    [steps]="steps"
                     [segments]="segments"
-                    [quantum]="quantum"
+                    [step]="step"
                     [keySteps]="keySteps"
                 ></tui-range>
             </tui-root>
@@ -35,16 +34,15 @@ describe(`Range`, () => {
         max = 11;
         min = 1;
         segments = 10;
-        steps = 10;
-        quantum = 0;
+        step = 1;
         keySteps: TuiKeySteps | null = null;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    const keydownArrowLeft = createKeyboardEvent(`ArrowLeft`, `keydown`);
-    const keydownArrowRight = createKeyboardEvent(`ArrowRight`, `keydown`);
+    const keydownArrowLeft = tuiCreateKeyboardEvent(`ArrowLeft`, `keydown`);
+    const keydownArrowRight = tuiCreateKeyboardEvent(`ArrowRight`, `keydown`);
     const testContext = {
         get prefix() {
             return `tui-range__`;
@@ -192,34 +190,32 @@ describe(`Range`, () => {
             });
         });
 
-        describe(`Quantum`, () => {
+        describe(`[step] prop`, () => {
             beforeEach(() => {
                 testComponent.min = 0;
                 testComponent.max = 10;
-                testComponent.quantum = 0.1;
-                testComponent.steps = 0;
+                testComponent.step = 0.1;
                 testComponent.testValue.setValue([1, 5]);
                 fixture.detectChanges();
             });
 
-            it(`Pressing the right arrow without specified steps increases the value by one quantum`, () => {
+            it(`Pressing the right arrow increases the value by one step (step = 1)`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
                 expect(testComponent.testValue.value[0]).toBe(1.1);
             });
 
-            it(`Pressing the left arrow without specified steps decreases the value by one step`, () => {
+            it(`Pressing the left arrow decreases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
                 expect(testComponent.testValue.value[1]).toBe(4.9);
             });
 
-            it(`Adds a value to the closest allowed step and round to the closest quantum`, () => {
+            it(`Pressing the right arrow increases the value by one step (step = 3)`, () => {
                 testComponent.testValue.setValue([0, 10]);
-                testComponent.quantum = 1;
-                testComponent.steps = 3;
+                testComponent.step = 3;
                 fixture.detectChanges();
 
                 getLeft().dispatchEvent(keydownArrowRight);
@@ -238,6 +234,7 @@ describe(`Range`, () => {
                     [75, 500_000],
                     [100, 1_000_000],
                 ];
+                testComponent.step = (testComponent.max - testComponent.min) / 10;
                 testComponent.testValue.setValue([0, 0]);
                 fixture.detectChanges();
             });

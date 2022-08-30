@@ -1,12 +1,9 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldAutocomplete="off"
-    tuiTextfieldInputMode="numeric"
     class="t-textfield"
-    [tuiTextfieldMaxLength]="18"
-    [pseudoFocused]="pseudoFocused"
-    [pseudoHovered]="pseudoHovered"
-    [pseudoPressed]="pseudoPressed"
+    [pseudoFocus]="pseudoFocus"
+    [pseudoHover]="pseudoHover"
+    [pseudoActive]="pseudoActive"
     [focusable]="focusable"
     [nativeId]="nativeId"
     [prefix]="prefix"
@@ -19,8 +16,6 @@
     (valueChange)="onValueChange()"
     (keydown)="onKeydown($event)"
     (focusedChange)="onFocused($event)"
-    (hoveredChange)="onHovered($event)"
-    (pressedChange)="onPressed($event)"
 >
     <ng-content></ng-content>
     <ng-content

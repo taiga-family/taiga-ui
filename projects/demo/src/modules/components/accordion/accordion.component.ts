@@ -1,8 +1,6 @@
-import {DOCUMENT} from '@angular/common';
-import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -23,31 +21,31 @@ export class ExampleTuiAccordionComponent {
     showArrow = true;
     disableHover = false;
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        LESS: import(`!!raw-loader!./examples/3/index.less`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
     readonly bordersVariants = [`all`, `top-bottom`] as const;
@@ -58,8 +56,6 @@ export class ExampleTuiAccordionComponent {
 
     size: TuiSizeS = this.sizeVariants[1];
 
-    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {}
-
     onOpenChange(open: boolean): void {
         this.open = open;
 
@@ -68,11 +64,7 @@ export class ExampleTuiAccordionComponent {
         }
 
         setTimeout(() => {
-            const event = tuiCustomEvent(
-                TUI_EXPAND_LOADED,
-                {bubbles: true},
-                this.documentRef,
-            );
+            const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
             if (this.content) {
                 this.content.nativeElement.dispatchEvent(event);

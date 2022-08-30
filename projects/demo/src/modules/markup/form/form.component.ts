@@ -9,8 +9,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class FormComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./example/index.ts`),
-        HTML: import(`!!raw-loader!./example/index.html`),
-        LESS: import(`!!raw-loader!./example/index.style.less`),
+        TypeScript: import(`./example/index.ts?raw`),
+        HTML: import(`./example/index.html?raw`),
+        LESS: import(`./example/index.style.less?raw`),
     };
 }

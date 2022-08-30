@@ -1,5 +1,5 @@
 export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
-    [`Tooltip`, `Hint`, `ManualHint`],
+    [`Tooltip`, `Hint`, `HintManual`, `HintPointer`],
     [`LineChart`, `LineDaysChart`],
     [`PrimitiveTextfield`, `Input`, `TextArea`],
     [
@@ -17,6 +17,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     [`InputNumber`, `Money`],
     [`InputPhone`, `InputPhoneInternational`],
     [`Button`, `Action`, `Link`],
+    [`Action`, `Island`],
     [`CheckboxBlock`, `CheckboxLabeled`, `PrimitiveCheckbox`, `Toggle`, `Checkbox`],
     [`Accordion`, `Expand`],
     [`Radio`, `RadioBlock`, `RadioLabeled`, `RadioList`],
@@ -24,7 +25,13 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     [`Badge`, `BadgedContent`, `Tag`],
     [`Notification`, `AlertService`],
     [`Scrollbar`, `ScrollService`],
-    [`Dropdown`, `DropdownSelection`, `HostedDropdown`],
+    [
+        `Dropdown`,
+        `DropdownSelection`,
+        `DropdownHover`,
+        `DropdownContext`,
+        `HostedDropdown`,
+    ],
     [`ProgressBar`, `ProgressCircle`, `ProgressSegmented`, `Loader`],
     [`Preview`, `PdfViewer`],
     [`Icons`, `Svg`, `SvgService`, `MarkerIcon`],

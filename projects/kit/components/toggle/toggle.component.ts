@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,11 +13,12 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -38,10 +38,8 @@ import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
     styleUrls: [`./toggle.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiToggleComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiToggleComponent),
+        tuiAsControl(TuiToggleComponent),
     ],
 })
 export class TuiToggleComponent
@@ -96,7 +94,7 @@ export class TuiToggleComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
@@ -129,14 +127,6 @@ export class TuiToggleComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onFocusVisible(focusVisible: boolean): void {

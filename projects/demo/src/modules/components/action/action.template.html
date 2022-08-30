@@ -9,6 +9,21 @@
     >
         Component that shows some action. Better to use it in a group.
 
+        <tui-notification class="tui-space_vertical-4">
+            This component requires
+            <code>@taiga-ui/styles</code>
+            optional package with
+            <code>@taiga-ui/styles/taiga-ui-global</code>
+            <a
+                tuiLink
+                routerLink="/getting-started"
+                fragment="styles"
+            >
+                added to your global styles
+            </a>
+            .
+        </tui-notification>
+
         <tui-doc-example
             id="basic"
             i18n-heading
@@ -26,11 +41,39 @@
         >
             <tui-action-example-2></tui-action-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            i18n-heading
+            heading="Sizes"
+            [content]="example3"
+        >
+            <tui-action-example-3></tui-action-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="reversed-no-shadow"
+            i18n-heading
+            heading="Reversed & No Shadow"
+            [content]="example4"
+        >
+            <tui-action-example-4></tui-action-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="vertical"
+            i18n-heading
+            heading="Vertical"
+            [content]="example5"
+        >
+            <tui-action-example-5></tui-action-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-action
+            <button
+                tuiAction
                 [icon]="icon"
                 [style.--tui-action-color]="color"
                 [style.--tui-action-background]="background"
@@ -39,7 +82,7 @@
                 meet its maker! This is a late parrot! It's a stiff! Bereft of life, it rests in peace! If you hadn't
                 nailed it to the perch, it would be pushing up the daisies! It's rung down the curtain and joined the
                 choir invisible. This is an ex-parrot!
-            </tui-action>
+            </button>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

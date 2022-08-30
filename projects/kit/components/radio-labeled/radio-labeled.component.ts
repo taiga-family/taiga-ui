@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
@@ -29,10 +29,8 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
     styleUrls: [`./radio-labeled.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioLabeledComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioLabeledComponent),
+        tuiAsControl(TuiRadioLabeledComponent),
     ],
 })
 export class TuiRadioLabeledComponent<T>
@@ -91,14 +89,6 @@ export class TuiRadioLabeledComponent<T>
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onModelChange(value: T): void {

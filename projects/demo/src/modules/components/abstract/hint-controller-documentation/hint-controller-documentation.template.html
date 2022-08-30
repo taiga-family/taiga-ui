@@ -6,15 +6,15 @@
     <a
         tuiLink
         target="_blank"
-        routerLink="/directives/hint-controller"
+        routerLink="/directives/hint"
     >
-        TuiHintController
+        TuiHint
     </a>
 </h6>
 
 <p>
     Requires you to import
-    <code>TuiHintControllerModule</code>
+    <code>TuiHintModule</code>
 </p>
 
 <tui-doc-documentation>
@@ -26,13 +26,13 @@
         [documentationPropertyValues]="documentedComponent.hintContentVariants"
         [(documentationPropertyValue)]="documentedComponent.hintContent"
     >
-        Content of hint (does not show tooltip if content is null)
+        Content of a hint
     </ng-template>
     <ng-template
         i18n
         documentationPropertyName="tuiHintDirection"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiDirection"
+        documentationPropertyType="TuiHintDirection"
         [documentationPropertyValues]="documentedComponent.hintDirectionVariants"
         [(documentationPropertyValue)]="documentedComponent.hintDirection"
     >
@@ -40,11 +40,11 @@
     </ng-template>
     <ng-template
         i18n
-        documentationPropertyName="tuiHintMode"
+        documentationPropertyName="tuiHintAppearance"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiHintModeT | null"
-        [documentationPropertyValues]="documentedComponent.hintModeVariants"
-        [(documentationPropertyValue)]="documentedComponent.hintMode"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.hintAppearanceVariants"
+        [(documentationPropertyValue)]="documentedComponent.hintAppearance"
     >
         Hint mode
     </ng-template>

@@ -14,7 +14,6 @@
         class="t-header"
         [class.t-header_open]="open"
         [class.t-header_hoverable]="!disableHover"
-        (tuiHoveredChange)="onHovered($event)"
         (click)="onRowToggle()"
     >
         <div
@@ -35,20 +34,22 @@
         [async]="async"
         [expanded]="open"
     >
+        <ng-template>
+            <div
+                *ngIf="lazyContent"
+                automation-id="tui-accordion__item-content"
+                class="t-content"
+            >
+                <ng-container *polymorpheusOutlet="lazyContent as text">
+                    {{ text }}
+                </ng-container>
+            </div>
+        </ng-template>
         <div
             *ngIf="eagerContent"
             class="t-content"
         >
             <ng-content select="[tuiAccordionItemContent]"></ng-content>
         </div>
-        <ng-template tuiExpandContent>
-            <div
-                *ngIf="lazyContent"
-                polymorpheus-outlet
-                automation-id="tui-accordion__item-content"
-                class="t-content"
-                [content]="lazyContent"
-            ></div>
-        </ng-template>
     </tui-expand>
 </div>

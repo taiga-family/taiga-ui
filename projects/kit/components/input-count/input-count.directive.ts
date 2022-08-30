@@ -1,24 +1,30 @@
-import {Directive, forwardRef} from '@angular/core';
-import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
+import {AfterViewInit, Directive} from '@angular/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputCountComponent} from './input-count.component';
 
 @Directive({
     selector: `tui-input-count`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiInputCountDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiInputCountDirective)],
 })
-export class TuiInputCountDirective extends TuiAbstractTextfieldHost<TuiInputCountComponent> {
+export class TuiInputCountDirective
+    extends AbstractTuiTextfieldHost<TuiInputCountComponent>
+    implements AfterViewInit
+{
     onValueChange(): void {
         this.host.onValueChange();
     }
 
-    process(input: HTMLInputElement): void {
-        input.autocomplete = `off`;
-        input.inputMode = `numeric`;
+    ngAfterViewInit(): void {
+        if (this.host.nativeFocusableElement) {
+            const {nativeFocusableElement} = this.host;
+
+            nativeFocusableElement.autocomplete = `off`;
+            nativeFocusableElement.inputMode = `numeric`;
+            nativeFocusableElement.maxLength =
+                nativeFocusableElement.maxLength > -1
+                    ? nativeFocusableElement.maxLength
+                    : 18;
+        }
     }
 }

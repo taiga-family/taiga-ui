@@ -43,49 +43,47 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     > = ``;
 
-    readonly exampleForm = import(`!!raw-loader!./examples/import/declare-form.md`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
-        LESS: import(`!!raw-loader!./examples/2/index.less`),
-        'user.ts': import(`!!raw-loader!./examples/2/user`),
-        'request.service.ts': import(`!!raw-loader!./examples/2/request.service`),
-        'database-mock-data.ts': import(`!!raw-loader!./examples/2/database-mock-data`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        'user.ts': import(`./examples/2/user.ts?raw`),
+        'request.service.ts': import(`./examples/2/request.service.ts?raw`),
+        'database-mock-data.ts': import(`./examples/2/database-mock-data.ts?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
-        'index-change.directive.ts': import(
-            `!!raw-loader!./examples/5/index-change.directive.ts`
-        ),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
+        'index-change.directive.ts': import(`./examples/5/index-change.directive.ts?raw`),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
-        HTML: import(`!!raw-loader!./examples/6/index.html`),
+        TypeScript: import(`./examples/6/index.ts?raw`),
+        HTML: import(`./examples/6/index.html?raw`),
     };
 
     readonly items = [
@@ -101,6 +99,10 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     valueTemplateVariants = [``, `Template`];
 
     selectedValueTemplate = ``;
+
+    readonly iconVariants = [``, `tuiIconPiechartLarge`, `tuiIconCardsLarge`];
+
+    iconLeft = this.iconVariants[0];
 
     readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,

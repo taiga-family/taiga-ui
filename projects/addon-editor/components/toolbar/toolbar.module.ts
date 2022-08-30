@@ -1,18 +1,26 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiActiveZoneModule, TuiFocusableModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
-    TuiDataListModule,
-    TuiDescribedByModule,
-    TuiDropdownControllerModule,
-    TuiHintModule,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+    TuiAlignContentModule,
+    TuiCodeModule,
+    TuiDetailsModule,
+    TuiEditorToolGroup,
+    TuiFontSizeModule,
+    TuiFontStyleModule,
+    TuiHighlightColorModule,
+    TuiListConfigsModule,
+    TuiTableCellColorModule,
+    TuiTableCreateModule,
+    TuiTableMergeCellsModule,
+    TuiTableRowColumnManagerModule,
+    TuiTextColorModule,
+} from '@taiga-ui/addon-editor/components/toolbar-tools';
+import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 
 import {TuiToolbarComponent} from './toolbar.component';
+import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 @NgModule({
     imports: [
@@ -22,13 +30,22 @@ import {TuiToolbarComponent} from './toolbar.component';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiEditLinkModule,
-        TuiDescribedByModule,
-        TuiDataListModule,
-        TuiColorSelectorModule,
-        TuiActiveZoneModule,
-        TuiDropdownControllerModule,
+        TuiTableMergeCellsModule,
+        TuiTableCellColorModule,
+        TuiTableRowColumnManagerModule,
+        TuiTableCreateModule,
+        TuiFontSizeModule,
+        TuiFontStyleModule,
+        TuiAlignContentModule,
+        TuiListConfigsModule,
+        TuiTextColorModule,
+        TuiHighlightColorModule,
+        TuiCodeModule,
+        TuiDetailsModule,
+        TuiItemModule,
+        TuiEditorToolGroup,
     ],
-    declarations: [TuiToolbarComponent],
-    exports: [TuiToolbarComponent],
+    declarations: [TuiToolbarComponent, TuiToolbarNavigationManagerDirective],
+    exports: [TuiToolbarComponent, TuiItemDirective],
 })
 export class TuiToolbarModule {}

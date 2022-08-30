@@ -55,13 +55,6 @@ describe(`TuiMonthRange`, () => {
                     ).toBe(false);
                 });
             });
-
-            it(`formattedMonthRange returns formatted string`, () => {
-                expect(
-                    new TuiMonthRange(new TuiMonth(2000, 0), new TuiMonth(3000, 0))
-                        .formattedMonthRange,
-                ).toBe(`01.2000${RANGE_SEPARATOR_CHAR}01.3000`);
-            });
         });
 
         describe(`method monthSame returns`, () => {

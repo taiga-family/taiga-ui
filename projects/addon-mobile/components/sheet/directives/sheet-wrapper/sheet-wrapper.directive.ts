@@ -1,20 +1,16 @@
 import {ContentChild, Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {clamp, tuiPure} from '@taiga-ui/cdk';
+import {tuiClamp, tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
-import {
-    TUI_SHEET_DRAGGED,
-    TUI_SHEET_SCROLL,
-} from '../../components/sheet/sheet.providers';
 import {processDragged} from '../../ios.hacks';
+import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 // Safety offset for shadow
 const OFFSET = 16;
 
-// @dynamic
 @Directive({
     selector: `[tuiSheetWrapper]`,
     host: {
@@ -64,7 +60,11 @@ export class TuiSheetWrapperDirective {
     private getHeight(value: number): number | null {
         return this.sheet?.context.overlay
             ? null
-            : clamp(this.withImage(value) + OFFSET, OFFSET, this.windowRef.innerHeight);
+            : tuiClamp(
+                  this.withImage(value) + OFFSET,
+                  OFFSET,
+                  this.windowRef.innerHeight,
+              );
     }
 
     private withImage(value: number): number {

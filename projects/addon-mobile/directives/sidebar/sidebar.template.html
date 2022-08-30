@@ -1,7 +1,9 @@
 <div
-    polymorpheus-outlet
     tuiActiveZone
     class="t-wrapper"
-    [content]="content"
     [class.t-wrapper_auto-width]="autoWidth"
-></div>
+>
+    <ng-container *polymorpheusOutlet="content as text">
+        {{ text }}
+    </ng-container>
+</div>

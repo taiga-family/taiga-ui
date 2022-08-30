@@ -4,23 +4,19 @@
     [(open)]="open"
 >
     <tui-primitive-textfield
-        iconAlign="left"
-        tuiTextfieldAutocomplete="off"
         class="t-textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoPressed]="pseudoPressed"
+        [tuiTextfieldIconLeft]="color"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoActive]="pseudoActive"
         [invalid]="computedInvalid"
         [focusable]="focusable"
         [nativeId]="nativeId"
         [disabled]="disabled"
         [readOnly]="readOnly"
         [value]="value"
-        [iconContent]="color"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
-        (hoveredChange)="onHovered($event)"
-        (pressedChange)="onPressed($event)"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>

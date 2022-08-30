@@ -10,12 +10,10 @@ import {
     SecurityContext,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {WINDOW} from '@ng-web-apis/common';
 import {
-    getDocumentOrShadowRoot,
-    isIE,
     tuiAssert,
-    tuiCustomEvent,
+    tuiGetDocumentOrShadowRoot,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -30,7 +28,7 @@ import {
     TUI_SVG_CONTENT_PROCESSOR,
     TUI_SVG_SRC_PROCESSOR,
 } from '@taiga-ui/core/tokens';
-import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
@@ -39,7 +37,6 @@ const MISSING_EXTERNAL_ICON = `External icon is missing on the given URL`;
 const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
-// @dynamic
 @Component({
     selector: `tui-svg`,
     templateUrl: `./svg.template.html`,
@@ -48,7 +45,6 @@ const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = isIE(this.userAgent);
     private icon = ``;
 
     @Input()
@@ -72,7 +68,6 @@ export class TuiSvgComponent {
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_SVG_SRC_PROCESSOR)
         private readonly srcProcessor: TuiStringHandler<string>,
         @Inject(TUI_SVG_CONTENT_PROCESSOR)
@@ -104,7 +99,7 @@ export class TuiSvgComponent {
 
     private get isShadowDOM(): boolean {
         return (
-            getDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
+            tuiGetDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
         );
     }
 
@@ -113,7 +108,7 @@ export class TuiSvgComponent {
     }
 
     private get isExternal(): boolean {
-        return this.isUrl || (this.isIE && this.isUse) || this.isCrossDomain;
+        return this.isUrl || this.isCrossDomain;
     }
 
     private get isUrl(): boolean {
@@ -121,7 +116,7 @@ export class TuiSvgComponent {
     }
 
     private get isSrc(): boolean {
-        return isPresumedHTMLString(this.icon);
+        return tuiIsPresumedHTMLString(this.icon);
     }
 
     private get isName(): boolean {
@@ -141,17 +136,13 @@ export class TuiSvgComponent {
 
     onError(message: string = MISSING_EXTERNAL_ICON): void {
         const {icon} = this;
-        const event = tuiCustomEvent<TuiIconError>(
-            TUI_ICON_ERROR,
-            {
-                bubbles: true,
-                detail: {
-                    message,
-                    icon,
-                },
+        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
+            bubbles: true,
+            detail: {
+                message,
+                icon,
             },
-            this.documentRef,
-        );
+        });
 
         tuiAssert.assert(false, message, icon);
         this.elementRef.nativeElement.dispatchEvent(event);

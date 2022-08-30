@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiCalendarRangeModule} from '@taiga-ui/kit';
 
 import {ExampleTuiCalendarRangeComponent} from './calendar-range.component';
@@ -14,7 +14,7 @@ import {TuiRangeExample3} from './examples/3';
         TuiCalendarRangeModule,
         CommonModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiCalendarRangeComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCalendarRangeComponent)),
     ],
     declarations: [
         ExampleTuiCalendarRangeComponent,

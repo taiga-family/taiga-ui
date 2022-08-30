@@ -1,19 +1,14 @@
-import {Directive, DoCheck, forwardRef} from '@angular/core';
-import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
+import {Directive, DoCheck} from '@angular/core';
+import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPhoneComponent} from './input-phone.component';
 
 @Directive({
     selector: `tui-input-phone`,
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_HOST,
-            useExisting: forwardRef(() => TuiInputPhoneDirective),
-        },
-    ],
+    providers: [tuiAsTextfieldHost(TuiInputPhoneDirective)],
 })
 export class TuiInputPhoneDirective
-    extends TuiAbstractTextfieldHost<TuiInputPhoneComponent>
+    extends AbstractTuiTextfieldHost<TuiInputPhoneComponent>
     implements DoCheck
 {
     input?: HTMLInputElement;

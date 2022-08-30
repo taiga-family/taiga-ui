@@ -2,11 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiErrorModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -35,7 +36,8 @@ import {ExampleTuiIslandComponent} from './island.component';
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiIslandComponent)),
+        TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
     ],
     declarations: [
         ExampleTuiIslandComponent,

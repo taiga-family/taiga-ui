@@ -13,17 +13,19 @@ const ICON_ASSETS = {
 
 export function addTaigaIcons(options: Schema): Rule {
     return async (_: Tree) => {
-        return addTaigaStylesToAngularJson(options);
+        return addTaigaAssetsToAngularJson(options);
     };
 }
 
-export function addTaigaStylesToAngularJson(options: Schema): Rule {
+export function addTaigaAssetsToAngularJson(options: Schema): Rule {
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
 
-        const targetOptions = getProjectTargetOptions(project, 'build');
-        const assets = targetOptions.assets as JsonArray | undefined;
+        if (project) {
+            const targetOptions = getProjectTargetOptions(project, 'build');
+            const assets = targetOptions.assets as JsonArray | undefined;
 
-        targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
+            targetOptions.assets = assets ? [...assets, ICON_ASSETS] : [ICON_ASSETS];
+        }
     });
 }

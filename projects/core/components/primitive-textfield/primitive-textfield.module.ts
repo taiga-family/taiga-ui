@@ -1,15 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiAutofilledModule,
-    TuiFocusableModule,
-    TuiHoveredModule,
-    TuiInputModeModule,
-} from '@taiga-ui/cdk';
+import {TuiAutofilledModule, TuiFocusableModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core/components/svg';
 import {TuiTooltipModule} from '@taiga-ui/core/components/tooltip';
-import {TuiDescribedByModule} from '@taiga-ui/core/directives/described-by';
 import {TuiMaskAccessorModule} from '@taiga-ui/core/directives/mask-accessor';
 import {TuiWrapperModule} from '@taiga-ui/core/directives/wrapper';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -26,13 +20,10 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         PolymorpheusModule,
         TuiMaskAccessorModule,
         TuiFocusableModule,
-        TuiHoveredModule,
-        TuiInputModeModule,
         TuiWrapperModule,
         TuiSvgModule,
         TuiTooltipModule,
         TuiAutofilledModule,
-        TuiDescribedByModule,
     ],
     declarations: [
         TuiPrimitiveTextfieldComponent,

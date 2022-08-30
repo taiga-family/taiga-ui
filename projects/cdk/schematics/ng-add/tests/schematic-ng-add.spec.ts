@@ -16,6 +16,7 @@ import {
     TAIGA_VERSION,
 } from '../constants/versions';
 import {Schema} from '../schema';
+import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../collection.json');
 
@@ -41,6 +42,7 @@ describe('ng-add', () => {
     it('should add main modules in package.json', async () => {
         const options: Schema = {
             addSanitizer: false,
+            addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: [],
@@ -65,6 +67,7 @@ describe('ng-add', () => {
     it('should add additional modules in package.json', async () => {
         const options: Schema = {
             addSanitizer: true,
+            addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
@@ -94,6 +97,40 @@ describe('ng-add', () => {
         );
     });
 
+    it('should add additional modules in package.json and global styles', async () => {
+        const options: Schema = {
+            addSanitizer: true,
+            addGlobalStyles: true,
+            addDialogsModule: false,
+            addAlertModule: false,
+            addons: ['addon-doc', 'addon-mobile'],
+            project: '',
+        };
+
+        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
+
+        expect(tree.readContent('package.json')).toEqual(
+            `{
+  "devDependencies": {
+    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
+  },
+  "dependencies": {
+    "@angular/cdk": "^13.0.0",
+    "@angular/core": "~13.0.0",
+    "@taiga-ui/addon-doc": "${TAIGA_VERSION}",
+    "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
+    "@taiga-ui/cdk": "${TAIGA_VERSION}",
+    "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/icons": "${TAIGA_VERSION}",
+    "@taiga-ui/kit": "${TAIGA_VERSION}",
+    "@taiga-ui/styles": "${TAIGA_VERSION}",
+    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
+    "dompurify": "${DOMPURIFY_VERSION}"
+  }
+}`,
+        );
+    });
+
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner
             .runSchematicAsync('ng-add-setup-project', {}, host)
@@ -110,8 +147,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
             ],
             "assets": [
               {
@@ -128,7 +165,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('should add styles without dublicates, taiga styles first', async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
@@ -147,8 +184,47 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "some.style"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
+              }
+            ]
+                }
+          }
+        }
+    }
+  }
+}`);
+    });
+
+    it('should add global styles', async () => {
+        createAngularJson({stylesExist: true});
+        saveActiveProject();
+
+        const tree = await runner
+            .runSchematicAsync('ng-add-setup-project', {addGlobalStyles: true}, host)
+            .toPromise();
+
+        expect(tree.readContent('angular.json')).toEqual(`
+{
+  "version": 1,
+  "defaultProject": "demo",
+  "projects": {
+    "demo": {
+        "architect": {
+          "build": {
+            "options": {
+              "main": "test/main.ts",
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-global.less",
               "some.style"
             ],
             "assets": [
@@ -169,6 +245,7 @@ describe('ng-add', () => {
     it('Should add Taiga-ui modules and providers to main module', async () => {
         const options: Schema = {
             addSanitizer: true,
+            addGlobalStyles: false,
             addDialogsModule: true,
             addAlertModule: true,
             addons: [],
@@ -208,39 +285,6 @@ export class AppModule {}
         resetActiveProject();
     });
 });
-
-function createAngularJson(
-    {stylesExist}: {stylesExist: boolean} = {stylesExist: false},
-): void {
-    createSourceFile(
-        'angular.json',
-        `
-{
-  "version": 1,
-  "defaultProject": "demo",
-  "projects": {
-    "demo": {
-        "architect": {
-          "build": {
-            "options": {
-              "main": "test/main.ts",
-            ${
-                stylesExist
-                    ? `"styles": [
-                  "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                  "some.style"
-                ]
-                `
-                    : ``
-            }}
-          }
-        }
-    }
-  }
-}`,
-        {overwrite: true},
-    );
-}
 
 function createMainFiles(): void {
     createSourceFile(

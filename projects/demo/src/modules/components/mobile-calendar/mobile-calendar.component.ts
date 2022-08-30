@@ -7,17 +7,11 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    tuiControlValue,
     TuiDay,
-    tuiReplayedValueChangesFrom,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-
-export function dataStreamFactory(
-    component: ExampleTuiMobileCalendarComponent,
-): Observable<TuiDay> {
-    return component.stream;
-}
 
 @Component({
     selector: `example-tui-mobile-calendar`,
@@ -26,28 +20,30 @@ export function dataStreamFactory(
     changeDetection,
     providers: [
         {
-            provide: TUI_CALENDAR_DATA_STREAM,
+            provide: TUI_CALENDAR_DATE_STREAM,
             deps: [ExampleTuiMobileCalendarComponent],
-            useFactory: dataStreamFactory,
+            useFactory: (
+                component: ExampleTuiMobileCalendarComponent,
+            ): Observable<TuiDay> => component.stream,
         },
     ],
 })
 export class ExampleTuiMobileCalendarComponent {
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleImportDialogModule = import(
-        `!!raw-loader!./examples/import/import-dialog-module.md`
+        `./examples/import/import-dialog-module.md?raw`
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        LESS: import(`!!raw-loader!./examples/1/index.less`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
@@ -69,5 +65,5 @@ export class ExampleTuiMobileCalendarComponent {
 
     control = new FormControl();
 
-    stream = tuiReplayedValueChangesFrom<TuiDay>(this.control);
+    stream = tuiControlValue<TuiDay>(this.control);
 }

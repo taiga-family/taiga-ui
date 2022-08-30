@@ -1,19 +1,18 @@
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+
 /**
- * @deprecated: use {@link tuiIsNativeKeyboardFocusable} instead
  * Checks for signs that element can be focused with keyboard. tabIndex above 0 is ignored to
  * only target natural focus order. Not checking the possibility of an element to
  * be focused, for example element can have display: none applied to it or any other
  * circumstances could prevent actual focus.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function isNativeKeyboardFocusable(element: Element): boolean {
+export function tuiIsNativeKeyboardFocusable(element: Element): boolean {
     if (element.hasAttribute(`disabled`) || element.getAttribute(`tabIndex`) === `-1`) {
         return false;
     }
 
-    // TODO: iframe warning
     if (
-        (element instanceof HTMLElement && element.isContentEditable) ||
+        (tuiIsHTMLElement(element) && element.isContentEditable) ||
         element.getAttribute(`tabIndex`) === `0`
     ) {
         return true;
@@ -36,5 +35,3 @@ export function isNativeKeyboardFocusable(element: Element): boolean {
             return false;
     }
 }
-
-export const tuiIsNativeKeyboardFocusable = isNativeKeyboardFocusable;

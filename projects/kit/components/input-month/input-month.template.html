@@ -11,13 +11,12 @@
         [disabled]="computedDisabled"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="calendarIcon"
-        [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="pseudoHovered"
+        [tuiTextfieldIcon]="calendarIcon"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [value]="(value | tuiMapper: formatter | async) || ''"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>

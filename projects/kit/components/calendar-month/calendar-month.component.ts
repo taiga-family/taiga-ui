@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -17,6 +16,7 @@ import {
     tuiDefaultProp,
     TuiMonth,
     TuiMonthRange,
+    tuiNullableSame,
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
@@ -28,7 +28,6 @@ import {Observable} from 'rxjs';
 
 const TODAY = TuiDay.currentLocal();
 
-// @dynamic
 @Component({
     selector: `tui-calendar-month`,
     templateUrl: `./calendar-month.template.html`,
@@ -99,11 +98,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         }
 
         if (pressedItem?.monthSame(item)) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (hoveredItem?.monthSame(item)) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;
@@ -242,7 +241,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     private updateHoveredItem(month: TuiMonth | null): void {
-        if (nullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
+        if (tuiNullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
             return;
         }
 

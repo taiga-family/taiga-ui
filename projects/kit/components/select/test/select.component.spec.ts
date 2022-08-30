@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -73,7 +73,7 @@ describe(`Select`, () => {
                 TuiSelectModule,
                 TuiRootModule,
                 TuiTextfieldControllerModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],

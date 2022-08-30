@@ -8,15 +8,12 @@ import {
     Inject,
     ViewChild,
 } from '@angular/core';
-import {
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
-} from '@taiga-ui/core/directives';
+import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {BehaviorSubject} from 'rxjs';
 import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
-import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
+import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
     selector: `tui-value-decoration`,
@@ -39,10 +36,8 @@ export class TuiValueDecorationComponent implements DoCheck {
     );
 
     constructor(
-        @Inject(TuiPrimitiveTextfieldComponent)
-        private readonly textfield: TuiPrimitiveTextfieldComponent,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        private readonly controller: TuiTextfieldController,
+        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
+        private readonly textfield: TuiPrimitiveTextfield,
     ) {}
 
     @HostBinding(`class._table`)
@@ -82,9 +77,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     }
 
     private get exampleText(): string {
-        const exampleText = this.controller.exampleText || this.placeholder;
-
-        return !this.value && this.focused ? exampleText : ``;
+        return !this.value && this.focused ? this.placeholder : ``;
     }
 
     private get decorationsVisible(): boolean {

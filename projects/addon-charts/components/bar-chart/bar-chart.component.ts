@@ -1,19 +1,26 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {
-    sum,
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    Optional,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
+import {
+    EMPTY_QUERY,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     TuiMapper,
     tuiPure,
+    tuiSum,
 } from '@taiga-ui/cdk';
-import {TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
+function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
 
     return valid;
@@ -30,6 +37,9 @@ const VALUE_ERROR = `All arrays must be of the same length`;
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
 
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+
     @Input()
     @tuiDefaultProp(valueAssertion, VALUE_ERROR)
     value: ReadonlyArray<readonly number[]> = [];
@@ -40,30 +50,23 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
-
-    @Input()
-    @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL | null = `m`;
 
     @Input()
     @tuiDefaultProp()
     collapsed = false;
 
-    @Input()
-    @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
-
-    @Input()
-    @tuiDefaultProp()
-    hintMode: TuiHintModeT | null = null;
-
-    constructor(@Inject(TuiIdService) idService: TuiIdService) {
+    constructor(
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        private readonly hintOptions: TuiHintOptionsDirective | null,
+        @Inject(TuiIdService) idService: TuiIdService,
+    ) {
         this.autoIdString = idService.generate();
     }
 
-    get hasHint(): boolean {
-        return !!this.hintContent;
+    get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+        return this.hintOptions?.content || ``;
     }
 
     get transposed(): ReadonlyArray<readonly number[]> {
@@ -74,22 +77,11 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    @tuiPure
-    getContentContext(index: number): TuiContextWithImplicit<number> {
-        return {
-            $implicit: index,
-        };
-    }
-
     readonly percentMapper: TuiMapper<readonly number[], number> = (
         set,
         collapsed: boolean,
         max: number,
-    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
-
-    getHint(hint: PolymorpheusContent): PolymorpheusContent {
-        return this.hasHint ? hint : ``;
-    }
+    ) => (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;

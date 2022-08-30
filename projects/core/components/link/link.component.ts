@@ -2,20 +2,19 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
 } from '@angular/core';
 import {
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -29,10 +28,7 @@ import {mapTo} from 'rxjs/operators';
     templateUrl: `./link.template.html`,
     styleUrls: [`./link.style.less`],
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiLinkComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiLinkComponent),
         TuiFocusVisibleService,
         TuiDestroyService,
         MODE_PROVIDER,
@@ -49,10 +45,9 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @tuiDefaultProp()
     pseudo = false;
 
-    // TODO: 3.0 Remove `null`
     @Input()
     @tuiDefaultProp()
-    icon: string | null = null;
+    icon = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -72,8 +67,8 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     focusVisible = false;
 
     readonly focusedChange = merge(
-        typedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
-        typedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
     );
 
     constructor(
@@ -93,11 +88,11 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get hasIcon(): boolean {
-        return this.icon !== null;
+        return !!this.icon;
     }
 
     get iconAlignLeft(): boolean {

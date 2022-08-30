@@ -100,6 +100,42 @@
                 [code]="angularJsonStyles"
             ></tui-doc-code>
 
+            <tui-accordion class="tui-space_top-3">
+                <tui-accordion-item>
+                    How setup global styles from
+                    <code>@taiga-ui/styles</code>
+                    ?
+
+                    <ng-template tuiAccordionItemContent>
+                        If you want use global styles with default fonts out-of-the-box, you need install
+                        <code>npm i @taiga-ui/styles</code>
+                        and put this code:
+
+                        <tui-doc-code
+                            filename="angular.json"
+                            [code]="angularJsonGlobalSingleStyles"
+                        ></tui-doc-code>
+
+                        <tui-doc-code
+                            filename="styles.less"
+                            [code]="stylesLess"
+                        ></tui-doc-code>
+
+                        <tui-notification class="tui-space_top-3">
+                            Also you can use not all styles from global, but only what you need partially import, for
+                            example
+                            <code>@taiga-ui/styles/markup/tui-mobile-only</code>
+                            , or something:
+                        </tui-notification>
+
+                        <tui-doc-code
+                            filename="styles.less"
+                            [code]="customGlobalStyle"
+                        ></tui-doc-code>
+                    </ng-template>
+                </tui-accordion-item>
+            </tui-accordion>
+
             <tui-notification class="tui-space_top-3">
                 You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files
                 automatically
@@ -111,6 +147,11 @@
                 <tui-doc-code
                     filename="my.component.less / my.component.scss"
                     [code]="importLocalLess"
+                ></tui-doc-code>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="componentsStyles"
                 ></tui-doc-code>
             </p>
         </li>

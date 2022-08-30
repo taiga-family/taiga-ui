@@ -7,7 +7,6 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
-        #colorBtn
         tuiIconButton
         type="button"
         size="s"
@@ -16,9 +15,8 @@
         tuiHintDirection="top-left"
         automation-id="toolbar__color-button"
         [tuiHint]="foreColorText$ | async"
-        [tuiHintId]="colorBtn.id"
-        [tuiDescribedBy]="colorBtn.id"
-        [pseudoPressed]="color.open"
+        [tuiHintDescribe]="''"
+        [pseudoActive]="color.open"
         [focusable]="color.open"
     ></button>
     <div

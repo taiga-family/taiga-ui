@@ -1,10 +1,10 @@
 import {ElementRef, Inject, Injectable, NgZone, Optional} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    getElementOffset,
     TuiDestroyService,
+    tuiGetElementOffset,
+    tuiTypedFromEvent,
     tuiZoneOptimized,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -18,7 +18,6 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-// @dynamic
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
     constructor(
@@ -36,14 +35,14 @@ export class TuiElasticStickyService extends Observable<number> {
                     take(1),
                     switchMap(() => {
                         const closest = nativeElement.closest(SCROLL_REF_SELECTOR);
-                        const host = scrollRef?.nativeElement ?? closest;
+                        const host = scrollRef?.nativeElement || closest;
                         const {offsetHeight} = nativeElement;
                         const offsetTop = this.getInitialOffset(
                             host || windowRef,
                             nativeElement,
                         );
 
-                        return typedFromEvent(host || windowRef, `scroll`).pipe(
+                        return tuiTypedFromEvent(host || windowRef, `scroll`).pipe(
                             map(() =>
                                 Math.max(
                                     1 -
@@ -72,9 +71,8 @@ export class TuiElasticStickyService extends Observable<number> {
     }
 
     private getInitialOffset(host: Element | Window, element: HTMLElement): number {
-        // TODO: iframe warning
-        return host instanceof Element
-            ? getElementOffset(host, element).offsetTop
+        return `nodeType` in host
+            ? tuiGetElementOffset(host, element).offsetTop
             : element.getBoundingClientRect().top;
     }
 }

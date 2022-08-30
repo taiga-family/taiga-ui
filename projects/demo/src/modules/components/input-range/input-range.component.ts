@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -21,34 +21,34 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
+        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
     control = new FormControl([0, 10]);
@@ -61,7 +61,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    segments = 0;
+    segments = 1;
 
     steps = 0;
 
@@ -73,8 +73,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     size = this.sizeVariants[1];
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        [`year`, `years`, `years`],
+    readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: `thing`, few: `things`, many: `things`, other: `things`},
         {
             one: `year`,
@@ -82,19 +81,15 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    pluralize: TuiPluralize | Record<string, string> | null = null;
+    pluralize: Record<string, string> | null = null;
 
-    segmentsPluralize: Record<string, string> | TuiPluralize | null = null;
-
-    minLabelVariants: readonly string[] = [``, `Nothing`];
-
-    minLabel = this.minLabelVariants[0];
-
-    maxLabelVariants: readonly string[] = [``, `Everything`];
-
-    maxLabel = this.maxLabelVariants[0];
-
-    keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
+    keyStepsVariants: readonly TuiKeySteps[] = [
+        [
+            [0, 0],
+            [50, 1_000],
+            [100, 10_000],
+        ],
+    ];
 
     keySteps: TuiKeySteps | null = null;
 

@@ -8,15 +8,9 @@ export interface TuiButtonOptions {
         | keyof Record<TuiAppearance, string>
         | TuiAppearance
         | string
-        | null; // TODO: 3.0 need remove `null`
-    readonly shape: 'square' | 'rounded' | null; // TODO: 3.0 need remove `null`
+        | null;
+    readonly shape: 'square' | 'rounded' | null;
 }
-
-/**
- * @deprecated: use TuiButtonOptions instead
- * todo: remove in 3.0
- */
-export type ButtonOptions = TuiButtonOptions;
 
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
     size: `l`,

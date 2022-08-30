@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -14,8 +13,14 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
-import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {
+    tuiDefaultProp,
+    tuiIsCurrentTarget,
+    tuiPure,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk';
+import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -26,6 +31,7 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
+import {TuiLineClampBoxComponent} from './line-clamp-box.component';
 import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options';
 
 @Component({
@@ -33,9 +39,15 @@ import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options'
     templateUrl: `./line-clamp.template.html`,
     styleUrls: [`./line-clamp.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: TUI_HINT_COMPONENT,
+            useValue: TuiLineClampBoxComponent,
+        },
+    ],
 })
-export class TuiLineClampComponent implements AfterViewInit, DoCheck {
-    @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
+export class TuiLineClampComponent implements AfterViewInit {
+    @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly linesLimit$ = new BehaviorSubject(1);
@@ -79,10 +91,10 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
             switchMap(([prev, next]) =>
                 next >= prev
                     ? of(next)
-                    : typedFromEvent(this.elementRef.nativeElement, `transitionend`).pipe(
-                          filter(isCurrentTarget),
-                          mapTo(next),
-                      ),
+                    : tuiTypedFromEvent(
+                          this.elementRef.nativeElement,
+                          `transitionend`,
+                      ).pipe(filter(tuiIsCurrentTarget), mapTo(next)),
             ),
         );
     }

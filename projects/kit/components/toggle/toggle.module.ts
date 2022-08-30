@@ -5,7 +5,6 @@ import {
     TuiFocusableModule,
     TuiFocusedModule,
     TuiFocusVisibleModule,
-    TuiHoveredModule,
     TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {TuiLoaderModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
@@ -18,7 +17,6 @@ import {TuiToggleComponent} from './toggle.component';
         CommonModule,
         TuiFocusedModule,
         TuiFocusableModule,
-        TuiHoveredModule,
         TuiPressedModule,
         TuiFocusVisibleModule,
         TuiCheckedModule,

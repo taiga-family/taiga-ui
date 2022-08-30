@@ -1,4 +1,5 @@
 declare module '!!raw-loader!*';
+
 declare module 'highlight*';
 
 /* SystemJS module definition */
@@ -8,14 +9,11 @@ interface NodeModule {
     id: string;
 }
 
-declare module '!!file-loader!*' {
+/* Import file's content as string.
+To understand how it works, see `projects/demo/webpack.config.ts`.
+*/
+declare module '*?raw' {
     const result: string;
 
-    export = result;
-}
-
-declare module '*.html' {
-    const result: string;
-
-    export = result;
+    export default result;
 }

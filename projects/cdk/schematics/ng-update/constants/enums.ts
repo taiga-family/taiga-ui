@@ -6,6 +6,17 @@ interface ReplacementEnum {
 
 export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
     {
+        name: 'TuiPaymentSystem',
+        replaceValues: {
+            Visa: 'visa',
+            Electron: 'electron',
+            Mastercard: 'mastercard',
+            Maestro: 'maestro',
+            Mir: 'mir',
+        },
+        keepAsType: true,
+    },
+    {
         name: 'TuiTextAlign',
         replaceValues: {
             Left: 'left',
@@ -80,7 +91,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             Pass: 'pass',
         },
-        keepAsType: false,
+        keepAsType: true,
     },
     {
         name: 'TuiStatus',
@@ -92,6 +103,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             Warning: 'warning',
         },
+        keepAsType: true,
     },
     {
         name: 'TuiMarkerIconMode',
@@ -105,6 +117,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Error: 'error',
             OnDark: 'onDark',
         },
+        keepAsType: true,
     },
     {
         name: 'TuiDropdownPosition',
@@ -113,7 +126,7 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Word: 'word',
             Tag: 'tag',
         },
-        keepAsType: false,
+        keepAsType: true,
     },
     {
         name: 'TuiBorders',
@@ -196,5 +209,75 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Background: 'background',
         },
         keepAsType: true,
+    },
+    {
+        name: 'TuiCreditCardAutofillName',
+        replaceValues: {
+            Off: `off`,
+            CcName: `cc-name`,
+            CcNumber: `cc-number`,
+            CcCsc: `cc-csc`,
+            CcExpMonth: `cc-exp-month`,
+            CcExpYear: `cc-exp-year`,
+            CcExp: `cc-exp`,
+            CcType: `cc-type`,
+        },
+    },
+    {
+        name: 'TuiNameAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Name: `name`,
+            GivenName: `given-name`,
+            AdditionalName: `additional-name`,
+            FamilyName: `family-name`,
+        },
+    },
+    {
+        name: 'TuiAccountAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Username: `username`,
+            NewPassword: `new-password`,
+            CurrentPassword: `current-password`,
+        },
+    },
+    {
+        name: 'TuiEmailAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Email: `email`,
+        },
+    },
+    {
+        name: 'TuiAddressAutofillName',
+        replaceValues: {
+            Off: `off`,
+            StreetAddress: `street-address`,
+            PostalCode: `postal-code`,
+            CountryName: `country-name`,
+        },
+    },
+    {
+        name: 'TuiPhoneAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Tel: `tel`,
+        },
+    },
+    {
+        name: 'TuiDateAutofillName',
+        replaceValues: {
+            Off: `off`,
+            Bday: `bday`,
+        },
+    },
+    {
+        name: 'TuiTransactionAutofillName',
+        replaceValues: {
+            Off: `off`,
+            TransactionCurrency: `transaction-currency`,
+            TransactionAmount: `transaction-amount`,
+        },
     },
 ];

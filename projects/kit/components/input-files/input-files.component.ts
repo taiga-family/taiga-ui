@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -17,38 +16,31 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {formatSize, getAcceptArray} from '@taiga-ui/kit/utils/files';
+import {tuiFormatSize, tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
-// @dynamic
 @Component({
     selector: `tui-input-files`,
     templateUrl: `./input-files.template.html`,
     styleUrls: [`./input-files.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    providers: [
-        MODE_PROVIDER,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputFilesComponent),
-        },
-    ],
+    providers: [MODE_PROVIDER, tuiAsFocusableItemAccessor(TuiInputFilesComponent)],
 })
 export class TuiInputFilesComponent
     extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
@@ -120,11 +112,11 @@ export class TuiInputFilesComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get computedPseudoHovered(): boolean | null {
-        return this.pseudoHovered ?? (this.fileDragged || null);
+        return this.pseudoHover ?? (this.fileDragged || null);
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {
@@ -148,16 +140,8 @@ export class TuiInputFilesComponent
         return this.getValueArray(this.value);
     }
 
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onPressed(pressed: boolean): void {
-        this.updatePressed(pressed);
     }
 
     onFilesSelected(
@@ -268,7 +252,7 @@ export class TuiInputFilesComponent
                     size: file.size,
                     content:
                         texts.maxSizeRejectionReason +
-                        formatSize(units, this.maxFileSize),
+                        tuiFormatSize(units, this.maxFileSize),
                 })),
                 ...wrongFormatFiles.map(file => ({
                     name: file.name,
@@ -293,7 +277,7 @@ export class TuiInputFilesComponent
 
         const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
 
-        return getAcceptArray(this.accept).some(
+        return tuiGetAcceptArray(this.accept).some(
             format =>
                 format === extension ||
                 format === file.type ||

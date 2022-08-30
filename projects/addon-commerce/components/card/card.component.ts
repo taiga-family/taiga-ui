@@ -1,21 +1,14 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiPaymentSystem, TuiPaymentSystemT} from '@taiga-ui/addon-commerce/enums';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function cardNumberAssertion({length}: string): boolean {
-    return !length || length === 4;
-}
-
-export const cardNumberAssertionMessage = `cardNumber should contain 4 symbols`;
-
-const icons = {
-    [TuiPaymentSystem.Mir]: `tuiIconMirMono`,
-    [TuiPaymentSystem.Visa]: `tuiIconVisaMono`,
-    [TuiPaymentSystem.Electron]: `tuiIconElectronMono`,
-    [TuiPaymentSystem.Mastercard]: `tuiIconMastercard`,
-    [TuiPaymentSystem.Maestro]: `tuiIconMaestro`,
+const icons: Record<TuiPaymentSystem, string> = {
+    mir: `tuiIconMirMono`,
+    visa: `tuiIconVisaMono`,
+    electron: `tuiIconElectronMono`,
+    mastercard: `tuiIconMastercard`,
+    maestro: `tuiIconMaestro`,
 };
 
 @Component({
@@ -35,12 +28,15 @@ export class TuiCardComponent {
     brandLogo = ``;
 
     @Input()
-    @tuiDefaultProp(cardNumberAssertion, cardNumberAssertionMessage)
+    @tuiDefaultProp(
+        ({length}: string) => !length || length === 4,
+        `cardNumber should contain 4 symbols`,
+    )
     cardNumber = ``;
 
     @Input()
     @tuiDefaultProp()
-    paymentSystem: TuiPaymentSystemT | TuiPaymentSystem | null = null;
+    paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
     @HostBinding(`attr.data-size`)

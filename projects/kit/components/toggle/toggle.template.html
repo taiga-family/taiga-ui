@@ -1,10 +1,11 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
     <div class="t-toggle">
@@ -16,19 +17,15 @@
             [showLoader]="checked"
         ></tui-loader>
         <span
-            polymorpheus-outlet
+            *ngIf="showIcons && !showLoader"
             class="t-icon-wrapper"
-            [content]="iconOn"
-            [context]="{$implicit: size}"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    *ngIf="showIcons && !showLoader"
-                    automation-id="tui-toggle__check-icon"
-                    class="t-icon"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconOn as src; context: {$implicit: size}"
+                automation-id="tui-toggle__check-icon"
+                class="t-icon"
+                [src]="src"
+            ></tui-svg>
         </span>
         <div class="t-circle"></div>
         <tui-loader
@@ -39,19 +36,15 @@
             [showLoader]="!checked"
         ></tui-loader>
         <span
-            polymorpheus-outlet
+            *ngIf="showIcons && !showLoader"
             class="t-icon-wrapper"
-            [content]="iconOff"
-            [context]="{$implicit: size}"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    *ngIf="showIcons && !showLoader"
-                    automation-id="tui-toggle__cancel-icon"
-                    class="t-icon t-icon_off"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconOff as src; context: {$implicit: size}"
+                automation-id="tui-toggle__cancel-icon"
+                class="t-icon t-icon_off"
+                [src]="src"
+            ></tui-svg>
         </span>
     </div>
     <input
@@ -67,8 +60,6 @@
         [tuiFocusable]="focusable"
         (tuiCheckedChange)="onChecked($event)"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiHoveredChange)="onHovered($event)"
-        (tuiPressedChange)="onPressed($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
-</tui-wrapper>
+</div>

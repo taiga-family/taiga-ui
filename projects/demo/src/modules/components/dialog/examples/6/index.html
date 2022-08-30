@@ -6,10 +6,9 @@
 >
     Show
 </button>
-<!-- TODO: 3.0 need remove $any later -->
 <ng-template
     let-observer
-    [tuiDialogOptions]="$any({label: 'Declarative directive', size: 's'})"
+    [tuiDialogOptions]="{label: 'Declarative directive', size: 's'}"
     [(tuiDialog)]="open"
 >
     <form

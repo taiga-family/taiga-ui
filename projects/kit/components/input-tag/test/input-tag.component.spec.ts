@@ -9,7 +9,7 @@ import {
     TuiFocusedModule,
 } from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiRootModule,
     TuiSizeL,
     TuiSizeS,
@@ -42,10 +42,9 @@ describe(`InputTag`, () => {
                     [formControl]="control"
                     [readOnly]="readOnly"
                     [separator]="separator"
-                    [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
+                    [placeholder]="placeholder"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
@@ -63,10 +62,9 @@ describe(`InputTag`, () => {
         defaultInputs = false;
         cleaner = true;
         readOnly = false;
-        allowSpaces = true;
-        separator = `,`;
+        separator: string | RegExp = `,`;
+        placeholder = `Example`;
         labelOutside = true;
-        exampleText = `Example`;
         size: TuiSizeS | TuiSizeL = `m`;
         hintContent: string | null = `prompt`;
         tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
@@ -105,7 +103,7 @@ describe(`InputTag`, () => {
                 TuiInputTagModule,
                 TuiFocusedModule,
                 TuiRootModule,
-                TuiHintControllerModule,
+                TuiHintModule,
                 TuiTextfieldControllerModule,
             ],
             declarations: [TestComponent],
@@ -219,7 +217,7 @@ describe(`InputTag`, () => {
         });
     });
 
-    describe(`Adding tags with spaces when the allowSpaces option is enabled`, () => {
+    describe(`Adding tags with spaces (spaces inside tags are allowed)`, () => {
         it(`Spaces are preserved and not tagged`, () => {
             inputPO.focus();
             fixture.detectChanges();
@@ -231,9 +229,9 @@ describe(`InputTag`, () => {
         });
     });
 
-    describe(`Adding tags when the allowSpaces option is disabled`, () => {
+    describe(`Adding tags when spaces inside tags are forbidden`, () => {
         beforeEach(() => {
-            testComponent.allowSpaces = false;
+            testComponent.separator = /[\s,]/;
             inputPO.focus();
             fixture.detectChanges();
         });

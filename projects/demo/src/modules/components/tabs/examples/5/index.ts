@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiIsString} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-tabs-example-5`,
@@ -45,6 +46,6 @@ export class TuiTabsExample5 {
     }
 
     isString(tab: unknown): tab is string {
-        return typeof tab === `string`;
+        return tuiIsString(tab);
     }
 }

@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,56 +12,35 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-import {getPaymentSystem} from '@taiga-ui/addon-commerce/utils';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiCreditCardAutofillName,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    TuiAutofillFieldName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_EXAMPLE_TEXT,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextfieldExampleTextDirective,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {TextMaskConfig} from 'angular2-text-mask';
 
-const icons = {
-    [TuiPaymentSystem.Mir]: `tuiIconMir`,
-    [TuiPaymentSystem.Visa]: `tuiIconVisa`,
-    [TuiPaymentSystem.Electron]: `tuiIconElectron`,
-    [TuiPaymentSystem.Mastercard]: `tuiIconMastercard`,
-    [TuiPaymentSystem.Maestro]: `tuiIconMaestro`,
+const icons: Record<TuiPaymentSystem, string> = {
+    mir: `tuiIconMir`,
+    visa: `tuiIconVisa`,
+    electron: `tuiIconElectron`,
+    mastercard: `tuiIconMastercard`,
+    maestro: `tuiIconMaestro`,
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function cardTextfieldControllerFactory(
-    directive: TuiTextfieldExampleTextDirective | null,
-): TuiTextfieldExampleTextDirective {
-    directive = directive || new TuiTextfieldExampleTextDirective();
-    directive.exampleText = `0000 0000 0000 0000`;
-
-    return directive;
-}
-
-// @dynamic
 @Component({
     selector: `tui-input-card`,
     templateUrl: `./input-card.template.html`,
     styleUrls: [`./input-card.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCardComponent),
-        },
-        {
-            provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
-            deps: [[new Optional(), TuiTextfieldExampleTextDirective]],
-            useFactory: cardTextfieldControllerFactory,
-        },
+        tuiAsFocusableItemAccessor(TuiInputCardComponent),
+        tuiAsControl(TuiInputCardComponent),
     ],
 })
 export class TuiInputCardComponent
@@ -117,14 +95,12 @@ export class TuiInputCardComponent
         return paymentSystem ? icons[paymentSystem] : null;
     }
 
-    get autocomplete(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcNumber
-            : TuiCreditCardAutofillName.Off;
+    get autocomplete(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-number` : `off`;
     }
 
     get paymentSystem(): TuiPaymentSystem | null {
-        return getPaymentSystem(this.value);
+        return tuiGetPaymentSystem(this.value);
     }
 
     get bin(): string | null {
@@ -153,10 +129,6 @@ export class TuiInputCardComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onHovered(hovered: boolean): void {
-        this.updateHovered(hovered);
     }
 
     writeValue(value: string | null): void {

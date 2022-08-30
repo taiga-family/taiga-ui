@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiOrientationT} from '@taiga-ui/core';
-import {TuiStepStateT} from '@taiga-ui/kit';
+import {TuiOrientation} from '@taiga-ui/core';
+import {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
     selector: `example-tui-stepper`,
@@ -10,30 +10,30 @@ import {TuiStepStateT} from '@taiga-ui/kit';
     templateUrl: `./stepper.template.html`,
 })
 export class ExampleTuiStepperComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     activeItemIndex = 0;
 
-    readonly orientationVariants: readonly TuiOrientationT[] = [`horizontal`, `vertical`];
+    readonly orientationVariants: readonly TuiOrientation[] = [`horizontal`, `vertical`];
 
-    orientation: TuiOrientationT = this.orientationVariants[0];
+    orientation: TuiOrientation = this.orientationVariants[0];
 
     readonly iconVariants = [``, `tuiIconTimeLarge`, `tuiIconHeart`];
 
     icon = this.iconVariants[0];
 
-    readonly stateVariants: TuiStepStateT[] = [`normal`, `pass`, `error`];
+    readonly stateVariants: TuiStepState[] = [`normal`, `pass`, `error`];
 
-    state: TuiStepStateT = this.stateVariants[0];
+    state: TuiStepState = this.stateVariants[0];
 }

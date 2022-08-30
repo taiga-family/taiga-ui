@@ -1,7 +1,7 @@
 <tui-multi-select
     *tuiLet="items$ | async as items"
     #component
-    tuiTextfieldExampleText="Find by ..."
+    placeholder="Find by ..."
     class="control"
     [formControl]="testValue"
     [tuiTextfieldLabelOutside]="true"
@@ -11,7 +11,7 @@
     Rock Star Frontend Developers
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiHideSelected: component"
+        [items]="items | tuiHideSelected"
         [itemContent]="itemContent"
     ></tui-data-list-wrapper>
 </tui-multi-select>

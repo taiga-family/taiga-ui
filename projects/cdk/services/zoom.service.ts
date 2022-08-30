@@ -1,14 +1,13 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
-import {preventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
-import {distanceBetweenTouches} from '@taiga-ui/cdk/utils';
+import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
 import {filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
 
 const TOUCH_SENSITIVITY = 0.01;
 
-// @dynamic
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor(
@@ -17,16 +16,16 @@ export class TuiZoomService extends Observable<TuiZoom> {
     ) {
         super(subscriber => {
             merge(
-                typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
                     filter(({touches}) => touches.length > 1),
                     switchMap(startEvent =>
-                        typedFromEvent(nativeElement, `touchmove`, {
+                        tuiTypedFromEvent(nativeElement, `touchmove`, {
                             passive: true,
                         }).pipe(
-                            preventDefault(),
+                            tuiPreventDefault(),
                             scan(
                                 (prev, event) => {
-                                    const distance = distanceBetweenTouches(event);
+                                    const distance = tuiDistanceBetweenTouches(event);
 
                                     return {
                                         event,
@@ -38,7 +37,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                 },
                                 {
                                     event: startEvent,
-                                    distance: distanceBetweenTouches(startEvent),
+                                    distance: tuiDistanceBetweenTouches(startEvent),
                                     delta: 0,
                                 },
                             ),
@@ -54,12 +53,12 @@ export class TuiZoomService extends Observable<TuiZoom> {
 
                                 return {clientX, clientY, delta, event};
                             }),
-                            takeUntil(typedFromEvent(nativeElement, `touchend`)),
+                            takeUntil(tuiTypedFromEvent(nativeElement, `touchend`)),
                         ),
                     ),
                 ),
-                typedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
-                    preventDefault(),
+                tuiTypedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
+                    tuiPreventDefault(),
                     map(wheel => ({
                         clientX: wheel.clientX,
                         clientY: wheel.clientY,

@@ -1,10 +1,10 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 
-import {mouseDragFinishFrom} from './mouse-drag-finish-from';
-import {typedFromEvent} from './typed-from-event';
+import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
+import {tuiTypedFromEvent} from './typed-from-event';
 
 export const enum TuiDragStage {
     Start,
@@ -16,11 +16,7 @@ export class TuiDragState {
     constructor(readonly stage: TuiDragStage, readonly event: MouseEvent) {}
 }
 
-/**
- * @deprecated: use {@link tuiDragAndDropFrom} instead
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
+export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -28,21 +24,19 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
     }
 
     return concat(
-        typedFromEvent(element, `mousedown`).pipe(
+        tuiTypedFromEvent(element, `mousedown`).pipe(
             take(1),
             map(event => new TuiDragState(TuiDragStage.Start, event)),
         ),
         merge(
-            typedFromEvent(ownerDocument, `mousemove`).pipe(
+            tuiTypedFromEvent(ownerDocument, `mousemove`).pipe(
                 map(event => new TuiDragState(TuiDragStage.Continues, event)),
             ),
-            mouseDragFinishFrom(ownerDocument).pipe(
+            tuiMouseDragFinishFrom(ownerDocument).pipe(
                 take(1),
                 map(event => new TuiDragState(TuiDragStage.End, event)),
                 endWith(null),
             ),
-        ).pipe(takeWhile(isPresent)),
+        ).pipe(takeWhile(tuiIsPresent)),
     ).pipe(repeat());
 }
-
-export const tuiDragAndDropFrom = dragAndDropFrom;

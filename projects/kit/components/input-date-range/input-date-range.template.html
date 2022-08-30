@@ -10,23 +10,19 @@
         *tuiLet="dateFiller$ | async as dateFiller"
         automation-id="tui-input-date-range__textfield"
         tuiValueAccessor
-        tuiTextfieldInputMode="numeric"
         class="t-textfield"
-        [pseudoFocused]="innerPseudoFocused"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoPressed]="pseudoPressed"
+        [tuiTextfieldIcon]="computedMobile ? mobileIconContent : iconContent"
+        [pseudoFocus]="innerPseudoFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoActive]="pseudoActive"
         [invalid]="computedInvalid"
-        [tuiTextfieldExampleText]="computedExampleText"
         [nativeId]="nativeId"
-        [filler]="getComputedRangeFiller(dateFiller)"
+        [filler]="getComputedRangeFiller(dateFiller || '')"
         [readOnly]="readOnly"
-        [iconContent]="computedMobile ? mobileIconContent : iconContent"
         [disabled]="computedDisabled"
         [textMask]="computedMask"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
-        (pressedChange)="onPressed($event)"
     >
         <ng-content></ng-content>
         <ng-content

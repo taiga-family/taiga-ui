@@ -4,67 +4,39 @@
     [precision]="precision"
     [decimal]="decimal"
     [prefix]="showValueContent ? '' : prefix"
-    [postfix]="showValueContent ? '' : postfix || (value | i18nPlural: pluralizeMap || pluralizeMapFallback)"
-    [tuiTextfieldCustomContent]="controller.customContent || deprecatedSecondary"
-    [tuiTextfieldSize]="computedSize"
-    [tuiTextfieldLabelOutside]="computedSize !== 'l'"
+    [postfix]="showValueContent ? '' : postfix"
     [readOnly]="readOnly"
-    [pseudoFocused]="computedFocused"
-    [pseudoHovered]="computedHovered"
-    [pseudoPressed]="computedPressed"
+    [pseudoFocus]="computedFocused"
+    [pseudoHover]="pseudoHover"
+    [pseudoActive]="pseudoActive"
     [pseudoInvalid]="pseudoInvalid"
     [ngModel]="value"
     (ngModelChange)="safelyUpdateValue($event)"
     (focusedChange)="onFocused($event)"
-    (hoveredChange)="onHovered($event)"
-    (pressedChange)="onPressed($event)"
     (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
     (keydown.arrowDown.prevent)="onVerticalArrowKeyDown(-1)"
 >
     <ng-content></ng-content>
     <div
         *ngIf="showValueContent"
-        polymorpheus-outlet
+        ngProjectAs="tuiContent"
         automation-id="tui-input-slider__value-content"
-        [content]="computedValueContent"
-        [context]="{$implicit: value}"
-    ></div>
+    >
+        <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
+            {{ text }}
+        </ng-container>
+    </div>
 </tui-input-number>
 
-<!--TODO: remove in v3.0-->
-<ng-template #deprecatedSecondary>{{ secondary }}</ng-template>
-
-<!--TODO: remove wrapper + ticks labels (leave only slider) in v3.0-->
-<div class="t-slider-wrapper">
-    <input
-        tuiSlider
-        type="range"
-        [tuiFocusable]="false"
-        [max]="computedSteps"
-        [segments]="segments"
-        [keySteps]="computedKeySteps"
-        [attr.disabled]="readOnly || disabled || null"
-        [ngModel]="value"
-        (keyStepsInput)="onSliderChange($event)"
-        (click)="focusTextInput()"
-    />
-
-    <!--TODO delete ticks labels in v3.0-->
-    <div
-        *ngIf="segments && !isNew"
-        class="t-ticks-labels"
-    >
-        <span
-            *tuiRepeatTimes="let tickIndex of segments + 1"
-            automation-id="tui-slider__segment"
-        >
-            <span *ngIf="fromToTexts$ | async as fromToText">
-                {{ getTickPrefix(tickIndex, segments, fromToText) }}
-                {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | tuiFormatNumber }}
-                <span *ngIf="segmentsPluralizeMap">
-                    {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | i18nPlural: segmentsPluralizeMap }}
-                </span>
-            </span>
-        </span>
-    </div>
-</div>
+<input
+    tuiSlider
+    type="range"
+    [tuiFocusable]="false"
+    [max]="computedSteps"
+    [segments]="segments"
+    [keySteps]="computeKeySteps(keySteps, min, max)"
+    [attr.disabled]="readOnly || disabled || null"
+    [ngModel]="value"
+    (ngModelChange)="onSliderChange($event)"
+    (click)="focusTextInput()"
+/>

@@ -55,30 +55,25 @@
         <tui-doc-demo>
             <tui-primitive-textfield
                 [focusable]="focusable"
-                [tuiTextfieldAutocomplete]="autocomplete"
                 [tuiTextfieldCleaner]="cleaner"
                 [tuiTextfieldCustomContent]="customContent"
-                [tuiTextfieldInputMode]="inputMode"
-                [tuiTextfieldMaxLength]="maxLength"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [tuiTextfieldType]="type"
-                [pseudoPressed]="pseudoPressed"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
                 [disabled]="disabled"
                 [editable]="editable"
                 [filler]="filler"
-                [iconAlign]="iconAlign"
-                [iconContent]="iconContent"
+                [tuiTextfieldIcon]="iconContent"
+                [tuiTextfieldIconLeft]="iconLeft"
                 [readOnly]="readOnly"
                 [prefix]="prefix"
                 [postfix]="postfix"
                 [invalid]="invalid"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
-                [tuiHintMode]="hintMode"
+                [tuiHintAppearance]="hintAppearance"
                 [(value)]="value"
             >
                 Component label
@@ -132,7 +127,7 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="iconContent"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
@@ -145,16 +140,10 @@
                 >
                     <code>SvgService</code>
                 </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
+                <p>
+                    Requires you to import
+                    <code>TuiTextfieldControllerModule</code>
+                </p>
             </ng-template>
             <ng-template
                 i18n

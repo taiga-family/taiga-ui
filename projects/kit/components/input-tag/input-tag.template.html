@@ -1,3 +1,4 @@
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <tui-hosted-dropdown
     class="t-hosted"
     [canOpen]="canOpen"
@@ -5,24 +6,25 @@
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <tui-wrapper
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
-        [focused]="computedFocused"
-        [hovered]="computedHovered"
+        [focus]="computedFocused"
+        [hover]="pseudoHover"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
-        (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">
             <div
-                *ngIf="iconAlignLeft"
+                *ngIf="iconLeft"
                 class="t-icons t-icons_left"
             >
                 <tui-svg
+                    *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
                     class="t-icon"
-                    [src]="icon"
+                    [src]="src"
                 ></tui-svg>
             </div>
             <div class="t-wrapper">
@@ -56,14 +58,13 @@
                                 class="t-tag"
                                 [status]="(status$ | async)!"
                                 [leftContent]="getLeftContent(item)"
-                                [allowSpaces]="allowSpaces"
                                 [tuiFocusable]="false"
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
                                 [removable]="!readOnly"
                                 [separator]="separator"
-                                [maxLength]="controller.maxLength"
+                                [maxLength]="maxLength"
                                 [size]="controller.size"
                                 [value]="item.toString()"
                                 (edited)="onTagEdited($event, index)"
@@ -90,9 +91,9 @@
                                 type="text"
                                 automation-id="tui-input-tag__native"
                                 class="t-native"
-                                [placeholder]="controller.exampleText"
+                                [placeholder]="placeholder"
                                 [class.t-native_hidden]="inputHidden"
-                                [attr.maxLength]="controller.maxLength"
+                                [attr.maxLength]="maxLength"
                                 [id]="id"
                                 [disabled]="computedDisabled"
                                 [readOnly]="readOnly || inputHidden"
@@ -120,21 +121,23 @@
                     (click.stop)="onCleanerClick()"
                 ></tui-svg>
                 <tui-tooltip
-                    *ngIf="hasTooltip"
+                    *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                     automation-id="tui-input-tag__tooltip"
                     describeId="placeholer_until_accesibility_is_added"
                     class="t-tooltip"
-                    [direction]="hintController.direction"
-                    [mode]="hintController.mode"
-                    [content]="hintController.content || ''"
-                    [showDelay]="hintController.showDelay"
-                    [hideDelay]="hintController.hideDelay"
+                    [direction]="hintOptions.direction"
+                    [appearance]="hintOptions.appearance"
+                    [content]="hintOptions.content"
+                    [showDelay]="hintOptions.showDelay"
+                    [hideDelay]="hintOptions.hideDelay"
                 ></tui-tooltip>
-                <tui-svg
-                    *ngIf="iconAlignRight"
-                    class="t-icon"
-                    [src]="icon"
-                ></tui-svg>
+                <div *ngIf="icon">
+                    <tui-svg
+                        *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                        class="t-icon"
+                        [src]="src"
+                    ></tui-svg>
+                </div>
             </div>
         </div>
         <ng-template #errorIcon>
@@ -143,5 +146,5 @@
                 class="t-error-icon"
             ></tui-svg>
         </ng-template>
-    </tui-wrapper>
+    </div>
 </tui-hosted-dropdown>

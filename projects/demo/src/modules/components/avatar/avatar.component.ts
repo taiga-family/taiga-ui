@@ -10,30 +10,30 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 })
 export class ExampleTuiAvatarComponent {
     readonly exampleOptions: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/define-options.md`
+        `./examples/import/define-options.md?raw`
     );
 
     readonly exampleModule: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/import-module.md`
+        `./examples/import/import-module.md?raw`
     );
 
     readonly exampleHtml: RawLoaderContent = import(
-        `!!raw-loader!./examples/import/insert-template.md`
+        `./examples/import/insert-template.md?raw`
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly avatarUrlVariants: readonly string[] = [
