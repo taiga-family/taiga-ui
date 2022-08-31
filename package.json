@@ -118,7 +118,6 @@
         "ng-packagr": "^12.2.7",
         "postcss": "^8.4.14",
         "prettier": "~2.7.1",
-        "raw-loader": "^4.0.2",
         "rollup": "~2.75.6",
         "standard-version": "^8.0.2",
         "ts-loader": "^6.2.2",
