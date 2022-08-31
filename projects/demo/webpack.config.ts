@@ -31,7 +31,7 @@ const config: Configuration = {
          */
         rules: [
             {
-                test: /\.(ts|html|less|md|svg)$/i,
+                test: /\.(ts|html|css|less|md|svg)$/i,
                 resourceQuery: RAW_TS_QUERY,
                 type: `asset/source`,
             },
