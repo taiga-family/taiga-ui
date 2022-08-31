@@ -24,7 +24,6 @@ export class TuiHighlightDirective implements OnChanges {
         this.elementRef.nativeElement,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
-        false,
     );
 
     @Input()
