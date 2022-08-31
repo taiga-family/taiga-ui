@@ -40,6 +40,7 @@ const TEMPLATE_BEFORE = `
 <tui-input-count
     formControlName="testValue1"
     tuiTextfieldAutocomplete="off"
+    tuiTextfieldInputMode="numeric"
     [min]="1"
     [max]="200"
     [tuiTextfieldMaxLength]="maxLength"
@@ -80,13 +81,14 @@ const TEMPLATE_AFTER = `
 <tui-input-count
     formControlName="testValue1"
     ${''}
+    ${''}
     [min]="1"
     [max]="200"
     ${''}
 >
     Count something
     <input
-        tuiTextfield autocomplete="off" [attr.maxlength]="maxLength"
+        tuiTextfield autocomplete="off" inputmode="numeric" [attr.maxlength]="maxLength"
         placeholder="1.. 2.. 3.."
     />
 </tui-input-count>
