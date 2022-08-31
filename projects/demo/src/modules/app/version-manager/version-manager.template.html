@@ -1,4 +1,5 @@
 <tui-select
+    *ngIf="versions.length"
     class="select"
     [ngModel]="initialVersion"
     [valueContent]="'label' | tuiStringify | tuiStringifyContent"

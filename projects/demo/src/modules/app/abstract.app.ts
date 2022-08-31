@@ -5,6 +5,7 @@ import {tuiPure, TuiResizeService} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
+import {TuiVersionMeta} from './version-manager/versions.constants';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
@@ -16,6 +17,9 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
+
+    @HostBinding(`attr.data-tui-version-demo`)
+    protected readonly versionDemo = this.versionMeta.versionDemo;
 
     // TODO: use inject(TUI_IS_CYPRESS) in angular v14+
     @HostBinding(`class._is-cypress-mode`)
@@ -31,6 +35,7 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected constructor(
         protected readonly isCypress: boolean,
         protected readonly pageLoaded$: Observable<boolean>,
+        protected readonly versionMeta: TuiVersionMeta,
     ) {}
 
     async ngOnInit(): Promise<void> {

@@ -16,12 +16,22 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
+import {
+    SELECTED_VERSION_META,
+    VERSION_MANAGER_PROVIDERS,
+} from './version-manager/version-manager.providers';
+import {TuiVersionMeta} from './version-manager/versions.constants';
 
 @Component({
     selector: `app`,
     templateUrl: `./app.template.html`,
     styleUrls: [`./app.style.less`],
-    providers: [TuiDestroyService, TuiResizeService, DEMO_PAGE_LOADED_PROVIDER],
+    providers: [
+        TuiDestroyService,
+        TuiResizeService,
+        DEMO_PAGE_LOADED_PROVIDER,
+        VERSION_MANAGER_PROVIDERS,
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -34,6 +44,7 @@ export class AppComponent extends AbstractDemoComponent {
     constructor(
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
+        @Inject(SELECTED_VERSION_META) versionMeta: TuiVersionMeta,
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) protected readonly router: Router,
@@ -41,7 +52,7 @@ export class AppComponent extends AbstractDemoComponent {
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(Injector) private readonly injector: Injector,
     ) {
-        super(isCypress, pageLoaded$);
+        super(isCypress, pageLoaded$, versionMeta);
     }
 
     async ngOnInit(): Promise<void> {
