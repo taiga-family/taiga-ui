@@ -38,8 +38,8 @@ export function rollupSvgo({
 
                 data = (result as OptimizedSvg)?.data || {};
                 errorMessage = result.error as string;
-            } catch (err) {
-                errorMessage = err.message;
+            } catch (err: unknown) {
+                errorMessage = (err as Error)?.message;
             }
 
             if (errorMessage) {

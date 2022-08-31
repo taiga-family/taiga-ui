@@ -21,6 +21,6 @@ export class TuiFormatExample5 {
     get formattedPhone(): string {
         const {value, countryCode, phoneMask} = this.parametersForm.value;
 
-        return tuiFormatPhone(value, countryCode, phoneMask);
+        return tuiFormatPhone(value ?? ``, countryCode ?? ``, phoneMask ?? ``);
     }
 }

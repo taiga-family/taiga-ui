@@ -61,7 +61,7 @@ export class TuiMobileCalendarExample1 {
         return !this.control.value;
     }
 
-    getParsed(value: TuiDay, months: string[]): string {
+    getParsed(value: TuiDay | null, months: string[]): string {
         if (!value) {
             return `Choose a date`;
         }

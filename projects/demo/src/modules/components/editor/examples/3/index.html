@@ -6,7 +6,7 @@
 
 <h4>HTML:</h4>
 <tui-editor-socket
-    [content]="control.value"
+    [content]="control.value || ''"
     (imagePreview)="preview.showImage($event)"
 >
     <image-preview-example #preview></image-preview-example>

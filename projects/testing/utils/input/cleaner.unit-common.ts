@@ -25,8 +25,8 @@ interface TestComponent {
 
 export function tuiTestCleaner(
     context: TestParams,
-    setValue: unknown = `value`,
-    clearValue: unknown = null,
+    setValue: any = `value`,
+    clearValue: any = null,
 ): void {
     let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;

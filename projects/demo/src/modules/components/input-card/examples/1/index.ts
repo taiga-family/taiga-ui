@@ -17,13 +17,13 @@ export class TuiInputCardExample1 {
     });
 
     get card(): string | null {
-        const value: string = this.form.get(`card`)!.value;
+        const value: string | null | undefined = this.form.get(`card`)?.value;
 
-        if (value.length < 7) {
+        if ((value?.length ?? 0) < 7) {
             return null;
         }
 
-        switch (value.charAt(0)) {
+        switch (value?.charAt(0)) {
             case `0`:
             case `1`:
             case `2`:

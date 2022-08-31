@@ -3,7 +3,7 @@
 export const tuiWaitAllImgInside = (
     prevSubject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],
     enabled: boolean = true,
-): Cypress.Chainable<unknown> => {
+): Cypress.Chainable<JQuery> | Cypress.Chainable<JQuery<HTMLBodyElement>> => {
     const target =
         prevSubject && Cypress.dom.isJquery(prevSubject)
             ? cy.wrap(prevSubject, {log: false})

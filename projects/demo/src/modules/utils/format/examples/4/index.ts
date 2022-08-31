@@ -19,6 +19,6 @@ export class TuiFormatExample4 {
     get capitalized(): string {
         const {value} = this.parametersForm.value;
 
-        return tuiCapitalize(value);
+        return tuiCapitalize(value ?? ``);
     }
 }

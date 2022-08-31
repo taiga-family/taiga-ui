@@ -1,13 +1,11 @@
-import {workspaces} from '@angular-devkit/core';
 import {Schema} from '../ng-add/schema';
+import {ProjectDefinition, WorkspaceDefinition} from '@angular-devkit/core/src/workspace';
 
 export function getProject(
     options: Schema,
-    workspace: workspaces.WorkspaceDefinition,
-): workspaces.ProjectDefinition | undefined {
+    workspace: WorkspaceDefinition,
+): ProjectDefinition | undefined {
     const projectName =
         options.project || workspace.extensions.defaultProject?.toString() || '';
-    const project = workspace.projects.get(projectName);
-
-    return project;
+    return workspace.projects.get(projectName);
 }

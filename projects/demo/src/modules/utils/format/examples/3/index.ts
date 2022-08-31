@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
+import {TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 
 @Component({
     selector: `tui-format-example-3`,
@@ -21,6 +21,6 @@ export class TuiFormatExample3 {
     get currency(): string | null {
         const {currency} = this.parametersForm.value;
 
-        return tuiGetCurrencySymbol(currency);
+        return tuiGetCurrencySymbol(currency as unknown as TuiCurrencyVariants);
     }
 }
