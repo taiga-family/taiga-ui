@@ -41,3 +41,12 @@ export function tuiHarnessWith<T>(
         with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     };
 }
+
+export class TuiComponentHarness extends ComponentHarness {
+    static with<T extends ComponentHarness>(
+        this: ComponentHarnessConstructor<T>,
+        options: BaseHarnessFilters,
+    ): HarnessPredicate<T> {
+        return new HarnessPredicate(this, options);
+    }
+}
