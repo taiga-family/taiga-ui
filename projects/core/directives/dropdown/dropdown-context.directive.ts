@@ -35,9 +35,9 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
     }
 
     @HostListener(`document:click.silent`, [`$event.target`])
-    @HostListener(`document:contextmenu.silent`, [`$event.target`])
+    @HostListener(`document:contextmenu.capture.silent`, [`$event.target`])
     @HostListener(`document:keydown.esc`, [`$event.currentTarget`])
-    onClick(target: EventTarget): void {
+    closeDropdown(target: EventTarget): void {
         if (!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(target)) {
             this.stream$.next(false);
         }
