@@ -30,7 +30,7 @@ export class TuiDataListExample5 {
         TuiDay.currentLocal().append({year: 1}),
     );
 
-    get testValue(): string {
+    get testValue(): string | null | undefined {
         return this.testForm.get(`testValue`)?.value;
     }
 

@@ -1595,7 +1595,7 @@ export const ROUTES = [
 @NgModule({
     imports: [
         RouterModule.forRoot(ROUTES, {
-            initialNavigation: `enabled`,
+            initialNavigation: `enabledBlocking`,
             scrollPositionRestoration: `top`,
         }),
     ],

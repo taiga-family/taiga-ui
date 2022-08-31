@@ -33,3 +33,4 @@ dist
 .ssl
 RELEASE_BODY.md
 *tsbuildinfo
+.angular

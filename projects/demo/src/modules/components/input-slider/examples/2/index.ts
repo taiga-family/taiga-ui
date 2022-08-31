@@ -17,10 +17,10 @@ export class TuiInputSliderExample2 {
     readonly min = 0;
 
     increase(): void {
-        this.control.patchValue(Math.min(this.control.value + 20, this.max));
+        this.control.patchValue(Math.min((this.control?.value ?? 0) + 20, this.max));
     }
 
     decrease(): void {
-        this.control.patchValue(Math.max(this.control.value - 20, this.min));
+        this.control.patchValue(Math.max((this.control?.value ?? 0) - 20, this.min));
     }
 }

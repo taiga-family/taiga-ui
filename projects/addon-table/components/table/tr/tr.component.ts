@@ -6,7 +6,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
 
 import {TuiCellDirective} from '../directives/cell.directive';
@@ -20,7 +20,7 @@ import {TuiTbodyComponent} from '../tbody/tbody.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTrComponent<T extends Record<string, any>> {
+export class TuiTrComponent<T> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
@@ -48,4 +48,9 @@ export class TuiTrComponent<T extends Record<string, any>> {
         @Inject(forwardRef(() => TuiTbodyComponent))
         private readonly body: TuiTbodyComponent<T>,
     ) {}
+
+    @tuiPure
+    $keyof<U>(key: any): keyof U {
+        return key.toString() as keyof U;
+    }
 }

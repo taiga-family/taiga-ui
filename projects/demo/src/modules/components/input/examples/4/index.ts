@@ -125,11 +125,11 @@ export class TuiInputExample4 {
     get card(): string | null {
         const value = this.testForm.get(`card`)!.value;
 
-        if (value.length < 7) {
+        if ((value?.length ?? 0) < 7) {
             return null;
         }
 
-        switch (value.charAt(0)) {
+        switch (value?.charAt(0)) {
             case `0`:
             case `1`:
             case `2`:
@@ -152,7 +152,7 @@ export class TuiInputExample4 {
         return (
             this.lastUser !== null &&
             this.lastUser.toString().toLowerCase() ===
-                this.testForm.get(`user`)!.value.toLowerCase()
+                this.testForm.get(`user`)?.value?.toLowerCase()
         );
     }
 

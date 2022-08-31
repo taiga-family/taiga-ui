@@ -20,7 +20,7 @@ export class TuiInputFilesExample2 {
 
     removeFile({name}: File): void {
         this.control.setValue(
-            this.control.value.filter((current: File) => current.name !== name),
+            this.control.value?.filter((current: File) => current.name !== name) ?? [],
         );
     }
 
