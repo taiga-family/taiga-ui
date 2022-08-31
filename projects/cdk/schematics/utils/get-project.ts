@@ -5,7 +5,12 @@ export function getProject(
     options: Schema,
     workspace: WorkspaceDefinition,
 ): ProjectDefinition | undefined {
+    const firstProjectName = Array.from(workspace.projects.keys())?.[0];
+
     const projectName =
-        options.project || workspace.extensions.defaultProject?.toString() || '';
+        options.project ||
+        workspace.extensions.defaultProject?.toString() ||
+        firstProjectName ||
+        '';
     return workspace.projects.get(projectName);
 }
