@@ -1,9 +1,9 @@
-import {TuiComponentHarness } from '@taiga-ui/testing/utils';
+import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 import {TuiLoaderHarness} from '../loader/loader.harness';
 
-export class TuiButtonHarness extends TuiComponentHarness  {
-    static hostSelector = `[tuiButton]`
+export class TuiButtonHarness extends TuiComponentHarness {
+    static hostSelector = `[tuiButton]`;
     private readonly loader = this.locatorForOptional(TuiLoaderHarness);
 
     async isLoading(): Promise<boolean> {
