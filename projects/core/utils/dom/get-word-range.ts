@@ -19,7 +19,6 @@ export function tuiGetWordRange(currentRange: Range): Range {
         ownerDocument.body,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
-        false,
     );
 
     treeWalker.currentNode = startContainer;
