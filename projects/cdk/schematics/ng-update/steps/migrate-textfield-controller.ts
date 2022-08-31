@@ -34,12 +34,12 @@ const TEXTFIELDS = [
 
 const ATTRS_MAP: Record<string, string> = {
     tuitextfieldautocomplete: 'autocomplete',
-    tuitextfieldinputMode: 'inputmode',
+    tuitextfieldinputmode: 'inputmode',
     tuitextfieldmaxlength: 'maxlength',
     tuitextfieldtype: 'type',
     tuitextfieldexampletext: 'placeholder',
     '[tuitextfieldautocomplete]': '[attr.autocomplete]',
-    '[tuitextfieldinputMode]': '[attr.inputmode]',
+    '[tuitextfieldinputmode]': '[attr.inputmode]',
     '[tuitextfieldmaxlength]': '[attr.maxlength]',
     '[tuitextfieldtype]': '[attr.type]',
     '[tuitextfieldexampletext]': '[attr.placeholder]',
