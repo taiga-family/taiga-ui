@@ -1,7 +1,9 @@
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeS} from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
+import {configureTestSuite, TuiCardHarness} from '@taiga-ui/testing';
 
 import {TuiCardComponent} from '../card.component';
 import {TuiCardModule} from '../card.module';
@@ -27,6 +29,7 @@ describe(`Card`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
+    let loader: HarnessLoader;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -37,25 +40,20 @@ describe(`Card`, () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
 
     describe(`paymentSystem`, () => {
-        it(`gets payment system logo`, () => {
+        it(`gets payment system logo`, async () => {
             testComponent.paymentSystem = `visa`;
 
             fixture.detectChanges();
+            const tuiCard = await loader.getHarness(TuiCardHarness);
+            const hasPaymentSystemLogo = await tuiCard.hasPaymentSystemLogo();
 
-            expect(testComponent.component.paymentSystemLogo).toBe(`tuiIconVisaMono`);
-        });
-
-        it(`returns empty string if paymentSystem is not inputed`, () => {
-            testComponent.paymentSystem = null;
-
-            fixture.detectChanges();
-
-            expect(testComponent.component.paymentSystemLogo).toBe(``);
+            expect(hasPaymentSystemLogo).toBeTruthy();
         });
     });
 
@@ -66,20 +64,26 @@ describe(`Card`, () => {
             testComponent.brandLogo = logo;
         });
 
-        it(`is shown if there is and size is m`, () => {
+        it(`is shown if there is and size is m`, async () => {
             testComponent.size = `m`;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.hasBrandLogo).toBe(true);
+            const tuiCard = await loader.getHarness(TuiCardHarness);
+            const hasBrandLogo = await tuiCard.hasBrandLogo();
+
+            expect(hasBrandLogo).toBeTruthy();
         });
 
-        it(`is not shown if there is and size is s`, () => {
+        it(`is not shown if there is and size is s`, async () => {
             testComponent.size = `s`;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.hasBrandLogo).toBe(false);
+            const tuiCard = await loader.getHarness(TuiCardHarness);
+            const hasBrandLogo = await tuiCard.hasBrandLogo();
+
+            expect(hasBrandLogo).toBeFalsy();
         });
     });
 });
