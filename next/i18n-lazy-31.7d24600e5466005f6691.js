@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[71983],{228:(s,n,e)=>{e.r(n),e.d(n,{TUI_DUTCH_LANGUAGE_ADDON_TABLE:()=>a});const a={showHideText:"Toon/Verberg",paginationTexts:{pages:"Pagina's",linesPerPage:"Lijnen per pagina",of:"van"}}}}]);

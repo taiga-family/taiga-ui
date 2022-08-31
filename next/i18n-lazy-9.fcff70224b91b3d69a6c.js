@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[29868],{84356:(a,e,s)=>{s.r(e),s.d(e,{TUI_CHINESE_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"\u663e\u793a/\u9690\u85cf",paginationTexts:{pages:"\u9875\u9762",linesPerPage:"\u6bcf\u9875\u884c\u6570",of:"\u4e8e"}}}}]);
