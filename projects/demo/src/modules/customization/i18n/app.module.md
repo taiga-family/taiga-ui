@@ -17,7 +17,6 @@ import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
         import(
           /* webpackMode: "lazy" */
           /* webpackChunkName: "i18n-lazy-" */
-          /* webpackExports: ["named"] */
           `@taiga-ui/i18n/languages/${language}`
           // also you can override the paths to your i18n language files
         ),

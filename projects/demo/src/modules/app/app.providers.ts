@@ -128,7 +128,6 @@ export const APP_PROVIDERS: Provider[] = [
             import(
                 /* webpackMode: "lazy" */
                 /* webpackChunkName: "i18n-lazy-" */
-                /* webpackExports: ["named"] */
                 `dist/i18n/esm2015/languages/${language}`
             ),
     ),
