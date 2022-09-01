@@ -62,4 +62,20 @@ import {getValueByFlag} from './shared/argv.utils';
             console.info(`\x1B[35m%s\x1B[0m`, err.message);
         }
     }
+
+    for (const subVersion of location) {
+        const indexPath = `${demoPath}/${subVersion}/index.html`;
+
+        try {
+            const body = readFileSync(indexPath).toString();
+            const processedBody = body.replace(
+                /<base[\s\S]*?\/?>/g,
+                `<base href="/${subVersion}/">`,
+            );
+
+            writeFileSync(indexPath, processedBody);
+        } catch (err) {
+            console.info(`\x1B[35m%s\x1B[0m`, err.message);
+        }
+    }
 })();
