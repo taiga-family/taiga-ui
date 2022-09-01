@@ -56,7 +56,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding(`class._centered`)
-    get header(): PolymorpheusContent {
+    get header(): PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, O>> {
         return this.context.header;
     }
 

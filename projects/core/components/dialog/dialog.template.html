@@ -2,8 +2,7 @@
     *ngIf="header"
     class="t-header"
 >
-    <!-- TODO: Polymorpheus fix type -->
-    <ng-container *polymorpheusOutlet="$any(header) as text; context: context">
+    <ng-container *polymorpheusOutlet="header as text; context: context">
         {{ text }}
     </ng-container>
 </header>
