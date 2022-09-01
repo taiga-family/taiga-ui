@@ -109,7 +109,7 @@ function addTaigaStyles(options: Schema): Rule {
 }
 
 function getFileSystem(tree: Tree): DevkitFileSystem {
-    const project = createProject(tree, '/', [ALL_FILES]);
+    const project = createProject(tree, '/', ALL_FILES);
     setActiveProject(project);
     return project.getFileSystem().fs;
 }

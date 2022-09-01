@@ -162,7 +162,7 @@ const event = tuiCustomEvent(
        );
 `;
 
-describe('replace functions', () => {
+describe('replace functions (depth of file structure = 1)', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
@@ -180,7 +180,7 @@ describe('replace functions', () => {
     it('should replace functions', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
+        expect(tree.readContent('test/app.component.ts')).toEqual(AFTER);
     });
 
     afterEach(() => {
@@ -189,9 +189,9 @@ describe('replace functions', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
+    createSourceFile('test/app.component.ts', BEFORE);
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile('test/app.template.html', `<app></app>`);
 
     createAngularJson();
     createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');

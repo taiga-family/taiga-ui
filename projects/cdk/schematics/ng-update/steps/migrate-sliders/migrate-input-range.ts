@@ -10,7 +10,7 @@ import {
 } from 'ng-morph';
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
-import {ALL_TS_FILES} from '../../../constants';
+import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
@@ -116,5 +116,5 @@ function addMinMaxLabelMethod(
 function save(fileSystem: DevkitFileSystem) {
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+    setActiveProject(createProject(fileSystem.tree, '/', ALL_FILES));
 }
