@@ -5,7 +5,6 @@ on:
     paths:
       - 'scripts/**'
       - 'projects/**'
-      - '!projects/*testing/**'
       - '!projects/demo/**'
       - '!projects/icons/src/**'
       - '**/build.yml'
