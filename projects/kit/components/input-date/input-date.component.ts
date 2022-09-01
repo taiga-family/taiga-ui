@@ -143,7 +143,7 @@ export class TuiInputDateComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_VALUE_TRANSFORMER)
-        readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
+        override readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -280,17 +280,17 @@ export class TuiInputDateComponent
         this.updateFocused(focused);
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: TuiDay | null): void {
+    override writeValue(value: TuiDay | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : ``;
     }
 
-    protected valueIdenticalComparator(
+    protected override valueIdenticalComparator(
         oldValue: TuiDay | null,
         newValue: TuiDay | null,
     ): boolean {

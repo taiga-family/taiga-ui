@@ -51,7 +51,7 @@ export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiContro
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(null, Validators.required);
 }

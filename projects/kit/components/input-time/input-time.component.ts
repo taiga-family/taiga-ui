@@ -236,7 +236,7 @@ export class TuiInputTimeComponent
         this.open = open;
     }
 
-    writeValue(value: TuiTime | null): void {
+    override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : ``;
     }

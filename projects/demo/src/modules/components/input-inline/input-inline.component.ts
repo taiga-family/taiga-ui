@@ -34,7 +34,7 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
 
     control = new FormControl(`111`, Validators.required);
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    override readonly maxLengthVariants: readonly number[] = [10];
 
-    maxLength: number | null = null;
+    override maxLength: number | null = null;
 }

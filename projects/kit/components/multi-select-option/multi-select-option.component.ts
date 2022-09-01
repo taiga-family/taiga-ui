@@ -14,7 +14,7 @@ export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T
         return tuiSizeBigger(this.option.size) ? `l` : `m`;
     }
 
-    protected get selected(): boolean {
+    protected override get selected(): boolean {
         return (
             tuiIsPresent(this.option.value) &&
             tuiIsPresent(this.control.value) &&

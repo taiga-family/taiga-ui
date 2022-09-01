@@ -13,7 +13,7 @@ export class TuiInputPhoneDirective
 {
     input?: HTMLInputElement;
 
-    get value(): string {
+    override get value(): string {
         return this.host.computedValue;
     }
 
@@ -21,7 +21,7 @@ export class TuiInputPhoneDirective
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement): void {
+    override process(input: HTMLInputElement): void {
         this.input = input;
     }
 

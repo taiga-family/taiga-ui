@@ -58,9 +58,9 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
     readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly maxLengthVariants: readonly number[] = [50, 100, 500];
+    override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 
-    maxLength: number | null = null;
+    override maxLength: number | null = null;
 
     readonly rowsVariants: readonly number[] = [8, 15, 30];
 
@@ -70,7 +70,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     control = new FormControl();
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = [`m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = [`m`, `l`];
 
-    size: TuiSizeM | TuiSizeL = this.sizeVariants[1];
+    override size: TuiSizeM | TuiSizeL = this.sizeVariants[1];
 }

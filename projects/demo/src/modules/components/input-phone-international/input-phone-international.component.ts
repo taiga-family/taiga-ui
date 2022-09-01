@@ -35,7 +35,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
         LESS: import(`./examples/2/index.less?raw`),
     };
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(``, [Validators.required, Validators.minLength(9)]);
 
@@ -59,5 +59,5 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     ];
 
     countryIsoCode = this.countryIsoCodeVariants[0];
-    labelOutside = true;
+    override labelOutside = true;
 }

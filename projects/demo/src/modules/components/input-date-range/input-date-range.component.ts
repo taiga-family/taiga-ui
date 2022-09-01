@@ -71,9 +71,9 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     minLength: TuiDayLike | null = null;
 
-    readonly maxLengthVariants: readonly TuiDayLike[] = [{day: 5}, {month: 1}, {year: 1}];
+    override readonly maxLengthVariants: readonly TuiDayLike[] = [{day: 5}, {month: 1}, {year: 1}];
 
-    maxLength: TuiDayLike | null = null;
+    override maxLength: TuiDayLike | null = null;
 
     max = this.dayVariants[this.dayVariants.length - 1];
 
@@ -84,7 +84,7 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,

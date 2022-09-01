@@ -97,7 +97,7 @@ export class TuiEditorComponent
         );
     }
 
-    writeValue(value: string | null): void {
+    override writeValue(value: string | null): void {
         const processed = this.contentProcessor(value || ``);
 
         super.writeValue(processed);
@@ -125,7 +125,7 @@ export class TuiEditorComponent
         this.editor?.unsetLink();
     }
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         this.editor?.destroy();
     }
 

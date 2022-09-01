@@ -78,7 +78,7 @@ export class TuiRadioLabeledComponent<T>
     }
 
     @HostBinding(`class._disabled`)
-    get computedDisabled(): boolean {
+    override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 

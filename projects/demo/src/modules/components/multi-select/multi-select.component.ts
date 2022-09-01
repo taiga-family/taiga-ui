@@ -89,7 +89,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         HTML: import(`./examples/9/index.html?raw`),
     };
 
-    labelOutside = true;
+    override labelOutside = true;
 
     readonly items = [
         new Account(`Ruble`, 500),
@@ -105,7 +105,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     search: string | null = ``;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
     readonly iconVariants = [
         ``,
@@ -114,9 +114,9 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         `tuiIconCardsLarge`,
     ];
 
-    iconLeft = ``;
+    override iconLeft = ``;
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
+    override size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
@@ -132,9 +132,9 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     identityMatcher = this.identityMatcherVariants[0];
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    override readonly maxLengthVariants: readonly number[] = [10];
 
-    maxLength = null;
+    override maxLength = null;
 
     readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<readonly Account[]>>

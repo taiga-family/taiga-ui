@@ -34,11 +34,11 @@ export class TuiInputMonthDirective
             });
     }
 
-    get readOnly(): boolean {
+    override get readOnly(): boolean {
         return true;
     }
 
-    get value(): string {
+    override get value(): string {
         return this.localizedValue;
     }
 

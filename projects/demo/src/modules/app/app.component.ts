@@ -55,7 +55,7 @@ export class AppComponent extends AbstractDemoComponent {
         super(isCypress, pageLoaded$, versionMeta);
     }
 
-    async ngOnInit(): Promise<void> {
+    override async ngOnInit(): Promise<void> {
         await super.ngOnInit();
         this.enableYandexMetrika();
     }

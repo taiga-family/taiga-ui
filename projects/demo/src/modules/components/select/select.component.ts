@@ -112,7 +112,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     readonly iconVariants = [``, `tuiIconPiechartLarge`, `tuiIconCardsLarge`];
 
-    iconLeft = this.iconVariants[0];
+    override iconLeft = this.iconVariants[0];
 
     selectedValueTemplate = this.valueTemplateVariants[0];
 

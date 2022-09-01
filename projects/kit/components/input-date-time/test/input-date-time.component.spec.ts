@@ -406,8 +406,8 @@ describe(`InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER`, () => {
     }
 
     class TransformerTestComponent extends TestComponent {
-        control = new FormControl(`19.01.2022, 12:33`);
-        min = new TuiDay(1900, 0, 1);
+        override control = new FormControl(`19.01.2022, 12:33`);
+        override min = new TuiDay(1900, 0, 1);
     }
 
     configureTestSuite(() => {

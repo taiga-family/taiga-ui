@@ -10,11 +10,11 @@ import {TuiSelectComponent} from './select.component';
 export class TuiSelectDirective extends AbstractTuiTextfieldHost<
     TuiSelectComponent<unknown>
 > {
-    get readOnly(): boolean {
+    override get readOnly(): boolean {
         return true;
     }
 
-    get value(): string {
+    override get value(): string {
         return this.host.computedValue;
     }
 

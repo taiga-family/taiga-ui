@@ -229,12 +229,12 @@ export class TuiInputPhoneComponent
         this.open = false;
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: string | null): void {
+    override writeValue(value: string | null): void {
         super.writeValue(value);
         this.updateSearch(``);
     }

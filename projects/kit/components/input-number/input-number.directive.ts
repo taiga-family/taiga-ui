@@ -13,7 +13,7 @@ export class TuiInputNumberDirective
 {
     input?: HTMLInputElement;
 
-    get value(): string {
+    override get value(): string {
         return this.host.computedValue;
     }
 

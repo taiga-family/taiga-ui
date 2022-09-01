@@ -141,7 +141,7 @@ export class TuiInputMonthRangeComponent
         }
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }

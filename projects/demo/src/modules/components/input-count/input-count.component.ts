@@ -46,9 +46,9 @@ export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
 
     stepValues = [1, 2, 3, 4, 5];
 
-    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    override readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size: TuiSizeL = this.sizeVariants[1];
+    override size: TuiSizeL = this.sizeVariants[1];
 
     hideButtons = false;
 

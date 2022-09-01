@@ -102,7 +102,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     readonly iconVariants = [``, `tuiIconPiechartLarge`, `tuiIconCardsLarge`];
 
-    iconLeft = this.iconVariants[0];
+    override iconLeft = this.iconVariants[0];
 
     readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,

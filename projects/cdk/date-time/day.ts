@@ -61,7 +61,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Current day based on local time zone
      */
-    static currentLocal(): TuiDay {
+    static override currentLocal(): TuiDay {
         const nativeDate = new Date();
         const year = nativeDate.getFullYear();
         const month = nativeDate.getMonth();
@@ -73,7 +73,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Returns current day based on UTC
      */
-    static currentUtc(): TuiDay {
+    static override currentUtc(): TuiDay {
         const nativeDate = new Date();
         const year = nativeDate.getUTCFullYear();
         const month = nativeDate.getUTCMonth();
@@ -102,7 +102,7 @@ export class TuiDay extends TuiMonth {
         return new TuiDay(normalizedYear, normalizedMonth, normalizedDay);
     }
 
-    static lengthBetween(from: TuiDay, to: TuiDay): number {
+    static override lengthBetween(from: TuiDay, to: TuiDay): number {
         return Math.round(
             (to.toLocalNativeDate().getTime() - from.toLocalNativeDate().getTime()) /
                 (1000 * 60 * 60 * 24),
@@ -299,7 +299,7 @@ export class TuiDay extends TuiMonth {
      * @param offset
      * @return new date object as a result of offsetting current
      */
-    append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
+    override append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;
@@ -359,25 +359,25 @@ export class TuiDay extends TuiMonth {
         }
     }
 
-    toString(dateFormat: TuiDateMode = `DMY`, separator: string = `.`): string {
+    override toString(dateFormat: TuiDateMode = `DMY`, separator: string = `.`): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 
-    toJSON(): string {
+    override toJSON(): string {
         return `${super.toJSON()}-${this.formattedDayPart}`;
     }
 
     /**
      * Returns native {@link Date} based on local time zone
      */
-    toLocalNativeDate(): Date {
+    override toLocalNativeDate(): Date {
         return new Date(this.year, this.month, this.day);
     }
 
     /**
      * Returns native {@link Date} based on UTC
      */
-    toUtcNativeDate(): Date {
+    override toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month, this.day));
     }
 }

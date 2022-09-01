@@ -285,7 +285,7 @@ export class TuiMultiSelectComponent<T>
         this.updateFocused(active);
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }

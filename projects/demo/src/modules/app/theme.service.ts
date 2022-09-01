@@ -20,7 +20,7 @@ export class TuiThemeService extends BehaviorSubject<string> {
         super(storage.getItem(`theme`) || fallback);
     }
 
-    next(value: string): void {
+    override next(value: string): void {
         this.storage.setItem(`theme`, value);
         super.next(value);
     }

@@ -131,7 +131,7 @@ export class TuiInputDateTimeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_TIME_VALUE_TRANSFORMER)
-        readonly valueTransformer: TuiControlValueTransformer<
+        override readonly valueTransformer: TuiControlValueTransformer<
             [TuiDay | null, TuiTime | null]
         > | null,
     ) {
@@ -281,12 +281,12 @@ export class TuiInputDateTimeComponent
         });
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+    override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
         this.nativeValue = value && (value[0] || value[1]) ? this.computedValue : ``;
@@ -296,7 +296,7 @@ export class TuiInputDateTimeComponent
         return [null, null];
     }
 
-    protected valueIdenticalComparator(
+    protected override valueIdenticalComparator(
         oldValue: [TuiDay | null, TuiTime | null],
         newValue: [TuiDay | null, TuiTime | null],
     ): boolean {

@@ -35,9 +35,9 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     length = this.lengthVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
-    exampleText = `0000 0000 0000 0000`;
+    override exampleText = `0000 0000 0000 0000`;
 
     hintContentCVC = null;
 

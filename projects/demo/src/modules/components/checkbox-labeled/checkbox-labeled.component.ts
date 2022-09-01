@@ -34,9 +34,9 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
         HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    override readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size: TuiSizeL = this.sizeVariants[0];
+    override size: TuiSizeL = this.sizeVariants[0];
 
     control = new FormGroup({
         testValue1: new FormControl(false),

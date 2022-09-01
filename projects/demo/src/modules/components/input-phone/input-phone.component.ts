@@ -39,7 +39,7 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
         LESS: import(`./examples/3/index.less?raw`),
     };
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(``, [Validators.required, Validators.minLength(12)]);
 

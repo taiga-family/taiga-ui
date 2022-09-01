@@ -191,7 +191,7 @@ export class TuiInputPhoneInternationalComponent
         }
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }

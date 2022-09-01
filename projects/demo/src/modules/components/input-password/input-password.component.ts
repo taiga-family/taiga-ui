@@ -34,17 +34,17 @@ export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl 
         HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    override readonly maxLengthVariants: readonly number[] = [10];
 
-    autocompleteVariants: TuiAutofillFieldName[] = [
+    override autocompleteVariants: TuiAutofillFieldName[] = [
         `off`,
         `new-password`,
         `current-password`,
     ];
 
-    autocomplete: TuiAutofillFieldName | '' = ``;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    maxLength = null;
+    override maxLength = null;
 
     control = new FormControl(``, Validators.required);
 }

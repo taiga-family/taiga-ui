@@ -88,15 +88,15 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
-    maxLengthVariants: number[] = [10, 20];
+    override maxLengthVariants: number[] = [10, 20];
 
-    maxLength: number | null = null;
+    override maxLength: number | null = null;
 
     search = ``;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
+    override size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,
