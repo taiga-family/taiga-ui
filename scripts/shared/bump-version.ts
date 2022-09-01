@@ -6,7 +6,9 @@ export function bumpVersion(version: string, mode: TuiReleaseMode): string {
         .map(value => Number(value));
 
     if (rc !== -1 && mode !== `major` && mode !== `prerelease`) {
-        throw new Error(`You are using the invalid mode (\`${mode}\`) for bump ${version} version`);
+        throw new Error(
+            `You are using the invalid mode (\`${mode}\`) for bump ${version} version`,
+        );
     }
 
     switch (mode) {
