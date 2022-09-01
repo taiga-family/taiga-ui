@@ -103,7 +103,7 @@ const TEMPLATE_AFTER = `
 </ng-container></div>
 `;
 
-describe('ng-update', () => {
+describe('ng-update (flat file structure)', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
@@ -121,7 +121,7 @@ describe('ng-update', () => {
     it('should migrate textfields', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
     afterEach(() => {
@@ -130,9 +130,9 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile('test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
 
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile('test.template.html', TEMPLATE_BEFORE);
 
     createAngularJson();
 }

@@ -20,7 +20,7 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {ALL_TS_FILES} from '../../constants';
+import {ALL_FILES, ALL_TS_FILES} from '../../constants';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
@@ -38,7 +38,7 @@ export function migrateProgress(fileSystem: DevkitFileSystem): void {
 
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+    setActiveProject(createProject(fileSystem.tree, '/', ALL_FILES));
 
     successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
 }
