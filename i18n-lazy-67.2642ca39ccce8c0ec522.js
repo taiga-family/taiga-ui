@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[17871],{78945:()=>{}}]);
