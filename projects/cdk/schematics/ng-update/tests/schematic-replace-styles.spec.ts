@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -23,6 +24,7 @@ const BEFORE_GLOBAL_STYLE = `
 
 const AFTER_GLOBAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-fonts';
+${TUI_WARNING_NORMALIZE}
 @import '~@taiga-ui/styles/taiga-ui-global';
 @import '~@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 @import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-v2';
