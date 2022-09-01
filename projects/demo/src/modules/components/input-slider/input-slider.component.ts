@@ -101,7 +101,11 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     keySteps: TuiKeySteps | null = null;
 
-    override readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
+        `off`,
+        `transaction-amount`,
+    ];
+
     override autocomplete: TuiAutofillFieldName | '' = ``;
 
     override readonly customContentVariants: string[] = [

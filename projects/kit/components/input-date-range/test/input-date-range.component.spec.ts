@@ -335,7 +335,10 @@ describe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
     }
 
     class TransformerTestComponent extends TestComponent {
-        override control = new FormControl([new Date(2022, 0, 31), new Date(2022, 5, 14)]);
+        override control = new FormControl([
+            new Date(2022, 0, 31),
+            new Date(2022, 5, 14),
+        ]);
     }
 
     configureTestSuite(() => {

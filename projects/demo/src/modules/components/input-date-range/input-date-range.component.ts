@@ -71,7 +71,11 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     minLength: TuiDayLike | null = null;
 
-    override readonly maxLengthVariants: readonly TuiDayLike[] = [{day: 5}, {month: 1}, {year: 1}];
+    override readonly maxLengthVariants: readonly TuiDayLike[] = [
+        {day: 5},
+        {month: 1},
+        {year: 1},
+    ];
 
     override maxLength: TuiDayLike | null = null;
 
