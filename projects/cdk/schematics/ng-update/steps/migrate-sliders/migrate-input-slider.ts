@@ -16,12 +16,19 @@ import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {hasElementAttribute} from '../../../utils/templates/elements';
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
+import {setupProgressLogger} from '../../../utils/progress';
 
 export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     const templateResources = getComponentTemplates(ALL_TS_FILES);
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
+    let progressLog = setupProgressLogger({
+        total: templateResources.length,
+        prefix: '[replaceMinMaxLabels]',
+    });
+
     for (const templateResource of templateResources) {
+        progressLog(templateResource.componentPath);
         replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
     }
 
@@ -33,7 +40,13 @@ export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, '/', ALL_FILES));
 
+    progressLog = setupProgressLogger({
+        total: COMPONENTS_WITH_MIN_MAX_LABELS.size,
+        prefix: '[addMinMaxLabelMethod]',
+    });
+
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
+        progressLog(componentPath);
         addMinMaxLabelMethod(componentPath);
     }
 }

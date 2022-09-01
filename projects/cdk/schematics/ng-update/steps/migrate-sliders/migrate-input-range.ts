@@ -11,6 +11,7 @@ import {
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
+import {setupProgressLogger} from '../../../utils/progress';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
@@ -20,14 +21,26 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
+    let progressLog = setupProgressLogger({
+        total: templateResources.length,
+        prefix: '[replaceMinMaxLabel]',
+    });
+
     for (const templateResource of templateResources) {
+        progressLog(templateResource.componentPath);
         replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
     }
 
     save(fileSystem);
 
+    progressLog = setupProgressLogger({
+        total: COMPONENTS_WITH_MIN_LABELS.size,
+        prefix: '[COMPONENTS_WITH_MIN_LABELS]',
+    });
+
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_LABELS)) {
+        progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range',
@@ -37,7 +50,12 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
         ]);
     }
 
+    progressLog = setupProgressLogger({
+        total: COMPONENTS_WITH_MAX_LABELS.size,
+        prefix: '[COMPONENTS_WITH_MAX_LABELS]',
+    });
     for (const componentPath of Array.from(COMPONENTS_WITH_MAX_LABELS)) {
+        progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',
