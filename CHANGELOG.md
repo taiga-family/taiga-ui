@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/tinkoff/taiga-ui/compare/v3.0.0...v3.0.1) (2022-09-01)
+
+### Bug Fixes
+
+- **cdk:** `schematics` fix 3.0-migration for `tuiTextfieldInputMode`
+  ([#2544](https://github.com/tinkoff/taiga-ui/issues/2544))
+  ([9f8fd3d](https://github.com/tinkoff/taiga-ui/commit/9f8fd3d2454e1a32b1dd40cd455292524857b658))
+- **core:** `DropdownContext` close previous dropdown after new one is opened
+  ([#2535](https://github.com/tinkoff/taiga-ui/issues/2535))
+  ([ae45123](https://github.com/tinkoff/taiga-ui/commit/ae451233a3cf1c79ca137431b51a39df028abeb0))
+
 ## [3.0.0](https://github.com/tinkoff/taiga-ui/compare/v2.62.1...v3.0.0) (2022-08-30)
 
 ### ⚠ BREAKING CHANGES
