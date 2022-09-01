@@ -5,17 +5,19 @@ export function bumpVersion(version: string, mode: TuiReleaseMode): string {
         .split(/[.-]/)
         .map(value => Number(value));
 
-    const possibilityMajor = rc === -1 ? ++major : major;
+    if (rc !== -1 && mode !== `major` && mode !== `prerelease`) {
+        throw new Error(`You are using the invalid mode (\`${mode}\`) for bump ${version} version`);
+    }
 
     switch (mode) {
         case `major`:
-            return `${possibilityMajor}.0.0`;
+            return `${rc === -1 ? ++major : major}.0.0`;
         case `minor`:
-            return `${possibilityMajor}.${++minor}.0`;
+            return `${major}.${++minor}.0`;
         case `patch`:
-            return `${possibilityMajor}.${minor}.${++patch}`;
+            return `${major}.${minor}.${++patch}`;
         case `prerelease`:
-            return `${possibilityMajor}.0.0-rc.${++rc}`;
+            return `${major}.0.0-rc.${++rc}`;
         default:
             return version;
     }
