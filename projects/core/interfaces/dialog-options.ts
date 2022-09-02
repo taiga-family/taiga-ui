@@ -1,3 +1,4 @@
+import {TuiDialog} from '@taiga-ui/cdk';
 import {TuiDialogSize} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -18,6 +19,6 @@ export interface TuiDialogOptions<I> {
     readonly closeable: boolean;
     readonly dismissible: boolean;
     readonly label: string;
-    readonly header: PolymorpheusContent;
+    readonly header: PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, any>>;
     readonly data: I;
 }
