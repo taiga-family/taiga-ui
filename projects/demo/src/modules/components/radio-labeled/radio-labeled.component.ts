@@ -42,9 +42,9 @@ export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiControl {
 
     readonly items = [{name: `tariff1`}, {name: `tariff2`}, {name: `tariff3`}];
 
-    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    override readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size: TuiSizeL = this.sizeVariants[0];
+    override size: TuiSizeL = this.sizeVariants[0];
 
     pseudoDisabled = false;
 

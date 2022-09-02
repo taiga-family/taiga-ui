@@ -20,7 +20,7 @@ export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptio
 
     shape = null;
 
-    readonly change$ = this.modeDirective?.change$ || new Subject();
+    override readonly change$ = this.modeDirective?.change$ || new Subject();
 
     constructor(
         @Optional()

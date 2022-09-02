@@ -59,7 +59,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
         HTML: import(`./examples/5/index.html?raw`),
     };
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(TuiTime.currentLocal(), Validators.required);
 

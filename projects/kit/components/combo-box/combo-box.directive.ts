@@ -10,7 +10,7 @@ import {TuiComboBoxComponent} from './combo-box.component';
 export class TuiComboBoxDirective extends AbstractTuiTextfieldHost<
     TuiComboBoxComponent<unknown>
 > {
-    get value(): string {
+    override get value(): string {
         return this.host.nativeValue;
     }
 

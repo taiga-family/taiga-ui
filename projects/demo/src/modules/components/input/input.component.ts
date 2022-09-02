@@ -86,7 +86,7 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     readonly iconVariants = [``, `tuiIconSearchLarge`, `tuiIconCalendarLarge`];
 
     icon = this.iconVariants[0];
-    iconLeft = this.iconVariants[0];
+    override iconLeft = this.iconVariants[0];
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
@@ -94,7 +94,7 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
 
     readonly control = new FormControl(`111`, Validators.required);
 
-    readonly customContentVariants = [
+    override readonly customContentVariants = [
         `tuiIconSearchLarge`,
         `tuiIconCalendarLarge`,
         `tuiIconVisaMono`,
@@ -102,13 +102,13 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LONG_TEXT_TEMPLATE,
     ];
 
-    get customContent(): PolymorpheusContent {
+    override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE
             ? this.longTextRef
             : this.customContentSelected;
     }
 
-    set customContent(newValue) {
+    override set customContent(newValue) {
         this.customContentSelected = newValue;
     }
 }

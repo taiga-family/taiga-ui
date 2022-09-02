@@ -23,7 +23,7 @@ export class TuiMobileDialogService extends AbstractTuiDialogService<
     protected readonly defaultOptions: TuiMobileDialogOptions<any> =
         DEFAULT_OPTIONS as any;
 
-    open(
+    override open(
         content: PolymorpheusContent<
             TuiBaseDialogContext<number> & TuiMobileDialogOptions<any>
         >,

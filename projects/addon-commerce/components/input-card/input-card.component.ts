@@ -131,7 +131,7 @@ export class TuiInputCardComponent
         this.updateFocused(focused);
     }
 
-    writeValue(value: string | null): void {
+    override writeValue(value: string | null): void {
         const currentBin = this.bin;
 
         super.writeValue(value);

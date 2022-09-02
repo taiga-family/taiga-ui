@@ -72,9 +72,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    override readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size = this.sizeVariants[1];
+    override size = this.sizeVariants[1];
 
     prefix = ``;
     postfix = ``;
@@ -101,13 +101,17 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     keySteps: TuiKeySteps | null = null;
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
-    autocomplete: TuiAutofillFieldName | '' = ``;
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
+        `off`,
+        `transaction-amount`,
+    ];
 
-    readonly customContentVariants: string[] = [
+    override autocomplete: TuiAutofillFieldName | '' = ``;
+
+    override readonly customContentVariants: string[] = [
         `tuiIconVisaMono`,
         `tuiIconMastercardMono`,
     ];
 
-    customContentSelected = null;
+    override customContentSelected = null;
 }

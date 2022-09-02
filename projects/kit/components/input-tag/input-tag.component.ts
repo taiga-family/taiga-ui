@@ -408,7 +408,7 @@ export class TuiInputTagComponent
         this.open = this.hasNativeValue;
     }
 
-    setDisabledState(): void {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
@@ -418,7 +418,7 @@ export class TuiInputTagComponent
         return tag.toString();
     }
 
-    protected updateValue(value: string[]): void {
+    protected override updateValue(value: string[]): void {
         const seen = new Set();
 
         super.updateValue(

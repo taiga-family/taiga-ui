@@ -99,11 +99,11 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     items = this.itemsVariants[0];
 
-    autocompleteVariants: TuiAutofillFieldName[] = [`off`, `bday`];
+    override autocompleteVariants: TuiAutofillFieldName[] = [`off`, `bday`];
 
-    autocomplete: TuiAutofillFieldName | '' = ``;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(null, Validators.required);
 }

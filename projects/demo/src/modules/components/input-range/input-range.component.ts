@@ -69,9 +69,9 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
+    override sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size = this.sizeVariants[1];
+    override size = this.sizeVariants[1];
 
     readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: `thing`, few: `things`, many: `things`, other: `things`},

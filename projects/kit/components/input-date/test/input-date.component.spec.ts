@@ -378,7 +378,7 @@ describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
     }
 
     class TransformerTestComponent extends TestComponent {
-        control = new FormControl(new Date(2022, 0, 31));
+        override control = new FormControl(new Date(2022, 0, 31));
     }
 
     configureTestSuite(() => {

@@ -151,7 +151,7 @@ export class TuiInputDateRangeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
-        readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,
+        override readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -361,7 +361,7 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    writeValue(value: TuiDayRange | null): void {
+    override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : ``;
     }

@@ -11,7 +11,7 @@ export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions, str
     protected readonly component = new PolymorpheusComponent(TuiPushAlertComponent);
     protected readonly defaultOptions = TUI_PUSH_DEFAULT_OPTIONS;
 
-    open(
+    override open(
         content: PolymorpheusContent<TuiBaseDialogContext<string> & TuiPushOptions>,
         options: Partial<TuiPushOptions> = {},
     ): Observable<string> {

@@ -392,7 +392,7 @@ export class TuiInputCardGroupedComponent
         this.open = !this.open;
     }
 
-    writeValue(value: TuiCard | null): void {
+    override writeValue(value: TuiCard | null): void {
         const {bin} = this;
 
         super.writeValue(value);

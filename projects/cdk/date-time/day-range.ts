@@ -10,7 +10,7 @@ import {TuiMonthRange} from './month-range';
  * An immutable range of two {@link TuiDay} objects
  */
 export class TuiDayRange extends TuiMonthRange {
-    constructor(readonly from: TuiDay, readonly to: TuiDay) {
+    constructor(override readonly from: TuiDay, override readonly to: TuiDay) {
         super(from, to);
 
         tuiAssert.assert(from.daySameOrBefore(to));
@@ -23,7 +23,7 @@ export class TuiDayRange extends TuiMonthRange {
      * @param day2
      * @return new range with sorted days
      */
-    static sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
+    static override sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
         return day1.daySameOrBefore(day2)
             ? new TuiDayRange(day1, day2)
             : new TuiDayRange(day2, day1);
@@ -93,7 +93,10 @@ export class TuiDayRange extends TuiMonthRange {
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    toString(dateFormat: TuiDateMode = `DMY`, dateSeparator: string = `.`): string {
+    override toString(
+        dateFormat: TuiDateMode = `DMY`,
+        dateSeparator: string = `.`,
+    ): string {
         const from = this.from.getFormattedDay(dateFormat, dateSeparator);
         const to = this.to.getFormattedDay(dateFormat, dateSeparator);
 

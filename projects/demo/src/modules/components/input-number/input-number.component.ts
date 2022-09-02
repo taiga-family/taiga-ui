@@ -63,15 +63,18 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     align = this.alignVariants[0];
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `transaction-amount`];
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
+        `off`,
+        `transaction-amount`,
+    ];
 
-    autocomplete: TuiAutofillFieldName | '' = ``;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
     readonly decimalVariants: readonly TuiDecimal[] = [`not-zero`, `always`, `never`];
 
     decimal = this.decimalVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
     readonly precisionVariants: readonly number[] = [2, 3, 4];
 

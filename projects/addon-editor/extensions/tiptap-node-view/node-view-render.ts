@@ -50,7 +50,7 @@ class TuiNodeView extends NodeView<
     renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
     contentDOMElement: HTMLElement | null = null;
 
-    mount(): void {
+    override mount(): void {
         const injector = this.options.injector;
         const documentRef = injector.get(DOCUMENT);
 
@@ -88,11 +88,11 @@ class TuiNodeView extends NodeView<
         }
     }
 
-    get dom(): HTMLElement {
+    override get dom(): HTMLElement {
         return this.renderer.dom;
     }
 
-    get contentDOM(): HTMLElement | null {
+    override get contentDOM(): HTMLElement | null {
         if (this.node.isLeaf) {
             return null;
         }

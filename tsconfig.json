@@ -57,6 +57,7 @@
         "useDefineForClassFields": false,
         "forceConsistentCasingInFileNames": true,
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
+        "noImplicitOverride": true,
         "paths": {
             "@taiga-ui/cdk": ["projects/cdk/index"],
             "@taiga-ui/cdk/*": ["projects/cdk/*"],

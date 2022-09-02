@@ -77,7 +77,7 @@ export class TuiSliderKeyStepsDirective
         );
     }
 
-    writeValue(controlValue: number | null): void {
+    override writeValue(controlValue: number | null): void {
         if (controlValue === null) {
             return;
         }

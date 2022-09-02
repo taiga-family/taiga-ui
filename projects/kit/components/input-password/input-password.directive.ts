@@ -18,7 +18,7 @@ export class TuiInputPasswordDirective
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement): void {
+    override process(input: HTMLInputElement): void {
         this.input = input;
     }
 

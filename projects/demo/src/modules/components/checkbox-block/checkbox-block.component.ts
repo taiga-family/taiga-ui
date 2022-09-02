@@ -46,9 +46,9 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl 
 
     hideCheckbox = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
+    override size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
 
     readonly control = new FormGroup({
         testValue1: new FormControl(false),
@@ -56,11 +56,11 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl 
         testValue3: new FormControl(true),
     });
 
-    get disabled(): boolean {
+    override get disabled(): boolean {
         return this.control.disabled;
     }
 
-    set disabled(value: boolean) {
+    override set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {

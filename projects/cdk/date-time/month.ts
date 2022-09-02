@@ -64,7 +64,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
     }
 
-    static lengthBetween(from: TuiMonth, to: TuiMonth): number {
+    static override lengthBetween(from: TuiMonth, to: TuiMonth): number {
         const absoluteFrom = from.month + from.year * 12;
         const absoluteTo = to.month + to.year * 12;
 
@@ -149,7 +149,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @param offset
      * @return new month and year object as a result of offsetting current
      */
-    append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
+    override append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
 
         return new TuiMonth(
@@ -158,15 +158,15 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    toString(): string {
+    override toString(): string {
         return `${this.formattedMonthPart}.${this.formattedYear}`;
     }
 
-    valueOf(): number {
+    override valueOf(): number {
         return this.toLocalNativeDate().valueOf();
     }
 
-    toJSON(): string {
+    override toJSON(): string {
         return `${super.toJSON()}-${this.formattedMonthPart}`;
     }
 

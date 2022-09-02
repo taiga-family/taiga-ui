@@ -175,7 +175,7 @@ export abstract class AbstractTuiControl<T>
         this.refreshLocalValue(this.fromControlValue(controlValue));
     }
 
-    protected updateFocused(focused: boolean): void {
+    protected override updateFocused(focused: boolean): void {
         if (!focused) {
             this.controlMarkAsTouched();
         }

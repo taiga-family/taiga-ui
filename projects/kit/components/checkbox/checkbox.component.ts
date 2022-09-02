@@ -65,7 +65,7 @@ export class TuiCheckboxComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get computedFocusable(): boolean {
+    override get computedFocusable(): boolean {
         return this.interactive && this.focusable;
     }
 

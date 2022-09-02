@@ -49,11 +49,11 @@ export class TuiInputMonthRangeDirective
             });
     }
 
-    get readOnly(): boolean {
+    override get readOnly(): boolean {
         return true;
     }
 
-    get value(): string {
+    override get value(): string {
         return this.localizedValue[0]
             ? this.host.computeValue(...this.localizedValue)
             : ``;

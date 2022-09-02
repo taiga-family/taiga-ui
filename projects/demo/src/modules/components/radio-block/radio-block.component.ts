@@ -45,19 +45,19 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
 
     hideRadio = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
+    override size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
 
     pseudoDisabled = false;
 
     readonly control = new FormControl(`orange`);
 
-    get disabled(): boolean {
+    override get disabled(): boolean {
         return this.control.disabled;
     }
 
-    set disabled(value: boolean) {
+    override set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {

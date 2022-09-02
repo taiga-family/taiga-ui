@@ -92,7 +92,7 @@ export class TuiRadioComponent<T>
     }
 
     @HostBinding(`class._disabled`)
-    get computedDisabled(): boolean {
+    override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
@@ -114,7 +114,7 @@ export class TuiRadioComponent<T>
                   this.identityMatcher(this.value, this.item);
     }
 
-    get computedName(): string {
+    override get computedName(): string {
         return this.name || this.radioGroupName || this.controlName || ``;
     }
 

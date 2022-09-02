@@ -34,9 +34,9 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
 
     readonly control = new FormControl(``, Validators.required);
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    override readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly autocompleteVariants: TuiAutofillFieldName[] = [
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
         `off`,
         `cc-name`,
         `cc-number`,
@@ -53,9 +53,9 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
         `country-name`,
     ];
 
-    readonly autocomplete: TuiAutofillFieldName | '' = ``;
+    override readonly autocomplete: TuiAutofillFieldName | '' = ``;
 
-    readonly maxLength = null;
+    override readonly maxLength = null;
 
     readonly successMessageVariants = [`Copied`, `Template`];
 

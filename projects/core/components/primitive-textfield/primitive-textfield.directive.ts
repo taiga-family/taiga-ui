@@ -22,7 +22,7 @@ export class TuiPrimitiveTextfieldDirective extends AbstractTuiTextfieldHost<any
         super(textfield as unknown as AbstractTuiControl<unknown>);
     }
 
-    get readOnly(): boolean {
+    override get readOnly(): boolean {
         return this.textfield.readOnly || !this.textfield.editable;
     }
 

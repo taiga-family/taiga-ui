@@ -8,7 +8,7 @@ import {TuiInputDateComponent} from './input-date.component';
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
 })
 export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDateComponent> {
-    get value(): string {
+    override get value(): string {
         return this.host.computedValue;
     }
 
@@ -16,7 +16,7 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
         this.host.onValueChange(value);
     }
 
-    process(input: HTMLInputElement): void {
+    override process(input: HTMLInputElement): void {
         input.inputMode = `numeric`;
     }
 }

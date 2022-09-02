@@ -206,7 +206,7 @@ export class TuiComboBoxComponent<T>
         this.hostedDropdown?.updateOpen(true);
     }
 
-    updateValue(value: T | null): void {
+    override updateValue(value: T | null): void {
         super.updateValue(value);
     }
 
