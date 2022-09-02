@@ -1,11 +1,11 @@
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, Inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
+import {configureTestSuite, TuiSvgHarness} from '@taiga-ui/testing';
 import {of, throwError} from 'rxjs';
-import {filter, skip} from 'rxjs/operators';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
      width="32"
@@ -46,6 +46,7 @@ describe(`Svg`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
+    let loader: HarnessLoader;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -63,6 +64,7 @@ describe(`Svg`, () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
+        loader = TestbedHarnessEnvironment.loader(fixture);
         fixture.detectChanges();
     });
 
@@ -71,31 +73,18 @@ describe(`Svg`, () => {
             testComponent.icon = `<svg>Text</svg>`;
         });
 
-        it(`innerHTML$ emits correctly`, () => {
-            let result: unknown;
+        it(`inserts content SVG into DOM`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const textContent = await svg.text();
 
-            fixture.detectChanges();
-
-            testComponent.svgComponent.innerHTML$
-                .pipe(filter(result => !!result))
-                .subscribe(html => {
-                    result = html;
-                });
-
-            expect(result).toBe(`<svg>Text</svg>`);
-        });
-        it(`inserts content SVG into DOM`, () => {
-            fixture.detectChanges();
-
-            const svgIcon = fixture.debugElement.query(By.css(`tui-svg`));
-
-            expect(svgIcon.nativeElement.textContent).toBe(`Text`);
+            expect(textContent).toBe(`Text`);
         });
 
-        it(`isInnerHtml`, () => {
-            fixture.detectChanges();
+        it(`isInnerHtml`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const isInnerHTML = await svg.isInnerHTML();
 
-            expect(testComponent.svgComponent.isInnerHTML).toBe(true);
+            expect(isInnerHTML).toBe(true);
         });
     });
 
@@ -104,16 +93,18 @@ describe(`Svg`, () => {
             testComponent.icon = `customIcon`;
         });
 
-        it(`not isInnerHtml`, () => {
-            fixture.detectChanges();
+        it(`not isInnerHtml`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const isInnerHTML = await svg.isInnerHTML();
 
-            expect(testComponent.svgComponent.isInnerHTML).toBe(false);
+            expect(isInnerHTML).toBe(false);
         });
 
-        it(`returns correct use`, () => {
-            fixture.detectChanges();
+        it(`returns correct use`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const use = await svg.getUse();
 
-            expect(testComponent.svgComponent.use).toBe(`#customIcon`);
+            expect(use).toBe(`#customIcon`);
         });
     });
 
@@ -124,35 +115,24 @@ describe(`Svg`, () => {
             testComponent.icon = extLink;
         });
 
-        it(`isInnerHtml`, () => {
-            fixture.detectChanges();
+        it(`isInnerHtml`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const isInnerHTML = await svg.isInnerHTML();
 
-            expect(testComponent.svgComponent.isInnerHTML).toBe(true);
+            expect(isInnerHTML).toBe(true);
         });
 
-        it(`innerHTML$ emits correctly downloaded svg`, () => {
-            let result: unknown;
-
-            fixture.detectChanges();
-
-            testComponent.svgComponent.innerHTML$
-                .pipe(filter(result => !!result))
-                .subscribe(html => {
-                    result = html;
-                });
+        it(`innerHTML$ emits correctly downloaded svg`, async () => {
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const result = await svg.text();
 
             expect(result).toBe(STATIC_REQUEST_MOCK_RESULT);
         });
 
-        it(`innerHTML$ handles error correctly`, () => {
-            let result: unknown;
-
-            testComponent.svgComponent.innerHTML$.pipe(skip(2)).subscribe(value => {
-                result = value;
-            });
-
+        it(`innerHTML$ handles error correctly`, async () => {
             testComponent.icon = BAD_URL;
-            fixture.detectChanges();
+            const svg = await loader.getHarness(TuiSvgHarness);
+            const result = await svg.text();
 
             expect(result).toBe(``);
         });
