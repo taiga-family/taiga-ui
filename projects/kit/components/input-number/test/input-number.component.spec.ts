@@ -194,6 +194,15 @@ describe(`InputNumber`, () => {
                 expect(testComponent.control.value).toBe(null);
             });
 
+            it(`A value less than positive min is clipped to min when element lose focus`, () => {
+                testComponent.component.min = 15;
+                inputPO.sendText(`10`);
+                component.onFocused(false);
+                fixture.detectChanges();
+
+                expect(testComponent.control.value).toBe(15);
+            });
+
             it(`A value greater than max is clipped to max`, () => {
                 const savedMax = 25;
 
@@ -208,6 +217,15 @@ describe(`InputNumber`, () => {
                 component.onValueChange(`-10`);
 
                 expect(testComponent.control.value).toBe(null);
+            });
+
+            it(`A value greater than negative max is clipped to max when element lose focus`, () => {
+                testComponent.component.max = -15;
+                inputPO.sendText(`-10`);
+                component.onFocused(false);
+                fixture.detectChanges();
+
+                expect(testComponent.control.value).toBe(-15);
             });
 
             it(`A value less than negative min is truncated to min`, () => {
