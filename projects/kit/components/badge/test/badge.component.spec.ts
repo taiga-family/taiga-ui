@@ -1,8 +1,10 @@
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
-import {configureTestSuite} from '@taiga-ui/testing';
+import {configureTestSuite, TuiBadgeHarness} from '@taiga-ui/testing';
 
 import {TuiBadgeComponent} from '../badge.component';
 import {TuiBadgeModule} from '../badge.module';
@@ -31,7 +33,7 @@ describe(`Badge`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiBadgeComponent;
+    let loader: HarnessLoader;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -42,76 +44,80 @@ describe(`Badge`, () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        component = testComponent.component;
     });
 
     describe(`value:`, () => {
-        it(`if it accepts a two-digit number, it outputs it`, () => {
+        it(`if it accepts a two-digit number, it outputs it`, async () => {
             testComponent.value = 99;
-            fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(`99`);
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const text = await badge.text();
+
+            expect(text).toEqual(`99`);
         });
 
-        it(`if it takes three digits or more, it displays the abbreviation 99+`, () => {
+        it(`if it takes three digits or more, it displays the abbreviation 99+`, async () => {
             testComponent.value = 999;
-            fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                `99+`,
-            );
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const text = await badge.text();
+
+            expect(text).toEqual(`99+`);
         });
 
-        it(`if it accepts a string, it outputs it`, () => {
+        it(`if it accepts a string, it outputs it`, async () => {
             testComponent.value = `Text`;
-            fixture.detectChanges();
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const text = await badge.text();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                `Text`,
-            );
+            expect(text).toEqual(`Text`);
         });
 
-        it(`if it accepts a string containing a number, it outputs it unchanged`, () => {
+        it(`if it accepts a string containing a number, it outputs it unchanged`, async () => {
             testComponent.value = `125`;
-            fixture.detectChanges();
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const text = await badge.text();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                `125`,
-            );
+            expect(text).toEqual(`125`);
         });
     });
 
     describe(`padding:`, () => {
-        it(`if value is a number, padding has size m`, () => {
+        it(`if value is a number, padding has size m`, async () => {
             testComponent.value = 99;
-            fixture.detectChanges();
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const padding = await badge.padding();
 
-            expect(component.padding).toBe(`m`);
+            expect(padding).toBe(`m`);
         });
 
-        it(`if value is a string, padding has size l`, () => {
+        it(`if value is a string, padding has size l`, async () => {
             testComponent.value = `99`;
-            fixture.detectChanges();
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const padding = await badge.padding();
 
-            expect(component.padding).toBe(`l`);
+            expect(padding).toBe(`l`);
         });
 
-        it(`if value is empty, padding is none`, () => {
-            expect(component.padding).toBe(`none`);
+        it(`if value is empty, padding is none`, async () => {
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const padding = await badge.padding();
+
+            expect(padding).toBe(`none`);
         });
     });
 
     describe(`states: `, () => {
-        it(`if value is empty, add appropriate css class`, () => {
+        it(`if value is empty, add appropriate css class`, async () => {
             testComponent.value = ``;
 
-            fixture.detectChanges();
+            const badge = await loader.getHarness(TuiBadgeHarness);
+            const hasClass = await badge.hasClass(`_empty-value`);
 
-            expect(
-                testComponent.element.nativeElement.classList.contains(`_empty-value`),
-            ).toBeTruthy();
+            expect(hasClass).toBeTruthy();
         });
     });
 });
