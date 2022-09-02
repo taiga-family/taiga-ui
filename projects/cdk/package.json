@@ -20,9 +20,7 @@
         "@ng-web-apis/resize-observer": "^1.0.3",
         "@tinkoff/ng-event-plugins": "^2.5.1",
         "@tinkoff/ng-polymorpheus": "^3.1.12",
-        "@types/resize-observer-browser": "^0.1.7",
-        "ng-morph": "^2.1.0",
-        "parse5": "^6.0.1"
+        "@types/resize-observer-browser": "^0.1.7"
     },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",
@@ -30,6 +28,10 @@
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "rxjs": ">=6.0.0"
+    },
+    "optionalDependencies": {
+        "ng-morph": "^2.1.0",
+        "parse5": "^6.0.1"
     },
     "ng-update": {
         "migrations": "./schematics/migration.json",
