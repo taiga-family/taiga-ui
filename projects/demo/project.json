@@ -187,20 +187,20 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
+                    "browserTarget": "demo:ng-build:production",
                     "aot": true
                 },
                 "def": {
-                    "browserTarget": "demo:build:def"
+                    "browserTarget": "demo:ng-build:def"
                 },
                 "shadow": {
-                    "browserTarget": "demo:build:shadow"
+                    "browserTarget": "demo:ng-build:shadow"
                 },
                 "ru": {
-                    "browserTarget": "demo:build:ru"
+                    "browserTarget": "demo:ng-build:ru"
                 },
                 "development": {
-                    "browserTarget": "demo:build:development"
+                    "browserTarget": "demo:ng-build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -240,12 +240,12 @@
             "options": {},
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
+                    "browserTarget": "demo:ng-build:production",
                     "serverTarget": "demo:server:production"
                 },
                 "development": {
                     "serverTarget": "demo:server:development",
-                    "browserTarget": "demo:build:development"
+                    "browserTarget": "demo:ng-build:development"
                 }
             },
             "dependsOn": [
@@ -291,7 +291,7 @@
         "prerender": {
             "builder": "@nguniversal/builders:prerender",
             "options": {
-                "browserTarget": "demo:build:production",
+                "browserTarget": "demo:ng-build:production",
                 "serverTarget": "demo:server:production",
                 "routes": ["/"]
             },
@@ -302,7 +302,7 @@
         "extract-i18n": {
             "builder": "@angular-builders/custom-webpack:extract-i18n",
             "options": {
-                "browserTarget": "demo:build"
+                "browserTarget": "demo:ng-build"
             }
         },
         "test": {
