@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "tinkoff-bot"
           git config --global push.followTags true
-          npm run exec -- ./scripts/release.ts \
+          npx ts-node ./scripts/release.ts \
                 --ci-mode \
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}

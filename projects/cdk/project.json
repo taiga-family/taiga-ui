@@ -67,7 +67,7 @@
         "publish": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "npm run exec -- ./scripts/publish.ts --path ./dist/cdk"
+                "command": "ts-node ./scripts/publish.ts --path ./dist/cdk"
             }
         }
     }

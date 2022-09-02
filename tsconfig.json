@@ -89,5 +89,13 @@
             "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"],
             "@demo/utils": ["projects/demo/src/utils/index"]
         }
+    },
+    "ts-node": {
+        "files": true,
+        "transpileOnly": true,
+        "compilerOptions": {
+            "types": ["node"],
+            "module": "commonjs"
+        }
     }
 }
