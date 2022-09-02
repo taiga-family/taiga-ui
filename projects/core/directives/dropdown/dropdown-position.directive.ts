@@ -1,11 +1,8 @@
 import {Directive, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {
-    tuiAsPositionAccessor,
-    TuiPositionAccessor,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
-import {TuiPoint} from '@taiga-ui/core/types';
+import type {TuiPositionAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsPositionAccessor, TuiRectAccessor} from '@taiga-ui/core/abstract';
+import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {
     TUI_DROPDOWN_OFFSET,

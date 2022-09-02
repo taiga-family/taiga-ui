@@ -1,7 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiSliderModule} from '../slider.module';

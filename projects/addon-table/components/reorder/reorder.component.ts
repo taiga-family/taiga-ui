@@ -1,4 +1,5 @@
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import type {CdkDragDrop} from '@angular/cdk/drag-drop';
+import {moveItemInArray} from '@angular/cdk/drag-drop';
 import {
     Component,
     EventEmitter,
@@ -8,8 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import {tuiDefaultProp, TuiInjectionTokenType} from '@taiga-ui/cdk';
 
 // @bad TODO: a11y
 @Component({
@@ -33,7 +33,8 @@ export class TuiReorderComponent<T> {
     readonly enabledChange = new EventEmitter<readonly T[]>();
 
     constructor(
-        @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
+        @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE)
+        readonly showHideText$: TuiInjectionTokenType<typeof TUI_TABLE_SHOW_HIDE_MESSAGE>,
     ) {}
 
     @HostListener(`focusout.stop`)

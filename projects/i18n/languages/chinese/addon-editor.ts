@@ -1,4 +1,4 @@
-import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_CHINESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: [`纯色`, `渐变色`],

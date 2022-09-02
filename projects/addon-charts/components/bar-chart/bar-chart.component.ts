@@ -7,19 +7,21 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     TuiMapper,
     tuiPure,
     tuiSum,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiHintOptionsDirective, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
+// TODO: replace after migration Ivy
 function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
 

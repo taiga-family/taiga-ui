@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,12 +19,11 @@ import {
 import {TuiRectAccessor} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs/operators';
 
 import {TuiHintHoverDirective} from './hint-hover.directive';
@@ -53,9 +52,9 @@ export class TuiHintComponent<C = any> {
     readonly untouchable = !!this.pointer;
 
     constructor(
-        @Inject(TuiHoveredService) hovered$: Observable<boolean>,
-        @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiHoveredService) hovered$: TuiHoveredService,
+        @Inject(TuiPositionService) position$: TuiPositionService,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,

@@ -1,8 +1,10 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, forwardRef, NgZone} from '@angular/core';
 import {TUI_IS_IOS, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
 
 import {iosScrollFactory} from '../../ios.hacks';

@@ -1,6 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
-import {TuiTimeMode} from '@taiga-ui/cdk/types';
+import type {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
+import type {TuiTimeMode} from '@taiga-ui/cdk/types';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {

@@ -1,18 +1,23 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiPx} from '@taiga-ui/cdk';
 import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    DEFAULT_ROWS,
+    LINE_HEIGHT_L,
+    TuiTextAreaComponent,
+    TuiTextAreaModule,
+} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     TuiNativeInputPO,
     TuiPageObject,
     tuiTestFormControlState,
 } from '@taiga-ui/testing';
-
-import {DEFAULT_ROWS, LINE_HEIGHT_L, TuiTextAreaComponent} from '../text-area.component';
-import {TuiTextAreaModule} from '../text-area.module';
 
 const DEFAULT_HEIGHT = 108;
 

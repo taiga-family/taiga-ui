@@ -1,5 +1,5 @@
 import {MASK_CARET_TRAP} from '../../../constants/mask-caret-trap';
-import {TuiTextMaskCorrectionHandler} from '../../../mask';
+import type {TuiTextMaskCorrectionHandler} from '../../../mask';
 import {tuiCreateCorrectionMask} from '../create-correction-mask';
 
 const REGEXP = /[0-9]/;

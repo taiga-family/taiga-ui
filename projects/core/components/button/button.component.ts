@@ -8,18 +8,18 @@ import {
     Input,
     Optional,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives';
-import {TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeS} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 

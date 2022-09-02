@@ -9,7 +9,8 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({

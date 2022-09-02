@@ -1,4 +1,4 @@
-import {TuiStringHandler} from '../../types/handler';
+import type {TuiStringHandler} from '../../types/handler';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_MATCHER,

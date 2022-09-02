@@ -1,4 +1,4 @@
-import {RawLoaderContent} from '../interfaces/page';
+import type {RawLoaderContent} from '../interfaces/page';
 
 // TODO: delete it when all `!!raw-loader!` will be replaced by webpack `asset/source`.
 function trimExportDefault(fileContent: string): string {

@@ -1,4 +1,4 @@
-import {Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 
 import {
     TUI_DOC_DEMO_TEXTS,

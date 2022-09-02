@@ -1,3 +1,4 @@
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -5,26 +6,28 @@ import {
     EventEmitter,
     Inject,
     Input,
-    OnInit,
     Optional,
     Output,
 } from '@angular/core';
+import type {
+    TuiBooleanHandler,
+    TuiDay,
+    TuiDayRange,
+    TuiInjectionTokenType,
+    TuiMapper,
+} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiMapper,
     TuiMonth,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
+import type {TuiMarkerHandler} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /**
@@ -77,7 +80,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     constructor(
         @Inject(TUI_CALENDAR_DATE_STREAM)
         @Optional()
-        valueChanges: Observable<TuiDayRange | null> | null,
+        valueChanges: TuiInjectionTokenType<typeof TUI_CALENDAR_DATE_STREAM> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
@@ -88,7 +91,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         valueChanges
             .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
-                this.value = value;
+                this.value = value as TuiDayRange | null;
                 this.updateViewedMonths();
             });
     }

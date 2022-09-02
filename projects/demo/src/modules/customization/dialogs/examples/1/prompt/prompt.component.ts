@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {PromptOptions} from './prompt-options';
+import type {PromptOptions} from './prompt-options';
 
 @Component({
     selector: `prompt`,

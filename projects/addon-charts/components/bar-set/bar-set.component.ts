@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {SafeValue} from '@angular/platform-browser';
+import type {SafeValue} from '@angular/platform-browser';
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 const PERCENT = 100;
 const EMPTY_ARRAY: readonly number[] = [];

@@ -1,16 +1,10 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Inject,
-    OnInit,
-    TemplateRef,
-} from '@angular/core';
+import type {OnInit, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TuiContextWithImplicit,
-    TuiIdentityMatcher,
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';

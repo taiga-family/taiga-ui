@@ -1,5 +1,5 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -20,7 +20,7 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
     distinctUntilChanged,

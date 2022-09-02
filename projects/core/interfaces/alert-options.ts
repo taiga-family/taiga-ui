@@ -1,6 +1,6 @@
-import {TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core/enums';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiNotification} from '@taiga-ui/core/enums';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export type TuiAlertAutoClose =
     | boolean

@@ -7,7 +7,8 @@ import {
 } from '@taiga-ui/addon-commerce/tokens';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {combineLatest, Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
 export interface TuiCardGroupedTexts {

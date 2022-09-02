@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import {TuiSvgComponent, TuiSvgModule} from '@taiga-ui/core';
 import {TUI_SVG_SRC_PROCESSOR} from '@taiga-ui/core/tokens';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiSvgComponent} from '../svg.component';
-import {TuiSvgModule} from '../svg.module';
 
 describe(`svg source processor`, () => {
     @Component({

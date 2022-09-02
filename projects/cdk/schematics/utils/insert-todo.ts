@@ -1,4 +1,4 @@
-import {Identifier} from 'ng-morph';
+import type {Identifier} from 'ng-morph';
 
 export const TODO_MARK = `TODO: (Taiga UI migration)`;
 

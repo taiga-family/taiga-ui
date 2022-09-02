@@ -6,7 +6,7 @@ import {
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {combineLatest, merge, Observable} from 'rxjs';
+import {combineLatest, merge} from 'rxjs';
 import {filter, mapTo, takeUntil, tap} from 'rxjs/operators';
 
 const SLIDER_INTERACTION_KEYS = new Set([
@@ -36,8 +36,7 @@ export class TuiSliderReadonlyDirective {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLInputElement>,
         @Inject(DOCUMENT) documentRef: Document,
-        @Inject(TuiDestroyService)
-        destroy$: Observable<unknown>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         const touchStart$ = tuiTypedFromEvent(elementRef.nativeElement, `touchstart`, {
             passive: false,

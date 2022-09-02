@@ -1,6 +1,7 @@
-import {NgZone} from '@angular/core';
+import type {NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
-import {concat, merge, Observable, race, timer, zip} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {concat, merge, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
     delay,

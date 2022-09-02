@@ -1,7 +1,5 @@
 import {Directive, Inject} from '@angular/core';
-import {TuiSwipe} from '@taiga-ui/cdk/interfaces';
 import {TuiSwipeService} from '@taiga-ui/cdk/services';
-import {Observable} from 'rxjs';
 
 @Directive({
     selector: `[tuiSwipe]`,
@@ -9,5 +7,5 @@ import {Observable} from 'rxjs';
     providers: [TuiSwipeService],
 })
 export class TuiSwipeDirective {
-    constructor(@Inject(TuiSwipeService) readonly tuiSwipe: Observable<TuiSwipe>) {}
+    constructor(@Inject(TuiSwipeService) readonly tuiSwipe: TuiSwipeService) {}
 }

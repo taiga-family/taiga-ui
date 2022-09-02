@@ -1,4 +1,5 @@
-import {ElementRef, InjectionToken, Provider, Renderer2} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken, Renderer2} from '@angular/core';
 import {
     TUI_IS_IOS,
     TUI_TOUCH_SUPPORTED,
@@ -6,7 +7,8 @@ import {
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {EMPTY, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {EMPTY} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 export const RIPPLE_ON = `tuiRippleOn`;

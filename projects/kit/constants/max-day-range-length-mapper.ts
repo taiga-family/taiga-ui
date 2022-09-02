@@ -1,4 +1,4 @@
-import {TuiDay, TuiDayLike, TuiDayRange, TuiMapper} from '@taiga-ui/cdk';
+import type {TuiDay, TuiDayLike, TuiDayRange, TuiMapper} from '@taiga-ui/cdk';
 
 export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiMapper<TuiDay, TuiDay> = (
     min,

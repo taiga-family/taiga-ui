@@ -1,5 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {defer, Observable, of, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {defer, of, timer} from 'rxjs';
 import {switchMapTo} from 'rxjs/operators';
 
 export const TUI_DOC_PAGE_LOADED = new InjectionToken<Observable<boolean>>(

@@ -2,7 +2,8 @@ import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiDurationOptions, tuiFadeIn} from '@taiga-ui/core';
+import type {TuiDurationOptions} from '@taiga-ui/core';
+import {tuiFadeIn} from '@taiga-ui/core';
 import {from, of} from 'rxjs';
 import {concatMap, delay, repeat, startWith} from 'rxjs/operators';
 

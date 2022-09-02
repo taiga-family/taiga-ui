@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {PAGE_VISIBILITY} from '@ng-web-apis/common';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TuiInjectionTokenType, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, EMPTY, interval, merge, Observable} from 'rxjs';
 import {mapTo, switchMap} from 'rxjs/operators';
 
@@ -31,7 +31,8 @@ export class TuiCarouselDirective extends Observable<unknown> {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(PAGE_VISIBILITY) private readonly visible$: Observable<boolean>,
+        @Inject(PAGE_VISIBILITY)
+        private readonly visible$: TuiInjectionTokenType<typeof PAGE_VISIBILITY>,
     ) {
         super(subscriber => this.output$.subscribe(subscriber));
     }

@@ -1,5 +1,6 @@
-import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeResult} from '@taiga-ui/core';
+import type {TuiDayRange} from '@taiga-ui/cdk';
+import {RANGE_SEPARATOR_CHAR, TuiDay} from '@taiga-ui/cdk';
+import type {TuiTextMaskPipeResult} from '@taiga-ui/core';
 
 import {tuiCreateAutoCorrectedDateRangePipe} from '../create-auto-corrected-date-range-pipe';
 

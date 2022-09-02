@@ -1,4 +1,4 @@
-import {TuiMapper} from '../../../types/mapper';
+import type {TuiMapper} from '../../../types/mapper';
 import {TuiMapperPipe} from '../mapper.pipe';
 
 describe(`TuiMapper pipe`, () => {

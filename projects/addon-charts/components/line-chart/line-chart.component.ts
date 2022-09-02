@@ -10,8 +10,9 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
@@ -19,12 +20,13 @@ import {
     tuiInRange,
     tuiIsPresent,
     tuiPure,
-    TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiHintOptionsDirective, TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';

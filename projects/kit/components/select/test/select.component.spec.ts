@@ -1,19 +1,22 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_DEFAULT_IDENTITY_MATCHER, TuiIdentityMatcher} from '@taiga-ui/cdk';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiHintModule,
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {
+    TuiDataListWrapperModule,
+    TuiSelectComponent,
+    TuiSelectModule,
+} from '@taiga-ui/kit/components';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiSelectComponent} from '../select.component';
-import {TuiSelectModule} from '../select.module';
 
 class Beast {
     constructor(readonly species: string, readonly trait: string, readonly id: string) {}

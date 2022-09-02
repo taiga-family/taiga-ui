@@ -1,11 +1,13 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TuiInputCardGroupedComponent,
+    TuiInputCardGroupedModule,
+} from '@taiga-ui/addon-commerce';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
-
-import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
-import {TuiInputCardGroupedModule} from '../input-card-grouped.module';
 
 describe(`InputCardGrouped`, () => {
     @Component({

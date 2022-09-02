@@ -1,9 +1,8 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
+import type {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 /**
@@ -20,7 +19,7 @@ export class TuiOverscrollDirective {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         tuiTypedFromEvent(nativeElement, `wheel`, {passive: false})
             .pipe(

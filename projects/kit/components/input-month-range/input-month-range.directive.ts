@@ -1,16 +1,14 @@
-import {Directive, DoCheck, Inject, Self} from '@angular/core';
-import {
-    AbstractTuiControl,
-    TuiDestroyService,
-    TuiHandler,
-    TuiMonth,
-    TuiMonthRange,
-} from '@taiga-ui/cdk';
+import type {DoCheck} from '@angular/core';
+import {Directive, Inject, Self} from '@angular/core';
+import type {TuiInjectionTokenType, TuiMonthRange} from '@taiga-ui/cdk';
+import {AbstractTuiControl, TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {combineLatest, Observable, Subject} from 'rxjs';
+import {combineLatest, Subject} from 'rxjs';
 import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 
+// TODO: bug TS, need investigate
+// @ts-ignore
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 
 @Directive({
@@ -28,8 +26,8 @@ export class TuiInputMonthRangeDirective
     constructor(
         @Inject(AbstractTuiControl) host: TuiInputMonthRangeComponent,
         @Inject(TUI_MONTH_FORMATTER)
-        formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        formatter: TuiInjectionTokenType<typeof TUI_MONTH_FORMATTER>,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(host);
 

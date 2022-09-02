@@ -1,4 +1,5 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
 import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,

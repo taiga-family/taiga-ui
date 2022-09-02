@@ -1,4 +1,4 @@
-import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
+import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
 
 const SIZES: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [`xs`, `s`, `m`, `l`, `xl`, `xxl`];
 

@@ -1,9 +1,9 @@
-import {
-    TUI_DROPDOWN_DEFAULT_OPTIONS,
+import type {
     TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {TUI_DROPDOWN_DEFAULT_OPTIONS} from '@taiga-ui/core';
 
 export abstract class AbstractExampleTuiDropdown {
     readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];

@@ -20,8 +20,8 @@ import {
     tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiOrientation} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
 import {TuiStepComponent} from './step/step.component';

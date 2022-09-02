@@ -6,9 +6,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiInjectionTokenType, tuiIsObserved} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-push`,
@@ -32,7 +31,10 @@ export class TuiPushComponent {
     @Output()
     readonly close = new EventEmitter<void>();
 
-    constructor(@Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>) {}
+    constructor(
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
+    ) {}
 
     get closeable(): boolean {
         return tuiIsObserved(this.close);

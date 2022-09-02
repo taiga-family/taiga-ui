@@ -1,5 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, Inject, OnDestroy} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, Inject} from '@angular/core';
 
 /**
  * Use this abstract class to create your own toggleable themes.

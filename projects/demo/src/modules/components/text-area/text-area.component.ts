@@ -1,8 +1,8 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

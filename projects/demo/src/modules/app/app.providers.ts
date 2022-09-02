@@ -1,7 +1,9 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {inject, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -12,7 +14,6 @@ import {
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
-    TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
     TUI_DIALOG_CLOSES_ON_BACK,
@@ -21,7 +22,8 @@ import {
     tuiIsInsideIframe,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
-import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
+import type {TuiLanguageName} from '@taiga-ui/i18n';
+import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {of} from 'rxjs';

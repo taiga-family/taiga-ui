@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +6,7 @@ import {
     HostListener,
     Inject,
 } from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
@@ -14,9 +14,8 @@ import {
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import type {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Component({
     selector: `tui-pdf-viewer`,
@@ -32,7 +31,8 @@ export class TuiPdfViewerComponent<I, O> {
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
     ) {}

@@ -5,13 +5,13 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {
+import type {
     TuiCurrencyVariants,
     TuiMoneySign,
     TuiMoneySignSymbol,
 } from '@taiga-ui/addon-commerce/types';
 import {CHAR_MINUS, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiDecimal} from '@taiga-ui/core';
+import type {TuiDecimal} from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
 import {tuiFormatSignSymbol} from './utils/format-sign-symbol';

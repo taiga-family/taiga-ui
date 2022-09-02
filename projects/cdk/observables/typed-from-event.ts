@@ -1,5 +1,6 @@
-import {TuiEventWith, TuiTypedEventTarget} from '@taiga-ui/cdk/types';
-import {fromEvent, Observable} from 'rxjs';
+import type {TuiEventWith, TuiTypedEventTarget} from '@taiga-ui/cdk/types';
+import type {Observable} from 'rxjs';
+import {fromEvent} from 'rxjs';
 
 export function tuiTypedFromEvent<E extends keyof WindowEventMap>(
     target: Window,

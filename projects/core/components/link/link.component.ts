@@ -6,20 +6,23 @@ import {
     Inject,
     Input,
 } from '@angular/core';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {merge, Observable} from 'rxjs';
+import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {merge} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
 // @bad TODO: Think about extending Interactive
@@ -74,7 +77,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     constructor(
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<TuiNativeFocusableElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TuiFocusVisibleService)
         focusVisible$: TuiFocusVisibleService,
     ) {

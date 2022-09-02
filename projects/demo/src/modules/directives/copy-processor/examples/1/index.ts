@@ -1,7 +1,7 @@
 import {Component, HostListener, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT,
     TuiAlertService,

@@ -1,12 +1,9 @@
-import {Component, Inject, TemplateRef} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TuiAlertService,
-    TuiDialogContext,
-    TuiDialogService,
-    TuiDialogSize,
-} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
+import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
 import {switchMap} from 'rxjs/operators';
 
 @Component({

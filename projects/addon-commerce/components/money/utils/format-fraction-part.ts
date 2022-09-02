@@ -1,4 +1,4 @@
-import {TuiDecimal, TuiNumberFormatSettings} from '@taiga-ui/core';
+import type {TuiDecimal, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 export function tuiFormatFractionPart(options: {
     value: number;

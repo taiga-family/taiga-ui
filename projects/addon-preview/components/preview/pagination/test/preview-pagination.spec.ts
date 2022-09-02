@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {TuiPreviewModule, TuiPreviewPaginationComponent} from '@taiga-ui/addon-preview';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiPreviewModule} from '../../preview.module';
-import {TuiPreviewPaginationComponent} from '../preview-pagination.component';
 
 describe(`PreviewPagination`, () => {
     let fixture: ComponentFixture<TestComponent>;

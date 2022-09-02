@@ -1,6 +1,7 @@
-import {CommonExecOptions, execSync} from 'child_process';
+import type {CommonExecOptions} from 'child_process';
+import {execSync} from 'child_process';
 
-import {TuiReleaseMode} from './release-mode';
+import type {TuiReleaseMode} from './release-mode';
 
 export function runStandardVersion(
     version: string,

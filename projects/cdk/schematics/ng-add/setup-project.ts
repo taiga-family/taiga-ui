@@ -1,5 +1,5 @@
 import {chain, Rule} from '@angular-devkit/schematics';
-import {Schema} from './schema';
+import type {Schema} from './schema';
 import {addTaigaIcons} from './steps/add-taiga-icons';
 import {addTaigaModules} from './steps/add-taiga-modules';
 import {addTaigaStyles} from './steps/add-taiga-styles';

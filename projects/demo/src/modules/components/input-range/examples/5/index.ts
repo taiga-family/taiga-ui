@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
     selector: `tui-input-range-example-5`,

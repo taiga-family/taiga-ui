@@ -2,7 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZonefree} from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
-import {TuiPoint} from '@taiga-ui/core/types';
+import type {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

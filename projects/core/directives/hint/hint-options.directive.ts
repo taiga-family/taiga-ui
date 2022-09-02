@@ -1,6 +1,6 @@
 import {Directive, forwardRef, Inject, Input, SkipSelf} from '@angular/core';
 import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 

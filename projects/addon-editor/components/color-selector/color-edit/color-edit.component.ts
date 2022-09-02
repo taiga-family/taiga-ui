@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {tuiDefaultProp, tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
-import {TextMaskConfig} from 'angular2-text-mask';
+import type {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
     selector: `tui-color-edit`,

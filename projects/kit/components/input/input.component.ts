@@ -10,19 +10,21 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiControl,
+import type {
     TuiActiveZoneDirective,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
+import {
+    AbstractTuiControl,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
@@ -30,7 +32,7 @@ import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     TUI_VALUE_ACCESSOR_PROVIDER,
 } from '@taiga-ui/kit/providers';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: `tui-input`,

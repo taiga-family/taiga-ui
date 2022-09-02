@@ -8,10 +8,17 @@ import {
     Input,
     Optional,
     Self,
-    Type,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiControlValueTransformer,
+    TuiDay,
+    TuiDayLike,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -26,30 +33,24 @@ import {
     TUI_LAST_DAY,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiControlValueTransformer,
     TuiDateMode,
-    TuiDay,
-    TuiDayLike,
     TuiDayRange,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
+import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
-    TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -62,8 +63,7 @@ import {
     tuiCreateDateRangeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
-import {Observable} from 'rxjs';
+import type {TextMaskConfig} from 'angular2-text-mask';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -142,13 +142,15 @@ export class TuiInputDateRangeComponent
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
-        private readonly mobileCalendar: Type<object> | null,
+        private readonly mobileCalendar: TuiInjectionTokenType<
+            typeof TUI_MOBILE_CALENDAR
+        > | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
-        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        readonly dateTexts$: TuiInjectionTokenType<typeof TUI_DATE_TEXTS>,
         @Optional()
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
         override readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,

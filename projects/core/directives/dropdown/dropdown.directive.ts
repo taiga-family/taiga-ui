@@ -1,29 +1,13 @@
-import {
-    ComponentRef,
-    Directive,
-    ElementRef,
-    Inject,
-    INJECTOR,
-    Input,
-    OnChanges,
-    OnDestroy,
-} from '@angular/core';
-import {
-    TuiActiveZoneDirective,
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiDropdownPortalService,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {
-    tuiAsRectAccessor,
-    tuiAsVehicle,
-    TuiRectAccessor,
-    TuiVehicle,
-} from '@taiga-ui/core/abstract';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {ComponentRef, OnChanges, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, Inject, INJECTOR, Input} from '@angular/core';
+import type {TuiActiveZoneDirective, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiDropdownPortalService, tuiPure} from '@taiga-ui/cdk';
+import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
+import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
+import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLineHandler} from '@taiga-ui/addon-charts';
+import type {TuiLineHandler} from '@taiga-ui/addon-charts';
 
 @Component({
     selector: `tui-axes-example-1`,

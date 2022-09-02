@@ -1,4 +1,4 @@
-import {TypeToRename} from './types';
+import type {TypeToRename} from './types';
 
 export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     {

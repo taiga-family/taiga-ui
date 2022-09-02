@@ -1,4 +1,5 @@
-import {Component, Inject, TemplateRef} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';

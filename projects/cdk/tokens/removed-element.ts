@@ -1,6 +1,7 @@
 import {ɵAnimationEngine} from '@angular/animations/browser';
 import {inject, InjectFlags, InjectionToken} from '@angular/core';
-import {BehaviorSubject, Observable, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, timer} from 'rxjs';
 import {mapTo, share, startWith, switchMap} from 'rxjs/operators';
 
 export const TUI_REMOVED_ELEMENT = new InjectionToken<Observable<Element | null>>(

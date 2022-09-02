@@ -1,4 +1,4 @@
-import {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 /**
  * Checks identity for nullable elements.

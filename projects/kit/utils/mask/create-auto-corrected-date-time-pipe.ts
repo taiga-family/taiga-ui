@@ -1,15 +1,14 @@
-import {DATE_FILLER_LENGTH, tuiIsString, TuiTimeMode} from '@taiga-ui/cdk';
-import {
+import type {TuiTimeMode} from '@taiga-ui/cdk';
+import {DATE_FILLER_LENGTH, tuiIsString} from '@taiga-ui/cdk';
+import type {
     TuiTextMaskConfig,
     TuiTextMaskOptions,
     TuiTextMaskPipeHandler,
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 
-import {
-    TuiAutoCorrectedDatePipeConfigs,
-    tuiNormalizeDateValue,
-} from './create-auto-corrected-date-pipe';
+import type {TuiAutoCorrectedDatePipeConfigs} from './create-auto-corrected-date-pipe';
+import {tuiNormalizeDateValue} from './create-auto-corrected-date-pipe';
 import {tuiCreateAutoCorrectedTimePipe} from './create-auto-corrected-time-pipe';
 
 interface TuiAutoCorrectedDateTimePipeConfigs extends TuiAutoCorrectedDatePipeConfigs {

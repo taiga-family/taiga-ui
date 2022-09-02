@@ -1,6 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
-import {Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 
 export const TUI_CARD_NUMBER_TEXTS = new InjectionToken(`Number and card number i18n`, {
     factory: tuiExtractI18n(`cardNumber`),

@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import type {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 
 export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(

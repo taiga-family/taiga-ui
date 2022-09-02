@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: `progress[tuiProgressBar]`,

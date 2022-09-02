@@ -1,5 +1,5 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';

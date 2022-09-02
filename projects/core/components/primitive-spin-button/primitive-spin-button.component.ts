@@ -8,10 +8,14 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {AbstractTuiInteractive, tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {
+    AbstractTuiInteractive,
+    tuiDefaultProp,
+    TuiInjectionTokenType,
+    tuiIsNativeFocused,
+} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-primitive-spin-button`,
@@ -46,7 +50,8 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     readonly rightClick = new EventEmitter<void>();
 
     constructor(
-        @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
+        @Inject(TUI_SPIN_TEXTS)
+        readonly spinTexts$: TuiInjectionTokenType<typeof TUI_SPIN_TEXTS>,
     ) {
         super();
     }

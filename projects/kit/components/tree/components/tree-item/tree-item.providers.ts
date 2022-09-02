@@ -1,4 +1,5 @@
-import {forwardRef, Provider, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {forwardRef, SkipSelf} from '@angular/core';
 
 import {TUI_TREE_LEVEL, TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItemComponent} from './tree-item.component';

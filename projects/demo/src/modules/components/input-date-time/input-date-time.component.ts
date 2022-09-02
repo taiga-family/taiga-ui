@@ -1,17 +1,15 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiAutofillFieldName, TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiAutofillFieldName,
-    TuiBooleanHandler,
     TuiDay,
     TuiMonth,
     TuiTime,
-    TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
 

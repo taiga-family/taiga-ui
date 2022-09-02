@@ -1,9 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiAxesComponent} from '../axes.component';
+import type {TuiAxesComponent} from '../axes.component';
 import {TuiAxesModule} from '../axes.module';
 
 describe(`Axes`, () => {

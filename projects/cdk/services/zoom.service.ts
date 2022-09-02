@@ -1,5 +1,5 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
-import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
+import type {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';

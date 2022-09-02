@@ -1,4 +1,5 @@
-import {tuiCreateCorrectionMask, TuiTextMaskListHandler} from '@taiga-ui/core';
+import type {TuiTextMaskListHandler} from '@taiga-ui/core';
+import {tuiCreateCorrectionMask} from '@taiga-ui/core';
 
 const ALLOWED_REGEXP = /[A-Z]| /;
 const MAP: Record<string, string> = {

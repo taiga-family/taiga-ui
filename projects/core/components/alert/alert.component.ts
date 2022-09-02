@@ -1,15 +1,15 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     Inject,
-    OnInit,
 } from '@angular/core';
 import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
+import type {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,

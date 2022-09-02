@@ -14,6 +14,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
+import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
@@ -21,7 +22,6 @@ import {
     tuiDefaultProp,
     TuiItemDirective,
     tuiPure,
-    TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 
 @Component({

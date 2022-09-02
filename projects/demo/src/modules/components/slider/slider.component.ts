@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: `example-slider`,

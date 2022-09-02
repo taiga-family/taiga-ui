@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-
-import {TuiInputColorComponent} from '../input-color.component';
-import {TuiInputColorModule} from '../input-color.module';
+import {TuiInputColorComponent, TuiInputColorModule} from '@taiga-ui/addon-editor';
 
 @Component({
     template: `

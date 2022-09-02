@@ -7,7 +7,8 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
+import type {TuiDay} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 
 @Component({
     selector: `landing`,

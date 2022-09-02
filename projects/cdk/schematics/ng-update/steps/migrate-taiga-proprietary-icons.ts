@@ -1,8 +1,8 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProject} from '../../utils/get-project';
-import {Schema} from '../../ng-add/schema';
+import type {Schema} from '../../ng-add/schema';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 import {isInvalidAngularJson} from '../../utils/angular-json-manipulations';
 

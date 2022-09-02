@@ -1,8 +1,10 @@
 import {LocationStrategy} from '@angular/common';
-import {InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 
-import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
+import type {TuiVersionMeta} from './versions.constants';
+import {TAIGA_VERSIONS_META} from './versions.constants';
 
 export const SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
     `Meta information about selected version of Taiga docs`,

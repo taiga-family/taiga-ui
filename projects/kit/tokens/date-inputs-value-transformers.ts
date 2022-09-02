@@ -1,5 +1,10 @@
 import {InjectionToken} from '@angular/core';
-import {TuiControlValueTransformer, TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk';
+import type {
+    TuiControlValueTransformer,
+    TuiDay,
+    TuiDayRange,
+    TuiTime,
+} from '@taiga-ui/cdk';
 
 export const TUI_DATE_VALUE_TRANSFORMER = new InjectionToken<
     TuiControlValueTransformer<TuiDay | null>

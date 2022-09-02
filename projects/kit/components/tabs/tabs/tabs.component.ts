@@ -1,5 +1,5 @@
+import type {AfterViewChecked} from '@angular/core';
 import {
-    AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -26,7 +26,6 @@ import {
     tuiMoveFocus,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
@@ -77,7 +76,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiResizeService) resize$: Observable<void>,
+        @Inject(TuiResizeService) resize$: TuiResizeService,
     ) {
         resize$.pipe(filter(() => this.underline)).subscribe(() => {
             changeDetectorRef.detectChanges();

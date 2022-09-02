@@ -1,9 +1,8 @@
 import {Directive, HostBinding, Inject, Input} from '@angular/core';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
 
 @Directive({
     selector: `[tuiWrapper]`,
@@ -35,7 +34,9 @@ export class TuiWrapperDirective {
     @HostBinding(`attr.data-appearance`)
     appearance = ``;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+    ) {}
 
     @HostBinding(`class._invalid`)
     get computedInvalid(): boolean {

@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component, Inject, NgZone, OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, NgZone} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {

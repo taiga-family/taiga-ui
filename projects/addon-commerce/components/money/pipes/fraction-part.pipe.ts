@@ -1,5 +1,7 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TUI_NUMBER_FORMAT, TuiDecimal, TuiNumberFormatSettings} from '@taiga-ui/core';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiDecimal} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 import {tuiFormatFractionPart} from '../utils/format-fraction-part';
 

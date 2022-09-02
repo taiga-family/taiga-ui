@@ -1,5 +1,6 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 

@@ -1,5 +1,4 @@
 import {Directive, Inject} from '@angular/core';
-import {Observable} from 'rxjs';
 
 import {TuiHoveredService} from './hovered.service';
 
@@ -10,6 +9,6 @@ import {TuiHoveredService} from './hovered.service';
 })
 export class TuiHoveredDirective {
     constructor(
-        @Inject(TuiHoveredService) readonly tuiHoveredChange: Observable<boolean>,
+        @Inject(TuiHoveredService) readonly tuiHoveredChange: TuiHoveredService,
     ) {}
 }

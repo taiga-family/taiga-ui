@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiScrollbarModule} from '@taiga-ui/core';

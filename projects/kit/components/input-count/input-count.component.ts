@@ -10,6 +10,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_IS_MOBILE,
@@ -17,11 +18,16 @@ import {
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextMaskOptions,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
@@ -30,16 +36,11 @@ import {
     tuiFormatNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TextMaskConfig} from 'angular2-text-mask';
 
 import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
 
@@ -95,7 +96,7 @@ export class TuiInputCountComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
-        readonly minusTexts$: Observable<[string, string]>,
+        readonly minusTexts$: TuiInjectionTokenType<typeof TUI_PLUS_MINUS_TEXTS>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
         readonly options: TuiInputCountOptions,

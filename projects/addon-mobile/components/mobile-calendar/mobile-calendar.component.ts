@@ -1,4 +1,4 @@
-import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
+import type {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -9,13 +9,13 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     MONTHS_IN_YEAR,
     TUI_FIRST_DAY,
     TUI_IS_IOS,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     tuiDefaultProp,
@@ -30,7 +30,7 @@ import {
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
 } from '@taiga-ui/kit';
-import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
+import {identity, MonoTypeOperatorFunction, race, timer} from 'rxjs';
 import {
     debounceTime,
     delay,
@@ -114,16 +114,20 @@ export class TuiMobileCalendarComponent {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_VALUE_STREAM) valueChanges: Observable<TuiDayRange | null>,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_CANCEL_WORD) readonly cancelWord$: Observable<string>,
-        @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
+        @Inject(TUI_VALUE_STREAM)
+        valueChanges: TuiInjectionTokenType<typeof TUI_VALUE_STREAM>,
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
+        @Inject(TUI_CANCEL_WORD)
+        readonly cancelWord$: TuiInjectionTokenType<typeof TUI_CANCEL_WORD>,
+        @Inject(TUI_DONE_WORD)
+        readonly doneWord$: TuiInjectionTokenType<typeof TUI_DONE_WORD>,
         @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
-        readonly weekDays$: Observable<
-            [string, string, string, string, string, string, string]
-        >,
+        readonly weekDays$: TuiInjectionTokenType<typeof TUI_ORDERED_SHORT_WEEK_DAYS>,
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
+        readonly chooseDayOrRangeTexts$: TuiInjectionTokenType<
+            typeof TUI_CHOOSE_DAY_OR_RANGE_TEXTS
+        >,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;

@@ -1,4 +1,4 @@
-import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import type {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 import {TUI_DEFAULT_STRINGIFY} from './stringify';
 

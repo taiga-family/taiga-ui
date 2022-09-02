@@ -1,4 +1,4 @@
-import {Element} from 'parse5';
+import type {Element} from 'parse5';
 import {
     createProject,
     DevkitFileSystem,
@@ -6,7 +6,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
-import {TemplateResource} from '../interfaces/template-resourse';
+import type {TemplateResource} from '../interfaces/template-resourse';
 import {findElementsWithAttribute} from '../../utils/templates/elements';
 import {
     getPathFromTemplateResource,

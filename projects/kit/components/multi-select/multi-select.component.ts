@@ -14,23 +14,26 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiStringHandler,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
-    TuiActiveZoneDirective,
     tuiArrayToggle,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsString,
     TuiMapper,
     tuiPure,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost, TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
@@ -38,11 +41,7 @@ import {
     tuiAsDataListHost,
     TuiDataListAccessor,
     TuiDataListDirective,
-    TuiDataListHost,
     TuiHostedDropdownComponent,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
     TuiSvgService,
     TuiTextfieldController,
 } from '@taiga-ui/core';
@@ -52,7 +51,7 @@ import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
 

@@ -7,13 +7,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiInjectionTokenType, tuiIsObserved} from '@taiga-ui/cdk';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
 
 export const STATUS_ICON = {
     info: `tuiIconInfo`,
@@ -43,7 +42,8 @@ export class TuiNotificationComponent {
     readonly close = new EventEmitter<void>();
 
     constructor(
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         readonly options: TuiNotificationDefaultOptions,
     ) {}

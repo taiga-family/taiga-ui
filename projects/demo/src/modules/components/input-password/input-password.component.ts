@@ -1,8 +1,8 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName} from '@taiga-ui/cdk';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiAutofillFieldName} from '@taiga-ui/cdk';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

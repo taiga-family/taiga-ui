@@ -12,27 +12,29 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {
+import type {
     TuiActiveZoneDirective,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
+import {
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, combineLatest, EMPTY, Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {BehaviorSubject, combineLatest, EMPTY} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
@@ -86,7 +88,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     constructor(
         @Optional()
         @Inject(TuiDropdownHoverDirective)
-        private readonly hover$: Observable<boolean> | null,
+        private readonly hover$: TuiDropdownHoverDirective,
         @Inject(ElementRef) private readonly elementRef: ElementRef,
     ) {}
 

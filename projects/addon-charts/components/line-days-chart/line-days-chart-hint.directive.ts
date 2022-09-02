@@ -1,5 +1,5 @@
+import type {AfterContentInit} from '@angular/core';
 import {
-    AfterContentInit,
     ContentChildren,
     Directive,
     forwardRef,
@@ -19,11 +19,12 @@ import {
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiPoint} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
 // TODO: Consider extending TuiLineChartHintDirective

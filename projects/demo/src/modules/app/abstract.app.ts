@@ -1,11 +1,12 @@
-import {Directive, ElementRef, HostBinding, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import type {OnInit} from '@angular/core';
+import {Directive, ElementRef, HostBinding} from '@angular/core';
+import type {Router} from '@angular/router';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {tuiPure, TuiResizeService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
-import {TuiVersionMeta} from './version-manager/versions.constants';
+import type {TuiVersionMeta} from './version-manager/versions.constants';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,

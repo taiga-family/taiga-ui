@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_STRINGIFY} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-line-chart-example-1`,

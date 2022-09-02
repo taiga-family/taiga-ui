@@ -13,30 +13,27 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiBrightness,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldComponent,
     TuiTextfieldController,
 } from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
@@ -89,7 +86,7 @@ export class TuiTextAreaComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Optional()

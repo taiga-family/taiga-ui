@@ -1,4 +1,4 @@
-import {TuiLanguage} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguage} from '@taiga-ui/i18n/interfaces';
 
 import {TUI_DUTCH_LANGUAGE_ADDON_COMMERCE} from './addon-commerce';
 import {TUI_DUTCH_LANGUAGE_ADDON_EDITOR} from './addon-editor';

@@ -1,14 +1,6 @@
 import {Location} from '@angular/common';
-import {
-    Directive,
-    EventEmitter,
-    Inject,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    TemplateRef,
-} from '@angular/core';
+import type {OnChanges, OnInit} from '@angular/core';
+import {Directive, EventEmitter, Inject, Input, Output, TemplateRef} from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
 import {BehaviorSubject, Subject} from 'rxjs';
 

@@ -40,13 +40,7 @@
                 "main": "projects/cdk/test.ts",
                 "tsConfig": "projects/cdk/tsconfig.spec.json",
                 "karmaConfig": "projects/cdk/karma.conf.js"
-            },
-            "dependsOn": [
-                {
-                    "target": "test-schematics",
-                    "projects": "self"
-                }
-            ]
+            }
         },
         "test-schematics": {
             "builder": "@nrwl/workspace:run-commands",

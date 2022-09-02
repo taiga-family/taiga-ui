@@ -1,4 +1,4 @@
-import {ChangeDetectorRef} from '@angular/core';
+import type {ChangeDetectorRef} from '@angular/core';
 import {fakeAsync, tick} from '@angular/core/testing';
 import {Subject} from 'rxjs';
 

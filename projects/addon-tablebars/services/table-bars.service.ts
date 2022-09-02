@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {tuiAssert, tuiIsObserved} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
 
 import {TuiTableBar} from '../classes/table-bar';
-import {TuiTableBarOptions} from '../interfaces/table-bar-options';
+import type {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
 const NO_HOST =
     `Table bars are disabled, enable support by adding TuiTableBarsHostModule to your main app module ` +

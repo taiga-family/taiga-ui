@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
@@ -18,7 +18,7 @@ import {
     MAIN_MODULES,
     SANITIZER_MODULES,
 } from '../constants/modules';
-import {Schema} from '../schema';
+import type {Schema} from '../schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function addTaigaModules(options: Schema): Rule {

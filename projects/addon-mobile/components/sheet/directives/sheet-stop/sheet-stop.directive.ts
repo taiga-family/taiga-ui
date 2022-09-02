@@ -1,7 +1,6 @@
 import {Directive, ElementRef, Inject} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
@@ -20,9 +19,10 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 export class TuiSheetStopDirective {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TUI_SHEET_DRAGGED) dragged$: Observable<boolean>,
-        @Inject(TUI_SHEET_SCROLL) scroll$: Observable<number>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(TUI_SHEET_DRAGGED)
+        dragged$: TuiInjectionTokenType<typeof TUI_SHEET_DRAGGED>,
+        @Inject(TUI_SHEET_SCROLL) scroll$: TuiInjectionTokenType<typeof TUI_SHEET_SCROLL>,
         @Inject(TUI_SCROLL_REF) {nativeElement}: ElementRef<HTMLElement>,
     ) {
         scroll$

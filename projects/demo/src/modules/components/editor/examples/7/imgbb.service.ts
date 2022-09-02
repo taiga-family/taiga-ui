@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {from, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {from} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {environment} from '../../../../../environments/environment';

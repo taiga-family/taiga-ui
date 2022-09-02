@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiSelectComponent} from './select.component';
+import type {TuiSelectComponent} from './select.component';
 
 @Directive({
     selector: `tui-select`,

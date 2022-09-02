@@ -1,4 +1,4 @@
-import {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 
 import {TUI_CHINESE_LANGUAGE_COUNTRIES} from './countries';
 

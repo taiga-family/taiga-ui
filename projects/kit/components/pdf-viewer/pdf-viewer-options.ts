@@ -1,4 +1,4 @@
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPdfViewerOptions<I = undefined> {
     readonly label: string;

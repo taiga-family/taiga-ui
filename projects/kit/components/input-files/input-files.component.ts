@@ -13,22 +13,26 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {MODE_PROVIDER} from '@taiga-ui/core';
+import type {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiFormatSize, tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -88,21 +92,9 @@ export class TuiInputFilesComponent
         @Inject(TUI_IS_MOBILE)
         readonly isMobile: boolean,
         @Inject(TUI_INPUT_FILE_TEXTS)
-        readonly inputFileTexts$: Observable<
-            Record<
-                | 'defaultLabelSingle'
-                | 'defaultLabelMultiple'
-                | 'defaultLinkSingle'
-                | 'defaultLinkMultiple'
-                | 'maxSizeRejectionReason'
-                | 'formatRejectionReason'
-                | 'drop'
-                | 'dropMultiple',
-                string
-            >
-        >,
+        readonly inputFileTexts$: TuiInjectionTokenType<typeof TUI_INPUT_FILE_TEXTS>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        readonly units$: Observable<[string, string, string]>,
+        readonly units$: TuiInjectionTokenType<typeof TUI_DIGITAL_INFORMATION_UNITS>,
     ) {
         super(control, changeDetectorRef);
     }

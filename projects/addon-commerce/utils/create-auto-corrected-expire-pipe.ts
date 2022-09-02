@@ -1,4 +1,5 @@
-import {TUI_NON_DIGIT_REGEXP, TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import type {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {TUI_NON_DIGIT_REGEXP} from '@taiga-ui/core';
 
 const TUI_EXP_YEAR_MONTH = /^\d{2}[/|.]\d{4}$/;
 const TUI_EXP_SAFARI = /^\d{1,4}.\d{1,2}.\d{1,4}$/;

@@ -1,11 +1,13 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectorRef, ElementRef, InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ChangeDetectorRef, ElementRef, InjectionToken} from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(`Refresh stream`);

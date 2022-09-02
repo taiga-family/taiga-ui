@@ -11,7 +11,7 @@ import {
 } from 'rxjs/operators';
 
 import {databaseMockData} from './database-mock-data';
-import {User} from './user';
+import type {User} from './user';
 
 @Injectable()
 export class RequestService {

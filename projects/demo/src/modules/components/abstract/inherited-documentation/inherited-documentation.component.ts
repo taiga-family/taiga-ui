@@ -6,7 +6,7 @@ import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
 import {AbstractExampleTuiInteractive} from '../interactive';
 import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
-import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
+import type {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 @Component({
     selector: `inherited-documentation`,

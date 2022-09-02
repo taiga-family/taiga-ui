@@ -1,5 +1,6 @@
 import {Component, Directive, ElementRef} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TuiForAsyncModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';

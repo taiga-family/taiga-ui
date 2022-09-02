@@ -1,6 +1,7 @@
-import {InjectionToken, Provider, Type} from '@angular/core';
-import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
-import {Observable} from 'rxjs';
+import type {Provider, Type} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
+import type {Observable} from 'rxjs';
 
 export const TUI_DIALOGS = new InjectionToken<
     ReadonlyArray<Observable<readonly TuiAriaDialogContext[]>>

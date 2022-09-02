@@ -1,15 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import type {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce';
 import {
     TuiCurrency,
     TuiCurrencyCode,
-    TuiCurrencyVariants,
     TuiMoneyComponent,
     TuiMoneyModule,
-    TuiMoneySign,
 } from '@taiga-ui/addon-commerce';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiDecimal} from '@taiga-ui/core';
+import type {TuiDecimal} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject, tuiReplaceNbsp} from '@taiga-ui/testing';
 
 describe(`Money`, () => {

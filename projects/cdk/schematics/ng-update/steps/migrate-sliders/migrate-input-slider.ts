@@ -10,7 +10,7 @@ import {
     removeInputProperty,
     replaceInputProperty,
 } from '../../../utils/templates/ng-component-input-manipulations';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import type {TemplateResource} from '../../interfaces/template-resourse';
 import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';

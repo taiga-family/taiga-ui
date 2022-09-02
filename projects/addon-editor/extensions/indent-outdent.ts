@@ -1,4 +1,5 @@
-import {Editor, Extension} from '@tiptap/core';
+import type {Editor} from '@tiptap/core';
+import {Extension} from '@tiptap/core';
 
 export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
     return editor.isActive(`bulletList`) || editor.isActive(`orderedList`);

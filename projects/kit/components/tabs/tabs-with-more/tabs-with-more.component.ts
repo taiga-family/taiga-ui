@@ -1,5 +1,5 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -14,11 +14,14 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiActiveZoneDirective,
     tuiClamp,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -27,8 +30,7 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {filter, map} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
@@ -82,10 +84,12 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     constructor(
         @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(TUI_TAB_MARGIN) private readonly margin: number,
-        @Inject(TUI_TABS_REFRESH) private readonly refresh$: Observable<unknown>,
+        @Inject(TUI_TABS_REFRESH)
+        private readonly refresh$: TuiInjectionTokenType<typeof TUI_TABS_REFRESH>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
+        @Inject(TUI_MORE_WORD)
+        readonly moreWord$: TuiInjectionTokenType<typeof TUI_MORE_WORD>,
     ) {}
 
     // TODO: Improve performance

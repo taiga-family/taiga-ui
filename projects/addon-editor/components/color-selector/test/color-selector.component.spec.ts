@@ -1,9 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-
-import {TuiColorSelectorComponent} from '../color-selector.component';
-import {TuiColorSelectorModule} from '../color-selector.module';
+import {TuiColorSelectorComponent, TuiColorSelectorModule} from '@taiga-ui/addon-editor';
 
 @Component({
     template: `

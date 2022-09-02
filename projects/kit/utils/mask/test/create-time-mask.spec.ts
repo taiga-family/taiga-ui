@@ -1,5 +1,5 @@
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
-import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import type {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {tuiCreateTimeMask} from '@taiga-ui/kit/utils';
 
 describe(`tuiCreateTimeMask`, () => {

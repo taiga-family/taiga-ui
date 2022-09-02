@@ -1,9 +1,5 @@
-import {
-    tuiGetViewportHeight,
-    tuiGetViewportWidth,
-    tuiIsMobile,
-    TuiMedia,
-} from '@taiga-ui/core';
+import type {TuiMedia} from '@taiga-ui/core';
+import {tuiGetViewportHeight, tuiGetViewportWidth, tuiIsMobile} from '@taiga-ui/core';
 
 describe(`viewport`, () => {
     it(`width/height`, () => {

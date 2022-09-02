@@ -9,7 +9,7 @@ import {
     StructureType,
 } from 'ng-morph';
 import * as path from 'path';
-import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import type {TemplateResource} from '../../ng-update/interfaces/template-resourse';
 
 export function getComponentTemplates(
     pattern: Pattern,

@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface MyAccount {
     name: string;

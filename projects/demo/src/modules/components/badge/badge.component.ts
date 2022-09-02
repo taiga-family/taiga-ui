@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit';
 
 @Component({
     selector: `example-badge`,

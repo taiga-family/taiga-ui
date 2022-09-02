@@ -13,7 +13,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
@@ -26,12 +26,10 @@ import {
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
-    TuiHandler,
+    TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable} from 'rxjs';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
@@ -86,9 +84,9 @@ export class TuiToolbarComponent {
         private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_IMAGE_LOADER)
-        private readonly imageLoader: TuiHandler<File, Observable<string>>,
+        private readonly imageLoader: TuiInjectionTokenType<typeof TUI_IMAGE_LOADER>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
+        readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_TOOLBAR_TEXTS>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
     ) {}

@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
     TUI_EDITOR_TABLE_COMMANDS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/addon-editor/tokens';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable} from 'rxjs';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {map} from 'rxjs/operators';
 
 export enum TuiTableCommands {
@@ -42,9 +41,11 @@ export class TuiTableRowColumnManagerComponent {
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
+        readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_TOOLBAR_TEXTS>,
         @Inject(TUI_EDITOR_TABLE_COMMANDS)
-        readonly tableCommandTexts$: Observable<TuiLanguageEditor['editorTableCommands']>,
+        readonly tableCommandTexts$: TuiInjectionTokenType<
+            typeof TUI_EDITOR_TABLE_COMMANDS
+        >,
     ) {}
 
     onTableOption(command: TuiTableCommands): void {

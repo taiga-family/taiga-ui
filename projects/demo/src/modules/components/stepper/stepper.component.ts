@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiOrientation} from '@taiga-ui/core';
-import {TuiStepState} from '@taiga-ui/kit';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiOrientation} from '@taiga-ui/core';
+import type {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
     selector: `example-tui-stepper`,

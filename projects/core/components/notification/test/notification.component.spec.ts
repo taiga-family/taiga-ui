@@ -1,16 +1,20 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    STATUS_ICON,
+    TuiNotification,
+    TuiNotificationComponent,
+    TuiNotificationModule,
+    TuiSvgService,
+} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
 } from '@taiga-ui/core/tokens';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiNotification} from '../../../enums/notification';
-import {TuiSvgService} from '../../../services/svg.service';
-import {STATUS_ICON, TuiNotificationComponent} from '../notification.component';
-import {TuiNotificationModule} from '../notification.module';
 
 describe(`Notification`, () => {
     @Component({

@@ -9,7 +9,7 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
 import {TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({

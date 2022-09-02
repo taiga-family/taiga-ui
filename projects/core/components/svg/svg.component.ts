@@ -6,7 +6,6 @@ import {
     Inject,
     Input,
     Optional,
-    Sanitizer,
     SecurityContext,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -14,13 +13,14 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
+    TuiInjectionTokenType,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
-import {TuiIconError} from '@taiga-ui/core/interfaces';
+import type {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {
     TUI_ICONS_PATH,
@@ -62,7 +62,7 @@ export class TuiSvgComponent {
         @Inject(TUI_ICONS_PATH) private readonly iconsPath: TuiStringHandler<string>,
         @Optional()
         @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
+        private readonly tuiSanitizer: TuiInjectionTokenType<typeof TUI_SANITIZER> | null,
         @Inject(TuiSvgService) private readonly svgService: TuiSvgService,
         @Inject(TuiStaticRequestService)
         private readonly staticRequestService: TuiStaticRequestService,

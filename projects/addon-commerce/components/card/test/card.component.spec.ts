@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import {TuiCardComponent, TuiCardModule} from '@taiga-ui/addon-commerce';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiCardComponent} from '../card.component';
-import {TuiCardModule} from '../card.module';
 
 describe(`Card`, () => {
     @Component({

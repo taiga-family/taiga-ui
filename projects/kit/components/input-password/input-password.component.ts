@@ -8,29 +8,30 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiInputType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    TuiFocusableElementAccessor,
-    TuiInputType,
-    TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_SIZE,
-    TuiBrightness,
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, EMPTY, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -83,14 +84,14 @@ export class TuiInputPasswordComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PASSWORD_TEXTS)
-        readonly passwordTexts$: Observable<[string, string]>,
+        readonly passwordTexts$: TuiInjectionTokenType<typeof TUI_PASSWORD_TEXTS>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
         readonly options: TuiInputPasswordOptions,
         @Optional()
         @Inject(TuiHintOptionsDirective)
         readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_MODE)
-        private readonly mode$: Observable<TuiBrightness | null>,
+        private readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
     ) {
         super(control, changeDetectorRef);
     }

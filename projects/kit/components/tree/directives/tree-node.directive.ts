@@ -1,7 +1,8 @@
-import {Directive, Inject, Input, OnDestroy, Optional} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, Inject, Input, Optional} from '@angular/core';
 
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
-import {TuiTreeAccessor} from '../misc/tree.interfaces';
+import type {TuiTreeAccessor} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 
 @Directive({

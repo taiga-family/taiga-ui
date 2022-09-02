@@ -1,8 +1,10 @@
-import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertContext} from '@taiga-ui/cdk';
-import {TuiAlertOptions, TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import type {TuiAlertContext} from '@taiga-ui/cdk';
+import type {TuiAlertOptions} from '@taiga-ui/core';
+import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-alerts-example-2`,

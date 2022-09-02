@@ -1,6 +1,6 @@
 import {Directive, Inject, Output} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 import {TuiElasticStickyService} from './elastic-sticky.service';
 

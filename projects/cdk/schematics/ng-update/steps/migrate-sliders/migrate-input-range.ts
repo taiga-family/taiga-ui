@@ -1,5 +1,5 @@
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import type {TemplateResource} from '../../interfaces/template-resourse';
 import {replaceInputProperty} from '../../../utils/templates/ng-component-input-manipulations';
 import {
     addMethods,

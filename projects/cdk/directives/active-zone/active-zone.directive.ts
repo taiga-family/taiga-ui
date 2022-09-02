@@ -1,10 +1,10 @@
+import type {OnDestroy} from '@angular/core';
 import {
     Directive,
     ElementRef,
     Inject,
     Input,
     NgZone,
-    OnDestroy,
     Optional,
     Output,
     SkipSelf,
@@ -12,8 +12,8 @@ import {
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk/types';
 import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
-import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({
@@ -33,7 +33,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     @Output()
     readonly tuiActiveZoneChange = this.active$.pipe(
-        map(element => !!element && this.contains(element)),
+        map(element => !!element && this.contains(element as Element)),
         startWith(false),
         distinctUntilChanged(),
         skip(1),
@@ -42,7 +42,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     constructor(
         @Inject(TUI_ACTIVE_ELEMENT)
-        private readonly active$: Observable<Element | null>,
+        private readonly active$: TuiInjectionTokenType<typeof TUI_ACTIVE_ELEMENT>,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Optional()

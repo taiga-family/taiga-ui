@@ -1,5 +1,5 @@
-import {CommandProps} from '@tiptap/core';
-import {EditorState} from 'prosemirror-state';
+import type {CommandProps} from '@tiptap/core';
+import type {EditorState} from 'prosemirror-state';
 
 export function tuiDeleteNode(
     state: EditorState,

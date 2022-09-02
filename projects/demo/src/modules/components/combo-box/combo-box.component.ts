@@ -1,18 +1,16 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TUI_STRICT_MATCHER,
-    TuiIdentityMatcher,
     tuiPure,
-    TuiStringHandler,
-    TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {TuiValueContentContext} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiValueContentContext} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

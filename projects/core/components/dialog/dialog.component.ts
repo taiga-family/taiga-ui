@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import type {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
-import {TuiDialogSize} from '@taiga-ui/core/types';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiDialogSize} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 

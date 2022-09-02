@@ -1,7 +1,7 @@
+import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -13,7 +13,7 @@ import {TuiAppearance} from '@taiga-ui/core/enums';
 import {BehaviorSubject} from 'rxjs';
 import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
-import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
+import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
     selector: `tui-value-decoration`,

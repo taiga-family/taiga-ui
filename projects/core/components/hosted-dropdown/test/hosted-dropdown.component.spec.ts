@@ -1,17 +1,20 @@
-import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiElementModule} from '@taiga-ui/cdk';
+import {
+    TuiButtonComponent,
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule,
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiRootModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {configureTestSuite, tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiTextfieldControllerModule} from '../../../directives';
-import {TuiButtonComponent} from '../../button/button.component';
-import {TuiButtonModule} from '../../button/button.module';
-import {TuiDataListModule} from '../../data-list/data-list.module';
-import {TuiPrimitiveTextfieldComponent} from '../../primitive-textfield/primitive-textfield.component';
-import {TuiPrimitiveTextfieldModule} from '../../primitive-textfield/primitive-textfield.module';
-import {TuiRootModule} from '../../root/root.module';
-import {TuiHostedDropdownModule} from '../hosted-dropdown.module';
 
 describe(`TuiHostedDropdown`, () => {
     @Component({

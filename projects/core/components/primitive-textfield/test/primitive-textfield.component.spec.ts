@@ -1,7 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    TuiHintModule,
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
     configureTestSuite,
@@ -11,12 +19,6 @@ import {
     tuiTestPlaceholder,
     tuiTestTooltip,
 } from '@taiga-ui/testing';
-
-import {TuiHintModule} from '../../../directives/hint/hint.module';
-import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
-import {TuiSizeL, TuiSizeS} from '../../../types/size';
-import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
-import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
 describe(`PrimitiveTextfield`, () => {
     @Component({

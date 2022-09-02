@@ -1,4 +1,4 @@
-import {TuiMatcher} from '../../../types/matcher';
+import type {TuiMatcher} from '../../../types/matcher';
 import {TuiFilterPipe} from '../filter.pipe';
 
 describe(`TuiFilter pipe`, () => {

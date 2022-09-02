@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
-import {TuiBrightness} from '@taiga-ui/core/types';
+import type {TuiBrightness} from '@taiga-ui/core/types';
 
 @Directive({
     selector: `[tuiMode]`,

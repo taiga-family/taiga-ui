@@ -8,13 +8,12 @@ import {
     Optional,
     Output,
 } from '@angular/core';
+import type {TuiDay, TuiDayLike, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
-    TuiDay,
-    TuiDayLike,
     TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
@@ -25,15 +24,11 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiMarkerHandler,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -88,19 +83,16 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     constructor(
         @Optional()
         @Inject(TUI_CALENDAR_DATE_STREAM)
-        valueChanges: Observable<TuiDayRange | null> | null,
+        valueChanges: TuiInjectionTokenType<typeof TUI_CALENDAR_DATE_STREAM> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
+        @Inject(TUI_OTHER_DATE_TEXT)
+        readonly otherDateText$: TuiInjectionTokenType<typeof TUI_OTHER_DATE_TEXT>,
     ) {
-        if (!valueChanges) {
-            return;
-        }
-
         valueChanges
-            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
+            ?.pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
-                this.value = value;
+                this.value = value as TuiDayRange | null;
             });
     }
 

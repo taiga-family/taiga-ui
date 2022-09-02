@@ -11,16 +11,19 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
@@ -90,7 +93,7 @@ export class TuiAccordionItemComponent
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
     ) {
         super();
     }

@@ -76,6 +76,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         // TODO: investigate and switch it on
         '@typescript-eslint/no-extraneous-class': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
         'unicorn/prefer-string-slice': 'error',
         'unicorn/no-array-push-push': 'error',
         'unicorn/require-number-to-fixed-digits-argument': 'error',

@@ -8,7 +8,7 @@ import {
     Self,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {tuiPx} from '@taiga-ui/cdk/utils';
 

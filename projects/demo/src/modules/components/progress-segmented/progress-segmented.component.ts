@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: `example-progress-segmented`,

@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiValueContentContext} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiValueContentContext} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiSelectOptions<T> {
     readonly valueContent: PolymorpheusContent<TuiValueContentContext<T>>;

@@ -1,10 +1,14 @@
-import {Directive, DoCheck, Inject, Self} from '@angular/core';
-import {AbstractTuiControl, TuiDestroyService, TuiHandler, TuiMonth} from '@taiga-ui/cdk';
+import type {DoCheck} from '@angular/core';
+import {Directive, Inject, Self} from '@angular/core';
+import type {TuiInjectionTokenType, TuiMonth} from '@taiga-ui/cdk';
+import {AbstractTuiControl, TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 
+// TODO: investigate
+// @ts-ignore
 import {TuiInputMonthComponent} from './input-month.component';
 
 @Directive({
@@ -22,8 +26,8 @@ export class TuiInputMonthDirective
     constructor(
         @Inject(AbstractTuiControl) host: TuiInputMonthComponent,
         @Inject(TUI_MONTH_FORMATTER)
-        formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        formatter: TuiInjectionTokenType<typeof TUI_MONTH_FORMATTER>,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(host);
 

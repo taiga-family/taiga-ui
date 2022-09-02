@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiInputCopyComponent} from './input-copy.component';
+import type {TuiInputCopyComponent} from './input-copy.component';
 
 @Directive({
     selector: `tui-input-copy`,

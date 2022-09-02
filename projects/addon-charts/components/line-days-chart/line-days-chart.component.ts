@@ -12,10 +12,10 @@ import {
     TuiLineChartComponent,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts/components/line-chart';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
     tuiIsNumber,
@@ -24,9 +24,10 @@ import {
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 

@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiDocSourceCodePathOptions} from '../../interfaces/source-code-path-options';
+import type {TuiDocSourceCodePathOptions} from '../../interfaces/source-code-path-options';
 import {TUI_DOC_SOURCE_CODE_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_SOURCE_CODE} from '../../tokens/source-code';
 

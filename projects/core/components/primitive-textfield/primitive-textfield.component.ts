@@ -13,10 +13,10 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
+import type {TuiContextWithImplicit, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiPure,
@@ -29,9 +29,10 @@ import {
 } from '@taiga-ui/core/directives/textfield-controller';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -39,7 +40,7 @@ import {
     TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldOptions,
 } from './primitive-textfield-options';
-import {TuiPrimitiveTextfield} from './primitive-textfield-types';
+import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
@@ -113,7 +114,7 @@ export class TuiPrimitiveTextfieldComponent
     autofilled = false;
 
     constructor(
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,

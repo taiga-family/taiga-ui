@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_ALERTS} from '@taiga-ui/cdk/tokens';
-import {TuiDialog, TuiMapper} from '@taiga-ui/cdk/types';
+import type {TuiDialog, TuiMapper} from '@taiga-ui/cdk/types';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-alert-host`,

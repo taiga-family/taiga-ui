@@ -1,5 +1,8 @@
-import {Schema} from '../ng-add/schema';
-import {ProjectDefinition, WorkspaceDefinition} from '@angular-devkit/core/src/workspace';
+import type {Schema} from '../ng-add/schema';
+import type {
+    ProjectDefinition,
+    WorkspaceDefinition,
+} from '@angular-devkit/core/src/workspace';
 
 export function getProject(
     options: Schema,

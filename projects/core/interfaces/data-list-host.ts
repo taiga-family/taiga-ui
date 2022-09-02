@@ -1,4 +1,4 @@
-import {TuiIdentityMatcher} from '@taiga-ui/cdk';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 
 // TODO: Consider refactoring checkOption, it is only needed in ComboBox
 export interface TuiDataListHost<T> {

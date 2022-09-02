@@ -1,4 +1,4 @@
-import {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 
 /**
  * Default method to turn arbitrary object into string

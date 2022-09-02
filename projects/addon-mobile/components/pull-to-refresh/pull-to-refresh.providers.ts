@@ -1,7 +1,9 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile/tokens';
 import {TUI_IS_IOS, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {endWith, filter, map, mapTo, scan, switchMap, takeUntil} from 'rxjs/operators';
 
 export const MICRO_OFFSET = 10 ** -6;

@@ -1,13 +1,7 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Inject,
-} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk';
+import type {AfterViewInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
+import {TuiIdService, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
 export const TUI_SHEET_CLOSE = `tui-sheet-close`;
 export const TUI_SHEET_ID = `tui-sheet-id`;
@@ -24,7 +18,8 @@ export class TuiSheetHeadingComponent implements AfterViewInit {
     constructor(
         @Inject(TuiIdService) private readonly idService: TuiIdService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
     ) {}
 
     ngAfterViewInit(): void {

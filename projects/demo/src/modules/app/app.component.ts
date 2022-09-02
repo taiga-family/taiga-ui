@@ -11,7 +11,7 @@ import {
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Metrika} from 'ng-yandex-metrika';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
@@ -20,7 +20,7 @@ import {
     SELECTED_VERSION_META,
     VERSION_MANAGER_PROVIDERS,
 } from './version-manager/version-manager.providers';
-import {TuiVersionMeta} from './version-manager/versions.constants';
+import type {TuiVersionMeta} from './version-manager/versions.constants';
 
 @Component({
     selector: `app`,

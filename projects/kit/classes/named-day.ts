@@ -1,4 +1,4 @@
-import {TuiDay} from '@taiga-ui/cdk';
+import type {TuiDay} from '@taiga-ui/cdk';
 
 export class TuiNamedDay {
     constructor(

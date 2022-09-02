@@ -11,7 +11,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';

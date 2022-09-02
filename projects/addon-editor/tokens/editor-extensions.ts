@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {Extension, Mark, Node} from '@tiptap/core';
-import {Observable} from 'rxjs';
+import type {Extension, Mark, Node} from '@tiptap/core';
+import type {Observable} from 'rxjs';
 
 export const TUI_EDITOR_EXTENSIONS = new InjectionToken<
     ReadonlyArray<Promise<Extension | Mark | Node>>

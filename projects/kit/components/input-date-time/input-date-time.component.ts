@@ -10,6 +10,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiControlValueTransformer,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -19,30 +25,26 @@ import {
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiClamp,
     TuiContextWithImplicit,
-    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
     TuiTime,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 import {
@@ -56,7 +58,7 @@ import {
     tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TextMaskConfig} from 'angular2-text-mask';
+import type {TextMaskConfig} from 'angular2-text-mask';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 

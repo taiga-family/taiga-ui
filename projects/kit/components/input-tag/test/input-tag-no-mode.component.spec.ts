@@ -1,12 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiRootModule,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiInputTagComponent,
     TuiInputTagModule,

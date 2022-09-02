@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_FIRST_DAY_OF_WEEK, TUI_SHORT_WEEK_DAYS} from './index';

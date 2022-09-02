@@ -1,5 +1,5 @@
-import {TuiStringHandler} from './handler';
-import {TuiMapper} from './mapper';
+import type {TuiStringHandler} from './handler';
+import type {TuiMapper} from './mapper';
 
 /**
  * A matcher function to test items against with extra arguments.

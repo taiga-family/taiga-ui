@@ -1,7 +1,8 @@
 import {inject} from '@angular/core';
-import {TuiLanguage} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguage} from '@taiga-ui/i18n/interfaces';
 import {TUI_LANGUAGE} from '@taiga-ui/i18n/tokens';
-import {isObservable, Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {isObservable, of} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 export function tuiExtractI18n<K extends keyof TuiLanguage>(

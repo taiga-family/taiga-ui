@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Directive, Inject, TemplateRef} from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk/types';
+import type {TuiDialog} from '@taiga-ui/cdk/types';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Subject} from 'rxjs';
 import {endWith, ignoreElements, switchMap} from 'rxjs/operators';

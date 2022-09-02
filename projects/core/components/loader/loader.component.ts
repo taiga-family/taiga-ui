@@ -16,7 +16,7 @@ import {
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 

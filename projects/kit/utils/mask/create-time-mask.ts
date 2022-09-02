@@ -1,7 +1,8 @@
-import {TuiTimeMode} from '@taiga-ui/cdk';
-import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
+import type {TuiTimeMode} from '@taiga-ui/cdk';
+import type {TuiTextMaskList} from '@taiga-ui/core';
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
-import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import type {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 function tuiCreateTimePartMask(
     maxPartValue: number,

@@ -1,4 +1,4 @@
-import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
 
 export interface TuiMobileCalendarData {
     single?: boolean;

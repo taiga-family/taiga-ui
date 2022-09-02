@@ -1,4 +1,4 @@
-import {TuiTextMaskPipeResult} from '../../../mask/text-mask-pipe-result';
+import type {TuiTextMaskPipeResult} from '../../../mask/text-mask-pipe-result';
 import {tuiCreateAutoCorrectedNumberPipe} from '../create-auto-corrected-money-pipe';
 
 const DUMMY: any = `any`;

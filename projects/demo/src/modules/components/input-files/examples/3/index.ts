@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
-import {TuiFileLike} from '@taiga-ui/kit';
+import type {TuiFileLike} from '@taiga-ui/kit';
 
 @Component({
     selector: `tui-input-files-example-3`,

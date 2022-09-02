@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable, Subject} from 'rxjs';
+import {EMPTY, Subject} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 import {TuiPushService} from './push.service';
@@ -28,7 +28,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {
     constructor(
         @Inject(TemplateRef) template: TemplateRef<any>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(forwardRef(() => TuiPushService)) push: TuiPushService,
     ) {
         super(template, changeDetectorRef);

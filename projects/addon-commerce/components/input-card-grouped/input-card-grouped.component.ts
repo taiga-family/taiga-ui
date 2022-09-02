@@ -16,20 +16,23 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
-import {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
+import type {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     tuiCreateAutoCorrectedExpirePipe,
     tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
+import type {
+    TuiAutofillFieldName,
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -37,6 +40,7 @@ import {
     tuiPure,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost, TuiTextMaskOptions} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TUI_DIGIT_REGEXP,
@@ -44,20 +48,13 @@ import {
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_APPEARANCE,
     tuiAsDataListHost,
-    TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
-    TuiDataListHost,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TextMaskConfig} from 'angular2-text-mask';
 
-import {
-    TUI_INPUT_CARD_GROUPED_TEXTS,
-    TuiCardGroupedTexts,
-} from './input-card-grouped.providers';
+import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
 
 const STUB: TuiCard = {
     card: ``,
@@ -175,9 +172,11 @@ export class TuiInputCardGroupedComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
-        readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
+        readonly cardGroupedTexts$: TuiInjectionTokenType<
+            typeof TUI_INPUT_CARD_GROUPED_TEXTS
+        >,
         @Inject(TUI_TEXTFIELD_APPEARANCE)
         readonly appearance: string,
     ) {

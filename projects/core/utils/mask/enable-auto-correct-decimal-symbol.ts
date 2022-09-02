@@ -1,5 +1,5 @@
 import {TUI_DECIMAL_SYMBOLS} from '@taiga-ui/core/constants';
-import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
 export function tuiEnableAutoCorrectDecimalSymbol({
     thousandSeparator,

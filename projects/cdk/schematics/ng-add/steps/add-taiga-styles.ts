@@ -1,5 +1,5 @@
-import {Rule, Tree} from '@angular-devkit/schematics';
-import {Schema} from '../schema';
+import type {Rule, Tree} from '@angular-devkit/schematics';
+import type {Schema} from '../schema';
 import {addStylesToAngularJson} from '../../utils/angular-json-manipulations';
 import {
     TAIGA_GLOBAL_NEW_STYLE,

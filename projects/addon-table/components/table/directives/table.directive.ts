@@ -8,10 +8,14 @@ import {
     Output,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {
+    AbstractTuiController,
+    tuiDefaultProp,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_MODE} from '@taiga-ui/core';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
@@ -47,9 +51,9 @@ export class TuiTableDirective<T> extends AbstractTuiController {
 
     constructor(
         @Inject(IntersectionObserverService)
-        readonly entries$: Observable<IntersectionObserverEntry[]>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
+        readonly entries$: IntersectionObserverService,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+        @Inject(TUI_STUCK) readonly stuck$: TuiInjectionTokenType<typeof TUI_STUCK>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {
         super();

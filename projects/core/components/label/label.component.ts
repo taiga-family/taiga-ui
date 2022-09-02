@@ -7,12 +7,11 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: `label[tuiLabel]`,
@@ -39,5 +38,7 @@ export class TuiLabelComponent<T> {
     @HostBinding(`class._control`)
     readonly control?: NgControl;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+    ) {}
 }

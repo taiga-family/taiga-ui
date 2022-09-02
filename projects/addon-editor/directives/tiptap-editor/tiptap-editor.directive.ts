@@ -1,12 +1,10 @@
 import {Directive, ElementRef, Inject, Input, Output, Renderer2} from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
     TIPTAP_EDITOR,
 } from '@taiga-ui/addon-editor/tokens';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
+import {TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {takeUntil} from 'rxjs/operators';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
@@ -39,7 +37,8 @@ export class TuiTiptapEditorDirective {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(INITIALIZATION_TIPTAP_CONTAINER) readonly editorContainer: HTMLElement,
-        @Inject(TIPTAP_EDITOR) private readonly editorLoaded$: Observable<Editor>,
+        @Inject(TIPTAP_EDITOR)
+        private readonly editorLoaded$: TuiInjectionTokenType<typeof TIPTAP_EDITOR>,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         this.editorLoaded$.pipe(takeUntil(destroy$)).subscribe(() => {

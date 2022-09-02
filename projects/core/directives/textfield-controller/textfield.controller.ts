@@ -1,14 +1,14 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
-import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
-import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
-import {TuiTextfieldIconDirective} from './textfield-icon.directive';
-import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
-import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
-import {TuiTextfieldSizeDirective} from './textfield-size.directive';
+import type {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
+import type {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
+import type {TuiTextfieldIconDirective} from './textfield-icon.directive';
+import type {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
+import type {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
+import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
     constructor(

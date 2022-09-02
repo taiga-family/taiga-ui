@@ -1,8 +1,8 @@
-import {Schema} from '../ng-add/schema';
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Schema} from '../ng-add/schema';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getProject} from './get-project';
 import {getProjectTargetOptions} from './get-project-target-options';
-import {JsonArray} from '@angular-devkit/core';
+import type {JsonArray} from '@angular-devkit/core';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';

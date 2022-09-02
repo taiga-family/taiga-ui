@@ -1,10 +1,5 @@
-import {
-    AfterViewInit,
-    ContentChildren,
-    Directive,
-    ElementRef,
-    QueryList,
-} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {ContentChildren, Directive, ElementRef, QueryList} from '@angular/core';
 import {
     EMPTY_QUERY,
     tuiGetClosestFocusable,

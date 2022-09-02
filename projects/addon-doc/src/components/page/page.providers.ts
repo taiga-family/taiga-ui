@@ -1,4 +1,5 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 
 import {TUI_DOC_SEE_ALSO} from '../../tokens/see-also';
 

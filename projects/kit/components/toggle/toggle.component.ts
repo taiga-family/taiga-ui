@@ -11,24 +11,21 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
-    TuiBrightness,
-    TuiModeDirective,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiBrightness, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
 

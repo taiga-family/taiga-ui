@@ -1,19 +1,13 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    OnDestroy,
-    ViewContainerRef,
-} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, ViewContainerRef} from '@angular/core';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     ALWAYS_TRUE_HANDLER,
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
     TUI_RANGE,
-    TuiBooleanHandler,
     tuiDefaultProp,
     tuiGetNativeFocused,
     tuiIsElement,
@@ -22,12 +16,8 @@ import {
     tuiIsTextNode,
     tuiPx,
 } from '@taiga-ui/cdk';
-import {
-    tuiAsDriver,
-    tuiAsRectAccessor,
-    TuiDriver,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/abstract';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';

@@ -13,36 +13,37 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiInputMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
     tuiGetClipboardDataText,
-    TuiInputMode,
     tuiIsNativeFocused,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost, TuiTextMaskOptions} from '@taiga-ui/core';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_SELECTION_STREAM,
     TUI_TEXTFIELD_CLEANER,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDataListHost,
     tuiFormatPhone,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldCleanerDirective,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TextMaskConfig} from 'angular2-text-mask';
-import {Observable} from 'rxjs';
+import type {TextMaskConfig} from 'angular2-text-mask';
 import {takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
@@ -125,9 +126,10 @@ export class TuiInputPhoneComponent
 
     constructor(
         @Optional() @Self() @Inject(NgControl) control: NgControl | null,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
+        @Inject(TUI_SELECTION_STREAM)
+        selection$: TuiInjectionTokenType<typeof TUI_SELECTION_STREAM>,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,

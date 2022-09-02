@@ -26,7 +26,7 @@ export class TuiDroppableDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         this.tuiDroppableDropped = tuiTypedFromEvent(nativeElement, `drop`).pipe(
             tuiPreventDefault(),

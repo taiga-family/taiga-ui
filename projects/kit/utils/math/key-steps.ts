@@ -1,6 +1,6 @@
 import {tuiRound} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
+import type {TuiKeySteps} from '@taiga-ui/kit/types';
 
 function tuiFindKeyStepsBoundariesByFn(
     keySteps: TuiKeySteps,

@@ -1,4 +1,4 @@
-import {TypeNode} from 'ts-morph';
+import type {TypeNode} from 'ts-morph';
 import {getImports, ImportSpecifier, Node} from 'ng-morph';
 
 import {getNamedImportReferences} from '../../utils/get-named-import-references';

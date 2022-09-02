@@ -9,6 +9,13 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiMonth,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -16,25 +23,19 @@ import {
     TUI_LAST_DAY,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     TuiDay,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiHandler,
-    TuiMonth,
-    TuiYear,
 } from '@taiga-ui/cdk';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-input-month`,
@@ -79,7 +80,7 @@ export class TuiInputMonthComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_MONTH_FORMATTER)
-        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
+        readonly formatter: TuiInjectionTokenType<typeof TUI_MONTH_FORMATTER>,
     ) {
         super(control, changeDetectorRef);
     }

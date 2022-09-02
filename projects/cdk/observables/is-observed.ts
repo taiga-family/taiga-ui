@@ -1,4 +1,4 @@
-import {Subject} from 'rxjs';
+import type {Subject} from 'rxjs';
 
 /**
  * In RxJS 8 `observers` will be removed, this util is for future safety

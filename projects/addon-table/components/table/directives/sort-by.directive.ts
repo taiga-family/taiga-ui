@@ -6,7 +6,7 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
 import {filter, map} from 'rxjs/operators';
 

@@ -2,6 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk/types';
 import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {
@@ -33,8 +34,9 @@ export class TuiObscuredService extends Observable<null | readonly Element[]> {
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(WINDOW) windowRef: Window,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(ANIMATION_FRAME)
+        animationFrame$: TuiInjectionTokenType<typeof ANIMATION_FRAME>,
     ) {
         super(subscriber => this.obscured$.subscribe(subscriber));
 

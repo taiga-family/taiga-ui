@@ -1,19 +1,20 @@
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     HostBinding,
     Inject,
     Input,
     Output,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
+import type {SafeValue} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultProp, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TuiSizeXL} from '@taiga-ui/core';
-import {merge, Observable, ReplaySubject} from 'rxjs';
+import type {TuiSizeXL} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {merge, ReplaySubject} from 'rxjs';
 import {mapTo, startWith, switchMap, tap} from 'rxjs/operators';
 
 // 3/4 with 1% safety offset

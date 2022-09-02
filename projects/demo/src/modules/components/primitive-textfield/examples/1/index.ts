@@ -9,7 +9,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({

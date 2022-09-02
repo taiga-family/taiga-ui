@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 export const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR: InjectionToken<

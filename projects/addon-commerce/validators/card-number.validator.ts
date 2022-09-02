@@ -1,4 +1,4 @@
-import {AbstractControl, ValidationErrors} from '@angular/forms';
+import type {AbstractControl, ValidationErrors} from '@angular/forms';
 import {tuiIsCardNumberValid} from '@taiga-ui/addon-commerce/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
 

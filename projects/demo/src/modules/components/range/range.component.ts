@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
-import {TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeS} from '@taiga-ui/core';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
     selector: `example-range`,

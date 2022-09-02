@@ -1,7 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
 
 export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(

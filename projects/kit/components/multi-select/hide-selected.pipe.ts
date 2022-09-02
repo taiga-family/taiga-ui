@@ -1,4 +1,5 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
 import {TuiIdentityMatcher, tuiPure} from '@taiga-ui/cdk';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 

@@ -1,13 +1,10 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {
-    tuiAsPositionAccessor,
-    TuiPositionAccessor,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+import type {TuiPositionAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsPositionAccessor, TuiRectAccessor} from '@taiga-ui/core/abstract';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core/constants';
-import {TuiHintDirection, TuiPoint} from '@taiga-ui/core/types';
+import type {TuiHintDirection, TuiPoint} from '@taiga-ui/core/types';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 

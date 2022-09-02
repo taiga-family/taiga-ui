@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
     tuiControlValue,
     TuiDay,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: `example-tui-mobile-calendar`,

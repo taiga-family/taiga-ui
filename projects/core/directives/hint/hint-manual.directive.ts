@@ -1,4 +1,5 @@
-import {Directive, Input, OnChanges} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {Subject} from 'rxjs';
 

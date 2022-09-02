@@ -1,15 +1,17 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TUI_ICONS_PATH, TuiRootModule} from '@taiga-ui/core';
+import type {TuiLanguage} from '@taiga-ui/i18n';
 import {
     TUI_ENGLISH_LANGUAGE,
     TUI_LANGUAGE,
     TUI_RUSSIAN_LANGUAGE,
     TuiCountryIsoCode,
-    TuiLanguage,
 } from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternationalComponent,

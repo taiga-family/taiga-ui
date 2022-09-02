@@ -12,14 +12,15 @@ import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
     TuiDestroyService,
+    TuiInjectionTokenType,
     tuiPreventDefault,
     tuiStopPropagation,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {TuiOrientation} from '@taiga-ui/core/types';
-import {fromEvent, merge, Observable} from 'rxjs';
+import type {TuiOrientation} from '@taiga-ui/core/types';
+import {fromEvent, merge} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
@@ -35,8 +36,9 @@ export class TuiScrollbarDirective {
     constructor(
         @Inject(NgZone) ngZone: NgZone,
         @Inject(Renderer2) renderer: Renderer2,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(ANIMATION_FRAME)
+        animationFrame$: TuiInjectionTokenType<typeof ANIMATION_FRAME>,
         @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_SCROLL_REF)

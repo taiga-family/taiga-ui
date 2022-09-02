@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 
-import {MyAccount} from './account/my-account.component';
+import type {MyAccount} from './account/my-account.component';
 
 @Component({
     selector: `tui-select-example-9`,

@@ -1,4 +1,4 @@
-import {AbstractControl, AbstractControlDirective} from '@angular/forms';
+import type {AbstractControl, AbstractControlDirective} from '@angular/forms';
 import {TuiValueChangesException} from '@taiga-ui/cdk/exceptions';
 import {Observable} from 'rxjs';
 import {startWith} from 'rxjs/operators';

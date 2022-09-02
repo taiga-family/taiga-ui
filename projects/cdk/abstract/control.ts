@@ -1,18 +1,11 @@
-import {
-    ChangeDetectorRef,
-    Directive,
-    HostBinding,
-    Input,
-    OnDestroy,
-    OnInit,
-    Provider,
-    Type,
-} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
+import type {OnDestroy, OnInit, Provider, Type} from '@angular/core';
+import {ChangeDetectorRef, Directive, HostBinding, Input} from '@angular/core';
+import type {AbstractControl, ControlValueAccessor, NgControl} from '@angular/forms';
+import {NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
+import type {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 

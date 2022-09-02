@@ -8,17 +8,21 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TUI_IS_MOBILE, tuiDefaultProp, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
+import {
+    TUI_IS_MOBILE,
+    tuiDefaultProp,
+    TuiInjectionTokenType,
+    tuiIsObserved,
+    tuiPure,
+} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
+import type {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {TuiFileState} from '@taiga-ui/kit/types';
+import type {TuiFileState} from '@taiga-ui/kit/types';
 import {tuiFormatSize} from '@taiga-ui/kit/utils/files';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-type FileTexts = 'loadingError' | 'preview' | 'remove';
 
 @Component({
     selector: `tui-file`,
@@ -57,9 +61,11 @@ export class TuiFileComponent {
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_FILE_TEXTS)
-        readonly fileTexts$: Observable<Record<FileTexts, string>>,
+        readonly fileTexts$: TuiInjectionTokenType<typeof TUI_FILE_TEXTS>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        private readonly units$: Observable<[string, string, string]>,
+        private readonly units$: TuiInjectionTokenType<
+            typeof TUI_DIGITAL_INFORMATION_UNITS
+        >,
     ) {}
 
     get preview(): SafeValue {

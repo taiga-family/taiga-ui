@@ -1,6 +1,6 @@
-import {TemplateResource} from '../interfaces/template-resourse';
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import type {TemplateResource} from '../interfaces/template-resourse';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -11,7 +11,7 @@ import {
     hasElementAttribute,
 } from '../../utils/templates/elements';
 import {getInputPropertyOffsets} from '../../utils/templates/ng-component-input-manipulations';
-import {Attribute, Element} from 'parse5';
+import type {Attribute, Element} from 'parse5';
 import {arrayFlat} from 'ng-morph';
 
 const TEXTFIELDS = [

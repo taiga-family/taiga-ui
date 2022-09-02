@@ -1,4 +1,5 @@
-import {AfterViewChecked, Directive, ElementRef, Inject, Input} from '@angular/core';
+import type {AfterViewChecked} from '@angular/core';
+import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 /**

@@ -1,6 +1,6 @@
 import '@angular/localize/init';
 
-import {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
+import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
 import {pages} from '../../../demo/src/modules/app/pages';
 

@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
+import type {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
 import {TuiDestroyService, tuiIsString, tuiPure, tuiPx} from '@taiga-ui/cdk';
-import {TuiBrightness} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 

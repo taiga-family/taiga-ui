@@ -1,10 +1,10 @@
+import type {Type} from '@angular/core';
 import {
     ComponentFactoryResolver,
     Inject,
     Injectable,
     INJECTOR,
     Injector,
-    Type,
 } from '@angular/core';
 
 /**

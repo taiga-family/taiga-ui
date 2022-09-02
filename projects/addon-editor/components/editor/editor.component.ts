@@ -1,3 +1,4 @@
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -5,32 +6,32 @@ import {
     ElementRef,
     Inject,
     Input,
-    OnDestroy,
     Optional,
     Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {
     TuiTiptapEditorDirective,
     TuiTiptapEditorService,
 } from '@taiga-ui/addon-editor/directives';
-import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import type {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
@@ -67,7 +68,8 @@ export class TuiEditorComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
+        @Inject(TIPTAP_EDITOR)
+        readonly editorLoaded$: TuiInjectionTokenType<typeof TIPTAP_EDITOR>,
         @Inject(TuiTiptapEditorService) readonly editorService: AbstractTuiEditor,
         @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
         private readonly contentProcessor: TuiStringHandler<string>,

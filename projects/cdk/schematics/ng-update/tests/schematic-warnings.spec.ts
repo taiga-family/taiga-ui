@@ -9,8 +9,8 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {Subscription} from 'rxjs';
-import {LogEntry} from '@angular-devkit/core/src/logger/logger';
+import type {Subscription} from 'rxjs';
+import type {LogEntry} from '@angular-devkit/core/src/logger';
 import {MIGRATION_WARNINGS} from '../constants/warnings';
 import {createAngularJson} from '../../utils/create-angular-json';
 

@@ -1,5 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Renderer2} from '@angular/core';
 import {
     svgNodeFilter,
     tuiDefaultProp,
@@ -7,7 +8,6 @@ import {
     tuiPx,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 
 @Directive({
     selector: `[tuiHighlight]`,
@@ -37,7 +37,7 @@ export class TuiHighlightDirective implements OnChanges {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(TuiResizeService) resize$: Observable<unknown>,
+        @Inject(TuiResizeService) resize$: TuiResizeService,
     ) {
         resize$.subscribe(() => {
             this.updateStyles();

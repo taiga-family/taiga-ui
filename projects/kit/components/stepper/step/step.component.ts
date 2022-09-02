@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp, TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {identity, Observable} from 'rxjs';
+import {identity} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {TuiStepperComponent} from '../stepper.component';
@@ -39,7 +39,7 @@ export class TuiStepComponent {
 
     constructor(
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(TuiRouterLinkActiveService) routerLinkActive$: Observable<boolean>,
+        @Inject(TuiRouterLinkActiveService) routerLinkActive$: TuiRouterLinkActiveService,
         @Inject(TuiStepperComponent) private readonly stepper: TuiStepperComponent,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {

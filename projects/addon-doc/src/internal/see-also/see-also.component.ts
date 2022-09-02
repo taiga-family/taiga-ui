@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 
-import {TuiDocPage, TuiDocPageGroup} from '../../interfaces/page';
+import type {TuiDocPage, TuiDocPageGroup} from '../../interfaces/page';
 import {TUI_DOC_SEE_ALSO_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGES} from '../../tokens/pages';
 

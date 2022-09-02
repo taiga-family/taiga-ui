@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 
 @Component({
     selector: `tui-card-example-3`,

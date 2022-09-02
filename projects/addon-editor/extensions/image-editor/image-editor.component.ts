@@ -5,7 +5,7 @@ import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {TuiEditableImage} from './image-editor.extension';
+import type {TuiEditableImage} from './image-editor.extension';
 
 export const TUI_EDITOR_MIN_IMAGE_WIDTH = new InjectionToken<number>(
     `Min size of resizable image inside editor`,

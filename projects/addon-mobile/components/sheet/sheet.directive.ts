@@ -11,9 +11,9 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Subject} from 'rxjs';
 import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
 
-import {TuiSheet} from './sheet';
+import type {TuiSheet} from './sheet';
 import {TuiSheetService} from './sheet.service';
-import {TuiSheetOptions} from './sheet-options';
+import type {TuiSheetOptions} from './sheet-options';
 
 @Directive({
     selector: `ng-template[tuiSheet]`,

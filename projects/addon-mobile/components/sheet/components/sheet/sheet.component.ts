@@ -1,5 +1,5 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -11,14 +11,19 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TUI_IS_IOS,
+    TuiInjectionTokenType,
+    tuiPure,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {fakeSmoothScroll} from '../../ios.hacks';
-import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
+import type {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS} from './sheet.providers';
@@ -57,11 +62,13 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
     constructor(
-        @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
+        @Inject(TUI_SHEET_SCROLL)
+        private readonly scroll$: TuiInjectionTokenType<typeof TUI_SHEET_SCROLL>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
+        @Inject(TUI_MORE_WORD)
+        readonly moreWord$: TuiInjectionTokenType<typeof TUI_MORE_WORD>,
     ) {}
 
     get stops(): readonly number[] {

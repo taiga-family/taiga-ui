@@ -1,11 +1,11 @@
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import {Element} from 'parse5';
+import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import type {Element} from 'parse5';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from './template-resource';
-import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import type {TemplateResource} from '../../ng-update/interfaces/template-resourse';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,

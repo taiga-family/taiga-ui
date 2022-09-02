@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,8 +19,6 @@ import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiPositionService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -51,8 +49,8 @@ export class TuiDropdownComponent {
     };
 
     constructor(
-        @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiPositionService) position$: TuiPositionService,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalHostComponent)

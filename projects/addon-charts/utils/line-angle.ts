@@ -1,4 +1,4 @@
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 export function tuiLineAngle(a: TuiPoint, b: TuiPoint): number {
     const x = b[0] - a[0];

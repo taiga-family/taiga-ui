@@ -1,14 +1,15 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputCountComponent} from '../input-count.component';
-import {TuiInputCountModule} from '../input-count.module';
 import {
     TUI_INPUT_COUNT_DEFAULT_OPTIONS,
     TUI_INPUT_COUNT_OPTIONS,
-} from '../input-count-options';
+    TuiInputCountComponent,
+    TuiInputCountModule,
+} from '@taiga-ui/kit';
+import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputCount`, () => {
     @Component({

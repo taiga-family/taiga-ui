@@ -1,6 +1,7 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TUI_STUCK = new InjectionToken<boolean>(`Stream of sticky stuck events`);

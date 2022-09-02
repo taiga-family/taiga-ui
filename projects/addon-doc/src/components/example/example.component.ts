@@ -10,15 +10,16 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
-import {TUI_IS_CYPRESS, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {TuiCodeEditor} from '../../interfaces/code-editor';
-import {TuiDocExample} from '../../interfaces/page';
+import type {TuiCodeEditor} from '../../interfaces/code-editor';
+import type {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
@@ -70,7 +71,8 @@ export class TuiDocExampleComponent {
         @Inject(TuiAlertService)
         private readonly alertService: TuiAlertService,
         @Inject(LOCATION) private readonly location: Location,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
+        @Inject(TUI_COPY_TEXTS)
+        private readonly copyTexts$: TuiInjectionTokenType<typeof TUI_COPY_TEXTS>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
         @Optional()
         @Inject(TUI_DOC_CODE_EDITOR)

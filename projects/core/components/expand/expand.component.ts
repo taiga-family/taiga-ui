@@ -1,4 +1,4 @@
-import {NgIfContext} from '@angular/common';
+import type {NgIfContext} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,

@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {AbstractTuiDialogService} from '@taiga-ui/cdk';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
-import {TUI_PUSH_DEFAULT_OPTIONS, TuiPushOptions} from './push.options';
+import type {TuiPushOptions} from './push.options';
+import {TUI_PUSH_DEFAULT_OPTIONS} from './push.options';
 import {TuiPushAlertComponent} from './push-alert.component';
 
 @Injectable({providedIn: `root`})

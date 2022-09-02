@@ -5,7 +5,7 @@ import {bumpVersion} from './shared/bump-version';
 import {checkChangelogBeforePush} from './shared/check-changelog-before-push';
 import {gitCommitAndPush} from './shared/git-commit-and-push';
 import {makeReleaseBranch} from './shared/make-release-branch';
-import {TuiReleaseMode} from './shared/release-mode';
+import type {TuiReleaseMode} from './shared/release-mode';
 import {runStandardVersion} from './shared/run-standard-verion';
 
 const ci = hasFlag(`--ci-mode`);

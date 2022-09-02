@@ -7,7 +7,7 @@ import {
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {
@@ -55,7 +55,7 @@ export class TuiProgressColorSegmentsDirective {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLProgressElement>,
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
+        @Inject(TuiResizeService) private readonly resize$: TuiResizeService,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {}
 }

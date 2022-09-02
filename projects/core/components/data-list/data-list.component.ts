@@ -14,6 +14,7 @@ import {
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
+    TuiInjectionTokenType,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
@@ -22,11 +23,11 @@ import {
     tuiPure,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
-import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
+import type {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import {TuiDataListRole} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiDataListRole} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TuiOptionComponent} from './option/option.component';
@@ -58,7 +59,9 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_NOTHING_FOUND_MESSAGE)
-        readonly defaultEmptyContent$: Observable<string>,
+        readonly defaultEmptyContent$: TuiInjectionTokenType<
+            typeof TUI_NOTHING_FOUND_MESSAGE
+        >,
     ) {}
 
     @tuiPure

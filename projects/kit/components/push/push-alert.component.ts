@@ -1,6 +1,6 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     tuiFadeIn,
@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {TuiPushOptions} from './push.options';
+import type {TuiPushOptions} from './push.options';
 import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({
@@ -33,6 +33,7 @@ export class TuiPushAlertComponent {
     ) {}
 
     get isDirective(): boolean {
+        // noinspection SuspiciousTypeOfGuard
         return this.context.content instanceof TuiPushAlertDirective;
     }
 }

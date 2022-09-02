@@ -1,9 +1,10 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiSliderComponent} from '../slider.component';
+import type {TuiSliderComponent} from '../slider.component';
 import {TuiSliderModule} from '../slider.module';
 
 describe(`Slider`, () => {

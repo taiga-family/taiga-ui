@@ -1,5 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPrimitiveTextfieldOptions {
     readonly iconCleaner: PolymorpheusContent;

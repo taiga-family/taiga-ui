@@ -9,16 +9,11 @@ import {
     Optional,
     Output,
 } from '@angular/core';
-import {SafeValue} from '@angular/platform-browser';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
+import type {SafeValue} from '@angular/platform-browser';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {TuiHintOptionsDirective, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
     xs: `50`,

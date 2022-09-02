@@ -1,6 +1,8 @@
-import {AfterViewInit, Directive} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
+// @ts-ignore
 import {TuiInputCardComponent} from './input-card.component';
 
 @Directive({

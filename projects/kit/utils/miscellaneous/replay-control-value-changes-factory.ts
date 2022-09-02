@@ -1,12 +1,13 @@
-import {NgControl} from '@angular/forms';
-import {
-    tuiControlValue,
+import type {NgControl} from '@angular/forms';
+import type {
     TuiControlValueTransformer,
     TuiDay,
     TuiDayRange,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {Observable, of} from 'rxjs';
+import {tuiControlValue} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 /**

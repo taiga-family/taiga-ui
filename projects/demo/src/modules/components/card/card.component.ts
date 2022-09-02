@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 const BRAND_LOGOS = [
     `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="14" viewBox="0 0 12 14">

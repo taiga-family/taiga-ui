@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {TuiPickerService} from '@taiga-ui/addon-editor/services';
 import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-flat-picker`,
@@ -26,7 +25,7 @@ export class TuiFlatPickerComponent {
     @Output()
     readonly valueChange = new EventEmitter<[number, number]>();
 
-    constructor(@Inject(TuiPickerService) point$: Observable<TuiPoint>) {
+    constructor(@Inject(TuiPickerService) point$: TuiPickerService) {
         point$.subscribe(point => {
             this.value = point;
             this.valueChange.emit([point[0], point[1]]);

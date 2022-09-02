@@ -1,12 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
+import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/kit';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiInputMonthRangeComponent} from '../input-month-range.component';
-import {TuiInputMonthRangeModule} from '../input-month-range.module';
 
 describe(`InputMonthRange`, () => {
     @Component({

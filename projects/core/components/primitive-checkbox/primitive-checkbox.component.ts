@@ -5,9 +5,10 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 

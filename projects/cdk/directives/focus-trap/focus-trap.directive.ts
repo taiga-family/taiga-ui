@@ -1,12 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    HostListener,
-    Inject,
-    OnDestroy,
-    Renderer2,
-} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, ElementRef, HostListener, Inject, Renderer2} from '@angular/core';
 import {tuiContainsOrAfter, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiBlurNativeFocused,

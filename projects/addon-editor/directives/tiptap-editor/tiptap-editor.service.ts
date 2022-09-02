@@ -6,7 +6,7 @@ import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiGetMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';

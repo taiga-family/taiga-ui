@@ -1,4 +1,5 @@
-import {FactoryProvider, Optional, Self} from '@angular/core';
+import type {FactoryProvider} from '@angular/core';
+import {Optional, Self} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
 import {identity} from 'rxjs';

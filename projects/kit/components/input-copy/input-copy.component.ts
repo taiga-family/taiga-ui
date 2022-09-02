@@ -11,24 +11,27 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {TuiHintDirection} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiHintDirection,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
@@ -73,7 +76,8 @@ export class TuiInputCopyComponent
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
+        @Inject(TUI_COPY_TEXTS)
+        private readonly copyTexts$: TuiInjectionTokenType<typeof TUI_COPY_TEXTS>,
     ) {
         super(control, changeDetectorRef);
     }

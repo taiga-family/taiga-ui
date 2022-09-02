@@ -2,11 +2,11 @@ import {DOCUMENT} from '@angular/common';
 import {Component, HostBinding, Inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WINDOW} from '@ng-web-apis/common';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
 import {TuiThemeService} from '../../../app/theme.service';
-import {Color} from '../colors.constants';
+import type {Color} from '../colors.constants';
 
 @Component({
     selector: `table[colors]`,

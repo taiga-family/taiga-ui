@@ -1,19 +1,22 @@
-import {Component, DebugElement, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement, QueryList} from '@angular/core';
+import {Component, ViewChild, ViewChildren} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiGetOriginalArrayFromQueryList} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {
+    TuiAccordionComponent,
+    TuiAccordionItemComponent,
+    TuiAccordionModule,
+    TuiDataListWrapperModule,
+    TuiInputModule,
+    TuiSelectComponent,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputModule} from '../../input/input.module';
-import {TuiSelectComponent} from '../../select/select.component';
-import {TuiSelectModule} from '../../select/select.module';
-import {TuiAccordionComponent} from '../accordion.component';
-import {TuiAccordionModule} from '../accordion.module';
-import {TuiAccordionItemComponent} from '../accordion-item/accordion-item.component';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}

@@ -1,14 +1,15 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputPasswordComponent, TuiInputPasswordModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-import {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
-
-import {TuiInputPasswordComponent} from '../input-password.component';
-import {TuiInputPasswordModule} from '../input-password.module';
+import type {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
 
 describe(`InputPassword`, () => {
     @Component({

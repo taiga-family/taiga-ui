@@ -13,7 +13,7 @@ import {removeModules} from './steps/remove-module';
 import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {migrateProgress} from './steps/migrate-progress';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
 import {dateTimeMigrations} from './steps/migrate-date-time';
 import {
@@ -29,7 +29,7 @@ import {replaceStyles} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
-import {Schema} from '../ng-add/schema';
+import type {Schema} from '../ng-add/schema';
 
 export function updateToV3(options: Schema): Rule {
     const t0 = performance.now();

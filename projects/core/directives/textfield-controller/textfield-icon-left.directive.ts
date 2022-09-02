@@ -1,7 +1,8 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {AbstractTuiController, TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_ICON_LEFT = new InjectionToken<TuiTextfieldIconLeftDirective>(
     `tuiTextfieldIconLeft`,

@@ -1,13 +1,12 @@
 import {animate, style, transition, trigger} from '@angular/animations';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    AfterContentInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
 } from '@angular/core';
 import {
     EMPTY_QUERY,

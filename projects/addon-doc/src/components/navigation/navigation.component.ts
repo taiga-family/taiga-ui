@@ -11,17 +11,24 @@ import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {TuiInputComponent} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
+import {
+    tuiControlValue,
+    TuiDestroyService,
+    TuiInjectionTokenType,
+    tuiPure,
+    tuiUniqBy,
+} from '@taiga-ui/cdk';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
+import type {TuiInputComponent} from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
 import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
-import {TuiDocPage} from '../../interfaces/page';
+import type {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 import {TUI_DOC_SCROLL_BEHAVIOR} from '../../tokens/scroll-behavior';
-import {TuiDocPages} from '../../types/pages';
+import type {TuiDocPages} from '../../types/pages';
 import {tuiTransliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
@@ -60,7 +67,7 @@ export class TuiDocNavigationComponent {
     constructor(
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(Title) titleService: Title,
-        @Inject(NAVIGATION_TITLE) title$: Observable<string>,
+        @Inject(NAVIGATION_TITLE) title$: TuiInjectionTokenType<typeof NAVIGATION_TITLE>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
@@ -73,9 +80,11 @@ export class TuiDocNavigationComponent {
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
-        @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_DOC_PAGE_LOADED)
-        private readonly readyToScroll$: Observable<boolean>,
+        private readonly readyToScroll$: TuiInjectionTokenType<
+            typeof TUI_DOC_PAGE_LOADED
+        >,
         @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,
     ) {
         // Angular can't navigate no anchor links

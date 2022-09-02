@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFileLike} from '@taiga-ui/kit';
+import type {TuiFileLike} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 
 @Component({

@@ -1,15 +1,14 @@
+import type {ComponentRef, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
-    ComponentRef,
     Directive,
     Inject,
     Injector,
     Input,
-    OnDestroy,
     TemplateRef,
 } from '@angular/core';
 import {TuiDropdownPortalService} from '@taiga-ui/cdk';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
+import type {TuiHorizontalDirection} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarComponent} from './sidebar.component';

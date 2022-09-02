@@ -18,14 +18,13 @@ import {
     tuiItemsQueryListObservable,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {
     TUI_DATA_LIST_HOST,
     tuiAsOptionContent,
     TuiDataListHost,
     TuiOptionComponent,
     tuiSizeBigger,
-    TuiSizeL,
-    TuiSizeXS,
 } from '@taiga-ui/core';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

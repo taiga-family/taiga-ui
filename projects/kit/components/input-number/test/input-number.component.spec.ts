@@ -1,19 +1,14 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {
-    TuiDecimal,
-    TuiHintModule,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import type {TuiDecimal, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputNumberComponent} from '../input-number.component';
-import {TuiInputNumberModule} from '../input-number.module';
 
 describe(`InputNumber`, () => {
     @Component({

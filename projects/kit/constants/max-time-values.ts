@@ -1,4 +1,4 @@
-import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import type {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     HH: 23,

@@ -5,17 +5,11 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {tuiDefaultProp, TuiInjectionTokenType, tuiIsNumber} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: `tui-badge`,
@@ -47,7 +41,9 @@ export class TuiBadgeComponent {
     @tuiDefaultProp()
     hoverable = false;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+    ) {}
 
     @HostBinding(`attr.data-tui-host-padding`)
     get padding(): string {

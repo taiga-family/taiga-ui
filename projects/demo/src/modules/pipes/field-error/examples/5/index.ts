@@ -1,11 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {
-    AbstractControl,
-    AsyncValidatorFn,
-    FormBuilder,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import type {AbstractControl, AsyncValidatorFn} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_CYPRESS, TuiValidationError} from '@taiga-ui/cdk';

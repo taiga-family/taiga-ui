@@ -1,15 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {
-    AbstractControl,
-    FormControl,
-    FormGroup,
-    ValidationErrors,
-    Validators,
-} from '@angular/forms';
+import type {OnInit} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {AbstractControl, ValidationErrors} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;

@@ -11,7 +11,7 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives';
-import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
+import type {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 
 @Component({

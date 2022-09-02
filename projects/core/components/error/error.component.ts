@@ -1,6 +1,11 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
+import {
+    tuiDefaultProp,
+    TuiInjectionTokenType,
+    tuiIsString,
+    TuiValidationError,
+} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {
@@ -8,8 +13,6 @@ import {
     TUI_DEFAULT_ERROR_MESSAGE,
     TUI_MODE,
 } from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-error`,
@@ -32,8 +35,10 @@ export class TuiErrorComponent {
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TUI_DEFAULT_ERROR_MESSAGE)
-        readonly defaultErrorMessage$: Observable<string>,
+        readonly defaultErrorMessage$: TuiInjectionTokenType<
+            typeof TUI_DEFAULT_ERROR_MESSAGE
+        >,
     ) {}
 }

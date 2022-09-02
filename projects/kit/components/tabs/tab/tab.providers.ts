@@ -1,4 +1,5 @@
-import {ElementRef, InjectionToken, Optional, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken, Optional} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {
@@ -7,7 +8,8 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {EMPTY, identity, merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {EMPTY, identity, merge} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
 export const TUI_TAB_ACTIVATE = `tui-tab-activate`;

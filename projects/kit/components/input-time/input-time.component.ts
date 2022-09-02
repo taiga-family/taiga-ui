@@ -10,15 +10,18 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_STRICT_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -34,8 +37,8 @@ import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TextMaskConfig} from 'angular2-text-mask';
-import {Observable} from 'rxjs';
+import type {TextMaskConfig} from 'angular2-text-mask';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
@@ -91,7 +94,7 @@ export class TuiInputTimeComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TIME_TEXTS)
-        private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
+        private readonly timeTexts$: TuiInjectionTokenType<typeof TUI_TIME_TEXTS>,
         @Inject(TUI_INPUT_TIME_OPTIONS)
         private readonly options: TuiInputTimeOptions,
     ) {

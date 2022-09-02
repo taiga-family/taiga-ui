@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp, tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
-import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {tuiSizeBigger} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const BADGE_SIZE: {[key: string]: TuiSizeXS | TuiSizeL} = {
     xs: `xs`,

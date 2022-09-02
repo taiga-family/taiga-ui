@@ -1,6 +1,6 @@
 import {migrateInputSlider} from './migrate-input-slider';
 import {migrateInputRange} from './migrate-input-range';
-import {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     infoLog,
     PROCESSING_SYMBOL,

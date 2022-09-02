@@ -1,6 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk';
 import {MASK_CARET_TRAP} from '@taiga-ui/core/constants';
-import {
+import type {
     TuiTextMaskCorrectionHandler,
     TuiTextMaskList,
     TuiTextMaskListHandler,

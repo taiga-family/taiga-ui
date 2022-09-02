@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiHintDirection} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiHintDirection} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHintOptions {
     readonly direction: TuiHintDirection;

@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
 import {
     addPackageJsonDependency,
@@ -13,7 +13,7 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from './constants/versions';
-import {Schema} from './schema';
+import type {Schema} from './schema';
 
 export function ngAdd(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {

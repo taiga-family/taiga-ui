@@ -1,4 +1,4 @@
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 import {tuiControlPoint} from './control-point';
 

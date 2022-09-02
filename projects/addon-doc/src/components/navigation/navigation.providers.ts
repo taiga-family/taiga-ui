@@ -1,12 +1,13 @@
-import {InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DOC_PAGES} from '../../tokens/pages';
 import {TUI_DOC_TITLE} from '../../tokens/title';
-import {TuiDocPages} from '../../types/pages';
+import type {TuiDocPages} from '../../types/pages';
 
 export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(`Page title`);
 export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(

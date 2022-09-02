@@ -10,20 +10,12 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    tuiSizeBigger,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
+import {tuiDefaultProp, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, tuiSizeBigger} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
 
@@ -109,7 +101,7 @@ export class TuiTagComponent {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
         @Inject(TUI_TAG_OPTIONS) private readonly options: TuiTagOptions,
     ) {}
 

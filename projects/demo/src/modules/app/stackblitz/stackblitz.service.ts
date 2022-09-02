@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
-import {TuiCodeEditor} from '@taiga-ui/addon-doc';
+import type {TuiCodeEditor} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';

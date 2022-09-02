@@ -1,9 +1,10 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiContextWithImplicit, TuiTimeMode} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
-import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;

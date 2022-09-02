@@ -1,5 +1,5 @@
+import type {AfterContentInit} from '@angular/core';
 import {
-    AfterContentInit,
     ContentChildren,
     Directive,
     ElementRef,
@@ -10,18 +10,18 @@ import {
     QueryList,
     Renderer2,
 } from '@angular/core';
-import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiPoint} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
 

@@ -1,10 +1,10 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiInputInlineComponent, TuiInputInlineModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputInlineComponent} from '../input-inline.component';
-import {TuiInputInlineModule} from '../input-inline.module';
 
 describe(`InputInline`, () => {
     @Component({

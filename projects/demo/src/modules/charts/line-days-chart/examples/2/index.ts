@@ -8,7 +8,7 @@ import {
     TuiMatcher,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-line-days-chart-example-2`,

@@ -1,5 +1,5 @@
-import {ElementRef} from '@angular/core';
-import {Observable} from 'rxjs';
+import type {ElementRef} from '@angular/core';
+import type {Observable} from 'rxjs';
 import {debounceTime, map, startWith} from 'rxjs/operators';
 
 export function readyToScrollFactory(

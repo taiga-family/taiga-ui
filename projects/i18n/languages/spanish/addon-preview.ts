@@ -1,4 +1,4 @@
-import {TuiLanguagePreview} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_SPANISH_LANGUAGE_PREVIEW: TuiLanguagePreview = {
     previewTexts: {

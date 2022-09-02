@@ -1,7 +1,7 @@
-import {Inject, Optional, Pipe, PipeTransform, Self} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Optional, Pipe, Self} from '@angular/core';
+import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {
-    AbstractControl,
-    ControlValueAccessor,
     FormArrayName,
     FormGroupDirective,
     FormGroupName,
@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 

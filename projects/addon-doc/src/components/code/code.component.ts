@@ -2,7 +2,7 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {RawLoaderContent} from '../../interfaces/page';
+import type {RawLoaderContent} from '../../interfaces/page';
 import {tuiRawLoad} from '../../utils/raw-load';
 import {tuiTryParseMarkdownCodeBlock} from './parse-code-block';
 

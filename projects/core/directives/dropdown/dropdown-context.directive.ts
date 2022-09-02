@@ -1,11 +1,7 @@
 import {Directive, HostListener, Inject} from '@angular/core';
 import {EMPTY_CLIENT_RECT, tuiPointToClientRect} from '@taiga-ui/cdk';
-import {
-    tuiAsDriver,
-    tuiAsRectAccessor,
-    TuiDriver,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/abstract';
 import {Subject} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';

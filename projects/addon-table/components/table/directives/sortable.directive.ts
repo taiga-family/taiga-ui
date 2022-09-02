@@ -1,5 +1,6 @@
-import {Directive, DoCheck, forwardRef, Inject, OnInit} from '@angular/core';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
+import type {DoCheck, OnInit} from '@angular/core';
+import {Directive, forwardRef, Inject} from '@angular/core';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiThComponent} from '../th/th.component';
 import {TuiSortByDirective} from './sort-by.directive';

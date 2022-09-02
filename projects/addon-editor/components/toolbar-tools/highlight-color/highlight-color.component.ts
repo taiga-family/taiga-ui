@@ -1,14 +1,12 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable} from 'rxjs';
+import {tuiDefaultProp, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
@@ -32,7 +30,7 @@ export class TuiHighlightColorComponent {
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
+        readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_TOOLBAR_TEXTS>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
     ) {}

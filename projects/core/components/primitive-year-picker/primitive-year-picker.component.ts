@@ -6,12 +6,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDayRange,
     tuiDefaultProp,
     tuiInRange,
     TuiMonth,

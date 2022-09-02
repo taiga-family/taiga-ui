@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Inject, Optional, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
-import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {Observable, race, timer} from 'rxjs';
 import {map, skipWhile, take, throttleTime} from 'rxjs/operators';

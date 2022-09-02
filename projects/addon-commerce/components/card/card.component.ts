@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 const icons: Record<TuiPaymentSystem, string> = {
     mir: `tuiIconMirMono`,

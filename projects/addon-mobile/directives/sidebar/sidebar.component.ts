@@ -1,18 +1,9 @@
-import {AnimationOptions} from '@angular/animations';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DoCheck,
-    HostBinding,
-    Inject,
-} from '@angular/core';
-import {
-    TUI_ANIMATION_OPTIONS,
-    TuiAnimationOptions,
-    TuiHorizontalDirection,
-    tuiSlideIn,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {AnimationOptions} from '@angular/animations';
+import type {DoCheck} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import type {TuiAnimationOptions, TuiHorizontalDirection} from '@taiga-ui/core';
+import {TUI_ANIMATION_OPTIONS, tuiSlideIn} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 

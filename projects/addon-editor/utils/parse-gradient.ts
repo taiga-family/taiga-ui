@@ -1,5 +1,5 @@
-import {TuiParsedGradient} from '@taiga-ui/addon-editor/interfaces';
-import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
+import type {TuiParsedGradient} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 
 //
 // TypeScript parser based on Dean Taylor's answer:

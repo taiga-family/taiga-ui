@@ -13,7 +13,7 @@ import {
     tuiDefaultProp,
     tuiIsEdgeOlderThan,
 } from '@taiga-ui/cdk';
-import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-progress-circle`,

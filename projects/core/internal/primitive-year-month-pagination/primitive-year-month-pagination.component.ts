@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import type {TuiYear} from '@taiga-ui/cdk';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     tuiDefaultProp,
     TuiMonth,
     TuiMonthLike,
-    TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 
 @Component({
     selector: `tui-primitive-year-month-pagination`,

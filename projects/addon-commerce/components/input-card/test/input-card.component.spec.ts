@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiInputCardComponent} from '../input-card.component';
-import {TuiInputCardModule} from '../input-card.module';
 
 describe(`InputCard`, () => {
     @Component({

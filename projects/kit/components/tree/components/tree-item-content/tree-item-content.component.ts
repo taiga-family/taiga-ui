@@ -8,7 +8,7 @@ import {
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
-import {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
+import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({

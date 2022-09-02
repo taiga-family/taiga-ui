@@ -1,5 +1,5 @@
+import type {AfterContentInit} from '@angular/core';
 import {
-    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,

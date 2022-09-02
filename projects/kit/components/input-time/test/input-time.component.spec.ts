@@ -1,25 +1,20 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTime} from '@taiga-ui/cdk';
-import {
-    TuiHintModule,
-    TuiRootModule,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     tuiCreateKeyboardEvent,
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
-
-import {TuiInputTimeComponent} from '../input-time.component';
-import {TuiInputTimeModule} from '../input-time.module';
 
 const TIMES = [
     new TuiTime(0, 0),

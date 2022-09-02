@@ -1,10 +1,6 @@
 import {Directive, Inject} from '@angular/core';
-import {
-    tuiAsPositionAccessor,
-    TuiPoint,
-    TuiPositionAccessor,
-    TuiRectAccessor,
-} from '@taiga-ui/core';
+import type {TuiPoint, TuiPositionAccessor} from '@taiga-ui/core';
+import {tuiAsPositionAccessor, TuiRectAccessor} from '@taiga-ui/core';
 
 @Directive({
     selector: `[tuiHintCustomPosition]`,

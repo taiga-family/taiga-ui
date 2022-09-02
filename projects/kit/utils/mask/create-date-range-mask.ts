@@ -1,5 +1,6 @@
-import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert, TuiDateMode} from '@taiga-ui/cdk';
-import {TuiTextMaskList} from '@taiga-ui/core';
+import type {TuiDateMode} from '@taiga-ui/cdk';
+import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
+import type {TuiTextMaskList} from '@taiga-ui/core';
 
 import {tuiCreateDateMask} from './create-date-mask';
 

@@ -1,3 +1,4 @@
+import type {OnDestroy, TemplateRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,23 +8,17 @@ import {
     HostListener,
     Inject,
     Input,
-    OnDestroy,
     Optional,
     Self,
-    TemplateRef,
 } from '@angular/core';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiEventWith,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit, TuiEventWith} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TuiDataListHost} from '@taiga-ui/core/interfaces';
+import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from '@taiga-ui/core/tokens';
-import {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 

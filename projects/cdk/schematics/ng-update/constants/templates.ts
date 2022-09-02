@@ -1,5 +1,5 @@
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
-import {Element} from 'parse5';
+import type {Element} from 'parse5';
 import {hasElementAttribute} from '../../utils/templates/elements';
 
 export interface ReplacementAttributes {

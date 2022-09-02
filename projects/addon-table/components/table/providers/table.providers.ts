@@ -11,7 +11,8 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiAppearance,
 } from '@taiga-ui/core';
-import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
+import type {TuiInputCountOptions} from '@taiga-ui/kit';
+import {TUI_INPUT_COUNT_OPTIONS} from '@taiga-ui/kit';
 
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';

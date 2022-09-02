@@ -14,17 +14,18 @@ import {
     TuiBooleanHandler,
     TuiDay,
     tuiDefaultProp,
+    TuiInjectionTokenType,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiInteractiveState, TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core';
+import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
-import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
+import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 const TODAY = TuiDay.currentLocal();
 
@@ -71,7 +72,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     pressedItem: TuiMonth | null = null;
 
     constructor(
-        @Inject(TUI_CALENDAR_MONTHS) readonly months$: Observable<readonly string[]>,
+        @Inject(TUI_CALENDAR_MONTHS)
+        readonly months$: TuiInjectionTokenType<typeof TUI_CALENDAR_MONTHS>,
     ) {}
 
     @HostBinding(`class._single`)

@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

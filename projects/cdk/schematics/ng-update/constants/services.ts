@@ -1,4 +1,4 @@
-import {ReplacementConst} from './consts';
+import type {ReplacementConst} from './consts';
 
 export interface ReplacementService extends ReplacementConst {
     readonly replaceMethods?: {

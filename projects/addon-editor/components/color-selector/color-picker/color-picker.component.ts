@@ -6,9 +6,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultProp, tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-color-picker`,

@@ -1,5 +1,7 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -8,12 +10,12 @@ import {
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiMultiSelectModule} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
     TuiDataListWrapperModule,
     TuiMultiSelectComponent,
-} from '@taiga-ui/kit/components';
+    TuiMultiSelectModule,
+} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`MultiSelect`, () => {

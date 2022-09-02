@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {AbstractTuiDialogService} from '@taiga-ui/cdk';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
-import {TuiMobileDialogOptions} from './mobile-dialog-options';
+import type {TuiMobileDialogOptions} from './mobile-dialog-options';
 
 const DIALOG = new PolymorpheusComponent(TuiMobileDialogComponent);
 const DEFAULT_OPTIONS = {

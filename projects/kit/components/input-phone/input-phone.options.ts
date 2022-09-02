@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiInputPhoneOptions {
     readonly phoneMaskAfterCountryCode: string;

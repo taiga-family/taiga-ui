@@ -1,10 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiInputCVCComponent} from '../input-cvc.component';
+import type {TuiInputCVCComponent} from '../input-cvc.component';
 import {TuiInputCVCModule} from '../input-cvc.module';
 
 describe(`InputCVC`, () => {

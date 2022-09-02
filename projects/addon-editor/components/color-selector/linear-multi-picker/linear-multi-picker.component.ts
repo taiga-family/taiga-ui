@@ -9,8 +9,6 @@ import {
 } from '@angular/core';
 import {TuiPickerService} from '@taiga-ui/addon-editor/services';
 import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-linear-multi-picker`,
@@ -32,7 +30,7 @@ export class TuiLinearMultiPickerComponent {
 
     index = NaN;
 
-    constructor(@Inject(TuiPickerService) point$: Observable<TuiPoint>) {
+    constructor(@Inject(TuiPickerService) point$: TuiPickerService) {
         point$.subscribe(([x]) => {
             this.onPicker(x);
         });

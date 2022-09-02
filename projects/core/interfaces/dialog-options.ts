@@ -1,6 +1,6 @@
-import {TuiDialog} from '@taiga-ui/cdk';
-import {TuiDialogSize} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialogSize} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 /**
  * Options for a dialog

@@ -1,6 +1,7 @@
-import {ElementRef, Provider, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, SkipSelf} from '@angular/core';
 import {TUI_IS_MOBILE_RES} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 export const TUI_IS_MOBILE_RES_PROVIDER: Provider = {
     provide: TUI_IS_MOBILE_RES,

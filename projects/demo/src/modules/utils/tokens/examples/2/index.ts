@@ -2,7 +2,7 @@ import {Component, Inject, Optional} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DIALOGS} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-token-example-2`,

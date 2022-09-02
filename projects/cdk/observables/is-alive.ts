@@ -1,4 +1,5 @@
-import {OperatorFunction, pipe, timer} from 'rxjs';
+import type {OperatorFunction} from 'rxjs';
+import {pipe, timer} from 'rxjs';
 import {distinctUntilChanged, mapTo, startWith, switchMapTo} from 'rxjs/operators';
 
 /**

@@ -1,5 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import {EMPTY_ARRAY, tuiDefaultProp, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
     selector: `tui-tree[childrenHandler]`,

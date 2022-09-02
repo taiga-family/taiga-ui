@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
+import type {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {merge, Observable, of, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 

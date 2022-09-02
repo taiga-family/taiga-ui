@@ -1,4 +1,4 @@
-import {SchematicContext} from '@angular-devkit/schematics';
+import type {SchematicContext} from '@angular-devkit/schematics';
 import {getImports} from 'ng-morph';
 
 import {MIGRATION_WARNINGS, MigrationWarning} from '../constants/warnings';

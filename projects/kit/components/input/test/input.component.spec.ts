@@ -1,17 +1,18 @@
-import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement, ElementRef} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataListModule,
     tuiEditingKeys,
     TuiHintModule,
     TuiRootModule,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiDataListWrapperModule, TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
 import {
     configureTestSuite,
     tuiActiveText,
@@ -19,9 +20,6 @@ import {
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
-
-import {TuiInputComponent} from '../input.component';
-import {TuiInputModule} from '../input.module';
 
 class User {
     constructor(

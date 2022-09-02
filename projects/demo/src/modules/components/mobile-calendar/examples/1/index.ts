@@ -7,7 +7,7 @@ import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map, startWith, withLatestFrom} from 'rxjs/operators';
 
 @Component({

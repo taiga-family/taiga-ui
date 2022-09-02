@@ -1,7 +1,8 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
-import {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
-import {TuiDecimal} from '@taiga-ui/core';
+import type {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
+import type {TuiDecimal} from '@taiga-ui/core';
 
 export interface TuiMoneyOptions {
     readonly decimal: TuiDecimal;

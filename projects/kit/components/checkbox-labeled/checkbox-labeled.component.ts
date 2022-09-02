@@ -10,16 +10,16 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
+import type {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({

@@ -1,9 +1,9 @@
-import {JsonArray} from '@angular-devkit/core';
-import {Rule, Tree} from '@angular-devkit/schematics';
+import type {JsonArray} from '@angular-devkit/core';
+import type {Rule, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
-import {Schema} from '../schema';
+import type {Schema} from '../schema';
 
 const ICON_ASSETS = {
     glob: '**/*',

@@ -1,17 +1,16 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    ALWAYS_FALSE_HANDLER,
-    TUI_DEFAULT_STRINGIFY,
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {
     TuiBooleanHandler,
     TuiContextWithImplicit,
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {ALWAYS_FALSE_HANDLER, TUI_DEFAULT_STRINGIFY} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

@@ -1,19 +1,19 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TUI_PARENT_ANIMATION, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
+import type {TuiBrightness} from '@taiga-ui/core';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
     TUI_MEDIA,
-    TuiBrightness,
     tuiIsMobile,
     TuiMedia,
     tuiSlideInTop,
 } from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
-import {TuiTableBar} from '../../classes/table-bar';
+import type {TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility
@@ -32,7 +32,8 @@ export class TuiTableBarsHostComponent {
 
     constructor(
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_CLOSE_WORD)
+        readonly closeWord$: TuiInjectionTokenType<typeof TUI_CLOSE_WORD>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(WINDOW) private readonly windowRef: Window,

@@ -1,7 +1,9 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import type {ElementRef} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED} from '@taiga-ui/core';
 
 @Component({
     selector: `example-accordion`,

@@ -1,7 +1,8 @@
 import {Directive} from '@angular/core';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
-import {Observable, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 
 @Directive()
 export abstract class AbstractTuiEditor {

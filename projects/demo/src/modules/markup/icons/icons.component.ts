@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 

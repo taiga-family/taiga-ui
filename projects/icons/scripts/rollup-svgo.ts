@@ -1,6 +1,7 @@
 import {createFilter} from '@rollup/pluginutils';
-import {Plugin, TransformResult} from 'rollup';
-import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
+import type {Plugin, TransformResult} from 'rollup';
+import type {OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
+import {optimize} from 'svgo';
 
 type SvgoResult = OptimizedSvg | OptimizedError;
 

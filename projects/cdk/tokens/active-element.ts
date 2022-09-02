@@ -3,7 +3,8 @@ import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetActualTarget, tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
-import {merge, Observable, of, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge, of, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,

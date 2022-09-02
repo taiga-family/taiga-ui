@@ -1,19 +1,19 @@
+import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    DoCheck,
     Inject,
     Input,
     Optional,
     ViewChild,
 } from '@angular/core';
-import {TuiHandler} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
-import {TuiTreeContext} from '../../misc/tree.interfaces';
+import type {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 

@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, EventEmitter, Inject, Output} from '@angular/core';
 import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {merge, Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TuiRangeComponent} from './range.component';
@@ -46,7 +46,7 @@ export class TuiRangeChangeDirective {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiRangeComponent) private readonly range: TuiRangeComponent,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         let activeThumb: 'left' | 'right';
 

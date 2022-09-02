@@ -2,7 +2,7 @@ import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiIsMobile} from '@taiga-ui/core/utils';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
 
 import {TUI_MEDIA} from './media';

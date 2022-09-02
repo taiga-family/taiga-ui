@@ -1,5 +1,5 @@
-import {DebugElement, Predicate} from '@angular/core';
-import {ComponentFixture} from '@angular/core/testing';
+import type {DebugElement, Predicate} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
 import {
     TuiElementIsNotInputException,
     TuiFieldNotFoundException,

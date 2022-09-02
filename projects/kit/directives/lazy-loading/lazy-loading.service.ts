@@ -10,9 +10,8 @@ export class TuiLazyLoadingService extends Observable<string> {
 
     constructor(
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(IntersectionObserverService)
-        intersections$: Observable<IntersectionObserverEntry[]>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(IntersectionObserverService) intersections$: IntersectionObserverService,
     ) {
         super(subscriber =>
             this.src$

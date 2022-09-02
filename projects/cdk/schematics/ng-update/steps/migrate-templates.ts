@@ -1,5 +1,5 @@
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
-import {UpdateRecorder} from '@angular-devkit/schematics';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
 import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
@@ -17,7 +17,7 @@ import {
     hasElementAttribute,
 } from '../../utils/templates/elements';
 import {addProviderToComponent, DevkitFileSystem} from 'ng-morph';
-import {TemplateResource} from '../interfaces/template-resourse';
+import type {TemplateResource} from '../interfaces/template-resourse';
 import {
     getInputPropertyOffsets,
     replaceInputPropertyByDirective,

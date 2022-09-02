@@ -1,12 +1,12 @@
 import {DOCUMENT} from '@angular/common';
-import {Injector, Type} from '@angular/core';
-import {
+import type {Injector, Type} from '@angular/core';
+import type {
     Editor,
-    NodeView,
     NodeViewProps,
     NodeViewRenderer,
     NodeViewRendererOptions,
 } from '@tiptap/core';
+import {NodeView} from '@tiptap/core';
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
 

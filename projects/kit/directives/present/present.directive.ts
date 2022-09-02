@@ -1,11 +1,5 @@
-import {
-    Directive,
-    ElementRef,
-    HostListener,
-    Inject,
-    OnDestroy,
-    Output,
-} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, ElementRef, HostListener, Inject, Output} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {tuiIsCurrentTarget, tuiIsFirefox} from '@taiga-ui/cdk';
 import {BehaviorSubject} from 'rxjs';

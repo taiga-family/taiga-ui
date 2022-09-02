@@ -1,11 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TuiDropdownHostComponent, TuiDropdownHostModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-
-import {TuiDropdownHostComponent} from '../dropdown-host.component';
-import {TuiDropdownHostModule} from '../dropdown-host.module';
 
 describe(`DropdownHost`, () => {
     @Component({

@@ -7,7 +7,7 @@ import {
 } from '@ng-web-apis/resize-observer';
 import {EMPTY_ARRAY, POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {Observable} from 'rxjs';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk/types';
 import {
     catchError,
     debounceTime,
@@ -25,10 +25,11 @@ export class TuiResizeService extends ResizeObserverService {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(RESIZE_OBSERVER_SUPPORT) support: boolean,
         @Inject(RESIZE_OPTION_BOX) box: ResizeObserverBoxOptions,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
+        @Inject(ANIMATION_FRAME)
+        animationFrame$: TuiInjectionTokenType<typeof ANIMATION_FRAME>,
     ) {
         super(elementRef, ngZone, support, box);
 

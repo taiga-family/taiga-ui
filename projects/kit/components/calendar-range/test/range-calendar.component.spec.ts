@@ -1,5 +1,7 @@
-import {Component, DebugElement, Optional, Self, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, Optional, Self, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -12,7 +14,8 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-import {Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
 import {TUI_CALENDAR_DATE_STREAM} from '../../../tokens/calendar-date-stream';

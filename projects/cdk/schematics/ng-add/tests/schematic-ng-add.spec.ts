@@ -15,7 +15,7 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from '../constants/versions';
-import {Schema} from '../schema';
+import type {Schema} from '../schema';
 import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../collection.json');

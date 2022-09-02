@@ -1,6 +1,6 @@
 ```ts
 import {TuiAlertOptions} from '@taiga-ui/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 //...

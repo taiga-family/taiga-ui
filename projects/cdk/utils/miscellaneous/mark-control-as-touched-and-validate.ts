@@ -1,4 +1,5 @@
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import type {AbstractControl} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 
 export function tuiMarkControlAsTouchedAndValidate(control: AbstractControl): void {
     if (control instanceof FormArray) {

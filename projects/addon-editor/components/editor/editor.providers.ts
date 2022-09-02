@@ -7,9 +7,9 @@ import {
     TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
 } from '@taiga-ui/addon-editor/tokens';
-import type {Extension, Mark, Node} from '@tiptap/core';
-import {Editor} from '@tiptap/core';
-import {combineLatest, Observable, ReplaySubject} from 'rxjs';
+import type {Editor, Extension, Mark, Node} from '@tiptap/core';
+import type {Observable} from 'rxjs';
+import {combineLatest, ReplaySubject} from 'rxjs';
 import {map, shareReplay, take} from 'rxjs/operators';
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';

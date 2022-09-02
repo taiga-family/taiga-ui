@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiDateMode} from '@taiga-ui/cdk/types';
+import type {TuiDateMode} from '@taiga-ui/cdk/types';
 
 import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from './date-fillers';
 import {RANGE_SEPARATOR_CHAR} from './date-time';

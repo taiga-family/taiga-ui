@@ -6,12 +6,10 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
-import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
-import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
+import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
+import {CHAR_NO_BREAK_SPACE, tuiDefaultProp, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-axes`,
@@ -81,7 +79,9 @@ export class TuiAxesComponent {
         return this.axisY === `none`;
     }
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+    ) {}
 
     get hasXLabels(): boolean {
         return !!this.axisXLabels.length;

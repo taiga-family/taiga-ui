@@ -9,6 +9,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
+    TuiMonth,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -18,24 +23,20 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiHandler,
-    TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
+import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 @Component({
     selector: `tui-input-month-range`,
@@ -78,7 +79,7 @@ export class TuiInputMonthRangeComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MONTH_FORMATTER)
-        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
+        readonly formatter: TuiInjectionTokenType<typeof TUI_MONTH_FORMATTER>,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {

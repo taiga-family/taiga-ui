@@ -1,8 +1,9 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TuiSizeL} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeL} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeL;

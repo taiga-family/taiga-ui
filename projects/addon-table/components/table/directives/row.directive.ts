@@ -1,5 +1,5 @@
 import {Directive, Inject, Input, TemplateRef} from '@angular/core';
-import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
+import type {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({

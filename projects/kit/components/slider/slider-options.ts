@@ -1,5 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiSliderOptions {
     readonly size: TuiSizeS;

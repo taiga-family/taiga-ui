@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiInputDateComponent} from './input-date.component';
+import type {TuiInputDateComponent} from './input-date.component';
 
 @Directive({
     selector: `tui-input-date`,

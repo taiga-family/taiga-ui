@@ -12,6 +12,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiInputMode, TuiMapper} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     EMPTY_QUERY,
@@ -19,16 +20,13 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiInputMode,
-    TuiMapper,
 } from '@taiga-ui/cdk';
+import type {TuiDecimal, TuiTextMaskOptions} from '@taiga-ui/core';
 import {
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
-    TuiDecimal,
     tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
@@ -36,10 +34,9 @@ import {
     tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
+import type {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
 

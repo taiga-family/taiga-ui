@@ -4,7 +4,8 @@
         "rootDir": ".",
         "baseUrl": ".",
         "strict": false,
-        "incremental": true
+        "incremental": true,
+        "emitDecoratorMetadata": true
     },
     "include": ["projects", "scripts"],
     "exclude": ["**/node_modules", "**/schematics/**", "**/.*/", "*.js"]

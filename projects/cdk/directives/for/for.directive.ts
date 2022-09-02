@@ -1,12 +1,5 @@
-import {
-    Directive,
-    EmbeddedViewRef,
-    Inject,
-    Input,
-    OnChanges,
-    TemplateRef,
-    ViewContainerRef,
-} from '@angular/core';
+import type {OnChanges, TemplateRef} from '@angular/core';
+import {Directive, EmbeddedViewRef, Inject, Input, ViewContainerRef} from '@angular/core';
 
 @Directive({
     selector: `[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]`,

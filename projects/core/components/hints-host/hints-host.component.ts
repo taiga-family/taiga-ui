@@ -1,8 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-hints-host`,
@@ -15,7 +13,5 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiHintsHostComponent {
-    constructor(
-        @Inject(TuiHintService) readonly hints$: Observable<readonly TuiPortalItem[]>,
-    ) {}
+    constructor(@Inject(TuiHintService) readonly hints$: TuiHintService) {}
 }

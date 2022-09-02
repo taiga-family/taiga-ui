@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk/observables';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
 @Directive({

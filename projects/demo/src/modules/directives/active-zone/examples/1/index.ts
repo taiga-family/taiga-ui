@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputComponent} from '@taiga-ui/kit';
+import type {TuiInputComponent} from '@taiga-ui/kit';
 
 @Component({
     selector: `tui-active-zone-example-1`,

@@ -1,10 +1,10 @@
 import {Directive, ElementRef} from '@angular/core';
-import {
+import type {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk/interfaces';
 
-import {TuiAutofocusHandler} from '../autofocus.options';
+import type {TuiAutofocusHandler} from '../autofocus.options';
 
 @Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {

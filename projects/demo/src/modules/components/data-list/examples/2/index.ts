@@ -1,7 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDialogService, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiDialogService} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-data-list-example-2`,

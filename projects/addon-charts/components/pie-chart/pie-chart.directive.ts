@@ -6,10 +6,11 @@ import {
     tuiDefaultProp,
     TuiDestroyService,
     tuiEaseInOutQuad,
+    TuiInjectionTokenType,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
 
 @Directive({
@@ -28,9 +29,10 @@ export class TuiPieChartDirective {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<SVGPathElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(PERFORMANCE) performance: Performance,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
+        @Inject(ANIMATION_FRAME)
+        animationFrame$: TuiInjectionTokenType<typeof ANIMATION_FRAME>,
         @Inject(TUI_ANIMATIONS_DURATION) duration: number,
     ) {
         this.sector$

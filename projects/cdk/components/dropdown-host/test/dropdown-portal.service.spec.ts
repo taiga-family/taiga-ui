@@ -1,8 +1,7 @@
-import {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
-import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-
-import {TuiDropdownPortalService} from '../dropdown-portal.service';
+import type {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
+import type {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
+import {TuiDropdownPortalService} from '@taiga-ui/cdk';
+import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 describe(`PortalService`, () => {
     let service: TuiDropdownPortalService;
@@ -38,7 +37,7 @@ describe(`PortalService`, () => {
         try {
             service.add(a);
         } catch (err) {
-            actual = err.message;
+            actual = (err as Error)?.message;
         }
 
         expect(actual).toEqual(`Portals cannot be used without TuiPortalHostComponent`);

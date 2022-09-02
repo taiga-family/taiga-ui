@@ -1,18 +1,20 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import type {TuiDialog} from '@taiga-ui/cdk';
 import {
     tuiContainsOrAfter,
     TuiDestroyService,
-    TuiDialog,
     tuiIsCurrentTarget,
     tuiIsElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {EMPTY, merge} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(

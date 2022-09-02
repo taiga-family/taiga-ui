@@ -1,4 +1,5 @@
-import {AfterViewInit, Directive, Inject, Input} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {Directive, Inject, Input} from '@angular/core';
 import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 
 import {

@@ -17,7 +17,7 @@ export class TuiFocusVisibleService extends Observable<boolean> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(subscriber => this.focusVisible$.subscribe(subscriber));
 

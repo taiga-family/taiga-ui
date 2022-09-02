@@ -1,4 +1,4 @@
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 export function tuiGetPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
     if (cardNumber === ``) {

@@ -1,6 +1,6 @@
 import {isPlatformBrowser, Location} from '@angular/common';
+import type {AfterViewInit, OnInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -9,16 +9,17 @@ import {
     HostListener,
     Inject,
     Input,
-    OnInit,
     PLATFORM_ID,
     Renderer2,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
+import type {AbstractControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
 import {TUI_IS_MOBILE, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
 

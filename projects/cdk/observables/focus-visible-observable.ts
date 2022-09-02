@@ -1,6 +1,7 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {concat, merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {concat, merge} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,

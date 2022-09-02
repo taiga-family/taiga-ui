@@ -1,6 +1,6 @@
-import {Inject, Injectable, Optional, Sanitizer, SecurityContext} from '@angular/core';
+import {Inject, Injectable, Optional, SecurityContext} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {tuiAssert} from '@taiga-ui/cdk';
+import {tuiAssert, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';
 import {BehaviorSubject} from 'rxjs';
@@ -19,7 +19,7 @@ export class TuiSvgService {
     constructor(
         @Optional()
         @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
+        private readonly tuiSanitizer: TuiInjectionTokenType<typeof TUI_SANITIZER> | null,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_ICONS) icons: Record<string, string>,
     ) {

@@ -5,16 +5,10 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeXL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
+import {tuiDefaultProp, TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
+import type {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 
 @Component({
     selector: `tui-marker-icon`,
@@ -41,5 +35,7 @@ export class TuiMarkerIconComponent {
     @tuiDefaultProp()
     src = ``;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: TuiInjectionTokenType<typeof TUI_MODE>,
+    ) {}
 }

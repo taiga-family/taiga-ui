@@ -6,6 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
+import type {TuiZoom} from '@taiga-ui/cdk';
 import {
     tuiClamp,
     tuiDefaultProp,
@@ -15,10 +16,9 @@ import {
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
-    TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
+import type {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
 import {map, mapTo, startWith} from 'rxjs/operators';
 

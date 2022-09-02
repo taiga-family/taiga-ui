@@ -1,16 +1,15 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiInjectionTokenType, TuiItemDirective} from '@taiga-ui/cdk';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: `tui-files`,
@@ -30,8 +29,10 @@ export class TuiFilesComponent {
     hidden = true;
 
     constructor(
-        @Inject(TUI_HIDE_TEXT) readonly hideText$: Observable<string>,
-        @Inject(TUI_SHOW_ALL_TEXT) readonly showAllText$: Observable<string>,
+        @Inject(TUI_HIDE_TEXT)
+        readonly hideText$: TuiInjectionTokenType<typeof TUI_HIDE_TEXT>,
+        @Inject(TUI_SHOW_ALL_TEXT)
+        readonly showAllText$: TuiInjectionTokenType<typeof TUI_SHOW_ALL_TEXT>,
     ) {}
 
     get hasExtraItems(): boolean {

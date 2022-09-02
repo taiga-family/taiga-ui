@@ -3,8 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiDialogContext} from '@taiga-ui/core';
-import {BehaviorSubject, Observable, of, timer} from 'rxjs';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, of, timer} from 'rxjs';
 import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
 
 @Component({

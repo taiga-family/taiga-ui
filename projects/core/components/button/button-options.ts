@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiButtonOptions {
     readonly size: TuiSizeXS | TuiSizeXL;
