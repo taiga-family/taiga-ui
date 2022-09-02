@@ -38,7 +38,7 @@ import {
 } from '../../utils/colored-log';
 import {ALL_TS_FILES} from '../../constants';
 import {replaceTag} from '../../utils/replace-tag';
-import {printProgress} from '../../utils/progress';
+import {setupProgressLogger} from '../../utils/progress';
 import {migratePolymorpheus} from './migrate-polymorpheus';
 import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
 import {TODO_MARK} from '../../utils/insert-todo';
@@ -65,21 +65,18 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         addWarningForFormatNumberPipe,
     ];
 
-    componentWithTemplatesPaths.forEach((resource, templateIndex, templates) => {
+    const progressLog = setupProgressLogger({
+        total: componentWithTemplatesPaths.length,
+    });
+
+    componentWithTemplatesPaths.forEach(resource => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
-        const isLastTemplate = templateIndex === templates.length - 1;
 
         actions.forEach((action, actionIndex) => {
             const isLastAction = actionIndex === actions.length - 1;
-            const progressLog = `${templateIndex + 1} / ${templates.length} (${
-                action.name
-            }...)`;
 
-            printProgress(
-                `${SMALL_TAB_SYMBOL.repeat(2)}${progressLog}`,
-                isLastTemplate && isLastAction,
-            );
+            progressLog(action.name, isLastAction);
             action({resource, fileSystem, recorder});
         });
     });

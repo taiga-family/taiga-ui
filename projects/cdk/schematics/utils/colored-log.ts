@@ -22,5 +22,5 @@ export const SMALL_TAB_SYMBOL = `  `; // @note: if you use \t then we have big g
 export const START_SYMBOL = `🚀`;
 export const FINISH_SYMBOL = `🏆`;
 export const REPLACE_SYMBOL = `⚡️`;
-export const PROCESSING_SYMBOL = `☑️ `;
+export const PROCESSING_SYMBOL = `> `;
 export const SUCCESS_SYMBOL = `✅ `;
