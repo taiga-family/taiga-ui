@@ -20,7 +20,6 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
     providers: [TEXTFIELD_CONTROLLER_PROVIDER],
     host: {
         type: `text`,
-        '[attr.aria-placeholder]': `controller.exampleText`,
         '[attr.aria-invalid]': `host.invalid`,
         '[attr.disabled]': `host.disabled || null`,
         '[tabIndex]': `host.focusable ? 0 : -1`,
