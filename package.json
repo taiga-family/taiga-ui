@@ -35,8 +35,6 @@
         "*** Build **": "",
         "build:demo": "nx build --prod --configuration=production",
         "build:demo:next": "nx build --prod --configuration=next",
-        "postbuild:demo": "npm run exec -- ./scripts/postbuild-demo.ts",
-        "postbuild:demo:next": "npm run exec -- ./scripts/postbuild-demo.ts",
         "*** Release ***": "",
         "release": "standard-version -a --no-verify",
         "release:patch": "ts-node ./scripts/release.ts --release-as patch",
