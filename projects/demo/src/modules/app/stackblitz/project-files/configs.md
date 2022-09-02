@@ -79,5 +79,3 @@
   }
 }
 ```
-
-Ivy is disabled because of Stackblitz error: https://github.com/stackblitz/core/issues/1364
