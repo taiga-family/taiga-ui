@@ -30,6 +30,11 @@ export class ExampleTuiTablePaginationComponent {
         HTML: import(`./examples/2/index.html?raw`),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+    };
+
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 }
