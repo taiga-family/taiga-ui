@@ -2,17 +2,6 @@ name: E2E tests
 
 on:
   pull_request:
-    paths-ignore:
-      - 'projects/*testing/**'
-      - 'projects/icons/**'
-    branches-ignore:
-      - 'release**'
-  push:
-    branches:
-      - '!main'
-      - '!release**'
-      - '!gh-pages**'
-      - '!screenshot-bot-storage**'
 
 env:
   CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
