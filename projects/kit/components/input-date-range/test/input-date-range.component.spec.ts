@@ -229,7 +229,7 @@ describe(`InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="
         fixture.detectChanges();
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`12/16/2021 – 02/27/2022`);
+        expect(inputPO.value).toBe(`12/16/2021 – 01/27/2022`);
     });
 });
 
@@ -276,7 +276,7 @@ describe(`InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="
         fixture.detectChanges();
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`2021-12-12 – 2022-02-18`);
+        expect(inputPO.value).toBe(`2021-12-12 – 2022-01-18`);
     });
 });
 
@@ -407,7 +407,7 @@ describe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
         fixture.detectChanges();
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`12.09.2021 – 18.11.2022`);
+        expect(inputPO.value).toBe(`12.09.2021 – 18.10.2021`);
     });
 
     it(`transforms value which was programmatically patched`, () => {
