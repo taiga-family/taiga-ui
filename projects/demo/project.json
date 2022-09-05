@@ -12,18 +12,17 @@
     },
     "implicitDependencies": ["!testing"],
     "architect": {
-        "prebuild": {
+        "i18n": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
                 "command": "nx build i18n"
             }
         },
-        "build": {
+        "ng-build": {
             "builder": "@angular-devkit/build-angular:browser",
-            "outputs": ["dist/demo"],
             "dependsOn": [
                 {
-                    "target": "prebuild",
+                    "target": "i18n",
                     "projects": "self"
                 }
             ],
@@ -140,6 +139,20 @@
                 "ru": {
                     "localize": ["ru"]
                 }
+            }
+        },
+        "build": {
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["dist/demo"],
+            "options": {
+                "parallel": false,
+                "commands": ["nx ng-build demo", "nx postbuild demo"]
+            }
+        },
+        "postbuild": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/postbuild-demo.ts"
             }
         },
         "mkcert": {

@@ -28,7 +28,7 @@ jobs:
 
       - name: Build all snapshots
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
-        run: npm run exec -- ./scripts/build-all-demo-snapshots.ts
+        run: npx ts-node ./scripts/build-all-demo-snapshots.ts
 
       - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}

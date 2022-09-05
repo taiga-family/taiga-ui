@@ -87,5 +87,13 @@
             "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
             "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"]
         }
+    },
+    "ts-node": {
+        "files": true,
+        "transpileOnly": true,
+        "compilerOptions": {
+            "types": ["node"],
+            "module": "commonjs"
+        }
     }
 }
