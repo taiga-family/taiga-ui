@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/modules/customization/portals/examples/1/portal/custom-host.template.html?465f"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,+GAAgD,E","file":"!!raw-loader!-examples-1-portal-custom-host-template-html.js","sourcesContent":["export default \"<ng-container #viewContainer></ng-container>\\n\";"],"sourceRoot":"webpack:///"}
