@@ -6,6 +6,7 @@ import {TuiTablePaginationModule} from '@taiga-ui/addon-table';
 
 import {TuiTablePaginationExample1} from './examples/1';
 import {TuiTablePaginationExample2} from './examples/2';
+import {TuiTablePaginationExample3} from './examples/3';
 import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
         ExampleTuiTablePaginationComponent,
         TuiTablePaginationExample1,
         TuiTablePaginationExample2,
+        TuiTablePaginationExample3,
     ],
     exports: [ExampleTuiTablePaginationComponent],
 })

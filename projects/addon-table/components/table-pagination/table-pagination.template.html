@@ -1,7 +1,9 @@
 <ng-container *ngIf="texts$ | async as texts">
     <span class="t-pages">
-        {{ texts.pages }}
-        <strong class="t-strong">{{ pages }}</strong>
+        <ng-container *ngIf="options.showPages">
+            {{ texts.pages }}
+            <strong class="t-strong">{{ pages }}</strong>
+        </ng-container>
     </span>
     <span automation-id="tui-table-pagination__lines-per-page-wrapper">
         {{ texts.linesPerPage }}
