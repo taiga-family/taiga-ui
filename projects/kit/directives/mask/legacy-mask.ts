@@ -1,4 +1,12 @@
 /* eslint-disable */
+/**
+ * Copied from
+ * {@link https://github.com/text-mask/text-mask/blob/master/angular2/src/angular2TextMask.ts angular2-text-mask}
+ * ___
+ * "angular2-text-mask" is a legacy not-maintained library. It is published using legacy View Engine distribution.
+ * Stackblitz fails to run "View Engine"-libraries in Ivy application.
+ * See {@link https://github.com/Tinkoff/taiga-ui/issues/2541#issuecomment-1235516443 this comment}.
+ */
 import {
     Directive,
     ElementRef,
@@ -16,8 +24,8 @@ import {
     NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import {ɵgetDOM as getDOM} from '@angular/platform-browser';
-import {createTextMaskInputElement} from 'text-mask-core';
 import {TuiTextMaskOptions} from '@taiga-ui/core';
+import {createTextMaskInputElement} from 'text-mask-core';
 
 /**
  * We must check whether the agent is Android because composition events
