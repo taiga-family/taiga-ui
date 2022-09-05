@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.62.2](https://github.com/tinkoff/taiga-ui/compare/v2.62.1...v2.62.2) (2022-09-05)
+
+### Bug Fixes
+
+- **core:** prevent injection conflict with CSS global interface
+  ([#2508](https://github.com/tinkoff/taiga-ui/issues/2508))
+  ([60bd130](https://github.com/tinkoff/taiga-ui/commit/60bd13052d9dfb33057326b1e4f02961518ea3cd))
+- **kit:** InputNumber fix positive min/negative max clipping ([#2593](https://github.com/tinkoff/taiga-ui/issues/2593))
+  ([460074d](https://github.com/tinkoff/taiga-ui/commit/460074d4443a24b10a2e34f28e611ecc0dbcd013))
+
 ### [2.62.1](https://github.com/tinkoff/taiga-ui/compare/v2.62.0...v2.62.1) (2022-08-29)
 
 ### Bug Fixes
