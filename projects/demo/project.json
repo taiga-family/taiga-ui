@@ -145,9 +145,14 @@
             "builder": "@nrwl/workspace:run-commands",
             "outputs": ["dist/demo"],
             "options": {
-                "parallel": false,
-                "commands": ["nx ng-build demo", "nx postbuild demo"]
-            }
+                "command": "nx postbuild demo"
+            },
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "ng-build"
+                }
+            ]
         },
         "postbuild": {
             "builder": "@nrwl/workspace:run-commands",
@@ -178,7 +183,7 @@
                 }
             ],
             "options": {
-                "browserTarget": "demo:build",
+                "browserTarget": "demo:ng-build",
                 "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
@@ -222,7 +227,7 @@
         "serve-ssr": {
             "builder": "@nguniversal/builders:ssr-dev-server",
             "options": {
-                "browserTarget": "demo:build",
+                "browserTarget": "demo:ng-build",
                 "serverTarget": "demo:server"
             },
             "configurations": {

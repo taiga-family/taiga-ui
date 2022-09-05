@@ -4,24 +4,23 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
 
 import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
 
-export const SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
+export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
     `Meta information about selected version of Taiga docs`,
 );
 
-export const VERSION_MANAGER_PROVIDERS: Provider[] = [
+export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
     {
-        provide: SELECTED_VERSION_META,
-        useFactory: selectedVersionMetaFactory,
+        provide: TUI_SELECTED_VERSION_META,
         deps: [LocationStrategy],
+        useFactory: (strategy: LocationStrategy): TuiVersionMeta | null => {
+            return (
+                TAIGA_VERSIONS_META.find(meta => {
+                    return (
+                        meta.baseHref === strategy.getBaseHref().replace(/\//g, ``) ||
+                        meta.alias === `v${parseInt(TUI_VERSION)}`
+                    );
+                }) || null
+            );
+        },
     },
 ];
-
-export function selectedVersionMetaFactory(s: LocationStrategy): TuiVersionMeta | null {
-    return (
-        TAIGA_VERSIONS_META.find(
-            meta =>
-                meta.baseHref === s.getBaseHref().replace(/\//g, ``) ||
-                meta.versionDemo === `v${TUI_VERSION}`,
-        ) || null
-    );
-}

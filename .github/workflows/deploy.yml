@@ -1,10 +1,10 @@
 name: Deploy on Release
 
+# NOTE:
+# ${{ github.base_ref }}: The name of the base ref or target branch of the pull request in a workflow run.
+# This is only set when the event that triggers a workflow run is either pull_request or pull_request_target.
 on:
   pull_request:
-  # NOTE:
-  # ${{ github.base_ref }}: The name of the base ref or target branch of the pull request in a workflow run.
-  # This is only set when the event that triggers a workflow run is either pull_request or pull_request_target.
 
 env:
   NX_BRANCH: ${{ github.event.number }}
@@ -26,19 +26,9 @@ jobs:
         uses: ./.github/actions/nodejs
         id: nodejs-workspace
 
-      - name: Build all snapshots
-        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
+      - name: Build all snapshots for `taiga-ui.dev`
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref == 'main' }}
         run: npx ts-node ./scripts/build-all-demo-snapshots.ts
-
-      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
-        uses: s0/git-publish-subdir-action@v2.5.1
-        env:
-          REPO: self
-          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          FOLDER: dist/demo/browser
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
-
       - name: Deploy all files to `taiga-ui.dev`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref == 'main' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
@@ -50,15 +40,29 @@ jobs:
           clean-exclude: |
             CNAME
 
+      - name: Build snapshot for `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
+        run:
+          npx nx build demo --prod --configuration=production --base-href /v${{ steps.nodejs-workspace.outputs
+          .root-package-major-version }}/
       - name: Deploy all files to `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
-          folder: dist/demo/browser
+          folder: dist/demo/browser/
           target-folder: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           clean: true
+
+      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+          FOLDER: dist/demo/browser
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
 concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}
