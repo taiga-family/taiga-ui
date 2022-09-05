@@ -173,7 +173,7 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "dependsOn": [
                 {
-                    "target": "prebuild",
+                    "target": "i18n",
                     "projects": "self"
                 }
             ],
@@ -233,7 +233,7 @@
             },
             "dependsOn": [
                 {
-                    "target": "prebuild",
+                    "target": "i18n",
                     "projects": "self"
                 }
             ]
