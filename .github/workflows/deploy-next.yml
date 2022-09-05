@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'v3.x'
     paths:
       - 'projects/**'
       - 'angular.json'
@@ -27,17 +26,6 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - run: npm run build:demo:next
-
-      - name: Debug output
-        run: ls -la dist/demo/browser/next
-
-      - name: Save snapshot to reuse in E2E for pre-release branches
-        uses: s0/git-publish-subdir-action@v2.5.1
-        env:
-          REPO: self
-          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
-          FOLDER: dist/demo/browser/next
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
       - name: Deploy next from main branch to `taiga-ui.dev/next`
         if: ${{ github.ref_name == 'main' }}

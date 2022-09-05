@@ -1,8 +1,9 @@
-name: Save / next / snapshots / ${{ github.head_ref || github.ref_name }}
+name: Save / next / snapshots
 
 on:
   push:
     branches:
+      - main
       - 'v[0-9]+.x'
   workflow_dispatch:
 
@@ -12,7 +13,7 @@ env:
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
 jobs:
-  build-and-deploy:
+  build-and-push:
     name: Next for branch ${{ github.head_ref || github.ref }}
     runs-on: ubuntu-latest
     steps:
