@@ -37,7 +37,9 @@ function _isAndroid(): boolean {
 }
 
 /**
- * @deprecated Internal purpose only. Don't use it! It can be deleted at any time (even in minor releases).
+ * @internal
+ * @deprecated
+ * Don't use it! It can be deleted at any time (even in minor releases).
  * Use {@link https://github.com/text-mask/text-mask/tree/master/angular2 angular2-text-mask} instead.
  */
 @Directive({
@@ -163,7 +165,9 @@ export class MaskedInputDirective implements ControlValueAccessor, OnChanges {
 }
 
 /**
- * @deprecated Internal purpose only. Don't use it! It can be deleted at any time (even in minor releases).
+ * @internal
+ * @deprecated
+ * Don't use it! It can be deleted at any time (even in minor releases).
  * Use {@link https://github.com/text-mask/text-mask/tree/master/angular2 angular2-text-mask} instead.
  */
 @NgModule({
