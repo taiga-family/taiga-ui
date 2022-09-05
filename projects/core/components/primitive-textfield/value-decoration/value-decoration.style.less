@@ -1,23 +1,14 @@
 :host {
     position: absolute;
     display: block;
-    height: 2.5rem;
-    line-height: 2.25;
+    height: 1.25rem;
+    line-height: 1;
     width: 100%;
-    margin: -1.15rem 0;
+    margin: -1.25rem 0;
+    padding: 0.625rem 0;
     box-sizing: content-box;
-    color: var(--tui-text-03); // @note: override color of text ellipsis
+    color: var(--tui-text-01);
     animation: tuiPresent 1s;
-    vertical-align: middle;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &:after {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
-    }
 
     &._table {
         position: static;
@@ -25,6 +16,13 @@
 
     :host-context(tui-textfield[data-mode='onDark']) & {
         color: var(--tui-text-01-night);
+    }
+
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
     }
 }
 
@@ -36,11 +34,12 @@
 
 .t-prefix,
 .t-postfix {
-    color: var(--tui-text-01);
     white-space: pre;
 }
 
 .t-filler {
+    overflow: hidden;
+    color: var(--tui-text-03);
     text-overflow: ellipsis;
     max-width: 100%;
     white-space: nowrap;
@@ -48,4 +47,9 @@
     :host-context(tui-textfield[data-mode='onDark']) & {
         color: var(--tui-text-03-night);
     }
+}
+
+.t-inline {
+    display: inline-block;
+    vertical-align: middle;
 }
