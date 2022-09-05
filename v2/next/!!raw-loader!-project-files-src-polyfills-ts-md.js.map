@@ -1,0 +1,1 @@
+{"version":3,"sources":["./src/modules/app/stackblitz/project-files/src/polyfills.ts.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,uGAAwC,6BAA6B,QAAQ,E","file":"!!raw-loader!-project-files-src-polyfills-ts-md.js","sourcesContent":["export default \"```ts\\nimport '@angular/localize/init';\\nimport 'zone.js/dist/zone';\\n```\\n\";"],"sourceRoot":"webpack:///"}

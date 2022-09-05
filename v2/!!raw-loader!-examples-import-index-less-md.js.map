@@ -1,0 +1,1 @@
+{"version":3,"sources":["./src/modules/markup/spaces/examples/import/index-less.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,0HAA2D,QAAQ,E","file":"!!raw-loader!-examples-import-index-less-md.js","sourcesContent":["export default \"```less\\n@import '~@taiga-ui/core/styles/taiga-ui-global';\\n```\\n\";"],"sourceRoot":"webpack:///"}

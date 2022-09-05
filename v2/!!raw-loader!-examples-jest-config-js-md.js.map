@@ -1,0 +1,1 @@
+{"version":3,"sources":["./src/modules/info/testing/jest/examples/jest-config-js.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,yFAA0B,wDAAwD,QAAQ,E","file":"!!raw-loader!-examples-jest-config-js-md.js","sourcesContent":["export default \"```js\\nmodule.exports = {\\n  setupFilesAfterEnv: ['<rootDir>/setup-jest.js'],\\n};\\n```\\n\";"],"sourceRoot":"webpack:///"}
