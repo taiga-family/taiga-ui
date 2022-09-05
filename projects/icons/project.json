@@ -8,13 +8,13 @@
         "preprocess": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "npm run exec ./scripts/preprocess-icons.ts"
+                "command": "ts-node ./scripts/preprocess-icons.ts"
             }
         },
         "prebuild": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "npm run exec ./scripts/compile-icons.ts"
+                "command": "ts-node ./scripts/compile-icons.ts"
             },
             "dependsOn": [
                 {
@@ -40,7 +40,7 @@
         "publish": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "npm run exec -- ./scripts/publish.ts --path ./dist/icons"
+                "command": "ts-node ./scripts/publish.ts --path ./dist/icons"
             }
         }
     }
