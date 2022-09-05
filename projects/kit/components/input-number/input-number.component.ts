@@ -28,13 +28,13 @@ import {
     formatNumber,
     getFractionPartPadded,
     maskedMoneyValueIsEmpty,
-    maskedNumberStringToNumber,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimalT,
     tuiEnableAutoCorrectDecimalSymbol,
+    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
@@ -215,10 +215,9 @@ export class TuiInputNumberComponent
             this.unfinishedValue = value;
 
             return;
-        } else {
-            this.unfinishedValue = null;
         }
 
+        this.unfinishedValue = null;
         const capped = this.absoluteCapInputValue(value);
 
         if (capped === null || isNaN(capped)) {
@@ -229,7 +228,7 @@ export class TuiInputNumberComponent
 
         if (
             capped !==
-            maskedNumberStringToNumber(
+            tuiMaskedNumberStringToNumber(
                 value,
                 this.numberFormat.decimalSeparator,
                 this.numberFormat.thousandSeparator,
@@ -338,7 +337,7 @@ export class TuiInputNumberComponent
     }
 
     private get nativeNumberValue(): number {
-        return maskedNumberStringToNumber(
+        return tuiMaskedNumberStringToNumber(
             this.nativeValue,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
@@ -351,7 +350,7 @@ export class TuiInputNumberComponent
     }
 
     private absoluteCapInputValue(inputValue: string): number | null {
-        const value = maskedNumberStringToNumber(
+        const value = tuiMaskedNumberStringToNumber(
             inputValue,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
