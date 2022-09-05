@@ -17,8 +17,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {AppComponent} from './app.component';
 
-const {TUI_ICONS_PATH, iconsPathFactory} = CORE;
-const {TUI_SANITIZER} = CDK;
+const {TUI_ICONS_PATH, tuiIconsPathFactory, TUI_SANITIZER} = CORE;
 
 @NgModule({
   imports: [
@@ -43,7 +42,7 @@ const {TUI_SANITIZER} = CDK;
     // A workaround because StackBlitz does not support assets
     {
       provide: TUI_ICONS_PATH,
-      useValue: iconsPathFactory('https://taiga-ui.dev/assets/taiga-ui/icons'),
+      useValue: tuiIconsPathFactory('https://taiga-ui.dev/assets/taiga-ui/icons'),
     },
     /**
      * If you use unsafe icons or have kind of WYSISYG editor in your app
