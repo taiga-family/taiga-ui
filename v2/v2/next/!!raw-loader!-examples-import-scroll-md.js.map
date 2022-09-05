@@ -1,0 +1,1 @@
+{"version":3,"sources":["./src/modules/services/scroll/examples/import/scroll.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,qJAAsF,QAAQ,E","file":"!!raw-loader!-examples-import-scroll-md.js","sourcesContent":["export default \"```ts\\nthis.tuiScrollService.scroll$(this.elementRef.nativeElement, 500).subscribe();\\n```\\n\";"],"sourceRoot":"webpack:///"}
