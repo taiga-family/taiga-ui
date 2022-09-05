@@ -38,6 +38,12 @@ export class ExampleTuiTableComponent {
         LESS: import(`!!raw-loader!./examples/5/index.less`),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
+        HTML: import(`!!raw-loader!./examples/6/index.html`),
+        LESS: import(`!!raw-loader!./examples/6/index.less`),
+    };
+
     readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
     readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
 }
