@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[40449],{55849:(t,i,o)=>{o.r(i),o.d(i,{TUI_ITALIAN_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Ruota"},zoomTexts:{zoomOut:"Rimpicciolisci",zoomIn:"Ingrandisci",reset:"Ripristina"}}}}]);
