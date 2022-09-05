@@ -207,10 +207,9 @@ export class TuiInputNumberComponent
             this.unfinishedValue = value;
 
             return;
-        } else {
-            this.unfinishedValue = null;
         }
 
+        this.unfinishedValue = null;
         const capped = this.absoluteCapInputValue(value);
 
         if (capped === null || isNaN(capped)) {
