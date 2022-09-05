@@ -36,6 +36,10 @@ function _isAndroid(): boolean {
     return /android (\d+)/.test(userAgent.toLowerCase());
 }
 
+/**
+ * @deprecated Internal purpose only. Don't use it! It can be deleted at any time (even in minor releases).
+ * Use {@link https://github.com/text-mask/text-mask/tree/master/angular2 angular2-text-mask} instead.
+ */
 @Directive({
     host: {
         '(input)': '_handleInput($event.target.value)',
@@ -158,6 +162,10 @@ export class MaskedInputDirective implements ControlValueAccessor, OnChanges {
     }
 }
 
+/**
+ * @deprecated Internal purpose only. Don't use it! It can be deleted at any time (even in minor releases).
+ * Use {@link https://github.com/text-mask/text-mask/tree/master/angular2 angular2-text-mask} instead.
+ */
 @NgModule({
     declarations: [MaskedInputDirective],
     exports: [MaskedInputDirective],
