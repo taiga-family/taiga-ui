@@ -6,9 +6,8 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {TuiInputNumberComponent} from './input-number.component';
 import {TuiInputNumberDirective} from './input-number.directive';

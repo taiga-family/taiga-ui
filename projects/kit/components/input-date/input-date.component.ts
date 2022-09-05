@@ -59,7 +59,6 @@ import {
     tuiCreateDateMask,
 } from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -200,10 +199,8 @@ export class TuiInputDateComponent
         return this.interactive && !this.computedMobile;
     }
 
-    get computedMask(): TextMaskConfig {
-        return (this.activeItem
-            ? EMPTY_MASK
-            : this.textMaskOptions) as TuiTextMaskOptions as unknown as TextMaskConfig;
+    get computedMask(): TuiTextMaskOptions {
+        return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
     }
 
     get activeItem(): TuiNamedDay | null {

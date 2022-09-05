@@ -51,7 +51,6 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 
 import {
@@ -143,18 +142,18 @@ export class TuiInputCardGroupedComponent
 
     exampleTextCVC = `000`;
 
-    maskCVC: TextMaskConfig = {
+    maskCVC: TuiTextMaskOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
         guide: false,
     };
 
-    readonly maskCard: TextMaskConfig = {
+    readonly maskCard: TuiTextMaskOptions = {
         mask: TUI_CARD_MASK,
         guide: false,
         pipe: conformedValue => conformedValue.trim(),
     };
 
-    readonly maskExpire: TextMaskConfig = {
+    readonly maskExpire: TuiTextMaskOptions = {
         mask: [
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
@@ -164,7 +163,7 @@ export class TuiInputCardGroupedComponent
         ],
         pipe: tuiCreateAutoCorrectedExpirePipe(),
         guide: false,
-    } as TuiTextMaskOptions as unknown as TextMaskConfig;
+    };
 
     open = false;
 

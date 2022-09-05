@@ -14,7 +14,6 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@ng-web-apis/intersection-observer": "^3.0.0",
-        "angular2-text-mask": "^9.0.0",
         "text-mask-core": "^5.0.0",
         "tslib": "^2.0.0"
     },

@@ -56,7 +56,6 @@ import {
     tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
@@ -142,7 +141,7 @@ export class TuiInputDateTimeComponent
         return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
-    get textMaskOptions(): TextMaskConfig {
+    get textMaskOptions(): TuiTextMaskOptions {
         return this.calculateMask(
             this.value[0],
             this.calendarMinDay,
@@ -150,7 +149,7 @@ export class TuiInputDateTimeComponent
             this.timeMode,
             this.dateFormat,
             this.dateSeparator,
-        ) as TuiTextMaskOptions as unknown as TextMaskConfig;
+        );
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

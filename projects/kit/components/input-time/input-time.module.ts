@@ -6,8 +6,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
-import {TextMaskModule} from 'angular2-text-mask';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 
 import {TuiInputTimeComponent} from './input-time.component';
 

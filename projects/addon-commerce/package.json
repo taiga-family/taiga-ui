@@ -25,7 +25,6 @@
         "@taiga-ui/core": ">=3.0.1",
         "@taiga-ui/i18n": ">=3.0.1",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
-        "angular2-text-mask": ">=9.0.0",
         "rxjs": ">=6.0.0"
     }
 }

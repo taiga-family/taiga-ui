@@ -8,11 +8,11 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TextMaskModule,
     TuiInputCountModule,
     TuiSelectModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/kit';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {TuiColorEditComponent} from './color-edit.component';
 

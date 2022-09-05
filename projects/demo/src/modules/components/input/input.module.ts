@@ -20,6 +20,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TextMaskModule,
     TuiAvatarModule,
     TuiDataListWrapperModule,
     TuiInputCountModule,
@@ -30,7 +31,6 @@ import {
     TuiSelectModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputExample1} from './examples/1';
