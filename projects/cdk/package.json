@@ -19,7 +19,7 @@
         "@ng-web-apis/mutation-observer": "2.0.0",
         "@ng-web-apis/resize-observer": "2.0.0",
         "@tinkoff/ng-event-plugins": "3.0.0",
-        "@tinkoff/ng-polymorpheus": "4.0.6",
+        "@tinkoff/ng-polymorpheus": "4.0.7",
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
