@@ -53,6 +53,16 @@ runs:
           !**/node_modules/.cache
         key: modules-cache__nodejs-${{ inputs.node-version }}__${{ hashfiles('**/package-lock.json') }}
 
+    - name: Restore from cache of builds
+      id: build-cache
+      if: steps.cache-node-modules.outputs.cache-hit == 'true'
+      uses: actions/cache@v3
+      with:
+        path: |
+          **/node_modules/.cache
+        key: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+        restore-keys: builds-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
+
     - name: Restore from global NPM cache
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       uses: actions/cache@v3

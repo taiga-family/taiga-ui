@@ -19,7 +19,8 @@
             "dependsOn": [
                 {
                     "target": "preprocess",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "forward"
                 }
             ]
         },
@@ -33,7 +34,8 @@
             "dependsOn": [
                 {
                     "target": "prebuild",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "forward"
                 }
             ]
         },

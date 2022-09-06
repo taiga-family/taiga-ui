@@ -39,6 +39,7 @@ jobs:
           clean: true
           clean-exclude: |
             CNAME
+
       - name: Build snapshot for `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
         run: npx nx build --base-href /v${{ steps.nodejs-workspace.outputs .root-package-major-version }}/

@@ -14,7 +14,8 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies"
+                    "projects": "dependencies",
+                    "params": "forward"
                 }
             ]
         },
@@ -44,7 +45,8 @@
             "dependsOn": [
                 {
                     "target": "test-schematics",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "forward"
                 }
             ]
         },
@@ -60,7 +62,8 @@
             "dependsOn": [
                 {
                     "target": "postbuild",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "forward"
                 }
             ]
         },
