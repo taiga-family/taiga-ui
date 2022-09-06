@@ -148,9 +148,14 @@
             "builder": "@nrwl/workspace:run-commands",
             "outputs": ["dist/demo"],
             "options": {
-                "parallel": false,
-                "commands": ["nx ng-build demo", "nx postbuild demo"]
-            }
+                "command": "nx postbuild demo"
+            },
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "ng-build"
+                }
+            ]
         },
         "postbuild": {
             "builder": "@nrwl/workspace:run-commands",

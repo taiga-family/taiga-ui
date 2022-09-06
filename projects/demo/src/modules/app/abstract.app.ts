@@ -19,7 +19,7 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly router: Router;
 
     @HostBinding(`attr.data-tui-version-demo`)
-    protected readonly versionDemo = this.versionMeta.versionDemo;
+    protected readonly versionDemo = this.versionMeta?.alias;
 
     // TODO: use inject(TUI_IS_CYPRESS) in angular v14+
     @HostBinding(`class._is-cypress-mode`)
@@ -35,7 +35,7 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected constructor(
         protected readonly isCypress: boolean,
         protected readonly pageLoaded$: Observable<boolean>,
-        protected readonly versionMeta: TuiVersionMeta,
+        protected readonly versionMeta: TuiVersionMeta | null,
     ) {}
 
     async ngOnInit(): Promise<void> {

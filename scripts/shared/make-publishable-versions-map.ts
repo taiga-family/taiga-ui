@@ -33,7 +33,7 @@ export function makePublishableVersionsMap(): Map<number, string> {
     for (const fullVersion of sortedTags) {
         const majorVersion = parseInt(fullVersion);
 
-        if (majorVersion !== lastMajorVersion && majorVersion > 1) {
+        if (majorVersion > 1 && majorVersion <= lastMajorVersion) {
             publishableVersions.set(majorVersion, fullVersion);
         }
     }
