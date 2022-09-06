@@ -1,17 +1,7 @@
 name: Build
 
 on:
-  push:
-    paths:
-      - 'scripts/**'
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/src/**'
-      - '**/build.yml'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
+  pull_request:
 
 env:
   NX_BRANCH: ${{ github.event.number }}

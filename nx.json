@@ -9,7 +9,8 @@
         "nx.json": "*",
         "karma.*.js": "*",
         "tsconfig.*.json": "*",
-        "tsconfig.json": "*"
+        "tsconfig.json": "*",
+        "scripts/*.ts": "*"
     },
     "targetDefaults": {
         "build": {
