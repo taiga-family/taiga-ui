@@ -40,7 +40,7 @@
         "publish": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "ts-node ./scripts/publish.ts --path ./dist/icons"
+                "command": "ts-node ./scripts/publish.ts --path ./dist/icons --dry-run {args.dry-run}"
             }
         }
     }
