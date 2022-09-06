@@ -1,6 +1,6 @@
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-import {TuiLoaderHarness} from '../loader/loader.harness';
+import {TuiLoaderHarness} from './loader.harness';
 
 export class TuiButtonHarness extends TuiComponentHarness {
     static hostSelector = `[tuiButton]`;
