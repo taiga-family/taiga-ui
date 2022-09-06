@@ -29,6 +29,11 @@ export class TuiCarouselDirective extends Observable<unknown> {
         this.duration$.next(duration);
     }
 
+    @Input()
+    set index(_: number) {
+        this.duration$.next(this.duration$.value);
+    }
+
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(PAGE_VISIBILITY) private readonly visible$: Observable<boolean>,
