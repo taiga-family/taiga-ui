@@ -41,6 +41,7 @@ import {TuiTableExample2} from './examples/2';
 import {TuiTableExample3} from './examples/3';
 import {TuiTableExample4} from './examples/4';
 import {TuiTableExample5} from './examples/5';
+import {TuiTableExample6} from './examples/6';
 import {ExampleTuiTableComponent} from './table.component';
 
 @NgModule({
@@ -85,6 +86,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiTableExample3,
         TuiTableExample4,
         TuiTableExample5,
+        TuiTableExample6,
     ],
     exports: [ExampleTuiTableComponent],
 })
