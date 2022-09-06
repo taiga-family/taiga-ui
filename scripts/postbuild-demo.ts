@@ -28,7 +28,6 @@ import {getValueByFlag} from './shared/argv.utils';
     const smokerBalancer = `
 <script>
     const baseUrls = ${JSON.stringify(location)};
-
     if (!localStorage.getItem('env')) {
         for (const url of baseUrls) {
             if (location.pathname.includes(url)) {
