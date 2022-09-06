@@ -9,7 +9,8 @@
         "nx.json": "*",
         "karma.*.js": "*",
         "tsconfig.*.json": "*",
-        "tsconfig.json": "*"
+        "tsconfig.json": "*",
+        "scripts/*.ts": "*"
     },
     "targetDefaults": {
         "build": {
@@ -20,7 +21,6 @@
         "default": {
             "runner": "@nrwl/nx-cloud",
             "options": {
-                "runtimeCacheInputs": ["node -v", "tar cvf - ./scripts/ | sha256sum"],
                 "cacheableOperations": ["build", "test", "lint"],
                 "parallel": 1
             }
