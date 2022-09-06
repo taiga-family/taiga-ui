@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -42,7 +43,7 @@ export class AppComponent {}`,
         );
 
         expect(tree.readContent('test/style.less')).toEqual(
-            `@import '~@taiga-ui/styles/taiga-ui-global';`,
+            `${TUI_WARNING_NORMALIZE}\n@import '~@taiga-ui/styles/taiga-ui-global';`,
         );
 
         expect(tree.readContent('test/app/app.template.less')).toEqual(

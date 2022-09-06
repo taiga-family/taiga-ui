@@ -1,5 +1,10 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import {
+    createProject,
+    getPackageJsonDependency,
+    saveActiveProject,
+    setActiveProject,
+} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
@@ -25,7 +30,7 @@ import {
     TAIGA_GLOBAL_OLD_STYLE,
     TAIGA_THEME_FONTS,
 } from '../constants/taiga-styles';
-import {replaceStyles} from './steps/replace-styles';
+import {replaceStyles, TUI_WARNING_NORMALIZE} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
@@ -42,6 +47,7 @@ export function updateToV3(options: Schema): Rule {
         main(options),
         addTaigaStyles(options),
         migrateTaigaProprietaryIcons(options),
+        showNormalizeWarning(),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
@@ -112,4 +118,16 @@ function getFileSystem(tree: Tree): DevkitFileSystem {
     const project = createProject(tree, '/', ALL_FILES);
     setActiveProject(project);
     return project.getFileSystem().fs;
+}
+
+function showNormalizeWarning(): Rule {
+    return (tree: Tree, context: SchematicContext) => {
+        try {
+            if (!!getPackageJsonDependency(tree, '@taiga-ui/styles')?.version) {
+                context.logger.warn(TUI_WARNING_NORMALIZE);
+            }
+        } catch {
+            // noop
+        }
+    };
 }
