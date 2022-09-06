@@ -11,10 +11,10 @@ export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
 
     const [parsedFlag, parsedValue] = process.argv[index].split(`=`) ?? [];
     const value =
-        parsedValue ||
+        stringifier(parsedValue) ??
         (process.argv[index + 1].startsWith(`-`)
             ? fallback
-            : process.argv[index + 1] ?? fallback);
+            : stringifier(process.argv[index + 1]) ?? fallback);
 
     processLog(`parsed flags: \n${[parsedFlag, value].join(`=`)}`);
 
@@ -27,4 +27,8 @@ export function hasFlag(flag: string): boolean {
 
 export function findIndexFlag(flag: string): number {
     return process.argv.findIndex(arg => arg === flag || arg.split(`=`)[0] === flag);
+}
+
+export function stringifier(value?: string): string | undefined {
+    return value === `undefined` || value === `null` ? undefined : value;
 }
