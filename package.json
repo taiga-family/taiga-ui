@@ -24,7 +24,7 @@
     "scripts": {
         "postinstall": "ts-node ./scripts/postinstall.ts",
         "start": "nx serve",
-        "build:ssr": "nx build --configuration production && nx run demo:server:production",
+        "build:ssr": "nx build && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
@@ -41,8 +41,8 @@
         "release:minor": "ts-node ./scripts/release.ts --release-as minor",
         "release:major": "ts-node ./scripts/release.ts --release-as major",
         "*** CI ***": "",
-        "affected:test:libs": "nx affected --target test --parallel --exclude=demo",
-        "affected:build:libs": "nx affected --target build --parallel --exclude=demo",
+        "affected:test:libs": "nx affected --target test --exclude=demo",
+        "affected:build:libs": "nx affected --target build --exclude=demo",
         "run-many:test:libs": "nx run-many --target test --all --exclude=demo",
         "run-many:build:libs": "nx run-many --target build --all --exclude=demo",
         "run-many:publish:libs": "nx run-many --target publish --all"

@@ -17,8 +17,8 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {
-    SELECTED_VERSION_META,
-    VERSION_MANAGER_PROVIDERS,
+    TUI_SELECTED_VERSION_META,
+    TUI_VERSION_MANAGER_PROVIDERS,
 } from './version-manager/version-manager.providers';
 import {TuiVersionMeta} from './version-manager/versions.constants';
 
@@ -30,7 +30,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
         TuiDestroyService,
         TuiResizeService,
         DEMO_PAGE_LOADED_PROVIDER,
-        VERSION_MANAGER_PROVIDERS,
+        TUI_VERSION_MANAGER_PROVIDERS,
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
@@ -44,7 +44,7 @@ export class AppComponent extends AbstractDemoComponent {
     constructor(
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
-        @Inject(SELECTED_VERSION_META) versionMeta: TuiVersionMeta,
+        @Inject(TUI_SELECTED_VERSION_META) versionMeta: TuiVersionMeta | null,
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) protected readonly router: Router,
