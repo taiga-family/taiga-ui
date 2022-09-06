@@ -1,1 +1,0 @@
-{"version":3,"sources":["./src/modules/app/home/examples/main.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,0FAA2B,mBAAmB,QAAQ,E","file":"!!raw-loader!-examples-main-md.js","sourcesContent":["export default \"```bash\\nnpm i @taiga-ui/{cdk,core,kit,icons}\\n```\\n\";"],"sourceRoot":"webpack:///"}

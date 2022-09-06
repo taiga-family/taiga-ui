@@ -1,1 +1,0 @@
-{"version":3,"sources":["./src/modules/markup/breakpoints/examples/import/import-taiga-ui-local-less.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,yHAA0D,QAAQ,E","file":"!!raw-loader!-examples-import-import-taiga-ui-local-less-md.js","sourcesContent":["export default \"```less\\n@import '~@taiga-ui/core/styles/taiga-ui-local';\\n```\\n\";"],"sourceRoot":"webpack:///"}

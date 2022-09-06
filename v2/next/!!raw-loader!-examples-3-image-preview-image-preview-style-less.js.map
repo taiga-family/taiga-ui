@@ -1,1 +1,0 @@
-{"version":3,"sources":["./src/modules/components/editor-new/examples/3/image-preview/image-preview.style.less"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,kFAAmB,kBAAkB,GAAG,GAAG,E","file":"!!raw-loader!-examples-3-image-preview-image-preview-style-less.js","sourcesContent":["export default \".t-image-preview {\\n    width: 100%;\\n}\\n\";"],"sourceRoot":"webpack:///"}
