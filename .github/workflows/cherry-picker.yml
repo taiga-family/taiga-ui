@@ -1,0 +1,28 @@
+name: PR for branch v2.x
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create_cherry_pick:
+    runs-on: ubuntu-latest
+    if:
+      ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name,
+      'cherry_pick_v2.x') }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Trust GitHub workspace
+        run: git config --global --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Create PR to branch
+        uses: gorillio/github-action-cherry-pick@master
+        with:
+          pr_branch: 'v2.x'
+          pr_labels: 'v2'
+        env:
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          DRY_RUN: false
