@@ -2,17 +2,6 @@ name: E2E tests
 
 on:
   pull_request:
-    paths-ignore:
-      - 'projects/*testing/**'
-      - 'projects/icons/**'
-    branches-ignore:
-      - 'release**'
-  push:
-    branches:
-      - '!main'
-      - '!release**'
-      - '!gh-pages**'
-      - '!screenshot-bot-storage**'
 
 env:
   CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
@@ -44,8 +33,8 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - name: Build branch demo-app
-        run: npm run build:demo
+      - name: Building demo-app of git-branch without cache
+        run: npx nx build --skip-nx-cache
 
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') && !contains(github.head_ref, 'v3.x') }}

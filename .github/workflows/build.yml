@@ -37,7 +37,7 @@ jobs:
         if: ${{ env.IS_MAIN_BRANCH == 'false' }}
         run: |
           npm run affected:build:libs
-          npm run exec ./scripts/check-dist.ts
+          npx ts-node ./scripts/check-dist.ts
 
       - name: Run all builds for libraries only in main branch
         if: ${{ env.IS_MAIN_BRANCH == 'true' }}

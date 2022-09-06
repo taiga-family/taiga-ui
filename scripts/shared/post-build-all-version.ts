@@ -8,7 +8,7 @@ export function postBuildAllVersion(publishableVersions: Map<number, string>): v
 
     execSync(
         `
-        npm run exec -- ./scripts/postbuild-demo.ts \
+        ts-node ./scripts/postbuild-demo.ts \
               --path ./dist/demo/browser/ \
               --location ${location}`,
         {stdio: `inherit`},

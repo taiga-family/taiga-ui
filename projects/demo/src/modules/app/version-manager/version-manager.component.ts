@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 
-import {SELECTED_VERSION_META} from './version-manager.providers';
+import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
 import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
 
 @Component({
@@ -16,7 +16,7 @@ export class VersionManagerComponent {
     readonly versions = TAIGA_VERSIONS_META;
 
     constructor(
-        @Inject(SELECTED_VERSION_META) readonly initialVersion: TuiVersionMeta | null,
+        @Inject(TUI_SELECTED_VERSION_META) readonly initialVersion: TuiVersionMeta | null,
         @Inject(LOCATION) private readonly locationRef: Location,
         @Inject(Router) private readonly router: Router,
     ) {}

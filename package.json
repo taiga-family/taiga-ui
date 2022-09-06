@@ -22,13 +22,12 @@
         "projects/*"
     ],
     "scripts": {
-        "postinstall": "npm run exec -- ./scripts/postinstall.ts",
+        "postinstall": "ts-node ./scripts/postinstall.ts",
         "start": "nx serve",
         "build:ssr": "nx build --prod && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
-        "exec": "ts-node --project tsconfig.tools.json",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --cache node_modules/.cache/prettier",
@@ -36,13 +35,11 @@
         "*** Build **": "",
         "build:demo": "nx build --prod --configuration=production",
         "build:demo:next": "nx build --prod --configuration=next",
-        "postbuild:demo": "npm run exec -- ./scripts/postbuild-demo.ts",
-        "postbuild:demo:next": "npm run exec -- ./scripts/postbuild-demo.ts",
         "*** Release ***": "",
         "release": "standard-version -a --no-verify",
-        "release:patch": "npm run exec -- ./scripts/release.ts --release-as patch",
-        "release:minor": "npm run exec -- ./scripts/release.ts --release-as minor",
-        "release:major": "npm run exec -- ./scripts/release.ts --release-as major",
+        "release:patch": "ts-node ./scripts/release.ts --release-as patch",
+        "release:minor": "ts-node ./scripts/release.ts --release-as minor",
+        "release:major": "ts-node ./scripts/release.ts --release-as major",
         "*** CI ***": "",
         "affected:test:libs": "nx affected --target test --parallel --exclude=demo",
         "affected:build:libs": "nx affected --target build --parallel --exclude=demo",
@@ -135,8 +132,8 @@
     ],
     "standard-version": {
         "scripts": {
-            "postchangelog": "npm run exec -- ./scripts/postchangelog.ts",
-            "postbump": "npm run exec -- ./scripts/postbump.ts"
+            "postchangelog": "ts-node ./scripts/postchangelog.ts",
+            "postbump": "ts-node ./scripts/postbump.ts"
         },
         "types": [
             {

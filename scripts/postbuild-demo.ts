@@ -5,6 +5,7 @@ import {getValueByFlag} from './shared/argv.utils';
 
 (function main(): void {
     const demoPath = resolve(getValueByFlag(`--path`, `./dist/demo/browser`));
+    const baseHref = getValueByFlag(`--base-href`, `/`);
 
     const location = getValueByFlag(`--location`, `next`)
         .split(`,`)
@@ -16,6 +17,7 @@ import {getValueByFlag} from './shared/argv.utils';
     );
 
     console.info(`\x1B[32m%s\x1B[0m`, `[DEMO_PATH]:`, demoPath);
+    console.info(`\x1B[32m%s\x1B[0m`, `[BASE_HREF]:`, baseHref);
     console.info(`\x1B[32m%s\x1B[0m`, `[LOCATION]:`, location);
     console.info(`\x1B[32m%s\x1B[0m`, `[PATHS]:`, pathToDirectories);
 
@@ -64,13 +66,29 @@ import {getValueByFlag} from './shared/argv.utils';
     }
 
     for (const subVersion of location) {
-        const indexPath = `${demoPath}/${subVersion}/index.html`;
+        const indexPath = resolve(`${demoPath}/${subVersion}/index.html`);
 
         try {
             const body = readFileSync(indexPath).toString();
             const processedBody = body.replace(
                 /<base[\s\S]*?\/?>/g,
                 `<base href="/${subVersion}/">`,
+            );
+
+            writeFileSync(indexPath, processedBody);
+        } catch (err) {
+            console.info(`\x1B[35m%s\x1B[0m`, err.message);
+        }
+    }
+
+    if (baseHref !== `/`) {
+        const indexPath = resolve(`${demoPath}/index.html`);
+
+        try {
+            const body = readFileSync(indexPath).toString();
+            const processedBody = body.replace(
+                /<base[\s\S]*?\/?>/g,
+                `<base href="${baseHref}">`,
             );
 
             writeFileSync(indexPath, processedBody);

@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npm run build:demo
+      - run: npx nx build
 
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0
