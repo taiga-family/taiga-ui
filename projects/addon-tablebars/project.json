@@ -35,7 +35,7 @@
         "publish": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
-                "command": "ts-node ./scripts/publish.ts --path ./dist/addon-tablebars"
+                "command": "ts-node ./scripts/publish.ts --path ./dist/addon-tablebars --dry-run {args.dry-run}"
             }
         }
     }
