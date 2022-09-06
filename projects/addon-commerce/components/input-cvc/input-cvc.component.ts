@@ -25,8 +25,8 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldLabelOutsideDirective,
+    TuiTextMaskOptions,
 } from '@taiga-ui/core';
-import {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
     selector: `tui-input-cvc`,
@@ -61,7 +61,7 @@ export class TuiInputCVCComponent
 
     exampleText = `000`;
 
-    textMaskOptions: TextMaskConfig = {
+    textMaskOptions: TuiTextMaskOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
         guide: false,
     };

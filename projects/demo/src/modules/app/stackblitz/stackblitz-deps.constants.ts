@@ -29,7 +29,7 @@ export const STACKBLITZ_DEPS: Record<string, string> = {
     '@tinkoff/ng-event-plugins': `*`,
     '@ng-web-apis/intersection-observer': `*`,
     '@ng-web-apis/mutation-observer': `*`,
-    'angular2-text-mask': `*`,
+    'text-mask-core': `*`,
     dompurify: `*`,
     '@types/dompurify': `*`,
     'prosemirror-state': `*`,

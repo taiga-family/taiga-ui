@@ -39,7 +39,6 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -167,34 +166,33 @@ export class TuiInputNumberComponent
         nativeFocusableElement.selectionStart++;
     }
 
-    mask: TuiMapper<boolean, TextMaskConfig> = (
+    mask: TuiMapper<boolean, TuiTextMaskOptions> = (
         allowNegative: boolean,
         decimal: TuiDecimal,
         decimalLimit: number,
         nativeFocusableElement: HTMLInputElement | null,
-    ) =>
-        ({
-            mask: tuiCreateNumberMask({
-                allowNegative,
-                decimalLimit,
-                allowDecimal: decimal !== `never`,
-                requireDecimal: decimal === `always`,
-                decimalSymbol: this.numberFormat.decimalSeparator,
-                thousandSymbol: this.numberFormat.thousandSeparator,
-                autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
-                    this.numberFormat,
-                ),
-            }),
-            pipe: tuiCreateAutoCorrectedNumberPipe(
-                decimal === `always` ? decimalLimit : 0,
-                this.numberFormat.decimalSeparator,
-                this.numberFormat.thousandSeparator,
-                nativeFocusableElement,
-                allowNegative,
-                this.isIOS,
+    ) => ({
+        mask: tuiCreateNumberMask({
+            allowNegative,
+            decimalLimit,
+            allowDecimal: decimal !== `never`,
+            requireDecimal: decimal === `always`,
+            decimalSymbol: this.numberFormat.decimalSeparator,
+            thousandSymbol: this.numberFormat.thousandSeparator,
+            autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
+                this.numberFormat,
             ),
-            guide: false,
-        } as TuiTextMaskOptions as unknown as TextMaskConfig);
+        }),
+        pipe: tuiCreateAutoCorrectedNumberPipe(
+            decimal === `always` ? decimalLimit : 0,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+            nativeFocusableElement,
+            allowNegative,
+            this.isIOS,
+        ),
+        guide: false,
+    });
 
     onValueChange(value: string): void {
         if (tuiMaskedMoneyValueIsEmpty(value)) {

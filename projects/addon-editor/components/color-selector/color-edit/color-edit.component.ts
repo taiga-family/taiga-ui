@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {tuiDefaultProp, tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
-import {TextMaskConfig} from 'angular2-text-mask';
+import {TuiTextMaskOptions} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-color-edit`,
@@ -22,7 +22,7 @@ export class TuiColorEditComponent {
     @Output()
     readonly colorChange = new EventEmitter<[number, number, number, number]>();
 
-    readonly hexMask: TextMaskConfig = {
+    readonly hexMask: TuiTextMaskOptions = {
         mask: ({length}) => Array.from({length}, () => /\d|[a-f]|[A-F]/),
         guide: false,
     };

@@ -4,8 +4,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
-import {TextMaskModule} from 'angular2-text-mask';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit';
 
 import {TuiInputCardComponent} from './input-card.component';
 import {TuiInputCardDirective} from './input-card.directive';

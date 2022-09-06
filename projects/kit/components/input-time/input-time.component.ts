@@ -34,7 +34,6 @@ import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -110,10 +109,8 @@ export class TuiInputTimeComponent
         return this.filter(this.items, this.mode, this.computedSearch);
     }
 
-    get textMaskOptions(): TextMaskConfig {
-        return this.calculateMask(
-            this.mode,
-        ) as TuiTextMaskOptions as unknown as TextMaskConfig;
+    get textMaskOptions(): TuiTextMaskOptions {
+        return this.calculateMask(this.mode);
     }
 
     get computedValue(): string {

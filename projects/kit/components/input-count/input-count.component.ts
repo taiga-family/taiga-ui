@@ -38,7 +38,6 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 
 import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
@@ -106,7 +105,7 @@ export class TuiInputCountComponent
     }
 
     @tuiPure
-    getMask(allowNegative: boolean): TextMaskConfig {
+    getMask(allowNegative: boolean): TuiTextMaskOptions {
         return {
             mask: tuiCreateNumberMask({
                 allowNegative,
@@ -114,7 +113,7 @@ export class TuiInputCountComponent
                 thousandSymbol: this.numberFormat.thousandSeparator,
             }),
             guide: false,
-        } as TuiTextMaskOptions as unknown as TextMaskConfig;
+        };
     }
 
     @HostBinding(`class._hide-buttons`)

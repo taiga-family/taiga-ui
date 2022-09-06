@@ -22,8 +22,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
-import {TextMaskConfig} from 'angular2-text-mask';
+import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
 
 const icons: Record<TuiPaymentSystem, string> = {
     mir: `tuiIconMir`,
@@ -61,7 +60,7 @@ export class TuiInputCardComponent
     @Output()
     readonly binChange = new EventEmitter<string | null>();
 
-    readonly textMaskOptions: TextMaskConfig = {
+    readonly textMaskOptions: TuiTextMaskOptions = {
         mask: TUI_CARD_MASK,
         guide: false,
         pipe: conformedValue => conformedValue.trim(),

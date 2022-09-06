@@ -64,7 +64,7 @@
                     "node_modules/prismjs/components/prism-markup.min.js",
                     "node_modules/prismjs/components/prism-typescript.min.js"
                 ],
-                "allowedCommonJsDependencies": ["angular2-text-mask", "markdown-it"],
+                "allowedCommonJsDependencies": ["text-mask-core", "markdown-it"],
                 "vendorChunk": true,
                 "extractLicenses": false,
                 "buildOptimizer": false,

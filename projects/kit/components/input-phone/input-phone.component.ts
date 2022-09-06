@@ -41,7 +41,6 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -95,7 +94,7 @@ export class TuiInputPhoneComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
-    readonly textMaskOptions: TextMaskConfig = {
+    readonly textMaskOptions: TuiTextMaskOptions = {
         mask: value =>
             this.allowText && !this.value && isText(value) && value !== `+`
                 ? false
@@ -117,7 +116,7 @@ export class TuiInputPhoneComponent
                 : value.replace(/-$/, ``);
         },
         guide: false,
-    } as TuiTextMaskOptions as unknown as TextMaskConfig;
+    };
 
     countryCode = this.options.countryCode;
 
