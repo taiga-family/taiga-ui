@@ -34,7 +34,7 @@
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
         "build:demo": "nx build",
-        "build:demo:next": "nx build -с next",
+        "build:demo:next": "nx build -c next",
         "*** Release ***": "",
         "release": "standard-version -a --no-verify",
         "release:patch": "ts-node ./scripts/release.ts --release-as patch",
