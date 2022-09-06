@@ -1,4 +1,5 @@
 import {
+    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -8,6 +9,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 import {TuiHeadDirective} from '../directives/head.directive';
@@ -21,25 +23,29 @@ import {TuiThComponent} from '../th/th.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiThGroupComponent<T> {
+export class TuiThGroupComponent<T> implements AfterContentInit {
     @ContentChild(forwardRef(() => TuiThComponent))
     readonly th: unknown;
 
     @ContentChildren(forwardRef(() => TuiHeadDirective))
     readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
 
-    readonly heads$ = this.heads.changes.pipe(
-        startWith(null),
-        map(() =>
-            this.heads.reduce<Record<any, TuiHeadDirective<T>>>(
-                (record, item) => ({...record, [item.tuiHead]: item}),
-                {},
-            ),
-        ),
-    );
+    heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
 
     constructor(
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
     ) {}
+
+    ngAfterContentInit(): void {
+        this.heads$ = this.heads.changes.pipe(
+            startWith(null),
+            map(() =>
+                this.heads.reduce<Record<any, TuiHeadDirective<T>>>(
+                    (record, item) => ({...record, [item.tuiHead]: item}),
+                    {},
+                ),
+            ),
+        );
+    }
 }
