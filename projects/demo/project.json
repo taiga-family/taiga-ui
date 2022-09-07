@@ -23,7 +23,8 @@
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -150,7 +151,8 @@
             "dependsOn": [
                 {
                     "projects": "self",
-                    "target": "ng-build"
+                    "target": "ng-build",
+                    "params": "follow"
                 }
             ]
         },
@@ -179,7 +181,8 @@
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -239,7 +242,8 @@
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self"
+                    "projects": "self",
+                    "params": "ignore"
                 }
             ]
         },
