@@ -42,13 +42,15 @@ jobs:
 
       - name: Build snapshot for `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
-        run: npx nx build --base-href /v${{ steps.nodejs-workspace.outputs .root-package-major-version }}/
+        run:
+          npx nx build --skip-nx-cache --base-href /v${{ steps.nodejs-workspace.outputs .root-package-major-version }}/
+          --output-path=dist/demo/browser/v${{ steps.nodejs-workspace.outputs .root-package-major-version }}
       - name: Deploy all files to `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
-          folder: dist/demo/browser/
+          folder: dist/demo/browser/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
           target-folder: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           clean: true
