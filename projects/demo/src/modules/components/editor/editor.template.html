@@ -140,7 +140,10 @@
             </tui-editor>
 
             <h4>HTML:</h4>
-            <tui-editor-socket [content]="control.value"></tui-editor-socket>
+            <tui-editor-socket
+                class="tui-example"
+                [content]="control.value"
+            ></tui-editor-socket>
 
             <h4>Text:</h4>
             <p>{{ control.value }}</p>
