@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npx nx build -c next
+      - run: npx nx build -c next --skip-nx-cache
 
       - name: Debug output
         run: ls -la dist/demo/browser/next

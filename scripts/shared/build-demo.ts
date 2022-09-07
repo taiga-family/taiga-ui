@@ -5,7 +5,8 @@ export function buildCurrentVersion(): void {
 }
 
 export function buildNextVersion(): void {
-    execSync(`nx build --base-href /next/ --output-path dist/demo/browser/next`, {
-        stdio: `inherit`,
-    });
+    execSync(
+        `nx build demo --skip-nx-cache --base-href /next/ --output-path dist/demo/browser/next`,
+        {stdio: `inherit`},
+    );
 }
