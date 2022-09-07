@@ -16,7 +16,7 @@ describe(`Examples with preview images`, () => {
             .matchImageSnapshot(`3-1-two-visible-image`, {capture: `viewport`});
 
         cy.get(`@wrapper`)
-            .find(`tui-editor-socket`)
+            .find(`tui-editor-socket._preview-image`)
             .find(`img`)
             .filter(`[src="assets/images/big-wallpaper.jpg"]`)
             .filter(`:visible`)
