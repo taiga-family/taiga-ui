@@ -5,6 +5,7 @@
             "dependencies": "*",
             "devDependencies": "*"
         },
+        "package-lock.json": "*",
         ".eslintrc.js": "*",
         "nx.json": "*",
         "karma.*.js": "*",

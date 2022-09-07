@@ -11,7 +11,6 @@ env:
   NX_BRANCH: ${{ github.event.number }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-  NX_SKIP_CACHE: true
 
 jobs:
   build-and-push:
@@ -22,7 +21,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npx nx build -c next
+      - run: npx nx build -c next --skip-nx-cache
 
       - name: Debug output
         run: ls -la dist/demo/browser/next
