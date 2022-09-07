@@ -4,7 +4,7 @@ import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
-import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
+import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
 
 @Component({
     selector: `version-manager`,
@@ -13,10 +13,9 @@ import {TAIGA_VERSIONS_META, TuiVersionMeta} from './versions.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManagerComponent {
-    readonly versions = TAIGA_VERSIONS_META;
-
     constructor(
         @Inject(TUI_SELECTED_VERSION_META) readonly initialVersion: TuiVersionMeta | null,
+        @Inject(TUI_VERSIONS_META_OPTIONS) readonly versions: readonly TuiVersionMeta[],
         @Inject(LOCATION) private readonly locationRef: Location,
         @Inject(Router) private readonly router: Router,
     ) {}
