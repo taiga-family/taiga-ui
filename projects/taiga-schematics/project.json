@@ -14,7 +14,8 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies"
+                    "projects": "dependencies",
+                    "params": "forward"
                 }
             ]
         },

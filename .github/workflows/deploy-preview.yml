@@ -18,6 +18,9 @@ jobs:
 
       - run: npx nx build
 
+      - name: Debug output
+        run: ls -la dist/demo/browser
+
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
