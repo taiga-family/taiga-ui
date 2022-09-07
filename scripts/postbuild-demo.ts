@@ -1,11 +1,11 @@
 import {readFileSync, writeFileSync} from 'fs';
 import {resolve} from 'path';
 
+import {errorLog, processLog} from '../projects/cdk/schematics/utils/colored-log';
 import {getValueByFlag} from './shared/argv.utils';
 
 (function main(): void {
     const demoPath = resolve(getValueByFlag(`--path`, `./dist/demo/browser`));
-    const baseHref = getValueByFlag(`--base-href`, `/`);
 
     const location = getValueByFlag(`--location`, `next`)
         .split(`,`)
@@ -16,10 +16,9 @@ import {getValueByFlag} from './shared/argv.utils';
         [demoPath],
     );
 
-    console.info(`\x1B[32m%s\x1B[0m`, `[DEMO_PATH]:`, demoPath);
-    console.info(`\x1B[32m%s\x1B[0m`, `[BASE_HREF]:`, baseHref);
-    console.info(`\x1B[32m%s\x1B[0m`, `[LOCATION]:`, location);
-    console.info(`\x1B[32m%s\x1B[0m`, `[PATHS]:`, pathToDirectories);
+    processLog(`[DEMO_PATH]: ${demoPath}`);
+    processLog(`[LOCATION]: ${location}`);
+    processLog(`[PATHS]: ${pathToDirectories}`);
 
     /**
      * @example:
@@ -41,7 +40,7 @@ import {getValueByFlag} from './shared/argv.utils';
     }
 </script>`;
 
-    console.info(`\x1B[35m%s\x1B[0m`, `[SMOKER_BALANCER]: \n ${smokerBalancer}`);
+    processLog(`[SMOKER_BALANCER]: \n ${smokerBalancer}`);
 
     for (const path of pathToDirectories) {
         const indexPath = `${path}/index.html`;
@@ -76,23 +75,7 @@ import {getValueByFlag} from './shared/argv.utils';
 
             writeFileSync(indexPath, processedBody);
         } catch (err) {
-            console.info(`\x1B[35m%s\x1B[0m`, err.message);
-        }
-    }
-
-    if (baseHref !== `/`) {
-        const indexPath = resolve(`${demoPath}/index.html`);
-
-        try {
-            const body = readFileSync(indexPath).toString();
-            const processedBody = body.replace(
-                /<base[\s\S]*?\/?>/g,
-                `<base href="${baseHref}">`,
-            );
-
-            writeFileSync(indexPath, processedBody);
-        } catch (err) {
-            console.info(`\x1B[35m%s\x1B[0m`, err.message);
+            errorLog(err.message);
         }
     }
 })();

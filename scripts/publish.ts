@@ -8,6 +8,8 @@ import {
     successLog,
 } from '../projects/cdk/schematics/utils/colored-log';
 import {getValueByFlag} from './shared/argv.utils';
+import {getAllVersions} from './shared/get-all-versions';
+import {getLastMajorVersion} from './shared/get-last-major-version';
 
 const isDryRun =
     getValueByFlag<'true' | 'false' | 'undefined'>(`--dry-run`, `false`) === `true`;
@@ -35,15 +37,9 @@ const path = getValueByFlag<string>(`--path`, ``);
     successLog(`+${packageJson.name}@${packageJson.version} is published successfully`);
 })();
 
-function getAllVersions(name: string): string[] {
-    return JSON.parse(
-        execSync(`npm view ${name} versions --json || echo "[]"`).toString(),
-    );
-}
-
 function makeTag(version: string, versions: string[]): string {
     const currentMajor = parseInt(version);
-    const maxMajorVersion = Math.max(...versions.map(x => parseInt(x)), currentMajor);
+    const maxMajorVersion = getLastMajorVersion(versions, currentMajor);
     const tagFlag = maxMajorVersion > currentMajor ? `--tag v${currentMajor}-lts` : ``;
 
     return version.includes(`rc`) ? `--tag next` : tagFlag;
