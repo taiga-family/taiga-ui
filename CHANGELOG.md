@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.62.3](https://github.com/tinkoff/taiga-ui/compare/v2.62.2...v2.62.3) (2022-09-07)
+
+### Bug Fixes
+
+- **addon-table:** `ThGroup` fix columns updating ([#2601](https://github.com/tinkoff/taiga-ui/issues/2601))
+  ([3467bff](https://github.com/tinkoff/taiga-ui/commit/3467bfff515dc0dd57a6e036782542a69ac2b916))
+- **kit:** `Carousel` reset autoscroll timer when index changes
+  ([#2613](https://github.com/tinkoff/taiga-ui/issues/2613))
+  ([6b8e578](https://github.com/tinkoff/taiga-ui/commit/6b8e5788ababf2b8880397b46f8698633d967ab7))
+
 ### [2.62.2](https://github.com/tinkoff/taiga-ui/compare/v2.62.1...v2.62.2) (2022-09-05)
 
 ### Bug Fixes
