@@ -24,7 +24,7 @@
                 {
                     "target": "i18n",
                     "projects": "self",
-                    "params": "forward"
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -185,7 +185,7 @@
                 {
                     "target": "i18n",
                     "projects": "self",
-                    "params": "forward"
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -260,7 +260,7 @@
                 {
                     "target": "i18n",
                     "projects": "self",
-                    "params": "forward"
+                    "params": "ignore"
                 }
             ],
             "defaultConfiguration": "development"

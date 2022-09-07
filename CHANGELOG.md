@@ -10,12 +10,10 @@ All notable changes to this project will be documented in this file. See
 - **addon-table:** `TUI_TABLE_PAGINATION_OPTIONS` add `showPages` option
   ([#2586](https://github.com/tinkoff/taiga-ui/issues/2586))
   ([dc70f38](https://github.com/tinkoff/taiga-ui/commit/dc70f38d27319bd77185df095c8e4e7b41c0239f))
-- **testing:** add component harness test for badge component ([#2583](https://github.com/tinkoff/taiga-ui/issues/2583))
+- **testing:** `SVG`, `Badge` component harness ([#2582](https://github.com/tinkoff/taiga-ui/issues/2582))
+  ([1a8b77a](https://github.com/tinkoff/taiga-ui/commit/1a8b77a83e8614ddbf817e516787d2bddb1bec70)),
+  ([#2583](https://github.com/tinkoff/taiga-ui/issues/2583))
   ([5797282](https://github.com/tinkoff/taiga-ui/commit/579728279707bc600aa5d7043fdbd51fcdaa9eff))
-- **testing:** introduce more type safety for harness ([#2547](https://github.com/tinkoff/taiga-ui/issues/2547))
-  ([8e57244](https://github.com/tinkoff/taiga-ui/commit/8e57244dcb77459ead93b4680d49b588d47ce9ac))
-- **testing:** SVG component harness tests ([#2582](https://github.com/tinkoff/taiga-ui/issues/2582))
-  ([1a8b77a](https://github.com/tinkoff/taiga-ui/commit/1a8b77a83e8614ddbf817e516787d2bddb1bec70))
 
 ### Bug Fixes
 
