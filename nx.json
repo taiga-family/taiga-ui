@@ -5,12 +5,14 @@
             "dependencies": "*",
             "devDependencies": "*"
         },
+        "package-lock.json": "*",
         ".eslintrc.js": "*",
         "nx.json": "*",
         "karma.*.js": "*",
         "tsconfig.*.json": "*",
         "tsconfig.json": "*",
-        "scripts/*.ts": "*"
+        "scripts/*.ts": "*",
+        "*.md": "*"
     },
     "targetDefaults": {
         "build": {
