@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="./" />
+        <meta charset="utf-8" />
+        <title>Taiga UI</title>
+        <script>
+            if (!localStorage.getItem('env')) {
+                const base = location.pathname + location.search + location.hash;
+                const segments = base.split('/').filter(Boolean);
+                const version = segments[0] ?? ``;
+                const pattern = /^(next|v[0-9])$/;
+
+                localStorage.setItem('env', base);
+                location.replace(pattern.test(version) ? `/${version}` : `/`);
+            } else {
+                localStorage.removeItem('env');
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

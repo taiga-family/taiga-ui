@@ -1,9 +1,8 @@
-name: Release Taiga UI packages
+name: Publish Taiga UI packages
 
 on:
   push:
-    branches:
-      - 'release/**'
+    branches: ['release/*']
 
 env:
   NX_BRANCH: ${{ github.event.number }}

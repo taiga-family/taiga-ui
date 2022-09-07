@@ -21,6 +21,7 @@ module.exports = {
     ignorePatterns: [
         'projects/**/test.ts',
         'projects/**/icons/all.ts',
+        '404.html',
         '*.js',
         '*.json',
         '*.less',
