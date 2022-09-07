@@ -43,7 +43,7 @@
             [tuiDropdownSelection]="dropdownSelectionHandler"
             [tuiDropdown]="dropdown"
         >
-            <div
+            <tui-editor-socket
                 tuiTiptapEditor
                 spellcheck="false"
                 class="tui-editor-socket"
@@ -51,7 +51,7 @@
                 [editable]="interactive"
                 (valueChange)="onModelChange($event)"
                 (stateChange)="(0)"
-            ></div>
+            ></tui-editor-socket>
         </div>
 
         <ng-template #dropdown>
