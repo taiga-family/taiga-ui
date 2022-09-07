@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[54538],{23051:(s,e,a)=>{a.r(e),a.d(e,{TUI_ITALIAN_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Mostra/Nascondi",paginationTexts:{pages:"Pagine",linesPerPage:"Righe per pagina",of:"di"}}}}]);

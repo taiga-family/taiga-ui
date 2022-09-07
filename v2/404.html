@@ -2,8 +2,7 @@
 <html>
     <head>
 <script>
-    const baseUrls = ["next"];
-
+    const baseUrls = ["next","v3","v2"];
     if (!localStorage.getItem('env')) {
         for (const url of baseUrls) {
             if (location.pathname.includes(url)) {
@@ -15,7 +14,7 @@
     } else {
         localStorage.removeItem('env');
     }
-</script><base href="/">
+</script><base href="/v2/">
         <meta charset="utf-8" />
         <meta
             http-equiv="Content-Type"
