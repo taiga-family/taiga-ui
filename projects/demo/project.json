@@ -152,7 +152,7 @@
                 {
                     "projects": "self",
                     "target": "ng-build",
-                    "params": "follow"
+                    "params": "forward"
                 }
             ]
         },
