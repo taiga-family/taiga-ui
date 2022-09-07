@@ -67,3 +67,95 @@ export const getSupportModules = (
             new TsFileModuleParser(fileContent),
         ]);
 };
+
+export function getAllModules(entryPoint: Record<string, unknown>): string {
+    const allModules = Object.keys(entryPoint)
+        .filter(name => name.endsWith(`Module`))
+        .join(`,\n\t\t`);
+
+    return `${allModules}`;
+}
+
+/**
+ * We can't just dynamically import all modules from packages.
+ * For examples:
+ * ```ts
+ * import * as CDK from '@taiga-ui/cdk';
+ * // ...
+ * @NgModule({ imports: [...getAllModules(CDK)] })
+ * ```
+ * There is a limit to the amount of "static" analysis that the AOT compiler is willing to do.
+ * See this {@link https://github.com/angular/angular/issues/42550 issue}
+ */
+export async function getAllTaigaUIModulesFile(): Promise<string> {
+    /**
+     * You can't just iterate the array with package-names - it will cause error:
+     * `Warning: Critical dependency: the request of a dependency is an expression`
+     * */
+    const cdk = getAllModules(await import(`@taiga-ui/cdk`));
+    const core = getAllModules(await import(`@taiga-ui/core`));
+    const kit = getAllModules(await import(`@taiga-ui/kit`));
+    const charts = getAllModules(await import(`@taiga-ui/addon-charts`));
+    const commerce = getAllModules(await import(`@taiga-ui/addon-commerce`));
+    const editor = getAllModules(await import(`@taiga-ui/addon-editor`));
+    const mobile = getAllModules(await import(`@taiga-ui/addon-mobile`));
+    const table = getAllModules(await import(`@taiga-ui/addon-table`));
+
+    return `
+import {
+    ${cdk}
+} from '@taiga-ui/cdk';
+import {
+    ${core}
+} from '@taiga-ui/core';
+import {
+    ${kit}
+} from '@taiga-ui/kit';
+import {
+    ${charts}
+} from '@taiga-ui/addon-charts';
+import {
+    ${commerce}
+} from '@taiga-ui/addon-commerce';
+import {
+    ${editor}
+} from '@taiga-ui/addon-editor';
+import {
+    ${mobile}
+} from '@taiga-ui/addon-mobile';
+import {
+    ${table}
+} from '@taiga-ui/addon-table';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {RouterModule} from '@angular/router';
+
+export const ALL_TAIGA_UI_MODULES = [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PolymorpheusModule,
+    RouterModule.forRoot([]),
+    /* CDK */
+    ${cdk},
+    /* CORE */
+    ${core},
+    /* KIT */
+    ${kit},
+    /* ADDON-CHARTS */
+    ${charts},
+    /* ADDON-COMMERCE */
+    ${commerce},
+    /* ADDON-EDITOR */
+    ${editor},
+    /* ADDON-MOBILE */
+    ${mobile},
+    /* ADDON-TABLE */
+    ${table},
+];
+`;
+}

@@ -7,6 +7,7 @@ import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
+    getAllTaigaUIModulesFile,
     getComponentsClassNames,
     getSupportFiles,
     getSupportModules,
@@ -85,6 +86,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
+                'src/all-taiga-modules.ts': await getAllTaigaUIModulesFile(),
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
