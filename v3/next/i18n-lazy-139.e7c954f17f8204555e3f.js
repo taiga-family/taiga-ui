@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[68149],{97436:(s,o,t)=>{t.r(o),t.d(o,{TUI_POLISH_LANGUAGE_ADDON_PREVIEW:()=>e});const e={previewTexts:{rotate:"Rotate"},zoomTexts:{zoomOut:"Zoom out",zoomIn:"Zoom in",reset:"Reset"}}}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[15784],{56437:(t,n,s)=>{s.r(n),s.d(n,{TUI_VIETNAMESE_LANGUAGE_ADDON_TABLE:()=>e});const e={showHideText:"Hi\u1ec7n/\u1ea8n",paginationTexts:{pages:"T\u1ed5ng s\u1ed1 trang",linesPerPage:"S\u1ed1 d\xf2ng m\u1ed7i trang",of:"tr\xean"}}}}]);
