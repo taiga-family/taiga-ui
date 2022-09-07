@@ -75,7 +75,7 @@ describe(`Editor API`, () => {
 
         it(`supports dark mode (output)`, () => {
             tuiGetDemoContent()
-                .find(`tui-editor-socket`)
+                .find(`tui-editor-socket.tui-example`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`2-1-dark-mode-output`);
         });
@@ -86,7 +86,7 @@ describe(`Editor API`, () => {
             tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_UL});
 
             tuiGetDemoContent()
-                .find(`tui-editor-socket`)
+                .find(`tui-editor-socket.tui-example`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`4-1-bullet-and-ordered-list`);
         });
@@ -95,7 +95,7 @@ describe(`Editor API`, () => {
             tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_NESTED_UL});
 
             tuiGetDemoContent()
-                .find(`tui-editor-socket`)
+                .find(`tui-editor-socket.tui-example`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`5-1-bullet-and-ordered-nested-list`);
         });

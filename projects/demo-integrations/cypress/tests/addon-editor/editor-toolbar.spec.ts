@@ -34,7 +34,10 @@ describe(`Editor's toolbar`, () => {
             .click();
 
         cy.get(`tui-palette`).should(`exist`);
-        tuiGetDemoContent().find(`tui-editor-socket`).should(`be.visible`).click();
+        tuiGetDemoContent()
+            .find(`tui-editor-socket.tui-example`)
+            .should(`be.visible`)
+            .click();
         cy.get(`tui-palette`).should(`not.exist`);
 
         tuiGetDemoContent()

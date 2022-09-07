@@ -31,7 +31,7 @@ describe(`Examples with preview images`, () => {
         closePreview();
 
         cy.get(`@wrapper`)
-            .find(`tui-editor-socket`)
+            .find(`tui-editor-socket._preview-image`)
             .find(`img`)
             .filter(`[src="assets/images/lumberjack.png"]`)
             .filter(`:visible`)
