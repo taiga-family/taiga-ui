@@ -2,13 +2,7 @@ name: Deploy / next
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'projects/**'
-      - 'angular.json'
-      - 'package.json'
-      - '**/deploy-next.yml'
+    branches: [main]
   workflow_dispatch:
 
 env:
