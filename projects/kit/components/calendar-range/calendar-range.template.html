@@ -6,7 +6,6 @@
     [min]="min | tuiMapper: maxLengthMapper:value:maxLength:true"
     [max]="max | tuiMapper: maxLengthMapper:value:maxLength:false"
     [defaultViewedMonthFirst]="defaultViewedMonth"
-    [defaultViewedMonthSecond]="defaultViewedMonth | tuiMapper: monthShiftMapper"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [value]="value"
     (dayClick)="onDayClick($event)"

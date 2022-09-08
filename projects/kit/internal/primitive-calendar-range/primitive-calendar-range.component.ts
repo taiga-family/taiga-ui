@@ -115,21 +115,15 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;
 
-        if (this.userViewedMonthSecond.year < this.userViewedMonthFirst.year) {
-            this.userViewedMonthSecond = this.userViewedMonthSecond.append({
-                year: month.year - this.userViewedMonthSecond.year,
-            });
-        }
+        this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
     }
 
     onSectionSecondViewedMonth(month: TuiMonth): void {
         this.userViewedMonthSecond = month;
 
-        if (this.userViewedMonthFirst.year > this.userViewedMonthSecond.year) {
-            this.userViewedMonthFirst = this.userViewedMonthFirst.append({
-                year: month.year - this.userViewedMonthFirst.year,
-            });
-        }
+        this.userViewedMonthFirst = this.userViewedMonthSecond.append({
+            month: -1,
+        });
     }
 
     onDayClick(day: TuiDay): void {
@@ -175,11 +169,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     private updateViewedMonths(): void {
         this.userViewedMonthFirst =
             this.value === null ? this.defaultViewedMonthFirst : this.value.from;
-        this.userViewedMonthSecond =
-            this.value === null ? this.defaultViewedMonthSecond : this.value.to;
 
-        if (this.userViewedMonthFirst.monthSame(this.userViewedMonthSecond)) {
-            this.userViewedMonthSecond = this.userViewedMonthSecond.append({month: 1});
-        }
+        this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
     }
 }

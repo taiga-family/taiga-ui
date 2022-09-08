@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -83,6 +84,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
+    previousValue: TuiDayRange | null = null;
+
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     constructor(
@@ -104,8 +107,15 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             });
     }
 
-    readonly monthShiftMapper: TuiMapper<TuiMonth, TuiMonth> = item =>
-        item.append({month: 1});
+    @HostListener('document:keydown.capture', ['$event'])
+    onEsc(event: KeyboardEvent): void {
+        if (event.key !== `Escape` || !this.value?.isSingleDay) {
+            return;
+        }
+
+        event.stopPropagation();
+        this.value = this.previousValue;
+    }
 
     readonly mapper: TuiMapper<
         readonly TuiDayRangePeriod[],
@@ -151,6 +161,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     onDayClick(day: TuiDay): void {
         const {value} = this;
+
+        this.previousValue = value;
 
         if (value === null || !value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
