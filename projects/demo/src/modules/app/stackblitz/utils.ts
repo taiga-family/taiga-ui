@@ -89,17 +89,20 @@ export function getAllModules(entryPoint: Record<string, unknown>): string {
  */
 export async function getAllTaigaUIModulesFile(): Promise<string> {
     /**
+     * Violated DRY principle:
      * You can't just iterate the array with package-names - it will cause error:
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
-    const cdk = getAllModules(await import(`@taiga-ui/cdk`));
-    const core = getAllModules(await import(`@taiga-ui/core`));
-    const kit = getAllModules(await import(`@taiga-ui/kit`));
-    const charts = getAllModules(await import(`@taiga-ui/addon-charts`));
-    const commerce = getAllModules(await import(`@taiga-ui/addon-commerce`));
-    const editor = getAllModules(await import(`@taiga-ui/addon-editor`));
-    const mobile = getAllModules(await import(`@taiga-ui/addon-mobile`));
-    const table = getAllModules(await import(`@taiga-ui/addon-table`));
+    const [cdk, core, kit, charts, commerce, editor, mobile, table] = await Promise.all([
+        import(`@taiga-ui/cdk`),
+        import(`@taiga-ui/core`),
+        import(`@taiga-ui/kit`),
+        import(`@taiga-ui/addon-charts`),
+        import(`@taiga-ui/addon-commerce`),
+        import(`@taiga-ui/addon-editor`),
+        import(`@taiga-ui/addon-mobile`),
+        import(`@taiga-ui/addon-table`),
+    ]).then(modules => modules.map(getAllModules));
 
     return `
 import {
