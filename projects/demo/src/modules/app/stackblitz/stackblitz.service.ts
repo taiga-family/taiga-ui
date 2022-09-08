@@ -45,6 +45,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
         const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
+        const {stackblitzReadMe} =
+            await AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
+
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
 
@@ -90,6 +93,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
+                [stackblitzPrefix`README.md`]: stackblitzReadMe,
                 [stackblitzPrefix`all-taiga-modules.ts`]:
                     await getAllTaigaUIModulesFile(),
                 [appPrefix`app.module.ts`]: appModule.toString(),

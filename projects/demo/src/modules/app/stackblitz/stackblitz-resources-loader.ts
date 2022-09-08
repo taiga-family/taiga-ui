@@ -200,4 +200,12 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
 
         return styles;
     }
+
+    static async getReadMeFiles(): Promise<{stackblitzReadMe: string}> {
+        const [stackblitzReadMe] = await Promise.all([
+            tuiRawLoad(import(`./project-files/src/app/@stackblitz/README.md?raw`)),
+        ]);
+
+        return {stackblitzReadMe};
+    }
 }
