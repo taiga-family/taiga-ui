@@ -97,8 +97,10 @@ jobs:
 
       - name: Announce
         run: |
-          curl --http1.1 -X POST -H "Content-Type: application/json" -d '{"text": "${{ steps.get-pr-body.outputs.body }}", "username": "Taiga release", "channel": "${{ secrets.ANNOUNCE_TARGET }}"}' ${{ secrets.ANNOUNCE_WEBHOOK }}
-
+            markdown=$(sed 's/$/\\n/' RELEASE_BODY.md | tr -d '\n')
+            echo "$markdown"
+            data_string="{\"username\":\"Taiga release\",\"text\":\"simple text\nline\",\"channel\":\"${{ secrets.ANNOUNCE_TARGET }}\"}"
+            curl --http1.1 -X POST -H "Content-Type: application/json" -d "$data_string" ${{ secrets.ANNOUNCE_WEBHOOK }}
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
