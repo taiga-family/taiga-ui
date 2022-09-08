@@ -107,7 +107,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             });
     }
 
-    @HostListener('document:keydown.capture', ['$event'])
+    @HostListener(`document:keydown.capture`, [`$event`])
     onEsc(event: KeyboardEvent): void {
         if (event.key !== `Escape` || !this.value?.isSingleDay) {
             return;
