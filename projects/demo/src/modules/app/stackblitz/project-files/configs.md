@@ -62,14 +62,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "downlevelIteration": false,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
   },
