@@ -204,6 +204,16 @@ export const CONSTS_TO_REPLACE: ReplacementConst[] = [
     },
     {
         from: {
+            name: 'TuiInputFileModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiInputFilesModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiPdfViewerModule',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
