@@ -7,11 +7,13 @@ import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
+    getAllTaigaUIModulesFile,
     getComponentsClassNames,
     getSupportFiles,
     getSupportModules,
     prepareLess,
     prepareSupportFiles,
+    stackblitzPrefix,
 } from './utils';
 
 const APP_COMP_META = {
@@ -34,12 +36,17 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const taigaStyles = await AbstractTuiStackblitzResourcesLoader.getTaigaStyles();
-
-        content = {...content, ...taigaStyles};
+        const taigaStyles = Object.fromEntries(
+            Object.entries(
+                await AbstractTuiStackblitzResourcesLoader.getTaigaStyles(),
+            ).map(([path, content]) => [stackblitzPrefix`${path}`, prepareLess(content)]),
+        );
 
         const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
+
+        const {stackblitzReadMe} =
+            await AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
 
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
@@ -78,6 +85,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
             template: `angular-cli`,
             dependencies: STACKBLITZ_DEPS,
             files: {
+                ...taigaStyles,
                 ...modifiedSupportFiles,
                 'tsconfig.json': tsconfig,
                 'angular.json': angularJson,
@@ -85,6 +93,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
+                [stackblitzPrefix`README.md`]: stackblitzReadMe,
+                [stackblitzPrefix`all-taiga-modules.ts`]:
+                    await getAllTaigaUIModulesFile(),
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
