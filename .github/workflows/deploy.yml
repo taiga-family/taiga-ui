@@ -50,7 +50,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
-          folder: dist/demo/browser/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
+          folder: dist/demo/browser/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           target-folder: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           clean: true
