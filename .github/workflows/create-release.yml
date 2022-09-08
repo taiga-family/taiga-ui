@@ -97,7 +97,7 @@ jobs:
 
       - name: Announce
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{"text": "${{ steps.get-pr-body.outputs.body }}", "username": "Taiga release", "channel": "${{ secrets.ANNOUNCE_TARGET }}"}' ${{ secrets.ANNOUNCE_WEBHOOK }}
+          curl --http1.1 -X POST -H "Content-Type: application/json" -d '{"text": "${{ steps.get-pr-body.outputs.body }}", "username": "Taiga release", "channel": "${{ secrets.ANNOUNCE_TARGET }}"}' ${{ secrets.ANNOUNCE_WEBHOOK }}
 
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
