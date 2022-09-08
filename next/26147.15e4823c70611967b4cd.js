@@ -1411,13 +1411,13 @@ let ExampleTuiInputFilesComponent = /*#__PURE__*/(() => {
       let i18n_36;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3726838635698526556$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_FILES_INPUT_FILES_COMPONENT_TS__37 = goog.getMsg(" Import {$startTagCode}TuiInputFileModule{$closeTagCode} into a module where you want to use our component ", {
+        const MSG_EXTERNAL_3751126963235249471$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_FILES_INPUT_FILES_COMPONENT_TS__37 = goog.getMsg(" Import {$startTagCode}TuiInputFilesModule{$closeTagCode} into a module where you want to use our component ", {
           "startTagCode": "\uFFFD#4\uFFFD",
           "closeTagCode": "\uFFFD/#4\uFFFD"
         });
-        i18n_36 = MSG_EXTERNAL_3726838635698526556$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_FILES_INPUT_FILES_COMPONENT_TS__37;
+        i18n_36 = MSG_EXTERNAL_3751126963235249471$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_FILES_INPUT_FILES_COMPONENT_TS__37;
       } else {
-        i18n_36 = $localize`:␟d41a7e4dc2844fe570cedb26ed5254a96dac3351␟3726838635698526556: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputFileModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
+        i18n_36 = $localize`:␟c8f3fff6c1ff57fa0714c9ec9f66e0bf6b49dde6␟3751126963235249471: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputFilesModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
       }
 
       let i18n_38;
