@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TUI_ICONS_PATH, tuiIconsPathFactory, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
-import {ALL_TAIGA_UI_MODULES} from '../all-taiga-modules';
+import {ALL_TAIGA_UI_MODULES} from './@stackblitz/all-taiga-modules';
 import {AppComponent} from './app.component';
 
 @NgModule({

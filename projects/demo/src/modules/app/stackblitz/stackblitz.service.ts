@@ -13,6 +13,7 @@ import {
     getSupportModules,
     prepareLess,
     prepareSupportFiles,
+    stackblitzPrefix,
 } from './utils';
 
 const APP_COMP_META = {
@@ -35,9 +36,11 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const taigaStyles = await AbstractTuiStackblitzResourcesLoader.getTaigaStyles();
-
-        content = {...content, ...taigaStyles};
+        const taigaStyles = Object.fromEntries(
+            Object.entries(
+                await AbstractTuiStackblitzResourcesLoader.getTaigaStyles(),
+            ).map(([path, content]) => [stackblitzPrefix`${path}`, prepareLess(content)]),
+        );
 
         const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
@@ -79,6 +82,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
             template: `angular-cli`,
             dependencies: STACKBLITZ_DEPS,
             files: {
+                ...taigaStyles,
                 ...modifiedSupportFiles,
                 'tsconfig.json': tsconfig,
                 'angular.json': angularJson,
@@ -86,7 +90,8 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
-                'src/all-taiga-modules.ts': await getAllTaigaUIModulesFile(),
+                [stackblitzPrefix`all-taiga-modules.ts`]:
+                    await getAllTaigaUIModulesFile(),
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,

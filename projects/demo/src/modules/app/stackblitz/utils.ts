@@ -7,13 +7,18 @@ export const prepareLess = (content: string): string => {
     return content
         .replace(
             `~@taiga-ui/core/styles/taiga-ui-local`,
-            `styles/taiga-ui-stackblitz.less`,
+            `@stackblitz/styles/taiga-ui-stackblitz.less`,
         )
         .replace(/@import.+taiga-ui-local';/g, ``);
 };
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
     `src/app/${stringsPart.join(``)}${path}`;
+
+export const stackblitzPrefix = (
+    stringsPart: TemplateStringsArray,
+    path: string = ``,
+): string => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
 
 type FileName = string;
 
