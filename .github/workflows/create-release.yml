@@ -95,6 +95,10 @@ jobs:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Announce
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"text": "${{ steps.get-pr-body.outputs.body }}", "username": "Taiga release", "channel": "${{ secrets.ANNOUNCE_TARGET }"}' ${{ secrets.ANNOUNCE_WEBHOOK }}
+
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
