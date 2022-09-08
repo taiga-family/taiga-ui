@@ -103,7 +103,14 @@
                             "with": "projects/demo/src/environments/environment.prod.ts"
                         }
                     ],
-                    "optimization": true,
+                    "optimization": {
+                        "scripts": false,
+                        "styles": {
+                            "minify": true,
+                            "inlineCritical": true
+                        },
+                        "fonts": true
+                    },
                     "baseHref": "/next/",
                     "outputPath": "dist/demo/browser/next",
                     "outputHashing": "all",
@@ -111,14 +118,7 @@
                     "namedChunks": false,
                     "buildOptimizer": true,
                     "statsJson": false,
-                    "progress": false,
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "2mb",
-                            "maximumError": "5mb"
-                        }
-                    ]
+                    "progress": false
                 },
                 "def": {
                     "budgets": [],
