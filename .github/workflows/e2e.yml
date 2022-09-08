@@ -34,7 +34,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build --skip-nx-cache
+        run: npx nx build --skip-nx-cache -c next --base-href ./ --output-path dist/demo/browser
 
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
