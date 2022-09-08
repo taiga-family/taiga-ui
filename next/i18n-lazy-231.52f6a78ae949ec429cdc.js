@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[36104],{12417:(a,e,n)=>{n.r(e),n.d(e,{TUI_TURKISH_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"G\xf6ster/Hizle",paginationTexts:{pages:"Sayfa",linesPerPage:"G\xf6r\xfcnt\xfclenen",of:"toplam"}}}}]);

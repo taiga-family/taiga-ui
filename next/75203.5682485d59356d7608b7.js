@@ -1,0 +1,11 @@
+"use strict";
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[75203],{
+
+/***/ 75203:
+/***/ ((module) => {
+
+module.exports = "<tui-island class=\"island\">\n    <tui-line-clamp\n        [content]=\"daenerys\"\n        [lineHeight]=\"20\"\n        [linesLimit]=\"2\"\n    ></tui-line-clamp>\n</tui-island>\n<tui-notification class=\"island\">\n    Use\n    <code>white-space: nowrap</code>\n    to expand to the right\n</tui-notification>\n<tui-island class=\"island\">\n    <tui-line-clamp\n        [content]=\"mormont\"\n        [lineHeight]=\"20\"\n        [linesLimit]=\"1\"\n    ></tui-line-clamp>\n</tui-island>\n<ng-template #daenerys>\n    <div class=\"hint\">\n        Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the\n        First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven\n        Kingdoms, Breaker of Chains and Mother of Dragons\n    </div>\n</ng-template>\n<ng-template #mormont>\n    <div class=\"hint no-wrap\">Jorah Mormont of House Mormont, Lord of Bear Island</div>\n</ng-template>\n";
+
+/***/ })
+
+}]);

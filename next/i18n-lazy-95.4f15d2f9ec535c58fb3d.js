@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[74209],{19891:(o,e,n)=>{n.r(e),n.d(e,{TUI_GERMAN_LANGUAGE_ADDON_PREVIEW:()=>t});const t={previewTexts:{rotate:"Rotieren"},zoomTexts:{zoomOut:"Verkleinern",zoomIn:"Vergr\xf6\xdfern",reset:"Zur\xfccksetzen"}}}}]);
