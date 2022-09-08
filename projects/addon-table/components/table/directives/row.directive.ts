@@ -5,7 +5,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 @Directive({
     selector: `ng-template[tuiRow]`,
 })
-export class TuiRowDirective<T> {
+export class TuiRowDirective<T extends Record<keyof T, any>> {
     @Input()
     @tuiDefaultProp()
     tuiRowOf: readonly T[] = [];

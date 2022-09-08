@@ -28,7 +28,7 @@ import {TuiTableDirective} from '../directives/table.directive';
         },
     ],
 })
-export class TuiThComponent<T> {
+export class TuiThComponent<T extends Record<keyof T, any>> {
     @Input()
     @tuiDefaultProp()
     sorter: TuiComparator<T> | null = this.head

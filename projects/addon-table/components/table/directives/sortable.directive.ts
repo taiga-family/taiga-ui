@@ -8,7 +8,9 @@ import {TuiTableDirective} from './table.directive';
 @Directive({
     selector: `th[tuiTh][tuiSortable]`,
 })
-export class TuiSortableDirective<T> implements DoCheck, OnInit {
+export class TuiSortableDirective<T extends Record<keyof T, any>>
+    implements DoCheck, OnInit
+{
     constructor(
         @Inject(forwardRef(() => TuiSortByDirective))
         private readonly sortBy: TuiSortByDirective<T>,
