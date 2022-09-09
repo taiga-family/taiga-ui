@@ -1722,7 +1722,6 @@ TuiThComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__/*
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "f": () => (/* binding */ TuiTrComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(64762);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39761);
@@ -1733,7 +1732,6 @@ TuiThComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__/*
 /* harmony import */ var _tbody_tbody_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(57681);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12057);
 /* harmony import */ var _td_td_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(48598);
-
 
 
 
@@ -1758,9 +1756,8 @@ function TuiTrComponent_ng_container_0_ng_container_1_ng_template_1_td_0_Templat
   if (rf & 2) {
     const item_r7 = ctx.ngIf;
     const key_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw(2).$implicit;
-    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw(2);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtextInterpolate1"] */ .hij(" ", item_r7[ctx_r6.$keyof(key_r3)], " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtextInterpolate1"] */ .hij(" ", item_r7[key_r3], " ");
   }
 }
 
@@ -1789,8 +1786,7 @@ function TuiTrComponent_ng_container_0_ng_container_1_Template(rf, ctx) {
     const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵreference"] */ .MAs(2);
 
     const items_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw().ngIf;
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", (items_r1[ctx_r2.$keyof(key_r3)] == null ? null : items_r1[ctx_r2.$keyof(key_r3)].template) || _r4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", (items_r1[key_r3] == null ? null : items_r1[key_r3].template) || _r4);
   }
 }
 
@@ -1808,63 +1804,60 @@ function TuiTrComponent_ng_container_0_Template(rf, ctx) {
   }
 }
 
-class TuiTrComponent {
-  constructor(table, body) {
-    this.table = table;
-    this.body = body;
-    this.cells = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
-    this.cells$ = this.cells.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.cells.reduce((record, item) => Object.assign(Object.assign({}, record), {
-      [item.tuiCell]: item
-    }), {})));
-    this.item$ = this.body.rows.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.body.sorted[this.body.rows.toArray().findIndex(row => row === this)]));
+let TuiTrComponent = /*#__PURE__*/(() => {
+  class TuiTrComponent {
+    constructor(table, body) {
+      this.table = table;
+      this.body = body;
+      this.cells = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
+      this.cells$ = this.cells.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.cells.reduce((record, item) => Object.assign(Object.assign({}, record), {
+        [item.tuiCell]: item
+      }), {})));
+      this.item$ = this.body.rows.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.body.sorted[this.body.rows.toArray().findIndex(row => row === this)]));
+    }
+
   }
 
-  $keyof(key) {
-    return key.toString();
-  }
+  TuiTrComponent.ɵfac = function TuiTrComponent_Factory(t) {
+    return new (t || TuiTrComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36((0,_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .forwardRef */ .Gpc)(() => _directives_table_directive__WEBPACK_IMPORTED_MODULE_2__/* .TuiTableDirective */ .c)), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36((0,_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .forwardRef */ .Gpc)(() => _tbody_tbody_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiTbodyComponent */ .j)));
+  };
 
-}
+  TuiTrComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdefineComponent"] */ .Xpm({
+    type: TuiTrComponent,
+    selectors: [["tr", "tuiTr", ""]],
+    contentQueries: function TuiTrComponent_ContentQueries(rf, ctx, dirIndex) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _directives_cell_directive__WEBPACK_IMPORTED_MODULE_1__/* .TuiCellDirective */ .B, 4);
+      }
 
-TuiTrComponent.ɵfac = function TuiTrComponent_Factory(t) {
-  return new (t || TuiTrComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36((0,_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .forwardRef */ .Gpc)(() => _directives_table_directive__WEBPACK_IMPORTED_MODULE_2__/* .TuiTableDirective */ .c)), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36((0,_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .forwardRef */ .Gpc)(() => _tbody_tbody_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiTbodyComponent */ .j)));
-};
+      if (rf & 2) {
+        let _t;
 
-TuiTrComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdefineComponent"] */ .Xpm({
-  type: TuiTrComponent,
-  selectors: [["tr", "tuiTr", ""]],
-  contentQueries: function TuiTrComponent_ContentQueries(rf, ctx, dirIndex) {
-    if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _directives_cell_directive__WEBPACK_IMPORTED_MODULE_1__/* .TuiCellDirective */ .B, 4);
-    }
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.cells = _t);
+      }
+    },
+    features: [_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵProvidersFeature"] */ ._Bn([_providers_table_provider__WEBPACK_IMPORTED_MODULE_3__/* .TUI_TABLE_PROVIDER */ .W])],
+    attrs: _c0,
+    decls: 2,
+    vars: 3,
+    consts: [[4, "ngIf"], [3, "ngTemplateOutlet", 4, "ngFor", "ngForOf"], [3, "ngTemplateOutlet"], ["plain", ""], ["tuiTd", "", 4, "ngIf"], ["tuiTd", ""]],
+    template: function TuiTrComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(0, TuiTrComponent_ng_container_0_Template, 2, 1, "ng-container", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipe"] */ .ALo(1, "async");
+      }
 
-    if (rf & 2) {
-      let _t;
-
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.cells = _t);
-    }
-  },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵProvidersFeature"] */ ._Bn([_providers_table_provider__WEBPACK_IMPORTED_MODULE_3__/* .TUI_TABLE_PROVIDER */ .W])],
-  attrs: _c0,
-  decls: 2,
-  vars: 3,
-  consts: [[4, "ngIf"], [3, "ngTemplateOutlet", 4, "ngFor", "ngForOf"], [3, "ngTemplateOutlet"], ["plain", ""], ["tuiTd", "", 4, "ngIf"], ["tuiTd", ""]],
-  template: function TuiTrComponent_Template(rf, ctx) {
-    if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(0, TuiTrComponent_ng_container_0_Template, 2, 1, "ng-container", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipe"] */ .ALo(1, "async");
-    }
-
-    if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx.cells$));
-    }
-  },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgIf */ .O5, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgForOf */ .sg, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgTemplateOutlet */ .tP, _td_td_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiTdComponent */ .K],
-  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .AsyncPipe */ .Ov],
-  encapsulation: 2,
-  changeDetection: 0
-});
-
-(0,tslib__WEBPACK_IMPORTED_MODULE_10__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiTrComponent.prototype, "$keyof", null);
+      if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx.cells$));
+      }
+    },
+    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgIf */ .O5, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgForOf */ .sg, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgTemplateOutlet */ .tP, _td_td_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiTdComponent */ .K],
+    pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .AsyncPipe */ .Ov],
+    encapsulation: 2,
+    changeDetection: 0
+  });
+  return TuiTrComponent;
+})();
 
 /***/ }),
 
