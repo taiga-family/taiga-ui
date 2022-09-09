@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
+[Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 <!-- Do not change next line without i18n demo page -->
 
