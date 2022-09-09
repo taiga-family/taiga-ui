@@ -6,7 +6,8 @@ describe(`Input`, () => {
 
         it(`has custom content (text) + cleaner + hint which dont overlapping each others`, () => {
             cy.tuiVisit(
-                `${INPUT_PAGE_URL}/API?tuiHintContent=Some%20content&tuiTextfieldCleaner=true&tuiTextfieldCustomContent=%3Cspan%3ELongTextContent%3Cspan%3E`,
+                `${INPUT_PAGE_URL}/API?tuiHintContent=Some content&tuiTextfieldCustomContent=<b>LongTextContent<b>`,
+                {skipExpectUrl: true},
             );
 
             cy.get(`#demoContent`)
@@ -52,7 +53,7 @@ describe(`Input`, () => {
             );
 
             cy.get(`.t-input-wrapper`)
-                .find(`input`)
+                .find(`input[tuiTextfield]`)
                 .focus()
                 .should(`have.value`, `111`)
                 .focused()
@@ -69,13 +70,13 @@ describe(`Input`, () => {
         const characters = `big, placeholder, qwerty, jackson, yellow and more`;
 
         cy.viewport(450, 300).tuiVisit(
-            `components/input/API?tuiMode=null&tuiTextfieldExampleText=${characters}`,
+            `components/input/API?tuiMode=null&pseudoFocused=true&attr.placeholder=${characters}`,
         );
 
         cy.get(`#demoContent`)
             .find(`.t-input-wrapper`)
             .tuiScrollIntoView()
-            .find(`input`)
+            .find(`input[tuiTextfield]`)
             .as(`input`);
 
         cy.get(`@input`)
@@ -83,12 +84,14 @@ describe(`Input`, () => {
             .should(`have.value`, `111`)
             .focused()
             .clear()
+            .blur()
             .matchImageSnapshot(`06-character-descenders`);
 
         cy.get(`@input`)
             .type(
                 `It has been the industry's standard dummy text ever since the 1500s{enter}`,
             )
+            .blur()
             .matchImageSnapshot(`07-very-long-text-without-text-ellipsis`);
     });
 });

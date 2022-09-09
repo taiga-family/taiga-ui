@@ -94,6 +94,8 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
 
     readonly control = new FormControl(`111`, Validators.required);
 
+    placeholder = `Field placeholder`;
+
     override readonly customContentVariants = [
         `tuiIconSearchLarge`,
         `tuiIconCalendarLarge`,

@@ -236,8 +236,12 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
                 >
-                    placeholder
+                    Label
                     <strong>strong text</strong>
+                    <input
+                        tuiTextfield
+                        [attr.placeholder]="placeholder"
+                    />
                 </tui-input>
             </ng-template>
         </tui-doc-demo>
@@ -276,6 +280,15 @@
                 >
                     <code>SvgService</code>
                 </a>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="attr.placeholder"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="placeholder"
+            >
+                Placeholder
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
