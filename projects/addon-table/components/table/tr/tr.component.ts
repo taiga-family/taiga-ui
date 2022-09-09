@@ -6,7 +6,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
 
 import {TuiCellDirective} from '../directives/cell.directive';
@@ -20,16 +20,16 @@ import {TuiTbodyComponent} from '../tbody/tbody.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTrComponent<T> {
+export class TuiTrComponent<T extends Record<keyof T, any>> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
     readonly cells$ = this.cells.changes.pipe(
         startWith(null),
         map(() =>
-            this.cells.reduce<Record<any, TuiCellDirective>>(
+            this.cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
-                {},
+                {} as Record<keyof T | string, TuiCellDirective>,
             ),
         ),
     );
@@ -38,7 +38,9 @@ export class TuiTrComponent<T> {
         startWith(null),
         map(
             () =>
-                this.body.sorted[this.body.rows.toArray().findIndex(row => row === this)],
+                this.body.sorted[
+                    this.body.rows.toArray().findIndex(row => row === this)
+                ] as Record<keyof T | string, any>,
         ),
     );
 
@@ -48,9 +50,4 @@ export class TuiTrComponent<T> {
         @Inject(forwardRef(() => TuiTbodyComponent))
         private readonly body: TuiTbodyComponent<T>,
     ) {}
-
-    @tuiPure
-    $keyof<U>(key: any): keyof U {
-        return key.toString() as keyof U;
-    }
 }

@@ -25,7 +25,9 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
         style: `border-collapse: separate`,
     },
 })
-export class TuiTableDirective<T> extends AbstractTuiController {
+export class TuiTableDirective<
+    T extends Record<keyof T, any>,
+> extends AbstractTuiController {
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<keyof T | string> = [];

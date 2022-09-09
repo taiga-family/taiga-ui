@@ -23,9 +23,11 @@ import {TuiThComponent} from '../th/th.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiThGroupComponent<T> implements AfterContentInit {
+export class TuiThGroupComponent<T extends Record<keyof T, any>>
+    implements AfterContentInit
+{
     @ContentChild(forwardRef(() => TuiThComponent))
-    readonly th: unknown;
+    readonly th!: TuiThComponent<T>;
 
     @ContentChildren(forwardRef(() => TuiHeadDirective))
     readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
@@ -41,9 +43,9 @@ export class TuiThGroupComponent<T> implements AfterContentInit {
         this.heads$ = this.heads.changes.pipe(
             startWith(null),
             map(() =>
-                this.heads.reduce<Record<any, TuiHeadDirective<T>>>(
+                this.heads.reduce(
                     (record, item) => ({...record, [item.tuiHead]: item}),
-                    {},
+                    {} as Record<keyof T, TuiHeadDirective<T>>,
                 ),
             ),
         );

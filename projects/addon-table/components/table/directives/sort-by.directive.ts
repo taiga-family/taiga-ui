@@ -16,7 +16,7 @@ import {TuiTableDirective} from './table.directive';
 @Directive({
     selector: `table[tuiTable][tuiSortBy]`,
 })
-export class TuiSortByDirective<T> {
+export class TuiSortByDirective<T extends Record<keyof T, any>> {
     @ContentChildren(TuiSortableDirective, {descendants: true})
     private readonly sortables: QueryList<TuiSortableDirective<T>> = EMPTY_QUERY;
 
