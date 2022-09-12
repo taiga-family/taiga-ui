@@ -16,6 +16,8 @@ body:
         - icons
         - taiga-schematics
         - testing
+        - styles
+        - eslint-plugin
         - addon-charts
         - addon-commerce
         - addon-doc
