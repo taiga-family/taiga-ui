@@ -46152,13 +46152,12 @@ function TuiCalendarRangeComponent_tui_primitive_calendar_range_0_Template(rf, c
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipe"] */ .ALo(1, "tuiMapper");
     _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipe"] */ .ALo(2, "tuiMapper");
-    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipe"] */ .ALo(3, "tuiMapper");
     _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("markerHandler", ctx_r0.markerHandler)("min", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBindV"] */ .G7q(1, 7, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpureFunction4"] */ .l5B(22, _c0, ctx_r0.min, ctx_r0.maxLengthMapper, ctx_r0.value, ctx_r0.maxLength)))("max", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBindV"] */ .G7q(2, 13, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpureFunction4"] */ .l5B(27, _c1, ctx_r0.max, ctx_r0.maxLengthMapper, ctx_r0.value, ctx_r0.maxLength)))("defaultViewedMonthFirst", ctx_r0.defaultViewedMonth)("defaultViewedMonthSecond", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBind2"] */ .xi3(3, 19, ctx_r0.defaultViewedMonth, ctx_r0.monthShiftMapper))("disabledItemHandler", ctx_r0.calculatedDisabledItemHandler)("value", ctx_r0.value);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("markerHandler", ctx_r0.markerHandler)("min", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBindV"] */ .G7q(1, 6, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpureFunction4"] */ .l5B(18, _c0, ctx_r0.min, ctx_r0.maxLengthMapper, ctx_r0.value, ctx_r0.maxLength)))("max", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBindV"] */ .G7q(2, 12, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpureFunction4"] */ .l5B(23, _c1, ctx_r0.max, ctx_r0.maxLengthMapper, ctx_r0.value, ctx_r0.maxLength)))("defaultViewedMonthFirst", ctx_r0.defaultViewedMonth)("disabledItemHandler", ctx_r0.calculatedDisabledItemHandler)("value", ctx_r0.value);
   }
 }
 
@@ -46253,11 +46252,8 @@ class TuiCalendarRangeComponent {
     this.maxLength = null;
     this.value = null;
     this.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_10__/* .EventEmitter */ .vpe();
+    this.previousValue = null;
     this.maxLengthMapper = _taiga_ui_kit_constants__WEBPACK_IMPORTED_MODULE_2__/* .MAX_DAY_RANGE_LENGTH_MAPPER */ .EP;
-
-    this.monthShiftMapper = item => item.append({
-      month: 1
-    });
 
     this.mapper = (items, min, max, minLength, otherDateText) => [...items.filter(item => (minLength === null || item.range.from.append(minLength).daySameOrBefore(item.range.to)) && item.range.to.daySameOrAfter(min) && (max === null || item.range.from.daySameOrBefore(max))), otherDateText];
 
@@ -46268,6 +46264,17 @@ class TuiCalendarRangeComponent {
     valueChanges.pipe((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiWatch)(changeDetectorRef), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .takeUntil */ .R)(destroy$)).subscribe(value => {
       this.value = value;
     });
+  }
+
+  onEsc(event) {
+    var _a;
+
+    if (event.key !== `Escape` || !((_a = this.value) === null || _a === void 0 ? void 0 : _a.isSingleDay)) {
+      return;
+    }
+
+    event.stopPropagation();
+    this.value = this.previousValue;
   }
 
   get calculatedDisabledItemHandler() {
@@ -46293,6 +46300,7 @@ class TuiCalendarRangeComponent {
     const {
       value
     } = this;
+    this.previousValue = value;
 
     if (value === null || !value.isSingleDay) {
       this.value = new _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDayRange(day, day);
@@ -46349,6 +46357,13 @@ TuiCalendarRangeComponent.ɵfac = function TuiCalendarRangeComponent_Factory(t) 
 TuiCalendarRangeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiCalendarRangeComponent,
   selectors: [["tui-calendar-range"]],
+  hostBindings: function TuiCalendarRangeComponent_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("keydown.capture", function TuiCalendarRangeComponent_keydown_capture_HostBindingHandler($event) {
+        return ctx.onEsc($event);
+      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵresolveDocument"] */ .evT);
+    }
+  },
   inputs: {
     defaultViewedMonth: "defaultViewedMonth",
     disabledItemHandler: "disabledItemHandler",
@@ -46366,10 +46381,10 @@ TuiCalendarRangeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_M
   features: [_angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService])],
   decls: 3,
   vars: 2,
-  consts: [["automation-id", "tui-calendar-range__calendars", "tuiPreventDefault", "mousedown", 3, "markerHandler", "min", "max", "defaultViewedMonthFirst", "defaultViewedMonthSecond", "disabledItemHandler", "value", "dayClick", 4, "ngIf", "ngIfElse"], ["presets", ""], ["automation-id", "tui-calendar-range__calendars", "tuiPreventDefault", "mousedown", 3, "markerHandler", "min", "max", "defaultViewedMonthFirst", "defaultViewedMonthSecond", "disabledItemHandler", "value", "dayClick"], [1, "t-wrapper"], ["automation-id", "tui-calendar-range__calendar", "tuiPreventDefault", "mousedown", 3, "value", "markerHandler", "min", "max", "month", "disabledItemHandler", "dayClick"], ["role", "menu", "automation-id", "tui-calendar-range__menu", 1, "t-menu"], ["tuiOption", "", "tuiPreventDefault", "mousedown", "role", "menuitemradio", "automation-id", "tui-calendar-range__menu__item", 3, "keydown.enter.prevent", "keydown.space.prevent", "click", 4, "ngFor", "ngForOf"], ["tuiOption", "", "tuiPreventDefault", "mousedown", "role", "menuitemradio", "automation-id", "tui-calendar-range__menu__item", 3, "keydown.enter.prevent", "keydown.space.prevent", "click"], ["automation-id", "tui-calendar-range__checkmark", "src", "tuiIconCheck", "class", "t-checkmark", 4, "ngIf"], ["automation-id", "tui-calendar-range__checkmark", "src", "tuiIconCheck", 1, "t-checkmark"]],
+  consts: [["automation-id", "tui-calendar-range__calendars", "tuiPreventDefault", "mousedown", 3, "markerHandler", "min", "max", "defaultViewedMonthFirst", "disabledItemHandler", "value", "dayClick", 4, "ngIf", "ngIfElse"], ["presets", ""], ["automation-id", "tui-calendar-range__calendars", "tuiPreventDefault", "mousedown", 3, "markerHandler", "min", "max", "defaultViewedMonthFirst", "disabledItemHandler", "value", "dayClick"], [1, "t-wrapper"], ["automation-id", "tui-calendar-range__calendar", "tuiPreventDefault", "mousedown", 3, "value", "markerHandler", "min", "max", "month", "disabledItemHandler", "dayClick"], ["role", "menu", "automation-id", "tui-calendar-range__menu", 1, "t-menu"], ["tuiOption", "", "tuiPreventDefault", "mousedown", "role", "menuitemradio", "automation-id", "tui-calendar-range__menu__item", 3, "keydown.enter.prevent", "keydown.space.prevent", "click", 4, "ngFor", "ngForOf"], ["tuiOption", "", "tuiPreventDefault", "mousedown", "role", "menuitemradio", "automation-id", "tui-calendar-range__menu__item", 3, "keydown.enter.prevent", "keydown.space.prevent", "click"], ["automation-id", "tui-calendar-range__checkmark", "src", "tuiIconCheck", "class", "t-checkmark", 4, "ngIf"], ["automation-id", "tui-calendar-range__checkmark", "src", "tuiIconCheck", 1, "t-checkmark"]],
   template: function TuiCalendarRangeComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(0, TuiCalendarRangeComponent_tui_primitive_calendar_range_0_Template, 4, 32, "tui-primitive-calendar-range", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(0, TuiCalendarRangeComponent_tui_primitive_calendar_range_0_Template, 3, 28, "tui-primitive-calendar-range", 0);
       _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(1, TuiCalendarRangeComponent_ng_template_1_Template, 8, 45, "ng-template", null, 1, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
     }
 
@@ -69249,22 +69264,16 @@ class TuiPrimitiveCalendarRangeComponent {
 
   onSectionFirstViewedMonth(month) {
     this.userViewedMonthFirst = month;
-
-    if (this.userViewedMonthSecond.year < this.userViewedMonthFirst.year) {
-      this.userViewedMonthSecond = this.userViewedMonthSecond.append({
-        year: month.year - this.userViewedMonthSecond.year
-      });
-    }
+    this.userViewedMonthSecond = this.userViewedMonthFirst.append({
+      month: 1
+    });
   }
 
   onSectionSecondViewedMonth(month) {
     this.userViewedMonthSecond = month;
-
-    if (this.userViewedMonthFirst.year > this.userViewedMonthSecond.year) {
-      this.userViewedMonthFirst = this.userViewedMonthFirst.append({
-        year: month.year - this.userViewedMonthFirst.year
-      });
-    }
+    this.userViewedMonthFirst = this.userViewedMonthSecond.append({
+      month: -1
+    });
   }
 
   onDayClick(day) {
@@ -69308,13 +69317,9 @@ class TuiPrimitiveCalendarRangeComponent {
 
   updateViewedMonths() {
     this.userViewedMonthFirst = this.value === null ? this.defaultViewedMonthFirst : this.value.from;
-    this.userViewedMonthSecond = this.value === null ? this.defaultViewedMonthSecond : this.value.to;
-
-    if (this.userViewedMonthFirst.monthSame(this.userViewedMonthSecond)) {
-      this.userViewedMonthSecond = this.userViewedMonthSecond.append({
-        month: 1
-      });
-    }
+    this.userViewedMonthSecond = this.userViewedMonthFirst.append({
+      month: 1
+    });
   }
 
 }
