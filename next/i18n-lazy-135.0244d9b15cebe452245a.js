@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[21046],{17802:(s,a,u)=>{u.r(a),u.d(a,{TUI_POLISH_LANGUAGE_ADDON_COMMERCE:()=>n});const n={cardNumber:["Numer","Numer karty"],cardExpiry:["Wygasa","Data wa\u017cno\u015bci"]}}}]);

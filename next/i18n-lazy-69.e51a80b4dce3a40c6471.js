@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[87611],{38370:(E,a,e)=>{e.r(a),e.d(a,{TUI_FRENCH_LANGUAGE_ADDON_COMMERCE:()=>u});const u={cardNumber:["Number","Num\xe9ro de carte"],cardExpiry:["Expiry",'Date d"Expiration de la carte']}}}]);

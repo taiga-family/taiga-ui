@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[57027],{17480:(s,E,u)=>{u.r(E),u.d(E,{TUI_CHINESE_LANGUAGE_ADDON_COMMERCE:()=>n});const n={cardNumber:["\u53f7\u7801","\u4fe1\u7528\u5361\u53f7\u7801"],cardExpiry:["\u6709\u6548\u671f","\u4fe1\u7528\u5361\u6709\u6548\u671f"]}}}]);
