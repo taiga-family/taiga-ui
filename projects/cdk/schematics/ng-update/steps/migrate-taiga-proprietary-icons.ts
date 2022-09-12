@@ -54,7 +54,16 @@ export function migrateTaigaProprietaryIcons(options: Schema): Rule {
                       return;
                   }
 
-                  const targetOptions = getProjectTargetOptions(project, 'build');
+                  let targetOptions;
+
+                  try {
+                      targetOptions = getProjectTargetOptions(project, 'build');
+                  } catch {
+                      context.logger.warn(
+                          `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
+                      );
+                      return;
+                  }
 
                   if (Array.isArray(targetOptions?.assets)) {
                       const tdsSrc = '@taiga-ui/proprietary-tds-icons/src';
