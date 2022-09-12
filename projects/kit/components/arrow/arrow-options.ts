@@ -17,7 +17,7 @@ export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
 };
 
 export const TUI_ARROW_OPTIONS = new InjectionToken<TuiArrowOptions>(
-    `Default parameters for arrow component`,
+    `[TUI_ARROW_OPTIONS]: Default parameters for arrow component`,
     {
         factory: () => TUI_ARROW_DEFAULT_OPTIONS,
     },
@@ -40,7 +40,7 @@ export interface TuiArrowMode {
 }
 
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
-    `Type of icon in dropdowns for interactive or disable mode`,
+    `[TUI_ARROW_MODE]: Type of icon in dropdowns for interactive or disable mode`,
     {
         factory: () => ({
             interactive: TUI_ARROW,

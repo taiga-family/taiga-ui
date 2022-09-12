@@ -24,7 +24,9 @@ import {
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
-    new InjectionToken<TuiTextfieldController>(`watched textfield controller`);
+    new InjectionToken<TuiTextfieldController>(
+        `[TUI_TEXTFIELD_WATCHED_CONTROLLER]: watched textfield controller`,
+    );
 
 export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
     TuiDestroyService,

@@ -14,7 +14,7 @@ export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
 };
 
 export const TUI_INPUT_TAG_OPTIONS = new InjectionToken<TuiInputTagOptions>(
-    `Default parameters for input-tag`,
+    `[TUI_INPUT_TAG_OPTIONS]: Default parameters for input-tag`,
     {
         factory: () => TUI_INPUT_TAG_DEFAULT_OPTIONS,
     },

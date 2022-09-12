@@ -3,7 +3,9 @@ import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-export const TUI_STUCK = new InjectionToken<boolean>(`Stream of sticky stuck events`);
+export const TUI_STUCK = new InjectionToken<boolean>(
+    `[TUI_STUCK]: Stream of sticky stuck events`,
+);
 
 export const TUI_STUCK_PROVIDER: Provider = {
     provide: TUI_STUCK,

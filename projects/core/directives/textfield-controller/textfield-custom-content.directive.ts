@@ -3,9 +3,12 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_CUSTOM_CONTENT =
-    new InjectionToken<TuiTextfieldCustomContentDirective>(`tuiTextfieldCustomContent`, {
-        factory: () => new TuiTextfieldCustomContentDirective(),
-    });
+    new InjectionToken<TuiTextfieldCustomContentDirective>(
+        `[TUI_TEXTFIELD_CUSTOM_CONTENT]: tuiTextfieldCustomContent`,
+        {
+            factory: () => new TuiTextfieldCustomContentDirective(),
+        },
+    );
 
 @Directive({
     selector: `[tuiTextfieldCustomContent]`,

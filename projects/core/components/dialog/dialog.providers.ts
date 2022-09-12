@@ -16,7 +16,7 @@ import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
-    `A stream to close dialogs`,
+    `[TUI_DIALOGS_CLOSE]: A stream to close dialogs`,
     {
         factory: () => EMPTY,
     },
@@ -25,7 +25,7 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 const SCROLLBAR_PLACEHOLDER = 17;
 
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(
-    `Dialogs closing stream`,
+    `[TUI_DIALOG_CLOSE_STREAM]: Dialogs closing stream`,
 );
 export const TUI_DIALOG_PROVIDERS: Provider[] = [
     TuiDestroyService,

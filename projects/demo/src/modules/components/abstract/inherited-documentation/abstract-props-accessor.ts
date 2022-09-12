@@ -4,5 +4,5 @@ import {TuiSupportingDocumentationComponent} from './supporting-documentation-co
 
 export const ABSTRACT_PROPS_ACCESSOR =
     new InjectionToken<TuiSupportingDocumentationComponent>(
-        `Component extends AbstractExample class`,
+        `[ABSTRACT_PROPS_ACCESSOR]: Component extends AbstractExample class`,
     );

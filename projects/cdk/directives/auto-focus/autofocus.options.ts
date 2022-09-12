@@ -19,7 +19,7 @@ export interface TuiAutofocusHandler {
 }
 
 export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
-    `Autofocusing handler`,
+    `[TUI_AUTOFOCUS_HANDLER]: Autofocusing handler`,
 );
 
 export const TUI_AUTOFOCUS_PROVIDERS = [

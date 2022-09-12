@@ -9,7 +9,7 @@ export const TUI_LINE_CLAMP_DEFAULT_OPTIONS: TuiLineClampOptions = {
 };
 
 export const TUI_LINE_CLAMP_OPTIONS = new InjectionToken<TuiLineClampOptions>(
-    `Default parameters for line-clamp component`,
+    `[TUI_LINE_CLAMP_OPTIONS]: Default parameters for line-clamp component`,
     {
         factory: () => TUI_LINE_CLAMP_DEFAULT_OPTIONS,
     },

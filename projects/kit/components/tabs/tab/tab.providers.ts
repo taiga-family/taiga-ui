@@ -12,7 +12,7 @@ import {filter, map} from 'rxjs/operators';
 
 export const TUI_TAB_ACTIVATE = `tui-tab-activate`;
 export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>(
-    `Stream of tab activation events`,
+    `[TUI_TAB_EVENT]: Stream of tab activation events`,
 );
 export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiDestroyService,

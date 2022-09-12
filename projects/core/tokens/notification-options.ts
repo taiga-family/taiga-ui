@@ -18,7 +18,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
 };
 
 export const TUI_NOTIFICATION_OPTIONS = new InjectionToken<TuiNotificationDefaultOptions>(
-    `Default parameters for notification alert component`,
+    `[TUI_NOTIFICATION_OPTIONS]: Default parameters for notification alert component`,
     {
         factory: () => TUI_NOTIFICATION_DEFAULT_OPTIONS,
     },

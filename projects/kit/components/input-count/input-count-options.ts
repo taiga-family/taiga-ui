@@ -29,7 +29,7 @@ export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
 };
 
 export const TUI_INPUT_COUNT_OPTIONS = new InjectionToken<TuiInputCountOptions>(
-    `Default parameters for input count component`,
+    `[TUI_INPUT_COUNT_OPTIONS]: Default parameters for input count component`,
     {
         factory: () => TUI_INPUT_COUNT_DEFAULT_OPTIONS,
     },

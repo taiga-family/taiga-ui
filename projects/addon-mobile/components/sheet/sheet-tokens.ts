@@ -7,9 +7,9 @@ export const TUI_SHEET = new InjectionToken<TuiSheetRequiredProps>(
 );
 
 export const TUI_SHEET_SCROLL = new InjectionToken<number>(
-    `Current scrollTop of a sheet`,
+    `[TUI_SHEET_SCROLL]: Current scrollTop of a sheet`,
 );
 
 export const TUI_SHEET_DRAGGED = new InjectionToken<boolean>(
-    `The sheet is being dragged`,
+    `[TUI_SHEET_DRAGGED]: The sheet is being dragged`,
 );

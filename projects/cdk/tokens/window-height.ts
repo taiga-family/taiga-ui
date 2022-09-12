@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
 
 export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(
-    `Window height accounting for disappearing address bar`,
+    `[TUI_WINDOW_HEIGHT]: Window height accounting for disappearing address bar`,
     {
         factory: () => {
             const windowRef = inject(WINDOW);

@@ -12,10 +12,10 @@ import {filter, map, takeUntil} from 'rxjs/operators';
 export const RIPPLE_ON = `tuiRippleOn`;
 export const RIPPLE_OFF = `tuiRippleOff`;
 export const TUI_RIPPLE_START = new InjectionToken<Observable<HTMLElement>>(
-    `Stream of ripple elements to add`,
+    `[TUI_RIPPLE_START]: Stream of ripple elements to add`,
 );
 export const TUI_RIPPLE_END = new InjectionToken<Observable<HTMLElement>>(
-    `Stream of ripple elements to remove`,
+    `[TUI_RIPPLE_END]: Stream of ripple elements to remove`,
 );
 export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     TuiDestroyService,

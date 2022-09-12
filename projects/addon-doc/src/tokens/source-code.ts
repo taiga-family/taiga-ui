@@ -6,7 +6,7 @@ import {TuiDocSourceCodePathOptions} from '../interfaces/source-code-path-option
 export const TUI_DOC_SOURCE_CODE: InjectionToken<
     PolymorpheusContent<TuiDocSourceCodePathOptions>
 > = new InjectionToken<PolymorpheusContent<TuiDocSourceCodePathOptions>>(
-    `Source code link`,
+    `[TUI_DOC_SOURCE_CODE]: Source code link`,
     {
         factory: () => null,
     },

@@ -15,7 +15,7 @@ export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
 };
 
 export const TUI_LOADER_OPTIONS = new InjectionToken<TuiLoaderOptions>(
-    `Default parameters for loader component`,
+    `[TUI_LOADER_OPTIONS]: Default parameters for loader component`,
     {
         factory: () => TUI_LOADER_DEFAULT_OPTIONS,
     },

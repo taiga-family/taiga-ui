@@ -29,7 +29,7 @@ export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
 };
 
 export const TUI_TOGGLE_OPTIONS = new InjectionToken<TuiToggleOptions>(
-    `Default parameters for toggle component`,
+    `[TUI_TOGGLE_OPTIONS]: Default parameters for toggle component`,
     {
         factory: () => TUI_TOGGLE_DEFAULT_OPTIONS,
     },

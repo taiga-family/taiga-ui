@@ -36,7 +36,7 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
 };
 
 export const TUI_CHECKBOX_OPTIONS = new InjectionToken<TuiCheckboxOptions>(
-    `Default parameters for checkbox component`,
+    `[TUI_CHECKBOX_OPTIONS]: Default parameters for checkbox component`,
     {
         factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
     },

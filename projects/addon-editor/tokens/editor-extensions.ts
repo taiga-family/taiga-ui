@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 
 export const TUI_EDITOR_EXTENSIONS = new InjectionToken<
     ReadonlyArray<Promise<Extension | Mark | Node>>
->(`Extensions for editor`);
+>(`[TUI_EDITOR_EXTENSIONS]: Extensions for editor`);
 
 export const LAZY_EDITOR_EXTENSIONS = new InjectionToken<
     Observable<ReadonlyArray<Extension | Mark | Node>>
->(`lazy extensions`);
+>(`[LAZY_EDITOR_EXTENSIONS]: lazy extensions`);

@@ -14,7 +14,7 @@ export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = 
 
 export const TUI_MULTI_SELECT_OPTIONS = new InjectionToken<
     TuiMultiSelectOptions<unknown>
->(`Default parameters for multi select component`, {
+>(`[TUI_MULTI_SELECT_OPTIONS]: Default parameters for multi select component`, {
     factory: () => TUI_MULTI_SELECT_DEFAULT_OPTIONS,
 });
 
