@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/tinkoff/taiga-ui/compare/v3.1.0...v3.2.0) (2022-09-12)
+
+### Features
+
+- **eslint-plugin:** new `injection-token-description`-rule ([#2661](https://github.com/tinkoff/taiga-ui/issues/2661))
+  ([3a30d5b](https://github.com/tinkoff/taiga-ui/commit/3a30d5b61e09f567309de7526fe46d534b77f5c6))
+- **kit:** `InputDateRange` navigate months in sync, cancel unfinished range on esc
+  ([#2647](https://github.com/tinkoff/taiga-ui/issues/2647))
+  ([14f2907](https://github.com/tinkoff/taiga-ui/commit/14f2907ceb775bfaf6b303a2fe2fbe21754fffa5))
+
+### Bug Fixes
+
+- **addon-editor:** using editor-socket inside editor to fix editor styles
+  ([#2631](https://github.com/tinkoff/taiga-ui/issues/2631))
+  ([68b0acb](https://github.com/tinkoff/taiga-ui/commit/68b0acb048eb6a3f3544f5fe077b3ede0c048bd8))
+- **addon-table:** Type string is not assignable to type keyof T
+  ([#2649](https://github.com/tinkoff/taiga-ui/issues/2649))
+  ([bb6d824](https://github.com/tinkoff/taiga-ui/commit/bb6d824c37a986d248e7af1aa1f2c7aa9c13a7b1))
+- **cdk:** `schematics` migration 3.x `Error: Cannot determine project target configuration`
+  ([#2669](https://github.com/tinkoff/taiga-ui/issues/2669))
+  ([eba43c0](https://github.com/tinkoff/taiga-ui/commit/eba43c0ddd716f23eb0ed7cdfd1989c0977aafd7))
+- **core:** support `text-overflow` in `tuiTextfield` ([#2657](https://github.com/tinkoff/taiga-ui/issues/2657))
+  ([9b72134](https://github.com/tinkoff/taiga-ui/commit/9b72134f54d83a501dbd858d6178cf73d8dcd2ff))
+- **demo:** make `Stackblitz` to be compatible with `Taiga UI 3.0`
+  ([#2636](https://github.com/tinkoff/taiga-ui/issues/2636))
+  ([5130208](https://github.com/tinkoff/taiga-ui/commit/51302086222762ce7254b70a6c3744aea6f8e80d))
+
 ## [3.1.0](https://github.com/tinkoff/taiga-ui/compare/v3.0.1...v3.1.0) (2022-09-07)
 
 ### Features
