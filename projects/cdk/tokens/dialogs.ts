@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 export const TUI_DIALOGS = new InjectionToken<
     ReadonlyArray<Observable<readonly TuiAriaDialogContext[]>>
->(`A stream of dialogs`, {
+>(`[TUI_DIALOGS]: A stream of dialogs`, {
     factory: () => [],
 });
 

@@ -12,7 +12,7 @@ export const TUI_SLIDER_DEFAULT_OPTIONS: TuiSliderOptions = {
 };
 
 export const TUI_SLIDER_OPTIONS = new InjectionToken<TuiSliderOptions>(
-    `Default parameters for Slider component`,
+    `[TUI_SLIDER_OPTIONS]: Default parameters for Slider component`,
     {factory: () => TUI_SLIDER_DEFAULT_OPTIONS},
 );
 

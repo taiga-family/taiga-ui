@@ -12,7 +12,7 @@ export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptio
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
     new InjectionToken<TuiPrimitiveTextfieldOptions>(
-        `Default parameters for primitive textfield component`,
+        `[TUI_PRIMITIVE_TEXTFIELD_OPTIONS]: Default parameters for primitive textfield component`,
         {
             factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
         },

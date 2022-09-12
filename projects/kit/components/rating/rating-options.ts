@@ -15,7 +15,7 @@ export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
 };
 
 export const TUI_RATING_OPTIONS = new InjectionToken<TuiRatingOptions>(
-    `Default parameters for rating component`,
+    `[TUI_RATING_OPTIONS]: Default parameters for rating component`,
     {
         factory: () => TUI_RATING_DEFAULT_OPTIONS,
     },

@@ -26,6 +26,6 @@ export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
 ];
 
 export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
-    `[TAIGA_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`,
+    `[TUI_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`,
     {factory: () => TUI_VERSIONS_META},
 );

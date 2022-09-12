@@ -22,7 +22,7 @@ export const TUI_MONEY_DEFAULT_DEFAULT_OPTIONS: TuiMoneyOptions = {
 };
 
 export const TUI_MONEY_OPTIONS = new InjectionToken<TuiMoneyOptions>(
-    `Default parameters for money component`,
+    `[TUI_MONEY_OPTIONS]: Default parameters for money component`,
     {
         factory: () => TUI_MONEY_DEFAULT_DEFAULT_OPTIONS,
     },

@@ -24,7 +24,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
 };
 
 export const TUI_EDITOR_OPTIONS = new InjectionToken<TuiEditorOptions>(
-    `Default Editor colors`,
+    `[TUI_EDITOR_OPTIONS]: Default Editor colors`,
     {
         factory: () => TUI_EDITOR_DEFAULT_OPTIONS,
     },

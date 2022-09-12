@@ -8,14 +8,14 @@ import {takeUntil} from 'rxjs/operators';
 import {TuiEditableImage} from './image-editor.extension';
 
 export const TUI_EDITOR_MIN_IMAGE_WIDTH = new InjectionToken<number>(
-    `Min size of resizable image inside editor`,
+    `[TUI_EDITOR_MIN_IMAGE_WIDTH]: Min size of resizable image inside editor`,
     {
         factory: () => 100,
     },
 );
 
 export const TUI_EDITOR_MAX_IMAGE_WIDTH = new InjectionToken<number>(
-    `Max size of resizable image inside editor`,
+    `[TUI_EDITOR_MAX_IMAGE_WIDTH]: Max size of resizable image inside editor`,
     {
         factory: () => Infinity,
     },

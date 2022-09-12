@@ -19,7 +19,7 @@ export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
 };
 
 export const TUI_BUTTON_OPTIONS = new InjectionToken<TuiButtonOptions>(
-    `Default parameters for button component`,
+    `[TUI_BUTTON_OPTIONS]: Default parameters for button component`,
     {
         factory: () => TUI_BUTTON_DEFAULT_OPTIONS,
     },

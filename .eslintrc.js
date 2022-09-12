@@ -31,7 +31,7 @@ module.exports = {
         sourceType: 'module',
         project: [require.resolve('./tsconfig.eslint.json')],
     },
-    plugins: ['unicorn', 'file-progress'],
+    plugins: ['unicorn', 'file-progress', '@taiga-ui/eslint-plugin'],
     parser: '@typescript-eslint/parser',
     settings: {
         progress: {
@@ -90,5 +90,6 @@ module.exports = {
                 case: 'kebabCase',
             },
         ],
+        '@taiga-ui/injection-token-description': 'error',
     },
 };

@@ -1,0 +1,9 @@
+{
+    "name": "@taiga-ui/eslint-plugin",
+    "version": "3.1.0",
+    "private": true,
+    "main": "index.js",
+    "peerDependencies": {
+        "eslint": "*"
+    }
+}

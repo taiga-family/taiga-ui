@@ -5,7 +5,7 @@ import {merge, Observable} from 'rxjs';
 import {share, switchMapTo, takeUntil} from 'rxjs/operators';
 
 export const TUI_SELECTION_STREAM = new InjectionToken<Observable<unknown>>(
-    `A stream of possible selection changes`,
+    `[TUI_SELECTION_STREAM]: A stream of possible selection changes`,
     {
         factory: () => {
             const documentRef = inject(DOCUMENT);

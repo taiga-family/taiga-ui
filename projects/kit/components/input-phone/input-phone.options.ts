@@ -13,7 +13,7 @@ export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
 };
 
 export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken<TuiInputPhoneOptions>(
-    `Default parameters for input phone component`,
+    `[TUI_INPUT_PHONE_OPTIONS]: Default parameters for input phone component`,
     {
         factory: () => TUI_INPUT_PHONE_DEFAULT_OPTIONS,
     },

@@ -8,7 +8,7 @@ import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
-    `Is closing dialog on browser backward navigation enabled`,
+    `[TUI_DIALOG_CLOSES_ON_BACK]: Is closing dialog on browser backward navigation enabled`,
     {
         factory: () => of(false),
     },

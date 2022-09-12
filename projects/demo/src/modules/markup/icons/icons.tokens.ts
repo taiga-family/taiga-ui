@@ -26,7 +26,9 @@ export const ICONS: DemoTuiIconsTabs = {
 };
 
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
-    new InjectionToken<DemoTuiIconsTabs>(`Icons`, {factory: () => ICONS});
+    new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
+        factory: () => ICONS,
+    });
 
 /**
  * @description:

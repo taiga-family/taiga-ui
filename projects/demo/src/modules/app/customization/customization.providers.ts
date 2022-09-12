@@ -7,7 +7,7 @@ import {CSS_VARS} from '../../tokens/css-vars';
 import {TuiCustomizationComponent} from './customization.component';
 
 export const TUI_DOC_CUSTOMIZATION_VARS = new InjectionToken<Record<string, string>>(
-    `CSS variables map`,
+    `[TUI_DOC_CUSTOMIZATION_VARS]: CSS variables map`,
 );
 export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
     TuiDestroyService,

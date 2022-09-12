@@ -15,7 +15,7 @@ export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
 };
 
 export const TUI_AVATAR_OPTIONS = new InjectionToken<TuiAvatarOptions>(
-    `Default parameters for avatar component`,
+    `[TUI_AVATAR_OPTIONS]: Default parameters for avatar component`,
     {
         factory: () => TUI_AVATAR_DEFAULT_OPTIONS,
     },

@@ -13,7 +13,7 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
 };
 
 export const TUI_TABS_OPTIONS = new InjectionToken<TuiTabsOptions>(
-    `Default parameters for tabs component`,
+    `[TUI_TABS_OPTIONS]: Default parameters for tabs component`,
     {
         factory: () => TUI_TABS_DEFAULT_OPTIONS,
     },

@@ -8,7 +8,9 @@ import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
-export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(`Refresh stream`);
+export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
+    `[TUI_TABS_REFRESH]: Refresh stream`,
+);
 export const TUI_TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
     TuiDestroyService,

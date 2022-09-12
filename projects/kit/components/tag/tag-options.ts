@@ -16,7 +16,7 @@ export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
 };
 
 export const TUI_TAG_OPTIONS = new InjectionToken<TuiTagOptions>(
-    `Default parameters for tag component`,
+    `[TUI_TAG_OPTIONS]: Default parameters for tag component`,
     {
         factory: () => TUI_TAG_DEFAULT_OPTIONS,
     },

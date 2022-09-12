@@ -25,7 +25,7 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 };
 
 export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
-    `Default parameters for sheet component`,
+    `[TUI_SHEET_OPTIONS]: Default parameters for sheet component`,
     {
         factory: () => ({...TUI_SHEET_DEFAULT_OPTIONS}),
     },

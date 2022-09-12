@@ -8,12 +8,14 @@ import {TUI_DOC_PAGES} from '../../tokens/pages';
 import {TUI_DOC_TITLE} from '../../tokens/title';
 import {TuiDocPages} from '../../types/pages';
 
-export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(`Page title`);
+export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(
+    `[NAVIGATION_TITLE]: Page title`,
+);
 export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
-    `Navigation sections labels for search`,
+    `[NAVIGATION_LABELS]: Navigation sections labels for search`,
 );
 export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
-    new InjectionToken<readonly TuiDocPages[]>(`Navigation pages`);
+    new InjectionToken<readonly TuiDocPages[]>(`[NAVIGATION_ITEMS]: Navigation pages`);
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,

@@ -22,7 +22,7 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
 };
 
 export const TUI_INPUT_TIME_OPTIONS = new InjectionToken<TuiInputTimeOptions>(
-    `Default parameters for input time component`,
+    `[TUI_INPUT_TIME_OPTIONS]: Default parameters for input time component`,
     {
         factory: () => TUI_INPUT_TIME_DEFAULT_OPTIONS,
     },

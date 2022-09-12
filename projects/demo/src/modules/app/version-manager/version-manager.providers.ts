@@ -5,7 +5,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
 import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
 
 export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
-    `Meta information about selected version of Taiga docs`,
+    `[TUI_SELECTED_VERSION_META]: Meta information about selected version of Taiga docs`,
 );
 
 export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [

@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 
 export const TUI_CALENDAR_DATE_STREAM = new InjectionToken<
     Observable<TuiDay | TuiDayRange | null>
->(`Stream that emits calendar data change`);
+>(`[TUI_CALENDAR_DATE_STREAM]: Stream that emits calendar data change`);
 
 export function tuiDateStreamWithTransformer(
     transformer: InjectionToken<TuiControlValueTransformer<any>>,
