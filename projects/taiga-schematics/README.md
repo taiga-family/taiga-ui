@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
+[Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 > Schematics for Taiga UI
 
@@ -20,8 +20,3 @@ ng add taiga-ui
 ## Docs
 
 See our [Documentation](https://taiga-ui.dev/getting-started)
-
----
-
-You can also visit CDK wiki to learn more about its tools:
-[CDK Documentation on Github Wiki](https://github.com/tinkoff/taiga-ui/wiki/CDK)
