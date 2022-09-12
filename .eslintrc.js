@@ -92,5 +92,6 @@ module.exports = {
             },
         ],
         '@taiga-ui/injection-token-description': 'error',
+        '@taiga-ui/no-deep-imports': 'error',
     },
 };
