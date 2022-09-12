@@ -28,19 +28,31 @@ export function addStylesToAngularJson(
     stylesToReplace?: {from: string; to: string[]},
     tree?: Tree,
 ): Rule {
+    const MANUAL_MIGRATION_TIPS = `Add styles ${taigaStyles.join(
+        ',',
+    )} to angular.json manually.`;
+
     return updateWorkspace(workspace => {
         const project = getProject(options, workspace);
 
         if (!project) {
             context.logger.warn(
-                `[WARNING]: Target project not found. Add styles ${taigaStyles.join(
-                    ',',
-                )} to angular.json manually.`,
+                `[WARNING]: Target project not found. ${MANUAL_MIGRATION_TIPS}`,
             );
             return;
         }
 
-        const targetOptions = getProjectTargetOptions(project, 'build');
+        let targetOptions;
+
+        try {
+            targetOptions = getProjectTargetOptions(project, 'build');
+        } catch {
+            context.logger.warn(
+                `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
+            );
+            return;
+        }
+
         const styles = targetOptions.styles as JsonArray | undefined;
 
         if (filter && filter(styles)) {
