@@ -27,7 +27,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
         '[value]': `host.value`,
         '(input)': `host.onValueChange($event.target.value)`,
     },
-    styleUrls: [`textfield.style.less`],
+    styleUrls: [`./textfield.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTextfieldComponent {
