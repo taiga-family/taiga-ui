@@ -2,6 +2,8 @@ name: Build
 
 on:
   pull_request:
+  push:
+    branches: [main]
 
 env:
   NX_BRANCH: ${{ github.event.number }}

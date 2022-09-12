@@ -2,9 +2,7 @@ name: Save / next / snapshots
 
 on:
   push:
-    branches:
-      - main
-      - 'v[0-9]+.x'
+    branches: [main, 'v[0-9]+.x']
   workflow_dispatch:
 
 env:
