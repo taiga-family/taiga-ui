@@ -3919,9 +3919,9 @@ var title = __webpack_require__(75785);
 
 
 
-const NAVIGATION_TITLE = new core/* InjectionToken */.OlP(`Page title`);
-const NAVIGATION_LABELS = new core/* InjectionToken */.OlP(`Navigation sections labels for search`);
-const NAVIGATION_ITEMS = new core/* InjectionToken */.OlP(`Navigation pages`);
+const NAVIGATION_TITLE = new core/* InjectionToken */.OlP(`[NAVIGATION_TITLE]: Page title`);
+const NAVIGATION_LABELS = new core/* InjectionToken */.OlP(`[NAVIGATION_LABELS]: Navigation sections labels for search`);
+const NAVIGATION_ITEMS = new core/* InjectionToken */.OlP(`[NAVIGATION_ITEMS]: Navigation pages`);
 const NAVIGATION_PROVIDERS = [cdk.TuiDestroyService, {
   provide: NAVIGATION_TITLE,
   deps: [fesm2015_router/* Router */.F0, fesm2015_router/* ActivatedRoute */.gz, title/* TUI_DOC_TITLE */.Y, cdk.TuiDestroyService],
@@ -4556,7 +4556,7 @@ var see_also = __webpack_require__(20667);
 ;// CONCATENATED MODULE: ./projects/addon-doc/src/components/page/page.providers.ts
 
 
-const PAGE_SEE_ALSO = new core/* InjectionToken */.OlP(`Page see also`);
+const PAGE_SEE_ALSO = new core/* InjectionToken */.OlP(`[PAGE_SEE_ALSO]: Page see also`);
 const PAGE_PROVIDERS = [{
   provide: PAGE_SEE_ALSO,
   deps: [core/* ElementRef */.SBq, see_also/* TUI_DOC_SEE_ALSO */.U],
@@ -5982,7 +5982,7 @@ var raw_load = __webpack_require__(24384);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_CODE_ACTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Code actions for the opened tab with code example`, {
+const TUI_DOC_CODE_ACTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_CODE_ACTIONS]: Code actions for the opened tab with code example`, {
   factory: () => ``
 });
 
@@ -5997,7 +5997,7 @@ const TUI_DOC_CODE_ACTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .I
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_CODE_EDITOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Contains service for opening online IDE e.g. Stackblitz`);
+const TUI_DOC_CODE_EDITOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_CODE_EDITOR]: Contains service for opening online IDE e.g. Stackblitz`);
 
 /***/ }),
 
@@ -6010,7 +6010,7 @@ const TUI_DOC_CODE_EDITOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .In
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_DEFAULT_TABS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Array of default tab names`, {
+const TUI_DOC_DEFAULT_TABS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_DEFAULT_TABS]: Array of default tab names`, {
   factory: () => []
 });
 
@@ -6027,7 +6027,7 @@ const TUI_DOC_DEFAULT_TABS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .I
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54487);
 
 
-const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Processes content in example`, {
+const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_EXAMPLE_CONTENT_PROCESSOR]: Processes content in example`, {
   factory: () => rxjs__WEBPACK_IMPORTED_MODULE_1__/* .identity */ .y
 });
 
@@ -6057,7 +6057,7 @@ const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR = new _angular_core__WEBPACK_IMPORTED_MO
  * [@string tuiMode tooltip content, @string word 'background', @string 'form value']
  */
 
-const TUI_DOC_DEMO_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`tui-doc-demo i18n texts`, {
+const TUI_DOC_DEMO_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_DEMO_TEXTS]: tui-doc-demo i18n texts`, {
   factory: () => [`Read more more about modes: `, `Background`, `Form value`]
 });
 /**
@@ -6071,7 +6071,7 @@ const TUI_DOC_DEMO_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .Inj
  * ]
  */
 
-const TUI_DOC_DOCUMENTATION_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`tui-doc-documentation i18n texts`, {
+const TUI_DOC_DOCUMENTATION_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_DOCUMENTATION_TEXTS]: tui-doc-documentation i18n texts`, {
   factory: () => [`Argument`, `Type`, `Name and description`, `Value`, `Learn about our dynamic templates from `]
 });
 /**
@@ -6083,19 +6083,19 @@ const TUI_DOC_DOCUMENTATION_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0
  * ]
  */
 
-const TUI_DOC_EXAMPLE_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`tui-doc-example i18n texts`, {
+const TUI_DOC_EXAMPLE_TEXTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_EXAMPLE_TEXTS]: tui-doc-example i18n texts`, {
   factory: () => [`Preview`, `Link to a sample was successfully copied`, `Done`]
 });
-const TUI_DOC_MENU_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`menu i18n text`, {
+const TUI_DOC_MENU_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_MENU_TEXT]: menu i18n text`, {
   factory: () => `Menu`
 });
-const TUI_DOC_SEARCH_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`search i18n text`, {
+const TUI_DOC_SEARCH_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_SEARCH_TEXT]: search i18n text`, {
   factory: () => `Search`
 });
-const TUI_DOC_SEE_ALSO_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`tui-doc-see-also i18n text`, {
+const TUI_DOC_SEE_ALSO_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_SEE_ALSO_TEXT]: tui-doc-see-also i18n text`, {
   factory: () => `See also`
 });
-const TUI_DOC_SOURCE_CODE_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`tui-doc-source-code i18n text`, {
+const TUI_DOC_SOURCE_CODE_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_SOURCE_CODE_TEXT]: tui-doc-source-code i18n text`, {
   factory: () => `Source code`
 });
 
@@ -6110,7 +6110,7 @@ const TUI_DOC_SOURCE_CODE_TEXT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_LOGO = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Main logo`, {
+const TUI_DOC_LOGO = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_LOGO]: Main logo`, {
   factory: () => ``
 });
 
@@ -6146,7 +6146,7 @@ const TUI_DOC_PAGE_LOADED = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .In
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_PAGES = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Documentation pages`, {
+const TUI_DOC_PAGES = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_PAGES]: Documentation pages`, {
   factory: () => []
 });
 
@@ -6176,7 +6176,7 @@ const TUI_DOC_SCROLL_BEHAVIOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/*
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_SEE_ALSO = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Array of arrays of related pages`, {
+const TUI_DOC_SEE_ALSO = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_SEE_ALSO]: Array of arrays of related pages`, {
   factory: () => []
 });
 
@@ -6191,7 +6191,7 @@ const TUI_DOC_SEE_ALSO = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .Injec
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_SOURCE_CODE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Source code link`, {
+const TUI_DOC_SOURCE_CODE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_SOURCE_CODE]: Source code link`, {
   factory: () => null
 });
 
@@ -6206,7 +6206,7 @@ const TUI_DOC_SOURCE_CODE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .In
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
-const TUI_DOC_TITLE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Page title`, {
+const TUI_DOC_TITLE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_DOC_TITLE]: Page title`, {
   factory: () => ``
 });
 
@@ -6807,7 +6807,7 @@ function weekCount(year, month) {
 
 
 
-const TUI_VALUE_STREAM = new _angular_core__WEBPACK_IMPORTED_MODULE_3__/* .InjectionToken */ .OlP(`Stream for updating value`);
+const TUI_VALUE_STREAM = new _angular_core__WEBPACK_IMPORTED_MODULE_3__/* .InjectionToken */ .OlP(`[TUI_VALUE_STREAM]: Stream for updating value`);
 const TUI_MOBILE_CALENDAR_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiScrollService, {
   provide: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_4__/* .VIRTUAL_SCROLL_STRATEGY */ .yU,
   deps: [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TUI_IS_IOS, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiScrollService],
@@ -7367,7 +7367,7 @@ TuiPullToRefreshComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_M
 
 const MICRO_OFFSET = Math.pow(10, -6);
 const PULLED_DISTANCE = 50;
-const TUI_PULLING = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`Stream that emits content pulling`);
+const TUI_PULLING = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`[TUI_PULLING]: Stream that emits content pulling`);
 const TUI_PULL_TO_REFRESH_PROVIDERS = [{
   provide: TUI_PULLING,
   deps: [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_1__.TUI_IS_IOS, _taiga_ui_addon_mobile_tokens__WEBPACK_IMPORTED_MODULE_0__/* .TUI_LOADED */ .l, _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .ElementRef */ .SBq],
@@ -8457,7 +8457,7 @@ const TUI_SHEET_DEFAULT_OPTIONS = {
   closeable: true,
   overlay: false
 };
-const TUI_SHEET_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for sheet component`, {
+const TUI_SHEET_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SHEET_OPTIONS]: Default parameters for sheet component`, {
   factory: () => Object.assign({}, TUI_SHEET_DEFAULT_OPTIONS)
 });
 
@@ -8475,8 +8475,8 @@ const TUI_SHEET_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .Inje
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74788);
 
 const TUI_SHEET = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SHEET] Sheet main component`);
-const TUI_SHEET_SCROLL = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Current scrollTop of a sheet`);
-const TUI_SHEET_DRAGGED = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`The sheet is being dragged`);
+const TUI_SHEET_SCROLL = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SHEET_SCROLL]: Current scrollTop of a sheet`);
+const TUI_SHEET_DRAGGED = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SHEET_DRAGGED]: The sheet is being dragged`);
 
 /***/ }),
 
@@ -8994,8 +8994,8 @@ let TuiRippleDirective = /*#__PURE__*/(() => {
 
 const RIPPLE_ON = `tuiRippleOn`;
 const RIPPLE_OFF = `tuiRippleOff`;
-const TUI_RIPPLE_START = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Stream of ripple elements to add`);
-const TUI_RIPPLE_END = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Stream of ripple elements to remove`);
+const TUI_RIPPLE_START = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_RIPPLE_START]: Stream of ripple elements to add`);
+const TUI_RIPPLE_END = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_RIPPLE_END]: Stream of ripple elements to remove`);
 const TUI_RIPPLE_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, {
   provide: TUI_RIPPLE_START,
   deps: [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TUI_TOUCH_SUPPORTED, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TUI_IS_IOS, _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .ElementRef */ .SBq, _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .Renderer2 */ .Qsj],
@@ -10368,7 +10368,7 @@ var empty = __webpack_require__(59193);
 ;// CONCATENATED MODULE: ./projects/addon-mobile/tokens/loaded.ts
 
 
-const TUI_LOADED = new core/* InjectionToken */.OlP(`Stream that emits when loading is over`, {
+const TUI_LOADED = new core/* InjectionToken */.OlP(`[TUI_LOADED]: Stream that emits when loading is over`, {
   factory: () => empty/* EMPTY */.E
 });
 ;// CONCATENATED MODULE: ./projects/addon-mobile/tokens/index.ts
@@ -11425,10 +11425,10 @@ var i18n = __webpack_require__(72773);
 ;// CONCATENATED MODULE: ./projects/addon-preview/tokens/i18n.ts
 
 
-const TUI_PREVIEW_TEXTS = new core/* InjectionToken */.OlP(`tui-preview i18n`, {
+const TUI_PREVIEW_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PREVIEW_TEXTS]: tui-preview i18n`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`previewTexts`)
 });
-const TUI_PREVIEW_ZOOM_TEXTS = new core/* InjectionToken */.OlP(`tui-preview zoom i18n`, {
+const TUI_PREVIEW_ZOOM_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PREVIEW_ZOOM_TEXTS]: tui-preview zoom i18n`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`zoomTexts`)
 });
 ;// CONCATENATED MODULE: ./projects/addon-preview/tokens/index.ts
@@ -12742,7 +12742,7 @@ function TuiDialogHostComponent_ng_container_0_Template(rf, ctx) {
   }
 }
 
-const TUI_DIALOG_CLOSES_ON_BACK = new _angular_core__WEBPACK_IMPORTED_MODULE_4__/* .InjectionToken */ .OlP(`Is closing dialog on browser backward navigation enabled`, {
+const TUI_DIALOG_CLOSES_ON_BACK = new _angular_core__WEBPACK_IMPORTED_MODULE_4__/* .InjectionToken */ .OlP(`[TUI_DIALOG_CLOSES_ON_BACK]: Is closing dialog on browser backward navigation enabled`, {
   factory: () => (0,rxjs__WEBPACK_IMPORTED_MODULE_5__.of)(false)
 });
 const FAKE_HISTORY_STATE = {
@@ -13625,7 +13625,7 @@ let TuiAutoFocusDirective = /*#__PURE__*/(() => {
 
 
 
-const TUI_AUTOFOCUS_HANDLER = new _angular_core__WEBPACK_IMPORTED_MODULE_3__/* .InjectionToken */ .OlP(`Autofocusing handler`);
+const TUI_AUTOFOCUS_HANDLER = new _angular_core__WEBPACK_IMPORTED_MODULE_3__/* .InjectionToken */ .OlP(`[TUI_AUTOFOCUS_HANDLER]: Autofocusing handler`);
 const TUI_AUTOFOCUS_PROVIDERS = [{
   provide: TUI_AUTOFOCUS_HANDLER,
   useFactory: (tuiFocusableComponent, elementRef, animationFrame$, renderer, ngZone, windowRef, isIos) => isIos ? new _handlers_ios_handler__WEBPACK_IMPORTED_MODULE_2__/* .TuiIosAutofocusHandler */ .E(tuiFocusableComponent, elementRef, renderer, ngZone, windowRef) : new _handlers_default_handler__WEBPACK_IMPORTED_MODULE_1__/* .TuiDefaultAutofocusHandler */ .B(tuiFocusableComponent, elementRef, animationFrame$),
@@ -17179,12 +17179,12 @@ const DATE_FILLER_LENGTH = 10;
 const DATE_RANGE_FILLER_LENGTH = 2 * DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length;
 ;// CONCATENATED MODULE: ./projects/cdk/date-time/date-format.ts
 
-const TUI_DATE_FORMAT = new core/* InjectionToken */.OlP(`Active date format for Taiga UI`, {
+const TUI_DATE_FORMAT = new core/* InjectionToken */.OlP(`[TUI_DATE_FORMAT]: Active date format for Taiga UI`, {
   factory: () => `DMY`
 });
 ;// CONCATENATED MODULE: ./projects/cdk/date-time/date-separator.ts
 
-const TUI_DATE_SEPARATOR = new core/* InjectionToken */.OlP(`Date separator for Taiga UI components`, {
+const TUI_DATE_SEPARATOR = new core/* InjectionToken */.OlP(`[TUI_DATE_SEPARATOR]: Date separator for Taiga UI components`, {
   factory: () => `.`
 });
 const changeDateSeparator = (dateString, newDateSeparator) => dateString.replace(/[^0-9A-Za-zА-Яа-я]/gi, newDateSeparator);
@@ -19355,7 +19355,7 @@ var BehaviorSubject = __webpack_require__(26215);
 
 
 
-const TUI_REMOVED_ELEMENT = new core/* InjectionToken */.OlP(`Element currently being removed by AnimationEngine`, {
+const TUI_REMOVED_ELEMENT = new core/* InjectionToken */.OlP(`[TUI_REMOVED_ELEMENT]: Element currently being removed by AnimationEngine`, {
   factory: () => {
     const stub = {
       onRemovalComplete: () => {}
@@ -19383,7 +19383,7 @@ const TUI_REMOVED_ELEMENT = new core/* InjectionToken */.OlP(`Element currently 
 
 
 
-const TUI_ACTIVE_ELEMENT = new core/* InjectionToken */.OlP(`Active element on the document for ActiveZone`, {
+const TUI_ACTIVE_ELEMENT = new core/* InjectionToken */.OlP(`[TUI_ACTIVE_ELEMENT]: Active element on the document for ActiveZone`, {
   factory: () => {
     const removedElement$ = (0,core/* inject */.f3M)(TUI_REMOVED_ELEMENT);
     const windowRef = (0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9);
@@ -19425,7 +19425,7 @@ function shadowRootActiveElement(root) {
 }
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/alerts.ts
 
-const TUI_ALERTS = new core/* InjectionToken */.OlP(`A stream of alerts`, {
+const TUI_ALERTS = new core/* InjectionToken */.OlP(`[TUI_ALERTS]: A stream of alerts`, {
   factory: () => []
 });
 function tuiAsAlerts(useExisting) {
@@ -19438,13 +19438,13 @@ function tuiAsAlerts(useExisting) {
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/default-renderer.ts
  // https://github.com/angular/angular/issues/17824#issuecomment-353239017
 
-const TUI_DEFAULT_RENDERER = new core/* InjectionToken */.OlP(`A Renderer2 for global services`, {
+const TUI_DEFAULT_RENDERER = new core/* InjectionToken */.OlP(`[TUI_DEFAULT_RENDERER]: A Renderer2 for global services`, {
   // @ts-ignore
   factory: () => (0,core/* inject */.f3M)(core/* RendererFactory2 */.FYo).createRenderer(null, null)
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/dialogs.ts
 
-const TUI_DIALOGS = new core/* InjectionToken */.OlP(`A stream of dialogs`, {
+const TUI_DIALOGS = new core/* InjectionToken */.OlP(`[TUI_DIALOGS]: A stream of dialogs`, {
   factory: () => []
 });
 function tuiAsDialog(useExisting) {
@@ -19456,7 +19456,7 @@ function tuiAsDialog(useExisting) {
 }
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/focusable-item-accessor.ts
 
-const TUI_FOCUSABLE_ITEM_ACCESSOR = new core/* InjectionToken */.OlP(`A component that can be focused`);
+const TUI_FOCUSABLE_ITEM_ACCESSOR = new core/* InjectionToken */.OlP(`[TUI_FOCUSABLE_ITEM_ACCESSOR]: A component that can be focused`);
 function tuiAsFocusableItemAccessor(useExisting) {
   return {
     provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -19467,7 +19467,7 @@ function tuiAsFocusableItemAccessor(useExisting) {
 
 
 
-const TUI_IS_IOS = new core/* InjectionToken */.OlP(`iOS browser detection`, {
+const TUI_IS_IOS = new core/* InjectionToken */.OlP(`[TUI_IS_IOS]: iOS browser detection`, {
   factory: () => (0,utils/* tuiIsIos */.i1)((0,core/* inject */.f3M)(ng_web_apis_common/* NAVIGATOR */.s5))
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-mobile.ts
@@ -19476,27 +19476,27 @@ const TUI_IS_IOS = new core/* InjectionToken */.OlP(`iOS browser detection`, {
 
 const firstRegex = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/;
 const secondRegex = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw-(n|u)|c55\/|capi|ccwa|cdm-|cell|chtm|cldc|cmd-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc-s|devi|dica|dmob|do(c|p)o|ds(12|-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(-|_)|g1 u|g560|gene|gf-5|g-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd-(m|p|t)|hei-|hi(pt|ta)|hp( i|ip)|hs-c|ht(c(-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i-(20|go|ma)|i230|iac( |-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|-[a-w])|libw|lynx|m1-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|-([1-8]|c))|phil|pire|pl(ay|uc)|pn-2|po(ck|rt|se)|prox|psio|pt-g|qa-a|qc(07|12|21|32|60|-[2-7]|i-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h-|oo|p-)|sdk\/|se(c(-|0|1)|47|mc|nd|ri)|sgh-|shar|sie(-|m)|sk-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h-|v-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl-|tdg-|tel(i|m)|tim-|t-mo|to(pl|sh)|ts(70|m-|m3|m5)|tx-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas-|your|zeto|zte-/;
-const TUI_IS_MOBILE = new core/* InjectionToken */.OlP(`Mobile browser detection`, {
+const TUI_IS_MOBILE = new core/* InjectionToken */.OlP(`[TUI_IS_MOBILE]: Mobile browser detection`, {
   factory: () => firstRegex.test((0,core/* inject */.f3M)(ng_web_apis_common/* USER_AGENT */.yZ).toLowerCase()) || secondRegex.test((0,core/* inject */.f3M)(ng_web_apis_common/* USER_AGENT */.yZ).slice(0, 4).toLowerCase())
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-android.ts
 
 
 
-const TUI_IS_ANDROID = new core/* InjectionToken */.OlP(`Mobile browser that is not iOS (technically includes Windows Phone, Blackberry etc.)`, {
+const TUI_IS_ANDROID = new core/* InjectionToken */.OlP(`[TUI_IS_ANDROID]: Mobile browser that is not iOS (technically includes Windows Phone, Blackberry etc.)`, {
   factory: () => (0,core/* inject */.f3M)(TUI_IS_MOBILE) && !(0,core/* inject */.f3M)(TUI_IS_IOS)
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-apple.ts
 
 
 
-const TUI_IS_APPLE = new core/* InjectionToken */.OlP(`Apple(safari/webkit) detection`, {
+const TUI_IS_APPLE = new core/* InjectionToken */.OlP(`[TUI_IS_APPLE]: Apple(safari/webkit) detection`, {
   factory: () => (0,utils/* tuiIsApple */.lx)((0,core/* inject */.f3M)(ng_web_apis_common/* NAVIGATOR */.s5))
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-chromium.ts
 
 
-const TUI_IS_CHROMIUM = new core/* InjectionToken */.OlP(`Chromium browser engine detection`, {
+const TUI_IS_CHROMIUM = new core/* InjectionToken */.OlP(`[TUI_IS_CHROMIUM]: Chromium browser engine detection`, {
   factory: () => !!(0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9).chrome
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-cypress.ts
@@ -19506,13 +19506,13 @@ const TUI_IS_CHROMIUM = new core/* InjectionToken */.OlP(`Chromium browser engin
  * {@link https://docs.cypress.io/faq/questions/using-cypress-faq#Is-there-any-way-to-detect-if-my-app-is-running-under-Cypress Cypress docs}
  */
 
-const TUI_IS_CYPRESS = new core/* InjectionToken */.OlP(`Detect if app is running under Cypress`, {
+const TUI_IS_CYPRESS = new core/* InjectionToken */.OlP(`[TUI_IS_CYPRESS]: Detect if app is running under Cypress`, {
   factory: () => !!(0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9).Cypress
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-firefox.ts
 
 
-const TUI_IS_FIREFOX = new core/* InjectionToken */.OlP(`Firefox browser engine detection`, {
+const TUI_IS_FIREFOX = new core/* InjectionToken */.OlP(`[TUI_IS_FIREFOX]: Firefox browser engine detection`, {
   factory: () => {
     var _a;
 
@@ -19522,7 +19522,7 @@ const TUI_IS_FIREFOX = new core/* InjectionToken */.OlP(`Firefox browser engine 
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/is-webkit.ts
 
 
-const TUI_IS_WEBKIT = new core/* InjectionToken */.OlP(`Webkit browser engine detection`, {
+const TUI_IS_WEBKIT = new core/* InjectionToken */.OlP(`[TUI_IS_WEBKIT]: Webkit browser engine detection`, {
   factory: () => {
     var _a;
 
@@ -19537,7 +19537,7 @@ const TUI_RANGE = new core/* InjectionToken */.OlP(`[TUI_RANGE] SSR safe default
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/swipe-options.ts
 
-const TUI_SWIPE_OPTIONS = new core/* InjectionToken */.OlP(`Swipe options`, {
+const TUI_SWIPE_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_SWIPE_OPTIONS]: Swipe options`, {
   factory: () => ({
     timeout: 500,
     threshold: 30
@@ -19552,13 +19552,13 @@ const TUI_SWIPE_OPTIONS = new core/* InjectionToken */.OlP(`Swipe options`, {
  * modified by a script or dispatched via EventTarget.dispatchEvent().
  */
 
-const TUI_TAKE_ONLY_TRUSTED_EVENTS = new core/* InjectionToken */.OlP(`This token need for override behavior the \`pressedObservable\` function`, {
+const TUI_TAKE_ONLY_TRUSTED_EVENTS = new core/* InjectionToken */.OlP(`[TUI_TAKE_ONLY_TRUSTED_EVENTS]: This token need for override behavior the \`pressedObservable\` function`, {
   factory: () => true
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/touch-supported.ts
 
 
-const TUI_TOUCH_SUPPORTED = new core/* InjectionToken */.OlP(`Touch support detection`, {
+const TUI_TOUCH_SUPPORTED = new core/* InjectionToken */.OlP(`[TUI_TOUCH_SUPPORTED]: Touch support detection`, {
   factory: () => (0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9).matchMedia(`(any-pointer: coarse)`).matches
 });
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/operators/shareReplay.js
@@ -19568,7 +19568,7 @@ var shareReplay = __webpack_require__(47349);
 
 
 
-const TUI_WINDOW_HEIGHT = new core/* InjectionToken */.OlP(`Window height accounting for disappearing address bar`, {
+const TUI_WINDOW_HEIGHT = new core/* InjectionToken */.OlP(`[TUI_WINDOW_HEIGHT]: Window height accounting for disappearing address bar`, {
   factory: () => {
     const windowRef = (0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9);
     return (0,observables/* tuiTypedFromEvent */.mL)(windowRef, `resize`).pipe((0,startWith/* startWith */.O)(null), (0,map/* map */.U)(() => windowRef.innerHeight), (0,shareReplay/* shareReplay */.d)({
@@ -19579,7 +19579,7 @@ const TUI_WINDOW_HEIGHT = new core/* InjectionToken */.OlP(`Window height accoun
 });
 ;// CONCATENATED MODULE: ./projects/cdk/tokens/zoom-options.ts
 
-const TUI_ZOOM_OPTIONS = new core/* InjectionToken */.OlP(`Zoom options`, {
+const TUI_ZOOM_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_ZOOM_OPTIONS]: Zoom options`, {
   factory: () => ({
     wheelSensitivity: 0.01
   })
@@ -21179,7 +21179,7 @@ const TUI_BUTTON_DEFAULT_OPTIONS = {
   /* Primary */
 
 };
-const TUI_BUTTON_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for button component`, {
+const TUI_BUTTON_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_BUTTON_OPTIONS]: Default parameters for button component`, {
   factory: () => TUI_BUTTON_DEFAULT_OPTIONS
 });
 const tuiButtonOptionsProvider = options => ({
@@ -22405,11 +22405,11 @@ let TuiDialogDirective = /*#__PURE__*/(() => {
 
 
 
-const TUI_DIALOGS_CLOSE = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`A stream to close dialogs`, {
+const TUI_DIALOGS_CLOSE = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`[TUI_DIALOGS_CLOSE]: A stream to close dialogs`, {
   factory: () => rxjs__WEBPACK_IMPORTED_MODULE_3__/* .EMPTY */ .E
 });
 const SCROLLBAR_PLACEHOLDER = 17;
-const TUI_DIALOG_CLOSE_STREAM = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`Dialogs closing stream`);
+const TUI_DIALOG_CLOSE_STREAM = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`[TUI_DIALOG_CLOSE_STREAM]: Dialogs closing stream`);
 const TUI_DIALOG_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, {
   provide: TUI_DIALOG_CLOSE_STREAM,
   deps: [_angular_common__WEBPACK_IMPORTED_MODULE_4__/* .DOCUMENT */ .K0, _ng_web_apis_common__WEBPACK_IMPORTED_MODULE_5__/* .WINDOW */ .m9, _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .ElementRef */ .SBq, TUI_DIALOGS_CLOSE, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_6__/* .POLYMORPHEUS_CONTEXT */ .yf],
@@ -23762,7 +23762,7 @@ const TUI_LOADER_DEFAULT_OPTIONS = {
   inheritColor: false,
   overlay: false
 };
-const TUI_LOADER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for loader component`, {
+const TUI_LOADER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_LOADER_OPTIONS]: Default parameters for loader component`, {
   factory: () => TUI_LOADER_DEFAULT_OPTIONS
 });
 const tuiLoaderOptionsProvider = options => ({
@@ -24505,7 +24505,7 @@ const TUI_CHECKBOX_DEFAULT_OPTIONS = {
 
   }
 };
-const TUI_CHECKBOX_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for checkbox component`, {
+const TUI_CHECKBOX_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_CHECKBOX_OPTIONS]: Default parameters for checkbox component`, {
   factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS
 });
 const tuiCheckboxOptionsProvider = options => ({
@@ -24874,7 +24874,7 @@ TuiPrimitiveSpinButtonComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPO
 const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS = {
   iconCleaner: `tuiIconCloseLarge`
 };
-const TUI_PRIMITIVE_TEXTFIELD_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for primitive textfield component`, {
+const TUI_PRIMITIVE_TEXTFIELD_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_PRIMITIVE_TEXTFIELD_OPTIONS]: Default parameters for primitive textfield component`, {
   factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS
 });
 const tuiPrimitiveTextfieldOptionsProvider = options => ({
@@ -25422,7 +25422,7 @@ TuiPrimitiveTextfieldComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPOR
   },
   directives: [_angular_common__WEBPACK_IMPORTED_MODULE_17__/* .NgIf */ .O5, _directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_7__/* .TuiWrapperDirective */ .o, _cdk_directives_autofilled_autofilled_directive__WEBPACK_IMPORTED_MODULE_8__/* .TuiAutofilledDirective */ .G, _directives_mask_accessor_mask_accessor_directive__WEBPACK_IMPORTED_MODULE_9__/* .TuiMaskAccessorDirective */ .j, _angular_forms__WEBPACK_IMPORTED_MODULE_18__/* .DefaultValueAccessor */ .Fj, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_19__/* .TuiFocusableDirective */ .t, _angular_forms__WEBPACK_IMPORTED_MODULE_18__/* .NgControlStatus */ .JJ, _angular_forms__WEBPACK_IMPORTED_MODULE_18__/* .NgModel */ .On, _value_decoration_value_decoration_component__WEBPACK_IMPORTED_MODULE_10__/* .TuiValueDecorationComponent */ .Z, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_16__/* .PolymorpheusOutletDirective */ .Li, _svg_svg_component__WEBPACK_IMPORTED_MODULE_11__/* .TuiSvgComponent */ .P, _tooltip_tooltip_component__WEBPACK_IMPORTED_MODULE_12__/* .TuiTooltipComponent */ .w],
   pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_17__/* .AsyncPipe */ .Ov],
-  styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);position:relative;display:block;border-radius:var(--tui-radius-m);text-align:left}[data-size=s][_nghost-%COMP%]{height:var(--tui-height-s);min-height:var(--tui-height-s);max-height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-m);min-height:var(--tui-height-m);max-height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-l);min-height:var(--tui-height-l);max-height:var(--tui-height-l);font:var(--tui-font-text-m);line-height:1.25rem}.t-input[_ngcontent-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], .t-input   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input.t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}.t-content[_ngcontent-%COMP%]{display:flex;height:100%;width:100%;padding:0 var(--tui-padding-m);box-sizing:border-box;align-items:center;overflow:hidden}[data-size=s][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-l)}.t-content[_ngcontent-%COMP%]:after{content:\"\";margin-right:-.25rem}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]:after{display:none}.t-wrapper[_ngcontent-%COMP%]{flex:1;min-width:0;padding-right:.25rem;-webkit-padding-end:.25rem;padding-inline-end:.25rem;-webkit-padding-start:0;padding-inline-start:0}.t-placeholder[_ngcontent-%COMP%]{transition-property:transform,font-size,color,letter-spacing;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;font:var(--tui-font-text-s);color:var(--tui-text-01);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:var(--tui-text-02);pointer-events:none;will-change:transform;transform:translateY(0)}.t-placeholder_raised[_ngcontent-%COMP%]{transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font:var(--tui-font-text-xs);transform:translateY(-.5rem);letter-spacing:.025rem}._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], ._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill)}[data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], [data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill-night)}._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.9375rem}[data-size=l][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font-size:.8156rem}[data-size=m]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01)}[data-mode=onDark][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}[data-size=m][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onDark]._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}@supports (-webkit-hyphens: none){.t-placeholder[_ngcontent-%COMP%]{will-change:unset;transition-property:transform,color,letter-spacing}}.t-cleaner[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);position:relative;box-sizing:border-box;cursor:pointer;transition-property:color,transform}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}.t-icon[_ngcontent-%COMP%]{display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon_left[_ngcontent-%COMP%]{margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}[data-size=s][_nghost-%COMP%]   .t-icon_left[_ngcontent-%COMP%]{margin-right:.25rem;-webkit-margin-end:.25rem;margin-inline-end:.25rem}._autofilled[_nghost-%COMP%]   .t-value-decoration[_ngcontent-%COMP%]:not(.t-has-value){visibility:hidden}._autofilled[data-size=s][_nghost-%COMP%]:not(._focused)   .t-placeholder[_ngcontent-%COMP%], ._autofilled[data-size=m][_nghost-%COMP%]:not(._focused)   .t-placeholder[_ngcontent-%COMP%]{visibility:hidden}.t-custom-content[_ngcontent-%COMP%]{position:relative;display:flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;margin-right:.25rem;pointer-events:none}.t-custom-icon[_ngcontent-%COMP%]{width:2rem;height:100%}.t-icon[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);box-sizing:border-box;cursor:pointer;transition-property:color,transform;position:relative;pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}[_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-02)}[data-mode=onDark][_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onLight][_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-01)}input[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}input[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03-night)}tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder{opacity:1}tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder{opacity:1}.t-input[_ngcontent-%COMP%]:not(:first-child){display:none}[data-size][_nghost-%COMP%]   .t-input_template[_ngcontent-%COMP%]{display:flex;width:calc(100% - 1rem);max-width:calc(100% - 1rem);align-items:center;pointer-events:none;-webkit-padding-end:0;padding-inline-end:0}.t-input[_ngcontent-%COMP%]::-webkit-caps-lock-indicator{margin-right:.375rem;align-self:center}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-caps-lock-indicator{margin-top:-1.25rem}.t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button, .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button, .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button{background-color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button, [data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button, [data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button{margin-top:-1.25rem}.t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button:hover, .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button:hover, .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button:hover{background-color:var(--tui-text-02)}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:first-line{font-size:inherit;line-height:inherit}.t-text-template[_ngcontent-%COMP%]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.t-wrapper-value-decoration[_ngcontent-%COMP%]{position:relative;pointer-events:none}"],
+  styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);position:relative;display:block;border-radius:var(--tui-radius-m);text-align:left}[data-size=s][_nghost-%COMP%]{height:var(--tui-height-s);min-height:var(--tui-height-s);max-height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-m);min-height:var(--tui-height-m);max-height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-l);min-height:var(--tui-height-l);max-height:var(--tui-height-l);font:var(--tui-font-text-m);line-height:1.25rem}.t-input[_ngcontent-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none;text-overflow:ellipsis}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], .t-input   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input.t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}.t-content[_ngcontent-%COMP%]{display:flex;height:100%;width:100%;padding:0 var(--tui-padding-m);box-sizing:border-box;align-items:center;overflow:hidden}[data-size=s][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-l)}.t-content[_ngcontent-%COMP%]:after{content:\"\";margin-right:-.25rem}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]:after{display:none}.t-wrapper[_ngcontent-%COMP%]{flex:1;min-width:0;padding-right:.25rem;-webkit-padding-end:.25rem;padding-inline-end:.25rem;-webkit-padding-start:0;padding-inline-start:0}.t-placeholder[_ngcontent-%COMP%]{transition-property:transform,font-size,color,letter-spacing;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;font:var(--tui-font-text-s);color:var(--tui-text-01);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:var(--tui-text-02);pointer-events:none;will-change:transform;transform:translateY(0)}.t-placeholder_raised[_ngcontent-%COMP%]{transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font:var(--tui-font-text-xs);transform:translateY(-.5rem);letter-spacing:.025rem}._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], ._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill)}[data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], [data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill-night)}._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.9375rem}[data-size=l][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font-size:.8156rem}[data-size=m]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01)}[data-mode=onDark][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}[data-size=m][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onDark]._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}@supports (-webkit-hyphens: none){.t-placeholder[_ngcontent-%COMP%]{will-change:unset;transition-property:transform,color,letter-spacing}}.t-cleaner[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);position:relative;box-sizing:border-box;cursor:pointer;transition-property:color,transform}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}.t-icon[_ngcontent-%COMP%]{display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon_left[_ngcontent-%COMP%]{margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}[data-size=s][_nghost-%COMP%]   .t-icon_left[_ngcontent-%COMP%]{margin-right:.25rem;-webkit-margin-end:.25rem;margin-inline-end:.25rem}._autofilled[_nghost-%COMP%]   .t-value-decoration[_ngcontent-%COMP%]:not(.t-has-value){visibility:hidden}._autofilled[data-size=s][_nghost-%COMP%]:not(._focused)   .t-placeholder[_ngcontent-%COMP%], ._autofilled[data-size=m][_nghost-%COMP%]:not(._focused)   .t-placeholder[_ngcontent-%COMP%]{visibility:hidden}.t-custom-content[_ngcontent-%COMP%]{position:relative;display:flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;margin-right:.25rem;pointer-events:none}.t-custom-icon[_ngcontent-%COMP%]{width:2rem;height:100%}.t-icon[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);box-sizing:border-box;cursor:pointer;transition-property:color,transform;position:relative;pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}[_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-02)}[data-mode=onDark][_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onLight][_nghost-%COMP%]:hover:not(._readonly)   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-01)}input[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}input[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03-night)}tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::-ms-input-placeholder{opacity:1}tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)[_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]   input[_ngcontent-%COMP%]::placeholder{opacity:1}.t-input[_ngcontent-%COMP%]:not(:first-child){display:none}[data-size][_nghost-%COMP%]   .t-input_template[_ngcontent-%COMP%]{display:flex;width:calc(100% - 1rem);max-width:calc(100% - 1rem);align-items:center;pointer-events:none;-webkit-padding-end:0;padding-inline-end:0}.t-input[_ngcontent-%COMP%]::-webkit-caps-lock-indicator{margin-right:.375rem;align-self:center}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-caps-lock-indicator{margin-top:-1.25rem}.t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button, .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button, .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button{background-color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button, [data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button, [data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button{margin-top:-1.25rem}.t-input[_ngcontent-%COMP%]::-webkit-credentials-auto-fill-button:hover, .t-input[_ngcontent-%COMP%]::-webkit-contacts-auto-fill-button:hover, .t-input[_ngcontent-%COMP%]::-webkit-credit-card-auto-fill-button:hover{background-color:var(--tui-text-02)}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:first-line{font-size:inherit;line-height:inherit}.t-text-template[_ngcontent-%COMP%]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.t-wrapper-value-decoration[_ngcontent-%COMP%]{position:relative;pointer-events:none}"],
   changeDetection: 0
 });
 
@@ -25561,7 +25561,7 @@ let TuiTextfieldComponent = /*#__PURE__*/(() => {
     decls: 0,
     vars: 0,
     template: function TuiTextfieldComponent_Template(rf, ctx) {},
-    styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none}[_nghost-%COMP%]:-webkit-autofill, [_nghost-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill:focus, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), [_nghost-%COMP%]   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), [_nghost-%COMP%]   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], [_nghost-%COMP%]   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   [_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   [_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}[_nghost-%COMP%]::-webkit-caps-lock-indicator{margin-right:.375rem;align-self:center}tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-caps-lock-indicator{margin-top:-1.25rem}[_nghost-%COMP%]::-webkit-credentials-auto-fill-button, [_nghost-%COMP%]::-webkit-contacts-auto-fill-button, [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button{background-color:var(--tui-text-03)}tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-credentials-auto-fill-button, tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-contacts-auto-fill-button, tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button{margin-top:-1.25rem}[_nghost-%COMP%]::-webkit-credentials-auto-fill-button:hover, [_nghost-%COMP%]::-webkit-contacts-auto-fill-button:hover, [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button:hover{background-color:var(--tui-text-02)}[_nghost-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}[_nghost-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}[_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]::-ms-input-placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]::-ms-input-placeholder, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}[_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]::placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]::placeholder, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]::placeholder{color:var(--tui-text-03-night)}[_nghost-%COMP%]   tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]::-ms-input-placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]::-ms-input-placeholder, [_nghost-%COMP%]   tui-text-area._focused:not(._readonly)[_nghost-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]::-ms-input-placeholder{opacity:1}[_nghost-%COMP%]   tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]::placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]::placeholder, [_nghost-%COMP%]   tui-text-area._focused:not(._readonly)[_nghost-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]::placeholder{opacity:1}textarea[_nghost-%COMP%]{white-space:normal}textarea[_nghost-%COMP%]   tui-text-area._ios[_nghost-%COMP%], tui-text-area._ios   [_nghost-%COMP%]{padding-left:.8125rem}"],
+    styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none;text-overflow:ellipsis}[_nghost-%COMP%]:-webkit-autofill, [_nghost-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   [_ngcontent-%COMP%]:-webkit-autofill:focus, [_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), [_nghost-%COMP%]   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), [_nghost-%COMP%]   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], [_nghost-%COMP%]   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   [_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   -shadowcsshost, [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   [_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input[_ngcontent-%COMP%], [_nghost-%COMP%]   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}[_nghost-%COMP%]::-webkit-caps-lock-indicator{margin-right:.375rem;align-self:center}tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-caps-lock-indicator{margin-top:-1.25rem}[_nghost-%COMP%]::-webkit-credentials-auto-fill-button, [_nghost-%COMP%]::-webkit-contacts-auto-fill-button, [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button{background-color:var(--tui-text-03)}tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-credentials-auto-fill-button, tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-contacts-auto-fill-button, tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button{margin-top:-1.25rem}[_nghost-%COMP%]::-webkit-credentials-auto-fill-button:hover, [_nghost-%COMP%]::-webkit-contacts-auto-fill-button:hover, [_nghost-%COMP%]::-webkit-credit-card-auto-fill-button:hover{background-color:var(--tui-text-02)}[_nghost-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}[_nghost-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}[_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]::-ms-input-placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]::-ms-input-placeholder, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]::-ms-input-placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}[_nghost-%COMP%]   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]::placeholder, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]::placeholder, [_nghost-%COMP%]   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]::placeholder, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]::placeholder{color:var(--tui-text-03-night)}[_nghost-%COMP%]   tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]::-ms-input-placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]::-ms-input-placeholder, [_nghost-%COMP%]   tui-text-area._focused:not(._readonly)[_nghost-%COMP%]::-ms-input-placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]::-ms-input-placeholder{opacity:1}[_nghost-%COMP%]   tui-primitive-textfield._focused:not(._readonly)[_nghost-%COMP%]::placeholder, tui-primitive-textfield._focused:not(._readonly)   [_nghost-%COMP%]::placeholder, [_nghost-%COMP%]   tui-text-area._focused:not(._readonly)[_nghost-%COMP%]::placeholder, tui-text-area._focused:not(._readonly)   [_nghost-%COMP%]::placeholder{opacity:1}[_nghost-%COMP%]::-ms-input-placeholder{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}[_nghost-%COMP%]::placeholder, [_nghost-%COMP%]:placeholder-shown{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}textarea[_nghost-%COMP%]{white-space:normal}textarea[_nghost-%COMP%]   tui-text-area._ios[_nghost-%COMP%], tui-text-area._ios   [_nghost-%COMP%]{padding-left:.8125rem}"],
     changeDetection: 0
   });
   return TuiTextfieldComponent;
@@ -29889,7 +29889,7 @@ var takeUntil = __webpack_require__(46782);
 
 
 
-const TUI_TEXTFIELD_WATCHED_CONTROLLER = new core/* InjectionToken */.OlP(`watched textfield controller`);
+const TUI_TEXTFIELD_WATCHED_CONTROLLER = new core/* InjectionToken */.OlP(`[TUI_TEXTFIELD_WATCHED_CONTROLLER]: watched textfield controller`);
 const TEXTFIELD_CONTROLLER_PROVIDER = [cdk.TuiDestroyService, {
   provide: TUI_TEXTFIELD_WATCHED_CONTROLLER,
   deps: [core/* ChangeDetectorRef */.sBO, cdk.TuiDestroyService, textfield_cleaner_directive/* TUI_TEXTFIELD_CLEANER */.Y, textfield_custom_content_directive/* TUI_TEXTFIELD_CUSTOM_CONTENT */.U, textfield_icon_directive/* TUI_TEXTFIELD_ICON */.ZK, textfield_icon_left_directive/* TUI_TEXTFIELD_ICON_LEFT */.Gf, textfield_label_outside_directive/* TUI_TEXTFIELD_LABEL_OUTSIDE */.r, textfield_size_directive/* TUI_TEXTFIELD_SIZE */.k],
@@ -29927,7 +29927,7 @@ const TEXTFIELD_CONTROLLER_PROVIDER = [cdk.TuiDestroyService, {
 
 
 
-const TUI_TEXTFIELD_CLEANER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldCleaner`, {
+const TUI_TEXTFIELD_CLEANER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_CLEANER]: tuiTextfieldCleaner`, {
   factory: () => new TuiTextfieldCleanerDirective()
 });
 let TuiTextfieldCleanerDirective = /*#__PURE__*/(() => {
@@ -29975,7 +29975,7 @@ let TuiTextfieldCleanerDirective = /*#__PURE__*/(() => {
 
 
 
-const TUI_TEXTFIELD_CUSTOM_CONTENT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldCustomContent`, {
+const TUI_TEXTFIELD_CUSTOM_CONTENT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_CUSTOM_CONTENT]: tuiTextfieldCustomContent`, {
   factory: () => new TuiTextfieldCustomContentDirective()
 });
 let TuiTextfieldCustomContentDirective = /*#__PURE__*/(() => {
@@ -30024,7 +30024,7 @@ let TuiTextfieldCustomContentDirective = /*#__PURE__*/(() => {
 
 
 
-const TUI_TEXTFIELD_ICON_LEFT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldIconLeft`, {
+const TUI_TEXTFIELD_ICON_LEFT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_ICON_LEFT]: tuiTextfieldIconLeft`, {
   factory: tuiIconLeftDirectiveFactory
 });
 let TuiTextfieldIconLeftDirective = /*#__PURE__*/(() => {
@@ -30076,7 +30076,7 @@ function tuiIconLeftDirectiveFactory() {
 
 
 
-const TUI_TEXTFIELD_ICON = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldIcon`, {
+const TUI_TEXTFIELD_ICON = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_ICON]: tuiTextfieldIcon`, {
   factory: tuiIconDirectiveFactory
 });
 let TuiTextfieldIconDirective = /*#__PURE__*/(() => {
@@ -30127,7 +30127,7 @@ function tuiIconDirectiveFactory() {
 
 
 
-const TUI_TEXTFIELD_LABEL_OUTSIDE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldLabelOutside`, {
+const TUI_TEXTFIELD_LABEL_OUTSIDE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_LABEL_OUTSIDE]: tuiTextfieldLabelOutside`, {
   factory: () => new TuiTextfieldLabelOutsideDirective()
 });
 let TuiTextfieldLabelOutsideDirective = /*#__PURE__*/(() => {
@@ -30175,7 +30175,7 @@ let TuiTextfieldLabelOutsideDirective = /*#__PURE__*/(() => {
 
 
 
-const TUI_TEXTFIELD_SIZE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`tuiTextfieldSize`, {
+const TUI_TEXTFIELD_SIZE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TEXTFIELD_SIZE]: tuiTextfieldSize`, {
   factory: () => new TuiTextfieldSizeDirective()
 });
 let TuiTextfieldSizeDirective = /*#__PURE__*/(() => {
@@ -33198,13 +33198,13 @@ __webpack_require__.d(__webpack_exports__, {
 var core = __webpack_require__(74788);
 ;// CONCATENATED MODULE: ./projects/core/tokens/animations-duration.ts
 
-const TUI_ANIMATIONS_DURATION = new core/* InjectionToken */.OlP(`Duration of all Taiga UI animations in ms`, {
+const TUI_ANIMATIONS_DURATION = new core/* InjectionToken */.OlP(`[TUI_ANIMATIONS_DURATION]: Duration of all Taiga UI animations in ms`, {
   factory: () => 300
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/animation-options.ts
 
 
-const TUI_ANIMATION_OPTIONS = new core/* InjectionToken */.OlP(`Options for Taiga UI animations`, {
+const TUI_ANIMATION_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_ANIMATION_OPTIONS]: Options for Taiga UI animations`, {
   factory: () => ({
     params: {
       duration: (0,core/* inject */.f3M)(TUI_ANIMATIONS_DURATION)
@@ -33213,12 +33213,12 @@ const TUI_ANIMATION_OPTIONS = new core/* InjectionToken */.OlP(`Options for Taig
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/assert-enabled.ts
 
-const TUI_ASSERT_ENABLED = new core/* InjectionToken */.OlP(`Flag to enable assertions across Taiga UI`, {
+const TUI_ASSERT_ENABLED = new core/* InjectionToken */.OlP(`[TUI_ASSERT_ENABLED]: Flag to enable assertions across Taiga UI`, {
   factory: () => (0,core/* isDevMode */.X6Q)()
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/data-list-accessor.ts
 
-const TUI_DATA_LIST_ACCESSOR = new core/* InjectionToken */.OlP(`Accessor for options`);
+const TUI_DATA_LIST_ACCESSOR = new core/* InjectionToken */.OlP(`[TUI_DATA_LIST_ACCESSOR]: Accessor for options`);
 function tuiAsDataListAccessor(useExisting) {
   return {
     provide: TUI_DATA_LIST_ACCESSOR,
@@ -33227,7 +33227,7 @@ function tuiAsDataListAccessor(useExisting) {
 }
 ;// CONCATENATED MODULE: ./projects/core/tokens/data-list-host.ts
 
-const TUI_DATA_LIST_HOST = new core/* InjectionToken */.OlP(`DataList controller`);
+const TUI_DATA_LIST_HOST = new core/* InjectionToken */.OlP(`[TUI_DATA_LIST_HOST]: DataList controller`);
 function tuiAsDataListHost(useExisting) {
   return {
     provide: TUI_DATA_LIST_HOST,
@@ -33236,13 +33236,13 @@ function tuiAsDataListHost(useExisting) {
 }
 ;// CONCATENATED MODULE: ./projects/core/tokens/document-or-shadow-root.ts
 
-const TUI_DOCUMENT_OR_SHADOW_ROOT = new core/* InjectionToken */.OlP(`Document or ShadowRoot`);
+const TUI_DOCUMENT_OR_SHADOW_ROOT = new core/* InjectionToken */.OlP(`[TUI_DOCUMENT_OR_SHADOW_ROOT]: Document or ShadowRoot`);
 ;// CONCATENATED MODULE: ./projects/core/tokens/element-ref.ts
 
-const TUI_ELEMENT_REF = new core/* InjectionToken */.OlP(`ElementRef when you cannot use @Input for single time injection`);
+const TUI_ELEMENT_REF = new core/* InjectionToken */.OlP(`[TUI_ELEMENT_REF]: ElementRef when you cannot use @Input for single time injection`);
 ;// CONCATENATED MODULE: ./projects/core/tokens/first-day-of-week.ts
 
-const TUI_FIRST_DAY_OF_WEEK = new core/* InjectionToken */.OlP(`The first day of the week index`, {
+const TUI_FIRST_DAY_OF_WEEK = new core/* InjectionToken */.OlP(`[TUI_FIRST_DAY_OF_WEEK]: The first day of the week index`, {
   factory: () => 1
   /* Monday */
 
@@ -33252,32 +33252,32 @@ var i18n = __webpack_require__(72773);
 ;// CONCATENATED MODULE: ./projects/core/tokens/i18n.ts
 
 
-const TUI_MONTHS = new core/* InjectionToken */.OlP(`Localized months names`, {
+const TUI_MONTHS = new core/* InjectionToken */.OlP(`[TUI_MONTHS]: Localized months names`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`months`)
 });
-const TUI_CLOSE_WORD = new core/* InjectionToken */.OlP(`i18n 'close' word`, {
+const TUI_CLOSE_WORD = new core/* InjectionToken */.OlP(`[TUI_CLOSE_WORD]: i18n 'close' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`close`)
 });
-const TUI_NOTHING_FOUND_MESSAGE = new core/* InjectionToken */.OlP(`i18n 'Nothing found' message`, {
+const TUI_NOTHING_FOUND_MESSAGE = new core/* InjectionToken */.OlP(`[TUI_NOTHING_FOUND_MESSAGE]: i18n 'Nothing found' message`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`nothingFoundMessage`)
 });
-const TUI_DEFAULT_ERROR_MESSAGE = new core/* InjectionToken */.OlP(`i18n of error message`, {
+const TUI_DEFAULT_ERROR_MESSAGE = new core/* InjectionToken */.OlP(`[TUI_DEFAULT_ERROR_MESSAGE]: i18n of error message`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`defaultErrorMessage`)
 });
-const TUI_SPIN_TEXTS = new core/* InjectionToken */.OlP(`spin i18n texts`, {
+const TUI_SPIN_TEXTS = new core/* InjectionToken */.OlP(`[TUI_SPIN_TEXTS]: spin i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`spinTexts`)
 });
-const TUI_SHORT_WEEK_DAYS = new core/* InjectionToken */.OlP(`calendars i18n texts`, {
+const TUI_SHORT_WEEK_DAYS = new core/* InjectionToken */.OlP(`[TUI_SHORT_WEEK_DAYS]: calendars i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`shortWeekDays`)
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/icon-place.ts
 
-const TUI_ICONS_PLACE = new core/* InjectionToken */.OlP(`Recommended paths to icons from documentation guide`, {
+const TUI_ICONS_PLACE = new core/* InjectionToken */.OlP(`[TUI_ICONS_PLACE]: Recommended paths to icons from documentation guide`, {
   factory: () => `assets/taiga-ui/icons`
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/icons.ts
 
-const TUI_ICONS = new core/* InjectionToken */.OlP(`A key/value dictionary of icon names and src to be defined with TuiSvgService`, {
+const TUI_ICONS = new core/* InjectionToken */.OlP(`[TUI_ICONS]: A key/value dictionary of icon names and src to be defined with TuiSvgService`, {
   factory: () => ({})
 });
 // EXTERNAL MODULE: ./projects/core/utils/index.ts + 9 modules
@@ -33286,7 +33286,7 @@ var utils = __webpack_require__(96973);
 
 
 
-const TUI_ICONS_PATH = new core/* InjectionToken */.OlP(`A handler to retrieve USE id for icon by name`, {
+const TUI_ICONS_PATH = new core/* InjectionToken */.OlP(`[TUI_ICONS_PATH]: A handler to retrieve USE id for icon by name`, {
   factory: () => (0,utils/* tuiIconsPathFactory */.ht)((0,core/* inject */.f3M)(TUI_ICONS_PLACE))
 });
 // EXTERNAL MODULE: ./node_modules/@ng-web-apis/common/fesm2015/ng-web-apis-common.js
@@ -33303,7 +33303,7 @@ var map = __webpack_require__(88002);
 var distinctUntilChanged = __webpack_require__(87519);
 ;// CONCATENATED MODULE: ./projects/core/tokens/media.ts
 
-const TUI_MEDIA = new core/* InjectionToken */.OlP(`Token for media constant`, {
+const TUI_MEDIA = new core/* InjectionToken */.OlP(`[TUI_MEDIA]: Token for media constant`, {
   factory: () => ({
     mobile: 768,
     desktopSmall: 1024,
@@ -33317,7 +33317,7 @@ const TUI_MEDIA = new core/* InjectionToken */.OlP(`Token for media constant`, {
 
 
 
-const TUI_IS_MOBILE_RES = new core/* InjectionToken */.OlP(`Mobile resolution stream for private providers`, {
+const TUI_IS_MOBILE_RES = new core/* InjectionToken */.OlP(`[TUI_IS_MOBILE_RES]: Mobile resolution stream for private providers`, {
   factory: () => {
     const windowRef = (0,core/* inject */.f3M)(ng_web_apis_common/* WINDOW */.m9);
     const media = (0,core/* inject */.f3M)(TUI_MEDIA);
@@ -33326,7 +33326,7 @@ const TUI_IS_MOBILE_RES = new core/* InjectionToken */.OlP(`Mobile resolution st
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/mode.ts
 
-const TUI_MODE = new core/* InjectionToken */.OlP(`Mode stream for private providers`);
+const TUI_MODE = new core/* InjectionToken */.OlP(`[TUI_MODE]: Mode stream for private providers`);
 ;// CONCATENATED MODULE: ./projects/core/tokens/notification-options.ts
 
 /** Default values for the notification options. */
@@ -33341,7 +33341,7 @@ const TUI_NOTIFICATION_DEFAULT_OPTIONS = {
   hasCloseButton: true,
   defaultAutoCloseTime: 3000
 };
-const TUI_NOTIFICATION_OPTIONS = new core/* InjectionToken */.OlP(`Default parameters for notification alert component`, {
+const TUI_NOTIFICATION_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_NOTIFICATION_OPTIONS]: Default parameters for notification alert component`, {
   factory: () => TUI_NOTIFICATION_DEFAULT_OPTIONS
 });
 function tuiNotificationOptionsProvider(options) {
@@ -33355,12 +33355,12 @@ var constants = __webpack_require__(71670);
 ;// CONCATENATED MODULE: ./projects/core/tokens/number-format.ts
 
 
-const TUI_NUMBER_FORMAT = new core/* InjectionToken */.OlP(`Formatting configuration for displayed numbers`, {
+const TUI_NUMBER_FORMAT = new core/* InjectionToken */.OlP(`[TUI_NUMBER_FORMAT]: Formatting configuration for displayed numbers`, {
   factory: () => constants/* TUI_DEFAULT_NUMBER_FORMAT */.Jl
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/option-content.ts
 
-const TUI_OPTION_CONTENT = new core/* InjectionToken */.OlP(`Content for tuiOption component`);
+const TUI_OPTION_CONTENT = new core/* InjectionToken */.OlP(`[TUI_OPTION_CONTENT]: Content for tuiOption component`);
 function tuiAsOptionContent(useValue) {
   return {
     provide: TUI_OPTION_CONTENT,
@@ -33377,7 +33377,7 @@ const convertToSundayFirstWeekFormat = weekDaysNames => {
   return [weekDaysNames[sundayIndex], ...weekDaysNames.slice(0, sundayIndex)];
 };
 
-const TUI_ORDERED_SHORT_WEEK_DAYS = new core/* InjectionToken */.OlP(`Ordered calendars i18n texts`, {
+const TUI_ORDERED_SHORT_WEEK_DAYS = new core/* InjectionToken */.OlP(`[TUI_ORDERED_SHORT_WEEK_DAYS]: Ordered calendars i18n texts`, {
   factory: () => {
     const firstDayOfWeekIndex = (0,core/* inject */.f3M)(TUI_FIRST_DAY_OF_WEEK);
     return (0,core/* inject */.f3M)(TUI_SHORT_WEEK_DAYS).pipe((0,map/* map */.U)(convertToSundayFirstWeekFormat), (0,map/* map */.U)(weekDays => [...weekDays.slice(firstDayOfWeekIndex), ...weekDays.slice(0, firstDayOfWeekIndex)]));
@@ -33385,10 +33385,10 @@ const TUI_ORDERED_SHORT_WEEK_DAYS = new core/* InjectionToken */.OlP(`Ordered ca
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/sanitizer.ts
 
-const TUI_SANITIZER = new core/* InjectionToken */.OlP(`A custom Sanitizer to sanitize source before inlining`);
+const TUI_SANITIZER = new core/* InjectionToken */.OlP(`[TUI_SANITIZER]: A custom Sanitizer to sanitize source before inlining`);
 ;// CONCATENATED MODULE: ./projects/core/tokens/scroll-ref.ts
 
-const TUI_SCROLL_REF = new core/* InjectionToken */.OlP(`Scrollable container`);
+const TUI_SCROLL_REF = new core/* InjectionToken */.OlP(`[TUI_SCROLL_REF]: Scrollable container`);
 // EXTERNAL MODULE: ./node_modules/@angular/common/fesm2015/common.js
 var common = __webpack_require__(12057);
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/observable/merge.js
@@ -33403,7 +33403,7 @@ var takeUntil = __webpack_require__(46782);
 
 
 
-const TUI_SELECTION_STREAM = new core/* InjectionToken */.OlP(`A stream of possible selection changes`, {
+const TUI_SELECTION_STREAM = new core/* InjectionToken */.OlP(`[TUI_SELECTION_STREAM]: A stream of possible selection changes`, {
   factory: () => {
     const documentRef = (0,core/* inject */.f3M)(common/* DOCUMENT */.K0);
     return (0,merge/* merge */.T)((0,cdk.tuiTypedFromEvent)(documentRef, `selectionchange`), (0,cdk.tuiTypedFromEvent)(documentRef, `mouseup`), (0,cdk.tuiTypedFromEvent)(documentRef, `mousedown`).pipe((0,switchMapTo/* switchMapTo */.c)((0,cdk.tuiTypedFromEvent)(documentRef, `mousemove`).pipe((0,takeUntil/* takeUntil */.R)((0,cdk.tuiTypedFromEvent)(documentRef, `mouseup`))))), (0,cdk.tuiTypedFromEvent)(documentRef, `keydown`), (0,cdk.tuiTypedFromEvent)(documentRef, `keyup`)).pipe((0,share/* share */.B)());
@@ -33412,7 +33412,7 @@ const TUI_SELECTION_STREAM = new core/* InjectionToken */.OlP(`A stream of possi
 ;// CONCATENATED MODULE: ./projects/core/tokens/svg-content-processor.ts
 
 
-const TUI_SVG_CONTENT_PROCESSOR = new core/* InjectionToken */.OlP(`Transform function the contents of the loaded svg file`, {
+const TUI_SVG_CONTENT_PROCESSOR = new core/* InjectionToken */.OlP(`[TUI_SVG_CONTENT_PROCESSOR]: Transform function the contents of the loaded svg file`, {
   factory: () => cdk.tuiSvgLinearGradientProcessor
 });
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/util/identity.js
@@ -33420,19 +33420,19 @@ var identity = __webpack_require__(54487);
 ;// CONCATENATED MODULE: ./projects/core/tokens/svg-src-processor.ts
 
 
-const TUI_SVG_SRC_PROCESSOR = new core/* InjectionToken */.OlP(`Source path processor for svg`, {
+const TUI_SVG_SRC_PROCESSOR = new core/* InjectionToken */.OlP(`[TUI_SVG_SRC_PROCESSOR]: Source path processor for svg`, {
   factory: () => identity/* identity */.y
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/textfield-appearance.ts
 
-const TUI_TEXTFIELD_APPEARANCE = new core/* InjectionToken */.OlP(`Appearance for inputs`, {
+const TUI_TEXTFIELD_APPEARANCE = new core/* InjectionToken */.OlP(`[TUI_TEXTFIELD_APPEARANCE]: Appearance for inputs`, {
   factory: () => "textfield"
   /* Textfield */
 
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/textfield-host.ts
 
-const TUI_TEXTFIELD_HOST = new core/* InjectionToken */.OlP(`An interface to communicate with textfield based controls`);
+const TUI_TEXTFIELD_HOST = new core/* InjectionToken */.OlP(`[TUI_TEXTFIELD_HOST]: An interface to communicate with textfield based controls`);
 function tuiAsTextfieldHost(useExisting) {
   return {
     provide: TUI_TEXTFIELD_HOST,
@@ -33441,12 +33441,12 @@ function tuiAsTextfieldHost(useExisting) {
 }
 ;// CONCATENATED MODULE: ./projects/core/tokens/theme.ts
 
-const TUI_THEME = new core/* InjectionToken */.OlP(`Theme name`, {
+const TUI_THEME = new core/* InjectionToken */.OlP(`[TUI_THEME]: Theme name`, {
   factory: () => `Taiga`
 });
 ;// CONCATENATED MODULE: ./projects/core/tokens/value-accessor.ts
 
-const TUI_VALUE_ACCESSOR = new core/* InjectionToken */.OlP(`Buffer token to pass NG_VALUE_ACCESSOR to a different Injector`);
+const TUI_VALUE_ACCESSOR = new core/* InjectionToken */.OlP(`[TUI_VALUE_ACCESSOR]: Buffer token to pass NG_VALUE_ACCESSOR to a different Injector`);
 ;// CONCATENATED MODULE: ./projects/core/tokens/index.ts
 
 
@@ -34479,7 +34479,7 @@ const TUI_VERSIONS_META = [{
   baseHref: `v2`,
   alias: `v2`
 }];
-const TUI_VERSIONS_META_OPTIONS = new core/* InjectionToken */.OlP(`[TAIGA_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`, {
+const TUI_VERSIONS_META_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`, {
   factory: () => TUI_VERSIONS_META
 });
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/app/version-manager/version-manager.providers.ts
@@ -34487,7 +34487,7 @@ const TUI_VERSIONS_META_OPTIONS = new core/* InjectionToken */.OlP(`[TAIGA_VERSI
 
 
 
-const TUI_SELECTED_VERSION_META = new core/* InjectionToken */.OlP(`Meta information about selected version of Taiga docs`);
+const TUI_SELECTED_VERSION_META = new core/* InjectionToken */.OlP(`[TUI_SELECTED_VERSION_META]: Meta information about selected version of Taiga docs`);
 const TUI_VERSION_MANAGER_PROVIDERS = [{
   provide: TUI_SELECTED_VERSION_META,
   deps: [common/* LocationStrategy */.S$, TUI_VERSIONS_META_OPTIONS],
@@ -36815,7 +36815,7 @@ function GettingStartedComponent_ng_container_1_Template(rf, ctx) {
   }
 }
 
-const TUI_HOME_COMPONENT = new core/* InjectionToken */.OlP(`Home page`, {
+const TUI_HOME_COMPONENT = new core/* InjectionToken */.OlP(`[TUI_HOME_COMPONENT]: Home page`, {
   factory: () => HomeComponent
 });
 let GettingStartedComponent = /*#__PURE__*/(() => {
@@ -39682,20 +39682,20 @@ var of = __webpack_require__(25917);
 
 
 
-const TUI_DEFAULT_LANGUAGE = new core/* InjectionToken */.OlP(`Default Language for Taiga UI libraries i18n`, {
+const TUI_DEFAULT_LANGUAGE = new core/* InjectionToken */.OlP(`[TUI_DEFAULT_LANGUAGE]: Default Language for Taiga UI libraries i18n`, {
   factory: () => english/* TUI_ENGLISH_LANGUAGE */.V6
 });
-const TUI_LANGUAGE = new core/* InjectionToken */.OlP(`Language for Taiga UI libraries i18n`, {
+const TUI_LANGUAGE = new core/* InjectionToken */.OlP(`[TUI_LANGUAGE]: Language for Taiga UI libraries i18n`, {
   factory: () => (0,of.of)((0,core/* inject */.f3M)(TUI_DEFAULT_LANGUAGE))
 });
 ;// CONCATENATED MODULE: ./projects/i18n/tokens/language-loader.ts
  // @note: cannot be transferred to a shared file
 // ReferenceError: Cannot access 'TUI_LANGUAGE_LOADER' before initialization
 
-const TUI_LANGUAGE_LOADER = new core/* InjectionToken */.OlP(`Webpack chunk loader for Taiga UI libraries i18n`);
+const TUI_LANGUAGE_LOADER = new core/* InjectionToken */.OlP(`[TUI_LANGUAGE_LOADER]: Webpack chunk loader for Taiga UI libraries i18n`);
 ;// CONCATENATED MODULE: ./projects/i18n/tokens/language-storage-key.ts
 
-const TUI_LANGUAGE_STORAGE_KEY = new core/* InjectionToken */.OlP(`Default key for search value in storage`, {
+const TUI_LANGUAGE_STORAGE_KEY = new core/* InjectionToken */.OlP(`[TUI_LANGUAGE_STORAGE_KEY]: Default key for search value in storage`, {
   factory: () => `tuiLanguage`
 });
 ;// CONCATENATED MODULE: ./projects/i18n/tokens/index.ts
@@ -44847,14 +44847,14 @@ const TUI_ARROW_DEFAULT_OPTIONS = {
   iconSmall: `tuiIconChevronDown`,
   iconLarge: `tuiIconChevronDownLarge`
 };
-const TUI_ARROW_OPTIONS = new fesm2015_core/* InjectionToken */.OlP(`Default parameters for arrow component`, {
+const TUI_ARROW_OPTIONS = new fesm2015_core/* InjectionToken */.OlP(`[TUI_ARROW_OPTIONS]: Default parameters for arrow component`, {
   factory: () => TUI_ARROW_DEFAULT_OPTIONS
 });
 const tuiArrowOptionsProvider = options => ({
   provide: TUI_ARROW_OPTIONS,
   useValue: Object.assign(Object.assign({}, TUI_ARROW_DEFAULT_OPTIONS), options)
 });
-const TUI_ARROW_MODE = new fesm2015_core/* InjectionToken */.OlP(`Type of icon in dropdowns for interactive or disable mode`, {
+const TUI_ARROW_MODE = new fesm2015_core/* InjectionToken */.OlP(`[TUI_ARROW_MODE]: Type of icon in dropdowns for interactive or disable mode`, {
   factory: () => ({
     interactive: TUI_ARROW,
     disabled: TUI_ARROW
@@ -45007,7 +45007,7 @@ const TUI_AVATAR_DEFAULT_OPTIONS = {
   autoColor: false,
   rounded: false
 };
-const TUI_AVATAR_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for avatar component`, {
+const TUI_AVATAR_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_AVATAR_OPTIONS]: Default parameters for avatar component`, {
   factory: () => TUI_AVATAR_DEFAULT_OPTIONS
 });
 const tuiAvatarOptionsProvider = options => ({
@@ -49115,7 +49115,7 @@ const TUI_INPUT_COUNT_DEFAULT_OPTIONS = {
   step: 1,
   postfix: ``
 };
-const TUI_INPUT_COUNT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for input count component`, {
+const TUI_INPUT_COUNT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_INPUT_COUNT_OPTIONS]: Default parameters for input count component`, {
   factory: () => TUI_INPUT_COUNT_DEFAULT_OPTIONS
 });
 const tuiInputCountOptionsProvider = options => ({
@@ -52509,7 +52509,7 @@ const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS = {
     }) => $implicit === `s` ? `tuiIconEyeOpen` : `tuiIconShowLarge`
   }
 };
-const TUI_INPUT_PASSWORD_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for input password component`, {
+const TUI_INPUT_PASSWORD_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_INPUT_PASSWORD_OPTIONS]: Default parameters for input password component`, {
   factory: () => TUI_INPUT_PASSWORD_DEFAULT_OPTIONS
 });
 const tuiInputPasswordOptionsProvider = options => ({
@@ -53204,7 +53204,7 @@ const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS = {
   countries: [],
   countryIsoCode: _taiga_ui_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TuiCountryIsoCode.RU */ .Xi.RU
 };
-const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Default parameters for input phone international component`, {
+const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS]: Default parameters for input phone international component`, {
   factory: () => TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS
 });
 const tuiInputPhoneInternationalOptionsProvider = options => ({
@@ -53225,7 +53225,7 @@ const tuiInputPhoneInternationalOptionsProvider = options => ({
 /* harmony import */ var _taiga_ui_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72773);
 
 
-const TUI_COUNTRIES_MASKS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Countries masks`, {
+const TUI_COUNTRIES_MASKS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_COUNTRIES_MASKS]: Countries masks`, {
   factory: () => ({
     [_taiga_ui_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TuiCountryIsoCode.AD */ .Xi.AD]: `+376###-###`,
     [_taiga_ui_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TuiCountryIsoCode.AE */ .Xi.AE]: `+971-##-###-####`,
@@ -53936,7 +53936,7 @@ const TUI_INPUT_PHONE_DEFAULT_OPTIONS = {
   allowText: false,
   countryCode: `+7`
 };
-const TUI_INPUT_PHONE_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for input phone component`, {
+const TUI_INPUT_PHONE_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_INPUT_PHONE_OPTIONS]: Default parameters for input phone component`, {
   factory: () => TUI_INPUT_PHONE_DEFAULT_OPTIONS
 });
 const tuiInputPhoneOptionsProvider = options => ({
@@ -54776,7 +54776,7 @@ const TUI_INPUT_TAG_DEFAULT_OPTIONS = {
   uniqueTags: true,
   tagStatus: `primary`
 };
-const TUI_INPUT_TAG_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for input-tag`, {
+const TUI_INPUT_TAG_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_INPUT_TAG_OPTIONS]: Default parameters for input-tag`, {
   factory: () => TUI_INPUT_TAG_DEFAULT_OPTIONS
 });
 function tuiInputTagOptionsProvider(options) {
@@ -55547,7 +55547,7 @@ TuiInputTagComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
   },
   directives: [_angular_common__WEBPACK_IMPORTED_MODULE_20__/* .NgIf */ .O5, _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiHostedDropdownComponent */ .o, _cdk_directives_active_zone_active_zone_directive__WEBPACK_IMPORTED_MODULE_5__/* .TuiActiveZoneDirective */ .e, _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_6__/* .TuiWrapperDirective */ .o, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_21__/* .PolymorpheusOutletDirective */ .Li, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_7__/* .TuiSvgComponent */ .P, _core_components_scrollbar_scrollbar_component__WEBPACK_IMPORTED_MODULE_8__/* .TuiScrollbarComponent */ .I, _angular_common__WEBPACK_IMPORTED_MODULE_20__/* .NgTemplateOutlet */ .tP, _angular_forms__WEBPACK_IMPORTED_MODULE_19__/* .DefaultValueAccessor */ .Fj, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_22__/* .TuiFocusableDirective */ .t, _angular_forms__WEBPACK_IMPORTED_MODULE_19__/* .NgControlStatus */ .JJ, _angular_forms__WEBPACK_IMPORTED_MODULE_19__/* .NgModel */ .On, _angular_common__WEBPACK_IMPORTED_MODULE_20__/* .NgForOf */ .sg, _tag_tag_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiTagComponent */ .G, _core_components_tooltip_tooltip_component__WEBPACK_IMPORTED_MODULE_10__/* .TuiTooltipComponent */ .w],
   pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_20__/* .AsyncPipe */ .Ov],
-  styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);position:relative;display:block;border-radius:var(--tui-radius-m);text-align:left}[data-size=s][_nghost-%COMP%]{height:var(--tui-height-s);min-height:var(--tui-height-s);max-height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-m);min-height:var(--tui-height-m);max-height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-l);min-height:var(--tui-height-l);max-height:var(--tui-height-l);font:var(--tui-font-text-m);line-height:1.25rem}.t-input[_ngcontent-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], .t-input   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input.t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}.t-content[_ngcontent-%COMP%]{display:flex;height:100%;width:100%;padding:0 var(--tui-padding-m);box-sizing:border-box;align-items:center;overflow:hidden}[data-size=s][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-l)}.t-content[_ngcontent-%COMP%]:after{content:\"\";margin-right:-.25rem}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]:after{display:none}.t-wrapper[_ngcontent-%COMP%]{flex:1;min-width:0;padding-right:.25rem;-webkit-padding-end:.25rem;padding-inline-end:.25rem;-webkit-padding-start:0;padding-inline-start:0}.t-placeholder[_ngcontent-%COMP%]{transition-property:transform,font-size,color,letter-spacing;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;font:var(--tui-font-text-s);color:var(--tui-text-01);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:var(--tui-text-02);pointer-events:none;will-change:transform;transform:translateY(0)}.t-placeholder_raised[_ngcontent-%COMP%]{transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font:var(--tui-font-text-xs);transform:translateY(-.5rem);letter-spacing:.025rem}._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], ._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill)}[data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], [data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill-night)}._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.9375rem}[data-size=l][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font-size:.8156rem}[data-size=m]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01)}[data-mode=onDark][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}[data-size=m][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onDark]._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}@supports (-webkit-hyphens: none){.t-placeholder[_ngcontent-%COMP%]{will-change:unset;transition-property:transform,color,letter-spacing}}.t-cleaner[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);position:relative;box-sizing:border-box;cursor:pointer;transition-property:color,transform}.t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}.t-icon[_ngcontent-%COMP%]{display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon_left[_ngcontent-%COMP%]{margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}[data-size=s][_nghost-%COMP%]   .t-icon_left[_ngcontent-%COMP%]{margin-right:.25rem;-webkit-margin-end:.25rem;margin-inline-end:.25rem}[_nghost-%COMP%]{cursor:text}._expandable[_nghost-%COMP%]{height:auto;max-height:none}._disabled[_nghost-%COMP%]{pointer-events:none}._readonly[_nghost-%COMP%]{cursor:default}.t-hosted[_ngcontent-%COMP%]{display:block;border-radius:inherit}.t-scrollbar[_ngcontent-%COMP%]{margin:0 -.25rem;padding:0 .25rem}.t-tags[_ngcontent-%COMP%]{display:flex;align-items:center;box-sizing:border-box}._expandable[_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{flex-wrap:wrap;white-space:normal}._readonly[_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{pointer-events:none}[data-size=s][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-s);padding:.25rem .25rem .25rem 0}[data-size=m][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-m);padding:.5rem .25rem .5rem 0}[data-size=l][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-l);padding:.625rem .25rem .625rem 0}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{padding:1.1875rem 1rem 0 0}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{padding:1.6875rem 1rem .5625rem 0}.t-tags   [data-size][_nghost-%COMP%]{-webkit-padding-start:0;padding-inline-start:0;-webkit-padding-end:.25rem;padding-inline-end:.25rem}[data-size][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{-webkit-padding-end:1rem;padding-inline-end:1rem}.t-content[_ngcontent-%COMP%]{align-items:flex-start}.t-icons[_ngcontent-%COMP%]{display:flex;align-items:center;padding:0 0 0 .75rem;-webkit-padding-start:.75rem;padding-inline-start:.75rem;-webkit-padding-end:0;padding-inline-end:0}.t-icons_left[_ngcontent-%COMP%]{padding:0;margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}._expandable[_nghost-%COMP%]   .t-icons_right[_ngcontent-%COMP%]{margin:0 0 0 -.625rem;-webkit-margin-start:-.625rem;margin-inline-start:-.625rem;-webkit-margin-end:0;margin-inline-end:0}[data-size=s][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-l)}.t-absolute-wrapper[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center}[data-size=m][_nghost-%COMP%]   .t-absolute-wrapper[_ngcontent-%COMP%]{height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]   .t-absolute-wrapper[_ngcontent-%COMP%]{height:var(--tui-height-l)}.t-wrapper[_ngcontent-%COMP%]{position:relative;padding:0}.t-tag[_ngcontent-%COMP%]{margin:.125rem .5rem .125rem -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem;max-width:100%;flex-shrink:0}.t-text[_ngcontent-%COMP%]:after{content:\",\\a0\"}.t-text_disabled[_ngcontent-%COMP%]{color:var(--tui-text-03)}.t-text_error[_ngcontent-%COMP%]{color:var(--tui-negative)}[_nghost-%COMP%]:not(._expandable)   .t-text[_ngcontent-%COMP%]{white-space:nowrap}[_nghost-%COMP%]:not(._focused)   .t-text[_ngcontent-%COMP%]:last-of-type:after{content:\"\"}.t-input-wrapper[_ngcontent-%COMP%]{position:relative;flex:1;max-width:100%}.t-input-wrapper_collapsed[_ngcontent-%COMP%]{flex:0;margin:0 0 0 -.5rem;-webkit-margin-start:-.5rem;margin-inline-start:-.5rem;-webkit-margin-end:0;margin-inline-end:0}[data-size=s][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:1.5rem}[data-size=m][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:calc(var(--tui-height-xs) + 2 * .125rem)}[data-size=l][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:calc(var(--tui-height-s) + 2 * .125rem)}[_nghost-%COMP%]:not(._label-outside)   .t-input-wrapper[_ngcontent-%COMP%]{min-height:1.25rem}.t-ghost[_ngcontent-%COMP%]{visibility:hidden;white-space:pre;text-overflow:clip;min-width:.125rem}[_nghost-%COMP%]:not(._expandable)   .t-ghost[_ngcontent-%COMP%]{min-width:2rem}.t-native[_ngcontent-%COMP%]{margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box;padding:0;cursor:inherit}.t-native[_ngcontent-%COMP%]:-webkit-autofill, .t-native[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-native[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}.t-native_hidden[_ngcontent-%COMP%]{opacity:0;text-indent:-10em}.t-native[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}.t-native[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}[data-mode=onDark][_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03-night)}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:read-only)::-ms-input-placeholder{opacity:1}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:-moz-read-only)::placeholder{opacity:1}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:read-only)::placeholder{opacity:1}.t-error-icon[_ngcontent-%COMP%]{display:block;color:var(--tui-error-fill);width:1rem;height:1rem}"],
+  styles: ["[_nghost-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);position:relative;display:block;border-radius:var(--tui-radius-m);text-align:left}[data-size=s][_nghost-%COMP%]{height:var(--tui-height-s);min-height:var(--tui-height-s);max-height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-m);min-height:var(--tui-height-m);max-height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-l);min-height:var(--tui-height-l);max-height:var(--tui-height-l);font:var(--tui-font-text-m);line-height:1.25rem}.t-input[_ngcontent-%COMP%]{font:var(--tui-font-text-s);color:var(--tui-text-01);padding:0;margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;padding:0 var(--tui-padding-m);border:solid transparent;border-width:0 0 0 0;border-width:0 var(--border-end, 0) 0 var(--border-start, 0);border-inline-start-width:0;border-inline-start-width:var(--border-start, 0);border-inline-end-width:0;border-inline-end-width:var(--border-end, 0);text-indent:var(--text-indent);text-align:inherit;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-transform:inherit;resize:none;text-overflow:ellipsis}.t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}[data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:hover, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:hover, [data-mode=onDark][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%]:-webkit-autofill:focus, .t-input   tui-primitive-textfield[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-primitive-textfield[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus, .t-input   tui-text-area[data-mode=\"onDark\"][_nghost-%COMP%]:-webkit-autofill:focus, tui-text-area[data-mode=\"onDark\"]   [_nghost-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01-night)!important;border-color:var(--tui-autofill-night);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill-night) inset!important}[data-size=s][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"s\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"s\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"s\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"][_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-primitive-textfield), .t-input   tui-text-area[data-size=\"l\"][_nghost-%COMP%]:not(tui-text-area), tui-text-area[data-size=\"l\"]   [_nghost-%COMP%]:not(tui-text-area){padding:0 var(--tui-padding-l)}._disabled[_nghost-%COMP%]   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._disabled[_nghost-%COMP%], tui-primitive-textfield._disabled   [_nghost-%COMP%], .t-input   tui-text-area._disabled[_nghost-%COMP%], tui-text-area._disabled   [_nghost-%COMP%]{pointer-events:none}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.25rem}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"l\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.8156rem;transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield), tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield){padding-top:1.125rem}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-input[_ngcontent-%COMP%]:-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], .t-input   tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)[_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%], tui-primitive-textfield[data-size=\"m\"]:not(._label-outside)   [_nghost-%COMP%]:not(tui-primitive-textfield):-webkit-autofill + .t-content[_ngcontent-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.69rem;transform:translateY(-.5rem)}._hidden[_nghost-%COMP%]   input.t-input[_ngcontent-%COMP%], .t-input   tui-primitive-textfield._hidden[_nghost-%COMP%], tui-primitive-textfield._hidden   [_nghost-%COMP%]{opacity:0;text-indent:-10em;-webkit-user-select:none}.t-content[_ngcontent-%COMP%]{display:flex;height:100%;width:100%;padding:0 var(--tui-padding-m);box-sizing:border-box;align-items:center;overflow:hidden}[data-size=s][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-s)}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{padding:0 var(--tui-padding-l)}.t-content[_ngcontent-%COMP%]:after{content:\"\";margin-right:-.25rem}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]:after{display:none}.t-wrapper[_ngcontent-%COMP%]{flex:1;min-width:0;padding-right:.25rem;-webkit-padding-end:.25rem;padding-inline-end:.25rem;-webkit-padding-start:0;padding-inline-start:0}.t-placeholder[_ngcontent-%COMP%]{transition-property:transform,font-size,color,letter-spacing;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;font:var(--tui-font-text-s);color:var(--tui-text-01);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:var(--tui-text-02);pointer-events:none;will-change:transform;transform:translateY(0)}.t-placeholder_raised[_ngcontent-%COMP%]{transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font:var(--tui-font-text-xs);transform:translateY(-.5rem);letter-spacing:.025rem}._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], ._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill)}[data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], [data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill-night)}._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.9375rem}[data-size=l][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font-size:.8156rem}[data-size=m]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01)}[data-mode=onDark][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}[data-size=m][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onDark]._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}@supports (-webkit-hyphens: none){.t-placeholder[_ngcontent-%COMP%]{will-change:unset;transition-property:transform,color,letter-spacing}}.t-cleaner[_ngcontent-%COMP%]{transition-property:all;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03);position:relative;box-sizing:border-box;cursor:pointer;transition-property:color,transform}.t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-02)}._readonly[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%], ._disabled[_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{pointer-events:none}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-cleaner[_ngcontent-%COMP%]:hover{color:var(--tui-text-01-night)}.t-icon[_ngcontent-%COMP%]{display:flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;color:var(--tui-text-03)}[data-mode=onDark][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-icon_left[_ngcontent-%COMP%]{margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}[data-size=s][_nghost-%COMP%]   .t-icon_left[_ngcontent-%COMP%]{margin-right:.25rem;-webkit-margin-end:.25rem;margin-inline-end:.25rem}[_nghost-%COMP%]{cursor:text}._expandable[_nghost-%COMP%]{height:auto;max-height:none}._disabled[_nghost-%COMP%]{pointer-events:none}._readonly[_nghost-%COMP%]{cursor:default}.t-hosted[_ngcontent-%COMP%]{display:block;border-radius:inherit}.t-scrollbar[_ngcontent-%COMP%]{margin:0 -.25rem;padding:0 .25rem}.t-tags[_ngcontent-%COMP%]{display:flex;align-items:center;box-sizing:border-box}._expandable[_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{flex-wrap:wrap;white-space:normal}._readonly[_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{pointer-events:none}[data-size=s][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-s);padding:.25rem .25rem .25rem 0}[data-size=m][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-m);padding:.5rem .25rem .5rem 0}[data-size=l][_nghost-%COMP%]   .t-tags[_ngcontent-%COMP%]{min-height:var(--tui-height-l);padding:.625rem .25rem .625rem 0}[data-size=m][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{padding:1.1875rem 1rem 0 0}[data-size=l][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{padding:1.6875rem 1rem .5625rem 0}.t-tags   [data-size][_nghost-%COMP%]{-webkit-padding-start:0;padding-inline-start:0;-webkit-padding-end:.25rem;padding-inline-end:.25rem}[data-size][_nghost-%COMP%]:not(._label-outside)   .t-tags[_ngcontent-%COMP%]{-webkit-padding-end:1rem;padding-inline-end:1rem}.t-content[_ngcontent-%COMP%]{align-items:flex-start}.t-icons[_ngcontent-%COMP%]{display:flex;align-items:center;padding:0 0 0 .75rem;-webkit-padding-start:.75rem;padding-inline-start:.75rem;-webkit-padding-end:0;padding-inline-end:0}.t-icons_left[_ngcontent-%COMP%]{padding:0;margin:0 .5rem 0 -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem}._expandable[_nghost-%COMP%]   .t-icons_right[_ngcontent-%COMP%]{margin:0 0 0 -.625rem;-webkit-margin-start:-.625rem;margin-inline-start:-.625rem;-webkit-margin-end:0;margin-inline-end:0}[data-size=s][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-s)}[data-size=m][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]   .t-icons[_ngcontent-%COMP%]{height:var(--tui-height-l)}.t-absolute-wrapper[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center}[data-size=m][_nghost-%COMP%]   .t-absolute-wrapper[_ngcontent-%COMP%]{height:var(--tui-height-m)}[data-size=l][_nghost-%COMP%]   .t-absolute-wrapper[_ngcontent-%COMP%]{height:var(--tui-height-l)}.t-wrapper[_ngcontent-%COMP%]{position:relative;padding:0}.t-tag[_ngcontent-%COMP%]{margin:.125rem .5rem .125rem -.25rem;-webkit-margin-start:-.25rem;margin-inline-start:-.25rem;-webkit-margin-end:.5rem;margin-inline-end:.5rem;max-width:100%;flex-shrink:0}.t-text[_ngcontent-%COMP%]:after{content:\",\\a0\"}.t-text_disabled[_ngcontent-%COMP%]{color:var(--tui-text-03)}.t-text_error[_ngcontent-%COMP%]{color:var(--tui-negative)}[_nghost-%COMP%]:not(._expandable)   .t-text[_ngcontent-%COMP%]{white-space:nowrap}[_nghost-%COMP%]:not(._focused)   .t-text[_ngcontent-%COMP%]:last-of-type:after{content:\"\"}.t-input-wrapper[_ngcontent-%COMP%]{position:relative;flex:1;max-width:100%}.t-input-wrapper_collapsed[_ngcontent-%COMP%]{flex:0;margin:0 0 0 -.5rem;-webkit-margin-start:-.5rem;margin-inline-start:-.5rem;-webkit-margin-end:0;margin-inline-end:0}[data-size=s][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:1.5rem}[data-size=m][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:calc(var(--tui-height-xs) + 2 * .125rem)}[data-size=l][_nghost-%COMP%]   .t-input-wrapper[_ngcontent-%COMP%]{min-height:calc(var(--tui-height-s) + 2 * .125rem)}[_nghost-%COMP%]:not(._label-outside)   .t-input-wrapper[_ngcontent-%COMP%]{min-height:1.25rem}.t-ghost[_ngcontent-%COMP%]{visibility:hidden;white-space:pre;text-overflow:clip;min-width:.125rem}[_nghost-%COMP%]:not(._expandable)   .t-ghost[_ngcontent-%COMP%]{min-width:2rem}.t-native[_ngcontent-%COMP%]{margin:0;border:0;border-radius:inherit;background:none;font-size:inherit;line-height:inherit;font-weight:inherit;color:inherit;caret-color:currentColor;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;word-break:keep-all;-webkit-text-fill-color:currentColor;position:absolute;top:0;left:0;width:100%;height:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box;padding:0;cursor:inherit}.t-native[_ngcontent-%COMP%]:-webkit-autofill, .t-native[_ngcontent-%COMP%]:-webkit-autofill:hover, .t-native[_ngcontent-%COMP%]:-webkit-autofill:focus{caret-color:var(--tui-base-09);border-radius:inherit;color:inherit!important;background-color:transparent!important;-webkit-text-fill-color:var(--tui-text-01)!important;border-color:var(--tui-autofill);-webkit-box-shadow:0 0 0 100rem var(--tui-autofill) inset!important}.t-native_hidden[_ngcontent-%COMP%]{opacity:0;text-indent:-10em}.t-native[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03);opacity:0}.t-native[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03);opacity:0}[data-mode=onDark][_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]::-ms-input-placeholder{color:var(--tui-text-03-night)}[data-mode=onDark][_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]::placeholder{color:var(--tui-text-03-night)}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:read-only)::-ms-input-placeholder{opacity:1}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:-moz-read-only)::placeholder{opacity:1}._focused[_nghost-%COMP%]   .t-native[_ngcontent-%COMP%]:not(:read-only)::placeholder{opacity:1}.t-error-icon[_ngcontent-%COMP%]{display:block;color:var(--tui-error-fill);width:1rem;height:1rem}"],
   changeDetection: 0
 });
 
@@ -55595,7 +55595,7 @@ const TUI_INPUT_TIME_DEFAULT_OPTIONS = {
   maxValues: _taiga_ui_kit_constants__WEBPACK_IMPORTED_MODULE_0__/* .MAX_TIME_VALUES */ .bM,
   itemSize: `m`
 };
-const TUI_INPUT_TIME_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Default parameters for input time component`, {
+const TUI_INPUT_TIME_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_INPUT_TIME_OPTIONS]: Default parameters for input time component`, {
   factory: () => TUI_INPUT_TIME_DEFAULT_OPTIONS
 });
 const tuiInputTimeOptionsProvider = options => ({
@@ -56399,7 +56399,7 @@ let TuiLineClampBoxComponent = /*#__PURE__*/(() => {
 const TUI_LINE_CLAMP_DEFAULT_OPTIONS = {
   showHint: true
 };
-const TUI_LINE_CLAMP_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for line-clamp component`, {
+const TUI_LINE_CLAMP_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_LINE_CLAMP_OPTIONS]: Default parameters for line-clamp component`, {
   factory: () => TUI_LINE_CLAMP_DEFAULT_OPTIONS
 });
 const tuiLineClampOptionsProvider = options => ({
@@ -57234,7 +57234,7 @@ const TUI_MULTI_SELECT_DEFAULT_OPTIONS = {
   expandable: true,
   valueContent: ``
 };
-const TUI_MULTI_SELECT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for multi select component`, {
+const TUI_MULTI_SELECT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_MULTI_SELECT_OPTIONS]: Default parameters for multi select component`, {
   factory: () => TUI_MULTI_SELECT_DEFAULT_OPTIONS
 });
 const tuiMultiSelectOptionsProvider = options => ({
@@ -60106,7 +60106,7 @@ const TUI_RADIO_DEFAULT_OPTIONS = {
 
   }
 };
-const TUI_RADIO_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for radio component`, {
+const TUI_RADIO_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_RADIO_OPTIONS]: Default parameters for radio component`, {
   factory: () => TUI_RADIO_DEFAULT_OPTIONS
 });
 const tuiRadioOptionsProvider = options => ({
@@ -60745,7 +60745,7 @@ const TUI_RATING_DEFAULT_OPTIONS = {
   iconNormal: `tuiIconStarLarge`,
   iconFilled: `tuiIconStarFilledLarge`
 };
-const TUI_RATING_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for rating component`, {
+const TUI_RATING_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_RATING_OPTIONS]: Default parameters for rating component`, {
   factory: () => TUI_RATING_DEFAULT_OPTIONS
 });
 const tuiRatingOptionsProvider = options => ({
@@ -61144,7 +61144,7 @@ let TuiSelectOptionModule = /*#__PURE__*/(() => {
 const TUI_SELECT_DEFAULT_OPTIONS = {
   valueContent: ``
 };
-const TUI_SELECT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for select component`, {
+const TUI_SELECT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SELECT_OPTIONS]: Default parameters for select component`, {
   factory: () => TUI_SELECT_DEFAULT_OPTIONS
 });
 const tuiSelectOptionsProvider = options => ({
@@ -61818,7 +61818,7 @@ const TUI_SLIDER_DEFAULT_OPTIONS = {
   size: `m`,
   trackColor: `var(--tui-base-03)`
 };
-const TUI_SLIDER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for Slider component`, {
+const TUI_SLIDER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_SLIDER_OPTIONS]: Default parameters for Slider component`, {
   factory: () => TUI_SLIDER_DEFAULT_OPTIONS
 });
 function tuiSliderOptionsProvider(options) {
@@ -62434,7 +62434,7 @@ let TuiTabComponent = /*#__PURE__*/(() => {
 
 
 const TUI_TAB_ACTIVATE = `tui-tab-activate`;
-const TUI_TAB_EVENT = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`Stream of tab activation events`);
+const TUI_TAB_EVENT = new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .InjectionToken */ .OlP(`[TUI_TAB_EVENT]: Stream of tab activation events`);
 const TUI_TAB_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiFocusVisibleService, _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.TuiRouterLinkActiveService, {
   provide: TUI_TAB_EVENT,
   deps: [_angular_core__WEBPACK_IMPORTED_MODULE_2__/* .ElementRef */ .SBq, _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.TuiRouterLinkActiveService, [new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .Optional */ .FiY(), _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_3__/* .MutationObserverService */ .IM], [new _angular_core__WEBPACK_IMPORTED_MODULE_2__/* .Optional */ .FiY(), _angular_router__WEBPACK_IMPORTED_MODULE_4__/* .RouterLinkActive */ .Od]],
@@ -62466,7 +62466,7 @@ const TUI_TABS_DEFAULT_OPTIONS = {
   exposeActive: true,
   itemsLimit: Infinity
 };
-const TUI_TABS_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for tabs component`, {
+const TUI_TABS_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_TABS_OPTIONS]: Default parameters for tabs component`, {
   factory: () => TUI_TABS_DEFAULT_OPTIONS
 });
 const tuiTabsOptionsProvider = options => ({
@@ -63000,7 +63000,7 @@ TuiTabsWithMoreComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
 
 
 
-const TUI_TABS_REFRESH = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Refresh stream`);
+const TUI_TABS_REFRESH = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TABS_REFRESH]: Refresh stream`);
 const TUI_TABS_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResizeService, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_2__/* .MutationObserverService */ .IM, {
   provide: _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_2__/* .MUTATION_OBSERVER_INIT */ .k2,
   useValue: {
@@ -63405,7 +63405,7 @@ const TUI_TAG_DEFAULT_OPTIONS = {
   status: `default`,
   autoColor: false
 };
-const TUI_TAG_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for tag component`, {
+const TUI_TAG_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_TAG_OPTIONS]: Default parameters for tag component`, {
   factory: () => TUI_TAG_DEFAULT_OPTIONS
 });
 const tuiTagOptionsProvider = options => ({
@@ -64187,7 +64187,7 @@ const TUI_TOGGLE_DEFAULT_OPTIONS = {
   showIcons: false,
   size: `m`
 };
-const TUI_TOGGLE_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for toggle component`, {
+const TUI_TOGGLE_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_TOGGLE_OPTIONS]: Default parameters for toggle component`, {
   factory: () => TUI_TOGGLE_DEFAULT_OPTIONS
 });
 const tuiToggleOptionsProvider = options => ({
@@ -65217,20 +65217,20 @@ const TUI_DEFAULT_TREE_CONTROLLER = {
 /* harmony import */ var _tree_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(77615);
 
 
-const TUI_TREE_ACCESSOR = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Controller for tracking value - TuiTreeItemComponent pairs`);
-const TUI_TREE_CONTROLLER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Controller for expanding the tree`, {
+const TUI_TREE_ACCESSOR = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_ACCESSOR]: Controller for tracking value - TuiTreeItemComponent pairs`);
+const TUI_TREE_CONTROLLER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_CONTROLLER]: Controller for expanding the tree`, {
   factory: () => _tree_constants__WEBPACK_IMPORTED_MODULE_0__/* .TUI_DEFAULT_TREE_CONTROLLER */ .v
 });
-const TUI_TREE_NODE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`A node of a tree view`);
-const TUI_TREE_LOADING = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`A tree node placeholder for loading`, {
+const TUI_TREE_NODE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_NODE]: A node of a tree view`);
+const TUI_TREE_LOADING = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_LOADING]: A tree node placeholder for loading`, {
   factory: () => ({})
 });
-const TUI_TREE_START = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`A tree node starting point`);
-const TUI_TREE_LOADER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`A service to load tree progressively`);
-const TUI_TREE_CONTENT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Content for a tree item`, {
+const TUI_TREE_START = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_START]: A tree node starting point`);
+const TUI_TREE_LOADER = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_LOADER]: A service to load tree progressively`);
+const TUI_TREE_CONTENT = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_CONTENT]: Content for a tree item`, {
   factory: () => _tree_constants__WEBPACK_IMPORTED_MODULE_0__/* .TUI_TREE_ITEM_CONTENT */ .f
 });
-const TUI_TREE_LEVEL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`Nesting level of current TreeView node`, {
+const TUI_TREE_LEVEL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .InjectionToken */ .OlP(`[TUI_TREE_LEVEL]: Nesting level of current TreeView node`, {
   factory: () => -1
 });
 
@@ -69951,7 +69951,7 @@ var utils = __webpack_require__(18247);
 
 
 
-const TUI_CALENDAR_DATE_STREAM = new core/* InjectionToken */.OlP(`Stream that emits calendar data change`);
+const TUI_CALENDAR_DATE_STREAM = new core/* InjectionToken */.OlP(`[TUI_CALENDAR_DATE_STREAM]: Stream that emits calendar data change`);
 function tuiDateStreamWithTransformer(transformer) {
   return {
     provide: TUI_CALENDAR_DATE_STREAM,
@@ -69961,69 +69961,69 @@ function tuiDateStreamWithTransformer(transformer) {
 }
 ;// CONCATENATED MODULE: ./projects/kit/tokens/date-inputs-value-transformers.ts
 
-const TUI_DATE_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`Control value transformer of TuiDay to custom value format for InputDate* components`);
-const TUI_DATE_RANGE_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`Control value transformer for InputDateRange component`);
-const TUI_DATE_TIME_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`Control value transformer for InputDateTime component`);
+const TUI_DATE_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`[TUI_DATE_VALUE_TRANSFORMER]: Control value transformer of TuiDay to custom value format for InputDate* components`);
+const TUI_DATE_RANGE_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`[TUI_DATE_RANGE_VALUE_TRANSFORMER]: Control value transformer for InputDateRange component`);
+const TUI_DATE_TIME_VALUE_TRANSFORMER = new core/* InjectionToken */.OlP(`[TUI_DATE_TIME_VALUE_TRANSFORMER]: Control value transformer for InputDateTime component`);
 // EXTERNAL MODULE: ./projects/i18n/index.ts + 12 modules
 var i18n = __webpack_require__(72773);
 ;// CONCATENATED MODULE: ./projects/kit/tokens/i18n.ts
 
 
-const TUI_CANCEL_WORD = new core/* InjectionToken */.OlP(`i18n 'cancel' word`, {
+const TUI_CANCEL_WORD = new core/* InjectionToken */.OlP(`[TUI_CANCEL_WORD]: i18n 'cancel' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`cancel`)
 });
-const TUI_DONE_WORD = new core/* InjectionToken */.OlP(`i18n 'done' word`, {
+const TUI_DONE_WORD = new core/* InjectionToken */.OlP(`[TUI_DONE_WORD]: i18n 'done' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`done`)
 });
-const TUI_MORE_WORD = new core/* InjectionToken */.OlP(`i18n 'more' word`, {
+const TUI_MORE_WORD = new core/* InjectionToken */.OlP(`[TUI_MORE_WORD]: i18n 'more' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`more`)
 });
-const TUI_HIDE_TEXT = new core/* InjectionToken */.OlP(`i18n 'hide' word`, {
+const TUI_HIDE_TEXT = new core/* InjectionToken */.OlP(`[TUI_HIDE_TEXT]: i18n 'hide' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`hide`)
 });
-const TUI_SHOW_ALL_TEXT = new core/* InjectionToken */.OlP(`i18n 'show all' word`, {
+const TUI_SHOW_ALL_TEXT = new core/* InjectionToken */.OlP(`[TUI_SHOW_ALL_TEXT]: i18n 'show all' word`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`showAll`)
 });
-const TUI_OTHER_DATE_TEXT = new core/* InjectionToken */.OlP(`i18n 'Other date' text`, {
+const TUI_OTHER_DATE_TEXT = new core/* InjectionToken */.OlP(`[TUI_OTHER_DATE_TEXT]: i18n 'Other date' text`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`otherDate`)
 });
-const TUI_CHOOSE_DAY_OR_RANGE_TEXTS = new core/* InjectionToken */.OlP(`choose day or range i18n texts`, {
+const TUI_CHOOSE_DAY_OR_RANGE_TEXTS = new core/* InjectionToken */.OlP(`[TUI_CHOOSE_DAY_OR_RANGE_TEXTS]: choose day or range i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`mobileCalendarTexts`)
 });
-const TUI_FROM_TO_TEXTS = new core/* InjectionToken */.OlP(`from and to i18n texts`, {
+const TUI_FROM_TO_TEXTS = new core/* InjectionToken */.OlP(`[TUI_FROM_TO_TEXTS]: from and to i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`range`)
 });
-const TUI_PLUS_MINUS_TEXTS = new core/* InjectionToken */.OlP(`plus and minus i18n texts`, {
+const TUI_PLUS_MINUS_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PLUS_MINUS_TEXTS]: plus and minus i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`countTexts`)
 });
-const TUI_TIME_TEXTS = new core/* InjectionToken */.OlP(`time i18n texts`, {
+const TUI_TIME_TEXTS = new core/* InjectionToken */.OlP(`[TUI_TIME_TEXTS]: time i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`time`)
 });
-const TUI_DATE_TEXTS = new core/* InjectionToken */.OlP(`date format i18n texts`, {
+const TUI_DATE_TEXTS = new core/* InjectionToken */.OlP(`[TUI_DATE_TEXTS]: date format i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`dateTexts`)
 });
-const TUI_DIGITAL_INFORMATION_UNITS = new core/* InjectionToken */.OlP(`short bytes, kilobytes and megabytes i18n texts`, {
+const TUI_DIGITAL_INFORMATION_UNITS = new core/* InjectionToken */.OlP(`[TUI_DIGITAL_INFORMATION_UNITS]: short bytes, kilobytes and megabytes i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`digitalInformationUnits`)
 });
-const TUI_COPY_TEXTS = new core/* InjectionToken */.OlP(`copy i18n texts`, {
+const TUI_COPY_TEXTS = new core/* InjectionToken */.OlP(`[TUI_COPY_TEXTS]: copy i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`copyTexts`)
 });
-const TUI_PASSWORD_TEXTS = new core/* InjectionToken */.OlP(`password i18n texts`, {
+const TUI_PASSWORD_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PASSWORD_TEXTS]: password i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`passwordTexts`)
 });
-const TUI_CALENDAR_MONTHS = new core/* InjectionToken */.OlP(`short calendar months i18n`, {
+const TUI_CALENDAR_MONTHS = new core/* InjectionToken */.OlP(`[TUI_CALENDAR_MONTHS]: short calendar months i18n`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`shortCalendarMonths`)
 });
-const TUI_FILE_TEXTS = new core/* InjectionToken */.OlP(`file i18n texts`, {
+const TUI_FILE_TEXTS = new core/* InjectionToken */.OlP(`[TUI_FILE_TEXTS]: file i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`fileTexts`)
 });
-const TUI_PAGINATION_TEXTS = new core/* InjectionToken */.OlP(`pagination i18n texts`, {
+const TUI_PAGINATION_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PAGINATION_TEXTS]: pagination i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`pagination`)
 });
-const TUI_INPUT_FILE_TEXTS = new core/* InjectionToken */.OlP(`tui-input-file i18n texts`, {
+const TUI_INPUT_FILE_TEXTS = new core/* InjectionToken */.OlP(`[TUI_INPUT_FILE_TEXTS]: tui-input-file i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`inputFileTexts`)
 });
-const TUI_COUNTRIES = new core/* InjectionToken */.OlP(`Localized countries names`, {
+const TUI_COUNTRIES = new core/* InjectionToken */.OlP(`[TUI_COUNTRIES]: Localized countries names`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`countries`)
 });
 // EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
@@ -70036,7 +70036,7 @@ const TUI_DEFAULT_ITEMS_HANDLERS = {
   identityMatcher: cdk.TUI_DEFAULT_IDENTITY_MATCHER,
   disabledItemHandler: cdk.ALWAYS_FALSE_HANDLER
 };
-const TUI_ITEMS_HANDLERS = new core/* InjectionToken */.OlP(`Default items handlers for components`, {
+const TUI_ITEMS_HANDLERS = new core/* InjectionToken */.OlP(`[TUI_ITEMS_HANDLERS]: Default items handlers for components`, {
   factory: () => TUI_DEFAULT_ITEMS_HANDLERS
 });
 const tuiItemsHandlersProvider = options => ({
@@ -70045,18 +70045,18 @@ const tuiItemsHandlersProvider = options => ({
 });
 ;// CONCATENATED MODULE: ./projects/kit/tokens/mobile-calendar.ts
 
-const TUI_MOBILE_CALENDAR = new core/* InjectionToken */.OlP(`A component for mobile data picker`);
+const TUI_MOBILE_CALENDAR = new core/* InjectionToken */.OlP(`[TUI_MOBILE_CALENDAR]: A component for mobile data picker`);
 ;// CONCATENATED MODULE: ./projects/kit/tokens/month-formatter.ts
 
-const TUI_MONTH_FORMATTER = new core/* InjectionToken */.OlP(`A function to get localized formatted month`);
+const TUI_MONTH_FORMATTER = new core/* InjectionToken */.OlP(`[TUI_MONTH_FORMATTER]: A function to get localized formatted month`);
 ;// CONCATENATED MODULE: ./projects/kit/tokens/tab-margin.ts
 
-const TUI_TAB_MARGIN = new core/* InjectionToken */.OlP(`Margin between tabs`, {
+const TUI_TAB_MARGIN = new core/* InjectionToken */.OlP(`[TUI_TAB_MARGIN]: Margin between tabs`, {
   factory: () => 24
 });
 ;// CONCATENATED MODULE: ./projects/kit/tokens/validation-errors.ts
 
-const TUI_VALIDATION_ERRORS = new core/* InjectionToken */.OlP(`Validation errors`, {
+const TUI_VALIDATION_ERRORS = new core/* InjectionToken */.OlP(`[TUI_VALIDATION_ERRORS]: Validation errors`, {
   factory: () => ({})
 });
 ;// CONCATENATED MODULE: ./projects/kit/tokens/index.ts

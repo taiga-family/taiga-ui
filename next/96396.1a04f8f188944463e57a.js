@@ -16193,10 +16193,10 @@ var pan_directive = __webpack_require__(60015);
 
 
 
-const TUI_EDITOR_MIN_IMAGE_WIDTH = new core/* InjectionToken */.OlP(`Min size of resizable image inside editor`, {
+const TUI_EDITOR_MIN_IMAGE_WIDTH = new core/* InjectionToken */.OlP(`[TUI_EDITOR_MIN_IMAGE_WIDTH]: Min size of resizable image inside editor`, {
   factory: () => 100
 });
-const TUI_EDITOR_MAX_IMAGE_WIDTH = new core/* InjectionToken */.OlP(`Max size of resizable image inside editor`, {
+const TUI_EDITOR_MAX_IMAGE_WIDTH = new core/* InjectionToken */.OlP(`[TUI_EDITOR_MAX_IMAGE_WIDTH]: Max size of resizable image inside editor`, {
   factory: () => Infinity
 });
 let TuiImageEditorComponent = /*#__PURE__*/(() => {
@@ -17245,8 +17245,8 @@ __webpack_require__.d(__webpack_exports__, {
 var core = __webpack_require__(74788);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/editor-extensions.ts
 
-const TUI_EDITOR_EXTENSIONS = new core/* InjectionToken */.OlP(`Extensions for editor`);
-const LAZY_EDITOR_EXTENSIONS = new core/* InjectionToken */.OlP(`lazy extensions`);
+const TUI_EDITOR_EXTENSIONS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_EXTENSIONS]: Extensions for editor`);
+const LAZY_EDITOR_EXTENSIONS = new core/* InjectionToken */.OlP(`[LAZY_EDITOR_EXTENSIONS]: lazy extensions`);
 // EXTERNAL MODULE: ./projects/addon-editor/constants/index.ts + 3 modules
 var constants = __webpack_require__(19074);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/editor-options.ts
@@ -17257,7 +17257,7 @@ const TUI_EDITOR_DEFAULT_OPTIONS = {
   blankColor: constants/* EDITOR_BLANK_COLOR */.hK,
   fontOptions: constants/* tuiDefaultFontOptionsHandler */.RR
 };
-const TUI_EDITOR_OPTIONS = new core/* InjectionToken */.OlP(`Default Editor colors`, {
+const TUI_EDITOR_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_OPTIONS]: Default Editor colors`, {
   factory: () => TUI_EDITOR_DEFAULT_OPTIONS
 });
 function tuiEditorOptionsProvider(options) {
@@ -17271,7 +17271,7 @@ var identity = __webpack_require__(54487);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/editor-processor.ts
 
 
-const TUI_EDITOR_CONTENT_PROCESSOR = new core/* InjectionToken */.OlP(`Content value processor for tui-editor`, {
+const TUI_EDITOR_CONTENT_PROCESSOR = new core/* InjectionToken */.OlP(`[TUI_EDITOR_CONTENT_PROCESSOR]: Content value processor for tui-editor`, {
   factory: () => identity/* identity */.y
 });
 // EXTERNAL MODULE: ./projects/i18n/index.ts + 12 modules
@@ -17279,19 +17279,19 @@ var i18n = __webpack_require__(72773);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/i18n.ts
 
 
-const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new core/* InjectionToken */.OlP(`tui-color-selector i18n`, {
+const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new core/* InjectionToken */.OlP(`[TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES]: tui-color-selector i18n`, {
   factory: () => [`Solid color`, `Gradient`]
 });
-const TUI_EDITOR_TOOLBAR_TEXTS = new core/* InjectionToken */.OlP(`tui-editor-toolbar i18n`, {
+const TUI_EDITOR_TOOLBAR_TEXTS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_TOOLBAR_TEXTS]: tui-editor-toolbar i18n`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`toolbarTools`)
 });
-const TUI_EDITOR_TABLE_COMMANDS = new core/* InjectionToken */.OlP(`tui-editor-toolbar table i18n`, {
+const TUI_EDITOR_TABLE_COMMANDS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_TABLE_COMMANDS]: tui-editor-toolbar table i18n`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`editorTableCommands`)
 });
-const TUI_EDITOR_CODE_OPTIONS = new core/* InjectionToken */.OlP(`tui-editor-toolbar codes options`, {
+const TUI_EDITOR_CODE_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_CODE_OPTIONS]: tui-editor-toolbar codes options`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`editorCodeOptions`)
 });
-const TUI_EDITOR_FONT_OPTIONS = new core/* InjectionToken */.OlP(`tui-editor-toolbar font options`, {
+const TUI_EDITOR_FONT_OPTIONS = new core/* InjectionToken */.OlP(`[TUI_EDITOR_FONT_OPTIONS]: tui-editor-toolbar font options`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`editorFontOptions`)
 });
 // EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
@@ -17302,7 +17302,7 @@ var map = __webpack_require__(88002);
 
 
 
-const TUI_IMAGE_LOADER = new core/* InjectionToken */.OlP(`Image loader handler`, {
+const TUI_IMAGE_LOADER = new core/* InjectionToken */.OlP(`[TUI_IMAGE_LOADER]: Image loader handler`, {
   factory: () => file => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
@@ -17314,8 +17314,8 @@ var ReplaySubject = __webpack_require__(82298);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/tiptap-editor.ts
 
 
-const TIPTAP_EDITOR = new core/* InjectionToken */.OlP(`Token for Tiptap Editor`);
-const LAZY_TIPTAP_EDITOR = new core/* InjectionToken */.OlP(`Lazy loaded Editor`, {
+const TIPTAP_EDITOR = new core/* InjectionToken */.OlP(`[TIPTAP_EDITOR]: Token for Tiptap Editor`);
+const LAZY_TIPTAP_EDITOR = new core/* InjectionToken */.OlP(`[LAZY_TIPTAP_EDITOR]: Lazy loaded Editor`, {
   factory: () => {
     const editor$ = new ReplaySubject/* ReplaySubject */.t(1); // eslint-disable-next-line @typescript-eslint/no-floating-promises
 
@@ -17323,7 +17323,7 @@ const LAZY_TIPTAP_EDITOR = new core/* InjectionToken */.OlP(`Lazy loaded Editor`
     return editor$;
   }
 });
-const INITIALIZATION_TIPTAP_CONTAINER = new core/* InjectionToken */.OlP(`The container in which the tip-tap editor is initialized`);
+const INITIALIZATION_TIPTAP_CONTAINER = new core/* InjectionToken */.OlP(`[INITIALIZATION_TIPTAP_CONTAINER]: The container in which the tip-tap editor is initialized`);
 ;// CONCATENATED MODULE: ./projects/addon-editor/tokens/index.ts
 
 

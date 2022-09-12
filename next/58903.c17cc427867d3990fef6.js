@@ -90,7 +90,7 @@ const ICONS = {
     [`Payment systems`]: COMMERCE
   }
 };
-const TUI_DEMO_ICONS = new fesm2015_core/* InjectionToken */.OlP(`Icons`, {
+const TUI_DEMO_ICONS = new fesm2015_core/* InjectionToken */.OlP(`[TUI_DEMO_ICONS]: Icons`, {
   factory: () => ICONS
 });
 /**

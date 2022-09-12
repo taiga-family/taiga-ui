@@ -8430,10 +8430,10 @@ var i18n = __webpack_require__(72773);
 ;// CONCATENATED MODULE: ./projects/addon-table/tokens/i18n.ts
 
 
-const TUI_TABLE_SHOW_HIDE_MESSAGE = new core/* InjectionToken */.OlP(`tui-reorder i18n button`, {
+const TUI_TABLE_SHOW_HIDE_MESSAGE = new core/* InjectionToken */.OlP(`[TUI_TABLE_SHOW_HIDE_MESSAGE]: tui-reorder i18n button`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`showHideText`)
 });
-const TUI_TABLE_PAGINATION_TEXTS = new core/* InjectionToken */.OlP(`tui-table-pagination i18n texts`, {
+const TUI_TABLE_PAGINATION_TEXTS = new core/* InjectionToken */.OlP(`[TUI_TABLE_PAGINATION_TEXTS]: tui-table-pagination i18n texts`, {
   factory: (0,i18n/* tuiExtractI18n */.vv)(`paginationTexts`)
 });
 ;// CONCATENATED MODULE: ./projects/addon-table/tokens/index.ts

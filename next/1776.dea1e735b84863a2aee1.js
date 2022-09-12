@@ -1222,6 +1222,7 @@ var code_component = __webpack_require__(76349);
 
 
 
+
 const input_component_c0 = ["justLongText"];
 
 function ExampleTuiInputComponent_ng_template_1_Template(rf, ctx) {
@@ -1359,42 +1360,45 @@ function ExampleTuiInputComponent_ng_template_1_Template(rf, ctx) {
 
 function ExampleTuiInputComponent_ng_template_2_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-input", 34);
-    fesm2015_core/* ɵɵtext */._uU(1, " placeholder ");
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-input", 35);
+    fesm2015_core/* ɵɵtext */._uU(1, " Label ");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "strong");
     fesm2015_core/* ɵɵtext */._uU(3, "strong text");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelement */._UZ(4, "input", 36);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
     const ctx_r5 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵproperty */.Q6J("formControl", ctx_r5.control)("focusable", ctx_r5.focusable)("pseudoInvalid", ctx_r5.pseudoInvalid)("pseudoFocus", ctx_r5.pseudoFocused)("pseudoHover", ctx_r5.pseudoHovered)("tuiTextfieldIcon", ctx_r5.icon)("tuiTextfieldIconLeft", ctx_r5.iconLeft)("readOnly", ctx_r5.readOnly)("tuiTextfieldLabelOutside", ctx_r5.labelOutside)("tuiTextfieldCustomContent", ctx_r5.customContent)("tuiTextfieldSize", ctx_r5.size)("tuiTextfieldCleaner", ctx_r5.cleaner)("tuiDropdownAlign", ctx_r5.dropdownAlign)("tuiDropdownDirection", ctx_r5.dropdownDirection)("tuiDropdownLimitWidth", ctx_r5.dropdownLimitWidth)("tuiDropdownMinHeight", ctx_r5.dropdownMinHeight)("tuiDropdownMaxHeight", ctx_r5.dropdownMaxHeight)("tuiHintContent", ctx_r5.hintContent)("tuiHintDirection", ctx_r5.hintDirection)("tuiHintAppearance", ctx_r5.hintAppearance);
+    fesm2015_core/* ɵɵadvance */.xp6(4);
+    fesm2015_core/* ɵɵattribute */.uIk("placeholder", ctx_r5.placeholder);
   }
 }
 
 function ExampleTuiInputComponent_ng_template_2_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 35);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "div", 36);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 37);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "div", 38);
     fesm2015_core/* ɵɵtext */._uU(2);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(3, "tui-money", 37);
+    fesm2015_core/* ɵɵelement */._UZ(3, "tui-money", 39);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const data_r10 = ctx.$implicit;
+    const data_r11 = ctx.$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(2);
-    fesm2015_core/* ɵɵtextInterpolate */.Oqu(data_r10.name);
+    fesm2015_core/* ɵɵtextInterpolate */.Oqu(data_r11.name);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("value", data_r10.balance);
+    fesm2015_core/* ɵɵproperty */.Q6J("value", data_r11.balance);
   }
 }
 
 function ExampleTuiInputComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 38);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 40);
     fesm2015_core/* ɵɵelement */._UZ(1, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
   }
@@ -1402,37 +1406,49 @@ function ExampleTuiInputComponent_ng_template_2_ng_template_5_Template(rf, ctx) 
 
 function ExampleTuiInputComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 39);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 40);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 41);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 42);
     fesm2015_core/* ɵɵelement */._UZ(2, "code");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵi18nEnd */.N_p();
   }
 }
 
+function ExampleTuiInputComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵi18n */.SDv(0, 43);
+  }
+}
+
 function ExampleTuiInputComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r13 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo", 29);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputComponent_ng_template_2_ng_template_1_Template, 4, 20, "ng-template");
+    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputComponent_ng_template_2_ng_template_1_Template, 5, 21, "ng-template");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiInputComponent_ng_template_2_ng_template_2_Template, 4, 2, "ng-template", null, 30, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
     fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-doc-documentation");
     fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiInputComponent_ng_template_2_ng_template_5_Template, 2, 0, "ng-template", 31);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
-      const ctx_r11 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r11.disabled = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
+      const ctx_r12 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r12.disabled = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiInputComponent_ng_template_2_ng_template_6_Template, 3, 0, "ng-template", 32);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
-      const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r13.icon = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
+      const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r14.icon = $event;
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiInputComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 33);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
+      const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r15.placeholder = $event;
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(7, "inherited-documentation", 33);
+    fesm2015_core/* ɵɵelement */._UZ(8, "inherited-documentation", 34);
   }
 
   if (rf & 2) {
@@ -1443,35 +1459,37 @@ function ExampleTuiInputComponent_ng_template_2_Template(rf, ctx) {
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.iconVariants)("documentationPropertyValue", ctx_r1.icon);
     fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.placeholder);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("dropdown", true);
   }
 }
 
 function ExampleTuiInputComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 41);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 44);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 42);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 45);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 43);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 46);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(8, 44);
+    fesm2015_core/* ɵɵi18nStart */.tHW(8, 47);
     fesm2015_core/* ɵɵelement */._UZ(9, "code");
     fesm2015_core/* ɵɵelement */._UZ(10, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(11, "tui-doc-code", 45);
+    fesm2015_core/* ɵɵelement */._UZ(11, "tui-doc-code", 48);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(12, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(13, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(14, 46);
+    fesm2015_core/* ɵɵi18n */.SDv(14, 49);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(15, "tui-doc-code", 47);
+    fesm2015_core/* ɵɵelement */._UZ(15, "tui-doc-code", 50);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1549,6 +1567,7 @@ let ExampleTuiInputComponent = /*#__PURE__*/(() => {
       this.iconAlignVariants = [`left`, `right`];
       this.iconAlign = this.iconAlignVariants[1];
       this.control = new fesm2015_forms/* FormControl */.NI(`111`, fesm2015_forms/* Validators.required */.kI.required);
+      this.placeholder = `Field placeholder`;
       this.customContentVariants = [`tuiIconSearchLarge`, `tuiIconCalendarLarge`, `tuiIconVisaMono`, `tuiIconMastercardMono`, LONG_TEXT_TEMPLATE];
     }
 
@@ -1728,50 +1747,59 @@ let ExampleTuiInputComponent = /*#__PURE__*/(() => {
       let i18n_25;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2238425626124076884$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__26 = goog.getMsg(" Import an Angular module for forms and {$startTagCode}TuiInputModule{$closeTagCode} in the same module where you want to use our component: ", {
-          "startTagCode": "\uFFFD#4\uFFFD",
-          "closeTagCode": "\uFFFD/#4\uFFFD"
-        });
-        i18n_25 = MSG_EXTERNAL_2238425626124076884$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__26;
+        const MSG_EXTERNAL_375437327760043424$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS___26 = goog.getMsg(" Placeholder ");
+        i18n_25 = MSG_EXTERNAL_375437327760043424$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS___26;
       } else {
-        i18n_25 = $localize`:␟b87ebd9a23ff23ca85a00e40c87f9f20c5aac1fa␟2238425626124076884: Import an Angular module for forms and ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: in the same module where you want to use our component: `;
+        i18n_25 = $localize`:␟93a57163fe048f43584807fb16bcb93af15ffd34␟375437327760043424: Placeholder `;
       }
 
       let i18n_27;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__28 = goog.getMsg(" Declare a form ( {$startTagCode}FormGroup{$closeTagCode} ) or a control ( {$startTagCode}FormControl{$closeTagCode} ) in your component: ", {
-          "startTagCode": "[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]",
-          "closeTagCode": "[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"
+        const MSG_EXTERNAL_2238425626124076884$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__28 = goog.getMsg(" Import an Angular module for forms and {$startTagCode}TuiInputModule{$closeTagCode} in the same module where you want to use our component: ", {
+          "startTagCode": "\uFFFD#4\uFFFD",
+          "closeTagCode": "\uFFFD/#4\uFFFD"
         });
-        i18n_27 = MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__28;
+        i18n_27 = MSG_EXTERNAL_2238425626124076884$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__28;
       } else {
-        i18n_27 = $localize`:␟456424fe8e0d32d35e8189a73951290607573253␟6039324497180220606: Declare a form ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormGroup${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) or a control ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormControl${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) in your component: `;
+        i18n_27 = $localize`:␟b87ebd9a23ff23ca85a00e40c87f9f20c5aac1fa␟2238425626124076884: Import an Angular module for forms and ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: in the same module where you want to use our component: `;
       }
 
-      i18n_27 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_27);
       let i18n_29;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__30 = goog.getMsg("Add to the template:");
-        i18n_29 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__30;
+        const MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__30 = goog.getMsg(" Declare a form ( {$startTagCode}FormGroup{$closeTagCode} ) or a control ( {$startTagCode}FormControl{$closeTagCode} ) in your component: ", {
+          "startTagCode": "[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]",
+          "closeTagCode": "[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"
+        });
+        i18n_29 = MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__30;
       } else {
-        i18n_29 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+        i18n_29 = $localize`:␟456424fe8e0d32d35e8189a73951290607573253␟6039324497180220606: Declare a form ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormGroup${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) or a control ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormControl${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) in your component: `;
       }
 
-      return [["header", "Input", "package", "KIT", "type", "components"], ["pageTab", ""], ["justLongText", ""], [1, "tui-space_bottom-3"], i18n_1, i18n_3, i18n_5, ["tuiLink", "", "routerLink", "/components/text-area"], ["tuiLink", "", "routerLink", "/components/input-date"], ["tuiLink", "", "routerLink", "/components/input-date-range"], ["tuiLink", "", "routerLink", "/components/input-number"], ["tuiLink", "", "routerLink", "/components/input-password"], ["tuiLink", "", "routerLink", "/components/input-phone"], ["tuiLink", "", "routerLink", "/components/input-tag"], ["tuiLink", "", "routerLink", "/components/input-range"], ["tuiLink", "", "routerLink", "/components/input-slider"], ["tuiLink", "", "routerLink", "/components/slider"], ["tuiLink", "", "routerLink", "/components/range"], ["tuiLink", "", "routerLink", "/components/input-count"], ["id", "base", "heading", i18n_7, 3, "content"], [1, "tui-space_bottom-4", "b-form"], ["id", "sizes", "heading", i18n_9, 3, "content"], ["id", "mask", "heading", i18n_11, 3, "content"], ["id", "autocomplete", "heading", i18n_13, 3, "content"], ["id", "modes", "heading", i18n_15, 3, "content"], ["id", "table", "heading", i18n_17, 3, "content"], ["id", "success", "heading", i18n_19, "description", "A check mark by success validation", 3, "content"], ["id", "datalist", "heading", "DataList", 3, "content"], ["id", "rtl", "heading", "Direction: RTL", 3, "content"], [3, "control"], ["itemContent", ""], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiTextfieldIcon", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], [3, "dropdown"], [3, "formControl", "focusable", "pseudoInvalid", "pseudoFocus", "pseudoHover", "tuiTextfieldIcon", "tuiTextfieldIconLeft", "readOnly", "tuiTextfieldLabelOutside", "tuiTextfieldCustomContent", "tuiTextfieldSize", "tuiTextfieldCleaner", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "tuiHintContent", "tuiHintDirection", "tuiHintAppearance"], [1, "account"], [1, "name"], [3, "value"], i18n_21, i18n_23, ["tuiLink", "", "routerLink", "/services/svg-service"], [1, "b-demo-steps"], i18n_25, ["filename", "myComponent.module.ts", 3, "code"], i18n_27, ["filename", "myComponent.component.ts", 3, "code"], i18n_29, ["filename", "myComponent.template.html", 3, "code"]];
+      i18n_29 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_29);
+      let i18n_31;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__32 = goog.getMsg("Add to the template:");
+        i18n_31 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_INPUT_COMPONENT_TS__32;
+      } else {
+        i18n_31 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+      }
+
+      return [["header", "Input", "package", "KIT", "type", "components"], ["pageTab", ""], ["justLongText", ""], [1, "tui-space_bottom-3"], i18n_1, i18n_3, i18n_5, ["tuiLink", "", "routerLink", "/components/text-area"], ["tuiLink", "", "routerLink", "/components/input-date"], ["tuiLink", "", "routerLink", "/components/input-date-range"], ["tuiLink", "", "routerLink", "/components/input-number"], ["tuiLink", "", "routerLink", "/components/input-password"], ["tuiLink", "", "routerLink", "/components/input-phone"], ["tuiLink", "", "routerLink", "/components/input-tag"], ["tuiLink", "", "routerLink", "/components/input-range"], ["tuiLink", "", "routerLink", "/components/input-slider"], ["tuiLink", "", "routerLink", "/components/slider"], ["tuiLink", "", "routerLink", "/components/range"], ["tuiLink", "", "routerLink", "/components/input-count"], ["id", "base", "heading", i18n_7, 3, "content"], [1, "tui-space_bottom-4", "b-form"], ["id", "sizes", "heading", i18n_9, 3, "content"], ["id", "mask", "heading", i18n_11, 3, "content"], ["id", "autocomplete", "heading", i18n_13, 3, "content"], ["id", "modes", "heading", i18n_15, 3, "content"], ["id", "table", "heading", i18n_17, 3, "content"], ["id", "success", "heading", i18n_19, "description", "A check mark by success validation", 3, "content"], ["id", "datalist", "heading", "DataList", 3, "content"], ["id", "rtl", "heading", "Direction: RTL", 3, "content"], [3, "control"], ["itemContent", ""], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiTextfieldIcon", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "attr.placeholder", "documentationPropertyMode", "input", "documentationPropertyType", "string", 3, "documentationPropertyValue", "documentationPropertyValueChange"], [3, "dropdown"], [3, "formControl", "focusable", "pseudoInvalid", "pseudoFocus", "pseudoHover", "tuiTextfieldIcon", "tuiTextfieldIconLeft", "readOnly", "tuiTextfieldLabelOutside", "tuiTextfieldCustomContent", "tuiTextfieldSize", "tuiTextfieldCleaner", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "tuiHintContent", "tuiHintDirection", "tuiHintAppearance"], ["tuiTextfield", ""], [1, "account"], [1, "name"], [3, "value"], i18n_21, i18n_23, ["tuiLink", "", "routerLink", "/services/svg-service"], i18n_25, [1, "b-demo-steps"], i18n_27, ["filename", "myComponent.module.ts", 3, "code"], i18n_29, ["filename", "myComponent.component.ts", 3, "code"], i18n_31, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiInputComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
         fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputComponent_ng_template_1_Template, 67, 9, "ng-template", 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiInputComponent_ng_template_2_Template, 8, 5, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiInputComponent_ng_template_2_Template, 9, 6, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiInputComponent_ng_template_3_Template, 16, 3, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiInputComponent_ng_template_4_Template, 1, 0, "ng-template", null, 2, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, notification_component/* TuiNotificationComponent */.L, TuiInputExample1, TuiInputExample2, TuiInputExample3, TuiInputExample4, TuiInputExample5, TuiInputExample6, TuiInputExample7, TuiInputExample8, TuiInputExample9, demo_component/* TuiDocDemoComponent */.F, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, inherited_documentation_component/* InheritedDocumentationComponent */.w, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, textfield_icon_directive/* TuiTextfieldIconDirective */.AW, textfield_icon_left_directive/* TuiTextfieldIconLeftDirective */.aR, textfield_label_outside_directive/* TuiTextfieldLabelOutsideDirective */.x, textfield_custom_content_directive/* TuiTextfieldCustomContentDirective */.B, textfield_size_directive/* TuiTextfieldSizeDirective */.s, textfield_cleaner_directive/* TuiTextfieldCleanerDirective */.b, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, hint_options_directive/* TuiHintOptionsDirective */.b, money_component/* TuiMoneyComponent */.o, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, notification_component/* TuiNotificationComponent */.L, TuiInputExample1, TuiInputExample2, TuiInputExample3, TuiInputExample4, TuiInputExample5, TuiInputExample6, TuiInputExample7, TuiInputExample8, TuiInputExample9, demo_component/* TuiDocDemoComponent */.F, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, inherited_documentation_component/* InheritedDocumentationComponent */.w, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, textfield_icon_directive/* TuiTextfieldIconDirective */.AW, textfield_icon_left_directive/* TuiTextfieldIconLeftDirective */.aR, textfield_label_outside_directive/* TuiTextfieldLabelOutsideDirective */.x, textfield_custom_content_directive/* TuiTextfieldCustomContentDirective */.B, textfield_size_directive/* TuiTextfieldSizeDirective */.s, textfield_cleaner_directive/* TuiTextfieldCleanerDirective */.b, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, hint_options_directive/* TuiHintOptionsDirective */.b, textfield_component/* TuiTextfieldComponent */.M, money_component/* TuiMoneyComponent */.o, code_component/* TuiDocCodeComponent */.c],
     styles: [".account[_ngcontent-%COMP%]{display:flex;flex-direction:column;height:3.5rem;padding:.5rem 0;box-sizing:border-box}.name[_ngcontent-%COMP%]{opacity:.7}"],
     changeDetection: 0
   });

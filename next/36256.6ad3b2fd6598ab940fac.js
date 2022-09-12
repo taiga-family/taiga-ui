@@ -208,7 +208,7 @@ const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS = {
   sizeOptionContent: defaultSizeOptionContent,
   showPages: true
 };
-const TUI_TABLE_PAGINATION_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Default parameters for TablePagination component`, {
+const TUI_TABLE_PAGINATION_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_TABLE_PAGINATION_OPTIONS]: Default parameters for TablePagination component`, {
   factory: () => TUI_TABLE_PAGINATION_DEFAULT_OPTIONS
 });
 function tuiTablePaginationOptionsProvider(options) {
@@ -1046,7 +1046,7 @@ TuiTableSortPipe.ɵpipe = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2_
 
 
 
-const TUI_STUCK = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`Stream of sticky stuck events`);
+const TUI_STUCK = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .InjectionToken */ .OlP(`[TUI_STUCK]: Stream of sticky stuck events`);
 const TUI_STUCK_PROVIDER = {
   provide: TUI_STUCK,
   deps: [_angular_core__WEBPACK_IMPORTED_MODULE_0__/* .ElementRef */ .SBq, _ng_web_apis_intersection_observer__WEBPACK_IMPORTED_MODULE_1__/* .IntersectionObserverService */ .te],

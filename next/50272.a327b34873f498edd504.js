@@ -42,7 +42,7 @@ var fesm2015_core = __webpack_require__(74788);
 var ng_web_apis_common = __webpack_require__(62579);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/tokens/css-vars.ts
 
-const CSS_VARS = new fesm2015_core/* InjectionToken */.OlP(`CSS vars list for customization`, {
+const CSS_VARS = new fesm2015_core/* InjectionToken */.OlP(`[CSS_VARS]: CSS vars list for customization`, {
   factory: () => []
 });
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/app/customization/customization.providers.ts
@@ -52,7 +52,7 @@ const CSS_VARS = new fesm2015_core/* InjectionToken */.OlP(`CSS vars list for cu
 
 
 
-const TUI_DOC_CUSTOMIZATION_VARS = new fesm2015_core/* InjectionToken */.OlP(`CSS variables map`);
+const TUI_DOC_CUSTOMIZATION_VARS = new fesm2015_core/* InjectionToken */.OlP(`[TUI_DOC_CUSTOMIZATION_VARS]: CSS variables map`);
 const TUI_DOC_CUSTOMIZATION_PROVIDERS = [cdk.TuiDestroyService, {
   provide: core.TuiModeDirective,
   useExisting: (0,fesm2015_core/* forwardRef */.Gpc)(() => TuiCustomizationComponent)
