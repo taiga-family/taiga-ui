@@ -1,4 +1,4 @@
-name: Release Taiga UI packages
+name: Publish Taiga UI packages
 
 on:
   push:

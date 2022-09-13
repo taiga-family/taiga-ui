@@ -18,7 +18,7 @@ env:
 
 jobs:
   deploy-gh-pages:
-    name: Some Workflow Work
+    if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Preflight
@@ -26,8 +26,8 @@ jobs:
 
       - name: Prepare demo before deploy from snapshots
         run: |
-          git clone --depth 1 --branch snapshots/demo/3.x ${{ env.REPO }} ${{ env.DIST }}/
-          git clone --depth 1 --branch snapshots/demo/2.x ${{ env.REPO }} ${{ env.DIST }}/v2/
+          git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}/
+          git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2/
           git clone --depth 1 --branch snapshots/demo/next/main --branch ${{ env.REPO }} ${{ env.DIST }}/next/
 
       - name: Debug output
