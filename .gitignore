@@ -1,0 +1,8 @@
+# Only for github pages
+.husky
+.idea
+.ssl
+*.iml
+*.tsbuildinfo
+node_modules
+projects
