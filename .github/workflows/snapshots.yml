@@ -1,49 +1,54 @@
-name: Save snapshots / production / next
+name: Snapshots
 
 on:
   push:
-    branches: [main, 'v[0-9]+.x']
-  workflow_dispatch:
+    branches: [main, 'v[0-9]+.x', 'release/**']
 
 env:
   NX_BRANCH: ${{ github.event.number }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-  REF_NAME: ${{ github.head_ref || github.ref_name }}
+  TARGET: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  build-and-publish-snapshots:
-    name: Build and publish snapshots for ${{ env.REF_NAME }}
+  snapshots-next:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    name: Build and publish snapshots of ${{ env.TARGET }} branch for next configuration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      # Production configuration
-      - run: npx nx build -c production --skip-nx-cache
-      - name: Debug output
-        run: ls -la dist/demo/browser
-      - name: Save snapshot ${{ env.REF_NAME }} branch of production configuration
+      - run: npx nx build -c next --skip-nx-cache
+      - run: ls -la dist/demo/browser/next # Debug output
+      - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
-          BRANCH: snapshots/demo/${{ env.REF_NAME }}
-          FOLDER: dist/demo/browser
+          FOLDER: dist/demo/browser/next
+          BRANCH: snapshots/demo/next/${{ env.TARGET }}
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
-      # Next configuration
-      - run: npx nx build -c next --skip-nx-cache
-      - name: Debug output
-        run: ls -la dist/demo/browser/next
-      - name: Save snapshot ${{ env.REF_NAME }} branch of next configuration
+  snapshots-of-release:
+    if: ${{ contains(github.head_ref, 'release/') }}
+    name: Build and publish next snapshots for ${{ env.TARGET }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - run: npx nx build --skip-nx-cache
+      - run: ls -la dist/demo/browser # Debug output
+      - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
-          BRANCH: snapshots/demo/next/${{ env.REF_NAME }}
-          FOLDER: dist/demo/browser/next
+          FOLDER: dist/demo/browser
+          BRANCH: snapshots/demo/${{ env.TARGET }}
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
 concurrency:
-  group: save-snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: snapshots-${{ github.workflow }}-${{ github.TARGET }}
   cancel-in-progress: true

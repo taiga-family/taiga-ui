@@ -18,8 +18,9 @@
                 "command": "nx build i18n"
             }
         },
-        "ng-build": {
+        "build": {
             "builder": "@angular-builders/custom-webpack:browser",
+            "outputs": ["dist/demo"],
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -37,6 +38,7 @@
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "assets": [
+                    "projects/demo/src/404.html",
                     {
                         "glob": "**/*",
                         "input": "projects/demo/src/assets/",
@@ -48,7 +50,7 @@
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
-                "baseHref": "/",
+                "baseHref": "./",
                 "styles": [
                     "projects/demo/src/normalize.less",
                     "projects/demo/src/styles.less",
@@ -111,7 +113,7 @@
                         },
                         "fonts": true
                     },
-                    "baseHref": "/next/",
+                    "baseHref": "./",
                     "outputPath": "dist/demo/browser/next",
                     "outputHashing": "all",
                     "sourceMap": false,
@@ -145,26 +147,6 @@
             },
             "defaultConfiguration": "production"
         },
-        "build": {
-            "builder": "@nrwl/workspace:run-commands",
-            "outputs": ["dist/demo"],
-            "options": {
-                "command": "nx postbuild demo"
-            },
-            "dependsOn": [
-                {
-                    "projects": "self",
-                    "target": "ng-build",
-                    "params": "forward"
-                }
-            ]
-        },
-        "postbuild": {
-            "builder": "@nrwl/workspace:run-commands",
-            "options": {
-                "command": "ts-node ./scripts/postbuild-demo.ts"
-            }
-        },
         "mkcert": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
@@ -195,20 +177,20 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:ng-build:production",
+                    "browserTarget": "demo:build:production",
                     "aot": true
                 },
                 "def": {
-                    "browserTarget": "demo:ng-build:def"
+                    "browserTarget": "demo:build:def"
                 },
                 "shadow": {
-                    "browserTarget": "demo:ng-build:shadow"
+                    "browserTarget": "demo:build:shadow"
                 },
                 "ru": {
-                    "browserTarget": "demo:ng-build:ru"
+                    "browserTarget": "demo:build:ru"
                 },
                 "development": {
-                    "browserTarget": "demo:ng-build:development"
+                    "browserTarget": "demo:build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -248,12 +230,12 @@
             "options": {},
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:ng-build:production",
+                    "browserTarget": "demo:build:production",
                     "serverTarget": "demo:server:production"
                 },
                 "development": {
                     "serverTarget": "demo:server:development",
-                    "browserTarget": "demo:ng-build:development"
+                    "browserTarget": "demo:build:development"
                 }
             },
             "dependsOn": [
@@ -300,7 +282,7 @@
         "prerender": {
             "builder": "@nguniversal/builders:prerender",
             "options": {
-                "browserTarget": "demo:ng-build:production",
+                "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
                 "routes": ["/"]
             },
@@ -311,7 +293,7 @@
         "extract-i18n": {
             "builder": "@angular-builders/custom-webpack:extract-i18n",
             "options": {
-                "browserTarget": "demo:ng-build"
+                "browserTarget": "demo:build"
             }
         },
         "test": {
