@@ -25,7 +25,7 @@ jobs:
         run: |
           git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}/
           git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2/
-          git clone --depth 1 --branch snapshots/demo/next/main --branch ${{ env.REPO }} ${{ env.DIST }}/next/
+          git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next/
 
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
