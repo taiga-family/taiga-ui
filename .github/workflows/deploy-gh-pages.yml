@@ -26,9 +26,9 @@ jobs:
 
       - name: Prepare demo before deploy from snapshots
         run: |
-          git clone --depth 1 snapshots/demo/main --branch ${{ env.REPO }} ${{ env.DIST }}/
-          git clone --depth 1 snapshots/demo/2.x --branch ${{ env.REPO }} ${{ env.DIST }}/v2/
-          git clone --depth 1 snapshots/demo/next --branch ${{ env.REPO }} ${{ env.DIST }}/next/
+          git clone --depth 1 --branch snapshots/demo/3.x ${{ env.REPO }} ${{ env.DIST }}/
+          git clone --depth 1 --branch snapshots/demo/2.x ${{ env.REPO }} ${{ env.DIST }}/v2/
+          git clone --depth 1 --branch snapshots/demo/next/main --branch ${{ env.REPO }} ${{ env.DIST }}/next/
 
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'

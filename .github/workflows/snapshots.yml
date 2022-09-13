@@ -8,12 +8,12 @@ env:
   NX_BRANCH: ${{ github.event.number }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-  TARGET: ${{ github.head_ref || github.ref_name }}
+  DIST: dist/demo/browser
 
 jobs:
   snapshots-next:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    name: Build and publish snapshots of ${{ env.TARGET }} branch for next configuration
+    name: Build and publish snapshots for next configuration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,34 +21,35 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - run: npx nx build -c next --skip-nx-cache
-      - run: ls -la dist/demo/browser/next # Debug output
+      - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
-          FOLDER: dist/demo/browser/next
-          BRANCH: snapshots/demo/next/${{ env.TARGET }}
+          FOLDER: ${{ env.DIST }}/next
+          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
   snapshots-of-release:
     if: ${{ contains(github.head_ref, 'release/') }}
-    name: Build and publish next snapshots for ${{ env.TARGET }}
+    name: Build and publish snapshots for production configuration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+        id: nodejs-workspace
 
       - run: npx nx build --skip-nx-cache
-      - run: ls -la dist/demo/browser # Debug output
+      - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.5.1
         env:
           REPO: self
-          FOLDER: dist/demo/browser
-          BRANCH: snapshots/demo/${{ env.TARGET }}
+          FOLDER: ${{ env.DIST }}
+          BRANCH: snapshots/demo/${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
 concurrency:
-  group: snapshots-${{ github.workflow }}-${{ github.TARGET }}
+  group: snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
