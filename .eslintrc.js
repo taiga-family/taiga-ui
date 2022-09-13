@@ -92,6 +92,15 @@ module.exports = {
             },
         ],
         '@taiga-ui/injection-token-description': 'error',
-        '@taiga-ui/no-deep-imports': 'error',
+        '@taiga-ui/no-deep-imports': [
+            'error',
+            {
+                currentProject: `(?<=taiga-ui/projects/)([-\\w]+)`,
+                ignoreImports: [
+                    '\\?raw',
+                    '@taiga-ui/testing/cypress', // TODO temporary workaround until it can be imported from @taiga-ui/testing
+                ],
+            },
+        ],
     },
 };
