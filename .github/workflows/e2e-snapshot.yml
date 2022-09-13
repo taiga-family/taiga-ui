@@ -1,0 +1,37 @@
+name: E2E Snapshot
+
+on:
+  push:
+    branches: [main, 'v[0-9]+.x']
+  workflow_dispatch:
+
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+  FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+  TARGET: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  build-and-publish-e2e-snapshot:
+    name: Build and publish snapshots for ${{ env.TARGET }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - run: npx nx build --skip-nx-cache -c next --base-href ./ --output-path dist/demo/browser
+      - name: Debug output
+        run: ls -la dist/demo/browser
+
+      - name: Save snapshot ${{ env.TARGET }} branch of next configuration
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          FOLDER: dist/demo/browser
+          BRANCH: snapshots/demo/next/${{ env.TARGET }}
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
+concurrency:
+  group: e2e-snapshot-${{ github.workflow }}-${{ env.TARGET }}
+  cancel-in-progress: true
