@@ -113,7 +113,6 @@
                         },
                         "fonts": true
                     },
-                    "baseHref": "./",
                     "outputPath": "dist/demo/browser/next",
                     "outputHashing": "all",
                     "sourceMap": false,
@@ -143,7 +142,9 @@
                 "ru": {
                     "localize": ["ru"]
                 },
-                "development": {}
+                "development": {
+                    "baseHref": "/"
+                }
             },
             "defaultConfiguration": "production"
         },
