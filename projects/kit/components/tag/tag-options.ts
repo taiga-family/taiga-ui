@@ -1,5 +1,5 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiTagOptions {

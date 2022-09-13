@@ -6,7 +6,7 @@ import {
 } from '@taiga-ui/addon-editor/constants';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TuiHandler} from '@taiga-ui/cdk';
-import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 
 export interface TuiEditorOptions {
     readonly blankColor: string;
