@@ -1,0 +1,1 @@
+{"version":3,"sources":["./src/modules/services/table-bar/examples/import/service-usage-html.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,6IAA8E,E","file":"!!raw-loader!-examples-import-service-usage-html-md.js","sourcesContent":["export default \"```html\\n<ng-template #tableBarTemplate><p>Template</p></ng-template>\\n```\\n\";"],"sourceRoot":"webpack:///"}

@@ -1,0 +1,22 @@
+<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconCameraLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <path
+                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11z"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    d="M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>
