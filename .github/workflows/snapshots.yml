@@ -12,8 +12,8 @@ env:
 
 jobs:
   snapshots-next:
-    if: ${{ !contains(github.head_ref, 'release/') }}
-    name: Build and publish snapshots for next configuration
+    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
+    name: next
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,8 +31,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
   snapshots-of-release:
-    if: ${{ contains(github.head_ref, 'release/') }}
-    name: Build and publish snapshots for production configuration
+    if: ${{ contains(github.head_ref || github.ref_name, 'release/') }}
+    name: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
-          BRANCH: snapshots/demo/${{ steps.nodejs-workspace.outputs.root-package-major-version }}
+          BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
 concurrency:
