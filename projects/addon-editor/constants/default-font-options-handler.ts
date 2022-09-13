@@ -1,5 +1,5 @@
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 
 export function tuiDefaultFontOptionsHandler(
     texts: TuiLanguageEditor['editorFontOptions'],

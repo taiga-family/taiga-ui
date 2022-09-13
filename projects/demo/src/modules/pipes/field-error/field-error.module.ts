@@ -14,12 +14,12 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TuiFieldErrorPipeModule,
     TuiInputCountModule,
     TuiInputModule,
     TuiInputNumberModule,
     TuiInputPhoneModule,
 } from '@taiga-ui/kit';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes/field-error';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFieldErrorPipeExample1} from './examples/1';

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiReorderModule} from '@taiga-ui/addon-table/components/reorder';
+import {TuiReorderModule} from '@taiga-ui/addon-table';
 
 import {TuiReorderExample1} from './examples/1';
 import {ExampleTuiReorderComponent} from './reorder.component';

@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 import {TuiDestroyService, TuiHoveredService} from '@taiga-ui/cdk';
-import {TuiHintComponent, TuiPositionService} from '@taiga-ui/core';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
+import {tuiFadeIn, TuiHintComponent, TuiPositionService} from '@taiga-ui/core';
 
 @Component({
     selector: `tui-line-clamp-box`,

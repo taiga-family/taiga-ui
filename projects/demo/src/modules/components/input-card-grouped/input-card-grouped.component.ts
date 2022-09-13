@@ -1,7 +1,7 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
