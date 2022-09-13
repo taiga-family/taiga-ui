@@ -43,8 +43,8 @@ jobs:
       - name: Build snapshot for `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
         run:
-          npx nx build --skip-nx-cache --base-href /v${{ steps.nodejs-workspace.outputs .root-package-major-version }}/
-          --output-path=dist/demo/browser/v${{ steps.nodejs-workspace.outputs .root-package-major-version }}
+          npx nx build --skip-nx-cache --base-href /v${{ steps.nodejs-workspace.outputs.root-package-major-version }}/
+          --output-path=dist/demo/browser/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
       - name: Deploy all files to `taiga-ui.dev/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}`
         if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' && github.base_ref != 'main' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
@@ -54,15 +54,6 @@ jobs:
           target-folder: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           clean: true
-
-      - name: Update the latest snapshot ${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-        if: ${{ steps.nodejs-workspace.outputs.is-release-candidate == 'false' }}
-        uses: s0/git-publish-subdir-action@v2.5.1
-        env:
-          REPO: self
-          BRANCH: snapshots/v/${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          FOLDER: dist/demo/browser
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
 concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}

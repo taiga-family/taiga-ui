@@ -1,0 +1,49 @@
+name: Save snapshots / production / next
+
+on:
+  push:
+    branches: [main, 'v[0-9]+.x']
+  workflow_dispatch:
+
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+  FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+  REF_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  build-and-publish-snapshots:
+    name: Build and publish snapshots for ${{ env.REF_NAME }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      # Production configuration
+      - run: npx nx build -c production --skip-nx-cache
+      - name: Debug output
+        run: ls -la dist/demo/browser
+      - name: Save snapshot ${{ env.REF_NAME }} branch of production configuration
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          BRANCH: snapshots/demo/${{ env.REF_NAME }}
+          FOLDER: dist/demo/browser
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
+      # Next configuration
+      - run: npx nx build -c next --skip-nx-cache
+      - name: Debug output
+        run: ls -la dist/demo/browser/next
+      - name: Save snapshot ${{ env.REF_NAME }} branch of next configuration
+        uses: s0/git-publish-subdir-action@v2.5.1
+        env:
+          REPO: self
+          BRANCH: snapshots/demo/next/${{ env.REF_NAME }}
+          FOLDER: dist/demo/browser/next
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
+concurrency:
+  group: save-snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
