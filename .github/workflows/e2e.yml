@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') && !contains(github.head_ref, 'v3.x') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo # for reuse in e2e jobs
     runs-on: ubuntu-latest
     steps:
@@ -34,10 +34,10 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build --prod --configuration production --skip-nx-cache
+        run: npx nx build --skip-nx-cache -c next --output-path dist/demo/browser
 
   cypress:
-    if: ${{ !contains(github.head_ref , 'release/') && !contains(github.head_ref, 'v3.x') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     runs-on: ubuntu-latest
     services:
@@ -97,16 +97,6 @@ jobs:
                 --depth 1 \
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/Tinkoff/taiga-ui.git ${{ env.BASE_REF_DEMO }}
-
-      - name: Find and replace baseHref for next snapshot
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: '<base href="/next/">'
-          replace: '<base href="/">'
-          include: '${{ env.BASE_REF_DEMO }}/index.html'
-          regex: false
-
-      - run: cat ${{ env.BASE_REF_DEMO }}/index.html
 
       - name: Serve ${{ env.BASE_REF_DEMO }} in background
         run: npx nx serve-compiled --path ${{ env.BASE_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
