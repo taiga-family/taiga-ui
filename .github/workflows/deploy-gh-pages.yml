@@ -1,0 +1,45 @@
+name: Deploy to Github Pages (taiga-ui.dev)
+
+on:
+  workflow_run:
+    workflows: ['Snapshots']
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        type: boolean
+        required: false
+        description: --dry-run
+
+env:
+  REPO: https://github.com/Tinkoff/taiga-ui.git
+  DIST: dist/demo/browser
+
+jobs:
+  deploy-gh-pages:
+    name: Some Workflow Work
+    runs-on: ubuntu-latest
+    steps:
+      - name: Preflight
+        run: echo "${{ github.event.workflow_run.head_branch }}"
+
+      - name: Prepare demo before deploy from snapshots
+        run: |
+          git clone --depth 1 snapshots/demo/main --branch ${{ env.REPO }} ${{ env.DIST }}/
+          git clone --depth 1 snapshots/demo/2.x --branch ${{ env.REPO }} ${{ env.DIST }}/v2/
+          git clone --depth 1 snapshots/demo/next --branch ${{ env.REPO }} ${{ env.DIST }}/next/
+
+      - name: Debug output
+        run: tree ${{ env.DIST }} -P '*.html'
+#        TODO: uncomment after sync with 2.x
+#      - name: Deploy to taiga-ui.dev
+#        uses: JamesIves/github-pages-deploy-action@v4.2.5
+#        if: ${{ github.event.inputs.dryRun != 'true' }}
+#        with:
+#          branch: gh-pages
+#          folder: ${{ env.DIST }}/
+#          token: ${{ secrets.TINKOFF_BOT_PAT }}
+#          clean: true
+#          clean-exclude: |
+#            CNAME
