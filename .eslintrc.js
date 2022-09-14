@@ -102,5 +102,6 @@ module.exports = {
                 ],
             },
         ],
+        '@taiga-ui/prefer-inject-decorator': 'error',
     },
 };
