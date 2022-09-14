@@ -4,8 +4,8 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@taiga-ui/cdk)](https://bundlephobia.com/result?p=@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
-[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
+[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started)•
+[Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 > Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities
 
@@ -23,4 +23,4 @@ that there is no redundant code in your bundle. Bundlphobia badge shows size of 
 
 ## Docs
 
-[CDK Documentation on Github Wiki](https://github.com/tinkoff/taiga-ui/wiki/CDK)
+[Getting started](https://taiga-ui.dev/getting-started)

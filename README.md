@@ -38,8 +38,6 @@ Read more about Taiga UI main features in [this article](https://indepth.dev/pos
 
 See our [Getting started](https://taiga-ui.dev/getting-started) page to start working with Taiga UI
 
-> If you want to use cdk tools only, see [CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki)
-
 You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html)
 to create a quick sample with Taiga UI
 
