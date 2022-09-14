@@ -57,7 +57,7 @@ export abstract class AbstractDemoComponent implements OnInit {
 
         if (env) {
             this.storage.removeItem(`env`);
-            await this.router.navigateByUrl(env.replace(/^\/(next|v[0-9])\//, ``));
+            await this.router.navigateByUrl(env);
         }
     }
 }
