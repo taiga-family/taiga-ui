@@ -8,10 +8,18 @@
             const detectRecursive = !!localStorage.getItem('env');
 
             if (detectRecursive) {
+                // @note: use preserve log for debug
+                console.log(`[404.html]: '${location.href}' doesn't exist`);
+
                 localStorage.removeItem('env');
                 location.href = location.origin;
             } else {
-                localStorage.setItem('env', `${location.pathname}${location.search}${location.hash}`);
+                const url = `${location.pathname}${location.search}${location.hash}`.replace(/^\/(next|v[0-9]+)\//, ``);
+
+                // @note: use preserve log for debug
+                console.log(`[404.html]: Try navigate to '${url}' in app`);
+
+                localStorage.setItem('env', url);
                 location.replace(`/`);
             }
         </script>
