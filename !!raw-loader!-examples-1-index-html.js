@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<tui-carousel\n    [duration]=\"4000\"\n    [(index)]=\"index\"\n>\n    <ng-container *ngFor=\"let item of items\">\n        <tui-island *tuiItem>\n            <h2 class=\"tui-island__title\">{{ item }}</h2>\n            <a\n                tuiButton\n                href=\"https://en.wikipedia.org/wiki/{{ item }}\"\n            >\n                Wiki\n            </a>\n        </tui-island>\n    </ng-container>\n</tui-carousel>\n<tui-pagination\n    size=\"s\"\n    class=\"pagination\"\n    [length]=\"items.length\"\n    [(index)]=\"index\"\n></tui-pagination>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<tui-carousel\n    [duration]=\"4000\"\n    [(index)]=\"index\"\n>\n    <ng-container *ngFor=\"let item of items\">\n        <tui-island *tuiItem>\n            <h2 class=\"tui-island__title\">{{ item }}</h2>\n            <!-- TODO: update documentation here -->\n            <a\n                tuiButton\n                href=\"https://en.wikipedia.org/wiki/{{ item }}\"\n            >\n                Wiki\n            </a>\n        </tui-island>\n    </ng-container>\n</tui-carousel>\n<tui-pagination\n    size=\"s\"\n    class=\"pagination\"\n    [length]=\"items.length\"\n    [(index)]=\"index\"\n></tui-pagination>\n");
 
 /***/ }),
 

@@ -5,16 +5,27 @@
         <meta charset="utf-8" />
         <title>Taiga UI</title>
         <script>
-            if (!localStorage.getItem('env')) {
-                const base = location.pathname + location.search + location.hash;
-                const segments = base.split('/').filter(Boolean);
-                const version = segments[0] ?? ``;
-                const pattern = /^(next|v[0-9])$/;
+            const detectRecursive = !!localStorage.getItem('env');
 
-                localStorage.setItem('env', base);
-                location.replace(pattern.test(version) ? `/${version}` : `/`);
-            } else {
+            if (detectRecursive) {
+                // @note: use preserve log for debug
+                console.log(`[404.html]: '${location.href}' doesn't exist`);
+
                 localStorage.removeItem('env');
+                location.href = location.origin;
+            } else {
+                const url = `${location.pathname}${location.search}${location.hash}`;
+                const appPath = url.replace(/^\/(next|v[0-9]+)\//, ``);
+                const segments = url.split('/').filter(Boolean);
+                const version = segments[0] ?? ``;
+                const redirectUrl = /^(next|v[0-9]+)$/.test(version) ? `/${version}` : `/`;
+
+                // @note: use preserve log for debug
+                console.log(`[404.html]: Try navigate to '${url}'`);
+                console.log(`[404.html]: Application path '${appPath}'`);
+
+                localStorage.setItem('env', appPath);
+                location.replace(redirectUrl);
             }
         </script>
     </head>
