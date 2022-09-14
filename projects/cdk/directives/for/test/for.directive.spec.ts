@@ -1,4 +1,4 @@
-import {Component, ElementRef} from '@angular/core';
+import {Component, ElementRef, Inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
@@ -18,7 +18,7 @@ describe(`TuiFor directive`, () => {
     class TestComponent {
         readonly items$ = new Subject<string[]>();
 
-        constructor(readonly elementRef: ElementRef<HTMLElement>) {}
+        constructor(@Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>) {}
     }
 
     let fixture: ComponentFixture<TestComponent>;

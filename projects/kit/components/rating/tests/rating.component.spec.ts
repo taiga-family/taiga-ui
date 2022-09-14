@@ -1,4 +1,4 @@
-import {Component, Directive, ViewChild} from '@angular/core';
+import {Component, Directive, Inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRatingComponent, TuiRatingModule} from '@taiga-ui/kit/components';
@@ -102,7 +102,7 @@ describe(`Rating`, () => {
         class TestComponent extends AbstractTuiTestComponent {
             form = this.fb.group({rating: this.fb.control(0)});
 
-            constructor(private readonly fb: FormBuilder) {
+            constructor(@Inject(FormBuilder) private readonly fb: FormBuilder) {
                 super();
             }
 
