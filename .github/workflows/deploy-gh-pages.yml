@@ -29,7 +29,7 @@ jobs:
           git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
 
       - name: Cleanup after clone snapshots
-        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1
+        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
