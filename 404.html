@@ -5,14 +5,15 @@
         <meta charset="utf-8" />
         <title>Taiga UI</title>
         <script>
-            const base = `${location.pathname}${location.search}${location.hash}`;
-            const segments = base.split('/').filter(Boolean);
-            const version = segments[0] ?? ``;
-            const pattern = /^(next|v[0-9])$/;
-            const redirectUrl = pattern.test(version) ? `/${version}` : `/`;
-            // updated
-            localStorage.setItem('env', base);
-            location.replace(redirectUrl);
+            const detectRecursive = !!localStorage.getItem('env');
+
+            if (detectRecursive) {
+                localStorage.removeItem('env');
+                location.href = location.origin;
+            } else {
+                localStorage.setItem('env', `${location.pathname}${location.search}${location.hash}`);
+                location.replace(`/`);
+            }
         </script>
     </head>
     <body></body>
