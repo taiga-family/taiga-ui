@@ -34437,7 +34437,7 @@ class AbstractDemoComponent {
 
       if (env) {
         this.storage.removeItem(`env`);
-        yield this.router.navigateByUrl(env.replace(/^\/(next|v[0-9])\//, ``));
+        yield this.router.navigateByUrl(env);
       }
     });
   }
