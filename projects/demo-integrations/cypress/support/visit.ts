@@ -4,7 +4,6 @@ import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
 
 const NEXT_URL_STORAGE_KEY = `env`;
-const DEFAULT_BASE_HREF = `next/`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
 
 interface TuiVisitOptions {
@@ -73,8 +72,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     cy.visit(`/`, {
         onBeforeLoad: window => {
             const baseHref =
-                window.document.baseURI.replace(`${window.location.origin}/`, ``) ||
-                DEFAULT_BASE_HREF;
+                window.document.baseURI.replace(`${window.location.origin}/`, ``) ?? `/`;
             const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, `/`);
 
             setBeforeLoadOptions(window, {inIframe});
