@@ -93,6 +93,8 @@ All notable changes to this project will be documented in this file. See
 - **core:** `Dropdown` refactor dropdowns completely ([#2389](https://github.com/tinkoff/taiga-ui/issues/2389)).
 - **kit:** remove legacy `InputFile` component ([#2087](https://github.com/tinkoff/taiga-ui/issues/2087)). Use new
   `InputFiles` component instead.
+- **addon-editor:** replace legacy `Editor` with new one based on popular open-source solution
+  [TipTap](https://tiptap.dev).
 - **core:** `Hint` support 12 directions ([#2256](https://github.com/tinkoff/taiga-ui/issues/2256)). Add context input
   ([#2273](https://github.com/tinkoff/taiga-ui/issues/2273)). Add new directive `HintDescribe`
   ([#2495](https://github.com/tinkoff/taiga-ui/issues/2495)). `HintController` remove separate module (move inside
@@ -141,8 +143,6 @@ All notable changes to this project will be documented in this file. See
 - remove date-time related deprecations, `EMPTY_VALIDATOR` ([#2164](https://github.com/tinkoff/taiga-ui/issues/2164))
 - remove deprecated properties from `AbstractTuiInteractive` ([#2124](https://github.com/tinkoff/taiga-ui/issues/2124))
 - remove autofill enums ([#2500](https://github.com/tinkoff/taiga-ui/issues/2500)).
-
-### Bug Fixes
 
 ### [2.62.3](https://github.com/tinkoff/taiga-ui/compare/v2.62.2...v2.62.3) (2022-09-07)
 
