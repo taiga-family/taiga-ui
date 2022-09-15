@@ -29,7 +29,7 @@ import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiFormatSize, tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
@@ -140,25 +140,33 @@ export class TuiInputFilesComponent
         return this.getValueArray(this.value);
     }
 
+    @tuiPure
+    getMaxSizeRejectionError$(maxFileSize: number): Observable<string> {
+        return combineLatest([this.inputFileTexts$, this.units$]).pipe(
+            map(
+                ([{maxSizeRejectionReason}, units]) =>
+                    maxSizeRejectionReason + tuiFormatSize(units, maxFileSize),
+            ),
+        );
+    }
+
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     onFilesSelected(
         input: HTMLInputElement,
-        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
-        units: [string, string, string],
+        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
     ): void {
-        this.processSelectedFiles(input.files, texts, units);
+        this.processSelectedFiles(input.files, errors);
         input.value = ``;
     }
 
     onDropped(
         event: DataTransfer,
-        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
-        units: [string, string, string],
+        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
     ): void {
-        this.processSelectedFiles(event.files, texts, units);
+        this.processSelectedFiles(event.files, errors);
     }
 
     onDragOver(dataTransfer: DataTransfer | null): void {
@@ -227,8 +235,7 @@ export class TuiInputFilesComponent
 
     private processSelectedFiles(
         files: FileList | null,
-        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
-        units: [string, string, string],
+        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
     ): void {
         // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
         if (!files?.length) {
@@ -250,15 +257,13 @@ export class TuiInputFilesComponent
                     name: file.name,
                     type: file.type,
                     size: file.size,
-                    content:
-                        texts.maxSizeRejectionReason +
-                        tuiFormatSize(units, this.maxFileSize),
+                    content: errors.maxSizeRejection,
                 })),
                 ...wrongFormatFiles.map(file => ({
                     name: file.name,
                     type: file.type,
                     size: file.size,
-                    content: texts.formatRejectionReason,
+                    content: errors.formatRejection,
                 })),
             ]);
         }
