@@ -95,7 +95,7 @@ module.exports = {
         '@taiga-ui/no-deep-imports': [
             'error',
             {
-                currentProject: `(?<=taiga-ui/projects/)([-\\w]+)`,
+                currentProject: `(?<=/projects/)([-\\w]+)`,
                 ignoreImports: [
                     '\\?raw',
                     '@taiga-ui/testing/cypress', // TODO temporary workaround until it can be imported from @taiga-ui/testing
