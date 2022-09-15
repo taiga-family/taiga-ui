@@ -8,10 +8,7 @@
     [active]="pseudoActive"
     [disabled]="computedDisabled"
 >
-    <label
-        *ngIf="units$ | async as units"
-        automation-id="tui-input-file__label"
-    >
+    <label automation-id="tui-input-file__label">
         <a tuiLink>
             <ng-container *polymorpheusOutlet="computedLink$ | async as text">
                 {{ text }}
@@ -22,7 +19,6 @@
         </ng-container>
         <ng-container *ngIf="!readOnly && !computedDisabled">
             <input
-                *ngIf="inputFileTexts$ | async as texts"
                 #input
                 type="file"
                 class="t-native"
@@ -30,12 +26,20 @@
                 [accept]="accept"
                 [multiple]="multiple"
                 [tuiFocusable]="focusable"
-                (change)="onFilesSelected(input, texts, units)"
+                (change)="onFilesSelected(input, {formatRejection, maxSizeRejection})"
                 (tuiFocusedChange)="onFocused($event)"
-                (tuiDroppableDropped)="onDropped($event, texts, units)"
+                (tuiDroppableDropped)="onDropped($event, {formatRejection, maxSizeRejection})"
                 (tuiDroppableDragOverChange)="onDragOver($event)"
                 (mousedown.prevent.silent)="(0)"
             />
         </ng-container>
     </label>
 </div>
+
+<ng-template #formatRejection>
+    {{ (inputFileTexts$ | async)?.formatRejectionReason || '' }}
+</ng-template>
+
+<ng-template #maxSizeRejection>
+    {{ maxFileSize | tuiMaxSizeRejectionError | async }}
+</ng-template>
