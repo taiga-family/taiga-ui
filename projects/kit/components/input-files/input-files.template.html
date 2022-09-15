@@ -41,5 +41,5 @@
 </ng-template>
 
 <ng-template #maxSizeRejection>
-    {{ getMaxSizeRejectionError$(maxFileSize) | async }}
+    {{ maxFileSize | tuiMaxSizeRejectionError | async }}
 </ng-template>

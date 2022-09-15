@@ -26,10 +26,10 @@ import {
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
-import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {tuiFormatSize, tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
+import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
+import {tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable, of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
@@ -101,8 +101,6 @@ export class TuiInputFilesComponent
                 string
             >
         >,
-        @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        readonly units$: Observable<[string, string, string]>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -138,16 +136,6 @@ export class TuiInputFilesComponent
 
     get arrayValue(): readonly TuiFileLike[] {
         return this.getValueArray(this.value);
-    }
-
-    @tuiPure
-    getMaxSizeRejectionError$(maxFileSize: number): Observable<string> {
-        return combineLatest([this.inputFileTexts$, this.units$]).pipe(
-            map(
-                ([{maxSizeRejectionReason}, units]) =>
-                    maxSizeRejectionReason + tuiFormatSize(units, maxFileSize),
-            ),
-        );
     }
 
     onFocused(focused: boolean): void {
