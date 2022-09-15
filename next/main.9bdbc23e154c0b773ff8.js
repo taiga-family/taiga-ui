@@ -40556,7 +40556,7 @@ const TUI_DUTCH_LANGUAGE_KIT = {
     defaultLabelMultiple: `of zet\u00A0ze\u00A0hier`,
     defaultLinkSingle: `Kies een bestand`,
     defaultLinkMultiple: `Kies bestanden`,
-    maxSizeRejectionReason: `Bestandsgrootte overschreden`,
+    maxSizeRejectionReason: `Bestandsgrootte overschreden `,
     formatRejectionReason: `Verkeerd bestandsformaat`,
     drop: `Zet hier bestand neer`,
     dropMultiple: `Zet hier bestanden neer`
@@ -41888,7 +41888,7 @@ const TUI_ITALIAN_LANGUAGE_KIT = {
     defaultLabelMultiple: `o trascinali\u00A0qui`,
     defaultLinkSingle: `Scegliere il file`,
     defaultLinkMultiple: `Scegliere i file`,
-    maxSizeRejectionReason: `Il file supera le dimensioni`,
+    maxSizeRejectionReason: `Il file supera le dimensioni `,
     formatRejectionReason: `Formato file errato`,
     drop: `Trascina il file qui`,
     dropMultiple: `Trascina i file qui`
@@ -50955,22 +50955,24 @@ let TuiInputDateDirective = /*#__PURE__*/(() => {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "N": () => (/* binding */ TuiInputFilesComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(74788);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(23738);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74788);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(23738);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(90987);
 /* harmony import */ var _taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(75541);
 /* harmony import */ var _taiga_ui_kit_utils_files__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(69360);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(25917);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(88002);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(25917);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(88002);
 /* harmony import */ var _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2697);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(12057);
 /* harmony import */ var _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(66596);
 /* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(89570);
-/* harmony import */ var _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(48893);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(12057);
+/* harmony import */ var _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(48893);
 /* harmony import */ var _cdk_directives_focused_focused_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15865);
 /* harmony import */ var _cdk_directives_droppable_droppable_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(30692);
+/* harmony import */ var _max_size_rejection_error_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12720);
+
 
 
 
@@ -50992,121 +50994,122 @@ let TuiInputDateDirective = /*#__PURE__*/(() => {
 
 const _c0 = ["input"];
 
-function TuiInputFilesComponent_label_1_ng_container_2_Template(rf, ctx) {
+function TuiInputFilesComponent_ng_container_3_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
-    const text_r5 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r5, " ");
+    const text_r7 = ctx.polymorpheusOutlet;
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r7, " ");
   }
 }
 
-function TuiInputFilesComponent_label_1_ng_container_4_Template(rf, ctx) {
+function TuiInputFilesComponent_ng_container_5_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
-    const text_r6 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r6, " ");
+    const text_r8 = ctx.polymorpheusOutlet;
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r8, " ");
   }
 }
 
-function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template(rf, ctx) {
+function TuiInputFilesComponent_ng_container_7_Template(rf, ctx) {
   if (rf & 1) {
-    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(0, "input", 7, 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("change", function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template_input_change_0_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const texts_r8 = restoredCtx.ngIf;
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(1, "input", 7, 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("change", function TuiInputFilesComponent_ng_container_7_Template_input_change_1_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r11);
 
-      const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵreference"] */ .MAs(1);
+      const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(2);
 
-      const units_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(2).ngIf;
-      const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r10.onFilesSelected(_r9, texts_r8, units_r1);
-    })("tuiFocusedChange", function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template_input_tuiFocusedChange_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(3);
-      return ctx_r13.onFocused($event);
-    })("tuiDroppableDropped", function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template_input_tuiDroppableDropped_0_listener($event) {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const texts_r8 = restoredCtx.ngIf;
-      const units_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(2).ngIf;
-      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r14.onDropped($event, texts_r8, units_r1);
-    })("tuiDroppableDragOverChange", function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template_input_tuiDroppableDragOverChange_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(3);
-      return ctx_r16.onDragOver($event);
-    })("mousedown.prevent.silent", function TuiInputFilesComponent_label_1_ng_container_6_input_1_Template_input_mousedown_prevent_silent_0_listener() {
+      const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+
+      const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(9);
+
+      const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(11);
+
+      return ctx_r10.onFilesSelected(_r9, {
+        formatRejection: _r3,
+        maxSizeRejection: _r5
+      });
+    })("tuiFocusedChange", function TuiInputFilesComponent_ng_container_7_Template_input_tuiFocusedChange_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r11);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r12.onFocused($event);
+    })("tuiDroppableDropped", function TuiInputFilesComponent_ng_container_7_Template_input_tuiDroppableDropped_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r11);
+      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+
+      const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(9);
+
+      const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(11);
+
+      return ctx_r13.onDropped($event, {
+        formatRejection: _r3,
+        maxSizeRejection: _r5
+      });
+    })("tuiDroppableDragOverChange", function TuiInputFilesComponent_ng_container_7_Template_input_tuiDroppableDragOverChange_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r11);
+      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r14.onDragOver($event);
+    })("mousedown.prevent.silent", function TuiInputFilesComponent_ng_container_7_Template_input_mousedown_prevent_silent_1_listener() {
       return 0;
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("id", ctx_r7.id)("accept", ctx_r7.accept)("multiple", ctx_r7.multiple)("tuiFocusable", ctx_r7.focusable);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("id", ctx_r2.id)("accept", ctx_r2.accept)("multiple", ctx_r2.multiple)("tuiFocusable", ctx_r2.focusable);
   }
 }
 
-function TuiInputFilesComponent_label_1_ng_container_6_Template(rf, ctx) {
+function TuiInputFilesComponent_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(1, TuiInputFilesComponent_label_1_ng_container_6_input_1_Template, 2, 4, "input", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipe"] */ .ALo(2, "async");
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(1, "async");
   }
 
   if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipeBind1"] */ .lcZ(2, 1, ctx_r4.inputFileTexts$));
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+    let tmp_0_0;
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ((tmp_0_0 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx_r4.inputFileTexts$)) == null ? null : tmp_0_0.formatRejectionReason) || "", "\n");
   }
 }
 
-function TuiInputFilesComponent_label_1_Template(rf, ctx) {
+function TuiInputFilesComponent_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(0, "label", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(1, "a", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(2, TuiInputFilesComponent_label_1_ng_container_2_Template, 2, 1, "ng-container", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipe"] */ .ALo(3, "async");
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(4, TuiInputFilesComponent_label_1_ng_container_4_Template, 2, 1, "ng-container", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipe"] */ .ALo(5, "async");
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(6, TuiInputFilesComponent_label_1_ng_container_6_Template, 3, 3, "ng-container", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(1, "async");
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(2, "tuiMaxSizeRejectionError");
   }
 
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipeBind1"] */ .lcZ(3, 3, ctx_r0.computedLink$));
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipeBind1"] */ .lcZ(5, 5, ctx_r0.computedLabel$));
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("ngIf", !ctx_r0.readOnly && !ctx_r0.computedDisabled);
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(2, 3, ctx_r6.maxFileSize)), "\n");
   }
 }
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
 class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.AbstractTuiNullableControl {
-  constructor(control, changeDetectorRef, isMobile, inputFileTexts$, units$) {
+  constructor(control, changeDetectorRef, isMobile, inputFileTexts$) {
     super(control, changeDetectorRef);
     this.isMobile = isMobile;
     this.inputFileTexts$ = inputFileTexts$;
-    this.units$ = units$;
     this.dataTransfer = null;
     this.link = ``;
     this.label = ``;
@@ -51114,7 +51117,7 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
     this.multiple = false;
     this.size = `m`;
     this.maxFileSize = DEFAULT_MAX_SIZE;
-    this.reject = new _angular_core__WEBPACK_IMPORTED_MODULE_8__/* .EventEmitter */ .vpe();
+    this.reject = new _angular_core__WEBPACK_IMPORTED_MODULE_9__/* .EventEmitter */ .vpe();
   }
 
   get nativeFocusableElement() {
@@ -51155,13 +51158,13 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
     this.updateFocused(focused);
   }
 
-  onFilesSelected(input, texts, units) {
-    this.processSelectedFiles(input.files, texts, units);
+  onFilesSelected(input, errors) {
+    this.processSelectedFiles(input.files, errors);
     input.value = ``;
   }
 
-  onDropped(event, texts, units) {
-    this.processSelectedFiles(event.files, texts, units);
+  onDropped(event, errors) {
+    this.processSelectedFiles(event.files, errors);
   }
 
   onDragOver(dataTransfer) {
@@ -51173,19 +51176,19 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
   }
 
   computeLink$(fileDragged, multiple, link) {
-    return fileDragged ? (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(``) : this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__/* .map */ .U)(texts => multiple && link === `` ? texts.defaultLinkMultiple : link || texts.defaultLinkSingle));
+    return fileDragged ? (0,rxjs__WEBPACK_IMPORTED_MODULE_10__.of)(``) : this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .map */ .U)(texts => multiple && link === `` ? texts.defaultLinkMultiple : link || texts.defaultLinkSingle));
   }
 
   computeLabel$(isMobile, fileDragged, multiple, label) {
     if (isMobile) {
-      return (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(``);
+      return (0,rxjs__WEBPACK_IMPORTED_MODULE_10__.of)(``);
     }
 
     if (fileDragged) {
-      return this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__/* .map */ .U)(texts => multiple ? texts.dropMultiple : texts.drop));
+      return this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .map */ .U)(texts => multiple ? texts.dropMultiple : texts.drop));
     }
 
-    return this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__/* .map */ .U)(texts => multiple && label === `` ? texts.defaultLabelMultiple : label || texts.defaultLabelSingle));
+    return this.inputFileTexts$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .map */ .U)(texts => multiple && label === `` ? texts.defaultLabelMultiple : label || texts.defaultLabelSingle));
   }
 
   getValueArray(value) {
@@ -51196,7 +51199,7 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
     return Array.isArray(value) ? value : [value];
   }
 
-  processSelectedFiles(files, texts, units) {
+  processSelectedFiles(files, errors) {
     // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
     if (!(files === null || files === void 0 ? void 0 : files.length)) {
       return;
@@ -51212,12 +51215,12 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
         name: file.name,
         type: file.type,
         size: file.size,
-        content: texts.maxSizeRejectionReason + (0,_taiga_ui_kit_utils_files__WEBPACK_IMPORTED_MODULE_3__/* .tuiFormatSize */ .z)(units, this.maxFileSize)
+        content: errors.maxSizeRejection
       })), ...wrongFormatFiles.map(file => ({
         name: file.name,
         type: file.type,
         size: file.size,
-        content: texts.formatRejectionReason
+        content: errors.formatRejection
       }))]);
     }
 
@@ -51240,21 +51243,21 @@ class TuiInputFilesComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.
 }
 
 TuiInputFilesComponent.ɵfac = function TuiInputFilesComponent_Factory(t) {
-  return new (t || TuiInputFilesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_forms__WEBPACK_IMPORTED_MODULE_11__/* .NgControl */ .a5, 10), _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_8__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TUI_IS_MOBILE), _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_2__/* .TUI_INPUT_FILE_TEXTS */ .BV), _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_2__/* .TUI_DIGITAL_INFORMATION_UNITS */ .rV));
+  return new (t || TuiInputFilesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_forms__WEBPACK_IMPORTED_MODULE_12__/* .NgControl */ .a5, 10), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_9__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TUI_IS_MOBILE), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_2__/* .TUI_INPUT_FILE_TEXTS */ .BV));
 };
 
-TuiInputFilesComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiInputFilesComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiInputFilesComponent,
   selectors: [["tui-input-files"]],
   viewQuery: function TuiInputFilesComponent_Query(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵviewQuery"] */ .Gf(_c0, 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵviewQuery"] */ .Gf(_c0, 5);
     }
 
     if (rf & 2) {
       let _t;
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.input = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.input = _t.first);
     }
   },
   inputs: {
@@ -51268,49 +51271,108 @@ TuiInputFilesComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODU
   outputs: {
     reject: "reject"
   },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.MODE_PROVIDER, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiAsFocusableItemAccessor)(TuiInputFilesComponent)]), _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵInheritDefinitionFeature"] */ .qOj],
-  decls: 3,
-  vars: 9,
-  consts: [["tuiWrapper", "", "appearance", "input-file", 1, "t-wrapper", 3, "focus", "hover", "active", "disabled"], ["automation-id", "tui-input-file__label", 4, "ngIf"], ["automation-id", "tui-input-file__label"], ["tuiLink", ""], [4, "polymorpheusOutlet"], [4, "ngIf"], ["type", "file", "class", "t-native", 3, "id", "accept", "multiple", "tuiFocusable", "change", "tuiFocusedChange", "tuiDroppableDropped", "tuiDroppableDragOverChange", "mousedown.prevent.silent", 4, "ngIf"], ["type", "file", 1, "t-native", 3, "id", "accept", "multiple", "tuiFocusable", "change", "tuiFocusedChange", "tuiDroppableDropped", "tuiDroppableDragOverChange", "mousedown.prevent.silent"], ["input", ""]],
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.MODE_PROVIDER, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiAsFocusableItemAccessor)(TuiInputFilesComponent)]), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵInheritDefinitionFeature"] */ .qOj],
+  decls: 12,
+  vars: 13,
+  consts: [["tuiWrapper", "", "appearance", "input-file", 1, "t-wrapper", 3, "focus", "hover", "active", "disabled"], ["automation-id", "tui-input-file__label"], ["tuiLink", ""], [4, "polymorpheusOutlet"], [4, "ngIf"], ["formatRejection", ""], ["maxSizeRejection", ""], ["type", "file", 1, "t-native", 3, "id", "accept", "multiple", "tuiFocusable", "change", "tuiFocusedChange", "tuiDroppableDropped", "tuiDroppableDragOverChange", "mousedown.prevent.silent"], ["input", ""]],
   template: function TuiInputFilesComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(1, TuiInputFilesComponent_label_1_Template, 7, 7, "label", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipe"] */ .ALo(2, "async");
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(1, "label", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(2, "a", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(3, TuiInputFilesComponent_ng_container_3_Template, 2, 1, "ng-container", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(4, "async");
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(5, TuiInputFilesComponent_ng_container_5_Template, 2, 1, "ng-container", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(6, "async");
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(7, TuiInputFilesComponent_ng_container_7_Template, 3, 4, "ng-container", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(8, TuiInputFilesComponent_ng_template_8_Template, 2, 3, "ng-template", null, 5, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(10, TuiInputFilesComponent_ng_template_10_Template, 3, 5, "ng-template", null, 6, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵclassProp"] */ .ekj("_mobile", ctx.isMobile);
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("focus", ctx.computedFocused)("hover", ctx.pseudoHover || ctx.fileDragged || null)("active", ctx.pseudoActive)("disabled", ctx.computedDisabled);
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵadvance"] */ .xp6(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵpipeBind1"] */ .lcZ(2, 7, ctx.units$));
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("_mobile", ctx.isMobile);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("focus", ctx.computedFocused)("hover", ctx.pseudoHover || ctx.fileDragged || null)("active", ctx.pseudoActive)("disabled", ctx.computedDisabled);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(4, 9, ctx.computedLink$));
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(6, 11, ctx.computedLabel$));
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngIf", !ctx.readOnly && !ctx.computedDisabled);
     }
   },
-  directives: [_core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_4__/* .TuiWrapperDirective */ .o, _angular_common__WEBPACK_IMPORTED_MODULE_12__/* .NgIf */ .O5, _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiLinkComponent */ .V, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_13__/* .PolymorpheusOutletDirective */ .Li, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_14__/* .TuiFocusableDirective */ .t, _cdk_directives_focused_focused_directive__WEBPACK_IMPORTED_MODULE_6__/* .TuiFocusedDirective */ .U, _cdk_directives_droppable_droppable_directive__WEBPACK_IMPORTED_MODULE_7__/* .TuiDroppableDirective */ ._],
-  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_12__/* .AsyncPipe */ .Ov],
+  directives: [_core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_4__/* .TuiWrapperDirective */ .o, _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiLinkComponent */ .V, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_13__/* .PolymorpheusOutletDirective */ .Li, _angular_common__WEBPACK_IMPORTED_MODULE_14__/* .NgIf */ .O5, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_15__/* .TuiFocusableDirective */ .t, _cdk_directives_focused_focused_directive__WEBPACK_IMPORTED_MODULE_6__/* .TuiFocusedDirective */ .U, _cdk_directives_droppable_droppable_directive__WEBPACK_IMPORTED_MODULE_7__/* .TuiDroppableDirective */ ._],
+  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_14__/* .AsyncPipe */ .Ov, _max_size_rejection_error_pipe__WEBPACK_IMPORTED_MODULE_8__/* .TuiMaxSizeRejectionErrorPipe */ .L],
   styles: ["tui-input-files{display:block}tui-input-files .t-native{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer}tui-input-files .t-native::-webkit-file-upload-button{display:none}[tuiWrapper][data-appearance=input-file]{display:flex;background:transparent;font:var(--tui-font-text-m);word-wrap:break-word;color:var(--tui-text-02);flex:1;justify-content:center;align-items:center;min-height:var(--tui-height-l);border-radius:var(--tui-radius-m);padding:1rem .5rem;box-sizing:border-box}[tuiWrapper][data-appearance=input-file]:after{border:1px dashed;color:var(--tui-link)}[tuiWrapper][data-appearance=input-file]._mobile:after{border:1px solid}[tuiWrapper][data-appearance=input-file]:disabled:disabled,[tuiWrapper][data-appearance=input-file][data-state=disabled][data-state=disabled]{opacity:var(--tui-disabled-opacity);pointer-events:none}[tuiWrapper][data-appearance=input-file]:disabled:disabled:after,[tuiWrapper][data-appearance=input-file][data-state=disabled][data-state=disabled]:after{color:var(--tui-text-03)}[tuiWrapper][data-appearance=input-file]:focus-visible:focus-visible:after{border-style:solid;border-width:2px;color:var(--tui-focus)}[tuiWrapper][data-appearance=input-file]._focused._focused:after{border-style:solid;border-width:2px;color:var(--tui-focus)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]{color:var(--tui-text-01-night)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]:after{color:var(--tui-text-01-night)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]:focus-visible:focus-visible:after{color:var(--tui-text-01-night)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]._focused._focused:after{color:var(--tui-text-01-night)}@media (hover: hover){[tuiWrapper][data-appearance=input-file][data-mode=onDark]:hover:not(._no-hover),[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=hover]{background:var(--tui-clear-inverse-hover)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]:hover:not(._no-hover):after,[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=hover]:after{color:var(--tui-text-03-night)}}[tuiWrapper][data-appearance=input-file][data-mode=onDark]:active:not(._no-active),[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=active],[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=active]:hover{background:var(--tui-clear-inverse-active)}[tuiWrapper][data-appearance=input-file][data-mode=onDark]:active:not(._no-active):after,[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=active]:after,[tuiWrapper][data-appearance=input-file][data-mode=onDark][data-state=active]:hover:after{color:var(--tui-text-03-night)}[tuiWrapper][data-appearance=input-file][data-mode=onLight]{color:var(--tui-text-01)}[tuiWrapper][data-appearance=input-file][data-mode=onLight]:after{color:var(--tui-text-01)}@media (hover: hover){[tuiWrapper][data-appearance=input-file][data-mode=onLight]:hover:not(._no-hover),[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=hover]{background:var(--tui-clear-hover)}[tuiWrapper][data-appearance=input-file][data-mode=onLight]:hover:not(._no-hover):after,[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=hover]:after{color:var(--tui-text-03)}}[tuiWrapper][data-appearance=input-file][data-mode=onLight]:active:not(._no-active),[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=active],[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=active]:hover{background:var(--tui-clear-active)}[tuiWrapper][data-appearance=input-file][data-mode=onLight]:active:not(._no-active):after,[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=active]:after,[tuiWrapper][data-appearance=input-file][data-mode=onLight][data-state=active]:hover:after{color:var(--tui-text-03)}@media (hover: hover){[tuiWrapper][data-appearance=input-file]:hover:not(._no-hover),[tuiWrapper][data-appearance=input-file][data-state=hover]{background:var(--tui-secondary)}[tuiWrapper][data-appearance=input-file]:hover:not(._no-hover):after,[tuiWrapper][data-appearance=input-file][data-state=hover]:after{color:var(--tui-link-hover)}}[tuiWrapper][data-appearance=input-file]:active:not(._no-active),[tuiWrapper][data-appearance=input-file][data-state=active],[tuiWrapper][data-appearance=input-file][data-state=active]:hover{background:var(--tui-secondary-hover)}\n"],
   encapsulation: 2,
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "link", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "link", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "label", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "label", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "accept", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "accept", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "multiple", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "multiple", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "size", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "size", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "maxFileSize", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiInputFilesComponent.prototype, "maxFileSize", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "computeLink$", null);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "computeLink$", null);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "computeLabel$", null);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "computeLabel$", null);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "getValueArray", null);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiInputFilesComponent.prototype, "getValueArray", null);
+
+/***/ }),
+
+/***/ 12720:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "L": () => (/* binding */ TuiMaxSizeRejectionErrorPipe)
+/* harmony export */ });
+/* harmony import */ var _taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(75541);
+/* harmony import */ var _taiga_ui_kit_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18247);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9112);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(88002);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(74788);
+
+
+
+
+
+let TuiMaxSizeRejectionErrorPipe = /*#__PURE__*/(() => {
+  class TuiMaxSizeRejectionErrorPipe {
+    constructor(inputFileTexts$, units$) {
+      this.inputFileTexts$ = inputFileTexts$;
+      this.units$ = units$;
+    }
+
+    transform(maxFileSize) {
+      return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__/* .combineLatest */ .aj)([this.inputFileTexts$, this.units$]).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__/* .map */ .U)(([{
+        maxSizeRejectionReason
+      }, units]) => maxSizeRejectionReason + (0,_taiga_ui_kit_utils__WEBPACK_IMPORTED_MODULE_1__/* .tuiFormatSize */ .z)(units, maxFileSize)));
+    }
+
+  }
+
+  TuiMaxSizeRejectionErrorPipe.ɵfac = function TuiMaxSizeRejectionErrorPipe_Factory(t) {
+    return new (t || TuiMaxSizeRejectionErrorPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_0__/* .TUI_INPUT_FILE_TEXTS */ .BV, 16), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_0__/* .TUI_DIGITAL_INFORMATION_UNITS */ .rV, 16));
+  };
+
+  TuiMaxSizeRejectionErrorPipe.ɵpipe = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdefinePipe"] */ .Yjl({
+    name: "tuiMaxSizeRejectionError",
+    type: TuiMaxSizeRejectionErrorPipe,
+    pure: true
+  });
+  return TuiMaxSizeRejectionErrorPipe;
+})();
 
 /***/ }),
 
@@ -67850,7 +67912,10 @@ let TuiInputDateTimeModule = /*#__PURE__*/(() => {
 
 // EXTERNAL MODULE: ./projects/kit/components/input-files/input-files.component.ts
 var input_files_component = __webpack_require__(13697);
+// EXTERNAL MODULE: ./projects/kit/components/input-files/max-size-rejection-error.pipe.ts
+var max_size_rejection_error_pipe = __webpack_require__(12720);
 ;// CONCATENATED MODULE: ./projects/kit/components/input-files/input-files.module.ts
+
 
 
 
@@ -67876,7 +67941,7 @@ let TuiInputFilesModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(TuiInputFilesModule, {
-    declarations: [input_files_component/* TuiInputFilesComponent */.N],
+    declarations: [input_files_component/* TuiInputFilesComponent */.N, max_size_rejection_error_pipe/* TuiMaxSizeRejectionErrorPipe */.L],
     imports: [common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, cdk.TuiLetModule, cdk.TuiFocusedModule, cdk.TuiFocusVisibleModule, cdk.TuiPressedModule, cdk.TuiHoveredModule, cdk.TuiFocusableModule, cdk.TuiDroppableModule, core.TuiWrapperModule, core.TuiSvgModule, core.TuiLinkModule, core.TuiLoaderModule, core.TuiButtonModule, core.TuiGroupModule, TuiFilesModule],
     exports: [input_files_component/* TuiInputFilesComponent */.N, files_component/* TuiFilesComponent */.D, file_component/* TuiFileComponent */._, cdk.TuiItemDirective]
   });
