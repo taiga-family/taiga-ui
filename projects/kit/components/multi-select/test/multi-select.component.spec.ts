@@ -173,7 +173,8 @@ describe(`MultiSelect`, () => {
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            it(`Esc closes the dropdown`, () => {
+            // TODO: flaky
+            xit(`Esc closes the dropdown`, () => {
                 inputPO.sendKeydown(`ArrowDown`);
                 fixture.detectChanges();
                 inputPO.sendKeydown(`Escape`);
