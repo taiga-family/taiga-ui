@@ -53,8 +53,33 @@
     line-height: inherit;
 }
 
-@mixin clearinput() {
+@mixin autofill($mode: default) {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        caret-color: var(--tui-base-09);
+        border-radius: inherit;
+        color: inherit !important;
+        background-color: transparent !important;
+
+        @if ($mode == default) {
+            -webkit-text-fill-color: var(--tui-text-01) !important;
+            border-color: var(--tui-autofill);
+            -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
+        }
+
+        @if ($mode == dark) {
+            -webkit-text-fill-color: var(--tui-text-01-night) !important;
+            border-color: var(--tui-autofill-night);
+            -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill-night) inset !important;
+        }
+    }
+}
+
+@mixin clearinput($mode: default) {
+    @include autofill($mode);
     padding: 0;
+    margin: 0;
     border: 0;
     border-radius: inherit;
     background: none;
@@ -67,16 +92,6 @@
     appearance: none;
     word-break: keep-all;
     -webkit-text-fill-color: currentColor; // for Safari
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus {
-        border-radius: inherit;
-        -webkit-text-fill-color: inherit !important;
-        color: inherit !important;
-        background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
-    }
 }
 
 @mixin visually-hidden() {
@@ -101,7 +116,7 @@
             height: 1rem;
             border-radius: 6.25rem;
             background-clip: padding-box;
-            border: 0.375rem solid transparent;
+            border: 2.667rem solid transparent;
         }
 
         &::-webkit-scrollbar {
@@ -131,12 +146,12 @@
 
     // Dropdown
     @if ($mode == 2) {
-        box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.16);
     }
 
     // Modal
     @if ($mode == 3) {
-        box-shadow: 0 1.125rem 1.875rem rgba(51, 51, 51, 0.52);
+        box-shadow: 0 1.125rem 1.875rem rgba(0, 0, 0, 0.48);
     }
 
     // Sidebar
@@ -156,7 +171,7 @@
 
     // Modal mobile
     @if ($mode == 7) {
-        box-shadow: 0 -1rem 1.75rem rgba(51, 51, 51, 0.24);
+        box-shadow: 0 -1rem 1.75rem rgba(0, 0, 0, 0.24);
     }
 }
 
@@ -260,16 +275,16 @@
 }
 
 // typical properties for text overflow with ellipsis
-@mixin text-overflow() {
-    white-space: nowrap;
+@mixin text-overflow($type: nowrap) {
+    white-space: $type;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 /* stylelint-disable selector-max-specificity */
 @mixin text-overflow-with-fade(
-    $color: rgba(255, 255, 255, 1),
-    $transparentColor: rgba(255, 255, 255, 0),
+    $color: var(--tui-base-01),
+    $transparentColor: transparent,
     $width: 1.875rem
 ) {
     position: relative;
@@ -357,6 +372,7 @@
 
 // hide an element visually without hiding it from screen readers
 @mixin sr-only() {
+    position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
     height: 1px;
@@ -364,5 +380,4 @@
     margin: -1px;
     overflow: hidden;
     padding: 0;
-    position: absolute;
 }
