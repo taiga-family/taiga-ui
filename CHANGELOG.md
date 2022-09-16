@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/tinkoff/taiga-ui/compare/v3.2.0...v3.3.0) (2022-09-16)
+
+### Features
+
+- **eslint-plugin:** new `no-deep-imports`-rule ([#2666](https://github.com/tinkoff/taiga-ui/issues/2666))
+  ([467420e](https://github.com/tinkoff/taiga-ui/commit/467420edc83da349fce9dfa00a099d7845b0913f))
+- **eslint-plugin:** new `prefer-inject-decorator`-rule ([#2688](https://github.com/tinkoff/taiga-ui/issues/2688))
+  ([3105204](https://github.com/tinkoff/taiga-ui/commit/3105204efdc4c7ecaa9d51e12a3f5c1110bc79c7))
+
+### Bug Fixes
+
+- **addon-table:** support partial objects ([#2722](https://github.com/tinkoff/taiga-ui/issues/2722))
+  ([550b11a](https://github.com/tinkoff/taiga-ui/commit/550b11ade0fd951a6f42659909de9cc58f392b50))
+- **core:** `styles` sync `.scss`-files with `.less`-files ([#2717](https://github.com/tinkoff/taiga-ui/issues/2717))
+  ([1549898](https://github.com/tinkoff/taiga-ui/commit/154989812739818b2c21c439411aedb9f562a02b))
+- **kit:** `InputFlies` new value of i18n-token `TUI_INPUT_FILE_TEXTS` triggers text changes
+  ([#2711](https://github.com/tinkoff/taiga-ui/issues/2711))
+  ([fa4e1e1](https://github.com/tinkoff/taiga-ui/commit/fa4e1e184b9bdac06add3b4c249bca151f2b8d9f))
+- **kit:** `InputPhoneInternational` extend country masks for Croatia and Bosnia
+  ([#2713](https://github.com/tinkoff/taiga-ui/issues/2713))
+  ([d26b3cb](https://github.com/tinkoff/taiga-ui/commit/d26b3cbf51264f423c3680b04df1efefaeb8360d))
+
 ## [3.2.0](https://github.com/tinkoff/taiga-ui/compare/v3.1.0...v3.2.0) (2022-09-12)
 
 ### Features
