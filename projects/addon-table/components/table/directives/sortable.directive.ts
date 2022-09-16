@@ -8,7 +8,7 @@ import {TuiTableDirective} from './table.directive';
 @Directive({
     selector: `th[tuiTh][tuiSortable]`,
 })
-export class TuiSortableDirective<T extends Record<keyof T, any>>
+export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
     implements DoCheck, OnInit
 {
     constructor(
