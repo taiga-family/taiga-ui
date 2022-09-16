@@ -32,11 +32,11 @@
                 [accept]="accept"
                 [multiple]="multiple"
                 [tuiFocusable]="focusable"
-                (change)="onFilesSelected(input, {formatRejection, maxSizeRejection})"
+                (change)="onFilesSelected(input, formatRejection, maxSizeRejection)"
                 (tuiHoveredChange)="onHovered($event)"
                 (tuiFocusedChange)="onFocused($event)"
                 (tuiPressedChange)="onPressed($event)"
-                (tuiDroppableDropped)="onDropped($event, {formatRejection, maxSizeRejection})"
+                (tuiDroppableDropped)="onDropped($event, formatRejection, maxSizeRejection)"
                 (tuiDroppableDragOverChange)="onDragOver($event)"
                 (mousedown.prevent.silent)="(0)"
             />

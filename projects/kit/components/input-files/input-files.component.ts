@@ -160,17 +160,19 @@ export class TuiInputFilesComponent
 
     onFilesSelected(
         input: HTMLInputElement,
-        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
+        formatRejection: PolymorpheusContent,
+        maxSizeRejection: PolymorpheusContent,
     ): void {
-        this.processSelectedFiles(input.files, errors);
+        this.processSelectedFiles(input.files, {formatRejection, maxSizeRejection});
         input.value = ``;
     }
 
     onDropped(
         event: DataTransfer,
-        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
+        formatRejection: PolymorpheusContent,
+        maxSizeRejection: PolymorpheusContent,
     ): void {
-        this.processSelectedFiles(event.files, errors);
+        this.processSelectedFiles(event.files, {formatRejection, maxSizeRejection});
     }
 
     onDragOver(dataTransfer: DataTransfer | null): void {
