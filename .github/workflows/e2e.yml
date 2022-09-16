@@ -48,7 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        specFolder:
+        project:
           [
             addon-doc,
             addon-charts,
@@ -64,7 +64,7 @@ jobs:
             demo,
             kit,
           ]
-    name: ${{ matrix.specFolder }}
+    name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js and Cache
@@ -86,7 +86,7 @@ jobs:
         run: npx nx serve-compiled --path ${{ env.LOCAL_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
-        run: npx nx e2e-ci --key localhost --folder ${{ matrix.specFolder }}
+        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -106,7 +106,7 @@ jobs:
         env: # note: need to collect all
           # diff files for lumberjack bot
           CYPRESS_failOnSnapshotDiff: 0
-        run: npx nx e2e-ci --key next --folder ${{ matrix.specFolder }}
+        run: npx nx e2e-ci --key next --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
