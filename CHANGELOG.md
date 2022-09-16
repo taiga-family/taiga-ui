@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.62.4](https://github.com/tinkoff/taiga-ui/compare/v2.62.3...v2.62.4) (2022-09-16)
+
+### Bug Fixes
+
+- **kit:** `InputFlies` new value of i18n-token `TUI_INPUT_FILE_TEXTS` triggers text changes
+  ([#2716](https://github.com/tinkoff/taiga-ui/issues/2716))
+  ([6417fae](https://github.com/tinkoff/taiga-ui/commit/6417faed07d38a09a6986444dcc7669e624ee504)), closes
+  [#2711](https://github.com/tinkoff/taiga-ui/issues/2711)
+
 ### [2.62.3](https://github.com/tinkoff/taiga-ui/compare/v2.62.2...v2.62.3) (2022-09-07)
 
 ### Bug Fixes
