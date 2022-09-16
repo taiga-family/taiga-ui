@@ -26,7 +26,7 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
     },
 })
 export class TuiTableDirective<
-    T extends Record<keyof T, any>,
+    T extends Partial<Record<keyof T, any>>,
 > extends AbstractTuiController {
     @Input()
     @tuiDefaultProp()

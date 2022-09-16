@@ -26,7 +26,7 @@ import {TuiTrComponent} from '../tr/tr.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
-export class TuiTbodyComponent<T extends Record<keyof T, any>> {
+export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
     @tuiDefaultProp()
     data: readonly T[] = [];

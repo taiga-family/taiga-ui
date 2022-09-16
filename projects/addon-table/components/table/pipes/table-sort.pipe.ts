@@ -8,7 +8,9 @@ import {TuiTableDirective} from '../directives/table.directive';
     name: `tuiTableSort`,
     pure: false,
 })
-export class TuiTableSortPipe<T extends Record<keyof T, any>> implements PipeTransform {
+export class TuiTableSortPipe<T extends Partial<Record<keyof T, any>>>
+    implements PipeTransform
+{
     constructor(
         @Inject(TuiTableDirective) private readonly table: TuiTableDirective<T>,
     ) {}
