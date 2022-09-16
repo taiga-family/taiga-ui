@@ -23,7 +23,7 @@ import {TuiThComponent} from '../th/th.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiThGroupComponent<T extends Record<keyof T, any>>
+export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
     implements AfterContentInit
 {
     @ContentChild(forwardRef(() => TuiThComponent))

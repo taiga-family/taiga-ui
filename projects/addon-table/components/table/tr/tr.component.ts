@@ -20,7 +20,7 @@ import {TuiTbodyComponent} from '../tbody/tbody.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTrComponent<T extends Record<keyof T, any>> {
+export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
