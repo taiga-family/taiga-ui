@@ -48,7 +48,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: LanguageKit = {
         defaultLabelMultiple: `of zet\u00A0ze\u00A0hier`,
         defaultLinkSingle: `Kies een bestand`,
         defaultLinkMultiple: `Kies bestanden`,
-        maxSizeRejectionReason: `Bestandsgrootte overschreden`,
+        maxSizeRejectionReason: `Bestandsgrootte overschreden `,
         formatRejectionReason: `Verkeerd bestandsformaat`,
         drop: `Zet hier bestand neer`,
         dropMultiple: `Zet hier bestanden neer`,

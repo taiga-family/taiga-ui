@@ -11,6 +11,7 @@ import {tuiHideLanguageSwitcher} from './hide-language-switcher';
 import {tuiHideNavigation} from './hide-navigation';
 import {tuiHideVersionManager} from './hide-version-manager';
 import {tuiScrollIntoView} from './scroll-into-view';
+import {tuiSetLanguage} from './set-language';
 import {tuiSetNightMode} from './set-night-mode';
 import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
@@ -27,6 +28,7 @@ declare global {
             tuiVisit: typeof tuiVisit;
             tuiHideHeader: typeof tuiHideHeader;
             tuiWaitKitDialog: typeof tuiWaitKitDialog;
+            tuiSetLanguage: typeof tuiSetLanguage;
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiHideNavigation: typeof tuiHideNavigation;
             tuiHideVersionManager: typeof tuiHideVersionManager;
@@ -67,6 +69,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(`tuiVisit`, tuiVisit);
 Cypress.Commands.add(`tuiHideHeader`, tuiHideHeader);
 Cypress.Commands.add(`tuiWaitKitDialog`, tuiWaitKitDialog);
+Cypress.Commands.add(`tuiSetLanguage`, tuiSetLanguage);
 Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
 Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
 Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
