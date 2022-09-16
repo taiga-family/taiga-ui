@@ -1,7 +1,9 @@
 @mixin wrapper-hover {
-    &:hover:not(._no-hover),
-    &[data-state='hover'] {
-        @content;
+    @media (hover: hover) {
+        &:hover:not(._no-hover),
+        &[data-state='hover'] {
+            @content;
+        }
     }
 }
 

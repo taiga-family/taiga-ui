@@ -31,4 +31,21 @@ $thumb-diameters: (
     tui-input-slider + & {
         margin-left: calc(var(--tui-radius-m) / 2 + #{$first-tick-center});
     }
+
+    tui-input-range + &,
+    tui-range + & {
+        $thumb: map-get($thumb-diameters, $input-size);
+        margin-left: $thumb;
+        margin-right: $thumb;
+
+        & > * {
+            &:first-child {
+                left: -$thumb;
+            }
+
+            &:last-child {
+                right: -$thumb;
+            }
+        }
+    }
 }
