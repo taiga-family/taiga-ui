@@ -14,7 +14,7 @@ export function tuiVisitEditorApiPage({
     cy.viewport(1650, 900).tuiVisit(
         `${EDITOR_PAGE_URL}/API?ngModel=${
             content ?? HTML_EDITOR_BASIC_EXAMPLE
-        }&max-height=${maxHeight ?? 300}`,
+        }&style.max-height.px=${maxHeight ?? 300}`,
         {skipExpectUrl: true, enableNightMode: enableNightMode ?? false},
     );
 
