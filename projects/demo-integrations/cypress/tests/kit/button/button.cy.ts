@@ -19,4 +19,17 @@ describe(`Button`, () => {
 
         cy.matchImageSnapshot({capture: `viewport`});
     });
+
+    it(`left/right margin icon`, () => {
+        cy.tuiVisit(
+            `/components/button/API?icon=tuiIconEyeClosed&iconRight=tuiIconEyeClosed`,
+        );
+
+        cy.get(`#demoContent`)
+            .should(`be.visible`)
+            .find(`[tuiButton]`)
+            .matchImageSnapshot(
+                '02-[icon=tuiIconEyeClosed]-[iconRight=tuiIconEyeClosed]',
+            );
+    });
 });
