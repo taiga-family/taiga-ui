@@ -1,5 +1,5 @@
 ```ts
-import {TuiHighlightModule} from '@taiga-ui/core';
+import {TuiHighlightModule} from '@taiga-ui/kit';
 
 // ...
 
