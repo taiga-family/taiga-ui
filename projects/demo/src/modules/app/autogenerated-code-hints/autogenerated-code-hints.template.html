@@ -60,5 +60,14 @@
             </a>
             to configure dropdown options.
         </li>
+
+        <li
+            *ngIf="includesDataListWrapper(code)"
+            class="tui-list__item"
+        >
+            This example requires import of
+            <code>TuiDataListWrapperModule</code>
+            .
+        </li>
     </ul>
 </ng-template>
