@@ -228,6 +228,8 @@ var theme_service = __webpack_require__(66092);
 var page_component = __webpack_require__(55238);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/page/page-tab.directive.ts
 var page_tab_directive = __webpack_require__(37159);
+// EXTERNAL MODULE: ./projects/core/components/notification/notification.component.ts
+var notification_component = __webpack_require__(79121);
 // EXTERNAL MODULE: ./projects/core/components/link/link.component.ts
 var link_component = __webpack_require__(66596);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/example/example.component.ts + 1 modules
@@ -256,9 +258,10 @@ var code_component = __webpack_require__(76349);
 
 
 
-function ExampleTuiSvgComponent_ng_template_1_tui_doc_example_6_Template(rf, ctx) {
+
+function ExampleTuiSvgComponent_ng_template_1_tui_doc_example_19_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-example", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-example", 10);
     fesm2015_core/* ɵɵelement */._UZ(1, "tui-svg-example-2");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -274,34 +277,54 @@ function ExampleTuiSvgComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
     fesm2015_core/* ɵɵi18nStart */.tHW(1, 2);
     fesm2015_core/* ɵɵelement */._UZ(2, "code");
-    fesm2015_core/* ɵɵelement */._UZ(3, "a", 3);
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-doc-example", 4);
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-svg-example-1");
+    fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-notification", 3);
+    fesm2015_core/* ɵɵelementStart */.TgZ(4, "h4", 4);
+    fesm2015_core/* ɵɵtext */._uU(5, " You need to ");
+    fesm2015_core/* ɵɵelementStart */.TgZ(6, "a", 5);
+    fesm2015_core/* ɵɵtext */._uU(7, " provide TUI_SANITIZER ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiSvgComponent_ng_template_1_tui_doc_example_6_Template, 2, 1, "tui-doc-example", 5);
-    fesm2015_core/* ɵɵpipe */.ALo(7, "async");
+    fesm2015_core/* ɵɵtext */._uU(8, " if you want to use ");
+    fesm2015_core/* ɵɵelementStart */.TgZ(9, "code");
+    fesm2015_core/* ɵɵtext */._uU(10, "Svg");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵtext */._uU(11, " -component with: ");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(12, "ul", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(13, "li", 7);
+    fesm2015_core/* ɵɵtext */._uU(14, "icon which was imported from source code");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(15, "li", 7);
+    fesm2015_core/* ɵɵtext */._uU(16, "custom icons that you don't trust");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(17, "tui-doc-example", 8);
+    fesm2015_core/* ɵɵelement */._UZ(18, "tui-svg-example-1");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵtemplate */.YNc(19, ExampleTuiSvgComponent_ng_template_1_tui_doc_example_19_Template, 2, 1, "tui-doc-example", 9);
+    fesm2015_core/* ɵɵpipe */.ALo(20, "async");
   }
 
   if (rf & 2) {
     const ctx_r0 = fesm2015_core/* ɵɵnextContext */.oxw();
-    fesm2015_core/* ɵɵadvance */.xp6(4);
+    fesm2015_core/* ɵɵadvance */.xp6(17);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
     fesm2015_core/* ɵɵadvance */.xp6(2);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", fesm2015_core/* ɵɵpipeBind1 */.lcZ(7, 2, ctx_r0.themeService) !== "Open-source");
+    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", fesm2015_core/* ɵɵpipeBind1 */.lcZ(20, 2, ctx_r0.themeService) !== "Open-source");
   }
 }
 
 function ExampleTuiSvgComponent_ng_template_2_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 11);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 15);
   }
 }
 
 function ExampleTuiSvgComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 12);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 16);
   }
 }
 
@@ -309,17 +332,17 @@ function ExampleTuiSvgComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
     const _r7 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 7);
-    fesm2015_core/* ɵɵelement */._UZ(1, "tui-svg", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 11);
+    fesm2015_core/* ɵɵelement */._UZ(1, "tui-svg", 12);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiSvgComponent_ng_template_2_ng_template_3_Template, 1, 0, "ng-template", 9);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiSvgComponent_ng_template_2_ng_template_3_Template, 1, 0, "ng-template", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiSvgComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r7);
       const ctx_r6 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r6.icon = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiSvgComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiSvgComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 14);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -334,20 +357,20 @@ function ExampleTuiSvgComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiSvgComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 13);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 17);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 14);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 18);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 15);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 19);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 16);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 20);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 17);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 21);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -403,15 +426,13 @@ let ExampleTuiSvgComponent = /*#__PURE__*/(() => {
       let i18n_0;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2179128668030834185$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SVG_SVG_COMPONENT_TS__1 = goog.getMsg("{$startTagCode}Svg{$closeTagCode} is a component for working with SVG-image and its colors. If you want to use custom icons that you don't trust, you need to provide a {$startLink} sanitizer {$closeLink} . ", {
+        const MSG_EXTERNAL_1819246041372629304$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SVG_SVG_COMPONENT_TS__1 = goog.getMsg("{$startTagCode}Svg{$closeTagCode} is a component for working with SVG-image and its colors. ", {
           "startTagCode": "\uFFFD#2\uFFFD",
-          "closeTagCode": "\uFFFD/#2\uFFFD",
-          "startLink": "\uFFFD#3\uFFFD",
-          "closeLink": "\uFFFD/#3\uFFFD"
+          "closeTagCode": "\uFFFD/#2\uFFFD"
         });
-        i18n_0 = MSG_EXTERNAL_2179128668030834185$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SVG_SVG_COMPONENT_TS__1;
+        i18n_0 = MSG_EXTERNAL_1819246041372629304$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SVG_SVG_COMPONENT_TS__1;
       } else {
-        i18n_0 = $localize`:␟9162f64979630ff2f60f158fefe4aebff5a442cd␟2179128668030834185:${"\uFFFD#2\uFFFD"}:START_TAG_CODE:Svg${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_CODE: is a component for working with SVG-image and its colors. If you want to use custom icons that you don't trust, you need to provide a ${"\uFFFD#3\uFFFD"}:START_LINK: sanitizer ${"\uFFFD/#3\uFFFD"}:CLOSE_LINK: . `;
+        i18n_0 = $localize`:␟f01d67b158cf68497861a98491ffead1b87eb74e␟1819246041372629304:${"\uFFFD#2\uFFFD"}:START_TAG_CODE:Svg${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_CODE: is a component for working with SVG-image and its colors. `;
       }
 
       let i18n_2;
@@ -471,18 +492,18 @@ let ExampleTuiSvgComponent = /*#__PURE__*/(() => {
         i18n_12 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
       }
 
-      return [["header", "Svg", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, ["tuiLink", "", "routerLink", "/icon-set", "fragment", "sanitizer"], ["id", "all", "heading", i18n_2, 3, "content"], ["id", "double", "heading", i18n_4, 3, "content", 4, "ngIf"], ["id", "double", "heading", i18n_4, 3, "content"], [1, "b-full-width"], [1, "icon", 3, "src"], ["documentationPropertyName", "src", "documentationPropertyMode", "input", "documentationPropertyType", "string", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tui-icon-error", "documentationPropertyMode", "output", "documentationPropertyType", "CustomEvent<TuiIconError>"], i18n_6, i18n_8, [1, "b-demo-steps"], i18n_10, ["filename", "myComponent.module.ts", 3, "code"], i18n_12, ["filename", "myComponent.template.html", 3, "code"]];
+      return [["header", "Svg", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, ["status", "warning", 1, "tui-space_top-6"], [1, "tui-space_top-0"], ["tuiLink", "", "routerLink", "/icon-set", "fragment", "sanitizer"], [1, "tui-list", "tui-list_small"], [1, "tui-list__item"], ["id", "all", "heading", i18n_2, 3, "content"], ["id", "double", "heading", i18n_4, 3, "content", 4, "ngIf"], ["id", "double", "heading", i18n_4, 3, "content"], [1, "b-full-width"], [1, "icon", 3, "src"], ["documentationPropertyName", "src", "documentationPropertyMode", "input", "documentationPropertyType", "string", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tui-icon-error", "documentationPropertyMode", "output", "documentationPropertyType", "CustomEvent<TuiIconError>"], i18n_6, i18n_8, [1, "b-demo-steps"], i18n_10, ["filename", "myComponent.module.ts", 3, "code"], i18n_12, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiSvgComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiSvgComponent_ng_template_1_Template, 8, 4, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiSvgComponent_ng_template_1_Template, 21, 4, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiSvgComponent_ng_template_2_Template, 5, 3, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiSvgComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, TuiSvgExample1, common/* NgIf */.O5, TuiSvgExample2, svg_component/* TuiSvgComponent */.P, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, notification_component/* TuiNotificationComponent */.L, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, TuiSvgExample1, common/* NgIf */.O5, TuiSvgExample2, svg_component/* TuiSvgComponent */.P, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
     pipes: [common/* AsyncPipe */.Ov],
     encapsulation: 2,
     changeDetection: 0
@@ -511,7 +532,7 @@ let ExampleTuiSvgModule = /*#__PURE__*/(() => {
     type: ExampleTuiSvgModule
   });
   ExampleTuiSvgModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, router/* RouterModule */.Bz, core.TuiSvgModule, kit.TuiPresentModule, core.TuiLinkModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiSvgComponent))]]
+    imports: [[common/* CommonModule */.ez, router/* RouterModule */.Bz, core.TuiSvgModule, kit.TuiPresentModule, core.TuiLinkModule, public_api/* TuiAddonDocModule */.fV, core.TuiNotificationModule, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiSvgComponent))]]
   });
   return ExampleTuiSvgModule;
 })();
@@ -519,7 +540,7 @@ let ExampleTuiSvgModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiSvgModule, {
     declarations: [ExampleTuiSvgComponent, TuiSvgExample1, TuiSvgExample2],
-    imports: [common/* CommonModule */.ez, router/* RouterModule */.Bz, core.TuiSvgModule, kit.TuiPresentModule, core.TuiLinkModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
+    imports: [common/* CommonModule */.ez, router/* RouterModule */.Bz, core.TuiSvgModule, kit.TuiPresentModule, core.TuiLinkModule, public_api/* TuiAddonDocModule */.fV, core.TuiNotificationModule, router/* RouterModule */.Bz],
     exports: [ExampleTuiSvgComponent]
   });
 })();
