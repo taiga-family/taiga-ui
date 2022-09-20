@@ -1,7 +1,9 @@
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject, TuiTagHarness} from '@taiga-ui/testing';
 
 describe(`Tag`, () => {
     @Component({
@@ -36,6 +38,7 @@ describe(`Tag`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
+    let loader: HarnessLoader;
     let pageObject: TuiPageObject<TestComponent>;
     const keydownEnter = new KeyboardEvent(`keydown`, {
         key: `enter`,
@@ -67,6 +70,7 @@ describe(`Tag`, () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         testComponent.editedSpy.mockClear();
@@ -79,10 +83,11 @@ describe(`Tag`, () => {
             fixture.detectChanges();
         });
 
-        it(`Cross not shown`, () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}remove`),
-            ).toBeNull();
+        it(`Cross not shown`, async () => {
+            const tag = await loader.getHarness(TuiTagHarness);
+            const hasCrossIcon = await tag.hasCrossIcon();
+
+            expect(hasCrossIcon).toBeFalse();
         });
 
         it(`Tag is not editable`, () => {
