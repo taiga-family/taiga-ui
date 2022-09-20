@@ -45,11 +45,10 @@ describe(`Input`, () => {
                 .matchImageSnapshot(`04-custom-normal-icon-content-cleaner-hint`);
         });
 
-        // TODO: fix after adding native input to example
         it(`input overflow due to placeholder`, () => {
             cy.viewport(400, 812);
             cy.tuiVisit(
-                `${INPUT_PAGE_URL}/API?tuiMode=null&icon=tuiIconSearch&iconAlign=left&pseudoFocused=true`,
+                `${INPUT_PAGE_URL}/API?tuiMode=null&icon=tuiIconSearch&iconAlign=left&pseudoFocused=true&attr.placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore`,
             );
 
             cy.get(`.t-input-wrapper`)
@@ -93,5 +92,24 @@ describe(`Input`, () => {
             )
             .blur()
             .matchImageSnapshot(`07-very-long-text-without-text-ellipsis`);
+    });
+
+    it(`can be horizontally scrolled`, () => {
+        cy.viewport(450, 300).tuiVisit(`components/input/API`);
+
+        cy.get(`#demoContent`).should(`be.visible`).as(`wrapper`);
+        cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
+
+        cy.get(`@input`)
+            .should(`not.have.css`, `text-overflow`, `ellipsis`)
+            .focus()
+            .clear()
+            .type(
+                `You should not set 'text-overflow: ellipsis' for input because it can be horizontally scrolled`,
+            )
+            .blur();
+
+        cy.get(`@input`).scrollTo(`center`, {ensureScrollable: false});
+        cy.get(`@wrapper`).matchImageSnapshot(`08-horizontally-scrolled`);
     });
 });
