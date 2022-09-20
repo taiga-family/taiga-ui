@@ -1,6 +1,5 @@
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-
-import {TuiComponentHarness} from '../utils/helpers';
+import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiIslandHarness extends TuiComponentHarness {
     static hostSelector = `tui-island`;
