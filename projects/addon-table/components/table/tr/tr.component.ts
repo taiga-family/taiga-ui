@@ -18,6 +18,14 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 // eslint-disable-next-line import/no-cycle
 import {TuiTbodyComponent} from '../tbody/tbody.component';
 
+/**
+ * @deprecated can be dropped if you use `*ngFor="let item of data | tuiTableSort"`
+ * (without {@link TuiRowDirective *tuiRow}).
+ * See example {@link https://taiga-ui.dev/components/table#basic}
+ * ___
+ * TODO v4.0 delete it.
+ * Don't forget to delete {@link TuiCellDirective}!
+ */
 @Component({
     selector: `tr[tuiTr]`,
     templateUrl: `./tr.template.html`,

@@ -35,15 +35,9 @@
         tuiTbody
         [data]="data"
     >
-        <tr
-            *tuiRow="let item of data"
-            tuiTr
-        >
+        <tr *ngFor="let item of data | tuiTableSort">
             <ng-container *ngFor="let col of columns">
-                <td
-                    *tuiCell="col"
-                    tuiTd
-                >
+                <td tuiTd>
                     {{ item[col] }}
                 </td>
             </ng-container>

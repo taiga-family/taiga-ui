@@ -14,24 +14,12 @@
             <th tuiTh>Price</th>
         </tr>
     </thead>
-    <tbody
-        tuiTbody
-        [data]="data"
-    >
-        <tr
-            *tuiRow="let item of data; let i = index"
-            tuiTr
-        >
-            <td
-                *tuiCell="'name'"
-                tuiTd
-            >
+    <tbody tuiTbody>
+        <tr *ngFor="let item of data; let i = index">
+            <td tuiTd>
                 {{ item.name }}
             </td>
-            <td
-                *tuiCell="'price'"
-                tuiTd
-            >
+            <td tuiTd>
                 <tui-input-number
                     tuiHintDirection="right"
                     [postfix]="'UGX' | tuiCurrency"

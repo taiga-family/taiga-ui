@@ -36,24 +36,10 @@
             ></th>
         </tr>
     </thead>
-    <tbody
-        tuiTbody
-        [data]="users"
-    >
-        <tr
-            *tuiRow="let item of users; let index = index"
-            tuiTr
-        >
-            <td
-                *tuiCell="'name'"
-                tuiTd
-            >
-                {{ index + 1 }}. {{ item.name }}
-            </td>
-            <td
-                *tuiCell="'email'"
-                tuiTd
-            >
+    <tbody tuiTbody>
+        <tr *ngFor="let item of users | tuiTableSort; let index = index">
+            <td tuiTd>{{ index + 1 }}. {{ item.name }}</td>
+            <td tuiTd>
                 <a
                     *ngIf="item.email"
                     tuiLink
@@ -62,16 +48,10 @@
                     {{ item.email }}
                 </a>
             </td>
-            <td
-                *tuiCell="'status'"
-                tuiTd
-            >
+            <td tuiTd>
                 <div [class]="item.status">{{ item.status }}</div>
             </td>
-            <td
-                *tuiCell="'tags'"
-                tuiTd
-            >
+            <td tuiTd>
                 <tui-tag
                     *ngFor="let tag of item.tags"
                     class="tui-space_right-1"
@@ -79,10 +59,7 @@
                     [autoColor]="true"
                 ></tui-tag>
             </td>
-            <td
-                *tuiCell="'actions'"
-                tuiTd
-            >
+            <td tuiTd>
                 <button
                     tuiIconButton
                     appearance="flat"

@@ -76,26 +76,20 @@
             tuiTbody
             [data]="data"
         >
-            <tr
-                *tuiRow="let item of data"
-                tuiTr
-            >
+            <tr *ngFor="let item of data | tuiTableSort">
                 <td
-                    *tuiCell="'name'"
                     tuiTd
                     [class.match]="isMatch(item.name)"
                 >
                     {{ item.name }}
                 </td>
                 <td
-                    *tuiCell="'dob'"
                     tuiTd
                     [class.match]="isMatch(item.dob)"
                 >
                     {{ item.dob }}
                 </td>
                 <td
-                    *tuiCell="'age'"
                     tuiTd
                     [class.match]="isMatch(getAge(item))"
                 >

@@ -74,28 +74,24 @@
         </thead>
 
         <tbody
+            #pythonSection
             tuiTbody
             heading="Monty Python"
-            [data]="pythons"
         >
-            <tr
-                *tuiRow="let item of pythons"
-                tuiTr
-            >
-                <th
-                    *tuiCell="'name'"
-                    tuiTd
-                    [colSpan]="item.price > 1000 ? 2 : 0"
-                >
-                    <tui-text-area
-                        class="textarea"
-                        [expandable]="true"
-                        [ngModel]="item.name"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'name', item, pythons)"
-                    ></tui-text-area>
-                </th>
-                <ng-container *tuiCell="'price'">
+            <ng-container *ngIf="pythonSection.open">
+                <tr *ngFor="let item of pythons | tuiTableSort">
+                    <th
+                        tuiTd
+                        [colSpan]="item.price > 1000 ? 2 : 0"
+                    >
+                        <tui-text-area
+                            class="textarea"
+                            [expandable]="true"
+                            [ngModel]="item.name"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'name', item, pythons)"
+                        ></tui-text-area>
+                    </th>
                     <th
                         *ngIf="item.price <= 1000"
                         tuiTd
@@ -109,130 +105,105 @@
                             (ngModelChange)="onValueChange($event, 'price', item, pythons)"
                         ></tui-input-number>
                     </th>
-                </ng-container>
-                <td
-                    *tuiCell="'quantity'"
-                    tuiTd
-                >
-                    <tui-input-count
-                        [ngModel]="item.quantity"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
-                    ></tui-input-count>
-                </td>
-                <td
-                    *tuiCell="'unit'"
-                    tuiTd
-                >
-                    <tui-select
-                        class="select"
-                        [ngModel]="item.unit"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'unit', item, pythons)"
+                    <td tuiTd>
+                        <tui-input-count
+                            [ngModel]="item.quantity"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
+                        ></tui-input-count>
+                    </td>
+                    <td tuiTd>
+                        <tui-select
+                            class="select"
+                            [ngModel]="item.unit"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'unit', item, pythons)"
+                        >
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="units"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                    </td>
+                    <td tuiTd>
+                        <tui-input-date
+                            [ngModel]="item.date"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'date', item, pythons)"
+                        ></tui-input-date>
+                    </td>
+                    <td
+                        tuiTd
+                        class="number text"
                     >
-                        <tui-data-list-wrapper
-                            *tuiDataList
-                            [items]="units"
-                        ></tui-data-list-wrapper>
-                    </tui-select>
-                </td>
-                <td
-                    *tuiCell="'date'"
-                    tuiTd
-                >
-                    <tui-input-date
-                        [ngModel]="item.date"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'date', item, pythons)"
-                    ></tui-input-date>
-                </td>
-                <td
-                    *tuiCell="'total'"
-                    tuiTd
-                    class="number text"
-                >
-                    {{ getTotal(item) | tuiFormatNumber }}
-                </td>
-            </tr>
+                        {{ getTotal(item) | tuiFormatNumber }}
+                    </td>
+                </tr>
+            </ng-container>
         </tbody>
 
         <tbody
+            #starwarsSection
             tuiTbody
             [heading]="template"
-            [data]="starwars"
         >
-            <tr
-                *tuiRow="let item of starwars"
-                tuiTr
-            >
-                <th
-                    *tuiCell="'name'"
-                    tuiTd
-                >
-                    <tui-text-area
-                        class="textarea"
-                        [expandable]="true"
-                        [ngModel]="item.name"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'name', item, starwars)"
-                    ></tui-text-area>
-                </th>
-                <th
-                    *tuiCell="'price'"
-                    tuiTd
-                    class="second"
-                >
-                    <tui-input-number
-                        [tuiValidator]="minPrice"
-                        [ngModel]="item.price"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'price', item, starwars)"
-                    ></tui-input-number>
-                </th>
-                <td
-                    *tuiCell="'quantity'"
-                    tuiTd
-                >
-                    <tui-input-count
-                        [ngModel]="item.quantity"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
-                    ></tui-input-count>
-                </td>
-                <td
-                    *tuiCell="'unit'"
-                    tuiTd
-                >
-                    <tui-select
-                        class="select"
-                        [ngModel]="item.unit"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'unit', item, starwars)"
+            <ng-container *ngIf="starwarsSection.open">
+                <tr *ngFor="let item of starwars | tuiTableSort">
+                    <th tuiTd>
+                        <tui-text-area
+                            class="textarea"
+                            [expandable]="true"
+                            [ngModel]="item.name"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'name', item, starwars)"
+                        ></tui-text-area>
+                    </th>
+                    <th
+                        tuiTd
+                        class="second"
                     >
-                        <tui-data-list-wrapper
-                            *tuiDataList
-                            [items]="units"
-                        ></tui-data-list-wrapper>
-                    </tui-select>
-                </td>
-                <td
-                    *tuiCell="'date'"
-                    tuiTd
-                >
-                    <tui-input-date
-                        [ngModel]="item.date"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'date', item, starwars)"
-                    ></tui-input-date>
-                </td>
-                <td
-                    *tuiCell="'total'"
-                    tuiTd
-                    class="number text"
-                >
-                    {{ getTotal(item) | tuiFormatNumber }}
-                </td>
-            </tr>
+                        <tui-input-number
+                            [tuiValidator]="minPrice"
+                            [ngModel]="item.price"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'price', item, starwars)"
+                        ></tui-input-number>
+                    </th>
+                    <td tuiTd>
+                        <tui-input-count
+                            [ngModel]="item.quantity"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
+                        ></tui-input-count>
+                    </td>
+                    <td tuiTd>
+                        <tui-select
+                            class="select"
+                            [ngModel]="item.unit"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'unit', item, starwars)"
+                        >
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="units"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                    </td>
+                    <td tuiTd>
+                        <tui-input-date
+                            [ngModel]="item.date"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'date', item, starwars)"
+                        ></tui-input-date>
+                    </td>
+                    <td
+                        tuiTd
+                        class="number text"
+                    >
+                        {{ getTotal(item) | tuiFormatNumber }}
+                    </td>
+                </tr>
+            </ng-container>
         </tbody>
     </table>
 </tui-scrollbar>

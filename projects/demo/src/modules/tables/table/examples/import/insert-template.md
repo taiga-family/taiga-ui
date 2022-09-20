@@ -3,7 +3,7 @@
   tuiTable
   [columns]="columns"
 >
-  <thead tuiThead>
+  <thead>
     <tr tuiThGroup>
       <th
         *tuiHead="'name'"
@@ -33,40 +33,23 @@
     </tr>
   </thead>
   <tbody tuiTbody>
-    <tr
-      *ngFor="let item of users | tuiTableSort"
-      tuiTr
-    >
-      <td
-        *tuiCell="'name' of item; let value"
-        tuiTd
-      >
-        {{value}}
-      </td>
-      <td
-        *tuiCell="'email' of item; let value"
-        tuiTd
-      >
+    <tr *ngFor="let item of users | tuiTableSort; let index = index">
+      <td tuiTd>{{ index + 1 }}. {{ item.name }}</td>
+      <td tuiTd>
         <a
-          *ngIf="value"
+          *ngIf="item.email"
           tuiLink
-          [href]="'mailto:' + value"
+          [href]="'mailto:' + item.email"
         >
-          {{value}}
+          {{ item.email }}
         </a>
       </td>
-      <td
-        *tuiCell="'status' of item; let value"
-        tuiTd
-      >
-        <div [class]="value">{{value}}</div>
+      <td tuiTd>
+        <div [class]="item.status">{{ item.status }}</div>
       </td>
-      <td
-        *tuiCell="'tags' of item; let tags"
-        tuiTd
-      >
+      <td tuiTd>
         <tui-tag
-          *ngFor="let tag of tags"
+          *ngFor="let tag of item.tags"
           class="tui-space_right-1"
           [value]="tag"
           [autoColor]="true"

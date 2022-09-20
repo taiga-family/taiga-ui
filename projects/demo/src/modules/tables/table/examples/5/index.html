@@ -41,26 +41,14 @@
                 </tr>
             </thead>
             <tbody tuiTbody>
-                <tr
-                    *cdkVirtualFor="let item of data | tuiTableSort"
-                    tuiTr
-                >
-                    <td
-                        *tuiCell="'name'"
-                        tuiTd
-                    >
+                <tr *cdkVirtualFor="let item of data | tuiTableSort">
+                    <td tuiTd>
                         {{ item.name }}
                     </td>
-                    <td
-                        *tuiCell="'dob'"
-                        tuiTd
-                    >
+                    <td tuiTd>
                         {{ item.dob }}
                     </td>
-                    <td
-                        *tuiCell="'age'"
-                        tuiTd
-                    >
+                    <td tuiTd>
                         {{ getAge(item) }}
                     </td>
                 </tr>
