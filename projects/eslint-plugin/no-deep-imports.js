@@ -57,7 +57,7 @@ module.exports = {
             [`ImportDeclaration[source.value=/${importDeclaration}/]`]({
                 source: sourceNode,
             }) {
-                const currentFilePath = context.getFilename();
+                const currentFilePath = context.getFilename().replace(/\\+/g, '/');
                 const [currentFileProjectName] =
                     (currentProject &&
                         currentFilePath.match(new RegExp(currentProject, 'g'))) ||
