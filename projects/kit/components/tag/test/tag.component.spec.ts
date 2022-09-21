@@ -1,25 +1,23 @@
-import {HarnessLoader} from '@angular/cdk/testing';
+import {HarnessLoader, TestKey} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject, TuiTagHarness} from '@taiga-ui/testing';
+import {configureTestSuite, TuiTagHarness} from '@taiga-ui/testing';
 
 describe(`Tag`, () => {
     @Component({
         template: `
             <tui-tag
-                *ngIf="default"
-                automation-id="tui-tag__item"
+                id="default"
                 [value]="tag"
             ></tui-tag>
             <tui-tag
-                *ngIf="!default"
-                automation-id="tui-tag__item"
-                [value]="tag"
-                [removable]="removable"
-                [editable]="editable"
-                [autoColor]="autoColor"
+                id="changed"
+                [value]="'Tag'"
+                [removable]="true"
+                [editable]="true"
+                [autoColor]="false"
                 (edited)="editedSpy($event)"
             ></tui-tag>
         `,
@@ -28,38 +26,12 @@ describe(`Tag`, () => {
         @ViewChild(TuiTagComponent, {static: true})
         component!: TuiTagComponent;
 
-        default = false;
-        tag = `Tag`;
-        removable = true;
-        editable = true;
-        autoColor = false;
-        editedSpy = jest.fn();
+         editedSpy = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let loader: HarnessLoader;
-    let pageObject: TuiPageObject<TestComponent>;
-    const keydownEnter = new KeyboardEvent(`keydown`, {
-        key: `enter`,
-    });
-    const testContext = {
-        get prefix() {
-            return `tui-tag__`;
-        },
-    };
-
-    function getTag(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}item`)!.nativeElement;
-    }
-
-    function getTagDiv(): Element {
-        return getTag().firstElementChild!;
-    }
-
-    function getInput(): HTMLInputElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}edit`)!.nativeElement;
-    }
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -71,130 +43,131 @@ describe(`Tag`, () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
-        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         testComponent.editedSpy.mockClear();
         fixture.detectChanges();
     });
 
     describe(`Default values:`, () => {
-        beforeEach(() => {
-            testComponent.default = true;
-            fixture.detectChanges();
-        });
-
         it(`Cross not shown`, async () => {
-            const tag = await loader.getHarness(TuiTagHarness);
-            const hasCrossIcon = await tag.hasCrossIcon();
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#default`}),
+            );
+            const icon = await tag.getCrossIcon();
 
-            expect(hasCrossIcon).toBeFalse();
+            expect(icon).toBeNull();
         });
 
-        it(`Tag is not editable`, () => {
-            getTag().dispatchEvent(keydownEnter);
-            fixture.detectChanges();
+        it(`Tag is not editable`, async () => {
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#default`}),
+            );
 
-            expect(pageObject.getByAutomationId(`${testContext.prefix}edit`)).toBeNull();
+            await tag.sendEnter();
+            const input = await tag.getInput();
+
+            expect(input).toBeNull();
         });
     });
 
     describe(`Editing a tag, editable === true`, () => {
-        beforeEach(() => {
-            getTag().dispatchEvent(keydownEnter);
-            fixture.detectChanges();
+        let tag: TuiTagHarness;
+
+        beforeEach(async () => {
+            tag = await loader.getHarness(TuiTagHarness.with({selector: `#changed`}));
+            await tag.sendEnter();
         });
 
-        it(`Tag is being edited`, () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}edit`),
-            ).not.toBeNull();
+        it(`Tag is being edited`, async () => {
+            const input = await tag.getInput();
+
+            expect(input).not.toBeNull();
         });
 
-        it(`Emit an edit event on enter`, () => {
-            getInput().value = `Hapica`;
-            getInput().dispatchEvent(new Event(`input`));
-            fixture.detectChanges();
-            getInput().dispatchEvent(keydownEnter);
-            fixture.detectChanges();
+        it(`Emit an edit event on enter`, async () => {
+            const input = await tag.getInput();
 
+            await input?.setInputValue(`Hapica`);
+            await input?.dispatchEvent(`input`);
+            await input?.sendKeys(TestKey.ENTER);
             expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica`);
         });
 
-        it(`Emitting edit event on field exit`, () => {
-            getInput().value = `Hapica`;
-            getInput().dispatchEvent(new Event(`input`));
-            fixture.detectChanges();
+        it(`Emitting edit event on field exit`, async () => {
+            const input = await tag.getInput();
 
-            getInput().blur();
-            fixture.detectChanges();
-
+            await input?.setInputValue(`Hapica`);
+            await input?.dispatchEvent(`input`);
+            await input?.blur();
             expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica`);
         });
 
-        it(`Emitting edit event on comma input`, () => {
-            getInput().value = `Hapica, ogo`;
-            getInput().dispatchEvent(new Event(`input`));
-            fixture.detectChanges();
+        it(`Emitting edit event on comma input`, async () => {
+            const input = await tag.getInput();
 
+            await input?.setInputValue(`Hapica, ogo`);
+            await input?.dispatchEvent(`input`);
             expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica, ogo`);
         });
 
-        it(`Issuer empty string when storing empty tag`, () => {
-            getInput().value = ``;
-            getInput().dispatchEvent(new Event(`input`));
-            fixture.detectChanges();
+        it(`Issuer empty string when storing empty tag`, async () => {
+            const input = await tag.getInput();
 
-            getInput().blur();
-            fixture.detectChanges();
-
+            await input?.setInputValue(``);
+            await input?.dispatchEvent(`input`);
+            await input?.blur();
             expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
     });
 
     describe(`Deleting a tag`, () => {
-        it(`Cross shown with removable === true`, () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}remove`),
-            ).not.toBeNull();
+        it(`Cross shown with removable === true`, async () => {
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#changed`}),
+            );
+            const icon = await tag.getCrossIcon();
+
+            expect(icon).not.toBeNull();
         });
 
-        it(`Emit an empty line across a cross`, () => {
-            pageObject
-                .getByAutomationId(`${testContext.prefix}remove`)!
-                .nativeElement.click();
+        it(`Emit an empty line across a cross`, async () => {
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#changed`}),
+            );
+            const icon = await tag.getCrossIcon();
+
+            await icon?.click();
 
             expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
 
-        it(`When you press the backspace on the tag, an empty line is emitted`, () => {
-            getTag().dispatchEvent(
-                new KeyboardEvent(`keydown`, {
-                    key: `backspace`,
-                }),
+        it(`When you press the backspace on the tag, an empty line is emitted`, async () => {
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#changed`}),
             );
 
+            await tag.sendBackspace();
             expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
 
-        it(`When you press delete on the tag, an empty string is emitted`, () => {
-            getTag().dispatchEvent(
-                new KeyboardEvent(`keydown`, {
-                    key: `delete`,
-                }),
+        it(`When you press delete on the tag, an empty string is emitted`, async () => {
+            const tag = await loader.getHarness(
+                TuiTagHarness.with({selector: `#changed`}),
             );
 
+            await tag.sendDelete();
             expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
     });
 
     // TODO: remake stringHashToHsl to stringHashToRgb and include test
     xdescribe(`Tag color`, () => {
-        it(`when autoColor is enabled, the color will be rgb(241, 188, 229)`, () => {
-            testComponent.autoColor = true;
-            fixture.detectChanges();
-            expect(getComputedStyle(getTagDiv()).backgroundColor).toBe(
-                `rgb(241, 188, 229)`,
-            );
+        it(`when autoColor is enabled, the color will be rgb(241, 188, 229)`, async () => {
+            const tag = await loader.getHarness(TuiTagHarness);
+            const tagDiv = await tag.getTagDiv();
+            const backgroundColor = await tagDiv.getCssValue(`background-color`);
+
+            expect(backgroundColor).toBe(`rgb(241, 188, 229)`);
         });
     });
 });
