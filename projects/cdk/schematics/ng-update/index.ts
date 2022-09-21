@@ -5,6 +5,7 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
+import {performance} from 'perf_hooks';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';

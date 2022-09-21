@@ -1,4 +1,5 @@
 import {CallExpression, Identifier, Node, SyntaxKind} from 'ng-morph';
+import {performance} from 'perf_hooks';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {insertTodo} from '../../utils/insert-todo';
 import {
