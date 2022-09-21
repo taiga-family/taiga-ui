@@ -1,4 +1,4 @@
-import {TuiComponentHarness} from '../../utils';
+import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiPrimitiveTextfieldHarness extends TuiComponentHarness {
     static hostSelector = `tui-primitive-textfield`;
