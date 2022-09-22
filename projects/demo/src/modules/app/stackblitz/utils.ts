@@ -9,7 +9,10 @@ export const prepareLess = (content: string): string => {
             `~@taiga-ui/core/styles/taiga-ui-local`,
             `@stackblitz/styles/taiga-ui-stackblitz.less`,
         )
-        .replace(/@import.+taiga-ui-local';/g, ``);
+        .replace(
+            /@import.+taiga-ui-local(.less)?';/g,
+            `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
+        );
 };
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
