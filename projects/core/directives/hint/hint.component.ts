@@ -97,12 +97,13 @@ export class TuiHintComponent<C = any> {
         const {height, width} = nativeElement.getBoundingClientRect();
         const {style} = nativeElement;
         const rect = this.accessor.getClientRect();
+        const safeLeft = Math.max(left, 4);
         const beakTop = rect.top + rect.height / 2 - top;
-        const beakLeft = rect.left + rect.width / 2 - left;
+        const beakLeft = rect.left + rect.width / 2 - safeLeft;
 
         style.top = tuiPx(top);
-        style.left = tuiPx(left);
-        style.setProperty(`--top`, tuiPx(tuiClamp(beakTop, 0, height - 1)));
-        style.setProperty(`--left`, tuiPx(tuiClamp(beakLeft, 0, width - 1)));
+        style.left = tuiPx(safeLeft);
+        style.setProperty(`--top`, tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
+        style.setProperty(`--left`, tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
     }
 }

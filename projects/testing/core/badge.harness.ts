@@ -1,6 +1,6 @@
-import {ComponentHarness} from '@angular/cdk/testing';
+import {TuiComponentHarness} from '@taiga-ui/testing';
 
-export class TuiBadgeHarness extends ComponentHarness {
+export class TuiBadgeHarness extends TuiComponentHarness {
     static hostSelector = `tui-badge`;
 
     async text(): Promise<string> {
