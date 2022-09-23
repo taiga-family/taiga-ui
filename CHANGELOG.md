@@ -166,6 +166,24 @@ All notable changes to this project will be documented in this file. See
 - remove deprecated properties from `AbstractTuiInteractive` ([#2124](https://github.com/tinkoff/taiga-ui/issues/2124))
 - remove autofill enums ([#2500](https://github.com/tinkoff/taiga-ui/issues/2500)).
 
+### Migration guide
+
+This release introduces a lot of breaking changes.<br/> Most of them can be solved automatically with the following
+command:
+
+```
+ng update @taiga-ui/cdk
+```
+
+**Troubleshooting:**
+
+- Npm 7 has a known [issue](https://github.com/npm/cli/issues/3666). If you face "Conflicting peer dependency"-error,
+  try the following workaround:<br/> `ng update @taiga-ui/cdk --force`.
+- If you face any other issues, try to update all Taiga UI's packages manually.<br/> Then check that
+  `node_modules/@taiga-ui/cdk/package.json` contains `3.x.x`-version.<br/> After all, run
+  `ng update @taiga-ui/cdk --migrate-only --from=2 --to=3`.
+- If any problem still persists, please, [create an issue](https://github.com/Tinkoff/taiga-ui/issues/new/choose).
+
 ### [2.62.3](https://github.com/tinkoff/taiga-ui/compare/v2.62.2...v2.62.3) (2022-09-07)
 
 ### Bug Fixes
