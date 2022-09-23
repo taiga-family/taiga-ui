@@ -36024,47 +36024,24 @@ class AbstractTuiStackblitzResourcesLoader {
 
   static getTaigaStyles() {
     return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const styles = {};
-      const [stackblitzLessContent, globalLess, localLess, mixinsLess, pickerLess, sliderLess, textLess, textfieldLess, wrapperLess, mediaLess, keyframesLess, mainLess, tuiContainerLess, tuiFormLess, tuiIslandLess, tuiListLess, tuiMobileOnlyLess, tuiRequiredLess, tuiRowLess, tuiSkeletonLess, tuiSpaceLess, tuiTabletLess, tuiTextLess, variablesLess, themeWrapperLess, iconLess, monoLess, outlineLess, primaryLess, accentLess, secondaryLess, secondaryDestructiveLess, tableLess, wrapperTextfieldLess, whiteblockLess, noneLess, wrapperBaseLess] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 36890).then(__webpack_require__.t.bind(__webpack_require__, 36890, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 16005).then(__webpack_require__.t.bind(__webpack_require__, 16005, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 62698).then(__webpack_require__.t.bind(__webpack_require__, 62698, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 99321).then(__webpack_require__.t.bind(__webpack_require__, 99321, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 56751).then(__webpack_require__.t.bind(__webpack_require__, 56751, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 51474).then(__webpack_require__.t.bind(__webpack_require__, 51474, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 72155).then(__webpack_require__.t.bind(__webpack_require__, 72155, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 53222).then(__webpack_require__.t.bind(__webpack_require__, 53222, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 68592).then(__webpack_require__.t.bind(__webpack_require__, 82476, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 99420).then(__webpack_require__.t.bind(__webpack_require__, 99420, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 13603).then(__webpack_require__.t.bind(__webpack_require__, 13603, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 26048).then(__webpack_require__.t.bind(__webpack_require__, 26048, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 56340).then(__webpack_require__.t.bind(__webpack_require__, 56340, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 72888).then(__webpack_require__.t.bind(__webpack_require__, 72888, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 86675).then(__webpack_require__.t.bind(__webpack_require__, 86675, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 70069).then(__webpack_require__.t.bind(__webpack_require__, 70069, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 24917).then(__webpack_require__.t.bind(__webpack_require__, 24917, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 26338).then(__webpack_require__.t.bind(__webpack_require__, 26338, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 47226).then(__webpack_require__.t.bind(__webpack_require__, 47226, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 46538).then(__webpack_require__.t.bind(__webpack_require__, 46538, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 31051).then(__webpack_require__.t.bind(__webpack_require__, 31051, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 17356).then(__webpack_require__.t.bind(__webpack_require__, 17356, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 20028).then(__webpack_require__.t.bind(__webpack_require__, 20028, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 20028).then(__webpack_require__.t.bind(__webpack_require__, 20028, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17)))]);
-      const [stackblitzLess] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stackblitzLessContent);
-      styles[`styles/taiga-ui-stackblitz.less`] = stackblitzLess;
-      styles[`styles/taiga-ui-global.less`] = globalLess;
-      styles[`styles/taiga-ui-local.less`] = localLess;
-      styles[`styles/mixins/mixins.less`] = mixinsLess;
-      styles[`styles/mixins/picker.less`] = pickerLess;
-      styles[`styles/mixins/slider.less`] = sliderLess;
-      styles[`styles/mixins/text.less`] = textLess;
-      styles[`styles/mixins/textfield.less`] = textfieldLess;
-      styles[`styles/mixins/wrapper.less`] = wrapperLess;
-      styles[`styles/variables/media.less`] = mediaLess;
-      styles[`styles/basic/keyframes.less`] = keyframesLess;
-      styles[`styles/basic/main.less`] = mainLess;
-      styles[`styles/markup/tui-container.less`] = tuiContainerLess;
-      styles[`styles/markup/tui-form.less`] = tuiFormLess;
-      styles[`styles/markup/tui-island.less`] = tuiIslandLess;
-      styles[`styles/markup/tui-list.less`] = tuiListLess;
-      styles[`styles/markup/tui-mobile-only.less`] = tuiMobileOnlyLess;
-      styles[`styles/markup/tui-required.less`] = tuiRequiredLess;
-      styles[`styles/markup/tui-row.less`] = tuiRowLess;
-      styles[`styles/markup/tui-skeleton.less`] = tuiSkeletonLess;
-      styles[`styles/markup/tui-space.less`] = tuiSpaceLess;
-      styles[`styles/markup/tui-table.less`] = tuiTabletLess;
-      styles[`styles/markup/tui-text.less`] = tuiTextLess;
-      styles[`styles/theme/variables.less`] = variablesLess;
-      styles[`styles/theme/wrapper.less`] = themeWrapperLess;
-      styles[`styles/theme/wrapper/icon.less`] = iconLess;
-      styles[`styles/theme/wrapper/mono.less`] = monoLess;
-      styles[`styles/theme/wrapper/outline.less`] = outlineLess;
-      styles[`styles/theme/wrapper/primary.less`] = primaryLess;
-      styles[`styles/theme/wrapper/accent.less`] = accentLess;
-      styles[`styles/theme/wrapper/secondary.less`] = secondaryLess;
-      styles[`styles/theme/wrapper/secondary-destructive.less`] = secondaryDestructiveLess;
-      styles[`styles/theme/wrapper/table.less`] = tableLess;
-      styles[`styles/theme/wrapper/textfield.less`] = wrapperTextfieldLess;
-      styles[`styles/theme/wrapper/whiteblock.less`] = whiteblockLess;
-      styles[`styles/theme/wrapper/none.less`] = noneLess;
-      styles[`styles/theme/wrapper/base.less`] = wrapperBaseLess;
-      return styles;
+      const [accent, base, icon, mono, none, outline, primary, secondary, secondaryDestructive, table, textfield, whiteBlock, wrapper, stackblitzMarkdown] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17)))]);
+      const [stackblitz] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stackblitzMarkdown);
+      return {
+        [`styles/theme/wrapper/accent.less`]: accent,
+        [`styles/theme/wrapper/base.less`]: base,
+        [`styles/theme/wrapper/icon.less`]: icon,
+        [`styles/theme/wrapper/mono.less`]: mono,
+        [`styles/theme/wrapper/none.less`]: none,
+        [`styles/theme/wrapper/outline.less`]: outline,
+        [`styles/theme/wrapper/primary.less`]: primary,
+        [`styles/theme/wrapper/secondary.less`]: secondary,
+        [`styles/theme/wrapper/secondary-destructive.less`]: secondaryDestructive,
+        [`styles/theme/wrapper/table.less`]: table,
+        [`styles/theme/wrapper/textfield.less`]: textfield,
+        [`styles/theme/wrapper/whiteblock.less`]: whiteBlock,
+        [`styles/theme/wrapper.less`]: wrapper,
+        [`styles/taiga-ui-stackblitz.less`]: stackblitz
+      };
     });
   }
 
@@ -36140,7 +36117,7 @@ function exampleContentProcessor(content) {
 
 
 const prepareLess = content => {
-  return content.replace(`~@taiga-ui/core/styles/taiga-ui-local`, `@stackblitz/styles/taiga-ui-stackblitz.less`).replace(/@import.+taiga-ui-local';/g, ``);
+  return content.replace(`~@taiga-ui/core/styles/taiga-ui-local`, `@stackblitz/styles/taiga-ui-stackblitz.less`).replace(/@import.+taiga-ui-local(.less)?';/g, `@import '@taiga-ui/core/styles/taiga-ui-local.less';`);
 };
 const appPrefix = (stringsPart, path = ``) => `src/app/${stringsPart.join(``)}${path}`;
 const stackblitzPrefix = (stringsPart, path = ``) => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
@@ -38221,7 +38198,7 @@ const ROUTES = [{
 }, {
   path: `breakpoints`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(36256), __webpack_require__.e(68592), __webpack_require__.e(15947)]).then(__webpack_require__.bind(__webpack_require__, 15947))).BreakpointsModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(36256), __webpack_require__.e(15947)]).then(__webpack_require__.bind(__webpack_require__, 15947))).BreakpointsModule;
   }),
   data: {
     title: `Breakpoints`
