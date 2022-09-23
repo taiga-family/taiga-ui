@@ -105,19 +105,21 @@
                         class="t-expand"
                         [expanded]="!!openPagesGroupsArr[index]"
                     >
-                        <div class="t-section t-section_bordered">
-                            <a
-                                *ngFor="let subPage of item.subPages"
-                                tuiLink
-                                routerLinkActive="t-sublink_active"
-                                class="t-sublink t-sublink_small"
-                                [routerLink]="subPage.route"
-                                [tuiScrollIntoViewLink]="isActive(subPage.route)"
-                                (click)="closeMenu()"
-                            >
-                                {{ subPage.title }}
-                            </a>
-                        </div>
+                        <ng-template>
+                            <div class="t-section t-section_bordered">
+                                <a
+                                    *ngFor="let subPage of item.subPages"
+                                    tuiLink
+                                    routerLinkActive="t-sublink_active"
+                                    class="t-sublink t-sublink_small"
+                                    [routerLink]="subPage.route"
+                                    [tuiScrollIntoViewLink]="isActive(subPage.route)"
+                                    (click)="closeMenu()"
+                                >
+                                    {{ subPage.title }}
+                                </a>
+                            </div>
+                        </ng-template>
                     </tui-expand>
                 </div>
             </ng-template>
