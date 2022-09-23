@@ -477,13 +477,6 @@ function assets(path) {
 
 module.exports = __webpack_require__.p + "a3fe15c37237500e06f8.ts";
 
-/***/ }),
-
-/***/ 82476:
-/***/ ((module) => {
-
-module.exports = "/*\nEvery max-width of breakpoint is equal:\nnext min-width - 60% from 1px (1/16 * 0.6 = 0.0375)\n*/\n\n@tui-media-retina: ~'(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';\n@tui-media-retina-mobile: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 37.4625em), (min-resolution: 192dpi) and (max-width: 37.4625em)';\n@tui-media-retina-tablet: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 63.9625em), (min-resolution: 192dpi) and (max-width: 63.9625em)';\n@tui-media-retina-desktop: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 84.9625em), (min-resolution: 192dpi) and (max-width: 84.9625em)';\n\n@tui-mobile: ~'screen and (max-width: 47.9625em)';\n@tui-mobile-min: ~'screen and (min-width: 22.5em)';\n@tui-mobile-interval: ~'(min-width: 22.5em) and (max-width: 47.9625em)';\n\n@tui-tablet: ~'screen and (max-width: 63.9625em)';\n@tui-tablet-min: ~'screen and (min-width: 48em)';\n@tui-tablet-interval: ~'(min-width: 48em) and (max-width: 63.9625em)';\n\n@tui-desktop: ~'screen and (max-width: 79.9625em)';\n@tui-desktop-min: ~'screen and (min-width: 64em)';\n@tui-desktop-interval: ~'(min-width: 64em) and (max-width: 79.9625em)';\n\n@tui-desktop-lg-min: ~'screen and (min-width: 80em)';\n";
-
 /***/ })
 
 }]);
