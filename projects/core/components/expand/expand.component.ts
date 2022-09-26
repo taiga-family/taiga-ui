@@ -71,6 +71,12 @@ export class TuiExpandComponent {
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {}
 
+    get computedContent(): TemplateRef<NgIfContext<boolean>> | null {
+        return this.content?.elementRef.nativeElement.nodeValue === `container`
+            ? this.content
+            : null;
+    }
+
     @HostBinding(`class._overflow`)
     get overflow(): boolean {
         return this.state !== State.Idle;

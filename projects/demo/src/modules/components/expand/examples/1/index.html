@@ -14,3 +14,9 @@
         <p>NOBODY expects the Spanish Inquisition!</p>
     </ng-template>
 </tui-expand>
+
+<tui-expand [expanded]="expanded">
+    <div *ngFor="let page of subpages">
+        <div>{{ page }}</div>
+    </div>
+</tui-expand>
