@@ -29137,12 +29137,13 @@ class TuiHintComponent {
       style
     } = nativeElement;
     const rect = this.accessor.getClientRect();
+    const safeLeft = Math.max(left, 4);
     const beakTop = rect.top + rect.height / 2 - top;
-    const beakLeft = rect.left + rect.width / 2 - left;
+    const beakLeft = rect.left + rect.width / 2 - safeLeft;
     style.top = (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)(top);
-    style.left = (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)(left);
-    style.setProperty(`--top`, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiClamp)(beakTop, 0, height - 1)));
-    style.setProperty(`--left`, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiClamp)(beakLeft, 0, width - 1)));
+    style.left = (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)(safeLeft);
+    style.setProperty(`--top`, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiClamp)(beakTop, 0.5, height - 1)));
+    style.setProperty(`--left`, (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPx)((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiClamp)(beakLeft, 0.5, width - 1)));
   }
 
 }
