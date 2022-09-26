@@ -1,4 +1,4 @@
-import {TuiComponentHarness} from '@taiga-ui/testing';
+import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiBadgeHarness extends TuiComponentHarness {
     static hostSelector = `tui-badge`;
