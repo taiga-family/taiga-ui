@@ -8,7 +8,8 @@ import {Observable} from 'rxjs';
     selector: `tui-hints-host`,
     templateUrl: `./hints-host.template.html`,
     styleUrls: [`./hints-host.style.less`],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // So that we do not force OnPush on custom hints
+    changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
     host: {
         'aria-live': `polite`,

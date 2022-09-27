@@ -16,7 +16,8 @@ import {Observable} from 'rxjs';
     selector: `tui-alert-host`,
     templateUrl: `./alert-host.template.html`,
     styleUrls: [`./alert-host.style.less`],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // So that we do not force OnPush on custom alerts
+    changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
     encapsulation: ViewEncapsulation.None,
 })
