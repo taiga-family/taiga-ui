@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/tinkoff/taiga-ui/compare/v3.3.0...v3.4.0) (2022-09-27)
+
+### Features
+
+- **testing:** add component harness test for primitive-textfield component
+  ([#2584](https://github.com/tinkoff/taiga-ui/issues/2584))
+  ([40e2a91](https://github.com/tinkoff/taiga-ui/commit/40e2a916564c5d669750dbbee9c799b82d442775))
+- **testing:** add harness for island ([#2727](https://github.com/tinkoff/taiga-ui/issues/2727))
+  ([f938d49](https://github.com/tinkoff/taiga-ui/commit/f938d491bc7c0a9a806b354776f0d50709d04e32))
+
+### Bug Fixes
+
+- **addon-editor:** add deps for starter-kit ([#2757](https://github.com/tinkoff/taiga-ui/issues/2757))
+  ([8c07868](https://github.com/tinkoff/taiga-ui/commit/8c078689ee01aa9a242237b70ecd628a329a3fe8))
+- **cdk:** `schematics` add `Node.js < 16`-support ([#2744](https://github.com/tinkoff/taiga-ui/issues/2744))
+  ([69d20d5](https://github.com/tinkoff/taiga-ui/commit/69d20d508dd92dc353dc0e080cf138446bbb7fa2))
+- **core:** `Hint` fix offscreen position on small devices ([#2749](https://github.com/tinkoff/taiga-ui/issues/2749))
+  ([e249a54](https://github.com/tinkoff/taiga-ui/commit/e249a54c740cf3ac35bf57234542d950a867e5e3))
+- **core:** `PrimitiveTextfield` drop wrong `text-overflow: ellipsis` (horizontal scroll bug)
+  ([#2733](https://github.com/tinkoff/taiga-ui/issues/2733))
+  ([2ddc249](https://github.com/tinkoff/taiga-ui/commit/2ddc24947b5324f58cc3a903a2e63a48f9c1d673))
+- **demo:** `Stackblitz` broken styles ([#2747](https://github.com/tinkoff/taiga-ui/issues/2747))
+  ([1bf9e2d](https://github.com/tinkoff/taiga-ui/commit/1bf9e2d88f4543fb259d8807f666791239c5059f))
+- **eslint-plugin:** `no-deep-imports` add `Windows`-OS support
+  ([#2741](https://github.com/tinkoff/taiga-ui/issues/2741))
+  ([e54e3de](https://github.com/tinkoff/taiga-ui/commit/e54e3de79d47afdfab45e2c59932059aa42c57d7))
+
 ## [3.3.0](https://github.com/tinkoff/taiga-ui/compare/v3.2.0...v3.3.0) (2022-09-16)
 
 ### Features
