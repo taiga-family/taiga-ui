@@ -29,7 +29,7 @@ describe(`Button`, () => {
             .should(`be.visible`)
             .find(`[tuiButton]`)
             .matchImageSnapshot(
-                '02-[icon=tuiIconEyeClosed]-[iconRight=tuiIconEyeClosed]',
+                `02-[icon=tuiIconEyeClosed]-[iconRight=tuiIconEyeClosed]`,
             );
     });
 });
