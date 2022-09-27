@@ -24,7 +24,8 @@ const isFakeHistoryState = (
     selector: `tui-dialog-host`,
     templateUrl: `./dialog-host.template.html`,
     styleUrls: [`./dialog-host.style.less`],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // So that we do not force OnPush on custom dialogs
+    changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {

@@ -15,11 +15,12 @@ import {map} from 'rxjs/operators';
     selector: `tui-root`,
     templateUrl: `root.template.html`,
     styleUrls: [`./root.style.less`],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // So that we do not force OnPush on custom dialogs
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.--tui-duration]': `duration + "ms"`,
+        '[style.--tui-duration.ms]': `duration`,
         '($.class._mobile)': `isMobileRes$`,
     },
 })

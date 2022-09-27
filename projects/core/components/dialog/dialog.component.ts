@@ -15,7 +15,8 @@ const REQUIRED_ERROR = new Error(`Required dialog was dismissed`);
     selector: `tui-dialog`,
     templateUrl: `./dialog.template.html`,
     styleUrls: [`./dialog.style.less`],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // So we don't force OnPush on dialog content
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: TUI_DIALOG_PROVIDERS,
     animations: [tuiSlideInTop, tuiFadeIn],
 })
