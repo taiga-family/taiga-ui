@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.63.0](https://github.com/tinkoff/taiga-ui/compare/v2.62.4...v2.63.0) (2022-09-27)
+
+### Bug Fixes
+
+- **addon-editor:** add deps for starter-kit ([#2759](https://github.com/tinkoff/taiga-ui/issues/2759))
+  ([769cb48](https://github.com/tinkoff/taiga-ui/commit/769cb48eb2c25246c041b232f6acc535922650e4))
+
 ### [2.62.4](https://github.com/tinkoff/taiga-ui/compare/v2.62.3...v2.62.4) (2022-09-16)
 
 ### Bug Fixes
