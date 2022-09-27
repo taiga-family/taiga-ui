@@ -4750,6 +4750,7 @@ const Code = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__["Mark"].create({
     },
     excludes: '_',
     code: true,
+    exitable: true,
     parseHTML() {
         return [
             { tag: 'code' },
