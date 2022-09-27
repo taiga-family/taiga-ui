@@ -5,12 +5,12 @@
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>
         <tui-loader
-            *ngIf="async; else computedContent"
+            *ngIf="async; else content"
             size="l"
             [overlay]="true"
             [showLoader]="loading"
         >
-            <ng-container [ngTemplateOutlet]="computedContent"></ng-container>
+            <ng-container [ngTemplateOutlet]="content"></ng-container>
         </tui-loader>
     </ng-container>
 </div>

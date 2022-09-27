@@ -496,10 +496,6 @@ export const INPUTS_TO_REMOVE: InputToRemove[] = [
         inputName: 'tuiLabel',
         tags: ['label'],
     },
-    {
-        inputName: 'tuiExpandContent',
-        tags: ['ng-template'],
-    },
 ];
 
 export const TAGS_TO_REPLACE: ReplacementTags[] = [
