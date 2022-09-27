@@ -27,7 +27,14 @@ import {
     TuiTimeLike,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
+import {
+    tuiAsDataListHost,
+    tuiAsOptionContent,
+    TuiDataListHost,
+    TuiPrimitiveTextfieldComponent,
+    TuiTextMaskOptions,
+} from '@taiga-ui/core';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {
@@ -47,12 +54,14 @@ import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options'
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTimeComponent),
         tuiAsControl(TuiInputTimeComponent),
+        tuiAsDataListHost(TuiInputTimeComponent),
+        tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor, TuiDataListHost<TuiTime>
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -224,7 +233,7 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
-    onMenuClick(item: TuiTime): void {
+    handleOption(item: TuiTime): void {
         this.focusInput();
         this.updateValue(item);
     }
