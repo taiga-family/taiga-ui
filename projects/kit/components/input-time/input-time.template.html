@@ -41,7 +41,7 @@
             automation-id="tui-input-time__item"
             [size]="itemSize"
             [disabled]="disabledItemHandler(item)"
-            (click)="onMenuClick(item)"
+            [value]="item"
         >
             {{ item }}
         </button>
