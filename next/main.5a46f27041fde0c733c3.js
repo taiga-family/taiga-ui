@@ -36500,7 +36500,7 @@ let HomeComponent = /*#__PURE__*/(() => {
 
   HomeComponent.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
     type: HomeComponent,
-    selectors: [["home"]],
+    selectors: [["demo-home"]],
     decls: 53,
     vars: 9,
     consts: function () {
