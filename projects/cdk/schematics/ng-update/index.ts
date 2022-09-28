@@ -35,6 +35,7 @@ import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
 import {Schema} from '../ng-add/schema';
+import {migrateExpandTemplates} from './v3-5/steps/migrate-expand-templates';
 
 export function updateToV3(options: Schema): Rule {
     const t0 = performance.now();
@@ -56,6 +57,21 @@ export function updateToV3(options: Schema): Rule {
             );
         },
     ]);
+}
+
+export function updateToV3_5(): Rule {
+    return async (tree: Tree, _: SchematicContext) => {
+        const fileSystem = getFileSystem(tree);
+
+        migrateExpandTemplates(fileSystem);
+
+        fileSystem.commitEdits();
+        saveActiveProject();
+
+        titleLog(
+            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
+        );
+    };
 }
 
 function main(options: Schema): Rule {
