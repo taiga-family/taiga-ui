@@ -38436,7 +38436,7 @@ const ROUTES = [{
 {
   path: `pipes/currency`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(23121), __webpack_require__.e(50587)]).then(__webpack_require__.bind(__webpack_require__, 50587))).ExampleTuiCurrencyModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(23121), __webpack_require__.e(50587)]).then(__webpack_require__.bind(__webpack_require__, 78620))).ExampleTuiCurrencyModule;
   }),
   data: {
     title: `Currency`

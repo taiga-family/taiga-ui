@@ -7081,7 +7081,7 @@ const Dropcursor = tiptap_core_esm.Extension.create({
 
 /***/ }),
 
-/***/ 13512:
+/***/ 50587:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -7101,7 +7101,7 @@ var prosemirror_state_dist = __webpack_require__(62463);
 var prosemirror_model_dist = __webpack_require__(35917);
 // EXTERNAL MODULE: ./node_modules/prosemirror-view/dist/index.js
 var prosemirror_view_dist = __webpack_require__(43594);
-;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-gapcursor/node_modules/prosemirror-gapcursor/dist/index.js
+;// CONCATENATED MODULE: ./node_modules/prosemirror-gapcursor/dist/index.js
 
 
 
@@ -16438,7 +16438,7 @@ var tiptap_extension_document_esm = __webpack_require__(44225);
 // EXTERNAL MODULE: ./node_modules/@tiptap/extension-dropcursor/dist/tiptap-extension-dropcursor.esm.js + 1 modules
 var tiptap_extension_dropcursor_esm = __webpack_require__(81121);
 // EXTERNAL MODULE: ./node_modules/@tiptap/extension-gapcursor/dist/tiptap-extension-gapcursor.esm.js + 1 modules
-var tiptap_extension_gapcursor_esm = __webpack_require__(13512);
+var tiptap_extension_gapcursor_esm = __webpack_require__(50587);
 // EXTERNAL MODULE: ./node_modules/@tiptap/extension-hard-break/dist/tiptap-extension-hard-break.esm.js
 var tiptap_extension_hard_break_esm = __webpack_require__(34278);
 // EXTERNAL MODULE: ./node_modules/@tiptap/extension-heading/dist/tiptap-extension-heading.esm.js

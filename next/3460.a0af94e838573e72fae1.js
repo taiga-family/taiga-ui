@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tiptap_extension_code_block__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(93743);
 /* harmony import */ var _tiptap_extension_document__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(44225);
 /* harmony import */ var _tiptap_extension_dropcursor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(81121);
-/* harmony import */ var _tiptap_extension_gapcursor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(13512);
+/* harmony import */ var _tiptap_extension_gapcursor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(50587);
 /* harmony import */ var _tiptap_extension_hard_break__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(34278);
 /* harmony import */ var _tiptap_extension_heading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15400);
 /* harmony import */ var _tiptap_extension_history__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(10590);
