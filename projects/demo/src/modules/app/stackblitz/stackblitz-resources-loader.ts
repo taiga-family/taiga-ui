@@ -19,14 +19,16 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             polyfillsContent,
             stylesContent,
             appModuleTsContent,
-        ]: string[] = await Promise.all([
-            tuiRawLoad(import(`./project-files/configs.md?raw`)),
-            tuiRawLoad(import(`./project-files/src/main.ts.md?raw`)),
-            tuiRawLoad(import(`./project-files/src/index.html.md?raw`)),
-            tuiRawLoad(import(`./project-files/src/polyfills.ts.md?raw`)),
-            tuiRawLoad(import(`./project-files/src/styles.less.md?raw`)),
-            tuiRawLoad(import(`./project-files/src/app/app.module.ts.md?raw`)),
-        ]);
+        ]: string[] = await Promise.all(
+            [
+                import(`./project-files/configs.md?raw`),
+                import(`./project-files/src/main.ts.md?raw`),
+                import(`./project-files/src/index.html.md?raw`),
+                import(`./project-files/src/polyfills.ts.md?raw`),
+                import(`./project-files/src/styles.less.md?raw`),
+                import(`./project-files/src/app/app.module.ts.md?raw`),
+            ].map(tuiRawLoad),
+        );
 
         const [angularJson, tsconfig] = tuiTryParseMarkdownCodeBlock(configsContent);
         const [mainTs] = tuiTryParseMarkdownCodeBlock(mainTsContent);
@@ -54,38 +56,26 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             whiteBlock,
             wrapper,
             stackblitzMarkdown,
-        ] = await Promise.all([
-            tuiRawLoad(
+        ] = await Promise.all(
+            [
                 import(`../../../../../core/styles/theme/wrapper/accent.less?raw`),
-            ),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/base.less?raw`)),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/icon.less?raw`)),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/mono.less?raw`)),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/none.less?raw`)),
-            tuiRawLoad(
+                import(`../../../../../core/styles/theme/wrapper/base.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/icon.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/mono.less?raw`),
+                import(`../../../../../core/styles/theme/wrapper/none.less?raw`),
                 import(`../../../../../core/styles/theme/wrapper/outline.less?raw`),
-            ),
-            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/primary.less?raw`),
-            ),
-            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/secondary.less?raw`),
-            ),
-            tuiRawLoad(
                 import(
                     `../../../../../core/styles/theme/wrapper/secondary-destructive.less?raw`
                 ),
-            ),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper/table.less?raw`)),
-            tuiRawLoad(
+                import(`../../../../../core/styles/theme/wrapper/table.less?raw`),
                 import(`../../../../../core/styles/theme/wrapper/textfield.less?raw`),
-            ),
-            tuiRawLoad(
                 import(`../../../../../core/styles/theme/wrapper/whiteblock.less?raw`),
-            ),
-            tuiRawLoad(import(`../../../../../core/styles/theme/wrapper.less?raw`)),
-            tuiRawLoad(import(`./project-files/src/stackblitz.less.md?raw`)),
-        ]);
+                import(`../../../../../core/styles/theme/wrapper.less?raw`),
+                import(`./project-files/src/stackblitz.less.md?raw`),
+            ].map(tuiRawLoad),
+        );
 
         const [stackblitz] = tuiTryParseMarkdownCodeBlock(stackblitzMarkdown);
 
