@@ -1,6 +1,5 @@
 <div
     *ngFor="let set of transposed; let index = index"
-    tuiHintDirection="top"
     class="t-wrapper"
     [class.t-wrapper_hoverable]="!!hintContent"
     [class.t-wrapper_hovered]="drivers.get(index) | async"

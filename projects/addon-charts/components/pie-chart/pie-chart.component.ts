@@ -17,7 +17,12 @@ import {
     tuiPure,
     tuiSum,
 } from '@taiga-ui/cdk';
-import {TuiHintOptionsDirective, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {
+    TuiHintOptionsDirective,
+    tuiHintOptionsProvider,
+    TuiSizeXL,
+    TuiSizeXS,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
@@ -40,6 +45,9 @@ const TRANSFORM = {
     templateUrl: `./pie-chart.template.html`,
     styleUrls: [`./pie-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [
+        tuiHintOptionsProvider({direction: `top-right`, appearance: `onDark`}),
+    ],
 })
 export class TuiPieChartComponent {
     private readonly autoIdString: string;

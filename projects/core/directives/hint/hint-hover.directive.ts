@@ -4,7 +4,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, switchMap} from 'rxjs/operators';
 
-import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
     selector: `[tuiHint]:not(ng-container)`,

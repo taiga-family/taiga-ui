@@ -20,7 +20,7 @@ import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
-import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
     selector: `[tuiHint]:not(ng-container)`,
@@ -44,9 +44,9 @@ export class TuiHintDirective<C>
     @Input(`tuiHintContext`)
     context?: C;
 
-    @Input(`tuiHintAppearance`)
+    @Input()
     @tuiDefaultProp()
-    appearance = this.options.appearance;
+    tuiHintAppearance: string | null = null;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -58,6 +58,10 @@ export class TuiHintDirective<C>
         @Inject(TuiActiveZoneDirective)
         readonly activeZone?: TuiActiveZoneDirective | null,
     ) {}
+
+    get appearance(): string {
+        return this.tuiHintAppearance ?? this.options.appearance;
+    }
 
     ngOnChanges(): void {
         if (!this.content) {
