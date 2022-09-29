@@ -1,5 +1,5 @@
 ```less
-//@import '@taiga-ui/styles/taiga-ui-global.less'; // TODO: uncomment later after release
+@import '@taiga-ui/styles/taiga-ui-global.less';
 @import '@taiga-ui/core/styles/theme/variables.less';
 /**
 THIS IS A WORKAROUND FOR STACKBLITZ:
