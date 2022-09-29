@@ -2,7 +2,7 @@
     *ngIf="cardGroupedTexts$ | async as texts"
     tuiWrapper
     tuiDropdownLimitWidth="fixed"
-    class="t-common-wrapper notranslate"
+    class="t-common-wrapper"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
@@ -25,6 +25,7 @@
                 type="text"
                 automation-id="tui-input-card-grouped__card"
                 inputmode="numeric"
+                translate="no"
                 class="t-input t-input_card"
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="!card.length && focused"
@@ -41,6 +42,7 @@
                 (focus)="(0)"
             />
             <span
+                translate="no"
                 aria-hidden="true"
                 class="t-collapsed"
                 [attr.data-before]="masked"
@@ -74,6 +76,7 @@
                 placeholder="00/00"
                 automation-id="tui-input-card-grouped__expire"
                 inputmode="numeric"
+                translate="no"
                 class="t-input"
                 [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
@@ -105,6 +108,7 @@
                 type="text"
                 automation-id="tui-input-card-grouped__cvc"
                 inputmode="numeric"
+                translate="no"
                 class="t-input"
                 [class.t-input_prefilled]="cvcPrefilled"
                 [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
