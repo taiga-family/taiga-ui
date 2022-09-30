@@ -22,6 +22,7 @@
             <input
                 #inputCard
                 type="text"
+                translate="no"
                 automation-id="tui-input-card-grouped__card"
                 tuiInputMode="numeric"
                 class="t-input t-input_card"
@@ -41,6 +42,7 @@
             />
             <span
                 aria-hidden="true"
+                translate="no"
                 class="t-collapsed"
                 [attr.data-before]="masked"
                 [class.t-collapsed_enable-mask]="isCardCollapsed"
@@ -70,6 +72,7 @@
             <input
                 #inputExpire
                 type="text"
+                translate="no"
                 placeholder="00/00"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
@@ -102,6 +105,7 @@
             <input
                 #inputCVC
                 type="text"
+                translate="no"
                 automation-id="tui-input-card-grouped__cvc"
                 tuiInputMode="numeric"
                 class="t-input"
