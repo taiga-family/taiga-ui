@@ -6220,16 +6220,10 @@ const TUI_DOC_TITLE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/* .Injectio
 /* harmony export */   "J": () => (/* binding */ tuiRawLoad)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(64762);
- // TODO: delete it when all `!!raw-loader!` will be replaced by webpack `asset/source`.
-
-function trimExportDefault(fileContent) {
-  return fileContent.startsWith(`export default "`) ? fileContent.replace(/^export\sdefault\s["']/gi, ``).replace(/['"];$/gi, ``).replaceAll(`\\n`, `\n`).replaceAll(`\\"`, `"`) : fileContent;
-}
 
 function tuiRawLoad(content) {
   return (0,tslib__WEBPACK_IMPORTED_MODULE_0__/* .__awaiter */ .mG)(this, void 0, void 0, function* () {
-    const unpacked = content instanceof Promise ? (yield content).default : content;
-    return trimExportDefault(unpacked);
+    return content instanceof Promise ? (yield content).default : content;
   });
 }
 
@@ -35999,7 +35993,7 @@ const STACKBLITZ_DEPS = {
 class AbstractTuiStackblitzResourcesLoader {
   static getProjectFiles() {
     return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const [configsContent, mainTsContent, indexHtmlContent, polyfillsContent, stylesContent, appModuleTsContent] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 2337).then(__webpack_require__.t.bind(__webpack_require__, 2337, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 36867).then(__webpack_require__.t.bind(__webpack_require__, 36867, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 85901).then(__webpack_require__.t.bind(__webpack_require__, 85901, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 20741).then(__webpack_require__.t.bind(__webpack_require__, 20741, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 13330).then(__webpack_require__.t.bind(__webpack_require__, 13330, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 70827).then(__webpack_require__.t.bind(__webpack_require__, 70827, 17)))]);
+      const [configsContent, mainTsContent, indexHtmlContent, polyfillsContent, stylesContent, appModuleTsContent] = yield Promise.all([__webpack_require__.e(/* import() */ 2337).then(__webpack_require__.t.bind(__webpack_require__, 2337, 17)), __webpack_require__.e(/* import() */ 36867).then(__webpack_require__.t.bind(__webpack_require__, 36867, 17)), __webpack_require__.e(/* import() */ 85901).then(__webpack_require__.t.bind(__webpack_require__, 85901, 17)), __webpack_require__.e(/* import() */ 20741).then(__webpack_require__.t.bind(__webpack_require__, 20741, 17)), __webpack_require__.e(/* import() */ 13330).then(__webpack_require__.t.bind(__webpack_require__, 13330, 17)), __webpack_require__.e(/* import() */ 70827).then(__webpack_require__.t.bind(__webpack_require__, 70827, 17))].map(public_api/* tuiRawLoad */.JQ));
       const [angularJson, tsconfig] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(configsContent);
       const [mainTs] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(mainTsContent);
       const [indexHtml] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(indexHtmlContent);
@@ -36020,7 +36014,7 @@ class AbstractTuiStackblitzResourcesLoader {
 
   static getTaigaStyles() {
     return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const [accent, base, icon, mono, none, outline, primary, secondary, secondaryDestructive, table, textfield, whiteBlock, wrapper, stackblitzMarkdown] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17))), (0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17)))]);
+      const [accent, base, icon, mono, none, outline, primary, secondary, secondaryDestructive, table, textfield, whiteBlock, wrapper, stackblitzMarkdown] = yield Promise.all([__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17)), __webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17)), __webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17)), __webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17)), __webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17)), __webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17)), __webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17)), __webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17)), __webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17)), __webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17)), __webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17)), __webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17)), __webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17)), __webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17))].map(public_api/* tuiRawLoad */.JQ));
       const [stackblitz] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stackblitzMarkdown);
       return {
         [`styles/theme/wrapper/accent.less`]: accent,
@@ -36113,7 +36107,7 @@ function exampleContentProcessor(content) {
 
 
 const prepareLess = content => {
-  return content.replace(`~@taiga-ui/core/styles/taiga-ui-local`, `@stackblitz/styles/taiga-ui-stackblitz.less`).replace(/@import.+taiga-ui-local(.less)?';/g, `@import '@taiga-ui/core/styles/taiga-ui-local.less';`);
+  return content.replace(/@import.+taiga-ui-local(.less)?';/g, `@import '@taiga-ui/core/styles/taiga-ui-local.less';`);
 };
 const appPrefix = (stringsPart, path = ``) => `src/app/${stringsPart.join(``)}${path}`;
 const stackblitzPrefix = (stringsPart, path = ``) => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
