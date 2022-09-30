@@ -1,18 +1,13 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
-    selector: 'example-hint',
-    templateUrl: './hint.template.html',
+    selector: `example-hint`,
+    templateUrl: `./hint.template.html`,
     changeDetection,
     providers: [
         {
@@ -22,15 +17,14 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     ],
 })
 export class ExampleTuiHintComponent extends AbstractExampleTuiHint {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    id = '';
     showDelay = 500;
     hideDelay = 200;
 }

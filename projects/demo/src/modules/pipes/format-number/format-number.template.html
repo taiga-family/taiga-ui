@@ -1,10 +1,20 @@
-<tui-doc-page header="FormatNumber" package="CORE" type="pipes">
+<tui-doc-page
+    header="FormatNumber"
+    package="CORE"
+    type="pipes"
+>
     <ng-template pageTab>
         <p i18n>Pipe to format number values to separate thousands</p>
 
         <p i18n>
             Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
         </p>
 
         <tui-doc-example
@@ -18,12 +28,15 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n class="text b-full-width">
-            Formatted number: {{ value | tuiFormatNumber:
-            decimalLimit:decimalSeparator }}
+        <p
+            i18n
+            class="text b-full-width"
+        >
+            Formatted number:
+            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} }}
         </p>
         <tui-input-slider
-            size="m"
+            tuiTextfieldSize="m"
             class="slider"
             [max]="10000000"
             [quantum]="0.111"
@@ -33,18 +46,18 @@
             <ng-template
                 i18n
                 documentationPropertyName="decimalLimit"
-                documentationPropertyType="number | null"
+                documentationPropertyType="number"
                 [documentationPropertyValues]="decimalLimitVariants"
                 [(documentationPropertyValue)]="decimalLimit"
             >
                 Digits after comma (use
-                <code>null</code>
+                <code>Infinity</code>
                 not to change)
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="decimalSeparator"
-                documentationPropertyType="string"
+                documentationPropertyType="TuiDecimalSymbol"
                 [documentationPropertyValues]="decimalSeparatorVariants"
                 [(documentationPropertyValue)]="decimalSeparator"
             >
@@ -58,24 +71,22 @@
             <li>
                 <p i18n>
                     Import
-                    <code>TuiFormatNumberPipe</code>
-                    into a module where you want to use our component
+                    <code>TuiFormatNumberPipeModule</code>
+                    into a module where you want to use the pipe
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

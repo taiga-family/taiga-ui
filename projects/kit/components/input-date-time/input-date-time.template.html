@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="interactive"
     [content]="dropdown"
     [open]="open && interactive"
@@ -8,33 +8,38 @@
     <tui-primitive-textfield
         automation-id="tui-input-date-time__textfield"
         tuiValueAccessor
-        tuiTextfieldInputMode="numeric"
-        class="textfield"
-        [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="pseudoHovered"
+        class="t-textfield"
+        [tuiTextfieldIcon]="iconContent"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [filler]="filler$ | async"
+        [filler]="(filler$ | async) || ''"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="iconContent"
-        [disabled]="disabled"
+        [disabled]="computedDisabled"
         [textMask]="textMaskOptions"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #iconContent>
         <tui-svg
-            [class.icon]="!computedDisabled"
+            [class.t-icon]="!computedDisabled"
             [src]="calendarIcon"
         ></tui-svg>
     </ng-template>
 
-    <ng-template #dropdown="polymorpheus" polymorpheus>
+    <ng-template
+        #dropdown="polymorpheus"
+        [polymorpheus]="type"
+    >
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date-time__calendar"

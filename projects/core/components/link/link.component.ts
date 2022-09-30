@@ -2,20 +2,19 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
 } from '@angular/core';
 import {
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -25,54 +24,51 @@ import {mapTo} from 'rxjs/operators';
 
 // @bad TODO: Think about extending Interactive
 @Component({
-    selector: 'a[tuiLink], button[tuiLink]',
-    templateUrl: './link.template.html',
-    styleUrls: ['./link.style.less'],
+    selector: `a[tuiLink], button[tuiLink]`,
+    templateUrl: `./link.template.html`,
+    styleUrls: [`./link.style.less`],
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiLinkComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiLinkComponent),
         TuiFocusVisibleService,
         TuiDestroyService,
         MODE_PROVIDER,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'tuiLink',
+    exportAs: `tuiLink`,
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
-    @HostBinding('class._pseudo')
+    @HostBinding(`class._pseudo`)
     @tuiDefaultProp()
     pseudo = false;
 
     @Input()
     @tuiDefaultProp()
-    icon: string | null = null;
+    icon = ``;
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
+    iconAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('class._icon-rotated')
+    @HostBinding(`class._icon-rotated`)
     @tuiDefaultProp()
     iconRotated = false;
 
     @Input()
-    @HostBinding('attr.data-host-mode')
+    @HostBinding(`attr.data-host-mode`)
     @tuiDefaultProp()
     mode: 'positive' | 'negative' | null = null;
 
-    @HostBinding('class._focus-visible')
+    @HostBinding(`class._focus-visible`)
     focusVisible = false;
 
     readonly focusedChange = merge(
-        typedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(mapTo(true)),
-        typedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusin`).pipe(mapTo(true)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `focusout`).pipe(mapTo(false)),
     );
 
     constructor(
@@ -92,18 +88,18 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get hasIcon(): boolean {
-        return this.icon !== null;
+        return !!this.icon;
     }
 
     get iconAlignLeft(): boolean {
-        return this.hasIcon && this.iconAlign === 'left';
+        return this.hasIcon && this.iconAlign === `left`;
     }
 
     get iconAlignRight(): boolean {
-        return this.hasIcon && this.iconAlign === 'right';
+        return this.hasIcon && this.iconAlign === `right`;
     }
 }

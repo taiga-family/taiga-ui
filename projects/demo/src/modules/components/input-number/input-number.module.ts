@@ -3,11 +3,12 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -18,6 +19,7 @@ import {TuiInputNumberExample1} from './examples/1';
 import {TuiInputNumberExample2} from './examples/2';
 import {TuiInputNumberExample3} from './examples/3';
 import {TuiInputNumberExample4} from './examples/4';
+import {TuiInputNumberExample5} from './examples/5';
 import {ExampleTuiInputNumberComponent} from './input-number.component';
 
 @NgModule({
@@ -32,10 +34,11 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiButtonModule,
         TuiLinkModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiNotificationModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputNumberComponent)),
+        TuiHintModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputNumberComponent)),
     ],
     declarations: [
         ExampleTuiInputNumberComponent,
@@ -43,6 +46,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiInputNumberExample2,
         TuiInputNumberExample3,
         TuiInputNumberExample4,
+        TuiInputNumberExample5,
     ],
     exports: [ExampleTuiInputNumberComponent],
 })

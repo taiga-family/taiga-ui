@@ -1,12 +1,16 @@
-<h2 *ngIf="!!context.label" class="t-heading" [id]="context.id">
+<h2
+    *ngIf="!!context.label"
+    class="t-heading"
+    [id]="context.id"
+>
     {{ context.label }}
 </h2>
-<div
-    polymorpheus-outlet
-    class="t-content"
-    [content]="context.content"
-    [context]="context"
-></div>
+<div class="t-content">
+    <!-- TODO: Polymorpheus fix type -->
+    <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
+        {{ text }}
+    </ng-container>
+</div>
 <button
     *ngFor="let action of context.actions; let index = index"
     tuiButton

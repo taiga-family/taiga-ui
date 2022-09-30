@@ -1,3 +1,11 @@
+.table {
+    table-layout: fixed;
+}
+
+.textarea {
+    min-height: var(--tui-height-l);
+}
+
 .number {
     text-align: right;
     flex-direction: row-reverse;
@@ -5,10 +13,16 @@
 
 .first {
     min-width: 11.25rem;
+    max-width: 11.25rem;
 }
 
 .second {
-    left: 11.375rem;
+    left: 11.25rem;
+}
+
+.text {
+    vertical-align: top;
+    padding-top: 1rem;
 }
 
 // Due to rowSpan this item appears to be the first child

@@ -1,0 +1,73 @@
+@import 'taiga-ui-local';
+
+tui-tabs[tuiMobileTabs],
+[tuiMobileTabs] tui-tabs {
+    &[data-platform='android'] {
+        height: auto;
+
+        tui-underline {
+            box-shadow: inset 0 -0.1875rem var(--tui-link);
+        }
+
+        [tuiTab] {
+            .transition(opacity);
+            height: 3rem;
+            flex: 1;
+            flex-shrink: 0;
+            justify-content: center;
+            text-transform: uppercase;
+            color: var(--tui-base-09);
+            opacity: 0.5;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: -0.008125rem;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+            &:hover {
+                box-shadow: none;
+            }
+
+            &._active {
+                opacity: 1;
+                color: var(--tui-base-09);
+            }
+        }
+    }
+
+    &[data-platform='ios'] {
+        height: auto;
+        border: 2px solid transparent;
+        border-radius: 0.5625rem;
+        background: var(--tui-link);
+        box-shadow: none;
+
+        tui-underline {
+            border-radius: 0.4375rem;
+            background: var(--tui-base-01);
+            box-shadow: 0 0.1875rem 0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.12);
+        }
+
+        [tuiTab] {
+            height: 1.75rem;
+            flex: 1;
+            flex-shrink: 0;
+            justify-content: center;
+            color: var(--tui-base-01);
+            opacity: 1;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: -0.005rem;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+            &:hover {
+                box-shadow: none;
+            }
+
+            &._active {
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: var(--tui-link);
+            }
+        }
+    }
+}

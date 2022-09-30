@@ -1,15 +1,28 @@
-<tui-select class="b-form" [valueContent]="content" [(ngModel)]="value">
+<tui-select
+    class="b-form"
+    [valueContent]="content"
+    [(ngModel)]="value"
+>
     Bank and account
     <ng-template tuiDataList>
         <tui-data-list>
             <tui-opt-group>
-                <button tuiOption [value]="all">All</button>
+                <button
+                    tuiOption
+                    [value]="all"
+                >
+                    All
+                </button>
             </tui-opt-group>
             <tui-opt-group label="Best bank">
                 <tui-opt-group tuiMultiSelectGroup>
-                    <button *ngFor="let item of bank" tuiOption [value]="item">
-                        <label tuiLabel [label]="item.name">
-                            {{item.account}}
+                    <button
+                        *ngFor="let item of bank"
+                        tuiOption
+                        [value]="item"
+                    >
+                        <label [tuiLabel]="item.name">
+                            {{ item.account }}
                         </label>
                     </button>
                 </tui-opt-group>
@@ -21,14 +34,19 @@
                         tuiOption
                         [value]="item"
                     >
-                        <label tuiLabel [label]="item.name">
-                            {{item.account}}
+                        <label [tuiLabel]="item.name">
+                            {{ item.account }}
                         </label>
                     </button>
                 </tui-opt-group>
             </tui-opt-group>
             <tui-opt-group tuiMultiSelectGroup>
-                <button tuiOption [value]="cash">Cash</button>
+                <button
+                    tuiOption
+                    [value]="cash"
+                >
+                    Cash
+                </button>
             </tui-opt-group>
         </tui-data-list>
     </ng-template>

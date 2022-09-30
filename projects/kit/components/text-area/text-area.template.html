@@ -1,88 +1,88 @@
-<tui-wrapper
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<div
+    tuiWrapper
     automation-id="tui-text-area__wrapper"
-    class="outline"
+    class="t-outline"
     [appearance]="appearance"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hovered]="computedHovered"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
 >
     <div
         *ngIf="hasCounter"
         automation-id="tui-text-area__counter"
-        class="counter"
+        class="t-counter"
     >
-        {{ value.length }}/{{ controller.maxLength }}
+        {{ value.length }}/{{ maxLength }}
     </div>
-</tui-wrapper>
 
-<label
-    class="content"
-    (tuiHoveredChange)="onHovered($event)"
-    (mousedown)="onMouseDown($event)"
->
-    <div class="wrapper">
-        <div
-            *ngIf="hasPlaceholder"
-            automation-id="tui-text-area__placeholder"
-            class="placeholder"
-            [class.placeholder_raised]="placeholderRaised"
-        >
-            <ng-content></ng-content>
-        </div>
-        <tui-scrollbar
-            automation-id="tui-text-area__scrollbar"
-            class="box"
-            [style.maxHeight.px]="computeMaxHeight"
-        >
-            <div class="input-wrapper">
-                <div class="relative">
-                    <div aria-hidden="true" class="pseudo-content">
-                        <span
-                            [textContent]="fittedContent || controller.exampleText"
-                        ></span>
-                        <span
-                            class="pseudo-content__extra"
-                            [textContent]="extraContent"
-                        ></span>
-                        &nbsp;
-                    </div>
-                    <textarea
-                        #focusableElement
-                        automation-id="tui-text-area__native"
-                        class="input"
-                        [placeholder]="controller.exampleText"
-                        [id]="id"
-                        [tuiDescribedBy]="id"
-                        [tuiFocusable]="focusable"
-                        [disabled]="disabled"
-                        [ngModel]="value"
-                        [readOnly]="readOnly"
-                        (tuiFocusedChange)="onFocused($event)"
-                        (ngModelChange)="onValue($event)"
-                    ></textarea>
-                </div>
+    <label
+        class="t-content"
+        (mousedown)="onMouseDown($event)"
+    >
+        <div class="t-wrapper">
+            <div
+                *ngIf="hasPlaceholder"
+                automation-id="tui-text-area__placeholder"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
+            >
+                <ng-content></ng-content>
             </div>
-        </tui-scrollbar>
-    </div>
-    <div class="icons">
-        <tui-svg
-            *ngIf="hasCleaner"
-            src="tuiIconCloseLarge"
-            class="cleaner"
-            (click.stop)="onValue('')"
-        ></tui-svg>
-        <tui-tooltip
-            *ngIf="hasTooltip"
-            automation-id="tui-text-area__tooltip"
-            class="tooltip"
-            [describeId]="id"
-            [direction]="hintController.direction"
-            [mode]="hintController.mode"
-            [content]="hintController.content"
-            [showDelay]="hintController.showDelay"
-            [hideDelay]="hintController.hideDelay"
-        ></tui-tooltip>
-    </div>
-</label>
+            <tui-scrollbar
+                automation-id="tui-text-area__scrollbar"
+                class="t-box"
+                [style.maxHeight.px]="computeMaxHeight"
+            >
+                <div class="t-input-wrapper">
+                    <div class="t-relative">
+                        <div
+                            aria-hidden="true"
+                            class="t-pseudo-content"
+                        >
+                            <span [textContent]="fittedContent || nativeFocusableElement?.placeholder"></span>
+                            <span
+                                class="t-pseudo-content__extra"
+                                [textContent]="extraContent"
+                            ></span>
+                            &nbsp;
+                        </div>
+                        <textarea
+                            #focusableElement
+                            automation-id="tui-text-area__native"
+                            class="t-input"
+                            [id]="id"
+                            [tuiFocusable]="computedFocusable"
+                            [disabled]="computedDisabled"
+                            [ngModel]="value"
+                            [readOnly]="readOnly"
+                            (ngModelChange)="onValueChange($event)"
+                        ></textarea>
+                        <ng-content select="textarea"></ng-content>
+                    </div>
+                </div>
+            </tui-scrollbar>
+        </div>
+        <div class="t-icons">
+            <tui-svg
+                *ngIf="hasCleaner"
+                src="tuiIconCloseLarge"
+                class="t-cleaner"
+                (click.stop)="onValueChange('')"
+            ></tui-svg>
+            <tui-tooltip
+                *ngIf="hintOptions && hintOptions.content && !computedDisabled"
+                automation-id="tui-text-area__tooltip"
+                class="t-tooltip"
+                [describeId]="id"
+                [direction]="hintOptions.direction"
+                [appearance]="hintOptions.appearance"
+                [content]="hintOptions.content"
+                [showDelay]="hintOptions.showDelay"
+                [hideDelay]="hintOptions.hideDelay"
+            ></tui-tooltip>
+        </div>
+    </label>
+</div>

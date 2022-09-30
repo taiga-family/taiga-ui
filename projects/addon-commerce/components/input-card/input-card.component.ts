@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,55 +12,34 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-import {getPaymentSystem} from '@taiga-ui/addon-commerce/utils';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiCreditCardAutofillName,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    TuiAutofillFieldName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_EXAMPLE_TEXT,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextfieldExampleTextDirective,
-    TuiTextMaskOptions,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
 
-const icons = {
-    [TuiPaymentSystem.Mir]: 'tuiIconMir',
-    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
-    [TuiPaymentSystem.Electron]: 'tuiIconElectron',
-    [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
-    [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
+const icons: Record<TuiPaymentSystem, string> = {
+    mir: `tuiIconMir`,
+    visa: `tuiIconVisa`,
+    electron: `tuiIconElectron`,
+    mastercard: `tuiIconMastercard`,
+    maestro: `tuiIconMaestro`,
 };
 
-export function cardTextfieldControllerFactory(
-    directive: TuiTextfieldExampleTextDirective | null,
-): TuiTextfieldExampleTextDirective {
-    directive = directive || new TuiTextfieldExampleTextDirective();
-    directive.exampleText = '0000 0000 0000 0000';
-
-    return directive;
-}
-
-// @dynamic
 @Component({
-    selector: 'tui-input-card',
-    templateUrl: './input-card.template.html',
-    styleUrls: ['./input-card.style.less'],
+    selector: `tui-input-card`,
+    templateUrl: `./input-card.template.html`,
+    styleUrls: [`./input-card.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCardComponent),
-        },
-        {
-            provide: TUI_TEXTFIELD_EXAMPLE_TEXT,
-            deps: [[new Optional(), TuiTextfieldExampleTextDirective]],
-            useFactory: cardTextfieldControllerFactory,
-        },
+        tuiAsFocusableItemAccessor(TuiInputCardComponent),
+        tuiAsControl(TuiInputCardComponent),
     ],
 })
 export class TuiInputCardComponent
@@ -116,29 +94,27 @@ export class TuiInputCardComponent
         return paymentSystem ? icons[paymentSystem] : null;
     }
 
-    get autocomplete(): TuiCreditCardAutofillName {
-        return this.autocompleteEnabled
-            ? TuiCreditCardAutofillName.CcNumber
-            : TuiCreditCardAutofillName.Off;
+    get autocomplete(): TuiAutofillFieldName {
+        return this.autocompleteEnabled ? `cc-number` : `off`;
     }
 
     get paymentSystem(): TuiPaymentSystem | null {
-        return getPaymentSystem(this.value);
+        return tuiGetPaymentSystem(this.value);
     }
 
     get bin(): string | null {
-        return this.value.length < 6 ? null : this.value.substr(0, 6);
+        return this.value.length < 6 ? null : this.value.slice(0, 6);
     }
 
     get formattedCard(): string {
         return this.value
-            .split('')
+            .split(``)
             .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
-            .join('');
+            .join(``);
     }
 
-    onValueChange(value: string) {
-        const parsed = value.split(' ').join('');
+    onValueChange(value: string): void {
+        const parsed = value.split(` `).join(``);
         const currentBin = this.bin;
 
         this.updateValue(parsed);
@@ -150,15 +126,11 @@ export class TuiInputCardComponent
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    writeValue(value: string | null) {
+    override writeValue(value: string | null): void {
         const currentBin = this.bin;
 
         super.writeValue(value);
@@ -171,6 +143,6 @@ export class TuiInputCardComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

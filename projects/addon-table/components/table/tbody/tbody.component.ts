@@ -10,30 +10,30 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
+import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
-    selector: 'tbody[tuiTbody]',
-    templateUrl: './tbody.template.html',
-    styleUrls: ['./tbody.style.less'],
+    selector: `tbody[tuiTbody]`,
+    templateUrl: `./tbody.template.html`,
+    styleUrls: [`./tbody.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
-export class TuiTbodyComponent<T> {
+export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
     @tuiDefaultProp()
     data: readonly T[] = [];
 
     @Input()
     @tuiDefaultProp()
-    heading: PolymorpheusContent = '';
+    heading: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -49,27 +49,22 @@ export class TuiTbodyComponent<T> {
     readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
     constructor(
+        @Inject(TuiTableSortPipe) private readonly pipe: TuiTableSortPipe<T>,
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
     ) {}
 
     get sorted(): readonly T[] {
-        return this.sort(this.data, this.table.sorter, this.table.direction);
+        return this.pipe.transform(this.data);
     }
 
-    readonly toContext = ($implicit: T, index: number) => ({$implicit, index});
+    readonly toContext = (
+        $implicit: T,
+        index: number,
+    ): {$implicit: T; index: number} => ({$implicit, index});
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
         this.openChange.emit(this.open);
-    }
-
-    @tuiPure
-    private sort(
-        data: readonly T[],
-        sorter: TuiComparator<T>,
-        direction: -1 | 1,
-    ): readonly T[] {
-        return [...data].sort((a, b) => direction * sorter(a, b));
     }
 }

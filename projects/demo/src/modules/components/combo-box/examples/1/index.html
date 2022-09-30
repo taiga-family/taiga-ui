@@ -13,7 +13,7 @@
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList
@@ -31,7 +31,7 @@
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList
@@ -39,12 +39,15 @@
             [itemContent]="content"
         ></tui-data-list-wrapper>
     </tui-combo-box>
-    <tui-combo-box [formControl]="testValue" [valueContent]="content">
+    <tui-combo-box
+        [formControl]="testValue"
+        [valueContent]="content"
+    >
         Choose a developer
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList
@@ -54,7 +57,10 @@
     </tui-combo-box>
 </form>
 
-<ng-template #content let-data>
+<ng-template
+    #content
+    let-data
+>
     <div class="template">
         <tui-avatar
             size="xs"
@@ -62,6 +68,6 @@
             [avatarUrl]="data.avatarUrl || null"
             [text]="data.toString()"
         ></tui-avatar>
-        <div class="name">{{data}}</div>
+        <div class="name">{{ data }}</div>
     </div>
 </ng-template>

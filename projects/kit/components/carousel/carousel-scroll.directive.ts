@@ -1,15 +1,15 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {filter, map, tap, throttleTime} from 'rxjs/operators';
 
 @Directive({
-    selector: '[tuiCarouselScroll]',
+    selector: `[tuiCarouselScroll]`,
 })
 export class TuiCarouselScrollDirective {
     @Output()
-    readonly tuiCarouselScroll = typedFromEvent(
+    readonly tuiCarouselScroll = tuiTypedFromEvent(
         this.elementRef.nativeElement,
-        'wheel',
+        `wheel`,
     ).pipe(
         filter(({deltaX}) => Math.abs(deltaX) > 20),
         throttleTime(500),

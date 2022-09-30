@@ -13,8 +13,8 @@ import {
 } from './value-transformers';
 
 @Component({
-    selector: 'tui-input-date-range-example-4',
-    templateUrl: './index.html',
+    selector: `tui-input-date-range-example-4`,
+    templateUrl: `./index.html`,
     providers: [
         {
             provide: TUI_DATE_VALUE_TRANSFORMER,

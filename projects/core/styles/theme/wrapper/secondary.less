@@ -1,68 +1,67 @@
-tui-wrapper[data-appearance='secondary'],
-tui-wrapper[data-appearance='flat'] {
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='secondary'],
+[tuiWrapper][data-appearance='flat'] {
     background: var(--tui-secondary);
     color: var(--tui-link);
-
-    &[data-state='hovered'] {
-        background: var(--tui-secondary-hover);
-        color: var(--tui-link-hover);
-    }
-
-    &:active,
-    &[data-state='pressed'] {
-        background: var(--tui-secondary-active);
-    }
-
-    &[data-state='disabled'] {
-        opacity: var(--tui-disabled-opacity);
-    }
 
     &[data-mode='onDark'] {
         background: var(--tui-clear-inverse);
         color: var(--tui-text-01-night);
 
-        &[data-state='hovered'] {
+        .wrapper-hover({
             background: var(--tui-clear-inverse-hover);
-        }
-
-        &[data-state='pressed'] {
-            background: var(--tui-clear-inverse-active);
-        }
-
-        &._focused:after {
             color: var(--tui-text-01-night);
-        }
+        });
+
+        .wrapper-active({
+            background: var(--tui-clear-inverse-active);
+        });
+
+        .wrapper-focus({
+            --tui-focus: var(--tui-text-01-night);
+        });
     }
 
     &[data-mode='onLight'] {
         background: var(--tui-clear);
         color: var(--tui-text-01);
 
-        &[data-state='hovered'] {
+        .wrapper-hover({
             background: var(--tui-clear-hover);
-        }
+            color: var(--tui-text-01);
+        });
 
-        &[data-state='pressed'] {
+        .wrapper-active({
             background: var(--tui-clear-active);
-        }
+        });
     }
 
-    &._invalid {
+    .wrapper-hover({
+        background: var(--tui-secondary-hover);
+        color: var(--tui-link-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-secondary-active);
+    });
+
+    .wrapper-invalid({
         color: var(--tui-error-fill);
         background: var(--tui-error-bg);
 
-        &[data-state='hovered'],
-        &[data-state='pressed'] {
+        .wrapper-hover({
             background: var(--tui-error-bg-hover);
-        }
+        });
 
-        &._focused:after {
-            color: var(--tui-error-fill);
-        }
-    }
+        .wrapper-focus({
+            --tui-focus: var(--tui-error-fill);
+        });
+    });
 }
 
-tui-wrapper[data-appearance='flat'] {
+[tuiWrapper][data-appearance='flat'] {
     background: transparent;
 
     &[data-mode='onDark'],

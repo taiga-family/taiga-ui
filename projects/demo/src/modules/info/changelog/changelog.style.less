@@ -33,7 +33,7 @@ markdown {
         margin: 1rem 0;
     }
 
-    & h3:not([id^='feat']):not([id^='bug']) {
+    & h3:not([id^='feat']):not([id^='bug']):not([id^='deprecations']) {
         font-size: 1.75rem;
         padding-bottom: 0.5em;
         margin: 2rem 0 0 0;
@@ -47,5 +47,23 @@ markdown {
 
     & code {
         color: #d45d8c;
+    }
+
+    & h3[id^='feat']:before {
+        content: '🚀';
+    }
+
+    & h3[id^='bug']:before {
+        content: '🐞';
+    }
+
+    & h3[id^='deprecations']:before {
+        content: '⚠️';
+    }
+
+    & h3[id^='feat']:before,
+    & h3[id^='bug']:before,
+    & h3[id^='deprecations']:before {
+        margin-right: 0.5rem;
     }
 }

@@ -1,26 +1,26 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {sum, tuiPure} from '@taiga-ui/cdk';
-import {formatNumber, TuiNotificationsService} from '@taiga-ui/core';
+import {tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-legend-item-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-legend-item-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiLegendItemExample2 {
-    private enabled = Array(5).fill(true);
+    private enabled = new Array(5).fill(true);
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
-    readonly sum = sum(...this.data);
-    readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
+    readonly sum = tuiSum(...this.data);
+    readonly labels = [`Axes`, `Faxes`, `Taxes`, `Saxes`, `Other`];
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     get value(): readonly number[] {
@@ -31,14 +31,14 @@ export class TuiLegendItemExample2 {
         return this.enabled[index];
     }
 
-    toggle(index: number) {
+    toggle(index: number): void {
         this.enabled = this.enabled.map((value, i) => (i === index ? !value : value));
     }
 
-    onClick(index: number) {
+    onClick(index: number): void {
         if (this.isEnabled(index)) {
-            this.notifications
-                .show(`Category spendings: ${formatNumber(this.data[index])} ₽`, {
+            this.alertService
+                .open(`Category spendings: ${tuiFormatNumber(this.data[index])} ₽`, {
                     label: this.labels[index],
                 })
                 .subscribe();

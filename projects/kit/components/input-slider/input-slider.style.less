@@ -1,121 +1,19 @@
 @import 'taiga-ui-local';
 
-@padding: 1rem;
-@padding2: @padding * 2;
-
 :host {
     .createStackingContext();
     display: block;
-    font: var(--tui-font-text-m);
-    border-radius: var(--tui-radius-m);
-    color: var(--tui-text-01);
-
-    &._segmented {
-        // TODO: research if it can be used in rem units
-        /* stylelint-disable-next-line */
-        border-bottom: 26px solid transparent;
-    }
+    height: max-content;
 }
 
-.native {
-    .fullsize();
-    .clearinput();
-    width: 100%;
-    color: var(--tui-text-01);
-    box-sizing: border-box;
-    padding: 0 @padding;
-    outline: none;
-
-    :host._disabled & {
-        color: var(--tui-text-03);
-        user-select: none;
-    }
-
-    :host._min-label &,
-    :host._max-label & {
-        opacity: 0;
-    }
-
-    :host[data-tui-host-size='l'] & {
-        padding: 1.25rem @padding 0;
-    }
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-01-night);
-    }
-
-    :host[data-mode='onDark']._disabled & {
-        color: var(--tui-text-03-night);
-    }
-}
-
-.content {
-    display: flex;
-    align-items: center;
-    height: var(--tui-height-m);
-    padding: 0 @padding;
-    justify-content: space-between;
-
-    :host[data-tui-host-size='l'] & {
-        height: var(--tui-height-l);
-        padding: 0 @padding;
-    }
-}
-
-.placeholder {
-    .textfield-placeholder();
-    .fullsize();
-    padding: 0 var(--tui-padding-l);
-    line-height: var(--tui-height-l);
-    box-sizing: border-box;
-    pointer-events: none;
-
-    :host._has-tooltip & {
-        max-width: calc(100% - 1.75rem);
-    }
-}
-
-.value {
-    visibility: hidden;
-}
-
-.label {
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    :host[data-tui-host-size='l'] & {
-        padding-top: 1.25rem;
-    }
-}
-
-.secondary {
-    color: var(--tui-text-01);
-
-    :host._disabled & {
-        color: var(--tui-text-03);
-    }
-
-    :host[data-mode='onDark']._disabled & {
-        color: var(--tui-text-03-night);
-    }
-}
-
-.tooltip {
-    margin-left: 0.75rem;
-}
-
-.slider {
+// Dont change CSS-selector (we require the such specificity to override default styles without !important)
+input[type='range'] {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: calc(var(--tui-radius-m) / 2);
     right: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    width: auto;
     margin: -0.5625rem 0 0;
-    color: transparent;
-
-    :host._disabled &,
-    :host._readonly & {
-        pointer-events: none;
-    }
+    border-top-left-radius: 0;
+    border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
 }

@@ -18,25 +18,25 @@ class Account {
 }
 
 @Component({
-    selector: 'tui-select-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-select-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiSelectExample2 {
     cards = [
-        new Card('Bitcoin', '*6713'),
-        new Card('Money', '*4562'),
-        new Card('Charity', '*6788'),
-        new Card('Subscriptions', '*1231'),
+        new Card(`Bitcoin`, `*6713`),
+        new Card(`Money`, `*4562`),
+        new Card(`Charity`, `*6788`),
+        new Card(`Subscriptions`, `*1231`),
     ];
 
     accounts = [
-        new Account('1', 'RUB', 24876.55, TuiCurrency.Ruble),
-        new Account('2', 'USD', 335, TuiCurrency.Dollar),
-        new Account('3', 'EUR', 10000, TuiCurrency.Euro),
-        new Account('4', 'PND', 100, TuiCurrency.Pound),
+        new Account(`1`, `RUB`, 24876.55, TuiCurrency.Ruble),
+        new Account(`2`, `USD`, 335, TuiCurrency.Dollar),
+        new Account(`3`, `EUR`, 10000, TuiCurrency.Euro),
+        new Account(`4`, `PND`, 100, TuiCurrency.Pound),
     ];
 
     testForm = new FormGroup({

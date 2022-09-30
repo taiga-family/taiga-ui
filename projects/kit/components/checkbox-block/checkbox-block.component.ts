@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,10 +12,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -29,15 +29,13 @@ import {
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({
-    selector: 'tui-checkbox-block',
-    templateUrl: './checkbox-block.template.html',
-    styleUrls: ['./checkbox-block.style.less'],
+    selector: `tui-checkbox-block`,
+    templateUrl: `./checkbox-block.template.html`,
+    styleUrls: [`./checkbox-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxBlockComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxBlockComponent),
+        tuiAsControl(TuiCheckboxBlockComponent),
     ],
 })
 export class TuiCheckboxBlockComponent
@@ -48,19 +46,19 @@ export class TuiCheckboxBlockComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding(`attr.data-tui-host-align`)
     @tuiDefaultProp()
-    contentAlign: TuiHorizontalDirection = 'right';
+    contentAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('class._hidden_checkbox')
+    @HostBinding(`class._hidden_checkbox`)
     @tuiDefaultProp()
     hideCheckbox = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'l';
+    size: TuiSizeS | TuiSizeL = `l`;
 
     constructor(
         @Optional()
@@ -79,21 +77,21 @@ export class TuiCheckboxBlockComponent
         return this.checkbox ? this.checkbox.nativeFocusableElement : null;
     }
 
-    @HostBinding('class._active')
+    @HostBinding(`class._active`)
     get checked(): boolean {
         return this.value !== false && this.hideCheckbox;
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.size === 'l' ? 'l' : 'm';
+        return this.size === `l` ? `l` : `m`;
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
-        if (!this.modeDirective || !this.modeDirective.mode) {
+        if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
                 : TuiAppearance.Whiteblock;
@@ -102,23 +100,15 @@ export class TuiCheckboxBlockComponent
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onModelChange(value: boolean) {
+    onModelChange(value: boolean): void {
         this.updateValue(value);
     }
 }

@@ -1,4 +1,7 @@
-<tui-hosted-dropdown [content]="dropdown" [(open)]="open">
+<tui-hosted-dropdown
+    [content]="dropdown"
+    [(open)]="open"
+>
     <div tuiGroup>
         <button
             tuiButton
@@ -26,7 +29,10 @@
         </ng-template>
     </div>
 </tui-hosted-dropdown>
-<ng-template #dropdown let-activeZone>
+<ng-template
+    #dropdown
+    let-activeZone
+>
     <p class="margin">
         There is
         <code>let-activeZone</code>
@@ -44,8 +50,12 @@
         ></tui-data-list-wrapper>
     </tui-select>
     <tui-data-list>
-        <button *ngFor="let item of items" tuiOption (click)="onClick()">
-            {{item}}
+        <button
+            *ngFor="let item of items"
+            tuiOption
+            (click)="onClick()"
+        >
+            {{ item }}
         </button>
     </tui-data-list>
 </ng-template>

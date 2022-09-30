@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 const loaded$ = new Subject<void>();
 
 @Component({
-    selector: 'tui-pull-to-refresh-example-2',
-    templateUrl: './index.html',
+    selector: `tui-pull-to-refresh-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
@@ -29,13 +29,16 @@ const loaded$ = new Subject<void>();
     ],
 })
 export class TuiPullToRefreshExample2 {
-    constructor(private readonly notifications: TuiNotificationsService) {}
+    constructor(
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
+    ) {}
 
-    onPull() {
-        this.notifications.show('Loading...').subscribe();
+    onPull(): void {
+        this.alertService.open(`Loading...`).subscribe();
     }
 
-    finishLoading() {
+    finishLoading(): void {
         loaded$.next();
     }
 }

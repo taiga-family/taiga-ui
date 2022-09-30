@@ -1,20 +1,37 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiSizeL} from '@taiga-ui/core';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiIslandHarness} from '@taiga-ui/testing';
 
 import {TuiIslandComponent} from '../island.component';
 import {TuiIslandModule} from '../island.module';
 
-describe('Island', () => {
+describe(`Island`, () => {
     @Component({
         template: `
             <tui-island
-                automation-id="tui-island__component"
-                [hoverable]="hoverable"
-                [size]="size"
-                [textAlign]="textAlign"
+                id="size-m"
+                size="m"
+            >
+                Контент
+            </tui-island>
+            <tui-island
+                id="size-l"
+                size="l"
+            >
+                Контент
+            </tui-island>
+            <tui-island
+                id="hoverable"
+                hoverable="true"
+            >
+                Контент
+            </tui-island>
+            <tui-island id="text-align-left">Контент</tui-island>
+            <tui-island
+                id="text-align-center"
+                textAlign="center"
             >
                 Контент
             </tui-island>
@@ -22,26 +39,11 @@ describe('Island', () => {
     })
     class TestComponent {
         @ViewChild(TuiIslandComponent, {static: true})
-        component: TuiIslandComponent;
-
-        hoverable = false;
-        textAlign: 'left' | 'right' | 'center' = 'left';
-        size: TuiSizeL = 'm';
+        component!: TuiIslandComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let component: TuiIslandComponent;
-    let pageObject: PageObject<TestComponent>;
-    const testContext = {
-        get prefix() {
-            return 'tui-island__';
-        },
-    };
-
-    function getIsland(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}component`)!;
-    }
+    let loader: HarnessLoader;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -52,52 +54,59 @@ describe('Island', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
-        testComponent = fixture.componentInstance;
+        loader = TestbedHarnessEnvironment.loader(fixture);
+
         fixture.detectChanges();
-        component = testComponent.component;
     });
 
-    describe('size:', () => {
-        it('if not specified, island size m', () => {
-            const size = component.sizeM;
+    describe(`size:`, () => {
+        it(`if not specified, island size m`, async () => {
+            const harness = await loader.getHarness(
+                TuiIslandHarness.with({selector: `#size-m`}),
+            );
+            const size = await harness.getSize();
 
-            expect(size).toBe(true);
+            expect(size).toBe(`m`);
         });
 
-        it('if the value is l, the size of the island is l', () => {
-            testComponent.size = 'l';
-            fixture.detectChanges();
+        it(`if the value is l, the size of the island is l`, async () => {
+            const harness = await loader.getHarness(
+                TuiIslandHarness.with({selector: `#size-l`}),
+            );
+            const size = await harness.getSize();
 
-            const size = component.sizeL;
-
-            expect(size).toBe(true);
-        });
-    });
-
-    describe('textAlign:', () => {
-        it('if no value is specified, the text is left aligned', () => {
-            const textAlign = component.textAlignLeft;
-
-            expect(textAlign).toBe(true);
-        });
-
-        it('if you pass center, the text will be centered', () => {
-            testComponent.textAlign = 'center';
-            fixture.detectChanges();
-
-            const textAlign = component.textAlignCenter;
-
-            expect(textAlign).toBe(true);
+            expect(size).toBe(`l`);
         });
     });
 
-    describe('hoverable:', () => {
-        it('if true, hover works', () => {
-            testComponent.hoverable = true;
-            fixture.detectChanges();
+    describe(`textAlign:`, () => {
+        it(`if no value is specified, the text is left aligned`, async () => {
+            const harness = await loader.getHarness(
+                TuiIslandHarness.with({selector: `#text-align-left`}),
+            );
+            const textAlign = await harness.getTextAlign();
 
-            expect(getIsland().classes['tui-island_hoverable']).toBe(true);
+            expect(textAlign).toBe(`left`);
+        });
+
+        it(`if you pass center, the text will be centered`, async () => {
+            const harness = await loader.getHarness(
+                TuiIslandHarness.with({selector: `#text-align-center`}),
+            );
+            const textAlign = await harness.getTextAlign();
+
+            expect(textAlign).toBe(`center`);
+        });
+    });
+
+    describe(`hoverable:`, () => {
+        it(`if true, hover works`, async () => {
+            const harness = await loader.getHarness(
+                TuiIslandHarness.with({selector: `#hoverable`}),
+            );
+            const isHoverable = await harness.isHoverable();
+
+            expect(isHoverable).toBe(true);
         });
     });
 });

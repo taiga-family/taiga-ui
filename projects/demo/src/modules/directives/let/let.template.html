@@ -1,17 +1,30 @@
-<tui-doc-page i18n-header header="Let" package="CDK" type="directives">
+<tui-doc-page
+    i18n-header
+    header="Let"
+    package="CDK"
+    type="directives"
+>
     <ng-template pageTab>
         <p i18n>
             Directive
             <code>tuiLet</code>
-            allows to reuse computed value in several places in template to
-            avoid recalculations of getters or many async pipes
+            allows to reuse computed value in several places in template to avoid recalculations of getters or many
+            async pipes
         </p>
 
-        <tui-doc-example id="pipe" heading="With Pipe" [content]="example1">
+        <tui-doc-example
+            id="pipe"
+            heading="With Pipe"
+            [content]="example1"
+        >
             <tui-let-example-1></tui-let-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="getter" heading="With getter" [content]="example2">
+        <tui-doc-example
+            id="getter"
+            heading="With getter"
+            [content]="example2"
+        >
             <tui-let-example-2></tui-let-example-2>
         </tui-doc-example>
     </ng-template>
@@ -27,7 +40,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -36,7 +49,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -1,3 +1,4 @@
+import {NgIfContext} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -11,12 +12,10 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {isCurrentTarget, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsCurrentTarget, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
-import {TuiExpandContentDirective} from './expand-content.directive';
-
-enum State {
+const enum State {
     Idle,
     Loading,
     Prepared,
@@ -26,13 +25,13 @@ enum State {
 const LOADER_HEIGHT = 48;
 
 @Component({
-    selector: 'tui-expand',
-    templateUrl: './expand.template.html',
+    selector: `tui-expand`,
+    templateUrl: `./expand.template.html`,
+    styleUrls: [`./expand.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./expand.style.less'],
 })
 export class TuiExpandComponent {
-    @ViewChild('wrapper')
+    @ViewChild(`wrapper`)
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
     private state = State.Idle;
@@ -41,9 +40,9 @@ export class TuiExpandComponent {
     @tuiDefaultProp()
     async = false;
 
-    @Input('expanded')
+    @Input(`expanded`)
     @tuiRequiredSetter()
-    set expandedSetter(expanded: boolean) {
+    set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
             this.expanded = expanded;
 
@@ -61,28 +60,28 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    content?: TemplateRef<{}>;
+    @ContentChild(TemplateRef)
+    content: TemplateRef<NgIfContext<boolean>> | null = null;
 
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
+    @HostBinding(`class._expanded`)
+    @HostBinding(`attr.aria-expanded`)
     expanded: boolean | null = null;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {}
 
-    @HostBinding('class._overflow')
+    @HostBinding(`class._overflow`)
     get overflow(): boolean {
         return this.state !== State.Idle;
     }
 
-    @HostBinding('class._loading')
+    @HostBinding(`class._loading`)
     get loading(): boolean {
         return !!this.expanded && this.async && this.state === State.Loading;
     }
 
-    @HostBinding('style.height.px')
+    @HostBinding(`style.height.px`)
     get height(): number | null {
         const {expanded, state, contentWrapper} = this;
 
@@ -112,19 +111,19 @@ export class TuiExpandComponent {
         return this.expanded || this.state !== State.Idle;
     }
 
-    @HostListener('transitionend', ['$event'])
-    onTransitionEnd(event: TransitionEvent) {
+    @HostListener(`transitionend`, [`$event`])
+    onTransitionEnd(event: TransitionEvent): void {
         if (
-            isCurrentTarget(event) &&
-            event.propertyName === 'opacity' &&
+            tuiIsCurrentTarget(event) &&
+            event.propertyName === `opacity` &&
             this.state === State.Animated
         ) {
             this.state = State.Idle;
         }
     }
 
-    @HostListener(TUI_EXPAND_LOADED, ['$event'])
-    onExpandLoaded(event: Event) {
+    @HostListener(TUI_EXPAND_LOADED, [`$event`])
+    onExpandLoaded(event: Event): void {
         event.stopPropagation();
 
         if (this.state === State.Loading) {
@@ -132,10 +131,10 @@ export class TuiExpandComponent {
         }
     }
 
-    private retrigger(state: State) {
+    private retrigger(state: State): void {
         this.state = State.Prepared;
 
-        // We need delay to retrigger CSS height transition from the correct number
+        // We need delay to re-trigger CSS height transition from the correct number
         setTimeout(() => {
             if (this.state !== State.Prepared) {
                 return;

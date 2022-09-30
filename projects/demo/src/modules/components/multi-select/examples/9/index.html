@@ -1,0 +1,57 @@
+﻿<button
+    tuiButton
+    type="button"
+    size="m"
+    class="tui-space_right-3"
+    (click)="showDialog(template, 's')"
+>
+    Show 's' size
+</button>
+
+<button
+    tuiButton
+    type="button"
+    size="m"
+    class="tui-space_right-3"
+    (click)="showDialog(template, 'm')"
+>
+    Show 'm' size
+</button>
+
+<button
+    tuiButton
+    type="button"
+    size="m"
+    (click)="showDialog(template, 'l')"
+>
+    Show 'l' size
+</button>
+
+<ng-template
+    #template
+    let-data="data"
+>
+    <div class="tui-container_fullwidth">
+        <div class="tui-row tui-form__row_multi-fields tui-row_adaptive">
+            <label
+                tuiLabel="Star Wars persons"
+                class="tui-col_md-12"
+            >
+                <tui-multi-select
+                    class="b-form"
+                    [tuiTextfieldCleaner]="true"
+                    [expandable]="false"
+                    [tuiTextfieldSize]="data.textFieldSize"
+                    [formControl]="testValue"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        tuiMultiSelectGroup
+                        [items]="items"
+                    ></tui-data-list-wrapper>
+                </tui-multi-select>
+            </label>
+        </div>
+    </div>
+</ng-template>

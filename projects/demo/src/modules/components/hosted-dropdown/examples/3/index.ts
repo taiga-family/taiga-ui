@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-hosted-dropdown-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-hosted-dropdown-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -13,16 +13,16 @@ export class TuiHostedDropdownExample3 {
     open = false;
 
     readonly items = [
-        ['By interest', 'By genre', 'By release year', 'By subject'],
-        ['Ascending', 'Descending'],
+        [`By interest`, `By genre`, `By release year`, `By subject`],
+        [`Ascending`, `Descending`],
     ];
 
-    primary = 'By genre';
+    primary = `By genre`;
 
     ascending = false;
 
-    onClick(item: string) {
-        if (this.items[0].indexOf(item) !== -1) {
+    onClick(item: string): void {
+        if (this.items[0].includes(item)) {
             this.primary = item;
 
             return;

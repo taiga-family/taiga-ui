@@ -12,13 +12,13 @@
         pointer-events: none;
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         font: var(--tui-font-text-m);
         height: var(--tui-height-l);
     }
 }
 
-.textfield {
+.t-textfield {
     position: relative;
     border-radius: inherit;
     text-align: inherit;
@@ -31,14 +31,14 @@
     }
 }
 
-.buttons {
+.t-buttons {
     display: flex;
     flex-direction: column;
     margin-left: 0.125rem;
     height: 100%;
 }
 
-.buttons .button {
+.t-buttons .t-button {
     display: flex;
     width: calc(var(--tui-height-m) * 0.75);
     height: calc(50% - 0.0625rem);
@@ -52,7 +52,7 @@
         border-radius: 0 0 var(--tui-radius-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: calc(var(--tui-height-l) * 0.75);
     }
 }

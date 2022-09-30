@@ -1,8 +1,23 @@
 <tui-notification class="tui-space_bottom-3">
-    Note that you need to bypass sanitizer in order to use the URL so make sure
-    you trust it
+    Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
 </tui-notification>
-<button tuiButton (click)="show(actions)">Taiga</button>
-<ng-template #actions let-content="content">
-    <a tuiButton shape="rounded" size="s" download [href]="content">Download</a>
+<button
+    tuiButton
+    (click)="show(actions)"
+>
+    Taiga
+</button>
+<ng-template
+    #actions
+    let-content="content"
+>
+    <a
+        tuiButton
+        shape="rounded"
+        size="s"
+        download
+        [href]="content"
+    >
+        Download
+    </a>
 </ng-template>

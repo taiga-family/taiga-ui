@@ -1,4 +1,8 @@
-<tui-doc-page header="RadioBlock" package="KIT" type="components">
+<tui-doc-page
+    header="RadioBlock"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Radio inside button with custom content</p>
 
@@ -33,16 +37,20 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
-                <div tuiGroup class="group" [collapsed]="true">
+                <div
+                    tuiGroup
+                    class="group"
+                    [collapsed]="true"
+                >
                     <tui-radio-block
                         item="orange"
                         [formControl]="control"
                         [contentAlign]="contentAlign"
                         [hideRadio]="hideRadio"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoDisabled]="pseudoDisabled"
                         [size]="size"
                         [focusable]="focusable"
@@ -56,9 +64,9 @@
                         [contentAlign]="contentAlign"
                         [hideRadio]="hideRadio"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoDisabled]="pseudoDisabled"
                         [size]="size"
                         [focusable]="focusable"
@@ -72,9 +80,9 @@
                         [contentAlign]="contentAlign"
                         [hideRadio]="hideRadio"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoDisabled]="pseudoDisabled"
                         [size]="size"
                         [focusable]="focusable"
@@ -121,8 +129,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
@@ -162,7 +169,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -177,7 +184,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -186,7 +193,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

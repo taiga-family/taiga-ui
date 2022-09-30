@@ -1,17 +1,31 @@
-import {VERSION} from '@taiga-ui/core';
+import {InjectionToken} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
-export interface TaigaVersionMeta {
+export interface TuiVersionMeta {
     label: string;
     baseHref: string;
+    alias: string;
 }
 
-export const TAIGA_VERSIONS_META: ReadonlyArray<TaigaVersionMeta> = [
+export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: 'next',
-        baseHref: 'next',
+        label: `next`,
+        baseHref: `next`,
+        alias: `v${parseInt(TUI_VERSION)}-next`,
     },
     {
-        label: `latest (v${VERSION})`,
-        baseHref: '',
+        label: `latest (v${TUI_VERSION})`,
+        baseHref: ``,
+        alias: `v${parseInt(TUI_VERSION)}`,
+    },
+    {
+        label: `v2`,
+        baseHref: `v2`,
+        alias: `v2`,
     },
 ];
+
+export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
+    `[TUI_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`,
+    {factory: () => TUI_VERSIONS_META},
+);

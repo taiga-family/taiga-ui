@@ -7,11 +7,11 @@ import {getDayFromMonthRowCol} from './utils';
 const CALENDAR_ROWS_COUNT = 6;
 
 @Pipe({
-    name: 'tuiCalendarSheet',
+    name: `tuiCalendarSheet`,
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
     private currentMonth: TuiMonth | null = null;
-    private currentSheet: ReadonlyArray<ReadonlyArray<TuiDay>> = [];
+    private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
     constructor(
         @Inject(TUI_FIRST_DAY_OF_WEEK)
@@ -21,8 +21,8 @@ export class TuiCalendarSheetPipe implements PipeTransform {
     transform(
         month: TuiMonth,
         showAdjacentDays: boolean = false,
-    ): ReadonlyArray<ReadonlyArray<TuiDay>> {
-        if (this.currentMonth && this.currentMonth.monthSame(month)) {
+    ): ReadonlyArray<readonly TuiDay[]> {
+        if (this.currentMonth?.monthSame(month)) {
             return this.currentSheet;
         }
 
@@ -39,10 +39,10 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     firstDayOfWeek: this.firstDayOfWeek,
                 });
 
-                const isPrevMonthDay = (day: TuiDay, relativeToMonth = month) =>
+                const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
                     day.year < relativeToMonth.year || day.month < relativeToMonth.month;
 
-                const isNextMonthDay = (day: TuiDay, relativeToMonth = month) =>
+                const isNextMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
                     day.year > relativeToMonth.year || day.month > relativeToMonth.month;
 
                 if (isPrevMonthDay(day) && !showAdjacentDays) {

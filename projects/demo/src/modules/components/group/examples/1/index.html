@@ -1,37 +1,65 @@
-<form class="input-wrapper" [formGroup]="testForm">
-    <div tuiGroup class="group">
+<form
+    class="input-wrapper"
+    [formGroup]="testForm"
+>
+    <div
+        tuiGroup
+        class="group"
+    >
         <div>
             <tui-input
                 formControlName="testValue"
-                tuiTextfieldExampleText="House"
                 tuiHintContent="Write a number"
                 class="tui-group__inherit-item"
             >
                 House
+                <input
+                    tuiTextfield
+                    placeholder="House"
+                />
             </tui-input>
-            <tui-field-error formControlName="testValue"></tui-field-error>
+            <tui-error
+                formControlName="testValue"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
         </div>
         <div>
-            <tui-input
-                formControlName="testValue2"
-                tuiTextfieldExampleText="House building"
+            <tui-multi-select
+                formControlName="multiSelectControl"
                 tuiHintContent="Write house building"
                 class="tui-group__inherit-item"
+                [tuiTextfieldLabelOutside]="true"
+                [editable]="false"
+                [expandable]="false"
             >
                 Building
-            </tui-input>
-            <tui-field-error formControlName="testValue2"></tui-field-error>
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    tuiMultiSelectGroup
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-multi-select>
+            <tui-error
+                formControlName="multiSelectControl"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
         </div>
         <div>
             <tui-input
                 formControlName="testValue3"
-                tuiTextfieldExampleText="Apartment number"
                 tuiHintContent="Write an apartment number only"
                 class="tui-group__inherit-item"
             >
                 Apartment
+                <input
+                    tuiTextfield
+                    placeholder="Apartment number"
+                />
             </tui-input>
-            <tui-field-error formControlName="testValue3"></tui-field-error>
+            <tui-error
+                formControlName="testValue3"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
         </div>
     </div>
 </form>

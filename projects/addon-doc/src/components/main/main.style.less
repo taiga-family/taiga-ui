@@ -7,7 +7,7 @@ html {
     height: auto;
 }
 
-tui-root > tui-scroll-controls > .bar_vertical {
+tui-root > tui-scroll-controls > .t-bar_vertical {
     top: @sticky-header-height !important;
 }
 
@@ -44,6 +44,7 @@ tui-doc-main {
     display: block;
 }
 
+/* stylelint-disable-next-line */
 code:not(.hljs):not([class*='language-']):not(.exception) {
     .transition(background);
     background: var(--tui-base-02);
@@ -72,8 +73,7 @@ tui-doc-navigation.tui-doc-navigation {
     width: @sidebar-width;
     border-right: 1px solid var(--tui-base-03);
 
-    // TODO: why host-context doesn't work
-    @media @mobile-m {
+    @media @tui-mobile {
         display: none;
     }
 }
@@ -81,8 +81,7 @@ tui-doc-navigation.tui-doc-navigation {
 .tui-doc-content {
     margin-left: @sidebar-width;
 
-    // TODO: why host-context doesn't work
-    @media @mobile-m {
+    @media @tui-mobile {
         margin-left: 0;
     }
 }
@@ -97,6 +96,10 @@ tui-doc-navigation.tui-doc-navigation {
 
 label.night-mode {
     cursor: pointer;
+
+    .tui-toggle {
+        margin-left: 0.5rem;
+    }
 }
 
 // highlightjs custom theme

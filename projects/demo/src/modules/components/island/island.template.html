@@ -1,8 +1,30 @@
-<tui-doc-page header="Island" package="KIT" type="components">
+<tui-doc-page
+    header="Island"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Islands show information in rounded block with a border
         </div>
+
+        <tui-notification class="tui-space_vertical-4">
+            This component requires
+            <code>@taiga-ui/styles</code>
+            optional package with
+            <code>@taiga-ui/styles/taiga-ui-global</code>
+            <a
+                tuiLink
+                routerLink="/getting-started"
+                fragment="styles"
+            >
+                added to your global styles
+            </a>
+            .
+        </tui-notification>
 
         <strong>.tui-island</strong>
         :
@@ -15,17 +37,15 @@
             </li>
             <li class="tui-list__item">
                 <code>.tui-island__paragraph</code>
-                <ul
-                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
-                >
+                <ul class="tui-list tui-list_linear tui-list_nested tui-list_extra-small">
                     <li class="tui-list__item">
                         <code>.tui-island__paragraph_link</code>
-                        : parahraph with links. Margin top
+                        : paragraph with links. Margin top
                         <code>16px</code>
                     </li>
                     <li class="tui-list__item">
                         <code>.tui-island__paragraph_button</code>
-                        : parahraph with buttons. Margin to
+                        : paragraph with buttons. Margin to
                         <code>20px</code>
                     </li>
                 </ul>
@@ -103,9 +123,7 @@
                     <div>
                         <h3 class="tui-island__title">Some heading</h3>
                         <p class="tui-island__paragraph">Some information</p>
-                        <p
-                            class="tui-island__paragraph tui-island__paragraph_button"
-                        >
+                        <p class="tui-island__paragraph tui-island__paragraph_button">
                             <button
                                 tuiButton
                                 type="button"
@@ -162,7 +180,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -171,7 +189,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

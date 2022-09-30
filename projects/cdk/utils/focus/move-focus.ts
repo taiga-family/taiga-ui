@@ -1,5 +1,4 @@
-import {isNativeFocused} from './is-native-focused';
-import {setNativeFocused} from './set-native-focused';
+import {tuiIsNativeFocused} from './is-native-focused';
 
 /**
  * Utility method for moving focus in a list of elements
@@ -8,17 +7,17 @@ import {setNativeFocused} from './set-native-focused';
  * @param elements array of focusable elements
  * @param step a step to move focus by, typically -1 or 1
  */
-export function moveFocus(
+export function tuiMoveFocus(
     currentIndex: number,
-    elements: ReadonlyArray<HTMLElement>,
+    elements: readonly HTMLElement[],
     step: number,
-) {
+): void {
     currentIndex += step;
 
     while (currentIndex >= 0 && currentIndex < elements.length) {
-        setNativeFocused(elements[currentIndex]);
+        elements[currentIndex].focus();
 
-        if (isNativeFocused(elements[currentIndex])) {
+        if (tuiIsNativeFocused(elements[currentIndex])) {
             return;
         }
 

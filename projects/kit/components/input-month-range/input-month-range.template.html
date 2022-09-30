@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="interactive"
     [content]="dropdown"
     [open]="open && interactive"
@@ -7,21 +7,27 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
-        *ngIf="months$ | async as months"
-        class="textfield"
+        class="t-textfield"
         [editable]="false"
-        [disabled]="disabled"
+        [disabled]="computedDisabled"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="calendarIcon"
-        [pseudoFocused]="pseudoFocused"
-        [pseudoHovered]="pseudoHovered"
+        [tuiTextfieldIcon]="calendarIcon"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [value]="computeValue(value, focused, months)"
+        [value]="
+            value
+                ? computeValue(value.from | tuiMapper: formatter | async, value.to | tuiMapper: formatter | async)
+                : ''
+        "
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
     >
         <ng-content></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

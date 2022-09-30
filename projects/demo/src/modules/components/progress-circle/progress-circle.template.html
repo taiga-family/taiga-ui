@@ -7,9 +7,8 @@
         <dl i18n>
             <dt><code>&lt;tui-progress-circle /&gt;</code></dt>
             <dd>
-                is a component to visually represent the completion of a process
-                or operation (as a partially filled circle/ring). It shows how
-                much has been completed and how much remains.
+                is a component to visually represent the completion of a process or operation (as a partially filled
+                circle/ring). It shows how much has been completed and how much remains.
             </dd>
         </dl>
 
@@ -68,9 +67,8 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="value"
             >
-                This property specifies how much of the task that has been
-                completed. It must be a valid floating point number between 0
-                and
+                This property specifies how much of the task that has been completed. It must be a valid floating point
+                number between 0 and
                 <code>max</code>
                 , or between 0 and 1 if
                 <code>max</code>
@@ -84,10 +82,7 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
-                <p>
-                    This property describes how much work the task indicated by
-                    the progress element requires.
-                </p>
+                <p>This property describes how much work the task indicated by the progress element requires.</p>
                 <p>
                     The default value is
                     <code>1</code>
@@ -135,7 +130,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -144,19 +139,34 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>
     </ng-template>
 </tui-doc-page>
 
-<svg width="0" height="0">
+<svg
+    width="0"
+    height="0"
+>
     <defs>
-        <linearGradient id="gradient" gradientTransform="rotate(95)">
-            <stop offset="0%" stop-color="var(--tui-support-02)"></stop>
-            <stop offset="45%" stop-color="var(--tui-support-14) "></stop>
-            <stop offset="100%" stop-color="var(--tui-support-12)"></stop>
+        <linearGradient
+            id="gradient"
+            gradientTransform="rotate(95)"
+        >
+            <stop
+                offset="0%"
+                stop-color="var(--tui-support-02)"
+            ></stop>
+            <stop
+                offset="45%"
+                stop-color="var(--tui-support-14) "
+            ></stop>
+            <stop
+                offset="100%"
+                stop-color="var(--tui-support-12)"
+            ></stop>
         </linearGradient>
     </defs>
 </svg>

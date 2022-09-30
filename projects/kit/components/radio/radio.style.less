@@ -12,12 +12,12 @@
     flex-shrink: 0;
     border-radius: 100%;
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         width: @sizeM;
         height: @sizeM;
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         width: @sizeL;
         height: @sizeL;
     }
@@ -27,25 +27,25 @@
     }
 }
 
-.mark {
+.t-mark {
     position: absolute;
     background-color: currentColor;
     border-radius: 100%;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         margin: 0.25rem;
         width: @dotSizeM;
         height: @dotSizeM;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         margin: 0.4375rem;
         width: @dotSizeL;
         height: @dotSizeL;
     }
 }
 
-.native {
+.t-native {
     .clearinput();
     .fullsize();
     opacity: 0;

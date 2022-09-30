@@ -1,7 +1,7 @@
 @font-fallback: -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
 
 :root {
-    // Deprecated
+    // Deprecated TODO 4.0 delete variables --tui-heading-font and --tui-text-font
     --tui-heading-font: 'Manrope', @font-fallback;
     --tui-text-font: 'Manrope', @font-fallback;
     // Fonts
@@ -48,7 +48,7 @@
     --tui-base-09: #000; // icons on inverted background
     --tui-primary: #526ed3; // primary buttons, background
     --tui-primary-hover: #6c86e2; // primary buttons hover
-    --tui-primary-active: #314692; // primary buttons hover
+    --tui-primary-active: #314692; // primary buttons pressed
     --tui-primary-text: #fff; // text on primary background
     --tui-secondary: #ebefff; // inputs and secondary buttons
     --tui-secondary-hover: #dfe3f3; // inputs and secondary buttons hover
@@ -143,5 +143,9 @@
     --tui-support-19: #d2e9a2;
     --tui-support-20: #aadc42;
     --tui-support-21: #a0c5df;
-    --tui-support-22: #3c7ba8;
+    --tui-chart-0: var(--tui-primary);
+    --tui-chart-1: var(--tui-support-13);
+    --tui-chart-2: var(--tui-support-21);
+    --tui-chart-3: var(--tui-support-11);
+    --tui-chart-4: var(--tui-base-05);
 }

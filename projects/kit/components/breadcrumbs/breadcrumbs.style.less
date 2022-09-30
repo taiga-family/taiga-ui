@@ -4,23 +4,14 @@
     display: flex;
     align-items: center;
     height: 2.5rem;
+    font: var(--tui-font-text-s);
 
-    &[data-tui-host-size='m'] {
-        font: var(--tui-font-text-s);
-    }
-
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         font: var(--tui-font-text-m);
     }
 }
 
-.icon {
+.t-icon {
     margin: 0 @space;
     color: var(--tui-text-03);
-}
-
-// specificity is the reason of this selector
-a.active-link[data-mode='onLight'] {
-    color: var(--tui-text-03);
-    pointer-events: none;
 }

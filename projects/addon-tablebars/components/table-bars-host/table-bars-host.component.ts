@@ -7,26 +7,26 @@ import {
     TUI_CLOSE_WORD,
     TUI_MEDIA,
     TuiBrightness,
+    tuiIsMobile,
     TuiMedia,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TableBar} from '../../classes/table-bar';
+import {TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility
-// @dynamic
 @Component({
-    selector: 'tui-table-bars-host',
+    selector: `tui-table-bars-host`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './table-bars-host.template.html',
-    styleUrls: ['./table-bars-host.style.less'],
+    templateUrl: `./table-bars-host.template.html`,
+    styleUrls: [`./table-bars-host.style.less`],
     animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {
     readonly animation = {
-        value: '',
+        value: ``,
         ...this.options,
     } as const;
 
@@ -39,22 +39,22 @@ export class TuiTableBarsHostComponent {
     ) {}
 
     get isMobile(): boolean {
-        return this.windowRef.innerWidth <= this.media.mobile;
+        return tuiIsMobile(this.windowRef, this.media);
     }
 
     get closeIcon(): string {
-        return this.isMobile ? 'tuiIconClose' : 'tuiIconRemoveLarge';
+        return this.isMobile ? `tuiIconClose` : `tuiIconRemoveLarge`;
     }
 
     getMode(mode: TuiBrightness): TuiBrightness | null {
-        return mode === 'onLight' ? 'onDark' : null;
+        return mode === `onLight` ? `onDark` : null;
     }
 
-    onCloseClick(itemToRemove: TableBar) {
+    onCloseClick(itemToRemove: TuiTableBar): void {
         itemToRemove.close();
     }
 
-    getItemContext(item: TableBar): TuiContextWithImplicit<() => void> {
+    getItemContext(item: TuiTableBar): TuiContextWithImplicit<() => void> {
         return {
             $implicit: () => item.close(),
         };

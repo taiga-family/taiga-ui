@@ -3,13 +3,12 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputCopyComponent} from '../input-copy.component';
 import {TuiInputCopyModule} from '../input-copy.module';
 
-describe('InputCopy', () => {
+describe(`InputCopy`, () => {
     @Component({
         template: `
             <tui-input-copy
@@ -25,13 +24,13 @@ describe('InputCopy', () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeS | TuiSizeL = 'm';
+        size: TuiSizeS | TuiSizeL = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputCopyComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-copy__icon`);
@@ -51,39 +50,39 @@ describe('InputCopy', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
 
         fixture.detectChanges();
     });
 
-    describe('Copy icon visibility', () => {
-        it('Initially present', () => {
+    describe(`Copy icon visibility`, () => {
+        it(`Initially present`, () => {
             const icon = getIcon();
             const iconSrc = component.icon;
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconCopyLarge');
+            expect(iconSrc).toBe(`tuiIconCopyLarge`);
         });
 
-        it('If component is small, icon size is small', () => {
-            testComponent.size = 's';
+        it(`If component is small, icon size is small`, () => {
+            testComponent.size = `s`;
             fixture.detectChanges();
 
             const iconSrc = component.icon;
 
-            expect(iconSrc).toBe('tuiIconCopy');
+            expect(iconSrc).toBe(`tuiIconCopy`);
         });
 
-        it('Icon is still available in readonly mode', () => {
+        it(`Icon is still available in readonly mode`, () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             expect(getIcon()).not.toBeNull();
         });
 
-        it('There is no icon in disabled mode', () => {
+        it(`There is no icon in disabled mode`, () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
@@ -91,13 +90,13 @@ describe('InputCopy', () => {
         });
     });
 
-    describe('Behavior when clicking on the icon', () => {
-        it('When you click on the "Copy" icon, copy command is executed', () => {
-            const func = spyOn(document, 'execCommand');
+    describe(`Behavior when clicking on the icon`, () => {
+        it(`When you click on the "Copy" icon, copy command is executed`, () => {
+            const func = spyOn(document, `execCommand`);
 
             getIcon()!.nativeElement.click();
 
-            expect(func).toHaveBeenCalledWith('copy');
+            expect(func).toHaveBeenCalledWith(`copy`);
         });
     });
 });

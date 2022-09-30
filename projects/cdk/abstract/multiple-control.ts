@@ -4,13 +4,13 @@ import {AbstractTuiControl} from './control';
 
 @Directive()
 export abstract class AbstractTuiMultipleControl<T> extends AbstractTuiControl<
-    ReadonlyArray<T>
+    readonly T[]
 > {
-    clear() {
+    clear(): void {
         this.updateValue([]);
     }
 
-    protected getFallbackValue(): ReadonlyArray<T> {
+    protected getFallbackValue(): readonly T[] {
         return [];
     }
 }

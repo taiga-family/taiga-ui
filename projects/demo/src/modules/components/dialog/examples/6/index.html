@@ -1,9 +1,34 @@
-<button tuiButton type="button" size="m" (click)="showDialog()">Show</button>
+<button
+    tuiButton
+    type="button"
+    size="m"
+    (click)="showDialog()"
+>
+    Show
+</button>
 <ng-template
     let-observer
-    [tuiDialogOptions]="{ label: 'Declarative directive' }"
+    [tuiDialogOptions]="{label: 'Declarative directive', size: 's'}"
     [(tuiDialog)]="open"
 >
-    <p>This approach abstracts away service and subscription</p>
-    <button tuiButton (click)="observer.complete()">Ok</button>
+    <form
+        [formGroup]="exampleForm"
+        (ngSubmit)="observer.complete()"
+    >
+        <p>This abstracts away service and subscription</p>
+        <tui-input
+            tuiAutoFocus
+            formControlName="exampleControl"
+        >
+            Some value
+        </tui-input>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+            >
+                Ok
+            </button>
+        </p>
+    </form>
 </ng-template>

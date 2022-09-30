@@ -5,8 +5,8 @@ import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-3',
-    templateUrl: './index.html',
+    selector: `tui-dialog-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -17,11 +17,11 @@ export class TuiDialogExampleComponent3 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    showDialog(content: PolymorpheusContent<TuiDialogContext>) {
+    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
         this.dialogService.open(content).subscribe();
     }
 
-    withdraw() {
+    withdraw(): void {
         this.money -= 100;
     }
 }

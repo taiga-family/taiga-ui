@@ -3,13 +3,14 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
-    TuiHintControllerModule,
+    TuiDropdownModule,
+    TuiHintModule,
+    TuiLabelModule,
     TuiLinkModule,
     TuiScrollbarModule,
     TuiTextfieldControllerModule,
@@ -30,6 +31,8 @@ import {TuiMultiSelectExample4} from './examples/4';
 import {TuiMultiSelectExample5} from './examples/5';
 import {TuiMultiSelectExample6} from './examples/6';
 import {TuiMultiSelectExample7} from './examples/7';
+import {TuiMultiSelectExample8} from './examples/8';
+import {TuiMultiSelectExample9} from './examples/9';
 import {ExampleTuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
@@ -47,12 +50,13 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,
-        TuiDropdownControllerModule,
-        TuiHintControllerModule,
+        TuiDropdownModule,
+        TuiHintModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiMultiSelectComponent)),
+        TuiLabelModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
     ],
     declarations: [
@@ -64,6 +68,8 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiMultiSelectExample5,
         TuiMultiSelectExample6,
         TuiMultiSelectExample7,
+        TuiMultiSelectExample8,
+        TuiMultiSelectExample9,
     ],
     exports: [ExampleTuiMultiSelectComponent],
 })

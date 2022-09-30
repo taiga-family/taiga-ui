@@ -1,6 +1,13 @@
-<tui-doc-page header="Select" package="KIT" type="components">
+<tui-doc-page
+    header="Select"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>Select</code>
             is a field with dropdown to choose one item.
         </div>
@@ -39,11 +46,19 @@
             <tui-select-example-3></tui-select-example-3>
         </tui-doc-example>
 
-        <tui-doc-example id="datalist" heading="DataList" [content]="example4">
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [content]="example4"
+        >
             <tui-select-example-4></tui-select-example-4>
         </tui-doc-example>
 
-        <tui-doc-example id="id" heading="ID only" [content]="example5">
+        <tui-doc-example
+            id="id"
+            heading="ID only"
+            [content]="example5"
+        >
             <tui-select-example-5></tui-select-example-5>
         </tui-doc-example>
 
@@ -70,6 +85,22 @@
         >
             <tui-select-example-8></tui-select-example-8>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="accounts"
+            heading="Accounts list"
+            [content]="example9"
+        >
+            <tui-select-example-9></tui-select-example-9>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options-stringify"
+            heading="Options (stringify)"
+            [content]="example10"
+        >
+            <tui-select-example-10></tui-select-example-10>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -80,11 +111,12 @@
                     [focusable]="focusable"
                     [valueContent]="valueContent"
                     [identityMatcher]="identityMatcher"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [readOnly]="readOnly"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -92,12 +124,11 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Choose an account
                     <tui-data-list-wrapper
@@ -107,8 +138,15 @@
                 </tui-select>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #valueTemplateContent let-item>
-            <tui-svg src="tuiIconCheck" class="icon"></tui-svg>
+
+        <ng-template
+            #valueTemplateContent
+            let-item
+        >
+            <tui-svg
+                src="tuiIconCheck"
+                class="icon"
+            ></tui-svg>
             <div class="text-overflow">{{ item }}</div>
         </ng-template>
         <div i18n>
@@ -118,7 +156,12 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
+            <button
+                tuiButton
+                type="button"
+                size="m"
+                (click)="setValue()"
+            >
                 Set
             </button>
         </div>
@@ -142,8 +185,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
@@ -160,7 +202,7 @@
                 A template for custom view of selected value
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -174,7 +216,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
 
                 <p i18n>
@@ -195,7 +237,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -204,7 +246,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

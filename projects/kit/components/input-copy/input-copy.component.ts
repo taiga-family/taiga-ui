@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -22,8 +22,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiDirection,
-    TuiHintModeT,
+    TuiHintDirection,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
@@ -33,18 +32,15 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
-// @dynamic
 @Component({
-    selector: 'tui-input-copy',
-    templateUrl: './input-copy.template.html',
-    styleUrls: ['./input-copy.style.less'],
+    selector: `tui-input-copy`,
+    templateUrl: `./input-copy.template.html`,
+    styleUrls: [`./input-copy.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCopyComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCopyComponent),
+        tuiAsControl(TuiInputCopyComponent),
     ],
 })
 export class TuiInputCopyComponent
@@ -58,15 +54,15 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    successMessage: PolymorpheusContent = '';
+    successMessage: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    messageDirection: TuiDirection = 'bottom-left';
+    messageDirection: TuiHintDirection = `bottom-left`;
 
     @Input()
     @tuiDefaultProp()
-    messageMode: TuiHintModeT | null = null;
+    messageAppearance = ``;
 
     constructor(
         @Optional()
@@ -82,7 +78,7 @@ export class TuiInputCopyComponent
         super(control, changeDetectorRef);
     }
 
-    @HostBinding('class._has-value')
+    @HostBinding(`class._has-value`)
     get hasValue(): boolean {
         return !!this.value;
     }
@@ -115,36 +111,28 @@ export class TuiInputCopyComponent
     }
 
     get icon(): string {
-        return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
+        return this.textfieldSize.size === `s` ? `tuiIconCopy` : `tuiIconCopyLarge`;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.updateValue(value);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    copy() {
-        if (!this.textfield || !this.textfield.nativeFocusableElement) {
+    copy(): void {
+        if (!this.textfield?.nativeFocusableElement) {
             return;
         }
 
         this.textfield.nativeFocusableElement.select();
-        this.documentRef.execCommand('copy');
+        this.documentRef.execCommand(`copy`);
         this.copy$.next();
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

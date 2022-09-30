@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -17,51 +16,51 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     EMPTY_QUERY,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiIdentityMatcher,
+    tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
+import {TuiOrientation, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-radio-list',
-    templateUrl: './radio-list.template.html',
-    styleUrls: ['./radio-list.style.less'],
+    selector: `tui-radio-list`,
+    templateUrl: `./radio-list.template.html`,
+    styleUrls: [`./radio-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioListComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioListComponent),
+        tuiAsControl(TuiRadioListComponent),
     ],
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @ViewChildren(TuiRadioLabeledComponent)
-    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<{}>> = EMPTY_QUERY;
+    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<unknown>> =
+        EMPTY_QUERY;
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<T> = [];
+    items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-orientation')
+    @HostBinding(`attr.data-tui-host-orientation`)
     @tuiDefaultProp()
-    orientation: TuiOrientationT = 'vertical';
+    orientation: TuiOrientation = `vertical`;
 
     @Input()
     @tuiDefaultProp()
@@ -94,7 +93,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
     computeId(index: number): string {
@@ -105,15 +104,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return this.disabledItemHandler(item);
     }
 
-    getContentContext(
-        item: T,
-        index: number,
-        active: boolean,
-    ): TuiValueContentContext<T> & {index: number} {
-        return {$implicit: item, index, active};
-    }
-
-    onModelChange(value: T) {
+    onModelChange(value: T): void {
         this.updateValue(value);
     }
 

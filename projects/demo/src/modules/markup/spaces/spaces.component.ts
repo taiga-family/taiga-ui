@@ -1,35 +1,28 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.style.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.style.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleBasicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
-import {default as exampleIndexLess} from '!!raw-loader!./examples/import/index-less.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'spaces',
-    templateUrl: 'spaces.template.html',
+    selector: `spaces`,
+    templateUrl: `spaces.template.html`,
     changeDetection,
 })
 export class SpacesComponent {
-    readonly exampleBasicImportsLess = exampleBasicImportsLess;
-    readonly exampleIndexLess = exampleIndexLess;
+    readonly exampleBasicImportsLess = import(
+        `./examples/import/basic-imports-less.md?raw`
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly exampleIndexLess = import(`./examples/import/index-less.md?raw`);
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.style.less?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.style.less?raw`),
     };
 }

@@ -1,9 +1,10 @@
-<tui-doc-page header="BadgedContent" package="KIT" type="components">
+<tui-doc-page
+    header="BadgedContent"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            BadgedContent is a wrapper for other components to add badges and
-            notifications to them.
-        </p>
+        <p i18n>BadgedContent is a wrapper for other components to add badges and notifications to them.</p>
 
         <tui-doc-example
             id="base"
@@ -68,8 +69,7 @@
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentBottom"
             >
-                Bottom right content. If it is a number, badge shows it. If it
-                is a string, it will be used as icon.
+                Bottom right content. If it is a number, badge shows it. If it is a string, it will be used as icon.
                 <b>Warning:</b>
                 use big icons for all sizes except 'xs'.
             </ng-template>
@@ -81,8 +81,7 @@
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentTop"
             >
-                Top right content. If it is a number, badge shows it. If it is a
-                string, it will be used as icon.
+                Top right content. If it is a number, badge shows it. If it is a string, it will be used as icon.
                 <b>Warning:</b>
                 use big icons for all sizes except 'xs'.
             </ng-template>
@@ -93,8 +92,7 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="colorBottom"
             >
-                Bottom right content color. If there is no content, shows a
-                small circle of this color.
+                Bottom right content color. If there is no content, shows a small circle of this color.
             </ng-template>
             <ng-template
                 i18n
@@ -103,8 +101,7 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="colorTop"
             >
-                Top right content color. If there is no content, shows a small
-                circle of this color.
+                Top right content color. If there is no content, shows a small circle of this color.
             </ng-template>
             <ng-template
                 i18n
@@ -139,7 +136,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -148,7 +145,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

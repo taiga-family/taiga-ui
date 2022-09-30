@@ -5,16 +5,16 @@ import {
     TuiDayRange,
     TuiDestroyService,
     TuiScrollService,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {EMPTY, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 
 export const TUI_VALUE_STREAM = new InjectionToken<Observable<TuiDayRange | null>>(
-    'Stream for updating value',
+    `[TUI_VALUE_STREAM]: Stream for updating value`,
 );
 export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -27,18 +27,19 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
     {
         provide: TUI_VALUE_STREAM,
         deps: [
-            [new Optional(), TUI_CALENDAR_DATA_STREAM],
+            [new Optional(), TUI_CALENDAR_DATE_STREAM],
             TuiDestroyService,
             ChangeDetectorRef,
         ],
-        useFactory: valueStreamFactory,
+        useFactory: (
+            value$: Observable<TuiDayRange | null> | null,
+            destroy$: Observable<void>,
+            changeDetectorRef: ChangeDetectorRef,
+        ): Observable<TuiDayRange | null> => {
+            return (value$ || EMPTY).pipe(
+                tuiWatch(changeDetectorRef),
+                takeUntil(destroy$),
+            );
+        },
     },
 ];
-
-export function valueStreamFactory(
-    value$: Observable<TuiDayRange | null> | null,
-    destroy$: Observable<void>,
-    changeDetectorRef: ChangeDetectorRef,
-): Observable<TuiDayRange | null> {
-    return (value$ || EMPTY).pipe(takeUntil(destroy$), watch(changeDetectorRef));
-}

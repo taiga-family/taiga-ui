@@ -1,88 +1,54 @@
-import {Component} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-dropdown',
-    templateUrl: './dropdown.template.html',
-    styleUrls: ['./dropdown.style.less'],
+    selector: `example-tui-dropdown`,
+    templateUrl: `./dropdown.template.html`,
+    styleUrls: [`./dropdown.style.less`],
     changeDetection,
+    providers: [
+        {
+            provide: ABSTRACT_PROPS_ACCESSOR,
+            useExisting: forwardRef(() => ExampleTuiDropdownComponent),
+        },
+    ],
 })
-export class ExampleTuiDropdownComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+export class ExampleTuiDropdownComponent extends AbstractExampleTuiDropdown {
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
-
-    tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
-
-    tuiDropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-
-    tuiDropdownSided = false;
-
-    alignVariants: TuiHorizontalDirection[] = ['right', 'left'];
-
-    tuiDropdownAlign = this.alignVariants[0];
-
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
-        'top',
-        'bottom',
-    ];
-
-    tuiDropdownDirection: TuiVerticalDirection | null = null;
-
-    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
-        'fixed',
-        'min',
-        'auto',
-    ];
-
-    tuiDropdownLimitWidth: TuiDropdownWidthT | null =
-        this.tuiDropdownLimitWidthVariants[0];
 
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onObscured(obscured: boolean) {
+    onObscured(obscured: boolean): void {
         if (obscured) {
             this.open = false;
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.open = active && this.open;
     }
 }

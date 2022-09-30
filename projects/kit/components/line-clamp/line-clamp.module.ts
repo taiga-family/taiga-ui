@@ -1,15 +1,26 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiResizeModule} from '@taiga-ui/cdk';
+import {TuiLetModule, TuiResizeModule} from '@taiga-ui/cdk';
 import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLineClampComponent} from './line-clamp.component';
-import {TuiLineClampDirective} from './line-clamp.directive';
+import {TuiLineClampBoxComponent} from './line-clamp-box.component';
+import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule, TuiHintModule, TuiResizeModule],
-    declarations: [TuiLineClampComponent, TuiLineClampDirective],
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiHintModule,
+        TuiResizeModule,
+        TuiLetModule,
+    ],
+    declarations: [
+        TuiLineClampComponent,
+        TuiLineClampBoxComponent,
+        TuiLineClampPositionDirective,
+    ],
     exports: [TuiLineClampComponent],
 })
 export class TuiLineClampModule {}

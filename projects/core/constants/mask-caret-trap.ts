@@ -1,1 +1,1 @@
-export const MASK_CARET_TRAP = '[]';
+export const MASK_CARET_TRAP = `[]`;

@@ -7,9 +7,16 @@
         [tuiTextfieldCleaner]="true"
     >
         Choose your heroes
-        <tui-data-list *tuiDataList tuiMultiSelectGroup>
-            <button *ngFor="let item of items" tuiOption [value]="item">
-                {{item.name}}
+        <tui-data-list
+            *tuiDataList
+            tuiMultiSelectGroup
+        >
+            <button
+                *ngFor="let item of items"
+                tuiOption
+                [value]="item"
+            >
+                {{ item.name }}
             </button>
         </tui-data-list>
     </tui-multi-select>
@@ -24,9 +31,16 @@
         [tuiTextfieldCleaner]="true"
     >
         Choose your heroes
-        <tui-data-list *tuiDataList tuiMultiSelectGroup>
-            <button *ngFor="let item of items" tuiOption [value]="item">
-                {{item.name}}
+        <tui-data-list
+            *tuiDataList
+            tuiMultiSelectGroup
+        >
+            <button
+                *ngFor="let item of items"
+                tuiOption
+                [value]="item"
+            >
+                {{ item.name }}
             </button>
         </tui-data-list>
     </tui-multi-select>

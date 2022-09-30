@@ -1,40 +1,45 @@
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {CHAR_HYPHEN} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
+import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
-import {getFractionPartPadded} from './get-fractional-part-padded';
+import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 
 /**
- * Formats number adding thousand separators and correct decimal separator
+ * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
  * @param value the input number
- * @param decimalLimit number of digits of decimal part, null to keep untouched
- * @param decimalSeparator separator between the integer and the decimal part
- * @param thousandSeparator separator between thousands
- * @param zeroPadding enable zeros at the end of decimal part
+ * @param settings See {@link TuiNumberFormatSettings}
  * @return the formatted string
  */
-export function formatNumber(
+export function tuiFormatNumber(
     value: number,
-    decimalLimit: number | null = null,
-    decimalSeparator: string = ',',
-    thousandSeparator: string = CHAR_NO_BREAK_SPACE,
-    zeroPadding: boolean = true,
+    settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
+    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding} = {
+        ...TUI_DEFAULT_NUMBER_FORMAT,
+        ...settings,
+    };
     const integerPartString = String(Math.floor(Math.abs(value)));
 
-    let fractionPartPadded = getFractionPartPadded(value, decimalLimit);
+    let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
 
-    if (decimalLimit !== null) {
-        const zeroPaddingSize: number = zeroPadding
-            ? Math.max(decimalLimit - fractionPartPadded.length, 0)
-            : 0;
-        const zeroPartString = '0'.repeat(zeroPaddingSize);
+    if (Number.isFinite(decimalLimit)) {
+        if (zeroPadding) {
+            const zeroPaddingSize: number = Math.max(
+                decimalLimit - fractionPartPadded.length,
+                0,
+            );
+            const zeroPartString = `0`.repeat(zeroPaddingSize);
 
-        fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
+            fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
+        } else {
+            fractionPartPadded = fractionPartPadded.replace(/0*$/, ``);
+        }
     }
 
     const remainder = integerPartString.length % 3;
-    const sign = value < 0 ? '-' : '';
+    const sign = value < 0 ? CHAR_HYPHEN : ``;
     let result = sign + integerPartString.charAt(0);
 
     for (let i = 1; i < integerPartString.length; i++) {
@@ -45,7 +50,5 @@ export function formatNumber(
         result += integerPartString.charAt(i);
     }
 
-    return !!fractionPartPadded || decimalLimit
-        ? result + decimalSeparator + fractionPartPadded
-        : result;
+    return fractionPartPadded ? result + decimalSeparator + fractionPartPadded : result;
 }

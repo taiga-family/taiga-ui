@@ -1,8 +1,7 @@
-import {InjectionToken} from '@angular/core';
-import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TuiSizeL} from '@taiga-ui/core/types';
+import {InjectionToken, ValueProvider} from '@angular/core';
+import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
 
-export interface RadioOptions {
+export interface TuiRadioOptions {
     readonly size: TuiSizeL;
     readonly appearances: Readonly<{
         unchecked: string;
@@ -11,17 +10,24 @@ export interface RadioOptions {
 }
 
 /** Default values for the checkbox options. */
-export const TUI_RADIO_DEFAULT_OPTIONS: RadioOptions = {
-    size: 'm',
+export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
+    size: `m`,
     appearances: {
         unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
     },
 };
 
-export const TUI_RADIO_OPTIONS = new InjectionToken<RadioOptions>(
-    'Default parameters for radio component',
+export const TUI_RADIO_OPTIONS = new InjectionToken<TuiRadioOptions>(
+    `[TUI_RADIO_OPTIONS]: Default parameters for radio component`,
     {
         factory: () => TUI_RADIO_DEFAULT_OPTIONS,
     },
 );
+
+export const tuiRadioOptionsProvider: (
+    options: Partial<TuiRadioOptions>,
+) => ValueProvider = (options: Partial<TuiRadioOptions>) => ({
+    provide: TUI_RADIO_OPTIONS,
+    useValue: {...TUI_RADIO_DEFAULT_OPTIONS, ...options},
+});

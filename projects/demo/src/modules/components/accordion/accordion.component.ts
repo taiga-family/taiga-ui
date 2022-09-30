@@ -1,31 +1,15 @@
-import {DOCUMENT} from '@angular/common';
-import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
-
 @Component({
-    selector: 'example-accordion',
-    templateUrl: './accordion.template.html',
+    selector: `example-accordion`,
+    templateUrl: `./accordion.template.html`,
     changeDetection,
 })
 export class ExampleTuiAccordionComponent {
-    @ViewChild('content')
+    @ViewChild(`content`)
     content?: ElementRef;
 
     async = false;
@@ -35,45 +19,44 @@ export class ExampleTuiAccordionComponent {
     open = false;
     rounded = true;
     showArrow = true;
+    disableHover = false;
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        LESS: example3Less,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
-    readonly bordersVariants = ['all', 'top-bottom'];
+    readonly bordersVariants = [`all`, `top-bottom`] as const;
 
-    borders = this.bordersVariants[0];
+    borders: 'all' | 'top-bottom' = this.bordersVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = [`s`, `m`];
 
     size: TuiSizeS = this.sizeVariants[1];
 
-    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {}
-
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
 
         if (!this.async || !open) {
@@ -81,11 +64,7 @@ export class ExampleTuiAccordionComponent {
         }
 
         setTimeout(() => {
-            const event = tuiCustomEvent(
-                TUI_EXPAND_LOADED,
-                {bubbles: true},
-                this.documentRef,
-            );
+            const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
             if (this.content) {
                 this.content.nativeElement.dispatchEvent(event);

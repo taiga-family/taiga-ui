@@ -1,6 +1,5 @@
 @import 'taiga-ui-local';
 
-@color-mobile-background: #f6f7f8;
 @color-mobile-gray: #9299a2;
 
 :host {
@@ -39,7 +38,7 @@
 }
 
 .wrapper {
-    background: @color-mobile-background;
+    background: var(--tui-base-02);
     padding: 3.125rem 0 2rem;
 }
 
@@ -56,13 +55,13 @@
     padding: 0.75rem 0;
 }
 
-.icon[data-tui-host-size='m'] {
+.icon[data-size='m'] {
     position: relative;
     margin-top: 0.25rem;
     width: 5rem;
     height: 5rem;
-    box-shadow: 0 0 0 2px @color-mobile-background;
-    color: @color-mobile-background;
+    box-shadow: 0 0 0 2px var(--tui-base-02);
+    color: var(--tui-base-02);
     background: var(--tui-support-20);
 }
 

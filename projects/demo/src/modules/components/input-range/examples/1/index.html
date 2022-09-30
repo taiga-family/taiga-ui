@@ -1,21 +1,9 @@
-<form class="form" [formGroup]="testForm">
-    <tui-input-range
-        formControlName="testValue"
-        size="m"
-        minLabel="Nothing"
-        maxLabel="Everything"
-        class="control"
-        [max]="1000"
-        [quantum]="10"
-    ></tui-input-range>
-    <tui-input-range
-        formControlName="testValue"
-        minLabel="Nothing"
-        maxLabel="Everything"
-        class="control"
-        [max]="1000"
-        [quantum]="10"
-    >
-        Gold for people
-    </tui-input-range>
-</form>
+<tui-input-range
+    [min]="min"
+    [max]="max"
+    [quantum]="quantum"
+    [steps]="steps"
+    [formControl]="control"
+    [tuiTextfieldSize]="'m'"
+    [tuiTextfieldLabelOutside]="true"
+></tui-input-range>

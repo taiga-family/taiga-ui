@@ -1,0 +1,36 @@
+<div
+    class="t-track"
+    [style.--segment-width.%]="segmentWidthRatio * 100"
+    [style.--bg-size-ratio]="1 - segmentWidthRatio"
+>
+    <input
+        tuiSlider
+        readonly
+        type="range"
+        step="any"
+        automation-id="tui-range__left"
+        class="t-thumb"
+        [min]="min"
+        [max]="max"
+        [ngModel]="value[0]"
+        [size]="size"
+        [keySteps]="computedKeySteps"
+        [tuiFocusable]="focusable"
+        [attr.disabled]="computedDisabled || null"
+    />
+    <input
+        tuiSlider
+        readonly
+        type="range"
+        step="any"
+        automation-id="tui-range__right"
+        class="t-thumb"
+        [min]="min"
+        [max]="max"
+        [ngModel]="value[1]"
+        [size]="size"
+        [keySteps]="computedKeySteps"
+        [tuiFocusable]="focusable"
+        [attr.disabled]="computedDisabled || null"
+    />
+</div>

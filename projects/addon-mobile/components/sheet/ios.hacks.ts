@@ -1,5 +1,5 @@
 import {NgZone} from '@angular/core';
-import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
@@ -15,16 +15,19 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function iosScrollFactory(
     element: HTMLElement,
     documentRef: Document,
     ngZone: NgZone,
 ): Observable<number> {
-    const load$ = typedFromEvent(element, 'load', {capture: true});
-    const touchstart$ = typedFromEvent(element, 'touchstart', {passive: true});
-    const touchmove$ = typedFromEvent(documentRef, 'touchmove', {passive: true});
-    const touchend$ = typedFromEvent(documentRef, 'touchend');
-    const scroll$ = typedFromEvent(element, 'scroll').pipe(map(() => element.scrollTop));
+    const load$ = tuiTypedFromEvent(element, `load`, {capture: true});
+    const touchstart$ = tuiTypedFromEvent(element, `touchstart`, {passive: true});
+    const touchmove$ = tuiTypedFromEvent(documentRef, `touchmove`, {passive: true});
+    const touchend$ = tuiTypedFromEvent(documentRef, `touchend`);
+    const scroll$ = tuiTypedFromEvent(element, `scroll`).pipe(
+        map(() => element.scrollTop),
+    );
     const result$ = merge(
         load$.pipe(
             delay(0),
@@ -50,6 +53,7 @@ export function iosScrollFactory(
     return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(ngZone), share());
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function processDragged(
     dragged$: Observable<boolean>,
     scroll$: Observable<unknown>,
@@ -68,12 +72,13 @@ export function processDragged(
     );
 }
 
-export function fakeSmoothScroll({style}: HTMLElement, offset: number) {
-    style.transition = 'none';
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
+    style.transition = `none`;
     style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
     setTimeout(() => {
-        style.transition = '';
-        style.transform = '';
+        style.transition = ``;
+        style.transform = ``;
     });
 }

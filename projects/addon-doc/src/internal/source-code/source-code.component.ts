@@ -7,22 +7,22 @@ import {TUI_DOC_SOURCE_CODE_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_SOURCE_CODE} from '../../tokens/source-code';
 
 @Component({
-    selector: 'tui-doc-source-code',
-    templateUrl: './source-code.template.html',
+    selector: `tui-doc-source-code`,
+    templateUrl: `./source-code.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSourceCodeComponent {
     @Input()
-    header = '';
+    header = ``;
 
     @Input()
-    package = '';
+    package = ``;
 
     @Input()
-    type = '';
+    type = ``;
 
     @Input()
-    path = '';
+    path = ``;
 
     constructor(
         @Inject(TUI_DOC_SOURCE_CODE)

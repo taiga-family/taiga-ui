@@ -1,0 +1,52 @@
+<button
+    tuiButton
+    size="s"
+    (click)="addColumn()"
+>
+    Add column
+</button>
+<button
+    tuiButton
+    size="s"
+    class="tui-space_left-2"
+    (click)="addRows()"
+>
+    Add row
+</button>
+
+<table
+    tuiTable
+    class="table tui-space_top-3"
+    [columns]="columns"
+>
+    <thead>
+        <tr tuiThGroup>
+            <ng-container *ngFor="let col of columns">
+                <th
+                    *tuiHead="col"
+                    tuiTh
+                >
+                    {{ col }}
+                </th>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody
+        tuiTbody
+        [data]="data"
+    >
+        <tr
+            *tuiRow="let item of data"
+            tuiTr
+        >
+            <ng-container *ngFor="let col of columns">
+                <td
+                    *tuiCell="col"
+                    tuiTd
+                >
+                    {{ item[col] }}
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

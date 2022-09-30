@@ -1,29 +1,40 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
-describe('Textfield', () => {
+describe(`Textfield`, () => {
     @Component({
         template: `
-            <input #auto tuiTextfield />
-            <input #attr id="attr" tuiTextfield />
-            <input #bind tuiTextfield [id]="value" />
+            <input
+                #auto
+                tuiTextfield
+            />
+            <input
+                #attr
+                id="attr"
+                tuiTextfield
+            />
+            <input
+                #bind
+                tuiTextfield
+                [id]="value"
+            />
         `,
     })
     class TestComponent {
-        @ViewChild('auto', {read: ElementRef})
+        @ViewChild(`auto`, {read: ElementRef})
         readonly auto!: ElementRef<HTMLElement>;
 
-        @ViewChild('attr', {read: ElementRef})
+        @ViewChild(`attr`, {read: ElementRef})
         readonly attr!: ElementRef<HTMLElement>;
 
-        @ViewChild('bind', {read: ElementRef})
+        @ViewChild(`bind`, {read: ElementRef})
         readonly bind!: ElementRef<HTMLElement>;
 
-        value = 'bind';
+        value = `bind`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -50,17 +61,17 @@ describe('Textfield', () => {
         fixture.detectChanges();
     });
 
-    describe('id binding', () => {
-        it('Auto id generation works', () => {
+    describe(`id binding`, () => {
+        it(`Auto id generation works`, () => {
             expect(testComponent.auto.nativeElement.id).toBeTruthy();
         });
 
-        it('Static id is not overridden', () => {
-            expect(testComponent.attr.nativeElement.id).toBe('attr');
+        it(`Static id is not overridden`, () => {
+            expect(testComponent.attr.nativeElement.id).toBe(`attr`);
         });
 
-        it('Dynamic id binding works', () => {
-            expect(testComponent.bind.nativeElement.id).toBe('bind');
+        it(`Dynamic id binding works`, () => {
+            expect(testComponent.bind.nativeElement.id).toBe(`bind`);
         });
     });
 });

@@ -2,15 +2,15 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import {TuiBaseColor, TuiColor, TuiMarkerHandler} from '@taiga-ui/core';
+import {TuiMarkerHandler} from '@taiga-ui/core';
 
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
-    selector: 'tui-calendar-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-calendar-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -29,7 +29,7 @@ export class TuiCalendarExample3 {
         // Attention: do not create new arrays in handler, use constants intead
         day.day % 2 === 0 ? TWO_DOTS : ONE_DOT;
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         if (this.value === null || !this.value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
         }
@@ -37,19 +37,19 @@ export class TuiCalendarExample3 {
         this.value = TuiDayRange.sort(this.value.from, day);
     }
 
-    onMonthChangeFirst(month: TuiMonth) {
+    onMonthChangeFirst(month: TuiMonth): void {
         this.firstMonth = month;
         this.middleMonth = month.append({month: 1});
         this.lastMonth = month.append({month: 2});
     }
 
-    onMonthChangeMiddle(month: TuiMonth) {
+    onMonthChangeMiddle(month: TuiMonth): void {
         this.firstMonth = month.append({month: -1});
         this.middleMonth = month;
         this.lastMonth = month.append({month: 1});
     }
 
-    onMonthChangeLast(month: TuiMonth) {
+    onMonthChangeLast(month: TuiMonth): void {
         this.firstMonth = month.append({month: -2});
         this.middleMonth = month.append({month: -1});
         this.lastMonth = month;

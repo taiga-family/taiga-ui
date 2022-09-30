@@ -5,16 +5,23 @@
             "dependencies": "*",
             "devDependencies": "*"
         },
+        "package-lock.json": "*",
         ".eslintrc.js": "*",
         "nx.json": "*",
         "karma.*.js": "*",
         "tsconfig.*.json": "*",
-        "tsconfig.json": "*"
+        "tsconfig.json": "*",
+        "scripts/*.ts": "*",
+        "*.md": "*"
     },
-    "npmScope": "taiga-ui",
+    "targetDefaults": {
+        "build": {
+            "inputs": ["!{projectRoot}/**/*.spec.ts"]
+        }
+    },
     "tasksRunnerOptions": {
         "default": {
-            "runner": "@nx-cloud/runners/firebase",
+            "runner": "@nrwl/nx-cloud",
             "options": {
                 "cacheableOperations": ["build", "test", "lint"],
                 "parallel": 1

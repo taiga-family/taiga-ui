@@ -1,6 +1,7 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -17,9 +18,9 @@ class Account {
 }
 
 @Component({
-    selector: 'example-tui-select',
-    templateUrl: './select.template.html',
-    styleUrls: ['./select.style.less'],
+    selector: `example-tui-select`,
+    templateUrl: `./select.template.html`,
+    styleUrls: [`./select.style.less`],
     changeDetection,
     providers: [
         {
@@ -29,73 +30,89 @@ class Account {
     ],
 })
 export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
-    @ViewChild('valueTemplateContent')
+    @ViewChild(`valueTemplateContent`)
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
-    > = '';
+    > = ``;
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
-    );
-
-    readonly exampleDeclareForm = import(
-        '!!raw-loader!./examples/import/declare-form.txt'
-    );
-
-    readonly example1 = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2 = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly example3 = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
-    readonly example4 = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
     };
 
-    readonly example5 = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
-        LESS: import('!!raw-loader!./examples/5/index.less'),
+    readonly example5: TuiDocExample = {
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
     };
 
-    readonly example6 = {
-        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
-        HTML: import('!!raw-loader!./examples/6/index.html'),
-        LESS: import('!!raw-loader!./examples/6/index.less'),
+    readonly example6: TuiDocExample = {
+        TypeScript: import(`./examples/6/index.ts?raw`),
+        HTML: import(`./examples/6/index.html?raw`),
+        LESS: import(`./examples/6/index.less?raw`),
     };
 
-    readonly example7 = {
-        TypeScript: import('!!raw-loader!./examples/7/index.ts'),
-        HTML: import('!!raw-loader!./examples/7/index.html'),
-        LESS: import('!!raw-loader!./examples/7/index.less'),
+    readonly example7: TuiDocExample = {
+        TypeScript: import(`./examples/7/index.ts?raw`),
+        HTML: import(`./examples/7/index.html?raw`),
+        LESS: import(`./examples/7/index.less?raw`),
     };
 
-    readonly example8 = {
-        TypeScript: import('!!raw-loader!./examples/8/index.ts'),
-        HTML: import('!!raw-loader!./examples/8/index.html'),
-        LESS: import('!!raw-loader!./examples/8/index.less'),
+    readonly example8: TuiDocExample = {
+        TypeScript: import(`./examples/8/index.ts?raw`),
+        HTML: import(`./examples/8/index.html?raw`),
+        LESS: import(`./examples/8/index.less?raw`),
     };
 
-    readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];
+    readonly example9: TuiDocExample = {
+        TypeScript: import(`./examples/9/index.ts?raw`),
+        HTML: import(`./examples/9/index.html?raw`),
+        LESS: import(`./examples/9/index.less?raw`),
+        './account/my-account.component.ts': import(
+            `./examples/9/account/my-account.component.ts?raw`
+        ),
+        './account/my-account.component.less': import(
+            `./examples/9/account/my-account.component.less?raw`
+        ),
+        './account/my-account.component.html': import(
+            `./examples/9/account/my-account.component.html?raw`
+        ),
+    };
 
-    readonly valueTemplateVariants = ['', 'Template'];
+    readonly example10: TuiDocExample = {
+        TypeScript: import(`./examples/10/index.ts?raw`),
+        HTML: import(`./examples/10/index.html?raw`),
+    };
+
+    readonly items = [new Account(`Ruble`, 500), new Account(`Dollar`, 237)];
+
+    readonly valueTemplateVariants = [``, `Template`];
+
+    readonly iconVariants = [``, `tuiIconPiechartLarge`, `tuiIconCardsLarge`];
+
+    override iconLeft = this.iconVariants[0];
 
     selectedValueTemplate = this.valueTemplateVariants[0];
 
@@ -116,10 +133,10 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
-            : '';
+            : ``;
     }
 
-    setValue() {
-        this.control.setValue(new Account('Dollar', 237));
+    setValue(): void {
+        this.control.setValue(new Account(`Dollar`, 237));
     }
 }

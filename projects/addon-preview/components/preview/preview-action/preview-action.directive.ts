@@ -1,20 +1,14 @@
 import {Directive} from '@angular/core';
-import {ButtonOptions, TUI_BUTTON_OPTIONS} from '@taiga-ui/core';
-
-// TODO: remove in ivy compilation
-export const PREVIEW_ACTION_OPTIONS: ButtonOptions = {
-    appearance: 'preview-action',
-    shape: 'rounded',
-    size: 's',
-};
+import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Directive({
-    selector: '[tuiPreviewAction]',
+    selector: `[tuiPreviewAction]`,
     providers: [
-        {
-            provide: TUI_BUTTON_OPTIONS,
-            useValue: PREVIEW_ACTION_OPTIONS,
-        },
+        tuiButtonOptionsProvider({
+            appearance: `preview-action`,
+            shape: `rounded`,
+            size: `s`,
+        }),
     ],
 })
 export class TuiPreviewActionDirective {}

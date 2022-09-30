@@ -1,36 +1,37 @@
 <header
     *ngIf="header"
-    polymorpheus-outlet
-    class="header"
-    [content]="header"
-    [context]="context"
-></header>
-<div class="content">
+    class="t-header"
+>
+    <ng-container *polymorpheusOutlet="header as text; context: context">
+        {{ text }}
+    </ng-container>
+</header>
+<div class="t-content">
     <h2
-        class="heading tui-text_{{ h }}"
+        class="t-heading"
         [id]="context.id"
         [textContent]="context.label"
     ></h2>
-    <section
-        polymorpheus-outlet
-        [context]="context"
-        [content]="context.content"
-    >
-        <ng-template let-text>
+    <section>
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
             {{ text }}
-            <div class="buttons">
+            <div class="t-buttons">
                 <button
                     tuiButton
                     size="m"
                     (click)="context.$implicit.complete()"
                 >
-                    OK
+                    {{ $any(context.data)?.button || 'OK' }}
                 </button>
             </div>
-        </ng-template>
+        </ng-container>
     </section>
 </div>
-<div *ngIf="context.closeable" class="wrapper">
+<div
+    *ngIf="context.closeable"
+    class="t-wrapper"
+>
     <button
         tuiIconButton
         tuiPreventDefault="mousedown"
@@ -39,7 +40,7 @@
         appearance=""
         icon="tuiIconCloseLarge"
         shape="rounded"
-        class="close"
+        class="t-close"
         [title]="closeWord$ | async"
         (click)="close()"
     ></button>

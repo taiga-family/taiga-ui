@@ -1,41 +1,45 @@
-import {FormControl} from '@angular/forms';
+import {fakeAsync} from '@angular/core/testing';
+import {AbstractControl, FormControl} from '@angular/forms';
+import {tuiControlValue} from '@taiga-ui/cdk';
 import {skip} from 'rxjs/operators';
 
-import {tuiReplayedValueChangesFrom} from '../replay-control-value-changes';
+describe(`tuiReplayedValueChangesFrom`, () => {
+    it(`takes control and starts with its value`, fakeAsync(() => {
+        let actual = ``;
+        const control = new FormControl(`hello`);
 
-describe('tuiReplayedValueChangesFrom', () => {
-    it('takes control and starts with its value', done => {
-        const control = new FormControl('hello');
-
-        tuiReplayedValueChangesFrom(control).subscribe(value => {
-            expect(value).toBe('hello');
-            done();
+        tuiControlValue<string>(control).subscribe(value => {
+            actual = value;
         });
-    });
 
-    it('takes control and emits its values', done => {
-        const control = new FormControl('hello');
+        expect(actual).toEqual(`hello`);
+    }));
 
-        tuiReplayedValueChangesFrom(control)
+    it(`takes control and emits its values`, fakeAsync(() => {
+        let actual = ``;
+        const control = new FormControl(`hello`);
+
+        tuiControlValue<string>(control)
             .pipe(skip(1))
             .subscribe(value => {
-                expect(value).toBe('test');
-                done();
+                actual = value;
             });
 
-        control.setValue('test');
-    });
+        control.setValue(`test`);
 
-    it('throwns an error if there is no valueChanges', done => {
-        const control = {} as any;
+        expect(actual).toBe(`test`);
+    }));
 
-        tuiReplayedValueChangesFrom(control).subscribe(
-            () => {
-                fail();
-            },
-            () => {
-                done();
+    it(`throws an error if there is no valueChanges`, fakeAsync(() => {
+        let actual = ``;
+
+        tuiControlValue({} as AbstractControl).subscribe(
+            () => {},
+            (err: unknown) => {
+                actual = (err as Error).message;
             },
         );
-    });
+
+        expect(actual).toBe(`Control does not have valueChanges`);
+    }));
 });

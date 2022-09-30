@@ -1,6 +1,16 @@
-<form class="b-form" [formGroup]="testForm">
-    <tui-input-copy formControlName="testValue" tuiTextfieldSize="s">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <tui-input-copy
+        formControlName="testValue"
+        tuiTextfieldSize="s"
+    >
         Value
+        <input
+            tuiTextfield
+            placeholder="Placeholder"
+        />
     </tui-input-copy>
 
     <tui-input-copy

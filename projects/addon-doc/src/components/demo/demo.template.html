@@ -1,7 +1,14 @@
-<div class="t-bg-toggle" [tuiMode]="null">
+<div
+    class="t-bg-toggle"
+    [tuiMode]="null"
+>
     <ng-template #tooltip>
         {{ texts[0] }}
-        <a tuiLink tuiMode="onDark" routerLink="/directives/mode">
+        <a
+            tuiLink
+            tuiMode="onDark"
+            routerLink="/directives/mode"
+        >
             <code>tuiMode</code>
         </a>
     </ng-template>
@@ -22,8 +29,15 @@
     </ng-container>
     <ng-template #desktop>
         tuiMode:
-        <tui-tooltip describeId="form" [content]="tooltip"></tui-tooltip>
-        <div tuiGroup class="tui-space_left-3" [collapsed]="true">
+        <tui-tooltip
+            describeId="form"
+            [content]="tooltip"
+        ></tui-tooltip>
+        <div
+            tuiGroup
+            class="t-group"
+            [collapsed]="true"
+        >
             <tui-radio-block
                 size="s"
                 nativeId="form"
@@ -58,7 +72,7 @@
     </ng-template>
     <tui-checkbox-labeled
         size="m"
-        class="tui-space_left-3"
+        class="t-checkbox"
         [(ngModel)]="opaque"
     >
         {{ texts[1] }}
@@ -71,16 +85,24 @@
     [class.t-wrapper_gray]="modeControl.value === 'onLight'"
     [class.t-wrapper_transparent]="!opaque"
 >
-    <div #content id="demoContent" class="t-content">
-        <form *ngIf="testForm" class="t-form" [formGroup]="testForm">
+    <div
+        #content
+        id="demoContent"
+        class="t-content"
+    >
+        <form
+            *ngIf="testForm"
+            class="t-form"
+            [formGroup]="testForm"
+        >
             <div class="t-input-wrapper">
-                <ng-container *ngTemplateOutlet="template"></ng-container>
+                <ng-container [ngTemplateOutlet]="template"></ng-container>
             </div>
             <button
                 tuiButton
                 type="button"
                 size="s"
-                class="tui-space_top-3"
+                class="t-button"
                 [iconRight]="icon"
                 (click)="toggleDetails()"
             >
@@ -93,12 +115,16 @@
                     [class.t-icon_rotated]="expanded"
                 ></tui-svg>
             </ng-template>
-            <tui-expand class="t-expand" [expanded]="expanded">
-                <ng-template tuiExpandContent>
-                    <pre class="t-value">
-Form data: {{ testForm.value | json }}</pre
+            <tui-expand
+                class="t-expand"
+                [expanded]="expanded"
+            >
+                <ng-template>
+                    <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                    <div
+                        tuiGroup
+                        class="t-form-controls"
                     >
-                    <div tuiGroup class="tui-space_top-3">
                         <tui-select
                             tuiTextfieldSize="s"
                             class="t-select"
@@ -141,6 +167,9 @@ Form data: {{ testForm.value | json }}</pre
         (tuiDragContinues)="onDragContinues($event)"
         (tuiDragEnd)="onDragEnd()"
     >
-        <span #resizerText class="t-resizer-text"></span>
+        <span
+            #resizerText
+            class="t-resizer-text"
+        ></span>
     </button>
 </div>

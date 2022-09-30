@@ -1,4 +1,8 @@
-<div *ngIf="hasYLabels" class="t-side" [class.t-side_padding]="hasXLabels">
+<div
+    *ngIf="hasYLabels"
+    class="t-side"
+    [class.t-side_padding]="hasXLabels"
+>
     <div
         *ngIf="axisYName"
         automation-id="tui-axex__axis-y-name"
@@ -6,7 +10,10 @@
     >
         {{ axisYName }}
     </div>
-    <div *ngIf="!axisYInset" class="t-labels-y t-labels-y_primary">
+    <div
+        *ngIf="!axisYInset"
+        class="t-labels-y t-labels-y_primary"
+    >
         <div
             *ngFor="let label of axisYLabels"
             automation-id="tui-axex__axis-y-label"
@@ -38,7 +45,10 @@
                 [style.borderTopStyle]="horizontalLinesHandler(index, horizontalLines)"
             ></div>
         </div>
-        <div *ngIf="axisYInset" class="t-labels-y t-labels-y_inset">
+        <div
+            *ngIf="axisYInset"
+            class="t-labels-y t-labels-y_inset"
+        >
             <div
                 *ngFor="let label of axisYLabels"
                 automation-id="tui-axex__axis-y-label"
@@ -63,7 +73,10 @@
             <ng-content></ng-content>
         </div>
     </div>
-    <div *ngIf="hasXLabels" class="t-labels-x">
+    <div
+        *ngIf="hasXLabels"
+        class="t-labels-x"
+    >
         <div
             *ngFor="let label of axisXLabels"
             automation-id="tui-axex__axis-x-label"
@@ -79,7 +92,10 @@
     class="t-side"
     [class.t-side_padding]="hasXLabels"
 >
-    <div *ngIf="!axisYSecondaryInset" class="t-labels-y t-labels-y_secondary">
+    <div
+        *ngIf="!axisYSecondaryInset"
+        class="t-labels-y t-labels-y_secondary"
+    >
         <div
             *ngFor="let label of axisYSecondaryLabels"
             automation-id="tui-axex__axis-y-secondary-label"

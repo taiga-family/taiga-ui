@@ -1,0 +1,147 @@
+@import 'taiga-ui-local';
+
+@track-height: 0.125rem;
+@extra-click-area-space: 0.4375rem;
+@tick-thickness: 0.25rem;
+
+:host {
+    position: relative;
+    display: block;
+    height: @track-height;
+    border-radius: var(--tui-radius-m);
+    background: var(--tui-base-03);
+    cursor: pointer;
+    outline: none;
+    margin: @extra-click-area-space 0;
+    touch-action: pan-x;
+
+    &:active {
+        cursor: ew-resize;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: -@extra-click-area-space;
+        bottom: -@extra-click-area-space;
+        width: 100%;
+    }
+
+    &._disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: auto;
+    }
+}
+
+.track(@thumb-width) {
+    position: relative;
+    margin: 0 (@thumb-width / 2);
+    height: 100%;
+
+    /* Filled selected range */
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: var(--left);
+        right: var(--right);
+        height: 100%;
+        background: var(--tui-primary);
+        margin: 0 (-@thumb-width / 2);
+    }
+
+    /* Ticks */
+    &:after {
+        .fullsize(absolute, inset);
+        content: '';
+        left: ((@thumb-width - @tick-thickness) / 2);
+        right: ((@thumb-width + @tick-thickness) / 2);
+        background-image: repeating-linear-gradient(
+            to right,
+            var(--tui-base-07) 0 @tick-thickness,
+            transparent 0 calc(var(--segment-width) / var(--bg-size-ratio))
+        );
+        background-position-x: right;
+        background-repeat: no-repeat;
+        background-size: calc(100% * var(--bg-size-ratio));
+    }
+}
+
+.t-track {
+    :host[data-size='s'] & {
+        .track(@thumb-diameters[@s]);
+    }
+
+    :host[data-size='m'] & {
+        .track(@thumb-diameters[@m]);
+    }
+}
+
+.ignore-track-pointer-events() {
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+        pointer-events: all;
+    }
+
+    &::-moz-range-thumb {
+        pointer-events: all;
+    }
+}
+
+.remove-track-background() {
+    /* Artificially increased specificity */
+    input[type='range']& {
+        &::-webkit-slider-runnable-track {
+            background: transparent;
+        }
+
+        &::-moz-range-track {
+            background: transparent;
+        }
+
+        &::-moz-range-progress {
+            background: transparent;
+        }
+
+        /* Not-chromium Edge (16-18) */
+        &::-ms-track {
+            background: transparent;
+        }
+
+        &::-ms-fill-lower {
+            background: transparent;
+        }
+    }
+}
+
+.t-thumb {
+    .ignore-track-pointer-events();
+    .remove-track-background();
+    position: absolute;
+    top: (@track-height / 2);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    transform: translate(0, -50%);
+
+    &:last-of-type::-webkit-slider-thumb {
+        transform: translate(50%, 0);
+    }
+
+    &:first-of-type::-webkit-slider-thumb {
+        transform: translate(-50%, 0);
+    }
+
+    &:last-of-type::-moz-range-thumb {
+        transform: translate(50%, 0);
+    }
+
+    &:first-of-type::-moz-range-thumb {
+        transform: translate(-50%, 0);
+    }
+
+    :host._disabled & {
+        opacity: 1; // prevent double overlay for disabled state
+    }
+}

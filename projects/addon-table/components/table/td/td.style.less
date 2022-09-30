@@ -9,6 +9,9 @@
     background: var(--tui-base-01);
     border: 1px solid var(--tui-base-04);
     border-top: none;
+    box-sizing: border-box;
+    // Create new viewport for fixed positioning
+    transform: translate3d(0, 0, 0);
 
     &:first-child {
         left: 0;
@@ -24,6 +27,7 @@
 
     &._editable {
         padding: 0;
+        vertical-align: top;
     }
 }
 
@@ -61,10 +65,12 @@
     opacity: 1;
 }
 
-:host-context(table[data-tui-host-size='l']) {
+:host-context(table[data-size='l']) {
     font: var(--tui-font-text-m);
     height: var(--tui-height-l);
-    padding: 0 1rem;
+    // Don't affect vertical padding for easier override
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     &._editable {
         padding: 0;
@@ -79,8 +85,4 @@
     &:not(:focus-within) {
         z-index: 0;
     }
-}
-
-.wrapper {
-    margin: -1px -1px -1px 0;
 }

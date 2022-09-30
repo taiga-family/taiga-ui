@@ -5,27 +5,27 @@
     margin-bottom: -@space;
 }
 
-.content {
+.t-content {
     display: flex;
     align-items: center;
 }
 
-.item {
+.t-item {
     margin-right: @space;
     margin-bottom: @space;
 
     &:last-child,
-    :host[data-tui-host-size='l'] &:last-child {
+    :host[data-size='l'] &:last-child {
         margin-right: 0;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         margin-right: @space * 2;
         margin-bottom: @space * 2;
     }
 }
 
-.badge {
+.t-badge {
     margin-left: @space;
 
     &_disabled {

@@ -6,8 +6,8 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiAutofillFieldName,
     TuiBooleanHandler,
-    TuiDateAutofillName,
     TuiDay,
     TuiMonth,
     TuiTime,
@@ -15,16 +15,12 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
 
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-date-time',
-    templateUrl: './input-date-time.template.html',
+    selector: `example-tui-input-date-time`,
+    templateUrl: `./input-date-time.template.html`,
     changeDetection,
     providers: [
         {
@@ -36,41 +32,41 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        'value-transformer.ts': import('!!raw-loader!./examples/4/value-transformer.ts'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        'value-transformer.ts': import(`./examples/4/value-transformer.ts?raw`),
     };
 
-    readonly minVariants = [
+    readonly minVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
         [this.today.append({day: -1}), new TuiTime(12, 20)],
     ];
 
-    min = this.minVariants[0];
+    min: TuiDay | [TuiDay, TuiTime] = this.minVariants[0];
 
-    readonly maxVariants = [
+    readonly maxVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_LAST_DAY,
         new TuiDay(2017, 11, 11),
         new TuiDay(2020, 2, 5),
@@ -78,7 +74,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         [this.today.append({day: +1}), new TuiTime(16, 20)],
     ];
 
-    max = this.maxVariants[0];
+    max: TuiDay | [TuiDay, TuiTime] = this.maxVariants[0];
 
     defaultActiveYearMonthVariants = [
         TuiMonth.currentLocal(),
@@ -97,24 +93,20 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Unill today')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), `Unill today`)],
     ];
 
     items = this.itemsVariants[0];
 
-    readonly autocompleteVariants = ['off', 'bday'];
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [`off`, `bday`];
 
-    autocomplete: TuiDateAutofillName | null = null;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    cleaner = false;
+    override cleaner = false;
 
     readonly control = new FormControl(null, Validators.required);
 
-    readonly modeVariants: ReadonlyArray<TuiTimeMode> = [
-        'HH:MM',
-        'HH:MM:SS',
-        'HH:MM:SS.MSS',
-    ];
+    readonly modeVariants: readonly TuiTimeMode[] = [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`];
 
     mode = this.modeVariants[0];
 }

@@ -1,5 +1,0 @@
-<div class="wrapper" tuiDropdownAlign="left">
-    <tui-hosted-dropdown [open]="open" [content]="content">
-        ...
-    </tui-hosted-dropdown>
-</div>

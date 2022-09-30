@@ -1,4 +1,8 @@
-<tui-doc-page header="Tree" package="KIT" type="components">
+<tui-doc-page
+    header="Tree"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to display tree-like data structure</p>
 
@@ -67,7 +71,10 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-documentation heading="TreeItem" [showValues]="false">
+        <tui-doc-documentation
+            heading="TreeItem"
+            [showValues]="false"
+        >
             <ng-template
                 documentationPropertyName="tuiTreeController"
                 documentationPropertyType="boolean"
@@ -79,7 +86,10 @@
             </ng-template>
         </tui-doc-documentation>
 
-        <tui-doc-documentation heading="Tree" [showValues]="false">
+        <tui-doc-documentation
+            heading="Tree"
+            [showValues]="false"
+        >
             <ng-template
                 documentationPropertyName="childrenHandler"
                 documentationPropertyType="TuiHandler<T, readonly T[]>"
@@ -109,19 +119,24 @@
                 documentationPropertyType="Map<T, boolean>"
                 documentationPropertyMode="input"
             >
-                A map used with controller directive for manual programmatic
-                toggling.
+                A map used with controller directive for manual programmatic toggling.
             </ng-template>
         </tui-doc-documentation>
 
-        <tui-doc-documentation heading="Tokens" [showValues]="false">
+        <tui-doc-documentation
+            heading="Tokens"
+            [showValues]="false"
+        >
             <ng-template
                 documentationPropertyName="TUI_TREE_CONTENT"
                 documentationPropertyType="PolymorpheusContent<TuiTreeItemContext>"
             >
-                Provide your own component used internally to display node
-                content (see
-                <a tuiLink routerLink="/components/tree" fragment="custom">
+                Provide your own component used internally to display node content (see
+                <a
+                    tuiLink
+                    routerLink="/components/tree"
+                    fragment="custom"
+                >
                     this example
                 </a>
                 )
@@ -158,7 +173,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -167,7 +182,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

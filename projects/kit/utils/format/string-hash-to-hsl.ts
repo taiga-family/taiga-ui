@@ -4,9 +4,9 @@
  * @return HSL color string
  */
 // @bad TODO: convert stringHashToHsl to stringHashToRgb
-export function stringHashToHsl(value: string): string {
-    if (value === '') {
-        return '';
+export function tuiStringHashToHsl(value: string): string {
+    if (value === ``) {
+        return ``;
     }
 
     let hash = 0;

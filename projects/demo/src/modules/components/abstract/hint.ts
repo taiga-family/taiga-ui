@@ -1,18 +1,11 @@
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 export abstract class AbstractExampleTuiHint {
-    readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
+    readonly appearanceVariants = [``, `error`, `onDark`];
 
-    mode: TuiHintModeT | null = null;
+    appearance = this.appearanceVariants[0];
 
-    readonly directionVariants: ReadonlyArray<TuiDirection> = [
-        'left',
-        'right',
-        'bottom-left',
-        'bottom-right',
-        'top-left',
-        'top-right',
-    ];
+    readonly directionVariants = TUI_HINT_DIRECTIONS;
 
-    direction: TuiDirection = this.directionVariants[4];
+    direction = this.directionVariants[0];
 }

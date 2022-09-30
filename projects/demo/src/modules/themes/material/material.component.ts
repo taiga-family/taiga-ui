@@ -2,11 +2,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
-// @dynamic
 @Component({
-    selector: 'material',
-    styleUrls: ['./material.style.less'],
-    template: '',
+    selector: `material`,
+    styleUrls: [`./material.style.less`],
+    template: ``,
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

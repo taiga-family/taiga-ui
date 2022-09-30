@@ -1,7 +1,7 @@
 <ng-container *tuiLet="innerHTML$ | async as innerHTML">
     <div
         *ngIf="isInnerHTML; else useTemplate"
-        class="src"
+        class="t-src"
         [innerHTML]="innerHTML"
     ></div>
     <ng-template #useTemplate>

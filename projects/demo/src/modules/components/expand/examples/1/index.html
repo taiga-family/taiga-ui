@@ -1,11 +1,16 @@
 <p>
-    Chapman: Mr Wentworth just told me to come in here and say that there was
-    trouble at the mill, that's all - I didn't expect a kind of Spanish
-    Inquisition.
+    Chapman: Mr Wentworth just told me to come in here and say that there was trouble at the mill, that's all - I didn't
+    expect a kind of Spanish Inquisition.
 </p>
-<button tuiButton type="button" (click)="toggle()">Show/Hide</button>
+<button
+    tuiButton
+    type="button"
+    (click)="toggle()"
+>
+    Show/Hide
+</button>
 <tui-expand [expanded]="expanded">
-    <ng-template tuiExpandContent>
+    <ng-template>
         <p>NOBODY expects the Spanish Inquisition!</p>
     </ng-template>
 </tui-expand>

@@ -1,4 +1,7 @@
-<tui-select class="b-form" [(ngModel)]="value">
+<tui-select
+    class="b-form"
+    [(ngModel)]="value"
+>
     Country
     <cdk-virtual-scroll-viewport
         *tuiDataList
@@ -12,7 +15,7 @@
                 tuiOption
                 [value]="item"
             >
-                {{item}}
+                {{ item }}
             </button>
         </tui-data-list>
     </cdk-virtual-scroll-viewport>

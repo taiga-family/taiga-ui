@@ -5,14 +5,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {hexToRgb, rgbToHex} from '@taiga-ui/addon-editor/utils';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
 import {TuiTextMaskOptions} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-color-edit',
-    templateUrl: './color-edit.template.html',
-    styleUrls: ['./color-edit.style.less'],
+    selector: `tui-color-edit`,
+    templateUrl: `./color-edit.template.html`,
+    styleUrls: [`./color-edit.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorEditComponent {
@@ -28,7 +27,7 @@ export class TuiColorEditComponent {
         guide: false,
     };
 
-    readonly modes = ['HEX', 'RGB'];
+    readonly modes = [`HEX`, `RGB`];
 
     mode = this.modes[0];
 
@@ -37,28 +36,28 @@ export class TuiColorEditComponent {
     }
 
     get hex(): string {
-        return rgbToHex(this.color[0], this.color[1], this.color[2]);
+        return tuiRgbToHex(this.color[0], this.color[1], this.color[2]).replace(`#`, ``);
     }
 
     get opacity(): number {
         return Math.round(this.color[3] * 100);
     }
 
-    onHexChange(hex: string) {
+    onHexChange(hex: string): void {
         if (hex.length !== 6) {
             return;
         }
 
-        const rgb = hexToRgb(hex);
+        const rgb = tuiHexToRgb(hex);
 
         this.updateColor([rgb[0], rgb[1], rgb[2], this.color[3]]);
     }
 
-    onRgbChange(...rgba: [number, number, number, number]) {
+    onRgbChange(...rgba: [number, number, number, number]): void {
         this.updateColor(rgba);
     }
 
-    private updateColor(color: [number, number, number, number]) {
+    private updateColor(color: [number, number, number, number]): void {
         this.color = color;
         this.colorChange.emit(color);
     }

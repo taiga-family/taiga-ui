@@ -1,8 +1,18 @@
-<tui-doc-page header="Carousel" package="KIT" type="components">
+<tui-doc-page
+    header="Carousel"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <tui-notification status="warning" class="tui-space_bottom-4">
+        <tui-notification
+            status="warning"
+            class="tui-space_bottom-4"
+        >
             Requires
-            <a tuiLink href="https://caniuse.com/intersectionobserver">
+            <a
+                tuiLink
+                href="https://caniuse.com/intersectionobserver"
+            >
                 IntersectionObserver
             </a>
             support or a
@@ -14,25 +24,30 @@
             </a>
         </tui-notification>
 
-        Carousel allows you to rotate through arbitrary items. Multiple items
-        can be shown simultaneously.
+        Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
 
-        <tui-doc-example id="single" heading="Single" [content]="example1">
-            <tui-carousel-example-1
-                (touchstart.passive.stop)="0"
-            ></tui-carousel-example-1>
+        <tui-doc-example
+            id="single"
+            heading="Single"
+            [content]="example1"
+        >
+            <tui-carousel-example-1 (touchstart.passive.stop)="(0)"></tui-carousel-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="multi" heading="Multiple" [content]="example2">
-            <tui-carousel-example-2
-                (touchstart.passive.stop)="0"
-            ></tui-carousel-example-2>
+        <tui-doc-example
+            id="multi"
+            heading="Multiple"
+            [content]="example2"
+        >
+            <tui-carousel-example-2 (touchstart.passive.stop)="(0)"></tui-carousel-example-2>
         </tui-doc-example>
 
-        <tui-doc-example id="custom" heading="Custom" [content]="example3">
-            <tui-carousel-example-3
-                (touchstart.passive.stop)="0"
-            ></tui-carousel-example-3>
+        <tui-doc-example
+            id="custom"
+            heading="Custom"
+            [content]="example3"
+        >
+            <tui-carousel-example-3 (touchstart.passive.stop)="(0)"></tui-carousel-example-3>
         </tui-doc-example>
 
         <tui-doc-example
@@ -52,12 +67,20 @@
                 [duration]="duration"
                 [itemsCount]="itemsCount"
                 [(index)]="index"
-                (touchstart.passive.stop)="0"
+                (touchstart.passive.stop)="(0)"
             >
                 <ng-container *tuiRepeatTimes="let item of 9">
-                    <div *tuiItem class="plate">
-                        {{item}}
-                        <button tuiButton type="button" size="s" class="button">
+                    <div
+                        *tuiItem
+                        class="plate"
+                    >
+                        {{ item }}
+                        <button
+                            tuiButton
+                            type="button"
+                            size="s"
+                            class="button"
+                        >
                             I'm focusable
                         </button>
                     </div>
@@ -80,8 +103,7 @@
                 [documentationPropertyValues]="durationVariants"
                 [(documentationPropertyValue)]="duration"
             >
-                Duration in milliseconds for each slide for automatic rotation
-                (use 0 to disable automatic rotation)
+                Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation)
             </ng-template>
             <ng-template
                 documentationPropertyName="itemsCount"
@@ -113,7 +135,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -122,7 +144,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

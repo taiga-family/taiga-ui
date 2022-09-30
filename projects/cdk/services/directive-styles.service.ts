@@ -1,29 +1,33 @@
-import {DOCUMENT} from '@angular/common';
-import {Inject, Injectable, Renderer2} from '@angular/core';
-import {TUI_DEFAULT_RENDERER} from '@taiga-ui/cdk/tokens';
+import {
+    ComponentFactoryResolver,
+    Inject,
+    Injectable,
+    INJECTOR,
+    Injector,
+    Type,
+} from '@angular/core';
 
 /**
  * Service to use styles with directives
- * @dynamic
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiDirectiveStylesService {
+    private readonly map = new Map<Type<unknown>, unknown>();
+
     constructor(
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(TUI_DEFAULT_RENDERER) private readonly renderer: Renderer2,
+        @Inject(ComponentFactoryResolver)
+        private readonly resolver: ComponentFactoryResolver,
+        @Inject(INJECTOR) private readonly injector: Injector,
     ) {}
 
-    addStyle(styles: string, attribute: string) {
-        if (this.documentRef.head.querySelector(`style[${attribute}]`)) {
-            return;
+    addComponent(component: Type<unknown>): void {
+        if (!this.map.has(component)) {
+            this.map.set(
+                component,
+                this.resolver.resolveComponentFactory(component).create(this.injector),
+            );
         }
-
-        const style = this.renderer.createElement('style');
-
-        this.renderer.setProperty(style, 'textContent', styles);
-        this.renderer.setAttribute(style, attribute, '');
-        this.documentRef.head.appendChild(style);
     }
 }

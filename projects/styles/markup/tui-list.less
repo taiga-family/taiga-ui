@@ -1,0 +1,133 @@
+.tui-list {
+    font: var(--tui-font-text-m);
+    list-style-type: none;
+    color: var(--tui-text-01);
+
+    &_large {
+        font: var(--tui-font-text-l);
+    }
+
+    &_small,
+    &_extra-small {
+        font: var(--tui-font-text-s);
+    }
+
+    &_nested {
+        margin: 0.75rem 0 0.75rem 1.25rem;
+        color: var(--tui-text-02);
+
+        .tui-list_large & {
+            margin-left: 0.75rem;
+        }
+
+        .tui-list_small & {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &_ordered {
+        counter-reset: counter;
+    }
+
+    &__item {
+        position: relative;
+        padding-left: @space * 6;
+        word-wrap: break-word;
+        margin-top: @space * 3;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 100%;
+            background-color: var(--tui-primary);
+
+            .tui-list_large > & {
+                top: 0.5rem;
+            }
+
+            .tui-list_small > & {
+                top: 0.3125rem;
+            }
+        }
+
+        .tui-list_extra-small > & {
+            margin-top: @space * 2;
+        }
+
+        .tui-list_linear & {
+            padding-left: @space * 7;
+
+            &:before {
+                content: '\2014';
+                left: 0;
+                top: auto;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+            }
+        }
+
+        .tui-list_ordered & {
+            padding-left: @space * 5;
+
+            &:before {
+                content: counter(counter) '.';
+                left: 0;
+                top: auto;
+                counter-increment: counter;
+                width: auto;
+                height: auto;
+                color: var(--tui-text-03);
+                background-color: transparent;
+            }
+        }
+
+        .tui-list_triangle > & {
+            padding-left: @space * 7;
+
+            &:before {
+                content: '\25E4'; // represent symbol '◤'
+                left: 0;
+                top: 1px;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                color: var(--tui-base-06);
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    &__item-title {
+        font: var(--tui-font-heading-5);
+        margin: 0;
+
+        .tui-list_small & {
+            line-height: 1.25rem;
+            font-weight: bold;
+        }
+    }
+
+    &__description {
+        margin: @space * 2 0 0;
+        color: var(--tui-text-02);
+
+        .tui-list_small & {
+            margin-top: @space;
+        }
+
+        .tui-list_large & {
+            line-height: 1.75rem;
+            margin-top: @space * 3;
+        }
+    }
+}

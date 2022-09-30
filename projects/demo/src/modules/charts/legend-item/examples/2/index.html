@@ -1,10 +1,14 @@
 <tui-notification>
-    In case you need to be able to toggle a category by separate action, for
-    example, if clicking on it should expand it for more details
+    In case you need to be able to toggle a category by separate action, for example, if clicking on it should expand it
+    for more details
 </tui-notification>
 
 <div class="wrapper">
-    <tui-ring-chart size="s" class="chart" [value]="value"></tui-ring-chart>
+    <tui-ring-chart
+        size="s"
+        class="chart"
+        [value]="value"
+    ></tui-ring-chart>
 
     <div class="legend">
         <tui-legend-item
@@ -17,10 +21,11 @@
             (click)="onClick(index)"
             (keydown.delete)="toggle(index)"
         >
-            <tui-primitive-checkbox
-                [value]="!item.disabled"
-            ></tui-primitive-checkbox>
-            <tui-money [singleColor]="true" [value]="data[index]"></tui-money>
+            <tui-primitive-checkbox [value]="!item.disabled"></tui-primitive-checkbox>
+            <tui-money
+                [singleColor]="true"
+                [value]="data[index]"
+            ></tui-money>
             <tui-svg
                 src="tuiIconCloseLarge"
                 class="disable"

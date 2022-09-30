@@ -2,17 +2,30 @@
     <div class="stepper">
         <tui-stepper [activeItemIndex]="0">
             <button tuiStep>First step</button>
-            <button tuiStep [disabled]="true">Second step</button>
-            <button tuiStep [disabled]="true">Third step</button>
-            <button tuiStep [disabled]="true">Fourth step</button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Second step
+            </button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Third step
+            </button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Fourth step
+            </button>
         </tui-stepper>
     </div>
     <form [formGroup]="testForm">
         <div class="tui-row tui-row_sme">
             <div class="tui-col_8">
-                <h3 class="tui-form__header tui-form__header_margin-top_none">
-                    A header
-                </h3>
+                <h3 class="tui-form__header tui-form__header_margin-top_none">A header</h3>
                 <div class="tui-form__row">
                     <tui-input
                         tuiTextfieldExampleText="Field placeholder"
@@ -22,9 +35,10 @@
                         Textfield
                         <span class="tui-required"></span>
                     </tui-input>
-                    <tui-field-error
+                    <tui-error
                         formControlName="nameValue"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </div>
                 <div class="tui-form__row">
                     <tui-input-date
@@ -34,18 +48,18 @@
                         Input date
                         <span class="tui-required"></span>
                     </tui-input-date>
-                    <tui-field-error
+                    <tui-error
                         formControlName="periodValue"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
                     <div class="tui-form__multi-field">
-                        <tui-input-password formControlName="passwordValue">
-                            Input password
-                        </tui-input-password>
-                        <tui-field-error
+                        <tui-input-password formControlName="passwordValue">Input password</tui-input-password>
+                        <tui-error
                             formControlName="passwordValue"
-                        ></tui-field-error>
+                            [error]="[] | tuiFieldError | async"
+                        ></tui-error>
                     </div>
                     <div class="tui-form__multi-field">
                         <tui-input-number
@@ -54,26 +68,31 @@
                         >
                             Input money
                         </tui-input-number>
-                        <tui-field-error
+                        <tui-error
                             formControlName="moneyValue"
-                        ></tui-field-error>
+                            [error]="[] | tuiFieldError | async"
+                        ></tui-error>
                     </div>
                 </div>
                 <div class="tui-form__row">
                     <tui-input-slider
                         formControlName="quantityValue"
+                        postfix="₽"
                         [min]="50000"
                         [max]="3000000"
-                        [pluralize]="['₽', '₽', '₽']"
                         [segments]="1"
-                        [segmentsPluralize]="['₽', '₽', '₽']"
                     >
                         Some slider
                     </tui-input-slider>
+                    <div class="ticks-labels">
+                        <span>from 50 000 ₽</span>
+                        <span>to 3 000 000 ₽</span>
+                    </div>
                     <div class="tui-form__field-note">Some additional text</div>
-                    <tui-field-error
+                    <tui-error
                         formControlName="quantityValue"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
                     <div class="tui-form__multi-field">
@@ -87,22 +106,23 @@
                                 [items]="persons"
                             ></tui-data-list-wrapper>
                         </tui-select>
-                        <ng-template #personValueContent let-data>
-                            <div class="uppercase-name">
-                                {{data.firstName}} {{data.lastName}}
-                            </div>
+                        <ng-template
+                            #personValueContent
+                            let-data
+                        >
+                            <div class="uppercase-name">{{ data.firstName }} {{ data.lastName }}</div>
                         </ng-template>
-                        <tui-field-error
+                        <tui-error
                             formControlName="personValue"
-                        ></tui-field-error>
+                            [error]="[] | tuiFieldError | async"
+                        ></tui-error>
                     </div>
                     <div class="tui-form__multi-field">
-                        <tui-input-phone formControlName="phoneValue">
-                            Input phone
-                        </tui-input-phone>
-                        <tui-field-error
+                        <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
+                        <tui-error
                             formControlName="phoneValue"
-                        ></tui-field-error>
+                            [error]="[] | tuiFieldError | async"
+                        ></tui-error>
                     </div>
                 </div>
                 <h3 class="tui-form__header">Header</h3>
@@ -130,9 +150,7 @@
                     </tui-radio-block>
                 </div>
                 <div class="tui-form__row tui-form__row_half-width">
-                    <tui-input-time formControlName="timeValue">
-                        Input time
-                    </tui-input-time>
+                    <tui-input-time formControlName="timeValue">Input time</tui-input-time>
                 </div>
                 <div class="tui-form__row tui-form__row_checkboxes">
                     <tui-checkbox-labeled
@@ -178,13 +196,9 @@
                         One more value
                     </tui-checkbox-labeled>
                 </div>
-                <h3
-                    class="tui-form__header tui-form__header_margin-bottom_small"
-                >
-                    Header
-                </h3>
+                <h3 class="tui-form__header tui-form__header_margin-bottom_small">Header</h3>
                 <div class="tui-form__row">
-                    <label tuiLabel label="From">
+                    <label tuiLabel="From">
                         <tui-select
                             formControlName="accountWherefrom"
                             class="accounts-select"
@@ -201,7 +215,7 @@
                     </label>
                 </div>
                 <div class="tui-form__row">
-                    <label tuiLabel label="To">
+                    <label tuiLabel="To">
                         <tui-select
                             formControlName="accountWhere"
                             class="accounts-select"
@@ -256,9 +270,12 @@
                 </div>
             </div>
         </div>
-        <ng-template #accountContent let-account>
+        <ng-template
+            #accountContent
+            let-account
+        >
             <span class="account">
-                {{account.name}}
+                {{ account.name }}
                 <tui-money [value]="account.amount"></tui-money>
             </span>
         </ng-template>

@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiArrowModule, TuiAvatarModule, TuiToggleModule} from '@taiga-ui/kit';
 
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiButtonComponent} from './button.component';
 import {TuiButtonExample1} from './examples/1';
 import {TuiButtonExample2} from './examples/2';
@@ -33,11 +34,12 @@ import {TuiButtonExample5} from './examples/5';
         TuiFocusableModule,
         TuiButtonModule,
         TuiHostedDropdownModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiArrowModule,
         TuiNotificationModule,
+        InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiButtonComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiButtonComponent)),
         TuiLinkModule,
     ],
     declarations: [

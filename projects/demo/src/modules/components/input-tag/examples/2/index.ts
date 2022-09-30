@@ -5,17 +5,17 @@ import {Observable, of, Subject} from 'rxjs';
 import {delay, startWith, switchMap} from 'rxjs/operators';
 
 const databaseMockData: readonly string[] = [
-    'John Cleese',
-    'Eric Idle',
-    'Michael Palin',
-    'Terry Gilliam',
-    'Terry Jones',
-    'Graham Chapman',
+    `John Cleese`,
+    `Eric Idle`,
+    `Michael Palin`,
+    `Terry Gilliam`,
+    `Terry Jones`,
+    `Graham Chapman`,
 ];
 
 @Component({
-    selector: 'tui-input-tag-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-tag-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -31,7 +31,7 @@ export class TuiInputTagExample2 {
         startWith(databaseMockData),
     );
 
-    onSearchChange(search: string) {
+    onSearchChange(search: string): void {
         this.search$.next(search);
     }
 
@@ -39,8 +39,8 @@ export class TuiInputTagExample2 {
      * Server request emulation
      */
     private serverRequest(search: string): Observable<readonly string[]> {
-        const result = databaseMockData.filter(
-            item => item.toLowerCase().indexOf(search.toLowerCase()) !== -1,
+        const result = databaseMockData.filter(item =>
+            item.toLowerCase().includes(search.toLowerCase()),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

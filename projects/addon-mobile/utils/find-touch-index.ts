@@ -1,4 +1,4 @@
-export function findTouchIndex(touches: TouchList, id: number): number {
+export function tuiFindTouchIndex(touches: TouchList, id: number): number {
     for (let i = 0; i < touches.length; i++) {
         const {identifier} = touches[i];
 

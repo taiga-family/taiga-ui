@@ -48,7 +48,7 @@
         <button
             *cdkVirtualFor="let index of years"
             class="t-year"
-            [attr.data-tui-element-state]="getState(index)"
+            [attr.data-state]="getState(index)"
             (click)="setYear(index)"
         >
             {{ index }}
@@ -56,7 +56,12 @@
     </div>
 </cdk-virtual-scroll-viewport>
 <div class="t-week">
-    <div *ngFor="let day of weekDays$ | async" class="t-day">{{ day }}</div>
+    <div
+        *ngFor="let day of weekDays$ | async"
+        class="t-day"
+    >
+        {{ day }}
+    </div>
 </div>
 <cdk-virtual-scroll-viewport
     #monthsScrollRef

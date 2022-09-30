@@ -1,4 +1,8 @@
-<tui-doc-page header="InputPhone" package="KIT" type="components">
+<tui-doc-page
+    header="InputPhone"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>InputPhone</code>
@@ -11,6 +15,13 @@
             heading="Basic"
             [content]="example1"
         >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
             <tui-input-phone-example-1></tui-input-phone-example-1>
         </tui-doc-example>
 
@@ -42,7 +53,7 @@
                     [formControl]="control"
                     [focusable]="focusable"
                     [readOnly]="readOnly"
-                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldLabelOutside]="labelOutside"
@@ -50,8 +61,8 @@
                     [countryCode]="countryCode"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -59,7 +70,7 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Type a phone number
                 </tui-input-phone>
@@ -106,8 +117,7 @@
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside
+                Textfield value to subscribe on input or setting it from the outside
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
@@ -124,7 +134,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -139,7 +149,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -148,7 +158,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

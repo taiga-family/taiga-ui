@@ -1,4 +1,9 @@
-<tui-doc-page i18n-header header="Bar" package="ADDON-CHARTS" type="components">
+<tui-doc-page
+    i18n-header
+    header="Bar"
+    package="ADDON-CHARTS"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>A bar for bar chart</p>
 
@@ -23,7 +28,11 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-bar class="bar" [size]="size" [value]="value"></tui-bar>
+            <tui-bar
+                class="bar"
+                [size]="size"
+                [value]="value"
+            ></tui-bar>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -60,7 +69,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -69,7 +78,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

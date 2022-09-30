@@ -1,9 +1,10 @@
 import {
+    CHAR_HYPHEN,
     CHAR_NO_BREAK_SPACE,
-    getDocumentOrShadowRoot,
-    isNativeFocused,
-    isSafari,
     tuiAssert,
+    tuiGetDocumentOrShadowRoot,
+    tuiIsNativeFocused,
+    tuiIsSafari,
 } from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
@@ -13,33 +14,33 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
  */
 export function tuiCreateAutoCorrectedNumberPipe(
     decimalLimit: number = 0,
-    decimalSymbol: TuiDecimalSymbol = ',',
+    decimalSymbol: TuiDecimalSymbol = `,`,
     thousandSymbol: string = CHAR_NO_BREAK_SPACE,
-    nativeInput?: HTMLInputElement,
+    nativeInput?: HTMLInputElement | null,
     allowNegative?: boolean,
+    isIOS = false,
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
 
     // Guess for which browser I need this :)
     let previousCaret = -1;
-
-    const unlucky = !!nativeInput && isSafari(nativeInput);
+    const unlucky = (!!nativeInput && tuiIsSafari(nativeInput)) || isIOS;
 
     if (nativeInput && unlucky) {
-        nativeInput.addEventListener('beforeinput', () => {
+        nativeInput.addEventListener(`beforeinput`, () => {
             previousCaret = nativeInput.selectionStart || 0;
         });
     }
 
     return (conformedValue, config) => {
         // Removing everything by selecting and pressing '-'
-        if (!conformedValue && config.rawValue === '-' && allowNegative) {
-            return '-';
+        if (!conformedValue && config.rawValue === CHAR_HYPHEN && allowNegative) {
+            return CHAR_HYPHEN;
         }
 
         // remove these hacks after text mask library has changed
-        if (nativeInput && unlucky && isNativeFocused(nativeInput)) {
+        if (nativeInput && unlucky && tuiIsNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(
                 config.previousConformedValue,
                 conformedValue,
@@ -53,8 +54,8 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
         if (
             nativeInput &&
-            nativeInput.ownerDocument !== getDocumentOrShadowRoot(nativeInput) &&
-            isNativeFocused(nativeInput) &&
+            nativeInput.ownerDocument !== tuiGetDocumentOrShadowRoot(nativeInput) &&
+            tuiIsNativeFocused(nativeInput) &&
             config.currentCaretPosition
         ) {
             const realCaretPosition =
@@ -70,7 +71,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
             });
         }
 
-        if (conformedValue === '' || !decimalLimit) {
+        if (conformedValue === `` || !decimalLimit) {
             return {value: conformedValue};
         }
 
@@ -79,27 +80,27 @@ export function tuiCreateAutoCorrectedNumberPipe(
         const zeroPaddingSize = decimalLimit - decimalPart.length;
 
         return {
-            value: withDecimalSymbol + '0'.repeat(zeroPaddingSize),
+            value: withDecimalSymbol + `0`.repeat(zeroPaddingSize),
         };
     };
 }
 
 function addDecimalSymbolIfNeeded(
     value: string,
-    decimalSymbol: TuiDecimalSymbol = ',',
+    decimalSymbol: TuiDecimalSymbol = `,`,
 ): string {
-    return value.indexOf(decimalSymbol) === -1 ? value + decimalSymbol : value;
+    return !value.includes(decimalSymbol) ? value + decimalSymbol : value;
 }
 
 function calculateSafariCaret(
-    previousValue: string = '',
+    previousValue: string = ``,
     current: string,
     previousCaret: number,
-    decimalSymbol: string = ',',
+    decimalSymbol: string = `,`,
 ): number {
     const tailRegex = new RegExp(`${decimalSymbol}.+`);
-    const previousWithoutTail = previousValue.replace(tailRegex, '');
-    const currentWithoutTail = current.replace(tailRegex, '');
+    const previousWithoutTail = previousValue.replace(tailRegex, ``);
+    const currentWithoutTail = current.replace(tailRegex, ``);
 
     const pasteOrCutOperation =
         Math.abs(previousWithoutTail.length - currentWithoutTail.length) > 2;
@@ -130,7 +131,7 @@ function calculateSafariCaret(
 function calculateChangedTailIndex(previous: string, current: string): number {
     for (let i = 0; i < current.length; i++) {
         if (previous[i] !== current[i]) {
-            return current[i] === '0' ? i : i + 1;
+            return current[i] === `0` ? i : i + 1;
         }
     }
 
@@ -138,7 +139,7 @@ function calculateChangedTailIndex(previous: string, current: string): number {
 }
 
 function calculateCaretGap(
-    previousValue: string = '',
+    previousValue: string = ``,
     current: string,
     thousandSymbol: string,
 ): number {

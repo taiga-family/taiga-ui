@@ -1,10 +1,20 @@
-<tui-doc-page header="InputRange" package="KIT" type="components">
+<tui-doc-page
+    header="InputRange"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to input a range of values</p>
 
         <p i18n>
             Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
         </p>
 
         <tui-doc-example
@@ -12,8 +22,95 @@
             i18n-heading
             heading="Basic"
             [content]="example1"
+            [description]="stepQuantumDescription"
         >
+            <ng-template #stepQuantumDescription>
+                <p>
+                    Look into this example to understand difference between input-props
+                    <code>[steps]</code>
+                    and
+                    <code>[quantum]</code>
+                    .
+                </p>
+            </ng-template>
+
+            <p class="tui-space_top-0">
+                Slider's step changes value by
+                <code>1</code>
+                .
+            </p>
+            <p>
+                But text inputs allow to type decimal number which is multiple of
+                <code>0.00001</code>
+                .
+            </p>
+
             <tui-input-range-example-1></tui-input-range-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="numberFormat"
+            i18n-heading
+            heading="Override number format"
+            [content]="example2"
+            [description]="numberFormatTokenDescription"
+        >
+            <ng-template #numberFormatTokenDescription>
+                <p i18n>
+                    Number formatting can be customized by using
+                    <a
+                        tuiLink
+                        routerLink="/utils/tokens"
+                        fragment="number-format"
+                    >
+                        TUI_NUMBER_FORMAT
+                    </a>
+                    .
+                </p>
+            </ng-template>
+            <tui-input-range-example-2></tui-input-range-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="valueContent"
+            i18n-heading
+            heading="Custom value content"
+            [content]="example3"
+        >
+            <tui-input-range-example-3></tui-input-range-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="segments"
+            i18n-heading
+            heading="Visual segments + labels for ticks"
+            [content]="example4"
+        >
+            <tui-notification
+                i18n
+                class="tui-space_bottom-8"
+            >
+                Use mixin
+                <code>tui-slider-ticks-labels</code>
+                to arrange ticks' labels (it places them strictly below ticks).
+            </tui-notification>
+            <tui-input-range-example-4></tui-input-range-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="keySteps"
+            i18n-heading
+            heading="KeySteps"
+            [content]="example5"
+        >
+            <dl
+                i18n
+                class="tui-space_bottom-8 tui-space_top-0"
+            >
+                <dt><strong>Key steps</strong></dt>
+                <dd>anchor points of non-uniform format between value and position</dd>
+            </dl>
+            <tui-input-range-example-5></tui-input-range-example-5>
         </tui-doc-example>
     </ng-template>
 
@@ -22,21 +119,21 @@
             <ng-template>
                 <tui-input-range
                     [formControl]="control"
-                    [focusable]="focusable"
                     [min]="min"
                     [max]="max"
-                    [minLabel]="minLabel"
-                    [maxLabel]="maxLabel"
                     [segments]="segments"
-                    [segmentsPluralize]="segmentsPluralize"
-                    [size]="size"
                     [keySteps]="keySteps"
                     [pluralize]="pluralize"
                     [steps]="steps"
                     [quantum]="quantum"
+                    [leftValueContent]="leftValueContent"
+                    [rightValueContent]="rightValueContent"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
                     [readOnly]="readOnly"
                 >
-                    Range
+                    Just a very long label. Don't afraid it does not overflow the wrapper, the label is just cut off
+                    with ellipsis when it does not fit the wrapper.
                 </tui-input-range>
             </ng-template>
         </tui-doc-demo>
@@ -50,16 +147,6 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="quantum"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="quantumVariants"
-                [(documentationPropertyValue)]="quantum"
-            >
-                Minimum indivisible value
             </ng-template>
             <ng-template
                 i18n
@@ -83,82 +170,31 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="minLabel"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="minLabelVariants"
-                [(documentationPropertyValue)]="minLabel"
-            >
-                Label for min value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="maxLabel"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="maxLabelVariants"
-                [(documentationPropertyValue)]="maxLabel"
-            >
-                Label for max value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="pluralize"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize | Record<string, string>"
-                [documentationPropertyValues]="pluralizeVariants"
-                [(documentationPropertyValue)]="pluralize"
-            >
-                Plural forms for labels. TuiPluralize array is deprecated. Use
-                object that mimics the
-                <a
-                    tuiLink
-                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
-                >
-                    ICU format
-                </a>
-                for i18nPlural
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="segments"
+                documentationPropertyName="quantum"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="segmentsVariants"
-                [(documentationPropertyValue)]="segments"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
             >
-                A number of visual segments
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="segmentsPluralize"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize"
-                [documentationPropertyValues]="pluralizeVariants"
-                [(documentationPropertyValue)]="segmentsPluralize"
-            >
-                Plural forms for
-                <code>segments</code>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="size"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
-            >
-                Size
+                Minimum indivisible value
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="steps"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="stepsVariants"
                 [(documentationPropertyValue)]="steps"
             >
                 Number of actual discrete slider steps
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments
             </ng-template>
             <ng-template
                 i18n
@@ -170,8 +206,105 @@
             >
                 Anchor points of non-uniform format between value and position
             </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="leftValueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="leftValueContent"
+            >
+                A template for custom view of the left selected value.
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="rightValueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="rightValueContent"
+            >
+                A template for custom view of the right selected value.
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="Record<string, string>"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Plural forms for labels.
+
+                <p>
+                    Use object that mimics the
+                    <a
+                        tuiLink
+                        href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+                    >
+                        ICU format
+                    </a>
+                    for i18nPlural
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="readOnly"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="readOnly"
+            >
+                Component is read only
+            </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
+
+        <h6
+            i18n
+            class="tui-text_h6"
+        >
+            Can be expanded with
+            <a
+                tuiLink
+                target="_blank"
+                routerLink="/directives/textfield-controller"
+            >
+                TuiTextfieldController
+            </a>
+        </h6>
+
+        <p>
+            Requires you to import
+            <code>TuiTextfieldControllerModule</code>
+        </p>
+
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldLabelOutside"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="labelOutside"
+            >
+                Label is outside a component and made with
+                <a
+                    tuiLink
+                    routerLink="/components/label"
+                >
+                    <code>Label</code>
+                </a>
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -185,7 +318,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -194,7 +327,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -7,7 +7,7 @@
     (searchChange)="onSearch($event)"
 >
     {{ placeholder$ | async }}
-    <ng-container *ngIf="items.length">
+    <ng-container *ngIf="items?.length">
         <tui-data-list *tuiDataList>
             <button
                 *ngFor="let item of items"
@@ -23,8 +23,8 @@
                     [text]="item.firstName"
                 ></tui-avatar>
                 <span class="user">
-                    <span>{{item.firstName}} {{item.lastName}}</span>
-                    <span class="phone">{{item.phone}}</span>
+                    <span>{{ item.firstName }} {{ item.lastName }}</span>
+                    <span class="phone">{{ item.phone }}</span>
                 </span>
             </button>
         </tui-data-list>
@@ -39,4 +39,4 @@
         [text]="user.firstName"
     ></tui-avatar>
 </ng-template>
-<p>Value: {{value}}</p>
+<p>Value: {{ value }}</p>

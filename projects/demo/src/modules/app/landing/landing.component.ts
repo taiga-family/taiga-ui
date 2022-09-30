@@ -10,9 +10,9 @@ import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'landing',
-    templateUrl: './landing.template.html',
-    styleUrls: ['./landing.style.less'],
+    selector: `landing`,
+    templateUrl: `./landing.template.html`,
+    styleUrls: [`./landing.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -22,43 +22,37 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
     ],
 })
 export class LandingComponent {
-    @ViewChildren('block', {read: ElementRef})
+    @ViewChildren(`block`, {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     current = 0;
 
-    tags = ['Angular', 'Open source'];
+    tags = [`Angular`, `Open source`];
 
     date: TuiDay | null = null;
 
-    readonly labels = ['New', 'Read', 'Archived', 'Junk'];
+    readonly labels = [`New`, `Read`, `Archived`, `Junk`];
 
-    @HostBinding('style.background')
+    @HostBinding(`style.background`)
     get background(): string {
-        return this.current ? '#5f6ed0' : '#3dc67c';
+        return this.current ? `#5f6ed0` : `#3dc67c`;
     }
 
-    onIntersection([{isIntersecting}]: IntersectionObserverEntry[], index: number) {
+    onIntersection([{isIntersecting}]: IntersectionObserverEntry[], index: number): void {
         if (isIntersecting) {
             this.current = index;
         }
     }
 
-    onDay(date: TuiDay) {
+    onDay(date: TuiDay): void {
         this.date = date;
     }
 
-    onClick() {
+    onClick(): void {
         this.blocks.forEach(({nativeElement}, index) => {
             if (index === this.current + 1) {
                 nativeElement.scrollIntoView();
             }
         });
-    }
-
-    stop(e?: KeyboardEvent) {
-        if (e && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
-            e.stopPropagation();
-        }
     }
 }

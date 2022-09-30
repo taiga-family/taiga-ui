@@ -4,7 +4,6 @@ on:
   pull_request:
     paths:
       - 'projects/**'
-      - '!projects/*testing/**'
       - '!projects/demo/**'
       - '!projects/icons/**'
       - '**/test.yml'
@@ -20,11 +19,13 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
   IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
   test:
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Karma
     runs-on: ubuntu-latest
     steps:
@@ -90,5 +91,5 @@ jobs:
           name: addon-charts
 
 concurrency:
-  group: test-${{ github.head_ref }}
+  group: test-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

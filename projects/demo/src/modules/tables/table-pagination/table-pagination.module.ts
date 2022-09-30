@@ -1,10 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTablePaginationModule} from '@taiga-ui/addon-table';
 
 import {TuiTablePaginationExample1} from './examples/1';
+import {TuiTablePaginationExample2} from './examples/2';
+import {TuiTablePaginationExample3} from './examples/3';
 import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
 
 @NgModule({
@@ -12,9 +14,14 @@ import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
         CommonModule,
         TuiTablePaginationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiTablePaginationComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTablePaginationComponent)),
     ],
-    declarations: [ExampleTuiTablePaginationComponent, TuiTablePaginationExample1],
+    declarations: [
+        ExampleTuiTablePaginationComponent,
+        TuiTablePaginationExample1,
+        TuiTablePaginationExample2,
+        TuiTablePaginationExample3,
+    ],
     exports: [ExampleTuiTablePaginationComponent],
 })
 export class ExampleTuiTablePaginationModule {}

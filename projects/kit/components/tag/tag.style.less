@@ -170,47 +170,48 @@
     }
 }
 
-.text {
-    .text-overflow();
+.t-text {
+    .text-overflow(pre); // @note: fix problem in Safari
     padding-right: 0.02em;
 }
 
-.tag {
+.t-tag {
+    .text-overflow();
     position: relative;
     display: flex;
+    width: auto; // @note: fix problem in Safari
     align-items: center;
     border-radius: inherit;
-    white-space: pre;
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         font: var(--tui-font-text-xs);
         height: 1.25rem;
         padding: 0 @padding;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-xs);
         padding: 0 @padding;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-s);
         padding: 0 @padding-large;
     }
 
-    :host._has-icon[data-tui-host-size='s'] & {
+    :host._has-icon[data-size='s'] & {
         padding: 0 (@space / 2) 0 @padding-large;
         padding-inline-start: @padding-large;
         padding-inline-end: (@space / 2);
     }
 
-    :host._has-icon[data-tui-host-size='m'] & {
+    :host._has-icon[data-size='m'] & {
         padding: 0 0 0 @padding-large;
         padding-inline-start: @padding-large;
         padding-inline-end: 0;
     }
 
-    :host._has-icon[data-tui-host-size='l'] & {
+    :host._has-icon[data-size='l'] & {
         padding: 0 @space 0 @padding-large;
         padding-inline-start: @padding-large;
         padding-inline-end: @space;
@@ -220,19 +221,19 @@
         visibility: hidden;
     }
 
-    :host._disabled._has-icon[data-tui-host-size='s'] &,
-    :host._disabled._has-icon[data-tui-host-size='m'] & {
+    :host._disabled._has-icon[data-size='s'] &,
+    :host._disabled._has-icon[data-size='m'] & {
         padding: 0 @padding 0 @padding-large;
         padding-inline-start: @padding-large;
         padding-inline-end: @padding;
     }
 
-    :host._disabled._has-icon[data-tui-host-size='l'] & {
+    :host._disabled._has-icon[data-size='l'] & {
         padding: 0 @padding-large;
     }
 }
 
-.edit {
+.t-edit {
     .clearinput();
     position: absolute;
     top: 0;
@@ -245,17 +246,17 @@
     padding-inline-start: @padding;
     padding-inline-end: 0;
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         height: 1.25rem;
         line-height: 1.25rem;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-xs);
         line-height: var(--tui-height-xs);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-s);
         line-height: var(--tui-height-s);
         padding: 0 0 0 @padding-large;
@@ -264,7 +265,7 @@
     }
 }
 
-.icon {
+.t-icon {
     margin: 0 0 0 @space;
     margin-inline-start: @space;
     margin-inline-end: 0;
@@ -285,7 +286,7 @@
         height: 1rem;
         margin: 0 0.25rem;
 
-        :host[data-tui-host-size='s'] & {
+        :host[data-size='s'] & {
             margin: 0 0.375rem 0 0.75rem;
             margin-inline-start: 0.75rem;
             margin-inline-end: 0.375rem;
@@ -293,7 +294,7 @@
             height: 0.5rem;
         }
 
-        :host[data-tui-host-size='l'] & {
+        :host[data-size='l'] & {
             margin: 0 0.25rem 0 0.5rem;
             margin-inline-start: 0.5rem;
             margin-inline-end: 0.25rem;
@@ -301,7 +302,7 @@
     }
 }
 
-.left-content {
+.t-left-content {
     margin: 0 @space 0 0;
     margin-inline-start: 0;
     margin-inline-end: @space;

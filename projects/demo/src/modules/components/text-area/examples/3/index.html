@@ -3,8 +3,14 @@
     <code>tuiLabel</code>
 </p>
 
-<form class="tui-row" [formGroup]="testForm">
-    <label tuiLabel label="Type a text" class="tui-col_md-6">
+<form
+    class="tui-row"
+    [formGroup]="testForm"
+>
+    <label
+        tuiLabel="Type a text"
+        class="tui-col_md-6"
+    >
         <tui-text-area
             formControlName="testValue1"
             class="tui-space_bottom-4"

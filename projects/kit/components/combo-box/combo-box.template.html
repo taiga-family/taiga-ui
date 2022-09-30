@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="interactive"
     [content]="datalist || ''"
     [(open)]="open"
@@ -7,34 +7,42 @@
 >
     <tui-primitive-textfield
         automation-id="tui-combo-box__textfield"
-        class="textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="computedHovered"
+        class="t-textfield"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="icon"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="nativeValue"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (click)="toggle()"
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
         <div
             *ngIf="showValueTemplate"
-            polymorpheus-outlet
+            ngProjectAs="tuiContent"
             automation-id="tui-combo-box__template"
-            class="value"
-            [content]="computedContent"
-            [context]="computeContext(value, computedFocused)"
-        ></div>
+            class="t-value"
+        >
+            <ng-container
+                *polymorpheusOutlet="computedContent as text; context: {$implicit: value!, active: computedFocused}"
+            >
+                {{ text }}
+            </ng-container>
+        </div>
     </tui-primitive-textfield>
 
     <ng-template #icon>
-        <div polymorpheus-outlet class="t-icon" [content]="arrow"></div>
+        <div class="t-icon">
+            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+        </div>
     </ng-template>
 </tui-hosted-dropdown>

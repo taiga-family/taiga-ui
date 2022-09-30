@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAxesModule, TuiLineChartModule} from '@taiga-ui/addon-charts';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiHintModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
 import {TuiLineChartExample1} from './examples/1';
 import {TuiLineChartExample2} from './examples/2';
@@ -17,11 +17,13 @@ import {ExampleTuiLineChartComponent} from './line-chart.component';
     imports: [
         CommonModule,
         FormsModule,
+        TuiLinkModule,
+        TuiHintModule,
         TuiAxesModule,
         TuiNotificationModule,
         TuiLineChartModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLineChartComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineChartComponent)),
     ],
     declarations: [
         ExampleTuiLineChartComponent,

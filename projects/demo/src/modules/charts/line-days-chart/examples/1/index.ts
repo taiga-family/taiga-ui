@@ -13,11 +13,10 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Component({
-    selector: 'tui-line-days-chart-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-line-days-chart-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -58,7 +57,7 @@ export class TuiLineDaysChartExample1 {
     }
 
     readonly yStringify: TuiStringHandler<number> = y =>
-        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
+        `${(10 * y).toLocaleString(`en-US`, {maximumFractionDigits: 0})} $`;
 
     @tuiPure
     private computeValue({from, to}: TuiDayRange): ReadonlyArray<[TuiDay, number]> {

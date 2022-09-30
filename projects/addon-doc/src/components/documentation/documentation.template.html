@@ -1,30 +1,30 @@
-<h1 *ngIf="heading" class="tui-text_h4">{{ heading }}</h1>
+<h1
+    *ngIf="heading"
+    class="t-heading"
+>
+    {{ heading }}
+</h1>
 <ng-content></ng-content>
-<table class="tui-table tui-table_layout_fixed tui-table_font-size_s">
-    <tr class="tui-table__tr tui-table__tr_hover_disabled t-row t-row_header">
-        <th class="tui-table__th tui-table__th_first t-cell t-cell_prop">
-            {{ texts[2] }}
-        </th>
-        <td class="tui-table__th">{{ type }}</td>
-        <td
+<table class="t-table">
+    <tr class="t-row t-row_header">
+        <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
+        <th class="t-th">{{ type }}</th>
+        <th
             *ngIf="showValues && !isAPI"
-            class="tui-table__th tui-table__th_last tui-table__th_text_right t-cell t-cell_value"
+            class="t-th t-cell t-cell_value"
         >
             {{ texts[3] }}
-        </td>
+        </th>
     </tr>
     <tr
-        *ngFor="let propertyConnector of propertiesConnectors; last as lastItem"
-        class="tui-table__tr tui-table__tr_hover_disabled t-row"
+        *ngFor="let propertyConnector of propertiesConnectors"
+        class="t-row"
         [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
-        [class.tui-table__tr_border_none]="lastItem"
     >
-        <td
-            class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell"
-        >
+        <td class="t-cell">
             <div
                 automation-id="tui-documentation__property-name"
-                class="t-property t-cell"
+                class="t-property"
             >
                 {{ stripOptional(propertyConnector.attrName) }}
                 <tui-badge
@@ -39,11 +39,9 @@
             >
                 deprecated
             </span>
-            <ng-container
-                *ngTemplateOutlet="propertyConnector.template"
-            ></ng-container>
+            <ng-container [ngTemplateOutlet]="propertyConnector.template"></ng-container>
         </td>
-        <td class="tui-table__td tui-table__td_align_center t-cell">
+        <td class="t-cell">
             <span class="type">
                 {{ propertyConnector.documentationPropertyType }}
                 <tui-tooltip
@@ -67,11 +65,9 @@
         </td>
         <td
             *ngIf="showValues"
-            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right t-cell"
+            class="t-cell"
         >
-            <ng-container
-                *ngIf="propertyConnector.shouldShowValues; else elseEmitter"
-            >
+            <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
                 <tui-select
                     *ngIf="propertyConnector.hasItems; else noItems"
                     tuiTextfieldSize="m"
@@ -90,14 +86,15 @@
                         [itemContent]="selectContent"
                     ></tui-data-list-wrapper>
                 </tui-select>
-                <ng-template #selectContent let-data>
+                <ng-template
+                    #selectContent
+                    let-data
+                >
                     <code>{{ inspectAny(data) }}</code>
                 </ng-template>
 
                 <ng-template #noItems>
-                    <ng-container
-                        [ngSwitch]="propertyConnector.documentationPropertyType"
-                    >
+                    <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
                         <tui-toggle
                             *ngSwitchCase="'boolean'"
                             size="l"
@@ -117,16 +114,23 @@
                             (valueChange)="propertyConnector.onValueChange($event)"
                         ></tui-primitive-textfield>
 
-                        <div *ngSwitchCase="'color'" tuiGroup>
+                        <div
+                            *ngSwitchCase="'color'"
+                            tuiGroup
+                        >
                             <tui-primitive-textfield
-                                tuiTextfieldType="color"
                                 tuiTextfieldSize="m"
                                 [attr.id]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
                                 [tuiInputOpacity]="getOpacity(propertyConnector.documentationPropertyValue)"
                                 [value]="getColor(propertyConnector.documentationPropertyValue)"
                                 (valueChange)="onColorChange(propertyConnector, $event)"
-                            ></tui-primitive-textfield>
+                            >
+                                <input
+                                    tuiTextfield
+                                    type="text"
+                                />
+                            </tui-primitive-textfield>
                             <tui-input-count
                                 tuiTextfieldSize="m"
                                 [max]="100"
@@ -145,6 +149,20 @@
                             [ngModel]="propertyConnector.documentationPropertyValue"
                             (ngModelChange)="propertyConnector.onValueChange($event)"
                         ></tui-input-count>
+
+                        <ng-container *ngSwitchCase="'PolymorpheusContent'">
+                            <tui-primitive-textfield
+                                *ngIf="isPrimitivePolymorpheusContent(propertyConnector.documentationPropertyValue)"
+                                tuiTextfieldSize="m"
+                                [nativeId]="propertyConnector.attrName"
+                                [tuiTextfieldLabelOutside]="true"
+                                [tuiTextfieldCleaner]="true"
+                                [value]="propertyConnector.documentationPropertyValue.toString()"
+                                (valueChange)="propertyConnector.onValueChange($event)"
+                            >
+                                Default content
+                            </tui-primitive-textfield>
+                        </ng-container>
                     </ng-container>
                 </ng-template>
             </ng-container>

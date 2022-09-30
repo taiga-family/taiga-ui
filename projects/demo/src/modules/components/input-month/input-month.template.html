@@ -1,4 +1,8 @@
-<tui-doc-page header="InputMonth" package="KIT" type="components">
+<tui-doc-page
+    header="InputMonth"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to input a single month</p>
 
@@ -8,6 +12,13 @@
             heading="Basic"
             [content]="example1"
         >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
             <input-month-example-1></input-month-example-1>
         </tui-doc-example>
 
@@ -31,14 +42,14 @@
                     [focusable]="focusable"
                     [readOnly]="readOnly"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [disabledItemHandler]="disabledItemHandler"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldCleaner]="cleaner"
                 >
                     Month
                 </tui-input-month>
@@ -63,10 +74,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -105,7 +113,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="examples.importModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -120,7 +128,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="examples.declareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -133,7 +141,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="examples.insertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

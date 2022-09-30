@@ -7,11 +7,11 @@ interface Options {
     excludePattern?: string;
 }
 
-export async function grepByPattern(options: Options): Promise<any> {
+export async function grepByPattern(options: Options): Promise<string> {
     const {path, includePattern, excludePattern} = options;
 
     const exec = util.promisify(child_process.exec);
-    let grep = `grep -iRl '${includePattern}' ${path}`;
+    let grep = `grep -niR --color=always '${includePattern}' ${path}`;
 
     if (excludePattern) {
         grep += ` | grep -vE '${excludePattern}'`;

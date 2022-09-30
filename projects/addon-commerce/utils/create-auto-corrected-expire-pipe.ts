@@ -13,7 +13,7 @@ export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
     return (conformedValue, {rawValue}) => {
         // Autofilled with MM/YYYY format
         if (TUI_EXP_YEAR_MONTH.test(rawValue)) {
-            conformedValue = rawValue.substr(0, 2) + '/' + rawValue.substr(5);
+            conformedValue = `${rawValue.slice(0, 2)}/${rawValue.slice(5)}`;
         }
 
         // Autofilled with Safari crazy format
@@ -26,23 +26,23 @@ export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
             const month = array[1];
             const year = array.find(({length}) => length === 4);
 
-            conformedValue = `${'0'.repeat(2 - month.length)}${month}/${
-                year ? year.substr(2) : ''
+            conformedValue = `${`0`.repeat(2 - month.length)}${month}/${
+                year ? year.slice(2) : ``
             }`;
         }
 
         const indexesOfPipedChars: number[] = [];
-        const conformedValueArr = conformedValue.split('');
+        const conformedValueArr = conformedValue.split(``);
 
         if (parseInt(conformedValueArr[0], 10) > 1) {
-            conformedValueArr[2] = '/';
+            conformedValueArr[2] = `/`;
             conformedValueArr[1] = conformedValueArr[0];
-            conformedValueArr[0] = '0';
+            conformedValueArr[0] = `0`;
             indexesOfPipedChars.push(0);
         }
 
         return {
-            value: conformedValueArr.join(''),
+            value: conformedValueArr.join(``),
             indexesOfPipedChars,
         };
     };

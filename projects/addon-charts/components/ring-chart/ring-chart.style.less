@@ -9,22 +9,22 @@
     position: relative;
     display: block;
 
-    &[data-tui-host-size='s'] {
+    &[data-size='s'] {
         width: @size-s;
         height: @size-s;
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         width: @size-m;
         height: @size-m;
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         width: @size-l;
         height: @size-l;
     }
 
-    &[data-tui-host-size='xl'] {
+    &[data-size='xl'] {
         width: @size-xl;
         height: @size-xl;
     }
@@ -46,7 +46,7 @@
     white-space: pre-wrap;
     color: var(--tui-text-02);
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         font: var(--tui-font-text-xs);
     }
 }
@@ -54,12 +54,12 @@
 .t-wrapper:first-line {
     color: var(--tui-text-01);
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         font: var(--tui-font-text-l);
         font-weight: bold;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         font: var(--tui-font-text-m);
         font-weight: bold;
     }

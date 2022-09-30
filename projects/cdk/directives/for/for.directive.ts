@@ -1,6 +1,7 @@
 import {
     Directive,
     EmbeddedViewRef,
+    Inject,
     Input,
     OnChanges,
     TemplateRef,
@@ -8,23 +9,23 @@ import {
 } from '@angular/core';
 
 @Directive({
-    selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
+    selector: `[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]`,
 })
-export class TuiForDirective implements OnChanges {
-    private ref?: EmbeddedViewRef<{}>;
+export class TuiForDirective<T, K = unknown> implements OnChanges {
+    private ref?: EmbeddedViewRef<unknown>;
 
     @Input()
-    ngForOf: unknown[] | null = [];
+    ngForOf: T[] | readonly T[] | null = [];
 
     @Input()
-    ngForElse?: TemplateRef<{}>;
+    ngForElse?: TemplateRef<K>;
 
     @Input()
-    ngForEmpty?: TemplateRef<{}>;
+    ngForEmpty?: TemplateRef<K>;
 
-    constructor(private readonly vcr: ViewContainerRef) {}
+    constructor(@Inject(ViewContainerRef) private readonly vcr: ViewContainerRef) {}
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.ref?.destroy();
 
         if (this.ngForOf?.length === 0 && this.ngForEmpty) {

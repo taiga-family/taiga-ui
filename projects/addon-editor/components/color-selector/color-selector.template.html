@@ -1,5 +1,15 @@
-<tui-hosted-dropdown #dropdown class="t-select" [content]="menu">
-    <button tuiButton appearance="" size="s" type="button" [iconRight]="arrow">
+<tui-hosted-dropdown
+    #dropdown
+    class="t-select"
+    [content]="menu"
+>
+    <button
+        tuiButton
+        appearance=""
+        size="s"
+        type="button"
+        [iconRight]="arrow"
+    >
         {{ currentMode }}
     </button>
     <ng-template #arrow>
@@ -10,7 +20,10 @@
         ></tui-svg>
     </ng-template>
     <ng-template #menu>
-        <tui-data-list role="menu" class="t-menu">
+        <tui-data-list
+            role="menu"
+            class="t-menu"
+        >
             <button
                 *ngFor="let mode of modes"
                 tuiOption
@@ -33,7 +46,10 @@
 </tui-hosted-dropdown>
 <ng-container *ngIf="isGradient">
     <hr class="t-hr" />
-    <div class="t-wrapper" [style.background]="gradient">
+    <div
+        class="t-wrapper"
+        [style.background]="gradient"
+    >
         <tui-linear-multi-picker
             class="t-gradient"
             [value]="stopsKeys"
@@ -42,9 +58,9 @@
         ></tui-linear-multi-picker>
     </div>
     <div class="t-buttons">
+        <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
         <button
             *ngFor="let button of buttons"
-            #directionBtn
             tuiIconButton
             type="button"
             size="xs"
@@ -53,8 +69,7 @@
             [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"
             [tuiHint]="button"
-            [tuiHintId]="directionBtn.id"
-            [tuiDescribedBy]="directionBtn.id"
+            [tuiHintDescribe]="''"
             (click)="onDirectionChange(button)"
         ></button>
     </div>

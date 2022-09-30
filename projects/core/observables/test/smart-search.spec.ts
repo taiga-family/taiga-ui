@@ -1,64 +1,77 @@
+import {tuiSmartSearch} from '@taiga-ui/core';
 import {from, Observable, of} from 'rxjs';
 import {skip, take} from 'rxjs/operators';
 
-import {smartSearch} from '../smart-search';
-
-describe('smartSearch', () => {
+describe(`tuiSmartSearch`, () => {
     let source: Observable<string>;
 
     beforeEach(() => {
-        source = from(['search']);
+        source = from([`search`]);
     });
 
-    it('starts with empty array', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+    it(`starts with empty array`, () => {
+        let result: unknown;
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(take(1))
-            .subscribe(result => {
-                expect(result).toEqual([]);
-                done();
+            .subscribe(value => {
+                result = value;
             });
+
+        expect(result).toEqual([]);
     });
 
-    it('returns null starting search', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+    it(`returns null starting search`, () => {
+        let result: unknown;
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(skip(1), take(1))
-            .subscribe(result => {
-                expect(result).toBeNull();
-                done();
+            .subscribe(value => {
+                result = value;
             });
+
+        expect(result).toBeNull();
     });
 
-    it('returns search result of function', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+    it(`returns search result of function`, () => {
+        let result: unknown;
+        const operator = tuiSmartSearch<string>((search: string) =>
+            of([`${search}result`]),
+        );
 
         operator(source)
             .pipe(skip(2), take(1))
-            .subscribe(result => {
-                expect(result).toEqual(['searchresult']);
-                done();
+            .subscribe(value => {
+                result = value;
             });
+
+        expect(result).toEqual([`searchresult`]);
     });
 
-    it('does not emit new value if it starts with previous', done => {
+    it(`does not emit new value if it starts with previous`, () => {
+        let result: unknown;
         let counter = 0;
 
-        const operator = smartSearch<string>((search: string) => {
+        const operator = tuiSmartSearch<string>((search: string) => {
             counter++;
 
-            return of([search + 'result']);
+            return of([`${search}result`]);
         });
 
-        source = from(['search', 'searchhh']);
+        source = from([`search`, `searchhh`]);
 
         operator(source).subscribe({
             complete: () => {
-                expect(counter).toBe(1);
-                done();
+                result = counter;
             },
         });
+
+        expect(result).toBe(1);
     });
 });

@@ -1,4 +1,9 @@
-<tui-input icon="tuiIconSearchLarge" [(ngModel)]="search">Search</tui-input>
+<tui-input
+    tuiTextfieldIconLeft="tuiIconSearchLarge"
+    [(ngModel)]="search"
+>
+    Search
+</tui-input>
 <table class="tui-space_top-4">
     <thead>
         <tr>
@@ -14,7 +19,7 @@
                 [tuiHighlight]="search"
                 [tuiHighlightColor]="'#228B22'"
             >
-                {{cell}}
+                {{ cell }}
             </td>
         </tr>
     </tbody>

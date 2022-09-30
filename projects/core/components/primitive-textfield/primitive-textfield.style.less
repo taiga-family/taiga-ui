@@ -3,56 +3,83 @@
 .textfield();
 
 :host {
-    &._autofilled .t-value-decoration {
-        display: none;
+    &._autofilled {
+        .t-value-decoration:not(.t-has-value) {
+            visibility: hidden;
+        }
+
+        &[data-size='s']:not(._focused),
+        &[data-size='m']:not(._focused) {
+            .t-placeholder {
+                visibility: hidden;
+            }
+        }
     }
 }
 
-.custom-content {
+.t-custom-content {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
+    min-width: 2rem;
     height: 2rem;
     margin-right: @space;
     pointer-events: none;
 }
 
-.custom-icon {
-    width: 100%;
+.t-custom-icon {
+    width: 2rem;
     height: 100%;
 }
 
-.icon {
+.t-icon {
     .icon-button();
     position: relative;
     pointer-events: none;
 
-    :host._hovered:not(._readonly) & {
+    :host:hover:not(._readonly) & {
         color: var(--tui-text-02);
     }
 
-    :host[data-mode='onDark']._hovered:not(._readonly) & {
+    :host[data-mode='onDark']:hover:not(._readonly) & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-mode='onLight']._hovered:not(._readonly) & {
+    :host[data-mode='onLight']:hover:not(._readonly) & {
         color: var(--tui-text-01);
     }
 }
 
-.input {
+input {
+    &::placeholder {
+        color: var(--tui-text-03);
+        opacity: 0;
+    }
+
+    :host-context(tui-primitive-textfield[data-mode='onDark']) &::placeholder,
+    :host-context(tui-text-area[data-mode='onDark']) &::placeholder {
+        color: var(--tui-text-03-night);
+    }
+
+    :host-context(tui-primitive-textfield._focused:not(._readonly)) &::placeholder,
+    :host-context(tui-text-area._focused:not(._readonly)) &::placeholder {
+        opacity: 1;
+    }
+}
+
+.t-input {
     &:not(:first-child) {
         display: none;
     }
 
     :host[data-size] &_template {
         display: flex;
-        width: 100%;
-        max-width: 100%;
+        width: calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
         align-items: center;
         pointer-events: none;
+        padding-inline-end: 0;
     }
 
     /* stylelint-disable */
@@ -93,6 +120,11 @@
     /* stylelint-enable */
 }
 
-.text-template {
+.t-text-template {
     .text-overflow();
+}
+
+.t-wrapper-value-decoration {
+    position: relative;
+    pointer-events: none;
 }

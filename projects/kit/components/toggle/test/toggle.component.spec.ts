@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiToggleModule} from '../toggle.module';
-import {TUI_TOGGLE_DEFAULT_OPTIONS, TUI_TOGGLE_OPTIONS} from '../toggle-options';
+import {tuiToggleOptionsProvider} from '../toggle-options';
 
-describe('Toggle', () => {
+describe(`Toggle`, () => {
     @Component({
         template: `
             <tui-toggle
@@ -25,10 +24,10 @@ describe('Toggle', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-toggle__';
+            return `tui-toggle__`;
         },
     };
 
@@ -41,11 +40,11 @@ describe('Toggle', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
     });
 
-    it('If value is not set, click changes the value to true', () => {
+    it(`If value is not set, click changes the value to true`, () => {
         fixture.detectChanges();
 
         clickOnToggle();
@@ -53,7 +52,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    it('If value === false, click changes the value to true', () => {
+    it(`If value === false, click changes the value to true`, () => {
         testComponent.control.setValue(false);
         fixture.detectChanges();
 
@@ -62,7 +61,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    it('If value === true, click changes the value to false', () => {
+    it(`If value === true, click changes the value to false`, () => {
         testComponent.control.setValue(true);
         fixture.detectChanges();
 
@@ -71,7 +70,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(false);
     });
 
-    it('If the control is disabled, the click does not change the value', () => {
+    it(`If the control is disabled, the click does not change the value`, () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
         fixture.detectChanges();
@@ -81,7 +80,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(false);
     });
 
-    it('If the control is un-disabled again, click reverses the value', () => {
+    it(`If the control is un-disabled again, click reverses the value`, () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
         fixture.detectChanges();
@@ -94,13 +93,13 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    describe('Icons', () => {
-        describe('showIcons === false', () => {
+    describe(`Icons`, () => {
+        describe(`showIcons === false`, () => {
             beforeEach(() => {
                 testComponent.showIcons = false;
             });
 
-            it('Icons are hidden when toggle is "disabled"', () => {
+            it(`Icons are hidden when toggle is "disabled"`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -108,7 +107,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Icons are hidden when toggle is "on"', () => {
+            it(`Icons are hidden when toggle is "on"`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -117,12 +116,12 @@ describe('Toggle', () => {
             });
         });
 
-        describe('showIcons === true', () => {
+        describe(`showIcons === true`, () => {
             beforeEach(() => {
                 testComponent.showIcons = true;
             });
 
-            it('Icons are shown when toggle is "disabled"', () => {
+            it(`Icons are shown when toggle is "disabled"`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -132,7 +131,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, true);
             });
 
-            it('Icons are shown when toggle is "on"', () => {
+            it(`Icons are shown when toggle is "on"`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -142,13 +141,13 @@ describe('Toggle', () => {
         });
     });
 
-    describe('Loader', () => {
-        describe('showLoader === false', () => {
+    describe(`Loader`, () => {
+        describe(`showLoader === false`, () => {
             beforeEach(() => {
                 testComponent.showLoader = false;
             });
 
-            it('Icons are hidden when toggle is "disabled"', () => {
+            it(`Icons are hidden when toggle is "disabled"`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -156,7 +155,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Icons are hidden when toggle is "on"', () => {
+            it(`Icons are hidden when toggle is "on"`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -165,13 +164,13 @@ describe('Toggle', () => {
             });
         });
 
-        describe('showLoader === true', () => {
+        describe(`showLoader === true`, () => {
             beforeEach(() => {
                 testComponent.showLoader = true;
                 testComponent.showIcons = true;
             });
 
-            it('Icons are hidden when toggle is disabled, loader takes precedence over them', () => {
+            it(`Icons are hidden when toggle is disabled, loader takes precedence over them`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -179,7 +178,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Icons are hidden when toggle is on, loader takes precedence over them', () => {
+            it(`Icons are hidden when toggle is on, loader takes precedence over them`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -189,7 +188,7 @@ describe('Toggle', () => {
         });
     });
 
-    function clickOnToggle() {
+    function clickOnToggle(): void {
         const checkbox = pageObject.getByAutomationId(`${testContext.prefix}checkbox`);
 
         checkbox!.nativeElement.click();
@@ -198,7 +197,7 @@ describe('Toggle', () => {
     function checkIconVisibility(
         tuiIconAutomationId: string,
         expectedVisibility: boolean,
-    ) {
+    ): void {
         const icon = pageObject.getByAutomationId(tuiIconAutomationId);
 
         if (expectedVisibility) {
@@ -209,10 +208,13 @@ describe('Toggle', () => {
     }
 });
 
-describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
+describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
     @Component({
         template: `
-            <tui-toggle [formControl]="control" [showLoader]="showLoader"></tui-toggle>
+            <tui-toggle
+                [formControl]="control"
+                [showLoader]="showLoader"
+            ></tui-toggle>
         `,
     })
     class TestComponent {
@@ -222,10 +224,10 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-toggle__';
+            return `tui-toggle__`;
         },
     };
 
@@ -234,26 +236,22 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
             imports: [ReactiveFormsModule, TuiToggleModule],
             declarations: [TestComponent],
             providers: [
-                {
-                    provide: TUI_TOGGLE_OPTIONS,
-                    useValue: {
-                        ...TUI_TOGGLE_DEFAULT_OPTIONS,
-                        showIcons: true,
-                    },
-                },
+                tuiToggleOptionsProvider({
+                    showIcons: true,
+                }),
             ],
         });
     });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
     });
 
-    describe('Icons', () => {
-        describe('showIcons === true', () => {
-            it('Icons are shown when toggle is "disabled"', () => {
+    describe(`Icons`, () => {
+        describe(`showIcons === true`, () => {
+            it(`Icons are shown when toggle is "disabled"`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -263,7 +261,7 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
                 isIconVisible(`${testContext.prefix}cancel-icon`);
             });
 
-            it('Icons are shown when toggle is "on"', () => {
+            it(`Icons are shown when toggle is "on"`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -273,13 +271,13 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
         });
     });
 
-    describe('Loader', () => {
-        describe('showLoader === false', () => {
+    describe(`Loader`, () => {
+        describe(`showLoader === false`, () => {
             beforeEach(() => {
                 testComponent.showLoader = false;
             });
 
-            it('Icons are shown when toggle is "disabled"', () => {
+            it(`Icons are shown when toggle is "disabled"`, () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -287,7 +285,7 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
                 isIconVisible(`${testContext.prefix}cancel-icon`);
             });
 
-            it('Icons are shown when toggle is "on"', () => {
+            it(`Icons are shown when toggle is "on"`, () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -297,7 +295,7 @@ describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
         });
     });
 
-    function isIconVisible(tuiIconAutomationId: string) {
+    function isIconVisible(tuiIconAutomationId: string): void {
         const icon = pageObject.getByAutomationId(tuiIconAutomationId);
 
         expect(icon).not.toBeNull();

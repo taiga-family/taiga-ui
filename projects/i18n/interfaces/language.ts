@@ -1,9 +1,11 @@
 import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
+import {TuiLanguageName} from './language-names';
+
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
-export interface LanguageCore {
+export interface TuiLanguageCore {
     months: MONTHS_ARRAY;
     close: string;
     nothingFoundMessage: string;
@@ -20,10 +22,12 @@ export interface LanguageCore {
     countries: Record<TuiCountryIsoCode, string>;
 }
 
-export interface LanguageKit {
+export interface TuiLanguageKit {
     cancel: string;
     done: string;
     more: string;
+    showAll: string;
+    hide: string;
     otherDate: string;
     /**
      * [@string 'choose day', @param 'choose range']
@@ -82,7 +86,7 @@ export interface LanguageKit {
     };
 }
 
-export interface LanguageCommerce {
+export interface TuiLanguageCommerce {
     /**
      * Short and full card number text
      * [@string 'Number', @string 'Card number']
@@ -95,7 +99,7 @@ export interface LanguageCommerce {
     cardExpiry: [string, string];
 }
 
-export interface LanguageTable {
+export interface TuiLanguageTable {
     /**
      * 'Show/hide' button title
      */
@@ -107,7 +111,7 @@ export interface LanguageTable {
     };
 }
 
-export type LanguageEditor = {
+export interface TuiLanguageEditor {
     colorSelectorModeNames: [string, string];
     toolbarTools: {
         undo: string;
@@ -143,21 +147,27 @@ export type LanguageEditor = {
         superscript: string;
         subscript: string;
         insertTable: string;
+        insertGroup: string;
+        removeGroup: string;
         mergeCells: string;
         splitCells: string;
         rowsColumnsManaging: string;
         cellColor: string;
+        setDetails: string;
+        removeDetails: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];
     editorFontOptions: {
+        small: string;
         normal: string;
+        large: string;
         title: string;
         subtitle: string;
     };
-};
+}
 
-export type LanguagePreview = {
+export type TuiLanguagePreview = {
     previewTexts: {
         rotate: string;
     };
@@ -168,10 +178,15 @@ export type LanguagePreview = {
     };
 };
 
-export interface Language
-    extends LanguageCore,
-        LanguageKit,
-        LanguageCommerce,
-        LanguageTable,
-        LanguageEditor,
-        LanguagePreview {}
+export interface TuiLanguageMeta {
+    name: TuiLanguageName;
+}
+
+export interface TuiLanguage
+    extends TuiLanguageCore,
+        TuiLanguageKit,
+        TuiLanguageCommerce,
+        TuiLanguageTable,
+        TuiLanguageEditor,
+        TuiLanguagePreview,
+        TuiLanguageMeta {}

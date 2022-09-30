@@ -12,9 +12,9 @@ import {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-mobile-calendar-dialog',
-    templateUrl: './mobile-calendar-dialog.template.html',
-    styleUrls: ['./mobile-calendar-dialog.style.less'],
+    selector: `tui-mobile-calendar-dialog`,
+    templateUrl: `./mobile-calendar-dialog.template.html`,
+    styleUrls: [`./mobile-calendar-dialog.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileCalendarDialogComponent {
@@ -33,20 +33,14 @@ export class TuiMobileCalendarDialogComponent {
     }
 
     get min(): TuiDay {
-        return this.context.data && this.context.data.min
-            ? this.context.data.min
-            : TUI_FIRST_DAY;
+        return this.context.data?.min || TUI_FIRST_DAY;
     }
 
     get max(): TuiDay {
-        return this.context.data && this.context.data.max
-            ? this.context.data.max
-            : TUI_LAST_DAY;
+        return this.context.data?.max || TUI_LAST_DAY;
     }
 
     get disabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.context.data && this.context.data.disabledItemHandler
-            ? this.context.data.disabledItemHandler
-            : ALWAYS_FALSE_HANDLER;
+        return this.context.data?.disabledItemHandler || ALWAYS_FALSE_HANDLER;
     }
 }

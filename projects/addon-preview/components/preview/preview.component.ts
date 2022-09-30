@@ -7,17 +7,18 @@ import {
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
-    clamp,
-    dragAndDropFrom,
-    round,
+    tuiClamp,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiDragAndDropFrom,
     TuiDragStage,
+    tuiPx,
+    tuiRound,
+    tuiTypedFromEvent,
     TuiZoom,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
-import {LanguagePreview} from '@taiga-ui/i18n';
+import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
 import {map, mapTo, startWith} from 'rxjs/operators';
 
@@ -26,9 +27,9 @@ const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
 @Component({
-    selector: 'tui-preview',
-    templateUrl: './preview.template.html',
-    styleUrls: ['./preview.style.less'],
+    selector: `tui-preview`,
+    templateUrl: `./preview.template.html`,
+    styleUrls: [`./preview.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
     providers: [TuiDestroyService],
@@ -54,24 +55,24 @@ export class TuiPreviewComponent {
     );
 
     readonly transitioned$ = merge(
-        dragAndDropFrom(this.elementRef.nativeElement).pipe(
+        tuiDragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
-        typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
-            mapTo(false),
-        ),
-        typedFromEvent(this.elementRef.nativeElement, 'wheel', {passive: true}).pipe(
+        tuiTypedFromEvent(this.elementRef.nativeElement, `touchmove`, {
+            passive: true,
+        }).pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, `wheel`, {passive: true}).pipe(
             mapTo(false),
         ),
     );
 
-    readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
-        map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
-        startWith('initial'),
+    readonly cursor$ = tuiDragAndDropFrom(this.elementRef.nativeElement).pipe(
+        map(({stage}) => (stage === TuiDragStage.Continues ? `grabbing` : `initial`)),
+        startWith(`initial`),
     );
 
     readonly wrapperTransform$ = combineLatest([
-        this.coordinates$.pipe(map(([x, y]) => `${x}px, ${y}px`)),
+        this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
         this.zoom$,
         this.rotation$,
     ]).pipe(
@@ -85,14 +86,14 @@ export class TuiPreviewComponent {
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
         @Inject(TUI_PREVIEW_TEXTS)
-        readonly texts$: Observable<LanguagePreview['previewTexts']>,
+        readonly texts$: Observable<TuiLanguagePreview['previewTexts']>,
     ) {}
 
-    rotate() {
+    rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
 
-    onPan(delta: [number, number]) {
+    onPan(delta: readonly [number, number]): void {
         this.coordinates$.next(
             this.getGuardedCoordinates(
                 this.coordinates$.value[0] + delta[0],
@@ -101,19 +102,19 @@ export class TuiPreviewComponent {
         );
     }
 
-    onMutation(contentWrapper: HTMLElement) {
+    onMutation(contentWrapper: HTMLElement): void {
         const {clientWidth, clientHeight} = contentWrapper;
 
         this.refresh(clientWidth, clientHeight);
     }
 
-    onZoom({clientX, clientY, delta}: TuiZoom) {
+    onZoom({clientX, clientY, delta}: TuiZoom): void {
         if (this.zoomable) {
             this.processZoom(clientX, clientY, delta);
         }
     }
 
-    onResize(contentResizeEntries: ReadonlyArray<ResizeObserverEntry>) {
+    onResize(contentResizeEntries: readonly ResizeObserverEntry[]): void {
         if (contentResizeEntries.length === 0) {
             return;
         }
@@ -123,7 +124,7 @@ export class TuiPreviewComponent {
         this.refresh(width, height);
     }
 
-    reset() {
+    reset(): void {
         this.zoom$.next(this.minZoom);
         this.coordinates$.next(EMPTY_COORDINATES);
     }
@@ -147,7 +148,7 @@ export class TuiPreviewComponent {
         const {clientHeight, clientWidth} = this.elementRef.nativeElement;
 
         return bigSize
-            ? round(
+            ? tuiRound(
                   Math.min(
                       (clientHeight * INITIAL_SCALE_COEF) / contentHeight,
                       (clientWidth * INITIAL_SCALE_COEF) / contentWidth,
@@ -157,7 +158,7 @@ export class TuiPreviewComponent {
             : 1;
     }
 
-    private refresh(width: number, height: number) {
+    private refresh(width: number, height: number): void {
         this.width = width;
         this.height = height;
         this.minZoom = this.calculateMinZoom(
@@ -171,9 +172,9 @@ export class TuiPreviewComponent {
         this.rotation$.next(0);
     }
 
-    private processZoom(clientX: number, clientY: number, delta: number) {
+    private processZoom(clientX: number, clientY: number, delta: number): void {
         const oldScale = this.zoom$.value;
-        const newScale = clamp(oldScale + delta, this.minZoom, 2);
+        const newScale = tuiClamp(oldScale + delta, this.minZoom, 2);
 
         const center = this.getScaleCenter(
             {clientX, clientY},
@@ -196,7 +197,7 @@ export class TuiPreviewComponent {
     private getGuardedCoordinates(x: number, y: number): readonly [number, number] {
         const {offsetX, offsetY} = this.offsets;
 
-        return [clamp(x, -offsetX, offsetX), clamp(y, -offsetY, offsetY)];
+        return [tuiClamp(x, -offsetX, offsetX), tuiClamp(y, -offsetY, offsetY)];
     }
 
     private getScaleCenter(

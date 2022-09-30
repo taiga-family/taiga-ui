@@ -1,10 +1,9 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
-import {padStart} from '@taiga-ui/cdk/utils/format';
-import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
+import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
-import {DAYS_IN_WEEK, MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
+import {MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
 import {TuiYear} from './year';
 
 /**
@@ -65,7 +64,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
     }
 
-    static lengthBetween(from: TuiMonth, to: TuiMonth): number {
+    static override lengthBetween(from: TuiMonth, to: TuiMonth): number {
         const absoluteFrom = from.month + from.year * 12;
         const absoluteTo = to.month + to.year * 12;
 
@@ -76,34 +75,18 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Normalizes number by clamping it between min and max month
      */
     protected static normalizeMonthPart(month: number): number {
-        return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
+        return tuiNormalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
     }
 
     /**
      * Tests month for validity
      */
     private static isValidMonthPart(month: number): boolean {
-        return Number.isInteger(month) && inRange(month, MIN_MONTH, MAX_MONTH + 1);
+        return Number.isInteger(month) && tuiInRange(month, MIN_MONTH, MAX_MONTH + 1);
     }
 
     get formattedMonthPart(): string {
-        return padStart(String(this.month + 1), 2, '0');
-    }
-
-    /**
-     * Formatter month and year
-     */
-    get formattedMonth(): string {
-        return `${this.formattedMonthPart}.${this.formattedYear}`;
-    }
-
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Calculates number of weeks in a month (counting non-full weeks)
-     */
-    get weeksRowsCount(): number {
-        return Math.ceil((this.monthStartDaysOffset + this.daysCount) / DAYS_IN_WEEK);
+        return String(this.month + 1).padStart(2, `0`);
     }
 
     /**
@@ -111,21 +94,6 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     get daysCount(): number {
         return TuiMonth.getMonthDaysCount(this.month, this.isLeapYear);
-    }
-
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Computes day of week offset of the beginning of the month
-     */
-    get monthStartDaysOffset(): number {
-        let result = this.yearStartDaysOffset;
-
-        for (let currentMonth = 0; currentMonth <= this.month - 1; currentMonth++) {
-            result += TuiMonth.getMonthDaysCount(currentMonth, this.isLeapYear);
-        }
-
-        return result % DAYS_IN_WEEK;
     }
 
     /**
@@ -175,20 +143,13 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    // TODO: Consider removing `backwards` option
     /**
      * Immutably alters current month and year by passed offset
      *
      * @param offset
-     * @param backwards shift date backwards
      * @return new month and year object as a result of offsetting current
      */
-    append({year = 0, month = 0}: TuiMonthLike, backwards: boolean = false): TuiMonth {
-        if (backwards) {
-            year *= -1;
-            month *= -1;
-        }
-
+    override append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
 
         return new TuiMonth(
@@ -197,11 +158,15 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    toString(): string {
-        return this.formattedMonth;
+    override toString(): string {
+        return `${this.formattedMonthPart}.${this.formattedYear}`;
     }
 
-    toJSON(): string {
+    override valueOf(): number {
+        return this.toLocalNativeDate().valueOf();
+    }
+
+    override toJSON(): string {
         return `${super.toJSON()}-${this.formattedMonthPart}`;
     }
 

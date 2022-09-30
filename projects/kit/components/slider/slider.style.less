@@ -1,12 +1,173 @@
-.dot:first-child {
-    display: none;
+@import 'taiga-ui-local';
+
+/*
+*** Thumb – this is an element on the track that the user can move around to select varying range values.
+*** Track – this is the part of the slider that the thumb runs along.
+*** Ticks - tick marks along the length of the track.
+*/
+
+@track-height: 0.125rem;
+@ticks-thickness: 0.25rem;
+
+@track-color: var(--tui-slider-track-color);
+@thumb-color: currentColor;
+
+.customize-track(@progress-filling, @thumb-width) {
+    height: @track-height;
+    border-radius: inherit;
+
+    /*
+    The most left point of the track is the most left point of the thumb (at the zero-position).
+    The first tick should start at the center of thumb to set correct position for all other ticks.
+    */
+    @first-tick-offset: ((@thumb-width - @ticks-thickness) / 2);
+    @ticks-background-size: calc(100% - @thumb-width);
+
+    @hide-first-tick: linear-gradient(
+        to right,
+        @thumb-color 0px (@first-tick-offset + @ticks-thickness),
+        transparent @ticks-thickness
+    );
+    @ticks-gradient: repeating-linear-gradient(
+        to right,
+        var(--tui-base-07) 0 @ticks-thickness,
+        transparent 0 var(--tui-slider-segment-width)
+    );
+    @filling-progress-gradient: linear-gradient(
+        to right,
+        @thumb-color var(--tui-slider-fill-percentage),
+        transparent var(--tui-slider-fill-percentage)
+    );
+    background-repeat: no-repeat;
+    background-color: @track-color;
+
+    & when (@progress-filling = true) {
+        background-image: @hide-first-tick, @ticks-gradient, @filling-progress-gradient;
+        background-position-x: 0, @first-tick-offset, 0;
+        background-size: @ticks-background-size, @ticks-background-size, auto;
+    }
+
+    & when (@progress-filling = false) {
+        background-image: @hide-first-tick, @ticks-gradient;
+        background-position-x: 0, @first-tick-offset;
+        background-size: @ticks-background-size;
+    }
 }
 
-.wrapper {
-    border-left: none;
+.customize-thumb(@size) {
+    appearance: none;
+    background-color: @thumb-color;
+    border: none;
+    border-radius: 50%;
+    height: @thumb-diameters[ @@size];
+    width: @thumb-diameters[ @@size];
+
+    :not(:disabled)& {
+        cursor: ew-resize;
+
+        &:hover {
+            background: var(--tui-primary-hover);
+        }
+
+        &:active {
+            background: var(--tui-primary-active);
+        }
+    }
+
+    :focus-visible& {
+        box-shadow: 0 0 0 2px inset var(--tui-focus);
+    }
 }
 
-.bar,
-.segments {
-    margin-left: 0;
+/* Vertically centers thumb on the track (webkit only) */
+.vertically-align-thumb(@size) {
+    margin-top: (@track-height / 2) - (@thumb-diameters[ @@size] / 2);
+}
+
+:host {
+    display: block;
+    width: 100%;
+    color: var(--tui-primary); /* See currentColor inside this file */
+    cursor: pointer;
+
+    &:active {
+        cursor: ew-resize;
+    }
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: auto;
+    }
+}
+
+:host:not(._old-edge) {
+    appearance: none;
+    height: @track-height;
+    padding: 0.4375rem 0; /* To catch click events nearby THIN input's track */
+    background-color: transparent;
+    background-clip: content-box; /* To clip filling of paddings */
+    outline: none;
+    border-radius: var(--tui-radius-m);
+
+    &::-webkit-slider-container {
+        border-radius: inherit;
+    }
+
+    &[data-size='m']::-webkit-slider-runnable-track {
+        .customize-track(true, @thumb-diameters[@m]);
+    }
+
+    &[data-size='s']::-webkit-slider-runnable-track {
+        .customize-track(true, @thumb-diameters[@s]);
+    }
+
+    &[data-size='m']::-moz-range-track {
+        .customize-track(false, @thumb-diameters[@m]);
+    }
+
+    &[data-size='s']::-moz-range-track {
+        .customize-track(false, @thumb-diameters[@s]);
+    }
+
+    &[data-size='m']::-webkit-slider-thumb {
+        .customize-thumb(m);
+        .vertically-align-thumb(m);
+    }
+
+    &[data-size='s']::-webkit-slider-thumb {
+        .customize-thumb(s);
+        .vertically-align-thumb(s);
+    }
+
+    &[data-size='m']::-moz-range-thumb {
+        .customize-thumb(m);
+    }
+
+    &[data-size='s']::-moz-range-thumb {
+        .customize-thumb(s);
+    }
+
+    &::-moz-range-progress {
+        background: @thumb-color;
+        border-radius: inherit;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+/* Not-chromium Edge minimum customisation */
+:host._old-edge {
+    &::-ms-thumb {
+        background: @thumb-color;
+        border-radius: 50%;
+    }
+
+    &::-ms-fill-lower {
+        background: @thumb-color;
+    }
+
+    &::-ms-track {
+        background: @track-color;
+        border: none;
+    }
 }

@@ -1,91 +1,88 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiStatusT} from '@taiga-ui/kit/types';
+import {tuiDefaultProp, tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
+import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-const BADGE_SIZE: {[key: string]: TuiSizeS | TuiSizeL} = {
-    xs: 's',
-    s: 's',
-    m: 's',
-    l: 'm',
-    xl: 'm',
-    xxl: 'l',
+const BADGE_SIZE: {[key: string]: TuiSizeXS | TuiSizeL} = {
+    xs: `xs`,
+    s: `s`,
+    m: `s`,
+    l: `m`,
+    xl: `m`,
+    xxl: `l`,
 };
 
 @Component({
-    selector: 'tui-badged-content',
+    selector: `tui-badged-content`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './badged-content.template.html',
-    styleUrls: ['./badged-content.style.less'],
+    templateUrl: `./badged-content.template.html`,
+    styleUrls: [`./badged-content.style.less`],
 })
 export class TuiBadgedContentComponent {
     @Input()
-    @HostBinding('attr.data-tui-host-top')
+    @HostBinding(`attr.data-tui-host-top`)
     @tuiDefaultProp()
-    contentTop: PolymorpheusContent = '';
+    contentTop: PolymorpheusContent = ``;
 
     @Input()
-    @HostBinding('attr.data-tui-host-bottom')
+    @HostBinding(`attr.data-tui-host-bottom`)
     @tuiDefaultProp()
-    contentBottom: PolymorpheusContent = '';
+    contentBottom: PolymorpheusContent = ``;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = 'm';
-
-    @Input()
-    @tuiDefaultProp()
-    colorTop = '';
+    size: TuiSizeXS | TuiSizeXXL = `m`;
 
     @Input()
     @tuiDefaultProp()
-    colorBottom = '';
+    colorTop = ``;
 
     @Input()
-    @HostBinding('class._rounded')
+    @tuiDefaultProp()
+    colorBottom = ``;
+
+    @Input()
+    @HostBinding(`class._rounded`)
     @tuiDefaultProp()
     rounded = false;
 
     get topNotification(): string {
-        return (!this.contentTop && this.colorTop) ||
-            (this.contentTop && this.contentIsNumber(this.contentTop) && this.badgeHidden)
-            ? this.colorTop
-            : '';
+        return !this.contentTop && this.colorTop ? this.colorTop : ``;
     }
 
     get bottomNotification(): string {
-        return !this.contentBottom && this.colorBottom ? this.colorBottom : '';
+        return !this.contentBottom && this.colorBottom ? this.colorBottom : ``;
     }
 
-    get badgeSize(): TuiSizeS | TuiSizeL {
+    get badgeSize(): TuiSizeXS | TuiSizeL {
         return BADGE_SIZE[this.size];
     }
 
     get badgeHidden(): boolean {
-        return this.size === 'xs';
+        return this.size === `xs`;
     }
 
     get sizeBig(): boolean {
-        return sizeBigger(this.size);
+        return tuiSizeBigger(this.size);
     }
 
     get boxShadow(): string {
         const borderWidth = this.sizeBig ? 3 : 2;
 
-        return `0 0 0 ${borderWidth}px`;
+        return `0 0 0 ${tuiPx(borderWidth)}`;
     }
 
-    contentIsNumber(content: PolymorpheusContent): boolean {
-        return isNumber(content.valueOf());
+    contentIsNumber(content: PolymorpheusContent): content is number {
+        return tuiIsNumber(content?.valueOf());
     }
 
-    contentIsString(content: PolymorpheusContent): boolean {
-        return typeof content.valueOf() === 'string';
+    contentIsString(content: PolymorpheusContent): content is string {
+        return tuiIsString(content?.valueOf());
     }
 
-    getStatus(color: string): TuiStatusT {
-        return color ? 'custom' : 'primary';
+    getStatus(color: string): TuiStatus {
+        return color ? `custom` : `primary`;
     }
 }

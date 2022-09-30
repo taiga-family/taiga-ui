@@ -1,26 +1,12 @@
-tui-wrapper[data-appearance='outline'] {
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='outline'] {
     background: transparent;
     color: var(--tui-text-01);
 
     &:after {
         color: var(--tui-base-04);
-    }
-
-    &[data-state='hovered'] {
-        &:after {
-            color: var(--tui-base-05);
-        }
-    }
-
-    &:active,
-    &[data-state='pressed'] {
-        &:after {
-            color: var(--tui-base-06);
-        }
-    }
-
-    &[data-state='disabled'] {
-        opacity: var(--tui-disabled-opacity);
     }
 
     &[data-mode='onDark'] {
@@ -30,25 +16,25 @@ tui-wrapper[data-appearance='outline'] {
             color: var(--tui-text-01-night);
         }
 
-        &[data-state='hovered'] {
+        .wrapper-hover({
             background: var(--tui-clear-inverse-hover);
 
             &:after {
                 color: var(--tui-text-03-night);
             }
-        }
+        });
 
-        &[data-state='pressed'] {
+        .wrapper-active({
             background: var(--tui-clear-inverse-active);
 
             &:after {
                 color: var(--tui-text-03-night);
             }
-        }
+        });
 
-        &._focused:after {
-            color: var(--tui-text-01-night);
-        }
+        .wrapper-focus({
+            --tui-focus: var(--tui-text-01-night);
+        });
     }
 
     &[data-mode='onLight'] {
@@ -58,20 +44,32 @@ tui-wrapper[data-appearance='outline'] {
             color: var(--tui-text-01);
         }
 
-        &[data-state='hovered'] {
+        .wrapper-hover({
             background: var(--tui-clear-hover);
 
             &:after {
                 color: var(--tui-text-03);
             }
-        }
+        });
 
-        &[data-state='pressed'] {
+        .wrapper-active({
             background: var(--tui-clear-active);
 
             &:after {
                 color: var(--tui-text-03);
             }
-        }
+        });
     }
+
+    .wrapper-hover({
+        &:after {
+            color: var(--tui-base-05);
+        }
+    });
+
+    .wrapper-active({
+        &:after {
+            color: var(--tui-base-06);
+        }
+    });
 }

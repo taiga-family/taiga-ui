@@ -2,9 +2,8 @@ import {Directive, Inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 
-// @dynamic
 @Directive()
-export abstract class TuiAbstractTextfieldHost<T extends AbstractTuiControl<any>>
+export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>
     implements TuiTextfieldHost
 {
     constructor(@Inject(AbstractTuiControl) protected readonly host: T) {}
@@ -31,5 +30,5 @@ export abstract class TuiAbstractTextfieldHost<T extends AbstractTuiControl<any>
 
     abstract onValueChange(value: string): void;
 
-    process(_input: HTMLInputElement) {}
+    process(_input: HTMLInputElement): void {}
 }

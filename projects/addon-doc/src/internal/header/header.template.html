@@ -2,19 +2,22 @@
     tuiIconButton
     icon="tuiIconMenuLarge"
     appearance="icon"
-    class="menu"
+    class="t-menu"
     [title]="menu"
     (click)="onClick()"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-doc-navigation
-        *tuiSidebar="open$ | async"
-        class="navigation"
+        *tuiSidebar="!!(open$ | async)"
+        class="t-navigation"
     ></tui-doc-navigation>
 </button>
-<div polymorpheus-outlet class="logo tui-text_h5" [content]="logo">
-    <ng-template let-src>
-        <img alt="Logo" class="img" [src]="src" />
-    </ng-template>
+<div class="t-logo">
+    <img
+        *polymorpheusOutlet="logo as src"
+        alt="Logo"
+        class="t-img"
+        [src]="src"
+    />
 </div>
 <ng-content></ng-content>

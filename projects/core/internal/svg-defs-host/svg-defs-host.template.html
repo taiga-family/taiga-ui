@@ -4,7 +4,10 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
 >
     <ng-container *ngIf="isBrowser; else server">
-        <defs *ngFor="let def of items" [innerHTML]="def"></defs>
+        <defs
+            *ngFor="let def of items"
+            [innerHTML]="def"
+        ></defs>
     </ng-container>
     <ng-template #server>
         <!--svg[outerHTML] - to support SSR, because there is no support of innerHTML for for defs element in domino-->

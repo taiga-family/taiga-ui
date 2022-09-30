@@ -9,10 +9,10 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    isPresent,
-    itemsQueryListObservable,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsPresent,
+    tuiItemsQueryListObservable,
 } from '@taiga-ui/cdk';
 import {identity, merge} from 'rxjs';
 import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators';
@@ -20,9 +20,9 @@ import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 
 @Component({
-    selector: 'tui-accordion',
-    styleUrls: ['./accordion.style.less'],
-    templateUrl: 'accordion.template.html',
+    selector: `tui-accordion`,
+    styleUrls: [`./accordion.style.less`],
+    templateUrl: `accordion.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
@@ -43,15 +43,15 @@ export class TuiAccordionComponent implements AfterContentInit {
         private readonly destroy$: TuiDestroyService,
     ) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         const {accordionItems} = this;
-        const rows$ = itemsQueryListObservable(accordionItems);
+        const rows$ = tuiItemsQueryListObservable(accordionItems);
         const newOpenRow$ = rows$.pipe(
             pairwise(),
             map(([previous, current]) =>
-                current.find(item => previous.indexOf(item) === -1 && item.open),
+                current.find(item => !previous.includes(item) && item.open),
             ),
-            filter(isPresent),
+            filter(tuiIsPresent),
         );
         const rowsOpen$ = merge(
             rows$.pipe(

@@ -4,17 +4,17 @@
         tuiPreviewAction
         icon="tuiIconArrowLeft"
         class="t-arrow_left"
-        [title]="texts.previous"
+        [title]="texts[0]"
         [disabled]="leftButtonDisabled"
         (click)="onArrowClick(-1)"
     ></button>
-    {{index + 1}}/{{length}}
+    {{ index + 1 }}/{{ length }}
     <button
         tuiIconButton
         tuiPreviewAction
         icon="tuiIconArrowRight"
         class="t-arrow_right"
-        [title]="texts.next"
+        [title]="texts[1]"
         [disabled]="rightButtonDisabled"
         (click)="onArrowClick(1)"
     ></button>

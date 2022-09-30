@@ -1,5 +1,11 @@
-<h3 *ngIf="heading" class="t-title">
-    <span polymorpheus-outlet [content]="heading"></span>
+<h3
+    *ngIf="heading"
+    class="t-title"
+>
+    <span
+        *polymorpheusOutlet="heading | tuiDocExampleCapitalize as text"
+        [textContent]="text"
+    ></span>
     <button
         *ngIf="id"
         tuiIconButton
@@ -14,20 +20,30 @@
 </h3>
 <h4
     *ngIf="description"
-    polymorpheus-outlet
     class="t-description"
-    [content]="description"
-></h4>
+>
+    <ng-container *polymorpheusOutlet="description | tuiDocExampleCapitalize as text">
+        {{ text }}
+    </ng-container>
+</h4>
 
-<div *ngIf="processor$ | async as content" class="t-example">
-    <ng-container *ngIf="content | tuiDocExampleGetTabs: defaultTab as tabs">
+<div
+    *ngIf="processor$ | async as files"
+    class="t-example"
+>
+    <ng-container *ngIf="files | tuiDocExampleGetTabs: defaultTab as tabs">
         <div class="t-tabs-wrapper">
             <tui-tabs-with-more
                 class="t-tabs"
                 [(activeItemIndex)]="activeItemIndex"
             >
                 <ng-container *ngFor="let tab of tabs">
-                    <button *tuiTab tuiTab>{{tab}}</button>
+                    <button
+                        *tuiItem
+                        tuiTab
+                    >
+                        {{ tab }}
+                    </button>
                 </ng-container>
             </tui-tabs-with-more>
 
@@ -36,9 +52,10 @@
                 tuiButton
                 appearance="flat"
                 size="s"
-                (click)="codeEditor.open(componentName, id || '',  content)"
+                [showLoader]="!!(loading$ | async)"
+                (click)="edit(files)"
             >
-                Edit on {{codeEditor.name}}
+                Edit on {{ codeEditor.name }}
             </button>
         </div>
 
@@ -48,12 +65,14 @@
             [class.t-content_animated]="!isCypress"
             [class.t-content_visible]="activeItemIndex === index"
         >
-            <ng-container *ngIf="index === defaultTabIndex; else anotherTab">
-                <ng-container *ngTemplateOutlet="preview"></ng-container>
-            </ng-container>
+            <ng-container
+                *ngIf="index === defaultTabIndex; else anotherTab"
+                [ngTemplateOutlet]="preview"
+            ></ng-container>
             <ng-template #anotherTab>
                 <ng-container
-                    *ngTemplateOutlet="codeSection; context: { $implicit: content[tabs[activeItemIndex]] || '' }"
+                    [ngTemplateOutlet]="codeSection"
+                    [ngTemplateOutletContext]="{$implicit: files[tabs[activeItemIndex]] || ''}"
                 ></ng-container>
             </ng-template>
         </div>
@@ -61,15 +80,25 @@
 </div>
 
 <ng-template #preview>
-    <div automation-id="tui-doc-example" class="t-demo">
+    <div
+        automation-id="tui-doc-example"
+        class="t-demo"
+    >
         <ng-content></ng-content>
     </div>
 </ng-template>
 
-<ng-template #codeSection let-code>
-    <tui-doc-copy
-        class="t-copy-code"
-        [cdkCopyToClipboard]="code"
-    ></tui-doc-copy>
+<ng-template
+    #codeSection
+    let-code
+>
+    <section class="t-code-actions">
+        <ng-container *ngFor="let action of codeActions">
+            <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
+                {{ text }}
+            </ng-container>
+        </ng-container>
+        <tui-doc-copy [cdkCopyToClipboard]="code"></tui-doc-copy>
+    </section>
     <tui-doc-code [code]="code"></tui-doc-code>
 </ng-template>

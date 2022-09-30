@@ -1,9 +1,13 @@
-<tui-doc-page header="Table" package="ADDON-TABLE" type="components">
-    <ng-template i18n pageTab>
-        <p>
-            This module allows you to create various tables, both static and
-            editable.
-        </p>
+<tui-doc-page
+    header="Table"
+    package="ADDON-TABLE"
+    type="components"
+>
+    <ng-template
+        i18n
+        pageTab
+    >
+        <p>This module allows you to create various tables, both static and editable.</p>
 
         <tui-doc-example
             id="basic"
@@ -36,9 +40,28 @@
             id="server"
             i18n-heading
             heading="Server sorting"
+            description="With tuiSortBy directive to work with column titles instead of sorters"
             [content]="example4"
         >
             <tui-table-example-4></tui-table-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="virtual"
+            i18n-heading
+            heading="Virtual scroll"
+            [content]="example5"
+        >
+            <tui-table-example-5></tui-table-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dynamic"
+            i18n-heading
+            heading="Dynamic columns"
+            [content]="example6"
+        >
+            <tui-table-example-6></tui-table-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -99,13 +122,11 @@
                     <p>
                         Used inside
                         <code>thead</code>
-                        to layout headings for the columns. You can have
-                        multiple rows and use
+                        to layout headings for the columns. You can have multiple rows and use
                         <code>rowSpan</code>
                         on
                         <code>th</code>
-                        elements if you want to create some complex heading for
-                        your table.
+                        elements if you want to create some complex heading for your table.
                     </p>
 
                     <hr />
@@ -166,8 +187,7 @@
                             documentationPropertyMode="input"
                             documentationPropertyType="PolymorpheusContent"
                         >
-                            Optional heading content for the group that makes it
-                            collapsable
+                            Optional heading content for the group that makes it collapsable
                         </ng-template>
                         <ng-template
                             i18n
@@ -255,7 +275,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -264,7 +284,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

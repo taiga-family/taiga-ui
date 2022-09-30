@@ -1,39 +1,39 @@
-import {isPresent} from '../is-present';
+import {tuiIsPresent} from '../is-present';
 
-describe('isPresent', () => {
-    describe('returns "true" if', () => {
-        it('value === 1', () => {
-            expect(isPresent(1)).toBe(true);
+describe(`isPresent`, () => {
+    describe(`returns "true" if`, () => {
+        it(`value === 1`, () => {
+            expect(tuiIsPresent(1)).toBe(true);
         });
 
-        it('value === 0', () => {
-            expect(isPresent(0)).toBe(true);
+        it(`value === 0`, () => {
+            expect(tuiIsPresent(0)).toBe(true);
         });
 
-        it('value === false', () => {
-            expect(isPresent(false)).toBe(true);
+        it(`value === false`, () => {
+            expect(tuiIsPresent(false)).toBe(true);
         });
 
-        it('value === NaN', () => {
-            expect(isPresent(NaN)).toBe(true);
+        it(`value === NaN`, () => {
+            expect(tuiIsPresent(NaN)).toBe(true);
         });
 
-        it("value === ''", () => {
-            expect(isPresent('')).toBe(true);
+        it(`value === ''`, () => {
+            expect(tuiIsPresent(``)).toBe(true);
         });
 
-        it('value === []', () => {
-            expect(isPresent([])).toBe(true);
+        it(`value === []`, () => {
+            expect(tuiIsPresent([])).toBe(true);
         });
     });
 
-    describe('returns "false" if', () => {
-        it('value === null', () => {
-            expect(isPresent(null)).toBe(false);
+    describe(`returns "false" if`, () => {
+        it(`value === null`, () => {
+            expect(tuiIsPresent(null)).toBe(false);
         });
 
-        it('value === undefined', () => {
-            expect(isPresent(undefined)).toBe(false);
+        it(`value === undefined`, () => {
+            expect(tuiIsPresent(undefined)).toBe(false);
         });
     });
 });

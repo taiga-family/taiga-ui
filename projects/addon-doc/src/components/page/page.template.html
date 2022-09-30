@@ -20,12 +20,10 @@
         class="t-tabs"
         [(activeItemIndex)]="activeItemIndex"
     >
-        <ng-container
-            *ngFor="let tab of tabConnectors; first as first; index as index"
-        >
+        <ng-container *ngFor="let tab of tabConnectors; first as first; index as index">
             <ng-container *ngIf="first; else dynamicTab">
                 <a
-                    *tuiTab
+                    *tuiItem
                     tuiTab
                     routerLink="./"
                     routerLinkActive
@@ -36,7 +34,7 @@
             </ng-container>
             <ng-template #dynamicTab>
                 <a
-                    *tuiTab
+                    *tuiItem
                     tuiTab
                     routerLinkActive
                     [routerLink]="getRouterLink(tab.pageTab || defaultTabs[index])"
@@ -62,8 +60,9 @@
         [seeAlso]="seeAlso"
     ></tui-doc-see-also>
     <ng-container *ngFor="let tab of tabConnectors; index as index">
-        <ng-container *ngIf="index === activeItemIndex">
-            <ng-container *ngTemplateOutlet="tab.template"></ng-container>
-        </ng-container>
+        <ng-container
+            *ngIf="index === activeItemIndex"
+            [ngTemplateOutlet]="tab.template"
+        ></ng-container>
     </ng-container>
 </div>

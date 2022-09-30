@@ -6,8 +6,8 @@ import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-month-range-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-month-range-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

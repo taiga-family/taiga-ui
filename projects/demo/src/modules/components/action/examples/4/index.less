@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 1.5rem;
+}
+
+[tuiAction] {
+    flex: 1;
+    justify-content: start;
+    align-items: center;
+}
+
+.no-shadow {
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: none;
+    }
+}
+
+.header,
+.description {
+    margin: 0;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.description {
+    color: var(--tui-text-02);
+}
+
+.positive {
+    color: var(--tui-positive);
+    background: var(--tui-success-bg);
+}
+
+.negative {
+    color: var(--tui-negative);
+    background: var(--tui-error-bg);
+}

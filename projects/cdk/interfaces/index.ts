@@ -1,3 +1,4 @@
+export * from './alert-context';
 export * from './aria-dialog-context';
 export * from './base-dialog';
 export * from './base-dialog-context';

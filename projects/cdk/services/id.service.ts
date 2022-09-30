@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 
-const TUI = 'tui_';
+const TUI = `tui_`;
 
 /**
  * Generates unique ids
  */
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiIdService {
     private static autoId = 0;

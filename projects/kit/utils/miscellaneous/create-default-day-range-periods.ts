@@ -3,14 +3,14 @@ import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 
 export function tuiCreateDefaultDayRangePeriods(
     periodTitles: [string, string, string, string, string, string] = [
-        'For all the time',
-        'Today',
-        'Yesterday',
-        'Current week',
-        'Current month',
-        'Previous month',
+        `For all the time`,
+        `Today`,
+        `Yesterday`,
+        `Current week`,
+        `Current month`,
+        `Previous month`,
     ],
-): ReadonlyArray<TuiDayRangePeriod> {
+): readonly TuiDayRangePeriod[] {
     const today = TuiDay.currentLocal();
     const yesterday = today.append({day: -1});
     const startOfWeek = today.append({day: -today.dayOfWeek()});

@@ -4,30 +4,26 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-arc-chart',
-    templateUrl: './arc-chart.template.html',
-    styleUrls: ['./arc-chart.style.less'],
+    selector: `example-tui-arc-chart`,
+    templateUrl: `./arc-chart.template.html`,
+    styleUrls: [`./arc-chart.style.less`],
     changeDetection,
 })
 export class ExampleTuiArcChartComponent {
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
-    );
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
     readonly valueVariants = [[42], [40, 30, 20, 10], [13769, 10172, 3018, 2592]];
@@ -38,11 +34,13 @@ export class ExampleTuiArcChartComponent {
 
     max = this.maxVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXL> = ['m', 'l', 'xl'];
+    readonly sizeVariants: readonly TuiSizeXL[] = [`m`, `l`, `xl`];
 
     size = this.sizeVariants[0];
 
-    minLabel = '0%';
+    minLabel = `0%`;
 
-    maxLabel = '100%';
+    maxLabel = `100%`;
+
+    activeItemIndex = NaN;
 }

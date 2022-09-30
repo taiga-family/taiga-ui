@@ -1,26 +1,31 @@
 import {Component, ElementRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiDropdownModule} from '../dropdown.module';
 
-describe('TuiDropdown directive', () => {
+describe(`TuiDropdownDirective`, () => {
     @Component({
         template: `
             <tui-root>
-                <button automation-id="tui-dropdow-directive__button"></button>
-                <div [tuiDropdownContent]="dropdown" [tuiDropdown]="open">
+                <button automation-id="tui-dropdown-directive__button"></button>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownManual]="open"
+                >
                     Hosty host
-                    <button automation-id="tui-dropdow-directive__host"></button>
+                    <button automation-id="tui-dropdown-directive__host"></button>
                 </div>
-                <ng-template #dropdown="polymorpheus" polymorpheus>
-                    <div automation-id="tui-dropdow-directive__item">
+                <ng-template
+                    #dropdown="polymorpheus"
+                    polymorpheus
+                >
+                    <div automation-id="tui-dropdown-directive__item">
                         Droppy down
-                        <input automation-id="tui-dropdow-directive__input" />
+                        <input automation-id="tui-dropdown-directive__input" />
                     </div>
                 </ng-template>
             </tui-root>
@@ -31,11 +36,11 @@ describe('TuiDropdown directive', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     let testComponent: TestComponent;
     const testContext = {
         get prefix() {
-            return 'tui-dropdow-directive__';
+            return `tui-dropdown-directive__`;
         },
     };
 
@@ -53,20 +58,20 @@ describe('TuiDropdown directive', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    it('when tuiDropdown = false, dropdown is not shown', () => {
+    it(`when tuiDropdownManual = false, dropdown is not shown`, () => {
         expect(getDropdown()).toBe(null);
     });
 
-    it('when tuiDropdown = true, dropdown is shown', () => {
+    it(`when tuiDropdownManual = true, dropdown is shown`, () => {
         testComponent.open = true;
         fixture.detectChanges();
 
-        expect(getDropdown()!.nativeElement.textContent!.trim()).toBe('Droppy down');
+        expect(getDropdown()!.nativeElement.textContent!.trim()).toBe(`Droppy down`);
     });
 
     function getDropdown(): ElementRef<HTMLDivElement> | null {

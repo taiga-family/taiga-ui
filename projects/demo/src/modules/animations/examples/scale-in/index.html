@@ -1,0 +1,17 @@
+<h3>TODO:</h3>
+<p>(click on item if it is finished)</p>
+
+<ul class="tui-list">
+    <li
+        *ngFor="let task of todoTasks"
+        class="tui-list__item"
+        (click)="task.completed = !task.completed"
+    >
+        {{ task.title }}
+        <tui-svg
+            *ngIf="task.completed"
+            src="tuiIconCheckLarge"
+            [@tuiScaleIn]="getAnimation(speed)"
+        ></tui-svg>
+    </li>
+</ul>

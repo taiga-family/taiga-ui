@@ -1,0 +1,43 @@
+{
+    "root": "projects/addon-mobile",
+    "sourceRoot": "projects/addon-mobile/src",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["dist/addon-mobile"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/addon-mobile/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies",
+                    "params": "forward"
+                }
+            ]
+        },
+        "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "outputs": ["coverage/addon-mobile"],
+            "options": {
+                "codeCoverage": true,
+                "main": "projects/addon-mobile/test.ts",
+                "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
+                "karmaConfig": "projects/addon-mobile/karma.conf.js",
+                "stylePreprocessorOptions": {
+                    "includePaths": ["projects/core/styles"]
+                }
+            }
+        },
+        "publish": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/addon-mobile --dry-run {args.dry-run}"
+            }
+        }
+    }
+}

@@ -9,12 +9,11 @@
     background: var(--tui-base-01);
 }
 
-.input {
-    display: block;
+.t-input {
     margin: 1.25rem;
 }
 
-.navigation {
+.t-navigation {
     display: flex;
     max-height: 100%;
     min-height: 0;
@@ -22,20 +21,26 @@
     text-align: left;
 }
 
-.scrollbar {
+.t-scrollbar {
     width: 100%;
     scroll-behavior: smooth;
 }
 
-.items-container {
+.t-items-container {
     display: flex;
     flex-direction: column;
-    // TODO: research if it can be used in rem units
-    /* stylelint-disable-next-line */
-    padding: 0 16px;
+    padding: 0 1rem;
 }
 
-.section {
+.t-label {
+    margin-left: 0.5rem;
+}
+
+.t-expand {
+    margin-left: 0.25rem;
+}
+
+.t-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -47,11 +52,11 @@
     }
 }
 
-.subsection {
+.t-subsection {
     margin-left: 0.5rem;
 }
 
-.sublink {
+.t-sublink {
     .clearbtn();
     font: var(--tui-font-text-m);
     margin-left: 0.5rem;
@@ -73,7 +78,7 @@
     }
 }
 
-.chevron {
+.t-chevron {
     .transition(transform);
     width: 1rem;
     height: 1rem;

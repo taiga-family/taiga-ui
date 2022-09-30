@@ -3,13 +3,14 @@ import {NgModule} from '@angular/core';
 import {
     TuiButtonModule,
     TuiPrimitiveTextfieldModule,
+    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {TuiInputCountComponent} from './input-count.component';
+import {TuiInputCountDirective} from './input-count.directive';
 
 @NgModule({
     imports: [
@@ -21,7 +22,7 @@ import {TuiInputCountComponent} from './input-count.component';
         TuiValueAccessorModule,
         PolymorpheusModule,
     ],
-    declarations: [TuiInputCountComponent],
-    exports: [TuiInputCountComponent],
+    declarations: [TuiInputCountComponent, TuiInputCountDirective],
+    exports: [TuiInputCountComponent, TuiInputCountDirective, TuiTextfieldComponent],
 })
 export class TuiInputCountModule {}

@@ -1,11 +1,11 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiFocusedModule} from '../focused.module';
 
-describe('TuiFocused directive', () => {
+describe(`TuiFocused directive`, () => {
     @Component({
         template: `
             <div
@@ -13,13 +13,16 @@ describe('TuiFocused directive', () => {
                 class="main"
                 (tuiFocusedChange)="onFocusedChange($event)"
             ></div>
-            <div tabindex="0" class="other"></div>
+            <div
+                tabindex="0"
+                class="other"
+            ></div>
         `,
     })
     class TestComponent {
         focused = false;
 
-        onFocusedChange(focused: boolean) {
+        onFocusedChange(focused: boolean): void {
             this.focused = focused;
         }
     }
@@ -39,20 +42,20 @@ describe('TuiFocused directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css('.main'));
-        otherElement = fixture.debugElement.query(By.css('.other'));
+        testElement = fixture.debugElement.query(By.css(`.main`));
+        otherElement = fixture.debugElement.query(By.css(`.other`));
 
         fixture.detectChanges();
     });
 
-    it('emits "true" when receives focus', () => {
+    it(`emits "true" when receives focus`, () => {
         testElement.nativeElement.focus();
         fixture.detectChanges();
 
         expect(testComponent.focused).toBe(true);
     });
 
-    it('emits "false" when loses focus', () => {
+    it(`emits "false" when loses focus`, () => {
         testElement.nativeElement.focus();
         fixture.detectChanges();
         otherElement.nativeElement.focus();

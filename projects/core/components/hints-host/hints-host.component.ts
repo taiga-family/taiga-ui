@@ -1,40 +1,22 @@
-import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
-import {AbstractTuiHint} from '@taiga-ui/core/abstract';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
+import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-hints-host',
-    templateUrl: './hints-host.template.html',
-    styleUrls: ['./hints-host.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeIn],
+    selector: `tui-hints-host`,
+    templateUrl: `./hints-host.template.html`,
+    styleUrls: [`./hints-host.style.less`],
+    // So that we do not force OnPush on custom hints
+    changeDetection: ChangeDetectionStrategy.Default,
+    animations: [TUI_PARENT_ANIMATION],
     host: {
-        'aria-live': 'polite',
+        'aria-live': `polite`,
     },
 })
 export class TuiHintsHostComponent {
-    readonly animation = {
-        value: '',
-        ...this.options,
-    } as const;
-
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiHintService) readonly hints$: TuiHintService,
+        @Inject(TuiHintService) readonly hints$: Observable<readonly TuiPortalItem[]>,
     ) {}
-
-    get clientRect(): ClientRect {
-        return this.elementRef.nativeElement.getBoundingClientRect();
-    }
-
-    onHovered(hovered: boolean, directive: AbstractTuiHint) {
-        if (directive instanceof TuiHintDirective) {
-            directive.componentHovered$.next(hovered);
-        }
-    }
 }

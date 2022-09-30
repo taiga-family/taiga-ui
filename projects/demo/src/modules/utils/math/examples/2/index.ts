@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {inRange} from '@taiga-ui/cdk';
+import {tuiInRange} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-math-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-math-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -21,6 +21,6 @@ export class TuiMathExample2 {
     get ranged(): boolean {
         const {value, fromInclude, toExclude} = this.parametersForm.value;
 
-        return inRange(value, fromInclude, toExclude);
+        return tuiInRange(value ?? 13, fromInclude ?? 5, toExclude ?? 42);
     }
 }

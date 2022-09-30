@@ -4,9 +4,8 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// @dynamic
 @Pipe({
-    name: 'labels',
+    name: `labels`,
 })
 export class LabelsPipe implements PipeTransform {
     constructor(
@@ -47,10 +46,10 @@ export class LabelsPipe implements PipeTransform {
     }
 }
 
-function onlyMondays(range: ReadonlyArray<TuiDay>): readonly string[] {
+function onlyMondays(range: readonly TuiDay[]): readonly string[] {
     return range.filter(day => !day.dayOfWeek()).map(String);
 }
 
-function even<T>(array: ReadonlyArray<T>): ReadonlyArray<T> {
+function even<T>(array: readonly T[]): readonly T[] {
     return array.filter((_, i) => !(i % 2));
 }

@@ -1,6 +1,0 @@
-<tui-slider [formControl]="control"
-            max="10"></tui-slider>
-
-<tui-slider [formControl]="testValue"
-            [max]="10"></tui-slider>
-

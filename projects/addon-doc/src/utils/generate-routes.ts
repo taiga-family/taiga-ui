@@ -1,17 +1,14 @@
 import {Type} from '@angular/core';
 import {Routes} from '@angular/router';
 
-/**
- * Generates typical page routing structure
- */
-export function generateRoutes(type: Type<any>): Routes {
+export function tuiGenerateRoutes(type: Type<unknown>): Routes {
     return [
         {
-            path: '',
+            path: ``,
             component: type,
             children: [
                 {
-                    path: ':tab',
+                    path: `:tab`,
                     component: type,
                 },
             ],

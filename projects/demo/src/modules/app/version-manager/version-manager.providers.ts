@@ -1,24 +1,29 @@
 import {LocationStrategy} from '@angular/common';
 import {InjectionToken, Provider} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
-import {TAIGA_VERSIONS_META, TaigaVersionMeta} from './versions.constants';
+import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
 
-export const SELECTED_VERSION_META = new InjectionToken<TaigaVersionMeta | null>(
-    'Meta information about selected version of Taiga docs',
+export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
+    `[TUI_SELECTED_VERSION_META]: Meta information about selected version of Taiga docs`,
 );
 
-export const VERSION_MANAGER_PROVIDERS: Provider[] = [
+export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
     {
-        provide: SELECTED_VERSION_META,
-        useFactory: selectedVersionMetaFactory,
-        deps: [LocationStrategy],
+        provide: TUI_SELECTED_VERSION_META,
+        deps: [LocationStrategy, TUI_VERSIONS_META_OPTIONS],
+        useFactory: (
+            strategy: LocationStrategy,
+            versions: readonly TuiVersionMeta[],
+        ): TuiVersionMeta | null => {
+            return (
+                versions.find(meta => {
+                    return (
+                        meta.baseHref === strategy.getBaseHref().replace(/\//g, ``) ||
+                        meta.alias === `v${parseInt(TUI_VERSION)}`
+                    );
+                }) ?? null
+            );
+        },
     },
 ];
-
-export function selectedVersionMetaFactory(s: LocationStrategy): TaigaVersionMeta | null {
-    return (
-        TAIGA_VERSIONS_META.find(
-            meta => meta.baseHref === s.getBaseHref().replace(/\//g, ''),
-        ) || null
-    );
-}

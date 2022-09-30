@@ -6,12 +6,12 @@
     text-align: center;
 }
 
-.content {
+.t-content {
     display: flex;
     justify-content: center;
 }
 
-.button {
+.t-button {
     margin: 0 (@space / 2);
     flex-shrink: 0;
 
@@ -20,6 +20,7 @@
     }
 
     &&&_small {
+        // @note: (&&&_) it's increasing css cascade priority
         width: 0.5rem;
         height: 0.5rem;
         margin: 0;
@@ -30,7 +31,7 @@
     }
 }
 
-.dots {
+.t-dots {
     width: var(--tui-height-s);
     height: var(--tui-height-s);
     line-height: var(--tui-height-s);

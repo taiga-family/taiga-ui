@@ -3,16 +3,16 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TextMaskModule,
     TuiInputCountModule,
     TuiSelectModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/kit';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {TuiColorEditComponent} from './color-edit.component';
 
@@ -25,7 +25,7 @@ import {TuiColorEditComponent} from './color-edit.component';
         TuiSelectModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiInputCountModule,
         TuiDataListModule,
     ],

@@ -1,11 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiTablePaginationComponent} from '../table-pagination.component';
 import {TuiTablePaginationModule} from '../table-pagination.module';
 
-describe('TablePagination', () => {
+describe(`TablePagination`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -39,22 +39,22 @@ describe('TablePagination', () => {
         fixture.detectChanges();
     });
 
-    describe('Keeps current top item on the page when switching page size', () => {
-        it('31 switching to 20', () => {
+    describe(`Keeps current top item on the page when switching page size`, () => {
+        it(`31 switching to 20`, () => {
             testComponent.component.onItem(20);
             fixture.detectChanges();
 
             expect(testComponent.page).toBe(1);
         });
 
-        it('31 switching to 50', () => {
+        it(`31 switching to 50`, () => {
             testComponent.component.onItem(50);
             fixture.detectChanges();
 
             expect(testComponent.page).toBe(0);
         });
 
-        it('31 switching to 100', () => {
+        it(`31 switching to 100`, () => {
             testComponent.component.onItem(100);
             fixture.detectChanges();
 

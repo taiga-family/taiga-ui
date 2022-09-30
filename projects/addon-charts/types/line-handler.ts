@@ -1,3 +1,3 @@
-import {TuiLineTypeT} from './line-type';
+import {TuiLineType} from './line-type';
 
-export type TuiLineHandler = (index: number, total: number) => TuiLineTypeT;
+export type TuiLineHandler = (index: number, total: number) => TuiLineType;

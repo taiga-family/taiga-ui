@@ -2,7 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {getElementObscurers} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {
     delay,
@@ -22,11 +22,9 @@ import {TuiParentsScrollService} from './parents-scroll.service';
  * and polling with set interval, returns either null or an array
  * of elements that overlap given element edges
  */
-// Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
 @Injectable()
-export class TuiObscuredService extends Observable<null | ReadonlyArray<Element>> {
-    private readonly obscured$: Observable<null | ReadonlyArray<Element>>;
+export class TuiObscuredService extends Observable<null | readonly Element[]> {
+    private readonly obscured$: Observable<null | readonly Element[]>;
 
     constructor(
         @Inject(TuiParentsScrollService)
@@ -42,10 +40,10 @@ export class TuiObscuredService extends Observable<null | ReadonlyArray<Element>
 
         this.obscured$ = merge(
             // delay is added so it will not interfere with other listeners
-            merge(parentsScroll$, fromEvent(windowRef, 'resize')).pipe(delay(0)),
+            merge(parentsScroll$, fromEvent(windowRef, `resize`)).pipe(delay(0)),
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
         ).pipe(
-            map(() => getElementObscurers(nativeElement)),
+            map(() => tuiGetElementObscures(nativeElement)),
             startWith(null),
             distinctUntilChanged(),
             tuiZoneOptimized(ngZone),

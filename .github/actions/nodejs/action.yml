@@ -5,47 +5,83 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 12.x
+    default: 16.x
+
+outputs:
+  root-package-version:
+    description: Full version of root package.json (x.y.z)
+    value: ${{ steps.output.outputs.root-package-version }}
+  root-package-major-version:
+    description: Only major version of root package.json (x)
+    value: ${{ steps.output.outputs.root-package-major-version }}
+  is-release-candidate:
+    description: root package.json includes -rc
+    value: ${{ steps.output.outputs.is-release-candidate }}
 
 runs:
   using: composite
   steps:
+    - name: Additional logs for improving debug of environments
+      shell: bash
+      run: |
+        echo "github.workflow: ${{ github.workflow }}"
+        echo "github.sha: ${{ github.sha }}"
+        echo "github.ref: ${{ github.ref }}"
+        echo "github.ref_name: ${{ github.ref_name }}"
+        echo "github.ref_type: ${{ github.ref_type }}"
+        echo "github.base_ref: ${{ github.base_ref }}"
+        echo "github.head_ref: ${{ github.head_ref }}"
+        echo "github.run_id: ${{ github.run_id }}"
+        echo "github.run_number: ${{ github.run_number }}"
+        echo "github.run_attempt: ${{ github.run_attempt }}"
+        echo "github.event.number: ${{ github.event.number }}"
+        echo "github.event.pull_request.head.ref: ${{ github.event.pull_request.head.ref }}"
+        echo "github.event.pull_request.head.repo.full_name: ${{ github.event.pull_request.head.repo.full_name }}"
+
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
         registry-url: 'https://registry.npmjs.org'
 
     - name: Restore node_modules from cache
       id: cache-node-modules
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
-          node_modules
-          */*/node_modules/
-          !node_modules/.cache
-          !*/*/node_modules/.cache
-        key: node-modules-cache-hash__${{ hashfiles('**/package-lock.json') }}
-
-    - name: Restore from cache of builds
-      id: build-cache
-      if: steps.cache-node-modules.outputs.cache-hit == 'true'
-      uses: actions/cache@v2
-      with:
-        path: |
-          node_modules/.cache
-          */*/node_modules/.cache
-        key: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-        restore-keys: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}
+          **/node_modules/
+          !**/node_modules/.cache
+        key: modules-cache__nodejs-${{ inputs.node-version }}__${{ hashfiles('**/package-lock.json') }}
 
     - name: Restore from global NPM cache
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/.npm
-        key: npm-cache-hash__${{ hashFiles('**/package-lock.json') }}
+        key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
         restore-keys: npm-cache-hash__
 
-    - run: npm ci
+    - shell: bash
+      run: |
+        echo "Show environment Node.js, npm ..."
+        node -v
+        npm -v
+
+    - shell: bash
+      run: |
+        echo "Provide global variables ..."
+        echo "NPM_CONFIG_CACHE=~/.npm" >> $GITHUB_ENV
+        echo "NODE_OPTIONS=--max-old-space-size=12288" >> $GITHUB_ENV
+        echo "CYPRESS_CACHE_FOLDER=node_modules/cache-cypress" >> $GITHUB_ENV
+
+    - name: Clean install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: npm ci
       shell: bash
+
+    - id: output
+      shell: bash
+      run: |
+        echo "::set-output name=root-package-version::v$(node -p "require('./package.json').version")"
+        echo "::set-output name=root-package-major-version::$(node -p "parseInt(require('./package.json').version)")"
+        echo "::set-output name=is-release-candidate::$(node -p "require('./package.json').version.includes('rc')")"

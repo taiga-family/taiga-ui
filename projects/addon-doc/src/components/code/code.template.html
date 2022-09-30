@@ -1,4 +1,9 @@
-<p *ngIf="filename" class="t-header">{{filename}}</p>
+<p
+    *ngIf="filename"
+    class="t-header"
+>
+    {{ filename }}
+</p>
 <pre
     *ngFor="let content of processor$ | async"
     class="t-code"

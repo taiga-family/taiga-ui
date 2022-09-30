@@ -8,9 +8,9 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-notification-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-notification-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
     providers: [

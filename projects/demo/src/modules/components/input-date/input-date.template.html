@@ -1,6 +1,13 @@
-<tui-doc-page header="InputDate" package="KIT" type="components">
+<tui-doc-page
+    header="InputDate"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-9">
+        <div
+            i18n
+            class="tui-space_bottom-9"
+        >
             <code>InputDate</code>
             – input with a calendar.
         </div>
@@ -17,7 +24,11 @@
             <dd>single-character date's separator (dot, slash etc.).</dd>
         </dl>
         <p class="tui-space_bottom-9">
-            <a tuiLink routerLink="." fragment="date-localization">
+            <a
+                tuiLink
+                routerLink="."
+                fragment="date-localization"
+            >
                 See example
             </a>
             with the usage of these tokens.
@@ -37,7 +48,11 @@
                 </a>
                 is default).
                 <p>
-                    <a tuiLink routerLink="." fragment="native-date-output">
+                    <a
+                        tuiLink
+                        routerLink="."
+                        fragment="native-date-output"
+                    >
                         See example
                     </a>
                     with built-in
@@ -108,20 +123,19 @@
                     [min]="min"
                     [max]="max"
                     [markerHandler]="markerHandler"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
                     [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
                     [disabledItemHandler]="disabledItemHandler"
                     [items]="items"
-                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Choose a date
                 </tui-input-date>
@@ -146,10 +160,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -171,8 +182,7 @@
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                A handler that gets date and returns null or a tuple with
-                circled marker colors
+                A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
                 i18n
@@ -199,6 +209,28 @@
     </ng-template>
 
     <ng-template pageTab>
+        <p i18n>
+            Mobile calendar does not use the same dropdown with calendar as desktop uses. It uses digital keyboard. If
+            you want to open
+            <a
+                tuiLink
+                routerLink="/components/mobile-calendar"
+            >
+                mobile calendar
+            </a>
+            , add imports of
+            <code>TuiMobileCalendarDialogModule</code>
+            and
+            <code>TuiDialogModule</code>
+            into your root module. Also, check that you did not forget about
+            <a
+                tuiLink
+                routerLink="/getting-started"
+            >
+                tui-root
+            </a>
+        </p>
+
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -209,7 +241,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -224,7 +256,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -235,7 +267,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

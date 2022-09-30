@@ -5,8 +5,8 @@ import {TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-date-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-date-example-3`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -18,7 +18,7 @@ export class TuiInputDateExample3 {
     items = [
         new TuiNamedDay(
             TUI_LAST_DAY.append({year: -1}),
-            'Until today',
+            `Until today`,
             TuiDay.currentLocal(),
         ),
     ];

@@ -4,11 +4,16 @@
         type="button"
         size="xs"
         class="tui-space_right-2"
-        (click)="showSkelet()"
+        (click)="showSkeleton()"
     >
         Show/hide skeleton
     </button>
-    <button tuiButton type="button" size="xs" (click)="toggleLight()">
+    <button
+        tuiButton
+        type="button"
+        size="xs"
+        (click)="toggleLight()"
+    >
         Light mode
     </button>
 </p>
@@ -16,11 +21,15 @@
 <div
     class="container"
     [class.container_dark]="lightMode"
-    [tuiMode]="lightMode ? 'light' : null"
+    [tuiMode]="lightMode ? 'onDark' : null"
 >
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
-            <tui-island size="l" class="island" [transparent]="true">
+            <tui-island
+                size="l"
+                class="island"
+                [transparent]="true"
+            >
                 <div class="tui-island__content">
                     <div class="tui-island__figure">
                         <form [formGroup]="testForm">
@@ -47,7 +56,7 @@
                             [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'Title'}}
+                            {{ skeletonVisible ? '' : 'Title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
@@ -55,8 +64,7 @@
                             [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'Some paragraph with
-                            information'}}
+                            {{ skeletonVisible ? '' : placeholder }}
                         </p>
                         <p
                             class="tui-island__paragraph tui-island__paragraph_link"
@@ -102,7 +110,7 @@
                             [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'Another title'}}
+                            {{ skeletonVisible ? '' : 'Another title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
@@ -110,7 +118,7 @@
                             [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'And some new text again'}}
+                            {{ skeletonVisible ? '' : 'And some new text again' }}
                         </p>
                     </div>
                 </div>
@@ -140,7 +148,7 @@
                             [class.tui-skeleton_center]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'One more title'}}
+                            {{ skeletonVisible ? '' : 'One more title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
@@ -148,7 +156,7 @@
                             [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'All right, I get it'}}
+                            {{ skeletonVisible ? '' : 'All right, I get it' }}
                         </p>
                     </div>
                 </div>

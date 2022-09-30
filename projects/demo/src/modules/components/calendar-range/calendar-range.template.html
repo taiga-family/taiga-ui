@@ -1,4 +1,8 @@
-<tui-doc-page header="CalendarRange" package="KIT" type="components">
+<tui-doc-page
+    header="CalendarRange"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component for choosing date range in calendar</p>
 
@@ -41,7 +45,7 @@
                 [max]="max"
                 [minLength]="minLength"
                 [maxLength]="maxLength"
-                (rangeChange)="documentationPropertyRangeChange.emitEvent($event)"
+                (valueChange)="documentationPropertyRangeChange.emitEvent($event)"
             ></tui-calendar-range>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -63,10 +67,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -88,8 +89,7 @@
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                A handler that gets date and returns null or a tuple with
-                circled marker colors
+                A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
                 i18n
@@ -154,7 +154,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
         </ol>

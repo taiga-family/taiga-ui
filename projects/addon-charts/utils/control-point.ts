@@ -1,9 +1,9 @@
 import {TuiPoint} from '@taiga-ui/core';
 
-import {lineAngle} from './line-angle';
-import {lineLength} from './line-length';
+import {tuiLineAngle} from './line-angle';
+import {tuiLineLength} from './line-length';
 
-export function controlPoint(
+export function tuiControlPoint(
     current: TuiPoint,
     previous?: TuiPoint,
     next?: TuiPoint,
@@ -12,8 +12,8 @@ export function controlPoint(
 ): TuiPoint {
     const p = previous || current;
     const n = next || current;
-    const angle = lineAngle(p, n) + (reverse ? Math.PI : 0);
-    const length = lineLength(p, n) * smoothing;
+    const angle = tuiLineAngle(p, n) + (reverse ? Math.PI : 0);
+    const length = tuiLineLength(p, n) * smoothing;
     const x = current[0] + Math.cos(angle) * length;
     const y = current[1] + Math.sin(angle) * length;
 

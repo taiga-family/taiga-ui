@@ -1,8 +1,17 @@
-<tui-carousel [duration]="4000" [(index)]="index">
+<tui-carousel
+    [duration]="4000"
+    [(index)]="index"
+>
     <ng-container *ngFor="let item of items">
         <tui-island *tuiItem>
-            <h2 class="tui-island__title">{{item}}</h2>
-            <a tuiButton href="https://en.wikipedia.org/wiki/{{item}}">Wiki</a>
+            <h2 class="tui-island__title">{{ item }}</h2>
+            <!-- TODO: update documentation here -->
+            <a
+                tuiButton
+                href="https://en.wikipedia.org/wiki/{{ item }}"
+            >
+                Wiki
+            </a>
         </tui-island>
     </ng-container>
 </tui-carousel>

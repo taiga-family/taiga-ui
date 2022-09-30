@@ -6,9 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-pan-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-pan-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -25,14 +25,14 @@ export class TuiPanExample1 {
 
     constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
-    onPan(delta: [number, number]) {
+    onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([
             this.currentCoords[0] + delta[0],
             this.currentCoords[1] + delta[1],
         ]);
     }
 
-    get currentCoords() {
+    get currentCoords(): number[] {
         return this.coordinates$.value;
     }
 }

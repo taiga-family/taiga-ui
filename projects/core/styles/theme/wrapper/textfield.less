@@ -1,110 +1,97 @@
-tui-wrapper[data-appearance='textfield'] {
-    transition: var(--tui-duration) ease-in-out;
-    transition-property: box-shadow, background;
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='textfield'] {
+    .transition(~'box-shadow, background');
     background: var(--tui-base-01);
     color: var(--tui-text-01);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     &[data-appearance='textfield']:after {
-        transition: color var(--tui-duration) ease-in-out;
-        border-width: 1px;
+        .transition(color);
         color: var(--tui-base-03);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
-    }
+    });
 
-    &._focused {
+    .wrapper-focus({
         box-shadow: none;
 
-        &:after {
-            color: var(--tui-primary);
-            border-width: 2px;
-        }
-    }
+        --tui-focus: var(--tui-primary);
+    });
 
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         box-shadow: none;
 
         &:after {
             color: var(--tui-base-04);
         }
-    }
+    });
 
-    &[data-state='disabled'] {
-        opacity: var(--tui-disabled-opacity);
+    .wrapper-disabled({
         box-shadow: none;
-    }
+    });
 
-    &._invalid._focused:after {
-        color: var(--tui-error-fill);
-        opacity: var(--tui-disabled-opacity);
-    }
+    .wrapper-invalid({
+        --tui-focus: var(--tui-error-fill-night);
+    });
 }
 
-tui-wrapper[data-appearance='textfield'][data-mode='onDark'] {
+[tuiWrapper][data-appearance='textfield'][data-mode='onDark'] {
     background: var(--tui-clear-inverse);
     color: var(--tui-text-01-night);
 
-    &[data-appearance='textfield']:after {
+    &:after {
         color: var(--tui-text-03-night);
         opacity: var(--tui-disabled-opacity);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: var(--tui-clear-inverse-hover);
+    });
 
-        &:after {
-            color: var(--tui-text-02-night);
-        }
-    }
-
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         background: transparent;
-    }
+    });
 
-    &._invalid._focused:after {
-        color: var(--tui-error-fill-night);
-    }
-
-    &._focused {
+    .wrapper-focus({
         background: rgba(255, 255, 255, 0.08);
+
+        --tui-focus: var(--tui-primary);
 
         &:after {
             transition: none;
-            color: var(--tui-primary);
             opacity: 1;
         }
-    }
+    });
+
+    .wrapper-invalid({
+        --tui-focus: var(--tui-error-fill-night);
+    });
 }
 
-tui-wrapper[data-appearance='textfield'][data-mode='onLight'] {
+[tuiWrapper][data-appearance='textfield'][data-mode='onLight'] {
     background: var(--tui-clear);
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: var(--tui-clear-hover);
-    }
+    });
 
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         background: transparent;
-    }
+    });
 
-    &._invalid {
+    .wrapper-invalid({
         &:after {
             color: var(--tui-error-fill);
         }
+    });
 
-        &._focused {
-            background: transparent;
-        }
-    }
-
-    &._focused {
+    .wrapper-focus({
         background: transparent;
 
-        &:after {
-            color: var(--tui-text-01);
-        }
-    }
+        --tui-focus: var(--tui-text-01);
+    });
 }

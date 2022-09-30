@@ -8,7 +8,7 @@
     }
 }
 
-.expand {
+.t-expand {
     .clearbtn;
     display: flex;
     width: 100%;
@@ -20,7 +20,7 @@
     cursor: pointer;
     border-color: inherit;
 
-    &:focus-visible .name {
+    &:focus-visible .t-name {
         background: var(--tui-selection);
     }
 
@@ -42,7 +42,7 @@
     }
 }
 
-.heading {
+.t-heading {
     height: var(--tui-height-m);
     font: var(--tui-font-text-s);
     padding: 0;
@@ -50,23 +50,23 @@
     border-bottom: 1px solid var(--tui-base-04);
     border-color: inherit;
 
-    :host-context(table[data-tui-host-size='l']) & {
+    :host-context(table[data-size='l']) & {
         font: var(--tui-font-text-m);
         height: var(--tui-height-l);
     }
 }
 
-.name {
+.t-name {
     position: sticky;
     left: 0.75rem;
     display: inline-block;
 
-    :host-context(table[data-tui-host-size='l']) & {
+    :host-context(table[data-size='l']) & {
         left: 1rem;
     }
 }
 
-.chevron {
+.t-chevron {
     .transition(transform);
     position: sticky;
     right: 0.75rem;

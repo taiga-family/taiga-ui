@@ -1,41 +1,23 @@
-<form [formGroup]="testForm">
-    <div class="tui-row">
-        <tui-input-number
-            formControlName="testValue"
-            class="tui-col_md-4"
-            [postfix]="'UGX' | tuiCurrency"
-        >
-            Type a sum
-        </tui-input-number>
-        <tui-input-number
-            formControlName="testValue"
-            class="tui-col_md-4"
-            [postfix]="'EUR' | tuiCurrency"
-        >
-            Type a sum
-        </tui-input-number>
-        <tui-input-number
-            formControlName="testValue"
-            class="tui-col_md-4"
-            [postfix]="'840' | tuiCurrency"
-        >
-            Type a sum
-        </tui-input-number>
-    </div>
-    <div class="tui-row tui-space_top-2">
-        <tui-input-number
-            formControlName="testValue"
-            class="tui-col_md-4"
-            [postfix]="826 | tuiCurrency"
-        >
-            Type a sum
-        </tui-input-number>
-        <tui-input-number
-            formControlName="testValue"
-            class="tui-col_md-4"
-            [postfix]="null | tuiCurrency"
-        >
-            Type a sum
-        </tui-input-number>
-    </div>
-</form>
+<tui-input-number
+    tuiHintContent="Dollar sign is commonly placed BEFORE the amount. Use [prefix]."
+    [formControl]="control"
+    [prefix]="'USD' | tuiCurrency"
+>
+    Type a sum
+</tui-input-number>
+
+<tui-input-number
+    tuiHintContent="Euro sign (numeric code 978) is commonly placed AFTER the amount. Use [postfix]."
+    [formControl]="control"
+    [postfix]="'978' | tuiCurrency"
+>
+    Type a sum
+</tui-input-number>
+
+<tui-input-number
+    tuiHintContent="Pound sign (numeric code 826) is commonly placed BEFORE the amount. Use [prefix]."
+    [formControl]="control"
+    [prefix]="826 | tuiCurrency"
+>
+    Type a sum
+</tui-input-number>

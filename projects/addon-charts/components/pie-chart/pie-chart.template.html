@@ -8,39 +8,40 @@
 >
     <defs>
         <mask [attr.id]="maskId">
-            <rect x="-200" y="-200" width="400" height="400" fill="white" />
-            <circle cx="0" cy="0" [attr.r]="radius" />
+            <rect
+                x="-200"
+                y="-200"
+                width="400"
+                height="400"
+                fill="white"
+            />
+            <circle
+                cx="0"
+                cy="0"
+                [attr.r]="radius"
+            />
         </mask>
     </defs>
     <g [style.mask]="mask">
-        <circle cx="0" cy="0" r="100" class="t-placeholder" />
+        <circle
+            cx="0"
+            cy="0"
+            r="100"
+            class="t-placeholder"
+        />
         <path
             *tuiRepeatTimes="let index of segments.length"
             fill="currentColor"
             automation-id="tui-pie-chart__segment"
-            tuiHintMode="onDark"
-            tuiHintDirection="top-right"
+            tuiHintPointer
             d=""
             class="t-segment"
             [attr.transform]="getTransform(index)"
             [style.color]="getColor(index)"
             [tuiPieChart]="segments[index]"
-            [tuiPointerHint]="getHint(hint)"
+            [tuiHint]="hintContent"
+            [tuiHintContext]="{$implicit: index}"
             (tuiHoveredChange)="onHovered($event, index)"
-        >
-            <ng-template #hint>
-                <ng-container
-                    *ngTemplateOutlet="template; context: {$implicit: index}"
-                ></ng-container>
-            </ng-template>
-        </path>
+        />
     </g>
 </svg>
-<ng-template #template let-index>
-    <div
-        polymorpheus-outlet
-        class="t-text"
-        [content]="hintContent"
-        [context]="{$implicit: index}"
-    ></div>
-</ng-template>

@@ -1,7 +1,15 @@
-<button tuiButton (click)="toggle()">Show/Hide</button>
-<ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
+<button
+    tuiButton
+    (click)="toggle()"
+>
+    Show/Hide
+</button>
+<ng-template
+    [tuiSheetOptions]="options"
+    [(tuiSheet)]="open"
+>
     <h2 tuiSheetHeading>
-        <label tuiLabel label="Monty Python">And the Holy Grail</label>
+        <label tuiLabel="Monty Python">And the Holy Grail</label>
     </h2>
     <p class="buttons">
         <button
@@ -17,7 +25,11 @@
                 [value]="12.99"
             ></tui-money>
         </button>
-        <button tuiButton size="m" appearance="secondary">
+        <button
+            tuiButton
+            size="m"
+            appearance="secondary"
+        >
             Rent
             <tui-money
                 currency="USD"
@@ -26,7 +38,13 @@
             ></tui-money>
         </button>
     </p>
-    <button tuiButton size="m" class="action">Add to Watch List</button>
+    <button
+        tuiButton
+        size="m"
+        class="action"
+    >
+        Add to Watch List
+    </button>
     <h3 class="cast">Cast:</h3>
     <p>John Cleese</p>
     <p>Eric Idle</p>
@@ -53,10 +71,20 @@
     <p>Terry Jones</p>
     <hr />
     <h3>Budget:</h3>
-    <p><tui-money currency="USD" [value]="400000"></tui-money></p>
+    <p>
+        <tui-money
+            currency="USD"
+            [value]="400000"
+        ></tui-money>
+    </p>
     <hr />
     <h3>Box office:</h3>
-    <p><tui-money currency="USD" [value]="5000000"></tui-money></p>
+    <p>
+        <tui-money
+            currency="USD"
+            [value]="5000000"
+        ></tui-money>
+    </p>
     <hr />
     <h3>Release date</h3>
     <p>April 3, 1975</p>

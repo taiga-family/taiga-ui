@@ -1,5 +1,4 @@
 <tui-doc-page
-    i18n-header
     header="LineChart"
     package="ADDON-CHARTS"
     type="components"
@@ -38,6 +37,17 @@
             heading="Hint"
             [content]="example4"
         >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint"
+                    tuiLink
+                >
+                    <code>Hint</code>
+                </a>
+                directive to enable hints with
+                <code>tuiHintContent</code>
+            </tui-notification>
             <tui-line-chart-example-4></tui-line-chart-example-4>
         </tui-doc-example>
 
@@ -52,7 +62,11 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-axes class="axes" [verticalLines]="4" [horizontalLines]="2">
+            <tui-axes
+                class="axes"
+                [verticalLines]="4"
+                [horizontalLines]="2"
+            >
                 <tui-line-chart
                     [x]="x"
                     [y]="y"
@@ -62,7 +76,6 @@
                     [value]="value"
                     [filled]="filled"
                     [dots]="dots"
-                    [hintContent]="hintContent"
                     [xStringify]="xStringify"
                     [yStringify]="yStringify"
                 ></tui-line-chart>
@@ -86,19 +99,6 @@
                 [(documentationPropertyValue)]="filled"
             >
                 Filled with gradient
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="hintContentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Content of hint for hover. It has
-                <code>$implicit</code>
-                in context with a tuple
-                <code>[TuiPoint, number]</code>
             </ng-template>
             <ng-template
                 i18n
@@ -187,7 +187,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -196,7 +196,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

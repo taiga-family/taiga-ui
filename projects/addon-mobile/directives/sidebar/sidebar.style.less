@@ -8,7 +8,7 @@
     &:after {
         .fullsize();
         content: '';
-        height: 100vh;
+        height: 100%;
         background: fade(#000, 38%);
         animation: tuiFadeIn var(--tui-duration);
     }
@@ -28,11 +28,11 @@
         transition: opacity var(--tui-duration);
     }
 
-    &.right {
+    &.t-right {
         justify-content: flex-end;
     }
 
-    &.left {
+    &.t-left {
         justify-content: flex-start;
     }
 }

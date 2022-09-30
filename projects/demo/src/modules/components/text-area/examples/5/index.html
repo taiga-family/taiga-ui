@@ -1,10 +1,11 @@
 <tui-text-area
-    tuiHintContent="معلومات شخصيه"
-    tuiHintDirection="bottom-right"
-    class="input"
-    [tuiTextfieldCleaner]="true"
-    [tuiTextfieldMaxLength]="100"
+    class="b-form"
     [(ngModel)]="value"
 >
-    مونتى بايثون
+    Bio
+    <textarea
+        tuiTextfield
+        maxlength="97"
+        placeholder="Write a few words about yourself"
+    ></textarea>
 </tui-text-area>

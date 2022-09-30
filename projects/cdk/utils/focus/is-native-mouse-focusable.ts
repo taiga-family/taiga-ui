@@ -1,8 +1,9 @@
-import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
+import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 
-export function isNativeMouseFocusable(element: Element): boolean {
+export function tuiIsNativeMouseFocusable(element: Element): boolean {
     return (
-        !element.hasAttribute('disabled') &&
-        (element.getAttribute('tabIndex') === '-1' || isNativeKeyboardFocusable(element))
+        !element.hasAttribute(`disabled`) &&
+        (element.getAttribute(`tabIndex`) === `-1` ||
+            tuiIsNativeKeyboardFocusable(element))
     );
 }

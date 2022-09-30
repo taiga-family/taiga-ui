@@ -1,5 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
+import {tuiIsHTMLElement} from './element-checks';
+
 /**
  * Calculates offset for an element relative to it's parent several levels above
  *
@@ -7,16 +9,15 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param element
  * @return object with offsetTop and offsetLeft number properties
  */
-export function getElementOffset(
+export function tuiGetElementOffset(
     host: Element,
     element: HTMLElement,
 ): {offsetTop: number; offsetLeft: number} {
-    tuiAssert.assert(host.contains(element), 'Host must contain element');
+    tuiAssert.assert(host.contains(element), `Host must contain element`);
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 
-    // TODO: iframe warning
-    while (offsetParent && offsetParent instanceof HTMLElement && offsetParent !== host) {
+    while (tuiIsHTMLElement(offsetParent) && offsetParent !== host) {
         offsetTop += offsetParent.offsetTop;
         offsetLeft += offsetParent.offsetLeft;
         offsetParent = offsetParent.offsetParent;

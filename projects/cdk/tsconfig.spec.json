@@ -1,12 +1,5 @@
 {
     "extends": "../../tsconfig.spec.json",
-    "compilerOptions": {
-        "outDir": "../../out-tsc/spec",
-        "types": ["jasmine", "node", "jasmine-ajax"],
-        "paths": {
-            "@taiga-ui/cdk/*": ["./projects/cdk/*"]
-        }
-    },
-    "files": ["test.ts"],
-    "include": ["**/*.spec.ts", "**/*.d.ts"]
+    "include": ["**/*.spec.ts", "**/*.d.ts"],
+    "files": ["test.ts"]
 }

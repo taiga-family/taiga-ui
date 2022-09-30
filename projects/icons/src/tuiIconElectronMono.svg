@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em">
+<svg height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
     <g id="tuiIconElectronMono" xmlns="http://www.w3.org/2000/svg">
         <svg
-            x="50%"
-            y="50%"
-            width="2em"
             height="2em"
             overflow="visible"
             viewBox="0 0 32 32"
+            width="2em"
+            x="50%"
             xmlns="http://www.w3.org/2000/svg"
+            y="50%"
         >
             <svg x="-16" y="-16">
                 <path d="M11.2571 21.3023L12.8746 12.1589H15.4617L13.8431 21.3023H11.2571Z" fill="currentColor" />

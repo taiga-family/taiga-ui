@@ -12,9 +12,9 @@ import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-flat-picker',
-    templateUrl: './flat-picker.template.html',
-    styleUrls: ['./flat-picker.style.less'],
+    selector: `tui-flat-picker`,
+    templateUrl: `./flat-picker.template.html`,
+    styleUrls: [`./flat-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })

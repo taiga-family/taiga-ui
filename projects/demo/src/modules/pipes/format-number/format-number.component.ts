@@ -1,33 +1,28 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDecimalSymbol} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-format-number',
-    templateUrl: './format-number.template.html',
-    styleUrls: ['./format-number.style.less'],
+    selector: `example-tui-format-number`,
+    templateUrl: `./format-number.template.html`,
+    styleUrls: [`./format-number.style.less`],
     changeDetection,
 })
 export class ExampleTuiFormatNumberComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     value = 100;
 
-    readonly decimalLimitVariants = [0, 2, 4];
-    decimalLimit = null;
+    readonly decimalLimitVariants = [Infinity, 0, 2, 4];
+    decimalLimit = this.decimalLimitVariants[0];
 
-    readonly decimalSeparatorVariants: readonly string[] = [',', '.', '/'];
-    decimalSeparator = this.decimalSeparatorVariants[0];
+    readonly decimalSeparatorVariants: TuiDecimalSymbol[] = [`,`, `.`];
+    decimalSeparator: TuiDecimalSymbol = this.decimalSeparatorVariants[0];
 }

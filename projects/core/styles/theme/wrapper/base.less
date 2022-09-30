@@ -1,0 +1,34 @@
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper] {
+    .transition(~'color, background, opacity');
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    appearance: none;
+    border-radius: inherit;
+
+    &:after {
+        .transition(box-shadow);
+        .fullsize(absolute, inset);
+        content: '';
+        border-radius: inherit;
+        border: 1px solid currentColor;
+        pointer-events: none;
+        color: transparent;
+    }
+
+    .wrapper-focus({
+        &:after {
+            border-width: 2px;
+            color: var(--tui-focus);
+        }
+    });
+
+    .wrapper-disabled({
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+    });
+}

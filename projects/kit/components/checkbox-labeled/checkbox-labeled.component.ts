@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,25 +12,24 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({
-    selector: 'tui-checkbox-labeled',
-    templateUrl: './checkbox-labeled.template.html',
-    styleUrls: ['./checkbox-labeled.style.less'],
+    selector: `tui-checkbox-labeled`,
+    templateUrl: `./checkbox-labeled.template.html`,
+    styleUrls: [`./checkbox-labeled.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxLabeledComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
+        tuiAsControl(TuiCheckboxLabeledComponent),
     ],
 })
 export class TuiCheckboxLabeledComponent
@@ -42,9 +40,9 @@ export class TuiCheckboxLabeledComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = `m`;
 
     constructor(
         @Optional()
@@ -60,31 +58,23 @@ export class TuiCheckboxLabeledComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.checkbox ? this.checkbox.nativeFocusableElement : null;
     }
 
-    @HostBinding('attr.data-mode')
+    @HostBinding(`attr.data-mode`)
     get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onModelChange(value: boolean) {
+    onModelChange(value: boolean): void {
         this.updateValue(value);
     }
 }

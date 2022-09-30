@@ -5,14 +5,14 @@ import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-line-chart-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-line-chart-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiLineChartExample5 {
-    readonly values = [
+    readonly values: TuiPoint[][] = [
         [
             [50, 50],
             [100, 75],
@@ -42,7 +42,7 @@ export class TuiLineChartExample5 {
         ],
     ];
 
-    readonly hint: TuiStringHandler<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = ({
+    readonly hint: TuiStringHandler<TuiContextWithImplicit<readonly TuiPoint[]>> = ({
         $implicit,
-    }) => `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
+    }) => `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join(`$\n`)}$`;
 }

@@ -1,6 +1,6 @@
-export function isSafari(element: Element): boolean {
+export function tuiIsSafari(element: Element): boolean {
     const documentRef = element.ownerDocument;
-    const windowRef = documentRef && documentRef.defaultView;
+    const windowRef = documentRef?.defaultView;
 
-    return !!windowRef && 'safari' in windowRef;
+    return !!windowRef && `safari` in windowRef;
 }

@@ -1,20 +1,26 @@
-<ng-container *tuiLet="refresh$ | async as bars">
+<ng-container *ngIf="refresh$ | async as bars">
     <div
         *ngIf="bars[0]"
         tuiScrollbarWrapper
-        class="bar bar_vertical"
+        class="t-bar t-bar_vertical"
         [@tuiFadeIn]="animation"
-        [class.bar_has-horizontal]="bars[1]"
+        [class.t-bar_has-horizontal]="bars[1]"
     >
-        <div tuiScrollbar="vertical" class="thumb"></div>
+        <div
+            tuiScrollbar="vertical"
+            class="t-thumb"
+        ></div>
     </div>
     <div
         *ngIf="bars[1]"
         tuiScrollbarWrapper
-        class="bar bar_horizontal"
+        class="t-bar t-bar_horizontal"
         [@tuiFadeIn]="animation"
-        [class.bar_has-vertical]="bars[0]"
+        [class.t-bar_has-vertical]="bars[0]"
     >
-        <div tuiScrollbar="horizontal" class="thumb"></div>
+        <div
+            tuiScrollbar="horizontal"
+            class="t-thumb"
+        ></div>
     </div>
 </ng-container>

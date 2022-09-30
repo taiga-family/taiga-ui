@@ -4,8 +4,8 @@ export function tuiCreateTimePeriods(
     minHour: number = 0,
     maxHour: number = HOURS_IN_DAY,
     minutes: readonly number[] = [0, 30],
-): ReadonlyArray<TuiTime> {
-    const timeArray: Array<TuiTime> = [];
+): readonly TuiTime[] {
+    const timeArray: TuiTime[] = [];
 
     for (let i = minHour; i < maxHour; i++) {
         for (let j = 0; j < minutes.length; j++) {

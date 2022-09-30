@@ -7,7 +7,6 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
-        #colorBtn
         tuiIconButton
         type="button"
         size="s"
@@ -16,19 +15,23 @@
         tuiHintDirection="top-left"
         automation-id="toolbar__color-button"
         [tuiHint]="foreColorText$ | async"
-        [tuiHintId]="colorBtn.id"
-        [tuiDescribedBy]="colorBtn.id"
-        [pseudoPressed]="color.open"
+        [tuiHintDescribe]="''"
+        [pseudoActive]="color.open"
         [focusable]="color.open"
     ></button>
-    <div class="t-plate" [style.background]="selectedColor"></div>
-    <ng-template #colorDropdown let-activeZone>
-        <tui-color-selector
+    <div
+        class="t-plate"
+        [style.background]="selectedColor"
+    ></div>
+    <ng-template
+        #colorDropdown
+        let-activeZone
+    >
+        <tui-palette
             class="t-color-picker"
             [tuiActiveZoneParent]="activeZone"
             [colors]="colors"
-            [color]="selectedColor"
-            (colorChange)="editor.setFontColor($event)"
-        ></tui-color-selector>
+            (selectedColor)="editor.setFontColor($event)"
+        ></tui-palette>
     </ng-template>
 </tui-hosted-dropdown>

@@ -1,6 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDialogHostModule, TuiDragModule, TuiPortalHostModule} from '@taiga-ui/cdk';
+import {
+    TuiAlertHostModule,
+    TuiDialogHostModule,
+    TuiDragModule,
+    TuiDropdownHostModule,
+} from '@taiga-ui/cdk';
 import {TuiHintsHostModule} from '@taiga-ui/core/components/hints-host';
 import {TuiScrollControlsModule} from '@taiga-ui/core/components/scroll-controls';
 import {TuiSvgDefsHostModule} from '@taiga-ui/core/internal/svg-defs-host';
@@ -13,10 +18,11 @@ import {TuiRootComponent} from './root.component';
         CommonModule,
         EventPluginsModule,
         TuiDragModule,
-        TuiPortalHostModule,
+        TuiDropdownHostModule,
         TuiSvgDefsHostModule,
         TuiHintsHostModule,
         TuiDialogHostModule,
+        TuiAlertHostModule,
         TuiScrollControlsModule,
     ],
     declarations: [TuiRootComponent],

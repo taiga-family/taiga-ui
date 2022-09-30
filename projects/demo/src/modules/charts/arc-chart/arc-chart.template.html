@@ -33,6 +33,7 @@
                 [minLabel]="minLabel"
                 [size]="size"
                 [value]="value"
+                [(activeItemIndex)]="activeItemIndex"
             ></tui-arc-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -84,6 +85,15 @@
             >
                 Value
             </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="activeItemIndex"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="activeItemIndex"
+            >
+                Index of selected arc
+            </ng-template>
         </tui-doc-documentation>
     </ng-template>
 
@@ -98,7 +108,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -107,7 +117,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

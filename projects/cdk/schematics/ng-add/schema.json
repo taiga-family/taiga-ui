@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "taiga-ui-ng-add",
+    "title": "Taiga UI ng-add",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "string",
+            "description": "The name of the project.",
+            "$default": {
+                "$source": "projectName"
+            }
+        },
+        "addGlobalStyles": {
+            "description": "Setting up global styles",
+            "type": "boolean",
+            "default": false,
+            "x-prompt": {
+                "message": "Do you want to use global Taiga UI classes, such as 'tui-space', 'tui-skeleton', etc?",
+                "type": "confirmation"
+            }
+        },
+        "addDialogsModule": {
+            "description": "Setting up dialog module",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you want to use Taiga UI dialogs?",
+                "type": "confirmation"
+            }
+        },
+        "addSanitizer": {
+            "description": "Setting up TUI_SANITIZER",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icon-set#sanitizer",
+                "type": "confirmation"
+            }
+        },
+        "addAlertModule": {
+            "description": "Setting up alerts module",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you want to use Taiga UI alerts?",
+                "type": "confirmation"
+            }
+        },
+        "addons": {
+            "description": "Setting up additional packages",
+            "type": "array",
+            "x-prompt": {
+                "message": "Choose additional packages to install",
+                "type": "list",
+                "multiselect": true,
+                "items": [
+                    {
+                        "value": "addon-doc",
+                        "label": "addon-doc         Taiga UI based library for developing documentation portals for Angular libraries"
+                    },
+                    {
+                        "value": "addon-charts",
+                        "label": "addon-charts      Components for various charts, graphs and visualizations"
+                    },
+                    {
+                        "value": "addon-commerce",
+                        "label": "addon-commerce    Money-related extension with currencies, credit card inputs and validators"
+                    },
+                    {
+                        "value": "addon-mobile",
+                        "label": "addon-mobile      Components and tools specific to mobile version of the app"
+                    },
+                    {
+                        "value": "addon-table",
+                        "label": "addon-table       Interactive table component and related utilities"
+                    },
+                    {
+                        "value": "addon-tablebars",
+                        "label": "addon-tablebars   Group action sliding toolbar"
+                    },
+                    {
+                        "value": "addon-editor",
+                        "label": "addon-editor      Rich text editor extension with related components"
+                    },
+                    {
+                        "value": "addon-preview",
+                        "label": "addon preview     Custom fullscreen dialog to preview various content such as documents, images etc."
+                    }
+                ]
+            }
+        }
+    },
+    "required": []
+}

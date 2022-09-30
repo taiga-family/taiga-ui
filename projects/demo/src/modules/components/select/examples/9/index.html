@@ -1,0 +1,47 @@
+<div class="example">
+    <tui-select
+        tuiTextfieldSize="l"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]="account"
+        [valueContent]="value"
+    >
+        <ng-template tuiDataList>
+            <tui-data-list>
+                <button
+                    *ngFor="let item of accounts"
+                    tuiOption
+                    [value]="item"
+                >
+                    <my-account [account]="item"></my-account>
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </tui-select>
+
+    <tui-select
+        tuiTextfieldSize="m"
+        class="tui-space_top-2"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]="account"
+        [valueContent]="value"
+    >
+        <ng-template tuiDataList>
+            <tui-data-list>
+                <button
+                    *ngFor="let item of accounts"
+                    tuiOption
+                    [value]="item"
+                >
+                    <my-account [account]="item"></my-account>
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </tui-select>
+</div>
+
+<ng-template
+    #value
+    let-account
+>
+    <my-account [account]="account"></my-account>
+</ng-template>

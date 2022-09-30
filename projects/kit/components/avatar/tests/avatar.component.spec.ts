@@ -1,13 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiAvatarComponent} from '../avatar.component';
 import {TuiAvatarModule} from '../avatar.module';
 
-describe('Avatar', () => {
+describe(`Avatar`, () => {
     @Component({
         template: `
             <tui-avatar
@@ -21,21 +20,21 @@ describe('Avatar', () => {
     })
     class TestComponent {
         @ViewChild(TuiAvatarComponent, {static: true})
-        component: TuiAvatarComponent;
+        component!: TuiAvatarComponent;
 
-        avatarUrl: string | null = 'someUrl';
-        text: string | null = 'James Cameron';
+        avatarUrl: string | null = `someUrl`;
+        text: string | null = `James Cameron`;
         autoColor = false;
-        size: TuiSizeXS | TuiSizeXL = 'm';
+        size: TuiSizeXS | TuiSizeXL = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiAvatarComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-avatar__';
+            return `tui-avatar__`;
         },
     };
 
@@ -53,53 +52,53 @@ describe('Avatar', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
     });
 
-    describe('computedText', () => {
-        it('if there is an avatar, the text value is empty', () => {
-            expect(component.computedText).toBe('');
+    describe(`computedText`, () => {
+        it(`if there is an avatar, the text value is empty`, () => {
+            expect(component.computedText).toBe(``);
         });
 
-        it('if there is no avatar, the text value is taken from the first letters of the words in text', () => {
+        it(`if there is no avatar, the text value is taken from the first letters of the words in text`, () => {
             testComponent.avatarUrl = null;
             fixture.detectChanges();
 
-            expect(component.computedText).toBe('JC');
+            expect(component.computedText).toBe(`JC`);
         });
 
-        it('if the avatar is absent, and there is one word in text, its first letter is taken', () => {
+        it(`if the avatar is absent, and there is one word in text, its first letter is taken`, () => {
             testComponent.avatarUrl = null;
-            testComponent.text = 'James';
+            testComponent.text = `James`;
             fixture.detectChanges();
 
-            expect(component.computedText).toBe('J');
+            expect(component.computedText).toBe(`J`);
         });
 
-        it('for xs sizes only one letter is taken', () => {
+        it(`for xs sizes only one letter is taken`, () => {
             testComponent.avatarUrl = null;
-            testComponent.size = 'xs';
+            testComponent.size = `xs`;
             fixture.detectChanges();
 
-            expect(component.computedText).toBe('J');
+            expect(component.computedText).toBe(`J`);
         });
     });
 
-    describe('Avatar color', () => {
-        it('if there is an avatarUrl the color is rgba(0, 0, 0, 0)', () => {
+    describe(`Avatar color`, () => {
+        it(`if there is an avatarUrl the color is rgba(0, 0, 0, 0)`, () => {
             expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
-                'rgba(0, 0, 0, 0)',
+                `rgba(0, 0, 0, 0)`,
             );
         });
 
-        it('when autoColor is on, the color will be - rgb(160, 170, 228)', () => {
+        it(`when autoColor is on, the color will be - rgb(160, 170, 228)`, () => {
             testComponent.autoColor = true;
             fixture.detectChanges();
             expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
-                'rgb(160, 170, 228)',
+                `rgb(160, 170, 228)`,
             );
         });
     });

@@ -1,0 +1,134 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font: var(--tui-font-text-m);
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius-m);
+
+    &[data-mode='onDark'] {
+        color: var(--tui-text-01-night);
+    }
+
+    &:not(._link) {
+        padding: 0.5625rem 2.1875rem 0.5625rem 0.5625rem;
+    }
+
+    &:hover .t-remove {
+        opacity: 1;
+    }
+
+    &._focused {
+        border-color: var(--tui-focus);
+        box-shadow: 0 0 0 1px inset var(--tui-focus);
+    }
+}
+
+.t-link {
+    display: flex;
+    flex: 1;
+    padding: 0.5625rem 2.1875rem 0.5625rem 0.5625rem;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--tui-text-01);
+    max-width: ~'calc(100% - 2.75rem)';
+
+    &:hover {
+        background-color: var(--tui-base-02);
+    }
+}
+
+.t-preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+    border-radius: var(--tui-radius-m);
+    overflow: hidden;
+    color: var(--tui-base-06);
+
+    &_big {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 1rem;
+
+        &:before {
+            .fullsize();
+            content: '';
+            background: var(--tui-base-08);
+            opacity: 0.08;
+        }
+    }
+}
+
+.t-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.t-loader {
+    .fullsize();
+}
+
+.t-icon {
+    .fullsize();
+    color: var(--tui-success-fill);
+
+    &_error {
+        color: var(--tui-error-fill);
+    }
+
+    &_deleted {
+        color: var(--tui-base-06);
+    }
+}
+
+.t-remove {
+    .transition(opacity);
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    opacity: 0;
+
+    &:focus,
+    &_mobile {
+        opacity: 1;
+    }
+}
+
+.t-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.t-text {
+    display: flex;
+}
+
+.t-size {
+    flex-shrink: 0;
+    opacity: var(--tui-disabled-opacity);
+    margin-left: 2 * @space;
+}
+
+.t-type {
+    flex-shrink: 0;
+}
+
+.t-name {
+    .text-overflow();
+}
+
+.t-content {
+    font: var(--tui-font-text-s);
+    color: var(--tui-error-fill);
+}

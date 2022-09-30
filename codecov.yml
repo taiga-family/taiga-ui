@@ -1,7 +1,21 @@
 codecov:
   branch: main
+  notify:
+    require_ci_to_pass: no
 
 coverage:
-  precision: 2
+  # This value is used to customize the visible color range in Codecov.
+  # The first number represents the red, and the second represents green.
+  # You can change the range of colors by adjusting this configuration.
+  range: 50..100 # by default 70..100
   round: down
-  range: '70...100'
+  precision: 2
+
+  # Disable codecov/patch check
+  status:
+    project:
+      default:
+        enabled: false
+    patch:
+      default:
+        enabled: false

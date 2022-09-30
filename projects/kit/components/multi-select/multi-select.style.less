@@ -3,6 +3,7 @@
 :host {
     position: relative;
     display: block;
+    border-radius: var(--tui-radius-m);
 
     &._disabled {
         pointer-events: none;
@@ -11,9 +12,12 @@
 
 .t-hosted {
     display: block;
+    border-radius: inherit;
 }
 
-.input {
+.t-input {
+    border-radius: inherit;
+
     :host:not(._editable):not(._readonly) & {
         cursor: pointer;
     }
@@ -28,6 +32,18 @@
     &_disabled {
         opacity: var(--tui-disabled-opacity);
     }
+
+    :host[data-size='s'] & {
+        height: var(--tui-height-s);
+    }
+
+    :host[data-size='m'] & {
+        height: var(--tui-height-m);
+    }
+
+    :host[data-size='l'] & {
+        height: var(--tui-height-l);
+    }
 }
 
 .t-group {
@@ -40,12 +56,12 @@
         padding-top: 0.0625rem;
         padding-bottom: 0;
 
-        :host[data-tui-host-size='m'] && {
+        :host[data-size='m'] && {
             padding-top: 0;
         }
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 1.1875rem 0.75rem 0;
         font-size: 0.8125rem;
     }
@@ -56,7 +72,7 @@
     .icon-button();
     width: 1.5rem;
     height: auto;
-    margin: 1rem 0.75rem;
+    margin: 0 0.75rem;
     pointer-events: auto;
     cursor: pointer;
 }

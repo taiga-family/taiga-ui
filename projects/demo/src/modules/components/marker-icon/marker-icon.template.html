@@ -1,4 +1,8 @@
-<tui-doc-page header="MarkerIcon" package="KIT" type="components">
+<tui-doc-page
+    header="MarkerIcon"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>MarkerIcon</code>
@@ -7,8 +11,7 @@
             param to choose appearance or set it with custom styles
         </p>
         <tui-notification i18n>
-            Marker icons should be 48x48px or smaller. If icon is smaller, it
-            will be cantered.
+            Marker icons should be 48x48px or smaller. If icon is smaller, it will be cantered.
 
             <strong>s</strong>
             size shows an icon as it and other sizes scale it
@@ -79,9 +82,11 @@
                 [documentationPropertyValues]="icons"
                 [(documentationPropertyValue)]="selectedIcon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
-                <a tuiLink routerLink="/services/svg-service">
+                An icon. It can be stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
                     <code>SvgService</code>
                 </a>
             </ng-template>
@@ -99,7 +104,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -108,7 +113,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

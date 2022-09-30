@@ -1,15 +1,31 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHighlightModule} from '../highlight.module';
 
-describe('TuiHighlight directive', () => {
+describe(`TuiHighlight directive`, () => {
     @Component({
         template: `
-            <div id="ica" tuiHighlight="ica">HAPICA</div>
-            <div id="dong" tuiHighlight="dong">ding</div>
-            <div id="aaa" tuiHighlight="aaa" tuiHighlightColor="yellow">aaabbb</div>
+            <div
+                id="ica"
+                tuiHighlight="ica"
+            >
+                HAPICA
+            </div>
+            <div
+                id="dong"
+                tuiHighlight="dong"
+            >
+                ding
+            </div>
+            <div
+                id="aaa"
+                tuiHighlight="aaa"
+                tuiHighlightColor="yellow"
+            >
+                aaabbb
+            </div>
         `,
     })
     class TestComponent {}
@@ -27,24 +43,21 @@ describe('TuiHighlight directive', () => {
         fixture.detectChanges();
     });
 
-    it('Highlight is shown', () => {
-        expect(
-            (document.querySelector('#ica')!.firstElementChild as HTMLElement).style
-                .display,
-        ).toBe('block');
+    it(`Highlight is shown`, () => {
+        const element = document.querySelector(`#ica`)?.firstElementChild as HTMLElement;
+
+        expect(element.style.display).toBe(`block`);
     });
 
-    it('Highlight is not shown', () => {
-        expect(
-            (document.querySelector('#dong')!.firstElementChild as HTMLElement).style
-                .display,
-        ).toBe('none');
+    it(`Highlight is not shown`, () => {
+        const element = document.querySelector(`#dong`)?.firstElementChild as HTMLElement;
+
+        expect(element.style.display).toBe(`none`);
     });
 
-    it('Highlight color is yellow', () => {
-        expect(
-            (document.querySelector('#aaa')!.firstElementChild as HTMLElement).style
-                .background,
-        ).toBe('yellow');
+    it(`Highlight color is yellow`, () => {
+        const element = document.querySelector(`#aaa`)?.firstElementChild as HTMLElement;
+
+        expect(element.style.background).toBe(`yellow`);
     });
 });

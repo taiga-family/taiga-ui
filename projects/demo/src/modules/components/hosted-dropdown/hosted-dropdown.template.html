@@ -1,25 +1,31 @@
-<tui-doc-page header="HostedDropdown" package="CORE" type="components">
+<tui-doc-page
+    header="HostedDropdown"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>tui-hosted-dropdown</code>
-            is a wrapper for focusable elements to attach to them a dropdown.
-            Working with keyboard is also included.
+            is a wrapper for focusable elements to attach to them a dropdown. Working with keyboard is also included.
         </p>
 
         <p>
-            If a wrapped element is input, arrow down press opens a dropdown.
-            The next press focuses the first item from the list.
+            If a wrapped element is input, arrow down press opens a dropdown. The next press focuses the first item from
+            the list.
         </p>
 
         <p i18n>
-            If it is not, mouseclick opens and closes a dropdown. A component
-            uses the first focusable item inside component as a host for opening
-            a dropdown. If you want another element to be host, use
+            If it is not, mouseclick opens and closes a dropdown. A component uses the first focusable item inside
+            component as a host for opening a dropdown. If you want another element to be host, use
             <code>tuiHostedDropdownHost</code>
             directive.
         </p>
 
-        <tui-doc-example id="menu" heading="Menu" [content]="example1">
+        <tui-doc-example
+            id="menu"
+            heading="Menu"
+            [content]="example1"
+        >
             <tui-hosted-dropdown-example-1></tui-hosted-dropdown-example-1>
         </tui-doc-example>
 
@@ -40,32 +46,18 @@
         >
             <tui-hosted-dropdown-example-3></tui-hosted-dropdown-example-3>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="hover"
-            i18n-heading
-            heading="On hover"
-            [content]="example4"
-        >
-            <tui-notification>
-                Add
-                <code>TuiDropdownHoverModule</code>
-                to use it
-            </tui-notification>
-            <tui-hosted-dropdown-example-4></tui-hosted-dropdown-example-4>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-hosted-dropdown
                 [content]="template ? dropdown : content"
-                [tuiDropdownAlign]="align"
                 [canOpen]="canOpen"
-                [tuiDropdownDirection]="direction"
-                [tuiDropdownLimitWidth]="limitWidth"
-                [tuiDropdownMinHeight]="minHeight"
-                [tuiDropdownMaxHeight]="maxHeight"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
                 [(open)]="open"
             >
                 <tui-input
@@ -135,7 +127,7 @@
                 Content inside a dropdown
             </ng-template>
         </tui-doc-documentation>
-        <dropdown-controller-documentation></dropdown-controller-documentation>
+        <dropdown-documentation></dropdown-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -149,7 +141,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -158,7 +150,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

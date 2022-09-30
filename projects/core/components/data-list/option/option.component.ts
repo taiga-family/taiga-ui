@@ -13,11 +13,10 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {
-    isNativeFocused,
-    setNativeFocused,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiEventWith,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
@@ -28,34 +27,32 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 
-export function shouldFocus({
-    currentTarget,
-}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
-    return !isNativeFocused(currentTarget);
+function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
+    return !tuiIsNativeFocused(currentTarget);
 }
 
 // TODO: Consider all use cases for aria roles
 @Component({
     selector: `button[tuiOption], a[tuiOption]`,
-    templateUrl: './option.template.html',
-    styleUrls: ['./option.style.less'],
+    templateUrl: `./option.template.html`,
+    styleUrls: [`./option.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        tabIndex: '-1',
-        type: 'button',
-        '[attr.disabled]': 'disabled || null',
+        tabIndex: `-1`,
+        type: `button`,
+        '[attr.disabled]': `disabled || null`,
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = 'm';
+    size: TuiSizeXS | TuiSizeL = `m`;
 
     @Input()
-    @HostBinding('attr.role')
+    @HostBinding(`attr.role`)
     @tuiDefaultProp()
-    role: TuiOptionRole = 'option';
+    role: TuiOptionRole = `option`;
 
     @Input()
     @tuiDefaultProp()
@@ -64,15 +61,14 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
     value?: T;
 
-    // TODO: Fix dataList type when updated to Ivy and compilation drops metadata
     constructor(
         @Optional()
         @Inject(TUI_OPTION_CONTENT)
         readonly content: PolymorpheusContent<
-            TuiContextWithImplicit<TemplateRef<{}>>
+            TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
         > | null,
         @Inject(forwardRef(() => TuiDataListComponent))
-        private readonly dataList: any,
+        private readonly dataList: TuiDataListComponent<T>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_DATA_LIST_HOST)
@@ -83,13 +79,13 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         readonly dropdown: TuiDropdownDirective | null,
     ) {}
 
-    @HostBinding('class._with-dropdown')
+    @HostBinding(`class._with-dropdown`)
     get active(): boolean {
         return !!this.dropdown && !!this.dropdown.dropdownBoxRef;
     }
 
-    @HostListener('click')
-    onClick() {
+    @HostListener(`click`)
+    onClick(): void {
         if (this.host && this.value !== undefined) {
             this.host.handleOption(this.value);
         }
@@ -97,14 +93,14 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
-    @HostListener('mousemove.init', ['$event'])
-    @HostListener('mousemove.silent', ['$event'])
-    onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>) {
-        setNativeFocused(currentTarget, true, true);
+    @HostListener(`mousemove.init`, [`$event`])
+    @HostListener(`mousemove.silent`, [`$event`])
+    onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
+        currentTarget.focus({preventScroll: true});
     }
 
     // Preventing focus loss upon focused option removal
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.dataList.handleFocusLossIfNecessary(this.elementRef.nativeElement);
     }
 }

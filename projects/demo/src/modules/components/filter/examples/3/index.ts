@@ -4,22 +4,22 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 const getIcon: Record<string, string> = {
-    Calendar: 'tuiIconCalendarLarge',
-    Favorite: 'tuiIconStarLarge',
-    Messages: 'tuiIconCommentLarge',
-    FAQ: 'tuiIconHelpCircleLarge',
-    Settings: 'tuiIconSettingsLarge',
+    Calendar: `tuiIconCalendarLarge`,
+    Favorite: `tuiIconStarLarge`,
+    Messages: `tuiIconCommentLarge`,
+    FAQ: `tuiIconHelpCircleLarge`,
+    Settings: `tuiIconSettingsLarge`,
 };
 
 @Component({
-    selector: 'tui-filter-example-3',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-filter-example-3`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiFilterExample3 {
-    items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
+    items = [`Calendar`, `Favorite`, `Messages`, `FAQ`, `Settings`];
 
     form = new FormGroup({
         filters: new FormControl([]),

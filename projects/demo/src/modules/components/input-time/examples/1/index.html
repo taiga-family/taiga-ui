@@ -1,5 +1,11 @@
-<form class="b-form" [formGroup]="testForm">
-    <tui-input-time formControlName="testValue" tuiTextfieldSize="s">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <tui-input-time
+        formControlName="testValue"
+        tuiTextfieldSize="s"
+    >
         Input time
     </tui-input-time>
     <tui-input-time
@@ -11,12 +17,14 @@
         Input time
     </tui-input-time>
     <p i18n>
-        If field is not required, but you want to mark it invalid if user did
-        not complete it, use
+        If field is not required, but you want to mark it invalid if user did not complete it, use
         <code>tuiUnfinishedValidator</code>
         directive
     </p>
-    <tui-input-time tuiUnfinishedValidator formControlName="testValue">
+    <tui-input-time
+        tuiUnfinishedValidator
+        formControlName="testValue"
+    >
         Input time
     </tui-input-time>
 </form>

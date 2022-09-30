@@ -1,9 +1,10 @@
-<tui-doc-page header="RadioList" package="KIT" type="components">
+<tui-doc-page
+    header="RadioList"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            Component for fast showing many radio buttons. It supports also
-            custom content
-        </p>
+        <p i18n>Component for fast showing many radio buttons. It supports also custom content</p>
 
         <tui-doc-example
             id="base"
@@ -33,9 +34,9 @@
                     [items]="items"
                     [orientation]="orientation"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [size]="size"
                     [itemContent]="itemContent"
                     [disabledItemHandler]="disabledItemHandler"
@@ -44,7 +45,10 @@
                 ></tui-radio-list>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #itemContent let-data>
+        <ng-template
+            #itemContent
+            let-data
+        >
             <div>Option &laquo;{{ data.name }}&raquo;.</div>
             <div class="description">{{ data.description }}</div>
         </ng-template>
@@ -67,10 +71,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -109,7 +110,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -124,7 +125,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -133,7 +134,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

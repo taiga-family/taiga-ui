@@ -11,10 +11,13 @@
         [style.background]="background"
         [style.color]="background"
     >
-        Color me Kubrick
+        <span class="invert">Color me Kubrick</span>
     </button>
 </tui-hosted-dropdown>
-<ng-template #picker let-activeZone>
+<ng-template
+    #picker
+    let-activeZone
+>
     <tui-color-selector
         [tuiActiveZoneParent]="activeZone"
         [(color)]="color"

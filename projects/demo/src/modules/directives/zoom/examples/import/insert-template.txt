@@ -1,3 +1,0 @@
-<div (tuiZoom)="onZoom($event)">
-    ...
-</div>

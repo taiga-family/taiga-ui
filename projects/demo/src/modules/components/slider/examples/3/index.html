@@ -1,0 +1,24 @@
+<input
+    tuiSlider
+    type="range"
+    size="m"
+    [max]="1000"
+    [step]="250"
+    [segments]="4"
+    [formControl]="formControl"
+/>
+
+<div class="ticks-labels">
+    <button
+        *ngFor="let label of labels"
+        class="tick-label"
+        (click)="patchValue(label)"
+    >
+        ${{ label }}
+    </button>
+</div>
+
+<p>
+    Control value:
+    <code>{{ formControl.value }}</code>
+</p>

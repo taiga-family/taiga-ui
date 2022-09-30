@@ -1,11 +1,13 @@
 import {Directive, Inject, Input, TemplateRef} from '@angular/core';
 
 @Directive({
-    selector: '[tuiHead]',
+    selector: `[tuiHead]`,
 })
-export class TuiHeadDirective<T extends Record<any, any>> {
+export class TuiHeadDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()
     tuiHead!: keyof T;
 
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
+    constructor(
+        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
+    ) {}
 }

@@ -7,56 +7,31 @@ import {
     Output,
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {isCurrentTarget, isFirefox, TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, skip, startWith} from 'rxjs/operators';
-
-const STYLE = `
-@keyframes tuiPresent {
-    from {
-        content: '1';
-    }
-
-    to {
-        content: '2';
-    }
-}
-
-.tui-present {
-    animation: tuiPresent 1000s infinite;
-}`;
+import {tuiIsCurrentTarget, tuiIsFirefox} from '@taiga-ui/cdk';
+import {BehaviorSubject} from 'rxjs';
+import {distinctUntilChanged, skip} from 'rxjs/operators';
 
 @Directive({
-    selector: '[tuiPresentChange]',
+    selector: `[tuiPresentChange]`,
     host: {
-        class: 'tui-present',
+        '[style.animation]': `"tuiPresent 1s infinite"`,
     },
 })
 export class TuiPresentDirective implements OnDestroy {
-    private readonly visibility$ = new Subject<boolean>();
-    private readonly observer?: MutationObserver;
+    private readonly visibility$ = new BehaviorSubject(false);
 
     @Output()
-    readonly tuiPresentChange: Observable<boolean>;
+    readonly tuiPresentChange = this.visibility$.pipe(distinctUntilChanged(), skip(1));
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
         @Inject(USER_AGENT) userAgent: string,
     ) {
-        directiveStyles.addStyle(STYLE, 'TuiPresentDirective');
-
-        this.tuiPresentChange = this.visibility$.pipe(
-            startWith(false),
-            distinctUntilChanged(),
-            skip(1),
-        );
-
-        if (isFirefox(userAgent)) {
+        if (tuiIsFirefox(userAgent)) {
             return;
         }
 
-        this.observer = new MutationObserver(() => {
+        const observer = new MutationObserver(() => {
             if (
                 !nativeElement.offsetParent &&
                 nativeElement.offsetWidth === 0 &&
@@ -66,9 +41,9 @@ export class TuiPresentDirective implements OnDestroy {
             }
         });
 
-        this.observer.observe(nativeElement, {
+        observer.observe(nativeElement, {
             attributes: true,
-            attributeFilter: ['style', 'class'],
+            attributeFilter: [`style`, `class`],
         });
     }
 
@@ -77,16 +52,21 @@ export class TuiPresentDirective implements OnDestroy {
      * https://drafts.csswg.org/css-animations/#eventdef-animationevent-animationcancel
      * It would also trigger on CSS like display: none on parent nodes which is awesome
      * but currently only works in Firefox
+     * ___
+     * TODO: remove MutationObserver when we bump versions of supported browsers:
+     *** Safari 12+
+     *** Chrome 83+
+     * See: {@link https://caniuse.com/mdn-api_window_animationcancel_event}
      */
-    @HostListener('animationcancel', ['$event', 'false'])
-    @HostListener('animationstart', ['$event', 'true'])
-    onAnimation(event: Event, visibility: boolean) {
-        if (isCurrentTarget(event)) {
+    @HostListener(`animationcancel`, [`$event`, `false`])
+    @HostListener(`animationstart`, [`$event`, `true`])
+    onAnimation(event: Event, visibility: boolean): void {
+        if (tuiIsCurrentTarget(event)) {
             this.visibility$.next(visibility);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.visibility$.next(false);
     }
 }

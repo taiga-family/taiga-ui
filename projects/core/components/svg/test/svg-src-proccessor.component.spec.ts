@@ -1,12 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_SVG_SRC_PROCESSOR} from '@taiga-ui/core/tokens';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiSvgComponent} from '../svg.component';
 import {TuiSvgModule} from '../svg.module';
 
-describe('svg source processor', () => {
+describe(`svg source processor`, () => {
     @Component({
         template: `
             <tui-svg [src]="icon"></tui-svg>
@@ -14,9 +14,9 @@ describe('svg source processor', () => {
     })
     class TestComponent {
         @ViewChild(TuiSvgComponent)
-        svgComponent: TuiSvgComponent;
+        svgComponent!: TuiSvgComponent;
 
-        icon = '';
+        icon = ``;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -41,9 +41,9 @@ describe('svg source processor', () => {
         fixture.detectChanges();
     });
 
-    it('added http protocol prefix by global processor', () => {
-        testComponent.icon = 'google.com/test.svg';
+    it(`added http protocol prefix by global processor`, () => {
+        testComponent.icon = `google.com/test.svg`;
         fixture.detectChanges();
-        expect(testComponent.svgComponent.src).toBe('https://google.com/test.svg');
+        expect(testComponent.svgComponent.src).toBe(`https://google.com/test.svg`);
     });
 });

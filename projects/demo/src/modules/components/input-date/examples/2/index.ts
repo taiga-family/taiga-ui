@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-input-date-example-2',
-    templateUrl: './index.html',
+    selector: `tui-input-date-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })

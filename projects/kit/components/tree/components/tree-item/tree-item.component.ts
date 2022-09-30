@@ -24,13 +24,13 @@ import {
 import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
 
 @Component({
-    selector: 'tui-tree-item',
-    templateUrl: './tree-item.template.html',
-    styleUrls: ['./tree-item.style.less'],
+    selector: `tui-tree-item`,
+    templateUrl: `./tree-item.template.html`,
+    styleUrls: [`./tree-item.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TREE_ITEM_PROVIDERS,
     host: {
-        role: 'treeitem',
+        role: `treeitem`,
     },
 })
 export class TuiTreeItemComponent implements DoCheck {
@@ -61,7 +61,7 @@ export class TuiTreeItemComponent implements DoCheck {
         readonly content: PolymorpheusContent<TuiTreeItemContext>,
     ) {}
 
-    @HostBinding('class._expandable')
+    @HostBinding(`class._expandable`)
     get isExpandable(): boolean {
         return !!this.nested.length;
     }
@@ -70,7 +70,7 @@ export class TuiTreeItemComponent implements DoCheck {
         return this.controller.isExpanded(this);
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.change$.next();
     }
 }

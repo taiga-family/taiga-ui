@@ -1,16 +1,16 @@
-import {getElementObscurers} from '../get-element-obscurers';
+import {tuiGetElementObscures} from '../get-element-obscurers';
 
-describe('getElementObscurers', () => {
-    it('returns null if there is no defaultView', () => {
-        const element = {ownerDocument: null};
+describe(`getElementObscurers`, () => {
+    it(`returns null if there is no defaultView`, () => {
+        const element: Element = {ownerDocument: null} as unknown as Element;
 
-        expect(getElementObscurers(element as any)).toEqual(null);
+        expect(tuiGetElementObscures(element)).toEqual(null);
     });
 
-    it('returns an edges array with obscurers', () => {
-        const element = document.createElement('div');
+    it(`returns an edges array with obscurers`, () => {
+        const element = document.createElement(`div`);
 
-        const result = getElementObscurers(element);
+        const result = tuiGetElementObscures(element);
 
         expect(result ? result.length : null).toEqual(4);
     });

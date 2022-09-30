@@ -11,24 +11,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
-    TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
-    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldComponent,
+    tuiPrimitiveTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-primitive-textfield-example-2',
-    templateUrl: './index.html',
+    selector: `tui-primitive-textfield-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
-        {
-            provide: TUI_PRIMITIVE_TEXTFIELD_OPTIONS, // <-- You are looking for this token
-            useValue: {
-                ...TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
-                iconCleaner: 'tuiIconChevronUp',
-            },
-        },
+        tuiPrimitiveTextfieldOptionsProvider({
+            iconCleaner: `tuiIconChevronUp`,
+        }),
     ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
@@ -55,15 +50,15 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
         return !!this.textfield && this.textfield.focused;
     }
 
-    onValueChange(textValue: string) {
+    onValueChange(textValue: string): void {
         this.updateValue(textValue);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 }

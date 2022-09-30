@@ -1,12 +1,23 @@
 <ng-content></ng-content>
 <tr *ngIf="heading">
-    <th class="heading" [colSpan]="table.columns.length">
-        <button type="button" class="expand" (click)="onClick()">
-            <span polymorpheus-outlet class="name" [content]="heading"></span>
+    <th
+        class="t-heading"
+        [colSpan]="table.columns.length"
+    >
+        <button
+            type="button"
+            class="t-expand"
+            (click)="onClick()"
+        >
+            <span class="t-name">
+                <ng-container *polymorpheusOutlet="heading as text">
+                    {{ text }}
+                </ng-container>
+            </span>
             <tui-svg
                 src="tuiIconChevronDownLarge"
-                class="chevron"
-                [class.chevron_rotated]="open"
+                class="t-chevron"
+                [class.t-chevron_rotated]="open"
             ></tui-svg>
         </button>
     </th>

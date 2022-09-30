@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
-import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
@@ -26,11 +26,10 @@ import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 
 const MIN_COMPONENT_WIDTH = 104;
 
-// @dynamic
 @Component({
-    selector: 'tui-doc-demo',
-    templateUrl: './demo.template.html',
-    styleUrls: ['./demo.style.less'],
+    selector: `tui-doc-demo`,
+    templateUrl: `./demo.template.html`,
+    styleUrls: [`./demo.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -41,13 +40,13 @@ const MIN_COMPONENT_WIDTH = 104;
     ],
 })
 export class TuiDocDemoComponent implements OnInit, AfterViewInit {
-    @ViewChild('content')
+    @ViewChild(`content`)
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChild('wrapper')
+    @ViewChild(`wrapper`)
     private readonly wrapper?: ElementRef<HTMLElement>;
 
-    @ViewChild('resizerText')
+    @ViewChild(`resizerText`)
     private readonly resizerText?: ElementRef<HTMLElement>;
 
     private readonly isBrowser: boolean;
@@ -58,23 +57,23 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     control: AbstractControl | null = null;
 
     @ContentChild(TemplateRef)
-    readonly template?: TemplateRef<{}>;
+    readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
-    updateOnVariants = ['change', 'blur', 'submit'];
-    updateOn: 'change' | 'blur' | 'submit' = 'change';
+    updateOnVariants = [`change`, `blur`, `submit`];
+    updateOn: 'change' | 'blur' | 'submit' = `change`;
     expanded = false;
     opaque = true;
     modeControl = new FormControl();
     mode: TuiBrightness | null = null;
     readonly change$ = new Subject<void>();
-    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    readonly items: readonly TuiBrightness[] = [`onLight`, `onDark`];
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(PLATFORM_ID) platformId: Object,
+        @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
         @Inject(Location) locationRef: Location,
         @Inject(UrlSerializer) urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
@@ -104,61 +103,61 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
             });
     }
 
-    @HostListener('window:resize')
-    onResize() {
+    @HostListener(`window:resize`)
+    onResize(): void {
         this.setResizerTextContent();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.createForm();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.setResizerTextContent();
     }
 
-    setResizerTextContent() {
+    setResizerTextContent(): void {
         if (!this.content || !this.resizerText) {
             return;
         }
 
         const paddingLeft = this.isBrowser
             ? getComputedStyle(this.content.nativeElement).paddingLeft
-            : '0';
+            : `0`;
         const {offsetWidth} = this.content.nativeElement;
 
         this.resizerText.nativeElement.textContent = String(
-            offsetWidth - parseInt(paddingLeft || '0', 10) * 2,
+            offsetWidth - parseInt(paddingLeft || `0`, 10) * 2,
         );
     }
 
-    onDragStart(event: MouseEvent) {
+    onDragStart(event: MouseEvent): void {
         event.preventDefault();
         this.initialX = event.clientX;
         this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
     }
 
-    onDragContinues(event: MouseEvent) {
+    onDragContinues(event: MouseEvent): void {
         const deltaX = this.initialX - event.clientX;
 
         this.resizeContent(deltaX);
         this.setResizerTextContent();
     }
 
-    onDragEnd() {
+    onDragEnd(): void {
         this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
     }
 
-    toggleDetails() {
+    toggleDetails(): void {
         this.expanded = !this.expanded;
     }
 
-    updateOnChange(updateOn: 'change' | 'blur' | 'submit') {
+    updateOnChange(updateOn: 'change' | 'blur' | 'submit'): void {
         this.updateOn = updateOn;
         this.createForm();
     }
 
-    private createForm() {
+    private createForm(): void {
         const {control, updateOn} = this;
 
         if (!control) {
@@ -168,15 +167,15 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.testForm = new FormGroup({testValue: control}, {updateOn});
     }
 
-    private resizeContent(delta: number) {
+    private resizeContent(delta: number): void {
         if (!this.wrapper) {
             return;
         }
 
         this.renderer.setStyle(
             this.wrapper.nativeElement,
-            'width',
-            `${Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)}px`,
+            `width`,
+            tuiPx(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
         );
     }
 }

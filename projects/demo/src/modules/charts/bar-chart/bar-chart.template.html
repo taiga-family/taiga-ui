@@ -7,7 +7,12 @@
     <ng-template pageTab>
         <p i18n>
             Bar chart that can be used as a content to
-            <a tuiLink [routerLink]="['/components/axes']">axes</a>
+            <a
+                tuiLink
+                [routerLink]="['/components/axes']"
+            >
+                axes
+            </a>
             .
         </p>
 
@@ -26,6 +31,17 @@
             heading="Same values with collapsed mode"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint"
+                    tuiLink
+                >
+                    <code>Hint</code>
+                </a>
+                directive to enable hints with
+                <code>tuiHintContent</code>
+            </tui-notification>
             <tui-bar-chart-example-2></tui-bar-chart-example-2>
         </tui-doc-example>
     </ng-template>
@@ -38,8 +54,6 @@
                 [value]="value"
                 [max]="max"
                 [size]="size"
-                [hintContent]="hintContent"
-                [hintMode]="hintMode"
             ></tui-bar-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -51,26 +65,6 @@
                 [(documentationPropertyValue)]="collapsed"
             >
                 Shows data set in a single bar
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Content of segment hint. It gets index of segment as context
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintMode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHintModeT | null"
-                [documentationPropertyValues]="hintModeVariants"
-                [(documentationPropertyValue)]="hintMode"
-            >
-                Hint mode
             </ng-template>
             <ng-template
                 i18n
@@ -117,7 +111,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -126,7 +120,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

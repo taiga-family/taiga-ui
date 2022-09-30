@@ -1,9 +1,15 @@
-<tui-doc-page header="Input" package="KIT" type="components">
+<tui-doc-page
+    header="Input"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
-            Input&nbsp;&mdash; is a single-line textfield. It's not recommended
-            to use it with numbers, because the value type of this component is
-            a string
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
+            Input&nbsp;&mdash; is a single-line textfield. It's not recommended to use it with numbers, because the
+            value type of this component is a string
         </div>
 
         <p i18n>Inputs for other types of data:</p>
@@ -11,69 +17,105 @@
         <blockquote>
             <ul i18n>
                 <li>
-                    <a tuiLink routerLink="/components/text-area">
+                    <a
+                        tuiLink
+                        routerLink="/components/text-area"
+                    >
                         <code>TextArea</code>
                     </a>
                     — for multiline text
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-date">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-date"
+                    >
                         <code>InputDate</code>
                     </a>
                     — for dates
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-date-range">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-date-range"
+                    >
                         <code>InputDateRange</code>
                     </a>
                     — for a range of dates
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-number">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-number"
+                    >
                         <code>InputNumber</code>
                     </a>
                     — for number (with measurement postfix)
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-password">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-password"
+                    >
                         <code>InputPassword</code>
                     </a>
                     — for passwords
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-phone">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-phone"
+                    >
                         <code>InputPhone</code>
                     </a>
                     — for phone numbers
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-tag">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-tag"
+                    >
                         <code>InputTag</code>
                     </a>
                     — for inputing tags
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-range">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-range"
+                    >
                         <code>InputRange</code>
                     </a>
                     ,
-                    <a tuiLink routerLink="/components/input-slider">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-slider"
+                    >
                         <code>InputSlider</code>
                     </a>
                     — for accurate number values
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/slider">
+                    <a
+                        tuiLink
+                        routerLink="/components/slider"
+                    >
                         <code>Slider</code>
                     </a>
                     ,
-                    <a tuiLink routerLink="/components/range">
+                    <a
+                        tuiLink
+                        routerLink="/components/range"
+                    >
                         <code>Range</code>
                     </a>
                     — for not accurate number values
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-count">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-count"
+                    >
                         <code>InputCount</code>
                     </a>
                     — for integer number of smth
@@ -152,11 +194,19 @@
             <tui-input-example-7></tui-input-example-7>
         </tui-doc-example>
 
-        <tui-doc-example id="datalist" heading="DataList" [content]="example8">
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [content]="example8"
+        >
             <tui-input-example-8></tui-input-example-8>
         </tui-doc-example>
 
-        <tui-doc-example id="rtl" heading="Direction: RTL" [content]="example9">
+        <tui-doc-example
+            id="rtl"
+            heading="Direction: RTL"
+            [content]="example9"
+        >
             <tui-input-example-9></tui-input-example-9>
         </tui-doc-example>
     </ng-template>
@@ -168,20 +218,15 @@
                     [formControl]="control"
                     [focusable]="focusable"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [icon]="icon"
-                    [iconAlign]="iconAlign"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [readOnly]="readOnly"
-                    [tuiTextfieldType]="type"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldAutocomplete]="autocomplete"
-                    [tuiTextfieldInputMode]="inputMode"
                     [tuiTextfieldSize]="size"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldMaxLength]="maxLength"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -189,14 +234,21 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
-                    placeholder
+                    Label
                     <strong>strong text</strong>
+                    <input
+                        tuiTextfield
+                        [placeholder]="placeholder"
+                    />
                 </tui-input>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #itemContent let-data>
+        <ng-template
+            #itemContent
+            let-data
+        >
             <div class="account">
                 <div class="name">{{ data.name }}</div>
                 <tui-money [value]="data.balance"></tui-money>
@@ -215,27 +267,30 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="icon"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
-                <a tuiLink routerLink="/services/svg-service">
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
                     <code>SvgService</code>
                 </a>
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="iconAlign"
+                documentationPropertyName="placeholder"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="placeholder"
             >
-                Icon align
+                Placeholder (use external
+                <code>&lt;input tuiTextfield/&gt;</code>
+                to set it)
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
@@ -252,7 +307,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -267,7 +322,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -276,9 +331,11 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<ng-template #justLongText>LongTextContent</ng-template>

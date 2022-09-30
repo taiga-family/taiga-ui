@@ -1,8 +1,11 @@
-<tui-doc-page header="Preview" package="ADDON-PREVIEW">
+<tui-doc-page
+    header="Preview"
+    package="ADDON-PREVIEW"
+>
     <ng-template pageTab>
         <p i18n>
-            Preview component allows to open modal for viewing some document and
-            to work with it (download, zoom, rotate etc)
+            Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate
+            etc)
         </p>
 
         <p>As a document you can provide any content like images,</p>
@@ -48,7 +51,7 @@
 
                 <tui-doc-code
                     filename="app.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -57,13 +60,13 @@
 
                 <tui-doc-code
                     filename="some.component.html"
-                    [code]="exampleTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
             <li>
                 Open the component from the
-                <code>PreviewDialogService</code>
+                <code>TuiPreviewDialogService</code>
                 as in the example
 
                 <tui-doc-code

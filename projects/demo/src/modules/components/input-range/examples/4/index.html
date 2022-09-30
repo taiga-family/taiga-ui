@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <tui-input-range
+        [min]="0"
+        [max]="100"
+        [segments]="5"
+        [steps]="5"
+        [pluralize]="pluralize"
+        [formControl]="control"
+    >
+        Select volume range
+    </tui-input-range>
+
+    <div class="ticks-labels">
+        <span>
+            <tui-svg src="tuiIconSoundOff"></tui-svg>
+        </span>
+        <span>20%</span>
+        <span>40%</span>
+        <span>60%</span>
+        <span>80%</span>
+        <span>
+            <tui-svg src="tuiIconSound"></tui-svg>
+        </span>
+    </div>
+</div>

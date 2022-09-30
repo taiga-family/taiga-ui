@@ -1,26 +1,28 @@
-tui-wrapper[data-appearance='material-textfield'] {
+@import 'taiga-ui-local';
+
+[tuiWrapper][data-appearance='material-textfield'] {
     background: #f5f5f5;
     color: rgba(0, 0, 0, 0.87);
     border-radius: 0.25rem 0.25rem 0 0;
 
     &:after {
+        .transition(all);
         height: 0.0625rem;
         background: #8e8e8e;
         top: auto;
         border: none;
         transform-origin: bottom;
-        transition: all var(--tui-duration);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: #ececec;
 
         &:after {
             background: #1f1f1f;
         }
-    }
+    });
 
-    &._focused {
+    .wrapper-focus({
         background: #dcdcdc;
 
         // TODO: Better internal elements customization
@@ -32,9 +34,9 @@ tui-wrapper[data-appearance='material-textfield'] {
             background: #6200ee;
             transform: scaleY(2);
         }
-    }
+    });
 
-    &._invalid {
+    .wrapper-invalid({
         // TODO: Better internal elements customization
         label {
             color: #b00020 !important;
@@ -43,10 +45,11 @@ tui-wrapper[data-appearance='material-textfield'] {
         &:after {
             background: #b00020;
         }
-    }
+    });
 }
 
-tui-wrapper[data-appearance='material-button'] {
+[tuiWrapper][data-appearance='material-button'] {
+    .transition(all);
     border-radius: 0.25rem;
     background: #6200ee;
     color: #fff;
@@ -54,31 +57,30 @@ tui-wrapper[data-appearance='material-button'] {
     font-weight: bold;
     box-shadow: 0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.2), 0rem 0.125rem 0.125rem 0rem rgba(0, 0, 0, 0.14%),
         0rem 0.0625rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
-    transition: all var(--tui-duration);
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: #6e14ef;
         box-shadow: 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.2), 0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-            0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12);
-    }
+        0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12);
+    });
 
-    &[data-state='pressed'] {
+    .wrapper-active({
         background: #6e14ef;
         box-shadow: 0 0.3125rem 0.3125rem -0.1875rem rgba(0, 0, 0, 0.2),
-            0rem 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.14), 0rem 0.1875rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
-    }
+        0rem 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.14), 0rem 0.1875rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+    });
 
-    &._focused {
+    .wrapper-focus({
         background: #883df2;
 
         &:after {
             display: none;
         }
-    }
+    });
 }
 
-tui-wrapper[data-appearance='material-checkbox-on'],
-tui-wrapper[data-appearance='material-checkbox-off'] {
+[tuiWrapper][data-appearance='material-checkbox-on'],
+[tuiWrapper][data-appearance='material-checkbox-off'] {
     color: #fff;
 
     &:before {
@@ -94,6 +96,7 @@ tui-wrapper[data-appearance='material-checkbox-off'] {
     }
 
     &:after {
+        .transition(opacity);
         position: absolute;
         top: -0.5rem;
         left: -0.5rem;
@@ -102,24 +105,28 @@ tui-wrapper[data-appearance='material-checkbox-off'] {
         border-radius: 100%;
         background: #000;
         opacity: 0;
-        transition: opacity var(--tui-duration);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         &:after {
             opacity: 0.05;
         }
-    }
+    });
 
-    &[data-state='pressed'],
-    &._focused {
+    .wrapper-active({
         &:after {
             opacity: 0.1;
         }
-    }
+    });
+
+    .wrapper-focus({
+        &:after {
+            opacity: 0.1;
+        }
+    });
 }
 
-tui-wrapper[data-appearance='material-checkbox-on'] {
+[tuiWrapper][data-appearance='material-checkbox-on'] {
     &:before,
     &:after {
         background: #6200ee;

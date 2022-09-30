@@ -9,4 +9,4 @@
     [class.t-button_expanded]="isExpanded"
     (click)="onClick()"
 ></button>
-<ng-container *ngTemplateOutlet="context.template"></ng-container>
+<ng-container [ngTemplateOutlet]="context.template"></ng-container>

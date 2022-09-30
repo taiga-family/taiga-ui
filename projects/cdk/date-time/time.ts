@@ -1,8 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
-import {padStart} from '@taiga-ui/cdk/utils/format';
-import {inRange} from '@taiga-ui/cdk/utils/math';
+import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {
     HOURS_IN_DAY,
@@ -25,7 +24,7 @@ export class TuiTime implements TuiTimeLike {
     ) {
         tuiAssert.assert(
             TuiTime.isValidTime(hours, minutes, seconds, ms),
-            'Time must be real, but got:',
+            `Time must be real, but got:`,
             hours,
             minutes,
             seconds,
@@ -44,13 +43,13 @@ export class TuiTime implements TuiTimeLike {
     ): boolean {
         return (
             Number.isInteger(hours) &&
-            inRange(hours, 0, HOURS_IN_DAY) &&
+            tuiInRange(hours, 0, HOURS_IN_DAY) &&
             Number.isInteger(minutes) &&
-            inRange(minutes, 0, MINUTES_IN_HOUR) &&
+            tuiInRange(minutes, 0, MINUTES_IN_HOUR) &&
             Number.isInteger(seconds) &&
-            inRange(seconds, 0, SECONDS_IN_MINUTE) &&
+            tuiInRange(seconds, 0, SECONDS_IN_MINUTE) &&
             Number.isInteger(ms) &&
-            inRange(ms, 0, 1000)
+            tuiInRange(ms, 0, 1000)
         );
     }
 
@@ -79,7 +78,7 @@ export class TuiTime implements TuiTimeLike {
     static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
         tuiAssert.assert(Number.isInteger(milliseconds));
         tuiAssert.assert(
-            inRange(milliseconds, 0, MILLISECONDS_IN_DAY),
+            tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
             `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
         );
 
@@ -155,15 +154,28 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
+        const needAddMs = mode === `HH:MM:SS.MSS` || (!mode && this.ms > 0);
         const needAddSeconds =
-            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
+            needAddMs || mode === `HH:MM:SS` || (!mode && this.seconds > 0);
 
         return (
             `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? ':' + this.formatTime(this.seconds) : ''}` +
-            `${needAddMs ? '.' + this.formatTime(this.ms, 3) : ''}`
+            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ``}` +
+            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ``}`
         );
+    }
+
+    valueOf(): number {
+        return this.toAbsoluteMilliseconds();
+    }
+
+    /**
+     * Returns the primitive value of the given Date object.
+     * Depending on the argument, the method can return either a string or a number.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
+     */
+    [Symbol.toPrimitive](hint: string): string | number {
+        return Date.prototype[Symbol.toPrimitive].call(this, hint);
     }
 
     /**
@@ -179,6 +191,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     private formatTime(time: number, digits: number = 2): string {
-        return padStart(String(time), digits, '0');
+        return String(time).padStart(digits, `0`);
     }
 }

@@ -11,8 +11,8 @@
             class="t-cell"
             [class.t-cell_today]="itemIsToday(sheet[rowIndex][colIndex])"
             [class.t-cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
-            [class.t-cell_disabled]="itemIsDisabled(sheet[rowIndex][colIndex])"
-            [attr.data-tui-element-range]="getItemRange(sheet[rowIndex][colIndex])"
+            [attr.data-state]="getItemState(sheet[rowIndex][colIndex])"
+            [attr.data-range]="getItemRange(sheet[rowIndex][colIndex])"
             (click)="onItemClick(sheet[rowIndex][colIndex])"
         >
             {{ sheet[rowIndex][colIndex].day }}

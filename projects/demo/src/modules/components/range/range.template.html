@@ -1,4 +1,8 @@
-<tui-doc-page header="Range" package="KIT" type="components">
+<tui-doc-page
+    header="Range"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component allows to choose a part of a range</p>
 
@@ -10,6 +14,50 @@
         >
             <tui-range-example-1></tui-range-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            i18n-heading
+            heading="Sizes"
+            [content]="example2"
+        >
+            <tui-range-example-2></tui-range-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="segments"
+            i18n-heading
+            heading="Visual segments + labels for ticks"
+            [content]="example3"
+        >
+            <tui-notification class="tui-space_bottom-8">
+                <p
+                    i18n
+                    class="tui-space_top-0"
+                >
+                    Use mixin
+                    <code>tui-slider-ticks-labels</code>
+                    to arrange ticks' labels (it places them strictly below ticks).
+                </p>
+                <p i18n>
+                    The mixin accepts only a single argument – size of the slider (
+                    <code>m</code>
+                    or
+                    <code>s</code>
+                    ).
+                </p>
+            </tui-notification>
+            <tui-range-example-3></tui-range-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="key-steps"
+            i18n-heading
+            heading="KeySteps"
+            [content]="example4"
+        >
+            <tui-range-example-4></tui-range-example-4>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -19,12 +67,10 @@
                     [formControl]="control"
                     [min]="min"
                     [max]="max"
-                    [steps]="steps"
+                    [step]="step"
                     [segments]="segments"
-                    [pluralize]="pluralize"
                     [keySteps]="keySteps"
                     [size]="size"
-                    [quantum]="quantum"
                 ></tui-range>
             </ng-template>
         </tui-doc-demo>
@@ -44,68 +90,45 @@
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Min value
+                The lowest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>0</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Max value
+                The greatest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>100</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="pluralize"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize | Record<string, string>"
-                [documentationPropertyValues]="pluralizeVariants"
-                [(documentationPropertyValue)]="pluralize"
-            >
-                Plural forms for labels. TuiPluralize array is deprecated. Use
-                object that mimics the
-                <a
-                    tuiLink
-                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
-                >
-                    ICU format
-                </a>
-                for i18nPlural
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="segments"
+                documentationPropertyName="step"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="segmentsVariants"
-                [(documentationPropertyValue)]="segments"
+                [(documentationPropertyValue)]="step"
             >
-                A number of visual segments
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="steps"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="stepsVariants"
-                [(documentationPropertyValue)]="steps"
-            >
-                Number of actual discrete slider steps
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="keySteps"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiKeySteps"
-                [documentationPropertyValues]="keyStepsVariants"
-                [(documentationPropertyValue)]="keySteps"
-            >
-                Anchor points of non-uniform format between value and position
+                A number that specifies the granularity that the value must adhere.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -116,16 +139,43 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+
+                <p>
+                    The default is
+                    <code>m</code>
+                    .
+                </p>
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="quantum"
+                documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="quantumVariants"
-                [(documentationPropertyValue)]="quantum"
+                [(documentationPropertyValue)]="segments"
             >
-                Quantum
+                A number of visual segments.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    (no ticks).
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps | null"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Anchor points of non-uniform format between value and position.
+
+                <p>
+                    The default is
+                    <code>null</code>
+                    .
+                </p>
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -139,7 +189,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -154,7 +204,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -163,7 +213,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

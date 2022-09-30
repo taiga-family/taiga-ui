@@ -7,19 +7,17 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
-import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {LanguagePreview} from '@taiga-ui/i18n';
+import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {merge, Observable, of, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
 const STEP = 0.5;
-const SLIDER_SIZE = 104;
-const GHOST_OFFSET_PX = 36;
 
 @Component({
-    selector: 'tui-preview-zoom',
-    templateUrl: './preview-zoom.template.html',
-    styleUrls: ['./preview-zoom.style.less'],
+    selector: `tui-preview-zoom`,
+    templateUrl: `./preview-zoom.template.html`,
+    styleUrls: [`./preview-zoom.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoomComponent {
@@ -48,15 +46,8 @@ export class TuiPreviewZoomComponent {
 
     constructor(
         @Inject(TUI_PREVIEW_ZOOM_TEXTS)
-        readonly zoomTexts$: Observable<LanguagePreview['zoomTexts']>,
+        readonly zoomTexts$: Observable<TuiLanguagePreview['zoomTexts']>,
     ) {}
-
-    get ghostLeft(): number {
-        const position = (this.value - this.min) * SLIDER_SIZE;
-        const range = this.max - this.min;
-
-        return GHOST_OFFSET_PX + Math.round(position / range);
-    }
 
     get leftButtonDisabled(): boolean {
         return this.value === this.min;
@@ -70,8 +61,8 @@ export class TuiPreviewZoomComponent {
         return this.value > this.min;
     }
 
-    onModelChange(value: number) {
-        const clamped = clamp(value, this.min, this.max);
+    onModelChange(value: number): void {
+        const clamped = tuiClamp(value, this.min, this.max);
 
         if (clamped === this.value) {
             return;
@@ -81,15 +72,15 @@ export class TuiPreviewZoomComponent {
         this.valueChange.emit(clamped);
     }
 
-    onReset() {
+    onReset(): void {
         this.reset.emit();
     }
 
-    onMinus() {
+    onMinus(): void {
         this.onModelChange(this.value - STEP);
     }
 
-    onPlus() {
+    onPlus(): void {
         this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
     }
 }

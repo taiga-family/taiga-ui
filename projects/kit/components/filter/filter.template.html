@@ -1,28 +1,28 @@
-<ng-container *ngFor="let item of items">
-    <tui-checkbox-block
-        automation-id="tui-filter__checkbox"
-        class="item"
-        [disabled]="disabledItemHandler(item)"
-        [hideCheckbox]="true"
-        [ngModel]="isCheckboxEnabled(item)"
-        [size]="size"
-        (ngModelChange)="onCheckbox($event, item)"
+<tui-checkbox-block
+    *ngFor="let item of items"
+    automation-id="tui-filter__checkbox"
+    class="t-item"
+    [disabled]="disabledItemHandler(item)"
+    [hideCheckbox]="true"
+    [ngModel]="isCheckboxEnabled(item)"
+    [size]="size"
+    (ngModelChange)="onCheckbox($event, item)"
+>
+    <div
+        automation-id="tui-filter__content"
+        class="t-content"
     >
-        <div automation-id="tui-filter__content" class="content">
-            <div
-                polymorpheus-outlet
-                [content]="content"
-                [context]="getItemContentContext(item)"
-            ></div>
-            <tui-badge
-                *ngIf="badgeHandler(item) as badgeValue"
-                automation-id="tui-filter__badge"
-                tuiMode="onLight"
-                class="badge"
-                [class.badge_disabled]="disabledItemHandler(item)"
-                [size]="size"
-                [value]="badgeValue"
-            ></tui-badge>
-        </div>
-    </tui-checkbox-block>
-</ng-container>
+        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: item}">
+            {{ text }}
+        </ng-container>
+        <tui-badge
+            *ngIf="badgeHandler(item) as badgeValue"
+            automation-id="tui-filter__badge"
+            tuiMode="onLight"
+            class="t-badge"
+            [class.t-badge_disabled]="disabledItemHandler(item)"
+            [size]="size"
+            [value]="badgeValue"
+        ></tui-badge>
+    </div>
+</tui-checkbox-block>

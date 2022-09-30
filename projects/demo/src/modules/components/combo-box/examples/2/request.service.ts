@@ -13,7 +13,6 @@ import {
 import {databaseMockData} from './database-mock-data';
 import {User} from './user';
 
-// @dynamic
 @Injectable()
 export class RequestService {
     private readonly request$ = new Subject<string>();
@@ -28,13 +27,13 @@ export class RequestService {
             ),
         ),
         takeUntil(this.destroy$),
-        shareReplay(1),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 
     constructor(@Inject(TuiDestroyService) private readonly destroy$: Observable<void>) {}
 
-    request(query: string | null): Observable<ReadonlyArray<User> | null> {
-        this.request$.next(query || '');
+    request(query: string | null): Observable<readonly User[] | null> {
+        this.request$.next(query || ``);
 
         return this.response$;
     }

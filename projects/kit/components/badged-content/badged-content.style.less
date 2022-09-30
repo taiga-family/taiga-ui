@@ -4,183 +4,149 @@
     color: var(--tui-base-01);
 }
 
-.notification {
+.t-notification {
     position: absolute;
     border-radius: 100%;
     box-shadow: 0 0 0 2px currentColor;
-
-    &:not([data-tui-background]) {
-        background-color: currentColor;
-    }
+    background-color: currentColor;
 
     &_top {
-        :host[data-tui-host-size='xs']:not(._rounded) &,
-        :host[data-tui-host-size='s']:not(._rounded) &,
-        :host[data-tui-host-size='m']:not(._rounded) & {
+        :host[data-size='xs']:not(._rounded) &,
+        :host[data-size='s']:not(._rounded) &,
+        :host[data-size='m']:not(._rounded) & {
             top: -0.125rem;
             right: -0.125rem;
         }
 
-        :host[data-tui-host-size='l']:not(._rounded) &,
-        :host[data-tui-host-size='xl']:not(._rounded) & {
+        :host[data-size='l']:not(._rounded) &,
+        :host[data-size='xl']:not(._rounded) & {
             top: -0.25rem;
             right: -0.25rem;
         }
 
-        :host[data-tui-host-size='xxl']:not(._rounded) & {
+        :host[data-size='xxl']:not(._rounded) & {
             top: -0.5rem;
             right: -0.5rem;
         }
 
-        :host[data-tui-host-size='xs']._rounded & {
+        :host[data-size='xs']._rounded & {
             top: 0;
             right: 0;
         }
 
-        :host[data-tui-host-size='s']._rounded & {
+        :host[data-size='s']._rounded & {
             top: 0.0625rem;
             right: 0.0625rem;
         }
 
-        :host[data-tui-host-size='m']._rounded & {
+        :host[data-size='m']._rounded & {
             top: 0.1875rem;
             right: 0.1875rem;
         }
 
-        :host[data-tui-host-size='l']._rounded & {
+        :host[data-size='l']._rounded & {
             top: 0.25rem;
             right: 0.25rem;
         }
 
-        :host[data-tui-host-size='xl']._rounded & {
+        :host[data-size='xl']._rounded & {
             top: 0.375rem;
             right: 0.375rem;
         }
 
-        :host[data-tui-host-size='xxl']._rounded & {
+        :host[data-size='xxl']._rounded & {
             top: 0.5rem;
             right: 0.5rem;
         }
     }
 
     &_bottom {
-        :host[data-tui-host-size='m']:not(._rounded) & {
+        :host[data-size='m']:not(._rounded) & {
             bottom: -0.125rem;
             right: -0.125rem;
         }
 
-        :host[data-tui-host-size='l']:not(._rounded) &,
-        :host[data-tui-host-size='xl']:not(._rounded) & {
+        :host[data-size='l']:not(._rounded) &,
+        :host[data-size='xl']:not(._rounded) & {
             bottom: -0.25rem;
             right: -0.25rem;
         }
 
-        :host[data-tui-host-size='xxl']:not(._rounded) & {
+        :host[data-size='xxl']:not(._rounded) & {
             bottom: -0.5rem;
             right: -0.5rem;
         }
 
-        :host[data-tui-host-size='m']._rounded & {
+        :host[data-size='m']._rounded & {
             bottom: 0.1875rem;
             right: 0.1875rem;
         }
 
-        :host[data-tui-host-size='l']._rounded & {
+        :host[data-size='l']._rounded & {
             bottom: 0.25rem;
             right: 0.25rem;
         }
 
-        :host[data-tui-host-size='xl']._rounded & {
+        :host[data-size='xl']._rounded & {
             bottom: 0.375rem;
             right: 0.375rem;
         }
 
-        :host[data-tui-host-size='xxl']._rounded & {
+        :host[data-size='xxl']._rounded & {
             bottom: 0.5rem;
             right: 0.5rem;
         }
     }
 
-    :host[data-tui-host-size='xs'] &,
-    :host[data-tui-host-size='s'] &,
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='xs'] &,
+    :host[data-size='s'] &,
+    :host[data-size='m'] & {
         width: 0.5rem;
         height: 0.5rem;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: 0.75rem;
         height: 0.75rem;
     }
 
-    :host[data-tui-host-size='xl'] & {
+    :host[data-size='xl'] & {
         width: 1rem;
         height: 1rem;
     }
 
-    :host[data-tui-host-size='xxl'] & {
+    :host[data-size='xxl'] & {
         width: 1.5rem;
         height: 1.5rem;
     }
 }
 
-.icon,
-.notification {
-    &[data-tui-color='normal'] {
-        color: var(--tui-base-06);
-    }
-
-    &[data-tui-color='onDark'] {
-        color: var(--tui-secondary);
-    }
-
-    &[data-tui-color='gray'] {
-        color: var(--tui-base-03);
-    }
-
-    &[data-tui-color='warning'] {
-        color: var(--tui-primary);
-    }
-
-    &[data-tui-color='secondary'] {
-        color: var(--tui-info-fill);
-    }
-
-    &[data-tui-color='highlight'],
-    &[data-tui-color='white'] {
-        color: var(--tui-base-01);
-    }
-
-    &[data-tui-color='transparent-dark'] {
-        color: var(--tui-clear);
-    }
-
-    &[data-tui-color='transparent-light'] {
-        color: var(--tui-clear-inverse);
-    }
-}
-
-.icon {
+.t-icon {
     color: var(--tui-success-fill);
 
-    :host[data-tui-host-size='s'] &,
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='xs'] & {
+        transform: scale(2/3);
+        margin: -0.25rem;
+    }
+
+    :host[data-size='s'] &,
+    :host[data-size='m'] & {
         width: 1.5rem;
         height: 1.5rem;
         margin: -0.125rem;
     }
 
-    :host[data-tui-host-size='l'] &,
-    :host[data-tui-host-size='xl'] & {
+    :host[data-size='l'] &,
+    :host[data-size='xl'] & {
         transform: scale(1.2);
     }
 
-    :host[data-tui-host-size='xxl'] & {
+    :host[data-size='xxl'] & {
         transform: scale(1.6);
     }
 }
 
-.content {
+.t-content {
     position: absolute;
     display: flex;
     align-items: center;
@@ -191,95 +157,95 @@
     box-shadow: 0 0 0 2px currentColor;
 
     &_top {
-        :host[data-tui-host-size='xxl'][data-tui-host-top]:not(._rounded) &,
-        :host[data-tui-host-size='l'][data-tui-host-top]:not(._rounded) & {
+        :host[data-size='xxl'][data-tui-host-top]:not(._rounded) &,
+        :host[data-size='l'][data-tui-host-top]:not(._rounded) & {
             right: -0.5rem;
             top: -0.5rem;
         }
 
-        :host[data-tui-host-size='xl'][data-tui-host-top]:not(._rounded) & {
+        :host[data-size='xl'][data-tui-host-top]:not(._rounded) & {
             right: -0.375rem;
             top: -0.375rem;
         }
 
-        :host[data-tui-host-size='m'][data-tui-host-top]:not(._rounded) &,
-        :host[data-tui-host-size='s'][data-tui-host-top]:not(._rounded) &,
-        :host[data-tui-host-size='xs'][data-tui-host-top]:not(._rounded) & {
+        :host[data-size='m'][data-tui-host-top]:not(._rounded) &,
+        :host[data-size='s'][data-tui-host-top]:not(._rounded) &,
+        :host[data-size='xs'][data-tui-host-top]:not(._rounded) & {
             right: -0.25rem;
             top: -0.25rem;
         }
 
-        :host[data-tui-host-size='xxl'][data-tui-host-top]._rounded & {
+        :host[data-size='xxl'][data-tui-host-top]._rounded & {
             right: 0.25rem;
             top: 0.25rem;
         }
 
-        :host[data-tui-host-size='xl'][data-tui-host-top]._rounded & {
+        :host[data-size='xl'][data-tui-host-top]._rounded & {
             right: 0.125rem;
             top: 0.125rem;
         }
 
-        :host[data-tui-host-size='l'][data-tui-host-top]._rounded &,
-        :host[data-tui-host-size='m'][data-tui-host-top]._rounded &,
-        :host[data-tui-host-size='s'][data-tui-host-top]._rounded &,
-        :host[data-tui-host-size='xs'][data-tui-host-top]._rounded & {
+        :host[data-size='l'][data-tui-host-top]._rounded &,
+        :host[data-size='m'][data-tui-host-top]._rounded &,
+        :host[data-size='s'][data-tui-host-top]._rounded &,
+        :host[data-size='xs'][data-tui-host-top]._rounded & {
             right: -0.25rem;
             top: -0.25rem;
         }
     }
 
     &_bottom {
-        :host[data-tui-host-size='xxl'][data-tui-host-bottom]:not(._rounded) &,
-        :host[data-tui-host-size='l'][data-tui-host-bottom]:not(._rounded) & {
+        :host[data-size='xxl'][data-tui-host-bottom]:not(._rounded) &,
+        :host[data-size='l'][data-tui-host-bottom]:not(._rounded) & {
             bottom: -0.5rem;
             right: -0.5rem;
         }
 
-        :host[data-tui-host-size='xl'][data-tui-host-bottom]:not(._rounded) & {
+        :host[data-size='xl'][data-tui-host-bottom]:not(._rounded) & {
             bottom: -0.375rem;
             right: -0.375rem;
         }
 
-        :host[data-tui-host-size='m'][data-tui-host-bottom]:not(._rounded) & {
+        :host[data-size='m'][data-tui-host-bottom]:not(._rounded) & {
             bottom: -0.25rem;
             right: -0.25rem;
         }
 
-        :host[data-tui-host-size='xxl'][data-tui-host-bottom]._rounded & {
+        :host[data-size='xxl'][data-tui-host-bottom]._rounded & {
             bottom: 0.25rem;
             right: 0.25rem;
         }
 
-        :host[data-tui-host-size='xl'][data-tui-host-bottom]._rounded & {
+        :host[data-size='xl'][data-tui-host-bottom]._rounded & {
             bottom: 0.125rem;
             right: 0.125rem;
         }
 
-        :host[data-tui-host-size='l'][data-tui-host-bottom]._rounded &,
-        :host[data-tui-host-size='m'][data-tui-host-bottom]._rounded & {
+        :host[data-size='l'][data-tui-host-bottom]._rounded &,
+        :host[data-size='m'][data-tui-host-bottom]._rounded & {
             bottom: -0.25rem;
             right: -0.25rem;
         }
     }
 
-    :host[data-tui-host-size='xxl'] & {
+    :host[data-size='xxl'] & {
         height: 2rem;
         min-width: 2rem;
     }
 
-    :host[data-tui-host-size='xl'] &,
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='xl'] &,
+    :host[data-size='l'] & {
         height: 1.5rem;
         min-width: 1.5rem;
     }
 
-    :host[data-tui-host-size='m'] &,
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='m'] &,
+    :host[data-size='s'] & {
         height: 1.25rem;
         min-width: 1.25rem;
     }
 
-    :host[data-tui-host-size='xs'] & {
+    :host[data-size='xs'] & {
         height: 1rem;
         min-width: 1rem;
     }

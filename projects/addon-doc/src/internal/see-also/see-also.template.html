@@ -1,5 +1,10 @@
-<h5 class="header">{{ text }}</h5>
+<h5 class="t-header">{{ text }}</h5>
 <ng-container *ngFor="let item of seeAlso; last as last">
-    <a tuiLink [routerLink]="getRouterLink(item)">{{ item }}</a>
-    <ng-container *ngIf="!last">,</ng-container>
+    <a
+        tuiLink
+        [routerLink]="getRouterLink(item)"
+    >
+        {{ item }}
+    </a>
+    <ng-container *ngIf="!last">{{ ', ' }}</ng-container>
 </ng-container>

@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -19,42 +19,45 @@ class User {
     }
 }
 
-const databaseMockData: ReadonlyArray<User> = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
+const databaseMockData: readonly User[] = [
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, assets`/images/avatar.jpg`),
 ];
 
 @Component({
-    selector: 'tui-combo-box-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-combo-box-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiComboBoxExample1 {
-    readonly search$ = new Subject<string>();
+    readonly search$: Subject<string | null> = new Subject();
 
-    readonly items$: Observable<ReadonlyArray<User> | null> = this.search$.pipe(
+    readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
         filter(value => value !== null),
         switchMap(search =>
-            this.serverRequest(search).pipe(startWith<ReadonlyArray<User> | null>(null)),
+            this.serverRequest(search).pipe(startWith<readonly User[] | null>(null)),
         ),
         startWith(databaseMockData),
     );
 
     readonly testValue = new FormControl(databaseMockData[1]);
 
-    onSearchChange(searchQuery: string) {
+    onSearchChange(searchQuery: string | null): void {
         this.search$.next(searchQuery);
+    }
+
+    extractValueFromEvent(event: Event): string | null {
+        return (event.target as HTMLInputElement)?.value || null;
     }
 
     /**
      * Service request emulation
      */
-    private serverRequest(searchQuery: string): Observable<ReadonlyArray<User>> {
-        const result = databaseMockData.filter(
-            user =>
-                user.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
+    private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
+        const result = databaseMockData.filter(user =>
+            TUI_DEFAULT_MATCHER(user, searchQuery || ``),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

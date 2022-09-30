@@ -1,10 +1,13 @@
-<tui-doc-page header="CheckboxBlock" package="KIT" type="components">
+<tui-doc-page
+    header="CheckboxBlock"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>CheckboxBlock</code>
-            can be used in forms where selected option does not change or update
-            content (e.g. does not work like a filter). It may be grouped in
-            horizontal row only except the mobile view
+            can be used in forms where selected option does not change or update content (e.g. does not work like a
+            filter). It may be grouped in horizontal row only except the mobile view
         </p>
 
         <tui-doc-example
@@ -47,9 +50,9 @@
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -63,9 +66,9 @@
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -79,9 +82,9 @@
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -145,7 +148,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -160,7 +163,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -169,7 +172,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

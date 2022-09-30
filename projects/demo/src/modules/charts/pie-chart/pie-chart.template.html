@@ -20,6 +20,17 @@
             heading="With labels"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint"
+                    tuiLink
+                >
+                    <code>Hint</code>
+                </a>
+                directive to enable hints with
+                <code>tuiHintContent</code>
+            </tui-notification>
             <tui-pie-chart-example-2></tui-pie-chart-example-2>
         </tui-doc-example>
     </ng-template>
@@ -29,7 +40,6 @@
             <tui-pie-chart
                 class="chart"
                 [value]="value"
-                [hintContent]="hintContent"
                 [size]="size"
                 [(activeItemIndex)]="activeItemIndex"
             ></tui-pie-chart>
@@ -44,16 +54,6 @@
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active fragment
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Content for hint. It gets active segment index in context
             </ng-template>
             <ng-template
                 i18n
@@ -89,7 +89,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -98,7 +98,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

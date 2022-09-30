@@ -1,3 +1,3 @@
-export function drawLine(point: [number, number]): string {
+export function tuiDrawLine(point: [number, number]): string {
     return `L ${point}`;
 }

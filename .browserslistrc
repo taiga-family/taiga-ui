@@ -1,0 +1,4 @@
+# we only want es2015 compliant browsers https://caniuse.com/#feat=es6
+# just use one as representative for all
+
+supports es6-module

@@ -1,7 +1,7 @@
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiAriaDialogContext {
-    readonly component: PolymorpheusContent<any>;
+    readonly component: PolymorpheusComponent<any, any>;
     readonly id: string;
     readonly createdAt: number;
 }

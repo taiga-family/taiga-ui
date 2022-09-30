@@ -15,7 +15,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
-    isNativeFocusedIn,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
@@ -23,16 +22,16 @@ import {
     tuiDefaultProp,
     TuiHandler,
     TuiIdentityMatcher,
-    tuiPure,
+    tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @bad TODO: Add active zone to track focus
 @Component({
-    selector: 'tui-filter',
-    templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
+    selector: `tui-filter`,
+    templateUrl: `./filter.template.html`,
+    styleUrls: [`./filter.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
@@ -42,12 +41,12 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<T> = [];
+    items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -69,7 +68,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+    content: PolymorpheusContent = ({$implicit}: TuiContextWithImplicit<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
@@ -77,17 +76,10 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    @tuiPure
-    getItemContentContext($implicit: T): TuiContextWithImplicit<T> {
-        return {
-            $implicit,
-        };
-    }
-
-    onCheckbox(value: boolean, item: T) {
+    onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.updateValue(
             value

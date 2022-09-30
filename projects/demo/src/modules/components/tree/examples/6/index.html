@@ -6,12 +6,15 @@
     [childrenHandler]="handler"
 ></tui-tree>
 
-<ng-template #content let-item>
+<ng-template
+    #content
+    let-item
+>
     <tui-checkbox-labeled
         class="tui-space_vertical-2 tui-space_left-1"
-        [ngModel]="item | tuiMapper : getValue : map"
+        [ngModel]="item | tuiMapper: getValue:map"
         (ngModelChange)="onChecked(item, $event)"
     >
-        {{item.text}}
+        {{ item.text }}
     </tui-checkbox-labeled>
 </ng-template>

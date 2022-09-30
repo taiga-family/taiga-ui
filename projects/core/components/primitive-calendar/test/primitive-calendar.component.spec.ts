@@ -9,19 +9,20 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes';
+import {
+    TuiCalendarSheetPipe,
+    TuiInteractiveState,
+    TuiPrimitiveCalendarComponent,
+    TuiPrimitiveCalendarModule,
+    TuiRangeState,
+} from '@taiga-ui/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
-    mockCurrentDate,
-    pendingIfNotMoscowTimeZone,
-    restoreRealDate,
+    configureTestSuite,
+    tuiMockCurrentDate,
+    tuiPendingIfNotMoscowTimeZone,
+    tuiRestoreRealDate,
 } from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
-
-import {TuiInteractiveState} from '../../../enums/interactive-state';
-import {TuiRangeState} from '../../../enums/range-state';
-import {TuiPrimitiveCalendarComponent} from '../primitive-calendar.component';
-import {TuiPrimitiveCalendarModule} from '../primitive-calendar.module';
 
 @Component({
     template: `
@@ -43,11 +44,12 @@ class TestComponent {
 
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
-    onDayClick(_: TuiDay) {}
+    onDayClick(_: TuiDay): void {}
 }
 
-describe('PrimitiveCalendar', () => {
-    const TODAY = 23;
+const TODAY = 23;
+
+describe(`PrimitiveCalendar`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarComponent;
@@ -60,7 +62,7 @@ describe('PrimitiveCalendar', () => {
     });
 
     beforeEach(() => {
-        mockCurrentDate(new Date(2018, 1, TODAY));
+        tuiMockCurrentDate(new Date(2018, 1, TODAY));
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
@@ -69,19 +71,19 @@ describe('PrimitiveCalendar', () => {
         fixture.detectChanges();
     });
 
-    describe('today', () => {
+    describe(`today`, () => {
         beforeEach(() => {
-            pendingIfNotMoscowTimeZone();
+            tuiPendingIfNotMoscowTimeZone();
         });
 
-        it('is highlighted if current month and year were selected', () => {
+        it(`is highlighted if current month and year were selected`, () => {
             const currentItem = getTodayCalendarItem();
 
             expect(currentItem).not.toBeNull();
             expect(currentItem.nativeElement.innerHTML.includes(TODAY)).toBe(true);
         });
 
-        it('is not highlighted if not current month and current year were selected', () => {
+        it(`is not highlighted if not current month and current year were selected`, () => {
             testComponent.month = new TuiMonth(2017, 9);
             fixture.detectChanges();
 
@@ -90,7 +92,7 @@ describe('PrimitiveCalendar', () => {
             expect(todayItem).toBeNull();
         });
 
-        it('is not highlighted if current month and not current year were selected', () => {
+        it(`is not highlighted if current month and not current year were selected`, () => {
             testComponent.month = new TuiMonth(2018, 10);
             fixture.detectChanges();
 
@@ -100,58 +102,60 @@ describe('PrimitiveCalendar', () => {
         });
     });
 
-    describe('disabledItemHandler', () => {
-        it('all dates are not disabled as default', () => {
+    describe(`disabledItemHandler`, () => {
+        it(`all dates are not disabled as default`, () => {
             expect(getDisabledCalendarItems()).toEqual([]);
         });
 
-        describe('if there are dates under condition', () => {
+        describe(`if there are dates under condition`, () => {
             beforeEach(() => {
                 testComponent.disabledItemHandler = ({day}) => day === 20;
                 fixture.detectChanges();
             });
 
-            it('blocked date under condition', () => {
+            it(`blocked date under condition`, () => {
                 expect(getDisabledCalendarItems().length).toEqual(1);
                 expect(
                     getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
-                ).toEqual('20');
+                ).toEqual(`20`);
             });
 
-            it('click on blocked date does not change value', () => {
+            it(`click on blocked date does not change value`, () => {
                 getDisabledCalendarItems()[0].nativeElement.click();
                 fixture.detectChanges();
                 expect(testComponent.value).toBe(null);
             });
 
-            it('can be checked due itemIsDisabled', () => {
+            it(`can be checked due itemIsDisabled`, () => {
                 const disabledDay = new TuiDay(2010, 4, 20);
 
-                expect(component.itemIsDisabled(disabledDay)).toBe(true);
+                expect(component.getItemState(disabledDay)).toBe(
+                    TuiInteractiveState.Disabled,
+                );
             });
         });
     });
 
-    describe('getItemState', () => {
-        it('returns pressed state if it is not disabled', () => {
+    describe(`getItemState`, () => {
+        it(`returns pressed state if it is not disabled`, () => {
             const dayToPress = new TuiDay(2019, 4, 16);
 
             component.onItemPressed(dayToPress);
 
-            expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Pressed);
+            expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Active);
         });
 
-        it('returns hovered state if it is not disabled and pressed', () => {
+        it(`returns hovered state if it is not disabled and pressed`, () => {
             const dayToHover = new TuiDay(2019, 4, 16);
 
             component.onItemHovered(dayToHover);
 
-            expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hovered);
+            expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hover);
         });
     });
 
-    describe('getItemRange', () => {
-        it('returns start correctly if there is range in value', () => {
+    describe(`getItemRange`, () => {
+        it(`returns start correctly if there is range in value`, () => {
             const day1 = new TuiDay(2019, 4, 16);
             const day2 = new TuiDay(2020, 1, 1);
             const range = new TuiDayRange(day1, day2);
@@ -161,7 +165,7 @@ describe('PrimitiveCalendar', () => {
             expect(component.getItemRange(day1)).toBe(TuiRangeState.Start);
         });
 
-        it('returns end correctly if there is range in value', () => {
+        it(`returns end correctly if there is range in value`, () => {
             const day1 = new TuiDay(2019, 4, 16);
             const day2 = new TuiDay(2020, 1, 1);
             const range = new TuiDayRange(day1, day2);
@@ -171,7 +175,7 @@ describe('PrimitiveCalendar', () => {
             expect(component.getItemRange(day2)).toBe(TuiRangeState.End);
         });
 
-        it('returns single if value is single day and item eqauls this', () => {
+        it(`returns single if value is single day and item eqauls this`, () => {
             const day1 = new TuiDay(2019, 4, 24);
             const range = new TuiDayRange(day1, day1);
 
@@ -181,8 +185,8 @@ describe('PrimitiveCalendar', () => {
         });
     });
 
-    describe('itemIsInterval', () => {
-        it('returns false if there is single day range value but no hoveredItem', () => {
+    describe(`itemIsInterval`, () => {
+        it(`returns false if there is single day range value but no hoveredItem`, () => {
             const day = new TuiDay(2019, 4, 16);
 
             component.value = new TuiDayRange(day, day);
@@ -191,7 +195,7 @@ describe('PrimitiveCalendar', () => {
             expect(component.itemIsInterval(day)).toBe(false);
         });
 
-        it('returns true if item is between single day range value and hoveredItem', () => {
+        it(`returns true if item is between single day range value and hoveredItem`, () => {
             const singleDayRangeValue = new TuiDayRange(
                 new TuiDay(2019, 4, 14),
                 new TuiDay(2019, 4, 14),
@@ -205,7 +209,7 @@ describe('PrimitiveCalendar', () => {
             expect(component.itemIsInterval(day)).toBe(true);
         });
 
-        it('returns true if item is between day range value', () => {
+        it(`returns true if item is between day range value`, () => {
             const dayRangeValue = new TuiDayRange(
                 new TuiDay(2019, 4, 14),
                 new TuiDay(2019, 4, 24),
@@ -218,18 +222,20 @@ describe('PrimitiveCalendar', () => {
         });
     });
 
-    it('emits hovered item', done => {
+    it(`emits hovered item`, () => {
+        let result: unknown;
         const day = new TuiDay(2019, 4, 16);
 
         component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
-            expect(hoveredDay).toBe(day);
-            done();
+            result = hoveredDay;
         });
 
         component.onItemHovered(day);
+
+        expect(result).toBe(day);
     });
 
-    it('does not recalculate month and sheet if it has already been set with the same month', () => {
+    it(`does not recalculate month and sheet if it has already been set with the same month`, () => {
         const firstlySetMonth = new TuiMonth(2019, 4);
         const candidateToSecondSet = new TuiMonth(2019, 4);
 
@@ -241,28 +247,26 @@ describe('PrimitiveCalendar', () => {
     });
 
     function getTodayCalendarItem(): DebugElement {
-        return fixture.debugElement.query(By.css('.t-cell_today'));
+        return fixture.debugElement.query(By.css(`.t-cell_today`));
     }
 
     function getDisabledCalendarItems(): DebugElement[] {
-        return fixture.debugElement.queryAll(
-            By.css('[data-tui-element-state="disabled"]'),
-        );
+        return fixture.debugElement.queryAll(By.css(`[data-state="disabled"]`));
     }
 
     afterEach(() => {
-        restoreRealDate();
+        tuiRestoreRealDate();
     });
 });
 
-describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
+const MOCKED_MONTH = new TuiMonth(2021, 5);
+
+describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    const MOCKED_MONTH = new TuiMonth(2021, 5);
-
     beforeEach(() => {
-        restoreRealDate();
+        tuiRestoreRealDate();
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
@@ -271,7 +275,7 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
         fixture.detectChanges();
     });
 
-    describe('Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday', () => {
+    describe(`Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [TuiPrimitiveCalendarModule],
@@ -285,47 +289,47 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
             });
         });
 
-        it('contains calendar header (with days of week names) which starts with Sunday', () => {
+        it(`contains calendar header (with days of week names) which starts with Sunday`, () => {
             expect(getDaysOfWeek()).toEqual([
-                'Sun',
-                'Mon',
-                'Tue',
-                'Wed',
-                'Thu',
-                'Fri',
-                'Sat',
+                `Sun`,
+                `Mon`,
+                `Tue`,
+                `Wed`,
+                `Thu`,
+                `Fri`,
+                `Sat`,
             ]);
         });
 
-        it('contains the first column with dates which are actual Sundays', () => {
-            expect(getColumnDates(0)).toEqual(['30', '6', '13', '20', '27', '4']);
+        it(`contains the first column with dates which are actual Sundays`, () => {
+            expect(getColumnDates(0)).toEqual([`30`, `6`, `13`, `20`, `27`, `4`]);
         });
 
-        it('contains the fifth column with dates which are actual Thursday', () => {
-            expect(getColumnDates(4)).toEqual(['3', '10', '17', '24', '1', '8']);
+        it(`contains the fifth column with dates which are actual Thursday`, () => {
+            expect(getColumnDates(4)).toEqual([`3`, `10`, `17`, `24`, `1`, `8`]);
         });
 
-        it('sets red color only for weekends', () => {
+        it(`sets red color only for weekends`, () => {
             expect(isAllWeekdays(getColumnCells(0))).toBe(
                 true,
-                'Sunday column should be red',
+                `Sunday column should be red`,
             );
 
             [1, 2, 3, 4, 5].forEach(index => {
                 expect(isAllWeekdays(getColumnCells(index))).toBe(
                     false,
-                    'Monday-Friday should not be red',
+                    `Monday-Friday should not be red`,
                 );
             });
 
             expect(isAllWeekdays(getColumnCells(6))).toBe(
                 true,
-                'Saturday column should be red',
+                `Saturday column should be red`,
             );
         });
     });
 
-    describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
+    describe(`Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [TuiPrimitiveCalendarModule],
@@ -339,47 +343,47 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
             });
         });
 
-        it('contains calendar header (with days of week names) which starts with Monday', () => {
+        it(`contains calendar header (with days of week names) which starts with Monday`, () => {
             expect(getDaysOfWeek()).toEqual([
-                'Mon',
-                'Tue',
-                'Wed',
-                'Thu',
-                'Fri',
-                'Sat',
-                'Sun',
+                `Mon`,
+                `Tue`,
+                `Wed`,
+                `Thu`,
+                `Fri`,
+                `Sat`,
+                `Sun`,
             ]);
         });
 
-        it('contains the first column with dates which are actual Mondays', () => {
-            expect(getColumnDates(0)).toEqual(['31', '7', '14', '21', '28', '5']);
+        it(`contains the first column with dates which are actual Mondays`, () => {
+            expect(getColumnDates(0)).toEqual([`31`, `7`, `14`, `21`, `28`, `5`]);
         });
 
-        it('contains the fifth column with dates which are actual Fridays', () => {
-            expect(getColumnDates(4)).toEqual(['4', '11', '18', '25', '2', '9']);
+        it(`contains the fifth column with dates which are actual Fridays`, () => {
+            expect(getColumnDates(4)).toEqual([`4`, `11`, `18`, `25`, `2`, `9`]);
         });
 
-        it('sets red color only for weekends', () => {
+        it(`sets red color only for weekends`, () => {
             [0, 1, 2, 3, 4].forEach(index => {
                 expect(isAllWeekdays(getColumnCells(index))).toBe(
                     false,
-                    'Monday-Friday should not be red',
+                    `Monday-Friday should not be red`,
                 );
             });
 
             expect(isAllWeekdays(getColumnCells(5))).toBe(
                 true,
-                'Saturday column should be red',
+                `Saturday column should be red`,
             );
 
             expect(isAllWeekdays(getColumnCells(6))).toBe(
                 true,
-                'Sunday column should be red',
+                `Sunday column should be red`,
             );
         });
     });
 
-    describe('Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday', () => {
+    describe(`Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 imports: [TuiPrimitiveCalendarModule],
@@ -393,49 +397,49 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
             });
         });
 
-        it('contains calendar header (with days of week names) which starts with Wednesday', () => {
+        it(`contains calendar header (with days of week names) which starts with Wednesday`, () => {
             expect(getDaysOfWeek()).toEqual([
-                'Wed',
-                'Thu',
-                'Fri',
-                'Sat',
-                'Sun',
-                'Mon',
-                'Tue',
+                `Wed`,
+                `Thu`,
+                `Fri`,
+                `Sat`,
+                `Sun`,
+                `Mon`,
+                `Tue`,
             ]);
         });
 
-        it('contains the first column with dates which are actual Wednesdays', () => {
-            expect(getColumnDates(0)).toEqual(['26', '2', '9', '16', '23', '30']);
+        it(`contains the first column with dates which are actual Wednesdays`, () => {
+            expect(getColumnDates(0)).toEqual([`26`, `2`, `9`, `16`, `23`, `30`]);
         });
 
-        it('contains the fifth column with dates which are actual Sundays', () => {
-            expect(getColumnDates(4)).toEqual(['30', '6', '13', '20', '27', '4']);
+        it(`contains the fifth column with dates which are actual Sundays`, () => {
+            expect(getColumnDates(4)).toEqual([`30`, `6`, `13`, `20`, `27`, `4`]);
         });
 
-        it('sets red color only for weekends', () => {
+        it(`sets red color only for weekends`, () => {
             [0, 1, 2, 5, 6].forEach(index => {
                 expect(isAllWeekdays(getColumnCells(index))).toBe(
                     false,
-                    'Monday-Friday should not be red',
+                    `Monday-Friday should not be red`,
                 );
             });
 
             expect(isAllWeekdays(getColumnCells(3))).toBe(
                 true,
-                'Saturday column should be red',
+                `Saturday column should be red`,
             );
 
             expect(isAllWeekdays(getColumnCells(4))).toBe(
                 true,
-                'Sunday column should be red',
+                `Sunday column should be red`,
             );
         });
     });
 
     function getDaysOfWeek(): string[] {
         const daysOfWeekContainers =
-            fixture.debugElement.queryAll(By.css('.t-row_weekday .t-cell')) || [];
+            fixture.debugElement.queryAll(By.css(`.t-row_weekday .t-cell`)) || [];
 
         return daysOfWeekContainers.map(container => container.nativeElement.textContent);
     }
@@ -451,7 +455,7 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
     }
 
     function isAllWeekdays($cells: DebugElement[]): boolean {
-        return $cells.every(cell => cell.classes['t-cell_weekend']);
+        return $cells.every(cell => cell.classes[`t-cell_weekend`]);
     }
 
     function getColumnDates(columnIndex: number): string[] {

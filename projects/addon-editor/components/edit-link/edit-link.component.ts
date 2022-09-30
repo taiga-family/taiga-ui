@@ -5,21 +5,18 @@ import {
     EventEmitter,
     HostListener,
     Inject,
-    Optional,
     Output,
 } from '@angular/core';
-import {getClosestElement} from '@taiga-ui/cdk';
-import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
+import {tuiIsElement} from '@taiga-ui/cdk';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
 const END = MAX_LENGTH - START - 10;
 
-// @dynamic
 @Component({
-    selector: 'tui-edit-link',
-    templateUrl: './edit-link.template.html',
-    styleUrls: ['./edit-link.style.less'],
+    selector: `tui-edit-link`,
+    templateUrl: `./edit-link.template.html`,
+    styleUrls: [`./edit-link.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
@@ -29,24 +26,16 @@ export class TuiEditLinkComponent {
     @Output()
     readonly removeLink = new EventEmitter<void>();
 
-    edit: boolean;
+    url: string = this.makeUrl();
 
-    url: string;
+    edit = !this.url;
 
-    prefix = 'http://';
+    prefix = `http://`;
 
     constructor(
-        @Inject(DOCUMENT) documentRef: Document,
-        @Optional()
-        @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
-        shadowRootRef: DocumentOrShadowRoot | null,
-    ) {
-        const doc = shadowRootRef || documentRef;
-        const selection = doc.getSelection();
-
-        this.url = selection ? this.getHref(selection) : '';
-        this.edit = !this.url;
-    }
+        @Inject(DOCUMENT)
+        private readonly documentRef: Document,
+    ) {}
 
     get hasUrl(): boolean {
         return !!this.url;
@@ -59,22 +48,30 @@ export class TuiEditLinkComponent {
     get shortUrl(): string {
         return this.url.length < MAX_LENGTH
             ? this.url
-            : this.url.substr(0, START) + '...' + this.url.substr(this.url.length - END);
+            : `${this.url.slice(0, Math.max(0, START))}...${this.url.slice(
+                  this.url.length - END,
+              )}`;
     }
 
-    @HostListener('mousedown', ['$event'])
-    onMouseDown(event: MouseEvent) {
-        const tagName =
-            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : '';
+    private get isViewMode(): boolean {
+        return !this.edit;
+    }
 
-        if (tagName === 'a' || tagName === 'button' || tagName === 'input') {
-            return;
+    @HostListener(`document:selectionchange`)
+    onSelectionChange(): void {
+        if (this.isViewMode) {
+            this.url = this.makeUrl();
         }
-
-        event.preventDefault();
     }
 
-    onSave() {
+    @HostListener(`mousedown`, [`$event`])
+    onMouseDown(event: MouseEvent): void {
+        if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
+            event.preventDefault();
+        }
+    }
+
+    onSave(): void {
         if (this.url) {
             this.addLink.emit(this.href);
         } else {
@@ -82,49 +79,55 @@ export class TuiEditLinkComponent {
         }
     }
 
-    onBackspace() {
+    onBackspace(): void {
         if (!this.url) {
-            this.prefix = 'http://';
+            this.prefix = `http://`;
         }
     }
 
-    onEdit() {
+    onEdit(): void {
         this.edit = true;
     }
 
-    onRemove() {
+    onRemove(): void {
         this.removeLink.emit();
     }
 
-    onChange(url: string) {
+    onChange(url: string): void {
         this.url = this.removePrefix(url);
     }
 
-    onClear() {
-        this.url = '';
+    onClear(): void {
+        this.url = ``;
+    }
+
+    private makeUrl(): string {
+        const selection = this.documentRef.getSelection();
+
+        return selection ? this.getHref(selection) : ``;
     }
 
     private getHref({focusNode}: Selection): string {
-        if (!focusNode || !focusNode.parentElement) {
-            return '';
+        if (!focusNode?.parentElement) {
+            return ``;
         }
 
-        const a = getClosestElement(focusNode.parentElement, 'a');
+        const a = focusNode.parentElement.closest(`a`);
 
-        return a ? this.removePrefix(a.getAttribute('href') || '') : '';
+        return a ? this.removePrefix(a.getAttribute(`href`) || ``) : this.url;
     }
 
     private removePrefix(url: string): string {
-        if (url.startsWith('http://')) {
-            this.prefix = 'http://';
+        if (url.startsWith(`http://`)) {
+            this.prefix = `http://`;
 
-            return url.replace('http://', '');
+            return url.replace(`http://`, ``);
         }
 
-        if (url.startsWith('https://')) {
-            this.prefix = 'https://';
+        if (url.startsWith(`https://`)) {
+            this.prefix = `https://`;
 
-            return url.replace('https://', '');
+            return url.replace(`https://`, ``);
         }
 
         return url;

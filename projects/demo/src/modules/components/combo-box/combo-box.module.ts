@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
-    TuiHintControllerModule,
+    TuiDropdownModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
@@ -33,6 +33,8 @@ import {TuiComboBoxExample2} from './examples/2';
 import {TuiComboBoxExample3} from './examples/3';
 import {TuiComboBoxExample4} from './examples/4';
 import {TuiComboBoxExample5} from './examples/5';
+import {IndexChangeDirective} from './examples/5/index-change.directive';
+import {TuiComboBoxExample6} from './examples/6';
 
 @NgModule({
     imports: [
@@ -51,15 +53,15 @@ import {TuiComboBoxExample5} from './examples/5';
         TuiLetModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiHintModule,
+        TuiDropdownModule,
         TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
         TuiStringifyContentPipeModule,
         PolymorpheusModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiComboBoxComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiComboBoxComponent)),
     ],
     declarations: [
         ExampleTuiComboBoxComponent,
@@ -68,6 +70,8 @@ import {TuiComboBoxExample5} from './examples/5';
         TuiComboBoxExample3,
         TuiComboBoxExample4,
         TuiComboBoxExample5,
+        TuiComboBoxExample6,
+        IndexChangeDirective,
     ],
     exports: [ExampleTuiComboBoxComponent],
 })

@@ -1,3 +1,6 @@
-<tui-doc-page i18n-header header="Changelog">
-    <markdown [data]="changelog"></markdown>
+<tui-doc-page
+    i18n-header
+    header="Changelog"
+>
+    <markdown [data]="(changelog | async) || ''"></markdown>
 </tui-doc-page>

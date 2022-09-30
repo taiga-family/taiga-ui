@@ -10,9 +10,9 @@ import {
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 
 @Component({
-    selector: 'tui-primitive-year-month-pagination',
-    templateUrl: './primitive-year-month-pagination.template.html',
-    styleUrls: ['./primitive-year-month-pagination.style.less'],
+    selector: `tui-primitive-year-month-pagination`,
+    templateUrl: `./primitive-year-month-pagination.template.html`,
+    styleUrls: [`./primitive-year-month-pagination.style.less`],
 })
 export class TuiPrimitiveYearMonthPaginationComponent
     implements TuiWithOptionalMinMax<TuiMonth>
@@ -47,19 +47,19 @@ export class TuiPrimitiveYearMonthPaginationComponent
         return this.min.year === this.max.year;
     }
 
-    onYearClick() {
+    onYearClick(): void {
         this.yearClick.next(this.value);
     }
 
-    onPrevMonthClick() {
+    onPrevMonthClick(): void {
         this.appendValueWithLimit({month: -1});
     }
 
-    onNextMonthClick() {
+    onNextMonthClick(): void {
         this.appendValueWithLimit({month: 1});
     }
 
-    private appendValueWithLimit(date: TuiMonthLike) {
+    private appendValueWithLimit(date: TuiMonthLike): void {
         const newMonth: TuiMonth = this.value.append(date);
 
         if (this.min.monthSameOrAfter(newMonth)) {
@@ -77,7 +77,7 @@ export class TuiPrimitiveYearMonthPaginationComponent
         this.updateValue(newMonth);
     }
 
-    private updateValue(value: TuiMonth) {
+    private updateValue(value: TuiMonth): void {
         if (this.value.monthSame(value)) {
             return;
         }

@@ -4,79 +4,71 @@ import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_SOLID,
     TuiLineHandler,
-    TuiLineTypeT,
+    TuiLineType,
 } from '@taiga-ui/addon-charts';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'example-tui-axes',
-    templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    selector: `example-tui-axes`,
+    templateUrl: `./axes.template.html`,
+    styleUrls: [`./axes.style.less`],
     changeDetection,
 })
 export class ExampleTuiAxesComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly lineVariants: ReadonlyArray<TuiLineTypeT> = [
-        'solid',
-        'dashed',
-        'none',
-        'hidden',
-    ];
+    readonly lineVariants: readonly TuiLineType[] = [`solid`, `dashed`, `none`, `hidden`];
 
-    readonly labelsVariants = [
+    readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
-        ['', '25%', '50%', '100%'],
-        ['One', 'Two', 'Three'],
-        ['One', null, '', 'Two and a half', 'Three', null],
+        [``, `25%`, `50%`, `100%`],
+        [`One`, `Two`, `Three`],
+        [`One`, null, ``, `Two and a half`, `Three`, null],
     ];
 
-    readonly handlerVariants: ReadonlyArray<TuiLineHandler> = [
+    readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
+        [],
+        [``, `25%`, `50%`, `100%`],
+        [`One`, `Two`, `Three`],
+        [`One`, ``, `Two and a half`, `Three`],
+    ];
+
+    readonly handlerVariants: readonly TuiLineHandler[] = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
-        index => (index % 2 ? 'dashed' : 'solid'),
+        index => (index % 2 ? `dashed` : `solid`),
     ];
 
     axisX = this.lineVariants[0];
 
-    axisXLabels = this.labelsVariants[0];
+    axisXLabels = this.labelsXVariants[0];
 
     axisY = this.lineVariants[0];
 
     axisYInset = false;
 
-    axisYLabels = this.labelsVariants[0];
+    axisYLabels = this.labelsYVariants[0];
 
-    axisYName = '';
+    axisYName = ``;
 
     axisYSecondaryInset = false;
 
-    axisYSecondaryLabels = this.labelsVariants[0];
+    axisYSecondaryLabels = this.labelsYVariants[0];
 
-    axisYSecondaryName = '';
+    axisYSecondaryName = ``;
 
     horizontalLines = 0;
 

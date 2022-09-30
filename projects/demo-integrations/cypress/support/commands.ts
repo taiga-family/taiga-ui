@@ -1,9 +1,22 @@
-import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
+import {
+    tuiAddMatchImageSnapshotCommand,
+    tuiBeInViewportAssertion,
+    tuiWaitAllImgInside,
+} from '@taiga-ui/testing/cypress';
 
-import {goToDemoPage} from './go-to-demo-page.util';
-import {hideHeader} from './hide-header.util';
-import {setNightMode} from './set-night-mode';
-import {waitKitDialog} from './wait-kit-dialog';
+import {tuiFocus} from './focus';
+import {tuiHideDocPage, tuiShowDocPage} from './hide-doc-page';
+import {tuiHideHeader} from './hide-header';
+import {tuiHideLanguageSwitcher} from './hide-language-switcher';
+import {tuiHideNavigation} from './hide-navigation';
+import {tuiHideVersionManager} from './hide-version-manager';
+import {tuiScrollIntoView} from './scroll-into-view';
+import {tuiSetLanguage} from './set-language';
+import {tuiSetNightMode} from './set-night-mode';
+import {tuiTab} from './type-tab';
+import {tuiVisit} from './visit';
+import {tuiWaitCodeHighlight} from './wait-code-highlight';
+import {tuiWaitKitDialog} from './wait-kit-dialog';
 
 declare global {
     namespace Cypress {
@@ -12,48 +25,94 @@ declare global {
 
             findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
-            goToDemoPage: typeof goToDemoPage;
-            hideHeader: typeof hideHeader;
-            waitKitDialog: typeof waitKitDialog;
-            setNightMode: typeof setNightMode;
+            tuiVisit: typeof tuiVisit;
+            tuiHideHeader: typeof tuiHideHeader;
+            tuiWaitKitDialog: typeof tuiWaitKitDialog;
+            tuiSetLanguage: typeof tuiSetLanguage;
+            tuiSetNightMode: typeof tuiSetNightMode;
+            tuiHideNavigation: typeof tuiHideNavigation;
+            tuiHideVersionManager: typeof tuiHideVersionManager;
+            tuiHideLanguageSwitcher: typeof tuiHideLanguageSwitcher;
+            tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
+            tuiHideDocPage: typeof tuiHideDocPage;
+            tuiShowDocPage: typeof tuiShowDocPage;
+
+            tuiTab(direction: 'forward' | 'backward'): Chainable;
+
+            tuiScrollIntoView(): Chainable;
+
+            tuiFocus(): Chainable;
+
+            tuiWaitAllImgInside(enabled?: boolean): Chainable;
+        }
+
+        interface Chainer<Subject> {
+            (chainer: 'be.inViewport'): Chainable<Subject>;
         }
     }
 }
 
-Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
-Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject: any, id) =>
-    subject.find(`[automation-id=${id}]`),
+Cypress.Commands.add(`getByAutomationId`, id => cy.get(`[automation-id=${id}]`));
+Cypress.Commands.add(
+    `findByAutomationId`,
+    {prevSubject: true},
+    <S>(subject: S, id: string) =>
+        /**
+         * `subject` is just `jQuery`-element which has method `.find()`.
+         * This method doesn't have {@link https://docs.cypress.io/guides/core-concepts/retry-ability retry-ability}!
+         * ___
+         * `cy.wrap(subject)` is a `$Chainer`-element (cypress built-in implementation) which also has method `.find()`.
+         * This method has retry-ability!
+         */
+        cy.wrap(subject).find(`[automation-id=${id}]`),
 );
-Cypress.Commands.add('goToDemoPage', goToDemoPage);
-Cypress.Commands.add('hideHeader', hideHeader);
-Cypress.Commands.add('waitKitDialog', waitKitDialog);
-Cypress.Commands.add('setNightMode', setNightMode);
+Cypress.Commands.add(`tuiVisit`, tuiVisit);
+Cypress.Commands.add(`tuiHideHeader`, tuiHideHeader);
+Cypress.Commands.add(`tuiWaitKitDialog`, tuiWaitKitDialog);
+Cypress.Commands.add(`tuiSetLanguage`, tuiSetLanguage);
+Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
+Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
+Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
+Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
+Cypress.Commands.add(`tuiHideLanguageSwitcher`, tuiHideLanguageSwitcher);
+Cypress.Commands.add(`tuiHideDocPage`, tuiHideDocPage);
+Cypress.Commands.add(`tuiShowDocPage`, tuiShowDocPage);
 
-addMatchImageSnapshotCommand({
-    // When fullPage, your application under test
-    // is captured in its entirety from top to bottom.
-    capture: 'fullPage',
+Cypress.Commands.add(
+    `tuiTab`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    tuiTab,
+);
 
-    // When true, prevents JavaScript timers (setTimeout, setInterval)
-    // and CSS animations from running while the screenshot is taken.
-    disableTimersAndAnimations: true,
+Cypress.Commands.add(
+    `tuiScrollIntoView`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    tuiScrollIntoView,
+);
 
-    // threshold for entire image
-    failureThreshold: 0.03,
+Cypress.Commands.add(
+    `tuiFocus`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    tuiFocus,
+);
 
-    // percent of image or number of pixels
-    failureThresholdType: 'percent',
+Cypress.Commands.add(
+    `tuiWaitAllImgInside`,
+    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    tuiWaitAllImgInside,
+);
 
-    // The method by which images are compared.
-    // pixelmatch does a pixel by pixel comparison,
-    // whereas ssim does a structural similarity comparison.
-    comparisonMethod: 'pixelmatch',
-
-    // Custom config passed to 'pixelmatch' or 'ssim'
-    // threshold for each pixel
-    customDiffConfig: {threshold: 0.1},
-
-    // Runs the diff in process without spawning a child process.
-    // For improved performance
-    runInProcess: false,
+tuiAddMatchImageSnapshotCommand({
+    allowSizeMismatch: true, // Windows CI fix
+    runInProcess: true, // macOS CI fix
+    failureThreshold: 0.0004,
+    failureThresholdType: `percent`,
+    comparisonMethod: `ssim`,
+    diffDirection: `horizontal`,
+    customDiffConfig: {
+        ssim: `fast`,
+        windowSize: 24,
+    } as any,
 });
+
+chai.use(tuiBeInViewportAssertion);

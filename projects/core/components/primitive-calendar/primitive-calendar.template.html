@@ -1,5 +1,9 @@
 <div class="t-row t-row_weekday">
-    <div *ngFor="let day of weekDays$ | async" class="t-cell">{{ day }}</div>
+    <div
+        *ngFor="let day of weekDays$ | async"
+        class="t-cell"
+        [textContent]="day"
+    ></div>
 </div>
 <div *tuiLet="month | tuiCalendarSheet: true as sheet">
     <div
@@ -16,8 +20,8 @@
                     [class.t-cell_weekend]="item.isWeekend"
                     [class.t-cell_today]="itemIsToday(item)"
                     [class.t-cell_interval]="itemIsInterval(item)"
-                    [attr.data-tui-element-range]="getItemRange(item)"
-                    [attr.data-tui-element-state]="getItemState(item)"
+                    [attr.data-range]="getItemRange(item)"
+                    [attr.data-state]="getItemState(item)"
                     (tuiHoveredChange)="onItemHovered($event && item)"
                     (tuiPressedChange)="onItemPressed($event && item)"
                     (click)="onItemClick(item)"
@@ -34,12 +38,12 @@
                         >
                             <div
                                 class="t-dot"
-                                [tuiBackground]="markers[0]"
+                                [style.backgroundColor]="markers[0]"
                             ></div>
                             <div
                                 *ngIf="markers.length > 1"
                                 class="t-dot"
-                                [tuiBackground]="markers[1]"
+                                [style.backgroundColor]="markers[1] || ''"
                             ></div>
                         </div>
                     </div>

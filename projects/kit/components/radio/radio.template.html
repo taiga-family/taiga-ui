@@ -1,25 +1,28 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
-    <div *ngIf="checked" class="mark" [@tuiScaleIn]="animation"></div>
-</tui-wrapper>
-<input
-    #focusableElement
-    type="radio"
-    class="native"
-    [id]="id"
-    [attr.name]="computedName"
-    [disabled]="computedDisabled"
-    [tuiChecked]="checked"
-    [tuiFocusable]="isFocusable"
-    (tuiFocusedChange)="onFocused($event)"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
-    (tuiCheckedChange)="onChecked($event)"
-    (tuiFocusVisibleChange)="onFocusVisible($event)"
-/>
+    <div
+        *ngIf="checked"
+        class="t-mark"
+        [@tuiScaleIn]="animation"
+    ></div>
+    <input
+        #focusableElement
+        type="radio"
+        class="t-native"
+        [id]="id"
+        [attr.name]="computedName"
+        [disabled]="computedDisabled"
+        [tuiChecked]="checked"
+        [tuiFocusable]="isFocusable"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiCheckedChange)="onChecked($event)"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+    />
+</div>

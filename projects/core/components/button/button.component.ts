@@ -1,56 +1,50 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     HostListener,
     Inject,
     Input,
+    Optional,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
-    pressedObservable,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_TAKE_ONLY_TRUSTED_EVENTS,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
-    TuiHoveredService,
-    watch,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import {TuiModeDirective} from '@taiga-ui/core/directives';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {EMPTY, Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
+import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
 
 @Component({
-    selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',
-    templateUrl: './button.template.html',
-    styleUrls: ['./button.style.less'],
+    selector: `button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]`,
+    templateUrl: `./button.template.html`,
+    styleUrls: [`./button.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiButtonComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiButtonComponent),
         TuiDestroyService,
         TuiFocusVisibleService,
     ],
 })
 export class TuiButtonComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor, ButtonOptions
+    implements TuiFocusableElementAccessor, TuiButtonOptions
 {
+    private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
+
     @Input()
-    @HostBinding('attr.data-appearance')
     @tuiDefaultProp()
-    appearance = this.options.appearance;
+    appearance: TuiButtonOptions['appearance'] = null;
 
     @Input()
     @tuiDefaultProp()
@@ -58,52 +52,42 @@ export class TuiButtonComponent
 
     @Input()
     @tuiDefaultProp()
-    icon: PolymorpheusContent = '';
+    icon: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
-    iconRight: PolymorpheusContent = '';
+    iconRight: PolymorpheusContent = ``;
 
     @Input()
-    @HostBinding('attr.data-tui-host-shape')
+    @HostBinding(`attr.data-shape`)
     @tuiDefaultProp()
     shape = this.options.shape;
 
     @Input()
-    @HostBinding('class._loading')
+    @HostBinding(`class._loading`)
     @tuiDefaultProp()
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size = this.options.size;
 
+    readonly appearance$ = this.mode$.pipe(
+        startWith(null),
+        map(() => this.computedAppearance),
+        distinctUntilChanged(),
+    );
+
     constructor(
+        @Optional()
+        @Inject(TuiModeDirective)
+        private readonly mode: TuiModeDirective | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
-        private readonly takeOnlyTrustedEvents: boolean,
-        @Inject(TUI_BUTTON_OPTIONS) private readonly options: ButtonOptions,
+        @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
     ) {
         super();
-
-        hoveredService
-            .createHovered$(elementRef.nativeElement)
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(hovered => {
-                this.updateHovered(hovered);
-            });
-        pressedObservable(elementRef.nativeElement, {
-            onlyTrusted: this.takeOnlyTrustedEvents,
-        })
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(pressed => {
-                this.updatePressed(pressed);
-            });
         focusVisible$.subscribe(focusVisible => {
             this.updateFocusVisible(focusVisible);
         });
@@ -114,26 +98,31 @@ export class TuiButtonComponent
     }
 
     get focused(): boolean {
-        return !this.showLoader && isNativeFocused(this.elementRef.nativeElement);
+        return !this.showLoader && tuiIsNativeFocused(this.elementRef.nativeElement);
     }
 
     get loaderSize(): TuiSizeS {
-        return this.size === 'l' || this.size === 'xl' ? 'm' : 's';
+        return this.size === `l` || this.size === `xl` ? `m` : `s`;
     }
 
-    @HostBinding('attr.disabled')
+    @HostBinding(`attr.data-appearance`)
+    get computedAppearance(): string {
+        return this.appearance ?? (this.options.appearance || ``);
+    }
+
+    @HostBinding(`attr.disabled`)
     get nativeDisabled(): '' | null {
-        return this.computedDisabled || this.showLoader ? '' : null;
+        return this.computedDisabled || this.showLoader ? `` : null;
     }
 
-    @HostBinding('tabIndex')
+    @HostBinding(`tabIndex`)
     get tabIndex(): number {
         return this.focusable ? 0 : -1;
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 }

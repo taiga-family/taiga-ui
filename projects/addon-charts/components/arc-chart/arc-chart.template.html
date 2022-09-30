@@ -14,9 +14,11 @@
         d="M -70 70 A 100 100 0 1 1 70 70"
     />
     <path
+        #arc
         vector-effect="non-scaling-stroke"
         d="M -70 70 A 100 100 0 1 1 70 70"
         class="t-value"
+        [class.t-value_inactive]="isInactive(index)"
         [style.stroke]="getColor(index)"
         [style.strokeDasharray.em]="getLength(index)"
         [style.strokeDashoffset.em]="initialized ? getOffset(index) : getLength(index)"
@@ -26,6 +28,6 @@
     <div class="t-wrapper"><ng-content></ng-content></div>
 </div>
 <div class="t-percent">
-    <span>{{minLabel}}</span>
-    <span>{{maxLabel}}</span>
+    <span>{{ minLabel }}</span>
+    <span>{{ maxLabel }}</span>
 </div>

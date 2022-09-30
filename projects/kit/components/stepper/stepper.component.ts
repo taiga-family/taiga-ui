@@ -13,22 +13,33 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getOriginalArrayFromQueryList,
-    itemsQueryListObservable,
-    moveFocus,
     tuiDefaultProp,
+    tuiGetOriginalArrayFromQueryList,
+    tuiIsElement,
+    tuiItemsQueryListObservable,
+    tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientationT} from '@taiga-ui/core';
+import {TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
 import {TuiStepComponent} from './step/step.component';
 
+const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
+    block: `nearest`,
+    inline: `center`,
+};
+
+const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
+    block: `center`,
+    inline: `nearest`,
+};
+
 @Component({
-    selector: 'tui-stepper, nav[tuiStepper]',
-    templateUrl: './stepper.template.html',
-    styleUrls: ['./stepper.style.less'],
+    selector: `tui-stepper, nav[tuiStepper]`,
+    templateUrl: `./stepper.template.html`,
+    styleUrls: [`./stepper.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiStepperComponent {
@@ -36,9 +47,9 @@ export class TuiStepperComponent {
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
-    @HostBinding('attr.data-orientation')
+    @HostBinding(`attr.data-orientation`)
     @tuiDefaultProp()
-    orientation: TuiOrientationT = 'horizontal';
+    orientation: TuiOrientation = `horizontal`;
 
     @Input()
     @tuiDefaultProp()
@@ -51,13 +62,13 @@ export class TuiStepperComponent {
     get changes$(): Observable<unknown> {
         // Delay is required to trigger change detection after steps are rendered
         // so they can update their "active" status
-        return itemsQueryListObservable(this.steps).pipe(delay(0));
+        return tuiItemsQueryListObservable(this.steps).pipe(delay(0));
     }
 
-    @HostListener('keydown.arrowRight', ['$event', '1'])
-    @HostListener('keydown.arrowLeft', ['$event', '-1'])
-    onHorizontal(event: Event, step: number) {
-        if (this.orientation !== 'horizontal' || !event.target) {
+    @HostListener(`keydown.arrowRight`, [`$event`, `1`])
+    @HostListener(`keydown.arrowLeft`, [`$event`, `-1`])
+    onHorizontal(event: Event, step: number): void {
+        if (this.orientation !== `horizontal` || !event.target) {
             return;
         }
 
@@ -65,10 +76,10 @@ export class TuiStepperComponent {
         this.moveFocus(event.target, step);
     }
 
-    @HostListener('keydown.arrowDown', ['$event', '1'])
-    @HostListener('keydown.arrowUp', ['$event', '-1'])
-    onVertical(event: Event, step: number) {
-        if (this.orientation !== 'vertical' || !event.target) {
+    @HostListener(`keydown.arrowDown`, [`$event`, `1`])
+    @HostListener(`keydown.arrowUp`, [`$event`, `-1`])
+    onVertical(event: Event, step: number): void {
+        if (this.orientation !== `vertical` || !event.target) {
             return;
         }
 
@@ -77,7 +88,7 @@ export class TuiStepperComponent {
     }
 
     indexOf(step: HTMLElement): number {
-        return getOriginalArrayFromQueryList(this.steps).findIndex(
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
         );
     }
@@ -86,20 +97,39 @@ export class TuiStepperComponent {
         return index === this.activeItemIndex;
     }
 
-    activate(index: number) {
+    activate(index: number): void {
         if (this.activeItemIndex === index) {
             return;
         }
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
+        this.scrollIntoView(index);
     }
 
-    private moveFocus(current: EventTarget, step: number) {
-        const steps = getOriginalArrayFromQueryList(this.steps).map(
-            ({nativeElement}) => nativeElement,
-        );
+    @tuiPure
+    private getNativeElements(
+        queryList: QueryList<ElementRef<HTMLElement>>,
+    ): HTMLElement[] {
+        return queryList.map(({nativeElement}) => nativeElement);
+    }
 
-        moveFocus(steps.indexOf(current as HTMLElement), steps, step);
+    private moveFocus(current: EventTarget, step: number): void {
+        if (!tuiIsElement(current)) {
+            return;
+        }
+
+        const stepElements = this.getNativeElements(this.steps);
+        const index = stepElements.findIndex(item => item === current);
+
+        tuiMoveFocus(index, stepElements, step);
+    }
+
+    private scrollIntoView(targetStepIndex: number): void {
+        this.getNativeElements(this.steps)[targetStepIndex].scrollIntoView(
+            this.orientation === `vertical`
+                ? ONLY_VERTICAL_SCROLL
+                : ONLY_HORIZONTAL_SCROLL,
+        );
     }
 }

@@ -10,12 +10,10 @@ import {
     SecurityContext,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {WINDOW} from '@ng-web-apis/common';
 import {
-    getDocumentOrShadowRoot,
-    isIE,
     tuiAssert,
-    tuiCustomEvent,
+    tuiGetDocumentOrShadowRoot,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -27,33 +25,32 @@ import {TuiSvgService} from '@taiga-ui/core/services';
 import {
     TUI_ICONS_PATH,
     TUI_SANITIZER,
+    TUI_SVG_CONTENT_PROCESSOR,
     TUI_SVG_SRC_PROCESSOR,
 } from '@taiga-ui/core/tokens';
-import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
-const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
-const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
-const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
+const UNDEFINED_NAMED_ICON = `Attempted to use undefined named icon`;
+const MISSING_EXTERNAL_ICON = `External icon is missing on the given URL`;
+const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
-// @dynamic
 @Component({
-    selector: 'tui-svg',
-    templateUrl: './svg.template.html',
-    styleUrls: ['./svg.style.less'],
+    selector: `tui-svg`,
+    templateUrl: `./svg.template.html`,
+    styleUrls: [`./svg.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = isIE(this.userAgent);
-    private icon = '';
+    private icon = ``;
 
     @Input()
     @tuiRequiredSetter()
     set src(src: string) {
-        this.icon = this.processor(src);
+        this.icon = this.srcProcessor(src);
         this.src$.next();
     }
 
@@ -71,9 +68,10 @@ export class TuiSvgComponent {
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_SVG_SRC_PROCESSOR)
-        private readonly processor: TuiStringHandler<string>,
+        private readonly srcProcessor: TuiStringHandler<string>,
+        @Inject(TUI_SVG_CONTENT_PROCESSOR)
+        private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() =>
@@ -81,7 +79,7 @@ export class TuiSvgComponent {
                     ? this.getExternalIcon(this.icon)
                     : of(this.getSafeHtml(this.icon)),
             ),
-            startWith(''),
+            startWith(``),
         );
     }
 
@@ -90,7 +88,7 @@ export class TuiSvgComponent {
     }
 
     get use(): string {
-        return this.icon.includes('.svg#')
+        return this.icon.includes(`.svg#`)
             ? this.icon
             : this.resolveName(this.icon, this.iconsPath);
     }
@@ -101,24 +99,24 @@ export class TuiSvgComponent {
 
     private get isShadowDOM(): boolean {
         return (
-            getDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
+            tuiGetDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
         );
     }
 
     private get isUse(): boolean {
-        return this.use.includes('.svg#');
+        return this.use.includes(`.svg#`);
     }
 
     private get isExternal(): boolean {
-        return this.isUrl || (this.isIE && this.isUse) || this.isCrossDomain;
+        return this.isUrl || this.isCrossDomain;
     }
 
     private get isUrl(): boolean {
-        return this.icon.endsWith('.svg');
+        return this.icon.endsWith(`.svg`);
     }
 
     private get isSrc(): boolean {
-        return isPresumedHTMLString(this.icon);
+        return tuiIsPresumedHTMLString(this.icon);
     }
 
     private get isName(): boolean {
@@ -130,25 +128,21 @@ export class TuiSvgComponent {
 
         return (
             isUse &&
-            use.startsWith('http') &&
+            use.startsWith(`http`) &&
             !!windowRef.origin &&
             !use.startsWith(windowRef.origin)
         );
     }
 
-    onError(message: string = MISSING_EXTERNAL_ICON) {
+    onError(message: string = MISSING_EXTERNAL_ICON): void {
         const {icon} = this;
-        const event = tuiCustomEvent<TuiIconError>(
-            TUI_ICON_ERROR,
-            {
-                bubbles: true,
-                detail: {
-                    message,
-                    icon,
-                },
+        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
+            bubbles: true,
+            detail: {
+                message,
+                icon,
             },
-            this.documentRef,
-        );
+        });
 
         tuiAssert.assert(false, message, icon);
         this.elementRef.nativeElement.dispatchEvent(event);
@@ -171,28 +165,30 @@ export class TuiSvgComponent {
         }
 
         // Empty line for innerHTML when icon is shown through USE tag
-        return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
+        return !this.isShadowDOM || !this.isName ? `` : this.sanitize(icon || ``);
     }
 
     private sanitize(src: string): SafeHtml | string {
+        src = this.contentProcessor(src);
+
         return this.tuiSanitizer
             ? this.sanitizer.bypassSecurityTrustHtml(
-                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || ``,
               )
             : src;
     }
 
     private getExternalIcon(src: string): Observable<SafeHtml> {
-        const url = src.includes('.svg') ? src : this.use;
+        const url = src.includes(`.svg`) ? src : this.use;
 
         return this.staticRequestService.request(url).pipe(
             catchError(() => {
                 this.onError(FAILED_EXTERNAL_ICON);
 
-                return of('');
+                return of(``);
             }),
             map(response =>
-                this.sanitize(response.replace('<svg', '<svg focusable="false"')),
+                this.sanitize(response.replace(`<svg`, `<svg focusable="false"`)),
             ),
         );
     }

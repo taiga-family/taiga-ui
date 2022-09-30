@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <tui-input-slider
+        [min]="min"
+        [max]="max"
+        [segments]="5"
+        [formControl]="control"
+    >
+        Rate your mind
+    </tui-input-slider>
+
+    <div class="slider-ticks-labels">
+        <span>
+            <button
+                tuiIconButton
+                type="button"
+                size="xs"
+                icon="tuiIconDislikeLarge"
+                appearance="icon"
+                (click)="decrease()"
+            ></button>
+        </span>
+        <span>20%</span>
+        <span>40%</span>
+        <span>60%</span>
+        <span>80%</span>
+        <span>
+            <button
+                tuiIconButton
+                type="button"
+                size="xs"
+                icon="tuiIconLikeLarge"
+                appearance="icon"
+                (click)="increase()"
+            ></button>
+        </span>
+    </div>
+</div>

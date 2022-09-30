@@ -5,12 +5,18 @@
     path="cdk/decorators/default-prop.ts"
 >
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Decorator for
             <code>@Input</code>
             with default value
         </div>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <strong>Warning:</strong>
             decorator overrides getter/setter of input
         </div>
@@ -20,13 +26,15 @@
             <code>undefined</code>
             values if they were passed into input. If it gets
             <code>undefined</code>
-            , it will use default value and show an error message about the
-            problem in console in dev mode.
+            , it will use default value and show an error message about the problem in console in dev mode.
         </p>
 
         <div i18n>
             See
-            <a tuiLink [routerLink]="['/decorators/required-setter']">
+            <a
+                tuiLink
+                [routerLink]="['/decorators/required-setter']"
+            >
                 RequiredSetter
             </a>
             for work with setters
@@ -34,10 +42,11 @@
 
         <div>
             <p i18n>See console. Min value is 5</p>
-            <example-tui-default-prop-demo
-                [quantity]="quantity"
-            ></example-tui-default-prop-demo>
-            <tui-input-count class="tui-space_top-4" [(ngModel)]="quantity">
+            <example-tui-default-prop-demo [quantity]="quantity"></example-tui-default-prop-demo>
+            <tui-input-count
+                class="tui-space_top-4"
+                [(ngModel)]="quantity"
+            >
                 quantity
             </tui-input-count>
             <button
@@ -57,8 +66,7 @@
             <code>TuiBooleanHandler&lt;T&gt;</code>
             with the component instance as
             <code>this</code>
-            . If check is unsuccessful, it shows an error message about the
-            problem in console in dev mode.
+            . If check is unsuccessful, it shows an error message about the problem in console in dev mode.
         </p>
         <tui-doc-documentation>
             <ng-template
@@ -67,17 +75,6 @@
                 documentationPropertyType="TuiBooleanHandler<T>"
             >
                 Optional argument, contract function
-                <p>
-                    <strong>Warning:</strong>
-                    Angular Compiler does not allow arrow functions in
-                    decorators with
-                    <code>strictMetadataEmit</code>
-                    (by default). Add
-                    <code>// @dynamic</code>
-                    comment right above your
-                    <code>@Component</code>
-                    decorator to use them
-                </p>
             </ng-template>
             <ng-template
                 i18n

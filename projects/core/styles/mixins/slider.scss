@@ -1,0 +1,51 @@
+$thumb-diameters: (
+    's': 0.5rem,
+    'm': 1rem,
+);
+
+@mixin tui-slider-ticks-labels($input-size: m) {
+    $first-tick-center: map-get($thumb-diameters, $input-size) / 2;
+
+    display: flex;
+    margin: 0 $first-tick-center;
+    font: var(--tui-font-text-s);
+
+    & > * {
+        position: relative;
+        flex: 2;
+        text-align: center;
+
+        &:first-child {
+            left: -$first-tick-center;
+            flex: 1;
+            text-align: left;
+        }
+
+        &:last-child {
+            right: -$first-tick-center;
+            flex: 1;
+            text-align: right;
+        }
+    }
+
+    tui-input-slider + & {
+        margin-left: calc(var(--tui-radius-m) / 2 + #{$first-tick-center});
+    }
+
+    tui-input-range + &,
+    tui-range + & {
+        $thumb: map-get($thumb-diameters, $input-size);
+        margin-left: $thumb;
+        margin-right: $thumb;
+
+        & > * {
+            &:first-child {
+                left: -$thumb;
+            }
+
+            &:last-child {
+                right: -$thumb;
+            }
+        }
+    }
+}

@@ -1,4 +1,8 @@
-<tui-doc-page header="FormatPhone" package="CORE" type="pipes">
+<tui-doc-page
+    header="FormatPhone"
+    package="CORE"
+    type="pipes"
+>
     <ng-template pageTab>
         <p i18n>Pipe to format phone number</p>
 
@@ -13,14 +17,16 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n class="text b-full-width">
-            Formatted phone number: {{ index | tuiFormatPhone:
-            countryCode:phoneMask }}
+        <p
+            i18n
+            class="text b-full-width"
+        >
+            Formatted phone number:
+            {{ index | tuiFormatPhone: countryCode:phoneMask }}
         </p>
         <tui-input
             tuiTextfieldSize="m"
             class="slider"
-            [tuiTextfieldMaxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="index"
         ></tui-input>
@@ -51,24 +57,22 @@
             <li>
                 <p i18n>
                     Import
-                    <code>TuiFormatPhonePipe</code>
-                    into a module where you want to use our component
+                    <code>TuiFormatPhonePipeModule</code>
+                    into a module where you want to use the pipe
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

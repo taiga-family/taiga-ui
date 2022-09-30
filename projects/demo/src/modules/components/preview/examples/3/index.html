@@ -8,12 +8,15 @@
     Show preview
 </button>
 
-<ng-template #preview let-preview>
+<ng-template
+    #preview
+    let-preview
+>
     <tui-preview
         [rotatable]="!(contentUnavailable$ | async)"
         [zoomable]="!(contentUnavailable$ | async) && !(loading$ | async)"
     >
-        <tui-preview-title>{{title$ | async}}</tui-preview-title>
+        <tui-preview-title>{{ title$ | async }}</tui-preview-title>
         <tui-preview-pagination
             [length]="items.length"
             [index]="index$$.value"
@@ -38,7 +41,10 @@
 
         <ng-container *ngIf="contentUnavailable$ | async">
             <div class="t-container">
-                <tui-svg src="tuiIconFileLarge" class="t-icon"></tui-svg>
+                <tui-svg
+                    src="tuiIconFileLarge"
+                    class="t-icon"
+                ></tui-svg>
                 <div>Preview unavailable</div>
             </div>
         </ng-container>

@@ -1,4 +1,7 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-notification i18n>
         Taiga UI input is compatible with
         <a
@@ -10,17 +13,29 @@
         </a>
     </tui-notification>
     <p>
-        <tui-input formControlName="testValue1" [textMask]="textMaskOptions1">
+        <tui-input
+            formControlName="testValue1"
+            [textMask]="textMaskOptions1"
+        >
             Document number
-            <input tuiTextfield inputmode="numeric" />
+            <input
+                tuiTextfield
+                inputmode="numeric"
+            />
         </tui-input>
     </p>
     <p>
-        <tui-input formControlName="testValue2" [textMask]="textMaskOptions2">
+        <tui-input
+            formControlName="testValue2"
+            [textMask]="textMaskOptions2"
+        >
             Secret number
-            <input tuiTextfield inputmode="numeric" />
+            <input
+                tuiTextfield
+                inputmode="numeric"
+            />
         </tui-input>
     </p>
 </form>
 <p>Value is stored in control with mask applied:</p>
-<pre>{{testForm.value | json}}</pre>
+<pre>{{ testForm.value | json }}</pre>

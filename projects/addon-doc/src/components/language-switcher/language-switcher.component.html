@@ -1,0 +1,18 @@
+<tui-select [formControl]="language">
+    <ng-content></ng-content>
+    <tui-data-list *tuiDataList>
+        <button
+            *ngFor="let name of names"
+            tuiOption
+            [value]="name | titlecase"
+            (click)="switcher.setLanguage(name)"
+        >
+            <img
+                alt=""
+                class="t-flag"
+                [src]="getFlagPath(flags.get(name))"
+            />
+            {{ name | titlecase }}
+        </button>
+    </tui-data-list>
+</tui-select>

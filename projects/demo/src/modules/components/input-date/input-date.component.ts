@@ -6,27 +6,22 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiAutofillFieldName,
     TuiBooleanHandler,
-    TuiDateAutofillName,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiBaseColor,
-    TuiColor,
-    TuiMarkerHandler,
-} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
-    selector: 'example-tui-input-date',
-    templateUrl: './input-date.template.html',
+    selector: `example-tui-input-date`,
+    templateUrl: `./input-date.template.html`,
     changeDetection,
     providers: [
         {
@@ -36,43 +31,37 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
-    readonly exampleDeclareForm = import(
-        '!!raw-loader!./examples/import/declare-form.md'
-    );
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.md'
-    );
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.md'
-    );
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
-        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
-        HTML: import('!!raw-loader!./examples/5/index.html'),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
         'native-date-transformer.directive.ts': import(
-            '!!raw-loader!./examples/5/native-date-transformer.directive.ts'
+            `./examples/5/native-date-transformer.directive.ts?raw`
         ),
     };
 
@@ -98,10 +87,10 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Until today')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), `Until today`)],
     ];
 
-    readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [
+    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
@@ -110,11 +99,11 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     items = this.itemsVariants[0];
 
-    autocompleteVariants = ['off', 'bday'];
+    override autocompleteVariants: TuiAutofillFieldName[] = [`off`, `bday`];
 
-    autocomplete: TuiDateAutofillName | null = null;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    cleaner = false;
+    override cleaner = false;
 
     control = new FormControl(null, Validators.required);
 }

@@ -1,15 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {
+    TuiInteractiveState,
+    TuiPrimitiveYearPickerComponent,
+    TuiPrimitiveYearPickerModule,
+    TuiRangeState,
+} from '@taiga-ui/core';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
-import {TuiInteractiveState} from '../../../enums/interactive-state';
-import {TuiRangeState} from '../../../enums/range-state';
-import {TuiPrimitiveYearPickerComponent} from '../primitive-year-picker.component';
-import {TuiPrimitiveYearPickerModule} from '../primitive-year-picker.module';
-
-describe('TuiPrimitiveYearPickerComponent', () => {
+describe(`TuiPrimitiveYearPickerComponent`, () => {
     @Component({
         template: `
             <tui-primitive-year-picker
@@ -23,22 +23,22 @@ describe('TuiPrimitiveYearPickerComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveYearPickerComponent, {static: true})
-        component: TuiPrimitiveYearPickerComponent;
+        component!: TuiPrimitiveYearPickerComponent;
 
         min = TUI_FIRST_DAY;
         max = TuiDay.currentLocal().append({year: 200});
         value = TuiDay.currentLocal();
         initialItem = TuiDay.currentLocal();
-        disabledItemHandler = (item: TuiDay) => item.day === 10;
+        disabledItemHandler = (item: TuiDay): boolean => item.day === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiPrimitiveYearPickerComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-primitive-year-picker__';
+            return `tui-primitive-year-picker__`;
         },
     };
 
@@ -53,18 +53,18 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });
 
-    it('Showed 200 years', () => {
+    it(`Showed 200 years`, () => {
         expect(pageObject.getAllByAutomationId(`${testContext.prefix}cell`).length).toBe(
             200,
         );
     });
 
-    describe('getItemState', () => {
-        it('returns disabled state correctly', () => {
+    describe(`getItemState`, () => {
+        it(`returns disabled state correctly`, () => {
             const item = 2019;
 
             component.max = new TuiYear(item - 1);
@@ -72,25 +72,25 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.getItemState(item)).toBe(TuiInteractiveState.Disabled);
         });
 
-        it('returns pressed state if it is not disabled', () => {
+        it(`returns pressed state if it is not disabled`, () => {
             const item = 2019;
 
             component.onItemPressed(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Pressed);
+            expect(component.getItemState(item)).toBe(TuiInteractiveState.Active);
         });
 
-        it('returns hovered state if it is not disabled and pressed', () => {
+        it(`returns hovered state if it is not disabled and pressed`, () => {
             const item = 2019;
 
             component.onItemHovered(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Hovered);
+            expect(component.getItemState(item)).toBe(TuiInteractiveState.Hover);
         });
     });
 
-    describe('getItemRange', () => {
-        it('returns null if there is no value', () => {
+    describe(`getItemRange`, () => {
+        it(`returns null if there is no value`, () => {
             const item = 2019;
 
             component.value = null;
@@ -98,7 +98,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.getItemRange(item)).toBe(null);
         });
 
-        it('returns start correctly', () => {
+        it(`returns start correctly`, () => {
             const item = 2019;
 
             component.value = new TuiDayRange(
@@ -109,7 +109,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.getItemRange(item)).toBe(TuiRangeState.Start);
         });
 
-        it('returns end correctly', () => {
+        it(`returns end correctly`, () => {
             const item = 2019;
 
             component.value = new TuiDayRange(
@@ -120,7 +120,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.getItemRange(item)).toBe(TuiRangeState.End);
         });
 
-        it('returns single correctly', () => {
+        it(`returns single correctly`, () => {
             const item = 2018;
 
             component.value = new TuiDayRange(
@@ -132,8 +132,8 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         });
     });
 
-    describe('itemIsInterval', () => {
-        it('works correctly if item is in value range', () => {
+    describe(`itemIsInterval`, () => {
+        it(`works correctly if item is in value range`, () => {
             component.value = new TuiDayRange(
                 new TuiDay(2018, 4, 20),
                 new TuiDay(2020, 4, 22),
@@ -142,7 +142,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.itemIsInterval(2019)).toBe(true);
         });
 
-        it('returns false if item is in value range of same year and no item is hovered', () => {
+        it(`returns false if item is in value range of same year and no item is hovered`, () => {
             component.value = new TuiDayRange(
                 new TuiDay(2019, 4, 20),
                 new TuiDay(2019, 4, 22),
@@ -151,7 +151,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
             expect(component.itemIsInterval(2019)).toBe(false);
         });
 
-        it('works correctly if item is in value range of same year and there is hovered item', () => {
+        it(`works correctly if item is in value range of same year and there is hovered item`, () => {
             component.value = new TuiDayRange(
                 new TuiDay(2019, 4, 20),
                 new TuiDay(2019, 4, 22),
@@ -162,14 +162,16 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         });
     });
 
-    it('emits year by click on item', done => {
+    it(`emits year by click on item`, () => {
+        let result: TuiYear | undefined;
         const item = 2019;
 
         component.yearClick.subscribe((year: TuiYear) => {
-            expect(year.yearSame(new TuiYear(item))).toBe(true);
-            done();
+            result = year;
         });
 
         component.onItemClick(item);
+
+        expect(result?.yearSame(new TuiYear(item))).toBe(true);
     });
 });

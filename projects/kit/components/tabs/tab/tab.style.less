@@ -4,6 +4,13 @@
     box-shadow: inset 0 -2px var(--tui-base-03);
 }
 
+:host-context(tui-tabs >):first-child,
+:host-context([tuiTabs] >):first-child,
+:host-context(tui-tabs > :first-child),
+:host-context([tuiTabs] > :first-child) {
+    margin-left: 0;
+}
+
 :host {
     .transition(all);
     .clearbtn();
@@ -20,14 +27,7 @@
     text-decoration: none;
     color: inherit;
     transition-property: color, box-shadow, opacity;
-
-    &:not(:last-child) {
-        margin-right: 1.5rem;
-    }
-
-    &:hover {
-        color: var(--tui-text-01);
-    }
+    margin-left: var(--tui-tab-margin, 1.5rem);
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -48,7 +48,7 @@
             color: #fff;
         }
 
-        &._focus-visible .highlight {
+        &._focus-visible .t-highlight {
             background: var(--tui-clear-inverse);
             color: var(--tui-text-01);
         }
@@ -62,13 +62,13 @@
             color: var(--tui-text-01);
         }
 
-        &._focus-visible .highlight {
+        &._focus-visible .t-highlight {
             background: var(--tui-text-01);
             color: #fff;
         }
     }
 
-    &._focus-visible .highlight {
+    &._focus-visible .t-highlight {
         background: var(--tui-selection);
     }
 
@@ -96,7 +96,7 @@
             color: var(--tui-base-09);
         }
 
-        & .highlight {
+        & .t-highlight {
             width: auto;
         }
     }
@@ -124,13 +124,19 @@
             color: var(--tui-link);
         }
 
-        & .highlight {
+        & .t-highlight {
             width: auto;
         }
     }
 }
 
-.highlight {
+@media (hover: hover) {
+    :host:hover {
+        color: var(--tui-text-01);
+    }
+}
+
+.t-highlight {
     display: inline-flex;
     width: 100%;
     align-items: center;

@@ -1,4 +1,4 @@
-<div class="tui-space_bottom-4">Choose a departament:</div>
+<div class="tui-space_bottom-4">Choose a department:</div>
 
 <div class="filters-with-all">
     <button
@@ -6,7 +6,7 @@
         type="button"
         size="m"
         class="tui-space_right-1"
-        [appearance]="buttonAppearance$ | async"
+        [appearance]="(buttonAppearance$ | async) || ''"
         (click)="toggleAll()"
     >
         All

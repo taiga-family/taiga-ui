@@ -1,39 +1,47 @@
-tui-wrapper[data-appearance='whiteblock'],
-tui-wrapper[data-appearance='whiteblock-active'] {
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='whiteblock'],
+[tuiWrapper][data-appearance='whiteblock-active'] {
     background: var(--tui-base-01);
     color: var(--tui-text-01);
 
     &:after {
-        color: var(--tui-base-03);
+        color: var(--tui-base-04);
     }
 
-    &:active,
-    &[data-state='hovered'],
-    &[data-state='pressed'] {
+    .wrapper-hover({
         background: var(--tui-base-02);
 
         &:after {
             color: var(--tui-base-04);
         }
-    }
+    });
 
-    &[data-state='disabled'] {
-        opacity: var(--tui-disabled-opacity);
-    }
+    .wrapper-active({
+        background: var(--tui-base-02);
+
+        &:after {
+            color: var(--tui-base-04);
+        }
+    });
 }
 
-tui-wrapper[data-appearance='whiteblock-active'] {
+[tuiWrapper][data-appearance='whiteblock-active'] {
     &:after {
         color: var(--tui-primary);
         border-width: 2px;
     }
 
-    &[data-state='hovered']:after {
-        color: var(--tui-primary-hover);
-    }
+    .wrapper-hover({
+        &:after {
+            color: var(--tui-primary-hover);
+        }
+    });
 
-    &:active,
-    &[data-state='pressed']:after {
-        color: var(--tui-primary-active);
-    }
+    .wrapper-active({
+        &:after {
+            color: var(--tui-primary-active);
+        }
+    });
 }

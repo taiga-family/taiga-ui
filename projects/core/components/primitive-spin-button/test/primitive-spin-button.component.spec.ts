@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {
+    TuiPrimitiveSpinButtonComponent,
+    TuiPrimitiveSpinButtonModule,
+} from '@taiga-ui/core';
+import {configureTestSuite} from '@taiga-ui/testing';
 
-import {TuiPrimitiveSpinButtonComponent} from '../primitive-spin-button.component';
-import {TuiPrimitiveSpinButtonModule} from '../primitive-spin-button.module';
-
-describe('primitiveSpinButton', () => {
+describe(`primitiveSpinButton`, () => {
     @Component({
         template: `
             <tui-primitive-spin-button>My button</tui-primitive-spin-button>
@@ -13,7 +14,7 @@ describe('primitiveSpinButton', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveSpinButtonComponent, {static: true})
-        component: TuiPrimitiveSpinButtonComponent;
+        component!: TuiPrimitiveSpinButtonComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -34,39 +35,51 @@ describe('primitiveSpinButton', () => {
         fixture.detectChanges();
     });
 
-    it('emits left click if it is not disabled', done => {
+    it(`emits left click if it is not disabled`, () => {
+        let result: unknown = {};
+
         component.leftClick.subscribe((voidResult: void) => {
-            expect(voidResult).not.toBeDefined();
-            done();
+            result = voidResult;
         });
 
         component.onLeftClick();
+
+        expect(result).not.toBeDefined();
     });
 
-    it('emits right click if it is not disabled', done => {
+    it(`emits right click if it is not disabled`, () => {
+        let result: unknown = {};
+
         component.rightClick.subscribe((voidResult: void) => {
-            expect(voidResult).not.toBeDefined();
-            done();
+            result = voidResult;
         });
 
         component.onRightClick();
+
+        expect(result).not.toBeDefined();
     });
 
-    it('emits focus if it was updated', done => {
+    it(`emits focus if it was updated`, () => {
+        let result: unknown;
+
         component.focusedChange.subscribe((focused: boolean) => {
-            expect(focused).toBe(true);
-            done();
+            result = focused;
         });
 
         component.onFocused(true);
+
+        expect(result).toBe(true);
     });
 
-    it('emits focusVisible if it was updated', done => {
+    it(`emits focusVisible if it was updated`, () => {
+        let result: unknown;
+
         component.focusVisibleChange.subscribe((focusVisible: boolean) => {
-            expect(focusVisible).toBe(true);
-            done();
+            result = focusVisible;
         });
 
         component.onFocusVisible(true);
+
+        expect(result).toBe(true);
     });
 });

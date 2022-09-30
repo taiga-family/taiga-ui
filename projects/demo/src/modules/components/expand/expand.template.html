@@ -1,4 +1,8 @@
-<tui-doc-page header="Expand" package="CORE" type="components">
+<tui-doc-page
+    header="Expand"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to show expandable content</p>
 
@@ -14,13 +18,16 @@
 
     <ng-template pageTab>
         Darth Vader is (spoilers below):
-        <tui-expand class="b-full-width" [expanded]="expanded" [async]="async">
-            <ng-template tuiExpandContent>
+        <tui-expand
+            class="b-full-width"
+            [expanded]="expanded"
+            [async]="async"
+        >
+            <ng-template>
                 <div *ngIf="!delayed">
                     <p>Luke's father.</p>
                     <p class="tooltip">
-                        Also Tyler Durden doesn't actually exist (hover for mode
-                        details)
+                        Also Tyler Durden doesn't actually exist (hover for mode details)
                         <span class="bubble">
                             Fight Club reference (notice how spoiler has
                             <code>overflow: visible;</code>
@@ -28,22 +35,15 @@
                         </span>
                     </p>
                     <div>
-                        A spoiler is an element of a disseminated summary or
-                        description of any piece of fiction that reveals any
-                        plot elements which threaten to give away important
-                        details. Typically, the details of the conclusion of the
-                        plot, including the climax and ending, are especially
-                        regarded as spoiler material. It can also be used to
-                        refer to any piece of information regarding any part of
-                        a given media that a potential consumer would not want
-                        to know beforehand. Because enjoyment of fiction depends
-                        a great deal upon the suspense of revealing plot details
-                        through standard narrative progression, the prior
-                        revelation of how things will turn out can "spoil" the
-                        enjoyment that some consumers of the narrative would
-                        otherwise have experienced. Spoilers can be found in
-                        message boards, articles, reviews, commercials, and
-                        movie trailers.
+                        A spoiler is an element of a disseminated summary or description of any piece of fiction that
+                        reveals any plot elements which threaten to give away important details. Typically, the details
+                        of the conclusion of the plot, including the climax and ending, are especially regarded as
+                        spoiler material. It can also be used to refer to any piece of information regarding any part of
+                        a given media that a potential consumer would not want to know beforehand. Because enjoyment of
+                        fiction depends a great deal upon the suspense of revealing plot details through standard
+                        narrative progression, the prior revelation of how things will turn out can "spoil" the
+                        enjoyment that some consumers of the narrative would otherwise have experienced. Spoilers can be
+                        found in message boards, articles, reviews, commercials, and movie trailers.
                     </div>
                 </div>
             </ng-template>
@@ -84,7 +84,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -93,7 +93,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

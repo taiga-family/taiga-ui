@@ -12,7 +12,7 @@ export const TUI_DEFAULT_MATCHER = <T>(
     item: T,
     search: string,
     stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
-) => stringify(item).toLowerCase().includes(search.toLowerCase());
+): boolean => stringify(item).toLowerCase().includes(search.toLowerCase());
 
 /**
  * Default handler for strict matching stringified version of an item and a search query
@@ -24,7 +24,7 @@ export const TUI_STRICT_MATCHER = <T>(
     item: T,
     search: string,
     stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
-) => stringify(item).toLowerCase() === search.toLowerCase();
+): boolean => stringify(item).toLowerCase() === search.toLowerCase();
 
 /**
  * Default handler to match equality of two elements

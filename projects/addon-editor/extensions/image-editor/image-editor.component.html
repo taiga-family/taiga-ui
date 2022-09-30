@@ -1,4 +1,17 @@
-<img [src]="src" [width]="width" [alt]="alt" [title]="title" />
+<img
+    [src]="src"
+    [width]="width"
+    [alt]="alt"
+    [title]="title"
+    [style.min-width.px]="minWidth"
+    [style.max-width.px]="maxWidth"
+/>
 
-<span class="border border_right" (tuiPan)="onHorizontalDrag($event, 1)"></span>
-<span class="border border_left" (tuiPan)="onHorizontalDrag($event, -1)"></span>
+<span
+    class="t-border t-border_right"
+    (tuiPan)="onHorizontalDrag($event, 1)"
+></span>
+<span
+    class="t-border t-border_left"
+    (tuiPan)="onHorizontalDrag($event, -1)"
+></span>

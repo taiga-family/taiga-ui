@@ -50,7 +50,7 @@ class TuiNodeView extends NodeView<
     renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
     contentDOMElement: HTMLElement | null = null;
 
-    mount(): void {
+    override mount(): void {
         const injector = this.options.injector;
         const documentRef = injector.get(DOCUMENT);
 
@@ -77,22 +77,22 @@ class TuiNodeView extends NodeView<
 
         this.contentDOMElement = this.node.isLeaf
             ? null
-            : documentRef.createElement(this.node.isInline ? 'span' : 'div');
+            : documentRef.createElement(this.node.isInline ? `span` : `div`);
 
         if (this.contentDOMElement) {
             // For some reason the whiteSpace prop is not inherited properly in Chrome and Safari
             // With this fix it seems to work fine
             // See: https://github.com/ueberdosis/tiptap/issues/1197
-            this.contentDOMElement.style.whiteSpace = 'inherit';
+            this.contentDOMElement.style.whiteSpace = `inherit`;
             this.renderer.detectChanges();
         }
     }
 
-    get dom(): HTMLElement {
+    override get dom(): HTMLElement {
         return this.renderer.dom;
     }
 
-    get contentDOM(): HTMLElement | null {
+    override get contentDOM(): HTMLElement | null {
         if (this.node.isLeaf) {
             return null;
         }
@@ -136,7 +136,7 @@ class TuiNodeView extends NodeView<
     }
 
     private maybeMoveContentDOM(): void {
-        const contentElement = this.dom.querySelector('[data-node-view-content]');
+        const contentElement = this.dom.querySelector(`[data-node-view-content]`);
 
         if (
             this.contentDOMElement &&

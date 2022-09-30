@@ -1,22 +1,12 @@
 {
     "extends": "./tsconfig.json",
     "exclude": ["projects/**/test.ts", "**/*.spec.ts"],
-    "angularCompilerOptions": {
-        "preserveWhitespaces": false,
-        "annotateForClosureCompiler": false,
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true,
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true,
-        "enableResourceInlining": true
-    },
     "compilerOptions": {
-        "target": "es2015",
-        "declaration": true,
-        "inlineSources": true,
-        "preserveConstEnums": true,
         "outDir": "./dist/out-tsc/lib",
-        "types": [],
+        "declaration": true,
+        "sourceMap": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
         "paths": {
             "@taiga-ui/cdk/*": ["./dist/cdk/*"],
             "@taiga-ui/cdk": ["./dist/cdk/index"],
@@ -24,10 +14,8 @@
             "@taiga-ui/core": ["./dist/core/index"],
             "@taiga-ui/kit/*": ["./dist/kit/*"],
             "@taiga-ui/kit": ["./dist/kit/index"],
-
             "@taiga-ui/i18n/*": ["./dist/i18n/*"],
             "@taiga-ui/i18n": ["./dist/i18n/index"],
-
             "@taiga-ui/addon-charts/*": ["./dist/addon-charts/*"],
             "@taiga-ui/addon-charts": ["./dist/addon-charts/index"],
             "@taiga-ui/addon-mobile/*": ["./dist/addon-mobile/*"],
@@ -40,8 +28,8 @@
             "@taiga-ui/addon-tablebars": ["./dist/addon-tablebars/index"],
             "@taiga-ui/addon-preview/*": ["./dist/addon-preview/*"],
             "@taiga-ui/addon-preview": ["./dist/addon-preview/index"],
-
-            "@taiga-ui/testing": ["./dist/testing"],
+            "@taiga-ui/testing": ["./dist/testing/index"],
+            "@taiga-ui/testing/*": ["./dist/testing/*"],
             "@taiga-ui/icons": ["./dist/icons"],
             "@taiga-ui/addon-doc": ["./dist/addon-doc"]
         }

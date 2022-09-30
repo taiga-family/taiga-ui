@@ -1,28 +1,44 @@
-<tui-doc-page i18n-header header="Wrapper">
+<tui-doc-page
+    i18n-header
+    header="Wrapper"
+>
     <p i18n>
         Many Taiga UI components use
         <code>tui-wrapper</code>
-        component internally. It is responsible for display of various
-        interactive states and is controlled with CSS. Buttons provide a direct
-        input for
+        component internally. It is responsible for display of various interactive states and is controlled with CSS.
+        Buttons provide a direct input for
         <code>appearance</code>
-        while others, like input fields, are configurable through Dependency
-        Injection.
+        while others, like input fields, are configurable through Dependency Injection.
     </p>
     <p i18n>
-        Built-in appearances come with Taiga UI theme. You can extend or
-        completely replace them with your own in global non-encapsulated styles.
-        Here are CSS selectors you can use to target wrapper and customize the
-        look of components:
+        Built-in appearances come with Taiga UI theme. You can extend or completely replace them with your own in global
+        non-encapsulated styles. Use the following mixins from
+        <code>@import '~@taiga-ui/core/styles/taiga-ui-local';</code>
+        :
     </p>
     <ul>
-        <li *ngFor="let item of state | keyvalue">
-            <tui-doc-copy class="var" [cdkCopyToClipboard]="item.key">
-                <code>{{ item.key }}</code>
+        <li *ngFor="let item of mixins">
+            <tui-doc-copy
+                class="var"
+                [cdkCopyToClipboard]="item"
+            >
+                <code>{{ item }}</code>
             </tui-doc-copy>
-            — {{ item.value }}
         </li>
     </ul>
+    <p>
+        Use
+        <code>[data-mode='onDark']</code>
+        /
+        <code>[data-mode='onLight']</code>
+        selectors to account for
+        <a
+            tuiLink
+            routerLink="/directives/mode"
+        >
+            Mode
+        </a>
+    </p>
 
     <tui-doc-example
         id="material"

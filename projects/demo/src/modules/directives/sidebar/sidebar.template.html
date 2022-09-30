@@ -6,8 +6,8 @@
 >
     <ng-template pageTab>
         <p i18n>
-            Directive allows to show arbitrary content in a sidebar above all
-            content. A darkening overlay is shown under the sidebar.
+            Directive allows to show arbitrary content in a sidebar above all content. A darkening overlay is shown
+            under the sidebar.
         </p>
 
         <tui-doc-example
@@ -20,12 +20,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template i18n-pageTab pageTab="Setup">
+    <ng-template
+        i18n-pageTab
+        pageTab="Setup"
+    >
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
                     Import
-                    <code>TuiSidevarModule</code>
+                    <code>TuiSidebarModule</code>
                     into your component module. Also add
                     <code>TuiActiveZoneModule</code>
                     if you want to close sidebar when user clicked outside:
@@ -33,7 +36,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -42,7 +45,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 

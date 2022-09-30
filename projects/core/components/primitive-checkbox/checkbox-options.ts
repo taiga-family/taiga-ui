@@ -1,10 +1,10 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export interface CheckboxOptions {
+export interface TuiCheckboxOptions {
     readonly size: TuiSizeL;
     readonly appearances: Readonly<{
         unchecked: string;
@@ -18,8 +18,8 @@ export interface CheckboxOptions {
 }
 
 /** Default values for the checkbox options. */
-export const TUI_CHECKBOX_DEFAULT_OPTIONS: CheckboxOptions = {
-    size: 'm',
+export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
+    size: `m`,
     appearances: {
         unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
@@ -27,17 +27,24 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: CheckboxOptions = {
     },
     icons: {
         checked({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge';
+            return $implicit === `m` ? `tuiIconCheck` : `tuiIconCheckLarge`;
         },
         indeterminate({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge';
+            return $implicit === `m` ? `tuiIconMinus` : `tuiIconMinusLarge`;
         },
     },
 };
 
-export const TUI_CHECKBOX_OPTIONS = new InjectionToken<CheckboxOptions>(
-    'Default parameters for checkbox component',
+export const TUI_CHECKBOX_OPTIONS = new InjectionToken<TuiCheckboxOptions>(
+    `[TUI_CHECKBOX_OPTIONS]: Default parameters for checkbox component`,
     {
         factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
     },
 );
+
+export const tuiCheckboxOptionsProvider: (
+    options: Partial<TuiCheckboxOptions>,
+) => ValueProvider = (options: Partial<TuiCheckboxOptions>) => ({
+    provide: TUI_CHECKBOX_OPTIONS,
+    useValue: {...TUI_CHECKBOX_DEFAULT_OPTIONS, ...options},
+});

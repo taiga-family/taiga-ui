@@ -1,17 +1,18 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
-<tui-wrapper
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<div
+    tuiWrapper
     automation-id="tui-primitive-textfield__wrapper"
-    tuiPreventDefault="click"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [focused]="computedFocused"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
     [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
-    (tuiHoveredChange)="onHovered($event)"
+    (click.prevent.silent)="(0)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >
     <ng-content select="input"></ng-content>
@@ -19,102 +20,94 @@
         #focusableElement
         tuiMaskAccessor
         automation-id="tui-primitive-textfield__native-input"
-        class="input"
+        class="t-input"
         [attr.disabled]="computedDisabled || null"
-        [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
-        [attr.aria-placeholder]="controller.exampleText"
         [attr.aria-invalid]="computedInvalid"
-        [autocomplete]="controller.autocomplete"
-        [type]="controller.type"
         [id]="id"
         [readOnly]="readOnly || !editable"
-        [tuiInputMode]="controller.inputMode"
         [tuiFocusable]="computedFocusable"
-        [tuiDescribedBy]="id"
         [ngModel]="value"
         (ngModelChange)="onModelChange($event)"
     />
     <div
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
-        class="input input_template"
+        class="t-input t-input_template"
     >
-        <ng-content select="[polymorpheus-outlet]"></ng-content>
+        <ng-content select="tuiContent"></ng-content>
     </div>
-    <div class="content">
+    <div class="t-content">
         <div
-            *ngIf="iconAlignLeft"
-            polymorpheus-outlet
-            class="icon icon_left"
-            [content]="iconContent"
-            [context]="{$implicit: size}"
+            *ngIf="iconLeftContent"
+            class="t-icon t-icon_left"
         >
-            <ng-template let-iconSrc>
-                <tui-svg [src]="iconSrc"></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                [src]="src"
+            ></tui-svg>
         </div>
-        <div class="wrapper">
+        <div class="t-wrapper">
             <label
                 *ngIf="hasPlaceholder"
                 automation-id="tui-primitive-textfield__placeholder"
-                class="placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
                 [for]="computedId"
             >
                 <ng-content></ng-content>
             </label>
-            <tui-value-decoration
-                #decor
-                automation-id="tui-primitive-textfield__value-decoration"
-                aria-hidden="true"
-                class="t-value-decoration"
-                [style.textIndent.px]="getIndent$(focusableElement) | async"
-            ></tui-value-decoration>
+            <div class="t-wrapper-value-decoration">
+                <tui-value-decoration
+                    #decor
+                    automation-id="tui-primitive-textfield__value-decoration"
+                    aria-hidden="true"
+                    class="t-value-decoration"
+                    [class.t-has-value]="value"
+                    [style.textIndent.px]="getIndent$(focusableElement) | async"
+                ></tui-value-decoration>
+            </div>
         </div>
         <div
             *ngIf="hasCustomContent"
-            polymorpheus-outlet
             automation-id="tui-primitive-textfield__custom-content"
-            class="custom-content"
-            [content]="controller.customContent"
+            class="t-custom-content"
         >
-            <ng-template let-iconSrc>
-                <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="controller.customContent as src"
+                class="t-custom-icon"
+                [src]="src"
+            ></tui-svg>
         </div>
         <span
             *ngIf="hasCleaner"
-            polymorpheus-outlet
             automation-id="tui-primitive-textfield__cleaner"
-            class="cleaner"
-            [content]="iconCleaner"
+            class="t-cleaner"
             (click.stop)="clear()"
         >
-            <ng-template let-icon>
-                <tui-svg [src]="icon"></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconCleaner as src"
+                [src]="src"
+            ></tui-svg>
         </span>
         <tui-tooltip
-            *ngIf="hasTooltip"
+            *ngIf="hintOptions && hintOptions.content && !computedDisabled"
             automation-id="tui-primitive-textfield__tooltip"
             [describeId]="computedId"
-            [content]="hintController.content"
-            [direction]="hintController.direction"
-            [mode]="hintController.mode"
-            [showDelay]="hintController.showDelay"
-            [hideDelay]="hintController.hideDelay"
+            [content]="hintOptions.content"
+            [direction]="hintOptions.direction"
+            [appearance]="hintOptions.appearance"
+            [showDelay]="hintOptions.showDelay"
+            [hideDelay]="hintOptions.hideDelay"
         ></tui-tooltip>
         <div
-            *ngIf="iconAlignRight"
-            polymorpheus-outlet
-            class="icon"
-            [content]="iconContent"
-            [context]="{$implicit: size}"
+            *ngIf="iconContent"
+            class="t-icon"
         >
-            <ng-template let-iconSrc>
-                <tui-svg [src]="iconSrc"></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                [src]="src"
+            ></tui-svg>
         </div>
     </div>
-</tui-wrapper>
+</div>

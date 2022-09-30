@@ -116,9 +116,6 @@ npm i @taiga-ui/addon-doc
    ```typescript
    import {Component} from '@angular/core';
 
-   import {default as exampleHtml} from '!!raw-loader!./examples/1/index.html';
-   import {default as exampleTs} from '!!raw-loader!./examples/1/index.ts';
-
    @Component({
      selector: 'super-component',
      templateUrl: './account.template.html',
@@ -126,8 +123,8 @@ npm i @taiga-ui/addon-doc
    export class SuperComponent {
      // Keys would be used as tabs for code example
      readonly example = {
-       TypeScript: exampleTs,
-       HTML: exampleHtml,
+       TypeScript: import('./examples/1/index.ts?raw'),
+       HTML: import('./examples/1/index.html?raw'),
      };
 
      readonly inputVariants = ['input 1', 'input 2'];
@@ -137,12 +134,20 @@ npm i @taiga-ui/addon-doc
    _Template:_
 
    ```html
-   <tui-doc-page header="Super" package="SUPER-PACKAGE" deprecated>
+   <tui-doc-page
+     header="Super"
+     package="SUPER-PACKAGE"
+     deprecated
+   >
      <ng-template pageTab>
        <!-- default tab name would be used -->
        This would be the content of a first tab
 
-       <tui-doc-example id="basic-example" heading="Example of usage" [content]="example">
+       <tui-doc-example
+         id="basic-example"
+         heading="Example of usage"
+         [content]="example"
+       >
          <example-1></example-1>
        </tui-doc-example>
      </ng-template>

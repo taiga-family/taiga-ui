@@ -1,9 +1,10 @@
 import {TuiParsedGradient} from '@taiga-ui/addon-editor/interfaces';
+import {tuiParseColor} from '@taiga-ui/cdk';
 
-import {parseColor} from './parse-color';
-
-export function toGradient({stops, side}: TuiParsedGradient): string {
+export function tuiToGradient({stops, side}: TuiParsedGradient): string {
     return `linear-gradient(${side}, ${stops
-        .map(({color, position}) => `rgba(${parseColor(color).join(', ')}) ${position}`)
-        .join(', ')})`;
+        .map(
+            ({color, position}) => `rgba(${tuiParseColor(color).join(`, `)}) ${position}`,
+        )
+        .join(`, `)})`;
 }

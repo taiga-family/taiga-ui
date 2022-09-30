@@ -1,5 +1,5 @@
-<p>Parent zone: {{parentActive}}</p>
-<p>Child zone: {{childActive}}</p>
+<p>Parent zone: {{ parentActive }}</p>
+<p>Child zone: {{ childActive }}</p>
 <p>
     <input placeholder="input outside a zone" />
 </p>
@@ -10,7 +10,12 @@
     (tuiActiveZoneChange)="onParentActiveZone($event)"
 >
     <h2>Parent zone</h2>
-    <button tuiButton type="button">A button inside zone</button>
+    <button
+        tuiButton
+        type="button"
+    >
+        A button inside zone
+    </button>
 </div>
 <p>
     <button>A button outside of zone</button>

@@ -1,11 +1,19 @@
-<tui-doc-page header="DataList" package="CORE" type="components">
+<tui-doc-page
+    header="DataList"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>DataList</code>
             allows to make lists or menus
         </p>
 
-        <tui-doc-example id="custom" heading="Custom list" [content]="example4">
+        <tui-doc-example
+            id="custom"
+            heading="Custom list"
+            [content]="example4"
+        >
             <tui-data-list-example-4></tui-data-list-example-4>
         </tui-doc-example>
 
@@ -15,7 +23,10 @@
             heading="Links"
             [content]="example1"
         >
-            <tui-notification i18n class="tui-space_bottom-3">
+            <tui-notification
+                i18n
+                class="tui-space_bottom-3"
+            >
                 Import
                 <code>TuiArrowModule</code>
                 if you need a rotated arrow
@@ -29,6 +40,14 @@
             heading="Submenu"
             [content]="example2"
         >
+            <tui-notification
+                i18n
+                class="tui-space_bottom-3"
+            >
+                Use
+                <code>TuiDataListDropdownManagerModule</code>
+                for nested menus
+            </tui-notification>
             <tui-data-list-example-2></tui-data-list-example-2>
         </tui-doc-example>
 
@@ -37,11 +56,40 @@
             heading="Form control"
             [content]="example3"
         >
-            <tui-notification i18n class="tui-space_bottom-3">
+            <tui-notification
+                i18n
+                class="tui-space_bottom-3"
+            >
                 Import
                 <code>TuiMultiSelectModule</code>
             </tui-notification>
             <tui-data-list-example-3></tui-data-list-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="complex"
+            i18n-heading
+            heading="Complex"
+            [content]="example5"
+        >
+            <tui-notification
+                i18n
+                class="tui-space_bottom-3"
+            >
+                Use
+                <code>TuiDataListDropdownManagerModule</code>
+                for nested menus
+            </tui-notification>
+            <tui-data-list-example-5></tui-data-list-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="long-text-options"
+            i18n-heading
+            heading="Options with long text"
+            [content]="example6"
+        >
+            <tui-data-list-example-6></tui-data-list-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -111,7 +159,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -120,7 +168,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

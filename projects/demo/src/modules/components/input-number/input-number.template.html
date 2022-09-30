@@ -1,33 +1,70 @@
-<tui-doc-page header="InputNumber" package="KIT" type="components">
+<tui-doc-page
+    header="InputNumber"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             A component to input numbers. Control value is also of number type.
         </div>
 
-        <p i18n>
-            Component can be used to input money if you choose a currency symbol
-            as a postfix or prefix (see
-            <code>Currency</code>
-            pipe samples).
-        </p>
-
-        <p i18n>
-            There are also other components to input numbers:
-            <a tuiLink routerLink="/components/input-count">
-                <code>InputCount</code>
-            </a>
-            for integers,
-            <a tuiLink routerLink="/components/slider"><code>Slider</code></a>
-            and
-            <a tuiLink routerLink="/components/input-slider">
-                <code>InputSlider</code>
-            </a>
-            for inputting with a slider
-        </p>
+        <section i18n>
+            <h3>There are also other components to input numbers:</h3>
+            <ul class="tui-list tui-list_small">
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-count"
+                    >
+                        <strong>InputCount</strong>
+                    </a>
+                    (integers only)
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/slider"
+                    >
+                        <strong>Slider</strong>
+                    </a>
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-slider"
+                    >
+                        <strong>InputSlider</strong>
+                    </a>
+                    (it uses
+                    <code>InputNumber</code>
+                    inside)
+                </li>
+                <li class="tui-list__item">
+                    <a
+                        tuiLink
+                        routerLink="/components/input-range"
+                    >
+                        <strong>InputRange</strong>
+                    </a>
+                    (it uses
+                    <code>InputNumber</code>
+                    inside)
+                </li>
+            </ul>
+        </section>
 
         <p i18n>
             Number formatting can be customized with
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
             token.
         </p>
 
@@ -36,7 +73,24 @@
             i18n-heading
             heading="Currency"
             [content]="example1"
+            [description]="currencyPipeDescription"
         >
+            <ng-template #currencyPipeDescription>
+                <p i18n>
+                    To input money use properties
+                    <code>[postfix]</code>
+                    or
+                    <code>[prefix]</code>
+                    . To get currency symbol use pipe
+                    <a
+                        tuiLink
+                        routerLink="/pipes/currency"
+                    >
+                        tuiCurrency
+                    </a>
+                    .
+                </p>
+            </ng-template>
             <tui-input-number-example-1></tui-input-number-example-1>
         </tui-doc-example>
 
@@ -45,16 +99,41 @@
             i18n-heading
             heading="sizes"
             [content]="example2"
+            [description]="textFieldControllerDescription"
         >
+            <ng-template #textFieldControllerDescription>
+                Customize input via
+                <a
+                    tuiLink
+                    routerLink="/directives/textfield-controller"
+                >
+                    TextfieldControllers
+                </a>
+                .
+            </ng-template>
+
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
             <tui-input-number-example-2></tui-input-number-example-2>
         </tui-doc-example>
 
         <tui-doc-example
             id="precision"
             i18n-heading
-            heading="4 digits after comma"
+            heading="8 digits after comma"
             [content]="example3"
+            [description]="precisionDescription"
         >
+            <ng-template #precisionDescription>
+                Use property
+                <code>[precision]</code>
+                to configure a number of digits after comma.
+            </ng-template>
             <tui-input-number-example-3></tui-input-number-example-3>
         </tui-doc-example>
 
@@ -67,6 +146,15 @@
         >
             <tui-input-number-example-4></tui-input-number-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="prefix-postfix"
+            i18n-heading
+            heading="Prefix and postfix"
+            [content]="example5"
+        >
+            <tui-input-number-example-5></tui-input-number-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -75,16 +163,18 @@
                 <tui-input-number
                     [formControl]="control"
                     [focusable]="focusable"
-                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [min]="min"
                     [max]="max"
+                    [style.text-align]="align"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
@@ -92,13 +182,23 @@
                     [postfix]="postfix"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Type a sum
                 </tui-input-number>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.text-align"
+                [documentationPropertyValues]="alignVariants"
+                [(documentationPropertyValue)]="align"
+            >
+                Custom align content by text-align
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName=""
@@ -184,7 +284,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -199,7 +299,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -208,7 +308,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -11,13 +11,10 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
-import {
-    TUI_SHEET_DRAGGED,
-    TUI_SHEET_SCROLL,
-} from '../../components/sheet/sheet.providers';
+import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Directive({
-    selector: '[tuiSheetStop]',
+    selector: `[tuiSheetStop]`,
     providers: [TuiDestroyService],
 })
 export class TuiSheetStopDirective {
@@ -39,12 +36,12 @@ export class TuiSheetStopDirective {
                 takeUntil(destroy$),
             )
             .subscribe(() => {
-                nativeElement.style.overflow = 'hidden';
-                nativeElement.classList.remove('_stuck'); // iOS
+                nativeElement.style.overflow = `hidden`;
+                nativeElement.classList.remove(`_stuck`); // iOS
                 nativeElement.scrollTop = elementRef.nativeElement.offsetTop;
 
                 setTimeout(() => {
-                    nativeElement.style.overflow = '';
+                    nativeElement.style.overflow = ``;
                 }, 100);
             });
     }

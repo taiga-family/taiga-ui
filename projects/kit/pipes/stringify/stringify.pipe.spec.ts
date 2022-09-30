@@ -1,21 +1,21 @@
 import {TuiStringifyPipe} from './stringify.pipe';
 
-describe('TuiStringify pipe', () => {
-    it('works', () => {
+describe(`TuiStringify pipe`, () => {
+    it(`works`, () => {
         const pipe = new TuiStringifyPipe();
 
-        expect(pipe.transform('data')({data: 237, value: 327})).toEqual('237');
+        expect(pipe.transform(`data`)({data: 237, value: 327})).toEqual(`237`);
     });
 
-    it('turns null into empty string', () => {
+    it(`turns null into empty string`, () => {
         const pipe = new TuiStringifyPipe();
 
-        expect(pipe.transform('data')({data: null, value: 327})).toEqual('');
+        expect(pipe.transform(`data`)({data: null, value: 327})).toEqual(``);
     });
 
-    it('keeps falsy values intact', () => {
+    it(`keeps falsy values intact`, () => {
         const pipe = new TuiStringifyPipe();
 
-        expect(pipe.transform('data')({data: 0, value: 327})).toEqual('0');
+        expect(pipe.transform(`data`)({data: 0, value: 327})).toEqual(`0`);
     });
 });

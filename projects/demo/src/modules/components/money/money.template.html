@@ -1,9 +1,15 @@
-<tui-doc-page header="Money" package="ADDON-COMMERCE" type="components">
+<tui-doc-page
+    header="Money"
+    package="ADDON-COMMERCE"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>Money</code>
-            transforms and shows money sum. There are some ways to show currency
-            symbol and various decimal settings
+            transforms and shows money sum. There are some ways to show currency symbol and various decimal settings
         </div>
 
         <p i18n>
@@ -16,7 +22,13 @@
 
         <p i18n>
             Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
         </p>
 
         <tui-doc-example
@@ -46,11 +58,19 @@
             <tui-money-example-3></tui-money-example-3>
         </tui-doc-example>
 
-        <tui-doc-example id="text" heading="in text" [content]="example4">
+        <tui-doc-example
+            id="text"
+            heading="in text"
+            [content]="example4"
+        >
             <tui-money-example-4></tui-money-example-4>
         </tui-doc-example>
 
-        <tui-doc-example id="format" heading="Format" [content]="example5">
+        <tui-doc-example
+            id="format"
+            heading="Format"
+            [content]="example5"
+        >
             <tui-money-example-5></tui-money-example-5>
         </tui-doc-example>
     </ng-template>
@@ -75,8 +95,7 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="colored"
             >
-                Shows positive number with green color and negative numbers with
-                red
+                Shows positive number with green color and negative numbers with red
             </ng-template>
 
             <ng-template
@@ -109,8 +128,7 @@
                     </li>
                     <li>
                         <code>never</code>
-                        — never shows pennies (do not show them without
-                        rounding)
+                        — never shows pennies (do not show them without rounding)
                     </li>
                 </ol>
             </ng-template>
@@ -192,7 +210,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -201,7 +219,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

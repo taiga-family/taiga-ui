@@ -1,4 +1,17 @@
-<span #pre subtree characterData waMutationObserver>{{ prefix }}</span>
-<span class="t-ghost">{{ value }}</span>
-<span class="t-filler">{{ filler }}</span>
-{{ postfix }}
+<span
+    #pre
+    class="t-prefix t-inline"
+    [textContent]="prefix"
+></span>
+<span
+    class="t-ghost t-inline"
+    [textContent]="value"
+></span>
+<span
+    class="t-filler t-inline"
+    [textContent]="filler"
+></span>
+<span
+    class="t-postfix t-inline"
+    [textContent]="postfix"
+></span>

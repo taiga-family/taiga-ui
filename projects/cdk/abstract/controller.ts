@@ -1,10 +1,11 @@
-import {OnChanges} from '@angular/core';
+import {Directive, OnChanges} from '@angular/core';
 import {Subject} from 'rxjs';
 
-export abstract class TuiController implements OnChanges {
+@Directive()
+export abstract class AbstractTuiController implements OnChanges {
     readonly change$ = new Subject<void>();
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.change$.next();
     }
 }

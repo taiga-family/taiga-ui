@@ -1,12 +1,28 @@
-<p tuiTextfieldSize="m" class="filters">
-    <tui-input class="input" [tuiTextfieldCleaner]="true" [(ngModel)]="search">
+<p
+    tuiTextfieldSize="m"
+    class="filters"
+>
+    <tui-input
+        class="input"
+        [tuiTextfieldCleaner]="true"
+        [(ngModel)]="search"
+    >
         Find on page
     </tui-input>
-    <tui-input-count class="tui-space_horizontal-3" [formControl]="minAge">
+    <tui-input-count
+        class="tui-space_horizontal-3"
+        [formControl]="minAge"
+    >
         Minimum age
     </tui-input-count>
     <tui-hosted-dropdown [content]="dropdown">
-        <button tuiButton size="m" [iconRight]="arrow">Columns</button>
+        <button
+            tuiButton
+            size="m"
+            [iconRight]="arrow"
+        >
+            Columns
+        </button>
         <ng-template #dropdown>
             <tui-reorder
                 class="columns"
@@ -17,40 +33,73 @@
         </ng-template>
     </tui-hosted-dropdown>
 </p>
-<tui-loader [overlay]="true" [showLoader]="loading$ | async">
+<tui-loader
+    [overlay]="true"
+    [showLoader]="!!(loading$ | async)"
+>
     <table
-        *tuiLet="data$ | async as data"
+        *ngIf="data$ | async as data"
         tuiTable
         class="table"
         [columns]="columns"
-        [sorter]="sorter$ | async"
-        [direction]="direction$ | async"
-        (sorterChange)="sorter$.next($event)"
+        [direction]="(direction$ | async) || 1"
+        [tuiSortBy]="sorter$ | async"
+        (tuiSortByChange)="sorter$.next($event!)"
         (directionChange)="direction$.next($event)"
     >
         <thead>
             <tr tuiThGroup>
-                <th *tuiHead="'name'" tuiTh [sorter]="sorters.name">Name</th>
-                <th *tuiHead="'dob'" tuiTh [sorter]="sorters.dob">
+                <th
+                    *tuiHead="'name'"
+                    tuiTh
+                    tuiSortable
+                >
+                    Name
+                </th>
+                <th
+                    *tuiHead="'dob'"
+                    tuiTh
+                    tuiSortable
+                >
                     Date of Birth
                 </th>
-                <th *tuiHead="'age'" tuiTh [sorter]="sorters.age">Age</th>
+                <th
+                    *tuiHead="'age'"
+                    tuiTh
+                    tuiSortable
+                >
+                    Age
+                </th>
             </tr>
         </thead>
-        <tbody tuiTbody [data]="data">
-            <tr *tuiRow="let item of data" tuiTr>
-                <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.name)">
-                    {{item.name}}
+        <tbody
+            tuiTbody
+            [data]="data"
+        >
+            <tr
+                *tuiRow="let item of data"
+                tuiTr
+            >
+                <td
+                    *tuiCell="'name'"
+                    tuiTd
+                    [class.match]="isMatch(item.name)"
+                >
+                    {{ item.name }}
                 </td>
-                <td *tuiCell="'dob'" tuiTd [class.match]="isMatch(item.dob)">
-                    {{item.dob}}
+                <td
+                    *tuiCell="'dob'"
+                    tuiTd
+                    [class.match]="isMatch(item.dob)"
+                >
+                    {{ item.dob }}
                 </td>
                 <td
                     *tuiCell="'age'"
                     tuiTd
                     [class.match]="isMatch(getAge(item))"
                 >
-                    {{getAge(item)}}
+                    {{ getAge(item) }}
                 </td>
             </tr>
         </tbody>
@@ -59,7 +108,7 @@
                 <td [colSpan]="columns.length">
                     <tui-table-pagination
                         class="tui-space_top-2"
-                        [total]="total$ | async"
+                        [total]="(total$ | async) || 0"
                         (pageChange)="onPage($event)"
                         (sizeChange)="onSize($event)"
                     ></tui-table-pagination>

@@ -1,1 +1,1 @@
-export const DATE_TIME_SEPARATOR = ', ';
+export const DATE_TIME_SEPARATOR = `, `;

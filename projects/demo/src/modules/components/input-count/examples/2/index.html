@@ -1,5 +1,11 @@
-<form class="b-form" [formGroup]="testForm">
-    <label tuiLabel i18n-label label="Step is 1 by default">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <label
+        i18n-tuiLabel
+        tuiLabel="Step is 1 by default"
+    >
         <tui-input-count
             formControlName="testValue1"
             tuiTextfieldSize="m"
@@ -8,7 +14,11 @@
         ></tui-input-count>
     </label>
 
-    <label tuiLabel i18n-label label="Step is 100" class="tui-space_top-4">
+    <label
+        i18n-tuiLabel
+        tuiLabel="Step is 100"
+        class="tui-space_top-4"
+    >
         <tui-input-count
             formControlName="testValue2"
             tuiTextfieldSize="m"

@@ -1,4 +1,4 @@
-export function isExpireValid(expire: string): boolean {
+export function tuiIsExpireValid(expire: string): boolean {
     const today = new Date();
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear() - 2000;

@@ -1,9 +1,10 @@
-<tui-doc-page header="Link" package="CORE" type="components">
+<tui-doc-page
+    header="Link"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            Link component. It has focus highlight and can be customized with an
-            icon
-        </p>
+        <p i18n>Link component. It has focus highlight and can be customized with an icon</p>
 
         <tui-doc-example
             id="base"
@@ -30,6 +31,15 @@
             [content]="example3"
         >
             <tui-link-example-3></tui-link-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="long-text"
+            i18n-heading
+            heading="With long text"
+            [content]="example4"
+        >
+            <tui-link-example-4></tui-link-example-4>
         </tui-doc-example>
     </ng-template>
 
@@ -78,9 +88,11 @@
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
-                <a tuiLink routerLink="/services/svg-service">
+                An icon. It can be stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
                     <code>SvgService</code>
                 </a>
             </ng-template>
@@ -128,7 +140,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -137,7 +149,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

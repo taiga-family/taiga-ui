@@ -30,3 +30,7 @@ quality-check
 dist
 **/cypress/screenshots
 **/cypress/snapshots
+.ssl
+RELEASE_BODY.md
+*tsbuildinfo
+.angular

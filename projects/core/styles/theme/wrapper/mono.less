@@ -1,0 +1,22 @@
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='mono'],
+[tuiWrapper][data-appearance='mono'] {
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+
+    .wrapper-hover({
+        color: var(--tui-text-03);
+    });
+
+    .wrapper-active({
+        color: var(--tui-text-02);
+    });
+
+    &[data-mode='onDark'] {
+        .wrapper-focus({
+            --tui-focus: var(--tui-text-01-night);
+        });
+    }
+}

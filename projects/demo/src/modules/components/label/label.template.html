@@ -1,4 +1,8 @@
-<tui-doc-page header="Label" package="CORE" type="components">
+<tui-doc-page
+    header="Label"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component binds a label and a content, e.g., a textfield</p>
 
@@ -32,15 +36,11 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <label tuiLabel [label]="getLabel(template)">
-                Content inside label
-            </label>
+            <label [tuiLabel]="getLabel(template)">Content inside label</label>
         </tui-doc-demo>
         <ng-template #template>
             Label is a template
-            <tui-tooltip
-                content="This way you can use components or any HTML"
-            ></tui-tooltip>
+            <tui-tooltip content="This way you can use components or any HTML"></tui-tooltip>
         </ng-template>
         <tui-doc-documentation>
             <ng-template
@@ -67,7 +67,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -76,7 +76,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

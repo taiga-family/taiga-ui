@@ -36,18 +36,18 @@
             tuiIconButton
             tuiPreviewAction
             icon="tuiIconRotate"
-            tuiHintId="Rotate"
             tuiHintDirection="top-right"
-            tuiHintMode="onDark"
+            tuiHintAppearance="onDark"
             class="t-rotate-button"
             [tuiHint]="texts.rotate"
+            [tuiHintDescribe]="''"
             (click)="rotate()"
         ></button>
 
         <tui-preview-zoom
             *ngIf="zoomable"
             [min]="minZoom"
-            [value]="zoom$ | async"
+            [value]="(zoom$ | async) || 1"
             (valueChange)="zoom$.next($event)"
             (reset)="reset()"
         ></tui-preview-zoom>

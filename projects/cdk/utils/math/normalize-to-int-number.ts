@@ -8,7 +8,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param max upper inclusive integer
  * @return an integer between min and max inclusive
  */
-export function normalizeToIntNumber(value: number, min: number, max: number): number {
+export function tuiNormalizeToIntNumber(value: number, min: number, max: number): number {
     tuiAssert.assert(Number.isInteger(min));
     tuiAssert.assert(Number.isInteger(max));
     tuiAssert.assert(min <= max);

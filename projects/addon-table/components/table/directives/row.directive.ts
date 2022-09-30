@@ -3,9 +3,9 @@ import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: 'ng-template[tuiRow]',
+    selector: `ng-template[tuiRow]`,
 })
-export class TuiRowDirective<T> {
+export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()
     @tuiDefaultProp()
     tuiRowOf: readonly T[] = [];
@@ -14,7 +14,7 @@ export class TuiRowDirective<T> {
 
     static ngTemplateContextGuard<T>(
         _dir: TuiRowDirective<T>,
-        _ctx: any,
+        _ctx: unknown,
     ): _ctx is TuiRowContext<T> {
         return true;
     }

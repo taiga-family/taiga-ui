@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -17,6 +16,7 @@ import {
     tuiDefaultProp,
     TuiMonth,
     TuiMonthRange,
+    tuiNullableSame,
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
@@ -28,11 +28,10 @@ import {Observable} from 'rxjs';
 
 const TODAY = TuiDay.currentLocal();
 
-// @dynamic
 @Component({
-    selector: 'tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
-    styleUrls: ['./calendar-month.style.less'],
+    selector: `tui-calendar-month`,
+    templateUrl: `./calendar-month.template.html`,
+    styleUrls: [`./calendar-month.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
@@ -75,7 +74,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         @Inject(TUI_CALENDAR_MONTHS) readonly months$: Observable<readonly string[]>,
     ) {}
 
-    @HostBinding('class._single')
+    @HostBinding(`class._single`)
     get isSingle(): boolean {
         return (
             this.value !== null &&
@@ -98,12 +97,12 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             return TuiInteractiveState.Disabled;
         }
 
-        if (pressedItem !== null && pressedItem.monthSame(item)) {
-            return TuiInteractiveState.Pressed;
+        if (pressedItem?.monthSame(item)) {
+            return TuiInteractiveState.Active;
         }
 
-        if (hoveredItem !== null && hoveredItem.monthSame(item)) {
-            return TuiInteractiveState.Hovered;
+        if (hoveredItem?.monthSame(item)) {
+            return TuiInteractiveState.Hover;
         }
 
         return null;
@@ -122,33 +121,29 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
         const theFirstOfRange = value.from.monthSame(item) && !value.isSingleMonth;
         const hoveredItemAfterFrom =
-            hoveredItem !== null &&
-            hoveredItem.monthAfter(value.from) &&
+            hoveredItem?.monthAfter(value.from) &&
             value.from.monthSame(item) &&
             value.isSingleMonth;
-        const hoveredItemIsCandidatToBeFrom =
-            hoveredItem !== null &&
-            hoveredItem.monthSame(item) &&
-            hoveredItem.monthBefore(value.from) &&
+        const hoveredItemIsCandidateToBeFrom =
+            hoveredItem?.monthSame(item) &&
+            hoveredItem?.monthBefore(value.from) &&
             value.isSingleMonth;
 
-        if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidatToBeFrom) {
+        if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidateToBeFrom) {
             return TuiRangeState.Start;
         }
 
         const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
         const hoveredItemBeforeTo =
-            hoveredItem !== null &&
             value.to.monthSame(item) &&
-            hoveredItem.monthBefore(value.to) &&
+            hoveredItem?.monthBefore(value.to) &&
             value.isSingleMonth;
-        const hoveredItemIsCandidatToBeTo =
-            hoveredItem !== null &&
-            hoveredItem.monthSame(item) &&
-            hoveredItem.monthAfter(value.from) &&
+        const hoveredItemIsCandidateToBeTo =
+            hoveredItem?.monthSame(item) &&
+            hoveredItem?.monthAfter(value.from) &&
             value.isSingleMonth;
 
-        if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidatToBeTo) {
+        if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidateToBeTo) {
             return TuiRangeState.End;
         }
 
@@ -185,18 +180,17 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return range.from.monthSameOrBefore(month) && range.to.monthAfter(month);
     }
 
-    onPickerYearClick(year: TuiYear) {
+    onPickerYearClick(year: TuiYear): void {
         this.isYearPickerShown = false;
 
         if (this.year.yearSame(year)) {
             return;
         }
 
-        this.year = year;
-        this.yearChange.emit(year);
+        this.updateActiveYear(year);
     }
 
-    onItemClick(month: TuiMonth) {
+    onItemClick(month: TuiMonth): void {
         if (this.disabledItemHandlerWithMinMax(month)) {
             return;
         }
@@ -204,23 +198,23 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.monthClick.emit(month);
     }
 
-    onYearClick() {
+    onYearClick(): void {
         this.isYearPickerShown = true;
     }
 
-    onNextYear() {
-        this.year = this.year.append({year: 1});
+    onNextYear(): void {
+        this.updateActiveYear(this.year.append({year: 1}));
     }
 
-    onPreviousYear() {
-        this.year = this.year.append({year: -1});
+    onPreviousYear(): void {
+        this.updateActiveYear(this.year.append({year: -1}));
     }
 
-    onItemHovered(hovered: boolean, item: TuiMonth) {
+    onItemHovered(hovered: boolean, item: TuiMonth): void {
         this.updateHoveredItem(hovered ? item : null);
     }
 
-    onItemPressed(pressed: boolean, item: TuiMonth) {
+    onItemPressed(pressed: boolean, item: TuiMonth): void {
         this.updatePressedItem(pressed ? item : null);
     }
 
@@ -246,8 +240,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         );
     }
 
-    private updateHoveredItem(month: TuiMonth | null) {
-        if (nullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
+    private updateHoveredItem(month: TuiMonth | null): void {
+        if (tuiNullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
             return;
         }
 
@@ -255,7 +249,12 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.hoveredItemChange.emit(month);
     }
 
-    private updatePressedItem(item: TuiMonth | null) {
+    private updatePressedItem(item: TuiMonth | null): void {
         this.pressedItem = item;
+    }
+
+    private updateActiveYear(year: TuiYear): void {
+        this.year = year;
+        this.yearChange.emit(year);
     }
 }

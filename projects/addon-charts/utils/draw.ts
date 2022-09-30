@@ -1,16 +1,16 @@
 import {TuiPoint} from '@taiga-ui/core';
 
-import {drawCurve} from './draw-curve';
-import {drawLine} from './draw-line';
+import {tuiDrawCurve} from './draw-curve';
+import {tuiDrawLine} from './draw-line';
 
 const COEFFICIENT = 500;
 
-export function draw(
-    array: ReadonlyArray<TuiPoint>,
+export function tuiDraw(
+    array: readonly TuiPoint[],
     index: number,
     smoothing: number,
 ): string {
     return smoothing
-        ? drawCurve(array, index, smoothing / COEFFICIENT)
-        : drawLine([array[index][0], array[index][1]]);
+        ? tuiDrawCurve(array, index, smoothing / COEFFICIENT)
+        : tuiDrawLine([array[index][0], array[index][1]]);
 }

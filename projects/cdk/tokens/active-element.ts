@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {typedFromEvent} from '@taiga-ui/cdk/observables';
-import {getActualTarget, getDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiGetActualTarget, tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
 import {merge, Observable, of, timer} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -21,36 +21,38 @@ import {
 import {TUI_REMOVED_ELEMENT} from './removed-element';
 
 export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | null>>(
-    'Active element on the document for ActiveZone',
+    `[TUI_ACTIVE_ELEMENT]: Active element on the document for ActiveZone`,
     {
         factory: () => {
             const removedElement$ = inject(TUI_REMOVED_ELEMENT);
             const windowRef = inject(WINDOW);
             const documentRef = inject(DOCUMENT);
-            const focusout$ = typedFromEvent(windowRef, 'focusout');
-            const focusin$ = typedFromEvent(windowRef, 'focusin');
-            const blur$ = typedFromEvent(windowRef, 'blur');
-            const mousedown$ = typedFromEvent(windowRef, 'mousedown');
-            const mouseup$ = typedFromEvent(windowRef, 'mouseup');
+            const focusout$ = tuiTypedFromEvent(windowRef, `focusout`);
+            const focusin$ = tuiTypedFromEvent(windowRef, `focusin`);
+            const blur$ = tuiTypedFromEvent(windowRef, `blur`);
+            const mousedown$ = tuiTypedFromEvent(windowRef, `mousedown`);
+            const mouseup$ = tuiTypedFromEvent(windowRef, `mouseup`);
 
             return merge(
                 focusout$.pipe(
+                    // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                     takeUntil(mousedown$),
+                    // eslint-disable-next-line rxjs/no-ignored-notifier
                     repeatWhen(() => mouseup$),
                     withLatestFrom(removedElement$),
                     filter(([event, removedElement]) =>
-                        isValidFocusout(getActualTarget(event), removedElement),
+                        isValidFocusout(tuiGetActualTarget(event), removedElement),
                     ),
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
                     map(() => documentRef.activeElement),
-                    filter(element => !!element && element.matches('iframe')),
+                    filter(element => !!element && element.matches(`iframe`)),
                 ),
                 focusin$.pipe(
                     switchMap(event => {
-                        const target = getActualTarget(event);
-                        const root = getDocumentOrShadowRoot(target) as Document;
+                        const target = tuiGetActualTarget(event);
+                        const root = tuiGetDocumentOrShadowRoot(target) as Document;
 
                         return root === documentRef
                             ? of(target)
@@ -61,11 +63,11 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     switchMap(event =>
                         !documentRef.activeElement ||
                         documentRef.activeElement === documentRef.body
-                            ? of(getActualTarget(event))
+                            ? of(tuiGetActualTarget(event))
                             : focusout$.pipe(
                                   take(1),
+                                  mapTo(tuiGetActualTarget(event)),
                                   takeUntil(timer(0)),
-                                  mapTo(getActualTarget(event)),
                               ),
                     ),
                 ),
@@ -78,18 +80,18 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
 function isValidFocusout(target: any, removedElement: Element | null = null): boolean {
     return (
         // Not due to switching tabs/going to DevTools
-        getDocumentOrShadowRoot(target).activeElement !== target &&
+        tuiGetDocumentOrShadowRoot(target).activeElement !== target &&
         // Not due to button/input becoming disabled
         !target.disabled &&
         // Not due to element being removed from DOM
-        (!removedElement || !removedElement.contains(target))
+        !removedElement?.contains(target)
     );
 }
 
 function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
     return merge(
-        typedFromEvent(root, 'focusin').pipe(map(({target}) => target)),
-        typedFromEvent(root, 'focusout').pipe(
+        tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
+        tuiTypedFromEvent(root, `focusout`).pipe(
             filter(
                 ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
             ),

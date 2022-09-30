@@ -1,12 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
-import {TuiGroupComponent} from './group.component';
 import {TuiGroupDirective} from './group.directive';
+import {TuiGroupStylesComponent} from './group-styles.component';
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [TuiGroupComponent, TuiGroupDirective],
-    exports: [TuiGroupComponent, TuiGroupDirective],
+    entryComponents: [TuiGroupStylesComponent],
+    declarations: [TuiGroupDirective, TuiGroupStylesComponent],
+    exports: [TuiGroupDirective, TuiGroupStylesComponent],
 })
 export class TuiGroupModule {}

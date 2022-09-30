@@ -1,4 +1,8 @@
-<tui-doc-page header="Accordion" package="KIT" type="components">
+<tui-doc-page
+    header="Accordion"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>An element that allows to show and hide content in sections</p>
 
@@ -43,18 +47,22 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-accordion [closeOthers]="closeOthers" [rounded]="rounded">
+            <tui-accordion
+                [closeOthers]="closeOthers"
+                [rounded]="rounded"
+            >
                 <tui-accordion-item
                     [borders]="borders"
                     [disabled]="disabled"
                     [noPadding]="noPadding"
                     [size]="size"
                     [showArrow]="showArrow"
+                    [disableHover]="disableHover"
                 >
                     Taiga UI cdk
                     <ng-template tuiAccordionItemContent>
-                        Development kit consisting of the low level tools and
-                        abstractions used to develop Taiga UI Angular entities
+                        Development kit consisting of the low level tools and abstractions used to develop Taiga UI
+                        Angular entities
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item
@@ -63,6 +71,7 @@
                     [noPadding]="noPadding"
                     [size]="size"
                     [showArrow]="showArrow"
+                    [disableHover]="disableHover"
                     [async]="async"
                     [open]="open"
                     (openChange)="onOpenChange($event)"
@@ -70,15 +79,18 @@
                     Taiga UI core
                     <ng-template tuiAccordionItemContent>
                         <div #content>
-                            Basic elements needed to develop components,
-                            directives and more using Taiga UI design system
+                            Basic elements needed to develop components, directives and more using Taiga UI design
+                            system
                         </div>
                     </ng-template>
                 </tui-accordion-item>
             </tui-accordion>
         </tui-doc-demo>
 
-        <tui-accordion class="b-full-width" [closeOthers]="false">
+        <tui-accordion
+            class="b-full-width"
+            [closeOthers]="false"
+        >
             <tui-accordion-item [open]="true">
                 TuiAccordionComponent
                 <ng-template tuiAccordionItemContent>
@@ -117,8 +129,7 @@
                         >
                             Waits for a custom event
                             <code>TUI_EXPAND_LOADED</code>
-                            before opening. Content is initialized when opening
-                            starts
+                            before opening. Content is initialized when opening starts
                         </ng-template>
                         <ng-template
                             i18n
@@ -147,6 +158,15 @@
                             [(documentationPropertyValue)]="noPadding"
                         >
                             Removes default paddings
+                        </ng-template>
+                        <ng-template
+                            i18n
+                            documentationPropertyName="disableHover"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disableHover"
+                        >
+                            Disabled header hover state
                         </ng-template>
                         <ng-template
                             i18n
@@ -192,7 +212,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -201,7 +221,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

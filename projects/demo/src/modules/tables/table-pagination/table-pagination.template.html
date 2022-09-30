@@ -1,4 +1,8 @@
-<tui-doc-page header="TablePagination" package="ADDON-TABLE" type="components">
+<tui-doc-page
+    header="TablePagination"
+    package="ADDON-TABLE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to show pagination in table footer</p>
 
@@ -10,9 +14,119 @@
         >
             <tui-table-pagination-example-1></tui-table-pagination-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-size-option-content"
+            i18n-heading
+            heading="Custom size-option content"
+            [description]="tokenDescription"
+            [content]="example2"
+        >
+            <ng-template #tokenDescription>
+                You can customize the component via DI-token
+                <code>TUI_TABLE_PAGINATION_OPTIONS</code>
+                .
+
+                <p class="tui-space_bottom-0">
+                    Use function
+                    <code>tuiTablePaginationOptionsProvider</code>
+                    to provide new value of this token.
+                </p>
+            </ng-template>
+            <tui-table-pagination-example-2></tui-table-pagination-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="toggle-pages-label"
+            i18n-heading
+            heading="Toggle pages label"
+            [content]="example3"
+        >
+            <tui-table-pagination-example-3></tui-table-pagination-example-3>
+        </tui-doc-example>
     </ng-template>
 
-    <ng-template i18n-pageTab pageTab="Setup">
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-table-pagination
+                [items]="items"
+                [total]="total"
+                [(page)]="page"
+                [(size)]="size"
+                (pageChange)="documentationPropertyPageChange.emitEvent($event)"
+                (sizeChange)="documentationPropertySizeChange.emitEvent($event)"
+            ></tui-table-pagination>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="total"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="total"
+            >
+                Total amount of items/lines in the table.
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="size"
+            >
+                Items/Lines per page.
+
+                <p>
+                    Uses the first element inside
+                    <code>items</code>
+                    by default.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="page"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="page"
+            >
+                Current page.
+
+                <p>Indexing starts at zero.</p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="readonly number[]"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Options to select amount of lines per page.
+            </ng-template>
+            <ng-template
+                #documentationPropertyPageChange="documentationProperty"
+                i18n
+                documentationPropertyName="pageChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="number"
+            >
+                Emits the selected page when user navigates by spin&nbsp;buttons or selects new size of items per page.
+            </ng-template>
+            <ng-template
+                #documentationPropertySizeChange="documentationProperty"
+                i18n
+                documentationPropertyName="sizeChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="number"
+            >
+                Emits the new
+                <code>size</code>
+                -property (user selects new amount of lines per page).
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -23,7 +137,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -32,7 +146,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

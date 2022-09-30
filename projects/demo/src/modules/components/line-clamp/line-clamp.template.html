@@ -1,8 +1,10 @@
-<tui-doc-page header="LineClamp" package="KIT" type="components">
+<tui-doc-page
+    header="LineClamp"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            Component cuts overflowed text with "..." and shows it by hover
-        </p>
+        <p i18n>Component cuts overflown text with "..." and shows it by hover</p>
 
         <tui-doc-example
             id="basic"
@@ -21,16 +23,26 @@
         >
             <tui-line-clamp-example-2></tui-line-clamp-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="resize"
+            i18n-heading
+            heading="Resize parent container"
+            [content]="example3"
+        >
+            <tui-line-clamp-example-3></tui-line-clamp-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-line-clamp
-                [content]="content"
+                [style.maxWidth.px]="maxWidth"
+                [content]="content || defaultExampleContent"
                 [linesLimit]="linesLimit"
                 [lineHeight]="lineHeight"
             ></tui-line-clamp>
-            <ng-template #content>
+            <ng-template #defaultExampleContent>
                 Lorem ipsum
                 <br />
                 Gaudeamus igitur
@@ -46,8 +58,18 @@
                 documentationPropertyName="content"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="content"
             >
                 Content
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="style.maxWidth.px"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxWidth"
+            >
+                Value of max-width
             </ng-template>
             <ng-template
                 i18n
@@ -56,10 +78,7 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="lineHeight"
             >
-                Height of single line. It can be computed automatically but you
-                can optimize the component setting it by yourselves and
-                <strong>to prevent reflow</strong>
-                .
+                Height of single line. It used to limit component's height.
             </ng-template>
             <ng-template
                 i18n
@@ -84,7 +103,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -93,7 +112,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

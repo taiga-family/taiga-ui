@@ -3,15 +3,15 @@
         *ngIf="label && !(empty$ | async)"
         tuiOption
         [size]="size"
-        [disabled]="disabled$ | async"
+        [disabled]="!!(disabled$ | async)"
         (click)="onClick(value)"
     >
         <tui-primitive-checkbox
-            class="tui-space_right-3"
+            class="t-checkbox"
             [size]="checkboxSize"
             [value]="value"
         ></tui-primitive-checkbox>
-        <span class="label">{{ label }}</span>
+        <span class="t-label">{{ label }}</span>
     </button>
 </ng-container>
 <ng-content></ng-content>

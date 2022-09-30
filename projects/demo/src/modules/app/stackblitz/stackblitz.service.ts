@@ -1,41 +1,52 @@
 import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
-import {CodeEditor} from '@taiga-ui/addon-doc';
-
-import {default as angularJson} from '!!raw-loader!./project-files/angular.txt';
-import {default as appModuleTs} from '!!raw-loader!./project-files/src/app/app.module.ts.txt';
-import {default as indexHtml} from '!!raw-loader!./project-files/src/index.html';
-import {default as mainTs} from '!!raw-loader!./project-files/src/main.ts.txt';
-import {default as polyfills} from '!!raw-loader!./project-files/src/polyfills.ts';
-import {default as styles} from '!!raw-loader!./project-files/src/styles.less';
-import {default as tsconfig} from '!!raw-loader!./project-files/tsconfig.txt';
+import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
+import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
+    getAllTaigaUIModulesFile,
     getComponentsClassNames,
     getSupportFiles,
     getSupportModules,
     prepareLess,
     prepareSupportFiles,
+    stackblitzPrefix,
 } from './utils';
 
 const APP_COMP_META = {
-    SELECTOR: 'my-app',
-    TEMPLATE_URL: './app.component.html',
-    STYLE_URLS: ['./app.component.less'],
-    CLASS_NAME: 'AppComponent',
+    SELECTOR: `my-app`,
+    TEMPLATE_URL: `./app.component.html`,
+    STYLE_URLS: [`./app.component.less`],
+    CLASS_NAME: `AppComponent`,
 } as const;
 
 @Injectable()
-export class StackblitzService implements CodeEditor {
-    readonly name = 'Stackblitz';
+export class TuiStackblitzService implements TuiCodeEditor {
+    readonly name = `Stackblitz`;
 
-    open(component: string, sampleId: string, content: Record<string, string>) {
+    async edit(
+        component: string,
+        sampleId: string,
+        content: Record<string, string>,
+    ): Promise<void> {
         if (!content.HTML || !content.TypeScript) {
             return;
         }
+
+        const taigaStyles = Object.fromEntries(
+            Object.entries(
+                await AbstractTuiStackblitzResourcesLoader.getTaigaStyles(),
+            ).map(([path, content]) => [stackblitzPrefix`${path}`, prepareLess(content)]),
+        );
+
+        const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
+            await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
+
+        const {stackblitzReadMe} =
+            await AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
 
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
@@ -71,9 +82,10 @@ export class StackblitzService implements CodeEditor {
         stackblitz.openProject({
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
-            template: 'angular-cli',
+            template: `angular-cli`,
             dependencies: STACKBLITZ_DEPS,
             files: {
+                ...taigaStyles,
                 ...modifiedSupportFiles,
                 'tsconfig.json': tsconfig,
                 'angular.json': angularJson,
@@ -81,12 +93,15 @@ export class StackblitzService implements CodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
+                [stackblitzPrefix`README.md`]: stackblitzReadMe,
+                [stackblitzPrefix`all-taiga-modules.ts`]:
+                    await getAllTaigaUIModulesFile(),
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-                [appPrefix`app.component.less`]: prepareLess(content.LESS || ''),
+                [appPrefix`app.component.less`]: prepareLess(content.LESS || ``),
             },
-            tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
+            tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
         });
     }
 }

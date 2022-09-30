@@ -1,21 +1,5 @@
 {
     "extends": "../../tsconfig.spec.json",
-    "compilerOptions": {
-        "outDir": "../../out-tsc/spec",
-        "types": ["jasmine", "node"],
-        "paths": {
-            "@taiga-ui/cdk": ["./projects/cdk/index"],
-            "@taiga-ui/cdk/*": ["./projects/cdk/*"],
-            "@taiga-ui/i18n": ["./projects/i18n/index"],
-            "@taiga-ui/i18n/*": ["./projects/i18n/*"],
-            "@taiga-ui/core": ["./projects/core/index"],
-            "@taiga-ui/core/*": ["./projects/core/*"],
-            "@taiga-ui/kit": ["./projects/kit/index"],
-            "@taiga-ui/kit/*": ["./projects/kit/*"],
-            "@taiga-ui/addon-charts/*": ["./projects/addon-charts/*"],
-            "@taiga-ui/testing": ["./projects/testing/src/public-api.ts"]
-        }
-    },
-    "files": ["test.ts"],
-    "include": ["**/*.spec.ts", "**/*.d.ts"]
+    "include": ["**/*.spec.ts", "**/*.d.ts"],
+    "files": ["test.ts"]
 }

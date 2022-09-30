@@ -1,34 +1,24 @@
 @import 'taiga-ui-local';
 
 :host {
-    .hoverable-with-shadow();
-    position: relative;
+    .clearbtn();
     display: flex;
+    justify-content: space-between;
     font: var(--tui-font-text-m);
     padding: 0.875rem;
-    color: var(--tui-text-01);
-    text-decoration: none;
     border: 2px solid transparent;
-    border-radius: var(--tui-radius-l);
-    outline: none;
+    text-align: start;
 
     &._focus-visible {
         border-color: var(--tui-focus);
     }
+
+    &:after {
+        display: none;
+    }
 }
 
-.button {
-    .fullsize();
-    .clearbtn();
-    cursor: pointer;
-    outline: none;
-}
-
-.icon {
-    margin-left: 1.25rem;
-    color: var(--tui-link);
-}
-
-.wrapper {
-    flex: 1;
+.t-icon {
+    color: var(--tui-action-color, var(--tui-link));
+    background-color: var(--tui-action-background, var(--tui-base-02));
 }

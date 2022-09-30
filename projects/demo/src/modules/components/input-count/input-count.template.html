@@ -1,10 +1,20 @@
-<tui-doc-page header="InputCount" package="KIT" type="components">
+<tui-doc-page
+    header="InputCount"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>InputCount</code>
             is a good choice to input integer positive numbers under 999
         </div>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             It allows limit value with min and max and handles such cases
         </div>
 
@@ -12,7 +22,13 @@
 
         <p i18n>
             Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
         </p>
 
         <tui-doc-example
@@ -21,6 +37,13 @@
             heading="Basic"
             [content]="example1"
         >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
             <tui-input-count-example-1></tui-input-count-example-1>
         </tui-doc-example>
 
@@ -56,6 +79,7 @@
                     [prefix]="prefix"
                     [postfix]="postfix"
                     [readOnly]="readOnly"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                 >
@@ -146,7 +170,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -161,7 +185,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -170,7 +194,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -178,13 +202,12 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_INPUT_COUNT_OPTIONS</code>
-                    injection token to override the default options for the
-                    component.
+                    injection token to override the default options for the component.
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

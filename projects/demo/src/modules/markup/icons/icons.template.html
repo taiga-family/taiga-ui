@@ -1,11 +1,54 @@
-<tui-doc-page i18n-header header="Icons">
-    <ng-template *ngFor="let key of keys" i18n-pageTab [pageTab]="key">
+<tui-doc-page
+    i18n-header
+    header="Icons"
+>
+    <ng-template
+        *ngFor="let key of keys"
+        i18n-pageTab
+        [pageTab]="key"
+    >
         <p i18n>
             These icons can be used by name in
-            <a tuiLink routerLink="/components/svg">Svg</a>
+            <a
+                tuiLink
+                routerLink="/components/svg"
+            >
+                Svg
+            </a>
             component and all Taiga UI component accepting icons as input.
         </p>
 
-        <icons-group [icons]="icons[key]"></icons-group>
+        <icons-group [icons]="icons[key]">
+            <ng-template
+                iconGroup
+                let-icon="icon"
+                let-copyPath="copyPath"
+            >
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="m"
+                    i18n-title
+                    title="Copy"
+                    appearance="icon"
+                    class="icon"
+                    [attr.aria-label]="icon"
+                    [icon]="icon"
+                    (click)="copyPath(icon)"
+                ></button>
+            </ng-template>
+        </icons-group>
+    </ng-template>
+
+    <ng-template pageTab="SVG Processing">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Customization"
+            description="You can customize the path to your icons and inherit color"
+            [content]="example1"
+        >
+            <customization-icons-example></customization-icons-example>
+        </tui-doc-example>
     </ng-template>
 </tui-doc-page>

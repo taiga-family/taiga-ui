@@ -1,3 +1,5 @@
+import {TuiPureException} from '@taiga-ui/cdk/exceptions';
+
 /**
  * Implements lazy initialization for getter or memoization of a function call similar to pure {@link: Pipe}.
  * Replaces getter with its calculated value upon first call or keeps track of last call arguments and returned
@@ -8,7 +10,7 @@
  * CAUTION: `this` is not available inside such functions/getters, they must be pure.
  */
 export function tuiPure<T>(
-    _target: Object,
+    _target: object,
     propertyKey: string,
     {get, enumerable, value}: TypedPropertyDescriptor<T>,
 ): TypedPropertyDescriptor<T> {
@@ -25,8 +27,8 @@ export function tuiPure<T>(
         };
     }
 
-    if (typeof value !== 'function') {
-        throw new Error('tuiPure can only be used with functions or getters');
+    if (typeof value !== `function`) {
+        throw new TuiPureException();
     }
 
     const original = value;
@@ -34,28 +36,30 @@ export function tuiPure<T>(
     return {
         enumerable,
         get(): T {
-            let previousArgs: ReadonlyArray<unknown> = [];
-            let previousResult: any;
+            let previousArgs: readonly unknown[] = [];
+            let originalFnWasCalledLeastAtOnce = false;
+            let pureValue: unknown;
 
-            const patched = (...args: Array<unknown>) => {
-                if (
+            const patched = (...args: unknown[]): unknown => {
+                const isPure =
+                    originalFnWasCalledLeastAtOnce &&
                     previousArgs.length === args.length &&
-                    args.every((arg, index) => arg === previousArgs[index])
-                ) {
-                    return previousResult;
+                    args.every((arg, index) => arg === previousArgs[index]);
+
+                if (isPure) {
+                    return pureValue;
                 }
 
                 previousArgs = args;
-                previousResult = original.apply(this, args);
+                pureValue = original.apply(this, args);
+                originalFnWasCalledLeastAtOnce = true;
 
-                return previousResult;
+                return pureValue;
             };
 
-            Object.defineProperty(this, propertyKey, {
-                value: patched,
-            });
+            Object.defineProperty(this, propertyKey, {value: patched});
 
-            return patched as any;
+            return patched as unknown as T;
         },
     };
 }

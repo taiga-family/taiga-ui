@@ -13,34 +13,48 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    setNativeFocused,
-    TUI_DEFAULT_IDENTITY_MATCHER,
+    TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
-    tuiPure,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_CLEANER,
+    tuiAsDataListHost,
+    tuiAsOptionContent,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_SELECT_PROVIDERS} from './select.providers';
+import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
 
 @Component({
-    selector: 'tui-select',
-    templateUrl: './select.template.html',
-    styleUrls: ['./select.style.less'],
+    selector: `tui-select`,
+    templateUrl: `./select.template.html`,
+    styleUrls: [`./select.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_SELECT_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiSelectComponent),
+        tuiAsControl(TuiSelectComponent),
+        tuiAsDataListHost(TuiSelectComponent),
+        tuiAsOptionContent(TUI_SELECT_OPTION),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -54,14 +68,21 @@ export class TuiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
+    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
+    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+        this.itemsHandlers.identityMatcher;
+
+    @Input()
+    @tuiDefaultProp()
+    valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = ``;
 
     constructor(
         @Optional()
@@ -73,11 +94,17 @@ export class TuiSelectComponent<T>
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS)
+        private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_SELECT_OPTIONS)
+        private readonly options: TuiSelectOptions<T>,
     ) {
         super(control, changeDetectorRef);
     }
 
-    get arrow(): PolymorpheusContent {
+    get arrow(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
@@ -87,56 +114,44 @@ export class TuiSelectComponent<T>
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }
 
     get computedValue(): string {
-        return this.value === null ? '' : String(this.value) || ' ';
+        return this.value === null ? `` : this.stringify(this.value) || ` `;
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.computedValue;
     }
 
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {$implicit, active};
-    }
-
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (!value) {
             this.updateValue(null);
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onKeyDownDelete() {
+    onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
             this.updateValue(null);
         }
     }
 
-    handleOption(option: T) {
+    handleOption(option: T): void {
         this.focusInput();
         this.updateValue(option);
         this.hostedDropdown?.updateOpen(false);
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 }

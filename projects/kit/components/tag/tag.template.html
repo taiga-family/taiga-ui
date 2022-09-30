@@ -1,18 +1,25 @@
 <div
-    class="tag"
+    class="t-tag"
     [style.backgroundColor]="backgroundColor"
     (dblclick)="edit($event)"
 >
     <div
         *ngIf="leftContent"
-        polymorpheus-outlet
-        class="left-content"
-        [content]="leftContent"
-    ></div>
-    <span automation-id="tui-tag__text" class="text">{{ displayText }}</span>
+        class="t-left-content"
+    >
+        <ng-container *polymorpheusOutlet="leftContent as text">
+            {{ text }}
+        </ng-container>
+    </div>
+    <span
+        automation-id="tui-tag__text"
+        class="t-text"
+    >
+        {{ displayText }}
+    </span>
     <tui-loader
         *ngIf="showLoader"
-        class="icon icon_loader"
+        class="t-icon t-icon_loader"
         [inheritColor]="true"
         [size]="loaderSize"
     ></tui-loader>
@@ -21,7 +28,7 @@
         tuiPreventDefault="mousedown"
         automation-id="tui-tag__remove"
         src="tuiIconCloseLarge"
-        class="icon"
+        class="t-icon"
         (click)="remove($event)"
     ></tui-svg>
 </div>
@@ -30,7 +37,7 @@
     #input
     automation-id="tui-tag__edit"
     type="text"
-    class="edit"
+    class="t-edit"
     [attr.maxLength]="maxLength"
     [ngModel]="editedText"
     (ngModelChange)="onInput($event)"

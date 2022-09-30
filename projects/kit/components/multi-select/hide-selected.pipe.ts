@@ -1,11 +1,11 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiIdentityMatcher, tuiPure} from '@taiga-ui/cdk';
-import {isFlat} from '@taiga-ui/kit/utils';
+import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 import {TuiMultiSelectComponent} from './multi-select.component';
 
 @Pipe({
-    name: 'tuiHideSelected',
+    name: `tuiHideSelected`,
     pure: false,
 })
 export class TuiHideSelectedPipe implements PipeTransform {
@@ -14,16 +14,20 @@ export class TuiHideSelectedPipe implements PipeTransform {
         private readonly component: TuiMultiSelectComponent<any>,
     ) {}
 
-    transform<T>(items: T): T;
+    transform<T>(items: readonly T[] | null): readonly T[] | null;
+    transform<T>(
+        items: ReadonlyArray<readonly T[]> | null,
+    ): ReadonlyArray<readonly T[]> | null;
     transform<T>(
         items: readonly T[] | ReadonlyArray<readonly T[]> | null,
-        {value, identityMatcher}: TuiMultiSelectComponent<T> = this.component,
     ): readonly T[] | ReadonlyArray<readonly T[]> | null {
+        const {value, identityMatcher} = this.component;
+
         if (!items) {
             return null;
         }
 
-        return isFlat(items)
+        return tuiIsFlat(items)
             ? this.filter(items, value, identityMatcher)
             : this.filter2d(items, value, identityMatcher);
     }
@@ -34,7 +38,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
         value: readonly T[],
         matcher: TuiIdentityMatcher<T>,
     ): ReadonlyArray<readonly T[]> {
-        return items.map(subitems => this.filter(subitems, value, matcher));
+        return items.map(subItems => this.filter(subItems, value, matcher));
     }
 
     @tuiPure

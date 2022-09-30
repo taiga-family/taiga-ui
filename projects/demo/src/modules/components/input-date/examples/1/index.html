@@ -1,7 +1,10 @@
-<form class="b-form" [formGroup]="testForm" [tuiTextfieldCleaner]="true">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+    [tuiTextfieldCleaner]="true"
+>
     <p i18n>
-        If a field is optional, but unfinished field should be marked as
-        invalid, use
+        If a field is optional, but unfinished field should be marked as invalid, use
         <code>tuiUnfinishedValidator</code>
         directive
     </p>
@@ -11,5 +14,8 @@
     >
         Choose a date
     </tui-input-date>
-    <tui-field-error formControlName="testValue"></tui-field-error>
+    <tui-error
+        formControlName="testValue"
+        [error]="[] | tuiFieldError | async"
+    ></tui-error>
 </form>

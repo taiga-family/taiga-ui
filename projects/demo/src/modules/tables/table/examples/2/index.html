@@ -1,25 +1,77 @@
-<table tuiTable [columns]="columns">
+<table
+    tuiTable
+    [columns]="columns"
+>
     <thead>
         <tr tuiThGroup>
-            <th *tuiHead="'name'" tuiTh>Name</th>
-            <th *tuiHead="'email'" tuiTh>E-mail</th>
-            <th *tuiHead="'status'" tuiTh>Status</th>
-            <th *tuiHead="'tags'" tuiTh [sorter]="null">Tags</th>
-            <th *tuiHead="'actions'" tuiTh [sorter]="null"></th>
+            <th
+                *tuiHead="'name'"
+                tuiTh
+            >
+                Name
+            </th>
+            <th
+                *tuiHead="'email'"
+                tuiTh
+            >
+                E-mail
+            </th>
+            <th
+                *tuiHead="'status'"
+                tuiTh
+            >
+                Status
+            </th>
+            <th
+                *tuiHead="'tags'"
+                tuiTh
+                [sorter]="null"
+            >
+                Tags
+            </th>
+            <th
+                *tuiHead="'actions'"
+                tuiTh
+                [sorter]="null"
+            ></th>
         </tr>
     </thead>
-    <tbody tuiTbody [data]="users">
-        <tr *tuiRow="let item of users; let index = index" tuiTr>
-            <td *tuiCell="'name'" tuiTd>{{index + 1}}. {{item.name}}</td>
-            <td *tuiCell="'email'" tuiTd>
-                <a *ngIf="item.email" tuiLink [href]="'mailto:' + item.email">
-                    {{item.email}}
+    <tbody
+        tuiTbody
+        [data]="users"
+    >
+        <tr
+            *tuiRow="let item of users; let index = index"
+            tuiTr
+        >
+            <td
+                *tuiCell="'name'"
+                tuiTd
+            >
+                {{ index + 1 }}. {{ item.name }}
+            </td>
+            <td
+                *tuiCell="'email'"
+                tuiTd
+            >
+                <a
+                    *ngIf="item.email"
+                    tuiLink
+                    [href]="'mailto:' + item.email"
+                >
+                    {{ item.email }}
                 </a>
             </td>
-            <td *tuiCell="'status'" tuiTd>
-                <div [class]="item.status">{{item.status}}</div>
+            <td
+                *tuiCell="'status'"
+                tuiTd
+            >
+                <div [class]="item.status">{{ item.status }}</div>
             </td>
-            <td *tuiCell="'tags'" tuiTd>
+            <td
+                *tuiCell="'tags'"
+                tuiTd
+            >
                 <tui-tag
                     *ngFor="let tag of item.tags"
                     class="tui-space_right-1"
@@ -27,7 +79,10 @@
                     [autoColor]="true"
                 ></tui-tag>
             </td>
-            <td *tuiCell="'actions'" tuiTd>
+            <td
+                *tuiCell="'actions'"
+                tuiTd
+            >
                 <button
                     tuiIconButton
                     appearance="flat"

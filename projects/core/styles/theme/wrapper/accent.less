@@ -1,31 +1,28 @@
-tui-wrapper[data-appearance='accent'] {
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='accent'] {
     background: var(--tui-accent);
     color: var(--tui-accent-text);
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: var(--tui-accent-hover);
-    }
+    });
 
-    &:active,
-    &[data-state='pressed'] {
+    .wrapper-active({
         background: var(--tui-accent-active);
-    }
+    });
 
-    &[data-state='disabled'] {
-        opacity: var(--tui-disabled-opacity);
-    }
-
-    &._invalid {
+    .wrapper-invalid({
         color: var(--tui-negative-night);
         background: var(--tui-error-bg);
 
-        &[data-state='hovered'],
-        &[data-state='pressed'] {
+        .wrapper-hover({
             background: var(--tui-error-bg-hover);
-        }
+        });
 
-        &._focused:after {
-            color: var(--tui-error-fill);
-        }
-    }
+        .wrapper-focus({
+            --tui-focus: var(--tui-error-fill);
+        });
+    });
 }

@@ -1,20 +1,23 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPanModule} from '../pan.module';
 
-describe('TuiPan directive', () => {
+describe(`TuiPan directive`, () => {
     @Component({
         template: `
-            <div class="main" (tuiPan)="pan($event)"></div>
+            <div
+                class="main"
+                (tuiPan)="pan($event)"
+            ></div>
         `,
     })
     class TestComponent {
         coords = [0, 0];
 
-        pan(delta: [number, number]) {
+        pan(delta: [number, number]): void {
             this.coords = delta;
         }
     }
@@ -33,16 +36,16 @@ describe('TuiPan directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css('.main'));
+        testElement = fixture.debugElement.query(By.css(`.main`));
 
         fixture.detectChanges();
     });
 
-    it('emits delta', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchmove');
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchmove');
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend');
+    it(`emits delta`, () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`);
+        sendTouchEvent(0, 0, testElement.nativeElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`);
 
         fixture.detectChanges();
 
@@ -54,7 +57,7 @@ describe('TuiPan directive', () => {
         y: number,
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend' | 'touchmove',
-    ) {
+    ): void {
         const touchObj = new Touch({
             identifier: Date.now(),
             target: element,

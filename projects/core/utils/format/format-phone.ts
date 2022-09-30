@@ -1,3 +1,5 @@
+import {CHAR_PLUS} from '@taiga-ui/cdk';
+
 /**
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
@@ -7,27 +9,27 @@
  * @param phoneMask a phone number mask
  * @return the formatted phone string of the form +7 XXX XXX-XX-XX
  */
-export function formatPhone(
+export function tuiFormatPhone(
     value: string,
     countryCode: string,
     phoneMask: string,
 ): string {
     if (!value) {
-        return '';
+        return ``;
     }
 
     let result = countryCode;
 
-    countryCode = countryCode.replace(/[()]/g, '');
+    countryCode = countryCode.replace(/[()]/g, ``);
 
     if (!value.startsWith(countryCode)) {
-        value = countryCode + value.replace('+', '');
+        value = countryCode + value.replace(CHAR_PLUS, ``);
     }
 
-    const splitPhoneMask = phoneMask.split('');
-    const splitValue = value.slice(countryCode.length).split('');
+    const splitPhoneMask = phoneMask.split(``);
+    const splitValue = value.slice(countryCode.length).split(``);
 
-    result += ' ';
+    result += ` `;
 
     if (splitValue.length === 0) {
         return result;
@@ -38,8 +40,8 @@ export function formatPhone(
             break;
         }
 
-        if (splitPhoneMask[i] === '#') {
-            result += splitValue[0] || '';
+        if (splitPhoneMask[i] === `#`) {
+            result += splitValue[0] || ``;
             splitValue.splice(0, 1);
         } else {
             result += splitPhoneMask[i];

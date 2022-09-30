@@ -7,16 +7,16 @@
 </div>
 
 <tui-mobile-ios-loader
-    *ngIf="isIOS; else angroidLoader"
+    *ngIf="isIOS; else androidLoader"
     class="t-ios-spinner"
-    [pulled]="pulledInPercent$ | async"
+    [pulled]="(pulledInPercent$ | async) || 0"
 ></tui-mobile-ios-loader>
 
-<ng-template #angroidLoader>
+<ng-template #androidLoader>
     <tui-mobile-android-loader
         class="t-android-loader"
         [class.t-drop-animation]="dropped$ | async"
         [style.transform]="loaderTransform$ | async"
-        [pulled]="pulledInPercent$ | async"
+        [pulled]="(pulledInPercent$ | async) || 0"
     ></tui-mobile-android-loader>
 </ng-template>

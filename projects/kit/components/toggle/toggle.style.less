@@ -16,18 +16,18 @@
     overflow: hidden;
     border-radius: 6.25rem;
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         width: @width-m;
         height: @height-m;
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         width: @width-l;
         height: @height-l;
     }
 }
 
-.checkbox {
+.t-checkbox {
     .clearinput();
     position: absolute;
     top: 0;
@@ -43,19 +43,19 @@
     }
 }
 
-.toggle {
+.t-toggle {
     .transition(transform);
     display: flex;
     align-items: center;
     justify-content: center;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         width: @toggle-width-m;
         height: @height-m;
         transform: translateX(-@toggle-interval-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: @toggle-width-l;
         height: @height-l;
         transform: translateX(-@toggle-interval-l);
@@ -66,7 +66,7 @@
     }
 }
 
-.circle {
+.t-circle {
     margin: 0.125rem 0;
     flex-shrink: 0;
     border-radius: 100%;
@@ -76,12 +76,12 @@
         opacity: 0.24;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         width: 0.75rem;
         height: 0.75rem;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: 1rem;
         height: 1rem;
     }
@@ -91,7 +91,7 @@
     }
 }
 
-.loader {
+.t-loader {
     :host:not(._checked) & {
         color: var(--tui-base-06);
     }
@@ -116,23 +116,23 @@
         color: var(--tui-clear-active);
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         width: 0.75rem;
         margin: 0 0.2rem;
         transform: scale(0.75);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: 1rem;
         margin: 0 @space;
     }
 }
 
-.icon-wrapper {
+.t-icon-wrapper {
     display: flex;
 }
 
-.icon {
+.t-icon {
     opacity: 0.8;
 
     &_off {
@@ -159,19 +159,19 @@
         }
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         width: 1rem;
         height: 1rem;
         transform: scale(0.75);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         margin: 0 (@space / 2);
         width: 1.5rem;
         height: 1.5rem;
     }
 
-    :host._hovered & {
+    :host:hover & {
         opacity: 1;
     }
 }

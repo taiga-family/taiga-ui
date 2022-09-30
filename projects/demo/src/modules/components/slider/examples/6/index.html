@@ -1,0 +1,44 @@
+<article class="zoom-controller">
+    <button
+        tuiIconButton
+        appearance="flat"
+        tuiMode="onDark"
+        size="s"
+        icon="tuiIconMinus"
+        class="minus"
+        (click)="change(-0.25)"
+    ></button>
+    <label
+        tuiSliderThumbLabel
+        class="slider-wrapper"
+    >
+        <div
+            tuiHintAppearance="onDark"
+            tuiHintDirection="top"
+            [tuiHint]="hint"
+            [tuiHintManual]="!!(showHint$ | async)"
+        ></div>
+
+        <ng-template #hint>
+            {{ value | percent }}
+        </ng-template>
+
+        <input
+            tuiSlider
+            type="range"
+            step="any"
+            [min]="min"
+            [max]="max"
+            [(ngModel)]="value"
+        />
+    </label>
+    <button
+        tuiIconButton
+        appearance="flat"
+        tuiMode="onDark"
+        size="s"
+        icon="tuiIconPlus"
+        class="plus"
+        (click)="change(+0.25)"
+    ></button>
+</article>

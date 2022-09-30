@@ -10,10 +10,18 @@
     Try it
     <ng-container *ngIf="filtered.length">
         <tui-data-list *tuiDataList>
-            <button *ngFor="let item of filtered" tuiOption [value]="item">
-                {{item}}
+            <button
+                *ngFor="let item of filtered"
+                tuiOption
+                [value]="item"
+            >
+                {{ item }}
             </button>
         </tui-data-list>
     </ng-container>
 </tui-input-tag>
-<tui-field-error [formControl]="control"></tui-field-error>
+
+<tui-error
+    [formControl]="control"
+    [error]="[] | tuiFieldError | async"
+></tui-error>

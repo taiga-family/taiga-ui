@@ -1,5 +1,11 @@
-<div class="t-container" (tuiZoom)="onZoom($event)">
-    <div class="t-zoomable" [style.transform]="transform$ | async">
-        <span>{{scale$ | async | number: '1.0-3'}}</span>
+<div
+    class="t-container"
+    (tuiZoom)="onZoom($event)"
+>
+    <div
+        class="t-zoomable"
+        [style.transform]="transform$ | async"
+    >
+        <span>{{ scale$ | async | number: '1.0-3' }}</span>
     </div>
 </div>

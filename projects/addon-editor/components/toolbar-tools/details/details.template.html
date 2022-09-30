@@ -1,0 +1,13 @@
+<button
+    *ngIf="texts$ | async as text"
+    tuiIconButton
+    type="button"
+    size="s"
+    icon="tuiIconSpoilerLarge"
+    appearance="icon"
+    tuiHintDirection="top-left"
+    [tuiHint]="text.setDetails"
+    [tuiHintDescribe]="''"
+    [focusable]="false"
+    (click)="setDetails()"
+></button>

@@ -18,41 +18,41 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {fakeSmoothScroll} from '../../ios.hacks';
-import {TuiSheet} from '../../sheet';
+import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
+import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
-import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
+import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
-// @dynamic
 @Component({
-    selector: 'tui-sheet',
-    templateUrl: 'sheet.template.html',
-    styleUrls: ['sheet.style.less'],
+    selector: `tui-sheet`,
+    templateUrl: `sheet.template.html`,
+    styleUrls: [`sheet.style.less`],
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        role: 'dialog',
-        '[attr.aria-labelledby]': 'id',
-        '[class._ios]': 'isIos',
+        role: `dialog`,
+        '[attr.aria-labelledby]': `id`,
+        '[class._ios]': `isIos`,
         // '[class._stuck]': 'true', // Initially disable snapping for Firefox
-        '[$.class._stuck]': 'stuck$',
-        '($.class._stuck)': 'stuck$',
+        '[$.class._stuck]': `stuck$`,
+        '($.class._stuck)': `stuck$`,
     },
 })
-export class TuiSheetComponent<T> implements AfterViewInit {
-    @ViewChild('sheet')
+export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
+    @ViewChild(`sheet`)
     private readonly sheet?: ElementRef<HTMLElement>;
 
-    @ViewChild('content')
+    @ViewChild(`content`)
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChildren('stops')
+    @ViewChildren(`stops`)
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
     item!: TuiSheet<T>;
 
-    id = '';
+    id = ``;
 
     readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
@@ -84,25 +84,31 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         };
     }
 
-    @HostListener(TUI_SHEET_ID, ['$event.detail'])
-    onId(id: string) {
+    @HostListener(TUI_SHEET_ID, [`$event.detail`])
+    onId(id: string): void {
         this.id = id;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         const stops = [...this.stops, this.sheetTop, this.contentTop];
 
         this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
     }
 
-    scrollTo(top: number = this.sheetTop) {
+    scrollTo(top: number = this.sheetTop): void {
         const {nativeElement} = this.elementRef;
 
         if (this.isIos) {
             fakeSmoothScroll(nativeElement, top - nativeElement.scrollTop - 16);
         }
 
-        nativeElement.scrollTo({top, behavior: 'smooth'});
+        nativeElement.scrollTo({top, behavior: `smooth`});
+    }
+
+    close(): void {
+        if (this.context.closeable) {
+            this.context.$implicit.complete();
+        }
     }
 
     private get contentTop(): number {
@@ -115,10 +121,8 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     @tuiPure
     private getStops(stops: QueryList<ElementRef<HTMLElement>>): readonly number[] {
-        return stops
-            .toArray()
-            .map(
-                ({nativeElement}) => nativeElement.offsetTop + nativeElement.clientHeight,
-            );
+        return stops.map(
+            ({nativeElement}) => nativeElement.offsetTop + nativeElement.clientHeight,
+        );
     }
 }

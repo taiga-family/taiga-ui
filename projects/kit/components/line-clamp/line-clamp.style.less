@@ -10,7 +10,7 @@
     }
 }
 
-.wrapper {
+.t-wrapper {
     /* stylelint-disable-next-line */
     display: -webkit-box;
 
@@ -18,8 +18,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 
-    &_ellipsis {
-        .text-overflow();
-        display: block;
+    ::ng-deep > * {
+        white-space: initial;
     }
 }

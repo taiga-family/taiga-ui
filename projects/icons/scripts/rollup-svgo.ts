@@ -4,7 +4,7 @@ import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 
 type SvgoResult = OptimizedSvg | OptimizedError;
 
-export interface RollupSvgoConfig {
+export interface TuiRollupSvgoConfig {
     readonly include?: string;
 
     readonly exclude?: string;
@@ -13,51 +13,51 @@ export interface RollupSvgoConfig {
 }
 
 export function rollupSvgo({
-    include = '**/*.svg',
+    include = `**/*.svg`,
     exclude,
     options,
-}: RollupSvgoConfig = {}): Plugin {
+}: TuiRollupSvgoConfig = {}): Plugin {
     const filter = createFilter(include, exclude);
 
     return {
-        name: 'rollupSvgo',
-        async transform(svgString: string, path: string): Promise<TransformResult> {
+        name: `rollupSvgo`,
+        transform(svgString: string, path: string): TransformResult {
             const skip = !filter(path);
 
             if (skip) {
-                console.info('\x1b[33m%s\x1b[0m', '[skip]', path);
+                console.info(`\x1B[33m%s\x1B[0m`, `[skip]`, path);
 
                 return;
             }
 
             let data: unknown;
-            let error: unknown;
+            let errorMessage: string;
 
             try {
-                const result: SvgoResult = await optimize(svgString, {path, ...options});
+                const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
-                error = result.error;
-            } catch (err) {
-                error = err.message;
+                errorMessage = result.error as string;
+            } catch (err: unknown) {
+                errorMessage = (err as Error)?.message;
             }
 
-            if (error) {
+            if (errorMessage) {
                 console.error(
-                    '\x1b[31m%s\x1b[0m',
-                    '[error]',
+                    `\x1B[31m%s\x1B[0m`,
+                    `[error]`,
                     path,
                     `\n${svgString}`,
-                    `\n${error}`,
+                    `\n${errorMessage}`,
                 );
                 process.exit(1);
             }
 
-            console.info('\x1b[32m%s\x1b[0m', '[success]', path);
+            console.info(`\x1B[32m%s\x1B[0m`, `[success]`, path);
 
             return {
                 code: `export default ${JSON.stringify(data)}`,
-                map: {mappings: ''},
+                map: {mappings: ``},
             };
         },
     };

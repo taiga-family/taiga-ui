@@ -1,18 +1,15 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {TuiHoveredService} from '@taiga-ui/cdk/services';
+import {Directive, Inject} from '@angular/core';
 import {Observable} from 'rxjs';
 
+import {TuiHoveredService} from './hovered.service';
+
 @Directive({
-    selector: '[tuiHoveredChange]',
+    selector: `[tuiHoveredChange]`,
+    outputs: [`tuiHoveredChange`],
+    providers: [TuiHoveredService],
 })
 export class TuiHoveredDirective {
-    @Output()
-    readonly tuiHoveredChange: Observable<boolean>;
-
     constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
-    ) {
-        this.tuiHoveredChange = hoveredService.createHovered$(nativeElement);
-    }
+        @Inject(TuiHoveredService) readonly tuiHoveredChange: Observable<boolean>,
+    ) {}
 }

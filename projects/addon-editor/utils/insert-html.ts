@@ -1,3 +1,5 @@
+import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
+
 /**
  * Provides document.execCommand('insertHTML', false, html) support to unsupported browser,
  * taking Undo stack into account if possible
@@ -7,9 +9,9 @@
  * @param documentRef document to execute on
  * @param html html to be inserted
  */
-export function tuiInsertHtml(documentRef: Document, html: string) {
-    if (documentRef.queryCommandSupported('insertHTML')) {
-        documentRef.execCommand('insertHTML', false, html);
+export function tuiInsertHtml(documentRef: Document, html: string): void {
+    if (documentRef.queryCommandSupported(`insertHTML`)) {
+        documentRef.execCommand(`insertHTML`, false, html);
 
         return;
     }
@@ -17,10 +19,10 @@ export function tuiInsertHtml(documentRef: Document, html: string) {
     const selection = documentRef.getSelection();
 
     if (!selection) {
-        throw new Error('Failed to get document selection');
+        throw new TuiDocumentSelectionException();
     }
 
-    documentRef.execCommand('ms-beginUndoUnit');
+    documentRef.execCommand(`ms-beginUndoUnit`);
 
     const range = selection.getRangeAt(0);
     const documentFragment = range.createContextualFragment(html);
@@ -28,5 +30,5 @@ export function tuiInsertHtml(documentRef: Document, html: string) {
     range.deleteContents();
     range.insertNode(documentFragment);
 
-    documentRef.execCommand('ms-endUndoUnit');
+    documentRef.execCommand(`ms-endUndoUnit`);
 }

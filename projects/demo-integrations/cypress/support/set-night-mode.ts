@@ -1,5 +1,5 @@
-export function setNightMode({enable}: {enable: boolean}): void {
+export function tuiSetNightMode({enable}: {enable: boolean}): void {
     cy.window().then((win: Window) => {
-        win.localStorage.setItem('night', enable.toString());
+        win.localStorage.setItem(`night`, enable.toString());
     });
 }

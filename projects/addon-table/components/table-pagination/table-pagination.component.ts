@@ -4,11 +4,15 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-// @dynamic
+import {
+    TUI_TABLE_PAGINATION_OPTIONS,
+    TuiTablePaginationOptions,
+} from './table-pagination-options';
+
 @Component({
-    selector: 'tui-table-pagination',
-    templateUrl: './table-pagination.template.html',
-    styleUrls: ['./table-pagination.style.less'],
+    selector: `tui-table-pagination`,
+    templateUrl: `./table-pagination.template.html`,
+    styleUrls: [`./table-pagination.style.less`],
 })
 export class TuiTablePaginationComponent {
     @Input()
@@ -39,6 +43,7 @@ export class TuiTablePaginationComponent {
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
         readonly texts$: Observable<Record<'pages' | 'linesPerPage' | 'of', string>>,
+        @Inject(TUI_TABLE_PAGINATION_OPTIONS) readonly options: TuiTablePaginationOptions,
     ) {}
 
     get pages(): number {
@@ -61,7 +66,7 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
-    onItem(size: number) {
+    onItem(size: number): void {
         const {start} = this;
 
         this.size = size;
@@ -71,12 +76,12 @@ export class TuiTablePaginationComponent {
         this.pageChange.emit(this.page);
     }
 
-    back() {
+    back(): void {
         this.page--;
         this.pageChange.emit(this.page);
     }
 
-    forth() {
+    forth(): void {
         this.page++;
         this.pageChange.emit(this.page);
     }

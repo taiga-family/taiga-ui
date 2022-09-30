@@ -1,20 +1,20 @@
 @mixin picker($itemSize) {
     :host {
-        @include text-body-m();
         display: block;
+        font: var(--tui-font-text-m);
     }
 
     .t-row {
         @include createStackingContext();
         display: flex;
         justify-content: space-between;
-        height: 36px;
+        height: 2.25rem;
     }
 
     .t-item {
         position: relative;
         flex: 1;
-        line-height: 32px;
+        line-height: 2rem;
         border-radius: var(--tui-radius-m);
 
         &:before,
@@ -57,10 +57,10 @@
         &_today:after {
             @include center-left();
             content: '';
-            bottom: 5px;
-            height: 2px;
-            width: 12px;
-            border-radius: 6px;
+            bottom: 0.3125rem;
+            height: 0.125rem;
+            width: 0.75rem;
+            border-radius: 0.375rem;
             background-color: var(--tui-text-02);
         }
 
@@ -96,7 +96,7 @@
             }
         }
 
-        &[data-tui-element-range] {
+        &[data-range] {
             &:after {
                 background-color: var(--tui-primary-text);
             }
@@ -110,42 +110,42 @@
                 }
             }
 
-            &[data-tui-element-state='hovered'] > .t-item:before,
-            &[data-tui-element-state='hovered'] > .t-item:after {
+            &[data-state='hover'] > .t-item:before,
+            &[data-state='hover'] > .t-item:after {
                 background-color: var(--tui-primary-hover);
             }
 
-            &[data-tui-element-state='pressed'] > .t-item:before,
-            &[data-tui-element-state='pressed'] > .t-item:after {
+            &[data-state='active'] > .t-item:before,
+            &[data-state='active'] > .t-item:after {
                 background-color: var(--tui-primary-active);
             }
         }
 
-        &[data-tui-element-range='end'] > .t-item {
+        &[data-range='end'] > .t-item {
             &:before {
-                left: 4px;
+                left: 0.25rem;
             }
 
             &:after {
-                left: -32px;
+                left: -2rem;
                 right: 100%;
-                transform: translateX(23px) scaleY(0.6) scaleX(0.4) rotate(45deg);
+                transform: translateX(1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
             }
         }
 
-        &[data-tui-element-range='start'] > .t-item {
+        &[data-range='start'] > .t-item {
             &:before {
-                right: 4px;
+                right: 0.25rem;
             }
 
             &:after {
                 left: 100%;
-                right: -32px;
-                transform: translateX(-23px) scaleY(0.6) scaleX(0.4) rotate(45deg);
+                right: -2rem;
+                transform: translateX(-1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
             }
         }
 
-        &[data-tui-element-state='disabled'] {
+        &[data-state='disabled'] {
             pointer-events: none;
 
             & > .t-item {
@@ -153,12 +153,12 @@
             }
         }
 
-        &[data-tui-element-state='hovered']:hover:not([data-tui-element-range])
+        &[data-state='hover']:hover:not([data-range])
             > .t-item {
             background-color: var(--tui-secondary-hover);
         }
 
-        &[data-tui-element-state='pressed']:hover:not([data-tui-element-range])
+        &[data-state='active']:hover:not([data-range])
             > .t-item {
             background-color: var(--tui-secondary-active);
         }

@@ -1,15 +1,8 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiYearLike} from '@taiga-ui/cdk/interfaces';
-import {padStart} from '@taiga-ui/cdk/utils/format';
-import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
+import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
-import {
-    DAYS_IN_LEAP_YEAR,
-    DAYS_IN_NORMAL_YEAR,
-    DAYS_IN_WEEK,
-    MAX_YEAR,
-    MIN_YEAR,
-} from './date-time';
+import {MAX_YEAR, MIN_YEAR} from './date-time';
 
 /**
  * Immutable year object
@@ -24,7 +17,7 @@ export class TuiYear implements TuiYearLike {
      * Checks year for validity
      */
     static isValidYear(year: number): boolean {
-        return Number.isInteger(year) && inRange(year, MIN_YEAR, MAX_YEAR + 1);
+        return Number.isInteger(year) && tuiInRange(year, MIN_YEAR, MAX_YEAR + 1);
     }
 
     /**
@@ -45,29 +38,6 @@ export class TuiYear implements TuiYearLike {
         return Math.ceil(year / 400) + (Math.ceil(year / 4) - Math.ceil(year / 100));
     }
 
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Returns day of week offset of the beginning of the passed year
-     *
-     * @param year
-     * @param absoluteLeapYears amount of leap years prior to the passed one
-     * @return offset in days
-     */
-    static getYearStartDaysOffset(year: number, absoluteLeapYears: number): number {
-        tuiAssert.assert(TuiYear.isValidYear(year));
-        tuiAssert.assert(Number.isInteger(absoluteLeapYears));
-        tuiAssert.assert(year >= absoluteLeapYears);
-        tuiAssert.assert(absoluteLeapYears >= 0);
-
-        return (
-            (absoluteLeapYears * DAYS_IN_LEAP_YEAR +
-                (year - absoluteLeapYears) * DAYS_IN_NORMAL_YEAR +
-                5) %
-            DAYS_IN_WEEK
-        );
-    }
-
     static lengthBetween(from: TuiYear, to: TuiYear): number {
         return to.year - from.year;
     }
@@ -76,11 +46,11 @@ export class TuiYear implements TuiYearLike {
      * Normalizes year by clamping it between min and max years
      */
     protected static normalizeYearPart(year: number): number {
-        return normalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
+        return tuiNormalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
     }
 
     get formattedYear(): string {
-        return padStart(String(this.year), 4, '0');
+        return String(this.year).padStart(4, `0`);
     }
 
     get isLeapYear(): boolean {
@@ -92,15 +62,6 @@ export class TuiYear implements TuiYearLike {
      */
     get absoluteLeapYears(): number {
         return TuiYear.getAbsoluteLeapYears(this.year);
-    }
-
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Returns day of week offset of the beginning of the current year
-     */
-    get yearStartDaysOffset(): number {
-        return TuiYear.getYearStartDaysOffset(this.year, this.absoluteLeapYears);
     }
 
     /**
@@ -138,16 +99,11 @@ export class TuiYear implements TuiYearLike {
         return this.year > year;
     }
 
-    // TODO: Consider removing `backwards` option
     /**
      * Immutably offsets year
      */
-    append({year = 0}: TuiYearLike, backwards: boolean = false): TuiYear {
+    append({year = 0}: TuiYearLike): TuiYear {
         tuiAssert.assert(Number.isInteger(year));
-
-        if (backwards) {
-            year *= -1;
-        }
 
         const resultYear = this.year + year;
 
@@ -158,6 +114,19 @@ export class TuiYear implements TuiYearLike {
 
     toString(): string {
         return this.formattedYear;
+    }
+
+    valueOf(): number {
+        return this.year;
+    }
+
+    /**
+     * Returns the primitive value of the given Date object.
+     * Depending on the argument, the method can return either a string or a number.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
+     */
+    [Symbol.toPrimitive](hint: string): string | number {
+        return Date.prototype[Symbol.toPrimitive].call(this, hint);
     }
 
     toJSON(): string {

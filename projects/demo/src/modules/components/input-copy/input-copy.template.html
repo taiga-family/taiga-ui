@@ -1,4 +1,8 @@
-<tui-doc-page header="InputCopy" package="KIT" type="components">
+<tui-doc-page
+    header="InputCopy"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>InputCopy alows user to copy a text of textfield</p>
 
@@ -8,6 +12,13 @@
             heading="sizes"
             [content]="example1"
         >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
             <tui-input-copy-example-1></tui-input-copy-example-1>
         </tui-doc-example>
     </ng-template>
@@ -17,19 +28,16 @@
             <tui-input-copy
                 [formControl]="control"
                 [focusable]="focusable"
-                [tuiTextfieldAutocomplete]="autocomplete"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [tuiTextfieldMaxLength]="maxLength"
                 [tuiTextfieldCleaner]="cleaner"
                 [successMessage]="notificationTemplate"
                 [messageDirection]="hintDirection"
-                [messageMode]="hintMode"
+                [messageAppearance]="hintAppearance"
                 [readOnly]="readOnly"
                 [pseudoInvalid]="pseudoInvalid"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
             >
                 Type a text
             </tui-input-copy>
@@ -70,7 +78,7 @@
                 documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintModeT | null"
-                [documentationPropertyValues]="hintModeVariants"
+                [documentationPropertyValues]="hintAppearanceVariants"
                 [(documentationPropertyValue)]="messageMode"
             >
                 Message tooltip mode
@@ -94,7 +102,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -109,7 +117,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -118,7 +126,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

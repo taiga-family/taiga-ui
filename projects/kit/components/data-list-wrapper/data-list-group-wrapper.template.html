@@ -1,4 +1,7 @@
-<tui-data-list *ngIf="items; else loading" [emptyContent]="emptyContent">
+<tui-data-list
+    *ngIf="items; else loading"
+    [emptyContent]="emptyContent"
+>
     <tui-opt-group
         *ngFor="let group of items; let index = index"
         [label]="labels[index]"
@@ -13,15 +16,12 @@
             [value]="item"
             [disabled]="disabledItemHandler(item)"
         >
-            <span
-                polymorpheus-outlet
-                class="content"
-                [content]="itemContent"
-                [context]="getContext(item, elementRef)"
-            ></span>
+            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                {{ text }}
+            </ng-container>
         </button>
     </tui-opt-group>
 </tui-data-list>
 <ng-template #loading>
-    <tui-loader class="tui-space_vertical-3"></tui-loader>
+    <tui-loader class="t-loader"></tui-loader>
 </ng-template>

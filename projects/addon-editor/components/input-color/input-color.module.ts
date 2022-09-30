@@ -3,12 +3,10 @@ import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
-    TuiHintControllerModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputColorComponent} from './input-color.component';
 
@@ -17,8 +15,6 @@ import {TuiInputColorComponent} from './input-color.component';
         CommonModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        PolymorpheusModule,
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,

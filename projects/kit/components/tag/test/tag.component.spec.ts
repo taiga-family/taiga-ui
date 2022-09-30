@@ -1,12 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiTagComponent} from '../tag.component';
 import {TuiTagModule} from '../tag.module';
 
-describe('Tag', () => {
+describe(`Tag`, () => {
     @Component({
         template: `
             <tui-tag
@@ -30,22 +29,22 @@ describe('Tag', () => {
         component!: TuiTagComponent;
 
         default = false;
-        tag = 'Tag';
+        tag = `Tag`;
         removable = true;
         editable = true;
         autoColor = false;
-        editedSpy = jasmine.createSpy('edited');
+        editedSpy = jasmine.createSpy(`edited`);
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    const keydownEnter = new KeyboardEvent('keydown', {
-        key: 'enter',
+    let pageObject: TuiPageObject<TestComponent>;
+    const keydownEnter = new KeyboardEvent(`keydown`, {
+        key: `enter`,
     });
     const testContext = {
         get prefix() {
-            return 'tui-tag__';
+            return `tui-tag__`;
         },
     };
 
@@ -70,25 +69,25 @@ describe('Tag', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         testComponent.editedSpy.calls.reset();
         fixture.detectChanges();
     });
 
-    describe('Default values:', () => {
+    describe(`Default values:`, () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
         });
 
-        it('Cross not shown', () => {
+        it(`Cross not shown`, () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}remove`),
             ).toBeNull();
         });
 
-        it('Tag is not editable', () => {
+        it(`Tag is not editable`, () => {
             getTag().dispatchEvent(keydownEnter);
             fixture.detectChanges();
 
@@ -96,102 +95,102 @@ describe('Tag', () => {
         });
     });
 
-    describe('Editing a tag, editable === true', () => {
+    describe(`Editing a tag, editable === true`, () => {
         beforeEach(() => {
             getTag().dispatchEvent(keydownEnter);
             fixture.detectChanges();
         });
 
-        it('Tag is being edited', () => {
+        it(`Tag is being edited`, () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}edit`),
             ).not.toBeNull();
         });
 
-        it('Emit an edit event on enter', () => {
-            getInput().value = 'Hapica';
-            getInput().dispatchEvent(new Event('input'));
+        it(`Emit an edit event on enter`, () => {
+            getInput().value = `Hapica`;
+            getInput().dispatchEvent(new Event(`input`));
             fixture.detectChanges();
             getInput().dispatchEvent(keydownEnter);
             fixture.detectChanges();
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica`);
         });
 
-        it('Emitting edit event on field exit', () => {
-            getInput().value = 'Hapica';
-            getInput().dispatchEvent(new Event('input'));
+        it(`Emitting edit event on field exit`, () => {
+            getInput().value = `Hapica`;
+            getInput().dispatchEvent(new Event(`input`));
             fixture.detectChanges();
 
             getInput().blur();
             fixture.detectChanges();
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica`);
         });
 
-        it('Emitting edit event on comma input', () => {
-            getInput().value = 'Hapica, ogo';
-            getInput().dispatchEvent(new Event('input'));
+        it(`Emitting edit event on comma input`, () => {
+            getInput().value = `Hapica, ogo`;
+            getInput().dispatchEvent(new Event(`input`));
             fixture.detectChanges();
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica, ogo');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(`Hapica, ogo`);
         });
 
-        it('Issuer empty string when storing empty tag', () => {
-            getInput().value = '';
-            getInput().dispatchEvent(new Event('input'));
+        it(`Issuer empty string when storing empty tag`, () => {
+            getInput().value = ``;
+            getInput().dispatchEvent(new Event(`input`));
             fixture.detectChanges();
 
             getInput().blur();
             fixture.detectChanges();
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
     });
 
-    describe('Deleting a tag', () => {
-        it('Cross shown with removable === true', () => {
+    describe(`Deleting a tag`, () => {
+        it(`Cross shown with removable === true`, () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}remove`),
             ).not.toBeNull();
         });
 
-        it('Emit an empty line across a cross', () => {
+        it(`Emit an empty line across a cross`, () => {
             pageObject
                 .getByAutomationId(`${testContext.prefix}remove`)!
                 .nativeElement.click();
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
 
-        it('When you press the backspace on the tag, an empty line is emitted', () => {
+        it(`When you press the backspace on the tag, an empty line is emitted`, () => {
             getTag().dispatchEvent(
-                new KeyboardEvent('keydown', {
-                    key: 'backspace',
+                new KeyboardEvent(`keydown`, {
+                    key: `backspace`,
                 }),
             );
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
 
-        it('When you press delete on the tag, an empty string is emitted', () => {
+        it(`When you press delete on the tag, an empty string is emitted`, () => {
             getTag().dispatchEvent(
-                new KeyboardEvent('keydown', {
-                    key: 'delete',
+                new KeyboardEvent(`keydown`, {
+                    key: `delete`,
                 }),
             );
 
-            expect(testComponent.editedSpy).toHaveBeenCalledWith('');
+            expect(testComponent.editedSpy).toHaveBeenCalledWith(``);
         });
     });
 
     // TODO: remake stringHashToHsl to stringHashToRgb and include test
-    xdescribe('Tag color', () => {
-        it('when autoColor is enabled, the color will be rgb(241, 188, 229)', () => {
+    xdescribe(`Tag color`, () => {
+        it(`when autoColor is enabled, the color will be rgb(241, 188, 229)`, () => {
             testComponent.autoColor = true;
             fixture.detectChanges();
             expect(getComputedStyle(getTagDiv()).backgroundColor).toBe(
-                'rgb(241, 188, 229)',
+                `rgb(241, 188, 229)`,
             );
         });
     });

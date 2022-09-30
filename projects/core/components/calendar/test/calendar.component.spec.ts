@@ -1,13 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
-import {TuiCalendarComponent} from '../calendar.component';
-import {TuiCalendarModule} from '../calendar.module';
-
-describe('Calendar', () => {
+describe(`Calendar`, () => {
     @Component({
         template: `
             <tui-calendar
@@ -23,7 +20,7 @@ describe('Calendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarComponent, {static: true})
-        component: TuiCalendarComponent;
+        component!: TuiCalendarComponent;
 
         min = TuiDay.currentLocal().append({month: -2});
         max = TuiDay.currentLocal().append({month: 2});
@@ -31,16 +28,16 @@ describe('Calendar', () => {
         maxViewedMonth: TuiMonth | null = TuiMonth.currentLocal().append({month: 1});
         value = TuiDay.currentLocal();
         month = TuiMonth.currentLocal();
-        disabledItemHandler = (item: TuiDay) => item.day === 10;
+        disabledItemHandler = (item: TuiDay): boolean => item.day === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiCalendarComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
-        get prefix() {
-            return 'tui-calendar__';
+        get prefix(): string {
+            return `tui-calendar__`;
         },
     };
 
@@ -55,33 +52,33 @@ describe('Calendar', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });
 
-    it('Year selection is not initially visible', () => {
+    it(`Year selection is not initially visible`, () => {
         expect(pageObject.getByAutomationId(`${testContext.prefix}year`)).toBeNull();
     });
 
-    it('Month selection is initially visible', () => {
+    it(`Month selection is initially visible`, () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}pagination`),
         ).not.toBeNull();
     });
 
-    it('Day selection is initially visible', () => {
+    it(`Day selection is initially visible`, () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}calendar`),
         ).not.toBeNull();
     });
 
-    it('onPaginationYearClick changes year correctly', () => {
+    it(`onPaginationYearClick changes year correctly`, () => {
         component.onPaginationYearClick(new TuiYear(2002));
 
-        expect(component.year!.formattedYear).toBe('2002');
+        expect(component.year!.formattedYear).toBe(`2002`);
     });
 
-    it('onPickerYearClick sets year as null', () => {
+    it(`onPickerYearClick sets year as null`, () => {
         const year = new TuiYear(2002);
 
         component.onPickerYearClick(year);
@@ -89,7 +86,7 @@ describe('Calendar', () => {
         expect(component.year).toBe(null);
     });
 
-    it('onPaginationValueChange does not update month if it is the same with current', () => {
+    it(`onPaginationValueChange does not update month if it is the same with current`, () => {
         const date = new Date();
         const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
         const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
@@ -101,18 +98,20 @@ describe('Calendar', () => {
         expect(component.month).toBe(savedMonth);
     });
 
-    it('click on day calls emitter', done => {
+    it(`click on day calls emitter`, () => {
+        let result: unknown;
         const savedDay = new TuiDay(2019, 2, 1);
 
         component.dayClick.subscribe((day: TuiDay) => {
-            expect(day).toBe(savedDay);
-            done();
+            result = day;
         });
 
         component.onDayClick(savedDay);
+
+        expect(result).toBe(savedDay);
     });
 
-    it('monitors hover on a certain day', () => {
+    it(`monitors hover on a certain day`, () => {
         const hoveredDay = new TuiDay(2019, 2, 1);
 
         component.onHoveredItemChange(hoveredDay);
@@ -120,7 +119,7 @@ describe('Calendar', () => {
         expect(component.hoveredItem).toBe(hoveredDay);
     });
 
-    it('does not monitor hover on the day secondly and more', () => {
+    it(`does not monitor hover on the day secondly and more`, () => {
         const hoveredDay = new TuiDay(2019, 2, 1);
 
         component.hoveredItem = hoveredDay;
@@ -129,7 +128,7 @@ describe('Calendar', () => {
         expect(component.hoveredItem).toBe(hoveredDay);
     });
 
-    it('if minViewedMonth is less than set min, it will be computed as min', () => {
+    it(`if minViewedMonth is less than set min, it will be computed as min`, () => {
         const minDay = new TuiDay(2019, 2, 3);
         const beforeMinDay = minDay.append({month: -1});
 
@@ -139,7 +138,7 @@ describe('Calendar', () => {
         expect(component.computedMinViewedMonth).toBe(minDay);
     });
 
-    it('if maxViewedMonth is more than set max, it will be computed as max', () => {
+    it(`if maxViewedMonth is more than set max, it will be computed as max`, () => {
         const maxDay = new TuiDay(2019, 2, 3);
         const afterMaxDay = maxDay.append({month: 1});
 

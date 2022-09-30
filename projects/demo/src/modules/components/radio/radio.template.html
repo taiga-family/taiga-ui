@@ -1,13 +1,22 @@
-<tui-doc-page header="Radio" package="KIT" type="components">
+<tui-doc-page
+    header="Radio"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
-            Radio button without a label. If you want to use it with a label,
-            see
-            <a tuiLink routerLink="/components/radio-labeled">
+            Radio button without a label. If you want to use it with a label, see
+            <a
+                tuiLink
+                routerLink="/components/radio-labeled"
+            >
                 <code>RadioLabeled</code>
             </a>
             , and inside button — see
-            <a tuiLink routerLink="/components/radio-block">
+            <a
+                tuiLink
+                routerLink="/components/radio-block"
+            >
                 <code>RadioBlock</code>
             </a>
             .
@@ -41,9 +50,9 @@
                     [item]="null"
                     [identityMatcher]="identityMatcher"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -55,9 +64,9 @@
                     [item]="items[1]"
                     [identityMatcher]="identityMatcher"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -69,9 +78,9 @@
                     [item]="items[2]"
                     [identityMatcher]="identityMatcher"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -79,7 +88,13 @@
                 ></tui-radio>
             </ng-template>
         </tui-doc-demo>
-        <button i18n tuiButton type="button" size="m" (click)="onClick()">
+        <button
+            i18n
+            tuiButton
+            type="button"
+            size="m"
+            (click)="onClick()"
+        >
             Set a value with a copy
         </button>
         <tui-doc-documentation>
@@ -101,8 +116,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
@@ -139,19 +153,18 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
             <li>
                 Optionally use the
                 <code>TUI_RADIO_OPTIONS</code>
-                injection token to override the default options for the
-                component.
+                injection token to override the default options for the component.
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
 
@@ -166,7 +179,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -175,7 +188,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

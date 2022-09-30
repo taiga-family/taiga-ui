@@ -1,28 +1,28 @@
 <div
-    class="wrapper"
-    [tuiDropdownAlign]="controller.align"
-    [tuiDropdownDirection]="controller.direction"
-    [tuiDropdownHost]="nativeFocusableElement"
-    [tuiDropdownLimitWidth]="controller.limitWidth"
-    [tuiDropdownMinHeight]="controller.minHeight"
-    [tuiDropdownMaxHeight]="controller.maxHeight"
-    [tuiDropdownSided]="controller.sided"
-    [tuiDropdownContent]="dropdown"
-    [tuiDropdown]="open && canOpen"
-    [tuiObscuredEnabled]="open"
+    *tuiLet="!!(open$ | async) as isOpen"
+    #activeZone="tuiActiveZone"
+    class="t-wrapper"
+    [tuiDropdownHost]="host"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownManual]="isOpen && canOpen"
+    [tuiObscuredEnabled]="isOpen"
     (tuiObscured)="onHostObscured($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <ng-content></ng-content>
-    <ng-template #dropdown="polymorpheus" polymorpheus>
+    <ng-template
+        #dropdown="polymorpheus"
+        [polymorpheus]="context"
+    >
         <div
             #wrapper
-            polymorpheus-outlet
-            [content]="content"
-            [context]="{ $implicit: activeZone }"
             (keydown.esc)="onKeyDownEsc($event)"
             (keydown)="onKeydown($event)"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="content as text; context: {$implicit: activeZone}">
+                {{ text }}
+            </ng-container>
+        </div>
         <!--This DIV is here to start backwards TreeWalker for focusing last focusable item on ArrowUp-->
         <div></div>
     </ng-template>

@@ -11,7 +11,7 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 
 @Directive({
-    selector: '[tuiValidator]',
+    selector: `[tuiValidator]`,
     providers: [
         {
             provide: NG_VALIDATORS,
@@ -31,15 +31,15 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
         return this.tuiValidator(control);
     }
 
-    registerOnValidatorChange(onChange: Function) {
+    registerOnValidatorChange(onChange: (...args: any[]) => void): void {
         this.onChange = onChange;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.onChange();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.tuiValidator = Validators.nullValidator;
         this.onChange();
     }

@@ -1,0 +1,22 @@
+```html
+<button
+  tuiAction
+  [icon]="icon"
+  (click)="onClick()"
+>
+  Button
+</button>
+
+<a
+  href="http://ng-web-apis.github.io/"
+  tuiAction
+>
+  Link
+  <tui-marker-icon
+    size="m"
+    class="tui-island__marker"
+    [src]="icon"
+    [style.color]="'red'"
+  ></tui-marker-icon>
+</a>
+```

@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {TuiSizeS} from '@taiga-ui/core';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiCardComponent} from '../card.component';
 import {TuiCardModule} from '../card.module';
 
-describe('Card', () => {
+describe(`Card`, () => {
     @Component({
         template: `
             <tui-card
@@ -17,11 +18,11 @@ describe('Card', () => {
     })
     class TestComponent {
         @ViewChild(TuiCardComponent, {static: true})
-        component: TuiCardComponent;
+        component!: TuiCardComponent;
 
-        paymentSystem: any | null = null;
-        brandLogo = '';
-        size = 'm';
+        paymentSystem: unknown | null = null;
+        brandLogo = ``;
+        size: TuiSizeS = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -40,41 +41,41 @@ describe('Card', () => {
         fixture.detectChanges();
     });
 
-    describe('paymentSystem', () => {
-        it('gets payment system logo', () => {
-            testComponent.paymentSystem = 'visa';
+    describe(`paymentSystem`, () => {
+        it(`gets payment system logo`, () => {
+            testComponent.paymentSystem = `visa`;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.paymentSystemLogo).toBe('tuiIconVisaMono');
+            expect(testComponent.component.paymentSystemLogo).toBe(`tuiIconVisaMono`);
         });
 
-        it('returns empty string if paymentSystem is not inputed', () => {
+        it(`returns empty string if paymentSystem is not inputed`, () => {
             testComponent.paymentSystem = null;
 
             fixture.detectChanges();
 
-            expect(testComponent.component.paymentSystemLogo).toBe('');
+            expect(testComponent.component.paymentSystemLogo).toBe(``);
         });
     });
 
-    describe('brandLogo', () => {
-        const logo = 'logo';
+    describe(`brandLogo`, () => {
+        const logo = `logo`;
 
         beforeEach(() => {
             testComponent.brandLogo = logo;
         });
 
-        it('is shown if there is and size is m', () => {
-            testComponent.size = 'm';
+        it(`is shown if there is and size is m`, () => {
+            testComponent.size = `m`;
 
             fixture.detectChanges();
 
             expect(testComponent.component.hasBrandLogo).toBe(true);
         });
 
-        it('is not shown if there is and size is s', () => {
-            testComponent.size = 's';
+        it(`is not shown if there is and size is s`, () => {
+            testComponent.size = `s`;
 
             fixture.detectChanges();
 

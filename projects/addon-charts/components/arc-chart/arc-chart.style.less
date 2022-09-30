@@ -14,10 +14,17 @@
     stroke-linecap: round;
     color: var(--tui-secondary);
     font-size: 1rem;
+    pointer-events: none;
 }
 
 .t-value {
-    .transition(stroke-dashoffset);
+    pointer-events: auto;
+    transition: stroke-dashoffset var(--tui-duration) ease-in-out, opacity var(--tui-duration) ease-in-out 0.1s;
+
+    &_inactive {
+        .transition(~'stroke-dashoffset, opacity');
+        opacity: 0.16;
+    }
 }
 
 .t-content {
@@ -28,6 +35,7 @@
     text-align: center;
     color: var(--tui-text-02);
     font: var(--tui-font-text-xs);
+    pointer-events: none;
 
     :host[data-size='xl'] & {
         font: var(--tui-font-text-m);
@@ -35,7 +43,7 @@
 }
 
 .t-wrapper {
-    flex: 1;
+    pointer-events: auto;
 
     &:first-line {
         color: var(--tui-text-01);

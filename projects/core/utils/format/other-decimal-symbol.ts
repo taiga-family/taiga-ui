@@ -1,5 +1,5 @@
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
-export function otherDecimalSymbol(symbol: TuiDecimalSymbol): TuiDecimalSymbol {
-    return symbol === '.' ? ',' : '.';
+export function tuiOtherDecimalSymbol(symbol: TuiDecimalSymbol): TuiDecimalSymbol {
+    return symbol === `.` ? `,` : `.`;
 }

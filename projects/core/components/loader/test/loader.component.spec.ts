@@ -2,14 +2,13 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiLoaderHarness} from '@taiga-ui/testing';
+import {configureTestSuite, TuiLoaderHarness} from '@taiga-ui/testing';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiLoaderComponent} from '../loader.component';
 import {TuiLoaderModule} from '../loader.module';
 
-describe('Loader', () => {
+describe(`Loader`, () => {
     @Component({
         template: `
             <tui-loader
@@ -27,12 +26,12 @@ describe('Loader', () => {
         @ViewChild(TuiLoaderComponent, {static: true})
         component!: TuiLoaderComponent;
 
-        @ViewChild('template', {static: true})
-        template: PolymorpheusContent = '';
+        @ViewChild(`template`, {static: true})
+        template: PolymorpheusContent = ``;
 
         custom = false;
         showLoader = false;
-        content: PolymorpheusContent = '';
+        content: PolymorpheusContent = ``;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -53,15 +52,15 @@ describe('Loader', () => {
         fixture.detectChanges();
     });
 
-    describe('showLoader:', () => {
-        it('Loader is shown by default', async () => {
+    describe(`showLoader:`, () => {
+        it(`Loader is shown by default`, async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const shown = await harness.isLoading();
 
             expect(shown).toBe(true);
         });
 
-        it('With showLoader = false, the loader is shown', async () => {
+        it(`With showLoader = false, the loader is shown`, async () => {
             component.custom = true;
             fixture.detectChanges();
 
@@ -72,15 +71,15 @@ describe('Loader', () => {
         });
     });
 
-    describe('Text', () => {
-        it('No text', async () => {
+    describe(`Text`, () => {
+        it(`No text`, async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const text = await harness.getText();
 
-            expect(text).toBe('');
+            expect(text).toBe(``);
         });
 
-        it('If there is `textContent`, the text is shown', async () => {
+        it(`If there is \`textContent\`, the text is shown`, async () => {
             component.content = component.template;
             component.custom = true;
             component.showLoader = true;
@@ -89,7 +88,7 @@ describe('Loader', () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const text = await harness.getText();
 
-            expect(text).toBe('Loading...');
+            expect(text).toBe(`Loading...`);
         });
     });
 });

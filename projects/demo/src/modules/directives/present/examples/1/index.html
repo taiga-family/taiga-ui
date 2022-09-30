@@ -1,9 +1,18 @@
-<p i18n (tuiHoveredChange)="onHovered($event)">
+<p
+    i18n
+    (tuiHoveredChange)="onHovered($event)"
+>
     Hover
-    <span [class.hidden]="!hovered" (tuiPresentChange)="onCSS($event)">
+    <span
+        [class.hidden]="!hovered"
+        (tuiPresentChange)="onCSS($event)"
+    >
         I am a component hidden with CSS
     </span>
-    <span *ngIf="hovered" (tuiPresentChange)="onIf($event)">
+    <span
+        *ngIf="hovered"
+        (tuiPresentChange)="onIf($event)"
+    >
         I am a component hidden with *ngIf
     </span>
 </p>
@@ -16,4 +25,3 @@
     ngIf:
     <tui-badge [value]="counterIf"></tui-badge>
 </p>
-<p i18n>Hidden with CSS parent nodes can be only detected in Firefox</p>

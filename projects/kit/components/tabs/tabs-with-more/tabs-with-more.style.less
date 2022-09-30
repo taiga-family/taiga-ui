@@ -11,12 +11,12 @@
     overflow: hidden;
 }
 
-.wrapper {
+.t-wrapper {
     position: relative;
     display: flex;
 }
 
-.tabs {
+.t-tabs {
     height: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -25,23 +25,25 @@
     color: inherit;
 }
 
-.overflown {
-    margin-right: 1.5rem;
+.t-overflown {
+    display: flex;
+    margin: 0;
+    width: 0;
+    max-width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
 
-    &_hidden {
-        margin: 0;
-        width: 0;
-        max-width: 0;
-        overflow: hidden;
-        visibility: hidden;
+.t-more_wrapper {
+    height: 100%;
+    pointer-events: none;
+
+    button {
+        pointer-events: auto;
     }
 }
 
-.more_wrapper {
-    height: 100%;
-}
-
-.icon {
+.t-icon {
     .transition(transform);
     margin-right: -0.25rem;
     vertical-align: bottom;
@@ -51,7 +53,7 @@
     }
 }
 
-.dropdown {
+.t-dropdown {
     padding: 0.5rem 0;
 
     /* stylelint-disable */
@@ -76,4 +78,8 @@
         }
     }
     /* stylelint-enable */
+}
+
+.t-no-margin {
+    margin-left: 0;
 }

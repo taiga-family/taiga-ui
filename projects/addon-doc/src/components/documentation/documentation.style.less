@@ -7,7 +7,16 @@
     min-width: 100%;
 }
 
+.t-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
 .t-row {
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--tui-base-03);
+    }
+
     :host-context(tui-root._mobile) & {
         display: flex;
         flex-wrap: wrap;
@@ -19,6 +28,17 @@
 }
 
 .t-cell {
+    padding: 1rem 1rem 0.875rem;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+        text-align: right;
+    }
+
     &_prop {
         width: 40%;
     }
@@ -39,11 +59,22 @@
     }
 }
 
+.t-th {
+    padding: 0.5rem 1rem;
+    color: var(--tui-text-02);
+    font-weight: normal;
+    text-align: left;
+}
+
 .t-property {
     font: var(--tui-font-text-m);
     margin-bottom: @space;
     font-family: monospace;
     color: @color-property;
+
+    :host-context(tui-root._mobile) & {
+        padding: 0.5rem 0;
+    }
 }
 
 .t-type {
@@ -52,6 +83,7 @@
 
 .t-deprecated {
     background-color: var(--tui-error-bg);
+    box-shadow: -1rem 0 var(--tui-error-bg), 1rem 0 var(--tui-error-bg);
 }
 
 .t-deprecated-label {
@@ -67,4 +99,8 @@
 .t-output {
     text-align: left;
     opacity: 0;
+}
+
+.t-heading {
+    font: var(--tui-font-heading-4);
 }

@@ -1,11 +1,10 @@
 <tui-primitive-textfield
     tuiValueAccessor
-    tuiTextfieldInputMode="decimal"
-    class="textfield"
-    [pseudoHovered]="pseudoHovered"
-    [pseudoFocused]="computedFocused"
+    class="t-textfield"
+    [pseudoHover]="pseudoHover"
+    [pseudoFocus]="computedFocused"
+    [pseudoActive]="pseudoActive"
     [invalid]="computedInvalid"
-    [tuiTextfieldMaxLength]="calculatedMaxLength"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [textMask]="isNegativeAllowed | tuiMapper: mask:decimal:precision:nativeFocusableElement"
@@ -13,11 +12,28 @@
     [prefix]="prefix"
     [postfix]="postfix"
     [focusable]="focusable"
-    (valueChange)="onValue($event)"
-    (hoveredChange)="onHovered($event)"
+    (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
-    (pressedChange)="onPressed($event)"
     (keydown)="onKeyDown($event)"
 >
     <ng-content></ng-content>
+    <ng-content
+        select="input"
+        ngProjectAs="input"
+    ></ng-content>
+    <div
+        *ngIf="polymorpheusValueContent.length"
+        ngProjectAs="tuiContent"
+        class="t-value-content"
+    >
+        <ng-container *polymorpheusOutlet="valueContent as text">
+            {{ text }}
+        </ng-container>
+    </div>
 </tui-primitive-textfield>
+
+<ng-container *ngIf="polymorpheusValueContent.changes | async"></ng-container>
+
+<ng-template #valueContent>
+    <ng-content select="tuiContent"></ng-content>
+</ng-template>

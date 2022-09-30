@@ -6,11 +6,10 @@ import {Observable} from 'rxjs';
  * Directive to imitate :focus-visible
  * (https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible)
  * in browsers that do not support it
- * @dynamic
  */
 @Directive({
-    selector: '[tuiFocusVisibleChange]',
-    outputs: ['tuiFocusVisibleChange'],
+    selector: `[tuiFocusVisibleChange]`,
+    outputs: [`tuiFocusVisibleChange`],
     providers: [TuiDestroyService, TuiFocusVisibleService],
 })
 export class TuiFocusVisibleDirective {

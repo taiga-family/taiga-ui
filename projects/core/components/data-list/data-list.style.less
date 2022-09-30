@@ -8,7 +8,7 @@ tui-data-list {
     color: var(--tui-text-03);
 
     &:focus-within {
-        .trap {
+        .t-trap {
             display: none;
         }
 
@@ -17,7 +17,7 @@ tui-data-list {
         }
     }
 
-    & > .empty {
+    & > .t-empty {
         margin: 0.75rem 1rem;
     }
 }
@@ -29,8 +29,6 @@ tui-opt-group {
     font: var(--tui-font-text-xs);
     flex-direction: column;
     line-height: 2rem;
-    padding: 0.5rem 0;
-    margin: -0.5rem 0;
 
     &:empty:before,
     &:empty:after {
@@ -53,7 +51,7 @@ tui-opt-group {
             position: absolute;
             left: 0;
             right: 0;
-            top: 0.4375rem;
+            top: 0.5rem;
             height: 1px;
             background: var(--tui-base-03);
         }

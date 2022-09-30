@@ -1,9 +1,10 @@
-<tui-doc-page header="Notification" package="CORE" type="components">
+<tui-doc-page
+    header="Notification"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            An inline message with a type (info, success, warning, error) that
-            does not interrupt user actions
-        </p>
+        <p i18n>An inline message with a type (info, success, warning, error) that does not interrupt user actions</p>
 
         <tui-doc-example
             id="base"
@@ -61,8 +62,7 @@
                 documentationPropertyMode="output"
                 documentationPropertyType="void"
             >
-                Emits click on close cross. When subscribed to, close button
-                appears.
+                Emits click on close cross. When subscribed to, close button appears.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -78,7 +78,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -87,7 +87,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -100,7 +100,7 @@
 
                 <tui-doc-code
                     filename="myModule.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

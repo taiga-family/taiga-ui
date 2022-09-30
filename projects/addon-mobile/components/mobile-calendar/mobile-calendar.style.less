@@ -85,6 +85,26 @@
         letter-spacing: -0.025625rem;
         text-align: center;
     }
+
+    &:after {
+        background-image: linear-gradient(
+            to right,
+            // --tui-base-01 in rgb
+            rgba(255, 255, 255, 0) 0%,
+            var(--tui-base-01) 80%,
+            var(--tui-base-01) 100%
+        );
+    }
+
+    :host-context([data-mode='onDark']) &:after {
+        background-image: linear-gradient(
+            to right,
+            // --tui-base-01 in rgb
+            rgba(34, 34, 34, 0) 0%,
+            var(--tui-base-01) 80%,
+            var(--tui-base-01) 100%
+        );
+    }
 }
 
 .t-years {
@@ -108,6 +128,8 @@
 .t-year {
     .clearbtn();
     outline: none;
+    // TODO: investigate problem in mobile calendar
+    /* stylelint-disable-next-line */
     width: 20vw;
     flex-shrink: 0;
     font-size: 0.9375rem;
@@ -118,12 +140,12 @@
     transform: scale(0.73);
     transition: color, opacity, transform 0.2s;
 
-    &[data-tui-element-state='adjacent'] {
+    &[data-state='adjacent'] {
         transform: scale(0.86);
         opacity: 0.3;
     }
 
-    &[data-tui-element-state='active'] {
+    &[data-state='active'] {
         color: @accent;
         opacity: 1;
         transform: scale(1);

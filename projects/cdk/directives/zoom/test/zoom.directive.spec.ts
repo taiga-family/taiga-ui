@@ -1,22 +1,25 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiZoom} from '../../../interfaces/zoom';
-import {floor} from '../../../utils/math';
+import {tuiFloor} from '../../../utils/math';
 import {TuiZoomModule} from '../zoom.module';
 
-describe('TuiZoom directive', () => {
+describe(`TuiZoom directive`, () => {
     @Component({
         template: `
-            <div class="main" (tuiZoom)="onZoom($event)"></div>
+            <div
+                class="main"
+                (tuiZoom)="onZoom($event)"
+            ></div>
         `,
     })
     class TestComponent {
         scale = 1;
 
-        onZoom({delta}: TuiZoom) {
+        onZoom({delta}: TuiZoom): void {
             this.scale = this.scale - delta;
         }
     }
@@ -35,29 +38,29 @@ describe('TuiZoom directive', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css('.main'));
+        testElement = fixture.debugElement.query(By.css(`.main`));
 
         fixture.detectChanges();
     });
 
-    it('pinch', () => {
-        sendTouchEvent([10, 10], [20, 20], testElement.nativeElement, 'touchstart');
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, 'touchmove');
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, 'touchend');
+    it(`pinch`, () => {
+        sendTouchEvent([10, 10], [20, 20], testElement.nativeElement, `touchstart`);
+        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchmove`);
+        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchend`);
 
         fixture.detectChanges();
 
-        expect(floor(testComponent.scale, 2)).toEqual(0.85);
+        expect(tuiFloor(testComponent.scale, 2)).toEqual(0.85);
     });
 
-    it('wheel', () => {
-        const wheel = new WheelEvent('wheel', {deltaY: 1.1});
+    it(`wheel`, () => {
+        const wheel = new WheelEvent(`wheel`, {deltaY: 1.1});
 
         testElement.nativeElement.dispatchEvent(wheel);
 
         fixture.detectChanges();
 
-        expect(floor(testComponent.scale, 2)).toEqual(1.01);
+        expect(tuiFloor(testComponent.scale, 2)).toEqual(1.01);
     });
 
     function sendTouchEvent(
@@ -65,7 +68,7 @@ describe('TuiZoom directive', () => {
         [x2, y2]: [number, number],
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend' | 'touchmove',
-    ) {
+    ): void {
         const touchObj1 = new Touch({
             identifier: Date.now(),
             target: element,

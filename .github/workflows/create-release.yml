@@ -1,0 +1,100 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        description: release type
+        required: true
+        default: 'minor'
+        options:
+          - patch
+          - minor
+          - prerelease
+          - major
+      dryRun:
+        type: boolean
+        required: false
+        description: --dry-run
+
+jobs:
+  run-release:
+    name: Run release
+    runs-on: ubuntu-latest
+    env:
+      IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
+      IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
+    steps:
+      - name: Fetch from origin repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Run release
+        id: run-release
+        run: |
+          git config user.name "tinkoff-bot"
+          git config --global push.followTags true
+          npx ts-node ./scripts/release.ts \
+                --ci-mode \
+                --release-as ${{ github.event.inputs.mode }} \
+                --dry-run ${{ github.event.inputs.dryRun }}
+          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
+
+      - name: Generate Release Body
+        id: generate_body
+        run: |
+          npx extract-changelog-release > RELEASE_BODY.md
+          echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
+
+      - id: get-pr-body
+        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
+        run: |
+          body=$(cat RELEASE_BODY.md)
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo ::set-output name=body::$body
+
+      - name: Debug body of pull request in dry mode
+        run: echo "${{ steps.get-pr-body.outputs.body }}"
+        if: ${{ env.IS_DRY_MODE == 'true' }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        if: ${{ env.IS_DRY_MODE == 'false' }}
+
+        with:
+          delete-branch: true
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          branch: release/${{ steps.run-release.outputs.new_version }}
+          title: '🚀 Release/v${{ steps.run-release.outputs.new_version }}'
+          body: |
+            ${{ steps.get-pr-body.outputs.body }}
+
+            ---
+
+            > **DO NOT SQUASH OR REBASE ME**
+
+            > if user merges this PR via rebasing or using squash, it will cause lost of the tag. It happens because tag is already
+            > attached to the initial release commit SHA. If we use rebase or squash, the commit sha changes and already created tag
+            > points to not-existing commit.
+
+      - name: Create GitHub Release
+        if: ${{ env.IS_DRY_MODE == 'false' && env.IS_RRE_RELEASE_MODE == 'false' }}
+        uses: ncipollo/release-action@v1
+        with:
+          name: Release ${{ steps.generate_body.outputs.tag_name }}
+          tag: ${{ steps.generate_body.outputs.tag_name }}
+          bodyFile: 'RELEASE_BODY.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+concurrency:
+  group: create-release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

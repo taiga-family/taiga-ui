@@ -1,6 +1,13 @@
-<h6 i18n class="tui-text_h6">
+<h6
+    i18n
+    class="tui-text_h6"
+>
     Can be expanded with
-    <a tuiLink target="_blank" routerLink="/directives/textfield-controller">
+    <a
+        tuiLink
+        target="_blank"
+        routerLink="/directives/textfield-controller"
+    >
         TuiTextfieldController
     </a>
 </h6>
@@ -11,25 +18,6 @@
 </p>
 
 <tui-doc-documentation>
-    <ng-template
-        i18n
-        documentationPropertyName="tuiTextfieldAutocomplete"
-        documentationPropertyMode="input"
-        documentationPropertyType="TuiAutofillFieldName | null"
-        [documentationPropertyValues]="documentedComponent.autocompleteVariants"
-        [(documentationPropertyValue)]="documentedComponent.autocomplete"
-    >
-        <code>autocomplete</code>
-        attribute for a native input (
-        <a
-            tuiLink
-            target="_blanl"
-            href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control"
-        >
-            see names
-        </a>
-        )
-    </ng-template>
     <ng-template
         i18n
         documentationPropertyName="tuiTextfieldCleaner"
@@ -47,32 +35,15 @@
         [documentationPropertyValues]="documentedComponent.customContentVariants"
         [(documentationPropertyValue)]="documentedComponent.customContentSelected"
     >
-        Right content (e.g. avatar with maximum size 32x32px). If it gets a
-        string, it is inserted as
+        Right content (e.g. avatar with maximum size 32x32px). If it gets a string, it is inserted as
         <code>src</code>
         or as icon name into
-        <a routerLink="/components/svg" tuiLink>tui-svg</a>
-    </ng-template>
-    <ng-template
-        i18n
-        documentationPropertyName="tuiTextfieldExampleText"
-        documentationPropertyMode="input"
-        documentationPropertyType="string"
-        [(documentationPropertyValue)]="documentedComponent.exampleText"
-    >
-        Example text shown on empty focused input
-    </ng-template>
-    <ng-template
-        i18n
-        documentationPropertyName="tuiTextfieldInputMode"
-        documentationPropertyMode="input"
-        documentationPropertyType="TuiInputModeT"
-        [documentationPropertyValues]="documentedComponent.inputModeVariants"
-        [(documentationPropertyValue)]="documentedComponent.inputMode"
-    >
-        <code>inputmode</code>
-        attribute for a native input. You can use it to set screen keyboard view
-        on mobile devices
+        <a
+            routerLink="/components/svg"
+            tuiLink
+        >
+            tui-svg
+        </a>
     </ng-template>
     <ng-template
         i18n
@@ -82,7 +53,12 @@
         [(documentationPropertyValue)]="documentedComponent.labelOutside"
     >
         Label is outside a component and made with
-        <a tuiLink routerLink="/components/label"><code>Label</code></a>
+        <a
+            tuiLink
+            routerLink="/components/label"
+        >
+            <code>Label</code>
+        </a>
         <p>
             (
             <code>labelOutside = false</code>
@@ -90,16 +66,6 @@
             <code>size === 's'</code>
             : for s-size inputs use only outside labels)
         </p>
-    </ng-template>
-    <ng-template
-        i18n
-        documentationPropertyName="tuiTextfieldMaxLength"
-        documentationPropertyMode="input"
-        documentationPropertyType="number | null"
-        [documentationPropertyValues]="documentedComponent.maxLengthVariants"
-        [(documentationPropertyValue)]="documentedComponent.maxLength"
-    >
-        Maximum number of symbols to type. Does not with with mask together
     </ng-template>
     <ng-template
         i18n
@@ -113,13 +79,18 @@
     </ng-template>
     <ng-template
         i18n
-        documentationPropertyName="tuiTextfieldType"
+        documentationPropertyName="tuiTextfieldIconLeft"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiInputTypeT"
-        [documentationPropertyValues]="documentedComponent.typeVariants"
-        [(documentationPropertyValue)]="documentedComponent.type"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.iconLeftVariants"
+        [(documentationPropertyValue)]="documentedComponent.iconLeft"
     >
-        <code>type</code>
-        attribute for a native input
+        A left icon. It can be stringified svg or a name of icon registered in
+        <a
+            tuiLink
+            routerLink="/services/svg-service"
+        >
+            <code>SvgService</code>
+        </a>
     </ng-template>
 </tui-doc-documentation>

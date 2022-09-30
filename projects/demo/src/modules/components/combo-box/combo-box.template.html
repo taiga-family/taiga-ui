@@ -1,9 +1,16 @@
-<tui-doc-page header="ComboBox" package="KIT" type="components">
+<tui-doc-page
+    header="ComboBox"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>ComboBox</code>
-            is a textfield with a dropdown with items. You can choose one of
-            available options or input a value manually.
+            is a textfield with a dropdown with items. You can choose one of available options or input a value
+            manually.
         </div>
 
         <tui-doc-example
@@ -22,7 +29,11 @@
             <tui-combo-box-example-1></tui-combo-box-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="datalist" heading="DataList" [content]="example2">
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [content]="example2"
+        >
             <tui-combo-box-example-2></tui-combo-box-example-2>
         </tui-doc-example>
 
@@ -49,7 +60,21 @@
             heading="Virtual scroll"
             [content]="example5"
         >
+            <tui-notification class="tui-space_bottom-3">
+                Note that virtual scroll can imperatively remove focused option from DOM. This causes ExpressionChange
+                errors and to solve those take a look at a tiny
+                <code>IndexChange</code>
+                directive included in this example.
+            </tui-notification>
             <tui-combo-box-example-5></tui-combo-box-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options-stringify"
+            heading="Options (stringify)"
+            [content]="example6"
+        >
+            <tui-combo-box-example-6></tui-combo-box-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -66,9 +91,9 @@
                     [stringify]="stringify"
                     [strictMatcher]="strictMatcher"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -76,10 +101,9 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldMaxLength]="maxLength"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [(search)]="search"
@@ -92,7 +116,10 @@
                 </tui-combo-box>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #valueTemplateContent let-item>
+        <ng-template
+            #valueTemplateContent
+            let-item
+        >
             <div class="item-template">
                 <tui-svg
                     src="tuiIconCheck"
@@ -108,7 +135,12 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
+            <button
+                tuiButton
+                type="button"
+                size="m"
+                (click)="setValue()"
+            >
                 Set
             </button>
         </div>
@@ -131,8 +163,7 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
             </ng-template>
@@ -144,8 +175,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                A function that compares search and value to define a match
-                between them.
+                A function that compares search and value to define a match between them.
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
@@ -155,7 +185,21 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="strict"
             >
-                Value must be only item of items
+                Value must only be an item of suggestions&nbsp;
+                <code>&lt;T&gt;</code>
+
+                <p>
+                    <strong>
+                        When
+                        <code>false</code>
+                        , make sure your handlers, such as
+                        <code>stringify</code>
+                        can handle
+                        <code>string</code>
+                        value, as well as
+                        <code>&lt;T&gt;</code>
+                    </strong>
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -165,8 +209,8 @@
                 [documentationPropertyValues]="strictMatcherVariants"
                 [(documentationPropertyValue)]="strictMatcher"
             >
-                A function that compares search text and item to define a match
-                between them. Lowercase string comparasion function by default.
+                A function that compares search text and item to define a match between them. Lowercase string
+                comparasion function by default.
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
@@ -206,7 +250,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
 
                 <p i18n>
@@ -227,7 +271,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -236,7 +280,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

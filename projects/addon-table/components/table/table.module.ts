@@ -8,8 +8,11 @@ import {TuiCellDirective} from './directives/cell.directive';
 import {TuiHeadDirective} from './directives/head.directive';
 import {TuiResizedDirective} from './directives/resized.directive';
 import {TuiRowDirective} from './directives/row.directive';
+import {TuiSortByDirective} from './directives/sort-by.directive';
+import {TuiSortableDirective} from './directives/sortable.directive';
 import {TuiTableDirective} from './directives/table.directive';
 import {TuiTheadDirective} from './directives/thead.directive';
+import {TuiTableSortPipe} from './pipes/table-sort.pipe';
 import {TuiTbodyComponent} from './tbody/tbody.component';
 import {TuiTdComponent} from './td/td.component';
 import {TuiThComponent} from './th/th.component';
@@ -28,8 +31,11 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiCellDirective,
         TuiHeadDirective,
         TuiRowDirective,
+        TuiSortByDirective,
+        TuiSortableDirective,
         TuiTheadDirective,
         TuiResizedDirective,
+        TuiTableSortPipe,
     ],
     exports: [
         TuiTableDirective,
@@ -41,7 +47,10 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiCellDirective,
         TuiHeadDirective,
         TuiRowDirective,
+        TuiSortByDirective,
+        TuiSortableDirective,
         TuiTheadDirective,
+        TuiTableSortPipe,
     ],
 })
 export class TuiTableModule {}

@@ -1,13 +1,20 @@
-<tui-hosted-dropdown #dropdown [content]="content" [(open)]="dropdownOpen">
+<tui-hosted-dropdown
+    #dropdown
+    [content]="content"
+    [(open)]="dropdownOpen"
+>
     <button
         tuiIconButton
         appearance="flat"
         icon="tuiIconMoreVer"
         type="button"
-        [pseudoHovered]="dropdown.open || null"
+        [pseudoHover]="dropdown.open || null"
     ></button>
 </tui-hosted-dropdown>
-<ng-template #content let-activeZone>
+<ng-template
+    #content
+    let-activeZone
+>
     <tui-data-list
         tuiDataListDropdownManager
         [tuiActiveZoneParent]="activeZone"
@@ -15,34 +22,38 @@
         <button
             *tuiLet="'French Fries' as item"
             tuiOption
+            [size]="size"
             (click)="selectOption(item)"
         >
-            {{item}}
+            {{ item }}
         </button>
         <button
             tuiOption
-            tuiDropdown
+            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownContent]="burgersTmp"
-            [tuiDropdownSided]="true"
+            [size]="size"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="burgersTmp"
         >
             Burgers
         </button>
         <button
             tuiOption
-            tuiDropdown
+            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownContent]="drinksTmp"
-            [tuiDropdownSided]="true"
+            [size]="size"
+            [tuiDropdownManual]="false"
+            [tuiDropdown]="drinksTmp"
         >
             Drinks
         </button>
         <button
             *tuiLet="'Ice Cream' as item"
             tuiOption
+            [size]="size"
             (click)="selectOption(item)"
         >
-            {{item}}
+            {{ item }}
         </button>
     </tui-data-list>
     <ng-template #burgersTmp>
@@ -53,16 +64,18 @@
             <button
                 *ngFor="let burger of burgers"
                 tuiOption
+                [size]="size"
                 (click)="selectOption(burger)"
             >
-                {{burger}}
+                {{ burger }}
             </button>
             <button
                 tuiOption
-                tuiDropdown
+                tuiDropdownSided
                 tuiDropdownAlign="right"
-                [tuiDropdownContent]="drinksTmp"
-                [tuiDropdownSided]="true"
+                [size]="size"
+                [tuiDropdownManual]="false"
+                [tuiDropdown]="drinksTmp"
             >
                 Nested menu
             </button>
@@ -73,9 +86,10 @@
             <button
                 *ngFor="let drink of drinks"
                 tuiOption
+                [size]="size"
                 (click)="selectOption(drink)"
             >
-                {{drink}}
+                {{ drink }}
             </button>
         </tui-data-list>
     </ng-template>

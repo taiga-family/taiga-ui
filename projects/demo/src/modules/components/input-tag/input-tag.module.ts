@@ -2,17 +2,18 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
-    TuiDropdownControllerModule,
-    TuiHintControllerModule,
+    TuiDropdownModule,
+    TuiErrorModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputTagModule,
 } from '@taiga-ui/kit';
 
@@ -22,6 +23,8 @@ import {TuiInputTagExample2} from './examples/2';
 import {TuiInputTagExample3} from './examples/3';
 import {TuiInputTagExample4} from './examples/4';
 import {TuiInputTagExample5} from './examples/5';
+import {TuiInputTagExample6} from './examples/6';
+import {TuiInputTagExample7} from './examples/7';
 import {ExampleTuiInputTagComponent} from './input-tag.component';
 
 @NgModule({
@@ -34,12 +37,13 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiDataListWrapperModule,
         TuiLinkModule,
         TuiInputTagModule,
-        TuiFieldErrorModule,
-        TuiDropdownControllerModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputTagComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
     ],
     declarations: [
         ExampleTuiInputTagComponent,
@@ -48,6 +52,8 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiInputTagExample3,
         TuiInputTagExample4,
         TuiInputTagExample5,
+        TuiInputTagExample6,
+        TuiInputTagExample7,
     ],
     exports: [ExampleTuiInputTagComponent],
 })

@@ -1,23 +1,7 @@
-<label
-    *ngIf="!isLink; else content"
-    automation-id="tui-action__content"
-    class="wrapper"
->
-    <ng-container *ngTemplateOutlet="content"></ng-container>
-    <button
-        #focusableElement
-        type="button"
-        automation-id="tui-action__native"
-        class="button"
-        [id]="id"
-        [tuiDescribedBy]="id"
-        [tuiFocusable]="computedFocusable"
-        (tuiFocusVisibleChange)="onFocusVisible($event)"
-    ></button>
-</label>
-<ng-template #content>
-    <div class="wrapper">
-        <ng-content></ng-content>
-    </div>
-</ng-template>
-<tui-marker-icon size="s" class="icon" [src]="icon"></tui-marker-icon>
+<ng-content></ng-content>
+<tui-marker-icon
+    *ngIf="icon"
+    size="s"
+    class="t-icon tui-island__marker"
+    [src]="icon"
+></tui-marker-icon>

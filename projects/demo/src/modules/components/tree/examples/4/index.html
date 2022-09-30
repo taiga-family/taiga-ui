@@ -6,7 +6,12 @@
     [childrenHandler]="handler"
 ></tui-tree>
 
-<ng-template #content let-item>{{item.text}}</ng-template>
+<ng-template
+    #content
+    let-item
+>
+    {{ item.text }}
+</ng-template>
 
 <p>
     <button
@@ -17,7 +22,11 @@
     >
         Toggle Topmost
     </button>
-    <button tuiButton size="s" (click)="toggleLevel()">
+    <button
+        tuiButton
+        size="s"
+        (click)="toggleLevel()"
+    >
         Toggle Top level 1
     </button>
 </p>

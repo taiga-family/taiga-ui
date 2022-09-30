@@ -6,7 +6,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param value
  * @param quantum series step
  */
-export function quantize(value: number, quantum: number): number {
+export function tuiQuantize(value: number, quantum: number): number {
     tuiAssert.assert(Number.isFinite(value));
     tuiAssert.assert(Number.isFinite(quantum));
     tuiAssert.assert(quantum > 0);

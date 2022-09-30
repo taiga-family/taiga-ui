@@ -1,9 +1,18 @@
 <tui-hosted-dropdown [content]="content">
-    <button tuiButton type="button" [iconRight]="arrow">Menu</button>
+    <button
+        tuiButton
+        type="button"
+        [iconRight]="arrow"
+    >
+        Menu
+    </button>
 </tui-hosted-dropdown>
 <ng-template #content>
     <tui-data-list role="menu">
-        <tui-opt-group *ngFor="let group of groups" [label]="group.label">
+        <tui-opt-group
+            *ngFor="let group of groups"
+            [label]="group.label"
+        >
             <a
                 *ngFor="let item of group.items"
                 #rla="routerLinkActive"
@@ -13,8 +22,11 @@
                 [attr.aria-checked]="rla.isActive"
                 [routerLink]="item.routerLink"
             >
-                {{item.label}}
-                <tui-svg *ngIf="rla.isActive" src="tuiIconCheckLarge"></tui-svg>
+                {{ item.label }}
+                <tui-svg
+                    *ngIf="rla.isActive"
+                    src="tuiIconCheckLarge"
+                ></tui-svg>
             </a>
         </tui-opt-group>
     </tui-data-list>

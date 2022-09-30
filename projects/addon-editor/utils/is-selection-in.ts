@@ -1,4 +1,4 @@
-import {isNodeIn} from '@taiga-ui/cdk';
+import {tuiIsNodeIn} from '@taiga-ui/cdk';
 
 /**
  * Checks if selection is inside a specific selector
@@ -6,7 +6,7 @@ import {isNodeIn} from '@taiga-ui/cdk';
  * @param selector
  * @return true if selection is completely inside a particular selector
  */
-export function isSelectionIn(
+export function tuiIsSelectionIn(
     {anchorNode, focusNode}: Selection,
     selector: string,
 ): boolean {
@@ -14,7 +14,7 @@ export function isSelectionIn(
     return (
         !!anchorNode &&
         !!focusNode &&
-        isNodeIn(anchorNode, selector) &&
-        isNodeIn(focusNode, selector)
+        tuiIsNodeIn(anchorNode, selector) &&
+        tuiIsNodeIn(focusNode, selector)
     );
 }

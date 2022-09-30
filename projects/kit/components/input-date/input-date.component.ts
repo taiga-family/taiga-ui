@@ -17,27 +17,31 @@ import {
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
-    nullableSame,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
+    TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
+    TuiContextWithImplicit,
     TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
+    tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -48,6 +52,7 @@ import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
+    tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDatePipe,
@@ -57,15 +62,16 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_DATE_PROVIDERS} from './input-date.providers';
-
-// @dynamic
 @Component({
-    selector: 'tui-input-date',
-    templateUrl: './input-date.template.html',
-    styleUrls: ['./input-date.style.less'],
+    selector: `tui-input-date`,
+    templateUrl: `./input-date.template.html`,
+    styleUrls: [`./input-date.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_DATE_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputDateComponent),
+        tuiAsControl(TuiInputDateComponent),
+        tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+    ],
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
@@ -100,14 +106,17 @@ export class TuiInputDateComponent
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiNamedDay> = [];
+    items: readonly TuiNamedDay[] = [];
 
     @Input()
     @tuiDefaultProp()
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    readonly filler$ = this.dateTexts$.pipe(
+
+    readonly type!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+
+    readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
@@ -124,7 +133,7 @@ export class TuiInputDateComponent
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
-        private readonly mobileCalendar: Type<any> | null,
+        private readonly mobileCalendar: Type<object> | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
@@ -133,7 +142,7 @@ export class TuiInputDateComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_VALUE_TRANSFORMER)
-        readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
+        override readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -151,9 +160,9 @@ export class TuiInputDateComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+        return tuiSizeBigger(this.textfieldSize.size)
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
     get computedValue(): string {
@@ -175,7 +184,7 @@ export class TuiInputDateComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
     }
 
     set nativeValue(value: string) {
@@ -200,18 +209,18 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
-    @HostListener('click')
-    onClick() {
+    @HostListener(`click`)
+    onClick(): void {
         if (!this.isMobile) {
             this.open = !this.open;
         }
     }
 
     getComputedFiller(filler: string): string {
-        return this.activeItem ? '' : filler;
+        return this.activeItem ? `` : filler;
     }
 
-    onMobileClick() {
+    onMobileClick(): void {
         if (!this.mobileCalendar) {
             this.open = !this.open;
 
@@ -220,7 +229,7 @@ export class TuiInputDateComponent
 
         this.dialogService
             .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
+                size: `fullscreen`,
                 closeable: false,
                 data: {
                     single: true,
@@ -235,7 +244,7 @@ export class TuiInputDateComponent
             });
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -251,41 +260,37 @@ export class TuiInputDateComponent
         );
     }
 
-    onDayClick(value: TuiDay) {
+    onDayClick(value: TuiDay): void {
         this.updateValue(value);
         this.open = false;
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onMonthChange(month: TuiMonth) {
+    onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    setDisabledState() {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: TuiDay | null) {
+    override writeValue(value: TuiDay | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
+        this.nativeValue = value ? this.computedValue : ``;
     }
 
-    protected valueIdenticalComparator(
+    protected override valueIdenticalComparator(
         oldValue: TuiDay | null,
         newValue: TuiDay | null,
     ): boolean {
-        return nullableSame(oldValue, newValue, (a, b) => a.daySame(b));
+        return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 }

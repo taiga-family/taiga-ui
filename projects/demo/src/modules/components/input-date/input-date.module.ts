@@ -2,17 +2,18 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
+    TuiErrorModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputDateModule,
     TuiRadioListModule,
     TuiUnfinishedValidatorModule,
@@ -41,10 +42,11 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiMobileCalendarDialogModule,
         TuiUnfinishedValidatorModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        TuiFieldErrorModule,
+        TuiHintModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiNotificationModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputDateComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateComponent)),
     ],
     declarations: [
         ExampleTuiInputDateComponent,

@@ -1,0 +1,21 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+}
+
+.island {
+    box-sizing: border-box;
+    width: 49%;
+
+    @media @tui-mobile {
+        width: 100%;
+    }
+}
+
+.range {
+    margin: 2rem 0;
+}

@@ -13,45 +13,33 @@ import {
     TuiSizeXL,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiMarkerIconModeT} from '@taiga-ui/kit/types';
+import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-marker-icon',
-    templateUrl: './marker-icon.template.html',
-    styleUrls: ['./marker-icon.style.less'],
+    selector: `tui-marker-icon`,
+    templateUrl: `./marker-icon.template.html`,
+    styleUrls: [`./marker-icon.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': `mode$`,
+    },
 })
 export class TuiMarkerIconComponent {
-    private globalMode: TuiBrightness | null = null;
+    @Input()
+    @HostBinding(`attr.data-marker-mode`)
+    @tuiDefaultProp()
+    mode: TuiMarkerIconMode | null = null;
+
+    @Input()
+    @HostBinding(`attr.data-size`)
+    @tuiDefaultProp()
+    size: TuiSizeXS | TuiSizeXL = `m`;
 
     @Input()
     @tuiDefaultProp()
-    mode: TuiMarkerIconModeT | null = null;
+    src = ``;
 
-    @Input()
-    @HostBinding('attr.data-tui-host-size')
-    @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXL = 'm';
-
-    @Input()
-    @tuiDefaultProp()
-    src = '';
-
-    constructor(
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
-    ) {
-        mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
-            this.globalMode = mode;
-        });
-    }
-
-    // TODO: Simplify
-    @HostBinding('attr.data-mode')
-    get computedMode(): TuiMarkerIconModeT | 'onDark' | null {
-        return this.globalMode === 'onDark' && !this.mode ? 'onDark' : this.mode;
-    }
+    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 }

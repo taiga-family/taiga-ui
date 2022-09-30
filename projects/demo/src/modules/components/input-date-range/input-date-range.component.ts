@@ -11,27 +11,18 @@ import {
     TuiDayLike,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiBaseColor,
-    TuiColor,
-    TuiMarkerHandler,
-} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {tuiCreateDefaultDayRangePeriods, TuiDayRangePeriod} from '@taiga-ui/kit';
-
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
-    selector: 'example-tui-input-date-range',
-    templateUrl: './input-date-range.template.html',
+    selector: `example-tui-input-date-range`,
+    templateUrl: `./input-date-range.template.html`,
     changeDetection,
     providers: [
         {
@@ -41,31 +32,29 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/template.html'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/component.ts'),
-        HTML: import('!!raw-loader!./examples/2/template.html'),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
-        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
-        HTML: import('!!raw-loader!./examples/4/index.html'),
-        'value-transformers.ts': import(
-            '!!raw-loader!./examples/4/value-transformers.ts'
-        ),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        'value-transformers.ts': import(`./examples/4/value-transformers.ts?raw`),
     };
 
     readonly dayVariants = [
@@ -78,28 +67,28 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     min: TuiDay = this.dayVariants[0];
 
-    readonly minLengthVariants: ReadonlyArray<TuiDayLike> = [{day: 3}, {day: 15}];
+    readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
 
     minLength: TuiDayLike | null = null;
 
-    readonly maxLengthVariants: ReadonlyArray<TuiDayLike> = [
+    override readonly maxLengthVariants: readonly TuiDayLike[] = [
         {day: 5},
         {month: 1},
         {year: 1},
     ];
 
-    maxLength: TuiDayLike | null = null;
+    override maxLength: TuiDayLike | null = null;
 
     max = this.dayVariants[this.dayVariants.length - 1];
 
-    readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [
+    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,
@@ -110,14 +99,14 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     control = new FormControl(null, Validators.required);
 
-    readonly itemsVariants: ReadonlyArray<ReadonlyArray<TuiDayRangePeriod>> = [
+    readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],
         tuiCreateDefaultDayRangePeriods(),
     ];
 
     items = this.itemsVariants[0];
 
-    readonly defaultViewedMonthVariants: ReadonlyArray<TuiMonth> = [
+    readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
         TuiMonth.currentLocal(),
         TuiMonth.currentLocal().append({month: 1}),
         new TuiMonth(2007, 5),

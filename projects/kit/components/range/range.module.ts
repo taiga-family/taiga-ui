@@ -1,25 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {
-    TuiActiveZoneModule,
-    TuiFocusableModule,
-    TuiFocusVisibleModule,
-    TuiRepeatTimesModule,
-} from '@taiga-ui/cdk';
-import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
+import {FormsModule} from '@angular/forms';
+import {TuiFocusableModule} from '@taiga-ui/cdk';
+import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
 
 import {TuiRangeComponent} from './range.component';
+import {TuiRangeChangeDirective} from './range-change.directive';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        TuiRepeatTimesModule,
-        TuiFocusableModule,
-        TuiActiveZoneModule,
-        TuiFocusVisibleModule,
-        TuiFormatNumberPipeModule,
-    ],
-    declarations: [TuiRangeComponent],
-    exports: [TuiRangeComponent],
+    imports: [CommonModule, TuiFocusableModule, TuiSliderModule, FormsModule],
+    declarations: [TuiRangeComponent, TuiRangeChangeDirective],
+    exports: [TuiRangeComponent, TuiRangeChangeDirective],
 })
 export class TuiRangeModule {}

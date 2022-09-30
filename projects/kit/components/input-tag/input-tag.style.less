@@ -21,17 +21,17 @@
     }
 }
 
-.hosted {
+.t-hosted {
     display: block;
     border-radius: inherit;
 }
 
-.scrollbar {
+.t-scrollbar {
     margin: 0 -0.25rem;
     padding: 0 0.25rem;
 }
 
-.tags {
+.t-tags {
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -45,44 +45,44 @@
         pointer-events: none;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         min-height: var(--tui-height-s);
         padding: 0.25rem 0.25rem 0.25rem 0;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         min-height: var(--tui-height-m);
         padding: 0.5rem 0.25rem 0.5rem 0;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         min-height: var(--tui-height-l);
         padding: 0.625rem 0.25rem 0.625rem 0;
     }
 
-    :host[data-tui-host-size='m']:not(._label-outside) & {
+    :host[data-size='m']:not(._label-outside) & {
         padding: 1.1875rem 1rem 0 0;
     }
 
-    :host[data-tui-host-size='l']:not(._label-outside) & {
+    :host[data-size='l']:not(._label-outside) & {
         padding: 1.6875rem 1rem 0.5625rem 0;
     }
 
-    :host[data-tui-host-size] {
+    :host[data-size] {
         padding-inline-start: 0;
         padding-inline-end: 0.25rem;
     }
 
-    :host[data-tui-host-size]:not(._label-outside) & {
+    :host[data-size]:not(._label-outside) & {
         padding-inline-end: 1rem;
     }
 }
 
-.content {
+.t-content {
     align-items: flex-start;
 }
 
-.icons {
+.t-icons {
     display: flex;
     align-items: center;
     padding: 0 0 0 0.75rem;
@@ -104,40 +104,40 @@
         }
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         height: var(--tui-height-s);
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-l);
     }
 }
 
-.absolute-wrapper {
+.t-absolute-wrapper {
     .fullsize();
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-l);
     }
 }
 
-.wrapper {
+.t-wrapper {
     position: relative;
     padding: 0;
 }
 
-.tag {
+.t-tag {
     margin: @tag-vertical-space 0.5rem @tag-vertical-space -0.25rem;
     margin-inline-start: -0.25rem;
     margin-inline-end: 0.5rem;
@@ -145,7 +145,7 @@
     flex-shrink: 0;
 }
 
-.text {
+.t-text {
     &:after {
         content: ',\00a0';
     }
@@ -162,12 +162,12 @@
         white-space: nowrap;
     }
 
-    :host:not(:focus-within) &:last-of-type:after {
+    :host:not(._focused) &:last-of-type:after {
         content: '';
     }
 }
 
-.input-wrapper {
+.t-input-wrapper {
     position: relative;
     flex: 1;
     max-width: 100%;
@@ -179,15 +179,15 @@
         margin-inline-end: 0;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         min-height: 1.25rem + 2 * @tag-vertical-space;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         min-height: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         min-height: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
     }
 
@@ -196,7 +196,7 @@
     }
 }
 
-.ghost {
+.t-ghost {
     visibility: hidden;
     white-space: pre;
     text-overflow: clip;
@@ -207,7 +207,7 @@
     }
 }
 
-.native {
+.t-native {
     .clearinput();
     .fullsize();
     .text-overflow();
@@ -235,7 +235,7 @@
     }
 }
 
-.error-icon {
+.t-error-icon {
     display: block;
     color: var(--tui-error-fill);
     width: 1rem;

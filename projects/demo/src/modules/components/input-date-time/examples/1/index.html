@@ -1,6 +1,13 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-input-date-time formControlName="testValue">
         Choose date and time
+        <input
+            tuiTextfield
+            placeholder="OCT 26 1985 01:22"
+        />
     </tui-input-date-time>
 
     <p i18n>Form value:</p>

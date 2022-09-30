@@ -1,0 +1,65 @@
+<tui-doc-page
+    i18n-header
+    header="Animations"
+    package="CORE"
+    path="core/animations"
+>
+    <ng-template pageTab>
+        <label tuiLabel="Speed of animations:">
+            <input
+                tuiSlider
+                type="range"
+                [segments]="5"
+                [min]="0"
+                [max]="3000"
+                [step]="100"
+                [(ngModel)]="speed"
+            />
+
+            <div class="labels">
+                <span
+                    *ngFor="let label of speedTicksLabels"
+                    class="label"
+                >
+                    {{ label }}ms
+                </span>
+            </div>
+        </label>
+
+        <tui-doc-example
+            id="tuiHeightCollapse"
+            i18n-heading
+            heading="tuiHeightCollapse"
+            [content]="heightCollapseExample"
+        >
+            <tui-height-collapse-example [speed]="speed"></tui-height-collapse-example>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="tuiWidthCollapse"
+            i18n-heading
+            heading="tuiWidthCollapse"
+            [content]="widthCollapseExample"
+        >
+            <tui-width-collapse-example [speed]="speed"></tui-width-collapse-example>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="tuiFadeIn"
+            i18n-heading
+            heading="tuiFadeIn"
+            [content]="fadeInExample"
+        >
+            <tui-fade-in-example [speed]="speed"></tui-fade-in-example>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="tuiScaleIn"
+            i18n-heading
+            heading="tuiScaleIn"
+            [content]="scaleInExample"
+        >
+            <tui-scale-in-example [speed]="speed"></tui-scale-in-example>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

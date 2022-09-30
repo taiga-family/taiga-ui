@@ -1,0 +1,49 @@
+{
+    "root": "projects/icons",
+    "sourceRoot": "projects/icons/src",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "preprocess": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/preprocess-icons.ts"
+            }
+        },
+        "prebuild": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/compile-icons.ts"
+            },
+            "dependsOn": [
+                {
+                    "target": "preprocess",
+                    "projects": "self",
+                    "params": "forward"
+                }
+            ]
+        },
+        "build": {
+            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["dist/icons"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/icons/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "prebuild",
+                    "projects": "self",
+                    "params": "forward"
+                }
+            ]
+        },
+        "publish": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/icons --dry-run {args.dry-run}"
+            }
+        }
+    }
+}

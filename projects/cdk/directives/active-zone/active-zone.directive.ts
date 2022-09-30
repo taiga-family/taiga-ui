@@ -9,34 +9,26 @@ import {
     Output,
     SkipSelf,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
+import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({
-    selector:
-        '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
-    exportAs: 'tuiActiveZone',
+    selector: `[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)`,
+    exportAs: `tuiActiveZone`,
 })
 export class TuiActiveZoneDirective implements OnDestroy {
-    private subActiveZones: ReadonlyArray<TuiActiveZoneDirective> = [];
+    private subActiveZones: readonly TuiActiveZoneDirective[] = [];
 
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
 
-    @Input('tuiActiveZoneParent')
+    @Input(`tuiActiveZoneParent`)
     @tuiDefaultProp()
     set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
-        if (this.tuiActiveZoneParent) {
-            this.tuiActiveZoneParent.removeSubActiveZone(this);
-        }
-
-        if (zone) {
-            zone.addSubActiveZone(this);
-        }
-
-        this.tuiActiveZoneParent = zone;
+        this.setZone(zone);
     }
 
     @Output()
@@ -63,7 +55,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this.directParentActiveZone) {
             this.directParentActiveZone.removeSubActiveZone(this);
         }
@@ -83,16 +75,27 @@ export class TuiActiveZoneDirective implements OnDestroy {
         );
     }
 
-    private addSubActiveZone(activeZone: TuiActiveZoneDirective) {
+    @tuiPure
+    private setZone(zone: TuiActiveZoneDirective | null): void {
+        if (this.tuiActiveZoneParent) {
+            this.tuiActiveZoneParent.removeSubActiveZone(this);
+        }
+
+        if (zone) {
+            zone.addSubActiveZone(this);
+        }
+
+        this.tuiActiveZoneParent = zone;
+    }
+
+    private addSubActiveZone(activeZone: TuiActiveZoneDirective): void {
         this.subActiveZones = [...this.subActiveZones, activeZone];
     }
 
-    private removeSubActiveZone(activeZone: TuiActiveZoneDirective) {
-        const index = this.subActiveZones.findIndex(item => item === activeZone);
-
-        this.subActiveZones = [
-            ...this.subActiveZones.slice(0, index),
-            ...this.subActiveZones.slice(index + 1),
-        ];
+    private removeSubActiveZone(activeZone: TuiActiveZoneDirective): void {
+        this.subActiveZones = tuiArrayRemove(
+            this.subActiveZones,
+            this.subActiveZones.indexOf(activeZone),
+        );
     }
 }

@@ -3,14 +3,14 @@
  *
  * @return element or null
  */
-export function getNativeFocused(documentRef: Document): Element | null {
-    if (!documentRef.activeElement || !documentRef.activeElement.shadowRoot) {
+export function tuiGetNativeFocused(documentRef: Document): Element | null {
+    if (!documentRef.activeElement?.shadowRoot) {
         return documentRef.activeElement;
     }
 
     let element = documentRef.activeElement.shadowRoot.activeElement;
 
-    while (element && element.shadowRoot) {
+    while (element?.shadowRoot) {
         element = element.shadowRoot.activeElement;
     }
 

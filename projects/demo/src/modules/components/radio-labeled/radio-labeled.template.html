@@ -1,10 +1,18 @@
-<tui-doc-page header="RadioLabeled" package="KIT" type="components">
+<tui-doc-page
+    header="RadioLabeled"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>RadioLabeled</code>
-            is a radio and a label. Label click changes form value. Without
-            label:
-            <a tuiLink routerLink="/components/radio"><code>Radio</code></a>
+            is a radio and a label. Label click changes form value. Without label:
+            <a
+                tuiLink
+                routerLink="/components/radio"
+            >
+                <code>Radio</code>
+            </a>
             .
         </p>
 
@@ -44,9 +52,9 @@
                     [formControl]="control"
                     [item]="items[0]"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -59,9 +67,9 @@
                     [formControl]="control"
                     [item]="items[1]"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -74,9 +82,9 @@
                     [formControl]="control"
                     [item]="items[2]"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
                     [size]="size"
                     [focusable]="focusable"
@@ -103,8 +111,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
@@ -144,7 +151,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -159,7 +166,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -168,7 +175,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

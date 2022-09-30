@@ -1,6 +1,6 @@
 /**
  * Converts angle in degrees to radians
  */
-export function toRadians(deg: number): number {
+export function tuiToRadians(deg: number): number {
     return (deg * Math.PI) / 180;
 }

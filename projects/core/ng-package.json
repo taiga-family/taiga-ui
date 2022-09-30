@@ -1,13 +1,13 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "../../dist/core",
     "assets": [
         "styles"
     ],
+    "allowedNonPeerDependencies": [
+        "."
+    ],
+    "dest": "../../dist/core",
     "lib": {
         "entryFile": "index.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-        "."
-    ]
+    }
 }

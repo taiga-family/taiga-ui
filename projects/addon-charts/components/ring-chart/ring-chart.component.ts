@@ -6,18 +6,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiRingChartContext} from '@taiga-ui/addon-charts/interfaces';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: Refactor to use ng-content
 @Component({
-    selector: 'tui-ring-chart',
-    templateUrl: './ring-chart.template.html',
-    styleUrls: ['./ring-chart.style.less'],
+    selector: `tui-ring-chart`,
+    templateUrl: `./ring-chart.template.html`,
+    styleUrls: [`./ring-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiRingChartComponent {
@@ -26,38 +21,22 @@ export class TuiRingChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeXL = 'm';
-
-    @Input()
-    @tuiDefaultProp()
-    colorHandler: TuiColorHandler = TUI_DEFAULT_COLOR_HANDLER;
-
-    @Input()
-    @tuiDefaultProp()
-    content: PolymorpheusContent<TuiRingChartContext> = '';
-
-    @Input()
-    @tuiDefaultProp()
-    masked = true;
+    size: TuiSizeS | TuiSizeXL = `m`;
 
     @Input()
     @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()
-    activeItemIndexChange = new EventEmitter<number>();
+    readonly activeItemIndexChange = new EventEmitter<number>();
 
-    get hasContent(): boolean {
-        return this.size !== 's' && !!this.content;
-    }
-
-    onActiveItemIndexChange(index: number) {
+    onActiveItemIndexChange(index: number): void {
         this.updateActiveItemIndex(index);
     }
 
-    private updateActiveItemIndex(index: number) {
+    private updateActiveItemIndex(index: number): void {
         if (index === this.activeItemIndex) {
             return;
         }

@@ -7,18 +7,22 @@ import {
     Inject,
     Optional,
 } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiPure, uniqBy} from '@taiga-ui/cdk';
+import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
+import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
+import {TUI_DOC_SCROLL_BEHAVIOR} from '../../tokens/scroll-behavior';
 import {TuiDocPages} from '../../types/pages';
-import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
+import {tuiTransliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
     NAVIGATION_LABELS,
@@ -26,29 +30,31 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 
-const SCROLL_INTO_VIEW_DELAY = 200;
-
-// @dynamic
 @Component({
-    selector: 'tui-doc-navigation',
-    templateUrl: 'navigation.template.html',
-    styleUrls: ['navigation.style.less'],
+    selector: `tui-doc-navigation`,
+    templateUrl: `navigation.template.html`,
+    styleUrls: [`navigation.style.less`],
     providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocNavigationComponent {
-    @HostBinding('class._open')
+    @HostBinding(`class._open`)
     menuOpen = false;
 
-    search = '';
-    open = false;
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
-    active = '';
+    active = ``;
+
+    readonly search = new FormControl(``);
+
+    readonly filtered$ = tuiControlValue<string>(this.search).pipe(
+        filter(search => search.length > 2),
+        map(search => this.filterItems(this.flattenSubPages(this.items), search)),
+    );
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
-        map(() => this.mode.mode || 'onLight'),
+        map(() => this.mode.mode || `onLight`),
     );
 
     constructor(
@@ -63,10 +69,14 @@ export class TuiDocNavigationComponent {
         readonly sidebar: unknown,
         @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
-        readonly items: ReadonlyArray<TuiDocPages>,
+        readonly items: readonly TuiDocPages[],
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+        @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(TUI_DOC_PAGE_LOADED)
+        private readonly readyToScroll$: Observable<boolean>,
+        @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
@@ -74,19 +84,15 @@ export class TuiDocNavigationComponent {
             changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment);
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment!);
         });
     }
 
     get canOpen(): boolean {
-        return this.search.length > 2;
+        return (this.search.value?.length ?? 0) > 2;
     }
 
-    get filteredItems(): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return this.filterItems(this.flattenSubPages(this.items), this.search);
-    }
-
-    get itemsWithoutSections() {
+    get itemsWithoutSections(): TuiDocPages {
         return this.items[this.items.length - 1];
     }
 
@@ -94,34 +100,29 @@ export class TuiDocNavigationComponent {
         return route === this.active;
     }
 
-    onGroupClick(index: number) {
+    onGroupClick(index: number): void {
         this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
 
-    closeMenu() {
+    closeMenu(): void {
         this.menuOpen = false;
     }
 
-    onSearchChange(search: string) {
-        this.search = search;
-        this.open = this.canOpen;
-    }
-
-    onClick() {
-        this.open = false;
+    onClick(input: TuiInputComponent): void {
+        input.open = false;
         this.menuOpen = false;
-        this.search = '';
+        this.search.setValue(``);
         this.openActivePageGroup();
     }
 
     @tuiPure
     private filterItems(
-        items: ReadonlyArray<ReadonlyArray<TuiDocPage>>,
+        items: ReadonlyArray<readonly TuiDocPage[]>,
         search: string,
-    ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
+    ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
-            uniqBy(
-                section.filter(({title, keywords = ''}) => {
+            tuiUniqBy(
+                section.filter(({title, keywords = ``}) => {
                     title = title.toLowerCase();
                     search = search.toLowerCase();
                     keywords = keywords.toLowerCase();
@@ -129,26 +130,26 @@ export class TuiDocNavigationComponent {
                     return (
                         title.includes(search) ||
                         keywords.includes(search) ||
-                        title.includes(transliterateKeyboardLayout(search)) ||
-                        keywords.includes(transliterateKeyboardLayout(search)) ||
-                        search.replace(/-/gi, '').includes(title)
+                        title.includes(tuiTransliterateKeyboardLayout(search)) ||
+                        keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
+                        search.replace(/-/gi, ``).includes(title)
                     );
                 }),
-                'title',
+                `title`,
             ),
         );
     }
 
     @tuiPure
     private flattenSubPages(
-        items: ReadonlyArray<TuiDocPages>,
-    ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return items.reduce<ReadonlyArray<ReadonlyArray<TuiDocPage>>>(
+        items: readonly TuiDocPages[],
+    ): ReadonlyArray<readonly TuiDocPage[]> {
+        return items.reduce<ReadonlyArray<readonly TuiDocPage[]>>(
             (array, item) => [
                 ...array,
-                item.reduce<ReadonlyArray<TuiDocPage>>(
+                item.reduce<readonly TuiDocPage[]>(
                     (pages, page) =>
-                        'subPages' in page
+                        `subPages` in page
                             ? [...pages, ...page.subPages]
                             : [...pages, page],
                     [],
@@ -162,21 +163,21 @@ export class TuiDocNavigationComponent {
         return this.router.isActive(route, false);
     }
 
-    private handleAnchorLink(hash: string) {
-        setTimeout(() => {
-            this.navigateToAnchorLink(hash);
-        }, SCROLL_INTO_VIEW_DELAY);
+    private handleAnchorLink(hash: string): void {
+        this.readyToScroll$
+            .pipe(filter(Boolean), take(1), takeUntil(this.destroy$))
+            .subscribe(() => this.navigateToAnchorLink(hash));
     }
 
-    private openActivePageGroup() {
+    private openActivePageGroup(): void {
         this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
-                if ('route' in page && this.isActiveRoute(page.route)) {
+                if (`route` in page && this.isActiveRoute(page.route)) {
                     this.openPagesArr[pagesIndex] = true;
                     this.active = page.route;
                 }
 
-                if ('subPages' in page) {
+                if (`subPages` in page) {
                     page.subPages.forEach(subPage => {
                         if (this.isActiveRoute(subPage.route)) {
                             this.openPagesArr[pagesIndex] = true;
@@ -189,18 +190,18 @@ export class TuiDocNavigationComponent {
         });
     }
 
-    private navigateToAnchorLink(fragment: string) {
+    private navigateToAnchorLink(fragment: string): void {
         const element = fragment && this.documentRef.querySelector(`#${fragment}`);
 
         if (!element) {
             return;
         }
 
-        element.classList.add('tui-doc-animated-example');
+        element.classList.add(`tui-doc-animated-example`);
         element.scrollIntoView({
-            block: 'start',
-            inline: 'nearest',
-            behavior: 'smooth',
+            block: `start`,
+            inline: `nearest`,
+            behavior: this.scrollBehavior,
         });
     }
 }

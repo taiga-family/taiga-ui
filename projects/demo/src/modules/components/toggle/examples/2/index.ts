@@ -2,35 +2,25 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    ToggleOptions,
-    TUI_TOGGLE_DEFAULT_OPTIONS,
-    TUI_TOGGLE_OPTIONS,
-} from '@taiga-ui/kit';
-
-const options: Partial<ToggleOptions> = {
-    icons: {
-        toggleOff: ({$implicit}) =>
-            $implicit === 'm' ? 'tuiIconChevronRight' : 'tuiIconChevronRightLarge',
-        toggleOn: ({$implicit}) =>
-            $implicit === 'm' ? 'tuiIconChevronLeft' : 'tuiIconChevronLeftLarge',
-    },
-    showIcons: true,
-};
+import {tuiToggleOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-toggle-example-2',
-    templateUrl: './index.html',
+    selector: `tui-toggle-example-2`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
     providers: [
-        {
-            provide: TUI_TOGGLE_OPTIONS,
-            useValue: {
-                ...TUI_TOGGLE_DEFAULT_OPTIONS,
-                ...options,
+        tuiToggleOptionsProvider({
+            icons: {
+                toggleOff: ({$implicit}) =>
+                    $implicit === `m`
+                        ? `tuiIconChevronRight`
+                        : `tuiIconChevronRightLarge`,
+                toggleOn: ({$implicit}) =>
+                    $implicit === `m` ? `tuiIconChevronLeft` : `tuiIconChevronLeftLarge`,
             },
-        },
+            showIcons: true,
+        }),
     ],
 })
 export class TuiToggleExample2 {

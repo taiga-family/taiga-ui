@@ -1,5 +1,5 @@
 export abstract class AbstractExampleTuiInteractive {
-    readonly pseudoVariants: ReadonlyArray<boolean> = [false, true];
+    readonly pseudoVariants: readonly boolean[] = [false, true];
 
     focusable = true;
 

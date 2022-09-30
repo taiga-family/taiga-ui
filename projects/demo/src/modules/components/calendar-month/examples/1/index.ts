@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMonth} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-calendar-month-example-1',
-    templateUrl: './index.html',
+    selector: `tui-calendar-month-example-1`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -13,11 +13,11 @@ export class TuiMonthExample1 {
     value: TuiMonth | null = null;
     hoveredMonth: TuiMonth | null = null;
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         this.value = month;
     }
 
-    onMonthHovered(month: TuiMonth | null) {
+    onMonthHovered(month: TuiMonth | null): void {
         this.hoveredMonth = month;
     }
 }

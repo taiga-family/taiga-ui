@@ -1,0 +1,282 @@
+<tui-doc-page
+    header="AlertService"
+    package="CORE"
+    path="core/components/alert/alert.service.ts"
+>
+    <ng-template pageTab>
+        <p i18n>Service to show notifications</p>
+        <p i18n>
+            Do not forget to add
+            <code>TuiAlertModule</code>
+            into your app.module to use it
+        </p>
+
+        <p i18n>
+            <strong>Singleton</strong>
+            you do not need to provide a service. It is just available to inject
+        </p>
+
+        <tui-doc-example
+            id="text"
+            heading="Text"
+            [content]="example1"
+        >
+            <tui-alerts-example-1></tui-alerts-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="template"
+            heading="Template"
+            [content]="example2"
+        >
+            <tui-alerts-example-2></tui-alerts-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="component"
+            heading="Component"
+            [content]="example3"
+        >
+            <tui-alerts-example-3></tui-alerts-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="data"
+            i18n-heading
+            heading="Component with data"
+            [content]="example4"
+        >
+            <tui-alerts-example-4></tui-alerts-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="label"
+            i18n-heading
+            heading="Component with custom label"
+            [content]="example5"
+        >
+            <tui-alerts-example-5></tui-alerts-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <button
+            tuiButton
+            type="button"
+            size="m"
+            (click)="showNotification()"
+        >
+            Show
+        </button>
+        <div
+            i18n
+            class="b-full-width"
+        >
+            <p>To show notification, use method</p>
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                [code]="method"
+            ></tui-doc-code>
+            of
+            <code>TuiAlertService</code>
+            , where
+            <code>O</code>
+            is output data type and
+            <code>I</code>
+            is input data type. If content does not need input data, the second argument is optional. In the sample
+            above the both of them are
+            <code>number</code>
+            .
+            <p>
+                You can also just unsubscribe from a stream to hide a notification (this observable is returned from
+                <code>open</code>
+                method). You can save a subscription for that or use
+                <code>takeUntil</code>
+                like tools from
+                <code>RxJs</code>
+            </p>
+        </div>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="content"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="content"
+            >
+                Content
+            </ng-template>
+        </tui-doc-documentation>
+        <p i18n>
+            <code>TuiNotificationOptionsWithData</code>
+            interface:
+        </p>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="status"
+                documentationPropertyType="TuiNotification"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="status"
+            >
+                Status
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="label"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="label"
+            >
+                Heading
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="data"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="data"
+            >
+                Input data of notification, type &lt;I&gt;
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="autoClose"
+                documentationPropertyType="boolean | number"
+                [documentationPropertyValues]="autoCloseVariants"
+                [(documentationPropertyValue)]="autoClose"
+            >
+                Autoclose after 3 seconds
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="hasCloseButton"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hasCloseButton"
+            >
+                Has close button
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="hasIcon"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hasIcon"
+            >
+                Has icon
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Add
+                    <code>TuiAlertModule</code>
+                    into your app.module
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Use service
+                    <code>show</code>
+                    method and subscribe to
+                    <code>Observable</code>
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleServiceUsage"
+                ></tui-doc-code>
+            </li>
+
+            <li i18n>
+                To pass notification with custom content, you can use
+                <a
+                    routerLink="/services/alert-service"
+                    fragment="example-template"
+                    tuiLink
+                >
+                    <code>your template</code>
+                </a>
+                .
+            </li>
+
+            <li>
+                <p i18n>
+                    You can also customize notification logic with a component. Use
+                    <code>POLYMORPHEUS_CONTEXT</code>
+                    into the component to get context input data and to output results. It has the following interface:
+                    <code>TuiDialog&lt;TuiAlertOptions&lt;I&gt;, O&gt;</code>
+                    , where
+                    <code>O</code>
+                    is output data type and
+                    <code>I</code>
+                    is input data type. Do not forget to add notification component into
+                    <code>entryComponents</code>
+                    of your module:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModuleComponent"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Use
+                    <code>new PolymorpheusComponent(CustomNotificationComponent)</code>
+                    to show notification component with a service:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleServiceUsageComponent"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Use
+                    <code>completeWith</code>
+                    method to control notification from itself:
+                </p>
+
+                <tui-doc-code
+                    filename="customNotification.component.ts"
+                    [code]="exampleCustomAlert"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    If you use it from lazy loading modules, do not forget to use
+                    <code>new TuiComponentContent Injector</code>
+                    of component where you call it
+                </p>
+
+                <tui-doc-code
+                    filename="customNotification.component.ts"
+                    [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_NOTIFICATION_OPTIONS</code>
+                    injection token to override the default options (works only in app.module.ts).
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleOptions"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

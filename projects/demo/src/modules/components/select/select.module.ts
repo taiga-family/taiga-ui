@@ -4,13 +4,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiAutoFocusModule, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAutoFocusModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
-    TuiHintControllerModule,
+    TuiDropdownModule,
+    TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -22,6 +22,7 @@ import {
 import {
     TuiAvatarModule,
     TuiDataListWrapperModule,
+    TuiMarkerIconModule,
     TuiMultiSelectModule,
     TuiRadioListModule,
     TuiSelectModule,
@@ -38,6 +39,9 @@ import {TuiSelectExample5} from './examples/5';
 import {TuiSelectExample6} from './examples/6';
 import {TuiSelectExample7} from './examples/7';
 import {TuiSelectExample8} from './examples/8';
+import {TuiSelectExample9} from './examples/9';
+import {ExampleMyAccountComponent} from './examples/9/account/my-account.component';
+import {TuiSelectExample10} from './examples/10';
 import {ExampleTuiSelectComponent} from './select.component';
 
 @NgModule({
@@ -58,9 +62,9 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiMoneyModule,
         TuiAvatarModule,
         TuiSvgModule,
-        TuiDropdownControllerModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAutoFocusModule,
         TuiLetModule,
         TuiLoaderModule,
@@ -70,10 +74,13 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiSelectComponent)),
+        TuiMarkerIconModule,
+        TuiMapperPipeModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
     ],
     declarations: [
         ExampleTuiSelectComponent,
+        ExampleMyAccountComponent,
         TuiSelectExample1,
         TuiSelectExample2,
         TuiSelectExample3,
@@ -82,6 +89,8 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiSelectExample6,
         TuiSelectExample7,
         TuiSelectExample8,
+        TuiSelectExample9,
+        TuiSelectExample10,
     ],
     exports: [ExampleTuiSelectComponent],
 })

@@ -1,46 +1,39 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiOrientationT} from '@taiga-ui/core';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiOrientation} from '@taiga-ui/core';
+import {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-tui-stepper',
+    selector: `example-tui-stepper`,
     changeDetection,
-    templateUrl: './stepper.template.html',
+    templateUrl: `./stepper.template.html`,
 })
 export class ExampleTuiStepperComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     activeItemIndex = 0;
 
-    readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];
+    readonly orientationVariants: readonly TuiOrientation[] = [`horizontal`, `vertical`];
 
-    orientation: TuiOrientationT = this.orientationVariants[0];
+    orientation: TuiOrientation = this.orientationVariants[0];
 
-    readonly iconVariants = ['', 'tuiIconTimeLarge', 'tuiIconHeart'];
+    readonly iconVariants = [``, `tuiIconTimeLarge`, `tuiIconHeart`];
 
     icon = this.iconVariants[0];
 
-    readonly stateVariants = ['normal', 'pass', 'error'];
+    readonly stateVariants: TuiStepState[] = [`normal`, `pass`, `error`];
 
-    state = this.stateVariants[0];
+    state: TuiStepState = this.stateVariants[0];
 }

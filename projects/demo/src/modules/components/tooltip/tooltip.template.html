@@ -1,4 +1,8 @@
-<tui-doc-page i18n-header header="Tooltip" package="CORE" type="components">
+<tui-doc-page
+    header="Tooltip"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to show icons with a hint by hover</p>
 
@@ -40,15 +44,28 @@
         <tui-doc-demo>
             <tui-tooltip
                 content="You data is hidden"
-                [mode]="mode"
+                [appearance]="appearance"
                 [describeId]="describeId"
                 [direction]="direction"
                 [showDelay]="showDelay"
                 [hideDelay]="hideDelay"
             ></tui-tooltip>
-            <input placeholder="id: qwerty" tuiDescribedBy="qwerty" />
+            <input
+                id="qwerty"
+                placeholder="id: qwerty"
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="appearance"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Hint appearance
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="content"
@@ -64,29 +81,16 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="describeId"
             >
-                To be accessible, hint should be set to a focusable element and
-                user with Screen Readers will listen to hint text after a small
-                delay when focusing textfield. Set unique
-                <code>describeId</code>
-                and use
-                <code>[tuiDescribedBy]="theSameId"</code>
-                directive on focusable element
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="mode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiTooltipMode | null"
-                [documentationPropertyValues]="modeVariants"
-                [(documentationPropertyValue)]="mode"
-            >
-                Tooltip mode
+                To be accessible, hint should be set to a focusable element and user with Screen Readers will listen to
+                hint text after a small delay when focusing textfield. Set
+                <code>id</code>
+                of your focusable element here.
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="direction"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiDirection"
+                documentationPropertyType="TuiHintDirection"
                 [documentationPropertyValues]="directionVariants"
                 [(documentationPropertyValue)]="direction"
             >
@@ -122,7 +126,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -131,7 +135,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

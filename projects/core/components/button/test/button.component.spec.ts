@@ -2,15 +2,20 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 
 import {TuiButtonModule} from '../button.module';
 
-describe('Button', () => {
+describe(`Button`, () => {
     @Component({
         template: `
-            <button tuiButton type="button" [showLoader]="showLoader">My button</button>
+            <button
+                tuiButton
+                type="button"
+                [showLoader]="showLoader"
+            >
+                My button
+            </button>
         `,
     })
     class TestComponent {
@@ -35,7 +40,7 @@ describe('Button', () => {
         fixture.detectChanges();
     });
 
-    it('Show loader', async () => {
+    it(`Show loader`, async () => {
         component.showLoader = true;
         fixture.detectChanges();
 
@@ -45,13 +50,13 @@ describe('Button', () => {
         expect(shown).toBe(true);
     });
 
-    it('When loader is shown, native button is disabled', async () => {
+    it(`When loader is shown, native button is disabled`, async () => {
         component.showLoader = true;
         fixture.detectChanges();
 
         const harness = await loader.getHarness(TuiButtonHarness);
         const host = await harness.host();
-        const disabled = await host.matchesSelector(':disabled');
+        const disabled = await host.matchesSelector(`:disabled`);
 
         expect(disabled).toBe(true);
     });

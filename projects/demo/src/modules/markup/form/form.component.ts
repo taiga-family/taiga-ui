@@ -1,21 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./example/index.html';
-import {default as example1Less} from '!!raw-loader!./example/index.style.less';
-import {default as example1Ts} from '!!raw-loader!./example/index.ts';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'example-form',
-    templateUrl: 'form.template.html',
+    selector: `example-form`,
+    templateUrl: `form.template.html`,
     changeDetection,
 })
 export class FormComponent {
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./example/index.ts?raw`),
+        HTML: import(`./example/index.html?raw`),
+        LESS: import(`./example/index.style.less?raw`),
     };
 }

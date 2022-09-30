@@ -2,13 +2,18 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
-import {PREVIEW_DIALOG_PROVIDER} from '@taiga-ui/addon-preview/components/preview-dialog';
-import {TuiDragModule, TuiPanModule, TuiResizeModule, TuiZoomModule} from '@taiga-ui/cdk';
+import {TuiPreviewDialogService} from '@taiga-ui/addon-preview/components/preview-dialog';
+import {
+    tuiAsDialog,
+    TuiDragModule,
+    TuiPanModule,
+    TuiResizeModule,
+    TuiZoomModule,
+} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiHintModule,
     TuiLoaderModule,
-    TuiManualHintModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
@@ -31,7 +36,6 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiSliderModule,
         TuiHintModule,
         TuiDragModule,
-        TuiManualHintModule,
         TuiResizeModule,
         TuiSvgModule,
         TuiLoaderModule,
@@ -52,6 +56,6 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
     ],
-    providers: [PREVIEW_DIALOG_PROVIDER],
+    providers: [tuiAsDialog(TuiPreviewDialogService)],
 })
 export class TuiPreviewModule {}

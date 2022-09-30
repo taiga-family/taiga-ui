@@ -1,5 +1,0 @@
-<div [formGroup]="testForm">
-    <tui-text-area formControlName="testValue"
-                   [expandable]="true"
-                   [rows]="10"></tui-text-area>
-</div>

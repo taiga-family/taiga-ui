@@ -18,11 +18,11 @@ function translateY(distance: number): string {
 }
 
 @Component({
-    selector: 'tui-pull-to-refresh',
-    templateUrl: './pull-to-refresh.template.html',
-    styleUrls: ['./pull-to-refresh.style.less'],
+    selector: `tui-pull-to-refresh`,
+    templateUrl: `./pull-to-refresh.template.html`,
+    styleUrls: [`./pull-to-refresh.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_PULL_TO_REFRESH_PROVIDERS],
+    providers: TUI_PULL_TO_REFRESH_PROVIDERS,
 })
 export class TuiPullToRefreshComponent {
     @Output()

@@ -2,10 +2,9 @@
     *tuiLet="isActive$ | async as active"
     #tableCommand
     [content]="tableOptionsDropdown"
-    [canOpen]="active"
+    [canOpen]="!!active"
 >
     <button
-        #tableCommandsBtn
         tuiIconButton
         type="button"
         size="s"
@@ -13,8 +12,7 @@
         appearance="icon"
         tuiHintDirection="top-left"
         [tuiHint]="rowsColumnsManagingText$ | async"
-        [tuiHintId]="tableCommandsBtn.id"
-        [tuiDescribedBy]="tableCommandsBtn.id"
+        [tuiHintDescribe]="''"
         [focusable]="tableCommand.open"
         [disabled]="!active"
     ></button>
@@ -22,9 +20,7 @@
 
 <ng-template #tableOptionsDropdown>
     <tui-data-list>
-        <tui-opt-group
-            *ngFor="let group of tableCommandTexts$ | async; let i = index"
-        >
+        <tui-opt-group *ngFor="let group of tableCommandTexts$ | async; let i = index">
             <!-- TODO: remove "magic" numbers i*2+j and make code more readable-->
             <button
                 *ngFor="let item of group; let j = index"

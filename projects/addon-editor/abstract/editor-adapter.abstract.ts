@@ -1,15 +1,18 @@
 import {Directive} from '@angular/core';
-import type {Editor} from '@tiptap/core';
+import type {Editor, Range} from '@tiptap/core';
+import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
 
 @Directive()
-export abstract class TuiEditor {
+export abstract class AbstractTuiEditor {
     abstract readonly isFocused: boolean;
     abstract readonly html: string;
     abstract editable: boolean;
 
     readonly stateChange$ = new Subject();
     readonly valueChange$ = new Subject<string>();
+
+    abstract get state(): EditorState;
 
     abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
 
@@ -39,6 +42,8 @@ export abstract class TuiEditor {
     abstract toggleSubscript(): void;
     abstract toggleSuperscript(): void;
     abstract toggleCodeBlock(): void;
+    abstract liftListItem(): void;
+    abstract sinkListItem(): void;
     abstract insertTable(rows: number, cols: number): void;
     abstract addColumnAfter(): void;
     abstract addColumnBefore(): void;
@@ -51,16 +56,21 @@ export abstract class TuiEditor {
     abstract canSplitCells(): boolean;
     abstract splitCell(): void;
     abstract setHeading(level: number): void;
-    abstract setParagraph(): void;
+    abstract setParagraph(options?: {fontSize: string}): void;
+    abstract setHardBreak(): void;
+    abstract setTextSelection(value: number | Range): void;
     abstract toggleLink(href: string): void;
     abstract setLink(href: string): void;
     abstract unsetLink(): void;
-    abstract indent(): void;
-    abstract outdent(): void;
     abstract destroy(): void;
     abstract selectClosest(): void;
     abstract focus(): void;
     abstract setValue(value: string): void;
     abstract setCellColor(color: string): void;
     abstract getOriginTiptapEditor(): Editor;
+    abstract enter(): void;
+    abstract setDetails(): void;
+    abstract removeDetails(): void;
+    abstract setGroup(): void;
+    abstract removeGroup(): void;
 }

@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+    <div class="tui-form__row">
+        <tui-input
+            formControlName="text"
+            class="input"
+        >
+            Enter some text
+        </tui-input>
+
+        <tui-error
+            formControlName="text"
+            [error]="[] | tuiFieldError | async"
+        ></tui-error>
+    </div>
+</form>

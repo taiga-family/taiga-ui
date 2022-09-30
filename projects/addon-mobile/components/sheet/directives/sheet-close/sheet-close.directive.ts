@@ -1,24 +1,20 @@
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiZonefull, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, startWith, switchMap} from 'rxjs/operators';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
-import {
-    TUI_SHEET_DRAGGED,
-    TUI_SHEET_SCROLL,
-} from '../../components/sheet/sheet.providers';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
+import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
-// @dynamic
 @Directive({
-    selector: 'tui-sheet[close]',
+    selector: `tui-sheet[close]`,
 })
 export class TuiSheetCloseDirective {
     @Output()
     readonly close: Observable<unknown> = merge(
-        typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
+        tuiTypedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             startWith(false),
             switchMap(dragged =>
@@ -44,10 +40,11 @@ export class TuiSheetCloseDirective {
     ) {}
 
     private shouldClose(scrollTop: number): boolean {
-        const min = Math.min(
+        const height = Math.min(
+            this.windowRef.innerHeight,
             this.elementRef.nativeElement.scrollHeight - this.windowRef.innerHeight,
-            this.sheet.stops[0] || Infinity,
         );
+        const min = Math.min(height, this.sheet.stops[0] || Infinity);
 
         return scrollTop < min / 2;
     }

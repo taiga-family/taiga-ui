@@ -1,4 +1,9 @@
-<h2 i18n class="title">Search by name</h2>
+<h2
+    i18n
+    class="title"
+>
+    Search by name
+</h2>
 <tui-input
     i18n
     tuiHintContent="You can copy icon's name with a click"
@@ -9,22 +14,32 @@
     Input icon name to highlight
 </tui-input>
 
-<ng-container *ngFor="let key of keys">
-    <h2 i18n class="title">{{ key }}</h2>
-    <div class="icons">
-        <button
-            *ngFor="let icon of iconsValues[key]"
-            tuiIconButton
-            type="button"
-            size="m"
-            i18n-title
-            title="Copy"
-            appearance="icon"
-            class="icon"
-            [class.icon_highlighted]="icon | iconHighlight: search"
-            [attr.aria-label]="icon"
-            [icon]="icon"
-            (click)="copyPath(icon)"
-        ></button>
-    </div>
+<ng-container *tuiForAsync="let key of icons | tuiKeys">
+    <ng-container *ngIf="icons[key] | tuiFilter: matcher:search as filtered">
+        <div class="header-group">
+            <h2
+                i18n
+                class="title"
+            >
+                {{ key }}
+            </h2>
+
+            <tui-badge
+                size="m"
+                class="badge"
+                [hoverable]="true"
+                [value]="filtered.length.toString()"
+                [status]="filtered.length ? 'success' : 'error'"
+            ></tui-badge>
+        </div>
+        <p *ngIf="!filtered.length">Nothing found</p>
+
+        <div class="icons">
+            <ng-container
+                *tuiForAsync="let icon of filtered"
+                [ngTemplateOutlet]="iconGroup?.template || null"
+                [ngTemplateOutletContext]="{icon: icon, group: key, copyPath: copyPath}"
+            ></ng-container>
+        </div>
+    </ng-container>
 </ng-container>

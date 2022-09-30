@@ -7,16 +7,16 @@ import {TuiDialogComponent} from './dialog.component';
 
 const DIALOG = new PolymorpheusComponent(TuiDialogComponent);
 const DEFAULT_OPTIONS = {
-    size: 'm',
+    size: `m`,
     required: false,
     closeable: true,
     dismissible: true,
-    label: '',
-    header: '',
+    label: ``,
+    header: ``,
 } as const;
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiDialogService extends AbstractTuiDialogService<TuiDialogOptions<any>> {
     protected readonly component = DIALOG;

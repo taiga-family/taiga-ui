@@ -7,16 +7,16 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 enum Department {
-    IT = 'IT',
-    HR = 'HR',
-    HeadOffice = 'Heads',
-    Delivery = 'Delivery',
+    IT = `IT`,
+    HR = `HR`,
+    HeadOffice = `Heads`,
+    Delivery = `Delivery`,
 }
 
 @Component({
-    selector: 'tui-filter-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-filter-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -43,11 +43,11 @@ export class TuiFilterExample4 {
         );
     }
 
-    onModelChange(model: readonly string[]) {
+    onModelChange(model: readonly string[]): void {
         this.filters$.next(model);
     }
 
-    toggleAll() {
+    toggleAll(): void {
         this.filters$.next(
             this.items.length === this.filters$.value.length ? [] : [...this.items],
         );

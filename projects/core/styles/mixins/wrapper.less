@@ -1,0 +1,59 @@
+.wrapper-hover(@ruleset) {
+    @media (hover: hover) {
+        &:hover:not(._no-hover),
+        &[data-state='hover'] {
+            @ruleset();
+        }
+    }
+}
+
+.wrapper-active(@ruleset) {
+    &:active:not(._no-active),
+    &[data-state='active'],
+    &[data-state='active']:hover {
+        @ruleset();
+    }
+}
+
+.wrapper-readonly(@ruleset, @native: false) {
+    // Specificity artificially increased to match `:hover:not()` level
+    & when (@native = true) {
+        &:read-only:read-only,
+        &[data-state='readonly'][data-state='readonly'] {
+            @ruleset();
+        }
+    }
+
+    & when (@native = false) {
+        &[data-state='readonly'][data-state='readonly'] {
+            @ruleset();
+        }
+    }
+}
+
+.wrapper-disabled(@ruleset) {
+    // Specificity artificially increased to match `:hover:not()` level
+    &:disabled:disabled,
+    &[data-state='disabled'][data-state='disabled'] {
+        @ruleset();
+    }
+}
+
+.wrapper-focus(@ruleset) {
+    // TODO: Join rules together once all browsers support focus-visible
+    // Specificity artificially increased to match `:hover:not()` level
+    &:focus-visible:focus-visible {
+        @ruleset();
+    }
+
+    &._focused._focused {
+        @ruleset();
+    }
+}
+
+.wrapper-invalid(@ruleset) {
+    &:invalid:invalid,
+    &._invalid._invalid {
+        @ruleset();
+    }
+}

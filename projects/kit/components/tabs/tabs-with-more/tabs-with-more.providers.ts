@@ -8,42 +8,23 @@ import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
-export function tabsRefreshFactory(
-    resize$: Observable<unknown>,
-    mutations$: Observable<unknown>,
-    destroy$: Observable<unknown>,
-    {body}: Document,
-    {nativeElement}: ElementRef<Node>,
-    changeDetectorRef: ChangeDetectorRef,
-): Observable<unknown> {
-    return merge(
-        resize$,
-        mutations$.pipe(tap(() => changeDetectorRef.detectChanges())),
-    ).pipe(
-        // Ignoring cases when host is detached from DOM
-        filter(() => body.contains(nativeElement)),
-        debounceTime(0),
-        startWith(null),
-        takeUntil(destroy$),
-    );
-}
-
-// TODO: remove in ivy compilation
-export const MUTATION_CONFIG = {
-    childList: true,
-    subtree: true,
-};
-export const TABS_REFRESH = new InjectionToken<Observable<unknown>>('Refresh stream');
-export const TABS_PROVIDERS: Provider[] = [
+export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
+    `[TUI_TABS_REFRESH]: Refresh stream`,
+);
+export const TUI_TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
     TuiDestroyService,
     MutationObserverService,
     {
         provide: MUTATION_OBSERVER_INIT,
-        useValue: MUTATION_CONFIG,
+        useValue: {
+            childList: true,
+            subtree: true,
+            characterData: true,
+        },
     },
     {
-        provide: TABS_REFRESH,
+        provide: TUI_TABS_REFRESH,
         deps: [
             TuiResizeService,
             MutationObserverService,
@@ -52,6 +33,24 @@ export const TABS_PROVIDERS: Provider[] = [
             ElementRef,
             ChangeDetectorRef,
         ],
-        useFactory: tabsRefreshFactory,
+        useFactory: (
+            resize$: Observable<unknown>,
+            mutations$: Observable<unknown>,
+            destroy$: Observable<unknown>,
+            {body}: Document,
+            {nativeElement}: ElementRef<Node>,
+            changeDetectorRef: ChangeDetectorRef,
+        ): Observable<unknown> => {
+            return merge(
+                resize$,
+                mutations$.pipe(tap(() => changeDetectorRef.detectChanges())),
+            ).pipe(
+                // Ignoring cases when host is detached from DOM
+                filter(() => body.contains(nativeElement)),
+                debounceTime(0),
+                startWith(null),
+                takeUntil(destroy$),
+            );
+        },
     },
 ];

@@ -1,12 +1,11 @@
 <tui-doc-page
-    i18n-header
     header="DropdownSelection"
-    package="KIT"
+    package="CORE"
     type="directives"
 >
     <ng-template pageTab>
         <p i18n>
-            <code>tuiDropdownSelection</code>
+            <code>DropdownSelection</code>
             shows dropdown with custom template on selected text
         </p>
 
@@ -19,7 +18,11 @@
             <tui-dropdown-selection-example-1></tui-dropdown-selection-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="textarea" heading="textarea" [content]="example2">
+        <tui-doc-example
+            id="textarea"
+            heading="textarea"
+            [content]="example2"
+        >
             <tui-dropdown-selection-example-2></tui-dropdown-selection-example-2>
         </tui-doc-example>
     </ng-template>
@@ -30,98 +33,33 @@
                 i18n
                 tuiDropdownSelection
                 [tuiDropdownSelectionPosition]="position"
-                [tuiDropdownContent]="dropdownContent"
-                [tuiDropdownMinHeight]="tuiDropdownMinHeight"
-                [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
-                [tuiDropdownAlign]="tuiDropdownAlign"
-                [tuiDropdownDirection]="tuiDropdownDirection"
-                [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
-                [tuiDropdownSided]="tuiDropdownSided"
+                [tuiDropdown]="dropdownContent"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
             >
                 Select a text to
                 <strong>see a dropdown</strong>
             </p>
             <ng-template #dropdownContent>
-                <div i18n class="dropdown">
+                <div
+                    i18n
+                    class="dropdown"
+                >
                     Here you can have any content
-                    <p>
-                        You can select a text inside a dropdown and it will not
-                        close a dropdown
-                    </p>
-                    <button tuiButton type="button">Button</button>
+                    <p>You can select a text inside a dropdown and it will not close a dropdown</p>
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
                 </div>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-            >
-                Content
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="alignVariants"
-                [(documentationPropertyValue)]="tuiDropdownAlign"
-            >
-                Align of dropdown (does not work together with
-                <code>limitWidth === 'fixed'</code>
-                )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiVerticalDirection | null"
-                [documentationPropertyValues]="dropdownDirectionVariants"
-                [(documentationPropertyValue)]="tuiDropdownDirection"
-            >
-                Set a vertical direction of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownHost"
-                documentationPropertyMode="input"
-                documentationPropertyType="HTMLElement | null"
-            >
-                Set dropdown host manually. For example, it will be a target if
-                someone blurs dropdown with Tab/Shift+Tab. Element with a
-                directive is used by default.
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownLimitWidth"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidthT"
-                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
-                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
-            >
-                Limit dropdown width
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMinHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMinHeight"
-            >
-                Minimum height to calculate that dropdown fits to setted
-                <code>tuiDropdownDirection</code>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMaxHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
-            >
-                Maximum height of dropdown
-            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="tuiDropdownSelection"
@@ -143,15 +81,7 @@
             >
                 Position of dropdown near text selection
             </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownSided"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="tuiDropdownSided"
-            >
-                Dropdown is sided by host
-            </ng-template>
+            <dropdown-documentation></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 
@@ -166,7 +96,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -175,7 +105,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

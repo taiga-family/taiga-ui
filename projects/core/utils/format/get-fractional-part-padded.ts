@@ -1,4 +1,6 @@
-import {numberToStringWithoutExp} from './number-to-string-without-exp';
+import {tuiIsNumber} from '@taiga-ui/cdk';
+
+import {tuiNumberToStringWithoutExp} from './number-to-string-without-exp';
 
 /**
  * Return fractional part of number
@@ -7,10 +9,13 @@ import {numberToStringWithoutExp} from './number-to-string-without-exp';
  * @param precision number of digits of decimal part, null to keep untouched
  * @return the fractional part of number
  */
-export function getFractionPartPadded(value: number, precision?: number | null): string {
-    const [, fractionPartPadded = ''] = numberToStringWithoutExp(value).split('.');
+export function tuiGetFractionPartPadded(
+    value: number,
+    precision?: number | null,
+): string {
+    const [, fractionPartPadded = ``] = tuiNumberToStringWithoutExp(value).split(`.`);
 
-    return typeof precision === 'number'
-        ? fractionPartPadded.substr(0, precision)
+    return tuiIsNumber(precision)
+        ? fractionPartPadded.slice(0, Math.max(0, precision))
         : fractionPartPadded;
 }

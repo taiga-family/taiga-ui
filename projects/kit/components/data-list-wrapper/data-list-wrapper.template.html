@@ -1,4 +1,7 @@
-<tui-data-list *ngIf="items; else loading" [emptyContent]="emptyContent">
+<tui-data-list
+    *ngIf="items; else loading"
+    [emptyContent]="emptyContent"
+>
     <button
         *ngFor="let item of items"
         #elementRef="elementRef"
@@ -9,17 +12,16 @@
         [value]="item"
         [disabled]="disabledItemHandler(item)"
     >
-        <span
-            polymorpheus-outlet
-            class="content"
-            [content]="itemContent"
-            [context]="getContext(item, elementRef)"
-        ></span>
+        <span class="t-content">
+            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                {{ text }}
+            </ng-container>
+        </span>
     </button>
 </tui-data-list>
 <ng-template #loading>
     <tui-loader
         automation-id="tui-data-list-wrapper__loader"
-        class="tui-space_vertical-3"
+        class="t-loader"
     ></tui-loader>
 </ng-template>

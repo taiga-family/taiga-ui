@@ -1,6 +1,5 @@
 import {
     ChangeDetectorRef,
-    ComponentFactoryResolver,
     ComponentRef,
     Directive,
     Inject,
@@ -9,22 +8,30 @@ import {
     OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk';
+import {TuiDropdownPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({
-    selector: '[tuiSidebar]',
+    selector: `[tuiSidebar]`,
 })
-export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnDestroy {
+export class TuiSidebarDirective<T = Record<string, unknown>>
+    extends PolymorpheusTemplate<T>
+    implements OnDestroy
+{
+    private readonly component = new PolymorpheusComponent(
+        TuiSidebarComponent,
+        this.injector,
+    );
+
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
-    @Input('tuiSidebarDirection')
-    direction: TuiHorizontalDirection = 'left';
+    @Input(`tuiSidebarDirection`)
+    direction: TuiHorizontalDirection = `left`;
 
-    @Input('tuiSidebarAutoWidth')
+    @Input(`tuiSidebarAutoWidth`)
     autoWidth = false;
 
     @Input()
@@ -37,33 +44,29 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
     }
 
     constructor(
-        @Inject(TemplateRef) readonly content: TemplateRef<{}>,
+        @Inject(TemplateRef) readonly content: TemplateRef<T>,
         @Inject(Injector) private readonly injector: Injector,
-        @Inject(ComponentFactoryResolver)
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(content, changeDetectorRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.hide();
     }
 
-    private show() {
+    private show(): void {
         if (this.sidebarRef !== null) {
             return;
         }
 
-        const componentFactory =
-            this.componentFactoryResolver.resolveComponentFactory(TuiSidebarComponent);
-
-        this.sidebarRef = this.portalService.add(componentFactory, this.injector);
+        this.sidebarRef = this.portalService.add(this.component);
         this.sidebarRef.changeDetectorRef.detectChanges();
     }
 
-    private hide() {
+    private hide(): void {
         if (this.sidebarRef === null) {
             return;
         }

@@ -1,0 +1,22 @@
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <p i18n>
+        If a field is optional, but unfinished field should be marked as invalid, use
+        <code>tuiUnfinishedValidator</code>
+        directive
+    </p>
+    <tui-input-date-range
+        tuiUnfinishedValidator="Finish filling the field"
+        formControlName="testValue"
+        [min]="min"
+        [max]="max"
+    >
+        Choose dates
+        <input
+            tuiTextfield
+            placeholder="From - To"
+        />
+    </tui-input-date-range>
+</form>

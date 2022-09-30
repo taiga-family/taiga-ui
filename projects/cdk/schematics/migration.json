@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "updateToV3": {
+            "description": "Updates Taiga UI packages to v3",
+            "version": "3.0.0",
+            "factory": "./ng-update/index#updateToV3"
+        }
+    }
+}

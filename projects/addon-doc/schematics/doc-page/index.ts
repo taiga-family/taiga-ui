@@ -106,8 +106,8 @@ function prittierFiles(options: Schema): Rule {
 }
 
 export function docPage(options: Schema): Rule {
-    return () => {
-        const workSpace = getWorkspace('local');
+    return async () => {
+        const workSpace = await getWorkspace('local');
 
         if (workSpace === null) {
             return noop();

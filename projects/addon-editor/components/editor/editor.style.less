@@ -4,55 +4,24 @@
     .createStackingContext();
     display: block;
     font: var(--tui-font-text-m);
-}
-
-.t-outline {
-    .fullsize();
     border-radius: var(--tui-radius-m);
-    pointer-events: none;
-}
-
-.t-toolbar-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-}
-
-.t-invisible {
-    height: 0;
-    visibility: hidden;
 }
 
 .t-wrapper {
-    position: relative;
-    height: 100%;
+    display: flex;
     max-height: inherit;
     min-height: 10rem;
     cursor: text;
     overflow: hidden;
-}
-
-.t-scrollbar {
-    display: flex;
-    max-height: inherit;
-    // TODO: research if it can be used in rem units
-    /* stylelint-disable-next-line */
-    border-top: 74px solid transparent;
-    border-bottom: 1px solid transparent;
-    box-sizing: border-box;
-}
-
-.t-link {
-    padding: 0.75rem 1rem;
+    flex-direction: column;
+    border-radius: inherit;
 }
 
 .t-placeholder {
     .textfield-placeholder();
     position: absolute;
     left: 1rem;
-    bottom: -2.25rem;
+    margin-top: 1rem;
     width: 95%;
     font-size: 0.9375rem;
 
@@ -64,7 +33,7 @@
 .t-example-text {
     position: absolute;
     left: 1rem;
-    bottom: -3.125rem;
+    margin-top: 1.6rem;
     color: var(--tui-base-06);
     letter-spacing: normal;
     text-transform: none;
@@ -78,9 +47,10 @@
     }
 }
 
-.t-editor {
-    display: block;
-    width: 100%;
-    min-height: 5.375rem;
-    border: none;
+.t-scrollbar {
+    display: flex;
+    max-height: inherit;
+    border-top: 1.625rem solid transparent;
+    border-bottom: 1px solid transparent;
+    box-sizing: border-box;
 }

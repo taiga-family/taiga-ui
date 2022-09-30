@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <tui-input-range
+        id="input-range-with-key-steps"
+        [min]="min"
+        [max]="max"
+        [steps]="totalSteps"
+        [keySteps]="keySteps"
+        [segments]="segments"
+        [formControl]="control"
+    >
+        Not linear growing sliders
+    </tui-input-range>
+
+    <div class="ticks-labels">
+        <span *ngFor="let label of ticksLabels">{{ label }}</span>
+    </div>
+</div>
+
+<p class="tui-space_top-12 tui-space_bottom-0">
+    Control value:
+    <output for="input-range-with-key-steps">
+        <code>{{ control.value | json }}</code>
+    </output>
+</p>

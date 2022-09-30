@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -14,35 +13,40 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
+    TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    TuiHandler,
     TuiMonth,
+    TuiYear,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
+    TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
+import {Observable} from 'rxjs';
 
-// @dynamic
 @Component({
-    selector: 'tui-input-month',
-    templateUrl: './input-month.template.html',
-    styleUrls: ['./input-month.style.less'],
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputMonthComponent),
-        },
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    selector: `tui-input-month`,
+    templateUrl: `./input-month.template.html`,
+    styleUrls: [`./input-month.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputMonthComponent),
+        tuiAsControl(TuiInputMonthComponent),
+        TUI_MONTH_FORMATTER_PROVIDER,
+        TuiMonthPipe,
+    ],
 })
 export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
@@ -64,6 +68,7 @@ export class TuiInputMonthComponent
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
     open = false;
+    activeYear: TuiYear = this.value || TuiDay.currentLocal();
 
     constructor(
         @Optional()
@@ -73,6 +78,8 @@ export class TuiInputMonthComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_MONTH_FORMATTER)
+        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -86,45 +93,47 @@ export class TuiInputMonthComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+        return tuiSizeBigger(this.textfieldSize.size)
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
-    onValueChange(value: string) {
-        if (value === '') {
-            this.updateValue(null);
-            this.onOpenChange(true);
+    onValueChange(value: string): void {
+        if (value) {
+            return;
         }
+
+        this.updateValue(null);
+        this.onOpenChange(true);
     }
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         this.updateValue(month);
         this.close();
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
+        if (open && this.value) {
+            this.activeYear = this.value;
+        }
+
         this.open = open;
     }
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 
-    setDisabledState() {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }
 
-    private close() {
+    private close(): void {
         this.open = false;
     }
 }

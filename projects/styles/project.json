@@ -1,0 +1,22 @@
+{
+    "root": "projects/styles",
+    "sourceRoot": "projects/styles",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "build": {
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["dist/styles"],
+            "options": {
+                "command": "npx cpy . '!project.json'  '../../dist/styles' --cwd=projects/styles"
+            }
+        },
+        "publish": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/styles --dry-run {args.dry-run}"
+            }
+        }
+    }
+}

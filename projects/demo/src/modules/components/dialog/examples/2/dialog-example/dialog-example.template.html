@@ -2,7 +2,15 @@
     Your balance:
     <tui-money [value]="data"></tui-money>
 </p>
-<tui-input tuiTextfieldSize="m" [(ngModel)]="name">Type a name</tui-input>
+
+<tui-input
+    tuiTextfieldSize="m"
+    tuiAutoFocus
+    [(ngModel)]="name"
+>
+    Type a name
+</tui-input>
+
 <tui-select
     tuiTextfieldSize="m"
     class="tui-space_top-3 tui-space_bottom-5"
@@ -10,8 +18,20 @@
     [(ngModel)]="value"
 >
     Select a sum
-    <tui-data-list-wrapper *tuiDataList [items]="items"></tui-data-list-wrapper>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+    ></tui-data-list-wrapper>
 </tui-select>
+
+<input
+    type="range"
+    tuiSlider
+    class="tui-space_bottom-5"
+    [ngModel]="5"
+    [max]="10"
+/>
+
 <button
     tuiButton
     type="button"
@@ -23,7 +43,12 @@
 </button>
 
 <p>
-    <button tuiButton type="button" size="m" (click)="showDialog(template)">
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="showDialog(template)"
+    >
         Show one more dialog
     </button>
 </p>

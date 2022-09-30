@@ -1,42 +1,55 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'example-action',
-    templateUrl: './action.template.html',
+    selector: `example-action`,
+    templateUrl: `./action.template.html`,
     changeDetection,
+    encapsulation,
 })
 export class ExampleTuiActionComponent {
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+
+    readonly example1: TuiDocExample = {
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
     };
 
-    readonly exampleImportModule = exampleImportModule;
+    readonly example3: TuiDocExample = {
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+    };
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly example4: TuiDocExample = {
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+    };
+
+    readonly example5: TuiDocExample = {
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
+        TypeScript: import(`./examples/5/index.ts?raw`),
+    };
 
     readonly iconVariants = [
-        'tuiIconPrintLarge',
-        'tuiIconLoginLarge',
-        'tuiIconCalendarLarge',
+        `tuiIconPrintLarge`,
+        `tuiIconLoginLarge`,
+        `tuiIconCalendarLarge`,
     ];
 
     icon = this.iconVariants[0];
+
+    color = `var(--tui-link)`;
+    background = `var(--tui-base-02)`;
 }

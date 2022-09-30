@@ -1,12 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 import {take} from 'rxjs/operators';
 
 import {TuiNightThemeService} from '../night-theme.service';
 
-describe('TuiNightThemeService', () => {
-    const mock: any = document.createElement('div');
+describe(`TuiNightThemeService`, () => {
+    const mock: HTMLDivElement = document.createElement(`div`);
     let service!: TuiNightThemeService;
 
     configureTestSuite(() => {
@@ -15,7 +15,7 @@ describe('TuiNightThemeService', () => {
                 {
                     provide: WINDOW,
                     useValue: {
-                        matchMedia(): any {
+                        matchMedia(): unknown {
                             return mock;
                         },
                     },
@@ -26,10 +26,10 @@ describe('TuiNightThemeService', () => {
 
     beforeEach(() => {
         service = TestBed.inject(TuiNightThemeService);
-        mock.matches = true;
+        mock.matches = true as any;
     });
 
-    it('returns actual value', () => {
+    it(`returns actual value`, () => {
         let value = false;
 
         service.pipe(take(1)).subscribe(v => {
@@ -39,15 +39,15 @@ describe('TuiNightThemeService', () => {
         expect(value).toBe(true);
     });
 
-    it('fires upon refresh', () => {
+    it(`fires upon refresh`, () => {
         let value = false;
 
         service.pipe(take(2)).subscribe(v => {
             value = v;
         });
 
-        mock.matches = false;
-        mock.dispatchEvent(new Event('change'));
+        mock.matches = false as any;
+        mock.dispatchEvent(new Event(`change`));
 
         expect(value).toBe(false);
     });

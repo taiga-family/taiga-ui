@@ -3,30 +3,30 @@ import * as allIcons from '@taiga-ui/icons';
 
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
 
-export type DemoTuiIconsList = readonly (string | DemoTuiIcon)[];
+export type DemoTuiIconsList = ReadonlyArray<string | DemoTuiIcon>;
 
 export type DemoTuiIconsTabs = Record<string, Record<string, DemoTuiIconsList>>;
 
 export const COMMERCE: DemoTuiIcon[] = [
-    'tuiIconElectron',
-    'tuiIconMaestro',
-    'tuiIconMastercard',
-    'tuiIconMir',
-    'tuiIconVisa',
+    `tuiIconElectron`,
+    `tuiIconMaestro`,
+    `tuiIconMastercard`,
+    `tuiIconMir`,
+    `tuiIconVisa`,
 ];
 
 const {LARGE, NORMAL} = ensureIcons();
 
 export const ICONS: DemoTuiIconsTabs = {
     'Description and examples': {
-        'Normal interface icons (16px)': NORMAL,
-        'Large interface icons (24px)': LARGE,
-        'Payment systems': COMMERCE,
+        [`Normal interface icons / 16px`]: NORMAL,
+        [`Large interface icons / 24px`]: LARGE,
+        [`Payment systems`]: COMMERCE,
     },
 };
 
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
-    new InjectionToken<DemoTuiIconsTabs>('Icons', {
+    new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
         factory: () => ICONS,
     });
 
@@ -35,26 +35,26 @@ export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
  * Algorithm: O(n), where `n` - count of icons
  */
 function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
-    const LARGE: DemoTuiIcon[] = [];
-    const NORMAL: DemoTuiIcon[] = [];
+    const large: DemoTuiIcon[] = [];
+    const normal: DemoTuiIcon[] = [];
     const commerceSet = new Set(COMMERCE);
 
     for (const icon in allIcons) {
         const shouldSkip =
             commerceSet.has(icon as DemoTuiIcon) ||
-            icon === 'tuiCoreIcons' ||
-            icon === 'tuiKitIcons';
+            icon === `tuiCoreIcons` ||
+            icon === `tuiKitIcons`;
 
         if (shouldSkip) {
             continue;
         }
 
-        if (icon.includes('Large')) {
-            LARGE.push(icon as DemoTuiIcon);
+        if (icon.includes(`Large`)) {
+            large.push(icon as DemoTuiIcon);
         } else {
-            NORMAL.push(icon as DemoTuiIcon);
+            normal.push(icon as DemoTuiIcon);
         }
     }
 
-    return {LARGE, NORMAL};
+    return {LARGE: large, NORMAL: normal};
 }

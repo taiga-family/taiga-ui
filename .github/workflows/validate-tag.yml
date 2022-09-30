@@ -1,0 +1,34 @@
+name: Validate release tag
+
+on:
+  push:
+    branches: [main, 'release/*']
+
+jobs:
+  validate-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+        id: nodejs-workspace
+
+      - name: Get last tag
+        id: info
+        run: echo "::set-output name=tag::$(git describe HEAD --abbrev=0)"
+
+      - name: Show an error if the tag does not match
+        if:
+          ${{ steps.nodejs-workspace.outputs.root-package-version != steps.info.outputs.tag &&
+          !contains(steps.nodejs-workspace.outputs.root-package-version, '-rc') }}
+        run: |
+          echo "Version from package.json: ${{ steps.nodejs-workspace.outputs.root-package-version }}"
+          echo "Last git tag: ${{ steps.info.outputs.tag }}"
+          exit 1
+
+concurrency:
+  group: validate-tag-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

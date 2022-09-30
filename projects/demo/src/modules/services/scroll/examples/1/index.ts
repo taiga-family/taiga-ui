@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-scroll-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-scroll-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -19,7 +19,7 @@ export class TuiScrollExample1 {
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
     ) {}
 
-    onClick({nativeElement}: ElementRef<HTMLElement>) {
+    onClick({nativeElement}: ElementRef<HTMLElement>): void {
         this.scrollService
             .scroll$(nativeElement, this.scrollTop, this.scrollLeft, this.duration)
             .subscribe();

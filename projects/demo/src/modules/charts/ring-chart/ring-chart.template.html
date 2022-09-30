@@ -29,7 +29,6 @@
             <tui-ring-chart
                 class="chart"
                 [value]="value"
-                [content]="content"
                 [size]="size"
                 [(activeItemIndex)]="activeItemIndex"
             ></tui-ring-chart>
@@ -44,17 +43,6 @@
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active fragment
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="content"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent<TuiRingChartContext>"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="content"
-            >
-                Content in the middle of ring. It gets index of active segment
-                and total sum in context
             </ng-template>
             <ng-template
                 i18n
@@ -90,7 +78,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -99,7 +87,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

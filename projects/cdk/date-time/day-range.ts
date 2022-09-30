@@ -7,17 +7,10 @@ import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
 
 /**
- * Temporary type guard to satisfy ts-overloading of normalizeParse method
- * @deprecated TODO rm in v3.0
- */
-export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
-    ['DMY', 'YMD', 'MDY'].includes(dateMode);
-
-/**
  * An immutable range of two {@link TuiDay} objects
  */
 export class TuiDayRange extends TuiMonthRange {
-    constructor(readonly from: TuiDay, readonly to: TuiDay) {
+    constructor(override readonly from: TuiDay, override readonly to: TuiDay) {
         super(from, to);
 
         tuiAssert.assert(from.daySameOrBefore(to));
@@ -30,22 +23,11 @@ export class TuiDayRange extends TuiMonthRange {
      * @param day2
      * @return new range with sorted days
      */
-    static sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
+    static override sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
         return day1.daySameOrBefore(day2)
             ? new TuiDayRange(day1, day2)
             : new TuiDayRange(day2, day1);
     }
-
-    /**
-     * @deprecated
-     * TODO rm deprecated version in v3.0
-     */
-    static normalizeParse(
-        rangeString: string,
-        dateFiller: string,
-        dateRangeFiller: string,
-    ): TuiDayRange;
-    static normalizeParse(rangeString: string, dateMode?: TuiDateMode): TuiDayRange;
 
     /**
      * Parse and correct a day range in string format
@@ -56,13 +38,11 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateMode: string | TuiDateMode = 'DMY',
+        dateMode: TuiDateMode = `DMY`,
     ): TuiDayRange {
-        const dateFormat = isDateMode(dateMode) ? dateMode : 'DMY';
-
         const leftDay = TuiDay.normalizeParse(
             rangeString.slice(0, DATE_FILLER_LENGTH),
-            dateFormat,
+            dateMode,
         );
 
         if (rangeString.length < DATE_RANGE_FILLER_LENGTH) {
@@ -73,24 +53,13 @@ export class TuiDayRange extends TuiMonthRange {
             leftDay,
             TuiDay.normalizeParse(
                 rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
-                dateFormat,
+                dateMode,
             ),
         );
     }
 
     get isSingleDay(): boolean {
         return this.from.daySame(this.to);
-    }
-
-    /**
-     * Human readable format.
-     * @deprecated use {@link getFormattedDayRange} instead
-     */
-    get formattedDayRange(): string {
-        const from = this.from.getFormattedDay('DMY', '.');
-        const to = this.to.getFormattedDay('DMY', '.');
-
-        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
     /**
@@ -124,7 +93,10 @@ export class TuiDayRange extends TuiMonthRange {
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    toString(dateFormat: TuiDateMode = 'DMY', dateSeparator: string = '.'): string {
+    override toString(
+        dateFormat: TuiDateMode = `DMY`,
+        dateSeparator: string = `.`,
+    ): string {
         const from = this.from.getFormattedDay(dateFormat, dateSeparator);
         const to = this.to.getFormattedDay(dateFormat, dateSeparator);
 

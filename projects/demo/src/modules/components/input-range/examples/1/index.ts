@@ -1,17 +1,27 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-input-range-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-range-example-1`,
+    templateUrl: `./index.html`,
+    styles: [
+        `
+            tui-input-range {
+                max-width: 30rem;
+            }
+        `,
+    ],
     changeDetection,
     encapsulation,
 })
 export class TuiInputRangeExample1 {
-    testForm = new FormGroup({
-        testValue: new FormControl(),
-    });
+    readonly min = 0;
+    readonly max = 20;
+    readonly sliderStep = 1;
+    readonly steps = (this.max - this.min) / this.sliderStep;
+    readonly quantum = 0.00001;
+
+    readonly control = new FormControl([3.14159, 15]);
 }

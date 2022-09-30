@@ -56,7 +56,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         return this.index$.pipe(distinctUntilChanged());
     }
 
-    attach(viewport: CdkVirtualScrollViewport) {
+    attach(viewport: CdkVirtualScrollViewport): void {
         const cycle = this.isIos ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
 
         this.viewport = viewport;
@@ -64,30 +64,30 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         this.updateRenderedRange(this.viewport);
     }
 
-    detach() {
+    detach(): void {
         this.index$.complete();
         this.viewport = null;
     }
 
-    onContentScrolled() {
+    onContentScrolled(): void {
         if (this.viewport) {
             this.updateRenderedRange(this.viewport);
         }
     }
 
     /** These do not matter for this case */
-    onDataLengthChanged() {}
-    onContentRendered() {}
-    onRenderedOffsetChanged() {}
+    onDataLengthChanged(): void {}
+    onContentRendered(): void {}
+    onRenderedOffsetChanged(): void {}
 
-    scrollToIndex(index: number, behavior: ScrollBehavior) {
+    scrollToIndex(index: number, behavior: ScrollBehavior): void {
         if (!this.viewport) {
             return;
         }
 
         const scrollTop = this.getOffsetForIndex(index);
 
-        if (behavior !== 'smooth') {
+        if (behavior !== `smooth`) {
             this.viewport.scrollToOffset(scrollTop, behavior);
 
             return;
@@ -138,7 +138,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         return fullCyclesHeight + remainderHeight;
     }
 
-    private updateRenderedRange(viewport: CdkVirtualScrollViewport) {
+    private updateRenderedRange(viewport: CdkVirtualScrollViewport): void {
         const offset = viewport.measureScrollOffset();
         const {start, end} = viewport.getRenderedRange();
         const viewportSize = viewport.getViewportSize();

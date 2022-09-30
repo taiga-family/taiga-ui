@@ -1,17 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {
-    TuiFocusableModule,
-    TuiFocusedModule,
-    TuiHoveredModule,
-    TuiInputModeModule,
-    TuiMapperPipeModule,
-    TuiPressedModule,
-} from '@taiga-ui/cdk';
-import {TuiTooltipModule, TuiWrapperModule} from '@taiga-ui/core';
+import {FormsModule} from '@angular/forms';
+import {TuiFocusableModule} from '@taiga-ui/cdk';
+import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
-import {TextMaskModule} from 'angular2-text-mask';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputSliderComponent} from './input-slider.component';
 
@@ -19,17 +12,10 @@ import {TuiInputSliderComponent} from './input-slider.component';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
-        TextMaskModule,
+        PolymorpheusModule,
         TuiFocusableModule,
-        TuiFocusedModule,
-        TuiHoveredModule,
-        TuiPressedModule,
-        TuiMapperPipeModule,
-        TuiInputModeModule,
-        TuiTooltipModule,
+        TuiInputNumberModule,
         TuiSliderModule,
-        TuiWrapperModule,
     ],
     declarations: [TuiInputSliderComponent],
     exports: [TuiInputSliderComponent],

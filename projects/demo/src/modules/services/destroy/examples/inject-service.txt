@@ -1,6 +1,0 @@
-import {TuiDestroyService} from '@taiga-ui/cdk';
-...
-constructor(
-    @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService
-) {}
-...

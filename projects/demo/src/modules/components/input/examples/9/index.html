@@ -1,6 +1,5 @@
 <tui-input
-    icon="tuiIconSearchLarge"
-    iconAlign="left"
+    tuiTextfieldIconLeft="tuiIconSearchLarge"
     tuiHintContent="لا يدعمه Safari أدناه 12.1"
     tuiHintDirection="bottom-right"
     class="input"
@@ -8,5 +7,8 @@
     [(ngModel)]="value"
 >
     بحث
-    <input tuiTextfield placeholder="اكتب الاستعلام الخاص بك" />
+    <input
+        tuiTextfield
+        placeholder="اكتب الاستعلام الخاص بك"
+    />
 </tui-input>

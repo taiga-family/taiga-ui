@@ -5,9 +5,19 @@
     [childrenHandler]="handler"
 ></tui-tree>
 
-<ng-template #content let-value let-node="node">
-    <div class="wrapper" [style.opacity]="1 / node.level">
-        <tui-svg *ngIf="value.icon" [src]="value.icon"></tui-svg>
-        {{value.text}}
+<ng-template
+    #content
+    let-value
+    let-node="node"
+>
+    <div
+        class="wrapper"
+        [style.opacity]="1 / node.level"
+    >
+        <tui-svg
+            *ngIf="value.icon"
+            [src]="value.icon"
+        ></tui-svg>
+        {{ value.text }}
     </div>
 </ng-template>

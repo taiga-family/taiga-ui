@@ -1,4 +1,8 @@
-<tui-doc-page header="InputTime" package="KIT" type="components">
+<tui-doc-page
+    header="InputTime"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>InputTime</code>
@@ -74,11 +78,11 @@
                     [readOnly]="readOnly"
                     [strict]="strict"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                 >
                     Input time
                 </tui-input-time>
@@ -161,7 +165,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -176,7 +180,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -185,7 +189,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -193,13 +197,12 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_INPUT_TIME_OPTIONS</code>
-                    injection token to override the default options for the
-                    component.
+                    injection token to override the default options for the component.
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

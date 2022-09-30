@@ -1,10 +1,14 @@
-import {DATE_FILLER_LENGTH, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {DATE_FILLER_LENGTH, tuiIsString, TuiTimeMode} from '@taiga-ui/cdk';
+import {
+    TuiTextMaskConfig,
+    TuiTextMaskOptions,
+    TuiTextMaskPipeHandler,
+} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 
 import {
-    normalizeDateValue,
     TuiAutoCorrectedDatePipeConfigs,
+    tuiNormalizeDateValue,
 } from './create-auto-corrected-date-pipe';
 import {tuiCreateAutoCorrectedTimePipe} from './create-auto-corrected-time-pipe';
 
@@ -24,15 +28,18 @@ export function tuiCreateAutoCorrectedDateTimePipe(
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
 
-        const formattedDate = normalizeDateValue(date, configs);
+        const formattedDate = tuiNormalizeDateValue(date, configs);
 
         if (!time) {
             return {value: formattedDate};
         }
 
-        const pipedTime = timePipe(time, {} as any);
+        const pipedTime = timePipe(
+            time,
+            {} as unknown as TuiTextMaskOptions & TuiTextMaskConfig,
+        );
 
-        if (!pipedTime || typeof pipedTime === 'string') {
+        if (!pipedTime || tuiIsString(pipedTime)) {
             return false;
         }
 

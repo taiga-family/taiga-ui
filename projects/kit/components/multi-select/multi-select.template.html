@@ -3,22 +3,21 @@
     [canOpen]="interactive"
     [content]="datalist || ''"
     [(open)]="open"
-    (tuiHoveredChange)="onHoveredChange($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-input-tag
         #inputTag
-        tuiHostedDropdownHost
         automation-id="tui-multi-select__input"
-        class="input"
+        class="t-input"
         [nativeId]="nativeId"
-        [icon]="tagIcon"
+        [tuiTextfieldIcon]="tagIcon"
         [disabled]="disabled"
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
         [readOnly]="readOnly"
         [inputHidden]="!editable"
-        [pseudoHovered]="computedHovered"
-        [pseudoFocused]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [placeholder]="placeholder"
+        [pseudoFocus]="computedFocused"
         [pseudoInvalid]="computedInvalid"
         [editable]="false"
         [expandable]="expandable"
@@ -32,24 +31,30 @@
     >
         <ng-content></ng-content>
     </tui-input-tag>
-    <div class="t-wrapper" [class.t-wrapper_disabled]="disabled">
+    <div
+        class="t-wrapper"
+        [class.t-wrapper_disabled]="disabled"
+    >
         <div
             *ngIf="computedGroup"
-            polymorpheus-outlet
             class="t-group"
             [class.t-group_fullsize]="inputTag.labelOutside"
-            [context]="context"
-            [content]="valueContent"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
+                {{ text }}
+            </ng-container>
+        </div>
 
         <div
             *ngIf="arrow"
-            polymorpheus-outlet
             automation-id="tui-multi-select__arrow"
             tuiPreventDefault="mousedown"
             class="t-arrow"
-            [content]="arrow"
             (click.prevent)="onArrowClick()"
-        ></div>
+        >
+            <ng-container *polymorpheusOutlet="arrow as text">
+                {{ text }}
+            </ng-container>
+        </div>
     </div>
 </tui-hosted-dropdown>

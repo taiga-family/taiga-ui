@@ -16,39 +16,39 @@ function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn
 
         return invalidTags.length > 0
             ? {
-                  tags: new TuiValidationError('Some tags are invalid'),
+                  tags: new TuiValidationError(`Some tags are invalid`),
               }
             : null;
     };
 }
 
-const ITEMS = ['The Midnight', 'FM-84', 'Timecop1983', 'GUNSHIP'];
+const ITEMS = [`The Midnight`, `FM-84`, `Timecop1983`, `GUNSHIP`];
 
-function tagValidator(tag: string) {
+function tagValidator(tag: string): boolean {
     return !/\d/.test(tag);
 }
 
 @Component({
-    selector: 'tui-input-tag-example-4',
-    templateUrl: './index.html',
+    selector: `tui-input-tag-example-4`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
 export class TuiInputTagExample4 {
-    search = '';
+    search = ``;
 
     readonly tagValidator = tagValidator;
 
     readonly control = new FormControl([], createControlValidator(tagValidator));
 
     get filtered(): readonly string[] {
-        return this.filter(this.search, this.control.value);
+        return this.filterBy(this.search, this.control.value ?? []);
     }
 
     @tuiPure
-    private filter(search: string, value: readonly string[]): readonly string[] {
+    private filterBy(search: string, value: readonly string[]): readonly string[] {
         return ITEMS.filter(
-            item => TUI_DEFAULT_MATCHER(item, search) && value.indexOf(item) === -1,
+            item => TUI_DEFAULT_MATCHER(item, search) && !value.includes(item),
         );
     }
 }

@@ -1,26 +1,23 @@
-<label
-    class="wrapper"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
->
-    <tui-wrapper
+<label class="t-wrapper">
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [disabled]="computedDisabled"
-        [focused]="computedFocusVisible"
-        [hovered]="computedHovered"
-        [pressed]="computedPressed"
+        [focus]="computedFocusVisible"
+        [hover]="pseudoHover"
+        [active]="pseudoActive"
         [invalid]="computedInvalid"
     >
-        <div class="content-wrapper">
-            <div class="content">
+        <div class="t-content-wrapper">
+            <div class="t-content">
                 <tui-checkbox
-                    class="view"
+                    class="t-view"
                     [disabled]="computedDisabled || readOnly"
                     [nativeId]="nativeId"
                     [pseudoInvalid]="computedInvalid"
-                    [pseudoFocused]="false"
-                    [pseudoHovered]="computedHovered"
-                    [pseudoPressed]="computedPressed"
+                    [pseudoFocus]="false"
+                    [pseudoHover]="pseudoHover"
+                    [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
                     [focusable]="focusable"
                     [ngModel]="value"
@@ -28,10 +25,10 @@
                     (focusedChange)="onFocused($event)"
                     (focusVisibleChange)="onFocusVisible($event)"
                 ></tui-checkbox>
-                <div class="label">
+                <div class="t-label">
                     <ng-content></ng-content>
                 </div>
             </div>
         </div>
-    </tui-wrapper>
+    </div>
 </label>

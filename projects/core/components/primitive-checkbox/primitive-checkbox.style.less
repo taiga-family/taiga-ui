@@ -8,20 +8,20 @@
     font-size: 0;
     flex-shrink: 0;
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         width: @sizeM;
         height: @sizeM;
         border-radius: var(--tui-radius-xs);
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         width: @sizeL;
         height: @sizeL;
         border-radius: var(--tui-radius-s);
     }
 }
 
-.mark {
+.t-mark {
     .transition(transform);
     display: block;
     width: 100%;

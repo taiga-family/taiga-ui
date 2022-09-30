@@ -15,18 +15,31 @@
                 target="_blank"
                 class="app-link"
             >
-                <img src="assets/images/github.svg" alt="" class="app-github" />
+                <img
+                    src="assets/images/github.svg"
+                    alt=""
+                    class="app-github"
+                />
                 GitHub
             </a>
         </ng-container>
+        <tui-language-switcher
+            tuiTextfieldSize="m"
+            ngProjectAs="tuiDocNavigation"
+            class="language-switcher"
+        >
+            Language of components
+        </tui-language-switcher>
         <version-manager
+            tuiTextfieldSize="m"
             ngProjectAs="tuiDocNavigation"
             class="app-version"
-        ></version-manager>
+        >
+            Version
+        </version-manager>
         <tui-sheets-host ngProjectAs="tuiOverContent"></tui-sheets-host>
-        <tui-table-bars-host
-            ngProjectAs="tuiOverNotifications"
-        ></tui-table-bars-host>
+        <custom-host ngProjectAs="tuiOverContent"></custom-host>
+        <tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>
         <tui-theme-android *ngIf="isAndroid"></tui-theme-android>
         <tui-theme-ios *ngIf="isIos"></tui-theme-ios>
     </tui-doc-main>

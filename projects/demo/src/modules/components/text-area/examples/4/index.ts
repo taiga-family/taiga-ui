@@ -15,16 +15,16 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
 }
 
 @Component({
-    selector: 'tui-text-area-example-4',
-    templateUrl: './index.html',
+    selector: `tui-text-area-example-4`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
-    styleUrls: ['./index.less'],
+    styleUrls: [`./index.less`],
     providers: [
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Enter this!',
+                required: `Enter this!`,
                 maxlength: maxLengthMessageFactory,
             },
         },

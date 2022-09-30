@@ -17,13 +17,13 @@
     align-items: center;
     margin-top: 1rem;
 
-    @media @mobile {
+    @media @tui-mobile {
         flex-direction: column;
     }
 }
 
 .disable {
-    .transition('transform, color');
+    .transition(~'transform, color');
     margin-left: 0.25rem;
     will-change: transform;
     color: var(--tui-text-02);
@@ -42,7 +42,7 @@
     margin: 0 0 0 2rem;
     justify-content: center;
 
-    @media @mobile {
+    @media @tui-mobile {
         margin: 2rem 0 0;
     }
 }

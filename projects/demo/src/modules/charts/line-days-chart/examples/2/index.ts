@@ -11,9 +11,9 @@ import {
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-line-days-chart-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-line-days-chart-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
 })
 export class TuiLineDaysChartExample2 {
@@ -45,16 +45,14 @@ export class TuiLineDaysChartExample2 {
     readonly filter: TuiMatcher<[TuiDay, number]> = ([day], {from, to}: TuiDayRange) =>
         day.daySameOrAfter(from) && day.daySameOrBefore(to);
 
-    readonly toNumbers: TuiMapper<
-        ReadonlyArray<[TuiDay, number]>,
-        ReadonlyArray<TuiPoint>
-    > = (days, {from}: TuiDayRange) =>
-        days.map(
-            ([day, value]) =>
-                [TuiDay.lengthBetween(from, day), value] as [number, number],
-        );
+    readonly toNumbers: TuiMapper<ReadonlyArray<[TuiDay, number]>, readonly TuiPoint[]> =
+        (days, {from}: TuiDayRange) =>
+            days.map(
+                ([day, value]) =>
+                    [TuiDay.lengthBetween(from, day), value] as [number, number],
+            );
 
-    onDataChange(data: TuiDayRange) {
+    onDataChange(data: TuiDayRange): void {
         this.days = this.computeArrays(data);
     }
 

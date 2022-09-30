@@ -35,7 +35,14 @@
     ></button>
 </ng-container>
 <ng-template #view>
-    <a tuiLink target="_blank" class="t-link" [href]="href">{{ shortUrl }}</a>
+    <a
+        tuiLink
+        target="_blank"
+        class="t-link"
+        [href]="href"
+    >
+        {{ shortUrl }}
+    </a>
     <button
         tuiIconButton
         type="button"

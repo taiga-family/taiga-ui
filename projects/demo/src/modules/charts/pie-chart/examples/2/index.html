@@ -1,6 +1,15 @@
-<tui-pie-chart [value]="value" [hintContent]="content"></tui-pie-chart>
+<tui-pie-chart
+    [value]="value"
+    [tuiHintContent]="content"
+></tui-pie-chart>
 
-<ng-template #content let-index>
-    <tui-money [singleColor]="true" [value]="value[index]"></tui-money>
-    <div>{{labels[index]}}</div>
+<ng-template
+    #content
+    let-index
+>
+    <tui-money
+        [singleColor]="true"
+        [value]="value[index]"
+    ></tui-money>
+    <div>{{ labels[index] }}</div>
 </ng-template>

@@ -1,5 +1,11 @@
 import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    HostListener,
+    Inject,
+} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
@@ -13,16 +19,16 @@ import {Observable} from 'rxjs';
 import {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Component({
-    selector: 'tui-pdf-viewer',
-    templateUrl: './pdf-viewer.template.html',
-    styleUrls: ['./pdf-viewer.style.less'],
+    selector: `tui-pdf-viewer`,
+    templateUrl: `./pdf-viewer.template.html`,
+    styleUrls: [`./pdf-viewer.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiPdfViewerComponent<I, O> {
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
-    readonly animation = {value: '', ...this.options} as const;
+    @HostBinding(`@tuiSlideInTop`)
+    @HostBinding(`@tuiFadeIn`)
+    readonly animation = {value: ``, ...this.options} as const;
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
@@ -30,4 +36,9 @@ export class TuiPdfViewerComponent<I, O> {
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
     ) {}
+
+    @HostListener(`document:keydown.esc`)
+    onKeyDownEsc(): void {
+        this.context.$implicit.complete();
+    }
 }

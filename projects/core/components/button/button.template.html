@@ -1,33 +1,40 @@
-<tui-wrapper
-    class="wrapper"
-    [appearance]="appearance"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+<ng-container *ngIf="appearance$ | async"></ng-container>
+<div
+    tuiWrapper
+    class="t-wrapper"
+    [appearance]="computedAppearance"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [disabled]="computedDisabled"
-    [focused]="computedFocusVisible"
+    [focus]="computedFocusVisible"
 >
-    <span class="content">
-        <span *ngIf="icon" polymorpheus-outlet class="left" [content]="icon">
-            <ng-template let-icon>
-                <tui-svg class="icon" [src]="icon"></tui-svg>
-            </ng-template>
+    <span class="t-content">
+        <span
+            *ngIf="icon"
+            class="t-left"
+        >
+            <tui-svg
+                *polymorpheusOutlet="icon as text"
+                class="t-icon"
+                [src]="text"
+            ></tui-svg>
         </span>
         <ng-content></ng-content>
         <span
             *ngIf="iconRight"
-            polymorpheus-outlet
-            class="right"
-            [content]="iconRight"
+            class="t-right"
         >
-            <ng-template let-icon>
-                <tui-svg class="icon" [src]="icon"></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconRight as text"
+                class="t-icon"
+                [src]="text"
+            ></tui-svg>
         </span>
     </span>
     <tui-loader
         *ngIf="showLoader"
-        class="loader"
+        class="t-loader"
         [size]="loaderSize"
         [inheritColor]="true"
     ></tui-loader>
-</tui-wrapper>
+</div>

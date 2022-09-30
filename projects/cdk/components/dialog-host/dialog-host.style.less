@@ -6,8 +6,8 @@
     height: 0;
 }
 
-.overlay,
-.dialog {
+.t-overlay,
+.t-dialog {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,16 +17,17 @@
     align-items: flex-start;
     outline: none;
     overflow: auto;
+    //noinspection CssInvalidPropertyValue
     overflow: overlay;
 }
 
-.dialog {
+.t-dialog {
     bottom: auto;
     height: 100%;
 }
 
-.overlay {
-    height: 100vh;
+.t-overlay {
+    height: 100%;
     pointer-events: none;
     touch-action: none;
     opacity: 0;
@@ -42,6 +43,6 @@
     }
 }
 
-.dialog:last-of-type {
+.t-dialog:last-of-type {
     z-index: 1;
 }

@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
@@ -7,25 +7,26 @@
 >
     <tui-primitive-textfield
         tuiValueAccessor
-        tuiTextfieldType="tel"
-        class="textfield"
-        [tuiTextfieldInputMode]="inputMode"
-        [pseudoHovered]="pseudoHovered"
-        [pseudoFocused]="computedFocused"
+        class="t-textfield"
+        [pseudoHover]="pseudoHover"
+        [pseudoFocus]="computedFocused"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [disabled]="computedDisabled"
         [focusable]="focusable"
         [textMask]="textMaskOptions"
-        [value]="nativeValue"
+        [value]="computedValue"
         [tuiTextfieldCleaner]="canClean"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
         (drop)="onDrop($event)"
         (keydown.backspace)="onBackspace($event)"
         (paste.prevent)="onPaste($event)"
     >
         <ng-content></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

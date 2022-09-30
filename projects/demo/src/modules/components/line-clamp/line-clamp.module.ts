@@ -1,20 +1,22 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiLineClampModule} from '@taiga-ui/kit';
 
 import {TuiLineClampExample1} from './examples/1';
 import {TuiLineClampExample2} from './examples/2';
+import {TuiLineClampExample3} from './examples/3';
 import {ExampleTuiLineClampComponent} from './line-clamp.component';
 
 @NgModule({
     imports: [
         CommonModule,
+        TuiNotificationModule,
         TuiLineClampModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiLineClampComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineClampComponent)),
         TuiButtonModule,
         TuiIslandModule,
     ],
@@ -22,6 +24,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         ExampleTuiLineClampComponent,
         TuiLineClampExample1,
         TuiLineClampExample2,
+        TuiLineClampExample3,
     ],
     exports: [ExampleTuiLineClampComponent],
 })

@@ -3,15 +3,18 @@ import {changeDetection} from '@demo/emulate/change-detection';
 
 import {HomeComponent} from '../home/home.component';
 
-export const TUI_HOME_COMPONENT = new InjectionToken<Type<any>>('Home page', {
-    factory: () => HomeComponent,
-});
+export const TUI_HOME_COMPONENT = new InjectionToken<Type<unknown>>(
+    `[TUI_HOME_COMPONENT]: Home page`,
+    {
+        factory: () => HomeComponent,
+    },
+);
 
 @Component({
-    selector: 'getting-started',
-    templateUrl: './getting-started.template.html',
+    selector: `getting-started`,
+    templateUrl: `./getting-started.template.html`,
     changeDetection,
 })
 export class GettingStartedComponent {
-    constructor(@Inject(TUI_HOME_COMPONENT) readonly component: Type<any>) {}
+    constructor(@Inject(TUI_HOME_COMPONENT) readonly component: Type<unknown>) {}
 }

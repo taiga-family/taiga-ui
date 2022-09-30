@@ -1,17 +1,24 @@
-<tui-doc-page i18n-header header="Form">
+<tui-doc-page
+    i18n-header
+    header="Form"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Use global
             <strong>.tui-form</strong>
             class and its modifications:
         </div>
-        <ul i18n class="tui-list tui-list_small">
+        <ul
+            i18n
+            class="tui-list tui-list_small"
+        >
             <li class="tui-list__item">
                 <code>.tui-form__header</code>
                 : form header. Margins: 32px top and 20px bottom.
-                <ul
-                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
-                >
+                <ul class="tui-list tui-list_linear tui-list_nested tui-list_extra-small">
                     <li class="tui-list__item">
                         <code>.tui-form__header_margin-top_none</code>
                         : nullifies
@@ -32,9 +39,7 @@
             <li class="tui-list__item">
                 <code>.tui-form__row</code>
                 : form row. Margin between rows is 20px.
-                <ul
-                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
-                >
+                <ul class="tui-list tui-list_linear tui-list_nested tui-list_extra-small">
                     <li class="tui-list__item">
                         <code>.tui-form__row_multi-fields</code>
                         : row with several inputs with 20px margin between them
@@ -70,9 +75,7 @@
             <li class="tui-list__item">
                 <code>.tui-form__buttons</code>
                 : a block with buttons and margin top 32px
-                <ul
-                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
-                >
+                <ul class="tui-list tui-list_linear tui-list_nested tui-list_extra-small">
                     <li class="tui-list__item">
                         <code>.tui-form__buttons_align_end</code>
                         : align buttons right
@@ -89,7 +92,11 @@
             </li>
         </ul>
 
-        <tui-doc-example id="form" heading="Basic" [content]="example1">
+        <tui-doc-example
+            id="form"
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-form-example-1></tui-form-example-1>
         </tui-doc-example>
     </ng-template>

@@ -1,12 +1,18 @@
-<form class="container" [formGroup]="testForm">
+<form
+    class="container"
+    [formGroup]="testForm"
+>
     <tui-input
         *tuiLet="users$ | async as users"
         formControlName="user"
         [tuiTextfieldCustomContent]="content"
     >
         User
-        <input tuiTextfield placeholder="Type your name or surname" />
-        <ng-container *ngIf="users.length">
+        <input
+            tuiTextfield
+            placeholder="Type your name or surname"
+        />
+        <ng-container *ngIf="users?.length">
             <tui-data-list *tuiDataList>
                 <button
                     *ngFor="let user of users"
@@ -14,7 +20,7 @@
                     [value]="user.toString()"
                     (click)="onSelected(user)"
                 >
-                    {{user}}
+                    {{ user }}
                     <tui-avatar
                         size="xs"
                         [avatarUrl]="user.avatarUrl || null"
@@ -33,16 +39,22 @@
             [text]="lastUser.toString()"
         ></tui-avatar>
     </ng-template>
-    <tui-input formControlName="account" class="tui-space_vertical-5">
+    <tui-input
+        formControlName="account"
+        class="tui-space_vertical-5"
+    >
         Account
         <tui-data-list-wrapper
             *tuiDataList
             [items]="accounts"
             [itemContent]="accountContent"
         ></tui-data-list-wrapper>
-        <ng-template #accountContent let-account>
+        <ng-template
+            #accountContent
+            let-account
+        >
             <div>
-                {{account.name}}
+                {{ account.name }}
                 <tui-money [value]="account.amount"></tui-money>
             </div>
         </ng-template>

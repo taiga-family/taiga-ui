@@ -6,9 +6,9 @@ import {of, timer} from 'rxjs';
 import {map, startWith, takeWhile} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-progress-bar-example-4',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-progress-bar-example-4`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })

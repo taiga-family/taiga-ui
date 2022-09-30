@@ -1,6 +1,6 @@
 <tui-primitive-checkbox
-    class="tui-space_right-3"
+    class="t-checkbox"
     [size]="size"
     [value]="selected$ | async"
 ></tui-primitive-checkbox>
-<ng-container *ngTemplateOutlet="context.$implicit"></ng-container>
+<ng-container [ngTemplateOutlet]="context.$implicit"></ng-container>

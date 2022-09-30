@@ -9,14 +9,15 @@
     [height]="height"
     [value]="month"
     [smoothingFactor]="smoothingFactor"
-    [hintContent]="hintContent ? hint : ''"
+    [tuiHintContent]="hintContent ? hint : ''"
     [yStringify]="yStringify"
     [xStringify]="xStringify ? daysStringify : null"
 ></tui-line-chart>
-<ng-template #hint let-point>
-    <div
-        polymorpheus-outlet
-        [content]="hintContent"
-        [context]="getHintContext(point[0], value)"
-    ></div>
+<ng-template
+    #hint
+    let-point
+>
+    <ng-container *polymorpheusOutlet="hintContent as text; context: getHintContext(point[0], value)">
+        {{ text }}
+    </ng-container>
 </ng-template>

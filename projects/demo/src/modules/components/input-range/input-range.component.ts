@@ -1,22 +1,17 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-range',
-    templateUrl: './input-range.template.html',
+    selector: `example-tui-input-range`,
+    templateUrl: `./input-range.template.html`,
     changeDetection,
     providers: [
         {
@@ -26,16 +21,37 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
     };
 
-    control = new FormControl();
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+    };
+
+    readonly example3: TuiDocExample = {
+        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+    };
+
+    readonly example4: TuiDocExample = {
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+        TypeScript: import(`./examples/4/index.ts?raw`),
+    };
+
+    readonly example5: TuiDocExample = {
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+        LESS: import(`./examples/5/index.less?raw`),
+    };
+
+    control = new FormControl([0, 10]);
 
     minVariants: readonly number[] = [0, 5, 7.77, -10];
 
@@ -45,44 +61,49 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    segmentsVariants: readonly number[] = [0, 1, 5, 13];
+    segments = 1;
 
-    segments = this.segmentsVariants[0];
-
-    stepsVariants: readonly number[] = [0, 4, 10];
-
-    steps = this.stepsVariants[0];
+    steps = 0;
 
     quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
     quantum = this.quantumVariants[0];
 
-    sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    override sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
-    size = this.sizeVariants[1];
+    override size = this.sizeVariants[1];
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
-        ['year', 'years', 'years'],
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+    readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
+        {one: `thing`, few: `things`, many: `things`, other: `things`},
         {
-            one: 'year',
-            other: 'years',
+            one: `year`,
+            other: `years`,
         },
     ];
 
-    pluralize = null;
+    pluralize: Record<string, string> | null = null;
 
-    segmentsPluralize = null;
+    keyStepsVariants: readonly TuiKeySteps[] = [
+        [
+            [0, 0],
+            [50, 1_000],
+            [100, 10_000],
+        ],
+    ];
 
-    minLabelVariants: readonly string[] = ['', 'Nothing'];
+    keySteps: TuiKeySteps | null = null;
 
-    minLabel = this.minLabelVariants[0];
+    readonly valueContentVariants = [
+        ``,
+        `TOP SECRET`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.max ? `MAX` : `${val}`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.min ? `MIN` : `${val}`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === 5 ? `FIVE` : `${val}`,
+    ];
 
-    maxLabelVariants: readonly string[] = ['', 'Everything'];
-
-    maxLabel = this.maxLabelVariants[0];
-
-    keyStepsVariants: ReadonlyArray<TuiKeySteps> = [[[50, 1000]]];
-
-    keySteps = null;
+    leftValueContent = this.valueContentVariants[0];
+    rightValueContent = this.valueContentVariants[0];
 }

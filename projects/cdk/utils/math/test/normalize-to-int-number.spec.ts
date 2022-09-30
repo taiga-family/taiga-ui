@@ -1,30 +1,30 @@
-import {normalizeToIntNumber} from '../normalize-to-int-number';
+import {tuiNormalizeToIntNumber} from '../normalize-to-int-number';
 
-describe('normalizeToIntNumber', () => {
+describe(`normalizeToIntNumber`, () => {
     const min = -10;
     const max = 10;
 
-    it('NaN', () => {
-        expect(normalizeToIntNumber(NaN, min, max)).toBe(min);
+    it(`NaN`, () => {
+        expect(tuiNormalizeToIntNumber(NaN, min, max)).toBe(min);
     });
 
-    it('0.1', () => {
-        expect(normalizeToIntNumber(0.1, min, max)).toBe(0);
+    it(`0.1`, () => {
+        expect(tuiNormalizeToIntNumber(0.1, min, max)).toBe(0);
     });
 
-    it('5.7', () => {
-        expect(normalizeToIntNumber(5.7, min, max)).toBe(6);
+    it(`5.7`, () => {
+        expect(tuiNormalizeToIntNumber(5.7, min, max)).toBe(6);
     });
 
-    it('0.1', () => {
-        expect(normalizeToIntNumber(0.1, min, max)).toBe(0);
+    it(`0.1`, () => {
+        expect(tuiNormalizeToIntNumber(0.1, min, max)).toBe(0);
     });
 
-    it('Infinity', () => {
-        expect(normalizeToIntNumber(Infinity, min, max)).toBe(max);
+    it(`Infinity`, () => {
+        expect(tuiNormalizeToIntNumber(Infinity, min, max)).toBe(max);
     });
 
-    it('-Infinity', () => {
-        expect(normalizeToIntNumber(-Infinity, min, max)).toBe(min);
+    it(`-Infinity`, () => {
+        expect(tuiNormalizeToIntNumber(-Infinity, min, max)).toBe(min);
     });
 });

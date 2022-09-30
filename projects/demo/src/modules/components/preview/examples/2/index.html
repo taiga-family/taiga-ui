@@ -8,8 +8,14 @@
     Show simple preview
 </button>
 
-<ng-template #preview let-preview>
-    <tui-preview [rotatable]="false" [zoomable]="false">
+<ng-template
+    #preview
+    let-preview
+>
+    <tui-preview
+        [rotatable]="false"
+        [zoomable]="false"
+    >
         <iframe
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
             frameborder="0"

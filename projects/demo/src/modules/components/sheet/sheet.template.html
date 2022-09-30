@@ -1,10 +1,19 @@
-<tui-doc-page header="Sheet" package="ADDON-MOBILE" type="components">
-    <ng-template i18n pageTab>
+<tui-doc-page
+    header="Sheet"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template
+        i18n
+        pageTab
+    >
         A mobile draggable sheet popup
 
-        <tui-notification *ngIf="!isMobile" class="tui-space_top-4">
-            This component only works on mobile devices. Enable emulation in
-            DevTools
+        <tui-notification
+            *ngIf="!isMobile"
+            class="tui-space_top-4"
+        >
+            This component only works on mobile devices. Enable emulation in DevTools
         </tui-notification>
 
         <tui-doc-example
@@ -26,8 +35,7 @@
             <tui-notification class="tui-space_top-4">
                 Note
                 <code>SheetHeading</code>
-                component that styles the heading and adds close button if sheet
-                is closeable.
+                component that styles the heading and adds close button if sheet is closeable.
             </tui-notification>
         </tui-doc-example>
 
@@ -49,7 +57,10 @@
             <tui-sheet-example-4></tui-sheet-example-4>
             <tui-notification class="tui-space_top-4">
                 Using
-                <a tuiLink routerLink="directives/elastic-sticky">
+                <a
+                    tuiLink
+                    routerLink="directives/elastic-sticky"
+                >
                     <code>ElasticSticky</code>
                 </a>
                 directive.
@@ -79,7 +90,12 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <button tuiButton (click)="toggle()">Toggle</button>
+            <button
+                tuiButton
+                (click)="toggle()"
+            >
+                Toggle
+            </button>
             <ng-template #template>
                 <div class="top">
                     <tui-avatar
@@ -90,15 +106,22 @@
                     <h2>Karl Gambolputty</h2>
                 </div>
             </ng-template>
-            <ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
+            <ng-template
+                [tuiSheetOptions]="options"
+                [(tuiSheet)]="open"
+            >
                 Karl Gambolputty de von
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
-                von Hautkopft of Ulm was the last-surviving relative of Johann
-                Gambolputty de von
+                von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
                 von Hautkopft of Ulm.
                 <div class="tui-space_top-4">
-                    <button tuiButton (click)="toggle()">Close</button>
+                    <button
+                        tuiButton
+                        (click)="toggle()"
+                    >
+                        Close
+                    </button>
                 </div>
             </ng-template>
         </tui-doc-demo>
@@ -152,8 +175,7 @@
             >
                 Initial stop index to open on. Indices exceeding
                 <code>stops</code>
-                are treated as stop on image then stop on top of the sheet's
-                content.
+                are treated as stop on image then stop on top of the sheet's content.
             </ng-template>
             <ng-template
                 i18n
@@ -177,7 +199,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -190,7 +212,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 

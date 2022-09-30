@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    nullableSame,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -16,17 +15,17 @@ import {
     tuiDefaultProp,
     TuiMapper,
     TuiMonth,
+    tuiNullableSame,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
-// @dynamic
 @Component({
-    selector: 'tui-calendar',
-    templateUrl: './calendar.template.html',
-    styleUrls: ['./calendar.style.less'],
+    selector: `tui-calendar`,
+    templateUrl: `./calendar.template.html`,
+    styleUrls: [`./calendar.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
@@ -99,28 +98,28 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
             : this.max;
     }
 
-    onPaginationYearClick(year: TuiYear) {
+    onPaginationYearClick(year: TuiYear): void {
         this.year = year;
     }
 
-    onPickerYearClick({year}: TuiYear) {
+    onPickerYearClick({year}: TuiYear): void {
         this.year = null;
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
-    onPaginationValueChange(month: TuiMonth) {
+    onPaginationValueChange(month: TuiMonth): void {
         this.updateViewedMonth(month);
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    onHoveredItemChange(day: TuiDay | null) {
+    onHoveredItemChange(day: TuiDay | null): void {
         this.updateHoveredDay(day);
     }
 
-    private updateViewedMonth(month: TuiMonth) {
+    private updateViewedMonth(month: TuiMonth): void {
         if (this.month.monthSame(month)) {
             return;
         }
@@ -129,8 +128,8 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         this.monthChange.emit(month);
     }
 
-    private updateHoveredDay(day: TuiDay | null) {
-        if (nullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
+    private updateHoveredDay(day: TuiDay | null): void {
+        if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
         }
 

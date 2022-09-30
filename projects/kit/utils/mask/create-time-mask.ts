@@ -8,7 +8,7 @@ function tuiCreateTimePartMask(
     prefix?: string,
 ): Array<string | RegExp> {
     const {length} = String(maxPartValue);
-    const regExp = Array(length).fill(TUI_DIGIT_REGEXP);
+    const regExp = new Array(length).fill(TUI_DIGIT_REGEXP);
 
     if (prefix) {
         regExp.unshift(prefix);
@@ -28,8 +28,8 @@ export function tuiCreateTimeMask(
 
     return [
         ...tuiCreateTimePartMask(HH),
-        ...tuiCreateTimePartMask(MM, ':'),
-        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(SS, ':') : []),
-        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(MS, '.') : []),
+        ...tuiCreateTimePartMask(MM, `:`),
+        ...(mode.includes(`HH:MM:SS`) ? tuiCreateTimePartMask(SS, `:`) : []),
+        ...(mode === `HH:MM:SS.MSS` ? tuiCreateTimePartMask(MS, `.`) : []),
     ];
 }

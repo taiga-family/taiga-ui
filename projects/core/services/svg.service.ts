@@ -2,15 +2,14 @@ import {Inject, Injectable, Optional, Sanitizer, SecurityContext} from '@angular
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import {processIcon} from '@taiga-ui/core/utils/dom';
+import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';
 import {BehaviorSubject} from 'rxjs';
 
 /**
  * Service for reusing SVGs without inlining each instance
  */
-// @dynamic
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiSvgService {
     private originals: Record<string, string> = {};
@@ -27,7 +26,7 @@ export class TuiSvgService {
         this.define(icons);
     }
 
-    define(icons: Record<string, string>) {
+    define(icons: Record<string, string>): void {
         const {value} = this.items$;
 
         Object.keys(icons).forEach(key => {
@@ -41,7 +40,7 @@ export class TuiSvgService {
         return this.originals[name] || null;
     }
 
-    private defineIcon(name: string, src: string, map: Map<string, SafeHtml>) {
+    private defineIcon(name: string, src: string, map: Map<string, SafeHtml>): void {
         if (map.has(name)) {
             return;
         }
@@ -49,7 +48,7 @@ export class TuiSvgService {
         const parsed = this.parseSrc(name, src);
 
         if (!parsed) {
-            tuiAssert.assert(false, 'Unable to parse given SVG src');
+            tuiAssert.assert(false, `Unable to parse given SVG src`);
 
             return;
         }
@@ -62,14 +61,14 @@ export class TuiSvgService {
     }
 
     private parseSrc(name: string, src: string): SafeHtml {
-        return this.sanitize(processIcon(src, name));
+        return this.sanitize(tuiProcessIcon(src, name));
     }
 
     private sanitize(src: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
+                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || ``,
         );
     }
 }

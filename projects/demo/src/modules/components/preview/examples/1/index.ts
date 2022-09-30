@@ -1,66 +1,66 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {PreviewDialogService} from '@taiga-ui/addon-preview';
-import {clamp, TuiSwipe} from '@taiga-ui/cdk';
-import {TuiDialogContext, TuiNotificationsService} from '@taiga-ui/core';
+import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
+import {tuiClamp, TuiSwipe} from '@taiga-ui/cdk';
+import {TuiAlertService, TuiDialogContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-preview-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-preview-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiPreviewExample1 {
-    @ViewChild('preview')
+    @ViewChild(`preview`)
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
-    @ViewChild('contentSample')
-    readonly contentSample?: TemplateRef<{}>;
+    @ViewChild(`contentSample`)
+    readonly contentSample?: TemplateRef<Record<string, unknown>>;
 
     index = 0;
     length = 2;
 
     constructor(
-        @Inject(PreviewDialogService)
-        private readonly previewService: PreviewDialogService,
-        @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        @Inject(TuiPreviewDialogService)
+        private readonly previewService: TuiPreviewDialogService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
     get title(): string {
-        return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
+        return this.index === 0 ? `Transaction cert.jpg` : `My face.jpg`;
     }
 
     get previewContent(): PolymorpheusContent {
         return this.index === 0 && this.contentSample
             ? this.contentSample
-            : 'http://marsibarsi.me/images/1x1small.jpg';
+            : `http://marsibarsi.me/images/1x1small.jpg`;
     }
 
-    show() {
-        this.previewService.open(this.preview || '').subscribe({
-            complete: () => console.info('complete'),
+    show(): void {
+        this.previewService.open(this.preview || ``).subscribe({
+            complete: () => console.info(`complete`),
         });
     }
 
-    download() {
-        this.notificationsService.show('Downloading...').subscribe();
+    download(): void {
+        this.alertService.open(`Downloading...`).subscribe();
     }
 
-    delete() {
-        this.notificationsService.show('Deleting...').subscribe();
+    delete(): void {
+        this.alertService.open(`Deleting...`).subscribe();
     }
 
-    onSwipe(swipe: TuiSwipe) {
-        if (swipe.direction === 'left') {
-            this.index = clamp(this.index + 1, 0, this.length - 1);
+    onSwipe(swipe: TuiSwipe): void {
+        if (swipe.direction === `left`) {
+            this.index = tuiClamp(this.index + 1, 0, this.length - 1);
         }
 
-        if (swipe.direction === 'right') {
-            this.index = clamp(this.index - 1, 0, this.length - 1);
+        if (swipe.direction === `right`) {
+            this.index = tuiClamp(this.index - 1, 0, this.length - 1);
         }
     }
 }

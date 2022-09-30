@@ -4,7 +4,6 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDescribedByModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -16,7 +15,6 @@ import {TuiTableRowColumnManagerComponent} from './table-row-column-manager.comp
         CommonModule,
         TuiHostedDropdownModule,
         TuiHintModule,
-        TuiDescribedByModule,
         TuiButtonModule,
         TuiDataListModule,
         TuiLetModule,

@@ -1,73 +1,65 @@
-<tui-wrapper
+<div
+    tuiWrapper
     [appearance]="appearance"
-    [disabled]="disabled"
-    [focused]="computedFocusVisible"
-    [hovered]="computedHovered"
-    [pressed]="computedPressed"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
+    [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
-    <div class="toggle">
+    <div class="t-toggle">
         <tui-loader
             *ngIf="showLoader"
-            class="loader"
+            class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="checked"
         ></tui-loader>
         <span
-            polymorpheus-outlet
-            class="icon-wrapper"
-            [content]="iconOn"
-            [context]="{$implicit: size}"
+            *ngIf="showIcons && !showLoader"
+            class="t-icon-wrapper"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    *ngIf="showIcons && !showLoader"
-                    automation-id="tui-toggle__check-icon"
-                    class="icon"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconOn as src; context: {$implicit: size}"
+                automation-id="tui-toggle__check-icon"
+                class="t-icon"
+                [src]="src"
+            ></tui-svg>
         </span>
-        <div class="circle"></div>
+        <div class="t-circle"></div>
         <tui-loader
             *ngIf="showLoader"
-            class="loader"
+            class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="!checked"
         ></tui-loader>
         <span
-            polymorpheus-outlet
-            class="icon-wrapper"
-            [content]="iconOff"
-            [context]="{$implicit: size}"
+            *ngIf="showIcons && !showLoader"
+            class="t-icon-wrapper"
         >
-            <ng-template let-icon>
-                <tui-svg
-                    *ngIf="showIcons && !showLoader"
-                    automation-id="tui-toggle__cancel-icon"
-                    class="icon icon_off"
-                    [src]="icon"
-                ></tui-svg>
-            </ng-template>
+            <tui-svg
+                *polymorpheusOutlet="iconOff as src; context: {$implicit: size}"
+                automation-id="tui-toggle__cancel-icon"
+                class="t-icon t-icon_off"
+                [src]="src"
+            ></tui-svg>
         </span>
     </div>
-</tui-wrapper>
-<input
-    #focusableElement
-    type="checkbox"
-    role="switch"
-    automation-id="tui-toggle__checkbox"
-    class="checkbox"
-    [attr.aria-checked]="value"
-    [id]="id"
-    [disabled]="disabled"
-    [tuiChecked]="checked"
-    [tuiFocusable]="focusable"
-    (tuiCheckedChange)="onChecked($event)"
-    (tuiFocusedChange)="onFocused($event)"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
-    (tuiFocusVisibleChange)="onFocusVisible($event)"
-/>
+    <input
+        #focusableElement
+        type="checkbox"
+        role="switch"
+        automation-id="tui-toggle__checkbox"
+        class="t-checkbox"
+        [attr.aria-checked]="value"
+        [id]="id"
+        [disabled]="disabled"
+        [tuiChecked]="checked"
+        [tuiFocusable]="focusable"
+        (tuiCheckedChange)="onChecked($event)"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+    />
+</div>

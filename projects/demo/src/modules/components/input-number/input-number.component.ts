@@ -1,29 +1,16 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiTransactionAutofillName} from '@taiga-ui/cdk';
-import {TuiDecimalT} from '@taiga-ui/core';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAutofillFieldName} from '@taiga-ui/cdk';
+import {TuiDecimal} from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-number',
-    templateUrl: './input-number.template.html',
+    selector: `example-tui-input-number`,
+    templateUrl: `./input-number.template.html`,
     changeDetection,
     providers: [
         {
@@ -33,9 +20,36 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+
+    readonly example1: TuiDocExample = {
+        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
+    };
+
+    readonly example2: TuiDocExample = {
+        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import(`./examples/2/index.ts?raw`),
+    };
+
+    readonly example3: TuiDocExample = {
+        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import(`./examples/3/index.ts?raw`),
+    };
+
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+    };
+
+    readonly example5: TuiDocExample = {
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+    };
 
     readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
 
@@ -45,42 +59,28 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    readonly example1: FrontEndExample = {
-        HTML: example1Html,
-        TypeScript: example1Ts,
-    };
+    readonly alignVariants: readonly string[] = [`left`, `right`];
 
-    readonly example2: FrontEndExample = {
-        HTML: example2Html,
-        TypeScript: example2Ts,
-    };
+    align = this.alignVariants[0];
 
-    readonly example3: FrontEndExample = {
-        HTML: example3Html,
-        TypeScript: example3Ts,
-    };
+    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
+        `off`,
+        `transaction-amount`,
+    ];
 
-    readonly example4: FrontEndExample = {
-        HTML: example4Html,
-        LESS: example4Less,
-        TypeScript: example4Ts,
-    };
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    readonly autocompleteVariants = ['off', 'transaction-amount'];
-
-    autocomplete: TuiTransactionAutofillName | null = null;
-
-    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
+    readonly decimalVariants: readonly TuiDecimal[] = [`not-zero`, `always`, `never`];
 
     decimal = this.decimalVariants[0];
 
-    cleaner = false;
+    override cleaner = false;
 
     readonly precisionVariants: readonly number[] = [2, 3, 4];
 
     precision = this.precisionVariants[0];
 
-    readonly postfixVariants: readonly string[] = ['', '$', 'GBP'];
+    readonly postfixVariants: readonly string[] = [``, `$`, `GBP`, `Very long text`];
 
     prefix = this.postfixVariants[0];
 

@@ -1,33 +1,32 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
-import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TuiEventWith, TuiOverscrollModeT} from '@taiga-ui/cdk/types';
-import {canScroll, getScrollParent} from '@taiga-ui/cdk/utils/dom';
+import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
+import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 /**
  * Directive to isolate scrolling, i.e. prevent body scroll behind modal dialog
- * @dynamic
  */
 @Directive({
-    selector: '[tuiOverscroll]',
+    selector: `[tuiOverscroll]`,
     providers: [TuiDestroyService],
 })
 export class TuiOverscrollDirective {
-    @Input('tuiOverscroll')
-    mode: TuiOverscrollModeT = 'scroll';
+    @Input(`tuiOverscroll`)
+    mode: TuiOverscrollMode | '' = `scroll`;
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        typedFromEvent(nativeElement, 'wheel', {passive: false})
+        tuiTypedFromEvent(nativeElement, `wheel`, {passive: false})
             .pipe(
                 filter(() => this.enabled),
-                takeUntil(destroy$),
                 tuiZonefree(ngZone),
+                takeUntil(destroy$),
             )
             .subscribe(event => {
                 this.processEvent(
@@ -37,7 +36,7 @@ export class TuiOverscrollDirective {
                 );
             });
 
-        typedFromEvent(nativeElement, 'touchstart', {passive: true})
+        tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true})
             .pipe(
                 switchMap(({touches}) => {
                     let {clientX, clientY} = touches[0];
@@ -45,7 +44,7 @@ export class TuiOverscrollDirective {
                     let deltaY = 0;
                     let vertical: boolean;
 
-                    return typedFromEvent(nativeElement, 'touchmove', {
+                    return tuiTypedFromEvent(nativeElement, `touchmove`, {
                         passive: false,
                     }).pipe(
                         filter(() => this.enabled),
@@ -70,38 +69,41 @@ export class TuiOverscrollDirective {
                         }),
                     );
                 }),
-                takeUntil(destroy$),
                 tuiZonefree(ngZone),
+                takeUntil(destroy$),
             )
             .subscribe();
     }
 
     get enabled(): boolean {
-        return this.mode !== 'none';
+        return this.mode !== `none`;
     }
 
-    @HostBinding('style.overscrollBehavior')
+    @HostBinding(`style.overscrollBehavior`)
     get overscrollBehavior(): 'contain' | null {
-        return this.enabled ? 'contain' : null;
+        return this.enabled ? `contain` : null;
     }
 
     private processEvent(
         event: TuiEventWith<Event, HTMLElement>,
         vertical: boolean,
         negative: boolean,
-    ) {
+    ): void {
         const {target, currentTarget, cancelable} = event;
 
-        // TODO: iframe warning
-        if (!cancelable || !(target instanceof Element)) {
+        if (
+            !cancelable ||
+            !tuiIsElement(target) ||
+            (target as HTMLInputElement)?.type === `range`
+        ) {
             return;
         }
 
         // This is all what's needed in Chrome/Firefox thanks to CSS overscroll-behavior
         if (
-            this.mode === 'all' &&
-            ((vertical && !currentTarget.contains(getScrollParent(target))) ||
-                (!vertical && !currentTarget.contains(getScrollParent(target, false))))
+            this.mode === `all` &&
+            ((vertical && !currentTarget.contains(tuiGetScrollParent(target))) ||
+                (!vertical && !currentTarget.contains(tuiGetScrollParent(target, false))))
         ) {
             event.preventDefault();
 
@@ -111,8 +113,8 @@ export class TuiOverscrollDirective {
         // This is Safari/IE/Edge fallback
         if (
             vertical &&
-            ((negative && !canScroll(target, currentTarget, true, false)) ||
-                (!negative && !canScroll(target, currentTarget, true, true)))
+            ((negative && !tuiCanScroll(target, currentTarget, true, false)) ||
+                (!negative && !tuiCanScroll(target, currentTarget, true, true)))
         ) {
             event.preventDefault();
 
@@ -121,8 +123,8 @@ export class TuiOverscrollDirective {
 
         if (
             !vertical &&
-            ((negative && !canScroll(target, currentTarget, false, false)) ||
-                (!negative && !canScroll(target, currentTarget, false, true)))
+            ((negative && !tuiCanScroll(target, currentTarget, false, false)) ||
+                (!negative && !tuiCanScroll(target, currentTarget, false, true)))
         ) {
             event.preventDefault();
         }

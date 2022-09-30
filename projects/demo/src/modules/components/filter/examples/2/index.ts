@@ -6,7 +6,7 @@ import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 
 interface Orerations {
     title: string;
-    operations: ReadonlyArray<Oreration>;
+    operations: readonly Oreration[];
 }
 
 interface Oreration {
@@ -14,7 +14,7 @@ interface Oreration {
 }
 
 const COMPLETED = {
-    title: 'Done',
+    title: `Done`,
     operations: [
         {
             amount: 100,
@@ -26,9 +26,9 @@ const COMPLETED = {
 };
 
 @Component({
-    selector: 'tui-filter-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-filter-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -36,15 +36,15 @@ export class TuiFilterExample2 {
     readonly form = new FormGroup({
         filters: new FormControl([
             {
-                title: 'Drafts',
+                title: `Drafts`,
             },
         ]),
     });
 
-    items: ReadonlyArray<Orerations> = [
+    items: readonly Orerations[] = [
         COMPLETED,
         {
-            title: 'Drafts',
+            title: `Drafts`,
             operations: [
                 {
                     amount: 100,
@@ -61,11 +61,11 @@ export class TuiFilterExample2 {
             ],
         },
         {
-            title: 'For sign',
+            title: `For sign`,
             operations: [],
         },
         {
-            title: 'Queue',
+            title: `Queue`,
             operations: [
                 {
                     amount: 100,

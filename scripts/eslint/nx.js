@@ -5,7 +5,7 @@ module.exports = {
     plugins: ['@nrwl/nx'],
     rules: {
         '@nrwl/nx/enforce-module-boundaries': [
-            'warn', // TODO: increase error level as soon as warnings are fixed
+            'error',
             {
                 enforceBuildableLibDependency: true,
                 allowCircularSelfDependency: true,
@@ -18,7 +18,7 @@ module.exports = {
             files: ['*.spec.ts'],
             rules: {
                 '@nrwl/nx/enforce-module-boundaries': [
-                    'warn',
+                    'error',
                     {
                         enforceBuildableLibDependency: true,
                         allowCircularSelfDependency: true,

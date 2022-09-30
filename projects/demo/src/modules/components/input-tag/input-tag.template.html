@@ -1,6 +1,13 @@
-<tui-doc-page header="InputTag" package="KIT" type="components">
+<tui-doc-page
+    header="InputTag"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>InputTag</code>
             allows to input several tags with autocomplete and list in dropdown.
         </div>
@@ -49,6 +56,30 @@
         >
             <tui-input-tag-example-5></tui-input-tag-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="separator"
+            i18n-heading
+            heading="Custom separator"
+            [content]="example6"
+        >
+            <tui-input-tag-example-6></tui-input-tag-example-6>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="no-spaces-inside-tags"
+            i18n-heading
+            heading="No spaces inside tags"
+            [content]="example7"
+            [description]="forbidSpacesDescription"
+        >
+            <ng-template #forbidSpacesDescription>
+                Use power of RegExp to forbid spaces inside tags via property
+                <code>[separator]</code>
+                .
+            </ng-template>
+            <tui-input-tag-example-7></tui-input-tag-example-7>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -63,25 +94,24 @@
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldMaxLength]="maxLength"
                     [tuiTextfieldSize]="size"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
                     [expandable]="expandable"
-                    [icon]="icon"
-                    [iconAlign]="iconAlign"
+                    [uniqueTags]="uniqueTags"
+                    [separator]="separator"
                     [readOnly]="readOnly"
-                    [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
                     [inputHidden]="inputHidden"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
-                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
                     [pseudoInvalid]="pseudoInvalid"
                     [(search)]="search"
                 >
@@ -107,18 +137,9 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="allowSpaces"
-                documentationPropertyType="boolean"
-                documentationPropertyMode="input"
-                [(documentationPropertyValue)]="allowSpaces"
-            >
-                Allow spaces inside tag
             </ng-template>
             <ng-template
                 i18n
@@ -129,6 +150,14 @@
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
                 Handler for deactivation some tags
+            </ng-template>
+            <ng-template
+                documentationPropertyName="uniqueTags"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="uniqueTags"
+            >
+                Ability to enter unique or non-unique tags
             </ng-template>
             <ng-template
                 i18n
@@ -150,27 +179,13 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="icon"
+                documentationPropertyName="separator"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+                documentationPropertyType="string | RegExp"
+                [documentationPropertyValues]="separatorVariants"
+                [(documentationPropertyValue)]="separator"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
-                <a tuiLink routerLink="/services/svg-service">
-                    <code>SvgService</code>
-                </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
+                String or RegExp to separate tags
             </ng-template>
             <ng-template
                 i18n
@@ -191,6 +206,22 @@
             >
                 A function that cheks that tag is valid
             </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
+                    <code>SvgService</code>
+                </a>
+            </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
     </ng-template>
@@ -206,7 +237,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -215,7 +246,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

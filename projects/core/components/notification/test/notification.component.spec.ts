@@ -5,15 +5,14 @@ import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
 } from '@taiga-ui/core/tokens';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';
 import {STATUS_ICON, TuiNotificationComponent} from '../notification.component';
 import {TuiNotificationModule} from '../notification.module';
 
-describe('Notification', () => {
+describe(`Notification`, () => {
     @Component({
         template: `
             <tui-notification
@@ -25,7 +24,10 @@ describe('Notification', () => {
                 Short simple informational message
             </tui-notification>
             <ng-template #noClose>
-                <tui-notification [hasIcon]="hasIcon" [status]="status">
+                <tui-notification
+                    [hasIcon]="hasIcon"
+                    [status]="status"
+                >
                     Short simple informational message
                 </tui-notification>
             </ng-template>
@@ -33,25 +35,25 @@ describe('Notification', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationComponent, {static: false})
-        component: TuiNotificationComponent;
+        component!: TuiNotificationComponent;
 
         hasCloseButton = true;
         hasIcon = true;
         status: TuiNotification = TuiNotification.Info;
 
-        onClose() {}
+        onClose(): void {}
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement {
-        return pageObject.getByAutomationId('tui-notification__icon')!;
+        return pageObject.getByAutomationId(`tui-notification__icon`)!;
     }
 
     function getClose(): DebugElement {
-        return pageObject.getByAutomationId('tui-notification__close')!;
+        return pageObject.getByAutomationId(`tui-notification__close`)!;
     }
 
     configureTestSuite(() => {
@@ -64,17 +66,17 @@ describe('Notification', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    describe('icon', () => {
-        it('present by default', () => {
+    describe(`icon`, () => {
+        it(`present by default`, () => {
             expect(getIcon()).not.toBeNull();
         });
 
-        it('chosen correctly depending on the status', () => {
+        it(`chosen correctly depending on the status`, () => {
             expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
 
             testComponent.status = TuiNotification.Success;
@@ -90,7 +92,7 @@ describe('Notification', () => {
             expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
         });
 
-        it('when hasIcon = false is absent', () => {
+        it(`when hasIcon = false is absent`, () => {
             testComponent.hasIcon = false;
             fixture.detectChanges();
 
@@ -98,12 +100,12 @@ describe('Notification', () => {
         });
     });
 
-    describe('closing cross', () => {
-        it('present when subscribing to close', () => {
+    describe(`closing cross`, () => {
+        it(`present when subscribing to close`, () => {
             expect(getClose()).not.toBeNull();
         });
 
-        it('without subscription to close is missing', () => {
+        it(`without subscription to close is missing`, () => {
             testComponent.hasCloseButton = false;
             fixture.detectChanges();
 
@@ -112,7 +114,7 @@ describe('Notification', () => {
     });
 });
 
-describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
+describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
     @Component({
         template: `
             <tui-notification>Short simple informational message</tui-notification>
@@ -120,7 +122,7 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationComponent, {static: false})
-        component: TuiNotificationComponent;
+        component!: TuiNotificationComponent;
     }
 
     const status = TuiNotification.Error;
@@ -128,10 +130,10 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement {
-        return pageObject.getByAutomationId('tui-notification__icon')!;
+        return pageObject.getByAutomationId(`tui-notification__icon`)!;
     }
 
     configureTestSuite(() => {
@@ -154,17 +156,17 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    describe('icon', () => {
-        it('chosen correctly depending on the status', () => {
+    describe(`icon`, () => {
+        it(`chosen correctly depending on the status`, () => {
             expect(testComponent.component.icon).toBe(STATUS_ICON[status]);
         });
 
-        it('when hasIcon = false is absent', () => {
+        it(`when hasIcon = false is absent`, () => {
             expect(getIcon()).toBeNull();
         });
     });

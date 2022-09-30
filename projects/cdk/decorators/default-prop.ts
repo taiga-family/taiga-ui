@@ -5,13 +5,11 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
  * Decorator for checking input values for undefined. You can also pass
  * optional assertion to check input against.
  *
- * See {@link createPropDecorator} for more details.
- *
  * CAUTION: This decorator overwrites other getters and setters.
  */
 export function tuiDefaultProp<T extends object, K extends keyof T>(
     assertion?: TuiBooleanHandler<T[K]>,
-    ...args: any[]
+    ...args: unknown[]
 ): PropertyDecorator {
     return (target, key) => {
         const {name} = target.constructor;

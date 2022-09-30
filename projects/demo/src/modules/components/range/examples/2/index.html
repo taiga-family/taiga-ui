@@ -1,0 +1,37 @@
+<tui-island class="island">
+    <h3 class="tui-island__title">S-size</h3>
+
+    <tui-range
+        id="s-size-range"
+        size="s"
+        class="range"
+        [max]="100"
+        [(ngModel)]="smallRangeValue"
+    ></tui-range>
+
+    <p class="tui-island__paragraph">
+        Control value:
+        <output for="s-size-range">
+            <code>{{ smallRangeValue | json }}</code>
+        </output>
+    </p>
+</tui-island>
+
+<tui-island class="island">
+    <h3 class="tui-island__title">M-size</h3>
+
+    <tui-range
+        id="m-size-range"
+        size="m"
+        class="range"
+        [formControl]="bigRangeControl"
+        [max]="100"
+    ></tui-range>
+
+    <p class="tui-island__paragraph">
+        Control value:
+        <output for="m-size-range">
+            <code>{{ bigRangeControl.value | json }}</code>
+        </output>
+    </p>
+</tui-island>

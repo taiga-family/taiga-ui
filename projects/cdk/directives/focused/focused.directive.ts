@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
-import {tuiZoneOptimized, typedFromEvent} from '@taiga-ui/cdk/observables';
-import {isNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {merge, Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
  * other focus related directives that require bubbling
  */
 @Directive({
-    selector: '[tuiFocusedChange]',
+    selector: `[tuiFocusedChange]`,
 })
 export class TuiFocusedDirective {
     @Output()
@@ -22,10 +22,10 @@ export class TuiFocusedDirective {
         @Inject(NgZone) ngZone: NgZone,
     ) {
         this.tuiFocusedChange = merge(
-            typedFromEvent(nativeElement, 'focusin'),
-            typedFromEvent(nativeElement, 'focusout'),
+            tuiTypedFromEvent(nativeElement, `focusin`),
+            tuiTypedFromEvent(nativeElement, `focusout`),
         ).pipe(
-            map(() => isNativeFocused(nativeElement)),
+            map(() => tuiIsNativeFocused(nativeElement)),
             startWith(false),
             distinctUntilChanged(),
             skip(1),

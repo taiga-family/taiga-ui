@@ -8,7 +8,7 @@ import {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
  * @param handler called if both elements are not null
  * @return true if either both are null or they pass identity handler
  */
-export function nullableSame<T>(
+export function tuiNullableSame<T>(
     a: T | null,
     b: T | null,
     handler: TuiIdentityMatcher<T>,

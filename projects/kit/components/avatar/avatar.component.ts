@@ -1,21 +1,29 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
+import {tuiSizeBigger} from '@taiga-ui/core';
+import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
+
+import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 
 @Component({
-    selector: 'tui-avatar',
+    selector: `tui-avatar`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './avatar.template.html',
-    styleUrls: ['./avatar.style.less'],
+    templateUrl: `./avatar.template.html`,
+    styleUrls: [`./avatar.style.less`],
 })
 export class TuiAvatarComponent {
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    size = this.options.size;
 
-    @Input('avatarUrl')
+    @Input(`avatarUrl`)
     @tuiRequiredSetter()
     set avatarUrlSetter(avatarUrl: string | null) {
         this.isUrlValid = !!avatarUrl;
@@ -24,44 +32,46 @@ export class TuiAvatarComponent {
 
     @Input()
     @tuiDefaultProp()
-    text = '';
+    text = ``;
 
     @Input()
     @tuiDefaultProp()
-    autoColor = false;
+    autoColor: boolean = this.options.autoColor;
 
     @Input()
-    @HostBinding('class._rounded')
+    @HostBinding(`class._rounded`)
     @tuiDefaultProp()
-    rounded = false;
+    rounded: boolean = this.options.rounded;
 
     avatarUrl: string | null = null;
 
     isUrlValid = false;
 
-    @HostBinding('style.background')
+    constructor(@Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions) {}
+
+    @HostBinding(`style.background`)
     get bgColor(): string {
-        return this.autoColor ? stringHashToHsl(this.text) : '';
+        return this.autoColor ? tuiStringHashToHsl(this.text) : ``;
     }
 
-    @HostBinding('class._has-avatar')
+    @HostBinding(`class._has-avatar`)
     get hasAvatar(): boolean {
         return this.avatarUrl !== null && this.isUrlValid;
     }
 
     get computedText(): string {
-        if (this.hasAvatar || this.text === '') {
-            return '';
+        if (this.hasAvatar || this.text === ``) {
+            return ``;
         }
 
-        const words = this.text.split(' ');
+        const words = this.text.split(` `);
 
-        return words.length > 1 && sizeBigger(this.size)
-            ? words[0].substr(0, 1) + words[1].substr(0, 1)
-            : words[0].substr(0, 1);
+        return words.length > 1 && tuiSizeBigger(this.size)
+            ? words[0].slice(0, 1) + words[1].slice(0, 1)
+            : words[0].slice(0, 1);
     }
 
-    onError() {
+    onError(): void {
         this.isUrlValid = false;
     }
 }

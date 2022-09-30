@@ -1,10 +1,22 @@
-<tui-doc-page header="MobileCalendar" package="ADDON-MOBILE" type="components">
+<tui-doc-page
+    header="MobileCalendar"
+    package="ADDON-MOBILE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             A calendar for mobile devices. It is used in
-            <a tuiLink [routerLink]="['/components/input-date']">InputDate</a>
+            <a
+                tuiLink
+                [routerLink]="['/components/input-date']"
+            >
+                InputDate
+            </a>
             and
-            <a tuiLink [routerLink]="['/components/input-date-range']">
+            <a
+                tuiLink
+                [routerLink]="['/components/input-date-range']"
+            >
                 InputDateRange
             </a>
             if
@@ -15,12 +27,10 @@
         </p>
         <p i18n>
             You can use
-            <code>TUI_CALENDAR_DATA_STREAM</code>
+            <code>TUI_CALENDAR_DATE_STREAM</code>
             token to set value from outside (see samples)
         </p>
-        <strong i18n>
-            Component should be used on mobile devices as fullscreen dialog
-        </strong>
+        <strong i18n>Component should be used on mobile devices as fullscreen dialog</strong>
 
         <tui-doc-example
             id="dropdown"
@@ -29,6 +39,15 @@
             [content]="example1"
         >
             <tui-mobile-calendar-example-1></tui-mobile-calendar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="range"
+            i18n-heading
+            heading="Range"
+            [content]="example2"
+        >
+            <tui-mobile-calendar-example-2></tui-mobile-calendar-example-2>
         </tui-doc-example>
     </ng-template>
 
@@ -52,10 +71,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -120,7 +136,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -146,7 +162,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

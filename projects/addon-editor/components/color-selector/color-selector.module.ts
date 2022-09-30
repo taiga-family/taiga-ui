@@ -4,7 +4,6 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDescribedByModule,
     TuiGroupModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -25,7 +24,6 @@ import {TuiPaletteModule} from './palette/palette.module';
         TuiColorPickerModule,
         TuiLinearMultiPickerModule,
         TuiHintModule,
-        TuiDescribedByModule,
         TuiSvgModule,
         TuiDataListModule,
         TuiActiveZoneModule,

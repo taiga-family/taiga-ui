@@ -1,7 +1,14 @@
 <!-- Works in several levels-->
-<div class="wrapper tui-space_top-3" [tuiTextfieldCleaner]="true">
+<div
+    class="wrapper tui-space_top-3"
+    [tuiTextfieldCleaner]="true"
+>
     <!-- You can also put directive directly on textfield -->
-    <tui-primitive-textfield tuiTextfieldExampleText="Hello">
+    <tui-primitive-textfield tuiTextfieldSize="s">
         Cool
+        <input
+            tuiTextfield
+            placeholder="Hello!"
+        />
     </tui-primitive-textfield>
 </div>

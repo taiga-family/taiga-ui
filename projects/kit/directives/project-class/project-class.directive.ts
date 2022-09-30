@@ -5,10 +5,10 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
  * A directive for projecting classes from nested children to host
  */
 @Directive({
-    selector: '[tuiProjectClass]',
+    selector: `[tuiProjectClass]`,
 })
 export class TuiProjectClassDirective implements AfterViewChecked {
-    @Input('tuiProjectClass')
+    @Input(`tuiProjectClass`)
     @tuiDefaultProp()
     classNames: readonly string[] = [];
 
@@ -16,11 +16,7 @@ export class TuiProjectClassDirective implements AfterViewChecked {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
-    ngAfterViewChecked() {
-        if (!this.classNames.length) {
-            return;
-        }
-
+    ngAfterViewChecked(): void {
         this.classNames.forEach(className => {
             const hostElement = this.elementRef.nativeElement;
 

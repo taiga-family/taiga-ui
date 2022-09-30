@@ -96,7 +96,7 @@
             }
         }
 
-        &[data-tui-element-range] {
+        &[data-range] {
             &:after {
                 background-color: var(--tui-primary-text);
             }
@@ -110,18 +110,18 @@
                 }
             }
 
-            &[data-tui-element-state='hovered'] > .t-item:before,
-            &[data-tui-element-state='hovered'] > .t-item:after {
+            &[data-state='hover'] > .t-item:before,
+            &[data-state='hover'] > .t-item:after {
                 background-color: var(--tui-primary-hover);
             }
 
-            &[data-tui-element-state='pressed'] > .t-item:before,
-            &[data-tui-element-state='pressed'] > .t-item:after {
+            &[data-state='active'] > .t-item:before,
+            &[data-state='active'] > .t-item:after {
                 background-color: var(--tui-primary-active);
             }
         }
 
-        &[data-tui-element-range='end'] > .t-item {
+        &[data-range='end'] > .t-item {
             &:before {
                 left: 0.25rem;
             }
@@ -133,7 +133,7 @@
             }
         }
 
-        &[data-tui-element-range='start'] > .t-item {
+        &[data-range='start'] > .t-item {
             &:before {
                 right: 0.25rem;
             }
@@ -145,7 +145,7 @@
             }
         }
 
-        &[data-tui-element-state='disabled'] {
+        &[data-state='disabled'] {
             pointer-events: none;
 
             & > .t-item {
@@ -153,11 +153,11 @@
             }
         }
 
-        &[data-tui-element-state='hovered']:hover:not([data-tui-element-range]) > .t-item {
+        &[data-state='hover']:hover:not([data-range]) > .t-item {
             background-color: var(--tui-secondary-hover);
         }
 
-        &[data-tui-element-state='pressed']:hover:not([data-tui-element-range]) > .t-item {
+        &[data-state='active']:hover:not([data-range]) > .t-item {
             background-color: var(--tui-secondary-active);
         }
     }

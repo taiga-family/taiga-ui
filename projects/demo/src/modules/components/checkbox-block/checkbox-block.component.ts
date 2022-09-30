@@ -1,28 +1,16 @@
-import {Component, forwardRef, Inject} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-tui-checkbox-block',
-    templateUrl: './checkbox-block.template.html',
-    styleUrls: ['./checkbox-block.style.less'],
+    selector: `example-tui-checkbox-block`,
+    templateUrl: `./checkbox-block.template.html`,
+    styleUrls: [`./checkbox-block.style.less`],
     changeDetection,
     providers: [
         {
@@ -31,39 +19,36 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
         },
     ],
 })
-export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiInteractive {
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl {
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        LESS: example3Less,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
 
-    readonly contentAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
+    readonly contentAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
     contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];
 
     hideCheckbox = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
+    override size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
 
     readonly control = new FormGroup({
         testValue1: new FormControl(false),
@@ -71,21 +56,15 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiInteract
         testValue3: new FormControl(true),
     });
 
-    get disabled(): boolean {
+    override get disabled(): boolean {
         return this.control.disabled;
     }
 
-    set disabled(value: boolean) {
+    override set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {
             this.control.enable();
         }
-    }
-
-    constructor(
-        @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
-    ) {
-        super();
     }
 }

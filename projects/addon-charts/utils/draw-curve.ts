@@ -1,20 +1,20 @@
 import {TuiPoint} from '@taiga-ui/core';
 
-import {controlPoint} from './control-point';
+import {tuiControlPoint} from './control-point';
 
-export function drawCurve(
-    array: ReadonlyArray<TuiPoint>,
+export function tuiDrawCurve(
+    array: readonly TuiPoint[],
     index: number,
     smoothing: number,
 ): string {
-    const [cpsX, cpsY] = controlPoint(
+    const [cpsX, cpsY] = tuiControlPoint(
         array[index - 1],
         array[index - 2],
         array[index],
         false,
         smoothing,
     );
-    const [cpeX, cpeY] = controlPoint(
+    const [cpeX, cpeY] = tuiControlPoint(
         array[index],
         array[index - 1],
         array[index + 1],

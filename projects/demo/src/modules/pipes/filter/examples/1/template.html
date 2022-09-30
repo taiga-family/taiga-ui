@@ -4,9 +4,9 @@
             <th class="tui-table__th cell_name">Name</th>
             <th class="tui-table__th cell_sum">Sum, $</th>
         </tr>
-        <tr *ngFor="let item of items | tuiFilter: matcher: 300">
-            <td class="tui-table__td cell_name">{{item.name}}</td>
-            <td class="tui-table__td cell_sum">{{item.price}}</td>
+        <tr *ngFor="let item of items | tuiFilter: matcher:300">
+            <td class="tui-table__td cell_name">{{ item.name }}</td>
+            <td class="tui-table__td cell_sum">{{ item.price }}</td>
         </tr>
     </thead>
 </table>

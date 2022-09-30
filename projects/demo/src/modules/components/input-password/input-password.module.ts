@@ -2,11 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputPasswordModule} from '@taiga-ui/kit';
@@ -27,8 +28,9 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         TuiAddonDocModule,
         TuiButtonModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputPasswordComponent)),
+        TuiHintModule,
+        TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputPasswordComponent)),
     ],
     declarations: [
         ExampleTuiInputPasswordComponent,

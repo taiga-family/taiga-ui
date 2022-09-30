@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {
-    sizeBigger,
     TUI_TEXTFIELD_SIZE,
     TuiHostedDropdownComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -10,9 +10,9 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
 
 @Component({
-    selector: 'tui-arrow',
-    templateUrl: './arrow.template.html',
-    styleUrls: ['./arrow.style.less'],
+    selector: `tui-arrow`,
+    templateUrl: `./arrow.template.html`,
+    styleUrls: [`./arrow.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArrowComponent {
@@ -24,8 +24,13 @@ export class TuiArrowComponent {
         @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
     ) {}
 
+    @HostBinding(`class._rotated`)
+    get rotated(): boolean {
+        return this.dropdown.open;
+    }
+
     get arrowIcon(): PolymorpheusContent {
-        return sizeBigger(this.textfieldSize.size)
+        return tuiSizeBigger(this.textfieldSize.size)
             ? this.options.iconLarge
             : this.options.iconSmall;
     }

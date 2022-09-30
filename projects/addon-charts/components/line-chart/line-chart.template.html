@@ -9,7 +9,13 @@
         [attr.viewBox]="viewBox"
     >
         <defs>
-            <linearGradient x1="0" x2="0" y1="1" y2="0" [attr.id]="fillId">
+            <linearGradient
+                x1="0"
+                x2="0"
+                y1="1"
+                y2="0"
+                [attr.id]="fillId"
+            >
                 <stop
                     stop-color="currentColor"
                     offset="0%"
@@ -22,7 +28,11 @@
                 />
             </linearGradient>
         </defs>
-        <path stroke="none" [attr.fill]="fill" [attr.d]="fillD" />
+        <path
+            stroke="none"
+            [attr.fill]="fill"
+            [attr.d]="fillD"
+        />
         <path
             fill="none"
             stroke="currentColor"
@@ -41,14 +51,16 @@
     </ng-container>
     <ng-container *ngIf="hasHints">
         <ng-container *ngFor="let point of value; let index = index">
+            <!-- TODO: Fix hint type -->
             <div
                 *ngIf="value.length > 1 || dots"
-                tuiHintDirection="top-left"
                 class="t-column"
                 [class.t-column_hovered]="hovered === index"
+                [class.t-column_hint_hovered]="drivers.get(index) | async"
                 [tuiHintHost]="hintHost"
-                [tuiHint]="computedHint && hint"
-                [tuiHintId]="getHintId(index)"
+                [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                [tuiHintContext]="getContentContext(point, index)"
+                [tuiHintDescribe]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
                 (mouseenter)="onMouseEnter(index)"
@@ -63,7 +75,7 @@
                     [style.left.%]="getOffset(index)"
                     [style.bottom.%]="getBottom(point[1])"
                     [tuiFocusable]="isFocusable"
-                    [tuiDescribedBy]="getHintId(index)"
+                    [id]="getHintId(index)"
                 ></div>
             </div>
             <div
@@ -71,14 +83,6 @@
                 class="t-line t-line_horizontal"
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
-            <ng-template #hint>
-                <div
-                    polymorpheus-outlet
-                    class="t-text"
-                    [content]="computedHint"
-                    [context]="getContentContext(point)"
-                ></div>
-            </ng-template>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="getHovered(hovered) as point">

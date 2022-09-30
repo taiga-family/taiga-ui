@@ -2,28 +2,17 @@ name: Build
 
 on:
   pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/src/**'
-      - '**/build.yml'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
-    branches:
-      - main
-      - '!release/**'
   push:
-    branches:
-      - main
-      - '!release/**'
+    branches: [main]
+
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
   build:
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Packages
     runs-on: ubuntu-latest
     env:
@@ -40,12 +29,12 @@ jobs:
         if: ${{ env.IS_MAIN_BRANCH == 'false' }}
         run: |
           npm run affected:build:libs
-          npm run exec ./scripts/check-dist.ts
+          npx ts-node ./scripts/check-dist.ts
 
       - name: Run all builds for libraries only in main branch
         if: ${{ env.IS_MAIN_BRANCH == 'true' }}
         run: npm run run-many:build:libs
 
 concurrency:
-  group: build-${{ github.head_ref }}
+  group: build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -6,9 +6,9 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
 const FRAMES = 166;
 
 @Component({
-    selector: 'tui-sheet-example-5',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-sheet-example-5`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -17,10 +17,10 @@ export class TuiSheetExample5 {
 
     readonly options: Partial<TuiSheetOptions> = {
         overlay: true,
-        stops: ['4.5rem'],
+        stops: [`4.5rem`],
     };
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 

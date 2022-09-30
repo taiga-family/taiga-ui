@@ -1,9 +1,12 @@
 <tui-multi-select
+    placeholder="Ignored text"
     class="b-form"
     [formControl]="control"
     [tuiTextfieldLabelOutside]="true"
+    [editable]="false"
     [(search)]="search"
 >
+    Star Wars persons
     <tui-data-list-wrapper
         *tuiDataList
         tuiMultiSelectGroup

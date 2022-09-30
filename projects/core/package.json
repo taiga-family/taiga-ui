@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "2.32.0",
+    "version": "3.4.0",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -11,26 +11,27 @@
         "service",
         "directive"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
-    "schematics": "./schematics/collection.json",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "dependencies": {
-        "@taiga-ui/i18n": "^2.32.0"
+        "@taiga-ui/i18n": "^3.4.0",
+        "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@taiga-ui/i18n": ">=2.32.0",
-        "@taiga-ui/cdk": ">=2.32.0",
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@angular/platform-browser": ">=9.0.0",
         "@angular/router": ">=9.0.0",
-        "@ng-web-apis/common": ">=1.12.1 < 2",
-        "@ng-web-apis/mutation-observer": ">=1.1.0",
-        "@tinkoff/ng-event-plugins": ">=2.3.2",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@ng-web-apis/common": ">=2.0.0",
+        "@ng-web-apis/mutation-observer": ">=2.0.0",
+        "@taiga-ui/cdk": ">=3.4.0",
+        "@taiga-ui/i18n": ">=3.4.0",
+        "@tinkoff/ng-event-plugins": ">=3.0.0",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
-    }
+    },
+    "schematics": "./schematics/collection.json"
 }

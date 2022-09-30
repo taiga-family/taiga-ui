@@ -9,41 +9,41 @@ interface Account {
     readonly account: string;
 }
 
-const BANK: ReadonlyArray<Account> = [
+const BANK: readonly Account[] = [
     {
-        name: 'Ruble',
-        account: '1234567890987654321',
+        name: `Ruble`,
+        account: `1234567890987654321`,
     },
     {
-        name: 'Dollar',
-        account: '1234567890987654321',
+        name: `Dollar`,
+        account: `1234567890987654321`,
     },
 ];
 
-const OTHERS: ReadonlyArray<Account> = [
+const OTHERS: readonly Account[] = [
     {
-        name: 'Bank',
-        account: '1234567890987654321',
+        name: `Bank`,
+        account: `1234567890987654321`,
     },
     {
-        name: 'Other bank',
-        account: '1234567890987654321',
+        name: `Other bank`,
+        account: `1234567890987654321`,
     },
     {
-        name: 'Bank of America',
-        account: '1234567890987654321',
+        name: `Bank of America`,
+        account: `1234567890987654321`,
     },
 ];
 
 const CASH: Account = {
-    name: 'Cash',
-    account: '',
+    name: `Cash`,
+    account: ``,
 };
 
 @Component({
-    selector: 'tui-select-example-7',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-select-example-7`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -55,6 +55,7 @@ export class TuiSelectExample7 {
     readonly bank = BANK;
     readonly others = OTHERS;
 
-    readonly content: TuiStringHandler<TuiValueContentContext<ReadonlyArray<unknown>>> =
-        ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
+    readonly content: TuiStringHandler<TuiValueContentContext<readonly unknown[]>> = ({
+        $implicit: {length},
+    }) => (length ? `${length} accounts` : `All`);
 }

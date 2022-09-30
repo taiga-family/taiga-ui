@@ -8,7 +8,12 @@
     >
         Show/hide skeleton
     </button>
-    <button tuiButton type="button" size="xs" (click)="toggleLight()">
+    <button
+        tuiButton
+        type="button"
+        size="xs"
+        (click)="toggleLight()"
+    >
         Light mode
     </button>
 </p>
@@ -19,7 +24,7 @@
                 <div
                     class="container"
                     [class.container_dark]="lightMode"
-                    [tuiMode]="lightMode ? 'light' : null"
+                    [tuiMode]="lightMode ? 'onDark' : null"
                 >
                     <h3
                         class="tui-form__header tui-form__header_margin-top_none"
@@ -32,13 +37,16 @@
                     </h3>
                     <div class="tui-form__row">
                         <tui-input
-                            tuiTextfieldExampleText="Name Surname"
                             formControlName="nameValue"
                             tuiHintContent="With a hint"
                             [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
                             Some input
+                            <input
+                                tuiTextfield
+                                placeholder="Name Surname"
+                            />
                         </tui-input>
                     </div>
                     <div class="tui-form__row tui-form__row_multi-fields">
@@ -106,7 +114,7 @@
                             [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            Intresting option
+                            Interesting option
                         </tui-checkbox-labeled>
                     </div>
                     <div class="tui-form__buttons">

@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -11,50 +12,38 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
-    TuiBaseColor,
-    TuiColor,
+    TuiAlertService,
     TuiMarkerHandler,
-    TuiNotificationsService,
 } from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleFirstDayOfWeekToken} from '!!raw-loader!./examples/import/first-day-of-week-token.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
-
-const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
-const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
+const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
+const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 
 @Component({
-    selector: 'example-tui-calendar',
-    templateUrl: './calendar.template.html',
+    selector: `example-tui-calendar`,
+    templateUrl: `./calendar.template.html`,
     changeDetection,
 })
 export class ExampleTuiCalendarComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly firstDayOfWeekToken = exampleFirstDayOfWeekToken;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly firstDayOfWeekToken = import(
+        `./examples/import/first-day-of-week-token.md?raw`
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     showAdjacent = true;
@@ -98,7 +87,7 @@ export class ExampleTuiCalendarComponent {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [
+    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
@@ -111,18 +100,18 @@ export class ExampleTuiCalendarComponent {
         new TuiDay(2020, 3, 21),
     ];
 
-    value = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     month = TuiMonth.currentLocal();
 
-    hoveredItem = null;
+    hoveredItem: TuiDay | null = null;
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
-    onDayClick(day: TuiDay) {
-        this.notifications.show(String(day)).subscribe();
+    onDayClick(day: TuiDay): void {
+        this.alertService.open(String(day)).subscribe();
     }
 }

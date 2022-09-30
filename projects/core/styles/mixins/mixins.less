@@ -57,6 +57,7 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
+        caret-color: var(--tui-base-09);
         border-radius: inherit;
         color: inherit !important;
         background-color: transparent !important;
@@ -64,17 +65,13 @@
         & when (@mode = default) {
             -webkit-text-fill-color: var(--tui-text-01) !important;
             border-color: var(--tui-autofill);
-            // TODO: research if it can be used in rem units
-            /* stylelint-disable-next-line */
-            -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
+            -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
         }
 
         & when (@mode = dark) {
             -webkit-text-fill-color: var(--tui-text-01-night) !important;
             border-color: var(--tui-autofill-night);
-            // TODO: research if it can be used in rem units
-            /* stylelint-disable-next-line */
-            -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill-night) inset !important;
+            -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill-night) inset !important;
         }
     }
 }
@@ -82,6 +79,7 @@
 .clearinput(@mode: default) {
     .autofill(@mode);
     padding: 0;
+    margin: 0;
     border: 0;
     border-radius: inherit;
     background: none;
@@ -118,9 +116,7 @@
             height: 1rem;
             border-radius: 6.25rem;
             background-clip: padding-box;
-            // TODO: research if it can be used in rem units
-            /* stylelint-disable-next-line */
-            border: 6px solid transparent;
+            border: 2.667rem solid transparent;
         }
 
         &::-webkit-scrollbar {
@@ -274,8 +270,8 @@
 }
 
 // typical properties for text overflow with ellipsis
-.text-overflow() {
-    white-space: nowrap;
+.text-overflow(@type: nowrap) {
+    white-space: @type;
     overflow: hidden;
     text-overflow: ellipsis;
 }

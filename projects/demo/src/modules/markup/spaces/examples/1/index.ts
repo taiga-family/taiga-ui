@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-spaces-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.style.less'],
+    selector: `tui-spaces-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.style.less`],
     changeDetection,
     encapsulation,
 })

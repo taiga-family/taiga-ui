@@ -8,36 +8,42 @@ import {
 } from '@taiga-ui/cdk';
 
 const INCOME = {
-    name: 'Income',
+    name: `Income`,
     items: [
-        'Donations',
-        'Product placement',
-        'Sponsorship',
-        'Found on the street',
-        'Unexpected inheritance',
-        'Investments',
-        'Color copier',
+        `Donations`,
+        `Product placement`,
+        `Sponsorship`,
+        `Found on the street`,
+        `Unexpected inheritance`,
+        `Investments`,
+        `Color copier`,
     ],
 };
 
 const EXPENSES = {
-    name: 'Expenses',
+    name: `Expenses`,
     items: [
-        'Energy drinks',
-        'Coffee',
-        'Ramen',
-        'Bills',
-        'Back medicine',
-        'Warhammer 40000 figurines',
+        `Energy drinks`,
+        `Coffee`,
+        `Ramen`,
+        `Bills`,
+        `Back medicine`,
+        `Warhammer 40000 figurines`,
     ],
 };
 
 @Component({
-    selector: 'tui-data-list-example-4',
-    templateUrl: './index.html',
+    selector: `tui-data-list-example-4`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
-    styles: ['.control { width: 320px }'],
+    styles: [
+        `
+            .control {
+                width: 320px;
+            }
+        `,
+    ],
 })
 export class TuiDataListExample4 {
     value = [];
@@ -45,13 +51,12 @@ export class TuiDataListExample4 {
     readonly items = [INCOME, EXPENSES];
 
     readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
-        items1.length === items2.length &&
-        items1.every(item => items2.indexOf(item) !== -1);
+        items1.length === items2.length && items1.every(item => items2.includes(item));
 
     readonly valueContent: TuiStringHandler<TuiContextWithImplicit<readonly string[]>> =
         ({$implicit}) => {
             if (!$implicit.length) {
-                return 'All';
+                return `All`;
             }
 
             const selected = this.items.find(({items}) =>

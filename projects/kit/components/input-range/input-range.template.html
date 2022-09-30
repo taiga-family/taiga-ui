@@ -1,101 +1,91 @@
-<div class="zone" (tuiActiveZoneChange)="onActiveZone($event)">
-    <tui-wrapper
-        [appearance]="appearance"
+<div
+    tuiWrapper
+    class="t-wrapper"
+    [appearance]="appearance"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
+    [invalid]="computedInvalid"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-input-number
+        tuiTextfieldAppearance="none"
+        automation-id="tui-input-range__left-input"
+        class="t-left t-text-input"
+        [min]="min"
+        [max]="value[1]"
+        [precision]="precision"
+        [decimal]="decimal"
+        [postfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural: pluralize) : ''"
+        [disabled]="computedDisabled"
         [readOnly]="readOnly"
-        [disabled]="disabled"
-        [focused]="computedFocused"
-        [hovered]="computedHovered"
-        [invalid]="computedInvalid"
+        [ngModel]="value[0]"
+        (ngModelChange)="onInputLeft($event)"
+        (focusedChange)="onTextInputFocused($event, false)"
+        (keydown.arrowUp)="changeByStep($event, [1, 0])"
+        (keydown.arrowDown)="changeByStep($event, [-1, 0])"
     >
-        <span
-            *ngIf="hasPlaceholder"
-            automation-id="tui-input-range__placeholder"
-            class="placeholder placeholder_raised"
+        <ng-content></ng-content>
+        <div
+            *ngIf="showLeftValueContent"
+            ngProjectAs="tuiContent"
         >
-            <ng-content></ng-content>
-        </span>
-        <div class="content">
-            <span *ngIf="!showMinLabel" class="label">
-                <span class="value">{{ inputValueLeft }}</span>
-                <span
-                    *ngIf="pluralizeMap"
-                    automation-id="tui-input-range__pluralize-left"
-                    class="pluralize"
-                >
-                    {{ value[0] | i18nPlural: pluralizeMap }}
-                </span>
-            </span>
-            <span
-                *ngIf="showMinLabel"
-                automation-id="tui-input-range__min-label"
-                class="label"
-            >
-                {{ minLabel }}
-            </span>
-            <span
-                *ngIf="showMaxLabel"
-                automation-id="tui-input-range__max-label"
-                class="max"
-            >
-                {{ maxLabel }}
-            </span>
+            <ng-container *polymorpheusOutlet="leftValueContent as text; context: {$implicit: value[0]}">
+                {{ text }}
+            </ng-container>
         </div>
-        <tui-range
-            class="slider"
-            [min]="min"
-            [max]="max"
-            [steps]="computedSteps"
-            [segments]="segments"
-            [keySteps]="keySteps"
-            [pluralize]="segmentsPluralize"
-            [focusable]="false"
-            [disabled]="readOnly || disabled"
-            [ngModel]="value"
-            (ngModelChange)="onRangeValue($event)"
-            (mousedown.prevent)="onMouseDown()"
-        ></tui-range>
-    </tui-wrapper>
+    </tui-input-number>
 
-    <div class="native-wrapper" (tuiHoveredChange)="onHovered($event)">
-        <input
-            #nativeLeft
-            automation-id="tui-input-range__native-left"
-            class="native"
-            [disabled]="disabled"
+    <div class="t-right">
+        <tui-input-number
+            tuiTextfieldAppearance="none"
+            automation-id="tui-input-range__right-input"
+            class="t-text-input"
+            [min]="value[0]"
+            [max]="max"
+            [precision]="precision"
+            [decimal]="decimal"
+            [disabled]="computedDisabled"
             [readOnly]="readOnly"
-            [class.native_hidden]="showMinLabel"
-            [tuiInputMode]="inputMode"
-            [tuiFocusable]="focusable"
-            [textMask]="quantum | tuiMapper: mask:min"
-            [ngModel]="computedValueLeft"
-            (ngModelChange)="onInputLeft()"
-            (tuiFocusedChange)="onLeftFocused($event)"
-            (keydown.arrowUp)="onKeyDownArrowUpLeft($event)"
-            (keydown.arrowDown)="onKeyDownArrowDownLeft($event)"
-        />
-        <input
-            #nativeRight
-            automation-id="tui-input-range__native-right"
-            class="native native_right"
-            [disabled]="disabled"
-            [readOnly]="readOnly"
-            [class.native_hidden]="showMaxLabel"
-            [tuiInputMode]="inputMode"
-            [tuiFocusable]="focusable"
-            [textMask]="quantum | tuiMapper: mask:min"
-            [ngModel]="computedValueRight"
-            (ngModelChange)="onInputRight()"
-            (tuiFocusedChange)="onRightFocused($event)"
-            (keydown.arrowUp)="onKeyDownArrowUpRight($event)"
-            (keydown.arrowDown)="onKeyDownArrowDownRight($event)"
-        />
-        <span
-            *ngIf="pluralizeMap && !showMaxLabel"
-            automation-id="tui-input-range__pluralize-right"
-            class="pluralize pluralize_right"
-            (mousedown)="onMouseDown()"
+            [ngModel]="value[1]"
+            (ngModelChange)="onInputRight($event)"
+            (focusedChange)="onTextInputFocused($event, true)"
+            (keydown.arrowUp)="changeByStep($event, [0, 1])"
+            (keydown.arrowDown)="changeByStep($event, [0, -1])"
         >
-            {{ value[1] | i18nPlural: pluralizeMap }}
+            <div
+                *ngIf="showRightValueContent"
+                ngProjectAs="tuiContent"
+            >
+                <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
+                    {{ text }}
+                </ng-container>
+            </div>
+        </tui-input-number>
+
+        <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
+        <span
+            *ngIf="!showRightValueContent && pluralize"
+            automation-id="tui-input-range__pluralize-right"
+            class="t-pluralize-right"
+        >
+            &nbsp;{{ value[1] | i18nPlural: pluralize }}
         </span>
     </div>
+
+    <tui-range
+        class="t-range"
+        [min]="min"
+        [max]="max"
+        [step]="step"
+        [segments]="segments"
+        [keySteps]="computeKeySteps(keySteps, min, max)"
+        [focusable]="false"
+        [disabled]="readOnly || disabled"
+        [ngModel]="value"
+        (ngModelChange)="onRangeValue($event)"
+        (tuiPressedChange)="focusToTextInput()"
+        (activeThumbChange)="onActiveThumbChange($event)"
+    ></tui-range>
 </div>

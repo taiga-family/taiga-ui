@@ -1,18 +1,17 @@
 import {AbstractControl} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDirection,
-    TuiDropdownWidthT,
-    TuiHintModeT,
+    TUI_DROPDOWN_DEFAULT_OPTIONS,
+    TUI_HINT_DIRECTIONS,
+    TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
+import {AbstractExampleTuiDropdown} from './dropdown';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -24,69 +23,71 @@ viewBox="0 0 24 24">
    s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
 </svg>`;
 
-type possibleGenericType = any;
+const CUSTOM_SVG_NAME = `Bell`;
+
+type TuiPossibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
-    implements ExampleTuiDropdown
+    implements AbstractExampleTuiDropdown
 {
     abstract readonly control: AbstractControl;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
 
-    readonly hintContentVariants: readonly string[] = ['Some content'];
+    readonly hintContentVariants: readonly string[] = [``, `Some content`];
 
-    readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
-        'left',
-        'right',
-        'bottom-left',
-        'bottom-right',
-        'top-left',
-        'top-right',
+    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
+
+    readonly hintAppearanceVariants = [``, `error`, `onDark`];
+
+    readonly typeVariants: readonly TuiInputType[] = [
+        `text`,
+        `email`,
+        `password`,
+        `tel`,
+        `url`,
     ];
 
-    readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
+    readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
-    readonly typeVariants: readonly TuiInputTypeT[] = [
-        'text',
-        'email',
-        'password',
-        'tel',
-        'url',
+    readonly autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
+        ``,
+        `off`,
+        `cc-name`,
+        `cc-number`,
+        `cc-exp-month`,
+        `cc-exp-year`,
+        `cc-type`,
+        `given-name`,
+        `additional-name`,
+        `family-name`,
+        `username`,
+        `email`,
+        `street-address`,
+        `postal-code`,
+        `country-name`,
     ];
 
-    readonly maxLengthVariants: ReadonlyArray<possibleGenericType> = [10];
+    readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
-    readonly autocompleteVariants = [
-        'off',
-        'cc-name',
-        'cc-number',
-        'cc-exp-month',
-        'cc-exp-year',
-        'cc-type',
-        'given-name',
-        'additional-name',
-        'family-name',
-        'username',
-        'email',
-        'street-address',
-        'postal-code',
-        'country-name',
+    readonly customContentVariants: PolymorpheusContent[] = [
+        CUSTOM_SVG_NAME,
+        `tuiIconSearchLarge`,
+        `tuiIconCalendarLarge`,
+        `tuiIconVisaMono`,
+        `tuiIconMastercardMono`,
     ];
 
-    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
-
-    readonly customContentVariants = ['Bell'];
-
-    customContentSelected = null;
+    customContentSelected: PolymorpheusContent = ``;
 
     inputMode = this.inputModeVariants[0];
 
-    autocomplete: TuiAutofillFieldName | null = null;
+    autocomplete: TuiAutofillFieldName | '' = ``;
 
-    maxLength: possibleGenericType | null = null;
+    maxLength: TuiPossibleGenericType | null = null;
 
-    type: TuiInputTypeT = this.typeVariants[0];
+    type: TuiInputType = this.typeVariants[0];
 
     cleaner = false;
 
@@ -100,40 +101,48 @@ export abstract class AbstractExampleTuiControl
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
 
-    exampleText = '';
+    exampleText = ``;
 
-    hintContent = null;
+    maxHeight: number | null = null;
 
-    hintDirection: TuiDirection = this.hintDirectionVariants[2];
+    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
 
-    hintMode: TuiHintModeT | null = null;
+    iconLeft = this.iconLeftVariants[0];
 
-    readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
+    hintContent = this.hintContentVariants[0];
+
+    hintDirection = this.hintDirectionVariants[0];
+
+    hintAppearance = this.hintAppearanceVariants[0];
+
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
+
+    dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
+
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
+        `fixed`,
+        `min`,
+        `auto`,
     ];
 
-    dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
+    dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
-
-    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
-
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
-        'top',
-        'bottom',
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
+        `bottom`,
+        `top`,
     ];
 
-    dropdownDirection: TuiVerticalDirection | null = null;
+    dropdownDirection: TuiVerticalDirection | null =
+        TUI_DROPDOWN_DEFAULT_OPTIONS.direction;
 
-    dropdownSided = false;
+    dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
 
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
+    dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
 
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-
-    get customContent(): string | null {
-        return this.customContentSelected !== null ? CUSTOM_SVG : null;
+    get customContent(): PolymorpheusContent {
+        return this.customContentSelected === CUSTOM_SVG_NAME
+            ? CUSTOM_SVG
+            : this.customContentSelected;
     }
 
     get disabled(): boolean {

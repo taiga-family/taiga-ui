@@ -1,0 +1,52 @@
+<tui-notification
+    *ngIf="item.hasCloseButton; else noClose"
+    [status]="item.status"
+    [hasIcon]="item.hasIcon"
+    (close)="closeNotification()"
+>
+    <label
+        *ngIf="item.label"
+        automation-id="tui-notification-alert__heading"
+        class="t-heading"
+    >
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="$any(item.label) as text; context: item">
+            {{ text }}
+        </ng-container>
+    </label>
+    <div
+        automation-id="tui-notification-alert__content"
+        class="t-content"
+    >
+        <!-- TODO: Polymorpheus fix type -->
+        <ng-container *polymorpheusOutlet="item.content as text; context: $any(item)">
+            {{ text }}
+        </ng-container>
+    </div>
+</tui-notification>
+<ng-template #noClose>
+    <tui-notification
+        [status]="item.status"
+        [hasIcon]="item.hasIcon"
+    >
+        <label
+            *ngIf="item.label"
+            automation-id="tui-notification-alert__heading"
+            class="t-heading"
+        >
+            <!-- TODO: Polymorpheus fix type -->
+            <ng-container *polymorpheusOutlet="$any(item.label) as text; context: item">
+                {{ text }}
+            </ng-container>
+        </label>
+        <div
+            automation-id="tui-notification-alert__content"
+            class="t-content"
+        >
+            <!-- TODO: Polymorpheus fix type -->
+            <ng-container *polymorpheusOutlet="item.content as text; context: $any(item)">
+                {{ text }}
+            </ng-container>
+        </div>
+    </tui-notification>
+</ng-template>

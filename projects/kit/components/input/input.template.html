@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
@@ -7,21 +7,21 @@
 >
     <tui-primitive-textfield
         automation-id="tui-input__textfield"
-        class="textfield"
-        [pseudoFocused]="computedFocused"
-        [pseudoHovered]="computedHovered"
+        class="t-textfield"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="icon"
-        [iconAlign]="iconAlign"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="value"
         (valueChange)="onValueChange($event)"
-        (hoveredChange)="onHovered($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

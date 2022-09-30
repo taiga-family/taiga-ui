@@ -1,6 +1,13 @@
-<tui-doc-page header="MultiSelect" package="KIT" type="components">
+<tui-doc-page
+    header="MultiSelect"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>MultiSelect</code>
             is a textfield with a dropdown for choosing several items
         </div>
@@ -41,11 +48,19 @@
             <tui-multi-select-example-4></tui-multi-select-example-4>
         </tui-doc-example>
 
-        <tui-doc-example id="datalist" heading="DataList" [content]="example5">
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [content]="example5"
+        >
             <tui-multi-select-example-5></tui-multi-select-example-5>
         </tui-doc-example>
 
-        <tui-doc-example id="rtl" heading="Direction: RTL" [content]="example6">
+        <tui-doc-example
+            id="rtl"
+            heading="Direction: RTL"
+            [content]="example6"
+        >
             <tui-multi-select-example-6></tui-multi-select-example-6>
         </tui-doc-example>
 
@@ -56,6 +71,22 @@
         >
             <tui-multi-select-example-7></tui-multi-select-example-7>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options-stringify"
+            heading="Options (stringify)"
+            [content]="example8"
+        >
+            <tui-multi-select-example-8></tui-multi-select-example-8>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="multiselect-inside-dialog-with-different-size"
+            heading="Multiselect inside dialog with different textfield sizes"
+            [content]="example9"
+        >
+            <tui-multi-select-example-9></tui-multi-select-example-9>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -64,18 +95,17 @@
                 <tui-multi-select
                     [formControl]="control"
                     [tuiDropdownAlign]="dropdownAlign"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
                     [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
-                    [tuiTextfieldMaxLength]="maxLength"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintMode]="hintMode"
+                    [tuiHintAppearance]="hintAppearance"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
@@ -84,9 +114,9 @@
                     [readOnly]="readOnly"
                     [stringify]="stringify"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     [valueContent]="valueContent"
                     [(search)]="search"
                 >
@@ -107,7 +137,12 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
+            <button
+                tuiButton
+                type="button"
+                size="m"
+                (click)="setValue()"
+            >
                 Set
             </button>
         </div>
@@ -130,8 +165,7 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
             </ng-template>
@@ -171,8 +205,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                A function that compares search and value to define a match
-                between them.
+                A function that compares search and value to define a match between them.
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
@@ -213,7 +246,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
 
                 <p i18n>
@@ -234,7 +267,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -243,7 +276,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

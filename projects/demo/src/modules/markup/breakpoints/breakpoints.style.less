@@ -1,0 +1,21 @@
+@import 'taiga-ui-local';
+
+.table-caption {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.copy {
+    .fullsize();
+    .transition(opacity);
+    opacity: 0;
+
+    ::ng-deep button {
+        border-radius: 0;
+        height: 100%;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}

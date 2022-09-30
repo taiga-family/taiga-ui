@@ -7,15 +7,15 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {LanguageKit} from '@taiga-ui/i18n';
+import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiLanguageKit} from '@taiga-ui/i18n';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-preview-pagination',
-    templateUrl: './preview-pagination.template.html',
-    styleUrls: ['./preview-pagination.style.less'],
+    selector: `tui-preview-pagination`,
+    templateUrl: `./preview-pagination.template.html`,
+    styleUrls: [`./preview-pagination.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewPaginationComponent {
@@ -32,7 +32,7 @@ export class TuiPreviewPaginationComponent {
 
     constructor(
         @Inject(TUI_PAGINATION_TEXTS)
-        readonly texts$: Observable<LanguageKit['pagination']>,
+        readonly texts$: Observable<TuiLanguageKit['pagination']>,
     ) {}
 
     get leftButtonDisabled(): boolean {
@@ -43,13 +43,13 @@ export class TuiPreviewPaginationComponent {
         return this.index === this.length - 1;
     }
 
-    @HostListener('document:keydown.arrowRight.prevent', ['1'])
-    @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
-    onArrowClick(step: number) {
-        this.updateIndex(clamp(this.index + step, 0, this.length - 1));
+    @HostListener(`document:keydown.arrowRight.prevent`, [`1`])
+    @HostListener(`document:keydown.arrowLeft.prevent`, [`-1`])
+    onArrowClick(step: number): void {
+        this.updateIndex(tuiClamp(this.index + step, 0, this.length - 1));
     }
 
-    private updateIndex(index: number) {
+    private updateIndex(index: number): void {
         if (this.index === index) {
             return;
         }

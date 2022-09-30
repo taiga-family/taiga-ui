@@ -1,5 +1,7 @@
+import {Injectable} from '@angular/core';
 import {TuiControlValueTransformer, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
+@Injectable()
 export class ExampleDateTransformer
     implements TuiControlValueTransformer<TuiDay | null, Date | null>
 {
@@ -8,7 +10,7 @@ export class ExampleDateTransformer
     }
 
     toControlValue(componentValue: TuiDay | null): Date | null {
-        return componentValue && componentValue.toLocalNativeDate();
+        return componentValue?.toLocalNativeDate() || null;
     }
 }
 

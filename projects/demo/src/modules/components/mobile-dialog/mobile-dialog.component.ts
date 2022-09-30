@@ -3,21 +3,17 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'example-mobile-dialog',
-    templateUrl: './mobile-dialog.template.html',
+    selector: `example-mobile-dialog`,
+    templateUrl: `./mobile-dialog.template.html`,
     changeDetection,
 })
 export class ExampleTuiMobileDialogComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.md'
-    );
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
 
-    readonly exampleInsertComponent = import(
-        '!!raw-loader!./examples/import/insert-component.md'
-    );
+    readonly exampleInsertComponent = import(`./examples/import/insert-component.md?raw`);
 }

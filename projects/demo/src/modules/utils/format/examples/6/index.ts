@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {formatNumber} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-format-example-6',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-format-example-6`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -15,14 +15,18 @@ export class TuiFormatExample6 {
     parametersForm = new FormGroup({
         value: new FormControl(123456.789),
         decimalLimit: new FormControl(2),
-        decimalSeparator: new FormControl('.'),
-        thousandSeparator: new FormControl(' '),
+        decimalSeparator: new FormControl(`.`),
+        thousandSeparator: new FormControl(` `),
     });
 
     get formattedNumber(): string {
         const {value, decimalLimit, decimalSeparator, thousandSeparator} =
             this.parametersForm.value;
 
-        return formatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
+        return tuiFormatNumber(value ?? 123456.789, {
+            decimalLimit: decimalLimit ?? 2,
+            decimalSeparator: decimalSeparator ?? `.`,
+            thousandSeparator: thousandSeparator ?? ` `,
+        });
     }
 }

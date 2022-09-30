@@ -7,70 +7,63 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {USER_AGENT} from '@ng-web-apis/common';
 import {
-    blurNativeFocused,
-    isEdgeOlderThan,
-    isIE,
-    isNativeFocusedIn,
-    isSafari,
     TUI_IS_IOS,
+    tuiBlurNativeFocused,
     tuiDefaultProp,
+    tuiIsNativeFocusedIn,
+    tuiIsSafari,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
-import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
-import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// @dynamic
+import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
+
 @Component({
-    selector: 'tui-loader',
-    templateUrl: './loader.template.html',
-    styleUrls: ['./loader.style.less'],
+    selector: `tui-loader`,
+    templateUrl: `./loader.template.html`,
+    styleUrls: [`./loader.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLoaderComponent {
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    size = this.options.size;
 
     @Input()
     @tuiDefaultProp()
-    inheritColor = false;
+    inheritColor = this.options.inheritColor;
 
     @Input()
     @tuiDefaultProp()
-    overlay = false;
+    overlay = this.options.overlay;
 
-    // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
-    textContent: PolymorpheusContent | null = null;
+    textContent: PolymorpheusContent = ``;
 
     @Input()
     @tuiRequiredSetter()
     set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
         if (value && this.focused) {
-            blurNativeFocused(this.documentRef);
+            tuiBlurNativeFocused(this.documentRef);
         }
 
         this.loading = value;
     }
 
-    @HostBinding('class._loading')
+    @HostBinding(`class._loading`)
     loading = true;
 
-    @HostBinding('class._animated-with-js')
-    animatedWithJs = isEdgeOlderThan(17, this.userAgent) || isIE(this.userAgent);
-
-    readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;
+    readonly isApple = tuiIsSafari(this.elementRef.nativeElement) || this.isIos;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
+        @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
     ) {}
 
     get hasOverlay(): boolean {
@@ -82,10 +75,10 @@ export class TuiLoaderComponent {
     }
 
     get isHorizontal(): boolean {
-        return !sizeBigger(this.size);
+        return !tuiSizeBigger(this.size);
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 }

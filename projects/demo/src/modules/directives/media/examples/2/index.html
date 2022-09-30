@@ -8,9 +8,15 @@
         [(paused)]="paused"
         (click)="toggleState()"
     >
-        <source src="/assets/media/bbb.mp4" type="video/mp4" />
+        <source
+            src="/assets/media/bbb.mp4"
+            type="video/mp4"
+        />
     </video>
-    <div tuiMode="onDark" class="controls">
+    <div
+        tuiMode="onDark"
+        class="controls"
+    >
         <button
             tuiIconButton
             type="button"
@@ -21,18 +27,21 @@
             [icon]="icon"
             (click)="toggleState()"
         ></button>
-        <tui-slider
+        <input
+            tuiSlider
+            type="range"
+            step="any"
             class="slider"
             [max]="video.duration"
             [(ngModel)]="currentTime"
-        ></tui-slider>
+        />
         <div class="time">
             <time [attr.datetime]="getTime(currentTime)">
-                {{getTime(currentTime)}}
+                {{ getTime(currentTime) }}
             </time>
             /
             <time [attr.datetime]="getTime(video.duration)">
-                {{getTime(video.duration)}}
+                {{ getTime(video.duration) }}
             </time>
         </div>
     </div>

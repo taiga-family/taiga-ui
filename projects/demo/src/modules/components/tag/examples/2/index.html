@@ -1,17 +1,35 @@
 <div>
     Base colors
-    <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    <tui-tag
+        class="tag"
+        [hoverable]="true"
+        [value]="tag"
+    ></tui-tag>
     <tui-tag
         status="primary"
         class="tag"
         [hoverable]="true"
         [value]="tag"
     ></tui-tag>
-    <div tuiMode="onDark" class="light-mode">
-        <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    <div
+        tuiMode="onDark"
+        class="light-mode"
+    >
+        <tui-tag
+            class="tag"
+            [hoverable]="true"
+            [value]="tag"
+        ></tui-tag>
     </div>
-    <div tuiMode="onLight" class="dark-mode">
-        <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    <div
+        tuiMode="onLight"
+        class="dark-mode"
+    >
+        <tui-tag
+            class="tag"
+            [hoverable]="true"
+            [value]="tag"
+        ></tui-tag>
     </div>
 </div>
 <div class="tui-space_top-3">
@@ -20,7 +38,7 @@
     <tui-tag
         *tuiRepeatTimes="let index of 20"
         status="custom"
-        class="tag support-{{index + 1}}"
+        class="tag support-{{ index + 1 }}"
         [hoverable]="true"
         [value]="tag"
     ></tui-tag>

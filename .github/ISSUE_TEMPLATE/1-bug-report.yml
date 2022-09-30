@@ -16,6 +16,8 @@ body:
         - icons
         - taiga-schematics
         - testing
+        - styles
+        - eslint-plugin
         - addon-charts
         - addon-commerce
         - addon-doc
@@ -33,6 +35,16 @@ body:
     attributes:
       label: Please provide a link to a minimal reproduction of the bug
       value: https://stackblitz.com/edit/taiga-starter
+
+  - type: dropdown
+    id: blocking
+    attributes:
+      label: Is this issue blocking you?
+      options:
+        - Non-Blocking
+        - Blocking
+    validations:
+      required: true
 
   - type: textarea
     id: description

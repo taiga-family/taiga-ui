@@ -5,11 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-input-date-range-example-3',
-    templateUrl: './index.html',
+    selector: `tui-input-date-range-example-3`,
+    templateUrl: `./index.html`,
     providers: [
-        {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
-        {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+        {provide: TUI_DATE_FORMAT, useValue: `YMD`},
+        {provide: TUI_DATE_SEPARATOR, useValue: `/`},
     ],
     changeDetection,
     encapsulation,

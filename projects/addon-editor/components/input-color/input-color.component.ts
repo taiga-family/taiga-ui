@@ -11,7 +11,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {getGradientData, parseGradient, toGradient} from '@taiga-ui/addon-editor/utils';
+import {
+    tuiGetGradientData,
+    tuiParseGradient,
+    tuiToGradient,
+} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
     tuiDefaultProp,
@@ -20,33 +24,17 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DROPDOWN_CONTROLLER,
-    TuiDropdownControllerDirective,
+    tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 
-export function longDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
-): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
-    directive.maxHeight = 600;
-
-    return directive;
-}
-
 @Component({
-    selector: 'tui-input-color',
-    templateUrl: './input-color.template.html',
-    styleUrls: ['./input-color.style.less'],
+    selector: `tui-input-color`,
+    templateUrl: `./input-color.template.html`,
+    styleUrls: [`./input-color.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_DROPDOWN_CONTROLLER,
-            deps: [[new Optional(), TuiDropdownControllerDirective]],
-            useFactory: longDropdownControllerFactory,
-        },
-    ],
+    viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
 })
 export class TuiInputColorComponent
     extends AbstractTuiControl<string>
@@ -89,36 +77,28 @@ export class TuiInputColorComponent
         return this.sanitize(this.value, this.domSanitizer);
     }
 
-    @HostListener('click')
-    onClick() {
+    @HostListener(`click`)
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onValueChange(textValue: string) {
+    onValueChange(textValue: string): void {
         this.updateValue(textValue);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
     protected getFallbackValue(): string {
-        return '#000000';
+        return `#000000`;
     }
 
     @tuiPure
     private sanitize(value: string, domSanitizer: DomSanitizer): SafeStyle | string {
-        return value.startsWith('linear-gradient(')
+        return value.startsWith(`linear-gradient(`)
             ? domSanitizer.bypassSecurityTrustStyle(
-                  toGradient(parseGradient(getGradientData(value))),
+                  tuiToGradient(tuiParseGradient(tuiGetGradientData(value))),
               )
             : value;
     }

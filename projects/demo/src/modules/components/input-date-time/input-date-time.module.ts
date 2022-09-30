@@ -2,10 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/kit';
@@ -26,9 +27,10 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         CommonModule,
         TuiLinkModule,
         TuiInputDateTimeModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiTextfieldControllerModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputDateTimeComponent)),
+        TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateTimeComponent)),
     ],
     declarations: [
         ExampleTuiInputDateTimeComponent,

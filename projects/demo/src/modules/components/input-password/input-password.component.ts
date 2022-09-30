@@ -1,24 +1,15 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAccountAutofillName} from '@taiga-ui/cdk';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAutofillFieldName} from '@taiga-ui/cdk';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-input-password',
-    templateUrl: './input-password.template.html',
+    selector: `example-tui-input-password`,
+    templateUrl: `./input-password.template.html`,
     changeDetection,
     providers: [
         {
@@ -28,28 +19,32 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl {
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDefineOptions = exampleDefineOptions;
+    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        HTML: example1Html,
-        TypeScript: example1Ts,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        HTML: example2Html,
-        TypeScript: example2Ts,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    override readonly maxLengthVariants: readonly number[] = [10];
 
-    autocompleteVariants = ['off', 'new-password', 'current-password'];
+    override autocompleteVariants: TuiAutofillFieldName[] = [
+        `off`,
+        `new-password`,
+        `current-password`,
+    ];
 
-    autocomplete: TuiAccountAutofillName | null = null;
+    override autocomplete: TuiAutofillFieldName | '' = ``;
 
-    maxLength = null;
+    override maxLength = null;
 
-    control = new FormControl('', Validators.required);
+    control = new FormControl(``, Validators.required);
 }

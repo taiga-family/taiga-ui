@@ -26,13 +26,6 @@
     margin: 0;
 }
 
-.t-title,
-.t-description {
-    &:first-letter {
-        text-transform: capitalize;
-    }
-}
-
 .t-example {
     position: relative;
     margin-top: 1.5rem;
@@ -71,10 +64,17 @@
     }
 }
 
-.t-copy-code {
+.t-code-actions {
     position: absolute;
     top: 4.375rem;
     right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & > * {
+        margin-left: 0.5rem;
+    }
 }
 
 .t-link-icon {

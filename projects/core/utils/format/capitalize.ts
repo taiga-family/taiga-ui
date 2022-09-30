@@ -5,6 +5,6 @@
  * @param value the input string
  * @return the capitalized string
  */
-export function capitalize(value: string): string {
+export function tuiCapitalize(value: string): string {
     return value.toLowerCase().replace(/(?:^|\s)\S/g, char => char.toUpperCase());
 }

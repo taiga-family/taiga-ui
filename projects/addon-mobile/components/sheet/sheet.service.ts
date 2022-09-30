@@ -6,10 +6,10 @@ import {TuiSheet} from './sheet';
 import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: `root`,
 })
 export class TuiSheetService {
-    readonly sheets$ = new BehaviorSubject<TuiSheet<any, any>[]>([]);
+    readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);
 
     constructor(@Inject(TUI_SHEET_OPTIONS) private readonly options: TuiSheetOptions) {}
 
@@ -18,7 +18,7 @@ export class TuiSheetService {
         options: Partial<TuiSheetOptions> = {},
     ): Observable<G> {
         return new Observable($implicit => {
-            const completeWith = (result: G) => {
+            const completeWith = (result: G): void => {
                 $implicit.next(result);
                 $implicit.complete();
             };

@@ -1,5 +1,5 @@
 import {Attribute, Directive, ElementRef, Inject, NgZone} from '@angular/core';
-import {preventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {fromEvent, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -7,10 +7,9 @@ import {takeUntil} from 'rxjs/operators';
 /**
  * Simple prevent default on event directive when you do not need anything
  * else on event and do not want to trigger change detection
- * @dynamic
  */
 @Directive({
-    selector: '[tuiPreventDefault]',
+    selector: `[tuiPreventDefault]`,
     providers: [TuiDestroyService],
 })
 export class TuiPreventDefaultDirective {
@@ -18,10 +17,10 @@ export class TuiPreventDefaultDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Attribute('tuiPreventDefault') eventName: string,
+        @Attribute(`tuiPreventDefault`) eventName: string,
     ) {
         fromEvent(nativeElement, eventName, {passive: false})
-            .pipe(tuiZonefree(ngZone), preventDefault(), takeUntil(destroy$))
+            .pipe(tuiZonefree(ngZone), tuiPreventDefault(), takeUntil(destroy$))
             .subscribe();
     }
 }

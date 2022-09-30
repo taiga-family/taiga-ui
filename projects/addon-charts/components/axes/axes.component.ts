@@ -6,27 +6,25 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
-import {TuiLineHandler, TuiLineTypeT} from '@taiga-ui/addon-charts/types';
+import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
-import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-axes',
-    templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    selector: `tui-axes`,
+    templateUrl: `./axes.template.html`,
+    styleUrls: [`./axes.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        '($.data-mode.attr)': `mode$`,
     },
 })
 export class TuiAxesComponent {
     @Input()
     @tuiDefaultProp()
-    axisX: TuiLineTypeT = 'solid';
+    axisX: TuiLineType = `solid`;
 
     @Input()
     @tuiDefaultProp()
@@ -34,7 +32,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisY: TuiLineTypeT = 'solid';
+    axisY: TuiLineType = `solid`;
 
     @Input()
     @tuiDefaultProp()
@@ -46,7 +44,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisYName = '';
+    axisYName = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -58,7 +56,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisYSecondaryName = '';
+    axisYSecondaryName = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -76,9 +74,9 @@ export class TuiAxesComponent {
     @tuiDefaultProp()
     verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
 
-    @HostBinding('class._centered')
+    @HostBinding(`class._centered`)
     get centeredXLabels(): boolean {
-        return this.axisY === 'none';
+        return this.axisY === `none`;
     }
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}

@@ -6,7 +6,6 @@ import {Directive, Inject, OnDestroy} from '@angular/core';
  * A component extending this class must have CSS variables definitions
  * and have ViewEncapsulation set to NONE. A boolean input allows to
  * switch theme on or off.
- * @dynamic
  */
 @Directive()
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
@@ -19,7 +18,7 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
             return;
         }
 
-        const styles = this.documentRef.head.querySelectorAll('style');
+        const styles = this.documentRef.head.querySelectorAll(`style`);
 
         (<typeof AbstractTuiThemeSwitcher>this.constructor).style =
             styles[styles.length - 1];
@@ -29,17 +28,17 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
         return (<typeof AbstractTuiThemeSwitcher>this.constructor).style;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.removeTheme();
     }
 
-    private addTheme() {
+    private addTheme(): void {
         if (this.style) {
             this.documentRef.head.appendChild(this.style);
         }
     }
 
-    private removeTheme() {
+    private removeTheme(): void {
         if (this.style && this.documentRef.head.contains(this.style)) {
             this.documentRef.head.removeChild(this.style);
         }

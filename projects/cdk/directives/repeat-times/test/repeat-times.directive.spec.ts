@@ -1,16 +1,20 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiRepeatTimesModule} from '../repeat-times.module';
 
 const DEFAULT_TEST_COUNT = 3;
 
-describe('TuiRepeatTimes directive', () => {
+describe(`TuiRepeatTimes directive`, () => {
     @Component({
         template: `
-            <div *tuiRepeatTimes="let index of count" class="test-item" [title]="index">
+            <div
+                *tuiRepeatTimes="let index of count"
+                class="test-item"
+                [title]="index"
+            >
                 {{ index }}
             </div>
         `,
@@ -35,48 +39,48 @@ describe('TuiRepeatTimes directive', () => {
         testComponent = fixture.componentInstance;
     });
 
-    describe('repeats 0 times if', () => {
-        it('0 is passed as a count', () => {
+    describe(`repeats 0 times if`, () => {
+        it(`0 is passed as a count`, () => {
             testComponent.count = 0;
             fixture.detectChanges();
 
-            debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+            debugElements = fixture.debugElement.queryAll(By.css(`.test-item`));
             expect(debugElements.length).toBe(0);
         });
 
-        it('NaN is passed', () => {
+        it(`NaN is passed`, () => {
             testComponent.count = NaN;
             fixture.detectChanges();
 
-            debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+            debugElements = fixture.debugElement.queryAll(By.css(`.test-item`));
             expect(debugElements.length).toBe(0);
         });
 
-        it('negative number is passed', () => {
+        it(`negative number is passed`, () => {
             testComponent.count = -1;
             fixture.detectChanges();
 
-            debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+            debugElements = fixture.debugElement.queryAll(By.css(`.test-item`));
             expect(debugElements.length).toBe(0);
         });
     });
 
-    describe('if 3 is passed', () => {
+    describe(`if 3 is passed`, () => {
         beforeEach(() => {
             testComponent.count = 3;
             fixture.detectChanges();
 
-            debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+            debugElements = fixture.debugElement.queryAll(By.css(`.test-item`));
         });
 
-        it('repeats template 3 times', () => {
+        it(`repeats template 3 times`, () => {
             expect(debugElements.length).toBe(DEFAULT_TEST_COUNT);
         });
 
-        it('passes index as implicity context', () => {
-            expect(debugElements[0].nativeElement.title).toBe('0');
-            expect(debugElements[1].nativeElement.title).toBe('1');
-            expect(debugElements[2].nativeElement.title).toBe('2');
+        it(`passes index as implicity context`, () => {
+            expect(debugElements[0].nativeElement.title).toBe(`0`);
+            expect(debugElements[1].nativeElement.title).toBe(`1`);
+            expect(debugElements[2].nativeElement.title).toBe(`2`);
         });
     });
 });

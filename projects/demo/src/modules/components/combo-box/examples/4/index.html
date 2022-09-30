@@ -1,9 +1,16 @@
-<tui-combo-box class="b-form" [stringify]="stringify" [(ngModel)]="value">
+<tui-combo-box
+    class="b-form"
+    [stringify]="stringify"
+    [(ngModel)]="value"
+>
     Find the best employees
-    <input tuiTextfield placeholder="Type a name" />
+    <input
+        tuiTextfield
+        placeholder="Type a name"
+    />
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiFilterByInputWith : stringify"
+        [items]="items | tuiFilterByInputWith: stringify"
         [itemContent]="stringify | tuiStringifyContent"
     ></tui-data-list-wrapper>
 </tui-combo-box>

@@ -1,28 +1,19 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiIsString} from '@taiga-ui/cdk';
+import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-input-card-grouped',
-    templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    selector: `example-input-card-grouped`,
+    templateUrl: `./input-card-grouped.template.html`,
+    styleUrls: [`./input-card-grouped.style.less`],
     changeDetection,
     providers: [
         {
@@ -32,40 +23,43 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
-    readonly cards = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+    };
+
+    readonly cards: Record<string, string> = {
+        common: `https://ng-web-apis.github.io/dist/assets/images/common.svg`,
+        universal: `https://ng-web-apis.github.io/dist/assets/images/universal.svg`,
+        mutation: `https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg`,
     };
 
     cardSrcVariants: readonly string[] = Object.keys(this.cards);
 
-    cardSrcSelected: PolymorpheusContent | null = null;
+    cardSrcSelected: PolymorpheusContent = ``;
 
     autocompleteEnabled = false;
 
-    exampleText = '0000 0000 0000 0000';
+    exampleText = `0000 0000 0000 0000`;
 
     readonly codeLengthVariants: TuiCodeCVCLength[] = [3, 4];
 
@@ -78,15 +72,15 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     control = new FormControl();
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {
         super();
     }
 
-    get cardSrc(): PolymorpheusContent | null {
-        return typeof this.cardSrcSelected === 'string'
-            ? (this.cards as any)[this.cardSrcSelected]
+    get cardSrc(): PolymorpheusContent {
+        return tuiIsString(this.cardSrcSelected)
+            ? this.cards[this.cardSrcSelected]
             : this.cardSrcSelected;
     }
 
@@ -102,13 +96,13 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         }
     }
 
-    onBinChange(bin: string) {
-        this.notifications.show(`bin: ${bin}`).subscribe();
+    onBinChange(bin: string | null): void {
+        this.alertService.open(`bin: ${bin}`).subscribe();
     }
 
     getContentVariants(
         template: PolymorpheusContent,
-    ): ReadonlyArray<PolymorpheusContent> | null {
+    ): readonly PolymorpheusContent[] | null {
         return [...this.cardSrcVariants, template];
     }
 }

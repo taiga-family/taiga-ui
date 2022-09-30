@@ -1,4 +1,8 @@
-<tui-doc-page header="InputCard" package="ADDON-COMMERCE" type="components">
+<tui-doc-page
+    header="InputCard"
+    package="ADDON-COMMERCE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>InputCard</code>
@@ -9,7 +13,11 @@
             to input a card
         </p>
 
-        <tui-doc-example id="group" heading="tui-group" [content]="example1">
+        <tui-doc-example
+            id="group"
+            heading="tui-group"
+            [content]="example1"
+        >
             <tui-input-card-example-1></tui-input-card-example-1>
         </tui-doc-example>
     </ng-template>
@@ -17,7 +25,10 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
-                <form class="form" [formGroup]="control">
+                <form
+                    class="form"
+                    [formGroup]="control"
+                >
                     <tui-input-card
                         formControlName="card"
                         class="control"
@@ -29,12 +40,12 @@
                         [tuiTextfieldCleaner]="cleaner"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
-                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
                         [tuiHintContent]="hintContent"
                         [tuiHintDirection]="hintDirection"
-                        [tuiHintMode]="hintMode"
+                        [tuiHintAppearance]="hintAppearance"
                         (binChange)="onBinChange($event)"
                     >
                         Card number
@@ -48,9 +59,9 @@
                         [tuiTextfieldSize]="size"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
-                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
                     >
                         Expire date
                     </tui-input-expire>
@@ -64,19 +75,20 @@
                         [tuiTextfieldSize]="size"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
-                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
                         [tuiHintContent]="hintContentCVC"
                         [tuiHintDirection]="hintDirectionCVC"
-                        [tuiHintMode]="hintModeCVC"
+                        [tuiHintAppearance]="hintAppearanceCVC"
                     >
                         CVC/CVV
                     </tui-input-cvc>
-                    <tui-field-error
+                    <tui-error
                         formControlName="card"
                         class="error"
-                    ></tui-field-error>
+                        [error]="[] | tuiFieldError | async"
+                    ></tui-error>
                 </form>
             </ng-template>
         </tui-doc-demo>
@@ -87,7 +99,10 @@
                 to control validators to validate it with Luhn algorithm
             </p>
         </div>
-        <tui-accordion class="b-full-width" [closeOthers]="false">
+        <tui-accordion
+            class="b-full-width"
+            [closeOthers]="false"
+        >
             <tui-accordion-item [open]="true">
                 TuiInputCardComponent
                 <ng-template tuiAccordionItemContent>
@@ -215,7 +230,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -224,7 +239,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

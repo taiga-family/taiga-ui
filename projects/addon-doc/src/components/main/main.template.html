@@ -12,7 +12,7 @@
         <label class="night-mode">
             Night mode
             <tui-toggle
-                class="tui-space_left-2"
+                class="tui-toggle"
                 [ngModel]="night"
                 (ngModelChange)="onMode($event)"
             ></tui-toggle>
@@ -25,8 +25,8 @@
     <ng-container ngProjectAs="tuiOverDialogs">
         <ng-content select="tuiOverDialogs"></ng-content>
     </ng-container>
-    <ng-container ngProjectAs="tuiOverNotifications">
-        <ng-content select="tuiOverNotifications"></ng-content>
+    <ng-container ngProjectAs="tuiOverAlerts">
+        <ng-content select="tuiOverAlerts"></ng-content>
     </ng-container>
     <ng-container ngProjectAs="tuiOverPortals">
         <ng-content select="tuiOverPortals"></ng-content>

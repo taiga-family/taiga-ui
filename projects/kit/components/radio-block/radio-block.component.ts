@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,7 +13,8 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
@@ -30,15 +30,13 @@ import {
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
-    selector: 'tui-radio-block',
-    templateUrl: './radio-block.template.html',
-    styleUrls: ['./radio-block.style.less'],
+    selector: `tui-radio-block`,
+    templateUrl: `./radio-block.template.html`,
+    styleUrls: [`./radio-block.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioBlockComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioBlockComponent),
+        tuiAsControl(TuiRadioBlockComponent),
     ],
 })
 export class TuiRadioBlockComponent<T>
@@ -56,17 +54,17 @@ export class TuiRadioBlockComponent<T>
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding(`attr.data-tui-host-align`)
     @tuiDefaultProp()
-    contentAlign: TuiHorizontalDirection = 'right';
+    contentAlign: TuiHorizontalDirection = `right`;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'l';
+    size: TuiSizeS | TuiSizeL = `l`;
 
     @Input()
-    @HostBinding('class._hidden_radio')
+    @HostBinding(`class._hidden_radio`)
     @tuiDefaultProp()
     hideRadio = false;
 
@@ -95,22 +93,22 @@ export class TuiRadioBlockComponent<T>
         return !!this.radio && this.radio.focused;
     }
 
-    @HostBinding('class._disabled')
-    get computedDisabled(): boolean {
+    @HostBinding(`class._disabled`)
+    override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
-    @HostBinding('class._active')
+    @HostBinding(`class._active`)
     get checked(): boolean {
         return this.value === this.item && this.hideRadio;
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.size === 'l' ? 'l' : 'm';
+        return this.size === `l` ? `l` : `m`;
     }
 
     get appearance(): TuiAppearance {
-        if (!this.modeDirective || !this.modeDirective.mode) {
+        if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
                 : TuiAppearance.Whiteblock;
@@ -119,23 +117,15 @@ export class TuiRadioBlockComponent<T>
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onModelChange(value: T) {
+    onModelChange(value: T): void {
         this.updateValue(value);
     }
 }

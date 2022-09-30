@@ -1,8 +1,8 @@
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {assets} from '@demo/utils';
 
 import {User} from './user';
 
-export const databaseMockData: ReadonlyArray<User> = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
+export const databaseMockData: readonly User[] = [
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, assets`/images/avatar.jpg`),
 ];

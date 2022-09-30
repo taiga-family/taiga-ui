@@ -8,20 +8,19 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {AbstractTuiInteractive, isNativeFocused, tuiDefaultProp} from '@taiga-ui/cdk';
+import {AbstractTuiInteractive, tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Component({
-    selector: 'tui-primitive-spin-button',
+    selector: `tui-primitive-spin-button`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './primitive-spin-button.template.html',
-    styleUrls: ['./primitive-spin-button.style.less'],
+    templateUrl: `./primitive-spin-button.template.html`,
+    styleUrls: [`./primitive-spin-button.style.less`],
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
-    @ViewChild('wrapper')
+    @ViewChild(`wrapper`)
     private readonly wrapper?: ElementRef<HTMLElement>;
 
     @Input()
@@ -53,7 +52,7 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     }
 
     get focused(): boolean {
-        return !!this.wrapper && isNativeFocused(this.wrapper.nativeElement);
+        return !!this.wrapper && tuiIsNativeFocused(this.wrapper.nativeElement);
     }
 
     get leftComputedDisabled(): boolean {
@@ -64,23 +63,23 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
         return this.computedDisabled || this.rightDisabled;
     }
 
-    onLeftClick() {
+    onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
-    onRightClick() {
+    onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

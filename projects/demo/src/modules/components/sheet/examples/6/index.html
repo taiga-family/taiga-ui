@@ -1,8 +1,16 @@
-<button tuiButton (click)="toggle()">Show/Hide</button>
-<ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
+<button
+    tuiButton
+    (click)="toggle()"
+>
+    Show/Hide
+</button>
+<ng-template
+    [tuiSheetOptions]="options"
+    [(tuiSheet)]="open"
+>
     <ng-container waIntersectionObserver>
         <h2 tuiSheetHeading>
-            <label tuiLabel label="Monty Python">And the Holy Grail</label>
+            <label tuiLabel="Monty Python">And the Holy Grail</label>
         </h2>
         <img
             *ngFor="let image of images"

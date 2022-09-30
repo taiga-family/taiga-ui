@@ -5,10 +5,16 @@
         [items]="items"
     ></tui-filter>
 </form>
-<ng-template #content let-item>
-    {{item}}
-    <tui-svg class="tui-space_left-2" [src]="getItemIcon(item)"></tui-svg>
+<ng-template
+    #content
+    let-item
+>
+    {{ item }}
+    <tui-svg
+        class="tui-space_left-2"
+        [src]="getItemIcon(item)"
+    ></tui-svg>
 </ng-template>
 <div>
-    <pre>Form value: {{form.value | json}}</pre>
+    <pre>Form value: {{ form.value | json }}</pre>
 </div>

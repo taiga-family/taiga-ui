@@ -1,30 +1,52 @@
-<tui-accordion class="container" [rounded]="false">
-    <tui-accordion-item borders="top-bottom" [showArrow]="false">
+<tui-accordion
+    *ngIf="svgIcons.rubles | async as lazySvg"
+    class="container"
+    [rounded]="false"
+>
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
         <div class="operation-header">
             <div class="operation-date">
                 4
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg class="operation-icon" [src]="svgIcons.rubl"></tui-svg>
+                <tui-svg
+                    class="operation-icon"
+                    [src]="lazySvg?.default || ''"
+                ></tui-svg>
             </div>
             <div class="operation-title">Get your money</div>
             <div class="operation-info">
-                <tui-money class="operation-amount" [value]="23000"></tui-money>
+                <tui-money
+                    class="operation-amount"
+                    [value]="23000"
+                ></tui-money>
                 <div class="operation-status">Waiting for approve</div>
             </div>
         </div>
         <ng-template tuiAccordionItemContent>
             <h3 class="form-title">Payment form</h3>
-            <form class="operation-form" [formGroup]="testForm">
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
                 <tui-input
-                    tuiTextfieldExampleText="Roman Sedov"
                     formControlName="name"
                     class="input"
                 >
                     Your name
+                    <input
+                        tuiTextfield
+                        placeholder="Roman Sedov"
+                    />
                 </tui-input>
-                <tui-select formControlName="accounts" class="input">
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
                     Choose an account
                     <tui-data-list-wrapper
                         *tuiDataList
@@ -40,41 +62,62 @@
                     >
                         Send
                     </button>
-                    <button tuiButton type="button" appearance="flat" size="l">
+                    <button
+                        tuiButton
+                        type="button"
+                        appearance="flat"
+                        size="l"
+                    >
                         Cancel
                     </button>
                 </div>
             </form>
         </ng-template>
     </tui-accordion-item>
-    <tui-accordion-item borders="top-bottom" [showArrow]="false">
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
         <div class="operation-header">
             <div class="operation-date">
                 5
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg class="operation-icon" [src]="svgIcons.rubl"></tui-svg>
+                <tui-svg
+                    class="operation-icon"
+                    [src]="lazySvg?.default || ''"
+                ></tui-svg>
             </div>
             <div class="operation-title">Get your money back</div>
             <div class="operation-info">
-                <tui-money class="operation-amount" [value]="23000"></tui-money>
-                <div class="operation-status operation-status_success">
-                    Approved
-                </div>
+                <tui-money
+                    class="operation-amount"
+                    [value]="23000"
+                ></tui-money>
+                <div class="operation-status operation-status_success">Approved</div>
             </div>
         </div>
         <ng-template tuiAccordionItemContent>
             <h3 class="form-title">Payment form</h3>
-            <form class="operation-form" [formGroup]="testForm">
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
                 <tui-input
-                    tuiTextfieldExampleText="Roman Sedov"
                     formControlName="name"
                     class="input"
                 >
                     Your name
+                    <input
+                        tuiTextfield
+                        placeholder="Roman Sedov"
+                    />
                 </tui-input>
-                <tui-select formControlName="accounts" class="input">
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
                     Choose an account
                     <tui-data-list-wrapper
                         *tuiDataList
@@ -90,41 +133,62 @@
                     >
                         Send
                     </button>
-                    <button tuiButton type="button" appearance="flat" size="l">
+                    <button
+                        tuiButton
+                        type="button"
+                        appearance="flat"
+                        size="l"
+                    >
                         Cancel
                     </button>
                 </div>
             </form>
         </ng-template>
     </tui-accordion-item>
-    <tui-accordion-item borders="top-bottom" [showArrow]="false">
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
         <div class="operation-header">
             <div class="operation-date">
                 6
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg class="operation-icon" [src]="svgIcons.rubl"></tui-svg>
+                <tui-svg
+                    class="operation-icon"
+                    [src]="lazySvg?.default || ''"
+                ></tui-svg>
             </div>
             <div class="operation-title">Get your neighbor's money</div>
             <div class="operation-info">
-                <tui-money class="operation-amount" [value]="23000"></tui-money>
-                <div class="operation-status operation-status_error">
-                    Declined
-                </div>
+                <tui-money
+                    class="operation-amount"
+                    [value]="23000"
+                ></tui-money>
+                <div class="operation-status operation-status_error">Declined</div>
             </div>
         </div>
         <ng-template tuiAccordionItemContent>
             <h3 class="form-title">Payment form</h3>
-            <form class="operation-form" [formGroup]="testForm">
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
                 <tui-input
-                    tuiTextfieldExampleText="Roman Sedov"
                     formControlName="name"
                     class="input"
                 >
                     Your name
+                    <input
+                        tuiTextfield
+                        placeholder="Roman Sedov"
+                    />
                 </tui-input>
-                <tui-select formControlName="accounts" class="input">
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
                     Choose an account
                     <tui-data-list-wrapper
                         *tuiDataList
@@ -140,7 +204,12 @@
                     >
                         Send
                     </button>
-                    <button tuiButton type="button" appearance="flat" size="l">
+                    <button
+                        tuiButton
+                        type="button"
+                        appearance="flat"
+                        size="l"
+                    >
                         Cancel
                     </button>
                 </div>

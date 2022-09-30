@@ -2,7 +2,10 @@
     <code>form</code>
     tag is used for better autocomplete
 </p>
-<form tuiGroup [formGroup]="form">
+<form
+    tuiGroup
+    [formGroup]="form"
+>
     <tui-input-card
         formControlName="card"
         [autocompleteEnabled]="true"
@@ -10,10 +13,16 @@
     >
         Card number
     </tui-input-card>
-    <tui-input-expire formControlName="expire" [autocompleteEnabled]="true">
+    <tui-input-expire
+        formControlName="expire"
+        [autocompleteEnabled]="true"
+    >
         Expire date
     </tui-input-expire>
-    <tui-input-cvc formControlName="cvc" [autocompleteEnabled]="true">
+    <tui-input-cvc
+        formControlName="cvc"
+        [autocompleteEnabled]="true"
+    >
         CVC/CVV
     </tui-input-cvc>
 </form>

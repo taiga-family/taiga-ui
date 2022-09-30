@@ -1,5 +1,4 @@
-export interface CodeEditor {
+export interface TuiCodeEditor {
     readonly name: string;
-
-    open(component: string, sampleId: string, files: Record<string, string>): void;
+    edit(component: string, id: string, files: Record<string, string>): Promise<void>;
 }

@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiRootComponent} from '../root.component';
 import {TuiRootModule} from '../root.module';
 
-describe('root', () => {
+describe(`root`, () => {
     let fixture: ComponentFixture<TuiRootComponent>;
     let root: HTMLElement;
 
@@ -22,11 +22,11 @@ describe('root', () => {
         fixture.detectChanges();
     });
 
-    it('root has data-tui-version attribute', () => {
+    it(`root has data-tui-version attribute`, () => {
         expect(root.dataset.tuiVersion).toBeDefined();
     });
 
-    it('There is some data-tui-version value', () => {
-        expect(root.dataset.tuiVersion).not.toBe('undefined');
+    it(`There is some data-tui-version value`, () => {
+        expect(root.dataset.tuiVersion).not.toBe(`undefined`);
     });
 });

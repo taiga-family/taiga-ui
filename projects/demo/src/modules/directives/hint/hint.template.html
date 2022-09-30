@@ -1,4 +1,8 @@
-<tui-doc-page i18n-header header="Hint" package="CORE" type="directives">
+<tui-doc-page
+    header="Hint"
+    package="CORE"
+    type="directives"
+>
     <ng-template pageTab>
         <p i18n>Directive to show a hint by hover of an element</p>
 
@@ -14,17 +18,26 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
+            <ng-template #hint>
+                To be accessible, hint should be set to a focusable element. See
+                <a
+                    tuiLink
+                    routerLink="/directives/hint-describe"
+                >
+                    <code>HintDescribe</code>
+                </a>
+            </ng-template>
             <span
-                tuiHint="Your data is hidden"
-                [tuiHintMode]="mode"
-                [tuiHintId]="id"
+                [tuiHint]="hint"
+                [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
                 [tuiHintShowDelay]="showDelay"
                 [tuiHintHideDelay]="hideDelay"
+                [tuiHintDescribe]="'qwerty'"
             >
                 Hover it!
             </span>
-            <input placeholder="id: qwerty" tuiDescribedBy="qwerty" />
+            <input id="qwerty" />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -33,20 +46,6 @@
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyName="tuiHintId"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="id"
-            >
-                To be accessible, hint should be set to a focusable element and
-                user with Screen Readers will listen to hint text after a small
-                delay when focusing textfield. Set unique
-                <code>describeId</code>
-                and use
-                <code>[tuiDescribedBy]="theSameId"</code>
-                directive on focusable element
             </ng-template>
             <ng-template
                 documentationPropertyName="tuiHintShowDelay"
@@ -79,7 +78,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -88,7 +87,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

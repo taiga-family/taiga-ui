@@ -2,45 +2,39 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    forwardRef,
+    HostBinding,
     HostListener,
     Inject,
     Input,
-    ViewChild,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusVisibleService,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-action, a[tuiAction]',
-    templateUrl: './action.template.html',
-    styleUrls: ['./action.style.less'],
+    selector: `button[tuiAction], a[tuiAction]`,
+    templateUrl: `./action.template.html`,
+    styleUrls: [`./action.style.less`],
+    host: {
+        class: `tui-island tui-island_hoverable`,
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
         TuiFocusVisibleService,
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiActionComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiActionComponent),
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
-
     @Input()
     @tuiDefaultProp()
-    icon = '';
-
-    readonly isLink = this.elementRef.nativeElement.tagName.toLowerCase() === 'a';
+    icon = ``;
 
     readonly disabled = false;
 
@@ -50,40 +44,27 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     ) {
         super();
 
-        if (!this.isLink) {
-            return;
-        }
-
         focusVisible$.subscribe(visible => {
             this.updateFocusVisible(visible);
         });
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        if (this.isLink) {
-            return this.elementRef.nativeElement;
-        }
-
-        return this.focusableElement ? this.focusableElement.nativeElement : null;
+        return this.elementRef.nativeElement;
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    @HostBinding(`tabIndex`)
+    get tabIndex(): number {
+        return this.computedFocusable ? 0 : -1;
+    }
+
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    @HostListener('mouseenter', ['true'])
-    @HostListener('mouseleave', ['false'])
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
-        this.updateFocusVisible(focusVisible);
     }
 }

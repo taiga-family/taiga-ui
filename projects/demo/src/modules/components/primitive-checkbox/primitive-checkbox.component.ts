@@ -1,24 +1,18 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeL} from '@taiga-ui/core';
 
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
-
 @Component({
-    selector: 'example-tui-checkbox',
-    templateUrl: './primitive-checkbox.template.html',
+    selector: `example-tui-checkbox`,
+    templateUrl: `./primitive-checkbox.template.html`,
     changeDetection,
 })
 export class ExampleTuiPrimitiveCheckboxComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleDefineOptions = exampleDefineOptions;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
     size: TuiSizeL = this.sizeVariants[0];
 
@@ -32,11 +26,7 @@ export class ExampleTuiPrimitiveCheckboxComponent {
 
     invalid = false;
 
-    readonly valueVariants: ReadonlyArray<boolean> = [false, true];
+    readonly valueVariants: readonly boolean[] = [false, true];
 
     value = this.valueVariants[0];
-
-    constructor(
-        @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
-    ) {}
 }

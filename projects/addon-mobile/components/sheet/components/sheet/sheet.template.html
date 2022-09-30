@@ -1,4 +1,7 @@
-<div class="t-bumpers">
+<div
+    class="t-bumpers"
+    (click)="close()"
+>
     <div
         *ngFor="let stop of item.stops"
         #stops
@@ -6,20 +9,28 @@
         [style.marginTop]="stop"
     ></div>
 </div>
-<div #sheet class="t-wrapper" [class.t-wrapper_shadow]="!item.image">
+<div
+    #sheet
+    class="t-wrapper"
+    [class.t-wrapper_shadow]="!item.image"
+>
     <header
         *ngIf="item.image"
-        polymorpheus-outlet
         class="t-top"
         [tuiSheetTop]="imageStop"
-        [content]="item.image"
-        [context]="context"
     >
-        <ng-template let-content>
-            <img alt="" class="t-image" [src]="content" />
-        </ng-template>
+        <img
+            *polymorpheusOutlet="item.image as src; context: context"
+            alt=""
+            class="t-image"
+            [src]="src"
+        />
     </header>
-    <section #content tuiSheetStop class="t-sheet">
+    <section
+        #content
+        tuiSheetStop
+        class="t-sheet"
+    >
         <div class="t-bar"></div>
         <tui-sheet-bar>
             <button
@@ -28,15 +39,14 @@
                 (click)="scrollTo(stops[1])"
             ></button>
         </tui-sheet-bar>
-        <div
-            polymorpheus-outlet
-            class="t-content"
-            [content]="item.content"
-            [context]="context"
-        >
-            <ng-template let-content>
-                <h2 tuiSheetHeading class="t-heading">{{ content }}</h2>
-            </ng-template>
+        <div class="t-content">
+            <h2
+                *polymorpheusOutlet="item.content as text; context: context"
+                tuiSheetHeading
+                class="t-heading"
+            >
+                {{ text }}
+            </h2>
         </div>
     </section>
 </div>

@@ -1,33 +1,13 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    DEFAULT_MAX_HEIGHT,
-    DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidthT,
-    TuiHorizontalDirection,
-    TuiVerticalDirection,
-} from '@taiga-ui/core';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1LESS} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2LESS} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3LESS} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.component';
+import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
-    selector: 'example-dropdown-context',
-    templateUrl: './dropdown-context.component.html',
-    styleUrls: ['./dropdown-context.component.less'],
+    selector: `example-dropdown-context`,
+    templateUrl: `./dropdown-context.component.html`,
     changeDetection,
     providers: [
         {
@@ -36,48 +16,25 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
         },
     ],
 })
-export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+export class ExampleTuiDropdownContextComponent extends AbstractExampleTuiDropdown {
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly exampleBasic: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1LESS,
+    readonly exampleBasic: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 
-    readonly exampleContextMenu: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2LESS,
+    readonly exampleContextMenu: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly exampleReportMistakeForm: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        LESS: example3LESS,
+    readonly exampleReportMistakeForm: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
     };
-
-    readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
-
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
-        'bottom',
-        'top',
-    ];
-
-    readonly dropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidthT> = [
-        'min',
-        'auto',
-        'fixed',
-    ];
-
-    dropdownAlign = this.dropdownAlignVariants[0];
-    dropdownDirection: TuiVerticalDirection | null = null;
-    dropdownMinHeight = DEFAULT_MIN_HEIGHT;
-    dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
-    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
-    dropdownSided = false;
 }

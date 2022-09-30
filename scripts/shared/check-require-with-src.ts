@@ -1,14 +1,15 @@
+import {TuiGrepException} from './grep.exception';
 import {grepByPattern} from './grep-by-pattern';
 
-export async function checkRequireWithSrc(path: string): Promise<void> | never {
-    const includePattern = 'require(.*/src/.*)';
+export async function checkRequireWithSrc(path: string): Promise<void> {
+    const includePattern = `require(.*/src/.*)`;
     const result = await grepByPattern({
-        excludePattern: 'taiga-ui-icons-scripts|browser',
+        excludePattern: `taiga-ui-icons-scripts|browser|.map`,
         includePattern,
         path,
     });
 
     if (result.length > 0) {
-        throw new Error(`There are problems with ${includePattern} in:\n\n${result}`);
+        throw new TuiGrepException(includePattern, result);
     }
 }

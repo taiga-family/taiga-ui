@@ -1,0 +1,52 @@
+name: Deploy to Github Pages (taiga-ui.dev)
+
+on:
+  workflow_run:
+    workflows: ['Snapshots']
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        type: boolean
+        required: false
+        description: --dry-run
+
+env:
+  REPO: https://github.com/Tinkoff/taiga-ui.git
+  DIST: dist/demo/browser
+
+jobs:
+  deploy-gh-pages:
+    if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare demo before deploy from snapshots
+        run: |
+          git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2
+          git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
+
+      - name: Cleanup after clone snapshots
+        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+
+      - name: Debug output
+        run: tree ${{ env.DIST }} -P '*.html'
+
+      - name: Deploy to taiga-ui.dev
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        if: ${{ github.event.inputs.dryRun != 'true' }}
+        with:
+          branch: gh-pages
+          folder: ${{ env.DIST }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          clean: true
+          silent: false
+          clean-exclude: |
+            .gitignore
+            CNAME
+
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true

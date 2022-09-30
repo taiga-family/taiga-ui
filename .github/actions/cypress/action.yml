@@ -1,0 +1,36 @@
+name: Taiga-UI action for setup Cypress and Sorry Cypress
+description: Cypress and Sorry Cypress
+
+inputs:
+  snapshot-path:
+    description: Snapshot path
+    required: true
+  cypress-api-url:
+    description: Patch Cypress with a custom API URL. # example: https://sorry-cypress-self-hosted.herokuapp.com/
+    required: true
+
+runs:
+  using: composite
+  steps:
+    # disable shared memory X11 affecting Cypress v4 and Chrome
+    # https://github.com/cypress-io/cypress-docker-images/issues/270
+    - shell: bash
+      run: |
+        echo "Provide cypress environments"
+        echo "QT_X11_NO_MITSHM=1" >> $GITHUB_ENV
+        echo "_X11_NO_MITSHM=1" >> $GITHUB_ENV
+        echo "_MITSHM=0" >> $GITHUB_ENV
+        echo "DISPLAY=:99" >> $GITHUB_ENV
+        echo "SNAPSHOTS_KEY=e2e-screenshots-${GITHUB_REF//\//-}-${GITHUB_SHA//\//-}" >> $GITHUB_ENV
+        echo "SNAPSHOTS_PATH=${{ inputs.snapshot-path }}" >> $GITHUB_ENV
+        echo "CYPRESS_API_URL=${{ inputs.cypress-api-url }}" >> $GITHUB_ENV
+
+    - name: Ignore running parallel Xvfb servers
+      shell: bash
+      run: Xvfb :99 &
+
+    - name: Show where is cypress cache
+      shell: bash
+      run: |
+        npx cypress cache path
+        npx cypress cache list

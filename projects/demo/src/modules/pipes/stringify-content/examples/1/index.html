@@ -1,8 +1,12 @@
-<tui-combo-box class="b-form" [stringify]="stringify" [(ngModel)]="value">
+<tui-combo-box
+    class="b-form"
+    [stringify]="stringify"
+    [(ngModel)]="value"
+>
     Pick your guy
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiFilterByInputWith : stringify"
+        [items]="items | tuiFilterByInputWith: stringify"
         [itemContent]="stringify | tuiStringifyContent"
     ></tui-data-list-wrapper>
 </tui-combo-box>

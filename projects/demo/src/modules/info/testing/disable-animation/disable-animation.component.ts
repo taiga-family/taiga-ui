@@ -1,11 +1,10 @@
-import {Component} from '@angular/core';
-
-import {default as disableAnimationExample} from '!!raw-loader!./examples/disable-all-animation.txt';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    selector: 'disable-animation',
-    templateUrl: './disable-animation.template.html',
+    selector: `disable-animation`,
+    templateUrl: `./disable-animation.template.html`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisableAnimationComponent {
-    readonly disableAnimationExample = disableAnimationExample;
+    readonly disableAnimationExample = import(`./examples/disable-all-animation.md?raw`);
 }

@@ -6,8 +6,9 @@ import {TUI_FIRST_DAY_OF_WEEK, TUI_SHORT_WEEK_DAYS} from './index';
 
 export type WEEK_DAYS_NAMES = [string, string, string, string, string, string, string];
 
-// TODO: Remove export in ivy compiation
-export const convertToSundayFirstWeekFormat = (weekDaysNames: WEEK_DAYS_NAMES) => {
+const convertToSundayFirstWeekFormat = (
+    weekDaysNames: WEEK_DAYS_NAMES,
+): WEEK_DAYS_NAMES => {
     const sundayIndex = weekDaysNames.length - 1;
 
     return [
@@ -18,7 +19,7 @@ export const convertToSundayFirstWeekFormat = (weekDaysNames: WEEK_DAYS_NAMES) =
 
 export const TUI_ORDERED_SHORT_WEEK_DAYS = new InjectionToken<
     Observable<WEEK_DAYS_NAMES>
->('Ordered calendars i18n texts', {
+>(`[TUI_ORDERED_SHORT_WEEK_DAYS]: Ordered calendars i18n texts`, {
     factory: () => {
         const firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 

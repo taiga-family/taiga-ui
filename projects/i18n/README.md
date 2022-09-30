@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
+[Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 <!-- Do not change next line without i18n demo page -->
 
@@ -12,20 +12,21 @@
 
 Supported languages:
 
-| Language             |      Constant name      | Coverage |
-| -------------------- | :---------------------: | -------: |
-| English (by default) |  TUI_ENGLISH_LANGUAGE   |     100% |
-| Russian              |  TUI_RUSSIAN_LANGUAGE   |     100% |
-| Spanish              |  TUI_SPANISH_LANGUAGE   |     100% |
-| German               |   TUI_GERMAN_LANGUAGE   |     100% |
-| Turkish              |  TUI_TURKISH_LANGUAGE   |     100% |
-| Dutch                |   TUI_DUTCH_LANGUAGE    |     100% |
-| Ukrainian            | TUI_UKRAINIAN_LANGUAGE  |     100% |
-| French               |   TUI_FRENCH_LANGUAGE   |     100% |
-| Vietnamese           | TUI_VIETNAMESE_LANGUAGE |     100% |
-| Portuguese           | TUI_PORTUGUESE_LANGUAGE |     100% |
-| Italian              |  TUI_ITALIAN_LANGUAGE   |     100% |
-| Polish               |   TUI_POLISH_LANGUAGE   |     100% |
+| Language             |      Constant name      |
+| -------------------- | :---------------------: |
+| English (by default) |  TUI_ENGLISH_LANGUAGE   |
+| Russian              |  TUI_RUSSIAN_LANGUAGE   |
+| Spanish              |  TUI_SPANISH_LANGUAGE   |
+| German               |   TUI_GERMAN_LANGUAGE   |
+| Turkish              |  TUI_TURKISH_LANGUAGE   |
+| Dutch                |   TUI_DUTCH_LANGUAGE    |
+| Ukrainian            | TUI_UKRAINIAN_LANGUAGE  |
+| French               |   TUI_FRENCH_LANGUAGE   |
+| Vietnamese           | TUI_VIETNAMESE_LANGUAGE |
+| Portuguese           | TUI_PORTUGUESE_LANGUAGE |
+| Italian              |  TUI_ITALIAN_LANGUAGE   |
+| Polish               |   TUI_POLISH_LANGUAGE   |
+| Chinese              |  TUI_CHINESE_LANGUAGE   |
 
 <!-- Do not change next line without i18n demo page -->
 
@@ -43,10 +44,11 @@ You have English by default.
 
 If you want to change it, you need to provide `TUI_LANGUAGE` token in your app.module:
 
+**./app.module.ts**
+
 ```ts
 import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 
-// app.module
 @NgModule({
   // ...
   providers: [
@@ -70,5 +72,53 @@ Feel free to add new languages!
 2. Copy `english` folder and rename new folder with the name of language you speak
 3. Translate entities in files. If you need some clarification, take a look at interfaces of entities. If you need more,
    please write to us via issues or any other way of contact :)
+
+**./serbian/index.ts**
+
+```ts
+import {TuiLanguage, TuiLanguagePreview} from '@taiga-ui/i18n';
+import {TUI_SERBIAN_LANGUAGE_ADDON_COMMERCE} from './addon-commerce';
+import {TUI_SERBIAN_LANGUAGE_ADDON_TABLE} from './addon-table';
+import {TUI_ENGLISH_LANGUAGE_ADDON_EDITOR} from './addon-editor';
+import {TUI_SERBIAN_LANGUAGE_CORE} from './core';
+import {TUI_SERBIAN_LANGUAGE_KIT} from './kit';
+
+const TUI_SERBIAN_LANGUAGE_PREVIEW: TuiLanguagePreview = {
+  previewTexts: {rotate: 'rotiraj'},
+  zoomTexts: {
+    zoomOut: 'odzumiraj',
+    zoomIn: 'zumiraj',
+    reset: 'reset',
+  },
+};
+
+export const TUI_SERBIAN_LANGUAGE: TuiLanguage = {
+  ...TUI_SERBIAN_LANGUAGE_CORE,
+  ...TUI_SERBIAN_LANGUAGE_KIT,
+  ...TUI_SERBIAN_LANGUAGE_ADDON_TABLE,
+  ...TUI_SERBIAN_LANGUAGE_ADDON_COMMERCE,
+  ...TUI_ENGLISH_LANGUAGE_ADDON_EDITOR,
+  ...TUI_SERBIAN_LANGUAGE_PREVIEW,
+  name: 'serbian',
+};
+```
+
+**./app.module.ts**
+
+```ts
+import {TUI_LANGUAGE} from '@taiga-ui/i18n';
+import {TUI_SERBIAN_LANGUAGE} from './serbian';
+
+@NgModule({
+  // ...
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_SERBIAN_LANGUAGE),
+    },
+  ],
+})
+export class AppModule {}
+```
 
 Thank you!

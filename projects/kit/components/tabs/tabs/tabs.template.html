@@ -1,5 +1,7 @@
+<ng-container *ngIf="children.changes | async"></ng-container>
+<ng-content></ng-content>
 <tui-underline
-    *ngIf="underline && (refresh$ | async)"
+    *ngIf="underline"
+    class="t-underline"
     [element]="activeElement"
 ></tui-underline>
-<ng-content></ng-content>

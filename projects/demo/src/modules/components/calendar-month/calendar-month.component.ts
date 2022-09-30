@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -10,34 +11,25 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiNotificationsService} from '@taiga-ui/core';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
+    selector: `example-tui-calendar-month`,
+    templateUrl: `./calendar-month.template.html`,
     changeDetection,
 })
 export class ExampleTuiCalendarMonthComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
     readonly minVariants = [TUI_FIRST_DAY, new TuiMonth(2019, 2), new TuiMonth(2007, 0)];
@@ -68,9 +60,9 @@ export class ExampleTuiCalendarMonthComponent {
         new TuiMonth(2007, 2),
     ];
 
-    value = null;
+    value: TuiMonth | TuiMonthRange | null = null;
 
-    readonly yearVariants: ReadonlyArray<TuiYear> = [
+    readonly yearVariants: readonly TuiYear[] = [
         TuiDay.currentLocal(),
         new TuiYear(2007),
     ];
@@ -78,11 +70,11 @@ export class ExampleTuiCalendarMonthComponent {
     year = this.yearVariants[0];
 
     constructor(
-        @Inject(TuiNotificationsService)
-        private readonly notifications: TuiNotificationsService,
+        @Inject(TuiAlertService)
+        private readonly alertService: TuiAlertService,
     ) {}
 
-    onMonthClick(month: TuiMonth) {
-        this.notifications.show(String(month)).subscribe();
+    onMonthClick(month: TuiMonth): void {
+        this.alertService.open(String(month)).subscribe();
     }
 }

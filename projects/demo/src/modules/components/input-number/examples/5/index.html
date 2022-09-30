@@ -1,0 +1,8 @@
+<tui-input-number
+    prefix="¥ "
+    decimal="never"
+    [postfix]="value ? ',00' : ' ,00'"
+    [(ngModel)]="value"
+>
+    Type a sum
+</tui-input-number>

@@ -1,44 +1,31 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    inject,
-    InjectionToken,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {HISTORY, WINDOW} from '@ng-web-apis/common';
+import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
-import {isInsideIframe} from '@taiga-ui/cdk/utils';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
-    'Is closing dialog on browser backward navigation enabled',
+    `[TUI_DIALOG_CLOSES_ON_BACK]: Is closing dialog on browser backward navigation enabled`,
     {
-        /**
-         * TODO enable this feature for iframes too
-         * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
-         */
-        factory: () => of(!isInsideIframe(inject(WINDOW))),
+        factory: () => of(false),
     },
 );
 
-// TODO: remove in ivy compilation
-export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
-// TODO: remove in ivy compilation
-export const isFakeHistoryState = (
+const FAKE_HISTORY_STATE = {label: `ignoreMe`} as const;
+const isFakeHistoryState = (
     historyState: Record<string, unknown>,
 ): historyState is typeof FAKE_HISTORY_STATE =>
     historyState?.label === FAKE_HISTORY_STATE.label;
 
-// @dynamic
 @Component({
-    selector: 'tui-dialog-host',
-    templateUrl: './dialog-host.template.html',
-    styleUrls: ['./dialog-host.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: `tui-dialog-host`,
+    templateUrl: `./dialog-host.template.html`,
+    styleUrls: [`./dialog-host.style.less`],
+    // So that we do not force OnPush on custom dialogs
+    changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
@@ -53,12 +40,13 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     constructor(
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
         readonly isDialogClosesOnBack$: Observable<boolean>,
-        @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
+        @Inject(TUI_DIALOGS)
+        private readonly dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
-    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean) {
+    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean): void {
         if (!isDialogClosesOnBack) {
             return;
         }
@@ -80,8 +68,8 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         {propertyName}: TransitionEvent,
         popupOpened: boolean,
         isDialogClosesOnBack: boolean,
-    ) {
-        if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
+    ): void {
+        if (!isDialogClosesOnBack || propertyName !== `letter-spacing`) {
             return;
         }
 

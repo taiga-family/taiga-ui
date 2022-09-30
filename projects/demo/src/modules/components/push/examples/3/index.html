@@ -1,0 +1,28 @@
+<button
+    tuiButton
+    (click)="toggle(true)"
+>
+    Show push
+</button>
+
+<tui-push
+    *tuiPush="open"
+    heading="Indiana Jones"
+    type="Dr. Henry Walton Jones, Jr."
+    (close)="toggle(false)"
+>
+    <tui-svg src="tuiIconCommentLarge"></tui-svg>
+    I have a bad feeling about this...
+    <button
+        tuiButton
+        (click)="toggle(false)"
+    >
+        Fortune
+    </button>
+    <button
+        tuiLink
+        (click)="toggle(false)"
+    >
+        Glory
+    </button>
+</tui-push>

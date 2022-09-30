@@ -1,0 +1,29 @@
+{
+    "root": "projects/taiga-schematics",
+    "sourceRoot": "projects/taiga-schematics",
+    "projectType": "library",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["dist/taiga-schematics"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/taiga-schematics/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies",
+                    "params": "forward"
+                }
+            ]
+        },
+        "publish": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/taiga-schematics --dry-run {args.dry-run}"
+            }
+        }
+    }
+}

@@ -1,8 +1,15 @@
-<tui-doc-page header="CalendarMonth" package="KIT" type="components">
+<tui-doc-page
+    header="CalendarMonth"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             Month picker component. If you want a textfield, see
-            <a tuiLink routerLink="/components/input-month-range">
+            <a
+                tuiLink
+                routerLink="/components/input-month-range"
+            >
                 InputMonthRange
             </a>
         </p>
@@ -46,10 +53,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a month and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a month and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -112,7 +116,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -121,7 +125,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

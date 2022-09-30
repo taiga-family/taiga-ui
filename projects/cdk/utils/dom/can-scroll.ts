@@ -1,4 +1,4 @@
-export function canScroll(
+export function tuiCanScroll(
     element: Element,
     rootElement: Element,
     vertical: boolean,

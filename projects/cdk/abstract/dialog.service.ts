@@ -2,31 +2,31 @@ import {Inject, Injectable} from '@angular/core';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {TuiDialog} from '@taiga-ui/cdk/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
-export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
-    readonly TuiDialog<T, any>[]
+export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
+    ReadonlyArray<TuiDialog<T, any>>
 > {
-    protected abstract readonly component: PolymorpheusContent<TuiDialog<T, any>>;
+    protected abstract readonly component: PolymorpheusComponent<any, TuiDialog<T, any>>;
 
     protected abstract readonly defaultOptions: T;
 
-    protected readonly dialogs$ = new BehaviorSubject<readonly TuiDialog<T, any>[]>([]);
+    protected readonly dialogs$ = new BehaviorSubject<ReadonlyArray<TuiDialog<T, any>>>(
+        [],
+    );
 
-    protected constructor(
-        @Inject(TuiIdService) private readonly idService: TuiIdService,
-    ) {
+    constructor(@Inject(TuiIdService) private readonly idService: TuiIdService) {
         super(observer => this.dialogs$.subscribe(observer));
     }
 
-    open<G>(
-        content: PolymorpheusContent<TuiBaseDialogContext<G> & T>,
+    open<G = void>(
+        content: PolymorpheusContent<TuiBaseDialogContext<K extends void ? G : K> & T>,
         options: Partial<T> = {},
-    ): Observable<G> {
+    ): Observable<K extends void ? G : K> {
         return new Observable(observer => {
-            const completeWith = (result: G) => {
+            const completeWith = (result: K extends void ? G : K): void => {
                 observer.next(result);
                 observer.complete();
             };

@@ -1,73 +1,62 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
-
 @Component({
-    selector: 'example-avatar',
-    templateUrl: './badged-content.template.html',
+    selector: `example-avatar`,
+    templateUrl: `./badged-content.template.html`,
     changeDetection,
 })
 export class ExampleTuiBadgedContentComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import(`./examples/1/index.ts?raw`),
+        HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        LESS: example2Less,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./examples/2/index.ts?raw`),
+        LESS: import(`./examples/2/index.less?raw`),
+        HTML: import(`./examples/2/index.html?raw`),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
     };
 
     rounded = false;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
-        'xs',
-        's',
-        'm',
-        'l',
-        'xl',
-        'xxl',
+        `xs`,
+        `s`,
+        `m`,
+        `l`,
+        `xl`,
+        `xxl`,
     ];
 
     size = this.sizeVariants[2];
 
-    colorTop = '';
+    colorTop = ``;
 
-    colorBottom = '';
+    colorBottom = ``;
 
-    contentTop: PolymorpheusContent = '';
+    contentTop: PolymorpheusContent = ``;
 
-    contentBottom: PolymorpheusContent = '';
+    contentBottom: PolymorpheusContent = ``;
 
-    readonly contentVariants = [
-        '',
+    readonly contentVariants: PolymorpheusContent[] = [
+        ``,
         1,
         5,
         155,
-        'tuiIconCheck',
-        'Template',
-        'tuiIconCheckCircleLarge',
+        `tuiIconCheck`,
+        `Template`,
+        `tuiIconCheckCircleLarge`,
     ];
 }

@@ -7,7 +7,7 @@ import {CSS_VARS} from '../../tokens/css-vars';
 import {TuiCustomizationComponent} from './customization.component';
 
 export const TUI_DOC_CUSTOMIZATION_VARS = new InjectionToken<Record<string, string>>(
-    'CSS variables map',
+    `[TUI_DOC_CUSTOMIZATION_VARS]: CSS variables map`,
 );
 export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -18,21 +18,19 @@ export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_CUSTOMIZATION_VARS,
         deps: [WINDOW, CSS_VARS],
-        useFactory: varsFactory,
+        useFactory: (
+            windowRef: Window,
+            variables: readonly string[],
+        ): Record<string, string> => {
+            const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
+
+            return variables.reduce(
+                (dictionary, variable) => ({
+                    ...dictionary,
+                    [variable]: styles.getPropertyValue(variable).trim(),
+                }),
+                {},
+            );
+        },
     },
 ];
-
-export function varsFactory(
-    windowRef: Window,
-    variables: readonly string[],
-): Record<string, string> {
-    const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
-
-    return variables.reduce(
-        (dictionary, variable) => ({
-            ...dictionary,
-            [variable]: styles.getPropertyValue(variable).trim(),
-        }),
-        {},
-    );
-}

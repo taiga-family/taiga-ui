@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    inRange,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDayRange,
     tuiDefaultProp,
+    tuiInRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -24,9 +24,9 @@ const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
 
 @Component({
-    selector: 'tui-primitive-year-picker',
-    templateUrl: './primitive-year-picker.template.html',
-    styleUrls: ['./primitive-year-picker.style.less'],
+    selector: `tui-primitive-year-picker`,
+    templateUrl: `./primitive-year-picker.template.html`,
+    styleUrls: [`./primitive-year-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearPickerComponent {
@@ -36,11 +36,11 @@ export class TuiPrimitiveYearPickerComponent {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiYear | TuiDayRange | null = null;
+    value: TuiMonthRange | TuiYear | TuiDayRange | null = null;
 
     @Input()
     @tuiDefaultProp()
-    initialItem = TuiMonth.currentLocal();
+    initialItem: TuiYear = TuiMonth.currentLocal();
 
     @Input()
     @tuiDefaultProp()
@@ -55,9 +55,9 @@ export class TuiPrimitiveYearPickerComponent {
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     @Output()
-    readonly yearClick = new EventEmitter<TuiYear | TuiDayRange>();
+    readonly yearClick = new EventEmitter<TuiYear>();
 
-    @HostBinding('class._single')
+    @HostBinding(`class._single`)
     get isSingle(): boolean {
         const {value} = this;
 
@@ -103,11 +103,11 @@ export class TuiPrimitiveYearPickerComponent {
         }
 
         if (pressedItem === item) {
-            return TuiInteractiveState.Pressed;
+            return TuiInteractiveState.Active;
         }
 
         if (hoveredItem === item) {
-            return TuiInteractiveState.Hovered;
+            return TuiInteractiveState.Hover;
         }
 
         return null;
@@ -176,30 +176,30 @@ export class TuiPrimitiveYearPickerComponent {
             return false;
         }
 
-        return inRange(
+        return tuiInRange(
             item,
             Math.min(value.from.year, hoveredItem),
             Math.max(value.from.year, hoveredItem),
         );
     }
 
-    onItemHovered(hovered: boolean, item: number) {
+    onItemHovered(hovered: boolean, item: number): void {
         this.updateHoveredItem(hovered, item);
     }
 
-    onItemPressed(pressed: boolean, item: number) {
+    onItemPressed(pressed: boolean, item: number): void {
         this.updatePressedItem(pressed, item);
     }
 
-    onItemClick(item: number) {
+    onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
     }
 
-    private updateHoveredItem(hovered: boolean, item: number) {
+    private updateHoveredItem(hovered: boolean, item: number): void {
         this.hoveredItem = hovered ? item : null;
     }
 
-    private updatePressedItem(pressed: boolean, item: number) {
+    private updatePressedItem(pressed: boolean, item: number): void {
         this.pressedItem = pressed ? item : null;
     }
 }

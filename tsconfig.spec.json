@@ -1,7 +1,8 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["**/schematics/**/*", "projects/demo-integrations"],
     "compilerOptions": {
-        "strictPropertyInitialization": false
-    }
+        "outDir": "./out-tsc/spec",
+        "types": ["jasmine", "jasmine-ajax", "node", "webpack-env"]
+    },
+    "exclude": ["**/schematics/**/*", "projects/demo-integrations"]
 }

@@ -1,4 +1,8 @@
-<tui-doc-page header="Button" package="CORE" type="components">
+<tui-doc-page
+    header="Button"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>TuiButtonModule</code>
@@ -85,6 +89,9 @@
                     [shape]="shape"
                     [showLoader]="showLoader"
                     [size]="size"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                 ></button>
                 <ng-template #button>
                     <button
@@ -98,6 +105,9 @@
                         [shape]="shape"
                         [showLoader]="showLoader"
                         [size]="size"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                     >
                         Content
                     </button>
@@ -189,6 +199,7 @@
                 Size
             </ng-template>
         </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -202,7 +213,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -211,7 +222,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -219,13 +230,12 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_BUTTON_OPTIONS</code>
-                    injection token to override the default options for the
-                    component.
+                    injection token to override the default options for the component.
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

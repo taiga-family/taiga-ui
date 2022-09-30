@@ -8,61 +8,63 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
     Output,
     QueryList,
     ViewChild,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocusedIn,
-    setNativeFocused,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    TuiCreditCardAutofillName,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
+    tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
-    TUI_HINT_WATCHED_CONTROLLER,
-    TuiHintControllerDirective,
-} from '@taiga-ui/core/directives/hint-controller';
-import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
+import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 import {
     TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldOptions,
 } from './primitive-textfield-options';
+import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
 
 @Component({
-    selector: 'tui-primitive-textfield',
-    templateUrl: './primitive-textfield.template.html',
-    styleUrls: ['./primitive-textfield.style.less'],
+    selector: `tui-primitive-textfield`,
+    templateUrl: `./primitive-textfield.template.html`,
+    styleUrls: [`./primitive-textfield.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+        MODE_PROVIDER,
+    ],
     host: {
-        '($.data-mode.attr)': 'mode$',
-        '[class._autofilled]': 'autofilled',
-        '[class._label-outside]': 'controller.labelOutside',
+        '($.data-mode.attr)': `mode$`,
+        '[class._autofilled]': `autofilled`,
+        '[class._label-outside]': `controller.labelOutside`,
     },
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
+    implements TuiPrimitiveTextfield
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -71,24 +73,14 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    filler = '';
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
-
-    // TODO: Remove null in 3.0
-    @Input()
-    @tuiDefaultProp()
-    iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
-        null;
+    filler = ``;
 
     @Input()
     @tuiDefaultProp()
     iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
-    @HostBinding('class._readonly')
+    @HostBinding(`class._readonly`)
     @tuiDefaultProp()
     readOnly = false;
 
@@ -102,26 +94,20 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    prefix = '';
+    prefix = ``;
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix = ``;
 
     @Input()
     @tuiDefaultProp()
-    value = '';
+    value = ``;
 
     @Output()
     readonly valueChange = new EventEmitter<string>();
 
-    /**
-     * @deprecated TODO: remove in 3.0
-     */
-    @Output()
-    readonly autofilledChange = new EventEmitter<boolean>();
-
-    @ContentChildren(PolymorpheusOutletComponent)
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     readonly content?: QueryList<unknown>;
 
     autofilled = false;
@@ -131,8 +117,9 @@ export class TuiPrimitiveTextfieldComponent
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
+        @Optional()
+        @Inject(TuiHintOptionsDirective)
+        readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
         readonly options: TuiPrimitiveTextfieldOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -145,29 +132,27 @@ export class TuiPrimitiveTextfieldComponent
             return null;
         }
 
-        // TODO: Refactor this after we drop built-in input element
-        return (
-            (this.focusableElement.nativeElement
-                .previousElementSibling as HTMLInputElement | null) ||
-            this.focusableElement.nativeElement
-        );
+        const {nativeElement} = this.focusableElement;
+
+        return (nativeElement.previousElementSibling ||
+            nativeElement) as HTMLInputElement | null;
     }
 
     get focused(): boolean {
-        return isNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    @HostBinding('attr.data-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiSizeS | TuiSizeL {
         return this.controller.size;
     }
 
-    @HostBinding('class._invalid')
+    @HostBinding(`class._invalid`)
     get computedInvalid(): boolean {
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
-    @HostBinding('class._hidden')
+    @HostBinding(`class._hidden`)
     get inputHidden(): boolean {
         return !!this.content?.length;
     }
@@ -178,28 +163,42 @@ export class TuiPrimitiveTextfieldComponent
 
     get hasCleaner(): boolean {
         return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
+            this.controller.cleaner &&
+            this.hasValue &&
+            !this.computedDisabled &&
+            !this.readOnly
         );
     }
 
     get hasTooltip(): boolean {
-        return !!this.hintController?.content && !this.disabled;
+        return !!this.hintOptions?.content && !this.computedDisabled;
     }
 
     get hasCustomContent(): boolean {
         return !!this.controller.customContent;
     }
 
-    get hasPlaceholder(): boolean {
-        const hasDecor =
-            this.controller.exampleText ||
-            this.prefix ||
-            this.postfix ||
-            this.nativeFocusableElement?.placeholder;
-        const showDecor = hasDecor && !this.readOnly && this.computedFocused;
-        const placeholderVisible = !this.hasValue && !showDecor;
+    get showOnlyPlaceholder(): boolean {
+        return (
+            this.focused &&
+            this.placeholderVisible &&
+            (this.size === `s` || (this.size === `m` && !this.placeholderRaisable))
+        );
+    }
 
-        return this.placeholderRaisable || placeholderVisible;
+    get placeholderVisible(): boolean {
+        const hasDecor =
+            this.nativeFocusableElement?.placeholder || this.prefix || this.postfix;
+        const showDecor = hasDecor && !this.readOnly && this.computedFocused;
+
+        return !this.hasValue && !showDecor;
+    }
+
+    get hasPlaceholder(): boolean {
+        return (
+            !this.showOnlyPlaceholder &&
+            (this.placeholderRaisable || this.placeholderVisible)
+        );
     }
 
     get placeholderRaised(): boolean {
@@ -209,60 +208,62 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    @HostBinding('style.--border-start.rem')
+    @HostBinding(`style.--border-start.rem`)
     get borderStart(): number {
-        return this.iconAlignLeft ? this.iconPaddingLeft : 0;
+        return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
-    @HostBinding('style.--border-end.rem')
+    @HostBinding(`style.--border-end.rem`)
     get borderEnd(): number {
-        return getBorder(
-            this.iconAlignRight,
+        return tuiGetBorder(
+            !!this.iconContent,
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,
         );
     }
 
-    get iconAlignLeft(): boolean {
-        return this.hasIcon && this.iconAlign === 'left';
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.controller.icon;
     }
 
-    get iconAlignRight(): boolean {
-        return this.hasIcon && this.iconAlign === 'right';
+    get iconLeftContent(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+    > {
+        return this.controller.iconLeft;
     }
 
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
-        return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
-            ? 'ccexpiryyear'
+        return this.nativeFocusableElement?.autocomplete === `cc-exp`
+            ? `ccexpiryyear`
             : null;
     }
 
     get computedId(): string {
-        return this.nativeFocusableElement?.id || '';
+        return this.nativeFocusableElement?.id || ``;
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     @tuiPure
     getIndent$(element: HTMLElement): Observable<number> {
-        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
+        return fromEvent(element, `scroll`).pipe(map(() => -1 * element.scrollLeft));
     }
 
-    clear() {
+    clear(): void {
         if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.value = '';
+            this.nativeFocusableElement.value = ``;
         }
 
-        this.updateValue('');
+        this.updateValue(``);
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         const {nativeFocusableElement} = this;
 
         if (!nativeFocusableElement || event.target === nativeFocusableElement) {
@@ -270,43 +271,34 @@ export class TuiPrimitiveTextfieldComponent
         }
 
         event.preventDefault();
-        setNativeFocused(nativeFocusableElement);
+        nativeFocusableElement.focus();
     }
 
-    onModelChange(value: string) {
+    onModelChange(value: string): void {
         this.updateValue(value);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onAutofilled(autofilled: boolean) {
+    onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
     }
 
     private get iconPaddingLeft(): number {
-        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
+        return this.size === `s` ? ICON_PADDING_S : ICON_PADDING;
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== 's' && !this.controller.labelOutside;
+        return this.size !== `s` && !this.controller.labelOutside;
     }
 
-    private get hasIcon(): boolean {
-        return !!this.iconContent;
-    }
-
-    private updateAutofilled(autofilled: boolean) {
+    private updateAutofilled(autofilled: boolean): void {
         if (this.autofilled === autofilled) {
             return;
         }
 
         this.autofilled = autofilled;
-        this.autofilledChange.emit(autofilled);
     }
 
-    private updateValue(value: string) {
+    private updateValue(value: string): void {
         this.value = value;
         this.valueChange.emit(value);
     }

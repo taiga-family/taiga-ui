@@ -6,15 +6,15 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
 
 @Component({
-    selector: 'tui-table-bar-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-table-bar-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiTableBarExampleComponent1 {
-    @ViewChild('tableBarTemplate')
-    tableBarTemplate: PolymorpheusContent = '';
+    @ViewChild(`tableBarTemplate`)
+    tableBarTemplate: PolymorpheusContent = ``;
 
     subscription = new Subscription();
 
@@ -23,11 +23,11 @@ export class TuiTableBarExampleComponent1 {
         private readonly tableBarsService: TuiTableBarsService,
     ) {}
 
-    showTableBar() {
+    showTableBar(): void {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
-            .open(this.tableBarTemplate || '', {
+            .open(this.tableBarTemplate || ``, {
                 hasCloseButton: true,
                 adaptive: true,
             })

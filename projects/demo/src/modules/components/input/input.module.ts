@@ -3,15 +3,15 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiInputCardModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDropdownControllerModule,
+    TuiDropdownModule,
     TuiGroupModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -20,6 +20,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TextMaskModule,
     TuiAvatarModule,
     TuiDataListWrapperModule,
     TuiInputCountModule,
@@ -30,7 +31,6 @@ import {
     TuiSelectModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TextMaskModule} from 'angular2-text-mask';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputExample1} from './examples/1';
@@ -71,14 +71,14 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiAvatarModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
-        TuiDropdownControllerModule,
+        TuiHintModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,
         PolymorpheusModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiInputComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),
         TextMaskModule,
     ],
     declarations: [

@@ -1,11 +1,17 @@
-<tui-doc-page header="PullToRefresh" package="ADDON-MOBILE" type="components">
+<tui-doc-page
+    header="PullToRefresh"
+    package="ADDON-MOBILE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
-            Component to refresh content after pull top. It emulates appearance
-            of native iOS and Android components
+            Component to refresh content after pull top. It emulates appearance of native iOS and Android components
         </p>
 
-        <tui-notification i18n class="tui-space_top-4">
+        <tui-notification
+            i18n
+            class="tui-space_top-4"
+        >
             <div>
                 It emits
                 <code>(pulled)</code>
@@ -18,16 +24,27 @@
             </div>
         </tui-notification>
 
-        <tui-doc-example id="android" heading="Android" [content]="example1">
+        <tui-doc-example
+            id="android"
+            heading="Android"
+            [content]="example1"
+        >
             <tui-pull-to-refresh-example-1></tui-pull-to-refresh-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="ios" heading="iOS" [content]="example2">
+        <tui-doc-example
+            id="ios"
+            heading="iOS"
+            [content]="example2"
+        >
             <tui-pull-to-refresh-example-2></tui-pull-to-refresh-example-2>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template i18n-pageTab pageTab="Setup">
+    <ng-template
+        i18n-pageTab
+        pageTab="Setup"
+    >
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -38,7 +55,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -47,7 +64,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -1,1 +1,1 @@
-export const stub = 'Taiga UI schematics package';
+export const stub = `Taiga UI schematics package`;

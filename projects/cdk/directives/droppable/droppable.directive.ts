@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
-import {preventDefault, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -13,9 +13,8 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-// @dynamic
 @Directive({
-    selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
+    selector: `[tuiDroppableDropped], [tuiDroppableDragOverChange]`,
     providers: [TuiDestroyService],
 })
 export class TuiDroppableDirective {
@@ -29,27 +28,30 @@ export class TuiDroppableDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        this.tuiDroppableDropped = typedFromEvent(nativeElement, 'drop').pipe(
-            preventDefault(),
+        this.tuiDroppableDropped = tuiTypedFromEvent(nativeElement, `drop`).pipe(
+            tuiPreventDefault(),
             map(event => event.dataTransfer),
-            filter(isPresent),
+            filter(tuiIsPresent),
         );
 
-        this.tuiDroppableDragOverChange = typedFromEvent(nativeElement, 'dragenter').pipe(
+        this.tuiDroppableDragOverChange = tuiTypedFromEvent(
+            nativeElement,
+            `dragenter`,
+        ).pipe(
             switchMap(({target, dataTransfer}) =>
                 merge(
-                    typedFromEvent(nativeElement, 'dragleave').pipe(
+                    tuiTypedFromEvent(nativeElement, `dragleave`).pipe(
                         filter(event => event.target === target),
                     ),
-                    typedFromEvent(nativeElement, 'drop'),
+                    tuiTypedFromEvent(nativeElement, `drop`),
                 ).pipe(mapTo(null), startWith(dataTransfer)),
             ),
             distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
         );
 
         // Required by Drag and Drop API to stop redirecting
-        typedFromEvent(nativeElement, 'dragover')
-            .pipe(preventDefault(), takeUntil(destroy$))
+        tuiTypedFromEvent(nativeElement, `dragover`)
+            .pipe(tuiPreventDefault(), takeUntil(destroy$))
             .subscribe();
     }
 }

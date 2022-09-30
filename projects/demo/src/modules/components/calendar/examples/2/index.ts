@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-calendar-example-2',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-calendar-example-2`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
@@ -21,7 +21,7 @@ export class TuiCalendarExample2 {
 
     hoveredItem: TuiDay | null = null;
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         if (this.value === null || !this.value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
         }
@@ -29,19 +29,19 @@ export class TuiCalendarExample2 {
         this.value = TuiDayRange.sort(this.value.from, day);
     }
 
-    onMonthChangeFirst(month: TuiMonth) {
+    onMonthChangeFirst(month: TuiMonth): void {
         this.firstMonth = month;
         this.middleMonth = month.append({month: 1});
         this.lastMonth = month.append({month: 2});
     }
 
-    onMonthChangeMiddle(month: TuiMonth) {
+    onMonthChangeMiddle(month: TuiMonth): void {
         this.firstMonth = month.append({month: -1});
         this.middleMonth = month;
         this.lastMonth = month.append({month: 1});
     }
 
-    onMonthChangeLast(month: TuiMonth) {
+    onMonthChangeLast(month: TuiMonth): void {
         this.firstMonth = month.append({month: -2});
         this.middleMonth = month.append({month: -1});
         this.lastMonth = month;

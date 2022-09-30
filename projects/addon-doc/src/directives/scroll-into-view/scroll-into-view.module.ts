@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 
-import {ScrollIntoViewDirective} from './scroll-into-view.directive';
+import {TuiScrollIntoViewLinkDirective} from './scroll-into-view.directive';
 
 @NgModule({
-    declarations: [ScrollIntoViewDirective],
-    exports: [ScrollIntoViewDirective],
+    declarations: [TuiScrollIntoViewLinkDirective],
+    exports: [TuiScrollIntoViewLinkDirective],
 })
-export class ScrollIntoViewModule {}
+export class TuiScrollIntoViewLinkModule {}

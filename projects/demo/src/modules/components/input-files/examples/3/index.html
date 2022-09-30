@@ -1,0 +1,56 @@
+<tui-files>
+    <tui-file
+        *ngFor="let file of files"
+        state="normal"
+        [file]="file"
+    ></tui-file>
+
+    <tui-file
+        *ngFor="let file of rejectedFiles"
+        state="error"
+        [file]="file"
+    ></tui-file>
+
+    <tui-file
+        *ngIf="loadingFile && !isCypress"
+        state="loading"
+        [file]="loadingFile"
+        (removed)="removeLoading()"
+    ></tui-file>
+</tui-files>
+
+<h4>With link</h4>
+<tui-files>
+    <tui-file
+        *tuiItem
+        state="normal"
+        [file]="fileWithLink"
+    ></tui-file>
+</tui-files>
+
+<h4>With deleted state</h4>
+<tui-files>
+    <tui-file
+        *ngFor="let file of removedFiles"
+        state="deleted"
+        size="l"
+        [file]="file"
+    >
+        <button
+            tuiLink
+            (click)="restore(file)"
+        >
+            Restore
+        </button>
+    </tui-file>
+    <tui-file
+        *ngFor="let file of restoredFiles"
+        state="normal"
+        size="l"
+        [file]="file"
+        [leftContent]="icon"
+        (removed)="remove(file)"
+    ></tui-file>
+</tui-files>
+
+<ng-template #icon><tui-svg src="tuiIconFileLarge"></tui-svg></ng-template>

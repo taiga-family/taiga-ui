@@ -1,8 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {isPresent} from '@taiga-ui/cdk';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {tuiIsPresent} from '@taiga-ui/cdk';
+import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPaginationComponent} from '../pagination.component';
 import {TuiPaginationModule} from '../pagination.module';
@@ -17,7 +16,7 @@ interface TuiPaginationParams {
     readonly sidePadding?: number;
 }
 
-describe('TuiPaginationComponent', () => {
+describe(`TuiPaginationComponent`, () => {
     @Component({
         template: `
             <tui-pagination
@@ -30,7 +29,7 @@ describe('TuiPaginationComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPaginationComponent, {static: true})
-        component: TuiPaginationComponent;
+        component!: TuiPaginationComponent;
 
         index = 0;
 
@@ -44,27 +43,32 @@ describe('TuiPaginationComponent', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiPaginationComponent;
-    let pageObject: PageObject<TestComponent>;
+    let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return 'tui-pagination__';
+            return `tui-pagination__`;
         },
     };
 
-    function setParams({index, length, activePadding, sidePadding}: TuiPaginationParams) {
-        if (isPresent<number>(index)) {
+    function setParams({
+        index,
+        length,
+        activePadding,
+        sidePadding,
+    }: TuiPaginationParams): void {
+        if (tuiIsPresent<number>(index)) {
             testComponent.index = index;
         }
 
-        if (isPresent<number>(length)) {
+        if (tuiIsPresent<number>(length)) {
             testComponent.length = length;
         }
 
-        if (isPresent<number>(activePadding)) {
+        if (tuiIsPresent<number>(activePadding)) {
             testComponent.activePadding = activePadding;
         }
 
-        if (isPresent<number>(sidePadding)) {
+        if (tuiIsPresent<number>(sidePadding)) {
             testComponent.sidePadding = sidePadding;
         }
 
@@ -77,7 +81,7 @@ describe('TuiPaginationComponent', () => {
             .map<number>(({nativeElement}) => {
                 const text: string = nativeElement.textContent.trim();
 
-                return text === '…' ? 0 : Number(text);
+                return text === `…` ? 0 : Number(text);
             });
     }
 
@@ -90,86 +94,86 @@ describe('TuiPaginationComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
+        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
     });
 
-    describe('number of points', () => {
-        describe('less than length', () => {
+    describe(`number of points`, () => {
+        describe(`less than length`, () => {
             beforeEach(() => {
                 setParams({length: 99});
             });
 
-            it('index = 0', () => {
+            it(`index = 0`, () => {
                 setParams({index: 0});
                 expect(getElements()).toEqual([1, 2, 3, 4, 5, 0, 99]);
             });
 
-            it('index = 2', () => {
+            it(`index = 2`, () => {
                 setParams({index: 2});
                 expect(getElements()).toEqual([1, 2, 3, 4, 5, 0, 99]);
             });
 
-            it('index = 4', () => {
+            it(`index = 4`, () => {
                 setParams({index: 4});
                 expect(getElements()).toEqual([1, 0, 4, 5, 6, 0, 99]);
             });
 
-            it('index = 5', () => {
+            it(`index = 5`, () => {
                 setParams({index: 5});
                 expect(getElements()).toEqual([1, 0, 5, 6, 7, 0, 99]);
             });
 
-            it('index = 97', () => {
+            it(`index = 97`, () => {
                 setParams({index: 97});
                 expect(getElements()).toEqual([1, 0, 95, 96, 97, 98, 99]);
             });
 
-            it('index = 98', () => {
+            it(`index = 98`, () => {
                 setParams({index: 98});
                 expect(getElements()).toEqual([1, 0, 95, 96, 97, 98, 99]);
             });
         });
 
-        describe('is equal to length', () => {
-            describe('length = 3', () => {
+        describe(`is equal to length`, () => {
+            describe(`length = 3`, () => {
                 beforeEach(() => {
                     setParams({length: 3});
                 });
 
-                it('index = 0', () => {
+                it(`index = 0`, () => {
                     setParams({index: 0});
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
 
-                it('index = 1', () => {
+                it(`index = 1`, () => {
                     setParams({index: 1});
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
 
-                it('index = 2', () => {
+                it(`index = 2`, () => {
                     setParams({index: 2});
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
             });
 
-            describe('length = 5', () => {
+            describe(`length = 5`, () => {
                 beforeEach(() => {
                     setParams({length: 5});
                 });
 
-                it('index = 0', () => {
+                it(`index = 0`, () => {
                     setParams({index: 0});
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
 
-                it('index = 2', () => {
+                it(`index = 2`, () => {
                     setParams({index: 2});
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
 
-                it('index = 4', () => {
+                it(`index = 4`, () => {
                     setParams({index: 4});
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
@@ -177,8 +181,8 @@ describe('TuiPaginationComponent', () => {
         });
     });
 
-    describe('Page switching arrow behavior', () => {
-        it('If the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
+    describe(`Page switching arrow behavior`, () => {
+        it(`If the first item is selected, the left arrow is disabled, the right arrow is enabled`, () => {
             setParams({index: 0});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -188,7 +192,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('If the second item is selected, the left arrow is on, as well as the right', () => {
+        it(`If the second item is selected, the left arrow is on, as well as the right`, () => {
             setParams({index: 1});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -198,7 +202,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('If the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
+        it(`If the last item is selected, the right arrow is disabled, the left arrow is enabled`, () => {
             setParams({index: 49});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -208,7 +212,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(true);
         });
 
-        it('If the penultimate item is selected, the right arrow is on, as well as the left', () => {
+        it(`If the penultimate item is selected, the right arrow is on, as well as the left`, () => {
             setParams({index: 48});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;

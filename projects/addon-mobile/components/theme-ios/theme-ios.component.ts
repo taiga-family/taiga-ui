@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
-// @dynamic
 @Component({
-    selector: 'tui-theme-ios',
-    styleUrls: ['./theme-ios.style.less'],
-    template: '',
+    selector: `tui-theme-ios`,
+    styleUrls: [`./theme-ios.style.less`],
+    template: ``,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

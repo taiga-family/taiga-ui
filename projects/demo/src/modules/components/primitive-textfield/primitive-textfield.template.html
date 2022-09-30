@@ -1,8 +1,12 @@
-<tui-doc-page header="PrimitiveTextfield" package="CORE" type="components">
+<tui-doc-page
+    header="PrimitiveTextfield"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
-            PrimitiveTextfield is a flexible string input that can be used as a
-            base for complex inputs. Use it as a basis for other components.
+            PrimitiveTextfield is a flexible string input that can be used as a base for complex inputs. Use it as a
+            basis for other components.
 
             <strong>Does not work with Angular forms</strong>
         </p>
@@ -15,7 +19,10 @@
         >
             <tui-notification class="tui-space_bottom-4 b-form">
                 Simplified version of
-                <a tuiLink routerLink="/components/input-password">
+                <a
+                    tuiLink
+                    routerLink="/components/input-password"
+                >
                     <code>InputPassword</code>
                 </a>
             </tui-notification>
@@ -40,9 +47,7 @@
                 <code>Textfield</code>
                 directive as shown below
             </tui-notification>
-            <tui-primitive-textfield-example-2
-                [(ngModel)]="example2Value"
-            ></tui-primitive-textfield-example-2>
+            <tui-primitive-textfield-example-2 [(ngModel)]="example2Value"></tui-primitive-textfield-example-2>
         </tui-doc-example>
     </ng-template>
 
@@ -50,37 +55,39 @@
         <tui-doc-demo>
             <tui-primitive-textfield
                 [focusable]="focusable"
-                [tuiTextfieldAutocomplete]="autocomplete"
                 [tuiTextfieldCleaner]="cleaner"
                 [tuiTextfieldCustomContent]="customContent"
-                [tuiTextfieldInputMode]="inputMode"
-                [tuiTextfieldMaxLength]="maxLength"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [tuiTextfieldType]="type"
-                [pseudoPressed]="pseudoPressed"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
                 [disabled]="disabled"
                 [editable]="editable"
                 [filler]="filler"
-                [iconAlign]="iconAlign"
-                [iconContent]="iconContent"
+                [tuiTextfieldIcon]="iconContent"
+                [tuiTextfieldIconLeft]="iconLeft"
                 [readOnly]="readOnly"
                 [prefix]="prefix"
                 [postfix]="postfix"
                 [invalid]="invalid"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
-                [tuiHintMode]="hintMode"
+                [tuiHintAppearance]="hintAppearance"
                 [(value)]="value"
             >
                 Component label
             </tui-primitive-textfield>
         </tui-doc-demo>
-        <ng-template #template let-item>
-            <tui-avatar size="xs" class="avatar" [text]="item"></tui-avatar>
+        <ng-template
+            #template
+            let-item
+        >
+            <tui-avatar
+                size="xs"
+                class="avatar"
+                [text]="item"
+            ></tui-avatar>
             {{ item }}
         </ng-template>
         <ng-template #interactiveContent>
@@ -107,7 +114,7 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
-                Native input allows inputing
+                Native input allows inputting
             </ng-template>
             <ng-template
                 i18n
@@ -120,27 +127,23 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="iconContent"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="selectedIcon"
             >
-                Icon content. If content is a string, it is used as stringified
-                svg or a name of icon registered in
-                <a tuiLink routerLink="/services/svg-service">
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
                     <code>SvgService</code>
                 </a>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="iconAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="iconAlignVariants"
-                [(documentationPropertyValue)]="iconAlign"
-            >
-                Icon align
+                <p>
+                    Requires you to import
+                    <code>TuiTextfieldControllerModule</code>
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -150,7 +153,10 @@
                 [(documentationPropertyValue)]="prefix"
             >
                 Uneditable text before value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number">
+                <a
+                    tuiLink
+                    routerLink="/components/input-number"
+                >
                     <code>InputNumber</code>
                 </a>
                 .
@@ -163,7 +169,10 @@
                 [(documentationPropertyValue)]="postfix"
             >
                 Uneditable text after value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number">
+                <a
+                    tuiLink
+                    routerLink="/components/input-number"
+                >
                     <code>InputNumber</code>
                 </a>
                 .
@@ -212,7 +221,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -221,7 +230,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

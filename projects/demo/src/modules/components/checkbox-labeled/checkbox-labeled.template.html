@@ -1,12 +1,21 @@
-<tui-doc-page header="CheckboxLabeled" package="KIT" type="components">
+<tui-doc-page
+    header="CheckboxLabeled"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>CheckboxLabeled</code>
             is a
             <code>Checkbox</code>
-            with a label. Click on label changes checkbox state. If you do not
-            need a label, see
-            <a tuiLink routerLink="/components/checkbox">
+            with a label. Click on label changes checkbox state. If you do not need a label, see
+            <a
+                tuiLink
+                routerLink="/components/checkbox"
+            >
                 <code>Checkbox</code>
             </a>
             .
@@ -40,9 +49,9 @@
                         formControlName="testValue1"
                         [focusable]="focusable"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -54,9 +63,9 @@
                         class="tui-space_top-2"
                         [focusable]="focusable"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -68,9 +77,9 @@
                         class="tui-space_top-2"
                         [focusable]="focusable"
                         [pseudoInvalid]="pseudoInvalid"
-                        [pseudoFocused]="pseudoFocused"
-                        [pseudoHovered]="pseudoHovered"
-                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoActive]="pseudoPressed"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -115,7 +124,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -130,7 +139,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -139,7 +148,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

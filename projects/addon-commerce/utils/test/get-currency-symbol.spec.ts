@@ -1,21 +1,21 @@
-import {getCurrencySymbol} from '../get-currency-symbol';
+import {tuiGetCurrencySymbol} from '../get-currency-symbol';
 
-describe('getCurrencySymbol', () => {
-    it('returns founded currency symbol', () => {
-        const currency = 'HKD';
+describe(`getCurrencySymbol`, () => {
+    it(`returns founded currency symbol`, () => {
+        const currency = `HKD`;
 
-        expect(getCurrencySymbol(currency)).toBe('HK$');
+        expect(tuiGetCurrencySymbol(currency)).toBe(`HK$`);
     });
 
-    it('returns founded currency symbol', () => {
-        const currencyCode = '344';
+    it(`returns founded currency symbol`, () => {
+        const currencyCode = `344`;
 
-        expect(getCurrencySymbol(currencyCode)).toBe('HK$');
+        expect(tuiGetCurrencySymbol(currencyCode)).toBe(`HK$`);
     });
 
-    it('returns null if symbol not found', () => {
-        const customCurrency = 'CSTM';
+    it(`returns null if symbol not found`, () => {
+        const customCurrency = `CSTM`;
 
-        expect(getCurrencySymbol(customCurrency)).toBe(null);
+        expect(tuiGetCurrencySymbol(customCurrency)).toBe(null);
     });
 });

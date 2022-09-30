@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 
 class User {
     constructor(
@@ -21,29 +20,29 @@ class User {
     }
 }
 
-const DATA: ReadonlyArray<User> = [
-    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Alex', 'Inkin', avatar),
-    new User('Gabriel José', 'de la Concordia «Gabo» García Márquez'),
+const DATA: readonly User[] = [
+    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Alex`, `Inkin`, assets`/images/avatar.jpg`),
+    new User(`Gabriel José`, `de la Concordia «Gabo» García Márquez`),
 ];
 
 @Component({
-    selector: 'tui-input-example-8',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-input-example-8`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiInputExample8 {
-    readonly control = new FormControl('');
+    readonly control = new FormControl(``);
 
-    firstName = '';
-    lastName = '';
+    firstName = ``;
+    lastName = ``;
 
     readonly items$ = this.control.valueChanges.pipe(
-        startWith(''),
+        startWith(``),
         switchMap(value =>
-            this.request(value).pipe(
+            this.request(value ?? ``).pipe(
                 map(response => {
                     if (response.length === 1 && String(response[0]) === value) {
                         this.onClick(response[0]);
@@ -58,13 +57,13 @@ export class TuiInputExample8 {
         startWith(DATA),
     );
 
-    onClick({lastName, firstName}: User) {
+    onClick({lastName, firstName}: User): void {
         this.lastName = lastName;
         this.firstName = firstName;
     }
 
     // Request imitation
-    private request(query: string): Observable<ReadonlyArray<User>> {
+    private request(query: string): Observable<readonly User[]> {
         return of(DATA.filter(item => TUI_DEFAULT_MATCHER(item, query)));
     }
 }

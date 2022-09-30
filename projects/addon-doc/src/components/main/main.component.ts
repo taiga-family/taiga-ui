@@ -10,11 +10,10 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
-// @dynamic
 @Component({
-    selector: 'tui-doc-main',
-    templateUrl: './main.template.html',
-    styleUrls: ['./main.style.less'],
+    selector: `tui-doc-main`,
+    templateUrl: `./main.template.html`,
+    styleUrls: [`./main.style.less`],
     encapsulation: ViewEncapsulation.None,
     providers: [
         {
@@ -26,9 +25,9 @@ import {Subject} from 'rxjs';
 })
 export class TuiDocMainComponent {
     night =
-        this.storage.getItem('night') === 'true' ||
-        (this.storage.getItem('night') === null &&
-            this.windowRef.matchMedia('(prefers-color-scheme: dark)').matches);
+        this.storage.getItem(`night`) === `true` ||
+        (this.storage.getItem(`night`) === null &&
+            this.windowRef.matchMedia(`(prefers-color-scheme: dark)`).matches);
 
     readonly change$ = new Subject<void>();
 
@@ -37,14 +36,14 @@ export class TuiDocMainComponent {
         @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 
-    @HostBinding('attr.data-mode')
+    @HostBinding(`attr.data-mode`)
     get mode(): TuiBrightness | null {
-        return this.night ? 'onDark' : null;
+        return this.night ? `onDark` : null;
     }
 
-    onMode(night: boolean) {
+    onMode(night: boolean): void {
         this.night = night;
         this.change$.next();
-        this.storage.setItem('night', String(night));
+        this.storage.setItem(`night`, String(night));
     }
 }

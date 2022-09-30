@@ -35,7 +35,17 @@
         >
             <tui-input-card-grouped-example-3></tui-input-card-grouped-example-3>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="form-state"
+            i18n-heading
+            heading="Custom form state"
+            [content]="example4"
+        >
+            <tui-input-card-grouped-example-4></tui-input-card-grouped-example-4>
+        </tui-doc-example>
     </ng-template>
+
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
@@ -48,9 +58,9 @@
                     [readOnly]="readOnly"
                     [focusable]="focusable"
                     [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocused]="pseudoFocused"
-                    [pseudoHovered]="pseudoHovered"
-                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoActive]="pseudoPressed"
                     (binChange)="onBinChange($event)"
                 ></tui-input-card-grouped>
             </ng-template>
@@ -96,7 +106,7 @@
                 i18n
                 documentationPropertyName="cardSrc"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="getContentVariants(template)"
                 [(documentationPropertyValue)]="cardSrcSelected"
             >
@@ -144,7 +154,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -153,7 +163,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

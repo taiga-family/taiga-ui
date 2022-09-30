@@ -1,0 +1,13 @@
+<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+></tui-editor>
+
+<h4>HTML:</h4>
+<tui-editor-socket
+    [content]="control.value || ''"
+    (imagePreview)="preview.showImage($event)"
+>
+    <image-preview-example #preview></image-preview-example>
+</tui-editor-socket>

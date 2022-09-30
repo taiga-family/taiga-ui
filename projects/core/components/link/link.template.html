@@ -1,7 +1,7 @@
 <tui-svg
     *ngIf="iconAlignLeft"
     class="t-icon t-icon_left"
-    [src]="icon"
+    [src]="icon || ''"
 ></tui-svg>
 <span class="t-content">
     <ng-content></ng-content>
@@ -9,5 +9,5 @@
 <tui-svg
     *ngIf="iconAlignRight"
     class="t-icon t-icon_right"
-    [src]="icon"
+    [src]="icon || ''"
 ></tui-svg>

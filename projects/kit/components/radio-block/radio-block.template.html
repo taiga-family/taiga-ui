@@ -1,41 +1,38 @@
-<label
-    class="wrapper"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
->
-    <tui-wrapper
+<label class="t-wrapper">
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [disabled]="computedDisabled"
-        [focused]="computedFocusVisible"
-        [hovered]="computedHovered"
-        [pressed]="computedPressed"
+        [focus]="computedFocusVisible"
+        [hover]="pseudoHover"
+        [active]="pseudoActive"
         [invalid]="computedInvalid"
     >
-        <div class="content-wrapper">
-            <div class="content">
+        <div class="t-content-wrapper">
+            <div class="t-content">
                 <tui-radio
-                    class="view"
+                    class="t-view"
                     [focusable]="focusable"
                     [identityMatcher]="identityMatcher"
                     [item]="item"
-                    [name]="computedName"
+                    [name]="computedName || ''"
                     [nativeId]="nativeId"
                     [readOnly]="readOnly"
                     [pseudoDisabled]="computedDisabled"
                     [pseudoInvalid]="computedInvalid"
-                    [pseudoFocused]="false"
-                    [pseudoHovered]="computedHovered"
-                    [pseudoPressed]="computedPressed"
+                    [pseudoFocus]="false"
+                    [pseudoHover]="pseudoHover"
+                    [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
                     [ngModel]="value"
                     (ngModelChange)="onModelChange($event)"
                     (focusedChange)="onFocused($event)"
                     (focusVisibleChange)="onFocusVisible($event)"
                 ></tui-radio>
-                <div class="label">
+                <div class="t-label">
                     <ng-content></ng-content>
                 </div>
             </div>
         </div>
-    </tui-wrapper>
+    </div>
 </label>

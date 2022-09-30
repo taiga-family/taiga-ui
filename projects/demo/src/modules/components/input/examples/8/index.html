@@ -4,7 +4,7 @@
     [formControl]="control"
 >
     Enter your name
-    <ng-container *ngIf="items.length">
+    <ng-container *ngIf="items?.length">
         <tui-data-list *tuiDataList>
             <button
                 *ngFor="let item of items"
@@ -19,10 +19,10 @@
                     [avatarUrl]="item.avatarUrl || null"
                     [text]="item.toString()"
                 ></tui-avatar>
-                <span class="name">{{item}}</span>
+                <span class="name">{{ item }}</span>
             </button>
         </tui-data-list>
     </ng-container>
 </tui-input>
 <p>Parsed on complete match:</p>
-{{firstName}} {{lastName}}
+{{ firstName }} {{ lastName }}

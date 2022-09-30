@@ -1,17 +1,25 @@
 @import '../../styles/mixins/mixins.less';
 
+// Required by some Taiga UI components
+@keyframes tuiPresent {
+    to {
+        content: '1';
+    }
+}
+
 :host {
     position: relative;
     display: block;
     flex: 1;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.scrollbar {
+.t-scrollbar {
     .fullsize(fixed, inset);
     margin: 0;
 }
 
-.content {
+.t-content {
     .createStackingContext();
     height: 100%;
 }

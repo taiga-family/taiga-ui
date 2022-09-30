@@ -1,0 +1,124 @@
+@import 'taiga-ui-local';
+
+tui-input-files {
+    display: block;
+
+    .t-native {
+        .fullsize();
+        opacity: 0;
+        cursor: pointer;
+
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+    }
+}
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='input-file'] {
+    display: flex;
+    background: transparent;
+    font: var(--tui-font-text-m);
+    word-wrap: break-word;
+    color: var(--tui-text-02);
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--tui-height-l);
+    border-radius: var(--tui-radius-m);
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+
+    &:after {
+        border: 1px dashed;
+        color: var(--tui-link);
+    }
+
+    &._mobile:after {
+        border: 1px solid;
+    }
+
+    .wrapper-disabled({
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+
+        &:after {
+            color: var(--tui-text-03);
+        }
+    });
+
+    .wrapper-focus({
+        &:after {
+            border-style: solid;
+            border-width: 2px;
+            color: var(--tui-focus);
+        }
+    });
+
+    &[data-mode='onDark'] {
+        color: var(--tui-text-01-night);
+
+        &:after {
+            color: var(--tui-text-01-night);
+        }
+
+        .wrapper-focus({
+            &:after {
+            color: var(--tui-text-01-night);
+            }}
+        );
+
+        /* stylelint-disable selector-max-specificity */
+        .wrapper-hover({
+            background: var(--tui-clear-inverse-hover);
+
+            &:after {
+                color: var(--tui-text-03-night);
+            }
+        });
+
+        .wrapper-active({
+            background: var(--tui-clear-inverse-active);
+
+            &:after {
+                color: var(--tui-text-03-night);
+            }
+        });
+    }
+
+    &[data-mode='onLight'] {
+        color: var(--tui-text-01);
+
+        &:after {
+            color: var(--tui-text-01);
+        }
+
+        .wrapper-hover({
+            background: var(--tui-clear-hover);
+
+            &:after {
+                color: var(--tui-text-03);
+            }
+        });
+
+        .wrapper-active({
+            background: var(--tui-clear-active);
+
+            &:after {
+                color: var(--tui-text-03);
+            }
+        });
+    }
+
+    .wrapper-hover({
+        background: var(--tui-secondary);
+
+        &:after {
+            color: var(--tui-link-hover);
+        }
+    });
+
+    .wrapper-active({
+        background: var(--tui-secondary-hover);
+    });
+}

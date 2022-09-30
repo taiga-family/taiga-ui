@@ -31,6 +31,10 @@
         &._pseudo {
             color: var(--tui-text-01);
 
+            .t-content {
+                text-decoration-color: rgba(0, 0, 0, 0.48);
+            }
+
             &:hover,
             &._active {
                 color: var(--tui-text-03);
@@ -60,6 +64,10 @@
         &._pseudo {
             color: var(--tui-text-01-night);
 
+            .t-content {
+                text-decoration-color: rgba(255, 255, 255, 0.48);
+            }
+
             &:hover,
             &:active,
             &._active {
@@ -84,6 +92,10 @@
         &:hover {
             color: var(--tui-negative-hover);
         }
+
+        &._pseudo .t-content {
+            text-decoration-color: rgba(222, 76, 30, 0.48);
+        }
     }
 
     &[data-host-mode='positive'] {
@@ -92,12 +104,14 @@
         &:hover {
             color: var(--tui-positive-hover);
         }
+
+        &._pseudo .t-content {
+            text-decoration-color: rgba(58, 169, 129, 0.48);
+        }
     }
 }
 
 .t-content {
-    display: inline-block;
-
     :host._focus-visible & {
         background: var(--tui-selection);
     }
@@ -122,9 +136,8 @@
 
     :host._pseudo & {
         padding-bottom: 0.15em;
-        text-decoration: underline dashed;
+        text-decoration: underline dashed rgba(51, 111, 238, 0.48);
         text-underline-offset: 0.2em;
-        // TODO: research if it can be used in rem units
         /* stylelint-disable-next-line */
         text-decoration-thickness: 0.7px;
     }
@@ -143,7 +156,7 @@
         margin-left: @space;
     }
 
-    :host._hovered & {
+    :host:hover & {
         opacity: 1;
     }
 

@@ -5,10 +5,10 @@ import {TuiTreeAccessor} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 
 @Directive({
-    selector: 'tui-tree-item[tuiTreeNode]',
+    selector: `tui-tree-item[tuiTreeNode]`,
 })
 export class TuiTreeNodeDirective<T> implements OnDestroy {
-    @Input('tuiTreeNode')
+    @Input(`tuiTreeNode`)
     set value(value: T) {
         this.directive?.register(this.component, value);
     }
@@ -21,7 +21,7 @@ export class TuiTreeNodeDirective<T> implements OnDestroy {
         private readonly component: TuiTreeItemComponent,
     ) {}
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.directive?.unregister(this.component);
     }
 }

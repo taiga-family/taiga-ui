@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -16,30 +15,32 @@ import {
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    isPresent,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
+    tuiIsNumber,
+    tuiIsPresent,
     TuiMonth,
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
-    selector: 'tui-line-days-chart',
-    templateUrl: './line-days-chart.template.html',
-    styleUrls: ['./line-days-chart.style.less'],
+    selector: `tui-line-days-chart`,
+    templateUrl: `./line-days-chart.template.html`,
+    styleUrls: [`./line-days-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TuiLineChartHintDirective,
-            useExisting: forwardRef(() => TuiLineDaysChartComponent),
+            useExisting: TuiLineDaysChartComponent,
         },
     ],
 })
@@ -47,7 +48,10 @@ export class TuiLineDaysChartComponent {
     @ViewChildren(TuiLineChartComponent)
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
-    @Input('value')
+    @ViewChildren(TuiDriver)
+    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+
+    @Input(`value`)
     @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
         if (!value.length) {
@@ -83,7 +87,7 @@ export class TuiLineDaysChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -97,7 +101,7 @@ export class TuiLineDaysChartComponent {
     @tuiDefaultProp()
     dots = false;
 
-    @HostBinding('style.zIndex')
+    @HostBinding(`style.zIndex`)
     zIndex = 0;
 
     value: ReadonlyArray<[TuiDay, number]> = [];
@@ -108,7 +112,7 @@ export class TuiLineDaysChartComponent {
         private readonly hintDirective: TuiLineDaysChartHintDirective | null,
     ) {}
 
-    get months(): ReadonlyArray<ReadonlyArray<TuiPoint>> {
+    get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
 
@@ -116,7 +120,9 @@ export class TuiLineDaysChartComponent {
         return this.months.length * this.value[0][0].daysCount;
     }
 
-    get hint(): PolymorpheusContent<TuiContextWithImplicit<any>> {
+    get hint():
+        | PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>
+        | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
         return this.hintDirective ? this.hintDirective.hint : this.hintContent;
     }
 
@@ -131,7 +137,7 @@ export class TuiLineDaysChartComponent {
     }
 
     readonly daysStringify: TuiStringHandler<number> = index =>
-        this.xStringify ? this.xStringify(this.getMonth(index)) : '';
+        this.xStringify ? this.xStringify(this.getMonth(index)) : ``;
 
     getX(index: number): number {
         const current = this.getMonth(index);
@@ -141,8 +147,8 @@ export class TuiLineDaysChartComponent {
         return index - offset;
     }
 
-    onHovered(day: TuiDay | null) {
-        if (!day) {
+    onHovered(day: TuiDay | number): void {
+        if (tuiIsNumber(day)) {
             this.charts.forEach(chart => chart.onHovered(NaN));
 
             return;
@@ -150,20 +156,18 @@ export class TuiLineDaysChartComponent {
 
         const index = TuiMonth.lengthBetween(this.value[0][0], day);
         const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
-        const array = this.charts.toArray();
-        const current = array[index];
-        const {value} = current;
+        const current = this.charts.get(index);
 
-        array.forEach(chart => {
+        this.charts.forEach(chart => {
             if (chart === current) {
-                current.onHovered(value.findIndex(point => point[0] === x));
+                current.onHovered(current.value.findIndex(point => point[0] === x));
             } else {
                 chart.onHovered(NaN);
             }
         });
     }
 
-    raise(index: number, {value}: TuiLineChartComponent) {
+    raise(index: number, {value}: TuiLineChartComponent): void {
         const x = value[index][0];
         const month = this.getMonth(x);
 
@@ -181,7 +185,7 @@ export class TuiLineDaysChartComponent {
     getContext(
         index: number,
         {value}: TuiLineChartComponent,
-    ): TuiContextWithImplicit<any> {
+    ): TuiContextWithImplicit<unknown> {
         const x = value[index][0];
 
         return this.hintDirective
@@ -192,7 +196,7 @@ export class TuiLineDaysChartComponent {
     @tuiPure
     private breakMonths(
         value: ReadonlyArray<[TuiDay, number]>,
-    ): ReadonlyArray<ReadonlyArray<TuiPoint>> {
+    ): ReadonlyArray<readonly TuiPoint[]> {
         const offset = value[0][0].day - 1;
 
         return Array.from(
@@ -204,7 +208,7 @@ export class TuiLineDaysChartComponent {
                     .map<TuiPoint | null>(([{month, year}, y], index) =>
                         month + year * 12 === absoluteMonth ? [index + offset, y] : null,
                     )
-                    .filter(isPresent),
+                    .filter(tuiIsPresent),
             )
             .map((month, index, array) =>
                 index === array.length - 1

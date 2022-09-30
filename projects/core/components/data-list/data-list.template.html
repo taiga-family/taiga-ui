@@ -1,9 +1,19 @@
-<div tabindex="0" class="trap" (focusin)="onFocus($event.target, true)"></div>
+<div
+    tabindex="0"
+    class="t-trap"
+    (focusin)="onFocus($event, true)"
+></div>
 <ng-content></ng-content>
 <div
     *ngIf="empty$ | async"
-    polymorpheus-outlet
-    class="empty"
-    [content]="emptyContent || (defaultEmptyContent$ | async)"
+    class="t-empty"
+>
+    <ng-container *polymorpheusOutlet="emptyContent || (defaultEmptyContent$ | async) as text">
+        {{ text }}
+    </ng-container>
+</div>
+<div
+    tabindex="0"
+    class="t-trap"
+    (focusin)="onFocus($event, false)"
 ></div>
-<div tabindex="0" class="trap" (focusin)="onFocus($event.target, false)"></div>

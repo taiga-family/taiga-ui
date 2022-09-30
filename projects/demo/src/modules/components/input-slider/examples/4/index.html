@@ -1,0 +1,24 @@
+<tui-input-slider
+    tuiHintContent="Select the answer to see how the right custom content changes"
+    class="control"
+    [min]="0"
+    [max]="10"
+    [tuiTextfieldCustomContent]="userAnswer === 4 ? right : wrong"
+    [(ngModel)]="userAnswer"
+>
+    2+2=?
+</tui-input-slider>
+
+<ng-template #right>
+    <tui-svg
+        src="tuiIconCheckCircleLarge"
+        class="success"
+    ></tui-svg>
+</ng-template>
+
+<ng-template #wrong>
+    <tui-svg
+        src="tuiIconCloseCircleLarge"
+        class="error"
+    ></tui-svg>
+</ng-template>

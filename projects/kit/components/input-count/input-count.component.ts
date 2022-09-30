@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -13,23 +12,23 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
-    isNativeFocused,
-    isPresent,
-    setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
-    NumberFormatSettings,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
+    tuiFormatNumber,
+    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -41,19 +40,16 @@ import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options';
+import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
 
-// @dynamic
 @Component({
-    selector: 'tui-input-count',
-    templateUrl: './input-count.template.html',
-    styleUrls: ['./input-count.style.less'],
+    selector: `tui-input-count`,
+    templateUrl: `./input-count.template.html`,
+    styleUrls: [`./input-count.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputCountComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiInputCountComponent),
+        tuiAsControl(TuiInputCountComponent),
     ],
 })
 export class TuiInputCountComponent
@@ -81,7 +77,7 @@ export class TuiInputCountComponent
 
     @Input()
     @tuiDefaultProp()
-    prefix = '';
+    prefix = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -101,9 +97,9 @@ export class TuiInputCountComponent
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
-        readonly options: InputCountOptions,
+        readonly options: TuiInputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: NumberFormatSettings,
+        private readonly numberFormat: TuiNumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -120,17 +116,16 @@ export class TuiInputCountComponent
         };
     }
 
-    // TODO: Remove in v.3
-    @HostBinding('class._hide-buttons')
+    @HostBinding(`class._hide-buttons`)
     get buttonsHidden(): boolean {
-        return this.hideButtons || this.appearance === 'table';
+        return this.hideButtons || this.appearance === `table`;
     }
 
-    get iconUp(): PolymorpheusContent<{}> {
+    get iconUp(): PolymorpheusContent<Record<string, unknown>> {
         return this.options.icons.up;
     }
 
-    get iconDown(): PolymorpheusContent<{}> {
+    get iconDown(): PolymorpheusContent<Record<string, unknown>> {
         return this.options.icons.down;
     }
 
@@ -140,13 +135,13 @@ export class TuiInputCountComponent
             : this.primitiveTextfield.nativeFocusableElement;
     }
 
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get exampleText(): string {
@@ -154,27 +149,27 @@ export class TuiInputCountComponent
     }
 
     get computedValue(): string {
-        return this.formatNumber(this.value);
+        return this.focused ? this.nativeValue : this.formatNumber(this.value);
     }
 
     get minusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value <= this.min);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value <= this.min);
     }
 
     get plusButtonDisabled(): boolean {
-        return !this.interactive || (isPresent(this.value) && this.value >= this.max);
+        return !this.interactive || (tuiIsPresent(this.value) && this.value >= this.max);
     }
 
-    onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {
+    onButtonMouseDown(event: MouseEvent, disabled: boolean = false): void {
         if (disabled || !this.nativeFocusableElement || this.isMobile) {
             return;
         }
 
         event.preventDefault();
-        setNativeFocused(this.nativeFocusableElement);
+        this.nativeFocusableElement.focus();
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         if (!focused) {
             this.onBlur();
         }
@@ -182,15 +177,7 @@ export class TuiInputCountComponent
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onValueChange() {
+    onValueChange(): void {
         const capped = this.capValue(this.nativeNumberValue);
 
         if (capped === null || isNaN(capped)) {
@@ -206,7 +193,7 @@ export class TuiInputCountComponent
         this.updateValue(capped);
     }
 
-    decreaseValue() {
+    decreaseValue(): void {
         if (this.readOnly) {
             return;
         }
@@ -216,7 +203,7 @@ export class TuiInputCountComponent
         this.safeUpdateValue(newValue);
     }
 
-    increaseValue() {
+    increaseValue(): void {
         if (this.readOnly) {
             return;
         }
@@ -226,15 +213,15 @@ export class TuiInputCountComponent
         this.safeUpdateValue(newValue);
     }
 
-    onKeydown(event: KeyboardEvent) {
+    onKeydown(event: KeyboardEvent): void {
         switch (event.key) {
-            case 'ArrowUp':
-            case 'Up':
+            case `ArrowUp`:
+            case `Up`:
                 this.increaseValue();
                 event.preventDefault();
                 break;
-            case 'ArrowDown':
-            case 'Down':
+            case `ArrowDown`:
+            case `Down`:
                 this.decreaseValue();
                 event.preventDefault();
                 break;
@@ -249,13 +236,13 @@ export class TuiInputCountComponent
 
     private get nativeNumberValue(): number {
         return parseInt(
-            this.nativeValue.split(this.numberFormat.thousandSeparator).join(''),
+            this.nativeValue.split(this.numberFormat.thousandSeparator).join(``),
             10,
         );
     }
 
     private get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
     }
 
     private set nativeValue(value: string) {
@@ -266,8 +253,8 @@ export class TuiInputCountComponent
         this.nativeFocusableElement.value = value;
     }
 
-    private safeUpdateValue(newValue: number) {
-        const value = clamp(newValue, this.min, this.max);
+    private safeUpdateValue(newValue: number): void {
+        const value = tuiClamp(newValue, this.min, this.max);
 
         this.updateValue(value);
         this.nativeValue = this.formatNumber(value);
@@ -279,7 +266,7 @@ export class TuiInputCountComponent
         return isNaN(capped) || capped < this.min ? null : capped;
     }
 
-    private onBlur() {
+    private onBlur(): void {
         const value = Math.max(this.nativeNumberValue || 0, this.min);
         const formattedValue = this.formatNumber(value);
 
@@ -292,11 +279,6 @@ export class TuiInputCountComponent
     }
 
     private formatNumber(value: number): string {
-        return formatNumber(
-            value,
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        return tuiFormatNumber(value, this.numberFormat);
     }
 }

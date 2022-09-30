@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     Inject,
-    Input,
     Optional,
     Self,
     TemplateRef,
@@ -13,28 +12,38 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    setNativeFocused,
-    tuiDefaultProp,
+    TuiActiveZoneDirective,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    TuiContextWithImplicit,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
+    tuiAsDataListHost,
     TuiDataListDirective,
     TuiDataListHost,
-    TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {
+    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+    TUI_VALUE_ACCESSOR_PROVIDER,
+} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_INPUT_PROVIDERS} from './input.providers';
-
 @Component({
-    selector: 'tui-input',
-    templateUrl: './input.template.html',
-    styleUrls: ['./input.style.less'],
+    selector: `tui-input`,
+    templateUrl: `./input.template.html`,
+    styleUrls: [`./input.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_INPUT_PROVIDERS,
+    providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
+        tuiAsFocusableItemAccessor(TuiInputComponent),
+        tuiAsDataListHost(TuiInputComponent),
+        tuiAsControl(TuiInputComponent),
+    ],
+    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>
@@ -46,16 +55,10 @@ export class TuiInputComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    @Input()
-    @tuiDefaultProp()
-    icon: string | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'left';
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = ``;
 
     open = false;
 
@@ -77,7 +80,7 @@ export class TuiInputComponent
 
     get focused(): boolean {
         return (
-            isNativeFocused(this.nativeFocusableElement) ||
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }
@@ -86,20 +89,16 @@ export class TuiInputComponent
         return this.interactive && !!this.datalist;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.updateValue(value);
         this.open = true;
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    handleOption(item: unknown) {
+    handleOption(item: unknown): void {
         this.setNativeValue(String(item));
         this.focusInput();
         this.updateValue(String(item));
@@ -107,16 +106,16 @@ export class TuiInputComponent
     }
 
     protected getFallbackValue(): string {
-        return '';
+        return ``;
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
-            setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+            this.nativeFocusableElement.focus({preventScroll});
         }
     }
 
-    private setNativeValue(value: string) {
+    private setNativeValue(value: string): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = value;
         }

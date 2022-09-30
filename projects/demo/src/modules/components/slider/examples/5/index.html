@@ -1,0 +1,17 @@
+<input
+    tuiSlider
+    type="range"
+    [keySteps]="keySteps"
+    [max]="10 * segments"
+    [segments]="segments"
+    [formControl]="formControl"
+/>
+
+<div class="ticks-labels">
+    <span *ngFor="let label of labels">{{ label }}</span>
+</div>
+
+<p automation-id="key-steps-example-control-value">
+    Control value:
+    <code>{{ formControl.value | number }}</code>
+</p>

@@ -1,16 +1,16 @@
-import {moveFocus} from '../move-focus';
+import {tuiMoveFocus} from '../move-focus';
 
-describe('move focus', () => {
-    it('   ', () => {
-        const first = document.createElement('button');
-        const second = document.createElement('textarea');
+describe(`move focus`, () => {
+    it(`   `, () => {
+        const first = document.createElement(`button`);
+        const second = document.createElement(`textarea`);
 
         document.body.appendChild(first);
         document.body.appendChild(second);
 
         const arr = [first, second];
 
-        moveFocus(0, arr, 1);
+        tuiMoveFocus(0, arr, 1);
 
         expect(document.activeElement).toEqual(second);
 

@@ -1,0 +1,40 @@
+<tui-push
+    *ngIf="!isDirective; else content"
+    [heading]="context.heading"
+    [type]="context.type"
+    [timestamp]="context.timestamp"
+    (close)="context.$implicit.complete()"
+>
+    <img
+        *ngIf="context.image"
+        alt=""
+        [src]="context.image"
+    />
+    <tui-svg
+        *ngIf="context.icon"
+        [style.color]="context.iconColor"
+        [src]="context.icon"
+    ></tui-svg>
+    <ng-container *polymorpheusOutlet="context.content as text">
+        {{ text }}
+    </ng-container>
+    <button
+        *ngIf="context.buttons.length > 1"
+        tuiButton
+        (click)="context.$implicit.next(context.buttons[0])"
+    >
+        {{ context.buttons[0] }}
+    </button>
+    <button
+        *ngIf="context.buttons.length"
+        tuiLink
+        (click)="context.$implicit.next(context.buttons[context.buttons.length - 1])"
+    >
+        {{ context.buttons[context.buttons.length - 1] }}
+    </button>
+</tui-push>
+<ng-template #content>
+    <ng-container *polymorpheusOutlet="context.content as text">
+        {{ text }}
+    </ng-container>
+</ng-template>

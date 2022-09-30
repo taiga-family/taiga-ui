@@ -1,12 +1,12 @@
-import {isCurrentTarget} from '../is-current-target';
+import {tuiIsCurrentTarget} from '../is-current-target';
 
-describe('isCurrentTarget', () => {
-    it('Target is equal to currentTarget', () => {
-        const event = new MouseEvent('click');
+describe(`isCurrentTarget`, () => {
+    it(`Target is equal to currentTarget`, () => {
+        const event = new MouseEvent(`click`);
 
-        Object.defineProperty(event, 'target', {value: '<button>'});
-        Object.defineProperty(event, 'currentTarget', {value: '<button>'});
+        Object.defineProperty(event, `target`, {value: `<button>`});
+        Object.defineProperty(event, `currentTarget`, {value: `<button>`});
 
-        expect(isCurrentTarget(event)).toEqual(true);
+        expect(tuiIsCurrentTarget(event)).toEqual(true);
     });
 });

@@ -1,11 +1,16 @@
 <ng-container *ngIf="texts$ | async as texts">
-    <span class="pages">
-        {{ texts.pages }}
-        <strong class="strong">{{ pages }}</strong>
+    <span class="t-pages">
+        <ng-container *ngIf="options.showPages">
+            {{ texts.pages }}
+            <strong class="t-strong">{{ pages }}</strong>
+        </ng-container>
     </span>
-    <span>
+    <span automation-id="tui-table-pagination__lines-per-page-wrapper">
         {{ texts.linesPerPage }}
-        <tui-hosted-dropdown [content]="content" [(open)]="open">
+        <tui-hosted-dropdown
+            [content]="content"
+            [(open)]="open"
+        >
             <button tuiLink>
                 <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>
@@ -13,20 +18,35 @@
                 <tui-data-list>
                     <ng-container *ngFor="let item of items">
                         <button
-                            *ngIf="item !== size"
                             tuiOption
                             size="s"
-                            class="item"
+                            class="t-item"
                             (click)="onItem(item)"
                         >
-                            {{ item }}
+                            <ng-container
+                                *polymorpheusOutlet="
+                                    options.sizeOptionContent as text;
+                                    context: {$implicit: item, total: total}
+                                "
+                            >
+                                {{ text }}
+                            </ng-container>
+                            <tui-svg
+                                *ngIf="item === size; else fakeIcon"
+                                src="tuiIconCheckLarge"
+                                class="t-checkmark"
+                            ></tui-svg>
+
+                            <ng-template #fakeIcon>
+                                <span class="t-checkmark"></span>
+                            </ng-template>
                         </button>
                     </ng-container>
                 </tui-data-list>
             </ng-template>
         </tui-hosted-dropdown>
         {{ texts.of }}
-        <strong class="strong">{{ total }}</strong>
+        <strong class="t-strong">{{ total }}</strong>
     </span>
     <ng-container *ngIf="spinTexts$ | async as spinTexts">
         <button
@@ -35,7 +55,7 @@
             size="xs"
             appearance="icon"
             icon="tuiIconChevronLeft"
-            class="tui-space_left-6 tui-space_right-1"
+            class="t-back"
             [disabled]="leftDisabled"
             [title]="spinTexts[0]"
             (click)="back()"

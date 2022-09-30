@@ -8,5 +8,10 @@
         icon="tuiIconCalendarLarge"
         (click)="onClick()"
     ></button>
-    <span class="date" [class.date_empty]="empty">{{date$ | async}}</span>
+    <span
+        class="date"
+        [class.date_empty]="empty"
+    >
+        {{ date$ | async }}
+    </span>
 </div>

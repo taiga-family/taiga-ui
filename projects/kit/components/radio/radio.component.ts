@@ -4,7 +4,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -15,30 +14,28 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
-import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
+import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
 
-// @dynamic
 @Component({
-    selector: 'tui-radio',
-    templateUrl: './radio.template.html',
-    styleUrls: ['./radio.style.less'],
+    selector: `tui-radio`,
+    templateUrl: `./radio.template.html`,
+    styleUrls: [`./radio.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiRadioComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiRadioComponent),
+        tuiAsControl(TuiRadioComponent),
     ],
     animations: [tuiScaleIn],
 })
@@ -46,11 +43,11 @@ export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
-    item?: T;
+    item?: T | null;
 
     @Input()
     @tuiDefaultProp()
@@ -61,7 +58,7 @@ export class TuiRadioComponent<T>
     name: string | null = null;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -69,7 +66,7 @@ export class TuiRadioComponent<T>
     @tuiDefaultProp()
     pseudoDisabled = false;
 
-    readonly animation = {value: '', ...this.animationOptions} as const;
+    readonly animation = {value: ``, ...this.animationOptions} as const;
 
     constructor(
         @Optional()
@@ -80,7 +77,7 @@ export class TuiRadioComponent<T>
         @Inject(TUI_ANIMATION_OPTIONS)
         private readonly animationOptions: AnimationOptions,
         @Inject(TUI_RADIO_OPTIONS)
-        private readonly options: RadioOptions,
+        private readonly options: TuiRadioOptions,
         @Optional()
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,
@@ -94,8 +91,8 @@ export class TuiRadioComponent<T>
             : this.options.appearances.unchecked;
     }
 
-    @HostBinding('class._disabled')
-    get computedDisabled(): boolean {
+    @HostBinding(`class._disabled`)
+    override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
@@ -106,42 +103,36 @@ export class TuiRadioComponent<T>
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get checked(): boolean {
         return this.value === null
             ? this.item === null
-            : this.item !== undefined && this.identityMatcher(this.value, this.item);
+            : this.item !== undefined &&
+                  this.item !== null &&
+                  this.identityMatcher(this.value, this.item);
     }
 
-    get computedName(): string | number | null {
-        return this.name || this.radioGroupName || this.controlName || null;
+    override get computedName(): string {
+        return this.name || this.radioGroupName || this.controlName || ``;
     }
 
     get isFocusable(): boolean {
         return !this.readOnly && this.computedFocusable;
     }
 
-    onChecked(checked: boolean) {
+    onChecked(checked: boolean): void {
         if (checked) {
             this.updateValue(this.item !== undefined ? this.item : this.fallbackValue);
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 

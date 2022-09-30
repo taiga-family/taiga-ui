@@ -10,9 +10,15 @@
     Show preview
 </button>
 
-<ng-template #preview let-preview>
-    <tui-preview [rotatable]="true" (tuiSwipe)="onSwipe($event)">
-        <tui-preview-title>{{title}}</tui-preview-title>
+<ng-template
+    #preview
+    let-preview
+>
+    <tui-preview
+        [rotatable]="true"
+        (tuiSwipe)="onSwipe($event)"
+    >
+        <tui-preview-title>{{ title }}</tui-preview-title>
         <tui-preview-pagination
             [length]="length"
             [(index)]="index"
@@ -40,11 +46,11 @@
             (click)="preview.complete()"
         ></button>
 
-        <div polymorpheus-outlet [content]="previewContent">
-            <ng-template let-src>
-                <img alt="" [src]="src" />
-            </ng-template>
-        </div>
+        <img
+            *polymorpheusOutlet="previewContent as src"
+            alt=""
+            [src]="src"
+        />
     </tui-preview>
 </ng-template>
 
@@ -52,18 +58,13 @@
     <div class="content">
         <h1>Important document</h1>
 
-        <p>
-            Hello everyone! This is some important document in A4 format,
-            although it is made using html
-        </p>
+        <p>Hello everyone! This is some important document in A4 format, although it is made using html</p>
 
         <p>
-            This shows that the component preview can work with absolutely any
-            content: this way you can show any template, image, pdf or even
-            iframe with your favorite site. We will put this content in the
-            center of the portal and provide the user with control over it, and
-            we will provide you with convenient levers to change it and process
-            actions.
+            This shows that the component preview can work with absolutely any content: this way you can show any
+            template, image, pdf or even iframe with your favorite site. We will put this content in the center of the
+            portal and provide the user with control over it, and we will provide you with convenient levers to change
+            it and process actions.
         </p>
 
         <img

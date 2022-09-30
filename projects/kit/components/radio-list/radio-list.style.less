@@ -6,14 +6,14 @@
     }
 }
 
-.group {
+.t-group {
     :host[data-tui-host-orientation='horizontal'] & {
         display: flex;
         justify-content: inherit;
     }
 }
 
-.item {
+.t-item {
     :host[data-tui-host-orientation='horizontal'] &:nth-child(n + 2) {
         margin-left: 1.5rem;
     }
@@ -23,11 +23,11 @@
     }
 
     /* stylelint-disable selector-max-specificity */
-    :host[data-tui-host-size='l'][data-tui-host-orientation='horizontal'] &:nth-child(n + 2) {
+    :host[data-size='l'][data-tui-host-orientation='horizontal'] &:nth-child(n + 2) {
         margin-left: 2.5rem;
     }
 
-    :host[data-tui-host-size='l'][data-tui-host-orientation='vertical'] &:nth-child(n + 2) {
+    :host[data-size='l'][data-tui-host-orientation='vertical'] &:nth-child(n + 2) {
         margin-top: 1rem;
     }
     /* stylelint-enable */

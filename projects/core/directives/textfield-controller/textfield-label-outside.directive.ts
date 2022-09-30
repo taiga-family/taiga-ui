@@ -1,13 +1,16 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_LABEL_OUTSIDE =
-    new InjectionToken<TuiTextfieldLabelOutsideDirective>('tuiTextfieldLabelOutside', {
-        factory: labelOutsideDirectiveFactory,
-    });
+    new InjectionToken<TuiTextfieldLabelOutsideDirective>(
+        `[TUI_TEXTFIELD_LABEL_OUTSIDE]: tuiTextfieldLabelOutside`,
+        {
+            factory: () => new TuiTextfieldLabelOutsideDirective(),
+        },
+    );
 
 @Directive({
-    selector: '[tuiTextfieldLabelOutside]',
+    selector: `[tuiTextfieldLabelOutside]`,
     providers: [
         {
             provide: TUI_TEXTFIELD_LABEL_OUTSIDE,
@@ -15,11 +18,7 @@ export const TUI_TEXTFIELD_LABEL_OUTSIDE =
         },
     ],
 })
-export class TuiTextfieldLabelOutsideDirective extends TuiController {
-    @Input('tuiTextfieldLabelOutside')
+export class TuiTextfieldLabelOutsideDirective extends AbstractTuiController {
+    @Input(`tuiTextfieldLabelOutside`)
     labelOutside = false;
-}
-
-export function labelOutsideDirectiveFactory(): TuiTextfieldLabelOutsideDirective {
-    return new TuiTextfieldLabelOutsideDirective();
 }

@@ -1,11 +1,11 @@
-<span
-    *ngIf="content; else base"
-    polymorpheus-outlet
-    class="content"
-    [content]="content"
-    [context]="{$implicit: base}"
-></span>
+<ng-container *polymorpheusOutlet="content || base as text; context: {$implicit: base}">
+    {{ text }}
+</ng-container>
 <ng-template #base>
     <ng-content></ng-content>
-    <tui-svg *ngIf="dropdown" src="tuiIconChevronRight" class="arrow"></tui-svg>
+    <tui-svg
+        *ngIf="dropdown"
+        src="tuiIconChevronRight"
+        class="t-arrow"
+    ></tui-svg>
 </ng-template>

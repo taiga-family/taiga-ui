@@ -1,3 +1,5 @@
-import {TUI_SANITIZER as TOKEN} from '@taiga-ui/cdk';
+import {InjectionToken, Sanitizer} from '@angular/core';
 
-export const TUI_SANITIZER = TOKEN;
+export const TUI_SANITIZER = new InjectionToken<Sanitizer>(
+    `[TUI_SANITIZER]: A custom Sanitizer to sanitize source before inlining`,
+);

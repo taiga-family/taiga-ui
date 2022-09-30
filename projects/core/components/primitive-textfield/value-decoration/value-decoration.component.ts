@@ -1,50 +1,46 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     ViewChild,
 } from '@angular/core';
-import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
-import {
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
-} from '@taiga-ui/core/directives';
+import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {defer, EMPTY} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
+import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
-import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
+import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
-    selector: 'tui-value-decoration',
-    templateUrl: 'value-decoration.template.html',
-    styleUrls: ['value-decoration.style.less'],
+    selector: `tui-value-decoration`,
+    templateUrl: `./value-decoration.template.html`,
+    styleUrls: [`./value-decoration.style.less`],
     // It follows Change Detection of PrimitiveTextfield
     changeDetection: ChangeDetectionStrategy.Default,
 })
-export class TuiValueDecorationComponent {
-    @ViewChild('pre', {read: ElementRef, static: true})
+export class TuiValueDecorationComponent implements DoCheck {
+    @ViewChild(`pre`, {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
-    @ViewChild(MutationObserverDirective, {static: true})
-    private readonly directive?: MutationObserverDirective;
+    private readonly prefix$ = new BehaviorSubject(``);
 
-    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
-        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
-        startWith(0),
+    readonly pre$ = this.prefix$.pipe(
+        delay(0),
+        filter(() => !!this.pre?.nativeElement.isConnected),
         distinctUntilChanged(),
+        map(() => this.pre?.nativeElement.offsetWidth || 0),
     );
 
     constructor(
-        @Inject(TuiPrimitiveTextfieldComponent)
-        private readonly textfield: TuiPrimitiveTextfieldComponent,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        private readonly controller: TuiTextfieldController,
+        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
+        private readonly textfield: TuiPrimitiveTextfield,
     ) {}
 
-    @HostBinding('class._table')
+    @HostBinding(`class._table`)
     get isContextTable(): boolean {
         return this.textfield.appearance === TuiAppearance.Table;
     }
@@ -54,21 +50,34 @@ export class TuiValueDecorationComponent {
     }
 
     get filler(): string {
-        return this.focused
-            ? this.exampleText || this.textfield.filler.slice(this.value.length)
-            : '';
+        const {focused, placeholder, exampleText, value, textfield} = this;
+
+        if (placeholder && exampleText) {
+            return ``;
+        }
+
+        return focused ? exampleText || textfield.filler.slice(value.length) : ``;
     }
 
     get prefix(): string {
-        return this.decorationsVisible ? this.textfield.prefix : '';
+        return this.decorationsVisible ? this.textfield.prefix : ``;
     }
 
     get postfix(): string {
-        return this.decorationsVisible ? this.computedPostfix : '';
+        return this.decorationsVisible ? this.computedPostfix : ``;
+    }
+
+    @HostListener(`animationstart`)
+    ngDoCheck(): void {
+        this.prefix$.next(this.prefix);
+    }
+
+    private get placeholder(): string {
+        return this.textfield.nativeFocusableElement?.placeholder || ``;
     }
 
     private get exampleText(): string {
-        return !this.value && this.focused ? this.controller.exampleText : '';
+        return !this.value && this.focused ? this.placeholder : ``;
     }
 
     private get decorationsVisible(): boolean {

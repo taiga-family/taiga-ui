@@ -1,9 +1,13 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-input-number
         decimal="not-zero"
         formControlName="testValue"
-        [precision]="4"
+        [precision]="8"
     >
-        Type a sum
+        <strong>&pi;</strong>
+        -value
     </tui-input-number>
 </form>

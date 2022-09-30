@@ -1,4 +1,8 @@
-<tui-doc-page i18n-header header="TextArea" package="KIT" type="components">
+<tui-doc-page
+    header="TextArea"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Textfield for multiline input. It can grow with its content.</p>
 
@@ -39,12 +43,28 @@
         </tui-doc-example>
 
         <tui-doc-example
+            id="native"
+            i18n-heading
+            heading="Native attributes"
+            [content]="example5"
+        >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>textarea</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
+            <tui-text-area-example-5></tui-text-area-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
             id="rtl"
             i18n-heading
             heading="Direction: RTL"
-            [content]="example5"
+            [content]="example6"
         >
-            <tui-text-area-example-5></tui-text-area-example-5>
+            <tui-text-area-example-6></tui-text-area-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -55,21 +75,24 @@
                 [formControl]="control"
                 [focusable]="focusable"
                 [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldMaxLength]="maxLength"
                 [tuiTextfieldSize]="size"
+                [maxLength]="maxLength"
                 [expandable]="expandable"
                 [pseudoInvalid]="pseudoInvalid"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
                 [readOnly]="readOnly"
                 [rows]="rows"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
-                [tuiHintMode]="hintMode"
+                [tuiHintAppearance]="hintAppearance"
             >
                 Textfield for multiline input. It can grow with its content.
+                <textarea
+                    tuiTextfield
+                    placeholder="Placeholder"
+                ></textarea>
             </tui-text-area>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -90,6 +113,18 @@
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all content
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Use maxLength for highlighting extra characters. If you want to limit the number of characters, add
+                <code>&lt;textarea tuiTextfield&gt;&lt;/textarea&gt;</code>
+                with native maxlength attribute.
             </ng-template>
             <ng-template
                 i18n
@@ -118,7 +153,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -133,7 +168,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -142,7 +177,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

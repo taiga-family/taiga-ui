@@ -1,6 +1,13 @@
-<tui-doc-page i18n-header header="Tag" package="KIT" type="components">
+<tui-doc-page
+    header="Tag"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Tags show information and they can be edited, deleted or clicked.
         </div>
 
@@ -47,6 +54,15 @@
         >
             <tui-tag-example-4></tui-tag-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="Options"
+            [content]="example5"
+        >
+            <tui-tag-example-5></tui-tag-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -66,7 +82,10 @@
                 (edited)="editTag($event)"
             ></tui-tag>
             <ng-template #errorIcon>
-                <tui-svg src="tuiIconAttention" class="error-icon"></tui-svg>
+                <tui-svg
+                    src="tuiIconAttention"
+                    class="error-icon"
+                ></tui-svg>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -158,7 +177,7 @@
                 i18n
                 documentationPropertyName="status"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiStatus | TuiSupportColor"
+                documentationPropertyType="TuiStatus"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
             >
@@ -179,8 +198,7 @@
                 documentationPropertyMode="output"
                 documentationPropertyType="string"
             >
-                Emits tag change (if it was edited to space or empty string, it
-                emits delete)
+                Emits tag change (if it was edited to space or empty string, it emits delete)
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -196,7 +214,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -205,7 +223,20 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_TAG_OPTIONS</code>
+                    injection token to override the default options for the component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

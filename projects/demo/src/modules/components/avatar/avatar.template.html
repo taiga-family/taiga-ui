@@ -1,9 +1,10 @@
-<tui-doc-page header="Avatar" package="KIT" type="components">
+<tui-doc-page
+    header="Avatar"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            Use Avatar to view person or company. It can be photo, icon or first
-            letters of name.
-        </p>
+        <p i18n>Use Avatar to view person or company. It can be photo, icon or first letters of name.</p>
 
         <tui-doc-example
             id="base"
@@ -22,6 +23,15 @@
         >
             <tui-avatar-example-2></tui-avatar-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="Options"
+            [content]="example3"
+        >
+            <tui-avatar-example-3></tui-avatar-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -32,6 +42,8 @@
                 [rounded]="rounded"
                 [size]="size"
                 [autoColor]="autoColor"
+                [style.--tui-avatar-color]="color"
+                [style.--tui-avatar-background]="background"
             ></tui-avatar>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -83,10 +95,22 @@
                 Name (Avatar shows first letters of name if there is no image)
             </ng-template>
         </tui-doc-documentation>
-        <i i18n>
-            Better do not use big images with Avatar. Some browsers like IE or
-            Firefox work with resized image not so good.
-        </i>
+        <tui-doc-documentation heading="CSS variables">
+            <ng-template
+                documentationPropertyName="--tui-avatar-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="color"
+            >
+                Color of the text
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-avatar-background"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="background"
+            >
+                Background
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -100,7 +124,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -109,7 +133,20 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_AVATAR_OPTIONS</code>
+                    injection token to override the default options for the component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

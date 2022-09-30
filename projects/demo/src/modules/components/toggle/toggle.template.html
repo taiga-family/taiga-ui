@@ -1,9 +1,10 @@
-<tui-doc-page i18n-header header="Toggle" package="KIT" type="components">
+<tui-doc-page
+    header="Toggle"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <p i18n>
-            Toggle is a switcher between two states. It can also be used with
-            icons and loading.
-        </p>
+        <p i18n>Toggle is a switcher between two states. It can also be used with icons and loading.</p>
 
         <tui-doc-example
             id="base"
@@ -28,9 +29,9 @@
         <tui-doc-demo>
             <tui-toggle
                 [formControl]="control"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
-                [pseudoPressed]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoActive]="pseudoPressed"
                 [showIcons]="showIcons"
                 [showLoader]="showLoader"
                 [singleColor]="singleColor"
@@ -100,7 +101,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -115,7 +116,7 @@
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
-                    [code]="exampleDeclareForm"
+                    [code]="exampleForm"
                 ></tui-doc-code>
             </li>
 
@@ -124,7 +125,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -132,13 +133,12 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_TOGGLE_OPTIONS</code>
-                    injection token to override the default options for the
-                    component.
+                    injection token to override the default options for the component.
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

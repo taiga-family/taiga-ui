@@ -1,7 +1,10 @@
-<div class="container tui-text_body-l" (tuiSwipe)="onSwipe($event)">
+<div
+    class="container tui-text_body-l"
+    (tuiSwipe)="onSwipe($event)"
+>
     Swipe left to open
     <div
-        *tuiSidebar="open$ | async; direction: 'right'"
+        *tuiSidebar="!!(open$ | async); direction: 'right'"
         class="sidebar tui-text_body-l"
         (tuiSwipe)="onSwipe($event)"
     >

@@ -3,12 +3,13 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
+    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
-import {TextMaskModule} from 'angular2-text-mask';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 
 import {TuiInputPhoneComponent} from './input-phone.component';
+import {TuiInputPhoneDirective} from './input-phone.directive';
 
 @NgModule({
     imports: [
@@ -19,7 +20,7 @@ import {TuiInputPhoneComponent} from './input-phone.component';
         TuiActiveZoneModule,
         TuiValueAccessorModule,
     ],
-    declarations: [TuiInputPhoneComponent],
-    exports: [TuiInputPhoneComponent],
+    declarations: [TuiInputPhoneComponent, TuiInputPhoneDirective],
+    exports: [TuiInputPhoneComponent, TuiInputPhoneDirective, TuiTextfieldComponent],
 })
 export class TuiInputPhoneModule {}

@@ -1,15 +1,33 @@
 <tui-doc-page
     i18n-header
     header="DropdownContext"
-    package="KIT"
+    package="CORE"
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n class="description">
+        <p i18n>
             <code>DropdownContext</code>
             allows to show custom right click context dropdown.
         </p>
-        <ng-container *ngTemplateOutlet="tips"></ng-container>
+        <h3>To close dropdown:</h3>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">
+                Use
+                <strong>Esc</strong>
+            </li>
+            <li class="tui-list__item">
+                Make
+                <strong>mouse left/right click</strong>
+                outside of dropdown content
+            </li>
+            <li class="tui-list__item">
+                Manually toggle
+                <code>tuiDropdown</code>
+                to
+                <code>false</code>
+                using template reference variable (see first example)
+            </li>
+        </ul>
 
         <tui-doc-example
             id="basic"
@@ -43,7 +61,8 @@
         <tui-doc-demo>
             <p
                 i18n
-                [tuiDropdownContext]="dropdownContent"
+                tuiDropdownContext
+                [tuiDropdown]="dropdownContent"
                 [tuiDropdownMinHeight]="dropdownMinHeight"
                 [tuiDropdownMaxHeight]="dropdownMaxHeight"
                 [tuiDropdownAlign]="dropdownAlign"
@@ -52,28 +71,10 @@
             >
                 Right click on me to
                 <strong>see a dropdown</strong>
+                <ng-template #dropdownContent>Hello there!</ng-template>
             </p>
-            <ng-template #dropdownContent let-close="close">
-                <div class="dropdown">
-                    <ng-container *ngTemplateOutlet="tips"></ng-container>
-
-                    <button tuiButton type="button" (click)="close()">
-                        Close me
-                    </button>
-                </div>
-            </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownContext"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent"
-            >
-                Content
-            </ng-template>
-        </tui-doc-documentation>
-        <dropdown-controller-documentation></dropdown-controller-documentation>
+        <dropdown-documentation></dropdown-documentation>
     </ng-template>
 
     <ng-template pageTab>
@@ -81,13 +82,13 @@
             <li>
                 <p i18n>
                     Import
-                    <code>TuiDropdownContextModule</code>
+                    <code>TuiDropdownModule</code>
                     into a module where you want to use our directive
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -96,75 +97,9 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>
     </ng-template>
 </tui-doc-page>
-
-<ng-template #tips>
-    <h3 class="tips__title">Tips:</h3>
-    <ol class="tips__list">
-        <li>
-            Use
-            <strong>Arrow Up/Down</strong>
-            to focus closest element.
-        </li>
-        <li>
-            To close dropdown:
-            <ul class="tui-list tui-list_small">
-                <li class="tui-list__item">
-                    Use
-                    <strong>Esc</strong>
-                </li>
-                <li class="tui-list__item">
-                    Make
-                    <strong>mouse left click</strong>
-                    outside of dropdown content
-                </li>
-                <li class="tui-list__item">
-                    Open new dropdown via
-                    <strong>mouse right click</strong>
-                </li>
-                <li class="tui-list__item">
-                    Declare local template variable which access to property
-                    <strong>close</strong>
-                    of
-                    <a
-                        tuiLink
-                        href="https://angular.io/api/common/NgTemplateOutlet#properties"
-                        target="_blank"
-                    >
-                        template context object
-                    </a>
-                    and call it
-                    <br />
-                    (for example,
-                    <code>
-                        &lt;ng-template
-                        let-close="close"&gt;&lt;/ng-template&gt;
-                    </code>
-                    ).
-                </li>
-            </ul>
-        </li>
-        <li>
-            To get
-            <a tuiLink routerLink="/directives/active-zone" target="_blank">
-                ActiveZone
-            </a>
-            of opened dropdown you should declare local template variable which
-            access to property
-            <strong>activeZone</strong>
-            of template context object
-            <br />
-            (for example,
-            <code>
-                &lt;ng-template
-                let-activeZone="activeZone"&gt;&lt;/ng-template&gt;
-            </code>
-            ).
-        </li>
-    </ol>
-</ng-template>

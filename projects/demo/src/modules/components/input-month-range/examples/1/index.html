@@ -1,3 +1,11 @@
-<tui-input-month-range class="b-form" [formControl]="control">
+<tui-input-month-range
+    class="b-form"
+    [formControl]="control"
+    [tuiTextfieldCleaner]="true"
+>
     Choose a range of months
+    <input
+        tuiTextfield
+        placeholder="3 months or more"
+    />
 </tui-input-month-range>

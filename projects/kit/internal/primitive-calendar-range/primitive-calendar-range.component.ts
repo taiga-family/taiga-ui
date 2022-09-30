@@ -20,10 +20,10 @@ import {
     TuiDestroyService,
     TuiMapper,
     TuiMonth,
-    watch,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit/tokens';
+import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -31,9 +31,9 @@ import {takeUntil} from 'rxjs/operators';
  * @internal
  */
 @Component({
-    selector: 'tui-primitive-calendar-range',
-    templateUrl: './primitive-calendar-range.template.html',
-    styleUrls: ['./primitive-calendar-range.style.less'],
+    selector: `tui-primitive-calendar-range`,
+    templateUrl: `./primitive-calendar-range.template.html`,
+    styleUrls: [`./primitive-calendar-range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
@@ -75,7 +75,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
     constructor(
-        @Inject(TUI_CALENDAR_DATA_STREAM)
+        @Inject(TUI_CALENDAR_DATE_STREAM)
         @Optional()
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
@@ -86,7 +86,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         }
 
         valueChanges
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(value => {
                 this.value = value;
                 this.updateViewedMonths();
@@ -108,42 +108,68 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     monthOffset: TuiMapper<TuiMonth, TuiMonth> = (value, offset: number) =>
         value.append({month: offset});
 
-    ngOnInit() {
-        this.updateViewedMonths();
+    ngOnInit(): void {
+        this.setInitialMonths();
     }
 
-    onSectionFirstViewedMonth(month: TuiMonth) {
+    onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;
 
-        if (this.userViewedMonthSecond.year < this.userViewedMonthFirst.year) {
-            this.userViewedMonthSecond = this.userViewedMonthSecond.append({
-                year: month.year - this.userViewedMonthSecond.year,
-            });
-        }
+        this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
     }
 
-    onSectionSecondViewedMonth(month: TuiMonth) {
+    onSectionSecondViewedMonth(month: TuiMonth): void {
         this.userViewedMonthSecond = month;
 
-        if (this.userViewedMonthFirst.year > this.userViewedMonthSecond.year) {
-            this.userViewedMonthFirst = this.userViewedMonthFirst.append({
-                year: month.year - this.userViewedMonthFirst.year,
-            });
-        }
+        this.userViewedMonthFirst = this.userViewedMonthSecond.append({
+            month: -1,
+        });
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    private updateViewedMonths() {
+    private setInitialMonths(): void {
+        if (!this.value) {
+            this.userViewedMonthSecond = this.updatedViewedMonthSecond(
+                this.defaultViewedMonthSecond,
+            );
+
+            this.userViewedMonthFirst = this.updatedViewedMonthFirst(
+                this.defaultViewedMonthFirst,
+            );
+        }
+    }
+
+    private updatedViewedMonthSecond(month: TuiMonth): TuiMonth {
+        if (month.monthSameOrAfter(this.max)) {
+            return this.max;
+        }
+
+        if (month.monthBefore(this.min)) {
+            return this.min.append({month: 1});
+        }
+
+        return month;
+    }
+
+    private updatedViewedMonthFirst(month: TuiMonth): TuiMonth {
+        if (month.monthSameOrAfter(this.userViewedMonthSecond)) {
+            return this.userViewedMonthSecond.append({month: -1});
+        }
+
+        if (month.monthSameOrBefore(this.min)) {
+            return this.min;
+        }
+
+        return month;
+    }
+
+    private updateViewedMonths(): void {
         this.userViewedMonthFirst =
             this.value === null ? this.defaultViewedMonthFirst : this.value.from;
-        this.userViewedMonthSecond =
-            this.value === null ? this.defaultViewedMonthSecond : this.value.to;
 
-        if (this.userViewedMonthFirst.monthSame(this.userViewedMonthSecond)) {
-            this.userViewedMonthSecond = this.userViewedMonthSecond.append({month: 1});
-        }
+        this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
     }
 }

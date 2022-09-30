@@ -1,0 +1,33 @@
+@import '../../styles/taiga-ui-local.less';
+
+:host {
+    .shadow(2);
+    display: block;
+    border-radius: var(--tui-radius-m);
+    width: 18rem;
+    margin: 2rem 3rem 0 auto;
+
+    :host-context(tui-root._mobile) & {
+        margin: 1rem 1rem 0 auto;
+    }
+
+    &:not(:first-child) {
+        margin-top: 0.75rem;
+    }
+}
+
+.t-heading {
+    font: var(--tui-font-text-m);
+    line-height: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.t-content {
+    color: var(--tui-text-01);
+    word-wrap: break-word;
+
+    &:empty {
+        display: none;
+    }
+}

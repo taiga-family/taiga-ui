@@ -9,24 +9,29 @@
             [disabled]="leftButtonDisabled"
             (click)="onMinus()"
         ></button>
-        <div
-            tuiHintMode="onDark"
-            tuiHintDirection="top-right"
-            class="t-ghost-dot"
-            [tuiManualHint]="hint"
-            [tuiManualHintShow]="hintShow$ | async"
-            [style.left.px]="ghostLeft"
-        ></div>
-        <ng-template #hint>
-            {{ ((valueChange | async) || value) | percent }}
-        </ng-template>
-        <tui-slider
-            class="t-slider"
-            [min]="min"
-            [max]="max"
-            [ngModel]="value"
-            (ngModelChange)="onModelChange($event)"
-        ></tui-slider>
+        <label tuiSliderThumbLabel>
+            <div
+                tuiHintAppearance="onDark"
+                tuiHintDirection="top-right"
+                [tuiHint]="hint"
+                [tuiHintManual]="!!(hintShow$ | async)"
+            ></div>
+
+            <ng-template #hint>
+                {{ (valueChange | async) || value | percent }}
+            </ng-template>
+
+            <input
+                tuiSlider
+                type="range"
+                step="any"
+                class="t-slider"
+                [min]="min"
+                [max]="max"
+                [ngModel]="value"
+                (ngModelChange)="onModelChange($event)"
+            />
+        </label>
         <button
             tuiIconButton
             tuiPreviewAction
@@ -42,11 +47,11 @@
         tuiIconButton
         tuiPreviewAction
         icon="tuiIconCollapse"
-        tuiHintId="Collapse"
         tuiHintDirection="top-right"
-        tuiHintMode="onDark"
+        tuiHintAppearance="onDark"
         class="t-reset-button"
         [tuiHint]="texts.reset"
+        [tuiHintDescribe]="''"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
     ></button>

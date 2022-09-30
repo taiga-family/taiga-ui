@@ -1,0 +1,46 @@
+<table
+    tuiTable
+    class="table"
+    [columns]="columns"
+>
+    <thead>
+        <tr tuiThGroup>
+            <th
+                tuiTh
+                [resizable]="true"
+            >
+                Name
+            </th>
+            <th tuiTh>Price</th>
+        </tr>
+    </thead>
+    <tbody
+        tuiTbody
+        [data]="data"
+    >
+        <tr
+            *tuiRow="let item of data; let i = index"
+            tuiTr
+        >
+            <td
+                *tuiCell="'name'"
+                tuiTd
+            >
+                {{ item.name }}
+            </td>
+            <td
+                *tuiCell="'price'"
+                tuiTd
+            >
+                <tui-input-number
+                    tuiHintDirection="right"
+                    [postfix]="'UGX' | tuiCurrency"
+                    [formControl]="controls[i]"
+                    [tuiHint]="[] | tuiFieldErrorContent"
+                >
+                    Price
+                </tui-input-number>
+            </td>
+        </tr>
+    </tbody>
+</table>

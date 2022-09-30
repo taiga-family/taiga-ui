@@ -1,0 +1,8 @@
+<div class="poster">
+    <h3
+        *ngIf="isShown$ | async"
+        [@tuiFadeIn]="getAnimation(speed)"
+    >
+        STOP KILLING VOLCANOES TO MAKE LAVA LAMPS
+    </h3>
+</div>

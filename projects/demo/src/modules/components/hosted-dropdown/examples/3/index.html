@@ -1,12 +1,20 @@
 <div class="wrapper">
-    <tui-hosted-dropdown [content]="dropdown" [(open)]="open">
-        <a tuiLink tabindex="0" class="link">
+    <tui-hosted-dropdown
+        tuiDropdownAlign="right"
+        [content]="dropdown"
+        [(open)]="open"
+    >
+        <a
+            tuiLink
+            tabindex="0"
+            class="link"
+        >
             <tui-svg
                 src="tuiIconSortDown"
                 class="sort"
                 [class.sort_ascending]="ascending"
             ></tui-svg>
-            {{primary}}
+            {{ primary }}
             <tui-svg
                 src="tuiIconChevronDown"
                 class="arrow"
@@ -25,7 +33,7 @@
                 class="item"
                 (click)="onClick(item)"
             >
-                {{item}}
+                {{ item }}
                 <tui-svg
                     *ngIf="itemIsActive(item)"
                     src="tuiIconCheck"

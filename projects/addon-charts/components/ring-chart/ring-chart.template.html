@@ -1,17 +1,12 @@
-<div *ngIf="hasContent" class="t-content">
-    <div
-        polymorpheus-outlet
-        automation-id="tui-ring-chart__content"
-        class="t-wrapper"
-        [content]="content"
-        [context]="{$implicit: activeItemIndex, value: value}"
-    ></div>
+<div class="t-content">
+    <div class="t-wrapper">
+        <ng-content></ng-content>
+    </div>
 </div>
 
 <tui-pie-chart
     [masked]="true"
     [value]="value"
-    [colorHandler]="colorHandler"
     [size]="size"
     [activeItemIndex]="activeItemIndex"
     (activeItemIndexChange)="onActiveItemIndexChange($event)"

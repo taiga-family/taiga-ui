@@ -3,7 +3,10 @@
     [formControl]="control"
 ></tui-input-card-grouped>
 
-<ng-template #template="polymorpheus" polymorpheus>
+<ng-template
+    #template="polymorpheus"
+    polymorpheus
+>
     <img
         width="32"
         height="32"
@@ -12,4 +15,7 @@
     />
 </ng-template>
 
-<tui-field-error [formControl]="control"></tui-field-error>
+<tui-error
+    [formControl]="control"
+    [error]="[] | tuiFieldError | async"
+></tui-error>

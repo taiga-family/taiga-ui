@@ -1,62 +1,73 @@
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <tui-wrapper
+    <div
+        tuiWrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
-        [focused]="computedFocused"
-        [hovered]="computedHovered"
+        [focus]="computedFocused"
+        [hover]="pseudoHover"
         [disabled]="computedDisabled"
         [invalid]="computedInvalid"
-        (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
-        <div class="content">
-            <div *ngIf="iconAlignLeft" class="icons icons_left">
-                <tui-svg class="icon" [src]="icon"></tui-svg>
+        <div class="t-content">
+            <div
+                *ngIf="iconLeft"
+                class="t-icons t-icons_left"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
+                    class="t-icon"
+                    [src]="src"
+                ></tui-svg>
             </div>
-            <div class="wrapper">
-                <div class="absolute-wrapper">
+            <div class="t-wrapper">
+                <div class="t-absolute-wrapper">
                     <div
                         *ngIf="hasPlaceholder"
                         automation-id="tui-input-tag__placeholder"
-                        class="placeholder"
-                        [class.placeholder_raised]="placeholderRaised"
+                        class="t-placeholder"
+                        [class.t-placeholder_raised]="placeholderRaised"
                     >
                         <ng-content></ng-content>
                     </div>
                 </div>
                 <tui-scrollbar
                     *ngIf="!expandable; else items"
-                    class="scrollbar"
+                    class="t-scrollbar"
                     [hidden]="true"
                 >
-                    <ng-container *ngTemplateOutlet="items"></ng-container>
+                    <ng-container [ngTemplateOutlet]="items"></ng-container>
                 </tui-scrollbar>
                 <ng-template #items>
-                    <div #tagsContainer class="tags">
+                    <div
+                        #tagsContainer
+                        class="t-tags"
+                    >
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
-                                *ngFor="let item of value; index as index"
+                                *ngFor="let item of value; index as index; trackBy: trackByFn"
                                 #tag
                                 automation-id="tui-input-tag__tag"
-                                class="tag"
-                                [status]="status"
+                                class="t-tag"
+                                [status]="(status$ | async)!"
                                 [leftContent]="getLeftContent(item)"
-                                [allowSpaces]="allowSpaces"
                                 [tuiFocusable]="false"
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
                                 [removable]="!readOnly"
-                                [maxLength]="controller.maxLength"
+                                [separator]="separator"
+                                [maxLength]="maxLength"
                                 [size]="controller.size"
                                 [value]="item.toString()"
-                                (edited)="onTagEdited($event, item)"
+                                (edited)="onTagEdited($event, index)"
                                 (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
                                 (keydown.arrowRight.prevent)="onTagKeyDownArrowRight(index)"
                             ></tui-tag>
@@ -64,25 +75,25 @@
                         <ng-template #text>
                             <span
                                 *ngFor="let item of value"
-                                class="text"
-                                [class.text_disabled]="disabledItemHandler(item)"
-                                [class.text_error]="!tagValidator(item)"
-                                [innerText]="item"
+                                class="t-text"
+                                [class.t-text_disabled]="disabledItemHandler(item)"
+                                [class.t-text_error]="!tagValidator(item)"
+                                [textContent]="item"
                             ></span>
                         </ng-template>
                         <div
-                            class="input-wrapper"
-                            [class.input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
+                            class="t-input-wrapper"
+                            [class.t-input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
                         >
-                            <div class="ghost">{{ search }}</div>
+                            <div class="t-ghost">{{ search }}</div>
                             <input
                                 #focusableElement
                                 type="text"
                                 automation-id="tui-input-tag__native"
-                                class="native"
-                                [placeholder]="controller.exampleText"
-                                [class.native_hidden]="inputHidden"
-                                [attr.maxLength]="controller.maxLength"
+                                class="t-native"
+                                [placeholder]="placeholder"
+                                [class.t-native_hidden]="inputHidden"
+                                [attr.maxLength]="maxLength"
                                 [id]="id"
                                 [disabled]="computedDisabled"
                                 [readOnly]="readOnly || inputHidden"
@@ -97,35 +108,43 @@
                     </div>
                 </ng-template>
             </div>
-            <div *ngIf="hasRightIcons" class="icons icons_right">
+            <div
+                *ngIf="hasRightIcons"
+                class="t-icons t-icons_right"
+            >
                 <tui-svg
                     *ngIf="hasCleaner"
                     #cleaner
                     automation-id="tui-input-tag__cleaner"
                     src="tuiIconCloseLarge"
-                    class="cleaner"
+                    class="t-cleaner"
                     (click.stop)="onCleanerClick()"
                 ></tui-svg>
                 <tui-tooltip
-                    *ngIf="hasTooltip"
+                    *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                     automation-id="tui-input-tag__tooltip"
                     describeId="placeholer_until_accesibility_is_added"
-                    class="tooltip"
-                    [direction]="hintController.direction"
-                    [mode]="hintController.mode"
-                    [content]="hintController.content"
-                    [showDelay]="hintController.showDelay"
-                    [hideDelay]="hintController.hideDelay"
+                    class="t-tooltip"
+                    [direction]="hintOptions.direction"
+                    [appearance]="hintOptions.appearance"
+                    [content]="hintOptions.content"
+                    [showDelay]="hintOptions.showDelay"
+                    [hideDelay]="hintOptions.hideDelay"
                 ></tui-tooltip>
-                <tui-svg
-                    *ngIf="iconAlignRight"
-                    class="icon"
-                    [src]="icon"
-                ></tui-svg>
+                <div *ngIf="icon">
+                    <tui-svg
+                        *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                        class="t-icon"
+                        [src]="src"
+                    ></tui-svg>
+                </div>
             </div>
         </div>
         <ng-template #errorIcon>
-            <tui-svg src="tuiIconAttention" class="error-icon"></tui-svg>
+            <tui-svg
+                src="tuiIconAttention"
+                class="t-error-icon"
+            ></tui-svg>
         </ng-template>
-    </tui-wrapper>
+    </div>
 </tui-hosted-dropdown>

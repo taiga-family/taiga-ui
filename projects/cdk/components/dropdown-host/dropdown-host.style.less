@@ -1,0 +1,22 @@
+:host {
+    position: relative;
+    z-index: 0;
+    display: block;
+    height: 100%;
+
+    &:before {
+        content: '';
+        display: block;
+        overflow: hidden;
+    }
+}
+
+.t-position-fixed-offset {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}

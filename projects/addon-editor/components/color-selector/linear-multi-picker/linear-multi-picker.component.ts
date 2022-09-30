@@ -13,9 +13,9 @@ import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-linear-multi-picker',
-    templateUrl: './linear-multi-picker.template.html',
-    styleUrls: ['./linear-multi-picker.style.less'],
+    selector: `tui-linear-multi-picker`,
+    templateUrl: `./linear-multi-picker.template.html`,
+    styleUrls: [`./linear-multi-picker.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })
@@ -38,22 +38,22 @@ export class TuiLinearMultiPickerComponent {
         });
     }
 
-    @HostListener('document:mouseup')
-    onMouseUp() {
+    @HostListener(`document:mouseup`)
+    onMouseUp(): void {
         this.index = NaN;
     }
 
-    onMouseDown(index: number) {
+    onMouseDown(index: number): void {
         this.updateIndex(index);
     }
 
-    onClick(index: number) {
+    onClick(index: number): void {
         if (this.value.length > 2) {
             this.updateValue(this.value.filter((_, i) => i !== index));
         }
     }
 
-    private onPicker(x: number) {
+    private onPicker(x: number): void {
         if (isNaN(this.index)) {
             this.updateIndex(this.value.length);
             this.value = [...this.value, 0];
@@ -68,12 +68,12 @@ export class TuiLinearMultiPickerComponent {
         );
     }
 
-    private updateIndex(index: number) {
+    private updateIndex(index: number): void {
         this.index = index;
         this.indexChange.emit(index);
     }
 
-    private updateValue(value: number[]) {
+    private updateValue(value: number[]): void {
         this.value = value;
         this.valueChange.emit(value);
     }

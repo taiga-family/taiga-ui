@@ -6,14 +6,25 @@
 >
     Show
 </button>
-<button tuiButton size="m" (click)="onClick(content, header, 'fullscreen')">
+<button
+    tuiButton
+    size="m"
+    (click)="onClick(content, header, 'fullscreen')"
+>
     Show fullscreen
 </button>
 
-<ng-template #content let-observer>
+<ng-template
+    #content
+    let-observer
+>
     Take a look
     <div class="buttons">
-        <button tuiButton size="m" (click)="observer.complete()">
+        <button
+            tuiButton
+            size="m"
+            (click)="observer.complete()"
+        >
             Very cool!
         </button>
     </div>

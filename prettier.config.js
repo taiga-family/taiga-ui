@@ -2,6 +2,7 @@ const base = require('@tinkoff/prettier-config/angular');
 
 module.exports = {
     ...base,
+    singleAttributePerLine: true,
     overrides: [
         ...base.overrides,
         {
@@ -9,12 +10,8 @@ module.exports = {
             options: {printWidth: 90, parser: 'typescript'},
         },
         {
-            files: '*.html',
-            options: {printWidth: 80, parser: 'html'},
-        },
-        {
-            files: ['package.json', 'ng-package.json'],
-            options: {parser: 'json-stringify'},
+            files: ['*.html'],
+            options: {printWidth: 120, parser: 'angular'},
         },
     ],
 };

@@ -8,18 +8,18 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-export function smartSearch<T>(
+export function tuiSmartSearch<T>(
     getSearchFunction: (search: string) => Observable<readonly T[] | readonly T[][]>,
-    searchDebouceTimeMs: number = 400,
+    searchDebounceTimeMs: number = 400,
 ): OperatorFunction<string, readonly T[] | readonly T[][] | null> {
     return source =>
         source.pipe(
-            debounceTime(searchDebouceTimeMs),
+            debounceTime(searchDebounceTimeMs),
             scan((previousSearched, current) => {
-                return previousSearched !== '' && current.startsWith(previousSearched)
+                return previousSearched !== `` && current.startsWith(previousSearched)
                     ? previousSearched
                     : current;
-            }, ''),
+            }, ``),
             distinctUntilChanged(),
             switchMap(value => getSearchFunction(value).pipe(startWith(null))),
             startWith(EMPTY_ARRAY),

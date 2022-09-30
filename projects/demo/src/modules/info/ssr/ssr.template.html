@@ -1,0 +1,57 @@
+<tui-doc-page
+    i18n-header
+    header="Server Side Rendering (SSR)"
+>
+    <h2>Tokens</h2>
+    <p>
+        Taiga UI does not access global variables like
+        <code>window</code>
+        or
+        <code>navigator</code>
+        directly. Instead, we rely on DI tokens for simplicity of testing and cross-environment support.
+    </p>
+    <p>
+        A separate library called
+        <code>@ng-web-apis/common</code>
+        is dedicated solely to this purpose. It is a direct dependency and is installed with Taiga UI, you can find docs
+        <a
+            tuiLink
+            href="https://github.com/ng-web-apis/common"
+            target="_blank"
+            rel="noreferrer noopener"
+        >
+            here
+        </a>
+    </p>
+    <h2>Fallback</h2>
+    <p>
+        For Server Side Rendering (SSR), a sister library
+        <code>@ng-web-apis/universal</code>
+        can be used. It has advanced mocks and tools to extract user agent and location info from server side requests.
+        If you want to use SSR with Taiga UI you need to install this package and follow instructions from
+        <a
+            tuiLink
+            href="https://github.com/ng-web-apis/universal"
+            target="_blank"
+            rel="noreferrer noopener"
+        >
+            README
+        </a>
+        . Note that this is also applicable to Jest which is a server side testing suite.
+    </p>
+    <p>
+        Taiga UI uses modern JavaScript with classes that might be not available in server side environment. To add
+        mocks for those classes you can also use
+        <code>@ng-web-apis/universal</code>
+        package (see
+        <a
+            tuiLink
+            href="https://github.com/ng-web-apis/universal#mocks"
+            target="_blank"
+            rel="noreferrer noopener"
+        >
+            this section
+        </a>
+        of README).
+    </p>
+</tui-doc-page>

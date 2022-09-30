@@ -9,17 +9,17 @@ import {
     Optional,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {defaultSort} from '@taiga-ui/addon-table/utils';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultSort} from '@taiga-ui/addon-table/utils';
+import {tuiDefaultProp, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 
 @Component({
-    selector: 'th[tuiTh]',
-    templateUrl: './th.template.html',
-    styleUrls: ['./th.style.less'],
+    selector: `th[tuiTh]`,
+    templateUrl: `./th.template.html`,
+    styleUrls: [`./th.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -28,11 +28,11 @@ import {TuiTableDirective} from '../directives/table.directive';
         },
     ],
 })
-export class TuiThComponent<T> {
+export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
     @tuiDefaultProp()
     sorter: TuiComparator<T> | null = this.head
-        ? (a, b) => defaultSort(a[this.key], b[this.key])
+        ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
         : null;
 
     @Input()
@@ -40,11 +40,11 @@ export class TuiThComponent<T> {
     resizable = false;
 
     @Input()
-    @HostBinding('class._sticky')
+    @HostBinding(`class._sticky`)
     @tuiDefaultProp()
     sticky = false;
 
-    @HostBinding('style.width.px')
+    @HostBinding(`style.width.px`)
     width: number | null = null;
 
     constructor(
@@ -58,7 +58,7 @@ export class TuiThComponent<T> {
 
     get key(): keyof T {
         if (!this.head) {
-            throw new Error('Trying to sort with no key');
+            throw new TuiTableSortKeyException();
         }
 
         return this.head.tuiHead;
@@ -69,10 +69,10 @@ export class TuiThComponent<T> {
     }
 
     get icon(): string {
-        return this.isCurrent ? 'tuiIconSortDown' : 'tuiIconSortOff';
+        return this.isCurrent ? `tuiIconSortDown` : `tuiIconSortOff`;
     }
 
-    onResized(width: number) {
+    onResized(width: number): void {
         this.width = width;
     }
 }

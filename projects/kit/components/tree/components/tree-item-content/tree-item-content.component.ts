@@ -12,9 +12,9 @@ import {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces'
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
-    selector: 'tui-tree-item-content',
-    templateUrl: 'tree-item-content.template.html',
-    styleUrls: ['tree-item-content.style.less'],
+    selector: `tui-tree-item-content`,
+    templateUrl: `tree-item-content.template.html`,
+    styleUrls: [`tree-item-content.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTreeItemContentComponent {
@@ -28,7 +28,7 @@ export class TuiTreeItemContentComponent {
         return this.context.$implicit.isExpanded;
     }
 
-    @HostBinding('class._expandable')
+    @HostBinding(`class._expandable`)
     get isExpandable(): boolean {
         return (
             this.context.$implicit.isExpandable &&
@@ -36,7 +36,7 @@ export class TuiTreeItemContentComponent {
         );
     }
 
-    onClick() {
+    onClick(): void {
         this.controller.toggle(this.context.$implicit);
     }
 }

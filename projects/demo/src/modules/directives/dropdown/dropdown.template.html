@@ -1,15 +1,30 @@
-<tui-doc-page i18n-header header="Dropdown" package="CORE" type="directives">
+<tui-doc-page
+    header="Dropdown"
+    package="CORE"
+    type="directives"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>tuiDropdown</code>
             shows a dropdown with custom template. Use
-            <a tuiLink [routerLink]="['/directives/active-zone']">ActiveZone</a>
+            <a
+                tuiLink
+                [routerLink]="['/directives/active-zone']"
+            >
+                ActiveZone
+            </a>
             directive to hide dropdown.
         </div>
 
         <p i18n>
             See also
-            <a tuiLink [routerLink]="['/components/hosted-dropdown']">
+            <a
+                tuiLink
+                [routerLink]="['/components/hosted-dropdown']"
+            >
                 HostedDropdown
             </a>
         </p>
@@ -26,7 +41,7 @@
         <tui-doc-example
             id="full-featured"
             i18n-heading
-            heading="Intresting one"
+            heading="Interesting one"
             [content]="example2"
         >
             <tui-dropdown-example-2></tui-dropdown-example-2>
@@ -48,30 +63,34 @@
                 <button
                     tuiButton
                     type="button"
-                    [tuiDropdownContent]="dropdownContent"
-                    [tuiDropdownMinHeight]="tuiDropdownMinHeight"
-                    [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
-                    [tuiDropdownAlign]="tuiDropdownAlign"
-                    [tuiDropdownDirection]="tuiDropdownDirection"
-                    [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
-                    [tuiDropdownSided]="tuiDropdownSided"
-                    [tuiDropdown]="open"
+                    [tuiDropdown]="dropdownContent"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownManual]="open"
                     (tuiObscured)="onObscured($event)"
                     (click)="onClick()"
                 >
                     PRESS!
-                    <i>
-                        * There is also a pretty long text to check its width
-                        limitations
-                    </i>
+                    <i>* There is also a pretty long text to check its width limitations</i>
                 </button>
                 <ng-template #dropdownContent>
-                    <div i18n class="dropdown">
+                    <div
+                        i18n
+                        class="dropdown"
+                    >
                         Here can be any content
                         <p>You can even insert other components:</p>
-                        <button tuiButton type="button">Do not touch!</button>
+                        <button
+                            tuiButton
+                            type="button"
+                        >
+                            Do not touch!
+                        </button>
                         <p>Everything you want... *</p>
-                        <sub>* except cases of Worldwide rights violation</sub>
+                        <sub>* except cases of human rights violation</sub>
                     </div>
                 </ng-template>
             </span>
@@ -79,91 +98,22 @@
         <tui-doc-documentation>
             <ng-template
                 i18n
-                documentationPropertyName="tuiDropdown"
+                documentationPropertyName="tuiDropdownManual"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="open"
             >
-                Show dropdown
+                Show dropdown (basic manual implementation, see related pages for other options)
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="tuiDropdownContent"
+                documentationPropertyName="tuiDropdown"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
             </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="alignVariants"
-                [(documentationPropertyValue)]="tuiDropdownAlign"
-            >
-                Align of dropdown (does not work together with
-                <code>limitWidth === 'fixed'</code>
-                )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiVerticalDirection | null"
-                [documentationPropertyValues]="dropdownDirectionVariants"
-                [(documentationPropertyValue)]="tuiDropdownDirection"
-            >
-                Set a vertical direction of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownHost"
-                documentationPropertyMode="input"
-                documentationPropertyType="HTMLElement | null"
-            >
-                Set dropdown host manually. For example, it will be a target if
-                someone blurs dropdown with Tab/Shift+Tab. Element with a
-                directive is used by default.
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownLimitWidth"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidthT"
-                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
-                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
-            >
-                Limit dropdown width
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMinHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMinHeight"
-            >
-                Minimum height to calculate that dropdown fits to setted
-                <code>tuiDropdownDirection</code>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMaxHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
-            >
-                Maximum height of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownSided"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="tuiDropdownSided"
-            >
-                Dropdown is sided by host
-            </ng-template>
+            <dropdown-documentation></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 
@@ -178,7 +128,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -187,7 +137,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

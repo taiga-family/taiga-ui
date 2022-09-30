@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -17,23 +17,25 @@ import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 
 @Directive({
-    selector: 'table[tuiTable]',
+    selector: `table[tuiTable]`,
     providers: TUI_TABLE_PROVIDERS,
     host: {
-        '($.data-mode.attr)': 'mode$',
-        '($.class._stuck)': 'stuck$',
-        style: 'border-collapse: separate',
+        '($.data-mode.attr)': `mode$`,
+        '($.class._stuck)': `stuck$`,
+        style: `border-collapse: separate`,
     },
 })
-export class TuiTableDirective<T> extends TuiController {
+export class TuiTableDirective<
+    T extends Partial<Record<keyof T, any>>,
+> extends AbstractTuiController {
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<keyof T | string> = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -59,12 +61,12 @@ export class TuiTableDirective<T> extends TuiController {
     @tuiDefaultProp()
     sorter: TuiComparator<T> = () => 0;
 
-    updateSorter(sorter: TuiComparator<T>) {
+    updateSorter(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
             this.direction = this.direction === 1 ? -1 : 1;
             this.directionChange.emit(this.direction);
         } else {
-            this.sorter = sorter;
+            this.sorter = sorter || (() => 0);
             this.sorterChange.emit(this.sorter);
             this.direction = 1;
             this.directionChange.emit(1);
@@ -73,7 +75,7 @@ export class TuiTableDirective<T> extends TuiController {
         this.change$.next();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
     }
 }

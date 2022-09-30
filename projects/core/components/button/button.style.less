@@ -6,8 +6,6 @@
 @padding-l: 2.25rem;
 @padding-xl: 2.5rem;
 @icon-margin: 0.5rem;
-@font-size-large: 0.9375rem;
-@font-size-extra-large: 1.0625rem;
 
 :host {
     .clearbtn();
@@ -19,71 +17,73 @@
     border-radius: var(--tui-radius-m);
     user-select: none;
     text-decoration: none;
-    font-weight: bold;
     outline: none;
 
     &[disabled] {
         pointer-events: none;
     }
 
-    &[tuiIconButton] .left,
-    &[tuiIconButton] .right {
+    &[tuiIconButton] .t-left,
+    &[tuiIconButton] .t-right {
         margin: 0;
     }
 
-    &[data-tui-host-shape='rounded'] {
+    &[data-shape='rounded'] {
         border-radius: 6.25rem;
     }
 
-    &[data-tui-host-size='xs'] {
+    &[data-size='xs'] {
         height: var(--tui-height-xs);
         font-weight: normal;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-xs);
             width: var(--tui-height-xs);
         }
     }
 
-    &[data-tui-host-size='s'] {
+    &[data-size='s'] {
         height: var(--tui-height-s);
         font-weight: normal;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-s);
             width: var(--tui-height-s);
         }
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         height: var(--tui-height-m);
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-m);
             width: var(--tui-height-m);
         }
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         height: var(--tui-height-l);
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-l);
             width: var(--tui-height-l);
         }
     }
 
-    &[data-tui-host-size='xl'] {
+    &[data-size='xl'] {
         height: 3.75rem;
-        font-size: @font-size-large;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: 3.75rem;
             width: 3.75rem;
@@ -91,32 +91,32 @@
     }
 }
 
-.loader {
+.t-loader {
     .fullsize();
     cursor: default;
 }
 
-.left {
+.t-left {
     margin: 0 @icon-margin 0 (-@icon-margin / 2);
 }
 
-.right {
-    margin: 0 (-@icon-margin / 2) 0 @icon-margin;
+.t-right {
+    margin: 0 -@icon-margin 0 (@icon-margin / 2);
 }
 
-.icon {
+.t-icon {
     display: block;
 
-    :host[data-tui-host-size='s'] &,
-    :host[data-tui-host-size='xs'] & {
+    :host[data-size='s'] &,
+    :host[data-size='xs'] & {
         width: 1rem;
         height: 1rem;
     }
 }
 
-.left,
-.right,
-.icon {
+.t-left,
+.t-right,
+.t-icon {
     :host[tuiIconButton] & {
         display: flex;
         width: 100%;
@@ -126,38 +126,38 @@
     }
 }
 
-.wrapper {
+.t-wrapper {
     .createStackingContext();
     box-sizing: border-box;
     cursor: pointer;
 
-    :host[data-tui-host-size='xs'] & {
+    :host[data-size='xs'] & {
         padding: 0 @padding-xs;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         padding: 0 @padding-s;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 0 @padding-m;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 0 @padding-l;
     }
 
-    :host[data-tui-host-size='xl'] & {
+    :host[data-size='xl'] & {
         padding: 0 @padding-xl;
     }
 
-    :host[data-tui-host-shape='square'] &,
+    :host[data-shape='square'] &,
     :host[tuiIconButton] & {
         padding: 0;
     }
 }
 
-.content {
+.t-content {
     display: flex;
     height: 100%;
     align-items: center;

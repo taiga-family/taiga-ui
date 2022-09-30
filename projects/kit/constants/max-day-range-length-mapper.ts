@@ -6,13 +6,17 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiMapper<TuiDay, TuiDay> = (
     maxLength: TuiDayLike | null,
     backwards: boolean,
 ) => {
-    if (!value || !value.isSingleDay || !maxLength) {
+    if (!value?.isSingleDay || !maxLength) {
         return min;
     }
 
+    const negativeMaxLength = Object.fromEntries(
+        Object.entries(maxLength).map(([key, value]) => [key, -value]),
+    );
+
     const dateShift = value.from
-        .append(maxLength, backwards)
-        .append({day: 1}, !backwards);
+        .append(backwards ? negativeMaxLength : maxLength)
+        .append({day: !backwards ? -1 : 1});
 
     if (backwards) {
         return dateShift.dayBefore(min) ? min : dateShift;

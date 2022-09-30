@@ -1,3 +1,3 @@
-export function isCurrentTarget({target, currentTarget}: Event): boolean {
+export function tuiIsCurrentTarget({target, currentTarget}: Event): boolean {
     return target === currentTarget;
 }

@@ -1,41 +1,46 @@
 import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 
-const TRANSITION = '{{duration}}ms ease-in-out';
+const TRANSITION = `{{duration}}ms ease-in-out`;
 const DURATION = {params: {duration: 300}};
 const STAGGER = 300;
 
-export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
+export interface TuiDurationOptions {
+    value: string;
+    params: {duration: number};
+}
+
+export const tuiHeightCollapse = trigger(`tuiHeightCollapse`, [
     transition(
-        ':enter',
-        [style({height: 0}), animate(TRANSITION, style({height: '*'}))],
+        `:enter`,
+        [style({height: 0}), animate(TRANSITION, style({height: `*`}))],
         DURATION,
     ),
     transition(
-        ':leave',
-        [style({height: '*'}), animate(TRANSITION, style({height: 0}))],
+        `:leave`,
+        [style({height: `*`}), animate(TRANSITION, style({height: 0}))],
         DURATION,
     ),
 ]);
 
-export const tuiHeightCollapseList = trigger('tuiHeightCollapseList', [
+export const tuiHeightCollapseList = trigger(`tuiHeightCollapseList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
                     style({height: 0}),
-                    stagger(STAGGER, [animate(TRANSITION, style({height: '*'}))]),
+                    stagger(STAGGER, [animate(TRANSITION, style({height: `*`}))]),
                 ],
                 {
                     optional: true,
                 },
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({height: '*'}),
+                    style({height: `*`}),
                     stagger(STAGGER, [animate(TRANSITION, style({height: 0}))]),
                 ],
                 {
@@ -47,37 +52,37 @@ export const tuiHeightCollapseList = trigger('tuiHeightCollapseList', [
     ),
 ]);
 
-export const tuiWidthCollapse = trigger('tuiWidthCollapse', [
+export const tuiWidthCollapse = trigger(`tuiWidthCollapse`, [
     transition(
-        ':enter',
-        [style({width: 0}), animate(TRANSITION, style({width: '*'}))],
+        `:enter`,
+        [style({width: 0}), animate(TRANSITION, style({width: `*`}))],
         DURATION,
     ),
     transition(
-        ':leave',
-        [style({width: '*'}), animate(TRANSITION, style({width: 0}))],
+        `:leave`,
+        [style({width: `*`}), animate(TRANSITION, style({width: 0}))],
         DURATION,
     ),
 ]);
 
-export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
+export const tuiWidthCollapseList = trigger(`tuiWidthCollapseList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
                     style({width: 0}),
-                    stagger(STAGGER, [animate(TRANSITION, style({width: '*'}))]),
+                    stagger(STAGGER, [animate(TRANSITION, style({width: `*`}))]),
                 ],
                 {
                     optional: true,
                 },
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({width: '*'}),
+                    style({width: `*`}),
                     stagger(STAGGER, [animate(TRANSITION, style({width: 0}))]),
                 ],
                 {
@@ -89,25 +94,25 @@ export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     ),
 ]);
 
-export const tuiFadeIn = trigger('tuiFadeIn', [
+export const tuiFadeIn = trigger(`tuiFadeIn`, [
     transition(
-        ':enter',
+        `:enter`,
         [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
         DURATION,
     ),
     transition(
-        ':leave',
+        `:leave`,
         [style({opacity: 1}), animate(TRANSITION, style({opacity: 0}))],
         DURATION,
     ),
 ]);
 
-export const tuiFadeInList = trigger('tuiFadeInList', [
+export const tuiFadeInList = trigger(`tuiFadeInList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
                     style({opacity: 0}),
                     stagger(STAGGER, [animate(TRANSITION, style({opacity: 1}))]),
@@ -117,7 +122,7 @@ export const tuiFadeInList = trigger('tuiFadeInList', [
                 },
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
                     style({opacity: 1}),
                     stagger(STAGGER, [animate(TRANSITION, style({opacity: 0}))]),
@@ -131,118 +136,118 @@ export const tuiFadeInList = trigger('tuiFadeInList', [
     ),
 ]);
 
-export const tuiFadeInTop = trigger('tuiFadeInTop', [
+export const tuiFadeInTop = trigger(`tuiFadeInTop`, [
     transition(
-        ':enter',
+        `:enter`,
         [
-            style({transform: 'translateY(-10px)', opacity: 0}),
-            animate(TRANSITION, style({transform: 'translateY(0)', opacity: 1})),
+            style({transform: `translateY(-10px)`, opacity: 0}),
+            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
         ],
         DURATION,
     ),
     transition(
-        ':leave',
+        `:leave`,
         [
-            style({transform: 'translateY(0)', opacity: 1}),
-            animate(TRANSITION, style({transform: 'translateY(-10px)', opacity: 0})),
-        ],
-        DURATION,
-    ),
-]);
-
-export const tuiFadeInBottom = trigger('tuiFadeInBottom', [
-    transition(
-        ':enter',
-        [
-            style({transform: 'translateY(10px)', opacity: 0}),
-            animate(TRANSITION, style({transform: 'translateY(0)', opacity: 1})),
-        ],
-        DURATION,
-    ),
-    transition(
-        ':leave',
-        [
-            style({transform: 'translateY(0)', opacity: 1}),
-            animate(TRANSITION, style({transform: 'translateY(10px)', opacity: 0})),
+            style({transform: `translateY(0)`, opacity: 1}),
+            animate(TRANSITION, style({transform: `translateY(-10px)`, opacity: 0})),
         ],
         DURATION,
     ),
 ]);
 
-export const tuiDropdownAnimation = trigger('tuiDropdownAnimation', [
+export const tuiFadeInBottom = trigger(`tuiFadeInBottom`, [
+    transition(
+        `:enter`,
+        [
+            style({transform: `translateY(10px)`, opacity: 0}),
+            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
+        ],
+        DURATION,
+    ),
+    transition(
+        `:leave`,
+        [
+            style({transform: `translateY(0)`, opacity: 1}),
+            animate(TRANSITION, style({transform: `translateY(10px)`, opacity: 0})),
+        ],
+        DURATION,
+    ),
+]);
+
+export const tuiDropdownAnimation = trigger(`tuiDropdownAnimation`, [
     transition(
         `* => ${TuiDropdownAnimation.FadeInTop}`,
         [
-            style({transform: 'translateY(-10px)', opacity: 0}),
-            animate(TRANSITION, style({transform: 'translateY(0)', opacity: 1})),
+            style({transform: `translateY(-10px)`, opacity: 0}),
+            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
         ],
         DURATION,
     ),
     transition(
         `* => ${TuiDropdownAnimation.FadeInBottom}`,
         [
-            style({transform: 'translateY(10px)', opacity: 0}),
-            animate(TRANSITION, style({transform: 'translateY(0)', opacity: 1})),
+            style({transform: `translateY(10px)`, opacity: 0}),
+            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
         ],
         DURATION,
     ),
     transition(
         `${TuiDropdownAnimation.FadeInBottom} => *`,
         [
-            style({transform: 'translateY(0)', opacity: 1}),
-            animate(TRANSITION, style({transform: 'translateY(10px)', opacity: 0})),
+            style({transform: `translateY(0)`, opacity: 1}),
+            animate(TRANSITION, style({transform: `translateY(10px)`, opacity: 0})),
         ],
         DURATION,
     ),
     transition(
         `${TuiDropdownAnimation.FadeInTop} => *`,
         [
-            style({transform: 'translateY(0)', opacity: 1}),
-            animate(TRANSITION, style({transform: 'translateY(-10px)', opacity: 0})),
+            style({transform: `translateY(0)`, opacity: 1}),
+            animate(TRANSITION, style({transform: `translateY(-10px)`, opacity: 0})),
         ],
         DURATION,
     ),
 ]);
 
-export const tuiScaleIn = trigger('tuiScaleIn', [
+export const tuiScaleIn = trigger(`tuiScaleIn`, [
     transition(
-        ':enter',
+        `:enter`,
         [
-            style({transform: 'scale(0)'}),
-            animate(TRANSITION, style({transform: 'scale(1)'})),
+            style({transform: `scale(0)`}),
+            animate(TRANSITION, style({transform: `scale(1)`})),
         ],
         DURATION,
     ),
     transition(
-        ':leave',
+        `:leave`,
         [
-            style({transform: 'scale(1)'}),
-            animate(TRANSITION, style({transform: 'scale(0)'})),
+            style({transform: `scale(1)`}),
+            animate(TRANSITION, style({transform: `scale(0)`})),
         ],
         DURATION,
     ),
 ]);
 
-export const tuiScaleInList = trigger('tuiScaleInList', [
+export const tuiScaleInList = trigger(`tuiScaleInList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
-                    style({transform: 'scale(0)'}),
+                    style({transform: `scale(0)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'scale(1)'})),
+                        animate(TRANSITION, style({transform: `scale(1)`})),
                     ]),
                 ],
                 {optional: true},
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({transform: 'scale(1)'}),
+                    style({transform: `scale(1)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'scale(0)'})),
+                        animate(TRANSITION, style({transform: `scale(0)`})),
                     ]),
                 ],
                 {optional: true},
@@ -252,128 +257,80 @@ export const tuiScaleInList = trigger('tuiScaleInList', [
     ),
 ]);
 
-export const tuiSlideIn = trigger('tuiSlideIn', [
+export const tuiSlideIn = trigger(`tuiSlideIn`, [
     transition(
         `* => left`,
         [
-            style({transform: 'translateX(-100%)'}),
-            animate(TRANSITION, style({transform: 'translateX(0)'})),
+            style({transform: `translateX(-100%)`}),
+            animate(TRANSITION, style({transform: `translateX(0)`})),
         ],
         DURATION,
     ),
     transition(
-        'left => *',
+        `left => *`,
         [
-            style({transform: 'translateX(0)'}),
-            animate(TRANSITION, style({transform: 'translateX(-100%)'})),
+            style({transform: `translateX(0)`}),
+            animate(TRANSITION, style({transform: `translateX(-100%)`})),
         ],
         DURATION,
     ),
     transition(
-        '* => right',
+        `* => right`,
         [
-            style({transform: 'translateX(100%)'}),
-            animate(TRANSITION, style({transform: 'translateX(0)'})),
+            style({transform: `translateX(100%)`}),
+            animate(TRANSITION, style({transform: `translateX(0)`})),
         ],
         DURATION,
     ),
     transition(
-        'right => *',
+        `right => *`,
         [
-            style({transform: 'translateX(0)'}),
-            animate(TRANSITION, style({transform: 'translateX(100%)'})),
+            style({transform: `translateX(0)`}),
+            animate(TRANSITION, style({transform: `translateX(100%)`})),
         ],
         DURATION,
     ),
 ]);
 
-export const tuiSlideInLeft = trigger('tuiSlideInLeft', [
+export const tuiSlideInLeft = trigger(`tuiSlideInLeft`, [
     transition(
-        ':enter',
+        `:enter`,
         [
-            style({transform: 'translateX(-100%)'}),
-            animate(TRANSITION, style({transform: 'translateX(0)'})),
+            style({transform: `translateX(-100%)`}),
+            animate(TRANSITION, style({transform: `translateX(0)`})),
         ],
         DURATION,
     ),
     transition(
-        ':leave',
+        `:leave`,
         [
-            style({transform: 'translateX(0)'}),
-            animate(TRANSITION, style({transform: 'translateX(-100%)'})),
+            style({transform: `translateX(0)`}),
+            animate(TRANSITION, style({transform: `translateX(-100%)`})),
         ],
         DURATION,
     ),
 ]);
 
-export const tuiSlideInLeftList = trigger('tuiSlideInLeftList', [
+export const tuiSlideInLeftList = trigger(`tuiSlideInLeftList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
-                    style({transform: 'translateX(-100%)'}),
+                    style({transform: `translateX(-100%)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateX(0)'})),
+                        animate(TRANSITION, style({transform: `translateX(0)`})),
                     ]),
                 ],
                 {optional: true},
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({transform: 'translateX(0)'}),
+                    style({transform: `translateX(0)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateX(-100%)'})),
-                    ]),
-                ],
-                {optional: true},
-            ),
-        ],
-        DURATION,
-    ),
-]);
-
-export const tuiSlideInRight = trigger('tuiSlideInRight', [
-    transition(
-        ':enter',
-        [
-            style({transform: 'translateX(100%)'}),
-            animate(TRANSITION, style({transform: 'translateX(0)'})),
-        ],
-        DURATION,
-    ),
-    transition(
-        ':leave',
-        [
-            style({transform: 'translateX(0)'}),
-            animate(TRANSITION, style({transform: 'translateX(100%)'})),
-        ],
-        DURATION,
-    ),
-]);
-
-export const tuiSlideInRightList = trigger('tuiSlideInRightList', [
-    transition(
-        '* => *',
-        [
-            query(
-                ':enter',
-                [
-                    style({transform: 'translateX(100%)'}),
-                    stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateX(0)'})),
-                    ]),
-                ],
-                {optional: true},
-            ),
-            query(
-                ':leave',
-                [
-                    style({transform: 'translateX(0)'}),
-                    stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateX(100%)'})),
+                        animate(TRANSITION, style({transform: `translateX(-100%)`})),
                     ]),
                 ],
                 {optional: true},
@@ -383,45 +340,45 @@ export const tuiSlideInRightList = trigger('tuiSlideInRightList', [
     ),
 ]);
 
-export const tuiSlideInTop = trigger('tuiSlideInTop', [
+export const tuiSlideInRight = trigger(`tuiSlideInRight`, [
     transition(
-        ':enter',
+        `:enter`,
         [
-            style({transform: 'translate3d(0,{{start}},0)'}),
-            animate(TRANSITION, style({transform: 'translate3d(0,{{end}},0)'})),
+            style({transform: `translateX(100%)`}),
+            animate(TRANSITION, style({transform: `translateX(0)`})),
         ],
-        {params: {end: 0, start: '100%', duration: 300}},
+        DURATION,
     ),
     transition(
-        ':leave',
+        `:leave`,
         [
-            style({transform: 'translate3d(0,{{end}},0)'}),
-            animate(TRANSITION, style({transform: 'translate3d(0,{{start}},0)'})),
+            style({transform: `translateX(0)`}),
+            animate(TRANSITION, style({transform: `translateX(100%)`})),
         ],
-        {params: {end: 0, start: '100%', duration: 300}},
+        DURATION,
     ),
 ]);
 
-export const tuiSlideInTopList = trigger('tuiSlideInTopList', [
+export const tuiSlideInRightList = trigger(`tuiSlideInRightList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
-                    style({transform: 'translateY(100%)'}),
+                    style({transform: `translateX(100%)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateY(0)'})),
+                        animate(TRANSITION, style({transform: `translateX(0)`})),
                     ]),
                 ],
                 {optional: true},
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({transform: 'translateY(0)'}),
+                    style({transform: `translateX(0)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateY(100%)'})),
+                        animate(TRANSITION, style({transform: `translateX(100%)`})),
                     ]),
                 ],
                 {optional: true},
@@ -431,45 +388,93 @@ export const tuiSlideInTopList = trigger('tuiSlideInTopList', [
     ),
 ]);
 
-export const tuiSlideInBottom = trigger('tuiSlideInBottom', [
+export const tuiSlideInTop = trigger(`tuiSlideInTop`, [
     transition(
-        ':enter',
+        `:enter`,
         [
-            style({transform: 'translateY(-100%)'}),
-            animate(TRANSITION, style({transform: 'translateY(0)'})),
+            style({transform: `translate3d(0,{{start}},0)`}),
+            animate(TRANSITION, style({transform: `translate3d(0,{{end}},0)`})),
         ],
-        DURATION,
+        {params: {end: 0, start: `100%`, duration: 300}},
     ),
     transition(
-        ':leave',
+        `:leave`,
         [
-            style({transform: 'translateY(0)'}),
-            animate(TRANSITION, style({transform: 'translateY(-100%)'})),
+            style({transform: `translate3d(0,{{end}},0)`}),
+            animate(TRANSITION, style({transform: `translate3d(0,{{start}},0)`})),
         ],
-        DURATION,
+        {params: {end: 0, start: `100%`, duration: 300}},
     ),
 ]);
 
-export const tuiSlideInBottomList = trigger('tuiSlideInBottomList', [
+export const tuiSlideInTopList = trigger(`tuiSlideInTopList`, [
     transition(
-        '* => *',
+        `* => *`,
         [
             query(
-                ':enter',
+                `:enter`,
                 [
-                    style({transform: 'translateY(-100%)'}),
+                    style({transform: `translateY(100%)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateY(0)'})),
+                        animate(TRANSITION, style({transform: `translateY(0)`})),
                     ]),
                 ],
                 {optional: true},
             ),
             query(
-                ':leave',
+                `:leave`,
                 [
-                    style({transform: 'translateY(0)'}),
+                    style({transform: `translateY(0)`}),
                     stagger(STAGGER, [
-                        animate(TRANSITION, style({transform: 'translateY(-100%)'})),
+                        animate(TRANSITION, style({transform: `translateY(100%)`})),
+                    ]),
+                ],
+                {optional: true},
+            ),
+        ],
+        DURATION,
+    ),
+]);
+
+export const tuiSlideInBottom = trigger(`tuiSlideInBottom`, [
+    transition(
+        `:enter`,
+        [
+            style({transform: `translateY(-100%)`}),
+            animate(TRANSITION, style({transform: `translateY(0)`})),
+        ],
+        DURATION,
+    ),
+    transition(
+        `:leave`,
+        [
+            style({transform: `translateY(0)`}),
+            animate(TRANSITION, style({transform: `translateY(-100%)`})),
+        ],
+        DURATION,
+    ),
+]);
+
+export const tuiSlideInBottomList = trigger(`tuiSlideInBottomList`, [
+    transition(
+        `* => *`,
+        [
+            query(
+                `:enter`,
+                [
+                    style({transform: `translateY(-100%)`}),
+                    stagger(STAGGER, [
+                        animate(TRANSITION, style({transform: `translateY(0)`})),
+                    ]),
+                ],
+                {optional: true},
+            ),
+            query(
+                `:leave`,
+                [
+                    style({transform: `translateY(0)`}),
+                    stagger(STAGGER, [
+                        animate(TRANSITION, style({transform: `translateY(-100%)`})),
                     ]),
                 ],
                 {optional: true},

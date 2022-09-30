@@ -3,7 +3,7 @@ import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         cellBackground: {
-            setCellBackground: (backgrund: string) => ReturnType;
+            setCellBackground: (background: string) => ReturnType;
             unsetCellBackground: () => ReturnType;
         };
     }
@@ -13,7 +13,7 @@ export const TableCellBackground = Extension.create({
     addGlobalAttributes(): GlobalAttributes {
         return [
             {
-                types: ['tableCell', 'tableHeader'],
+                types: [`tableCell`, `tableHeader`],
                 attributes: {
                     background: {
                         default: null,
@@ -40,15 +40,15 @@ export const TableCellBackground = Extension.create({
                 background =>
                 ({chain}) =>
                     chain()
-                        .updateAttributes('tableCell', {background})
-                        .updateAttributes('tableHeader', {background})
+                        .updateAttributes(`tableCell`, {background})
+                        .updateAttributes(`tableHeader`, {background})
                         .run(),
             unsetCellBackground:
                 () =>
                 ({chain}) =>
                     chain()
-                        .updateAttributes('tableCell', {background: null})
-                        .updateAttributes('tableHeader', {background: null})
+                        .updateAttributes(`tableCell`, {background: null})
+                        .updateAttributes(`tableHeader`, {background: null})
                         .run(),
         };
     },

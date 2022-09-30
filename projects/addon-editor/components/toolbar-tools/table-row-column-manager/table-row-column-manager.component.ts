@@ -1,15 +1,15 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
     TUI_EDITOR_TABLE_COMMANDS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/addon-editor/tokens';
-import {LanguageEditor} from '@taiga-ui/i18n';
+import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-export enum TableComands {
+export enum TuiTableCommands {
     InsertColumnBefore,
     InsertColumnAfter,
     InsertRowBefore,
@@ -19,35 +19,35 @@ export enum TableComands {
 }
 
 @Component({
-    selector: 'tui-table-row-column-manager',
-    templateUrl: './table-row-column-manager.template.html',
+    selector: `tui-table-row-column-manager`,
+    templateUrl: `./table-row-column-manager.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
-    private readonly commandsRegistry: Record<TableComands, () => void> = {
-        [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
-        [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
-        [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
-        [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
-        [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
-        [TableComands.DeleteRow]: () => this.editor.deleteRow(),
+    private readonly commandsRegistry: Record<TuiTableCommands, () => void> = {
+        [TuiTableCommands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
+        [TuiTableCommands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
+        [TuiTableCommands.InsertRowAfter]: () => this.editor.addRowAfter(),
+        [TuiTableCommands.InsertRowBefore]: () => this.editor.addRowBefore(),
+        [TuiTableCommands.DeleteColumn]: () => this.editor.deleteColumn(),
+        [TuiTableCommands.DeleteRow]: () => this.editor.deleteRow(),
     };
 
-    readonly isActive$ = this.editor.isActive$('table');
+    readonly isActive$ = this.editor.isActive$(`table`);
 
     readonly rowsColumnsManagingText$ = this.texts$.pipe(
         map(texts => texts.rowsColumnsManaging),
     );
 
     constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
+        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_TABLE_COMMANDS)
-        readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
+        readonly tableCommandTexts$: Observable<TuiLanguageEditor['editorTableCommands']>,
     ) {}
 
-    onTableOption(command: TableComands) {
+    onTableOption(command: TuiTableCommands): void {
         this.commandsRegistry[command]();
     }
 }

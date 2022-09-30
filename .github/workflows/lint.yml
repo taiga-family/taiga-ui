@@ -2,8 +2,6 @@ name: Lint
 
 on:
   pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
@@ -11,12 +9,14 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
   IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
   IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
   lint:
+    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Format
     runs-on: ubuntu-latest
     env:
@@ -45,33 +45,28 @@ jobs:
         if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' && env.IS_DEPENDABOT == 'false' }}
         run: |
           npm run prettier -- --write
-          TIMING=1 npm run lint -- --fix
+          TIMING=1 npm run lint -- . --fix
           npm run stylelint -- --fix
 
       - name: Only linting files in fork or main branch
         if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' || env.IS_DEPENDABOT == 'true' }}
         run: |
           npm run prettier -- --check
-          npm run lint
+          npm run lint -- .
           npm run stylelint
 
-      - name: Get last commit message
-        if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
-        id: last-commit-message
-        run: |
-          git config user.name "tinkoff-bot"
-          echo "::set-output name=msg::$(git log -1 --pretty=%s)"
-
       - name: Apply changes after linting
-        uses: stefanzweifel/git-auto-commit-action@v4.12.0
+        uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
         with:
-          commit_message: ${{ steps.last-commit-message.outputs.msg }}
+          commit_user_name: 'tinkoff-bot'
+          commit_user_email: 'tinkoff-bot@users.noreply.github.com'
+          commit_author: 'tinkoff-bot <tinkoff-bot@users.noreply.github.com>'
+          commit_message: 'chore: apply changes after linting [tinkoff-bot]'
           status_options: '--untracked-files=no'
-          commit_options: '--amend --no-edit --no-verify'
-          push_options: '--force-with-lease'
+          commit_options: '--no-verify'
           skip_fetch: true
 
 concurrency:
-  group: lint-${{ github.head_ref }}
+  group: lint-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

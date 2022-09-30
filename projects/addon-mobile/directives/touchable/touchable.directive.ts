@@ -1,30 +1,30 @@
 import {Directive, ElementRef, Inject, Input, Optional, Renderer2} from '@angular/core';
-import {TuiTouchModeT} from '@taiga-ui/addon-mobile/types';
-import {findTouchIndex} from '@taiga-ui/addon-mobile/utils';
+import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
+import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
-    typedFromEvent,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {race} from 'rxjs';
 import {filter, map, switchMap, take, takeUntil, tap} from 'rxjs/operators';
 
 const STYLE = {
-    transform: 'scale(0.95)',
-    opacity: '0.6',
-    background: 'rgba(146, 153, 162, 0.12)',
+    transform: `scale(0.95)`,
+    opacity: `0.6`,
+    background: `rgba(146, 153, 162, 0.12)`,
 } as const;
 
 @Directive({
-    selector: '[tuiTouchable]',
+    selector: `[tuiTouchable]`,
     providers: [TuiDestroyService],
 })
 export class TuiTouchableDirective {
     @Input()
     @tuiDefaultProp()
-    tuiTouchable: TuiTouchModeT | '' = '';
+    tuiTouchable: TuiTouchMode | '' = ``;
 
     constructor(
         @Optional() @Inject(TUI_ELEMENT_REF) elementRef: ElementRef<HTMLElement> | null,
@@ -39,7 +39,7 @@ export class TuiTouchableDirective {
 
         const element = elementRef ? elementRef.nativeElement : nativeElement;
 
-        typedFromEvent(element, 'touchstart', {passive: true})
+        tuiTypedFromEvent(element, `touchstart`, {passive: true})
             .pipe(
                 tap(() => {
                     this.onTouchStart(renderer, element);
@@ -47,25 +47,25 @@ export class TuiTouchableDirective {
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
                     race(
-                        typedFromEvent(element, 'touchmove', {passive: true}).pipe(
+                        tuiTypedFromEvent(element, `touchmove`, {passive: true}).pipe(
                             filter(({touches}) =>
                                 this.hasTouchLeft(element, touches, identifier),
                             ),
                         ),
-                        typedFromEvent(element, 'touchend'),
+                        tuiTypedFromEvent(element, `touchend`),
                     ).pipe(take(1)),
                 ),
                 takeUntil(destroy$),
             )
             .subscribe(() => {
-                renderer.removeStyle(element, 'transform');
-                renderer.removeStyle(element, 'opacity');
-                renderer.removeStyle(element, 'background');
+                renderer.removeStyle(element, `transform`);
+                renderer.removeStyle(element, `opacity`);
+                renderer.removeStyle(element, `background`);
             });
     }
 
-    get style(): TuiTouchModeT {
-        return this.tuiTouchable || 'transform';
+    get style(): TuiTouchMode {
+        return this.tuiTouchable || `transform`;
     }
 
     private hasTouchLeft(
@@ -74,7 +74,7 @@ export class TuiTouchableDirective {
         identifier: number,
     ): boolean {
         const {ownerDocument} = element;
-        const id = findTouchIndex(touches, identifier);
+        const id = tuiFindTouchIndex(touches, identifier);
 
         if (!ownerDocument || id === -1) {
             return true;
@@ -85,11 +85,11 @@ export class TuiTouchableDirective {
         return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
     }
 
-    private onTouchStart(renderer: Renderer2, element: HTMLElement) {
-        if (this.style !== 'transform') {
-            renderer.removeStyle(element, 'transition');
+    private onTouchStart(renderer: Renderer2, element: HTMLElement): void {
+        if (this.style !== `transform`) {
+            renderer.removeStyle(element, `transition`);
         } else {
-            renderer.setStyle(element, 'transition', 'transform 0.2s');
+            renderer.setStyle(element, `transition`, `transform 0.2s`);
         }
 
         renderer.setStyle(element, this.style, STYLE[this.style]);

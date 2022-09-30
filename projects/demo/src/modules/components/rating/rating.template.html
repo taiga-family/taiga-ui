@@ -1,4 +1,8 @@
-<tui-doc-page header="Rating" package="KIT" type="components">
+<tui-doc-page
+    header="Rating"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>A rating indicates user interest in content</p>
 
@@ -34,7 +38,7 @@
                     [iconFilled]="iconFilled"
                     [formControl]="control"
                 >
-                    <p class="label">Current rating - {{rating.value}}</p>
+                    <p class="label">Current rating - {{ rating.value }}</p>
                 </tui-rating>
             </ng-template>
         </tui-doc-demo>
@@ -120,7 +124,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -129,7 +133,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
 
@@ -137,13 +141,12 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_RATING_OPTIONS</code>
-                    injection token to override the default options for the
-                    component.
+                    injection token to override the default options for the component.
                 </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleDefineOptions"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

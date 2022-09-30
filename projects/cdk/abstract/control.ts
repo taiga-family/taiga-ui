@@ -5,6 +5,8 @@ import {
     Input,
     OnDestroy,
     OnInit,
+    Provider,
+    Type,
 } from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
@@ -35,7 +37,7 @@ export abstract class AbstractTuiControl<T>
     protected readonly destroy$ = new Subject<void>();
 
     @Input()
-    @HostBinding('class._readonly')
+    @HostBinding(`class._readonly`)
     @tuiDefaultProp()
     readOnly = false;
 
@@ -54,7 +56,7 @@ export abstract class AbstractTuiControl<T>
             tuiAssert.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,
-                'Use [(ngModel)] or [formControl] or formControlName for correct work.',
+                `Use [(ngModel)] or [formControl] or formControlName for correct work.`,
             );
         } else {
             this.ngControl.valueAccessor = this;
@@ -63,7 +65,7 @@ export abstract class AbstractTuiControl<T>
 
     protected abstract getFallbackValue(): T;
 
-    @HostBinding('class._invalid')
+    @HostBinding(`class._invalid`)
     get computedInvalid(): boolean {
         return (
             this.interactive &&
@@ -108,12 +110,12 @@ export abstract class AbstractTuiControl<T>
         );
     }
 
-    get computedName(): string | number | null {
-        return this.controlName;
+    get computedName(): string | null {
+        return this.controlName?.toString() ?? null;
     }
 
-    protected get controlName(): string | number | null {
-        return this.ngControl && this.ngControl.name;
+    protected get controlName(): string | null {
+        return this.ngControl?.name?.toString() ?? null;
     }
 
     private get rawValue(): T | undefined {
@@ -131,7 +133,7 @@ export abstract class AbstractTuiControl<T>
         return this.fromControlValue(controlValue);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!this.ngControl?.valueChanges || !this.ngControl?.statusChanges) {
             return;
         }
@@ -141,30 +143,30 @@ export abstract class AbstractTuiControl<T>
             .subscribe(() => this.refreshLocalValue(this.safeCurrentValue));
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }
 
-    checkControlUpdate() {
+    checkControlUpdate(): void {
         this.changeDetectorRef.markForCheck();
     }
 
-    registerOnChange(onChange: (value: T | unknown) => void) {
+    registerOnChange(onChange: (value: T | unknown) => void): void {
         this.onChange = (componentValue: T) => {
             onChange(this.toControlValue(componentValue));
         };
     }
 
-    registerOnTouched(onTouched: () => void) {
+    registerOnTouched(onTouched: () => void): void {
         this.onTouched = onTouched;
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         this.checkControlUpdate();
     }
 
-    writeValue(value: T | null) {
+    writeValue(value: T | null): void {
         const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
@@ -173,7 +175,7 @@ export abstract class AbstractTuiControl<T>
         this.refreshLocalValue(this.fromControlValue(controlValue));
     }
 
-    protected updateFocused(focused: boolean) {
+    protected override updateFocused(focused: boolean): void {
         if (!focused) {
             this.controlMarkAsTouched();
         }
@@ -181,7 +183,7 @@ export abstract class AbstractTuiControl<T>
         super.updateFocused(focused);
     }
 
-    protected updateValue(value: T) {
+    protected updateValue(value: T): void {
         if (this.disabled || this.valueIdenticalComparator(this.value, value)) {
             return;
         }
@@ -201,17 +203,17 @@ export abstract class AbstractTuiControl<T>
         return (this.ngControl && extractor(this.ngControl)) ?? defaultFieldValue;
     }
 
-    private controlMarkAsTouched() {
+    private controlMarkAsTouched(): void {
         this.onTouched();
         this.checkControlUpdate();
     }
 
-    private controlSetValue(value: T) {
+    private controlSetValue(value: T): void {
         this.onChange(value);
         this.checkControlUpdate();
     }
 
-    private refreshLocalValue(value: T | null) {
+    private refreshLocalValue(value: T | null): void {
         this.previousInternalValue = value;
         this.checkControlUpdate();
     }
@@ -227,4 +229,11 @@ export abstract class AbstractTuiControl<T>
             ? this.valueTransformer.toControlValue(componentValue)
             : componentValue;
     }
+}
+
+export function tuiAsControl<T>(useExisting: Type<AbstractTuiControl<T>>): Provider {
+    return {
+        provide: AbstractTuiControl,
+        useExisting,
+    };
 }

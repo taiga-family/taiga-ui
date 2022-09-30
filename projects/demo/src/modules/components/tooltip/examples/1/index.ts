@@ -1,14 +1,14 @@
 import {ChangeDetectorRef, Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDestroyService, watch} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-tooltip-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-tooltip-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
@@ -16,17 +16,17 @@ import {takeUntil} from 'rxjs/operators';
 export class TuiTooltipExample1 {
     loader = true;
 
-    text = '';
+    text = ``;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         interval(2000)
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(() => {
                 this.loader = !this.loader;
-                this.text = this.text ? '' : 'Error 502: Bad Gateway';
+                this.text = this.text ? `` : `Error 502: Bad Gateway`;
             });
     }
 }

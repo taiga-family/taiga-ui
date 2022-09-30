@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,34 +13,33 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {CheckboxOptions, TUI_CHECKBOX_OPTIONS, TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-checkbox',
-    templateUrl: './checkbox.template.html',
-    styleUrls: ['./checkbox.style.less'],
+    selector: `tui-checkbox`,
+    templateUrl: `./checkbox.template.html`,
+    styleUrls: [`./checkbox.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiCheckboxComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiCheckboxComponent),
+        tuiAsControl(TuiCheckboxComponent),
     ],
 })
 export class TuiCheckboxComponent
     extends AbstractTuiNullableControl<boolean>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -51,7 +49,7 @@ export class TuiCheckboxComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(TUI_CHECKBOX_OPTIONS)
-        private readonly options: CheckboxOptions,
+        private readonly options: TuiCheckboxOptions,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
@@ -64,30 +62,22 @@ export class TuiCheckboxComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get computedFocusable(): boolean {
+    override get computedFocusable(): boolean {
         return this.interactive && this.focusable;
     }
 
-    onChecked(checked: boolean) {
+    onChecked(checked: boolean): void {
         this.updateValue(checked);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

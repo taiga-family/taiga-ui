@@ -15,21 +15,21 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTbodyComponent} from '../tbody/tbody.component';
 
 @Component({
-    selector: 'tr[tuiTr]',
-    templateUrl: './tr.template.html',
+    selector: `tr[tuiTr]`,
+    templateUrl: `./tr.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTrComponent<T> {
+export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
     readonly cells$ = this.cells.changes.pipe(
         startWith(null),
         map(() =>
-            this.cells.reduce<Record<any, TuiCellDirective>>(
+            this.cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
-                {},
+                {} as Record<keyof T | string, TuiCellDirective>,
             ),
         ),
     );
@@ -38,7 +38,9 @@ export class TuiTrComponent<T> {
         startWith(null),
         map(
             () =>
-                this.body.sorted[this.body.rows.toArray().findIndex(row => row === this)],
+                this.body.sorted[
+                    this.body.rows.toArray().findIndex(row => row === this)
+                ] as Record<keyof T | string, any>,
         ),
     );
 

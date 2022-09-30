@@ -42,9 +42,9 @@
     pointer-events: none;
 
     &:focus,
-    .column_hovered &,
-    .column:hover &,
-    .column._hint_hovered & {
+    .t-column_hovered &,
+    .t-column:hover &,
+    .t-column_hint_hovered & {
         opacity: 1;
     }
 }
@@ -67,18 +67,14 @@
         height: 1px;
     }
 
-    :host[style^='z-index: 0'] .column_hovered &,
-    :host:not([style]) .column:hover &,
-    :host:not([style]) .column._hint_hovered &,
-    :host[style^='z-index: 0'] .column_hovered + &,
-    :host:not([style]) .column:hover + &,
-    :host:not([style]) .column._hint_hovered + & {
+    :host[style^='z-index: 0'] .t-column_hovered &,
+    :host:not([style]) .t-column:hover &,
+    :host:not([style]) .t-column_hint_hovered &,
+    :host[style^='z-index: 0'] .t-column_hovered + &,
+    :host:not([style]) .t-column:hover + &,
+    :host:not([style]) .t-column_hint_hovered + & {
         opacity: 1;
     }
-}
-
-.t-text {
-    white-space: pre-wrap;
 }
 
 .t-hint {

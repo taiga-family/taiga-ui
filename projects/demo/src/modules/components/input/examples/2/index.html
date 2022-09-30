@@ -1,8 +1,17 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <p>
-        <tui-input tuiTextfieldSize="s" formControlName="testValue">
+        <tui-input
+            tuiTextfieldSize="s"
+            formControlName="testValue"
+        >
             Type an email
-            <input tuiTextfield type="email" />
+            <input
+                tuiTextfield
+                type="email"
+            />
         </tui-input>
     </p>
     <p>
@@ -12,7 +21,10 @@
             [tuiTextfieldLabelOutside]="true"
         >
             Type an email
-            <input tuiTextfield type="email" />
+            <input
+                tuiTextfield
+                type="email"
+            />
         </tui-input>
     </p>
     <p>
@@ -23,7 +35,11 @@
         >
             Type an email&nbsp;
             <span class="tui-required"></span>
-            <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+            <input
+                tuiTextfield
+                placeholder="mail@mail.ru"
+                type="email"
+            />
         </tui-input>
     </p>
 </form>

@@ -1,12 +1,36 @@
-<tui-doc-page i18n-header header="Svg" package="CORE" type="components">
+<tui-doc-page
+    header="Svg"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>Svg</code>
-            is a component for working with SVG-image and its colors. If you
-            want to use custom icons that you don't trust, you need to provide a
-            <a tuiLink routerLink="/icon-set" fragment="sanitizer">sanitizer</a>
-            .
+            is a component for working with SVG-image and its colors.
         </p>
+
+        <tui-notification
+            status="warning"
+            class="tui-space_top-6"
+        >
+            <h4 class="tui-space_top-0">
+                You need to
+                <a
+                    tuiLink
+                    routerLink="/icon-set"
+                    fragment="sanitizer"
+                >
+                    provide TUI_SANITIZER
+                </a>
+                if you want to use
+                <code>Svg</code>
+                -component with:
+            </h4>
+            <ul class="tui-list tui-list_small">
+                <li class="tui-list__item">icon which was imported from source code</li>
+                <li class="tui-list__item">custom icons that you don't trust</li>
+            </ul>
+        </tui-notification>
 
         <tui-doc-example
             id="all"
@@ -30,7 +54,10 @@
 
     <ng-template pageTab>
         <div class="b-full-width">
-            <tui-svg class="icon" [src]="icon"></tui-svg>
+            <tui-svg
+                class="icon"
+                [src]="icon"
+            ></tui-svg>
         </div>
 
         <tui-doc-documentation>
@@ -42,8 +69,8 @@
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                SVG image code, link to a file, link to a segment or icon name.
-                If you use name or segment, set icon size with CSS
+                SVG image code, link to a file, link to a segment or icon name. If you use name or segment, set icon
+                size with CSS
             </ng-template>
             <ng-template
                 i18n
@@ -67,7 +94,7 @@
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
+                    [code]="exampleModule"
                 ></tui-doc-code>
             </li>
 
@@ -76,7 +103,7 @@
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleInsertTemplate"
+                    [code]="exampleHtml"
                 ></tui-doc-code>
             </li>
         </ol>

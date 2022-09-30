@@ -1,7 +1,6 @@
 <tui-notification i18n>
     <code>TuiLineDaysChart</code>
-    is used to show data of several months to simplify working with different
-    number of days in months
+    is used to show data of several months to simplify working with different number of days in months
 </tui-notification>
 <p class="controls">
     <tui-input-date-range
@@ -21,8 +20,11 @@
     </tui-input-date-range>
 </p>
 <p class="legend">
-    <span *ngFor="let chart of days; let index = index" class="item">
-        <small class="name">Chart {{index + 1}}</small>
+    <span
+        *ngFor="let chart of days; let index = index"
+        class="item"
+    >
+        <small class="name">Chart {{ index + 1 }}</small>
     </span>
 </p>
 <tui-axes
@@ -38,7 +40,7 @@
             *ngFor="let chart of days"
             class="chart"
             [height]="200"
-            [value]="chart | tuiFilter : filter : range"
+            [value]="chart | tuiFilter: filter:range"
         ></tui-line-days-chart>
     </ng-container>
     <ng-template #line>
@@ -47,18 +49,24 @@
             class="chart"
             [height]="200"
             [width]="getWidth(range)"
-            [value]="chart | tuiFilter : filter : range | tuiMapper : toNumbers : range"
+            [value]="chart | tuiFilter: filter:range | tuiMapper: toNumbers:range"
         ></tui-line-chart>
     </ng-template>
 </tui-axes>
 
-<ng-template #hint let-data>
+<ng-template
+    #hint
+    let-data
+>
     <div class="tui-space_bottom-2">
-        <strong>{{getDate(data[0][0], range.from)}}</strong>
+        <strong>{{ getDate(data[0][0], range.from) }}</strong>
     </div>
     <div>
-        <div *ngFor="let point of data" class="item">
-            <span class="value">${{point[1].toFixed(0)}}</span>
+        <div
+            *ngFor="let point of data"
+            class="item"
+        >
+            <span class="value">${{ point[1].toFixed(0) }}</span>
         </div>
     </div>
 </ng-template>

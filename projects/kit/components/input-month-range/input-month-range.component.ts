@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -13,40 +12,42 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    CHAR_EN_DASH,
     TUI_FIRST_DAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    TuiHandler,
     TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
-    TUI_MONTHS,
     TUI_TEXTFIELD_SIZE,
+    TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Component({
-    selector: 'tui-input-month-range',
-    templateUrl: './input-month-range.template.html',
-    styleUrls: ['./input-month-range.style.less'],
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputMonthRangeComponent),
-        },
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    selector: `tui-input-month-range`,
+    templateUrl: `./input-month-range.template.html`,
+    styleUrls: [`./input-month-range.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsFocusableItemAccessor(TuiInputMonthRangeComponent),
+        tuiAsControl(TuiInputMonthRangeComponent),
+        TUI_MONTH_FORMATTER_PROVIDER,
+        TuiMonthPipe,
+    ],
 })
 export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
@@ -76,7 +77,8 @@ export class TuiInputMonthRangeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>,
+        @Inject(TUI_MONTH_FORMATTER)
+        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
@@ -92,34 +94,27 @@ export class TuiInputMonthRangeComponent
     }
 
     get calendarIcon(): string {
-        return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
-            : 'tuiIconCalendar';
+        return tuiSizeBigger(this.textfieldSize.size)
+            ? `tuiIconCalendarLarge`
+            : `tuiIconCalendar`;
     }
 
-    computeValue(
-        value: TuiMonthRange | null,
-        focused: boolean,
-        months: readonly string[],
-    ): string {
-        if (value === null) {
-            return '';
+    computeValue(from: string | null, to: string | null): string {
+        const formattedTo = from === to && this.focused && !this.readOnly ? `` : to;
+
+        return `${from} ${CHAR_EN_DASH} ${formattedTo}`;
+    }
+
+    onValueChange(value: string): void {
+        if (value) {
+            return;
         }
 
-        const formattedValueTo =
-            !value.isSingleMonth || !focused ? this.formatMonth(value.to, months) : '';
-
-        return `${this.formatMonth(value.from, months)} — ${formattedValueTo}`;
+        this.updateValue(null);
+        this.onOpenChange(true);
     }
 
-    onValueChange(value: string) {
-        if (value === '') {
-            this.updateValue(null);
-            this.onOpenChange(true);
-        }
-    }
-
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.writeValue(new TuiMonthRange(month, month));
 
@@ -130,39 +125,28 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onActiveZone(focused: boolean) {
+    onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 
         if (focused) {
             return;
         }
 
-        if (this.value && this.value.isSingleMonth) {
+        if (this.value?.isSingleMonth) {
             this.updateValue(new TuiMonthRange(this.value.from, this.value.from));
         }
     }
 
-    setDisabledState() {
+    override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }
 
-    private formatMonth(
-        {month, formattedYear}: TuiMonth,
-        months: readonly string[],
-    ): string {
-        return `${months[month]} ${formattedYear}`;
-    }
-
-    private close() {
+    private close(): void {
         this.open = false;
     }
 }

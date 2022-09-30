@@ -2,15 +2,15 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 const MAX_PRECISION = 292;
 
-export function round(value: number, precision: number = 0): number {
+export function tuiRound(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.round);
 }
 
-export function ceil(value: number, precision: number = 0): number {
+export function tuiCeil(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.ceil);
 }
 
-export function floor(value: number, precision: number = 0): number {
+export function tuiFloor(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.floor);
 }
 
@@ -30,14 +30,14 @@ function calculate(
         return value;
     }
 
-    tuiAssert.assert(!isNaN(value), 'Value must be number');
-    tuiAssert.assert(Number.isInteger(precision), 'Precision must be integer');
+    tuiAssert.assert(!isNaN(value), `Value must be number`);
+    tuiAssert.assert(Number.isInteger(precision), `Precision must be integer`);
 
     precision = Math.min(precision, MAX_PRECISION);
 
-    const pair = `${value}e`.split('e');
+    const pair = `${value}e`.split(`e`);
     const tempValue = func(Number(`${pair[0]}e${Number(pair[1]) + precision}`));
-    const processedPair = `${tempValue}e`.split('e');
+    const processedPair = `${tempValue}e`.split(`e`);
 
     return Number(`${processedPair[0]}e${Number(processedPair[1]) - precision}`);
 }

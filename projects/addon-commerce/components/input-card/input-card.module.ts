@@ -1,9 +1,13 @@
 import {NgModule} from '@angular/core';
-import {TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
-import {TextMaskModule} from 'angular2-text-mask';
+import {
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit';
 
 import {TuiInputCardComponent} from './input-card.component';
+import {TuiInputCardDirective} from './input-card.directive';
 
 @NgModule({
     imports: [
@@ -12,7 +16,7 @@ import {TuiInputCardComponent} from './input-card.component';
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
     ],
-    declarations: [TuiInputCardComponent],
-    exports: [TuiInputCardComponent],
+    declarations: [TuiInputCardComponent, TuiInputCardDirective],
+    exports: [TuiInputCardComponent, TuiInputCardDirective, TuiTextfieldComponent],
 })
 export class TuiInputCardModule {}

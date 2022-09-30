@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusModule, TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDialogModule,
@@ -29,11 +29,14 @@ import {TuiDialogExampleComponent3} from './examples/3';
 import {TuiDialogExampleComponent4} from './examples/4';
 import {TuiDialogExampleComponent5} from './examples/5';
 import {TuiDialogExampleComponent6} from './examples/6';
+import {TuiDialogExampleComponent7} from './examples/7';
+import {SearchDialogExampleModule} from './examples/7/search-example/search-dialog.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         PolymorpheusModule,
         TuiDialogModule,
         TuiAccordionModule,
@@ -47,9 +50,11 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiPreventDefaultModule,
         TuiNotificationModule,
         TuiElasticStickyModule,
+        TuiAutoFocusModule,
         TuiAddonDocModule,
         DialogExampleModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiDialogComponent)),
+        SearchDialogExampleModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDialogComponent)),
     ],
     declarations: [
         ExampleTuiDialogComponent,
@@ -59,6 +64,7 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiDialogExampleComponent4,
         TuiDialogExampleComponent5,
         TuiDialogExampleComponent6,
+        TuiDialogExampleComponent7,
     ],
     exports: [ExampleTuiDialogComponent],
 })

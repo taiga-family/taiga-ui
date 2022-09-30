@@ -3,12 +3,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiErrorModule,
     TuiGroupModule,
-    TuiHintControllerModule,
+    TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
     TuiTextfieldControllerModule,
@@ -17,9 +18,10 @@ import {
     TuiBadgeModule,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
-    TuiFieldErrorModule,
+    TuiFieldErrorPipeModule,
     TuiInputModule,
     TuiInputNumberModule,
+    TuiMultiSelectModule,
     TuiProjectClassModule,
     TuiRadioBlockModule,
     TuiSelectModule,
@@ -41,7 +43,8 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiSelectModule,
         TuiGroupModule,
         TuiInputModule,
-        TuiFieldErrorModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiComboBoxModule,
         TuiCurrencyPipeModule,
         TuiInputNumberModule,
@@ -52,9 +55,10 @@ import {ExampleTuiGroupComponent} from './group.component';
         FormsModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiHintControllerModule,
+        TuiHintModule,
         TuiAddonDocModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiGroupComponent)),
+        TuiMultiSelectModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiGroupComponent)),
     ],
     declarations: [
         ExampleTuiGroupComponent,

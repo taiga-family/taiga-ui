@@ -1,33 +1,11 @@
-<form class="form" [formGroup]="testForm">
-    <tui-input-slider
-        formControlName="testValue"
-        size="m"
-        minLabel="Nothing"
-        maxLabel="Everything"
-        class="control"
-        [pluralize]="pluralize"
-        [segmentsPluralize]="pluralize"
-        [segments]="1"
-        [min]="50000"
-        [max]="30000000"
-        [steps]="104"
-        [quantum]="1000"
-        [keySteps]="keySteps"
-    ></tui-input-slider>
-    <tui-input-slider
-        formControlName="testValue"
-        minLabel="Nothing"
-        maxLabel="Everything"
-        class="control"
-        [pluralize]="pluralize"
-        [segmentsPluralize]="pluralize"
-        [segments]="1"
-        [min]="50000"
-        [max]="30000000"
-        [steps]="104"
-        [quantum]="1000"
-        [keySteps]="keySteps"
-    >
-        Gold to people
-    </tui-input-slider>
-</form>
+<tui-input-slider
+    class="control"
+    [min]="min"
+    [max]="max"
+    [steps]="steps"
+    [quantum]="quantum"
+    [formControl]="control"
+    [tuiHintContent]="hint"
+>
+    Select interest rate
+</tui-input-slider>

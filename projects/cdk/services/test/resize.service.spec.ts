@@ -1,15 +1,13 @@
 import {ElementRef} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
+import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 
-import {TuiDestroyService} from '../destroy.service';
-import {TuiResizeService} from '../resize.service';
-
-describe('TuiResizeService', () => {
+describe(`TuiResizeService`, () => {
     let element: HTMLElement;
 
     beforeEach(() => {
-        element = document.createElement('div');
-        element.style.width = '200px';
+        element = document.createElement(`div`);
+        element.style.width = `200px`;
         document.body.appendChild(element);
 
         TestBed.configureTestingModule({
@@ -28,7 +26,7 @@ describe('TuiResizeService', () => {
         document.body.removeChild(element);
     });
 
-    it('emits default first value', done => {
+    it(`emits default first value`, done => {
         let emitCounter = 0;
         const resize$ = TestBed.inject(TuiResizeService);
 

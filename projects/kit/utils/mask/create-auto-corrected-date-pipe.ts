@@ -7,7 +7,7 @@ export interface TuiAutoCorrectedDatePipeConfigs
     dateSeparator: string;
 }
 
-export function normalizeDateValue(
+export function tuiNormalizeDateValue(
     dateValue: string,
     {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
 ): string {
@@ -27,7 +27,7 @@ export function tuiCreateAutoCorrectedDatePipe(
         }
 
         return {
-            value: normalizeDateValue(value, config),
+            value: tuiNormalizeDateValue(value, config),
         };
     };
 }

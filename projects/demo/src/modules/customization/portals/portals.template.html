@@ -1,0 +1,56 @@
+<tui-doc-page
+    i18n-header
+    header="Portals"
+>
+    <ng-template pageTab>
+        <p i18n>
+            You can easily create your custom portals by extending our abstract classes and put your own portal-host on
+            any layer
+        </p>
+
+        <tui-doc-example
+            id="custom-portals"
+            i18n-heading
+            heading="Custom portals"
+            [content]="example1"
+        >
+            <tui-portals-example-1></tui-portals-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Create your own portal service by extending
+                    <code>AbstractTuiPortalService</code>
+                </p>
+
+                <tui-doc-code
+                    filename="my-service.ts"
+                    [code]="service"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Create your own portal host by extending
+                    <code>AbstractTuiPortalHost</code>
+                </p>
+
+                <tui-doc-code
+                    filename="my-host.component.ts"
+                    [code]="host"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Put the created portal host on a desired layer</p>
+                <tui-doc-code
+                    filename="app.template.html"
+                    [code]="insert"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

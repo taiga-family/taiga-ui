@@ -1,20 +1,19 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
 import {
-    px,
     svgNodeFilter,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiPx,
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
-// @dynamic
 @Directive({
-    selector: '[tuiHighlight]',
+    selector: `[tuiHighlight]`,
     host: {
-        '[style.position]': '"relative"',
-        '[style.zIndex]': '0',
+        '[style.position]': `"relative"`,
+        '[style.zIndex]': `0`,
     },
     providers: [TuiDestroyService, TuiResizeService],
 })
@@ -25,15 +24,14 @@ export class TuiHighlightDirective implements OnChanges {
         this.elementRef.nativeElement,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
-        false,
     );
 
     @Input()
     @tuiDefaultProp()
-    tuiHighlight = '';
+    tuiHighlight = ``;
 
     @Input()
-    tuiHighlightColor = 'var(--tui-selection)';
+    tuiHighlightColor = `var(--tui-selection)`;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
@@ -50,12 +48,12 @@ export class TuiHighlightDirective implements OnChanges {
         return this.indexOf(this.elementRef.nativeElement.textContent) !== -1;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.updateStyles();
     }
 
-    private updateStyles() {
-        this.highlight.style.display = 'none';
+    private updateStyles(): void {
+        this.highlight.style.display = `none`;
 
         if (!this.match) {
             return;
@@ -80,11 +78,11 @@ export class TuiHighlightDirective implements OnChanges {
             const {style} = this.highlight;
 
             style.background = this.tuiHighlightColor;
-            style.left = px(left - hostRect.left);
-            style.top = px(top - hostRect.top);
-            style.width = px(width);
-            style.height = px(height);
-            style.display = 'block';
+            style.left = tuiPx(left - hostRect.left);
+            style.top = tuiPx(top - hostRect.top);
+            style.width = tuiPx(width);
+            style.height = tuiPx(height);
+            style.display = `block`;
 
             return;
         } while (this.treeWalker.nextNode());
@@ -97,12 +95,12 @@ export class TuiHighlightDirective implements OnChanges {
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
+        const highlight = this.renderer.createElement(`div`);
         const {style} = highlight;
 
         style.background = this.tuiHighlightColor;
-        style.zIndex = '-1';
-        style.position = 'absolute';
+        style.zIndex = `-1`;
+        style.position = `absolute`;
         this.renderer.appendChild(this.elementRef.nativeElement, highlight);
 
         return highlight;

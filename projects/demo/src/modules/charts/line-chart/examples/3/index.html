@@ -1,7 +1,11 @@
-<tui-axes class="axes" [verticalLines]="4" [horizontalLines]="2">
+<tui-axes
+    class="axes"
+    [verticalLines]="4"
+    [horizontalLines]="2"
+>
     <tui-line-chart
-        dots="dots"
         class="chart chart_dotted"
+        [dots]="true"
         [x]="0"
         [y]="0"
         [width]="400"
@@ -9,8 +13,8 @@
         [value]="dotted"
     ></tui-line-chart>
     <tui-line-chart
-        dots="dots"
         class="chart"
+        [dots]="true"
         [x]="0"
         [y]="0"
         [width]="400"
@@ -18,8 +22,8 @@
         [value]="solid"
     ></tui-line-chart>
     <tui-line-chart
-        dots="dots"
         class="chart chart_dashed"
+        [dots]="true"
         [x]="0"
         [y]="0"
         [width]="400"

@@ -1,10 +1,10 @@
 /**
- * Finds nearest parent with scroll in it
+ * Finds the nearest parent with scroll in it
  *
  * @param element initial element
  * @param vertical flag for orientation of scroll
  */
-export function getScrollParent(
+export function tuiGetScrollParent(
     element: Element | null,
     vertical: boolean = true,
 ): Element | null {
@@ -20,5 +20,5 @@ export function getScrollParent(
         return element;
     }
 
-    return getScrollParent(element.parentElement, vertical);
+    return tuiGetScrollParent(element.parentElement, vertical);
 }

@@ -5,15 +5,14 @@ import {Observable} from 'rxjs';
 
 /**
  * @internal
- * @dynamic
  */
 @Component({
-    selector: 'tui-primitive-calendar-mobile',
-    templateUrl: './primitive-calendar-mobile.template.html',
-    styleUrls: ['./primitive-calendar-mobile.style.less'],
+    selector: `tui-primitive-calendar-mobile`,
+    templateUrl: `./primitive-calendar-mobile.template.html`,
+    styleUrls: [`./primitive-calendar-mobile.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._ios]': 'isIOS',
+        '[class._ios]': `isIOS`,
     },
 })
 export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {

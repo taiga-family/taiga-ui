@@ -3,26 +3,26 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-dropdown-example-1',
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    selector: `tui-dropdown-example-1`,
+    templateUrl: `./index.html`,
+    styleUrls: [`./index.less`],
     changeDetection,
     encapsulation,
 })
 export class TuiDropdownExample1 {
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onObscured(obscured: boolean) {
+    onObscured(obscured: boolean): void {
         if (obscured) {
             this.open = false;
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.open = active && this.open;
     }
 }

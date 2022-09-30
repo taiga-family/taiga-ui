@@ -9,8 +9,8 @@ interface TreeNode {
 }
 
 @Component({
-    selector: 'tui-tree-example-6',
-    templateUrl: './index.html',
+    selector: `tui-tree-example-6`,
+    templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
 })
@@ -18,25 +18,25 @@ export class TuiTreeExample6 {
     map = new Map<TreeNode, boolean>();
 
     readonly data: TreeNode = {
-        text: 'Topmost',
+        text: `Topmost`,
         children: [
             {
-                text: 'Top level 1',
+                text: `Top level 1`,
                 children: [
                     {
-                        text: 'Another item',
+                        text: `Another item`,
                         children: [
-                            {text: 'Next level 1'},
-                            {text: 'Next level 2'},
-                            {text: 'Next level 3'},
+                            {text: `Next level 1`},
+                            {text: `Next level 2`},
+                            {text: `Next level 3`},
                         ],
                     },
                 ],
             },
-            {text: 'Top level 2'},
+            {text: `Top level 2`},
             {
-                text: 'Top level 3',
-                children: [{text: 'Test 1'}, {text: 'Test 2'}],
+                text: `Top level 3`,
+                children: [{text: `Test 1`}, {text: `Test 2`}],
             },
         ],
     };
@@ -44,7 +44,7 @@ export class TuiTreeExample6 {
     readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 
-    readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>) => {
+    readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>): boolean | null => {
         const flat = flatten(item);
         const result = !!map.get(flat[0]);
 
@@ -57,7 +57,7 @@ export class TuiTreeExample6 {
         return result;
     };
 
-    onChecked(node: TreeNode, value: boolean) {
+    onChecked(node: TreeNode, value: boolean): void {
         flatten(node).forEach(item => this.map.set(item, value));
 
         this.map = new Map(this.map.entries());

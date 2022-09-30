@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -14,11 +13,12 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    isNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
@@ -30,25 +30,23 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ToggleOptions, TUI_TOGGLE_OPTIONS} from './toggle-options';
+import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
 
 @Component({
-    selector: 'tui-toggle',
-    templateUrl: './toggle.template.html',
-    styleUrls: ['./toggle.style.less'],
+    selector: `tui-toggle`,
+    templateUrl: `./toggle.template.html`,
+    styleUrls: [`./toggle.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiToggleComponent),
-        },
+        tuiAsFocusableItemAccessor(TuiToggleComponent),
+        tuiAsControl(TuiToggleComponent),
     ],
 })
 export class TuiToggleComponent
     extends AbstractTuiControl<boolean>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
@@ -64,7 +62,7 @@ export class TuiToggleComponent
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -78,7 +76,7 @@ export class TuiToggleComponent
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_TOGGLE_OPTIONS)
-        readonly options: ToggleOptions,
+        readonly options: TuiToggleOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -96,7 +94,7 @@ export class TuiToggleComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     get appearance(): TuiAppearance {
@@ -106,40 +104,32 @@ export class TuiToggleComponent
     }
 
     get sizeM(): boolean {
-        return this.size === 'm';
+        return this.size === `m`;
     }
 
-    @HostBinding('class._checked')
+    @HostBinding(`class._checked`)
     get checked(): boolean {
         return this.value;
     }
 
     get loaderSize(): TuiSizeXS {
-        return this.sizeM ? 'xs' : 's';
+        return this.sizeM ? `xs` : `s`;
     }
 
-    @HostBinding('attr.data-mode')
+    @HostBinding(`attr.data-mode`)
     get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 
-    onChecked(checked: boolean) {
+    onChecked(checked: boolean): void {
         this.updateValue(checked);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
-        this.updateHovered(hovered);
-    }
-
-    onPressed(pressed: boolean) {
-        this.updatePressed(pressed);
-    }
-
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 

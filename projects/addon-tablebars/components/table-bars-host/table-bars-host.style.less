@@ -29,6 +29,32 @@
 
 .t-container {
     position: relative;
+    margin: 0 auto;
+
+    &.t-container_adaptive {
+        @media @tui-desktop-lg-min {
+            width: 69rem;
+        }
+
+        @media @tui-desktop {
+            width: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    @media @tui-desktop-lg-min {
+        width: 69rem;
+    }
+
+    @media @tui-desktop {
+        width: 51.5rem;
+        padding: 0 3rem;
+    }
 }
 
 .t-inner {
@@ -44,6 +70,8 @@
 }
 
 .t-close-button {
+    margin-left: 1.5rem;
+
     :host-context(tui-root._mobile) & {
         position: absolute;
         top: -0.125rem;

@@ -1,22 +1,61 @@
-<tui-tabs-with-more [itemsLimit]="3" [(activeItemIndex)]="activeItemIndex">
-    <button *tuiTab tuiTab (click)="onClick('Maps')">
-        <tui-svg src="tuiIconCard" class="tui-space_right-2"></tui-svg>
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Maps')"
+    >
+        <tui-svg
+            src="tuiIconCard"
+            class="tui-space_right-2"
+        ></tui-svg>
         Maps
     </button>
-    <button *tuiTab tuiTab disabled (click)="onClick('Calls')">
-        <tui-svg src="tuiIconCall" class="tui-space_right-2"></tui-svg>
+    <button
+        *tuiItem
+        tuiTab
+        disabled
+        (click)="onClick('Calls')"
+    >
+        <tui-svg
+            src="tuiIconCall"
+            class="tui-space_right-2"
+        ></tui-svg>
         Calls
     </button>
-    <button *tuiTab tuiTab (click)="onClick('Settings')">
-        <tui-svg src="tuiIconSettings" class="tui-space_right-2"></tui-svg>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Settings')"
+    >
+        <tui-svg
+            src="tuiIconSettings"
+            class="tui-space_right-2"
+        ></tui-svg>
         Settings
     </button>
-    <button *tuiTab tuiTab (click)="onClick('Favorite')">
-        <tui-svg src="tuiIconHeart" class="tui-space_right-2"></tui-svg>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Favorite')"
+    >
+        <tui-svg
+            src="tuiIconHeart"
+            class="tui-space_right-2"
+        ></tui-svg>
         Favorite
     </button>
-    <button *tuiTab tuiTab (click)="onClick('Trash')">
-        <tui-svg src="tuiIconTrash" class="tui-space_right-2"></tui-svg>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Trash')"
+    >
+        <tui-svg
+            src="tuiIconTrash"
+            class="tui-space_right-2"
+        ></tui-svg>
         Trash
     </button>
 </tui-tabs-with-more>

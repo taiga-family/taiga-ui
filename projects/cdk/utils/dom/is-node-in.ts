@@ -1,4 +1,4 @@
-import {getClosestElement} from './get-closest-element';
+import {tuiIsElement, tuiIsTextNode} from './element-checks';
 
 /**
  * Checks if node is inside a specific selector
@@ -7,9 +7,8 @@ import {getClosestElement} from './get-closest-element';
  * @param selector
  * @return true if node is inside a particular selector
  */
-export function isNodeIn(node: Node, selector: string): boolean {
-    return node.nodeType === Node.TEXT_NODE
-        ? !!node.parentElement && !!getClosestElement(node.parentElement, selector)
-        : node.nodeType === Node.ELEMENT_NODE &&
-              !!getClosestElement(node as Element, selector);
+export function tuiIsNodeIn(node: Node, selector: string): boolean {
+    return tuiIsTextNode(node)
+        ? !!node.parentElement?.closest(selector)
+        : tuiIsElement(node) && !!node.closest(selector);
 }

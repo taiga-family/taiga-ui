@@ -1,0 +1,17 @@
+<span class="icon">
+    <tui-marker-icon
+        *polymorpheusOutlet="account.paymentSystem as src"
+        size="xs"
+        class="icon-content"
+        [src]="src"
+    ></tui-marker-icon>
+</span>
+<span class="info">
+    <span class="name">{{ account.name }}</span>
+    <tui-money
+        decimal="always"
+        class="value"
+        [currency]="account.currency"
+        [value]="account.amount"
+    ></tui-money>
+</span>
