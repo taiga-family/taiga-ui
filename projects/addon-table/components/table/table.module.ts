@@ -53,6 +53,7 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiSortableDirective,
         TuiTheadDirective,
         TuiTableSortPipe,
+        TuiDirectionOrderDirective,
     ],
 })
 export class TuiTableModule {}
