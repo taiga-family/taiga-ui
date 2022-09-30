@@ -14,6 +14,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 
 /**
  * Safe space around host and screen edges
@@ -52,19 +53,7 @@ export const tuiDropdownOptionsProvider: (
         [new Optional(), TuiDropdownOptionsDirective],
         [new SkipSelf(), TUI_DROPDOWN_OPTIONS],
     ],
-    useFactory: (
-        directive: TuiDropdownOptionsDirective | null,
-        options: TuiDropdownOptions,
-    ): TuiDropdownOptions => {
-        const result = directive || {...options};
-
-        Object.keys(override).forEach(key => {
-            // Update directive props with new defaults before inputs are processed
-            (result as any)[key] = override[key as keyof TuiDropdownOptions];
-        });
-
-        return result;
-    },
+    useFactory: tuiOverrideOptions(override),
 });
 
 @Directive({

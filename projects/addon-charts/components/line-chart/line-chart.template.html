@@ -54,7 +54,6 @@
             <!-- TODO: Fix hint type -->
             <div
                 *ngIf="value.length > 1 || dots"
-                tuiHintDirection="top"
                 class="t-column"
                 [class.t-column_hovered]="hovered === index"
                 [class.t-column_hint_hovered]="drivers.get(index) | async"

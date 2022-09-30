@@ -5,6 +5,7 @@
         [axisYLabels]="labelsY"
     >
         <tui-bar-chart
+            [tuiHintAppearance]="appearance"
             [max]="10000"
             [value]="value"
             [tuiHintContent]="hint"
@@ -17,7 +18,7 @@
         [axisYLabels]="labelsY"
     >
         <tui-bar-chart
-            tuiHintAppearance="onDark"
+            [tuiHintAppearance]="appearance"
             [max]="10000"
             [value]="value"
             [collapsed]="true"
@@ -25,3 +26,14 @@
         ></tui-bar-chart>
     </tui-axes>
 </div>
+
+<tui-select
+    class="b-form"
+    [(ngModel)]="appearance"
+>
+    Hint appearance
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="appearances"
+    ></tui-data-list-wrapper>
+</tui-select>

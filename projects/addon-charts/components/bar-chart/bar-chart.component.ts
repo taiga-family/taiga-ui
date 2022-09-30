@@ -16,7 +16,13 @@ import {
     tuiPure,
     tuiSum,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiHintOptionsDirective, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    TuiDriver,
+    TuiHintOptionsDirective,
+    tuiHintOptionsProvider,
+    TuiSizeL,
+    TuiSizeS,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -33,6 +39,7 @@ const VALUE_ERROR = `All arrays must be of the same length`;
     templateUrl: `./bar-chart.template.html`,
     styleUrls: [`./bar-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [tuiHintOptionsProvider({direction: `top`})],
 })
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
