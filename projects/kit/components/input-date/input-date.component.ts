@@ -62,6 +62,8 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
+import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from './input-date-options';
+
 @Component({
     selector: `tui-input-date`,
     templateUrl: `./input-date.template.html`,
@@ -143,6 +145,8 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_DATE_VALUE_TRANSFORMER)
         override readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
+        @Inject(TUI_INPUT_DATE_OPTIONS)
+        private readonly options: TuiInputDateOptions,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -161,8 +165,8 @@ export class TuiInputDateComponent
 
     get calendarIcon(): string {
         return tuiSizeBigger(this.textfieldSize.size)
-            ? `tuiIconCalendarLarge`
-            : `tuiIconCalendar`;
+            ? this.options.iconCalendarLarge
+            : this.options.iconCalendar;
     }
 
     get computedValue(): string {
