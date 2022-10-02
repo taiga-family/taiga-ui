@@ -147,6 +147,13 @@
                 },
                 "development": {
                     "baseHref": "/"
+                },
+                "serve-fast": {
+                    "baseHref": "/",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "statsJson": false,
+                    "budgets": []
                 }
             },
             "defaultConfiguration": "production"
@@ -195,6 +202,10 @@
                 },
                 "development": {
                     "browserTarget": "demo:build:development"
+                },
+                "development-fast": {
+                    "port": 3334,
+                    "browserTarget": "demo:build:serve-fast"
                 }
             },
             "defaultConfiguration": "development"
