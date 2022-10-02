@@ -23,6 +23,7 @@ import {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const icons: Record<TuiPaymentSystem, string> = {
     mir: `tuiIconMir`,
@@ -51,7 +52,7 @@ export class TuiInputCardComponent
 
     @Input()
     @tuiDefaultProp()
-    cardSrc: string | null = null;
+    cardSrc: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -76,6 +77,12 @@ export class TuiInputCardComponent
         super(control, changeDetectorRef);
     }
 
+    get defaultCardIcon(): string | null {
+        const {paymentSystem} = this;
+
+        return paymentSystem ? icons[paymentSystem] : null;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.input ? this.input.nativeFocusableElement : null;
     }
@@ -84,14 +91,8 @@ export class TuiInputCardComponent
         return !!this.input && this.input.focused;
     }
 
-    get icon(): string | null {
-        if (this.cardSrc !== null) {
-            return this.cardSrc;
-        }
-
-        const {paymentSystem} = this;
-
-        return paymentSystem ? icons[paymentSystem] : null;
+    get icon(): PolymorpheusContent {
+        return this.cardSrc || this.defaultCardIcon;
     }
 
     get autocomplete(): TuiAutofillFieldName {
