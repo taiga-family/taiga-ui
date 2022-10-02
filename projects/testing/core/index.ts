@@ -1,3 +1,4 @@
+export * from './action.harness';
 export * from './badge.harness';
 export * from './button.harness';
 export * from './island.harness';
