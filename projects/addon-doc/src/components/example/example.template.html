@@ -48,14 +48,14 @@
             </tui-tabs-with-more>
 
             <button
-                *ngIf="codeEditor"
+                *ngIf="files | tuiMapper: visible"
                 tuiButton
                 appearance="flat"
                 size="s"
                 [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
             >
-                Edit on {{ codeEditor.name }}
+                Edit on {{ codeEditor!.name }}
             </button>
         </div>
 
