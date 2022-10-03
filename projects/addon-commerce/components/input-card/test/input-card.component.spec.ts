@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {configureTestSuite} from '@taiga-ui/testing';
@@ -13,11 +13,18 @@ describe(`InputCard`, () => {
                 [formControl]="control"
                 (binChange)="onBinChange($event)"
             ></tui-input-card>
+
+            <ng-template #customIconTemplateRef>
+                <tui-svg src="tuiIconMastercard"></tui-svg>
+            </ng-template>
         `,
     })
     class TestComponent {
         @ViewChild(TuiInputCardComponent, {static: true})
         component!: TuiInputCardComponent;
+
+        @ViewChild(`customIconTemplateRef`, {read: TemplateRef})
+        customIconTemplateRef!: TemplateRef<any>;
 
         control = new FormControl(``);
 
@@ -137,6 +144,31 @@ describe(`InputCard`, () => {
 
         it(`19`, async () => {
             await testFormat(`4000000000000000000`, `4000 0000 0000 0000 000`);
+        });
+    });
+
+    describe(`customIconSource`, () => {
+        beforeEach(() => testComponent.control.setValue(`4111 1111 1111 1111`));
+
+        it(`input-card component has a default icon`, () => {
+            expect(testComponent.control.valid).toEqual(true);
+            expect(testComponent.component.icon).toEqual(`tuiIconVisa`);
+            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
+        });
+
+        it(`input-card component has a tuiIconElectron icon`, () => {
+            testComponent.component.cardSrc = `tuiIconElectron`;
+            expect(testComponent.control.valid).toEqual(true);
+            expect(testComponent.component.icon).toEqual(`tuiIconElectron`);
+            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
+        });
+
+        it(`input-card component has an icon source as TemplateRef`, () => {
+            testComponent.component.cardSrc =
+                fixture.componentInstance.customIconTemplateRef;
+            expect(testComponent.control.valid).toEqual(true);
+            expect(testComponent.component.icon).toEqual(jasmine.any(TemplateRef));
+            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });
     });
 
