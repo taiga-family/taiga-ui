@@ -33,9 +33,10 @@
 
     <ng-template #mobileIconContent>
         <tui-svg
+            *polymorpheusOutlet="calendarIcon as src"
             automation-id="tui-input-date-range__icon"
             [class.t-icon]="!computedDisabled"
-            [src]="calendarIcon"
+            [src]="src"
             (click)="onMobileClick()"
         ></tui-svg>
     </ng-template>
