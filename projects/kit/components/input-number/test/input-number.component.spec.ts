@@ -110,6 +110,15 @@ describe(`InputNumber`, () => {
             fixture.detectChanges();
             expect(getNativeInput()!.nativeElement.value).toBe(`12,34`);
         });
+
+        it(`Default min and max are safe integers`, async () => {
+            await fixture.whenStable();
+
+            fixture.detectChanges();
+
+            expect(testComponent.component.min).toBe(Number.MIN_SAFE_INTEGER);
+            expect(testComponent.component.max).toBe(Number.MAX_SAFE_INTEGER);
+        });
     });
 
     it(`Non-zero pennies are not shown when decimal = 'never'`, async () => {
@@ -119,6 +128,7 @@ describe(`InputNumber`, () => {
         await fixture.whenStable();
 
         fixture.detectChanges();
+
         expect(getNativeInput()!.nativeElement.value).toBe(`12`);
     });
 
