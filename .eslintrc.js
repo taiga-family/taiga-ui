@@ -103,5 +103,6 @@ module.exports = {
             },
         ],
         '@taiga-ui/prefer-inject-decorator': 'error',
+        'import/no-cycle': 'error',
     },
 };
