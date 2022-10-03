@@ -28,7 +28,11 @@ var fesm2015_core = __webpack_require__(74788);
 var button_component = __webpack_require__(76189);
 // EXTERNAL MODULE: ./projects/core/components/expand/expand.component.ts
 var expand_component = __webpack_require__(88618);
+// EXTERNAL MODULE: ./projects/core/components/expand/expand-content.directive.ts
+var expand_content_directive = __webpack_require__(84785);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/expand/examples/1/index.ts
+
+
 
 
 
@@ -41,10 +45,27 @@ function TuiExpandExample1_ng_template_5_Template(rf, ctx) {
   }
 }
 
+function TuiExpandExample1_div_7_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div");
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "div");
+    fesm2015_core/* ɵɵtext */._uU(2);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const page_r2 = ctx.$implicit;
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵtextInterpolate */.Oqu(page_r2);
+  }
+}
+
 let TuiExpandExample1 = /*#__PURE__*/(() => {
   class TuiExpandExample1 {
     constructor() {
       this.expanded = false;
+      this.subpages = [`page1`, `page2`, `page3`];
     }
 
     toggle() {
@@ -60,9 +81,9 @@ let TuiExpandExample1 = /*#__PURE__*/(() => {
   TuiExpandExample1.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiExpandExample1,
     selectors: [["tui-expand-example-1"]],
-    decls: 6,
-    vars: 1,
-    consts: [["tuiButton", "", "type", "button", 3, "click"], [3, "expanded"]],
+    decls: 8,
+    vars: 3,
+    consts: [["tuiButton", "", "type", "button", 3, "click"], [3, "expanded"], ["tuiExpandContent", ""], [4, "ngFor", "ngForOf"]],
     template: function TuiExpandExample1_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
@@ -75,16 +96,23 @@ let TuiExpandExample1 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵtext */._uU(3, " Show/Hide\n");
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-expand", 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(5, TuiExpandExample1_ng_template_5_Template, 2, 0, "ng-template");
+        fesm2015_core/* ɵɵtemplate */.YNc(5, TuiExpandExample1_ng_template_5_Template, 2, 0, "ng-template", 2);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(6, "tui-expand", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(7, TuiExpandExample1_div_7_Template, 3, 1, "div", 3);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
       if (rf & 2) {
         fesm2015_core/* ɵɵadvance */.xp6(4);
         fesm2015_core/* ɵɵproperty */.Q6J("expanded", ctx.expanded);
+        fesm2015_core/* ɵɵadvance */.xp6(2);
+        fesm2015_core/* ɵɵproperty */.Q6J("expanded", ctx.expanded);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.subpages);
       }
     },
-    directives: [button_component/* TuiButtonComponent */.v, expand_component/* TuiExpandComponent */.S],
+    directives: [button_component/* TuiButtonComponent */.v, expand_component/* TuiExpandComponent */.S, expand_content_directive/* TuiExpandContentDirective */.I, common/* NgForOf */.sg],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -103,6 +131,7 @@ var documentation_property_connector_directive = __webpack_require__(17023);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/code/code.component.ts
 var code_component = __webpack_require__(76349);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/expand/expand.component.ts
+
 
 
 
@@ -139,9 +168,9 @@ function ExampleTuiExpandComponent_ng_template_2_ng_template_2_div_0_Template(rf
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "p");
     fesm2015_core/* ɵɵtext */._uU(2, "Luke's father.");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(3, "p", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(3, "p", 9);
     fesm2015_core/* ɵɵtext */._uU(4, " Also Tyler Durden doesn't actually exist (hover for mode details) ");
-    fesm2015_core/* ɵɵelementStart */.TgZ(5, "span", 9);
+    fesm2015_core/* ɵɵelementStart */.TgZ(5, "span", 10);
     fesm2015_core/* ɵɵtext */._uU(6, " Fight Club reference (notice how spoiler has ");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "code");
     fesm2015_core/* ɵɵtext */._uU(8, "overflow: visible;");
@@ -158,7 +187,7 @@ function ExampleTuiExpandComponent_ng_template_2_ng_template_2_div_0_Template(rf
 
 function ExampleTuiExpandComponent_ng_template_2_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵtemplate */.YNc(0, ExampleTuiExpandComponent_ng_template_2_ng_template_2_div_0_Template, 12, 0, "div", 7);
+    fesm2015_core/* ɵɵtemplate */.YNc(0, ExampleTuiExpandComponent_ng_template_2_ng_template_2_div_0_Template, 12, 0, "div", 8);
   }
 
   if (rf & 2) {
@@ -169,7 +198,7 @@ function ExampleTuiExpandComponent_ng_template_2_ng_template_2_Template(rf, ctx)
 
 function ExampleTuiExpandComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 10);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 11);
     fesm2015_core/* ɵɵelement */._UZ(1, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
   }
@@ -177,7 +206,7 @@ function ExampleTuiExpandComponent_ng_template_2_ng_template_4_Template(rf, ctx)
 
 function ExampleTuiExpandComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 11);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 12);
   }
 }
 
@@ -187,16 +216,16 @@ function ExampleTuiExpandComponent_ng_template_2_Template(rf, ctx) {
 
     fesm2015_core/* ɵɵtext */._uU(0, " Darth Vader is (spoilers below): ");
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-expand", 4);
-    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiExpandComponent_ng_template_2_ng_template_2_Template, 1, 1, "ng-template");
+    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiExpandComponent_ng_template_2_ng_template_2_Template, 1, 1, "ng-template", 5);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiExpandComponent_ng_template_2_ng_template_4_Template, 2, 0, "ng-template", 5);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiExpandComponent_ng_template_2_ng_template_4_Template, 2, 0, "ng-template", 6);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiExpandComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r8);
       const ctx_r7 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r7.async = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiExpandComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 6);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiExpandComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 7);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiExpandComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r8);
       const ctx_r9 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -218,20 +247,20 @@ function ExampleTuiExpandComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiExpandComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 12);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 13);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 13);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 14);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 14);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 15);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 15);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 16);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 16);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 17);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -364,7 +393,7 @@ let ExampleTuiExpandComponent = /*#__PURE__*/(() => {
         i18n_10 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
       }
 
-      return [["header", "Expand", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, ["id", "base", "heading", i18n_2, 3, "content"], [1, "b-full-width", 3, "expanded", "async"], ["documentationPropertyName", "async", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "expanded", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], [4, "ngIf"], [1, "tooltip"], [1, "bubble"], i18n_4, i18n_6, [1, "b-demo-steps"], i18n_8, ["filename", "myComponent.module.ts", 3, "code"], i18n_10, ["filename", "myComponent.template.html", 3, "code"]];
+      return [["header", "Expand", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, ["id", "base", "heading", i18n_2, 3, "content"], [1, "b-full-width", 3, "expanded", "async"], ["tuiExpandContent", ""], ["documentationPropertyName", "async", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "expanded", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], [4, "ngIf"], [1, "tooltip"], [1, "bubble"], i18n_4, i18n_6, [1, "b-demo-steps"], i18n_8, ["filename", "myComponent.module.ts", 3, "code"], i18n_10, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiExpandComponent_Template(rf, ctx) {
       if (rf & 1) {
@@ -375,7 +404,7 @@ let ExampleTuiExpandComponent = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiExpandExample1, expand_component/* TuiExpandComponent */.S, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, common/* NgIf */.O5, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiExpandExample1, expand_component/* TuiExpandComponent */.S, expand_content_directive/* TuiExpandContentDirective */.I, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, common/* NgIf */.O5, code_component/* TuiDocCodeComponent */.c],
     styles: [".tooltip[_ngcontent-%COMP%]{position:relative}.tooltip[_ngcontent-%COMP%]:hover   .bubble[_ngcontent-%COMP%]{opacity:1}.bubble[_ngcontent-%COMP%]{transition-property:opacity;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;position:absolute;left:3.125rem;bottom:1.875rem;width:15.625rem;background:var(--tui-text-01);color:var(--tui-base-01);border-radius:.25rem;padding:.625rem;opacity:0}.bubble[_ngcontent-%COMP%]:after{content:\"\";position:absolute;left:50%;bottom:-15px;border-top:15px solid var(--tui-text-01);border-left:10px solid transparent;border-right:10px solid transparent;transform:translate(-10px)}"],
     changeDetection: 0
   });
