@@ -2,4 +2,10 @@ export const HTML_EDITOR_BASIC_EXAMPLE = `<p><strong>WYSIWYG</strong> (<em>What 
 
 export const HTML_EDITOR_EXAMPLE_UL = `<ul><li>1</li><li>2</li></ul><ol><li>A</li><li>B</li></ol>`;
 
+export const HTML_EDITOR_EXAMPLE_BLOCKQUOTE = `<blockquote><p>123123123a</p><p>112323</p></blockquote><p></p>`;
+
+export const HTML_EDITOR_EXAMPLE_PRE_CODE = `<pre><code>%26lt;script%26gt;<%2Fcode><%2Fpre><pre><code>%20const%20hello%20%3D%20"world";<%2Fcode><%2Fpre><pre><code>%26lt;%2Fscript%26gt;<%2Fcode><%2Fpre><p>Hello<%2Fp><pre><code>World<%2Fcode><%2Fpre><p><code>Taiga%20UI<%2Fcode>%20%20by%20%20<code>Tinkoff<%2Fcode><%2Fp>`;
+
+export const HTML_EDITOR_EXAMPLE_TABLE = `<p><%2Fp><table><tbody><tr><th%20colspan%3D"1"%20rowspan%3D"1"%20colwidth%3D"121"><p>Hello<%2Fp><%2Fth><th%20colspan%3D"1"%20rowspan%3D"1"><p>World<%2Fp><%2Fth><%2Ftr><tr><td%20colspan%3D"1"%20rowspan%3D"1"%20colwidth%3D"121"><p>1<%2Fp><%2Ftd><td%20colspan%3D"1"%20rowspan%3D"1"><p>2<%2Fp><%2Ftd><%2Ftr><tr><td%20colspan%3D"1"%20rowspan%3D"1"%20colwidth%3D"121"><p>3<%2Fp><%2Ftd><td%20colspan%3D"1"%20rowspan%3D"1"><p>4<%2Fp><%2Ftd><%2Ftr><%2Ftbody><%2Ftable><p><%2Fp>`;
+
 export const HTML_EDITOR_EXAMPLE_NESTED_UL = `<ul><li>1<ul><li>2<ul><li>3</li><li>4</li></ul></li></ul></li><li>5</li></ul><ol><li>1<ol><li>2<ol><li>3</li><li>4</li></ol></li></ol></li><li>5</li></ol>`;
