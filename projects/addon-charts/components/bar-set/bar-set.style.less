@@ -1,4 +1,5 @@
 :host {
+    position: relative;
     display: flex;
     height: 100%;
     align-items: flex-end;
@@ -11,11 +12,11 @@
     height: 100%;
     align-items: flex-end;
 
-    &:first-child {
+    &:first-of-type {
         margin-left: 25%;
     }
 
-    &:last-child {
+    &:last-of-type {
         margin-right: 25%;
     }
 }
@@ -33,4 +34,11 @@
         width: 75%;
         margin: 0 auto;
     }
+}
+
+.t-label {
+    position: absolute;
+    top: -1.5rem;
+    font: var(--tui-font-text-xs);
+    color: var(--tui-text-02);
 }
