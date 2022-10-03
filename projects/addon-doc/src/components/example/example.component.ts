@@ -18,7 +18,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 import {TuiCodeEditor} from '../../interfaces/code-editor';
-import {TuiDocExample} from '../../interfaces/page';
+import {TUI_EXAMPLE_PRIMARY_FILE_NAME, TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
@@ -87,6 +87,13 @@ export class TuiDocExampleComponent {
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(NgLocation) private readonly ngLocation: NgLocation,
     ) {}
+
+    readonly visible = (files: Record<string, string>): boolean =>
+        Boolean(
+            this.codeEditor &&
+                files[TUI_EXAMPLE_PRIMARY_FILE_NAME.TS] &&
+                files[TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML],
+        );
 
     copyExampleLink(): void {
         const hashPosition = this.location.href.indexOf(`#`);
