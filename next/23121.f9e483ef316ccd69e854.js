@@ -942,7 +942,7 @@ const icons = {
 class TuiInputCardComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_2__.AbstractTuiControl {
   constructor(control, changeDetectorRef) {
     super(control, changeDetectorRef);
-    this.cardSrc = null;
+    this.cardSrc = ``;
     this.autocompleteEnabled = false;
     this.binChange = new _angular_core__WEBPACK_IMPORTED_MODULE_9__/* .EventEmitter */ .vpe();
     this.textMaskOptions = {
@@ -950,6 +950,13 @@ class TuiInputCardComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_2__.A
       guide: false,
       pipe: conformedValue => conformedValue.trim()
     };
+  }
+
+  get defaultCardIcon() {
+    const {
+      paymentSystem
+    } = this;
+    return paymentSystem ? icons[paymentSystem] : null;
   }
 
   get nativeFocusableElement() {
@@ -961,14 +968,7 @@ class TuiInputCardComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_2__.A
   }
 
   get icon() {
-    if (this.cardSrc !== null) {
-      return this.cardSrc;
-    }
-
-    const {
-      paymentSystem
-    } = this;
-    return paymentSystem ? icons[paymentSystem] : null;
+    return this.cardSrc || this.defaultCardIcon;
   }
 
   get autocomplete() {

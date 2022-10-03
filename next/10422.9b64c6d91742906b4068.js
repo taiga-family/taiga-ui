@@ -20,8 +20,10 @@ var router = __webpack_require__(12021);
 var addon_charts = __webpack_require__(50179);
 // EXTERNAL MODULE: ./projects/addon-doc/src/public-api.ts + 17 modules
 var public_api = __webpack_require__(29851);
+// EXTERNAL MODULE: ./projects/core/index.ts + 74 modules
+var core = __webpack_require__(90987);
 // EXTERNAL MODULE: ./node_modules/@angular/core/fesm2015/core.js
-var core = __webpack_require__(74788);
+var fesm2015_core = __webpack_require__(74788);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/page/page.component.ts + 1 modules
 var page_component = __webpack_require__(55238);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/page/page-tab.directive.ts
@@ -45,7 +47,7 @@ let TuiBarSetExample1 = /*#__PURE__*/(() => {
     return new (t || TuiBarSetExample1)();
   };
 
-  TuiBarSetExample1.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  TuiBarSetExample1.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiBarSetExample1,
     selectors: [["tui-bar-set-example-1"]],
     decls: 1,
@@ -53,11 +55,11 @@ let TuiBarSetExample1 = /*#__PURE__*/(() => {
     consts: [[1, "bars", 3, "value", "size"]],
     template: function TuiBarSetExample1_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
+        fesm2015_core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
       }
 
       if (rf & 2) {
-        core/* ɵɵproperty */.Q6J("value", ctx.value)("size", null);
+        fesm2015_core/* ɵɵproperty */.Q6J("value", ctx.value)("size", null);
       }
     },
     directives: [bar_set_component/* TuiBarSetComponent */.I],
@@ -81,7 +83,7 @@ let TuiBarSetExample2 = /*#__PURE__*/(() => {
     return new (t || TuiBarSetExample2)();
   };
 
-  TuiBarSetExample2.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  TuiBarSetExample2.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiBarSetExample2,
     selectors: [["tui-bar-set-example-2"]],
     decls: 1,
@@ -89,11 +91,11 @@ let TuiBarSetExample2 = /*#__PURE__*/(() => {
     consts: [["size", "m", 1, "bars", 3, "value"]],
     template: function TuiBarSetExample2_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
+        fesm2015_core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
       }
 
       if (rf & 2) {
-        core/* ɵɵproperty */.Q6J("value", ctx.value);
+        fesm2015_core/* ɵɵproperty */.Q6J("value", ctx.value);
       }
     },
     directives: [bar_set_component/* TuiBarSetComponent */.I],
@@ -117,7 +119,7 @@ let TuiBarSetExample3 = /*#__PURE__*/(() => {
     return new (t || TuiBarSetExample3)();
   };
 
-  TuiBarSetExample3.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  TuiBarSetExample3.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiBarSetExample3,
     selectors: [["tui-bar-set-example-3"]],
     decls: 1,
@@ -125,11 +127,11 @@ let TuiBarSetExample3 = /*#__PURE__*/(() => {
     consts: [[1, "bars", 3, "value"]],
     template: function TuiBarSetExample3_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
+        fesm2015_core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
       }
 
       if (rf & 2) {
-        core/* ɵɵproperty */.Q6J("value", ctx.value);
+        fesm2015_core/* ɵɵproperty */.Q6J("value", ctx.value);
       }
     },
     directives: [bar_set_component/* TuiBarSetComponent */.I],
@@ -153,7 +155,7 @@ let TuiBarSetExample4 = /*#__PURE__*/(() => {
     return new (t || TuiBarSetExample4)();
   };
 
-  TuiBarSetExample4.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  TuiBarSetExample4.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiBarSetExample4,
     selectors: [["tui-bar-set-example-4"]],
     decls: 2,
@@ -161,14 +163,14 @@ let TuiBarSetExample4 = /*#__PURE__*/(() => {
     consts: [[1, "wrapper"], [1, "bars", 3, "value"]],
     template: function TuiBarSetExample4_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelementStart */.TgZ(0, "div", 0);
-        core/* ɵɵelement */._UZ(1, "tui-bar-set", 1);
-        core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 0);
+        fesm2015_core/* ɵɵelement */._UZ(1, "tui-bar-set", 1);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
       if (rf & 2) {
-        core/* ɵɵadvance */.xp6(1);
-        core/* ɵɵproperty */.Q6J("value", ctx.value);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("value", ctx.value);
       }
     },
     directives: [bar_set_component/* TuiBarSetComponent */.I],
@@ -177,13 +179,17 @@ let TuiBarSetExample4 = /*#__PURE__*/(() => {
   });
   return TuiBarSetExample4;
 })();
+// EXTERNAL MODULE: ./projects/core/pipes/format-number/format-number.pipe.ts
+var format_number_pipe = __webpack_require__(59544);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/charts/bar-set/examples/5/index.ts
+
 
 
 let TuiBarSetExample5 = /*#__PURE__*/(() => {
   class TuiBarSetExample5 {
     constructor() {
-      this.value = [45, 30, 20, 12, 6];
+      this.value = [451, 302, 203, 124, 65];
+      this.sum = this.value.reduce((a, b) => a + b, 0);
     }
 
   }
@@ -192,23 +198,29 @@ let TuiBarSetExample5 = /*#__PURE__*/(() => {
     return new (t || TuiBarSetExample5)();
   };
 
-  TuiBarSetExample5.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  TuiBarSetExample5.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiBarSetExample5,
     selectors: [["tui-bar-set-example-5"]],
-    decls: 1,
-    vars: 2,
+    decls: 3,
+    vars: 5,
     consts: [[1, "bars", 3, "collapsed", "value"]],
     template: function TuiBarSetExample5_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelement */._UZ(0, "tui-bar-set", 0);
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-bar-set", 0);
+        fesm2015_core/* ɵɵtext */._uU(1);
+        fesm2015_core/* ɵɵpipe */.ALo(2, "tuiFormatNumber");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
       if (rf & 2) {
-        core/* ɵɵproperty */.Q6J("collapsed", true)("value", ctx.value);
+        fesm2015_core/* ɵɵproperty */.Q6J("collapsed", true)("value", ctx.value);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 3, ctx.sum), "\n");
       }
     },
     directives: [bar_set_component/* TuiBarSetComponent */.I],
-    styles: [".bars[_ngcontent-%COMP%]{height:7.5rem;width:5rem;box-shadow:0 1px var(--tui-base-03)}"],
+    pipes: [format_number_pipe/* TuiFormatNumberPipe */.m],
+    styles: [".bars[_ngcontent-%COMP%]{height:7.5rem;width:5rem;margin-top:2rem;box-shadow:0 1px var(--tui-base-03)}"],
     changeDetection: 0
   });
   return TuiBarSetExample5;
@@ -239,129 +251,129 @@ var code_component = __webpack_require__(76349);
 
 function ExampleTuiBarSetComponent_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelementStart */.TgZ(0, "p");
-    core/* ɵɵi18n */.SDv(1, 2);
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(2, "tui-doc-example", 3);
-    core/* ɵɵelement */._UZ(3, "tui-bar-set-example-1");
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(4, "tui-doc-example", 4);
-    core/* ɵɵelement */._UZ(5, "tui-bar-set-example-2");
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(6, "tui-doc-example", 5);
-    core/* ɵɵelement */._UZ(7, "tui-bar-set-example-3");
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(8, "tui-doc-example", 6);
-    core/* ɵɵelement */._UZ(9, "tui-bar-set-example-4");
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(10, "tui-doc-example", 7);
-    core/* ɵɵelement */._UZ(11, "tui-bar-set-example-5");
-    core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
+    fesm2015_core/* ɵɵi18n */.SDv(1, 2);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-example", 3);
+    fesm2015_core/* ɵɵelement */._UZ(3, "tui-bar-set-example-1");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-doc-example", 4);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-bar-set-example-2");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(6, "tui-doc-example", 5);
+    fesm2015_core/* ɵɵelement */._UZ(7, "tui-bar-set-example-3");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(8, "tui-doc-example", 6);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-bar-set-example-4");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(10, "tui-doc-example", 7);
+    fesm2015_core/* ɵɵelement */._UZ(11, "tui-bar-set-example-5");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const ctx_r0 = core/* ɵɵnextContext */.oxw();
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("content", ctx_r0.example2);
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("content", ctx_r0.example4);
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("content", ctx_r0.example5);
+    const ctx_r0 = fesm2015_core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example2);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example4);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example5);
   }
 }
 
 function ExampleTuiBarSetComponent_ng_template_2_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵi18n */.SDv(0, 12);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 12);
   }
 }
 
 function ExampleTuiBarSetComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵi18nStart */.tHW(0, 13);
-    core/* ɵɵelement */._UZ(1, "code");
-    core/* ɵɵi18nEnd */.N_p();
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 13);
+    fesm2015_core/* ɵɵelement */._UZ(1, "code");
+    fesm2015_core/* ɵɵi18nEnd */.N_p();
   }
 }
 
 function ExampleTuiBarSetComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵi18n */.SDv(0, 14);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 14);
   }
 }
 
 function ExampleTuiBarSetComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r7 = core/* ɵɵgetCurrentView */.EpF();
+    const _r7 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
-    core/* ɵɵelement */._UZ(1, "tui-bar-set", 8);
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
-    core/* ɵɵtemplate */.YNc(3, ExampleTuiBarSetComponent_ng_template_2_ng_template_3_Template, 1, 0, "ng-template", 9);
-    core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
-      core/* ɵɵrestoreView */.CHM(_r7);
-      const ctx_r6 = core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
+    fesm2015_core/* ɵɵelement */._UZ(1, "tui-bar-set", 8);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
+    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiBarSetComponent_ng_template_2_ng_template_3_Template, 1, 0, "ng-template", 9);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r7);
+      const ctx_r6 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r6.collapsed = $event;
     });
-    core/* ɵɵtemplate */.YNc(4, ExampleTuiBarSetComponent_ng_template_2_ng_template_4_Template, 2, 0, "ng-template", 10);
-    core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
-      core/* ɵɵrestoreView */.CHM(_r7);
-      const ctx_r8 = core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiBarSetComponent_ng_template_2_ng_template_4_Template, 2, 0, "ng-template", 10);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r7);
+      const ctx_r8 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r8.size = $event;
     });
-    core/* ɵɵtemplate */.YNc(5, ExampleTuiBarSetComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 11);
-    core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
-      core/* ɵɵrestoreView */.CHM(_r7);
-      const ctx_r9 = core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiBarSetComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 11);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiBarSetComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r7);
+      const ctx_r9 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r9.value = $event;
     });
-    core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const ctx_r1 = core/* ɵɵnextContext */.oxw();
-    core/* ɵɵadvance */.xp6(1);
-    core/* ɵɵproperty */.Q6J("collapsed", ctx_r1.collapsed)("value", ctx_r1.value)("size", ctx_r1.size);
-    core/* ɵɵadvance */.xp6(2);
-    core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.collapsed);
-    core/* ɵɵadvance */.xp6(1);
-    core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.sizeVariants)("documentationPropertyValue", ctx_r1.size);
-    core/* ɵɵadvance */.xp6(1);
-    core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.valueVariants)("documentationPropertyValue", ctx_r1.value);
+    const ctx_r1 = fesm2015_core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("collapsed", ctx_r1.collapsed)("value", ctx_r1.value)("size", ctx_r1.size);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.collapsed);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.sizeVariants)("documentationPropertyValue", ctx_r1.size);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.valueVariants)("documentationPropertyValue", ctx_r1.value);
   }
 }
 
 function ExampleTuiBarSetComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelementStart */.TgZ(0, "ol", 15);
-    core/* ɵɵelementStart */.TgZ(1, "li");
-    core/* ɵɵelementStart */.TgZ(2, "p");
-    core/* ɵɵi18nStart */.tHW(3, 16);
-    core/* ɵɵelement */._UZ(4, "code");
-    core/* ɵɵi18nEnd */.N_p();
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelement */._UZ(5, "tui-doc-code", 17);
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(6, "li");
-    core/* ɵɵelementStart */.TgZ(7, "p");
-    core/* ɵɵi18n */.SDv(8, 18);
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelement */._UZ(9, "tui-doc-code", 19);
-    core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 15);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 16);
+    fesm2015_core/* ɵɵelement */._UZ(4, "code");
+    fesm2015_core/* ɵɵi18nEnd */.N_p();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 17);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
+    fesm2015_core/* ɵɵi18n */.SDv(8, 18);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 19);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const ctx_r2 = core/* ɵɵnextContext */.oxw();
-    core/* ɵɵadvance */.xp6(5);
-    core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleModule);
-    core/* ɵɵadvance */.xp6(4);
-    core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleHtml);
+    const ctx_r2 = fesm2015_core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵadvance */.xp6(5);
+    fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleModule);
+    fesm2015_core/* ɵɵadvance */.xp6(4);
+    fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleHtml);
   }
 }
 
@@ -408,7 +420,7 @@ let ExampleTuiBarSetComponent = /*#__PURE__*/(() => {
     return new (t || ExampleTuiBarSetComponent)();
   };
 
-  ExampleTuiBarSetComponent.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
+  ExampleTuiBarSetComponent.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: ExampleTuiBarSetComponent,
     selectors: [["example-tui-bar-set"]],
     decls: 4,
@@ -528,15 +540,15 @@ let ExampleTuiBarSetComponent = /*#__PURE__*/(() => {
         i18n_22 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
       }
 
-      return [["header", i18n_0, "package", "ADDON-CHARTS", "type", "components"], ["pageTab", ""], i18n_2, ["id", "flexible", "heading", i18n_4, 3, "content"], ["id", "fixed", "heading", i18n_6, 3, "content"], ["id", "negative", "heading", i18n_8, 3, "content"], ["id", "horizontal", "heading", i18n_10, 3, "content"], ["id", "collapsed", "heading", i18n_12, 3, "content"], [1, "bars", 3, "collapsed", "value", "size"], ["documentationPropertyName", "collapsed", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyMode", "input", "documentationPropertyType", "TuiSizeS | TuiSizeL | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "value", "documentationPropertyMode", "input", "documentationPropertyType", "readonly number[]", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_14, i18n_16, i18n_18, [1, "b-demo-steps"], i18n_20, ["filename", "myComponent.module.ts", 3, "code"], i18n_22, ["filename", "myComponent.template.html", 3, "code"]];
+      return [["header", i18n_0, "package", "ADDON-CHARTS", "type", "components"], ["pageTab", ""], i18n_2, ["id", "flexible", "heading", i18n_4, 3, "content"], ["id", "fixed", "heading", i18n_6, 3, "content"], ["id", "negative", "heading", i18n_8, 3, "content"], ["id", "horizontal", "heading", i18n_10, 3, "content"], ["id", "collapsed", "heading", i18n_12, "description", "With value label", 3, "content"], [1, "bars", 3, "collapsed", "value", "size"], ["documentationPropertyName", "collapsed", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyMode", "input", "documentationPropertyType", "TuiSizeS | TuiSizeL | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "value", "documentationPropertyMode", "input", "documentationPropertyType", "readonly number[]", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_14, i18n_16, i18n_18, [1, "b-demo-steps"], i18n_20, ["filename", "myComponent.module.ts", 3, "code"], i18n_22, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiBarSetComponent_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        core/* ɵɵtemplate */.YNc(1, ExampleTuiBarSetComponent_ng_template_1_Template, 12, 5, "ng-template", 1);
-        core/* ɵɵtemplate */.YNc(2, ExampleTuiBarSetComponent_ng_template_2_Template, 6, 8, "ng-template", 1);
-        core/* ɵɵtemplate */.YNc(3, ExampleTuiBarSetComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
-        core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiBarSetComponent_ng_template_1_Template, 12, 5, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiBarSetComponent_ng_template_2_Template, 6, 8, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiBarSetComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
     directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiBarSetExample1, TuiBarSetExample2, TuiBarSetExample3, TuiBarSetExample4, TuiBarSetExample5, demo_component/* TuiDocDemoComponent */.F, bar_set_component/* TuiBarSetComponent */.I, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
@@ -558,6 +570,7 @@ let ExampleTuiBarSetComponent = /*#__PURE__*/(() => {
 
 
 
+
 let ExampleTuiBarSetModule = /*#__PURE__*/(() => {
   class ExampleTuiBarSetModule {}
 
@@ -565,19 +578,19 @@ let ExampleTuiBarSetModule = /*#__PURE__*/(() => {
     return new (t || ExampleTuiBarSetModule)();
   };
 
-  ExampleTuiBarSetModule.ɵmod = /*@__PURE__*/core/* ɵɵdefineNgModule */.oAB({
+  ExampleTuiBarSetModule.ɵmod = /*@__PURE__*/fesm2015_core/* ɵɵdefineNgModule */.oAB({
     type: ExampleTuiBarSetModule
   });
-  ExampleTuiBarSetModule.ɵinj = /*@__PURE__*/core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, router/* RouterModule */.Bz, addon_charts.TuiBarSetModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiBarSetComponent))]]
+  ExampleTuiBarSetModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
+    imports: [[common/* CommonModule */.ez, router/* RouterModule */.Bz, addon_charts.TuiBarSetModule, core.TuiFormatNumberPipeModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiBarSetComponent))]]
   });
   return ExampleTuiBarSetModule;
 })();
 
 (function () {
-  (typeof ngJitMode === "undefined" || ngJitMode) && core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiBarSetModule, {
+  (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiBarSetModule, {
     declarations: [ExampleTuiBarSetComponent, TuiBarSetExample1, TuiBarSetExample2, TuiBarSetExample3, TuiBarSetExample4, TuiBarSetExample5],
-    imports: [common/* CommonModule */.ez, router/* RouterModule */.Bz, addon_charts.TuiBarSetModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
+    imports: [common/* CommonModule */.ez, router/* RouterModule */.Bz, addon_charts.TuiBarSetModule, core.TuiFormatNumberPipeModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
     exports: [ExampleTuiBarSetComponent]
   });
 })();
