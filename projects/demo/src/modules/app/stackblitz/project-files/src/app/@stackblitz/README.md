@@ -9,13 +9,14 @@ and must not exist in real-world applications.
 
 ### `styles`-folder
 
-Some our examples use less-imports from `@taiga-ui/core`-package. Unfortunately, Stackblitz can't properly run this file
+Unfortunately, Stackblitz can't properly process relative imports inside `.less`-files of libraries. It throws error:
 
-**app.style.less**:
-
-```less
-@import '~@taiga-ui/core/styles/taiga-ui-local';
 ```
+Error in turbo_modules/@taiga-ui/core@3.4.0/styles/theme/wrapper/icon.less (1:0)
+Could not import ../../taiga-ui-local.less from /~/src/app/@stackblitz/styles/taiga-ui-stackblitz.less
+```
+
+See https://github.com/stackblitz/core/issues/1828
 
 ### `all-taiga-modules.ts`
 
