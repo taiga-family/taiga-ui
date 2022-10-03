@@ -4,7 +4,7 @@
 /***/ 17383:
 /***/ ((module) => {
 
-module.exports = "```html\n<tui-expand [expanded]=\"expanded\">\n  <ng-template>...</ng-template>\n</tui-expand>\n```\n";
+module.exports = "```html\n<tui-expand [expanded]=\"expanded\">\n  <ng-template tuiExpandContent>...</ng-template>\n</tui-expand>\n```\n";
 
 /***/ })
 
