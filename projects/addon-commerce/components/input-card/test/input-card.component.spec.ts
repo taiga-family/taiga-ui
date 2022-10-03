@@ -152,7 +152,6 @@ describe(`InputCard`, () => {
 
         it(`input-card component has a default icon`, () => {
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultCardIcon).toEqual(`tuiIconVisa`);
             expect(testComponent.component.icon).toEqual(`tuiIconVisa`);
             expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });
@@ -160,7 +159,6 @@ describe(`InputCard`, () => {
         it(`input-card component has a tuiIconElectron icon`, () => {
             testComponent.component.cardSrc = `tuiIconElectron`;
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultCardIcon).toEqual(`tuiIconVisa`);
             expect(testComponent.component.icon).toEqual(`tuiIconElectron`);
             expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });
@@ -169,7 +167,6 @@ describe(`InputCard`, () => {
             testComponent.component.cardSrc =
                 fixture.componentInstance.customIconTemplateRef;
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultCardIcon).toEqual(`tuiIconVisa`);
             expect(testComponent.component.icon).toEqual(jasmine.any(TemplateRef));
             expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });

@@ -77,7 +77,7 @@ export class TuiInputCardComponent
         super(control, changeDetectorRef);
     }
 
-    get defaultCardIcon(): string | null {
+    private get defaultCardIcon(): string | null {
         const {paymentSystem} = this;
 
         return paymentSystem ? icons[paymentSystem] : null;
