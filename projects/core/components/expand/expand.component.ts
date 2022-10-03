@@ -15,6 +15,8 @@ import {
 import {tuiDefaultProp, tuiIsCurrentTarget, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
+import {TuiExpandContentDirective} from './expand-content.directive';
+
 const enum State {
     Idle,
     Loading,
@@ -60,7 +62,7 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TemplateRef)
+    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
     content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding(`class._expanded`)

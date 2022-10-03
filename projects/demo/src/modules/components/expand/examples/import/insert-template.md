@@ -1,5 +1,5 @@
 ```html
 <tui-expand [expanded]="expanded">
-  <ng-template>...</ng-template>
+  <ng-template tuiExpandContent>...</ng-template>
 </tui-expand>
 ```

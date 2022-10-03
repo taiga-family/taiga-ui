@@ -11,6 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiExpandExample1 {
     expanded = false;
 
+    subpages = [`page1`, `page2`, `page3`];
+
     toggle(): void {
         this.expanded = !this.expanded;
     }
