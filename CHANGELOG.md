@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/tinkoff/taiga-ui/compare/v3.4.0...v3.5.0) (2022-10-03)
+
+### Features
+
+- **addon-charts:** `BarSet` add label ([#2780](https://github.com/tinkoff/taiga-ui/issues/2780))
+  ([d4f4ce0](https://github.com/tinkoff/taiga-ui/commit/d4f4ce05678f663437e092bcbc5c18c6a7e73f97))
+- **addon-commerce:** `InputCard` extend custom icon type to `PolymorpheusContent`
+  ([#2788](https://github.com/tinkoff/taiga-ui/issues/2788))
+  ([b8eff54](https://github.com/tinkoff/taiga-ui/commit/b8eff54e8e10da6ba6fcafd60aed0e818116db59))
+- **core:** `Dialog` allow `Default` change detection strategy to work
+  ([#2762](https://github.com/tinkoff/taiga-ui/issues/2762))
+  ([f71ed71](https://github.com/tinkoff/taiga-ui/commit/f71ed7145ae88b7099becd67915426785dfdcd5a))
+- **kit:** `InputTime` add checkmark near selected time ([#2763](https://github.com/tinkoff/taiga-ui/issues/2763))
+  ([75be9bc](https://github.com/tinkoff/taiga-ui/commit/75be9bcb19257e2427690eecc94f8eb4b00c7c83))
+
+### Bug Fixes
+
+- **addon-charts:** make hint properties dynamic ([#2774](https://github.com/tinkoff/taiga-ui/issues/2774))
+  ([0a7a068](https://github.com/tinkoff/taiga-ui/commit/0a7a0689f247082932f2f43876e2ec5dd78341d1))
+- **addon-commerce:** show caret color when filling in input card group value
+  ([#2794](https://github.com/tinkoff/taiga-ui/issues/2794))
+  ([aae0212](https://github.com/tinkoff/taiga-ui/commit/aae0212c82854deec152f8e99998aed4592e57c0))
+- **addon-editor:** add missing starterkit dependencies ([#2764](https://github.com/tinkoff/taiga-ui/issues/2764))
+  ([3d017b6](https://github.com/tinkoff/taiga-ui/commit/3d017b66f88bc5112d243f666847b07095aa30a0))
+- **core:** `Expand` return `tuiExpandContent`-directive ([#2753](https://github.com/tinkoff/taiga-ui/issues/2753))
+  ([0027332](https://github.com/tinkoff/taiga-ui/commit/00273321b5b7b1115ba899d622654e7946de2e45))
+- **kit:** `InputNumber` introduce safe integers for min/max props
+  ([#2781](https://github.com/tinkoff/taiga-ui/issues/2781))
+  ([27f7c86](https://github.com/tinkoff/taiga-ui/commit/27f7c86dd3146145318070fb0fdf10cba18e5d6c))
+
 ## [3.4.0](https://github.com/tinkoff/taiga-ui/compare/v3.3.0...v3.4.0) (2022-09-27)
 
 ### Features
