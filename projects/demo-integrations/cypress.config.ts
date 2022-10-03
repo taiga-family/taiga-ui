@@ -16,7 +16,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      * Time, in milliseconds, to wait until most
      * DOM based commands are considered timed out.
      */
-    defaultCommandTimeout: 30_000,
+    defaultCommandTimeout: 4000,
 
     /**
      * @description:
@@ -24,6 +24,16 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      * in a cy.request(), cy.wait(),
      */
     responseTimeout: 30_000,
+
+    /**
+     * @description:
+     * Number of times to retry a failed test.
+     * If a number is set, tests will retry in both runMode and openMode.
+     */
+    retries: {
+        runMode: 1, // Configure retry attempts for `cypress run`
+        openMode: 0, // Configure retry attempts for `cypress open`
+    },
 
     /**
      * @description:
@@ -48,9 +58,8 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     },
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     ...TUI_CYPRESS_CONFIG,
-    env: {
-        waitRenderedFont: `Manrope`,
-    },
+    env: {waitRenderedFont: `Manrope`},
 });

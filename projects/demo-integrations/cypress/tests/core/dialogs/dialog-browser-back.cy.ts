@@ -38,7 +38,7 @@ describe(`Dialogs + browser back navigation`, () => {
                 .first()
                 .click();
 
-            cy.tuiHideDocPage();
+            cy.tuiHide(`tui-doc-page`);
             cy.tuiWaitKitDialog();
 
             cy.get(`tui-dialog`).get(`button`).contains(`Show one more dialog`).click();
@@ -95,7 +95,7 @@ describe(`Dialogs + browser back navigation`, () => {
                 .first()
                 .click();
 
-            cy.tuiHideDocPage();
+            cy.tuiHide(`tui-doc-page`);
             cy.tuiWaitKitDialog();
 
             cy.url().should(`equal`, getFullUrl(DIALOG_PAGE_URL));

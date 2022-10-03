@@ -28,7 +28,7 @@ describe(`MultiSelect`, () => {
             it(`multiselect inside dialog with tuiTextfieldSize=${size}`, () => {
                 cy.get(`tui-multi-select-example-9 button`).eq(index).click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`)

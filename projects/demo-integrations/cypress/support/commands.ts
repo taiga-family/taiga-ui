@@ -5,14 +5,11 @@ import {
 } from '@taiga-ui/testing/cypress';
 
 import {tuiFocus} from './focus';
-import {tuiHideDocPage, tuiShowDocPage} from './hide-doc-page';
-import {tuiHideHeader} from './hide-header';
-import {tuiHideLanguageSwitcher} from './hide-language-switcher';
-import {tuiHideNavigation} from './hide-navigation';
-import {tuiHideVersionManager} from './hide-version-manager';
+import {tuiHide} from './hide';
 import {tuiScrollIntoView} from './scroll-into-view';
 import {tuiSetLanguage} from './set-language';
 import {tuiSetNightMode} from './set-night-mode';
+import {tuiShow} from './show';
 import {tuiTab} from './type-tab';
 import {tuiVisit} from './visit';
 import {tuiWaitCodeHighlight} from './wait-code-highlight';
@@ -26,16 +23,12 @@ declare global {
             findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
             tuiVisit: typeof tuiVisit;
-            tuiHideHeader: typeof tuiHideHeader;
+            tuiHide: typeof tuiHide;
+            tuiShow: typeof tuiShow;
             tuiWaitKitDialog: typeof tuiWaitKitDialog;
             tuiSetLanguage: typeof tuiSetLanguage;
             tuiSetNightMode: typeof tuiSetNightMode;
-            tuiHideNavigation: typeof tuiHideNavigation;
-            tuiHideVersionManager: typeof tuiHideVersionManager;
-            tuiHideLanguageSwitcher: typeof tuiHideLanguageSwitcher;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
-            tuiHideDocPage: typeof tuiHideDocPage;
-            tuiShowDocPage: typeof tuiShowDocPage;
 
             tuiTab(direction: 'forward' | 'backward'): Chainable;
 
@@ -67,16 +60,12 @@ Cypress.Commands.add(
         cy.wrap(subject).find(`[automation-id=${id}]`),
 );
 Cypress.Commands.add(`tuiVisit`, tuiVisit);
-Cypress.Commands.add(`tuiHideHeader`, tuiHideHeader);
 Cypress.Commands.add(`tuiWaitKitDialog`, tuiWaitKitDialog);
 Cypress.Commands.add(`tuiSetLanguage`, tuiSetLanguage);
 Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
-Cypress.Commands.add(`tuiHideNavigation`, tuiHideNavigation);
-Cypress.Commands.add(`tuiHideVersionManager`, tuiHideVersionManager);
 Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
-Cypress.Commands.add(`tuiHideLanguageSwitcher`, tuiHideLanguageSwitcher);
-Cypress.Commands.add(`tuiHideDocPage`, tuiHideDocPage);
-Cypress.Commands.add(`tuiShowDocPage`, tuiShowDocPage);
+Cypress.Commands.add(`tuiHide`, tuiHide);
+Cypress.Commands.add(`tuiShow`, tuiShow);
 
 Cypress.Commands.add(
     `tuiTab`,

@@ -30,7 +30,9 @@ describe(`InputTag`, () => {
                 cy.wrap($el).matchImageSnapshot(`01-light-mode-${index}`);
             });
 
+        cy.tuiShow(`[tuidocheader]`);
         cy.get(`.night-mode`).click();
+        cy.tuiHide(`[tuidocheader]`);
 
         cy.get(`tui-doc-example`)
             .findByAutomationId(EXAMPLE_ID)

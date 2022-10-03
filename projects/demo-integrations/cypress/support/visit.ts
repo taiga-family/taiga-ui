@@ -138,18 +138,18 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     cy.get(rootSelector).should(`have.class`, `_loaded`);
 
     if (hideHeader) {
-        cy.tuiHideHeader();
+        cy.tuiHide(`[tuidocheader]`);
     }
 
     if (hideNavigation) {
-        cy.tuiHideNavigation();
+        cy.tuiHide(`.tui-doc-navigation`);
     }
 
     if (hideVersionManager) {
-        cy.tuiHideVersionManager();
+        cy.tuiHide(`version-manager`);
     }
 
     if (hideLanguageSwitcher) {
-        cy.tuiHideLanguageSwitcher();
+        cy.tuiHide(`tui-language-switcher`);
     }
 }
