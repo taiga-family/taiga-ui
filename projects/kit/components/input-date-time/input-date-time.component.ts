@@ -17,8 +17,6 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -48,8 +46,10 @@ import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
+    TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
+    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
@@ -83,11 +83,11 @@ export class TuiInputDateTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
+    min: TuiDay | [TuiDay, TuiTime] = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
+    max: TuiDay | [TuiDay, TuiTime] = this.options.max;
 
     @Input()
     @tuiDefaultProp()
@@ -133,6 +133,8 @@ export class TuiInputDateTimeComponent
         override readonly valueTransformer: TuiControlValueTransformer<
             [TuiDay | null, TuiTime | null]
         > | null,
+        @Inject(TUI_INPUT_DATE_OPTIONS)
+        private readonly options: TuiInputDateOptions,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -162,8 +164,8 @@ export class TuiInputDateTimeComponent
 
     get calendarIcon(): string {
         return tuiSizeBigger(this.textfieldSize.size)
-            ? `tuiIconCalendarLarge`
-            : `tuiIconCalendar`;
+            ? this.options.iconCalendarLarge
+            : this.options.iconCalendar;
     }
 
     get computedValue(): string {

@@ -21,9 +21,7 @@ import {
     RANGE_SEPARATOR_CHAR,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
-    TUI_FIRST_DAY,
     TUI_IS_MOBILE,
-    TUI_LAST_DAY,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -54,8 +52,10 @@ import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
+    TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
+    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateRangePipe,
@@ -107,11 +107,11 @@ export class TuiInputDateRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    min = TUI_FIRST_DAY;
+    min = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max = TUI_LAST_DAY;
+    max = this.options.max;
 
     @Input()
     @tuiDefaultProp()
@@ -151,6 +151,8 @@ export class TuiInputDateRangeComponent
         @Optional()
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
         override readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,
+        @Inject(TUI_INPUT_DATE_OPTIONS)
+        private readonly options: TuiInputDateOptions,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }
@@ -169,8 +171,8 @@ export class TuiInputDateRangeComponent
 
     get calendarIcon(): string {
         return tuiSizeBigger(this.textfieldSize.size)
-            ? `tuiIconCalendarLarge`
-            : `tuiIconCalendar`;
+            ? this.options.iconCalendarLarge
+            : this.options.iconCalendar;
     }
 
     get canOpen(): boolean {
