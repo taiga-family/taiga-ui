@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.64.0](https://github.com/tinkoff/taiga-ui/compare/v2.63.0...v2.64.0) (2022-10-03)
+
+### Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix Google Translate issues
+  ([#2777](https://github.com/tinkoff/taiga-ui/issues/2777))
+  ([9acea52](https://github.com/tinkoff/taiga-ui/commit/9acea52d9f42336d22e50ca179ca767c3d58600b))
+- **addon-editor:** add missing starterkit dependencies ([#2765](https://github.com/tinkoff/taiga-ui/issues/2765))
+  ([1f3431e](https://github.com/tinkoff/taiga-ui/commit/1f3431e60643e243f6b8df62106a4d4bc12f6dc7))
+- **core:** `LineClamp` fix arrow on mobile ([#2790](https://github.com/tinkoff/taiga-ui/issues/2790))
+  ([586bb97](https://github.com/tinkoff/taiga-ui/commit/586bb97b44a2b1fd7af07a019fe2c8bbf91f6884))
+
 ## [2.63.0](https://github.com/tinkoff/taiga-ui/compare/v2.62.4...v2.63.0) (2022-09-27)
 
 ### Bug Fixes
