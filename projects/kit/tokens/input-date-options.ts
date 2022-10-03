@@ -1,13 +1,18 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 
 export interface TuiInputDateOptions {
     readonly iconCalendar: string;
     readonly iconCalendarLarge: string;
+    readonly min: TuiDay;
+    readonly max: TuiDay;
 }
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
     iconCalendar: `tuiIconCalendar`,
     iconCalendarLarge: `tuiIconCalendarLarge`,
+    min: TUI_FIRST_DAY,
+    max: TUI_LAST_DAY,
 };
 
 export const TUI_INPUT_DATE_OPTIONS = new InjectionToken<TuiInputDateOptions>(

@@ -19,9 +19,7 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
-    TUI_FIRST_DAY,
     TUI_IS_MOBILE,
-    TUI_LAST_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -51,8 +49,10 @@ import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
+    TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
+    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDatePipe,
@@ -61,8 +61,6 @@ import {
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
-
-import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from './input-date-options';
 
 @Component({
     selector: `tui-input-date`,
@@ -92,11 +90,11 @@ export class TuiInputDateComponent
 
     @Input()
     @tuiDefaultProp()
-    min = TUI_FIRST_DAY;
+    min = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max = TUI_LAST_DAY;
+    max = this.options.max;
 
     @Input()
     @tuiDefaultProp()
