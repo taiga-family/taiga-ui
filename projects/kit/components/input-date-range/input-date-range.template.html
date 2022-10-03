@@ -43,8 +43,9 @@
 
     <ng-template #iconContent>
         <tui-svg
+            *polymorpheusOutlet="calendarIcon as src"
             [class.t-icon]="!computedDisabled"
-            [src]="calendarIcon"
+            [src]="src"
         ></tui-svg>
     </ng-template>
 
