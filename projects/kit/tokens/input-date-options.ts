@@ -1,16 +1,17 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiContextWithImplicit, TuiDay} from '@taiga-ui/cdk';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputDateOptions {
-    readonly iconCalendar: string;
-    readonly iconCalendarLarge: string;
+    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
     readonly min: TuiDay;
     readonly max: TuiDay;
 }
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
-    iconCalendar: `tuiIconCalendar`,
-    iconCalendarLarge: `tuiIconCalendarLarge`,
+    icon: ({$implicit}) =>
+        $implicit === `s` ? `tuiIconCalendar` : `tuiIconCalendarLarge`,
     min: TUI_FIRST_DAY,
     max: TUI_LAST_DAY,
 };

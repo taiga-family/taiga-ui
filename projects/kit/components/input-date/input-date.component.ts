@@ -35,12 +35,9 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
-    TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    tuiSizeBigger,
-    TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -134,8 +131,6 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<object> | null,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
@@ -161,10 +156,8 @@ export class TuiInputDateComponent
         return this.isMobile && !!this.mobileCalendar;
     }
 
-    get calendarIcon(): string {
-        return tuiSizeBigger(this.textfieldSize.size)
-            ? this.options.iconCalendarLarge
-            : this.options.iconCalendar;
+    get calendarIcon(): TuiInputDateOptions['icon'] {
+        return this.options.icon;
     }
 
     get computedValue(): string {
