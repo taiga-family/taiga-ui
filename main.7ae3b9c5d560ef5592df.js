@@ -49139,7 +49139,7 @@ const TUI_INPUT_COUNT_DEFAULT_OPTIONS = {
   appearance: `textfield`,
   hideButtons: false,
   min: 0,
-  max: Infinity,
+  max: Number.MAX_SAFE_INTEGER,
   step: 1,
   postfix: ``
 };

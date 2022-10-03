@@ -835,7 +835,7 @@ const _c0 = function (a0, a1) {
 
 function TuiBarSetComponent_ng_container_0_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainer"] */ .GkF(0, 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainer"] */ .GkF(0, 5);
   }
 
   if (rf & 2) {
@@ -852,7 +852,7 @@ function TuiBarSetComponent_ng_container_0_ng_container_1_Template(rf, ctx) {
 function TuiBarSetComponent_ng_container_0_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(1, TuiBarSetComponent_ng_container_0_ng_container_1_Template, 1, 5, "ng-container", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(1, TuiBarSetComponent_ng_container_0_ng_container_1_Template, 1, 5, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
@@ -873,8 +873,8 @@ const _c1 = function (a0, a1) {
 
 function TuiBarSetComponent_ng_template_1_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainer"] */ .GkF(1, 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementContainer"] */ .GkF(1, 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
@@ -892,7 +892,7 @@ function TuiBarSetComponent_ng_template_1_div_0_Template(rf, ctx) {
 
 function TuiBarSetComponent_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(0, TuiBarSetComponent_ng_template_1_div_0_Template, 2, 5, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(0, TuiBarSetComponent_ng_template_1_div_0_Template, 2, 5, "div", 6);
   }
 
   if (rf & 2) {
@@ -903,7 +903,7 @@ function TuiBarSetComponent_ng_template_1_Template(rf, ctx) {
 
 function TuiBarSetComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelement"] */ ._UZ(0, "tui-bar", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelement"] */ ._UZ(0, "tui-bar", 8);
   }
 
   if (rf & 2) {
@@ -917,6 +917,7 @@ function TuiBarSetComponent_ng_template_3_Template(rf, ctx) {
   }
 }
 
+const _c2 = ["*"];
 const PERCENT = 100;
 const EMPTY_ARRAY = [];
 const FILLER_ARRAY = [1];
@@ -965,14 +966,19 @@ TuiBarSetComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2
     size: "size",
     collapsed: "collapsed"
   },
-  decls: 5,
+  ngContentSelectors: _c2,
+  decls: 7,
   vars: 2,
-  consts: [[4, "ngIf", "ngIfElse"], ["flexible", ""], ["bar", ""], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngFor", "ngForOf"], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["class", "t-wrapper", 4, "ngFor", "ngForOf"], [1, "t-wrapper"], ["automation-id", "tui-bar-set__bar", 1, "t-bar", 3, "value", "size"]],
+  consts: [[4, "ngIf", "ngIfElse"], ["flexible", ""], ["bar", ""], [1, "t-label"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngFor", "ngForOf"], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["class", "t-wrapper", 4, "ngFor", "ngForOf"], [1, "t-wrapper"], ["automation-id", "tui-bar-set__bar", 1, "t-bar", 3, "value", "size"]],
   template: function TuiBarSetComponent_Template(rf, ctx) {
     if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojectionDef"] */ .F$t();
       _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(0, TuiBarSetComponent_ng_container_0_Template, 2, 1, "ng-container", 0);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(1, TuiBarSetComponent_ng_template_1_Template, 1, 1, "ng-template", null, 1, _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplate"] */ .YNc(3, TuiBarSetComponent_ng_template_3_Template, 1, 10, "ng-template", null, 2, _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementStart"] */ .TgZ(5, "span", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojection"] */ .Hsn(6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementEnd"] */ .qZA();
     }
 
     if (rf & 2) {
@@ -982,7 +988,7 @@ TuiBarSetComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2
     }
   },
   directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__/* .NgIf */ .O5, _angular_common__WEBPACK_IMPORTED_MODULE_3__/* .NgForOf */ .sg, _angular_common__WEBPACK_IMPORTED_MODULE_3__/* .NgTemplateOutlet */ .tP, _bar_bar_component__WEBPACK_IMPORTED_MODULE_1__/* .TuiBarComponent */ .o],
-  styles: ["[_nghost-%COMP%]{display:flex;height:100%;align-items:flex-end;justify-content:center}.t-wrapper[_ngcontent-%COMP%]{display:flex;flex:1;height:100%;align-items:flex-end}.t-wrapper[_ngcontent-%COMP%]:first-child{margin-left:25%}.t-wrapper[_ngcontent-%COMP%]:last-child{margin-right:25%}.t-bar[_ngcontent-%COMP%]{transform-origin:bottom center}.t-bar_negative[_ngcontent-%COMP%]{transform:rotate(180deg);opacity:var(--tui-disabled-opacity)}.t-bar.t-bar_flexible[_ngcontent-%COMP%]{max-width:none;width:75%;margin:0 auto}"],
+  styles: ["[_nghost-%COMP%]{position:relative;display:flex;height:100%;align-items:flex-end;justify-content:center}.t-wrapper[_ngcontent-%COMP%]{display:flex;flex:1;height:100%;align-items:flex-end}.t-wrapper[_ngcontent-%COMP%]:first-of-type{margin-left:25%}.t-wrapper[_ngcontent-%COMP%]:last-of-type{margin-right:25%}.t-bar[_ngcontent-%COMP%]{transform-origin:bottom center}.t-bar_negative[_ngcontent-%COMP%]{transform:rotate(180deg);opacity:var(--tui-disabled-opacity)}.t-bar.t-bar_flexible[_ngcontent-%COMP%]{max-width:none;width:75%;margin:0 auto}.t-label[_ngcontent-%COMP%]{position:absolute;top:-1.5rem;font:var(--tui-font-text-xs);color:var(--tui-text-02)}"],
   changeDetection: 0
 });
 
