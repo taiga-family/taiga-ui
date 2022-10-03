@@ -379,13 +379,13 @@ let GridComponent = /*#__PURE__*/(() => {
       let i18n_8;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2300033708199922483$$PROJECTS_DEMO_SRC_MODULES_MARKUP_GRID_GRID_COMPONENT_TS__9 = goog.getMsg("{$startTagCode}.tui-container_adaptive{$closeTagCode} : width 1104px on screens >= 1280px, 824px on screens >= 1024px and <= 768px, 100% on screens < 768px ", {
+        const MSG_EXTERNAL_8711844206496647521$$PROJECTS_DEMO_SRC_MODULES_MARKUP_GRID_GRID_COMPONENT_TS__9 = goog.getMsg("{$startTagCode}.tui-container_adaptive{$closeTagCode} : width 1104px on screens >= 1280px, 824px on screens >= 768px and < 1280px, 100% on screens < 768px ", {
           "startTagCode": "\uFFFD#19\uFFFD",
           "closeTagCode": "\uFFFD/#19\uFFFD"
         });
-        i18n_8 = MSG_EXTERNAL_2300033708199922483$$PROJECTS_DEMO_SRC_MODULES_MARKUP_GRID_GRID_COMPONENT_TS__9;
+        i18n_8 = MSG_EXTERNAL_8711844206496647521$$PROJECTS_DEMO_SRC_MODULES_MARKUP_GRID_GRID_COMPONENT_TS__9;
       } else {
-        i18n_8 = $localize`:␟af0d3898ad0089016f91dfbde90bedf55176efdd␟2300033708199922483:${"\uFFFD#19\uFFFD"}:START_TAG_CODE:.tui-container_adaptive${"\uFFFD/#19\uFFFD"}:CLOSE_TAG_CODE: : width 1104px on screens >= 1280px, 824px on screens >= 1024px and <= 768px, 100% on screens < 768px `;
+        i18n_8 = $localize`:␟40a914683129c4fa545e2f3b3db104f403fa276c␟8711844206496647521:${"\uFFFD#19\uFFFD"}:START_TAG_CODE:.tui-container_adaptive${"\uFFFD/#19\uFFFD"}:CLOSE_TAG_CODE: : width 1104px on screens >= 1280px, 824px on screens >= 768px and < 1280px, 100% on screens < 768px `;
       }
 
       let i18n_10;
