@@ -35,7 +35,12 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
+    tuiSizeBigger,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -117,6 +122,8 @@ export class TuiInputDateTimeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_TIME_TEXTS)
@@ -199,6 +206,10 @@ export class TuiInputDateTimeComponent
         }
 
         this.nativeFocusableElement.value = value;
+    }
+
+    get size(): TuiSizeL | TuiSizeS {
+        return tuiSizeBigger(this.textfieldSize.size) ? `l` : `s`;
     }
 
     @HostListener(`click`)
