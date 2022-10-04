@@ -655,55 +655,43 @@ function InheritedDocumentationComponent_ng_container_1_Template(rf, ctx) {
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 14);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 15);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 16);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 17);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_9_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 18);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 21);
-  }
-}
-
-function InheritedDocumentationComponent_ng_container_2_ng_template_11_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 22);
-  }
-}
-
-function InheritedDocumentationComponent_ng_container_2_ng_template_12_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 19);
   }
 }
 
 function InheritedDocumentationComponent_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵgetCurrentView"] */ .EpF();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerStart"] */ .ynx(0);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(1, "h6", 1);
@@ -714,32 +702,30 @@ function InheritedDocumentationComponent_ng_container_2_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(4, "tui-doc-documentation");
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(5, InheritedDocumentationComponent_ng_container_2_ng_template_5_Template, 1, 0, "ng-template", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_ng_container_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r18);
-      const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r17.documentedComponent.focusable = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r16);
+      const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r15.documentedComponent.focusable = $event;
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(6, InheritedDocumentationComponent_ng_container_2_ng_template_6_Template, 1, 0, "ng-template", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(7, InheritedDocumentationComponent_ng_container_2_ng_template_7_Template, 1, 0, "ng-template", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_ng_container_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r18);
-      const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r19.documentedComponent.pseudoHovered = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r16);
+      const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r17.documentedComponent.pseudoHovered = $event;
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(8, InheritedDocumentationComponent_ng_container_2_ng_template_8_Template, 1, 0, "ng-template", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_ng_container_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r18);
-      const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r20.documentedComponent.pseudoFocused = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r16);
+      const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r18.documentedComponent.pseudoFocused = $event;
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(9, InheritedDocumentationComponent_ng_container_2_ng_template_9_Template, 1, 0, "ng-template", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_ng_container_2_Template_ng_template_documentationPropertyValueChange_9_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r18);
-      const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r21.documentedComponent.pseudoPressed = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r16);
+      const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r19.documentedComponent.pseudoPressed = $event;
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(10, InheritedDocumentationComponent_ng_container_2_ng_template_10_Template, 1, 0, "ng-template", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(11, InheritedDocumentationComponent_ng_container_2_ng_template_11_Template, 1, 0, "ng-template", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(12, InheritedDocumentationComponent_ng_container_2_ng_template_12_Template, 1, 0, "ng-template", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
@@ -759,32 +745,32 @@ function InheritedDocumentationComponent_ng_container_2_Template(rf, ctx) {
 
 function InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 22);
   }
 }
 
 function InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵi18n"] */ .SDv(0, 23);
   }
 }
 
 function InheritedDocumentationComponent_tui_doc_documentation_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵgetCurrentView"] */ .EpF();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-doc-documentation");
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(1, InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_1_Template, 1, 0, "ng-template", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(1, InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_1_Template, 1, 0, "ng-template", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_tui_doc_documentation_3_Template_ng_template_documentationPropertyValueChange_1_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r25);
-      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r24.documentedComponent.direction = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r23);
+      const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r22.documentedComponent.direction = $event;
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(2, InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_2_Template, 1, 0, "ng-template", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(2, InheritedDocumentationComponent_tui_doc_documentation_3_ng_template_2_Template, 1, 0, "ng-template", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵlistener"] */ .NdJ("documentationPropertyValueChange", function InheritedDocumentationComponent_tui_doc_documentation_3_Template_ng_template_documentationPropertyValueChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r25);
-      const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r26.documentedComponent.appearance = $event;
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵrestoreView"] */ .CHM(_r23);
+      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r24.documentedComponent.appearance = $event;
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵelementEnd"] */ .qZA();
   }
@@ -934,46 +920,28 @@ let InheritedDocumentationComponent = /*#__PURE__*/(() => {
       let i18n_20;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2576134130150040377$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___21 = goog.getMsg(" Emits on hover and unhover ");
-        i18n_20 = MSG_EXTERNAL_2576134130150040377$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___21;
+        const MSG_EXTERNAL_3935903673702800277$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___21 = goog.getMsg(" Hint direction ");
+        i18n_20 = MSG_EXTERNAL_3935903673702800277$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___21;
       } else {
-        i18n_20 = $localize`:␟bb9fc77151c99bfdc5675ba9110914936bb5ab59␟2576134130150040377: Emits on hover and unhover `;
+        i18n_20 = $localize`:␟e18800c0fc9d48ba52db6f2e70f4e1af09510798␟3935903673702800277: Hint direction `;
       }
 
       let i18n_22;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2329009025401191718$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___23 = goog.getMsg(" Emits on press down and up ");
-        i18n_22 = MSG_EXTERNAL_2329009025401191718$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___23;
+        const MSG_EXTERNAL_5804056483239337159$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___23 = goog.getMsg(" Hint mode ");
+        i18n_22 = MSG_EXTERNAL_5804056483239337159$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___23;
       } else {
-        i18n_22 = $localize`:␟f89c4cd7a56942ddf2fcacd5afb9bf6aa76c25a1␟2329009025401191718: Emits on press down and up `;
+        i18n_22 = $localize`:␟bc52b3a9e02da71ae232468999e85f548d2afc40␟5804056483239337159: Hint mode `;
       }
 
-      let i18n_24;
-
-      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3935903673702800277$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___25 = goog.getMsg(" Hint direction ");
-        i18n_24 = MSG_EXTERNAL_3935903673702800277$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___25;
-      } else {
-        i18n_24 = $localize`:␟e18800c0fc9d48ba52db6f2e70f4e1af09510798␟3935903673702800277: Hint direction `;
-      }
-
-      let i18n_26;
-
-      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5804056483239337159$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___27 = goog.getMsg(" Hint mode ");
-        i18n_26 = MSG_EXTERNAL_5804056483239337159$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_ABSTRACT_INHERITED_DOCUMENTATION_INHERITED_DOCUMENTATION_COMPONENT_TS___27;
-      } else {
-        i18n_26 = $localize`:␟bc52b3a9e02da71ae232468999e85f548d2afc40␟5804056483239337159: Hint mode `;
-      }
-
-      return [[4, "ngIf"], [1, "tui-text_h6"], i18n_0, ["documentationPropertyName", "readOnly", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoInvalid", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_2, i18n_4, i18n_6, ["documentationPropertyName", "focusable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "nativeId", "documentationPropertyMode", "input", "documentationPropertyType", "string"], ["documentationPropertyName", "pseudoHovered", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoFocused", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoPressed", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "focusedChange", "documentationPropertyMode", "output", "documentationPropertyType", "boolean"], ["documentationPropertyName", "hoveredChange", "documentationPropertyMode", "output", "documentationPropertyType", "boolean"], ["documentationPropertyName", "pressedChange", "documentationPropertyMode", "output", "documentationPropertyType", "boolean"], i18n_8, i18n_10, i18n_12, i18n_14, i18n_16, i18n_18, i18n_20, i18n_22, ["documentationPropertyName", "tuiHintDirection", "documentationPropertyMode", "input", "documentationPropertyType", "TuiHintDirection", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiHintAppearance", "documentationPropertyMode", "input", "documentationPropertyType", "string", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_24, i18n_26];
+      return [[4, "ngIf"], [1, "tui-text_h6"], i18n_0, ["documentationPropertyName", "readOnly", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoInvalid", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_2, i18n_4, i18n_6, ["documentationPropertyName", "focusable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "nativeId", "documentationPropertyMode", "input", "documentationPropertyType", "string"], ["documentationPropertyName", "pseudoHover", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoFocus", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "pseudoActive", "documentationPropertyMode", "input", "documentationPropertyType", "boolean | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "focusedChange", "documentationPropertyMode", "output", "documentationPropertyType", "boolean"], i18n_8, i18n_10, i18n_12, i18n_14, i18n_16, i18n_18, ["documentationPropertyName", "tuiHintDirection", "documentationPropertyMode", "input", "documentationPropertyType", "TuiHintDirection", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiHintAppearance", "documentationPropertyMode", "input", "documentationPropertyType", "string", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_20, i18n_22];
     },
     template: function InheritedDocumentationComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(0, InheritedDocumentationComponent_dropdown_documentation_0_Template, 1, 0, "dropdown-documentation", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(1, InheritedDocumentationComponent_ng_container_1_Template, 9, 3, "ng-container", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(2, InheritedDocumentationComponent_ng_container_2_Template, 13, 7, "ng-container", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(2, InheritedDocumentationComponent_ng_container_2_Template, 11, 7, "ng-container", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_8__/* ["ɵɵtemplate"] */ .YNc(3, InheritedDocumentationComponent_tui_doc_documentation_3_Template, 3, 4, "tui-doc-documentation", 0);
       }
 
