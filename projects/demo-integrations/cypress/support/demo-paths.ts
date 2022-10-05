@@ -12,6 +12,8 @@ export const DEMO_PATHS = flatPages(pages)
     .filter(page => !EXCLUSION_ROUTES.includes(page.title))
     .map(page => page.route.replace(`/`, ``));
 
+export const isScrollbarPage = (path: string): boolean => path === `components/scrollbar`;
+
 function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
     return pages.reduce(
         (prev: readonly TuiDocPage[], next) => [

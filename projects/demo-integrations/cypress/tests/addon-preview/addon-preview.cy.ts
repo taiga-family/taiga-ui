@@ -6,7 +6,7 @@ describe(`Addon preview`, () => {
     it(`Full preview scrolled`, () => {
         cy.get(`tui-preview-example-1 button`).first().click();
 
-        cy.tuiHideDocPage();
+        cy.tuiHide(`tui-doc-page`);
         cy.tuiWaitKitDialog(`tui-preview`);
 
         cy.get(`tui-preview`)
@@ -21,7 +21,7 @@ describe(`Addon preview`, () => {
     it(`No preview available`, () => {
         cy.get(`tui-preview-example-3 button`).first().click();
 
-        cy.tuiHideDocPage();
+        cy.tuiHide(`tui-doc-page`);
         cy.tuiWaitKitDialog(`tui-preview`);
 
         cy.get(`tui-preview`)

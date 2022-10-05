@@ -14,7 +14,7 @@ describe(`Dialogs`, () => {
             it(`A dialog and a nested dialog are open correctly`, () => {
                 cy.get(`tui-dialog-example-2 button`).first().click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`)
@@ -23,7 +23,7 @@ describe(`Dialogs`, () => {
 
                 cy.get(`dialog-example button`).eq(1).click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`)
@@ -35,7 +35,7 @@ describe(`Dialogs`, () => {
             it(`Mobile dialog works`, () => {
                 cy.get(`tui-dialog-example-4 button`).first().click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`)
@@ -46,7 +46,7 @@ describe(`Dialogs`, () => {
             it(`Dialog with directive works`, () => {
                 cy.get(`tui-dialog-example-6 button`).first().click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`).matchImageSnapshot(
@@ -57,7 +57,7 @@ describe(`Dialogs`, () => {
             it(`show simple`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(0).click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`).matchImageSnapshot(`${index}-5-dialogs`);
@@ -66,7 +66,7 @@ describe(`Dialogs`, () => {
             it(`show simple with custom button`, () => {
                 cy.get(`tui-dialog-example-1 button`).eq(1).click();
 
-                cy.tuiHideDocPage();
+                cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
                 cy.get(`tui-dialog`).matchImageSnapshot(`${index}-6-dialogs`);

@@ -22,12 +22,12 @@ describe(`Examples with preview images`, () => {
             .filter(`:visible`)
             .click();
 
-        cy.tuiHideDocPage();
+        cy.tuiHide(`tui-doc-page`);
         cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`3-2-preview-big-wallpaper`, {
             capture: `viewport`,
         });
 
-        cy.tuiShowDocPage();
+        cy.tuiShow(`tui-doc-page`);
         closePreview();
 
         cy.get(`@wrapper`)
@@ -37,12 +37,12 @@ describe(`Examples with preview images`, () => {
             .filter(`:visible`)
             .click();
 
-        cy.tuiHideDocPage();
+        cy.tuiHide(`tui-doc-page`);
         cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`3-3-preview-lumberjack`, {
             capture: `viewport`,
         });
 
-        cy.tuiShowDocPage();
+        cy.tuiShow(`tui-doc-page`);
         closePreview();
     });
 });
