@@ -35040,7 +35040,7 @@ const pages = [// Documentation
 }, {
   section: $localize`Components`,
   title: `Avatar`,
-  keywords: `аватар, image, pic, картинка, изображение, avatar`,
+  keywords: `аватар, image, pic, картинка, изображение, avatar, stack`,
   route: `/components/avatar`
 }, {
   section: $localize`Components`,
@@ -37365,7 +37365,7 @@ const ROUTES = [{
 }, {
   path: `components/avatar`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield __webpack_require__.e(/* import() */ 73649).then(__webpack_require__.bind(__webpack_require__, 73649))).ExampleTuiAvatarModule;
+    return (yield __webpack_require__.e(/* import() */ 66504).then(__webpack_require__.bind(__webpack_require__, 66504))).ExampleTuiAvatarModule;
   }),
   data: {
     title: `Avatar`
@@ -45191,7 +45191,7 @@ TuiAvatarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4
     }
   },
   directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__/* .NgIf */ .O5, _directives_lazy_loading_lazy_loading_directive__WEBPACK_IMPORTED_MODULE_3__/* .TuiLazyLoadingDirective */ .B],
-  styles: ["[_nghost-%COMP%]{position:relative;display:flex;flex-shrink:0;border-radius:var(--tui-radius-m);color:var(--tui-secondary-active);text-align:center;text-transform:uppercase;justify-content:center;align-items:center;background:currentColor;background:var(--tui-avatar-background, currentColor);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;overflow:hidden}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-s);width:1.5rem;height:1.5rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-m);width:2rem;height:2rem}[data-size=m][_nghost-%COMP%]{font:var(--tui-font-text-l);width:3rem;height:3rem}[data-size=l][_nghost-%COMP%]{font:var(--tui-font-heading-5);width:4rem;height:4rem;border-radius:var(--tui-radius-l)}[data-size=xl][_nghost-%COMP%]{font:var(--tui-font-heading-3);width:6rem;height:6rem;border-radius:var(--tui-radius-l)}[data-size=xxl][_nghost-%COMP%]{font:var(--tui-font-heading-1);width:9rem;height:9rem;border-radius:var(--tui-radius-l)}._has-avatar[_nghost-%COMP%]{background-color:transparent}._rounded[_nghost-%COMP%]{border-radius:100%}.t-image[_ngcontent-%COMP%]{width:100%;height:100%;object-fit:cover}.t-text[_ngcontent-%COMP%]{color:var(--tui-text-01);color:var(--tui-avatar-color, var(--tui-text-01))}"],
+  styles: ["[_nghost-%COMP%]{position:relative;display:flex;flex-shrink:0;border-radius:var(--tui-radius-m);color:var(--tui-secondary-active);text-align:center;text-transform:uppercase;justify-content:center;align-items:center;background:currentColor;background:var(--tui-avatar-background, currentColor);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;overflow:hidden}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-s);width:1.5rem;height:1.5rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-m);width:2rem;height:2rem}[data-size=m][_nghost-%COMP%]{font:var(--tui-font-text-l);width:3rem;height:3rem}[data-size=l][_nghost-%COMP%]{font:var(--tui-font-heading-5);width:4rem;height:4rem;border-radius:var(--tui-radius-l)}[data-size=xl][_nghost-%COMP%]{font:var(--tui-font-heading-3);width:6rem;height:6rem;border-radius:var(--tui-radius-l)}[data-size=xxl][_nghost-%COMP%]{font:var(--tui-font-heading-1);width:9rem;height:9rem;border-radius:var(--tui-radius-l)}._has-avatar[_nghost-%COMP%]{background-color:transparent}._rounded[_nghost-%COMP%]{border-radius:100%}  .tui-avatar-stack{display:flex;width:-webkit-min-content;width:-moz-min-content;width:min-content}.tui-avatar-stack[data-size=xs][_nghost-%COMP%], .tui-avatar-stack   [data-size=xs][_nghost-%COMP%]{margin-right:-.625rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=s][_nghost-%COMP%], .tui-avatar-stack   [data-size=s][_nghost-%COMP%]{margin-right:-.875rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=m][_nghost-%COMP%], .tui-avatar-stack   [data-size=m][_nghost-%COMP%]{margin-right:-1.25rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=l][_nghost-%COMP%], .tui-avatar-stack   [data-size=l][_nghost-%COMP%]{margin-right:-1.625rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xl][_nghost-%COMP%]{margin-right:-2.25rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xxl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xxl][_nghost-%COMP%]{margin-right:-3.375rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.t-image[_ngcontent-%COMP%]{width:100%;height:100%;object-fit:cover}.t-text[_ngcontent-%COMP%]{color:var(--tui-text-01);color:var(--tui-avatar-color, var(--tui-text-01))}"],
   changeDetection: 0
 });
 
