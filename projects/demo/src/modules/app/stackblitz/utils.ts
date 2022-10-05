@@ -90,7 +90,9 @@ export function getAllModules(entryPoint: Record<string, unknown>): string {
  * There is a limit to the amount of "static" analysis that the AOT compiler is willing to do.
  * See this {@link https://github.com/angular/angular/issues/42550 issue}
  */
-export async function getAllTaigaUIModulesFile(): Promise<string> {
+export async function getAllTaigaUIModulesFile(
+    additionalModules: Array<[fileName: string, parsedFile: TsFileModuleParser]> = [],
+): Promise<string> {
     /**
      * Violated DRY principle:
      * You can't just iterate the array with package-names - it will cause error:
@@ -106,6 +108,13 @@ export async function getAllTaigaUIModulesFile(): Promise<string> {
         import(`@taiga-ui/addon-mobile`),
         import(`@taiga-ui/addon-table`),
     ]).then(modules => modules.map(getAllModules));
+
+    const additionalModulesImports = additionalModules
+        .map(
+            ([fileName, {className}]) =>
+                `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`,
+        )
+        .join(`\n`);
 
     return `
 import {
@@ -138,6 +147,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {RouterModule} from '@angular/router';
+${additionalModulesImports}
 
 export const ALL_TAIGA_UI_MODULES = [
     BrowserModule,
@@ -162,6 +172,8 @@ export const ALL_TAIGA_UI_MODULES = [
     ${mobile},
     /* ADDON-TABLE */
     ${table},
+    /* EXAMPLE MODULES */
+    ${additionalModules.map(([, {className}]) => className).join(`,\n\t\t`)}
 ];
 `;
 }
