@@ -1415,6 +1415,7 @@ let ExampleEditorComponent = /*#__PURE__*/(() => {
       }
     },
     directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, notification_component/* TuiNotificationComponent */.L, example_component/* TuiDocExampleComponent */.f, TuiEditorExample1, TuiEditorExample2, TuiEditorExample3, TuiEditorExample4, TuiEditorExample5, TuiEditorExample6, TuiEditorExample7, demo_component/* TuiDocDemoComponent */.F, editor_component/* TuiEditorComponent */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, editor_socket_component/* TuiEditorSocketComponent */.D, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
+    styles: [".tui-editor-socket code:not(.hljs):not([class*=\"language-\"]):not(.exception){box-shadow:none}\n"],
     encapsulation: 2,
     changeDetection: 0
   });
