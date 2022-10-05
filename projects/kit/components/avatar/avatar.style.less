@@ -69,6 +69,43 @@
     }
 }
 
+::ng-deep .tui-avatar-stack {
+    display: flex;
+    width: min-content;
+}
+
+:host-context(.tui-avatar-stack) {
+    &[data-size='xs'] {
+        margin-right: -0.625rem;
+        box-shadow: 0 0 0 1px var(--tui-avatar-border, var(--tui-base-01));
+    }
+
+    &[data-size='s'] {
+        margin-right: -0.875rem;
+        box-shadow: 0 0 0 1px var(--tui-avatar-border, var(--tui-base-01));
+    }
+
+    &[data-size='m'] {
+        margin-right: -1.25rem;
+        box-shadow: 0 0 0 2px var(--tui-avatar-border, var(--tui-base-01));
+    }
+
+    &[data-size='l'] {
+        margin-right: -1.625rem;
+        box-shadow: 0 0 0 2px var(--tui-avatar-border, var(--tui-base-01));
+    }
+
+    &[data-size='xl'] {
+        margin-right: -2.25rem;
+        box-shadow: 0 0 0 3px var(--tui-avatar-border, var(--tui-base-01));
+    }
+
+    &[data-size='xxl'] {
+        margin-right: -3.375rem;
+        box-shadow: 0 0 0 3px var(--tui-avatar-border, var(--tui-base-01));
+    }
+}
+
 .t-image {
     width: 100%;
     height: 100%;

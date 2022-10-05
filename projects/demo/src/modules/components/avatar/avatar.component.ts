@@ -36,6 +36,12 @@ export class ExampleTuiAvatarComponent {
         HTML: import(`./examples/3/index.html?raw`),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.html?raw`),
+    };
+
     readonly avatarUrlVariants: readonly string[] = [
         `https://ng-web-apis.github.io/dist/assets/images/web-api.svg`,
     ];
@@ -58,6 +64,8 @@ export class ExampleTuiAvatarComponent {
     ];
 
     size = this.sizeVariants[2];
+
+    border = `var(--tui-base-01)`;
 
     color = `var(--tui-text-01)`;
 

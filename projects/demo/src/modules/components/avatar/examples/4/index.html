@@ -1,0 +1,17 @@
+<div class="tui-avatar-stack">
+    <tui-avatar
+        *ngFor="let user of users"
+        [autoColor]="true"
+        [text]="user"
+    ></tui-avatar>
+</div>
+
+<div class="tui-avatar-stack reversed">
+    <tui-avatar
+        *ngFor="let user of users"
+        size="l"
+        [rounded]="true"
+        [autoColor]="true"
+        [text]="user"
+    ></tui-avatar>
+</div>

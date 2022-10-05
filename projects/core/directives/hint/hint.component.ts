@@ -62,9 +62,7 @@ export class TuiHintComponent<C = any> {
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
         @Inject(TuiHintHoverDirective) private readonly hover: TuiHintHoverDirective,
-        @Optional()
-        @Inject(TuiHintPointerDirective)
-        private readonly pointer: unknown,
+        @Optional() @Inject(TuiHintPointerDirective) private readonly pointer: unknown,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,

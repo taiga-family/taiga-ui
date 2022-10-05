@@ -157,7 +157,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: `Avatar`,
-        keywords: `аватар, image, pic, картинка, изображение, avatar`,
+        keywords: `аватар, image, pic, картинка, изображение, avatar, stack`,
         route: `/components/avatar`,
     },
     {
