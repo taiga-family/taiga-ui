@@ -1,4 +1,5 @@
 import {
+    tuiClearEditor,
     tuiFocusToStartInEditor,
     tuiGetContentEditable,
     tuiGetEditLinkInput,
@@ -9,6 +10,7 @@ import {
     tuiTrashValueByEditLink,
     tuiVisitEditorApiPage,
 } from '../../support/editor/helpers';
+import {WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe(`Editing links in Editor`, () => {
     beforeEach(() => {
@@ -73,5 +75,39 @@ describe(`Editing links in Editor`, () => {
         tuiFocusToStartInEditor(); // clear hints
 
         tuiGetScreenshotArea().matchImageSnapshot(`3-2-after-remove-link`);
+    });
+
+    it(`single link`, () => {
+        tuiClearEditor();
+        tuiGetContentEditable().type(`link{selectAll}`);
+
+        tuiInsertLink();
+        tuiGetEditLinkInput().type(`link.com{enter}`);
+        tuiFocusToStartInEditor(); // clear hints
+
+        tuiGetContentEditable().type(`{moveToStart}`);
+        tuiGetScreenshotArea().matchImageSnapshot(`startOffset-0`);
+
+        tuiGetContentEditable().type(`{rightArrow}`).wait(WAIT_BEFORE_SCREENSHOT);
+        tuiGetScreenshotArea().matchImageSnapshot(`startOffset-1`);
+
+        tuiGetContentEditable().type(`{rightArrow}`).wait(WAIT_BEFORE_SCREENSHOT);
+        tuiGetScreenshotArea().matchImageSnapshot(`startOffset-2`);
+
+        tuiGetContentEditable().type(`{rightArrow}`).wait(WAIT_BEFORE_SCREENSHOT);
+        tuiGetScreenshotArea().matchImageSnapshot(`startOffset-3`);
+
+        tuiGetContentEditable().type(`{rightArrow}`).wait(WAIT_BEFORE_SCREENSHOT);
+        tuiGetScreenshotArea().matchImageSnapshot(`startOffset-4`);
+
+        tuiGetContentEditable().type(`{enter}{enter}`);
+        tuiGetScreenshotArea().matchImageSnapshot(
+            `break-line-should-not-overlap-by-link-modal`,
+        );
+
+        tuiGetContentEditable().type(`H`);
+        tuiGetScreenshotArea().matchImageSnapshot(
+            `word-should-not-overlap-by-link-modal`,
+        );
     });
 });
