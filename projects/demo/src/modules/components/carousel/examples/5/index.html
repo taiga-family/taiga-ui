@@ -1,0 +1,21 @@
+<tui-carousel
+    [itemsCount]="3"
+    [(index)]="index"
+>
+    <ng-container *ngFor="let item of items">
+        <tui-island
+            *tuiItem
+            class="item"
+        >
+            <h2 class="tui-island__title">{{ item.title }}</h2>
+            <div class="tui-island__content">{{ item.content }}</div>
+        </tui-island>
+    </ng-container>
+</tui-carousel>
+<tui-pagination
+    size="s"
+    class="tui-space_top-4"
+    [length]="items.length / itemsCount"
+    [index]="rounded"
+    (indexChange)="onIndex($event)"
+></tui-pagination>
