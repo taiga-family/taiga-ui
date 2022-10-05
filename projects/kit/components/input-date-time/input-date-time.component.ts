@@ -37,7 +37,6 @@ import {
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
@@ -209,7 +208,7 @@ export class TuiInputDateTimeComponent
     }
 
     get size(): TuiSizeL | TuiSizeS {
-        return tuiSizeBigger(this.textfieldSize.size) ? `l` : `s`;
+        return this.textfieldSize.size;
     }
 
     @HostListener(`click`)
