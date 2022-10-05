@@ -16,3 +16,9 @@ newScreenshotMark = '.*==new==.*'
 
 # array of RegExp strings to match branch names which should be skipped by bot
 branchesIgnore = ["^release/.*", "^v[0-9].x$"]
+
+# array of attributes (key="value") for html-tag <img /> (screenshots)
+screenshotImageAttrs = []
+
+# Text which is placed at the beginning of section "Failed tests"
+failedTestsReportDescription = '**After <= Diff => Before**'
