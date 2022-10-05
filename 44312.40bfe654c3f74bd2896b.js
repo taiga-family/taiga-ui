@@ -14,8 +14,8 @@ __webpack_require__.d(__webpack_exports__, {
   "TuiSummary": () => (/* reexport */ TuiSummary)
 });
 
-// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 11 modules
-var utils = __webpack_require__(66835);
+// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 12 modules
+var utils = __webpack_require__(37631);
 // EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
 var tiptap_core_esm = __webpack_require__(40256);
 ;// CONCATENATED MODULE: ./projects/addon-editor/extensions/details/details.extension.ts

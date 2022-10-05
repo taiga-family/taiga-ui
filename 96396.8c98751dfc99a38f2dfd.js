@@ -9316,7 +9316,7 @@ TuiColorPickerComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MOD
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(74788);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(91211);
 /* harmony import */ var _taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(62842);
-/* harmony import */ var _taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(66835);
+/* harmony import */ var _taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37631);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36692);
 /* harmony import */ var _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(62939);
 /* harmony import */ var _core_components_button_button_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(76189);
@@ -10801,31 +10801,34 @@ let TuiEditorSocketComponent = /*#__PURE__*/(() => {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "a": () => (/* binding */ TuiEditorComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(74788);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(23738);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(64762);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(12057);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(74788);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(23738);
 /* harmony import */ var _taiga_ui_addon_editor_components_toolbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17406);
 /* harmony import */ var _taiga_ui_addon_editor_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19074);
 /* harmony import */ var _taiga_ui_addon_editor_directives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(40632);
 /* harmony import */ var _taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(62842);
-/* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(36692);
-/* harmony import */ var _editor_providers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(79089);
-/* harmony import */ var _cdk_directives_let_let_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(40939);
-/* harmony import */ var _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2697);
-/* harmony import */ var _cdk_directives_active_zone_active_zone_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(17163);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(12057);
-/* harmony import */ var _core_components_scrollbar_scrollbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3881);
-/* harmony import */ var _portal_editor_portal_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(1433);
-/* harmony import */ var _portal_editor_portal_host_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9872);
-/* harmony import */ var _toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4997);
-/* harmony import */ var _core_directives_dropdown_dropdown_options_directive__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(33250);
-/* harmony import */ var _core_directives_dropdown_dropdown_directive__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(26072);
-/* harmony import */ var _core_directives_dropdown_dropdown_driver_directive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(9829);
-/* harmony import */ var _core_directives_dropdown_dropdown_position_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(82886);
-/* harmony import */ var _core_directives_dropdown_dropdown_selection_directive__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(39088);
-/* harmony import */ var _editor_socket_editor_socket_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(20179);
-/* harmony import */ var _directives_tiptap_editor_tiptap_editor_directive__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(74982);
-/* harmony import */ var _edit_link_edit_link_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(45050);
+/* harmony import */ var _taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(37631);
+/* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(36692);
+/* harmony import */ var _editor_providers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(79089);
+/* harmony import */ var _cdk_directives_let_let_directive__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(40939);
+/* harmony import */ var _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2697);
+/* harmony import */ var _cdk_directives_active_zone_active_zone_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(17163);
+/* harmony import */ var _core_components_scrollbar_scrollbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(3881);
+/* harmony import */ var _portal_editor_portal_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(1433);
+/* harmony import */ var _portal_editor_portal_host_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(9872);
+/* harmony import */ var _toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(4997);
+/* harmony import */ var _core_directives_dropdown_dropdown_options_directive__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(33250);
+/* harmony import */ var _core_directives_dropdown_dropdown_directive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(26072);
+/* harmony import */ var _core_directives_dropdown_dropdown_driver_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(9829);
+/* harmony import */ var _core_directives_dropdown_dropdown_position_directive__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(82886);
+/* harmony import */ var _core_directives_dropdown_dropdown_selection_directive__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(39088);
+/* harmony import */ var _editor_socket_editor_socket_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(20179);
+/* harmony import */ var _directives_tiptap_editor_tiptap_editor_directive__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(74982);
+/* harmony import */ var _edit_link_edit_link_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(45050);
+
+
 
 
 
@@ -10858,138 +10861,132 @@ let TuiEditorSocketComponent = /*#__PURE__*/(() => {
 
 function TuiEditorComponent_div_0_tui_toolbar_2_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-toolbar", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵprojection"] */ .Hsn(1, 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-toolbar", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵprojection"] */ .Hsn(1, 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("tools", ctx_r2.tools)("disabled", !ctx_r2.interactive);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("tools", ctx_r2.tools)("disabled", !ctx_r2.interactive);
   }
 }
 
 function TuiEditorComponent_div_0_div_5_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r3.exampleText, " ");
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r3.exampleText, " ");
   }
 }
 
 function TuiEditorComponent_div_0_div_7_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(1, "tui-editor-socket", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵlistener"] */ .NdJ("valueChange", function TuiEditorComponent_div_0_div_7_Template_tui_editor_socket_valueChange_1_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵrestoreView"] */ .CHM(_r8);
-      const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(1, "tui-editor-socket", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵlistener"] */ .NdJ("valueChange", function TuiEditorComponent_div_0_div_7_Template_tui_editor_socket_valueChange_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵrestoreView"] */ .CHM(_r8);
+      const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r7.onModelChange($event);
     })("stateChange", function TuiEditorComponent_div_0_div_7_Template_tui_editor_socket_stateChange_1_listener() {
       return 0;
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw();
 
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵreference"] */ .MAs(9);
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵreference"] */ .MAs(9);
 
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("tuiDropdownSelection", ctx_r4.dropdownSelectionHandler)("tuiDropdown", _r5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("value", ctx_r4.value)("editable", ctx_r4.interactive);
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("tuiDropdownSelection", ctx_r4.dropdownSelectionHandler)("tuiDropdown", _r5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("value", ctx_r4.value)("editable", ctx_r4.interactive);
   }
 }
 
 function TuiEditorComponent_div_0_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-edit-link", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵlistener"] */ .NdJ("addLink", function TuiEditorComponent_div_0_ng_template_8_Template_tui_edit_link_addLink_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-edit-link", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵlistener"] */ .NdJ("addLink", function TuiEditorComponent_div_0_ng_template_8_Template_tui_edit_link_addLink_0_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵrestoreView"] */ .CHM(_r11);
+      const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r10.addLink($event);
     })("removeLink", function TuiEditorComponent_div_0_ng_template_8_Template_tui_edit_link_removeLink_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵrestoreView"] */ .CHM(_r11);
-      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵrestoreView"] */ .CHM(_r11);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r12.removeLink();
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
   }
 }
 
 function TuiEditorComponent_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵlistener"] */ .NdJ("tuiActiveZoneChange", function TuiEditorComponent_div_0_Template_div_tuiActiveZoneChange_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵrestoreView"] */ .CHM(_r14);
-      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵlistener"] */ .NdJ("tuiActiveZoneChange", function TuiEditorComponent_div_0_Template_div_tuiActiveZoneChange_0_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵrestoreView"] */ .CHM(_r14);
+      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw();
       return ctx_r13.onActiveZone($event);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(1, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplate"] */ .YNc(2, TuiEditorComponent_div_0_tui_toolbar_2_Template, 2, 2, "tui-toolbar", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(3, "div", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵprojection"] */ .Hsn(4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplate"] */ .YNc(5, TuiEditorComponent_div_0_div_5_Template, 2, 1, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementStart"] */ .TgZ(6, "tui-scrollbar", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplate"] */ .YNc(7, TuiEditorComponent_div_0_div_7_Template, 2, 4, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplate"] */ .YNc(8, TuiEditorComponent_div_0_ng_template_8_Template, 1, 0, "ng-template", null, 8, _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelement"] */ ._UZ(10, "tui-editor-portal-host");
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(1, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplate"] */ .YNc(2, TuiEditorComponent_div_0_tui_toolbar_2_Template, 2, 2, "tui-toolbar", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(3, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵprojection"] */ .Hsn(4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplate"] */ .YNc(5, TuiEditorComponent_div_0_div_5_Template, 2, 1, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementStart"] */ .TgZ(6, "tui-scrollbar", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplate"] */ .YNc(7, TuiEditorComponent_div_0_div_7_Template, 2, 4, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplate"] */ .YNc(8, TuiEditorComponent_div_0_ng_template_8_Template, 1, 0, "ng-template", null, 8, _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelement"] */ ._UZ(10, "tui-editor-portal-host");
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
     const editorLoaded_r1 = ctx.tuiLet;
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("readOnly", ctx_r0.readOnly)("disabled", ctx_r0.disabled)("focus", ctx_r0.computedFocused)("hover", ctx_r0.pseudoHover)("invalid", ctx_r0.computedInvalid);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("ngIf", editorLoaded_r1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵclassProp"] */ .ekj("t-placeholder_raised", ctx_r0.placeholderRaised);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.hasExampleText);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("ngIf", editorLoaded_r1);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("readOnly", ctx_r0.readOnly)("disabled", ctx_r0.disabled)("focus", ctx_r0.computedFocused)("hover", ctx_r0.pseudoHover)("invalid", ctx_r0.computedInvalid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("ngIf", editorLoaded_r1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵclassProp"] */ .ekj("t-placeholder_raised", ctx_r0.placeholderRaised);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.hasExampleText);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵadvance"] */ .xp6(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("ngIf", editorLoaded_r1);
   }
 }
 
 const _c0 = ["*", [["tools"]]];
 const _c1 = ["*", "tools"];
-class TuiEditorComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.AbstractTuiControl {
-  constructor(control, changeDetectorRef, editorLoaded$, editorService, contentProcessor) {
+class TuiEditorComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__.AbstractTuiControl {
+  constructor(control, changeDetectorRef, editorLoaded$, editorService, contentProcessor, documentRef) {
     super(control, changeDetectorRef);
     this.editorLoaded$ = editorLoaded$;
     this.editorService = editorService;
     this.contentProcessor = contentProcessor;
+    this.documentRef = documentRef;
     this.exampleText = ``;
     this.tools = _taiga_ui_addon_editor_constants__WEBPACK_IMPORTED_MODULE_1__/* .defaultEditorTools */ .Db;
     this.focused = false;
 
-    this.isSelectionLink = ({
-      startContainer,
-      endContainer
-    }) => {
-      var _a, _b;
-
-      return !!((_b = (_a = startContainer.parentElement) === null || _a === void 0 ? void 0 : _a.closest(`a`)) === null || _b === void 0 ? void 0 : _b.contains(endContainer));
-    };
+    this.isSelectionLink = range => this.currentFocusedNodeIsAnchor(range) && (0,_taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_4__/* .tuiIsSafeLinkRange */ .nC)(range);
   }
 
   get nativeFocusableElement() {
@@ -10999,7 +10996,7 @@ class TuiEditorComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.Abst
   }
 
   get dropdownSelectionHandler() {
-    return this.focused ? this.isSelectionLink : _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.ALWAYS_FALSE_HANDLER;
+    return this.focused ? this.isSelectionLink : _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__.ALWAYS_FALSE_HANDLER;
   }
 
   get editor() {
@@ -11056,6 +11053,19 @@ class TuiEditorComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.Abst
   getFallbackValue() {
     return ``;
   }
+  /**
+   * @description:
+   * The commonAncestorContainer not always relevant node element in Range,
+   * so the focusNode is used for the correct behaviour from the selection,
+   * which is the actual element at the moment
+   */
+
+
+  currentFocusedNodeIsAnchor(range) {
+    var _a, _b, _c;
+
+    return !!((_b = (_a = range.startContainer.parentElement) === null || _a === void 0 ? void 0 : _a.closest(`a`)) === null || _b === void 0 ? void 0 : _b.contains(((_c = this.documentRef.getSelection()) === null || _c === void 0 ? void 0 : _c.focusNode) || null));
+  }
 
   get hasValue() {
     return !!this.value;
@@ -11064,54 +11074,54 @@ class TuiEditorComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.Abst
 }
 
 TuiEditorComponent.ɵfac = function TuiEditorComponent_Factory(t) {
-  return new (t || TuiEditorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_forms__WEBPACK_IMPORTED_MODULE_21__/* .NgControl */ .a5, 10), _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_20__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_3__/* .TIPTAP_EDITOR */ .ZW), _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_directives__WEBPACK_IMPORTED_MODULE_2__/* .TuiTiptapEditorService */ .$3), _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_3__/* .TUI_EDITOR_CONTENT_PROCESSOR */ .F1));
+  return new (t || TuiEditorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_forms__WEBPACK_IMPORTED_MODULE_22__/* .NgControl */ .a5, 10), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_21__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_3__/* .TIPTAP_EDITOR */ .ZW), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_directives__WEBPACK_IMPORTED_MODULE_2__/* .TuiTiptapEditorService */ .$3), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_addon_editor_tokens__WEBPACK_IMPORTED_MODULE_3__/* .TUI_EDITOR_CONTENT_PROCESSOR */ .F1), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_common__WEBPACK_IMPORTED_MODULE_23__/* .DOCUMENT */ .K0));
 };
 
-TuiEditorComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiEditorComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiEditorComponent,
   selectors: [["tui-editor"]],
   viewQuery: function TuiEditorComponent_Query(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵviewQuery"] */ .Gf(_taiga_ui_addon_editor_directives__WEBPACK_IMPORTED_MODULE_2__/* .TuiTiptapEditorDirective */ .JU, 5, _angular_core__WEBPACK_IMPORTED_MODULE_20__/* .ElementRef */ .SBq);
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵviewQuery"] */ .Gf(_taiga_ui_addon_editor_components_toolbar__WEBPACK_IMPORTED_MODULE_0__/* .TuiToolbarComponent */ .M6, 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵviewQuery"] */ .Gf(_taiga_ui_addon_editor_directives__WEBPACK_IMPORTED_MODULE_2__/* .TuiTiptapEditorDirective */ .JU, 5, _angular_core__WEBPACK_IMPORTED_MODULE_21__/* .ElementRef */ .SBq);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵviewQuery"] */ .Gf(_taiga_ui_addon_editor_components_toolbar__WEBPACK_IMPORTED_MODULE_0__/* .TuiToolbarComponent */ .M6, 5);
     }
 
     if (rf & 2) {
       let _t;
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.element = _t.first);
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.toolbar = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.element = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.toolbar = _t.first);
     }
   },
   inputs: {
     exampleText: "exampleText",
     tools: "tools"
   },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵProvidersFeature"] */ ._Bn([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.tuiAsFocusableItemAccessor)(TuiEditorComponent), _editor_providers__WEBPACK_IMPORTED_MODULE_5__/* .TUI_EDITOR_PROVIDERS */ .m]), _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵInheritDefinitionFeature"] */ .qOj],
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵProvidersFeature"] */ ._Bn([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__.tuiAsFocusableItemAccessor)(TuiEditorComponent), _editor_providers__WEBPACK_IMPORTED_MODULE_6__/* .TUI_EDITOR_PROVIDERS */ .m]), _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵInheritDefinitionFeature"] */ .qOj],
   ngContentSelectors: _c1,
   decls: 2,
   vars: 3,
   consts: [["tuiWrapper", "", "appearance", "textfield", "class", "t-wrapper", 3, "readOnly", "disabled", "focus", "hover", "invalid", "tuiActiveZoneChange", 4, "tuiLet"], ["tuiWrapper", "", "appearance", "textfield", 1, "t-wrapper", 3, "readOnly", "disabled", "focus", "hover", "invalid", "tuiActiveZoneChange"], [1, "t-toolbar-wrapper"], [3, "tools", "disabled", 4, "ngIf"], [1, "t-placeholder"], ["class", "t-example-text", 4, "ngIf"], ["tuiEditorPortal", "", 1, "t-scrollbar"], ["tuiDropdownLimitWidth", "auto", "tuiDropdownSelectionPosition", "tag", 3, "tuiDropdownSelection", "tuiDropdown", 4, "ngIf"], ["dropdown", ""], [3, "tools", "disabled"], [1, "t-example-text"], ["tuiDropdownLimitWidth", "auto", "tuiDropdownSelectionPosition", "tag", 3, "tuiDropdownSelection", "tuiDropdown"], ["tuiTiptapEditor", "", "spellcheck", "false", 1, "tui-editor-socket", 3, "value", "editable", "valueChange", "stateChange"], [3, "addLink", "removeLink"]],
   template: function TuiEditorComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵprojectionDef"] */ .F$t(_c0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵtemplate"] */ .YNc(0, TuiEditorComponent_div_0_Template, 11, 10, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵpipe"] */ .ALo(1, "async");
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵprojectionDef"] */ .F$t(_c0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵtemplate"] */ .YNc(0, TuiEditorComponent_div_0_Template, 11, 10, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵpipe"] */ .ALo(1, "async");
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵproperty"] */ .Q6J("tuiLet", _angular_core__WEBPACK_IMPORTED_MODULE_20__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx.editorLoaded$));
+      _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵproperty"] */ .Q6J("tuiLet", _angular_core__WEBPACK_IMPORTED_MODULE_21__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx.editorLoaded$));
     }
   },
-  directives: [_cdk_directives_let_let_directive__WEBPACK_IMPORTED_MODULE_22__/* .TuiLetDirective */ .L, _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_6__/* .TuiWrapperDirective */ .o, _cdk_directives_active_zone_active_zone_directive__WEBPACK_IMPORTED_MODULE_7__/* .TuiActiveZoneDirective */ .e, _angular_common__WEBPACK_IMPORTED_MODULE_23__/* .NgIf */ .O5, _core_components_scrollbar_scrollbar_component__WEBPACK_IMPORTED_MODULE_8__/* .TuiScrollbarComponent */ .I, _portal_editor_portal_directive__WEBPACK_IMPORTED_MODULE_9__/* .TuiEditorPortalDirective */ .A, _portal_editor_portal_host_component__WEBPACK_IMPORTED_MODULE_10__/* .TuiEditorPortalHostComponent */ .d, _toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_11__/* .TuiToolbarComponent */ .M, _core_directives_dropdown_dropdown_options_directive__WEBPACK_IMPORTED_MODULE_12__/* .TuiDropdownOptionsDirective */ .Ek, _core_directives_dropdown_dropdown_directive__WEBPACK_IMPORTED_MODULE_13__/* .TuiDropdownDirective */ .t, _core_directives_dropdown_dropdown_driver_directive__WEBPACK_IMPORTED_MODULE_14__/* .TuiDropdownDriverDirective */ .V, _core_directives_dropdown_dropdown_position_directive__WEBPACK_IMPORTED_MODULE_15__/* .TuiDropdownPositionDirective */ .A, _core_directives_dropdown_dropdown_selection_directive__WEBPACK_IMPORTED_MODULE_16__/* .TuiDropdownSelectionDirective */ .y, _editor_socket_editor_socket_component__WEBPACK_IMPORTED_MODULE_17__/* .TuiEditorSocketComponent */ .D, _directives_tiptap_editor_tiptap_editor_directive__WEBPACK_IMPORTED_MODULE_18__/* .TuiTiptapEditorDirective */ .J, _edit_link_edit_link_component__WEBPACK_IMPORTED_MODULE_19__/* .TuiEditLinkComponent */ .l],
+  directives: [_cdk_directives_let_let_directive__WEBPACK_IMPORTED_MODULE_24__/* .TuiLetDirective */ .L, _core_directives_wrapper_wrapper_directive__WEBPACK_IMPORTED_MODULE_7__/* .TuiWrapperDirective */ .o, _cdk_directives_active_zone_active_zone_directive__WEBPACK_IMPORTED_MODULE_8__/* .TuiActiveZoneDirective */ .e, _angular_common__WEBPACK_IMPORTED_MODULE_23__/* .NgIf */ .O5, _core_components_scrollbar_scrollbar_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiScrollbarComponent */ .I, _portal_editor_portal_directive__WEBPACK_IMPORTED_MODULE_10__/* .TuiEditorPortalDirective */ .A, _portal_editor_portal_host_component__WEBPACK_IMPORTED_MODULE_11__/* .TuiEditorPortalHostComponent */ .d, _toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_12__/* .TuiToolbarComponent */ .M, _core_directives_dropdown_dropdown_options_directive__WEBPACK_IMPORTED_MODULE_13__/* .TuiDropdownOptionsDirective */ .Ek, _core_directives_dropdown_dropdown_directive__WEBPACK_IMPORTED_MODULE_14__/* .TuiDropdownDirective */ .t, _core_directives_dropdown_dropdown_driver_directive__WEBPACK_IMPORTED_MODULE_15__/* .TuiDropdownDriverDirective */ .V, _core_directives_dropdown_dropdown_position_directive__WEBPACK_IMPORTED_MODULE_16__/* .TuiDropdownPositionDirective */ .A, _core_directives_dropdown_dropdown_selection_directive__WEBPACK_IMPORTED_MODULE_17__/* .TuiDropdownSelectionDirective */ .y, _editor_socket_editor_socket_component__WEBPACK_IMPORTED_MODULE_18__/* .TuiEditorSocketComponent */ .D, _directives_tiptap_editor_tiptap_editor_directive__WEBPACK_IMPORTED_MODULE_19__/* .TuiTiptapEditorDirective */ .J, _edit_link_edit_link_component__WEBPACK_IMPORTED_MODULE_20__/* .TuiEditLinkComponent */ .l],
   pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_23__/* .AsyncPipe */ .Ov],
   styles: ["[_nghost-%COMP%]{position:relative;z-index:0;display:block;font:var(--tui-font-text-m);border-radius:var(--tui-radius-m)}.t-wrapper[_ngcontent-%COMP%]{display:flex;max-height:inherit;min-height:10rem;cursor:text;overflow:hidden;flex-direction:column;border-radius:inherit}.t-placeholder[_ngcontent-%COMP%]{transition-property:transform,font-size,color,letter-spacing;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;font:var(--tui-font-text-s);color:var(--tui-text-01);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:var(--tui-text-02);pointer-events:none;will-change:transform;transform:translateY(0);position:absolute;left:1rem;margin-top:1rem;width:95%;font-size:.9375rem}.t-placeholder_raised[_ngcontent-%COMP%]{transform:translateY(-.625rem)}[data-size=m][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font:var(--tui-font-text-xs);transform:translateY(-.5rem);letter-spacing:.025rem}._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], ._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill)}[data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused)   .t-placeholder_raised[_ngcontent-%COMP%], [data-mode=onDark]._invalid[_nghost-%COMP%]:not(._focused):hover   .t-placeholder_raised[_ngcontent-%COMP%]{color:var(--tui-error-fill-night)}._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-03)}[data-size=l][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{font-size:.9375rem}[data-size=l][_nghost-%COMP%]   .t-placeholder_raised[_ngcontent-%COMP%]{font-size:.8156rem}[data-size=m]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01)}[data-mode=onDark][_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}[data-size=m][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused[_nghost-%COMP%]:not(._label-outside)   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}[data-mode=onDark]._focused[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=m][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%], [data-size=l][data-mode=onDark]._focused._label-outside[_nghost-%COMP%]   .t-placeholder[_ngcontent-%COMP%]{color:var(--tui-text-02-night)}@supports (-webkit-hyphens: none){.t-placeholder[_ngcontent-%COMP%]{will-change:unset;transition-property:transform,color,letter-spacing}}.t-placeholder_raised[_ngcontent-%COMP%]{width:110%}.t-example-text[_ngcontent-%COMP%]{position:absolute;left:1rem;margin-top:1.6rem;color:var(--tui-base-06);letter-spacing:normal;text-transform:none}.t-example-text_light[_ngcontent-%COMP%]{color:var(--tui-text-03-night)}.t-example-text_dark[_ngcontent-%COMP%]{color:var(--tui-text-03)}.t-scrollbar[_ngcontent-%COMP%]{display:flex;max-height:inherit;border-top:1.625rem solid transparent;border-bottom:1px solid transparent;box-sizing:border-box}"],
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_24__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.tuiDefaultProp)()], TuiEditorComponent.prototype, "exampleText", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_25__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__.tuiDefaultProp)()], TuiEditorComponent.prototype, "exampleText", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_24__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_4__.tuiDefaultProp)()], TuiEditorComponent.prototype, "tools", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_25__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_5__.tuiDefaultProp)()], TuiEditorComponent.prototype, "tools", void 0);
 
 /***/ }),
 
@@ -11282,7 +11292,7 @@ let TuiEditorPortalService = /*#__PURE__*/(() => {
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74788);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(23738);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(91211);
-/* harmony import */ var _taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(66835);
+/* harmony import */ var _taiga_ui_addon_editor_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37631);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(90987);
 /* harmony import */ var _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(62939);
@@ -15473,8 +15483,8 @@ let AbstractTuiEditor = /*#__PURE__*/(() => {
 })();
 // EXTERNAL MODULE: ./projects/addon-editor/tokens/index.ts + 6 modules
 var tokens = __webpack_require__(62842);
-// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 11 modules
-var utils = __webpack_require__(66835);
+// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 12 modules
+var utils = __webpack_require__(37631);
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/operators/startWith.js
 var startWith = __webpack_require__(39761);
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/operators/map.js
@@ -16053,8 +16063,8 @@ __webpack_require__.d(__webpack_exports__, {
   "createGroupExtension": () => (/* reexport */ createGroupExtension)
 });
 
-// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 11 modules
-var utils = __webpack_require__(66835);
+// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 12 modules
+var utils = __webpack_require__(37631);
 // EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
 var tiptap_core_esm = __webpack_require__(40256);
 ;// CONCATENATED MODULE: ./projects/addon-editor/extensions/group/group.options.ts
@@ -16928,6 +16938,7 @@ __webpack_require__.d(__webpack_exports__, {
   "tuiInsertHtml": () => (/* reexport */ utils/* tuiInsertHtml */.Xd),
   "tuiInsertText": () => (/* reexport */ utils/* tuiInsertText */.Oi),
   "tuiIsOrderedOrBulletList": () => (/* reexport */ indent_outdent.tuiIsOrderedOrBulletList),
+  "tuiIsSafeLinkRange": () => (/* reexport */ utils/* tuiIsSafeLinkRange */.nC),
   "tuiIsSelectionIn": () => (/* reexport */ utils/* tuiIsSelectionIn */.i0),
   "tuiLegacyEditorConverter": () => (/* reexport */ utils/* tuiLegacyEditorConverter */.Er),
   "tuiParseGradient": () => (/* reexport */ utils/* tuiParseGradient */._N),
@@ -17136,8 +17147,8 @@ var node_view_render = __webpack_require__(40400);
 
 // EXTERNAL MODULE: ./projects/addon-editor/tokens/index.ts + 6 modules
 var tokens = __webpack_require__(62842);
-// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 11 modules
-var utils = __webpack_require__(66835);
+// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 12 modules
+var utils = __webpack_require__(37631);
 ;// CONCATENATED MODULE: ./projects/addon-editor/index.ts
 
 
@@ -17163,8 +17174,8 @@ __webpack_require__.d(__webpack_exports__, {
 var common = __webpack_require__(12057);
 // EXTERNAL MODULE: ./node_modules/@angular/core/fesm2015/core.js
 var core = __webpack_require__(74788);
-// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 11 modules
-var utils = __webpack_require__(66835);
+// EXTERNAL MODULE: ./projects/addon-editor/utils/index.ts + 12 modules
+var utils = __webpack_require__(37631);
 // EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
 var cdk = __webpack_require__(36692);
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/Observable.js + 2 modules
@@ -17334,7 +17345,7 @@ const INITIALIZATION_TIPTAP_CONTAINER = new core/* InjectionToken */.OlP(`[INITI
 
 /***/ }),
 
-/***/ 66835:
+/***/ 37631:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -17347,6 +17358,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Ap": () => (/* reexport */ tuiGetSelectedContent),
   "Xd": () => (/* reexport */ tuiInsertHtml),
   "Oi": () => (/* reexport */ tuiInsertText),
+  "nC": () => (/* reexport */ tuiIsSafeLinkRange),
   "i0": () => (/* reexport */ tuiIsSelectionIn),
   "Er": () => (/* reexport */ tuiLegacyEditorConverter),
   "_N": () => (/* reexport */ tuiParseGradient),
@@ -17667,6 +17679,12 @@ function getPosition(match, stops) {
   const fallback = stops === 1 ? `100%` : `${stops}%`;
   return (match === null || match === void 0 ? void 0 : match.includes(`%`)) ? match : fallback;
 }
+;// CONCATENATED MODULE: ./projects/addon-editor/utils/safe-link-range.ts
+function tuiIsSafeLinkRange(range) {
+  var _a;
+
+  return range.endOffset - range.startOffset > 0 || range.startOffset !== 0 && range.endOffset !== (((_a = range.endContainer.nodeValue) === null || _a === void 0 ? void 0 : _a.length) || 0);
+}
 ;// CONCATENATED MODULE: ./projects/addon-editor/utils/to-gradient.ts
 
 function tuiToGradient({
@@ -17679,6 +17697,7 @@ function tuiToGradient({
   }) => `rgba(${(0,cdk.tuiParseColor)(color).join(`, `)}) ${position}`).join(`, `)})`;
 }
 ;// CONCATENATED MODULE: ./projects/addon-editor/utils/index.ts
+
 
 
 
