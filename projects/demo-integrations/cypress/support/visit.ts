@@ -24,6 +24,7 @@ interface TuiVisitOptions {
     hideNavigation?: boolean;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
+    waitRenderedFont?: string;
     rootSelector?: string;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
@@ -61,6 +62,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideVersionManager = true,
         hideLanguageSwitcher = true,
         pseudoMobile = false,
+        waitRenderedFont,
         rootSelector = `app`,
     } = options;
 
@@ -115,10 +117,13 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         .then(document => (document as any)?.fonts.ready)
         .then(() => cy.log(`Font loading completed`));
 
-    if (Cypress.env(`waitRenderedFont`)) {
+    if (waitRenderedFont || Cypress.env(`waitRenderedFont`)) {
         cy.get(`body`, {log: false})
             .should(`have.css`, `font-family`)
-            .and(`match`, new RegExp(Cypress.env(`waitRenderedFont`)));
+            .and(
+                `match`,
+                waitRenderedFont || new RegExp(Cypress.env(`waitRenderedFont`)),
+            );
     }
 
     if (waitAllIcons) {
