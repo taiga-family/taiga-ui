@@ -69,11 +69,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
             appModule.addDeclaration(className);
         });
 
-        supportModulesTuples.forEach(([fileName, {className}]) => {
-            appModule.addImport(className, `./${fileName}`);
-            appModule.addModuleImport(className);
-        });
-
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
@@ -94,8 +89,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
                 [stackblitzPrefix`README.md`]: stackblitzReadMe,
-                [stackblitzPrefix`all-taiga-modules.ts`]:
-                    await getAllTaigaUIModulesFile(),
+                [stackblitzPrefix`all-taiga-modules.ts`]: await getAllTaigaUIModulesFile(
+                    supportModulesTuples,
+                ),
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
