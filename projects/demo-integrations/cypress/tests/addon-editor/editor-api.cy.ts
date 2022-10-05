@@ -14,6 +14,7 @@ import {
 } from '../../support/editor/helpers';
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
+    HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
     HTML_EDITOR_EXAMPLE_PRE_CODE,
     HTML_EDITOR_EXAMPLE_TABLE,
@@ -94,13 +95,22 @@ describe(`Editor API`, () => {
                 .matchImageSnapshot(`4-1-bullet-and-ordered-list`);
         });
 
-        it(`nested`, () => {
+        it(`nested ul`, () => {
             tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_NESTED_UL});
 
             tuiGetDemoContent()
                 .find(`tui-editor-socket.tui-example`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`5-1-bullet-and-ordered-nested-list`);
+        });
+
+        it(`nested ol and ul`, () => {
+            tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_NESTED_OL_UL});
+
+            tuiGetDemoContent()
+                .find(`tui-editor-socket.tui-example`)
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot(`5-2-bullet-and-ordered-nested-list`);
         });
 
         it(`emulate user toggling`, () => {
