@@ -36205,7 +36205,7 @@ function getAllModules(entryPoint) {
  * See this {@link https://github.com/angular/angular/issues/42550 issue}
  */
 
-function getAllTaigaUIModulesFile() {
+function getAllTaigaUIModulesFile(additionalModules = []) {
   return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
     /**
      * Violated DRY principle:
@@ -36213,6 +36213,9 @@ function getAllTaigaUIModulesFile() {
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
     const [cdk, core, kit, charts, commerce, editor, mobile, table] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 90987)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 96396).then(__webpack_require__.bind(__webpack_require__, 96396)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256))]).then(modules => modules.map(getAllModules));
+    const additionalModulesImports = additionalModules.map(([fileName, {
+      className
+    }]) => `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`).join(`\n`);
     return `
 import {
     ${cdk}
@@ -36244,6 +36247,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {RouterModule} from '@angular/router';
+${additionalModulesImports}
 
 export const ALL_TAIGA_UI_MODULES = [
     BrowserModule,
@@ -36268,6 +36272,10 @@ export const ALL_TAIGA_UI_MODULES = [
     ${mobile},
     /* ADDON-TABLE */
     ${table},
+    /* EXAMPLE MODULES */
+    ${additionalModules.map(([, {
+      className
+    }]) => className).join(`,\n\t\t`)}
 ];
 `;
   });
@@ -36327,12 +36335,6 @@ let TuiStackblitzService = /*#__PURE__*/(() => {
           appModule.addImport(className, `./${fileName}`);
           appModule.addDeclaration(className);
         });
-        supportModulesTuples.forEach(([fileName, {
-          className
-        }]) => {
-          appModule.addImport(className, `./${fileName}`);
-          appModule.addModuleImport(className);
-        });
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
@@ -36350,7 +36352,7 @@ let TuiStackblitzService = /*#__PURE__*/(() => {
             'src/polyfills.ts': polyfills,
             'src/styles.less': styles,
             [stackblitzPrefix`README.md`]: stackblitzReadMe,
-            [stackblitzPrefix`all-taiga-modules.ts`]: yield getAllTaigaUIModulesFile(),
+            [stackblitzPrefix`all-taiga-modules.ts`]: yield getAllTaigaUIModulesFile(supportModulesTuples),
             [appPrefix`app.module.ts`]: appModule.toString(),
             [appPrefix`app.component.ts`]: appCompTs.toString(),
             [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
