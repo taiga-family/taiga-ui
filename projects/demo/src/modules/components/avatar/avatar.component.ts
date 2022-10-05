@@ -59,6 +59,8 @@ export class ExampleTuiAvatarComponent {
 
     size = this.sizeVariants[2];
 
+    border = `var(--tui-base-01`;
+
     color = `var(--tui-text-01)`;
 
     background = `var(--tui-secondary-active)`;

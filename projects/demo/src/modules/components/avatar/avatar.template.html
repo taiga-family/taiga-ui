@@ -32,6 +32,20 @@
         >
             <tui-avatar-example-3></tui-avatar-example-3>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="stacking"
+            i18n-heading
+            heading="Stacking avatars"
+            [content]="example3"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                Use special
+                <code>tui-avatar-stack</code>
+                class to enable stacking
+            </tui-notification>
+            <tui-avatar-example-4></tui-avatar-example-4>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -96,6 +110,13 @@
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS variables">
+            <ng-template
+                documentationPropertyName="--tui-avatar-border"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="border"
+            >
+                Color of the border for stacking avatars
+            </ng-template>
             <ng-template
                 documentationPropertyName="--tui-avatar-color"
                 documentationPropertyType="string"
