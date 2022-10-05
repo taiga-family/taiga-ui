@@ -22,6 +22,7 @@ interface TuiVisitOptions {
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
+    skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
     rootSelector?: string;
     /**
@@ -55,6 +56,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         noSmoothScroll = true,
         hideHeader = true,
         skipExpectUrl = false,
+        skipDecodingUrl = false,
         hideNavigation = true,
         hideVersionManager = true,
         hideLanguageSwitcher = true,
@@ -65,9 +67,11 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     stubExternalIcons();
     stubMetrics();
 
-    const encodedPath = encodeURI(
-        decodeURIComponent(path), // @note: prevent twice encoding
-    );
+    const encodedPath = skipDecodingUrl
+        ? path
+        : encodeURI(
+              decodeURIComponent(path), // @note: prevent twice encoding
+          );
 
     cy.visit(`/`, {
         onBeforeLoad: window => {

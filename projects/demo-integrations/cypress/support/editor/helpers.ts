@@ -10,12 +10,22 @@ export function tuiVisitEditorApiPage({
     content,
     maxHeight,
     enableNightMode,
-}: Partial<{content: string; maxHeight: number; enableNightMode: boolean}> = {}): void {
+    skipDecodingUrl,
+}: Partial<{
+    content: string;
+    maxHeight: number;
+    enableNightMode: boolean;
+    skipDecodingUrl: boolean;
+}> = {}): void {
     cy.viewport(1650, 900).tuiVisit(
         `${EDITOR_PAGE_URL}/API?ngModel=${
             content ?? HTML_EDITOR_BASIC_EXAMPLE
         }&style.max-height.px=${maxHeight ?? 300}`,
-        {skipExpectUrl: true, enableNightMode: enableNightMode ?? false},
+        {
+            skipExpectUrl: true,
+            enableNightMode: enableNightMode ?? false,
+            skipDecodingUrl: skipDecodingUrl ?? false,
+        },
     );
 
     cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);

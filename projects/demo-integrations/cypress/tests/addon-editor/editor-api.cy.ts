@@ -13,7 +13,10 @@ import {
     tuiVisitEditorApiPage,
 } from '../../support/editor/helpers';
 import {
+    HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
+    HTML_EDITOR_EXAMPLE_PRE_CODE,
+    HTML_EDITOR_EXAMPLE_TABLE,
     HTML_EDITOR_EXAMPLE_UL,
 } from '../../support/editor/html';
 import {
@@ -216,5 +219,33 @@ describe(`Editor API`, () => {
             tuiGetEditorScrollbarArea().scrollTo(0, 0);
             tuiGetScreenshotArea().matchImageSnapshot(`8-2-added-new-link`);
         });
+    });
+
+    describe(`Check editor styles without important`, () => {
+        for (const {name, content} of [
+            {
+                name: `blockquote`,
+                content: HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
+            },
+            {
+                name: `code`,
+                content: HTML_EDITOR_EXAMPLE_PRE_CODE,
+            },
+            {
+                name: `table`,
+                content: HTML_EDITOR_EXAMPLE_TABLE,
+            },
+        ]) {
+            it(name, () => {
+                tuiVisitEditorApiPage({content, skipDecodingUrl: true});
+
+                cy.get(`[contenteditable]`).focus();
+
+                tuiGetDemoContent()
+                    .find(`tui-editor-socket.tui-example`)
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot();
+            });
+        }
     });
 });
