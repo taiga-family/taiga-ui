@@ -1,2 +1,9 @@
-<span class="left-content"><ng-content></ng-content></span>
-{{ outputValue }}
+<span class="t-left-content"><ng-content></ng-content></span>
+<span
+    #text
+    class="t-text"
+    [title]="titleText(text)"
+    (tuiResize)="(0)"
+>
+    {{ outputValue }}
+</span>

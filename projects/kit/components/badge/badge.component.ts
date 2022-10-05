@@ -72,4 +72,8 @@ export class TuiBadgeComponent {
     get isEmpty(): boolean {
         return this.value === ``;
     }
+
+    titleText({offsetWidth, scrollWidth}: HTMLElement): string {
+        return offsetWidth < scrollWidth ? this.outputValue : ``;
+    }
 }
