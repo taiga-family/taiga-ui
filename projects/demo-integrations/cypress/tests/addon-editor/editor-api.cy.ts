@@ -258,4 +258,22 @@ describe(`Editor API`, () => {
             });
         }
     });
+
+    describe(`Heading styles`, () => {
+        for (const heading of [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`]) {
+            it(heading, () => {
+                tuiVisitEditorApiPage({
+                    content: `<${heading}><span%20style%3D"background-color:%20%231771e6; color: %20%23fff">ываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамсываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамс</span></${heading}><${heading}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</${heading}>`,
+                    skipDecodingUrl: true,
+                });
+
+                cy.get(`[contenteditable]`).focus();
+
+                tuiGetDemoContent()
+                    .find(`tui-editor-socket.tui-example`)
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot();
+            });
+        }
+    });
 });
