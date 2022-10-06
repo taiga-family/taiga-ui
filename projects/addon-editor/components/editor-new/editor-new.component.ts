@@ -32,6 +32,7 @@ import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
+// @dynamic
 @Component({
     selector: `tui-editor[new]`,
     templateUrl: `./editor-new.component.html`,
