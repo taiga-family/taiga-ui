@@ -11179,14 +11179,22 @@ TuiPreviewZoomComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MOD
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "iK": () => (/* reexport */ TuiPreviewDialogService),
-  "E6": () => (/* reexport */ TuiPreviewModule)
+  "TuiPreviewActionDirective": () => (/* reexport */ preview_action_directive/* TuiPreviewActionDirective */.v),
+  "TuiPreviewActionModule": () => (/* reexport */ TuiPreviewActionModule),
+  "TuiPreviewComponent": () => (/* reexport */ preview_component/* TuiPreviewComponent */.m),
+  "TuiPreviewDialogComponent": () => (/* reexport */ TuiPreviewDialogComponent),
+  "TuiPreviewDialogModule": () => (/* reexport */ TuiPreviewDialogModule),
+  "TuiPreviewDialogService": () => (/* reexport */ TuiPreviewDialogService),
+  "TuiPreviewModule": () => (/* reexport */ TuiPreviewModule),
+  "TuiPreviewPaginationComponent": () => (/* reexport */ preview_pagination_component/* TuiPreviewPaginationComponent */.i),
+  "TuiPreviewTitleComponent": () => (/* reexport */ preview_title_component/* TuiPreviewTitleComponent */.S),
+  "TuiPreviewZoomComponent": () => (/* reexport */ preview_zoom_component/* TuiPreviewZoomComponent */.n)
 });
-
-// UNUSED EXPORTS: TuiPreviewActionDirective, TuiPreviewActionModule, TuiPreviewComponent, TuiPreviewDialogComponent, TuiPreviewDialogModule, TuiPreviewPaginationComponent, TuiPreviewTitleComponent, TuiPreviewZoomComponent
 
 // EXTERNAL MODULE: ./projects/addon-preview/components/preview/pagination/preview-pagination.component.ts
 var preview_pagination_component = __webpack_require__(48882);
@@ -11454,6 +11462,35 @@ const TUI_PREVIEW_ZOOM_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PREVIEW_ZO
 
 /***/ }),
 
+/***/ 1613:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "I": () => (/* binding */ TuiTableBar)
+/* harmony export */ });
+class TuiTableBar {
+  constructor(observer, content, options = {}) {
+    this.observer = observer;
+    this.content = content;
+    const {
+      mode = `onLight`,
+      hasCloseButton = false,
+      adaptive = false
+    } = options;
+    this.mode = mode;
+    this.hasCloseButton = hasCloseButton;
+    this.adaptive = adaptive;
+  }
+
+  close() {
+    this.observer.complete();
+  }
+
+}
+
+/***/ }),
+
 /***/ 6724:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -11464,7 +11501,7 @@ const TUI_PREVIEW_ZOOM_TEXTS = new core/* InjectionToken */.OlP(`[TUI_PREVIEW_ZO
 /* harmony import */ var _ng_web_apis_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(62579);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(90987);
-/* harmony import */ var _services_table_bars_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22785);
+/* harmony import */ var _services_table_bars_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70866);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12057);
 /* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(89570);
@@ -11625,15 +11662,19 @@ let TuiTableBarsHostComponent = /*#__PURE__*/(() => {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "od": () => (/* reexport */ TuiTableBarsHostModule),
-  "A6": () => (/* reexport */ table_bars_service/* TuiTableBarsService */.A)
+  "TuiTableBar": () => (/* reexport */ table_bar/* TuiTableBar */.I),
+  "TuiTableBarsHostComponent": () => (/* reexport */ table_bars_host_component/* TuiTableBarsHostComponent */.G),
+  "TuiTableBarsHostModule": () => (/* reexport */ TuiTableBarsHostModule),
+  "TuiTableBarsService": () => (/* reexport */ table_bars_service/* TuiTableBarsService */.A)
 });
 
-// UNUSED EXPORTS: TuiTableBar, TuiTableBarsHostComponent
-
+// EXTERNAL MODULE: ./projects/addon-tablebars/classes/table-bar.ts
+var table_bar = __webpack_require__(1613);
 // EXTERNAL MODULE: ./projects/addon-tablebars/components/table-bars-host/table-bars-host.component.ts
 var table_bars_host_component = __webpack_require__(6724);
 // EXTERNAL MODULE: ./node_modules/@angular/common/fesm2015/common.js
@@ -11673,8 +11714,8 @@ let TuiTableBarsHostModule = /*#__PURE__*/(() => {
     exports: [table_bars_host_component/* TuiTableBarsHostComponent */.G]
   });
 })();
-// EXTERNAL MODULE: ./projects/addon-tablebars/services/table-bars.service.ts + 1 modules
-var table_bars_service = __webpack_require__(22785);
+// EXTERNAL MODULE: ./projects/addon-tablebars/services/table-bars.service.ts
+var table_bars_service = __webpack_require__(70866);
 ;// CONCATENATED MODULE: ./projects/addon-tablebars/index.ts
 
 
@@ -11684,45 +11725,18 @@ var table_bars_service = __webpack_require__(22785);
 
 /***/ }),
 
-/***/ 22785:
+/***/ 70866:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "A": () => (/* binding */ TuiTableBarsService)
-});
-
-// EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
-var cdk = __webpack_require__(36692);
-// EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/ReplaySubject.js + 4 modules
-var ReplaySubject = __webpack_require__(82298);
-// EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/Observable.js + 2 modules
-var Observable = __webpack_require__(18891);
-;// CONCATENATED MODULE: ./projects/addon-tablebars/classes/table-bar.ts
-class TuiTableBar {
-  constructor(observer, content, options = {}) {
-    this.observer = observer;
-    this.content = content;
-    const {
-      mode = `onLight`,
-      hasCloseButton = false,
-      adaptive = false
-    } = options;
-    this.mode = mode;
-    this.hasCloseButton = hasCloseButton;
-    this.adaptive = adaptive;
-  }
-
-  close() {
-    this.observer.complete();
-  }
-
-}
-// EXTERNAL MODULE: ./node_modules/@angular/core/fesm2015/core.js
-var core = __webpack_require__(74788);
-;// CONCATENATED MODULE: ./projects/addon-tablebars/services/table-bars.service.ts
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "A": () => (/* binding */ TuiTableBarsService)
+/* harmony export */ });
+/* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(82298);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18891);
+/* harmony import */ var _classes_table_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1613);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(74788);
 
 
 
@@ -11731,13 +11745,13 @@ const NO_HOST = `Table bars are disabled, enable support by adding TuiTableBarsH
 let TuiTableBarsService = /*#__PURE__*/(() => {
   class TuiTableBarsService {
     constructor() {
-      this.bar$ = new ReplaySubject/* ReplaySubject */.t(1);
+      this.bar$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__/* .ReplaySubject */ .t(1);
     }
 
     open(content, options) {
-      return new Observable/* Observable */.y(observer => {
-        cdk.tuiAssert.assert((0,cdk.tuiIsObserved)(this.bar$), NO_HOST);
-        const tableBar = new TuiTableBar(observer, content, options);
+      return new rxjs__WEBPACK_IMPORTED_MODULE_2__/* .Observable */ .y(observer => {
+        _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiAssert.assert((0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiIsObserved)(this.bar$), NO_HOST);
+        const tableBar = new _classes_table_bar__WEBPACK_IMPORTED_MODULE_3__/* .TuiTableBar */ .I(observer, content, options);
         this.bar$.next(tableBar);
         return () => {
           this.bar$.next(null);
@@ -11751,7 +11765,7 @@ let TuiTableBarsService = /*#__PURE__*/(() => {
     return new (t || TuiTableBarsService)();
   };
 
-  TuiTableBarsService.ɵprov = /*@__PURE__*/core/* ɵɵdefineInjectable */.Yz7({
+  TuiTableBarsService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdefineInjectable"] */ .Yz7({
     token: TuiTableBarsService,
     factory: TuiTableBarsService.ɵfac,
     providedIn: `root`
@@ -36031,10 +36045,11 @@ const STACKBLITZ_DEPS = {
   '@taiga-ui/styles': TAIGA_VERSION,
   '@taiga-ui/addon-charts': TAIGA_VERSION,
   '@taiga-ui/addon-commerce': TAIGA_VERSION,
+  '@taiga-ui/addon-editor': TAIGA_VERSION,
   '@taiga-ui/addon-mobile': TAIGA_VERSION,
+  '@taiga-ui/addon-preview': TAIGA_VERSION,
   '@taiga-ui/addon-table': TAIGA_VERSION,
   '@taiga-ui/addon-tablebars': TAIGA_VERSION,
-  '@taiga-ui/addon-editor': TAIGA_VERSION,
   '@tinkoff/ng-dompurify': `*`,
   '@tinkoff/ng-polymorpheus': `*`,
   '@ng-web-apis/common': `*`,
@@ -36212,7 +36227,7 @@ function getAllTaigaUIModulesFile(additionalModules = []) {
      * You can't just iterate the array with package-names - it will cause error:
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
-    const [cdk, core, kit, charts, commerce, editor, mobile, table] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 90987)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 96396).then(__webpack_require__.bind(__webpack_require__, 96396)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256))]).then(modules => modules.map(getAllModules));
+    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 90987)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 96396).then(__webpack_require__.bind(__webpack_require__, 96396)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 46001)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 40249))]).then(modules => modules.map(getAllModules));
     const additionalModulesImports = additionalModules.map(([fileName, {
       className
     }]) => `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`).join(`\n`);
@@ -36239,8 +36254,14 @@ import {
     ${mobile}
 } from '@taiga-ui/addon-mobile';
 import {
+    ${preview}
+} from '@taiga-ui/addon-preview';
+import {
     ${table}
 } from '@taiga-ui/addon-table';
+import {
+    ${tablebars}
+} from '@taiga-ui/addon-tablebars';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -36270,8 +36291,12 @@ export const ALL_TAIGA_UI_MODULES = [
     ${editor},
     /* ADDON-MOBILE */
     ${mobile},
+    /* ADDON-PREVIEW */
+    ${preview},
     /* ADDON-TABLE */
     ${table},
+    /* ADDON-TABLEBARS */
+    ${tablebars},
     /* EXAMPLE MODULES */
     ${additionalModules.map(([, {
       className
@@ -39136,7 +39161,7 @@ let AppBrowserModule = /*#__PURE__*/(() => {
     providers: APP_PROVIDERS,
     imports: [[platform_browser/* BrowserModule.withServerTransition */.b2.withServerTransition({
       appId: `tui-demo`
-    }), AppRoutingModule, animations/* BrowserAnimationsModule */.PW, public_api/* TuiDocMainModule */.qn, addon_tablebars/* TuiTableBarsHostModule */.od, addon_mobile.TuiThemeAndroidModule, addon_mobile.TuiThemeIosModule, projects_core.TuiDialogModule, addon_preview/* TuiPreviewModule */.E6, kit.TuiPdfViewerModule, addon_mobile.TuiSheetModule, projects_core.TuiAlertModule, kit.TuiPushModule, addon_mobile.TuiMobileDialogModule, projects_core.TuiModeModule, projects_core.TuiLinkModule, GettingStartedModule, HomeModule, LandingModule, LogoModule, VersionManagerModule, public_api/* TuiLanguageSwitcherModule */.CE, _ustom_host_module/* CustomHostModule */.T, http/* HttpClientModule */.JF, projects_core.TuiTextfieldControllerModule, TuiAutoGeneratedCodeHintsModule, ngx_markdown/* MarkdownModule.forRoot */.JP.forRoot({
+    }), AppRoutingModule, animations/* BrowserAnimationsModule */.PW, public_api/* TuiDocMainModule */.qn, addon_tablebars.TuiTableBarsHostModule, addon_mobile.TuiThemeAndroidModule, addon_mobile.TuiThemeIosModule, projects_core.TuiDialogModule, addon_preview.TuiPreviewModule, kit.TuiPdfViewerModule, addon_mobile.TuiSheetModule, projects_core.TuiAlertModule, kit.TuiPushModule, addon_mobile.TuiMobileDialogModule, projects_core.TuiModeModule, projects_core.TuiLinkModule, GettingStartedModule, HomeModule, LandingModule, LogoModule, VersionManagerModule, public_api/* TuiLanguageSwitcherModule */.CE, _ustom_host_module/* CustomHostModule */.T, http/* HttpClientModule */.JF, projects_core.TuiTextfieldControllerModule, TuiAutoGeneratedCodeHintsModule, ngx_markdown/* MarkdownModule.forRoot */.JP.forRoot({
       loader: http/* HttpClient */.eN,
       sanitize: core/* SecurityContext.NONE */.q3G.NONE
     }), ...PRODUCTION_MODULES]]
@@ -39147,7 +39172,7 @@ let AppBrowserModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && core/* ɵɵsetNgModuleScope */.kYT(AppBrowserModule, {
     declarations: [AppComponent],
-    imports: [platform_browser/* BrowserModule */.b2, AppRoutingModule, animations/* BrowserAnimationsModule */.PW, public_api/* TuiDocMainModule */.qn, addon_tablebars/* TuiTableBarsHostModule */.od, addon_mobile.TuiThemeAndroidModule, addon_mobile.TuiThemeIosModule, projects_core.TuiDialogModule, addon_preview/* TuiPreviewModule */.E6, kit.TuiPdfViewerModule, addon_mobile.TuiSheetModule, projects_core.TuiAlertModule, kit.TuiPushModule, addon_mobile.TuiMobileDialogModule, projects_core.TuiModeModule, projects_core.TuiLinkModule, GettingStartedModule, HomeModule, LandingModule, LogoModule, VersionManagerModule, public_api/* TuiLanguageSwitcherModule */.CE, _ustom_host_module/* CustomHostModule */.T, http/* HttpClientModule */.JF, projects_core.TuiTextfieldControllerModule, TuiAutoGeneratedCodeHintsModule, ngx_markdown/* MarkdownModule */.JP, ng_yandex_metrika/* MetrikaModule */.dY]
+    imports: [platform_browser/* BrowserModule */.b2, AppRoutingModule, animations/* BrowserAnimationsModule */.PW, public_api/* TuiDocMainModule */.qn, addon_tablebars.TuiTableBarsHostModule, addon_mobile.TuiThemeAndroidModule, addon_mobile.TuiThemeIosModule, projects_core.TuiDialogModule, addon_preview.TuiPreviewModule, kit.TuiPdfViewerModule, addon_mobile.TuiSheetModule, projects_core.TuiAlertModule, kit.TuiPushModule, addon_mobile.TuiMobileDialogModule, projects_core.TuiModeModule, projects_core.TuiLinkModule, GettingStartedModule, HomeModule, LandingModule, LogoModule, VersionManagerModule, public_api/* TuiLanguageSwitcherModule */.CE, _ustom_host_module/* CustomHostModule */.T, http/* HttpClientModule */.JF, projects_core.TuiTextfieldControllerModule, TuiAutoGeneratedCodeHintsModule, ngx_markdown/* MarkdownModule */.JP, ng_yandex_metrika/* MetrikaModule */.dY]
   });
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/main.browser.ts
