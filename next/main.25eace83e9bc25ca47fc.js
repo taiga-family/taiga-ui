@@ -45214,10 +45214,12 @@ TuiAvatarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "g": () => (/* binding */ TuiBadgeComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(64762);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(90987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(74788);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(74788);
+/* harmony import */ var _cdk_directives_resize_resize_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(75412);
+
 
 
 
@@ -45259,26 +45261,33 @@ class TuiBadgeComponent {
     return this.value === ``;
   }
 
+  titleText({
+    offsetWidth,
+    scrollWidth
+  }) {
+    return offsetWidth < scrollWidth ? this.outputValue : ``;
+  }
+
 }
 
 TuiBadgeComponent.ɵfac = function TuiBadgeComponent_Factory(t) {
-  return new (t || TuiBadgeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.TUI_MODE));
+  return new (t || TuiBadgeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.TUI_MODE));
 };
 
-TuiBadgeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiBadgeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiBadgeComponent,
   selectors: [["tui-badge"]],
   hostVars: 7,
   hostBindings: function TuiBadgeComponent_HostBindings(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵlistener"] */ .NdJ("$.data-mode.attr", function TuiBadgeComponent___data_mode_attr_HostBindingHandler() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵlistener"] */ .NdJ("$.data-mode.attr", function TuiBadgeComponent___data_mode_attr_HostBindingHandler() {
         return ctx.mode$;
       });
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵattribute"] */ .uIk("data-size", ctx.size)("data-tui-host-status", ctx.status)("data-tui-host-padding", ctx.padding);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵclassProp"] */ .ekj("_hoverable", ctx.hoverable)("_empty-value", ctx.isEmpty);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵattribute"] */ .uIk("data-size", ctx.size)("data-tui-host-status", ctx.status)("data-tui-host-padding", ctx.padding);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵclassProp"] */ .ekj("_hoverable", ctx.hoverable)("_empty-value", ctx.isEmpty);
     }
   },
   inputs: {
@@ -45287,36 +45296,46 @@ TuiBadgeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2_
     status: "status",
     hoverable: "hoverable"
   },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.MODE_PROVIDER])],
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__.MODE_PROVIDER])],
   ngContentSelectors: _c0,
-  decls: 3,
-  vars: 1,
-  consts: [[1, "left-content"]],
+  decls: 5,
+  vars: 2,
+  consts: [[1, "t-left-content"], [1, "t-text", 3, "title", "tuiResize"], ["text", ""]],
   template: function TuiBadgeComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojectionDef"] */ .F$t();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementStart"] */ .TgZ(0, "span", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojection"] */ .Hsn(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵelementEnd"] */ .qZA();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtext"] */ ._uU(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵprojectionDef"] */ .F$t();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵelementStart"] */ .TgZ(0, "span", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵprojection"] */ .Hsn(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵelementStart"] */ .TgZ(2, "span", 1, 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵlistener"] */ .NdJ("tuiResize", function TuiBadgeComponent_Template_span_tuiResize_2_listener() {
+        return 0;
+      });
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵtext"] */ ._uU(4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵelementEnd"] */ .qZA();
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵadvance"] */ .xp6(2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵtextInterpolate1"] */ .hij("\n", ctx.outputValue, "\n");
+      const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵreference"] */ .MAs(3);
+
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵadvance"] */ .xp6(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵproperty"] */ .Q6J("title", ctx.titleText(_r0));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵadvance"] */ .xp6(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx.outputValue, "\n");
     }
   },
-  styles: ["[_nghost-%COMP%]{transition-property:background-color;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;--left-content-color: currentColor;position:relative;display:inline-flex;font:var(--tui-font-text-s);align-items:center;justify-content:center;box-sizing:border-box;color:var(--tui-base-01);border-radius:6.25rem;white-space:nowrap;overflow:hidden;vertical-align:middle}[_nghost-%COMP%]:after{transition-property:background;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;position:absolute;top:0;left:0;width:100%;height:100%;content:\"\";box-sizing:border-box;border-radius:inherit;pointer-events:none}._hoverable[_nghost-%COMP%]:hover[data-tui-host-status=custom]:after, ._hoverable[_nghost-%COMP%]:active[data-tui-host-status=custom]:after{background-color:var(--tui-clear)}[data-tui-host-status=primary][_nghost-%COMP%]{background-color:var(--tui-primary);color:var(--tui-primary-text)}[data-tui-host-status=primary]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-primary-hover)}[data-tui-host-status=primary]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-primary-active)}[data-tui-host-status=error][_nghost-%COMP%]{--left-content-color: var(--tui-error-fill);background-color:var(--tui-error-bg);color:var(--tui-text-01)}[data-tui-host-status=error]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=error]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-error-bg-hover)}[data-tui-host-status=error][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-error-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=error][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=error][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-error-bg-night-hover)}[data-tui-host-status=success][_nghost-%COMP%]{--left-content-color: var(--tui-success-fill);background-color:var(--tui-success-bg);color:var(--tui-text-01)}[data-tui-host-status=success]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=success]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-success-bg-hover)}[data-tui-host-status=success][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-success-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=success][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=success][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-success-bg-night-hover)}[data-tui-host-status=warning][_nghost-%COMP%]{--left-content-color: var(--tui-warning-fill);background-color:var(--tui-warning-bg);color:var(--tui-text-01)}[data-tui-host-status=warning]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=warning]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-warning-bg-hover)}[data-tui-host-status=warning][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-warning-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=warning][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=warning][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-warning-bg-night-hover)}[data-tui-host-status=info][_nghost-%COMP%]{--left-content-color: var(--tui-info-fill);background-color:var(--tui-info-bg);color:var(--tui-text-01)}[data-tui-host-status=info]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=info]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-info-bg-hover)}[data-tui-host-status=info][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-info-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=info][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=info][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-info-bg-night-hover)}[data-tui-host-status=neutral][_nghost-%COMP%]{--left-content-color: var(--tui-neutral-fill);background-color:var(--tui-neutral-bg);color:var(--tui-text-01)}[data-tui-host-status=neutral]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=neutral]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-neutral-bg-hover)}[data-tui-host-status=neutral][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-neutral-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=neutral][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=neutral][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-neutral-bg-night-hover)}[data-tui-host-status=default][_nghost-%COMP%]{background-color:var(--tui-base-06)}[data-tui-host-status=default][_nghost-%COMP%]:not([data-mode])._hoverable:hover{background-color:var(--tui-base-07)}[data-tui-host-status=default][_nghost-%COMP%]:not([data-mode])._hoverable:active{background-color:var(--tui-base-08)}[data-tui-host-status=default][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-clear-inverse-hover)}[data-tui-host-status=default][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-clear-inverse-active)}[data-tui-host-status=default][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-clear-inverse-active)}[data-tui-host-status=default][data-mode=onDark][_nghost-%COMP%]:focus:after{border:2px solid var(--tui-base-01)}[data-tui-host-status=default][data-mode=onLight][_nghost-%COMP%]{background-color:var(--tui-clear);color:var(--tui-text-01)}[data-tui-host-status=default][data-mode=onLight]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-clear-hover)}[data-tui-host-status=default][data-mode=onLight]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-clear-active)}._hoverable[_nghost-%COMP%]{cursor:pointer}[data-tui-host-padding=m][_nghost-%COMP%]{padding:0 .5rem}[data-tui-host-padding=m][data-size=xs][_nghost-%COMP%]{padding:0 .25rem}[data-tui-host-padding=m][data-size=s][_nghost-%COMP%]{padding:0 .375rem}[data-tui-host-padding=m][data-size=l][_nghost-%COMP%]{padding:0 .625rem}[data-tui-host-padding=l][_nghost-%COMP%]{padding:0 .625rem}[data-tui-host-padding=l][data-size=xs][_nghost-%COMP%]{padding:0 .375rem}[data-tui-host-padding=l][data-size=s][_nghost-%COMP%]{padding:0 .5rem}[data-tui-host-padding=l][data-size=l][_nghost-%COMP%]{padding:0 .75rem}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-xs);height:1rem;min-width:1rem}[data-size=xs][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]:before{width:.34375rem;height:.34375rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-xs);height:1.25rem;min-width:1.25rem}[data-size=s][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]:before{width:.25rem;height:.25rem}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-xs);line-height:var(--tui-height-xs);min-width:var(--tui-height-xs)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-s);line-height:var(--tui-height-s);min-width:var(--tui-height-s)}[data-size=l][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]:before{margin:0 .5rem 0 0;width:.5rem;height:.5rem}._empty-value[_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]{margin:0 -.25rem}._empty-value[_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]:before{margin:0}.left-content[_ngcontent-%COMP%]{display:none;color:var(--left-content-color);line-height:0}.left-content[_ngcontent-%COMP%]:not(:empty){display:block;margin-left:-.25rem}.left-content[_ngcontent-%COMP%]:not(:empty):before{content:none}[data-tui-host-status=error][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%], [data-tui-host-status=success][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%], [data-tui-host-status=warning][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%], [data-tui-host-status=info][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%], [data-tui-host-status=neutral][_nghost-%COMP%]   .left-content[_ngcontent-%COMP%]{display:block}.left-content[_ngcontent-%COMP%]:before{content:\"\";display:block;background:currentColor;margin:0 .375rem 0 0;width:.375rem;height:.375rem;border-radius:100%}"],
+  directives: [_cdk_directives_resize_resize_directive__WEBPACK_IMPORTED_MODULE_2__/* .TuiResizeDirective */ .$],
+  styles: ["[_nghost-%COMP%]{transition-property:background-color;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;--left-content-color: currentColor;position:relative;display:inline-flex;font:var(--tui-font-text-s);align-items:center;justify-content:center;box-sizing:border-box;color:var(--tui-base-01);border-radius:6.25rem;white-space:nowrap;overflow:hidden;vertical-align:middle;max-width:100%}[_nghost-%COMP%]:after{transition-property:background;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;position:absolute;top:0;left:0;width:100%;height:100%;content:\"\";box-sizing:border-box;border-radius:inherit;pointer-events:none}._hoverable[_nghost-%COMP%]:hover[data-tui-host-status=custom]:after, ._hoverable[_nghost-%COMP%]:active[data-tui-host-status=custom]:after{background-color:var(--tui-clear)}[data-tui-host-status=primary][_nghost-%COMP%]{background-color:var(--tui-primary);color:var(--tui-primary-text)}[data-tui-host-status=primary]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-primary-hover)}[data-tui-host-status=primary]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-primary-active)}[data-tui-host-status=error][_nghost-%COMP%]{--left-content-color: var(--tui-error-fill);background-color:var(--tui-error-bg);color:var(--tui-text-01)}[data-tui-host-status=error]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=error]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-error-bg-hover)}[data-tui-host-status=error][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-error-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=error][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=error][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-error-bg-night-hover)}[data-tui-host-status=success][_nghost-%COMP%]{--left-content-color: var(--tui-success-fill);background-color:var(--tui-success-bg);color:var(--tui-text-01)}[data-tui-host-status=success]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=success]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-success-bg-hover)}[data-tui-host-status=success][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-success-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=success][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=success][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-success-bg-night-hover)}[data-tui-host-status=warning][_nghost-%COMP%]{--left-content-color: var(--tui-warning-fill);background-color:var(--tui-warning-bg);color:var(--tui-text-01)}[data-tui-host-status=warning]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=warning]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-warning-bg-hover)}[data-tui-host-status=warning][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-warning-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=warning][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=warning][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-warning-bg-night-hover)}[data-tui-host-status=info][_nghost-%COMP%]{--left-content-color: var(--tui-info-fill);background-color:var(--tui-info-bg);color:var(--tui-text-01)}[data-tui-host-status=info]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=info]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-info-bg-hover)}[data-tui-host-status=info][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-info-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=info][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=info][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-info-bg-night-hover)}[data-tui-host-status=neutral][_nghost-%COMP%]{--left-content-color: var(--tui-neutral-fill);background-color:var(--tui-neutral-bg);color:var(--tui-text-01)}[data-tui-host-status=neutral]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=neutral]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-neutral-bg-hover)}[data-tui-host-status=neutral][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-neutral-bg-night);color:var(--tui-text-01-night)}[data-tui-host-status=neutral][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover, [data-tui-host-status=neutral][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-neutral-bg-night-hover)}[data-tui-host-status=default][_nghost-%COMP%]{background-color:var(--tui-base-06)}[data-tui-host-status=default][_nghost-%COMP%]:not([data-mode])._hoverable:hover{background-color:var(--tui-base-07)}[data-tui-host-status=default][_nghost-%COMP%]:not([data-mode])._hoverable:active{background-color:var(--tui-base-08)}[data-tui-host-status=default][data-mode=onDark][_nghost-%COMP%]{background-color:var(--tui-clear-inverse-hover)}[data-tui-host-status=default][data-mode=onDark]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-clear-inverse-active)}[data-tui-host-status=default][data-mode=onDark]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-clear-inverse-active)}[data-tui-host-status=default][data-mode=onDark][_nghost-%COMP%]:focus:after{border:2px solid var(--tui-base-01)}[data-tui-host-status=default][data-mode=onLight][_nghost-%COMP%]{background-color:var(--tui-clear);color:var(--tui-text-01)}[data-tui-host-status=default][data-mode=onLight]._hoverable[_nghost-%COMP%]:hover{background-color:var(--tui-clear-hover)}[data-tui-host-status=default][data-mode=onLight]._hoverable[_nghost-%COMP%]:active{background-color:var(--tui-clear-active)}._hoverable[_nghost-%COMP%]{cursor:pointer}[data-tui-host-padding=m][_nghost-%COMP%]{padding:0 .5rem}[data-tui-host-padding=m][data-size=xs][_nghost-%COMP%]{padding:0 .25rem}[data-tui-host-padding=m][data-size=s][_nghost-%COMP%]{padding:0 .375rem}[data-tui-host-padding=m][data-size=l][_nghost-%COMP%]{padding:0 .625rem}[data-tui-host-padding=l][_nghost-%COMP%]{padding:0 .625rem}[data-tui-host-padding=l][data-size=xs][_nghost-%COMP%]{padding:0 .375rem}[data-tui-host-padding=l][data-size=s][_nghost-%COMP%]{padding:0 .5rem}[data-tui-host-padding=l][data-size=l][_nghost-%COMP%]{padding:0 .75rem}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-xs);height:1rem;min-width:1rem}[data-size=xs][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]:before{width:.34375rem;height:.34375rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-xs);height:1.25rem;min-width:1.25rem}[data-size=s][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]:before{width:.25rem;height:.25rem}[data-size=m][_nghost-%COMP%]{height:var(--tui-height-xs);line-height:var(--tui-height-xs);min-width:var(--tui-height-xs)}[data-size=l][_nghost-%COMP%]{height:var(--tui-height-s);line-height:var(--tui-height-s);min-width:var(--tui-height-s)}[data-size=l][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]:before{margin:0 .5rem 0 0;width:.5rem;height:.5rem}._empty-value[_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]{margin:0 -.25rem}._empty-value[_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]:before{margin:0}.t-left-content[_ngcontent-%COMP%]{display:none;color:var(--left-content-color);line-height:0}.t-left-content[_ngcontent-%COMP%]:not(:empty){display:block;margin-left:-.25rem}.t-left-content[_ngcontent-%COMP%]:not(:empty):before{content:none}[data-tui-host-status=error][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%], [data-tui-host-status=success][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%], [data-tui-host-status=warning][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%], [data-tui-host-status=info][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%], [data-tui-host-status=neutral][_nghost-%COMP%]   .t-left-content[_ngcontent-%COMP%]{display:block}.t-left-content[_ngcontent-%COMP%]:before{content:\"\";display:block;background:currentColor;margin:0 .375rem 0 0;width:.375rem;height:.375rem;border-radius:100%}.t-text[_ngcontent-%COMP%]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"],
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_3__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "value", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_4__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "value", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_3__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "size", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_4__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "size", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_3__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "status", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_4__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "status", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_3__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "hoverable", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_4__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiBadgeComponent.prototype, "hoverable", void 0);
 
 /***/ }),
 
@@ -67081,6 +67100,7 @@ var badge_component = __webpack_require__(4123);
 
 
 
+
 let TuiBadgeModule = /*#__PURE__*/(() => {
   class TuiBadgeModule {}
 
@@ -67092,7 +67112,7 @@ let TuiBadgeModule = /*#__PURE__*/(() => {
     type: TuiBadgeModule
   });
   TuiBadgeModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez]]
+    imports: [[common/* CommonModule */.ez, cdk.TuiResizeModule]]
   });
   return TuiBadgeModule;
 })();
@@ -67100,7 +67120,7 @@ let TuiBadgeModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(TuiBadgeModule, {
     declarations: [badge_component/* TuiBadgeComponent */.g],
-    imports: [common/* CommonModule */.ez],
+    imports: [common/* CommonModule */.ez, cdk.TuiResizeModule],
     exports: [badge_component/* TuiBadgeComponent */.g]
   });
 })();
