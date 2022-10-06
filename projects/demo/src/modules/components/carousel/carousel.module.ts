@@ -24,6 +24,7 @@ import {TuiCarouselExample1} from './examples/1';
 import {TuiCarouselExample2} from './examples/2';
 import {TuiCarouselExample3} from './examples/3';
 import {TuiCarouselExample4} from './examples/4';
+import {TuiCarouselExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import {TuiCarouselExample4} from './examples/4';
         TuiCarouselExample2,
         TuiCarouselExample3,
         TuiCarouselExample4,
+        TuiCarouselExample5,
     ],
     exports: [ExampleTuiCarouselComponent],
 })
