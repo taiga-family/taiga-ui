@@ -8,7 +8,6 @@ import {TuiMobileCalendarDialogComponent} from './mobile-calendar-dialog.compone
     imports: [TuiMobileCalendarModule],
     declarations: [TuiMobileCalendarDialogComponent],
     exports: [TuiMobileCalendarDialogComponent],
-    entryComponents: [TuiMobileCalendarDialogComponent],
     providers: [
         {
             provide: TUI_MOBILE_CALENDAR,

@@ -14,7 +14,6 @@ import {HomeComponent} from './home.component';
         TuiLinkModule,
         TuiAccordionModule,
     ],
-    entryComponents: [HomeComponent],
     declarations: [HomeComponent],
     exports: [HomeComponent],
 })

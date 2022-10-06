@@ -33,6 +33,5 @@ import {DialogExampleComponent} from './dialog-example.component';
     ],
     declarations: [DialogExampleComponent],
     exports: [DialogExampleComponent],
-    entryComponents: [DialogExampleComponent], // for stackblitz
 })
 export class DialogExampleModule {}

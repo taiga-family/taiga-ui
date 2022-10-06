@@ -14,6 +14,5 @@ import {SearchDialogExampleComponent} from './search-dialog-example.component';
     ],
     declarations: [SearchDialogExampleComponent],
     exports: [SearchDialogExampleComponent],
-    entryComponents: [SearchDialogExampleComponent],
 })
 export class SearchDialogExampleModule {}

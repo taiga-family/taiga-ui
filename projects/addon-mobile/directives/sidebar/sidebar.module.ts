@@ -8,7 +8,6 @@ import {TuiSidebarDirective} from './sidebar.directive';
 @NgModule({
     imports: [TuiActiveZoneModule, PolymorpheusModule],
     declarations: [TuiSidebarDirective, TuiSidebarComponent],
-    entryComponents: [TuiSidebarComponent],
     exports: [TuiSidebarDirective],
 })
 export class TuiSidebarModule {}

@@ -17,10 +17,6 @@ import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-dat
 export class ExampleTuiAlertsComponent {
     readonly method = import(`./method.md?raw`);
 
-    readonly exampleImportModuleComponent = import(
-        `./examples/import/import-module-component.md?raw`
-    );
-
     readonly exampleServiceUsage = import(`./examples/import/service-usage.md?raw`);
 
     readonly exampleServiceUsageComponent = import(

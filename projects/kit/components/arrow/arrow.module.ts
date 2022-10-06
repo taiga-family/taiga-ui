@@ -9,6 +9,5 @@ import {TuiArrowComponent} from './arrow.component';
     imports: [CommonModule, TuiSvgModule, PolymorpheusModule],
     declarations: [TuiArrowComponent],
     exports: [TuiArrowComponent],
-    entryComponents: [TuiArrowComponent],
 })
 export class TuiArrowModule {}
