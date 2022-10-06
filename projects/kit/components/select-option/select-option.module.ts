@@ -8,6 +8,5 @@ import {TuiSelectOptionComponent} from './select-option.component';
     imports: [CommonModule, TuiSvgModule, TuiScrollIntoViewModule],
     declarations: [TuiSelectOptionComponent],
     exports: [TuiSelectOptionComponent],
-    entryComponents: [TuiSelectOptionComponent],
 })
 export class TuiSelectOptionModule {}

@@ -12,6 +12,5 @@ import {PROMPT_PROVIDER} from './prompt.service';
     providers: [PROMPT_PROVIDER],
     declarations: [PromptComponent],
     exports: [PromptComponent],
-    entryComponents: [PromptComponent],
 })
 export class PromptModule {}

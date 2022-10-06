@@ -36,7 +36,6 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTreeComponent)),
     ],
-    entryComponents: [FoldersComponent],
     declarations: [
         ExampleTuiTreeComponent,
         FoldersComponent,

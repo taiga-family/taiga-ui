@@ -11,7 +11,6 @@ import {TuiAlertService} from './alert.service';
     imports: [CommonModule, PolymorpheusModule, TuiNotificationModule],
     declarations: [TuiAlertComponent],
     exports: [TuiAlertComponent],
-    entryComponents: [TuiAlertComponent],
     providers: [tuiAsAlerts(TuiAlertService)],
 })
 export class TuiAlertModule {}

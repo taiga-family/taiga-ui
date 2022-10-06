@@ -39,6 +39,5 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintPositionDirective,
         TuiHintOptionsDirective,
     ],
-    entryComponents: [TuiHintComponent],
 })
 export class TuiHintModule {}

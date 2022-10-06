@@ -20,7 +20,6 @@ import {TuiTreeNodeDirective} from './directives/tree-node.directive';
         TuiLetModule,
         TuiButtonModule,
     ],
-    entryComponents: [TuiTreeItemContentComponent],
     declarations: [
         TuiTreeComponent,
         TuiTreeItemComponent,

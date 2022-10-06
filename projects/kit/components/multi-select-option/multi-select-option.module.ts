@@ -8,6 +8,5 @@ import {TuiMultiSelectOptionComponent} from './multi-select-option.component';
     imports: [CommonModule, TuiPrimitiveCheckboxModule],
     declarations: [TuiMultiSelectOptionComponent],
     exports: [TuiMultiSelectOptionComponent],
-    entryComponents: [TuiMultiSelectOptionComponent],
 })
 export class TuiMultiSelectOptionModule {}

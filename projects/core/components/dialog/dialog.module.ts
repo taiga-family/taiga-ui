@@ -12,7 +12,6 @@ import {TuiDialogService} from './dialog.service';
     imports: [PolymorpheusModule, TuiButtonModule, CommonModule, TuiPreventDefaultModule],
     declarations: [TuiDialogComponent, TuiDialogDirective],
     exports: [TuiDialogComponent, TuiDialogDirective],
-    entryComponents: [TuiDialogComponent],
     providers: [tuiAsDialog(TuiDialogService)],
 })
 export class TuiDialogModule {}
