@@ -362,7 +362,7 @@ let ImagePreviewExampleComponent = /*#__PURE__*/(() => {
   }
 
   ImagePreviewExampleComponent.ɵfac = function ImagePreviewExampleComponent_Factory(t) {
-    return new (t || ImagePreviewExampleComponent)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview/* TuiPreviewDialogService */.iK));
+    return new (t || ImagePreviewExampleComponent)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview.TuiPreviewDialogService));
   };
 
   ImagePreviewExampleComponent.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
@@ -1471,7 +1471,7 @@ let ImagePreviewExampleModule = /*#__PURE__*/(() => {
     type: ImagePreviewExampleModule
   });
   ImagePreviewExampleModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, addon_preview/* TuiPreviewModule */.E6, core.TuiButtonModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, addon_editor.TuiEditorImagePreviewModule], addon_editor.TuiEditorImagePreviewModule, addon_editor.TuiEditorImagePreviewModule]
+    imports: [[common/* CommonModule */.ez, addon_preview.TuiPreviewModule, core.TuiButtonModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, addon_editor.TuiEditorImagePreviewModule], addon_editor.TuiEditorImagePreviewModule, addon_editor.TuiEditorImagePreviewModule]
   });
   return ImagePreviewExampleModule;
 })();
@@ -1479,7 +1479,7 @@ let ImagePreviewExampleModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ImagePreviewExampleModule, {
     declarations: [ImagePreviewExampleComponent],
-    imports: [common/* CommonModule */.ez, addon_preview/* TuiPreviewModule */.E6, core.TuiButtonModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, addon_editor.TuiEditorImagePreviewModule],
+    imports: [common/* CommonModule */.ez, addon_preview.TuiPreviewModule, core.TuiButtonModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, addon_editor.TuiEditorImagePreviewModule],
     exports: [addon_editor.TuiEditorImagePreviewModule, addon_editor.TuiEditorImagePreviewModule, ImagePreviewExampleComponent]
   });
 })();

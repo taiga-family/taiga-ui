@@ -186,7 +186,7 @@ let TuiPreviewExample1 = /*#__PURE__*/(() => {
   }
 
   TuiPreviewExample1.ɵfac = function TuiPreviewExample1_Factory(t) {
-    return new (t || TuiPreviewExample1)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview/* TuiPreviewDialogService */.iK), fesm2015_core/* ɵɵdirectiveInject */.Y36(core.TuiAlertService));
+    return new (t || TuiPreviewExample1)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview.TuiPreviewDialogService), fesm2015_core/* ɵɵdirectiveInject */.Y36(core.TuiAlertService));
   };
 
   TuiPreviewExample1.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
@@ -272,7 +272,7 @@ let TuiPreviewExample2 = /*#__PURE__*/(() => {
   }
 
   TuiPreviewExample2.ɵfac = function TuiPreviewExample2_Factory(t) {
-    return new (t || TuiPreviewExample2)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview/* TuiPreviewDialogService */.iK));
+    return new (t || TuiPreviewExample2)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview.TuiPreviewDialogService));
   };
 
   TuiPreviewExample2.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
@@ -468,7 +468,7 @@ let TuiPreviewExample3 = /*#__PURE__*/(() => {
   }
 
   TuiPreviewExample3.ɵfac = function TuiPreviewExample3_Factory(t) {
-    return new (t || TuiPreviewExample3)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview/* TuiPreviewDialogService */.iK));
+    return new (t || TuiPreviewExample3)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_preview.TuiPreviewDialogService));
   };
 
   TuiPreviewExample3.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
@@ -709,7 +709,7 @@ let ExampleTuiPreviewModule = /*#__PURE__*/(() => {
     type: ExampleTuiPreviewModule
   });
   ExampleTuiPreviewModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiButtonModule, addon_preview/* TuiPreviewModule */.E6, core.TuiNotificationModule, public_api/* TuiAddonDocModule */.fV, core.TuiSvgModule, core.TuiLoaderModule, cdk.TuiSwipeModule, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiPreviewComponent))]]
+    imports: [[common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiButtonModule, addon_preview.TuiPreviewModule, core.TuiNotificationModule, public_api/* TuiAddonDocModule */.fV, core.TuiSvgModule, core.TuiLoaderModule, cdk.TuiSwipeModule, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiPreviewComponent))]]
   });
   return ExampleTuiPreviewModule;
 })();
@@ -717,7 +717,7 @@ let ExampleTuiPreviewModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiPreviewModule, {
     declarations: [ExampleTuiPreviewComponent, TuiPreviewExample1, TuiPreviewExample2, TuiPreviewExample3],
-    imports: [common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiButtonModule, addon_preview/* TuiPreviewModule */.E6, core.TuiNotificationModule, public_api/* TuiAddonDocModule */.fV, core.TuiSvgModule, core.TuiLoaderModule, cdk.TuiSwipeModule, router/* RouterModule */.Bz],
+    imports: [common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiButtonModule, addon_preview.TuiPreviewModule, core.TuiNotificationModule, public_api/* TuiAddonDocModule */.fV, core.TuiSvgModule, core.TuiLoaderModule, cdk.TuiSwipeModule, router/* RouterModule */.Bz],
     exports: [ExampleTuiPreviewComponent]
   });
 })();

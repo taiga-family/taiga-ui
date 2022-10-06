@@ -89,7 +89,7 @@ let TuiTableBarExampleComponent1 = /*#__PURE__*/(() => {
   }
 
   TuiTableBarExampleComponent1.ɵfac = function TuiTableBarExampleComponent1_Factory(t) {
-    return new (t || TuiTableBarExampleComponent1)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_tablebars/* TuiTableBarsService */.A6));
+    return new (t || TuiTableBarExampleComponent1)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_tablebars.TuiTableBarsService));
   };
 
   TuiTableBarExampleComponent1.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
@@ -357,7 +357,7 @@ let ExampleTuiTableBarComponent = /*#__PURE__*/(() => {
   }
 
   ExampleTuiTableBarComponent.ɵfac = function ExampleTuiTableBarComponent_Factory(t) {
-    return new (t || ExampleTuiTableBarComponent)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_tablebars/* TuiTableBarsService */.A6));
+    return new (t || ExampleTuiTableBarComponent)(fesm2015_core/* ɵɵdirectiveInject */.Y36(addon_tablebars.TuiTableBarsService));
   };
 
   ExampleTuiTableBarComponent.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
