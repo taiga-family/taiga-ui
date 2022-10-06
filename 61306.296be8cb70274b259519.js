@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[50101],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[61306],{
 
-/***/ 50101:
+/***/ 61306:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -541,6 +541,128 @@ let TuiCarouselExample4 = /*#__PURE__*/(() => {
   });
   return TuiCarouselExample4;
 })();
+;// CONCATENATED MODULE: ./projects/demo/src/modules/components/carousel/examples/5/index.ts
+
+
+
+
+
+
+
+
+function TuiCarouselExample5_ng_container_1_tui_island_1_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-island", 4);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "h2", 5);
+    fesm2015_core/* ɵɵtext */._uU(2);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(3, "div", 6);
+    fesm2015_core/* ɵɵtext */._uU(4);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const item_r1 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵtextInterpolate */.Oqu(item_r1.title);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵtextInterpolate */.Oqu(item_r1.content);
+  }
+}
+
+function TuiCarouselExample5_ng_container_1_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiCarouselExample5_ng_container_1_tui_island_1_Template, 5, 2, "tui-island", 3);
+    fesm2015_core/* ɵɵelementContainerEnd */.BQk();
+  }
+}
+
+let TuiCarouselExample5 = /*#__PURE__*/(() => {
+  class TuiCarouselExample5 {
+    constructor() {
+      this.index = 0;
+      this.itemsCount = 3;
+      this.items = [{
+        title: `First`,
+        content: `First content`
+      }, {
+        title: `Title #2`,
+        content: `Much more content here so the height is bigger`
+      }, {
+        title: `Title III`,
+        content: `Small item again`
+      }, {
+        title: `Title four`,
+        content: `Relatively ling content here`
+      }, {
+        title: `Fifth item`,
+        content: `Tiny text`
+      }, {
+        title: `6`,
+        content: `That one's short too`
+      }, {
+        title: `Lucky 7`,
+        content: `This takes about two lines or so`
+      }, {
+        title: `Eighth card`,
+        content: `Almost the last one`
+      }, {
+        title: `X`,
+        content: `This is the longest item there is in this list`
+      }];
+    }
+
+    get rounded() {
+      return Math.floor(this.index / this.itemsCount);
+    }
+
+    onIndex(index) {
+      this.index = index * this.itemsCount;
+    }
+
+  }
+
+  TuiCarouselExample5.ɵfac = function TuiCarouselExample5_Factory(t) {
+    return new (t || TuiCarouselExample5)();
+  };
+
+  TuiCarouselExample5.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: TuiCarouselExample5,
+    selectors: [["tui-carousel-example-5"]],
+    decls: 3,
+    vars: 5,
+    consts: [[3, "itemsCount", "index", "indexChange"], [4, "ngFor", "ngForOf"], ["size", "s", 1, "tui-space_top-4", 3, "length", "index", "indexChange"], ["class", "item", 4, "tuiItem"], [1, "item"], [1, "tui-island__title"], [1, "tui-island__content"]],
+    template: function TuiCarouselExample5_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-carousel", 0);
+        fesm2015_core/* ɵɵlistener */.NdJ("indexChange", function TuiCarouselExample5_Template_tui_carousel_indexChange_0_listener($event) {
+          return ctx.index = $event;
+        });
+        fesm2015_core/* ɵɵtemplate */.YNc(1, TuiCarouselExample5_ng_container_1_Template, 2, 0, "ng-container", 1);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-pagination", 2);
+        fesm2015_core/* ɵɵlistener */.NdJ("indexChange", function TuiCarouselExample5_Template_tui_pagination_indexChange_2_listener($event) {
+          return ctx.onIndex($event);
+        });
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+      }
+
+      if (rf & 2) {
+        fesm2015_core/* ɵɵproperty */.Q6J("itemsCount", 3)("index", ctx.index);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.items);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("length", ctx.items.length / ctx.itemsCount)("index", ctx.rounded);
+      }
+    },
+    directives: [carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, common/* NgForOf */.sg, pagination_component/* TuiPaginationComponent */.r, item_directive/* TuiItemDirective */.w, island_component/* TuiIslandComponent */.h],
+    styles: [".item[_ngcontent-%COMP%]{margin-bottom:auto}"],
+    changeDetection: 0
+  });
+  return TuiCarouselExample5;
+})();
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/demo/demo.component.ts
 var demo_component = __webpack_require__(31823);
 // EXTERNAL MODULE: ./projects/cdk/directives/repeat-times/repeat-times.directive.ts
@@ -552,6 +674,7 @@ var documentation_property_connector_directive = __webpack_require__(17023);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/code/code.component.ts
 var code_component = __webpack_require__(76349);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/carousel/carousel.component.ts
+
 
 
 
@@ -609,6 +732,9 @@ function ExampleTuiCarouselComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementStart */.TgZ(14, "tui-doc-example", 9);
     fesm2015_core/* ɵɵelement */._UZ(15, "tui-carousel-example-4");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(16, "tui-doc-example", 10);
+    fesm2015_core/* ɵɵelement */._UZ(17, "tui-carousel-example-5");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
@@ -621,14 +747,16 @@ function ExampleTuiCarouselComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example4);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example5);
   }
 }
 
 function ExampleTuiCarouselComponent_ng_template_2_ng_container_2_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 17);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 18);
     fesm2015_core/* ɵɵtext */._uU(1);
-    fesm2015_core/* ɵɵelementStart */.TgZ(2, "button", 18);
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "button", 19);
     fesm2015_core/* ɵɵtext */._uU(3, " I'm focusable ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -644,7 +772,7 @@ function ExampleTuiCarouselComponent_ng_template_2_ng_container_2_div_1_Template
 function ExampleTuiCarouselComponent_ng_template_2_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCarouselComponent_ng_template_2_ng_container_2_div_1_Template, 4, 1, "div", 16);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCarouselComponent_ng_template_2_ng_container_2_div_1_Template, 4, 1, "div", 17);
     fesm2015_core/* ɵɵelementContainerEnd */.BQk();
   }
 }
@@ -678,7 +806,7 @@ function ExampleTuiCarouselComponent_ng_template_2_Template(rf, ctx) {
     const _r15 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-carousel", 10);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-carousel", 11);
     fesm2015_core/* ɵɵlistener */.NdJ("indexChange", function ExampleTuiCarouselComponent_ng_template_2_Template_tui_carousel_indexChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r15);
       const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -686,29 +814,29 @@ function ExampleTuiCarouselComponent_ng_template_2_Template(rf, ctx) {
     })("touchstart.passive.stop", function ExampleTuiCarouselComponent_ng_template_2_Template_tui_carousel_touchstart_passive_stop_1_listener() {
       return 0;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiCarouselComponent_ng_template_2_ng_container_2_Template, 2, 0, "ng-container", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiCarouselComponent_ng_template_2_ng_container_2_Template, 2, 0, "ng-container", 12);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiCarouselComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 12);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiCarouselComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCarouselComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r15);
       const ctx_r17 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r17.draggable = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiCarouselComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 13);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiCarouselComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 14);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCarouselComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r15);
       const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r18.duration = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiCarouselComponent_ng_template_2_ng_template_6_Template, 1, 0, "ng-template", 14);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiCarouselComponent_ng_template_2_ng_template_6_Template, 1, 0, "ng-template", 15);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCarouselComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r15);
       const ctx_r19 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r19.itemsCount = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiCarouselComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 15);
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiCarouselComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 16);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCarouselComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r15);
       const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -736,20 +864,20 @@ function ExampleTuiCarouselComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiCarouselComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 19);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 20);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 20);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 21);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 21);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 22);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 22);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 23);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 23);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 24);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -790,6 +918,11 @@ let ExampleTuiCarouselComponent = /*#__PURE__*/(() => {
         HTML: __webpack_require__.e(/* import() */ 7705).then(__webpack_require__.t.bind(__webpack_require__, 7705, 17)),
         LESS: __webpack_require__.e(/* import() */ 4159).then(__webpack_require__.t.bind(__webpack_require__, 4159, 17))
       };
+      this.example5 = {
+        TypeScript: __webpack_require__.e(/* import() */ 36620).then(__webpack_require__.t.bind(__webpack_require__, 36620, 17)),
+        HTML: __webpack_require__.e(/* import() */ 98324).then(__webpack_require__.t.bind(__webpack_require__, 98324, 17)),
+        LESS: __webpack_require__.e(/* import() */ 62965).then(__webpack_require__.t.bind(__webpack_require__, 62965, 17))
+      };
     }
 
   }
@@ -825,24 +958,25 @@ let ExampleTuiCarouselComponent = /*#__PURE__*/(() => {
         i18n_2 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
       }
 
-      return [["header", "Carousel", "package", "KIT", "type", "components"], ["pageTab", ""], ["status", "warning", 1, "tui-space_bottom-4"], ["tuiLink", "", "href", "https://caniuse.com/intersectionobserver"], ["tuiLink", "", "href", "https://github.com/w3c/IntersectionObserver/tree/main/polyfill"], ["id", "single", "heading", "Single", 3, "content"], [3, "touchstart.passive.stop"], ["id", "multi", "heading", "Multiple", 3, "content"], ["id", "custom", "heading", "Custom", 3, "content"], ["id", "dialog", "heading", "Carousel inside dialog", 3, "content"], [1, "carousel", 3, "draggable", "duration", "itemsCount", "index", "indexChange", "touchstart.passive.stop"], [4, "tuiRepeatTimes", "tuiRepeatTimesOf"], ["documentationPropertyName", "draggable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "duration", "documentationPropertyMode", "input", "documentationPropertyType", "number", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "itemsCount", "documentationPropertyType", "number", "documentationPropertyMode", "input", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "index", "documentationPropertyType", "number", "documentationPropertyMode", "input-output", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["class", "plate", 4, "tuiItem"], [1, "plate"], ["tuiButton", "", "type", "button", "size", "s", 1, "button"], [1, "b-demo-steps"], i18n_0, ["filename", "myComponent.module.ts", 3, "code"], i18n_2, ["filename", "myComponent.template.html", 3, "code"]];
+      return [["header", "Carousel", "package", "KIT", "type", "components"], ["pageTab", ""], ["status", "warning", 1, "tui-space_bottom-4"], ["tuiLink", "", "href", "https://caniuse.com/intersectionobserver"], ["tuiLink", "", "href", "https://github.com/w3c/IntersectionObserver/tree/main/polyfill"], ["id", "single", "heading", "Single", 3, "content"], [3, "touchstart.passive.stop"], ["id", "multi", "heading", "Multiple", 3, "content"], ["id", "custom", "heading", "Custom", 3, "content"], ["id", "dialog", "heading", "Carousel inside dialog", 3, "content"], ["id", "alignment", "heading", "Vertical alignment", 3, "content"], [1, "carousel", 3, "draggable", "duration", "itemsCount", "index", "indexChange", "touchstart.passive.stop"], [4, "tuiRepeatTimes", "tuiRepeatTimesOf"], ["documentationPropertyName", "draggable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "duration", "documentationPropertyMode", "input", "documentationPropertyType", "number", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "itemsCount", "documentationPropertyType", "number", "documentationPropertyMode", "input", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "index", "documentationPropertyType", "number", "documentationPropertyMode", "input-output", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["class", "plate", 4, "tuiItem"], [1, "plate"], ["tuiButton", "", "type", "button", "size", "s", 1, "button"], [1, "b-demo-steps"], i18n_0, ["filename", "myComponent.module.ts", 3, "code"], i18n_2, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiCarouselComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCarouselComponent_ng_template_1_Template, 16, 4, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCarouselComponent_ng_template_1_Template, 18, 5, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiCarouselComponent_ng_template_2_Template, 8, 10, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiCarouselComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, notification_component/* TuiNotificationComponent */.L, link_component/* TuiLinkComponent */.V, example_component/* TuiDocExampleComponent */.f, TuiCarouselExample1, TuiCarouselExample2, TuiCarouselExample3, TuiCarouselExample4, demo_component/* TuiDocDemoComponent */.F, carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, repeat_times_directive/* TuiRepeatTimesDirective */.X, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, item_directive/* TuiItemDirective */.w, button_component/* TuiButtonComponent */.v, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, notification_component/* TuiNotificationComponent */.L, link_component/* TuiLinkComponent */.V, example_component/* TuiDocExampleComponent */.f, TuiCarouselExample1, TuiCarouselExample2, TuiCarouselExample3, TuiCarouselExample4, TuiCarouselExample5, demo_component/* TuiDocDemoComponent */.F, carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, repeat_times_directive/* TuiRepeatTimesDirective */.X, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, item_directive/* TuiItemDirective */.w, button_component/* TuiButtonComponent */.v, code_component/* TuiDocCodeComponent */.c],
     styles: [".carousel[_ngcontent-%COMP%]{margin:0 2.5rem}.plate[_ngcontent-%COMP%]{font:var(--tui-font-heading-3);display:flex;flex-direction:column;align-items:flex-start;width:100%;height:7.5rem;padding:1.75rem;box-sizing:border-box;background:var(--tui-secondary)}.button[_ngcontent-%COMP%]{margin-top:.5rem}"],
     changeDetection: 0
   });
   return ExampleTuiCarouselComponent;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/carousel/carousel.module.ts
+
 
 
 
@@ -875,7 +1009,7 @@ let ExampleTuiCarouselModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiCarouselModule, {
-    declarations: [ExampleTuiCarouselComponent, TuiCarouselExample1, TuiCarouselExample2, TuiCarouselExample3, TuiCarouselExample4],
+    declarations: [ExampleTuiCarouselComponent, TuiCarouselExample1, TuiCarouselExample2, TuiCarouselExample3, TuiCarouselExample4, TuiCarouselExample5],
     imports: [common/* CommonModule */.ez, kit.TuiCarouselModule, kit.TuiPaginationModule, core.TuiNotificationModule, core.TuiLinkModule, core.TuiButtonModule, kit.TuiIslandModule, addon_commerce.TuiMoneyModule, core.TuiLoaderModule, kit.TuiMarkerIconModule, core.TuiDialogModule, core.TuiModeModule, cdk.TuiRepeatTimesModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
     exports: [ExampleTuiCarouselComponent]
   });
