@@ -998,42 +998,40 @@ function ExampleTuiAlertsComponent_ng_template_3_Template(rf, ctx) {
     fesm2015_core/* ɵɵelement */._UZ(20, "code");
     fesm2015_core/* ɵɵelement */._UZ(21, "code");
     fesm2015_core/* ɵɵelement */._UZ(22, "code");
-    fesm2015_core/* ɵɵelement */._UZ(23, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(24, "tui-doc-code", 37);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(25, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(26, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(27, 38);
-    fesm2015_core/* ɵɵelement */._UZ(28, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(23, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(24, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(25, 37);
+    fesm2015_core/* ɵɵelement */._UZ(26, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(29, "tui-doc-code", 33);
+    fesm2015_core/* ɵɵelement */._UZ(27, "tui-doc-code", 33);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(30, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(31, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(32, 39);
-    fesm2015_core/* ɵɵelement */._UZ(33, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(28, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(29, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(30, 38);
+    fesm2015_core/* ɵɵelement */._UZ(31, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(34, "tui-doc-code", 40);
+    fesm2015_core/* ɵɵelement */._UZ(32, "tui-doc-code", 39);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(35, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(36, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(37, 41);
-    fesm2015_core/* ɵɵelement */._UZ(38, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(33, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(34, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(35, 40);
+    fesm2015_core/* ɵɵelement */._UZ(36, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(39, "tui-doc-code", 40);
+    fesm2015_core/* ɵɵelement */._UZ(37, "tui-doc-code", 39);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(40, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(41, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(42, 42);
-    fesm2015_core/* ɵɵelement */._UZ(43, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(38, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(39, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(40, 41);
+    fesm2015_core/* ɵɵelement */._UZ(41, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(44, "tui-doc-code", 31);
+    fesm2015_core/* ɵɵelement */._UZ(42, "tui-doc-code", 31);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1044,9 +1042,7 @@ function ExampleTuiAlertsComponent_ng_template_3_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleModule);
     fesm2015_core/* ɵɵadvance */.xp6(6);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleServiceUsage);
-    fesm2015_core/* ɵɵadvance */.xp6(13);
-    fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleImportModuleComponent);
-    fesm2015_core/* ɵɵadvance */.xp6(5);
+    fesm2015_core/* ɵɵadvance */.xp6(16);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleServiceUsageComponent);
     fesm2015_core/* ɵɵadvance */.xp6(5);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleCustomAlert);
@@ -1062,7 +1058,6 @@ let ExampleTuiAlertsComponent = /*#__PURE__*/(() => {
     constructor(alertService, injector) {
       this.alertService = alertService;
       this.method = __webpack_require__.e(/* import() */ 22864).then(__webpack_require__.t.bind(__webpack_require__, 22864, 17));
-      this.exampleImportModuleComponent = __webpack_require__.e(/* import() */ 57102).then(__webpack_require__.t.bind(__webpack_require__, 57102, 17));
       this.exampleServiceUsage = __webpack_require__.e(/* import() */ 21779).then(__webpack_require__.t.bind(__webpack_require__, 21779, 17));
       this.exampleServiceUsageComponent = __webpack_require__.e(/* import() */ 47317).then(__webpack_require__.t.bind(__webpack_require__, 47317, 17));
       this.exampleCustomAlert = __webpack_require__.e(/* import() */ 89081).then(__webpack_require__.t.bind(__webpack_require__, 89081, 17));
@@ -1338,13 +1333,13 @@ let ExampleTuiAlertsComponent = /*#__PURE__*/(() => {
       let i18n_34;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5635433899377563977$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__35 = goog.getMsg(" You can also customize notification logic with a component. Use {$startTagCode}POLYMORPHEUS_CONTEXT{$closeTagCode} into the component to get context input data and to output results. It has the following interface: {$startTagCode}TuiDialog<TuiAlertOptions<I>, O>{$closeTagCode} , where {$startTagCode}O{$closeTagCode} is output data type and {$startTagCode}I{$closeTagCode} is input data type. Do not forget to add notification component into {$startTagCode}entryComponents{$closeTagCode} of your module: ", {
-          "startTagCode": "[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]",
-          "closeTagCode": "[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"
+        const MSG_EXTERNAL_5461081268200211199$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__35 = goog.getMsg(" You can also customize notification logic with a component. Use {$startTagCode}POLYMORPHEUS_CONTEXT{$closeTagCode} into the component to get context input data and to output results. It has the following interface: {$startTagCode}TuiDialog<TuiAlertOptions<I>, O>{$closeTagCode} , where {$startTagCode}O{$closeTagCode} is output data type and {$startTagCode}I{$closeTagCode} is input data type. ", {
+          "startTagCode": "[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD]",
+          "closeTagCode": "[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD]"
         });
-        i18n_34 = MSG_EXTERNAL_5635433899377563977$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__35;
+        i18n_34 = MSG_EXTERNAL_5461081268200211199$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__35;
       } else {
-        i18n_34 = $localize`:␟b5030ce649b5c1e3eed72243728a574deb50a808␟5635433899377563977: You can also customize notification logic with a component. Use ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]"}:START_TAG_CODE:POLYMORPHEUS_CONTEXT${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"}:CLOSE_TAG_CODE: into the component to get context input data and to output results. It has the following interface: ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]"}:START_TAG_CODE:TuiDialog<TuiAlertOptions<I>, O>${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"}:CLOSE_TAG_CODE: , where ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]"}:START_TAG_CODE:O${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"}:CLOSE_TAG_CODE: is output data type and ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]"}:START_TAG_CODE:I${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"}:CLOSE_TAG_CODE: is input data type. Do not forget to add notification component into ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD|\uFFFD#23\uFFFD]"}:START_TAG_CODE:entryComponents${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD|\uFFFD/#23\uFFFD]"}:CLOSE_TAG_CODE: of your module: `;
+        i18n_34 = $localize`:␟32fa5ec086fe0d052bec5ed630ddd6f9ae157a69␟5461081268200211199: You can also customize notification logic with a component. Use ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD]"}:START_TAG_CODE:POLYMORPHEUS_CONTEXT${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD]"}:CLOSE_TAG_CODE: into the component to get context input data and to output results. It has the following interface: ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD]"}:START_TAG_CODE:TuiDialog<TuiAlertOptions<I>, O>${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD]"}:CLOSE_TAG_CODE: , where ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD]"}:START_TAG_CODE:O${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD]"}:CLOSE_TAG_CODE: is output data type and ${"[\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD|\uFFFD#22\uFFFD]"}:START_TAG_CODE:I${"[\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD|\uFFFD/#22\uFFFD]"}:CLOSE_TAG_CODE: is input data type. `;
       }
 
       i18n_34 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_34);
@@ -1352,58 +1347,58 @@ let ExampleTuiAlertsComponent = /*#__PURE__*/(() => {
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_1436172444558827801$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__37 = goog.getMsg(" Use {$startTagCode}new PolymorpheusComponent(CustomNotificationComponent){$closeTagCode} to show notification component with a service: ", {
-          "startTagCode": "\uFFFD#28\uFFFD",
-          "closeTagCode": "\uFFFD/#28\uFFFD"
+          "startTagCode": "\uFFFD#26\uFFFD",
+          "closeTagCode": "\uFFFD/#26\uFFFD"
         });
         i18n_36 = MSG_EXTERNAL_1436172444558827801$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__37;
       } else {
-        i18n_36 = $localize`:␟ec507827c245a3395d58e897109309b8e3a99ac7␟1436172444558827801: Use ${"\uFFFD#28\uFFFD"}:START_TAG_CODE:new PolymorpheusComponent(CustomNotificationComponent)${"\uFFFD/#28\uFFFD"}:CLOSE_TAG_CODE: to show notification component with a service: `;
+        i18n_36 = $localize`:␟ec507827c245a3395d58e897109309b8e3a99ac7␟1436172444558827801: Use ${"\uFFFD#26\uFFFD"}:START_TAG_CODE:new PolymorpheusComponent(CustomNotificationComponent)${"\uFFFD/#26\uFFFD"}:CLOSE_TAG_CODE: to show notification component with a service: `;
       }
 
       let i18n_38;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_8335780216628034342$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__39 = goog.getMsg(" Use {$startTagCode}completeWith{$closeTagCode} method to control notification from itself: ", {
-          "startTagCode": "\uFFFD#33\uFFFD",
-          "closeTagCode": "\uFFFD/#33\uFFFD"
+          "startTagCode": "\uFFFD#31\uFFFD",
+          "closeTagCode": "\uFFFD/#31\uFFFD"
         });
         i18n_38 = MSG_EXTERNAL_8335780216628034342$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__39;
       } else {
-        i18n_38 = $localize`:␟fd68ca58ffb42f8e63cf860073e9f9b9b30c0c70␟8335780216628034342: Use ${"\uFFFD#33\uFFFD"}:START_TAG_CODE:completeWith${"\uFFFD/#33\uFFFD"}:CLOSE_TAG_CODE: method to control notification from itself: `;
+        i18n_38 = $localize`:␟fd68ca58ffb42f8e63cf860073e9f9b9b30c0c70␟8335780216628034342: Use ${"\uFFFD#31\uFFFD"}:START_TAG_CODE:completeWith${"\uFFFD/#31\uFFFD"}:CLOSE_TAG_CODE: method to control notification from itself: `;
       }
 
       let i18n_40;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_7759900700350680332$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__41 = goog.getMsg(" If you use it from lazy loading modules, do not forget to use {$startTagCode}new TuiComponentContent Injector{$closeTagCode} of component where you call it ", {
-          "startTagCode": "\uFFFD#38\uFFFD",
-          "closeTagCode": "\uFFFD/#38\uFFFD"
+          "startTagCode": "\uFFFD#36\uFFFD",
+          "closeTagCode": "\uFFFD/#36\uFFFD"
         });
         i18n_40 = MSG_EXTERNAL_7759900700350680332$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__41;
       } else {
-        i18n_40 = $localize`:␟72bdc03d46093beeafa58136204fab3ed68241ec␟7759900700350680332: If you use it from lazy loading modules, do not forget to use ${"\uFFFD#38\uFFFD"}:START_TAG_CODE:new TuiComponentContent Injector${"\uFFFD/#38\uFFFD"}:CLOSE_TAG_CODE: of component where you call it `;
+        i18n_40 = $localize`:␟72bdc03d46093beeafa58136204fab3ed68241ec␟7759900700350680332: If you use it from lazy loading modules, do not forget to use ${"\uFFFD#36\uFFFD"}:START_TAG_CODE:new TuiComponentContent Injector${"\uFFFD/#36\uFFFD"}:CLOSE_TAG_CODE: of component where you call it `;
       }
 
       let i18n_42;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_8849888545184271088$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__43 = goog.getMsg(" Optionally use the {$startTagCode}TUI_NOTIFICATION_OPTIONS{$closeTagCode} injection token to override the default options (works only in app.module.ts). ", {
-          "startTagCode": "\uFFFD#43\uFFFD",
-          "closeTagCode": "\uFFFD/#43\uFFFD"
+          "startTagCode": "\uFFFD#41\uFFFD",
+          "closeTagCode": "\uFFFD/#41\uFFFD"
         });
         i18n_42 = MSG_EXTERNAL_8849888545184271088$$PROJECTS_DEMO_SRC_MODULES_SERVICES_ALERTS_ALERTS_COMPONENT_TS__43;
       } else {
-        i18n_42 = $localize`:␟bad4e5730bd20ce05150c175f3923390d3e8bbf7␟8849888545184271088: Optionally use the ${"\uFFFD#43\uFFFD"}:START_TAG_CODE:TUI_NOTIFICATION_OPTIONS${"\uFFFD/#43\uFFFD"}:CLOSE_TAG_CODE: injection token to override the default options (works only in app.module.ts). `;
+        i18n_42 = $localize`:␟bad4e5730bd20ce05150c175f3923390d3e8bbf7␟8849888545184271088: Optionally use the ${"\uFFFD#41\uFFFD"}:START_TAG_CODE:TUI_NOTIFICATION_OPTIONS${"\uFFFD/#41\uFFFD"}:CLOSE_TAG_CODE: injection token to override the default options (works only in app.module.ts). `;
       }
 
-      return [["header", "AlertService", "package", "CORE", "path", "core/components/alert/alert.service.ts"], ["pageTab", ""], i18n_0, i18n_2, i18n_4, ["id", "text", "heading", "Text", 3, "content"], ["id", "template", "heading", "Template", 3, "content"], ["id", "component", "heading", "Component", 3, "content"], ["id", "data", "heading", i18n_6, 3, "content"], ["id", "label", "heading", i18n_8, 3, "content"], ["tuiButton", "", "type", "button", "size", "m", 3, "click"], [1, "b-full-width"], i18n_10, [1, "tui-space_bottom-4", 3, "code"], ["documentationPropertyName", "content", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_12, ["documentationPropertyName", "status", "documentationPropertyType", "TuiNotification", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "label", "documentationPropertyType", "string", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "data", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "autoClose", "documentationPropertyType", "boolean | number", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hasCloseButton", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hasIcon", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], i18n_14, i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, [1, "b-demo-steps"], i18n_28, ["filename", "app.module.ts", 3, "code"], i18n_30, ["filename", "myComponent.component.ts", 3, "code"], i18n_32, ["routerLink", "/services/alert-service", "fragment", "example-template", "tuiLink", ""], i18n_34, ["filename", "myComponent.module.ts", 3, "code"], i18n_36, i18n_38, ["filename", "customNotification.component.ts", 3, "code"], i18n_40, i18n_42];
+      return [["header", "AlertService", "package", "CORE", "path", "core/components/alert/alert.service.ts"], ["pageTab", ""], i18n_0, i18n_2, i18n_4, ["id", "text", "heading", "Text", 3, "content"], ["id", "template", "heading", "Template", 3, "content"], ["id", "component", "heading", "Component", 3, "content"], ["id", "data", "heading", i18n_6, 3, "content"], ["id", "label", "heading", i18n_8, 3, "content"], ["tuiButton", "", "type", "button", "size", "m", 3, "click"], [1, "b-full-width"], i18n_10, [1, "tui-space_bottom-4", 3, "code"], ["documentationPropertyName", "content", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_12, ["documentationPropertyName", "status", "documentationPropertyType", "TuiNotification", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "label", "documentationPropertyType", "string", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "data", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "autoClose", "documentationPropertyType", "boolean | number", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hasCloseButton", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hasIcon", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], i18n_14, i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, [1, "b-demo-steps"], i18n_28, ["filename", "app.module.ts", 3, "code"], i18n_30, ["filename", "myComponent.component.ts", 3, "code"], i18n_32, ["routerLink", "/services/alert-service", "fragment", "example-template", "tuiLink", ""], i18n_34, i18n_36, i18n_38, ["filename", "customNotification.component.ts", 3, "code"], i18n_40, i18n_42];
     },
     template: function ExampleTuiAlertsComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
         fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiAlertsComponent_ng_template_1_Template, 18, 5, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiAlertsComponent_ng_template_2_Template, 26, 11, "ng-template", 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiAlertsComponent_ng_template_3_Template, 45, 7, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiAlertsComponent_ng_template_3_Template, 43, 6, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },

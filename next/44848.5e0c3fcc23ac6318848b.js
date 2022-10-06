@@ -1333,49 +1333,47 @@ function ExampleTuiDialogComponent_ng_template_3_Template(rf, ctx) {
     fesm2015_core/* ɵɵelement */._UZ(18, "code");
     fesm2015_core/* ɵɵelement */._UZ(19, "code");
     fesm2015_core/* ɵɵelement */._UZ(20, "code");
-    fesm2015_core/* ɵɵelement */._UZ(21, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(22, "tui-doc-code", 51);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(23, "li");
-    fesm2015_core/* ɵɵi18nStart */.tHW(24, 52);
-    fesm2015_core/* ɵɵelement */._UZ(25, "a", 53);
+    fesm2015_core/* ɵɵelementStart */.TgZ(21, "li");
+    fesm2015_core/* ɵɵi18nStart */.tHW(22, 51);
+    fesm2015_core/* ɵɵelement */._UZ(23, "a", 52);
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(26, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(27, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(28, 54);
-    fesm2015_core/* ɵɵelement */._UZ(29, "code");
-    fesm2015_core/* ɵɵelement */._UZ(30, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(24, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(25, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(26, 53);
+    fesm2015_core/* ɵɵelement */._UZ(27, "code");
+    fesm2015_core/* ɵɵelement */._UZ(28, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(31, "tui-doc-code", 55);
+    fesm2015_core/* ɵɵelement */._UZ(29, "tui-doc-code", 54);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(32, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(33, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(34, 56);
-    fesm2015_core/* ɵɵelement */._UZ(35, "code");
+    fesm2015_core/* ɵɵelementStart */.TgZ(30, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(31, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(32, 55);
+    fesm2015_core/* ɵɵelement */._UZ(33, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(36, "tui-doc-code", 55);
+    fesm2015_core/* ɵɵelement */._UZ(34, "tui-doc-code", 54);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(37, "li");
-    fesm2015_core/* ɵɵelementStart */.TgZ(38, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(39, 57);
-    fesm2015_core/* ɵɵelementStart */.TgZ(40, "code");
-    fesm2015_core/* ɵɵelement */._UZ(41, "strong");
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵi18nEnd */.N_p();
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(42, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(43, 58);
-    fesm2015_core/* ɵɵelementStart */.TgZ(44, "code");
-    fesm2015_core/* ɵɵelement */._UZ(45, "strong");
+    fesm2015_core/* ɵɵelementStart */.TgZ(35, "li");
+    fesm2015_core/* ɵɵelementStart */.TgZ(36, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(37, 56);
+    fesm2015_core/* ɵɵelementStart */.TgZ(38, "code");
+    fesm2015_core/* ɵɵelement */._UZ(39, "strong");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(46, "tui-doc-code", 47);
+    fesm2015_core/* ɵɵelementStart */.TgZ(40, "p");
+    fesm2015_core/* ɵɵi18nStart */.tHW(41, 57);
+    fesm2015_core/* ɵɵelementStart */.TgZ(42, "code");
+    fesm2015_core/* ɵɵelement */._UZ(43, "strong");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵi18nEnd */.N_p();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelement */._UZ(44, "tui-doc-code", 47);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1386,9 +1384,7 @@ function ExampleTuiDialogComponent_ng_template_3_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleModule);
     fesm2015_core/* ɵɵadvance */.xp6(6);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleServiceUsage);
-    fesm2015_core/* ɵɵadvance */.xp6(11);
-    fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleImportModuleComponent);
-    fesm2015_core/* ɵɵadvance */.xp6(9);
+    fesm2015_core/* ɵɵadvance */.xp6(18);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleCustomDialog);
     fesm2015_core/* ɵɵadvance */.xp6(5);
     fesm2015_core/* ɵɵproperty */.Q6J("code", ctx_r2.exampleLazyModule);
@@ -1400,20 +1396,20 @@ function ExampleTuiDialogComponent_ng_template_3_Template(rf, ctx) {
 function ExampleTuiDialogComponent_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(1, 59);
+    fesm2015_core/* ɵɵi18n */.SDv(1, 58);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 60);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 59);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(5, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(6, 61);
+    fesm2015_core/* ɵɵi18nStart */.tHW(6, 60);
     fesm2015_core/* ɵɵelement */._UZ(7, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(8, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(9, 62);
+    fesm2015_core/* ɵɵi18nStart */.tHW(9, 61);
     fesm2015_core/* ɵɵelement */._UZ(10, "a", 5);
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -1466,7 +1462,6 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
         'search-example/search-dialog-example.component.less': __webpack_require__.e(/* import() */ 56143).then(__webpack_require__.t.bind(__webpack_require__, 56143, 17)),
         'search-example/search-dialog.module.ts': __webpack_require__.e(/* import() */ 14491).then(__webpack_require__.t.bind(__webpack_require__, 14491, 17))
       };
-      this.exampleImportModuleComponent = __webpack_require__.e(/* import() */ 56179).then(__webpack_require__.t.bind(__webpack_require__, 56179, 17));
       this.exampleServiceUsage = __webpack_require__.e(/* import() */ 95994).then(__webpack_require__.t.bind(__webpack_require__, 95994, 17));
       this.exampleCustomDialog = __webpack_require__.e(/* import() */ 4850).then(__webpack_require__.t.bind(__webpack_require__, 4850, 17));
       this.exampleLazyModule = __webpack_require__.e(/* import() */ 62147).then(__webpack_require__.t.bind(__webpack_require__, 62147, 17));
@@ -1796,13 +1791,13 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
       let i18n_54;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7493627506876302037$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__55 = goog.getMsg(" If you want to use your own component as a dialog content, use {$startTagCode}POLYMORPHEUS_CONTEXT{$closeTagCode} in it. Dialog will provide with this token some useful options: {$startTagCode}$implicit{$closeTagCode} with {$startTagCode}Observer<O>{$closeTagCode} and {$startTagCode}completeWith{$closeTagCode} hook to call {$startTagCode}next{$closeTagCode} and {$startTagCode}complete{$closeTagCode} in one action. Do not forget to add your dialog component into {$startTagCode}entryComponents{$closeTagCode} of your module where you use dialog ", {
-          "startTagCode": "[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]",
-          "closeTagCode": "[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"
+        const MSG_EXTERNAL_1246947743891018291$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__55 = goog.getMsg(" If you want to use your own component as a dialog content, use {$startTagCode}POLYMORPHEUS_CONTEXT{$closeTagCode} in it. Dialog will provide with this token some useful options: {$startTagCode}$implicit{$closeTagCode} with {$startTagCode}Observer<O>{$closeTagCode} and {$startTagCode}completeWith{$closeTagCode} hook to call {$startTagCode}next{$closeTagCode} and {$startTagCode}complete{$closeTagCode} in one action. ", {
+          "startTagCode": "[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]",
+          "closeTagCode": "[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"
         });
-        i18n_54 = MSG_EXTERNAL_7493627506876302037$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__55;
+        i18n_54 = MSG_EXTERNAL_1246947743891018291$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__55;
       } else {
-        i18n_54 = $localize`:␟a9de9542b123113af26aaf3c2c29d42caab041d2␟7493627506876302037: If you want to use your own component as a dialog content, use ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:POLYMORPHEUS_CONTEXT${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: in it. Dialog will provide with this token some useful options: ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:$implicit${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: with ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:Observer<O>${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: and ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:completeWith${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: hook to call ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:next${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: and ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:complete${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: in one action. Do not forget to add your dialog component into ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD|\uFFFD#21\uFFFD]"}:START_TAG_CODE:entryComponents${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD|\uFFFD/#21\uFFFD]"}:CLOSE_TAG_CODE: of your module where you use dialog `;
+        i18n_54 = $localize`:␟0efb518c569629c7e2bb2777c7c832f9de63b3af␟1246947743891018291: If you want to use your own component as a dialog content, use ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:POLYMORPHEUS_CONTEXT${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: in it. Dialog will provide with this token some useful options: ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:$implicit${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: with ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:Observer<O>${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: and ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:completeWith${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: hook to call ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:next${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: and ${"[\uFFFD#15\uFFFD|\uFFFD#16\uFFFD|\uFFFD#17\uFFFD|\uFFFD#18\uFFFD|\uFFFD#19\uFFFD|\uFFFD#20\uFFFD]"}:START_TAG_CODE:complete${"[\uFFFD/#15\uFFFD|\uFFFD/#16\uFFFD|\uFFFD/#17\uFFFD|\uFFFD/#18\uFFFD|\uFFFD/#19\uFFFD|\uFFFD/#20\uFFFD]"}:CLOSE_TAG_CODE: in one action. `;
       }
 
       i18n_54 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_54);
@@ -1810,24 +1805,24 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_4053510454814781699$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__57 = goog.getMsg(" You can also use a {$startLink} template {$closeLink}", {
-          "startLink": "\uFFFD#25\uFFFD",
-          "closeLink": "\uFFFD/#25\uFFFD"
+          "startLink": "\uFFFD#23\uFFFD",
+          "closeLink": "\uFFFD/#23\uFFFD"
         });
         i18n_56 = MSG_EXTERNAL_4053510454814781699$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__57;
       } else {
-        i18n_56 = $localize`:␟8e1f35a1ec9a7effa8833227870e9b990d96e959␟4053510454814781699: You can also use a ${"\uFFFD#25\uFFFD"}:START_LINK: template ${"\uFFFD/#25\uFFFD"}:CLOSE_LINK:`;
+        i18n_56 = $localize`:␟8e1f35a1ec9a7effa8833227870e9b990d96e959␟4053510454814781699: You can also use a ${"\uFFFD#23\uFFFD"}:START_LINK: template ${"\uFFFD/#23\uFFFD"}:CLOSE_LINK:`;
       }
 
       let i18n_58;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_7366196043250081255$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__59 = goog.getMsg(" Use {$startTagCode}Observer{$closeTagCode} from {$startTagCode}$implicit{$closeTagCode} field of context to close a dialog or get some data ", {
-          "startTagCode": "[\uFFFD#29\uFFFD|\uFFFD#30\uFFFD]",
-          "closeTagCode": "[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]"
+          "startTagCode": "[\uFFFD#27\uFFFD|\uFFFD#28\uFFFD]",
+          "closeTagCode": "[\uFFFD/#27\uFFFD|\uFFFD/#28\uFFFD]"
         });
         i18n_58 = MSG_EXTERNAL_7366196043250081255$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__59;
       } else {
-        i18n_58 = $localize`:␟91ee042985c1174de60304c55f094df69b69fc0c␟7366196043250081255: Use ${"[\uFFFD#29\uFFFD|\uFFFD#30\uFFFD]"}:START_TAG_CODE:Observer${"[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]"}:CLOSE_TAG_CODE: from ${"[\uFFFD#29\uFFFD|\uFFFD#30\uFFFD]"}:START_TAG_CODE:$implicit${"[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]"}:CLOSE_TAG_CODE: field of context to close a dialog or get some data `;
+        i18n_58 = $localize`:␟91ee042985c1174de60304c55f094df69b69fc0c␟7366196043250081255: Use ${"[\uFFFD#27\uFFFD|\uFFFD#28\uFFFD]"}:START_TAG_CODE:Observer${"[\uFFFD/#27\uFFFD|\uFFFD/#28\uFFFD]"}:CLOSE_TAG_CODE: from ${"[\uFFFD#27\uFFFD|\uFFFD#28\uFFFD]"}:START_TAG_CODE:$implicit${"[\uFFFD/#27\uFFFD|\uFFFD/#28\uFFFD]"}:CLOSE_TAG_CODE: field of context to close a dialog or get some data `;
       }
 
       i18n_58 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_58);
@@ -1835,40 +1830,40 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_4116027893149592500$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__61 = goog.getMsg(" If you use dialog components in lazy loading modules, do not forget to pass into {$startTagCode}new PolymorpheusComponent Injector{$closeTagCode} of component where you open a dialog ", {
-          "startTagCode": "\uFFFD#35\uFFFD",
-          "closeTagCode": "\uFFFD/#35\uFFFD"
+          "startTagCode": "\uFFFD#33\uFFFD",
+          "closeTagCode": "\uFFFD/#33\uFFFD"
         });
         i18n_60 = MSG_EXTERNAL_4116027893149592500$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__61;
       } else {
-        i18n_60 = $localize`:␟46878c30a93e93fdcd415742dbfc5eb3c1c83797␟4116027893149592500: If you use dialog components in lazy loading modules, do not forget to pass into ${"\uFFFD#35\uFFFD"}:START_TAG_CODE:new PolymorpheusComponent Injector${"\uFFFD/#35\uFFFD"}:CLOSE_TAG_CODE: of component where you open a dialog `;
+        i18n_60 = $localize`:␟46878c30a93e93fdcd415742dbfc5eb3c1c83797␟4116027893149592500: If you use dialog components in lazy loading modules, do not forget to pass into ${"\uFFFD#33\uFFFD"}:START_TAG_CODE:new PolymorpheusComponent Injector${"\uFFFD/#33\uFFFD"}:CLOSE_TAG_CODE: of component where you open a dialog `;
       }
 
       let i18n_62;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_4210644035876782944$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__63 = goog.getMsg(" Dialogs have experimental feature with closing them on browser backward navigation. It was achieved through manipulation of {$startTagCode}{$startTagStrong}window.history{$closeTagStrong}{$closeTagCode} . ", {
-          "startTagCode": "\uFFFD#40\uFFFD",
-          "startTagStrong": "\uFFFD#41\uFFFD",
-          "closeTagStrong": "\uFFFD/#41\uFFFD",
-          "closeTagCode": "\uFFFD/#40\uFFFD"
+          "startTagCode": "\uFFFD#38\uFFFD",
+          "startTagStrong": "\uFFFD#39\uFFFD",
+          "closeTagStrong": "\uFFFD/#39\uFFFD",
+          "closeTagCode": "\uFFFD/#38\uFFFD"
         });
         i18n_62 = MSG_EXTERNAL_4210644035876782944$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__63;
       } else {
-        i18n_62 = $localize`:␟b8215110c06020b19cfe79c37eaa93ec737c78be␟4210644035876782944: Dialogs have experimental feature with closing them on browser backward navigation. It was achieved through manipulation of ${"\uFFFD#40\uFFFD"}:START_TAG_CODE:${"\uFFFD#41\uFFFD"}:START_TAG_STRONG:window.history${"\uFFFD/#41\uFFFD"}:CLOSE_TAG_STRONG:${"\uFFFD/#40\uFFFD"}:CLOSE_TAG_CODE: . `;
+        i18n_62 = $localize`:␟b8215110c06020b19cfe79c37eaa93ec737c78be␟4210644035876782944: Dialogs have experimental feature with closing them on browser backward navigation. It was achieved through manipulation of ${"\uFFFD#38\uFFFD"}:START_TAG_CODE:${"\uFFFD#39\uFFFD"}:START_TAG_STRONG:window.history${"\uFFFD/#39\uFFFD"}:CLOSE_TAG_STRONG:${"\uFFFD/#38\uFFFD"}:CLOSE_TAG_CODE: . `;
       }
 
       let i18n_64;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
         const MSG_EXTERNAL_7894941606914093222$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__65 = goog.getMsg(" The feature is disabled by default because it can cause troubles in some cases. To enable this feature for your app use {$startTagCode}{$startTagStrong}TUI_DIALOG_CLOSES_ON_BACK{$closeTagStrong}{$closeTagCode} token. ", {
-          "startTagCode": "\uFFFD#44\uFFFD",
-          "startTagStrong": "\uFFFD#45\uFFFD",
-          "closeTagStrong": "\uFFFD/#45\uFFFD",
-          "closeTagCode": "\uFFFD/#44\uFFFD"
+          "startTagCode": "\uFFFD#42\uFFFD",
+          "startTagStrong": "\uFFFD#43\uFFFD",
+          "closeTagStrong": "\uFFFD/#43\uFFFD",
+          "closeTagCode": "\uFFFD/#42\uFFFD"
         });
         i18n_64 = MSG_EXTERNAL_7894941606914093222$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_DIALOG_DIALOG_COMPONENT_TS__65;
       } else {
-        i18n_64 = $localize`:␟54b45b781929dc1b95e06d15119dc6743e2fc719␟7894941606914093222: The feature is disabled by default because it can cause troubles in some cases. To enable this feature for your app use ${"\uFFFD#44\uFFFD"}:START_TAG_CODE:${"\uFFFD#45\uFFFD"}:START_TAG_STRONG:TUI_DIALOG_CLOSES_ON_BACK${"\uFFFD/#45\uFFFD"}:CLOSE_TAG_STRONG:${"\uFFFD/#44\uFFFD"}:CLOSE_TAG_CODE: token. `;
+        i18n_64 = $localize`:␟54b45b781929dc1b95e06d15119dc6743e2fc719␟7894941606914093222: The feature is disabled by default because it can cause troubles in some cases. To enable this feature for your app use ${"\uFFFD#42\uFFFD"}:START_TAG_CODE:${"\uFFFD#43\uFFFD"}:START_TAG_STRONG:TUI_DIALOG_CLOSES_ON_BACK${"\uFFFD/#43\uFFFD"}:CLOSE_TAG_STRONG:${"\uFFFD/#42\uFFFD"}:CLOSE_TAG_CODE: token. `;
       }
 
       let i18n_66;
@@ -1916,14 +1911,14 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
         i18n_72 = $localize`:␟00c0fe5a892a9249c1851574b1edd06a1c3f85b5␟5856247484231506150: See example of custom dialog ${"\uFFFD#10\uFFFD"}:START_LINK: here ${"\uFFFD/#10\uFFFD"}:CLOSE_LINK: . `;
       }
 
-      return [["header", "Dialog", "package", "CORE"], ["pageTab", ""], ["pageTab", i18n_0], i18n_2, i18n_4, ["tuiLink", "", "routerLink", "/dialogs"], [1, "tui-space_vertical-4"], i18n_6, [3, "code"], ["status", "warning", 1, "tui-space_vertical-4"], ["id", "string", "heading", i18n_8, 3, "content"], ["id", "directive", "heading", i18n_10, 3, "content"], ["id", "data", "heading", i18n_12, "description", "Using two-way data transfer", 3, "content"], ["id", "template", "heading", i18n_14, 3, "content"], ["id", "mobile", "heading", i18n_16, 3, "content"], ["id", "header", "heading", i18n_18, 3, "content"], ["id", "mobile-fullscreen", "heading", i18n_20, 3, "content"], ["tuiButton", "", "type", "button", "size", "m", 3, "click"], ["template", ""], [1, "b-full-width"], i18n_22, ["documentationPropertyName", "closeable", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dismissible", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "data", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "header", "documentationPropertyType", "PolymorpheusContent"], ["documentationPropertyName", "label", "documentationPropertyType", "string", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "required", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyType", "TuiDialogSize", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_24, [4, "ngIf"], i18n_26, i18n_28, i18n_30, [1, "container"], i18n_32, ["tuiAccordionItemContent", ""], ["tuiButton", "", "type", "button", "size", "m", 1, "tui-space_top-2", "tui-space_right-1", 3, "click"], i18n_33, i18n_36, i18n_38, i18n_40, i18n_42, i18n_44, i18n_46, i18n_48, [1, "b-demo-steps"], i18n_50, ["filename", "app.module.ts", 3, "code"], i18n_52, ["filename", "myComponent.component.ts", 3, "code"], i18n_54, ["filename", "myComponent.module.ts", 3, "code"], i18n_56, ["routerLink", "/dialogs", "fragment", "example-template", "tuiLink", ""], i18n_58, ["filename", "myDialog.component.ts", 3, "code"], i18n_60, i18n_62, i18n_64, i18n_66, i18n_68, i18n_70, i18n_72];
+      return [["header", "Dialog", "package", "CORE"], ["pageTab", ""], ["pageTab", i18n_0], i18n_2, i18n_4, ["tuiLink", "", "routerLink", "/dialogs"], [1, "tui-space_vertical-4"], i18n_6, [3, "code"], ["status", "warning", 1, "tui-space_vertical-4"], ["id", "string", "heading", i18n_8, 3, "content"], ["id", "directive", "heading", i18n_10, 3, "content"], ["id", "data", "heading", i18n_12, "description", "Using two-way data transfer", 3, "content"], ["id", "template", "heading", i18n_14, 3, "content"], ["id", "mobile", "heading", i18n_16, 3, "content"], ["id", "header", "heading", i18n_18, 3, "content"], ["id", "mobile-fullscreen", "heading", i18n_20, 3, "content"], ["tuiButton", "", "type", "button", "size", "m", 3, "click"], ["template", ""], [1, "b-full-width"], i18n_22, ["documentationPropertyName", "closeable", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dismissible", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "data", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "header", "documentationPropertyType", "PolymorpheusContent"], ["documentationPropertyName", "label", "documentationPropertyType", "string", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "required", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyType", "TuiDialogSize", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], i18n_24, [4, "ngIf"], i18n_26, i18n_28, i18n_30, [1, "container"], i18n_32, ["tuiAccordionItemContent", ""], ["tuiButton", "", "type", "button", "size", "m", 1, "tui-space_top-2", "tui-space_right-1", 3, "click"], i18n_33, i18n_36, i18n_38, i18n_40, i18n_42, i18n_44, i18n_46, i18n_48, [1, "b-demo-steps"], i18n_50, ["filename", "app.module.ts", 3, "code"], i18n_52, ["filename", "myComponent.component.ts", 3, "code"], i18n_54, i18n_56, ["routerLink", "/dialogs", "fragment", "example-template", "tuiLink", ""], i18n_58, ["filename", "myDialog.component.ts", 3, "code"], i18n_60, i18n_62, i18n_64, i18n_66, i18n_68, i18n_70, i18n_72];
     },
     template: function ExampleTuiDialogComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
         fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiDialogComponent_ng_template_1_Template, 31, 8, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiDialogComponent_ng_template_2_Template, 27, 8, "ng-template", 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiDialogComponent_ng_template_3_Template, 47, 6, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiDialogComponent_ng_template_3_Template, 45, 5, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiDialogComponent_ng_template_4_Template, 11, 0, "ng-template", 2);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
