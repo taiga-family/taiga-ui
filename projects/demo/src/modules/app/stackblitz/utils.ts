@@ -98,16 +98,19 @@ export async function getAllTaigaUIModulesFile(
      * You can't just iterate the array with package-names - it will cause error:
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
-    const [cdk, core, kit, charts, commerce, editor, mobile, table] = await Promise.all([
-        import(`@taiga-ui/cdk`),
-        import(`@taiga-ui/core`),
-        import(`@taiga-ui/kit`),
-        import(`@taiga-ui/addon-charts`),
-        import(`@taiga-ui/addon-commerce`),
-        import(`@taiga-ui/addon-editor`),
-        import(`@taiga-ui/addon-mobile`),
-        import(`@taiga-ui/addon-table`),
-    ]).then(modules => modules.map(getAllModules));
+    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] =
+        await Promise.all([
+            import(`@taiga-ui/cdk`),
+            import(`@taiga-ui/core`),
+            import(`@taiga-ui/kit`),
+            import(`@taiga-ui/addon-charts`),
+            import(`@taiga-ui/addon-commerce`),
+            import(`@taiga-ui/addon-editor`),
+            import(`@taiga-ui/addon-mobile`),
+            import(`@taiga-ui/addon-preview`),
+            import(`@taiga-ui/addon-table`),
+            import(`@taiga-ui/addon-tablebars`),
+        ]).then(modules => modules.map(getAllModules));
 
     const additionalModulesImports = additionalModules
         .map(
@@ -139,8 +142,14 @@ import {
     ${mobile}
 } from '@taiga-ui/addon-mobile';
 import {
+    ${preview}
+} from '@taiga-ui/addon-preview';
+import {
     ${table}
 } from '@taiga-ui/addon-table';
+import {
+    ${tablebars}
+} from '@taiga-ui/addon-tablebars';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -170,8 +179,12 @@ export const ALL_TAIGA_UI_MODULES = [
     ${editor},
     /* ADDON-MOBILE */
     ${mobile},
+    /* ADDON-PREVIEW */
+    ${preview},
     /* ADDON-TABLE */
     ${table},
+    /* ADDON-TABLEBARS */
+    ${tablebars},
     /* EXAMPLE MODULES */
     ${additionalModules.map(([, {className}]) => className).join(`,\n\t\t`)}
 ];
