@@ -74,13 +74,13 @@ export class ExampleTuiDialogComponent {
         'search-example/search-dialog-example.component.ts': import(
             `./examples/7/search-example/search-dialog-example.component.ts?raw`
         ),
-        'search-example/search-dialog-example.component.html': import(
+        'search-example/search-dialog-example.template.html': import(
             `./examples/7/search-example/search-dialog-example.template.html?raw`
         ),
         'search-example/search-dialog-example.component.less': import(
             `./examples/7/search-example/search-dialog-example.component.less?raw`
         ),
-        'search-dialog.module.ts': import(
+        'search-example/search-dialog.module.ts': import(
             `./examples/7/search-example/search-dialog.module.ts?raw`
         ),
     };
