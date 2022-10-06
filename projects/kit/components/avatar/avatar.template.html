@@ -6,4 +6,9 @@
     [src]="avatarUrl || ''"
     (error)="onError()"
 />
+<tui-svg
+    *ngIf="iconAvatar"
+    class="t-icon"
+    [src]="avatarUrl || ''"
+></tui-svg>
 <span class="t-text">{{ computedText }}</span>
