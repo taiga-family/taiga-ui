@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -17,6 +18,7 @@ import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
+import {tuiIsSafeLinkRange} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -70,6 +72,8 @@ export class TuiEditorNewComponent
         @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
         @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
         private readonly contentProcessor: TuiStringHandler<string>,
+        @Inject(DOCUMENT)
+        private readonly documentRef: Document,
     ) {
         super(control, changeDetectorRef);
     }
@@ -132,8 +136,20 @@ export class TuiEditorNewComponent
         return ``;
     }
 
-    private readonly isSelectionLink = ({startContainer, endContainer}: Range): boolean =>
-        !!startContainer.parentElement?.closest(`a`)?.contains(endContainer);
+    private readonly isSelectionLink = (range: Range): boolean =>
+        this.currentFocusedNodeIsAnchor(range) && tuiIsSafeLinkRange(range);
+
+    /**
+     * @description:
+     * The commonAncestorContainer not always relevant node element in Range,
+     * so the focusNode is used for the correct behaviour from the selection,
+     * which is the actual element at the moment
+     */
+    private currentFocusedNodeIsAnchor(range: Range): boolean {
+        return !!range.startContainer.parentElement
+            ?.closest(`a`)
+            ?.contains(this.documentRef.getSelection()?.focusNode || null);
+    }
 
     private get hasValue(): boolean {
         return !!this.value;
