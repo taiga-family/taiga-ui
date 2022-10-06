@@ -13,4 +13,5 @@ export * from './parse-color';
 export * from './parse-gradient';
 export * from './rgb-to-hex';
 export * from './rgb-to-hsv';
+export * from './safe-link-range';
 export * from './to-gradient';
