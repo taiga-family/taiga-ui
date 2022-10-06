@@ -1,6 +1,16 @@
 export const defaultEditorStyles = `
 @import 'https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap';
 
+.tui-editor-socket h1,
+.tui-editor-socket h2,
+.tui-editor-socket h3,
+.tui-editor-socket h4,
+.tui-editor-socket h5,
+.tui-editor-socket h6 {
+    word-break: break-word;
+    line-height: normal;
+}
+
 body.tui-editor-socket {
     margin: 0;
     overflow: hidden;
@@ -31,7 +41,7 @@ p:empty:before {
     margin: 16px 0;
 }
 
-.tui-editor-socket ul li:before {
+.tui-editor-socket ul > li:before {
     content: '';
     display: inline-block;
     width: 8px;
@@ -45,7 +55,7 @@ p:empty:before {
     counter-reset: counter;
 }
 
-.tui-editor-socket ol li:before {
+.tui-editor-socket ol > li:before {
     content: counter(counter) '.';
     width: 24px;
     margin: 0 12px 0 -24px;
