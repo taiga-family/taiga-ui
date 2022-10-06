@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -17,6 +17,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 @Component({
     selector: `example-tui-editor-new`,
     templateUrl: `./editor-new.template.html`,
+    styleUrls: [`./editor-new.styles.less`],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [
         {
