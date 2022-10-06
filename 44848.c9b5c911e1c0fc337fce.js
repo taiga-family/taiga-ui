@@ -1462,9 +1462,9 @@ let ExampleTuiDialogComponent = /*#__PURE__*/(() => {
         TypeScript: __webpack_require__.e(/* import() */ 64257).then(__webpack_require__.t.bind(__webpack_require__, 64257, 17)),
         HTML: __webpack_require__.e(/* import() */ 33349).then(__webpack_require__.t.bind(__webpack_require__, 33349, 17)),
         'search-example/search-dialog-example.component.ts': __webpack_require__.e(/* import() */ 49576).then(__webpack_require__.t.bind(__webpack_require__, 42798, 17)),
-        'search-example/search-dialog-example.component.html': __webpack_require__.e(/* import() */ 19016).then(__webpack_require__.t.bind(__webpack_require__, 19016, 17)),
+        'search-example/search-dialog-example.template.html': __webpack_require__.e(/* import() */ 19016).then(__webpack_require__.t.bind(__webpack_require__, 19016, 17)),
         'search-example/search-dialog-example.component.less': __webpack_require__.e(/* import() */ 56143).then(__webpack_require__.t.bind(__webpack_require__, 56143, 17)),
-        'search-dialog.module.ts': __webpack_require__.e(/* import() */ 14491).then(__webpack_require__.t.bind(__webpack_require__, 14491, 17))
+        'search-example/search-dialog.module.ts': __webpack_require__.e(/* import() */ 14491).then(__webpack_require__.t.bind(__webpack_require__, 14491, 17))
       };
       this.exampleImportModuleComponent = __webpack_require__.e(/* import() */ 56179).then(__webpack_require__.t.bind(__webpack_require__, 56179, 17));
       this.exampleServiceUsage = __webpack_require__.e(/* import() */ 95994).then(__webpack_require__.t.bind(__webpack_require__, 95994, 17));
