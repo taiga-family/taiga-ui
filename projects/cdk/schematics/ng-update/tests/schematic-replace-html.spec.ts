@@ -13,6 +13,11 @@ import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
+const COMPONENT_WITHOUT_ANY_TEMPLATE = `
+@Component({ selector: 'i-am-invalid-component' })
+class ComponentWithoutTemplate {}
+`;
+
 const COMPONENT_WITH_TEMPLATE_URL = `
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {}
@@ -467,6 +472,14 @@ describe('ng-update', () => {
         );
     });
 
+    it('should NOT throw error if component without any template', async () => {
+        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+
+        expect(tree.readContent('test/app/no-template.component.ts')).toEqual(
+            COMPONENT_WITHOUT_ANY_TEMPLATE,
+        );
+    });
+
     it('should add font style in angular.json', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
@@ -499,6 +512,7 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
+    createSourceFile('test/app/no-template.component.ts', COMPONENT_WITHOUT_ANY_TEMPLATE);
     createSourceFile('test/app/test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
 
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
