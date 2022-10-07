@@ -42,6 +42,11 @@ export class ExampleTuiAvatarComponent {
         LESS: import(`./examples/4/index.html?raw`),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import(`./examples/5/index.ts?raw`),
+        HTML: import(`./examples/5/index.html?raw`),
+    };
+
     readonly avatarUrlVariants: readonly string[] = [
         `https://ng-web-apis.github.io/dist/assets/images/web-api.svg`,
     ];

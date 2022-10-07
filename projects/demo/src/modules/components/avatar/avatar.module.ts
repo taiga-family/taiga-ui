@@ -10,6 +10,7 @@ import {TuiAvatarExample1} from './examples/1';
 import {TuiAvatarExample2} from './examples/2';
 import {TuiAvatarExample3} from './examples/3';
 import {TuiAvatarExample4} from './examples/4';
+import {TuiAvatarExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import {TuiAvatarExample4} from './examples/4';
         TuiAvatarExample2,
         TuiAvatarExample3,
         TuiAvatarExample4,
+        TuiAvatarExample5,
     ],
     exports: [ExampleTuiAvatarComponent],
 })

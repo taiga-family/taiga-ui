@@ -115,3 +115,24 @@
 .t-text {
     color: var(--tui-avatar-color, var(--tui-text-01));
 }
+
+.t-icon {
+    .fullsize();
+    color: var(--tui-avatar-color, var(--tui-text-01));
+
+    :host[data-size='xs'] & {
+        transform: scale(0.5);
+    }
+
+    :host[data-size='m'] & {
+        transform: scale(1.6);
+    }
+
+    :host[data-size='l'] & {
+        transform: scale(2);
+    }
+
+    :host[data-size='xl'] & {
+        transform: scale(3.2);
+    }
+}
