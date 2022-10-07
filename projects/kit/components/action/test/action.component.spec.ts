@@ -7,7 +7,7 @@ import {configureTestSuite, TuiActionHarness} from '@taiga-ui/testing';
 import {TuiActionComponent} from '../action.component';
 import {TuiActionModule} from '../action.module';
 
-fdescribe(`Action`, () => {
+describe(`Action`, () => {
     @Component({
         template: `
             <button
