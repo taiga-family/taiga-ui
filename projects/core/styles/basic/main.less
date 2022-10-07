@@ -71,3 +71,16 @@ html,
 ::-ms-reveal {
     display: none;
 }
+
+// @note: only safari 16+
+@supports (-webkit-hyphens: none) and (text-align-last: right) {
+    /**
+      * @descriptions:
+      * Safari 16 has bug when for some reason,
+      * the ::after blocks aren't removed
+      * after the destruction of the parent class
+     */
+    :after {
+        content: none;
+    }
+}
