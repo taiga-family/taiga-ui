@@ -99,9 +99,9 @@ jobs:
         if: ${{ env.IS_DRY_MODE == 'true' }}
         uses: ./.github/actions/announce
         with:
-            version: ${{ steps.run-release.outputs.new_version }}
-            url: ${{ secrets.ANNOUNCE_WEBHOOK_TEST }}
-            channel: ${{ secrets.ANNOUNCE_TARGET_TEST }}
+          version: ${{ steps.run-release.outputs.new_version }}
+          url: ${{ secrets.ANNOUNCE_WEBHOOK_TEST }}
+          channel: ${{ secrets.ANNOUNCE_TARGET_TEST }}
 
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
