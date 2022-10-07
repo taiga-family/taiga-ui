@@ -7,11 +7,15 @@ import {tuiGetDocumentOrShadowRoot} from './get-document-or-shadow-root';
  * Returns array of Elements covering edges of given element or null if at least one edge middle point is visible
  *
  * CAUTION: Empty array means element if offscreen i.e. covered by no elements, rather than not covered
+ * TODO: v4.0 change function signature to
+ * ```ts
+ * function tuiGetElementObscures(element: Element): readonly [Element, Element, Element, Element] | [] | null
+ * ```
  */
 export function tuiGetElementObscures(element: Element): readonly Element[] | null {
     const {ownerDocument} = element;
 
-    if (!ownerDocument?.defaultView) {
+    if (!ownerDocument?.defaultView || !element.getBoundingClientRect) {
         return null;
     }
 
