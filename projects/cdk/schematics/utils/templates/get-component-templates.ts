@@ -18,10 +18,11 @@ export function getComponentTemplates(
     return getClasses(pattern, query)
         .map(declaration => declaration.getDecorator('Component'))
         .filter((decorator): decorator is Decorator => !!decorator)
-        .map(decoratorToTemplateResource);
+        .map(decoratorToTemplateResource)
+        .filter(<T>(x: T | null): x is T => Boolean(x));
 }
 
-function decoratorToTemplateResource(decorator: Decorator): TemplateResource {
+function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];
 
     const templateUrl = metadata.getProperty('templateUrl') as PropertyAssignment;
@@ -37,13 +38,15 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource {
             componentPath,
             templatePath: getFullTemplatePath(templatePath, path.parse(componentPath)),
         };
-    } else {
+    } else if (template) {
         return {
             componentPath,
             template: template.getInitializer()?.getText() || '',
             offset: template.getInitializer()?.getStart() || 0,
         };
     }
+
+    return null;
 }
 
 function getFullTemplatePath(
