@@ -19767,6 +19767,10 @@ var miscellaneous = __webpack_require__(64196);
  * Returns array of Elements covering edges of given element or null if at least one edge middle point is visible
  *
  * CAUTION: Empty array means element if offscreen i.e. covered by no elements, rather than not covered
+ * TODO: v4.0 change function signature to
+ * ```ts
+ * function tuiGetElementObscures(element: Element): readonly [Element, Element, Element, Element] | [] | null
+ * ```
  */
 
 function tuiGetElementObscures(element) {
@@ -19774,7 +19778,7 @@ function tuiGetElementObscures(element) {
     ownerDocument
   } = element;
 
-  if (!(ownerDocument === null || ownerDocument === void 0 ? void 0 : ownerDocument.defaultView)) {
+  if (!(ownerDocument === null || ownerDocument === void 0 ? void 0 : ownerDocument.defaultView) || !element.getBoundingClientRect) {
     return null;
   }
 
