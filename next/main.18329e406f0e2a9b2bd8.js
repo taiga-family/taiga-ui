@@ -37390,7 +37390,7 @@ const ROUTES = [{
 }, {
   path: `components/avatar`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield __webpack_require__.e(/* import() */ 66504).then(__webpack_require__.bind(__webpack_require__, 66504))).ExampleTuiAvatarModule;
+    return (yield __webpack_require__.e(/* import() */ 20910).then(__webpack_require__.bind(__webpack_require__, 20910))).ExampleTuiAvatarModule;
   }),
   data: {
     title: `Avatar`
@@ -45100,14 +45100,16 @@ const tuiAvatarOptionsProvider = options => ({
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "J": () => (/* binding */ TuiAvatarComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(64762);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(90987);
-/* harmony import */ var _taiga_ui_kit_utils_format__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(64261);
+/* harmony import */ var _taiga_ui_kit_utils_format__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(64261);
 /* harmony import */ var _avatar_options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19135);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(74788);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12057);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12057);
 /* harmony import */ var _directives_lazy_loading_lazy_loading_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41532);
+/* harmony import */ var _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(34880);
+
 
 
 
@@ -45119,21 +45121,32 @@ const tuiAvatarOptionsProvider = options => ({
 
 function TuiAvatarComponent_img_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelementStart"] */ .TgZ(0, "img", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵlistener"] */ .NdJ("error", function TuiAvatarComponent_img_0_Template_img_error_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵrestoreView"] */ .CHM(_r2);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r1.onError();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelementStart"] */ .TgZ(0, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵlistener"] */ .NdJ("error", function TuiAvatarComponent_img_0_Template_img_error_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵrestoreView"] */ .CHM(_r3);
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r2.onError();
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r0.avatarUrl || "", _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵsanitizeUrl"] */ .LSH);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵattribute"] */ .uIk("alt", ctx_r0.text);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r0.avatarUrl || "", _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵsanitizeUrl"] */ .LSH);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵattribute"] */ .uIk("alt", ctx_r0.text);
+  }
+}
+
+function TuiAvatarComponent_tui_svg_1_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelement"] */ ._UZ(0, "tui-svg", 4);
+  }
+
+  if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r1.avatarUrl || "");
   }
 }
 
@@ -45149,20 +45162,26 @@ class TuiAvatarComponent {
   }
 
   set avatarUrlSetter(avatarUrl) {
-    this.isUrlValid = !!avatarUrl;
     this.avatarUrl = avatarUrl;
+    this.isUrlValid = !!avatarUrl && !this.iconAvatar;
   }
 
   get bgColor() {
-    return this.autoColor ? (0,_taiga_ui_kit_utils_format__WEBPACK_IMPORTED_MODULE_5__/* .tuiStringHashToHsl */ .s)(this.text) : ``;
+    return this.autoColor ? (0,_taiga_ui_kit_utils_format__WEBPACK_IMPORTED_MODULE_6__/* .tuiStringHashToHsl */ .s)(this.text) : ``;
   }
 
   get hasAvatar() {
     return this.avatarUrl !== null && this.isUrlValid;
   }
 
+  get iconAvatar() {
+    var _a;
+
+    return !!((_a = this.avatarUrl) === null || _a === void 0 ? void 0 : _a.startsWith(`tuiIcon`));
+  }
+
   get computedText() {
-    if (this.hasAvatar || this.text === ``) {
+    if (this.hasAvatar || this.iconAvatar || this.text === ``) {
       return ``;
     }
 
@@ -45177,18 +45196,18 @@ class TuiAvatarComponent {
 }
 
 TuiAvatarComponent.ɵfac = function TuiAvatarComponent_Factory(t) {
-  return new (t || TuiAvatarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_avatar_options__WEBPACK_IMPORTED_MODULE_2__/* .TUI_AVATAR_OPTIONS */ .fh));
+  return new (t || TuiAvatarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_avatar_options__WEBPACK_IMPORTED_MODULE_2__/* .TUI_AVATAR_OPTIONS */ .fh));
 };
 
-TuiAvatarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiAvatarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiAvatarComponent,
   selectors: [["tui-avatar"]],
   hostVars: 7,
   hostBindings: function TuiAvatarComponent_HostBindings(rf, ctx) {
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵattribute"] */ .uIk("data-size", ctx.size);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵstyleProp"] */ .Udp("background", ctx.bgColor);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵclassProp"] */ .ekj("_rounded", ctx.rounded)("_has-avatar", ctx.hasAvatar);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵattribute"] */ .uIk("data-size", ctx.size);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵstyleProp"] */ .Udp("background", ctx.bgColor);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵclassProp"] */ .ekj("_rounded", ctx.rounded)("_has-avatar", ctx.hasAvatar);
     }
   },
   inputs: {
@@ -45198,37 +45217,40 @@ TuiAvatarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4
     autoColor: "autoColor",
     rounded: "rounded"
   },
-  decls: 3,
-  vars: 2,
-  consts: [["loading", "lazy", "class", "t-image", 3, "src", "error", 4, "ngIf"], [1, "t-text"], ["loading", "lazy", 1, "t-image", 3, "src", "error"]],
+  decls: 4,
+  vars: 3,
+  consts: [["loading", "lazy", "class", "t-image", 3, "src", "error", 4, "ngIf"], ["class", "t-icon", 3, "src", 4, "ngIf"], [1, "t-text"], ["loading", "lazy", 1, "t-image", 3, "src", "error"], [1, "t-icon", 3, "src"]],
   template: function TuiAvatarComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵtemplate"] */ .YNc(0, TuiAvatarComponent_img_0_Template, 1, 2, "img", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelementStart"] */ .TgZ(1, "span", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵtext"] */ ._uU(2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(0, TuiAvatarComponent_img_0_Template, 1, 2, "img", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(1, TuiAvatarComponent_tui_svg_1_Template, 1, 1, "tui-svg", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelementStart"] */ .TgZ(2, "span", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtext"] */ ._uU(3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelementEnd"] */ .qZA();
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.isUrlValid);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵadvance"] */ .xp6(2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵtextInterpolate"] */ .Oqu(ctx.computedText);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.isUrlValid);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.iconAvatar);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵadvance"] */ .xp6(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtextInterpolate"] */ .Oqu(ctx.computedText);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__/* .NgIf */ .O5, _directives_lazy_loading_lazy_loading_directive__WEBPACK_IMPORTED_MODULE_3__/* .TuiLazyLoadingDirective */ .B],
-  styles: ["[_nghost-%COMP%]{position:relative;display:flex;flex-shrink:0;border-radius:var(--tui-radius-m);color:var(--tui-secondary-active);text-align:center;text-transform:uppercase;justify-content:center;align-items:center;background:currentColor;background:var(--tui-avatar-background, currentColor);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;overflow:hidden}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-s);width:1.5rem;height:1.5rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-m);width:2rem;height:2rem}[data-size=m][_nghost-%COMP%]{font:var(--tui-font-text-l);width:3rem;height:3rem}[data-size=l][_nghost-%COMP%]{font:var(--tui-font-heading-5);width:4rem;height:4rem;border-radius:var(--tui-radius-l)}[data-size=xl][_nghost-%COMP%]{font:var(--tui-font-heading-3);width:6rem;height:6rem;border-radius:var(--tui-radius-l)}[data-size=xxl][_nghost-%COMP%]{font:var(--tui-font-heading-1);width:9rem;height:9rem;border-radius:var(--tui-radius-l)}._has-avatar[_nghost-%COMP%]{background-color:transparent}._rounded[_nghost-%COMP%]{border-radius:100%}  .tui-avatar-stack{display:flex;width:-webkit-min-content;width:-moz-min-content;width:min-content}.tui-avatar-stack[data-size=xs][_nghost-%COMP%], .tui-avatar-stack   [data-size=xs][_nghost-%COMP%]{margin-right:-.625rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=s][_nghost-%COMP%], .tui-avatar-stack   [data-size=s][_nghost-%COMP%]{margin-right:-.875rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=m][_nghost-%COMP%], .tui-avatar-stack   [data-size=m][_nghost-%COMP%]{margin-right:-1.25rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=l][_nghost-%COMP%], .tui-avatar-stack   [data-size=l][_nghost-%COMP%]{margin-right:-1.625rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xl][_nghost-%COMP%]{margin-right:-2.25rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xxl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xxl][_nghost-%COMP%]{margin-right:-3.375rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.t-image[_ngcontent-%COMP%]{width:100%;height:100%;object-fit:cover}.t-text[_ngcontent-%COMP%]{color:var(--tui-text-01);color:var(--tui-avatar-color, var(--tui-text-01))}"],
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__/* .NgIf */ .O5, _directives_lazy_loading_lazy_loading_directive__WEBPACK_IMPORTED_MODULE_3__/* .TuiLazyLoadingDirective */ .B, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiSvgComponent */ .P],
+  styles: ["[_nghost-%COMP%]{position:relative;display:flex;flex-shrink:0;border-radius:var(--tui-radius-m);color:var(--tui-secondary-active);text-align:center;text-transform:uppercase;justify-content:center;align-items:center;background:currentColor;background:var(--tui-avatar-background, currentColor);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;overflow:hidden}[data-size=xs][_nghost-%COMP%]{font:var(--tui-font-text-s);width:1.5rem;height:1.5rem}[data-size=s][_nghost-%COMP%]{font:var(--tui-font-text-m);width:2rem;height:2rem}[data-size=m][_nghost-%COMP%]{font:var(--tui-font-text-l);width:3rem;height:3rem}[data-size=l][_nghost-%COMP%]{font:var(--tui-font-heading-5);width:4rem;height:4rem;border-radius:var(--tui-radius-l)}[data-size=xl][_nghost-%COMP%]{font:var(--tui-font-heading-3);width:6rem;height:6rem;border-radius:var(--tui-radius-l)}[data-size=xxl][_nghost-%COMP%]{font:var(--tui-font-heading-1);width:9rem;height:9rem;border-radius:var(--tui-radius-l)}._has-avatar[_nghost-%COMP%]{background-color:transparent}._rounded[_nghost-%COMP%]{border-radius:100%}  .tui-avatar-stack{display:flex;width:-webkit-min-content;width:-moz-min-content;width:min-content}.tui-avatar-stack[data-size=xs][_nghost-%COMP%], .tui-avatar-stack   [data-size=xs][_nghost-%COMP%]{margin-right:-.625rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=s][_nghost-%COMP%], .tui-avatar-stack   [data-size=s][_nghost-%COMP%]{margin-right:-.875rem;box-shadow:0 0 0 1px var(--tui-base-01);box-shadow:0 0 0 1px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=m][_nghost-%COMP%], .tui-avatar-stack   [data-size=m][_nghost-%COMP%]{margin-right:-1.25rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=l][_nghost-%COMP%], .tui-avatar-stack   [data-size=l][_nghost-%COMP%]{margin-right:-1.625rem;box-shadow:0 0 0 2px var(--tui-base-01);box-shadow:0 0 0 2px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xl][_nghost-%COMP%]{margin-right:-2.25rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.tui-avatar-stack[data-size=xxl][_nghost-%COMP%], .tui-avatar-stack   [data-size=xxl][_nghost-%COMP%]{margin-right:-3.375rem;box-shadow:0 0 0 3px var(--tui-base-01);box-shadow:0 0 0 3px var(--tui-avatar-border, var(--tui-base-01))}.t-image[_ngcontent-%COMP%]{width:100%;height:100%;object-fit:cover}.t-text[_ngcontent-%COMP%]{color:var(--tui-text-01);color:var(--tui-avatar-color, var(--tui-text-01))}.t-icon[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;color:var(--tui-text-01);color:var(--tui-avatar-color, var(--tui-text-01))}[data-size=xs][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{transform:scale(.5)}[data-size=m][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{transform:scale(1.6)}[data-size=l][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{transform:scale(2)}[data-size=xl][_nghost-%COMP%]   .t-icon[_ngcontent-%COMP%]{transform:scale(3.2)}"],
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_7__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "size", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "size", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_7__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiRequiredSetter)()], TuiAvatarComponent.prototype, "avatarUrlSetter", null);
+(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiRequiredSetter)()], TuiAvatarComponent.prototype, "avatarUrlSetter", null);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_7__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "text", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "text", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_7__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "autoColor", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "autoColor", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_7__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "rounded", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiAvatarComponent.prototype, "rounded", void 0);
 
 /***/ }),
 
@@ -67090,6 +67112,7 @@ var directives = __webpack_require__(63686);
 
 
 
+
 let TuiAvatarModule = /*#__PURE__*/(() => {
   class TuiAvatarModule {}
 
@@ -67101,7 +67124,7 @@ let TuiAvatarModule = /*#__PURE__*/(() => {
     type: TuiAvatarModule
   });
   TuiAvatarModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, directives/* TuiLazyLoadingModule */.GE]]
+    imports: [[common/* CommonModule */.ez, directives/* TuiLazyLoadingModule */.GE, core.TuiSvgModule]]
   });
   return TuiAvatarModule;
 })();
@@ -67109,7 +67132,7 @@ let TuiAvatarModule = /*#__PURE__*/(() => {
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(TuiAvatarModule, {
     declarations: [avatar_component/* TuiAvatarComponent */.J],
-    imports: [common/* CommonModule */.ez, directives/* TuiLazyLoadingModule */.GE],
+    imports: [common/* CommonModule */.ez, directives/* TuiLazyLoadingModule */.GE, core.TuiSvgModule],
     exports: [avatar_component/* TuiAvatarComponent */.J]
   });
 })();
