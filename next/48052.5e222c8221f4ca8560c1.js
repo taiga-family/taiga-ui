@@ -326,7 +326,7 @@ let TuiTextAreaExample4 = /*#__PURE__*/(() => {
       }
 
       i18n_0 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_0);
-      return [[1, "description"], i18n_0, [1, "steps"], [1, "steps_optional"], [1, "form", "tui-col_md-6", 3, "formGroup"], ["tuiLabel", "Write a wise thought", 1, "tui-row"], ["formControlName", "testValue1", "tuiHintContent", "it's just a joke", 3, "expandable", "maxLength", "tuiTextfieldLabelOutside"], ["formControlName", "testValue1", 3, "error"]];
+      return [[1, "description"], i18n_0, [1, "steps"], [1, "steps_optional"], [1, "form", "tui-row", 3, "formGroup"], ["tuiLabel", "Write a wise thought", 1, "tui-col_md-6"], ["formControlName", "testValue1", "tuiHintContent", "it's just a joke", 3, "expandable", "maxLength", "tuiTextfieldLabelOutside"], ["formControlName", "testValue1", 3, "error"]];
     },
     template: function TuiTextAreaExample4_Template(rf, ctx) {
       if (rf & 1) {
