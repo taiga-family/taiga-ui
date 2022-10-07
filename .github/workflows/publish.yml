@@ -24,6 +24,17 @@ jobs:
       - name: Publish libraries
         run: npm run run-many:publish:libs
 
+      - name: Get version
+        id: info
+        run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
+
+      - name: Announce
+        uses: ./.github/actions/announce
+        with:
+          version: ${{ steps.info.outputs.version }}
+          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
+          channel: ${{ secrets.ANNOUNCE_TARGET }}
+
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
