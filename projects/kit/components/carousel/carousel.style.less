@@ -20,7 +20,6 @@
 
 .t-items {
     display: flex;
-    align-items: center;
 
     :host._transitioned & {
         .transition(transform);
@@ -28,6 +27,9 @@
 }
 
 .t-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 1.25rem;
     flex: 1;
     min-width: 100%;

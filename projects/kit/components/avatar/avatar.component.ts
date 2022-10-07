@@ -26,8 +26,8 @@ export class TuiAvatarComponent {
     @Input(`avatarUrl`)
     @tuiRequiredSetter()
     set avatarUrlSetter(avatarUrl: string | null) {
-        this.isUrlValid = !!avatarUrl;
         this.avatarUrl = avatarUrl;
+        this.isUrlValid = !!avatarUrl && !this.iconAvatar;
     }
 
     @Input()
@@ -59,8 +59,12 @@ export class TuiAvatarComponent {
         return this.avatarUrl !== null && this.isUrlValid;
     }
 
+    get iconAvatar(): boolean {
+        return !!this.avatarUrl?.startsWith(`tuiIcon`);
+    }
+
     get computedText(): string {
-        if (this.hasAvatar || this.text === ``) {
+        if (this.hasAvatar || this.iconAvatar || this.text === ``) {
             return ``;
         }
 
