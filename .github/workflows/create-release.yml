@@ -95,6 +95,11 @@ jobs:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Announce
+        if: ${{ env.IS_DRY_MODE == 'true' }}
+        run: |
+          curl --http1.1 -X POST -H "Content-Type: application/json" -d '{"text": "New version [v${{ steps.run-release.outputs.new_version }}](https://github.com/Tinkoff/taiga-ui/releases/tag/v${{ steps.run-release.outputs.new_version }}) released :tada:", "username": "Taiga release", "channel": "${{ secrets.ANNOUNCE_TARGET }}"}' ${{ secrets.ANNOUNCE_WEBHOOK }}
+
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
