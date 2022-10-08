@@ -43,12 +43,7 @@
     }
 
     &_value {
-        max-width: 20rem;
         text-align: right;
-
-        :host-context(tui-root._mobile) & {
-            width: 9.375rem;
-        }
     }
 
     :host-context(tui-root._mobile) & {
@@ -66,7 +61,12 @@
     text-align: left;
 
     &_value {
+        max-width: 20rem;
         text-align: right;
+
+        :host-context(tui-root._mobile) & {
+            width: 9.375rem;
+        }
     }
 }
 
