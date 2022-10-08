@@ -14,10 +14,10 @@ export class TuiTagHarness extends TuiComponentHarness {
         return svg;
     }
 
-    async getTagDiv(): Promise<TestElement> {
+    async getBackgroundColor(): Promise<string> {
         const div = await this.locatorFor(`:first-child`)();
 
-        return div;
+        return div.getCssValue(`background-color`);
     }
 
     async getInput(): Promise<TestElement | null> {

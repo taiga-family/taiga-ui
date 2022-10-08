@@ -164,8 +164,7 @@ describe(`Tag`, () => {
     xdescribe(`Tag color`, () => {
         it(`when autoColor is enabled, the color will be rgb(241, 188, 229)`, async () => {
             const tag = await loader.getHarness(TuiTagHarness);
-            const tagDiv = await tag.getTagDiv();
-            const backgroundColor = await tagDiv.getCssValue(`background-color`);
+            const backgroundColor = await tag.getBackgroundColor();
 
             expect(backgroundColor).toBe(`rgb(241, 188, 229)`);
         });
