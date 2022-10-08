@@ -2,7 +2,7 @@ import {InjectionToken} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
-import {
+import type {
     TuiTreeAccessor,
     TuiTreeController,
     TuiTreeItemContext,

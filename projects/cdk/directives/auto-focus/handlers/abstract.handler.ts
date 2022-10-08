@@ -4,7 +4,7 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk/interfaces';
 
-import {TuiAutofocusHandler} from '../autofocus.options';
+import type {TuiAutofocusHandler} from '../autofocus.options';
 
 @Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {

@@ -1,6 +1,6 @@
 import {TuiTextMaskList} from './text-mask-list';
 import {TuiTextMaskListHandler} from './text-mask-list-handler';
-import {TuiTextMaskPipeHandler} from './text-mask-pipe-handler';
+import type {TuiTextMaskPipeHandler} from './text-mask-pipe-handler';
 
 /**
  * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md}
