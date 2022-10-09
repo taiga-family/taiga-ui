@@ -29,9 +29,9 @@ import {
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
-    TUI_INPUT_MONTH_OPTIONS,
+    TUI_INPUT_DATE_OPTIONS,
     TUI_MONTH_FORMATTER,
-    TuiInputMonthOptions,
+    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
@@ -78,8 +78,8 @@ export class TuiInputMonthRangeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MONTH_FORMATTER)
         readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Inject(TUI_INPUT_MONTH_OPTIONS)
-        private readonly options: TuiInputMonthOptions,
+        @Inject(TUI_INPUT_DATE_OPTIONS)
+        private readonly options: TuiInputDateOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -92,7 +92,7 @@ export class TuiInputMonthRangeComponent
         return !!this.textfield && this.textfield.focused;
     }
 
-    get calendarIcon(): TuiInputMonthOptions['icon'] {
+    get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
