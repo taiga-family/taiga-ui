@@ -39,6 +39,10 @@ export function tuiClearEditor(): void {
     tuiGetContentEditable().type(`{selectall}{backspace}`);
 }
 
+export function tuiGetNgModelValue(): Cypress.Chainable<JQuery> {
+    return cy.get(`.t-table`).find(`tr`).eq(2).find(`td`).eq(2).find(`input`);
+}
+
 export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): void {
     tuiGetContentEditable()
         .find(`a[href="${containHref}"]`)

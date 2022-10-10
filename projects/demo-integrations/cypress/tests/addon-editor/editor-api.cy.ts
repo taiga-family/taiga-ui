@@ -5,6 +5,7 @@ import {
     tuiGetDemoContent,
     tuiGetEditLinkInput,
     tuiGetEditorScrollbarArea,
+    tuiGetNgModelValue,
     tuiGetScreenshotArea,
     tuiInsertLink,
     tuiOpenAnchorDropdown,
@@ -262,12 +263,15 @@ describe(`Editor API`, () => {
     describe(`Heading styles`, () => {
         for (const heading of [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`]) {
             it(heading, () => {
-                tuiVisitEditorApiPage({
-                    content: `<${heading}><span%20style%3D"background-color:%20%231771e6; color: %20%23fff">ываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамсываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамс</span></${heading}><${heading}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</${heading}>`,
-                    skipDecodingUrl: true,
-                });
+                tuiVisitEditorApiPage();
+                tuiClearEditor();
 
-                cy.get(`[contenteditable]`).focus();
+                tuiGetNgModelValue()
+                    .invoke(
+                        `val`,
+                        `<${heading}><span style="background-color: #1771e6; color: #fff">ываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамсываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываываывамс</span></${heading}><${heading}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</${heading}>`,
+                    )
+                    .trigger(`input`);
 
                 tuiGetDemoContent()
                     .find(`tui-editor-socket.tui-example`)
