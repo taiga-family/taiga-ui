@@ -8206,7 +8206,7 @@ let DragDropModule = /*#__PURE__*/(() => {
 
 /***/ }),
 
-/***/ 69567:
+/***/ 33742:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -8219,6 +8219,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Wb": () => (/* reexport */ table_provider/* TUI_TABLE_PROVIDER */.W),
   "yc": () => (/* reexport */ table_providers/* TUI_TABLE_PROVIDERS */.y),
   "Bl": () => (/* reexport */ cell_directive/* TuiCellDirective */.B),
+  "lk": () => (/* reexport */ TuiDirectionOrderDirective),
   "DZ": () => (/* reexport */ head_directive/* TuiHeadDirective */.D),
   "eO": () => (/* reexport */ reorder_component/* TuiReorderComponent */.e),
   "tk": () => (/* reexport */ TuiReorderModule),
@@ -8287,6 +8288,44 @@ let TuiReorderModule = /*#__PURE__*/(() => {
 
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/cell.directive.ts
 var cell_directive = __webpack_require__(62818);
+// EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/operators/map.js
+var map = __webpack_require__(88002);
+// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/table.directive.ts
+var table_directive = __webpack_require__(19582);
+;// CONCATENATED MODULE: ./projects/addon-table/components/table/directives/direction-order.directive.ts
+
+
+
+
+let TuiDirectionOrderDirective = /*#__PURE__*/(() => {
+  class TuiDirectionOrderDirective {
+    constructor(table) {
+      this.table = table;
+      this.directionOrderChange = this.table.directionChange.pipe((0,map/* map */.U)(dir => dir === 1 ? `asc` : `desc`));
+    }
+
+    set directionOrder(order) {
+      this.table.direction = order === `asc` ? 1 : -1;
+    }
+
+  }
+
+  TuiDirectionOrderDirective.ɵfac = function TuiDirectionOrderDirective_Factory(t) {
+    return new (t || TuiDirectionOrderDirective)(fesm2015_core/* ɵɵdirectiveInject */.Y36(table_directive/* TuiTableDirective */.c));
+  };
+
+  TuiDirectionOrderDirective.ɵdir = /*@__PURE__*/fesm2015_core/* ɵɵdefineDirective */.lG2({
+    type: TuiDirectionOrderDirective,
+    selectors: [["table", "tuiTable", "", "tuiDirectionOrder", ""]],
+    inputs: {
+      directionOrder: "directionOrder"
+    },
+    outputs: {
+      directionOrderChange: "directionOrderChange"
+    }
+  });
+  return TuiDirectionOrderDirective;
+})();
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/head.directive.ts
 var head_directive = __webpack_require__(78979);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/resized.directive.ts
@@ -8297,8 +8336,6 @@ var row_directive = __webpack_require__(35459);
 var sort_by_directive = __webpack_require__(61006);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/sortable.directive.ts
 var sortable_directive = __webpack_require__(10435);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/table.directive.ts
-var table_directive = __webpack_require__(19582);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/thead.directive.ts
 var thead_directive = __webpack_require__(13073);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/pipes/table-sort.pipe.ts
@@ -8341,6 +8378,7 @@ var tr_component = __webpack_require__(84190);
 
 
 
+
 let TuiTableModule = /*#__PURE__*/(() => {
   class TuiTableModule {}
 
@@ -8359,12 +8397,13 @@ let TuiTableModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(TuiTableModule, {
-    declarations: [table_directive/* TuiTableDirective */.c, tbody_component/* TuiTbodyComponent */.j, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, td_component/* TuiTdComponent */.K, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, head_directive/* TuiHeadDirective */.D, row_directive/* TuiRowDirective */.L, sort_by_directive/* TuiSortByDirective */.P, sortable_directive/* TuiSortableDirective */.g, thead_directive/* TuiTheadDirective */.N, resized_directive/* TuiResizedDirective */.Y, table_sort_pipe/* TuiTableSortPipe */.y],
+    declarations: [table_directive/* TuiTableDirective */.c, tbody_component/* TuiTbodyComponent */.j, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, td_component/* TuiTdComponent */.K, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, head_directive/* TuiHeadDirective */.D, row_directive/* TuiRowDirective */.L, sort_by_directive/* TuiSortByDirective */.P, sortable_directive/* TuiSortableDirective */.g, thead_directive/* TuiTheadDirective */.N, resized_directive/* TuiResizedDirective */.Y, table_sort_pipe/* TuiTableSortPipe */.y, TuiDirectionOrderDirective],
     imports: [common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, cdk.TuiMapperPipeModule, core.TuiSvgModule],
-    exports: [table_directive/* TuiTableDirective */.c, tbody_component/* TuiTbodyComponent */.j, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, td_component/* TuiTdComponent */.K, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, head_directive/* TuiHeadDirective */.D, row_directive/* TuiRowDirective */.L, sort_by_directive/* TuiSortByDirective */.P, sortable_directive/* TuiSortableDirective */.g, thead_directive/* TuiTheadDirective */.N, table_sort_pipe/* TuiTableSortPipe */.y]
+    exports: [table_directive/* TuiTableDirective */.c, tbody_component/* TuiTbodyComponent */.j, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, td_component/* TuiTdComponent */.K, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, head_directive/* TuiHeadDirective */.D, row_directive/* TuiRowDirective */.L, sort_by_directive/* TuiSortByDirective */.P, sortable_directive/* TuiSortableDirective */.g, thead_directive/* TuiTheadDirective */.N, table_sort_pipe/* TuiTableSortPipe */.y, TuiDirectionOrderDirective]
   });
 })();
 ;// CONCATENATED MODULE: ./projects/addon-table/components/table/index.ts
+
 
 
 
@@ -10315,7 +10354,7 @@ let TuiGenericFilterDirective = /*#__PURE__*/(() => {
 /* harmony export */   "X": () => (/* binding */ TuiTableFilterDirective)
 /* harmony export */ });
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(23738);
-/* harmony import */ var _taiga_ui_addon_table_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(69567);
+/* harmony import */ var _taiga_ui_addon_table_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(33742);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41439);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66682);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(59193);
@@ -10502,6 +10541,7 @@ __webpack_require__.d(__webpack_exports__, {
   "TUI_TABLE_PROVIDERS": () => (/* reexport */ components/* TUI_TABLE_PROVIDERS */.yc),
   "TUI_TABLE_SHOW_HIDE_MESSAGE": () => (/* reexport */ tokens/* TUI_TABLE_SHOW_HIDE_MESSAGE */.s),
   "TuiCellDirective": () => (/* reexport */ components/* TuiCellDirective */.Bl),
+  "TuiDirectionOrderDirective": () => (/* reexport */ components/* TuiDirectionOrderDirective */.lk),
   "TuiGenericFilterDirective": () => (/* reexport */ generic_filter_directive/* TuiGenericFilterDirective */.C),
   "TuiHeadDirective": () => (/* reexport */ components/* TuiHeadDirective */.DZ),
   "TuiReorderComponent": () => (/* reexport */ components/* TuiReorderComponent */.eO),
@@ -10529,8 +10569,8 @@ __webpack_require__.d(__webpack_exports__, {
   "tuiTablePaginationOptionsProvider": () => (/* reexport */ components/* tuiTablePaginationOptionsProvider */.PT)
 });
 
-// EXTERNAL MODULE: ./projects/addon-table/components/index.ts + 6 modules
-var components = __webpack_require__(69567);
+// EXTERNAL MODULE: ./projects/addon-table/components/index.ts + 7 modules
+var components = __webpack_require__(33742);
 // EXTERNAL MODULE: ./projects/addon-table/directives/table-filters/abstract-table-filter.ts
 var abstract_table_filter = __webpack_require__(3453);
 // EXTERNAL MODULE: ./projects/addon-table/directives/table-filters/generic-filter.directive.ts
