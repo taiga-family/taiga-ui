@@ -14,7 +14,9 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import(`@tiptap/starter-kit`).then(({default: module}) => module),
+                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                    ({StarterKit}) => StarterKit,
+                ),
                 import(`@taiga-ui/addon-editor/extensions/group`).then(
                     ({createGroupExtension}) =>
                         createGroupExtension({

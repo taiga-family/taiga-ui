@@ -23,10 +23,11 @@ import {switchMap, takeUntil} from 'rxjs/operators';
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
-                    m => m.StarterKit,
+                    ({StarterKit}) => StarterKit,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(m =>
-                    m.createImageEditorExtension(injector),
+                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(
+                    ({createImageEditorExtension}) =>
+                        createImageEditorExtension(injector),
                 ),
             ],
         },
