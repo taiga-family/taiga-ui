@@ -16,7 +16,10 @@
         (ngModelChange)="onModelChange($event)"
         (focusedChange)="onFocused($event)"
     ></tui-radio>
-    <div class="t-content">
+    <div
+        class="t-content"
+        [class.t-content_disabled]="computedDisabled"
+    >
         <ng-content></ng-content>
     </div>
 </label>
