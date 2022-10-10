@@ -39,8 +39,8 @@ jobs:
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           github_token: ${{ secrets.TINKOFF_BOT_PAT }}
-          exclude_assets: '.gitignore,CNAME'
           publish_dir: ${{ env.DIST }}
+          cname: taiga-ui.dev
 
 concurrency:
   group: deploy-gh-pages
