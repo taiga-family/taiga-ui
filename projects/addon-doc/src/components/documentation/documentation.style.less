@@ -36,7 +36,6 @@
 
     &:last-child {
         padding-right: 0;
-        text-align: right;
     }
 
     &_prop {
@@ -44,11 +43,7 @@
     }
 
     &_value {
-        max-width: 20rem;
-
-        :host-context(tui-root._mobile) & {
-            width: 9.375rem;
-        }
+        text-align: right;
     }
 
     :host-context(tui-root._mobile) & {
@@ -64,6 +59,15 @@
     color: var(--tui-text-02);
     font-weight: normal;
     text-align: left;
+
+    &_value {
+        max-width: 20rem;
+        text-align: right;
+
+        :host-context(tui-root._mobile) & {
+            width: 9.375rem;
+        }
+    }
 }
 
 .t-property {

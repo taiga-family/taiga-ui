@@ -11,7 +11,7 @@
         <th class="t-th">{{ type }}</th>
         <th
             *ngIf="showValues && !isAPI"
-            class="t-th t-cell t-cell_value"
+            class="t-th t-cell t-th_value"
         >
             {{ texts[3] }}
         </th>
@@ -65,7 +65,7 @@
         </td>
         <td
             *ngIf="showValues"
-            class="t-cell"
+            class="t-cell t-cell_value"
         >
             <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
                 <tui-select
