@@ -35,12 +35,17 @@ jobs:
         run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Deploy to taiga-ui.dev
-        uses: peaceiris/actions-gh-pages@v3.7.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
-          github_token: ${{ secrets.TINKOFF_BOT_PAT }}
-          exclude_assets: '.gitignore,CNAME'
-          publish_dir: ${{ env.DIST }}
+          branch: gh-pages
+          folder: ${{ env.DIST }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          clean: true
+          silent: false
+          clean-exclude: |
+            .gitignore
+            CNAME
 
 concurrency:
   group: deploy-gh-pages
