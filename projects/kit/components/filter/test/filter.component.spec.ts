@@ -124,7 +124,7 @@ describe(`Filter`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
             expect(getContent().nativeElement.textContent.trim()).toBe(
-                `Focused Zone \n10`,
+                `Focused Zone  10`,
             );
         });
     });
