@@ -60083,7 +60083,7 @@ TuiRadioLabeledComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
   features: [_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵProvidersFeature"] */ ._Bn([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiAsFocusableItemAccessor)(TuiRadioLabeledComponent), (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiAsControl)(TuiRadioLabeledComponent)]), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵInheritDefinitionFeature"] */ .qOj],
   ngContentSelectors: _c0,
   decls: 4,
-  vars: 13,
+  vars: 15,
   consts: [[1, "t-wrapper"], [3, "focusable", "identityMatcher", "name", "nativeId", "readOnly", "pseudoDisabled", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "size", "item", "ngModel", "ngModelChange", "focusedChange"], [1, "t-content"]],
   template: function TuiRadioLabeledComponent_Template(rf, ctx) {
     if (rf & 1) {
@@ -60105,10 +60105,12 @@ TuiRadioLabeledComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
     if (rf & 2) {
       _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵadvance"] */ .xp6(1);
       _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("focusable", ctx.focusable)("identityMatcher", ctx.identityMatcher)("name", ctx.computedName || "")("nativeId", ctx.nativeId)("readOnly", ctx.readOnly)("pseudoDisabled", ctx.computedDisabled)("pseudoInvalid", ctx.computedInvalid)("pseudoFocus", ctx.pseudoFocus)("pseudoHover", ctx.pseudoHover)("pseudoActive", ctx.pseudoActive)("size", ctx.size)("item", ctx.item)("ngModel", ctx.value);
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵclassProp"] */ .ekj("t-content_disabled", ctx.computedDisabled);
     }
   },
   directives: [_radio_radio_component__WEBPACK_IMPORTED_MODULE_3__/* .TuiRadioComponent */ ._, _angular_forms__WEBPACK_IMPORTED_MODULE_5__/* .NgControlStatus */ .JJ, _angular_forms__WEBPACK_IMPORTED_MODULE_5__/* .NgModel */ .On],
-  styles: ["[_nghost-%COMP%]{position:relative;display:block;font:var(--tui-font-text-s);line-height:1rem}._readonly[_nghost-%COMP%]{pointer-events:none}.t-wrapper[_ngcontent-%COMP%]{display:inline-flex;max-width:100%;cursor:pointer;vertical-align:top}._disabled[_nghost-%COMP%]   .t-wrapper[_ngcontent-%COMP%]{cursor:default}[data-mode=onDark][_nghost-%COMP%]   .t-wrapper[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}.t-content[_ngcontent-%COMP%]{word-wrap:break-word;min-width:0}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{margin-left:.5rem}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{font:var(--tui-font-text-m);margin-left:.75rem}"],
+  styles: ["[_nghost-%COMP%]{position:relative;display:block;font:var(--tui-font-text-s);line-height:1rem}._readonly[_nghost-%COMP%]{pointer-events:none}.t-wrapper[_ngcontent-%COMP%]{display:inline-flex;max-width:100%;cursor:pointer;vertical-align:top}._disabled[_nghost-%COMP%]   .t-wrapper[_ngcontent-%COMP%]{cursor:default}[data-mode=onDark][_nghost-%COMP%]   .t-wrapper[_ngcontent-%COMP%]{color:var(--tui-text-01-night)}.t-content[_ngcontent-%COMP%]{word-wrap:break-word;min-width:0}.t-content_disabled[_ngcontent-%COMP%]{opacity:var(--tui-disabled-opacity)}[data-size=m][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{margin-left:.5rem}[data-size=l][_nghost-%COMP%]   .t-content[_ngcontent-%COMP%]{font:var(--tui-font-text-m);margin-left:.75rem}"],
   changeDetection: 0
 });
 
