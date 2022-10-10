@@ -481,7 +481,7 @@ let ExampleTuiMediaComponent = /*#__PURE__*/(() => {
         LESS: __webpack_require__.e(/* import() */ 42161).then(__webpack_require__.t.bind(__webpack_require__, 42161, 17))
       };
       this.example3 = {
-        TypeScript: __webpack_require__.e(/* import() */ 12258).then(__webpack_require__.t.bind(__webpack_require__, 33767, 17)),
+        TypeScript: __webpack_require__.e(/* import() */ 12258).then(__webpack_require__.t.bind(__webpack_require__, 12258, 17)),
         HTML: __webpack_require__.e(/* import() */ 26349).then(__webpack_require__.t.bind(__webpack_require__, 26349, 17)),
         LESS: __webpack_require__.e(/* import() */ 95604).then(__webpack_require__.t.bind(__webpack_require__, 95604, 17))
       };

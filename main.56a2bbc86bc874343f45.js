@@ -36231,7 +36231,7 @@ function getAllTaigaUIModulesFile(additionalModules = []) {
      * You can't just iterate the array with package-names - it will cause error:
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
-    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 90987)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 96396).then(__webpack_require__.bind(__webpack_require__, 96396)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 46001)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 40249))]).then(modules => modules.map(getAllModules));
+    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 90987)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 70224).then(__webpack_require__.bind(__webpack_require__, 70224)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 46001)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 40249))]).then(modules => modules.map(getAllModules));
     const additionalModulesImports = additionalModules.map(([fileName, {
       className
     }]) => `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`).join(`\n`);
@@ -37482,7 +37482,7 @@ const ROUTES = [{
 }, {
   path: `components/color-picker`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(96396), __webpack_require__.e(24237)]).then(__webpack_require__.bind(__webpack_require__, 59849))).ExampleTuiColorPickerModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(70224), __webpack_require__.e(24237)]).then(__webpack_require__.bind(__webpack_require__, 59849))).ExampleTuiColorPickerModule;
   }),
   data: {
     title: `ColorPicker`
@@ -38100,7 +38100,7 @@ const ROUTES = [{
 }, {
   path: `components/editor`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(75695), __webpack_require__.e(96396), __webpack_require__.e(89757)]).then(__webpack_require__.bind(__webpack_require__, 89757))).ExampleTuiEditorModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(75695), __webpack_require__.e(70224), __webpack_require__.e(89757)]).then(__webpack_require__.bind(__webpack_require__, 89757))).ExampleTuiEditorModule;
   }),
   data: {
     title: `Editor`
@@ -38520,7 +38520,7 @@ const ROUTES = [{
 {
   path: `pipes/currency`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(23121), __webpack_require__.e(50587)]).then(__webpack_require__.bind(__webpack_require__, 78620))).ExampleTuiCurrencyModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(23121), __webpack_require__.e(50587)]).then(__webpack_require__.bind(__webpack_require__, 50587))).ExampleTuiCurrencyModule;
   }),
   data: {
     title: `Currency`

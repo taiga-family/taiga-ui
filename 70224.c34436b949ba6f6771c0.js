@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[96396],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[70224],{
 
 /***/ 40256:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -6276,2584 +6276,6 @@ function escapeForRegEx(string) {
 
 /***/ }),
 
-/***/ 10763:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "V6": () => (/* binding */ Blockquote),
-/* harmony export */   "ZP": () => (/* binding */ Blockquote)
-/* harmony export */ });
-/* unused harmony export inputRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const inputRegex = /^\s*>\s$/;
-const Blockquote = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'blockquote',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  content: 'block+',
-  group: 'block',
-  defining: true,
-
-  parseHTML() {
-    return [{
-      tag: 'blockquote'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['blockquote', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setBlockquote: () => ({
-        commands
-      }) => {
-        return commands.wrapIn(this.name);
-      },
-      toggleBlockquote: () => ({
-        commands
-      }) => {
-        return commands.toggleWrap(this.name);
-      },
-      unsetBlockquote: () => ({
-        commands
-      }) => {
-        return commands.lift(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Shift-b': () => this.editor.commands.toggleBlockquote()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)({
-      find: inputRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-blockquote.esm.js.map
-
-/***/ }),
-
-/***/ 32892:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "d8": () => (/* binding */ Bold),
-/* harmony export */   "ZP": () => (/* binding */ Bold)
-/* harmony export */ });
-/* unused harmony exports starInputRegex, starPasteRegex, underscoreInputRegex, underscorePasteRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const starInputRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))$/;
-const starPasteRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))/g;
-const underscoreInputRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))$/;
-const underscorePasteRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))/g;
-const Bold = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Mark.create({
-  name: 'bold',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  parseHTML() {
-    return [{
-      tag: 'strong'
-    }, {
-      tag: 'b',
-      getAttrs: node => node.style.fontWeight !== 'normal' && null
-    }, {
-      style: 'font-weight',
-      getAttrs: value => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['strong', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setBold: () => ({
-        commands
-      }) => {
-        return commands.setMark(this.name);
-      },
-      toggleBold: () => ({
-        commands
-      }) => {
-        return commands.toggleMark(this.name);
-      },
-      unsetBold: () => ({
-        commands
-      }) => {
-        return commands.unsetMark(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-b': () => this.editor.commands.toggleBold(),
-      'Mod-B': () => this.editor.commands.toggleBold()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: starInputRegex,
-      type: this.type
-    }), (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: underscoreInputRegex,
-      type: this.type
-    })];
-  },
-
-  addPasteRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: starPasteRegex,
-      type: this.type
-    }), (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: underscorePasteRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-bold.esm.js.map
-
-/***/ }),
-
-/***/ 12258:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DY": () => (/* binding */ BulletList),
-/* harmony export */   "ZP": () => (/* binding */ BulletList)
-/* harmony export */ });
-/* unused harmony export inputRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const inputRegex = /^\s*([-+*])\s$/;
-const BulletList = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'bulletList',
-
-  addOptions() {
-    return {
-      itemTypeName: 'listItem',
-      HTMLAttributes: {}
-    };
-  },
-
-  group: 'block list',
-
-  content() {
-    return `${this.options.itemTypeName}+`;
-  },
-
-  parseHTML() {
-    return [{
-      tag: 'ul'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['ul', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      toggleBulletList: () => ({
-        commands
-      }) => {
-        return commands.toggleList(this.name, this.options.itemTypeName);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Shift-8': () => this.editor.commands.toggleBulletList()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)({
-      find: inputRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-bullet-list.esm.js.map
-
-/***/ }),
-
-/***/ 93743:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dn": () => (/* binding */ CodeBlock),
-/* harmony export */   "ZP": () => (/* binding */ CodeBlock)
-/* harmony export */ });
-/* unused harmony exports backtickInputRegex, tildeInputRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(62463);
-
-
-const backtickInputRegex = /^```([a-z]+)?[\s\n]$/;
-const tildeInputRegex = /^~~~([a-z]+)?[\s\n]$/;
-const CodeBlock = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'codeBlock',
-
-  addOptions() {
-    return {
-      languageClassPrefix: 'language-',
-      exitOnTripleEnter: true,
-      exitOnArrowDown: true,
-      HTMLAttributes: {}
-    };
-  },
-
-  content: 'text*',
-  marks: '',
-  group: 'block',
-  code: true,
-  defining: true,
-
-  addAttributes() {
-    return {
-      language: {
-        default: null,
-        parseHTML: element => {
-          var _a;
-
-          const {
-            languageClassPrefix
-          } = this.options;
-          const classNames = [...(((_a = element.firstElementChild) === null || _a === void 0 ? void 0 : _a.classList) || [])];
-          const languages = classNames.filter(className => className.startsWith(languageClassPrefix)).map(className => className.replace(languageClassPrefix, ''));
-          const language = languages[0];
-
-          if (!language) {
-            return null;
-          }
-
-          return language;
-        },
-        rendered: false
-      }
-    };
-  },
-
-  parseHTML() {
-    return [{
-      tag: 'pre',
-      preserveWhitespace: 'full'
-    }];
-  },
-
-  renderHTML({
-    node,
-    HTMLAttributes
-  }) {
-    return ['pre', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), ['code', {
-      class: node.attrs.language ? this.options.languageClassPrefix + node.attrs.language : null
-    }, 0]];
-  },
-
-  addCommands() {
-    return {
-      setCodeBlock: attributes => ({
-        commands
-      }) => {
-        return commands.setNode(this.name, attributes);
-      },
-      toggleCodeBlock: attributes => ({
-        commands
-      }) => {
-        return commands.toggleNode(this.name, 'paragraph', attributes);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Alt-c': () => this.editor.commands.toggleCodeBlock(),
-      // remove code block when at start of document or code block is empty
-      Backspace: () => {
-        const {
-          empty,
-          $anchor
-        } = this.editor.state.selection;
-        const isAtStart = $anchor.pos === 1;
-
-        if (!empty || $anchor.parent.type.name !== this.name) {
-          return false;
-        }
-
-        if (isAtStart || !$anchor.parent.textContent.length) {
-          return this.editor.commands.clearNodes();
-        }
-
-        return false;
-      },
-      // exit node on triple enter
-      Enter: ({
-        editor
-      }) => {
-        if (!this.options.exitOnTripleEnter) {
-          return false;
-        }
-
-        const {
-          state
-        } = editor;
-        const {
-          selection
-        } = state;
-        const {
-          $from,
-          empty
-        } = selection;
-
-        if (!empty || $from.parent.type !== this.type) {
-          return false;
-        }
-
-        const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
-        const endsWithDoubleNewline = $from.parent.textContent.endsWith('\n\n');
-
-        if (!isAtEnd || !endsWithDoubleNewline) {
-          return false;
-        }
-
-        return editor.chain().command(({
-          tr
-        }) => {
-          tr.delete($from.pos - 2, $from.pos);
-          return true;
-        }).exitCode().run();
-      },
-      // exit node on arrow down
-      ArrowDown: ({
-        editor
-      }) => {
-        if (!this.options.exitOnArrowDown) {
-          return false;
-        }
-
-        const {
-          state
-        } = editor;
-        const {
-          selection,
-          doc
-        } = state;
-        const {
-          $from,
-          empty
-        } = selection;
-
-        if (!empty || $from.parent.type !== this.type) {
-          return false;
-        }
-
-        const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
-
-        if (!isAtEnd) {
-          return false;
-        }
-
-        const after = $from.after();
-
-        if (after === undefined) {
-          return false;
-        }
-
-        const nodeAfter = doc.nodeAt(after);
-
-        if (nodeAfter) {
-          return false;
-        }
-
-        return editor.commands.exitCode();
-      }
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.textblockTypeInputRule)({
-      find: backtickInputRegex,
-      type: this.type,
-      getAttributes: match => ({
-        language: match[1]
-      })
-    }), (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.textblockTypeInputRule)({
-      find: tildeInputRegex,
-      type: this.type,
-      getAttributes: match => ({
-        language: match[1]
-      })
-    })];
-  },
-
-  addProseMirrorPlugins() {
-    return [// this plugin creates a code block for pasted content from VS Code
-    // we can also detect the copied code language
-    new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .Plugin */ .Sy({
-      key: new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .PluginKey */ .H$('codeBlockVSCodeHandler'),
-      props: {
-        handlePaste: (view, event) => {
-          if (!event.clipboardData) {
-            return false;
-          } // don’t create a new code block within code blocks
-
-
-          if (this.editor.isActive(this.type.name)) {
-            return false;
-          }
-
-          const text = event.clipboardData.getData('text/plain');
-          const vscode = event.clipboardData.getData('vscode-editor-data');
-          const vscodeData = vscode ? JSON.parse(vscode) : undefined;
-          const language = vscodeData === null || vscodeData === void 0 ? void 0 : vscodeData.mode;
-
-          if (!text || !language) {
-            return false;
-          }
-
-          const {
-            tr
-          } = view.state; // create an empty code block
-
-          tr.replaceSelectionWith(this.type.create({
-            language
-          })); // put cursor inside the newly created code block
-
-          tr.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .TextSelection.near */ .Bs.near(tr.doc.resolve(Math.max(0, tr.selection.from - 2)))); // add text to code block
-          // strip carriage return chars from text pasted as code
-          // see: https://github.com/ProseMirror/prosemirror-view/commit/a50a6bcceb4ce52ac8fcc6162488d8875613aacd
-
-          tr.insertText(text.replace(/\r\n?/g, '\n')); // store meta information
-          // this is useful for other plugins that depends on the paste event
-          // like the paste rule plugin
-
-          tr.setMeta('paste', true);
-          view.dispatch(tr);
-          return true;
-        }
-      }
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-code-block.esm.js.map
-
-/***/ }),
-
-/***/ 70837:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EK": () => (/* binding */ Code),
-/* harmony export */   "ZP": () => (/* binding */ Code)
-/* harmony export */ });
-/* unused harmony exports inputRegex, pasteRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const inputRegex = /(?:^|\s)((?:`)((?:[^`]+))(?:`))$/;
-const pasteRegex = /(?:^|\s)((?:`)((?:[^`]+))(?:`))/g;
-const Code = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Mark.create({
-  name: 'code',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  excludes: '_',
-  code: true,
-  exitable: true,
-
-  parseHTML() {
-    return [{
-      tag: 'code'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['code', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setCode: () => ({
-        commands
-      }) => {
-        return commands.setMark(this.name);
-      },
-      toggleCode: () => ({
-        commands
-      }) => {
-        return commands.toggleMark(this.name);
-      },
-      unsetCode: () => ({
-        commands
-      }) => {
-        return commands.unsetMark(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-e': () => this.editor.commands.toggleCode()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: inputRegex,
-      type: this.type
-    })];
-  },
-
-  addPasteRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: pasteRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-code.esm.js.map
-
-/***/ }),
-
-/***/ 44225:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "B": () => (/* binding */ Document),
-/* harmony export */   "Z": () => (/* binding */ Document)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const Document = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'doc',
-  topNode: true,
-  content: 'block+'
-});
- //# sourceMappingURL=tiptap-extension-document.esm.js.map
-
-/***/ }),
-
-/***/ 81121:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "m": () => (/* binding */ Dropcursor),
-  "Z": () => (/* binding */ Dropcursor)
-});
-
-// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
-var tiptap_core_esm = __webpack_require__(40256);
-// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
-var dist = __webpack_require__(62463);
-// EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
-var prosemirror_transform_dist = __webpack_require__(38480);
-;// CONCATENATED MODULE: ./node_modules/prosemirror-dropcursor/dist/index.js
-
-
-/**
-Create a plugin that, when added to a ProseMirror instance,
-causes a decoration to show up at the drop position when something
-is dragged over the editor.
-
-Nodes may add a `disableDropCursor` property to their spec to
-control the showing of a drop cursor inside them. This may be a
-boolean or a function, which will be called with a view and a
-position, and should return a boolean.
-*/
-
-function dropCursor(options = {}) {
-  return new dist/* Plugin */.Sy({
-    view(editorView) {
-      return new DropCursorView(editorView, options);
-    }
-
-  });
-}
-
-class DropCursorView {
-  constructor(editorView, options) {
-    this.editorView = editorView;
-    this.cursorPos = null;
-    this.element = null;
-    this.timeout = -1;
-    this.width = options.width || 1;
-    this.color = options.color || "black";
-    this.class = options.class;
-    this.handlers = ["dragover", "dragend", "drop", "dragleave"].map(name => {
-      let handler = e => {
-        this[name](e);
-      };
-
-      editorView.dom.addEventListener(name, handler);
-      return {
-        name,
-        handler
-      };
-    });
-  }
-
-  destroy() {
-    this.handlers.forEach(({
-      name,
-      handler
-    }) => this.editorView.dom.removeEventListener(name, handler));
-  }
-
-  update(editorView, prevState) {
-    if (this.cursorPos != null && prevState.doc != editorView.state.doc) {
-      if (this.cursorPos > editorView.state.doc.content.size) this.setCursor(null);else this.updateOverlay();
-    }
-  }
-
-  setCursor(pos) {
-    if (pos == this.cursorPos) return;
-    this.cursorPos = pos;
-
-    if (pos == null) {
-      this.element.parentNode.removeChild(this.element);
-      this.element = null;
-    } else {
-      this.updateOverlay();
-    }
-  }
-
-  updateOverlay() {
-    let $pos = this.editorView.state.doc.resolve(this.cursorPos),
-        rect;
-
-    if (!$pos.parent.inlineContent) {
-      let before = $pos.nodeBefore,
-          after = $pos.nodeAfter;
-
-      if (before || after) {
-        let nodeRect = this.editorView.nodeDOM(this.cursorPos - (before ? before.nodeSize : 0)).getBoundingClientRect();
-        let top = before ? nodeRect.bottom : nodeRect.top;
-        if (before && after) top = (top + this.editorView.nodeDOM(this.cursorPos).getBoundingClientRect().top) / 2;
-        rect = {
-          left: nodeRect.left,
-          right: nodeRect.right,
-          top: top - this.width / 2,
-          bottom: top + this.width / 2
-        };
-      }
-    }
-
-    if (!rect) {
-      let coords = this.editorView.coordsAtPos(this.cursorPos);
-      rect = {
-        left: coords.left - this.width / 2,
-        right: coords.left + this.width / 2,
-        top: coords.top,
-        bottom: coords.bottom
-      };
-    }
-
-    let parent = this.editorView.dom.offsetParent;
-
-    if (!this.element) {
-      this.element = parent.appendChild(document.createElement("div"));
-      if (this.class) this.element.className = this.class;
-      this.element.style.cssText = "position: absolute; z-index: 50; pointer-events: none; background-color: " + this.color;
-    }
-
-    let parentLeft, parentTop;
-
-    if (!parent || parent == document.body && getComputedStyle(parent).position == "static") {
-      parentLeft = -pageXOffset;
-      parentTop = -pageYOffset;
-    } else {
-      let rect = parent.getBoundingClientRect();
-      parentLeft = rect.left - parent.scrollLeft;
-      parentTop = rect.top - parent.scrollTop;
-    }
-
-    this.element.style.left = rect.left - parentLeft + "px";
-    this.element.style.top = rect.top - parentTop + "px";
-    this.element.style.width = rect.right - rect.left + "px";
-    this.element.style.height = rect.bottom - rect.top + "px";
-  }
-
-  scheduleRemoval(timeout) {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.setCursor(null), timeout);
-  }
-
-  dragover(event) {
-    if (!this.editorView.editable) return;
-    let pos = this.editorView.posAtCoords({
-      left: event.clientX,
-      top: event.clientY
-    });
-    let node = pos && pos.inside >= 0 && this.editorView.state.doc.nodeAt(pos.inside);
-    let disableDropCursor = node && node.type.spec.disableDropCursor;
-    let disabled = typeof disableDropCursor == "function" ? disableDropCursor(this.editorView, pos) : disableDropCursor;
-
-    if (pos && !disabled) {
-      let target = pos.pos;
-
-      if (this.editorView.dragging && this.editorView.dragging.slice) {
-        target = (0,prosemirror_transform_dist/* dropPoint */.nj)(this.editorView.state.doc, target, this.editorView.dragging.slice);
-        if (target == null) return this.setCursor(null);
-      }
-
-      this.setCursor(target);
-      this.scheduleRemoval(5000);
-    }
-  }
-
-  dragend() {
-    this.scheduleRemoval(20);
-  }
-
-  drop() {
-    this.scheduleRemoval(20);
-  }
-
-  dragleave(event) {
-    if (event.target == this.editorView.dom || !this.editorView.dom.contains(event.relatedTarget)) this.setCursor(null);
-  }
-
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-dropcursor/dist/tiptap-extension-dropcursor.esm.js
-
-
-const Dropcursor = tiptap_core_esm.Extension.create({
-  name: 'dropCursor',
-
-  addOptions() {
-    return {
-      color: 'currentColor',
-      width: 1,
-      class: undefined
-    };
-  },
-
-  addProseMirrorPlugins() {
-    return [dropCursor(this.options)];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-dropcursor.esm.js.map
-
-/***/ }),
-
-/***/ 50587:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "f": () => (/* binding */ Gapcursor),
-  "Z": () => (/* binding */ Gapcursor)
-});
-
-// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
-var tiptap_core_esm = __webpack_require__(40256);
-// EXTERNAL MODULE: ./node_modules/prosemirror-keymap/dist/index.js + 1 modules
-var dist = __webpack_require__(13903);
-// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
-var prosemirror_state_dist = __webpack_require__(62463);
-// EXTERNAL MODULE: ./node_modules/prosemirror-model/dist/index.js + 1 modules
-var prosemirror_model_dist = __webpack_require__(35917);
-// EXTERNAL MODULE: ./node_modules/prosemirror-view/dist/index.js
-var prosemirror_view_dist = __webpack_require__(43594);
-;// CONCATENATED MODULE: ./node_modules/prosemirror-gapcursor/dist/index.js
-
-
-
-
-/**
-Gap cursor selections are represented using this class. Its
-`$anchor` and `$head` properties both point at the cursor position.
-*/
-
-class GapCursor extends prosemirror_state_dist/* Selection */.Y1 {
-  /**
-  Create a gap cursor.
-  */
-  constructor($pos) {
-    super($pos, $pos);
-  }
-
-  map(doc, mapping) {
-    let $pos = doc.resolve(mapping.map(this.head));
-    return GapCursor.valid($pos) ? new GapCursor($pos) : prosemirror_state_dist/* Selection.near */.Y1.near($pos);
-  }
-
-  content() {
-    return prosemirror_model_dist/* Slice.empty */.p2.empty;
-  }
-
-  eq(other) {
-    return other instanceof GapCursor && other.head == this.head;
-  }
-
-  toJSON() {
-    return {
-      type: "gapcursor",
-      pos: this.head
-    };
-  }
-  /**
-  @internal
-  */
-
-
-  static fromJSON(doc, json) {
-    if (typeof json.pos != "number") throw new RangeError("Invalid input for GapCursor.fromJSON");
-    return new GapCursor(doc.resolve(json.pos));
-  }
-  /**
-  @internal
-  */
-
-
-  getBookmark() {
-    return new GapBookmark(this.anchor);
-  }
-  /**
-  @internal
-  */
-
-
-  static valid($pos) {
-    let parent = $pos.parent;
-    if (parent.isTextblock || !closedBefore($pos) || !closedAfter($pos)) return false;
-    let override = parent.type.spec.allowGapCursor;
-    if (override != null) return override;
-    let deflt = parent.contentMatchAt($pos.index()).defaultType;
-    return deflt && deflt.isTextblock;
-  }
-  /**
-  @internal
-  */
-
-
-  static findGapCursorFrom($pos, dir, mustMove = false) {
-    search: for (;;) {
-      if (!mustMove && GapCursor.valid($pos)) return $pos;
-      let pos = $pos.pos,
-          next = null; // Scan up from this position
-
-      for (let d = $pos.depth;; d--) {
-        let parent = $pos.node(d);
-
-        if (dir > 0 ? $pos.indexAfter(d) < parent.childCount : $pos.index(d) > 0) {
-          next = parent.child(dir > 0 ? $pos.indexAfter(d) : $pos.index(d) - 1);
-          break;
-        } else if (d == 0) {
-          return null;
-        }
-
-        pos += dir;
-        let $cur = $pos.doc.resolve(pos);
-        if (GapCursor.valid($cur)) return $cur;
-      } // And then down into the next node
-
-
-      for (;;) {
-        let inside = dir > 0 ? next.firstChild : next.lastChild;
-
-        if (!inside) {
-          if (next.isAtom && !next.isText && !prosemirror_state_dist/* NodeSelection.isSelectable */.qv.isSelectable(next)) {
-            $pos = $pos.doc.resolve(pos + next.nodeSize * dir);
-            mustMove = false;
-            continue search;
-          }
-
-          break;
-        }
-
-        next = inside;
-        pos += dir;
-        let $cur = $pos.doc.resolve(pos);
-        if (GapCursor.valid($cur)) return $cur;
-      }
-
-      return null;
-    }
-  }
-
-}
-
-GapCursor.prototype.visible = false;
-GapCursor.findFrom = GapCursor.findGapCursorFrom;
-prosemirror_state_dist/* Selection.jsonID */.Y1.jsonID("gapcursor", GapCursor);
-
-class GapBookmark {
-  constructor(pos) {
-    this.pos = pos;
-  }
-
-  map(mapping) {
-    return new GapBookmark(mapping.map(this.pos));
-  }
-
-  resolve(doc) {
-    let $pos = doc.resolve(this.pos);
-    return GapCursor.valid($pos) ? new GapCursor($pos) : prosemirror_state_dist/* Selection.near */.Y1.near($pos);
-  }
-
-}
-
-function closedBefore($pos) {
-  for (let d = $pos.depth; d >= 0; d--) {
-    let index = $pos.index(d),
-        parent = $pos.node(d); // At the start of this parent, look at next one
-
-    if (index == 0) {
-      if (parent.type.spec.isolating) return true;
-      continue;
-    } // See if the node before (or its first ancestor) is closed
-
-
-    for (let before = parent.child(index - 1);; before = before.lastChild) {
-      if (before.childCount == 0 && !before.inlineContent || before.isAtom || before.type.spec.isolating) return true;
-      if (before.inlineContent) return false;
-    }
-  } // Hit start of document
-
-
-  return true;
-}
-
-function closedAfter($pos) {
-  for (let d = $pos.depth; d >= 0; d--) {
-    let index = $pos.indexAfter(d),
-        parent = $pos.node(d);
-
-    if (index == parent.childCount) {
-      if (parent.type.spec.isolating) return true;
-      continue;
-    }
-
-    for (let after = parent.child(index);; after = after.firstChild) {
-      if (after.childCount == 0 && !after.inlineContent || after.isAtom || after.type.spec.isolating) return true;
-      if (after.inlineContent) return false;
-    }
-  }
-
-  return true;
-}
-/**
-Create a gap cursor plugin. When enabled, this will capture clicks
-near and arrow-key-motion past places that don't have a normally
-selectable position nearby, and create a gap cursor selection for
-them. The cursor is drawn as an element with class
-`ProseMirror-gapcursor`. You can either include
-`style/gapcursor.css` from the package's directory or add your own
-styles to make it visible.
-*/
-
-
-function gapCursor() {
-  return new prosemirror_state_dist/* Plugin */.Sy({
-    props: {
-      decorations: drawGapCursor,
-
-      createSelectionBetween(_view, $anchor, $head) {
-        return $anchor.pos == $head.pos && GapCursor.valid($head) ? new GapCursor($head) : null;
-      },
-
-      handleClick,
-      handleKeyDown,
-      handleDOMEvents: {
-        beforeinput: beforeinput
-      }
-    }
-  });
-}
-
-const handleKeyDown = (0,dist/* keydownHandler */.$)({
-  "ArrowLeft": arrow("horiz", -1),
-  "ArrowRight": arrow("horiz", 1),
-  "ArrowUp": arrow("vert", -1),
-  "ArrowDown": arrow("vert", 1)
-});
-
-function arrow(axis, dir) {
-  const dirStr = axis == "vert" ? dir > 0 ? "down" : "up" : dir > 0 ? "right" : "left";
-  return function (state, dispatch, view) {
-    let sel = state.selection;
-    let $start = dir > 0 ? sel.$to : sel.$from,
-        mustMove = sel.empty;
-
-    if (sel instanceof prosemirror_state_dist/* TextSelection */.Bs) {
-      if (!view.endOfTextblock(dirStr) || $start.depth == 0) return false;
-      mustMove = false;
-      $start = state.doc.resolve(dir > 0 ? $start.after() : $start.before());
-    }
-
-    let $found = GapCursor.findGapCursorFrom($start, dir, mustMove);
-    if (!$found) return false;
-    if (dispatch) dispatch(state.tr.setSelection(new GapCursor($found)));
-    return true;
-  };
-}
-
-function handleClick(view, pos, event) {
-  if (!view || !view.editable) return false;
-  let $pos = view.state.doc.resolve(pos);
-  if (!GapCursor.valid($pos)) return false;
-  let clickPos = view.posAtCoords({
-    left: event.clientX,
-    top: event.clientY
-  });
-  if (clickPos && clickPos.inside > -1 && prosemirror_state_dist/* NodeSelection.isSelectable */.qv.isSelectable(view.state.doc.nodeAt(clickPos.inside))) return false;
-  view.dispatch(view.state.tr.setSelection(new GapCursor($pos)));
-  return true;
-} // This is a hack that, when a composition starts while a gap cursor
-// is active, quickly creates an inline context for the composition to
-// happen in, to avoid it being aborted by the DOM selection being
-// moved into a valid position.
-
-
-function beforeinput(view, event) {
-  if (event.inputType != "insertCompositionText" || !(view.state.selection instanceof GapCursor)) return false;
-  let {
-    $from
-  } = view.state.selection;
-  let insert = $from.parent.contentMatchAt($from.index()).findWrapping(view.state.schema.nodes.text);
-  if (!insert) return false;
-  let frag = prosemirror_model_dist/* Fragment.empty */.HY.empty;
-
-  for (let i = insert.length - 1; i >= 0; i--) frag = prosemirror_model_dist/* Fragment.from */.HY.from(insert[i].createAndFill(null, frag));
-
-  let tr = view.state.tr.replace($from.pos, $from.pos, new prosemirror_model_dist/* Slice */.p2(frag, 0, 0));
-  tr.setSelection(prosemirror_state_dist/* TextSelection.near */.Bs.near(tr.doc.resolve($from.pos + 1)));
-  view.dispatch(tr);
-  return false;
-}
-
-function drawGapCursor(state) {
-  if (!(state.selection instanceof GapCursor)) return null;
-  let node = document.createElement("div");
-  node.className = "ProseMirror-gapcursor";
-  return prosemirror_view_dist/* DecorationSet.create */.EH.create(state.doc, [prosemirror_view_dist/* Decoration.widget */.p.widget(state.selection.head, node, {
-    key: "gapcursor"
-  })]);
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-gapcursor/dist/tiptap-extension-gapcursor.esm.js
-
-
-const Gapcursor = tiptap_core_esm.Extension.create({
-  name: 'gapCursor',
-
-  addProseMirrorPlugins() {
-    return [gapCursor()];
-  },
-
-  extendNodeSchema(extension) {
-    var _a;
-
-    const context = {
-      name: extension.name,
-      options: extension.options,
-      storage: extension.storage
-    };
-    return {
-      allowGapCursor: (_a = (0,tiptap_core_esm.callOrReturn)((0,tiptap_core_esm.getExtensionField)(extension, 'allowGapCursor', context))) !== null && _a !== void 0 ? _a : null
-    };
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-gapcursor.esm.js.map
-
-/***/ }),
-
-/***/ 34278:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "U": () => (/* binding */ HardBreak),
-/* harmony export */   "Z": () => (/* binding */ HardBreak)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const HardBreak = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'hardBreak',
-
-  addOptions() {
-    return {
-      keepMarks: true,
-      HTMLAttributes: {}
-    };
-  },
-
-  inline: true,
-  group: 'inline',
-  selectable: false,
-
-  parseHTML() {
-    return [{
-      tag: 'br'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['br', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes)];
-  },
-
-  renderText() {
-    return '\n';
-  },
-
-  addCommands() {
-    return {
-      setHardBreak: () => ({
-        commands,
-        chain,
-        state,
-        editor
-      }) => {
-        return commands.first([() => commands.exitCode(), () => commands.command(() => {
-          const {
-            selection,
-            storedMarks
-          } = state;
-
-          if (selection.$from.parent.type.spec.isolating) {
-            return false;
-          }
-
-          const {
-            keepMarks
-          } = this.options;
-          const {
-            splittableMarks
-          } = editor.extensionManager;
-          const marks = storedMarks || selection.$to.parentOffset && selection.$from.marks();
-          return chain().insertContent({
-            type: this.name
-          }).command(({
-            tr,
-            dispatch
-          }) => {
-            if (dispatch && marks && keepMarks) {
-              const filteredMarks = marks.filter(mark => splittableMarks.includes(mark.type.name));
-              tr.ensureMarks(filteredMarks);
-            }
-
-            return true;
-          }).run();
-        })]);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Enter': () => this.editor.commands.setHardBreak(),
-      'Shift-Enter': () => this.editor.commands.setHardBreak()
-    };
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-hard-break.esm.js.map
-
-/***/ }),
-
-/***/ 15400:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "X": () => (/* binding */ Heading),
-/* harmony export */   "Z": () => (/* binding */ Heading)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const Heading = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'heading',
-
-  addOptions() {
-    return {
-      levels: [1, 2, 3, 4, 5, 6],
-      HTMLAttributes: {}
-    };
-  },
-
-  content: 'inline*',
-  group: 'block',
-  defining: true,
-
-  addAttributes() {
-    return {
-      level: {
-        default: 1,
-        rendered: false
-      }
-    };
-  },
-
-  parseHTML() {
-    return this.options.levels.map(level => ({
-      tag: `h${level}`,
-      attrs: {
-        level
-      }
-    }));
-  },
-
-  renderHTML({
-    node,
-    HTMLAttributes
-  }) {
-    const hasLevel = this.options.levels.includes(node.attrs.level);
-    const level = hasLevel ? node.attrs.level : this.options.levels[0];
-    return [`h${level}`, (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setHeading: attributes => ({
-        commands
-      }) => {
-        if (!this.options.levels.includes(attributes.level)) {
-          return false;
-        }
-
-        return commands.setNode(this.name, attributes);
-      },
-      toggleHeading: attributes => ({
-        commands
-      }) => {
-        if (!this.options.levels.includes(attributes.level)) {
-          return false;
-        }
-
-        return commands.toggleNode(this.name, 'paragraph', attributes);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return this.options.levels.reduce((items, level) => ({ ...items,
-      ...{
-        [`Mod-Alt-${level}`]: () => this.editor.commands.toggleHeading({
-          level
-        })
-      }
-    }), {});
-  },
-
-  addInputRules() {
-    return this.options.levels.map(level => {
-      return (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.textblockTypeInputRule)({
-        find: new RegExp(`^(#{1,${level}})\\s$`),
-        type: this.type,
-        getAttributes: {
-          level
-        }
-      });
-    });
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-heading.esm.js.map
-
-/***/ }),
-
-/***/ 10590:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "A": () => (/* binding */ History),
-  "Z": () => (/* binding */ History)
-});
-
-// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
-var tiptap_core_esm = __webpack_require__(40256);
-;// CONCATENATED MODULE: ./node_modules/rope-sequence/dist/index.es.js
-var GOOD_LEAF_SIZE = 200; // :: class<T> A rope sequence is a persistent sequence data structure
-// that supports appending, prepending, and slicing without doing a
-// full copy. It is represented as a mostly-balanced tree.
-
-var RopeSequence = function RopeSequence() {};
-
-RopeSequence.prototype.append = function append(other) {
-  if (!other.length) {
-    return this;
-  }
-
-  other = RopeSequence.from(other);
-  return !this.length && other || other.length < GOOD_LEAF_SIZE && this.leafAppend(other) || this.length < GOOD_LEAF_SIZE && other.leafPrepend(this) || this.appendInner(other);
-}; // :: (union<[T], RopeSequence<T>>) → RopeSequence<T>
-// Prepend an array or other rope to this one, returning a new rope.
-
-
-RopeSequence.prototype.prepend = function prepend(other) {
-  if (!other.length) {
-    return this;
-  }
-
-  return RopeSequence.from(other).append(this);
-};
-
-RopeSequence.prototype.appendInner = function appendInner(other) {
-  return new Append(this, other);
-}; // :: (?number, ?number) → RopeSequence<T>
-// Create a rope repesenting a sub-sequence of this rope.
-
-
-RopeSequence.prototype.slice = function slice(from, to) {
-  if (from === void 0) from = 0;
-  if (to === void 0) to = this.length;
-
-  if (from >= to) {
-    return RopeSequence.empty;
-  }
-
-  return this.sliceInner(Math.max(0, from), Math.min(this.length, to));
-}; // :: (number) → T
-// Retrieve the element at the given position from this rope.
-
-
-RopeSequence.prototype.get = function get(i) {
-  if (i < 0 || i >= this.length) {
-    return undefined;
-  }
-
-  return this.getInner(i);
-}; // :: ((element: T, index: number) → ?bool, ?number, ?number)
-// Call the given function for each element between the given
-// indices. This tends to be more efficient than looping over the
-// indices and calling `get`, because it doesn't have to descend the
-// tree for every element.
-
-
-RopeSequence.prototype.forEach = function forEach(f, from, to) {
-  if (from === void 0) from = 0;
-  if (to === void 0) to = this.length;
-
-  if (from <= to) {
-    this.forEachInner(f, from, to, 0);
-  } else {
-    this.forEachInvertedInner(f, from, to, 0);
-  }
-}; // :: ((element: T, index: number) → U, ?number, ?number) → [U]
-// Map the given functions over the elements of the rope, producing
-// a flat array.
-
-
-RopeSequence.prototype.map = function map(f, from, to) {
-  if (from === void 0) from = 0;
-  if (to === void 0) to = this.length;
-  var result = [];
-  this.forEach(function (elt, i) {
-    return result.push(f(elt, i));
-  }, from, to);
-  return result;
-}; // :: (?union<[T], RopeSequence<T>>) → RopeSequence<T>
-// Create a rope representing the given array, or return the rope
-// itself if a rope was given.
-
-
-RopeSequence.from = function from(values) {
-  if (values instanceof RopeSequence) {
-    return values;
-  }
-
-  return values && values.length ? new Leaf(values) : RopeSequence.empty;
-};
-
-var Leaf = /*@__PURE__*/function (RopeSequence) {
-  function Leaf(values) {
-    RopeSequence.call(this);
-    this.values = values;
-  }
-
-  if (RopeSequence) Leaf.__proto__ = RopeSequence;
-  Leaf.prototype = Object.create(RopeSequence && RopeSequence.prototype);
-  Leaf.prototype.constructor = Leaf;
-  var prototypeAccessors = {
-    length: {
-      configurable: true
-    },
-    depth: {
-      configurable: true
-    }
-  };
-
-  Leaf.prototype.flatten = function flatten() {
-    return this.values;
-  };
-
-  Leaf.prototype.sliceInner = function sliceInner(from, to) {
-    if (from == 0 && to == this.length) {
-      return this;
-    }
-
-    return new Leaf(this.values.slice(from, to));
-  };
-
-  Leaf.prototype.getInner = function getInner(i) {
-    return this.values[i];
-  };
-
-  Leaf.prototype.forEachInner = function forEachInner(f, from, to, start) {
-    for (var i = from; i < to; i++) {
-      if (f(this.values[i], start + i) === false) {
-        return false;
-      }
-    }
-  };
-
-  Leaf.prototype.forEachInvertedInner = function forEachInvertedInner(f, from, to, start) {
-    for (var i = from - 1; i >= to; i--) {
-      if (f(this.values[i], start + i) === false) {
-        return false;
-      }
-    }
-  };
-
-  Leaf.prototype.leafAppend = function leafAppend(other) {
-    if (this.length + other.length <= GOOD_LEAF_SIZE) {
-      return new Leaf(this.values.concat(other.flatten()));
-    }
-  };
-
-  Leaf.prototype.leafPrepend = function leafPrepend(other) {
-    if (this.length + other.length <= GOOD_LEAF_SIZE) {
-      return new Leaf(other.flatten().concat(this.values));
-    }
-  };
-
-  prototypeAccessors.length.get = function () {
-    return this.values.length;
-  };
-
-  prototypeAccessors.depth.get = function () {
-    return 0;
-  };
-
-  Object.defineProperties(Leaf.prototype, prototypeAccessors);
-  return Leaf;
-}(RopeSequence); // :: RopeSequence
-// The empty rope sequence.
-
-
-RopeSequence.empty = new Leaf([]);
-
-var Append = /*@__PURE__*/function (RopeSequence) {
-  function Append(left, right) {
-    RopeSequence.call(this);
-    this.left = left;
-    this.right = right;
-    this.length = left.length + right.length;
-    this.depth = Math.max(left.depth, right.depth) + 1;
-  }
-
-  if (RopeSequence) Append.__proto__ = RopeSequence;
-  Append.prototype = Object.create(RopeSequence && RopeSequence.prototype);
-  Append.prototype.constructor = Append;
-
-  Append.prototype.flatten = function flatten() {
-    return this.left.flatten().concat(this.right.flatten());
-  };
-
-  Append.prototype.getInner = function getInner(i) {
-    return i < this.left.length ? this.left.get(i) : this.right.get(i - this.left.length);
-  };
-
-  Append.prototype.forEachInner = function forEachInner(f, from, to, start) {
-    var leftLen = this.left.length;
-
-    if (from < leftLen && this.left.forEachInner(f, from, Math.min(to, leftLen), start) === false) {
-      return false;
-    }
-
-    if (to > leftLen && this.right.forEachInner(f, Math.max(from - leftLen, 0), Math.min(this.length, to) - leftLen, start + leftLen) === false) {
-      return false;
-    }
-  };
-
-  Append.prototype.forEachInvertedInner = function forEachInvertedInner(f, from, to, start) {
-    var leftLen = this.left.length;
-
-    if (from > leftLen && this.right.forEachInvertedInner(f, from - leftLen, Math.max(to, leftLen) - leftLen, start + leftLen) === false) {
-      return false;
-    }
-
-    if (to < leftLen && this.left.forEachInvertedInner(f, Math.min(from, leftLen), to, start) === false) {
-      return false;
-    }
-  };
-
-  Append.prototype.sliceInner = function sliceInner(from, to) {
-    if (from == 0 && to == this.length) {
-      return this;
-    }
-
-    var leftLen = this.left.length;
-
-    if (to <= leftLen) {
-      return this.left.slice(from, to);
-    }
-
-    if (from >= leftLen) {
-      return this.right.slice(from - leftLen, to - leftLen);
-    }
-
-    return this.left.slice(from, leftLen).append(this.right.slice(0, to - leftLen));
-  };
-
-  Append.prototype.leafAppend = function leafAppend(other) {
-    var inner = this.right.leafAppend(other);
-
-    if (inner) {
-      return new Append(this.left, inner);
-    }
-  };
-
-  Append.prototype.leafPrepend = function leafPrepend(other) {
-    var inner = this.left.leafPrepend(other);
-
-    if (inner) {
-      return new Append(inner, this.right);
-    }
-  };
-
-  Append.prototype.appendInner = function appendInner(other) {
-    if (this.left.depth >= Math.max(this.right.depth, other.depth) + 1) {
-      return new Append(this.left, new Append(this.right, other));
-    }
-
-    return new Append(this, other);
-  };
-
-  return Append;
-}(RopeSequence);
-
-var ropeSequence = RopeSequence;
-/* harmony default export */ const index_es = (ropeSequence);
-// EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
-var dist = __webpack_require__(38480);
-// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
-var prosemirror_state_dist = __webpack_require__(62463);
-;// CONCATENATED MODULE: ./node_modules/prosemirror-history/dist/index.js
-
-
- // ProseMirror's history isn't simply a way to roll back to a previous
-// state, because ProseMirror supports applying changes without adding
-// them to the history (for example during collaboration).
-//
-// To this end, each 'Branch' (one for the undo history and one for
-// the redo history) keeps an array of 'Items', which can optionally
-// hold a step (an actual undoable change), and always hold a position
-// map (which is needed to move changes below them to apply to the
-// current document).
-//
-// An item that has both a step and a selection bookmark is the start
-// of an 'event' — a group of changes that will be undone or redone at
-// once. (It stores only the bookmark, since that way we don't have to
-// provide a document until the selection is actually applied, which
-// is useful when compressing.)
-// Used to schedule history compression
-
-const max_empty_items = 500;
-
-class Branch {
-  constructor(items, eventCount) {
-    this.items = items;
-    this.eventCount = eventCount;
-  } // Pop the latest event off the branch's history and apply it
-  // to a document transform.
-
-
-  popEvent(state, preserveItems) {
-    if (this.eventCount == 0) return null;
-    let end = this.items.length;
-
-    for (;; end--) {
-      let next = this.items.get(end - 1);
-
-      if (next.selection) {
-        --end;
-        break;
-      }
-    }
-
-    let remap, mapFrom;
-
-    if (preserveItems) {
-      remap = this.remapping(end, this.items.length);
-      mapFrom = remap.maps.length;
-    }
-
-    let transform = state.tr;
-    let selection, remaining;
-    let addAfter = [],
-        addBefore = [];
-    this.items.forEach((item, i) => {
-      if (!item.step) {
-        if (!remap) {
-          remap = this.remapping(end, i + 1);
-          mapFrom = remap.maps.length;
-        }
-
-        mapFrom--;
-        addBefore.push(item);
-        return;
-      }
-
-      if (remap) {
-        addBefore.push(new Item(item.map));
-        let step = item.step.map(remap.slice(mapFrom)),
-            map;
-
-        if (step && transform.maybeStep(step).doc) {
-          map = transform.mapping.maps[transform.mapping.maps.length - 1];
-          addAfter.push(new Item(map, undefined, undefined, addAfter.length + addBefore.length));
-        }
-
-        mapFrom--;
-        if (map) remap.appendMap(map, mapFrom);
-      } else {
-        transform.maybeStep(item.step);
-      }
-
-      if (item.selection) {
-        selection = remap ? item.selection.map(remap.slice(mapFrom)) : item.selection;
-        remaining = new Branch(this.items.slice(0, end).append(addBefore.reverse().concat(addAfter)), this.eventCount - 1);
-        return false;
-      }
-    }, this.items.length, 0);
-    return {
-      remaining: remaining,
-      transform,
-      selection: selection
-    };
-  } // Create a new branch with the given transform added.
-
-
-  addTransform(transform, selection, histOptions, preserveItems) {
-    let newItems = [],
-        eventCount = this.eventCount;
-    let oldItems = this.items,
-        lastItem = !preserveItems && oldItems.length ? oldItems.get(oldItems.length - 1) : null;
-
-    for (let i = 0; i < transform.steps.length; i++) {
-      let step = transform.steps[i].invert(transform.docs[i]);
-      let item = new Item(transform.mapping.maps[i], step, selection),
-          merged;
-
-      if (merged = lastItem && lastItem.merge(item)) {
-        item = merged;
-        if (i) newItems.pop();else oldItems = oldItems.slice(0, oldItems.length - 1);
-      }
-
-      newItems.push(item);
-
-      if (selection) {
-        eventCount++;
-        selection = undefined;
-      }
-
-      if (!preserveItems) lastItem = item;
-    }
-
-    let overflow = eventCount - histOptions.depth;
-
-    if (overflow > DEPTH_OVERFLOW) {
-      oldItems = cutOffEvents(oldItems, overflow);
-      eventCount -= overflow;
-    }
-
-    return new Branch(oldItems.append(newItems), eventCount);
-  }
-
-  remapping(from, to) {
-    let maps = new dist/* Mapping */.vs();
-    this.items.forEach((item, i) => {
-      let mirrorPos = item.mirrorOffset != null && i - item.mirrorOffset >= from ? maps.maps.length - item.mirrorOffset : undefined;
-      maps.appendMap(item.map, mirrorPos);
-    }, from, to);
-    return maps;
-  }
-
-  addMaps(array) {
-    if (this.eventCount == 0) return this;
-    return new Branch(this.items.append(array.map(map => new Item(map))), this.eventCount);
-  } // When the collab module receives remote changes, the history has
-  // to know about those, so that it can adjust the steps that were
-  // rebased on top of the remote changes, and include the position
-  // maps for the remote changes in its array of items.
-
-
-  rebased(rebasedTransform, rebasedCount) {
-    if (!this.eventCount) return this;
-    let rebasedItems = [],
-        start = Math.max(0, this.items.length - rebasedCount);
-    let mapping = rebasedTransform.mapping;
-    let newUntil = rebasedTransform.steps.length;
-    let eventCount = this.eventCount;
-    this.items.forEach(item => {
-      if (item.selection) eventCount--;
-    }, start);
-    let iRebased = rebasedCount;
-    this.items.forEach(item => {
-      let pos = mapping.getMirror(--iRebased);
-      if (pos == null) return;
-      newUntil = Math.min(newUntil, pos);
-      let map = mapping.maps[pos];
-
-      if (item.step) {
-        let step = rebasedTransform.steps[pos].invert(rebasedTransform.docs[pos]);
-        let selection = item.selection && item.selection.map(mapping.slice(iRebased + 1, pos));
-        if (selection) eventCount++;
-        rebasedItems.push(new Item(map, step, selection));
-      } else {
-        rebasedItems.push(new Item(map));
-      }
-    }, start);
-    let newMaps = [];
-
-    for (let i = rebasedCount; i < newUntil; i++) newMaps.push(new Item(mapping.maps[i]));
-
-    let items = this.items.slice(0, start).append(newMaps).append(rebasedItems);
-    let branch = new Branch(items, eventCount);
-    if (branch.emptyItemCount() > max_empty_items) branch = branch.compress(this.items.length - rebasedItems.length);
-    return branch;
-  }
-
-  emptyItemCount() {
-    let count = 0;
-    this.items.forEach(item => {
-      if (!item.step) count++;
-    });
-    return count;
-  } // Compressing a branch means rewriting it to push the air (map-only
-  // items) out. During collaboration, these naturally accumulate
-  // because each remote change adds one. The `upto` argument is used
-  // to ensure that only the items below a given level are compressed,
-  // because `rebased` relies on a clean, untouched set of items in
-  // order to associate old items with rebased steps.
-
-
-  compress(upto = this.items.length) {
-    let remap = this.remapping(0, upto),
-        mapFrom = remap.maps.length;
-    let items = [],
-        events = 0;
-    this.items.forEach((item, i) => {
-      if (i >= upto) {
-        items.push(item);
-        if (item.selection) events++;
-      } else if (item.step) {
-        let step = item.step.map(remap.slice(mapFrom)),
-            map = step && step.getMap();
-        mapFrom--;
-        if (map) remap.appendMap(map, mapFrom);
-
-        if (step) {
-          let selection = item.selection && item.selection.map(remap.slice(mapFrom));
-          if (selection) events++;
-          let newItem = new Item(map.invert(), step, selection),
-              merged,
-              last = items.length - 1;
-          if (merged = items.length && items[last].merge(newItem)) items[last] = merged;else items.push(newItem);
-        }
-      } else if (item.map) {
-        mapFrom--;
-      }
-    }, this.items.length, 0);
-    return new Branch(index_es.from(items.reverse()), events);
-  }
-
-}
-
-Branch.empty = new Branch(index_es.empty, 0);
-
-function cutOffEvents(items, n) {
-  let cutPoint;
-  items.forEach((item, i) => {
-    if (item.selection && n-- == 0) {
-      cutPoint = i;
-      return false;
-    }
-  });
-  return items.slice(cutPoint);
-}
-
-class Item {
-  constructor( // The (forward) step map for this item.
-  map, // The inverted step
-  step, // If this is non-null, this item is the start of a group, and
-  // this selection is the starting selection for the group (the one
-  // that was active before the first step was applied)
-  selection, // If this item is the inverse of a previous mapping on the stack,
-  // this points at the inverse's offset
-  mirrorOffset) {
-    this.map = map;
-    this.step = step;
-    this.selection = selection;
-    this.mirrorOffset = mirrorOffset;
-  }
-
-  merge(other) {
-    if (this.step && other.step && !other.selection) {
-      let step = other.step.merge(this.step);
-      if (step) return new Item(step.getMap().invert(), step, this.selection);
-    }
-  }
-
-} // The value of the state field that tracks undo/redo history for that
-// state. Will be stored in the plugin state when the history plugin
-// is active.
-
-
-class HistoryState {
-  constructor(done, undone, prevRanges, prevTime) {
-    this.done = done;
-    this.undone = undone;
-    this.prevRanges = prevRanges;
-    this.prevTime = prevTime;
-  }
-
-}
-
-const DEPTH_OVERFLOW = 20; // Record a transformation in undo history.
-
-function applyTransaction(history, state, tr, options) {
-  let historyTr = tr.getMeta(historyKey),
-      rebased;
-  if (historyTr) return historyTr.historyState;
-  if (tr.getMeta(closeHistoryKey)) history = new HistoryState(history.done, history.undone, null, 0);
-  let appended = tr.getMeta("appendedTransaction");
-
-  if (tr.steps.length == 0) {
-    return history;
-  } else if (appended && appended.getMeta(historyKey)) {
-    if (appended.getMeta(historyKey).redo) return new HistoryState(history.done.addTransform(tr, undefined, options, mustPreserveItems(state)), history.undone, rangesFor(tr.mapping.maps[tr.steps.length - 1]), history.prevTime);else return new HistoryState(history.done, history.undone.addTransform(tr, undefined, options, mustPreserveItems(state)), null, history.prevTime);
-  } else if (tr.getMeta("addToHistory") !== false && !(appended && appended.getMeta("addToHistory") === false)) {
-    // Group transforms that occur in quick succession into one event.
-    let newGroup = history.prevTime == 0 || !appended && (history.prevTime < (tr.time || 0) - options.newGroupDelay || !isAdjacentTo(tr, history.prevRanges));
-    let prevRanges = appended ? mapRanges(history.prevRanges, tr.mapping) : rangesFor(tr.mapping.maps[tr.steps.length - 1]);
-    return new HistoryState(history.done.addTransform(tr, newGroup ? state.selection.getBookmark() : undefined, options, mustPreserveItems(state)), Branch.empty, prevRanges, tr.time);
-  } else if (rebased = tr.getMeta("rebased")) {
-    // Used by the collab module to tell the history that some of its
-    // content has been rebased.
-    return new HistoryState(history.done.rebased(tr, rebased), history.undone.rebased(tr, rebased), mapRanges(history.prevRanges, tr.mapping), history.prevTime);
-  } else {
-    return new HistoryState(history.done.addMaps(tr.mapping.maps), history.undone.addMaps(tr.mapping.maps), mapRanges(history.prevRanges, tr.mapping), history.prevTime);
-  }
-}
-
-function isAdjacentTo(transform, prevRanges) {
-  if (!prevRanges) return false;
-  if (!transform.docChanged) return true;
-  let adjacent = false;
-  transform.mapping.maps[0].forEach((start, end) => {
-    for (let i = 0; i < prevRanges.length; i += 2) if (start <= prevRanges[i + 1] && end >= prevRanges[i]) adjacent = true;
-  });
-  return adjacent;
-}
-
-function rangesFor(map) {
-  let result = [];
-  map.forEach((_from, _to, from, to) => result.push(from, to));
-  return result;
-}
-
-function mapRanges(ranges, mapping) {
-  if (!ranges) return null;
-  let result = [];
-
-  for (let i = 0; i < ranges.length; i += 2) {
-    let from = mapping.map(ranges[i], 1),
-        to = mapping.map(ranges[i + 1], -1);
-    if (from <= to) result.push(from, to);
-  }
-
-  return result;
-} // Apply the latest event from one branch to the document and shift the event
-// onto the other branch.
-
-
-function histTransaction(history, state, dispatch, redo) {
-  let preserveItems = mustPreserveItems(state);
-  let histOptions = historyKey.get(state).spec.config;
-  let pop = (redo ? history.undone : history.done).popEvent(state, preserveItems);
-  if (!pop) return;
-  let selection = pop.selection.resolve(pop.transform.doc);
-  let added = (redo ? history.done : history.undone).addTransform(pop.transform, state.selection.getBookmark(), histOptions, preserveItems);
-  let newHist = new HistoryState(redo ? added : pop.remaining, redo ? pop.remaining : added, null, 0);
-  dispatch(pop.transform.setSelection(selection).setMeta(historyKey, {
-    redo,
-    historyState: newHist
-  }).scrollIntoView());
-}
-
-let cachedPreserveItems = false,
-    cachedPreserveItemsPlugins = null; // Check whether any plugin in the given state has a
-// `historyPreserveItems` property in its spec, in which case we must
-// preserve steps exactly as they came in, so that they can be
-// rebased.
-
-function mustPreserveItems(state) {
-  let plugins = state.plugins;
-
-  if (cachedPreserveItemsPlugins != plugins) {
-    cachedPreserveItems = false;
-    cachedPreserveItemsPlugins = plugins;
-
-    for (let i = 0; i < plugins.length; i++) if (plugins[i].spec.historyPreserveItems) {
-      cachedPreserveItems = true;
-      break;
-    }
-  }
-
-  return cachedPreserveItems;
-}
-/**
-Set a flag on the given transaction that will prevent further steps
-from being appended to an existing history event (so that they
-require a separate undo command to undo).
-*/
-
-
-function closeHistory(tr) {
-  return tr.setMeta(closeHistoryKey, true);
-}
-
-const historyKey = new prosemirror_state_dist/* PluginKey */.H$("history");
-const closeHistoryKey = new prosemirror_state_dist/* PluginKey */.H$("closeHistory");
-/**
-Returns a plugin that enables the undo history for an editor. The
-plugin will track undo and redo stacks, which can be used with the
-[`undo`](https://prosemirror.net/docs/ref/#history.undo) and [`redo`](https://prosemirror.net/docs/ref/#history.redo) commands.
-
-You can set an `"addToHistory"` [metadata
-property](https://prosemirror.net/docs/ref/#state.Transaction.setMeta) of `false` on a transaction
-to prevent it from being rolled back by undo.
-*/
-
-function dist_history(config = {}) {
-  config = {
-    depth: config.depth || 100,
-    newGroupDelay: config.newGroupDelay || 500
-  };
-  return new prosemirror_state_dist/* Plugin */.Sy({
-    key: historyKey,
-    state: {
-      init() {
-        return new HistoryState(Branch.empty, Branch.empty, null, 0);
-      },
-
-      apply(tr, hist, state) {
-        return applyTransaction(hist, state, tr, config);
-      }
-
-    },
-    config,
-    props: {
-      handleDOMEvents: {
-        beforeinput(view, e) {
-          let inputType = e.inputType;
-          let command = inputType == "historyUndo" ? undo : inputType == "historyRedo" ? redo : null;
-          if (!command) return false;
-          e.preventDefault();
-          return command(view.state, view.dispatch);
-        }
-
-      }
-    }
-  });
-}
-/**
-A command function that undoes the last change, if any.
-*/
-
-
-const undo = (state, dispatch) => {
-  let hist = historyKey.getState(state);
-  if (!hist || hist.done.eventCount == 0) return false;
-  if (dispatch) histTransaction(hist, state, dispatch, false);
-  return true;
-};
-/**
-A command function that redoes the last undone change, if any.
-*/
-
-
-const redo = (state, dispatch) => {
-  let hist = historyKey.getState(state);
-  if (!hist || hist.undone.eventCount == 0) return false;
-  if (dispatch) histTransaction(hist, state, dispatch, true);
-  return true;
-};
-/**
-The amount of undoable events available in a given state.
-*/
-
-
-function undoDepth(state) {
-  let hist = historyKey.getState(state);
-  return hist ? hist.done.eventCount : 0;
-}
-/**
-The amount of redoable events available in a given editor state.
-*/
-
-
-function redoDepth(state) {
-  let hist = historyKey.getState(state);
-  return hist ? hist.undone.eventCount : 0;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-history/dist/tiptap-extension-history.esm.js
-
-
-const History = tiptap_core_esm.Extension.create({
-  name: 'history',
-
-  addOptions() {
-    return {
-      depth: 100,
-      newGroupDelay: 500
-    };
-  },
-
-  addCommands() {
-    return {
-      undo: () => ({
-        state,
-        dispatch
-      }) => {
-        return undo(state, dispatch);
-      },
-      redo: () => ({
-        state,
-        dispatch
-      }) => {
-        return redo(state, dispatch);
-      }
-    };
-  },
-
-  addProseMirrorPlugins() {
-    return [dist_history(this.options)];
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-z': () => this.editor.commands.undo(),
-      'Mod-y': () => this.editor.commands.redo(),
-      'Shift-Mod-z': () => this.editor.commands.redo(),
-      // Russian keyboard layouts
-      'Mod-я': () => this.editor.commands.undo(),
-      'Shift-Mod-я': () => this.editor.commands.redo()
-    };
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-history.esm.js.map
-
-/***/ }),
-
-/***/ 36129:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "b": () => (/* binding */ HorizontalRule),
-/* harmony export */   "Z": () => (/* binding */ HorizontalRule)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(62463);
-
-
-const HorizontalRule = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'horizontalRule',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  group: 'block',
-
-  parseHTML() {
-    return [{
-      tag: 'hr'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['hr', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes)];
-  },
-
-  addCommands() {
-    return {
-      setHorizontalRule: () => ({
-        chain
-      }) => {
-        return chain().insertContent({
-          type: this.name
-        }) // set cursor after horizontal rule
-        .command(({
-          tr,
-          dispatch
-        }) => {
-          var _a;
-
-          if (dispatch) {
-            const {
-              $to
-            } = tr.selection;
-            const posAfter = $to.end();
-
-            if ($to.nodeAfter) {
-              tr.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .TextSelection.create */ .Bs.create(tr.doc, $to.pos));
-            } else {
-              // add node after horizontal rule if it’s the end of the document
-              const node = (_a = $to.parent.type.contentMatch.defaultType) === null || _a === void 0 ? void 0 : _a.create();
-
-              if (node) {
-                tr.insert(posAfter, node);
-                tr.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .TextSelection.create */ .Bs.create(tr.doc, posAfter));
-              }
-            }
-
-            tr.scrollIntoView();
-          }
-
-          return true;
-        }).run();
-      }
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.nodeInputRule)({
-      find: /^(?:---|—-|___\s|\*\*\*\s)$/,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-horizontal-rule.esm.js.map
-
-/***/ }),
-
-/***/ 30440:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Tx": () => (/* binding */ Italic),
-/* harmony export */   "ZP": () => (/* binding */ Italic)
-/* harmony export */ });
-/* unused harmony exports starInputRegex, starPasteRegex, underscoreInputRegex, underscorePasteRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const starInputRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))$/;
-const starPasteRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))/g;
-const underscoreInputRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))$/;
-const underscorePasteRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))/g;
-const Italic = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Mark.create({
-  name: 'italic',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  parseHTML() {
-    return [{
-      tag: 'em'
-    }, {
-      tag: 'i',
-      getAttrs: node => node.style.fontStyle !== 'normal' && null
-    }, {
-      style: 'font-style=italic'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['em', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setItalic: () => ({
-        commands
-      }) => {
-        return commands.setMark(this.name);
-      },
-      toggleItalic: () => ({
-        commands
-      }) => {
-        return commands.toggleMark(this.name);
-      },
-      unsetItalic: () => ({
-        commands
-      }) => {
-        return commands.unsetMark(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-i': () => this.editor.commands.toggleItalic(),
-      'Mod-I': () => this.editor.commands.toggleItalic()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: starInputRegex,
-      type: this.type
-    }), (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: underscoreInputRegex,
-      type: this.type
-    })];
-  },
-
-  addPasteRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: starPasteRegex,
-      type: this.type
-    }), (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: underscorePasteRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-italic.esm.js.map
-
-/***/ }),
-
-/***/ 82861:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "H": () => (/* binding */ ListItem),
-/* harmony export */   "Z": () => (/* binding */ ListItem)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const ListItem = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'listItem',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  content: 'paragraph block*',
-  defining: true,
-
-  parseHTML() {
-    return [{
-      tag: 'li'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['li', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      Enter: () => this.editor.commands.splitListItem(this.name),
-      Tab: () => this.editor.commands.sinkListItem(this.name),
-      'Shift-Tab': () => this.editor.commands.liftListItem(this.name)
-    };
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-list-item.esm.js.map
-
-/***/ }),
-
-/***/ 94493:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "GS": () => (/* binding */ OrderedList),
-/* harmony export */   "ZP": () => (/* binding */ OrderedList)
-/* harmony export */ });
-/* unused harmony export inputRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const inputRegex = /^(\d+)\.\s$/;
-const OrderedList = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'orderedList',
-
-  addOptions() {
-    return {
-      itemTypeName: 'listItem',
-      HTMLAttributes: {}
-    };
-  },
-
-  group: 'block list',
-
-  content() {
-    return `${this.options.itemTypeName}+`;
-  },
-
-  addAttributes() {
-    return {
-      start: {
-        default: 1,
-        parseHTML: element => {
-          return element.hasAttribute('start') ? parseInt(element.getAttribute('start') || '', 10) : 1;
-        }
-      }
-    };
-  },
-
-  parseHTML() {
-    return [{
-      tag: 'ol'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    const {
-      start,
-      ...attributesWithoutStart
-    } = HTMLAttributes;
-    return start === 1 ? ['ol', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, attributesWithoutStart), 0] : ['ol', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      toggleOrderedList: () => ({
-        commands
-      }) => {
-        return commands.toggleList(this.name, this.options.itemTypeName);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Shift-7': () => this.editor.commands.toggleOrderedList()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)({
-      find: inputRegex,
-      type: this.type,
-      getAttributes: match => ({
-        start: +match[1]
-      }),
-      joinPredicate: (match, node) => node.childCount + node.attrs.start === +match[1]
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-ordered-list.esm.js.map
-
-/***/ }),
-
-/***/ 70670:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "n": () => (/* binding */ Paragraph),
-/* harmony export */   "Z": () => (/* binding */ Paragraph)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const Paragraph = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'paragraph',
-  priority: 1000,
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  group: 'block',
-  content: 'inline*',
-
-  parseHTML() {
-    return [{
-      tag: 'p'
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['p', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setParagraph: () => ({
-        commands
-      }) => {
-        return commands.setNode(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Alt-0': () => this.editor.commands.setParagraph()
-    };
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-paragraph.esm.js.map
-
-/***/ }),
-
-/***/ 56793:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Re": () => (/* binding */ Strike),
-/* harmony export */   "ZP": () => (/* binding */ Strike)
-/* harmony export */ });
-/* unused harmony exports inputRegex, pasteRegex */
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const inputRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))$/;
-const pasteRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))/g;
-const Strike = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Mark.create({
-  name: 'strike',
-
-  addOptions() {
-    return {
-      HTMLAttributes: {}
-    };
-  },
-
-  parseHTML() {
-    return [{
-      tag: 's'
-    }, {
-      tag: 'del'
-    }, {
-      tag: 'strike'
-    }, {
-      style: 'text-decoration',
-      consuming: false,
-      getAttrs: style => style.includes('line-through') ? {} : false
-    }];
-  },
-
-  renderHTML({
-    HTMLAttributes
-  }) {
-    return ['s', (0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
-  },
-
-  addCommands() {
-    return {
-      setStrike: () => ({
-        commands
-      }) => {
-        return commands.setMark(this.name);
-      },
-      toggleStrike: () => ({
-        commands
-      }) => {
-        return commands.toggleMark(this.name);
-      },
-      unsetStrike: () => ({
-        commands
-      }) => {
-        return commands.unsetMark(this.name);
-      }
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Shift-x': () => this.editor.commands.toggleStrike()
-    };
-  },
-
-  addInputRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markInputRule)({
-      find: inputRegex,
-      type: this.type
-    })];
-  },
-
-  addPasteRules() {
-    return [(0,_tiptap_core__WEBPACK_IMPORTED_MODULE_0__.markPasteRule)({
-      find: pasteRegex,
-      type: this.type
-    })];
-  }
-
-});
- //# sourceMappingURL=tiptap-extension-strike.esm.js.map
-
-/***/ }),
-
 /***/ 74634:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -8914,23 +6336,6 @@ const TextStyle = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Mark.create({
 
 });
  //# sourceMappingURL=tiptap-extension-text-style.esm.js.map
-
-/***/ }),
-
-/***/ 28343:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "x": () => (/* binding */ Text),
-/* harmony export */   "Z": () => (/* binding */ Text)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
-
-const Text = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Node.create({
-  name: 'text',
-  group: 'inline'
-});
- //# sourceMappingURL=tiptap-extension-text.esm.js.map
 
 /***/ }),
 
@@ -15866,18 +13271,25 @@ var TuiEditorTool = /*#__PURE__*/(() => {
 
 /***/ }),
 
-/***/ 98694:
+/***/ 15736:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BackgroundColor": () => (/* binding */ BackgroundColor)
-/* harmony export */ });
-/* harmony import */ var _tiptap_extension_text_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74634);
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(40256);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "BackgroundColor": () => (/* reexport */ BackgroundColor)
+});
+
+// EXTERNAL MODULE: ./node_modules/@tiptap/extension-text-style/dist/tiptap-extension-text-style.esm.js
+var tiptap_extension_text_style_esm = __webpack_require__(74634);
+// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
+var tiptap_core_esm = __webpack_require__(40256);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/background-color/background-color.ts
 
 
-const BackgroundColor = _tiptap_core__WEBPACK_IMPORTED_MODULE_1__.Extension.create({
+const BackgroundColor = tiptap_core_esm.Extension.create({
   name: `backgroundColor`,
 
   addOptions() {
@@ -15922,21 +13334,30 @@ const BackgroundColor = _tiptap_core__WEBPACK_IMPORTED_MODULE_1__.Extension.crea
   }
 
 });
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/background-color/index.ts
+
 
 /***/ }),
 
-/***/ 6579:
+/***/ 52658:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FontColor": () => (/* binding */ FontColor)
-/* harmony export */ });
-/* harmony import */ var _tiptap_extension_text_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74634);
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(40256);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "FontColor": () => (/* reexport */ FontColor)
+});
+
+// EXTERNAL MODULE: ./node_modules/@tiptap/extension-text-style/dist/tiptap-extension-text-style.esm.js
+var tiptap_extension_text_style_esm = __webpack_require__(74634);
+// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
+var tiptap_core_esm = __webpack_require__(40256);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/font-color/font-color.ts
 
 
-const FontColor = _tiptap_core__WEBPACK_IMPORTED_MODULE_1__.Extension.create({
+const FontColor = tiptap_core_esm.Extension.create({
   name: `fontColor`,
 
   addOptions() {
@@ -15981,6 +13402,8 @@ const FontColor = _tiptap_core__WEBPACK_IMPORTED_MODULE_1__.Extension.create({
   }
 
 });
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/font-color/index.ts
+
 
 /***/ }),
 
@@ -16394,20 +13817,26 @@ let TuiImageEditorModule = /*#__PURE__*/(() => {
 
 /***/ }),
 
-/***/ 73826:
+/***/ 12177:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "tuiIsOrderedOrBulletList": () => (/* binding */ tuiIsOrderedOrBulletList),
-/* harmony export */   "TuiTabExtension": () => (/* binding */ TuiTabExtension)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "TuiTabExtension": () => (/* reexport */ TuiTabExtension),
+  "tuiIsOrderedOrBulletList": () => (/* reexport */ tuiIsOrderedOrBulletList)
+});
+
+// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
+var tiptap_core_esm = __webpack_require__(40256);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/indent-outdent/indent-outdent.ts
 
 function tuiIsOrderedOrBulletList(editor) {
   return editor.isActive(`bulletList`) || editor.isActive(`orderedList`);
 }
-const TuiTabExtension = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Extension.create({
+const TuiTabExtension = tiptap_core_esm.Extension.create({
   name: `indent`,
 
   addKeyboardShortcuts() {
@@ -16417,10 +13846,12 @@ const TuiTabExtension = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Extension.crea
   }
 
 });
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/indent-outdent/index.ts
+
 
 /***/ }),
 
-/***/ 15632:
+/***/ 75276:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -16433,42 +13864,2390 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
 var tiptap_core_esm = __webpack_require__(40256);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-blockquote/dist/tiptap-extension-blockquote.esm.js
-var tiptap_extension_blockquote_esm = __webpack_require__(10763);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-bold/dist/tiptap-extension-bold.esm.js
-var tiptap_extension_bold_esm = __webpack_require__(32892);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-bullet-list/dist/tiptap-extension-bullet-list.esm.js
-var tiptap_extension_bullet_list_esm = __webpack_require__(12258);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-code/dist/tiptap-extension-code.esm.js
-var tiptap_extension_code_esm = __webpack_require__(70837);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-code-block/dist/tiptap-extension-code-block.esm.js
-var tiptap_extension_code_block_esm = __webpack_require__(93743);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-document/dist/tiptap-extension-document.esm.js
-var tiptap_extension_document_esm = __webpack_require__(44225);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-dropcursor/dist/tiptap-extension-dropcursor.esm.js + 1 modules
-var tiptap_extension_dropcursor_esm = __webpack_require__(81121);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-gapcursor/dist/tiptap-extension-gapcursor.esm.js + 1 modules
-var tiptap_extension_gapcursor_esm = __webpack_require__(50587);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-hard-break/dist/tiptap-extension-hard-break.esm.js
-var tiptap_extension_hard_break_esm = __webpack_require__(34278);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-heading/dist/tiptap-extension-heading.esm.js
-var tiptap_extension_heading_esm = __webpack_require__(15400);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-history/dist/tiptap-extension-history.esm.js + 2 modules
-var tiptap_extension_history_esm = __webpack_require__(10590);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-horizontal-rule/dist/tiptap-extension-horizontal-rule.esm.js
-var tiptap_extension_horizontal_rule_esm = __webpack_require__(36129);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-italic/dist/tiptap-extension-italic.esm.js
-var tiptap_extension_italic_esm = __webpack_require__(30440);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-list-item/dist/tiptap-extension-list-item.esm.js
-var tiptap_extension_list_item_esm = __webpack_require__(82861);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-ordered-list/dist/tiptap-extension-ordered-list.esm.js
-var tiptap_extension_ordered_list_esm = __webpack_require__(94493);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-paragraph/dist/tiptap-extension-paragraph.esm.js
-var tiptap_extension_paragraph_esm = __webpack_require__(70670);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-strike/dist/tiptap-extension-strike.esm.js
-var tiptap_extension_strike_esm = __webpack_require__(56793);
-// EXTERNAL MODULE: ./node_modules/@tiptap/extension-text/dist/tiptap-extension-text.esm.js
-var tiptap_extension_text_esm = __webpack_require__(28343);
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-blockquote/dist/tiptap-extension-blockquote.esm.js
+
+const inputRegex = /^\s*>\s$/;
+const Blockquote = tiptap_core_esm.Node.create({
+  name: 'blockquote',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  content: 'block+',
+  group: 'block',
+  defining: true,
+
+  parseHTML() {
+    return [{
+      tag: 'blockquote'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['blockquote', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setBlockquote: () => ({
+        commands
+      }) => {
+        return commands.wrapIn(this.name);
+      },
+      toggleBlockquote: () => ({
+        commands
+      }) => {
+        return commands.toggleWrap(this.name);
+      },
+      unsetBlockquote: () => ({
+        commands
+      }) => {
+        return commands.lift(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Shift-b': () => this.editor.commands.toggleBlockquote()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.wrappingInputRule)({
+      find: inputRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-blockquote.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-bold/dist/tiptap-extension-bold.esm.js
+
+const starInputRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))$/;
+const starPasteRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))/g;
+const underscoreInputRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))$/;
+const underscorePasteRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))/g;
+const Bold = tiptap_core_esm.Mark.create({
+  name: 'bold',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  parseHTML() {
+    return [{
+      tag: 'strong'
+    }, {
+      tag: 'b',
+      getAttrs: node => node.style.fontWeight !== 'normal' && null
+    }, {
+      style: 'font-weight',
+      getAttrs: value => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['strong', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setBold: () => ({
+        commands
+      }) => {
+        return commands.setMark(this.name);
+      },
+      toggleBold: () => ({
+        commands
+      }) => {
+        return commands.toggleMark(this.name);
+      },
+      unsetBold: () => ({
+        commands
+      }) => {
+        return commands.unsetMark(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-b': () => this.editor.commands.toggleBold(),
+      'Mod-B': () => this.editor.commands.toggleBold()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.markInputRule)({
+      find: starInputRegex,
+      type: this.type
+    }), (0,tiptap_core_esm.markInputRule)({
+      find: underscoreInputRegex,
+      type: this.type
+    })];
+  },
+
+  addPasteRules() {
+    return [(0,tiptap_core_esm.markPasteRule)({
+      find: starPasteRegex,
+      type: this.type
+    }), (0,tiptap_core_esm.markPasteRule)({
+      find: underscorePasteRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-bold.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-bullet-list/dist/tiptap-extension-bullet-list.esm.js
+
+const tiptap_extension_bullet_list_esm_inputRegex = /^\s*([-+*])\s$/;
+const BulletList = tiptap_core_esm.Node.create({
+  name: 'bulletList',
+
+  addOptions() {
+    return {
+      itemTypeName: 'listItem',
+      HTMLAttributes: {}
+    };
+  },
+
+  group: 'block list',
+
+  content() {
+    return `${this.options.itemTypeName}+`;
+  },
+
+  parseHTML() {
+    return [{
+      tag: 'ul'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['ul', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      toggleBulletList: () => ({
+        commands
+      }) => {
+        return commands.toggleList(this.name, this.options.itemTypeName);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Shift-8': () => this.editor.commands.toggleBulletList()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.wrappingInputRule)({
+      find: tiptap_extension_bullet_list_esm_inputRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-bullet-list.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-code/dist/tiptap-extension-code.esm.js
+
+const tiptap_extension_code_esm_inputRegex = /(?:^|\s)((?:`)((?:[^`]+))(?:`))$/;
+const pasteRegex = /(?:^|\s)((?:`)((?:[^`]+))(?:`))/g;
+const Code = tiptap_core_esm.Mark.create({
+  name: 'code',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  excludes: '_',
+  code: true,
+  exitable: true,
+
+  parseHTML() {
+    return [{
+      tag: 'code'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['code', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setCode: () => ({
+        commands
+      }) => {
+        return commands.setMark(this.name);
+      },
+      toggleCode: () => ({
+        commands
+      }) => {
+        return commands.toggleMark(this.name);
+      },
+      unsetCode: () => ({
+        commands
+      }) => {
+        return commands.unsetMark(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-e': () => this.editor.commands.toggleCode()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.markInputRule)({
+      find: tiptap_extension_code_esm_inputRegex,
+      type: this.type
+    })];
+  },
+
+  addPasteRules() {
+    return [(0,tiptap_core_esm.markPasteRule)({
+      find: pasteRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-code.esm.js.map
+// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
+var dist = __webpack_require__(62463);
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-code-block/dist/tiptap-extension-code-block.esm.js
+
+
+const backtickInputRegex = /^```([a-z]+)?[\s\n]$/;
+const tildeInputRegex = /^~~~([a-z]+)?[\s\n]$/;
+const CodeBlock = tiptap_core_esm.Node.create({
+  name: 'codeBlock',
+
+  addOptions() {
+    return {
+      languageClassPrefix: 'language-',
+      exitOnTripleEnter: true,
+      exitOnArrowDown: true,
+      HTMLAttributes: {}
+    };
+  },
+
+  content: 'text*',
+  marks: '',
+  group: 'block',
+  code: true,
+  defining: true,
+
+  addAttributes() {
+    return {
+      language: {
+        default: null,
+        parseHTML: element => {
+          var _a;
+
+          const {
+            languageClassPrefix
+          } = this.options;
+          const classNames = [...(((_a = element.firstElementChild) === null || _a === void 0 ? void 0 : _a.classList) || [])];
+          const languages = classNames.filter(className => className.startsWith(languageClassPrefix)).map(className => className.replace(languageClassPrefix, ''));
+          const language = languages[0];
+
+          if (!language) {
+            return null;
+          }
+
+          return language;
+        },
+        rendered: false
+      }
+    };
+  },
+
+  parseHTML() {
+    return [{
+      tag: 'pre',
+      preserveWhitespace: 'full'
+    }];
+  },
+
+  renderHTML({
+    node,
+    HTMLAttributes
+  }) {
+    return ['pre', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), ['code', {
+      class: node.attrs.language ? this.options.languageClassPrefix + node.attrs.language : null
+    }, 0]];
+  },
+
+  addCommands() {
+    return {
+      setCodeBlock: attributes => ({
+        commands
+      }) => {
+        return commands.setNode(this.name, attributes);
+      },
+      toggleCodeBlock: attributes => ({
+        commands
+      }) => {
+        return commands.toggleNode(this.name, 'paragraph', attributes);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Alt-c': () => this.editor.commands.toggleCodeBlock(),
+      // remove code block when at start of document or code block is empty
+      Backspace: () => {
+        const {
+          empty,
+          $anchor
+        } = this.editor.state.selection;
+        const isAtStart = $anchor.pos === 1;
+
+        if (!empty || $anchor.parent.type.name !== this.name) {
+          return false;
+        }
+
+        if (isAtStart || !$anchor.parent.textContent.length) {
+          return this.editor.commands.clearNodes();
+        }
+
+        return false;
+      },
+      // exit node on triple enter
+      Enter: ({
+        editor
+      }) => {
+        if (!this.options.exitOnTripleEnter) {
+          return false;
+        }
+
+        const {
+          state
+        } = editor;
+        const {
+          selection
+        } = state;
+        const {
+          $from,
+          empty
+        } = selection;
+
+        if (!empty || $from.parent.type !== this.type) {
+          return false;
+        }
+
+        const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
+        const endsWithDoubleNewline = $from.parent.textContent.endsWith('\n\n');
+
+        if (!isAtEnd || !endsWithDoubleNewline) {
+          return false;
+        }
+
+        return editor.chain().command(({
+          tr
+        }) => {
+          tr.delete($from.pos - 2, $from.pos);
+          return true;
+        }).exitCode().run();
+      },
+      // exit node on arrow down
+      ArrowDown: ({
+        editor
+      }) => {
+        if (!this.options.exitOnArrowDown) {
+          return false;
+        }
+
+        const {
+          state
+        } = editor;
+        const {
+          selection,
+          doc
+        } = state;
+        const {
+          $from,
+          empty
+        } = selection;
+
+        if (!empty || $from.parent.type !== this.type) {
+          return false;
+        }
+
+        const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
+
+        if (!isAtEnd) {
+          return false;
+        }
+
+        const after = $from.after();
+
+        if (after === undefined) {
+          return false;
+        }
+
+        const nodeAfter = doc.nodeAt(after);
+
+        if (nodeAfter) {
+          return false;
+        }
+
+        return editor.commands.exitCode();
+      }
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.textblockTypeInputRule)({
+      find: backtickInputRegex,
+      type: this.type,
+      getAttributes: match => ({
+        language: match[1]
+      })
+    }), (0,tiptap_core_esm.textblockTypeInputRule)({
+      find: tildeInputRegex,
+      type: this.type,
+      getAttributes: match => ({
+        language: match[1]
+      })
+    })];
+  },
+
+  addProseMirrorPlugins() {
+    return [// this plugin creates a code block for pasted content from VS Code
+    // we can also detect the copied code language
+    new dist/* Plugin */.Sy({
+      key: new dist/* PluginKey */.H$('codeBlockVSCodeHandler'),
+      props: {
+        handlePaste: (view, event) => {
+          if (!event.clipboardData) {
+            return false;
+          } // don’t create a new code block within code blocks
+
+
+          if (this.editor.isActive(this.type.name)) {
+            return false;
+          }
+
+          const text = event.clipboardData.getData('text/plain');
+          const vscode = event.clipboardData.getData('vscode-editor-data');
+          const vscodeData = vscode ? JSON.parse(vscode) : undefined;
+          const language = vscodeData === null || vscodeData === void 0 ? void 0 : vscodeData.mode;
+
+          if (!text || !language) {
+            return false;
+          }
+
+          const {
+            tr
+          } = view.state; // create an empty code block
+
+          tr.replaceSelectionWith(this.type.create({
+            language
+          })); // put cursor inside the newly created code block
+
+          tr.setSelection(dist/* TextSelection.near */.Bs.near(tr.doc.resolve(Math.max(0, tr.selection.from - 2)))); // add text to code block
+          // strip carriage return chars from text pasted as code
+          // see: https://github.com/ProseMirror/prosemirror-view/commit/a50a6bcceb4ce52ac8fcc6162488d8875613aacd
+
+          tr.insertText(text.replace(/\r\n?/g, '\n')); // store meta information
+          // this is useful for other plugins that depends on the paste event
+          // like the paste rule plugin
+
+          tr.setMeta('paste', true);
+          view.dispatch(tr);
+          return true;
+        }
+      }
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-code-block.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-document/dist/tiptap-extension-document.esm.js
+
+const Document = tiptap_core_esm.Node.create({
+  name: 'doc',
+  topNode: true,
+  content: 'block+'
+});
+ //# sourceMappingURL=tiptap-extension-document.esm.js.map
+// EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
+var prosemirror_transform_dist = __webpack_require__(38480);
+;// CONCATENATED MODULE: ./node_modules/prosemirror-dropcursor/dist/index.js
+
+
+/**
+Create a plugin that, when added to a ProseMirror instance,
+causes a decoration to show up at the drop position when something
+is dragged over the editor.
+
+Nodes may add a `disableDropCursor` property to their spec to
+control the showing of a drop cursor inside them. This may be a
+boolean or a function, which will be called with a view and a
+position, and should return a boolean.
+*/
+
+function dropCursor(options = {}) {
+  return new dist/* Plugin */.Sy({
+    view(editorView) {
+      return new DropCursorView(editorView, options);
+    }
+
+  });
+}
+
+class DropCursorView {
+  constructor(editorView, options) {
+    this.editorView = editorView;
+    this.cursorPos = null;
+    this.element = null;
+    this.timeout = -1;
+    this.width = options.width || 1;
+    this.color = options.color || "black";
+    this.class = options.class;
+    this.handlers = ["dragover", "dragend", "drop", "dragleave"].map(name => {
+      let handler = e => {
+        this[name](e);
+      };
+
+      editorView.dom.addEventListener(name, handler);
+      return {
+        name,
+        handler
+      };
+    });
+  }
+
+  destroy() {
+    this.handlers.forEach(({
+      name,
+      handler
+    }) => this.editorView.dom.removeEventListener(name, handler));
+  }
+
+  update(editorView, prevState) {
+    if (this.cursorPos != null && prevState.doc != editorView.state.doc) {
+      if (this.cursorPos > editorView.state.doc.content.size) this.setCursor(null);else this.updateOverlay();
+    }
+  }
+
+  setCursor(pos) {
+    if (pos == this.cursorPos) return;
+    this.cursorPos = pos;
+
+    if (pos == null) {
+      this.element.parentNode.removeChild(this.element);
+      this.element = null;
+    } else {
+      this.updateOverlay();
+    }
+  }
+
+  updateOverlay() {
+    let $pos = this.editorView.state.doc.resolve(this.cursorPos),
+        rect;
+
+    if (!$pos.parent.inlineContent) {
+      let before = $pos.nodeBefore,
+          after = $pos.nodeAfter;
+
+      if (before || after) {
+        let nodeRect = this.editorView.nodeDOM(this.cursorPos - (before ? before.nodeSize : 0)).getBoundingClientRect();
+        let top = before ? nodeRect.bottom : nodeRect.top;
+        if (before && after) top = (top + this.editorView.nodeDOM(this.cursorPos).getBoundingClientRect().top) / 2;
+        rect = {
+          left: nodeRect.left,
+          right: nodeRect.right,
+          top: top - this.width / 2,
+          bottom: top + this.width / 2
+        };
+      }
+    }
+
+    if (!rect) {
+      let coords = this.editorView.coordsAtPos(this.cursorPos);
+      rect = {
+        left: coords.left - this.width / 2,
+        right: coords.left + this.width / 2,
+        top: coords.top,
+        bottom: coords.bottom
+      };
+    }
+
+    let parent = this.editorView.dom.offsetParent;
+
+    if (!this.element) {
+      this.element = parent.appendChild(document.createElement("div"));
+      if (this.class) this.element.className = this.class;
+      this.element.style.cssText = "position: absolute; z-index: 50; pointer-events: none; background-color: " + this.color;
+    }
+
+    let parentLeft, parentTop;
+
+    if (!parent || parent == document.body && getComputedStyle(parent).position == "static") {
+      parentLeft = -pageXOffset;
+      parentTop = -pageYOffset;
+    } else {
+      let rect = parent.getBoundingClientRect();
+      parentLeft = rect.left - parent.scrollLeft;
+      parentTop = rect.top - parent.scrollTop;
+    }
+
+    this.element.style.left = rect.left - parentLeft + "px";
+    this.element.style.top = rect.top - parentTop + "px";
+    this.element.style.width = rect.right - rect.left + "px";
+    this.element.style.height = rect.bottom - rect.top + "px";
+  }
+
+  scheduleRemoval(timeout) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.setCursor(null), timeout);
+  }
+
+  dragover(event) {
+    if (!this.editorView.editable) return;
+    let pos = this.editorView.posAtCoords({
+      left: event.clientX,
+      top: event.clientY
+    });
+    let node = pos && pos.inside >= 0 && this.editorView.state.doc.nodeAt(pos.inside);
+    let disableDropCursor = node && node.type.spec.disableDropCursor;
+    let disabled = typeof disableDropCursor == "function" ? disableDropCursor(this.editorView, pos) : disableDropCursor;
+
+    if (pos && !disabled) {
+      let target = pos.pos;
+
+      if (this.editorView.dragging && this.editorView.dragging.slice) {
+        target = (0,prosemirror_transform_dist/* dropPoint */.nj)(this.editorView.state.doc, target, this.editorView.dragging.slice);
+        if (target == null) return this.setCursor(null);
+      }
+
+      this.setCursor(target);
+      this.scheduleRemoval(5000);
+    }
+  }
+
+  dragend() {
+    this.scheduleRemoval(20);
+  }
+
+  drop() {
+    this.scheduleRemoval(20);
+  }
+
+  dragleave(event) {
+    if (event.target == this.editorView.dom || !this.editorView.dom.contains(event.relatedTarget)) this.setCursor(null);
+  }
+
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-dropcursor/dist/tiptap-extension-dropcursor.esm.js
+
+
+const Dropcursor = tiptap_core_esm.Extension.create({
+  name: 'dropCursor',
+
+  addOptions() {
+    return {
+      color: 'currentColor',
+      width: 1,
+      class: undefined
+    };
+  },
+
+  addProseMirrorPlugins() {
+    return [dropCursor(this.options)];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-dropcursor.esm.js.map
+// EXTERNAL MODULE: ./node_modules/prosemirror-keymap/dist/index.js + 1 modules
+var prosemirror_keymap_dist = __webpack_require__(13903);
+// EXTERNAL MODULE: ./node_modules/prosemirror-model/dist/index.js + 1 modules
+var prosemirror_model_dist = __webpack_require__(35917);
+// EXTERNAL MODULE: ./node_modules/prosemirror-view/dist/index.js
+var prosemirror_view_dist = __webpack_require__(43594);
+;// CONCATENATED MODULE: ./node_modules/prosemirror-gapcursor/dist/index.js
+
+
+
+
+/**
+Gap cursor selections are represented using this class. Its
+`$anchor` and `$head` properties both point at the cursor position.
+*/
+
+class GapCursor extends dist/* Selection */.Y1 {
+  /**
+  Create a gap cursor.
+  */
+  constructor($pos) {
+    super($pos, $pos);
+  }
+
+  map(doc, mapping) {
+    let $pos = doc.resolve(mapping.map(this.head));
+    return GapCursor.valid($pos) ? new GapCursor($pos) : dist/* Selection.near */.Y1.near($pos);
+  }
+
+  content() {
+    return prosemirror_model_dist/* Slice.empty */.p2.empty;
+  }
+
+  eq(other) {
+    return other instanceof GapCursor && other.head == this.head;
+  }
+
+  toJSON() {
+    return {
+      type: "gapcursor",
+      pos: this.head
+    };
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc, json) {
+    if (typeof json.pos != "number") throw new RangeError("Invalid input for GapCursor.fromJSON");
+    return new GapCursor(doc.resolve(json.pos));
+  }
+  /**
+  @internal
+  */
+
+
+  getBookmark() {
+    return new GapBookmark(this.anchor);
+  }
+  /**
+  @internal
+  */
+
+
+  static valid($pos) {
+    let parent = $pos.parent;
+    if (parent.isTextblock || !closedBefore($pos) || !closedAfter($pos)) return false;
+    let override = parent.type.spec.allowGapCursor;
+    if (override != null) return override;
+    let deflt = parent.contentMatchAt($pos.index()).defaultType;
+    return deflt && deflt.isTextblock;
+  }
+  /**
+  @internal
+  */
+
+
+  static findGapCursorFrom($pos, dir, mustMove = false) {
+    search: for (;;) {
+      if (!mustMove && GapCursor.valid($pos)) return $pos;
+      let pos = $pos.pos,
+          next = null; // Scan up from this position
+
+      for (let d = $pos.depth;; d--) {
+        let parent = $pos.node(d);
+
+        if (dir > 0 ? $pos.indexAfter(d) < parent.childCount : $pos.index(d) > 0) {
+          next = parent.child(dir > 0 ? $pos.indexAfter(d) : $pos.index(d) - 1);
+          break;
+        } else if (d == 0) {
+          return null;
+        }
+
+        pos += dir;
+        let $cur = $pos.doc.resolve(pos);
+        if (GapCursor.valid($cur)) return $cur;
+      } // And then down into the next node
+
+
+      for (;;) {
+        let inside = dir > 0 ? next.firstChild : next.lastChild;
+
+        if (!inside) {
+          if (next.isAtom && !next.isText && !dist/* NodeSelection.isSelectable */.qv.isSelectable(next)) {
+            $pos = $pos.doc.resolve(pos + next.nodeSize * dir);
+            mustMove = false;
+            continue search;
+          }
+
+          break;
+        }
+
+        next = inside;
+        pos += dir;
+        let $cur = $pos.doc.resolve(pos);
+        if (GapCursor.valid($cur)) return $cur;
+      }
+
+      return null;
+    }
+  }
+
+}
+
+GapCursor.prototype.visible = false;
+GapCursor.findFrom = GapCursor.findGapCursorFrom;
+dist/* Selection.jsonID */.Y1.jsonID("gapcursor", GapCursor);
+
+class GapBookmark {
+  constructor(pos) {
+    this.pos = pos;
+  }
+
+  map(mapping) {
+    return new GapBookmark(mapping.map(this.pos));
+  }
+
+  resolve(doc) {
+    let $pos = doc.resolve(this.pos);
+    return GapCursor.valid($pos) ? new GapCursor($pos) : dist/* Selection.near */.Y1.near($pos);
+  }
+
+}
+
+function closedBefore($pos) {
+  for (let d = $pos.depth; d >= 0; d--) {
+    let index = $pos.index(d),
+        parent = $pos.node(d); // At the start of this parent, look at next one
+
+    if (index == 0) {
+      if (parent.type.spec.isolating) return true;
+      continue;
+    } // See if the node before (or its first ancestor) is closed
+
+
+    for (let before = parent.child(index - 1);; before = before.lastChild) {
+      if (before.childCount == 0 && !before.inlineContent || before.isAtom || before.type.spec.isolating) return true;
+      if (before.inlineContent) return false;
+    }
+  } // Hit start of document
+
+
+  return true;
+}
+
+function closedAfter($pos) {
+  for (let d = $pos.depth; d >= 0; d--) {
+    let index = $pos.indexAfter(d),
+        parent = $pos.node(d);
+
+    if (index == parent.childCount) {
+      if (parent.type.spec.isolating) return true;
+      continue;
+    }
+
+    for (let after = parent.child(index);; after = after.firstChild) {
+      if (after.childCount == 0 && !after.inlineContent || after.isAtom || after.type.spec.isolating) return true;
+      if (after.inlineContent) return false;
+    }
+  }
+
+  return true;
+}
+/**
+Create a gap cursor plugin. When enabled, this will capture clicks
+near and arrow-key-motion past places that don't have a normally
+selectable position nearby, and create a gap cursor selection for
+them. The cursor is drawn as an element with class
+`ProseMirror-gapcursor`. You can either include
+`style/gapcursor.css` from the package's directory or add your own
+styles to make it visible.
+*/
+
+
+function gapCursor() {
+  return new dist/* Plugin */.Sy({
+    props: {
+      decorations: drawGapCursor,
+
+      createSelectionBetween(_view, $anchor, $head) {
+        return $anchor.pos == $head.pos && GapCursor.valid($head) ? new GapCursor($head) : null;
+      },
+
+      handleClick,
+      handleKeyDown,
+      handleDOMEvents: {
+        beforeinput: beforeinput
+      }
+    }
+  });
+}
+
+const handleKeyDown = (0,prosemirror_keymap_dist/* keydownHandler */.$)({
+  "ArrowLeft": arrow("horiz", -1),
+  "ArrowRight": arrow("horiz", 1),
+  "ArrowUp": arrow("vert", -1),
+  "ArrowDown": arrow("vert", 1)
+});
+
+function arrow(axis, dir) {
+  const dirStr = axis == "vert" ? dir > 0 ? "down" : "up" : dir > 0 ? "right" : "left";
+  return function (state, dispatch, view) {
+    let sel = state.selection;
+    let $start = dir > 0 ? sel.$to : sel.$from,
+        mustMove = sel.empty;
+
+    if (sel instanceof dist/* TextSelection */.Bs) {
+      if (!view.endOfTextblock(dirStr) || $start.depth == 0) return false;
+      mustMove = false;
+      $start = state.doc.resolve(dir > 0 ? $start.after() : $start.before());
+    }
+
+    let $found = GapCursor.findGapCursorFrom($start, dir, mustMove);
+    if (!$found) return false;
+    if (dispatch) dispatch(state.tr.setSelection(new GapCursor($found)));
+    return true;
+  };
+}
+
+function handleClick(view, pos, event) {
+  if (!view || !view.editable) return false;
+  let $pos = view.state.doc.resolve(pos);
+  if (!GapCursor.valid($pos)) return false;
+  let clickPos = view.posAtCoords({
+    left: event.clientX,
+    top: event.clientY
+  });
+  if (clickPos && clickPos.inside > -1 && dist/* NodeSelection.isSelectable */.qv.isSelectable(view.state.doc.nodeAt(clickPos.inside))) return false;
+  view.dispatch(view.state.tr.setSelection(new GapCursor($pos)));
+  return true;
+} // This is a hack that, when a composition starts while a gap cursor
+// is active, quickly creates an inline context for the composition to
+// happen in, to avoid it being aborted by the DOM selection being
+// moved into a valid position.
+
+
+function beforeinput(view, event) {
+  if (event.inputType != "insertCompositionText" || !(view.state.selection instanceof GapCursor)) return false;
+  let {
+    $from
+  } = view.state.selection;
+  let insert = $from.parent.contentMatchAt($from.index()).findWrapping(view.state.schema.nodes.text);
+  if (!insert) return false;
+  let frag = prosemirror_model_dist/* Fragment.empty */.HY.empty;
+
+  for (let i = insert.length - 1; i >= 0; i--) frag = prosemirror_model_dist/* Fragment.from */.HY.from(insert[i].createAndFill(null, frag));
+
+  let tr = view.state.tr.replace($from.pos, $from.pos, new prosemirror_model_dist/* Slice */.p2(frag, 0, 0));
+  tr.setSelection(dist/* TextSelection.near */.Bs.near(tr.doc.resolve($from.pos + 1)));
+  view.dispatch(tr);
+  return false;
+}
+
+function drawGapCursor(state) {
+  if (!(state.selection instanceof GapCursor)) return null;
+  let node = document.createElement("div");
+  node.className = "ProseMirror-gapcursor";
+  return prosemirror_view_dist/* DecorationSet.create */.EH.create(state.doc, [prosemirror_view_dist/* Decoration.widget */.p.widget(state.selection.head, node, {
+    key: "gapcursor"
+  })]);
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-gapcursor/dist/tiptap-extension-gapcursor.esm.js
+
+
+const Gapcursor = tiptap_core_esm.Extension.create({
+  name: 'gapCursor',
+
+  addProseMirrorPlugins() {
+    return [gapCursor()];
+  },
+
+  extendNodeSchema(extension) {
+    var _a;
+
+    const context = {
+      name: extension.name,
+      options: extension.options,
+      storage: extension.storage
+    };
+    return {
+      allowGapCursor: (_a = (0,tiptap_core_esm.callOrReturn)((0,tiptap_core_esm.getExtensionField)(extension, 'allowGapCursor', context))) !== null && _a !== void 0 ? _a : null
+    };
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-gapcursor.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-hard-break/dist/tiptap-extension-hard-break.esm.js
+
+const HardBreak = tiptap_core_esm.Node.create({
+  name: 'hardBreak',
+
+  addOptions() {
+    return {
+      keepMarks: true,
+      HTMLAttributes: {}
+    };
+  },
+
+  inline: true,
+  group: 'inline',
+  selectable: false,
+
+  parseHTML() {
+    return [{
+      tag: 'br'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['br', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes)];
+  },
+
+  renderText() {
+    return '\n';
+  },
+
+  addCommands() {
+    return {
+      setHardBreak: () => ({
+        commands,
+        chain,
+        state,
+        editor
+      }) => {
+        return commands.first([() => commands.exitCode(), () => commands.command(() => {
+          const {
+            selection,
+            storedMarks
+          } = state;
+
+          if (selection.$from.parent.type.spec.isolating) {
+            return false;
+          }
+
+          const {
+            keepMarks
+          } = this.options;
+          const {
+            splittableMarks
+          } = editor.extensionManager;
+          const marks = storedMarks || selection.$to.parentOffset && selection.$from.marks();
+          return chain().insertContent({
+            type: this.name
+          }).command(({
+            tr,
+            dispatch
+          }) => {
+            if (dispatch && marks && keepMarks) {
+              const filteredMarks = marks.filter(mark => splittableMarks.includes(mark.type.name));
+              tr.ensureMarks(filteredMarks);
+            }
+
+            return true;
+          }).run();
+        })]);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Enter': () => this.editor.commands.setHardBreak(),
+      'Shift-Enter': () => this.editor.commands.setHardBreak()
+    };
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-hard-break.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-heading/dist/tiptap-extension-heading.esm.js
+
+const Heading = tiptap_core_esm.Node.create({
+  name: 'heading',
+
+  addOptions() {
+    return {
+      levels: [1, 2, 3, 4, 5, 6],
+      HTMLAttributes: {}
+    };
+  },
+
+  content: 'inline*',
+  group: 'block',
+  defining: true,
+
+  addAttributes() {
+    return {
+      level: {
+        default: 1,
+        rendered: false
+      }
+    };
+  },
+
+  parseHTML() {
+    return this.options.levels.map(level => ({
+      tag: `h${level}`,
+      attrs: {
+        level
+      }
+    }));
+  },
+
+  renderHTML({
+    node,
+    HTMLAttributes
+  }) {
+    const hasLevel = this.options.levels.includes(node.attrs.level);
+    const level = hasLevel ? node.attrs.level : this.options.levels[0];
+    return [`h${level}`, (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setHeading: attributes => ({
+        commands
+      }) => {
+        if (!this.options.levels.includes(attributes.level)) {
+          return false;
+        }
+
+        return commands.setNode(this.name, attributes);
+      },
+      toggleHeading: attributes => ({
+        commands
+      }) => {
+        if (!this.options.levels.includes(attributes.level)) {
+          return false;
+        }
+
+        return commands.toggleNode(this.name, 'paragraph', attributes);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return this.options.levels.reduce((items, level) => ({ ...items,
+      ...{
+        [`Mod-Alt-${level}`]: () => this.editor.commands.toggleHeading({
+          level
+        })
+      }
+    }), {});
+  },
+
+  addInputRules() {
+    return this.options.levels.map(level => {
+      return (0,tiptap_core_esm.textblockTypeInputRule)({
+        find: new RegExp(`^(#{1,${level}})\\s$`),
+        type: this.type,
+        getAttributes: {
+          level
+        }
+      });
+    });
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-heading.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/rope-sequence/dist/index.es.js
+var GOOD_LEAF_SIZE = 200; // :: class<T> A rope sequence is a persistent sequence data structure
+// that supports appending, prepending, and slicing without doing a
+// full copy. It is represented as a mostly-balanced tree.
+
+var RopeSequence = function RopeSequence() {};
+
+RopeSequence.prototype.append = function append(other) {
+  if (!other.length) {
+    return this;
+  }
+
+  other = RopeSequence.from(other);
+  return !this.length && other || other.length < GOOD_LEAF_SIZE && this.leafAppend(other) || this.length < GOOD_LEAF_SIZE && other.leafPrepend(this) || this.appendInner(other);
+}; // :: (union<[T], RopeSequence<T>>) → RopeSequence<T>
+// Prepend an array or other rope to this one, returning a new rope.
+
+
+RopeSequence.prototype.prepend = function prepend(other) {
+  if (!other.length) {
+    return this;
+  }
+
+  return RopeSequence.from(other).append(this);
+};
+
+RopeSequence.prototype.appendInner = function appendInner(other) {
+  return new Append(this, other);
+}; // :: (?number, ?number) → RopeSequence<T>
+// Create a rope repesenting a sub-sequence of this rope.
+
+
+RopeSequence.prototype.slice = function slice(from, to) {
+  if (from === void 0) from = 0;
+  if (to === void 0) to = this.length;
+
+  if (from >= to) {
+    return RopeSequence.empty;
+  }
+
+  return this.sliceInner(Math.max(0, from), Math.min(this.length, to));
+}; // :: (number) → T
+// Retrieve the element at the given position from this rope.
+
+
+RopeSequence.prototype.get = function get(i) {
+  if (i < 0 || i >= this.length) {
+    return undefined;
+  }
+
+  return this.getInner(i);
+}; // :: ((element: T, index: number) → ?bool, ?number, ?number)
+// Call the given function for each element between the given
+// indices. This tends to be more efficient than looping over the
+// indices and calling `get`, because it doesn't have to descend the
+// tree for every element.
+
+
+RopeSequence.prototype.forEach = function forEach(f, from, to) {
+  if (from === void 0) from = 0;
+  if (to === void 0) to = this.length;
+
+  if (from <= to) {
+    this.forEachInner(f, from, to, 0);
+  } else {
+    this.forEachInvertedInner(f, from, to, 0);
+  }
+}; // :: ((element: T, index: number) → U, ?number, ?number) → [U]
+// Map the given functions over the elements of the rope, producing
+// a flat array.
+
+
+RopeSequence.prototype.map = function map(f, from, to) {
+  if (from === void 0) from = 0;
+  if (to === void 0) to = this.length;
+  var result = [];
+  this.forEach(function (elt, i) {
+    return result.push(f(elt, i));
+  }, from, to);
+  return result;
+}; // :: (?union<[T], RopeSequence<T>>) → RopeSequence<T>
+// Create a rope representing the given array, or return the rope
+// itself if a rope was given.
+
+
+RopeSequence.from = function from(values) {
+  if (values instanceof RopeSequence) {
+    return values;
+  }
+
+  return values && values.length ? new Leaf(values) : RopeSequence.empty;
+};
+
+var Leaf = /*@__PURE__*/function (RopeSequence) {
+  function Leaf(values) {
+    RopeSequence.call(this);
+    this.values = values;
+  }
+
+  if (RopeSequence) Leaf.__proto__ = RopeSequence;
+  Leaf.prototype = Object.create(RopeSequence && RopeSequence.prototype);
+  Leaf.prototype.constructor = Leaf;
+  var prototypeAccessors = {
+    length: {
+      configurable: true
+    },
+    depth: {
+      configurable: true
+    }
+  };
+
+  Leaf.prototype.flatten = function flatten() {
+    return this.values;
+  };
+
+  Leaf.prototype.sliceInner = function sliceInner(from, to) {
+    if (from == 0 && to == this.length) {
+      return this;
+    }
+
+    return new Leaf(this.values.slice(from, to));
+  };
+
+  Leaf.prototype.getInner = function getInner(i) {
+    return this.values[i];
+  };
+
+  Leaf.prototype.forEachInner = function forEachInner(f, from, to, start) {
+    for (var i = from; i < to; i++) {
+      if (f(this.values[i], start + i) === false) {
+        return false;
+      }
+    }
+  };
+
+  Leaf.prototype.forEachInvertedInner = function forEachInvertedInner(f, from, to, start) {
+    for (var i = from - 1; i >= to; i--) {
+      if (f(this.values[i], start + i) === false) {
+        return false;
+      }
+    }
+  };
+
+  Leaf.prototype.leafAppend = function leafAppend(other) {
+    if (this.length + other.length <= GOOD_LEAF_SIZE) {
+      return new Leaf(this.values.concat(other.flatten()));
+    }
+  };
+
+  Leaf.prototype.leafPrepend = function leafPrepend(other) {
+    if (this.length + other.length <= GOOD_LEAF_SIZE) {
+      return new Leaf(other.flatten().concat(this.values));
+    }
+  };
+
+  prototypeAccessors.length.get = function () {
+    return this.values.length;
+  };
+
+  prototypeAccessors.depth.get = function () {
+    return 0;
+  };
+
+  Object.defineProperties(Leaf.prototype, prototypeAccessors);
+  return Leaf;
+}(RopeSequence); // :: RopeSequence
+// The empty rope sequence.
+
+
+RopeSequence.empty = new Leaf([]);
+
+var Append = /*@__PURE__*/function (RopeSequence) {
+  function Append(left, right) {
+    RopeSequence.call(this);
+    this.left = left;
+    this.right = right;
+    this.length = left.length + right.length;
+    this.depth = Math.max(left.depth, right.depth) + 1;
+  }
+
+  if (RopeSequence) Append.__proto__ = RopeSequence;
+  Append.prototype = Object.create(RopeSequence && RopeSequence.prototype);
+  Append.prototype.constructor = Append;
+
+  Append.prototype.flatten = function flatten() {
+    return this.left.flatten().concat(this.right.flatten());
+  };
+
+  Append.prototype.getInner = function getInner(i) {
+    return i < this.left.length ? this.left.get(i) : this.right.get(i - this.left.length);
+  };
+
+  Append.prototype.forEachInner = function forEachInner(f, from, to, start) {
+    var leftLen = this.left.length;
+
+    if (from < leftLen && this.left.forEachInner(f, from, Math.min(to, leftLen), start) === false) {
+      return false;
+    }
+
+    if (to > leftLen && this.right.forEachInner(f, Math.max(from - leftLen, 0), Math.min(this.length, to) - leftLen, start + leftLen) === false) {
+      return false;
+    }
+  };
+
+  Append.prototype.forEachInvertedInner = function forEachInvertedInner(f, from, to, start) {
+    var leftLen = this.left.length;
+
+    if (from > leftLen && this.right.forEachInvertedInner(f, from - leftLen, Math.max(to, leftLen) - leftLen, start + leftLen) === false) {
+      return false;
+    }
+
+    if (to < leftLen && this.left.forEachInvertedInner(f, Math.min(from, leftLen), to, start) === false) {
+      return false;
+    }
+  };
+
+  Append.prototype.sliceInner = function sliceInner(from, to) {
+    if (from == 0 && to == this.length) {
+      return this;
+    }
+
+    var leftLen = this.left.length;
+
+    if (to <= leftLen) {
+      return this.left.slice(from, to);
+    }
+
+    if (from >= leftLen) {
+      return this.right.slice(from - leftLen, to - leftLen);
+    }
+
+    return this.left.slice(from, leftLen).append(this.right.slice(0, to - leftLen));
+  };
+
+  Append.prototype.leafAppend = function leafAppend(other) {
+    var inner = this.right.leafAppend(other);
+
+    if (inner) {
+      return new Append(this.left, inner);
+    }
+  };
+
+  Append.prototype.leafPrepend = function leafPrepend(other) {
+    var inner = this.left.leafPrepend(other);
+
+    if (inner) {
+      return new Append(inner, this.right);
+    }
+  };
+
+  Append.prototype.appendInner = function appendInner(other) {
+    if (this.left.depth >= Math.max(this.right.depth, other.depth) + 1) {
+      return new Append(this.left, new Append(this.right, other));
+    }
+
+    return new Append(this, other);
+  };
+
+  return Append;
+}(RopeSequence);
+
+var ropeSequence = RopeSequence;
+/* harmony default export */ const index_es = (ropeSequence);
+;// CONCATENATED MODULE: ./node_modules/prosemirror-history/dist/index.js
+
+
+ // ProseMirror's history isn't simply a way to roll back to a previous
+// state, because ProseMirror supports applying changes without adding
+// them to the history (for example during collaboration).
+//
+// To this end, each 'Branch' (one for the undo history and one for
+// the redo history) keeps an array of 'Items', which can optionally
+// hold a step (an actual undoable change), and always hold a position
+// map (which is needed to move changes below them to apply to the
+// current document).
+//
+// An item that has both a step and a selection bookmark is the start
+// of an 'event' — a group of changes that will be undone or redone at
+// once. (It stores only the bookmark, since that way we don't have to
+// provide a document until the selection is actually applied, which
+// is useful when compressing.)
+// Used to schedule history compression
+
+const max_empty_items = 500;
+
+class Branch {
+  constructor(items, eventCount) {
+    this.items = items;
+    this.eventCount = eventCount;
+  } // Pop the latest event off the branch's history and apply it
+  // to a document transform.
+
+
+  popEvent(state, preserveItems) {
+    if (this.eventCount == 0) return null;
+    let end = this.items.length;
+
+    for (;; end--) {
+      let next = this.items.get(end - 1);
+
+      if (next.selection) {
+        --end;
+        break;
+      }
+    }
+
+    let remap, mapFrom;
+
+    if (preserveItems) {
+      remap = this.remapping(end, this.items.length);
+      mapFrom = remap.maps.length;
+    }
+
+    let transform = state.tr;
+    let selection, remaining;
+    let addAfter = [],
+        addBefore = [];
+    this.items.forEach((item, i) => {
+      if (!item.step) {
+        if (!remap) {
+          remap = this.remapping(end, i + 1);
+          mapFrom = remap.maps.length;
+        }
+
+        mapFrom--;
+        addBefore.push(item);
+        return;
+      }
+
+      if (remap) {
+        addBefore.push(new Item(item.map));
+        let step = item.step.map(remap.slice(mapFrom)),
+            map;
+
+        if (step && transform.maybeStep(step).doc) {
+          map = transform.mapping.maps[transform.mapping.maps.length - 1];
+          addAfter.push(new Item(map, undefined, undefined, addAfter.length + addBefore.length));
+        }
+
+        mapFrom--;
+        if (map) remap.appendMap(map, mapFrom);
+      } else {
+        transform.maybeStep(item.step);
+      }
+
+      if (item.selection) {
+        selection = remap ? item.selection.map(remap.slice(mapFrom)) : item.selection;
+        remaining = new Branch(this.items.slice(0, end).append(addBefore.reverse().concat(addAfter)), this.eventCount - 1);
+        return false;
+      }
+    }, this.items.length, 0);
+    return {
+      remaining: remaining,
+      transform,
+      selection: selection
+    };
+  } // Create a new branch with the given transform added.
+
+
+  addTransform(transform, selection, histOptions, preserveItems) {
+    let newItems = [],
+        eventCount = this.eventCount;
+    let oldItems = this.items,
+        lastItem = !preserveItems && oldItems.length ? oldItems.get(oldItems.length - 1) : null;
+
+    for (let i = 0; i < transform.steps.length; i++) {
+      let step = transform.steps[i].invert(transform.docs[i]);
+      let item = new Item(transform.mapping.maps[i], step, selection),
+          merged;
+
+      if (merged = lastItem && lastItem.merge(item)) {
+        item = merged;
+        if (i) newItems.pop();else oldItems = oldItems.slice(0, oldItems.length - 1);
+      }
+
+      newItems.push(item);
+
+      if (selection) {
+        eventCount++;
+        selection = undefined;
+      }
+
+      if (!preserveItems) lastItem = item;
+    }
+
+    let overflow = eventCount - histOptions.depth;
+
+    if (overflow > DEPTH_OVERFLOW) {
+      oldItems = cutOffEvents(oldItems, overflow);
+      eventCount -= overflow;
+    }
+
+    return new Branch(oldItems.append(newItems), eventCount);
+  }
+
+  remapping(from, to) {
+    let maps = new prosemirror_transform_dist/* Mapping */.vs();
+    this.items.forEach((item, i) => {
+      let mirrorPos = item.mirrorOffset != null && i - item.mirrorOffset >= from ? maps.maps.length - item.mirrorOffset : undefined;
+      maps.appendMap(item.map, mirrorPos);
+    }, from, to);
+    return maps;
+  }
+
+  addMaps(array) {
+    if (this.eventCount == 0) return this;
+    return new Branch(this.items.append(array.map(map => new Item(map))), this.eventCount);
+  } // When the collab module receives remote changes, the history has
+  // to know about those, so that it can adjust the steps that were
+  // rebased on top of the remote changes, and include the position
+  // maps for the remote changes in its array of items.
+
+
+  rebased(rebasedTransform, rebasedCount) {
+    if (!this.eventCount) return this;
+    let rebasedItems = [],
+        start = Math.max(0, this.items.length - rebasedCount);
+    let mapping = rebasedTransform.mapping;
+    let newUntil = rebasedTransform.steps.length;
+    let eventCount = this.eventCount;
+    this.items.forEach(item => {
+      if (item.selection) eventCount--;
+    }, start);
+    let iRebased = rebasedCount;
+    this.items.forEach(item => {
+      let pos = mapping.getMirror(--iRebased);
+      if (pos == null) return;
+      newUntil = Math.min(newUntil, pos);
+      let map = mapping.maps[pos];
+
+      if (item.step) {
+        let step = rebasedTransform.steps[pos].invert(rebasedTransform.docs[pos]);
+        let selection = item.selection && item.selection.map(mapping.slice(iRebased + 1, pos));
+        if (selection) eventCount++;
+        rebasedItems.push(new Item(map, step, selection));
+      } else {
+        rebasedItems.push(new Item(map));
+      }
+    }, start);
+    let newMaps = [];
+
+    for (let i = rebasedCount; i < newUntil; i++) newMaps.push(new Item(mapping.maps[i]));
+
+    let items = this.items.slice(0, start).append(newMaps).append(rebasedItems);
+    let branch = new Branch(items, eventCount);
+    if (branch.emptyItemCount() > max_empty_items) branch = branch.compress(this.items.length - rebasedItems.length);
+    return branch;
+  }
+
+  emptyItemCount() {
+    let count = 0;
+    this.items.forEach(item => {
+      if (!item.step) count++;
+    });
+    return count;
+  } // Compressing a branch means rewriting it to push the air (map-only
+  // items) out. During collaboration, these naturally accumulate
+  // because each remote change adds one. The `upto` argument is used
+  // to ensure that only the items below a given level are compressed,
+  // because `rebased` relies on a clean, untouched set of items in
+  // order to associate old items with rebased steps.
+
+
+  compress(upto = this.items.length) {
+    let remap = this.remapping(0, upto),
+        mapFrom = remap.maps.length;
+    let items = [],
+        events = 0;
+    this.items.forEach((item, i) => {
+      if (i >= upto) {
+        items.push(item);
+        if (item.selection) events++;
+      } else if (item.step) {
+        let step = item.step.map(remap.slice(mapFrom)),
+            map = step && step.getMap();
+        mapFrom--;
+        if (map) remap.appendMap(map, mapFrom);
+
+        if (step) {
+          let selection = item.selection && item.selection.map(remap.slice(mapFrom));
+          if (selection) events++;
+          let newItem = new Item(map.invert(), step, selection),
+              merged,
+              last = items.length - 1;
+          if (merged = items.length && items[last].merge(newItem)) items[last] = merged;else items.push(newItem);
+        }
+      } else if (item.map) {
+        mapFrom--;
+      }
+    }, this.items.length, 0);
+    return new Branch(index_es.from(items.reverse()), events);
+  }
+
+}
+
+Branch.empty = new Branch(index_es.empty, 0);
+
+function cutOffEvents(items, n) {
+  let cutPoint;
+  items.forEach((item, i) => {
+    if (item.selection && n-- == 0) {
+      cutPoint = i;
+      return false;
+    }
+  });
+  return items.slice(cutPoint);
+}
+
+class Item {
+  constructor( // The (forward) step map for this item.
+  map, // The inverted step
+  step, // If this is non-null, this item is the start of a group, and
+  // this selection is the starting selection for the group (the one
+  // that was active before the first step was applied)
+  selection, // If this item is the inverse of a previous mapping on the stack,
+  // this points at the inverse's offset
+  mirrorOffset) {
+    this.map = map;
+    this.step = step;
+    this.selection = selection;
+    this.mirrorOffset = mirrorOffset;
+  }
+
+  merge(other) {
+    if (this.step && other.step && !other.selection) {
+      let step = other.step.merge(this.step);
+      if (step) return new Item(step.getMap().invert(), step, this.selection);
+    }
+  }
+
+} // The value of the state field that tracks undo/redo history for that
+// state. Will be stored in the plugin state when the history plugin
+// is active.
+
+
+class HistoryState {
+  constructor(done, undone, prevRanges, prevTime) {
+    this.done = done;
+    this.undone = undone;
+    this.prevRanges = prevRanges;
+    this.prevTime = prevTime;
+  }
+
+}
+
+const DEPTH_OVERFLOW = 20; // Record a transformation in undo history.
+
+function applyTransaction(history, state, tr, options) {
+  let historyTr = tr.getMeta(historyKey),
+      rebased;
+  if (historyTr) return historyTr.historyState;
+  if (tr.getMeta(closeHistoryKey)) history = new HistoryState(history.done, history.undone, null, 0);
+  let appended = tr.getMeta("appendedTransaction");
+
+  if (tr.steps.length == 0) {
+    return history;
+  } else if (appended && appended.getMeta(historyKey)) {
+    if (appended.getMeta(historyKey).redo) return new HistoryState(history.done.addTransform(tr, undefined, options, mustPreserveItems(state)), history.undone, rangesFor(tr.mapping.maps[tr.steps.length - 1]), history.prevTime);else return new HistoryState(history.done, history.undone.addTransform(tr, undefined, options, mustPreserveItems(state)), null, history.prevTime);
+  } else if (tr.getMeta("addToHistory") !== false && !(appended && appended.getMeta("addToHistory") === false)) {
+    // Group transforms that occur in quick succession into one event.
+    let newGroup = history.prevTime == 0 || !appended && (history.prevTime < (tr.time || 0) - options.newGroupDelay || !isAdjacentTo(tr, history.prevRanges));
+    let prevRanges = appended ? mapRanges(history.prevRanges, tr.mapping) : rangesFor(tr.mapping.maps[tr.steps.length - 1]);
+    return new HistoryState(history.done.addTransform(tr, newGroup ? state.selection.getBookmark() : undefined, options, mustPreserveItems(state)), Branch.empty, prevRanges, tr.time);
+  } else if (rebased = tr.getMeta("rebased")) {
+    // Used by the collab module to tell the history that some of its
+    // content has been rebased.
+    return new HistoryState(history.done.rebased(tr, rebased), history.undone.rebased(tr, rebased), mapRanges(history.prevRanges, tr.mapping), history.prevTime);
+  } else {
+    return new HistoryState(history.done.addMaps(tr.mapping.maps), history.undone.addMaps(tr.mapping.maps), mapRanges(history.prevRanges, tr.mapping), history.prevTime);
+  }
+}
+
+function isAdjacentTo(transform, prevRanges) {
+  if (!prevRanges) return false;
+  if (!transform.docChanged) return true;
+  let adjacent = false;
+  transform.mapping.maps[0].forEach((start, end) => {
+    for (let i = 0; i < prevRanges.length; i += 2) if (start <= prevRanges[i + 1] && end >= prevRanges[i]) adjacent = true;
+  });
+  return adjacent;
+}
+
+function rangesFor(map) {
+  let result = [];
+  map.forEach((_from, _to, from, to) => result.push(from, to));
+  return result;
+}
+
+function mapRanges(ranges, mapping) {
+  if (!ranges) return null;
+  let result = [];
+
+  for (let i = 0; i < ranges.length; i += 2) {
+    let from = mapping.map(ranges[i], 1),
+        to = mapping.map(ranges[i + 1], -1);
+    if (from <= to) result.push(from, to);
+  }
+
+  return result;
+} // Apply the latest event from one branch to the document and shift the event
+// onto the other branch.
+
+
+function histTransaction(history, state, dispatch, redo) {
+  let preserveItems = mustPreserveItems(state);
+  let histOptions = historyKey.get(state).spec.config;
+  let pop = (redo ? history.undone : history.done).popEvent(state, preserveItems);
+  if (!pop) return;
+  let selection = pop.selection.resolve(pop.transform.doc);
+  let added = (redo ? history.done : history.undone).addTransform(pop.transform, state.selection.getBookmark(), histOptions, preserveItems);
+  let newHist = new HistoryState(redo ? added : pop.remaining, redo ? pop.remaining : added, null, 0);
+  dispatch(pop.transform.setSelection(selection).setMeta(historyKey, {
+    redo,
+    historyState: newHist
+  }).scrollIntoView());
+}
+
+let cachedPreserveItems = false,
+    cachedPreserveItemsPlugins = null; // Check whether any plugin in the given state has a
+// `historyPreserveItems` property in its spec, in which case we must
+// preserve steps exactly as they came in, so that they can be
+// rebased.
+
+function mustPreserveItems(state) {
+  let plugins = state.plugins;
+
+  if (cachedPreserveItemsPlugins != plugins) {
+    cachedPreserveItems = false;
+    cachedPreserveItemsPlugins = plugins;
+
+    for (let i = 0; i < plugins.length; i++) if (plugins[i].spec.historyPreserveItems) {
+      cachedPreserveItems = true;
+      break;
+    }
+  }
+
+  return cachedPreserveItems;
+}
+/**
+Set a flag on the given transaction that will prevent further steps
+from being appended to an existing history event (so that they
+require a separate undo command to undo).
+*/
+
+
+function closeHistory(tr) {
+  return tr.setMeta(closeHistoryKey, true);
+}
+
+const historyKey = new dist/* PluginKey */.H$("history");
+const closeHistoryKey = new dist/* PluginKey */.H$("closeHistory");
+/**
+Returns a plugin that enables the undo history for an editor. The
+plugin will track undo and redo stacks, which can be used with the
+[`undo`](https://prosemirror.net/docs/ref/#history.undo) and [`redo`](https://prosemirror.net/docs/ref/#history.redo) commands.
+
+You can set an `"addToHistory"` [metadata
+property](https://prosemirror.net/docs/ref/#state.Transaction.setMeta) of `false` on a transaction
+to prevent it from being rolled back by undo.
+*/
+
+function dist_history(config = {}) {
+  config = {
+    depth: config.depth || 100,
+    newGroupDelay: config.newGroupDelay || 500
+  };
+  return new dist/* Plugin */.Sy({
+    key: historyKey,
+    state: {
+      init() {
+        return new HistoryState(Branch.empty, Branch.empty, null, 0);
+      },
+
+      apply(tr, hist, state) {
+        return applyTransaction(hist, state, tr, config);
+      }
+
+    },
+    config,
+    props: {
+      handleDOMEvents: {
+        beforeinput(view, e) {
+          let inputType = e.inputType;
+          let command = inputType == "historyUndo" ? undo : inputType == "historyRedo" ? redo : null;
+          if (!command) return false;
+          e.preventDefault();
+          return command(view.state, view.dispatch);
+        }
+
+      }
+    }
+  });
+}
+/**
+A command function that undoes the last change, if any.
+*/
+
+
+const undo = (state, dispatch) => {
+  let hist = historyKey.getState(state);
+  if (!hist || hist.done.eventCount == 0) return false;
+  if (dispatch) histTransaction(hist, state, dispatch, false);
+  return true;
+};
+/**
+A command function that redoes the last undone change, if any.
+*/
+
+
+const redo = (state, dispatch) => {
+  let hist = historyKey.getState(state);
+  if (!hist || hist.undone.eventCount == 0) return false;
+  if (dispatch) histTransaction(hist, state, dispatch, true);
+  return true;
+};
+/**
+The amount of undoable events available in a given state.
+*/
+
+
+function undoDepth(state) {
+  let hist = historyKey.getState(state);
+  return hist ? hist.done.eventCount : 0;
+}
+/**
+The amount of redoable events available in a given editor state.
+*/
+
+
+function redoDepth(state) {
+  let hist = historyKey.getState(state);
+  return hist ? hist.undone.eventCount : 0;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-history/dist/tiptap-extension-history.esm.js
+
+
+const History = tiptap_core_esm.Extension.create({
+  name: 'history',
+
+  addOptions() {
+    return {
+      depth: 100,
+      newGroupDelay: 500
+    };
+  },
+
+  addCommands() {
+    return {
+      undo: () => ({
+        state,
+        dispatch
+      }) => {
+        return undo(state, dispatch);
+      },
+      redo: () => ({
+        state,
+        dispatch
+      }) => {
+        return redo(state, dispatch);
+      }
+    };
+  },
+
+  addProseMirrorPlugins() {
+    return [dist_history(this.options)];
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-z': () => this.editor.commands.undo(),
+      'Mod-y': () => this.editor.commands.redo(),
+      'Shift-Mod-z': () => this.editor.commands.redo(),
+      // Russian keyboard layouts
+      'Mod-я': () => this.editor.commands.undo(),
+      'Shift-Mod-я': () => this.editor.commands.redo()
+    };
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-history.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-horizontal-rule/dist/tiptap-extension-horizontal-rule.esm.js
+
+
+const HorizontalRule = tiptap_core_esm.Node.create({
+  name: 'horizontalRule',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  group: 'block',
+
+  parseHTML() {
+    return [{
+      tag: 'hr'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['hr', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes)];
+  },
+
+  addCommands() {
+    return {
+      setHorizontalRule: () => ({
+        chain
+      }) => {
+        return chain().insertContent({
+          type: this.name
+        }) // set cursor after horizontal rule
+        .command(({
+          tr,
+          dispatch
+        }) => {
+          var _a;
+
+          if (dispatch) {
+            const {
+              $to
+            } = tr.selection;
+            const posAfter = $to.end();
+
+            if ($to.nodeAfter) {
+              tr.setSelection(dist/* TextSelection.create */.Bs.create(tr.doc, $to.pos));
+            } else {
+              // add node after horizontal rule if it’s the end of the document
+              const node = (_a = $to.parent.type.contentMatch.defaultType) === null || _a === void 0 ? void 0 : _a.create();
+
+              if (node) {
+                tr.insert(posAfter, node);
+                tr.setSelection(dist/* TextSelection.create */.Bs.create(tr.doc, posAfter));
+              }
+            }
+
+            tr.scrollIntoView();
+          }
+
+          return true;
+        }).run();
+      }
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.nodeInputRule)({
+      find: /^(?:---|—-|___\s|\*\*\*\s)$/,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-horizontal-rule.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-italic/dist/tiptap-extension-italic.esm.js
+
+const tiptap_extension_italic_esm_starInputRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))$/;
+const tiptap_extension_italic_esm_starPasteRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))/g;
+const tiptap_extension_italic_esm_underscoreInputRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))$/;
+const tiptap_extension_italic_esm_underscorePasteRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))/g;
+const Italic = tiptap_core_esm.Mark.create({
+  name: 'italic',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  parseHTML() {
+    return [{
+      tag: 'em'
+    }, {
+      tag: 'i',
+      getAttrs: node => node.style.fontStyle !== 'normal' && null
+    }, {
+      style: 'font-style=italic'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['em', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setItalic: () => ({
+        commands
+      }) => {
+        return commands.setMark(this.name);
+      },
+      toggleItalic: () => ({
+        commands
+      }) => {
+        return commands.toggleMark(this.name);
+      },
+      unsetItalic: () => ({
+        commands
+      }) => {
+        return commands.unsetMark(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-i': () => this.editor.commands.toggleItalic(),
+      'Mod-I': () => this.editor.commands.toggleItalic()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.markInputRule)({
+      find: tiptap_extension_italic_esm_starInputRegex,
+      type: this.type
+    }), (0,tiptap_core_esm.markInputRule)({
+      find: tiptap_extension_italic_esm_underscoreInputRegex,
+      type: this.type
+    })];
+  },
+
+  addPasteRules() {
+    return [(0,tiptap_core_esm.markPasteRule)({
+      find: tiptap_extension_italic_esm_starPasteRegex,
+      type: this.type
+    }), (0,tiptap_core_esm.markPasteRule)({
+      find: tiptap_extension_italic_esm_underscorePasteRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-italic.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-list-item/dist/tiptap-extension-list-item.esm.js
+
+const ListItem = tiptap_core_esm.Node.create({
+  name: 'listItem',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  content: 'paragraph block*',
+  defining: true,
+
+  parseHTML() {
+    return [{
+      tag: 'li'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['li', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      Enter: () => this.editor.commands.splitListItem(this.name),
+      Tab: () => this.editor.commands.sinkListItem(this.name),
+      'Shift-Tab': () => this.editor.commands.liftListItem(this.name)
+    };
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-list-item.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-ordered-list/dist/tiptap-extension-ordered-list.esm.js
+
+const tiptap_extension_ordered_list_esm_inputRegex = /^(\d+)\.\s$/;
+const OrderedList = tiptap_core_esm.Node.create({
+  name: 'orderedList',
+
+  addOptions() {
+    return {
+      itemTypeName: 'listItem',
+      HTMLAttributes: {}
+    };
+  },
+
+  group: 'block list',
+
+  content() {
+    return `${this.options.itemTypeName}+`;
+  },
+
+  addAttributes() {
+    return {
+      start: {
+        default: 1,
+        parseHTML: element => {
+          return element.hasAttribute('start') ? parseInt(element.getAttribute('start') || '', 10) : 1;
+        }
+      }
+    };
+  },
+
+  parseHTML() {
+    return [{
+      tag: 'ol'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    const {
+      start,
+      ...attributesWithoutStart
+    } = HTMLAttributes;
+    return start === 1 ? ['ol', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, attributesWithoutStart), 0] : ['ol', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      toggleOrderedList: () => ({
+        commands
+      }) => {
+        return commands.toggleList(this.name, this.options.itemTypeName);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Shift-7': () => this.editor.commands.toggleOrderedList()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.wrappingInputRule)({
+      find: tiptap_extension_ordered_list_esm_inputRegex,
+      type: this.type,
+      getAttributes: match => ({
+        start: +match[1]
+      }),
+      joinPredicate: (match, node) => node.childCount + node.attrs.start === +match[1]
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-ordered-list.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-paragraph/dist/tiptap-extension-paragraph.esm.js
+
+const Paragraph = tiptap_core_esm.Node.create({
+  name: 'paragraph',
+  priority: 1000,
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  group: 'block',
+  content: 'inline*',
+
+  parseHTML() {
+    return [{
+      tag: 'p'
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['p', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setParagraph: () => ({
+        commands
+      }) => {
+        return commands.setNode(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Alt-0': () => this.editor.commands.setParagraph()
+    };
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-paragraph.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-strike/dist/tiptap-extension-strike.esm.js
+
+const tiptap_extension_strike_esm_inputRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))$/;
+const tiptap_extension_strike_esm_pasteRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))/g;
+const Strike = tiptap_core_esm.Mark.create({
+  name: 'strike',
+
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    };
+  },
+
+  parseHTML() {
+    return [{
+      tag: 's'
+    }, {
+      tag: 'del'
+    }, {
+      tag: 'strike'
+    }, {
+      style: 'text-decoration',
+      consuming: false,
+      getAttrs: style => style.includes('line-through') ? {} : false
+    }];
+  },
+
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ['s', (0,tiptap_core_esm.mergeAttributes)(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addCommands() {
+    return {
+      setStrike: () => ({
+        commands
+      }) => {
+        return commands.setMark(this.name);
+      },
+      toggleStrike: () => ({
+        commands
+      }) => {
+        return commands.toggleMark(this.name);
+      },
+      unsetStrike: () => ({
+        commands
+      }) => {
+        return commands.unsetMark(this.name);
+      }
+    };
+  },
+
+  addKeyboardShortcuts() {
+    return {
+      'Mod-Shift-x': () => this.editor.commands.toggleStrike()
+    };
+  },
+
+  addInputRules() {
+    return [(0,tiptap_core_esm.markInputRule)({
+      find: tiptap_extension_strike_esm_inputRegex,
+      type: this.type
+    })];
+  },
+
+  addPasteRules() {
+    return [(0,tiptap_core_esm.markPasteRule)({
+      find: tiptap_extension_strike_esm_pasteRegex,
+      type: this.type
+    })];
+  }
+
+});
+ //# sourceMappingURL=tiptap-extension-strike.esm.js.map
+;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-text/dist/tiptap-extension-text.esm.js
+
+const Text = tiptap_core_esm.Node.create({
+  name: 'text',
+  group: 'inline'
+});
+ //# sourceMappingURL=tiptap-extension-text.esm.js.map
 ;// CONCATENATED MODULE: ./projects/addon-editor/extensions/starter-kit/starter-kit.ts
 
 
@@ -16493,80 +16272,80 @@ const StarterKit = tiptap_core_esm.Extension.create({
   name: `starterKit`,
 
   addExtensions() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11;
 
     const extensions = [];
 
-    if (this.options.blockquote !== false) {
-      extensions.push(tiptap_extension_blockquote_esm/* Blockquote.configure */.V6.configure((_a = this.options) === null || _a === void 0 ? void 0 : _a.blockquote));
+    if (((_a = this.options) === null || _a === void 0 ? void 0 : _a.blockquote) !== false) {
+      extensions.push(Blockquote.configure((_b = this.options) === null || _b === void 0 ? void 0 : _b.blockquote));
     }
 
-    if (this.options.bold !== false) {
-      extensions.push(tiptap_extension_bold_esm/* Bold.configure */.d8.configure((_b = this.options) === null || _b === void 0 ? void 0 : _b.bold));
+    if (((_c = this.options) === null || _c === void 0 ? void 0 : _c.bold) !== false) {
+      extensions.push(Bold.configure((_d = this.options) === null || _d === void 0 ? void 0 : _d.bold));
     }
 
-    if (this.options.bulletList !== false) {
-      extensions.push(tiptap_extension_bullet_list_esm/* BulletList.configure */.DY.configure((_c = this.options) === null || _c === void 0 ? void 0 : _c.bulletList));
+    if (((_e = this.options) === null || _e === void 0 ? void 0 : _e.bulletList) !== false) {
+      extensions.push(BulletList.configure((_f = this.options) === null || _f === void 0 ? void 0 : _f.bulletList));
     }
 
-    if (this.options.code !== false) {
-      extensions.push(tiptap_extension_code_esm/* Code.configure */.EK.configure((_d = this.options) === null || _d === void 0 ? void 0 : _d.code));
+    if (((_g = this.options) === null || _g === void 0 ? void 0 : _g.code) !== false) {
+      extensions.push(Code.configure((_h = this.options) === null || _h === void 0 ? void 0 : _h.code));
     }
 
-    if (this.options.codeBlock !== false) {
-      extensions.push(tiptap_extension_code_block_esm/* CodeBlock.configure */.dn.configure((_e = this.options) === null || _e === void 0 ? void 0 : _e.codeBlock));
+    if (((_j = this.options) === null || _j === void 0 ? void 0 : _j.codeBlock) !== false) {
+      extensions.push(CodeBlock.configure((_k = this.options) === null || _k === void 0 ? void 0 : _k.codeBlock));
     }
 
-    if (this.options.document !== false) {
-      extensions.push(tiptap_extension_document_esm/* Document.configure */.B.configure((_f = this.options) === null || _f === void 0 ? void 0 : _f.document));
+    if (((_l = this.options) === null || _l === void 0 ? void 0 : _l.document) !== false) {
+      extensions.push(Document.configure((_m = this.options) === null || _m === void 0 ? void 0 : _m.document));
     }
 
-    if (this.options.dropcursor !== false) {
-      extensions.push(tiptap_extension_dropcursor_esm/* Dropcursor.configure */.m.configure((_g = this.options) === null || _g === void 0 ? void 0 : _g.dropcursor));
+    if (((_o = this.options) === null || _o === void 0 ? void 0 : _o.dropcursor) !== false) {
+      extensions.push(Dropcursor.configure((_p = this.options) === null || _p === void 0 ? void 0 : _p.dropcursor));
     }
 
-    if (this.options.gapcursor !== false) {
-      extensions.push(tiptap_extension_gapcursor_esm/* Gapcursor.configure */.f.configure((_h = this.options) === null || _h === void 0 ? void 0 : _h.gapcursor));
+    if (((_q = this.options) === null || _q === void 0 ? void 0 : _q.gapcursor) !== false) {
+      extensions.push(Gapcursor.configure((_r = this.options) === null || _r === void 0 ? void 0 : _r.gapcursor));
     }
 
-    if (this.options.hardBreak !== false) {
-      extensions.push(tiptap_extension_hard_break_esm/* HardBreak.configure */.U.configure((_j = this.options) === null || _j === void 0 ? void 0 : _j.hardBreak));
+    if (((_s = this.options) === null || _s === void 0 ? void 0 : _s.hardBreak) !== false) {
+      extensions.push(HardBreak.configure((_t = this.options) === null || _t === void 0 ? void 0 : _t.hardBreak));
     }
 
-    if (this.options.heading !== false) {
-      extensions.push(tiptap_extension_heading_esm/* Heading.configure */.X.configure((_k = this.options) === null || _k === void 0 ? void 0 : _k.heading));
+    if (((_u = this.options) === null || _u === void 0 ? void 0 : _u.heading) !== false) {
+      extensions.push(Heading.configure((_v = this.options) === null || _v === void 0 ? void 0 : _v.heading));
     }
 
-    if (this.options.history !== false) {
-      extensions.push(tiptap_extension_history_esm/* History.configure */.A.configure((_l = this.options) === null || _l === void 0 ? void 0 : _l.history));
+    if (((_w = this.options) === null || _w === void 0 ? void 0 : _w.history) !== false) {
+      extensions.push(History.configure((_x = this.options) === null || _x === void 0 ? void 0 : _x.history));
     }
 
-    if (this.options.horizontalRule !== false) {
-      extensions.push(tiptap_extension_horizontal_rule_esm/* HorizontalRule.configure */.b.configure((_m = this.options) === null || _m === void 0 ? void 0 : _m.horizontalRule));
+    if (((_y = this.options) === null || _y === void 0 ? void 0 : _y.horizontalRule) !== false) {
+      extensions.push(HorizontalRule.configure((_z = this.options) === null || _z === void 0 ? void 0 : _z.horizontalRule));
     }
 
-    if (this.options.italic !== false) {
-      extensions.push(tiptap_extension_italic_esm/* Italic.configure */.Tx.configure((_o = this.options) === null || _o === void 0 ? void 0 : _o.italic));
+    if (((_0 = this.options) === null || _0 === void 0 ? void 0 : _0.italic) !== false) {
+      extensions.push(Italic.configure((_1 = this.options) === null || _1 === void 0 ? void 0 : _1.italic));
     }
 
-    if (this.options.listItem !== false) {
-      extensions.push(tiptap_extension_list_item_esm/* ListItem.configure */.H.configure((_p = this.options) === null || _p === void 0 ? void 0 : _p.listItem));
+    if (((_2 = this.options) === null || _2 === void 0 ? void 0 : _2.listItem) !== false) {
+      extensions.push(ListItem.configure((_3 = this.options) === null || _3 === void 0 ? void 0 : _3.listItem));
     }
 
-    if (this.options.orderedList !== false) {
-      extensions.push(tiptap_extension_ordered_list_esm/* OrderedList.configure */.GS.configure((_q = this.options) === null || _q === void 0 ? void 0 : _q.orderedList));
+    if (((_4 = this.options) === null || _4 === void 0 ? void 0 : _4.orderedList) !== false) {
+      extensions.push(OrderedList.configure((_5 = this.options) === null || _5 === void 0 ? void 0 : _5.orderedList));
     }
 
-    if (this.options.paragraph !== false) {
-      extensions.push(tiptap_extension_paragraph_esm/* Paragraph.configure */.n.configure((_r = this.options) === null || _r === void 0 ? void 0 : _r.paragraph));
+    if (((_6 = this.options) === null || _6 === void 0 ? void 0 : _6.paragraph) !== false) {
+      extensions.push(Paragraph.configure((_7 = this.options) === null || _7 === void 0 ? void 0 : _7.paragraph));
     }
 
-    if (this.options.strike !== false) {
-      extensions.push(tiptap_extension_strike_esm/* Strike.configure */.Re.configure((_s = this.options) === null || _s === void 0 ? void 0 : _s.strike));
+    if (((_8 = this.options) === null || _8 === void 0 ? void 0 : _8.strike) !== false) {
+      extensions.push(Strike.configure((_9 = this.options) === null || _9 === void 0 ? void 0 : _9.strike));
     }
 
-    if (this.options.text !== false) {
-      extensions.push(tiptap_extension_text_esm/* Text.configure */.x.configure((_t = this.options) === null || _t === void 0 ? void 0 : _t.text));
+    if (((_10 = this.options) === null || _10 === void 0 ? void 0 : _10.text) !== false) {
+      extensions.push(Text.configure((_11 = this.options) === null || _11 === void 0 ? void 0 : _11.text));
     }
 
     return extensions;
@@ -16578,16 +16357,22 @@ const StarterKit = tiptap_core_esm.Extension.create({
 
 /***/ }),
 
-/***/ 96129:
+/***/ 51919:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TableCellBackground": () => (/* binding */ TableCellBackground)
-/* harmony export */ });
-/* harmony import */ var _tiptap_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40256);
 
-const TableCellBackground = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Extension.create({
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "TableCellBackground": () => (/* reexport */ TableCellBackground)
+});
+
+// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
+var tiptap_core_esm = __webpack_require__(40256);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/table-cell-background/table-cell-background.ts
+
+const TableCellBackground = tiptap_core_esm.Extension.create({
   addGlobalAttributes() {
     return [{
       types: [`tableCell`, `tableHeader`],
@@ -16628,6 +16413,8 @@ const TableCellBackground = _tiptap_core__WEBPACK_IMPORTED_MODULE_0__.Extension.
   }
 
 });
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/table-cell-background/index.ts
+
 
 /***/ }),
 
@@ -16821,7 +16608,7 @@ const TuiNodeViewRenderer = (component, options) => props => new TuiNodeView(com
 
 /***/ }),
 
-/***/ 96396:
+/***/ 70224:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -17092,41 +16879,79 @@ var constants = __webpack_require__(19074);
 var editor_tool = __webpack_require__(48699);
 ;// CONCATENATED MODULE: ./projects/addon-editor/enums/index.ts
 
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/background-color.ts
-var background_color = __webpack_require__(98694);
-;// CONCATENATED MODULE: ./projects/addon-editor/extensions/default-editor-extensions.ts
-const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15632)).then(({
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/background-color/index.ts + 1 modules
+var background_color = __webpack_require__(15736);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/default-editor-extensions/default-editor-extensions.ts
+const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
   StarterKit
 }) => StarterKit).then(extension => extension.configure({
   heading: {
     levels: [1, 2]
   }
-})), __webpack_require__.e(/* import() */ 45861).then(__webpack_require__.bind(__webpack_require__, 45861)).then(m => m.default.configure({
+})), __webpack_require__.e(/* import() */ 45861).then(__webpack_require__.bind(__webpack_require__, 45861)).then(({
+  default: TextAlign
+}) => TextAlign.configure({
   types: [`heading`, `paragraph`]
-})), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 74634)).then(m => m.default), __webpack_require__.e(/* import() */ 77008).then(__webpack_require__.bind(__webpack_require__, 77008)).then(m => m.default), __webpack_require__.e(/* import() */ 91347).then(__webpack_require__.bind(__webpack_require__, 91347)).then(m => m.default), __webpack_require__.e(/* import() */ 35609).then(__webpack_require__.bind(__webpack_require__, 35609)).then(m => m.default), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 6579)).then(m => m.FontColor), __webpack_require__.e(/* import() */ 12955).then(__webpack_require__.bind(__webpack_require__, 12955)).then(m => m.default.configure({
+})), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 74634)).then(({
+  default: TextStyle
+}) => TextStyle), __webpack_require__.e(/* import() */ 77008).then(__webpack_require__.bind(__webpack_require__, 77008)).then(({
+  default: Underline
+}) => Underline), __webpack_require__.e(/* import() */ 91347).then(__webpack_require__.bind(__webpack_require__, 91347)).then(({
+  default: Subscript
+}) => Subscript), __webpack_require__.e(/* import() */ 35609).then(__webpack_require__.bind(__webpack_require__, 35609)).then(({
+  default: Superscript
+}) => Superscript), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 52658)).then(({
+  FontColor
+}) => FontColor), __webpack_require__.e(/* import() */ 12955).then(__webpack_require__.bind(__webpack_require__, 12955)).then(({
+  default: Image
+}) => Image.configure({
   inline: true
-})), __webpack_require__.e(/* import() */ 63658).then(__webpack_require__.bind(__webpack_require__, 63658)).then(m => m.default.configure({
+})), __webpack_require__.e(/* import() */ 63658).then(__webpack_require__.bind(__webpack_require__, 63658)).then(({
+  default: Link
+}) => Link.configure({
   openOnClick: false
-})), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 98694)).then(m => m.BackgroundColor), __webpack_require__.e(/* import() */ 88729).then(__webpack_require__.bind(__webpack_require__, 88729)).then(m => m.default.configure({
+})), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15736)).then(({
+  BackgroundColor
+}) => BackgroundColor), __webpack_require__.e(/* import() */ 88729).then(__webpack_require__.bind(__webpack_require__, 88729)).then(({
+  default: Table
+}) => Table.configure({
   resizable: true,
   lastColumnResizable: false
-})), __webpack_require__.e(/* import() */ 72219).then(__webpack_require__.bind(__webpack_require__, 72219)).then(m => m.default), __webpack_require__.e(/* import() */ 74096).then(__webpack_require__.bind(__webpack_require__, 74096)).then(m => m.default), __webpack_require__.e(/* import() */ 53107).then(__webpack_require__.bind(__webpack_require__, 53107)).then(m => m.TableHeader), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 73826)).then(m => m.TuiTabExtension), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 96129)).then(m => m.TableCellBackground), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(m => m.TuiDetailsContent), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(m => m.TuiDetails), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(m => m.TuiSummary), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 9492)).then(({
+})), __webpack_require__.e(/* import() */ 72219).then(__webpack_require__.bind(__webpack_require__, 72219)).then(({
+  default: TableRow
+}) => TableRow), __webpack_require__.e(/* import() */ 74096).then(__webpack_require__.bind(__webpack_require__, 74096)).then(({
+  default: TableCell
+}) => TableCell), __webpack_require__.e(/* import() */ 53107).then(__webpack_require__.bind(__webpack_require__, 53107)).then(({
+  TableHeader
+}) => TableHeader), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 12177)).then(({
+  TuiTabExtension
+}) => TuiTabExtension), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 51919)).then(({
+  TableCellBackground
+}) => TableCellBackground), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(({
+  TuiDetailsContent
+}) => TuiDetailsContent), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(({
+  TuiDetails
+}) => TuiDetails), __webpack_require__.e(/* import() */ 44312).then(__webpack_require__.bind(__webpack_require__, 44312)).then(({
+  TuiSummary
+}) => TuiSummary), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 9492)).then(({
   TuiFontSize
 }) => TuiFontSize)];
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/font-color.ts
-var font_color = __webpack_require__(6579);
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/indent-outdent.ts
-var indent_outdent = __webpack_require__(73826);
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/table-cell-background.ts
-var table_cell_background = __webpack_require__(96129);
+;// CONCATENATED MODULE: ./projects/addon-editor/extensions/default-editor-extensions/index.ts
+
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/font-color/index.ts + 1 modules
+var font_color = __webpack_require__(52658);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/font-size/index.ts + 1 modules
 var font_size = __webpack_require__(9492);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/group/index.ts + 2 modules
 var group = __webpack_require__(54920);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/image-editor/index.ts + 3 modules
 var image_editor = __webpack_require__(25039);
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/starter-kit/index.ts + 1 modules
-var starter_kit = __webpack_require__(15632);
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/indent-outdent/index.ts + 1 modules
+var indent_outdent = __webpack_require__(12177);
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/starter-kit/index.ts + 23 modules
+var starter_kit = __webpack_require__(75276);
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/table-cell-background/index.ts + 1 modules
+var table_cell_background = __webpack_require__(51919);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/tiptap-node-view/component-render.ts
 var component_render = __webpack_require__(88806);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/tiptap-node-view/node-view-render.ts
