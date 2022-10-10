@@ -2494,7 +2494,7 @@ function TuiDocDocumentationComponent_tr_9_tui_tooltip_10_Template(rf, ctx) {
 
 function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_tui_data_list_wrapper_3_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 31);
+    core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 32);
   }
 
   if (rf & 2) {
@@ -2511,16 +2511,16 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_Tem
   if (rf & 1) {
     const _r23 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-select", 28);
+    core/* ɵɵelementStart */.TgZ(0, "tui-select", 29);
     core/* ɵɵlistener */.NdJ("ngModelChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_Template_tui_select_ngModelChange_0_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r23);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(3).$implicit;
       return propertyConnector_r3.onValueChange($event);
     });
-    core/* ɵɵelementStart */.TgZ(1, "code", 29);
+    core/* ɵɵelementStart */.TgZ(1, "code", 30);
     core/* ɵɵtext */._uU(2, "null");
     core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵtemplate */.YNc(3, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_tui_data_list_wrapper_3_Template, 1, 2, "tui-data-list-wrapper", 30);
+    core/* ɵɵtemplate */.YNc(3, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_tui_data_list_wrapper_3_Template, 1, 2, "tui-data-list-wrapper", 31);
     core/* ɵɵelementEnd */.qZA();
   }
 
@@ -2554,7 +2554,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tu
   if (rf & 1) {
     const _r33 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-toggle", 38);
+    core/* ɵɵelementStart */.TgZ(0, "tui-toggle", 39);
     core/* ɵɵlistener */.NdJ("ngModelChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_toggle_1_Template_tui_toggle_ngModelChange_0_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r33);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(4).$implicit;
@@ -2573,7 +2573,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tu
   if (rf & 1) {
     const _r37 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-primitive-textfield", 39);
+    core/* ɵɵelementStart */.TgZ(0, "tui-primitive-textfield", 40);
     core/* ɵɵlistener */.NdJ("valueChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_primitive_textfield_2_Template_tui_primitive_textfield_valueChange_0_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r37);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(4).$implicit;
@@ -2592,17 +2592,17 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_di
   if (rf & 1) {
     const _r41 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "div", 40);
-    core/* ɵɵelementStart */.TgZ(1, "tui-primitive-textfield", 41);
+    core/* ɵɵelementStart */.TgZ(0, "div", 41);
+    core/* ɵɵelementStart */.TgZ(1, "tui-primitive-textfield", 42);
     core/* ɵɵlistener */.NdJ("valueChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_div_3_Template_tui_primitive_textfield_valueChange_1_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r41);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(4).$implicit;
       const ctx_r39 = core/* ɵɵnextContext */.oxw();
       return ctx_r39.onColorChange(propertyConnector_r3, $event);
     });
-    core/* ɵɵelement */._UZ(2, "input", 42);
+    core/* ɵɵelement */._UZ(2, "input", 43);
     core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelementStart */.TgZ(3, "tui-input-count", 43);
+    core/* ɵɵelementStart */.TgZ(3, "tui-input-count", 44);
     core/* ɵɵlistener */.NdJ("ngModelChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_div_3_Template_tui_input_count_ngModelChange_3_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r41);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(4).$implicit;
@@ -2629,7 +2629,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tu
   if (rf & 1) {
     const _r47 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-input-count", 44);
+    core/* ɵɵelementStart */.TgZ(0, "tui-input-count", 45);
     core/* ɵɵlistener */.NdJ("ngModelChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_input_count_4_Template_tui_input_count_ngModelChange_0_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r47);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(4).$implicit;
@@ -2648,7 +2648,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng
   if (rf & 1) {
     const _r52 = core/* ɵɵgetCurrentView */.EpF();
 
-    core/* ɵɵelementStart */.TgZ(0, "tui-primitive-textfield", 39);
+    core/* ɵɵelementStart */.TgZ(0, "tui-primitive-textfield", 40);
     core/* ɵɵlistener */.NdJ("valueChange", function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_tui_primitive_textfield_1_Template_tui_primitive_textfield_valueChange_0_listener($event) {
       core/* ɵɵrestoreView */.CHM(_r52);
       const propertyConnector_r3 = core/* ɵɵnextContext */.oxw(5).$implicit;
@@ -2667,7 +2667,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng
 function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_Template(rf, ctx) {
   if (rf & 1) {
     core/* ɵɵelementContainerStart */.ynx(0);
-    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_tui_primitive_textfield_1_Template, 2, 4, "tui-primitive-textfield", 45);
+    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_tui_primitive_textfield_1_Template, 2, 4, "tui-primitive-textfield", 46);
     core/* ɵɵelementContainerEnd */.BQk();
   }
 
@@ -2681,12 +2681,12 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng
 
 function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelementContainerStart */.ynx(0, 32);
-    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_toggle_1_Template, 1, 3, "tui-toggle", 33);
-    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_primitive_textfield_2_Template, 1, 4, "tui-primitive-textfield", 34);
-    core/* ɵɵtemplate */.YNc(3, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_div_3_Template, 5, 6, "div", 35);
-    core/* ɵɵtemplate */.YNc(4, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_input_count_4_Template, 1, 3, "tui-input-count", 36);
-    core/* ɵɵtemplate */.YNc(5, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_Template, 2, 1, "ng-container", 37);
+    core/* ɵɵelementContainerStart */.ynx(0, 33);
+    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_toggle_1_Template, 1, 3, "tui-toggle", 34);
+    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_primitive_textfield_2_Template, 1, 4, "tui-primitive-textfield", 35);
+    core/* ɵɵtemplate */.YNc(3, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_div_3_Template, 5, 6, "div", 36);
+    core/* ɵɵtemplate */.YNc(4, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_tui_input_count_4_Template, 1, 3, "tui-input-count", 37);
+    core/* ɵɵtemplate */.YNc(5, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_ng_container_5_Template, 2, 1, "ng-container", 38);
     core/* ɵɵelementContainerEnd */.BQk();
   }
 
@@ -2709,9 +2709,9 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_Te
 function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     core/* ɵɵelementContainerStart */.ynx(0);
-    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_Template, 4, 5, "tui-select", 25);
-    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_2_Template, 2, 1, "ng-template", null, 26, core/* ɵɵtemplateRefExtractor */.W1O);
-    core/* ɵɵtemplate */.YNc(4, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_Template, 6, 6, "ng-template", null, 27, core/* ɵɵtemplateRefExtractor */.W1O);
+    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_tui_select_1_Template, 4, 5, "tui-select", 26);
+    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_2_Template, 2, 1, "ng-template", null, 27, core/* ɵɵtemplateRefExtractor */.W1O);
+    core/* ɵɵtemplate */.YNc(4, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_ng_template_4_Template, 6, 6, "ng-template", null, 28, core/* ɵɵtemplateRefExtractor */.W1O);
     core/* ɵɵelementContainerEnd */.BQk();
   }
 
@@ -2726,7 +2726,7 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_Template(rf, ctx
 
 function TuiDocDocumentationComponent_tr_9_td_11_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelementStart */.TgZ(0, "tui-notification", 46);
+    core/* ɵɵelementStart */.TgZ(0, "tui-notification", 47);
     core/* ɵɵpipe */.ALo(1, "async");
     core/* ɵɵtext */._uU(2, " Emit! ");
     core/* ɵɵelementEnd */.qZA();
@@ -2740,9 +2740,9 @@ function TuiDocDocumentationComponent_tr_9_td_11_ng_template_2_Template(rf, ctx)
 
 function TuiDocDocumentationComponent_tr_9_td_11_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵelementStart */.TgZ(0, "td", 10);
-    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_Template, 6, 2, "ng-container", 23);
-    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_template_2_Template, 3, 3, "ng-template", null, 24, core/* ɵɵtemplateRefExtractor */.W1O);
+    core/* ɵɵelementStart */.TgZ(0, "td", 23);
+    core/* ɵɵtemplate */.YNc(1, TuiDocDocumentationComponent_tr_9_td_11_ng_container_1_Template, 6, 2, "ng-container", 24);
+    core/* ɵɵtemplate */.YNc(2, TuiDocDocumentationComponent_tr_9_td_11_ng_template_2_Template, 3, 3, "ng-template", null, 25, core/* ɵɵtemplateRefExtractor */.W1O);
     core/* ɵɵelementEnd */.qZA();
   }
 
@@ -2925,7 +2925,7 @@ let TuiDocDocumentationComponent = /*#__PURE__*/(() => {
     ngContentSelectors: _c0,
     decls: 10,
     vars: 5,
-    consts: [["class", "t-heading", 4, "ngIf"], [1, "t-table"], [1, "t-row", "t-row_header"], [1, "t-th", "t-cell", "t-cell_prop"], [1, "t-th"], ["class", "t-th t-cell t-cell_value", 4, "ngIf"], ["class", "t-row", 3, "t-deprecated", 4, "ngFor", "ngForOf"], [1, "t-heading"], [1, "t-th", "t-cell", "t-cell_value"], [1, "t-row"], [1, "t-cell"], ["automation-id", "tui-documentation__property-name", 1, "t-property"], ["size", "s", "value", "Optional", 4, "ngIf"], ["class", "t-deprecated-label", 4, "ngIf"], [3, "ngTemplateOutlet"], [1, "type"], [3, "describeId", "content", 4, "ngIf"], ["class", "t-cell", 4, "ngIf"], ["size", "s", "value", "Optional"], [1, "t-deprecated-label"], [3, "describeId", "content"], ["content", ""], ["tuiLink", "", "tuiMode", "onDark", "target", "_blank", "href", "https://github.com/tinkoff/ng-polymorpheus"], [4, "ngIf", "ngIfElse"], ["elseEmitter", ""], ["tuiTextfieldSize", "m", "tuiDropdownLimitWidth", "min", 3, "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "nativeId", "valueContent", "ngModel", "ngModelChange", 4, "ngIf", "ngIfElse"], ["selectContent", ""], ["noItems", ""], ["tuiTextfieldSize", "m", "tuiDropdownLimitWidth", "min", 3, "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "nativeId", "valueContent", "ngModel", "ngModelChange"], [1, "t-exception"], [3, "items", "itemContent", 4, "tuiDataList"], [3, "items", "itemContent"], [3, "ngSwitch"], ["size", "l", 3, "nativeId", "showIcons", "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange", 4, "ngSwitchCase"], ["tuiGroup", "", 4, "ngSwitchCase"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "ngModel", "ngModelChange", 4, "ngSwitchCase"], [4, "ngSwitchCase"], ["size", "l", 3, "nativeId", "showIcons", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange"], ["tuiGroup", ""], ["tuiTextfieldSize", "m", 3, "tuiTextfieldLabelOutside", "tuiInputOpacity", "value", "valueChange"], ["tuiTextfield", "", "type", "text"], ["tuiTextfieldSize", "m", 3, "max", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange", 4, "ngIf"], [1, "t-output"]],
+    consts: [["class", "t-heading", 4, "ngIf"], [1, "t-table"], [1, "t-row", "t-row_header"], [1, "t-th", "t-cell", "t-cell_prop"], [1, "t-th"], ["class", "t-th t-cell t-th_value", 4, "ngIf"], ["class", "t-row", 3, "t-deprecated", 4, "ngFor", "ngForOf"], [1, "t-heading"], [1, "t-th", "t-cell", "t-th_value"], [1, "t-row"], [1, "t-cell"], ["automation-id", "tui-documentation__property-name", 1, "t-property"], ["size", "s", "value", "Optional", 4, "ngIf"], ["class", "t-deprecated-label", 4, "ngIf"], [3, "ngTemplateOutlet"], [1, "type"], [3, "describeId", "content", 4, "ngIf"], ["class", "t-cell t-cell_value", 4, "ngIf"], ["size", "s", "value", "Optional"], [1, "t-deprecated-label"], [3, "describeId", "content"], ["content", ""], ["tuiLink", "", "tuiMode", "onDark", "target", "_blank", "href", "https://github.com/tinkoff/ng-polymorpheus"], [1, "t-cell", "t-cell_value"], [4, "ngIf", "ngIfElse"], ["elseEmitter", ""], ["tuiTextfieldSize", "m", "tuiDropdownLimitWidth", "min", 3, "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "nativeId", "valueContent", "ngModel", "ngModelChange", 4, "ngIf", "ngIfElse"], ["selectContent", ""], ["noItems", ""], ["tuiTextfieldSize", "m", "tuiDropdownLimitWidth", "min", 3, "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "nativeId", "valueContent", "ngModel", "ngModelChange"], [1, "t-exception"], [3, "items", "itemContent", 4, "tuiDataList"], [3, "items", "itemContent"], [3, "ngSwitch"], ["size", "l", 3, "nativeId", "showIcons", "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange", 4, "ngSwitchCase"], ["tuiGroup", "", 4, "ngSwitchCase"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "ngModel", "ngModelChange", 4, "ngSwitchCase"], [4, "ngSwitchCase"], ["size", "l", 3, "nativeId", "showIcons", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange"], ["tuiGroup", ""], ["tuiTextfieldSize", "m", 3, "tuiTextfieldLabelOutside", "tuiInputOpacity", "value", "valueChange"], ["tuiTextfield", "", "type", "text"], ["tuiTextfieldSize", "m", 3, "max", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "ngModel", "ngModelChange"], ["tuiTextfieldSize", "m", 3, "nativeId", "tuiTextfieldLabelOutside", "tuiTextfieldCleaner", "value", "valueChange", 4, "ngIf"], [1, "t-output"]],
     template: function TuiDocDocumentationComponent_Template(rf, ctx) {
       if (rf & 1) {
         core/* ɵɵprojectionDef */.F$t();
@@ -2959,7 +2959,7 @@ let TuiDocDocumentationComponent = /*#__PURE__*/(() => {
     },
     directives: [common/* NgIf */.O5, common/* NgForOf */.sg, common/* NgTemplateOutlet */.tP, badge_component/* TuiBadgeComponent */.g, tooltip_component/* TuiTooltipComponent */.w, link_component/* TuiLinkComponent */.V, mode_directive/* TuiModeDirective */.w, select_component/* TuiSelectComponent */.u, select_directive/* TuiSelectDirective */.O, textfield_size_directive/* TuiTextfieldSizeDirective */.s, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, textfield_cleaner_directive/* TuiTextfieldCleanerDirective */.b, textfield_label_outside_directive/* TuiTextfieldLabelOutsideDirective */.x, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, data_list_directive/* TuiDataListDirective */.g, data_list_wrapper_component/* TuiDataListWrapperComponent */.e, common/* NgSwitch */.RF, common/* NgSwitchCase */.n9, toggle_component/* TuiToggleComponent */.p, primitive_textfield_component/* TuiPrimitiveTextfieldComponent */.y, primitive_textfield_directive/* TuiPrimitiveTextfieldDirective */.B, group_directive/* TuiGroupDirective */.g, input_opacity_directive/* TuiInputOpacityDirective */.$, textfield_component/* TuiTextfieldComponent */.M, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, notification_component/* TuiNotificationComponent */.L],
     pipes: [common/* AsyncPipe */.Ov],
-    styles: ["[_nghost-%COMP%]{display:block;min-width:100%}.t-table[_ngcontent-%COMP%]{width:100%;table-layout:fixed}.t-row[_ngcontent-%COMP%]:not(:last-child){border-bottom:1px solid var(--tui-base-03)}tui-root._mobile[_nghost-%COMP%]   .t-row[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-row[_ngcontent-%COMP%]{display:flex;flex-wrap:wrap}tui-root._mobile[_nghost-%COMP%]   .t-row_header[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-row_header[_ngcontent-%COMP%]{display:none}.t-cell[_ngcontent-%COMP%]{padding:1rem 1rem .875rem}.t-cell[_ngcontent-%COMP%]:first-child{padding-left:0}.t-cell[_ngcontent-%COMP%]:last-child{padding-right:0;text-align:right}.t-cell_prop[_ngcontent-%COMP%]{width:40%}.t-cell_value[_ngcontent-%COMP%]{max-width:20rem}tui-root._mobile[_nghost-%COMP%]   .t-cell_value[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-cell_value[_ngcontent-%COMP%]{width:9.375rem}tui-root._mobile[_nghost-%COMP%]   .t-cell[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-cell[_ngcontent-%COMP%]{width:100%;height:auto;padding:.5rem 0;text-align:left}.t-th[_ngcontent-%COMP%]{padding:.5rem 1rem;color:var(--tui-text-02);font-weight:normal;text-align:left}.t-property[_ngcontent-%COMP%]{font:var(--tui-font-text-m);margin-bottom:.25rem;font-family:monospace;color:#8f75d1}tui-root._mobile[_nghost-%COMP%]   .t-property[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-property[_ngcontent-%COMP%]{padding:.5rem 0}.t-type[_ngcontent-%COMP%]{font-family:monospace}.t-deprecated[_ngcontent-%COMP%]{background-color:var(--tui-error-bg);box-shadow:-1rem 0 var(--tui-error-bg),1rem 0 var(--tui-error-bg)}.t-deprecated-label[_ngcontent-%COMP%]{margin-right:.125rem;color:var(--tui-error-fill)}.t-exception[_ngcontent-%COMP%]{display:block;width:-webkit-max-content;width:-moz-max-content;width:max-content}.t-output[_ngcontent-%COMP%]{text-align:left;opacity:0}.t-heading[_ngcontent-%COMP%]{font:var(--tui-font-heading-4)}"],
+    styles: ["[_nghost-%COMP%]{display:block;min-width:100%}.t-table[_ngcontent-%COMP%]{width:100%;table-layout:fixed}.t-row[_ngcontent-%COMP%]:not(:last-child){border-bottom:1px solid var(--tui-base-03)}tui-root._mobile[_nghost-%COMP%]   .t-row[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-row[_ngcontent-%COMP%]{display:flex;flex-wrap:wrap}tui-root._mobile[_nghost-%COMP%]   .t-row_header[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-row_header[_ngcontent-%COMP%]{display:none}.t-cell[_ngcontent-%COMP%]{padding:1rem 1rem .875rem}.t-cell[_ngcontent-%COMP%]:first-child{padding-left:0}.t-cell[_ngcontent-%COMP%]:last-child{padding-right:0}.t-cell_prop[_ngcontent-%COMP%]{width:40%}.t-cell_value[_ngcontent-%COMP%]{text-align:right}tui-root._mobile[_nghost-%COMP%]   .t-cell[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-cell[_ngcontent-%COMP%]{width:100%;height:auto;padding:.5rem 0;text-align:left}.t-th[_ngcontent-%COMP%]{padding:.5rem 1rem;color:var(--tui-text-02);font-weight:normal;text-align:left}.t-th_value[_ngcontent-%COMP%]{max-width:20rem;text-align:right}tui-root._mobile[_nghost-%COMP%]   .t-th_value[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-th_value[_ngcontent-%COMP%]{width:9.375rem}.t-property[_ngcontent-%COMP%]{font:var(--tui-font-text-m);margin-bottom:.25rem;font-family:monospace;color:#8f75d1}tui-root._mobile[_nghost-%COMP%]   .t-property[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .t-property[_ngcontent-%COMP%]{padding:.5rem 0}.t-type[_ngcontent-%COMP%]{font-family:monospace}.t-deprecated[_ngcontent-%COMP%]{background-color:var(--tui-error-bg);box-shadow:-1rem 0 var(--tui-error-bg),1rem 0 var(--tui-error-bg)}.t-deprecated-label[_ngcontent-%COMP%]{margin-right:.125rem;color:var(--tui-error-fill)}.t-exception[_ngcontent-%COMP%]{display:block;width:-webkit-max-content;width:-moz-max-content;width:max-content}.t-output[_ngcontent-%COMP%]{text-align:left;opacity:0}.t-heading[_ngcontent-%COMP%]{font:var(--tui-font-heading-4)}"],
     data: {
       animation: [(0,animations/* trigger */.X$)(`emitEvent`, [(0,animations/* transition */.eR)(`:increment`, [(0,animations/* style */.oB)({
         opacity: 1
