@@ -1,4 +1,5 @@
 @import '../../styles/mixins/mixins.less';
+@import '../../styles/mixins/text.less';
 
 // Required by some Taiga UI components
 @keyframes tuiPresent {
@@ -7,19 +8,28 @@
     }
 }
 
-:host {
+html,
+.tui-zero-scrollbar {
+    .scrollbar-hidden();
+}
+
+body {
+    .text-basic();
+}
+
+tui-root {
     position: relative;
     display: block;
     flex: 1;
     -webkit-tap-highlight-color: transparent;
 }
 
-.t-scrollbar {
+tui-root .t-root-scrollbar {
     .fullsize(fixed, inset);
     margin: 0;
 }
 
-.t-content {
+.t-root-content {
     .createStackingContext();
     height: 100%;
 }
