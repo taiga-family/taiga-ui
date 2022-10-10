@@ -50,7 +50,8 @@
     display: flex;
     flex: 1;
     align-items: center;
-    padding: 1.6875rem 1rem 0.5625rem;
+    padding: 1.6875rem 0 0.5625rem 1rem;
+    overflow: hidden;
 
     &_fullsize {
         padding-top: 0.0625rem;
@@ -62,7 +63,7 @@
     }
 
     :host[data-size='m'] & {
-        padding: 1.1875rem 0.75rem 0;
+        padding: 1.1875rem 0 0 0.75rem;
         font-size: 0.8125rem;
     }
 }
