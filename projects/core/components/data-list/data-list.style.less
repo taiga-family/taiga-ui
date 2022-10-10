@@ -39,11 +39,13 @@ tui-opt-group {
         content: attr(data-label);
         padding: 0 1rem;
         color: var(--tui-text-02);
+        line-height: 1rem;
+        white-space: normal;
     }
 
     &:not(:empty) ~ & {
         &:before {
-            padding-top: 1rem;
+            padding: 1.5rem 1rem 0.5rem;
         }
 
         &:after {
