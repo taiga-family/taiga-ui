@@ -20,8 +20,8 @@ var fesm2015_forms = __webpack_require__(23738);
 var router = __webpack_require__(12021);
 // EXTERNAL MODULE: ./projects/addon-doc/src/public-api.ts + 17 modules
 var public_api = __webpack_require__(29851);
-// EXTERNAL MODULE: ./projects/addon-editor/index.ts + 11 modules
-var addon_editor = __webpack_require__(96396);
+// EXTERNAL MODULE: ./projects/addon-editor/index.ts + 12 modules
+var addon_editor = __webpack_require__(70224);
 // EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
 var cdk = __webpack_require__(36692);
 // EXTERNAL MODULE: ./projects/core/index.ts + 74 modules

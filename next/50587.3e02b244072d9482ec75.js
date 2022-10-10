@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[50587],{
 
-/***/ 78620:
+/***/ 50587:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG

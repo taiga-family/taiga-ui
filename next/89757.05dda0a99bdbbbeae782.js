@@ -20,8 +20,8 @@ var fesm2015_forms = __webpack_require__(23738);
 var router = __webpack_require__(12021);
 // EXTERNAL MODULE: ./projects/addon-doc/src/public-api.ts + 17 modules
 var public_api = __webpack_require__(29851);
-// EXTERNAL MODULE: ./projects/addon-editor/index.ts + 11 modules
-var addon_editor = __webpack_require__(96396);
+// EXTERNAL MODULE: ./projects/addon-editor/index.ts + 12 modules
+var addon_editor = __webpack_require__(70224);
 // EXTERNAL MODULE: ./projects/core/index.ts + 74 modules
 var core = __webpack_require__(90987);
 // EXTERNAL MODULE: ./projects/demo/src/modules/components/abstract/inherited-documentation/inherited-documentation.module.ts
@@ -42,8 +42,6 @@ var link_component = __webpack_require__(66596);
 var notification_component = __webpack_require__(79121);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/example/example.component.ts + 1 modules
 var example_component = __webpack_require__(19669);
-// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
-var tslib_es6 = __webpack_require__(64762);
 // EXTERNAL MODULE: ./projects/addon-editor/components/editor/editor.component.ts
 var editor_component = __webpack_require__(69303);
 // EXTERNAL MODULE: ./projects/core/components/hosted-dropdown/hosted-dropdown.component.ts
@@ -161,17 +159,6 @@ var svg_component = __webpack_require__(34880);
 
 
 
-
-function importStarterKit() {
-  return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-    return (yield Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15632))).StarterKit;
-  });
-}
-function importEmojiExtension() {
-  return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-    return (yield __webpack_require__.e(/* import() */ 80615).then(__webpack_require__.bind(__webpack_require__, 80615))).EmojiExtension;
-  });
-}
 let TuiEditorExample1 = /*#__PURE__*/(() => {
   class TuiEditorExample1 {
     constructor() {
@@ -190,7 +177,11 @@ let TuiEditorExample1 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-1"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([{
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [importStarterKit(), importEmojiExtension()]
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+        StarterKit
+      }) => StarterKit), __webpack_require__.e(/* import() */ 80615).then(__webpack_require__.bind(__webpack_require__, 80615)).then(({
+        EmojiExtension
+      }) => EmojiExtension)]
     }])],
     decls: 7,
     vars: 2,
@@ -269,7 +260,11 @@ let TuiEditorExample2 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15632)).then(m => m.StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(m => m.createImageEditorExtension(injector))]
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+        StarterKit
+      }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
+        createImageEditorExtension
+      }) => createImageEditorExtension(injector))]
     }])],
     decls: 4,
     vars: 3,
@@ -424,7 +419,11 @@ let TuiEditorExample3 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15632)).then(m => m.StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(m => m.createImageEditorExtension(injector))]
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+        StarterKit
+      }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
+        createImageEditorExtension
+      }) => createImageEditorExtension(injector))]
     }])],
     decls: 6,
     vars: 3,
@@ -552,9 +551,9 @@ let TuiEditorExample5 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-5"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [__webpack_require__.e(/* import() */ 3460).then(__webpack_require__.bind(__webpack_require__, 3460)).then(({
-        default: module
-      }) => module), __webpack_require__.e(/* import() */ 45980).then(__webpack_require__.bind(__webpack_require__, 45980)).then(({
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+        StarterKit
+      }) => StarterKit), __webpack_require__.e(/* import() */ 45980).then(__webpack_require__.bind(__webpack_require__, 45980)).then(({
         Placeholder
       }) => Placeholder.configure({
         emptyNodeClass: `t-editor-placeholder`,
@@ -626,9 +625,9 @@ let TuiEditorExample6 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-6"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [__webpack_require__.e(/* import() */ 3460).then(__webpack_require__.bind(__webpack_require__, 3460)).then(({
-        default: module
-      }) => module), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 54920)).then(({
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+        StarterKit
+      }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 54920)).then(({
         createGroupExtension
       }) => createGroupExtension({
         draggable: false,
@@ -684,6 +683,8 @@ function imageLoader(service) {
     return (0,fromEvent/* fromEvent */.R)(fileReader, `load`).pipe((0,map/* map */.U)(() => String(fileReader.result))).pipe((0,switchMap/* switchMap */.w)(base64 => service.save(base64)));
   };
 }
+// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
+var tslib_es6 = __webpack_require__(64762);
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/observable/from.js + 6 modules
 var from = __webpack_require__(94402);
 // EXTERNAL MODULE: ./projects/demo/src/environments/environment.ts
@@ -763,7 +764,7 @@ let TuiEditorExample7 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15632)).then(({
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
         StarterKit
       }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
         createImageEditorExtension
