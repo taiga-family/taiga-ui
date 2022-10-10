@@ -1,4 +1,5 @@
 export * from './directives/cell.directive';
+export * from './directives/direction-order.directive';
 export * from './directives/head.directive';
 export * from './directives/resized.directive';
 export * from './directives/row.directive';
