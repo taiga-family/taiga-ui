@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[88729],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[72585],{
 
-/***/ 88729:
+/***/ 72585:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -14,8 +14,6 @@ __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ Table)
 });
 
-// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
-var tiptap_core_esm = __webpack_require__(40256);
 // EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
 var dist = __webpack_require__(62463);
 // EXTERNAL MODULE: ./node_modules/prosemirror-model/dist/index.js + 1 modules
@@ -26,7 +24,7 @@ var prosemirror_keymap_dist = __webpack_require__(13903);
 var prosemirror_view_dist = __webpack_require__(43594);
 // EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
 var prosemirror_transform_dist = __webpack_require__(38480);
-;// CONCATENATED MODULE: ./node_modules/prosemirror-tables-contently/dist/index.es.js
+;// CONCATENATED MODULE: ./node_modules/@_ueberdosis/prosemirror-tables/dist/index.esm.js
 
 
 
@@ -2551,7 +2549,9 @@ function tableEditing({
   });
 }
 
- //# sourceMappingURL=index.es.js.map
+ //# sourceMappingURL=index.esm.js.map
+// EXTERNAL MODULE: ./node_modules/@tiptap/core/dist/tiptap-core.esm.js + 2 modules
+var tiptap_core_esm = __webpack_require__(40256);
 ;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-table/dist/tiptap-extension-table.esm.js
 
 
