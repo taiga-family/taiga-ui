@@ -316,7 +316,7 @@ let BreakpointsComponent = /*#__PURE__*/(() => {
     },
     directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, common/* NgForOf */.sg, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, example_component/* TuiDocExampleComponent */.f, ExampleBreakpointsComponent1, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, copy_component/* TuiDocCopyComponent */.f, clipboard/* CdkCopyToClipboard */.i3, code_component/* TuiDocCodeComponent */.c],
     pipes: [example_capitalize_pipe/* TuiDocExampleCapitalizePipe */.b],
-    styles: [".table-caption[_ngcontent-%COMP%]{text-align:left;margin-bottom:.5rem}.copy[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;transition-property:opacity;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;opacity:0}.copy[_ngcontent-%COMP%]     button{border-radius:0;height:100%}.copy[_ngcontent-%COMP%]:hover{opacity:1}"],
+    styles: [".table-caption[_ngcontent-%COMP%]{text-align:left;margin-bottom:.5rem}.copy[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;opacity:0}.copy[_ngcontent-%COMP%]     button{border-radius:0;height:100%}.copy[_ngcontent-%COMP%]:hover{opacity:1}"],
     changeDetection: 0
   });
   /**

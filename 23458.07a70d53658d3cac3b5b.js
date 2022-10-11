@@ -779,7 +779,7 @@ let TuiSheetExample6 = /*#__PURE__*/(() => {
       }
     },
     directives: [button_component/* TuiButtonComponent */.v, sheet_directive/* TuiSheetDirective */.o, ng_web_apis_intersection_observer/* IntersectionObserverDirective */.Z7, sheet_heading_component/* TuiSheetHeadingComponent */.ui, label_component/* TuiLabelComponent */.A, common/* NgForOf */.sg, ng_web_apis_intersection_observer/* IntersectionObserveeDirective */.AY],
-    styles: [".image[_ngcontent-%COMP%]{transition-property:transform,opacity;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;width:100%;display:block;margin:1rem 0;transform:translate(-5rem);opacity:0}.image._visible[_ngcontent-%COMP%]{transform:none;opacity:1}"],
+    styles: [".image[_ngcontent-%COMP%]{transition-property:transform,opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;width:100%;display:block;margin:1rem 0;transform:translate(-5rem);opacity:0}.image._visible[_ngcontent-%COMP%]{transform:none;opacity:1}"],
     changeDetection: 0
   });
   return TuiSheetExample6;
