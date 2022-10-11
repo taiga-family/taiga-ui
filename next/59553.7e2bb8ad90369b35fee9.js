@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[28657],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[59553],{
 
-/***/ 28657:
+/***/ 59553:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -32,6 +32,8 @@ var cdk = __webpack_require__(36692);
 var fesm2015_core = __webpack_require__(74788);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs/tabs.component.ts
 var tabs_component = __webpack_require__(892);
+// EXTERNAL MODULE: ./projects/kit/components/tabs/tabs.directive.ts
+var tabs_directive = __webpack_require__(77347);
 // EXTERNAL MODULE: ./projects/addon-mobile/directives/mobile-tabs/mobile-tabs.directive.ts
 var mobile_tabs_directive = __webpack_require__(96996);
 // EXTERNAL MODULE: ./projects/kit/components/input-count/input-count.component.ts
@@ -45,6 +47,7 @@ var ripple_directive = __webpack_require__(59759);
 // EXTERNAL MODULE: ./projects/core/components/svg/svg.component.ts
 var svg_component = __webpack_require__(34880);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/examples/1/index.ts
+
 
 
 
@@ -148,13 +151,14 @@ let TuiTabsExample1 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("max", 2)("ngModel", ctx.activeItemIndex);
       }
     },
-    directives: [tabs_component/* TuiTabsComponent */.H, mobile_tabs_directive/* TuiMobileTabsDirective */.d, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, ripple_directive/* TuiRippleDirective */.q, svg_component/* TuiSvgComponent */.P],
+    directives: [tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, mobile_tabs_directive/* TuiMobileTabsDirective */.d, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, ripple_directive/* TuiRippleDirective */.q, svg_component/* TuiSvgComponent */.P],
     encapsulation: 2,
     changeDetection: 0
   });
   return TuiTabsExample1;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/examples/2/index.ts
+
 
 
 
@@ -257,13 +261,14 @@ let TuiTabsExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("max", 2)("ngModel", ctx.activeItemIndex);
       }
     },
-    directives: [tabs_component/* TuiTabsComponent */.H, mobile_tabs_directive/* TuiMobileTabsDirective */.d, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, svg_component/* TuiSvgComponent */.P],
+    directives: [tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, mobile_tabs_directive/* TuiMobileTabsDirective */.d, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, svg_component/* TuiSvgComponent */.P],
     encapsulation: 2,
     changeDetection: 0
   });
   return TuiTabsExample2;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/examples/3/index.ts
+
 
 
 
@@ -338,7 +343,7 @@ let TuiTabsExample3 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("max", 2)("ngModel", ctx.activeItemIndex);
       }
     },
-    directives: [tabs_component/* TuiTabsComponent */.H, tab_component/* TuiTabComponent */.y, svg_component/* TuiSvgComponent */.P, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On],
+    directives: [tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, tab_component/* TuiTabComponent */.y, svg_component/* TuiSvgComponent */.P, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -735,6 +740,7 @@ let TuiTabsExample5 = /*#__PURE__*/(() => {
 
 
 
+
 function TuiTabsExample6_ng_container_1_tui_svg_3_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelement */._UZ(0, "tui-svg", 5);
@@ -819,7 +825,7 @@ let TuiTabsExample6 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("max", 2)("ngModel", ctx.activeItemIndex);
       }
     },
-    directives: [tabs_component/* TuiTabsComponent */.H, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, common/* NgIf */.O5, svg_component/* TuiSvgComponent */.P],
+    directives: [tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, common/* NgForOf */.sg, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, tab_component/* TuiTabComponent */.y, common/* NgIf */.O5, svg_component/* TuiSvgComponent */.P],
     styles: [".step[_ngcontent-%COMP%]{margin:0;color:var(--tui-link)}.step[_ngcontent-%COMP%]:hover{color:var(--tui-link-hover)}.separator[_ngcontent-%COMP%]{height:100%;color:var(--tui-base-03);margin:0 .75rem}"],
     changeDetection: 0
   });
@@ -952,6 +958,79 @@ let TuiTabsExample7 = /*#__PURE__*/(() => {
   });
   return TuiTabsExample7;
 })();
+// EXTERNAL MODULE: ./projects/kit/components/tabs/tabs-vertical/tabs-vertical.component.ts
+var tabs_vertical_component = __webpack_require__(21220);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/examples/8/index.ts
+
+
+
+
+
+let TuiTabsExample8 = /*#__PURE__*/(() => {
+  class TuiTabsExample8 {}
+
+  TuiTabsExample8.ɵfac = function TuiTabsExample8_Factory(t) {
+    return new (t || TuiTabsExample8)();
+  };
+
+  TuiTabsExample8.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: TuiTabsExample8,
+    selectors: [["tui-tabs-example-8"]],
+    decls: 26,
+    vars: 0,
+    consts: [[1, "content"], ["tuiTabs", "", "vertical", "left", 1, "left"], ["tuiTab", ""], ["vertical", "right", 1, "right"], ["tuiTab", "", "routerLink", "/components/button", "routerLinkActive", ""], ["tuiTab", "", "routerLink", "/navigation/tabs", "routerLinkActive", ""], ["tuiTab", "", "routerLink", "/components/input", "routerLinkActive", ""]],
+    template: function TuiTabsExample8_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "section", 0);
+        fesm2015_core/* ɵɵelementStart */.TgZ(1, "nav", 1);
+        fesm2015_core/* ɵɵelementStart */.TgZ(2, "button", 2);
+        fesm2015_core/* ɵɵtext */._uU(3, "Item 1");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(4, "button", 2);
+        fesm2015_core/* ɵɵtext */._uU(5, "Item 2");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(6, "button", 2);
+        fesm2015_core/* ɵɵtext */._uU(7, "Item 3 with name so long it spans multiple lines");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(8, "div");
+        fesm2015_core/* ɵɵelementStart */.TgZ(9, "p");
+        fesm2015_core/* ɵɵtext */._uU(10, " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies enim, vel molestie orci. In finibus diam ac nulla accumsan, vel condimentum lorem ultricies. In feugiat mauris sem, ac ultricies metus aliquet nec. Ut a iaculis metus, id vestibulum justo. Nulla id ante semper, aliquam augue vitae, sollicitudin massa. Sed congue nisi sed ullamcorper mollis. Vivamus volutpat non est a vestibulum. Sed in elementum odio. Proin a lectus ac quam vulputate ornare nec id mi. Maecenas pharetra ultricies efficitur. Etiam sit amet vulputate elit. Donec ut dapibus nunc. Nullam vestibulum diam eros, ac euismod velit porta ac. Ut ut auctor velit. Nulla ac lobortis erat, ut tempor neque. ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(11, "p");
+        fesm2015_core/* ɵɵtext */._uU(12, " Donec quis lacus leo. Mauris quis vestibulum mauris. Sed hendrerit odio id blandit iaculis. Nulla ac gravida ligula, tristique tempus eros. Mauris efficitur risus quis arcu pharetra, eu semper ex rutrum. Aenean justo felis, imperdiet non justo vel, fringilla maximus nibh. Vestibulum ut imperdiet ex, vel varius odio. Nunc nec lorem non odio mollis porta. In gravida accumsan lacus, vitae egestas lectus aliquet sed. Morbi justo orci, fringilla sit amet consectetur vel, consectetur a nibh. Sed eu porttitor ante. Morbi imperdiet ligula id velit dignissim malesuada. Vestibulum blandit posuere sem. ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(13, "section", 0);
+        fesm2015_core/* ɵɵelementStart */.TgZ(14, "div");
+        fesm2015_core/* ɵɵelementStart */.TgZ(15, "p");
+        fesm2015_core/* ɵɵtext */._uU(16, " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies enim, vel molestie orci. In finibus diam ac nulla accumsan, vel condimentum lorem ultricies. In feugiat mauris sem, ac ultricies metus aliquet nec. Ut a iaculis metus, id vestibulum justo. Nulla id ante semper, aliquam augue vitae, sollicitudin massa. Sed congue nisi sed ullamcorper mollis. Vivamus volutpat non est a vestibulum. Sed in elementum odio. Proin a lectus ac quam vulputate ornare nec id mi. Maecenas pharetra ultricies efficitur. Etiam sit amet vulputate elit. Donec ut dapibus nunc. Nullam vestibulum diam eros, ac euismod velit porta ac. Ut ut auctor velit. Nulla ac lobortis erat, ut tempor neque. ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(17, "p");
+        fesm2015_core/* ɵɵtext */._uU(18, " Donec quis lacus leo. Mauris quis vestibulum mauris. Sed hendrerit odio id blandit iaculis. Nulla ac gravida ligula, tristique tempus eros. Mauris efficitur risus quis arcu pharetra, eu semper ex rutrum. Aenean justo felis, imperdiet non justo vel, fringilla maximus nibh. Vestibulum ut imperdiet ex, vel varius odio. Nunc nec lorem non odio mollis porta. In gravida accumsan lacus, vitae egestas lectus aliquet sed. Morbi justo orci, fringilla sit amet consectetur vel, consectetur a nibh. Sed eu porttitor ante. Morbi imperdiet ligula id velit dignissim malesuada. Vestibulum blandit posuere sem. ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(19, "tui-tabs", 3);
+        fesm2015_core/* ɵɵelementStart */.TgZ(20, "a", 4);
+        fesm2015_core/* ɵɵtext */._uU(21, " Button ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(22, "a", 5);
+        fesm2015_core/* ɵɵtext */._uU(23, " Tabs ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(24, "a", 6);
+        fesm2015_core/* ɵɵtext */._uU(25, " Input ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+      }
+    },
+    directives: [tabs_directive/* TuiTabsDirective */.p, tabs_vertical_component/* TuiTabsVerticalComponent */.u, tab_component/* TuiTabComponent */.y, router/* RouterLinkWithHref */.yS, router/* RouterLinkActive */.Od],
+    styles: [".content[_ngcontent-%COMP%]{display:flex;margin:2rem 0}.left[_ngcontent-%COMP%]{margin-right:2rem;min-width:10rem;width:10rem}.right[_ngcontent-%COMP%]{margin-left:2rem;min-width:10rem;width:10rem}"],
+    changeDetection: 0
+  });
+  return TuiTabsExample8;
+})();
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/page/page.component.ts + 1 modules
 var page_component = __webpack_require__(55238);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/page/page-tab.directive.ts
@@ -969,6 +1048,7 @@ var documentation_property_connector_directive = __webpack_require__(17023);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/code/code.component.ts
 var code_component = __webpack_require__(76349);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/tabs.component.ts
+
 
 
 
@@ -1021,10 +1101,13 @@ function ExampleTuiTabsComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵelement */._UZ(18, "tui-tabs-example-7");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(19, "tui-doc-example", 10);
-    fesm2015_core/* ɵɵelement */._UZ(20, "tui-tabs-example-1");
+    fesm2015_core/* ɵɵelement */._UZ(20, "tui-tabs-example-8");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(21, "tui-doc-example", 11);
-    fesm2015_core/* ɵɵelement */._UZ(22, "tui-tabs-example-2");
+    fesm2015_core/* ɵɵelement */._UZ(22, "tui-tabs-example-1");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(23, "tui-doc-example", 12);
+    fesm2015_core/* ɵɵelement */._UZ(24, "tui-tabs-example-2");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -1041,6 +1124,8 @@ function ExampleTuiTabsComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example7);
     fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example8);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example2);
@@ -1049,7 +1134,7 @@ function ExampleTuiTabsComponent_ng_template_1_Template(rf, ctx) {
 
 function ExampleTuiTabsComponent_ng_template_2_ng_container_2_button_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 20);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 21);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1064,22 +1149,12 @@ function ExampleTuiTabsComponent_ng_template_2_ng_container_2_button_1_Template(
 function ExampleTuiTabsComponent_ng_template_2_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiTabsComponent_ng_template_2_ng_container_2_button_1_Template, 2, 1, "button", 19);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiTabsComponent_ng_template_2_ng_container_2_button_1_Template, 2, 1, "button", 20);
     fesm2015_core/* ɵɵelementContainerEnd */.BQk();
   }
 }
 
 function ExampleTuiTabsComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
-  if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 21);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "strong");
-    fesm2015_core/* ɵɵelement */._UZ(2, "code");
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵi18nEnd */.N_p();
-  }
-}
-
-function ExampleTuiTabsComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18nStart */.tHW(0, 22);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "strong");
@@ -1089,7 +1164,7 @@ function ExampleTuiTabsComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   }
 }
 
-function ExampleTuiTabsComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
+function ExampleTuiTabsComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18nStart */.tHW(0, 23);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "strong");
@@ -1099,15 +1174,25 @@ function ExampleTuiTabsComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
   }
 }
 
+function ExampleTuiTabsComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 24);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "strong");
+    fesm2015_core/* ɵɵelement */._UZ(2, "code");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵi18nEnd */.N_p();
+  }
+}
+
 function ExampleTuiTabsComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 24);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 25);
   }
 }
 
 function ExampleTuiTabsComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 25);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 26);
   }
 }
 
@@ -1116,36 +1201,36 @@ function ExampleTuiTabsComponent_ng_template_2_Template(rf, ctx) {
     const _r13 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-tabs-with-more", 12);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-tabs-with-more", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("activeItemIndexChange", function ExampleTuiTabsComponent_ng_template_2_Template_tui_tabs_with_more_activeItemIndexChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
       const ctx_r12 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r12.activeItemIndex = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiTabsComponent_ng_template_2_ng_container_2_Template, 2, 0, "ng-container", 13);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiTabsComponent_ng_template_2_ng_container_2_Template, 2, 0, "ng-container", 14);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiTabsComponent_ng_template_2_ng_template_4_Template, 3, 0, "ng-template", 14);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiTabsComponent_ng_template_2_ng_template_4_Template, 3, 0, "ng-template", 15);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiTabsComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
       const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r14.itemsLimit = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiTabsComponent_ng_template_2_ng_template_5_Template, 3, 0, "ng-template", 15);
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiTabsComponent_ng_template_2_ng_template_6_Template, 3, 0, "ng-template", 16);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiTabsComponent_ng_template_2_ng_template_5_Template, 3, 0, "ng-template", 16);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiTabsComponent_ng_template_2_ng_template_6_Template, 3, 0, "ng-template", 17);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiTabsComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
       const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r15.moreContent = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiTabsComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 17);
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiTabsComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 18);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiTabsComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
       const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r16.underline = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiTabsComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 18);
+    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiTabsComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 19);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiTabsComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r13);
       const ctx_r17 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -1173,20 +1258,20 @@ function ExampleTuiTabsComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiTabsComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 26);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 27);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 27);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 28);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 28);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 29);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 29);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 30);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 30);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 31);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1235,6 +1320,11 @@ let ExampleTuiTabsComponent = /*#__PURE__*/(() => {
       this.example7 = {
         TypeScript: __webpack_require__.e(/* import() */ 98599).then(__webpack_require__.t.bind(__webpack_require__, 76676, 17)),
         HTML: __webpack_require__.e(/* import() */ 6722).then(__webpack_require__.t.bind(__webpack_require__, 6722, 17))
+      };
+      this.example8 = {
+        TypeScript: __webpack_require__.e(/* import() */ 38898).then(__webpack_require__.t.bind(__webpack_require__, 38898, 17)),
+        HTML: __webpack_require__.e(/* import() */ 40642).then(__webpack_require__.t.bind(__webpack_require__, 40642, 17)),
+        LESS: __webpack_require__.e(/* import() */ 76043).then(__webpack_require__.t.bind(__webpack_require__, 76043, 17))
       };
       this.moreContentVariants = [``, `And more`];
       this.moreContent = this.moreContentVariants[0];
@@ -1380,24 +1470,25 @@ let ExampleTuiTabsComponent = /*#__PURE__*/(() => {
         i18n_20 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
       }
 
-      return [["header", i18n_0, "package", "KIT", "type", "components"], ["pageTab", ""], i18n_2, [1, "tui-space_top-4"], i18n_4, ["id", "desktop", "heading", "Desktop", 3, "content"], ["id", "more", "heading", "TabsWithMore", 3, "content"], ["id", "complex", "heading", i18n_6, 3, "content"], ["id", "stepper", "heading", "Stepper", 3, "content"], ["id", "closing", "heading", "Closing", 3, "content"], ["id", "android", "heading", "Android", 3, "content"], ["id", "ios", "heading", "iOS", 3, "content"], [3, "underline", "moreContent", "itemsLimit", "activeItemIndex", "activeItemIndexChange"], [4, "ngFor", "ngForOf"], ["documentationPropertyName", "itemsLimit", "documentationPropertyMode", "input", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dropdownContent", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent"], ["documentationPropertyName", "moreContent", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "underline", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "activeItemIndex", "documentationPropertyMode", "input-output", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["tuiTab", "", 4, "tuiItem"], ["tuiTab", ""], i18n_8, i18n_10, i18n_12, i18n_14, i18n_16, [1, "b-demo-steps"], i18n_18, ["filename", "myComponent.module.ts", 3, "code"], i18n_20, ["filename", "myComponent.template.html", 3, "code"]];
+      return [["header", i18n_0, "package", "KIT", "type", "components"], ["pageTab", ""], i18n_2, [1, "tui-space_top-4"], i18n_4, ["id", "desktop", "heading", "Desktop", 3, "content"], ["id", "more", "heading", "TabsWithMore", 3, "content"], ["id", "complex", "heading", i18n_6, 3, "content"], ["id", "stepper", "heading", "Stepper", 3, "content"], ["id", "closing", "heading", "Closing", 3, "content"], ["id", "vertical", "heading", "Vertical", 3, "content"], ["id", "android", "heading", "Android", 3, "content"], ["id", "ios", "heading", "iOS", 3, "content"], [3, "underline", "moreContent", "itemsLimit", "activeItemIndex", "activeItemIndexChange"], [4, "ngFor", "ngForOf"], ["documentationPropertyName", "itemsLimit", "documentationPropertyMode", "input", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dropdownContent", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent"], ["documentationPropertyName", "moreContent", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "underline", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "activeItemIndex", "documentationPropertyMode", "input-output", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["tuiTab", "", 4, "tuiItem"], ["tuiTab", ""], i18n_8, i18n_10, i18n_12, i18n_14, i18n_16, [1, "b-demo-steps"], i18n_18, ["filename", "myComponent.module.ts", 3, "code"], i18n_20, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiTabsComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiTabsComponent_ng_template_1_Template, 23, 7, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiTabsComponent_ng_template_1_Template, 25, 8, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiTabsComponent_ng_template_2_Template, 9, 10, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiTabsComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, notification_component/* TuiNotificationComponent */.L, example_component/* TuiDocExampleComponent */.f, TuiTabsExample3, TuiTabsExample4, TuiTabsExample5, TuiTabsExample6, TuiTabsExample7, TuiTabsExample1, TuiTabsExample2, demo_component/* TuiDocDemoComponent */.F, tabs_with_more_component/* TuiTabsWithMoreComponent */.W, common/* NgForOf */.sg, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, item_directive/* TuiItemDirective */.w, tab_component/* TuiTabComponent */.y, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, notification_component/* TuiNotificationComponent */.L, example_component/* TuiDocExampleComponent */.f, TuiTabsExample3, TuiTabsExample4, TuiTabsExample5, TuiTabsExample6, TuiTabsExample7, TuiTabsExample8, TuiTabsExample1, TuiTabsExample2, demo_component/* TuiDocDemoComponent */.F, tabs_with_more_component/* TuiTabsWithMoreComponent */.W, common/* NgForOf */.sg, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, item_directive/* TuiItemDirective */.w, tab_component/* TuiTabComponent */.y, code_component/* TuiDocCodeComponent */.c],
     encapsulation: 2,
     changeDetection: 0
   });
   return ExampleTuiTabsComponent;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tabs/tabs.module.ts
+
 
 
 
@@ -1433,7 +1524,7 @@ let ExampleTuiTabsModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiTabsModule, {
-    declarations: [ExampleTuiTabsComponent, TuiTabsExample1, TuiTabsExample2, TuiTabsExample3, TuiTabsExample4, TuiTabsExample5, TuiTabsExample6, TuiTabsExample7],
+    declarations: [ExampleTuiTabsComponent, TuiTabsExample1, TuiTabsExample2, TuiTabsExample3, TuiTabsExample4, TuiTabsExample5, TuiTabsExample6, TuiTabsExample7, TuiTabsExample8],
     imports: [common/* CommonModule */.ez, fesm2015_forms/* FormsModule */.u5, addon_mobile.TuiRippleModule, kit.TuiTabsModule, kit.TuiInputCountModule, core.TuiModeModule, core.TuiNotificationModule, core.TuiSvgModule, core.TuiButtonModule, core.TuiHostedDropdownModule, core.TuiDataListModule, public_api/* TuiAddonDocModule */.fV, addon_mobile.TuiMobileTabsModule, router/* RouterModule */.Bz],
     exports: [ExampleTuiTabsComponent]
   });

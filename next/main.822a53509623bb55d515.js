@@ -35647,7 +35647,7 @@ const pages = [// Documentation
 }, {
   section: $localize`Navigation`,
   title: `Tabs`,
-  keywords: `mobile, ios, android, шаги, таб, tab, tabs`,
+  keywords: `mobile, ios, android, шаги, таб, tab, tabs, vertical`,
   route: `/navigation/tabs`
 }, // Customization
 {
@@ -37997,7 +37997,7 @@ const ROUTES = [{
 }, {
   path: `navigation/tabs`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield __webpack_require__.e(/* import() */ 28657).then(__webpack_require__.bind(__webpack_require__, 28657))).ExampleTuiTabsModule;
+    return (yield __webpack_require__.e(/* import() */ 59553).then(__webpack_require__.bind(__webpack_require__, 59553))).ExampleTuiTabsModule;
   }),
   data: {
     title: `Tabs`
@@ -62684,7 +62684,7 @@ let TuiTabComponent = /*#__PURE__*/(() => {
     },
     directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__/* .NgIf */ .O5],
     pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_6__/* .AsyncPipe */ .Ov],
-    styles: ["._underline[_nghost-%COMP%]:hover, ._underline   [_nghost-%COMP%]:hover{box-shadow:inset 0 -2px var(--tui-base-03)}tui-tabs    > [_nghost-%COMP%]:first-child, tui-tabs    > [_nghost-%COMP%]:first-child, [tuiTabs]    > [_nghost-%COMP%]:first-child, [tuiTabs]    > [_nghost-%COMP%]:first-child, tui-tabs    > :first-child[_nghost-%COMP%], tui-tabs    > :first-child   [_nghost-%COMP%], [tuiTabs]    > :first-child[_nghost-%COMP%], [tuiTabs]    > :first-child   [_nghost-%COMP%]{margin-left:0}[_nghost-%COMP%]{transition-property:all;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:0;border:0;background:none;font-size:inherit;line-height:inherit;position:relative;display:flex;flex-shrink:0;height:100%;box-sizing:border-box;justify-content:space-between;align-items:center;white-space:nowrap;cursor:pointer;outline:none;text-decoration:none;color:inherit;transition-property:color,box-shadow,opacity;margin-left:var(--tui-tab-margin, 1.5rem)}[_nghost-%COMP%]:disabled{opacity:var(--tui-disabled-opacity);pointer-events:none}[_nghost-%COMP%]:not([data-mode])._active{opacity:1;color:var(--tui-text-01);box-shadow:none}[data-mode=onDark][_nghost-%COMP%]{color:rgba(255,255,255,.72)}[data-mode=onDark][_nghost-%COMP%]:hover, [data-mode=onDark]._active[_nghost-%COMP%]{color:#fff}[data-mode=onDark]._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-clear-inverse);color:var(--tui-text-01)}[data-mode=onLight][_nghost-%COMP%]{color:var(--tui-text-02)}[data-mode=onLight][_nghost-%COMP%]:hover, [data-mode=onLight]._active[_nghost-%COMP%]{color:var(--tui-text-01)}[data-mode=onLight]._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-text-01);color:#fff}._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-selection)}._android[_nghost-%COMP%]{transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;height:3rem;flex:1;flex-shrink:0;justify-content:center;margin:0;text-transform:uppercase;color:var(--tui-base-09);opacity:.5;font-size:.875rem;font-weight:500;letter-spacing:-.008125rem;font-family:-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif}._android[_nghost-%COMP%]:hover{box-shadow:none}._android._active[_nghost-%COMP%]{opacity:1;color:var(--tui-base-09)}._android[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{width:auto}._ios[_nghost-%COMP%]{height:1.75rem;flex:1;flex-shrink:0;justify-content:center;margin:0;color:var(--tui-base-01);opacity:1;font-size:.8125rem;font-weight:500;letter-spacing:-.005rem;font-family:-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif}._ios[_nghost-%COMP%]:hover{box-shadow:none}._ios._active[_nghost-%COMP%]{font-size:.875rem;font-weight:600;color:var(--tui-link)}._ios[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{width:auto}@media (hover: hover){[_nghost-%COMP%]:hover{color:var(--tui-text-01)}}.t-highlight[_ngcontent-%COMP%]{display:inline-flex;width:100%;align-items:center;justify-content:inherit}.t-highlight[_ngcontent-%COMP%]    >*{flex-shrink:0}"],
+    styles: ["._underline[_nghost-%COMP%]:hover, ._underline   [_nghost-%COMP%]:hover{box-shadow:inset 0 -2px var(--tui-base-03)}tui-tabs    > [_nghost-%COMP%]:first-child, tui-tabs    > [_nghost-%COMP%]:first-child, [tuiTabs]    > [_nghost-%COMP%]:first-child, [tuiTabs]    > [_nghost-%COMP%]:first-child, tui-tabs    > :first-child[_nghost-%COMP%], tui-tabs    > :first-child   [_nghost-%COMP%], [tuiTabs]    > :first-child[_nghost-%COMP%], [tuiTabs]    > :first-child   [_nghost-%COMP%]{margin-left:0}[_nghost-%COMP%]{transition-property:all;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:0;border:0;background:none;font-size:inherit;line-height:inherit;position:relative;display:flex;flex-shrink:0;height:100%;box-sizing:border-box;justify-content:space-between;align-items:center;white-space:nowrap;cursor:pointer;outline:none;text-decoration:none;color:inherit;transition-property:color,box-shadow,opacity;margin-left:var(--tui-tab-margin, 1.5rem)}[_nghost-%COMP%]:disabled{opacity:var(--tui-disabled-opacity);pointer-events:none}[_nghost-%COMP%]:not([data-mode])._active{opacity:1;color:var(--tui-text-01);box-shadow:none}[data-mode=onDark][_nghost-%COMP%]{color:rgba(255,255,255,.72)}[data-mode=onDark][_nghost-%COMP%]:hover, [data-mode=onDark]._active[_nghost-%COMP%]{color:#fff}[data-mode=onDark]._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-clear-inverse);color:var(--tui-text-01)}[data-mode=onLight][_nghost-%COMP%]{color:var(--tui-text-02)}[data-mode=onLight][_nghost-%COMP%]:hover, [data-mode=onLight]._active[_nghost-%COMP%]{color:var(--tui-text-01)}[data-mode=onLight]._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-text-01);color:#fff}._focus-visible[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{background:var(--tui-selection)}._android[_nghost-%COMP%]{transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;height:3rem;flex:1;flex-shrink:0;justify-content:center;margin:0;text-transform:uppercase;color:var(--tui-base-09);opacity:.5;font-size:.875rem;font-weight:500;letter-spacing:-.008125rem;font-family:-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif}._android[_nghost-%COMP%]:hover{box-shadow:none}._android._active[_nghost-%COMP%]{opacity:1;color:var(--tui-base-09)}._android[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{width:auto}._ios[_nghost-%COMP%]{height:1.75rem;flex:1;flex-shrink:0;justify-content:center;margin:0;color:var(--tui-base-01);opacity:1;font-size:.8125rem;font-weight:500;letter-spacing:-.005rem;font-family:-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif}._ios[_nghost-%COMP%]:hover{box-shadow:none}._ios._active[_nghost-%COMP%]{font-size:.875rem;font-weight:600;color:var(--tui-link)}._ios[_nghost-%COMP%]   .t-highlight[_ngcontent-%COMP%]{width:auto}@media (hover: hover){[_nghost-%COMP%]:hover{color:var(--tui-text-01)}}.t-highlight[_ngcontent-%COMP%]{display:inline-flex;width:100%;align-items:center;justify-content:inherit}.t-highlight[_ngcontent-%COMP%]    >*{flex-shrink:0}tui-tabs[data-vertical][_nghost-%COMP%], tui-tabs[data-vertical]   [_nghost-%COMP%], [tuiTabs][data-vertical][_nghost-%COMP%], [tuiTabs][data-vertical]   [_nghost-%COMP%]{min-height:2.75rem;height:auto;white-space:normal;margin:0;text-align:left;padding:.25rem 1.25rem .25rem 0}tui-tabs[data-vertical][_nghost-%COMP%]:after, tui-tabs[data-vertical]   [_nghost-%COMP%]:after, [tuiTabs][data-vertical][_nghost-%COMP%]:after, [tuiTabs][data-vertical]   [_nghost-%COMP%]:after{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;content:\"\";position:absolute;top:0;bottom:0;right:0;width:2px;background:var(--tui-primary);transform:scaleX(0);transform-origin:right}tui-tabs[data-vertical][_nghost-%COMP%]:hover, tui-tabs[data-vertical]   [_nghost-%COMP%]:hover, [tuiTabs][data-vertical][_nghost-%COMP%]:hover, [tuiTabs][data-vertical]   [_nghost-%COMP%]:hover{box-shadow:inset -2px 0 var(--tui-base-03)}tui-tabs[data-vertical]._active[_nghost-%COMP%]:after, tui-tabs[data-vertical]   ._active[_nghost-%COMP%]:after, [tuiTabs][data-vertical]._active[_nghost-%COMP%]:after, [tuiTabs][data-vertical]   ._active[_nghost-%COMP%]:after{transform:none}tui-tabs[data-vertical=\"right\"][_nghost-%COMP%], tui-tabs[data-vertical=\"right\"]   [_nghost-%COMP%], [tuiTabs][data-vertical=\"right\"][_nghost-%COMP%], [tuiTabs][data-vertical=\"right\"]   [_nghost-%COMP%]{text-align:right;padding:.25rem 0 .25rem 1.25rem}tui-tabs[data-vertical=\"right\"][_nghost-%COMP%]:after, tui-tabs[data-vertical=\"right\"]   [_nghost-%COMP%]:after, [tuiTabs][data-vertical=\"right\"][_nghost-%COMP%]:after, [tuiTabs][data-vertical=\"right\"]   [_nghost-%COMP%]:after{right:auto;left:0;transform-origin:left}tui-tabs[data-vertical=\"right\"][_nghost-%COMP%]:hover, tui-tabs[data-vertical=\"right\"]   [_nghost-%COMP%]:hover, [tuiTabs][data-vertical=\"right\"][_nghost-%COMP%]:hover, [tuiTabs][data-vertical=\"right\"]   [_nghost-%COMP%]:hover{box-shadow:inset 2px 0 var(--tui-base-03)}"],
     changeDetection: 0
   });
   return TuiTabComponent;
@@ -62761,6 +62761,78 @@ const tuiTabsOptionsProvider = options => ({
 
 /***/ }),
 
+/***/ 21220:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "u": () => (/* binding */ TuiTabsVerticalComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(64762);
+/* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
+/* harmony import */ var _tabs_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77347);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(74788);
+
+
+
+
+
+const _c0 = ["vertical", ""];
+const _c1 = ["*"];
+class TuiTabsVerticalComponent {
+  constructor(tabs) {
+    this.tabs = tabs;
+    this.vertical = `left`;
+  }
+
+  onKeyDownArrow(current, step) {
+    this.tabs.moveFocus(current, step);
+  }
+
+}
+
+TuiTabsVerticalComponent.ɵfac = function TuiTabsVerticalComponent_Factory(t) {
+  return new (t || TuiTabsVerticalComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_directive__WEBPACK_IMPORTED_MODULE_1__/* .TuiTabsDirective */ .p));
+};
+
+TuiTabsVerticalComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵdefineComponent"] */ .Xpm({
+  type: TuiTabsVerticalComponent,
+  selectors: [["tui-tabs", "vertical", ""], ["nav", "tuiTabs", "", "vertical", ""]],
+  hostVars: 1,
+  hostBindings: function TuiTabsVerticalComponent_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowDown.prevent", function TuiTabsVerticalComponent_keydown_arrowDown_prevent_HostBindingHandler($event) {
+        return ctx.onKeyDownArrow($event.target, 1);
+      })("keydown.arrowUp.prevent", function TuiTabsVerticalComponent_keydown_arrowUp_prevent_HostBindingHandler($event) {
+        return ctx.onKeyDownArrow($event.target, -1);
+      });
+    }
+
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵattribute"] */ .uIk("data-vertical", ctx.vertical);
+    }
+  },
+  inputs: {
+    vertical: "vertical"
+  },
+  attrs: _c0,
+  ngContentSelectors: _c1,
+  decls: 1,
+  vars: 0,
+  template: function TuiTabsVerticalComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojectionDef"] */ .F$t();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__/* ["ɵɵprojection"] */ .Hsn(0);
+    }
+  },
+  styles: ["[_nghost-%COMP%]{display:flex;flex-direction:column;font:var(--tui-font-text-m);color:var(--tui-text-02);box-shadow:inset -1px 0 var(--tui-base-03)}[data-vertical=right][_nghost-%COMP%]{box-shadow:inset 1px 0 var(--tui-base-03)}"],
+  changeDetection: 0
+});
+
+(0,tslib__WEBPACK_IMPORTED_MODULE_3__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsVerticalComponent.prototype, "vertical", void 0);
+
+/***/ }),
+
 /***/ 18766:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -62768,22 +62840,24 @@ const tuiTabsOptionsProvider = options => ({
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "W": () => (/* binding */ TuiTabsWithMoreComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74788);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(74788);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
 /* harmony import */ var _taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44326);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(88002);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(45435);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(88002);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(45435);
 /* harmony import */ var _tab_tab_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(97611);
 /* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(98076);
 /* harmony import */ var _tabs_with_more_providers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71429);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(12057);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(12057);
 /* harmony import */ var _tabs_tabs_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(892);
-/* harmony import */ var _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(62939);
-/* harmony import */ var _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(48893);
-/* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(89570);
-/* harmony import */ var _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(34880);
-/* harmony import */ var _underline_underline_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(38434);
+/* harmony import */ var _tabs_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(77347);
+/* harmony import */ var _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(62939);
+/* harmony import */ var _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(48893);
+/* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(89570);
+/* harmony import */ var _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(34880);
+/* harmony import */ var _underline_underline_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(38434);
+
 
 
 
@@ -62805,160 +62879,160 @@ const tuiTabsOptionsProvider = options => ({
 
 function TuiTabsWithMoreComponent_ng_container_0_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainer"] */ .GkF(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainer"] */ .GkF(0);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_container_4_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainer"] */ .GkF(0, 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainer"] */ .GkF(0, 12);
   }
 
   if (rf & 2) {
-    const item_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r8);
+    const item_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r8);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_container_4_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainer"] */ .GkF(1, 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainer"] */ .GkF(1, 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
     const index_r9 = ctx_r14.index;
     const item_r8 = ctx_r14.$implicit;
-    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("t-overflown", ctx_r12.isOverflown(index_r9));
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r8);
+    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵclassProp"] */ .ekj("t-overflown", ctx_r12.isOverflown(index_r9));
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r8);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_container_4_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(1, TuiTabsWithMoreComponent_ng_container_4_ng_container_1_Template, 1, 1, "ng-container", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(2, TuiTabsWithMoreComponent_ng_container_4_ng_template_2_Template, 2, 3, "ng-template", null, 11, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(1, TuiTabsWithMoreComponent_ng_container_4_ng_container_1_Template, 1, 1, "ng-container", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(2, TuiTabsWithMoreComponent_ng_container_4_ng_template_2_Template, 2, 3, "ng-template", null, 11, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
     const index_r9 = ctx.index;
 
-    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(3);
+    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵreference"] */ .MAs(3);
 
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngIf", index_r9 <= ctx_r1.lastVisibleIndex)("ngIfElse", _r11);
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngIf", index_r9 <= ctx_r1.lastVisibleIndex)("ngIfElse", _r11);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_container_7_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
     const text_r15 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r15, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r15, " ");
   }
 }
 
 function TuiTabsWithMoreComponent_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtext"] */ ._uU(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(1, "async");
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelement"] */ ._UZ(2, "tui-svg", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtext"] */ ._uU(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipe"] */ .ALo(1, "async");
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelement"] */ ._UZ(2, "tui-svg", 13);
   }
 
   if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtextInterpolate1"] */ .hij(" ", _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(1, 3, ctx_r4.moreWord$), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("t-icon_rotated", ctx_r4.open);
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtextInterpolate1"] */ .hij(" ", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBind1"] */ .lcZ(1, 3, ctx_r4.moreWord$), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵclassProp"] */ .ekj("t-icon_rotated", ctx_r4.open);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_template_10_div_2_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementContainer"] */ .GkF(0, 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementContainer"] */ .GkF(0, 12);
   }
 
   if (rf & 2) {
-    const item_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r18);
+    const item_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", item_r18);
   }
 }
 
 function TuiTabsWithMoreComponent_ng_template_10_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("tui-tab-activate", function TuiTabsWithMoreComponent_ng_template_10_div_2_Template_div_tui_tab_activate_0_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("tui-tab-activate", function TuiTabsWithMoreComponent_ng_template_10_div_2_Template_div_tui_tab_activate_0_listener() {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵrestoreView"] */ .CHM(_r23);
       const index_r19 = restoredCtx.index;
-      const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw(2);
+      const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r22.onClick(index_r19);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(1, TuiTabsWithMoreComponent_ng_template_10_div_2_ng_container_1_Template, 1, 1, "ng-container", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(1, TuiTabsWithMoreComponent_ng_template_10_div_2_ng_container_1_Template, 1, 1, "ng-container", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
     const index_r19 = ctx.index;
-    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r17.shouldShow(index_r19));
+    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r17.shouldShow(index_r19));
   }
 }
 
 function TuiTabsWithMoreComponent_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
-    const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 14, 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowUp.prevent", function TuiTabsWithMoreComponent_ng_template_10_Template_div_keydown_arrowUp_prevent_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(0, "div", 14, 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowUp.prevent", function TuiTabsWithMoreComponent_ng_template_10_Template_div_keydown_arrowUp_prevent_0_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵrestoreView"] */ .CHM(_r25);
 
-      const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(1);
+      const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵreference"] */ .MAs(1);
 
-      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
       return ctx_r24.onWrapperArrow($event, _r16, true);
     })("keydown.arrowDown.prevent", function TuiTabsWithMoreComponent_ng_template_10_Template_div_keydown_arrowDown_prevent_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵrestoreView"] */ .CHM(_r25);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵrestoreView"] */ .CHM(_r25);
 
-      const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(1);
+      const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵreference"] */ .MAs(1);
 
-      const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
+      const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
       return ctx_r26.onWrapperArrow($event, _r16, false);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(2, TuiTabsWithMoreComponent_ng_template_10_div_2_Template, 2, 1, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(2, TuiTabsWithMoreComponent_ng_template_10_div_2_Template, 2, 1, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx_r6.items);
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx_r6.items);
   }
 }
 
 function TuiTabsWithMoreComponent_tui_underline_12_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelement"] */ ._UZ(0, "tui-underline", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelement"] */ ._UZ(0, "tui-underline", 19);
   }
 
   if (rf & 2) {
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("element", ctx_r7.activeElement);
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("element", ctx_r7.activeElement);
   }
 }
 
@@ -62976,7 +63050,7 @@ class TuiTabsWithMoreComponent {
     this.underline = this.options.underline;
     this.activeItemIndex = 0;
     this.itemsLimit = this.options.itemsLimit;
-    this.activeItemIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_9__/* .EventEmitter */ .vpe();
+    this.activeItemIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_10__/* .EventEmitter */ .vpe();
     this.items = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
     this.open = false;
   } // TODO: Improve performance
@@ -63022,7 +63096,7 @@ class TuiTabsWithMoreComponent {
   }
 
   ngAfterViewInit() {
-    this.refresh$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__/* .map */ .U)(() => this.getMaxIndex()), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .filter */ .h)(maxIndex => this.maxIndex !== maxIndex)).subscribe(maxIndex => {
+    this.refresh$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_11__/* .map */ .U)(() => this.getMaxIndex()), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_12__/* .filter */ .h)(maxIndex => this.maxIndex !== maxIndex)).subscribe(maxIndex => {
       this.maxIndex = maxIndex;
       this.changeDetectorRef.detectChanges();
     });
@@ -63143,38 +63217,38 @@ class TuiTabsWithMoreComponent {
 }
 
 TuiTabsWithMoreComponent.ɵfac = function TuiTabsWithMoreComponent_Factory(t) {
-  return new (t || TuiTabsWithMoreComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_options__WEBPACK_IMPORTED_MODULE_3__/* .TUI_TABS_OPTIONS */ .bH), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_1__/* .TUI_TAB_MARGIN */ .WO), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_with_more_providers__WEBPACK_IMPORTED_MODULE_4__/* .TUI_TABS_REFRESH */ .l), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_9__/* .ElementRef */ .SBq), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_9__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_1__/* .TUI_MORE_WORD */ .ue));
+  return new (t || TuiTabsWithMoreComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_options__WEBPACK_IMPORTED_MODULE_3__/* .TUI_TABS_OPTIONS */ .bH), _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_1__/* .TUI_TAB_MARGIN */ .WO), _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_with_more_providers__WEBPACK_IMPORTED_MODULE_4__/* .TUI_TABS_REFRESH */ .l), _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_10__/* .ElementRef */ .SBq), _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_10__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_kit_tokens__WEBPACK_IMPORTED_MODULE_1__/* .TUI_MORE_WORD */ .ue));
 };
 
-TuiTabsWithMoreComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiTabsWithMoreComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiTabsWithMoreComponent,
   selectors: [["tui-tabs-with-more"], ["nav", "tuiTabsWithMore", ""]],
   contentQueries: function TuiTabsWithMoreComponent_ContentQueries(rf, ctx, dirIndex) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiItemDirective, 4, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* .TemplateRef */ .Rgc);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiItemDirective, 4, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* .TemplateRef */ .Rgc);
     }
 
     if (rf & 2) {
       let _t;
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.items = _t);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.items = _t);
     }
   },
   viewQuery: function TuiTabsWithMoreComponent_Query(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵviewQuery"] */ .Gf(_tab_tab_component__WEBPACK_IMPORTED_MODULE_2__/* .TuiTabComponent */ .y, 5, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* .ElementRef */ .SBq);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵviewQuery"] */ .Gf(_tab_tab_component__WEBPACK_IMPORTED_MODULE_2__/* .TuiTabComponent */ .y, 5, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* .ElementRef */ .SBq);
     }
 
     if (rf & 2) {
       let _t;
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.moreButton = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.moreButton = _t.first);
     }
   },
   hostVars: 2,
   hostBindings: function TuiTabsWithMoreComponent_HostBindings(rf, ctx) {
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("_underline", ctx.underline);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵclassProp"] */ .ekj("_underline", ctx.underline);
     }
   },
   inputs: {
@@ -63187,77 +63261,77 @@ TuiTabsWithMoreComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
   outputs: {
     activeItemIndexChange: "activeItemIndexChange"
   },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵProvidersFeature"] */ ._Bn(_tabs_with_more_providers__WEBPACK_IMPORTED_MODULE_4__/* .TUI_TABS_PROVIDERS */ .N)],
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵProvidersFeature"] */ ._Bn(_tabs_with_more_providers__WEBPACK_IMPORTED_MODULE_4__/* .TUI_TABS_PROVIDERS */ .N)],
   decls: 13,
   vars: 17,
   consts: [[4, "ngIf"], [1, "t-wrapper"], [1, "t-tabs", 3, "underline", "activeItemIndex", "activeItemIndexChange", "keydown.arrowRight"], [4, "ngFor", "ngForOf"], [1, "t-more_wrapper", 3, "content", "open", "openChange"], ["tuiTab", "", 3, "tuiFocusable", "keydown.arrowLeft.prevent"], [4, "polymorpheusOutlet"], ["more", ""], ["dropdown", ""], [3, "element", 4, "ngIf"], [3, "ngTemplateOutlet", 4, "ngIf", "ngIfElse"], ["hidden", ""], [3, "ngTemplateOutlet"], ["src", "tuiIconChevronDown", 1, "t-icon"], [1, "t-dropdown", 3, "keydown.arrowUp.prevent", "keydown.arrowDown.prevent"], ["element", ""], [3, "tui-tab-activate", 4, "ngFor", "ngForOf"], [3, "tui-tab-activate"], [3, "ngTemplateOutlet", 4, "ngIf"], [3, "element"]],
   template: function TuiTabsWithMoreComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(0, TuiTabsWithMoreComponent_ng_container_0_Template, 1, 0, "ng-container", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipe"] */ .ALo(1, "async");
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(2, "div", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(3, "tui-tabs", 2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("activeItemIndexChange", function TuiTabsWithMoreComponent_Template_tui_tabs_activeItemIndexChange_3_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(0, TuiTabsWithMoreComponent_ng_container_0_Template, 1, 0, "ng-container", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipe"] */ .ALo(1, "async");
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(2, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(3, "tui-tabs", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("activeItemIndexChange", function TuiTabsWithMoreComponent_Template_tui_tabs_activeItemIndexChange_3_listener($event) {
         return ctx.onActiveItemIndexChange($event);
       })("keydown.arrowRight", function TuiTabsWithMoreComponent_Template_tui_tabs_keydown_arrowRight_3_listener($event) {
         return ctx.onArrowRight($event);
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(4, TuiTabsWithMoreComponent_ng_container_4_Template, 4, 2, "ng-container", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(5, "tui-hosted-dropdown", 4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("openChange", function TuiTabsWithMoreComponent_Template_tui_hosted_dropdown_openChange_5_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(4, TuiTabsWithMoreComponent_ng_container_4_Template, 4, 2, "ng-container", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(5, "tui-hosted-dropdown", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("openChange", function TuiTabsWithMoreComponent_Template_tui_hosted_dropdown_openChange_5_listener($event) {
         return ctx.open = $event;
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementStart"] */ .TgZ(6, "button", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowLeft.prevent", function TuiTabsWithMoreComponent_Template_button_keydown_arrowLeft_prevent_6_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementStart"] */ .TgZ(6, "button", 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowLeft.prevent", function TuiTabsWithMoreComponent_Template_button_keydown_arrowLeft_prevent_6_listener() {
         return ctx.onArrowLeft();
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(7, TuiTabsWithMoreComponent_ng_container_7_Template, 2, 1, "ng-container", 6);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(8, TuiTabsWithMoreComponent_ng_template_8_Template, 3, 5, "ng-template", null, 7, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(10, TuiTabsWithMoreComponent_ng_template_10_Template, 3, 1, "ng-template", null, 8, _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵtemplate"] */ .YNc(12, TuiTabsWithMoreComponent_tui_underline_12_Template, 1, 1, "tui-underline", 9);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(7, TuiTabsWithMoreComponent_ng_container_7_Template, 2, 1, "ng-container", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(8, TuiTabsWithMoreComponent_ng_template_8_Template, 3, 5, "ng-template", null, 7, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(10, TuiTabsWithMoreComponent_ng_template_10_Template, 3, 1, "ng-template", null, 8, _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵtemplate"] */ .YNc(12, TuiTabsWithMoreComponent_tui_underline_12_Template, 1, 1, "tui-underline", 9);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵelementEnd"] */ .qZA();
     }
 
     if (rf & 2) {
-      const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(9);
+      const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵreference"] */ .MAs(9);
 
-      const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵreference"] */ .MAs(11);
+      const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵreference"] */ .MAs(11);
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵpipeBind1"] */ .lcZ(1, 15, ctx.items.changes));
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("underline", false)("activeItemIndex", ctx.activeItemIndex);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx.items);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("t-overflown", !ctx.isMoreVisible);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("content", ctx.dropdownContent || _r5)("open", ctx.open);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵclassProp"] */ .ekj("_active", ctx.isMoreActive)("t-no-margin", ctx.isMoreAlone);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("tuiFocusable", ctx.isMoreFocusable);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx.moreContent || _r3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵadvance"] */ .xp6(5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.underline);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵpipeBind1"] */ .lcZ(1, 15, ctx.items.changes));
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("underline", false)("activeItemIndex", ctx.activeItemIndex);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx.items);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵclassProp"] */ .ekj("t-overflown", !ctx.isMoreVisible);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("content", ctx.dropdownContent || _r5)("open", ctx.open);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵclassProp"] */ .ekj("_active", ctx.isMoreActive)("t-no-margin", ctx.isMoreAlone);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("tuiFocusable", ctx.isMoreFocusable);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx.moreContent || _r3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵadvance"] */ .xp6(5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_10__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.underline);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__/* .NgIf */ .O5, _tabs_tabs_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiTabsComponent */ .H, _angular_common__WEBPACK_IMPORTED_MODULE_12__/* .NgForOf */ .sg, _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_6__/* .TuiHostedDropdownComponent */ .o, _tab_tab_component__WEBPACK_IMPORTED_MODULE_2__/* .TuiTabComponent */ .y, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_13__/* .TuiFocusableDirective */ .t, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_14__/* .PolymorpheusOutletDirective */ .Li, _angular_common__WEBPACK_IMPORTED_MODULE_12__/* .NgTemplateOutlet */ .tP, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_7__/* .TuiSvgComponent */ .P, _underline_underline_component__WEBPACK_IMPORTED_MODULE_8__/* .TuiUnderlineComponent */ .B],
-  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_12__/* .AsyncPipe */ .Ov],
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_13__/* .NgIf */ .O5, _tabs_tabs_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiTabsComponent */ .H, _tabs_directive__WEBPACK_IMPORTED_MODULE_6__/* .TuiTabsDirective */ .p, _angular_common__WEBPACK_IMPORTED_MODULE_13__/* .NgForOf */ .sg, _core_components_hosted_dropdown_hosted_dropdown_component__WEBPACK_IMPORTED_MODULE_7__/* .TuiHostedDropdownComponent */ .o, _tab_tab_component__WEBPACK_IMPORTED_MODULE_2__/* .TuiTabComponent */ .y, _cdk_directives_focusable_focusable_directive__WEBPACK_IMPORTED_MODULE_14__/* .TuiFocusableDirective */ .t, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_15__/* .PolymorpheusOutletDirective */ .Li, _angular_common__WEBPACK_IMPORTED_MODULE_13__/* .NgTemplateOutlet */ .tP, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_8__/* .TuiSvgComponent */ .P, _underline_underline_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiUnderlineComponent */ .B],
+  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_13__/* .AsyncPipe */ .Ov],
   styles: ["[_nghost-%COMP%]{position:relative;display:flex;font:var(--tui-font-text-m);height:var(--tui-height-l);box-sizing:border-box;color:var(--tui-text-02);box-shadow:inset 0 -1px var(--tui-base-03);overflow:hidden}.t-wrapper[_ngcontent-%COMP%]{position:relative;display:flex}.t-tabs[_ngcontent-%COMP%]{height:inherit;font-size:inherit;font-weight:inherit;overflow:visible;box-shadow:none;color:inherit}.t-overflown[_ngcontent-%COMP%]{display:flex;margin:0;width:0;max-width:0;overflow:hidden;visibility:hidden}.t-more_wrapper[_ngcontent-%COMP%]{height:100%;pointer-events:none}.t-more_wrapper[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]{pointer-events:auto}.t-icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;margin-right:-.25rem;vertical-align:bottom}.t-icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}.t-dropdown[_ngcontent-%COMP%]{padding:.5rem 0}.t-dropdown[_ngcontent-%COMP%]     *[tuiTab]{width:100%;height:2.75rem;justify-content:flex-start;margin:0;padding:0 1rem;color:var(--tui-text-02)}.t-dropdown[_ngcontent-%COMP%]     *[tuiTab]:before{display:none}.t-dropdown[_ngcontent-%COMP%]     *[tuiTab]:hover, .t-dropdown[_ngcontent-%COMP%]     *[tuiTab]:focus, .t-dropdown[_ngcontent-%COMP%]     *[tuiTab]._active{box-shadow:none;color:var(--tui-base-08);background:var(--tui-base-02)}.t-no-margin[_ngcontent-%COMP%]{margin-left:0}"],
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "moreContent", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "moreContent", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "dropdownContent", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "dropdownContent", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "underline", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "underline", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "activeItemIndex", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "activeItemIndex", void 0);
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_15__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "itemsLimit", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_16__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsWithMoreComponent.prototype, "itemsLimit", void 0);
 
 /***/ }),
 
@@ -63308,70 +63382,25 @@ const TUI_TABS_PROVIDERS = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResize
 
 /***/ }),
 
-/***/ 892:
+/***/ 77347:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "H": () => (/* binding */ TuiTabsComponent)
+/* harmony export */   "p": () => (/* binding */ TuiTabsDirective)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(74788);
-/* harmony import */ var _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(23764);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74788);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45435);
-/* harmony import */ var _tab_tab_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(97611);
-/* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(98076);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12057);
-/* harmony import */ var _underline_underline_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(38434);
 
 
 
 
-
-
-
-
-
-
-
-
-function TuiTabsComponent_ng_container_0_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelementContainer"] */ .GkF(0);
-  }
-}
-
-function TuiTabsComponent_tui_underline_3_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵelement"] */ ._UZ(0, "tui-underline", 2);
-  }
-
-  if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("element", ctx_r1.activeElement);
-  }
-}
-
-const _c0 = ["*"];
-const TAB_ACTIVE_CLASS = `_active`;
-class TuiTabsComponent {
-  constructor(options, elementRef, renderer, changeDetectorRef, resize$) {
-    this.options = options;
+class TuiTabsDirective {
+  constructor(elementRef) {
     this.elementRef = elementRef;
-    this.renderer = renderer;
-    this.children = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
-    this.underline = this.options.underline;
-    this.activeItemIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_4__/* .EventEmitter */ .vpe();
     this.activeItemIndex = 0;
-    resize$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__/* .filter */ .h)(() => this.underline)).subscribe(() => {
-      changeDetectorRef.detectChanges();
-    });
-  }
-
-  set activeItemIndexSetter(index) {
-    this.activeItemIndex = index;
-    this.scrollTo(this.tabs[index]);
+    this.activeItemIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__/* .EventEmitter */ .vpe();
   }
 
   get tabs() {
@@ -63389,11 +63418,11 @@ class TuiTabsComponent {
       return;
     }
 
-    this.activeItemIndexSetter = index;
     this.activeItemIndexChange.emit(index);
+    this.activeItemIndex = index;
   }
 
-  onKeyDownArrow(current, step) {
+  moveFocus(current, step) {
     const {
       tabs
     } = this;
@@ -63406,17 +63435,128 @@ class TuiTabsComponent {
       activeElement
     } = this;
     tabs.forEach(nativeElement => {
-      this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-      this.renderer.setAttribute(nativeElement, `tabIndex`, `-1`);
+      const active = nativeElement === activeElement;
+      nativeElement.classList.toggle(`_active`, active);
+      nativeElement.setAttribute(`tabIndex`, active ? `0` : `-1`);
     });
-
-    if (activeElement) {
-      this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-      this.renderer.setAttribute(activeElement, `tabIndex`, `0`);
-    }
   }
 
-  scrollTo(element) {
+}
+
+TuiTabsDirective.ɵfac = function TuiTabsDirective_Factory(t) {
+  return new (t || TuiTabsDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_1__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_1__/* .ElementRef */ .SBq));
+};
+
+TuiTabsDirective.ɵdir = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__/* ["ɵɵdefineDirective"] */ .lG2({
+  type: TuiTabsDirective,
+  selectors: [["tui-tabs"], ["nav", "tuiTabs", ""]],
+  hostBindings: function TuiTabsDirective_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__/* ["ɵɵlistener"] */ .NdJ("tui-tab-activate.stop", function TuiTabsDirective_tui_tab_activate_stop_HostBindingHandler($event) {
+        return ctx.onActivate($event.target);
+      });
+    }
+  },
+  inputs: {
+    activeItemIndex: "activeItemIndex"
+  },
+  outputs: {
+    activeItemIndexChange: "activeItemIndexChange"
+  }
+});
+
+(0,tslib__WEBPACK_IMPORTED_MODULE_2__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsDirective.prototype, "activeItemIndex", void 0);
+
+/***/ }),
+
+/***/ 892:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "H": () => (/* binding */ TuiTabsComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
+/* harmony import */ var _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(23764);
+/* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(45435);
+/* harmony import */ var _tab_tab_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(97611);
+/* harmony import */ var _tabs_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(77347);
+/* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(98076);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12057);
+/* harmony import */ var _underline_underline_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38434);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function TuiTabsComponent_ng_container_0_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelementContainer"] */ .GkF(0);
+  }
+}
+
+function TuiTabsComponent_tui_underline_3_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵelement"] */ ._UZ(0, "tui-underline", 2);
+  }
+
+  if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("element", ctx_r1.activeElement);
+  }
+}
+
+const _c0 = ["*"];
+class TuiTabsComponent {
+  constructor(options, elementRef, tabs, changeDetectorRef, resize$) {
+    this.options = options;
+    this.elementRef = elementRef;
+    this.tabs = tabs;
+    this.children = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
+    this.underline = this.options.underline;
+    resize$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .filter */ .h)(() => this.underline)).subscribe(() => {
+      changeDetectorRef.detectChanges();
+    });
+  }
+  /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
+
+
+  get activeItemIndex() {
+    return this.tabs.activeItemIndex;
+  }
+  /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
+
+
+  set activeItemIndex(index) {
+    this.tabs.activeItemIndex = index;
+  }
+
+  get activeElement() {
+    return this.tabs.activeElement;
+  }
+
+  onKeyDownArrow(current, step) {
+    this.tabs.moveFocus(current, step);
+  }
+
+  ngAfterViewChecked() {
+    this.scrollTo(this.tabs.activeItemIndex);
+  }
+
+  scrollTo(index) {
+    const element = this.tabs.tabs[index];
+
     if (!element) {
       return;
     }
@@ -63441,29 +63581,27 @@ class TuiTabsComponent {
 }
 
 TuiTabsComponent.ɵfac = function TuiTabsComponent_Factory(t) {
-  return new (t || TuiTabsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_options__WEBPACK_IMPORTED_MODULE_2__/* .TUI_TABS_OPTIONS */ .bH), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* .ElementRef */ .SBq), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* .Renderer2 */ .Qsj), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_4__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResizeService));
+  return new (t || TuiTabsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_options__WEBPACK_IMPORTED_MODULE_3__/* .TUI_TABS_OPTIONS */ .bH), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .ElementRef */ .SBq), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_tabs_directive__WEBPACK_IMPORTED_MODULE_2__/* .TuiTabsDirective */ .p), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_angular_core__WEBPACK_IMPORTED_MODULE_5__/* .ChangeDetectorRef */ .sBO), _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResizeService));
 };
 
-TuiTabsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵdefineComponent"] */ .Xpm({
+TuiTabsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵdefineComponent"] */ .Xpm({
   type: TuiTabsComponent,
-  selectors: [["tui-tabs"], ["nav", "tuiTabs", ""]],
+  selectors: [["tui-tabs", 3, "vertical", ""], ["nav", "tuiTabs", "", 3, "vertical", ""]],
   contentQueries: function TuiTabsComponent_ContentQueries(rf, ctx, dirIndex) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _tab_tab_component__WEBPACK_IMPORTED_MODULE_1__/* .TuiTabComponent */ .y, 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵcontentQuery"] */ .Suo(dirIndex, _tab_tab_component__WEBPACK_IMPORTED_MODULE_1__/* .TuiTabComponent */ .y, 4);
     }
 
     if (rf & 2) {
       let _t;
 
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.children = _t);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵqueryRefresh"] */ .iGM(_t = _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵloadQuery"] */ .CRH()) && (ctx.children = _t);
     }
   },
   hostVars: 2,
   hostBindings: function TuiTabsComponent_HostBindings(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵlistener"] */ .NdJ("tui-tab-activate.stop", function TuiTabsComponent_tui_tab_activate_stop_HostBindingHandler($event) {
-        return ctx.onActivate($event.target);
-      })("keydown.arrowRight.prevent", function TuiTabsComponent_keydown_arrowRight_prevent_HostBindingHandler($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵlistener"] */ .NdJ("keydown.arrowRight.prevent", function TuiTabsComponent_keydown_arrowRight_prevent_HostBindingHandler($event) {
         return ctx.onKeyDownArrow($event.target, 1);
       })("keydown.arrowLeft.prevent", function TuiTabsComponent_keydown_arrowLeft_prevent_HostBindingHandler($event) {
         return ctx.onKeyDownArrow($event.target, -1);
@@ -63471,18 +63609,14 @@ TuiTabsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵclassProp"] */ .ekj("_underline", ctx.underline);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵclassProp"] */ .ekj("_underline", ctx.underline);
     }
   },
   inputs: {
-    underline: "underline",
-    activeItemIndexSetter: ["activeItemIndex", "activeItemIndexSetter"]
+    underline: "underline"
   },
-  outputs: {
-    activeItemIndexChange: "activeItemIndexChange"
-  },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResizeService, _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_6__/* .MutationObserverService */ .IM, {
-    provide: _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_6__/* .MUTATION_OBSERVER_INIT */ .k2,
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵProvidersFeature"] */ ._Bn([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestroyService, _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiResizeService, _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_7__/* .MutationObserverService */ .IM, {
+    provide: _ng_web_apis_mutation_observer__WEBPACK_IMPORTED_MODULE_7__/* .MUTATION_OBSERVER_INIT */ .k2,
     useValue: {
       childList: true
     }
@@ -63493,26 +63627,28 @@ TuiTabsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__
   consts: [[4, "ngIf"], ["class", "t-underline", 3, "element", 4, "ngIf"], [1, "t-underline", 3, "element"]],
   template: function TuiTabsComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵprojectionDef"] */ .F$t();
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵtemplate"] */ .YNc(0, TuiTabsComponent_ng_container_0_Template, 1, 0, "ng-container", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵpipe"] */ .ALo(1, "async");
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵprojection"] */ .Hsn(2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵtemplate"] */ .YNc(3, TuiTabsComponent_tui_underline_3_Template, 1, 1, "tui-underline", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵprojectionDef"] */ .F$t();
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(0, TuiTabsComponent_ng_container_0_Template, 1, 0, "ng-container", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipe"] */ .ALo(1, "async");
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵprojection"] */ .Hsn(2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵtemplate"] */ .YNc(3, TuiTabsComponent_tui_underline_3_Template, 1, 1, "tui-underline", 1);
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵpipeBind1"] */ .lcZ(1, 2, ctx.children.changes));
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵadvance"] */ .xp6(3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.underline);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipeBind1"] */ .lcZ(1, 2, ctx.children.changes));
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵadvance"] */ .xp6(3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.underline);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__/* .NgIf */ .O5, _underline_underline_component__WEBPACK_IMPORTED_MODULE_3__/* .TuiUnderlineComponent */ .B],
-  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__/* .AsyncPipe */ .Ov],
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgIf */ .O5, _underline_underline_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiUnderlineComponent */ .B],
+  pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .AsyncPipe */ .Ov],
   styles: ["[_nghost-%COMP%]{scrollbar-width:none;-ms-overflow-style:none;position:relative;z-index:0;display:flex;font:var(--tui-font-text-m);height:var(--tui-height-l);color:var(--tui-text-02);box-shadow:inset 0 -1px var(--tui-base-03);overflow:auto}[_nghost-%COMP%]::-webkit-scrollbar, [_nghost-%COMP%]::-webkit-scrollbar-thumb{background:transparent;width:0;height:0}.t-underline[_ngcontent-%COMP%]{z-index:-1}"],
   changeDetection: 0
 });
 
-(0,tslib__WEBPACK_IMPORTED_MODULE_8__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsComponent.prototype, "underline", void 0);
+(0,tslib__WEBPACK_IMPORTED_MODULE_9__/* .__decorate */ .gn)([(0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiDefaultProp)()], TuiTabsComponent.prototype, "underline", void 0);
+
+(0,tslib__WEBPACK_IMPORTED_MODULE_9__/* .__decorate */ .gn)([_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiPure], TuiTabsComponent.prototype, "scrollTo", null);
 
 /***/ }),
 
@@ -66989,7 +67125,9 @@ __webpack_require__.d(__webpack_exports__, {
   "TuiStringifyPipeModule": () => (/* reexport */ TuiStringifyPipeModule),
   "TuiTabComponent": () => (/* reexport */ tab_component/* TuiTabComponent */.y),
   "TuiTabsComponent": () => (/* reexport */ tabs_component/* TuiTabsComponent */.H),
+  "TuiTabsDirective": () => (/* reexport */ tabs_directive/* TuiTabsDirective */.p),
   "TuiTabsModule": () => (/* reexport */ TuiTabsModule),
+  "TuiTabsVerticalComponent": () => (/* reexport */ tabs_vertical_component/* TuiTabsVerticalComponent */.u),
   "TuiTabsWithMoreComponent": () => (/* reexport */ tabs_with_more_component/* TuiTabsWithMoreComponent */.W),
   "TuiTagComponent": () => (/* reexport */ tag/* TuiTagComponent */.Gi),
   "TuiTagModule": () => (/* reexport */ tag/* TuiTagModule */.d3),
@@ -69011,13 +69149,19 @@ let TuiStepperModule = /*#__PURE__*/(() => {
 var tab_component = __webpack_require__(97611);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tab/tab.providers.ts
 var tab_providers = __webpack_require__(5375);
+// EXTERNAL MODULE: ./projects/kit/components/tabs/tabs.directive.ts
+var tabs_directive = __webpack_require__(77347);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs/tabs.component.ts
 var tabs_component = __webpack_require__(892);
+// EXTERNAL MODULE: ./projects/kit/components/tabs/tabs-vertical/tabs-vertical.component.ts
+var tabs_vertical_component = __webpack_require__(21220);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs-with-more/tabs-with-more.component.ts
 var tabs_with_more_component = __webpack_require__(18766);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/underline/underline.component.ts
 var underline_component = __webpack_require__(38434);
 ;// CONCATENATED MODULE: ./projects/kit/components/tabs/tabs.module.ts
+
+
 
 
 
@@ -69038,16 +69182,16 @@ let TuiTabsModule = /*#__PURE__*/(() => {
     type: TuiTabsModule
   });
   TuiTabsModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, core.TuiHostedDropdownModule, core.TuiSvgModule, cdk.TuiFocusableModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, cdk.TuiItemModule]]
+    imports: [[common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiHostedDropdownModule, core.TuiSvgModule, cdk.TuiFocusableModule, cdk.TuiItemModule]]
   });
   return TuiTabsModule;
 })();
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(TuiTabsModule, {
-    declarations: [tabs_with_more_component/* TuiTabsWithMoreComponent */.W, tabs_component/* TuiTabsComponent */.H, tab_component/* TuiTabComponent */.y, underline_component/* TuiUnderlineComponent */.B],
-    imports: [common/* CommonModule */.ez, core.TuiHostedDropdownModule, core.TuiSvgModule, cdk.TuiFocusableModule, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, cdk.TuiItemModule],
-    exports: [tabs_with_more_component/* TuiTabsWithMoreComponent */.W, tabs_component/* TuiTabsComponent */.H, tab_component/* TuiTabComponent */.y, cdk.TuiItemDirective]
+    declarations: [tabs_with_more_component/* TuiTabsWithMoreComponent */.W, tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, tabs_vertical_component/* TuiTabsVerticalComponent */.u, tab_component/* TuiTabComponent */.y, underline_component/* TuiUnderlineComponent */.B],
+    imports: [common/* CommonModule */.ez, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, core.TuiHostedDropdownModule, core.TuiSvgModule, cdk.TuiFocusableModule, cdk.TuiItemModule],
+    exports: [tabs_with_more_component/* TuiTabsWithMoreComponent */.W, tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, tabs_vertical_component/* TuiTabsVerticalComponent */.u, tab_component/* TuiTabComponent */.y, cdk.TuiItemDirective]
   });
 })();
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs-options.ts
@@ -69055,6 +69199,8 @@ var tabs_options = __webpack_require__(98076);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs-with-more/tabs-with-more.providers.ts
 var tabs_with_more_providers = __webpack_require__(71429);
 ;// CONCATENATED MODULE: ./projects/kit/components/tabs/index.ts
+
+
 
 
 
