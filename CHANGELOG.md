@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.65.0](https://github.com/tinkoff/taiga-ui/compare/v2.64.0...v2.65.0) (2022-10-11)
+
+### Features
+
+- **kit:** `Avatar` allow Taiga UI icons ([#2826](https://github.com/tinkoff/taiga-ui/issues/2826))
+  ([72c21f0](https://github.com/tinkoff/taiga-ui/commit/72c21f0bac242ad4cfa28d694e00f63bf0c797c2))
+
+### Bug Fixes
+
+- **addon-commerce:** show caret color when filling in input card group value
+  ([#2795](https://github.com/tinkoff/taiga-ui/issues/2795))
+  ([f79d0fa](https://github.com/tinkoff/taiga-ui/commit/f79d0fab5c3e784d7b5b91e7bc8ebf29721deaf9))
+- **kit:** `MultiSelect` fix overflow issues ([#2848](https://github.com/tinkoff/taiga-ui/issues/2848))
+  ([b029e96](https://github.com/tinkoff/taiga-ui/commit/b029e96ac484f4728f71041ada98334019fa84df))
+- **styles:** pseudo elements `:after` aren't removed in Safari 16
+  ([#2829](https://github.com/tinkoff/taiga-ui/issues/2829))
+  ([96e50ef](https://github.com/tinkoff/taiga-ui/commit/96e50efd322075d3a27c8e42b7b6378318d5cce8))
+
 ## [2.64.0](https://github.com/tinkoff/taiga-ui/compare/v2.63.0...v2.64.0) (2022-10-03)
 
 ### Bug Fixes
