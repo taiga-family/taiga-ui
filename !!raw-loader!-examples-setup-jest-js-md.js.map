@@ -1,1 +1,0 @@
-{"version":3,"sources":["./src/modules/info/testing/jest/examples/setup-jest-js.md"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe,+GAAgD,wCAAwC,QAAQ,E","file":"!!raw-loader!-examples-setup-jest-js-md.js","sourcesContent":["export default \"```js\\nimport 'jest-preset-angular/setup-jest';\\nimport '@ng-web-apis/universal/mocks';\\n```\\n\";"],"sourceRoot":"webpack:///"}
