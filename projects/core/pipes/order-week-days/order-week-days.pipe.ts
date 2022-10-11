@@ -1,6 +1,6 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiInjectionTokenType} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
