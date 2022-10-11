@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/tinkoff/taiga-ui/compare/v3.5.0...v3.6.0) (2022-10-11)
+
+### Features
+
+- **addon-table:** add `TuiDirectionOrderDirective` to sort by order
+  ([#2782](https://github.com/tinkoff/taiga-ui/issues/2782))
+  ([962084a](https://github.com/tinkoff/taiga-ui/commit/962084a36a9504166a47c45c4bce0f46324573f7))
+- **kit:** `Avatar` add stacking option ([#2811](https://github.com/tinkoff/taiga-ui/issues/2811))
+  ([0264b38](https://github.com/tinkoff/taiga-ui/commit/0264b388a43c916a1409ec187ba77754257188c5))
+- **kit:** `Avatar` allow Taiga UI icons ([#2824](https://github.com/tinkoff/taiga-ui/issues/2824))
+  ([cfa5ead](https://github.com/tinkoff/taiga-ui/commit/cfa5ead78c2c60c6bb469843b0272a3a882eaed6))
+- **kit:** `Badge` add overflow elipsis and title ([#2806](https://github.com/tinkoff/taiga-ui/issues/2806))
+  ([02713d6](https://github.com/tinkoff/taiga-ui/commit/02713d63ebfd7290420df66d37b5919db9138c3c))
+- **kit:** `Carousel` allow vertical alignment control ([#2814](https://github.com/tinkoff/taiga-ui/issues/2814))
+  ([36d3c6f](https://github.com/tinkoff/taiga-ui/commit/36d3c6f019e61203e021d6c7854c9cdc7559286b))
+- **kit:** `InputDate`, `InputDateRange`, `InputDateTime` add options DI token for custom icons
+  ([#2785](https://github.com/tinkoff/taiga-ui/issues/2785))
+  ([0fe5d5b](https://github.com/tinkoff/taiga-ui/commit/0fe5d5b7197ee435e64cea2155ff296e9a046c30))
+- **kit:** `InputMonth`, `InputMonthRange` add options DI token
+  ([#2840](https://github.com/tinkoff/taiga-ui/issues/2840))
+  ([217d670](https://github.com/tinkoff/taiga-ui/commit/217d670a2df74139b76a047302558a07fa70bc43))
+
+### Bug Fixes
+
+- **addon-doc:** misaligned column fix ([#2815](https://github.com/tinkoff/taiga-ui/issues/2815))
+  ([783f59c](https://github.com/tinkoff/taiga-ui/commit/783f59c4e78215d277e882a4f986daacf5ed46b8))
+- **addon-editor:** edit link modal shouldn't overlap content ([#2803](https://github.com/tinkoff/taiga-ui/issues/2803))
+  ([7f8643a](https://github.com/tinkoff/taiga-ui/commit/7f8643adc5ef562a63276ab9771ee3584c2c7477))
+- **addon-editor:** normalize h1-h6 heading in editor socket ([#2808](https://github.com/tinkoff/taiga-ui/issues/2808))
+  ([c8ff2d2](https://github.com/tinkoff/taiga-ui/commit/c8ff2d2d197802c3aa711e29f2d23270b29ee80c))
+- **addon-editor:** removing all `!important` styles ([#2798](https://github.com/tinkoff/taiga-ui/issues/2798))
+  ([a59afe8](https://github.com/tinkoff/taiga-ui/commit/a59afe8bddc1a084c819fb6389612b3fdbe2029e))
+- **addon-editor:** support nested ordered list inside a bullet list
+  ([#2805](https://github.com/tinkoff/taiga-ui/issues/2805))
+  ([340ebdc](https://github.com/tinkoff/taiga-ui/commit/340ebdc4877d8a10fee83b71d0c2d4fe0557aede))
+- **addon-editor:** use `starterKit` only from custom extension
+  ([#2845](https://github.com/tinkoff/taiga-ui/issues/2845))
+  ([98311f8](https://github.com/tinkoff/taiga-ui/commit/98311f877c3136eb6438d5b84e02f3dde91dce28))
+- **cdk:** `Obscured` fix for SSR ([#2835](https://github.com/tinkoff/taiga-ui/issues/2835))
+  ([6b69efb](https://github.com/tinkoff/taiga-ui/commit/6b69efba4e1dad508f9f835b2d5928d1fce8ace7))
+- **cdk:** `schematics` error `Cannot read property 'getInitializer' of undefined`
+  ([#2828](https://github.com/tinkoff/taiga-ui/issues/2828))
+  ([8d5f40b](https://github.com/tinkoff/taiga-ui/commit/8d5f40bff6d17cc5bd35f98e412c5a6c22a50fa0))
+- **kit:** `MultiSelect` fix overflow issues ([#2847](https://github.com/tinkoff/taiga-ui/issues/2847))
+  ([372410e](https://github.com/tinkoff/taiga-ui/commit/372410e4a6057e3fd09b390abf71fee25e4bd629))
+- **kit:** `RadioLabeled` fix disabled label style ([#2842](https://github.com/tinkoff/taiga-ui/issues/2842))
+  ([001c0ad](https://github.com/tinkoff/taiga-ui/commit/001c0ad208d33477156038c14faf90e3ddb58c92))
+- **styles:** move required styles from `styles` package to tui-root
+  ([#2854](https://github.com/tinkoff/taiga-ui/issues/2854))
+  ([033960d](https://github.com/tinkoff/taiga-ui/commit/033960de23f90f516f810e76a07d37271b6390cd))
+- **styles:** pseudo elements `:after` aren't removed in Safari 16
+  ([#2825](https://github.com/tinkoff/taiga-ui/issues/2825))
+  ([fdab37a](https://github.com/tinkoff/taiga-ui/commit/fdab37ac0ac27dd7836b23691cc463165d6eb70b))
+
 ## [3.5.0](https://github.com/tinkoff/taiga-ui/compare/v3.4.0...v3.5.0) (2022-10-03)
 
 ### Features
