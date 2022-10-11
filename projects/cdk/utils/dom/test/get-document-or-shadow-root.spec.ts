@@ -1,4 +1,4 @@
-import {tuiGetDocumentOrShadowRoot} from '../get-document-or-shadow-root';
+import {tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk';
 
 describe(`getDocumentOrShadowRoot`, () => {
     it(`Node not in body`, () => {

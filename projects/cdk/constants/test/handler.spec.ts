@@ -1,5 +1,4 @@
-import {ALWAYS_FALSE_HANDLER} from '../always-false-handler';
-import {ALWAYS_TRUE_HANDLER} from '../always-true-handler';
+import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
 
 describe(`Handler functions`, () => {
     it(`Always false`, () => {

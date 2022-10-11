@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-
-import {TUI_DOC_DEFAULT_TABS} from '../default-tabs';
+import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc';
 
 describe(`Tokens`, () => {
     it(`TUI_DOC_DEFAULT_TABS`, () => {

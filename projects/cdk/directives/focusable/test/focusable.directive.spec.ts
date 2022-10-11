@@ -1,10 +1,8 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {TuiFocusableDirective, TuiFocusableModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiFocusableDirective} from '../focusable.directive';
-import {TuiFocusableModule} from '../focusable.module';
 
 describe(`TuiFocusable directive`, () => {
     @Component({

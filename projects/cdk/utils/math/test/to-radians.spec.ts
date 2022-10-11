@@ -1,4 +1,4 @@
-import {tuiToRadians} from '../to-radians';
+import {tuiToRadians} from '@taiga-ui/cdk';
 
 describe(`toRadians`, () => {
     it(`converts 0 to 0`, () => {

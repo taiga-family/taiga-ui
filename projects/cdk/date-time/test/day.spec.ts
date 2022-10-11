@@ -1,5 +1,6 @@
-import {TuiDay} from '../day';
-import {tuiMockDateInside, tuiPendingIfNotMoscowTimeZone} from './helpers';
+import {TuiDay} from '@taiga-ui/cdk';
+
+import {tuiMockDateInside} from './helpers';
 
 describe(`TuiDay`, () => {
     describe(`static method`, () => {
@@ -54,10 +55,6 @@ describe(`TuiDay`, () => {
         });
 
         describe(`currentLocal returns date`, () => {
-            beforeEach(() => {
-                tuiPendingIfNotMoscowTimeZone();
-            });
-
             it(`same as UTC if UTC is the local time zone`, () => {
                 tuiMockDateInside(Date.UTC(2000, 0, 15, 10), () => {
                     const currentDate = TuiDay.currentLocal();
@@ -80,10 +77,6 @@ describe(`TuiDay`, () => {
         });
 
         describe(`currentUtc returns date`, () => {
-            beforeEach(() => {
-                tuiPendingIfNotMoscowTimeZone();
-            });
-
             it(`UTC is the same as local`, () => {
                 tuiMockDateInside(new Date(2000, 0, 31, 10), () => {
                     const currentDate = TuiDay.currentUtc();
@@ -841,16 +834,12 @@ describe(`TuiDay`, () => {
             });
 
             it(`toLocalNativeDate returns native Date with time zone offset`, () => {
-                tuiPendingIfNotMoscowTimeZone();
-
                 const result = new TuiDay(2000, 0, 1);
 
                 expect(result.toLocalNativeDate()).toEqual(new Date(2000, 0, 1));
             });
 
             it(`toUtcNativeDate returns native Date without time zone offset`, () => {
-                tuiPendingIfNotMoscowTimeZone();
-
                 const result = new TuiDay(2000, 0, 1);
 
                 expect(result.toUtcNativeDate()).toEqual(new Date(Date.UTC(2000, 0, 1)));
@@ -930,10 +919,10 @@ describe(`TuiDay`, () => {
                 it(`the primitive value of a TuiDay object`, () => {
                     const day = new TuiDay(2000, 5, 13);
 
-                    expect(Number(day)).toBeInstanceOf(Number);
-                    expect(day.valueOf()).toBeInstanceOf(Number);
-                    expect(day > new TuiDay(2000, 5, 10)).toBeTrue();
-                    expect(day < new TuiDay(2001, 5, 10)).toBeTrue();
+                    expect(typeof Number(day)).toEqual(`number`);
+                    expect(typeof day.valueOf()).toEqual(`number`);
+                    expect(day > new TuiDay(2000, 5, 10)).toBeTruthy();
+                    expect(day < new TuiDay(2001, 5, 10)).toBeTruthy();
                 });
             });
 
@@ -941,24 +930,24 @@ describe(`TuiDay`, () => {
                 it(`a number if the hint is number`, () => {
                     const day = new TuiDay(2009, 2, 28);
 
-                    expect(Number(day)).toBeInstanceOf(Number);
-                    expect(day.valueOf()).toBeInstanceOf(Number);
-                    expect(day[Symbol.toPrimitive](`number`)).toBeInstanceOf(Number);
+                    expect(typeof Number(day)).toEqual(`number`);
+                    expect(typeof day.valueOf()).toEqual(`number`);
+                    expect(typeof day[Symbol.toPrimitive](`number`)).toEqual(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const day = new TuiDay(2004, 3, 22);
 
-                    expect(String(day)).toBeInstanceOf(String);
-                    expect(day.toString()).toBeInstanceOf(String);
-                    expect(day[Symbol.toPrimitive](`string`)).toBeInstanceOf(String);
+                    expect(typeof String(day)).toEqual(`string`);
+                    expect(typeof day.toString()).toEqual(`string`);
+                    expect(typeof day[Symbol.toPrimitive](`string`)).toEqual(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const day = new TuiDay(2012, 7, 18);
 
-                    expect(`${day}`).toBeInstanceOf(String);
-                    expect(day[Symbol.toPrimitive](`default`)).toBeInstanceOf(String);
+                    expect(typeof `${day}`).toEqual(`string`);
+                    expect(typeof day[Symbol.toPrimitive](`default`)).toEqual(`string`);
                 });
             });
         });

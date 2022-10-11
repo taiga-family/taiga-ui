@@ -6,6 +6,6 @@
         "strict": false,
         "incremental": true
     },
-    "include": ["projects", "scripts"],
+    "include": ["projects", "scripts", "setup-jest.ts", "jest.config.ts"],
     "exclude": ["**/node_modules", "**/schematics/**", "**/.*/", "*.js"]
 }

@@ -15,11 +15,9 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputDateComponent} from '../input-date.component';
-import {TuiInputDateModule} from '../input-date.module';
 
 @Component({
     template: `

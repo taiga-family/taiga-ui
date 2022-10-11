@@ -1,4 +1,4 @@
-import {tuiSum} from '../sum';
+import {tuiSum} from '@taiga-ui/cdk';
 
 describe(`sum`, () => {
     it(`returns sum of args`, () => {

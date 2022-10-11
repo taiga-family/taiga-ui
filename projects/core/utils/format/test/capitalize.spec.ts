@@ -1,6 +1,5 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-
-import {tuiCapitalize} from '../capitalize';
+import {tuiCapitalize} from '@taiga-ui/core';
 
 describe(`Capitalize`, () => {
     it(`Capitalizes the first letter of a word`, () => {

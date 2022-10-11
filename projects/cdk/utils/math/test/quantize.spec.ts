@@ -1,4 +1,4 @@
-import {tuiQuantize} from '../quantize';
+import {tuiQuantize} from '@taiga-ui/cdk';
 
 describe(`quantize`, () => {
     it(`Round up to the closest quantum`, () => {

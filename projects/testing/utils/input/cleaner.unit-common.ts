@@ -40,7 +40,7 @@ export function tuiTestCleaner(
             testComponent = context.testComponent;
             inputPO = context.inputPO;
 
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         describe(`Cross included`, () => {

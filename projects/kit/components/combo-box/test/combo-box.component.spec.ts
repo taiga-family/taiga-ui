@@ -17,15 +17,13 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiComboBoxComponent, TuiComboBoxModule} from '@taiga-ui/kit';
 import {
     TUI_ARROW,
     TUI_ARROW_MODE,
     TuiDataListWrapperModule,
 } from '@taiga-ui/kit/components';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiComboBoxComponent} from '../combo-box.component';
-import {TuiComboBoxModule} from '../combo-box.module';
 
 class Beast {
     constructor(readonly species: string, readonly trait: string, readonly id: string) {}

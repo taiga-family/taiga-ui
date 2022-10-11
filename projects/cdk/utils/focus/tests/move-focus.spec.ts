@@ -1,4 +1,4 @@
-import {tuiMoveFocus} from '../move-focus';
+import {tuiMoveFocus} from '@taiga-ui/cdk';
 
 describe(`move focus`, () => {
     it(`   `, () => {

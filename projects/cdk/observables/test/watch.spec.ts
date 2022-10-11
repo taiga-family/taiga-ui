@@ -1,8 +1,7 @@
 import {ChangeDetectorRef} from '@angular/core';
 import {fakeAsync, tick} from '@angular/core/testing';
+import {tuiWatch} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
-
-import {tuiWatch} from '../watch';
 
 describe(`tuiWatch operator function`, () => {
     let $: Subject<unknown>;

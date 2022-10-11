@@ -28,7 +28,7 @@ describe(`InputCard`, () => {
 
         control = new FormControl(``);
 
-        onBinChange = jasmine.createSpy(`bin`);
+        onBinChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -62,7 +62,7 @@ describe(`InputCard`, () => {
 
         it(`The value has changed, the first 6 characters are unchanged`, () => {
             testComponent.control.setValue(`123456789`);
-            testComponent.onBinChange.calls.reset();
+            testComponent.onBinChange.mockClear();
             testComponent.control.setValue(`123456987`);
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
@@ -70,7 +70,7 @@ describe(`InputCard`, () => {
 
         it(`The value has changed, the first 6 characters have changed`, () => {
             testComponent.control.setValue(`123456789`);
-            testComponent.onBinChange.calls.reset();
+            testComponent.onBinChange.mockClear();
             testComponent.control.setValue(`654321789`);
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(`654321`);
@@ -78,7 +78,7 @@ describe(`InputCard`, () => {
 
         it(`The value has changed to less than 6 characters`, () => {
             testComponent.control.setValue(`123456789`);
-            testComponent.onBinChange.calls.reset();
+            testComponent.onBinChange.mockClear();
             testComponent.control.setValue(`123`);
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
@@ -167,7 +167,7 @@ describe(`InputCard`, () => {
             testComponent.component.cardSrc =
                 fixture.componentInstance.customIconTemplateRef;
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.icon).toEqual(jasmine.any(TemplateRef));
+            expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });
     });

@@ -4,10 +4,11 @@ import {
     tuiIsMobile,
     TuiMedia,
 } from '@taiga-ui/core';
+import {tuiTestingViewport} from '@taiga-ui/testing';
 
 describe(`viewport`, () => {
     it(`width/height`, () => {
-        setViewport(770, 600);
+        tuiTestingViewport(770, 600);
 
         expect(window.document.documentElement.clientWidth).toEqual(755);
         expect(window.innerWidth).toEqual(770);
@@ -73,14 +74,3 @@ describe(`viewport`, () => {
         });
     });
 });
-
-function setViewport(width: number, height: number): void {
-    spyOnProperty(window, `innerWidth`).and.returnValue(width);
-    spyOnProperty(window, `innerHeight`).and.returnValue(height);
-    spyOnProperty(window.document.documentElement, `clientWidth`).and.returnValue(
-        width - 15 /* scroll width */,
-    );
-    spyOnProperty(window.document.documentElement, `clientHeight`).and.returnValue(
-        height,
-    );
-}

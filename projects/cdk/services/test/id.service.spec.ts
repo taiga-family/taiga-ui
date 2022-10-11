@@ -1,4 +1,4 @@
-import {TuiIdService} from '../id.service';
+import {TuiIdService} from '@taiga-ui/cdk';
 
 describe(`TuiIdService`, () => {
     let service: TuiIdService;

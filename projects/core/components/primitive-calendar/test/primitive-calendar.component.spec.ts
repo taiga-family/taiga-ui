@@ -20,7 +20,6 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
     configureTestSuite,
     tuiMockCurrentDate,
-    tuiPendingIfNotMoscowTimeZone,
     tuiRestoreRealDate,
 } from '@taiga-ui/testing';
 
@@ -72,10 +71,6 @@ describe(`PrimitiveCalendar`, () => {
     });
 
     describe(`today`, () => {
-        beforeEach(() => {
-            tuiPendingIfNotMoscowTimeZone();
-        });
-
         it(`is highlighted if current month and year were selected`, () => {
             const currentItem = getTodayCalendarItem();
 

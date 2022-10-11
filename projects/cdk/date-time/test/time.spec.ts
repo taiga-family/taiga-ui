@@ -1,4 +1,4 @@
-import {TuiTime} from '../time';
+import {TuiTime} from '@taiga-ui/cdk';
 
 describe(`TuiTime`, () => {
     describe(`static method`, () => {
@@ -356,10 +356,10 @@ describe(`TuiTime`, () => {
         it(`the primitive value of TuiTime`, () => {
             const time = new TuiTime(6, 36, 0, 0);
 
-            expect(Number(time)).toBeInstanceOf(Number);
-            expect(time.valueOf()).toBeInstanceOf(Number);
-            expect(time > new TuiTime(5, 30, 0, 0)).toBeTrue();
-            expect(time < new TuiTime(7, 36, 0, 0)).toBeTrue();
+            expect(typeof Number(time)).toEqual(`number`);
+            expect(typeof time.valueOf()).toEqual(`number`);
+            expect(time > new TuiTime(5, 30, 0, 0)).toBeTruthy();
+            expect(time < new TuiTime(7, 36, 0, 0)).toBeTruthy();
         });
     });
 
@@ -367,24 +367,24 @@ describe(`TuiTime`, () => {
         it(`a number if the hint is number`, () => {
             const time = new TuiTime(10, 36, 5, 0);
 
-            expect(Number(time)).toBeInstanceOf(Number);
-            expect(time.valueOf()).toBeInstanceOf(Number);
-            expect(time[Symbol.toPrimitive](`number`)).toBeInstanceOf(Number);
+            expect(typeof Number(time)).toEqual(`number`);
+            expect(typeof time.valueOf()).toEqual(`number`);
+            expect(typeof time[Symbol.toPrimitive](`number`)).toEqual(`number`);
         });
 
         it(`a string if the hint is string`, () => {
             const time = new TuiTime(1, 12, 5, 10);
 
-            expect(String(time)).toBeInstanceOf(String);
-            expect(time.toString()).toBeInstanceOf(String);
-            expect(time[Symbol.toPrimitive](`string`)).toBeInstanceOf(String);
+            expect(typeof String(time)).toEqual(`string`);
+            expect(typeof time.toString()).toEqual(`string`);
+            expect(typeof time[Symbol.toPrimitive](`string`)).toEqual(`string`);
         });
 
         it(`a string if the hint is default`, () => {
             const time = new TuiTime(15, 54, 0, 0);
 
-            expect(`${time}`).toBeInstanceOf(String);
-            expect(time[Symbol.toPrimitive](`default`)).toBeInstanceOf(String);
+            expect(typeof `${time}`).toEqual(`string`);
+            expect(typeof time[Symbol.toPrimitive](`default`)).toEqual(`string`);
         });
     });
 });

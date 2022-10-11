@@ -11,6 +11,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
     configureTestSuite,
@@ -19,9 +20,6 @@ import {
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
-
-import {TuiInputComponent} from '../input.component';
-import {TuiInputModule} from '../input.module';
 
 class User {
     constructor(
@@ -102,7 +100,7 @@ describe(`Input`, () => {
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
-    let updateSpy: jasmine.Spy;
+    let updateSpy: jest.SpyInstance;
 
     function getDropdown(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-data-list-wrapper`);
@@ -185,7 +183,7 @@ describe(`Input`, () => {
 
     describe(`Updating the state of the control`, () => {
         beforeEach(() => {
-            updateSpy = spyOn(testComponent.component, `checkControlUpdate`);
+            updateSpy = jest.spyOn(testComponent.component, `checkControlUpdate`);
         });
 
         it(`updateValueAndValidity causes the control to be updated`, () => {

@@ -1,10 +1,10 @@
-import {TuiStringHandler} from '../../types/handler';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_MATCHER,
+    TUI_DEFAULT_STRINGIFY,
     TUI_STRICT_MATCHER,
-} from '../matcher';
-import {TUI_DEFAULT_STRINGIFY} from '../stringify';
+    TuiStringHandler,
+} from '@taiga-ui/cdk';
 
 class Item {
     constructor(readonly name: string, readonly price: number) {}

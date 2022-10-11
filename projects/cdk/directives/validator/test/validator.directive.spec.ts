@@ -2,9 +2,8 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiValidatorModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiValidatorModule} from '../validator.module';
 
 describe(`TuiValidator directive`, () => {
     @Component({

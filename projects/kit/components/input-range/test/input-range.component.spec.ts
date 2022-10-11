@@ -1,10 +1,8 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputRangeComponent} from '../input-range.component';
-import {TuiInputRangeModule} from '../input-range.module';
 
 describe(`InputRange`, () => {
     @Component({
@@ -85,7 +83,7 @@ describe(`InputRange`, () => {
     describe(`Default values`, () => {
         beforeEach(() => {
             testComponent.default = true;
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
 
             initializeInputsPO();
         });
@@ -108,6 +106,8 @@ describe(`InputRange`, () => {
     });
 
     describe(`Labels`, () => {
+        beforeEach(() => fixture.autoDetectChanges());
+
         it(`Plural signature is present`, () => {
             expect(getLeftValueDecoration()).toContain(`лет`);
             expect(getRightValueDecoration()).toBe(`год`);
@@ -123,18 +123,16 @@ describe(`InputRange`, () => {
     });
 
     describe(`quantum`, () => {
+        beforeEach(() => fixture.autoDetectChanges());
+
         it(`Rounds the left value to the nearest quantum on loss of focus`, () => {
             inputPOLeft.sendTextAndBlur(`-7`);
 
             expect(testComponent.control.value[0]).toBe(-5);
         });
 
-        it(`Rounds the left value of an input field to the nearest quantum when focus is lost`, async () => {
+        it(`Rounds the left value of an input field to the nearest quantum when focus is lost`, () => {
             inputPOLeft.sendTextAndBlur(`-7`);
-
-            await fixture.whenStable();
-            fixture.detectChanges();
-            await fixture.whenStable();
 
             expect(inputPOLeft.value).toBe(`-5`);
         });
@@ -145,33 +143,27 @@ describe(`InputRange`, () => {
             expect(testComponent.control.value[1]).toBe(5);
         });
 
-        it(`Rounds the right value of an input field to the nearest quantum on loss of focus`, async () => {
+        it(`Rounds the right value of an input field to the nearest quantum on loss of focus`, () => {
             inputPORight.sendTextAndBlur(`7`);
-
-            await fixture.whenStable();
-            fixture.detectChanges();
-            await fixture.whenStable();
 
             expect(inputPORight.value).toBe(`5`);
         });
     });
 
     describe(`Deleting Values`, () => {
-        it(`Doesn't change value when left content is removed`, async () => {
+        beforeEach(() => fixture.autoDetectChanges());
+
+        it(`Doesn't change value when left content is removed`, () => {
             inputPOLeft.sendTextAndBlur(`-5`);
             inputPOLeft.sendTextAndBlur(``);
-
-            await fixture.whenStable();
 
             expect(testComponent.control.value[0]).toBe(-5);
             expect(inputPOLeft.value).toBe(`-5`);
         });
 
-        it(`Doesn't change value when deleting right content`, async () => {
+        it(`Doesn't change value when deleting right content`, () => {
             inputPORight.sendTextAndBlur(`5`);
             inputPORight.sendTextAndBlur(``);
-
-            await fixture.whenStable();
 
             expect(testComponent.control.value[1]).toBe(5);
             expect(inputPORight.value).toBe(`5`);
@@ -179,6 +171,8 @@ describe(`InputRange`, () => {
     });
 
     describe(`Changing values`, () => {
+        beforeEach(() => fixture.autoDetectChanges());
+
         it(`Prevents the left value from exceeding the right value when typing`, () => {
             inputPORight.sendTextAndBlur(`5`);
             inputPOLeft.sendTextAndBlur(`123`);
@@ -202,7 +196,7 @@ describe(`InputRange`, () => {
         beforeEach(() => {
             testComponent.max = 100000;
             testComponent.quantum = 0.01;
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
             inputPORight.sendTextAndBlur(`12345.67`);
         });
 
@@ -221,13 +215,12 @@ describe(`InputRange`, () => {
             testComponent.max = 10;
             testComponent.quantum = 1;
             testComponent.control.setValue([2, 6]);
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         describe(`readOnly`, () => {
             it(`The up arrow on the left margin does not increase the value`, () => {
                 testComponent.readOnly = true;
-                fixture.detectChanges();
 
                 inputPOLeft.sendKeydown(`arrowUp`);
 
@@ -236,7 +229,6 @@ describe(`InputRange`, () => {
 
             it(`Down arrow on left margin does not decrease value`, () => {
                 testComponent.readOnly = true;
-                fixture.detectChanges();
 
                 inputPOLeft.sendKeydown(`arrowDown`);
 
@@ -245,7 +237,6 @@ describe(`InputRange`, () => {
 
             it(`The up arrow on the right margin does not increase the value`, () => {
                 testComponent.readOnly = true;
-                fixture.detectChanges();
 
                 inputPORight.sendKeydown(`arrowUp`);
 
@@ -263,6 +254,8 @@ describe(`InputRange`, () => {
         });
 
         describe(`Quantum`, () => {
+            beforeEach(() => fixture.autoDetectChanges());
+
             it(`The up arrow on the left margin increases start by a quantum`, () => {
                 inputPOLeft.sendKeydown(`arrowUp`);
 
@@ -291,7 +284,7 @@ describe(`InputRange`, () => {
         describe(`Steps`, () => {
             beforeEach(() => {
                 testComponent.steps = 5;
-                fixture.detectChanges();
+                fixture.autoDetectChanges();
             });
 
             it(`The up arrow on the left margin increases start by one step`, () => {
@@ -320,6 +313,8 @@ describe(`InputRange`, () => {
         });
 
         describe(`Limitations`, () => {
+            beforeEach(() => fixture.autoDetectChanges());
+
             it(`The up arrow on the left margin does not increase start to a value greater than end`, () => {
                 testComponent.control.setValue([6, 6]);
                 inputPOLeft.sendKeydown(`arrowUp`);
@@ -356,7 +351,6 @@ describe(`InputRange`, () => {
 
             it(`Keyboard input does not exceed min`, () => {
                 testComponent.min = -10;
-                fixture.detectChanges();
                 inputPOLeft.sendText(`-123`);
 
                 expect(inputPOLeft.value).toBe(`-10`);

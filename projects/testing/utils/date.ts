@@ -23,19 +23,3 @@ export function tuiMockCurrentDate(dateOrNumber: Date | number): void {
 export function tuiRestoreRealDate(): void {
     global.Date = OriginalDate;
 }
-
-export function tuiMockDateInside(dateMock: Date | number, callback: () => void): void {
-    tuiMockCurrentDate(dateMock);
-    callback();
-    tuiRestoreRealDate();
-}
-
-// @bad TODO: find a legal way to spoof time zone on windows
-/**
- * Skips the test on time zones other than `'Europe/Moscow'`.
- */
-export function tuiPendingIfNotMoscowTimeZone(): void {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== `Europe/Moscow`) {
-        pending();
-    }
-}

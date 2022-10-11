@@ -1,9 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {
+    TuiTablePaginationComponent,
+    TuiTablePaginationModule,
+} from '@taiga-ui/addon-table';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiTablePaginationComponent} from '../table-pagination.component';
-import {TuiTablePaginationModule} from '../table-pagination.module';
 
 describe(`TablePagination`, () => {
     let fixture: ComponentFixture<TestComponent>;

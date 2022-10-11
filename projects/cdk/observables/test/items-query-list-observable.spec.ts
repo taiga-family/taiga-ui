@@ -1,6 +1,5 @@
 import {QueryList} from '@angular/core';
-
-import {tuiItemsQueryListObservable} from '../items-query-list-observable';
+import {tuiItemsQueryListObservable} from '@taiga-ui/cdk';
 
 describe(`tuiItemsQueryListObservable`, () => {
     let queryList: QueryList<number>;

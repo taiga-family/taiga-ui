@@ -21,16 +21,10 @@
             ]
         },
         "test": {
-            "builder": "@angular-devkit/build-angular:karma",
+            "builder": "@nrwl/workspace:run-commands",
             "outputs": ["coverage/addon-commerce"],
             "options": {
-                "codeCoverage": true,
-                "main": "projects/addon-commerce/test.ts",
-                "tsConfig": "projects/addon-commerce/tsconfig.spec.json",
-                "karmaConfig": "projects/addon-commerce/karma.conf.js",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                }
+                "command": "jest --testMatch '**/projects/addon-commerce/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-commerce/**/*.ts' --coverage-directory=coverage/addon-commerce"
             }
         },
         "publish": {

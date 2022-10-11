@@ -9,8 +9,6 @@ on:
       - '**/test.yml'
       - 'angular.json'
       - 'package.json'
-      - 'karma.conf.js'
-      - 'karma.config.js'
       - 'tsconfig*'
   push:
     branches:
@@ -26,18 +24,52 @@ env:
 jobs:
   test:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    name: Karma
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          [
+            addon-charts,
+            addon-commerce,
+            addon-doc,
+            addon-editor,
+            addon-mobile,
+            addon-preview,
+            addon-table,
+            addon-tablebars,
+            cdk,
+            core,
+            demo,
+            kit,
+          ]
+    name: ${{ matrix.project }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
+      - uses: actions/checkout@v3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Run all tests for get coverage (with nx cache)
-        run: npm run run-many:test:libs
+      - name: Run tests for ${{ matrix.project }}
+        run: npx nx test ${{ matrix.project }}
+
+      - name: Archive coverage artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-${{ github.workflow }}-${{ github.run_id }}
+          path: coverage
+
+  codecov:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: coverage-${{ github.workflow }}-${{ github.run_id }}
+          path: coverage
+
+      - name: Display structure of coverage files
+        run: tree -L 2 ./coverage -P 'lcov.info'
 
       - uses: codecov/codecov-action@v2
         with:

@@ -21,16 +21,11 @@
             ]
         },
         "test": {
-            "builder": "@angular-devkit/build-angular:karma",
+            "builder": "@nrwl/workspace:run-commands",
             "outputs": ["coverage/addon-tablebars"],
             "options": {
-                "codeCoverage": true,
-                "main": "projects/addon-tablebars/test.ts",
-                "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
-                "karmaConfig": "projects/addon-tablebars/karma.conf.js",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                }
+                "command": "jest --testMatch '**/projects/addon-tablebars/**/*.spec.ts' jest --testMatch '**/projects/addon-tablebars/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-tablebars/**/*.ts' --coverage-directory=coverage/addon-tablebars",
+                "forwardAllArgs": true
             }
         },
         "publish": {

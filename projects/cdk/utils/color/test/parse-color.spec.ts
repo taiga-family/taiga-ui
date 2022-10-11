@@ -1,4 +1,4 @@
-import {tuiParseColor} from '../parse-color';
+import {tuiParseColor} from '@taiga-ui/cdk';
 
 describe(`tuiParseColor`, () => {
     it(`test case 1`, () => {

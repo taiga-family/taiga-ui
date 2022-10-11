@@ -10,10 +10,8 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiInputNumberComponent} from '../input-number.component';
-import {TuiInputNumberModule} from '../input-number.module';
 
 describe(`InputNumber`, () => {
     @Component({
@@ -291,9 +289,13 @@ describe(`InputNumber`, () => {
         it(`formats a value if the element is out of focus`, () => {
             component.decimal = `not-zero`;
 
-            inputPO.sendText(`10,0`);
+            inputPO.sendTextAndBlur(`10,0`);
 
             expect(component.computedValue).toBe(`10`);
+
+            inputPO.sendText(`10,0`);
+
+            expect(component.computedValue).toBe(`10,0`);
         });
     });
 

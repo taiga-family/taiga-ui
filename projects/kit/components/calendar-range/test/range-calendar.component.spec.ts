@@ -11,14 +11,15 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
+import {
+    TUI_CALENDAR_DATE_STREAM,
+    TuiCalendarRangeComponent,
+    TuiCalendarRangeModule,
+    tuiCreateDefaultDayRangePeriods,
+    TuiDayRangePeriod,
+} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
-
-import {TuiDayRangePeriod} from '../../../classes/day-range-period';
-import {TUI_CALENDAR_DATE_STREAM} from '../../../tokens/calendar-date-stream';
-import {tuiCreateDefaultDayRangePeriods} from '../../../utils/miscellaneous/create-default-day-range-periods';
-import {TuiCalendarRangeComponent} from '../calendar-range.component';
-import {TuiCalendarRangeModule} from '../calendar-range.module';
 
 export function tuiRangeCalendarTestFactory(
     control: NgControl | null,

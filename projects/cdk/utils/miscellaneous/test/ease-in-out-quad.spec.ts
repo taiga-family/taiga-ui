@@ -1,4 +1,4 @@
-import {tuiEaseInOutQuad} from '../ease-in-out-quad';
+import {tuiEaseInOutQuad} from '@taiga-ui/cdk';
 
 describe(`easeInOutQuad`, () => {
     it(`with 0`, () => {

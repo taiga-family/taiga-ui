@@ -4,7 +4,7 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
-import {configureTestSuite, TuiSvgHarness} from '@taiga-ui/testing';
+import {configureTestSuite, TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
 import {of, throwError} from 'rxjs';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -57,6 +57,7 @@ describe(`Svg`, () => {
                     provide: TuiStaticRequestService,
                     useValue: STATIC_REQUEST_MOCK,
                 },
+                TUI_SANITIZER_MOCK,
             ],
         });
     });

@@ -1,4 +1,4 @@
-import {tuiIsPresent} from '../is-present';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 
 describe(`isPresent`, () => {
     describe(`returns "true" if`, () => {

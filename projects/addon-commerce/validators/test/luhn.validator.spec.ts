@@ -1,7 +1,6 @@
 import {FormControl} from '@angular/forms';
+import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
 import {TuiValidationError} from '@taiga-ui/cdk';
-
-import {tuiCreateLuhnValidator} from '../luhn.validator';
 
 describe(`tuiCreateLuhnValidator`, () => {
     const control = new FormControl(``, tuiCreateLuhnValidator(`error`));

@@ -1,5 +1,4 @@
-import {TuiMatcher} from '../../../types/matcher';
-import {TuiFilterPipe} from '../filter.pipe';
+import {TuiFilterPipe, TuiMatcher} from '@taiga-ui/cdk';
 
 describe(`TuiFilter pipe`, () => {
     let pipe: TuiFilterPipe;

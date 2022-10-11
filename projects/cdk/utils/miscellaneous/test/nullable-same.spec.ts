@@ -1,4 +1,4 @@
-import {tuiNullableSame} from '../nullable-same';
+import {tuiNullableSame} from '@taiga-ui/cdk';
 
 describe(`nullableSame`, () => {
     interface Test {

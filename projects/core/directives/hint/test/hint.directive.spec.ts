@@ -7,10 +7,8 @@ import {
     tick,
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiHintModule} from '../hint.module';
 
 type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
 

@@ -1,4 +1,4 @@
-import {tuiIsNativeMouseFocusable} from '../is-native-mouse-focusable';
+import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
 
 describe(`isNativeMouseFocusable`, () => {
     it(`DIV is not mouse focusable`, () => {

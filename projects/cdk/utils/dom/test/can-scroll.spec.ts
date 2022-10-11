@@ -1,4 +1,4 @@
-import {tuiCanScroll} from '../can-scroll';
+import {tuiCanScroll} from '@taiga-ui/cdk';
 
 describe(`tuiCanScroll`, () => {
     it(`works vertically`, () => {
