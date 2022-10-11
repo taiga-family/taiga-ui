@@ -3,6 +3,14 @@
     "version": "3.6.0",
     "private": true,
     "main": "index.js",
+    "devDependencies": {
+        "@nrwl/eslint-plugin-nx": "14.6.4",
+        "@tinkoff/eslint-config": "^1.36.1",
+        "@tinkoff/eslint-config-angular": "^1.36.1",
+        "eslint-plugin-decorator-position": "~5.0.1",
+        "eslint-plugin-file-progress": "^1.3.0",
+        "eslint-plugin-unicorn": "^40.1.0"
+    },
     "peerDependencies": {
         "eslint": "*"
     }
