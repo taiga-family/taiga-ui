@@ -7,6 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiHorizontalDirection} from '@taiga-ui/core';
 
 import {TuiTabsDirective} from '../tabs.directive';
 
@@ -22,7 +23,7 @@ export class TuiTabsVerticalComponent {
     @Input()
     @HostBinding(`attr.data-vertical`)
     @tuiDefaultProp()
-    vertical = `left`;
+    vertical: TuiHorizontalDirection = `left`;
 
     constructor(@Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective) {}
 
