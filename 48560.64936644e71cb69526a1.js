@@ -357,6 +357,8 @@ let TuiDropdownHoverExample1 = /*#__PURE__*/(() => {
 })();
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tabs/tabs.component.ts
 var tabs_component = __webpack_require__(892);
+// EXTERNAL MODULE: ./projects/kit/components/tabs/tabs.directive.ts
+var tabs_directive = __webpack_require__(77347);
 // EXTERNAL MODULE: ./projects/kit/components/tabs/tab/tab.component.ts
 var tab_component = __webpack_require__(97611);
 // EXTERNAL MODULE: ./projects/core/components/hosted-dropdown/hosted-dropdown.component.ts
@@ -374,6 +376,7 @@ var option_component = __webpack_require__(35065);
 // EXTERNAL MODULE: ./projects/kit/components/toggle/toggle.component.ts
 var toggle_component = __webpack_require__(82535);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/directives/dropdown-hover/examples/2/index.ts
+
 
 
 
@@ -504,7 +507,7 @@ let TuiDropdownHoverExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("content", _r2)("open", ctx.openSettings);
       }
     },
-    directives: [tabs_component/* TuiTabsComponent */.H, tab_component/* TuiTabComponent */.y, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_hover_directive/* TuiDropdownHoverDirective */.E, hosted_dropdown_connector_directive/* TuiHostedDropdownConnectorDirective */.i, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, svg_component/* TuiSvgComponent */.P, data_list_component/* TuiDataListComponent */.q, option_component/* TuiOptionComponent */.v, fesm2015_forms/* NgControlStatusGroup */.JL, fesm2015_forms/* FormGroupDirective */.sg, toggle_component/* TuiToggleComponent */.p, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlName */.u],
+    directives: [tabs_component/* TuiTabsComponent */.H, tabs_directive/* TuiTabsDirective */.p, tab_component/* TuiTabComponent */.y, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_hover_directive/* TuiDropdownHoverDirective */.E, hosted_dropdown_connector_directive/* TuiHostedDropdownConnectorDirective */.i, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, svg_component/* TuiSvgComponent */.P, data_list_component/* TuiDataListComponent */.q, option_component/* TuiOptionComponent */.v, fesm2015_forms/* NgControlStatusGroup */.JL, fesm2015_forms/* FormGroupDirective */.sg, toggle_component/* TuiToggleComponent */.p, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlName */.u],
     styles: [".settings[_ngcontent-%COMP%]{margin:1rem}"],
     changeDetection: 0
   });
