@@ -307,7 +307,7 @@ let TuiButtonExample3 = /*#__PURE__*/(() => {
       }
     },
     directives: [hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, button_component/* TuiButtonComponent */.v],
-    styles: [".icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}.content[_ngcontent-%COMP%]{padding:.75rem 1.25rem}"],
+    styles: [".icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}.content[_ngcontent-%COMP%]{padding:.75rem 1.25rem}"],
     changeDetection: 0
   });
   return TuiButtonExample3;

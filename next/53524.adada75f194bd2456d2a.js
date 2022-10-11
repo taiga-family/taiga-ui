@@ -103,7 +103,7 @@ let TuiPortalsExample1 = /*#__PURE__*/(() => {
       }
     },
     directives: [button_component/* TuiButtonComponent */.v, svg_component/* TuiSvgComponent */.P],
-    styles: [".wrapper[_ngcontent-%COMP%]{display:flex;align-items:center}.template[_ngcontent-%COMP%]{box-shadow:0 .25rem 1.5rem rgba(0,0,0,.12);padding:.5rem;margin:.5rem;border-radius:.25rem;-webkit-animation:tuiFadeIn var(--tui-duration) var(--tui-duration);animation:tuiFadeIn var(--tui-duration) var(--tui-duration);-webkit-animation-fill-mode:backwards;animation-fill-mode:backwards;background:var(--tui-support-01);font:var(--tui-font-text-m)}.icon[_ngcontent-%COMP%]{color:var(--tui-support-10)}"],
+    styles: [".wrapper[_ngcontent-%COMP%]{display:flex;align-items:center}.template[_ngcontent-%COMP%]{box-shadow:0 .25rem 1.5rem rgba(0,0,0,.12);padding:.5rem;margin:.5rem;border-radius:.25rem;animation:tuiFadeIn var(--tui-duration) var(--tui-duration);animation-fill-mode:backwards;background:var(--tui-support-01);font:var(--tui-font-text-m)}.icon[_ngcontent-%COMP%]{color:var(--tui-support-10)}"],
     changeDetection: 0
   });
   return TuiPortalsExample1;

@@ -93388,7 +93388,6 @@ function getDefaults() {
     sanitize: false,
     sanitizer: null,
     silent: false,
-    smartLists: false,
     smartypants: false,
     tokenizer: null,
     walkTokens: null,

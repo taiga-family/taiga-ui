@@ -440,7 +440,7 @@ let TuiHostedDropdownExample1 = /*#__PURE__*/(() => {
       }
     },
     directives: [hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, button_component/* TuiButtonComponent */.v, svg_component/* TuiSvgComponent */.P, data_list_component/* TuiDataListComponent */.q, common/* NgForOf */.sg, option_component/* TuiOptionComponent */.v],
-    styles: [".icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
+    styles: [".icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
     changeDetection: 0
   });
   return TuiHostedDropdownExample1;
@@ -622,7 +622,7 @@ let TuiHostedDropdownExample2 = /*#__PURE__*/(() => {
       }
     },
     directives: [hosted_dropdown_component/* TuiHostedDropdownComponent */.o, group_directive/* TuiGroupDirective */.g, button_component/* TuiButtonComponent */.v, hosted_dropdown_connector_directive/* TuiHostedDropdownConnectorDirective */.i, svg_component/* TuiSvgComponent */.P, select_component/* TuiSelectComponent */.u, select_directive/* TuiSelectDirective */.O, active_zone_directive/* TuiActiveZoneDirective */.e, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, data_list_directive/* TuiDataListDirective */.g, data_list_component/* TuiDataListComponent */.q, common/* NgForOf */.sg, data_list_wrapper_component/* TuiDataListWrapperComponent */.e, option_component/* TuiOptionComponent */.v],
-    styles: [".margin[_ngcontent-%COMP%]{margin:1rem}.icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
+    styles: [".margin[_ngcontent-%COMP%]{margin:1rem}.icon[_ngcontent-%COMP%]{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.icon_rotated[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
     changeDetection: 0
   });
   return TuiHostedDropdownExample2;
@@ -767,7 +767,7 @@ let TuiHostedDropdownExample3 = /*#__PURE__*/(() => {
       }
     },
     directives: [hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, link_component/* TuiLinkComponent */.V, svg_component/* TuiSvgComponent */.P, data_list_component/* TuiDataListComponent */.q, common/* NgForOf */.sg, opt_group_directive/* TuiOptGroupDirective */.R, option_component/* TuiOptionComponent */.v, common/* NgIf */.O5],
-    styles: [".wrapper[_ngcontent-%COMP%]{width:12.5rem;text-align:right}.link[_ngcontent-%COMP%]{font-size:1.0625rem}.sort[_ngcontent-%COMP%]{vertical-align:-.125rem}.sort_ascending[_ngcontent-%COMP%]{transform:scaleY(-1)}.item[_ngcontent-%COMP%]{min-width:12.5rem}.arrow[_ngcontent-%COMP%]{transition-property:transform;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.arrow_open[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
+    styles: [".wrapper[_ngcontent-%COMP%]{width:12.5rem;text-align:right}.link[_ngcontent-%COMP%]{font-size:1.0625rem}.sort[_ngcontent-%COMP%]{vertical-align:-.125rem}.sort_ascending[_ngcontent-%COMP%]{transform:scaleY(-1)}.item[_ngcontent-%COMP%]{min-width:12.5rem}.arrow[_ngcontent-%COMP%]{transition-property:transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out}.arrow_open[_ngcontent-%COMP%]{transform:rotate(180deg)}"],
     changeDetection: 0
   });
   return TuiHostedDropdownExample3;

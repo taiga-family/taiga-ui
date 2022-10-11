@@ -203,7 +203,7 @@ let TuiCarouselExample2 = /*#__PURE__*/(() => {
       }
     },
     directives: [carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, common/* NgForOf */.sg, item_directive/* TuiItemDirective */.w],
-    styles: [".item[_ngcontent-%COMP%]{transition-property:box-shadow,transform;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:block;max-height:100px;margin:2rem auto;border-radius:100%}.item_active[_ngcontent-%COMP%]{box-shadow:0 .5rem 1rem rgba(0,0,0,.16);transform:scale(1.2)}"],
+    styles: [".item[_ngcontent-%COMP%]{transition-property:box-shadow,transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:block;max-height:100px;margin:2rem auto;border-radius:100%}.item_active[_ngcontent-%COMP%]{box-shadow:0 .5rem 1rem rgba(0,0,0,.16);transform:scale(1.2)}"],
     changeDetection: 0
   });
   return TuiCarouselExample2;
@@ -536,7 +536,7 @@ let TuiCarouselExample4 = /*#__PURE__*/(() => {
       }
     },
     directives: [button_component/* TuiButtonComponent */.v, dialog_directive/* TuiDialogDirective */.i, carousel_buttons_directive/* TuiCarouselButtonsDirective */.e, mode_directive/* TuiModeDirective */.w, carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, item_directive/* TuiItemDirective */.w, pagination_component/* TuiPaginationComponent */.r, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS],
-    styles: [".wrapper[_ngcontent-%COMP%]{display:flex;align-items:center;margin:0 -5rem}tui-root._mobile[_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]{margin:0}tui-root._mobile[_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]   button[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]{display:none}.header[_ngcontent-%COMP%]{transition-property:background;transition-duration:.3s;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;height:10rem;flex:1;background:var(--tui-base-01) center;background-size:cover}"],
+    styles: [".wrapper[_ngcontent-%COMP%]{display:flex;align-items:center;margin:0 -5rem}tui-root._mobile[_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]{margin:0}tui-root._mobile[_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]   button[_ngcontent-%COMP%], tui-root._mobile   [_nghost-%COMP%]   .wrapper[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]{display:none}.header[_ngcontent-%COMP%]{transition-property:background;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;height:10rem;flex:1;background:var(--tui-base-01) center;background-size:cover}"],
     changeDetection: 0
   });
   return TuiCarouselExample4;
