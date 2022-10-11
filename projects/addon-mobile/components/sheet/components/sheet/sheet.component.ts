@@ -1,27 +1,83 @@
+import {DOCUMENT} from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    forwardRef,
     HostListener,
     Inject,
     Input,
     NgZone,
+    Provider,
     QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
-import {tuiSlideInTop} from '@taiga-ui/core';
+import {
+    EMPTY_QUERY,
+    TUI_IS_IOS,
+    tuiPure,
+    tuiTypedFromEvent,
+    tuiZonefree,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF, tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {merge, Observable} from 'rxjs';
+import {map, mapTo, share} from 'rxjs/operators';
 
-import {fakeSmoothScroll} from '../../ios.hacks';
+import {fakeSmoothScroll, iosScrollFactory} from '../../ios.hacks';
 import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
-import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
+import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
-import {TUI_SHEET_PROVIDERS} from './sheet.providers';
+
+/**
+ * sheet.providers.ts -> sheet.component.ts -> sheet.providers.ts
+ */
+export const TUI_SHEET_PROVIDERS: Provider[] = [
+    {
+        provide: TUI_SHEET_DRAGGED,
+        deps: [ElementRef],
+        useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> => {
+            return merge(
+                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+                    mapTo(true),
+                ),
+                tuiTypedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
+            );
+        },
+    },
+    {
+        provide: TUI_SHEET_SCROLL,
+        deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
+        useFactory: (
+            {nativeElement}: ElementRef<HTMLElement>,
+            ngZone: NgZone,
+            documentRef: Document,
+            isIos: boolean,
+        ): Observable<number> => {
+            return isIos
+                ? iosScrollFactory(nativeElement, documentRef, ngZone)
+                : merge(
+                      tuiTypedFromEvent(nativeElement, `scroll`),
+                      tuiTypedFromEvent(nativeElement, `load`, {capture: true}),
+                  ).pipe(
+                      map(() => nativeElement.scrollTop),
+                      tuiZonefree(ngZone),
+                      share(),
+                  );
+        },
+    },
+    {
+        provide: TUI_SCROLL_REF,
+        useExisting: ElementRef,
+    },
+    {
+        provide: TUI_SHEET,
+        useExisting: forwardRef(() => TuiSheetComponent),
+    },
+];
 
 @Component({
     selector: `tui-sheet`,

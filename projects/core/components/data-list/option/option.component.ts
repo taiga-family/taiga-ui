@@ -20,12 +20,15 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
+import {tuiLightweightToken} from '@taiga-ui/core/lightweight';
 import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from '@taiga-ui/core/tokens';
 import {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiDataListComponent} from '../data-list.component';
+import type {TuiDataListComponent} from '../data-list.component';
+import {TuiDatalistToken} from '../data-list.token';
+import {TuiOptionToken} from './option.token';
 
 function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
     return !tuiIsNativeFocused(currentTarget);
@@ -37,6 +40,7 @@ function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): bo
     templateUrl: `./option.template.html`,
     styleUrls: [`./option.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiLightweightToken(TuiOptionToken, TuiOptionComponent)],
     host: {
         tabIndex: `-1`,
         type: `button`,
@@ -67,7 +71,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         readonly content: PolymorpheusContent<
             TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
         > | null,
-        @Inject(forwardRef(() => TuiDataListComponent))
+        @Inject(forwardRef(() => TuiDatalistToken))
         private readonly dataList: TuiDataListComponent<T>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Optional()

@@ -23,7 +23,8 @@ import {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {TuiDropdownDirective} from './dropdown.directive';
+import type {TuiDropdownDirective} from './dropdown.directive';
+import {TuiDropdownToken} from './dropdown.token';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
 import {
     TUI_DROPDOWN_OFFSET,
@@ -53,7 +54,7 @@ export class TuiDropdownComponent {
     constructor(
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
+        @Inject(TuiDropdownToken) readonly directive: TuiDropdownDirective,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalHostComponent)
         private readonly host: AbstractTuiPortalHostComponent,

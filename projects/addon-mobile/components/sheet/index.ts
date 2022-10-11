@@ -1,5 +1,4 @@
 export * from './components/sheet/sheet.component';
-export * from './components/sheet/sheet.providers';
 export * from './components/sheet-bar/sheet-bar.component';
 export * from './components/sheet-heading/sheet-heading.component';
 export * from './components/sheets-host/sheets-host.component';

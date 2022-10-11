@@ -24,10 +24,11 @@ import {
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, tuiLightweightToken, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
+import {TuiLineDaysChartHintToken} from './line-days-chart.token';
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];
@@ -38,6 +39,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
     styleUrls: [`./line-days-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiLightweightToken(TuiLineDaysChartHintToken, TuiLineDaysChartComponent),
         {
             provide: TuiLineChartHintDirective,
             useExisting: TuiLineDaysChartComponent,

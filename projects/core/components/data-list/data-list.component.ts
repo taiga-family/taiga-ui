@@ -23,13 +23,16 @@ import {
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
+import {tuiLightweightToken} from '@taiga-ui/core/lightweight';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TuiOptionComponent} from './option/option.component';
+import {TuiDatalistToken} from './data-list.token';
+import type {TuiOptionComponent} from './option/option.component';
+import {TuiOptionToken} from './option/option.token';
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
@@ -38,10 +41,13 @@ import {TuiOptionComponent} from './option/option.component';
     styleUrls: [`./data-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
+    providers: [
+        tuiLightweightToken(TuiDatalistToken, TuiDataListComponent),
+        tuiAsDataListAccessor(TuiDataListComponent),
+    ],
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
-    @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
+    @ContentChildren(forwardRef(() => TuiOptionToken), {descendants: true})
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;

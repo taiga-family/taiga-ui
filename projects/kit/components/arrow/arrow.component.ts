@@ -5,9 +5,10 @@ import {
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
+import {TuiArrowOptions} from './arrow-options';
+import {TUI_ARROW_OPTIONS} from './tokens/arrow-options.token';
 
 @Component({
     selector: `tui-arrow`,
@@ -35,5 +36,3 @@ export class TuiArrowComponent {
             : this.options.iconSmall;
     }
 }
-
-export const TUI_ARROW = new PolymorpheusComponent(TuiArrowComponent);

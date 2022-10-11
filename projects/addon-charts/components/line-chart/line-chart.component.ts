@@ -26,12 +26,14 @@ import {
     TuiDriver,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
+    tuiLightweightToken,
     TuiPoint,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
+import {TuiLineChartToken} from './line-chart.token';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 @Component({
@@ -39,7 +41,10 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     templateUrl: `./line-chart.template.html`,
     styleUrls: [`./line-chart.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: `top`})],
+    providers: [
+        tuiLightweightToken(TuiLineChartToken, TuiLineChartComponent),
+        tuiHintOptionsProvider({direction: `top`}),
+    ],
 })
 export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();

@@ -23,19 +23,21 @@ import {
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {TuiLineChartComponent} from './line-chart.component';
+import type {TuiLineChartComponent} from './line-chart.component';
+import {tuiLineChartDrivers} from './line-chart.drivers';
+import {TuiLineChartToken} from './line-chart.token';
 
 @Directive({
     selector: `[tuiLineChartHint]`,
     providers: [TuiDestroyService, TuiHoveredService],
 })
 export class TuiLineChartHintDirective implements AfterContentInit {
-    @ContentChildren(forwardRef(() => TuiLineChartComponent))
+    @ContentChildren(forwardRef(() => TuiLineChartToken))
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
-    @ContentChildren(forwardRef(() => TuiLineChartComponent), {read: ElementRef})
+    @ContentChildren(forwardRef(() => TuiLineChartToken), {read: ElementRef})
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input(`tuiLineChartHint`)
@@ -95,17 +97,4 @@ export class TuiLineChartHintDirective implements AfterContentInit {
             index,
         };
     }
-}
-
-export function tuiLineChartDrivers(
-    charts: QueryList<{drivers: QueryList<Observable<boolean>>}>,
-): Observable<boolean> {
-    return combineLatest(
-        charts
-            .map(({drivers}) => drivers.map(driver => driver.pipe(startWith(false))))
-            .reduce((acc, drivers) => acc.concat(drivers), []),
-    ).pipe(
-        map(values => values.some(Boolean)),
-        distinctUntilChanged(),
-    );
 }

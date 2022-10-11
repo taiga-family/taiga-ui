@@ -2,8 +2,8 @@ import {Directive, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
+import {TUI_TREE_CONTROLLER} from '../misc/tokens/tree-controller.token';
 import {TuiTreeController} from '../misc/tree.interfaces';
-import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
     selector: `[tuiTreeController]:not([map])`,

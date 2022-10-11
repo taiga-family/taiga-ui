@@ -24,7 +24,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {TuiLineDaysChartComponent} from './line-days-chart.component';
+import type {TuiLineDaysChartComponent} from './line-days-chart.component';
+import {TuiLineDaysChartHintToken} from './line-days-chart.token';
 
 // TODO: Consider extending TuiLineChartHintDirective
 @Directive({
@@ -32,7 +33,7 @@ import {TuiLineDaysChartComponent} from './line-days-chart.component';
     providers: [TuiDestroyService, TuiHoveredService],
 })
 export class TuiLineDaysChartHintDirective implements AfterContentInit {
-    @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
+    @ContentChildren(forwardRef(() => TuiLineDaysChartHintToken))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
     @Input(`tuiLineChartHint`)

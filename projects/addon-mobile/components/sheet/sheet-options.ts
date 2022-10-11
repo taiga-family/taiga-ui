@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiSheet} from './sheet';
+import type {TuiSheet} from './sheet';
 
 export interface TuiSheetOptions<I = undefined, O = unknown> {
     readonly image: PolymorpheusContent<TuiSheet<O, I>>;

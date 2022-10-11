@@ -2,7 +2,7 @@ import {ComponentRef, EmbeddedViewRef, Injectable, TemplateRef} from '@angular/c
 import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-import {AbstractTuiPortalHostComponent} from './portal-host';
+import type {AbstractTuiPortalHostComponent} from './portal-host';
 
 /**
  * Abstract service for displaying portals

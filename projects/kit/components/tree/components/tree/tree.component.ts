@@ -13,8 +13,8 @@ import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
-import {TuiTreeContext} from '../../misc/tree.interfaces';
-import {TUI_TREE_NODE} from '../../misc/tree.tokens';
+import {TUI_TREE_NODE} from '../../misc/tokens/tree-node.token';
+import type {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 
 @Component({

@@ -2,8 +2,10 @@ import {Inject, Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {map, mapTo, startWith, switchMap, tap} from 'rxjs/operators';
 
+import {TUI_TREE_LOADER} from './tokens/tree-loader.token';
+import {TUI_TREE_LOADING} from './tokens/tree-loading.token';
+import {TUI_TREE_START} from './tokens/tree-start.token';
 import {TuiTreeLoader} from './tree.interfaces';
-import {TUI_TREE_LOADER, TUI_TREE_LOADING, TUI_TREE_START} from './tree.tokens';
 
 @Injectable()
 export class TuiTreeService<T> {

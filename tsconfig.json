@@ -21,7 +21,8 @@
         "strictDomLocalRefTypes": true,
         "strictOutputEventTypes": true,
         "strictDomEventTypes": true,
-        "strictContextGenerics": true
+        "strictContextGenerics": true,
+        "generateDeepReexports": true
     },
     "compilerOptions": {
         "strict": true,

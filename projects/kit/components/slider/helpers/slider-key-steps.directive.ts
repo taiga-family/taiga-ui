@@ -2,7 +2,6 @@ import {
     ChangeDetectorRef,
     Directive,
     ElementRef,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -17,6 +16,7 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import {tuiLightweightToken} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
@@ -24,6 +24,8 @@ import {
 } from '@taiga-ui/kit/utils';
 
 import {TuiSliderComponent} from '../slider.component';
+import {TuiSliderToken} from '../slider.token';
+import {TuiSliderKeyStepsToken} from './slider-key-steps.token';
 
 @Directive({
     selector: `input[tuiSlider][keySteps]`,
@@ -32,6 +34,7 @@ import {TuiSliderComponent} from '../slider.component';
         '[attr.aria-valuemin]': `min`,
         '[attr.aria-valuemax]': `max`,
     },
+    providers: [tuiLightweightToken(TuiSliderKeyStepsToken, TuiSliderKeyStepsDirective)],
 })
 export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
@@ -63,7 +66,7 @@ export class TuiSliderKeyStepsDirective
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
-        @Inject(forwardRef(() => TuiSliderComponent))
+        @Inject(TuiSliderToken)
         private readonly slider: TuiSliderComponent,
     ) {
         super(control, changeDetectorRef);

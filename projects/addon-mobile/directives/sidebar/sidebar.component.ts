@@ -14,7 +14,8 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiSidebarDirective} from './sidebar.directive';
+import type {TuiSidebarDirective} from './sidebar.directive';
+import {TuiSidebarToken} from './sidebar.token';
 
 @Component({
     selector: `aside[tuiSidebar]`,
@@ -36,7 +37,7 @@ export class TuiSidebarComponent implements DoCheck {
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TuiSidebarDirective) private readonly directive: TuiSidebarDirective,
+        @Inject(TuiSidebarToken) private readonly directive: TuiSidebarDirective,
     ) {}
 
     @HostBinding(`@tuiSlideIn`)

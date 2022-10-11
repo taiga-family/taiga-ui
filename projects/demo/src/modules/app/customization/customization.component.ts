@@ -1,16 +1,52 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    forwardRef,
+    Inject,
+    Provider,
+    ViewChild,
+} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {WINDOW} from '@ng-web-apis/common';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
 import {TuiDestroyService, tuiIsString, tuiPure, tuiPx} from '@taiga-ui/cdk';
-import {TuiBrightness} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {
-    TUI_DOC_CUSTOMIZATION_PROVIDERS,
-    TUI_DOC_CUSTOMIZATION_VARS,
-} from './customization.providers';
+import {CSS_VARS} from '../../tokens/css-vars';
+import {TUI_DOC_CUSTOMIZATION_VARS} from './customization-vars.token';
+
+/**
+ * @note: prevent circular dependencies
+ * customization.provider.ts -> customization.component.ts -> customization.provider.ts
+ */
+export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
+    TuiDestroyService,
+    {
+        provide: TuiModeDirective,
+        useExisting: forwardRef(() => TuiCustomizationComponent),
+    },
+    {
+        provide: TUI_DOC_CUSTOMIZATION_VARS,
+        deps: [WINDOW, CSS_VARS],
+        useFactory: (
+            windowRef: Window,
+            variables: readonly string[],
+        ): Record<string, string> => {
+            const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
+
+            return variables.reduce(
+                (dictionary, variable) => ({
+                    ...dictionary,
+                    [variable]: styles.getPropertyValue(variable).trim(),
+                }),
+                {},
+            );
+        },
+    },
+];
 
 @Component({
     selector: `tui-customization`,

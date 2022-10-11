@@ -7,18 +7,21 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiLightweightToken} from '@taiga-ui/core';
 import {map, startWith} from 'rxjs/operators';
 
 import {TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
-import {TuiTbodyComponent} from '../tbody/tbody.component';
+import type {TuiTbodyComponent} from '../tbody/tbody.component';
+import {TuiTbodyToken} from '../tbody/tbody.token';
+import {TuiTrToken} from './tr.token';
 
 @Component({
     selector: `tr[tuiTr]`,
     templateUrl: `./tr.template.html`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_TABLE_PROVIDER],
+    providers: [tuiLightweightToken(TuiTrToken, TuiTrComponent), ...TUI_TABLE_PROVIDER],
 })
 export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
@@ -47,7 +50,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
     constructor(
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
-        @Inject(forwardRef(() => TuiTbodyComponent))
+        @Inject(forwardRef(() => TuiTbodyToken))
         private readonly body: TuiTbodyComponent<T>,
     ) {}
 }

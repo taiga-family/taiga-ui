@@ -8,18 +8,25 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp, TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
-import {TuiRouterLinkActiveService} from '@taiga-ui/core';
+import {tuiLightweightToken, TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {identity, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {TuiStepperComponent} from '../stepper.component';
+import type {TuiStepperComponent} from '../stepper.component';
+import {TuiStepperToken} from '../stepper.token';
+import {TuiStepToken} from './step.token';
 
 @Component({
     selector: `button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]`,
     templateUrl: `./step.template.html`,
     styleUrls: [`./step.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiRouterLinkActiveService, TuiFocusVisibleService],
+    providers: [
+        TuiDestroyService,
+        TuiRouterLinkActiveService,
+        TuiFocusVisibleService,
+        tuiLightweightToken(TuiStepToken, TuiStepComponent),
+    ],
     host: {
         type: `button`,
     },
@@ -40,7 +47,7 @@ export class TuiStepComponent {
     constructor(
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
         @Inject(TuiRouterLinkActiveService) routerLinkActive$: Observable<boolean>,
-        @Inject(TuiStepperComponent) private readonly stepper: TuiStepperComponent,
+        @Inject(TuiStepperToken) private readonly stepper: TuiStepperComponent,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {
         routerLinkActive$.pipe(filter(identity)).subscribe(() => {

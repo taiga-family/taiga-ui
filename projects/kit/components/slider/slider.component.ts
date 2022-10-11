@@ -19,10 +19,11 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import {tuiLightweightToken, TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
-import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
+import {TuiSliderKeyStepsToken} from './helpers/slider-key-steps.token';
+import {TuiSliderToken} from './slider.token';
 import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
 
 @Component({
@@ -46,8 +47,9 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
         '[style.--tui-slider-track-color]': `options.trackColor`,
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiLightweightToken(TuiSliderToken, TuiSliderComponent)],
 })
-export class TuiSliderComponent {
+export class TuiSliderComponent extends TuiSliderToken {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
@@ -105,7 +107,7 @@ export class TuiSliderComponent {
 
     @tuiPure
     get hasKeySteps(): boolean {
-        return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
+        return Boolean(this.injector.get(TuiSliderKeyStepsToken, null));
     }
 
     constructor(
@@ -119,6 +121,8 @@ export class TuiSliderComponent {
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(Injector) private readonly injector: Injector,
     ) {
+        super();
+
         if (control instanceof NgModel) {
             /**
              * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,

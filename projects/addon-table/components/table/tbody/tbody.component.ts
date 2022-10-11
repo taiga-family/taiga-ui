@@ -11,20 +11,26 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiLightweightToken} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
-import {TuiTrComponent} from '../tr/tr.component';
+import type {TuiTrComponent} from '../tr/tr.component';
+import {TuiTrToken} from '../tr/tr.token';
+import {TuiTbodyToken} from './tbody.token';
 
 @Component({
     selector: `tbody[tuiTbody]`,
     templateUrl: `./tbody.template.html`,
     styleUrls: [`./tbody.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TABLE_PROVIDER,
+    providers: [
+        tuiLightweightToken(TuiTbodyToken, TuiTbodyComponent),
+        ...TUI_TABLE_PROVIDER,
+    ],
 })
 export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
@@ -45,7 +51,7 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChild(forwardRef(() => TuiRowDirective))
     readonly row?: TuiRowDirective<T>;
 
-    @ContentChildren(forwardRef(() => TuiTrComponent))
+    @ContentChildren(forwardRef(() => TuiTrToken))
     readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
     constructor(

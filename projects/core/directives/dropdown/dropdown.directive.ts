@@ -22,15 +22,18 @@ import {
     TuiVehicle,
 } from '@taiga-ui/core/abstract';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {tuiLightweightToken} from '@taiga-ui/core/lightweight';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TuiDropdownToken} from './dropdown.token';
 
 @Directive({
     selector: `[tuiDropdown]:not(ng-container)`,
     exportAs: `tuiDropdown`,
     providers: [
+        tuiLightweightToken(TuiDropdownToken, TuiDropdownDirective),
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
         {

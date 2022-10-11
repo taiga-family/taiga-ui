@@ -10,25 +10,28 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiLightweightToken} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
+import {TUI_TREE_CONTENT} from '../../misc/tokens/tree-content.token';
+import {TUI_TREE_CONTROLLER} from '../../misc/tokens/tree-controller.token';
+import {TUI_TREE_LEVEL} from '../../misc/tokens/tree-level.token';
+import {TUI_TREE_NODE} from '../../misc/tokens/tree-node.token';
 import {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
-import {
-    TUI_TREE_CONTENT,
-    TUI_TREE_CONTROLLER,
-    TUI_TREE_LEVEL,
-    TUI_TREE_NODE,
-} from '../../misc/tree.tokens';
 import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
+import {TuiTreeItemToken} from './tree-item.token';
 
 @Component({
     selector: `tui-tree-item`,
     templateUrl: `./tree-item.template.html`,
     styleUrls: [`./tree-item.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TREE_ITEM_PROVIDERS,
+    providers: [
+        tuiLightweightToken(TuiTreeItemToken, TuiTreeItemComponent),
+        ...TUI_TREE_ITEM_PROVIDERS,
+    ],
     host: {
         role: `treeitem`,
     },

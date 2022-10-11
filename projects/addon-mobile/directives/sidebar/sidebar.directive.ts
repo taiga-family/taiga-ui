@@ -9,13 +9,15 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {TuiDropdownPortalService} from '@taiga-ui/cdk';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
+import {TuiHorizontalDirection, tuiLightweightToken} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarComponent} from './sidebar.component';
+import {TuiSidebarToken} from './sidebar.token';
 
 @Directive({
     selector: `[tuiSidebar]`,
+    providers: [tuiLightweightToken(TuiSidebarToken, TuiSidebarDirective)],
 })
 export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>

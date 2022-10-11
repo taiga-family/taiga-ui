@@ -1,18 +1,22 @@
 import {Directive, DoCheck, forwardRef, Inject, OnInit} from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
+import {tuiLightweightToken} from '@taiga-ui/core';
 
 import {TuiThComponent} from '../th/th.component';
-import {TuiSortByDirective} from './sort-by.directive';
+import type {TuiSortByDirective} from './sort-by.directive';
+import {TuiSortByToken} from './sort-by.token';
+import {TuiSortableToken} from './sortable.token';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
     selector: `th[tuiTh][tuiSortable]`,
+    providers: [tuiLightweightToken(TuiSortableToken, TuiSortableDirective)],
 })
 export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
     implements DoCheck, OnInit
 {
     constructor(
-        @Inject(forwardRef(() => TuiSortByDirective))
+        @Inject(forwardRef(() => TuiSortByToken))
         private readonly sortBy: TuiSortByDirective<T>,
         @Inject(TuiTableDirective) private readonly table: TuiTableDirective<T>,
         @Inject(TuiThComponent) private readonly th: TuiThComponent<T>,

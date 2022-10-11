@@ -20,11 +20,12 @@ import {
     tuiMoveFocus,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core';
+import {tuiLightweightToken, TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
-import {TuiStepComponent} from './step/step.component';
+import {TuiStepToken} from './step/step.token';
+import {TuiStepperToken} from './stepper.token';
 
 const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
     block: `nearest`,
@@ -41,9 +42,10 @@ const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
     templateUrl: `./stepper.template.html`,
     styleUrls: [`./stepper.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiLightweightToken(TuiStepperToken, TuiStepperComponent)],
 })
 export class TuiStepperComponent {
-    @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
+    @ContentChildren(forwardRef(() => TuiStepToken), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
