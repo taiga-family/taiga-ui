@@ -5,15 +5,12 @@ import {
     Component,
     ContentChildren,
     ElementRef,
-    EventEmitter,
     forwardRef,
     HostBinding,
     HostListener,
     Inject,
     Input,
-    Output,
     QueryList,
-    Renderer2,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
@@ -23,20 +20,18 @@ import {
     EMPTY_QUERY,
     tuiDefaultProp,
     TuiDestroyService,
-    tuiMoveFocus,
+    tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
-import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
+import {TuiTabsDirective} from '../tabs.directive';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
-const TAB_ACTIVE_CLASS = `_active`;
-
 @Component({
-    selector: `tui-tabs, nav[tuiTabs]`,
+    selector: `tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])`,
     templateUrl: `./tabs.template.html`,
     styleUrls: [`./tabs.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -61,21 +56,10 @@ export class TuiTabsComponent implements AfterViewChecked {
     @tuiDefaultProp()
     underline = this.options.underline;
 
-    @Input(`activeItemIndex`)
-    set activeItemIndexSetter(index: number) {
-        this.activeItemIndex = index;
-        this.scrollTo(this.tabs[index]);
-    }
-
-    @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
-
-    activeItemIndex = 0;
-
     constructor(
         @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
+        @Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiResizeService) resize$: Observable<void>,
     ) {
@@ -84,51 +68,34 @@ export class TuiTabsComponent implements AfterViewChecked {
         });
     }
 
-    get tabs(): readonly HTMLElement[] {
-        return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(`[tuiTab]`),
-        );
+    /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
+    get activeItemIndex(): number {
+        return this.tabs.activeItemIndex;
+    }
+
+    /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
+    set activeItemIndex(index: number) {
+        this.tabs.activeItemIndex = index;
     }
 
     get activeElement(): HTMLElement | null {
-        return this.tabs[this.activeItemIndex] || null;
-    }
-
-    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, [`$event.target`])
-    onActivate(element: HTMLElement): void {
-        const index = this.tabs.findIndex(tab => tab === element);
-
-        if (index === this.activeItemIndex) {
-            return;
-        }
-
-        this.activeItemIndexSetter = index;
-        this.activeItemIndexChange.emit(index);
+        return this.tabs.activeElement;
     }
 
     @HostListener(`keydown.arrowRight.prevent`, [`$event.target`, `1`])
     @HostListener(`keydown.arrowLeft.prevent`, [`$event.target`, `-1`])
     onKeyDownArrow(current: HTMLElement, step: number): void {
-        const {tabs} = this;
-
-        tuiMoveFocus(tabs.indexOf(current), tabs, step);
+        this.tabs.moveFocus(current, step);
     }
 
     ngAfterViewChecked(): void {
-        const {tabs, activeElement} = this;
-
-        tabs.forEach(nativeElement => {
-            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, `tabIndex`, `-1`);
-        });
-
-        if (activeElement) {
-            this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(activeElement, `tabIndex`, `0`);
-        }
+        this.scrollTo(this.tabs.activeItemIndex);
     }
 
-    private scrollTo(element?: HTMLElement): void {
+    @tuiPure
+    private scrollTo(index: number): void {
+        const element = this.tabs.tabs[index];
+
         if (!element) {
             return;
         }

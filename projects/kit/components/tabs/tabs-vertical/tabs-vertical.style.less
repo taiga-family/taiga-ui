@@ -1,0 +1,13 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-02);
+    box-shadow: inset -1px 0 var(--tui-base-03);
+
+    &[data-vertical='right'] {
+        box-shadow: inset 1px 0 var(--tui-base-03);
+    }
+}

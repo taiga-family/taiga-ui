@@ -21,6 +21,7 @@ import {TuiTabsExample4} from './examples/4';
 import {TuiTabsExample5} from './examples/5';
 import {TuiTabsExample6} from './examples/6';
 import {TuiTabsExample7} from './examples/7';
+import {TuiTabsExample8} from './examples/8';
 import {ExampleTuiTabsComponent} from './tabs.component';
 
 @NgModule({
@@ -49,6 +50,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiTabsExample5,
         TuiTabsExample6,
         TuiTabsExample7,
+        TuiTabsExample8,
     ],
     exports: [ExampleTuiTabsComponent],
 })
