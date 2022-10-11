@@ -24,7 +24,7 @@ interface TuiVisitOptions {
     hideNavigation?: boolean;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
-    waitRenderedFont?: string;
+    waitRenderedFont?: string | RegExp;
     rootSelector?: string;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
