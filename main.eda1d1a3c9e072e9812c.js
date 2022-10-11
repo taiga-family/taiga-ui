@@ -49639,6 +49639,20 @@ TuiInputCountComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODU
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74788);
 
 
+/**
+ * @note:
+ * 524288 bytes is 512 kilo bytes
+ * In w3c the default maximum length for a HTML input is 524288 characters.
+ * And JSDOM emulator follows the standard...
+ *
+ * Interesting thing I noticed,
+ * looks like Chrome/Firefox/Safari has changed the default max length to -1.
+ * It looks like this change occurred after 2018
+ *
+ * In new browsers -1 is equals `Infinity` (unlimited) maximum length for input
+ */
+
+const W3C_MAX_LENGTH = 524288;
 let TuiInputCountDirective = /*#__PURE__*/(() => {
   class TuiInputCountDirective extends _taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.AbstractTuiTextfieldHost {
     onValueChange() {
@@ -49652,7 +49666,7 @@ let TuiInputCountDirective = /*#__PURE__*/(() => {
         } = this.host;
         nativeFocusableElement.autocomplete = `off`;
         nativeFocusableElement.inputMode = `numeric`;
-        nativeFocusableElement.maxLength = nativeFocusableElement.maxLength > -1 ? nativeFocusableElement.maxLength : 18;
+        nativeFocusableElement.maxLength = nativeFocusableElement.maxLength > -1 && (nativeFocusableElement === null || nativeFocusableElement === void 0 ? void 0 : nativeFocusableElement.maxLength) !== W3C_MAX_LENGTH ? nativeFocusableElement.maxLength : 18;
       }
     }
 
