@@ -1,227 +1,258 @@
-<p
-    i18n
-    class="tui-space_top-0"
->
-    You can easily install Taiga UI using Angular CLI by running the following command:
-</p>
-<tui-doc-code code="ng add taiga-ui"></tui-doc-code>
+<section>
+    <h2>Install Taiga UI</h2>
+    <p
+        i18n
+        class="tui-space_top-2"
+    >
+        You can easily install Taiga UI by running the following command:
+    </p>
 
-<p
-    i18n
-    class="tui-space_top-5"
->
-    Use this guide to install Taiga UI manually:
-</p>
+    <tui-doc-code
+        filename="Angular CLI"
+        code="ng add taiga-ui"
+    ></tui-doc-code>
+    <tui-doc-code
+        filename="Nx CLI"
+        code="nx g taiga-ui:ng-add"
+    ></tui-doc-code>
 
-<div class="tui-space_top-5">
-    <ol class="steps">
-        <li>
-            <a
-                tuiLink
-                routerLink="."
-                fragment="install"
+    <p
+        i18n
+        class="tui-space_top-5"
+    >
+        Use this guide to install Taiga UI manually:
+    </p>
+
+    <div class="tui-space_top-5">
+        <ol class="steps">
+            <li>
+                <a
+                    tuiLink
+                    routerLink="."
+                    fragment="install"
+                    i18n
+                >
+                    Install libraries
+                </a>
+            </li>
+            <li>
+                <a
+                    tuiLink
+                    routerLink="."
+                    fragment="styles"
+                    i18n
+                >
+                    Include styles
+                </a>
+            </li>
+            <li>
+                <a
+                    tuiLink
+                    routerLink="."
+                    fragment="root"
+                    i18n
+                >
+                    Root component
+                </a>
+            </li>
+            <li>
+                <a
+                    tuiLink
+                    routerLink="."
+                    fragment="options"
+                    i18n
+                >
+                    Optional components
+                </a>
+            </li>
+            <li>
+                <a
+                    tuiLink
+                    routerLink="."
+                    fragment="icons"
+                    i18n
+                >
+                    Icons
+                </a>
+            </li>
+        </ol>
+
+        <ol class="b-demo-steps">
+            <li
+                id="install"
                 i18n
             >
-                Install libraries
-            </a>
-        </li>
-        <li>
-            <a
-                tuiLink
-                routerLink="."
-                fragment="styles"
-                i18n
-            >
-                Include styles
-            </a>
-        </li>
-        <li>
-            <a
-                tuiLink
-                routerLink="."
-                fragment="root"
-                i18n
-            >
-                Root component
-            </a>
-        </li>
-        <li>
-            <a
-                tuiLink
-                routerLink="."
-                fragment="options"
-                i18n
-            >
-                Optional components
-            </a>
-        </li>
-        <li>
-            <a
-                tuiLink
-                routerLink="."
-                fragment="icons"
-                i18n
-            >
-                Icons
-            </a>
-        </li>
-    </ol>
-
-    <ol class="b-demo-steps">
-        <li
-            id="install"
-            i18n
-        >
-            Install packages of Taiga UI
-
-            <tui-doc-code
-                filename="Main Taiga UI packages"
-                [code]="main"
-            ></tui-doc-code>
-
-            <tui-doc-code
-                filename="Taiga UI addons based on main packages"
-                [code]="addons"
-            ></tui-doc-code>
-        </li>
-
-        <li
-            id="styles"
-            i18n
-        >
-            <p>
-                Add theme and Taiga UI global styles to your
-                <code>angular.json</code>
-                :
-            </p>
-
-            <tui-doc-code
-                filename="angular.json"
-                [code]="angularJsonStyles"
-            ></tui-doc-code>
-
-            <tui-accordion class="tui-space_top-3">
-                <tui-accordion-item>
-                    How setup global styles from
-                    <code>@taiga-ui/styles</code>
-                    ?
-
-                    <ng-template tuiAccordionItemContent>
-                        If you want use global styles with default fonts out-of-the-box, you need install
-                        <code>npm i @taiga-ui/styles</code>
-                        and put this code:
-
-                        <tui-notification
-                            status="warning"
-                            class="tui-space_top-3"
-                        >
-                            In version 3.0 we drop to support normalize(v7) out-of-the-box!
-                            <p>
-                                You need to manually
-                                <a
-                                    tuiLink
-                                    href="https://necolas.github.io/normalize.css/"
-                                >
-                                    download css file
-                                </a>
-                                , if you're looking to use reset styles or you can write your own reset.css
-                            </p>
-                        </tui-notification>
-
-                        <tui-doc-code
-                            filename="angular.json"
-                            [code]="angularJsonGlobalSingleStyles"
-                        ></tui-doc-code>
-
-                        <tui-doc-code
-                            filename="styles.less"
-                            [code]="stylesLess"
-                        ></tui-doc-code>
-
-                        <tui-notification class="tui-space_top-3">
-                            Also you can use not all styles from global, but only what you need partially import, for
-                            example
-                            <code>@taiga-ui/styles/markup/tui-mobile-only</code>
-                            , or something:
-                        </tui-notification>
-
-                        <tui-doc-code
-                            filename="styles.less"
-                            [code]="customGlobalStyle"
-                        ></tui-doc-code>
-                    </ng-template>
-                </tui-accordion-item>
-            </tui-accordion>
-
-            <tui-notification class="tui-space_top-3">
-                You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files
-                automatically
-            </tui-notification>
-
-            <p>
-                You can also add a set of our mixins to use it in your LESS or SCSS styles
+                Install packages of Taiga UI
 
                 <tui-doc-code
-                    filename="my.component.less / my.component.scss"
-                    [code]="importLocalLess"
+                    filename="Main Taiga UI packages"
+                    [code]="main"
                 ></tui-doc-code>
 
                 <tui-doc-code
-                    filename="my.component.ts"
-                    [code]="componentsStyles"
+                    filename="Taiga UI addons based on main packages"
+                    [code]="addons"
                 ></tui-doc-code>
-            </p>
-        </li>
+            </li>
 
-        <li
-            id="root"
-            i18n
-        >
-            Many of our components need your app to be wrapped into
-            <code>tui-root</code>
-            . Import
-            <code>TuiRootModule</code>
-            in your main module.
+            <li
+                id="styles"
+                i18n
+            >
+                <p>
+                    Add theme and Taiga UI global styles to your
+                    <code>angular.json</code>
+                    :
+                </p>
 
-            <tui-doc-code
-                filename="app.module.ts"
-                class="tui-space_bottom-4"
-                [code]="appModule"
-            ></tui-doc-code>
+                <tui-doc-code
+                    filename="angular.json"
+                    [code]="angularJsonStyles"
+                ></tui-doc-code>
 
-            <p>Wrap all content of your app with root component</p>
+                <tui-accordion class="tui-space_top-3">
+                    <tui-accordion-item>
+                        How setup global styles from
+                        <code>@taiga-ui/styles</code>
+                        ?
 
-            <tui-doc-code
-                filename="app.component.html"
-                [code]="appTemplate"
-            ></tui-doc-code>
-        </li>
+                        <ng-template tuiAccordionItemContent>
+                            If you want use global styles with default fonts out-of-the-box, you need install
+                            <code>npm i @taiga-ui/styles</code>
+                            and put this code:
 
-        <li
-            id="options"
-            i18n
-        >
-            Taiga UI also has optional modules for dialogs and notifications. If you need these features, add modules
-            into your app.module.ts
+                            <tui-notification
+                                status="warning"
+                                class="tui-space_top-3"
+                            >
+                                In version 3.0 we drop to support normalize(v7) out-of-the-box!
+                                <p>
+                                    You need to manually
+                                    <a
+                                        tuiLink
+                                        href="https://necolas.github.io/normalize.css/"
+                                    >
+                                        download css file
+                                    </a>
+                                    , if you're looking to use reset styles or you can write your own reset.css
+                                </p>
+                            </tui-notification>
 
-            <tui-doc-code
-                filename="app.module.ts"
-                class="tui-space_bottom-4"
-                [code]="appModuleOptional"
-            ></tui-doc-code>
-        </li>
+                            <tui-doc-code
+                                filename="angular.json"
+                                [code]="angularJsonGlobalSingleStyles"
+                            ></tui-doc-code>
 
-        <li
-            id="icons"
-            i18n
-        >
-            Icons are not included in the bundle. They go into your app's assets:
+                            <tui-doc-code
+                                filename="styles.less"
+                                [code]="stylesLess"
+                            ></tui-doc-code>
 
-            <tui-doc-code
-                filename="angular.json"
-                class="tui-space_bottom-4"
-                [code]="assets"
-            ></tui-doc-code>
-        </li>
-    </ol>
-</div>
+                            <tui-notification class="tui-space_top-3">
+                                Also you can use not all styles from global, but only what you need partially import,
+                                for example
+                                <code>@taiga-ui/styles/markup/tui-mobile-only</code>
+                                , or something:
+                            </tui-notification>
+
+                            <tui-doc-code
+                                filename="styles.less"
+                                [code]="customGlobalStyle"
+                            ></tui-doc-code>
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+
+                <tui-notification class="tui-space_top-3">
+                    You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files
+                    automatically
+                </tui-notification>
+
+                <p>
+                    You can also add a set of our mixins to use it in your LESS or SCSS styles
+
+                    <tui-doc-code
+                        filename="my.component.less / my.component.scss"
+                        [code]="importLocalLess"
+                    ></tui-doc-code>
+
+                    <tui-doc-code
+                        filename="my.component.ts"
+                        [code]="componentsStyles"
+                    ></tui-doc-code>
+                </p>
+            </li>
+
+            <li
+                id="root"
+                i18n
+            >
+                Many of our components need your app to be wrapped into
+                <code>tui-root</code>
+                . Import
+                <code>TuiRootModule</code>
+                in your main module.
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    class="tui-space_bottom-4"
+                    [code]="appModule"
+                ></tui-doc-code>
+
+                <p>Wrap all content of your app with root component</p>
+
+                <tui-doc-code
+                    filename="app.component.html"
+                    [code]="appTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li
+                id="options"
+                i18n
+            >
+                Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
+                modules into your app.module.ts
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    class="tui-space_bottom-4"
+                    [code]="appModuleOptional"
+                ></tui-doc-code>
+            </li>
+
+            <li
+                id="icons"
+                i18n
+            >
+                Icons are not included in the bundle. They go into your app's assets:
+
+                <tui-doc-code
+                    filename="angular.json"
+                    class="tui-space_bottom-4"
+                    [code]="assets"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="tui-space_top-5">
+    <h2>Update Taiga UI</h2>
+    <p
+        i18n
+        class="tui-space_top-8"
+    >
+        Updating Taiga packages to the latest version:
+    </p>
+
+    <tui-doc-code
+        filename="Angular CLI"
+        code="ng update @taiga-ui/cdk"
+    ></tui-doc-code>
+
+    <tui-doc-code
+        filename="Nx CLI"
+        code="nx migrate @taiga-ui/cdk"
+    ></tui-doc-code>
+</section>
