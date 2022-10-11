@@ -46,6 +46,12 @@ export class ExampleTuiMobileCalendarComponent {
         HTML: import(`./examples/2/index.html?raw`),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import(`./examples/3/index.ts?raw`),
+        HTML: import(`./examples/3/index.html?raw`),
+        LESS: import(`./examples/3/index.less?raw`),
+    };
+
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
 
     min = this.minVariants[0];

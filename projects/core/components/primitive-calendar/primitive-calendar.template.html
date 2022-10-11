@@ -1,6 +1,6 @@
 <div class="t-row t-row_weekday">
     <div
-        *ngFor="let day of weekDays$ | async"
+        *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays | async"
         class="t-cell"
         [textContent]="day"
     ></div>

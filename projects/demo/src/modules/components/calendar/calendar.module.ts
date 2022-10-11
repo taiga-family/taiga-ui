@@ -2,12 +2,13 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiCalendarModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiCalendarModule, TuiLinkModule} from '@taiga-ui/core';
 
 import {ExampleTuiCalendarComponent} from './calendar.component';
 import {TuiCalendarExample1} from './examples/1';
 import {TuiCalendarExample2} from './examples/2';
 import {TuiCalendarExample3} from './examples/3';
+import {TuiCalendarExample4} from './examples/4';
 
 @NgModule({
     imports: [
@@ -16,7 +17,6 @@ import {TuiCalendarExample3} from './examples/3';
         TuiLinkModule,
         TuiCalendarModule,
         TuiAddonDocModule,
-        TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCalendarComponent)),
     ],
     declarations: [
@@ -24,6 +24,7 @@ import {TuiCalendarExample3} from './examples/3';
         TuiCalendarExample1,
         TuiCalendarExample2,
         TuiCalendarExample3,
+        TuiCalendarExample4,
     ],
     exports: [ExampleTuiCalendarComponent],
 })

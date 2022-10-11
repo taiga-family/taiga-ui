@@ -5,7 +5,12 @@ import {TuiRippleModule} from '@taiga-ui/addon-mobile/directives/ripple';
 import {TuiTouchableModule} from '@taiga-ui/addon-mobile/directives/touchable';
 import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal/primitive-calendar-mobile';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiLinkModule, TuiMonthPipeModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiMonthPipeModule,
+    TuiOrderWeekDaysPipeModule,
+} from '@taiga-ui/core';
 
 import {TuiMobileCalendarComponent} from './mobile-calendar.component';
 
@@ -20,6 +25,7 @@ import {TuiMobileCalendarComponent} from './mobile-calendar.component';
         TuiPrimitiveCalendarMobileModule,
         TuiButtonModule,
         TuiMonthPipeModule,
+        TuiOrderWeekDaysPipeModule,
     ],
     declarations: [TuiMobileCalendarComponent],
     exports: [TuiMobileCalendarComponent],
