@@ -1,5 +1,11 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {TUI_DIALOGS, TUI_IS_MOBILE, TUI_VERSION, tuiAssert} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
 import {
@@ -18,6 +24,7 @@ import {map} from 'rxjs/operators';
     // So that we do not force OnPush on custom dialogs
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
+    encapsulation: ViewEncapsulation.None,
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': `duration`,

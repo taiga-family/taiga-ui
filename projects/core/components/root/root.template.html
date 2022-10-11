@@ -1,10 +1,10 @@
 <tui-scroll-controls
     *ngIf="scrollbars$ | async"
-    class="t-scrollbar"
+    class="t-root-scrollbar"
 ></tui-scroll-controls>
 <tui-svg-defs-host></tui-svg-defs-host>
 <tui-dropdown-host>
-    <div class="t-content">
+    <div class="t-root-content">
         <ng-content></ng-content>
     </div>
     <ng-content select="tuiOverContent"></ng-content>
