@@ -36527,21 +36527,21 @@ var notification_component = __webpack_require__(79121);
 
 
 
-function HomeComponent_ng_template_35_Template(rf, ctx) {
+function HomeComponent_ng_template_39_Template(rf, ctx) {
   if (rf & 1) {
-    core/* ɵɵi18nStart */.tHW(0, 22, 1);
+    core/* ɵɵi18nStart */.tHW(0, 23, 1);
     core/* ɵɵelement */._UZ(1, "code");
-    core/* ɵɵelementStart */.TgZ(2, "tui-notification", 37);
+    core/* ɵɵelementStart */.TgZ(2, "tui-notification", 42);
     core/* ɵɵelementStart */.TgZ(3, "p");
-    core/* ɵɵelement */._UZ(4, "a", 38);
+    core/* ɵɵelement */._UZ(4, "a", 43);
     core/* ɵɵelementEnd */.qZA();
     core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelement */._UZ(5, "tui-doc-code", 23);
-    core/* ɵɵelement */._UZ(6, "tui-doc-code", 39);
-    core/* ɵɵelementStart */.TgZ(7, "tui-notification", 24);
+    core/* ɵɵelement */._UZ(5, "tui-doc-code", 24);
+    core/* ɵɵelement */._UZ(6, "tui-doc-code", 44);
+    core/* ɵɵelementStart */.TgZ(7, "tui-notification", 25);
     core/* ɵɵelement */._UZ(8, "code");
     core/* ɵɵelementEnd */.qZA();
-    core/* ɵɵelement */._UZ(9, "tui-doc-code", 39);
+    core/* ɵɵelement */._UZ(9, "tui-doc-code", 44);
     core/* ɵɵi18nEnd */.N_p();
   }
 
@@ -36586,150 +36586,157 @@ let HomeComponent = /*#__PURE__*/(() => {
   HomeComponent.ɵcmp = /*@__PURE__*/core/* ɵɵdefineComponent */.Xpm({
     type: HomeComponent,
     selectors: [["demo-home"]],
-    decls: 53,
+    decls: 64,
     vars: 9,
     consts: function () {
       let i18n_0;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_4127612540834604041$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_1 = goog.getMsg(" You can easily install Taiga UI using Angular CLI by running the following command:\n");
-        i18n_0 = MSG_EXTERNAL_4127612540834604041$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_1;
+        const MSG_EXTERNAL_1048227792282694561$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_1 = goog.getMsg(" You can easily install Taiga UI by running the following command: ");
+        i18n_0 = MSG_EXTERNAL_1048227792282694561$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_1;
       } else {
-        i18n_0 = $localize`:␟e2a38f7e2aa3a58e42243618c52d25489ec6253d␟4127612540834604041: You can easily install Taiga UI using Angular CLI by running the following command:
-`;
+        i18n_0 = $localize`:␟5f520ed8bc846e022f196b222da70463defda868␟1048227792282694561: You can easily install Taiga UI by running the following command: `;
       }
 
       let i18n_2;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5744017406001131327$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_3 = goog.getMsg(" Use this guide to install Taiga UI manually:\n");
-        i18n_2 = MSG_EXTERNAL_5744017406001131327$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_3;
+        const MSG_EXTERNAL_2029131969862765641$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_3 = goog.getMsg(" Use this guide to install Taiga UI manually: ");
+        i18n_2 = MSG_EXTERNAL_2029131969862765641$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_3;
       } else {
-        i18n_2 = $localize`:␟ebc92f5eca2d824ef3193f97068f41637f58288d␟5744017406001131327: Use this guide to install Taiga UI manually:
-`;
+        i18n_2 = $localize`:␟e56f4dffb8568ecc7609a0db91840a67891f30c3␟2029131969862765641: Use this guide to install Taiga UI manually: `;
       }
 
       let i18n_4;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2419275301249731226$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_5 = goog.getMsg(" Install libraries ");
-        i18n_4 = MSG_EXTERNAL_2419275301249731226$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_5;
+        const MSG_EXTERNAL_6891441741114973411$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_5 = goog.getMsg(" Install libraries ");
+        i18n_4 = MSG_EXTERNAL_6891441741114973411$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_5;
       } else {
-        i18n_4 = $localize`:␟717d57df77e5ea93d38ad43ecc87272a66087a97␟2419275301249731226: Install libraries `;
+        i18n_4 = $localize`:␟bae308f15fba84a3f31c9953a86ce6fac23d0e5a␟6891441741114973411: Install libraries `;
       }
 
       let i18n_6;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2674863063132351173$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_7 = goog.getMsg(" Include styles ");
-        i18n_6 = MSG_EXTERNAL_2674863063132351173$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_7;
+        const MSG_EXTERNAL_6559693918925856118$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_7 = goog.getMsg(" Include styles ");
+        i18n_6 = MSG_EXTERNAL_6559693918925856118$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_7;
       } else {
-        i18n_6 = $localize`:␟61e00a9b0dbf803f4358447e21fe953bf3586458␟2674863063132351173: Include styles `;
+        i18n_6 = $localize`:␟c51cafa8180054d144f6cc0e5e81a2fbdab1fe39␟6559693918925856118: Include styles `;
       }
 
       let i18n_8;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_6180200125663275378$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_9 = goog.getMsg(" Root component ");
-        i18n_8 = MSG_EXTERNAL_6180200125663275378$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_9;
+        const MSG_EXTERNAL_6265239475869998190$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_9 = goog.getMsg(" Root component ");
+        i18n_8 = MSG_EXTERNAL_6265239475869998190$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_9;
       } else {
-        i18n_8 = $localize`:␟0bee08d74312732b83d328cf7628f23de6bdbe71␟6180200125663275378: Root component `;
+        i18n_8 = $localize`:␟195fdd9b813ba139c29f711498f35499a065922c␟6265239475869998190: Root component `;
       }
 
       let i18n_10;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3209214352522444338$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_11 = goog.getMsg(" Optional components ");
-        i18n_10 = MSG_EXTERNAL_3209214352522444338$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_11;
+        const MSG_EXTERNAL_1302179415289270238$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_11 = goog.getMsg(" Optional components ");
+        i18n_10 = MSG_EXTERNAL_1302179415289270238$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_11;
       } else {
-        i18n_10 = $localize`:␟a6f621fa5b30301e86a278be4820e8ba264f7433␟3209214352522444338: Optional components `;
+        i18n_10 = $localize`:␟4d30e31366f59430faa4444b77632b399ebe3488␟1302179415289270238: Optional components `;
       }
 
       let i18n_12;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2734353800300847887$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_13 = goog.getMsg(" Icons ");
-        i18n_12 = MSG_EXTERNAL_2734353800300847887$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_13;
+        const MSG_EXTERNAL_7569357543919962977$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_13 = goog.getMsg(" Icons ");
+        i18n_12 = MSG_EXTERNAL_7569357543919962977$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_13;
       } else {
-        i18n_12 = $localize`:␟0043bcd3ce6156b19dde1efc89ba5ca273801434␟2734353800300847887: Icons `;
+        i18n_12 = $localize`:␟9bc02b53334fd493d5056c0b60e4843d4c34074d␟7569357543919962977: Icons `;
       }
 
       let i18n_14;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_4756359255042668301$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_15 = goog.getMsg(" Install packages of Taiga UI {$startTagTuiDocCode}{$closeTagTuiDocCode}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}", {
-          "startTagTuiDocCode": "\uFFFD#25\uFFFD",
-          "closeTagTuiDocCode": "[\uFFFD/#25\uFFFD|\uFFFD/#26\uFFFD]",
-          "startTagTuiDocCode_1": "\uFFFD#26\uFFFD"
+        const MSG_EXTERNAL_1412161792743488368$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_15 = goog.getMsg(" Install packages of Taiga UI {$startTagTuiDocCode}{$closeTagTuiDocCode}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}", {
+          "startTagTuiDocCode": "\uFFFD#29\uFFFD",
+          "closeTagTuiDocCode": "[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]",
+          "startTagTuiDocCode_1": "\uFFFD#30\uFFFD"
         });
-        i18n_14 = MSG_EXTERNAL_4756359255042668301$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_15;
+        i18n_14 = MSG_EXTERNAL_1412161792743488368$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_15;
       } else {
-        i18n_14 = $localize`:␟df961bda67c2d42bc834d86b3cd29f18842e1181␟4756359255042668301: Install packages of Taiga UI ${"\uFFFD#25\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#25\uFFFD|\uFFFD/#26\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#26\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#25\uFFFD|\uFFFD/#26\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:`;
+        i18n_14 = $localize`:␟5dd895dd97430b30ad42d550b09d00acb37f4548␟1412161792743488368: Install packages of Taiga UI ${"\uFFFD#29\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#30\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#29\uFFFD|\uFFFD/#30\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:`;
       }
 
       i18n_14 = core/* ɵɵi18nPostprocess */.Zx4(i18n_14);
       let i18n_17;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7538425120430469614$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_18 = goog.getMsg(" Many of our components need your app to be wrapped into {$startTagCode}tui-root{$closeTagCode} . Import {$startTagCode}TuiRootModule{$closeTagCode} in your main module. {$startTagTuiDocCode}{$closeTagTuiDocCode}{$startParagraph}Wrap all content of your app with root component{$closeParagraph}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}", {
-          "startTagCode": "[\uFFFD#42\uFFFD|\uFFFD#43\uFFFD]",
-          "closeTagCode": "[\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD]",
-          "startTagTuiDocCode": "\uFFFD#44\uFFFD",
-          "closeTagTuiDocCode": "[\uFFFD/#44\uFFFD|\uFFFD/#46\uFFFD]",
-          "startParagraph": "\uFFFD#45\uFFFD",
-          "closeParagraph": "\uFFFD/#45\uFFFD",
-          "startTagTuiDocCode_1": "\uFFFD#46\uFFFD"
+        const MSG_EXTERNAL_3609233337308694166$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_18 = goog.getMsg(" Many of our components need your app to be wrapped into {$startTagCode}tui-root{$closeTagCode} . Import {$startTagCode}TuiRootModule{$closeTagCode} in your main module. {$startTagTuiDocCode}{$closeTagTuiDocCode}{$startParagraph}Wrap all content of your app with root component{$closeParagraph}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}", {
+          "startTagCode": "[\uFFFD#46\uFFFD|\uFFFD#47\uFFFD]",
+          "closeTagCode": "[\uFFFD/#46\uFFFD|\uFFFD/#47\uFFFD]",
+          "startTagTuiDocCode": "\uFFFD#48\uFFFD",
+          "closeTagTuiDocCode": "[\uFFFD/#48\uFFFD|\uFFFD/#50\uFFFD]",
+          "startParagraph": "\uFFFD#49\uFFFD",
+          "closeParagraph": "\uFFFD/#49\uFFFD",
+          "startTagTuiDocCode_1": "\uFFFD#50\uFFFD"
         });
-        i18n_17 = MSG_EXTERNAL_7538425120430469614$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_18;
+        i18n_17 = MSG_EXTERNAL_3609233337308694166$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_18;
       } else {
-        i18n_17 = $localize`:␟8a97572e7defcf951cfd964fe842ef4509ee0c32␟7538425120430469614: Many of our components need your app to be wrapped into ${"[\uFFFD#42\uFFFD|\uFFFD#43\uFFFD]"}:START_TAG_CODE:tui-root${"[\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD]"}:CLOSE_TAG_CODE: . Import ${"[\uFFFD#42\uFFFD|\uFFFD#43\uFFFD]"}:START_TAG_CODE:TuiRootModule${"[\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD]"}:CLOSE_TAG_CODE: in your main module. ${"\uFFFD#44\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#44\uFFFD|\uFFFD/#46\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#45\uFFFD"}:START_PARAGRAPH:Wrap all content of your app with root component${"\uFFFD/#45\uFFFD"}:CLOSE_PARAGRAPH:${"\uFFFD#46\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#44\uFFFD|\uFFFD/#46\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:`;
+        i18n_17 = $localize`:␟451922b15c10976bbb3fae2ac870456044d0f132␟3609233337308694166: Many of our components need your app to be wrapped into ${"[\uFFFD#46\uFFFD|\uFFFD#47\uFFFD]"}:START_TAG_CODE:tui-root${"[\uFFFD/#46\uFFFD|\uFFFD/#47\uFFFD]"}:CLOSE_TAG_CODE: . Import ${"[\uFFFD#46\uFFFD|\uFFFD#47\uFFFD]"}:START_TAG_CODE:TuiRootModule${"[\uFFFD/#46\uFFFD|\uFFFD/#47\uFFFD]"}:CLOSE_TAG_CODE: in your main module. ${"\uFFFD#48\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#48\uFFFD|\uFFFD/#50\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#49\uFFFD"}:START_PARAGRAPH:Wrap all content of your app with root component${"\uFFFD/#49\uFFFD"}:CLOSE_PARAGRAPH:${"\uFFFD#50\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#48\uFFFD|\uFFFD/#50\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:`;
       }
 
       i18n_17 = core/* ɵɵi18nPostprocess */.Zx4(i18n_17);
       let i18n_19;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1799300709649662578$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_20 = goog.getMsg(" Taiga UI also has optional modules for dialogs and notifications. If you need these features, add modules into your app.module.ts {$startTagTuiDocCode}{$closeTagTuiDocCode}", {
-          "startTagTuiDocCode": "\uFFFD#49\uFFFD",
-          "closeTagTuiDocCode": "\uFFFD/#49\uFFFD"
+        const MSG_EXTERNAL_3503431948242699452$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_20 = goog.getMsg(" Taiga UI also has optional modules for dialogs and notifications. If you need these features, add modules into your app.module.ts {$startTagTuiDocCode}{$closeTagTuiDocCode}", {
+          "startTagTuiDocCode": "\uFFFD#53\uFFFD",
+          "closeTagTuiDocCode": "\uFFFD/#53\uFFFD"
         });
-        i18n_19 = MSG_EXTERNAL_1799300709649662578$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_20;
+        i18n_19 = MSG_EXTERNAL_3503431948242699452$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_20;
       } else {
-        i18n_19 = $localize`:␟c4cf12ba73e1c97f6b21c925d301588360255afa␟1799300709649662578: Taiga UI also has optional modules for dialogs and notifications. If you need these features, add modules into your app.module.ts ${"\uFFFD#49\uFFFD"}:START_TAG_TUI_DOC_CODE:${"\uFFFD/#49\uFFFD"}:CLOSE_TAG_TUI_DOC_CODE:`;
+        i18n_19 = $localize`:␟cb7e0c8da0a7fb768b1cddaeeac1f8f6f580ab57␟3503431948242699452: Taiga UI also has optional modules for dialogs and notifications. If you need these features, add modules into your app.module.ts ${"\uFFFD#53\uFFFD"}:START_TAG_TUI_DOC_CODE:${"\uFFFD/#53\uFFFD"}:CLOSE_TAG_TUI_DOC_CODE:`;
       }
 
       let i18n_21;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_9103538773866281675$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_22 = goog.getMsg(" Icons are not included in the bundle. They go into your app's assets: {$startTagTuiDocCode}{$closeTagTuiDocCode}", {
-          "startTagTuiDocCode": "\uFFFD#52\uFFFD",
-          "closeTagTuiDocCode": "\uFFFD/#52\uFFFD"
+        const MSG_EXTERNAL_6753160581097245599$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_22 = goog.getMsg(" Icons are not included in the bundle. They go into your app's assets: {$startTagTuiDocCode}{$closeTagTuiDocCode}", {
+          "startTagTuiDocCode": "\uFFFD#56\uFFFD",
+          "closeTagTuiDocCode": "\uFFFD/#56\uFFFD"
         });
-        i18n_21 = MSG_EXTERNAL_9103538773866281675$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_22;
+        i18n_21 = MSG_EXTERNAL_6753160581097245599$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_22;
       } else {
-        i18n_21 = $localize`:␟1c2b9bc3af97840d49f879da0d3a2a836337dc86␟9103538773866281675: Icons are not included in the bundle. They go into your app's assets: ${"\uFFFD#52\uFFFD"}:START_TAG_TUI_DOC_CODE:${"\uFFFD/#52\uFFFD"}:CLOSE_TAG_TUI_DOC_CODE:`;
+        i18n_21 = $localize`:␟5d1922a39e2cb8d00beaafa0d8c800e686ceca7a␟6753160581097245599: Icons are not included in the bundle. They go into your app's assets: ${"\uFFFD#56\uFFFD"}:START_TAG_TUI_DOC_CODE:${"\uFFFD/#56\uFFFD"}:CLOSE_TAG_TUI_DOC_CODE:`;
+      }
+
+      let i18n_23;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_1815872148675175630$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_24 = goog.getMsg(" Updating Taiga packages to the latest version: ");
+        i18n_23 = MSG_EXTERNAL_1815872148675175630$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS_24;
+      } else {
+        i18n_23 = $localize`:␟5be03c0b62c5297f8f50f9073c998e7b90234c7a␟1815872148675175630: Updating Taiga packages to the latest version: `;
       }
 
       let i18n_16;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5074892857025646900$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS__23 = goog.getMsg("{$startParagraph} Add theme and Taiga UI global styles to your {$startTagCode}angular.json{$closeTagCode} : {$closeParagraph}{$startTagTuiDocCode}{$closeTagTuiDocCode}{$startTagTuiAccordion}{$startTagTuiAccordionItem} How setup global styles from {$startTagCode}@taiga-ui/styles{$closeTagCode} ? {$startTagNgTemplate} If you want use global styles with default fonts out-of-the-box, you need install {$startTagCode}npm i @taiga-ui/styles{$closeTagCode} and put this code: {$startTagTuiNotification} In version 3.0 we drop to support normalize(v7) out-of-the-box! {$startParagraph} You need to manually {$startLink} download css file {$closeLink} , if you're looking to use reset styles or you can write your own reset.css {$closeParagraph}{$closeTagTuiNotification}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}{$startTagTuiDocCode_2}{$closeTagTuiDocCode}{$startTagTuiNotification_1} Also you can use not all styles from global, but only what you need partially import, for example {$startTagCode}@taiga-ui/styles/markup/tui-mobile-only{$closeTagCode} , or something: {$closeTagTuiNotification}{$startTagTuiDocCode_3}{$closeTagTuiDocCode}{$closeTagNgTemplate}{$closeTagTuiAccordionItem}{$closeTagTuiAccordion}{$startTagTuiNotification_1} You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files automatically {$closeTagTuiNotification}{$startParagraph} You can also add a set of our mixins to use it in your LESS or SCSS styles {$startTagTuiDocCode_4}{$closeTagTuiDocCode}{$startTagTuiDocCode_5}{$closeTagTuiDocCode}{$closeParagraph}", {
-          "startParagraph": "[\uFFFD#29\uFFFD|\uFFFD#37\uFFFD|\uFFFD#3:1\uFFFD]",
-          "startTagCode": "[\uFFFD#30\uFFFD|\uFFFD#34\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]",
-          "closeTagCode": "[\uFFFD/#30\uFFFD|\uFFFD/#34\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]",
-          "closeParagraph": "[\uFFFD/#29\uFFFD|\uFFFD/#37\uFFFD|\uFFFD/#3:1\uFFFD]",
-          "startTagTuiDocCode": "\uFFFD#31\uFFFD",
-          "closeTagTuiDocCode": "[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]",
-          "startTagTuiAccordion": "\uFFFD#32\uFFFD",
-          "startTagTuiAccordionItem": "\uFFFD#33\uFFFD",
-          "startTagNgTemplate": "\uFFFD*35:1\uFFFD",
-          "closeTagNgTemplate": "\uFFFD/*35:1\uFFFD",
-          "closeTagTuiAccordionItem": "\uFFFD/#33\uFFFD",
-          "closeTagTuiAccordion": "\uFFFD/#32\uFFFD",
-          "startTagTuiNotification_1": "[\uFFFD#36\uFFFD|\uFFFD#7:1\uFFFD]",
-          "closeTagTuiNotification": "[\uFFFD/#36\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]",
-          "startTagTuiDocCode_4": "\uFFFD#38\uFFFD",
-          "startTagTuiDocCode_5": "\uFFFD#39\uFFFD",
+        const MSG_EXTERNAL_1020440817953228998$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS__25 = goog.getMsg("{$startParagraph} Add theme and Taiga UI global styles to your {$startTagCode}angular.json{$closeTagCode} : {$closeParagraph}{$startTagTuiDocCode}{$closeTagTuiDocCode}{$startTagTuiAccordion}{$startTagTuiAccordionItem} How setup global styles from {$startTagCode}@taiga-ui/styles{$closeTagCode} ? {$startTagNgTemplate} If you want use global styles with default fonts out-of-the-box, you need install {$startTagCode}npm i @taiga-ui/styles{$closeTagCode} and put this code: {$startTagTuiNotification} In version 3.0 we drop to support normalize(v7) out-of-the-box! {$startParagraph} You need to manually {$startLink} download css file {$closeLink} , if you're looking to use reset styles or you can write your own reset.css {$closeParagraph}{$closeTagTuiNotification}{$startTagTuiDocCode_1}{$closeTagTuiDocCode}{$startTagTuiDocCode_2}{$closeTagTuiDocCode}{$startTagTuiNotification_1} Also you can use not all styles from global, but only what you need partially import, for example {$startTagCode}@taiga-ui/styles/markup/tui-mobile-only{$closeTagCode} , or something: {$closeTagTuiNotification}{$startTagTuiDocCode_3}{$closeTagTuiDocCode}{$closeTagNgTemplate}{$closeTagTuiAccordionItem}{$closeTagTuiAccordion}{$startTagTuiNotification_1} You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files automatically {$closeTagTuiNotification}{$startParagraph} You can also add a set of our mixins to use it in your LESS or SCSS styles {$startTagTuiDocCode_4}{$closeTagTuiDocCode}{$startTagTuiDocCode_5}{$closeTagTuiDocCode}{$closeParagraph}", {
+          "startParagraph": "[\uFFFD#33\uFFFD|\uFFFD#41\uFFFD|\uFFFD#3:1\uFFFD]",
+          "startTagCode": "[\uFFFD#34\uFFFD|\uFFFD#38\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]",
+          "closeTagCode": "[\uFFFD/#34\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]",
+          "closeParagraph": "[\uFFFD/#33\uFFFD|\uFFFD/#41\uFFFD|\uFFFD/#3:1\uFFFD]",
+          "startTagTuiDocCode": "\uFFFD#35\uFFFD",
+          "closeTagTuiDocCode": "[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]",
+          "startTagTuiAccordion": "\uFFFD#36\uFFFD",
+          "startTagTuiAccordionItem": "\uFFFD#37\uFFFD",
+          "startTagNgTemplate": "\uFFFD*39:1\uFFFD",
+          "closeTagNgTemplate": "\uFFFD/*39:1\uFFFD",
+          "closeTagTuiAccordionItem": "\uFFFD/#37\uFFFD",
+          "closeTagTuiAccordion": "\uFFFD/#36\uFFFD",
+          "startTagTuiNotification_1": "[\uFFFD#40\uFFFD|\uFFFD#7:1\uFFFD]",
+          "closeTagTuiNotification": "[\uFFFD/#40\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]",
+          "startTagTuiDocCode_4": "\uFFFD#42\uFFFD",
+          "startTagTuiDocCode_5": "\uFFFD#43\uFFFD",
           "startTagTuiNotification": "\uFFFD#2:1\uFFFD",
           "startLink": "\uFFFD#4:1\uFFFD",
           "closeLink": "\uFFFD/#4:1\uFFFD",
@@ -36737,102 +36744,118 @@ let HomeComponent = /*#__PURE__*/(() => {
           "startTagTuiDocCode_2": "\uFFFD#6:1\uFFFD",
           "startTagTuiDocCode_3": "\uFFFD#9:1\uFFFD"
         });
-        i18n_16 = MSG_EXTERNAL_5074892857025646900$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS__23;
+        i18n_16 = MSG_EXTERNAL_1020440817953228998$$PROJECTS_DEMO_SRC_MODULES_APP_HOME_HOME_COMPONENT_TS__25;
       } else {
-        i18n_16 = $localize`:␟65f444e0c81eebe436a43366ec47d402a422c887␟5074892857025646900:${"[\uFFFD#29\uFFFD|\uFFFD#37\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: Add theme and Taiga UI global styles to your ${"[\uFFFD#30\uFFFD|\uFFFD#34\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:angular.json${"[\uFFFD/#30\uFFFD|\uFFFD/#34\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: : ${"[\uFFFD/#29\uFFFD|\uFFFD/#37\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:${"\uFFFD#31\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#32\uFFFD"}:START_TAG_TUI_ACCORDION:${"\uFFFD#33\uFFFD"}:START_TAG_TUI_ACCORDION_ITEM: How setup global styles from ${"[\uFFFD#30\uFFFD|\uFFFD#34\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:@taiga-ui/styles${"[\uFFFD/#30\uFFFD|\uFFFD/#34\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: ? ${"\uFFFD*35:1\uFFFD"}:START_TAG_NG_TEMPLATE: If you want use global styles with default fonts out-of-the-box, you need install ${"[\uFFFD#30\uFFFD|\uFFFD#34\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:npm i @taiga-ui/styles${"[\uFFFD/#30\uFFFD|\uFFFD/#34\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: and put this code: ${"\uFFFD#2:1\uFFFD"}:START_TAG_TUI_NOTIFICATION: In version 3.0 we drop to support normalize(v7) out-of-the-box! ${"[\uFFFD#29\uFFFD|\uFFFD#37\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: You need to manually ${"\uFFFD#4:1\uFFFD"}:START_LINK: download css file ${"\uFFFD/#4:1\uFFFD"}:CLOSE_LINK: , if you're looking to use reset styles or you can write your own reset.css ${"[\uFFFD/#29\uFFFD|\uFFFD/#37\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:${"[\uFFFD/#36\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"\uFFFD#5:1\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#6:1\uFFFD"}:START_TAG_TUI_DOC_CODE_2:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"[\uFFFD#36\uFFFD|\uFFFD#7:1\uFFFD]"}:START_TAG_TUI_NOTIFICATION_1: Also you can use not all styles from global, but only what you need partially import, for example ${"[\uFFFD#30\uFFFD|\uFFFD#34\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:@taiga-ui/styles/markup/tui-mobile-only${"[\uFFFD/#30\uFFFD|\uFFFD/#34\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: , or something: ${"[\uFFFD/#36\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"\uFFFD#9:1\uFFFD"}:START_TAG_TUI_DOC_CODE_3:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD/*35:1\uFFFD"}:CLOSE_TAG_NG_TEMPLATE:${"\uFFFD/#33\uFFFD"}:CLOSE_TAG_TUI_ACCORDION_ITEM:${"\uFFFD/#32\uFFFD"}:CLOSE_TAG_TUI_ACCORDION:${"[\uFFFD#36\uFFFD|\uFFFD#7:1\uFFFD]"}:START_TAG_TUI_NOTIFICATION_1: You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files automatically ${"[\uFFFD/#36\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"[\uFFFD#29\uFFFD|\uFFFD#37\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: You can also add a set of our mixins to use it in your LESS or SCSS styles ${"\uFFFD#38\uFFFD"}:START_TAG_TUI_DOC_CODE_4:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#39\uFFFD"}:START_TAG_TUI_DOC_CODE_5:${"[\uFFFD/#31\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#39\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"[\uFFFD/#29\uFFFD|\uFFFD/#37\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:`;
+        i18n_16 = $localize`:␟14171261aa9c40e2695fb3609c9de028a077c971␟1020440817953228998:${"[\uFFFD#33\uFFFD|\uFFFD#41\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: Add theme and Taiga UI global styles to your ${"[\uFFFD#34\uFFFD|\uFFFD#38\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:angular.json${"[\uFFFD/#34\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: : ${"[\uFFFD/#33\uFFFD|\uFFFD/#41\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:${"\uFFFD#35\uFFFD"}:START_TAG_TUI_DOC_CODE:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#36\uFFFD"}:START_TAG_TUI_ACCORDION:${"\uFFFD#37\uFFFD"}:START_TAG_TUI_ACCORDION_ITEM: How setup global styles from ${"[\uFFFD#34\uFFFD|\uFFFD#38\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:@taiga-ui/styles${"[\uFFFD/#34\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: ? ${"\uFFFD*39:1\uFFFD"}:START_TAG_NG_TEMPLATE: If you want use global styles with default fonts out-of-the-box, you need install ${"[\uFFFD#34\uFFFD|\uFFFD#38\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:npm i @taiga-ui/styles${"[\uFFFD/#34\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: and put this code: ${"\uFFFD#2:1\uFFFD"}:START_TAG_TUI_NOTIFICATION: In version 3.0 we drop to support normalize(v7) out-of-the-box! ${"[\uFFFD#33\uFFFD|\uFFFD#41\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: You need to manually ${"\uFFFD#4:1\uFFFD"}:START_LINK: download css file ${"\uFFFD/#4:1\uFFFD"}:CLOSE_LINK: , if you're looking to use reset styles or you can write your own reset.css ${"[\uFFFD/#33\uFFFD|\uFFFD/#41\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:${"[\uFFFD/#40\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"\uFFFD#5:1\uFFFD"}:START_TAG_TUI_DOC_CODE_1:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#6:1\uFFFD"}:START_TAG_TUI_DOC_CODE_2:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"[\uFFFD#40\uFFFD|\uFFFD#7:1\uFFFD]"}:START_TAG_TUI_NOTIFICATION_1: Also you can use not all styles from global, but only what you need partially import, for example ${"[\uFFFD#34\uFFFD|\uFFFD#38\uFFFD|\uFFFD#1:1\uFFFD|\uFFFD#8:1\uFFFD]"}:START_TAG_CODE:@taiga-ui/styles/markup/tui-mobile-only${"[\uFFFD/#34\uFFFD|\uFFFD/#38\uFFFD|\uFFFD/#1:1\uFFFD|\uFFFD/#8:1\uFFFD]"}:CLOSE_TAG_CODE: , or something: ${"[\uFFFD/#40\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"\uFFFD#9:1\uFFFD"}:START_TAG_TUI_DOC_CODE_3:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD/*39:1\uFFFD"}:CLOSE_TAG_NG_TEMPLATE:${"\uFFFD/#37\uFFFD"}:CLOSE_TAG_TUI_ACCORDION_ITEM:${"\uFFFD/#36\uFFFD"}:CLOSE_TAG_TUI_ACCORDION:${"[\uFFFD#40\uFFFD|\uFFFD#7:1\uFFFD]"}:START_TAG_TUI_NOTIFICATION_1: You can use it with your pure CSS, SCSS and other projects. Angular resolves this less files automatically ${"[\uFFFD/#40\uFFFD|\uFFFD/#2:1\uFFFD|\uFFFD/#7:1\uFFFD]"}:CLOSE_TAG_TUI_NOTIFICATION:${"[\uFFFD#33\uFFFD|\uFFFD#41\uFFFD|\uFFFD#3:1\uFFFD]"}:START_PARAGRAPH: You can also add a set of our mixins to use it in your LESS or SCSS styles ${"\uFFFD#42\uFFFD"}:START_TAG_TUI_DOC_CODE_4:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"\uFFFD#43\uFFFD"}:START_TAG_TUI_DOC_CODE_5:${"[\uFFFD/#35\uFFFD|\uFFFD/#42\uFFFD|\uFFFD/#43\uFFFD|\uFFFD/#5:1\uFFFD|\uFFFD/#6:1\uFFFD|\uFFFD/#9:1\uFFFD]"}:CLOSE_TAG_TUI_DOC_CODE:${"[\uFFFD/#33\uFFFD|\uFFFD/#41\uFFFD|\uFFFD/#3:1\uFFFD]"}:CLOSE_PARAGRAPH:`;
       }
 
       i18n_16 = core/* ɵɵi18nPostprocess */.Zx4(i18n_16);
-      return [[1, "tui-space_top-0"], i18n_0, ["code", "ng add taiga-ui"], [1, "tui-space_top-5"], i18n_2, [1, "steps"], ["tuiLink", "", "routerLink", ".", "fragment", "install"], i18n_4, ["tuiLink", "", "routerLink", ".", "fragment", "styles"], i18n_6, ["tuiLink", "", "routerLink", ".", "fragment", "root"], i18n_8, ["tuiLink", "", "routerLink", ".", "fragment", "options"], i18n_10, ["tuiLink", "", "routerLink", ".", "fragment", "icons"], i18n_12, [1, "b-demo-steps"], ["id", "install"], i18n_14, ["filename", "Main Taiga UI packages", 3, "code"], ["filename", "Taiga UI addons based on main packages", 3, "code"], ["id", "styles"], i18n_16, ["filename", "angular.json", 3, "code"], [1, "tui-space_top-3"], ["tuiAccordionItemContent", ""], ["filename", "my.component.less / my.component.scss", 3, "code"], ["filename", "my.component.ts", 3, "code"], ["id", "root"], i18n_17, ["filename", "app.module.ts", 1, "tui-space_bottom-4", 3, "code"], ["filename", "app.component.html", 3, "code"], ["id", "options"], i18n_19, ["id", "icons"], i18n_21, ["filename", "angular.json", 1, "tui-space_bottom-4", 3, "code"], ["status", "warning", 1, "tui-space_top-3"], ["tuiLink", "", "href", "https://necolas.github.io/normalize.css/"], ["filename", "styles.less", 3, "code"]];
+      return [[1, "tui-space_top-2"], i18n_0, ["filename", "Angular CLI", "code", "ng add taiga-ui"], ["filename", "Nx CLI", "code", "nx g taiga-ui:ng-add"], [1, "tui-space_top-5"], i18n_2, [1, "steps"], ["tuiLink", "", "routerLink", ".", "fragment", "install"], i18n_4, ["tuiLink", "", "routerLink", ".", "fragment", "styles"], i18n_6, ["tuiLink", "", "routerLink", ".", "fragment", "root"], i18n_8, ["tuiLink", "", "routerLink", ".", "fragment", "options"], i18n_10, ["tuiLink", "", "routerLink", ".", "fragment", "icons"], i18n_12, [1, "b-demo-steps"], ["id", "install"], i18n_14, ["filename", "Main Taiga UI packages", 3, "code"], ["filename", "Taiga UI addons based on main packages", 3, "code"], ["id", "styles"], i18n_16, ["filename", "angular.json", 3, "code"], [1, "tui-space_top-3"], ["tuiAccordionItemContent", ""], ["filename", "my.component.less / my.component.scss", 3, "code"], ["filename", "my.component.ts", 3, "code"], ["id", "root"], i18n_17, ["filename", "app.module.ts", 1, "tui-space_bottom-4", 3, "code"], ["filename", "app.component.html", 3, "code"], ["id", "options"], i18n_19, ["id", "icons"], i18n_21, ["filename", "angular.json", 1, "tui-space_bottom-4", 3, "code"], [1, "tui-space_top-8"], i18n_23, ["filename", "Angular CLI", "code", "ng update @taiga-ui/cdk"], ["filename", "Nx CLI", "code", "nx migrate @taiga-ui/cdk"], ["status", "warning", 1, "tui-space_top-3"], ["tuiLink", "", "href", "https://necolas.github.io/normalize.css/"], ["filename", "styles.less", 3, "code"]];
     },
     template: function HomeComponent_Template(rf, ctx) {
       if (rf & 1) {
-        core/* ɵɵelementStart */.TgZ(0, "p", 0);
-        core/* ɵɵi18n */.SDv(1, 1);
+        core/* ɵɵelementStart */.TgZ(0, "section");
+        core/* ɵɵelementStart */.TgZ(1, "h2");
+        core/* ɵɵtext */._uU(2, "Install Taiga UI");
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelement */._UZ(2, "tui-doc-code", 2);
-        core/* ɵɵelementStart */.TgZ(3, "p", 3);
-        core/* ɵɵi18n */.SDv(4, 4);
+        core/* ɵɵelementStart */.TgZ(3, "p", 0);
+        core/* ɵɵi18n */.SDv(4, 1);
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(5, "div", 3);
-        core/* ɵɵelementStart */.TgZ(6, "ol", 5);
-        core/* ɵɵelementStart */.TgZ(7, "li");
-        core/* ɵɵelementStart */.TgZ(8, "a", 6);
-        core/* ɵɵi18n */.SDv(9, 7);
+        core/* ɵɵelement */._UZ(5, "tui-doc-code", 2);
+        core/* ɵɵelement */._UZ(6, "tui-doc-code", 3);
+        core/* ɵɵelementStart */.TgZ(7, "p", 4);
+        core/* ɵɵi18n */.SDv(8, 5);
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(10, "li");
-        core/* ɵɵelementStart */.TgZ(11, "a", 8);
-        core/* ɵɵi18n */.SDv(12, 9);
-        core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(13, "li");
-        core/* ɵɵelementStart */.TgZ(14, "a", 10);
-        core/* ɵɵi18n */.SDv(15, 11);
+        core/* ɵɵelementStart */.TgZ(9, "div", 4);
+        core/* ɵɵelementStart */.TgZ(10, "ol", 6);
+        core/* ɵɵelementStart */.TgZ(11, "li");
+        core/* ɵɵelementStart */.TgZ(12, "a", 7);
+        core/* ɵɵi18n */.SDv(13, 8);
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(16, "li");
-        core/* ɵɵelementStart */.TgZ(17, "a", 12);
-        core/* ɵɵi18n */.SDv(18, 13);
+        core/* ɵɵelementStart */.TgZ(14, "li");
+        core/* ɵɵelementStart */.TgZ(15, "a", 9);
+        core/* ɵɵi18n */.SDv(16, 10);
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(19, "li");
-        core/* ɵɵelementStart */.TgZ(20, "a", 14);
-        core/* ɵɵi18n */.SDv(21, 15);
+        core/* ɵɵelementStart */.TgZ(17, "li");
+        core/* ɵɵelementStart */.TgZ(18, "a", 11);
+        core/* ɵɵi18n */.SDv(19, 12);
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementStart */.TgZ(20, "li");
+        core/* ɵɵelementStart */.TgZ(21, "a", 13);
+        core/* ɵɵi18n */.SDv(22, 14);
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementStart */.TgZ(23, "li");
+        core/* ɵɵelementStart */.TgZ(24, "a", 15);
+        core/* ɵɵi18n */.SDv(25, 16);
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(22, "ol", 16);
-        core/* ɵɵelementStart */.TgZ(23, "li", 17);
-        core/* ɵɵi18nStart */.tHW(24, 18);
-        core/* ɵɵelement */._UZ(25, "tui-doc-code", 19);
-        core/* ɵɵelement */._UZ(26, "tui-doc-code", 20);
+        core/* ɵɵelementStart */.TgZ(26, "ol", 17);
+        core/* ɵɵelementStart */.TgZ(27, "li", 18);
+        core/* ɵɵi18nStart */.tHW(28, 19);
+        core/* ɵɵelement */._UZ(29, "tui-doc-code", 20);
+        core/* ɵɵelement */._UZ(30, "tui-doc-code", 21);
         core/* ɵɵi18nEnd */.N_p();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(27, "li", 21);
-        core/* ɵɵi18nStart */.tHW(28, 22);
-        core/* ɵɵelementStart */.TgZ(29, "p");
-        core/* ɵɵelement */._UZ(30, "code");
-        core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelement */._UZ(31, "tui-doc-code", 23);
-        core/* ɵɵelementStart */.TgZ(32, "tui-accordion", 24);
-        core/* ɵɵelementStart */.TgZ(33, "tui-accordion-item");
+        core/* ɵɵelementStart */.TgZ(31, "li", 22);
+        core/* ɵɵi18nStart */.tHW(32, 23);
+        core/* ɵɵelementStart */.TgZ(33, "p");
         core/* ɵɵelement */._UZ(34, "code");
-        core/* ɵɵtemplate */.YNc(35, HomeComponent_ng_template_35_Template, 10, 3, "ng-template", 25);
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelement */._UZ(35, "tui-doc-code", 24);
+        core/* ɵɵelementStart */.TgZ(36, "tui-accordion", 25);
+        core/* ɵɵelementStart */.TgZ(37, "tui-accordion-item");
+        core/* ɵɵelement */._UZ(38, "code");
+        core/* ɵɵtemplate */.YNc(39, HomeComponent_ng_template_39_Template, 10, 3, "ng-template", 26);
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelement */._UZ(36, "tui-notification", 24);
-        core/* ɵɵelementStart */.TgZ(37, "p");
-        core/* ɵɵelement */._UZ(38, "tui-doc-code", 26);
-        core/* ɵɵelement */._UZ(39, "tui-doc-code", 27);
+        core/* ɵɵelement */._UZ(40, "tui-notification", 25);
+        core/* ɵɵelementStart */.TgZ(41, "p");
+        core/* ɵɵelement */._UZ(42, "tui-doc-code", 27);
+        core/* ɵɵelement */._UZ(43, "tui-doc-code", 28);
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵi18nEnd */.N_p();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(40, "li", 28);
-        core/* ɵɵi18nStart */.tHW(41, 29);
-        core/* ɵɵelement */._UZ(42, "code");
-        core/* ɵɵelement */._UZ(43, "code");
-        core/* ɵɵelement */._UZ(44, "tui-doc-code", 30);
-        core/* ɵɵelement */._UZ(45, "p");
-        core/* ɵɵelement */._UZ(46, "tui-doc-code", 31);
+        core/* ɵɵelementStart */.TgZ(44, "li", 29);
+        core/* ɵɵi18nStart */.tHW(45, 30);
+        core/* ɵɵelement */._UZ(46, "code");
+        core/* ɵɵelement */._UZ(47, "code");
+        core/* ɵɵelement */._UZ(48, "tui-doc-code", 31);
+        core/* ɵɵelement */._UZ(49, "p");
+        core/* ɵɵelement */._UZ(50, "tui-doc-code", 32);
         core/* ɵɵi18nEnd */.N_p();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(47, "li", 32);
-        core/* ɵɵi18nStart */.tHW(48, 33);
-        core/* ɵɵelement */._UZ(49, "tui-doc-code", 30);
+        core/* ɵɵelementStart */.TgZ(51, "li", 33);
+        core/* ɵɵi18nStart */.tHW(52, 34);
+        core/* ɵɵelement */._UZ(53, "tui-doc-code", 31);
         core/* ɵɵi18nEnd */.N_p();
         core/* ɵɵelementEnd */.qZA();
-        core/* ɵɵelementStart */.TgZ(50, "li", 34);
-        core/* ɵɵi18nStart */.tHW(51, 35);
-        core/* ɵɵelement */._UZ(52, "tui-doc-code", 36);
+        core/* ɵɵelementStart */.TgZ(54, "li", 35);
+        core/* ɵɵi18nStart */.tHW(55, 36);
+        core/* ɵɵelement */._UZ(56, "tui-doc-code", 37);
         core/* ɵɵi18nEnd */.N_p();
         core/* ɵɵelementEnd */.qZA();
         core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementStart */.TgZ(57, "section", 4);
+        core/* ɵɵelementStart */.TgZ(58, "h2");
+        core/* ɵɵtext */._uU(59, "Update Taiga UI");
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelementStart */.TgZ(60, "p", 38);
+        core/* ɵɵi18n */.SDv(61, 39);
+        core/* ɵɵelementEnd */.qZA();
+        core/* ɵɵelement */._UZ(62, "tui-doc-code", 40);
+        core/* ɵɵelement */._UZ(63, "tui-doc-code", 41);
         core/* ɵɵelementEnd */.qZA();
       }
 
       if (rf & 2) {
-        core/* ɵɵadvance */.xp6(25);
+        core/* ɵɵadvance */.xp6(29);
         core/* ɵɵproperty */.Q6J("code", ctx.main);
         core/* ɵɵadvance */.xp6(1);
         core/* ɵɵproperty */.Q6J("code", ctx.addons);
