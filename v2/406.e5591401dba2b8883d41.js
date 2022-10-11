@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[406],{wKRM:function(n,o,i){"use strict";i.r(o),o.default="```ts\nimport {TuiPieChartModule} from '@taiga-ui/addon-charts';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiPieChartModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
