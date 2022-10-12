@@ -10,7 +10,7 @@ export const calendarStream$ = of(
 );
 
 @Component({
-    selector: `tui-range-example-2`,
+    selector: `tui-calendar-range-example-2`,
     templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
@@ -21,4 +21,4 @@ export const calendarStream$ = of(
         },
     ],
 })
-export class TuiRangeExample2 {}
+export class TuiCalendarRangeExample2 {}

@@ -12,6 +12,7 @@ import {TuiTokensExample5} from './examples/5';
 import {TuiTokensExample6} from './examples/6';
 import {TuiTokensExample7} from './examples/7';
 import {TuiTokensExample8} from './examples/8';
+import {TuiTokensExample9} from './examples/9';
 import {ExampleTokensComponent} from './tokens.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import {ExampleTokensComponent} from './tokens.component';
         TuiTokensExample6,
         TuiTokensExample7,
         TuiTokensExample8,
+        TuiTokensExample9,
     ],
     exports: [ExampleTokensComponent],
 })

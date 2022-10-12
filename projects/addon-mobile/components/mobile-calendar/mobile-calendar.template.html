@@ -57,7 +57,7 @@
 </cdk-virtual-scroll-viewport>
 <div class="t-week">
     <div
-        *ngFor="let day of weekDays$ | async"
+        *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays | async"
         class="t-day"
     >
         {{ day }}

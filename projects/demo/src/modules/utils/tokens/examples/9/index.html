@@ -1,0 +1,25 @@
+<p class="tui-space_top-0">
+    Use
+    <code>TUI_FIRST_DAY_OF_WEEK</code>
+    injection token to change start day of the week (Monday by default).
+</p>
+
+<tui-doc-code [code]="provideFirstDayOfWeekToken"></tui-doc-code>
+
+<section>
+    <h3>This token can customize the following components:</h3>
+    <ul class="tui-list tui-list_small">
+        <li
+            *ngFor="let component of customizableComponentsViaThisToken"
+            class="tui-list__item"
+        >
+            <a
+                tuiLink
+                [routerLink]="component.link"
+                [fragment]="component.fragment"
+            >
+                {{ component.name }}
+            </a>
+        </li>
+    </ul>
+</section>

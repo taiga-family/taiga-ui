@@ -27,9 +27,6 @@ const ONE_DOT: [string] = [`var(--tui-success-fill)`];
 export class ExampleTuiCalendarComponent {
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
-    readonly firstDayOfWeekToken = import(
-        `./examples/import/first-day-of-week-token.md?raw`
-    );
 
     readonly example1: TuiDocExample = {
         TypeScript: import(`./examples/1/index.ts?raw`),
@@ -44,6 +41,11 @@ export class ExampleTuiCalendarComponent {
     readonly example3: TuiDocExample = {
         TypeScript: import(`./examples/3/index.ts?raw`),
         HTML: import(`./examples/3/index.html?raw`),
+    };
+
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
     };
 
     showAdjacent = true;

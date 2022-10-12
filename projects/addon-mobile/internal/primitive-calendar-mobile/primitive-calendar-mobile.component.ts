@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TUI_ORDERED_SHORT_WEEK_DAYS, TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {TUI_IS_IOS, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {TUI_SHORT_WEEK_DAYS, TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
 
 /**
  * @internal
@@ -18,9 +17,9 @@ import {Observable} from 'rxjs';
 export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
-        weekDays$: Observable<[string, string, string, string, string, string, string]>,
+        @Inject(TUI_SHORT_WEEK_DAYS)
+        unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
     ) {
-        super(weekDays$);
+        super(unorderedWeekDays$);
     }
 }

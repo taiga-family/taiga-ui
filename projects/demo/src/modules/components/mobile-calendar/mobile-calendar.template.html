@@ -49,6 +49,27 @@
         >
             <tui-mobile-calendar-example-2></tui-mobile-calendar-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="localization"
+            i18n-heading
+            heading="Localization"
+            [content]="example3"
+            [description]="localizationDescription"
+        >
+            <ng-template #localizationDescription>
+                Use
+                <a
+                    tuiLink
+                    routerLink="/utils/tokens"
+                    fragment="first-day-of-week"
+                >
+                    TUI_FIRST_DAY_OF_WEEK
+                </a>
+                token to change start day of the week (Monday by default).
+            </ng-template>
+            <tui-mobile-calendar-example-3></tui-mobile-calendar-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
