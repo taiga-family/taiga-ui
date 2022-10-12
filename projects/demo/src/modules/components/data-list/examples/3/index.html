@@ -12,12 +12,12 @@
     ></button>
 </tui-hosted-dropdown>
 <ng-template #content>
-    <tui-data-list>
+    <tui-data-list style="width: 12rem">
         <tui-opt-group
             tuiMultiSelectGroup
             [(ngModel)]="value"
         >
-            <tui-opt-group label="Food">
+            <tui-opt-group label="Main dishes menu with long label">
                 <button
                     *ngFor="let burger of burgers"
                     tuiOption

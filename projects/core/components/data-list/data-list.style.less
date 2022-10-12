@@ -37,7 +37,7 @@ tui-opt-group {
 
     &:before {
         content: attr(data-label);
-        padding: 0 1rem;
+        padding: 0.5rem 1rem;
         color: var(--tui-text-02);
         line-height: 1rem;
         white-space: normal;
@@ -46,6 +46,10 @@ tui-opt-group {
     &:not(:empty) ~ & {
         &:before {
             padding: 1.5rem 1rem 0.5rem;
+        }
+
+        &[data-label='']:before {
+            padding: 1rem 0 0;
         }
 
         &:after {
@@ -57,5 +61,9 @@ tui-opt-group {
             height: 1px;
             background: var(--tui-base-03);
         }
+    }
+
+    &[data-label='']:before {
+        padding: 0 1rem;
     }
 }
