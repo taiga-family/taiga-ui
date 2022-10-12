@@ -10,6 +10,7 @@ import {TuiProgressBarExample2} from './examples/2';
 import {TuiProgressBarExample3} from './examples/3';
 import {TuiProgressBarExample4} from './examples/4';
 import {TuiProgressBarExample5} from './examples/5';
+import {TuiProgressBarExample6} from './examples/6';
 import {ExampleProgressBarComponent} from './progress-bar.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ExampleProgressBarComponent} from './progress-bar.component';
         TuiProgressBarExample3,
         TuiProgressBarExample4,
         TuiProgressBarExample5,
+        TuiProgressBarExample6,
     ],
     exports: [ExampleProgressBarComponent],
 })

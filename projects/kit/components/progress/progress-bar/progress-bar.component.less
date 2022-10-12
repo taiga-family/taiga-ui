@@ -8,24 +8,21 @@
 }
 
 /* Used to style outer progress bar (container) */
-.progressContainer(@property, @value) {
-    @{property}: @value; // IE | Edge | Mozilla
-
+.progressContainer(@ruleset) {
     &::-webkit-progress-bar {
-        @{property}: @value; // Chrome | Opera | Safari
+        @ruleset(); // Chrome | Opera | Safari
     }
+    @ruleset(); // IE | Edge | Mozilla
 }
 
 /* used to style inner value bar */
-.progressValue(@property, @value) {
-    @{property}: @value; // Edge
-
+.progressValue(@ruleset) {
     &::-webkit-progress-value {
-        @{property}: @value; // Chrome | Opera | Safari
+        @ruleset(); // Chromium Edge | Chrome | Opera | Safari
     }
 
     &::-moz-progress-bar {
-        @{property}: @value; // Mozilla
+        @ruleset(); // Mozilla
     }
 }
 
@@ -40,23 +37,24 @@
     }
 }
 
-.progressValueColor(@color) {
-    color: @color; // IE | Not Chromium Edge
-
-    &::-webkit-progress-value {
-        background: @color; // Chromium Edge | Chrome | Opera | Safari
-    }
-
-    &::-moz-progress-bar {
-        background: @color; // Mozilla
+@keyframes indeterminate-animation {
+    50% {
+        background-position: left;
     }
 }
 
 :host {
+    @track-color: var(--tui-base-03);
+    @progress-color: var(--tui-progress-color, currentColor);
+
     .clearProgress();
     .progressAnimation();
-    .progressValueColor(var(--tui-progress-color, currentColor));
-    .progressContainer(background-color, var(--tui-base-03));
+    .progressValue({
+        background: @progress-color;
+    });
+    .progressContainer({
+        background-color: @track-color;
+    });
     display: block;
     width: 100%;
     color: var(--tui-primary);
@@ -68,12 +66,29 @@
     }
 
     &[data-size='s'] {
-        .progressValue(border-radius, var(--tui-radius-xs));
+        .progressValue({
+            border-radius: var(--tui-radius-xs);
+        });
         height: 0.5rem;
+    }
+
+    &:indeterminate {
+        .progressContainer({
+            background: transparent;
+        });
+        .progressValue({
+            background: transparent;
+        });
+        background-image: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%);
+        background-size: 225%;
+        background-position: right;
+        animation: indeterminate-animation 3s infinite ease;
     }
 }
 
 :host-context(label[tuiProgressLabel]):not(:first-child) {
     .fullsize();
-    .progressContainer(background-color, transparent);
+    .progressContainer({
+        background-color: transparent;
+    });
 }
