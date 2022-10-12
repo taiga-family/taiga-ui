@@ -10,7 +10,7 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
             [src]="svg"
         ></tui-svg>
     `,
-    styleUrls: ['./inline-svg.style.less'],
+    styleUrls: [`./inline-svg.style.less`],
     providers: [
         {
             provide: TUI_SANITIZER,
