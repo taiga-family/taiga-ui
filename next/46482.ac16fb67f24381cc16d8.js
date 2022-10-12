@@ -758,7 +758,7 @@ let TuiDataListExample2 = /*#__PURE__*/(() => {
 
 function TuiDataListExample3_ng_template_3_button_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 9);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -773,7 +773,7 @@ function TuiDataListExample3_ng_template_3_button_3_Template(rf, ctx) {
 
 function TuiDataListExample3_ng_template_3_button_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 9);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -790,18 +790,18 @@ function TuiDataListExample3_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
     const _r8 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-data-list");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-opt-group", 4);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-data-list", 4);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-opt-group", 5);
     fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiDataListExample3_ng_template_3_Template_tui_opt_group_ngModelChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r8);
       const ctx_r7 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r7.value = $event;
     });
-    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-opt-group", 5);
-    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiDataListExample3_ng_template_3_button_3_Template, 2, 2, "button", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-opt-group", 6);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiDataListExample3_ng_template_3_button_3_Template, 2, 2, "button", 7);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-opt-group", 7);
-    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiDataListExample3_ng_template_3_button_5_Template, 2, 2, "button", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-opt-group", 8);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiDataListExample3_ng_template_3_button_5_Template, 2, 2, "button", 7);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -838,7 +838,7 @@ let TuiDataListExample3 = /*#__PURE__*/(() => {
     selectors: [["tui-data-list-example-3"]],
     decls: 7,
     vars: 5,
-    consts: [[3, "tuiDropdownMaxHeight", "content"], ["dropdown", ""], ["tuiIconButton", "", "appearance", "flat", "type", "button", 3, "icon", "pseudoHover"], ["content", ""], ["tuiMultiSelectGroup", "", 3, "ngModel", "ngModelChange"], ["label", "Food"], ["tuiOption", "", "size", "l", 3, "value", 4, "ngFor", "ngForOf"], ["label", "Drinks"], ["tuiOption", "", "size", "l", 3, "value"]],
+    consts: [[3, "tuiDropdownMaxHeight", "content"], ["dropdown", ""], ["tuiIconButton", "", "appearance", "flat", "type", "button", 3, "icon", "pseudoHover"], ["content", ""], [2, "width", "12rem"], ["tuiMultiSelectGroup", "", 3, "ngModel", "ngModelChange"], ["label", "Main dishes menu with long label"], ["tuiOption", "", "size", "l", 3, "value", 4, "ngFor", "ngForOf"], ["label", "Drinks"], ["tuiOption", "", "size", "l", 3, "value"]],
     template: function TuiDataListExample3_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-hosted-dropdown", 0, 1);
