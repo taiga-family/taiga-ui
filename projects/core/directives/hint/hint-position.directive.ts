@@ -78,7 +78,13 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
             this.checkPosition(this.points[direction], width, height),
         );
 
-        return this.points[direction || this.direction];
+        return this.points[direction || this.fallback];
+    }
+
+    private get fallback(): TuiHintDirection {
+        return this.points.top[TOP] > this.windowRef.innerHeight - this.points.bottom[TOP]
+            ? `top`
+            : `bottom`;
     }
 
     private checkPosition([top, left]: TuiPoint, width: number, height: number): boolean {
