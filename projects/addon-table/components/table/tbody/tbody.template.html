@@ -21,7 +21,9 @@
         </button>
     </th>
 </tr>
-<ng-content></ng-content>
+<ng-container *ngIf="open">
+    <ng-content></ng-content>
+</ng-container>
 <ng-container *ngIf="open && row">
     <ng-container
         *ngFor="let item of sorted; let index = index"
