@@ -2,8 +2,33 @@
     "baseDir": "./dist",
     "files": [
         {
-            "path": "demo/browser/*.<hash>.js",
+            "path": "demo/browser/main.<hash>.js",
             "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/vendor.<hash>.js",
+            "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/runtime.<hash>.js",
+            "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/polyfills.<hash>.js",
+            "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/scripts.<hash>.js",
+            "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/style.<hash>.js",
+            "maxPercentIncrease": 10
+        }
+    ],
+    "groups": [
+        {
+            "path": "demo/browser/*.<hash>.js"
         }
     ],
     "reportOutput": [

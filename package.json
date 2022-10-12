@@ -29,7 +29,6 @@
         "build:ssr": "nx build && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
-        "bundlemon": "bundlemon",
         "*** Workflow ***": "",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
