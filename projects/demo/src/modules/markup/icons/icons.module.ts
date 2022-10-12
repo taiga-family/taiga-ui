@@ -7,6 +7,7 @@ import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
 import {IconsCustomizationComponent} from './customization/customization-icons.component';
 import {IconsComponent} from './icons.component';
 import {IconsGroupModule} from './icons-group/icons-group.module';
+import {InlineSvgExampleComponent} from './inline-svg/inline-svg.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,11 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
     ],
-    declarations: [IconsComponent, IconsCustomizationComponent],
+    declarations: [
+        IconsComponent,
+        IconsCustomizationComponent,
+        InlineSvgExampleComponent,
+    ],
     exports: [IconsComponent],
 })
 export class IconsModule {}
