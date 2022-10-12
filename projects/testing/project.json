@@ -19,6 +19,14 @@
                     "params": "forward"
                 }
             ]
+        },
+        "test": {
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["coverage/testing"],
+            "options": {
+                "command": "jest --testMatch '**/projects/testing/**/*.spec.ts'",
+                "forwardAllArgs": true
+            }
         }
     }
 }

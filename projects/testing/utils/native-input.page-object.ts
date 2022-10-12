@@ -5,7 +5,7 @@ import {tuiCreateKeyboardEvent} from './keyboard-event';
 import {TuiPageObject} from './page-object';
 import {tuiReplaceNbsp} from './replace-nbsp';
 
-export class TuiNativeInputPO<T extends HTMLInputElement = HTMLInputElement> {
+export class TuiNativeInputPO {
     private readonly pageObject: TuiPageObject<unknown>;
 
     constructor(
@@ -16,7 +16,7 @@ export class TuiNativeInputPO<T extends HTMLInputElement = HTMLInputElement> {
         this.pageObject = new TuiPageObject(fixture);
     }
 
-    get nativeElement(): T | null {
+    get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
         return (
             this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
                 ?.nativeElement ?? null
@@ -38,12 +38,7 @@ export class TuiNativeInputPO<T extends HTMLInputElement = HTMLInputElement> {
 
         if (nativeElement) {
             nativeElement.value = value;
-
-            try {
-                nativeElement.dispatchEvent(new Event(`input`, {bubbles: true}));
-            } catch (err) {
-                console.error(`invalid event`, err.message);
-            }
+            nativeElement.dispatchEvent(new Event(`input`, {bubbles: true}));
         }
 
         this.fixture.detectChanges();

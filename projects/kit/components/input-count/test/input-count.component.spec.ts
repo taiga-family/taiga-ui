@@ -360,7 +360,10 @@ describe(`InputCount`, () => {
         });
     });
 
-    it(`maxlength is set to 18 by default`, () => {
+    // TODO: move to cypress component testing
+    // Because in Jest/JSDOM we have maxLength is `524288 byte`
+    // instead of `-1 (Chrome)` for Input element
+    xit(`maxlength is set to 18 by default`, () => {
         testComponent.defaultStep = true;
         fixture.detectChanges();
 

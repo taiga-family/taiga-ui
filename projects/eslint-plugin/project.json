@@ -1,0 +1,17 @@
+{
+    "root": "projects/eslint-plugin",
+    "sourceRoot": "projects/eslint-plugin",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "architect": {
+        "test": {
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["coverage/i18n"],
+            "options": {
+                "command": "jest --testMatch '**/projects/eslint-plugin/**/*.spec.ts'",
+                "forwardAllArgs": true
+            }
+        }
+    }
+}

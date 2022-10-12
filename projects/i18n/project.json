@@ -20,6 +20,14 @@
                 }
             ]
         },
+        "test": {
+            "builder": "@nrwl/workspace:run-commands",
+            "outputs": ["coverage/i18n"],
+            "options": {
+                "command": "jest --testMatch '**/projects/i18n/**/*.spec.ts'",
+                "forwardAllArgs": true
+            }
+        },
         "publish": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {

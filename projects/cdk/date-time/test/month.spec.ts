@@ -1,5 +1,6 @@
 import {TuiMonth, TuiMonthNumber} from '@taiga-ui/cdk';
-import {tuiMockDateInside} from '@taiga-ui/cdk/date-time/test/helpers';
+
+import {tuiMockDateInside} from './helpers';
 
 describe(`TuiMonth`, () => {
     describe(`static method`, () => {
