@@ -263,6 +263,10 @@ export class TuiInputCardGroupedComponent
         return this.autocompleteEnabled ? `cc-csc` : `off`;
     }
 
+    get tailLength(): number {
+        return this.hasExtraSpace ? 5 : 4;
+    }
+
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
         return this.autocompleteEnabled ? `ccexpiryyear` : null;
@@ -362,6 +366,10 @@ export class TuiInputCardGroupedComponent
         this.updateProperty(cvc, `cvc`);
     }
 
+    transform({offsetWidth}: HTMLSpanElement): string {
+        return this.isCardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : ``;
+    }
+
     onActiveZoneChange(active: boolean): void {
         this.updateFocused(active);
         this.open = active && this.open;
@@ -418,6 +426,10 @@ export class TuiInputCardGroupedComponent
 
     private get paymentSystem(): TuiPaymentSystem | null {
         return this.value && tuiGetPaymentSystem(this.value.card);
+    }
+
+    private get hasExtraSpace(): boolean {
+        return this.card.length % 4 > 0;
     }
 
     @tuiPure
