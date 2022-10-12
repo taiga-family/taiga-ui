@@ -29055,7 +29055,11 @@ class TuiHintPositionDirective {
     }
 
     const direction = _taiga_ui_core_constants__WEBPACK_IMPORTED_MODULE_2__/* .TUI_HINT_DIRECTIONS.find */ .Fw.find(direction => this.checkPosition(this.points[direction], width, height));
-    return this.points[direction || this.direction];
+    return this.points[direction || this.fallback];
+  }
+
+  get fallback() {
+    return this.points.top[TOP] > this.windowRef.innerHeight - this.points.bottom[TOP] ? `top` : `bottom`;
   }
 
   checkPosition([top, left], width, height) {
