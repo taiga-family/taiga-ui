@@ -2784,7 +2784,7 @@
       </trans-unit>
       <trans-unit id="97f80ccaa9f470dd13c16975caed35c8684eaf28" datatype="html">
         <source>
-        Maximum number of symbols to type. Does not with with mask together
+        Maximum number of symbols to type. Does not work with mask together
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/abstract/textfield-controller-documentation/textfield-controller-documentation.template.html</context>
