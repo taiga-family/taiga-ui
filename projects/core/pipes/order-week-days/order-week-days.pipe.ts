@@ -6,9 +6,6 @@ import {map} from 'rxjs/operators';
 
 type WeekDays<T> = [T, T, T, T, T, T, T];
 
-/**
- * @internal
- */
 @Pipe({
     name: `tuiOrderWeekDays`,
 })
