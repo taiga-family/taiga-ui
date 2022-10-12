@@ -48,10 +48,17 @@
                 [attr.data-before]="masked"
                 [class.t-collapsed_enable-mask]="isCardCollapsed"
             >
+                <span
+                    #ghost
+                    class="t-ghost"
+                >
+                    {{ formattedCard.slice(-tailLength) }}
+                </span>
+
                 <span class="t-collapsed-wrapper">
                     <span
                         class="t-value"
-                        [class.t-value_collapsed]="isCardCollapsed"
+                        [style.transform]="transform(ghost)"
                     >
                         {{ formattedCard }}
                     </span>
