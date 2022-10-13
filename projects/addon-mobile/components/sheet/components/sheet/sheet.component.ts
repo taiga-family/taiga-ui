@@ -21,6 +21,8 @@ import {fakeSmoothScroll} from '../../ios.hacks';
 import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
 @Component({

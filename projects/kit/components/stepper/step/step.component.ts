@@ -12,6 +12,8 @@ import {TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {identity, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiStepperComponent} from '../stepper.component';
 
 @Component({

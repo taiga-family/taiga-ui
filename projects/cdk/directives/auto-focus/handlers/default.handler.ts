@@ -6,6 +6,8 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {Observable, race, timer} from 'rxjs';
 import {map, skipWhile, take, throttleTime} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TIMEOUT = 1000;

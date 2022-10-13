@@ -2,6 +2,8 @@ import {TemplateRef} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 
 export interface TuiTreeItemContext extends TuiContextWithImplicit<TuiTreeItemComponent> {

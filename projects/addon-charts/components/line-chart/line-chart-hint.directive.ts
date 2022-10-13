@@ -25,6 +25,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiLineChartComponent} from './line-chart.component';
 
 @Directive({

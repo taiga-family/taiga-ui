@@ -25,6 +25,8 @@ import {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiDataListComponent} from '../data-list.component';
 
 function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {

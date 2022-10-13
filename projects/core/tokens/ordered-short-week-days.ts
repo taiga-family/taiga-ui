@@ -1,12 +1,12 @@
 /**
  * TODO: v4.0 delete the whole file
  */
-
 import {inject, InjectionToken} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_FIRST_DAY_OF_WEEK, TUI_SHORT_WEEK_DAYS} from './index';
+import {TUI_FIRST_DAY_OF_WEEK} from './first-day-of-week';
+import {TUI_SHORT_WEEK_DAYS} from './i18n';
 
 /**
  * @deprecated

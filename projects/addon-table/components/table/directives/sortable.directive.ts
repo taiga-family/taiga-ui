@@ -2,6 +2,8 @@ import {Directive, DoCheck, forwardRef, Inject, OnInit} from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiThComponent} from '../th/th.component';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiSortByDirective} from './sort-by.directive';
 import {TuiTableDirective} from './table.directive';
 

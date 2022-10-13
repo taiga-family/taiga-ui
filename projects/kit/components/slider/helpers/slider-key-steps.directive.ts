@@ -23,6 +23,8 @@ import {
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiSliderComponent} from '../slider.component';
 
 @Directive({

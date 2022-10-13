@@ -2,6 +2,8 @@ import {ComponentRef, EmbeddedViewRef, Injectable, TemplateRef} from '@angular/c
 import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {AbstractTuiPortalHostComponent} from './portal-host';
 
 /**

@@ -12,6 +12,8 @@ import {map, startWith} from 'rxjs/operators';
 import {TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiTbodyComponent} from '../tbody/tbody.component';
 
 @Component({

@@ -10,6 +10,8 @@ import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
 import {filter, map} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiSortableDirective} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
