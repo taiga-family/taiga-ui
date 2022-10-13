@@ -1,4 +1,5 @@
 import {
+    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
@@ -6,8 +7,9 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {map, startWith} from 'rxjs/operators';
+import {EMPTY_QUERY, tuiItemsQueryListObservable} from '@taiga-ui/cdk';
+import {ReplaySubject} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
 
 import {TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
@@ -20,27 +22,32 @@ import {TuiTbodyComponent} from '../tbody/tbody.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
+export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
+    implements AfterContentInit
+{
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
-    readonly cells$ = this.cells.changes.pipe(
-        startWith(null),
-        map(() =>
-            this.cells.reduce(
+    private readonly contentReady$ = new ReplaySubject<boolean>(1);
+
+    readonly cells$ = this.contentReady$.pipe(
+        switchMap(() => tuiItemsQueryListObservable(this.cells)),
+        map(cells =>
+            cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
                 {} as Record<keyof T | string, TuiCellDirective>,
             ),
         ),
     );
 
-    readonly item$ = this.body.rows.changes.pipe(
-        startWith(null),
+    readonly item$ = this.contentReady$.pipe(
+        switchMap(() => tuiItemsQueryListObservable(this.body.rows)),
         map(
-            () =>
-                this.body.sorted[
-                    this.body.rows.toArray().findIndex(row => row === this)
-                ] as Record<keyof T | string, any>,
+            rows =>
+                this.body.sorted[rows.findIndex(row => row === this)] as Record<
+                    keyof T | string,
+                    any
+                >,
         ),
     );
 
@@ -50,4 +57,8 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>> {
         @Inject(forwardRef(() => TuiTbodyComponent))
         private readonly body: TuiTbodyComponent<T>,
     ) {}
+
+    ngAfterContentInit(): void {
+        void Promise.resolve().then(() => this.contentReady$.next(true));
+    }
 }
