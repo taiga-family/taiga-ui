@@ -38336,7 +38336,7 @@ const ROUTES = [{
 }, {
   path: `icons`,
   loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
-    return (yield Promise.all(/* import() */[__webpack_require__.e(67350), __webpack_require__.e(58903)]).then(__webpack_require__.bind(__webpack_require__, 58903))).IconsModule;
+    return (yield Promise.all(/* import() */[__webpack_require__.e(67350), __webpack_require__.e(50980)]).then(__webpack_require__.bind(__webpack_require__, 50980))).IconsModule;
   }),
   data: {
     title: `Icons`
