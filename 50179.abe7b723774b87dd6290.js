@@ -1272,6 +1272,8 @@ let TuiLineChartModule = /*#__PURE__*/(() => {
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -1386,6 +1388,8 @@ function tuiLineChartDrivers(charts) {
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -1846,6 +1850,8 @@ TuiLineChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODUL
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -1945,6 +1951,8 @@ function find(value, current) {
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
