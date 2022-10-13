@@ -19,5 +19,10 @@ export class IconsComponent {
         LESS: import(`./customization/customization-icons.style.less?raw`),
     };
 
+    readonly example2: TuiDocExample = {
+        TypeScript: import(`./inline-svg/inline-svg.component.ts?raw`),
+        LESS: import(`./inline-svg/inline-svg.style.less?raw`),
+    };
+
     constructor(@Inject(TUI_DEMO_ICONS) readonly icons: DemoTuiIconsTabs) {}
 }

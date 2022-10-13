@@ -15,7 +15,15 @@
             >
                 Svg
             </a>
-            component and all Taiga UI component accepting icons as input.
+            component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with
+            linear gradient you need to provide
+            <a
+                tuiLink
+                routerLink="/icon-set#sanitizer"
+            >
+                TUI_SANITIZER
+            </a>
+            token, which is responsible for removing malicious code from the svg.
         </p>
 
         <icons-group [icons]="icons[key]">
@@ -40,7 +48,7 @@
         </icons-group>
     </ng-template>
 
-    <ng-template pageTab="SVG Processing">
+    <ng-template pageTab="SVG Tips">
         <tui-doc-example
             id="base"
             i18n-heading
@@ -49,6 +57,16 @@
             [content]="example1"
         >
             <customization-icons-example></customization-icons-example>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="inline"
+            i18n-heading
+            heading="Inline SVG"
+            description="If you use unsafe icons or inline SVG with linear gradient you need to provide TUI_SANITIZER"
+            [content]="example2"
+        >
+            <inline-svg-example></inline-svg-example>
         </tui-doc-example>
     </ng-template>
 </tui-doc-page>

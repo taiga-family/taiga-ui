@@ -2,7 +2,7 @@ import {EXAMPLE_ID, WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities'
 
 describe(`Icons`, () => {
     it(`display icons that are easily customizable`, () => {
-        cy.tuiVisit(`icons/SVG_Processing`);
+        cy.tuiVisit(`icons/SVG_Tips`);
 
         cy.get(`#base`)
             .findByAutomationId(EXAMPLE_ID)
