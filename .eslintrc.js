@@ -41,6 +41,7 @@ module.exports = {
         },
     },
     rules: {
+        'import/no-cycle': 'error',
         'file-progress/activate': 1,
         quotes: 'off',
         '@typescript-eslint/quotes': ['error', 'backtick'],

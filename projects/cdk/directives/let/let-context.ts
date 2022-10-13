@@ -1,6 +1,6 @@
 import {TuiContextWithImplicit} from '@taiga-ui/cdk/interfaces';
 
-import {TuiLetDirective} from './let.directive';
+import type {TuiLetDirective} from './let.directive';
 
 /**
  * @internal

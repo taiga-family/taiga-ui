@@ -7,6 +7,8 @@ import {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {
     TUI_DOC_CUSTOMIZATION_PROVIDERS,
     TUI_DOC_CUSTOMIZATION_VARS,

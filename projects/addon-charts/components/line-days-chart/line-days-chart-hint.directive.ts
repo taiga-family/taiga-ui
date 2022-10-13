@@ -24,6 +24,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
 // TODO: Consider extending TuiLineChartHintDirective

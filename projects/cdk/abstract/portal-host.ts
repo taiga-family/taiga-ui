@@ -13,6 +13,8 @@ import {
 } from '@angular/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {AbstractTuiPortalService} from './portal-service';
 
 /**

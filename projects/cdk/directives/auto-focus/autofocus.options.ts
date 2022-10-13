@@ -11,7 +11,10 @@ import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {Observable} from 'rxjs';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
+// eslint-disable-next-line import/no-cycle
 import {TuiIosAutofocusHandler} from './handlers/ios.handler';
 
 export interface TuiAutofocusHandler {

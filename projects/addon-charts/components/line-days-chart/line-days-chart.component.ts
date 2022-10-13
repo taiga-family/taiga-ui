@@ -28,6 +28,8 @@ import {TuiDriver, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];

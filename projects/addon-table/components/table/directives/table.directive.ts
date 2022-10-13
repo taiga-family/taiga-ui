@@ -14,6 +14,8 @@ import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 
 @Directive({

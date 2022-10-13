@@ -2,7 +2,7 @@ import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Observer} from 'rxjs';
 
-import {TuiSheetOptions} from './sheet-options';
+import type {TuiSheetOptions} from './sheet-options';
 
 export interface TuiSheet<O, I = undefined>
     extends TuiSheetOptions<I, O>,

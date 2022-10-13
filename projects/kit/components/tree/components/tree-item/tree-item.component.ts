@@ -14,13 +14,16 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-import {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
+import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {
     TUI_TREE_CONTENT,
     TUI_TREE_CONTROLLER,
     TUI_TREE_LEVEL,
     TUI_TREE_NODE,
 } from '../../misc/tree.tokens';
+// eslint-disable-next-line import/no-cycle
 import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
 
 @Component({

@@ -12,6 +12,8 @@ import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {tuiPx} from '@taiga-ui/cdk/utils';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 @Directive()

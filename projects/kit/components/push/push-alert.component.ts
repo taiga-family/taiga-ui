@@ -7,10 +7,9 @@ import {
     tuiHeightCollapse,
     tuiSlideInRight,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPushOptions} from './push.options';
-import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({
     selector: `tui-push-alert`,
@@ -33,6 +32,6 @@ export class TuiPushAlertComponent {
     ) {}
 
     get isDirective(): boolean {
-        return this.context.content instanceof TuiPushAlertDirective;
+        return this.context.content instanceof PolymorpheusTemplate;
     }
 }

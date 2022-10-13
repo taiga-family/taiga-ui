@@ -3,7 +3,7 @@ import {TuiTreeLoader} from '@taiga-ui/kit';
 import {Observable, timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
-import {Item} from './index';
+import type {Item} from './index';
 
 @Injectable()
 export class TreeLoader implements TuiTreeLoader<Item> {

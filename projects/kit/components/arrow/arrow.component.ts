@@ -7,6 +7,8 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
 
 @Component({

@@ -29,6 +29,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiOptionComponent} from './option/option.component';
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
