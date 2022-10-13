@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[58903],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[50980],{
 
-/***/ 58903:
+/***/ 50980:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -386,6 +386,101 @@ IconsGroupComponent.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.
 var button_component = __webpack_require__(76189);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/example/example.component.ts + 1 modules
 var example_component = __webpack_require__(19669);
+// EXTERNAL MODULE: ./node_modules/@tinkoff/ng-dompurify/fesm2015/tinkoff-ng-dompurify.js
+var tinkoff_ng_dompurify = __webpack_require__(51904);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/markup/icons/inline-svg/inline-svg.component.ts
+
+
+
+
+let InlineSvgExampleComponent = /*#__PURE__*/(() => {
+  class InlineSvgExampleComponent {
+    constructor() {
+      this.svg = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 200"
+     preserveAspectRatio="xMidYMid slice"
+     id="svg">
+
+    <linearGradient id="grad">
+        <stop class="stop stop--1"
+              stop-color="crimson"
+              offset="0"></stop>
+        <stop class="stop stop--2"
+              stop-color="gold"
+              offset="49%"></stop>
+        <stop class="stop stop--2"
+              stop-color="gold"
+              offset="51%"></stop>
+        <stop class="stop stop--3"
+              stop-color="teal"
+              offset="100%"></stop>
+    </linearGradient>
+
+    <pattern id="pattern"
+              viewBox="0 0 50 50"
+              width="2" height="2"
+             patternUnits="userSpaceOnUse">
+        <path stroke="black"
+              stroke-width="6"
+              d="M0,50 50,0
+                 "></path>
+    </pattern>
+
+    <mask id="mask">
+        <rect width="100%" height="100%"
+          fill="white">
+        </rect>
+        <rect width="100%" height="100%"
+          fill="url(#pattern)">
+        </rect>
+    </mask>
+
+    <g mask="url(#mask)">
+        <text x="50.7%" y="50.7%" dy=".25em"
+          text-anchor="middle"
+          fill="none"
+          stroke="url(#grad)"
+          stroke-width=".25"
+          >Text</text>
+       <text x="50%" y="50%" dy=".25em"
+          text-anchor="middle"
+          fill="url(#grad)"
+          >Text</text>
+    </g>
+</svg>`;
+    }
+
+  }
+
+  InlineSvgExampleComponent.ɵfac = function InlineSvgExampleComponent_Factory(t) {
+    return new (t || InlineSvgExampleComponent)();
+  };
+
+  InlineSvgExampleComponent.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: InlineSvgExampleComponent,
+    selectors: [["inline-svg-example"]],
+    features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([{
+      provide: core.TUI_SANITIZER,
+      useClass: tinkoff_ng_dompurify/* NgDompurifySanitizer */.RB
+    }])],
+    decls: 1,
+    vars: 1,
+    consts: [[1, "example", 3, "src"]],
+    template: function InlineSvgExampleComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelement */._UZ(0, "tui-svg", 0);
+      }
+
+      if (rf & 2) {
+        fesm2015_core/* ɵɵproperty */.Q6J("src", ctx.svg);
+      }
+    },
+    directives: [svg_component/* TuiSvgComponent */.P],
+    styles: [".example[_ngcontent-%COMP%]{font-family:Georgia,sans-serif;font-size:5rem;font-weight:bold;width:6.25rem;height:6.25rem;position:relative}.example[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%]{position:absolute;width:100%;height:100%}"]
+  });
+  return InlineSvgExampleComponent;
+})();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/markup/icons/icons.component.ts
 
 
@@ -400,12 +495,13 @@ var example_component = __webpack_require__(19669);
 
 
 
-function IconsComponent_1_ng_template_0_ng_template_4_Template(rf, ctx) {
+
+function IconsComponent_1_ng_template_0_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
     const _r8 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 8);
-    fesm2015_core/* ɵɵlistener */.NdJ("click", function IconsComponent_1_ng_template_0_ng_template_4_Template_button_click_0_listener() {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 9);
+    fesm2015_core/* ɵɵlistener */.NdJ("click", function IconsComponent_1_ng_template_0_ng_template_5_Template_button_click_0_listener() {
       const restoredCtx = fesm2015_core/* ɵɵrestoreView */.CHM(_r8);
       const icon_r5 = restoredCtx.icon;
       const copyPath_r6 = restoredCtx.copyPath;
@@ -426,24 +522,25 @@ function IconsComponent_1_ng_template_0_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
     fesm2015_core/* ɵɵi18nStart */.tHW(1, 4);
     fesm2015_core/* ɵɵelement */._UZ(2, "a", 5);
+    fesm2015_core/* ɵɵelement */._UZ(3, "a", 6);
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(3, "icons-group", 6);
-    fesm2015_core/* ɵɵtemplate */.YNc(4, IconsComponent_1_ng_template_0_ng_template_4_Template, 1, 2, "ng-template", 7);
+    fesm2015_core/* ɵɵelementStart */.TgZ(4, "icons-group", 7);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, IconsComponent_1_ng_template_0_ng_template_5_Template, 1, 2, "ng-template", 8);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
     const key_r2 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     const ctx_r3 = fesm2015_core/* ɵɵnextContext */.oxw();
-    fesm2015_core/* ɵɵadvance */.xp6(3);
+    fesm2015_core/* ɵɵadvance */.xp6(4);
     fesm2015_core/* ɵɵproperty */.Q6J("icons", ctx_r3.icons[key_r2]);
   }
 }
 
 function IconsComponent_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵtemplate */.YNc(0, IconsComponent_1_ng_template_0_Template, 5, 1, "ng-template", 3);
+    fesm2015_core/* ɵɵtemplate */.YNc(0, IconsComponent_1_ng_template_0_Template, 6, 1, "ng-template", 3);
   }
 
   if (rf & 2) {
@@ -454,14 +551,19 @@ function IconsComponent_1_Template(rf, ctx) {
 
 function IconsComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-example", 9);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-example", 10);
     fesm2015_core/* ɵɵelement */._UZ(1, "customization-icons-example");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-example", 11);
+    fesm2015_core/* ɵɵelement */._UZ(3, "inline-svg-example");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
     const ctx_r1 = fesm2015_core/* ɵɵnextContext */.oxw();
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r1.example1);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r1.example2);
   }
 }
 
@@ -474,6 +576,10 @@ let IconsComponent = /*#__PURE__*/(() => {
         TypeScript: __webpack_require__.e(/* import() */ 98667).then(__webpack_require__.t.bind(__webpack_require__, 98667, 17)),
         HTML: __webpack_require__.e(/* import() */ 82580).then(__webpack_require__.t.bind(__webpack_require__, 82580, 17)),
         LESS: __webpack_require__.e(/* import() */ 39993).then(__webpack_require__.t.bind(__webpack_require__, 39993, 17))
+      };
+      this.example2 = {
+        TypeScript: __webpack_require__.e(/* import() */ 4262).then(__webpack_require__.t.bind(__webpack_require__, 4262, 17)),
+        LESS: __webpack_require__.e(/* import() */ 23567).then(__webpack_require__.t.bind(__webpack_require__, 23567, 17))
       };
     }
 
@@ -501,15 +607,17 @@ let IconsComponent = /*#__PURE__*/(() => {
       let i18n_2;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1756857398819821600$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS___3 = goog.getMsg(" These icons can be used by name in {$startLink} Svg {$closeLink} component and all Taiga UI component accepting icons as input. ", {
+        const MSG_EXTERNAL_2907890725891199102$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS___3 = goog.getMsg(" These icons can be used by name in {$startLink} Svg {$closeLink} component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with linear gradient you need to provide {$startLink_1} TUI_SANITIZER {$closeLink} token, which is responsible for removing malicious code from the svg. ", {
           "startLink": "\uFFFD#2\uFFFD",
-          "closeLink": "\uFFFD/#2\uFFFD"
+          "closeLink": "[\uFFFD/#2\uFFFD|\uFFFD/#3\uFFFD]",
+          "startLink_1": "\uFFFD#3\uFFFD"
         });
-        i18n_2 = MSG_EXTERNAL_1756857398819821600$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS___3;
+        i18n_2 = MSG_EXTERNAL_2907890725891199102$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS___3;
       } else {
-        i18n_2 = $localize`:␟839dd4cb6fbcbf0e53e486e5aaa3fa92826a5fe6␟1756857398819821600: These icons can be used by name in ${"\uFFFD#2\uFFFD"}:START_LINK: Svg ${"\uFFFD/#2\uFFFD"}:CLOSE_LINK: component and all Taiga UI component accepting icons as input. `;
+        i18n_2 = $localize`:␟e859e9d6d9e6d5c5673c7e933333b5e38659df82␟2907890725891199102: These icons can be used by name in ${"\uFFFD#2\uFFFD"}:START_LINK: Svg ${"[\uFFFD/#2\uFFFD|\uFFFD/#3\uFFFD]"}:CLOSE_LINK: component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with linear gradient you need to provide ${"\uFFFD#3\uFFFD"}:START_LINK_1: TUI_SANITIZER ${"[\uFFFD/#2\uFFFD|\uFFFD/#3\uFFFD]"}:CLOSE_LINK: token, which is responsible for removing malicious code from the svg. `;
       }
 
+      i18n_2 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_2);
       let i18n_4;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
@@ -528,13 +636,22 @@ let IconsComponent = /*#__PURE__*/(() => {
         i18n_6 = $localize`:␟788b57cb07c04232d638748cd49226ff9e13f8ca␟5793544987096948211:Customization`;
       }
 
-      return [["header", i18n_0], [4, "ngFor", "ngForOf"], ["pageTab", "SVG Processing"], [3, "pageTab"], i18n_2, ["tuiLink", "", "routerLink", "/components/svg"], [3, "icons"], ["iconGroup", ""], ["tuiIconButton", "", "type", "button", "size", "m", "title", i18n_4, "appearance", "icon", 1, "icon", 3, "icon", "click"], ["id", "base", "heading", i18n_6, "description", "You can customize the path to your icons and inherit color", 3, "content"]];
+      let i18n_8;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_7271569691352980953$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS__9 = goog.getMsg("Inline SVG");
+        i18n_8 = MSG_EXTERNAL_7271569691352980953$$PROJECTS_DEMO_SRC_MODULES_MARKUP_ICONS_ICONS_COMPONENT_TS__9;
+      } else {
+        i18n_8 = $localize`:␟eb5831b84b2c39de67e05da802440d5df78dc350␟7271569691352980953:Inline SVG`;
+      }
+
+      return [["header", i18n_0], [4, "ngFor", "ngForOf"], ["pageTab", "SVG Tips"], [3, "pageTab"], i18n_2, ["tuiLink", "", "routerLink", "/components/svg"], ["tuiLink", "", "routerLink", "/icon-set#sanitizer"], [3, "icons"], ["iconGroup", ""], ["tuiIconButton", "", "type", "button", "size", "m", "title", i18n_4, "appearance", "icon", 1, "icon", 3, "icon", "click"], ["id", "base", "heading", i18n_6, "description", "You can customize the path to your icons and inherit color", 3, "content"], ["id", "inline", "heading", i18n_8, "description", "If you use unsafe icons or inline SVG with linear gradient you need to provide TUI_SANITIZER", 3, "content"]];
     },
     template: function IconsComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
         fesm2015_core/* ɵɵtemplate */.YNc(1, IconsComponent_1_Template, 1, 1, undefined, 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(2, IconsComponent_ng_template_2_Template, 2, 1, "ng-template", 2);
+        fesm2015_core/* ɵɵtemplate */.YNc(2, IconsComponent_ng_template_2_Template, 4, 2, "ng-template", 2);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
@@ -543,7 +660,7 @@ let IconsComponent = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.keys);
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, common/* NgForOf */.sg, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, IconsGroupComponent, IconsGroupDirective, button_component/* TuiButtonComponent */.v, example_component/* TuiDocExampleComponent */.f, IconsCustomizationComponent],
+    directives: [page_component/* TuiDocPageComponent */.q, common/* NgForOf */.sg, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, IconsGroupComponent, IconsGroupDirective, button_component/* TuiButtonComponent */.v, example_component/* TuiDocExampleComponent */.f, IconsCustomizationComponent, InlineSvgExampleComponent],
     styles: [".icon[_ngcontent-%COMP%]{margin:.75rem;border-radius:0}"],
     changeDetection: 0
   });
@@ -593,6 +710,7 @@ let IconsGroupModule = /*#__PURE__*/(() => {
 
 
 
+
 let IconsModule = /*#__PURE__*/(() => {
   class IconsModule {}
 
@@ -611,7 +729,7 @@ let IconsModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(IconsModule, {
-    declarations: [IconsComponent, IconsCustomizationComponent],
+    declarations: [IconsComponent, IconsCustomizationComponent, InlineSvgExampleComponent],
     imports: [common/* CommonModule */.ez, core.TuiLinkModule, core.TuiSvgModule, core.TuiButtonModule, public_api/* TuiAddonDocModule */.fV, IconsGroupModule, router/* RouterModule */.Bz],
     exports: [IconsComponent]
   });
