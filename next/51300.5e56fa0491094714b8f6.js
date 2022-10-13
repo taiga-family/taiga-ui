@@ -683,6 +683,8 @@ let TreeLoader = /*#__PURE__*/(() => {
 // EXTERNAL MODULE: ./projects/core/components/loader/loader.component.ts
 var loader_component = __webpack_require__(23184);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/tree/examples/7/index.ts
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 

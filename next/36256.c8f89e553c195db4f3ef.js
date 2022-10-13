@@ -9155,6 +9155,8 @@ TuiRowDirective.ɵdir = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__/
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -9217,6 +9219,8 @@ TuiSortByDirective.ɵdir = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5
 /* harmony import */ var _sort_by_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61006);
 /* harmony import */ var _table_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19582);
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -9286,6 +9290,8 @@ let TuiSortableDirective = /*#__PURE__*/(() => {
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -9530,6 +9536,8 @@ const TUI_TABLE_PROVIDER = [_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.TuiDestro
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -9586,6 +9594,8 @@ const TUI_TABLE_PROVIDERS = [{
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -10165,6 +10175,8 @@ TuiThComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__/*
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 

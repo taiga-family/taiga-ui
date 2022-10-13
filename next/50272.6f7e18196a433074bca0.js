@@ -50,6 +50,8 @@ const CSS_VARS = new fesm2015_core/* InjectionToken */.OlP(`[CSS_VARS]: CSS vars
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 const TUI_DOC_CUSTOMIZATION_VARS = new fesm2015_core/* InjectionToken */.OlP(`[TUI_DOC_CUSTOMIZATION_VARS]: CSS variables map`);
@@ -85,6 +87,8 @@ var accordion_item_content_directive = __webpack_require__(7406);
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
