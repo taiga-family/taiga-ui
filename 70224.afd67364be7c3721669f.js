@@ -13949,7 +13949,7 @@ const TuiTabExtension = tiptap_core_esm.Extension.create({
 
 /***/ }),
 
-/***/ 43904:
+/***/ 75276:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -14497,7 +14497,7 @@ const Document = tiptap_core_esm.Node.create({
  //# sourceMappingURL=tiptap-extension-document.esm.js.map
 // EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
 var prosemirror_transform_dist = __webpack_require__(38480);
-;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-dropcursor/node_modules/prosemirror-dropcursor/dist/index.js
+;// CONCATENATED MODULE: ./node_modules/prosemirror-dropcursor/dist/index.js
 
 
 /**
@@ -16980,7 +16980,7 @@ var editor_tool = __webpack_require__(48699);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/background-color/index.ts + 1 modules
 var background_color = __webpack_require__(15736);
 ;// CONCATENATED MODULE: ./projects/addon-editor/extensions/default-editor-extensions/default-editor-extensions.ts
-const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 43904)).then(({
+const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
   StarterKit
 }) => StarterKit).then(extension => extension.configure({
   heading: {
@@ -17010,7 +17010,7 @@ const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_
   openOnClick: false
 })), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 15736)).then(({
   BackgroundColor
-}) => BackgroundColor), __webpack_require__.e(/* import() */ 72585).then(__webpack_require__.bind(__webpack_require__, 72585)).then(({
+}) => BackgroundColor), __webpack_require__.e(/* import() */ 88729).then(__webpack_require__.bind(__webpack_require__, 88729)).then(({
   default: Table
 }) => Table.configure({
   resizable: true,
@@ -17047,7 +17047,7 @@ var image_editor = __webpack_require__(25039);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/indent-outdent/index.ts + 1 modules
 var indent_outdent = __webpack_require__(12177);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/starter-kit/index.ts + 23 modules
-var starter_kit = __webpack_require__(43904);
+var starter_kit = __webpack_require__(75276);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/table-cell-background/index.ts + 1 modules
 var table_cell_background = __webpack_require__(51919);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/tiptap-node-view/component-render.ts
@@ -28602,7 +28602,7 @@ function captureKeyDown(view, event) {
 
 function serializeForClipboard(view, slice) {
   view.someProp("transformCopied", f => {
-    slice = f(slice);
+    slice = f(slice, view);
   });
   let context = [],
       {
@@ -28643,7 +28643,7 @@ function serializeForClipboard(view, slice) {
   }
 
   if (firstChild && firstChild.nodeType == 1) firstChild.setAttribute("data-pm-slice", `${openStart} ${openEnd}${wrappers ? ` -${wrappers}` : ""} ${JSON.stringify(context)}`);
-  let text = view.someProp("clipboardTextSerializer", f => f(slice)) || slice.content.textBetween(0, slice.content.size, "\n\n");
+  let text = view.someProp("clipboardTextSerializer", f => f(slice, view)) || slice.content.textBetween(0, slice.content.size, "\n\n");
   return {
     dom: wrap,
     text
@@ -28659,10 +28659,10 @@ function parseFromClipboard(view, text, html, plainText, $context) {
 
   if (asText) {
     view.someProp("transformPastedText", f => {
-      text = f(text, inCode || plainText);
+      text = f(text, inCode || plainText, view);
     });
     if (inCode) return text ? new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice */ .p2(prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Fragment.from */ .HY.from(view.state.schema.text(text.replace(/\r\n?/g, "\n"))), 0, 0) : prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice.empty */ .p2.empty;
-    let parsed = view.someProp("clipboardTextParser", f => f(text, $context, plainText));
+    let parsed = view.someProp("clipboardTextParser", f => f(text, $context, plainText, view));
 
     if (parsed) {
       slice = parsed;
@@ -28680,7 +28680,7 @@ function parseFromClipboard(view, text, html, plainText, $context) {
     }
   } else {
     view.someProp("transformPastedHTML", f => {
-      html = f(html);
+      html = f(html, view);
     });
     dom = readHTML(html);
     if (webkit) restoreReplacedSpaces(dom);
@@ -28688,7 +28688,14 @@ function parseFromClipboard(view, text, html, plainText, $context) {
 
   let contextNode = dom && dom.querySelector("[data-pm-slice]");
   let sliceData = contextNode && /^(\d+) (\d+)(?: -(\d+))? (.*)/.exec(contextNode.getAttribute("data-pm-slice") || "");
-  if (sliceData && sliceData[3]) for (let i = +sliceData[3]; i > 0 && dom.firstChild; i--) dom = dom.firstChild;
+  if (sliceData && sliceData[3]) for (let i = +sliceData[3]; i > 0; i--) {
+    let child = dom.firstChild;
+
+    while (child && child.nodeType != 1) child = child.nextSibling;
+
+    if (!child) break;
+    dom = child;
+  }
 
   if (!slice) {
     let parser = view.someProp("clipboardParser") || view.someProp("domParser") || prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .DOMParser.fromSchema */ .aw.fromSchema(view.state.schema);
@@ -28725,7 +28732,7 @@ function parseFromClipboard(view, text, html, plainText, $context) {
   }
 
   view.someProp("transformPasted", f => {
-    slice = f(slice);
+    slice = f(slice, view);
   });
   return slice;
 }
@@ -29545,7 +29552,7 @@ editHandlers.drop = (view, _event) => {
 
   if (slice) {
     view.someProp("transformPasted", f => {
-      slice = f(slice);
+      slice = f(slice, view);
     });
   } else {
     slice = parseFromClipboard(view, event.dataTransfer.getData(brokenClipboardAPI ? "Text" : "text/plain"), brokenClipboardAPI ? null : event.dataTransfer.getData("text/html"), false, $mouse);
@@ -30881,7 +30888,7 @@ function readDOMChange(view, from, to, typeOver, addedNodes) {
   view.input.lastKeyCode = null;
   let change = findDiff(compare.content, parse.doc.content, parse.from, preferredPos, preferredSide);
 
-  if ((ios && view.input.lastIOSEnter > Date.now() - 225 || android) && addedNodes.some(n => n.nodeName == "DIV" || n.nodeName == "P") && (!change || change.endA >= change.endB) && view.someProp("handleKeyDown", f => f(view, keyEvent(13, "Enter")))) {
+  if ((ios && view.input.lastIOSEnter > Date.now() - 225 || android) && addedNodes.some(n => n.nodeName == "DIV" || n.nodeName == "P" || n.nodeName == "LI") && (!change || change.endA >= change.endB) && view.someProp("handleKeyDown", f => f(view, keyEvent(13, "Enter")))) {
     view.input.lastIOSEnter = 0;
     return;
   }
