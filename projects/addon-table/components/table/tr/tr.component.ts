@@ -18,14 +18,6 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 // eslint-disable-next-line import/no-cycle
 import {TuiTbodyComponent} from '../tbody/tbody.component';
 
-/**
- * @deprecated can be dropped if you use `*ngFor="let item of data | tuiTableSort"`
- * (without {@link TuiRowDirective *tuiRow}).
- * See example {@link https://taiga-ui.dev/components/table#basic}
- * ___
- * TODO v4.0 delete it.
- * Don't forget to delete {@link TuiCellDirective}!
- */
 @Component({
     selector: `tr[tuiTr]`,
     templateUrl: `./tr.template.html`,
@@ -54,6 +46,9 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         switchMap(() => tuiItemsQueryListObservable(this.body.rows)),
         map(
             rows =>
+                /**
+                 * TODO v4.0 replace `this.body.sorted` with `this.body.data` (dont forget to drop `sorted`-getter).
+                 */
                 this.body.sorted[rows.findIndex(row => row === this)] as Record<
                     keyof T | string,
                     any

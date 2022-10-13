@@ -32,12 +32,19 @@
         </tr>
     </thead>
     <tbody
+        *tuiLet="data | tuiTableSort as sortedData"
         tuiTbody
-        [data]="data"
+        [data]="sortedData"
     >
-        <tr *ngFor="let item of data | tuiTableSort">
+        <tr
+            *ngFor="let item of sortedData"
+            tuiTr
+        >
             <ng-container *ngFor="let col of columns">
-                <td tuiTd>
+                <td
+                    *tuiCell="col"
+                    tuiTd
+                >
                     {{ item[col] }}
                 </td>
             </ng-container>

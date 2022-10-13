@@ -175,6 +175,14 @@
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
                             i18n
+                            documentationPropertyName="data"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="readonly T[]"
+                        >
+                            Data to display
+                        </ng-template>
+                        <ng-template
+                            i18n
                             documentationPropertyName="heading"
                             documentationPropertyMode="input"
                             documentationPropertyType="PolymorpheusContent"
@@ -190,6 +198,15 @@
                             Open/collapsed state of the group
                         </ng-template>
                     </tui-doc-documentation>
+
+                    <hr />
+
+                    <h2>tr[tuiTr]</h2>
+                    <p>
+                        Used inside
+                        <code>tbody</code>
+                        to layout cells.
+                    </p>
 
                     <hr />
 
@@ -219,6 +236,20 @@
                         <code>tr</code>
                         element inside
                         <code>thead</code>
+                    </p>
+
+                    <hr />
+
+                    <h2>*tuiCell="key"</h2>
+                    <p>
+                        Used to define template for
+                        <em>cell</em>
+                        for particular key
+                    </p>
+                    <p>
+                        Goes inside
+                        <code>tr</code>
+                        element
                     </p>
                 </ng-template>
             </tui-accordion-item>

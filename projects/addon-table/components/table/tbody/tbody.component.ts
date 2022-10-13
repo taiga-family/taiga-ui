@@ -29,13 +29,6 @@ import {TuiTrComponent} from '../tr/tr.component';
     providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
-    /**
-     * @deprecated can be dropped if you use `*ngFor="let item of data | tuiTableSort"`
-     * (without {@link TuiRowDirective *tuiRow}).
-     * See example {@link https://taiga-ui.dev/components/table#basic}
-     * ___
-     * TODO v4.0 delete it.
-     */
     @Input()
     @tuiDefaultProp()
     data: readonly T[] = [];

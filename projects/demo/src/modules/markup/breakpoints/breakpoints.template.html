@@ -21,9 +21,18 @@
                     </th>
                 </tr>
             </thead>
-            <tbody tuiTbody>
-                <tr *ngFor="let breakpoint of breakpoints">
-                    <td tuiTd>
+            <tbody
+                tuiTbody
+                [data]="breakpoints"
+            >
+                <tr
+                    *ngFor="let breakpoint of breakpoints"
+                    tuiTr
+                >
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
                         <tui-doc-copy
                             i18n
                             class="copy"
@@ -32,9 +41,6 @@
                             Copy
                         </tui-doc-copy>
                         {{ breakpoint.name }}
-                    </td>
-                    <td tuiTd>
-                        {{ breakpoint.value }}
                     </td>
                 </tr>
             </tbody>

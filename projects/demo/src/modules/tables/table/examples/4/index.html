@@ -73,23 +73,30 @@
             </tr>
         </thead>
         <tbody
+            *tuiLet="data | tuiTableSort as sortedData"
             tuiTbody
-            [data]="data"
+            [data]="sortedData"
         >
-            <tr *ngFor="let item of data | tuiTableSort">
+            <tr
+                *ngFor="let item of sortedData"
+                tuiTr
+            >
                 <td
+                    *tuiCell="'name'"
                     tuiTd
                     [class.match]="isMatch(item.name)"
                 >
                     {{ item.name }}
                 </td>
                 <td
+                    *tuiCell="'dob'"
                     tuiTd
                     [class.match]="isMatch(item.dob)"
                 >
                     {{ item.dob }}
                 </td>
                 <td
+                    *tuiCell="'age'"
                     tuiTd
                     [class.match]="isMatch(getAge(item))"
                 >
