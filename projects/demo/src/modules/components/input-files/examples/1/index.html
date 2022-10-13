@@ -7,7 +7,7 @@
 
 <tui-files class="tui-space_top-1">
     <tui-file
-        *ngIf="control.valueChanges | async as file"
+        *ngIf="loadedFiles$ | async as file"
         [file]="file"
         (removed)="removeFile()"
     ></tui-file>
@@ -17,5 +17,11 @@
         state="error"
         [file]="file"
         (removed)="clearRejected()"
+    ></tui-file>
+
+    <tui-file
+        *ngIf="loadingFiles$ | async as file"
+        state="loading"
+        [file]="file"
     ></tui-file>
 </tui-files>
