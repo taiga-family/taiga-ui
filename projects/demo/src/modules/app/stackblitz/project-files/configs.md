@@ -66,10 +66,10 @@
     "declaration": false,
     "downlevelIteration": false,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "esnext",
+    "target": "es2015",
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
   },
