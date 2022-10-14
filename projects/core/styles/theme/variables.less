@@ -148,4 +148,10 @@
     --tui-chart-2: var(--tui-support-21);
     --tui-chart-3: var(--tui-support-11);
     --tui-chart-4: var(--tui-base-05);
+    // Days of week
+    --tui-day-of-week-6: var(--tui-negative);
+    --tui-day-of-week-7: var(--tui-negative);
+    each(range(1, 5, 1), {
+        --tui-day-of-week-@{index}: var(--tui-text-01);
+    });
 }

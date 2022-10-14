@@ -68,6 +68,22 @@
             </ng-template>
             <tui-calendar-example-4></tui-calendar-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="color"
+            i18n-heading
+            heading="Weekend color customization"
+            [content]="example5"
+            [description]="colorDescription"
+        >
+            <ng-template #colorDescription>
+                Use css variables
+                <code>--tui-day-of-week-(index)</code>
+                to change the color of the day of the week. (The default color for Saturday and Sunday is
+                var(--tui-negative))
+            </ng-template>
+            <tui-calendar-example-5></tui-calendar-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

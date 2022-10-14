@@ -16,8 +16,8 @@
                 <div
                     *ngIf="!itemIsUnavailable(item) || showAdjacent"
                     automation-id="tui-primitive-calendar__cell"
+                    style.color="var(--tui-day-of-week-{{ colIndex + 1 }})"
                     class="t-cell"
-                    [class.t-cell_weekend]="item.isWeekend"
                     [class.t-cell_today]="itemIsToday(item)"
                     [class.t-cell_interval]="itemIsInterval(item)"
                     [attr.data-range]="getItemRange(item)"
