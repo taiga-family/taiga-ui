@@ -1,12 +1,15 @@
 @import 'taiga-ui-local';
 
+@height: 6.75rem;
+@heightCounter: 7.875rem;
+
 :host {
     position: relative;
     z-index: 0;
     display: flex;
     font: var(--tui-font-text-m);
     flex-direction: column;
-    min-height: var(--tui-textarea-height);
+    min-height: var(--tui-textarea-height, @height);
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
@@ -15,7 +18,15 @@
     }
 
     &[data-size='m'] {
-        font: var(--tui-font-text-s);
+        --tui-textarea-height: (@height - 1.25rem);
+    }
+
+    &[data-size='m']._has-counter {
+        --tui-textarea-height: (@heightCounter - 1.25rem);
+    }
+
+    &[data-size='l']._has-counter {
+        --tui-textarea-height: @heightCounter;
     }
 }
 

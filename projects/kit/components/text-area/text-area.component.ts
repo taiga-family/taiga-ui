@@ -42,9 +42,6 @@ export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
 
-const DEFAULT_HEIGHT_REM = 6.75;
-const DEFAULT_HEIGHT_COUNTER_REM = 7.875;
-
 @Component({
     selector: `tui-text-area`,
     templateUrl: `./text-area.template.html`,
@@ -143,13 +140,6 @@ export class TuiTextAreaComponent
     @HostBinding(`class._has-value`)
     get hasValue(): boolean {
         return this.value !== ``;
-    }
-
-    @HostBinding(`style.--tui-textarea-height.rem`)
-    get minHeight(): number {
-        const height = this.hasCounter ? DEFAULT_HEIGHT_COUNTER_REM : DEFAULT_HEIGHT_REM;
-
-        return this.size === `m` ? height - 1.25 : height;
     }
 
     @HostBinding(`class._has-counter`)
