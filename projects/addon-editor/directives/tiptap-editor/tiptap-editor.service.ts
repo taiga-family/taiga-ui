@@ -315,4 +315,14 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     removeGroup(): void {
         this.editor.commands.removeGroup();
     }
+
+    setAnchor(anchor: string): void {
+        const id = anchor.replace(`#`, ``);
+
+        this.editor.commands.setAnchor(id);
+    }
+
+    removeAnchor(): void {
+        this.editor.commands.removeAnchor();
+    }
 }

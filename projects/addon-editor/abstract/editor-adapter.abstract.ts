@@ -73,4 +73,6 @@ export abstract class AbstractTuiEditor {
     abstract removeDetails(): void;
     abstract setGroup(): void;
     abstract removeGroup(): void;
+    abstract setAnchor(id: string): void;
+    abstract removeAnchor(): void;
 }

@@ -38,6 +38,7 @@ export const TUI_CHINESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         insertTable: `插入表格`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `合并单元格`,
         splitCells: `拆分单元格`,
         rowsColumnsManaging: `管理行和列`,

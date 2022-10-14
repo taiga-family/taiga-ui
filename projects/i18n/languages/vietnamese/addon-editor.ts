@@ -38,6 +38,7 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         insertTable: `Chèn bảng`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Hợp nhất ô`,
         splitCells: `Tách ô`,
         rowsColumnsManaging: `Quản lý hàng và cột`,

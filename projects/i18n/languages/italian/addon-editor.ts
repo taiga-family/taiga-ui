@@ -38,6 +38,7 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         insertTable: `Inserisci tabella`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Unisci celle`,
         splitCells: `Dividi celle`,
         rowsColumnsManaging: `Gestione righe e colonne`,

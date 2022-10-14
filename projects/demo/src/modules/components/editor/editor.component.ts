@@ -111,6 +111,11 @@ export class ExampleEditorComponent extends AbstractExampleTuiControl {
         './imgbb.service.ts': import(`./examples/7/imgbb.service?raw`),
     };
 
+    readonly example8: TuiDocExample = {
+        TypeScript: import(`./examples/8/index.ts?raw`),
+        HTML: import(`./examples/8/index.html?raw`),
+    };
+
     readonly control = new FormControl();
 
     readonly toolsVariants: readonly TuiEditorTool[][] = [

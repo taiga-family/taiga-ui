@@ -36,7 +36,7 @@ export function tuiGetDemoContent(): Cypress.Chainable<JQuery> {
 }
 
 export function tuiClearEditor(): void {
-    tuiGetContentEditable().type(`{selectall}{backspace}`);
+    tuiGetContentEditable().type(`{selectall}{backspace}`, {force: true});
 }
 
 export function tuiGetNgModelValue(): Cypress.Chainable<JQuery> {
@@ -57,7 +57,10 @@ export function tuiTrashValueByEditLink(): void {
 }
 
 export function tuiFocusToStartInEditor(): void {
-    tuiGetContentEditable().type(`{moveToStart}`).click().wait(WAIT_BEFORE_SCREENSHOT);
+    tuiGetContentEditable()
+        .type(`{moveToStart}`, {force: true})
+        .click({force: true})
+        .wait(WAIT_BEFORE_SCREENSHOT);
 }
 
 export function tuiInsertLink(): void {

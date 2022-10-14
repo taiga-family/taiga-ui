@@ -5,6 +5,7 @@ import {
     EventEmitter,
     HostListener,
     Inject,
+    Input,
     Output,
 } from '@angular/core';
 import {tuiIsElement} from '@taiga-ui/cdk';
@@ -12,6 +13,11 @@ import {tuiIsElement} from '@taiga-ui/cdk';
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
 const END = MAX_LENGTH - START - 10;
+const HASH_PREFIX = `#` as const;
+const HTTP_PREFIX = `http://` as const;
+const HTTPS_PREFIX = `https://` as const;
+
+type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTPS_PREFIX | typeof HTTP_PREFIX;
 
 @Component({
     selector: `tui-edit-link`,
@@ -20,17 +26,21 @@ const END = MAX_LENGTH - START - 10;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
+    @Input()
+    prefix: TuiLinkPrefix = this.makeDefaultPrefix();
+
+    @Input()
+    isOnlyAnchorMode = this.detectAnchorMode();
+
     @Output()
     readonly addLink = new EventEmitter<string>();
 
     @Output()
     readonly removeLink = new EventEmitter<void>();
 
-    url: string = this.makeUrl();
+    url: string = this.getHrefOrAnchorId();
 
     edit = !this.url;
-
-    prefix = `http://`;
 
     constructor(
         @Inject(DOCUMENT)
@@ -60,7 +70,7 @@ export class TuiEditLinkComponent {
     @HostListener(`document:selectionchange`)
     onSelectionChange(): void {
         if (this.isViewMode) {
-            this.url = this.makeUrl();
+            this.url = this.getHrefOrAnchorId();
         }
     }
 
@@ -69,6 +79,10 @@ export class TuiEditLinkComponent {
         if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
             event.preventDefault();
         }
+    }
+
+    changePrefix(isPrefix: boolean): void {
+        this.prefix = isPrefix ? HASH_PREFIX : HTTP_PREFIX;
     }
 
     onSave(): void {
@@ -81,7 +95,7 @@ export class TuiEditLinkComponent {
 
     onBackspace(): void {
         if (!this.url) {
-            this.prefix = `http://`;
+            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
         }
     }
 
@@ -101,33 +115,53 @@ export class TuiEditLinkComponent {
         this.url = ``;
     }
 
-    private makeUrl(): string {
-        const selection = this.documentRef.getSelection();
+    private makeDefaultPrefix(): TuiLinkPrefix {
+        const a = this.getAnchorElement();
 
-        return selection ? this.getHref(selection) : ``;
+        if (a) {
+            return !a.href && a.getAttribute(`id`) ? HASH_PREFIX : HTTP_PREFIX;
+        }
+
+        return HTTP_PREFIX;
     }
 
-    private getHref({focusNode}: Selection): string {
-        if (!focusNode?.parentElement) {
+    private detectAnchorMode(): boolean {
+        return this.getAnchorElement()?.href ? false : this.href.startsWith(HASH_PREFIX);
+    }
+
+    private getFocusedParentElement(): HTMLElement | null {
+        return this.documentRef.getSelection()?.focusNode?.parentElement || null;
+    }
+
+    private getAnchorElement(): HTMLAnchorElement | null {
+        return this.getFocusedParentElement()?.closest(`a`) || null;
+    }
+
+    private getHrefOrAnchorId(): string {
+        if (!this.getFocusedParentElement()) {
             return ``;
         }
 
-        const a = focusNode.parentElement.closest(`a`);
+        const a = this.getAnchorElement();
 
-        return a ? this.removePrefix(a.getAttribute(`href`) || ``) : this.url;
+        return a
+            ? this.removePrefix(a.getAttribute(`href`) || a.getAttribute(`id`) || ``)
+            : this.url;
     }
 
     private removePrefix(url: string): string {
-        if (url.startsWith(`http://`)) {
-            this.prefix = `http://`;
+        if (url.startsWith(HTTP_PREFIX)) {
+            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
 
-            return url.replace(`http://`, ``);
-        }
+            return url.replace(HTTP_PREFIX, ``);
+        } else if (url.startsWith(HTTPS_PREFIX)) {
+            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTPS_PREFIX;
 
-        if (url.startsWith(`https://`)) {
-            this.prefix = `https://`;
+            return url.replace(HTTPS_PREFIX, ``);
+        } else if (url.startsWith(HASH_PREFIX)) {
+            this.prefix = HASH_PREFIX;
 
-            return url.replace(`https://`, ``);
+            return url.replace(HASH_PREFIX, ``);
         }
 
         return url;

@@ -38,6 +38,7 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         insertTable: `Insert table`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Merge cells`,
         splitCells: `Split cells`,
         rowsColumnsManaging: `Managing rows and columns`,
