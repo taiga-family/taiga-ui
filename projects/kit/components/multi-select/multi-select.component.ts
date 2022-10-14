@@ -43,13 +43,11 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiSvgService,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
-import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -133,7 +131,6 @@ export class TuiMultiSelectComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiSvgService) svgService: TuiSvgService,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
         @Inject(TUI_ITEMS_HANDLERS)
@@ -144,8 +141,6 @@ export class TuiMultiSelectComponent<T>
         readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
-
-        svgService.define({iconBlank});
     }
 
     @HostBinding(`attr.data-size`)
@@ -181,18 +176,6 @@ export class TuiMultiSelectComponent<T>
 
     get searchString(): string {
         return this.search === null ? `` : this.search;
-    }
-
-    /**
-     * Pass empty icon to InputTag (inside this component)
-     * to prevent overflow of arrow icon by many tags
-     */
-    get tagIcon(): string {
-        return this.interactive ? `iconBlank` : ``;
-    }
-
-    get inputHidden(): boolean {
-        return !this.editable && !this.computedGroup;
     }
 
     get computedGroup(): boolean {
@@ -267,11 +250,6 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    onArrowClick(): void {
-        this.hostedDropdown?.updateOpen(!this.open);
-        this.focusInput();
-    }
-
     onInput(value: ReadonlyArray<TuiStringifiableItem<T>>): void {
         this.updateValue(value.map(({item}) => item));
     }
@@ -297,11 +275,5 @@ export class TuiMultiSelectComponent<T>
 
         this.search = search;
         this.searchChange.emit(search);
-    }
-
-    private focusInput(preventScroll: boolean = false): void {
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.focus({preventScroll});
-        }
     }
 }
