@@ -59264,14 +59264,18 @@ TuiProgressSegmentedComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORT
 /* harmony export */   "a": () => (/* binding */ TuiPushAlertComponent)
 /* harmony export */ });
 /* harmony import */ var _taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72002);
-/* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(89570);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(74788);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12057);
-/* harmony import */ var _push_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(491);
-/* harmony import */ var _push_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81538);
-/* harmony import */ var _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34880);
-/* harmony import */ var _core_components_button_button_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(76189);
-/* harmony import */ var _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(66596);
+/* harmony import */ var _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(89570);
+/* harmony import */ var _push_alert_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(97075);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(74788);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(12057);
+/* harmony import */ var _push_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(491);
+/* harmony import */ var _push_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81538);
+/* harmony import */ var _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(34880);
+/* harmony import */ var _core_components_button_button_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(76189);
+/* harmony import */ var _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(66596);
+
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -59285,139 +59289,139 @@ TuiProgressSegmentedComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORT
 
 function TuiPushAlertComponent_tui_push_0_img_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelement"] */ ._UZ(0, "img", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelement"] */ ._UZ(0, "img", 8);
   }
 
   if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r3.context.image, _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵsanitizeUrl"] */ .LSH);
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r3.context.image, _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵsanitizeUrl"] */ .LSH);
   }
 }
 
 function TuiPushAlertComponent_tui_push_0_tui_svg_2_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelement"] */ ._UZ(0, "tui-svg", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelement"] */ ._UZ(0, "tui-svg", 9);
   }
 
   if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵstyleProp"] */ .Udp("color", ctx_r4.context.iconColor);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r4.context.icon);
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵstyleProp"] */ .Udp("color", ctx_r4.context.iconColor);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("src", ctx_r4.context.icon);
   }
 }
 
 function TuiPushAlertComponent_tui_push_0_ng_container_3_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
     const text_r8 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r8, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r8, " ");
   }
 }
 
 function TuiPushAlertComponent_tui_push_0_button_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementStart"] */ .TgZ(0, "button", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵlistener"] */ .NdJ("click", function TuiPushAlertComponent_tui_push_0_button_4_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵrestoreView"] */ .CHM(_r10);
-      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(0, "button", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵlistener"] */ .NdJ("click", function TuiPushAlertComponent_tui_push_0_button_4_Template_button_click_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵrestoreView"] */ .CHM(_r10);
+      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r9.context.$implicit.next(ctx_r9.context.buttons[0]);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r6.context.buttons[0], " ");
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r6.context.buttons[0], " ");
   }
 }
 
 function TuiPushAlertComponent_tui_push_0_button_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementStart"] */ .TgZ(0, "button", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵlistener"] */ .NdJ("click", function TuiPushAlertComponent_tui_push_0_button_5_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵrestoreView"] */ .CHM(_r12);
-      const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(0, "button", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵlistener"] */ .NdJ("click", function TuiPushAlertComponent_tui_push_0_button_5_Template_button_click_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵrestoreView"] */ .CHM(_r12);
+      const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
       return ctx_r11.context.$implicit.next(ctx_r11.context.buttons[ctx_r11.context.buttons.length - 1]);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r7.context.buttons[ctx_r7.context.buttons.length - 1], " ");
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", ctx_r7.context.buttons[ctx_r7.context.buttons.length - 1], " ");
   }
 }
 
 function TuiPushAlertComponent_tui_push_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵgetCurrentView"] */ .EpF();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-push", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵlistener"] */ .NdJ("close", function TuiPushAlertComponent_tui_push_0_Template_tui_push_close_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵrestoreView"] */ .CHM(_r14);
-      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-push", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵlistener"] */ .NdJ("close", function TuiPushAlertComponent_tui_push_0_Template_tui_push_close_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵrestoreView"] */ .CHM(_r14);
+      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
       return ctx_r13.context.$implicit.complete();
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(1, TuiPushAlertComponent_tui_push_0_img_1_Template, 1, 1, "img", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(2, TuiPushAlertComponent_tui_push_0_tui_svg_2_Template, 1, 3, "tui-svg", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(3, TuiPushAlertComponent_tui_push_0_ng_container_3_Template, 2, 1, "ng-container", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(4, TuiPushAlertComponent_tui_push_0_button_4_Template, 2, 1, "button", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(5, TuiPushAlertComponent_tui_push_0_button_5_Template, 2, 1, "button", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementEnd"] */ .qZA();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(1, TuiPushAlertComponent_tui_push_0_img_1_Template, 1, 1, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(2, TuiPushAlertComponent_tui_push_0_tui_svg_2_Template, 1, 3, "tui-svg", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(3, TuiPushAlertComponent_tui_push_0_ng_container_3_Template, 2, 1, "ng-container", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(4, TuiPushAlertComponent_tui_push_0_button_4_Template, 2, 1, "button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(5, TuiPushAlertComponent_tui_push_0_button_5_Template, 2, 1, "button", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementEnd"] */ .qZA();
   }
 
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("heading", ctx_r0.context.heading)("type", ctx_r0.context.type)("timestamp", ctx_r0.context.timestamp);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.image);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.icon);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r0.context.content);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.buttons.length > 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.buttons.length);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("heading", ctx_r0.context.heading)("type", ctx_r0.context.type)("timestamp", ctx_r0.context.timestamp);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.image);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.icon);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r0.context.content);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.buttons.length > 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx_r0.context.buttons.length);
   }
 }
 
 function TuiPushAlertComponent_ng_template_1_ng_container_0_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementContainerStart"] */ .ynx(0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtext"] */ ._uU(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵelementContainerEnd"] */ .BQk();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtext"] */ ._uU(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerEnd"] */ .BQk();
   }
 
   if (rf & 2) {
     const text_r16 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r16, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r16, " ");
   }
 }
 
 function TuiPushAlertComponent_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(0, TuiPushAlertComponent_ng_template_1_ng_container_0_Template, 2, 1, "ng-container", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(0, TuiPushAlertComponent_ng_template_1_ng_container_0_Template, 2, 1, "ng-container", 5);
   }
 
   if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵnextContext"] */ .oxw();
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r2.context.content);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r2.context.content);
   }
 }
 
@@ -59432,23 +59436,23 @@ let TuiPushAlertComponent = /*#__PURE__*/(() => {
     }
 
     get isDirective() {
-      return this.context.content instanceof _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_7__/* .PolymorpheusTemplate */ .GL;
+      return this.context.content instanceof _push_alert_directive__WEBPACK_IMPORTED_MODULE_1__/* .TuiPushAlertDirective */ .K;
     }
 
   }
 
   TuiPushAlertComponent.ɵfac = function TuiPushAlertComponent_Factory(t) {
-    return new (t || TuiPushAlertComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.TUI_ANIMATION_OPTIONS), _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵdirectiveInject"] */ .Y36(_tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_7__/* .POLYMORPHEUS_CONTEXT */ .yf));
+    return new (t || TuiPushAlertComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵdirectiveInject"] */ .Y36(_taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.TUI_ANIMATION_OPTIONS), _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵdirectiveInject"] */ .Y36(_tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_8__/* .POLYMORPHEUS_CONTEXT */ .yf));
   };
 
-  TuiPushAlertComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵdefineComponent"] */ .Xpm({
+  TuiPushAlertComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵdefineComponent"] */ .Xpm({
     type: TuiPushAlertComponent,
     selectors: [["tui-push-alert"]],
     hostAttrs: ["role", "alert"],
     hostVars: 3,
     hostBindings: function TuiPushAlertComponent_HostBindings(rf, ctx) {
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵsyntheticHostProperty"] */ .d8E("@tuiFadeIn", ctx.animation)("@tuiSlideInRight", ctx.animation)("@tuiHeightCollapse", ctx.animation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵsyntheticHostProperty"] */ .d8E("@tuiFadeIn", ctx.animation)("@tuiSlideInRight", ctx.animation)("@tuiHeightCollapse", ctx.animation);
       }
     },
     decls: 3,
@@ -59456,17 +59460,17 @@ let TuiPushAlertComponent = /*#__PURE__*/(() => {
     consts: [[3, "heading", "type", "timestamp", "close", 4, "ngIf", "ngIfElse"], ["content", ""], [3, "heading", "type", "timestamp", "close"], ["alt", "", 3, "src", 4, "ngIf"], [3, "color", "src", 4, "ngIf"], [4, "polymorpheusOutlet"], ["tuiButton", "", 3, "click", 4, "ngIf"], ["tuiLink", "", 3, "click", 4, "ngIf"], ["alt", "", 3, "src"], [3, "src"], ["tuiButton", "", 3, "click"], ["tuiLink", "", 3, "click"]],
     template: function TuiPushAlertComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(0, TuiPushAlertComponent_tui_push_0_Template, 6, 8, "tui-push", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplate"] */ .YNc(1, TuiPushAlertComponent_ng_template_1_Template, 1, 1, "ng-template", null, 1, _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
+        _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(0, TuiPushAlertComponent_tui_push_0_Template, 6, 8, "tui-push", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(1, TuiPushAlertComponent_ng_template_1_Template, 1, 1, "ng-template", null, 1, _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplateRefExtractor"] */ .W1O);
       }
 
       if (rf & 2) {
-        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵreference"] */ .MAs(2);
+        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵreference"] */ .MAs(2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__/* ["ɵɵproperty"] */ .Q6J("ngIf", !ctx.isDirective)("ngIfElse", _r1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", !ctx.isDirective)("ngIfElse", _r1);
       }
     },
-    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgIf */ .O5, _push_component__WEBPACK_IMPORTED_MODULE_1__/* .TuiPushComponent */ .H, _push_directive__WEBPACK_IMPORTED_MODULE_2__/* .TuiPushDirective */ .G, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_7__/* .PolymorpheusOutletDirective */ .Li, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_3__/* .TuiSvgComponent */ .P, _core_components_button_button_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiButtonComponent */ .v, _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiLinkComponent */ .V],
+    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__/* .NgIf */ .O5, _push_component__WEBPACK_IMPORTED_MODULE_2__/* .TuiPushComponent */ .H, _push_directive__WEBPACK_IMPORTED_MODULE_3__/* .TuiPushDirective */ .G, _tinkoff_ng_polymorpheus__WEBPACK_IMPORTED_MODULE_8__/* .PolymorpheusOutletDirective */ .Li, _core_components_svg_svg_component__WEBPACK_IMPORTED_MODULE_4__/* .TuiSvgComponent */ .P, _core_components_button_button_component__WEBPACK_IMPORTED_MODULE_5__/* .TuiButtonComponent */ .v, _core_components_link_link_component__WEBPACK_IMPORTED_MODULE_6__/* .TuiLinkComponent */ .V],
     styles: ["[_nghost-%COMP%]{max-width:calc(100% - 2rem);margin:0 1rem 1rem auto}[_nghost-%COMP%]:first-child{margin-top:auto}"],
     data: {
       animation: [_taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.tuiFadeIn, _taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.tuiSlideInRight, _taiga_ui_core__WEBPACK_IMPORTED_MODULE_0__.tuiHeightCollapse]
