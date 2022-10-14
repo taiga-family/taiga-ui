@@ -8,7 +8,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsElement} from '@taiga-ui/cdk';
+import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
+import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
 
 const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
@@ -26,11 +27,14 @@ type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTPS_PREFIX | typeof HTTP_PREF
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
-    @Input()
-    prefix: TuiLinkPrefix = this.makeDefaultPrefix();
+    private isOnlyAnchorMode: boolean = this.detectAnchorMode();
 
     @Input()
-    isOnlyAnchorMode = this.detectAnchorMode();
+    @tuiDefaultProp()
+    set anchorMode(mode: boolean) {
+        this.isOnlyAnchorMode = mode;
+        this.prefix = mode ? HASH_PREFIX : this.makeDefaultPrefix();
+    }
 
     @Output()
     readonly addLink = new EventEmitter<string>();
@@ -42,10 +46,22 @@ export class TuiEditLinkComponent {
 
     edit = !this.url;
 
+    prefix: TuiLinkPrefix = this.makeDefaultPrefix();
+
     constructor(
         @Inject(DOCUMENT)
         private readonly documentRef: Document,
+        @Inject(TUI_EDITOR_LINK_TEXTS)
+        readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
     ) {}
+
+    get anchorMode(): boolean {
+        return this.isOnlyAnchorMode;
+    }
+
+    get prefixIsHashMode(): boolean {
+        return this.prefix === HASH_PREFIX;
+    }
 
     get hasUrl(): boolean {
         return !!this.url;
@@ -119,14 +135,19 @@ export class TuiEditLinkComponent {
         const a = this.getAnchorElement();
 
         if (a) {
-            return !a.href && a.getAttribute(`id`) ? HASH_PREFIX : HTTP_PREFIX;
+            return (!a.getAttribute(`href`) && a.getAttribute(`id`)) ||
+                a.getAttribute(`href`)?.startsWith(HASH_PREFIX)
+                ? HASH_PREFIX
+                : HTTP_PREFIX;
         }
 
         return HTTP_PREFIX;
     }
 
     private detectAnchorMode(): boolean {
-        return this.getAnchorElement()?.href ? false : this.href.startsWith(HASH_PREFIX);
+        const a = this.getAnchorElement();
+
+        return !a?.href && !!a?.getAttribute(`id`);
     }
 
     private getFocusedParentElement(): HTMLElement | null {
@@ -138,10 +159,6 @@ export class TuiEditLinkComponent {
     }
 
     private getHrefOrAnchorId(): string {
-        if (!this.getFocusedParentElement()) {
-            return ``;
-        }
-
         const a = this.getAnchorElement();
 
         return a

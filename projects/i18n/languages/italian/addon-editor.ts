@@ -46,6 +46,10 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         setDetails: `Details`,
         removeDetails: `Remove details`,
     },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
+    },
     editorTableCommands: [
         [`Inserisci colonna prima`, `Inserisci colonna dopo`],
         [`Inserisci riga prima`, `Inserisci riga dopo`],

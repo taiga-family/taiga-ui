@@ -46,6 +46,10 @@ export const TUI_CHINESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         setDetails: `详细信息`,
         removeDetails: `删除详细信息`,
     },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
+    },
     editorTableCommands: [
         [`在前面插入列`, `在后面插入列`],
         [`在前面插入行`, `在后面插入行`],

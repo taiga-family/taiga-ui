@@ -46,6 +46,10 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         setDetails: `Details`,
         removeDetails: `Remove details`,
     },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
+    },
     editorTableCommands: [
         [`Wstaw kolumnę przed`, `Wstaw kolumnę po`],
         [`Wstaw wiersz przed`, `Wstaw wiersz po`],

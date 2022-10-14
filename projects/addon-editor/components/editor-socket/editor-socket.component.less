@@ -34,16 +34,19 @@
         }
     }
 
-    a[data-type='jump-anchor'] {
-        text-decoration: underline;
-        text-decoration-color: var(--tui-link);
+    /* stylelint-disable-next-line */
+    .ProseMirror {
+        a[data-type='jump-anchor'] {
+            text-decoration: underline;
+            text-decoration-color: var(--tui-link);
 
-        &:before {
-            content: '#';
-        }
+            &:before {
+                content: '#';
+            }
 
-        &:hover {
-            color: var(--tui-link);
+            &:hover {
+                color: var(--tui-link);
+            }
         }
     }
 

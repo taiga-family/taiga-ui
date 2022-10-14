@@ -46,6 +46,10 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         setDetails: `Details`,
         removeDetails: `Remove details`,
     },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
+    },
     editorTableCommands: [
         [`Insert column before`, `Insert column after`],
         [`Insert row before`, `Insert row after`],

@@ -13,6 +13,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives/tiptap-editor';
+import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 
 @Component({
@@ -61,18 +62,17 @@ export class TuiEditorSocketComponent {
      */
     @HostListener(`click`, [`$event`])
     click(event: Event): void {
-        if (this.editor) {
+        if (this.editor || !tuiIsElement(event.target)) {
             return;
         }
 
-        const href =
-            (event.target as HTMLElement)?.closest(`a`)?.getAttribute(`href`) ?? ``;
+        const href = event.target?.closest(`a`)?.getAttribute(`href`) || ``;
 
-        if (href.startsWith(`#`)) {
-            // @note: to allow the browser to apply the animation again
-            this.document.location.hash = ``;
-            this.document.location.hash = href.replace(`#`, ``);
-            event.preventDefault();
+        if (!href.startsWith(`#`)) {
+            return;
         }
+
+        this.document.location.hash = href.replace(`#`, ``);
+        event.preventDefault();
     }
 }

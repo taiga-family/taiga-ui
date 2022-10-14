@@ -11,7 +11,7 @@ import type {BackgroundColor, FontColor} from '@taiga-ui/addon-editor/extensions
 // @ts-ignore
 import type {TuiDetails} from '@taiga-ui/addon-editor/extensions/details';
 // @ts-ignore
-import type {JumpAnchor} from '@taiga-ui/addon-editor/extensions/jump-anchor';
+import type {TuiJumpAnchor} from '@taiga-ui/addon-editor/extensions/jump-anchor';
 // @ts-ignore
 import type {Image} from '@tiptap/extension-image';
 // @ts-ignore

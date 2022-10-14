@@ -161,6 +161,10 @@ export interface TuiLanguageEditor {
         setDetails: string;
         removeDetails: string;
     };
+    editorEditLink: {
+        urlExample: string;
+        anchorExample: string;
+    };
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];
     editorFontOptions: {

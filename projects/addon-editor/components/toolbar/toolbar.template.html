@@ -141,7 +141,7 @@
                 tuiIconButton
                 type="button"
                 size="s"
-                icon="tuiIconBookmarkLarge"
+                icon="tuiIconAnchorLarge"
                 tuiHintDirection="top-left"
                 appearance="icon"
                 [focusable]="false"
@@ -151,8 +151,7 @@
             ></button>
             <ng-template #anchorDropdown>
                 <tui-edit-link
-                    prefix="#"
-                    [isOnlyAnchorMode]="true"
+                    [anchorMode]="true"
                     (addLink)="setAnchor(anchor, $event)"
                     (removeLink)="removeAnchor()"
                 ></tui-edit-link>

@@ -46,6 +46,10 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         setDetails: `Аккордеон`,
         removeDetails: `Удалить аккордеон`,
     },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `якорь`,
+    },
     editorTableCommands: [
         [`Добавить столбец слева`, `Добавить столбец справа`],
         [`Добавить строку сверху`, `Добавить строку снизу`],

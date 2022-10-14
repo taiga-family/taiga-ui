@@ -317,9 +317,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setAnchor(anchor: string): void {
-        const id = anchor.replace(`#`, ``);
-
-        this.editor.commands.setAnchor(id);
+        this.editor.commands.setAnchor(anchor.replace(`#`, ``));
     }
 
     removeAnchor(): void {
