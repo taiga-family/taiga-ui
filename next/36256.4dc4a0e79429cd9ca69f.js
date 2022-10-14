@@ -9112,6 +9112,13 @@ let TuiResizedDirective = /*#__PURE__*/(() => {
 
 
 
+/**
+ * @deprecated use `*ngFor` + `tuiTableSort`-pipe instead.
+ * See example {@link https://taiga-ui.dev/components/table/Setup}
+ * ___
+ * TODO v4.0 delete it.
+ */
+
 class TuiRowDirective {
   constructor(template) {
     this.template = template;
@@ -9607,7 +9614,7 @@ const TUI_TABLE_PROVIDERS = [{
 
 const _c0 = ["tuiTbody", ""];
 
-function TuiTbodyComponent_tr_1_ng_container_4_Template(rf, ctx) {
+function TuiTbodyComponent_tr_0_ng_container_4_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerStart"] */ .ynx(0);
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtext"] */ ._uU(1);
@@ -9615,26 +9622,26 @@ function TuiTbodyComponent_tr_1_ng_container_4_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const text_r3 = ctx.polymorpheusOutlet;
+    const text_r4 = ctx.polymorpheusOutlet;
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r3, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtextInterpolate1"] */ .hij(" ", text_r4, " ");
   }
 }
 
-function TuiTbodyComponent_tr_1_Template(rf, ctx) {
+function TuiTbodyComponent_tr_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵgetCurrentView"] */ .EpF();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(0, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(1, "th", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(2, "button", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵlistener"] */ .NdJ("click", function TuiTbodyComponent_tr_1_Template_button_click_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵrestoreView"] */ .CHM(_r5);
-      const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r4.onClick();
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵlistener"] */ .NdJ("click", function TuiTbodyComponent_tr_0_Template_button_click_2_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵrestoreView"] */ .CHM(_r6);
+      const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r5.onClick();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementStart"] */ .TgZ(3, "span", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(4, TuiTbodyComponent_tr_1_ng_container_4_Template, 2, 1, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(4, TuiTbodyComponent_tr_0_ng_container_4_Template, 2, 1, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementEnd"] */ .qZA();
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelement"] */ ._UZ(5, "tui-svg", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementEnd"] */ .qZA();
@@ -9653,6 +9660,14 @@ function TuiTbodyComponent_tr_1_Template(rf, ctx) {
   }
 }
 
+function TuiTbodyComponent_ng_container_1_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerStart"] */ .ynx(0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵprojection"] */ .Hsn(1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainerEnd"] */ .BQk();
+  }
+}
+
 function TuiTbodyComponent_ng_container_2_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵelementContainer"] */ .GkF(0, 7);
@@ -9660,10 +9675,10 @@ function TuiTbodyComponent_ng_container_2_ng_container_1_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const item_r7 = ctx.$implicit;
-    const index_r8 = ctx.index;
-    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", ctx_r6.row.template)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵpipeBind3"] */ .Dn7(1, 2, item_r7, ctx_r6.toContext, index_r8));
+    const item_r8 = ctx.$implicit;
+    const index_r9 = ctx.index;
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngTemplateOutlet", ctx_r7.row.template)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵpipeBind3"] */ .Dn7(1, 2, item_r8, ctx_r7.toContext, index_r9));
   }
 }
 
@@ -9675,9 +9690,9 @@ function TuiTbodyComponent_ng_container_2_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵnextContext"] */ .oxw();
     _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx_r1.sorted);
+    _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngForOf", ctx_r2.sorted);
   }
 }
 
@@ -9741,19 +9756,20 @@ TuiTbodyComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_7_
   attrs: _c0,
   ngContentSelectors: _c1,
   decls: 3,
-  vars: 2,
+  vars: 3,
   consts: [[4, "ngIf"], [1, "t-heading", 3, "colSpan"], ["type", "button", 1, "t-expand", 3, "click"], [1, "t-name"], [4, "polymorpheusOutlet"], ["src", "tuiIconChevronDownLarge", 1, "t-chevron"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngFor", "ngForOf"], [3, "ngTemplateOutlet", "ngTemplateOutletContext"]],
   template: function TuiTbodyComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵprojectionDef"] */ .F$t();
-      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵprojection"] */ .Hsn(0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(1, TuiTbodyComponent_tr_1_Template, 6, 4, "tr", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(0, TuiTbodyComponent_tr_0_Template, 6, 4, "tr", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(1, TuiTbodyComponent_ng_container_1_Template, 2, 0, "ng-container", 0);
       _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵtemplate"] */ .YNc(2, TuiTbodyComponent_ng_container_2_Template, 2, 1, "ng-container", 0);
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
       _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.heading);
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.open);
       _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵadvance"] */ .xp6(1);
       _angular_core__WEBPACK_IMPORTED_MODULE_7__/* ["ɵɵproperty"] */ .Q6J("ngIf", ctx.open && ctx.row);
     }
@@ -10256,7 +10272,11 @@ let TuiTrComponent = /*#__PURE__*/(() => {
       this.cells$ = this.contentReady$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .switchMap */ .w)(() => (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiItemsQueryListObservable)(this.cells)), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__/* .map */ .U)(cells => cells.reduce((record, item) => Object.assign(Object.assign({}, record), {
         [item.tuiCell]: item
       }), {})));
-      this.item$ = this.contentReady$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .switchMap */ .w)(() => (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiItemsQueryListObservable)(this.body.rows)), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__/* .map */ .U)(rows => this.body.sorted[rows.findIndex(row => row === this)]));
+      this.item$ = this.contentReady$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .switchMap */ .w)(() => (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiItemsQueryListObservable)(this.body.rows)), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__/* .map */ .U)(rows =>
+      /**
+       * TODO v4.0 replace `this.body.sorted` with `this.body.data` (dont forget to drop `sorted`-getter).
+       */
+      this.body.sorted[rows.findIndex(row => row === this)]));
     }
 
     ngAfterContentInit() {

@@ -723,8 +723,6 @@ var th_group_component = __webpack_require__(222);
 var th_component = __webpack_require__(96408);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/tbody/tbody.component.ts
 var tbody_component = __webpack_require__(57681);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/row.directive.ts
-var row_directive = __webpack_require__(35459);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/tr/tr.component.ts
 var tr_component = __webpack_require__(84190);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/cell.directive.ts
@@ -854,7 +852,7 @@ let TuiFieldErrorContentPipeExample6 = /*#__PURE__*/(() => {
     }])],
     decls: 9,
     vars: 4,
-    consts: [["tuiTable", "", 1, "table", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 3, "resizable"], ["tuiTh", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], ["tuiHintDirection", "right", 3, "postfix", "formControl", "tuiHint"]],
+    consts: [["tuiTable", "", 1, "table", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 3, "resizable"], ["tuiTh", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], ["tuiHintDirection", "right", 3, "postfix", "formControl", "tuiHint"]],
     template: function TuiFieldErrorContentPipeExample6_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "table", 0);
@@ -881,10 +879,10 @@ let TuiFieldErrorContentPipeExample6 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵadvance */.xp6(4);
         fesm2015_core/* ɵɵproperty */.Q6J("data", ctx.data);
         fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.data);
+        fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.data);
       }
     },
-    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, input_number_component/* TuiInputNumberComponent */.q, input_number_directive/* TuiInputNumberDirective */.g, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, hint_directive/* TuiHintDirective */.D, hint_driver_directive/* TuiHintDriverDirective */.x, hint_hover_directive/* TuiHintHoverDirective */.t, hint_position_directive/* TuiHintPositionDirective */.D],
+    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, common/* NgForOf */.sg, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, input_number_component/* TuiInputNumberComponent */.q, input_number_directive/* TuiInputNumberDirective */.g, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, hint_directive/* TuiHintDirective */.D, hint_driver_directive/* TuiHintDriverDirective */.x, hint_hover_directive/* TuiHintHoverDirective */.t, hint_position_directive/* TuiHintPositionDirective */.D],
     pipes: [currency_pipe/* TuiCurrencyPipe */.i, field_error_content_pipe/* TuiFieldErrorContentPipe */.y],
     styles: [".table[_ngcontent-%COMP%]{width:100%;table-layout:fixed}.error[_ngcontent-%COMP%]{color:#fff}"],
     changeDetection: 0
