@@ -36,8 +36,6 @@ var table_directive = __webpack_require__(19582);
 var th_group_component = __webpack_require__(222);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/tbody/tbody.component.ts
 var tbody_component = __webpack_require__(57681);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/row.directive.ts
-var row_directive = __webpack_require__(35459);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/example/example.component.ts + 1 modules
 var example_component = __webpack_require__(19669);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/markup/breakpoints/examples/1/index.ts
@@ -110,7 +108,6 @@ var code_component = __webpack_require__(76349);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/example/example-capitalize.pipe.ts
 var example_capitalize_pipe = __webpack_require__(94797);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/markup/breakpoints/breakpoints.component.ts
-
 
 
 
@@ -209,7 +206,7 @@ function BreakpointsComponent_ng_template_1_Template(rf, ctx) {
     core/* ɵɵadvance */.xp6(1);
     core/* ɵɵproperty */.Q6J("data", ctx_r0.breakpoints);
     core/* ɵɵadvance */.xp6(1);
-    core/* ɵɵproperty */.Q6J("tuiRowOf", ctx_r0.breakpoints);
+    core/* ɵɵproperty */.Q6J("ngForOf", ctx_r0.breakpoints);
     core/* ɵɵadvance */.xp6(1);
     core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
   }
@@ -304,7 +301,7 @@ let BreakpointsComponent = /*#__PURE__*/(() => {
         i18n_6 = $localize`:␟ff525313ecc790b4f8e66c7a3afcd7b57a32fbfb␟4891856038364692663:Use breakpoints inside media queries:`;
       }
 
-      return [["header", "Breakpoints", "package", "CORE", "path", "core/styles/variables"], ["pageTab", ""], ["pageTab", "Setup"], ["tuiTable", "", 3, "columns"], [1, "table-caption"], ["tuiThGroup", ""], ["tuiTh", "", 4, "ngFor", "ngForOf"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["id", "usage", "heading", i18n_0, 3, "content"], ["tuiTh", ""], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], [1, "copy", 3, "cdkCopyToClipboard"], i18n_2, [1, "b-demo-steps"], i18n_4, ["filename", "your-file.styles.less", 3, "code"], i18n_6];
+      return [["header", "Breakpoints", "package", "CORE", "path", "core/styles/variables"], ["pageTab", ""], ["pageTab", "Setup"], ["tuiTable", "", 3, "columns"], [1, "table-caption"], ["tuiThGroup", ""], ["tuiTh", "", 4, "ngFor", "ngForOf"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["id", "usage", "heading", i18n_0, 3, "content"], ["tuiTh", ""], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], [1, "copy", 3, "cdkCopyToClipboard"], i18n_2, [1, "b-demo-steps"], i18n_4, ["filename", "your-file.styles.less", 3, "code"], i18n_6];
     },
     template: function BreakpointsComponent_Template(rf, ctx) {
       if (rf & 1) {
@@ -314,7 +311,7 @@ let BreakpointsComponent = /*#__PURE__*/(() => {
         core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, common/* NgForOf */.sg, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, example_component/* TuiDocExampleComponent */.f, ExampleBreakpointsComponent1, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, copy_component/* TuiDocCopyComponent */.f, clipboard/* CdkCopyToClipboard */.i3, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, common/* NgForOf */.sg, tbody_component/* TuiTbodyComponent */.j, example_component/* TuiDocExampleComponent */.f, ExampleBreakpointsComponent1, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, copy_component/* TuiDocCopyComponent */.f, clipboard/* CdkCopyToClipboard */.i3, code_component/* TuiDocCodeComponent */.c],
     pipes: [example_capitalize_pipe/* TuiDocExampleCapitalizePipe */.b],
     styles: [".table-caption[_ngcontent-%COMP%]{text-align:left;margin-bottom:.5rem}.copy[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%;height:100%;transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;opacity:0}.copy[_ngcontent-%COMP%]     button{border-radius:0;height:100%}.copy[_ngcontent-%COMP%]:hover{opacity:1}"],
     changeDetection: 0

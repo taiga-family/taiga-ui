@@ -153,15 +153,18 @@ let TuiTableExample1 = /*#__PURE__*/(() => {
 })();
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/head.directive.ts
 var head_directive = __webpack_require__(78979);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/row.directive.ts
-var row_directive = __webpack_require__(35459);
+// EXTERNAL MODULE: ./projects/cdk/directives/let/let.directive.ts
+var let_directive = __webpack_require__(40939);
 // EXTERNAL MODULE: ./projects/core/components/link/link.component.ts
 var link_component = __webpack_require__(66596);
 // EXTERNAL MODULE: ./projects/kit/components/tag/tag.component.ts
 var tag_component = __webpack_require__(49195);
 // EXTERNAL MODULE: ./projects/core/components/button/button.component.ts
 var button_component = __webpack_require__(76189);
+// EXTERNAL MODULE: ./projects/addon-table/components/table/pipes/table-sort.pipe.ts
+var table_sort_pipe = __webpack_require__(23301);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/tables/table/examples/2/index.ts
+
 
 
 
@@ -179,7 +182,7 @@ var button_component = __webpack_require__(76189);
 
 function TuiTableExample2_th_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 5);
     fesm2015_core/* ɵɵtext */._uU(1, " Name ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -187,7 +190,7 @@ function TuiTableExample2_th_3_Template(rf, ctx) {
 
 function TuiTableExample2_th_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 5);
     fesm2015_core/* ɵɵtext */._uU(1, " E-mail ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -195,7 +198,7 @@ function TuiTableExample2_th_4_Template(rf, ctx) {
 
 function TuiTableExample2_th_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 5);
     fesm2015_core/* ɵɵtext */._uU(1, " Status ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -203,7 +206,7 @@ function TuiTableExample2_th_5_Template(rf, ctx) {
 
 function TuiTableExample2_th_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 7);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 6);
     fesm2015_core/* ɵɵtext */._uU(1, " Tags ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -215,7 +218,7 @@ function TuiTableExample2_th_6_Template(rf, ctx) {
 
 function TuiTableExample2_th_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelement */._UZ(0, "th", 7);
+    fesm2015_core/* ɵɵelement */._UZ(0, "th", 6);
   }
 
   if (rf & 2) {
@@ -223,54 +226,54 @@ function TuiTableExample2_th_7_Template(rf, ctx) {
   }
 }
 
-function TuiTableExample2_tr_9_td_1_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 10);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw();
-    const index_r7 = ctx_r13.index;
-    const item_r6 = ctx_r13.$implicit;
+    const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const index_r9 = ctx_r15.index;
+    const item_r8 = ctx_r15.$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate2 */.AsE(" ", index_r7 + 1, ". ", item_r6.name, " ");
+    fesm2015_core/* ɵɵtextInterpolate2 */.AsE(" ", index_r9 + 1, ". ", item_r8.name, " ");
   }
 }
 
-function TuiTableExample2_tr_9_td_2_a_1_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_2_a_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "a", 12);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "a", 13);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r6 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
-    fesm2015_core/* ɵɵproperty */.Q6J("href", "mailto:" + item_r6.email, fesm2015_core/* ɵɵsanitizeUrl */.LSH);
+    const item_r8 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
+    fesm2015_core/* ɵɵproperty */.Q6J("href", "mailto:" + item_r8.email, fesm2015_core/* ɵɵsanitizeUrl */.LSH);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r6.email, " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r8.email, " ");
   }
 }
 
-function TuiTableExample2_tr_9_td_2_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 10);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tr_9_td_2_a_1_Template, 2, 2, "a", 11);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tbody_8_tr_1_td_2_a_1_Template, 2, 2, "a", 12);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r6 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const item_r8 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", item_r6.email);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", item_r8.email);
   }
 }
 
-function TuiTableExample2_tr_9_td_3_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 10);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "div");
     fesm2015_core/* ɵɵtext */._uU(2);
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -278,64 +281,64 @@ function TuiTableExample2_tr_9_td_3_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const item_r6 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const item_r8 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵclassMap */.Tol(item_r6.status);
+    fesm2015_core/* ɵɵclassMap */.Tol(item_r8.status);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate */.Oqu(item_r6.status);
+    fesm2015_core/* ɵɵtextInterpolate */.Oqu(item_r8.status);
   }
 }
 
-function TuiTableExample2_tr_9_td_4_tui_tag_1_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_4_tui_tag_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelement */._UZ(0, "tui-tag", 14);
+    fesm2015_core/* ɵɵelement */._UZ(0, "tui-tag", 15);
   }
 
   if (rf & 2) {
-    const tag_r19 = ctx.$implicit;
-    fesm2015_core/* ɵɵproperty */.Q6J("value", tag_r19)("autoColor", true);
+    const tag_r21 = ctx.$implicit;
+    fesm2015_core/* ɵɵproperty */.Q6J("value", tag_r21)("autoColor", true);
   }
 }
 
-function TuiTableExample2_tr_9_td_4_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 10);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tr_9_td_4_tui_tag_1_Template, 1, 2, "tui-tag", 13);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tbody_8_tr_1_td_4_tui_tag_1_Template, 1, 2, "tui-tag", 14);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r6 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const item_r8 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", item_r6.tags);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", item_r8.tags);
   }
 }
 
-function TuiTableExample2_tr_9_td_5_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_td_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r23 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r25 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 10);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "button", 15);
-    fesm2015_core/* ɵɵlistener */.NdJ("click", function TuiTableExample2_tr_9_td_5_Template_button_click_1_listener() {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r23);
-      const item_r6 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r21.remove(item_r6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "button", 16);
+    fesm2015_core/* ɵɵlistener */.NdJ("click", function TuiTableExample2_tbody_8_tr_1_td_5_Template_button_click_1_listener() {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r25);
+      const item_r8 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r23.remove(item_r8);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 }
 
-function TuiTableExample2_tr_9_Template(rf, ctx) {
+function TuiTableExample2_tbody_8_tr_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 8);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tr_9_td_1_Template, 2, 2, "td", 9);
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample2_tr_9_td_2_Template, 2, 1, "td", 9);
-    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample2_tr_9_td_3_Template, 3, 3, "td", 9);
-    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample2_tr_9_td_4_Template, 2, 1, "td", 9);
-    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample2_tr_9_td_5_Template, 2, 0, "td", 9);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 9);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tbody_8_tr_1_td_1_Template, 2, 2, "td", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample2_tbody_8_tr_1_td_2_Template, 2, 1, "td", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample2_tbody_8_tr_1_td_3_Template, 3, 3, "td", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample2_tbody_8_tr_1_td_4_Template, 2, 1, "td", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample2_tbody_8_tr_1_td_5_Template, 2, 0, "td", 10);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -350,6 +353,21 @@ function TuiTableExample2_tr_9_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", "tags");
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", "actions");
+  }
+}
+
+function TuiTableExample2_tbody_8_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tbody", 7);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample2_tbody_8_tr_1_Template, 6, 5, "tr", 8);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const sortedUsers_r6 = ctx.tuiLet;
+    fesm2015_core/* ɵɵproperty */.Q6J("data", sortedUsers_r6);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", sortedUsers_r6);
   }
 }
 
@@ -404,8 +422,8 @@ let TuiTableExample2 = /*#__PURE__*/(() => {
     type: TuiTableExample2,
     selectors: [["tui-table-example-2"]],
     decls: 10,
-    vars: 8,
-    consts: [["tuiTable", "", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 4, "tuiHead"], ["tuiTh", "", 3, "sorter", 4, "tuiHead"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["tuiTh", ""], ["tuiTh", "", 3, "sorter"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], ["tuiLink", "", 3, "href", 4, "ngIf"], ["tuiLink", "", 3, "href"], ["class", "tui-space_right-1", 3, "value", "autoColor", 4, "ngFor", "ngForOf"], [1, "tui-space_right-1", 3, "value", "autoColor"], ["tuiIconButton", "", "appearance", "flat", "size", "s", "icon", "tuiIconTrash", "title", "Remove", "shape", "rounded", 1, "remove", 3, "click"]],
+    vars: 9,
+    consts: [["tuiTable", "", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 4, "tuiHead"], ["tuiTh", "", 3, "sorter", 4, "tuiHead"], ["tuiTbody", "", 3, "data", 4, "tuiLet"], ["tuiTh", ""], ["tuiTh", "", 3, "sorter"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""], ["tuiLink", "", 3, "href", 4, "ngIf"], ["tuiLink", "", 3, "href"], ["class", "tui-space_right-1", 3, "value", "autoColor", 4, "ngFor", "ngForOf"], [1, "tui-space_right-1", 3, "value", "autoColor"], ["tuiIconButton", "", "appearance", "flat", "size", "s", "icon", "tuiIconTrash", "title", "Remove", "shape", "rounded", 1, "remove", 3, "click"]],
     template: function TuiTableExample2_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "table", 0);
@@ -418,9 +436,8 @@ let TuiTableExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵtemplate */.YNc(7, TuiTableExample2_th_7_Template, 1, 1, "th", 3);
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
-        fesm2015_core/* ɵɵelementStart */.TgZ(8, "tbody", 4);
-        fesm2015_core/* ɵɵtemplate */.YNc(9, TuiTableExample2_tr_9_Template, 6, 5, "tr", 5);
-        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵtemplate */.YNc(8, TuiTableExample2_tbody_8_Template, 2, 2, "tbody", 4);
+        fesm2015_core/* ɵɵpipe */.ALo(9, "tuiTableSort");
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
@@ -437,12 +454,11 @@ let TuiTableExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵadvance */.xp6(1);
         fesm2015_core/* ɵɵproperty */.Q6J("tuiHead", "actions");
         fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("data", ctx.users);
-        fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.users);
+        fesm2015_core/* ɵɵproperty */.Q6J("tuiLet", fesm2015_core/* ɵɵpipeBind1 */.lcZ(9, 7, ctx.users));
       }
     },
-    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, common/* NgIf */.O5, link_component/* TuiLinkComponent */.V, common/* NgForOf */.sg, tag_component/* TuiTagComponent */.G, button_component/* TuiButtonComponent */.v],
+    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, let_directive/* TuiLetDirective */.L, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, common/* NgForOf */.sg, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, common/* NgIf */.O5, link_component/* TuiLinkComponent */.V, tag_component/* TuiTagComponent */.G, button_component/* TuiButtonComponent */.v],
+    pipes: [table_sort_pipe/* TuiTableSortPipe */.y],
     styles: ["td[_ngcontent-%COMP%], th[_ngcontent-%COMP%]{white-space:nowrap;border-color:transparent;border-right-color:var(--tui-base-04)}td[_ngcontent-%COMP%]:last-child, th[_ngcontent-%COMP%]:last-child{border-right-color:transparent}tbody[_ngcontent-%COMP%]{border-color:transparent}tr[_ngcontent-%COMP%]:nth-child(even)   td[_ngcontent-%COMP%]{background:var(--tui-base-02)}.alive[_ngcontent-%COMP%], .deceased[_ngcontent-%COMP%]{display:flex;align-items:center;text-transform:capitalize}.alive[_ngcontent-%COMP%]:before, .deceased[_ngcontent-%COMP%]:before{content:\"\";width:.5rem;height:.5rem;border-radius:100%;margin-right:.5rem;background:var(--tui-base-04)}.alive[_ngcontent-%COMP%]:before{background:var(--tui-success-fill)}.remove[_ngcontent-%COMP%]{transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;opacity:0}tr[_ngcontent-%COMP%]:hover   .remove[_ngcontent-%COMP%], tr[_ngcontent-%COMP%]:focus-within   .remove[_ngcontent-%COMP%]{opacity:1}"],
     changeDetection: 0
   });
@@ -514,9 +530,10 @@ var svg_component = __webpack_require__(34880);
 
 
 
+
 function TuiTableExample3_th_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 15);
     fesm2015_core/* ɵɵtext */._uU(1, " Name ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -528,7 +545,7 @@ function TuiTableExample3_th_4_Template(rf, ctx) {
 
 function TuiTableExample3_th_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 17);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 16);
     fesm2015_core/* ɵɵtext */._uU(1, " Price,\u00A0$ ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -540,7 +557,7 @@ function TuiTableExample3_th_5_Template(rf, ctx) {
 
 function TuiTableExample3_th_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 18);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 17);
     fesm2015_core/* ɵɵtext */._uU(1, " Purchase ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -558,7 +575,7 @@ function TuiTableExample3_ng_container_7_Template(rf, ctx) {
 
 function TuiTableExample3_th_8_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 19);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 18);
     fesm2015_core/* ɵɵtext */._uU(1, " Date ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -566,7 +583,7 @@ function TuiTableExample3_th_8_Template(rf, ctx) {
 
 function TuiTableExample3_th_9_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 20);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 19);
     fesm2015_core/* ɵɵtext */._uU(1, " Total ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -579,7 +596,7 @@ function TuiTableExample3_th_9_Template(rf, ctx) {
 
 function TuiTableExample3_th_11_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 21);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 20);
     fesm2015_core/* ɵɵtext */._uU(1, " Quantity ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -587,184 +604,184 @@ function TuiTableExample3_th_11_Template(rf, ctx) {
 
 function TuiTableExample3_th_12_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 22);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 21);
     fesm2015_core/* ɵɵtext */._uU(1, " Units ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 }
 
-function TuiTableExample3_tr_14_th_1_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_th_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r21 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r23 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 28);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-text-area", 29);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_14_th_1_Template_tui_text_area_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r21);
-      const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r19 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r19.onValueChange($event, "name", item_r12, ctx_r19.pythons);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 29);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-text-area", 30);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_13_tr_1_th_1_Template_tui_text_area_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r23);
+      const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r21.onValueChange($event, "name", item_r14, ctx_r21.pythons);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw();
-    fesm2015_core/* ɵɵproperty */.Q6J("colSpan", item_r12.price > 1000 ? 2 : 0);
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("colSpan", item_r14.price > 1000 ? 2 : 0);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("expandable", true)("ngModel", item_r12.name)("ngModelOptions", ctx_r13.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("expandable", true)("ngModel", item_r14.name)("ngModelOptions", ctx_r15.options);
   }
 }
 
-function TuiTableExample3_tr_14_ng_container_2_th_1_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_ng_container_2_th_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r26 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r28 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 31);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-number", 32);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_14_ng_container_2_th_1_Template_tui_input_number_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r26);
-      const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
-      const ctx_r24 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r24.onValueChange($event, "price", item_r12, ctx_r24.pythons);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 32);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-number", 33);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_13_tr_1_ng_container_2_th_1_Template_tui_input_number_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r28);
+      const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
+      const ctx_r26 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r26.onValueChange($event, "price", item_r14, ctx_r26.pythons);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
-    const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw(2).$implicit;
+    const ctx_r25 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("tuiValidator", ctx_r23.minPrice)("ngModel", item_r12.price)("ngModelOptions", ctx_r23.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("tuiValidator", ctx_r25.minPrice)("ngModel", item_r14.price)("ngModelOptions", ctx_r25.options);
   }
 }
 
-function TuiTableExample3_tr_14_ng_container_2_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tr_14_ng_container_2_th_1_Template, 2, 3, "th", 30);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tbody_13_tr_1_ng_container_2_th_1_Template, 2, 3, "th", 31);
     fesm2015_core/* ɵɵelementContainerEnd */.BQk();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", item_r12.price <= 1000);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngIf", item_r14.price <= 1000);
   }
 }
 
-function TuiTableExample3_tr_14_td_3_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_td_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r31 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r33 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-count", 34);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_14_td_3_Template_tui_input_count_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r31);
-      const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r29 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r29.onValueChange($event, "quantity", item_r12, ctx_r29.pythons);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-count", 35);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_13_tr_1_td_3_Template_tui_input_count_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r33);
+      const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r31 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r31.onValueChange($event, "quantity", item_r14, ctx_r31.pythons);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r17 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r12.quantity)("ngModelOptions", ctx_r15.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r14.quantity)("ngModelOptions", ctx_r17.options);
   }
 }
 
-function TuiTableExample3_tr_14_td_4_tui_data_list_wrapper_2_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_td_4_tui_data_list_wrapper_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 37);
+    fesm2015_core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 38);
   }
 
   if (rf & 2) {
-    const ctx_r33 = fesm2015_core/* ɵɵnextContext */.oxw(3);
-    fesm2015_core/* ɵɵproperty */.Q6J("items", ctx_r33.units);
+    const ctx_r35 = fesm2015_core/* ɵɵnextContext */.oxw(4);
+    fesm2015_core/* ɵɵproperty */.Q6J("items", ctx_r35.units);
   }
 }
 
-function TuiTableExample3_tr_14_td_4_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_td_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r36 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r38 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-select", 35);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_14_td_4_Template_tui_select_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r36);
-      const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r34 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r34.onValueChange($event, "unit", item_r12, ctx_r34.pythons);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-select", 36);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_13_tr_1_td_4_Template_tui_select_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r38);
+      const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r36 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r36.onValueChange($event, "unit", item_r14, ctx_r36.pythons);
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tr_14_td_4_tui_data_list_wrapper_2_Template, 1, 1, "tui-data-list-wrapper", 36);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tbody_13_tr_1_td_4_tui_data_list_wrapper_2_Template, 1, 1, "tui-data-list-wrapper", 37);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r12.unit)("ngModelOptions", ctx_r16.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r14.unit)("ngModelOptions", ctx_r18.options);
   }
 }
 
-function TuiTableExample3_tr_14_td_5_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_td_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r40 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r42 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-date", 34);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_14_td_5_Template_tui_input_date_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r40);
-      const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r38 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r38.onValueChange($event, "date", item_r12, ctx_r38.pythons);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-date", 35);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_13_tr_1_td_5_Template_tui_input_date_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r42);
+      const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r40 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r40.onValueChange($event, "date", item_r14, ctx_r40.pythons);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r17 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r19 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r12.date)("ngModelOptions", ctx_r17.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r14.date)("ngModelOptions", ctx_r19.options);
   }
 }
 
-function TuiTableExample3_tr_14_td_6_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_td_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 38);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 39);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵpipe */.ALo(2, "tuiFormatNumber");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r12 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r14 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 1, ctx_r18.getTotal(item_r12)), " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 1, ctx_r20.getTotal(item_r14)), " ");
   }
 }
 
-function TuiTableExample3_tr_14_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_tr_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 23);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tr_14_th_1_Template, 2, 4, "th", 24);
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tr_14_ng_container_2_Template, 2, 1, "ng-container", 25);
-    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample3_tr_14_td_3_Template, 2, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample3_tr_14_td_4_Template, 3, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample3_tr_14_td_5_Template, 2, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(6, TuiTableExample3_tr_14_td_6_Template, 3, 3, "td", 27);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 24);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tbody_13_tr_1_th_1_Template, 2, 4, "th", 25);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tbody_13_tr_1_ng_container_2_Template, 2, 1, "ng-container", 26);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample3_tbody_13_tr_1_td_3_Template, 2, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample3_tbody_13_tr_1_td_4_Template, 3, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample3_tbody_13_tr_1_td_5_Template, 2, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, TuiTableExample3_tbody_13_tr_1_td_6_Template, 3, 3, "td", 28);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -784,163 +801,178 @@ function TuiTableExample3_tr_14_Template(rf, ctx) {
   }
 }
 
-function TuiTableExample3_tr_16_th_1_Template(rf, ctx) {
+function TuiTableExample3_tbody_13_Template(rf, ctx) {
   if (rf & 1) {
-    const _r52 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
-
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-text-area", 29);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_16_th_1_Template_tui_text_area_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r52);
-      const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r50 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r50.onValueChange($event, "name", item_r43, ctx_r50.starwars);
-    });
-    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tbody", 22);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tbody_13_tr_1_Template, 7, 6, "tr", 23);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r44 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const sortedPythons_r12 = ctx.tuiLet;
+    fesm2015_core/* ɵɵproperty */.Q6J("data", sortedPythons_r12);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("expandable", true)("ngModel", item_r43.name)("ngModelOptions", ctx_r44.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", sortedPythons_r12);
   }
 }
 
-function TuiTableExample3_tr_16_th_2_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_th_1_Template(rf, ctx) {
   if (rf & 1) {
     const _r56 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 31);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-number", 40);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_16_th_2_Template_tui_input_number_ngModelChange_1_listener($event) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-text-area", 30);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_15_tr_1_th_1_Template_tui_text_area_ngModelChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r56);
-      const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r54 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r54.onValueChange($event, "price", item_r43, ctx_r54.starwars);
+      const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r54 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r54.onValueChange($event, "name", item_r47, ctx_r54.starwars);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r45 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r48 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("tuiValidator", ctx_r45.minPrice)("ngModel", item_r43.price)("ngModelOptions", ctx_r45.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("expandable", true)("ngModel", item_r47.name)("ngModelOptions", ctx_r48.options);
   }
 }
 
-function TuiTableExample3_tr_16_td_3_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_th_2_Template(rf, ctx) {
   if (rf & 1) {
     const _r60 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-count", 34);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_16_td_3_Template_tui_input_count_ngModelChange_1_listener($event) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 32);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-number", 42);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_15_tr_1_th_2_Template_tui_input_number_ngModelChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r60);
-      const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r58 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r58.onValueChange($event, "quantity", item_r43, ctx_r58.starwars);
+      const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r58 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r58.onValueChange($event, "price", item_r47, ctx_r58.starwars);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r46 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r49 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r43.quantity)("ngModelOptions", ctx_r46.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("tuiValidator", ctx_r49.minPrice)("ngModel", item_r47.price)("ngModelOptions", ctx_r49.options);
   }
 }
 
-function TuiTableExample3_tr_16_td_4_tui_data_list_wrapper_2_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_td_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 37);
-  }
+    const _r64 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-  if (rf & 2) {
-    const ctx_r62 = fesm2015_core/* ɵɵnextContext */.oxw(3);
-    fesm2015_core/* ɵɵproperty */.Q6J("items", ctx_r62.units);
-  }
-}
-
-function TuiTableExample3_tr_16_td_4_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r65 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
-
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-select", 35);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_16_td_4_Template_tui_select_ngModelChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r65);
-      const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r63 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r63.onValueChange($event, "unit", item_r43, ctx_r63.starwars);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-count", 35);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_15_tr_1_td_3_Template_tui_input_count_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r64);
+      const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r62 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r62.onValueChange($event, "quantity", item_r47, ctx_r62.starwars);
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tr_16_td_4_tui_data_list_wrapper_2_Template, 1, 1, "tui-data-list-wrapper", 36);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r47 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r50 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r43.unit)("ngModelOptions", ctx_r47.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r47.quantity)("ngModelOptions", ctx_r50.options);
   }
 }
 
-function TuiTableExample3_tr_16_td_5_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_td_4_tui_data_list_wrapper_2_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 38);
+  }
+
+  if (rf & 2) {
+    const ctx_r66 = fesm2015_core/* ɵɵnextContext */.oxw(4);
+    fesm2015_core/* ɵɵproperty */.Q6J("items", ctx_r66.units);
+  }
+}
+
+function TuiTableExample3_tbody_15_tr_1_td_4_Template(rf, ctx) {
   if (rf & 1) {
     const _r69 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-date", 34);
-    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tr_16_td_5_Template_tui_input_date_ngModelChange_1_listener($event) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-select", 36);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_15_tr_1_td_4_Template_tui_select_ngModelChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r69);
-      const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-      const ctx_r67 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r67.onValueChange($event, "date", item_r43, ctx_r67.starwars);
+      const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r67 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r67.onValueChange($event, "unit", item_r47, ctx_r67.starwars);
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tbody_15_tr_1_td_4_tui_data_list_wrapper_2_Template, 1, 1, "tui-data-list-wrapper", 37);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r51 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r47.unit)("ngModelOptions", ctx_r51.options);
+  }
+}
+
+function TuiTableExample3_tbody_15_tr_1_td_5_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r73 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 34);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-input-date", 35);
+    fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function TuiTableExample3_tbody_15_tr_1_td_5_Template_tui_input_date_ngModelChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r73);
+      const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+      const ctx_r71 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r71.onValueChange($event, "date", item_r47, ctx_r71.starwars);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r48 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r52 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r43.date)("ngModelOptions", ctx_r48.options);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngModel", item_r47.date)("ngModelOptions", ctx_r52.options);
   }
 }
 
-function TuiTableExample3_tr_16_td_6_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_td_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 38);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 39);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵpipe */.ALo(2, "tuiFormatNumber");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r43 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r49 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const item_r47 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r53 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 1, ctx_r49.getTotal(item_r43)), " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 1, ctx_r53.getTotal(item_r47)), " ");
   }
 }
 
-function TuiTableExample3_tr_16_Template(rf, ctx) {
+function TuiTableExample3_tbody_15_tr_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 23);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tr_16_th_1_Template, 2, 3, "th", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tr_16_th_2_Template, 2, 3, "th", 39);
-    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample3_tr_16_td_3_Template, 2, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample3_tr_16_td_4_Template, 3, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample3_tr_16_td_5_Template, 2, 2, "td", 26);
-    fesm2015_core/* ɵɵtemplate */.YNc(6, TuiTableExample3_tr_16_td_6_Template, 3, 3, "td", 27);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 24);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tbody_15_tr_1_th_1_Template, 2, 3, "th", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample3_tbody_15_tr_1_th_2_Template, 2, 3, "th", 41);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample3_tbody_15_tr_1_td_3_Template, 2, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, TuiTableExample3_tbody_15_tr_1_td_4_Template, 3, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, TuiTableExample3_tbody_15_tr_1_td_5_Template, 2, 2, "td", 27);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, TuiTableExample3_tbody_15_tr_1_td_6_Template, 3, 3, "td", 28);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -957,12 +989,31 @@ function TuiTableExample3_tr_16_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", "date");
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", "total");
+  }
+}
+
+function TuiTableExample3_tbody_15_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tbody", 40);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample3_tbody_15_tr_1_Template, 7, 6, "tr", 23);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const sortedStarwars_r45 = ctx.tuiLet;
+    fesm2015_core/* ɵɵnextContext */.oxw();
+
+    const _r10 = fesm2015_core/* ɵɵreference */.MAs(18);
+
+    fesm2015_core/* ɵɵproperty */.Q6J("heading", _r10)("data", sortedStarwars_r45);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", sortedStarwars_r45);
   }
 }
 
 function TuiTableExample3_ng_template_17_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelement */._UZ(0, "tui-svg", 41);
+    fesm2015_core/* ɵɵelement */._UZ(0, "tui-svg", 43);
     fesm2015_core/* ɵɵtext */._uU(1, " Star Wars\n");
   }
 }
@@ -1056,8 +1107,8 @@ let TuiTableExample3 = /*#__PURE__*/(() => {
     type: TuiTableExample3,
     selectors: [["tui-table-example-3"]],
     decls: 19,
-    vars: 15,
-    consts: [["waIntersectionRoot", "", 1, "scrollbar", 3, "hidden"], ["tuiTable", "", "size", "l", 1, "table", 3, "columns"], ["tuiThead", ""], ["tuiThGroup", ""], ["tuiTh", "", "rowspan", "2", "class", "first", 3, "sorter", "sticky", 4, "tuiHead"], ["tuiTh", "", "rowspan", "2", "class", "number second", 3, "sticky", 4, "tuiHead"], ["tuiTh", "", "colspan", "2", 3, "sorter", 4, "tuiHead"], [4, "tuiHead"], ["tuiTh", "", "rowspan", "2", 4, "tuiHead"], ["tuiTh", "", "rowspan", "2", "class", "number", 3, "sorter", 4, "tuiHead"], ["tuiTh", "", "class", "number border", 4, "tuiHead"], ["tuiTh", "", 4, "tuiHead"], ["tuiTbody", "", "heading", "Monty Python", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["tuiTbody", "", 3, "heading", "data"], ["template", ""], ["tuiTh", "", "rowspan", "2", 1, "first", 3, "sorter", "sticky"], ["tuiTh", "", "rowspan", "2", 1, "number", "second", 3, "sticky"], ["tuiTh", "", "colspan", "2", 3, "sorter"], ["tuiTh", "", "rowspan", "2"], ["tuiTh", "", "rowspan", "2", 1, "number", 3, "sorter"], ["tuiTh", "", 1, "number", "border"], ["tuiTh", ""], ["tuiTr", ""], ["tuiTd", "", 3, "colSpan", 4, "tuiCell"], [4, "tuiCell"], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", "", "class", "number text", 4, "tuiCell"], ["tuiTd", "", 3, "colSpan"], [1, "textarea", 3, "expandable", "ngModel", "ngModelOptions", "ngModelChange"], ["tuiTd", "", "class", "second", 4, "ngIf"], ["tuiTd", "", 1, "second"], [1, "number", 3, "tuiValidator", "ngModel", "ngModelOptions", "ngModelChange"], ["tuiTd", ""], [3, "ngModel", "ngModelOptions", "ngModelChange"], [1, "select", 3, "ngModel", "ngModelOptions", "ngModelChange"], [3, "items", 4, "tuiDataList"], [3, "items"], ["tuiTd", "", 1, "number", "text"], ["tuiTd", "", "class", "second", 4, "tuiCell"], [3, "tuiValidator", "ngModel", "ngModelOptions", "ngModelChange"], ["src", "tuiIconStarLarge", 1, "tui-space_right-3"]],
+    vars: 16,
+    consts: [["waIntersectionRoot", "", 1, "scrollbar", 3, "hidden"], ["tuiTable", "", "size", "l", 1, "table", 3, "columns"], ["tuiThead", ""], ["tuiThGroup", ""], ["tuiTh", "", "rowspan", "2", "class", "first", 3, "sorter", "sticky", 4, "tuiHead"], ["tuiTh", "", "rowspan", "2", "class", "number second", 3, "sticky", 4, "tuiHead"], ["tuiTh", "", "colspan", "2", 3, "sorter", 4, "tuiHead"], [4, "tuiHead"], ["tuiTh", "", "rowspan", "2", 4, "tuiHead"], ["tuiTh", "", "rowspan", "2", "class", "number", 3, "sorter", 4, "tuiHead"], ["tuiTh", "", "class", "number border", 4, "tuiHead"], ["tuiTh", "", 4, "tuiHead"], ["tuiTbody", "", "heading", "Monty Python", 3, "data", 4, "tuiLet"], ["tuiTbody", "", 3, "heading", "data", 4, "tuiLet"], ["template", ""], ["tuiTh", "", "rowspan", "2", 1, "first", 3, "sorter", "sticky"], ["tuiTh", "", "rowspan", "2", 1, "number", "second", 3, "sticky"], ["tuiTh", "", "colspan", "2", 3, "sorter"], ["tuiTh", "", "rowspan", "2"], ["tuiTh", "", "rowspan", "2", 1, "number", 3, "sorter"], ["tuiTh", "", 1, "number", "border"], ["tuiTh", ""], ["tuiTbody", "", "heading", "Monty Python", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 3, "colSpan", 4, "tuiCell"], [4, "tuiCell"], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", "", "class", "number text", 4, "tuiCell"], ["tuiTd", "", 3, "colSpan"], [1, "textarea", 3, "expandable", "ngModel", "ngModelOptions", "ngModelChange"], ["tuiTd", "", "class", "second", 4, "ngIf"], ["tuiTd", "", 1, "second"], [1, "number", 3, "tuiValidator", "ngModel", "ngModelOptions", "ngModelChange"], ["tuiTd", ""], [3, "ngModel", "ngModelOptions", "ngModelChange"], [1, "select", 3, "ngModel", "ngModelOptions", "ngModelChange"], [3, "items", 4, "tuiDataList"], [3, "items"], ["tuiTd", "", 1, "number", "text"], ["tuiTbody", "", 3, "heading", "data"], ["tuiTd", "", "class", "second", 4, "tuiCell"], [3, "tuiValidator", "ngModel", "ngModelOptions", "ngModelChange"], ["src", "tuiIconStarLarge", 1, "tui-space_right-3"]],
     template: function TuiTableExample3_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-scrollbar", 0);
@@ -1076,20 +1127,16 @@ let TuiTableExample3 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵtemplate */.YNc(12, TuiTableExample3_th_12_Template, 2, 0, "th", 11);
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
-        fesm2015_core/* ɵɵelementStart */.TgZ(13, "tbody", 12);
-        fesm2015_core/* ɵɵtemplate */.YNc(14, TuiTableExample3_tr_14_Template, 7, 6, "tr", 13);
-        fesm2015_core/* ɵɵelementEnd */.qZA();
-        fesm2015_core/* ɵɵelementStart */.TgZ(15, "tbody", 14);
-        fesm2015_core/* ɵɵtemplate */.YNc(16, TuiTableExample3_tr_16_Template, 7, 6, "tr", 13);
-        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵtemplate */.YNc(13, TuiTableExample3_tbody_13_Template, 2, 2, "tbody", 12);
+        fesm2015_core/* ɵɵpipe */.ALo(14, "tuiTableSort");
+        fesm2015_core/* ɵɵtemplate */.YNc(15, TuiTableExample3_tbody_15_Template, 2, 3, "tbody", 13);
+        fesm2015_core/* ɵɵpipe */.ALo(16, "tuiTableSort");
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
-        fesm2015_core/* ɵɵtemplate */.YNc(17, TuiTableExample3_ng_template_17_Template, 2, 0, "ng-template", null, 15, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
+        fesm2015_core/* ɵɵtemplate */.YNc(17, TuiTableExample3_ng_template_17_Template, 2, 0, "ng-template", null, 14, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
       }
 
       if (rf & 2) {
-        const _r10 = fesm2015_core/* ɵɵreference */.MAs(18);
-
         fesm2015_core/* ɵɵproperty */.Q6J("hidden", true);
         fesm2015_core/* ɵɵadvance */.xp6(1);
         fesm2015_core/* ɵɵproperty */.Q6J("columns", ctx.columns);
@@ -1110,17 +1157,13 @@ let TuiTableExample3 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵadvance */.xp6(1);
         fesm2015_core/* ɵɵproperty */.Q6J("tuiHead", "unit");
         fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("data", ctx.pythons);
-        fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.pythons);
-        fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("heading", _r10)("data", ctx.starwars);
-        fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.starwars);
+        fesm2015_core/* ɵɵproperty */.Q6J("tuiLet", fesm2015_core/* ɵɵpipeBind1 */.lcZ(14, 12, ctx.pythons));
+        fesm2015_core/* ɵɵadvance */.xp6(2);
+        fesm2015_core/* ɵɵproperty */.Q6J("tuiLet", fesm2015_core/* ɵɵpipeBind1 */.lcZ(16, 14, ctx.starwars));
       }
     },
-    directives: [scrollbar_component/* TuiScrollbarComponent */.I, ng_web_apis_intersection_observer/* IntersectionRootDirective */.Q7, table_directive/* TuiTableDirective */.c, thead_directive/* TuiTheadDirective */.N, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, text_area_component/* TuiTextAreaComponent */.Jl, text_area_directive/* TuiTextAreaDirective */.e, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, common/* NgIf */.O5, input_number_component/* TuiInputNumberComponent */.q, input_number_directive/* TuiInputNumberDirective */.g, validator_directive/* TuiValidatorDirective */.W, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, select_component/* TuiSelectComponent */.u, select_directive/* TuiSelectDirective */.O, data_list_directive/* TuiDataListDirective */.g, data_list_wrapper_component/* TuiDataListWrapperComponent */.e, input_date_component/* TuiInputDateComponent */.j, input_date_directive/* TuiInputDateDirective */.k, svg_component/* TuiSvgComponent */.P],
-    pipes: [format_number_pipe/* TuiFormatNumberPipe */.m],
+    directives: [scrollbar_component/* TuiScrollbarComponent */.I, ng_web_apis_intersection_observer/* IntersectionRootDirective */.Q7, table_directive/* TuiTableDirective */.c, thead_directive/* TuiTheadDirective */.N, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, let_directive/* TuiLetDirective */.L, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, common/* NgForOf */.sg, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K, text_area_component/* TuiTextAreaComponent */.Jl, text_area_directive/* TuiTextAreaDirective */.e, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, common/* NgIf */.O5, input_number_component/* TuiInputNumberComponent */.q, input_number_directive/* TuiInputNumberDirective */.g, validator_directive/* TuiValidatorDirective */.W, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, select_component/* TuiSelectComponent */.u, select_directive/* TuiSelectDirective */.O, data_list_directive/* TuiDataListDirective */.g, data_list_wrapper_component/* TuiDataListWrapperComponent */.e, input_date_component/* TuiInputDateComponent */.j, input_date_directive/* TuiInputDateDirective */.k, svg_component/* TuiSvgComponent */.P],
+    pipes: [table_sort_pipe/* TuiTableSortPipe */.y, format_number_pipe/* TuiFormatNumberPipe */.m],
     styles: [".table[_ngcontent-%COMP%]{table-layout:fixed}.textarea[_ngcontent-%COMP%]{min-height:var(--tui-height-l)}.number[_ngcontent-%COMP%]{text-align:right;flex-direction:row-reverse}.first[_ngcontent-%COMP%]{min-width:11.25rem;max-width:11.25rem}.second[_ngcontent-%COMP%]{left:11.25rem}.text[_ngcontent-%COMP%]{vertical-align:top;padding-top:1rem}.border[_ngcontent-%COMP%]{border-left:none}.select[_ngcontent-%COMP%]{width:6.25rem}.scrollbar[_ngcontent-%COMP%]{max-height:18.75rem}"],
     changeDetection: 0
   });
@@ -1199,6 +1242,7 @@ var sortable_directive = __webpack_require__(10435);
 
 
 
+
 function TuiTableExample4_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
@@ -1224,7 +1268,7 @@ function TuiTableExample4_ng_template_8_Template(rf, ctx) {
 
 function TuiTableExample4_table_12_th_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 15);
     fesm2015_core/* ɵɵtext */._uU(1, " Name ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1232,7 +1276,7 @@ function TuiTableExample4_table_12_th_5_Template(rf, ctx) {
 
 function TuiTableExample4_table_12_th_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 15);
     fesm2015_core/* ɵɵtext */._uU(1, " Date of Birth ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1240,66 +1284,66 @@ function TuiTableExample4_table_12_th_6_Template(rf, ctx) {
 
 function TuiTableExample4_table_12_th_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 15);
     fesm2015_core/* ɵɵtext */._uU(1, " Age ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 }
 
-function TuiTableExample4_table_12_tr_9_td_1_Template(rf, ctx) {
+function TuiTableExample4_table_12_tbody_8_tr_1_td_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 19);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 20);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r11 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r12 = fesm2015_core/* ɵɵnextContext */.oxw(2);
-    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r12.isMatch(item_r11.name));
+    const item_r13 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw(3);
+    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r14.isMatch(item_r13.name));
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r11.name, " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r13.name, " ");
   }
 }
 
-function TuiTableExample4_table_12_tr_9_td_2_Template(rf, ctx) {
+function TuiTableExample4_table_12_tbody_8_tr_1_td_2_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 19);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 20);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r11 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw(2);
-    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r13.isMatch(item_r11.dob));
+    const item_r13 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw(3);
+    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r15.isMatch(item_r13.dob));
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r11.dob, " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r13.dob, " ");
   }
 }
 
-function TuiTableExample4_table_12_tr_9_td_3_Template(rf, ctx) {
+function TuiTableExample4_table_12_tbody_8_tr_1_td_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 19);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 20);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const item_r11 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw(2);
-    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r14.isMatch(ctx_r14.getAge(item_r11)));
+    const item_r13 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw(3);
+    fesm2015_core/* ɵɵclassProp */.ekj("match", ctx_r16.isMatch(ctx_r16.getAge(item_r13)));
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", ctx_r14.getAge(item_r11), " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", ctx_r16.getAge(item_r13), " ");
   }
 }
 
-function TuiTableExample4_table_12_tr_9_Template(rf, ctx) {
+function TuiTableExample4_table_12_tbody_8_tr_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 17);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample4_table_12_tr_9_td_1_Template, 2, 3, "td", 18);
-    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample4_table_12_tr_9_td_2_Template, 2, 3, "td", 18);
-    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample4_table_12_tr_9_td_3_Template, 2, 3, "td", 18);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 18);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample4_table_12_tbody_8_tr_1_td_1_Template, 2, 3, "td", 19);
+    fesm2015_core/* ɵɵtemplate */.YNc(2, TuiTableExample4_table_12_tbody_8_tr_1_td_2_Template, 2, 3, "td", 19);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, TuiTableExample4_table_12_tbody_8_tr_1_td_3_Template, 2, 3, "td", 19);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -1313,19 +1357,34 @@ function TuiTableExample4_table_12_tr_9_Template(rf, ctx) {
   }
 }
 
+function TuiTableExample4_table_12_tbody_8_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tbody", 16);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample4_table_12_tbody_8_tr_1_Template, 4, 3, "tr", 17);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const sortedData_r11 = ctx.tuiLet;
+    fesm2015_core/* ɵɵproperty */.Q6J("data", sortedData_r11);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", sortedData_r11);
+  }
+}
+
 function TuiTableExample4_table_12_Template(rf, ctx) {
   if (rf & 1) {
-    const _r19 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r21 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "table", 9);
     fesm2015_core/* ɵɵlistener */.NdJ("tuiSortByChange", function TuiTableExample4_table_12_Template_table_tuiSortByChange_0_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r18.sorter$.next($event);
-    })("directionChange", function TuiTableExample4_table_12_Template_table_directionChange_0_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r21);
       const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r20.direction$.next($event);
+      return ctx_r20.sorter$.next($event);
+    })("directionChange", function TuiTableExample4_table_12_Template_table_directionChange_0_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r21);
+      const ctx_r22 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r22.direction$.next($event);
     });
     fesm2015_core/* ɵɵpipe */.ALo(1, "async");
     fesm2015_core/* ɵɵpipe */.ALo(2, "async");
@@ -1336,21 +1395,20 @@ function TuiTableExample4_table_12_Template(rf, ctx) {
     fesm2015_core/* ɵɵtemplate */.YNc(7, TuiTableExample4_table_12_th_7_Template, 2, 0, "th", 11);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(8, "tbody", 12);
-    fesm2015_core/* ɵɵtemplate */.YNc(9, TuiTableExample4_table_12_tr_9_Template, 4, 3, "tr", 13);
-    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵtemplate */.YNc(8, TuiTableExample4_table_12_tbody_8_Template, 2, 2, "tbody", 12);
+    fesm2015_core/* ɵɵpipe */.ALo(9, "tuiTableSort");
     fesm2015_core/* ɵɵelementStart */.TgZ(10, "tfoot");
     fesm2015_core/* ɵɵelementStart */.TgZ(11, "tr");
-    fesm2015_core/* ɵɵelementStart */.TgZ(12, "td", 14);
-    fesm2015_core/* ɵɵelementStart */.TgZ(13, "tui-table-pagination", 15);
+    fesm2015_core/* ɵɵelementStart */.TgZ(12, "td", 13);
+    fesm2015_core/* ɵɵelementStart */.TgZ(13, "tui-table-pagination", 14);
     fesm2015_core/* ɵɵlistener */.NdJ("pageChange", function TuiTableExample4_table_12_Template_tui_table_pagination_pageChange_13_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r21.onPage($event);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r21);
+      const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r23.onPage($event);
     })("sizeChange", function TuiTableExample4_table_12_Template_tui_table_pagination_sizeChange_13_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r22 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r22.onSize($event);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r21);
+      const ctx_r24 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r24.onSize($event);
     });
     fesm2015_core/* ɵɵpipe */.ALo(14, "async");
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -1363,7 +1421,7 @@ function TuiTableExample4_table_12_Template(rf, ctx) {
   if (rf & 2) {
     const data_r6 = ctx.ngIf;
     const ctx_r2 = fesm2015_core/* ɵɵnextContext */.oxw();
-    fesm2015_core/* ɵɵproperty */.Q6J("columns", ctx_r2.columns)("direction", fesm2015_core/* ɵɵpipeBind1 */.lcZ(1, 10, ctx_r2.direction$) || 1)("tuiSortBy", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 12, ctx_r2.sorter$));
+    fesm2015_core/* ɵɵproperty */.Q6J("columns", ctx_r2.columns)("direction", fesm2015_core/* ɵɵpipeBind1 */.lcZ(1, 9, ctx_r2.direction$) || 1)("tuiSortBy", fesm2015_core/* ɵɵpipeBind1 */.lcZ(2, 11, ctx_r2.sorter$));
     fesm2015_core/* ɵɵadvance */.xp6(5);
     fesm2015_core/* ɵɵproperty */.Q6J("tuiHead", "name");
     fesm2015_core/* ɵɵadvance */.xp6(1);
@@ -1371,13 +1429,11 @@ function TuiTableExample4_table_12_Template(rf, ctx) {
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("tuiHead", "age");
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("data", data_r6);
-    fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", data_r6);
-    fesm2015_core/* ɵɵadvance */.xp6(3);
+    fesm2015_core/* ɵɵproperty */.Q6J("tuiLet", fesm2015_core/* ɵɵpipeBind1 */.lcZ(9, 13, data_r6));
+    fesm2015_core/* ɵɵadvance */.xp6(4);
     fesm2015_core/* ɵɵproperty */.Q6J("colSpan", ctx_r2.columns.length);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("total", fesm2015_core/* ɵɵpipeBind1 */.lcZ(14, 14, ctx_r2.total$) || 0);
+    fesm2015_core/* ɵɵproperty */.Q6J("total", fesm2015_core/* ɵɵpipeBind1 */.lcZ(14, 15, ctx_r2.total$) || 0);
   }
 }
 
@@ -1464,7 +1520,7 @@ let TuiTableExample4 = /*#__PURE__*/(() => {
     selectors: [["tui-table-example-4"]],
     decls: 14,
     vars: 12,
-    consts: [["tuiTextfieldSize", "m", 1, "filters"], [1, "input", 3, "tuiTextfieldCleaner", "ngModel", "ngModelChange"], [1, "tui-space_horizontal-3", 3, "formControl"], [3, "content"], ["tuiButton", "", "size", "m", 3, "iconRight"], ["dropdown", ""], [3, "overlay", "showLoader"], ["tuiTable", "", "class", "table", 3, "columns", "direction", "tuiSortBy", "tuiSortByChange", "directionChange", 4, "ngIf"], [1, "columns", 3, "enabled", "items", "itemsChange", "enabledChange"], ["tuiTable", "", 1, "table", 3, "columns", "direction", "tuiSortBy", "tuiSortByChange", "directionChange"], ["tuiThGroup", ""], ["tuiTh", "", "tuiSortable", "", 4, "tuiHead"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], [3, "colSpan"], [1, "tui-space_top-2", 3, "total", "pageChange", "sizeChange"], ["tuiTh", "", "tuiSortable", ""], ["tuiTr", ""], ["tuiTd", "", 3, "match", 4, "tuiCell"], ["tuiTd", ""]],
+    consts: [["tuiTextfieldSize", "m", 1, "filters"], [1, "input", 3, "tuiTextfieldCleaner", "ngModel", "ngModelChange"], [1, "tui-space_horizontal-3", 3, "formControl"], [3, "content"], ["tuiButton", "", "size", "m", 3, "iconRight"], ["dropdown", ""], [3, "overlay", "showLoader"], ["tuiTable", "", "class", "table", 3, "columns", "direction", "tuiSortBy", "tuiSortByChange", "directionChange", 4, "ngIf"], [1, "columns", 3, "enabled", "items", "itemsChange", "enabledChange"], ["tuiTable", "", 1, "table", 3, "columns", "direction", "tuiSortBy", "tuiSortByChange", "directionChange"], ["tuiThGroup", ""], ["tuiTh", "", "tuiSortable", "", 4, "tuiHead"], ["tuiTbody", "", 3, "data", 4, "tuiLet"], [3, "colSpan"], [1, "tui-space_top-2", 3, "total", "pageChange", "sizeChange"], ["tuiTh", "", "tuiSortable", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 3, "match", 4, "tuiCell"], ["tuiTd", ""]],
     template: function TuiTableExample4_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "p", 0);
@@ -1486,7 +1542,7 @@ let TuiTableExample4 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementStart */.TgZ(10, "tui-loader", 6);
         fesm2015_core/* ɵɵpipe */.ALo(11, "async");
-        fesm2015_core/* ɵɵtemplate */.YNc(12, TuiTableExample4_table_12_Template, 15, 16, "table", 7);
+        fesm2015_core/* ɵɵtemplate */.YNc(12, TuiTableExample4_table_12_Template, 15, 17, "table", 7);
         fesm2015_core/* ɵɵpipe */.ALo(13, "async");
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
@@ -1508,8 +1564,8 @@ let TuiTableExample4 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("ngIf", fesm2015_core/* ɵɵpipeBind1 */.lcZ(13, 10, ctx.data$));
       }
     },
-    directives: [textfield_size_directive/* TuiTextfieldSizeDirective */.s, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, textfield_cleaner_directive/* TuiTextfieldCleanerDirective */.b, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* FormControlDirective */.oH, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, button_component/* TuiButtonComponent */.v, loader_component/* TuiLoaderComponent */.k, common/* NgIf */.O5, reorder_component/* TuiReorderComponent */.e, table_directive/* TuiTableDirective */.c, sort_by_directive/* TuiSortByDirective */.P, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, table_pagination_component/* TuiTablePaginationComponent */.W, th_component/* TuiThComponent */.W, sortable_directive/* TuiSortableDirective */.g, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
-    pipes: [common/* AsyncPipe */.Ov],
+    directives: [textfield_size_directive/* TuiTextfieldSizeDirective */.s, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, textfield_cleaner_directive/* TuiTextfieldCleanerDirective */.b, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, input_count_component/* TuiInputCountComponent */.E, input_count_directive/* TuiInputCountDirective */.a, fesm2015_forms/* FormControlDirective */.oH, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, button_component/* TuiButtonComponent */.v, loader_component/* TuiLoaderComponent */.k, common/* NgIf */.O5, reorder_component/* TuiReorderComponent */.e, table_directive/* TuiTableDirective */.c, sort_by_directive/* TuiSortByDirective */.P, th_group_component/* TuiThGroupComponent */.E, head_directive/* TuiHeadDirective */.D, let_directive/* TuiLetDirective */.L, table_pagination_component/* TuiTablePaginationComponent */.W, th_component/* TuiThComponent */.W, sortable_directive/* TuiSortableDirective */.g, tbody_component/* TuiTbodyComponent */.j, common/* NgForOf */.sg, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
+    pipes: [common/* AsyncPipe */.Ov, table_sort_pipe/* TuiTableSortPipe */.y],
     styles: [".table[_ngcontent-%COMP%]{width:100%}.filters[_ngcontent-%COMP%]{display:flex}.input[_ngcontent-%COMP%]{flex:1}.columns[_ngcontent-%COMP%]{width:10.625rem}.match[_ngcontent-%COMP%]{background:var(--tui-selection)}"],
     changeDetection: 0
   });
@@ -1531,8 +1587,6 @@ function getAge({
 }
 // EXTERNAL MODULE: ./projects/core/components/scrollbar/scrollable.directive.ts
 var scrollable_directive = __webpack_require__(62500);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/pipes/table-sort.pipe.ts
-var table_sort_pipe = __webpack_require__(23301);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/tables/table/examples/5/index.ts
 
 
@@ -1765,9 +1819,10 @@ function _5_getAge({
 
 
 
+
 function TuiTableExample6_ng_container_7_th_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "th", 7);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1782,7 +1837,7 @@ function TuiTableExample6_ng_container_7_th_1_Template(rf, ctx) {
 function TuiTableExample6_ng_container_7_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_ng_container_7_th_1_Template, 2, 1, "th", 7);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_ng_container_7_th_1_Template, 2, 1, "th", 6);
     fesm2015_core/* ɵɵelementContainerEnd */.BQk();
   }
 
@@ -1793,46 +1848,61 @@ function TuiTableExample6_ng_container_7_Template(rf, ctx) {
   }
 }
 
-function TuiTableExample6_tr_9_ng_container_1_td_1_Template(rf, ctx) {
+function TuiTableExample6_tbody_8_tr_1_ng_container_1_td_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 11);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "td", 12);
     fesm2015_core/* ɵɵtext */._uU(1);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const col_r7 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
-    const item_r5 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const col_r9 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
+    const item_r7 = fesm2015_core/* ɵɵnextContext */.oxw().$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r5[col_r7], " ");
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r7[col_r9], " ");
   }
 }
 
-function TuiTableExample6_tr_9_ng_container_1_Template(rf, ctx) {
+function TuiTableExample6_tbody_8_tr_1_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementContainerStart */.ynx(0);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_tr_9_ng_container_1_td_1_Template, 2, 1, "td", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_tbody_8_tr_1_ng_container_1_td_1_Template, 2, 1, "td", 11);
     fesm2015_core/* ɵɵelementContainerEnd */.BQk();
   }
 
   if (rf & 2) {
-    const col_r7 = ctx.$implicit;
+    const col_r9 = ctx.$implicit;
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", col_r7);
+    fesm2015_core/* ɵɵproperty */.Q6J("tuiCell", col_r9);
   }
 }
 
-function TuiTableExample6_tr_9_Template(rf, ctx) {
+function TuiTableExample6_tbody_8_tr_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 9);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_tr_9_ng_container_1_Template, 2, 1, "ng-container", 4);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tr", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_tbody_8_tr_1_ng_container_1_Template, 2, 1, "ng-container", 4);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
-    const ctx_r1 = fesm2015_core/* ɵɵnextContext */.oxw();
+    const ctx_r6 = fesm2015_core/* ɵɵnextContext */.oxw(2);
     fesm2015_core/* ɵɵadvance */.xp6(1);
-    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx_r1.columns);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx_r6.columns);
+  }
+}
+
+function TuiTableExample6_tbody_8_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tbody", 8);
+    fesm2015_core/* ɵɵtemplate */.YNc(1, TuiTableExample6_tbody_8_tr_1_Template, 2, 1, "tr", 9);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const sortedData_r5 = ctx.tuiLet;
+    fesm2015_core/* ɵɵproperty */.Q6J("data", sortedData_r5);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", sortedData_r5);
   }
 }
 
@@ -1871,8 +1941,8 @@ let TuiTableExample6 = /*#__PURE__*/(() => {
     type: TuiTableExample6,
     selectors: [["tui-table-example-6"]],
     decls: 10,
-    vars: 4,
-    consts: [["tuiButton", "", "size", "s", 3, "click"], ["tuiButton", "", "size", "s", 1, "tui-space_left-2", 3, "click"], ["tuiTable", "", 1, "table", "tui-space_top-3", 3, "columns"], ["tuiThGroup", ""], [4, "ngFor", "ngForOf"], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["tuiTh", "", 4, "tuiHead"], ["tuiTh", ""], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""]],
+    vars: 5,
+    consts: [["tuiButton", "", "size", "s", 3, "click"], ["tuiButton", "", "size", "s", 1, "tui-space_left-2", 3, "click"], ["tuiTable", "", 1, "table", "tui-space_top-3", 3, "columns"], ["tuiThGroup", ""], [4, "ngFor", "ngForOf"], ["tuiTbody", "", 3, "data", 4, "tuiLet"], ["tuiTh", "", 4, "tuiHead"], ["tuiTh", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""]],
     template: function TuiTableExample6_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "button", 0);
@@ -1893,9 +1963,8 @@ let TuiTableExample6 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵtemplate */.YNc(7, TuiTableExample6_ng_container_7_Template, 2, 1, "ng-container", 4);
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
-        fesm2015_core/* ɵɵelementStart */.TgZ(8, "tbody", 5);
-        fesm2015_core/* ɵɵtemplate */.YNc(9, TuiTableExample6_tr_9_Template, 2, 1, "tr", 6);
-        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵtemplate */.YNc(8, TuiTableExample6_tbody_8_Template, 2, 2, "tbody", 5);
+        fesm2015_core/* ɵɵpipe */.ALo(9, "tuiTableSort");
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
 
@@ -1905,12 +1974,11 @@ let TuiTableExample6 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵadvance */.xp6(3);
         fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.columns);
         fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("data", ctx.data);
-        fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.data);
+        fesm2015_core/* ɵɵproperty */.Q6J("tuiLet", fesm2015_core/* ɵɵpipeBind1 */.lcZ(9, 3, ctx.data));
       }
     },
-    directives: [button_component/* TuiButtonComponent */.v, table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, common/* NgForOf */.sg, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, head_directive/* TuiHeadDirective */.D, th_component/* TuiThComponent */.W, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
+    directives: [button_component/* TuiButtonComponent */.v, table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, common/* NgForOf */.sg, let_directive/* TuiLetDirective */.L, head_directive/* TuiHeadDirective */.D, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
+    pipes: [table_sort_pipe/* TuiTableSortPipe */.y],
     styles: [".table[_ngcontent-%COMP%]{width:100%}"],
     changeDetection: 0
   });
@@ -2196,31 +2264,21 @@ function ExampleTuiTableComponent_ng_template_2_ng_template_6_Template(rf, ctx) 
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelement */._UZ(14, "hr");
     fesm2015_core/* ɵɵelementStart */.TgZ(15, "h2");
-    fesm2015_core/* ɵɵtext */._uU(16, "*tuiRow=\"let item of data\"");
+    fesm2015_core/* ɵɵtext */._uU(16, "*tuiCell=\"key\"");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(17, "p");
-    fesm2015_core/* ɵɵtext */._uU(18, " Used to define template for a ");
+    fesm2015_core/* ɵɵtext */._uU(18, " Used to define template for ");
     fesm2015_core/* ɵɵelementStart */.TgZ(19, "em");
-    fesm2015_core/* ɵɵtext */._uU(20, "row");
+    fesm2015_core/* ɵɵtext */._uU(20, "cell");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵtext */._uU(21, " for particular key ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(21, "hr");
-    fesm2015_core/* ɵɵelementStart */.TgZ(22, "h2");
-    fesm2015_core/* ɵɵtext */._uU(23, "*tuiCell=\"key\"");
+    fesm2015_core/* ɵɵelementStart */.TgZ(22, "p");
+    fesm2015_core/* ɵɵtext */._uU(23, " Goes inside ");
+    fesm2015_core/* ɵɵelementStart */.TgZ(24, "code");
+    fesm2015_core/* ɵɵtext */._uU(25, "tr");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(24, "p");
-    fesm2015_core/* ɵɵtext */._uU(25, " Used to define template for ");
-    fesm2015_core/* ɵɵelementStart */.TgZ(26, "em");
-    fesm2015_core/* ɵɵtext */._uU(27, "cell");
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵtext */._uU(28, " for particular key ");
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(29, "p");
-    fesm2015_core/* ɵɵtext */._uU(30, " Goes inside ");
-    fesm2015_core/* ɵɵelementStart */.TgZ(31, "code");
-    fesm2015_core/* ɵɵtext */._uU(32, "tr");
-    fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵtext */._uU(33, " element ");
+    fesm2015_core/* ɵɵtext */._uU(26, " element ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 }
@@ -2234,7 +2292,7 @@ function ExampleTuiTableComponent_ng_template_2_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(4, "tui-accordion-item");
     fesm2015_core/* ɵɵtext */._uU(5, " Structural directives ");
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiTableComponent_ng_template_2_ng_template_6_Template, 34, 0, "ng-template", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiTableComponent_ng_template_2_ng_template_6_Template, 27, 0, "ng-template", 10);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
