@@ -1,4 +1,3 @@
-<ng-content></ng-content>
 <tr *ngIf="heading">
     <th
         class="t-heading"
@@ -22,6 +21,9 @@
         </button>
     </th>
 </tr>
+<ng-container *ngIf="open">
+    <ng-content></ng-content>
+</ng-container>
 <ng-container *ngIf="open && row">
     <ng-container
         *ngFor="let item of sorted; let index = index"

@@ -74,12 +74,13 @@
         </thead>
 
         <tbody
+            *tuiLet="pythons | tuiTableSort as sortedPythons"
             tuiTbody
             heading="Monty Python"
-            [data]="pythons"
+            [data]="sortedPythons"
         >
             <tr
-                *tuiRow="let item of pythons"
+                *ngFor="let item of sortedPythons"
                 tuiTr
             >
                 <th
@@ -157,12 +158,13 @@
         </tbody>
 
         <tbody
+            *tuiLet="starwars | tuiTableSort as sortedStarwars"
             tuiTbody
             [heading]="template"
-            [data]="starwars"
+            [data]="sortedStarwars"
         >
             <tr
-                *tuiRow="let item of starwars"
+                *ngFor="let item of sortedStarwars"
                 tuiTr
             >
                 <th

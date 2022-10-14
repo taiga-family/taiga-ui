@@ -73,11 +73,12 @@
             </tr>
         </thead>
         <tbody
+            *tuiLet="data | tuiTableSort as sortedData"
             tuiTbody
-            [data]="data"
+            [data]="sortedData"
         >
             <tr
-                *tuiRow="let item of data"
+                *ngFor="let item of sortedData"
                 tuiTr
             >
                 <td

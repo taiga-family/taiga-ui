@@ -32,41 +32,45 @@
       </th>
     </tr>
   </thead>
-  <tbody tuiTbody>
+  <tbody
+    *tuiLet="users | tuiTableSort as sortedUsers"
+    tuiTbody
+    [data]="sortedUsers"
+  >
     <tr
-      *ngFor="let item of users | tuiTableSort"
+      *ngFor="let item of sortedUsers"
       tuiTr
     >
       <td
-        *tuiCell="'name' of item; let value"
+        *tuiCell="'name'"
         tuiTd
       >
-        {{value}}
+        {{ item.name }}
       </td>
       <td
-        *tuiCell="'email' of item; let value"
+        *tuiCell="'email'"
         tuiTd
       >
         <a
-          *ngIf="value"
+          *ngIf="item.email"
           tuiLink
-          [href]="'mailto:' + value"
+          [href]="'mailto:' + item.email"
         >
-          {{value}}
+          {{ item.email }}
         </a>
       </td>
       <td
-        *tuiCell="'status' of item; let value"
+        *tuiCell="'status'"
         tuiTd
       >
-        <div [class]="value">{{value}}</div>
+        <div [class]="item.status">{{ item.status }}</div>
       </td>
       <td
-        *tuiCell="'tags' of item; let tags"
+        *tuiCell="'tags'"
         tuiTd
       >
         <tui-tag
-          *ngFor="let tag of tags"
+          *ngFor="let tag of item.tags"
           class="tui-space_right-1"
           [value]="tag"
           [autoColor]="true"

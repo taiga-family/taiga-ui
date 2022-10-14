@@ -26,7 +26,7 @@
                 [data]="breakpoints"
             >
                 <tr
-                    *tuiRow="let breakpoint of breakpoints"
+                    *ngFor="let breakpoint of breakpoints"
                     tuiTr
                 >
                     <td

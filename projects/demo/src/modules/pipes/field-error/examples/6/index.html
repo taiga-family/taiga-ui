@@ -19,7 +19,7 @@
         [data]="data"
     >
         <tr
-            *tuiRow="let item of data; let i = index"
+            *ngFor="let item of data; let i = index"
             tuiTr
         >
             <td

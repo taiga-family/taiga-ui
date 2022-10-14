@@ -46,6 +46,9 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         switchMap(() => tuiItemsQueryListObservable(this.body.rows)),
         map(
             rows =>
+                /**
+                 * TODO v4.0 replace `this.body.sorted` with `this.body.data` (dont forget to drop `sorted`-getter).
+                 */
                 this.body.sorted[rows.findIndex(row => row === this)] as Record<
                     keyof T | string,
                     any
