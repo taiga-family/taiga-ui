@@ -3,6 +3,10 @@ import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 export class TuiSvgHarness extends TuiComponentHarness {
     static hostSelector = `tui-svg`;
 
+    async click(): Promise<void> {
+        return (await this.host()).click();
+    }
+
     async text(): Promise<string> {
         return (await this.host()).text();
     }
