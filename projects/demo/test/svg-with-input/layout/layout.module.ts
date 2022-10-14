@@ -21,6 +21,10 @@ export class TuiLayoutTestFormDirective {}
         TuiLayoutTestFormDirective,
         TuiLayoutTestCopyrightDirective,
     ],
-    exports: [TuiLayoutTestComponent, TuiLayoutTestFormDirective, TuiLayoutTestCopyrightDirective],
+    exports: [
+        TuiLayoutTestComponent,
+        TuiLayoutTestFormDirective,
+        TuiLayoutTestCopyrightDirective,
+    ],
 })
 export class TuiLayoutTestModule {}
