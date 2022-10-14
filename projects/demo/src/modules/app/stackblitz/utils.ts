@@ -74,6 +74,7 @@ export const getSupportModules = (
 export function getAllModules(entryPoint: Record<string, unknown>): string {
     const allModules = Object.keys(entryPoint)
         .filter(name => name.endsWith(`Module`))
+        .filter(name => name !== `TuiOrderWeekDaysPipeModule`) // TODO remove after release 3.7.0
         .join(`,\n\t\t`);
 
     return `${allModules}`;

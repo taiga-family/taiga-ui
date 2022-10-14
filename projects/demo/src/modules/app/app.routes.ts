@@ -1589,6 +1589,15 @@ export const ROUTES = [
         },
     },
 
+    {
+        path: `stackblitz`,
+        loadChildren: async () =>
+            (await import(`./stackblitz/starter/stackblitz-starter.module`))
+                .StackblitzStarterModule,
+        data: {
+            title: `Stackblitz Starter`,
+        },
+    },
     {path: `**`, redirectTo: ``},
 ];
 
