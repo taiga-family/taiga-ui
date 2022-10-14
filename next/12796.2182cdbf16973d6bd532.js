@@ -42,8 +42,6 @@ var th_group_component = __webpack_require__(222);
 var th_component = __webpack_require__(96408);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/tbody/tbody.component.ts
 var tbody_component = __webpack_require__(57681);
-// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/row.directive.ts
-var row_directive = __webpack_require__(35459);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/tr/tr.component.ts
 var tr_component = __webpack_require__(84190);
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/cell.directive.ts
@@ -116,7 +114,7 @@ let TuiTableExample1 = /*#__PURE__*/(() => {
     selectors: [["tui-table-example-1"]],
     decls: 9,
     vars: 4,
-    consts: [["tuiTable", "", 1, "table", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 3, "resizable"], ["tuiTh", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "tuiRow", "tuiRowOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""]],
+    consts: [["tuiTable", "", 1, "table", 3, "columns"], ["tuiThGroup", ""], ["tuiTh", "", 3, "resizable"], ["tuiTh", ""], ["tuiTbody", "", 3, "data"], ["tuiTr", "", 4, "ngFor", "ngForOf"], ["tuiTr", ""], ["tuiTd", "", 4, "tuiCell"], ["tuiTd", ""]],
     template: function TuiTableExample1_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "table", 0);
@@ -143,10 +141,10 @@ let TuiTableExample1 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵadvance */.xp6(4);
         fesm2015_core/* ɵɵproperty */.Q6J("data", ctx.data);
         fesm2015_core/* ɵɵadvance */.xp6(1);
-        fesm2015_core/* ɵɵproperty */.Q6J("tuiRowOf", ctx.data);
+        fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.data);
       }
     },
-    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, row_directive/* TuiRowDirective */.L, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
+    directives: [table_directive/* TuiTableDirective */.c, th_group_component/* TuiThGroupComponent */.E, th_component/* TuiThComponent */.W, tbody_component/* TuiTbodyComponent */.j, common/* NgForOf */.sg, tr_component/* TuiTrComponent */.f, cell_directive/* TuiCellDirective */.B, td_component/* TuiTdComponent */.K],
     pipes: [format_number_pipe/* TuiFormatNumberPipe */.m],
     styles: [".table[_ngcontent-%COMP%]{width:100%}"],
     changeDetection: 0
@@ -155,6 +153,8 @@ let TuiTableExample1 = /*#__PURE__*/(() => {
 })();
 // EXTERNAL MODULE: ./projects/addon-table/components/table/directives/head.directive.ts
 var head_directive = __webpack_require__(78979);
+// EXTERNAL MODULE: ./projects/addon-table/components/table/directives/row.directive.ts
+var row_directive = __webpack_require__(35459);
 // EXTERNAL MODULE: ./projects/core/components/link/link.component.ts
 var link_component = __webpack_require__(66596);
 // EXTERNAL MODULE: ./projects/kit/components/tag/tag.component.ts

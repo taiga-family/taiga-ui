@@ -10162,14 +10162,16 @@ TuiThComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__/*
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(74788);
 /* harmony import */ var _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36692);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39761);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(88002);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(82298);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43190);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(88002);
 /* harmony import */ var _directives_cell_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(62818);
 /* harmony import */ var _directives_table_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19582);
 /* harmony import */ var _providers_table_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(35436);
 /* harmony import */ var _tbody_tbody_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(57681);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12057);
-/* harmony import */ var _td_td_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(48598);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(12057);
+/* harmony import */ var _td_td_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(48598);
+
 
 
 
@@ -10250,10 +10252,15 @@ let TuiTrComponent = /*#__PURE__*/(() => {
       this.table = table;
       this.body = body;
       this.cells = _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.EMPTY_QUERY;
-      this.cells$ = this.cells.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.cells.reduce((record, item) => Object.assign(Object.assign({}, record), {
+      this.contentReady$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__/* .ReplaySubject */ .t(1);
+      this.cells$ = this.contentReady$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .switchMap */ .w)(() => (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiItemsQueryListObservable)(this.cells)), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__/* .map */ .U)(cells => cells.reduce((record, item) => Object.assign(Object.assign({}, record), {
         [item.tuiCell]: item
       }), {})));
-      this.item$ = this.body.rows.changes.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__/* .startWith */ .O)(null), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .map */ .U)(() => this.body.sorted[this.body.rows.toArray().findIndex(row => row === this)]));
+      this.item$ = this.contentReady$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__/* .switchMap */ .w)(() => (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiItemsQueryListObservable)(this.body.rows)), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__/* .map */ .U)(rows => this.body.sorted[rows.findIndex(row => row === this)]));
+    }
+
+    ngAfterContentInit() {
+      void Promise.resolve().then(() => this.contentReady$.next(true));
     }
 
   }
@@ -10291,8 +10298,8 @@ let TuiTrComponent = /*#__PURE__*/(() => {
         _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵproperty"] */ .Q6J("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_5__/* ["ɵɵpipeBind1"] */ .lcZ(1, 1, ctx.cells$));
       }
     },
-    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgIf */ .O5, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgForOf */ .sg, _angular_common__WEBPACK_IMPORTED_MODULE_8__/* .NgTemplateOutlet */ .tP, _td_td_component__WEBPACK_IMPORTED_MODULE_9__/* .TuiTdComponent */ .K],
-    pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_8__/* .AsyncPipe */ .Ov],
+    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__/* .NgIf */ .O5, _angular_common__WEBPACK_IMPORTED_MODULE_9__/* .NgForOf */ .sg, _angular_common__WEBPACK_IMPORTED_MODULE_9__/* .NgTemplateOutlet */ .tP, _td_td_component__WEBPACK_IMPORTED_MODULE_10__/* .TuiTdComponent */ .K],
+    pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_9__/* .AsyncPipe */ .Ov],
     encapsulation: 2,
     changeDetection: 0
   });
