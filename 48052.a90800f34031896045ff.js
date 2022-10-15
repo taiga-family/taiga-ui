@@ -128,8 +128,8 @@ let TuiTextAreaExample2 = /*#__PURE__*/(() => {
   TuiTextAreaExample2.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
     type: TuiTextAreaExample2,
     selectors: [["tui-text-area-example-2"]],
-    decls: 9,
-    vars: 2,
+    decls: 11,
+    vars: 4,
     consts: function () {
       let i18n_0;
 
@@ -140,7 +140,7 @@ let TuiTextAreaExample2 = /*#__PURE__*/(() => {
         i18n_0 = $localize`:␟24c99562aed3fa3a2e251380380be625ceeaf326␟2874902685291106196:You can set a custom min-height for component`;
       }
 
-      return [i18n_0, [3, "formGroup"], [1, "tui-row"], [1, "tui-col_md-6"], ["formControlName", "testValue1", 1, "tui-space_bottom-4", "field-large"], ["formControlName", "testValue1", 1, "field-small", 3, "expandable"]];
+      return [i18n_0, [3, "formGroup"], [1, "tui-row"], [1, "tui-col_md-6"], ["formControlName", "testValue1", 1, "tui-space_bottom-4", "field-large"], ["formControlName", "testValue1", 1, "tui-space_bottom-4", "field-small", 3, "expandable"], ["formControlName", "testValue1", 1, "field-medium", 3, "expandable", "maxLength"]];
     },
     template: function TuiTextAreaExample2_Template(rf, ctx) {
       if (rf & 1) {
@@ -156,6 +156,9 @@ let TuiTextAreaExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵelementStart */.TgZ(7, "tui-text-area", 5);
         fesm2015_core/* ɵɵtext */._uU(8, " Type a text ");
         fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(9, "tui-text-area", 6);
+        fesm2015_core/* ɵɵtext */._uU(10, " Type a text ");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
         fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -166,10 +169,12 @@ let TuiTextAreaExample2 = /*#__PURE__*/(() => {
         fesm2015_core/* ɵɵproperty */.Q6J("formGroup", ctx.testForm);
         fesm2015_core/* ɵɵadvance */.xp6(5);
         fesm2015_core/* ɵɵproperty */.Q6J("expandable", true);
+        fesm2015_core/* ɵɵadvance */.xp6(2);
+        fesm2015_core/* ɵɵproperty */.Q6J("expandable", true)("maxLength", 30);
       }
     },
     directives: [fesm2015_forms/* ɵNgNoValidate */._Y, fesm2015_forms/* NgControlStatusGroup */.JL, fesm2015_forms/* FormGroupDirective */.sg, text_area_component/* TuiTextAreaComponent */.Jl, text_area_directive/* TuiTextAreaDirective */.e, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlName */.u],
-    styles: [".field-large[_ngcontent-%COMP%]{min-height:9.375rem}.field-small[_ngcontent-%COMP%]{min-height:3.5rem}"],
+    styles: [".field-large[_ngcontent-%COMP%]{min-height:9.375rem}.field-small[_ngcontent-%COMP%]{min-height:3.5rem}.field-medium[_ngcontent-%COMP%]{min-height:5rem}"],
     changeDetection: 0
   });
   return TuiTextAreaExample2;
