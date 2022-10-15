@@ -11,8 +11,16 @@
             </tui-text-area>
             <tui-text-area
                 formControlName="testValue1"
-                class="field-small"
+                class="tui-space_bottom-4 field-small"
                 [expandable]="true"
+            >
+                Type a text
+            </tui-text-area>
+            <tui-text-area
+                formControlName="testValue1"
+                class="field-medium"
+                [expandable]="true"
+                [maxLength]="30"
             >
                 Type a text
             </tui-text-area>

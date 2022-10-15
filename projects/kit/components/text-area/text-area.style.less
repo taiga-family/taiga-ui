@@ -9,7 +9,7 @@
     display: flex;
     font: var(--tui-font-text-m);
     flex-direction: column;
-    min-height: @height;
+    min-height: var(--tui-textarea-height, @height);
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
@@ -18,16 +18,15 @@
     }
 
     &[data-size='m'] {
-        font: var(--tui-font-text-s);
-        min-height: (@height - 1.25rem);
+        --tui-textarea-height: (@height - 1.25rem);
     }
 
     &[data-size='m']._has-counter {
-        min-height: (@heightCounter - 1.25rem);
+        --tui-textarea-height: (@heightCounter - 1.25rem);
     }
 
     &[data-size='l']._has-counter {
-        min-height: @heightCounter;
+        --tui-textarea-height: @heightCounter;
     }
 }
 
