@@ -7,7 +7,6 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 @Component({
     selector: `tui-calendar-example-4`,
     templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,

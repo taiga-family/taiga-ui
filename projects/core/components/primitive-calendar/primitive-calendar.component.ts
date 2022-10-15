@@ -11,6 +11,7 @@ import {
     ALWAYS_FALSE_HANDLER,
     TuiBooleanHandler,
     TuiDay,
+    TuiDayOfWeek,
     TuiDayRange,
     tuiDefaultProp,
     TuiInjectionTokenType,
@@ -19,7 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
-import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {TUI_FIRST_DAY_OF_WEEK, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
@@ -65,6 +66,7 @@ export class TuiPrimitiveCalendarComponent {
     constructor(
         @Inject(TUI_SHORT_WEEK_DAYS)
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
+        @Inject(TUI_FIRST_DAY_OF_WEEK) readonly firstDayOfWeek: TuiDayOfWeek,
     ) {}
 
     @HostBinding(`class._single`)
@@ -105,6 +107,10 @@ export class TuiPrimitiveCalendarComponent {
         }
 
         return null;
+    }
+
+    getDayIndex(colIndex: number): number {
+        return (colIndex + this.firstDayOfWeek || 7) % 7 || 7;
     }
 
     getItemRange(item: TuiDay): TuiRangeState | null {
