@@ -4,6 +4,8 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {Observable} from 'rxjs';
 
 import {TUI_PUSH_DEFAULT_OPTIONS, TuiPushOptions} from './push.options';
+// TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 import {TuiPushAlertComponent} from './push-alert.component';
 
 @Injectable({providedIn: `root`})
