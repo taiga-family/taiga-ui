@@ -59501,6 +59501,8 @@ let TuiPushAlertComponent = /*#__PURE__*/(() => {
 
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
@@ -59772,6 +59774,8 @@ const TUI_PUSH_DEFAULT_OPTIONS = {
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(74788);
 
 
+ // TODO: find the best way for prevent cycle
+// eslint-disable-next-line import/no-cycle
 
 
 
