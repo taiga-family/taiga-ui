@@ -40,6 +40,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Documentation`,
+        title: `StackBlitz`,
+        keywords: `reproduce, issue, bug, sandbox, playground, test`,
+        route: `stackblitz`,
+    },
+    {
+        section: $localize`Documentation`,
         title: $localize`Testing`,
         subPages: [
             {
