@@ -1531,7 +1531,7 @@ let ExampleTuiInputComponent = /*#__PURE__*/(() => {
       };
       this.example3 = {
         TypeScript: __webpack_require__.e(/* import() */ 17161).then(__webpack_require__.t.bind(__webpack_require__, 17161, 17)),
-        HTML: __webpack_require__.e(/* import() */ 5232).then(__webpack_require__.t.bind(__webpack_require__, 49515, 17))
+        HTML: __webpack_require__.e(/* import() */ 5232).then(__webpack_require__.t.bind(__webpack_require__, 5232, 17))
       };
       this.example4 = {
         TypeScript: __webpack_require__.e(/* import() */ 81470).then(__webpack_require__.t.bind(__webpack_require__, 81470, 17)),
