@@ -34514,7 +34514,7 @@ const environment = {
 
 /***/ }),
 
-/***/ 86799:
+/***/ 63132:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -35079,6 +35079,11 @@ const pages = [// Documentation
   title: $localize`Friendly libraries`,
   keywords: `related, libraries, other, friendly, npm, packages`,
   route: `related`
+}, {
+  section: $localize`Documentation`,
+  title: `StackBlitz`,
+  keywords: `reproduce, issue, bug, sandbox, playground, test`,
+  route: `stackblitz`
 }, {
   section: $localize`Documentation`,
   title: $localize`Testing`,
@@ -36060,469 +36065,10 @@ const pages = [// Documentation
     route: `/utils/tokens`
   }]
 }];
-// EXTERNAL MODULE: ./node_modules/@stackblitz/sdk/bundles/sdk.m.js
-var sdk_m = __webpack_require__(5746);
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file.parser.ts
-
-class TsFileParser {
-  constructor(rawFileContent) {
-    this.rawFileContent = rawFileContent;
-    const classesInside = rawFileContent.match(/export class/gi) || [];
-
-    if (classesInside.length > 1) {
-      throw new cdk.TuiTsParserException();
-    }
-  }
-
-  get className() {
-    const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
-    return className || ``;
-  }
-
-  set className(newClassName) {
-    this.rawFileContent = this.rawFileContent.replace(/(export class\s)(\w*)/i, `$1${newClassName}`);
-  }
-
-  get hasNgModule() {
-    return this.rawFileContent.includes(`@NgModule`);
-  }
-
-  get hasNgComponent() {
-    return this.rawFileContent.includes(`@Component`);
-  }
-
-  addImport(entity, packageOrPath) {
-    const fromName = packageOrPath.replace(`.ts`, ``);
-    this.rawFileContent = this.rawFileContent.includes(fromName) ? this.addIntoExistingImport(entity, fromName) : `import {${entity}} from '${fromName}';\n${this.rawFileContent};`;
-  }
-
-  toString() {
-    return this.rawFileContent;
-  }
-
-  addIntoExistingImport(entity, packageName) {
-    const packageImportsRegex = new RegExp(`(?:import\\s?\\{\\r?\\n?)(?:(?:.*),\\r?\\n?)*?(?:.*?)\\r?\\n?} from (?:'|")${packageName}(?:'|");`, `gm`);
-    return this.rawFileContent.replace(packageImportsRegex, parsed => {
-      return parsed.replace(`{`, `{${entity}, `);
-    });
-  }
-
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file-component.parser.ts
-
-class TsFileComponentParser extends TsFileParser {
-  set selector(newSelector) {
-    this.rawFileContent = this.rawFileContent.replace(/(selector:\s['"`])(.*)(['"`])/gi, `$1${newSelector}$3`);
-  }
-
-  set templateUrl(newUrl) {
-    this.rawFileContent = this.rawFileContent.replace(/(templateUrl:\s['"`])(.*)(['"`])/gi, `$1${newUrl}$3`);
-  }
-
-  set styleUrls(newUrls) {
-    this.rawFileContent = this.rawFileContent.replace(/(styleUrls:\s)(\[.*\])/gi, `$1${JSON.stringify(newUrls)}`);
-  }
-
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file-module.parser.ts
-
-class TsFileModuleParser extends TsFileParser {
-  addDeclaration(entity) {
-    this.rawFileContent = this.rawFileContent.replace(`declarations: [`, `declarations: [${entity}, `);
-  }
-
-  addModuleImport(entity) {
-    this.rawFileContent = this.rawFileContent.replace(`imports: [`, `imports: [\n${entity}, `);
-  }
-
-  hasDeclarationEntity(entity) {
-    const [, declarations = ``] = this.rawFileContent.match(/(?:declarations:\s\[)(.*)(?:\])/i) || [];
-    return declarations.includes(entity);
-  }
-
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/index.ts
-
-
-
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz-deps.constants.ts
-
-const ANGULAR_VERSION = `14.x.x`;
-const TAIGA_VERSION = `${cdk.TUI_VERSION.split(`.`)[0]}.x.x`;
-const STACKBLITZ_DEPS = {
-  '@angular/cdk': ANGULAR_VERSION,
-  '@angular/core': ANGULAR_VERSION,
-  '@angular/common': ANGULAR_VERSION,
-  '@angular/compiler': ANGULAR_VERSION,
-  '@angular/forms': ANGULAR_VERSION,
-  '@angular/localize': ANGULAR_VERSION,
-  '@angular/platform-browser': ANGULAR_VERSION,
-  '@angular/platform-browser-dynamic': ANGULAR_VERSION,
-  '@angular/animations': ANGULAR_VERSION,
-  '@angular/router': ANGULAR_VERSION,
-  '@taiga-ui/cdk': TAIGA_VERSION,
-  '@taiga-ui/i18n': TAIGA_VERSION,
-  '@taiga-ui/core': TAIGA_VERSION,
-  '@taiga-ui/kit': TAIGA_VERSION,
-  '@taiga-ui/icons': TAIGA_VERSION,
-  '@taiga-ui/styles': TAIGA_VERSION,
-  '@taiga-ui/addon-charts': TAIGA_VERSION,
-  '@taiga-ui/addon-commerce': TAIGA_VERSION,
-  '@taiga-ui/addon-editor': TAIGA_VERSION,
-  '@taiga-ui/addon-mobile': TAIGA_VERSION,
-  '@taiga-ui/addon-preview': TAIGA_VERSION,
-  '@taiga-ui/addon-table': TAIGA_VERSION,
-  '@taiga-ui/addon-tablebars': TAIGA_VERSION,
-  '@tinkoff/ng-dompurify': `*`,
-  '@tinkoff/ng-polymorpheus': `*`,
-  '@ng-web-apis/common': `*`,
-  '@tinkoff/ng-event-plugins': `*`,
-  '@ng-web-apis/intersection-observer': `*`,
-  '@ng-web-apis/mutation-observer': `*`,
-  'text-mask-core': `*`,
-  dompurify: `*`,
-  '@types/dompurify': `*`,
-  'prosemirror-state': `*`
-};
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz-resources-loader.ts
-
-
-class AbstractTuiStackblitzResourcesLoader {
-  static getProjectFiles() {
-    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const [configsContent, mainTsContent, indexHtmlContent, polyfillsContent, stylesContent, appModuleTsContent] = yield Promise.all([__webpack_require__.e(/* import() */ 2337).then(__webpack_require__.t.bind(__webpack_require__, 2337, 17)), __webpack_require__.e(/* import() */ 36867).then(__webpack_require__.t.bind(__webpack_require__, 36867, 17)), __webpack_require__.e(/* import() */ 85901).then(__webpack_require__.t.bind(__webpack_require__, 85901, 17)), __webpack_require__.e(/* import() */ 20741).then(__webpack_require__.t.bind(__webpack_require__, 20741, 17)), __webpack_require__.e(/* import() */ 13330).then(__webpack_require__.t.bind(__webpack_require__, 13330, 17)), __webpack_require__.e(/* import() */ 70827).then(__webpack_require__.t.bind(__webpack_require__, 70827, 17))].map(public_api/* tuiRawLoad */.JQ));
-      const [angularJson, tsconfig] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(configsContent);
-      const [mainTs] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(mainTsContent);
-      const [indexHtml] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(indexHtmlContent);
-      const [polyfills] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(polyfillsContent);
-      const [styles] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stylesContent);
-      const [appModuleTs] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(appModuleTsContent);
-      return {
-        angularJson,
-        tsconfig,
-        mainTs,
-        indexHtml,
-        polyfills,
-        appModuleTs,
-        styles
-      };
-    });
-  }
-
-  static getTaigaStyles() {
-    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const [accent, base, icon, mono, none, outline, primary, secondary, secondaryDestructive, table, textfield, whiteBlock, wrapper, stackblitzMarkdown] = yield Promise.all([__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17)), __webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17)), __webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17)), __webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17)), __webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17)), __webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17)), __webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17)), __webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17)), __webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17)), __webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17)), __webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17)), __webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17)), __webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17)), __webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17))].map(public_api/* tuiRawLoad */.JQ));
-      const [stackblitz] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stackblitzMarkdown);
-      return {
-        [`styles/theme/wrapper/accent.less`]: accent,
-        [`styles/theme/wrapper/base.less`]: base,
-        [`styles/theme/wrapper/icon.less`]: icon,
-        [`styles/theme/wrapper/mono.less`]: mono,
-        [`styles/theme/wrapper/none.less`]: none,
-        [`styles/theme/wrapper/outline.less`]: outline,
-        [`styles/theme/wrapper/primary.less`]: primary,
-        [`styles/theme/wrapper/secondary.less`]: secondary,
-        [`styles/theme/wrapper/secondary-destructive.less`]: secondaryDestructive,
-        [`styles/theme/wrapper/table.less`]: table,
-        [`styles/theme/wrapper/textfield.less`]: textfield,
-        [`styles/theme/wrapper/whiteblock.less`]: whiteBlock,
-        [`styles/theme/wrapper.less`]: wrapper,
-        [`styles/taiga-ui-stackblitz.less`]: stackblitz
-      };
-    });
-  }
-
-  static getReadMeFiles() {
-    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-      const [stackblitzReadMe] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 19551).then(__webpack_require__.t.bind(__webpack_require__, 19551, 17)))]);
-      return {
-        stackblitzReadMe
-      };
-    });
-  }
-
-}
-// EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/util/identity.js
-var identity = __webpack_require__(54487);
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/file-type-guards.utils.ts
-
-function isTS(fileName) {
-  return fileName === public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME.TS */.N0.TS || fileName.endsWith(`.ts`);
-}
-function isLess(fileName) {
-  return fileName === public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS */.N0.LESS || `${fileName}`.endsWith(`.less`);
-}
-function isPrimaryComponentFile(fileName) {
-  return Object.values(public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME */.N0).includes(fileName);
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/less-processor.ts
-function processLess(fileContent) {
-  return fileContent.replace(`@import 'taiga-ui-local';`, `@import '~@taiga-ui/core/styles/taiga-ui-local';`);
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/typescript-processor.ts
-
-function processTs(fileContent) {
-  const tsFileContent = new TsFileParser(fileContent);
-
-  if (tsFileContent.hasNgComponent) {
-    tsFileContent.addImport(`ChangeDetectionStrategy`, `@angular/core`);
-  }
-
-  return tsFileContent.toString().replace(/import {encapsulation} from '.*';\n/gm, ``).replace(/import {changeDetection} from '.*';\n/gm, ``).replace(/\n +encapsulation,/gm, ``).replace(/changeDetection,/gm, `changeDetection: ChangeDetectionStrategy.OnPush,`);
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/index.ts
-
-
-
-
-
-function getProcessor(fileName) {
-  if (isTS(fileName)) {
-    return processTs;
-  } else if (isLess(fileName)) {
-    return processLess;
-  } else {
-    return identity/* identity */.y;
-  }
-}
-
-function exampleContentProcessor(content) {
-  const processedContent = {};
-
-  for (const [fileName, fileContent] of Object.entries(content)) {
-    const processor = getProcessor(fileName);
-    processedContent[fileName] = processor(fileContent);
-  }
-
-  return processedContent;
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/index.ts
-
-
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/utils.ts
-
-
-
-const prepareLess = content => {
-  return content.replace(/@import.+taiga-ui-local(.less)?';/g, `@import '@taiga-ui/core/styles/taiga-ui-local.less';`);
-};
-const appPrefix = (stringsPart, path = ``) => `src/app/${stringsPart.join(``)}${path}`;
-const stackblitzPrefix = (stringsPart, path = ``) => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
-const getSupportFiles = files => {
-  return Object.entries(files).filter(([fileName, content]) => content && !isPrimaryComponentFile(fileName));
-};
-const prepareSupportFiles = files => {
-  const processedContent = {};
-
-  for (const [fileName, fileContent] of files) {
-    const prefixedFileName = appPrefix`${fileName}`;
-    processedContent[prefixedFileName] = isLess(fileName) ? prepareLess(fileContent) : fileContent;
-  }
-
-  return processedContent;
-};
-const getComponentsClassNames = files => {
-  return files.filter(([fileName, fileContent]) => isTS(fileName) && new TsFileParser(fileContent).hasNgComponent).map(([fileName, fileContent]) => [fileName, new TsFileComponentParser(fileContent).className]);
-};
-const getSupportModules = files => {
-  return files.filter(([name, content]) => isTS(name) && new TsFileParser(content).hasNgModule).map(([fileName, fileContent]) => [fileName, new TsFileModuleParser(fileContent)]);
-};
-function getAllModules(entryPoint) {
-  const allModules = Object.keys(entryPoint).filter(name => name.endsWith(`Module`)).join(`,\n\t\t`);
-  return `${allModules}`;
-}
-/**
- * We can't just dynamically import all modules from packages.
- * For examples:
- * ```ts
- * import * as CDK from '@taiga-ui/cdk';
- * // ...
- * @NgModule({ imports: [...getAllModules(CDK)] })
- * ```
- * There is a limit to the amount of "static" analysis that the AOT compiler is willing to do.
- * See this {@link https://github.com/angular/angular/issues/42550 issue}
- */
-
-function getAllTaigaUIModulesFile(additionalModules = []) {
-  return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-    /**
-     * Violated DRY principle:
-     * You can't just iterate the array with package-names - it will cause error:
-     * `Warning: Critical dependency: the request of a dependency is an expression`
-     * */
-    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 72002)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 70224).then(__webpack_require__.bind(__webpack_require__, 70224)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 46001)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 40249))]).then(modules => modules.map(getAllModules));
-    const additionalModulesImports = additionalModules.map(([fileName, {
-      className
-    }]) => `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`).join(`\n`);
-    return `
-import {
-    ${cdk}
-} from '@taiga-ui/cdk';
-import {
-    ${core}
-} from '@taiga-ui/core';
-import {
-    ${kit}
-} from '@taiga-ui/kit';
-import {
-    ${charts}
-} from '@taiga-ui/addon-charts';
-import {
-    ${commerce}
-} from '@taiga-ui/addon-commerce';
-import {
-    ${editor}
-} from '@taiga-ui/addon-editor';
-import {
-    ${mobile}
-} from '@taiga-ui/addon-mobile';
-import {
-    ${preview}
-} from '@taiga-ui/addon-preview';
-import {
-    ${table}
-} from '@taiga-ui/addon-table';
-import {
-    ${tablebars}
-} from '@taiga-ui/addon-tablebars';
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {RouterModule} from '@angular/router';
-${additionalModulesImports}
-
-export const ALL_TAIGA_UI_MODULES = [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    PolymorpheusModule,
-    RouterModule.forRoot([]),
-    /* CDK */
-    ${cdk},
-    /* CORE */
-    ${core},
-    /* KIT */
-    ${kit},
-    /* ADDON-CHARTS */
-    ${charts},
-    /* ADDON-COMMERCE */
-    ${commerce},
-    /* ADDON-EDITOR */
-    ${editor},
-    /* ADDON-MOBILE */
-    ${mobile},
-    /* ADDON-PREVIEW */
-    ${preview},
-    /* ADDON-TABLE */
-    ${table},
-    /* ADDON-TABLEBARS */
-    ${tablebars},
-    /* EXAMPLE MODULES */
-    ${additionalModules.map(([, {
-      className
-    }]) => className).join(`,\n\t\t`)}
-];
-`;
-  });
-}
-;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz.service.ts
-
-
-
-
-
-
-
-const APP_COMP_META = {
-  SELECTOR: `my-app`,
-  TEMPLATE_URL: `./app.component.html`,
-  STYLE_URLS: [`./app.component.less`],
-  CLASS_NAME: `AppComponent`
-};
-let TuiStackblitzService = /*#__PURE__*/(() => {
-  class TuiStackblitzService {
-    constructor() {
-      this.name = `Stackblitz`;
-    }
-
-    edit(component, sampleId, content) {
-      return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
-        if (!content.HTML || !content.TypeScript) {
-          return;
-        }
-
-        const taigaStyles = Object.fromEntries(Object.entries(yield AbstractTuiStackblitzResourcesLoader.getTaigaStyles()).map(([path, content]) => [stackblitzPrefix`${path}`, prepareLess(content)]));
-        const {
-          tsconfig,
-          angularJson,
-          indexHtml,
-          mainTs,
-          polyfills,
-          styles,
-          appModuleTs
-        } = yield AbstractTuiStackblitzResourcesLoader.getProjectFiles();
-        const {
-          stackblitzReadMe
-        } = yield AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
-        const appModule = new TsFileModuleParser(appModuleTs);
-        const appCompTs = new TsFileComponentParser(content.TypeScript);
-        const supportFilesTuples = getSupportFiles(content);
-        const supportModulesTuples = getSupportModules(supportFilesTuples);
-        const supportCompClassNames = getComponentsClassNames(supportFilesTuples);
-        const modifiedSupportFiles = prepareSupportFiles(supportFilesTuples);
-        supportCompClassNames.forEach(([fileName, className]) => {
-          const insideAnotherModule = supportModulesTuples.some(([_, module]) => module.hasDeclarationEntity(className));
-
-          if (insideAnotherModule) {
-            return;
-          }
-
-          appModule.addImport(className, `./${fileName}`);
-          appModule.addDeclaration(className);
-        });
-        appCompTs.selector = APP_COMP_META.SELECTOR;
-        appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
-        appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
-        appCompTs.className = APP_COMP_META.CLASS_NAME;
-        sdk_m/* default.openProject */.Z.openProject({
-          title: `${component}-${sampleId}`,
-          description: `Taiga UI example of the component ${component}`,
-          template: `angular-cli`,
-          dependencies: STACKBLITZ_DEPS,
-          files: Object.assign(Object.assign(Object.assign({}, taigaStyles), modifiedSupportFiles), {
-            'tsconfig.json': tsconfig,
-            'angular.json': angularJson,
-            'src/index.html': indexHtml,
-            'src/main.ts': mainTs,
-            'src/polyfills.ts': polyfills,
-            'src/styles.less': styles,
-            [stackblitzPrefix`README.md`]: stackblitzReadMe,
-            [stackblitzPrefix`all-taiga-modules.ts`]: yield getAllTaigaUIModulesFile(supportModulesTuples),
-            [appPrefix`app.module.ts`]: appModule.toString(),
-            [appPrefix`app.component.ts`]: appCompTs.toString(),
-            [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-            [appPrefix`app.component.less`]: prepareLess(content.LESS || ``)
-          }),
-          tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`]
-        });
-      });
-    }
-
-  }
-
-  TuiStackblitzService.ɵfac = function TuiStackblitzService_Factory(t) {
-    return new (t || TuiStackblitzService)();
-  };
-
-  TuiStackblitzService.ɵprov = /*@__PURE__*/core/* ɵɵdefineInjectable */.Yz7({
-    token: TuiStackblitzService,
-    factory: TuiStackblitzService.ɵfac
-  });
-  return TuiStackblitzService;
-})();
+// EXTERNAL MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz.service.ts + 2 modules
+var stackblitz_service = __webpack_require__(39383);
+// EXTERNAL MODULE: ./projects/demo/src/modules/app/utils/index.ts + 4 modules
+var utils = __webpack_require__(44380);
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/app/app.providers.ts
 
 
@@ -36604,10 +36150,10 @@ const APP_PROVIDERS = [platform_browser/* Title */.Dx, prompt_service/* PROMPT_P
   useValue: LOGO_CONTENT
 }, {
   provide: public_api/* TUI_DOC_CODE_EDITOR */.lW,
-  useClass: TuiStackblitzService
+  useClass: stackblitz_service/* TuiStackblitzService */.i
 }, {
   provide: public_api/* TUI_DOC_EXAMPLE_CONTENT_PROCESSOR */.$_,
-  useValue: exampleContentProcessor
+  useValue: utils/* exampleContentProcessor */.uE
 }, {
   provide: projects_core.TUI_ANIMATIONS_DURATION,
   useFactory: () => (0,core/* inject */.f3M)(cdk.TUI_IS_CYPRESS) ? 0 : 300
@@ -38864,6 +38410,14 @@ const ROUTES = [{
     title: `Animations`
   }
 }, {
+  path: `stackblitz`,
+  loadChildren: () => (0,tslib_es6/* __awaiter */.mG)(void 0, void 0, void 0, function* () {
+    return (yield __webpack_require__.e(/* import() */ 96085).then(__webpack_require__.bind(__webpack_require__, 96085))).StackblitzStarterModule;
+  }),
+  data: {
+    title: `Stackblitz Starter`
+  }
+}, {
   path: `**`,
   redirectTo: ``
 }];
@@ -39341,6 +38895,588 @@ document.addEventListener(`DOMContentLoaded`, () => {
     bootstrap().catch(err => console.error(err));
   });
 });
+
+/***/ }),
+
+/***/ 26627:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "wg": () => (/* reexport */ TsFileComponentParser),
+  "Om": () => (/* reexport */ TsFileModuleParser),
+  "u_": () => (/* reexport */ TsFileParser)
+});
+
+// EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
+var cdk = __webpack_require__(36692);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file.parser.ts
+
+class TsFileParser {
+  constructor(rawFileContent) {
+    this.rawFileContent = rawFileContent;
+    const classesInside = rawFileContent.match(/export class/gi) || [];
+
+    if (classesInside.length > 1) {
+      throw new cdk.TuiTsParserException();
+    }
+  }
+
+  get className() {
+    const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
+    return className || ``;
+  }
+
+  set className(newClassName) {
+    this.rawFileContent = this.rawFileContent.replace(/(export class\s)(\w*)/i, `$1${newClassName}`);
+  }
+
+  get hasNgModule() {
+    return this.rawFileContent.includes(`@NgModule`);
+  }
+
+  get hasNgComponent() {
+    return this.rawFileContent.includes(`@Component`);
+  }
+
+  addImport(entity, packageOrPath) {
+    const fromName = packageOrPath.replace(`.ts`, ``);
+    this.rawFileContent = this.rawFileContent.includes(fromName) ? this.addIntoExistingImport(entity, fromName) : `import {${entity}} from '${fromName}';\n${this.rawFileContent};`;
+  }
+
+  toString() {
+    return this.rawFileContent;
+  }
+
+  addIntoExistingImport(entity, packageName) {
+    const packageImportsRegex = new RegExp(`(?:import\\s?\\{\\r?\\n?)(?:(?:.*),\\r?\\n?)*?(?:.*?)\\r?\\n?} from (?:'|")${packageName}(?:'|");`, `gm`);
+    return this.rawFileContent.replace(packageImportsRegex, parsed => {
+      return parsed.replace(`{`, `{${entity}, `);
+    });
+  }
+
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file-component.parser.ts
+
+class TsFileComponentParser extends TsFileParser {
+  set selector(newSelector) {
+    this.rawFileContent = this.rawFileContent.replace(/(selector:\s['"`])(.*)(['"`])/gi, `$1${newSelector}$3`);
+  }
+
+  set templateUrl(newUrl) {
+    this.rawFileContent = this.rawFileContent.replace(/(templateUrl:\s['"`])(.*)(['"`])/gi, `$1${newUrl}$3`);
+  }
+
+  set styleUrls(newUrls) {
+    this.rawFileContent = this.rawFileContent.replace(/(styleUrls:\s)(\[.*\])/gi, `$1${JSON.stringify(newUrls)}`);
+  }
+
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/ts-file-module.parser.ts
+
+class TsFileModuleParser extends TsFileParser {
+  addDeclaration(entity) {
+    this.rawFileContent = this.rawFileContent.replace(`declarations: [`, `declarations: [${entity}, `);
+  }
+
+  addModuleImport(entity) {
+    this.rawFileContent = this.rawFileContent.replace(`imports: [`, `imports: [\n${entity}, `);
+  }
+
+  hasDeclarationEntity(entity) {
+    const [, declarations = ``] = this.rawFileContent.match(/(?:declarations:\s\[)(.*)(?:\])/i) || [];
+    return declarations.includes(entity);
+  }
+
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/classes/index.ts
+
+
+
+
+/***/ }),
+
+/***/ 39383:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "i": () => (/* binding */ TuiStackblitzService)
+});
+
+// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
+var tslib_es6 = __webpack_require__(64762);
+// EXTERNAL MODULE: ./node_modules/@stackblitz/sdk/bundles/sdk.m.js
+var sdk_m = __webpack_require__(5746);
+// EXTERNAL MODULE: ./projects/demo/src/modules/app/classes/index.ts + 3 modules
+var classes = __webpack_require__(26627);
+// EXTERNAL MODULE: ./projects/cdk/index.ts + 87 modules
+var cdk = __webpack_require__(36692);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz-deps.constants.ts
+
+const ANGULAR_VERSION = `14.x.x`;
+const TAIGA_VERSION = `${cdk.TUI_VERSION.split(`.`)[0]}.x.x`;
+const STACKBLITZ_DEPS = {
+  '@angular/cdk': ANGULAR_VERSION,
+  '@angular/core': ANGULAR_VERSION,
+  '@angular/common': ANGULAR_VERSION,
+  '@angular/compiler': ANGULAR_VERSION,
+  '@angular/forms': ANGULAR_VERSION,
+  '@angular/localize': ANGULAR_VERSION,
+  '@angular/platform-browser': ANGULAR_VERSION,
+  '@angular/platform-browser-dynamic': ANGULAR_VERSION,
+  '@angular/animations': ANGULAR_VERSION,
+  '@angular/router': ANGULAR_VERSION,
+  '@taiga-ui/cdk': TAIGA_VERSION,
+  '@taiga-ui/i18n': TAIGA_VERSION,
+  '@taiga-ui/core': TAIGA_VERSION,
+  '@taiga-ui/kit': TAIGA_VERSION,
+  '@taiga-ui/icons': TAIGA_VERSION,
+  '@taiga-ui/styles': TAIGA_VERSION,
+  '@taiga-ui/addon-charts': TAIGA_VERSION,
+  '@taiga-ui/addon-commerce': TAIGA_VERSION,
+  '@taiga-ui/addon-editor': TAIGA_VERSION,
+  '@taiga-ui/addon-mobile': TAIGA_VERSION,
+  '@taiga-ui/addon-preview': TAIGA_VERSION,
+  '@taiga-ui/addon-table': TAIGA_VERSION,
+  '@taiga-ui/addon-tablebars': TAIGA_VERSION,
+  '@tinkoff/ng-dompurify': `*`,
+  '@tinkoff/ng-polymorpheus': `*`,
+  '@ng-web-apis/common': `*`,
+  '@tinkoff/ng-event-plugins': `*`,
+  '@ng-web-apis/intersection-observer': `*`,
+  '@ng-web-apis/mutation-observer': `*`,
+  'text-mask-core': `*`,
+  dompurify: `*`,
+  '@types/dompurify': `*`,
+  'prosemirror-state': `*`
+};
+// EXTERNAL MODULE: ./projects/addon-doc/src/public-api.ts + 17 modules
+var public_api = __webpack_require__(29851);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz-resources-loader.ts
+
+
+class AbstractTuiStackblitzResourcesLoader {
+  static getProjectFiles() {
+    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+      const [configsContent, mainTsContent, indexHtmlContent, polyfillsContent, stylesContent, appModuleTsContent] = yield Promise.all([__webpack_require__.e(/* import() */ 2337).then(__webpack_require__.t.bind(__webpack_require__, 2337, 17)), __webpack_require__.e(/* import() */ 36867).then(__webpack_require__.t.bind(__webpack_require__, 36867, 17)), __webpack_require__.e(/* import() */ 85901).then(__webpack_require__.t.bind(__webpack_require__, 85901, 17)), __webpack_require__.e(/* import() */ 20741).then(__webpack_require__.t.bind(__webpack_require__, 20741, 17)), __webpack_require__.e(/* import() */ 13330).then(__webpack_require__.t.bind(__webpack_require__, 13330, 17)), __webpack_require__.e(/* import() */ 70827).then(__webpack_require__.t.bind(__webpack_require__, 70827, 17))].map(public_api/* tuiRawLoad */.JQ));
+      const [angularJson, tsconfig] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(configsContent);
+      const [mainTs] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(mainTsContent);
+      const [indexHtml] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(indexHtmlContent);
+      const [polyfills] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(polyfillsContent);
+      const [styles] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stylesContent);
+      const [appModuleTs] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(appModuleTsContent);
+      return {
+        angularJson,
+        tsconfig,
+        mainTs,
+        indexHtml,
+        polyfills,
+        appModuleTs,
+        styles
+      };
+    });
+  }
+
+  static getTaigaStyles() {
+    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+      const [accent, base, icon, mono, none, outline, primary, secondary, secondaryDestructive, table, textfield, whiteBlock, wrapper, stackblitzMarkdown] = yield Promise.all([__webpack_require__.e(/* import() */ 25293).then(__webpack_require__.t.bind(__webpack_require__, 25293, 17)), __webpack_require__.e(/* import() */ 7066).then(__webpack_require__.t.bind(__webpack_require__, 7066, 17)), __webpack_require__.e(/* import() */ 74363).then(__webpack_require__.t.bind(__webpack_require__, 74363, 17)), __webpack_require__.e(/* import() */ 33503).then(__webpack_require__.t.bind(__webpack_require__, 33503, 17)), __webpack_require__.e(/* import() */ 29900).then(__webpack_require__.t.bind(__webpack_require__, 29900, 17)), __webpack_require__.e(/* import() */ 27543).then(__webpack_require__.t.bind(__webpack_require__, 27543, 17)), __webpack_require__.e(/* import() */ 65869).then(__webpack_require__.t.bind(__webpack_require__, 65869, 17)), __webpack_require__.e(/* import() */ 3442).then(__webpack_require__.t.bind(__webpack_require__, 3442, 17)), __webpack_require__.e(/* import() */ 28033).then(__webpack_require__.t.bind(__webpack_require__, 28033, 17)), __webpack_require__.e(/* import() */ 63838).then(__webpack_require__.t.bind(__webpack_require__, 63838, 17)), __webpack_require__.e(/* import() */ 3683).then(__webpack_require__.t.bind(__webpack_require__, 3683, 17)), __webpack_require__.e(/* import() */ 25604).then(__webpack_require__.t.bind(__webpack_require__, 25604, 17)), __webpack_require__.e(/* import() */ 46475).then(__webpack_require__.t.bind(__webpack_require__, 46475, 17)), __webpack_require__.e(/* import() */ 53189).then(__webpack_require__.t.bind(__webpack_require__, 53189, 17))].map(public_api/* tuiRawLoad */.JQ));
+      const [stackblitz] = (0,public_api/* tuiTryParseMarkdownCodeBlock */.vi)(stackblitzMarkdown);
+      return {
+        [`styles/theme/wrapper/accent.less`]: accent,
+        [`styles/theme/wrapper/base.less`]: base,
+        [`styles/theme/wrapper/icon.less`]: icon,
+        [`styles/theme/wrapper/mono.less`]: mono,
+        [`styles/theme/wrapper/none.less`]: none,
+        [`styles/theme/wrapper/outline.less`]: outline,
+        [`styles/theme/wrapper/primary.less`]: primary,
+        [`styles/theme/wrapper/secondary.less`]: secondary,
+        [`styles/theme/wrapper/secondary-destructive.less`]: secondaryDestructive,
+        [`styles/theme/wrapper/table.less`]: table,
+        [`styles/theme/wrapper/textfield.less`]: textfield,
+        [`styles/theme/wrapper/whiteblock.less`]: whiteBlock,
+        [`styles/theme/wrapper.less`]: wrapper,
+        [`styles/taiga-ui-stackblitz.less`]: stackblitz
+      };
+    });
+  }
+
+  static getReadMeFiles() {
+    return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+      const [stackblitzReadMe] = yield Promise.all([(0,public_api/* tuiRawLoad */.JQ)(__webpack_require__.e(/* import() */ 19551).then(__webpack_require__.t.bind(__webpack_require__, 19551, 17)))]);
+      return {
+        stackblitzReadMe
+      };
+    });
+  }
+
+}
+// EXTERNAL MODULE: ./projects/demo/src/modules/app/stackblitz/utils.ts
+var utils = __webpack_require__(18296);
+// EXTERNAL MODULE: ./node_modules/@angular/core/fesm2015/core.js
+var core = __webpack_require__(74788);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/stackblitz/stackblitz.service.ts
+
+
+
+
+
+
+
+const APP_COMP_META = {
+  SELECTOR: `my-app`,
+  TEMPLATE_URL: `./app.component.html`,
+  STYLE_URLS: [`./app.component.less`],
+  CLASS_NAME: `AppComponent`
+};
+let TuiStackblitzService = /*#__PURE__*/(() => {
+  class TuiStackblitzService {
+    constructor() {
+      this.stacklitzProjectConfigs = {
+        template: `angular-cli`,
+        dependencies: STACKBLITZ_DEPS,
+        tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`]
+      };
+      this.name = `Stackblitz`;
+    }
+
+    edit(component, sampleId, content) {
+      return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+        if (!content.HTML || !content.TypeScript) {
+          return;
+        }
+
+        const {
+          appModuleTs
+        } = yield AbstractTuiStackblitzResourcesLoader.getProjectFiles();
+        const appModule = new classes/* TsFileModuleParser */.Om(appModuleTs);
+        const appCompTs = new classes/* TsFileComponentParser */.wg(content.TypeScript);
+        const supportFilesTuples = (0,utils/* getSupportFiles */.c0)(content);
+        const supportModulesTuples = (0,utils/* getSupportModules */.Om)(supportFilesTuples);
+        const supportCompClassNames = (0,utils/* getComponentsClassNames */._7)(supportFilesTuples);
+        const modifiedSupportFiles = (0,utils/* prepareSupportFiles */.GY)(supportFilesTuples);
+        supportCompClassNames.forEach(([fileName, className]) => {
+          const insideAnotherModule = supportModulesTuples.some(([_, module]) => module.hasDeclarationEntity(className));
+
+          if (insideAnotherModule) {
+            return;
+          }
+
+          appModule.addImport(className, `./${fileName}`);
+          appModule.addDeclaration(className);
+        });
+        appCompTs.selector = APP_COMP_META.SELECTOR;
+        appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
+        appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
+        appCompTs.className = APP_COMP_META.CLASS_NAME;
+        return sdk_m/* default.openProject */.Z.openProject(Object.assign(Object.assign({}, this.stacklitzProjectConfigs), {
+          title: `${component}-${sampleId}`,
+          description: `Taiga UI example of the component ${component}`,
+          files: Object.assign(Object.assign(Object.assign(Object.assign({}, yield this.getBaseAngularProjectFiles()), yield this.getStackblitzOnlyFiles(supportModulesTuples)), modifiedSupportFiles), {
+            [utils/* appPrefix */.n_`app.module.ts`]: appModule.toString(),
+            [utils/* appPrefix */.n_`app.component.ts`]: appCompTs.toString(),
+            [utils/* appPrefix */.n_`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
+            [utils/* appPrefix */.n_`app.component.less`]: (0,utils/* prepareLess */.dE)(content.LESS || ``)
+          })
+        }));
+      });
+    }
+
+    openStarter({
+      title,
+      description,
+      files
+    }, openOptions) {
+      return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+        return sdk_m/* default.openProject */.Z.openProject(Object.assign(Object.assign({}, this.stacklitzProjectConfigs), {
+          title,
+          description,
+          files: Object.assign(Object.assign(Object.assign({}, yield this.getBaseAngularProjectFiles()), yield this.getStackblitzOnlyFiles()), files)
+        }), openOptions);
+      });
+    }
+
+    getBaseAngularProjectFiles() {
+      return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+        const {
+          tsconfig,
+          angularJson,
+          mainTs,
+          polyfills,
+          indexHtml,
+          styles,
+          appModuleTs
+        } = yield AbstractTuiStackblitzResourcesLoader.getProjectFiles();
+        return {
+          'tsconfig.json': tsconfig,
+          'angular.json': angularJson,
+          'src/main.ts': mainTs,
+          'src/polyfills.ts': polyfills,
+          'src/index.html': indexHtml,
+          'src/styles.less': styles,
+          [utils/* appPrefix */.n_`app.module.ts`]: appModuleTs.toString()
+        };
+      });
+    }
+    /** Some stackblitz hacks */
+
+
+    getStackblitzOnlyFiles(additionalModules = []) {
+      return (0,tslib_es6/* __awaiter */.mG)(this, void 0, void 0, function* () {
+        const taigaStyles = Object.fromEntries(Object.entries(yield AbstractTuiStackblitzResourcesLoader.getTaigaStyles()).map(([path, content]) => [utils/* stackblitzPrefix */.ze`${path}`, (0,utils/* prepareLess */.dE)(content)]));
+        const {
+          stackblitzReadMe
+        } = yield AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
+        return Object.assign(Object.assign({}, taigaStyles), {
+          [utils/* stackblitzPrefix */.ze`README.md`]: stackblitzReadMe,
+          [utils/* stackblitzPrefix */.ze`all-taiga-modules.ts`]: yield (0,utils/* getAllTaigaUIModulesFile */.g8)(additionalModules)
+        });
+      });
+    }
+
+  }
+
+  TuiStackblitzService.ɵfac = function TuiStackblitzService_Factory(t) {
+    return new (t || TuiStackblitzService)();
+  };
+
+  TuiStackblitzService.ɵprov = /*@__PURE__*/core/* ɵɵdefineInjectable */.Yz7({
+    token: TuiStackblitzService,
+    factory: TuiStackblitzService.ɵfac
+  });
+  return TuiStackblitzService;
+})();
+
+/***/ }),
+
+/***/ 18296:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dE": () => (/* binding */ prepareLess),
+/* harmony export */   "n_": () => (/* binding */ appPrefix),
+/* harmony export */   "ze": () => (/* binding */ stackblitzPrefix),
+/* harmony export */   "c0": () => (/* binding */ getSupportFiles),
+/* harmony export */   "GY": () => (/* binding */ prepareSupportFiles),
+/* harmony export */   "_7": () => (/* binding */ getComponentsClassNames),
+/* harmony export */   "Om": () => (/* binding */ getSupportModules),
+/* harmony export */   "g8": () => (/* binding */ getAllTaigaUIModulesFile)
+/* harmony export */ });
+/* unused harmony export getAllModules */
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64762);
+/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26627);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44380);
+
+
+
+const prepareLess = content => {
+  return content.replace(/@import.+taiga-ui-local(.less)?';/g, `@import '@taiga-ui/core/styles/taiga-ui-local.less';`);
+};
+const appPrefix = (stringsPart, path = ``) => `src/app/${stringsPart.join(``)}${path}`;
+const stackblitzPrefix = (stringsPart, path = ``) => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
+const getSupportFiles = files => {
+  return Object.entries(files).filter(([fileName, content]) => content && !(0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .isPrimaryComponentFile */ .mn)(fileName));
+};
+const prepareSupportFiles = files => {
+  const processedContent = {};
+
+  for (const [fileName, fileContent] of files) {
+    const prefixedFileName = appPrefix`${fileName}`;
+    processedContent[prefixedFileName] = (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .isLess */ .SQ)(fileName) ? prepareLess(fileContent) : fileContent;
+  }
+
+  return processedContent;
+};
+const getComponentsClassNames = files => {
+  return files.filter(([fileName, fileContent]) => (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .isTS */ .K6)(fileName) && new _classes__WEBPACK_IMPORTED_MODULE_0__/* .TsFileParser */ .u_(fileContent).hasNgComponent).map(([fileName, fileContent]) => [fileName, new _classes__WEBPACK_IMPORTED_MODULE_0__/* .TsFileComponentParser */ .wg(fileContent).className]);
+};
+const getSupportModules = files => {
+  return files.filter(([name, content]) => (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .isTS */ .K6)(name) && new _classes__WEBPACK_IMPORTED_MODULE_0__/* .TsFileParser */ .u_(content).hasNgModule).map(([fileName, fileContent]) => [fileName, new _classes__WEBPACK_IMPORTED_MODULE_0__/* .TsFileModuleParser */ .Om(fileContent)]);
+};
+function getAllModules(entryPoint) {
+  const allModules = Object.keys(entryPoint).filter(name => name.endsWith(`Module`)).filter(name => name !== `TuiOrderWeekDaysPipeModule`) // TODO remove after release 3.7.0
+  .join(`,\n\t\t`);
+  return `${allModules}`;
+}
+/**
+ * We can't just dynamically import all modules from packages.
+ * For examples:
+ * ```ts
+ * import * as CDK from '@taiga-ui/cdk';
+ * // ...
+ * @NgModule({ imports: [...getAllModules(CDK)] })
+ * ```
+ * There is a limit to the amount of "static" analysis that the AOT compiler is willing to do.
+ * See this {@link https://github.com/angular/angular/issues/42550 issue}
+ */
+
+function getAllTaigaUIModulesFile(additionalModules = []) {
+  return (0,tslib__WEBPACK_IMPORTED_MODULE_2__/* .__awaiter */ .mG)(this, void 0, void 0, function* () {
+    /**
+     * Violated DRY principle:
+     * You can't just iterate the array with package-names - it will cause error:
+     * `Warning: Critical dependency: the request of a dependency is an expression`
+     * */
+    const [cdk, core, kit, charts, commerce, editor, mobile, preview, table, tablebars] = yield Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 36692)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 72002)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 31748)), __webpack_require__.e(/* import() */ 50179).then(__webpack_require__.bind(__webpack_require__, 50179)), __webpack_require__.e(/* import() */ 23121).then(__webpack_require__.bind(__webpack_require__, 23121)), __webpack_require__.e(/* import() */ 70224).then(__webpack_require__.bind(__webpack_require__, 70224)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75650)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 46001)), __webpack_require__.e(/* import() */ 36256).then(__webpack_require__.bind(__webpack_require__, 36256)), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 40249))]).then(modules => modules.map(getAllModules));
+    const additionalModulesImports = additionalModules.map(([fileName, {
+      className
+    }]) => `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`).join(`\n`);
+    return `
+import {
+    ${cdk}
+} from '@taiga-ui/cdk';
+import {
+    ${core}
+} from '@taiga-ui/core';
+import {
+    ${kit}
+} from '@taiga-ui/kit';
+import {
+    ${charts}
+} from '@taiga-ui/addon-charts';
+import {
+    ${commerce}
+} from '@taiga-ui/addon-commerce';
+import {
+    ${editor}
+} from '@taiga-ui/addon-editor';
+import {
+    ${mobile}
+} from '@taiga-ui/addon-mobile';
+import {
+    ${preview}
+} from '@taiga-ui/addon-preview';
+import {
+    ${table}
+} from '@taiga-ui/addon-table';
+import {
+    ${tablebars}
+} from '@taiga-ui/addon-tablebars';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {RouterModule} from '@angular/router';
+${additionalModulesImports}
+
+export const ALL_TAIGA_UI_MODULES = [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PolymorpheusModule,
+    RouterModule.forRoot([]),
+    /* CDK */
+    ${cdk},
+    /* CORE */
+    ${core},
+    /* KIT */
+    ${kit},
+    /* ADDON-CHARTS */
+    ${charts},
+    /* ADDON-COMMERCE */
+    ${commerce},
+    /* ADDON-EDITOR */
+    ${editor},
+    /* ADDON-MOBILE */
+    ${mobile},
+    /* ADDON-PREVIEW */
+    ${preview},
+    /* ADDON-TABLE */
+    ${table},
+    /* ADDON-TABLEBARS */
+    ${tablebars},
+    /* EXAMPLE MODULES */
+    ${additionalModules.map(([, {
+      className
+    }]) => className).join(`,\n\t\t`)}
+];
+`;
+  });
+}
+
+/***/ }),
+
+/***/ 44380:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "uE": () => (/* reexport */ exampleContentProcessor),
+  "SQ": () => (/* reexport */ isLess),
+  "mn": () => (/* reexport */ isPrimaryComponentFile),
+  "K6": () => (/* reexport */ isTS)
+});
+
+// EXTERNAL MODULE: ./node_modules/rxjs/_esm2015/internal/util/identity.js
+var identity = __webpack_require__(54487);
+// EXTERNAL MODULE: ./projects/addon-doc/src/public-api.ts + 17 modules
+var public_api = __webpack_require__(29851);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/file-type-guards.utils.ts
+
+function isTS(fileName) {
+  return fileName === public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME.TS */.N0.TS || fileName.endsWith(`.ts`);
+}
+function isLess(fileName) {
+  return fileName === public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS */.N0.LESS || `${fileName}`.endsWith(`.less`);
+}
+function isPrimaryComponentFile(fileName) {
+  return Object.values(public_api/* TUI_EXAMPLE_PRIMARY_FILE_NAME */.N0).includes(fileName);
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/less-processor.ts
+function processLess(fileContent) {
+  return fileContent.replace(`@import 'taiga-ui-local';`, `@import '~@taiga-ui/core/styles/taiga-ui-local';`);
+}
+// EXTERNAL MODULE: ./projects/demo/src/modules/app/classes/index.ts + 3 modules
+var classes = __webpack_require__(26627);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/typescript-processor.ts
+
+function processTs(fileContent) {
+  const tsFileContent = new classes/* TsFileParser */.u_(fileContent);
+
+  if (tsFileContent.hasNgComponent) {
+    tsFileContent.addImport(`ChangeDetectionStrategy`, `@angular/core`);
+  }
+
+  return tsFileContent.toString().replace(/import {encapsulation} from '.*';\n/gm, ``).replace(/import {changeDetection} from '.*';\n/gm, ``).replace(/\n +encapsulation,/gm, ``).replace(/changeDetection,/gm, `changeDetection: ChangeDetectionStrategy.OnPush,`);
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/example-content-processor/index.ts
+
+
+
+
+
+function getProcessor(fileName) {
+  if (isTS(fileName)) {
+    return processTs;
+  } else if (isLess(fileName)) {
+    return processLess;
+  } else {
+    return identity/* identity */.y;
+  }
+}
+
+function exampleContentProcessor(content) {
+  const processedContent = {};
+
+  for (const [fileName, fileContent] of Object.entries(content)) {
+    const processor = getProcessor(fileName);
+    processedContent[fileName] = processor(fileContent);
+  }
+
+  return processedContent;
+}
+;// CONCATENATED MODULE: ./projects/demo/src/modules/app/utils/index.ts
+
+
 
 /***/ }),
 
@@ -71188,7 +71324,7 @@ module.exports = webpackEmptyAsyncContext;
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [54736], () => (__webpack_exec__(86799)));
+/******/ __webpack_require__.O(0, [54736], () => (__webpack_exec__(63132)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
