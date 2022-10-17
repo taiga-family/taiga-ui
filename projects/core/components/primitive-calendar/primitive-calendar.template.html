@@ -16,7 +16,6 @@
                 <div
                     *ngIf="!itemIsUnavailable(item) || showAdjacent"
                     automation-id="tui-primitive-calendar__cell"
-                    style.color="var(--tui-day-of-week-{{ getDayIndex(colIndex) }})"
                     class="t-cell"
                     [class.t-cell_today]="itemIsToday(item)"
                     [class.t-cell_interval]="itemIsInterval(item)"
@@ -29,6 +28,7 @@
                     <div
                         automation-id="tui-primitive-calendar__item"
                         class="t-item"
+                        [attr.data-type]="getDataType(item)"
                         [class.t-item_unavailable]="itemIsUnavailable(item)"
                     >
                         {{ item.day }}
