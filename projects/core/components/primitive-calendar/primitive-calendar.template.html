@@ -28,7 +28,7 @@
                     <div
                         automation-id="tui-primitive-calendar__item"
                         class="t-item"
-                        [attr.data-type]="getDataType(item)"
+                        [attr.data-type]="item | tuiMapper: getDataType:dayTypeHandler"
                         [class.t-item_unavailable]="itemIsUnavailable(item)"
                     >
                         {{ item.day }}

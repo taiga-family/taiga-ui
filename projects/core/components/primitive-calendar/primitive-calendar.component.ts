@@ -67,7 +67,7 @@ export class TuiPrimitiveCalendarComponent {
         @Inject(TUI_SHORT_WEEK_DAYS)
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
         @Inject(TUI_DAY_TYPE_HANDLER)
-        private readonly dayTypeHandler: TuiHandler<TuiDay, string>,
+        readonly dayTypeHandler: TuiHandler<TuiDay, string>,
     ) {}
 
     @HostBinding(`class._single`)
@@ -110,8 +110,8 @@ export class TuiPrimitiveCalendarComponent {
         return null;
     }
 
-    getDataType(item: TuiDay): string {
-        return this.dayTypeHandler(item);
+    getDataType(item: TuiDay, handler: TuiHandler<TuiDay, string>): string {
+        return handler(item);
     }
 
     getItemRange(item: TuiDay): TuiRangeState | null {
