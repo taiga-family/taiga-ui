@@ -136,6 +136,10 @@ describe(`MultiSelect`, () => {
         });
 
         describe(`Arrow`, () => {
+            beforeEach(() => {
+                inputPO.focus();
+            });
+
             it(`Click on the arrow to open the dropdown`, () => {
                 getArrow(pageObject)?.nativeElement.click();
                 fixture.detectChanges();
