@@ -6658,7 +6658,7 @@
       </trans-unit>
       <trans-unit id="e3e2ec25f54bc42fd9bdb3e2d83292c29f6f9bac" datatype="html">
         <source>
-            Native scrollbar is hidden to keep native platform scroll expirience
+            Native scrollbar is hidden to keep native platform scroll experience
         </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/scrollbar/scrollbar.template.html</context>
