@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.66.0](https://github.com/tinkoff/taiga-ui/compare/v2.65.0...v2.66.0) (2022-10-18)
+
+### Features
+
+- **addon-editor:** upgrade `@tiptap/*` to latest ([#2864](https://github.com/tinkoff/taiga-ui/issues/2864))
+  ([99bd432](https://github.com/tinkoff/taiga-ui/commit/99bd4328216ce2bbee7df6ec15111cb766bdd6c3))
+
+### Bug Fixes
+
+- **addon-editor:** downgrade `@tiptap/extension-table` ([#2891](https://github.com/tinkoff/taiga-ui/issues/2891))
+  ([42f3056](https://github.com/tinkoff/taiga-ui/commit/42f30562dca4d67733d31e996af5aed3080d01ee))
+- **core:** `DataList` fix first label padding ([#2875](https://github.com/tinkoff/taiga-ui/issues/2875))
+  ([6393a3d](https://github.com/tinkoff/taiga-ui/commit/6393a3d6c6a1ce4ac6a10c3e9228596aaa13db6a))
+
 ## [2.65.0](https://github.com/tinkoff/taiga-ui/compare/v2.64.0...v2.65.0) (2022-10-11)
 
 ### Features
