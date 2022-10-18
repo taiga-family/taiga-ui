@@ -45,6 +45,6 @@ describe(`InputYear`, () => {
     it(`Does not allow incorrect year entry`, () => {
         testComponent.component.onValueChange(`12345`);
 
-        expect(testComponent.control.value.year).toBe(1234);
+        expect(testComponent.control.value).toBe(1234);
     });
 });
