@@ -13,6 +13,7 @@ import {Subscription} from 'rxjs';
 import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {MIGRATION_WARNINGS} from '../constants/warnings';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -102,6 +103,7 @@ describe('ng-update', () => {
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[2].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[4].message}`,
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[5].message}`,
+            TUI_WARNING_NORMALIZE,
         ]);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);

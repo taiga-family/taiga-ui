@@ -56,19 +56,14 @@ export function addStylesToAngularJson(
         const styles = targetOptions.styles as JsonArray | undefined;
 
         if (filter && filter(styles)) {
-            return;
+            taigaStyles = [];
         }
 
-        if (!styles) {
+        if (!styles && taigaStyles.length) {
             targetOptions.styles = taigaStyles;
-            return;
         }
 
-        if (
-            tree &&
-            stylesToReplace &&
-            styles.find(style => style === stylesToReplace.from)
-        ) {
+        if (stylesToReplace && styles?.filter(style => style !== stylesToReplace.from)) {
             targetOptions.styles = Array.from(
                 new Set([
                     ...taigaStyles,
@@ -76,15 +71,19 @@ export function addStylesToAngularJson(
                     ...styles.filter(style => style !== stylesToReplace.from),
                 ]),
             );
+        } else {
+            targetOptions.styles = Array.from(
+                new Set([...taigaStyles, ...(styles || [])]),
+            );
+        }
 
+        if (tree && stylesToReplace) {
             addPackageJsonDependency(tree, {
                 name: `@taiga-ui/styles`,
                 version: TAIGA_VERSION,
             });
 
             context.addTask(new NodePackageInstallTask());
-        } else {
-            targetOptions.styles = Array.from(new Set([...taigaStyles, ...styles]));
         }
     });
 }
