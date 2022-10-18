@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/tinkoff/taiga-ui/compare/v3.6.0...v3.7.0) (2022-10-18)
+
+### Features
+
+- **addon-editor:** upgrade `@tiptap/*` to latest ([#2855](https://github.com/tinkoff/taiga-ui/issues/2855))
+  ([79e14c8](https://github.com/tinkoff/taiga-ui/commit/79e14c8d93abb7a7a5986f447d168156798ad893))
+- **demo:** stackblitz starter available via `https://taiga-ui.dev/stackblitz`
+  ([#2907](https://github.com/tinkoff/taiga-ui/issues/2907))
+  ([71225b0](https://github.com/tinkoff/taiga-ui/commit/71225b0619c8c54253dafcb0c82c5c8869711904))
+- **kit:** `ProgressBar` add `:indeterminate`-state ([#2876](https://github.com/tinkoff/taiga-ui/issues/2876))
+  ([e311069](https://github.com/tinkoff/taiga-ui/commit/e3110694a2a9af0d7a3201daf29dc1a7b92351b2))
+- **kit:** `Tabs` add vertical option ([#2862](https://github.com/tinkoff/taiga-ui/issues/2862))
+  ([a0513c8](https://github.com/tinkoff/taiga-ui/commit/a0513c8f4d23466406f6d5f2dd46740db00d7bf1))
+- **testing:** add harness tests for tag component ([#2746](https://github.com/tinkoff/taiga-ui/issues/2746))
+  ([fb12283](https://github.com/tinkoff/taiga-ui/commit/fb12283ebe4abbea910a355f30b7b9a9811e1d1e))
+
+### Bug Fixes
+
+- **addon-commerce:** `InputCardGrouped` fix wrong offset for card number
+  ([#2878](https://github.com/tinkoff/taiga-ui/issues/2878))
+  ([c387fb2](https://github.com/tinkoff/taiga-ui/commit/c387fb288bd5c73c9a42d62c6b207f43ec8f7223))
+- **addon-editor:** downgrade `@tiptap/extension-table` ([#2888](https://github.com/tinkoff/taiga-ui/issues/2888))
+  ([93b0ed6](https://github.com/tinkoff/taiga-ui/commit/93b0ed66982d949e8b5cca204052f49e4a98db5d))
+- **addon-table:** `Table` don't render column with unspecified template
+  ([#2896](https://github.com/tinkoff/taiga-ui/issues/2896))
+  ([526c40a](https://github.com/tinkoff/taiga-ui/commit/526c40a760fe72624bafd056e9bac17223e6248b))
+- **core:** `DataList` fix first label padding ([#2870](https://github.com/tinkoff/taiga-ui/issues/2870))
+  ([1988491](https://github.com/tinkoff/taiga-ui/commit/1988491739d53980991091bc34809374501a9a1b))
+- **core:** `Hint` fix mobile offscreen overflow ([#2879](https://github.com/tinkoff/taiga-ui/issues/2879))
+  ([5d606b3](https://github.com/tinkoff/taiga-ui/commit/5d606b3bca6ab6504035065935563af4410a4ac1))
+- **core:** `TUI_FIRST_DAY_OF_WEEK` ignores DI-hierarchy ([#2868](https://github.com/tinkoff/taiga-ui/issues/2868))
+  ([169cd5c](https://github.com/tinkoff/taiga-ui/commit/169cd5c30e80e91dba141d0af948aae034d09264))
+- **docs:** Typo in the description of the tuiTextfieldMaxLength attribute
+  ([#2882](https://github.com/tinkoff/taiga-ui/issues/2882))
+  ([00ec432](https://github.com/tinkoff/taiga-ui/commit/00ec4327acf399e086a41674955589711e442980))
+- **kit:** `MultiSelect` fix sanitizer warnings ([#2903](https://github.com/tinkoff/taiga-ui/issues/2903))
+  ([0356d7d](https://github.com/tinkoff/taiga-ui/commit/0356d7d09716b65040c08867bef76c02ea267e7a))
+- **kit:** `TextArea` add ability to override minHeight when using maxLength
+  ([#2899](https://github.com/tinkoff/taiga-ui/issues/2899))
+  ([7292a70](https://github.com/tinkoff/taiga-ui/commit/7292a709f8df4a3b41d729f6a66b4bb706d3649f))
+- **styles:** put tui-island_transparent after tui-island_hoverable
+  ([#2910](https://github.com/tinkoff/taiga-ui/issues/2910))
+  ([833e4de](https://github.com/tinkoff/taiga-ui/commit/833e4de327a629045c4de91dd303cd82c9decba4))
+
+### Deprecations
+
+- **addon-table:** `*tuiRow` deprecation (use `*ngFor` + `tuiTableSort`-pipe)
+  ([#2736](https://github.com/tinkoff/taiga-ui/issues/2736))
+  ([5723e1b](https://github.com/tinkoff/taiga-ui/commit/5723e1b3f4569ad494d326ed3bd852d7e9156743))
+
 ## [3.6.0](https://github.com/tinkoff/taiga-ui/compare/v3.5.0...v3.6.0) (2022-10-11)
 
 ### Features
