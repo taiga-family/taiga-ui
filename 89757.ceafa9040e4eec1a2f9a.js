@@ -177,7 +177,7 @@ let TuiEditorExample1 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-1"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([{
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
       }) => StarterKit), __webpack_require__.e(/* import() */ 80615).then(__webpack_require__.bind(__webpack_require__, 80615)).then(({
         EmojiExtension
@@ -260,7 +260,7 @@ let TuiEditorExample2 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
       }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
         createImageEditorExtension
@@ -419,7 +419,7 @@ let TuiEditorExample3 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
       }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
         createImageEditorExtension
@@ -551,9 +551,9 @@ let TuiEditorExample5 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-5"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
-      }) => StarterKit), __webpack_require__.e(/* import() */ 75091).then(__webpack_require__.bind(__webpack_require__, 75091)).then(({
+      }) => StarterKit), __webpack_require__.e(/* import() */ 84101).then(__webpack_require__.bind(__webpack_require__, 84101)).then(({
         Placeholder
       }) => Placeholder.configure({
         emptyNodeClass: `t-editor-placeholder`,
@@ -625,7 +625,7 @@ let TuiEditorExample6 = /*#__PURE__*/(() => {
     selectors: [["tui-editor-example-6"]],
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
-      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useValue: [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
       }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 54920)).then(({
         createGroupExtension
@@ -764,7 +764,7 @@ let TuiEditorExample7 = /*#__PURE__*/(() => {
     features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([cdk.TuiDestroyService, {
       provide: addon_editor.TUI_EDITOR_EXTENSIONS,
       deps: [fesm2015_core/* Injector */.zs3],
-      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+      useFactory: injector => [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
         StarterKit
       }) => StarterKit), Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 25039)).then(({
         createImageEditorExtension

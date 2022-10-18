@@ -58,7 +58,6 @@ __webpack_require__.d(__webpack_exports__, {
   "markPasteRule": () => (/* binding */ markPasteRule),
   "mergeAttributes": () => (/* binding */ mergeAttributes),
   "nodeInputRule": () => (/* binding */ nodeInputRule),
-  "nodePasteRule": () => (/* binding */ nodePasteRule),
   "pasteRulesPlugin": () => (/* binding */ pasteRulesPlugin),
   "posToDOMRect": () => (/* binding */ posToDOMRect),
   "textInputRule": () => (/* binding */ textInputRule),
@@ -1383,12 +1382,12 @@ class CommandManager {
       rawCommands,
       state
     } = this;
-    const dispatch = false;
+    const dispatch = undefined;
     const tr = startTr || state.tr;
     const props = this.buildProps(tr, dispatch);
     const formattedCommands = Object.fromEntries(Object.entries(rawCommands).map(([name, command]) => {
       return [name, (...args) => command(...args)({ ...props,
-        dispatch: undefined
+        dispatch
       })];
     }));
     return { ...formattedCommands,
@@ -1571,7 +1570,7 @@ function getAttributesFromExtensions(extensions) {
         ...attribute
       };
 
-      if ((attribute === null || attribute === void 0 ? void 0 : attribute.isRequired) && (attribute === null || attribute === void 0 ? void 0 : attribute.default) === undefined) {
+      if (attribute.isRequired && attribute.default === undefined) {
         delete mergedAttr.default;
       }
 
@@ -1861,17 +1860,15 @@ function isExtensionRulesEnabled(extension, enabled) {
 
 const getTextContentFromNodes = ($from, maxMatch = 500) => {
   let textBefore = '';
-  const sliceEndPos = $from.parentOffset;
-  $from.parent.nodesBetween(Math.max(0, sliceEndPos - maxMatch), sliceEndPos, (node, pos, parent, index) => {
+  $from.parent.nodesBetween(Math.max(0, $from.parentOffset - maxMatch), $from.parentOffset, (node, pos, parent, index) => {
     var _a, _b;
 
-    const chunk = ((_b = (_a = node.type.spec).toText) === null || _b === void 0 ? void 0 : _b.call(_a, {
+    textBefore += ((_b = (_a = node.type.spec).toText) === null || _b === void 0 ? void 0 : _b.call(_a, {
       node,
       pos,
       parent,
       index
     })) || node.textContent || '%leaf%';
-    textBefore += chunk.slice(0, Math.max(0, sliceEndPos - pos));
   });
   return textBefore;
 };
@@ -2264,7 +2261,7 @@ function pasteRulesPlugin(props) {
           editor,
           state: chainableState,
           from: Math.max(from - 1, 0),
-          to: to.b - 1,
+          to: to.b,
           rule
         }); // stop if there are no changes
 
@@ -2451,14 +2448,6 @@ class ExtensionManager {
       };
       const plugins = [];
       const addKeyboardShortcuts = getExtensionField(extension, 'addKeyboardShortcuts', context);
-      let defaultBindings = {}; // bind exit handling
-
-      if (extension.type === 'mark' && extension.config.exitable) {
-        defaultBindings.ArrowRight = () => Mark.handleExit({
-          editor,
-          mark: extension
-        });
-      }
 
       if (addKeyboardShortcuts) {
         const bindings = Object.fromEntries(Object.entries(addKeyboardShortcuts()).map(([shortcut, method]) => {
@@ -2466,13 +2455,10 @@ class ExtensionManager {
             editor
           })];
         }));
-        defaultBindings = { ...defaultBindings,
-          ...bindings
-        };
+        const keyMapPlugin = (0,prosemirror_keymap_dist/* keymap */.h)(bindings);
+        plugins.push(keyMapPlugin);
       }
 
-      const keyMapPlugin = (0,prosemirror_keymap_dist/* keymap */.h)(defaultBindings);
-      plugins.push(keyMapPlugin);
       const addInputRules = getExtensionField(extension, 'addInputRules', context);
 
       if (isExtensionRulesEnabled(extension, editor.options.enableInputRules) && addInputRules) {
@@ -3025,8 +3011,22 @@ const first = commands => props => {
   return false;
 };
 
+function isClass(value) {
+  var _a;
+
+  if (((_a = value.constructor) === null || _a === void 0 ? void 0 : _a.toString().substring(0, 5)) !== 'class') {
+    return false;
+  }
+
+  return true;
+}
+
+function isObject(value) {
+  return value && typeof value === 'object' && !Array.isArray(value) && !isClass(value);
+}
+
 function isTextSelection(value) {
-  return value instanceof dist/* TextSelection */.Bs;
+  return isObject(value) && value instanceof dist/* TextSelection */.Bs;
 }
 
 function minMax(value = 0, min = 0, max = 0) {
@@ -3103,11 +3103,9 @@ const tiptap_core_esm_focus = (position = null, options = {}) => ({
   if (dispatch && position === null && !isTextSelection(editor.state.selection)) {
     delayedFocus();
     return true;
-  } // pass through tr.doc instead of editor.state.doc
-  // since transactions could change the editors state before this command has been run
+  }
 
-
-  const selection = resolveFocusPosition(tr.doc, position) || editor.state.selection;
+  const selection = resolveFocusPosition(editor.state.doc, position) || editor.state.selection;
   const isSameSelection = editor.state.selection.eq(selection);
 
   if (dispatch) {
@@ -3600,147 +3598,14 @@ const setContent = (content, emitUpdate = false, parseOptions = {}) => ({
     doc
   } = tr;
   const document = createDocument(content, editor.schema, parseOptions);
+  const selection = dist/* TextSelection.create */.Bs.create(doc, 0, doc.content.size);
 
   if (dispatch) {
-    tr.replaceWith(0, doc.content.size, document).setMeta('preventUpdate', !emitUpdate);
+    tr.setSelection(selection).replaceSelectionWith(document, false).setMeta('preventUpdate', !emitUpdate);
   }
 
   return true;
 };
-/**
- * Returns a new `Transform` based on all steps of the passed transactions.
- */
-
-
-function combineTransactionSteps(oldDoc, transactions) {
-  const transform = new prosemirror_transform_dist/* Transform */.wx(oldDoc);
-  transactions.forEach(transaction => {
-    transaction.steps.forEach(step => {
-      transform.step(step);
-    });
-  });
-  return transform;
-}
-
-function tiptap_core_esm_defaultBlockAt(match) {
-  for (let i = 0; i < match.edgeCount; i += 1) {
-    const {
-      type
-    } = match.edge(i);
-
-    if (type.isTextblock && !type.hasRequiredAttrs()) {
-      return type;
-    }
-  }
-
-  return null;
-}
-
-function findChildren(node, predicate) {
-  const nodesWithPos = [];
-  node.descendants((child, pos) => {
-    if (predicate(child)) {
-      nodesWithPos.push({
-        node: child,
-        pos
-      });
-    }
-  });
-  return nodesWithPos;
-}
-/**
- * Same as `findChildren` but searches only within a `range`.
- */
-
-
-function findChildrenInRange(node, range, predicate) {
-  const nodesWithPos = []; // if (range.from === range.to) {
-  //   const nodeAt = node.nodeAt(range.from)
-  //   if (nodeAt) {
-  //     nodesWithPos.push({
-  //       node: nodeAt,
-  //       pos: range.from,
-  //     })
-  //   }
-  // }
-
-  node.nodesBetween(range.from, range.to, (child, pos) => {
-    if (predicate(child)) {
-      nodesWithPos.push({
-        node: child,
-        pos
-      });
-    }
-  });
-  return nodesWithPos;
-}
-
-function findParentNodeClosestToPos($pos, predicate) {
-  for (let i = $pos.depth; i > 0; i -= 1) {
-    const node = $pos.node(i);
-
-    if (predicate(node)) {
-      return {
-        pos: i > 0 ? $pos.before(i) : 0,
-        start: $pos.start(i),
-        depth: i,
-        node
-      };
-    }
-  }
-}
-
-function findParentNode(predicate) {
-  return selection => findParentNodeClosestToPos(selection.$from, predicate);
-}
-
-function getHTMLFromFragment(fragment, schema) {
-  const documentFragment = prosemirror_model_dist/* DOMSerializer.fromSchema */.PW.fromSchema(schema).serializeFragment(fragment);
-  const temporaryDocument = document.implementation.createHTMLDocument();
-  const container = temporaryDocument.createElement('div');
-  container.appendChild(documentFragment);
-  return container.innerHTML;
-}
-
-function getSchema(extensions) {
-  const resolvedExtensions = ExtensionManager.resolve(extensions);
-  return getSchemaByResolvedExtensions(resolvedExtensions);
-}
-
-function generateHTML(doc, extensions) {
-  const schema = getSchema(extensions);
-  const contentNode = prosemirror_model_dist/* Node.fromJSON */.NB.fromJSON(schema, doc);
-  return getHTMLFromFragment(contentNode.content, schema);
-}
-
-function generateJSON(html, extensions) {
-  const schema = getSchema(extensions);
-  const dom = elementFromString(html);
-  return prosemirror_model_dist/* DOMParser.fromSchema */.aw.fromSchema(schema).parse(dom).toJSON();
-}
-
-function getText(node, options) {
-  const range = {
-    from: 0,
-    to: node.content.size
-  };
-  return getTextBetween(node, range, options);
-}
-
-function generateText(doc, extensions, options) {
-  const {
-    blockSeparator = '\n\n',
-    textSerializers = {}
-  } = options || {};
-  const schema = getSchema(extensions);
-  const contentNode = prosemirror_model_dist/* Node.fromJSON */.NB.fromJSON(schema, doc);
-  return getText(contentNode, {
-    blockSeparator,
-    textSerializers: { ...textSerializers,
-      ...getTextSerializersFromSchema(schema)
-    }
-  });
-}
 
 function getMarkAttributes(state, typeOrName) {
   const type = getMarkType(typeOrName, state.schema);
@@ -3771,410 +3636,6 @@ function getMarkAttributes(state, typeOrName) {
 
   return { ...mark.attrs
   };
-}
-
-function getNodeAttributes(state, typeOrName) {
-  const type = getNodeType(typeOrName, state.schema);
-  const {
-    from,
-    to
-  } = state.selection;
-  const nodes = [];
-  state.doc.nodesBetween(from, to, node => {
-    nodes.push(node);
-  });
-  const node = nodes.reverse().find(nodeItem => nodeItem.type.name === type.name);
-
-  if (!node) {
-    return {};
-  }
-
-  return { ...node.attrs
-  };
-}
-
-function getAttributes(state, typeOrName) {
-  const schemaType = getSchemaTypeNameByName(typeof typeOrName === 'string' ? typeOrName : typeOrName.name, state.schema);
-
-  if (schemaType === 'node') {
-    return getNodeAttributes(state, typeOrName);
-  }
-
-  if (schemaType === 'mark') {
-    return getMarkAttributes(state, typeOrName);
-  }
-
-  return {};
-}
-/**
- * Removes duplicated values within an array.
- * Supports numbers, strings and objects.
- */
-
-
-function removeDuplicates(array, by = JSON.stringify) {
-  const seen = {};
-  return array.filter(item => {
-    const key = by(item);
-    return Object.prototype.hasOwnProperty.call(seen, key) ? false : seen[key] = true;
-  });
-}
-/**
- * Removes duplicated ranges and ranges that are
- * fully captured by other ranges.
- */
-
-
-function simplifyChangedRanges(changes) {
-  const uniqueChanges = removeDuplicates(changes);
-  return uniqueChanges.length === 1 ? uniqueChanges : uniqueChanges.filter((change, index) => {
-    const rest = uniqueChanges.filter((_, i) => i !== index);
-    return !rest.some(otherChange => {
-      return change.oldRange.from >= otherChange.oldRange.from && change.oldRange.to <= otherChange.oldRange.to && change.newRange.from >= otherChange.newRange.from && change.newRange.to <= otherChange.newRange.to;
-    });
-  });
-}
-/**
- * Returns a list of changed ranges
- * based on the first and last state of all steps.
- */
-
-
-function getChangedRanges(transform) {
-  const {
-    mapping,
-    steps
-  } = transform;
-  const changes = [];
-  mapping.maps.forEach((stepMap, index) => {
-    const ranges = []; // This accounts for step changes where no range was actually altered
-    // e.g. when setting a mark, node attribute, etc.
-    // @ts-ignore
-
-    if (!stepMap.ranges.length) {
-      const {
-        from,
-        to
-      } = steps[index];
-
-      if (from === undefined || to === undefined) {
-        return;
-      }
-
-      ranges.push({
-        from,
-        to
-      });
-    } else {
-      stepMap.forEach((from, to) => {
-        ranges.push({
-          from,
-          to
-        });
-      });
-    }
-
-    ranges.forEach(({
-      from,
-      to
-    }) => {
-      const newStart = mapping.slice(index).map(from, -1);
-      const newEnd = mapping.slice(index).map(to);
-      const oldStart = mapping.invert().map(newStart, -1);
-      const oldEnd = mapping.invert().map(newEnd);
-      changes.push({
-        oldRange: {
-          from: oldStart,
-          to: oldEnd
-        },
-        newRange: {
-          from: newStart,
-          to: newEnd
-        }
-      });
-    });
-  });
-  return simplifyChangedRanges(changes);
-}
-
-function getDebugJSON(node, startOffset = 0) {
-  const isTopNode = node.type === node.type.schema.topNodeType;
-  const increment = isTopNode ? 0 : 1;
-  const from = startOffset;
-  const to = from + node.nodeSize;
-  const marks = node.marks.map(mark => {
-    const output = {
-      type: mark.type.name
-    };
-
-    if (Object.keys(mark.attrs).length) {
-      output.attrs = { ...mark.attrs
-      };
-    }
-
-    return output;
-  });
-  const attrs = { ...node.attrs
-  };
-  const output = {
-    type: node.type.name,
-    from,
-    to
-  };
-
-  if (Object.keys(attrs).length) {
-    output.attrs = attrs;
-  }
-
-  if (marks.length) {
-    output.marks = marks;
-  }
-
-  if (node.content.childCount) {
-    output.content = [];
-    node.forEach((child, offset) => {
-      var _a;
-
-      (_a = output.content) === null || _a === void 0 ? void 0 : _a.push(getDebugJSON(child, startOffset + offset + increment));
-    });
-  }
-
-  if (node.text) {
-    output.text = node.text;
-  }
-
-  return output;
-}
-
-function getMarksBetween(from, to, doc) {
-  const marks = []; // get all inclusive marks on empty selection
-
-  if (from === to) {
-    doc.resolve(from).marks().forEach(mark => {
-      const $pos = doc.resolve(from - 1);
-      const range = getMarkRange($pos, mark.type);
-
-      if (!range) {
-        return;
-      }
-
-      marks.push({
-        mark,
-        ...range
-      });
-    });
-  } else {
-    doc.nodesBetween(from, to, (node, pos) => {
-      marks.push(...node.marks.map(mark => ({
-        from: pos,
-        to: pos + node.nodeSize,
-        mark
-      })));
-    });
-  }
-
-  return marks;
-}
-
-function isMarkActive(state, typeOrName, attributes = {}) {
-  const {
-    empty,
-    ranges
-  } = state.selection;
-  const type = typeOrName ? getMarkType(typeOrName, state.schema) : null;
-
-  if (empty) {
-    return !!(state.storedMarks || state.selection.$from.marks()).filter(mark => {
-      if (!type) {
-        return true;
-      }
-
-      return type.name === mark.type.name;
-    }).find(mark => objectIncludes(mark.attrs, attributes, {
-      strict: false
-    }));
-  }
-
-  let selectionRange = 0;
-  const markRanges = [];
-  ranges.forEach(({
-    $from,
-    $to
-  }) => {
-    const from = $from.pos;
-    const to = $to.pos;
-    state.doc.nodesBetween(from, to, (node, pos) => {
-      if (!node.isText && !node.marks.length) {
-        return;
-      }
-
-      const relativeFrom = Math.max(from, pos);
-      const relativeTo = Math.min(to, pos + node.nodeSize);
-      const range = relativeTo - relativeFrom;
-      selectionRange += range;
-      markRanges.push(...node.marks.map(mark => ({
-        mark,
-        from: relativeFrom,
-        to: relativeTo
-      })));
-    });
-  });
-
-  if (selectionRange === 0) {
-    return false;
-  } // calculate range of matched mark
-
-
-  const matchedRange = markRanges.filter(markRange => {
-    if (!type) {
-      return true;
-    }
-
-    return type.name === markRange.mark.type.name;
-  }).filter(markRange => objectIncludes(markRange.mark.attrs, attributes, {
-    strict: false
-  })).reduce((sum, markRange) => sum + markRange.to - markRange.from, 0); // calculate range of marks that excludes the searched mark
-  // for example `code` doesn’t allow any other marks
-
-  const excludedRange = markRanges.filter(markRange => {
-    if (!type) {
-      return true;
-    }
-
-    return markRange.mark.type !== type && markRange.mark.type.excludes(type);
-  }).reduce((sum, markRange) => sum + markRange.to - markRange.from, 0); // we only include the result of `excludedRange`
-  // if there is a match at all
-
-  const range = matchedRange > 0 ? matchedRange + excludedRange : matchedRange;
-  return range >= selectionRange;
-}
-
-function isActive(state, name, attributes = {}) {
-  if (!name) {
-    return isNodeActive(state, null, attributes) || isMarkActive(state, null, attributes);
-  }
-
-  const schemaType = getSchemaTypeNameByName(name, state.schema);
-
-  if (schemaType === 'node') {
-    return isNodeActive(state, name, attributes);
-  }
-
-  if (schemaType === 'mark') {
-    return isMarkActive(state, name, attributes);
-  }
-
-  return false;
-}
-
-function isList(name, extensions) {
-  const {
-    nodeExtensions
-  } = splitExtensions(extensions);
-  const extension = nodeExtensions.find(item => item.name === name);
-
-  if (!extension) {
-    return false;
-  }
-
-  const context = {
-    name: extension.name,
-    options: extension.options,
-    storage: extension.storage
-  };
-  const group = callOrReturn(getExtensionField(extension, 'group', context));
-
-  if (typeof group !== 'string') {
-    return false;
-  }
-
-  return group.split(' ').includes('list');
-}
-
-function isNodeEmpty(node) {
-  var _a;
-
-  const defaultContent = (_a = node.type.createAndFill()) === null || _a === void 0 ? void 0 : _a.toJSON();
-  const content = node.toJSON();
-  return JSON.stringify(defaultContent) === JSON.stringify(content);
-}
-
-function isNodeSelection(value) {
-  return value instanceof dist/* NodeSelection */.qv;
-}
-
-function posToDOMRect(view, from, to) {
-  const minPos = 0;
-  const maxPos = view.state.doc.content.size;
-  const resolvedFrom = minMax(from, minPos, maxPos);
-  const resolvedEnd = minMax(to, minPos, maxPos);
-  const start = view.coordsAtPos(resolvedFrom);
-  const end = view.coordsAtPos(resolvedEnd, -1);
-  const top = Math.min(start.top, end.top);
-  const bottom = Math.max(start.bottom, end.bottom);
-  const left = Math.min(start.left, end.left);
-  const right = Math.max(start.right, end.right);
-  const width = right - left;
-  const height = bottom - top;
-  const x = left;
-  const y = top;
-  const data = {
-    top,
-    bottom,
-    left,
-    right,
-    width,
-    height,
-    x,
-    y
-  };
-  return { ...data,
-    toJSON: () => data
-  };
-}
-
-function canSetMark(state, tr, newMarkType) {
-  var _a;
-
-  const {
-    selection
-  } = tr;
-  let cursor = null;
-
-  if (isTextSelection(selection)) {
-    cursor = selection.$cursor;
-  }
-
-  if (cursor) {
-    const currentMarks = (_a = state.storedMarks) !== null && _a !== void 0 ? _a : cursor.marks(); // There can be no current marks that exclude the new mark
-
-    return !!newMarkType.isInSet(currentMarks) || !currentMarks.some(mark => mark.type.excludes(newMarkType));
-  }
-
-  const {
-    ranges
-  } = selection;
-  return ranges.some(({
-    $from,
-    $to
-  }) => {
-    let someNodeSupportsMark = $from.depth === 0 ? state.doc.inlineContent && state.doc.type.allowsMarkType(newMarkType) : false;
-    state.doc.nodesBetween($from.pos, $to.pos, (node, _pos, parent) => {
-      // If we already found a mark that we can enable, return false to bypass the remaining search
-      if (someNodeSupportsMark) {
-        return false;
-      }
-
-      if (node.isInline) {
-        const parentAllowsMarkType = !parent || parent.type.allowsMarkType(newMarkType);
-        const currentMarksAllowMarkType = !!newMarkType.isInSet(node.marks) || !node.marks.some(otherMark => otherMark.type.excludes(newMarkType));
-        someNodeSupportsMark = parentAllowsMarkType && currentMarksAllowMarkType;
-      }
-
-      return !someNodeSupportsMark;
-    });
-    return someNodeSupportsMark;
-  });
 }
 
 const setMark = (typeOrName, attributes = {}) => ({
@@ -4224,7 +3685,7 @@ const setMark = (typeOrName, attributes = {}) => ({
     }
   }
 
-  return canSetMark(state, tr, type);
+  return true;
 };
 
 const setMeta = (key, value) => ({
@@ -4272,8 +3733,10 @@ const setNodeSelection = position => ({
     const {
       doc
     } = tr;
-    const from = minMax(position, 0, doc.content.size);
-    const selection = dist/* NodeSelection.create */.qv.create(doc, from);
+    const minPos = dist/* Selection.atStart */.Y1.atStart(doc).from;
+    const maxPos = dist/* Selection.atEnd */.Y1.atEnd(doc).to;
+    const resolvedPos = minMax(position, minPos, maxPos);
+    const selection = dist/* NodeSelection.create */.qv.create(doc, resolvedPos);
     tr.setSelection(selection);
   }
 
@@ -4326,6 +3789,20 @@ function getSplittedAttributes(extensionAttributes, typeName, attributes) {
 
     return extensionAttribute.attribute.keepOnSplit;
   }));
+}
+
+function defaultBlockAt$1(match) {
+  for (let i = 0; i < match.edgeCount; i += 1) {
+    const {
+      type
+    } = match.edge(i);
+
+    if (type.isTextblock && !type.hasRequiredAttrs()) {
+      return type;
+    }
+  }
+
+  return null;
 }
 
 function ensureMarks(state, splittableMarks) {
@@ -4383,7 +3860,7 @@ const tiptap_core_esm_splitBlock = ({
       tr.deleteSelection();
     }
 
-    const deflt = $from.depth === 0 ? undefined : tiptap_core_esm_defaultBlockAt($from.node(-1).contentMatchAt($from.indexAfter(-1)));
+    const deflt = $from.depth === 0 ? undefined : defaultBlockAt$1($from.node(-1).contentMatchAt($from.indexAfter(-1)));
     let types = atEnd && deflt ? [{
       type: deflt,
       attrs: newAttributes
@@ -4525,6 +4002,49 @@ const tiptap_core_esm_splitListItem = typeOrName => ({
   return true;
 };
 
+function findParentNodeClosestToPos($pos, predicate) {
+  for (let i = $pos.depth; i > 0; i -= 1) {
+    const node = $pos.node(i);
+
+    if (predicate(node)) {
+      return {
+        pos: i > 0 ? $pos.before(i) : 0,
+        start: $pos.start(i),
+        depth: i,
+        node
+      };
+    }
+  }
+}
+
+function findParentNode(predicate) {
+  return selection => findParentNodeClosestToPos(selection.$from, predicate);
+}
+
+function isList(name, extensions) {
+  const {
+    nodeExtensions
+  } = splitExtensions(extensions);
+  const extension = nodeExtensions.find(item => item.name === name);
+
+  if (!extension) {
+    return false;
+  }
+
+  const context = {
+    name: extension.name,
+    options: extension.options,
+    storage: extension.storage
+  };
+  const group = callOrReturn(getExtensionField(extension, 'group', context));
+
+  if (typeof group !== 'string') {
+    return false;
+  }
+
+  return group.split(' ').includes('list');
+}
+
 const joinListBackwards = (tr, listType) => {
   const list = findParentNode(node => node.type === listType)(tr.selection);
 
@@ -4628,6 +4148,79 @@ const toggleList = (listTypeOrName, itemTypeOrName) => ({
     return commands.clearNodes();
   }).wrapInList(listType).command(() => joinListBackwards(tr, listType)).command(() => joinListForwards(tr, listType)).run();
 };
+
+function isMarkActive(state, typeOrName, attributes = {}) {
+  const {
+    empty,
+    ranges
+  } = state.selection;
+  const type = typeOrName ? getMarkType(typeOrName, state.schema) : null;
+
+  if (empty) {
+    return !!(state.storedMarks || state.selection.$from.marks()).filter(mark => {
+      if (!type) {
+        return true;
+      }
+
+      return type.name === mark.type.name;
+    }).find(mark => objectIncludes(mark.attrs, attributes, {
+      strict: false
+    }));
+  }
+
+  let selectionRange = 0;
+  const markRanges = [];
+  ranges.forEach(({
+    $from,
+    $to
+  }) => {
+    const from = $from.pos;
+    const to = $to.pos;
+    state.doc.nodesBetween(from, to, (node, pos) => {
+      if (!node.isText && !node.marks.length) {
+        return;
+      }
+
+      const relativeFrom = Math.max(from, pos);
+      const relativeTo = Math.min(to, pos + node.nodeSize);
+      const range = relativeTo - relativeFrom;
+      selectionRange += range;
+      markRanges.push(...node.marks.map(mark => ({
+        mark,
+        from: relativeFrom,
+        to: relativeTo
+      })));
+    });
+  });
+
+  if (selectionRange === 0) {
+    return false;
+  } // calculate range of matched mark
+
+
+  const matchedRange = markRanges.filter(markRange => {
+    if (!type) {
+      return true;
+    }
+
+    return type.name === markRange.mark.type.name;
+  }).filter(markRange => objectIncludes(markRange.mark.attrs, attributes, {
+    strict: false
+  })).reduce((sum, markRange) => sum + markRange.to - markRange.from, 0); // calculate range of marks that excludes the searched mark
+  // for example `code` doesn’t allow any other marks
+
+  const excludedRange = markRanges.filter(markRange => {
+    if (!type) {
+      return true;
+    }
+
+    return markRange.mark.type !== type && markRange.mark.type.excludes(type);
+  }).reduce((sum, markRange) => sum + markRange.to - markRange.from, 0); // we only include the result of `excludedRange`
+  // if there is a match at all
+
+  const range = matchedRange > 0 ? matchedRange + excludedRange : matchedRange;
+  return range >= selectionRange;
+}
 
 const tiptap_core_esm_toggleMark = (typeOrName, attributes = {}, options = {}) => ({
   state,
@@ -5104,6 +4697,83 @@ var extensions = /*#__PURE__*/Object.freeze({
   Keymap: Keymap,
   Tabindex: Tabindex
 });
+
+function getNodeAttributes(state, typeOrName) {
+  const type = getNodeType(typeOrName, state.schema);
+  const {
+    from,
+    to
+  } = state.selection;
+  const nodes = [];
+  state.doc.nodesBetween(from, to, node => {
+    nodes.push(node);
+  });
+  const node = nodes.reverse().find(nodeItem => nodeItem.type.name === type.name);
+
+  if (!node) {
+    return {};
+  }
+
+  return { ...node.attrs
+  };
+}
+
+function getAttributes(state, typeOrName) {
+  const schemaType = getSchemaTypeNameByName(typeof typeOrName === 'string' ? typeOrName : typeOrName.name, state.schema);
+
+  if (schemaType === 'node') {
+    return getNodeAttributes(state, typeOrName);
+  }
+
+  if (schemaType === 'mark') {
+    return getMarkAttributes(state, typeOrName);
+  }
+
+  return {};
+}
+
+function getHTMLFromFragment(fragment, schema) {
+  const documentFragment = prosemirror_model_dist/* DOMSerializer.fromSchema */.PW.fromSchema(schema).serializeFragment(fragment);
+  const temporaryDocument = document.implementation.createHTMLDocument();
+  const container = temporaryDocument.createElement('div');
+  container.appendChild(documentFragment);
+  return container.innerHTML;
+}
+
+function getText(node, options) {
+  const range = {
+    from: 0,
+    to: node.content.size
+  };
+  return getTextBetween(node, range, options);
+}
+
+function isActive(state, name, attributes = {}) {
+  if (!name) {
+    return isNodeActive(state, null, attributes) || isMarkActive(state, null, attributes);
+  }
+
+  const schemaType = getSchemaTypeNameByName(name, state.schema);
+
+  if (schemaType === 'node') {
+    return isNodeActive(state, name, attributes);
+  }
+
+  if (schemaType === 'mark') {
+    return isMarkActive(state, name, attributes);
+  }
+
+  return false;
+}
+
+function isNodeEmpty(node) {
+  var _a;
+
+  const defaultContent = (_a = node.type.createAndFill()) === null || _a === void 0 ? void 0 : _a.toJSON();
+  const content = node.toJSON();
+  return JSON.stringify(defaultContent) === JSON.stringify(content);
+}
+
 const style = `.ProseMirror {
   position: relative;
 }
@@ -5328,10 +4998,6 @@ class Editor extends EventEmitter {
   setEditable(editable) {
     this.setOptions({
       editable
-    });
-    this.emit('update', {
-      editor: this,
-      transaction: this.state.tr
     });
   }
   /**
@@ -5623,6 +5289,308 @@ class Editor extends EventEmitter {
 
 }
 /**
+ * Returns a new `Transform` based on all steps of the passed transactions.
+ */
+
+
+function combineTransactionSteps(oldDoc, transactions) {
+  const transform = new prosemirror_transform_dist/* Transform */.wx(oldDoc);
+  transactions.forEach(transaction => {
+    transaction.steps.forEach(step => {
+      transform.step(step);
+    });
+  });
+  return transform;
+}
+
+function tiptap_core_esm_defaultBlockAt(match) {
+  for (let i = 0; i < match.edgeCount; i += 1) {
+    const {
+      type
+    } = match.edge(i);
+
+    if (type.isTextblock && !type.hasRequiredAttrs()) {
+      return type;
+    }
+  }
+
+  return null;
+}
+
+function findChildren(node, predicate) {
+  const nodesWithPos = [];
+  node.descendants((child, pos) => {
+    if (predicate(child)) {
+      nodesWithPos.push({
+        node: child,
+        pos
+      });
+    }
+  });
+  return nodesWithPos;
+}
+/**
+ * Same as `findChildren` but searches only within a `range`.
+ */
+
+
+function findChildrenInRange(node, range, predicate) {
+  const nodesWithPos = []; // if (range.from === range.to) {
+  //   const nodeAt = node.nodeAt(range.from)
+  //   if (nodeAt) {
+  //     nodesWithPos.push({
+  //       node: nodeAt,
+  //       pos: range.from,
+  //     })
+  //   }
+  // }
+
+  node.nodesBetween(range.from, range.to, (child, pos) => {
+    if (predicate(child)) {
+      nodesWithPos.push({
+        node: child,
+        pos
+      });
+    }
+  });
+  return nodesWithPos;
+}
+
+function getSchema(extensions) {
+  const resolvedExtensions = ExtensionManager.resolve(extensions);
+  return getSchemaByResolvedExtensions(resolvedExtensions);
+}
+
+function generateHTML(doc, extensions) {
+  const schema = getSchema(extensions);
+  const contentNode = prosemirror_model_dist/* Node.fromJSON */.NB.fromJSON(schema, doc);
+  return getHTMLFromFragment(contentNode.content, schema);
+}
+
+function generateJSON(html, extensions) {
+  const schema = getSchema(extensions);
+  const dom = elementFromString(html);
+  return prosemirror_model_dist/* DOMParser.fromSchema */.aw.fromSchema(schema).parse(dom).toJSON();
+}
+
+function generateText(doc, extensions, options) {
+  const {
+    blockSeparator = '\n\n',
+    textSerializers = {}
+  } = options || {};
+  const schema = getSchema(extensions);
+  const contentNode = prosemirror_model_dist/* Node.fromJSON */.NB.fromJSON(schema, doc);
+  return getText(contentNode, {
+    blockSeparator,
+    textSerializers: { ...textSerializers,
+      ...getTextSerializersFromSchema(schema)
+    }
+  });
+}
+/**
+ * Removes duplicated values within an array.
+ * Supports numbers, strings and objects.
+ */
+
+
+function removeDuplicates(array, by = JSON.stringify) {
+  const seen = {};
+  return array.filter(item => {
+    const key = by(item);
+    return Object.prototype.hasOwnProperty.call(seen, key) ? false : seen[key] = true;
+  });
+}
+/**
+ * Removes duplicated ranges and ranges that are
+ * fully captured by other ranges.
+ */
+
+
+function simplifyChangedRanges(changes) {
+  const uniqueChanges = removeDuplicates(changes);
+  return uniqueChanges.length === 1 ? uniqueChanges : uniqueChanges.filter((change, index) => {
+    const rest = uniqueChanges.filter((_, i) => i !== index);
+    return !rest.some(otherChange => {
+      return change.oldRange.from >= otherChange.oldRange.from && change.oldRange.to <= otherChange.oldRange.to && change.newRange.from >= otherChange.newRange.from && change.newRange.to <= otherChange.newRange.to;
+    });
+  });
+}
+/**
+ * Returns a list of changed ranges
+ * based on the first and last state of all steps.
+ */
+
+
+function getChangedRanges(transform) {
+  const {
+    mapping,
+    steps
+  } = transform;
+  const changes = [];
+  mapping.maps.forEach((stepMap, index) => {
+    const ranges = []; // This accounts for step changes where no range was actually altered
+    // e.g. when setting a mark, node attribute, etc.
+    // @ts-ignore
+
+    if (!stepMap.ranges.length) {
+      const {
+        from,
+        to
+      } = steps[index];
+
+      if (from === undefined || to === undefined) {
+        return;
+      }
+
+      ranges.push({
+        from,
+        to
+      });
+    } else {
+      stepMap.forEach((from, to) => {
+        ranges.push({
+          from,
+          to
+        });
+      });
+    }
+
+    ranges.forEach(({
+      from,
+      to
+    }) => {
+      const newStart = mapping.slice(index).map(from, -1);
+      const newEnd = mapping.slice(index).map(to);
+      const oldStart = mapping.invert().map(newStart, -1);
+      const oldEnd = mapping.invert().map(newEnd);
+      changes.push({
+        oldRange: {
+          from: oldStart,
+          to: oldEnd
+        },
+        newRange: {
+          from: newStart,
+          to: newEnd
+        }
+      });
+    });
+  });
+  return simplifyChangedRanges(changes);
+}
+
+function getDebugJSON(node, startOffset = 0) {
+  const isTopNode = node.type === node.type.schema.topNodeType;
+  const increment = isTopNode ? 0 : 1;
+  const from = startOffset;
+  const to = from + node.nodeSize;
+  const marks = node.marks.map(mark => {
+    const output = {
+      type: mark.type.name
+    };
+
+    if (Object.keys(mark.attrs).length) {
+      output.attrs = { ...mark.attrs
+      };
+    }
+
+    return output;
+  });
+  const attrs = { ...node.attrs
+  };
+  const output = {
+    type: node.type.name,
+    from,
+    to
+  };
+
+  if (Object.keys(attrs).length) {
+    output.attrs = attrs;
+  }
+
+  if (marks.length) {
+    output.marks = marks;
+  }
+
+  if (node.content.childCount) {
+    output.content = [];
+    node.forEach((child, offset) => {
+      var _a;
+
+      (_a = output.content) === null || _a === void 0 ? void 0 : _a.push(getDebugJSON(child, startOffset + offset + increment));
+    });
+  }
+
+  if (node.text) {
+    output.text = node.text;
+  }
+
+  return output;
+}
+
+function getMarksBetween(from, to, doc) {
+  const marks = []; // get all inclusive marks on empty selection
+
+  if (from === to) {
+    doc.resolve(from).marks().forEach(mark => {
+      const $pos = doc.resolve(from - 1);
+      const range = getMarkRange($pos, mark.type);
+
+      if (!range) {
+        return;
+      }
+
+      marks.push({
+        mark,
+        ...range
+      });
+    });
+  } else {
+    doc.nodesBetween(from, to, (node, pos) => {
+      marks.push(...node.marks.map(mark => ({
+        from: pos,
+        to: pos + node.nodeSize,
+        mark
+      })));
+    });
+  }
+
+  return marks;
+}
+
+function isNodeSelection(value) {
+  return isObject(value) && value instanceof dist/* NodeSelection */.qv;
+}
+
+function posToDOMRect(view, from, to) {
+  const minPos = 0;
+  const maxPos = view.state.doc.content.size;
+  const resolvedFrom = minMax(from, minPos, maxPos);
+  const resolvedEnd = minMax(to, minPos, maxPos);
+  const start = view.coordsAtPos(resolvedFrom);
+  const end = view.coordsAtPos(resolvedEnd, -1);
+  const top = Math.min(start.top, end.top);
+  const bottom = Math.max(start.bottom, end.bottom);
+  const left = Math.min(start.left, end.left);
+  const right = Math.max(start.right, end.right);
+  const width = right - left;
+  const height = bottom - top;
+  const x = left;
+  const y = top;
+  const data = {
+    top,
+    bottom,
+    left,
+    right,
+    width,
+    height,
+    x,
+    y
+  };
+  return { ...data,
+    toJSON: () => data
+  };
+}
+/**
  * Build an input rule that adds a mark when the
  * matched text is typed into it.
  */
@@ -5893,38 +5861,6 @@ class Mark {
       options: extension.options
     }));
     return extension;
-  }
-
-  static handleExit({
-    editor,
-    mark
-  }) {
-    const {
-      tr
-    } = editor.state;
-    const currentPos = editor.state.selection.$from;
-    const isAtEnd = currentPos.pos === currentPos.end();
-
-    if (isAtEnd) {
-      const currentMarks = currentPos.marks();
-      const isInMark = !!currentMarks.find(m => (m === null || m === void 0 ? void 0 : m.type.name) === mark.name);
-
-      if (!isInMark) {
-        return false;
-      }
-
-      const removeMark = currentMarks.find(m => (m === null || m === void 0 ? void 0 : m.type.name) === mark.name);
-
-      if (removeMark) {
-        tr.removeStoredMark(removeMark);
-      }
-
-      tr.insertText(' ', currentPos.pos);
-      editor.view.dispatch(tr);
-      return true;
-    }
-
-    return false;
   }
 
 }
@@ -6273,42 +6209,6 @@ function markPasteRule(config) {
       }
     }
   });
-} // source: https://stackoverflow.com/a/6969486
-
-
-function escapeForRegEx(string) {
-  return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-}
-/**
- * Build an paste rule that adds a node when the
- * matched text is pasted into it.
- */
-
-
-function nodePasteRule(config) {
-  return new PasteRule({
-    find: config.find,
-
-    handler({
-      match,
-      chain,
-      range
-    }) {
-      const attributes = callOrReturn(config.getAttributes, undefined, match);
-
-      if (attributes === false || attributes === null) {
-        return null;
-      }
-
-      if (match.input) {
-        chain().deleteRange(range).insertContentAt(range.from, {
-          type: config.type.name,
-          attrs: attributes
-        });
-      }
-    }
-
-  });
 }
 /**
  * Build an paste rule that replaces text when the
@@ -6368,6 +6268,11 @@ class Tracker {
     };
   }
 
+} // source: https://stackoverflow.com/a/6969486
+
+
+function escapeForRegEx(string) {
+  return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
  //# sourceMappingURL=tiptap-core.esm.js.map
@@ -13949,7 +13854,7 @@ const TuiTabExtension = tiptap_core_esm.Extension.create({
 
 /***/ }),
 
-/***/ 75276:
+/***/ 80726:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -14234,8 +14139,1271 @@ const Code = tiptap_core_esm.Mark.create({
 
 });
  //# sourceMappingURL=tiptap-extension-code.esm.js.map
-// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
-var dist = __webpack_require__(62463);
+// EXTERNAL MODULE: ./node_modules/prosemirror-model/dist/index.js + 1 modules
+var dist = __webpack_require__(35917);
+// EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
+var prosemirror_transform_dist = __webpack_require__(38480);
+;// CONCATENATED MODULE: prosemirror-state
+
+
+const classesById = Object.create(null);
+/**
+Superclass for editor selections. Every selection type should
+extend this. Should not be instantiated directly.
+*/
+
+class Selection {
+  /**
+  Initialize a selection with the head and anchor and ranges. If no
+  ranges are given, constructs a single range across `$anchor` and
+  `$head`.
+  */
+  constructor(
+  /**
+  The resolved anchor of the selection (the side that stays in
+  place when the selection is modified).
+  */
+  $anchor,
+  /**
+  The resolved head of the selection (the side that moves when
+  the selection is modified).
+  */
+  $head, ranges) {
+    this.$anchor = $anchor;
+    this.$head = $head;
+    this.ranges = ranges || [new SelectionRange($anchor.min($head), $anchor.max($head))];
+  }
+  /**
+  The selection's anchor, as an unresolved position.
+  */
+
+
+  get anchor() {
+    return this.$anchor.pos;
+  }
+  /**
+  The selection's head.
+  */
+
+
+  get head() {
+    return this.$head.pos;
+  }
+  /**
+  The lower bound of the selection's main range.
+  */
+
+
+  get from() {
+    return this.$from.pos;
+  }
+  /**
+  The upper bound of the selection's main range.
+  */
+
+
+  get to() {
+    return this.$to.pos;
+  }
+  /**
+  The resolved lower  bound of the selection's main range.
+  */
+
+
+  get $from() {
+    return this.ranges[0].$from;
+  }
+  /**
+  The resolved upper bound of the selection's main range.
+  */
+
+
+  get $to() {
+    return this.ranges[0].$to;
+  }
+  /**
+  Indicates whether the selection contains any content.
+  */
+
+
+  get empty() {
+    let ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) if (ranges[i].$from.pos != ranges[i].$to.pos) return false;
+
+    return true;
+  }
+  /**
+  Get the content of this selection as a slice.
+  */
+
+
+  content() {
+    return this.$from.doc.slice(this.from, this.to, true);
+  }
+  /**
+  Replace the selection with a slice or, if no slice is given,
+  delete the selection. Will append to the given transaction.
+  */
+
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    // Put the new selection at the position after the inserted
+    // content. When that ended in an inline node, search backwards,
+    // to get the position after that node. If not, search forward.
+    let lastNode = content.content.lastChild,
+        lastParent = null;
+
+    for (let i = 0; i < content.openEnd; i++) {
+      lastParent = lastNode;
+      lastNode = lastNode.lastChild;
+    }
+
+    let mapFrom = tr.steps.length,
+        ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) {
+      let {
+        $from,
+        $to
+      } = ranges[i],
+          mapping = tr.mapping.slice(mapFrom);
+      tr.replaceRange(mapping.map($from.pos), mapping.map($to.pos), i ? dist/* Slice.empty */.p2.empty : content);
+      if (i == 0) selectionToInsertionEnd(tr, mapFrom, (lastNode ? lastNode.isInline : lastParent && lastParent.isTextblock) ? -1 : 1);
+    }
+  }
+  /**
+  Replace the selection with the given node, appending the changes
+  to the given transaction.
+  */
+
+
+  replaceWith(tr, node) {
+    let mapFrom = tr.steps.length,
+        ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) {
+      let {
+        $from,
+        $to
+      } = ranges[i],
+          mapping = tr.mapping.slice(mapFrom);
+      let from = mapping.map($from.pos),
+          to = mapping.map($to.pos);
+
+      if (i) {
+        tr.deleteRange(from, to);
+      } else {
+        tr.replaceRangeWith(from, to, node);
+        selectionToInsertionEnd(tr, mapFrom, node.isInline ? -1 : 1);
+      }
+    }
+  }
+  /**
+  Find a valid cursor or leaf node selection starting at the given
+  position and searching back if `dir` is negative, and forward if
+  positive. When `textOnly` is true, only consider cursor
+  selections. Will return null when no valid selection position is
+  found.
+  */
+
+
+  static findFrom($pos, dir, textOnly = false) {
+    let inner = $pos.parent.inlineContent ? new TextSelection($pos) : findSelectionIn($pos.node(0), $pos.parent, $pos.pos, $pos.index(), dir, textOnly);
+    if (inner) return inner;
+
+    for (let depth = $pos.depth - 1; depth >= 0; depth--) {
+      let found = dir < 0 ? findSelectionIn($pos.node(0), $pos.node(depth), $pos.before(depth + 1), $pos.index(depth), dir, textOnly) : findSelectionIn($pos.node(0), $pos.node(depth), $pos.after(depth + 1), $pos.index(depth) + 1, dir, textOnly);
+      if (found) return found;
+    }
+
+    return null;
+  }
+  /**
+  Find a valid cursor or leaf node selection near the given
+  position. Searches forward first by default, but if `bias` is
+  negative, it will search backwards first.
+  */
+
+
+  static near($pos, bias = 1) {
+    return this.findFrom($pos, bias) || this.findFrom($pos, -bias) || new AllSelection($pos.node(0));
+  }
+  /**
+  Find the cursor or leaf node selection closest to the start of
+  the given document. Will return an
+  [`AllSelection`](https://prosemirror.net/docs/ref/#state.AllSelection) if no valid position
+  exists.
+  */
+
+
+  static atStart(doc) {
+    return findSelectionIn(doc, doc, 0, 0, 1) || new AllSelection(doc);
+  }
+  /**
+  Find the cursor or leaf node selection closest to the end of the
+  given document.
+  */
+
+
+  static atEnd(doc) {
+    return findSelectionIn(doc, doc, doc.content.size, doc.childCount, -1) || new AllSelection(doc);
+  }
+  /**
+  Deserialize the JSON representation of a selection. Must be
+  implemented for custom classes (as a static class method).
+  */
+
+
+  static fromJSON(doc, json) {
+    if (!json || !json.type) throw new RangeError("Invalid input for Selection.fromJSON");
+    let cls = classesById[json.type];
+    if (!cls) throw new RangeError(`No selection type ${json.type} defined`);
+    return cls.fromJSON(doc, json);
+  }
+  /**
+  To be able to deserialize selections from JSON, custom selection
+  classes must register themselves with an ID string, so that they
+  can be disambiguated. Try to pick something that's unlikely to
+  clash with classes from other modules.
+  */
+
+
+  static jsonID(id, selectionClass) {
+    if (id in classesById) throw new RangeError("Duplicate use of selection JSON ID " + id);
+    classesById[id] = selectionClass;
+    selectionClass.prototype.jsonID = id;
+    return selectionClass;
+  }
+  /**
+  Get a [bookmark](https://prosemirror.net/docs/ref/#state.SelectionBookmark) for this selection,
+  which is a value that can be mapped without having access to a
+  current document, and later resolved to a real selection for a
+  given document again. (This is used mostly by the history to
+  track and restore old selections.) The default implementation of
+  this method just converts the selection to a text selection and
+  returns the bookmark for that.
+  */
+
+
+  getBookmark() {
+    return TextSelection.between(this.$anchor, this.$head).getBookmark();
+  }
+
+}
+
+Selection.prototype.visible = true;
+/**
+Represents a selected range in a document.
+*/
+
+class SelectionRange {
+  /**
+  Create a range.
+  */
+  constructor(
+  /**
+  The lower bound of the range.
+  */
+  $from,
+  /**
+  The upper bound of the range.
+  */
+  $to) {
+    this.$from = $from;
+    this.$to = $to;
+  }
+
+}
+
+let warnedAboutTextSelection = false;
+
+function checkTextSelection($pos) {
+  if (!warnedAboutTextSelection && !$pos.parent.inlineContent) {
+    warnedAboutTextSelection = true;
+    console["warn"]("TextSelection endpoint not pointing into a node with inline content (" + $pos.parent.type.name + ")");
+  }
+}
+/**
+A text selection represents a classical editor selection, with a
+head (the moving side) and anchor (immobile side), both of which
+point into textblock nodes. It can be empty (a regular cursor
+position).
+*/
+
+
+class TextSelection extends Selection {
+  /**
+  Construct a text selection between the given points.
+  */
+  constructor($anchor, $head = $anchor) {
+    checkTextSelection($anchor);
+    checkTextSelection($head);
+    super($anchor, $head);
+  }
+  /**
+  Returns a resolved position if this is a cursor selection (an
+  empty text selection), and null otherwise.
+  */
+
+
+  get $cursor() {
+    return this.$anchor.pos == this.$head.pos ? this.$head : null;
+  }
+
+  map(doc, mapping) {
+    let $head = doc.resolve(mapping.map(this.head));
+    if (!$head.parent.inlineContent) return Selection.near($head);
+    let $anchor = doc.resolve(mapping.map(this.anchor));
+    return new TextSelection($anchor.parent.inlineContent ? $anchor : $head, $head);
+  }
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    super.replace(tr, content);
+
+    if (content == dist/* Slice.empty */.p2.empty) {
+      let marks = this.$from.marksAcross(this.$to);
+      if (marks) tr.ensureMarks(marks);
+    }
+  }
+
+  eq(other) {
+    return other instanceof TextSelection && other.anchor == this.anchor && other.head == this.head;
+  }
+
+  getBookmark() {
+    return new TextBookmark(this.anchor, this.head);
+  }
+
+  toJSON() {
+    return {
+      type: "text",
+      anchor: this.anchor,
+      head: this.head
+    };
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc, json) {
+    if (typeof json.anchor != "number" || typeof json.head != "number") throw new RangeError("Invalid input for TextSelection.fromJSON");
+    return new TextSelection(doc.resolve(json.anchor), doc.resolve(json.head));
+  }
+  /**
+  Create a text selection from non-resolved positions.
+  */
+
+
+  static create(doc, anchor, head = anchor) {
+    let $anchor = doc.resolve(anchor);
+    return new this($anchor, head == anchor ? $anchor : doc.resolve(head));
+  }
+  /**
+  Return a text selection that spans the given positions or, if
+  they aren't text positions, find a text selection near them.
+  `bias` determines whether the method searches forward (default)
+  or backwards (negative number) first. Will fall back to calling
+  [`Selection.near`](https://prosemirror.net/docs/ref/#state.Selection^near) when the document
+  doesn't contain a valid text position.
+  */
+
+
+  static between($anchor, $head, bias) {
+    let dPos = $anchor.pos - $head.pos;
+    if (!bias || dPos) bias = dPos >= 0 ? 1 : -1;
+
+    if (!$head.parent.inlineContent) {
+      let found = Selection.findFrom($head, bias, true) || Selection.findFrom($head, -bias, true);
+      if (found) $head = found.$head;else return Selection.near($head, bias);
+    }
+
+    if (!$anchor.parent.inlineContent) {
+      if (dPos == 0) {
+        $anchor = $head;
+      } else {
+        $anchor = (Selection.findFrom($anchor, -bias, true) || Selection.findFrom($anchor, bias, true)).$anchor;
+        if ($anchor.pos < $head.pos != dPos < 0) $anchor = $head;
+      }
+    }
+
+    return new TextSelection($anchor, $head);
+  }
+
+}
+
+Selection.jsonID("text", TextSelection);
+
+class TextBookmark {
+  constructor(anchor, head) {
+    this.anchor = anchor;
+    this.head = head;
+  }
+
+  map(mapping) {
+    return new TextBookmark(mapping.map(this.anchor), mapping.map(this.head));
+  }
+
+  resolve(doc) {
+    return TextSelection.between(doc.resolve(this.anchor), doc.resolve(this.head));
+  }
+
+}
+/**
+A node selection is a selection that points at a single node. All
+nodes marked [selectable](https://prosemirror.net/docs/ref/#model.NodeSpec.selectable) can be the
+target of a node selection. In such a selection, `from` and `to`
+point directly before and after the selected node, `anchor` equals
+`from`, and `head` equals `to`..
+*/
+
+
+class NodeSelection extends Selection {
+  /**
+  Create a node selection. Does not verify the validity of its
+  argument.
+  */
+  constructor($pos) {
+    let node = $pos.nodeAfter;
+    let $end = $pos.node(0).resolve($pos.pos + node.nodeSize);
+    super($pos, $end);
+    this.node = node;
+  }
+
+  map(doc, mapping) {
+    let {
+      deleted,
+      pos
+    } = mapping.mapResult(this.anchor);
+    let $pos = doc.resolve(pos);
+    if (deleted) return Selection.near($pos);
+    return new NodeSelection($pos);
+  }
+
+  content() {
+    return new dist/* Slice */.p2(dist/* Fragment.from */.HY.from(this.node), 0, 0);
+  }
+
+  eq(other) {
+    return other instanceof NodeSelection && other.anchor == this.anchor;
+  }
+
+  toJSON() {
+    return {
+      type: "node",
+      anchor: this.anchor
+    };
+  }
+
+  getBookmark() {
+    return new NodeBookmark(this.anchor);
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc, json) {
+    if (typeof json.anchor != "number") throw new RangeError("Invalid input for NodeSelection.fromJSON");
+    return new NodeSelection(doc.resolve(json.anchor));
+  }
+  /**
+  Create a node selection from non-resolved positions.
+  */
+
+
+  static create(doc, from) {
+    return new NodeSelection(doc.resolve(from));
+  }
+  /**
+  Determines whether the given node may be selected as a node
+  selection.
+  */
+
+
+  static isSelectable(node) {
+    return !node.isText && node.type.spec.selectable !== false;
+  }
+
+}
+
+NodeSelection.prototype.visible = false;
+Selection.jsonID("node", NodeSelection);
+
+class NodeBookmark {
+  constructor(anchor) {
+    this.anchor = anchor;
+  }
+
+  map(mapping) {
+    let {
+      deleted,
+      pos
+    } = mapping.mapResult(this.anchor);
+    return deleted ? new TextBookmark(pos, pos) : new NodeBookmark(pos);
+  }
+
+  resolve(doc) {
+    let $pos = doc.resolve(this.anchor),
+        node = $pos.nodeAfter;
+    if (node && NodeSelection.isSelectable(node)) return new NodeSelection($pos);
+    return Selection.near($pos);
+  }
+
+}
+/**
+A selection type that represents selecting the whole document
+(which can not necessarily be expressed with a text selection, when
+there are for example leaf block nodes at the start or end of the
+document).
+*/
+
+
+class AllSelection extends Selection {
+  /**
+  Create an all-selection over the given document.
+  */
+  constructor(doc) {
+    super(doc.resolve(0), doc.resolve(doc.content.size));
+  }
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    if (content == dist/* Slice.empty */.p2.empty) {
+      tr.delete(0, tr.doc.content.size);
+      let sel = Selection.atStart(tr.doc);
+      if (!sel.eq(tr.selection)) tr.setSelection(sel);
+    } else {
+      super.replace(tr, content);
+    }
+  }
+
+  toJSON() {
+    return {
+      type: "all"
+    };
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc) {
+    return new AllSelection(doc);
+  }
+
+  map(doc) {
+    return new AllSelection(doc);
+  }
+
+  eq(other) {
+    return other instanceof AllSelection;
+  }
+
+  getBookmark() {
+    return AllBookmark;
+  }
+
+}
+
+Selection.jsonID("all", AllSelection);
+const AllBookmark = {
+  map() {
+    return this;
+  },
+
+  resolve(doc) {
+    return new AllSelection(doc);
+  }
+
+}; // FIXME we'll need some awareness of text direction when scanning for selections
+// Try to find a selection inside the given node. `pos` points at the
+// position where the search starts. When `text` is true, only return
+// text selections.
+
+function findSelectionIn(doc, node, pos, index, dir, text = false) {
+  if (node.inlineContent) return TextSelection.create(doc, pos);
+
+  for (let i = index - (dir > 0 ? 0 : 1); dir > 0 ? i < node.childCount : i >= 0; i += dir) {
+    let child = node.child(i);
+
+    if (!child.isAtom) {
+      let inner = findSelectionIn(doc, child, pos + dir, dir < 0 ? child.childCount : 0, dir, text);
+      if (inner) return inner;
+    } else if (!text && NodeSelection.isSelectable(child)) {
+      return NodeSelection.create(doc, pos - (dir < 0 ? child.nodeSize : 0));
+    }
+
+    pos += child.nodeSize * dir;
+  }
+
+  return null;
+}
+
+function selectionToInsertionEnd(tr, startLen, bias) {
+  let last = tr.steps.length - 1;
+  if (last < startLen) return;
+  let step = tr.steps[last];
+  if (!(step instanceof prosemirror_transform_dist/* ReplaceStep */.Pu || step instanceof prosemirror_transform_dist/* ReplaceAroundStep */.FC)) return;
+  let map = tr.mapping.maps[last],
+      end;
+  map.forEach((_from, _to, _newFrom, newTo) => {
+    if (end == null) end = newTo;
+  });
+  tr.setSelection(Selection.near(tr.doc.resolve(end), bias));
+}
+
+const UPDATED_SEL = 1,
+      UPDATED_MARKS = 2,
+      UPDATED_SCROLL = 4;
+/**
+An editor state transaction, which can be applied to a state to
+create an updated state. Use
+[`EditorState.tr`](https://prosemirror.net/docs/ref/#state.EditorState.tr) to create an instance.
+
+Transactions track changes to the document (they are a subclass of
+[`Transform`](https://prosemirror.net/docs/ref/#transform.Transform)), but also other state changes,
+like selection updates and adjustments of the set of [stored
+marks](https://prosemirror.net/docs/ref/#state.EditorState.storedMarks). In addition, you can store
+metadata properties in a transaction, which are extra pieces of
+information that client code or plugins can use to describe what a
+transaction represents, so that they can update their [own
+state](https://prosemirror.net/docs/ref/#state.StateField) accordingly.
+
+The [editor view](https://prosemirror.net/docs/ref/#view.EditorView) uses a few metadata properties:
+it will attach a property `"pointer"` with the value `true` to
+selection transactions directly caused by mouse or touch input, and
+a `"uiEvent"` property of that may be `"paste"`, `"cut"`, or `"drop"`.
+*/
+
+class Transaction extends (/* unused pure expression or super */ null && (Transform)) {
+  /**
+  @internal
+  */
+  constructor(state) {
+    super(state.doc); // The step count for which the current selection is valid.
+
+    this.curSelectionFor = 0; // Bitfield to track which aspects of the state were updated by
+    // this transaction.
+
+    this.updated = 0; // Object used to store metadata properties for the transaction.
+
+    this.meta = Object.create(null);
+    this.time = Date.now();
+    this.curSelection = state.selection;
+    this.storedMarks = state.storedMarks;
+  }
+  /**
+  The transaction's current selection. This defaults to the editor
+  selection [mapped](https://prosemirror.net/docs/ref/#state.Selection.map) through the steps in the
+  transaction, but can be overwritten with
+  [`setSelection`](https://prosemirror.net/docs/ref/#state.Transaction.setSelection).
+  */
+
+
+  get selection() {
+    if (this.curSelectionFor < this.steps.length) {
+      this.curSelection = this.curSelection.map(this.doc, this.mapping.slice(this.curSelectionFor));
+      this.curSelectionFor = this.steps.length;
+    }
+
+    return this.curSelection;
+  }
+  /**
+  Update the transaction's current selection. Will determine the
+  selection that the editor gets when the transaction is applied.
+  */
+
+
+  setSelection(selection) {
+    if (selection.$from.doc != this.doc) throw new RangeError("Selection passed to setSelection must point at the current document");
+    this.curSelection = selection;
+    this.curSelectionFor = this.steps.length;
+    this.updated = (this.updated | UPDATED_SEL) & ~UPDATED_MARKS;
+    this.storedMarks = null;
+    return this;
+  }
+  /**
+  Whether the selection was explicitly updated by this transaction.
+  */
+
+
+  get selectionSet() {
+    return (this.updated & UPDATED_SEL) > 0;
+  }
+  /**
+  Set the current stored marks.
+  */
+
+
+  setStoredMarks(marks) {
+    this.storedMarks = marks;
+    this.updated |= UPDATED_MARKS;
+    return this;
+  }
+  /**
+  Make sure the current stored marks or, if that is null, the marks
+  at the selection, match the given set of marks. Does nothing if
+  this is already the case.
+  */
+
+
+  ensureMarks(marks) {
+    if (!Mark.sameSet(this.storedMarks || this.selection.$from.marks(), marks)) this.setStoredMarks(marks);
+    return this;
+  }
+  /**
+  Add a mark to the set of stored marks.
+  */
+
+
+  addStoredMark(mark) {
+    return this.ensureMarks(mark.addToSet(this.storedMarks || this.selection.$head.marks()));
+  }
+  /**
+  Remove a mark or mark type from the set of stored marks.
+  */
+
+
+  removeStoredMark(mark) {
+    return this.ensureMarks(mark.removeFromSet(this.storedMarks || this.selection.$head.marks()));
+  }
+  /**
+  Whether the stored marks were explicitly set for this transaction.
+  */
+
+
+  get storedMarksSet() {
+    return (this.updated & UPDATED_MARKS) > 0;
+  }
+  /**
+  @internal
+  */
+
+
+  addStep(step, doc) {
+    super.addStep(step, doc);
+    this.updated = this.updated & ~UPDATED_MARKS;
+    this.storedMarks = null;
+  }
+  /**
+  Update the timestamp for the transaction.
+  */
+
+
+  setTime(time) {
+    this.time = time;
+    return this;
+  }
+  /**
+  Replace the current selection with the given slice.
+  */
+
+
+  replaceSelection(slice) {
+    this.selection.replace(this, slice);
+    return this;
+  }
+  /**
+  Replace the selection with the given node. When `inheritMarks` is
+  true and the content is inline, it inherits the marks from the
+  place where it is inserted.
+  */
+
+
+  replaceSelectionWith(node, inheritMarks = true) {
+    let selection = this.selection;
+    if (inheritMarks) node = node.mark(this.storedMarks || (selection.empty ? selection.$from.marks() : selection.$from.marksAcross(selection.$to) || Mark.none));
+    selection.replaceWith(this, node);
+    return this;
+  }
+  /**
+  Delete the selection.
+  */
+
+
+  deleteSelection() {
+    this.selection.replace(this);
+    return this;
+  }
+  /**
+  Replace the given range, or the selection if no range is given,
+  with a text node containing the given string.
+  */
+
+
+  insertText(text, from, to) {
+    let schema = this.doc.type.schema;
+
+    if (from == null) {
+      if (!text) return this.deleteSelection();
+      return this.replaceSelectionWith(schema.text(text), true);
+    } else {
+      if (to == null) to = from;
+      to = to == null ? from : to;
+      if (!text) return this.deleteRange(from, to);
+      let marks = this.storedMarks;
+
+      if (!marks) {
+        let $from = this.doc.resolve(from);
+        marks = to == from ? $from.marks() : $from.marksAcross(this.doc.resolve(to));
+      }
+
+      this.replaceRangeWith(from, to, schema.text(text, marks));
+      if (!this.selection.empty) this.setSelection(Selection.near(this.selection.$to));
+      return this;
+    }
+  }
+  /**
+  Store a metadata property in this transaction, keyed either by
+  name or by plugin.
+  */
+
+
+  setMeta(key, value) {
+    this.meta[typeof key == "string" ? key : key.key] = value;
+    return this;
+  }
+  /**
+  Retrieve a metadata property for a given name or plugin.
+  */
+
+
+  getMeta(key) {
+    return this.meta[typeof key == "string" ? key : key.key];
+  }
+  /**
+  Returns true if this transaction doesn't contain any metadata,
+  and can thus safely be extended.
+  */
+
+
+  get isGeneric() {
+    for (let _ in this.meta) return false;
+
+    return true;
+  }
+  /**
+  Indicate that the editor should scroll the selection into view
+  when updated to the state produced by this transaction.
+  */
+
+
+  scrollIntoView() {
+    this.updated |= UPDATED_SCROLL;
+    return this;
+  }
+  /**
+  True when this transaction has had `scrollIntoView` called on it.
+  */
+
+
+  get scrolledIntoView() {
+    return (this.updated & UPDATED_SCROLL) > 0;
+  }
+
+}
+
+function bind(f, self) {
+  return !self || !f ? f : f.bind(self);
+}
+
+class FieldDesc {
+  constructor(name, desc, self) {
+    this.name = name;
+    this.init = bind(desc.init, self);
+    this.apply = bind(desc.apply, self);
+  }
+
+}
+
+const baseFields = [new FieldDesc("doc", {
+  init(config) {
+    return config.doc || config.schema.topNodeType.createAndFill();
+  },
+
+  apply(tr) {
+    return tr.doc;
+  }
+
+}), new FieldDesc("selection", {
+  init(config, instance) {
+    return config.selection || Selection.atStart(instance.doc);
+  },
+
+  apply(tr) {
+    return tr.selection;
+  }
+
+}), new FieldDesc("storedMarks", {
+  init(config) {
+    return config.storedMarks || null;
+  },
+
+  apply(tr, _marks, _old, state) {
+    return state.selection.$cursor ? tr.storedMarks : null;
+  }
+
+}), new FieldDesc("scrollToSelection", {
+  init() {
+    return 0;
+  },
+
+  apply(tr, prev) {
+    return tr.scrolledIntoView ? prev + 1 : prev;
+  }
+
+})]; // Object wrapping the part of a state object that stays the same
+// across transactions. Stored in the state's `config` property.
+
+class Configuration {
+  constructor(schema, plugins) {
+    this.schema = schema;
+    this.plugins = [];
+    this.pluginsByKey = Object.create(null);
+    this.fields = baseFields.slice();
+    if (plugins) plugins.forEach(plugin => {
+      if (this.pluginsByKey[plugin.key]) throw new RangeError("Adding different instances of a keyed plugin (" + plugin.key + ")");
+      this.plugins.push(plugin);
+      this.pluginsByKey[plugin.key] = plugin;
+      if (plugin.spec.state) this.fields.push(new FieldDesc(plugin.key, plugin.spec.state, plugin));
+    });
+  }
+
+}
+/**
+The state of a ProseMirror editor is represented by an object of
+this type. A state is a persistent data structure—it isn't
+updated, but rather a new state value is computed from an old one
+using the [`apply`](https://prosemirror.net/docs/ref/#state.EditorState.apply) method.
+
+A state holds a number of built-in fields, and plugins can
+[define](https://prosemirror.net/docs/ref/#state.PluginSpec.state) additional fields.
+*/
+
+
+class EditorState {
+  /**
+  @internal
+  */
+  constructor(
+  /**
+  @internal
+  */
+  config) {
+    this.config = config;
+  }
+  /**
+  The schema of the state's document.
+  */
+
+
+  get schema() {
+    return this.config.schema;
+  }
+  /**
+  The plugins that are active in this state.
+  */
+
+
+  get plugins() {
+    return this.config.plugins;
+  }
+  /**
+  Apply the given transaction to produce a new state.
+  */
+
+
+  apply(tr) {
+    return this.applyTransaction(tr).state;
+  }
+  /**
+  @ignore
+  */
+
+
+  filterTransaction(tr, ignore = -1) {
+    for (let i = 0; i < this.config.plugins.length; i++) if (i != ignore) {
+      let plugin = this.config.plugins[i];
+      if (plugin.spec.filterTransaction && !plugin.spec.filterTransaction.call(plugin, tr, this)) return false;
+    }
+
+    return true;
+  }
+  /**
+  Verbose variant of [`apply`](https://prosemirror.net/docs/ref/#state.EditorState.apply) that
+  returns the precise transactions that were applied (which might
+  be influenced by the [transaction
+  hooks](https://prosemirror.net/docs/ref/#state.PluginSpec.filterTransaction) of
+  plugins) along with the new state.
+  */
+
+
+  applyTransaction(rootTr) {
+    if (!this.filterTransaction(rootTr)) return {
+      state: this,
+      transactions: []
+    };
+    let trs = [rootTr],
+        newState = this.applyInner(rootTr),
+        seen = null; // This loop repeatedly gives plugins a chance to respond to
+    // transactions as new transactions are added, making sure to only
+    // pass the transactions the plugin did not see before.
+
+    for (;;) {
+      let haveNew = false;
+
+      for (let i = 0; i < this.config.plugins.length; i++) {
+        let plugin = this.config.plugins[i];
+
+        if (plugin.spec.appendTransaction) {
+          let n = seen ? seen[i].n : 0,
+              oldState = seen ? seen[i].state : this;
+          let tr = n < trs.length && plugin.spec.appendTransaction.call(plugin, n ? trs.slice(n) : trs, oldState, newState);
+
+          if (tr && newState.filterTransaction(tr, i)) {
+            tr.setMeta("appendedTransaction", rootTr);
+
+            if (!seen) {
+              seen = [];
+
+              for (let j = 0; j < this.config.plugins.length; j++) seen.push(j < i ? {
+                state: newState,
+                n: trs.length
+              } : {
+                state: this,
+                n: 0
+              });
+            }
+
+            trs.push(tr);
+            newState = newState.applyInner(tr);
+            haveNew = true;
+          }
+
+          if (seen) seen[i] = {
+            state: newState,
+            n: trs.length
+          };
+        }
+      }
+
+      if (!haveNew) return {
+        state: newState,
+        transactions: trs
+      };
+    }
+  }
+  /**
+  @internal
+  */
+
+
+  applyInner(tr) {
+    if (!tr.before.eq(this.doc)) throw new RangeError("Applying a mismatched transaction");
+    let newInstance = new EditorState(this.config),
+        fields = this.config.fields;
+
+    for (let i = 0; i < fields.length; i++) {
+      let field = fields[i];
+      newInstance[field.name] = field.apply(tr, this[field.name], this, newInstance);
+    }
+
+    return newInstance;
+  }
+  /**
+  Start a [transaction](https://prosemirror.net/docs/ref/#state.Transaction) from this state.
+  */
+
+
+  get tr() {
+    return new Transaction(this);
+  }
+  /**
+  Create a new state.
+  */
+
+
+  static create(config) {
+    let $config = new Configuration(config.doc ? config.doc.type.schema : config.schema, config.plugins);
+    let instance = new EditorState($config);
+
+    for (let i = 0; i < $config.fields.length; i++) instance[$config.fields[i].name] = $config.fields[i].init(config, instance);
+
+    return instance;
+  }
+  /**
+  Create a new state based on this one, but with an adjusted set
+  of active plugins. State fields that exist in both sets of
+  plugins are kept unchanged. Those that no longer exist are
+  dropped, and those that are new are initialized using their
+  [`init`](https://prosemirror.net/docs/ref/#state.StateField.init) method, passing in the new
+  configuration object..
+  */
+
+
+  reconfigure(config) {
+    let $config = new Configuration(this.schema, config.plugins);
+    let fields = $config.fields,
+        instance = new EditorState($config);
+
+    for (let i = 0; i < fields.length; i++) {
+      let name = fields[i].name;
+      instance[name] = this.hasOwnProperty(name) ? this[name] : fields[i].init(config, instance);
+    }
+
+    return instance;
+  }
+  /**
+  Serialize this state to JSON. If you want to serialize the state
+  of plugins, pass an object mapping property names to use in the
+  resulting JSON object to plugin objects. The argument may also be
+  a string or number, in which case it is ignored, to support the
+  way `JSON.stringify` calls `toString` methods.
+  */
+
+
+  toJSON(pluginFields) {
+    let result = {
+      doc: this.doc.toJSON(),
+      selection: this.selection.toJSON()
+    };
+    if (this.storedMarks) result.storedMarks = this.storedMarks.map(m => m.toJSON());
+    if (pluginFields && typeof pluginFields == 'object') for (let prop in pluginFields) {
+      if (prop == "doc" || prop == "selection") throw new RangeError("The JSON fields `doc` and `selection` are reserved");
+      let plugin = pluginFields[prop],
+          state = plugin.spec.state;
+      if (state && state.toJSON) result[prop] = state.toJSON.call(plugin, this[plugin.key]);
+    }
+    return result;
+  }
+  /**
+  Deserialize a JSON representation of a state. `config` should
+  have at least a `schema` field, and should contain array of
+  plugins to initialize the state with. `pluginFields` can be used
+  to deserialize the state of plugins, by associating plugin
+  instances with the property names they use in the JSON object.
+  */
+
+
+  static fromJSON(config, json, pluginFields) {
+    if (!json) throw new RangeError("Invalid input for EditorState.fromJSON");
+    if (!config.schema) throw new RangeError("Required config field 'schema' missing");
+    let $config = new Configuration(config.schema, config.plugins);
+    let instance = new EditorState($config);
+    $config.fields.forEach(field => {
+      if (field.name == "doc") {
+        instance.doc = Node.fromJSON(config.schema, json.doc);
+      } else if (field.name == "selection") {
+        instance.selection = Selection.fromJSON(instance.doc, json.selection);
+      } else if (field.name == "storedMarks") {
+        if (json.storedMarks) instance.storedMarks = json.storedMarks.map(config.schema.markFromJSON);
+      } else {
+        if (pluginFields) for (let prop in pluginFields) {
+          let plugin = pluginFields[prop],
+              state = plugin.spec.state;
+
+          if (plugin.key == field.name && state && state.fromJSON && Object.prototype.hasOwnProperty.call(json, prop)) {
+            instance[field.name] = state.fromJSON.call(plugin, config, json[prop], instance);
+            return;
+          }
+        }
+        instance[field.name] = field.init(config, instance);
+      }
+    });
+    return instance;
+  }
+
+}
+
+function bindProps(obj, self, target) {
+  for (let prop in obj) {
+    let val = obj[prop];
+    if (val instanceof Function) val = val.bind(self);else if (prop == "handleDOMEvents") val = bindProps(val, self, {});
+    target[prop] = val;
+  }
+
+  return target;
+}
+/**
+Plugins bundle functionality that can be added to an editor.
+They are part of the [editor state](https://prosemirror.net/docs/ref/#state.EditorState) and
+may influence that state and the view that contains it.
+*/
+
+
+class Plugin {
+  /**
+  Create a plugin.
+  */
+  constructor(
+  /**
+  The plugin's [spec object](https://prosemirror.net/docs/ref/#state.PluginSpec).
+  */
+  spec) {
+    this.spec = spec;
+    /**
+    The [props](https://prosemirror.net/docs/ref/#view.EditorProps) exported by this plugin.
+    */
+
+    this.props = {};
+    if (spec.props) bindProps(spec.props, this, this.props);
+    this.key = spec.key ? spec.key.key : createKey("plugin");
+  }
+  /**
+  Extract the plugin's state field from an editor state.
+  */
+
+
+  getState(state) {
+    return state[this.key];
+  }
+
+}
+
+const keys = Object.create(null);
+
+function createKey(name) {
+  if (name in keys) return name + "$" + ++keys[name];
+  keys[name] = 0;
+  return name + "$";
+}
+/**
+A key is used to [tag](https://prosemirror.net/docs/ref/#state.PluginSpec.key) plugins in a way
+that makes it possible to find them, given an editor state.
+Assigning a key does mean only one plugin of that type can be
+active in a state.
+*/
+
+
+class PluginKey {
+  /**
+  Create a plugin key.
+  */
+  constructor(name = "key") {
+    this.key = createKey(name);
+  }
+  /**
+  Get the active plugin with this key, if any, from an editor
+  state.
+  */
+
+
+  get(state) {
+    return state.config.pluginsByKey[this.key];
+  }
+  /**
+  Get the plugin's state from an editor state.
+  */
+
+
+  getState(state) {
+    return state[this.key];
+  }
+
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-code-block/dist/tiptap-extension-code-block.esm.js
 
 
@@ -14439,8 +15607,8 @@ const CodeBlock = tiptap_core_esm.Node.create({
   addProseMirrorPlugins() {
     return [// this plugin creates a code block for pasted content from VS Code
     // we can also detect the copied code language
-    new dist/* Plugin */.Sy({
-      key: new dist/* PluginKey */.H$('codeBlockVSCodeHandler'),
+    new Plugin({
+      key: new PluginKey('codeBlockVSCodeHandler'),
       props: {
         handlePaste: (view, event) => {
           if (!event.clipboardData) {
@@ -14469,7 +15637,7 @@ const CodeBlock = tiptap_core_esm.Node.create({
             language
           })); // put cursor inside the newly created code block
 
-          tr.setSelection(dist/* TextSelection.near */.Bs.near(tr.doc.resolve(Math.max(0, tr.selection.from - 2)))); // add text to code block
+          tr.setSelection(TextSelection.near(tr.doc.resolve(Math.max(0, tr.selection.from - 2)))); // add text to code block
           // strip carriage return chars from text pasted as code
           // see: https://github.com/ProseMirror/prosemirror-view/commit/a50a6bcceb4ce52ac8fcc6162488d8875613aacd
 
@@ -14495,8 +15663,8 @@ const Document = tiptap_core_esm.Node.create({
   content: 'block+'
 });
  //# sourceMappingURL=tiptap-extension-document.esm.js.map
-// EXTERNAL MODULE: ./node_modules/prosemirror-transform/dist/index.js
-var prosemirror_transform_dist = __webpack_require__(38480);
+// EXTERNAL MODULE: ./node_modules/prosemirror-state/dist/index.js
+var prosemirror_state_dist = __webpack_require__(62463);
 ;// CONCATENATED MODULE: ./node_modules/prosemirror-dropcursor/dist/index.js
 
 
@@ -14512,7 +15680,7 @@ position, and should return a boolean.
 */
 
 function dropCursor(options = {}) {
-  return new dist/* Plugin */.Sy({
+  return new prosemirror_state_dist/* Plugin */.Sy({
     view(editorView) {
       return new DropCursorView(editorView, options);
     }
@@ -14688,8 +15856,6 @@ const Dropcursor = tiptap_core_esm.Extension.create({
  //# sourceMappingURL=tiptap-extension-dropcursor.esm.js.map
 // EXTERNAL MODULE: ./node_modules/prosemirror-keymap/dist/index.js + 1 modules
 var prosemirror_keymap_dist = __webpack_require__(13903);
-// EXTERNAL MODULE: ./node_modules/prosemirror-model/dist/index.js + 1 modules
-var prosemirror_model_dist = __webpack_require__(35917);
 // EXTERNAL MODULE: ./node_modules/prosemirror-view/dist/index.js
 var prosemirror_view_dist = __webpack_require__(43594);
 ;// CONCATENATED MODULE: ./node_modules/prosemirror-gapcursor/dist/index.js
@@ -14702,7 +15868,7 @@ Gap cursor selections are represented using this class. Its
 `$anchor` and `$head` properties both point at the cursor position.
 */
 
-class GapCursor extends dist/* Selection */.Y1 {
+class GapCursor extends prosemirror_state_dist/* Selection */.Y1 {
   /**
   Create a gap cursor.
   */
@@ -14712,11 +15878,11 @@ class GapCursor extends dist/* Selection */.Y1 {
 
   map(doc, mapping) {
     let $pos = doc.resolve(mapping.map(this.head));
-    return GapCursor.valid($pos) ? new GapCursor($pos) : dist/* Selection.near */.Y1.near($pos);
+    return GapCursor.valid($pos) ? new GapCursor($pos) : prosemirror_state_dist/* Selection.near */.Y1.near($pos);
   }
 
   content() {
-    return prosemirror_model_dist/* Slice.empty */.p2.empty;
+    return dist/* Slice.empty */.p2.empty;
   }
 
   eq(other) {
@@ -14790,7 +15956,7 @@ class GapCursor extends dist/* Selection */.Y1 {
         let inside = dir > 0 ? next.firstChild : next.lastChild;
 
         if (!inside) {
-          if (next.isAtom && !next.isText && !dist/* NodeSelection.isSelectable */.qv.isSelectable(next)) {
+          if (next.isAtom && !next.isText && !prosemirror_state_dist/* NodeSelection.isSelectable */.qv.isSelectable(next)) {
             $pos = $pos.doc.resolve(pos + next.nodeSize * dir);
             mustMove = false;
             continue search;
@@ -14813,7 +15979,7 @@ class GapCursor extends dist/* Selection */.Y1 {
 
 GapCursor.prototype.visible = false;
 GapCursor.findFrom = GapCursor.findGapCursorFrom;
-dist/* Selection.jsonID */.Y1.jsonID("gapcursor", GapCursor);
+prosemirror_state_dist/* Selection.jsonID */.Y1.jsonID("gapcursor", GapCursor);
 
 class GapBookmark {
   constructor(pos) {
@@ -14826,7 +15992,7 @@ class GapBookmark {
 
   resolve(doc) {
     let $pos = doc.resolve(this.pos);
-    return GapCursor.valid($pos) ? new GapCursor($pos) : dist/* Selection.near */.Y1.near($pos);
+    return GapCursor.valid($pos) ? new GapCursor($pos) : prosemirror_state_dist/* Selection.near */.Y1.near($pos);
   }
 
 }
@@ -14882,7 +16048,7 @@ styles to make it visible.
 
 
 function gapCursor() {
-  return new dist/* Plugin */.Sy({
+  return new prosemirror_state_dist/* Plugin */.Sy({
     props: {
       decorations: drawGapCursor,
 
@@ -14913,7 +16079,7 @@ function arrow(axis, dir) {
     let $start = dir > 0 ? sel.$to : sel.$from,
         mustMove = sel.empty;
 
-    if (sel instanceof dist/* TextSelection */.Bs) {
+    if (sel instanceof prosemirror_state_dist/* TextSelection */.Bs) {
       if (!view.endOfTextblock(dirStr) || $start.depth == 0) return false;
       mustMove = false;
       $start = state.doc.resolve(dir > 0 ? $start.after() : $start.before());
@@ -14934,7 +16100,7 @@ function handleClick(view, pos, event) {
     left: event.clientX,
     top: event.clientY
   });
-  if (clickPos && clickPos.inside > -1 && dist/* NodeSelection.isSelectable */.qv.isSelectable(view.state.doc.nodeAt(clickPos.inside))) return false;
+  if (clickPos && clickPos.inside > -1 && prosemirror_state_dist/* NodeSelection.isSelectable */.qv.isSelectable(view.state.doc.nodeAt(clickPos.inside))) return false;
   view.dispatch(view.state.tr.setSelection(new GapCursor($pos)));
   return true;
 } // This is a hack that, when a composition starts while a gap cursor
@@ -14950,12 +16116,12 @@ function beforeinput(view, event) {
   } = view.state.selection;
   let insert = $from.parent.contentMatchAt($from.index()).findWrapping(view.state.schema.nodes.text);
   if (!insert) return false;
-  let frag = prosemirror_model_dist/* Fragment.empty */.HY.empty;
+  let frag = dist/* Fragment.empty */.HY.empty;
 
-  for (let i = insert.length - 1; i >= 0; i--) frag = prosemirror_model_dist/* Fragment.from */.HY.from(insert[i].createAndFill(null, frag));
+  for (let i = insert.length - 1; i >= 0; i--) frag = dist/* Fragment.from */.HY.from(insert[i].createAndFill(null, frag));
 
-  let tr = view.state.tr.replace($from.pos, $from.pos, new prosemirror_model_dist/* Slice */.p2(frag, 0, 0));
-  tr.setSelection(dist/* TextSelection.near */.Bs.near(tr.doc.resolve($from.pos + 1)));
+  let tr = view.state.tr.replace($from.pos, $from.pos, new dist/* Slice */.p2(frag, 0, 0));
+  tr.setSelection(prosemirror_state_dist/* TextSelection.near */.Bs.near(tr.doc.resolve($from.pos + 1)));
   view.dispatch(tr);
   return false;
 }
@@ -15818,8 +16984,8 @@ function closeHistory(tr) {
   return tr.setMeta(closeHistoryKey, true);
 }
 
-const historyKey = new dist/* PluginKey */.H$("history");
-const closeHistoryKey = new dist/* PluginKey */.H$("closeHistory");
+const historyKey = new prosemirror_state_dist/* PluginKey */.H$("history");
+const closeHistoryKey = new prosemirror_state_dist/* PluginKey */.H$("closeHistory");
 /**
 Returns a plugin that enables the undo history for an editor. The
 plugin will track undo and redo stacks, which can be used with the
@@ -15835,7 +17001,7 @@ function dist_history(config = {}) {
     depth: config.depth || 100,
     newGroupDelay: config.newGroupDelay || 500
   };
-  return new dist/* Plugin */.Sy({
+  return new prosemirror_state_dist/* Plugin */.Sy({
     key: historyKey,
     state: {
       init() {
@@ -15951,6 +17117,1267 @@ const History = tiptap_core_esm.Extension.create({
 
 });
  //# sourceMappingURL=tiptap-extension-history.esm.js.map
+;// CONCATENATED MODULE: prosemirror-state
+
+
+const prosemirror_state_classesById = Object.create(null);
+/**
+Superclass for editor selections. Every selection type should
+extend this. Should not be instantiated directly.
+*/
+
+class prosemirror_state_Selection {
+  /**
+  Initialize a selection with the head and anchor and ranges. If no
+  ranges are given, constructs a single range across `$anchor` and
+  `$head`.
+  */
+  constructor(
+  /**
+  The resolved anchor of the selection (the side that stays in
+  place when the selection is modified).
+  */
+  $anchor,
+  /**
+  The resolved head of the selection (the side that moves when
+  the selection is modified).
+  */
+  $head, ranges) {
+    this.$anchor = $anchor;
+    this.$head = $head;
+    this.ranges = ranges || [new prosemirror_state_SelectionRange($anchor.min($head), $anchor.max($head))];
+  }
+  /**
+  The selection's anchor, as an unresolved position.
+  */
+
+
+  get anchor() {
+    return this.$anchor.pos;
+  }
+  /**
+  The selection's head.
+  */
+
+
+  get head() {
+    return this.$head.pos;
+  }
+  /**
+  The lower bound of the selection's main range.
+  */
+
+
+  get from() {
+    return this.$from.pos;
+  }
+  /**
+  The upper bound of the selection's main range.
+  */
+
+
+  get to() {
+    return this.$to.pos;
+  }
+  /**
+  The resolved lower  bound of the selection's main range.
+  */
+
+
+  get $from() {
+    return this.ranges[0].$from;
+  }
+  /**
+  The resolved upper bound of the selection's main range.
+  */
+
+
+  get $to() {
+    return this.ranges[0].$to;
+  }
+  /**
+  Indicates whether the selection contains any content.
+  */
+
+
+  get empty() {
+    let ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) if (ranges[i].$from.pos != ranges[i].$to.pos) return false;
+
+    return true;
+  }
+  /**
+  Get the content of this selection as a slice.
+  */
+
+
+  content() {
+    return this.$from.doc.slice(this.from, this.to, true);
+  }
+  /**
+  Replace the selection with a slice or, if no slice is given,
+  delete the selection. Will append to the given transaction.
+  */
+
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    // Put the new selection at the position after the inserted
+    // content. When that ended in an inline node, search backwards,
+    // to get the position after that node. If not, search forward.
+    let lastNode = content.content.lastChild,
+        lastParent = null;
+
+    for (let i = 0; i < content.openEnd; i++) {
+      lastParent = lastNode;
+      lastNode = lastNode.lastChild;
+    }
+
+    let mapFrom = tr.steps.length,
+        ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) {
+      let {
+        $from,
+        $to
+      } = ranges[i],
+          mapping = tr.mapping.slice(mapFrom);
+      tr.replaceRange(mapping.map($from.pos), mapping.map($to.pos), i ? dist/* Slice.empty */.p2.empty : content);
+      if (i == 0) prosemirror_state_selectionToInsertionEnd(tr, mapFrom, (lastNode ? lastNode.isInline : lastParent && lastParent.isTextblock) ? -1 : 1);
+    }
+  }
+  /**
+  Replace the selection with the given node, appending the changes
+  to the given transaction.
+  */
+
+
+  replaceWith(tr, node) {
+    let mapFrom = tr.steps.length,
+        ranges = this.ranges;
+
+    for (let i = 0; i < ranges.length; i++) {
+      let {
+        $from,
+        $to
+      } = ranges[i],
+          mapping = tr.mapping.slice(mapFrom);
+      let from = mapping.map($from.pos),
+          to = mapping.map($to.pos);
+
+      if (i) {
+        tr.deleteRange(from, to);
+      } else {
+        tr.replaceRangeWith(from, to, node);
+        prosemirror_state_selectionToInsertionEnd(tr, mapFrom, node.isInline ? -1 : 1);
+      }
+    }
+  }
+  /**
+  Find a valid cursor or leaf node selection starting at the given
+  position and searching back if `dir` is negative, and forward if
+  positive. When `textOnly` is true, only consider cursor
+  selections. Will return null when no valid selection position is
+  found.
+  */
+
+
+  static findFrom($pos, dir, textOnly = false) {
+    let inner = $pos.parent.inlineContent ? new prosemirror_state_TextSelection($pos) : prosemirror_state_findSelectionIn($pos.node(0), $pos.parent, $pos.pos, $pos.index(), dir, textOnly);
+    if (inner) return inner;
+
+    for (let depth = $pos.depth - 1; depth >= 0; depth--) {
+      let found = dir < 0 ? prosemirror_state_findSelectionIn($pos.node(0), $pos.node(depth), $pos.before(depth + 1), $pos.index(depth), dir, textOnly) : prosemirror_state_findSelectionIn($pos.node(0), $pos.node(depth), $pos.after(depth + 1), $pos.index(depth) + 1, dir, textOnly);
+      if (found) return found;
+    }
+
+    return null;
+  }
+  /**
+  Find a valid cursor or leaf node selection near the given
+  position. Searches forward first by default, but if `bias` is
+  negative, it will search backwards first.
+  */
+
+
+  static near($pos, bias = 1) {
+    return this.findFrom($pos, bias) || this.findFrom($pos, -bias) || new prosemirror_state_AllSelection($pos.node(0));
+  }
+  /**
+  Find the cursor or leaf node selection closest to the start of
+  the given document. Will return an
+  [`AllSelection`](https://prosemirror.net/docs/ref/#state.AllSelection) if no valid position
+  exists.
+  */
+
+
+  static atStart(doc) {
+    return prosemirror_state_findSelectionIn(doc, doc, 0, 0, 1) || new prosemirror_state_AllSelection(doc);
+  }
+  /**
+  Find the cursor or leaf node selection closest to the end of the
+  given document.
+  */
+
+
+  static atEnd(doc) {
+    return prosemirror_state_findSelectionIn(doc, doc, doc.content.size, doc.childCount, -1) || new prosemirror_state_AllSelection(doc);
+  }
+  /**
+  Deserialize the JSON representation of a selection. Must be
+  implemented for custom classes (as a static class method).
+  */
+
+
+  static fromJSON(doc, json) {
+    if (!json || !json.type) throw new RangeError("Invalid input for Selection.fromJSON");
+    let cls = prosemirror_state_classesById[json.type];
+    if (!cls) throw new RangeError(`No selection type ${json.type} defined`);
+    return cls.fromJSON(doc, json);
+  }
+  /**
+  To be able to deserialize selections from JSON, custom selection
+  classes must register themselves with an ID string, so that they
+  can be disambiguated. Try to pick something that's unlikely to
+  clash with classes from other modules.
+  */
+
+
+  static jsonID(id, selectionClass) {
+    if (id in prosemirror_state_classesById) throw new RangeError("Duplicate use of selection JSON ID " + id);
+    prosemirror_state_classesById[id] = selectionClass;
+    selectionClass.prototype.jsonID = id;
+    return selectionClass;
+  }
+  /**
+  Get a [bookmark](https://prosemirror.net/docs/ref/#state.SelectionBookmark) for this selection,
+  which is a value that can be mapped without having access to a
+  current document, and later resolved to a real selection for a
+  given document again. (This is used mostly by the history to
+  track and restore old selections.) The default implementation of
+  this method just converts the selection to a text selection and
+  returns the bookmark for that.
+  */
+
+
+  getBookmark() {
+    return prosemirror_state_TextSelection.between(this.$anchor, this.$head).getBookmark();
+  }
+
+}
+
+prosemirror_state_Selection.prototype.visible = true;
+/**
+Represents a selected range in a document.
+*/
+
+class prosemirror_state_SelectionRange {
+  /**
+  Create a range.
+  */
+  constructor(
+  /**
+  The lower bound of the range.
+  */
+  $from,
+  /**
+  The upper bound of the range.
+  */
+  $to) {
+    this.$from = $from;
+    this.$to = $to;
+  }
+
+}
+
+let prosemirror_state_warnedAboutTextSelection = false;
+
+function prosemirror_state_checkTextSelection($pos) {
+  if (!prosemirror_state_warnedAboutTextSelection && !$pos.parent.inlineContent) {
+    prosemirror_state_warnedAboutTextSelection = true;
+    console["warn"]("TextSelection endpoint not pointing into a node with inline content (" + $pos.parent.type.name + ")");
+  }
+}
+/**
+A text selection represents a classical editor selection, with a
+head (the moving side) and anchor (immobile side), both of which
+point into textblock nodes. It can be empty (a regular cursor
+position).
+*/
+
+
+class prosemirror_state_TextSelection extends prosemirror_state_Selection {
+  /**
+  Construct a text selection between the given points.
+  */
+  constructor($anchor, $head = $anchor) {
+    prosemirror_state_checkTextSelection($anchor);
+    prosemirror_state_checkTextSelection($head);
+    super($anchor, $head);
+  }
+  /**
+  Returns a resolved position if this is a cursor selection (an
+  empty text selection), and null otherwise.
+  */
+
+
+  get $cursor() {
+    return this.$anchor.pos == this.$head.pos ? this.$head : null;
+  }
+
+  map(doc, mapping) {
+    let $head = doc.resolve(mapping.map(this.head));
+    if (!$head.parent.inlineContent) return prosemirror_state_Selection.near($head);
+    let $anchor = doc.resolve(mapping.map(this.anchor));
+    return new prosemirror_state_TextSelection($anchor.parent.inlineContent ? $anchor : $head, $head);
+  }
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    super.replace(tr, content);
+
+    if (content == dist/* Slice.empty */.p2.empty) {
+      let marks = this.$from.marksAcross(this.$to);
+      if (marks) tr.ensureMarks(marks);
+    }
+  }
+
+  eq(other) {
+    return other instanceof prosemirror_state_TextSelection && other.anchor == this.anchor && other.head == this.head;
+  }
+
+  getBookmark() {
+    return new prosemirror_state_TextBookmark(this.anchor, this.head);
+  }
+
+  toJSON() {
+    return {
+      type: "text",
+      anchor: this.anchor,
+      head: this.head
+    };
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc, json) {
+    if (typeof json.anchor != "number" || typeof json.head != "number") throw new RangeError("Invalid input for TextSelection.fromJSON");
+    return new prosemirror_state_TextSelection(doc.resolve(json.anchor), doc.resolve(json.head));
+  }
+  /**
+  Create a text selection from non-resolved positions.
+  */
+
+
+  static create(doc, anchor, head = anchor) {
+    let $anchor = doc.resolve(anchor);
+    return new this($anchor, head == anchor ? $anchor : doc.resolve(head));
+  }
+  /**
+  Return a text selection that spans the given positions or, if
+  they aren't text positions, find a text selection near them.
+  `bias` determines whether the method searches forward (default)
+  or backwards (negative number) first. Will fall back to calling
+  [`Selection.near`](https://prosemirror.net/docs/ref/#state.Selection^near) when the document
+  doesn't contain a valid text position.
+  */
+
+
+  static between($anchor, $head, bias) {
+    let dPos = $anchor.pos - $head.pos;
+    if (!bias || dPos) bias = dPos >= 0 ? 1 : -1;
+
+    if (!$head.parent.inlineContent) {
+      let found = prosemirror_state_Selection.findFrom($head, bias, true) || prosemirror_state_Selection.findFrom($head, -bias, true);
+      if (found) $head = found.$head;else return prosemirror_state_Selection.near($head, bias);
+    }
+
+    if (!$anchor.parent.inlineContent) {
+      if (dPos == 0) {
+        $anchor = $head;
+      } else {
+        $anchor = (prosemirror_state_Selection.findFrom($anchor, -bias, true) || prosemirror_state_Selection.findFrom($anchor, bias, true)).$anchor;
+        if ($anchor.pos < $head.pos != dPos < 0) $anchor = $head;
+      }
+    }
+
+    return new prosemirror_state_TextSelection($anchor, $head);
+  }
+
+}
+
+prosemirror_state_Selection.jsonID("text", prosemirror_state_TextSelection);
+
+class prosemirror_state_TextBookmark {
+  constructor(anchor, head) {
+    this.anchor = anchor;
+    this.head = head;
+  }
+
+  map(mapping) {
+    return new prosemirror_state_TextBookmark(mapping.map(this.anchor), mapping.map(this.head));
+  }
+
+  resolve(doc) {
+    return prosemirror_state_TextSelection.between(doc.resolve(this.anchor), doc.resolve(this.head));
+  }
+
+}
+/**
+A node selection is a selection that points at a single node. All
+nodes marked [selectable](https://prosemirror.net/docs/ref/#model.NodeSpec.selectable) can be the
+target of a node selection. In such a selection, `from` and `to`
+point directly before and after the selected node, `anchor` equals
+`from`, and `head` equals `to`..
+*/
+
+
+class prosemirror_state_NodeSelection extends prosemirror_state_Selection {
+  /**
+  Create a node selection. Does not verify the validity of its
+  argument.
+  */
+  constructor($pos) {
+    let node = $pos.nodeAfter;
+    let $end = $pos.node(0).resolve($pos.pos + node.nodeSize);
+    super($pos, $end);
+    this.node = node;
+  }
+
+  map(doc, mapping) {
+    let {
+      deleted,
+      pos
+    } = mapping.mapResult(this.anchor);
+    let $pos = doc.resolve(pos);
+    if (deleted) return prosemirror_state_Selection.near($pos);
+    return new prosemirror_state_NodeSelection($pos);
+  }
+
+  content() {
+    return new dist/* Slice */.p2(dist/* Fragment.from */.HY.from(this.node), 0, 0);
+  }
+
+  eq(other) {
+    return other instanceof prosemirror_state_NodeSelection && other.anchor == this.anchor;
+  }
+
+  toJSON() {
+    return {
+      type: "node",
+      anchor: this.anchor
+    };
+  }
+
+  getBookmark() {
+    return new prosemirror_state_NodeBookmark(this.anchor);
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc, json) {
+    if (typeof json.anchor != "number") throw new RangeError("Invalid input for NodeSelection.fromJSON");
+    return new prosemirror_state_NodeSelection(doc.resolve(json.anchor));
+  }
+  /**
+  Create a node selection from non-resolved positions.
+  */
+
+
+  static create(doc, from) {
+    return new prosemirror_state_NodeSelection(doc.resolve(from));
+  }
+  /**
+  Determines whether the given node may be selected as a node
+  selection.
+  */
+
+
+  static isSelectable(node) {
+    return !node.isText && node.type.spec.selectable !== false;
+  }
+
+}
+
+prosemirror_state_NodeSelection.prototype.visible = false;
+prosemirror_state_Selection.jsonID("node", prosemirror_state_NodeSelection);
+
+class prosemirror_state_NodeBookmark {
+  constructor(anchor) {
+    this.anchor = anchor;
+  }
+
+  map(mapping) {
+    let {
+      deleted,
+      pos
+    } = mapping.mapResult(this.anchor);
+    return deleted ? new prosemirror_state_TextBookmark(pos, pos) : new prosemirror_state_NodeBookmark(pos);
+  }
+
+  resolve(doc) {
+    let $pos = doc.resolve(this.anchor),
+        node = $pos.nodeAfter;
+    if (node && prosemirror_state_NodeSelection.isSelectable(node)) return new prosemirror_state_NodeSelection($pos);
+    return prosemirror_state_Selection.near($pos);
+  }
+
+}
+/**
+A selection type that represents selecting the whole document
+(which can not necessarily be expressed with a text selection, when
+there are for example leaf block nodes at the start or end of the
+document).
+*/
+
+
+class prosemirror_state_AllSelection extends prosemirror_state_Selection {
+  /**
+  Create an all-selection over the given document.
+  */
+  constructor(doc) {
+    super(doc.resolve(0), doc.resolve(doc.content.size));
+  }
+
+  replace(tr, content = dist/* Slice.empty */.p2.empty) {
+    if (content == dist/* Slice.empty */.p2.empty) {
+      tr.delete(0, tr.doc.content.size);
+      let sel = prosemirror_state_Selection.atStart(tr.doc);
+      if (!sel.eq(tr.selection)) tr.setSelection(sel);
+    } else {
+      super.replace(tr, content);
+    }
+  }
+
+  toJSON() {
+    return {
+      type: "all"
+    };
+  }
+  /**
+  @internal
+  */
+
+
+  static fromJSON(doc) {
+    return new prosemirror_state_AllSelection(doc);
+  }
+
+  map(doc) {
+    return new prosemirror_state_AllSelection(doc);
+  }
+
+  eq(other) {
+    return other instanceof prosemirror_state_AllSelection;
+  }
+
+  getBookmark() {
+    return prosemirror_state_AllBookmark;
+  }
+
+}
+
+prosemirror_state_Selection.jsonID("all", prosemirror_state_AllSelection);
+const prosemirror_state_AllBookmark = {
+  map() {
+    return this;
+  },
+
+  resolve(doc) {
+    return new prosemirror_state_AllSelection(doc);
+  }
+
+}; // FIXME we'll need some awareness of text direction when scanning for selections
+// Try to find a selection inside the given node. `pos` points at the
+// position where the search starts. When `text` is true, only return
+// text selections.
+
+function prosemirror_state_findSelectionIn(doc, node, pos, index, dir, text = false) {
+  if (node.inlineContent) return prosemirror_state_TextSelection.create(doc, pos);
+
+  for (let i = index - (dir > 0 ? 0 : 1); dir > 0 ? i < node.childCount : i >= 0; i += dir) {
+    let child = node.child(i);
+
+    if (!child.isAtom) {
+      let inner = prosemirror_state_findSelectionIn(doc, child, pos + dir, dir < 0 ? child.childCount : 0, dir, text);
+      if (inner) return inner;
+    } else if (!text && prosemirror_state_NodeSelection.isSelectable(child)) {
+      return prosemirror_state_NodeSelection.create(doc, pos - (dir < 0 ? child.nodeSize : 0));
+    }
+
+    pos += child.nodeSize * dir;
+  }
+
+  return null;
+}
+
+function prosemirror_state_selectionToInsertionEnd(tr, startLen, bias) {
+  let last = tr.steps.length - 1;
+  if (last < startLen) return;
+  let step = tr.steps[last];
+  if (!(step instanceof prosemirror_transform_dist/* ReplaceStep */.Pu || step instanceof prosemirror_transform_dist/* ReplaceAroundStep */.FC)) return;
+  let map = tr.mapping.maps[last],
+      end;
+  map.forEach((_from, _to, _newFrom, newTo) => {
+    if (end == null) end = newTo;
+  });
+  tr.setSelection(prosemirror_state_Selection.near(tr.doc.resolve(end), bias));
+}
+
+const prosemirror_state_UPDATED_SEL = 1,
+      prosemirror_state_UPDATED_MARKS = 2,
+      prosemirror_state_UPDATED_SCROLL = 4;
+/**
+An editor state transaction, which can be applied to a state to
+create an updated state. Use
+[`EditorState.tr`](https://prosemirror.net/docs/ref/#state.EditorState.tr) to create an instance.
+
+Transactions track changes to the document (they are a subclass of
+[`Transform`](https://prosemirror.net/docs/ref/#transform.Transform)), but also other state changes,
+like selection updates and adjustments of the set of [stored
+marks](https://prosemirror.net/docs/ref/#state.EditorState.storedMarks). In addition, you can store
+metadata properties in a transaction, which are extra pieces of
+information that client code or plugins can use to describe what a
+transaction represents, so that they can update their [own
+state](https://prosemirror.net/docs/ref/#state.StateField) accordingly.
+
+The [editor view](https://prosemirror.net/docs/ref/#view.EditorView) uses a few metadata properties:
+it will attach a property `"pointer"` with the value `true` to
+selection transactions directly caused by mouse or touch input, and
+a `"uiEvent"` property of that may be `"paste"`, `"cut"`, or `"drop"`.
+*/
+
+class prosemirror_state_Transaction extends (/* unused pure expression or super */ null && (Transform)) {
+  /**
+  @internal
+  */
+  constructor(state) {
+    super(state.doc); // The step count for which the current selection is valid.
+
+    this.curSelectionFor = 0; // Bitfield to track which aspects of the state were updated by
+    // this transaction.
+
+    this.updated = 0; // Object used to store metadata properties for the transaction.
+
+    this.meta = Object.create(null);
+    this.time = Date.now();
+    this.curSelection = state.selection;
+    this.storedMarks = state.storedMarks;
+  }
+  /**
+  The transaction's current selection. This defaults to the editor
+  selection [mapped](https://prosemirror.net/docs/ref/#state.Selection.map) through the steps in the
+  transaction, but can be overwritten with
+  [`setSelection`](https://prosemirror.net/docs/ref/#state.Transaction.setSelection).
+  */
+
+
+  get selection() {
+    if (this.curSelectionFor < this.steps.length) {
+      this.curSelection = this.curSelection.map(this.doc, this.mapping.slice(this.curSelectionFor));
+      this.curSelectionFor = this.steps.length;
+    }
+
+    return this.curSelection;
+  }
+  /**
+  Update the transaction's current selection. Will determine the
+  selection that the editor gets when the transaction is applied.
+  */
+
+
+  setSelection(selection) {
+    if (selection.$from.doc != this.doc) throw new RangeError("Selection passed to setSelection must point at the current document");
+    this.curSelection = selection;
+    this.curSelectionFor = this.steps.length;
+    this.updated = (this.updated | prosemirror_state_UPDATED_SEL) & ~prosemirror_state_UPDATED_MARKS;
+    this.storedMarks = null;
+    return this;
+  }
+  /**
+  Whether the selection was explicitly updated by this transaction.
+  */
+
+
+  get selectionSet() {
+    return (this.updated & prosemirror_state_UPDATED_SEL) > 0;
+  }
+  /**
+  Set the current stored marks.
+  */
+
+
+  setStoredMarks(marks) {
+    this.storedMarks = marks;
+    this.updated |= prosemirror_state_UPDATED_MARKS;
+    return this;
+  }
+  /**
+  Make sure the current stored marks or, if that is null, the marks
+  at the selection, match the given set of marks. Does nothing if
+  this is already the case.
+  */
+
+
+  ensureMarks(marks) {
+    if (!Mark.sameSet(this.storedMarks || this.selection.$from.marks(), marks)) this.setStoredMarks(marks);
+    return this;
+  }
+  /**
+  Add a mark to the set of stored marks.
+  */
+
+
+  addStoredMark(mark) {
+    return this.ensureMarks(mark.addToSet(this.storedMarks || this.selection.$head.marks()));
+  }
+  /**
+  Remove a mark or mark type from the set of stored marks.
+  */
+
+
+  removeStoredMark(mark) {
+    return this.ensureMarks(mark.removeFromSet(this.storedMarks || this.selection.$head.marks()));
+  }
+  /**
+  Whether the stored marks were explicitly set for this transaction.
+  */
+
+
+  get storedMarksSet() {
+    return (this.updated & prosemirror_state_UPDATED_MARKS) > 0;
+  }
+  /**
+  @internal
+  */
+
+
+  addStep(step, doc) {
+    super.addStep(step, doc);
+    this.updated = this.updated & ~prosemirror_state_UPDATED_MARKS;
+    this.storedMarks = null;
+  }
+  /**
+  Update the timestamp for the transaction.
+  */
+
+
+  setTime(time) {
+    this.time = time;
+    return this;
+  }
+  /**
+  Replace the current selection with the given slice.
+  */
+
+
+  replaceSelection(slice) {
+    this.selection.replace(this, slice);
+    return this;
+  }
+  /**
+  Replace the selection with the given node. When `inheritMarks` is
+  true and the content is inline, it inherits the marks from the
+  place where it is inserted.
+  */
+
+
+  replaceSelectionWith(node, inheritMarks = true) {
+    let selection = this.selection;
+    if (inheritMarks) node = node.mark(this.storedMarks || (selection.empty ? selection.$from.marks() : selection.$from.marksAcross(selection.$to) || Mark.none));
+    selection.replaceWith(this, node);
+    return this;
+  }
+  /**
+  Delete the selection.
+  */
+
+
+  deleteSelection() {
+    this.selection.replace(this);
+    return this;
+  }
+  /**
+  Replace the given range, or the selection if no range is given,
+  with a text node containing the given string.
+  */
+
+
+  insertText(text, from, to) {
+    let schema = this.doc.type.schema;
+
+    if (from == null) {
+      if (!text) return this.deleteSelection();
+      return this.replaceSelectionWith(schema.text(text), true);
+    } else {
+      if (to == null) to = from;
+      to = to == null ? from : to;
+      if (!text) return this.deleteRange(from, to);
+      let marks = this.storedMarks;
+
+      if (!marks) {
+        let $from = this.doc.resolve(from);
+        marks = to == from ? $from.marks() : $from.marksAcross(this.doc.resolve(to));
+      }
+
+      this.replaceRangeWith(from, to, schema.text(text, marks));
+      if (!this.selection.empty) this.setSelection(prosemirror_state_Selection.near(this.selection.$to));
+      return this;
+    }
+  }
+  /**
+  Store a metadata property in this transaction, keyed either by
+  name or by plugin.
+  */
+
+
+  setMeta(key, value) {
+    this.meta[typeof key == "string" ? key : key.key] = value;
+    return this;
+  }
+  /**
+  Retrieve a metadata property for a given name or plugin.
+  */
+
+
+  getMeta(key) {
+    return this.meta[typeof key == "string" ? key : key.key];
+  }
+  /**
+  Returns true if this transaction doesn't contain any metadata,
+  and can thus safely be extended.
+  */
+
+
+  get isGeneric() {
+    for (let _ in this.meta) return false;
+
+    return true;
+  }
+  /**
+  Indicate that the editor should scroll the selection into view
+  when updated to the state produced by this transaction.
+  */
+
+
+  scrollIntoView() {
+    this.updated |= prosemirror_state_UPDATED_SCROLL;
+    return this;
+  }
+  /**
+  True when this transaction has had `scrollIntoView` called on it.
+  */
+
+
+  get scrolledIntoView() {
+    return (this.updated & prosemirror_state_UPDATED_SCROLL) > 0;
+  }
+
+}
+
+function prosemirror_state_bind(f, self) {
+  return !self || !f ? f : f.bind(self);
+}
+
+class prosemirror_state_FieldDesc {
+  constructor(name, desc, self) {
+    this.name = name;
+    this.init = prosemirror_state_bind(desc.init, self);
+    this.apply = prosemirror_state_bind(desc.apply, self);
+  }
+
+}
+
+const prosemirror_state_baseFields = [new prosemirror_state_FieldDesc("doc", {
+  init(config) {
+    return config.doc || config.schema.topNodeType.createAndFill();
+  },
+
+  apply(tr) {
+    return tr.doc;
+  }
+
+}), new prosemirror_state_FieldDesc("selection", {
+  init(config, instance) {
+    return config.selection || prosemirror_state_Selection.atStart(instance.doc);
+  },
+
+  apply(tr) {
+    return tr.selection;
+  }
+
+}), new prosemirror_state_FieldDesc("storedMarks", {
+  init(config) {
+    return config.storedMarks || null;
+  },
+
+  apply(tr, _marks, _old, state) {
+    return state.selection.$cursor ? tr.storedMarks : null;
+  }
+
+}), new prosemirror_state_FieldDesc("scrollToSelection", {
+  init() {
+    return 0;
+  },
+
+  apply(tr, prev) {
+    return tr.scrolledIntoView ? prev + 1 : prev;
+  }
+
+})]; // Object wrapping the part of a state object that stays the same
+// across transactions. Stored in the state's `config` property.
+
+class prosemirror_state_Configuration {
+  constructor(schema, plugins) {
+    this.schema = schema;
+    this.plugins = [];
+    this.pluginsByKey = Object.create(null);
+    this.fields = prosemirror_state_baseFields.slice();
+    if (plugins) plugins.forEach(plugin => {
+      if (this.pluginsByKey[plugin.key]) throw new RangeError("Adding different instances of a keyed plugin (" + plugin.key + ")");
+      this.plugins.push(plugin);
+      this.pluginsByKey[plugin.key] = plugin;
+      if (plugin.spec.state) this.fields.push(new prosemirror_state_FieldDesc(plugin.key, plugin.spec.state, plugin));
+    });
+  }
+
+}
+/**
+The state of a ProseMirror editor is represented by an object of
+this type. A state is a persistent data structure—it isn't
+updated, but rather a new state value is computed from an old one
+using the [`apply`](https://prosemirror.net/docs/ref/#state.EditorState.apply) method.
+
+A state holds a number of built-in fields, and plugins can
+[define](https://prosemirror.net/docs/ref/#state.PluginSpec.state) additional fields.
+*/
+
+
+class prosemirror_state_EditorState {
+  /**
+  @internal
+  */
+  constructor(
+  /**
+  @internal
+  */
+  config) {
+    this.config = config;
+  }
+  /**
+  The schema of the state's document.
+  */
+
+
+  get schema() {
+    return this.config.schema;
+  }
+  /**
+  The plugins that are active in this state.
+  */
+
+
+  get plugins() {
+    return this.config.plugins;
+  }
+  /**
+  Apply the given transaction to produce a new state.
+  */
+
+
+  apply(tr) {
+    return this.applyTransaction(tr).state;
+  }
+  /**
+  @ignore
+  */
+
+
+  filterTransaction(tr, ignore = -1) {
+    for (let i = 0; i < this.config.plugins.length; i++) if (i != ignore) {
+      let plugin = this.config.plugins[i];
+      if (plugin.spec.filterTransaction && !plugin.spec.filterTransaction.call(plugin, tr, this)) return false;
+    }
+
+    return true;
+  }
+  /**
+  Verbose variant of [`apply`](https://prosemirror.net/docs/ref/#state.EditorState.apply) that
+  returns the precise transactions that were applied (which might
+  be influenced by the [transaction
+  hooks](https://prosemirror.net/docs/ref/#state.PluginSpec.filterTransaction) of
+  plugins) along with the new state.
+  */
+
+
+  applyTransaction(rootTr) {
+    if (!this.filterTransaction(rootTr)) return {
+      state: this,
+      transactions: []
+    };
+    let trs = [rootTr],
+        newState = this.applyInner(rootTr),
+        seen = null; // This loop repeatedly gives plugins a chance to respond to
+    // transactions as new transactions are added, making sure to only
+    // pass the transactions the plugin did not see before.
+
+    for (;;) {
+      let haveNew = false;
+
+      for (let i = 0; i < this.config.plugins.length; i++) {
+        let plugin = this.config.plugins[i];
+
+        if (plugin.spec.appendTransaction) {
+          let n = seen ? seen[i].n : 0,
+              oldState = seen ? seen[i].state : this;
+          let tr = n < trs.length && plugin.spec.appendTransaction.call(plugin, n ? trs.slice(n) : trs, oldState, newState);
+
+          if (tr && newState.filterTransaction(tr, i)) {
+            tr.setMeta("appendedTransaction", rootTr);
+
+            if (!seen) {
+              seen = [];
+
+              for (let j = 0; j < this.config.plugins.length; j++) seen.push(j < i ? {
+                state: newState,
+                n: trs.length
+              } : {
+                state: this,
+                n: 0
+              });
+            }
+
+            trs.push(tr);
+            newState = newState.applyInner(tr);
+            haveNew = true;
+          }
+
+          if (seen) seen[i] = {
+            state: newState,
+            n: trs.length
+          };
+        }
+      }
+
+      if (!haveNew) return {
+        state: newState,
+        transactions: trs
+      };
+    }
+  }
+  /**
+  @internal
+  */
+
+
+  applyInner(tr) {
+    if (!tr.before.eq(this.doc)) throw new RangeError("Applying a mismatched transaction");
+    let newInstance = new prosemirror_state_EditorState(this.config),
+        fields = this.config.fields;
+
+    for (let i = 0; i < fields.length; i++) {
+      let field = fields[i];
+      newInstance[field.name] = field.apply(tr, this[field.name], this, newInstance);
+    }
+
+    return newInstance;
+  }
+  /**
+  Start a [transaction](https://prosemirror.net/docs/ref/#state.Transaction) from this state.
+  */
+
+
+  get tr() {
+    return new prosemirror_state_Transaction(this);
+  }
+  /**
+  Create a new state.
+  */
+
+
+  static create(config) {
+    let $config = new prosemirror_state_Configuration(config.doc ? config.doc.type.schema : config.schema, config.plugins);
+    let instance = new prosemirror_state_EditorState($config);
+
+    for (let i = 0; i < $config.fields.length; i++) instance[$config.fields[i].name] = $config.fields[i].init(config, instance);
+
+    return instance;
+  }
+  /**
+  Create a new state based on this one, but with an adjusted set
+  of active plugins. State fields that exist in both sets of
+  plugins are kept unchanged. Those that no longer exist are
+  dropped, and those that are new are initialized using their
+  [`init`](https://prosemirror.net/docs/ref/#state.StateField.init) method, passing in the new
+  configuration object..
+  */
+
+
+  reconfigure(config) {
+    let $config = new prosemirror_state_Configuration(this.schema, config.plugins);
+    let fields = $config.fields,
+        instance = new prosemirror_state_EditorState($config);
+
+    for (let i = 0; i < fields.length; i++) {
+      let name = fields[i].name;
+      instance[name] = this.hasOwnProperty(name) ? this[name] : fields[i].init(config, instance);
+    }
+
+    return instance;
+  }
+  /**
+  Serialize this state to JSON. If you want to serialize the state
+  of plugins, pass an object mapping property names to use in the
+  resulting JSON object to plugin objects. The argument may also be
+  a string or number, in which case it is ignored, to support the
+  way `JSON.stringify` calls `toString` methods.
+  */
+
+
+  toJSON(pluginFields) {
+    let result = {
+      doc: this.doc.toJSON(),
+      selection: this.selection.toJSON()
+    };
+    if (this.storedMarks) result.storedMarks = this.storedMarks.map(m => m.toJSON());
+    if (pluginFields && typeof pluginFields == 'object') for (let prop in pluginFields) {
+      if (prop == "doc" || prop == "selection") throw new RangeError("The JSON fields `doc` and `selection` are reserved");
+      let plugin = pluginFields[prop],
+          state = plugin.spec.state;
+      if (state && state.toJSON) result[prop] = state.toJSON.call(plugin, this[plugin.key]);
+    }
+    return result;
+  }
+  /**
+  Deserialize a JSON representation of a state. `config` should
+  have at least a `schema` field, and should contain array of
+  plugins to initialize the state with. `pluginFields` can be used
+  to deserialize the state of plugins, by associating plugin
+  instances with the property names they use in the JSON object.
+  */
+
+
+  static fromJSON(config, json, pluginFields) {
+    if (!json) throw new RangeError("Invalid input for EditorState.fromJSON");
+    if (!config.schema) throw new RangeError("Required config field 'schema' missing");
+    let $config = new prosemirror_state_Configuration(config.schema, config.plugins);
+    let instance = new prosemirror_state_EditorState($config);
+    $config.fields.forEach(field => {
+      if (field.name == "doc") {
+        instance.doc = Node.fromJSON(config.schema, json.doc);
+      } else if (field.name == "selection") {
+        instance.selection = prosemirror_state_Selection.fromJSON(instance.doc, json.selection);
+      } else if (field.name == "storedMarks") {
+        if (json.storedMarks) instance.storedMarks = json.storedMarks.map(config.schema.markFromJSON);
+      } else {
+        if (pluginFields) for (let prop in pluginFields) {
+          let plugin = pluginFields[prop],
+              state = plugin.spec.state;
+
+          if (plugin.key == field.name && state && state.fromJSON && Object.prototype.hasOwnProperty.call(json, prop)) {
+            instance[field.name] = state.fromJSON.call(plugin, config, json[prop], instance);
+            return;
+          }
+        }
+        instance[field.name] = field.init(config, instance);
+      }
+    });
+    return instance;
+  }
+
+}
+
+function prosemirror_state_bindProps(obj, self, target) {
+  for (let prop in obj) {
+    let val = obj[prop];
+    if (val instanceof Function) val = val.bind(self);else if (prop == "handleDOMEvents") val = prosemirror_state_bindProps(val, self, {});
+    target[prop] = val;
+  }
+
+  return target;
+}
+/**
+Plugins bundle functionality that can be added to an editor.
+They are part of the [editor state](https://prosemirror.net/docs/ref/#state.EditorState) and
+may influence that state and the view that contains it.
+*/
+
+
+class prosemirror_state_Plugin {
+  /**
+  Create a plugin.
+  */
+  constructor(
+  /**
+  The plugin's [spec object](https://prosemirror.net/docs/ref/#state.PluginSpec).
+  */
+  spec) {
+    this.spec = spec;
+    /**
+    The [props](https://prosemirror.net/docs/ref/#view.EditorProps) exported by this plugin.
+    */
+
+    this.props = {};
+    if (spec.props) prosemirror_state_bindProps(spec.props, this, this.props);
+    this.key = spec.key ? spec.key.key : prosemirror_state_createKey("plugin");
+  }
+  /**
+  Extract the plugin's state field from an editor state.
+  */
+
+
+  getState(state) {
+    return state[this.key];
+  }
+
+}
+
+const prosemirror_state_keys = Object.create(null);
+
+function prosemirror_state_createKey(name) {
+  if (name in prosemirror_state_keys) return name + "$" + ++prosemirror_state_keys[name];
+  prosemirror_state_keys[name] = 0;
+  return name + "$";
+}
+/**
+A key is used to [tag](https://prosemirror.net/docs/ref/#state.PluginSpec.key) plugins in a way
+that makes it possible to find them, given an editor state.
+Assigning a key does mean only one plugin of that type can be
+active in a state.
+*/
+
+
+class prosemirror_state_PluginKey {
+  /**
+  Create a plugin key.
+  */
+  constructor(name = "key") {
+    this.key = prosemirror_state_createKey(name);
+  }
+  /**
+  Get the active plugin with this key, if any, from an editor
+  state.
+  */
+
+
+  get(state) {
+    return state.config.pluginsByKey[this.key];
+  }
+  /**
+  Get the plugin's state from an editor state.
+  */
+
+
+  getState(state) {
+    return state[this.key];
+  }
+
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/@tiptap/extension-horizontal-rule/dist/tiptap-extension-horizontal-rule.esm.js
 
 
@@ -15998,14 +18425,14 @@ const HorizontalRule = tiptap_core_esm.Node.create({
             const posAfter = $to.end();
 
             if ($to.nodeAfter) {
-              tr.setSelection(dist/* TextSelection.create */.Bs.create(tr.doc, $to.pos));
+              tr.setSelection(prosemirror_state_TextSelection.create(tr.doc, $to.pos));
             } else {
               // add node after horizontal rule if it’s the end of the document
               const node = (_a = $to.parent.type.contentMatch.defaultType) === null || _a === void 0 ? void 0 : _a.create();
 
               if (node) {
                 tr.insert(posAfter, node);
-                tr.setSelection(dist/* TextSelection.create */.Bs.create(tr.doc, posAfter));
+                tr.setSelection(prosemirror_state_TextSelection.create(tr.doc, posAfter));
               }
             }
 
@@ -16980,7 +19407,7 @@ var editor_tool = __webpack_require__(48699);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/background-color/index.ts + 1 modules
 var background_color = __webpack_require__(15736);
 ;// CONCATENATED MODULE: ./projects/addon-editor/extensions/default-editor-extensions/default-editor-extensions.ts
-const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 75276)).then(({
+const defaultEditorExtensions = [Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 80726)).then(({
   StarterKit
 }) => StarterKit).then(extension => extension.configure({
   heading: {
@@ -17046,8 +19473,8 @@ var group = __webpack_require__(54920);
 var image_editor = __webpack_require__(25039);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/indent-outdent/index.ts + 1 modules
 var indent_outdent = __webpack_require__(12177);
-// EXTERNAL MODULE: ./projects/addon-editor/extensions/starter-kit/index.ts + 23 modules
-var starter_kit = __webpack_require__(75276);
+// EXTERNAL MODULE: ./projects/addon-editor/extensions/starter-kit/index.ts + 25 modules
+var starter_kit = __webpack_require__(80726);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/table-cell-background/index.ts + 1 modules
 var table_cell_background = __webpack_require__(51919);
 // EXTERNAL MODULE: ./projects/addon-editor/extensions/tiptap-node-view/component-render.ts
@@ -23018,7 +25445,7 @@ class EditorState {
     return this.applyTransaction(tr).state;
   }
   /**
-  @ignore
+  @internal
   */
 
 
@@ -23322,7 +25749,7 @@ class PluginKey {
 /* harmony export */   "k9": () => (/* binding */ liftTarget),
 /* harmony export */   "dR": () => (/* binding */ replaceStep)
 /* harmony export */ });
-/* unused harmony exports AddMarkStep, AddNodeMarkStep, AttrStep, MapResult, RemoveMarkStep, RemoveNodeMarkStep, Step, StepMap, StepResult, TransformError, insertPoint, joinPoint */
+/* unused harmony exports AddMarkStep, MapResult, RemoveMarkStep, Step, StepMap, StepResult, TransformError, insertPoint, joinPoint */
 /* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35917);
  // Recovery values encode a range index and an offset. They are
 // represented as numbers, because tons of them will be created when
@@ -24015,136 +26442,6 @@ class RemoveMarkStep extends Step {
 }
 
 Step.jsonID("removeMark", RemoveMarkStep);
-/**
-Add a mark to a specific node.
-*/
-
-class AddNodeMarkStep extends Step {
-  /**
-  Create a node mark step.
-  */
-  constructor(
-  /**
-  The position of the target node.
-  */
-  pos,
-  /**
-  The mark to add.
-  */
-  mark) {
-    super();
-    this.pos = pos;
-    this.mark = mark;
-  }
-
-  apply(doc) {
-    let node = doc.nodeAt(this.pos);
-    if (!node) return StepResult.fail("No node at mark step's position");
-    let updated = node.type.create(node.attrs, null, this.mark.addToSet(node.marks));
-    return StepResult.fromReplace(doc, this.pos, this.pos + 1, new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice */ .p2(prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Fragment.from */ .HY.from(updated), 0, node.isLeaf ? 0 : 1));
-  }
-
-  invert(doc) {
-    let node = doc.nodeAt(this.pos);
-
-    if (node) {
-      let newSet = this.mark.addToSet(node.marks);
-
-      if (newSet.length == node.marks.length) {
-        for (let i = 0; i < node.marks.length; i++) if (!node.marks[i].isInSet(newSet)) return new AddNodeMarkStep(this.pos, node.marks[i]);
-
-        return new AddNodeMarkStep(this.pos, this.mark);
-      }
-    }
-
-    return new RemoveNodeMarkStep(this.pos, this.mark);
-  }
-
-  map(mapping) {
-    let pos = mapping.mapResult(this.pos, 1);
-    return pos.deletedAfter ? null : new AddNodeMarkStep(pos.pos, this.mark);
-  }
-
-  toJSON() {
-    return {
-      stepType: "addNodeMark",
-      pos: this.pos,
-      mark: this.mark.toJSON()
-    };
-  }
-  /**
-  @internal
-  */
-
-
-  static fromJSON(schema, json) {
-    if (typeof json.pos != "number") throw new RangeError("Invalid input for AddNodeMarkStep.fromJSON");
-    return new AddNodeMarkStep(json.pos, schema.markFromJSON(json.mark));
-  }
-
-}
-
-Step.jsonID("addNodeMark", AddNodeMarkStep);
-/**
-Remove a mark from a specific node.
-*/
-
-class RemoveNodeMarkStep extends Step {
-  /**
-  Create a mark-removing step.
-  */
-  constructor(
-  /**
-  The position of the target node.
-  */
-  pos,
-  /**
-  The mark to remove.
-  */
-  mark) {
-    super();
-    this.pos = pos;
-    this.mark = mark;
-  }
-
-  apply(doc) {
-    let node = doc.nodeAt(this.pos);
-    if (!node) return StepResult.fail("No node at mark step's position");
-    let updated = node.type.create(node.attrs, null, this.mark.removeFromSet(node.marks));
-    return StepResult.fromReplace(doc, this.pos, this.pos + 1, new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice */ .p2(prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Fragment.from */ .HY.from(updated), 0, node.isLeaf ? 0 : 1));
-  }
-
-  invert(doc) {
-    let node = doc.nodeAt(this.pos);
-    if (!node || !this.mark.isInSet(node.marks)) return this;
-    return new AddNodeMarkStep(this.pos, this.mark);
-  }
-
-  map(mapping) {
-    let pos = mapping.mapResult(this.pos, 1);
-    return pos.deletedAfter ? null : new RemoveNodeMarkStep(pos.pos, this.mark);
-  }
-
-  toJSON() {
-    return {
-      stepType: "removeNodeMark",
-      pos: this.pos,
-      mark: this.mark.toJSON()
-    };
-  }
-  /**
-  @internal
-  */
-
-
-  static fromJSON(schema, json) {
-    if (typeof json.pos != "number") throw new RangeError("Invalid input for RemoveNodeMarkStep.fromJSON");
-    return new RemoveNodeMarkStep(json.pos, schema.markFromJSON(json.mark));
-  }
-
-}
-
-Step.jsonID("removeNodeMark", RemoveNodeMarkStep);
 /**
 Replace a part of the document with a slice of new content.
 */
@@ -25306,75 +27603,9 @@ function coveredDepths($from, $to) {
   return result;
 }
 /**
-Update an attribute in a specific node.
-*/
-
-
-class AttrStep extends Step {
-  /**
-  Construct an attribute step.
-  */
-  constructor(
-  /**
-  The position of the target node.
-  */
-  pos,
-  /**
-  The attribute to set.
-  */
-  attr, // The attribute's new value.
-  value) {
-    super();
-    this.pos = pos;
-    this.attr = attr;
-    this.value = value;
-  }
-
-  apply(doc) {
-    let node = doc.nodeAt(this.pos);
-    if (!node) return StepResult.fail("No node at attribute step's position");
-    let attrs = Object.create(null);
-
-    for (let name in node.attrs) attrs[name] = node.attrs[name];
-
-    attrs[this.attr] = this.value;
-    let updated = node.type.create(attrs, null, node.marks);
-    return StepResult.fromReplace(doc, this.pos, this.pos + 1, new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice */ .p2(prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Fragment.from */ .HY.from(updated), 0, node.isLeaf ? 0 : 1));
-  }
-
-  getMap() {
-    return StepMap.empty;
-  }
-
-  invert(doc) {
-    return new AttrStep(this.pos, this.attr, doc.nodeAt(this.pos).attrs[this.attr]);
-  }
-
-  map(mapping) {
-    let pos = mapping.mapResult(this.pos, 1);
-    return pos.deletedAfter ? null : new AttrStep(pos.pos, this.attr, this.value);
-  }
-
-  toJSON() {
-    return {
-      stepType: "attr",
-      pos: this.pos,
-      attr: this.attr,
-      value: this.value
-    };
-  }
-
-  static fromJSON(schema, json) {
-    if (typeof json.pos != "number" || typeof json.attr != "string") throw new RangeError("Invalid input for AttrStep.fromJSON");
-    return new AttrStep(json.pos, json.attr, json.value);
-  }
-
-}
-
-Step.jsonID("attr", AttrStep);
-/**
 @internal
 */
+
 
 let TransformError = class extends Error {};
 
@@ -25613,41 +27844,6 @@ class Transform {
     return this;
   }
   /**
-  Set a single attribute on a given node to a new value.
-  */
-
-
-  setNodeAttribute(pos, attr, value) {
-    this.step(new AttrStep(pos, attr, value));
-    return this;
-  }
-  /**
-  Add a mark to the node at position `pos`.
-  */
-
-
-  addNodeMark(pos, mark) {
-    this.step(new AddNodeMarkStep(pos, mark));
-    return this;
-  }
-  /**
-  Remove a mark (or a mark of the given type) from the node at
-  position `pos`.
-  */
-
-
-  removeNodeMark(pos, mark) {
-    if (!(mark instanceof prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Mark */ .vc)) {
-      let node = this.doc.nodeAt(pos);
-      if (!node) throw new RangeError("No node at position " + pos);
-      mark = mark.isInSet(node.marks);
-      if (!mark) return this;
-    }
-
-    this.step(new RemoveNodeMarkStep(pos, mark));
-    return this;
-  }
-  /**
   Split the node at the given position, and optionally, if `depth` is
   greater than one, any number of nodes above that. By default, the
   parts split off will inherit the node type of the original node.
@@ -25715,6 +27911,28 @@ class Transform {
 
 
 
+const nav = typeof navigator != "undefined" ? navigator : null;
+const doc = typeof document != "undefined" ? document : null;
+const agent = nav && nav.userAgent || "";
+const ie_edge = /Edge\/(\d+)/.exec(agent);
+const ie_upto10 = /MSIE \d/.exec(agent);
+const ie_11up = /Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(agent);
+const ie = !!(ie_upto10 || ie_11up || ie_edge);
+const ie_version = ie_upto10 ? document.documentMode : ie_11up ? +ie_11up[1] : ie_edge ? +ie_edge[1] : 0;
+const gecko = !ie && /gecko\/(\d+)/i.test(agent);
+gecko && +(/Firefox\/(\d+)/.exec(agent) || [0, 0])[1];
+
+const _chrome = !ie && /Chrome\/(\d+)/.exec(agent);
+
+const chrome = !!_chrome;
+const chrome_version = _chrome ? +_chrome[1] : 0;
+const safari = !ie && !!nav && /Apple Computer/.test(nav.vendor); // Is true for both iOS and iPadOS for convenience
+
+const ios = safari && (/Mobile\/\w+/.test(agent) || !!nav && nav.maxTouchPoints > 2);
+const mac = ios || (nav ? /Mac/.test(nav.platform) : false);
+const android = /Android \d/.test(agent);
+const webkit = !!doc && "webkitFontSmoothing" in doc.documentElement.style;
+const webkit_version = webkit ? +(/\bAppleWebKit\/(\d+)/.exec(navigator.userAgent) || [0, 0])[1] : 0;
 
 const domIndex = function (node) {
   for (var index = 0;; index++) {
@@ -25793,7 +28011,9 @@ function hasBlockDesc(dom) {
 
 
 const selectionCollapsed = function (domSel) {
-  return domSel.focusNode && isEquivalentPosition(domSel.focusNode, domSel.focusOffset, domSel.anchorNode, domSel.anchorOffset);
+  let collapsed = domSel.isCollapsed;
+  if (collapsed && chrome && domSel.rangeCount && !domSel.getRangeAt(0).collapsed) collapsed = false;
+  return collapsed;
 };
 
 function keyEvent(keyCode, key) {
@@ -25803,37 +28023,6 @@ function keyEvent(keyCode, key) {
   event.key = event.code = key;
   return event;
 }
-
-function deepActiveElement(doc) {
-  let elt = doc.activeElement;
-
-  while (elt && elt.shadowRoot) elt = elt.shadowRoot.activeElement;
-
-  return elt;
-}
-
-const nav = typeof navigator != "undefined" ? navigator : null;
-const doc = typeof document != "undefined" ? document : null;
-const agent = nav && nav.userAgent || "";
-const ie_edge = /Edge\/(\d+)/.exec(agent);
-const ie_upto10 = /MSIE \d/.exec(agent);
-const ie_11up = /Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(agent);
-const ie = !!(ie_upto10 || ie_11up || ie_edge);
-const ie_version = ie_upto10 ? document.documentMode : ie_11up ? +ie_11up[1] : ie_edge ? +ie_edge[1] : 0;
-const gecko = !ie && /gecko\/(\d+)/i.test(agent);
-gecko && +(/Firefox\/(\d+)/.exec(agent) || [0, 0])[1];
-
-const _chrome = !ie && /Chrome\/(\d+)/.exec(agent);
-
-const chrome = !!_chrome;
-const chrome_version = _chrome ? +_chrome[1] : 0;
-const safari = !ie && !!nav && /Apple Computer/.test(nav.vendor); // Is true for both iOS and iPadOS for convenience
-
-const ios = safari && (/Mobile\/\w+/.test(agent) || !!nav && nav.maxTouchPoints > 2);
-const mac = ios || (nav ? /Mac/.test(nav.platform) : false);
-const android = /Android \d/.test(agent);
-const webkit = !!doc && "webkitFontSmoothing" in doc.documentElement.style;
-const webkit_version = webkit ? +(/\bAppleWebKit\/(\d+)/.exec(navigator.userAgent) || [0, 0])[1] : 0;
 
 function windowRect(doc) {
   return {
@@ -26253,7 +28442,7 @@ function coordsAtPos(view, pos, side) {
         to++;
       }
 
-      return flattenV(singleRect(textRange(node, from, to), 1), takeSide < 0);
+      return flattenV(singleRect(textRange(node, from, to), takeSide), takeSide < 0);
     }
   }
 
@@ -26389,27 +28578,17 @@ function endOfTextblockHorizontal(view, state, dir) {
     // one character, and see if that moves the cursor out of the
     // textblock (or doesn't move it at all, when at the start/end of
     // the document).
-    let {
-      focusNode: oldNode,
-      focusOffset: oldOff,
-      anchorNode,
-      anchorOffset
-    } = view.domSelectionRange();
+    let oldRange = sel.getRangeAt(0),
+        oldNode = sel.focusNode,
+        oldOff = sel.focusOffset;
     let oldBidiLevel = sel.caretBidiLevel // Only for Firefox
     ;
     sel.modify("move", dir, "character");
     let parentDOM = $head.depth ? view.docView.domAfterPos($head.before()) : view.dom;
-    let {
-      focusNode: newNode,
-      focusOffset: newOff
-    } = view.domSelectionRange();
-    let result = newNode && !parentDOM.contains(newNode.nodeType == 1 ? newNode : newNode.parentNode) || oldNode == newNode && oldOff == newOff; // Restore the previous selection
+    let result = !parentDOM.contains(sel.focusNode.nodeType == 1 ? sel.focusNode : sel.focusNode.parentNode) || oldNode == sel.focusNode && oldOff == sel.focusOffset; // Restore the previous selection
 
-    try {
-      sel.collapse(anchorNode, anchorOffset);
-      if (oldNode && (oldNode != anchorNode || oldOff != anchorOffset) && sel.extend) sel.extend(oldNode, oldOff);
-    } catch (_) {}
-
+    sel.removeAllRanges();
+    sel.addRange(oldRange);
     if (oldBidiLevel != null) sel.caretBidiLevel = oldBidiLevel;
     return result;
   });
@@ -26862,12 +29041,12 @@ class ViewDesc {
       try {
         if (anchor != head) domSel.extend(headDOM.node, headDOM.offset);
         domSelExtended = true;
-      } catch (_) {// In some cases with Chrome the selection is empty after calling
+      } catch (err) {
+        // In some cases with Chrome the selection is empty after calling
         // collapse, even when it should be valid. This appears to be a bug, but
         // it is difficult to isolate. If this happens fallback to the old path
         // without using extend.
-        // Similarly, this could crash on Safari if the editor is hidden, and
-        // there was no selection.
+        if (!(err instanceof DOMException)) throw err; // declare global: DOMException
       }
     }
 
@@ -27201,7 +29380,7 @@ class NodeViewDesc extends ViewDesc {
     let composition = view.composing ? this.localCompositionInfo(view, pos) : null;
     let localComposition = composition && composition.pos > -1 ? composition : null;
     let compositionInChild = composition && composition.pos < 0;
-    let updater = new ViewTreeUpdater(this, localComposition && localComposition.node, view);
+    let updater = new ViewTreeUpdater(this, localComposition && localComposition.node);
     iterDeco(this.node, this.innerDeco, (widget, i, insideNode) => {
       if (widget.spec.marks) updater.syncToMarks(widget.spec.marks, inline, view);else if (widget.type.side >= 0 && !insideNode) updater.syncToMarks(i == this.node.childCount ? prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Mark.none */ .vc.none : this.node.child(i).marks, inline, view); // If the next node is a desc matching this widget, reuse it,
       // otherwise insert the widget as a new view desc.
@@ -27239,7 +29418,7 @@ class NodeViewDesc extends ViewDesc {
       to
     } = view.state.selection;
     if (!(view.state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .TextSelection */ .Bs) || from < pos || to > pos + this.node.content.size) return null;
-    let sel = view.domSelectionRange();
+    let sel = view.domSelection();
     let textNode = nearbyTextNode(sel.focusNode, sel.focusOffset);
     if (!textNode || !this.dom.contains(textNode.parentNode)) return null;
 
@@ -27635,9 +29814,8 @@ function rm(dom) {
 
 
 class ViewTreeUpdater {
-  constructor(top, lock, view) {
-    this.lock = lock;
-    this.view = view; // Index into `this.top`'s child array, represents the current
+  constructor(top, lock) {
+    this.lock = lock; // Index into `this.top`'s child array, represents the current
     // update position.
 
     this.index = 0; // When entering a mark, the current top and index are pushed
@@ -27823,7 +30001,7 @@ class ViewTreeUpdater {
     }
 
     if (!lastChild || // Empty textblock
-    !(lastChild instanceof TextViewDesc) || /\n$/.test(lastChild.node.text) || this.view.requiresGeckoHackNode && /\s$/.test(lastChild.node.text)) {
+    !(lastChild instanceof TextViewDesc) || /\n$/.test(lastChild.node.text)) {
       // Avoid bugs in Safari's cursor drawing (#1165) and Chrome's mouse selection (#1152)
       if ((safari || chrome) && lastChild && lastChild.dom.contentEditable == "false") this.addHackNode("IMG", parent);
       this.addHackNode("BR", this.top);
@@ -28067,7 +30245,7 @@ function replaceNodes(nodes, from, to, view, replacement) {
 }
 
 function selectionFromDOM(view, origin = null) {
-  let domSel = view.domSelectionRange(),
+  let domSel = view.domSelection(),
       doc = view.state.doc;
   if (!domSel.focusNode) return null;
   let nearestDesc = view.docView.nearestDesc(domSel.focusNode),
@@ -28115,7 +30293,7 @@ function selectionToDOM(view, force = false) {
   // which only present in Chrome.
 
   if (!force && view.input.mouseDown && view.input.mouseDown.allowDefault && chrome) {
-    let domSel = view.domSelectionRange(),
+    let domSel = view.domSelection(),
         curSel = view.domObserver.currentSelection;
 
     if (domSel.anchorNode && curSel.anchorNode && isEquivalentPosition(domSel.anchorNode, domSel.anchorOffset, curSel.anchorNode, curSel.anchorOffset)) {
@@ -28203,7 +30381,7 @@ function resetEditable(element) {
 function removeClassOnSelectionChange(view) {
   let doc = view.dom.ownerDocument;
   doc.removeEventListener("selectionchange", view.input.hideSelectionGuard);
-  let domSel = view.domSelectionRange();
+  let domSel = view.domSelection();
   let node = domSel.anchorNode,
       offset = domSel.anchorOffset;
   doc.addEventListener("selectionchange", view.input.hideSelectionGuard = () => {
@@ -28263,12 +30441,12 @@ function selectionBetween(view, $anchor, $head, bias) {
 }
 
 function hasFocusAndSelection(view) {
-  if (view.editable && !view.hasFocus()) return false;
+  if (view.editable && view.root.activeElement != view.dom) return false;
   return hasSelection(view);
 }
 
 function hasSelection(view) {
-  let sel = view.domSelectionRange();
+  let sel = view.domSelection();
   if (!sel.anchorNode) return false;
 
   try {
@@ -28283,7 +30461,7 @@ function hasSelection(view) {
 
 function anchorInRightPlace(view) {
   let anchorDOM = view.docView.domFromPos(view.state.selection.anchor, 0);
-  let domSel = view.domSelectionRange();
+  let domSel = view.domSelection();
   return isEquivalentPosition(anchorDOM.node, anchorDOM.offset, domSel.anchorNode, domSel.anchorOffset);
 }
 
@@ -28352,7 +30530,7 @@ function isIgnorable(dom) {
 
 
 function skipIgnoredNodesLeft(view) {
-  let sel = view.domSelectionRange();
+  let sel = view.domSelection();
   let node = sel.focusNode,
       offset = sel.focusOffset;
   if (!node) return;
@@ -28401,13 +30579,13 @@ function skipIgnoredNodesLeft(view) {
     }
   }
 
-  if (force) setSelFocus(view, node, offset);else if (moveNode) setSelFocus(view, moveNode, moveOffset);
+  if (force) setSelFocus(view, sel, node, offset);else if (moveNode) setSelFocus(view, sel, moveNode, moveOffset);
 } // Make sure the cursor isn't directly before one or more ignored
 // nodes.
 
 
 function skipIgnoredNodesRight(view) {
-  let sel = view.domSelectionRange();
+  let sel = view.domSelection();
   let node = sel.focusNode,
       offset = sel.focusOffset;
   if (!node) return;
@@ -28446,7 +30624,7 @@ function skipIgnoredNodesRight(view) {
     }
   }
 
-  if (moveNode) setSelFocus(view, moveNode, moveOffset);
+  if (moveNode) setSelFocus(view, sel, moveNode, moveOffset);
 }
 
 function isBlockNode(dom) {
@@ -28454,9 +30632,7 @@ function isBlockNode(dom) {
   return desc && desc.node && desc.node.isBlock;
 }
 
-function setSelFocus(view, node, offset) {
-  let sel = view.domSelection();
-
+function setSelFocus(view, sel, node, offset) {
   if (selectionCollapsed(sel)) {
     let range = document.createRange();
     range.setEnd(node, offset);
@@ -28541,7 +30717,7 @@ function safariDownArrowBug(view) {
   let {
     focusNode,
     focusOffset
-  } = view.domSelectionRange();
+  } = view.domSelection();
 
   if (focusNode && focusNode.nodeType == 1 && focusOffset == 0 && focusNode.firstChild && focusNode.firstChild.contentEditable == "false") {
     let child = focusNode.firstChild;
@@ -28601,9 +30777,6 @@ function captureKeyDown(view, event) {
 }
 
 function serializeForClipboard(view, slice) {
-  view.someProp("transformCopied", f => {
-    slice = f(slice, view);
-  });
   let context = [],
       {
     content,
@@ -28643,7 +30816,7 @@ function serializeForClipboard(view, slice) {
   }
 
   if (firstChild && firstChild.nodeType == 1) firstChild.setAttribute("data-pm-slice", `${openStart} ${openEnd}${wrappers ? ` -${wrappers}` : ""} ${JSON.stringify(context)}`);
-  let text = view.someProp("clipboardTextSerializer", f => f(slice, view)) || slice.content.textBetween(0, slice.content.size, "\n\n");
+  let text = view.someProp("clipboardTextSerializer", f => f(slice)) || slice.content.textBetween(0, slice.content.size, "\n\n");
   return {
     dom: wrap,
     text
@@ -28659,10 +30832,10 @@ function parseFromClipboard(view, text, html, plainText, $context) {
 
   if (asText) {
     view.someProp("transformPastedText", f => {
-      text = f(text, inCode || plainText, view);
+      text = f(text, inCode || plainText);
     });
     if (inCode) return text ? new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice */ .p2(prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Fragment.from */ .HY.from(view.state.schema.text(text.replace(/\r\n?/g, "\n"))), 0, 0) : prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .Slice.empty */ .p2.empty;
-    let parsed = view.someProp("clipboardTextParser", f => f(text, $context, plainText, view));
+    let parsed = view.someProp("clipboardTextParser", f => f(text, $context, plainText));
 
     if (parsed) {
       slice = parsed;
@@ -28680,7 +30853,7 @@ function parseFromClipboard(view, text, html, plainText, $context) {
     }
   } else {
     view.someProp("transformPastedHTML", f => {
-      html = f(html, view);
+      html = f(html);
     });
     dom = readHTML(html);
     if (webkit) restoreReplacedSpaces(dom);
@@ -28688,14 +30861,7 @@ function parseFromClipboard(view, text, html, plainText, $context) {
 
   let contextNode = dom && dom.querySelector("[data-pm-slice]");
   let sliceData = contextNode && /^(\d+) (\d+)(?: -(\d+))? (.*)/.exec(contextNode.getAttribute("data-pm-slice") || "");
-  if (sliceData && sliceData[3]) for (let i = +sliceData[3]; i > 0; i--) {
-    let child = dom.firstChild;
-
-    while (child && child.nodeType != 1) child = child.nextSibling;
-
-    if (!child) break;
-    dom = child;
-  }
+  if (sliceData && sliceData[3]) for (let i = +sliceData[3]; i > 0 && dom.firstChild; i--) dom = dom.firstChild;
 
   if (!slice) {
     let parser = view.someProp("clipboardParser") || view.someProp("domParser") || prosemirror_model__WEBPACK_IMPORTED_MODULE_0__/* .DOMParser.fromSchema */ .aw.fromSchema(view.state.schema);
@@ -28732,7 +30898,7 @@ function parseFromClipboard(view, text, html, plainText, $context) {
   }
 
   view.someProp("transformPasted", f => {
-    slice = f(slice, view);
+    slice = f(slice);
   });
   return slice;
 }
@@ -28891,11 +31057,7 @@ function addContext(slice, context) {
 
 
 const handlers = {};
-const editHandlers = {};
-const passiveHandlers = {
-  touchstart: true,
-  touchmove: true
-};
+let editHandlers = {};
 
 class InputState {
   constructor() {
@@ -28913,8 +31075,6 @@ class InputState {
     this.lastSelectionTime = 0;
     this.lastIOSEnter = 0;
     this.lastIOSEnterFallbackTimeout = -1;
-    this.lastFocus = 0;
-    this.lastTouch = 0;
     this.lastAndroidDelete = 0;
     this.composing = false;
     this.composingTimeout = -1;
@@ -28932,9 +31092,7 @@ function initInput(view) {
     let handler = handlers[event];
     view.dom.addEventListener(event, view.input.eventHandlers[event] = event => {
       if (eventBelongsToView(view, event) && !runCustomHandler(view, event) && (view.editable || !(event.type in editHandlers))) handler(view, event);
-    }, passiveHandlers[event] ? {
-      passive: true
-    } : undefined);
+    });
   } // On Safari, for reasons beyond my understanding, adding an input
   // event handler makes an issue where the composition vanishes when
   // you press enter go away.
@@ -29246,7 +31404,6 @@ class MouseDown {
     if (!this.view.dom.contains(event.target)) return;
     let pos = this.pos;
     if (this.view.state.doc != this.startDoc) pos = this.view.posAtCoords(eventCoords(event));
-    this.updateAllowDefault(event);
 
     if (this.allowDefault || !pos) {
       setSelectionOrigin(this.view, "pointer");
@@ -29260,7 +31417,7 @@ class MouseDown {
     // (hidden) cursor is doesn't change the selection, and
     // thus doesn't get a reaction from ProseMirror. This
     // works around that.
-    chrome && !this.view.state.selection.visible && Math.min(Math.abs(pos.pos - this.view.state.selection.from), Math.abs(pos.pos - this.view.state.selection.to)) <= 2)) {
+    chrome && !(this.view.state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .TextSelection */ .Bs) && Math.min(Math.abs(pos.pos - this.view.state.selection.from), Math.abs(pos.pos - this.view.state.selection.to)) <= 2)) {
       updateSelection(this.view, prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .Selection.near */ .Y1.near(this.view.state.doc.resolve(pos.pos)), "pointer");
       event.preventDefault();
     } else {
@@ -29269,25 +31426,15 @@ class MouseDown {
   }
 
   move(event) {
-    this.updateAllowDefault(event);
+    if (!this.allowDefault && (Math.abs(this.event.x - event.clientX) > 4 || Math.abs(this.event.y - event.clientY) > 4)) this.allowDefault = true;
     setSelectionOrigin(this.view, "pointer");
     if (event.buttons == 0) this.done();
   }
 
-  updateAllowDefault(event) {
-    if (!this.allowDefault && (Math.abs(this.event.x - event.clientX) > 4 || Math.abs(this.event.y - event.clientY) > 4)) this.allowDefault = true;
-  }
-
 }
 
-handlers.touchstart = view => {
-  view.input.lastTouch = Date.now();
+handlers.touchdown = view => {
   forceDOMFlush(view);
-  setSelectionOrigin(view, "pointer");
-};
-
-handlers.touchmove = view => {
-  view.input.lastTouch = Date.now();
   setSelectionOrigin(view, "pointer");
 };
 
@@ -29335,14 +31482,14 @@ editHandlers.compositionstart = editHandlers.compositionupdate = view => {
       // inside if necessary.
 
       if (gecko && state.selection.empty && $pos.parentOffset && !$pos.textOffset && $pos.nodeBefore.marks.length) {
-        let sel = view.domSelectionRange();
+        let sel = view.domSelection();
 
         for (let node = sel.focusNode, offset = sel.focusOffset; node && node.nodeType == 1 && offset != 0;) {
           let before = offset < 0 ? node.lastChild : node.childNodes[offset - 1];
           if (!before) break;
 
           if (before.nodeType == 3) {
-            view.domSelection().collapse(before, before.nodeValue.length);
+            sel.collapse(before, before.nodeValue.length);
             break;
           } else {
             node = before;
@@ -29548,11 +31695,12 @@ editHandlers.drop = (view, _event) => {
   let eventPos = view.posAtCoords(eventCoords(event));
   if (!eventPos) return;
   let $mouse = view.state.doc.resolve(eventPos.pos);
+  if (!$mouse) return;
   let slice = dragging && dragging.slice;
 
   if (slice) {
     view.someProp("transformPasted", f => {
-      slice = f(slice, view);
+      slice = f(slice);
     });
   } else {
     slice = parseFromClipboard(view, event.dataTransfer.getData(brokenClipboardAPI ? "Text" : "text/plain"), brokenClipboardAPI ? null : event.dataTransfer.getData("text/html"), false, $mouse);
@@ -29591,15 +31739,13 @@ editHandlers.drop = (view, _event) => {
 };
 
 handlers.focus = view => {
-  view.input.lastFocus = Date.now();
-
   if (!view.focused) {
     view.domObserver.stop();
     view.dom.classList.add("ProseMirror-focused");
     view.domObserver.start();
     view.focused = true;
     setTimeout(() => {
-      if (view.docView && view.hasFocus() && !view.domObserver.currentSelection.eq(view.domSelectionRange())) selectionToDOM(view);
+      if (view.docView && view.hasFocus() && !view.domObserver.currentSelection.eq(view.domSelection())) selectionToDOM(view);
     }, 20);
   }
 };
@@ -30175,28 +32321,23 @@ function mapChildren(oldChildren, newLocal, mapping, node, offset, oldOffset, op
   let children = oldChildren.slice(); // Mark the children that are directly touched by changes, and
   // move those that are after the changes.
 
-  for (let i = 0, baseOffset = oldOffset; i < mapping.maps.length; i++) {
-    let moved = 0;
-    mapping.maps[i].forEach((oldStart, oldEnd, newStart, newEnd) => {
-      let dSize = newEnd - newStart - (oldEnd - oldStart);
+  let shift = (oldStart, oldEnd, newStart, newEnd) => {
+    for (let i = 0; i < children.length; i += 3) {
+      let end = children[i + 1],
+          dSize;
+      if (end < 0 || oldStart > end + oldOffset) continue;
+      let start = children[i] + oldOffset;
 
-      for (let i = 0; i < children.length; i += 3) {
-        let end = children[i + 1];
-        if (end < 0 || oldStart > end + baseOffset - moved) continue;
-        let start = children[i] + baseOffset - moved;
-
-        if (oldEnd >= start) {
-          children[i + 1] = oldStart <= start ? -2 : -1;
-        } else if (newStart >= offset && dSize) {
-          children[i] += dSize;
-          children[i + 1] += dSize;
-        }
+      if (oldEnd >= start) {
+        children[i + 1] = oldStart <= start ? -2 : -1;
+      } else if (newStart >= offset && (dSize = newEnd - newStart - (oldEnd - oldStart))) {
+        children[i] += dSize;
+        children[i + 1] += dSize;
       }
+    }
+  };
 
-      moved += dSize;
-    });
-    baseOffset = mapping.maps[i].map(baseOffset, -1);
-  } // Find the child nodes that still correspond to a single node,
+  for (let i = 0; i < mapping.maps.length; i++) mapping.maps[i].forEach(shift); // Find the child nodes that still correspond to a single node,
   // recursively call mapInner on them and update their positions.
 
 
@@ -30538,7 +32679,7 @@ class DOMObserver {
     // reported.
 
     if (ie && ie_version <= 11 && !this.view.state.selection.empty) {
-      let sel = this.view.domSelectionRange(); // Selection.isCollapsed isn't reliable on IE
+      let sel = this.view.domSelection(); // Selection.isCollapsed isn't reliable on IE
 
       if (sel.focusNode && isEquivalentPosition(sel.focusNode, sel.focusOffset, sel.anchorNode, sel.anchorOffset)) return this.flushSoon();
     }
@@ -30547,22 +32688,13 @@ class DOMObserver {
   }
 
   setCurSelection() {
-    this.currentSelection.set(this.view.domSelectionRange());
+    this.currentSelection.set(this.view.domSelection());
   }
 
   ignoreSelectionChange(sel) {
-    if (!sel.focusNode) return true;
-    let ancestors = new Set(),
-        container;
-
-    for (let scan = sel.focusNode; scan; scan = parentNode(scan)) ancestors.add(scan);
-
-    for (let scan = sel.anchorNode; scan; scan = parentNode(scan)) if (ancestors.has(scan)) {
-      container = scan;
-      break;
-    }
-
-    let desc = container && this.view.docView.nearestDesc(container);
+    if (sel.rangeCount == 0) return true;
+    let container = sel.getRangeAt(0).commonAncestorContainer;
+    let desc = this.view.docView.nearestDesc(container);
 
     if (desc && desc.ignoreMutation({
       type: "selection",
@@ -30574,10 +32706,7 @@ class DOMObserver {
   }
 
   flush() {
-    let {
-      view
-    } = this;
-    if (!view.docView || this.flushingSoon > -1) return;
+    if (!this.view.docView || this.flushingSoon > -1) return;
     let mutations = this.observer ? this.observer.takeRecords() : [];
 
     if (this.queue.length) {
@@ -30585,14 +32714,14 @@ class DOMObserver {
       this.queue.length = 0;
     }
 
-    let sel = view.domSelectionRange();
-    let newSel = !this.suppressingSelectionUpdates && !this.currentSelection.eq(sel) && hasFocusAndSelection(view) && !this.ignoreSelectionChange(sel);
+    let sel = this.view.domSelection();
+    let newSel = !this.suppressingSelectionUpdates && !this.currentSelection.eq(sel) && hasFocusAndSelection(this.view) && !this.ignoreSelectionChange(sel);
     let from = -1,
         to = -1,
         typeOver = false,
         added = [];
 
-    if (view.editable) {
+    if (this.view.editable) {
       for (let i = 0; i < mutations.length; i++) {
         let result = this.registerMutation(mutations[i], added);
 
@@ -30614,23 +32743,14 @@ class DOMObserver {
       }
     }
 
-    let readSel = null; // If it looks like the browser has reset the selection to the
-    // start of the document after focus, restore the selection from
-    // the state
-
-    if (from < 0 && newSel && view.input.lastFocus > Date.now() - 200 && view.input.lastTouch < Date.now() - 300 && selectionCollapsed(sel) && (readSel = selectionFromDOM(view)) && readSel.eq(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .Selection.near */ .Y1.near(view.state.doc.resolve(0), 1))) {
-      view.input.lastFocus = 0;
-      selectionToDOM(view);
-      this.currentSelection.set(sel);
-      view.scrollToSelection();
-    } else if (from > -1 || newSel) {
+    if (from > -1 || newSel) {
       if (from > -1) {
-        view.docView.markDirty(from, to);
-        checkCSS(view);
+        this.view.docView.markDirty(from, to);
+        checkCSS(this.view);
       }
 
       this.handleDOMChange(from, to, typeOver, added);
-      if (view.docView && view.docView.dirty) view.updateState(view.state);else if (!this.currentSelection.eq(sel)) selectionToDOM(view);
+      if (this.view.docView && this.view.docView.dirty) this.view.updateState(this.view.state);else if (!this.currentSelection.eq(sel)) selectionToDOM(this.view);
       this.currentSelection.set(sel);
     }
   }
@@ -30695,55 +32815,12 @@ class DOMObserver {
 
 }
 
-let cssChecked = new WeakMap();
-let cssCheckWarned = false;
+let cssChecked = false;
 
 function checkCSS(view) {
-  if (cssChecked.has(view)) return;
-  cssChecked.set(view, null);
-
-  if (['normal', 'nowrap', 'pre-line'].indexOf(getComputedStyle(view.dom).whiteSpace) !== -1) {
-    view.requiresGeckoHackNode = gecko;
-    if (cssCheckWarned) return;
-    console["warn"]("ProseMirror expects the CSS white-space property to be set, preferably to 'pre-wrap'. It is recommended to load style/prosemirror.css from the prosemirror-view package.");
-    cssCheckWarned = true;
-  }
-} // Used to work around a Safari Selection/shadow DOM bug
-// Based on https://github.com/codemirror/dev/issues/414 fix
-
-
-function safariShadowSelectionRange(view) {
-  let found;
-
-  function read(event) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    found = event.getTargetRanges()[0];
-  } // Because Safari (at least in 2018-2022) doesn't provide regular
-  // access to the selection inside a shadowRoot, we have to perform a
-  // ridiculous hack to get at it—using `execCommand` to trigger a
-  // `beforeInput` event so that we can read the target range from the
-  // event.
-
-
-  view.dom.addEventListener("beforeinput", read, true);
-  document.execCommand("indent");
-  view.dom.removeEventListener("beforeinput", read, true);
-  let anchorNode = found.startContainer,
-      anchorOffset = found.startOffset;
-  let focusNode = found.endContainer,
-      focusOffset = found.endOffset;
-  let currentAnchor = view.domAtPos(view.state.selection.anchor); // Since such a range doesn't distinguish between anchor and head,
-  // use a heuristic that flips it around if its end matches the
-  // current anchor.
-
-  if (isEquivalentPosition(currentAnchor.node, currentAnchor.offset, focusNode, focusOffset)) [anchorNode, anchorOffset, focusNode, focusOffset] = [focusNode, focusOffset, anchorNode, anchorOffset];
-  return {
-    anchorNode,
-    anchorOffset,
-    focusNode,
-    focusOffset
-  };
+  if (cssChecked) return;
+  cssChecked = true;
+  if (getComputedStyle(view.dom).whiteSpace == "normal") console["warn"]("ProseMirror expects the CSS white-space property to be set, preferably to 'pre-wrap'. It is recommended to load style/prosemirror.css from the prosemirror-view package.");
 } // Note that all referencing and parsing is done with the
 // start-of-operation selection and document, since that's the one
 // that the DOM represents. If any changes came in in the meantime,
@@ -30759,7 +32836,7 @@ function parseBetween(view, from_, to_) {
     from,
     to
   } = view.docView.parseRange(from_, to_);
-  let domSel = view.domSelectionRange();
+  let domSel = view.domSelection();
   let find;
   let anchor = domSel.anchorNode;
 
@@ -30872,7 +32949,18 @@ function readDOMChange(view, from, to, typeOver, addedNodes) {
   from = $before.before(shared + 1);
   to = view.state.doc.resolve(to).after(shared + 1);
   let sel = view.state.selection;
-  let parse = parseBetween(view, from, to);
+  let parse = parseBetween(view, from, to); // Chrome sometimes leaves the cursor before the inserted text when
+  // composing after a cursor wrapper. This moves it forward.
+
+  if (chrome && view.cursorWrapper && parse.sel && parse.sel.anchor == view.cursorWrapper.deco.from) {
+    let text = view.cursorWrapper.deco.type.toDOM.nextSibling;
+    let size = text && text.nodeValue ? text.nodeValue.length : 1;
+    parse.sel = {
+      anchor: parse.sel.anchor + size,
+      head: parse.sel.anchor + size
+    };
+  }
+
   let doc = view.state.doc,
       compare = doc.slice(parse.from, parse.to);
   let preferredPos, preferredSide; // Prefer anchoring to end when Backspace is pressed
@@ -30888,7 +32976,7 @@ function readDOMChange(view, from, to, typeOver, addedNodes) {
   view.input.lastKeyCode = null;
   let change = findDiff(compare.content, parse.doc.content, parse.from, preferredPos, preferredSide);
 
-  if ((ios && view.input.lastIOSEnter > Date.now() - 225 || android) && addedNodes.some(n => n.nodeName == "DIV" || n.nodeName == "P" || n.nodeName == "LI") && (!change || change.endA >= change.endB) && view.someProp("handleKeyDown", f => f(view, keyEvent(13, "Enter")))) {
+  if ((ios && view.input.lastIOSEnter > Date.now() - 225 || android) && addedNodes.some(n => n.nodeName == "DIV" || n.nodeName == "P") && (!change || change.endA >= change.endB) && view.someProp("handleKeyDown", f => f(view, keyEvent(13, "Enter")))) {
     view.input.lastIOSEnter = 0;
     return;
   }
@@ -30908,16 +32996,6 @@ function readDOMChange(view, from, to, typeOver, addedNodes) {
 
       return;
     }
-  } // Chrome sometimes leaves the cursor before the inserted text when
-  // composing after a cursor wrapper. This moves it forward.
-
-
-  if (chrome && view.cursorWrapper && parse.sel && parse.sel.anchor == view.cursorWrapper.deco.from && parse.sel.head == parse.sel.anchor) {
-    let size = change.endB - change.start;
-    parse.sel = {
-      anchor: parse.sel.anchor + size,
-      head: parse.sel.anchor + size
-    };
   }
 
   view.input.domChangeCount++; // Handle the case where overwriting a selection by typing matches
@@ -31205,13 +33283,6 @@ class EditorView {
     this.prevDirectPlugins = [];
     this.pluginViews = [];
     /**
-    Holds `true` when a hack node is needed in Firefox to prevent the
-    [space is eaten issue](https://github.com/ProseMirror/prosemirror/issues/651)
-    @internal
-    */
-
-    this.requiresGeckoHackNode = false;
-    /**
     When editor content is being dragged, this object contains
     information about the dragged slice and whether it is being
     copied or moved. At any other time, it is null.
@@ -31273,7 +33344,6 @@ class EditorView {
 
   update(props) {
     if (props.handleDOMEvents != this._props.handleDOMEvents) ensureListeners(this);
-    let prevProps = this._props;
     this._props = props;
 
     if (props.plugins) {
@@ -31281,7 +33351,7 @@ class EditorView {
       this.directPlugins = props.plugins;
     }
 
-    this.updateStateInner(props.state, prevProps);
+    this.updateStateInner(props.state, true);
   }
   /**
   Update the view by updating existing props object with the object
@@ -31308,10 +33378,10 @@ class EditorView {
 
 
   updateState(state) {
-    this.updateStateInner(state, this._props);
+    this.updateStateInner(state, this.state.plugins != state.plugins);
   }
 
-  updateStateInner(state, prevProps) {
+  updateStateInner(state, reconfigured) {
     let prev = this.state,
         redraw = false,
         updateSel = false; // When stored marks are added, stop composition, so that they can
@@ -31323,18 +33393,15 @@ class EditorView {
     }
 
     this.state = state;
-    let pluginsChanged = prev.plugins != state.plugins || this._props.plugins != prevProps.plugins;
 
-    if (pluginsChanged || this._props.plugins != prevProps.plugins || this._props.nodeViews != prevProps.nodeViews) {
+    if (reconfigured) {
       let nodeViews = buildNodeViews(this);
 
       if (changedNodeViews(nodeViews, this.nodeViews)) {
         this.nodeViews = nodeViews;
         redraw = true;
       }
-    }
 
-    if (pluginsChanged || prevProps.handleDOMEvents != this._props.handleDOMEvents) {
       ensureListeners(this);
     }
 
@@ -31342,7 +33409,7 @@ class EditorView {
     updateCursorWrapper(this);
     let innerDeco = viewDecorations(this),
         outerDeco = computeDocDeco(this);
-    let scroll = prev.plugins != state.plugins && !prev.doc.eq(state.doc) ? "reset" : state.scrollToSelection > prev.scrollToSelection ? "to selection" : "preserve";
+    let scroll = reconfigured ? "reset" : state.scrollToSelection > prev.scrollToSelection ? "to selection" : "preserve";
     let updateDoc = redraw || !this.docView.matchesNode(state.doc, outerDeco, innerDeco);
     if (updateDoc || !state.selection.eq(prev.selection)) updateSel = true;
     let oldScrollPos = scroll == "preserve" && updateSel && this.dom.style.overflowAnchor == null && storeScrollPos(this);
@@ -31361,7 +33428,7 @@ class EditorView {
         // Chrome sometimes starts misreporting the selection, so this
         // tracks that and forces a selection reset when our update
         // did write to the node.
-        let chromeKludge = chrome ? this.trackWrites = this.domSelectionRange().focusNode : null;
+        let chromeKludge = chrome ? this.trackWrites = this.domSelection().focusNode : null;
 
         if (redraw || !this.docView.update(state.doc, outerDeco, innerDeco, this)) {
           this.docView.updateOuterDeco([]);
@@ -31376,7 +33443,7 @@ class EditorView {
       // drag selection.
 
 
-      if (forceSelUpdate || !(this.input.mouseDown && this.domObserver.currentSelection.eq(this.domSelectionRange()) && anchorInRightPlace(this))) {
+      if (forceSelUpdate || !(this.input.mouseDown && this.domObserver.currentSelection.eq(this.domSelection()) && anchorInRightPlace(this))) {
         selectionToDOM(this, forceSelUpdate);
       } else {
         syncNodeSelection(this, state.selection);
@@ -31391,23 +33458,15 @@ class EditorView {
     if (scroll == "reset") {
       this.dom.scrollTop = 0;
     } else if (scroll == "to selection") {
-      this.scrollToSelection();
+      let startDOM = this.domSelection().focusNode;
+      if (this.someProp("handleScrollToSelection", f => f(this))) ;else if (state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .NodeSelection */ .qv) {
+        let target = this.docView.domAfterPos(state.selection.from);
+        if (target.nodeType == 1) scrollRectIntoView(this, target.getBoundingClientRect(), startDOM);
+      } else {
+        scrollRectIntoView(this, this.coordsAtPos(state.selection.head, 1), startDOM);
+      }
     } else if (oldScrollPos) {
       resetScrollPos(oldScrollPos);
-    }
-  }
-  /**
-  @internal
-  */
-
-
-  scrollToSelection() {
-    let startDOM = this.domSelectionRange().focusNode;
-    if (this.someProp("handleScrollToSelection", f => f(this))) ;else if (this.state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__/* .NodeSelection */ .qv) {
-      let target = this.docView.domAfterPos(this.state.selection.from);
-      if (target.nodeType == 1) scrollRectIntoView(this, target.getBoundingClientRect(), startDOM);
-    } else {
-      scrollRectIntoView(this, this.coordsAtPos(this.state.selection.head, 1), startDOM);
     }
   }
 
@@ -31461,24 +33520,6 @@ class EditorView {
 
 
   hasFocus() {
-    // Work around IE not handling focus correctly if resize handles are shown.
-    // If the cursor is inside an element with resize handles, activeElement
-    // will be that element instead of this.dom.
-    if (ie) {
-      // If activeElement is within this.dom, and there are no other elements
-      // setting `contenteditable` to false in between, treat it as focused.
-      let node = this.root.activeElement;
-      if (node == this.dom) return true;
-      if (!node || !this.dom.contains(node)) return false;
-
-      while (node && this.dom != node && this.dom.contains(node)) {
-        if (node.contentEditable == 'false') return false;
-        node = node.parentElement;
-      }
-
-      return true;
-    }
-
     return this.root.activeElement == this.dom;
   }
   /**
@@ -31651,14 +33692,6 @@ class EditorView {
   dispatch(tr) {
     let dispatchTransaction = this._props.dispatchTransaction;
     if (dispatchTransaction) dispatchTransaction.call(this, tr);else this.updateState(this.state.apply(tr));
-  }
-  /**
-  @internal
-  */
-
-
-  domSelectionRange() {
-    return safari && this.root.nodeType === 11 && deepActiveElement(this.dom.ownerDocument) == this.dom ? safariShadowSelectionRange(this) : this.domSelection();
   }
   /**
   @internal
