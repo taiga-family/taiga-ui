@@ -657,10 +657,10 @@ let ExampleTuiScrollbarComponent = /*#__PURE__*/(() => {
       let i18n_4;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2918213628236685523$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SCROLLBAR_SCROLLBAR_COMPONENT_TS__5 = goog.getMsg("Native scrollbar is hidden to keep native platform scroll expirience");
-        i18n_4 = MSG_EXTERNAL_2918213628236685523$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SCROLLBAR_SCROLLBAR_COMPONENT_TS__5;
+        const MSG_EXTERNAL_2363672951120721799$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SCROLLBAR_SCROLLBAR_COMPONENT_TS__5 = goog.getMsg("Native scrollbar is hidden to keep native platform scroll experience");
+        i18n_4 = MSG_EXTERNAL_2363672951120721799$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_SCROLLBAR_SCROLLBAR_COMPONENT_TS__5;
       } else {
-        i18n_4 = $localize`:␟270c70ee3992900efbc8eaa652db953149e7adee␟2918213628236685523:Native scrollbar is hidden to keep native platform scroll expirience`;
+        i18n_4 = $localize`:␟ad54b4ab0c52ec48a7847db8795825f27d4cb81e␟2363672951120721799:Native scrollbar is hidden to keep native platform scroll experience`;
       }
 
       let i18n_6;
