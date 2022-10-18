@@ -555,6 +555,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `components/input-year`,
+        loadChildren: async () =>
+            (await import(`../components/input-year/input-year.module`))
+                .ExampleInputYearModule,
+        data: {
+            title: `InputYear`,
+        },
+    },
+    {
         path: `components/island`,
         loadChildren: async () =>
             (await import(`../components/island/island.module`)).ExampleTuiIslandModule,

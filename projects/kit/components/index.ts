@@ -33,6 +33,7 @@ export * from '@taiga-ui/kit/components/input-range';
 export * from '@taiga-ui/kit/components/input-slider';
 export * from '@taiga-ui/kit/components/input-tag';
 export * from '@taiga-ui/kit/components/input-time';
+export * from '@taiga-ui/kit/components/input-year';
 export * from '@taiga-ui/kit/components/island';
 export * from '@taiga-ui/kit/components/line-clamp';
 export * from '@taiga-ui/kit/components/marker-icon';
