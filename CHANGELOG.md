@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.66.1](https://github.com/tinkoff/taiga-ui/compare/v2.66.0...v2.66.1) (2022-10-18)
+
+### Bug Fixes
+
+- **addon-editor:** revert some breaking packages ([#2923](https://github.com/tinkoff/taiga-ui/issues/2923))
+  ([e57d70b](https://github.com/tinkoff/taiga-ui/commit/e57d70b7a5d746333edf58e012a0000daf11e93f))
+
 ## [2.66.0](https://github.com/tinkoff/taiga-ui/compare/v2.65.0...v2.66.0) (2022-10-18)
 
 ### Features
