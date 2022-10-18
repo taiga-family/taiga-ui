@@ -13240,7 +13240,7 @@ const CHAR_CURRENCY_SIGN = `\u00A4`;
 
 const CHAR_ZERO_WIDTH_SPACE = `\u200B`;
 ;// CONCATENATED MODULE: ./projects/cdk/constants/version.ts
-const TUI_VERSION = `3.7.0`;
+const TUI_VERSION = `3.7.1`;
 ;// CONCATENATED MODULE: ./projects/cdk/constants/index.ts
 
 
@@ -26182,7 +26182,7 @@ let TuiRootComponent = /*#__PURE__*/(() => {
   TuiRootComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_9__/* ["ɵɵdefineComponent"] */ .Xpm({
     type: TuiRootComponent,
     selectors: [["tui-root"]],
-    hostAttrs: ["data-tui-version", "3.7.0"],
+    hostAttrs: ["data-tui-version", "3.7.1"],
     hostVars: 2,
     hostBindings: function TuiRootComponent_HostBindings(rf, ctx) {
       if (rf & 1) {
