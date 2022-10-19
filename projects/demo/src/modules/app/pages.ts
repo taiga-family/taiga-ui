@@ -573,7 +573,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: `InputYear`,
-                keywords: `поле, инпут, форма, ввод, input, month, месяц, год, дата`,
+                keywords: `поле, инпут, форма, ввод, input, год, дата`,
                 route: `/components/input-year`,
             },
             {
