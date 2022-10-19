@@ -110,10 +110,6 @@ export class TuiPrimitiveCalendarComponent {
         return null;
     }
 
-    getDataType(item: TuiDay, handler: TuiHandler<TuiDay, string>): string {
-        return handler(item);
-    }
-
     getItemRange(item: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
