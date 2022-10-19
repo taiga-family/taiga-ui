@@ -1,0 +1,41 @@
+<tui-hosted-dropdown
+    class="t-hosted"
+    [canOpen]="interactive"
+    [content]="dropdown"
+    [open]="open && interactive"
+    (openChange)="onOpenChange($event)"
+    (click)="toggle()"
+>
+    <tui-primitive-textfield
+        class="t-textfield"
+        [disabled]="computedDisabled"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [tuiTextfieldIcon]="calendarIcon"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
+        [invalid]="computedInvalid"
+        [textMask]="textMaskOptions"
+        [value]="value?.toString() || ''"
+        (valueChange)="onValueChange($event)"
+        (focusedChange)="onFocused($event)"
+    >
+        <ng-content></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
+    </tui-primitive-textfield>
+
+    <ng-template #dropdown>
+        <tui-primitive-year-picker
+            tuiPreventDefault="mousedown"
+            [min]="min | tuiToYear"
+            [max]="max | tuiToYear"
+            [initialItem]="value || initialItem | tuiToYear"
+            [disabledItemHandler]="disabledItemHandler"
+            [value]="value === null ? null : (value | tuiToYear)"
+            (yearClick)="onYearClick($event)"
+        ></tui-primitive-year-picker>
+    </ng-template>
+</tui-hosted-dropdown>
