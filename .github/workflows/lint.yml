@@ -45,7 +45,7 @@ jobs:
         if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' && env.IS_DEPENDABOT == 'false' }}
         run: |
           npm run prettier -- --write
-          TIMING=1 npm run lint -- . --fix
+          npm run lint -- . --fix
           npm run stylelint -- --fix
 
       - name: Only linting files in fork or main branch
