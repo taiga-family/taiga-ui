@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[52411],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[89071],{
 
-/***/ 52411:
+/***/ 89071:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -450,6 +450,47 @@ let TuiCalendarExample4 = /*#__PURE__*/(() => {
   });
   return TuiCalendarExample4;
 })();
+;// CONCATENATED MODULE: ./projects/demo/src/modules/components/calendar/examples/5/index.ts
+
+
+
+
+const handler = day => {
+  if (day.day === 10) {
+    return `holiday`;
+  }
+
+  return day.isWeekend ? `weekend` : `weekday`;
+};
+
+let TuiCalendarExample5 = /*#__PURE__*/(() => {
+  class TuiCalendarExample5 {}
+
+  TuiCalendarExample5.ɵfac = function TuiCalendarExample5_Factory(t) {
+    return new (t || TuiCalendarExample5)();
+  };
+
+  TuiCalendarExample5.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: TuiCalendarExample5,
+    selectors: [["tui-calendar-example-5"]],
+    features: [fesm2015_core/* ɵɵProvidersFeature */._Bn([{
+      provide: core.TUI_DAY_TYPE_HANDLER,
+      useValue: handler
+    }])],
+    decls: 1,
+    vars: 0,
+    template: function TuiCalendarExample5_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelement */._UZ(0, "tui-calendar");
+      }
+    },
+    directives: [calendar_component/* TuiCalendarComponent */.a],
+    styles: ["tui-primitive-calendar [data-type=holiday]{background-color:var(--tui-support-09)}\n"],
+    encapsulation: 2,
+    changeDetection: 0
+  });
+  return TuiCalendarExample5;
+})();
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/demo/demo.component.ts
 var demo_component = __webpack_require__(31823);
 // EXTERNAL MODULE: ./projects/addon-doc/src/components/documentation/documentation.component.ts + 1 modules
@@ -478,21 +519,32 @@ var code_component = __webpack_require__(76349);
 
 
 
+
 function ExampleTuiCalendarComponent_ng_template_1_ng_template_14_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵtext */._uU(0, " Use ");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 10);
     fesm2015_core/* ɵɵtext */._uU(2, " TUI_FIRST_DAY_OF_WEEK ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵtext */._uU(3, " token to change start day of the week (Monday by default). ");
   }
 }
 
-const _c8 = function () {
+function ExampleTuiCalendarComponent_ng_template_1_ng_template_18_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵtext */._uU(0, " Use ");
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "code");
+    fesm2015_core/* ɵɵtext */._uU(2, "TUI_DAY_TYPE_HANDLER");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵtext */._uU(3, " token to change cell's data-type attribute and customize its color. (The default color for Saturday and Sunday is var(--tui-negative)) ");
+  }
+}
+
+const _c10 = function () {
   return ["/components/input-date"];
 };
 
-const _c9 = function () {
+const _c11 = function () {
   return ["/components/input-date-range"];
 };
 
@@ -521,16 +573,22 @@ function ExampleTuiCalendarComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵtemplate */.YNc(14, ExampleTuiCalendarComponent_ng_template_1_ng_template_14_Template, 4, 0, "ng-template", null, 7, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
     fesm2015_core/* ɵɵelement */._UZ(16, "tui-calendar-example-4");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(17, "tui-doc-example", 8);
+    fesm2015_core/* ɵɵtemplate */.YNc(18, ExampleTuiCalendarComponent_ng_template_1_ng_template_18_Template, 4, 0, "ng-template", null, 9, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
+    fesm2015_core/* ɵɵelement */._UZ(20, "tui-calendar-example-5");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
     const _r3 = fesm2015_core/* ɵɵreference */.MAs(15);
 
+    const _r5 = fesm2015_core/* ɵɵreference */.MAs(19);
+
     const ctx_r0 = fesm2015_core/* ɵɵnextContext */.oxw();
     fesm2015_core/* ɵɵadvance */.xp6(2);
-    fesm2015_core/* ɵɵproperty */.Q6J("routerLink", fesm2015_core/* ɵɵpureFunction0 */.DdM(7, _c8));
+    fesm2015_core/* ɵɵproperty */.Q6J("routerLink", fesm2015_core/* ɵɵpureFunction0 */.DdM(9, _c10));
     fesm2015_core/* ɵɵadvance */.xp6(3);
-    fesm2015_core/* ɵɵproperty */.Q6J("routerLink", fesm2015_core/* ɵɵpureFunction0 */.DdM(8, _c9));
+    fesm2015_core/* ɵɵproperty */.Q6J("routerLink", fesm2015_core/* ɵɵpureFunction0 */.DdM(10, _c11));
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example1);
     fesm2015_core/* ɵɵadvance */.xp6(2);
@@ -539,12 +597,14 @@ function ExampleTuiCalendarComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example4)("description", _r3);
+    fesm2015_core/* ɵɵadvance */.xp6(4);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example5)("description", _r5);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 21);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 23);
     fesm2015_core/* ɵɵelement */._UZ(1, "div");
     fesm2015_core/* ɵɵelement */._UZ(2, "strong");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
@@ -553,147 +613,147 @@ function ExampleTuiCalendarComponent_ng_template_2_ng_template_3_Template(rf, ct
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 22);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 24);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 23);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 25);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 24);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 26);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 25);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 27);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 26);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 28);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_9_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 27);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 29);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 28);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 30);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_11_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 29);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 31);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_12_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 30);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 32);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_ng_template_13_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 31);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 33);
   }
 }
 
 function ExampleTuiCalendarComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r17 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r19 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-calendar", 9);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-calendar", 11);
     fesm2015_core/* ɵɵlistener */.NdJ("monthChange", function ExampleTuiCalendarComponent_ng_template_2_Template_tui_calendar_monthChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
-      const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r16.month = $event;
-    })("hoveredItemChange", function ExampleTuiCalendarComponent_ng_template_2_Template_tui_calendar_hoveredItemChange_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r18.hoveredItem = $event;
+      return ctx_r18.month = $event;
+    })("hoveredItemChange", function ExampleTuiCalendarComponent_ng_template_2_Template_tui_calendar_hoveredItemChange_1_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r20.hoveredItem = $event;
     })("dayClick", function ExampleTuiCalendarComponent_ng_template_2_Template_tui_calendar_dayClick_1_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
-      const ctx_r19 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r19.onDayClick($event);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r21.onDayClick($event);
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiCalendarComponent_ng_template_2_ng_template_3_Template, 3, 0, "ng-template", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiCalendarComponent_ng_template_2_ng_template_3_Template, 3, 0, "ng-template", 12);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
-      const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r20.disabledItemHandler = $event;
-    });
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiCalendarComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 11);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
-      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r21.showAdjacent = $event;
-    });
-    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiCalendarComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 12);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r22 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r22.hoveredItem = $event;
+      return ctx_r22.disabledItemHandler = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiCalendarComponent_ng_template_2_ng_template_6_Template, 1, 0, "ng-template", 13);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiCalendarComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 13);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r23.markerHandler = $event;
+      return ctx_r23.showAdjacent = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiCalendarComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 14);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiCalendarComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 14);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r24 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r24.max = $event;
+      return ctx_r24.hoveredItem = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiCalendarComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 15);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiCalendarComponent_ng_template_2_ng_template_6_Template, 1, 0, "ng-template", 15);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r25 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r25.max = $event;
+      return ctx_r25.markerHandler = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(9, ExampleTuiCalendarComponent_ng_template_2_ng_template_9_Template, 1, 0, "ng-template", 16);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_9_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiCalendarComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 16);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r26 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r26.min = $event;
+      return ctx_r26.max = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(10, ExampleTuiCalendarComponent_ng_template_2_ng_template_10_Template, 1, 0, "ng-template", 17);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_10_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiCalendarComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 17);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r27 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r27.min = $event;
+      return ctx_r27.max = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(11, ExampleTuiCalendarComponent_ng_template_2_ng_template_11_Template, 1, 0, "ng-template", 18);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_11_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(9, ExampleTuiCalendarComponent_ng_template_2_ng_template_9_Template, 1, 0, "ng-template", 18);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_9_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r28 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r28.month = $event;
+      return ctx_r28.min = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(12, ExampleTuiCalendarComponent_ng_template_2_ng_template_12_Template, 1, 0, "ng-template", 19);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_12_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
+    fesm2015_core/* ɵɵtemplate */.YNc(10, ExampleTuiCalendarComponent_ng_template_2_ng_template_10_Template, 1, 0, "ng-template", 19);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_10_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
       const ctx_r29 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r29.value = $event;
+      return ctx_r29.min = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(13, ExampleTuiCalendarComponent_ng_template_2_ng_template_13_Template, 1, 0, "ng-template", 20);
+    fesm2015_core/* ɵɵtemplate */.YNc(11, ExampleTuiCalendarComponent_ng_template_2_ng_template_11_Template, 1, 0, "ng-template", 20);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_11_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      const ctx_r30 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r30.month = $event;
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(12, ExampleTuiCalendarComponent_ng_template_2_ng_template_12_Template, 1, 0, "ng-template", 21);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiCalendarComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_12_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      const ctx_r31 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r31.value = $event;
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(13, ExampleTuiCalendarComponent_ng_template_2_ng_template_13_Template, 1, 0, "ng-template", 22);
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
@@ -726,20 +786,20 @@ function ExampleTuiCalendarComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiCalendarComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 32);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 34);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 33);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 35);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 34);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 36);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 35);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 37);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 36);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 38);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -776,6 +836,11 @@ let ExampleTuiCalendarComponent = /*#__PURE__*/(() => {
       this.example4 = {
         TypeScript: __webpack_require__.e(/* import() */ 92432).then(__webpack_require__.t.bind(__webpack_require__, 92432, 17)),
         HTML: __webpack_require__.e(/* import() */ 48887).then(__webpack_require__.t.bind(__webpack_require__, 48887, 17))
+      };
+      this.example5 = {
+        TypeScript: __webpack_require__.e(/* import() */ 5657).then(__webpack_require__.t.bind(__webpack_require__, 5657, 17)),
+        HTML: __webpack_require__.e(/* import() */ 90903).then(__webpack_require__.t.bind(__webpack_require__, 90903, 17)),
+        LESS: __webpack_require__.e(/* import() */ 45575).then(__webpack_require__.t.bind(__webpack_require__, 45575, 17))
       };
       this.showAdjacent = true;
       this.minVariants = [cdk.TUI_FIRST_DAY, new cdk.TuiDay(2017, 2, 5), new cdk.TuiDay(1900, 0, 1)];
@@ -852,149 +917,159 @@ let ExampleTuiCalendarComponent = /*#__PURE__*/(() => {
         i18n_6 = $localize`:␟e061ac5bfcd825eb1f33d30b974df79546114460␟2732752787737094710:Localization`;
       }
 
-      let i18n_10;
+      let i18n_8;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8655647082077231883$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___11 = goog.getMsg("{$startTagDiv}A handler that gets a date and returns true if it is disabled.{$closeTagDiv}{$startTagStrong}Must be a pure function{$closeTagStrong}", {
-          "startTagDiv": "\uFFFD#1\uFFFD",
-          "closeTagDiv": "\uFFFD/#1\uFFFD",
-          "startTagStrong": "\uFFFD#2\uFFFD",
-          "closeTagStrong": "\uFFFD/#2\uFFFD"
-        });
-        i18n_10 = MSG_EXTERNAL_8655647082077231883$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___11;
+        const MSG_EXTERNAL_7701042301555222443$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__9 = goog.getMsg("Color customization");
+        i18n_8 = MSG_EXTERNAL_7701042301555222443$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__9;
       } else {
-        i18n_10 = $localize`:␟a4fe83bc81b7843fa1ef0cc87c170b30b12a3861␟8655647082077231883:${"\uFFFD#1\uFFFD"}:START_TAG_DIV:A handler that gets a date and returns true if it is disabled.${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_DIV:${"\uFFFD#2\uFFFD"}:START_TAG_STRONG:Must be a pure function${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_STRONG:`;
+        i18n_8 = $localize`:␟7c405c0017b9c14c53784c9c91f711c555ee7d1a␟7701042301555222443:Color customization`;
       }
 
       let i18n_12;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_427026901846333904$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___13 = goog.getMsg(" Show adjacent months days ");
-        i18n_12 = MSG_EXTERNAL_427026901846333904$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___13;
+        const MSG_EXTERNAL_8655647082077231883$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___13 = goog.getMsg("{$startTagDiv}A handler that gets a date and returns true if it is disabled.{$closeTagDiv}{$startTagStrong}Must be a pure function{$closeTagStrong}", {
+          "startTagDiv": "\uFFFD#1\uFFFD",
+          "closeTagDiv": "\uFFFD/#1\uFFFD",
+          "startTagStrong": "\uFFFD#2\uFFFD",
+          "closeTagStrong": "\uFFFD/#2\uFFFD"
+        });
+        i18n_12 = MSG_EXTERNAL_8655647082077231883$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___13;
       } else {
-        i18n_12 = $localize`:␟93468ee263f0453e046cd2a7d140d971a77a21d6␟427026901846333904: Show adjacent months days `;
+        i18n_12 = $localize`:␟a4fe83bc81b7843fa1ef0cc87c170b30b12a3861␟8655647082077231883:${"\uFFFD#1\uFFFD"}:START_TAG_DIV:A handler that gets a date and returns true if it is disabled.${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_DIV:${"\uFFFD#2\uFFFD"}:START_TAG_STRONG:Must be a pure function${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_STRONG:`;
       }
 
       let i18n_14;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_285023532423922220$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___15 = goog.getMsg(" Hovered date ");
-        i18n_14 = MSG_EXTERNAL_285023532423922220$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___15;
+        const MSG_EXTERNAL_427026901846333904$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___15 = goog.getMsg(" Show adjacent months days ");
+        i18n_14 = MSG_EXTERNAL_427026901846333904$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___15;
       } else {
-        i18n_14 = $localize`:␟eda1485e51ac095aaacc17acf52331ccf5582c55␟285023532423922220: Hovered date `;
+        i18n_14 = $localize`:␟93468ee263f0453e046cd2a7d140d971a77a21d6␟427026901846333904: Show adjacent months days `;
       }
 
       let i18n_16;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7126872511108805662$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___17 = goog.getMsg(" A handler that gets date and returns null or a tuple with circled marker colors ");
-        i18n_16 = MSG_EXTERNAL_7126872511108805662$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___17;
+        const MSG_EXTERNAL_285023532423922220$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___17 = goog.getMsg(" Hovered date ");
+        i18n_16 = MSG_EXTERNAL_285023532423922220$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___17;
       } else {
-        i18n_16 = $localize`:␟23c9859665a49041525158245d62b03eb6e0bb77␟7126872511108805662: A handler that gets date and returns null or a tuple with circled marker colors `;
+        i18n_16 = $localize`:␟eda1485e51ac095aaacc17acf52331ccf5582c55␟285023532423922220: Hovered date `;
       }
 
       let i18n_18;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_945025041805688144$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___19 = goog.getMsg(" Maximal date to choose ");
-        i18n_18 = MSG_EXTERNAL_945025041805688144$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___19;
+        const MSG_EXTERNAL_7126872511108805662$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___19 = goog.getMsg(" A handler that gets date and returns null or a tuple with circled marker colors ");
+        i18n_18 = MSG_EXTERNAL_7126872511108805662$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___19;
       } else {
-        i18n_18 = $localize`:␟0ec2997ebb79ee39672ca03c45b62d3720263ca6␟945025041805688144: Maximal date to choose `;
+        i18n_18 = $localize`:␟23c9859665a49041525158245d62b03eb6e0bb77␟7126872511108805662: A handler that gets date and returns null or a tuple with circled marker colors `;
       }
 
       let i18n_20;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_4446534518832798635$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___21 = goog.getMsg(" Maximal month to access ");
-        i18n_20 = MSG_EXTERNAL_4446534518832798635$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___21;
+        const MSG_EXTERNAL_945025041805688144$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___21 = goog.getMsg(" Maximal date to choose ");
+        i18n_20 = MSG_EXTERNAL_945025041805688144$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___21;
       } else {
-        i18n_20 = $localize`:␟76712405dc083e287b7d84203f246883bf2195c8␟4446534518832798635: Maximal month to access `;
+        i18n_20 = $localize`:␟0ec2997ebb79ee39672ca03c45b62d3720263ca6␟945025041805688144: Maximal date to choose `;
       }
 
       let i18n_22;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2791094226136211105$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___23 = goog.getMsg(" Minimum date to choose ");
-        i18n_22 = MSG_EXTERNAL_2791094226136211105$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___23;
+        const MSG_EXTERNAL_4446534518832798635$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___23 = goog.getMsg(" Maximal month to access ");
+        i18n_22 = MSG_EXTERNAL_4446534518832798635$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___23;
       } else {
-        i18n_22 = $localize`:␟5e6b74ad89b862a2b83b5d77e43f763b57137112␟2791094226136211105: Minimum date to choose `;
+        i18n_22 = $localize`:␟76712405dc083e287b7d84203f246883bf2195c8␟4446534518832798635: Maximal month to access `;
       }
 
       let i18n_24;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_4181665065525097983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___25 = goog.getMsg(" Minimum month to access ");
-        i18n_24 = MSG_EXTERNAL_4181665065525097983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___25;
+        const MSG_EXTERNAL_2791094226136211105$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___25 = goog.getMsg(" Minimum date to choose ");
+        i18n_24 = MSG_EXTERNAL_2791094226136211105$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___25;
       } else {
-        i18n_24 = $localize`:␟7b0768860406832abc45b69314b993a46a099dc6␟4181665065525097983: Minimum month to access `;
+        i18n_24 = $localize`:␟5e6b74ad89b862a2b83b5d77e43f763b57137112␟2791094226136211105: Minimum date to choose `;
       }
 
       let i18n_26;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3915704723653985372$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___27 = goog.getMsg(" Current month ");
-        i18n_26 = MSG_EXTERNAL_3915704723653985372$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___27;
+        const MSG_EXTERNAL_4181665065525097983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___27 = goog.getMsg(" Minimum month to access ");
+        i18n_26 = MSG_EXTERNAL_4181665065525097983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___27;
       } else {
-        i18n_26 = $localize`:␟cac850ce7e80ef75f9715f1603460f9575f1df49␟3915704723653985372: Current month `;
+        i18n_26 = $localize`:␟7b0768860406832abc45b69314b993a46a099dc6␟4181665065525097983: Minimum month to access `;
       }
 
       let i18n_28;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_2084704973569232503$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___29 = goog.getMsg(" Selected day or range ");
-        i18n_28 = MSG_EXTERNAL_2084704973569232503$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___29;
+        const MSG_EXTERNAL_3915704723653985372$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___29 = goog.getMsg(" Current month ");
+        i18n_28 = MSG_EXTERNAL_3915704723653985372$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___29;
       } else {
-        i18n_28 = $localize`:␟06c2894e3ec228f0e65407118a02fbd4a6947389␟2084704973569232503: Selected day or range `;
+        i18n_28 = $localize`:␟cac850ce7e80ef75f9715f1603460f9575f1df49␟3915704723653985372: Current month `;
       }
 
       let i18n_30;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1956037044112739727$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___31 = goog.getMsg(" Date click ");
-        i18n_30 = MSG_EXTERNAL_1956037044112739727$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___31;
+        const MSG_EXTERNAL_2084704973569232503$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___31 = goog.getMsg(" Selected day or range ");
+        i18n_30 = MSG_EXTERNAL_2084704973569232503$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___31;
       } else {
-        i18n_30 = $localize`:␟30dc64dde7c5b72b981802ac51cffe74453e08c2␟1956037044112739727: Date click `;
+        i18n_30 = $localize`:␟06c2894e3ec228f0e65407118a02fbd4a6947389␟2084704973569232503: Selected day or range `;
       }
 
       let i18n_32;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_9069493769412225703$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__33 = goog.getMsg(" Import {$startTagCode}TuiCalendarModule{$closeTagCode} into a module where you want to use our component ", {
-          "startTagCode": "\uFFFD#4\uFFFD",
-          "closeTagCode": "\uFFFD/#4\uFFFD"
-        });
-        i18n_32 = MSG_EXTERNAL_9069493769412225703$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__33;
+        const MSG_EXTERNAL_1956037044112739727$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___33 = goog.getMsg(" Date click ");
+        i18n_32 = MSG_EXTERNAL_1956037044112739727$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS___33;
       } else {
-        i18n_32 = $localize`:␟a7ee2d166f9049940b6c8619f3c1e4a0e35a5c25␟9069493769412225703: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiCalendarModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
+        i18n_32 = $localize`:␟30dc64dde7c5b72b981802ac51cffe74453e08c2␟1956037044112739727: Date click `;
       }
 
       let i18n_34;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__35 = goog.getMsg("Add to the template:");
-        i18n_34 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__35;
+        const MSG_EXTERNAL_9069493769412225703$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__35 = goog.getMsg(" Import {$startTagCode}TuiCalendarModule{$closeTagCode} into a module where you want to use our component ", {
+          "startTagCode": "\uFFFD#4\uFFFD",
+          "closeTagCode": "\uFFFD/#4\uFFFD"
+        });
+        i18n_34 = MSG_EXTERNAL_9069493769412225703$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__35;
       } else {
-        i18n_34 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+        i18n_34 = $localize`:␟a7ee2d166f9049940b6c8619f3c1e4a0e35a5c25␟9069493769412225703: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiCalendarModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
       }
 
-      return [["header", "Calendar", "package", "CORE", "type", "components"], ["pageTab", ""], ["tuiLink", "", 3, "routerLink"], ["id", "base", "heading", i18n_0, 3, "content"], ["id", "range", "heading", i18n_2, 3, "content"], ["id", "markers", "heading", i18n_4, 3, "content"], ["id", "localization", "heading", i18n_6, 3, "content", "description"], ["localizationDescription", ""], ["tuiLink", "", "routerLink", "/utils/tokens", "fragment", "first-day-of-week"], [3, "value", "disabledItemHandler", "min", "max", "markerHandler", "minViewedMonth", "maxViewedMonth", "showAdjacent", "month", "hoveredItem", "monthChange", "hoveredItemChange", "dayClick"], ["documentationPropertyName", "disabledItemHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<TuiDay>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "showAdjacent", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hoveredItem", "documentationPropertyMode", "input-output", "documentationPropertyType", "TuiDay | null", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "markerHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMarkerHandler", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "max", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "maxViewedMonth", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "min", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "minViewedMonth", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "month", "documentationPropertyMode", "input-output", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "value", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay | TuiDayRange | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dayClick", "documentationPropertyMode", "output", "documentationPropertyType", "TuiDay"], i18n_10, i18n_12, i18n_14, i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, i18n_28, i18n_30, [1, "b-demo-steps"], i18n_32, ["filename", "myComponent.module.ts", 3, "code"], i18n_34, ["filename", "myComponent.template.html", 3, "code"]];
+      let i18n_36;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__37 = goog.getMsg("Add to the template:");
+        i18n_36 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_CALENDAR_CALENDAR_COMPONENT_TS__37;
+      } else {
+        i18n_36 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+      }
+
+      return [["header", "Calendar", "package", "CORE", "type", "components"], ["pageTab", ""], ["tuiLink", "", 3, "routerLink"], ["id", "base", "heading", i18n_0, 3, "content"], ["id", "range", "heading", i18n_2, 3, "content"], ["id", "markers", "heading", i18n_4, 3, "content"], ["id", "localization", "heading", i18n_6, 3, "content", "description"], ["localizationDescription", ""], ["id", "color", "heading", i18n_8, 3, "content", "description"], ["colorDescription", ""], ["tuiLink", "", "routerLink", "/utils/tokens", "fragment", "first-day-of-week"], [3, "value", "disabledItemHandler", "min", "max", "markerHandler", "minViewedMonth", "maxViewedMonth", "showAdjacent", "month", "hoveredItem", "monthChange", "hoveredItemChange", "dayClick"], ["documentationPropertyName", "disabledItemHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<TuiDay>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "showAdjacent", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hoveredItem", "documentationPropertyMode", "input-output", "documentationPropertyType", "TuiDay | null", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "markerHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMarkerHandler", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "max", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "maxViewedMonth", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "min", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "minViewedMonth", "documentationPropertyMode", "input", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "month", "documentationPropertyMode", "input-output", "documentationPropertyType", "TuiMonth", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "value", "documentationPropertyMode", "input", "documentationPropertyType", "TuiDay | TuiDayRange | null", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "dayClick", "documentationPropertyMode", "output", "documentationPropertyType", "TuiDay"], i18n_12, i18n_14, i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, i18n_28, i18n_30, i18n_32, [1, "b-demo-steps"], i18n_34, ["filename", "myComponent.module.ts", 3, "code"], i18n_36, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiCalendarComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCalendarComponent_ng_template_1_Template, 17, 9, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiCalendarComponent_ng_template_1_Template, 21, 11, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiCalendarComponent_ng_template_2_Template, 14, 27, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiCalendarComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, TuiCalendarExample1, TuiCalendarExample2, TuiCalendarExample3, TuiCalendarExample4, demo_component/* TuiDocDemoComponent */.F, calendar_component/* TuiCalendarComponent */.a, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, link_component/* TuiLinkComponent */.V, router/* RouterLinkWithHref */.yS, example_component/* TuiDocExampleComponent */.f, TuiCalendarExample1, TuiCalendarExample2, TuiCalendarExample3, TuiCalendarExample4, TuiCalendarExample5, demo_component/* TuiDocDemoComponent */.F, calendar_component/* TuiCalendarComponent */.a, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, code_component/* TuiDocCodeComponent */.c],
     encapsulation: 2,
     changeDetection: 0
   });
   return ExampleTuiCalendarComponent;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/calendar/calendar.module.ts
+
 
 
 
@@ -1024,7 +1099,7 @@ let ExampleTuiCalendarModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiCalendarModule, {
-    declarations: [ExampleTuiCalendarComponent, TuiCalendarExample1, TuiCalendarExample2, TuiCalendarExample3, TuiCalendarExample4],
+    declarations: [ExampleTuiCalendarComponent, TuiCalendarExample1, TuiCalendarExample2, TuiCalendarExample3, TuiCalendarExample4, TuiCalendarExample5],
     imports: [common/* CommonModule */.ez, router/* RouterModule */.Bz, core.TuiLinkModule, core.TuiCalendarModule, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
     exports: [ExampleTuiCalendarComponent]
   });
