@@ -9,6 +9,7 @@ import {TuiCalendarExample1} from './examples/1';
 import {TuiCalendarExample2} from './examples/2';
 import {TuiCalendarExample3} from './examples/3';
 import {TuiCalendarExample4} from './examples/4';
+import {TuiCalendarExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import {TuiCalendarExample4} from './examples/4';
         TuiCalendarExample2,
         TuiCalendarExample3,
         TuiCalendarExample4,
+        TuiCalendarExample5,
     ],
     exports: [ExampleTuiCalendarComponent],
 })

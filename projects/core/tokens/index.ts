@@ -3,6 +3,7 @@ export * from './animations-duration';
 export * from './assert-enabled';
 export * from './data-list-accessor';
 export * from './data-list-host';
+export * from './day-type-handler';
 export * from './document-or-shadow-root';
 export * from './element-ref';
 export * from './first-day-of-week';
