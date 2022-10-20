@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[91394],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[5163],{
 
-/***/ 91394:
+/***/ 5163:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -279,6 +279,80 @@ let TuiRadioBlockExample3 = /*#__PURE__*/(() => {
   });
   return TuiRadioBlockExample3;
 })();
+// EXTERNAL MODULE: ./projects/core/components/button/button.component.ts
+var button_component = __webpack_require__(76189);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/components/radio-block/examples/4/index.ts
+
+
+
+
+
+
+
+
+function TuiRadioBlockExample4_tui_radio_block_1_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-radio-block", 2);
+    fesm2015_core/* ɵɵtext */._uU(1);
+    fesm2015_core/* ɵɵelement */._UZ(2, "button", 3);
+    fesm2015_core/* ɵɵelementEnd */.qZA();
+  }
+
+  if (rf & 2) {
+    const item_r1 = ctx.$implicit;
+    fesm2015_core/* ɵɵproperty */.Q6J("item", item_r1)("hideRadio", true);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", item_r1, " ");
+  }
+}
+
+let TuiRadioBlockExample4 = /*#__PURE__*/(() => {
+  class TuiRadioBlockExample4 {
+    constructor() {
+      this.items = [`Kiwi`, `Orange`, `Apple`];
+      this.form = new fesm2015_forms/* FormGroup */.cw({
+        control: new fesm2015_forms/* FormControl */.NI(this.items[1])
+      });
+    }
+
+  }
+
+  TuiRadioBlockExample4.ɵfac = function TuiRadioBlockExample4_Factory(t) {
+    return new (t || TuiRadioBlockExample4)();
+  };
+
+  TuiRadioBlockExample4.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: TuiRadioBlockExample4,
+    selectors: [["tui-radio-block-example-4"]],
+    decls: 5,
+    vars: 6,
+    consts: [["tuiGroup", "", 3, "collapsed", "formGroup"], ["formControlName", "control", "class", "control", 3, "item", "hideRadio", 4, "ngFor", "ngForOf"], ["formControlName", "control", 1, "control", 3, "item", "hideRadio"], ["tuiIconButton", "", "appearance", "icon", "size", "xs", "icon", "tuiIconCloseLarge", "type", "reset", 1, "button"]],
+    template: function TuiRadioBlockExample4_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "form", 0);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, TuiRadioBlockExample4_tui_radio_block_1_Template, 3, 3, "tui-radio-block", 1);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementStart */.TgZ(2, "pre");
+        fesm2015_core/* ɵɵtext */._uU(3);
+        fesm2015_core/* ɵɵpipe */.ALo(4, "json");
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+      }
+
+      if (rf & 2) {
+        fesm2015_core/* ɵɵproperty */.Q6J("collapsed", true)("formGroup", ctx.form);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("ngForOf", ctx.items);
+        fesm2015_core/* ɵɵadvance */.xp6(2);
+        fesm2015_core/* ɵɵtextInterpolate */.Oqu(fesm2015_core/* ɵɵpipeBind1 */.lcZ(4, 4, ctx.form.value));
+      }
+    },
+    directives: [fesm2015_forms/* ɵNgNoValidate */._Y, fesm2015_forms/* NgControlStatusGroup */.JL, group_directive/* TuiGroupDirective */.g, fesm2015_forms/* FormGroupDirective */.sg, common/* NgForOf */.sg, radio_block_component/* TuiRadioBlockComponent */._, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlName */.u, button_component/* TuiButtonComponent */.v],
+    pipes: [common/* JsonPipe */.Ts],
+    styles: [".control[_ngcontent-%COMP%]{flex:initial}.control._active[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]{display:inline-block}.button[_ngcontent-%COMP%]{display:none}"],
+    changeDetection: 0
+  });
+  return TuiRadioBlockExample4;
+})();
 // EXTERNAL MODULE: ./projects/demo/src/modules/components/abstract/control.ts
 var control = __webpack_require__(82880);
 // EXTERNAL MODULE: ./projects/demo/src/modules/components/abstract/inherited-documentation/abstract-props-accessor.ts
@@ -320,6 +394,7 @@ var code_component = __webpack_require__(76349);
 
 
 
+
 function ExampleTuiRadioBlockComponent_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
@@ -334,6 +409,9 @@ function ExampleTuiRadioBlockComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "tui-doc-example", 5);
     fesm2015_core/* ɵɵelement */._UZ(7, "tui-radio-block-example-3");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(8, "tui-doc-example", 6);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-radio-block-example-4");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
@@ -344,19 +422,21 @@ function ExampleTuiRadioBlockComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example2);
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example4);
   }
 }
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 13);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-radio-block", 14);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 14);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-radio-block", 15);
     fesm2015_core/* ɵɵtext */._uU(2, " Oranges ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-radio-block", 15);
+    fesm2015_core/* ɵɵelementStart */.TgZ(3, "tui-radio-block", 16);
     fesm2015_core/* ɵɵtext */._uU(4, " Apples ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(5, "tui-radio-block", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(5, "tui-radio-block", 17);
     fesm2015_core/* ɵɵtext */._uU(6, " Pinapples ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -376,7 +456,7 @@ function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_1_Template(rf, 
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 17);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 18);
     fesm2015_core/* ɵɵelement */._UZ(1, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
   }
@@ -384,19 +464,19 @@ function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_3_Template(rf, 
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 18);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 19);
   }
 }
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 19);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 20);
   }
 }
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 20);
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 21);
     fesm2015_core/* ɵɵelement */._UZ(1, "code");
     fesm2015_core/* ɵɵelement */._UZ(2, "strong");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
@@ -405,13 +485,13 @@ function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_6_Template(rf, 
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 21);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 22);
   }
 }
 
 function ExampleTuiRadioBlockComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 22);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 23);
   }
 }
 
@@ -419,36 +499,36 @@ function ExampleTuiRadioBlockComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
     const _r11 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo", 6);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo", 7);
     fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_1_Template, 7, 34, "ng-template");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_3_Template, 2, 0, "ng-template", 7);
+    fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_3_Template, 2, 0, "ng-template", 8);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiRadioBlockComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r11);
       const ctx_r10 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r10.disabled = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 8);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_4_Template, 1, 0, "ng-template", 9);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiRadioBlockComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r11);
       const ctx_r12 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r12.contentAlign = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 9);
+    fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 10);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiRadioBlockComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r11);
       const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r13.hideRadio = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_6_Template, 3, 0, "ng-template", 10);
-    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_6_Template, 3, 0, "ng-template", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 12);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiRadioBlockComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r11);
       const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r14.pseudoDisabled = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 12);
+    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiRadioBlockComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiRadioBlockComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r11);
       const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -476,29 +556,29 @@ function ExampleTuiRadioBlockComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiRadioBlockComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 23);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 24);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 24);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 25);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 25);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 26);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(8, 26);
+    fesm2015_core/* ɵɵi18nStart */.tHW(8, 27);
     fesm2015_core/* ɵɵelement */._UZ(9, "code");
     fesm2015_core/* ɵɵelement */._UZ(10, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(11, "tui-doc-code", 27);
+    fesm2015_core/* ɵɵelement */._UZ(11, "tui-doc-code", 28);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(12, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(13, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(14, 28);
+    fesm2015_core/* ɵɵi18n */.SDv(14, 29);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(15, "tui-doc-code", 29);
+    fesm2015_core/* ɵɵelement */._UZ(15, "tui-doc-code", 30);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -533,6 +613,10 @@ let ExampleTuiRadioBlockComponent = /*#__PURE__*/(() => {
         TypeScript: __webpack_require__.e(/* import() */ 58041).then(__webpack_require__.t.bind(__webpack_require__, 58041, 17)),
         HTML: __webpack_require__.e(/* import() */ 87059).then(__webpack_require__.t.bind(__webpack_require__, 87059, 17)),
         LESS: __webpack_require__.e(/* import() */ 96706).then(__webpack_require__.t.bind(__webpack_require__, 96706, 17))
+      };
+      this.example4 = {
+        TypeScript: __webpack_require__.e(/* import() */ 26626).then(__webpack_require__.t.bind(__webpack_require__, 26626, 17)),
+        HTML: __webpack_require__.e(/* import() */ 57485).then(__webpack_require__.t.bind(__webpack_require__, 57485, 17))
       };
       this.contentAlignVariants = [`left`, `right`];
       this.contentAlign = this.contentAlignVariants[1];
@@ -613,117 +697,127 @@ let ExampleTuiRadioBlockComponent = /*#__PURE__*/(() => {
       let i18n_8;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_616675194705061558$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___9 = goog.getMsg(" Disabled state (use {$startTagCode}formControl.disable(){$closeTagCode} ) ", {
-          "startTagCode": "\uFFFD#1\uFFFD",
-          "closeTagCode": "\uFFFD/#1\uFFFD"
-        });
-        i18n_8 = MSG_EXTERNAL_616675194705061558$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___9;
+        const MSG_EXTERNAL_7808756054397155068$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__9 = goog.getMsg("Reset");
+        i18n_8 = MSG_EXTERNAL_7808756054397155068$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__9;
       } else {
-        i18n_8 = $localize`:␟f9ccccc44cf2f4f7863a34de68d251cc17ca4072␟616675194705061558: Disabled state (use ${"\uFFFD#1\uFFFD"}:START_TAG_CODE:formControl.disable()${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_CODE: ) `;
+        i18n_8 = $localize`:␟06c663bf1474713f57551123a46b34318543b67d␟7808756054397155068:Reset`;
       }
 
       let i18n_10;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7556849470332146923$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___11 = goog.getMsg(" Radio and content position ");
-        i18n_10 = MSG_EXTERNAL_7556849470332146923$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___11;
+        const MSG_EXTERNAL_616675194705061558$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___11 = goog.getMsg(" Disabled state (use {$startTagCode}formControl.disable(){$closeTagCode} ) ", {
+          "startTagCode": "\uFFFD#1\uFFFD",
+          "closeTagCode": "\uFFFD/#1\uFFFD"
+        });
+        i18n_10 = MSG_EXTERNAL_616675194705061558$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___11;
       } else {
-        i18n_10 = $localize`:␟88a7b9d897656727d609c9545427aae46bb9a2ac␟7556849470332146923: Radio and content position `;
+        i18n_10 = $localize`:␟f9ccccc44cf2f4f7863a34de68d251cc17ca4072␟616675194705061558: Disabled state (use ${"\uFFFD#1\uFFFD"}:START_TAG_CODE:formControl.disable()${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_CODE: ) `;
       }
 
       let i18n_12;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3701523210121040117$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___13 = goog.getMsg(" Hide radio button ");
-        i18n_12 = MSG_EXTERNAL_3701523210121040117$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___13;
+        const MSG_EXTERNAL_7556849470332146923$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___13 = goog.getMsg(" Radio and content position ");
+        i18n_12 = MSG_EXTERNAL_7556849470332146923$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___13;
       } else {
-        i18n_12 = $localize`:␟75e13d6732c8751b9c64251a35591dd8a6d37d1b␟3701523210121040117: Hide radio button `;
+        i18n_12 = $localize`:␟88a7b9d897656727d609c9545427aae46bb9a2ac␟7556849470332146923: Radio and content position `;
       }
 
       let i18n_14;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8367237806229821940$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___15 = goog.getMsg(" Function that matches value and items, e.g. if objects are copied. Uses {$startTagCode}==={$closeTagCode} by default. {$startTagStrong}Must be a pure function{$closeTagStrong}", {
-          "startTagCode": "\uFFFD#1\uFFFD",
-          "closeTagCode": "\uFFFD/#1\uFFFD",
-          "startTagStrong": "\uFFFD#2\uFFFD",
-          "closeTagStrong": "\uFFFD/#2\uFFFD"
-        });
-        i18n_14 = MSG_EXTERNAL_8367237806229821940$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___15;
+        const MSG_EXTERNAL_3701523210121040117$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___15 = goog.getMsg(" Hide radio button ");
+        i18n_14 = MSG_EXTERNAL_3701523210121040117$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___15;
       } else {
-        i18n_14 = $localize`:␟5d5550b6d81d9ae6434fc11a40439f0f0325dd5a␟8367237806229821940: Function that matches value and items, e.g. if objects are copied. Uses ${"\uFFFD#1\uFFFD"}:START_TAG_CODE:===${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_CODE: by default. ${"\uFFFD#2\uFFFD"}:START_TAG_STRONG:Must be a pure function${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_STRONG:`;
+        i18n_14 = $localize`:␟75e13d6732c8751b9c64251a35591dd8a6d37d1b␟3701523210121040117: Hide radio button `;
       }
 
       let i18n_16;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1513617794784776786$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___17 = goog.getMsg(" Emulates disabled state without disabling a form ");
-        i18n_16 = MSG_EXTERNAL_1513617794784776786$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___17;
+        const MSG_EXTERNAL_8367237806229821940$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___17 = goog.getMsg(" Function that matches value and items, e.g. if objects are copied. Uses {$startTagCode}==={$closeTagCode} by default. {$startTagStrong}Must be a pure function{$closeTagStrong}", {
+          "startTagCode": "\uFFFD#1\uFFFD",
+          "closeTagCode": "\uFFFD/#1\uFFFD",
+          "startTagStrong": "\uFFFD#2\uFFFD",
+          "closeTagStrong": "\uFFFD/#2\uFFFD"
+        });
+        i18n_16 = MSG_EXTERNAL_8367237806229821940$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___17;
       } else {
-        i18n_16 = $localize`:␟61196b55644500db48d300daa702002afe0c96f0␟1513617794784776786: Emulates disabled state without disabling a form `;
+        i18n_16 = $localize`:␟5d5550b6d81d9ae6434fc11a40439f0f0325dd5a␟8367237806229821940: Function that matches value and items, e.g. if objects are copied. Uses ${"\uFFFD#1\uFFFD"}:START_TAG_CODE:===${"\uFFFD/#1\uFFFD"}:CLOSE_TAG_CODE: by default. ${"\uFFFD#2\uFFFD"}:START_TAG_STRONG:Must be a pure function${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_STRONG:`;
       }
 
       let i18n_18;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5919257397270847364$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___19 = goog.getMsg(" Size ");
-        i18n_18 = MSG_EXTERNAL_5919257397270847364$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___19;
+        const MSG_EXTERNAL_1513617794784776786$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___19 = goog.getMsg(" Emulates disabled state without disabling a form ");
+        i18n_18 = MSG_EXTERNAL_1513617794784776786$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___19;
       } else {
-        i18n_18 = $localize`:␟179c074c54faa08ac2cd371aae91270430094cb4␟5919257397270847364: Size `;
+        i18n_18 = $localize`:␟61196b55644500db48d300daa702002afe0c96f0␟1513617794784776786: Emulates disabled state without disabling a form `;
       }
 
       let i18n_20;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5213653566296944065$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__21 = goog.getMsg(" Import an Angular module for forms and {$startTagCode}TuiRadioBlockModule{$closeTagCode} in the same module where you want to use our component: ", {
-          "startTagCode": "\uFFFD#4\uFFFD",
-          "closeTagCode": "\uFFFD/#4\uFFFD"
-        });
-        i18n_20 = MSG_EXTERNAL_5213653566296944065$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__21;
+        const MSG_EXTERNAL_5919257397270847364$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___21 = goog.getMsg(" Size ");
+        i18n_20 = MSG_EXTERNAL_5919257397270847364$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS___21;
       } else {
-        i18n_20 = $localize`:␟cface0b380c97c2b9466d291f5f7adc91be35532␟5213653566296944065: Import an Angular module for forms and ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiRadioBlockModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: in the same module where you want to use our component: `;
+        i18n_20 = $localize`:␟179c074c54faa08ac2cd371aae91270430094cb4␟5919257397270847364: Size `;
       }
 
       let i18n_22;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__23 = goog.getMsg(" Declare a form ( {$startTagCode}FormGroup{$closeTagCode} ) or a control ( {$startTagCode}FormControl{$closeTagCode} ) in your component: ", {
-          "startTagCode": "[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]",
-          "closeTagCode": "[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"
+        const MSG_EXTERNAL_5213653566296944065$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__23 = goog.getMsg(" Import an Angular module for forms and {$startTagCode}TuiRadioBlockModule{$closeTagCode} in the same module where you want to use our component: ", {
+          "startTagCode": "\uFFFD#4\uFFFD",
+          "closeTagCode": "\uFFFD/#4\uFFFD"
         });
-        i18n_22 = MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__23;
+        i18n_22 = MSG_EXTERNAL_5213653566296944065$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__23;
       } else {
-        i18n_22 = $localize`:␟456424fe8e0d32d35e8189a73951290607573253␟6039324497180220606: Declare a form ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormGroup${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) or a control ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormControl${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) in your component: `;
+        i18n_22 = $localize`:␟cface0b380c97c2b9466d291f5f7adc91be35532␟5213653566296944065: Import an Angular module for forms and ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiRadioBlockModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: in the same module where you want to use our component: `;
       }
 
-      i18n_22 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_22);
       let i18n_24;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__25 = goog.getMsg("Add to the template:");
-        i18n_24 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__25;
+        const MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__25 = goog.getMsg(" Declare a form ( {$startTagCode}FormGroup{$closeTagCode} ) or a control ( {$startTagCode}FormControl{$closeTagCode} ) in your component: ", {
+          "startTagCode": "[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]",
+          "closeTagCode": "[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"
+        });
+        i18n_24 = MSG_EXTERNAL_6039324497180220606$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__25;
       } else {
-        i18n_24 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+        i18n_24 = $localize`:␟456424fe8e0d32d35e8189a73951290607573253␟6039324497180220606: Declare a form ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormGroup${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) or a control ( ${"[\uFFFD#9\uFFFD|\uFFFD#10\uFFFD]"}:START_TAG_CODE:FormControl${"[\uFFFD/#9\uFFFD|\uFFFD/#10\uFFFD]"}:CLOSE_TAG_CODE: ) in your component: `;
       }
 
-      return [["header", "RadioBlock", "package", "KIT", "type", "components"], ["pageTab", ""], i18n_0, ["id", "sizes", "heading", i18n_2, 3, "content"], ["id", "groups", "heading", i18n_4, 3, "content"], ["id", "custom", "heading", i18n_6, 3, "content"], [3, "control"], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "contentAlign", "documentationPropertyMode", "input", "documentationPropertyType", "TuiHorizontalDirection", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hideRadio", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "identityMatcher", "documentationPropertyMode", "input", "documentationPropertyType", "TuiIdentityMatcher"], ["documentationPropertyName", "pseudoDisabled", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyMode", "input", "documentationPropertyType", "TuiSizeS | TuiSizeL", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["tuiGroup", "", 1, "group", 3, "collapsed"], ["item", "orange", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], ["item", "apple", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], ["item", "pineapple", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], i18n_8, i18n_10, i18n_12, i18n_14, i18n_16, i18n_18, [1, "b-demo-steps"], i18n_20, ["filename", "myComponent.module.ts", 3, "code"], i18n_22, ["filename", "myComponent.component.ts", 3, "code"], i18n_24, ["filename", "myComponent.template.html", 3, "code"]];
+      i18n_24 = fesm2015_core/* ɵɵi18nPostprocess */.Zx4(i18n_24);
+      let i18n_26;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__27 = goog.getMsg("Add to the template:");
+        i18n_26 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_RADIO_BLOCK_RADIO_BLOCK_COMPONENT_TS__27;
+      } else {
+        i18n_26 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+      }
+
+      return [["header", "RadioBlock", "package", "KIT", "type", "components"], ["pageTab", ""], i18n_0, ["id", "sizes", "heading", i18n_2, 3, "content"], ["id", "groups", "heading", i18n_4, 3, "content"], ["id", "custom", "heading", i18n_6, 3, "content"], ["id", "reset", "heading", i18n_8, 3, "content"], [3, "control"], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "contentAlign", "documentationPropertyMode", "input", "documentationPropertyType", "TuiHorizontalDirection", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "hideRadio", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "identityMatcher", "documentationPropertyMode", "input", "documentationPropertyType", "TuiIdentityMatcher"], ["documentationPropertyName", "pseudoDisabled", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "size", "documentationPropertyMode", "input", "documentationPropertyType", "TuiSizeS | TuiSizeL", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["tuiGroup", "", 1, "group", 3, "collapsed"], ["item", "orange", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], ["item", "apple", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], ["item", "pineapple", 3, "formControl", "contentAlign", "hideRadio", "pseudoInvalid", "pseudoFocus", "pseudoHover", "pseudoActive", "pseudoDisabled", "size", "focusable", "readOnly"], i18n_10, i18n_12, i18n_14, i18n_16, i18n_18, i18n_20, [1, "b-demo-steps"], i18n_22, ["filename", "myComponent.module.ts", 3, "code"], i18n_24, ["filename", "myComponent.component.ts", 3, "code"], i18n_26, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiRadioBlockComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiRadioBlockComponent_ng_template_1_Template, 8, 3, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiRadioBlockComponent_ng_template_1_Template, 10, 4, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiRadioBlockComponent_ng_template_2_Template, 10, 8, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiRadioBlockComponent_ng_template_3_Template, 16, 3, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiRadioBlockExample1, TuiRadioBlockExample2, TuiRadioBlockExample3, demo_component/* TuiDocDemoComponent */.F, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, inherited_documentation_component/* InheritedDocumentationComponent */.w, group_directive/* TuiGroupDirective */.g, radio_block_component/* TuiRadioBlockComponent */._, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiRadioBlockExample1, TuiRadioBlockExample2, TuiRadioBlockExample3, TuiRadioBlockExample4, demo_component/* TuiDocDemoComponent */.F, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, inherited_documentation_component/* InheritedDocumentationComponent */.w, group_directive/* TuiGroupDirective */.g, radio_block_component/* TuiRadioBlockComponent */._, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlDirective */.oH, code_component/* TuiDocCodeComponent */.c],
     encapsulation: 2,
     changeDetection: 0
   });
   return ExampleTuiRadioBlockComponent;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/radio-block/radio-block.module.ts
+
 
 
 
@@ -755,7 +849,7 @@ let ExampleTuiRadioBlockModule = /*#__PURE__*/(() => {
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiRadioBlockModule, {
-    declarations: [TuiRadioBlockExample1, TuiRadioBlockExample2, TuiRadioBlockExample3, ExampleTuiRadioBlockComponent],
+    declarations: [TuiRadioBlockExample1, TuiRadioBlockExample2, TuiRadioBlockExample3, TuiRadioBlockExample4, ExampleTuiRadioBlockComponent],
     imports: [common/* CommonModule */.ez, fesm2015_forms/* FormsModule */.u5, kit.TuiRadioBlockModule, fesm2015_forms/* ReactiveFormsModule */.UX, kit.TuiAvatarModule, kit.TuiRadioListModule, core.TuiButtonModule, core.TuiGroupModule, core.TuiTooltipModule, inherited_documentation_module/* InheritedDocumentationModule */.f, public_api/* TuiAddonDocModule */.fV, router/* RouterModule */.Bz],
     exports: [ExampleTuiRadioBlockComponent]
   });

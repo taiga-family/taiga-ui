@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[80312],{
+(self["webpackChunk_taiga_ui_components"] = self["webpackChunk_taiga_ui_components"] || []).push([[91626],{
 
 /***/ 89104:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -278,7 +278,7 @@ const ABSTRACT_PROPS_ACCESSOR = new _angular_core__WEBPACK_IMPORTED_MODULE_0__/*
 
 /***/ }),
 
-/***/ 80312:
+/***/ 91626:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -772,6 +772,128 @@ let TuiHostedDropdownExample3 = /*#__PURE__*/(() => {
   });
   return TuiHostedDropdownExample3;
 })();
+// EXTERNAL MODULE: ./projects/kit/components/multi-select/multi-select-group/multi-select-group.directive.ts
+var multi_select_group_directive = __webpack_require__(20501);
+// EXTERNAL MODULE: ./projects/cdk/directives/prevent-default/prevent-default.directive.ts
+var prevent_default_directive = __webpack_require__(13176);
+;// CONCATENATED MODULE: ./projects/demo/src/modules/components/hosted-dropdown/examples/4/index.ts
+
+
+
+
+
+
+
+
+
+
+function TuiHostedDropdownExample4_ng_template_4_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelement */._UZ(0, "tui-data-list-wrapper", 5);
+  }
+
+  if (rf & 2) {
+    const ctx_r1 = fesm2015_core/* ɵɵnextContext */.oxw();
+    fesm2015_core/* ɵɵproperty */.Q6J("items", ctx_r1.items);
+  }
+}
+
+function TuiHostedDropdownExample4_ng_template_6_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵelement */._UZ(0, "button", 6);
+  }
+}
+
+let TuiHostedDropdownExample4 = /*#__PURE__*/(() => {
+  class TuiHostedDropdownExample4 {
+    constructor() {
+      this.form = new fesm2015_forms/* FormGroup */.cw({
+        control: new fesm2015_forms/* FormControl */.NI([])
+      });
+      this.open = false;
+      this.items = [`Drafts`, `In Progress`, `Completed`];
+      this.arrow = kit.TUI_ARROW;
+    }
+
+    get value() {
+      var _a;
+
+      return ((_a = this.form.get(`control`)) === null || _a === void 0 ? void 0 : _a.value) || [];
+    }
+
+    get appearance() {
+      return this.length ? `whiteblock-active` : `whiteblock`;
+    }
+
+    get length() {
+      return this.value.length || 0;
+    }
+
+    get text() {
+      switch (this.length) {
+        case 0:
+          return `Select`;
+
+        case 1:
+          return this.value[0];
+
+        default:
+          return `${this.length} selected`;
+      }
+    }
+
+  }
+
+  TuiHostedDropdownExample4.ɵfac = function TuiHostedDropdownExample4_Factory(t) {
+    return new (t || TuiHostedDropdownExample4)();
+  };
+
+  TuiHostedDropdownExample4.ɵcmp = /*@__PURE__*/fesm2015_core/* ɵɵdefineComponent */.Xpm({
+    type: TuiHostedDropdownExample4,
+    selectors: [["tui-hosted-dropdown-example-4"]],
+    decls: 8,
+    vars: 8,
+    consts: [[3, "formGroup"], [3, "content", "open", "openChange"], ["tuiButton", "", 3, "appearance", "iconRight", "keydown.delete"], ["dropdown", ""], ["cleaner", ""], ["tuiMultiSelectGroup", "", "formControlName", "control", 3, "items"], ["tuiIconButton", "", "appearance", "icon", "size", "xs", "icon", "tuiIconCloseLarge", "type", "reset", "tuiPreventDefault", "mousedown"]],
+    template: function TuiHostedDropdownExample4_Template(rf, ctx) {
+      if (rf & 1) {
+        fesm2015_core/* ɵɵelementStart */.TgZ(0, "form", 0);
+        fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-hosted-dropdown", 1);
+        fesm2015_core/* ɵɵlistener */.NdJ("openChange", function TuiHostedDropdownExample4_Template_tui_hosted_dropdown_openChange_1_listener($event) {
+          return ctx.open = $event;
+        });
+        fesm2015_core/* ɵɵelementStart */.TgZ(2, "button", 2);
+        fesm2015_core/* ɵɵlistener */.NdJ("keydown.delete", function TuiHostedDropdownExample4_Template_button_keydown_delete_2_listener() {
+          return ctx.form.reset();
+        });
+        fesm2015_core/* ɵɵtext */._uU(3);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵtemplate */.YNc(4, TuiHostedDropdownExample4_ng_template_4_Template, 1, 1, "ng-template", null, 3, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
+        fesm2015_core/* ɵɵtemplate */.YNc(6, TuiHostedDropdownExample4_ng_template_6_Template, 1, 0, "ng-template", null, 4, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+        fesm2015_core/* ɵɵelementEnd */.qZA();
+      }
+
+      if (rf & 2) {
+        const _r0 = fesm2015_core/* ɵɵreference */.MAs(5);
+
+        const _r2 = fesm2015_core/* ɵɵreference */.MAs(7);
+
+        fesm2015_core/* ɵɵproperty */.Q6J("formGroup", ctx.form);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵproperty */.Q6J("content", _r0)("open", ctx.open);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵstyleProp */.Udp("--tui-padding", 1.25, "rem");
+        fesm2015_core/* ɵɵproperty */.Q6J("appearance", ctx.appearance)("iconRight", ctx.length ? _r2 : ctx.arrow);
+        fesm2015_core/* ɵɵadvance */.xp6(1);
+        fesm2015_core/* ɵɵtextInterpolate1 */.hij(" ", ctx.text, " ");
+      }
+    },
+    directives: [fesm2015_forms/* ɵNgNoValidate */._Y, fesm2015_forms/* NgControlStatusGroup */.JL, fesm2015_forms/* FormGroupDirective */.sg, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, button_component/* TuiButtonComponent */.v, data_list_wrapper_component/* TuiDataListWrapperComponent */.e, multi_select_group_directive/* TuiMultiSelectGroupDirective */.Q, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* FormControlName */.u, prevent_default_directive/* TuiPreventDefaultDirective */.A],
+    encapsulation: 2,
+    changeDetection: 0
+  });
+  return TuiHostedDropdownExample4;
+})();
 // EXTERNAL MODULE: ./projects/demo/src/modules/components/abstract/dropdown.ts
 var dropdown = __webpack_require__(155);
 // EXTERNAL MODULE: ./projects/demo/src/modules/components/abstract/inherited-documentation/abstract-props-accessor.ts
@@ -819,6 +941,7 @@ var code_component = __webpack_require__(76349);
 
 
 
+
 function ExampleTuiHostedDropdownComponent_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "p");
@@ -843,6 +966,9 @@ function ExampleTuiHostedDropdownComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementStart */.TgZ(12, "tui-doc-example", 6);
     fesm2015_core/* ɵɵelement */._UZ(13, "tui-hosted-dropdown-example-3");
     fesm2015_core/* ɵɵelementEnd */.qZA();
+    fesm2015_core/* ɵɵelementStart */.TgZ(14, "tui-doc-example", 7);
+    fesm2015_core/* ɵɵelement */._UZ(15, "tui-hosted-dropdown-example-4");
+    fesm2015_core/* ɵɵelementEnd */.qZA();
   }
 
   if (rf & 2) {
@@ -853,6 +979,8 @@ function ExampleTuiHostedDropdownComponent_ng_template_1_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example2);
     fesm2015_core/* ɵɵadvance */.xp6(2);
     fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example3);
+    fesm2015_core/* ɵɵadvance */.xp6(2);
+    fesm2015_core/* ɵɵproperty */.Q6J("content", ctx_r0.example4);
   }
 }
 
@@ -860,26 +988,26 @@ function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template(
   if (rf & 1) {
     const _r9 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 13);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "div", 14);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "div");
-    fesm2015_core/* ɵɵi18n */.SDv(2, 14);
+    fesm2015_core/* ɵɵi18n */.SDv(2, 15);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(3, "p", 15);
-    fesm2015_core/* ɵɵelementStart */.TgZ(4, "button", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(3, "p", 16);
+    fesm2015_core/* ɵɵelementStart */.TgZ(4, "button", 17);
     fesm2015_core/* ɵɵlistener */.NdJ("click", function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template_button_click_4_listener() {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r9);
       const ctx_r8 = fesm2015_core/* ɵɵnextContext */.oxw(2);
       return ctx_r8.onClick();
     });
-    fesm2015_core/* ɵɵi18n */.SDv(5, 17);
+    fesm2015_core/* ɵɵi18n */.SDv(5, 18);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelementStart */.TgZ(6, "button", 18);
+    fesm2015_core/* ɵɵelementStart */.TgZ(6, "button", 19);
     fesm2015_core/* ɵɵlistener */.NdJ("click", function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template_button_click_6_listener() {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r9);
       const ctx_r10 = fesm2015_core/* ɵɵnextContext */.oxw(2);
       return ctx_r10.onClick();
     });
-    fesm2015_core/* ɵɵi18n */.SDv(7, 19);
+    fesm2015_core/* ɵɵi18n */.SDv(7, 20);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -888,13 +1016,13 @@ function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template(
 
 function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 20);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 21);
   }
 }
 
 function ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 21);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 22);
   }
 }
 
@@ -909,13 +1037,13 @@ function ExampleTuiHostedDropdownComponent_ng_template_2_Template(rf, ctx) {
     const _r12 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo");
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-hosted-dropdown", 7);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "tui-hosted-dropdown", 8);
     fesm2015_core/* ɵɵlistener */.NdJ("openChange", function ExampleTuiHostedDropdownComponent_ng_template_2_Template_tui_hosted_dropdown_openChange_1_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
       const ctx_r11 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r11.open = $event;
     });
-    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-input", 8);
+    fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-input", 9);
     fesm2015_core/* ɵɵlistener */.NdJ("ngModelChange", function ExampleTuiHostedDropdownComponent_ng_template_2_Template_tui_input_ngModelChange_2_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
       const ctx_r13 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -925,21 +1053,21 @@ function ExampleTuiHostedDropdownComponent_ng_template_2_Template(rf, ctx) {
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template, 8, 0, "ng-template", null, 9, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
+    fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_4_Template, 8, 0, "ng-template", null, 10, fesm2015_core/* ɵɵtemplateRefExtractor */.W1O);
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "tui-doc-documentation");
-    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 10);
+    fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 11);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiHostedDropdownComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
       const ctx_r14 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r14.open = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 11);
+    fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 12);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiHostedDropdownComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
       const ctx_r15 = fesm2015_core/* ɵɵnextContext */.oxw();
       return ctx_r15.canOpenSelected = $event;
     });
-    fesm2015_core/* ɵɵtemplate */.YNc(9, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_9_Template, 1, 0, "ng-template", 12);
+    fesm2015_core/* ɵɵtemplate */.YNc(9, ExampleTuiHostedDropdownComponent_ng_template_2_ng_template_9_Template, 1, 0, "ng-template", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiHostedDropdownComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_9_listener($event) {
       fesm2015_core/* ɵɵrestoreView */.CHM(_r12);
       const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw();
@@ -968,20 +1096,20 @@ function ExampleTuiHostedDropdownComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiHostedDropdownComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 22);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 23);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 23);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 24);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 24);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 25);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 25);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 26);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 26);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 27);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1014,6 +1142,10 @@ let ExampleTuiHostedDropdownComponent = /*#__PURE__*/(() => {
         TypeScript: __webpack_require__.e(/* import() */ 95725).then(__webpack_require__.t.bind(__webpack_require__, 95725, 17)),
         HTML: __webpack_require__.e(/* import() */ 45490).then(__webpack_require__.t.bind(__webpack_require__, 45490, 17)),
         LESS: __webpack_require__.e(/* import() */ 84959).then(__webpack_require__.t.bind(__webpack_require__, 84959, 17))
+      };
+      this.example4 = {
+        TypeScript: __webpack_require__.e(/* import() */ 94611).then(__webpack_require__.t.bind(__webpack_require__, 94611, 17)),
+        HTML: __webpack_require__.e(/* import() */ 22134).then(__webpack_require__.t.bind(__webpack_require__, 22134, 17))
       };
       this.open = false;
       this.input = ``;
@@ -1104,19 +1236,19 @@ let ExampleTuiHostedDropdownComponent = /*#__PURE__*/(() => {
       let i18n_8;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3492793234322048620$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___9 = goog.getMsg("Do you like using Taiga UI?");
-        i18n_8 = MSG_EXTERNAL_3492793234322048620$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___9;
+        const MSG_EXTERNAL_8238498102615651505$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__9 = goog.getMsg("Complex example");
+        i18n_8 = MSG_EXTERNAL_8238498102615651505$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__9;
       } else {
-        i18n_8 = $localize`:␟7df916223beceabaff5ce2c5d10d8c6b6223994f␟3492793234322048620:Do you like using Taiga UI?`;
+        i18n_8 = $localize`:␟ba56eccb063be51dfcadc20d1e302e875b4a4bb4␟8238498102615651505:Complex example`;
       }
 
       let i18n_10;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1986526768401672090$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___11 = goog.getMsg(" Yes ");
-        i18n_10 = MSG_EXTERNAL_1986526768401672090$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___11;
+        const MSG_EXTERNAL_3492793234322048620$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___11 = goog.getMsg("Do you like using Taiga UI?");
+        i18n_10 = MSG_EXTERNAL_3492793234322048620$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___11;
       } else {
-        i18n_10 = $localize`:␟bfd030e3f9532861549e18ac90519715fe79495d␟1986526768401672090: Yes `;
+        i18n_10 = $localize`:␟7df916223beceabaff5ce2c5d10d8c6b6223994f␟3492793234322048620:Do you like using Taiga UI?`;
       }
 
       let i18n_12;
@@ -1131,60 +1263,70 @@ let ExampleTuiHostedDropdownComponent = /*#__PURE__*/(() => {
       let i18n_14;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_6128312972490006384$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___15 = goog.getMsg(" Open/close state ");
-        i18n_14 = MSG_EXTERNAL_6128312972490006384$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___15;
+        const MSG_EXTERNAL_1986526768401672090$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___15 = goog.getMsg(" Yes ");
+        i18n_14 = MSG_EXTERNAL_1986526768401672090$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___15;
       } else {
-        i18n_14 = $localize`:␟a102f9b79d10ce912dd520a7723676aaa1e1db15␟6128312972490006384: Open/close state `;
+        i18n_14 = $localize`:␟bfd030e3f9532861549e18ac90519715fe79495d␟1986526768401672090: Yes `;
       }
 
       let i18n_16;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5861935679849365104$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___17 = goog.getMsg(" A handler to enable/disable opening ");
-        i18n_16 = MSG_EXTERNAL_5861935679849365104$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___17;
+        const MSG_EXTERNAL_6128312972490006384$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___17 = goog.getMsg(" Open/close state ");
+        i18n_16 = MSG_EXTERNAL_6128312972490006384$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___17;
       } else {
-        i18n_16 = $localize`:␟863c6aa88fe2ac1d5c7c7787679d04aeaf6fa6ce␟5861935679849365104: A handler to enable/disable opening `;
+        i18n_16 = $localize`:␟a102f9b79d10ce912dd520a7723676aaa1e1db15␟6128312972490006384: Open/close state `;
       }
 
       let i18n_18;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1923024221701838874$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__19 = goog.getMsg(" Import {$startTagCode}TuiHostedDropdownModule{$closeTagCode} into a module where you want to use our component ", {
-          "startTagCode": "\uFFFD#4\uFFFD",
-          "closeTagCode": "\uFFFD/#4\uFFFD"
-        });
-        i18n_18 = MSG_EXTERNAL_1923024221701838874$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__19;
+        const MSG_EXTERNAL_5861935679849365104$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___19 = goog.getMsg(" A handler to enable/disable opening ");
+        i18n_18 = MSG_EXTERNAL_5861935679849365104$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS___19;
       } else {
-        i18n_18 = $localize`:␟3fd326cbbddd540407cbe67384529cf3299d2dce␟1923024221701838874: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiHostedDropdownModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
+        i18n_18 = $localize`:␟863c6aa88fe2ac1d5c7c7787679d04aeaf6fa6ce␟5861935679849365104: A handler to enable/disable opening `;
       }
 
       let i18n_20;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__21 = goog.getMsg("Add to the template:");
-        i18n_20 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__21;
+        const MSG_EXTERNAL_1923024221701838874$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__21 = goog.getMsg(" Import {$startTagCode}TuiHostedDropdownModule{$closeTagCode} into a module where you want to use our component ", {
+          "startTagCode": "\uFFFD#4\uFFFD",
+          "closeTagCode": "\uFFFD/#4\uFFFD"
+        });
+        i18n_20 = MSG_EXTERNAL_1923024221701838874$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__21;
       } else {
-        i18n_20 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+        i18n_20 = $localize`:␟3fd326cbbddd540407cbe67384529cf3299d2dce␟1923024221701838874: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiHostedDropdownModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
       }
 
-      return [["header", "HostedDropdown", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, i18n_2, ["id", "menu", "heading", "Menu", 3, "content"], ["id", "tuiDropdownHost", "heading", i18n_4, 3, "content"], ["id", "native", "heading", i18n_6, 3, "content"], [3, "content", "canOpen", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "open", "openChange"], [1, "input", 3, "ngModel", "ngModelChange"], ["dropdown", ""], ["documentationPropertyName", "open", "documentationPropertyMode", "input-output", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "canOpen", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "content", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], [1, "dropdown"], i18n_8, [1, "buttons"], ["tuiButton", "", "type", "button", "size", "m", 1, "button", 3, "click"], i18n_10, ["tuiButton", "", "type", "button", "appearance", "secondary", "size", "m", 1, "button", 3, "click"], i18n_12, i18n_14, i18n_16, [1, "b-demo-steps"], i18n_18, ["filename", "myComponent.module.ts", 3, "code"], i18n_20, ["filename", "myComponent.template.html", 3, "code"]];
+      let i18n_22;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__23 = goog.getMsg("Add to the template:");
+        i18n_22 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_HOSTED_DROPDOWN_HOSTED_DROPDOWN_COMPONENT_TS__23;
+      } else {
+        i18n_22 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+      }
+
+      return [["header", "HostedDropdown", "package", "CORE", "type", "components"], ["pageTab", ""], i18n_0, i18n_2, ["id", "menu", "heading", "Menu", 3, "content"], ["id", "tuiDropdownHost", "heading", i18n_4, 3, "content"], ["id", "native", "heading", i18n_6, 3, "content"], ["id", "complex", "heading", i18n_8, 3, "content"], [3, "content", "canOpen", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "open", "openChange"], [1, "input", 3, "ngModel", "ngModelChange"], ["dropdown", ""], ["documentationPropertyName", "open", "documentationPropertyMode", "input-output", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "canOpen", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "content", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], [1, "dropdown"], i18n_10, [1, "buttons"], ["tuiButton", "", "type", "button", "size", "m", 1, "button", 3, "click"], i18n_12, ["tuiButton", "", "type", "button", "appearance", "secondary", "size", "m", 1, "button", 3, "click"], i18n_14, i18n_16, i18n_18, [1, "b-demo-steps"], i18n_20, ["filename", "myComponent.module.ts", 3, "code"], i18n_22, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiHostedDropdownComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
-        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiHostedDropdownComponent_ng_template_1_Template, 14, 3, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiHostedDropdownComponent_ng_template_1_Template, 16, 4, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiHostedDropdownComponent_ng_template_2_Template, 11, 14, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiHostedDropdownComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
     },
-    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiHostedDropdownExample1, TuiHostedDropdownExample2, TuiHostedDropdownExample3, demo_component/* TuiDocDemoComponent */.F, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, dropdown_documentation_component/* DropdownDocumentationComponent */.X, button_component/* TuiButtonComponent */.v, code_component/* TuiDocCodeComponent */.c],
+    directives: [page_component/* TuiDocPageComponent */.q, page_tab_directive/* TuiDocPageTabConnectorDirective */.n, example_component/* TuiDocExampleComponent */.f, TuiHostedDropdownExample1, TuiHostedDropdownExample2, TuiHostedDropdownExample3, TuiHostedDropdownExample4, demo_component/* TuiDocDemoComponent */.F, hosted_dropdown_component/* TuiHostedDropdownComponent */.o, dropdown_options_directive/* TuiDropdownOptionsDirective */.Ek, input_component/* TuiInputComponent */.K, input_directive/* TuiInputDirective */.w, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, documentation_component/* TuiDocDocumentationComponent */.z, documentation_property_connector_directive/* TuiDocDocumentationPropertyConnectorDirective */.B, dropdown_documentation_component/* DropdownDocumentationComponent */.X, button_component/* TuiButtonComponent */.v, code_component/* TuiDocCodeComponent */.c],
     styles: [".input[_ngcontent-%COMP%]{width:15.625rem}.dropdown[_ngcontent-%COMP%]{padding:1.25rem}.buttons[_ngcontent-%COMP%]{display:flex;margin-bottom:0}.button[_ngcontent-%COMP%]{flex:1}.button[_ngcontent-%COMP%]:first-child{margin-right:.75rem}"],
     changeDetection: 0
   });
   return ExampleTuiHostedDropdownComponent;
 })();
 ;// CONCATENATED MODULE: ./projects/demo/src/modules/components/hosted-dropdown/hosted-dropdown.module.ts
+
 
 
 
@@ -1211,15 +1353,15 @@ let ExampleTuiHostedDropdownModule = /*#__PURE__*/(() => {
     type: ExampleTuiHostedDropdownModule
   });
   ExampleTuiHostedDropdownModule.ɵinj = /*@__PURE__*/fesm2015_core/* ɵɵdefineInjector */.cJS({
-    imports: [[common/* CommonModule */.ez, fesm2015_forms/* ReactiveFormsModule */.UX, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, fesm2015_forms/* FormsModule */.u5, core.TuiHostedDropdownModule, core.TuiNotificationModule, kit.TuiTabsModule, kit.TuiInputModule, core.TuiButtonModule, core.TuiGroupModule, core.TuiSvgModule, core.TuiLinkModule, kit.TuiSelectModule, cdk.TuiActiveZoneModule, core.TuiDropdownModule, core.TuiDataListModule, kit.TuiDataListWrapperModule, dropdown_documentation_module/* DropdownDocumentationModule */.F, public_api/* TuiAddonDocModule */.fV, kit.TuiToggleModule, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiHostedDropdownComponent))]]
+    imports: [[common/* CommonModule */.ez, fesm2015_forms/* ReactiveFormsModule */.UX, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, fesm2015_forms/* FormsModule */.u5, core.TuiHostedDropdownModule, core.TuiNotificationModule, kit.TuiTabsModule, kit.TuiInputModule, core.TuiButtonModule, core.TuiGroupModule, core.TuiSvgModule, core.TuiLinkModule, kit.TuiSelectModule, cdk.TuiActiveZoneModule, core.TuiDropdownModule, core.TuiDataListModule, kit.TuiDataListWrapperModule, dropdown_documentation_module/* DropdownDocumentationModule */.F, public_api/* TuiAddonDocModule */.fV, kit.TuiToggleModule, kit.TuiMultiSelectModule, cdk.TuiPreventDefaultModule, router/* RouterModule.forChild */.Bz.forChild((0,public_api/* tuiGenerateRoutes */.Ve)(ExampleTuiHostedDropdownComponent))]]
   });
   return ExampleTuiHostedDropdownModule;
 })();
 
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && fesm2015_core/* ɵɵsetNgModuleScope */.kYT(ExampleTuiHostedDropdownModule, {
-    declarations: [TuiHostedDropdownExample1, TuiHostedDropdownExample2, TuiHostedDropdownExample3, ExampleTuiHostedDropdownComponent],
-    imports: [common/* CommonModule */.ez, fesm2015_forms/* ReactiveFormsModule */.UX, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, fesm2015_forms/* FormsModule */.u5, core.TuiHostedDropdownModule, core.TuiNotificationModule, kit.TuiTabsModule, kit.TuiInputModule, core.TuiButtonModule, core.TuiGroupModule, core.TuiSvgModule, core.TuiLinkModule, kit.TuiSelectModule, cdk.TuiActiveZoneModule, core.TuiDropdownModule, core.TuiDataListModule, kit.TuiDataListWrapperModule, dropdown_documentation_module/* DropdownDocumentationModule */.F, public_api/* TuiAddonDocModule */.fV, kit.TuiToggleModule, router/* RouterModule */.Bz],
+    declarations: [TuiHostedDropdownExample1, TuiHostedDropdownExample2, TuiHostedDropdownExample3, TuiHostedDropdownExample4, ExampleTuiHostedDropdownComponent],
+    imports: [common/* CommonModule */.ez, fesm2015_forms/* ReactiveFormsModule */.UX, tinkoff_ng_polymorpheus/* PolymorpheusModule */.wq, fesm2015_forms/* FormsModule */.u5, core.TuiHostedDropdownModule, core.TuiNotificationModule, kit.TuiTabsModule, kit.TuiInputModule, core.TuiButtonModule, core.TuiGroupModule, core.TuiSvgModule, core.TuiLinkModule, kit.TuiSelectModule, cdk.TuiActiveZoneModule, core.TuiDropdownModule, core.TuiDataListModule, kit.TuiDataListWrapperModule, dropdown_documentation_module/* DropdownDocumentationModule */.F, public_api/* TuiAddonDocModule */.fV, kit.TuiToggleModule, kit.TuiMultiSelectModule, cdk.TuiPreventDefaultModule, router/* RouterModule */.Bz],
     exports: [ExampleTuiHostedDropdownComponent]
   });
 })();
