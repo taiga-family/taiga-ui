@@ -132,23 +132,27 @@
     cursor: pointer;
 
     :host[data-size='xs'] & {
-        padding: 0 @padding-xs;
+        padding: 0 var(--tui-padding, @padding-xs);
+
+        &:after {
+            border-width: 1px;
+        }
     }
 
     :host[data-size='s'] & {
-        padding: 0 @padding-s;
+        padding: 0 var(--tui-padding, @padding-s);
     }
 
     :host[data-size='m'] & {
-        padding: 0 @padding-m;
+        padding: 0 var(--tui-padding, @padding-m);
     }
 
     :host[data-size='l'] & {
-        padding: 0 @padding-l;
+        padding: 0 var(--tui-padding, @padding-l);
     }
 
     :host[data-size='xl'] & {
-        padding: 0 @padding-xl;
+        padding: 0 var(--tui-padding, @padding-xl);
     }
 
     :host[data-shape='square'] &,

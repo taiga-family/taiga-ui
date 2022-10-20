@@ -39,6 +39,11 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
         LESS: import(`./examples/3/index.less?raw`),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+    };
+
     readonly contentAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
 
     contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];

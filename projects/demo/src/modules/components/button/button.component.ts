@@ -48,6 +48,12 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         HTML: import(`./examples/5/index.html?raw`),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import(`./examples/6/index.ts?raw`),
+        HTML: import(`./examples/6/index.html?raw`),
+        LESS: import(`./examples/6/index.less?raw`),
+    };
+
     readonly exampleModule = import(`./examples/import/import-module.md?raw`);
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
     readonly exampleOptions = import(`./examples/import/define-options.md?raw`);
