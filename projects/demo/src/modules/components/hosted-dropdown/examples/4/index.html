@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <tui-hosted-dropdown
+        [content]="dropdown"
+        [(open)]="open"
+    >
+        <button
+            tuiButton
+            [appearance]="appearance"
+            [iconRight]="length ? cleaner : arrow"
+            [style.--tui-padding.rem]="1.25"
+            (keydown.delete)="form.reset()"
+        >
+            {{ text }}
+        </button>
+        <ng-template #dropdown>
+            <tui-data-list-wrapper
+                tuiMultiSelectGroup
+                formControlName="control"
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </ng-template>
+        <ng-template #cleaner>
+            <button
+                tuiIconButton
+                appearance="icon"
+                size="xs"
+                icon="tuiIconCloseLarge"
+                type="reset"
+                tuiPreventDefault="mousedown"
+            ></button>
+        </ng-template>
+    </tui-hosted-dropdown>
+</form>

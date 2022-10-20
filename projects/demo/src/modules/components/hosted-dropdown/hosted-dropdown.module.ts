@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -17,6 +17,7 @@ import {
 import {
     TuiDataListWrapperModule,
     TuiInputModule,
+    TuiMultiSelectModule,
     TuiSelectModule,
     TuiTabsModule,
     TuiToggleModule,
@@ -27,6 +28,7 @@ import {DropdownDocumentationModule} from '../abstract/dropdown-documentation/dr
 import {TuiHostedDropdownExample1} from './examples/1';
 import {TuiHostedDropdownExample2} from './examples/2';
 import {TuiHostedDropdownExample3} from './examples/3';
+import {TuiHostedDropdownExample4} from './examples/4';
 import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
 
 @NgModule({
@@ -51,12 +53,15 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         DropdownDocumentationModule,
         TuiAddonDocModule,
         TuiToggleModule,
+        TuiMultiSelectModule,
+        TuiPreventDefaultModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHostedDropdownComponent)),
     ],
     declarations: [
         TuiHostedDropdownExample1,
         TuiHostedDropdownExample2,
         TuiHostedDropdownExample3,
+        TuiHostedDropdownExample4,
         ExampleTuiHostedDropdownComponent,
     ],
     exports: [ExampleTuiHostedDropdownComponent],

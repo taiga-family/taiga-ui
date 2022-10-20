@@ -10,6 +10,7 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
 import {TuiRadioBlockExample1} from './examples/1';
 import {TuiRadioBlockExample2} from './examples/2';
 import {TuiRadioBlockExample3} from './examples/3';
+import {TuiRadioBlockExample4} from './examples/4';
 import {ExampleTuiRadioBlockComponent} from './radio-block.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import {ExampleTuiRadioBlockComponent} from './radio-block.component';
         TuiRadioBlockExample1,
         TuiRadioBlockExample2,
         TuiRadioBlockExample3,
+        TuiRadioBlockExample4,
         ExampleTuiRadioBlockComponent,
     ],
     exports: [ExampleTuiRadioBlockComponent],

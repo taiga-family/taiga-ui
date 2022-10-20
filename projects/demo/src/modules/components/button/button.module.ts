@@ -22,6 +22,7 @@ import {TuiButtonExample2} from './examples/2';
 import {TuiButtonExample3} from './examples/3';
 import {TuiButtonExample4} from './examples/4';
 import {TuiButtonExample5} from './examples/5';
+import {TuiButtonExample6} from './examples/6';
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import {TuiButtonExample5} from './examples/5';
         TuiButtonExample3,
         TuiButtonExample4,
         TuiButtonExample5,
+        TuiButtonExample6,
     ],
     exports: [ExampleTuiButtonComponent],
 })

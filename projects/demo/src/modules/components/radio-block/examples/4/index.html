@@ -1,0 +1,24 @@
+<form
+    tuiGroup
+    [collapsed]="true"
+    [formGroup]="form"
+>
+    <tui-radio-block
+        *ngFor="let item of items"
+        formControlName="control"
+        class="control"
+        [item]="item"
+        [hideRadio]="true"
+    >
+        {{ item }}
+        <button
+            tuiIconButton
+            appearance="icon"
+            size="xs"
+            icon="tuiIconCloseLarge"
+            type="reset"
+            class="button"
+        ></button>
+    </tui-radio-block>
+</form>
+<pre>{{ form.value | json }}</pre>
