@@ -651,13 +651,13 @@ function ExampleTuiInputTagComponent_ng_template_1_Template(rf, ctx) {
 
 function ExampleTuiInputTagComponent_ng_template_2_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r17 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r18 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-input-tag", 24);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-input-tag", 25);
     fesm2015_core/* ɵɵlistener */.NdJ("searchChange", function ExampleTuiInputTagComponent_ng_template_2_ng_template_1_Template_tui_input_tag_searchChange_0_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r17);
-      const ctx_r16 = fesm2015_core/* ɵɵnextContext */.oxw(2);
-      return ctx_r16.search = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r18);
+      const ctx_r17 = fesm2015_core/* ɵɵnextContext */.oxw(2);
+      return ctx_r17.search = $event;
     });
     fesm2015_core/* ɵɵtext */._uU(1, " Please enter Pythons' names ");
     fesm2015_core/* ɵɵelementEnd */.qZA();
@@ -665,19 +665,11 @@ function ExampleTuiInputTagComponent_ng_template_2_ng_template_1_Template(rf, ct
 
   if (rf & 2) {
     const ctx_r5 = fesm2015_core/* ɵɵnextContext */.oxw(2);
-    fesm2015_core/* ɵɵproperty */.Q6J("formControl", ctx_r5.control)("tuiDropdownAlign", ctx_r5.dropdownAlign)("tuiDropdownDirection", ctx_r5.dropdownDirection)("tuiDropdownLimitWidth", ctx_r5.dropdownLimitWidth)("tuiDropdownMinHeight", ctx_r5.dropdownMinHeight)("tuiDropdownMaxHeight", ctx_r5.dropdownMaxHeight)("tuiHintContent", ctx_r5.hintContent)("tuiHintDirection", ctx_r5.hintDirection)("tuiHintAppearance", ctx_r5.hintAppearance)("tuiTextfieldIcon", ctx_r5.icon)("tuiTextfieldIconLeft", ctx_r5.iconLeft)("tuiTextfieldCleaner", ctx_r5.cleaner)("tuiTextfieldLabelOutside", ctx_r5.labelOutside)("tuiTextfieldSize", ctx_r5.size)("focusable", ctx_r5.focusable)("disabledItemHandler", ctx_r5.disabledItemHandler)("editable", ctx_r5.editable)("expandable", ctx_r5.expandable)("uniqueTags", ctx_r5.uniqueTags)("separator", ctx_r5.separator)("readOnly", ctx_r5.readOnly)("tagValidator", ctx_r5.tagValidator)("inputHidden", ctx_r5.inputHidden)("pseudoHover", ctx_r5.pseudoHovered)("pseudoActive", ctx_r5.pseudoPressed)("pseudoFocus", ctx_r5.pseudoFocused)("pseudoInvalid", ctx_r5.pseudoInvalid)("search", ctx_r5.search);
+    fesm2015_core/* ɵɵproperty */.Q6J("formControl", ctx_r5.control)("tuiDropdownAlign", ctx_r5.dropdownAlign)("tuiDropdownDirection", ctx_r5.dropdownDirection)("tuiDropdownLimitWidth", ctx_r5.dropdownLimitWidth)("tuiDropdownMinHeight", ctx_r5.dropdownMinHeight)("tuiDropdownMaxHeight", ctx_r5.dropdownMaxHeight)("tuiHintContent", ctx_r5.hintContent)("tuiHintDirection", ctx_r5.hintDirection)("tuiHintAppearance", ctx_r5.hintAppearance)("tuiTextfieldIcon", ctx_r5.icon)("tuiTextfieldIconLeft", ctx_r5.iconLeft)("tuiTextfieldCleaner", ctx_r5.cleaner)("tuiTextfieldLabelOutside", ctx_r5.labelOutside)("tuiTextfieldSize", ctx_r5.size)("maxLength", ctx_r5.maxLength)("focusable", ctx_r5.focusable)("disabledItemHandler", ctx_r5.disabledItemHandler)("editable", ctx_r5.editable)("expandable", ctx_r5.expandable)("uniqueTags", ctx_r5.uniqueTags)("separator", ctx_r5.separator)("readOnly", ctx_r5.readOnly)("tagValidator", ctx_r5.tagValidator)("inputHidden", ctx_r5.inputHidden)("pseudoHover", ctx_r5.pseudoHovered)("pseudoActive", ctx_r5.pseudoPressed)("pseudoFocus", ctx_r5.pseudoFocused)("pseudoInvalid", ctx_r5.pseudoInvalid)("search", ctx_r5.search);
   }
 }
 
 function ExampleTuiInputTagComponent_ng_template_2_ng_template_3_Template(rf, ctx) {
-  if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 25);
-    fesm2015_core/* ɵɵelement */._UZ(1, "code");
-    fesm2015_core/* ɵɵi18nEnd */.N_p();
-  }
-}
-
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18nStart */.tHW(0, 26);
     fesm2015_core/* ɵɵelement */._UZ(1, "code");
@@ -685,52 +677,66 @@ function ExampleTuiInputTagComponent_ng_template_2_ng_template_4_Template(rf, ct
   }
 }
 
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_4_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 27);
+    fesm2015_core/* ɵɵelement */._UZ(1, "code");
+    fesm2015_core/* ɵɵi18nEnd */.N_p();
+  }
+}
+
 function ExampleTuiInputTagComponent_ng_template_2_ng_template_5_Template(rf, ctx) {
-  if (rf & 1) {
-    fesm2015_core/* ɵɵi18n */.SDv(0, 27);
-  }
-}
-
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
-  if (rf & 1) {
-    fesm2015_core/* ɵɵtext */._uU(0, " Ability to enter unique or non-unique tags ");
-  }
-}
-
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18n */.SDv(0, 28);
   }
 }
 
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18n */.SDv(0, 29);
   }
 }
 
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_9_Template(rf, ctx) {
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_7_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵtext */._uU(0, " Ability to enter unique or non-unique tags ");
+  }
+}
+
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_8_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18n */.SDv(0, 30);
   }
 }
 
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_10_Template(rf, ctx) {
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_9_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18n */.SDv(0, 31);
   }
 }
 
-function ExampleTuiInputTagComponent_ng_template_2_ng_template_11_Template(rf, ctx) {
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
     fesm2015_core/* ɵɵi18n */.SDv(0, 32);
   }
 }
 
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_11_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵi18n */.SDv(0, 33);
+  }
+}
+
 function ExampleTuiInputTagComponent_ng_template_2_ng_template_12_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵi18nStart */.tHW(0, 33);
-    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 34);
+    fesm2015_core/* ɵɵi18n */.SDv(0, 34);
+  }
+}
+
+function ExampleTuiInputTagComponent_ng_template_2_ng_template_13_Template(rf, ctx) {
+  if (rf & 1) {
+    fesm2015_core/* ɵɵi18nStart */.tHW(0, 35);
+    fesm2015_core/* ɵɵelementStart */.TgZ(1, "a", 36);
     fesm2015_core/* ɵɵelement */._UZ(2, "code");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵi18nEnd */.N_p();
@@ -739,74 +745,80 @@ function ExampleTuiInputTagComponent_ng_template_2_ng_template_12_Template(rf, c
 
 function ExampleTuiInputTagComponent_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r19 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
+    const _r20 = fesm2015_core/* ɵɵgetCurrentView */.EpF();
 
     fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-demo", 12);
-    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputTagComponent_ng_template_2_ng_template_1_Template, 2, 28, "ng-template");
+    fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputTagComponent_ng_template_2_ng_template_1_Template, 2, 29, "ng-template");
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "tui-doc-documentation");
     fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiInputTagComponent_ng_template_2_ng_template_3_Template, 2, 0, "ng-template", 13);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_3_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r18 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r18.disabled = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r19 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r19.disabled = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(4, ExampleTuiInputTagComponent_ng_template_2_ng_template_4_Template, 2, 0, "ng-template", 14);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_4_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r20 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r20.search = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r21.search = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(5, ExampleTuiInputTagComponent_ng_template_2_ng_template_5_Template, 1, 0, "ng-template", 15);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_5_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r21 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r21.disabledItemHandler = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r22 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r22.maxLength = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(6, ExampleTuiInputTagComponent_ng_template_2_ng_template_6_Template, 1, 0, "ng-template", 16);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_6_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r22 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r22.uniqueTags = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r23.disabledItemHandler = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(7, ExampleTuiInputTagComponent_ng_template_2_ng_template_7_Template, 1, 0, "ng-template", 17);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_7_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r23 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r23.editable = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r24 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r24.uniqueTags = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(8, ExampleTuiInputTagComponent_ng_template_2_ng_template_8_Template, 1, 0, "ng-template", 18);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_8_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r24 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r24.expandable = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r25 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r25.editable = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(9, ExampleTuiInputTagComponent_ng_template_2_ng_template_9_Template, 1, 0, "ng-template", 19);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_9_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r25 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r25.separator = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r26 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r26.expandable = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(10, ExampleTuiInputTagComponent_ng_template_2_ng_template_10_Template, 1, 0, "ng-template", 20);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_10_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r26 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r26.inputHidden = $event;
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r27 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r27.separator = $event;
     });
     fesm2015_core/* ɵɵtemplate */.YNc(11, ExampleTuiInputTagComponent_ng_template_2_ng_template_11_Template, 1, 0, "ng-template", 21);
     fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_11_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
-      const ctx_r27 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r27.tagValidator = $event;
-    });
-    fesm2015_core/* ɵɵtemplate */.YNc(12, ExampleTuiInputTagComponent_ng_template_2_ng_template_12_Template, 3, 0, "ng-template", 22);
-    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_12_listener($event) {
-      fesm2015_core/* ɵɵrestoreView */.CHM(_r19);
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
       const ctx_r28 = fesm2015_core/* ɵɵnextContext */.oxw();
-      return ctx_r28.icon = $event;
+      return ctx_r28.inputHidden = $event;
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(12, ExampleTuiInputTagComponent_ng_template_2_ng_template_12_Template, 1, 0, "ng-template", 22);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_12_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r29 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r29.tagValidator = $event;
+    });
+    fesm2015_core/* ɵɵtemplate */.YNc(13, ExampleTuiInputTagComponent_ng_template_2_ng_template_13_Template, 3, 0, "ng-template", 23);
+    fesm2015_core/* ɵɵlistener */.NdJ("documentationPropertyValueChange", function ExampleTuiInputTagComponent_ng_template_2_Template_ng_template_documentationPropertyValueChange_13_listener($event) {
+      fesm2015_core/* ɵɵrestoreView */.CHM(_r20);
+      const ctx_r30 = fesm2015_core/* ɵɵnextContext */.oxw();
+      return ctx_r30.icon = $event;
     });
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(13, "inherited-documentation", 23);
+    fesm2015_core/* ɵɵelement */._UZ(14, "inherited-documentation", 24);
   }
 
   if (rf & 2) {
@@ -816,6 +828,8 @@ function ExampleTuiInputTagComponent_ng_template_2_Template(rf, ctx) {
     fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.disabled);
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.search);
+    fesm2015_core/* ɵɵadvance */.xp6(1);
+    fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValue", ctx_r1.maxLength);
     fesm2015_core/* ɵɵadvance */.xp6(1);
     fesm2015_core/* ɵɵproperty */.Q6J("documentationPropertyValues", ctx_r1.disabledItemHandlerVariants)("documentationPropertyValue", ctx_r1.disabledItemHandler);
     fesm2015_core/* ɵɵadvance */.xp6(1);
@@ -839,20 +853,20 @@ function ExampleTuiInputTagComponent_ng_template_2_Template(rf, ctx) {
 
 function ExampleTuiInputTagComponent_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
-    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 35);
+    fesm2015_core/* ɵɵelementStart */.TgZ(0, "ol", 37);
     fesm2015_core/* ɵɵelementStart */.TgZ(1, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(2, "p");
-    fesm2015_core/* ɵɵi18nStart */.tHW(3, 36);
+    fesm2015_core/* ɵɵi18nStart */.tHW(3, 38);
     fesm2015_core/* ɵɵelement */._UZ(4, "code");
     fesm2015_core/* ɵɵi18nEnd */.N_p();
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 37);
+    fesm2015_core/* ɵɵelement */._UZ(5, "tui-doc-code", 39);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementStart */.TgZ(6, "li");
     fesm2015_core/* ɵɵelementStart */.TgZ(7, "p");
-    fesm2015_core/* ɵɵi18n */.SDv(8, 38);
+    fesm2015_core/* ɵɵi18n */.SDv(8, 40);
     fesm2015_core/* ɵɵelementEnd */.qZA();
-    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 39);
+    fesm2015_core/* ɵɵelement */._UZ(9, "tui-doc-code", 41);
     fesm2015_core/* ɵɵelementEnd */.qZA();
     fesm2015_core/* ɵɵelementEnd */.qZA();
   }
@@ -1045,99 +1059,108 @@ let ExampleTuiInputTagComponent = /*#__PURE__*/(() => {
       let i18n_20;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7890132259542012587$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___21 = goog.getMsg(" Handler for deactivation some tags ");
-        i18n_20 = MSG_EXTERNAL_7890132259542012587$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___21;
+        const MSG_EXTERNAL_2408126884590879453$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___21 = goog.getMsg(" Max length of tag ");
+        i18n_20 = MSG_EXTERNAL_2408126884590879453$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___21;
       } else {
-        i18n_20 = $localize`:␟602d2ca3dd3d6bd61166eb562cbc5a7d3ba64eb6␟7890132259542012587: Handler for deactivation some tags `;
+        i18n_20 = $localize`:␟72440801cb65c3a7c9b0d315129ebd3b738c31be␟2408126884590879453: Max length of tag `;
       }
 
       let i18n_22;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_6978135358566748527$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___23 = goog.getMsg(" Tags are editable ");
-        i18n_22 = MSG_EXTERNAL_6978135358566748527$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___23;
+        const MSG_EXTERNAL_7890132259542012587$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___23 = goog.getMsg(" Handler for deactivation some tags ");
+        i18n_22 = MSG_EXTERNAL_7890132259542012587$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___23;
       } else {
-        i18n_22 = $localize`:␟6287011b40da302e14ccffef5a614afb7cc7e283␟6978135358566748527: Tags are editable `;
+        i18n_22 = $localize`:␟602d2ca3dd3d6bd61166eb562cbc5a7d3ba64eb6␟7890132259542012587: Handler for deactivation some tags `;
       }
 
       let i18n_24;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_4902838123072095655$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___25 = goog.getMsg(" Control height can be expanded to show all tags ");
-        i18n_24 = MSG_EXTERNAL_4902838123072095655$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___25;
+        const MSG_EXTERNAL_6978135358566748527$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___25 = goog.getMsg(" Tags are editable ");
+        i18n_24 = MSG_EXTERNAL_6978135358566748527$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___25;
       } else {
-        i18n_24 = $localize`:␟a4cdbbb3982f88a63813e7e82e991b6a6eddc494␟4902838123072095655: Control height can be expanded to show all tags `;
+        i18n_24 = $localize`:␟6287011b40da302e14ccffef5a614afb7cc7e283␟6978135358566748527: Tags are editable `;
       }
 
       let i18n_26;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_5475543650697092168$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___27 = goog.getMsg(" String or RegExp to separate tags ");
-        i18n_26 = MSG_EXTERNAL_5475543650697092168$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___27;
+        const MSG_EXTERNAL_4902838123072095655$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___27 = goog.getMsg(" Control height can be expanded to show all tags ");
+        i18n_26 = MSG_EXTERNAL_4902838123072095655$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___27;
       } else {
-        i18n_26 = $localize`:␟30f5c50c55cc36d40d8bfec07bf28cee6bb9f1b5␟5475543650697092168: String or RegExp to separate tags `;
+        i18n_26 = $localize`:␟a4cdbbb3982f88a63813e7e82e991b6a6eddc494␟4902838123072095655: Control height can be expanded to show all tags `;
       }
 
       let i18n_28;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_1436849720143811983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___29 = goog.getMsg(" Hide input field. For example, to prevent adding new tags ");
-        i18n_28 = MSG_EXTERNAL_1436849720143811983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___29;
+        const MSG_EXTERNAL_5475543650697092168$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___29 = goog.getMsg(" String or RegExp to separate tags ");
+        i18n_28 = MSG_EXTERNAL_5475543650697092168$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___29;
       } else {
-        i18n_28 = $localize`:␟6ce45bd4a1fda17e0ac98d65053d1109077c6d83␟1436849720143811983: Hide input field. For example, to prevent adding new tags `;
+        i18n_28 = $localize`:␟30f5c50c55cc36d40d8bfec07bf28cee6bb9f1b5␟5475543650697092168: String or RegExp to separate tags `;
       }
 
       let i18n_30;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_3924647870684137368$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___31 = goog.getMsg(" A function that cheks that tag is valid ");
-        i18n_30 = MSG_EXTERNAL_3924647870684137368$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___31;
+        const MSG_EXTERNAL_1436849720143811983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___31 = goog.getMsg(" Hide input field. For example, to prevent adding new tags ");
+        i18n_30 = MSG_EXTERNAL_1436849720143811983$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___31;
       } else {
-        i18n_30 = $localize`:␟24fc826e9f6d1737ab827b2db51272e81e476b65␟3924647870684137368: A function that cheks that tag is valid `;
+        i18n_30 = $localize`:␟6ce45bd4a1fda17e0ac98d65053d1109077c6d83␟1436849720143811983: Hide input field. For example, to prevent adding new tags `;
       }
 
       let i18n_32;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_7918098038633269309$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___33 = goog.getMsg(" Icon content. If content is a string, it is used as stringified svg or a name of icon registered in {$startLink}{$startTagCode}SvgService{$closeTagCode}{$closeLink}", {
-          "startLink": "\uFFFD#1\uFFFD",
-          "startTagCode": "\uFFFD#2\uFFFD",
-          "closeTagCode": "\uFFFD/#2\uFFFD",
-          "closeLink": "\uFFFD/#1\uFFFD"
-        });
-        i18n_32 = MSG_EXTERNAL_7918098038633269309$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___33;
+        const MSG_EXTERNAL_3924647870684137368$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___33 = goog.getMsg(" A function that cheks that tag is valid ");
+        i18n_32 = MSG_EXTERNAL_3924647870684137368$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___33;
       } else {
-        i18n_32 = $localize`:␟86a120364edaa105c400be3e6a0b84d9e6789a6a␟7918098038633269309: Icon content. If content is a string, it is used as stringified svg or a name of icon registered in ${"\uFFFD#1\uFFFD"}:START_LINK:${"\uFFFD#2\uFFFD"}:START_TAG_CODE:SvgService${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_CODE:${"\uFFFD/#1\uFFFD"}:CLOSE_LINK:`;
+        i18n_32 = $localize`:␟24fc826e9f6d1737ab827b2db51272e81e476b65␟3924647870684137368: A function that cheks that tag is valid `;
       }
 
       let i18n_34;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8882593062505514869$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__35 = goog.getMsg(" Import {$startTagCode}TuiInputTagModule{$closeTagCode} into a module where you want to use our component ", {
-          "startTagCode": "\uFFFD#4\uFFFD",
-          "closeTagCode": "\uFFFD/#4\uFFFD"
+        const MSG_EXTERNAL_7918098038633269309$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___35 = goog.getMsg(" Icon content. If content is a string, it is used as stringified svg or a name of icon registered in {$startLink}{$startTagCode}SvgService{$closeTagCode}{$closeLink}", {
+          "startLink": "\uFFFD#1\uFFFD",
+          "startTagCode": "\uFFFD#2\uFFFD",
+          "closeTagCode": "\uFFFD/#2\uFFFD",
+          "closeLink": "\uFFFD/#1\uFFFD"
         });
-        i18n_34 = MSG_EXTERNAL_8882593062505514869$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__35;
+        i18n_34 = MSG_EXTERNAL_7918098038633269309$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS___35;
       } else {
-        i18n_34 = $localize`:␟a48b1b6fe4f1a0418758cda1de24c138cf8d5ad5␟8882593062505514869: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputTagModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
+        i18n_34 = $localize`:␟86a120364edaa105c400be3e6a0b84d9e6789a6a␟7918098038633269309: Icon content. If content is a string, it is used as stringified svg or a name of icon registered in ${"\uFFFD#1\uFFFD"}:START_LINK:${"\uFFFD#2\uFFFD"}:START_TAG_CODE:SvgService${"\uFFFD/#2\uFFFD"}:CLOSE_TAG_CODE:${"\uFFFD/#1\uFFFD"}:CLOSE_LINK:`;
       }
 
       let i18n_36;
 
       if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
-        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__37 = goog.getMsg("Add to the template:");
-        i18n_36 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__37;
+        const MSG_EXTERNAL_8882593062505514869$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__37 = goog.getMsg(" Import {$startTagCode}TuiInputTagModule{$closeTagCode} into a module where you want to use our component ", {
+          "startTagCode": "\uFFFD#4\uFFFD",
+          "closeTagCode": "\uFFFD/#4\uFFFD"
+        });
+        i18n_36 = MSG_EXTERNAL_8882593062505514869$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__37;
       } else {
-        i18n_36 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+        i18n_36 = $localize`:␟a48b1b6fe4f1a0418758cda1de24c138cf8d5ad5␟8882593062505514869: Import ${"\uFFFD#4\uFFFD"}:START_TAG_CODE:TuiInputTagModule${"\uFFFD/#4\uFFFD"}:CLOSE_TAG_CODE: into a module where you want to use our component `;
       }
 
-      return [["header", "InputTag", "package", "KIT", "type", "components"], ["pageTab", ""], [1, "tui-space_bottom-3"], i18n_0, ["id", "base", "heading", i18n_2, 3, "content"], ["id", "async", "heading", i18n_4, 3, "content"], ["id", "sizes", "heading", i18n_6, 3, "content"], ["id", "validation", "heading", i18n_8, 3, "content"], ["id", "rtl", "heading", i18n_10, 3, "content"], ["id", "separator", "heading", i18n_12, 3, "content"], ["id", "no-spaces-inside-tags", "heading", i18n_14, 3, "content", "description"], ["forbidSpacesDescription", ""], [3, "control"], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "search", "documentationPropertyMode", "input-output", "documentationPropertyType", "string | null", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "disabledItemHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<string>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "uniqueTags", "documentationPropertyType", "boolean", "documentationPropertyMode", "input", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "editable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "expandable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "separator", "documentationPropertyMode", "input", "documentationPropertyType", "string | RegExp", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "inputHidden", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tagValidator", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<string>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiTextfieldIcon", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], [3, "dropdown"], [3, "formControl", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "tuiHintContent", "tuiHintDirection", "tuiHintAppearance", "tuiTextfieldIcon", "tuiTextfieldIconLeft", "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "tuiTextfieldSize", "focusable", "disabledItemHandler", "editable", "expandable", "uniqueTags", "separator", "readOnly", "tagValidator", "inputHidden", "pseudoHover", "pseudoActive", "pseudoFocus", "pseudoInvalid", "search", "searchChange"], i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, i18n_28, i18n_30, i18n_32, ["tuiLink", "", "routerLink", "/services/svg-service"], [1, "b-demo-steps"], i18n_34, ["filename", "myComponent.module.ts", 3, "code"], i18n_36, ["filename", "myComponent.template.html", 3, "code"]];
+      let i18n_38;
+
+      if (typeof ngI18nClosureMode !== "undefined" && ngI18nClosureMode) {
+        const MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__39 = goog.getMsg("Add to the template:");
+        i18n_38 = MSG_EXTERNAL_8042412267862615798$$PROJECTS_DEMO_SRC_MODULES_COMPONENTS_INPUT_TAG_INPUT_TAG_COMPONENT_TS__39;
+      } else {
+        i18n_38 = $localize`:␟856efa24b2b203ad1c001649937b5c5738e38f97␟8042412267862615798:Add to the template:`;
+      }
+
+      return [["header", "InputTag", "package", "KIT", "type", "components"], ["pageTab", ""], [1, "tui-space_bottom-3"], i18n_0, ["id", "base", "heading", i18n_2, 3, "content"], ["id", "async", "heading", i18n_4, 3, "content"], ["id", "sizes", "heading", i18n_6, 3, "content"], ["id", "validation", "heading", i18n_8, 3, "content"], ["id", "rtl", "heading", i18n_10, 3, "content"], ["id", "separator", "heading", i18n_12, 3, "content"], ["id", "no-spaces-inside-tags", "heading", i18n_14, 3, "content", "description"], ["forbidSpacesDescription", ""], [3, "control"], ["documentationPropertyName", "", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "search", "documentationPropertyMode", "input-output", "documentationPropertyType", "string | null", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "maxLength", "documentationPropertyMode", "input", "documentationPropertyType", "number", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "disabledItemHandler", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<string>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "uniqueTags", "documentationPropertyType", "boolean", "documentationPropertyMode", "input", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "editable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "expandable", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "separator", "documentationPropertyMode", "input", "documentationPropertyType", "string | RegExp", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "inputHidden", "documentationPropertyMode", "input", "documentationPropertyType", "boolean", 3, "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tagValidator", "documentationPropertyMode", "input", "documentationPropertyType", "TuiBooleanHandler<string>", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], ["documentationPropertyName", "tuiTextfieldIcon", "documentationPropertyMode", "input", "documentationPropertyType", "PolymorpheusContent", 3, "documentationPropertyValues", "documentationPropertyValue", "documentationPropertyValueChange"], [3, "dropdown"], [3, "formControl", "tuiDropdownAlign", "tuiDropdownDirection", "tuiDropdownLimitWidth", "tuiDropdownMinHeight", "tuiDropdownMaxHeight", "tuiHintContent", "tuiHintDirection", "tuiHintAppearance", "tuiTextfieldIcon", "tuiTextfieldIconLeft", "tuiTextfieldCleaner", "tuiTextfieldLabelOutside", "tuiTextfieldSize", "maxLength", "focusable", "disabledItemHandler", "editable", "expandable", "uniqueTags", "separator", "readOnly", "tagValidator", "inputHidden", "pseudoHover", "pseudoActive", "pseudoFocus", "pseudoInvalid", "search", "searchChange"], i18n_16, i18n_18, i18n_20, i18n_22, i18n_24, i18n_26, i18n_28, i18n_30, i18n_32, i18n_34, ["tuiLink", "", "routerLink", "/services/svg-service"], [1, "b-demo-steps"], i18n_36, ["filename", "myComponent.module.ts", 3, "code"], i18n_38, ["filename", "myComponent.template.html", 3, "code"]];
     },
     template: function ExampleTuiInputTagComponent_Template(rf, ctx) {
       if (rf & 1) {
         fesm2015_core/* ɵɵelementStart */.TgZ(0, "tui-doc-page", 0);
         fesm2015_core/* ɵɵtemplate */.YNc(1, ExampleTuiInputTagComponent_ng_template_1_Template, 19, 8, "ng-template", 1);
-        fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiInputTagComponent_ng_template_2_Template, 14, 16, "ng-template", 1);
+        fesm2015_core/* ɵɵtemplate */.YNc(2, ExampleTuiInputTagComponent_ng_template_2_Template, 15, 17, "ng-template", 1);
         fesm2015_core/* ɵɵtemplate */.YNc(3, ExampleTuiInputTagComponent_ng_template_3_Template, 10, 2, "ng-template", 1);
         fesm2015_core/* ɵɵelementEnd */.qZA();
       }
