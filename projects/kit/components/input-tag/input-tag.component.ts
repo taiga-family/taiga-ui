@@ -31,6 +31,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
+    tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiPreventDefault,
@@ -394,18 +395,24 @@ export class TuiInputTagComponent
     onInput(value: string): void {
         const array = value.split(this.separator);
         const tags = array
-            .map(item => item.trim())
+            .map(item => this.clippedValue(item.trim()))
             .filter((item, index, {length}) => item.length > 0 && index !== length - 1);
         const validated = tags.filter(tag => !this.disabledItemHandler(tag));
 
         if (array.length > 1) {
-            this.updateSearch(array[array.length - 1].trim());
+            this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
             this.updateValue([...this.value, ...validated]);
         } else {
-            this.updateSearch(value);
+            this.updateSearch(this.clippedValue(value));
         }
 
         this.open = this.hasNativeValue;
+    }
+
+    onPaste(event: Event): void {
+        const pasted = tuiGetClipboardDataText(event as ClipboardEvent);
+
+        this.onInput(pasted || ``);
     }
 
     override setDisabledState(): void {
@@ -515,5 +522,9 @@ export class TuiInputTagComponent
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }
+    }
+
+    private clippedValue(value: string): string {
+        return value.slice(0, this.maxLength || value.length);
     }
 }

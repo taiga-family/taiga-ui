@@ -100,6 +100,7 @@
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [maxLength]="maxLength"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
@@ -136,6 +137,17 @@
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
+            >
+                Textfield value to subscribe on input or setting it from the outside (emits
+                <code>null</code>
+                when item from list selected)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxLength"
             >
                 Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>

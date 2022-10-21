@@ -100,6 +100,7 @@
                                 [tuiFocusable]="computedFocusable"
                                 [ngModel]="search"
                                 (ngModelChange)="onInput($event)"
+                                (paste.prevent)="onPaste($event)"
                                 (keydown.arrowLeft)="onFieldKeyDownArrowLeft($event)"
                                 (keydown.backspace)="onFieldKeyDownBackspace($event)"
                                 (keydown.enter.prevent)="onFieldKeyDownEnter()"
