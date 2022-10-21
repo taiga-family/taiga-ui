@@ -55597,18 +55597,26 @@ function TuiInputTagComponent_ng_template_10_Template(rf, ctx) {
       _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
       const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
       return ctx_r26.onInput($event);
-    })("keydown.arrowLeft", function TuiInputTagComponent_ng_template_10_Template_input_keydown_arrowLeft_8_listener($event) {
+    })("paste.prevent", function TuiInputTagComponent_ng_template_10_Template_input_paste_prevent_8_listener($event) {
       _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
       const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r28.onFieldKeyDownArrowLeft($event);
-    })("keydown.backspace", function TuiInputTagComponent_ng_template_10_Template_input_keydown_backspace_8_listener($event) {
+      return ctx_r28.onPaste($event);
+    })("drop.prevent", function TuiInputTagComponent_ng_template_10_Template_input_drop_prevent_8_listener($event) {
       _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
       const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r29.onFieldKeyDownBackspace($event);
-    })("keydown.enter.prevent", function TuiInputTagComponent_ng_template_10_Template_input_keydown_enter_prevent_8_listener() {
+      return ctx_r29.onDrop($event);
+    })("keydown.arrowLeft", function TuiInputTagComponent_ng_template_10_Template_input_keydown_arrowLeft_8_listener($event) {
       _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
       const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
-      return ctx_r30.onFieldKeyDownEnter();
+      return ctx_r30.onFieldKeyDownArrowLeft($event);
+    })("keydown.backspace", function TuiInputTagComponent_ng_template_10_Template_input_keydown_backspace_8_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
+      const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r31.onFieldKeyDownBackspace($event);
+    })("keydown.enter.prevent", function TuiInputTagComponent_ng_template_10_Template_input_keydown_enter_prevent_8_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r27);
+      const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw();
+      return ctx_r32.onFieldKeyDownEnter();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵelementEnd"] */ .qZA();
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵelementEnd"] */ .qZA();
@@ -55634,13 +55642,13 @@ function TuiInputTagComponent_ng_template_10_Template(rf, ctx) {
 
 function TuiInputTagComponent_div_12_tui_svg_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r36 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵgetCurrentView"] */ .EpF();
+    const _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵgetCurrentView"] */ .EpF();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵelementStart"] */ .TgZ(0, "tui-svg", 34, 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵlistener"] */ .NdJ("click.stop", function TuiInputTagComponent_div_12_tui_svg_1_Template_tui_svg_click_stop_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r36);
-      const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
-      return ctx_r35.onCleanerClick();
+      _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵrestoreView"] */ .CHM(_r38);
+      const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
+      return ctx_r37.onCleanerClick();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵelementEnd"] */ .qZA();
   }
@@ -55652,8 +55660,8 @@ function TuiInputTagComponent_div_12_tui_tooltip_2_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("direction", ctx_r32.hintOptions.direction)("appearance", ctx_r32.hintOptions.appearance)("content", ctx_r32.hintOptions.content)("showDelay", ctx_r32.hintOptions.showDelay)("hideDelay", ctx_r32.hintOptions.hideDelay);
+    const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("direction", ctx_r34.hintOptions.direction)("appearance", ctx_r34.hintOptions.appearance)("content", ctx_r34.hintOptions.content)("showDelay", ctx_r34.hintOptions.showDelay)("hideDelay", ctx_r34.hintOptions.hideDelay);
   }
 }
 
@@ -55663,8 +55671,8 @@ function TuiInputTagComponent_div_12_div_3_tui_svg_1_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const src_r38 = ctx.polymorpheusOutlet;
-    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("src", src_r38);
+    const src_r40 = ctx.polymorpheusOutlet;
+    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("src", src_r40);
   }
 }
 
@@ -55676,9 +55684,9 @@ function TuiInputTagComponent_div_12_div_3_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
+    const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵnextContext"] */ .oxw(2);
     _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵadvance"] */ .xp6(1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r33.icon)("polymorpheusOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵpureFunction1"] */ .VKq(2, _c5, ctx_r33.size));
+    _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵproperty"] */ .Q6J("polymorpheusOutlet", ctx_r35.icon)("polymorpheusOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵpureFunction1"] */ .VKq(2, _c5, ctx_r35.size));
   }
 }
 
@@ -55911,19 +55919,32 @@ class TuiInputTagComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.Ab
 
   onInput(value) {
     const array = value.split(this.separator);
-    const tags = array.map(item => item.trim()).filter((item, index, {
+    const tags = array.map(item => this.clippedValue(item.trim())).filter((item, index, {
       length
     }) => item.length > 0 && index !== length - 1);
     const validated = tags.filter(tag => !this.disabledItemHandler(tag));
 
     if (array.length > 1) {
-      this.updateSearch(array[array.length - 1].trim());
+      this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
       this.updateValue([...this.value, ...validated]);
     } else {
-      this.updateSearch(value);
+      this.updateSearch(this.clippedValue(value));
     }
 
     this.open = this.hasNativeValue;
+  }
+
+  onPaste(event) {
+    const pasted = (0,_taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.tuiGetClipboardDataText)(event);
+    this.onInput(pasted || ``);
+  }
+
+  onDrop({
+    dataTransfer
+  }) {
+    if (dataTransfer) {
+      this.onInput(dataTransfer.getData(`text`) || ``);
+    }
   }
 
   setDisabledState() {
@@ -56017,6 +56038,10 @@ class TuiInputTagComponent extends _taiga_ui_cdk__WEBPACK_IMPORTED_MODULE_0__.Ab
     }
   }
 
+  clippedValue(value) {
+    return value.slice(0, this.maxLength || value.length);
+  }
+
 }
 
 TuiInputTagComponent.ɵfac = function TuiInputTagComponent_Factory(t) {
@@ -56089,7 +56114,7 @@ TuiInputTagComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
   ngContentSelectors: _c6,
   decls: 15,
   vars: 17,
-  consts: [[4, "ngIf"], [1, "t-hosted", 3, "canOpen", "content", "open", "openChange", "tuiActiveZoneChange"], ["tuiWrapper", "", 3, "appearance", "readOnly", "focus", "hover", "disabled", "invalid", "mousedown"], [1, "t-content"], ["class", "t-icons t-icons_left", 4, "ngIf"], [1, "t-wrapper"], [1, "t-absolute-wrapper"], ["automation-id", "tui-input-tag__placeholder", "class", "t-placeholder", 3, "t-placeholder_raised", 4, "ngIf"], ["class", "t-scrollbar", 3, "hidden", 4, "ngIf", "ngIfElse"], ["items", ""], ["class", "t-icons t-icons_right", 4, "ngIf"], ["errorIcon", ""], [1, "t-icons", "t-icons_left"], ["class", "t-icon", 3, "src", 4, "polymorpheusOutlet", "polymorpheusOutletContext"], [1, "t-icon", 3, "src"], ["automation-id", "tui-input-tag__placeholder", 1, "t-placeholder"], [1, "t-scrollbar", 3, "hidden"], [3, "ngTemplateOutlet"], [1, "t-tags"], ["tagsContainer", ""], [4, "ngIf", "ngIfElse"], ["text", ""], [1, "t-input-wrapper"], [1, "t-ghost"], ["type", "text", "automation-id", "tui-input-tag__native", 1, "t-native", 3, "placeholder", "id", "disabled", "readOnly", "tuiFocusable", "ngModel", "ngModelChange", "keydown.arrowLeft", "keydown.backspace", "keydown.enter.prevent"], ["focusableElement", ""], ["automation-id", "tui-input-tag__tag", "class", "t-tag", 3, "status", "leftContent", "tuiFocusable", "disabled", "editable", "hoverable", "removable", "separator", "maxLength", "size", "value", "edited", "keydown.arrowLeft.prevent", "keydown.arrowRight.prevent", 4, "ngFor", "ngForOf", "ngForTrackBy"], ["automation-id", "tui-input-tag__tag", 1, "t-tag", 3, "status", "leftContent", "tuiFocusable", "disabled", "editable", "hoverable", "removable", "separator", "maxLength", "size", "value", "edited", "keydown.arrowLeft.prevent", "keydown.arrowRight.prevent"], ["tag", ""], ["class", "t-text", 3, "t-text_disabled", "t-text_error", "textContent", 4, "ngFor", "ngForOf"], [1, "t-text", 3, "textContent"], [1, "t-icons", "t-icons_right"], ["automation-id", "tui-input-tag__cleaner", "src", "tuiIconCloseLarge", "class", "t-cleaner", 3, "click.stop", 4, "ngIf"], ["automation-id", "tui-input-tag__tooltip", "describeId", "placeholer_until_accesibility_is_added", "class", "t-tooltip", 3, "direction", "appearance", "content", "showDelay", "hideDelay", 4, "ngIf"], ["automation-id", "tui-input-tag__cleaner", "src", "tuiIconCloseLarge", 1, "t-cleaner", 3, "click.stop"], ["cleaner", ""], ["automation-id", "tui-input-tag__tooltip", "describeId", "placeholer_until_accesibility_is_added", 1, "t-tooltip", 3, "direction", "appearance", "content", "showDelay", "hideDelay"], ["src", "tuiIconAttention", 1, "t-error-icon"]],
+  consts: [[4, "ngIf"], [1, "t-hosted", 3, "canOpen", "content", "open", "openChange", "tuiActiveZoneChange"], ["tuiWrapper", "", 3, "appearance", "readOnly", "focus", "hover", "disabled", "invalid", "mousedown"], [1, "t-content"], ["class", "t-icons t-icons_left", 4, "ngIf"], [1, "t-wrapper"], [1, "t-absolute-wrapper"], ["automation-id", "tui-input-tag__placeholder", "class", "t-placeholder", 3, "t-placeholder_raised", 4, "ngIf"], ["class", "t-scrollbar", 3, "hidden", 4, "ngIf", "ngIfElse"], ["items", ""], ["class", "t-icons t-icons_right", 4, "ngIf"], ["errorIcon", ""], [1, "t-icons", "t-icons_left"], ["class", "t-icon", 3, "src", 4, "polymorpheusOutlet", "polymorpheusOutletContext"], [1, "t-icon", 3, "src"], ["automation-id", "tui-input-tag__placeholder", 1, "t-placeholder"], [1, "t-scrollbar", 3, "hidden"], [3, "ngTemplateOutlet"], [1, "t-tags"], ["tagsContainer", ""], [4, "ngIf", "ngIfElse"], ["text", ""], [1, "t-input-wrapper"], [1, "t-ghost"], ["type", "text", "automation-id", "tui-input-tag__native", 1, "t-native", 3, "placeholder", "id", "disabled", "readOnly", "tuiFocusable", "ngModel", "ngModelChange", "paste.prevent", "drop.prevent", "keydown.arrowLeft", "keydown.backspace", "keydown.enter.prevent"], ["focusableElement", ""], ["automation-id", "tui-input-tag__tag", "class", "t-tag", 3, "status", "leftContent", "tuiFocusable", "disabled", "editable", "hoverable", "removable", "separator", "maxLength", "size", "value", "edited", "keydown.arrowLeft.prevent", "keydown.arrowRight.prevent", 4, "ngFor", "ngForOf", "ngForTrackBy"], ["automation-id", "tui-input-tag__tag", 1, "t-tag", 3, "status", "leftContent", "tuiFocusable", "disabled", "editable", "hoverable", "removable", "separator", "maxLength", "size", "value", "edited", "keydown.arrowLeft.prevent", "keydown.arrowRight.prevent"], ["tag", ""], ["class", "t-text", 3, "t-text_disabled", "t-text_error", "textContent", 4, "ngFor", "ngForOf"], [1, "t-text", 3, "textContent"], [1, "t-icons", "t-icons_right"], ["automation-id", "tui-input-tag__cleaner", "src", "tuiIconCloseLarge", "class", "t-cleaner", 3, "click.stop", 4, "ngIf"], ["automation-id", "tui-input-tag__tooltip", "describeId", "placeholer_until_accesibility_is_added", "class", "t-tooltip", 3, "direction", "appearance", "content", "showDelay", "hideDelay", 4, "ngIf"], ["automation-id", "tui-input-tag__cleaner", "src", "tuiIconCloseLarge", 1, "t-cleaner", 3, "click.stop"], ["cleaner", ""], ["automation-id", "tui-input-tag__tooltip", "describeId", "placeholer_until_accesibility_is_added", 1, "t-tooltip", 3, "direction", "appearance", "content", "showDelay", "hideDelay"], ["src", "tuiIconAttention", 1, "t-error-icon"]],
   template: function TuiInputTagComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_11__/* ["ɵɵprojectionDef"] */ .F$t();
