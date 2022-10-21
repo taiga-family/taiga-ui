@@ -101,6 +101,7 @@
                                 [ngModel]="search"
                                 (ngModelChange)="onInput($event)"
                                 (paste.prevent)="onPaste($event)"
+                                (drop.prevent)="onDrop($any($event))"
                                 (keydown.arrowLeft)="onFieldKeyDownArrowLeft($event)"
                                 (keydown.backspace)="onFieldKeyDownBackspace($event)"
                                 (keydown.enter.prevent)="onFieldKeyDownEnter()"

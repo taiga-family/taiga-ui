@@ -415,6 +415,12 @@ export class TuiInputTagComponent
         this.onInput(pasted || ``);
     }
 
+    onDrop({dataTransfer}: DragEvent): void {
+        if (dataTransfer) {
+            this.onInput(dataTransfer.getData(`text`) || ``);
+        }
+    }
+
     override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
