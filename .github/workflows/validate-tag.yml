@@ -18,7 +18,7 @@ jobs:
 
       - name: Get last tag
         id: info
-        run: echo "::set-output name=tag::$(git describe HEAD --abbrev=0)"
+        run: echo "{tag}={$(git describe HEAD --abbrev=0)}" >> $GITHUB_OUTPUT
 
       - name: Show an error if the tag does not match
         if:
