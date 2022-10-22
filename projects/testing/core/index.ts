@@ -8,3 +8,4 @@ export * from './marker-icon.harness';
 export * from './primitive-textfield.harness';
 export * from './svg.harness';
 export * from './tag.harness';
+export * from './toggle.harness';
