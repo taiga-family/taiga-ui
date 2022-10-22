@@ -43,6 +43,8 @@ describe(`Toggle`, () => {
     let loader: HarnessLoader;
     let testComponent: TestComponent;
 
+    let toggle: TuiToggleHarness;
+
     configureTestSuite(() => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiToggleModule],
@@ -50,37 +52,26 @@ describe(`Toggle`, () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
+        toggle = await loader.getHarness(TuiToggleHarness.with({selector: `#default`}));
     });
 
     it(`If value is not set, click changes the value to true`, async () => {
-        const toggle = await loader.getHarness(
-            TuiToggleHarness.with({selector: `#default`}),
-        );
-
         await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
     });
 
     it(`If value === false, click changes the value to true`, async () => {
         testComponent.control.setValue(false);
-        const toggle = await loader.getHarness(
-            TuiToggleHarness.with({selector: `#default`}),
-        );
-
         await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
     });
 
     it(`If value === true, click changes the value to false`, async () => {
         testComponent.control.setValue(true);
-        const toggle = await loader.getHarness(
-            TuiToggleHarness.with({selector: `#default`}),
-        );
-
         await toggle.toggle();
         expect(testComponent.control.value).toBe(false);
     });
@@ -88,10 +79,6 @@ describe(`Toggle`, () => {
     it(`If the control is disabled, the click does not change the value`, async () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
-        const toggle = await loader.getHarness(
-            TuiToggleHarness.with({selector: `#default`}),
-        );
-
         await toggle.toggle();
         expect(testComponent.control.value).toBe(false);
     });
@@ -99,10 +86,6 @@ describe(`Toggle`, () => {
     it(`If the control is un-disabled again, click reverses the value`, async () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
-        const toggle = await loader.getHarness(
-            TuiToggleHarness.with({selector: `#default`}),
-        );
-
         testComponent.control.enable();
         await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
@@ -112,10 +95,6 @@ describe(`Toggle`, () => {
         describe(`showIcons === false`, () => {
             it(`Icons are hidden when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
-
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -123,10 +102,6 @@ describe(`Toggle`, () => {
 
             it(`Icons are hidden when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
-
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -134,11 +109,14 @@ describe(`Toggle`, () => {
         });
 
         describe(`showIcons === true`, () => {
-            it(`Icons are shown when toggle is "disabled"`, async () => {
-                testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
+            beforeEach(async () => {
+                toggle = await loader.getHarness(
                     TuiToggleHarness.with({selector: `#icons-shown`}),
                 );
+            });
+
+            it(`Icons are shown when toggle is "disabled"`, async () => {
+                testComponent.control.setValue(false);
                 const icons = await toggle.getIcons();
 
                 // If icons are enabled, then both are added to the DOM at once -
@@ -148,9 +126,6 @@ describe(`Toggle`, () => {
 
             it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#icons-shown`}),
-                );
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(2);
@@ -162,9 +137,6 @@ describe(`Toggle`, () => {
         describe(`showLoader === false`, () => {
             it(`Icons are hidden when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -172,10 +144,6 @@ describe(`Toggle`, () => {
 
             it(`Icons are hidden when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
-
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -183,11 +151,14 @@ describe(`Toggle`, () => {
         });
 
         describe(`showLoader === true`, () => {
-            it(`Icons are hidden when toggle is disabled, loader takes precedence over them`, async () => {
-                testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
+            beforeEach(async () => {
+                toggle = await loader.getHarness(
                     TuiToggleHarness.with({selector: `#both-shown`}),
                 );
+            });
+
+            it(`Icons are hidden when toggle is disabled, loader takes precedence over them`, async () => {
+                testComponent.control.setValue(false);
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -195,9 +166,6 @@ describe(`Toggle`, () => {
 
             it(`Icons are hidden when toggle is on, loader takes precedence over them`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#both-shown`}),
-                );
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(0);
@@ -223,6 +191,7 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;
     let testComponent: TestComponent;
+    let toggle: TuiToggleHarness;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -236,20 +205,17 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
+        toggle = await loader.getHarness(TuiToggleHarness.with({selector: `#default`}));
     });
 
     describe(`Icons`, () => {
         describe(`showIcons === true`, () => {
             it(`Icons are shown when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
-
                 // If icons are enabled, then both are added to the DOM at once -
                 // implementation feature for smooth animation
                 const icons = await toggle.getIcons();
@@ -259,10 +225,6 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
 
             it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
-
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(2);
@@ -274,9 +236,6 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
         describe(`showLoader === false`, () => {
             it(`Icons are shown when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(2);
@@ -284,9 +243,6 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
 
             it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                const toggle = await loader.getHarness(
-                    TuiToggleHarness.with({selector: `#default`}),
-                );
                 const icons = await toggle.getIcons();
 
                 expect(icons.length).toBe(2);
