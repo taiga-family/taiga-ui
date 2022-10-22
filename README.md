@@ -38,7 +38,7 @@ Read more about Taiga UI main features in [this article](https://indepth.dev/pos
 
 See our [Getting started](https://taiga-ui.dev/getting-started) page to start working with Taiga UI
 
-You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html)
+You can also use our [StackBlitz starter](https://taiga-ui.dev/stackblitz)
 to create a quick sample with Taiga UI
 
 🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/966347242613098831/Taiga-UI) which you can
