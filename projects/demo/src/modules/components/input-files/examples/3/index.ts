@@ -39,7 +39,7 @@ export class TuiInputFilesExample3 {
         src: `https://tools.ietf.org/html/rfc675`,
     };
 
-    removedFiles = [this.loadingFile as TuiFileLike];
+    removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
     restoredFiles: TuiFileLike[] = [];
 
     constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {}

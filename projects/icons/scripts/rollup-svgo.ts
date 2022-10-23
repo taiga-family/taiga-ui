@@ -31,13 +31,13 @@ export function rollupSvgo({
             }
 
             let data: unknown;
-            let errorMessage: string;
+            let errorMessage: string | undefined;
 
             try {
                 const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
-                errorMessage = result.error as string;
+                errorMessage = result.error;
             } catch (err: unknown) {
                 errorMessage = (err as Error)?.message;
             }

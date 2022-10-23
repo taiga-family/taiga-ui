@@ -4,9 +4,7 @@ describe(`getDocumentOrShadowRoot`, () => {
     it(`Node not in body`, () => {
         const element = document.createElement(`div`);
 
-        expect(tuiGetDocumentOrShadowRoot(element)).toEqual(
-            element.ownerDocument as Document,
-        );
+        expect(tuiGetDocumentOrShadowRoot(element)).toEqual(element.ownerDocument);
     });
 
     it(`Node in body`, () => {

@@ -15,10 +15,12 @@ export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T
     }
 
     protected override get selected(): boolean {
+        const {value} = this.option;
+
         return (
-            tuiIsPresent(this.option.value) &&
+            tuiIsPresent(value) &&
             tuiIsPresent(this.control.value) &&
-            !!this.control.value.find((item: T) => this.matcher(item, this.option.value!))
+            this.control.value.some((item: T) => this.matcher(item, value))
         );
     }
 }

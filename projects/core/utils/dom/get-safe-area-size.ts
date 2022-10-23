@@ -13,7 +13,7 @@ export function tuiGetSafeAreaSize(): number {
     div.style.paddingTop = `env(safe-area-inset-top)`;
     document.body.appendChild(div);
 
-    const safeAreaSize = parseInt(window.getComputedStyle(div).paddingTop!, 10) || 0;
+    const safeAreaSize = parseInt(window.getComputedStyle(div).paddingTop, 10) || 0;
 
     document.body.removeChild(div);
 

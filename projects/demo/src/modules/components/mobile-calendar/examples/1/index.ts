@@ -66,7 +66,7 @@ export class TuiMobileCalendarExample1 {
             return `Choose a date`;
         }
 
-        const {month, day, year} = value as TuiDay;
+        const {month, day, year} = value;
 
         return `${months[month]} ${day}, ${year}`;
     }

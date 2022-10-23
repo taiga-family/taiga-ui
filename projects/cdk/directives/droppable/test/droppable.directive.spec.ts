@@ -97,7 +97,7 @@ describe(`TuiDroppable Directive`, () => {
         directiveElement.dispatchEvent(dragenter);
         testComponent.onDragOver.mockClear();
 
-        directiveElement.firstElementChild!.dispatchEvent(dragleave);
+        directiveElement.firstElementChild?.dispatchEvent(dragleave);
 
         expect(testComponent.onDragOver).not.toHaveBeenCalled();
     });

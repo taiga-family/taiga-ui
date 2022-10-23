@@ -187,6 +187,6 @@ describe(`InputCard`, () => {
     }
 
     function getValue(): string {
-        return testComponent.component.nativeFocusableElement!.value;
+        return testComponent.component.nativeFocusableElement?.value || ``;
     }
 });

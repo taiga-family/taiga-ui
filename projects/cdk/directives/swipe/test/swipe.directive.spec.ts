@@ -84,7 +84,7 @@ xdescribe(`TuiSwipe directive`, () => {
             radiusY: 2.5,
             rotationAngle: 10,
             force: 0.5,
-        }) as Touch;
+        });
 
         const touchEvent = new TouchEvent(eventType, {
             cancelable: true,

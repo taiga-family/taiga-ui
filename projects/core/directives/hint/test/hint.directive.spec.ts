@@ -81,7 +81,7 @@ describe(`Hint`, () => {
         it(`is shown after 500ms`, async () => {
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getTooltip()!.textContent!.trim()).toBe(`Tooltip text`);
+            expect(getTooltip()?.textContent?.trim()).toBe(`Tooltip text`);
         });
 
         it(`is hidden immediately if null is passed as content`, async () => {
