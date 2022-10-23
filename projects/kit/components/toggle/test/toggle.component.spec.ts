@@ -1,33 +1,49 @@
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiToggleModule, tuiToggleOptionsProvider} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiToggleHarness} from '@taiga-ui/testing';
 
 describe(`Toggle`, () => {
     @Component({
         template: `
             <tui-toggle
+                id="default"
                 [formControl]="control"
-                [showIcons]="showIcons"
-                [showLoader]="showLoader"
+                [showIcons]="false"
+                [showLoader]="false"
+            ></tui-toggle>
+            <tui-toggle
+                id="icons-shown"
+                [formControl]="control"
+                [showIcons]="true"
+                [showLoader]="false"
+            ></tui-toggle>
+            <tui-toggle
+                id="loader-shown"
+                [formControl]="control"
+                [showIcons]="false"
+                [showLoader]="true"
+            ></tui-toggle>
+            <tui-toggle
+                id="both-shown"
+                [formControl]="control"
+                [showIcons]="true"
+                [showLoader]="true"
             ></tui-toggle>
         `,
     })
     class TestComponent {
         control = new FormControl();
-        showIcons = false;
-        showLoader = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;
+    let loader: HarnessLoader;
     let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
-    const testContext = {
-        get prefix() {
-            return `tui-toggle__`;
-        },
-    };
+
+    let toggle: TuiToggleHarness;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -36,198 +52,146 @@ describe(`Toggle`, () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new TuiPageObject(fixture);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
+        toggle = await loader.getHarness(TuiToggleHarness.with({selector: `#default`}));
     });
 
-    it(`If value is not set, click changes the value to true`, () => {
-        fixture.detectChanges();
-
-        clickOnToggle();
-
+    it(`If value is not set, click changes the value to true`, async () => {
+        await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
     });
 
-    it(`If value === false, click changes the value to true`, () => {
+    it(`If value === false, click changes the value to true`, async () => {
         testComponent.control.setValue(false);
-        fixture.detectChanges();
-
-        clickOnToggle();
-
+        await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
     });
 
-    it(`If value === true, click changes the value to false`, () => {
+    it(`If value === true, click changes the value to false`, async () => {
         testComponent.control.setValue(true);
-        fixture.detectChanges();
-
-        clickOnToggle();
-
+        await toggle.toggle();
         expect(testComponent.control.value).toBe(false);
     });
 
-    it(`If the control is disabled, the click does not change the value`, () => {
+    it(`If the control is disabled, the click does not change the value`, async () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
-        fixture.detectChanges();
-
-        clickOnToggle();
-
+        await toggle.toggle();
         expect(testComponent.control.value).toBe(false);
     });
 
-    it(`If the control is un-disabled again, click reverses the value`, () => {
+    it(`If the control is un-disabled again, click reverses the value`, async () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
-        fixture.detectChanges();
-
         testComponent.control.enable();
-        fixture.detectChanges();
-
-        clickOnToggle();
-
+        await toggle.toggle();
         expect(testComponent.control.value).toBe(true);
     });
 
     describe(`Icons`, () => {
         describe(`showIcons === false`, () => {
-            beforeEach(() => {
-                testComponent.showIcons = false;
-            });
-
-            it(`Icons are hidden when toggle is "disabled"`, () => {
+            it(`Icons are hidden when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
 
-            it(`Icons are hidden when toggle is "on"`, () => {
+            it(`Icons are hidden when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
         });
 
         describe(`showIcons === true`, () => {
-            beforeEach(() => {
-                testComponent.showIcons = true;
+            beforeEach(async () => {
+                toggle = await loader.getHarness(
+                    TuiToggleHarness.with({selector: `#icons-shown`}),
+                );
             });
 
-            it(`Icons are shown when toggle is "disabled"`, () => {
+            it(`Icons are shown when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
                 // If icons are enabled, then both are added to the DOM at once -
                 // implementation feature for smooth animation
-                checkIconVisibility(`${testContext.prefix}check-icon`, true);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, true);
+                expect(icons.length).toBe(2);
             });
 
-            it(`Icons are shown when toggle is "on"`, () => {
+            it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, true);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, true);
+                expect(icons.length).toBe(2);
             });
         });
     });
 
     describe(`Loader`, () => {
         describe(`showLoader === false`, () => {
-            beforeEach(() => {
-                testComponent.showLoader = false;
-            });
-
-            it(`Icons are hidden when toggle is "disabled"`, () => {
+            it(`Icons are hidden when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
 
-            it(`Icons are hidden when toggle is "on"`, () => {
+            it(`Icons are hidden when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
         });
 
         describe(`showLoader === true`, () => {
-            beforeEach(() => {
-                testComponent.showLoader = true;
-                testComponent.showIcons = true;
+            beforeEach(async () => {
+                toggle = await loader.getHarness(
+                    TuiToggleHarness.with({selector: `#both-shown`}),
+                );
             });
 
-            it(`Icons are hidden when toggle is disabled, loader takes precedence over them`, () => {
+            it(`Icons are hidden when toggle is disabled, loader takes precedence over them`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
 
-            it(`Icons are hidden when toggle is on, loader takes precedence over them`, () => {
+            it(`Icons are hidden when toggle is on, loader takes precedence over them`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                checkIconVisibility(`${testContext.prefix}check-icon`, false);
-                checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
+                expect(icons.length).toBe(0);
             });
         });
     });
-
-    function clickOnToggle(): void {
-        const checkbox = pageObject.getByAutomationId(`${testContext.prefix}checkbox`);
-
-        checkbox!.nativeElement.click();
-    }
-
-    function checkIconVisibility(
-        tuiIconAutomationId: string,
-        expectedVisibility: boolean,
-    ): void {
-        const icon = pageObject.getByAutomationId(tuiIconAutomationId);
-
-        if (expectedVisibility) {
-            expect(icon).not.toBeNull();
-        } else {
-            expect(icon).toBeNull();
-        }
-    }
 });
 
 describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
     @Component({
         template: `
             <tui-toggle
+                id="default"
                 [formControl]="control"
-                [showLoader]="showLoader"
+                [showLoader]="false"
             ></tui-toggle>
         `,
     })
     class TestComponent {
         control = new FormControl();
-        showLoader = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;
+    let loader: HarnessLoader;
     let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
-    const testContext = {
-        get prefix() {
-            return `tui-toggle__`;
-        },
-    };
+    let toggle: TuiToggleHarness;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -241,61 +205,48 @@ describe(`Toggle with TUI_TOGGLE_OPTIONS`, () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new TuiPageObject(fixture);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
+        toggle = await loader.getHarness(TuiToggleHarness.with({selector: `#default`}));
     });
 
     describe(`Icons`, () => {
         describe(`showIcons === true`, () => {
-            it(`Icons are shown when toggle is "disabled"`, () => {
+            it(`Icons are shown when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
-
                 // If icons are enabled, then both are added to the DOM at once -
                 // implementation feature for smooth animation
-                isIconVisible(`${testContext.prefix}check-icon`);
-                isIconVisible(`${testContext.prefix}cancel-icon`);
+                const icons = await toggle.getIcons();
+
+                expect(icons.length).toBe(2);
             });
 
-            it(`Icons are shown when toggle is "on"`, () => {
+            it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                isIconVisible(`${testContext.prefix}check-icon`);
-                isIconVisible(`${testContext.prefix}cancel-icon`);
+                expect(icons.length).toBe(2);
             });
         });
     });
 
     describe(`Loader`, () => {
         describe(`showLoader === false`, () => {
-            beforeEach(() => {
-                testComponent.showLoader = false;
-            });
-
-            it(`Icons are shown when toggle is "disabled"`, () => {
+            it(`Icons are shown when toggle is "disabled"`, async () => {
                 testComponent.control.setValue(false);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                isIconVisible(`${testContext.prefix}check-icon`);
-                isIconVisible(`${testContext.prefix}cancel-icon`);
+                expect(icons.length).toBe(2);
             });
 
-            it(`Icons are shown when toggle is "on"`, () => {
+            it(`Icons are shown when toggle is "on"`, async () => {
                 testComponent.control.setValue(true);
-                fixture.detectChanges();
+                const icons = await toggle.getIcons();
 
-                isIconVisible(`${testContext.prefix}check-icon`);
-                isIconVisible(`${testContext.prefix}cancel-icon`);
+                expect(icons.length).toBe(2);
             });
         });
     });
-
-    function isIconVisible(tuiIconAutomationId: string): void {
-        const icon = pageObject.getByAutomationId(tuiIconAutomationId);
-
-        expect(icon).not.toBeNull();
-    }
 });
