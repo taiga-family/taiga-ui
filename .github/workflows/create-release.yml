@@ -51,7 +51,7 @@ jobs:
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
-          run: echo "{tag_name}={$(git describe HEAD --abbrev=0)}" >> $GITHUB_OUTPUT
+          echo "{tag_name}={$(git describe HEAD --abbrev=0)}" >> $GITHUB_OUTPUT
 
       - id: get-pr-body
         if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
