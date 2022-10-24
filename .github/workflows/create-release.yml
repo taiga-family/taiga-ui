@@ -45,31 +45,37 @@ jobs:
                 --ci-mode \
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}
-          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
+          echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Generate Release Body
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
-          echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
+          echo "tag_name=$(git describe HEAD --abbrev=0)" >> $GITHUB_OUTPUT
 
       - id: get-pr-body
         if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
         run: |
           body=$(cat RELEASE_BODY.md)
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
-          echo ::set-output name=body::$body
+          delimiter="$(openssl rand -hex 8)"
+          echo "body<<$delimiter" >> $GITHUB_OUTPUT
+          echo "$body" >> $GITHUB_OUTPUT
+          echo "$delimiter" >> $GITHUB_OUTPUT
 
       - name: Debug body of pull request in dry mode
-        run: echo "${{ steps.get-pr-body.outputs.body }}"
         if: ${{ env.IS_DRY_MODE == 'true' }}
+        run: echo "${{ steps.get-pr-body.outputs.body }}"
+
+      - name: Debug variables
+        if: ${{ env.IS_DRY_MODE == 'true' }}
+        run: |
+          echo "${{ steps.generate_body.outputs.tag_name }}"
+          echo "release/${{ steps.run-release.outputs.new_version }}"
+          echo "${{ steps.get-pr-body.outputs.body }}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         if: ${{ env.IS_DRY_MODE == 'false' }}
-
         with:
           delete-branch: true
           token: ${{ secrets.TINKOFF_BOT_PAT }}
