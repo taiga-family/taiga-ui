@@ -81,18 +81,22 @@
 
     &[data-marker-mode='link'] {
         .transition(color);
-        cursor: pointer;
         color: var(--tui-link);
         background-color: var(--tui-secondary);
 
-        &:hover {
-            color: var(--tui-link-hover);
-            background-color: var(--tui-secondary-hover);
-        }
+        a&,
+        button& {
+            cursor: pointer;
 
-        &:active {
-            color: var(--tui-link-hover);
-            background-color: var(--tui-secondary-active);
+            &:hover {
+                color: var(--tui-link-hover);
+                background-color: var(--tui-secondary-hover);
+            }
+
+            &:active {
+                color: var(--tui-link-hover);
+                background-color: var(--tui-secondary-active);
+            }
         }
     }
 }
