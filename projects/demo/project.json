@@ -105,14 +105,7 @@
                             "with": "projects/demo/src/environments/environment.prod.ts"
                         }
                     ],
-                    "optimization": {
-                        "scripts": false,
-                        "styles": {
-                            "minify": true,
-                            "inlineCritical": true
-                        },
-                        "fonts": true
-                    },
+                    "optimization": true,
                     "outputPath": "dist/demo/browser/next",
                     "outputHashing": "all",
                     "sourceMap": false,

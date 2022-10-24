@@ -24,6 +24,7 @@ import {
 import {TuiInputOpacityModule} from '../../internal/input-opacity/input-opacity.module';
 import {TuiDocDocumentationComponent} from './documentation.component';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiInspectPipe} from './pipes/inspect.pipe';
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
         TuiNotificationModule,
     ],
     declarations: [
+        TuiInspectPipe,
         TuiDocDocumentationComponent,
         TuiDocDocumentationPropertyConnectorDirective,
     ],
