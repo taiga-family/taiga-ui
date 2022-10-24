@@ -45,13 +45,13 @@ jobs:
                 --ci-mode \
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}
-          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
+          echo "{new_version}={$(node -p "require('./package.json').version")}" >> $GITHUB_OUTPUT
 
       - name: Generate Release Body
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
-          echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
+          echo "{tag_name}={$(git describe HEAD --abbrev=0)}" >> $GITHUB_OUTPUT
 
       - id: get-pr-body
         if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
@@ -60,7 +60,7 @@ jobs:
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
-          echo ::set-output name=body::$body
+          echo "{body}={$body}" >> $GITHUB_OUTPUT
 
       - name: Debug body of pull request in dry mode
         run: echo "${{ steps.get-pr-body.outputs.body }}"
