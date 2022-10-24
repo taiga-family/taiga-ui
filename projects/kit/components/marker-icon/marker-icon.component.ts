@@ -17,7 +17,7 @@ import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-marker-icon`,
+    selector: `tui-marker-icon, a[tuiMarkerIcon], button[tuiMarkerIcon]`,
     templateUrl: `./marker-icon.template.html`,
     styleUrls: [`./marker-icon.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
