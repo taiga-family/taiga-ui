@@ -53,4 +53,8 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `把文件放在这里`,
         dropMultiple: `把多个文件放在这里`,
     },
+    multiSelectTexts: {
+        all: `全选`,
+        none: `选择无`,
+    },
 };

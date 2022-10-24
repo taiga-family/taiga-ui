@@ -5,12 +5,12 @@
     .transition(background);
     display: flex;
     font: var(--tui-font-text-m);
-    width: 100%;
     align-items: center;
     justify-content: space-between;
     text-align: left;
     box-sizing: border-box;
     color: var(--tui-text-01);
+    border-radius: var(--tui-radius-s);
     outline: none;
     text-decoration: none;
     cursor: pointer;
@@ -29,22 +29,26 @@
     &[data-size='xs'] {
         font: var(--tui-font-text-s);
         min-height: 2rem;
-        padding: 0.3125rem 0.75rem;
+        padding: 0.3125rem 0.375rem;
+        margin: 0.0625rem 0.375rem;
     }
 
     &[data-size='s'] {
         min-height: 2rem;
-        padding: 0.3125rem 0.75rem;
+        padding: 0.3125rem 0.375rem;
+        margin: 0.0625rem 0.375rem;
     }
 
     &[data-size='m'] {
         min-height: 2.75rem;
-        padding: 0.375rem 1rem;
+        padding: 0.375rem 0.5rem;
+        margin: 0.125rem 0.5rem;
     }
 
     &[data-size='l'] {
         min-height: 3.5rem;
-        padding: 0.75rem 1rem;
+        padding: 0.375rem 0.5rem;
+        margin: 0.125rem 0.5rem;
     }
 }
 

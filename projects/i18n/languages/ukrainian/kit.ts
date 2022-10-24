@@ -53,4 +53,8 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Помістіть файл сюди`,
         dropMultiple: `Помістіть файли сюди`,
     },
+    multiSelectTexts: {
+        all: `Вибрати все`,
+        none: `Не вибирати`,
+    },
 };

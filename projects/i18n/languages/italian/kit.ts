@@ -53,4 +53,8 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Trascina il file qui`,
         dropMultiple: `Trascina i file qui`,
     },
+    multiSelectTexts: {
+        all: `Seleziona tutto`,
+        none: `Seleziona nessuno`,
+    },
 };

@@ -1,17 +1,16 @@
-<ng-container *tuiLet="value$ | async as value">
+<span
+    *tuiLet="value$ | async as value"
+    class="t-wrapper"
+>
+    <span class="t-label">{{ label }}</span>
     <button
         *ngIf="label && !(empty$ | async)"
-        tuiOption
-        [size]="size"
+        tuiLink
+        class="t-button"
         [disabled]="!!(disabled$ | async)"
         (click)="onClick(value)"
     >
-        <tui-primitive-checkbox
-            class="t-checkbox"
-            [size]="checkboxSize"
-            [value]="value"
-        ></tui-primitive-checkbox>
-        <span class="t-label">{{ label }}</span>
+        {{ (multiSelectTexts$ | async)?.[value ? 'none' : 'all'] }}
     </button>
-</ng-container>
+</span>
 <ng-content></ng-content>

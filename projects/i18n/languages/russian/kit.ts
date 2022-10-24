@@ -53,4 +53,8 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Поместите файл сюда`,
         dropMultiple: `Поместите файлы сюда`,
     },
+    multiSelectTexts: {
+        all: `Выбрать все`,
+        none: `Снять выбор`,
+    },
 };

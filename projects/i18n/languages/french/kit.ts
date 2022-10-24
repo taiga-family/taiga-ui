@@ -53,4 +53,8 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Déposer le fichier ici`,
         dropMultiple: `Déposer les fichiers ici`,
     },
+    multiSelectTexts: {
+        all: `Tout sélectionner`,
+        none: `Ne rien sélectionner`,
+    },
 };

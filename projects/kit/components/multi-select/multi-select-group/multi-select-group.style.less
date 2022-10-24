@@ -1,22 +1,20 @@
 @import 'taiga-ui-local';
 
-:host {
-    display: flex;
-    flex-direction: column;
+:host:before {
+    display: none;
+}
 
-    // Overriding default behavior
-    &:before {
-        content: '';
-    }
+.t-wrapper {
+    display: flex;
+    align-items: flex-start;
 }
 
 .t-label {
-    .text-overflow();
-    font: var(--tui-font-text-xs);
     flex: 1;
-    color: var(--tui-text-02);
+    padding: 0.75rem 1rem 0.25rem;
 }
 
-.t-checkbox {
-    margin-right: 0.75rem;
+.t-button {
+    margin: 0.75rem 1rem 0 auto;
+    line-height: 1rem;
 }
