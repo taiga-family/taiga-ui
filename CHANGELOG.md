@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/tinkoff/taiga-ui/compare/v3.7.1...v3.8.0) (2022-10-24)
+
+### Features
+
+- **core:** `Button` add padding customization ([#2932](https://github.com/tinkoff/taiga-ui/issues/2932))
+  ([91c1b81](https://github.com/tinkoff/taiga-ui/commit/91c1b81b57f5768dca877588e964fee53af8a90a))
+- **core:** `PrimitiveCalendar` add ability to change the color of the days
+  ([#2904](https://github.com/tinkoff/taiga-ui/issues/2904))
+  ([3a14454](https://github.com/tinkoff/taiga-ui/commit/3a144547e0da3d5d8f33640b991fea39fd944fd9))
+- **core:** disable smooth scrolling when users have prefers-reduced-motion enabled
+  ([#2943](https://github.com/tinkoff/taiga-ui/issues/2943))
+  ([05027f4](https://github.com/tinkoff/taiga-ui/commit/05027f451caed201e7e907677bc0e0fc621612e1))
+- **core:** update shadows styles ([#2933](https://github.com/tinkoff/taiga-ui/issues/2933))
+  ([37144b5](https://github.com/tinkoff/taiga-ui/commit/37144b526e2d5c1279b2e74026aea3993089e447))
+- **icons:** add `tuiIconAnchorLarge` ([#2944](https://github.com/tinkoff/taiga-ui/issues/2944))
+  ([1e28581](https://github.com/tinkoff/taiga-ui/commit/1e28581b376aa4b8751428ddfefc5879f34c3d57))
+- **kit:** `InputYear` add new component ([#2919](https://github.com/tinkoff/taiga-ui/issues/2919))
+  ([214fc30](https://github.com/tinkoff/taiga-ui/commit/214fc30a0d71ee0031860a1e26abf433ee2fcbb0))
+- **testing:** add harness class for toggle component ([#2939](https://github.com/tinkoff/taiga-ui/issues/2939))
+  ([3dd08ce](https://github.com/tinkoff/taiga-ui/commit/3dd08ce321bca9b80f3f62dd76026061ed3de5c7))
+
+### Bug Fixes
+
+- **cdk:** `schematics` always install styles package when migrating
+  ([#2922](https://github.com/tinkoff/taiga-ui/issues/2922))
+  ([52feffd](https://github.com/tinkoff/taiga-ui/commit/52feffdd817fd53b5ec7421d320e208023824d8b))
+- **core:** fix notification padding and background color ([#2937](https://github.com/tinkoff/taiga-ui/issues/2937))
+  ([4ef310d](https://github.com/tinkoff/taiga-ui/commit/4ef310d0454456d5081b4a6e7300b66c35299e9d))
+- **kit:** `InputTag` fix pasting behaviour ([#2936](https://github.com/tinkoff/taiga-ui/issues/2936))
+  ([cd5d309](https://github.com/tinkoff/taiga-ui/commit/cd5d3096497f59ea9c1da7282124d3760e65b82e))
+- **kit:** `MarkerIcon` only show hover state for interactive elements
+  ([#2950](https://github.com/tinkoff/taiga-ui/issues/2950))
+  ([90da7d5](https://github.com/tinkoff/taiga-ui/commit/90da7d5bc93a393b8ae5718f5f92d2db37d30ecb))
+- **kit:** `TextArea` fix height for size `m` ([#2952](https://github.com/tinkoff/taiga-ui/issues/2952))
+  ([e17346d](https://github.com/tinkoff/taiga-ui/commit/e17346d9b51426e92b9e460a01955955b19c9d48))
+
 ### [3.7.1](https://github.com/tinkoff/taiga-ui/compare/v3.7.0...v3.7.1) (2022-10-18)
 
 ### Bug Fixes
