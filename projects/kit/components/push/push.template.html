@@ -19,7 +19,12 @@
         [textContent]="timestamp | tuiFormatDate | async"
     ></span>
 </div>
-<h3 class="t-heading">{{ heading }}</h3>
+<h3
+    automation-id="tui-push__heading"
+    class="t-heading"
+>
+    {{ heading }}
+</h3>
 <div class="t-content">
     <ng-content></ng-content>
 </div>

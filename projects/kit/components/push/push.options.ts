@@ -7,13 +7,3 @@ export interface TuiPushOptions {
     readonly iconColor: string;
     readonly buttons: readonly string[];
 }
-
-export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
-    heading: ``,
-    type: ``,
-    timestamp: 0,
-    image: ``,
-    icon: ``,
-    iconColor: ``,
-    buttons: [],
-};
