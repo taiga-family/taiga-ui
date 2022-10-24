@@ -367,3 +367,15 @@
     overflow: hidden;
     padding: 0;
 }
+
+/**
+ * @description:
+ * disable smooth scrolling when users have prefers-reduced-motion enabled
+ */
+.scroll-behavior(@mode: smooth) {
+    scroll-behavior: @mode;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+}
