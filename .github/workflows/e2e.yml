@@ -114,7 +114,7 @@ jobs:
       - name: Check if diff-output exists
         id: diff-checker
         run: |
-          echo "::set-output name=diff_exist::$(find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')"
+          echo "{diff_exist}={$(find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')}" >> $GITHUB_OUTPUT
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}

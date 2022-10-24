@@ -82,6 +82,6 @@ runs:
     - id: output
       shell: bash
       run: |
-        echo "::set-output name=root-package-version::v$(node -p "require('./package.json').version")"
-        echo "::set-output name=root-package-major-version::$(node -p "parseInt(require('./package.json').version)")"
-        echo "::set-output name=is-release-candidate::$(node -p "require('./package.json').version.includes('rc')")"
+        echo "{root-package-version}={v$(node -p "require('./package.json').version")}" >> $GITHUB_OUTPUT
+        echo "{root-package-major-version}={$(node -p "parseInt(require('./package.json').version)")}" >> $GITHUB_OUTPUT
+        echo "{is-release-candidate}={$(node -p "require('./package.json').version.includes('rc')")}" >> $GITHUB_OUTPUT
