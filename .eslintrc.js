@@ -1,3 +1,7 @@
+const CI_MODE = process.env['TUI_CI'] === 'true';
+
+console.log('CI mode', CI_MODE);
+
 /**
  * @type {import('eslint').Linter.Config}
  */
@@ -13,11 +17,10 @@ module.exports = {
         '@tinkoff/eslint-config-angular/member-ordering',
 
         // @custom
-        './scripts/eslint/nx.js',
-        './scripts/eslint/cypress.js',
-        './scripts/eslint/decorators.js',
-        './scripts/eslint/naming-convention.js',
-    ],
+        './scripts/eslint/common/cypress.js',
+        './scripts/eslint/common/decorators.js',
+        './scripts/eslint/common/naming-convention.js',
+    ].concat(CI_MODE ? ['./scripts/eslint/ci/config.js'] : []),
     ignorePatterns: [
         'projects/**/test.ts',
         'projects/**/icons/all.ts',
@@ -41,7 +44,6 @@ module.exports = {
         },
     },
     rules: {
-        'import/no-cycle': 'error',
         'file-progress/activate': 1,
         quotes: 'off',
         '@typescript-eslint/quotes': ['error', 'backtick'],
