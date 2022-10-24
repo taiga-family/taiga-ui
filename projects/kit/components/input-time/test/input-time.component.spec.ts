@@ -149,7 +149,7 @@ describe(`InputTime`, () => {
 
         it(`If the cursor is at position 0, then pressing UP increases the hour by 1`, () => {
             input.focus();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement?.setSelectionRange(0, 0);
             input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));
             fixture.detectChanges();
 
@@ -158,7 +158,7 @@ describe(`InputTime`, () => {
 
         it(`If the cursor is at position 4, then pressing UP increases the minute by 1`, () => {
             input.focus();
-            component.nativeFocusableElement!.setSelectionRange(4, 4);
+            component.nativeFocusableElement?.setSelectionRange(4, 4);
             input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));
             fixture.detectChanges();
 
@@ -167,7 +167,7 @@ describe(`InputTime`, () => {
 
         it(`If the cursor is at position 0, then pressing DOWN decreases the hour by 1`, () => {
             input.focus();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement?.setSelectionRange(0, 0);
             input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
             fixture.detectChanges();
 
@@ -176,7 +176,7 @@ describe(`InputTime`, () => {
 
         it(`If the cursor is at position 4, then pressing DOWN decreases the minute by 1`, () => {
             input.focus();
-            component.nativeFocusableElement!.setSelectionRange(4, 4);
+            component.nativeFocusableElement?.setSelectionRange(4, 4);
             input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowDown`, `keydown`));
             fixture.detectChanges();
 
@@ -187,7 +187,7 @@ describe(`InputTime`, () => {
             testComponent.readOnly = true;
             input.focus();
             fixture.detectChanges();
-            component.nativeFocusableElement!.setSelectionRange(0, 0);
+            component.nativeFocusableElement?.setSelectionRange(0, 0);
             await fixture.whenStable();
 
             input.dispatchEvent(tuiCreateKeyboardEvent(`ArrowUp`, `keydown`));

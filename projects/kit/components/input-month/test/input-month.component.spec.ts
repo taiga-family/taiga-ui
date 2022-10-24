@@ -54,7 +54,7 @@ describe(`InputMonth`, () => {
         it(`returns empty string if no value`, () => {
             testComponent.control.setValue(null);
 
-            expect(component.nativeFocusableElement!.value).toBe(``);
+            expect(component.nativeFocusableElement?.value).toBe(``);
         });
 
         it(`returns the whole stringified value if there is`, fakeAsync(() => {

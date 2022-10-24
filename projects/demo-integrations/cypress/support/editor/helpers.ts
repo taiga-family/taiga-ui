@@ -109,7 +109,7 @@ export function tuiSelectTag(selector: Cypress.Chainable<JQuery>): void {
 
             range?.selectNodeContents(el);
             document?.getSelection()?.removeAllRanges();
-            document?.getSelection()?.addRange(range!);
+            document?.getSelection()?.addRange(range);
         })
         .trigger(`mouseup`, {force: true});
 

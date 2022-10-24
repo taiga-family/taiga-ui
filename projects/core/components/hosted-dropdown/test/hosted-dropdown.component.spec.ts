@@ -2,16 +2,17 @@ import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiElementModule} from '@taiga-ui/cdk';
+import {
+    TuiButtonComponent,
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule,
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiRootModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {configureTestSuite, tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
-
-import {TuiTextfieldControllerModule} from '../../../directives';
-import {TuiButtonComponent} from '../../button/button.component';
-import {TuiButtonModule} from '../../button/button.module';
-import {TuiDataListModule} from '../../data-list/data-list.module';
-import {TuiPrimitiveTextfieldComponent} from '../../primitive-textfield/primitive-textfield.component';
-import {TuiPrimitiveTextfieldModule} from '../../primitive-textfield/primitive-textfield.module';
-import {TuiRootModule} from '../../root/root.module';
-import {TuiHostedDropdownModule} from '../hosted-dropdown.module';
 
 describe(`TuiHostedDropdown`, () => {
     @Component({
@@ -112,7 +113,7 @@ describe(`TuiHostedDropdown`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    let nativeButton: HTMLElement;
+    let nativeButton: HTMLElement | null;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -136,12 +137,12 @@ describe(`TuiHostedDropdown`, () => {
         pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
 
-        nativeButton = document.querySelector(`#native-button`) as HTMLElement;
+        nativeButton = document.querySelector(`#native-button`);
     });
 
     describe(`Buttons`, () => {
         it(`The first element to be focused is the host, clicking on it opens a dropdown`, () => {
-            nativeButton.click();
+            nativeButton?.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(2);
@@ -155,7 +156,7 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Down arrow opens a dropdown`, () => {
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
 
             expect(getItems().length).toBe(2);
@@ -169,7 +170,7 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Down arrow moves focus to dropdown`, () => {
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`arrowDown`, fixture);
 
@@ -177,7 +178,7 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Escape closes the dropdown`, () => {
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`escape`, fixture);
 
@@ -185,7 +186,7 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Escape in the dropdown closes it and brings focus to the host`, () => {
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`escape`, fixture);
@@ -195,7 +196,7 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Loss of focus closes the dropdown`, () => {
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`arrowDown`, fixture);
             testComponent.tuiButton.nativeElement.focus();
@@ -207,7 +208,7 @@ describe(`TuiHostedDropdown`, () => {
         it(`Down arrow does not open dropdown if canOpen === false`, () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
-            nativeButton.focus();
+            nativeButton?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
 
             expect(getItems().length).toBe(0);
@@ -216,7 +217,7 @@ describe(`TuiHostedDropdown`, () => {
         it(`Click does not open the dropdown if canOpen === false`, () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
-            nativeButton.click();
+            nativeButton?.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
@@ -230,21 +231,21 @@ describe(`TuiHostedDropdown`, () => {
         });
 
         it(`Clicking on the host does not open the dropdown`, () => {
-            testComponent.tuiTextfield.nativeFocusableElement!.click();
+            testComponent.tuiTextfield.nativeFocusableElement?.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
         });
 
         it(`Down arrow opens a dropdown`, () => {
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
 
             expect(getItems().length).toBe(2);
         });
 
         it(`Updating items brings focus to input`, () => {
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement?.focus();
             tuiDispatchOnActive(`arrowDown`, fixture);
 
             testComponent.items = [`Item 3`, `Item 4`];
@@ -266,7 +267,7 @@ describe(`TuiHostedDropdown`, () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
 
-            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            testComponent.tuiTextfield.nativeFocusableElement?.focus();
             tuiDispatchOnActive(`escape`, fixture);
 
             expect(testComponent.escCatched).toBe(true);

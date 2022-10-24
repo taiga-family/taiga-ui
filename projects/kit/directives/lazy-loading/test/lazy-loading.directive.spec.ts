@@ -40,25 +40,25 @@ xdescribe(`TuiLazyLoading directive`, () => {
     });
 
     it(`Image has background color`, () => {
-        expect(getHtmlImage().style.background).toBe(`var(--tui-clear-hover)`);
-        expect(getHtmlImage().style.getPropertyValue(`--tui-clear-hover`).trim()).toBe(
+        expect(getHtmlImage()?.style.background).toBe(`var(--tui-clear-hover)`);
+        expect(getHtmlImage()?.style.getPropertyValue(`--tui-clear-hover`).trim()).toBe(
             `rgba(0, 0, 0, 0.16)`,
         );
     });
 
     it(`Loading animation is shown`, () => {
-        expect(getHtmlImage().style.animationName).toContain(`tuiSkeletonVibe`);
+        expect(getHtmlImage()?.style.animationName).toContain(`tuiSkeletonVibe`);
     });
 
     it(`Loading animation is cancelled after image load`, done => {
-        fromEvent(getHtmlImage(), `load`).subscribe(() => {
+        fromEvent(getHtmlImage() as unknown as HTMLImageElement, `load`).subscribe(() => {
             fixture.detectChanges();
-            expect(getHtmlImage().style.animationName).toBe(``);
+            expect(getHtmlImage()?.style.animationName).toBe(``);
             done();
         });
     });
 });
 
-function getHtmlImage(): HTMLImageElement {
-    return document.querySelector(`#image`) as HTMLImageElement;
+function getHtmlImage(): HTMLImageElement | null {
+    return document.querySelector(`#image`);
 }
