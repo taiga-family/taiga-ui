@@ -22,7 +22,6 @@ import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
-import {tuiInspectAny} from '../../utils/inspect';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
 // @bad TODO subscribe propertiesConnectors changes
@@ -167,9 +166,5 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
     showContentTooltip(type: string): boolean {
         return type.includes(`PolymorpheusContent`);
-    }
-
-    inspectAny(data: unknown): string {
-        return tuiInspectAny(data, 2);
     }
 }

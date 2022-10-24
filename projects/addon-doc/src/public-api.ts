@@ -13,6 +13,7 @@ export * from './components/demo/demo.module';
 export * from './components/documentation/documentation.component';
 export * from './components/documentation/documentation.module';
 export * from './components/documentation/documentation-property-connector.directive';
+export * from './components/documentation/pipes/inspect.pipe';
 export * from './components/example/example.component';
 export * from './components/example/example.module';
 export * from './components/example/example-capitalize.pipe';
