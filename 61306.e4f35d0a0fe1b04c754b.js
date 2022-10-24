@@ -203,7 +203,7 @@ let TuiCarouselExample2 = /*#__PURE__*/(() => {
       }
     },
     directives: [carousel_component/* TuiCarouselComponent */.V, carousel_directive/* TuiCarouselDirective */.E, common/* NgForOf */.sg, item_directive/* TuiItemDirective */.w],
-    styles: [".item[_ngcontent-%COMP%]{transition-property:box-shadow,transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:block;max-height:100px;margin:2rem auto;border-radius:100%}.item_active[_ngcontent-%COMP%]{box-shadow:0 .5rem 1rem rgba(0,0,0,.16);transform:scale(1.2)}"],
+    styles: [".item[_ngcontent-%COMP%]{transition-property:box-shadow,transform;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;display:block;max-height:100px;margin:2rem auto;border-radius:100%}.item_active[_ngcontent-%COMP%]{box-shadow:0 1.5rem 1rem rgba(0,0,0,.03),0 .75rem .75rem rgba(0,0,0,.04),0 .25rem .375rem rgba(0,0,0,.05);transform:scale(1.2)}"],
     changeDetection: 0
   });
   return TuiCarouselExample2;

@@ -81,7 +81,7 @@ let TuiPortalExample1 = /*#__PURE__*/(() => {
       }
     },
     directives: [toggle_component/* TuiToggleComponent */.p, fesm2015_forms/* NgControlStatus */.JJ, fesm2015_forms/* NgModel */.On, portal_directive/* TuiPortalDirective */.s],
-    styles: [".portal[_ngcontent-%COMP%]{box-shadow:0 .5rem 1rem rgba(0,0,0,.16);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);position:fixed;padding:1.5rem;border-radius:var(--tui-radius-l);background:var(--tui-base-01)}"],
+    styles: [".portal[_ngcontent-%COMP%]{box-shadow:0 1.5rem 1rem rgba(0,0,0,.03),0 .75rem .75rem rgba(0,0,0,.04),0 .25rem .375rem rgba(0,0,0,.05);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);position:fixed;padding:1.5rem;border-radius:var(--tui-radius-l);background:var(--tui-base-01)}"],
     changeDetection: 0
   });
   return TuiPortalExample1;
