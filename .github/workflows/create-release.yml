@@ -57,9 +57,7 @@ jobs:
         if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
         run: |
           body=$(cat RELEASE_BODY.md)
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
+
           echo "body=$body" >> $GITHUB_OUTPUT
 
       - name: Debug body of pull request in dry mode
@@ -71,6 +69,7 @@ jobs:
         run: |
           echo "${{ steps.generate_body.outputs.tag_name }}"
           echo "release/${{ steps.run-release.outputs.new_version }}"
+          echo "\n"
           echo "${{ steps.get-pr-body.outputs.body }}"
 
       - name: Create Pull Request
