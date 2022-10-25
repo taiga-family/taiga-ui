@@ -34,6 +34,10 @@
         border: 2px solid var(--tui-focus);
     }
 
+    &[data-size='s'] {
+        border-radius: var(--tui-radius-xs);
+    }
+
     &[data-tui-host-status='primary'] {
         background-color: var(--tui-primary);
         color: var(--tui-primary-text);
@@ -185,7 +189,6 @@
 
     :host[data-size='s'] & {
         font: var(--tui-font-text-xs);
-        border-right: var(--tui-radius-xs);
         height: 1.25rem;
         padding: 0 @padding;
     }
