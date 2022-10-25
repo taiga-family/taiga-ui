@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[98542],{98542:n=>{n.exports=".template {\n    display: flex;\n    align-items: center;\n}\n\n.avatar {\n    margin: 0 0.5rem 0 -0.25rem;\n}\n"}}]);
