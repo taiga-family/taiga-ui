@@ -1,9 +1,12 @@
+const path = require('path');
+
 const MESSAGE_ID = `no-deep-imports`;
 const ERROR_MESSAGE = `Deep imports of Taiga UI packages are prohibited`;
 
 const DEFAULT_OPTIONS = {
     importDeclaration: `^@taiga-ui*`,
     deepImport: `(?<=^@taiga-ui/[\\w-]+)(/.+)$`,
+    projectName: `(?<=^@taiga-ui/)([-\\w]+)`,
     currentProject: ``,
     ignoreImports: [],
 };
@@ -48,47 +51,70 @@ module.exports = {
         ],
     },
     create(context) {
-        const {importDeclaration, deepImport, currentProject, ignoreImports} = {
+        const {
+            importDeclaration,
+            deepImport,
+            projectName,
+            currentProject,
+            ignoreImports,
+        } = {
             ...DEFAULT_OPTIONS,
             ...(context.options[0] || {}),
+        };
+
+        const isDeepImport = source => {
+            return !!source.match(new RegExp(deepImport, 'g'))?.length;
+        };
+
+        const isInsideTheSameEntryPoint = source => {
+            const filePath = path.relative(
+                context.getCwd().replace(/\\+/g, '/'),
+                context.getFilename().replace(/\\+/g, '/'),
+            );
+
+            const [currentFileProjectName] =
+                (currentProject && filePath.match(new RegExp(currentProject, 'g'))) || [];
+
+            const [importSourceProjectName] =
+                source.match(new RegExp(projectName, 'g')) || [];
+
+            return Boolean(
+                currentFileProjectName &&
+                    importSourceProjectName &&
+                    currentFileProjectName === importSourceProjectName,
+            );
+        };
+
+        const shouldIgnore = source => {
+            return ignoreImports.some(p => source.match(new RegExp(p, 'g')));
         };
 
         return {
             [`ImportDeclaration[source.value=/${importDeclaration}/]`]({
                 source: sourceNode,
             }) {
-                const currentFilePath = context.getFilename().replace(/\\+/g, '/');
-                const [currentFileProjectName] =
-                    (currentProject &&
-                        currentFilePath.match(new RegExp(currentProject, 'g'))) ||
-                    [];
                 const importSource = sourceNode?.value || ``;
-                const isInsideTheSameEntryPoint = Boolean(
-                    currentFileProjectName &&
-                        importSource.includes(currentFileProjectName),
-                );
 
                 if (
-                    isInsideTheSameEntryPoint ||
-                    ignoreImports.some(p => importSource.match(new RegExp(p, 'g')))
+                    !isDeepImport(importSource) ||
+                    isInsideTheSameEntryPoint(importSource) ||
+                    shouldIgnore(importSource)
                 ) {
                     return;
                 }
 
-                if (importSource.match(new RegExp(deepImport, 'g'))?.length) {
-                    context.report({
-                        node: sourceNode,
-                        messageId: MESSAGE_ID,
-                        fix: fixer => {
-                            const [start, end] = sourceNode.range;
+                context.report({
+                    node: sourceNode,
+                    messageId: MESSAGE_ID,
+                    fix: fixer => {
+                        const [start, end] = sourceNode.range;
 
-                            return fixer.replaceTextRange(
-                                [start + 1, end - 1], //  keeps quotes
-                                importSource.replace(new RegExp(deepImport, 'g'), ``),
-                            );
-                        },
-                    });
-                }
+                        return fixer.replaceTextRange(
+                            [start + 1, end - 1], //  keeps quotes
+                            importSource.replace(new RegExp(deepImport, 'g'), ``),
+                        );
+                    },
+                });
             },
         };
     },
