@@ -4,7 +4,7 @@ tui-data-list {
     display: flex;
     font: var(--tui-font-text-m);
     flex-direction: column;
-    padding: 0.5rem 0;
+    padding: 0.375rem 0;
     color: var(--tui-text-03);
 
     &:focus-within {
@@ -23,12 +23,12 @@ tui-data-list {
 }
 
 tui-opt-group {
-    .text-overflow();
     position: relative;
     display: flex;
-    font: var(--tui-font-text-xs);
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-02);
     flex-direction: column;
-    line-height: 2rem;
+    line-height: 1rem;
 
     &:empty:before,
     &:empty:after {
@@ -37,27 +37,26 @@ tui-opt-group {
 
     &:before {
         content: attr(data-label);
-        padding: 0.5rem 1rem;
-        color: var(--tui-text-02);
+        padding: 0.375rem 1rem 0.75rem;
         line-height: 1rem;
         white-space: normal;
     }
 
     &:not(:empty) ~ & {
         &:before {
-            padding: 1.5rem 1rem 0.5rem;
+            padding: 0.875rem 1rem 0.75rem;
         }
 
         &[data-label='']:before {
-            padding: 1rem 0 0;
+            padding: 0.5rem 0 0;
         }
 
         &:after {
             content: '';
             position: absolute;
-            left: 0;
-            right: 0;
-            top: 0.5rem;
+            left: 1rem;
+            right: 1rem;
+            top: 0.25rem;
             height: 1px;
             background: var(--tui-base-03);
         }

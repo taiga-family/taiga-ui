@@ -19,7 +19,7 @@ export class VariablesComponent {
         '--tui-radius-xs': `border radius for smallest items (i.e. small checkbox)`,
         '--tui-radius-s': `border radius for small elements (i.e. tags)`,
         '--tui-radius-m': `default border radius`,
-        '--tui-radius-l': `border radius for containers (i.e. hint, accordion)`,
+        '--tui-radius-l': `border radius for containers (i.e. island, accordion)`,
         '--tui-height-xs': `smallest elements height (i.e. small button, badges)`,
         '--tui-height-s': `small elements height (i.e. small inputs)`,
         '--tui-height-m': `default elements height (i.e. inputs, buttons)`,

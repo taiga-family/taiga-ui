@@ -53,4 +53,8 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Drop file here`,
         dropMultiple: `Drop files here`,
     },
+    multiSelectTexts: {
+        all: `Select all`,
+        none: `Select none`,
+    },
 };

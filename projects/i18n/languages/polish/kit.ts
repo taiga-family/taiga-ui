@@ -53,4 +53,8 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Przeciągnij plik tutaj`,
         dropMultiple: `Przeciągnij pliki tutaj`,
     },
+    multiSelectTexts: {
+        all: `Zaznacz wszystko`,
+        none: `Nie zaznaczaj`,
+    },
 };

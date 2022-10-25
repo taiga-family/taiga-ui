@@ -53,4 +53,8 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Dosyayı buraya bırakın`,
         dropMultiple: `Dosyaları buraya bırakın`,
     },
+    multiSelectTexts: {
+        all: `Hepsini seç`,
+        none: `Hiçbirini Seçme`,
+    },
 };

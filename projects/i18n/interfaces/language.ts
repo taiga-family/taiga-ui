@@ -84,6 +84,10 @@ export interface TuiLanguageKit {
         drop: string;
         dropMultiple: string;
     };
+    multiSelectTexts: {
+        all: string;
+        none: string;
+    };
 }
 
 export interface TuiLanguageCommerce {

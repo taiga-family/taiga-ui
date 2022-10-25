@@ -53,4 +53,8 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Datei hier ablegen`,
         dropMultiple: `Dateien hier ablegen`,
     },
+    multiSelectTexts: {
+        all: `Alles auswählen`,
+        none: `Keine auswählen`,
+    },
 };

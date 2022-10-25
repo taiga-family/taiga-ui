@@ -53,4 +53,8 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Thả tệp tại đây`,
         dropMultiple: `Thả nhiều tệp tại đây`,
     },
+    multiSelectTexts: {
+        all: `Chọn tất cả`,
+        none: `Không chọn`,
+    },
 };

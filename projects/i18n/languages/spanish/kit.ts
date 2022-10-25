@@ -53,4 +53,8 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         drop: `Suelte el archivo aquí`,
         dropMultiple: `Suelte los archivos aquí`,
     },
+    multiSelectTexts: {
+        all: `Seleccionar todo`,
+        none: `Seleccionar ninguno`,
+    },
 };
