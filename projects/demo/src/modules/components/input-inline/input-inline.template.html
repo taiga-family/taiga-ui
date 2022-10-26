@@ -41,12 +41,23 @@
                     class="input"
                     [formControl]="control"
                     [maxLength]="maxLength"
+                    [style.float]="textAlign"
                 >
                     Placeholder
                 </tui-input-inline>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.float"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by float
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName=""

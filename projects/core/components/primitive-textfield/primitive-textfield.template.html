@@ -1,8 +1,15 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
 <ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<ng-container *ngIf="decoration?.pre$ | async"></ng-container>
+<ng-container *ngIf="decoration?.post$ | async"></ng-container>
+
 <div
+    *tuiLet="(decoration?.align$ | async) || '' as align"
     tuiWrapper
     automation-id="tui-primitive-textfield__wrapper"
+    class="t-wrapper-primitive"
+    [class.t-offset-left]="align === 'left'"
+    [class.t-offset-right]="align === 'right'"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -10,7 +17,11 @@
     [hover]="pseudoHover"
     [active]="pseudoActive"
     [invalid]="computedInvalid"
-    [style.--text-indent.px]="decor.pre$ | async"
+    [style.--tui-computed-input-width-offset.px]="
+        align === 'right'
+            ? decoration?.post?.nativeElement?.offsetWidth || 0
+            : decoration?.pre?.nativeElement?.offsetWidth || 0
+    "
     (mousedown)="onMouseDown($event)"
     (click.prevent.silent)="(0)"
     (tuiAutofilledChange)="onAutofilled($event)"
@@ -59,12 +70,10 @@
             </label>
             <div class="t-wrapper-value-decoration">
                 <tui-value-decoration
-                    #decor
                     automation-id="tui-primitive-textfield__value-decoration"
                     aria-hidden="true"
                     class="t-value-decoration"
                     [class.t-has-value]="value"
-                    [style.textIndent.px]="getIndent$(focusableElement) | async"
                 ></tui-value-decoration>
             </div>
         </div>

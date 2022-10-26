@@ -235,6 +235,7 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
+                    [style.text-align]="textAlign"
                 >
                     Label
                     <strong>strong text</strong>
@@ -255,6 +256,16 @@
             </div>
         </ng-template>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.text-align"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName=""

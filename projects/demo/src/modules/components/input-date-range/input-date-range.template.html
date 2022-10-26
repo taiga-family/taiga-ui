@@ -141,12 +141,23 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
                     [disabledItemHandler]="disabledItemHandler"
+                    [style.text-align]="textAlign"
                 >
                     Choose dates
                 </tui-input-date-range>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.text-align"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName=""

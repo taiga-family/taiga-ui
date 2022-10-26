@@ -54,6 +54,7 @@
             (keydown.arrowUp)="changeByStep($event, [0, 1])"
             (keydown.arrowDown)="changeByStep($event, [0, -1])"
         >
+            <span class="t-hidden-right-label">&nbsp;&nbsp;</span>
             <div
                 *ngIf="showRightValueContent"
                 ngProjectAs="tuiContent"

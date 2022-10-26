@@ -40,6 +40,7 @@ import {
     TuiPrimitiveTextfieldOptions,
 } from './primitive-textfield-options';
 import {TuiPrimitiveTextfield} from './primitive-textfield-types';
+import {TuiValueDecorationComponent} from './value-decoration/value-decoration.component';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
@@ -66,6 +67,9 @@ export class TuiPrimitiveTextfieldComponent
 {
     @ViewChild(`focusableElement`)
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
+    @ViewChild(TuiValueDecorationComponent)
+    readonly decoration?: TuiValueDecorationComponent;
 
     @Input()
     @tuiDefaultProp()

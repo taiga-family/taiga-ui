@@ -4,7 +4,9 @@
     [textContent]="prefix"
 ></span>
 <span
+    #ghost
     class="t-ghost t-inline"
+    [style.color]="color"
     [textContent]="value"
 ></span>
 <span
@@ -12,6 +14,7 @@
     [textContent]="filler"
 ></span>
 <span
+    #post
     class="t-postfix t-inline"
     [textContent]="postfix"
 ></span>

@@ -9,6 +9,8 @@
     box-sizing: content-box;
     color: var(--tui-text-01);
     animation: tuiPresent 1s;
+    white-space: nowrap;
+    overflow: hidden;
 
     &._table {
         position: static;
@@ -27,9 +29,7 @@
 }
 
 .t-ghost {
-    visibility: hidden;
-    white-space: pre;
-    text-overflow: clip;
+    opacity: 0;
 }
 
 .t-prefix,

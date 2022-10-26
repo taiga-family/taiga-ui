@@ -1,3 +1,8 @@
+:host {
+    display: block;
+    border-radius: var(--tui-radius-m);
+}
+
 .t-wrapper {
     position: relative;
 }
@@ -17,6 +22,10 @@
 
     & .t-text-input {
         flex: 1;
+    }
+
+    & .t-hidden-right-label {
+        color: transparent;
     }
 }
 
@@ -45,11 +54,6 @@
     :host._disabled & {
         color: var(--tui-text-03);
     }
-}
-
-:host {
-    display: block;
-    border-radius: var(--tui-radius-m);
 }
 
 .t-range {

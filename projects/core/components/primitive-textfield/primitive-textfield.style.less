@@ -15,6 +15,30 @@
             }
         }
     }
+
+    &:not(._hidden):not(._focused) {
+        ::ng-deep input {
+            opacity: 0;
+        }
+
+        ::ng-deep .t-ghost {
+            opacity: 1;
+        }
+    }
+}
+
+.t-wrapper-primitive {
+    ::ng-deep input {
+        width: calc(100% - var(--tui-computed-input-width-offset, 0));
+    }
+
+    &.t-offset-left ::ng-deep input {
+        left: var(--tui-computed-input-width-offset, 0);
+    }
+
+    &.t-offset-right ::ng-deep input {
+        right: var(--tui-computed-input-width-offset, 0);
+    }
 }
 
 .t-custom-content {
