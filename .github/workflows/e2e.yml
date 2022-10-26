@@ -59,6 +59,7 @@ jobs:
             addon-preview,
             addon-table,
             addon-tablebars,
+            inputs,
             core,
             deep,
             demo,

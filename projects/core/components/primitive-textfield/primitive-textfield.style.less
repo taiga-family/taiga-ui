@@ -16,7 +16,8 @@
         }
     }
 
-    &:not(._hidden):not(._focused) {
+    /* stylelint-disable selector-max-specificity */
+    &:not(._hidden):not(._autofilled):not(._focused) {
         ::ng-deep input {
             opacity: 0;
         }
