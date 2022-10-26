@@ -1,0 +1,26 @@
+<form class="b-form">
+    <tui-select [formControl]="itemControl">
+        Character
+        <select
+            tuiSelect
+            [items]="items"
+        ></select>
+    </tui-select>
+
+    <tui-select
+        class="tui-space_top-4"
+        [formControl]="itemGroupControl"
+    >
+        Food
+        <select
+            tuiSelect
+            [items]="groupItems"
+            [labels]="labels"
+        ></select>
+
+        <input
+            tuiTextfield
+            placeholder="Make a choice"
+        />
+    </tui-select>
+</form>
