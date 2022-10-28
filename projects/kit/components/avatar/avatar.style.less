@@ -60,12 +60,84 @@
         border-radius: var(--tui-radius-l);
     }
 
+    &[new] {
+        &[data-size='xxs'] {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: var(--tui-radius-s);
+
+            .t-icon {
+                transform: scale(0.58);
+            }
+        }
+
+        &[data-size='xs'] {
+            width: 2rem;
+            height: 2rem;
+            border-radius: var(--tui-radius-s);
+
+            .t-icon {
+                transform: scale(0.83);
+            }
+        }
+
+        &[data-size='s'] {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: calc(1.5 * var(--tui-radius-s));
+
+            .t-icon {
+                transform: scale(1);
+            }
+        }
+
+        &[data-size='m'] {
+            width: 3rem;
+            height: 3rem;
+            border-radius: calc(2 * var(--tui-radius-s));
+
+            .t-icon {
+                transform: scale(1.17);
+            }
+        }
+
+        &[data-size='l'] {
+            width: 4rem;
+            height: 4rem;
+            border-radius: calc(2 * var(--tui-radius-s));
+
+            .t-icon {
+                transform: scale(1.67);
+            }
+        }
+
+        &[data-size='xl'] {
+            width: 6rem;
+            height: 6rem;
+            border-radius: calc(3 * var(--tui-radius-s));
+
+            .t-icon {
+                transform: scale(2.33);
+            }
+        }
+
+        &[data-size='xxl'] {
+            width: 8rem;
+            height: 8rem;
+            border-radius: calc(4 * var(--tui-radius-s));
+
+            .t-icon {
+                transform: scale(3.33);
+            }
+        }
+    }
+
     &._has-avatar {
         background-color: transparent;
     }
 
     &._rounded {
-        border-radius: 100%;
+        border-radius: 100% !important;
     }
 }
 

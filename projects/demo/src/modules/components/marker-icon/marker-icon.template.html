@@ -41,6 +41,18 @@
             heading="sizes"
             [content]="example3"
         >
+            <tui-notification class="tui-space_bottom-4">
+                Sizes were updated and synced with
+                <a
+                    tuiLink
+                    routerLink="/components/avatar"
+                >
+                    <code>Avatar</code>
+                </a>
+                . To prevent breaking changes
+                <code>new</code>
+                attribute has to be added to enable new sizes.
+            </tui-notification>
             <tui-marker-icon-example-3></tui-marker-icon-example-3>
         </tui-doc-example>
     </ng-template>
@@ -48,6 +60,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-marker-icon
+                new
                 [mode]="mode"
                 [src]="selectedIcon"
                 [size]="size"
@@ -68,7 +81,7 @@
                 i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeXS | TuiSizeXL"
+                documentationPropertyType="TuiSizeXXS | TuiSizeXXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
