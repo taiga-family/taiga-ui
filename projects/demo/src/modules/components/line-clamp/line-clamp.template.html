@@ -64,15 +64,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="style.maxWidth.px"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="maxWidth"
-            >
-                Value of max-width
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="lineHeight"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -88,6 +79,17 @@
                 [(documentationPropertyValue)]="linesLimit"
             >
                 Number of visible lines
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                i18n
+                documentationPropertyName="style.maxWidth.px"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxWidth"
+            >
+                Value of max-width
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

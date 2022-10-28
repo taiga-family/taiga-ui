@@ -74,6 +74,7 @@
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
                 [tuiHintAppearance]="hintAppearance"
+                [style.text-align]="textAlign"
                 [(value)]="value"
             >
                 Component label
@@ -208,6 +209,18 @@
         <hint-controller-documentation></hint-controller-documentation>
         <textfield-controller-documentation></textfield-controller-documentation>
         <inherited-documentation></inherited-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.text-align"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
