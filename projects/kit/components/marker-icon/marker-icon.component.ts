@@ -10,8 +10,8 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiBrightness,
-    TuiSizeXL,
-    TuiSizeXS,
+    TuiSizeXXL,
+    TuiSizeXXS,
 } from '@taiga-ui/core';
 import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
@@ -35,7 +35,7 @@ export class TuiMarkerIconComponent {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXL = `m`;
+    size: TuiSizeXXS | TuiSizeXXL = `m`;
 
     @Input()
     @tuiDefaultProp()

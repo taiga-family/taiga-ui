@@ -44,6 +44,71 @@
         height: @size-xl;
     }
 
+    &[new] {
+        &[data-size='xxs'] {
+            width: 1.5rem;
+            height: 1.5rem;
+
+            .t-icon {
+                transform: scale(0.58);
+            }
+        }
+
+        &[data-size='xs'] {
+            width: 2rem;
+            height: 2rem;
+
+            .t-icon {
+                transform: scale(0.83);
+            }
+        }
+
+        &[data-size='s'] {
+            width: 2.5rem;
+            height: 2.5rem;
+
+            .t-icon {
+                transform: scale(1);
+            }
+        }
+
+        &[data-size='m'] {
+            width: 3rem;
+            height: 3rem;
+
+            .t-icon {
+                transform: scale(1.17);
+            }
+        }
+
+        &[data-size='l'] {
+            width: 4rem;
+            height: 4rem;
+
+            .t-icon {
+                transform: scale(1.67);
+            }
+        }
+
+        &[data-size='xl'] {
+            width: 6rem;
+            height: 6rem;
+
+            .t-icon {
+                transform: scale(2.33);
+            }
+        }
+
+        &[data-size='xxl'] {
+            width: 8rem;
+            height: 8rem;
+
+            .t-icon {
+                transform: scale(3.33);
+            }
+        }
+    }
+
     &[data-mode='onDark']:not([data-marker-mode]) {
         color: var(--tui-base-01);
         background-color: var(--tui-clear-inverse);

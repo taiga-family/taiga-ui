@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {TuiMarkerIconMode} from '@taiga-ui/kit';
 
 @Component({
@@ -34,15 +34,17 @@ export class ExampleTuiMarkerIconComponent {
 
     selectedIcon = this.icons[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXXS | TuiSizeXXL> = [
+        `xxs`,
         `xs`,
         `s`,
         `m`,
         `l`,
         `xl`,
+        `xxl`,
     ];
 
-    size: TuiSizeXS | TuiSizeXL = this.sizeVariants[2];
+    size = this.sizeVariants[2];
 
     readonly modeVariants: readonly TuiMarkerIconMode[] = [
         `link`,
