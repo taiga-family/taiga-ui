@@ -1,0 +1,12 @@
+{{ isPresent }} = isPresent(value);
+
+<tui-select
+    class="tui-space_top-2"
+    [formControl]="value"
+>
+    value
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+    ></tui-data-list-wrapper>
+</tui-select>
