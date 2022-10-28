@@ -10,7 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
-import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
+import {TUI_WARNING_NORMALIZE, TUI_WARNING_WRAPPER_MIXINS} from '../steps/replace-styles';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -145,7 +145,7 @@ tui-wrapper[data-appearance='textfield'] {
 const AFTER_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
 
-// TODO: (Taiga UI migration): for customizing wrapper use mixins. See https://taiga-ui.dev/wrapper
+${TUI_WARNING_WRAPPER_MIXINS}
 [tuiWrapper][data-appearance='textfield'] {
     background: var(--tui-secondary);
     color: var(--tui-text-01);
