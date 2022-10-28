@@ -13,6 +13,7 @@ import {
     ALWAYS_FALSE_HANDLER,
     MONTHS_IN_YEAR,
     TUI_FIRST_DAY,
+    TUI_IS_CYPRESS,
     TUI_IS_IOS,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -112,6 +113,7 @@ export class TuiMobileCalendarComponent {
 
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -339,9 +341,7 @@ export class TuiMobileCalendarComponent {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => {
-                this.scrollToActiveYear(`smooth`);
-            });
+            .subscribe(() => this.scrollToActiveYear(`smooth`));
     }
 
     private initMonthScroll(): void {
@@ -377,20 +377,21 @@ export class TuiMobileCalendarComponent {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => {
-                this.scrollToActiveMonth(`smooth`);
-            });
+            .subscribe(() => this.scrollToActiveMonth(`smooth`));
     }
 
-    private scrollToActiveYear(behavior?: ScrollBehavior): void {
+    private scrollToActiveYear(behavior: ScrollBehavior = `auto`): void {
         this.yearsScrollRef?.scrollToIndex(
             Math.max(this.activeYear - STARTING_YEAR - 2, 0),
-            behavior,
+            this.isCypress ? `auto` : behavior,
         );
     }
 
-    private scrollToActiveMonth(behavior?: ScrollBehavior): void {
-        this.monthsScrollRef?.scrollToIndex(this.activeMonth, behavior);
+    private scrollToActiveMonth(behavior: ScrollBehavior = `auto`): void {
+        this.monthsScrollRef?.scrollToIndex(
+            this.activeMonth,
+            this.isCypress ? `auto` : behavior,
+        );
     }
 
     private isYearActive(index: number): boolean {

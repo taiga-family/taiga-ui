@@ -1,7 +1,4 @@
-import {
-    DEFAULT_TIMEOUT_BEFORE_ACTION,
-    SELECT_PAGE_URL,
-} from '../../../support/shared.entities';
+import {SELECT_PAGE_URL, WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
 
 describe(`Select`, () => {
     beforeEach(() => {
@@ -12,11 +9,9 @@ describe(`Select`, () => {
     it(`opens dropdown by click on icon`, () => {
         cy.get(`#base tui-select`)
             .last()
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .wait(WAIT_BEFORE_SCREENSHOT)
             .trigger(`click`, {x: 300, y: 30});
 
-        cy.get(`#base`)
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .matchImageSnapshot(`01-click-arrow`);
+        cy.get(`#base`).wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`01-click-arrow`);
     });
 });

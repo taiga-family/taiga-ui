@@ -1,11 +1,23 @@
-import {DEMO_PATHS, isScrollbarPage} from '../../support/demo-paths';
+import {
+    DEMO_PATHS,
+    isInputNumberPage,
+    isMobileCalendarPage,
+    isScrollbarPage,
+} from '../../support/demo-paths';
 import {tuiExcluded} from '../../support/exclusions';
-import {EXAMPLE_ID} from '../../support/shared.entities';
+import {EXAMPLE_ID, WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe(`Demo`, () => {
     for (const path of DEMO_PATHS) {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
+
+            const waitSomeAnimationBefore =
+                isMobileCalendarPage(path) || isInputNumberPage(path);
+
+            if (waitSomeAnimationBefore) {
+                cy.wait(WAIT_BEFORE_SCREENSHOT);
+            }
 
             cy.get(`tui-doc-example`).each((example, index) => {
                 cy.wrap(example)
