@@ -1,3 +1,4 @@
+@compensates-padding: 0.01875rem; // this padding compensates for any types of fonts and aligning
 @line-height-l: 1.25rem;
 
 .textfield-host() {
@@ -81,13 +82,19 @@
     :host[data-size='s'] &,
     :host-context(tui-primitive-textfield[data-size='s']):not(tui-primitive-textfield),
     :host-context(tui-text-area[data-size='s']):not(tui-text-area) {
-        padding: 0 var(--tui-padding-s);
+        padding: 0 var(--tui-padding-s) 0.03125rem calc(var(--tui-padding-s) + @compensates-padding);
+    }
+
+    :host[data-size='m'] &,
+    :host-context(tui-primitive-textfield[data-size='m']):not(tui-primitive-textfield),
+    :host-context(tui-text-area[data-size='m']):not(tui-text-area) {
+        padding: 0 var(--tui-padding-l) 0.15625rem calc(var(--tui-padding-m) + @compensates-padding);
     }
 
     :host[data-size='l'] &,
     :host-context(tui-primitive-textfield[data-size='l']):not(tui-primitive-textfield),
     :host-context(tui-text-area[data-size='l']):not(tui-text-area) {
-        padding: 0 var(--tui-padding-l);
+        padding: 0 var(--tui-padding-l) 0.0625rem calc(var(--tui-padding-l) + @compensates-padding);
     }
 
     :host._disabled &,
