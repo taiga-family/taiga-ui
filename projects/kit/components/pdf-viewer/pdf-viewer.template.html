@@ -1,5 +1,10 @@
 <header class="t-header">
-    <h2 class="t-title">{{ context.label }}</h2>
+    <h2
+        automation-id="tui-pdf-viewer__label"
+        class="t-title"
+    >
+        {{ context.label }}
+    </h2>
     <div class="t-actions">
         <!-- TODO: Polymorpheus fix type -->
         <ng-container *polymorpheusOutlet="$any(context.actions) as text; context: context">
