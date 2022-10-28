@@ -6,6 +6,8 @@ export const TUI_WARNING_NORMALIZE = `
 // You need to manually download css file from https://necolas.github.io/normalize.css/
 // If you're looking to use reset styles or you can write your own reset.css`;
 
+export const TUI_WARNING_WRAPPER_MIXINS = `// TODO: (Taiga UI migration): use mixins to customize tuiWrapper. See https://taiga-ui.dev/wrapper`;
+
 export function replaceStyles() {
     getActiveProject()
         ?.getSourceFiles('**/**.less')
@@ -20,6 +22,11 @@ export function replaceStyles() {
                     );
                 });
             }
+
+            fullText = fullText
+                .replace('tui-wrapper', `${TUI_WARNING_WRAPPER_MIXINS}\n[tuiWrapper]`)
+                .replace("&[data-state='hovered']", "&[data-state='hover']")
+                .replace("&[data-state='pressed']", "&[data-state='active']");
 
             sourceFile.replaceWithText(
                 fullText.replace(
