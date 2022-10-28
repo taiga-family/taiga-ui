@@ -24,9 +24,8 @@ import {AbstractTuiNativeSelect} from './native-select';
     ],
     host: {
         '[attr.aria-invalid]': `host.invalid`,
-        '[attr.disabled]': `host.disabled || null`,
+        '[disabled]': `host.disabled || null`,
         '[tabIndex]': `host.focusable ? 0 : -1`,
-        '[class._mobile]': `isMobile`,
         '[readOnly]': `host.readOnly`,
         '[value]': `host.value`,
         '(change)': `host.onValueChange($event.target.value)`,
@@ -36,8 +35,8 @@ import {AbstractTuiNativeSelect} from './native-select';
 })
 export class TuiNativeSelectGroupComponent extends AbstractTuiNativeSelect {
     @Input()
-    items: readonly string[][] = [];
+    items: readonly string[][] | null = [];
 
     @Input()
-    labels: string[] = [];
+    labels: readonly string[] = [];
 }

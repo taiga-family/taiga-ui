@@ -69,7 +69,7 @@ export class TuiSelectComponent<T>
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     @ContentChild(AbstractTuiNativeSelect, {static: true})
-    private readonly nativeSelect: AbstractTuiNativeSelect | null = null;
+    private readonly nativeSelect?: AbstractTuiNativeSelect;
 
     @Input()
     @tuiDefaultProp()
@@ -142,7 +142,7 @@ export class TuiSelectComponent<T>
         if (!value) {
             this.updateValue(null);
         } else {
-            this.updateValue(value);
+            this.updateValue(value || null);
         }
     }
 
