@@ -13,12 +13,8 @@
         Palette only
     </button>
 </tui-hosted-dropdown>
-<ng-template
-    #palette
-    let-activeZone
->
+<ng-template #palette>
     <tui-palette
-        [tuiActiveZoneParent]="activeZone"
         [colors]="colors"
         (selectedColor)="updateColor($event)"
     ></tui-palette>
