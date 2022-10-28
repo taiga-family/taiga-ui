@@ -34,6 +34,28 @@ ${TUI_WARNING_NORMALIZE}
 const BEFORE_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
 
+tui-wrapper[data-appearance='textfield'] {
+    background: var(--tui-secondary);
+    color: var(--tui-text-01);
+    box-shadow: none;
+
+    &[data-state='hovered'] {
+        background: var(--tui-secondary);
+
+        &:after {
+            color: var(--tui-accent-hover);
+        }
+    }
+
+    &[data-state='pressed'] {
+        background: var(--tui-secondary-hover);
+
+        &:after {
+            color: var(--tui-accent-active);
+        }
+    }
+}
+
 .legacy-breakpoints {
     @media @mobile {
         color: red;
@@ -122,6 +144,29 @@ const BEFORE_LOCAL_STYLE = `
 
 const AFTER_LOCAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-local';
+
+// TODO: (Taiga UI migration): for customizing wrapper use mixins. See https://taiga-ui.dev/wrapper
+[tuiWrapper][data-appearance='textfield'] {
+    background: var(--tui-secondary);
+    color: var(--tui-text-01);
+    box-shadow: none;
+
+    &[data-state='hover'] {
+        background: var(--tui-secondary);
+
+        &:after {
+            color: var(--tui-accent-hover);
+        }
+    }
+
+    &[data-state='active'] {
+        background: var(--tui-secondary-hover);
+
+        &:after {
+            color: var(--tui-accent-active);
+        }
+    }
+}
 
 .legacy-breakpoints {
     @media @tui-mobile {
