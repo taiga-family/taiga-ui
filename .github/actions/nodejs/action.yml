@@ -85,5 +85,5 @@ runs:
       shell: bash
       run: |
         echo "root-package-version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-        echo "root-package-major-version={$(node -p "parseInt(require('./package.json').version)")" >> $GITHUB_OUTPUT
+        echo "root-package-major-version=$(node -p "parseInt(require('./package.json').version)")" >> $GITHUB_OUTPUT
         echo "is-release-candidate=$(node -p "require('./package.json').version.includes('rc')")" >> $GITHUB_OUTPUT
