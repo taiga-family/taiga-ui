@@ -1,5 +1,5 @@
 <button
-    *ngFor="let color of colors | keyvalue"
+    *ngFor="let color of colors | keyvalue: options.colorsOrder"
     type="button"
     class="t-button"
     [style.background]="color.value"
