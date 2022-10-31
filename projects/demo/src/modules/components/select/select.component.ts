@@ -106,6 +106,11 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         HTML: import(`./examples/10/index.html?raw`),
     };
 
+    readonly example11: TuiDocExample = {
+        TypeScript: import(`./examples/11/index.ts?raw`),
+        HTML: import(`./examples/11/index.html?raw`),
+    };
+
     readonly items = [new Account(`Ruble`, 500), new Account(`Dollar`, 237)];
 
     readonly valueTemplateVariants = [``, `Template`];

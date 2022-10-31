@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !nativeDropdownMode"
     [content]="datalist || ''"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
@@ -18,7 +18,7 @@
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="computedValue"
-        (valueChange)="onValueChange($event)"
+        (valueChange)="onValueChange($any($event))"
         (keydown.delete.prevent)="onKeyDownDelete()"
         (keydown.backspace.prevent)="onKeyDownDelete()"
     >
@@ -27,6 +27,21 @@
             select="input"
             ngProjectAs="input"
         ></ng-content>
+
+        <ng-template #select>
+            <ng-container *ngIf="isMobile">
+                <ng-content
+                    select="select"
+                    ngProjectAs="select"
+                ></ng-content>
+            </ng-container>
+        </ng-template>
+
+        <ng-container
+            *ngTemplateOutlet="select"
+            ngProjectAs="select"
+        ></ng-container>
+
         <div
             *ngIf="value !== null"
             ngProjectAs="tuiContent"

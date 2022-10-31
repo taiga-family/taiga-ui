@@ -1,0 +1,16 @@
+<tui-data-list-wrapper
+    *tuiDataList
+    [items]="items"
+    [labels]="labels"
+></tui-data-list-wrapper>
+<optgroup
+    *ngFor="let group of items; let index = index"
+    [label]="labels[index]"
+>
+    <option
+        *ngFor="let option of group"
+        [value]="option"
+    >
+        {{ option }}
+    </option>
+</optgroup>
