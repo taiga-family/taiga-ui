@@ -24,7 +24,7 @@ import {AbstractTuiNativeSelect} from './native-select';
     ],
     host: {
         '[attr.aria-invalid]': `host.invalid`,
-        '[disabled]': `host.disabled || null`,
+        '[disabled]': `host.disabled`,
         '[tabIndex]': `host.focusable ? 0 : -1`,
         '[readOnly]': `host.readOnly`,
         '[value]': `host.value`,
