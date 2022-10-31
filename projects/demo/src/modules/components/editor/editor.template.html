@@ -126,7 +126,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-editor
-                [style.max-height.px]="maxHeight"
+                [style.maxHeight.px]="maxHeight"
                 [formControl]="control"
                 [focusable]="focusable"
                 [exampleText]="exampleText"
@@ -180,15 +180,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="style.max-height.px"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="maxHeight"
-            >
-                Value of CSS-property "max-height"
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="tools"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<TuiEditorTool>"
@@ -196,6 +187,17 @@
                 [(documentationPropertyValue)]="tools"
             >
                 Allowed edit tools
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                i18n
+                documentationPropertyName="style.maxHeight.px"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxHeight"
+            >
+                Value of CSS-property "max-height"
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

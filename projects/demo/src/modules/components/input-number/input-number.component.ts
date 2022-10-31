@@ -59,10 +59,6 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    readonly alignVariants: readonly string[] = [`left`, `right`];
-
-    align = this.alignVariants[0];
-
     override readonly autocompleteVariants: TuiAutofillFieldName[] = [
         `off`,
         `transaction-amount`,

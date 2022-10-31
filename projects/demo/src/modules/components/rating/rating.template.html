@@ -84,16 +84,6 @@
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                documentationPropertyName="style.color"
-                [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="color"
-            >
-                Custom color
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="iconNormal"
                 [documentationPropertyValues]="iconNormalVariants"
                 [(documentationPropertyValue)]="iconNormal"
@@ -109,6 +99,18 @@
                 [(documentationPropertyValue)]="iconFilled"
             >
                 Custom filled icon
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.color"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="color"
+            >
+                Custom color
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
