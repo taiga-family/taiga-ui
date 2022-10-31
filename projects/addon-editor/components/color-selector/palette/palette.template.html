@@ -1,6 +1,6 @@
 <!-- TODO: 3.0 remove any after angular update -->
 <button
-    *ngFor="let color of $any(colors) | keyvalue"
+    *ngFor="let color of $any(colors) | keyvalue: originalOrder"
     type="button"
     class="t-button"
     [style.background]="color.value"
