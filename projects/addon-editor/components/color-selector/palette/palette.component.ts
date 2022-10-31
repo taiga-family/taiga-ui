@@ -1,3 +1,4 @@
+import {KeyValue} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,4 +21,9 @@ export class TuiPaletteComponent {
 
     @Output()
     readonly selectedColor = new EventEmitter<string>();
+
+    originalOrder = (
+        _a: KeyValue<string, string>,
+        _b: KeyValue<string, string>,
+    ): number => 0;
 }
