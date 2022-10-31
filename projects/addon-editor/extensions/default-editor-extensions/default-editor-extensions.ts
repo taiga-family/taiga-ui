@@ -18,6 +18,9 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-link`).then(({default: Link}) =>
         Link.configure({openOnClick: false}),
     ),
+    import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
+        ({TuiJumpAnchor}) => TuiJumpAnchor,
+    ),
     import(`@taiga-ui/addon-editor/extensions/background-color`).then(
         ({BackgroundColor}) => BackgroundColor,
     ),

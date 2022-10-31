@@ -152,6 +152,7 @@ export interface TuiLanguageEditor {
         subscript: string;
         insertTable: string;
         insertGroup: string;
+        insertAnchor: string;
         removeGroup: string;
         mergeCells: string;
         splitCells: string;
@@ -159,6 +160,10 @@ export interface TuiLanguageEditor {
         cellColor: string;
         setDetails: string;
         removeDetails: string;
+    };
+    editorEditLink: {
+        urlExample: string;
+        anchorExample: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];

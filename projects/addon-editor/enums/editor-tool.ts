@@ -1,5 +1,6 @@
 export enum TuiEditorTool {
     Undo = `undo`,
+    Anchor = `anchor`,
     Size = `fontSize`,
     Bold = `bold`,
     Italic = `italic`,

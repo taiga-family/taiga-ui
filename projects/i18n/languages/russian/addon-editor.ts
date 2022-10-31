@@ -38,12 +38,17 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         insertTable: `Добавить таблицу`,
         insertGroup: `Добавить группу`,
         removeGroup: `Удалить группу`,
+        insertAnchor: `Добавить якорь`,
         mergeCells: `Объединить ячейки`,
         splitCells: `Разъединить ячейки`,
         rowsColumnsManaging: `Управление строками и столбцами`,
         cellColor: `Цвет ячейки`,
         setDetails: `Аккордеон`,
         removeDetails: `Удалить аккордеон`,
+    },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `якорь`,
     },
     editorTableCommands: [
         [`Добавить столбец слева`, `Добавить столбец справа`],
