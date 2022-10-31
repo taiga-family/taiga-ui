@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.68.0](https://github.com/tinkoff/taiga-ui/compare/v2.67.0...v2.68.0) (2022-10-31)
+
+### Bug Fixes
+
+- **addon-editor:** support original order of colors in palette
+  ([#2993](https://github.com/tinkoff/taiga-ui/issues/2993))
+  ([64fcdfe](https://github.com/tinkoff/taiga-ui/commit/64fcdfef4dc0bd56aa684c49812197b2d73e3408))
+- **addon-editor:** support overflow content of table
+  ([622d10b](https://github.com/tinkoff/taiga-ui/commit/622d10bed2fe27459ac36d2539f7c06d440d196b))
+
 ## [2.67.0](https://github.com/tinkoff/taiga-ui/compare/v2.66.1...v2.67.0) (2022-10-24)
 
 ### [2.66.1](https://github.com/tinkoff/taiga-ui/compare/v2.66.0...v2.66.1) (2022-10-18)
