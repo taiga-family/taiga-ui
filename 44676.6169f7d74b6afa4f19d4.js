@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[44676],{44676:n=>{n.exports='<button\n    tuiButton\n    (click)="open = true"\n>\n    Taiga\n</button>\n<ng-template [(tuiPdfViewer)]="open">\n    <iframe\n        class="iframe"\n        [src]="src"\n    ></iframe>\n</ng-template>\n'}}]);
