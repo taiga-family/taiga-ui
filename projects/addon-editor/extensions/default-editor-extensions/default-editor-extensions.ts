@@ -21,8 +21,8 @@ export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/background-color`).then(
         ({BackgroundColor}) => BackgroundColor,
     ),
-    import(`@tiptap/extension-table`).then(({default: Table}) =>
-        Table.configure({resizable: true, lastColumnResizable: false}),
+    import(`@taiga-ui/addon-editor/extensions/table`).then(({TuiTable}) =>
+        TuiTable.configure({resizable: true}),
     ),
     import(`@tiptap/extension-table-row`).then(({default: TableRow}) => TableRow),
     import(`@tiptap/extension-table-cell`).then(({default: TableCell}) => TableCell),
