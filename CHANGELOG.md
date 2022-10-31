@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.9.0](https://github.com/tinkoff/taiga-ui/compare/v3.8.0...v3.9.0) (2022-10-31)
+
+### Features
+
+- **addon-editor:** add anchor extension ([#2931](https://github.com/tinkoff/taiga-ui/issues/2931))
+  ([1e3a22a](https://github.com/tinkoff/taiga-ui/commit/1e3a22a6c245f5fd1a7eaa57547b7b0182d94175))
+- **cdk:** `ScrollService` support `Window` ([#2955](https://github.com/tinkoff/taiga-ui/issues/2955))
+  ([ccac3c0](https://github.com/tinkoff/taiga-ui/commit/ccac3c02d463c2186a240316ab36006aae8435fc))
+- **core:** `DataList` update styles ([#2949](https://github.com/tinkoff/taiga-ui/issues/2949))
+  ([3c219c1](https://github.com/tinkoff/taiga-ui/commit/3c219c1c39de08ced81e42fe29845e60322b7df7))
+- **kit:** `Avatar`, `MarkerIcon` synchronize sizes ([#2975](https://github.com/tinkoff/taiga-ui/issues/2975))
+  ([ebb8676](https://github.com/tinkoff/taiga-ui/commit/ebb8676e24cf99761e63d161862177e9321842b6))
+- **kit:** `Select` add ability to use native select on mobile
+  ([#2964](https://github.com/tinkoff/taiga-ui/issues/2964))
+  ([c909bec](https://github.com/tinkoff/taiga-ui/commit/c909bec49bda91c83744c4295242c8b4a8990026))
+- **kit:** add tokens for customizing different bundled dialogs
+  ([#2490](https://github.com/tinkoff/taiga-ui/issues/2490))
+  ([66e1aca](https://github.com/tinkoff/taiga-ui/commit/66e1acaaf8be5c10e8ba37f1708fdacb57eafe08))
+
+### Bug Fixes
+
+- **addon-editor:** support original order of colors in palette
+  ([#2986](https://github.com/tinkoff/taiga-ui/issues/2986))
+  ([0c869ca](https://github.com/tinkoff/taiga-ui/commit/0c869caaedff6242f336b3d8475e4c5d7f6b1550))
+- **addon-editor:** support overflow content of table ([#2985](https://github.com/tinkoff/taiga-ui/issues/2985))
+  ([89af6a9](https://github.com/tinkoff/taiga-ui/commit/89af6a91082795834e2d8b160c1894800980a259))
+- **cdk:** add wrapper style migration ([#2971](https://github.com/tinkoff/taiga-ui/issues/2971))
+  ([2f736a1](https://github.com/tinkoff/taiga-ui/commit/2f736a1b02da1120c11989356a4759a02109ebc9))
+- **eslint-plugin:** fix incorrect project name search ([#2962](https://github.com/tinkoff/taiga-ui/issues/2962))
+  ([dfbb09e](https://github.com/tinkoff/taiga-ui/commit/dfbb09eb0d1bbfdf3c3c94ce1ac922366aceb532))
+
 ## [3.8.0](https://github.com/tinkoff/taiga-ui/compare/v3.7.1...v3.8.0) (2022-10-24)
 
 ### Features
