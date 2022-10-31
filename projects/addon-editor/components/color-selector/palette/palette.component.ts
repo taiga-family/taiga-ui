@@ -1,12 +1,11 @@
+import {KeyValue} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Input,
     Output,
 } from '@angular/core';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Component({
@@ -23,5 +22,8 @@ export class TuiPaletteComponent {
     @Output()
     readonly selectedColor = new EventEmitter<string>();
 
-    constructor(@Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions) {}
+    originalOrder = (
+        _a: KeyValue<string, string>,
+        _b: KeyValue<string, string>,
+    ): number => 0;
 }
