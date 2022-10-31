@@ -7,4 +7,5 @@ export * from '@taiga-ui/addon-editor/extensions/font-size';
 export * from '@taiga-ui/addon-editor/extensions/group';
 export * from '@taiga-ui/addon-editor/extensions/image-editor';
 export * from '@taiga-ui/addon-editor/extensions/starter-kit';
+export * from '@taiga-ui/addon-editor/extensions/table';
 export * from '@taiga-ui/addon-editor/extensions/tiptap-node-view';

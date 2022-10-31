@@ -163,4 +163,9 @@ p:empty:before {
     font-size: 40px;
     line-height: 44px;
 }
+
+.tui-editor-socket .tableWrapper,
+.tui-editor-socket .tui-table-wrapper {
+    overflow-x: auto;
+}
 `;

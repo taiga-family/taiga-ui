@@ -16,8 +16,8 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-image`).then(m => m.default.configure({inline: true})),
     import(`@tiptap/extension-link`).then(m => m.default.configure({openOnClick: false})),
     import(`./background-color`).then(m => m.BackgroundColor),
-    import(`@tiptap/extension-table`).then(m =>
-        m.default.configure({resizable: true, lastColumnResizable: false}),
+    import(`@taiga-ui/addon-editor/extensions/table`).then(({TuiTable}) =>
+        TuiTable.configure({resizable: true}),
     ),
     import(`@tiptap/extension-table-row`).then(m => m.default),
     import(`@tiptap/extension-table-cell`).then(m => m.default),

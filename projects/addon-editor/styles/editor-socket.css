@@ -155,3 +155,9 @@ body.tui-editor-socket {
     font-size: 40px;
     line-height: 44px;
 }
+
+/* stylelint-disable-next-line */
+.tui-editor-socket .tableWrapper,
+.tui-editor-socket .tui-table-wrapper {
+    overflow-x: auto;
+}
