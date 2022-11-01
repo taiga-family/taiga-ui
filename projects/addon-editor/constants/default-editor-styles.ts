@@ -89,22 +89,34 @@ p:empty:before {
     margin: 16px 0;
 }
 
-.tui-editor-socket a {
+
+.tui-editor-socket a:not([data-type='jump-anchor']) {
     color: #3d7ab6;
     text-decoration: none;
     outline: none;
 }
 
-.tui-editor-socket a:hover {
+.tui-editor-socket a:not([data-type='jump-anchor']):hover {
+    color: #369;
     text-decoration: underline;
 }
 
-.tui-editor-socket a:hover {
-    color: #369;
+.tui-editor-socket a:not([data-type='jump-anchor']):active {
+    color: #29527c;
 }
 
-.tui-editor-socket a:active {
-    color: #29527c;
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor'] {
+    text-decoration: underline;
+    text-decoration-color: var(--tui-link);
+}
+
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:hover {
+    color: var(--tui-link-hover);
+    text-decoration: underline;
+}
+
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:active {
+    color: var(--tui-primary-active);
 }
 
 .tui-editor-socket hr {

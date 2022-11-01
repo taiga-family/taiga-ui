@@ -38,12 +38,17 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertTable: `Insert table`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Merge cells`,
         splitCells: `Split cells`,
         rowsColumnsManaging: `Managing rows and columns`,
         cellColor: `Cell color`,
         setDetails: `Details`,
         removeDetails: `Remove details`,
+    },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
     },
     editorTableCommands: [
         [`Insert column before`, `Insert column after`],

@@ -1,20 +1,34 @@
 <ng-container *ngIf="edit; else view">
     <label class="t-label">
-        URL
-        <span class="t-url">
-            {{ prefix }}
+        <div class="t-label-properties">
+            <ng-container *ngIf="anchorMode; else fullOptions">Edit anchor</ng-container>
+            <ng-template #fullOptions>
+                <div [class.t-property_inactive]="prefixIsHashMode">URL</div>
+                <tui-toggle
+                    size="m"
+                    [ngModel]="prefixIsHashMode"
+                    [singleColor]="true"
+                    (ngModelChange)="changePrefix($event)"
+                ></tui-toggle>
+                <div [class.t-property_inactive]="!prefixIsHashMode">Internal link</div>
+            </ng-template>
+        </div>
+        <div class="t-url">
+            <div class="t-prefix">{{ prefix }}</div>
             <tui-input-inline
                 tuiAutoFocus
                 class="t-input"
                 [class.t-input_filled]="hasUrl"
-                [ngModel]="url"
-                (ngModelChange)="onChange($event)"
+                [(ngModel)]="url"
+                (input)="onChange($any($event.target)?.value)"
                 (keydown.prevent.enter)="onSave()"
                 (keydown.backspace)="onBackspace()"
             >
-                example.com
+                <ng-container *ngIf="texts$ | async as text">
+                    {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
+                </ng-container>
             </tui-input-inline>
-        </span>
+        </div>
     </label>
     <tui-svg
         src="tuiIconCloseLarge"
@@ -41,7 +55,7 @@
         class="t-link"
         [href]="href"
     >
-        {{ shortUrl }}
+        {{ anchorMode ? '#' : '' }}{{ shortUrl }}
     </a>
     <button
         tuiIconButton

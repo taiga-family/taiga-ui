@@ -57,8 +57,9 @@
 
         <ng-template #dropdown>
             <tui-edit-link
-                (addLink)="addLink($event)"
-                (removeLink)="removeLink()"
+                #link
+                (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
+                (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
             ></tui-edit-link>
         </ng-template>
 

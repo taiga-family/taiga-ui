@@ -15,6 +15,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
@@ -249,6 +250,14 @@ export class TuiToolbarComponent {
         );
     }
 
+    get jumpAnchor(): boolean {
+        return (this.editor as unknown as AbstractTuiEditor)?.isActive(`jumpAnchor`);
+    }
+
+    get canOpenAnchor(): boolean {
+        return !this.a && !this.jumpAnchor;
+    }
+
     get undoDisabled(): boolean {
         return !this.documentRef.queryCommandEnabled(`undo`);
     }
@@ -332,6 +341,7 @@ export class TuiToolbarComponent {
             this.enabled(TuiEditorTool.List) ||
             this.enabled(TuiEditorTool.Quote) ||
             this.enabled(TuiEditorTool.Link) ||
+            this.enabled(TuiEditorTool.Anchor) ||
             this.enabled(TuiEditorTool.Attach)
         );
     }
@@ -440,6 +450,19 @@ export class TuiToolbarComponent {
         } else {
             this.togglePre();
         }
+    }
+
+    setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
+        hosted.open = false;
+
+        if (anchor) {
+            (this.editor as unknown as AbstractTuiEditor)?.setAnchor(anchor);
+            (this.editor as unknown as AbstractTuiEditor)?.selectClosest();
+        }
+    }
+
+    removeAnchor(): void {
+        (this.editor as unknown as AbstractTuiEditor)?.removeAnchor();
     }
 
     enabled(tool: TuiEditorTool): boolean {

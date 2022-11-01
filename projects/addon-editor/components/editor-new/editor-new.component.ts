@@ -120,6 +120,14 @@ export class TuiEditorNewComponent
         this.updateValue(value);
     }
 
+    addAnchor(anchor: string): void {
+        this.editor?.setAnchor(anchor);
+    }
+
+    removeAnchor(): void {
+        this.editor?.removeAnchor();
+    }
+
     addLink(link: string): void {
         this.editor?.selectClosest();
         this.editor?.setLink(link);

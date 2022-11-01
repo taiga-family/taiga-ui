@@ -356,7 +356,7 @@
             *ngIf="enabled(TuiEditorTool.Link)"
             #link
             class="t-wrapper"
-            [canOpen]="!a"
+            [canOpen]="canOpenAnchor"
             [content]="linkDropdown"
         >
             <button
@@ -383,6 +383,32 @@
                     #dropdown
                     (addLink)="onLink(link, $event)"
                     (removeLink)="onLink(link)"
+                ></tui-edit-link>
+            </ng-template>
+        </tui-hosted-dropdown>
+        <tui-hosted-dropdown
+            #anchor
+            class="t-wrapper"
+            [canOpen]="canOpenAnchor"
+            [content]="anchorDropdown"
+        >
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAnchorLarge"
+                tuiHintDirection="top-left"
+                appearance="icon"
+                [focusable]="false"
+                [pseudoActive]="anchor.open || jumpAnchor"
+                [tuiHint]="texts.insertAnchor"
+                [tuiHintDescribe]="''"
+            ></button>
+            <ng-template #anchorDropdown>
+                <tui-edit-link
+                    [anchorMode]="true"
+                    (addLink)="setAnchor(anchor, $event)"
+                    (removeLink)="removeAnchor()"
                 ></tui-edit-link>
             </ng-template>
         </tui-hosted-dropdown>

@@ -2,7 +2,7 @@
 
 :host {
     display: flex;
-    height: var(--tui-height-l);
+    height: 5rem;
     align-items: center;
     padding-right: 0.75rem;
 }
@@ -16,10 +16,27 @@
     max-width: 25rem;
 }
 
+.t-label-properties {
+    display: flex;
+    align-items: center;
+    max-width: 8.375rem;
+    justify-content: space-between;
+}
+
+.t-prefix,
+.t-label-properties {
+    cursor: pointer;
+}
+
+.t-property_inactive {
+    opacity: 0.5;
+}
+
 .t-url {
     display: flex;
     font: var(--tui-font-text-m);
     color: var(--tui-text-02);
+    margin-top: 0.3125rem;
 }
 
 .t-input {
