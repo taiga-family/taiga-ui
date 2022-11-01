@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiIsPresent} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-is-present-example1`,
@@ -13,13 +12,10 @@ import {tuiIsPresent} from '@taiga-ui/cdk';
 })
 export class TuiIsPresentExample1 {
     readonly items = [`String`, `null`, `undefined`];
-    readonly value = new FormControl(null);
+    readonly control = new FormControl(null);
 
-    get isPresent(): boolean {
-        const {value} = this.value;
-        const objectedValue = this.objectifyValue(value ?? ``);
-
-        return tuiIsPresent(objectedValue);
+    get value(): string | null | undefined {
+        return this.objectifyValue(this.control.value ?? ``);
     }
 
     private objectifyValue(value: string): string | null | undefined {

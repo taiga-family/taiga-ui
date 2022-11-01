@@ -1,8 +1,8 @@
-{{ isPresent }} = isPresent(value);
+{{ value | tuiIsPresent }} = value | tuiIsPresent;
 
 <tui-select
     class="tui-space_top-2"
-    [formControl]="value"
+    [formControl]="control"
 >
     value
     <tui-data-list-wrapper
