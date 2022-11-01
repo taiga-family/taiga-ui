@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.68.0](https://github.com/tinkoff/taiga-ui/compare/v2.67.0...v2.68.0) (2022-11-01)
+
+### Features
+
+- **addon-editor:** add anchor extension ([#2997](https://github.com/tinkoff/taiga-ui/issues/2997))
+  ([f2c6cae](https://github.com/tinkoff/taiga-ui/commit/f2c6cae0c8bd406ca5fe842dce9ee2e2852cdda6))
+
+### Bug Fixes
+
+- **addon-editor:** support original order of colors in palette
+  ([#2993](https://github.com/tinkoff/taiga-ui/issues/2993))
+  ([64fcdfe](https://github.com/tinkoff/taiga-ui/commit/64fcdfef4dc0bd56aa684c49812197b2d73e3408))
+- **addon-editor:** support overflow content of table
+  ([622d10b](https://github.com/tinkoff/taiga-ui/commit/622d10bed2fe27459ac36d2539f7c06d440d196b))
+- **kit:** `TabsWithMore` fix margin when exposeActive is true
+  ([#2998](https://github.com/tinkoff/taiga-ui/issues/2998))
+  ([84fd8f1](https://github.com/tinkoff/taiga-ui/commit/84fd8f1aa5aa2dabcc593f99057daf4875003a1a))
+
 ## [2.67.0](https://github.com/tinkoff/taiga-ui/compare/v2.66.1...v2.67.0) (2022-10-24)
 
 ### [2.66.1](https://github.com/tinkoff/taiga-ui/compare/v2.66.0...v2.66.1) (2022-10-18)
