@@ -1,5 +1,6 @@
 import {
     tuiClearEditor,
+    tuiClearHint,
     tuiFocusToStartInEditor,
     tuiGetContentEditable,
     tuiGetEditLinkInput,
@@ -26,7 +27,7 @@ describe(`Editing links in Editor`, () => {
             .should(`have.attr`, `href`)
             .and(`include`, `/taiga-ui.dev`);
 
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
         tuiGetScreenshotArea().matchImageSnapshot(`1-exist-link`);
     });
@@ -37,7 +38,7 @@ describe(`Editing links in Editor`, () => {
         tuiGetEditLinkInput().type(`wysiwyg.com`);
         tuiGetEditLinkInput().type(`{enter}`);
 
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
         tuiGetScreenshotArea().matchImageSnapshot(`2-1-added-new-link`);
         tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
@@ -48,7 +49,7 @@ describe(`Editing links in Editor`, () => {
         tuiGetEditLinkInput().type(`example.com`);
         tuiGetEditLinkInput().type(`{enter}`);
 
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
         tuiGetScreenshotArea().matchImageSnapshot(`2-3-added-new-link-2`);
         tuiOpenAnchorDropdown({containHref: `http://example.com`});
@@ -66,13 +67,12 @@ describe(`Editing links in Editor`, () => {
         tuiGetEditLinkInput().type(`wysiwyg.com`);
         tuiGetEditLinkInput().type(`{enter}`);
 
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
-        tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
         tuiGetScreenshotArea().matchImageSnapshot(`3-1-before-remove-link`);
 
         tuiTrashValueByEditLink();
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
         tuiGetScreenshotArea().matchImageSnapshot(`3-2-after-remove-link`);
     });
@@ -83,7 +83,7 @@ describe(`Editing links in Editor`, () => {
 
         tuiInsertLink();
         tuiGetEditLinkInput().type(`link.com{enter}`);
-        tuiFocusToStartInEditor(); // clear hints
+        tuiClearHint();
 
         tuiGetContentEditable().type(`{moveToStart}`);
         tuiGetScreenshotArea().matchImageSnapshot(`startOffset-0`);
