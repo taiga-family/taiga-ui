@@ -116,7 +116,6 @@
             [content]="linkDropdown"
         >
             <button
-                #button
                 #linkBtn
                 tuiIconButton
                 type="button"
@@ -136,6 +135,35 @@
                     #dropdown
                     (addLink)="onLink(link, $event)"
                     (removeLink)="onLink(link)"
+                ></tui-edit-link>
+            </ng-template>
+        </tui-hosted-dropdown>
+        <tui-hosted-dropdown
+            #anchor
+            class="t-wrapper"
+            [canOpen]="canOpenAnchor"
+            [content]="anchorDropdown"
+        >
+            <button
+                #anchorBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAnchorLarge"
+                tuiHintDirection="top-left"
+                appearance="icon"
+                class="t-tool t-tool_margin"
+                [tuiHint]="texts.insertAnchor"
+                [tuiHintId]="anchorBtn.id"
+                [tuiDescribedBy]="anchorBtn.id"
+                [pseudoPressed]="anchor.open || jumpAnchor"
+                [focusable]="anchor.open"
+            ></button>
+            <ng-template #anchorDropdown>
+                <tui-edit-link
+                    [anchorMode]="true"
+                    (addLink)="setAnchor(anchor, $event)"
+                    (removeLink)="removeAnchor()"
                 ></tui-edit-link>
             </ng-template>
         </tui-hosted-dropdown>

@@ -89,20 +89,19 @@ p:empty:before {
     margin: 16px 0;
 }
 
-
 .tui-editor-socket a:not([data-type='jump-anchor']) {
-    color: #3d7ab6;
+    color: var(--tui-link);
     text-decoration: none;
     outline: none;
 }
 
 .tui-editor-socket a:not([data-type='jump-anchor']):hover {
-    color: #369;
+    color: var(--tui-link-hover);
     text-decoration: underline;
 }
 
 .tui-editor-socket a:not([data-type='jump-anchor']):active {
-    color: #29527c;
+    color: var(--tui-primary-active);
 }
 
 .tui-editor-socket .ProseMirror a[data-type='jump-anchor'] {
@@ -110,13 +109,12 @@ p:empty:before {
     text-decoration-color: var(--tui-link);
 }
 
-.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:hover {
-    color: var(--tui-link-hover);
-    text-decoration: underline;
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:before {
+    content: '#';
 }
 
-.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:active {
-    color: var(--tui-primary-active);
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:hover {
+    color: var(--tui-link);
 }
 
 .tui-editor-socket hr {

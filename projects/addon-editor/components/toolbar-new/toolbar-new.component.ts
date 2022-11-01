@@ -125,6 +125,14 @@ export class TuiToolbarNewComponent {
         return this.editor.isActive(`link`);
     }
 
+    get jumpAnchor(): boolean {
+        return this.editor.isActive(`jumpAnchor`);
+    }
+
+    get canOpenAnchor(): boolean {
+        return !this.a && !this.jumpAnchor;
+    }
+
     get undoDisabled(): boolean {
         return this.editor.undoDisabled();
     }
@@ -157,6 +165,7 @@ export class TuiToolbarNewComponent {
             this.enabled(TuiEditorTool.List) ||
             this.enabled(TuiEditorTool.Quote) ||
             this.enabled(TuiEditorTool.Link) ||
+            this.enabled(TuiEditorTool.Anchor) ||
             this.enabled(TuiEditorTool.Attach)
         );
     }
@@ -219,6 +228,19 @@ export class TuiToolbarNewComponent {
             this.editor.toggleLink(url);
             this.editor.selectClosest();
         }
+    }
+
+    setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
+        hosted.open = false;
+
+        if (anchor) {
+            this.editor.setAnchor(anchor);
+            this.editor.selectClosest();
+        }
+    }
+
+    removeAnchor(): void {
+        this.editor.removeAnchor();
     }
 
     enabled(tool: TuiEditorTool): boolean {
