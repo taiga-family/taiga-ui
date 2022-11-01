@@ -22,7 +22,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
                 import(`@tiptap/extension-link`).then(({Link}) =>
                     Link.configure({openOnClick: false}),
                 ),
-                import(`projects/addon-editor/extensions/jump-anchor`).then(
+                import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
             ],
