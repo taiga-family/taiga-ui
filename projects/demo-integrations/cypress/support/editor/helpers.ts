@@ -26,14 +26,11 @@ export function tuiGetDemoContent(): Cypress.Chainable<JQuery> {
 }
 
 export function tuiClearEditor(): void {
-    tuiGetContentEditable().type(`{selectall}{backspace}`);
+    tuiGetContentEditable().type(`{selectall}{backspace}`, {force: true});
 }
 
 export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): void {
-    tuiGetContentEditable()
-        .find(`a[href="${containHref}"]`)
-        .type(`{leftArrow}`)
-        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+    tuiGetContentEditable().find(`a[href="${containHref}"]`).type(`{leftArrow}`);
 }
 
 export function tuiTrashValueByEditLink(): void {
@@ -43,7 +40,25 @@ export function tuiTrashValueByEditLink(): void {
 }
 
 export function tuiFocusToStartInEditor(): void {
-    tuiGetContentEditable().type(`{moveToStart}`).click().wait(WAIT_BEFORE_SCREENSHOT);
+    tuiGetContentEditable()
+        .then($el => {
+            // native set cursor cater
+
+            const el = $el[0];
+            const document = el.ownerDocument;
+            const range = document?.createRange();
+            const sel = window.getSelection();
+
+            range?.setStart(el, 1);
+            range?.collapse(true);
+            sel?.removeAllRanges();
+            sel?.addRange(range as unknown as Range);
+        })
+        .wait(WAIT_BEFORE_SCREENSHOT);
+}
+
+export function tuiClearHint(): void {
+    cy.get(`tui-toolbar`).click();
 }
 
 export function tuiInsertLink(): void {
@@ -60,7 +75,7 @@ export function tuiInsertLink(): void {
 }
 
 export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {
-    return cy.get(`tui-edit-link`).find(`input`);
+    return cy.get(`tui-edit-link`).find(`input[type=text]`);
 }
 
 export function tuiGetScreenshotArea(): Cypress.Chainable<JQuery> {

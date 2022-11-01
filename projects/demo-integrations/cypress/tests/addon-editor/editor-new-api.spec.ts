@@ -1,5 +1,6 @@
 import {
     tuiClearEditor,
+    tuiClearHint,
     tuiFocusToStartInEditor,
     tuiGetContentEditable,
     tuiGetDemoContent,
@@ -179,7 +180,7 @@ describe(`Editor API`, () => {
         }
 
         function clearEditor(): void {
-            cy.get(`@editor`).type(`{selectall}{backspace}`);
+            cy.get(`@editor`).type(`{selectall}{backspace}`, {force: true});
         }
     });
 
@@ -193,7 +194,7 @@ describe(`Editor API`, () => {
             tuiGetEditLinkInput().type(`wysiwyg.com`);
             tuiGetEditLinkInput().type(`{enter}`);
 
-            tuiFocusToStartInEditor(); // clear hints
+            tuiClearHint();
 
             tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
             tuiGetEditorScrollbarArea().scrollTo(0, 100);
