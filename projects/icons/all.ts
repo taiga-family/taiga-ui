@@ -21,6 +21,9 @@ const tuiIconAlignLeftLarge =
 const tuiIconAlignRightLarge =
     '<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconAlignRightLarge" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%"><svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12"><path d="M21 10H7M21 6H3M21 14H3M21 18H7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></svg></g></svg>';
 
+const tuiIconAnchorLarge =
+    '<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconAnchorLarge" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%"><svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12"><path clip-rule="evenodd" d="M12 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3-1a3.001 3.001 0 0 1-2 2.83V8h2a1 1 0 1 1 0 2h-2v9.965a8.115 8.115 0 0 0 5.067-2.4l-.874.194a1 1 0 1 1-.434-1.952l3.524-.783A1 1 0 0 1 21.5 16v4a1 1 0 1 1-2 0v-1.038C15.559 23 8.96 23.013 5 19.006V20a1 1 0 1 1-2 0v-4a1 1 0 0 1 1.217-.976l3.524.783a1 1 0 1 1-.434 1.952l-.929-.206A8.099 8.099 0 0 0 11 19.91V10H9a1 1 0 1 1 0-2h2V5.83A3.001 3.001 0 1 1 15 3Z" fill="currentColor" fill-rule="evenodd"/></svg></svg></g></svg>';
+
 const tuiIconArrowDown =
     '<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconArrowDown" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1em" overflow="visible" viewBox="0 0 16 16" width="1em" x="50%" xmlns="http://www.w3.org/2000/svg" y="50%"><svg x="-8" y="-8"><path d="M8 3.333v9.334M12.667 8 8 12.667 3.333 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></svg></g></svg>';
 
@@ -676,6 +679,7 @@ export {
     tuiIconAlignJustifyLarge,
     tuiIconAlignLeftLarge,
     tuiIconAlignRightLarge,
+    tuiIconAnchorLarge,
     tuiIconArrowDown,
     tuiIconArrowDownLarge,
     tuiIconArrowDownLeft,

@@ -15,6 +15,9 @@ export const defaultEditorExtensions = [
     import(`./font-color`).then(m => m.FontColor),
     import(`@tiptap/extension-image`).then(m => m.default.configure({inline: true})),
     import(`@tiptap/extension-link`).then(m => m.default.configure({openOnClick: false})),
+    import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
+        ({TuiJumpAnchor}) => TuiJumpAnchor,
+    ),
     import(`./background-color`).then(m => m.BackgroundColor),
     import(`@taiga-ui/addon-editor/extensions/table`).then(({TuiTable}) =>
         TuiTable.configure({resizable: true}),

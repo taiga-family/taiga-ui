@@ -38,12 +38,17 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertTable: `Chèn bảng`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Hợp nhất ô`,
         splitCells: `Tách ô`,
         rowsColumnsManaging: `Quản lý hàng và cột`,
         cellColor: `Màu ô`,
         setDetails: `Chi tiết`,
         removeDetails: `Hủy chi tiết`,
+    },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
     },
     editorTableCommands: [
         [`Chèn cột trước`, `Chèn cột sau`],

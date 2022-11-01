@@ -22,6 +22,7 @@ import {TuiEditorNewExample4} from './examples/4';
 import {TuiEditorNewExample5} from './examples/5';
 import {TuiEditorNewExample6} from './examples/6';
 import {TuiEditorNewExample7} from './examples/7';
+import {TuiEditorNewExample8} from './examples/8';
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import {TuiEditorNewExample7} from './examples/7';
         TuiEditorNewExample6,
         TuiEditorNewExample5,
         TuiEditorNewExample7,
+        TuiEditorNewExample8,
     ],
     exports: [ExampleEditorNewComponent],
 })

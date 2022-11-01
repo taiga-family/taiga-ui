@@ -115,19 +115,32 @@ export const tiptapEditorStyles = `
     margin: 16px 0;
 }
 
-.tui-editor-socket a {
+.tui-editor-socket a:not([data-type='jump-anchor']) {
     color: var(--tui-link);
     text-decoration: none;
     outline: none;
 }
 
-.tui-editor-socket a:hover {
+.tui-editor-socket a:not([data-type='jump-anchor']):hover {
     color: var(--tui-link-hover);
     text-decoration: underline;
 }
 
-.tui-editor-socket a:active {
+.tui-editor-socket a:not([data-type='jump-anchor']):active {
     color: var(--tui-primary-active);
+}
+
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor'] {
+    text-decoration: underline;
+    text-decoration-color: var(--tui-link);
+}
+
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:before {
+    content: '#';
+}
+
+.tui-editor-socket .ProseMirror a[data-type='jump-anchor']:hover {
+    color: var(--tui-link);
 }
 
 .tui-editor-socket hr {

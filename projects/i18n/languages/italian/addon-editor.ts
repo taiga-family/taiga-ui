@@ -38,12 +38,17 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertTable: `Inserisci tabella`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
+        insertAnchor: `Insert anchor`,
         mergeCells: `Unisci celle`,
         splitCells: `Dividi celle`,
         rowsColumnsManaging: `Gestione righe e colonne`,
         cellColor: `Colore cella`,
         setDetails: `Details`,
         removeDetails: `Remove details`,
+    },
+    editorEditLink: {
+        urlExample: `example.com`,
+        anchorExample: `anchor`,
     },
     editorTableCommands: [
         [`Inserisci colonna prima`, `Inserisci colonna dopo`],

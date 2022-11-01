@@ -35,6 +35,13 @@ export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
     },
 );
 
+export const TUI_EDITOR_LINK_TEXTS = new InjectionToken(
+    `[TUI_EDITOR_LINK_TEXTS]: tui-editor-toolbar edit-link i18n`,
+    {
+        factory: extractI18n(`editorEditLink`),
+    },
+);
+
 export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
     `tui-editor-toolbar codes options`,
     {
