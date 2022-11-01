@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1535],{I8lB:function(n,e,o){"use strict";o.r(e),e.default=".text {\n    margin: 1rem;\n}\n\n.icon {\n    cursor: context-menu;\n}\n"}}]);
