@@ -121,6 +121,10 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         );
     }
 
+    get isMoreAlone(): boolean {
+        return this.lastVisibleIndex < 0 && !this.options.exposeActive;
+    }
+
     get lastVisibleIndex(): number {
         if (this.itemsLimit + 1 >= this.items.length) {
             return this.maxIndex;
