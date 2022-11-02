@@ -95,7 +95,10 @@ describe(`Editor's toolbar`, () => {
 
         cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`input`);
 
-        cy.get(`@input`).type(`\n`).blur().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+        cy.get(`@input`)
+            .type(`\n`, {force: true})
+            .blur()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
         tuiGetDemoContent()
             .wait(WAIT_BEFORE_SCREENSHOT)
@@ -126,7 +129,10 @@ describe(`Editor's toolbar`, () => {
         tuiGetDemoContent().as(`wrapper`);
         cy.get(`@wrapper`).find(PROSE_MIRROR_EDITOR_SELECTOR).as(`input`);
 
-        cy.get(`@input`).type(`{selectall}{backspace}`).should(`be.visible`).blur();
+        cy.get(`@input`)
+            .type(`{selectall}{backspace}`, {force: true})
+            .should(`be.visible`)
+            .blur();
 
         cy.get(`@wrapper`)
             .findByAutomationId(`toolbar__ordering-list-button`)
