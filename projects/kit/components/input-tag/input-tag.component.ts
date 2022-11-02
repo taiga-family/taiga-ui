@@ -42,7 +42,6 @@ import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiBrightness,
@@ -198,7 +197,6 @@ export class TuiInputTagComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiScrollService) private readonly tuiScrollService: TuiScrollService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
@@ -229,6 +227,10 @@ export class TuiInputTagComponent
             tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
             !!this.hostedDropdown?.focused
         );
+    }
+
+    get appearance(): string {
+        return this.controller.appearance;
     }
 
     @HostBinding('attr.data-size')

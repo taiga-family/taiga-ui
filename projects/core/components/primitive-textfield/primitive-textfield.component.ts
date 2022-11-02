@@ -30,7 +30,7 @@ import {
     TuiTextfieldOptions,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
+import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
@@ -119,7 +119,6 @@ export class TuiPrimitiveTextfieldComponent
 
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Optional()
@@ -157,6 +156,10 @@ export class TuiPrimitiveTextfieldComponent
 
     get focused(): boolean {
         return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+    }
+
+    get appearance(): string {
+        return this.controller.appearance;
     }
 
     @HostBinding('attr.data-size')

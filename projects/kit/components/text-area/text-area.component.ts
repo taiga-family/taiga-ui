@@ -27,7 +27,6 @@ import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
     tuiGetBorder,
@@ -89,7 +88,6 @@ export class TuiTextAreaComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
@@ -118,6 +116,10 @@ export class TuiTextAreaComponent
 
     get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
+    }
+
+    get appearance(): string {
+        return this.controller.appearance;
     }
 
     @HostBinding('attr.data-size')

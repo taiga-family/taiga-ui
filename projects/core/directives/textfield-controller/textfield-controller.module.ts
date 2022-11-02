@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 
+import {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
 import {TuiTextfieldFillerDirective} from './textfield-filler.directive';
@@ -12,6 +13,7 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 @NgModule({
     declarations: [
+        TuiTextfieldAppearanceDirective,
         TuiTextfieldCleanerDirective,
         TuiTextfieldCustomContentDirective,
         TuiTextfieldLabelOutsideDirective,
@@ -23,6 +25,7 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
         TuiTextfieldFillerDirective,
     ],
     exports: [
+        TuiTextfieldAppearanceDirective,
         TuiTextfieldCleanerDirective,
         TuiTextfieldCustomContentDirective,
         TuiTextfieldLabelOutsideDirective,

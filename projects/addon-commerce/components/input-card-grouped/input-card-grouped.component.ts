@@ -39,15 +39,17 @@ import {
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
-    TUI_TEXTFIELD_APPEARANCE,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
     TuiDataListHost,
+    TuiTextfieldController,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -81,6 +83,7 @@ const ICONS: Record<TuiPaymentSystem, string> = {
         tuiAsControl(TuiInputCardGroupedComponent),
         tuiAsDataListHost(TuiInputCardGroupedComponent),
         MODE_PROVIDER,
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
         '($.data-mode.attr)': 'mode$',
@@ -177,8 +180,8 @@ export class TuiInputCardGroupedComponent
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
-        @Inject(TUI_TEXTFIELD_APPEARANCE)
-        readonly appearance: string,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
     }
@@ -189,6 +192,10 @@ export class TuiInputCardGroupedComponent
 
     get focused(): boolean {
         return this.open || tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+    }
+
+    get appearance(): string {
+        return this.controller.appearance;
     }
 
     get card(): string {
