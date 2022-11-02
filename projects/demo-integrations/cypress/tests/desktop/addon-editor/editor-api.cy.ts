@@ -13,7 +13,7 @@ import {
     tuiOpenFontTool,
     tuiSelectTag,
     tuiVisitEditorApiPage,
-} from '../../../support/editor/helpers';
+} from '@demo-integrations/support/editor/helpers';
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
@@ -21,11 +21,11 @@ import {
     HTML_EDITOR_EXAMPLE_PRE_CODE,
     HTML_EDITOR_EXAMPLE_TABLE,
     HTML_EDITOR_EXAMPLE_UL,
-} from '../../../support/editor/html';
+} from '@demo-integrations/support/editor/html';
 import {
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Editor API`, () => {
     describe(`Check fonts in light and dark mode`, () => {

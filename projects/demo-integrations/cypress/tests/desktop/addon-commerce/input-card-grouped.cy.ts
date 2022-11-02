@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../../support/shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/shared.entities';
 
 describe(`InputCardGrouped`, () => {
     describe(`API mode`, () => {

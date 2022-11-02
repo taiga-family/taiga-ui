@@ -2,7 +2,7 @@ import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
-} from '../../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Tabs`, () => {
     beforeEach(() => cy.viewport(1700, 900));

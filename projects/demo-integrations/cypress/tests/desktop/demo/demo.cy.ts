@@ -3,9 +3,12 @@ import {
     isInputNumberPage,
     isMobileCalendarPage,
     isScrollbarPage,
-} from '../../../support/demo-paths';
-import {tuiExcluded} from '../../../support/exclusions';
-import {EXAMPLE_ID, WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
+} from '@demo-integrations/support/demo-paths';
+import {tuiExcluded} from '@demo-integrations/support/exclusions';
+import {
+    EXAMPLE_ID,
+    WAIT_BEFORE_SCREENSHOT,
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Demo`, () => {
     for (const path of DEMO_PATHS) {

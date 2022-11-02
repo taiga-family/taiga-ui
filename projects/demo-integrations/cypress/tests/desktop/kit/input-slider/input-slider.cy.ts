@@ -2,7 +2,7 @@ import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EXAMPLE_ID,
     INPUT_SLIDER_PAGE_URL,
-} from '../../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`InputSlider`, () => {
     describe(`examples page`, () => {

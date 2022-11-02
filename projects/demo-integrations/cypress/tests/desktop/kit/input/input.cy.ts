@@ -1,4 +1,4 @@
-import {INPUT_PAGE_URL} from '../../../../support/shared.entities';
+import {INPUT_PAGE_URL} from '@demo-integrations/support/shared.entities';
 
 describe(`Input`, () => {
     describe(`macbook-13`, () => {

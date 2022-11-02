@@ -87,7 +87,8 @@
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
             "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"],
-            "@demo/utils": ["projects/demo/src/utils/index"]
+            "@demo/utils": ["projects/demo/src/utils/index"],
+            "@demo-integrations/*": ["projects/demo-integrations/cypress/*"]
         }
     },
     "ts-node": {

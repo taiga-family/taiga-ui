@@ -1,10 +1,13 @@
-import {tuiGetDemoContent, tuiVisitEditorApiPage} from '../../../support/editor/helpers';
+import {
+    tuiGetDemoContent,
+    tuiVisitEditorApiPage,
+} from '@demo-integrations/support/editor/helpers';
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Editor's toolbar`, () => {
     beforeEach(() => tuiVisitEditorApiPage());

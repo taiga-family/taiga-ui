@@ -1,4 +1,7 @@
-import {EDITOR_PAGE_URL, WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
+import {
+    EDITOR_PAGE_URL,
+    WAIT_BEFORE_SCREENSHOT,
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Examples with preview images`, () => {
     beforeEach(() => cy.viewport(1650, 900).tuiVisit(EDITOR_PAGE_URL));

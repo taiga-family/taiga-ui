@@ -1,4 +1,4 @@
-import {EXAMPLE_ID} from '../../../../support/shared.entities';
+import {EXAMPLE_ID} from '@demo-integrations/support/shared.entities';
 
 describe(`InputTag`, () => {
     beforeEach(() => cy.tuiVisit(`components/input-tag`));

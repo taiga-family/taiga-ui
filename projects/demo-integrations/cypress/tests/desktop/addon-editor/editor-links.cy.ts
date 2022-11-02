@@ -10,8 +10,8 @@ import {
     tuiSelectTag,
     tuiTrashValueByEditLink,
     tuiVisitEditorApiPage,
-} from '../../../support/editor/helpers';
-import {WAIT_BEFORE_SCREENSHOT} from '../../../support/shared.entities';
+} from '@demo-integrations/support/editor/helpers';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities';
 
 describe(`Editing links in Editor`, () => {
     beforeEach(() => {

@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from '../../../../support/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities';
 
 describe(`DropdownContext`, () => {
     beforeEach(() => {

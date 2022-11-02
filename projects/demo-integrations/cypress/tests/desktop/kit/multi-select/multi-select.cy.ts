@@ -1,7 +1,7 @@
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     MULTI_SELECT_PAGE_URL,
-} from '../../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`MultiSelect`, () => {
     describe(`Description and examples page`, () => {

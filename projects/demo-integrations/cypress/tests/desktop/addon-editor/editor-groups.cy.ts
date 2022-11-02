@@ -2,7 +2,7 @@ import {
     EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '../../../support/shared.entities';
+} from '@demo-integrations/support/shared.entities';
 
 describe(`Examples with groups in editor`, () => {
     beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
