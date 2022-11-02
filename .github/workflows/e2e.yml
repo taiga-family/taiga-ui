@@ -64,6 +64,7 @@ jobs:
             demo,
             kit,
           ]
+        config: [cypress.config.ts, cypress-mobile.config.ts]
     name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v2
@@ -86,7 +87,10 @@ jobs:
         run: npx nx serve-compiled --path ${{ env.LOCAL_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
-        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }}
+        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }} --config ${{ matrix.config }}
+
+      - name: Run screenshot tests mobile on ${{ env.LOCAL_REF_DEMO }}
+        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }} --config ${{ matrix.config }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}

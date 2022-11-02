@@ -322,13 +322,33 @@
                 ]
             }
         },
+        "e2e-mobile": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress open --browser chrome --project ./projects/demo-integrations --config-file cypress-mobile.config.ts --spec '**/demo/**/*.cy.ts'"
+                ]
+            }
+        },
         "e2e-headless": {
             "builder": "@nrwl/workspace:run-commands",
             "options": {
                 "parallel": false,
                 "commands": [
                     "npx wait-on http://localhost:3333 --timeout 1000",
-                    "cypress open --browser chrome --headless --project ./projects/demo-integrations"
+                    "cypress run --browser chrome --headless --project ./projects/demo-integrations"
+                ]
+            }
+        },
+        "e2e-mobile-headless": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress run --browser chrome --headless --project ./projects/demo-integrations --config-file cypress-mobile.config.ts"
                 ]
             }
         },
@@ -338,8 +358,8 @@
                 "parallel": true,
                 "commands": [
                     {"command": "echo \"CYPRESS_API_URL: $CYPRESS_API_URL\"", "forwardAllArgs": false},
-                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'",
-                    "sleep 10 && npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
+                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts' --config-file {args.config}",
+                    "sleep 10 && npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts' --config-file {args.config}"
                 ]
             }
         }
