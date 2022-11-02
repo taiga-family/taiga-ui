@@ -44,7 +44,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     numTestsKeptInMemory: 0,
 
     e2e: {
-        specPattern: `cypress/tests/**/*.cy.ts`,
+        specPattern: `cypress/tests/desktop/**/*.cy.ts`,
         supportFile: `cypress/support/e2e.ts`,
         baseUrl: `http://localhost:3333`,
         /**
