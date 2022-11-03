@@ -8,12 +8,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
 
-const MAX_LENGTH = 60;
-const START = MAX_LENGTH - 20;
-const END = MAX_LENGTH - START - 10;
 const HASH_PREFIX = `#` as const;
 const HTTP_PREFIX = `http://` as const;
 const HTTPS_PREFIX = `https://` as const;
@@ -48,11 +47,14 @@ export class TuiEditLinkComponent {
 
     prefix: TuiLinkPrefix = this.makeDefaultPrefix();
 
+    anchorIds = this.getAllAnchorsIds();
+
     constructor(
         @Inject(DOCUMENT)
         private readonly documentRef: Document,
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
+        @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
     ) {}
 
     get anchorMode(): boolean {
@@ -71,12 +73,8 @@ export class TuiEditLinkComponent {
         return `${this.prefix}${this.url}`;
     }
 
-    get shortUrl(): string {
-        return this.url.length < MAX_LENGTH
-            ? this.url
-            : `${this.url.slice(0, Math.max(0, START))}...${this.url.slice(
-                  this.url.length - END,
-              )}`;
+    get showAnchorsList(): boolean {
+        return !this.anchorMode && this.edit && this.anchorIds.length > 0;
     }
 
     private get isViewMode(): boolean {
@@ -87,6 +85,7 @@ export class TuiEditLinkComponent {
     onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
+            this.anchorMode = this.detectAnchorMode();
         }
     }
 
@@ -95,6 +94,11 @@ export class TuiEditLinkComponent {
         if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
             event.preventDefault();
         }
+    }
+
+    setAnchor(anchor: string): void {
+        this.url = anchor;
+        this.changePrefix(true);
     }
 
     changePrefix(isPrefix: boolean): void {
@@ -182,5 +186,16 @@ export class TuiEditLinkComponent {
         }
 
         return url;
+    }
+
+    private getAllAnchorsIds(): string[] {
+        const nodes =
+            this.editor
+                .getOriginTiptapEditor()
+                .view.dom.querySelectorAll(`[data-type='jump-anchor']`) ?? [];
+
+        return Array.from(nodes)
+            .map(node => node.getAttribute(`id`) || ``)
+            .filter(Boolean);
     }
 }
