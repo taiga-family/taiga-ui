@@ -51,9 +51,8 @@
                 <span
                     #ghost
                     class="t-ghost"
-                >
-                    {{ formattedCard.slice(-tailLength) }}
-                </span>
+                    [innerText]="formattedCard.slice(-tailLength)"
+                ></span>
 
                 <span class="t-collapsed-wrapper">
                     <span
