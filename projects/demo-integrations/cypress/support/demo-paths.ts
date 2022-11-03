@@ -7,12 +7,10 @@ import {pages} from '../../../demo/src/modules/app/pages';
 const EXCLUSION_SECTIONS = [`Documentation`, `Common`, `Tools`, `Testing`];
 const EXCLUSION_ROUTES = [`i18n`, `LineDaysChart`, `PrimitiveCheckbox`, `ThemeNight`];
 
-export const DEMO_PATHS =
-    [`components/mobile-calendar`] ||
-    flatPages(pages)
-        .filter(page => !EXCLUSION_SECTIONS.includes(page.section as unknown as string))
-        .filter(page => !EXCLUSION_ROUTES.includes(page.title))
-        .map(page => page.route.replace(`/`, ``));
+export const DEMO_PATHS = flatPages(pages)
+    .filter(page => !EXCLUSION_SECTIONS.includes(page.section as unknown as string))
+    .filter(page => !EXCLUSION_ROUTES.includes(page.title))
+    .map(page => page.route.replace(`/`, ``));
 
 export const isScrollbarPage = (path: string): boolean => path === `components/scrollbar`;
 export const isMobileCalendarPage = (path: string): boolean =>

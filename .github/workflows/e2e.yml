@@ -110,7 +110,7 @@ jobs:
         env: # note: need to collect all
           # diff files for lumberjack bot
           CYPRESS_failOnSnapshotDiff: 0
-        run: npx nx e2e-ci --key next --folder ${{ matrix.project }}
+        run: npx nx e2e-ci --key next --folder ${{ matrix.project }} --config cypress.config.${{ matrix.type }}.ts
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
