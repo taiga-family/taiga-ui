@@ -1,4 +1,5 @@
 export * from './action.harness';
+export * from './avatar.harness';
 export * from './badge.harness';
 export * from './button.harness';
 export * from './card.harness';
