@@ -18,7 +18,7 @@ export const TUI_FRENCH_LANGUAGE_CORE: TuiLanguageCore = {
         `Décembre`,
     ],
     close: `Fermer`,
-    nothingFoundMessage: `Rien trouvé`,
+    nothingFoundMessage: `Aucun résultat`,
     defaultErrorMessage: `Valeur non valide`,
     spinTexts: [`Précédent`, `Suivant`],
     shortWeekDays: [`Lun`, `Mar`, `Mer`, `Jeu`, `Ven`, `Sam`, `Dim`],
