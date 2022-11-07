@@ -14,7 +14,7 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-superscript`).then(m => m.default),
     import(`./font-color`).then(m => m.FontColor),
     import(`@tiptap/extension-image`).then(m => m.default.configure({inline: true})),
-    import(`@tiptap/extension-link`).then(m => m.default.configure({openOnClick: false})),
+    import(`@taiga-ui/addon-editor/extensions/link`).then(({TuiLink}) => TuiLink),
     import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,
     ),

@@ -19,8 +19,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),
-                import(`@tiptap/extension-link`).then(({Link}) =>
-                    Link.configure({openOnClick: false}),
+                import(`@tiptap/extension-text-style`).then(({TextStyle}) => TextStyle),
+                import(`@taiga-ui/addon-editor/extensions/link`).then(
+                    ({TuiLink}) => TuiLink,
                 ),
                 import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
