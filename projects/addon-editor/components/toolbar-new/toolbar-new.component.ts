@@ -226,7 +226,6 @@ export class TuiToolbarNewComponent {
 
         if (url) {
             this.editor.toggleLink(url);
-            this.editor.selectClosest();
         }
     }
 
