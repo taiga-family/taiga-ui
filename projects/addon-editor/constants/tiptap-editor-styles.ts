@@ -73,14 +73,14 @@ export const tiptapEditorStyles = `
 }
 
 .tui-editor-socket ol {
-    counter-reset: counter;
+    counter-reset: item;
 }
 
 .tui-editor-socket ol > li:before {
-    content: counter(counter) '.';
+    content: counters(item, '.') '.';
     width: 24px;
     margin: 0 12px 0 -24px;
-    counter-increment: counter;
+    counter-increment: item;
     color: var(--tui-base-05);
     vertical-align: top;
 }
