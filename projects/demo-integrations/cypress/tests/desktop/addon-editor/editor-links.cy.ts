@@ -71,7 +71,9 @@ describe(`Editing links in Editor`, () => {
 
         tuiGetScreenshotArea().matchImageSnapshot(`3-1-before-remove-link`);
 
+        tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
         tuiTrashValueByEditLink();
+
         tuiClearHint();
 
         tuiGetScreenshotArea().matchImageSnapshot(`3-2-after-remove-link`);
