@@ -636,6 +636,9 @@ const tuiIconUndo =
 const tuiIconUndoLarge =
     '<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconUndoLarge" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%"><svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12"><path d="M1.212 10.967c0 .374.161.756.484 1.016h.001l7.018 5.665.001.002a1.277 1.277 0 0 0 1.599.008h0l-.528-1.134.936-.352h0v-.002l-.909-2.414c1.97.024 3.388.256 4.607.875 1.482.752 2.816 2.154 4.431 4.875a1 1 0 0 0 1.843-.695c-.459-2.442-1.173-4.98-3.014-6.975-1.676-1.816-4.172-3.066-7.912-3.541l.954-2.535h0a1.31 1.31 0 0 0-.4-1.478 1.275 1.275 0 0 0-1.607-.001l-.002.001-7.02 5.668h0l-.008.007a1.306 1.306 0 0 0-.474 1.01Zm0 0v-.002h1l-1 .004v-.002Zm8.763 5.129-.002-.002.002.002Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></svg></g></svg>';
 
+const tuiIconUnlinkLarge =
+    '<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconUnlinkLarge" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%"><svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12"><path clip-rule="evenodd" d="M16.996 1.067a6 6 0 0 0-4.22 1.684l-.01.01-1.72 1.71a1 1 0 0 0 1.41 1.418l1.714-1.705a4 4 0 0 1 5.657 5.655l-2.994 2.994a4 4 0 0 1-6.032-.432A1 1 0 1 0 9.2 13.599a6 6 0 0 0 9.047.648l3-3 .013-.012a6 6 0 0 0-4.264-10.168ZM10.425 8.01a6 6 0 0 0-4.672 1.743l-3 3-.012.012a6 6 0 0 0 8.484 8.484l.012-.012 1.71-1.71a1 1 0 0 0-1.414-1.414L9.83 19.816a4 4 0 0 1-5.656-5.655l2.993-2.994a4 4 0 0 1 6.032.432 1 1 0 0 0 1.602-1.198 6.001 6.001 0 0 0-4.376-2.39Zm6.868 9.283a1 1 0 0 1 1.414 0l1.793 1.793 1.793-1.793a1 1 0 0 1 1.414 1.414L21.914 20.5l1.793 1.793a1 1 0 0 1-1.414 1.414L20.5 21.914l-1.793 1.793a1 1 0 0 1-1.414-1.414l1.793-1.793-1.793-1.793a1 1 0 0 1 0-1.414Z" fill="currentColor" fill-rule="evenodd"/></svg></svg></g></svg>';
+
 const tuiIconUpload =
     '<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconUpload" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1em" overflow="visible" viewBox="0 0 16 16" width="1em" x="50%" xmlns="http://www.w3.org/2000/svg" y="50%"><svg x="-8" y="-8"><path d="M14 10v2.667A1.334 1.334 0 0 1 12.667 14H3.333A1.334 1.334 0 0 1 2 12.667V10m9.333-4.667L8 2 4.667 5.333M8 2v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></svg></g></svg>';
 
@@ -884,6 +887,7 @@ export {
     tuiIconUnderlineLarge,
     tuiIconUndo,
     tuiIconUndoLarge,
+    tuiIconUnlinkLarge,
     tuiIconUpload,
     tuiIconUploadLarge,
     tuiIconUser,

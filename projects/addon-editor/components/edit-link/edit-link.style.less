@@ -1,8 +1,13 @@
 @import 'taiga-ui-local';
 
 :host {
+    display: block;
+    min-width: 18.75rem;
+}
+
+.t-edit-link {
     display: flex;
-    height: 5rem;
+    min-height: 5rem;
     align-items: center;
     padding-right: 0.75rem;
 }
@@ -14,6 +19,7 @@
     padding: 0.4375rem 1rem;
     min-width: 12.5rem;
     max-width: 25rem;
+    width: 100%;
 }
 
 .t-label-properties {
@@ -54,6 +60,10 @@
     transition: background 0.2s;
 }
 
+.t-edit-button {
+    margin-left: auto;
+}
+
 .t-link {
     margin: 0 1rem;
 }
@@ -62,6 +72,7 @@
     .transition(color);
     color: var(--tui-base-06);
     cursor: pointer;
+    margin-left: auto;
 
     &:hover {
         color: var(--tui-base-07);
@@ -69,5 +80,25 @@
 
     &_hidden {
         visibility: hidden;
+    }
+}
+
+.t-anchor-list {
+    display: flex;
+    max-height: 12.5rem;
+    flex-direction: column;
+}
+
+.t-anchor {
+    .clearbtn();
+    min-height: 2.75rem;
+    padding: 0.375rem 0.5rem;
+    margin: 0.125rem 0.5rem;
+    border-radius: var(--tui-radius-m);
+    text-align: left;
+
+    &:hover {
+        background: var(--tui-base-02);
+        cursor: pointer;
     }
 }
