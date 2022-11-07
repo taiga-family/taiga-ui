@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiAvatarModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiAvatarHarness} from '@taiga-ui/testing';
+import {configureTestSuite, TuiAvatarHarness, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`Avatar`, () => {
     @Component({
@@ -39,6 +39,17 @@ describe(`Avatar`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;
+    let pageObject: TuiPageObject<TestComponent>;
+    const testContext = {
+        get prefix() {
+            return `tui-avatar__`;
+        },
+    };
+
+    function getAvatar(): HTMLElement {
+        return pageObject.getByAutomationId(`${testContext.prefix}component`)!
+            .nativeElement;
+    }
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -87,15 +98,15 @@ describe(`Avatar`, () => {
     // TODO: Jest doesn't support intersection observe
     xdescribe(`Avatar color`, () => {
         it(`if there is an avatarUrl the color is rgba(0, 0, 0, 0)`, () => {
-            /* expect(getComputedStyle(getAvatar()).backgroundColor).toBe( */
-            /*     `rgba(0, 0, 0, 0)`, */
-            /* ); */
+            expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
+                `rgba(0, 0, 0, 0)`,
+            );
         });
 
         it(`when autoColor is on, the color will be - rgb(160, 170, 228)`, () => {
-            /* expect(getComputedStyle(getAvatar()).backgroundColor).toBe( */
-            /*     `rgb(160, 170, 228)`, */
-            /* ); */
+            expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
+                `rgb(160, 170, 228)`,
+            );
         });
     });
 });
