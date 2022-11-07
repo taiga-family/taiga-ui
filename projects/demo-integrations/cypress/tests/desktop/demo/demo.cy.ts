@@ -1,7 +1,6 @@
 import {
     DEMO_PATHS,
     isInputNumberPage,
-    isMobileCalendarPage,
     isScrollbarPage,
 } from '@demo-integrations/support/demo-paths';
 import {tuiExcluded} from '@demo-integrations/support/exclusions';
@@ -15,8 +14,7 @@ describe(`Demo`, () => {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
 
-            const waitSomeAnimationBefore =
-                isMobileCalendarPage(path) || isInputNumberPage(path);
+            const waitSomeAnimationBefore = isInputNumberPage(path);
 
             if (waitSomeAnimationBefore) {
                 cy.wait(WAIT_BEFORE_SCREENSHOT);
