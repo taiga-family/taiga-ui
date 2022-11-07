@@ -34,7 +34,7 @@ export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): voi
 }
 
 export function tuiTrashValueByEditLink(): void {
-    cy.get(`button[icon=tuiIconTrashLarge]`)
+    cy.get(`button[icon=tuiIconUnlinkLarge]`)
         .click({force: true})
         .wait(WAIT_BEFORE_SCREENSHOT);
 }
