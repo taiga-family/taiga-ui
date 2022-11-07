@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDataListModule,
     TuiLinkModule,
     TuiScrollbarModule,
     TuiSvgModule,
@@ -25,7 +24,6 @@ import {TuiShortUrlPipe} from './pipes/short-url.pipe';
         TuiLinkModule,
         TuiInputInlineModule,
         TuiToggleModule,
-        TuiDataListModule,
         TuiScrollbarModule,
     ],
     declarations: [TuiEditLinkComponent, TuiShortUrlPipe, TuiFilterAnchorsPipe],
