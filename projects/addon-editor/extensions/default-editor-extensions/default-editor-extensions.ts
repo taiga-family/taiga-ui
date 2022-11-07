@@ -15,9 +15,7 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-image`).then(({default: Image}) =>
         Image.configure({inline: true}),
     ),
-    import(`@tiptap/extension-link`).then(({default: Link}) =>
-        Link.configure({openOnClick: false}),
-    ),
+    import(`@taiga-ui/addon-editor/extensions/link`).then(({TuiLink}) => TuiLink),
     import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,
     ),
