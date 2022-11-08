@@ -8,6 +8,7 @@ console.log('CI mode', CI_MODE);
 module.exports = {
     root: true,
     extends: [
+        '@tinkoff/eslint-config/errors',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',

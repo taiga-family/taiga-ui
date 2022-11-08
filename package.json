@@ -102,6 +102,7 @@
         "cpy-cli": "^4.1.0",
         "cy2": "~2.0.0",
         "cypress": "~10.0.3",
+        "eslint": "^8.27.0",
         "find-in-files": "~0.5.0",
         "firebase-tools": "^9.23.3",
         "http-server": "^0.13.0",
