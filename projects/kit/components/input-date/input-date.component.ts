@@ -225,10 +225,8 @@ export class TuiInputDateComponent
         return this.activeItem ? `` : filler;
     }
 
-    onMobileClick(): void {
-        if (!this.mobileCalendar) {
-            this.open = !this.open;
-
+    onIconClick(): void {
+        if (!this.computedMobile || !this.mobileCalendar) {
             return;
         }
 

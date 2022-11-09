@@ -253,10 +253,8 @@ export class TuiInputDateRangeComponent
         return this.activePeriod ? `` : this.getDateRangeFiller(dateFiller);
     }
 
-    onMobileClick(): void {
-        if (!this.mobileCalendar) {
-            this.toggle();
-
+    onIconClick(): void {
+        if (!this.computedMobile || !this.mobileCalendar) {
             return;
         }
 
