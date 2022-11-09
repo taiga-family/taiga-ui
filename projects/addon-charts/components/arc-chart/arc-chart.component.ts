@@ -114,7 +114,7 @@ export class TuiArcChartComponent {
     }
 
     isInactive(index: number): boolean {
-        return !isNaN(this.activeItemIndex) && index !== this.activeItemIndex;
+        return !Number.isNaN(this.activeItemIndex) && index !== this.activeItemIndex;
     }
 
     getInset(index: number): number {

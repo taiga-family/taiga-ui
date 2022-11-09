@@ -210,7 +210,7 @@ export class TuiInputNumberComponent
         this.unfinishedValue = null;
         const capped = this.absoluteCapInputValue(value);
 
-        if (capped === null || isNaN(capped)) {
+        if (capped === null || Number.isNaN(capped)) {
             return;
         }
 
@@ -262,7 +262,7 @@ export class TuiInputNumberComponent
 
         this.unfinishedValue = null;
 
-        if (isNaN(nativeNumberValue)) {
+        if (Number.isNaN(nativeNumberValue)) {
             this.clear();
 
             return;
@@ -340,7 +340,8 @@ export class TuiInputNumberComponent
             value < 0
                 ? Math.max(Math.max(this.min, Number.MIN_SAFE_INTEGER), value)
                 : Math.min(value, Math.min(this.max, Number.MAX_SAFE_INTEGER));
-        const ineligibleValue = isNaN(capped) || capped < this.min || capped > this.max;
+        const ineligibleValue =
+            Number.isNaN(capped) || capped < this.min || capped > this.max;
 
         return ineligibleValue ? null : capped;
     }

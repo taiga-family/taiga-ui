@@ -57,7 +57,7 @@ export const getDayFromMonthRowCol = ({
         1;
 
     if (day > month.daysCount) {
-        day = day - month.daysCount;
+        day -= month.daysCount;
         month = month.append({month: 1});
     }
 

@@ -37,6 +37,7 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
     ) {}
 
+    // eslint-disable-next-line max-statements
     getPosition({width, height}: ClientRect): TuiPoint {
         const hostRect = this.accessor.getClientRect();
         const leftCenter = hostRect.left + hostRect.width / 2;

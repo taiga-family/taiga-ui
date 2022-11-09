@@ -47,13 +47,6 @@ export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
     private icon = ``;
 
-    @Input()
-    @tuiRequiredSetter()
-    set src(src: string) {
-        this.icon = this.srcProcessor(src);
-        this.src$.next();
-    }
-
     readonly innerHTML$: Observable<SafeHtml>;
 
     constructor(
@@ -81,6 +74,13 @@ export class TuiSvgComponent {
             ),
             startWith(``),
         );
+    }
+
+    @Input()
+    @tuiRequiredSetter()
+    set src(src: string) {
+        this.icon = this.srcProcessor(src);
+        this.src$.next();
     }
 
     get src(): string {

@@ -7,7 +7,7 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
  *
  * CAUTION: This decorator overwrites other getters and setters.
  */
-export function tuiDefaultProp<T extends object, K extends keyof T>(
+export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>(
     assertion?: TuiBooleanHandler<T[K]>,
     ...args: unknown[]
 ): PropertyDecorator {

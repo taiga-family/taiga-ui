@@ -14,7 +14,7 @@ export class TuiLineClampExample3 {
     constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
 
     getDynamicLineHeight(element: HTMLDivElement): number {
-        return parseInt(this.windowRef.getComputedStyle(element).lineHeight);
+        return parseInt(this.windowRef.getComputedStyle(element).lineHeight, 10);
     }
 
     getDynamicLineLimit(element: HTMLDivElement): number {

@@ -7,11 +7,7 @@ export class TuiTagHarness extends TuiComponentHarness {
     static hostSelector = `tui-tag`;
 
     async getCrossIcon(): Promise<TuiSvgHarness | null> {
-        const svg = await this.locatorForOptional(
-            TuiSvgHarness.with({selector: `.t-icon`}),
-        )();
-
-        return svg;
+        return this.locatorForOptional(TuiSvgHarness.with({selector: `.t-icon`}))();
     }
 
     async getBackgroundColor(): Promise<string> {
@@ -21,20 +17,18 @@ export class TuiTagHarness extends TuiComponentHarness {
     }
 
     async getInput(): Promise<TestElement | null> {
-        const input = await this.locatorForOptional(`input.t-edit`)();
-
-        return input;
+        return this.locatorForOptional(`input.t-edit`)();
     }
 
     async sendEnter(): Promise<void> {
-        return await (await this.host()).sendKeys(TestKey.ENTER);
+        return (await this.host()).sendKeys(TestKey.ENTER);
     }
 
     async sendBackspace(): Promise<void> {
-        return await (await this.host()).sendKeys(TestKey.BACKSPACE);
+        return (await this.host()).sendKeys(TestKey.BACKSPACE);
     }
 
     async sendDelete(): Promise<void> {
-        return await (await this.host()).sendKeys(TestKey.DELETE);
+        return (await this.host()).sendKeys(TestKey.DELETE);
     }
 }

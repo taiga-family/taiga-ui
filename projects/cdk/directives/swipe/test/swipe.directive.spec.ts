@@ -76,7 +76,7 @@ xdescribe(`TuiSwipe directive`, () => {
         identifier: number,
     ): void {
         const touchObj = new Touch({
-            identifier: identifier,
+            identifier,
             target: element,
             clientX: x,
             clientY: y,

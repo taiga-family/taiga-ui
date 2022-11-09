@@ -17,11 +17,11 @@ export class TuiIslandHarness extends TuiComponentHarness {
     }
 
     async getTextAlign(): Promise<'left' | 'right' | 'center'> {
-        if (await this.istextAlignLeft()) {
+        if (await this.isTextAlignLeft()) {
             return `left`;
         }
 
-        if (await this.istextAlignCenter()) {
+        if (await this.isTextAlignCenter()) {
             return `center`;
         }
 
@@ -29,22 +29,22 @@ export class TuiIslandHarness extends TuiComponentHarness {
     }
 
     async isHoverable(): Promise<boolean> {
-        return await (await this.host()).hasClass(`tui-island_hoverable`);
+        return (await this.host()).hasClass(`tui-island_hoverable`);
     }
 
-    private async istextAlignLeft(): Promise<boolean> {
-        return await (await this.host()).hasClass(`tui-island_text-align_left`);
+    private async isTextAlignLeft(): Promise<boolean> {
+        return (await this.host()).hasClass(`tui-island_text-align_left`);
     }
 
-    private async istextAlignCenter(): Promise<boolean> {
-        return await (await this.host()).hasClass(`tui-island_text-align_center`);
+    private async isTextAlignCenter(): Promise<boolean> {
+        return (await this.host()).hasClass(`tui-island_text-align_center`);
     }
 
     private async isSizeM(): Promise<boolean> {
-        return await (await this.host()).hasClass(`tui-island_size_m`);
+        return (await this.host()).hasClass(`tui-island_size_m`);
     }
 
     private async isSizeL(): Promise<boolean> {
-        return await (await this.host()).hasClass(`tui-island_size_l`);
+        return (await this.host()).hasClass(`tui-island_size_l`);
     }
 }

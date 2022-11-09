@@ -8,6 +8,7 @@ export const TuiLink = Link.extend({
             toggleLink:
                 attributes =>
                 ({chain, state}) => {
+                    // eslint-disable-next-line no-lone-blocks
                     {
                         const {selection, doc} = state;
                         const selected = doc.cut(selection.to, selection.to + 1);

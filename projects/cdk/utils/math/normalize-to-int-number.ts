@@ -13,7 +13,7 @@ export function tuiNormalizeToIntNumber(value: number, min: number, max: number)
     tuiAssert.assert(Number.isInteger(max));
     tuiAssert.assert(min <= max);
 
-    if (isNaN(value) || value <= min) {
+    if (Number.isNaN(value) || value <= min) {
         return min;
     }
 

@@ -132,9 +132,7 @@ export class TuiCarouselComponent {
     }
 
     onSwipe(direction: TuiSwipeDirection): void {
-        if (Math.round(this.translate) !== -this.index || !this.computedDraggable) {
-            return;
-        } else if (direction === `left`) {
+        if (direction === `left`) {
             this.next();
         } else if (direction === `right`) {
             this.prev();

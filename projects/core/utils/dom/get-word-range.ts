@@ -6,6 +6,7 @@ import {CHAR_NO_BREAK_SPACE, CHAR_ZERO_WIDTH_SPACE, svgNodeFilter} from '@taiga-
  * @param currentRange a range to clone
  * @return modified range
  */
+// eslint-disable-next-line max-statements
 export function tuiGetWordRange(currentRange: Range): Range {
     const range = currentRange.cloneRange();
     const {startContainer, startOffset, endContainer, endOffset} = range;

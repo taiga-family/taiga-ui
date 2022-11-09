@@ -11,12 +11,12 @@ export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
         label: `next`,
         baseHref: `next`,
-        alias: `v${parseInt(TUI_VERSION)}-next`,
+        alias: `v${parseInt(TUI_VERSION, 10)}-next`,
     },
     {
         label: `latest (v${TUI_VERSION})`,
         baseHref: ``,
-        alias: `v${parseInt(TUI_VERSION)}`,
+        alias: `v${parseInt(TUI_VERSION, 10)}`,
     },
     {
         label: `v2`,

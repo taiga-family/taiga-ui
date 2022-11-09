@@ -48,9 +48,9 @@ export class TuiInputExample8 {
                         this.onClick(response[0]);
 
                         return [];
-                    } else {
-                        return response;
                     }
+
+                    return response;
                 }),
             ),
         ),

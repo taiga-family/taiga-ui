@@ -194,7 +194,9 @@ export class TuiInputPhoneComponent
         if (
             this.computedValue === this.countryCode ||
             (this.search !== null &&
-                isNaN(parseInt(this.search.replace(TUI_MASK_SYMBOLS_REGEXP, ``), 10)))
+                Number.isNaN(
+                    parseInt(this.search.replace(TUI_MASK_SYMBOLS_REGEXP, ``), 10),
+                ))
         ) {
             this.updateSearch(``);
         }
@@ -344,5 +346,5 @@ export class TuiInputPhoneComponent
 }
 
 function isText(value: string): boolean {
-    return isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ``), 10));
+    return Number.isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ``), 10));
 }

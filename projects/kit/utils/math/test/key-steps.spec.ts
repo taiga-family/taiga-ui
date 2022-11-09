@@ -26,6 +26,7 @@ describe(`KeySteps utils`, () => {
 
     describe(`tuiPercentageToKeyStepValue`, () => {
         for (const {percentage, value} of testContexts) {
+            // eslint-disable-next-line no-loop-func
             it(`${percentage}% => ${value}`, () => {
                 expect(tuiPercentageToKeyStepValue(percentage, keySteps)).toBe(value);
             });
@@ -34,6 +35,7 @@ describe(`KeySteps utils`, () => {
 
     describe(`tuiKeyStepValueToPercentage`, () => {
         for (const {value, percentage} of testContexts) {
+            // eslint-disable-next-line no-loop-func
             it(`${value} => ${percentage}%`, () => {
                 expect(tuiKeyStepValueToPercentage(value, keySteps)).toBe(percentage);
             });

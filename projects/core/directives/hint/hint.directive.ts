@@ -51,7 +51,10 @@ export class TuiHintDirective<C>
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(PolymorpheusComponent)
-        readonly component: PolymorpheusComponent<object, object>,
+        readonly component: PolymorpheusComponent<
+            Record<string, any>,
+            Record<string, any>
+        >,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
         @Optional()

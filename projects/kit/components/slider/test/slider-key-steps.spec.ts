@@ -90,6 +90,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
         ] as const;
 
         for (const {controlValue, nativeValue} of controlNativeValuesMap) {
+            // eslint-disable-next-line no-loop-func
             it(`${controlValue} => ${nativeValue}/30`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -120,6 +121,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
         ] as const;
 
         for (const {controlValue, expectedNativeValue} of testsConditions) {
+            // eslint-disable-next-line no-loop-func
             it(`${controlValue} => ${expectedNativeValue}/30`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -175,6 +177,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
         ] as const;
 
         for (const {controlValue, expectedNativeValue} of testsConditions) {
+            // eslint-disable-next-line no-loop-func
             it(`${controlValue} => ${expectedNativeValue}/100`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -233,6 +236,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
         ] as const;
 
         for (const {controlValue, expectedNativeValue} of testsConditions) {
+            // eslint-disable-next-line no-loop-func
             it(`${controlValue} => ${expectedNativeValue} (min = -10 | max = 10)`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();

@@ -63,7 +63,8 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         private readonly body: TuiTbodyComponent<T>,
     ) {}
 
-    ngAfterContentInit(): void {
-        void Promise.resolve().then(() => this.contentReady$.next(true));
+    async ngAfterContentInit(): Promise<void> {
+        await Promise.resolve();
+        this.contentReady$.next(true);
     }
 }

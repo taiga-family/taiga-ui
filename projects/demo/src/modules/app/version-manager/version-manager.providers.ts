@@ -20,7 +20,7 @@ export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
                 versions.find(meta => {
                     return (
                         meta.baseHref === strategy.getBaseHref().replace(/\//g, ``) ||
-                        meta.alias === `v${parseInt(TUI_VERSION)}`
+                        meta.alias === `v${parseInt(TUI_VERSION, 10)}`
                     );
                 }) ?? null
             );

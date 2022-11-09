@@ -7,14 +7,16 @@ import {processTs} from './typescript-processor';
 function getProcessor(fileName: string): (item: string) => string {
     if (isTS(fileName)) {
         return processTs;
-    } else if (isLess(fileName)) {
-        return processLess;
-    } else {
-        return identity;
     }
+
+    if (isLess(fileName)) {
+        return processLess;
+    }
+
+    return identity;
 }
 
-export function exampleContentProcessor<T extends object>(content: T): T {
+export function exampleContentProcessor<T extends Record<string, any>>(content: T): T {
     const processedContent: Record<string, string> = {};
 
     for (const [fileName, fileContent] of Object.entries(content)) {
