@@ -3,6 +3,7 @@
     [multiple]="true"
     [formControl]="control"
     (reject)="onReject($event)"
+    (ngModelChange)="control.markAsTouched()"
 ></tui-input-files>
 
 <tui-files class="tui-space_top-1">
@@ -19,3 +20,8 @@
         (removed)="clearRejected(file)"
     ></tui-file>
 </tui-files>
+
+<tui-error
+    [formControl]="control"
+    [error]="['maxLength'] | tuiFieldError | async"
+></tui-error>
