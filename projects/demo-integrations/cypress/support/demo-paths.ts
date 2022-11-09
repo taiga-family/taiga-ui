@@ -13,8 +13,6 @@ export const DEMO_PATHS = flatPages(pages)
     .map(page => page.route.replace(`/`, ``));
 
 export const isScrollbarPage = (path: string): boolean => path === `components/scrollbar`;
-export const isMobileCalendarPage = (path: string): boolean =>
-    path === `components/mobile-calendar`;
 export const isInputNumberPage = (path: string): boolean =>
     path === `components/input-number`;
 
