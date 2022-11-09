@@ -34,7 +34,7 @@ body:
     id: reproduction-url
     attributes:
       label: Please provide a link to a minimal reproduction of the bug
-      value: https://stackblitz.com/edit/taiga-starter
+      value: https://taiga-ui.dev/stackblitz
 
   - type: dropdown
     id: blocking
