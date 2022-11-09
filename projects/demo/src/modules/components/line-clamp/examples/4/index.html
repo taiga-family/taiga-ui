@@ -1,0 +1,38 @@
+<h1 class="header">
+    Dropdown&nbsp;&mdash;
+    <tui-hosted-dropdown
+        #button
+        tuiDropdownAlign="left"
+        tuiDropdownLimitWidth="auto"
+        [content]="template"
+    >
+        <a tuiLink>
+            Open
+            <tui-svg [src]="button.open ? 'tuiIconChevronDown' : 'tuiIconChevronUp'"></tui-svg>
+        </a>
+    </tui-hosted-dropdown>
+</h1>
+
+<ng-template
+    #template
+    let-activeZone
+>
+    <tui-data-list
+        tuiDataListDropdownManager
+        [tuiActiveZoneParent]="activeZone"
+    >
+        <tui-opt-group>
+            <ng-container *ngFor="let text of texts">
+                <button
+                    tuiOption
+                    class="dropdown-button"
+                >
+                    <tui-line-clamp
+                        [content]="text"
+                        [linesLimit]="2"
+                    ></tui-line-clamp>
+                </button>
+            </ng-container>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>

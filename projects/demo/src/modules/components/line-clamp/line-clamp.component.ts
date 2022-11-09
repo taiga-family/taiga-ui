@@ -34,4 +34,10 @@ export class ExampleTuiLineClampComponent {
         HTML: import(`./examples/3/index.html?raw`),
         LESS: import(`./examples/3/index.less?raw`),
     };
+
+    readonly example4: TuiDocExample = {
+        TypeScript: import(`./examples/4/index.ts?raw`),
+        HTML: import(`./examples/4/index.html?raw`),
+        LESS: import(`./examples/4/index.less?raw`),
+    };
 }
