@@ -1,12 +1,23 @@
-{{ value | tuiIsPresent }} = value | tuiIsPresent;
+<ng-container *tuiLet="count$ | async as count">
+    <div *ngIf="count | tuiIsPresent; else loading">
+        count is
+        <code>{{ count | json }}</code>
+    </div>
 
-<tui-select
-    class="tui-space_top-2"
-    [formControl]="control"
+    <ng-template #loading>
+        <div>
+            count is
+            <code>{{ count | json }}</code>
+            while it's loading
+        </div>
+    </ng-template>
+</ng-container>
+
+<button
+    tuiButton
+    size="m"
+    class="tui-space_top-4"
+    (click)="loadCount()"
 >
-    value
-    <tui-data-list-wrapper
-        *tuiDataList
-        [items]="items"
-    ></tui-data-list-wrapper>
-</tui-select>
+    Load count
+</button>
