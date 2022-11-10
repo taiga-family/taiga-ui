@@ -191,8 +191,8 @@ export class TuiDocNavigationComponent {
     }
 
     private navigateToAnchorLink(fragment: string): void {
-        const nodes = this.documentRef.querySelectorAll(`#${fragment}`);
-        const element = fragment && nodes.length && nodes[nodes.length - 1];
+        const nodes = fragment ? this.documentRef.querySelectorAll(`#${fragment}`) : [];
+        const element = nodes.length && nodes[nodes.length - 1];
 
         if (!element) {
             return;
