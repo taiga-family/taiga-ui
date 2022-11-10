@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 16.x
+    default: 18.x
 
 outputs:
   root-package-version:
@@ -73,7 +73,7 @@ runs:
         echo "TIMING=true" >> $GITHUB_ENV
         echo "TUI_CI=true" >> $GITHUB_ENV
         echo "NPM_CONFIG_CACHE=~/.npm" >> $GITHUB_ENV
-        echo "NODE_OPTIONS=--max-old-space-size=12288" >> $GITHUB_ENV
+        echo "NODE_OPTIONS=--max-old-space-size=12288 --openssl-legacy-provider" >> $GITHUB_ENV
         echo "CYPRESS_CACHE_FOLDER=node_modules/cache-cypress" >> $GITHUB_ENV
 
     - name: Clean install dependencies
