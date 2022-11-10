@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[19101],{19101:n=>{n.exports=".dropdown-button {\n    width: 16rem;\n}\n"}}]);
