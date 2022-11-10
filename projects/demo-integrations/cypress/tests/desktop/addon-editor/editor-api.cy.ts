@@ -16,6 +16,7 @@ import {
 } from '@demo-integrations/support/editor/helpers';
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
+    HTML_EDITOR_EXAMPLE_LONG_WORD_UL,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
     HTML_EDITOR_EXAMPLE_PRE_CODE,
@@ -104,6 +105,15 @@ describe(`Editor API`, () => {
                 .find(`tui-editor-socket.tui-example`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
                 .matchImageSnapshot(`5-1-bullet-and-ordered-nested-list`);
+        });
+
+        it(`long words`, () => {
+            tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_LONG_WORD_UL});
+
+            tuiGetDemoContent()
+                .find(`tui-editor-socket.tui-example`)
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot(`5-1-bullet-and-ordered-list-with-long-word`);
         });
 
         it(`nested ol and ul`, () => {
