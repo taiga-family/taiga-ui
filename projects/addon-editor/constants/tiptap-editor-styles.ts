@@ -43,9 +43,15 @@ export const tiptapEditorStyles = `
     margin: 16px 0;
 }
 
+
 .tui-editor-socket li p {
-    display: inline-block;
+    display: inline;
     margin: 0 auto;
+    word-break: break-word;
+}
+
+.tui-editor-socket ul li p {
+    display: inline-block;
 }
 
 .tui-editor-socket ul > li:before {
