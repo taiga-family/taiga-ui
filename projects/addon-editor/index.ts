@@ -1,3 +1,4 @@
+export * from '@taiga-ui/addon-editor/abstract';
 export * from '@taiga-ui/addon-editor/components';
 export * from '@taiga-ui/addon-editor/constants';
 export * from '@taiga-ui/addon-editor/directives';

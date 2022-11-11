@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiButtonModule,
-    TuiLinkModule,
+    TuiLinkModule, TuiLoaderModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -23,6 +23,7 @@ import {TuiEditorExample5} from './examples/5';
 import {TuiEditorExample6} from './examples/6';
 import {TuiEditorExample7} from './examples/7';
 import {TuiEditorExample8} from './examples/8';
+import {TuiEditorExample9} from './examples/9';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import {TuiEditorExample8} from './examples/8';
         ExampleSmilesToolModule,
         ImagePreviewExampleModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleEditorComponent)),
+        TuiLoaderModule,
     ],
     declarations: [
         ExampleEditorComponent,
@@ -51,6 +53,7 @@ import {TuiEditorExample8} from './examples/8';
         TuiEditorExample5,
         TuiEditorExample7,
         TuiEditorExample8,
+        TuiEditorExample9,
     ],
     exports: [ExampleEditorComponent],
 })

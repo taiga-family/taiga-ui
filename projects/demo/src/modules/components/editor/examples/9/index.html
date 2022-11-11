@@ -1,0 +1,14 @@
+<tui-loader [showLoader]="!!(fileIoService.loading$ | async)">
+    <tui-editor
+        class="editor"
+        [formControl]="control"
+        [tools]="builtInTools"
+        (fileAttached)="attach($event)"
+    ></tui-editor>
+</tui-loader>
+
+<h4>HTML:</h4>
+<tui-editor-socket [content]="control.value || ''"></tui-editor-socket>
+
+<h4>Text:</h4>
+<p>{{ control.value }}</p>
