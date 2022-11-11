@@ -67,10 +67,9 @@ module.exports = {
         };
 
         const isInsideTheSameEntryPoint = source => {
-            const filePath = path.relative(
-                context.getCwd().replace(/\\+/g, '/'),
-                context.getFilename().replace(/\\+/g, '/'),
-            );
+            const filePath = path
+                .relative(context.getCwd(), context.getFilename())
+                .replace(/\\+/g, '/');
 
             const [currentFileProjectName] =
                 (currentProject && filePath.match(new RegExp(currentProject, 'g'))) || [];
