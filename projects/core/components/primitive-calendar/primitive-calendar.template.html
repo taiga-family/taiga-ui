@@ -5,7 +5,10 @@
         [textContent]="day"
     ></div>
 </div>
-<div *tuiLet="month | tuiCalendarSheet: true as sheet">
+<div
+    *tuiLet="month | tuiCalendarSheet: true as sheet"
+    id="date-rows"
+>
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-primitive-calendar__row"
