@@ -18,13 +18,13 @@ describe(`Calendar`, () => {
                 id="min-case"
                 [min]="min"
                 [minViewedMonth]="minViewedMonth"
-                [(month)]="minMonthValue"
+                [(month)]="month"
             ></tui-calendar>
             <tui-calendar
                 id="max-case"
                 [max]="max"
                 [maxViewedMonth]="maxViewedMonth"
-                [(month)]="maxMonthValue"
+                [(month)]="month"
             ></tui-calendar>
         `,
     })
@@ -33,14 +33,13 @@ describe(`Calendar`, () => {
         component!: TuiCalendarComponent;
 
         value = TuiDay.currentLocal();
+        month = new TuiMonth(2019, 2);
 
         min = new TuiDay(2019, 2, 1);
         minViewedMonth = new TuiDay(2019, 1, 1);
-        minMonthValue = new TuiMonth(2019, 2);
 
         max = new TuiDay(2019, 2, 1);
         maxViewedMonth = new TuiDay(2019, 3, 1);
-        maxMonthValue = new TuiMonth(2019, 2);
 
         dayClick = jest.fn();
         hoveredItemChange = jest.fn();
