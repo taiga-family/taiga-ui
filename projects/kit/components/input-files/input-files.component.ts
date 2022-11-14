@@ -2,8 +2,10 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     ElementRef,
     EventEmitter,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -32,7 +34,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
+// eslint-disable-next-line import/no-cycle
+import {TuiInputFilesDirective} from './input-files.directive';
+import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 
 @Component({
     selector: `tui-input-files`,
@@ -51,6 +55,15 @@ export class TuiInputFilesComponent
 
     private dataTransfer: DataTransfer | null = null;
 
+    @ContentChild(TuiInputFilesDirective, {read: TuiInputFilesDirective})
+    readonly nativeInput?: TuiInputFilesDirective;
+
+    @ViewChild(`formatRejection`)
+    readonly formatRejection!: PolymorpheusContent;
+
+    @ViewChild(`maxSizeRejection`)
+    readonly maxSizeRejection!: PolymorpheusContent;
+
     @Input()
     @tuiDefaultProp()
     link: PolymorpheusContent = ``;
@@ -59,21 +72,27 @@ export class TuiInputFilesComponent
     @tuiDefaultProp()
     label: PolymorpheusContent = ``;
 
+    /**
+     * @deprecated: use `<input tuiInputFiles accept="image/*" />`
+     */
     @Input()
     @tuiDefaultProp()
-    accept = ``;
+    accept = this.options.accepts;
+
+    /**
+     * @deprecated: use `<input tuiInputFiles multiple />`
+     */
+    @Input()
+    @tuiDefaultProp()
+    multiple = this.options.multiple;
 
     @Input()
     @tuiDefaultProp()
-    multiple = false;
+    size: TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL = `m`;
-
-    @Input()
-    @tuiDefaultProp()
-    maxFileSize = DEFAULT_MAX_SIZE;
+    maxFileSize = this.options.maxFileSize;
 
     @Output()
     reject = new EventEmitter<TuiFileLike | readonly TuiFileLike[]>();
@@ -101,8 +120,18 @@ export class TuiInputFilesComponent
                 string
             >
         >,
+        @Inject(TUI_INPUT_FILES_OPTIONS)
+        readonly options: TuiInputFilesOptions,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get computedMultiple(): boolean {
+        return this.nativeInput?.multiple ?? this.multiple;
+    }
+
+    get computedAccept(): string {
+        return this.nativeInput?.accept ?? this.accept;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -118,14 +147,14 @@ export class TuiInputFilesComponent
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {
-        return this.computeLink$(this.fileDragged, this.multiple, this.link);
+        return this.computeLink$(this.fileDragged, this.computedMultiple, this.link);
     }
 
     get computedLabel$(): Observable<PolymorpheusContent> {
         return this.computeLabel$(
             this.isMobile,
             this.fileDragged,
-            this.multiple,
+            this.computedMultiple,
             this.label,
         );
     }
@@ -138,23 +167,28 @@ export class TuiInputFilesComponent
         return this.getValueArray(this.value);
     }
 
+    @HostListener(`focusin`, [`true`])
+    @HostListener(`focusout`, [`false`])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFilesSelected(
-        input: HTMLInputElement,
-        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
-    ): void {
-        this.processSelectedFiles(input.files, errors);
+    @HostListener(`change`)
+    onFilesSelected(): void {
+        const input: HTMLInputElement | undefined =
+            this.nativeInput?.input ?? this.input?.nativeElement;
+
+        if (!input) {
+            return;
+        }
+
+        this.processSelectedFiles(input.files);
+
         input.value = ``;
     }
 
-    onDropped(
-        event: DataTransfer,
-        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
-    ): void {
-        this.processSelectedFiles(event.files, errors);
+    onDropped(event: DataTransfer): void {
+        this.processSelectedFiles(event.files);
     }
 
     onDragOver(dataTransfer: DataTransfer | null): void {
@@ -163,7 +197,9 @@ export class TuiInputFilesComponent
 
     removeFile(removedFile: TuiFileLike): void {
         this.updateValue(
-            this.multiple ? this.arrayValue.filter(file => file !== removedFile) : null,
+            this.computedMultiple
+                ? this.arrayValue.filter(file => file !== removedFile)
+                : null,
         );
     }
 
@@ -221,16 +257,21 @@ export class TuiInputFilesComponent
         return Array.isArray(value) ? value : [value];
     }
 
-    private processSelectedFiles(
-        files: FileList | null,
-        errors: Record<'maxSizeRejection' | 'formatRejection', PolymorpheusContent>,
-    ): void {
+    private processSelectedFiles(files: FileList | null): void {
         // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
         if (!files?.length) {
             return;
         }
 
-        const newFiles = this.multiple ? Array.from(files) : [files[0]];
+        const errors: Record<
+            'maxSizeRejection' | 'formatRejection',
+            PolymorpheusContent
+        > = {
+            formatRejection: this.formatRejection,
+            maxSizeRejection: this.maxSizeRejection,
+        };
+
+        const newFiles = this.computedMultiple ? Array.from(files) : [files[0]];
         const tooBigFiles = newFiles.filter(file => file.size > this.maxFileSize);
         const wrongFormatFiles = newFiles.filter(
             file => !this.isFormatAcceptable(file) && !tooBigFiles.includes(file),
@@ -257,20 +298,20 @@ export class TuiInputFilesComponent
         }
 
         this.updateValue(
-            this.multiple
+            this.computedMultiple
                 ? [...this.arrayValue, ...acceptedFiles]
                 : acceptedFiles[0] || null,
         );
     }
 
     private isFormatAcceptable(file: File): boolean {
-        if (!this.accept) {
+        if (!this.computedAccept) {
             return true;
         }
 
         const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
 
-        return tuiGetAcceptArray(this.accept).some(
+        return tuiGetAcceptArray(this.computedAccept).some(
             format =>
                 format === extension ||
                 format === file.type ||
@@ -280,6 +321,6 @@ export class TuiInputFilesComponent
     }
 
     private rejectFiles(rejectedFiles: readonly TuiFileLike[]): void {
-        this.reject.emit(this.multiple ? rejectedFiles : rejectedFiles[0]);
+        this.reject.emit(this.computedMultiple ? rejectedFiles : rejectedFiles[0]);
     }
 }

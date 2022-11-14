@@ -1,0 +1,18 @@
+<tui-input-files
+    *ngIf="!control.value"
+    [formControl]="control"
+>
+    <input
+        tuiInputFiles
+        accept="image/*"
+        capture="user"
+    />
+</tui-input-files>
+
+<tui-files class="tui-space_top-1">
+    <tui-file
+        *ngIf="control.valueChanges | async as file"
+        [file]="file"
+        (removed)="removeFile()"
+    ></tui-file>
+</tui-files>

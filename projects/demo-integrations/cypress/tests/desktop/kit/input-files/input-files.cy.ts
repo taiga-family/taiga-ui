@@ -8,9 +8,7 @@ describe(`InputFiles`, () => {
                 hideLanguageSwitcher: false,
             });
 
-            cy.get(`#demoContent input[type="file"]`).selectFile(
-                `cypress/fixtures/stubs/web-api.svg`,
-            );
+            cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
 
             cy.get(`#demoContent tui-file`)
                 .should(`contain.text`, `Wrong file type`)
@@ -31,9 +29,7 @@ describe(`InputFiles`, () => {
                 hideLanguageSwitcher: false,
             });
 
-            cy.get(`#demoContent input[type="file"]`).selectFile(
-                `cypress/fixtures/stubs/web-api.svg`,
-            );
+            cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
 
             cy.get(`#demoContent tui-file`)
                 .should(`contain.text`, `File is too large 2 KB`)

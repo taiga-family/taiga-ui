@@ -26,6 +26,7 @@ import {
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputFilesComponent} from './input-files.component';
+import {TuiInputFilesDirective} from './input-files.directive';
 import {TuiMaxSizeRejectionErrorPipe} from './max-size-rejection-error.pipe';
 
 @NgModule({
@@ -47,9 +48,14 @@ import {TuiMaxSizeRejectionErrorPipe} from './max-size-rejection-error.pipe';
         TuiGroupModule,
         TuiFilesModule,
     ],
-    declarations: [TuiInputFilesComponent, TuiMaxSizeRejectionErrorPipe],
+    declarations: [
+        TuiInputFilesComponent,
+        TuiInputFilesDirective,
+        TuiMaxSizeRejectionErrorPipe,
+    ],
     exports: [
         TuiInputFilesComponent,
+        TuiInputFilesDirective,
         TuiFilesComponent,
         TuiFileComponent,
         TuiItemDirective,
