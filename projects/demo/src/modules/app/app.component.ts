@@ -1,3 +1,4 @@
+import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
 import {Component, Inject, InjectFlags, Injector, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -51,6 +52,8 @@ export class AppComponent extends AbstractDemoComponent {
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(Injector) private readonly injector: Injector,
+        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
     ) {
         super(isCypress, pageLoaded$, versionMeta);
     }
@@ -58,6 +61,7 @@ export class AppComponent extends AbstractDemoComponent {
     override async ngOnInit(): Promise<void> {
         await super.ngOnInit();
         this.enableYandexMetrika();
+        this.setBaseHrefIfNotPresent();
     }
 
     private enableYandexMetrika(): void {
@@ -84,5 +88,21 @@ export class AppComponent extends AbstractDemoComponent {
         } catch {
             console.error(`You forgot to import MetrikaModule!`);
         }
+    }
+
+    /**
+     * @description:
+     * By default, on webcontainer.io will not be provided base[href] in index.html,
+     * we use fallback for correct processing of routing
+     */
+    private setBaseHrefIfNotPresent(): void {
+        if (this.documentRef.getElementsByTagName(`base`)?.[0]?.href) {
+            return;
+        }
+
+        const base = this.documentRef.createElement(`base`);
+
+        base.href = this.appBaseHref;
+        this.documentRef.getElementsByTagName(`head`)?.[0]?.appendChild(base);
     }
 }
